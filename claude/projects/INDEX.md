@@ -2,7 +2,7 @@
 
 This file tracks all active and completed projects in the INAV codebase.
 
-**Last Updated:** 2025-11-30 10:30
+**Last Updated:** 2025-11-30 13:25
 
 ---
 
@@ -92,6 +92,22 @@ JavaScript transpiler produces empty output for valid if-statement chains with c
 Decompiler generates `// Condition can be read by logicCondition[N]` comments with wrong condition numbers. Shows first condition in chain instead of the terminal/last condition.
 
 **Location:** `claude/projects/fix-decompiler-condition-numbers/`
+
+---
+
+### 🚧 investigate-boolean-struct-bitfields
+
+**Status:** IN PROGRESS
+**Type:** Research / Memory Optimization
+**Priority:** Medium
+**Assignment:** ✉️ Assigned
+**Created:** 2025-11-30
+**Assignee:** Developer
+**Assignment Email:** `claude/manager/sent/2025-11-30-1325-task-investigate-boolean-struct-bitfields.md`
+
+Investigate structs in INAV firmware that contain members used only as boolean conditions. Analyze whether fields use `:1` bit fields or larger types, and determine if converting to bit fields would change EEPROM binary format. Research only - no code changes or branches until findings are documented.
+
+**Location:** `claude/projects/investigate-boolean-struct-bitfields/`
 
 ---
 
@@ -1144,8 +1160,8 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 
 ## Project Summary Statistics
 
-- **Total Projects:** 47
-- **Active:** 5
+- **Total Projects:** 48
+- **Active:** 6
 - **Backburner:** 3
 - **Completed (Archived):** 36
 - **Cancelled:** 3
@@ -1157,14 +1173,14 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 ### By Status
 
 - ⏸️ **BACKBURNER:** feature-add-function-syntax-support, investigate-automated-testing-mcp, verify-gps-fix-refactor
-- 🚧 **IN PROGRESS:** create-inav-claude-repo, fix-search-tab-tabnames-error, fix-transpiler-empty-output, fix-decompiler-condition-numbers
+- 🚧 **IN PROGRESS:** create-inav-claude-repo, fix-search-tab-tabnames-error, fix-transpiler-empty-output, fix-decompiler-condition-numbers, investigate-boolean-struct-bitfields
 - ✅ **RECENTLY COMPLETED:** review-pr2433-bot-suggestions, transpiler-clean-copy (PR #2439), consolidate-role-directories, docs-javascript-programming (PR #11143), review-pr2439-bot-suggestions, investigate-pr2434-build-failures (PR #2434 MERGED), sitl-msp-arming, fix-gps-recovery-issue-11049 (PR #11144)
 - ✅ **COMPLETED (archived):** github-issues-review, setup-code-indexes-for-claude, implement-configurator-test-suite, fix-preexisting-tab-errors, fix-require-error-onboard-logging, preserve-variable-names-decompiler, investigate-dma-usage-cleanup, refactor-transpiler-core-files, move-transpiler-docs-to-inav-repo, rebase-squash-transpiler-branch, fix-duplicate-active-when-column, feature-add-parser-tab-icon, feature-auto-insert-inav-import, fix-programming-tab-save-lockup, fix-stm32-dfu-reboot-protocol, feature-javascript-variables, merge-branches-to-transpiler-base, refactor-commonjs-to-esm, improve-transpiler-error-reporting, fix-transpiler-api-mismatches, fix-transpiler-documentation
 - ❌ **CANCELLED:** implement-pmw3901-opflow-driver, optimize-tab-msp-communication, fix-preload-foreach-error
 
 ### By Assignment
 
-- ✉️ **ASSIGNED (active):** create-inav-claude-repo, fix-search-tab-tabnames-error, fix-transpiler-empty-output, fix-decompiler-condition-numbers
+- ✉️ **ASSIGNED (active):** create-inav-claude-repo, fix-search-tab-tabnames-error, fix-transpiler-empty-output, fix-decompiler-condition-numbers, investigate-boolean-struct-bitfields
 - ✉️ **ASSIGNED (backburner):** verify-gps-fix-refactor
 - 🔧 **DEVELOPER-INITIATED (completed):** sitl-msp-arming
 - ✉️ **ASSIGNED (completed):** github-issues-review, setup-code-indexes-for-claude, implement-configurator-test-suite, fix-preexisting-tab-errors, fix-require-error-onboard-logging, preserve-variable-names-decompiler, investigate-dma-usage-cleanup, refactor-transpiler-core-files, move-transpiler-docs-to-inav-repo, rebase-squash-transpiler-branch, fix-duplicate-active-when-column, feature-auto-insert-inav-import, fix-programming-tab-save-lockup, fix-stm32-dfu-reboot-protocol, feature-javascript-variables, merge-branches-to-transpiler-base, refactor-commonjs-to-esm, improve-transpiler-error-reporting, fix-transpiler-api-mismatches, fix-transpiler-documentation
@@ -1175,7 +1191,7 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 ### By Priority
 
 - **HIGH (active):** fix-search-tab-tabnames-error, fix-transpiler-empty-output
-- **MEDIUM (active):** fix-decompiler-condition-numbers
+- **MEDIUM (active):** create-inav-claude-repo, fix-decompiler-condition-numbers, investigate-boolean-struct-bitfields
 - **MEDIUM-HIGH (backburner):** feature-add-function-syntax-support
 - **MEDIUM (backburner):** verify-gps-fix-refactor
 - **LOW (backburner):** investigate-automated-testing-mcp
@@ -1192,6 +1208,7 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 
 - **Repository Setup / Documentation (Active):** create-inav-claude-repo
 - **Bug Fix (Active):** fix-search-tab-tabnames-error, fix-transpiler-empty-output, fix-decompiler-condition-numbers
+- **Research / Memory Optimization (Active):** investigate-boolean-struct-bitfields
 - **Feature (Backburner):** feature-add-function-syntax-support
 - **Code Review / Refactoring (Backburner):** verify-gps-fix-refactor
 - **Research (Backburner):** investigate-automated-testing-mcp
