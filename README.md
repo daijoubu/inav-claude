@@ -90,56 +90,10 @@ This workflow is designed to work with three separate repositories:
 
 **Important:** The `inav/`, `inav-configurator/`, and `uNAVlib/` directories are NOT tracked by this repository. You need to clone them separately as shown above.
 
-## Building INAV Firmware
-
-### Quick Build (Docker - Recommended)
-```bash
-cd inav
-./build.sh MATEKF405SE
-```
-
-### List Available Targets
-```bash
-cd inav
-./build.sh valid_targets
-```
-
-### SITL (Software In The Loop) for Testing
-```bash
-cd inav
-mkdir -p build_sitl
-cd build_sitl
-cmake -DSITL=ON ..
-make
-./inav_SITL
-```
-
-The `build-sitl` and `sitl-arm` skills automate SITL building and testing.
-
-## Building INAV Configurator
-
-```bash
-cd inav-configurator
-npm install
-npm start              # Development mode
-npm run make           # Build distributable packages
-```
 
 ## Code Navigation
 
 Both codebases use ctags for quick symbol lookup:
-
-```bash
-# Generate tags for firmware (from inav/ directory)
-cd inav
-ctags -R --fields=+niazS --extras=+q --exclude=lib --exclude=build --exclude=tools --exclude=.git -f tags .
-
-# Generate tags for configurator (from inav-configurator/ directory)
-cd inav-configurator
-ctags -R --fields=+niazS --extras=+q --exclude=node_modules --exclude=.git --exclude=out --exclude=.vite --exclude=dist -f tags .
-```
-
-Use the `/find-symbol` slash command in Claude Code for quick lookups.
 
 See `INDEXING.md` for more details.
 
