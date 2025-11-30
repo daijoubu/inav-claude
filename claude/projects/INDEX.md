@@ -2,7 +2,7 @@
 
 This file tracks all active and completed projects in the INAV codebase.
 
-**Last Updated:** 2025-11-30 14:15
+**Last Updated:** 2025-11-30 16:50
 
 ---
 
@@ -27,19 +27,25 @@ This file tracks all active and completed projects in the INAV codebase.
 
 ## Active Projects
 
-### 🚧 fix-search-tab-tabnames-error
+### 🚧 onboard-privacylrs-repo
 
 **Status:** IN PROGRESS
-**Type:** Bug Fix
-**Priority:** High
-**Assignment:** ✉️ Assigned
-**Created:** 2025-11-29
-**Assignee:** Developer
-**Assignment Email:** `claude/manager/sent/2025-11-29-1100-task-fix-search-tab-tabnames-error.md`
+**Type:** Infrastructure / Role Setup
+**Priority:** Medium
+**Assignment:** 📝 Planned (manager self-task)
+**Created:** 2025-11-30
+**Assignee:** Manager
 
-Search tab throws `ReferenceError: tabNames is not defined` at line 9. Missing import after ESM conversion.
+Onboard the PrivacyLRS repository into the Claude Code workflow system and establish a new Security Analyst / Cryptographer role to work with it.
 
-**Location:** `claude/projects/fix-search-tab-tabnames-error/`
+**Key Deliverables:**
+- Security analyst role directory structure (inbox/, sent/, inbox-archive/, outbox/)
+- Comprehensive README.md with security analysis procedures
+- CLAUDE.md role instructions
+- Updated main CLAUDE.md with 4th role
+- Documentation for cryptographic review, threat modeling, vulnerability assessment
+
+**Location:** `claude/projects/onboard-privacylrs-repo/`
 
 ---
 
@@ -56,6 +62,29 @@ Search tab throws `ReferenceError: tabNames is not defined` at line 9. Missing i
 Investigate structs in INAV firmware that contain members used only as boolean conditions. Analyze whether fields use `:1` bit fields or larger types, and determine if converting to bit fields would change EEPROM binary format. Research only - no code changes or branches until findings are documented.
 
 **Location:** `claude/projects/investigate-boolean-struct-bitfields/`
+
+---
+
+### ✅ fix-search-tab-tabnames-error
+
+**Status:** COMPLETED
+**Type:** Bug Fix
+**Priority:** High
+**Assignment:** ✉️ Assigned
+**Created:** 2025-11-29
+**Completed:** 2025-11-30
+**Assignee:** Developer
+**Assignment Email:** `claude/manager/sent/2025-11-29-1100-task-fix-search-tab-tabnames-error.md`
+**Branch:** fix-search-tab-strict-mode
+**Commit:** 20eab910
+**PR:** [#2440](https://github.com/iNavFlight/inav-configurator/pull/2440)
+**PR Status:** MERGED
+
+Fixed `ReferenceError: tabNames is not defined` error in search tab. Variables were declared without `const`/`let`/`var` causing errors in ESM strict mode.
+
+**Fix:** Added `const` declarations to all undeclared variables in tabs/search.js including `tabNames`, `simClick`, `tabName`, `tabLink`, `result`, `key`, `settings`, and moved `match` declaration outside while loop.
+
+**Location:** `claude/archived_projects/fix-search-tab-tabnames-error/`
 
 ---
 
@@ -1182,10 +1211,10 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 
 ## Project Summary Statistics
 
-- **Total Projects:** 48
+- **Total Projects:** 49
 - **Active:** 2
 - **Backburner:** 3
-- **Completed (Archived):** 40
+- **Completed (Archived):** 41
 - **Cancelled:** 3
 
 ---
@@ -1195,30 +1224,30 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 ### By Status
 
 - ⏸️ **BACKBURNER:** feature-add-function-syntax-support, investigate-automated-testing-mcp, verify-gps-fix-refactor
-- 🚧 **IN PROGRESS:** fix-search-tab-tabnames-error, investigate-boolean-struct-bitfields
-- ✅ **RECENTLY COMPLETED:** fix-transpiler-empty-output (PR #2439), fix-decompiler-condition-numbers (PR #2439), create-inav-claude-repo, investigate-w25q128-support, review-pr2433-bot-suggestions, transpiler-clean-copy (PR #2439), consolidate-role-directories, docs-javascript-programming (PR #11143)
+- 🚧 **IN PROGRESS:** onboard-privacylrs-repo, investigate-boolean-struct-bitfields
+- ✅ **RECENTLY COMPLETED:** fix-search-tab-tabnames-error (PR #2440), fix-transpiler-empty-output (PR #2439), fix-decompiler-condition-numbers (PR #2439), create-inav-claude-repo, investigate-w25q128-support, review-pr2433-bot-suggestions, transpiler-clean-copy (PR #2439), consolidate-role-directories, docs-javascript-programming (PR #11143)
 - ✅ **COMPLETED (archived):** github-issues-review, setup-code-indexes-for-claude, implement-configurator-test-suite, fix-preexisting-tab-errors, fix-require-error-onboard-logging, preserve-variable-names-decompiler, investigate-dma-usage-cleanup, refactor-transpiler-core-files, move-transpiler-docs-to-inav-repo, rebase-squash-transpiler-branch, fix-duplicate-active-when-column, feature-add-parser-tab-icon, feature-auto-insert-inav-import, fix-programming-tab-save-lockup, fix-stm32-dfu-reboot-protocol, feature-javascript-variables, merge-branches-to-transpiler-base, refactor-commonjs-to-esm, improve-transpiler-error-reporting, fix-transpiler-api-mismatches, fix-transpiler-documentation
 - ❌ **CANCELLED:** implement-pmw3901-opflow-driver, optimize-tab-msp-communication, fix-preload-foreach-error
 
 ### By Assignment
 
-- ✉️ **ASSIGNED (active):** fix-search-tab-tabnames-error, investigate-boolean-struct-bitfields
+- 📝 **PLANNED (active):** onboard-privacylrs-repo
+- ✉️ **ASSIGNED (active):** investigate-boolean-struct-bitfields
 - ✉️ **ASSIGNED (backburner):** verify-gps-fix-refactor
 - 🔧 **DEVELOPER-INITIATED (completed):** sitl-msp-arming
-- ✉️ **ASSIGNED (completed):** fix-transpiler-empty-output, fix-decompiler-condition-numbers, create-inav-claude-repo, github-issues-review, setup-code-indexes-for-claude, implement-configurator-test-suite, fix-preexisting-tab-errors, fix-require-error-onboard-logging, preserve-variable-names-decompiler, investigate-dma-usage-cleanup, refactor-transpiler-core-files, move-transpiler-docs-to-inav-repo, rebase-squash-transpiler-branch, fix-duplicate-active-when-column, feature-auto-insert-inav-import, fix-programming-tab-save-lockup, fix-stm32-dfu-reboot-protocol, feature-javascript-variables, merge-branches-to-transpiler-base, refactor-commonjs-to-esm, improve-transpiler-error-reporting, fix-transpiler-api-mismatches, fix-transpiler-documentation
+- ✉️ **ASSIGNED (completed):** fix-search-tab-tabnames-error, fix-transpiler-empty-output, fix-decompiler-condition-numbers, create-inav-claude-repo, github-issues-review, setup-code-indexes-for-claude, implement-configurator-test-suite, fix-preexisting-tab-errors, fix-require-error-onboard-logging, preserve-variable-names-decompiler, investigate-dma-usage-cleanup, refactor-transpiler-core-files, move-transpiler-docs-to-inav-repo, rebase-squash-transpiler-branch, fix-duplicate-active-when-column, feature-auto-insert-inav-import, fix-programming-tab-save-lockup, fix-stm32-dfu-reboot-protocol, feature-javascript-variables, merge-branches-to-transpiler-base, refactor-commonjs-to-esm, improve-transpiler-error-reporting, fix-transpiler-api-mismatches, fix-transpiler-documentation
 - ⚡ **AD-HOC (completed):** investigate-w25q128-support
 - ✉️ **ASSIGNED (cancelled):** optimize-tab-msp-communication, fix-preload-foreach-error
 - 👤 **EXTERNAL (completed):** feature-add-parser-tab-icon
-- 📝 **PLANNED:** feature-add-function-syntax-support, investigate-automated-testing-mcp
+- 📝 **PLANNED (backburner):** feature-add-function-syntax-support, investigate-automated-testing-mcp
 
 ### By Priority
 
-- **HIGH (active):** fix-search-tab-tabnames-error
-- **MEDIUM (active):** investigate-boolean-struct-bitfields
+- **MEDIUM (active):** onboard-privacylrs-repo, investigate-boolean-struct-bitfields
 - **MEDIUM-HIGH (backburner):** feature-add-function-syntax-support
 - **MEDIUM (backburner):** verify-gps-fix-refactor
 - **LOW (backburner):** investigate-automated-testing-mcp
-- **HIGH (completed):** fix-transpiler-empty-output, fix-require-error-onboard-logging, preserve-variable-names-decompiler, move-transpiler-docs-to-inav-repo, merge-branches-to-transpiler-base, fix-transpiler-documentation
+- **HIGH (completed):** fix-search-tab-tabnames-error, fix-transpiler-empty-output, fix-require-error-onboard-logging, preserve-variable-names-decompiler, move-transpiler-docs-to-inav-repo, merge-branches-to-transpiler-base, fix-transpiler-documentation
 - **MEDIUM (completed):** fix-decompiler-condition-numbers, create-inav-claude-repo, github-issues-review
 - **LOW (completed):** investigate-w25q128-support
 - **MEDIUM-HIGH (completed):** refactor-transpiler-core-files, fix-programming-tab-save-lockup
@@ -1230,12 +1259,12 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 
 ### By Type
 
-- **Bug Fix (Active):** fix-search-tab-tabnames-error
+- **Infrastructure / Role Setup (Active):** onboard-privacylrs-repo
 - **Research / Memory Optimization (Active):** investigate-boolean-struct-bitfields
 - **Feature (Backburner):** feature-add-function-syntax-support
 - **Code Review / Refactoring (Backburner):** verify-gps-fix-refactor
 - **Research (Backburner):** investigate-automated-testing-mcp
-- **Bug Fix (Completed):** fix-transpiler-empty-output, fix-decompiler-condition-numbers, fix-require-error-onboard-logging, fix-duplicate-active-when-column, fix-programming-tab-save-lockup, fix-transpiler-api-mismatches, fix-stm32-dfu-reboot-protocol
+- **Bug Fix (Completed):** fix-search-tab-tabnames-error, fix-transpiler-empty-output, fix-decompiler-condition-numbers, fix-require-error-onboard-logging, fix-duplicate-active-when-column, fix-programming-tab-save-lockup, fix-transpiler-api-mismatches, fix-stm32-dfu-reboot-protocol
 - **Repository Setup / Documentation (Completed):** create-inav-claude-repo
 - **Research / Investigation (Completed):** investigate-w25q128-support
 - **Research / Triage (Completed):** github-issues-review
