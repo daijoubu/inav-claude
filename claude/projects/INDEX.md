@@ -2,7 +2,7 @@
 
 This file tracks all active and completed projects in the INAV codebase.
 
-**Last Updated:** 2025-11-30 18:00
+**Last Updated:** 2025-11-30 19:45
 
 ---
 
@@ -27,22 +27,51 @@ This file tracks all active and completed projects in the INAV codebase.
 
 ## Active Projects
 
+### 🚧 privacylrs-complete-tests-and-fix-finding1
+
+**Status:** IN PROGRESS
+**Type:** Security Fix / Test Development
+**Priority:** CRITICAL
+**Assignment:** ✉️ Assigned
+**Created:** 2025-11-30
+**Assignee:** Security Analyst
+**Assignment Email:** `claude/manager/sent/2025-11-30-1940-task-complete-test-coverage-implement-finding1.md`
+
+Two-phase task: (1) Complete encryption test coverage for all security findings, then (2) Implement CRITICAL Finding #1 fix using test-driven development.
+
+**Phase 1 (8-12 hours):**
+- Create tests for Finding #2 (hardcoded counter)
+- Create tests for Finding #4 (key logging)
+- Create tests for Finding #7 (forward secrecy)
+- Create tests for Finding #8 (RNG quality)
+- Investigate unexpected test failure
+
+**Phase 2 (12-16 hours):**
+- Implement LQ (Link Quality) counter synchronization
+- Fix stream cipher desync vulnerability
+- Validate with test suite (tests should PASS after fix)
+- Extended packet loss testing
+
+**Current Evidence:** Tests PROVE vulnerability exists:
+- `test_single_packet_loss_desync` - FAILS (confirms Finding #1)
+- `test_burst_packet_loss_exceeds_resync` - FAILS
+
+**Expected Result:** Both tests PASS after Phase 2 implementation
+
+**Location:** `claude/projects/privacylrs-complete-tests-and-fix-finding1/`
+
+---
+
 ### 📋 privacylrs-fix-finding1-stream-cipher-desync
 
-**Status:** TODO
+**Status:** TODO → **Being addressed by privacylrs-complete-tests-and-fix-finding1**
 **Type:** Security Fix / Bug Fix
 **Priority:** CRITICAL
-**Assignment:** 📝 Planned
+**Assignment:** 📝 Planned → **✉️ Assigned (via combined project)**
 **Created:** 2025-11-30
-**Assignee:** Security Analyst (or Developer)
+**Assignee:** Security Analyst
 
-Fix stream cipher synchronization vulnerability causing system crashes within 1.5-4 seconds of packet loss. Implement LQ (Link Quality) counter-based synchronization mechanism.
-
-**Key Tasks:**
-- Analyze existing LQ counter implementation
-- Integrate LQ counter with crypto counter synchronization
-- Test under packet loss scenarios
-- Verify crash fix with extended runtime testing
+**Note:** This standalone task is being addressed as Phase 2 of the combined project `privacylrs-complete-tests-and-fix-finding1`. See that project for current status and details.
 
 **Reference:** Security Finding 1 (CRITICAL)
 **Stakeholder Decision:** "Option 2, use the existing LQ counter"
@@ -1417,17 +1446,17 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 
 ### By Status
 
-- 📋 **TODO:** privacylrs-fix-finding1-stream-cipher-desync (CRITICAL), privacylrs-fix-finding2-counter-init (HIGH), privacylrs-fix-finding4-secure-logging (HIGH), privacylrs-fix-finding5-chacha-benchmark (MEDIUM), privacylrs-fix-finding7-forward-secrecy (MEDIUM), privacylrs-fix-finding8-entropy-sources (MEDIUM)
+- 🚧 **IN PROGRESS:** privacylrs-complete-tests-and-fix-finding1 (CRITICAL - test coverage + LQ sync fix), investigate-boolean-struct-bitfields
+- 📋 **TODO:** privacylrs-fix-finding2-counter-init (HIGH), privacylrs-fix-finding4-secure-logging (HIGH), privacylrs-fix-finding5-chacha-benchmark (MEDIUM), privacylrs-fix-finding7-forward-secrecy (MEDIUM), privacylrs-fix-finding8-entropy-sources (MEDIUM)
 - ⏸️ **BACKBURNER:** feature-add-function-syntax-support, investigate-automated-testing-mcp, verify-gps-fix-refactor
-- 🚧 **IN PROGRESS:** investigate-boolean-struct-bitfields
 - ✅ **RECENTLY COMPLETED:** create-privacylrs-test-runner (74 tests pass, critical gap: no encryption tests), security-analysis-privacylrs-initial (CRITICAL findings), onboard-privacylrs-repo, fix-search-tab-tabnames-error (PR #2440), fix-transpiler-empty-output (PR #2439), fix-decompiler-condition-numbers (PR #2439), create-inav-claude-repo
 - ✅ **COMPLETED (archived):** github-issues-review, setup-code-indexes-for-claude, implement-configurator-test-suite, fix-preexisting-tab-errors, fix-require-error-onboard-logging, preserve-variable-names-decompiler, investigate-dma-usage-cleanup, refactor-transpiler-core-files, move-transpiler-docs-to-inav-repo, rebase-squash-transpiler-branch, fix-duplicate-active-when-column, feature-add-parser-tab-icon, feature-auto-insert-inav-import, fix-programming-tab-save-lockup, fix-stm32-dfu-reboot-protocol, feature-javascript-variables, merge-branches-to-transpiler-base, refactor-commonjs-to-esm, improve-transpiler-error-reporting, fix-transpiler-api-mismatches, fix-transpiler-documentation
 - ❌ **CANCELLED:** implement-pmw3901-opflow-driver, optimize-tab-msp-communication, fix-preload-foreach-error
 
 ### By Assignment
 
-- 📝 **PLANNED (todo):** privacylrs-fix-finding1-stream-cipher-desync, privacylrs-fix-finding2-counter-init, privacylrs-fix-finding4-secure-logging, privacylrs-fix-finding5-chacha-benchmark, privacylrs-fix-finding7-forward-secrecy, privacylrs-fix-finding8-entropy-sources
-- ✉️ **ASSIGNED (active):** investigate-boolean-struct-bitfields
+- ✉️ **ASSIGNED (active):** privacylrs-complete-tests-and-fix-finding1, investigate-boolean-struct-bitfields
+- 📝 **PLANNED (todo):** privacylrs-fix-finding2-counter-init, privacylrs-fix-finding4-secure-logging, privacylrs-fix-finding5-chacha-benchmark, privacylrs-fix-finding7-forward-secrecy, privacylrs-fix-finding8-entropy-sources
 - ✉️ **ASSIGNED (backburner):** verify-gps-fix-refactor
 - 🔧 **DEVELOPER-INITIATED (completed):** sitl-msp-arming
 - ✉️ **ASSIGNED (completed):** create-privacylrs-test-runner, security-analysis-privacylrs-initial, fix-search-tab-tabnames-error, fix-transpiler-empty-output, fix-decompiler-condition-numbers, create-inav-claude-repo, github-issues-review, setup-code-indexes-for-claude, implement-configurator-test-suite, fix-preexisting-tab-errors, fix-require-error-onboard-logging, preserve-variable-names-decompiler, investigate-dma-usage-cleanup, refactor-transpiler-core-files, move-transpiler-docs-to-inav-repo, rebase-squash-transpiler-branch, fix-duplicate-active-when-column, feature-auto-insert-inav-import, fix-programming-tab-save-lockup, fix-stm32-dfu-reboot-protocol, feature-javascript-variables, merge-branches-to-transpiler-base, refactor-commonjs-to-esm, improve-transpiler-error-reporting, fix-transpiler-api-mismatches, fix-transpiler-documentation
@@ -1439,7 +1468,7 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 
 ### By Priority
 
-- **CRITICAL (todo):** privacylrs-fix-finding1-stream-cipher-desync
+- **CRITICAL (active):** privacylrs-complete-tests-and-fix-finding1
 - **HIGH (todo):** privacylrs-fix-finding2-counter-init, privacylrs-fix-finding4-secure-logging
 - **MEDIUM (todo):** privacylrs-fix-finding5-chacha-benchmark, privacylrs-fix-finding7-forward-secrecy, privacylrs-fix-finding8-entropy-sources
 - **MEDIUM (active):** investigate-boolean-struct-bitfields
@@ -1458,7 +1487,7 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 
 ### By Type
 
-- **Security Fix / Bug Fix (TODO):** privacylrs-fix-finding1-stream-cipher-desync
+- **Security Fix / Test Development (Active):** privacylrs-complete-tests-and-fix-finding1
 - **Security Fix (TODO):** privacylrs-fix-finding2-counter-init, privacylrs-fix-finding4-secure-logging
 - **Security Enhancement / Performance Analysis (TODO):** privacylrs-fix-finding5-chacha-benchmark
 - **Security Enhancement / Cryptographic Protocol (TODO):** privacylrs-fix-finding7-forward-secrecy
