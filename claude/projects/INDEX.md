@@ -2,7 +2,7 @@
 
 This file tracks all active and completed projects in the INAV codebase.
 
-**Last Updated:** 2025-11-30 17:05
+**Last Updated:** 2025-11-30 17:35
 
 ---
 
@@ -46,6 +46,150 @@ Explore PrivacyLRS testing infrastructure, learn how to run tests, and create a 
 - Create `.claude/skills/privacylrs-test-runner.md` skill
 
 **Location:** `claude/projects/create-privacylrs-test-runner/`
+
+---
+
+### 📋 privacylrs-fix-finding1-stream-cipher-desync
+
+**Status:** TODO
+**Type:** Security Fix / Bug Fix
+**Priority:** CRITICAL
+**Assignment:** 📝 Planned
+**Created:** 2025-11-30
+**Assignee:** Security Analyst (or Developer)
+
+Fix stream cipher synchronization vulnerability causing system crashes within 1.5-4 seconds of packet loss. Implement LQ (Link Quality) counter-based synchronization mechanism.
+
+**Key Tasks:**
+- Analyze existing LQ counter implementation
+- Integrate LQ counter with crypto counter synchronization
+- Test under packet loss scenarios
+- Verify crash fix with extended runtime testing
+
+**Reference:** Security Finding 1 (CRITICAL)
+**Stakeholder Decision:** "Option 2, use the existing LQ counter"
+
+**Location:** `claude/projects/privacylrs-fix-finding1-stream-cipher-desync/`
+
+---
+
+### 📋 privacylrs-fix-finding2-counter-init
+
+**Status:** TODO
+**Type:** Security Fix
+**Priority:** HIGH
+**Assignment:** 📝 Planned
+**Created:** 2025-11-30
+**Assignee:** Security Analyst (or Developer)
+
+Replace hardcoded counter initialization with nonce-derived initialization to ensure unique keystreams across different sessions and devices.
+
+**Key Tasks:**
+- Locate nonce transmission and reception points
+- Implement nonce-to-counter derivation function
+- Update TX and RX counter initialization
+- Test integration with Finding 1 (LQ sync)
+
+**Reference:** Security Finding 2 (HIGH)
+**Stakeholder Decision:** "Use the nonce as the initial counter" (avoid extra packet exchanges)
+
+**Location:** `claude/projects/privacylrs-fix-finding2-counter-init/`
+
+---
+
+### 📋 privacylrs-fix-finding4-secure-logging
+
+**Status:** TODO
+**Type:** Security Fix
+**Priority:** HIGH
+**Assignment:** 📝 Planned
+**Created:** 2025-11-30
+**Assignee:** Security Analyst (or Developer)
+
+Implement secure logging mechanism preventing cryptographic keys from being logged in production builds while maintaining debugging capability when explicitly enabled.
+
+**Key Tasks:**
+- Audit all key logging locations in codebase
+- Implement ALLOW_KEY_LOGGING build flag
+- Create DBGLN_KEY macro with compile-time warning
+- Replace all key logging with secure logging
+
+**Reference:** Security Finding 4 (HIGH)
+**Stakeholder Decision:** "Option 2" (Secure logging with explicit build flag)
+
+**Location:** `claude/projects/privacylrs-fix-finding4-secure-logging/`
+
+---
+
+### 📋 privacylrs-fix-finding5-chacha-benchmark
+
+**Status:** TODO
+**Type:** Security Enhancement / Performance Analysis
+**Priority:** MEDIUM
+**Assignment:** 📝 Planned
+**Created:** 2025-11-30
+**Assignee:** Security Analyst (or Developer)
+
+Benchmark ChaCha20 (20 rounds) performance on target hardware and decide whether to upgrade from ChaCha12 (12 rounds) based on actual measurements.
+
+**Key Tasks:**
+- Set up benchmarking infrastructure
+- Measure ChaCha12 baseline performance
+- Measure ChaCha20 performance
+- Make data-driven decision (upgrade or document rationale)
+
+**Reference:** Security Finding 5 (MEDIUM)
+**Stakeholder Decision:** "Option 2" (Benchmark first, then decide)
+
+**Location:** `claude/projects/privacylrs-fix-finding5-chacha-benchmark/`
+
+---
+
+### 📋 privacylrs-fix-finding7-forward-secrecy
+
+**Status:** TODO
+**Type:** Security Enhancement / Cryptographic Protocol
+**Priority:** MEDIUM
+**Assignment:** 📝 Planned
+**Created:** 2025-11-30
+**Assignee:** Security Analyst (or Developer)
+
+Implement ephemeral Diffie-Hellman key exchange using Curve25519 to provide forward secrecy, preventing master key compromise from exposing past communications.
+
+**Key Tasks:**
+- Design ECDH key exchange protocol integration
+- Integrate Curve25519 library
+- Implement key exchange handshake on TX and RX
+- Derive session keys from ECDH shared secret + master key
+
+**Reference:** Security Finding 7 (MEDIUM)
+**Stakeholder Decision:** "Diffie-Hellman" (Curve25519)
+
+**Location:** `claude/projects/privacylrs-fix-finding7-forward-secrecy/`
+
+---
+
+### 📋 privacylrs-fix-finding8-entropy-sources
+
+**Status:** TODO
+**Type:** Security Enhancement
+**Priority:** MEDIUM
+**Assignment:** 📝 Planned
+**Created:** 2025-11-30
+**Assignee:** Security Analyst (or Developer)
+
+Implement robust entropy gathering that XORs multiple entropy sources (hardware RNG, timer jitter, ADC noise, RSSI) with dynamic detection and graceful fallback.
+
+**Key Tasks:**
+- Implement hardware capability detection
+- Create wrappers for multiple entropy sources
+- Implement XOR-based entropy mixing
+- Test on multiple platforms with graceful fallback
+
+**Reference:** Security Finding 8 (MEDIUM)
+**Stakeholder Decision:** "Option 1 and 3. xor all available sources... use what is available, dynamically"
+
+**Location:** `claude/projects/privacylrs-fix-finding8-entropy-sources/`
 
 ---
 
@@ -1270,6 +1414,7 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 
 ### By Status
 
+- 📋 **TODO:** privacylrs-fix-finding1-stream-cipher-desync (CRITICAL), privacylrs-fix-finding2-counter-init (HIGH), privacylrs-fix-finding4-secure-logging (HIGH), privacylrs-fix-finding5-chacha-benchmark (MEDIUM), privacylrs-fix-finding7-forward-secrecy (MEDIUM), privacylrs-fix-finding8-entropy-sources (MEDIUM)
 - ⏸️ **BACKBURNER:** feature-add-function-syntax-support, investigate-automated-testing-mcp, verify-gps-fix-refactor
 - 🚧 **IN PROGRESS:** create-privacylrs-test-runner, investigate-boolean-struct-bitfields
 - ✅ **RECENTLY COMPLETED:** security-analysis-privacylrs-initial (CRITICAL findings), onboard-privacylrs-repo, fix-search-tab-tabnames-error (PR #2440), fix-transpiler-empty-output (PR #2439), fix-decompiler-condition-numbers (PR #2439), create-inav-claude-repo
@@ -1278,6 +1423,7 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 
 ### By Assignment
 
+- 📝 **PLANNED (todo):** privacylrs-fix-finding1-stream-cipher-desync, privacylrs-fix-finding2-counter-init, privacylrs-fix-finding4-secure-logging, privacylrs-fix-finding5-chacha-benchmark, privacylrs-fix-finding7-forward-secrecy, privacylrs-fix-finding8-entropy-sources
 - ✉️ **ASSIGNED (active):** create-privacylrs-test-runner, investigate-boolean-struct-bitfields
 - ✉️ **ASSIGNED (backburner):** verify-gps-fix-refactor
 - 🔧 **DEVELOPER-INITIATED (completed):** sitl-msp-arming
@@ -1290,6 +1436,9 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 
 ### By Priority
 
+- **CRITICAL (todo):** privacylrs-fix-finding1-stream-cipher-desync
+- **HIGH (todo):** privacylrs-fix-finding2-counter-init, privacylrs-fix-finding4-secure-logging
+- **MEDIUM (todo):** privacylrs-fix-finding5-chacha-benchmark, privacylrs-fix-finding7-forward-secrecy, privacylrs-fix-finding8-entropy-sources
 - **MEDIUM (active):** create-privacylrs-test-runner, investigate-boolean-struct-bitfields
 - **MEDIUM-HIGH (backburner):** feature-add-function-syntax-support
 - **MEDIUM (backburner):** verify-gps-fix-refactor
@@ -1306,6 +1455,11 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 
 ### By Type
 
+- **Security Fix / Bug Fix (TODO):** privacylrs-fix-finding1-stream-cipher-desync
+- **Security Fix (TODO):** privacylrs-fix-finding2-counter-init, privacylrs-fix-finding4-secure-logging
+- **Security Enhancement / Performance Analysis (TODO):** privacylrs-fix-finding5-chacha-benchmark
+- **Security Enhancement / Cryptographic Protocol (TODO):** privacylrs-fix-finding7-forward-secrecy
+- **Security Enhancement (TODO):** privacylrs-fix-finding8-entropy-sources
 - **Testing Infrastructure / Skill Development (Active):** create-privacylrs-test-runner
 - **Research / Memory Optimization (Active):** investigate-boolean-struct-bitfields
 - **Feature (Backburner):** feature-add-function-syntax-support
