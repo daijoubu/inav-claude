@@ -2,7 +2,7 @@
 
 This file tracks all active and completed projects in the INAV codebase.
 
-**Last Updated:** 2025-11-30 19:45
+**Last Updated:** 2025-11-30 20:00
 
 ---
 
@@ -80,24 +80,37 @@ Two-phase task: (1) Complete encryption test coverage for all security findings,
 
 ---
 
-### 📋 privacylrs-fix-finding2-counter-init
+### ⏸️ privacylrs-fix-finding2-counter-init
 
-**Status:** TODO
+**Status:** SUSPENDED - Finding Under Revision
 **Type:** Security Fix
-**Priority:** HIGH
-**Assignment:** 📝 Planned
+**Priority:** HIGH (pending revision)
+**Assignment:** 📝 Planned → **⚠️ SUSPENDED**
 **Created:** 2025-11-30
+**Suspended:** 2025-11-30 20:00
 **Assignee:** Security Analyst (or Developer)
 
-Replace hardcoded counter initialization with nonce-derived initialization to ensure unique keystreams across different sessions and devices.
+**⚠️ IMPORTANT:** This project is SUSPENDED pending revision of Security Finding #2.
 
-**Key Tasks:**
+**Reason:** Stakeholder has indicated that the finding may be incorrect. According to RFC 8439 (ChaCha20 specification), counter initialization does NOT need to be random or unpredictable. Counter is typically initialized to 0 or 1. Security comes from secret key + unique nonce + monotonic counter.
+
+**Security Analyst assigned to:**
+- Read RFC 8439: https://datatracker.ietf.org/doc/html/rfc8439
+- Read research paper: https://eprint.iacr.org/2014/613.pdf
+- Determine if there is an actual vulnerability
+- Revise or remove Finding #2
+
+**Original Objective:** Replace hardcoded counter initialization with nonce-derived initialization to ensure unique keystreams across different sessions and devices.
+
+**NOTE:** This objective may be incorrect based on ChaCha20 specification.
+
+**Key Tasks (ON HOLD):**
 - Locate nonce transmission and reception points
 - Implement nonce-to-counter derivation function
 - Update TX and RX counter initialization
 - Test integration with Finding 1 (LQ sync)
 
-**Reference:** Security Finding 2 (HIGH)
+**Reference:** Security Finding 2 (HIGH) - UNDER REVISION
 **Stakeholder Decision:** "Use the nonce as the initial counter" (avoid extra packet exchanges)
 
 **Location:** `claude/projects/privacylrs-fix-finding2-counter-init/`
@@ -1436,6 +1449,7 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 
 - **Total Projects:** 51
 - **Active:** 2
+- **Suspended:** 1
 - **Backburner:** 3
 - **Completed (Archived):** 43
 - **Cancelled:** 3
@@ -1447,7 +1461,8 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 ### By Status
 
 - 🚧 **IN PROGRESS:** privacylrs-complete-tests-and-fix-finding1 (CRITICAL - test coverage + LQ sync fix), investigate-boolean-struct-bitfields
-- 📋 **TODO:** privacylrs-fix-finding2-counter-init (HIGH), privacylrs-fix-finding4-secure-logging (HIGH), privacylrs-fix-finding5-chacha-benchmark (MEDIUM), privacylrs-fix-finding7-forward-secrecy (MEDIUM), privacylrs-fix-finding8-entropy-sources (MEDIUM)
+- 📋 **TODO:** privacylrs-fix-finding4-secure-logging (HIGH), privacylrs-fix-finding5-chacha-benchmark (MEDIUM), privacylrs-fix-finding7-forward-secrecy (MEDIUM), privacylrs-fix-finding8-entropy-sources (MEDIUM)
+- ⏸️ **SUSPENDED:** privacylrs-fix-finding2-counter-init (Finding #2 under revision)
 - ⏸️ **BACKBURNER:** feature-add-function-syntax-support, investigate-automated-testing-mcp, verify-gps-fix-refactor
 - ✅ **RECENTLY COMPLETED:** create-privacylrs-test-runner (74 tests pass, critical gap: no encryption tests), security-analysis-privacylrs-initial (CRITICAL findings), onboard-privacylrs-repo, fix-search-tab-tabnames-error (PR #2440), fix-transpiler-empty-output (PR #2439), fix-decompiler-condition-numbers (PR #2439), create-inav-claude-repo
 - ✅ **COMPLETED (archived):** github-issues-review, setup-code-indexes-for-claude, implement-configurator-test-suite, fix-preexisting-tab-errors, fix-require-error-onboard-logging, preserve-variable-names-decompiler, investigate-dma-usage-cleanup, refactor-transpiler-core-files, move-transpiler-docs-to-inav-repo, rebase-squash-transpiler-branch, fix-duplicate-active-when-column, feature-add-parser-tab-icon, feature-auto-insert-inav-import, fix-programming-tab-save-lockup, fix-stm32-dfu-reboot-protocol, feature-javascript-variables, merge-branches-to-transpiler-base, refactor-commonjs-to-esm, improve-transpiler-error-reporting, fix-transpiler-api-mismatches, fix-transpiler-documentation
@@ -1456,7 +1471,8 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 ### By Assignment
 
 - ✉️ **ASSIGNED (active):** privacylrs-complete-tests-and-fix-finding1, investigate-boolean-struct-bitfields
-- 📝 **PLANNED (todo):** privacylrs-fix-finding2-counter-init, privacylrs-fix-finding4-secure-logging, privacylrs-fix-finding5-chacha-benchmark, privacylrs-fix-finding7-forward-secrecy, privacylrs-fix-finding8-entropy-sources
+- 📝 **PLANNED (todo):** privacylrs-fix-finding4-secure-logging, privacylrs-fix-finding5-chacha-benchmark, privacylrs-fix-finding7-forward-secrecy, privacylrs-fix-finding8-entropy-sources
+- ⚠️ **SUSPENDED:** privacylrs-fix-finding2-counter-init (Finding #2 under revision - stakeholder indicated finding may be incorrect)
 - ✉️ **ASSIGNED (backburner):** verify-gps-fix-refactor
 - 🔧 **DEVELOPER-INITIATED (completed):** sitl-msp-arming
 - ✉️ **ASSIGNED (completed):** create-privacylrs-test-runner, security-analysis-privacylrs-initial, fix-search-tab-tabnames-error, fix-transpiler-empty-output, fix-decompiler-condition-numbers, create-inav-claude-repo, github-issues-review, setup-code-indexes-for-claude, implement-configurator-test-suite, fix-preexisting-tab-errors, fix-require-error-onboard-logging, preserve-variable-names-decompiler, investigate-dma-usage-cleanup, refactor-transpiler-core-files, move-transpiler-docs-to-inav-repo, rebase-squash-transpiler-branch, fix-duplicate-active-when-column, feature-auto-insert-inav-import, fix-programming-tab-save-lockup, fix-stm32-dfu-reboot-protocol, feature-javascript-variables, merge-branches-to-transpiler-base, refactor-commonjs-to-esm, improve-transpiler-error-reporting, fix-transpiler-api-mismatches, fix-transpiler-documentation
@@ -1469,7 +1485,8 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 ### By Priority
 
 - **CRITICAL (active):** privacylrs-complete-tests-and-fix-finding1
-- **HIGH (todo):** privacylrs-fix-finding2-counter-init, privacylrs-fix-finding4-secure-logging
+- **HIGH (todo):** privacylrs-fix-finding4-secure-logging
+- **HIGH (suspended):** privacylrs-fix-finding2-counter-init (Finding #2 under revision)
 - **MEDIUM (todo):** privacylrs-fix-finding5-chacha-benchmark, privacylrs-fix-finding7-forward-secrecy, privacylrs-fix-finding8-entropy-sources
 - **MEDIUM (active):** investigate-boolean-struct-bitfields
 - **MEDIUM-HIGH (backburner):** feature-add-function-syntax-support
@@ -1488,7 +1505,8 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 ### By Type
 
 - **Security Fix / Test Development (Active):** privacylrs-complete-tests-and-fix-finding1
-- **Security Fix (TODO):** privacylrs-fix-finding2-counter-init, privacylrs-fix-finding4-secure-logging
+- **Security Fix (TODO):** privacylrs-fix-finding4-secure-logging
+- **Security Fix (SUSPENDED):** privacylrs-fix-finding2-counter-init (Finding #2 under revision)
 - **Security Enhancement / Performance Analysis (TODO):** privacylrs-fix-finding5-chacha-benchmark
 - **Security Enhancement / Cryptographic Protocol (TODO):** privacylrs-fix-finding7-forward-secrecy
 - **Security Enhancement (TODO):** privacylrs-fix-finding8-entropy-sources
