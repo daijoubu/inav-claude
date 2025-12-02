@@ -2,7 +2,7 @@
 
 This file tracks all active and completed projects in the INAV codebase.
 
-**Last Updated:** 2025-12-02 01:30
+**Last Updated:** 2025-12-02 01:50
 
 ---
 
@@ -80,13 +80,15 @@ Three-phase project: (1) Complete encryption test coverage, (2) Address Finding 
 
 ### 📋 privacylrs-fix-build-failures
 
-**Status:** PROPOSED
+**Status:** TODO
 **Type:** Build Infrastructure / CI/CD Fix
 **Priority:** MEDIUM
-**Assignment:** 📝 Planned (Recommended: Developer)
+**Assignment:** ✉️ Assigned
 **Created:** 2025-12-02
-**Assignee:** TBD
+**Assignee:** Developer
 **Proposal Email:** `claude/security-analyst/sent/2025-12-02-0130-pr18-build-failures-unrelated.md`
+**Assignment Email:** `claude/manager/sent/2025-12-02-0150-build-infrastructure-fix-assignment.md`
+**Estimated Time:** 2-4 hours
 
 **Objective:** Fix pre-existing build failures blocking PR #18 (Finding #1 fix) validation.
 
