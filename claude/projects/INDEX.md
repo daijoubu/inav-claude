@@ -2,7 +2,7 @@
 
 This file tracks all active and completed projects in the INAV codebase.
 
-**Last Updated:** 2025-12-01 18:35
+**Last Updated:** 2025-12-02 01:30
 
 ---
 
@@ -75,6 +75,39 @@ Three-phase project: (1) Complete encryption test coverage, (2) Address Finding 
 **Recommendation:** Approved for production pending hardware-in-loop testing
 
 **Location:** `claude/projects/privacylrs-complete-tests-and-fix-finding1/`
+
+---
+
+### 📋 privacylrs-fix-build-failures
+
+**Status:** PROPOSED
+**Type:** Build Infrastructure / CI/CD Fix
+**Priority:** MEDIUM
+**Assignment:** 📝 Planned (Recommended: Developer)
+**Created:** 2025-12-02
+**Assignee:** TBD
+**Proposal Email:** `claude/security-analyst/sent/2025-12-02-0130-pr18-build-failures-unrelated.md`
+
+**Objective:** Fix pre-existing build failures blocking PR #18 (Finding #1 fix) validation.
+
+**Issues identified:**
+1. Test suite missing `#include <stdio.h>` (native platform)
+2. NimBLE-Arduino library conflicts (ESP32/ESP32S3 TX via UART)
+
+**Scope:**
+- Fix test_encryption.cpp compilation errors
+- Resolve NimBLE library duplicate definition errors
+- Verify all CI builds pass
+
+**Estimated effort:** 2-4 hours
+
+**Blocks:**
+- PR #18 validation (Finding #1 fix)
+- Future PRs to secure_01 branch
+
+**Note:** Security Analyst to monitor PR #18 status after build fixes complete.
+
+**Location:** `claude/projects/privacylrs-fix-build-failures/`
 
 ---
 
@@ -282,9 +315,13 @@ Investigated boolean-heavy structs in INAV firmware to determine if bitfield opt
 **Completion Reports:**
 - `claude/manager/inbox-archive/2025-12-01-1800-cors-research-complete.md`
 - `claude/manager/inbox-archive/2025-12-01-1810-github-pages-implementation-plan.md`
-**Approval Email:** `claude/manager/sent/2025-12-01-1820-cors-research-approved.md`
+- `claude/manager/inbox-archive/2025-12-01-1820-cors-fix-pr-complete.md`
+**Approval Emails:**
+- `claude/manager/sent/2025-12-01-1820-cors-research-approved.md`
+- `claude/manager/sent/2025-12-01-1840-cors-fix-pr-approved.md`
+**Pull Request:** https://github.com/Scavanger/inav-configurator/pull/3
 
-Researched CORS policy issue preventing PWA from downloading firmware hex files from GitHub.
+Researched CORS policy issue preventing PWA from downloading firmware hex files from GitHub, then implemented and submitted fix.
 
 **Root Cause:** GitHub doesn't send `Access-Control-Allow-Origin` headers, browsers block cross-origin requests.
 
@@ -300,16 +337,22 @@ Researched CORS policy issue preventing PWA from downloading firmware hex files 
 7. Cloudflare R2 - ⭐⭐⭐⭐⭐ (best long-term)
 8. Hybrid fallback - ⭐⭐⭐
 
-**Recommendation:** **GitHub Pages** (free, automatic CORS, simple)
+**Implemented Solution:** **GitHub Pages** (free, automatic CORS, simple)
 
-**Implementation Plan Created:**
-- Production-ready code examples
-- CI/CD workflow updates
-- Migration strategy (all-at-once or gradual fallback)
-- Testing plan and rollback procedures
-- Estimated effort: 3-4 hours
+**Deliverables:**
+- Research report (8 solutions evaluated)
+- Production-ready implementation plan
+- **BONUS: Actual implementation** (2 files changed, 8 insertions, 7 deletions)
+- **BONUS: PR created** (Scavanger/PWA#3)
 
-**Time:** ~8-10 hours (exceeded scope with implementation plan)
+**Implementation:**
+- Changed URL pattern to `https://inavflight.github.io/firmware/{version}/{file}`
+- Removed proxy dependency
+- Clean, focused changes
+
+**Time:** ~11 hours total (research 8-10h + implementation <1h)
+
+**Note:** Requires firmware CI/CD to publish hex files to GitHub Pages (separate task)
 
 **Location:** `claude/projects/configurator-web-cors-research/`
 
