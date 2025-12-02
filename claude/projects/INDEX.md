@@ -2,7 +2,7 @@
 
 This file tracks all active and completed projects in the INAV codebase.
 
-**Last Updated:** 2025-12-02 01:55
+**Last Updated:** 2025-12-02 02:00
 
 ---
 
@@ -110,6 +110,61 @@ Three-phase project: (1) Complete encryption test coverage, (2) Address Finding 
 **Note:** Security Analyst to monitor PR #18 status after build fixes complete.
 
 **Location:** `claude/projects/privacylrs-fix-build-failures/`
+
+---
+
+### 📋 sitl-wasm-phase1-configurator-poc
+
+**Status:** TODO
+**Type:** Research / POC Implementation
+**Priority:** MEDIUM
+**Assignment:** ✉️ Assigned
+**Created:** 2025-12-02
+**Assignee:** Developer
+**Assignment Email:** `claude/manager/sent/2025-12-02-0200-sitl-wasm-phase1-assignment.md`
+**Estimated Time:** 15-20 hours
+
+Build minimal SITL WebAssembly proof-of-concept that works inside PWA Configurator.
+
+**Scope:** **Configurator-only** - No simulator support needed
+
+**Objective:** Prove browser SITL can connect to Configurator and enable firmware configuration.
+
+**Key Features:**
+- WebSocket MSP communication (single client, Configurator only)
+- EEPROM persistence via IndexedDB
+- Configuration read/write functionality
+- Stable operation (>100 Hz loop rate)
+
+**Explicitly Out of Scope:**
+- External simulator integration (RealFlight/X-Plane)
+- TCP server (WebSocket only)
+- Multi-client support
+- Advanced features (CLI, logging, etc.)
+
+**Implementation Plan:**
+- Day 1: Emscripten build setup (4-5h)
+- Day 2: WebSocket MSP (4-5h)
+- Day 3: EEPROM persistence (3-4h)
+- Day 4: Integration testing (3-4h)
+- Day 5: Technical report (1-2h)
+
+**Success Criteria:**
+- Configurator connects via WebSocket
+- Configuration read/write works
+- Configuration persists across page reload
+- Performance >100 Hz, <100ms MSP latency
+- Stable operation (5+ minutes no crashes)
+
+**Decision Point:** End of Week 1 - GO/STOP for Phase 3 (full implementation)
+
+**Phase 3 Preview (if successful):** 30-40h for production build, optimizations, documentation
+
+**Total Effort (Phase 1 + Phase 3):** 45-60 hours
+
+**Predecessor:** investigate-sitl-wasm-compilation (research complete, CONDITIONAL GO approved)
+
+**Location:** `claude/projects/sitl-wasm-phase1-configurator-poc/`
 
 ---
 
@@ -1621,10 +1676,10 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 
 ## Project Summary Statistics
 
-- **Total Projects:** 52
-- **Active:** 1
+- **Total Projects:** 54
+- **Active (TODO):** 6
 - **Backburner:** 3
-- **Completed (Archived):** 44
+- **Completed (Archived):** 45
 - **Cancelled:** 4
 
 ---
@@ -1633,9 +1688,9 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 
 ### By Status
 
-- 📋 **TODO:** privacylrs-fix-finding4-secure-logging (HIGH), investigate-sitl-wasm-compilation (MEDIUM), privacylrs-fix-finding5-chacha-benchmark (MEDIUM), privacylrs-fix-finding7-forward-secrecy (MEDIUM), privacylrs-fix-finding8-entropy-sources (MEDIUM)
+- 📋 **TODO:** privacylrs-fix-finding4-secure-logging (HIGH), privacylrs-fix-build-failures (MEDIUM), sitl-wasm-phase1-configurator-poc (MEDIUM), privacylrs-fix-finding5-chacha-benchmark (MEDIUM), privacylrs-fix-finding7-forward-secrecy (MEDIUM), privacylrs-fix-finding8-entropy-sources (MEDIUM)
 - ⏸️ **BACKBURNER:** feature-add-function-syntax-support, investigate-automated-testing-mcp, verify-gps-fix-refactor
-- ✅ **RECENTLY COMPLETED:** investigate-boolean-struct-bitfields (DO NOT PROCEED - breaks EEPROM), configurator-web-cors-research (GitHub Pages solution), privacylrs-complete-tests-and-fix-finding1 (CRITICAL Finding #1 FIXED - 25h, zero overhead, 711 packet loss tolerance), create-privacylrs-test-runner, security-analysis-privacylrs-initial, onboard-privacylrs-repo, fix-search-tab-tabnames-error (PR #2440), fix-transpiler-empty-output (PR #2439), fix-decompiler-condition-numbers (PR #2439)
+- ✅ **RECENTLY COMPLETED:** investigate-sitl-wasm-compilation (CONDITIONAL GO - Phase 1 approved), investigate-boolean-struct-bitfields (DO NOT PROCEED - breaks EEPROM), configurator-web-cors-research (GitHub Pages solution), privacylrs-complete-tests-and-fix-finding1 (CRITICAL Finding #1 FIXED - 25h, zero overhead, 711 packet loss tolerance), create-privacylrs-test-runner, security-analysis-privacylrs-initial, onboard-privacylrs-repo, fix-search-tab-tabnames-error (PR #2440), fix-transpiler-empty-output (PR #2439), fix-decompiler-condition-numbers (PR #2439)
 - ✅ **COMPLETED (archived):** github-issues-review, setup-code-indexes-for-claude, implement-configurator-test-suite, fix-preexisting-tab-errors, fix-require-error-onboard-logging, preserve-variable-names-decompiler, investigate-dma-usage-cleanup, refactor-transpiler-core-files, move-transpiler-docs-to-inav-repo, rebase-squash-transpiler-branch, fix-duplicate-active-when-column, feature-add-parser-tab-icon, feature-auto-insert-inav-import, fix-programming-tab-save-lockup, fix-stm32-dfu-reboot-protocol, feature-javascript-variables, merge-branches-to-transpiler-base, refactor-commonjs-to-esm, improve-transpiler-error-reporting, fix-transpiler-api-mismatches, fix-transpiler-documentation
 - ❌ **CANCELLED:** privacylrs-fix-finding2-counter-init (Finding #2 removed - no vulnerability), implement-pmw3901-opflow-driver, optimize-tab-msp-communication, fix-preload-foreach-error
 
