@@ -2,7 +2,7 @@
 
 This file tracks all active and completed projects in the INAV codebase.
 
-**Last Updated:** 2025-12-08 14:30
+**Last Updated:** 2025-12-12
 
 ---
 
@@ -25,6 +25,19 @@ This file tracks all active and completed projects in the INAV codebase.
 ---
 
 ## Recent Activity (Last 7 Days)
+
+### 2025-12-11: Transpiler Improvements Completed ✅
+**Developer** - Multiple transpiler fixes and enhancements
+- **CSE Mutation Bug:** Fixed cache invalidation after variable mutation (PR #2469 closed - needs resubmission)
+- **Override Architecture:** Centralized mappings, added 9 missing operations (PR #2472 OPEN)
+- **CLI Clipboard:** Fixed disabled copy button (PR #2473 OPEN)
+- **extractValue Dedup:** Shared module created, ~147 lines consolidated
+
+### 2025-12-09: Cppcheck Analysis Phase 1 Complete ✅
+**Developer** - Found 2 critical bugs in INAV firmware
+- `sensors/temperature.c:101` - Buffer overflow (memset doubled size)
+- `fc/config.h:66` - Integer overflow (`1 << 31` should be `1U << 31`)
+- Work plan created for 8 review sessions
 
 ### 2025-12-07: INAV 9.0.0-RC3 Released ✅
 **Release Manager** - Successfully released RC3 for firmware and configurator
@@ -156,36 +169,6 @@ Fix CLI bug where `set align_mag_roll = <value>` returns "Invalid name" error, p
 **Impact:** HIGH - prevents critical compass configuration, affects navigation
 
 **Location:** `claude/projects/fix-cli-align-mag-roll-invalid-name/`
-
----
-
-### 📋 fix-javascript-clear-unused-conditions
-
-**Status:** TODO
-**Type:** Bug Fix / Data Integrity
-**Priority:** HIGH
-**Assignment:** ✉️ Assigned
-**Created:** 2025-12-02
-**Assignee:** Developer
-**Assignment Email:** `claude/manager/sent/2025-12-02-2155-task-clear-unused-logic-conditions.md`
-**Estimated Time:** 1-2 hours
-
-Fix data integrity bug in JavaScript Programming tab where saving a transpiled script doesn't clear pre-existing logic conditions that are not part of the new script.
-
-**Problem:**
-- User has 20 logic conditions on FC
-- Writes JavaScript generating 10 conditions
-- Saves to FC
-- **BUG:** FC has 10 new + 10 stale conditions (should be only 10 new)
-
-**Solution:**
-- Track previously-occupied slots at load
-- Clear unused slots at save
-- Only send necessary conditions (smart approach)
-
-**Impact:** HIGH - stale logic conditions could cause unexpected flight behavior
-
-**Location:** `claude/projects/fix-javascript-clear-unused-conditions/`
 
 ---
 
@@ -470,7 +453,7 @@ Verify the GPS recovery fix is complete and correct, answer reviewer's questions
 
 All completed and cancelled projects have been archived for reference.
 
-**Total Completed:** 55 projects
+**Total Completed:** 57 projects
 **Total Cancelled:** 4 projects
 
 **See:** [COMPLETED_PROJECTS.md](COMPLETED_PROJECTS.md) for full archive
