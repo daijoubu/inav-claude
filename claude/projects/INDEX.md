@@ -2,7 +2,7 @@
 
 This file tracks all active and completed projects in the INAV codebase.
 
-**Last Updated:** 2025-12-12
+**Last Updated:** 2025-12-18
 
 ---
 
@@ -26,10 +26,124 @@ This file tracks all active and completed projects in the INAV codebase.
 
 ## Recent Activity (Last 7 Days)
 
+### 2025-12-18: Two Quick Bug Fixes Completed ✅
+
+**Developer** - I2C Speed Warning Bug Fixed (PR #2485)
+- **Problem:** Warning appeared even at maximum I2C speed (800KHz)
+- **Root Cause:** Async settings loading race condition
+- **Fix:** Wait for settingsPromise before triggering validation
+- **Qodo bot:** 2 suggestions addressed (error handling, trigger optimization)
+- **PR #2485** (configurator) - Open, awaiting review
+- **Time:** Already complete when assigned!
+
+**Developer** - PR #11025 CRSF Telemetry Corruption Investigation & Fix Complete
+- **Investigation:** Identified 5 critical bugs causing telemetry corruption
+- **Root Cause:** Unconditional scheduling + conditional writing = malformed frames
+- **Impact:** Malformed frames corrupted entire CRSF protocol stream
+- **Fix Strategy:** Conditional scheduling (follows GPS/Battery pattern)
+- **Implementation:** All 5 bugs fixed with buffer overflow protection
+- **Test Suite:** Created automated test script
+- **PR #11189** (firmware) - Submitted to upstream
+- **Report:** Comprehensive root cause analysis delivered
+- **Time:** ~4 hours (under 4-6h estimate)
+
+### 2025-12-18: MSP Library Documentation Update Assigned 📋
+**Manager** - Update documentation to reference mspapi2 instead of uNAVlib
+- **Background:** Library author recommends using newer mspapi2 library
+- **Scope:** Update 2 CLAUDE.md files, 3 skills, developer documentation
+- **Changes:** Make mspapi2 primary recommendation, preserve uNAVlib as "older alternative"
+- **Note:** PRs can be submitted to mspapi2 for improvements
+- **Estimated Time:** 2-3 hours
+- **Assignment Email:** `claude/manager/sent/2025-12-18-0115-task-update-msp-library-documentation.md`
+
+### 2025-12-18: Max Battery Current Limiter Complete ✅
+**Developer** - Feature documentation and UI completed
+- **Discovery:** Feature already existed since INAV 3.0.0 (3 years!), just undocumented
+- **Solution:** Documented existing advanced power/current limiting instead of implementing duplicate
+- **Wiki:** Created comprehensive Battery-and-Power-Management user guide (250 lines)
+- **Firmware Docs:** Added 149-line Power Limiting section to Battery.md
+- **Configurator UI:** Added power limiting section to Configuration tab with 8 settings
+- **PR #11187** (firmware docs) - Merged
+- **PR #2482** (configurator UI) - Merged (after cleanup to remove unrelated files)
+- **Result:** Better than requested - burst mode, PI controller, dual current/power limiting
+
+### 2025-12-17: Three Transpiler Analysis Tasks Complete ✅
+**Developer** - Transpiler code structure and improvement opportunities analyzed
+
+**1. Transpiler AST Types Documentation:**
+- Created comprehensive 22KB reference: `claude/developer/docs/transpiler-ast-types.md`
+- Documents all Acorn AST nodes, operators, and INAV Logic Condition structures
+- BNF notation with clear hierarchy
+- Foundation for generic handler analysis
+
+**2. Transpiler Code Structure Analysis:**
+- Analyzed 8 largest files (520-1,199 lines)
+- Found 28 long functions (5 critically long >100 lines)
+- Recommended 2 file splits: decompiler.js and codegen.js
+- Report: `claude/developer/reports/transpiler-code-structure-analysis.md`
+- Estimated effort: ~12-16 hours total
+
+**3. Generic Handler Opportunities:**
+- Identified 5 legitimate simplification opportunities
+- Avoided "combine for combining's sake" suggestions
+- Report: `claude/developer/reports/transpiler-generic-handler-opportunities.md`
+- Estimated effort: ~4-6 hours total
+
+### 2025-12-16: Three New Projects Assigned 📋
+
+**Manager** - Max Battery Current Limiter feature assigned
+- **Feature:** `max_battery_current` setting to protect batteries from over-discharge
+- **Scope:** Firmware setting + motor output limiting + OSD indicator + Configurator UI
+- **Implementation:** Proportional motor output reduction when current exceeds limit
+- **Branch:** From `maintenance-9.x`
+- **Estimated Time:** 8-12 hours
+- **Assignment Email:** `claude/manager/sent/2025-12-16-1845-task-max-battery-current-limiter.md`
+
+**Manager** - PR #11025 Telemetry Corruption Investigation assigned
+- **Investigation:** Root cause analysis of why airspeed/RPM/temperature telemetry caused corruption
+- **Context:** PR #11025 merged and reverted same day (Nov 28) - broke all telemetry
+- **Key clue:** "Invalid frame emission when no payload data existed"
+- **Focus:** Sensor availability checks, frame scheduling, empty frame handling
+- **Resources:** Developer has extensive CRSF test infrastructure and documentation
+- **Estimated Time:** 4-6 hours
+- **Assignment Email:** `claude/manager/sent/2025-12-16-1900-task-investigate-pr11025-telemetry-corruption.md`
+
+**Manager** - I2C Speed Warning Bug Fix assigned
+- **Bug:** Warning "This I2C speed is too low!" appears even at maximum I2C speed
+- **Location:** `tabs/configuration.html` in configurator
+- **Likely cause:** Incorrect validation condition (comparison operator or threshold)
+- **Fix type:** Quick logic fix in validation code
+- **Branch:** From `maintenance-9.x`
+- **Estimated Time:** 1-2 hours
+- **Assignment Email:** `claude/manager/sent/2025-12-16-1910-task-fix-i2c-speed-warning-bug.md`
+
+### 2025-12-14: Extract Method Refactoring Tool Project Created 📋
+**Manager** - New CLI tool project assigned to Developer (assignment updated after clarification)
+- **Corrected understanding:** Extract Method refactoring (create functions from inline code), NOT function hoisting
+- **Use case:** Extract 50-line switch case blocks into separate functions
+- **Approach:** CLI tool using Acorn + Commander.js + compare-ast for verification
+- **Key innovation:** Smart parameter/return detection + AST-proven equivalence
+- **Timeline:** 3-4 weeks
+- **CLI design:** analyze/preview/apply workflow, JSON output for Claude Code integration
+- **Documentation:** Complete CLI spec with algorithms, tool evaluation, updated README
+
+### 2025-12-14: Transpiler Scoped Hoisting Complete ✅
+**Developer** - Major decompiler improvements
+- Scoped hoisting eliminates "monstrosity" lines (70+ words → clean output)
+- Variable name preservation through compile/decompile
+- 25 test suites passing
+- **PR #2474** (configurator) - Mergeable, CI running
+- **PR #11178** (inav docs) - Open, awaiting review
+
+### 2025-12-12: Three Items Completed ✅
+- **fix-cli-align-mag-roll-invalid-name** - [PR #2463](https://github.com/iNavFlight/inav-configurator/pull/2463) MERGED
+- **commit-internal-documentation-updates** - Commits `00088a3`, `6621d04` pushed
+- **Cppcheck fixes** - [PR #11172](https://github.com/iNavFlight/inav/pull/11172) MERGED (2 critical bugs fixed)
+
 ### 2025-12-11: Transpiler Improvements Completed ✅
 **Developer** - Multiple transpiler fixes and enhancements
 - **CSE Mutation Bug:** Fixed cache invalidation after variable mutation (PR #2469 closed - needs resubmission)
-- **Override Architecture:** Centralized mappings, added 9 missing operations (PR #2472 OPEN)
+- **Decompiler Refactor:** [PR #2472](https://github.com/iNavFlight/inav-configurator/pull/2472) **MERGED** ✅ - Structural AST analysis, ~370 lines dead code removed
 - **CLI Clipboard:** Fixed disabled copy button (PR #2473 OPEN)
 - **extractValue Dedup:** Shared module created, ~147 lines consolidated
 
@@ -37,7 +151,7 @@ This file tracks all active and completed projects in the INAV codebase.
 **Developer** - Found 2 critical bugs in INAV firmware
 - `sensors/temperature.c:101` - Buffer overflow (memset doubled size)
 - `fc/config.h:66` - Integer overflow (`1 << 31` should be `1U << 31`)
-- Work plan created for 8 review sessions
+- **PR:** [#11172](https://github.com/iNavFlight/inav/pull/11172) - **MERGED** ✅
 
 ### 2025-12-07: INAV 9.0.0-RC3 Released ✅
 **Release Manager** - Successfully released RC3 for firmware and configurator
@@ -86,31 +200,91 @@ This file tracks all active and completed projects in the INAV codebase.
 
 ## Active Projects
 
-### 📋 commit-internal-documentation-updates
+### 📋 update-msp-library-documentation
 
 **Status:** TODO
-**Type:** Documentation / Internal Tooling
+**Type:** Documentation Update
 **Priority:** MEDIUM
 **Assignment:** ✉️ Assigned
-**Created:** 2025-12-07
+**Created:** 2025-12-18
 **Assignee:** Developer
-**Assignment Email:** `claude/manager/sent/2025-12-07-1030-task-commit-documentation.md`
-**Estimated Time:** 30-60 minutes
+**Estimated Time:** 2-3 hours
 
-Commit and push accumulated internal documentation, skills, test scripts, and tooling updates.
+Update internal documentation and skills to reference **mspapi2** instead of **uNAVlib** for MSP communication. The library author recommends using the newer mspapi2 library.
 
-**Changes to commit:**
-- 16 modified skill definitions
-- 4 new skills (create-pr, privacylrs-test-runner, test-crsf-sitl, test-privacylrs-hardware)
-- Updated role documentation (developer, manager, release-manager, security-analyst)
-- Updated INDEX.md with recent activity
-- Research documents (CRSF telemetry, SITL websocket, PrivacyLRS findings)
-- Test tools and automation scripts
-- RC3 release documentation
+**Scope:**
+- Update 2 CLAUDE.md files (developer and manager)
+- Update 3 skills (msp-protocol, sitl-arm, test-crsf-sitl)
+- Update developer documentation (CRSF telemetry MSP config guide)
+- Preserve uNAVlib as "older alternative" for backward compatibility
+- Add note that PRs can be submitted to mspapi2 for improvements
 
-**Excludes:** Submodules, temporary files, source code
+**Files to Update:**
+- `claude/developer/CLAUDE.md`
+- `claude/manager/CLAUDE.md`
+- `.claude/skills/msp-protocol/SKILL.md`
+- `.claude/skills/sitl-arm/SKILL.md`
+- `.claude/skills/test-crsf-sitl/SKILL.md`
+- `claude/developer/crsf-telemetry-msp-config-guide.md`
+- Other files with uNAVlib references
 
-**Location:** `claude/projects/commit-internal-documentation-updates/`
+**Branch:** Documentation only (no code branch)
+
+**Assignment Email:** `claude/manager/sent/2025-12-18-0115-task-update-msp-library-documentation.md`
+
+**Location:** `claude/projects/update-msp-library-documentation/`
+
+---
+
+### 📋 extract-method-tool
+
+**Status:** TODO
+**Type:** CLI Tool / Extract Method Refactoring
+**Priority:** MEDIUM
+**Assignment:** ✉️ Assigned (UPDATED 2025-12-14)
+**Created:** 2025-12-14
+**Assignee:** Developer
+**Assignment Email:** `claude/manager/sent/2025-12-14-task-extract-method-tool-UPDATED.md`
+**Estimated Time:** 3-4 weeks
+
+Build a CLI tool for **Extract Method** refactoring - extracting inline code blocks into new functions (NOT hoisting existing functions).
+
+**Use Case:** Extract 50-line switch case blocks into separate functions
+
+**Workflow:**
+1. User specifies line numbers to extract
+2. Tool analyzes (parameters, return values, complexity)
+3. Tool previews extraction
+4. User confirms
+5. Tool applies with AST-verified equivalence
+
+**Key Features:**
+- Smart parameter detection (variables used but not defined)
+- Smart return value detection (variables modified and used after)
+- Control flow transformation (break → return in switch cases)
+- AST verification with compare-ast (proof of equivalence)
+- JSON output for Claude Code integration
+
+**Technology:**
+- Acorn (parser - already available)
+- Commander.js (CLI framework)
+- recast (AST manipulation)
+- compare-ast (semantic verification)
+- ~600-800 lines of code
+
+**CLI Interface:**
+```
+extract-method analyze <file> --lines 145-195
+extract-method preview <file> --lines 145-195 --name handleSave
+extract-method apply <file> --lines 145-195 --name handleSave
+```
+
+**Documentation:**
+- `CLI_SPEC.md` - Complete CLI specification with algorithms
+- `TOOL_EVALUATION.md` - Research on existing tools
+- `README.md` - Project overview and use cases
+
+**Location:** `claude/projects/js-function-hoisting-tool/` (will rename to extract-method-tool)
 
 ---
 
@@ -140,35 +314,6 @@ Coordinate with PR authors to resolve frame 0x09 conflict between CRSF telemetry
 **Developer Analysis:** Complete (2025-12-06) - 38-test suite created, conflict identified
 
 **Location:** `claude/projects/coordinate-crsf-telemetry-pr-merge/`
-
----
-
-### 📋 fix-cli-align-mag-roll-invalid-name
-
-**Status:** TODO
-**Type:** Bug Fix / CLI
-**Priority:** HIGH
-**Assignment:** ✉️ Assigned
-**Created:** 2025-12-02
-**Assignee:** Developer
-**Assignment Email:** `claude/manager/sent/2025-12-02-2200-task-cli-align-mag-roll-invalid-name.md`
-**Estimated Time:** 2-4 hours
-
-Fix CLI bug where `set align_mag_roll = <value>` returns "Invalid name" error, preventing external magnetometer configuration.
-
-**Problem:**
-- Command `set align_mag_roll = 900` fails with "Invalid name"
-- Prevents external mag alignment configuration
-- Critical for navigation accuracy
-
-**Likely causes:**
-- Conditional compilation (`USE_MAG` not defined for target)
-- Settings generation issue
-- CLI parsing bug
-
-**Impact:** HIGH - prevents critical compass configuration, affects navigation
-
-**Location:** `claude/projects/fix-cli-align-mag-roll-invalid-name/`
 
 ---
 
@@ -443,6 +588,31 @@ Verify the GPS recovery fix is complete and correct, answer reviewer's questions
 
 ---
 
+### ⏸️ feature-auto-alignment-tool
+
+**Status:** BACKBURNER
+**Type:** Feature Enhancement
+**Priority:** Medium
+**Assignment:** ✉️ Assigned
+**Created:** 2025-12-12
+**Assignee:** Developer
+**PR:** [#2158](https://github.com/iNavFlight/inav-configurator/pull/2158) (OPEN, "Don't merge")
+
+Wizard-style tool that automatically detects and sets FC and compass alignment by having the user point north and lift the nose.
+
+**Current State:**
+- Basic implementation complete (Aug 2024)
+- Video demo in PR
+- Needs review/polish before merge
+
+**Why Backburner:**
+- Functional but needs polish
+- Lower priority than bug fixes
+
+**Location:** `claude/projects/feature-auto-alignment-tool/`
+
+---
+
 
 **Note:** Completed projects are archived to `claude/archived_projects/` to keep the active project list clean.
 
@@ -453,7 +623,7 @@ Verify the GPS recovery fix is complete and correct, answer reviewer's questions
 
 All completed and cancelled projects have been archived for reference.
 
-**Total Completed:** 57 projects
+**Total Completed:** 65 projects
 **Total Cancelled:** 4 projects
 
 **See:** [COMPLETED_PROJECTS.md](COMPLETED_PROJECTS.md) for full archive

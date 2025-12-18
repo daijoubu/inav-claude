@@ -1,15 +1,34 @@
-# Ignore contents of inav, inav-configurator, and uNAVlib directories
+# Ignore contents of third-party repository directories
 # (Users should clone these separately)
+# Exception: Keep any CLAUDE.md files within these directories
+betaflight-blackbox-log-viewer/*
+!betaflight-blackbox-log-viewer/**/CLAUDE.md
 inav/*
 !inav/.gitkeep
+!inav/**/CLAUDE.md
 inav-configurator/*
 !inav-configurator/.gitkeep
+!inav-configurator/**/CLAUDE.md
+inavwiki/*
+!inavwiki/**/CLAUDE.md
+mspapi2/*
+!mspapi2/**/CLAUDE.md
+PrivacyLRS/*
+!PrivacyLRS/**/CLAUDE.md
 uNAVlib/*
 !uNAVlib/.gitkeep
+!uNAVlib/**/CLAUDE.md
+
+# Ignore project tracking files (dynamic content)
 claude/projects/*
 
-# Ignore inavwiki (documentation wiki)
-inavwiki/
+# Node.js dependencies and package files
+node_modules/
+package.json
+package-lock.json
+
+# Local tools
+raytools/
 
 # Email/message directories (private communications)
 **/inbox/*

@@ -64,32 +64,58 @@ MSP commands are used in:
 grep -r "MSP_COMMAND_NAME" inav-configurator/src/js/
 ```
 
-### In uNAVlib (Python MSP Library)
+### Python MSP Libraries
 
-**IMPORTANT:** The **uNAVlib** library provides a Python MSP implementation for testing and automation.
+**RECOMMENDED: mspapi2**
 
-**Location:** `uNAVlib/`
+The **mspapi2** library is the recommended Python MSP implementation for testing and automation.
+
+**Location:** `mspapi2/` (or install from GitHub)
+**GitHub:** https://github.com/xznhj8129/mspapi2
 
 **Key features:**
-- MSP packet encoding/decoding
-- Command definitions and helpers
-- Serial and TCP communication
-- Useful for testing, scripting, and automation
+- Clean separation: codec, transport, API, multi-client TCP server
+- MSP packet encoding/decoding with strict validation
+- Serial and TCP communication with robust error handling
+- High-level API with typed getters/setters
+- INAV enums for type-safe mission scripting
+- Useful for testing, scripting, automation, and multi-client scenarios
 - Can communicate with both real hardware and SITL
 
-**Search for MSP in uNAVlib:**
+**Installation:**
 ```bash
-grep -r "MSP_" uNAVlib/
-find uNAVlib -name "*msp*.py"
+cd mspapi2
+pip install .
+# or editable install for development
+pip install -e .
 ```
 
-**Using uNAVlib for testing:**
-- Send MSP commands to flight controller
-- Automate configuration tasks
-- Test MSP communication performance
-- Debug MSP protocol issues
+**Basic usage:**
+```python
+from mspapi2 import MSPApi
 
-See `claude/test_tools/inav/` for example scripts using uNAVlib.
+api = MSPApi(port="/dev/ttyACM0", baudrate=115200)
+api.open()
+try:
+    info, version = api.get_api_version()
+    print(info, version)
+finally:
+    api.close()
+```
+
+**Contributing:**
+If you encounter issues or see improvements needed in mspapi2, PRs are welcome at the GitHub repository!
+
+**Alternative: uNAVlib (older)**
+
+The **uNAVlib** library is the older Python MSP implementation, still available for backward compatibility.
+
+**Location:** `uNAVlib/`
+**GitHub:** https://github.com/xznhj8129/uNAVlib
+
+Use this if you have existing scripts or need asyncio-based functionality. For new projects, prefer mspapi2.
+
+See `claude/test_tools/inav/` for example scripts (some may use uNAVlib, consider updating to mspapi2).
 
 ## Common MSP Commands
 
@@ -123,7 +149,7 @@ Use the benchmark tools in `claude/test_tools/inav/`:
 - `msp_benchmark_serial.py` - Test serial MSP
 - `msp_benchmark_improved.py` - Test with detailed logging
 
-Or use **uNAVlib** for interactive testing and automation.
+Or use **mspapi2** for interactive testing and automation (recommended), or **uNAVlib** for legacy scripts.
 
 ## MSP Protocol Versions
 
@@ -135,7 +161,8 @@ Or use **uNAVlib** for interactive testing and automation.
 
 - **Firmware MSP handlers:** `inav/src/main/msp/msp.c`
 - **Protocol definitions:** `inav/src/main/msp/msp_protocol.h`
-- **uNAVlib Python library:** `uNAVlib/` (for testing and automation)
+- **mspapi2 Python library (recommended):** `mspapi2/` - https://github.com/xznhj8129/mspapi2
+- **uNAVlib Python library (older alternative):** `uNAVlib/` - https://github.com/xznhj8129/uNAVlib
 - **Investigation notes:** `claude/msp_investigation_facts.md`
 - **Test tools:** `claude/test_tools/inav/`
 

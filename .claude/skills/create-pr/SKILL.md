@@ -38,7 +38,7 @@ Remote: upstream → https://github.com/inavflight/inav.git
 **IMPORTANT:** For both `inav` and `inav-configurator` repositories:
 - **Use `maintenance-9.x`** for changes that maintain compatibility between firmware and configurator
 - **Use `maintenance-10.x`** for breaking changes (MSP protocol changes, incompatible with 9.x)
-- **NEVER use `master`** except for documentation updates or GitHub Actions/workflow changes
+- **NEVER use `master`** unless specifically instructed to do so by the user
 - The master branch is NOT for code development - only docs and CI/CD workflows
 
 ---
@@ -116,8 +116,6 @@ git checkout -b your-branch-name upstream/maintenance-9.x
 # Or for breaking changes requiring version bump
 git checkout -b your-branch-name upstream/maintenance-10.x
 
-# For documentation or GitHub Actions ONLY
-git checkout -b your-branch-name upstream/master
 ```
 
 ### Step 2: Make Changes and Commit
@@ -126,7 +124,7 @@ git checkout -b your-branch-name upstream/master
 # Stage specific files (NEVER use git add -A)
 git add <file1> <file2>
 
-# Commit with descriptive message
+# Commit with concise descriptive message
 # Use gedit for human review of commit message
 GIT_EDITOR="gedit" git commit --edit -m "Brief summary
 
@@ -140,7 +138,7 @@ Detailed description of what changed and why.
 **Commit Message Guidelines:**
 - First line: Brief summary (50-72 chars)
 - Blank line
-- Detailed explanation
+- Concise explanation
 - DO NOT mention Claude or AI assistance
 - Focus on what and why, not how
 
@@ -159,7 +157,7 @@ git push -u origin your-branch-name
 gh pr create --repo sensei-hacker/PrivacyLRS \
   --base secure_01 \
   --title "Your PR Title" \
-  --body "Detailed PR description"
+  --body "Concise PR description"
 ```
 
 #### For INAV/inav-configurator (upstream repository):
@@ -169,19 +167,13 @@ gh pr create --repo sensei-hacker/PrivacyLRS \
 gh pr create --repo inavflight/inav \
   --base maintenance-9.x \
   --title "Your PR Title" \
-  --body "Detailed PR description"
+  --body "Concise PR description"
 
 # Breaking changes - target maintenance-10.x
 gh pr create --repo inavflight/inav \
   --base maintenance-10.x \
   --title "Your PR Title" \
-  --body "Detailed PR description"
-
-# Documentation or GitHub Actions ONLY - target master
-gh pr create --repo inavflight/inav \
-  --base master \
-  --title "Your PR Title" \
-  --body "Detailed PR description"
+  --body "Concise PR description"
 ```
 
 #### Using heredoc for multi-line PR descriptions:
@@ -199,7 +191,7 @@ Brief overview of changes
 - Change 2
 
 ## Testing
-How changes were tested
+How changes were tested, if relevant
 
 ## Related Issues
 Fixes #123
@@ -216,13 +208,12 @@ A good PR description includes:
 ### Required Sections
 1. **Summary** - What does this PR do?
 2. **Changes** - Specific changes made
-3. **Testing** - How was it tested?
-4. **Files Changed** - Key files modified/added
 
 ### Optional Sections
 - **Breaking Changes** - If any
 - **Related Issues** - Links to issues
 - **Screenshots** - For UI changes
+- **Testing** - How was it tested?
 - **Performance Impact** - If relevant
 - **Security Considerations** - For security changes
 
@@ -241,10 +232,6 @@ Brief description of what this PR accomplishes
 - Test 1 performed
 - Test 2 performed
 - Results: ...
-
-## Files Changed
-- path/to/file1 - Brief description
-- path/to/file2 - Brief description
 
 ## Related Issues
 Closes #123
@@ -287,7 +274,7 @@ git checkout -b encryption-tests
 git checkout -b new-protocol
 ```
 
-**Why:** PrivacyLRS uses flat branch naming without directory-style slashes.
+**Why:** All repos uses flat branch naming without directory-style slashes.
 
 ### ❌ Forgetting to Specify Base Branch
 **WRONG:**
@@ -398,14 +385,12 @@ gh pr edit <PR_NUMBER> --body "New description"
 | **PrivacyLRS** | `sensei-hacker/PrivacyLRS` | `secure_01` | All code changes | `gh pr create --repo sensei-hacker/PrivacyLRS --base secure_01` |
 | **INAV** | `inavflight/inav` | `maintenance-9.x` | Backwards compatible | `gh pr create --repo inavflight/inav --base maintenance-9.x` |
 | **INAV** | `inavflight/inav` | `maintenance-10.x` | Breaking changes | `gh pr create --repo inavflight/inav --base maintenance-10.x` |
-| **INAV** | `inavflight/inav` | `master` | Docs/workflows ONLY | `gh pr create --repo inavflight/inav --base master` |
 | **inav-configurator** | `inavflight/inav-configurator` | `maintenance-9.x` | Backwards compatible | `gh pr create --repo inavflight/inav-configurator --base maintenance-9.x` |
 | **inav-configurator** | `inavflight/inav-configurator` | `maintenance-10.x` | Breaking changes | `gh pr create --repo inavflight/inav-configurator --base maintenance-10.x` |
-| **inav-configurator** | `inavflight/inav-configurator` | `master` | Docs/workflows ONLY | `gh pr create --repo inavflight/inav-configurator --base master` |
 
 **Remember:**
 - Always double-check you're targeting the correct repository AND base branch before creating the PR!
-- NEVER use master for code changes - only documentation and GitHub Actions/workflows
+- NEVER use master for code changes
 - Use maintenance-9.x for backwards compatible changes (most common)
 - Use maintenance-10.x for breaking changes (MSP protocol, settings format, etc.)
 
