@@ -41,7 +41,12 @@ Let the manager handle INDEX.md and project documentation updates (other than yo
 - **inav/** - Flight controller firmware (C) - You edit this
 - **inav-configurator/** - Desktop GUI (JavaScript/Electron) - You edit this
 - **inavwiki/** - Documentation (Markdown)
-- **uNAVlib/** - Python MSP library - You edit this
+- **mspapi2/** - Python MSP library (recommended) - You edit this
+  - GitHub: https://github.com/xznhj8129/mspapi2
+  - Modern, well-structured library with codec, transport, API, and multi-client server
+  - Python 3.9+, install with `pip install .` from repo
+  - Open to PRs for improvements
+- **uNAVlib/** - Older Python MSP library (alternative for backward compatibility)
 
 ## Communication
 

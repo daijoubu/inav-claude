@@ -30,9 +30,23 @@ make -j4
 
 ### Python Dependencies
 
+**Recommended: mspapi2**
+```bash
+cd mspapi2
+pip3 install .
+```
+
+Or install directly from GitHub:
+```bash
+pip3 install git+https://github.com/xznhj8129/mspapi2
+```
+
+**Alternative: uNAVlib (older)**
 ```bash
 pip3 install git+https://github.com/xznhj8129/uNAVlib
 ```
+
+For new projects, prefer mspapi2. Existing scripts using uNAVlib will continue to work.
 
 ## Launching SITL
 

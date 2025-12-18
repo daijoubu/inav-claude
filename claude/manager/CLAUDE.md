@@ -39,7 +39,8 @@ Use Edit/Write tools only for:
 - **inav/** - Flight controller firmware (C)
 - **inav-configurator/** - Desktop GUI (JavaScript/Electron)
 - **inavwiki/** - Documentation (Markdown)
-- **uNAVlib/** - Python MSP library
+- **mspapi2/** - Python MSP library (recommended, https://github.com/xznhj8129/mspapi2)
+- **uNAVlib/** - Older alternative MSP library
 
 ## Communication
 

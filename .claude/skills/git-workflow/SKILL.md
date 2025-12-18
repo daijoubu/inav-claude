@@ -50,18 +50,64 @@ Each repository has its own git history and must be managed independently.
 
 ## Creating Branches
 
-### Create a New Branch
+### 🚨 CRITICAL: Always Specify Base Branch When Creating Branches
+
+**NEVER create a branch without specifying the base branch:**
 
 ```bash
-# Create and switch to new branch
+# ❌ WRONG - branches from current HEAD (may include unrelated changes)
 git checkout -b my-new-branch
 
-# Or use switch (newer git)
-git switch -c my-new-branch
+# ✅ CORRECT - explicitly specify base branch
+git checkout -b my-new-branch upstream/maintenance-9.x
+```
+
+**Why this matters:** Creating a branch without specifying the base will branch from whatever you currently have checked out, which may include:
+- Unrelated commits from another feature branch
+- Work-in-progress changes
+- The wrong base branch entirely
+- This leads to PRs contaminated with unrelated changes
+
+### Create a New Branch - Correct Commands
+
+**First, verify you're not on a production branch:**
+```bash
+git branch --show-current
+# Output should NOT be: secure_01, master, main, maintenance-9.x, maintenance-10.x
+```
+
+**For PrivacyLRS (secure_01 base):**
+```bash
+# Branch from secure_01 (the base branch for PrivacyLRS)
+git checkout -b your-branch-name secure_01
 
 # Push branch to remote
-git push -u origin my-new-branch
+git push -u origin your-branch-name
+
+# Branch naming: NO slashes (use: encryption-test-suite, fix-counter-sync)
 ```
+
+**For INAV/inav-configurator (backwards compatible changes):**
+```bash
+# Branch from maintenance-9.x (most common case)
+git checkout -b your-branch-name upstream/maintenance-9.x
+
+# Push branch to remote
+git push -u origin your-branch-name
+
+# Branch naming: kebab-case (use: fix-telemetry-bug, feature-battery-limit)
+```
+
+**For INAV/inav-configurator (breaking changes):**
+```bash
+# Branch from maintenance-10.x (breaking changes only)
+git checkout -b your-branch-name upstream/maintenance-10.x
+
+# Push branch to remote
+git push -u origin your-branch-name
+```
+
+**NEVER use master branch unless specifically instructed by the user.**
 
 ### Create Branch from Specific Commit
 
@@ -72,6 +118,19 @@ git checkout -b bugfix-123 <commit-hash>
 # Or from a tag
 git checkout -b new-feature v9.0.0
 ```
+
+### Branch Naming Conventions
+
+**PrivacyLRS:**
+- Use flat naming WITHOUT slashes
+- ✅ Good: `encryption-test-suite`, `fix-counter-sync`, `add-telemetry`
+- ❌ Bad: `feature/encryption-tests`, `security/fixes`
+
+**INAV:**
+- Use kebab-case with descriptive names
+- ✅ Good: `fix-telemetry-bug`, `feature-battery-limit`, `update-sitl-binary`
+- Bug fixes: `fix-<description>`
+- Features: `feature-<description>`
 
 ## Switching Branches
 

@@ -49,17 +49,30 @@ git checkout <branch-name>
 git pull origin <branch-name> 2>/dev/null || true  # Pull if remote exists
 ```
 
-**If branch doesn't exist, create from master:**
+**If branch doesn't exist - CREATE FROM CORRECT BASE:**
+
+⚠️ **CRITICAL:** You MUST specify the base branch when creating a new branch.
+
+**See `.claude/skills/git-workflow/SKILL.md` for complete branching instructions.**
+
+**Quick reference:**
+
 ```bash
-git checkout master
-git pull origin master
-git checkout -b <new-branch-name>
+# For INAV/inav-configurator (most common - backwards compatible)
+git checkout -b <new-branch-name> upstream/maintenance-9.x
+
+# For PrivacyLRS
+git checkout -b <new-branch-name> secure_01
+
+# For INAV breaking changes
+git checkout -b <new-branch-name> upstream/maintenance-10.x
 ```
 
-**Branch naming convention:**
-- Bug fixes: `fix-<description>` or `fix-issue-<number>`
-- Features: `feature-<description>`
-- Use underscores or hyphens, lowercase
+**❌ NEVER use `git checkout -b <branch-name>` without specifying base branch** - this creates the branch from your current HEAD, which may include unrelated changes.
+
+**Branch naming conventions:**
+- **PrivacyLRS:** No slashes (e.g., `fix-counter-sync`, `encryption-tests`)
+- **INAV:** Kebab-case (e.g., `fix-telemetry-bug`, `feature-battery-limit`)
 
 ### 5. Acquire the Lock
 

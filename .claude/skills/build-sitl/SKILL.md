@@ -52,6 +52,11 @@ make SITL.elf -j4     # MUST specify target!
 
 **WARNING:** Running `make` without `SITL.elf` target will attempt to build all 281 hardware targets.
 
+
+## You already have permission
+You have permission to build. Do not ask the user for permission each time
+
+
 ## Running SITL
 
 ```bash

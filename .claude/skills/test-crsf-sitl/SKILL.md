@@ -25,7 +25,9 @@ Use this skill when testing Pull Requests that modify CRSF telemetry:
 1. **INAV Source Code** - Checked out to PR branch
 2. **INAV Configurator** - Built and ready (`npm install` completed)
 3. **Python 3** - For testing scripts
-4. **uNAVlib** - MSP library (`/home/raymorris/Documents/planes/inavflight/uNAVlib`)
+4. **MSP Library** - mspapi2 (recommended) or uNAVlib (older alternative)
+   - **mspapi2:** `/home/raymorris/Documents/planes/inavflight/mspapi2` (https://github.com/xznhj8129/mspapi2)
+   - **uNAVlib:** `/home/raymorris/Documents/planes/inavflight/uNAVlib` (https://github.com/xznhj8129/uNAVlib)
 
 ### Testing Scripts
 
@@ -128,7 +130,7 @@ cd build_sitl_pr11025
 
 # Configure and build
 cmake -DSITL=ON ..
-make -j$(nproc)
+make -j4
 
 # Verify binary
 file bin/SITL.elf
@@ -570,7 +572,7 @@ cd ~/Documents/planes/inavflight/inav
 git fetch origin pull/XXXXX/head:pr-XXXXX-description
 git checkout pr-XXXXX-description
 mkdir build_sitl_prXXXXX && cd build_sitl_prXXXXX
-cmake -DSITL=ON .. && make -j$(nproc)
+cmake -DSITL=ON .. && make -j4
 
 # Start SITL
 ./bin/SITL.elf 2>&1 | tee /tmp/sitl.log &

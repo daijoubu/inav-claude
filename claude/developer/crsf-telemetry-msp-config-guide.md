@@ -8,15 +8,35 @@ CRSF telemetry can be enabled in SITL using MSP configuration commands. The key 
 
 - SITL built with CRSF telemetry support (PR #11025 branch: `pr-11025-crsf-telem`)
 - Debug instrumentation added to `src/main/telemetry/crsf.c` (optional but helpful)
+- **mspapi2** Python library (recommended) or **uNAVlib** (older alternative)
+  - Install mspapi2: `cd mspapi2 && pip install .`
+  - Or install uNAVlib: `pip install git+https://github.com/xznhj8129/uNAVlib`
 
 ## Configuration Sequence (CRITICAL ORDER)
 
-**IMPORTANT:** You must perform these steps in this exact order:
+**IMPORTANT:** You must perform these steps in this exact order.
+
+**Note:** The examples below show both **mspapi2** (recommended for new scripts) and **uNAVlib** (for existing scripts or backward compatibility). Both libraries work - choose based on your needs.
 
 ### Step 1: Remove MSP from UART2
 
-First, read the current serial configuration and remove FUNCTION_MSP from UART2:
+First, read the current serial configuration and remove FUNCTION_MSP from UART2.
 
+**Using mspapi2 (Recommended):**
+```python
+from mspapi2 import MSPApi
+
+api = MSPApi(host="127.0.0.1", port=5760, use_tcp=True)
+api.open()
+try:
+    # Read current serial config
+    # (See mspapi2 documentation for serial config methods)
+    # Configure UART2 to remove MSP...
+finally:
+    api.close()
+```
+
+**Using uNAVlib (Older Alternative):**
 ```python
 import struct
 from unavlib.main import MSPy
