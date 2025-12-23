@@ -45,11 +45,12 @@ The `outbox/` folder is for draft messages that need review or are waiting for a
 ```
 1. Check developer/inbox/ for new assignments
 2. Read task assignment
-3. Implement solution
-4. Test changes
-5. Create completion report in developer/sent/
-6. Copy report to manager/inbox/
-7. Archive assignment from developer/inbox/ to developer/inbox-archive/
+3. Implement a test to show what's needed (the test should fail)
+4. Implement solution
+5. Test changes
+6. Create completion report in developer/sent/
+7. Copy report to manager/inbox/
+8. Archive assignment from developer/inbox/ to developer/inbox-archive/
 ```
 
 ## Repository Overview
@@ -292,6 +293,8 @@ npm run test:coverage # Coverage report
 npm run test:e2e     # E2E tests
 ```
 
+If a test fails, never assume it's a pre-existing or irrelevant failure. A failing test ALWAYS means there is work to be done
+
 ---
 
 # Important Notes
@@ -408,6 +411,7 @@ If adding features would add >40 new lines to a main transpiler file (parser.js,
 - **Self-documenting code** - Good variable names over comments
 - **Comments for WHY, not WHAT** - Only comment when code behavior is surprising or non-obvious
 - **Use existing libraries**, scripts, and skills in preference to writing your own new (buggy) code
+- **Don't assume theories** - if you think you found the cause of a bug, or think you fixed it - test your theory. It's not known until it's proven
 
 ## Git Practices
 
