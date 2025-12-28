@@ -1,6 +1,11 @@
 # Ignore contents of third-party repository directories
 # (Users should clone these separately)
 # Exception: Keep any CLAUDE.md files within these directories
+
+# First, always ignore nested .git directories
+**/.git
+**/.git/*
+
 betaflight-blackbox-log-viewer/*
 !betaflight-blackbox-log-viewer/**/CLAUDE.md
 inav/*
@@ -12,6 +17,7 @@ inav-configurator/*
 inavwiki/*
 !inavwiki/**/CLAUDE.md
 mspapi2/*
+!mspapi2/.gitkeep
 !mspapi2/**/CLAUDE.md
 PrivacyLRS/*
 !PrivacyLRS/**/CLAUDE.md
