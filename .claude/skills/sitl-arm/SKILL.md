@@ -197,8 +197,14 @@ MSP_SET_RAW_RC expects: `[Roll, Pitch, Throttle, Yaw, AUX1, ...]`
 
 ## Files
 
-- Test script: `claude/developer/test_tools/sitl_arm_test.py`
-- Debug script: `claude/developer/test_tools/msp_rc_debug.py`
+### SITL Arming Scripts
+
+- **Basic arm** (uNAVlib): `claude/test_tools/inav/arm_sitl.py` - Simple arming script
+- **Full test** (uNAVlib): `claude/test_tools/inav/sitl/sitl_arm_test.py` - Complete test suite
+- **Configure for arming** (mspapi2): `claude/test_tools/inav/gps/configure_sitl_for_arming.py` - Set up MSP receiver and ARM mode
+
+### Project Documentation
+
 - Project status: `claude/projects/sitl-msp-arming/status.md`
 
 ## Source Code
