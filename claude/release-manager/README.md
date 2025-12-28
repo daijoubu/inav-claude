@@ -76,23 +76,23 @@ The `outbox/` folder is for draft messages that need review before sending. When
 
 ```
 1. Verify release readiness
-   ├── All PRs merged
+   ├── All PRs merged to firmware repo
    ├── Version numbers updated
-   └── SITL binaries updated in configurator (if needed)
+   └── CI passing on firmware target commit
 
-2. Identify target commits
-   ├── Find HEAD of release branch (e.g., maintenance-9.x)
-   ├── Record exact commit SHAs for both repos
-   └── Verify CI has run on these commits
+2. Download firmware artifacts FIRST
+   ├── Download firmware hex files from CI
+   ├── Download SITL binaries from same CI run
+   ├── Build Linux x64 SITL locally if needed (for glibc compatibility)
+   └── This provides SITL binaries needed for configurator
 
-3. Verify CI passing on target commits
-   ├── Check all build jobs succeeded (not just some)
-   ├── If ANY build failed: STOP - fix before proceeding
-   └── Document CI run IDs for artifact download
+3. Update SITL in configurator
+   ├── Create PR with SITL binaries from step 2
+   ├── Wait for configurator CI to pass
+   └── Merge SITL update PR
 
-4. Download and verify artifacts
-   ├── Download firmware hex files from nightly
-   ├── Download configurator artifacts from CI run
+4. Download configurator artifacts
+   ├── Download from CI run after SITL PR merged
    ├── Verify macOS DMGs (no cross-platform contamination)
    ├── Verify Windows SITL (cygwin1.dll present)
    ├── Verify Linux SITL (glibc <= 2.35)
@@ -646,19 +646,27 @@ git add resources/public/sitl/
 git commit -m "Update SITL binaries for <version>"
 ```
 
-### Building SITL (Fallback)
+### Building SITL Locally (Preferred for glibc Compatibility)
 
-Only build manually if no matching nightly is available.
+**Use the `build-sitl` skill** to build SITL binaries locally. This ensures:
+- Linux binaries meet glibc compatibility requirements (≤ 2.35 for Ubuntu 22.04 LTS)
+- Binaries match the exact firmware commit being released
 
-Use the `build-sitl` skill to build SITL for Linux:
 ```
-/skill build-sitl
+/build-sitl
 ```
 
-For releases, you need SITL binaries for all three platforms:
-- **Linux:** Build using the skill or cmake commands on a Linux system
-- **macOS:** Must be built on a macOS machine
-- **Windows:** Cross-compile with mingw-w64 or build on Windows
+The skill will guide you through building SITL. Build on a system with glibc 2.35 (Ubuntu 22.04 LTS) for maximum compatibility.
+
+**For releases, you need SITL binaries for all platforms:**
+- **Linux x64:** Build using the skill on Ubuntu 22.04 LTS (glibc 2.35)
+- **Linux arm64:** Build on arm64 Ubuntu 22.04 or use CI artifacts
+- **macOS:** Use CI artifacts (must be built on macOS)
+- **Windows:** Use CI artifacts (includes cygwin1.dll from PR #11203)
+
+**When to build locally vs use CI:**
+- **Build locally:** Linux x64 (to ensure glibc ≤ 2.35 compatibility)
+- **Use CI artifacts:** Windows (needs cygwin1.dll), macOS (needs macOS build), Linux arm64
 
 ### Linux SITL glibc Compatibility Requirement
 
