@@ -2,7 +2,7 @@
 
 This file tracks all active and completed projects in the INAV codebase.
 
-**Last Updated:** 2025-12-23
+**Last Updated:** 2025-12-27
 
 ---
 
@@ -25,6 +25,47 @@ This file tracks all active and completed projects in the INAV codebase.
 ---
 
 ## Recent Activity (Last 7 Days)
+
+### 2025-12-27: GPS Test Tools Documentation Task Assigned 📋
+
+**Manager** - Document GPS Testing Tools in README.md
+- **Goal:** Create comprehensive README.md for `claude/test_tools/inav/gps/` directory
+- **Purpose:** Main entry point documenting all 40+ GPS testing scripts and tools
+- **Special focus:** test_motion_simulator.sh orchestration workflow
+- **Scope:**
+  - Overview of all scripts grouped by purpose
+  - Quick start guide with common workflows
+  - Detailed documentation for test_motion_simulator.sh
+  - Reference existing specialized docs (README_GPS_BLACKBOX_TESTING.md, etc.)
+  - Script reference table with dependencies
+- **Benefits:** Easier onboarding, clear entry point, organized by use case
+- **Priority:** MEDIUM
+- **Estimated Time:** 2-3 hours
+- **Assignment Email:** `claude/manager/sent/2025-12-27-task-document-gps-test-tools.md`
+
+### 2025-12-26: Two New Tasks Assigned - 3D Auto-Fallback & GPS Fluctuation Investigation 📋
+
+**Manager** - Reproduce Issue #11202: GPS Signal Fluctuation with Synthetic Data
+- **Issue:** https://github.com/iNavFlight/inav/issues/11202
+- **Problem:** GPS instability in INAV 6.0-9.0 - EPH spikes, HDOP fluctuations (2-5), reduced sat count
+- **Key finding:** `gps_ublox_nav_hz` setting affects stability (10Hz bad, 6-9Hz better)
+- **Regression:** INAV 6.0 more stable than 7.0+, version 7.0 defaults to 5Hz despite settings
+- **Approach:** Create synthetic MSP GPS data using mspapi2 to reproduce the problem
+- **Testing:** Simulate fluctuating satellites/HDOP at different nav_hz rates (5Hz, 6Hz, 9Hz, 10Hz)
+- **Goal:** Isolate root cause, determine if firmware bug or GPS module limitation
+- **Priority:** MEDIUM-HIGH
+- **Estimated Time:** 6-8 hours
+- **Assignment Email:** `claude/manager/sent/2025-12-26-task-reproduce-issue-11202-gps-fluctuation.md`
+
+**Manager** - Implement 3D Hardware Acceleration Auto-Fallback
+- **Goal:** Auto-detect WebGL/3D support failures and gracefully fall back
+- **Current issue:** App probably crashes when 3D hardware acceleration fails
+- **Approach:** Add inline capability tests, implement automatic fallback to 2D
+- **Investigation:** Find what uses 3D (WebGL canvas, model viewer, etc.)
+- **Impact:** Better UX for users on VMs, remote desktop, or systems without GPU
+- **Priority:** MEDIUM
+- **Estimated Time:** 4-6 hours
+- **Assignment Email:** `claude/manager/sent/2025-12-26-task-3d-hardware-acceleration-auto-fallback.md`
 
 ### 2025-12-23: Five Projects Complete, Issue #9912 Analysis Progress ✅📊
 
@@ -405,6 +446,277 @@ Implement auto-detection algorithm based on ss_oled library that reads status re
 - ss_oled library detection: https://github.com/bitbank2/ss_oled/blob/01fb9a53388002bbb653c7c05d8e80ca413aa306/src/ss_oled.cpp#L810
 
 **Project Request:** `claude/manager/inbox/2025-12-22-2249-project-request-oled-detection.md`
+
+---
+
+### 📋 implement-3d-hardware-acceleration-auto-fallback
+
+**Status:** TODO
+**Type:** Feature Enhancement / Error Handling
+**Priority:** MEDIUM
+**Assignment:** ✉️ Assigned
+**Created:** 2025-12-26
+**Assignee:** Developer
+**Estimated Time:** 4-6 hours
+
+Implement automatic fallback when 3D hardware acceleration fails, instead of crashing or showing errors. Detect WebGL support at runtime and gracefully degrade to 2D alternatives.
+
+**Background:**
+inav-configurator has a setting to disable 3D hardware acceleration, but users without GPU support (VMs, remote desktop, older systems) may encounter crashes or errors when the app tries to use WebGL without checking if it's available.
+
+**Current Problem:**
+- App probably attempts to create WebGL contexts without checking for support
+- Likely crashes or shows cryptic errors when 3D fails
+- Users must manually find and enable the "disable 3D" setting
+- Poor UX for users without GPU support
+
+**Solution:**
+Auto-detect 3D capability and fall back gracefully when not available.
+
+**Implementation Steps:**
+
+1. **Investigation Phase:**
+   - Find existing "disable 3D hardware acceleration" setting
+   - Identify all code locations using WebGL/3D rendering
+   - Document what features are affected
+   - Common locations: magnetometer calibration 3D view, model viewers
+
+2. **Capability Detection:**
+   - Add inline tests for WebGL context creation
+   - Detect both full failure and partial/degraded support
+   - Test before attempting to use 3D features
+
+3. **Automatic Fallback:**
+   - Provide 2D alternatives where possible
+   - Show user-friendly message explaining fallback
+   - No crashes or cryptic errors
+   - Log details for debugging
+
+**Example Pattern:**
+```javascript
+function init3DView() {
+  const canvas = document.getElementById('3d-view');
+  let gl = null;
+
+  try {
+    gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  } catch (e) {
+    console.error('WebGL failed:', e);
+  }
+
+  if (!gl) {
+    console.warn('3D not available, using 2D fallback');
+    return init2DFallback(canvas);
+  }
+
+  return init3DRenderer(gl);
+}
+```
+
+**Search Hints:**
+- `getContext('webgl')`
+- `getContext('experimental-webgl')`
+- `THREE.js` or other 3D libraries
+- Settings containing "hardware acceleration" or "3D"
+
+**Testing Scenarios:**
+- Disable via configurator setting
+- Use `--disable-webgl` Chrome flag
+- Use `--disable-gpu` Electron flag
+- Test on VM without GPU passthrough
+
+**Benefits:**
+- Better UX for users without GPU support
+- No crashes on systems lacking 3D acceleration
+- Automatic detection vs manual setting
+- Makes app more robust and accessible
+- Easier to debug 3D issues
+
+**Deliverables:**
+- Investigation report of 3D usage locations
+- Capability detection implementation
+- Automatic fallback code
+- User-friendly messaging
+- Testing on 3D-disabled systems
+
+**Assignment Email:** `claude/manager/sent/2025-12-26-task-3d-hardware-acceleration-auto-fallback.md`
+
+---
+
+### 📋 reproduce-issue-11202-gps-fluctuation
+
+**Status:** TODO
+**Type:** Bug Investigation / Testing / Root Cause Analysis
+**Priority:** MEDIUM-HIGH
+**Assignment:** ✉️ Assigned
+**Created:** 2025-12-26
+**Assignee:** Developer
+**Estimated Time:** 6-8 hours
+
+Analyze and attempt to reproduce GitHub issue #11202 (GPS signal fluctuation) using predictable synthetic MSP GPS data to isolate the root cause.
+
+**Issue:** https://github.com/iNavFlight/inav/issues/11202
+
+**Problem Summary:**
+GPS signal instability affecting INAV 6.0-9.0 across multiple u-blox modules (M8, M9, M10):
+- Recurring EPH (estimated position error) spikes in flight logs
+- Wild HDOP fluctuations (2.0-5.0 instead of stable ~1.3)
+- Reduced satellite acquisition (15-18 sats instead of 25+)
+- Periodic positional corrections during navigation
+
+**Key Finding:**
+`gps_ublox_nav_hz` setting significantly affects performance:
+- Default 10Hz with 4 constellations: Unstable, low sat count
+- Reduced to 6Hz (M10) or 9Hz (M9): Improved sat count by 8-10, HDOP stable
+- INAV 7.0 defaults to 5Hz despite user settings (regression?)
+
+**Regression:**
+INAV 6.0 demonstrated superior stability compared to 7.0+
+
+**Investigation Approach:**
+
+1. **Analyze the Issue:**
+   - Understand EPH and HDOP metrics
+   - Review GPS processing code in INAV
+   - Compare 6.0 vs 7.0+ GPS handling
+   - Identify what changed to cause regression
+
+2. **Create Synthetic GPS Data:**
+   - Use mspapi2 to send MSP_RAW_GPS messages
+   - Simulate stable baseline (25 sats, HDOP 1.3)
+   - Simulate problem pattern (15-18 sats, HDOP 2-5)
+   - Test at different update rates (5Hz, 6Hz, 9Hz, 10Hz)
+
+3. **Test Different nav_hz Settings:**
+   ```bash
+   set gps_ublox_nav_hz = 10  # Default, problematic
+   set gps_ublox_nav_hz = 9   # M9 workaround
+   set gps_ublox_nav_hz = 6   # M10 workaround
+   set gps_ublox_nav_hz = 5   # INAV 7.0 default
+   ```
+
+4. **Compare INAV Versions:**
+   - Test on 6.0 (stable), 7.0 (regression), 9.0 (current)
+   - Identify code differences
+   - Find root cause of regression
+
+**Key Questions:**
+- Why does nav_hz affect satellite acquisition?
+- What causes EPH spikes and HDOP fluctuations?
+- What changed between 6.0 and 7.0?
+- Is this firmware bug or GPS module limitation?
+
+**Synthetic Data Script Example:**
+```python
+import mspapi2
+import time
+
+fc = mspapi2.FlightController("/dev/ttyACM0")
+
+# Simulate fluctuating GPS (the problem)
+for i in range(100):
+    if i % 10 < 5:
+        # Stable period
+        send_gps(sat_count=25, hdop=130)  # HDOP 1.3
+    else:
+        # Unstable period (EPH spike)
+        send_gps(sat_count=16, hdop=450)  # HDOP 4.5
+    time.sleep(0.1)  # 10Hz
+```
+
+**Code Locations to Check:**
+- `src/main/io/gps.c` - Main GPS handling
+- `src/main/io/gps_ublox.c` - u-blox specific code
+- `src/main/navigation/navigation.c` - Position corrections
+- EPH calculation and HDOP filtering
+- Satellite filtering logic
+
+**Safety Impact:**
+- GPS instability affects navigation reliability
+- RTH may behave unpredictably
+- Position hold could drift
+- Important for user safety
+
+**Deliverables:**
+1. Analysis report of the issue and GPS code
+2. Synthetic GPS data generator script (Python/mspapi2)
+3. Reproduction test results (reproducible or not)
+4. Root cause analysis (if found)
+5. Comparison across INAV versions
+6. Proposed fixes or next investigation steps
+
+**Success Criteria:**
+- Understood the issue and GPS processing
+- Created reusable synthetic GPS test script
+- Tested multiple nav_hz settings and INAV versions
+- Determined if issue is reproducible with synthetic data
+- Identified potential root cause or next steps
+
+**Assignment Email:** `claude/manager/sent/2025-12-26-task-reproduce-issue-11202-gps-fluctuation.md`
+
+---
+
+### 📋 document-gps-test-tools
+
+**Status:** TODO
+**Type:** Documentation
+**Priority:** MEDIUM
+**Assignment:** ✉️ Assigned
+**Created:** 2025-12-27
+**Assignee:** Developer
+**Estimated Time:** 2-3 hours
+
+Create comprehensive README.md for the GPS testing tools directory to serve as the main entry point for understanding and using all scripts and tools.
+
+**Background:**
+The `claude/test_tools/inav/gps/` directory contains 40+ scripts for GPS testing, motion simulation, blackbox logging, and FC configuration. Several specialized README files exist (README_GPS_BLACKBOX_TESTING.md, BLACKBOX_SERIAL_WORKFLOW.md, etc.), but there's no main overview or entry point.
+
+**Problem:**
+- Hard to find the right tool for a specific task
+- No quick start guide for common workflows
+- test_motion_simulator.sh (orchestration script) lacks detailed documentation
+- Unclear how scripts work together
+- No reference table showing dependencies
+
+**Solution:**
+Create main README.md that:
+- Provides quick start examples
+- Groups scripts by purpose (motion simulation, testing, configuration, monitoring)
+- Documents test_motion_simulator.sh workflow in detail
+- References existing specialized documentation
+- Includes script reference table
+- Shows common use cases and workflows
+
+**Special Focus - test_motion_simulator.sh:**
+Orchestrates motion simulation testing by:
+- Starting CRSF RC sender (keeps SITL active + receives telemetry)
+- Starting GPS altitude injection via MSP
+- Coordinating two processes on separate MSP connections
+- Collecting and displaying results
+
+Documentation should explain:
+- How the orchestration works
+- Why 3-second connection delay
+- Process management and error handling
+- Log file locations and interpretation
+- Available profiles (climb, descent, hover, sine)
+
+**Deliverables:**
+1. `claude/test_tools/inav/gps/README.md` - Main entry point
+2. Quick start guide with common examples
+3. Comprehensive tool/script reference
+4. Use case workflows
+5. Script reference table with dependencies
+6. Enhanced test_motion_simulator.sh documentation
+
+**Benefits:**
+- Easier onboarding for GPS testing
+- Clear entry point for all tools
+- Less time hunting for the right script
+- Better understanding of available infrastructure
+- Comprehensive reference for future work
+
+**Assignment Email:** `claude/manager/sent/2025-12-27-task-document-gps-test-tools.md`
 
 ---
 
