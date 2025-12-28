@@ -34,7 +34,24 @@ git clone git@github.com:sensei-hacker/inav-configurator.git inav-configurator
 git clone https://github.com/your-fork/uNAVlib.git uNAVlib
 ```
 
-### 3. Start Claude Code
+### 3. Set Up Context Files for Claude Code
+
+Create symlinks so Claude Code automatically reads context when working in the third-party repos:
+
+```bash
+# INAV firmware context
+ln -s ../claude/third-party-repos/inav-CLAUDE.md inav/CLAUDE.md
+
+# INAV Configurator context
+ln -s ../claude/third-party-repos/inav-configurator-CLAUDE.md inav-configurator/CLAUDE.md
+
+# INAV Configurator transpiler context
+ln -s ../../../claude/third-party-repos/inav-configurator-transpiler-CLAUDE.md inav-configurator/js/transpiler/CLAUDE.md
+```
+
+These symlinks allow Claude Code to automatically load context when working in those directories, while keeping the actual context files version-controlled in this repository.
+
+### 4. Start Claude Code
 
 Start Claude from the project root directory:
 
