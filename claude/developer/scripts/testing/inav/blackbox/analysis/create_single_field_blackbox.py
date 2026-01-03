@@ -6,7 +6,7 @@ This helps isolate encoding issues by testing the simplest case.
 
 import re
 
-BLACKBOX_C = "/home/raymorris/Documents/planes/inavflight/inav/src/main/blackbox/blackbox.c"
+BLACKBOX_C = "~/inavflight/inav/src/main/blackbox/blackbox.c"
 
 # Read the original file
 with open(BLACKBOX_C, 'r') as f:

@@ -217,7 +217,7 @@ This shows:
 ## 📦 Installation
 
 ```bash
-cd /home/raymorris/Documents/planes/inavflight/mspapi2
+cd mspapi2
 pip install -e .
 ```
 

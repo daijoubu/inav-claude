@@ -28,7 +28,7 @@ Both produced logs with **290 frames failing to decode** out of ~838 total frame
 
 ## Correct Modifications Made
 
-### File: `/home/raymorris/Documents/planes/inavflight/inav/src/main/blackbox/blackbox.c`
+### File: `inav/src/main/blackbox/blackbox.c`
 
 #### 1. Field Definitions Array (Lines 205-209)
 ```c
@@ -103,7 +103,7 @@ static void writeInterframe(void)
 
 ### Build Information
 - **Target:** JHEMCUF435 (AT32F435 MCU)
-- **Firmware:** `/home/raymorris/Documents/planes/inavflight/inav/build/inav_9.0.0_JHEMCUF435.hex`
+- **Firmware:** `inav/build/inav_9.0.0_JHEMCUF435.hex`
 - **Build timestamp:** Dec 29 2025 15:44:25
 - **Build method:** Full clean rebuild (`make clean_JHEMCUF435 && make JHEMCUF435`)
 
@@ -122,7 +122,7 @@ When we downloaded blackbox logs after flashing the corrected firmware, the head
 ### Problem 2: flash_erase Removed ALL Settings
 ```bash
 # ⚠️ THIS WAS A MISTAKE - Erased ALL settings including calibration!
-/home/raymorris/Documents/planes/inavflight/.claude/skills/flash-firmware-dfu/fc-cli.py "flash_erase" /dev/ttyACM0
+.claude/skills/flash-firmware-dfu/fc-cli.py "flash_erase" /dev/ttyACM0
 ```
 
 **Result:** FC lost all configuration including:
@@ -159,7 +159,7 @@ When we downloaded blackbox logs after flashing the corrected firmware, the head
 - **Flash:** Erased (should have clean flash ready for new header)
 
 ### Modified Source Files
-- `/home/raymorris/Documents/planes/inavflight/inav/src/main/blackbox/blackbox.c`
+- `inav/src/main/blackbox/blackbox.c`
   - blackboxMainFields[] reduced to 2 elements
   - writeIntraframe() only writes 2 fields
   - writeInterframe() only writes time delta
@@ -287,7 +287,7 @@ These are harmless - variables/functions exist for the commented-out code.
 
 To restore the original 78-field firmware:
 ```bash
-cd /home/raymorris/Documents/planes/inavflight/inav
+cd inav
 git checkout src/main/blackbox/blackbox.c
 cd build
 make clean_JHEMCUF435

@@ -50,7 +50,7 @@ Hardware benchmark firmware is built and ready to flash to **NamimnoRC 2.4 GHz F
 
 ### Location
 
-**Base directory:** `/home/raymorris/Documents/planes/inavflight/PrivacyLRS/`
+**Base directory:** `PrivacyLRS/`
 
 **Firmware files:**
 ```
@@ -98,7 +98,7 @@ src/.pio/build/NamimnoRC_FLASH_2400_TX_via_STLINK/firmware.*
 #### Option 2: Via ST-LINK
 
 ```bash
-cd /home/raymorris/Documents/planes/inavflight/PrivacyLRS/src
+cd PrivacyLRS/src
 
 # Flash firmware
 PLATFORMIO_BUILD_FLAGS="-DRegulatory_Domain_ISM_2400 -DUSE_ENCRYPTION -DRUN_CHACHA_BENCHMARK -DDEBUG_LOG" \
@@ -110,7 +110,7 @@ PLATFORMIO_BUILD_FLAGS="-DRegulatory_Domain_ISM_2400 -DUSE_ENCRYPTION -DRUN_CHAC
 #### Method 1: PlatformIO Monitor
 
 ```bash
-cd /home/raymorris/Documents/planes/inavflight/PrivacyLRS/src
+cd PrivacyLRS/src
 pio device monitor -b 460800
 ```
 
@@ -411,7 +411,7 @@ Once we have the hardware results, we need to:
 After testing, to restore normal (non-benchmark) firmware:
 
 ```bash
-cd /home/raymorris/Documents/planes/inavflight/PrivacyLRS/src
+cd PrivacyLRS/src
 
 # Build normal firmware (without benchmark)
 PLATFORMIO_BUILD_FLAGS="-DRegulatory_Domain_ISM_2400 -DUSE_ENCRYPTION" \

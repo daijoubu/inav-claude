@@ -286,7 +286,7 @@ navEPV = 1494 cm (14.94 m)
 
 **SITL Blackbox Logs (all 15ms):**
 ```bash
-/home/raymorris/Documents/planes/inavflight/inav/build_sitl/
+inav/build_sitl/
 ├── 2025_12_27_123723.TXT (1.6M)
 ├── 2025_12_27_125610.TXT (1.6M)
 ├── 2025_12_27_132246.TXT (1.6M)  ← Latest test

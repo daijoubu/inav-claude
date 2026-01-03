@@ -5,7 +5,7 @@
 
 set -e
 
-WORKSPACE_ROOT="/home/raymorris/Documents/planes/inavflight"
+WORKSPACE_ROOT="$HOME/inavflight"
 DAYS_BACK=7
 
 echo "=== PR Documentation Compliance Check ==="

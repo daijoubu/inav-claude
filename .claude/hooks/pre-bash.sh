@@ -3,7 +3,7 @@
 # PreToolUse hook for Bash commands
 # Checks for git commit and reminds Claude not to mention itself
 
-LOG_FILE="/home/raymorris/Documents/planes/inavflight/.claude/hooks/pre-bash.log"
+LOG_FILE="$HOME/inavflight/.claude/hooks/pre-bash.log"
 
 # Read tool input from stdin
 TOOL_INPUT=$(cat)

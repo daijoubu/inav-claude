@@ -37,7 +37,7 @@ This skill runs the PrivacyLRS test suite, which consists of 11 test categories 
 
 2. You must be in the PrivacyLRS source directory:
    ```bash
-   cd /home/raymorris/Documents/planes/inavflight/PrivacyLRS/src
+   cd $HOME/inavflight/PrivacyLRS/src
    ```
 
 ## Usage
@@ -46,7 +46,7 @@ This skill runs the PrivacyLRS test suite, which consists of 11 test categories 
 
 **Basic command:**
 ```bash
-cd /home/raymorris/Documents/planes/inavflight/PrivacyLRS/src
+cd $HOME/inavflight/PrivacyLRS/src
 PLATFORMIO_BUILD_FLAGS="-DRegulatory_Domain_ISM_2400" pio test -e native
 ```
 
@@ -60,7 +60,7 @@ PLATFORMIO_BUILD_FLAGS="-DRegulatory_Domain_ISM_2400" pio test -e native
 
 **Single test category:**
 ```bash
-cd /home/raymorris/Documents/planes/inavflight/PrivacyLRS/src
+cd $HOME/inavflight/PrivacyLRS/src
 pio test -e native --filter test_crc
 ```
 
@@ -154,7 +154,7 @@ To test security findings from the comprehensive analysis, create:
 **How to create encryption tests:**
 ```bash
 # Create test directory
-mkdir -p /home/raymorris/Documents/planes/inavflight/PrivacyLRS/src/test/test_encryption
+mkdir -p $HOME/inavflight/PrivacyLRS/src/test/test_encryption
 
 # Create test file (example structure)
 cat > test_encryption/test_chacha20.cpp <<'EOF'
@@ -280,7 +280,7 @@ python3 -m pip install platformio
 **Solution:**
 ```bash
 # Ensure you're in correct directory
-cd /home/raymorris/Documents/planes/inavflight/PrivacyLRS/src
+cd $HOME/inavflight/PrivacyLRS/src
 # Verify platformio.ini exists
 ls platformio.ini
 ```
@@ -288,7 +288,7 @@ ls platformio.ini
 ### Issue: "Platform 'native' is not installed"
 **Solution:**
 ```bash
-cd /home/raymorris/Documents/planes/inavflight/PrivacyLRS/src
+cd $HOME/inavflight/PrivacyLRS/src
 platformio pkg install --platform native
 platformio pkg update
 ```
@@ -307,7 +307,7 @@ git diff
 ```bash
 # Verify you're in PrivacyLRS/src directory
 pwd
-# Should show: /home/raymorris/Documents/planes/inavflight/PrivacyLRS/src
+# Should show: $HOME/inavflight/PrivacyLRS/src
 ```
 
 ## Performance Benchmarks

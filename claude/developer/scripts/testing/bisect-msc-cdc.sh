@@ -13,7 +13,7 @@
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REPO_ROOT="/home/raymorris/Documents/planes/inavflight"
+REPO_ROOT="~/inavflight"
 TARGET="CORVON743V1"
 TARGET_BACKUP="/tmp/${TARGET}_backup"
 

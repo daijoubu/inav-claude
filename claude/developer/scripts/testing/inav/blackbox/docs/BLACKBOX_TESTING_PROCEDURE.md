@@ -137,7 +137,7 @@ save
 For reproducible tests without manual intervention:
 
 ```bash
-cd /home/raymorris/Documents/planes/inavflight/claude/test_tools/inav/gps
+cd claude/test_tools/inav/gps
 
 # Run complete automated test
 ./run_20field_test.sh /dev/ttyACM0 5
@@ -159,7 +159,7 @@ This method prevents fields from being logged by changing their `CONDITION()` fr
 Edit `inav/src/main/blackbox/blackbox.c`:
 
 ```bash
-cd /home/raymorris/Documents/planes/inavflight/inav/src/main/blackbox
+cd inav/src/main/blackbox
 ```
 
 **To disable specific fields:**
@@ -194,7 +194,7 @@ grep -n "CONDITION(ALWAYS)" blackbox.c | head -20
 ### Step 2: Build Firmware
 
 ```bash
-cd /home/raymorris/Documents/planes/inavflight/inav/build
+cd inav/build
 make JHEMCUF435  # Or your target name
 ```
 
@@ -207,7 +207,7 @@ ls -lh inav_9.0.0_JHEMCUF435.hex
 
 **Option A: Using the flash-firmware-dfu skill**
 ```bash
-cd /home/raymorris/Documents/planes/inavflight/inav/build
+cd inav/build
 
 # Reboot to DFU mode
 ../../.claude/skills/flash-firmware-dfu/reboot-to-dfu.py /dev/ttyACM0
@@ -243,7 +243,7 @@ done
 
 **Method A: MSP Dataflash Erase (RECOMMENDED)**
 ```bash
-cd /home/raymorris/Documents/planes/inavflight/claude/test_tools/inav/gps
+cd claude/test_tools/inav/gps
 
 # Erase ONLY blackbox data using MSP code 72 (preserves settings)
 python3 -c "
@@ -282,7 +282,7 @@ The FC needs to arm and run to generate blackbox data.
 
 **Option A: Use continuous MSP RC sender (no HITL)**
 ```bash
-cd /home/raymorris/Documents/planes/inavflight/claude/test_tools/inav/gps
+cd claude/test_tools/inav/gps
 
 # This script arms the FC and sends continuous RC data
 python3 continuous_msp_rc_sender.py /dev/ttyACM0
@@ -299,7 +299,7 @@ python3 continuous_msp_rc_sender.py /dev/ttyACM0
 
 **Method A: MSP Download (PREFERRED)**
 ```bash
-cd /home/raymorris/Documents/planes/inavflight/claude/test_tools/inav/gps
+cd claude/test_tools/inav/gps
 
 # Download using MSP protocol - works while FC is running
 python3 download_blackbox_from_fc.py /dev/ttyACM0 test_results/blackbox_test_$(date +%Y%m%d_%H%M%S).TXT
@@ -326,7 +326,7 @@ head -5 test_results/blackbox_test_*.TXT  # Check header
 ### Step 7: Decode and Analyze
 
 ```bash
-cd /home/raymorris/Documents/planes/inavflight/claude/test_tools/inav/gps
+cd claude/test_tools/inav/gps
 
 # Decode the log
 ~/Documents/planes/inavflight/blackbox-tools/obj/blackbox_decode test_results/blackbox_test_*.TXT
@@ -346,7 +346,7 @@ head -1 test_results/blackbox_test_*.01.csv | tr ',' '\n' | nl
 ### Step 8: Restore Original Code
 
 ```bash
-cd /home/raymorris/Documents/planes/inavflight/inav
+cd inav
 git restore src/main/blackbox/blackbox.c
 ```
 
@@ -355,7 +355,7 @@ git restore src/main/blackbox/blackbox.c
 ### Create Test Automation Script
 
 ```bash
-cat > /home/raymorris/Documents/planes/inavflight/claude/test_tools/inav/gps/run_field_test.sh << 'EOF'
+cat > claude/test_tools/inav/gps/run_field_test.sh << 'EOF'
 #!/bin/bash
 # Automated blackbox field testing
 
@@ -377,7 +377,7 @@ echo "Device: $DEVICE"
 
 # Step 1: Build firmware
 echo "Building firmware..."
-cd /home/raymorris/Documents/planes/inavflight/inav/build
+cd inav/build
 make $TARGET
 
 # Step 2: Flash firmware
@@ -407,7 +407,7 @@ done
 
 # Step 4: Generate test data
 echo "Generating test data (15 seconds)..."
-cd /home/raymorris/Documents/planes/inavflight/claude/test_tools/inav/gps
+cd claude/test_tools/inav/gps
 timeout 15 python3 continuous_msp_rc_sender.py $DEVICE || true
 
 # Step 5: Download blackbox
@@ -428,12 +428,12 @@ echo "Fields logged:"
 head -1 ${OUTPUT_FILE%.TXT}.01.csv | tr ',' '\n' | wc -l
 EOF
 
-chmod +x /home/raymorris/Documents/planes/inavflight/claude/test_tools/inav/gps/run_field_test.sh
+chmod +x claude/test_tools/inav/gps/run_field_test.sh
 ```
 
 **Usage:**
 ```bash
-cd /home/raymorris/Documents/planes/inavflight/claude/test_tools/inav/gps
+cd claude/test_tools/inav/gps
 
 # After modifying blackbox.c to disable fields:
 ./run_field_test.sh "my_test_name" JHEMCUF435 /dev/ttyACM0
@@ -535,7 +535,7 @@ lsusb | grep -i "DFU\|STM\|AT32"
 
 ```bash
 # Disable all fields except loopIteration and time
-cd /home/raymorris/Documents/planes/inavflight/inav/src/main/blackbox
+cd inav/src/main/blackbox
 sed -i '207,398s/CONDITION(ALWAYS)/CONDITION(NEVER)/g' blackbox.c
 sed -i '207s/CONDITION(NEVER)/CONDITION(ALWAYS)/' blackbox.c
 sed -i '209s/CONDITION(NEVER)/CONDITION(ALWAYS)/' blackbox.c
@@ -549,7 +549,7 @@ arm-none-eabi-objcopy -I ihex inav_9.0.0_JHEMCUF435.hex -O binary inav_9.0.0_JHE
 dfu-util -d 2e3c:df11 --alt 0 -s 0x08000000:force:leave -D inav_9.0.0_JHEMCUF435.bin
 
 # Generate data
-cd /home/raymorris/Documents/planes/inavflight/claude/test_tools/inav/gps
+cd claude/test_tools/inav/gps
 timeout 15 python3 continuous_msp_rc_sender.py /dev/ttyACM0
 
 # Download and test
@@ -557,7 +557,7 @@ python3 download_blackbox_from_fc.py /dev/ttyACM0 test_results/test.TXT
 ~/Documents/planes/inavflight/blackbox-tools/obj/blackbox_decode test_results/test.TXT 2>&1 | grep "frames failed"
 
 # Restore
-cd /home/raymorris/Documents/planes/inavflight/inav
+cd inav
 git restore src/main/blackbox/blackbox.c
 ```
 
