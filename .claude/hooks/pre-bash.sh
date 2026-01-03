@@ -35,6 +35,16 @@ cat <<'EOF'
 }
 EOF
 echo "force push - told not to" >> "$LOG_FILE"
+
+elif echo "$TOOL_INPUT" | egrep -q '"command".*git add \-A'; then
+cat <<'EOF'
+{
+  "additionalContext": "STOP! IMPORTANT: Do NOT run 'git add -A'. Add the specific files you actually want."
+}
+EOF
+echo "git add -A, told not to" >> "$LOG_FILE"
+
+
 else
     echo "  -> Not a git commit, allowing" >> "$LOG_FILE"
 fi
