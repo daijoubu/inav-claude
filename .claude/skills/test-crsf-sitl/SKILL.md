@@ -34,10 +34,10 @@ Use this skill when testing Pull Requests that modify CRSF telemetry:
 2. **INAV Configurator** - Built and ready (`npm install` completed)
 3. **Python 3** - For testing scripts
 4. **MSP Library** - mspapi2 (recommended) or uNAVlib (older alternative)
-   - **mspapi2:** `/home/raymorris/Documents/planes/inavflight/mspapi2` (https://github.com/xznhj8129/mspapi2)
+   - **mspapi2:** `$HOME/inavflight/mspapi2` (https://github.com/xznhj8129/mspapi2)
      - Install: `cd mspapi2 && pip install .`
      - Docs: `mspapi2/docs/GETTING_STARTED.md`
-   - **uNAVlib:** `/home/raymorris/Documents/planes/inavflight/uNAVlib` (https://github.com/xznhj8129/uNAVlib)
+   - **uNAVlib:** `$HOME/inavflight/uNAVlib` (https://github.com/xznhj8129/uNAVlib)
      - Use for legacy scripts only, prefer mspapi2 for new work
 
 ### Testing Scripts
@@ -78,7 +78,7 @@ Use this skill when testing Pull Requests that modify CRSF telemetry:
 Before building, you MUST enable CRSF telemetry compilation:
 
 ```bash
-cd /home/raymorris/Documents/planes/inavflight/inav
+cd $HOME/inavflight/inav
 
 # Edit src/main/target/SITL/target.h
 # Find line ~97: #undef USE_TELEMETRY_CRSF
@@ -97,7 +97,7 @@ After building and starting SITL, you MUST also enable the TELEMETRY feature fla
 
 **Using Python Script (Recommended):**
 ```bash
-cd /home/raymorris/Documents/planes/inavflight/inav
+cd $HOME/inavflight/inav
 python3 enable_telemetry_feature.py
 ```
 
@@ -127,7 +127,7 @@ After both steps, SITL logs should show:
 ### Step 2: Build SITL for Target PR
 
 ```bash
-cd /home/raymorris/Documents/planes/inavflight/inav
+cd $HOME/inavflight/inav
 
 # Fetch PR (example: PR #11025)
 git fetch origin pull/11025/head:pr-11025-crsf-telem
@@ -162,7 +162,7 @@ file bin/SITL.elf
 
 ```bash
 # Start Configurator
-cd /home/raymorris/Documents/planes/inavflight/inav-configurator
+cd $HOME/inavflight/inav-configurator
 npm start
 ```
 
@@ -170,7 +170,7 @@ npm start
 
 1. **Start SITL first:**
    ```bash
-   cd /home/raymorris/Documents/planes/inavflight/inav/build_sitl_pr11025
+   cd $HOME/inavflight/inav/build_sitl_pr11025
    ./bin/SITL.elf &
    ```
 
@@ -204,7 +204,7 @@ npm start
 **IMPORTANT:** Use the bidirectional RC sender that handles both RC transmission and telemetry reception!
 
 ```bash
-cd /home/raymorris/Documents/planes/inavflight/claude/developer/scripts/testing/inav/crsf
+cd $HOME/inavflight/claude/developer/scripts/testing/inav/crsf
 
 # Test for 30 seconds with telemetry display
 python3 crsf_rc_sender.py 2 --rate 50 --duration 30 --show-telemetry
@@ -537,7 +537,7 @@ If seeing CRC errors, check for:
 
 **Current Location:**
 ```
-/home/raymorris/Documents/planes/inavflight/claude/developer/scripts/testing/inav/crsf/
+$HOME/inavflight/claude/developer/scripts/testing/inav/crsf/
 ├── crsf_rc_sender.py              # Bidirectional RC sender + telemetry reader
 ├── crsf_stream_parser.py          # Telemetry frame parser and analyzer
 ├── configure_sitl_crsf.py         # MSP configuration for CRSF
@@ -546,14 +546,14 @@ If seeing CRC errors, check for:
 ├── analyze_frame_0x09.py          # Altitude/vario frame analyzer
 └── test_telemetry_simple.py       # Simple telemetry test
 
-/home/raymorris/Documents/planes/inavflight/claude/developer/scripts/testing/inav/docs/
+$HOME/inavflight/claude/developer/scripts/testing/inav/docs/
 └── TCP_CONNECTION_LIMITATION.md   # Important documentation about TCP constraints
 ```
 
 ### Build Artifacts
 
 ```
-/home/raymorris/Documents/planes/inavflight/inav/build_sitl_pr11025/
+$HOME/inavflight/inav/build_sitl_pr11025/
 ├── bin/SITL.elf               # SITL binary
 └── eeprom.bin                 # Configuration (32KB, created after config)
 ```
@@ -561,7 +561,7 @@ If seeing CRC errors, check for:
 ### Documentation
 
 ```
-/home/raymorris/Documents/planes/inavflight/claude/developer/
+$HOME/inavflight/claude/developer/
 └── crsf-sitl-testing-findings.md  # Detailed findings and lessons learned
 ```
 

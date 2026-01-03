@@ -6,7 +6,7 @@ In the 2-field minimal test (only loopIteration + time), 290 out of ~838 P-frame
 
 ## Field Definitions
 
-From `/home/raymorris/Documents/planes/inavflight/inav/src/main/blackbox/blackbox.c` line 208:
+From `inav/src/main/blackbox/blackbox.c` line 208:
 
 ```c
 {"time", -1, UNSIGNED,
@@ -21,7 +21,7 @@ From `/home/raymorris/Documents/planes/inavflight/inav/src/main/blackbox/blackbo
 
 ## STRAIGHT_LINE Predictor Definition
 
-From `/home/raymorris/Documents/planes/inavflight/inav/src/main/blackbox/blackbox_fielddefs.h` lines 119-120:
+From `inav/src/main/blackbox/blackbox_fielddefs.h` lines 119-120:
 
 > "Predict that the slope between this field and the previous item is the same as that between the past two history items"
 
@@ -203,7 +203,7 @@ Since the math is correct, the bug must be in:
 
 ## Files for Reference
 
-- Encoder: `/home/raymorris/Documents/planes/inavflight/inav/src/main/blackbox/blackbox.c`
-- Field definitions: `/home/raymorris/Documents/planes/inavflight/inav/src/main/blackbox/blackbox_fielddefs.h`
-- Decoder: `/home/raymorris/Documents/planes/inavflight/blackbox-tools/src/parser.c`
-- Predictor logic: `/home/raymorris/Documents/planes/inavflight/blackbox-tools/src/parser.c:630-700`
+- Encoder: `inav/src/main/blackbox/blackbox.c`
+- Field definitions: `inav/src/main/blackbox/blackbox_fielddefs.h`
+- Decoder: `blackbox-tools/src/parser.c`
+- Predictor logic: `blackbox-tools/src/parser.c:630-700`

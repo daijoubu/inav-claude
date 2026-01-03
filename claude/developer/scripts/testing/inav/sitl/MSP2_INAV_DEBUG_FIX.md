@@ -94,8 +94,7 @@ debug[7] = 1025000 (0x000fa3e8)
 ### Quick Start
 
 ```bash
-cd /home/raymorris/Documents/planes/inavflight
-
+cd 
 # 1. Start SITL (if not running)
 cd inav/build_sitl
 ./bin/SITL.elf > /tmp/sitl.log 2>&1 &

@@ -21,7 +21,7 @@ import sys
 import difflib
 
 # Configuration
-INAV_ROOT = "/home/raymorris/Documents/planes/inavflight/inav"
+INAV_ROOT = "~/inavflight/inav"
 TARGET_DIR = f"{INAV_ROOT}/src/main/target"
 BEFORE_DIR = "/tmp/omnibus-preprocess-before"
 AFTER_DIR = "/tmp/omnibus-preprocess-after"

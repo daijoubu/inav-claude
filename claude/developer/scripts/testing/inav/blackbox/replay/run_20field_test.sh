@@ -4,7 +4,7 @@
 
 set -e
 
-FC_CLI="/home/raymorris/Documents/planes/inavflight/.claude/skills/flash-firmware-dfu/fc-cli.py"
+FC_CLI="~/inavflight/.claude/skills/flash-firmware-dfu/fc-cli.py"
 PORT="${1:-/dev/ttyACM0}"
 DURATION="${2:-10}"
 
@@ -17,7 +17,7 @@ echo ""
 
 # Step 1: Configure blackbox settings via CLI (most reliable method)
 echo "[Step 1/4] Configuring blackbox settings..."
-cd /home/raymorris/Documents/planes/inavflight/claude/test_tools/inav/gps
+cd ~/inavflight/claude/test_tools/inav/gps
 python3 configure_blackbox_via_cli.py --port $PORT --rate-denom 100
 echo "  ✓ Configuration complete, FC rebooted"
 
@@ -34,7 +34,7 @@ done
 
 # Step 3: Erase blackbox flash
 echo "[Step 3/4] Erasing blackbox flash..."
-cd /home/raymorris/Documents/planes/inavflight/claude/test_tools/inav/gps
+cd ~/inavflight/claude/test_tools/inav/gps
 if ! python3 erase_blackbox_flash.py $PORT; then
   echo "✗ Flash erase failed!"
   exit 1

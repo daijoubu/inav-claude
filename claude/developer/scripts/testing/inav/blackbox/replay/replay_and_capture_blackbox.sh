@@ -36,7 +36,7 @@
 
 set -e
 
-cd /home/raymorris/Documents/planes/inavflight/inav/build_sitl
+cd ~/inavflight/inav/build_sitl
 
 echo "=== Step 1: Start SITL fresh ==="
 pkill -9 SITL.elf 2>/dev/null || true
@@ -49,7 +49,7 @@ echo "✓ SITL started"
 
 echo ""
 echo "=== Step 2: Configure blackbox FILE logging ==="
-cd /home/raymorris/Documents/planes/inavflight
+cd ~/inavflight
 python3 claude/test_tools/inav/gps/configure_sitl_blackbox_file.py --port 5760 --rate-denom 2
 
 echo ""
@@ -90,7 +90,7 @@ sleep 5
 
 echo ""
 echo "=== Step 10: Find blackbox log ==="
-cd /home/raymorris/Documents/planes/inavflight/inav/build_sitl
+cd ~/inavflight/inav/build_sitl
 BBLOG=$(ls -t *.TXT 2>/dev/null | head -1)
 if [ -n "$BBLOG" ]; then
     echo "✓ Blackbox log found: $BBLOG"

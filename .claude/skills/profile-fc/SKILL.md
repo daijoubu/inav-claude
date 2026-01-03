@@ -76,7 +76,7 @@ updatePositionEstimator();
 ### Step 3: Build Firmware
 
 ```bash
-cd /home/raymorris/Documents/planes/inavflight/inav/build
+cd $HOME/inavflight/inav/build
 make TARGETNAME  # e.g., make JHEMCUF435
 ```
 
@@ -87,7 +87,7 @@ Build time: ~30-60 seconds for incremental builds.
 DFU-util requires `.bin` format, but make produces `.hex`:
 
 ```bash
-cd /home/raymorris/Documents/planes/inavflight/inav
+cd $HOME/inavflight/inav
 HEX=$(ls build/inav_*TARGETNAME*.hex | head -1)
 BIN="${HEX%.hex}.bin"
 arm-none-eabi-objcopy -I ihex -O binary "$HEX" "$BIN"
@@ -96,7 +96,7 @@ arm-none-eabi-objcopy -I ihex -O binary "$HEX" "$BIN"
 ### Step 5: Reboot FC to DFU Mode
 
 ```bash
-/home/raymorris/Documents/planes/inavflight/.claude/skills/flash-firmware-dfu/fc-cli.py dfu /dev/ttyACM0
+$HOME/inavflight/.claude/skills/flash-firmware-dfu/fc-cli.py dfu /dev/ttyACM0
 ```
 
 **Wait 2-3 seconds** for FC to enter DFU mode before flashing.
@@ -119,7 +119,7 @@ Flash time: ~10-15 seconds.
 **Wait 5 seconds** for FC to reboot, then:
 
 ```bash
-/home/raymorris/Documents/planes/inavflight/.claude/skills/flash-firmware-dfu/fc-cli.py tasks /dev/ttyACM0
+$HOME/inavflight/.claude/skills/flash-firmware-dfu/fc-cli.py tasks /dev/ttyACM0
 ```
 
 ### Step 8: Record Results
@@ -154,8 +154,8 @@ if [ -z "$TARGET" ] || [ -z "$DESCRIPTION" ]; then
     exit 1
 fi
 
-INAV_ROOT="/home/raymorris/Documents/planes/inavflight/inav"
-FC_CLI="/home/raymorris/Documents/planes/inavflight/.claude/skills/flash-firmware-dfu/fc-cli.py"
+INAV_ROOT="$HOME/inavflight/inav"
+FC_CLI="$HOME/inavflight/.claude/skills/flash-firmware-dfu/fc-cli.py"
 
 echo "=== Profiling: $DESCRIPTION ==="
 echo ""

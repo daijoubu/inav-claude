@@ -3,7 +3,7 @@
 
 set -e
 
-INAV_ROOT="${1:-/home/raymorris/Documents/planes/inavflight/inav}"
+INAV_ROOT="${1:-~/inavflight/inav}"
 TARGET_DIR="$INAV_ROOT/src/main/target"
 
 # Define which targets belong in which directories

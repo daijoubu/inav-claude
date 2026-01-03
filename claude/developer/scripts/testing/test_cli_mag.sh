@@ -1,7 +1,7 @@
 #!/bin/bash
 # Test script to interact with SITL CLI and test align_mag_roll
 
-cd /home/raymorris/Documents/planes/inavflight/build_sitl/bin
+cd ~/inavflight/build_sitl/bin
 
 # Kill any existing SITL instances
 pkill -9 SITL.elf 2>/dev/null
