@@ -403,9 +403,9 @@ Created `msp_mock_responder_tcp.py` - Python TCP server that mimics MSP firmware
 - `inav/src/main/fc/fc_tasks.c` - Changed maxCommandsPerCycle from 1 to 2
 - `inav/src/main/msp/msp_serial.c` - Added debug logging
 - `inav/src/main/drivers/serial_tcp.c` - Added send() error handling
-- `claude/test_tools/inav/msp_benchmark_serial.py`
-- `claude/test_tools/inav/msp_mock_responder.py`
-- `claude/test_tools/inav/msp_benchmark_improved.py` - Comprehensive client improvements
+- `claude/developer/scripts/testing/inav/msp_benchmark_serial.py`
+- `claude/developer/scripts/testing/inav/msp_mock_responder.py`
+- `claude/developer/scripts/testing/inav/msp_benchmark_improved.py` - Comprehensive client improvements
 
 ## Built Firmware
 

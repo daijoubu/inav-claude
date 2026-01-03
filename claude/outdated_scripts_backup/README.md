@@ -19,7 +19,7 @@
 ### From `inav/` to `claude/outdated_scripts_backup/inav/`:
 
 1. **`test_telemetry_proper_timing.sh`** (2.2KB, Dec 7 09:39)
-   - **Superseded by:** `claude/test_tools/inav/test_crsf_telemetry.sh`
+   - **Superseded by:** `claude/developer/scripts/testing/inav/test_crsf_telemetry.sh`
    - **Reason:** Old version (66 lines) replaced by comprehensive automated test suite (380 lines)
    - **Improvements in new version:**
      - 7-step automated workflow
@@ -50,7 +50,7 @@
    - **Reason:** Development iteration, superseded by `configure_sitl_crsf.py`
 
 6. **`enable_telemetry_feature.py`** (2.2KB, Dec 6 20:39)
-   - **Reason:** Functionality integrated into `claude/test_tools/inav/test_crsf_telemetry.sh`
+   - **Reason:** Functionality integrated into `claude/developer/scripts/testing/inav/test_crsf_telemetry.sh`
 
 7. **`capture_frames.py`** (2.5KB, Dec 6 21:24)
    - **Reason:** Superseded by `crsf_rc_sender.py --show-telemetry`
@@ -75,7 +75,7 @@
 
 1. ✅ `build.sh` - Standard INAV firmware build wrapper
 2. ✅ `build_docs.sh` - Documentation build utility
-3. ✅ `configure_sitl_crsf.py` - **Moved to** `claude/test_tools/inav/configure_sitl_crsf.py`
+3. ✅ `configure_sitl_crsf.py` - **Moved to** `claude/developer/scripts/testing/inav/configure_sitl_crsf.py`
 4. ✅ `check_max_output_ports.sh` - Utility script
 5. ✅ `closest.sh` - Utility script
 6. ✅ `fake_travis_build.sh` - CI/CD testing utility
@@ -87,7 +87,7 @@
 ## Better Versions Location
 
 All improved test scripts are now organized in:
-- **`claude/test_tools/inav/`** - Main test scripts and utilities
+- **`claude/developer/scripts/testing/inav/`** - Main test scripts and utilities
   - `test_crsf_telemetry.sh` - Comprehensive CRSF telemetry test suite
   - `quick_test_crsf.sh` - Quick CRSF validation
   - Various MSP benchmark tools
@@ -116,7 +116,7 @@ cp claude/outdated_scripts_backup/inav/* inav/
 ## Related Documentation
 
 - **Analysis:** `claude/manager/SUPERSEDED_SCRIPTS_ANALYSIS.md`
-- **Test Tools Guide:** `claude/test_tools/inav/README.md` (if exists)
+- **Test Tools Guide:** `claude/developer/scripts/testing/inav/README.md` (if exists)
 - **Skills:**
   - `test-crsf-sitl` - CRSF telemetry testing workflow
   - `build-sitl` - SITL build instructions
