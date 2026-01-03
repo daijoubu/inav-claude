@@ -382,50 +382,6 @@ F411 boards are deprecated (last supported in INAV 7). Focus development on F4 (
 
 ---
 
-# Code Navigation with ctags
-
-Both codebases have ctags indexes for quick symbol lookup.
-
-## Using the /find-symbol command
-
-```
-/find-symbol pidController
-/find-symbol navConfig
-```
-
-This searches both firmware and configurator tags files.
-
-## Manual ctags lookup
-
-```bash
-# Find a C function in firmware
-grep "^functionName\b" inav/tags
-
-# Find a JS symbol in configurator
-grep "^symbolName\b" inav-configurator/tags
-```
-
-## Regenerating indexes
-
-When source files change significantly:
-
-```bash
-# Firmware (C code)
-cd inav
-ctags -R --fields=+niazS --extras=+q --exclude=lib --exclude=build --exclude=tools --exclude=.git -f tags .
-
-# Configurator (JS code)
-cd inav-configurator
-ctags -R --fields=+niazS --extras=+q --exclude=node_modules --exclude=.git --exclude=out --exclude=.vite --exclude=dist -f tags .
-```
-
-## Limitations
-
-- JavaScript indexing is limited (ctags doesn't parse ES6+ well)
-- For JS code, Claude's built-in Grep tool often works better
-- C firmware indexing works well for functions, structs, and variables
-
----
 
 # Coding Standards
 

@@ -139,39 +139,6 @@ Historical data that might be useful for reference:
 
 ---
 
-## test_tools vs developer/scripts Distinction
-
-There are two places for test-related code:
-
-### `claude/test_tools/` - Project-Level Test Infrastructure
-
-Located **outside** the developer directory at the project level:
-
-```
-claude/test_tools/
-├── inav/                    # INAV-specific test tools
-│   ├── crsf/                # CRSF telemetry testing
-│   ├── gps/                 # GPS testing infrastructure
-│   ├── msp/                 # MSP protocol testing
-│   └── sitl/                # SITL testing tools
-├── eph_replay/              # Ephemeris replay tools
-└── configurator_indexer/    # Configurator code indexing
-```
-
-**Purpose:** Shared test infrastructure used across roles (developer, manager, security analyst)
-
-**Use when:** Test tools need to be shared across the project or used by multiple roles
-
-### `claude/developer/scripts/testing/` - Developer-Specific Utilities
-
-Located in the developer directory:
-
-**Purpose:** Developer's personal test utilities and helpers
-
-**Use when:** Scripts are specific to developer workflow and not needed by other roles
-
----
-
 ## Finding Things
 
 ### Need a test script?
@@ -218,8 +185,7 @@ Add to appropriate `scripts/` subdirectory with documentation.
 Add to appropriate `docs/` subdirectory.
 
 ### Test infrastructure?
-- **Developer-specific:** `scripts/testing/`
-- **Project-wide (shared):** `claude/test_tools/`
+Add to `scripts/testing/` with appropriate subdirectories (e.g., `scripts/testing/inav/`, `scripts/testing/configurator_indexer/`).
 
 ### Temporary scratch work?
 Use `work-in-progress/` for quick notes (but prefer creating a `projects/` directory for anything more than a single file).

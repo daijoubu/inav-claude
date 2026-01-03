@@ -42,7 +42,7 @@ Use this skill when testing Pull Requests that modify CRSF telemetry:
 
 ### Testing Scripts
 
-**Location:** `claude/test_tools/inav/crsf/`
+**Location:** `claude/developer/scripts/testing/inav/crsf/`
 
 **Key Scripts:**
 
@@ -63,7 +63,7 @@ Use this skill when testing Pull Requests that modify CRSF telemetry:
 3. **TCP_CONNECTION_LIMITATION.md** - Important Documentation
    - Explains why separate RC sender and telemetry reader won't work
    - Documents TCP port constraints and bidirectional solution
-   - Located in `claude/test_tools/inav/docs/`
+   - Located in `claude/developer/scripts/testing/inav/docs/`
 
 ---
 
@@ -204,7 +204,7 @@ npm start
 **IMPORTANT:** Use the bidirectional RC sender that handles both RC transmission and telemetry reception!
 
 ```bash
-cd /home/raymorris/Documents/planes/inavflight/claude/test_tools/inav/crsf
+cd /home/raymorris/Documents/planes/inavflight/claude/developer/scripts/testing/inav/crsf
 
 # Test for 30 seconds with telemetry display
 python3 crsf_rc_sender.py 2 --rate 50 --duration 30 --show-telemetry
@@ -462,7 +462,7 @@ grep "CRSF TELEM" /tmp/sitl_bidirectional_test.log
 # Expected: [CRSF TELEM] initCrsfTelemetry called, crsfRxIsActive=1, enabled=1
 
 # Run with --show-telemetry to see frames in real-time
-cd claude/test_tools/inav/crsf
+cd claude/developer/scripts/testing/inav/crsf
 python3 crsf_rc_sender.py 2 --rate 50 --duration 10 --show-telemetry
 
 # Check ports
@@ -537,7 +537,7 @@ If seeing CRC errors, check for:
 
 **Current Location:**
 ```
-/home/raymorris/Documents/planes/inavflight/claude/test_tools/inav/crsf/
+/home/raymorris/Documents/planes/inavflight/claude/developer/scripts/testing/inav/crsf/
 ├── crsf_rc_sender.py              # Bidirectional RC sender + telemetry reader
 ├── crsf_stream_parser.py          # Telemetry frame parser and analyzer
 ├── configure_sitl_crsf.py         # MSP configuration for CRSF
@@ -546,7 +546,7 @@ If seeing CRC errors, check for:
 ├── analyze_frame_0x09.py          # Altitude/vario frame analyzer
 └── test_telemetry_simple.py       # Simple telemetry test
 
-/home/raymorris/Documents/planes/inavflight/claude/test_tools/inav/docs/
+/home/raymorris/Documents/planes/inavflight/claude/developer/scripts/testing/inav/docs/
 └── TCP_CONNECTION_LIMITATION.md   # Important documentation about TCP constraints
 ```
 
@@ -595,7 +595,7 @@ python3 configure_crsf_proper_sequence.py 5760
 sleep 10  # Wait for SITL reboot
 
 # Test telemetry (bidirectional - sends RC, receives telemetry)
-cd ~/Documents/planes/inavflight/claude/test_tools/inav/crsf
+cd ~/Documents/planes/inavflight/claude/developer/scripts/testing/inav/crsf
 python3 crsf_rc_sender.py 2 --rate 50 --duration 30 --show-telemetry
 
 # Or without telemetry display (just summary)

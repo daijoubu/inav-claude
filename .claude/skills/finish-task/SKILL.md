@@ -231,6 +231,9 @@ Co-Authored-By: Claude <noreply@anthropic.com>
 
 ---
 
+Be sure any files you created are organized properly according to claude/developer/INDEX.md
+
+
 ## Related Skills
 
 - **start-task** - Begin tasks with proper setup

@@ -157,7 +157,7 @@ This file tracks all active and completed projects in the INAV codebase.
 - **Bug:** Writes motor[0] unconditionally when motorCount=0, creating spurious 0x00 byte
 - **Impact:** Header declares 0 fields, I-frame writes 1 byte → mismatch → decoder fails
 - **Fix:** Change one word at line 1079: `MOTORS` → `AT_LEAST_MOTORS_1`
-- **Documentation:** `claude/test_tools/inav/gps/MOTORS_CONDITION_BUG.md`
+- **Documentation:** `claude/developer/scripts/testing/inav/gps/MOTORS_CONDITION_BUG.md`
 - **Testing:** JHEMCUF435 fixed-wing, 207 failures → 3 failures (baseline)
 - **Milestone:** 9.1
 - **Priority:** MEDIUM
@@ -260,7 +260,7 @@ This file tracks all active and completed projects in the INAV codebase.
 ### 2025-12-27: GPS Test Tools Documentation Task Assigned 📋
 
 **Manager** - Document GPS Testing Tools in README.md
-- **Goal:** Create comprehensive README.md for `claude/test_tools/inav/gps/` directory
+- **Goal:** Create comprehensive README.md for `claude/developer/scripts/testing/inav/gps/` directory
 - **Purpose:** Main entry point documenting all 40+ GPS testing scripts and tools
 - **Special focus:** test_motion_simulator.sh orchestration workflow
 - **Scope:**
@@ -1090,7 +1090,7 @@ JHEMCUF435 fixed-wing, motorCount=0:
 - Before: 207 decoder failures
 - After: 3 decoder failures (baseline)
 
-**Documentation:** `claude/test_tools/inav/gps/MOTORS_CONDITION_BUG.md`
+**Documentation:** `claude/developer/scripts/testing/inav/gps/MOTORS_CONDITION_BUG.md`
 
 **Assignment Email:** `claude/manager/sent/2025-12-29-1230-task-fix-blackbox-zero-motors-bug.md`
 
@@ -1475,7 +1475,7 @@ for i in range(100):
 Create comprehensive README.md for the GPS testing tools directory to serve as the main entry point for understanding and using all scripts and tools.
 
 **Background:**
-The `claude/test_tools/inav/gps/` directory contains 40+ scripts for GPS testing, motion simulation, blackbox logging, and FC configuration. Several specialized README files exist (README_GPS_BLACKBOX_TESTING.md, BLACKBOX_SERIAL_WORKFLOW.md, etc.), but there's no main overview or entry point.
+The `claude/developer/scripts/testing/inav/gps/` directory contains 40+ scripts for GPS testing, motion simulation, blackbox logging, and FC configuration. Several specialized README files exist (README_GPS_BLACKBOX_TESTING.md, BLACKBOX_SERIAL_WORKFLOW.md, etc.), but there's no main overview or entry point.
 
 **Problem:**
 - Hard to find the right tool for a specific task
@@ -1508,7 +1508,7 @@ Documentation should explain:
 - Available profiles (climb, descent, hover, sine)
 
 **Deliverables:**
-1. `claude/test_tools/inav/gps/README.md` - Main entry point
+1. `claude/developer/scripts/testing/inav/gps/README.md` - Main entry point
 2. Quick start guide with common examples
 3. Comprehensive tool/script reference
 4. Use case workflows
