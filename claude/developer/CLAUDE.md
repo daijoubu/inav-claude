@@ -85,25 +85,54 @@ The developer workspace is organized into clear categories:
 
 ```
 claude/developer/
-├── docs/                 # Documentation and guides
+├── docs/                 # Documentation and guides (tracked in git)
 │   ├── testing/          # Testing guides and results
 │   ├── debugging/        # Debugging techniques and tools
 │   ├── transpiler/       # Transpiler documentation
 │   └── patterns/         # Code patterns and best practices
-├── scripts/              # Reusable scripts
-│   ├── testing/          # Test scripts
+├── scripts/              # Reusable scripts (tracked in git)
+│   ├── testing/          # Test scripts and utilities
 │   ├── build/            # Build helpers
 │   └── analysis/         # Code analysis tools
-├── investigations/       # Project-specific investigations (gitignored)
+├── projects/             # Active project working directories (gitignored) ← NEW!
+│   └── [project-name]/   # One subdirectory per active project/task
+├── investigations/       # Legacy investigation directories (gitignored)
+├── work-in-progress/     # Legacy flat working directory (gitignored)
 ├── reports/              # Analysis reports (gitignored)
 ├── archive/              # Completed/old work (gitignored)
-└── inbox/outbox/sent/    # Email directories
+└── inbox/outbox/sent/    # Email directories (gitignored)
 ```
 
 **Key debugging docs:** `docs/debugging/`
 - USB/MSC issues, performance debugging, target splitting, GCC techniques
 
 See `INDEX.md` for complete directory documentation.
+
+### Organizing Your Work
+
+**When starting a task:**
+1. Create a project directory: `projects/task-name/`
+2. Put all task-related files in that directory
+3. When complete, extract reusable scripts to `scripts/` with documentation
+4. Archive the project directory
+
+**File organization rules:**
+- **Reusable scripts** → `scripts/testing/`, `scripts/build/`, or `scripts/analysis/`
+- **Project-specific files** → `projects/[task-name]/`
+- **Documentation** → `docs/` subdirectories
+- **Never** leave files in the root of `claude/developer/`
+
+**Example project structure:**
+```
+projects/fix-gps-bug/
+├── notes.md              # Investigation notes
+├── session-state.md      # Session tracking
+├── scripts/              # Task-specific test scripts
+│   └── test_gps_fix.py
+└── data/                 # Test data
+    └── gps_log.txt
+```
+
 
 ## Build Commands
 
