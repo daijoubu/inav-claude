@@ -25,13 +25,22 @@ claude/developer/
 │   ├── build/                # Build and flash helpers
 │   └── analysis/             # Code analysis and verification tools
 │
-├── investigations/           # Project-specific investigations (GITIGNORED)
+├── projects/                 # Active project working directories (GITIGNORED)
+│   └── [project-name]/       # One subdirectory per active project/task
+│       ├── notes.md          # Project notes
+│       ├── scripts/          # Project-specific scripts
+│       ├── data/             # Test data, logs
+│       └── session-state.md  # Session tracking
+│
+├── investigations/           # Detailed technical investigations (GITIGNORED)
 │   ├── crsf-telemetry/       # CRSF telemetry testing
 │   ├── h743-msc/             # H743 USB MSC regression
 │   ├── blueberry-pid/        # PID performance investigation
 │   ├── gps/                  # GPS-related investigations
-│   ├── websocket/            # WebSocket/PWA analysis
-│   └── target-split/         # Target directory split verification
+│   └── [other-topics]/       # Legacy investigation directories
+│
+├── work-in-progress/         # Flat working directory (GITIGNORED, legacy)
+│                             # NOTE: Use projects/ for new work
 │
 ├── reports/                  # Analysis reports (GITIGNORED)
 │
@@ -41,8 +50,6 @@ claude/developer/
 │   └── legacy/               # Legacy scripts, old documents
 │
 ├── builds/                   # Build artifacts (GITIGNORED)
-│
-├── work-in-progress/         # Active WIP documents (GITIGNORED)
 │
 └── inbox/outbox/sent/        # Email directories (GITIGNORED)
     inbox-archive/
@@ -76,16 +83,48 @@ Scripts that can be reused across multiple projects:
 
 | Subdirectory | Contents |
 |--------------|----------|
-| `testing/` | CRSF test scripts, configurator startup tests |
+| `testing/` | CRSF test scripts, configurator startup tests, MSP test utilities |
 | `build/` | Build and flash helpers |
 | `analysis/` | Target verification, dead code detection, preprocessing tools |
 
-### `investigations/` - Project-Specific (Gitignored)
+### `projects/` - Active Project Working Directories (Gitignored) **← NEW, USE THIS**
 
-Detailed investigation notes for specific issues. These are gitignored because:
-- They contain session-specific data
-- Key lessons are extracted to `docs/LESSONS-LEARNED.md`
-- Useful scripts are moved to `scripts/`
+**Per-project working directories for active tasks.**
+
+Each active project/task gets its own subdirectory with all related working files:
+
+**Structure:**
+```
+projects/
+└── my-feature-implementation/
+    ├── notes.md                # Design notes, findings
+    ├── session-state.md        # Session tracking
+    ├── test-results.md         # Test output
+    ├── scripts/                # Project-specific scripts
+    │   └── test_feature.py
+    └── data/                   # Test data, logs
+        └── sample.bin
+```
+
+**What goes here:**
+- Session notes and scratch files
+- Project-specific test scripts
+- Test data and logs
+- Status tracking documents
+- Anything you're actively working on
+
+**When to create a project directory:**
+- Starting a new task assignment
+- Beginning an investigation
+- Any work that needs multiple files
+
+**Cleanup:** When project is complete, move reusable content to `docs/` or `scripts/`, then archive the rest to `archive/`.
+
+### `investigations/` - Detailed Technical Investigations (Gitignored, Legacy)
+
+**NOTE:** This directory is kept for backward compatibility with existing investigations. **For new work, use `projects/` instead.**
+
+Detailed investigation notes for specific technical issues. Contains legacy investigation directories with extensive notes and test data.
 
 ### `reports/` - Analysis Reports (Gitignored)
 
@@ -97,6 +136,39 @@ Historical data that might be useful for reference:
 - `completed-tasks/` - Old task assignments
 - `data/` - Test logs, profiling output, eeprom dumps
 - `legacy/` - Old scripts, superseded documents
+
+---
+
+## test_tools vs developer/scripts Distinction
+
+There are two places for test-related code:
+
+### `claude/test_tools/` - Project-Level Test Infrastructure
+
+Located **outside** the developer directory at the project level:
+
+```
+claude/test_tools/
+├── inav/                    # INAV-specific test tools
+│   ├── crsf/                # CRSF telemetry testing
+│   ├── gps/                 # GPS testing infrastructure
+│   ├── msp/                 # MSP protocol testing
+│   └── sitl/                # SITL testing tools
+├── eph_replay/              # Ephemeris replay tools
+└── configurator_indexer/    # Configurator code indexing
+```
+
+**Purpose:** Shared test infrastructure used across roles (developer, manager, security analyst)
+
+**Use when:** Test tools need to be shared across the project or used by multiple roles
+
+### `claude/developer/scripts/testing/` - Developer-Specific Utilities
+
+Located in the developer directory:
+
+**Purpose:** Developer's personal test utilities and helpers
+
+**Use when:** Scripts are specific to developer workflow and not needed by other roles
 
 ---
 
@@ -122,25 +194,35 @@ Look in `docs/debugging/`
 
 ## Adding New Content
 
-### New investigation?
-Create a subdirectory in `investigations/`:
-```
-investigations/my-investigation/
-├── README.md
-├── findings/
-└── test-data/
+### Starting a new task?
+**Create a project directory:**
+```bash
+mkdir -p claude/developer/projects/my-task-name
+cd claude/developer/projects/my-task-name
 ```
 
-When complete, extract lessons to `docs/LESSONS-LEARNED.md`.
+**Structure it:**
+```
+projects/my-task-name/
+├── README.md           # What this project is about
+├── notes.md            # Working notes
+├── session-state.md    # Session tracking
+├── scripts/            # Project-specific scripts
+└── data/               # Test data, logs
+```
 
 ### New reusable script?
-Add to appropriate `scripts/` subdirectory.
+Add to appropriate `scripts/` subdirectory with documentation.
 
 ### New documentation?
 Add to appropriate `docs/` subdirectory.
 
-### Temporary work?
-Use `work-in-progress/` for session-specific notes.
+### Test infrastructure?
+- **Developer-specific:** `scripts/testing/`
+- **Project-wide (shared):** `claude/test_tools/`
+
+### Temporary scratch work?
+Use `work-in-progress/` for quick notes (but prefer creating a `projects/` directory for anything more than a single file).
 
 ---
 
@@ -148,14 +230,15 @@ Use `work-in-progress/` for session-specific notes.
 
 The following are excluded from version control (`.gitignore`):
 
-- `investigations/` - Project-specific data
+- `projects/` - Active project working directories **← NEW**
+- `investigations/` - Legacy investigation directories
+- `work-in-progress/` - Legacy flat working directory
 - `reports/` - Analysis reports
-- `archive/` - Old work
+- `archive/` - Completed work
 - `builds/` - Binary artifacts
-- `work-in-progress/` - Session notes
 - `inbox/`, `outbox/`, `sent/`, `inbox-archive/` - Email
 
-**Why?** These contain session-specific data. Reusable content is extracted to tracked directories (`docs/`, `scripts/`).
+**Why?** These contain session-specific and task-specific data. Reusable content (documentation, scripts) is extracted to tracked directories (`docs/`, `scripts/`) before archiving.
 
 ---
 
