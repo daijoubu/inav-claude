@@ -6,7 +6,7 @@ Test MSP_SDCARD_SUMMARY command directly to see if FC is actually responding.
 import sys
 import time
 
-sys.path.insert(0, '~/inavflight/mspapi2')
+sys.path.insert(0, '/home/raymorris/Documents/planes/inavflight/mspapi2')
 
 from mspapi2 import MSPSerial
 
