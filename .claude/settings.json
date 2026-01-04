@@ -75,6 +75,28 @@
           }
         ]
       }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/raymorris/Documents/planes/inavflight/.claude/hooks/pre_tool_use_hook.py"
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/raymorris/Documents/planes/inavflight/.claude/hooks/permission_request_hook.py"
+          }
+        ]
+      }
     ]
   }
 }

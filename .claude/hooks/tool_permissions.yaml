@@ -1,0 +1,188 @@
+# Claude Code Tool Permissions Configuration
+#
+# This configuration file controls PreToolUse and PermissionRequest hook behavior.
+# Hooks allow you to allow, deny, or prompt for approval of tool calls based on rules.
+#
+# File location: .claude/hooks/tool_permissions.yaml
+
+# =============================================================================
+# DEFAULT PERMISSIONS BY CATEGORY
+# =============================================================================
+# These apply when no specific rule matches.
+# Options: "allow", "deny", "ask"
+
+defaults:
+  read: allow      # Tools/commands that only read data (Read, Glob, Grep, git status, etc.)
+  write: ask       # Tools/commands that modify data (Write, Edit, git commit, etc.)
+  other: ask       # Everything else
+
+# =============================================================================
+# GENERAL TOOL RULES
+# =============================================================================
+# Rules are processed in order. First match wins.
+#
+# Fields:
+#   - name: Human-readable description (for logging)
+#   - tool_name_pattern: Regex matching tool name (e.g., "^Bash$", "^(Read|Write)$")
+#   - tool_input_patterns: Dict of regex patterns matching tool input fields
+#   - category: "read", "write", or "other" (affects default if decision not specified)
+#   - decision: "allow", "deny", or "ask" (optional if relying on category default)
+#   - message: Message shown to user/Claude when denying or asking
+
+rules:
+  # Example: Allow safe read-only tools unconditionally
+  - name: "Allow read-only file operations"
+    tool_name_pattern: "^(Read|Glob|Grep)$"
+    category: read
+    decision: allow
+
+  # Example: Block specific dangerous patterns
+  - name: "Block git add -A"
+    tool_name_pattern: "^Bash$"
+    tool_input_patterns:
+      command: "git add -A"
+    category: write
+    decision: deny
+    message: "git add -A is not allowed. Please add files explicitly."
+
+  # Example: Ask for approval on file writes
+  - name: "Confirm file modifications"
+    tool_name_pattern: "^(Write|Edit)$"
+    category: write
+    decision: ask
+    message: "File modification requested"
+
+  # Example: Allow web searches
+  - name: "Allow web operations"
+    tool_name_pattern: "^(WebSearch|WebFetch)$"
+    category: read
+    decision: allow
+
+# =============================================================================
+# BASH-SPECIFIC RULES
+# =============================================================================
+# Special rules for Bash tool that parse compound commands into subcommands.
+# Each subcommand is analyzed as "command" + "arguments".
+#
+# Fields:
+#   - name: Human-readable description
+#   - command_pattern: Regex matching the command part (e.g., "^git$", "^rm$")
+#   - argument_pattern: Regex matching the arguments (optional)
+#   - category: "read", "write", or "other"
+#   - decision: "allow", "deny", or "ask"
+#   - message: Message for deny/ask decisions
+#   - precondition_script: Optional bash script that returns "allow", "deny", or "ask"
+#                          based on runtime conditions (e.g., check if path exists)
+#                          Available variables: {COMMAND}, {ARGS}, {FULL_COMMAND}
+
+bash_rules:
+  # === Git Safety Rules (based on .claude/hooks/pre-bash.sh) ===
+
+  # Block: git add -A (too broad, add specific files instead)
+  - name: "Block git add -A"
+    command_pattern: "^git$"
+    argument_pattern: "^add -A"
+    category: write
+    decision: deny
+    message: "STOP! IMPORTANT: Do NOT run 'git add -A'. Add the specific files you actually want."
+
+  # Block: git push to maintenance or master branches
+  - name: "Block git push to maintenance/master"
+    command_pattern: "^git$"
+    argument_pattern: "^push.*(maintenance|master).*"
+    category: write
+    decision: deny
+    message: "STOP! IMPORTANT: Do NOT push to a version branch (maintenance-9.x, maintenance-10.x) or to master (except for inavwiki). Use your create-pr skill with a feature branch."
+
+  # Block: git push --force (breaks public history)
+  - name: "Block git force push"
+    command_pattern: "^git$"
+    argument_pattern: "^push.*force.*"
+    category: write
+    decision: deny
+    message: "STOP! IMPORTANT: Do NOT force push! That will break public history!"
+
+  # Warn: git commit (remind not to mention Claude)
+  # Note: This uses "allow" with a message that gets logged, but the actual
+  # reminder to Claude would be in additionalContext (handled by hook logic)
+  - name: "Git commit reminder"
+    command_pattern: "^git$"
+    argument_pattern: "^commit.*"
+    category: write
+    decision: allow
+    message: "Git commit detected - reminder added about not mentioning Claude/AI in commit messages"
+
+  # Git read operations (safe)
+  - name: "Allow git read operations"
+    command_pattern: "^git$"
+    argument_pattern: "^(status|log|diff|show|branch|remote|describe|rev-parse|rev-list|cat-file|ls-tree|ls-files|grep|merge-base|blame|tag).*"
+    category: read
+    decision: allow
+
+  # Git fetch operations (safe)
+  - name: "Allow git fetch"
+    command_pattern: "^git$"
+    argument_pattern: "^fetch.*"
+    category: read
+    decision: allow
+
+  # Git checkout/stash/cherry-pick (allowed)
+  - name: "Allow git checkout/stash/cherry-pick"
+    command_pattern: "^git$"
+    argument_pattern: "^(checkout|stash|cherry-pick|restore).*"
+    category: write
+    decision: allow
+
+  # === Other Safety Rules ===
+
+  # Allow mkdir if directory already exists (safe, idempotent)
+  - name: "Allow mkdir if directory exists"
+    command_pattern: "^mkdir$"
+    category: write
+    precondition_script: |
+      # Extract directory path from arguments (handles -p flag and multiple dirs)
+      DIR=$(echo "{ARGS}" | sed 's/^-p *//' | awk '{print $1}')
+      if [ -d "$DIR" ]; then
+        echo "allow"
+      else
+        echo "ask"
+      fi
+
+  # Dangerous recursive operations
+  - name: "Block dangerous recursive operations"
+    command_pattern: "^(rm|mv|cp)$"
+    argument_pattern: ".*-r.*"
+    category: write
+    decision: deny
+    message: "Recursive file operations require manual approval"
+
+  # File read commands
+  - name: "Allow file reading"
+    command_pattern: "^(cat|head|tail|less|more|grep|find|ls|stat|file|rg|fd)$"
+    category: read
+    decision: allow
+
+  # Build/test commands
+  - name: "Allow build and test commands"
+    command_pattern: "^(make|cmake|npm|pip|pio|gcc|g\\+\\+|clang)$"
+    argument_pattern: "^(test|build|compile|install|run).*"
+    category: other
+    decision: allow
+
+  # GitHub CLI commands (mostly safe)
+  - name: "Allow GitHub CLI read operations"
+    command_pattern: "^gh$"
+    argument_pattern: "^(pr|issue|run|release|api|workflow).*(list|view|diff|checks|download).*"
+    category: read
+    decision: allow
+
+# =============================================================================
+# LOGGING CONFIGURATION
+# =============================================================================
+
+logging:
+  enabled: true
+  log_file: "~/.claude/hooks/tool_permissions.log"  # ~ expands to home directory
+  log_inputs: true     # Log incoming hook JSON
+  log_outputs: true    # Log hook decisions
+  max_log_size_mb: 10  # Rotate log when it exceeds this size
