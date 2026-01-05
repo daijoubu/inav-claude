@@ -158,6 +158,14 @@ rules:
     decision: deny
     message: "git add -A is not allowed. Please add files explicitly."
 
+  - name: "Block Write/Edit to wrong claude paths"
+    tool_name_pattern: "^(Write|Edit)$"
+    tool_input_patterns:
+      file_path: ".*(inav/claude|inav-configurator/claude|inavwiki/claude).*"
+    category: write
+    decision: deny
+    message: "STOP! The claude/ directory is at /home/raymorris/Documents/planes/inavflight/claude/ (or ~/inavflight/claude/), NOT inside inav/, inav-configurator/, or inavwiki/. Use the correct path: /home/raymorris/Documents/planes/inavflight/claude/ or ~/inavflight/claude/"
+
   # ===================================================================
   # Ask Rules (File Modifications)
   # ===================================================================
@@ -193,12 +201,19 @@ bash_rules:
   # ===================================================================
   # IMPORTANT: These must come first to catch dangerous patterns early
 
-  - name: "Block mkdir inav/claude (wrong path)"
+  - name: "Block mkdir to wrong claude paths"
     command_pattern: "^mkdir$"
-    argument_pattern: ".*inav/claude.*"
+    argument_pattern: ".*(inav/claude|inav-configurator/claude|inavwiki/claude).*"
     category: write
     decision: deny
-    message: "STOP! The claude/ directory is at the project root, NOT inside inav/. Use 'claude/' or '.claude/' instead of 'inav/claude/'."
+    message: "STOP! The claude/ directory is at /home/raymorris/Documents/planes/inavflight/claude/ (or ~/inavflight/claude/), NOT inside inav/, inav-configurator/, or inavwiki/. Use the correct path when creating directories."
+
+  - name: "Block cp/mv to wrong claude paths"
+    command_pattern: "^(cp|mv)$"
+    argument_pattern: ".*(inav/claude|inav-configurator/claude|inavwiki/claude).*"
+    category: write
+    decision: deny
+    message: "STOP! The claude/ directory is at /home/raymorris/Documents/planes/inavflight/claude/ (or ~/inavflight/claude/), NOT inside inav/, inav-configurator/, or inavwiki/. Use the correct destination path."
 
   # ===================================================================
   # Git Safety Rules
