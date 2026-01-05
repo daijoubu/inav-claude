@@ -342,8 +342,8 @@ bash_rules:
     category: other
     decision: allow
 
-  - name: "Allow arm-none-eabi-gcc (ARM compiler)"
-    command_pattern: "^arm-none-eabi-gcc$"
+  - name: "Allow ARM toolchain (arm-none-eabi-*)"
+    command_pattern: "^arm-none-eabi-.*$"
     category: other
     decision: allow
 
@@ -375,7 +375,7 @@ bash_rules:
   # These are safe commands that only read/display data
 
   - name: "Allow common read commands"
-    command_pattern: "^(grep|egrep|find|cat|ls|head|tail|less|more|wc|sort|uniq|diff|stat|file|du|df|arm-none-eabi-objdump|arm-none-eabi-nm|awk|sed|cut|xargs|printf|pwd)$"
+    command_pattern: "^(grep|egrep|find|cat|ls|head|tail|less|more|wc|sort|uniq|diff|stat|file|du|df|awk|sed|cut|xargs|printf|pwd)$"
     category: read
     decision: allow
 
