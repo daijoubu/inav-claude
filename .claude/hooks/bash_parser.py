@@ -83,7 +83,7 @@ class BashCommandParser:
 
     def _split_respecting_quotes(self, command: str) -> List[str]:
         """
-        Split command by operators while respecting quoted strings and redirections.
+        Split command by operators while respecting quoted strings, redirections, and parentheses.
 
         Args:
             command: The bash command string
@@ -95,6 +95,7 @@ class BashCommandParser:
         current_part = []
         in_single_quote = False
         in_double_quote = False
+        paren_depth = 0  # Track parentheses nesting
         escaped = False
         i = 0
 
@@ -129,6 +130,25 @@ class BashCommandParser:
 
             # If we're inside quotes, just accumulate
             if in_single_quote or in_double_quote:
+                current_part.append(char)
+                i += 1
+                continue
+
+            # Track parentheses depth (when not in quotes)
+            if char == '(':
+                paren_depth += 1
+                current_part.append(char)
+                i += 1
+                continue
+
+            if char == ')':
+                paren_depth -= 1
+                current_part.append(char)
+                i += 1
+                continue
+
+            # If we're inside parentheses, don't split
+            if paren_depth > 0:
                 current_part.append(char)
                 i += 1
                 continue
@@ -233,6 +253,14 @@ class BashCommandParser:
                 raw=cmd_str,
                 operator_before=operator
             )
+
+        # Handle parentheses for subshells/command grouping
+        # e.g., (make target) or (echo "test" && ls)
+        # For permission checking, we just need the first command inside
+        cmd_str_stripped = cmd_str.strip()
+        if cmd_str_stripped.startswith('(') and cmd_str_stripped.endswith(')'):
+            # Strip outer parentheses - the inner command will be parsed normally
+            cmd_str = cmd_str_stripped[1:-1].strip()
 
         # Control structure keywords (must be exact match or followed by space/special char)
         control_keywords = ['do', 'then', 'else', 'elif', 'fi', 'done', 'esac']
