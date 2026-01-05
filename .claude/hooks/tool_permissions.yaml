@@ -358,7 +358,7 @@ bash_rules:
     decision: allow
 
   - name: "Allow build and test commands"
-    command_pattern: "^(make|npm|pip|pio|gcc|g\\+\\+|clang)$"
+    command_pattern: "^(npm|pip|pio|gcc|g\\+\\+|clang)$"
     argument_pattern: "^(test|build|compile|install|run).*"
     category: other
     decision: allow
