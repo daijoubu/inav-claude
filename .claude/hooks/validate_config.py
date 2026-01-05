@@ -142,13 +142,19 @@ class ConfigValidator:
 
                 # If first rule is less specific (no argument_pattern or broader pattern)
                 # and second rule is more specific, warn about ordering
+                # BUT only if the decisions differ (ordering matters)
                 if self._is_less_specific(rule1, rule2):
-                    self.warnings.append(
-                        f"⚠ Potential ordering issue for '{cmd}':\n"
-                        f"    Rule #{idx1} ('{rule1.get('name')}') is less specific\n"
-                        f"    Rule #{idx2} ('{rule2.get('name')}') is more specific\n"
-                        f"    Consider moving the more specific rule earlier"
-                    )
+                    decision1 = rule1.get('decision', 'ask')
+                    decision2 = rule2.get('decision', 'ask')
+
+                    # Only warn if decisions differ - when both allow/deny, order doesn't matter
+                    if decision1 != decision2:
+                        self.warnings.append(
+                            f"⚠ Potential ordering issue for '{cmd}':\n"
+                            f"    Rule #{idx1} ('{rule1.get('name')}') is less specific\n"
+                            f"    Rule #{idx2} ('{rule2.get('name')}') is more specific\n"
+                            f"    Consider moving the more specific rule earlier"
+                        )
 
     def _extract_commands_from_pattern(self, pattern: str) -> List[str]:
         """Extract command names from a regex pattern (heuristic)."""

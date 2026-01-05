@@ -293,7 +293,10 @@ bash_rules:
     decision: ask
     message: "echo with file redirection requires approval (writes to file)"
 
-  # General echo (without redirection) is allowed in "Allow common read commands"
+  - name: "Allow echo without redirection"
+    command_pattern: "^echo$"
+    category: read
+    decision: allow
 
   # ===================================================================
   # Cat/Heredoc Write Rules
@@ -344,6 +347,11 @@ bash_rules:
     category: other
     decision: allow
 
+  - name: "Allow make (build system)"
+    command_pattern: "^make$"
+    category: other
+    decision: allow
+
   - name: "Allow build and test commands"
     command_pattern: "^(make|npm|pip|pio|gcc|g\\+\\+|clang)$"
     argument_pattern: "^(test|build|compile|install|run).*"
@@ -362,7 +370,7 @@ bash_rules:
   # These are safe commands that only read/display data
 
   - name: "Allow common read commands"
-    command_pattern: "^(grep|egrep|find|cat|ls|head|tail|less|more|wc|sort|uniq|diff|stat|file|du|df|arm-none-eabi-objdump|arm-none-eabi-nm|awk|sed|cut|xargs|echo|printf|pwd)$"
+    command_pattern: "^(grep|egrep|find|cat|ls|head|tail|less|more|wc|sort|uniq|diff|stat|file|du|df|arm-none-eabi-objdump|arm-none-eabi-nm|awk|sed|cut|xargs|printf|pwd)$"
     category: read
     decision: allow
 
