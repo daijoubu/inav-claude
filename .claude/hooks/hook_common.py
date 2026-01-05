@@ -41,10 +41,17 @@ class HookConfig:
             search_paths.append(config_path)
 
         # Default locations
+        # Start with absolute path to project config
+        hook_dir = os.path.dirname(os.path.abspath(__file__))
+        project_config = os.path.join(hook_dir, "tool_permissions.yaml")
+
         search_paths.extend([
+            project_config,  # Absolute path to project config (always checked first)
             os.path.expanduser("~/.claude/hooks/tool_permissions.yaml"),
             os.path.expanduser("~/.config/claude/tool_permissions.yaml"),
-            "./.claude/hooks/tool_permissions.yaml",
+            "./tool_permissions.yaml",  # Same directory as the hook script
+            "./.claude/hooks/tool_permissions.yaml",  # From project root
+            "../../.claude/hooks/tool_permissions.yaml",  # From hooks directory
         ])
 
         for path in search_paths:
@@ -115,6 +122,10 @@ class HookLogger:
             log_dir = os.path.dirname(log_file)
             os.makedirs(log_dir, exist_ok=True)
 
+            # Rotate log if needed
+            max_log_size_mb = log_config.get('max_log_size_mb', 10)
+            self._rotate_log_if_needed(log_file, max_log_size_mb)
+
             # Set up logging
             logging.basicConfig(
                 level=logging.INFO,
@@ -126,6 +137,30 @@ class HookLogger:
             self.logger = logging.getLogger('hook')
         else:
             self.logger = None
+
+    def _rotate_log_if_needed(self, log_file: str, max_size_mb: int):
+        """
+        Rotate log file if it exceeds max size.
+
+        Moves current log to log_file.1, overwriting any existing .1 file.
+
+        Args:
+            log_file: Path to log file
+            max_size_mb: Maximum log size in megabytes
+        """
+        if not os.path.exists(log_file):
+            return
+
+        # Check file size
+        file_size_mb = os.path.getsize(log_file) / (1024 * 1024)
+
+        if file_size_mb >= max_size_mb:
+            backup_file = f"{log_file}.1"
+            # Remove old backup if it exists
+            if os.path.exists(backup_file):
+                os.remove(backup_file)
+            # Move current log to backup
+            os.rename(log_file, backup_file)
 
     def log(self, message: str, level: str = 'info'):
         """Log a message."""

@@ -59,8 +59,8 @@ class BashCommandParser:
         if not self.separator_pattern.search(command):
             return [self._parse_simple_command(command, None)]
 
-        # Split by operators while preserving them
-        parts = self.separator_pattern.split(command)
+        # Split by operators while preserving them, respecting quotes
+        parts = self._split_respecting_quotes(command)
 
         parsed_commands = []
         current_operator = None
@@ -80,6 +80,136 @@ class BashCommandParser:
                 current_operator = None
 
         return parsed_commands
+
+    def _split_respecting_quotes(self, command: str) -> List[str]:
+        """
+        Split command by operators while respecting quoted strings and redirections.
+
+        Args:
+            command: The bash command string
+
+        Returns:
+            List of parts (commands and operators)
+        """
+        parts = []
+        current_part = []
+        in_single_quote = False
+        in_double_quote = False
+        escaped = False
+        i = 0
+
+        while i < len(command):
+            char = command[i]
+
+            # Handle escape sequences
+            if escaped:
+                current_part.append(char)
+                escaped = False
+                i += 1
+                continue
+
+            if char == '\\':
+                escaped = True
+                current_part.append(char)
+                i += 1
+                continue
+
+            # Handle quotes
+            if char == "'" and not in_double_quote:
+                in_single_quote = not in_single_quote
+                current_part.append(char)
+                i += 1
+                continue
+
+            if char == '"' and not in_single_quote:
+                in_double_quote = not in_double_quote
+                current_part.append(char)
+                i += 1
+                continue
+
+            # If we're inside quotes, just accumulate
+            if in_single_quote or in_double_quote:
+                current_part.append(char)
+                i += 1
+                continue
+
+            # Check for redirections before operators
+            # Patterns like: 2>&1, 1>&2, &>, 2>, 1>, >>, >&
+            if self._is_redirection(command, i):
+                # It's a redirection, not a separator - include it in current part
+                current_part.append(char)
+                i += 1
+                continue
+
+            # Check for operators (only when not in quotes or redirections)
+            matched_op = None
+            for op in sorted(self.COMMAND_SEPARATORS, key=len, reverse=True):
+                if command[i:i+len(op)] == op:
+                    matched_op = op
+                    break
+
+            if matched_op:
+                # Save current part if not empty
+                if current_part:
+                    parts.append(''.join(current_part))
+                    current_part = []
+                # Save operator
+                parts.append(matched_op)
+                i += len(matched_op)
+            else:
+                current_part.append(char)
+                i += 1
+
+        # Add remaining part
+        if current_part:
+            parts.append(''.join(current_part))
+
+        return parts
+
+    def _is_redirection(self, command: str, pos: int) -> bool:
+        """
+        Check if the character at pos is part of a redirection operator.
+
+        Common redirections: >, >>, <, <<, 2>, 2>>, 1>, &>, >&, 2>&1, 1>&2, etc.
+
+        Args:
+            command: Full command string
+            pos: Current position in the string
+
+        Returns:
+            True if this is part of a redirection
+        """
+        char = command[pos]
+
+        # Check for file descriptor number followed by redirection
+        # e.g., 2>&1, 2>, 1>, etc.
+        if char.isdigit():
+            # Look ahead for > or <
+            next_pos = pos + 1
+            if next_pos < len(command) and command[next_pos] in '><':
+                return True
+
+        # Check for > or < followed by &, >, <, or digit
+        # e.g., >&, >>, <<, >&1, etc.
+        if char in '><':
+            next_pos = pos + 1
+            if next_pos < len(command) and command[next_pos] in '>&<0123456789':
+                return True
+            # Standalone > or < is also a redirection
+            return True
+
+        # Check for & that's part of a redirection (preceded by >)
+        # e.g., >&1, >&2, &>
+        if char == '&':
+            # Look back for >
+            if pos > 0 and command[pos - 1] == '>':
+                return True
+            # Look ahead for > (e.g., &>)
+            next_pos = pos + 1
+            if next_pos < len(command) and command[next_pos] == '>':
+                return True
+
+        return False
 
     def _parse_simple_command(self, cmd_str: str, operator: Optional[str]) -> ParsedCommand:
         """
@@ -104,7 +234,10 @@ class BashCommandParser:
                 operator_before=operator
             )
 
-        if cmd_str.startswith('do') or cmd_str.startswith('then') or cmd_str.startswith('else') or cmd_str.startswith('fi') or cmd_str.startswith('done'):
+        # Control structure keywords (must be exact match or followed by space/special char)
+        control_keywords = ['do', 'then', 'else', 'elif', 'fi', 'done', 'esac']
+        first_word = cmd_str.split()[0] if cmd_str.split() else cmd_str
+        if first_word in control_keywords:
             # Control structure keywords
             return ParsedCommand(
                 command=cmd_str,
