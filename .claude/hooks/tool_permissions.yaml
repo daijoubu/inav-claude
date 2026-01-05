@@ -230,13 +230,13 @@ bash_rules:
   # Git read operations (safe)
   - name: "Allow git read operations"
     command_pattern: "^git$"
-    argument_pattern: "^(-C\\s+\\S+\\s+)?(status|log|diff|show|branch|remote|describe|rev-parse|rev-list|cat-file|ls-tree|ls-files|grep|merge-base|blame|tag).*"
+    argument_pattern: "^(-c\\s+safe\\.directory=\\S+\\s+)?(-C\\s+\\S+\\s+)?(status|log|diff|show|branch|remote|describe|rev-parse|rev-list|cat-file|ls-tree|ls-files|grep|merge-base|blame|tag).*"
     category: read
     decision: allow
 
   - name: "Allow git fetch"
     command_pattern: "^git$"
-    argument_pattern: "^(-C\\s+\\S+\\s+)?fetch.*"
+    argument_pattern: "^(-c\\s+safe\\.directory=\\S+\\s+)?(-C\\s+\\S+\\s+)?fetch.*"
     category: read
     decision: allow
 
