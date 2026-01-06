@@ -146,6 +146,11 @@ rules:
     category: read
     decision: allow
 
+  - name: "Allow Chrome DevTools MCP tools"
+    tool_name_pattern: "^mcp__chrome-devtools__.*$"
+    category: other
+    decision: allow
+
   # ===================================================================
   # Deny Rules (Dangerous Patterns)
   # ===================================================================
