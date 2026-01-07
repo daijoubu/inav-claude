@@ -354,6 +354,16 @@ bash_rules:
     message: "cat with output redirection requires approval"
 
   # ===================================================================
+  # Email/Inbox File Operations
+  # ===================================================================
+
+  - name: "Allow mv within inbox directories"
+    command_pattern: "^mv$"
+    argument_pattern: ".*(claude/developer/inbox|claude/manager/inbox).*"
+    category: write
+    decision: allow
+
+  # ===================================================================
   # Dangerous Recursive Operations
   # ===================================================================
 
