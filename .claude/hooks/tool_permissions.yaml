@@ -420,13 +420,18 @@ bash_rules:
     category: other
     decision: allow
 
+  - name: "Allow SITL simulator execution"
+    command_pattern: ".*SITL\\.elf$"
+    category: other
+    decision: allow
+
   # ===================================================================
   # Common Read-Only Commands (Broad Allow List)
   # ===================================================================
   # These are safe commands that only read/display data
 
   - name: "Allow common read commands"
-    command_pattern: "^(grep|egrep|find|cat|ls|head|tail|less|more|wc|sort|uniq|diff|stat|file|du|df|awk|sed|cut|xargs|printf|pwd|whoami|md5sum|lsusb|sleep)$"
+    command_pattern: "^(grep|egrep|find|cat|ls|head|tail|less|more|wc|sort|uniq|diff|stat|file|du|df|awk|sed|cut|xargs|printf|pwd|whoami|md5sum|lsusb|sleep|ss)$"
     category: read
     decision: allow
 
