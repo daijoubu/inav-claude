@@ -364,6 +364,16 @@ bash_rules:
     decision: allow
 
   # ===================================================================
+  # Safe File Removal
+  # ===================================================================
+
+  - name: "Allow rm for SITL temp files"
+    command_pattern: "^rm$"
+    argument_pattern: ".*eeprom\\.bin.*"
+    category: write
+    decision: allow
+
+  # ===================================================================
   # Dangerous Recursive Operations
   # ===================================================================
 
