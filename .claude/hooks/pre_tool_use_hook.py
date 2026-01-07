@@ -9,6 +9,7 @@ This hook intercepts tool calls before they execute and can:
 """
 
 import json
+import re
 import sys
 from typing import Dict, Any, Optional
 
@@ -34,7 +35,29 @@ def handle_bash_tool(command: str, matcher: RuleMatcher, logger: HookLogger, cwd
     Returns:
         Hook output dict
     """
-    results = matcher.match_bash(command, cwd)
+    # Handle heredocs specially - extract just the first command before heredoc content
+    # Pattern matches: << EOF, << 'EOF', << "EOF", <<EOF, <<'EOF', <<"EOF", <<-EOF, etc.
+    heredoc_match = re.search(r'<<-?\s*[\'"]?(\w+)[\'"]?\s*\n', command)
+    if heredoc_match:
+        # Extract just the first line (the actual command) before the heredoc content
+        first_line = command.split('\n')[0]
+        logger.log_output('info', f'Heredoc detected, checking first line: {first_line}')
+
+        # Check if the first line (the actual command) is allowed
+        results = matcher.match_bash(first_line, cwd)
+
+        # If the command part is allowed, allow the whole heredoc
+        denied_results = [r for r in results if r['decision'] == 'deny']
+        ask_results = [r for r in results if r['decision'] == 'ask']
+
+        if not denied_results and not ask_results:
+            logger.log_output('allow', f'Heredoc command allowed: {first_line}')
+            return HookOutputGenerator.generate_pretooluse_output(decision='allow')
+
+        # If denied or ask, continue with normal handling but use first_line results
+        # Fall through to normal processing with these results
+    else:
+        results = matcher.match_bash(command, cwd)
 
     # Check if any subcommand is denied
     denied_results = [r for r in results if r['decision'] == 'deny']
