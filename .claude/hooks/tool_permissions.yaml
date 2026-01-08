@@ -431,6 +431,12 @@ bash_rules:
     category: other
     decision: allow
 
+  - name: "Allow python3 fetch_issues.py"
+    command_pattern: "^python3$"
+    argument_pattern: "^fetch_issues\\.py.*"
+    category: other
+    decision: allow
+
   - name: "Allow direct execution of scripts in .claude/skills/"
     command_pattern: ".*(~/inavflight/\\.claude/skills/|/Documents/planes/inavflight/\\.claude/skills/|\\./\\.claude/skills/).*"
     category: other
