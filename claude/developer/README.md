@@ -636,6 +636,31 @@ Modified files: inav/src/main/telemetry/crsf.c, inav/src/main/telemetry/crsf.h"
 
 **Configuration:** `.claude/agents/settings-lookup.md`
 
+## msp-expert
+**Purpose:** MSP protocol lookups, mspapi2 library usage, and protocol debugging
+
+**When to use:**
+- Looking up MSP message field structures and codes
+- Writing Python scripts that use mspapi2
+- Adding or modifying MSP messages in firmware
+- Debugging MSP communication issues (CRC errors, timing, no response)
+- Understanding MSP v1 vs v2 differences
+
+**Context to provide:**
+- MSP message name or code (e.g., `MSP_ATTITUDE`, `108`)
+- What info needed (field structure, example code, debugging help)
+- Error symptoms if debugging
+
+**Example prompts:**
+```
+"Look up MSP_NAV_STATUS - what fields does it return?"
+"Write mspapi2 code to read all logic conditions from SITL"
+"I'm getting CRC errors when sending MSP_SET_RC - help debug"
+"How do I add a new MSP2 message to the firmware?"
+```
+
+**Configuration:** `.claude/agents/msp-expert.md`
+
 ---
 
 # Useful Skills
@@ -659,6 +684,7 @@ The following skills are available to help with common developer tasks:
 - `inav-builder` - Building firmware (SITL and hardware targets)
 - `sitl-operator` - SITL lifecycle management (start, stop, configure)
 - `test-engineer` - Running tests and validation
+- `msp-expert` - MSP protocol lookups, mspapi2 usage, debugging
 
 **Skills (used by agents or directly):**
 - **build-sitl** / **build-inav-target** - Build firmware
