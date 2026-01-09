@@ -484,6 +484,11 @@ bash_rules:
   # ===================================================================
   # These handle bash syntax elements and parser edge cases
 
+  - name: "Allow bash comments"
+    command_pattern: "^#.*$"
+    category: read
+    decision: allow
+
   - name: "Allow shell control structures"
     command_pattern: "^(if|then|else|elif|fi|for|while|do|done|case|esac|break|continue|\\[|\\[\\[|test)$"
     category: read
