@@ -166,6 +166,8 @@ Use the Edit tool to append new entries. Format: `- **Brief title**: One-sentenc
 <!-- Add new lessons above this line -->
 ```
 
+*End of agent template*
+
 ---
 
 ## Creation Workflow
