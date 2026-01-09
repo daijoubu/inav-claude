@@ -1,6 +1,6 @@
 # mwptools Reference for INAV Development
 
-**Location:** `/home/raymorris/inavflight/mwptools/`
+**Location:** `~/inavflight/mwptools/`
 **Source:** https://codeberg.org/stronnag/mwptools
 **Author:** Jonathan Hudson
 
@@ -26,7 +26,7 @@ mwptools is a suite of tools for INAV mission planning, ground control, and deve
 ### To rebuild full mwptools (when dependencies available)
 
 ```bash
-cd /home/raymorris/inavflight/mwptools
+cd ~/inavflight/mwptools
 ~/.local/bin/meson setup _build --prefix=~/.local --strip
 ninja -C _build install
 ```

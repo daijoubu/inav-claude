@@ -75,6 +75,18 @@ You are responsible for:
 
 ---
 
+## Initial Setup (New Users)
+
+After cloning, update `.claude/settings.json` with your home directory path:
+
+```bash
+sed -i "s|/home/user/|$HOME/|g" .claude/settings.json
+```
+
+See `claude/README.md` for full setup instructions.
+
+---
+
 ## Repository Overview
 
 This repository contains four main components:

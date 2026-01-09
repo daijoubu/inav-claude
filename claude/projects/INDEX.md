@@ -2,7 +2,7 @@
 
 This file tracks all active and completed projects in the INAV codebase.
 
-**Last Updated:** 2025-12-31
+**Last Updated:** 2026-01-09
 
 ---
 
@@ -25,6 +25,97 @@ This file tracks all active and completed projects in the INAV codebase.
 ---
 
 ## Recent Activity (Last 7 Days)
+
+### 2026-01-09: Completions - Blackbox Viewer Axis Labels and Pitot Analysis ✅
+
+**Developer** - Blackbox Viewer Axis Labels COMPLETED
+- **PR:** https://github.com/iNavFlight/blackbox-log-viewer/pull/119
+- **Changes:** Added dynamic time labels and zoom-adaptive grid intervals to X-axis
+- **Features:**
+  - Human-friendly time intervals (10ms to 15min) based on zoom level
+  - Grid lines scale automatically with zoom
+  - Time labels at bottom of graph showing elapsed time from log start
+  - Label format adapts to zoom level (e.g., "15:43.50" zoomed in, "15:43" zoomed out)
+- **Testing:** Verified at various zoom levels
+- **Status:** PR submitted, awaiting review
+- **Note:** Y-axis improvement deferred as follow-up task
+
+**Developer** - Pitot Validation Blackbox Analysis COMPLETED
+- **Purpose:** Analyze blackbox log from PR #11222 to understand pitot sensor validation
+- **Key Findings:**
+  - Blocked pitot period: 53+ seconds (106.0s to 173s)
+  - Detection algorithm is mathematically sound - it SHOULD have detected failure
+  - Detection occurred at 116.2 seconds (10.2 second delay after blockage visible)
+  - 70.8% of readings were implausible during failure
+  - **Likely cause of no OSD warning:** OSD message priority/array limit issue OR validation only runs in `pitotValidForAirspeed()` not called by OSD
+- **Recommendations for PR #11222:**
+  1. Separate validation from pitotValidForAirspeed() - run in pitot task independently
+  2. Increase OSD warning priority
+  3. Add blackbox debug fields for validation state
+  4. Consider faster detection (50 samples instead of 100)
+- **Report:** `claude/developer/projects/pitot-validation-analysis/ANALYSIS_REPORT.md`
+- **Supports:** implement-pitot-sensor-validation project
+
+---
+
+### 2026-01-08: Bug Fixes from GitHub Issue Triage 📋 ✉️
+
+**Manager** - Three readily solvable bugs identified from issue triage:
+
+#### fix-crsf-msp-overflow (HIGH - Security)
+- **Issue:** #11209 - Integer overflow in CRSF MSP handling
+- **Problem:** `frameLength - 4` underflows when frameLength < 4, causing OOB write
+- **Fix:** Add bounds check before subtraction
+- **Assignment:** `claude/manager/sent/2026-01-08-1145-task-fix-crsf-msp-overflow.md`
+
+#### fix-spi-buswritebuf (MEDIUM)
+- **Issue:** #10674 - SPI busWriteBuf uses wrong register masking
+- **Problem:** Uses `reg | 0x80` (read) instead of `reg & 0x7F` (write)
+- **Fix:** One-line change in bus.c line 286
+- **Assignment:** `claude/manager/sent/2026-01-08-1146-task-fix-spi-buswritebuf.md`
+
+#### fix-climb-rate-deadband (MEDIUM)
+- **Issue:** #10660 - Climb rate deadband applied twice
+- **Problem:** Double deadband causes climb rate to differ from configured value
+- **Fix:** Reorder code so deadband applied once
+- **Assignment:** `claude/manager/sent/2026-01-08-1147-task-fix-climb-rate-deadband.md`
+
+---
+
+### 2026-01-07: UI Enhancement - Blackbox Viewer Axis Labels 📋
+
+**Manager** - Enhance Blackbox Viewer Axis Labeling
+- **Objective:** Make time scale more visible in blackbox log viewer
+- **Approach:** Enhance existing `drawGrid()` function rather than adding separate ticks
+- **X-Axis Changes:**
+  - Scale grid intervals using human-friendly values: 10ms, 25ms, 100ms, 250ms, 1s, 5s, 10s, 30s, 1min, 5min, 15min
+  - Algorithm: divide visible time by 8, select nearest friendly interval
+  - Add time labels to grid lines (~8 visible)
+  - Labels update dynamically when zooming
+- **Y-Axis:** Research and propose approach for multi-trace scale visibility
+- **Repo:** inav-blackbox-log-viewer
+- **Type:** UI Enhancement
+- **Priority:** MEDIUM
+- **Assignment Email:** `claude/manager/sent/2026-01-07-0150-task-blackbox-viewer-axis-labels.md`
+
+### 2026-01-06: Feature - Improved Motor Wizard with DShot Beep Identification 📋
+
+**Manager** - Create New DShot-Based Motor Identification Wizard
+- **Objective:** Replace dropdown-based motor wizard with interactive beep-based identification
+- **Problem:** Current wizard is unintuitive - requires manually matching motors to dropdowns
+- **Solution:** Use DShot beacon commands to make individual motors beep, user clicks position on diagram
+- **Implementation:**
+  1. Firmware: Add DSHOT_CMD_BEACON1-5 support, per-motor command sending
+  2. Firmware: Add MSP2_INAV_SEND_DSHOT_COMMAND for configurator control
+  3. Configurator: New wizard UI with clickable motor diagram
+  4. Wizard flow: Beep motor → user clicks position → repeat → confirmation phase
+- **Reference:** Betaflight's EscDshotDirection component (see animated GIF link in assignment)
+- **Repos:** inav, inav-configurator
+- **Type:** Feature (requires DShot protocol)
+- **Priority:** MEDIUM
+- **Estimated Time:** 8-12 hours (multi-phase)
+- **Branch:** maintenance-10.x (both repos - new MSP command is breaking change)
+- **Assignment Email:** `claude/manager/sent/2026-01-06-2340-task-improved-motor-wizard.md`
 
 ### 2026-01-02: APA Safety Implementation - Pitot Validation and Formula Fixes 📋
 
@@ -180,7 +271,7 @@ This file tracks all active and completed projects in the INAV codebase.
 - **Issue:** BLE connects but no data received on Windows (Sent: 27 bytes, Received: 0 bytes)
 - **Device:** SYNERDUINO7-BT-E-LE
 - **Problem:** Connection establishes, notifications start, but MSP requests timeout
-- **Log:** `/home/raymorris/Downloads/inav-log.txt`
+- **Log:** `~/Downloads/inav-log.txt`
 - **Task:** Add comprehensive logging around BLE write/read/notifications
 - **Goal:** Diagnose why data isn't being received
 - **Areas:** Data transfer, service discovery, connection setup, errors, timing
@@ -212,7 +303,7 @@ This file tracks all active and completed projects in the INAV codebase.
 
 **Manager** - Analyze Pitot Blockage APA Safety Issue
 - **Issue:** https://github.com/iNavFlight/inav/issues/11208
-- **PDF:** `/home/raymorris/Downloads/pitot blockage sanity check.pdf`
+- **PDF:** `~/Downloads/pitot blockage sanity check.pdf`
 - **Problem:** INAV 9's Fixed Wing APA increases PIFF gains by 200% below cruise speed
 - **Safety Critical:** When pitot fails/blocks, aircraft becomes nearly unflyable
 - **Failure scenario:** Pitot reads low → system thinks aircraft is slow → massively increases gains at actual cruise speed
@@ -680,48 +771,6 @@ Implement auto-detection algorithm based on ss_oled library that reads status re
 
 ---
 
-### 📋 document-ublox-gps-configuration
-
-**Status:** TODO
-**Type:** Documentation / Analysis
-**Priority:** MEDIUM
-**Assignment:** ✉️ Assigned
-**Created:** 2025-12-31
-**Assignee:** Developer
-**Estimated Time:** 4-6 hours
-
-Analyze and document INAV's u-blox GPS receiver configuration choices, compare with ArduPilot, and provide recommendations.
-
-**Objectives:**
-1. Document INAV's u-blox configuration (constellations, nav model, rates, protocol, features)
-2. Reference u-blox datasheets to understand each choice and trade-offs
-3. Analyze ArduPilot's u-blox configuration for comparison
-4. Identify key differences and analyze implications
-5. Provide actionable recommendations for INAV
-
-**Configuration Areas:**
-- **GNSS Constellations:** GPS, GLONASS, Galileo, BeiDou - which enabled?
-- **Navigation Model:** Airborne <1g/<2g/<4g, or other models
-- **Update Rates:** Position, measurement, navigation rates
-- **Protocol:** NMEA vs UBX, message selection
-- **Special Features:** SBAS, jamming detection, power modes
-
-**Deliverables:**
-- `claude/developer/reports/ublox-gps-configuration-analysis.md` - INAV configuration analysis
-- `claude/developer/reports/ublox-gps-inav-vs-ardupilot.md` - Comparison and recommendations
-
-**Value:**
-- Better understanding of GPS configuration
-- Informed decisions about future GPS improvements
-- Reference for troubleshooting and optimization
-- Knowledge base for community
-
-**Note:** Local project documentation - no PR, analysis stays in reports/
-
-**Assignment Email:** `claude/manager/sent/2025-12-31-1200-task-document-ublox-gps-configuration.md`
-
----
-
 ### 📋 implement-pitot-sensor-validation
 
 **Status:** TODO
@@ -955,102 +1004,6 @@ GPS rate change requires evidence from Jetrell's testing. Don't change without u
 
 ---
 
-### 📋 reorganize-developer-directory
-
-**Status:** TODO
-**Type:** Infrastructure / Organization
-**Priority:** MEDIUM
-**Assignment:** ✉️ Assigned
-**Created:** 2025-12-31
-**Assignee:** Developer
-**Estimated Time:** 3-4 hours
-
-Analyze, plan, and implement better organization structure for `claude/developer/` directory, then update all documentation.
-
-**Problem:**
-- Current structure documented in `developer/CLAUDE.md` is "not great"
-- Documentation may not match actual directory layout
-- Files may be scattered or poorly organized
-- No clear guidelines for where different types of files should go
-- Skills may have expectations about locations that aren't met
-
-**Objectives:**
-
-1. **Audit Current State**
-   - Survey actual files and directories
-   - Review skill documentation about file organization
-   - Review current documentation (CLAUDE.md, INDEX.md)
-   - Identify what's working and what needs improvement
-
-2. **Plan Better Structure**
-   - Design realistic, useful organization
-   - Match how work is actually done
-   - Keep things neat, tidy, and easy to find
-   - Consider reusable vs. task-specific files
-   - Consider active vs. archived work
-
-3. **Implement Organization**
-   - Move files to new locations
-   - Create necessary directories
-   - Clean up clutter and duplicates
-   - Ensure everything has a clear home
-
-4. **Update Documentation**
-   - Update `developer/CLAUDE.md` with new structure
-   - Update `developer/INDEX.md` with comprehensive guide
-   - Update skill documentation if needed
-   - Update other internal docs with path references
-
-**Design Principles:**
-- Intuitive - easy to find things without reading docs
-- Matches actual usage - reflects how work is actually done
-- Supports workflows - makes common tasks easier
-- Scales well - handles growth without becoming messy
-- Self-documenting - directory names explain purpose
-
-**Key Questions to Answer:**
-- Where do reusable scripts go vs. task-specific scripts?
-- How to organize active work vs. archived work?
-- How to categorize different types of scripts (testing, build, analysis, investigation)?
-- How to organize different types of documentation (guides, reference, reports)?
-- Where do task working files go?
-
-**Implementation Phases:**
-
-1. Discovery (45 min) - Survey current state, review docs, identify issues
-2. Planning (45 min) - Design structure, plan moves, plan documentation
-3. Implementation (60 min) - Create directories, move files, update references
-4. Documentation (45 min) - Update CLAUDE.md, INDEX.md, skills, other docs
-5. Testing (15 min) - Verify locations, test workflows, test skills
-
-**Files to Update:**
-- `claude/developer/CLAUDE.md`
-- `claude/developer/INDEX.md`
-- `~/.claude/skills/*/SKILL.md` (if needed)
-- Other docs with path references
-
-**Deliverables:**
-- Reorganized directory structure with all files in logical locations
-- Updated documentation accurately reflecting structure
-- Migration documentation (old → new paths)
-- Completion report with before/after comparison
-
-**Value:**
-- Easier to find files and documentation
-- Clear guidelines for where things go
-- Reduced clutter and confusion
-- Better productivity and workflow
-- Easier for new developers (or AI instances) to navigate
-
-**Note from Manager:**
-> "When working on a task, keep the files you create neatly organized. Testing scripts should go in scripts_testing if they are reuseable. Other things should go in the appropriate task working directory. When creating Python scripts that you may need to re-use later, save them to an appropriately named file, with documentation at the top. Don't leave files littering random directories."
-
-The new structure should make this guidance easier to follow.
-
-**Assignment Email:** `claude/manager/sent/2025-12-31-2345-task-reorganize-developer-directory.md`
-
----
-
 ### 📋 fix-blackbox-zero-motors-bug
 
 **Status:** TODO
@@ -1096,9 +1049,9 @@ JHEMCUF435 fixed-wing, motorCount=0:
 
 ---
 
-### 📋 investigate-esc-spinup-after-disarm
+### 🚧 investigate-esc-spinup-after-disarm
 
-**Status:** TODO
+**Status:** IN PROGRESS - Investigation complete, implementation approach TBD
 **Type:** Bug Investigation / Safety Issue
 **Priority:** HIGH
 **Assignment:** ✉️ Assigned
@@ -1171,9 +1124,9 @@ Capture detailed logs to identify root cause before attempting fix.
 
 ---
 
-### 📋 remember-last-save-directory
+### ✅ remember-last-save-directory
 
-**Status:** TODO
+**Status:** COMPLETED (2025-12-31) - PR #2511 Open
 **Type:** UX Enhancement
 **Priority:** MEDIUM
 **Assignment:** ✉️ Assigned
@@ -1315,7 +1268,7 @@ CRITICAL - pitot failures are common (mechanical failure, blockage, forgotten so
 
 **Task:**
 1. Read GitHub issue #11208
-2. Read PDF document: `/home/raymorris/Downloads/pitot blockage sanity check.pdf`
+2. Read PDF document: `~/Downloads/pitot blockage sanity check.pdf`
 3. Locate and analyze APA implementation code
 4. Evaluate suggested solutions:
    - Don't increase gains below cruise speed
@@ -1872,6 +1825,33 @@ Implement robust entropy gathering that XORs multiple entropy sources (hardware 
 **Stakeholder Decision:** "Option 1 and 3. xor all available sources... use what is available, dynamically"
 
 **Location:** `claude/projects/privacylrs-fix-finding8-entropy-sources/`
+
+---
+
+### ⏸️ settings-simplification
+
+**Status:** BACKBURNER
+**Type:** Feature / UX Improvement
+**Priority:** MEDIUM
+**Created:** 2026-01-07
+**Estimated Effort:** 7-8 weeks (phased)
+
+Reduce INAV configuration complexity by ~70% through automatic determination and consolidation of flight settings.
+
+**Analysis Findings:**
+- 19 auto-determinable settings (learn from flight data, constants)
+- 47 settings → 12-14 consolidated primary settings
+- ~48 unique settings can be eliminated or simplified
+
+**Implementation Phases:**
+1. Quick wins (~3 days): Battery chemistry presets, auto-link airspeed
+2. Learning features (~3 weeks): Adaptive hover/cruise throttle
+3. Profile systems (~2 weeks): Landing descent, throttle range
+4. Advanced consolidations (~2 weeks)
+
+**Value:** 70% reduction in configuration complexity, better new user experience.
+
+**Analysis Documentation:** `claude/developer/investigations/inav-flight-settings/`
 
 ---
 

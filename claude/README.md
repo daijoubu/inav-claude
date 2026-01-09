@@ -13,9 +13,9 @@ This directory contains organizational structures, communication channels, and d
 📖 **Read your guide:** [`claude/manager/README.md`](manager/README.md)
 
 **Quick actions:**
-- Check inbox: `ls claude/manager/inbox/`
+- Check inbox: `ls claude/manager/email/inbox/`
 - View active projects: `cat claude/projects/INDEX.md`
-- Assign tasks: Create in `manager/sent/`, copy to `developer/inbox/`
+- Assign tasks: Create in `manager/email/sent/`, copy to `developer/email/inbox/`
 
 ---
 
@@ -26,10 +26,10 @@ This directory contains organizational structures, communication channels, and d
 📖 **Read your guide:** [`claude/developer/README.md`](developer/README.md)
 
 **Quick actions:**
-- Check inbox: `ls claude/developer/inbox/`
+- Check inbox: `ls claude/developer/email/inbox/`
 - Build firmware: `cd inav && ./build.sh TARGETNAME`
 - Build configurator: `cd inav-configurator && npm start`
-- Report completion: Create in `developer/sent/`, copy to `manager/inbox/`
+- Report completion: Create in `developer/email/sent/`, copy to `manager/email/inbox/`
 
 ---
 
@@ -54,23 +54,31 @@ This directory contains organizational structures, communication channels, and d
 claude/
 ├── manager/              - Development manager files
 │   ├── README.md        - Manager role guide ⭐ START HERE if you're the manager
-│   ├── sent/            - Tasks sent to developer
-│   ├── inbox/           - Reports from developer
-│   └── inbox-archive/   - Archived reports
+│   └── email/           - Email communication
+│       ├── inbox/       - Reports from developer
+│       ├── inbox-archive/ - Archived reports
+│       ├── outbox/      - Draft messages
+│       └── sent/        - Tasks sent to developer
 │
 ├── developer/            - Developer files
 │   ├── README.md        - Developer role guide ⭐ START HERE if you're the developer
-│   ├── inbox/           - Tasks from manager
-│   ├── sent/            - Reports to manager
-│   └── inbox-archive/   - Archived assignments
+│   ├── workspace/       - Active task working directories (gitignored)
+│   └── email/           - Email communication
+│       ├── inbox/       - Tasks from manager
+│       ├── inbox-archive/ - Archived assignments
+│       ├── outbox/      - Draft messages
+│       └── sent/        - Reports to manager
 │
 ├── release-manager/      - Release manager files
 │   ├── README.md        - Release manager guide ⭐ START HERE if you're releasing
 │   ├── releases/        - Release notes and changelogs
-│   ├── inbox/           - Incoming messages
-│   └── sent/            - Outgoing messages
+│   └── email/           - Email communication
+│       ├── inbox/       - Incoming messages
+│       ├── inbox-archive/ - Archived messages
+│       ├── outbox/      - Draft messages
+│       └── sent/        - Outgoing messages
 │
-├── projects/             - Active projects
+├── projects/             - Active project tracking (manager-owned)
 │   ├── INDEX.md         - Master project tracking
 │   └── <project-name>/  - Individual project directories
 │       ├── summary.md
@@ -86,11 +94,11 @@ claude/
 ```
 Manager creates task
     ↓
-manager/sent/ → copy → developer/inbox/
+manager/email/sent/ → copy → developer/email/inbox/
                             ↓
                     Developer reads & implements
                             ↓
-developer/sent/ → copy → manager/inbox/
+developer/email/sent/ → copy → manager/email/inbox/
     ↓
 Manager reviews & archives
 ```
@@ -151,7 +159,7 @@ TODO → IN PROGRESS → COMPLETED → Archived
 
 ```bash
 # Check for completion reports
-ls -lt claude/manager/inbox/
+ls -lt claude/manager/email/inbox/
 
 # View active projects
 grep "Status: IN PROGRESS" claude/projects/*/summary.md
@@ -160,25 +168,43 @@ grep "Status: IN PROGRESS" claude/projects/*/summary.md
 mv claude/projects/<name> claude/archived_projects/
 
 # Archive completion report
-mv claude/manager/inbox/<report>.md claude/manager/inbox-archive/
+mv claude/manager/email/inbox/<report>.md claude/manager/email/inbox-archive/
 ```
 
 ### Developer Commands
 
 ```bash
 # Check for new assignments
-ls -lt claude/developer/inbox/
+ls -lt claude/developer/email/inbox/
 
 # Send completion report
-cp claude/developer/sent/<report>.md claude/manager/inbox/
+cp claude/developer/email/sent/<report>.md claude/manager/email/inbox/
 
 # Archive processed assignment
-mv claude/developer/inbox/<task>.md claude/developer/inbox-archive/
+mv claude/developer/email/inbox/<task>.md claude/developer/email/inbox-archive/
 
 # Build & test
 cd inav && ./build.sh TARGETNAME
 cd inav-configurator && npm test
 ```
+
+## Initial Setup
+
+After cloning this repository, you need to update the settings files with your actual home directory path.
+
+**Required:** Replace `/home/user/` with your actual home directory in these files:
+- `.claude/settings.json` - Hook script paths
+- `.claude/settings.local.json` - Permission rules (if it exists)
+
+```bash
+# Example for Linux/macOS:
+sed -i "s|/home/user/|$HOME/|g" .claude/settings.json
+sed -i "s|/home/user/|$HOME/|g" .claude/settings.local.json 2>/dev/null || true
+```
+
+The hook scripts need absolute paths to work correctly with Claude Code.
+
+---
 
 ## Getting Started
 

@@ -1,4 +1,29 @@
 {
+  "sandbox": {
+    "network": {
+      "allowedHosts": [
+        "github.com",
+        "www.betaflight.com",
+        "datatracker.ietf.org",
+        "eprint.iacr.org",
+        "emscripten.org",
+        "app.betaflight.com",
+        "www.winbond.com",
+        "www.puyasemi.com",
+        "raw.githubusercontent.com",
+        "www.arterychip.com",
+        "microsoft.github.io",
+        "community.st.com",
+        "www.einfochips.com",
+        "developer.x-plane.com",
+        "www.keil.com",
+        "api.github.com",
+        "objects.githubusercontent.com",
+        "localhost",
+        "127.0.0.1"
+      ]
+    }
+  },
   "permissions": {
     "allow": [
       "Read(~/Documents/planes/inavflight/**)",
@@ -71,7 +96,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/raymorris/Documents/planes/inavflight/.claude/hooks/session-start.sh"
+            "command": "/home/user/Documents/planes/inavflight/.claude/hooks/session-start.sh"
           }
         ]
       }
@@ -82,7 +107,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/raymorris/Documents/planes/inavflight/.claude/hooks/pre_tool_use_hook.py"
+            "command": "/home/user/Documents/planes/inavflight/.claude/hooks/pre_tool_use_hook.py"
           }
         ]
       }
@@ -93,7 +118,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/raymorris/Documents/planes/inavflight/.claude/hooks/permission_request_hook.py"
+            "command": "/home/user/Documents/planes/inavflight/.claude/hooks/permission_request_hook.py"
           }
         ]
       }

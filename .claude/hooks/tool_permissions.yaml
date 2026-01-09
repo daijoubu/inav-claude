@@ -174,7 +174,7 @@ rules:
       file_path: ".*(inav/claude|inav-configurator/claude|inavwiki/claude).*"
     category: write
     decision: deny
-    message: "STOP! The claude/ directory is at /home/raymorris/Documents/planes/inavflight/claude/ (or ~/inavflight/claude/), NOT inside inav/, inav-configurator/, or inavwiki/. Use the correct path: /home/raymorris/Documents/planes/inavflight/claude/ or ~/inavflight/claude/"
+    message: "STOP! The claude/ directory is at ~/inavflight/claude/, NOT inside inav/, inav-configurator/, or inavwiki/. Use the correct path: ~/inavflight/claude/"
 
   # ===================================================================
   # Allow Rules (Safe File Modifications)
@@ -227,14 +227,14 @@ bash_rules:
     argument_pattern: ".*(inav/claude|inav-configurator/claude|inavwiki/claude).*"
     category: write
     decision: deny
-    message: "STOP! The claude/ directory is at /home/raymorris/Documents/planes/inavflight/claude/ (or ~/inavflight/claude/), NOT inside inav/, inav-configurator/, or inavwiki/. Use the correct path when creating directories."
+    message: "STOP! The claude/ directory is at ~/inavflight/claude/, NOT inside inav/, inav-configurator/, or inavwiki/. Use the correct path when creating directories."
 
   - name: "Block cp/mv to wrong claude paths"
     command_pattern: "^(cp|mv)$"
     argument_pattern: ".*(inav/claude|inav-configurator/claude|inavwiki/claude).*"
     category: write
     decision: deny
-    message: "STOP! The claude/ directory is at /home/raymorris/Documents/planes/inavflight/claude/ (or ~/inavflight/claude/), NOT inside inav/, inav-configurator/, or inavwiki/. Use the correct destination path."
+    message: "STOP! The claude/ directory is at ~/inavflight/claude/, NOT inside inav/, inav-configurator/, or inavwiki/. Use the correct destination path."
 
   # ===================================================================
   # Git Safety Rules
