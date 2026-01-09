@@ -19,7 +19,7 @@ You are a permissions management specialist for the Claude Code hook system. You
 
 ## Key Files
 
-**Workspace root:** `/home/raymorris/Documents/planes/inavflight`
+**Workspace root:** `~/inavflight`
 
 | File | Purpose |
 |------|---------|
@@ -76,7 +76,7 @@ bash_rules:
 **ALWAYS start by checking the recent log entries:**
 
 ```bash
-tail -50 /home/raymorris/Documents/planes/inavflight/.claude/hooks/tool_permissions.log
+tail -50 ~/inavflight/.claude/hooks/tool_permissions.log
 ```
 
 This shows you:
@@ -201,7 +201,7 @@ Use the patterns shown above. Key regex tips:
 
 ### Step 4: Validate
 ```bash
-python3 /home/raymorris/Documents/planes/inavflight/.claude/hooks/validate_config.py
+python3 ~/inavflight/.claude/hooks/validate_config.py
 ```
 
 ### Step 5: Commit

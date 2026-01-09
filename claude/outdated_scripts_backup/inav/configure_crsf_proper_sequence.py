@@ -14,10 +14,11 @@ Usage: python3 configure_crsf_proper_sequence.py [port]
 """
 
 import sys
+import os
 import struct
 import time
 
-sys.path.insert(0, '/home/raymorris/Documents/planes/inavflight/uNAVlib')
+sys.path.insert(0, os.path.expanduser('~/inavflight/uNAVlib'))
 from unavlib.main import MSPy
 from unavlib.enums.msp_codes import MSPCodes
 

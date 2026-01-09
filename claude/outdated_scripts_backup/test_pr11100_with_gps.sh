@@ -17,7 +17,7 @@ set -e  # Exit on error
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 GPS_SCRIPT="$SCRIPT_DIR/../gps/inject_gps_altitude.py"
 BUILD_DIR="build_sitl_pr11100"
-INAV_ROOT="/home/raymorris/Documents/planes/inavflight/inav"
+INAV_ROOT="$HOME/inavflight/inav"
 SITL_BIN="$INAV_ROOT/$BUILD_DIR/bin/SITL.elf"
 SITL_LOG="/tmp/sitl_pr11100_gps.log"
 RC_SENDER_SCRIPT="$SCRIPT_DIR/crsf_rc_sender.py"

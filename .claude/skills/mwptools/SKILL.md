@@ -18,7 +18,7 @@ triggers:
 
 # mwptools CLI Utilities
 
-mwptools provides CLI utilities for INAV development and testing. Located at `/home/raymorris/inavflight/mwptools/`.
+mwptools provides CLI utilities for INAV development and testing. Located at `~/inavflight/mwptools/`.
 
 ## Installation Check
 
@@ -31,7 +31,7 @@ which fc-get cliterm flashgo 2>/dev/null || echo "Not installed"
 If not installed:
 
 ```bash
-cd /home/raymorris/inavflight/mwptools
+cd ~/inavflight/mwptools
 meson setup _build --prefix=~/.local --strip
 ninja -C _build install
 ```
@@ -141,7 +141,7 @@ cliterm
 flashgo -dir /tmp/blackbox/
 
 # Analyze with mwptools scripts
-cd /home/raymorris/inavflight/mwptools/src/bbox-replay
+cd ~/inavflight/mwptools/src/bbox-replay
 ./inav-parse_bb_compass.rb --plot /tmp/blackbox/LOG00001.TXT
 ```
 

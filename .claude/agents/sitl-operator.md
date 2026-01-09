@@ -33,7 +33,7 @@ When invoked, you should receive:
 
 ## Available Scripts
 
-**Workspace root:** `/home/raymorris/Documents/planes/inavflight`
+**Workspace root:** `~/inavflight`
 
 ### Start SITL
 ```bash

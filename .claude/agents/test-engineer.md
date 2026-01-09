@@ -113,7 +113,7 @@ Test Engineer:
 
 ## Directory Structure
 
-**Workspace root:** `/home/raymorris/Documents/planes/inavflight`
+**Workspace root:** `~/inavflight`
 
 **Key directories:**
 - `inav/` - Flight controller firmware (C/C99)

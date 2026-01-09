@@ -275,7 +275,7 @@ Once flash protection is triggered:
 
 1. **AT32_F435_AN0026_Extending_SRAM_in_Users_Program_EN_V2.0.0.pdf**
    - Official Artery Technology application note
-   - Location: `/home/raymorris/Documents/electronics/`
+   - Location: `~/Documents/electronics/`
 
 2. **AT32F435/437 Reference Manual**
    - Flash Controller chapter

@@ -4,8 +4,9 @@ Test MSP commands that timeout during Blackbox tab switching.
 """
 
 import sys
+import os
 import time
-sys.path.append('/home/raymorris/Documents/planes/inavflight/mspapi2')
+sys.path.append(os.path.expanduser('~/inavflight/mspapi2'))
 
 from mspapi2.transport import TCPTransport
 from mspapi2.msp import MSPv2
