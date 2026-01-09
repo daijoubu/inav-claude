@@ -443,6 +443,14 @@ Internal documentation relevant to testing:
 - `.claude/skills/test-crsf-sitl/SKILL.md` - CRSF telemetry testing
 - `.claude/skills/test-configurator/SKILL.md` - Configurator testing
 
+**Related agents (ask parent session to invoke):**
+
+Agents cannot spawn other agents directly. If you need capabilities from these agents, report back to the parent session and request that it invoke the appropriate agent:
+
+- `msp-expert` - For MSP message lookups, mspapi2 usage, protocol debugging
+- `sitl-operator` - For SITL lifecycle management (start/stop/status)
+- `inav-builder` - For building SITL and firmware targets
+
 ---
 
 ## Self-Improvement: Lessons Learned
