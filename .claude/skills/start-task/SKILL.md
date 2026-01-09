@@ -68,13 +68,13 @@ git pull origin <branch-name> 2>/dev/null || true  # Pull if remote exists
 **Quick reference:**
 
 ```bash
-# For INAV/inav-configurator (most common - backwards compatible)
+# For INAV/inav-configurator (most common - maintains backward compatibility)
 git checkout -b <new-branch-name> upstream/maintenance-9.x
 
 # For PrivacyLRS
 git checkout -b <new-branch-name> secure_01
 
-# For INAV breaking changes
+# For INAV breaking changes (MSP protocol, settings structure, etc.)
 git checkout -b <new-branch-name> upstream/maintenance-10.x
 ```
 
@@ -104,7 +104,17 @@ BRANCH: <branch-name>
 EOF
 ```
 
-### 6. Confirm Ready
+### 6. Create Workspace Directory
+
+Create a workspace directory for task-related files:
+
+```bash
+mkdir -p claude/developer/workspace/<task-name>
+```
+
+This is your scratch space for notes, test scripts, and data. See `claude/developer/INDEX.md` for what goes here vs. in `claude/projects/`.
+
+### 7. Confirm Ready
 
 Verify:
 ```bash
@@ -143,7 +153,10 @@ LOCKED_AT: $(date '+%Y-%m-%d %H:%M')
 BRANCH: transpiler_clean_copy
 EOF
 
-# 5. Ready to work!
+# 5. Create workspace
+mkdir -p claude/developer/workspace/fix-decompiler-condition-numbers
+
+# 6. Ready to work!
 ```
 
 ## When Task is Complete
@@ -156,6 +169,35 @@ rm claude/locks/inav-configurator.lock
 ```
 
 Include in your completion report: "Released <repo>.lock"
+
+---
+
+## For Managers: Creating a New Project
+
+When creating a new project to assign to a developer:
+
+### 1. Create Project Directory
+
+```bash
+mkdir -p claude/projects/active/<project-name>
+```
+
+### 2. Create Project Files
+
+- `summary.md` - Project overview, objectives, approach (use template from `claude/projects/README.md`)
+- `todo.md` - Task breakdown (use template from `claude/projects/README.md`)
+
+### 3. Add to INDEX.md
+
+Add concise entry (10-15 lines max):
+- Status, type, priority, dates
+- One-sentence summary
+- Directory: `active/<project-name>/`
+- Assignment email path
+
+### 4. Send Assignment Email
+
+Create in `claude/manager/email/sent/` and copy to `claude/developer/email/inbox/`
 
 ---
 

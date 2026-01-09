@@ -25,10 +25,10 @@ claude/developer/
 │   ├── build/                # Build and flash helpers
 │   └── analysis/             # Code analysis and verification tools
 │
-├── projects/                 # Active project working directories (GITIGNORED)
-│   └── [project-name]/       # One subdirectory per active project/task
-│       ├── notes.md          # Project notes
-│       ├── scripts/          # Project-specific scripts
+├── workspace/                # Developer's active working directories (GITIGNORED)
+│   └── [task-name]/          # One subdirectory per active task
+│       ├── notes.md          # Working notes
+│       ├── scripts/          # Task-specific scripts
 │       ├── data/             # Test data, logs
 │       └── session-state.md  # Session tracking
 │
@@ -40,7 +40,7 @@ claude/developer/
 │   └── [other-topics]/       # Legacy investigation directories
 │
 ├── work-in-progress/         # Flat working directory (GITIGNORED, legacy)
-│                             # NOTE: Use projects/ for new work
+│                             # NOTE: Use workspace/ for new work
 │
 ├── reports/                  # Analysis reports (GITIGNORED)
 │
@@ -51,8 +51,11 @@ claude/developer/
 │
 ├── builds/                   # Build artifacts (GITIGNORED)
 │
-└── inbox/outbox/sent/        # Email directories (GITIGNORED)
-    inbox-archive/
+└── email/                    # Email directories (GITIGNORED)
+    ├── inbox/
+    ├── inbox-archive/
+    ├── outbox/
+    └── sent/
 ```
 
 ---
@@ -87,20 +90,20 @@ Scripts that can be reused across multiple projects:
 | `build/` | Build and flash helpers |
 | `analysis/` | Target verification, dead code detection, preprocessing tools |
 
-### `projects/` - Active Project Working Directories (Gitignored) **← NEW, USE THIS**
+### `workspace/` - Developer's Active Working Directories (Gitignored) **← USE THIS**
 
-**Per-project working directories for active tasks.**
+**Developer's scratch space for active tasks.**
 
-Each active project/task gets its own subdirectory with all related working files:
+Each active task gets its own subdirectory with all related working files:
 
 **Structure:**
 ```
-projects/
-└── my-feature-implementation/
-    ├── notes.md                # Design notes, findings
+workspace/
+└── my-task/
+    ├── notes.md                # Working notes, findings
     ├── session-state.md        # Session tracking
     ├── test-results.md         # Test output
-    ├── scripts/                # Project-specific scripts
+    ├── scripts/                # Task-specific scripts
     │   └── test_feature.py
     └── data/                   # Test data, logs
         └── sample.bin
@@ -108,21 +111,26 @@ projects/
 
 **What goes here:**
 - Session notes and scratch files
-- Project-specific test scripts
+- Task-specific test scripts
 - Test data and logs
 - Status tracking documents
 - Anything you're actively working on
 
-**When to create a project directory:**
+**When to create a workspace directory:**
 - Starting a new task assignment
 - Beginning an investigation
 - Any work that needs multiple files
 
-**Cleanup:** When project is complete, move reusable content to `docs/` or `scripts/`, then archive the rest to `archive/`.
+**Cleanup:** When task is complete:
+1. Move reusable scripts/docs to `scripts/` or `docs/`
+2. Send comprehensive completion report to manager (they update `claude/projects/`)
+3. Archive your workspace files to `archive/`
+
+> **Note:** Don't confuse this with `claude/projects/` - that's the manager's project tracking directory with summary.md, todo.md, and INDEX.md for all projects. This `workspace/` is just your local scratch space while working.
 
 ### `investigations/` - Detailed Technical Investigations (Gitignored, Legacy)
 
-**NOTE:** This directory is kept for backward compatibility with existing investigations. **For new work, use `projects/` instead.**
+**NOTE:** This directory is kept for backward compatibility with existing investigations. **For new work, use `workspace/` instead.**
 
 Detailed investigation notes for specific technical issues. Contains legacy investigation directories with extensive notes and test data.
 
@@ -162,19 +170,19 @@ Look in `docs/debugging/`
 ## Adding New Content
 
 ### Starting a new task?
-**Create a project directory:**
+**Create a workspace directory:**
 ```bash
-mkdir -p claude/developer/projects/my-task-name
-cd claude/developer/projects/my-task-name
+mkdir -p claude/developer/workspace/my-task-name
+cd claude/developer/workspace/my-task-name
 ```
 
 **Structure it:**
 ```
-projects/my-task-name/
-├── README.md           # What this project is about
+workspace/my-task-name/
+├── README.md           # What this task is about
 ├── notes.md            # Working notes
 ├── session-state.md    # Session tracking
-├── scripts/            # Project-specific scripts
+├── scripts/            # Task-specific scripts
 └── data/               # Test data, logs
 ```
 
@@ -188,7 +196,7 @@ Add to appropriate `docs/` subdirectory.
 Add to `scripts/testing/` with appropriate subdirectories (e.g., `scripts/testing/inav/`, `scripts/testing/configurator_indexer/`).
 
 ### Temporary scratch work?
-Use `work-in-progress/` for quick notes (but prefer creating a `projects/` directory for anything more than a single file).
+Use `work-in-progress/` for quick notes (but prefer creating a `workspace/` directory for anything more than a single file).
 
 ---
 
@@ -196,15 +204,15 @@ Use `work-in-progress/` for quick notes (but prefer creating a `projects/` direc
 
 The following are excluded from version control (`.gitignore`):
 
-- `projects/` - Active project working directories **← NEW**
+- `workspace/` - Developer's active working directories
 - `investigations/` - Legacy investigation directories
 - `work-in-progress/` - Legacy flat working directory
 - `reports/` - Analysis reports
 - `archive/` - Completed work
 - `builds/` - Binary artifacts
-- `inbox/`, `outbox/`, `sent/`, `inbox-archive/` - Email
+- `email/` - Email directories (inbox, outbox, sent, inbox-archive)
 
-**Why?** These contain session-specific and task-specific data. Reusable content (documentation, scripts) is extracted to tracked directories (`docs/`, `scripts/`) before archiving.
+**Why?** These contain session-specific and task-specific data. Reusable content (documentation, scripts) is extracted to tracked directories (`docs/`, `scripts/`), key findings are summarized to `claude/projects/`, then local files are archived.
 
 ---
 

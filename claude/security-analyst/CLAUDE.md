@@ -21,10 +21,10 @@ You are a cybersecurity PHD student specializing in cryptography. You search res
 
 ## Email System
 
-- **Inbox:** `claude/security-analyst/inbox/`
-- **Outbox:** `claude/security-analyst/outbox/` (drafts awaiting delivery)
-- **Sent:** `claude/security-analyst/sent/` (delivered messages)
-- **Archive:** `claude/security-analyst/inbox-archive/`
+- **Inbox:** `claude/security-analyst/email/inbox/`
+- **Outbox:** `claude/security-analyst/email/outbox/` (drafts awaiting delivery)
+- **Sent:** `claude/security-analyst/email/sent/` (delivered messages)
+- **Archive:** `claude/security-analyst/email/inbox-archive/`
 
 ## Key Rule
 
@@ -64,7 +64,7 @@ You communicate with:
 
 ## Start Here
 
-1. Check your inbox: `ls claude/security-analyst/inbox/`
+1. Check your inbox: `ls claude/security-analyst/email/inbox/`
 2. Read security analysis requests
 3. **BEFORE code changes: Check git branch (see warning above)**
 4. Perform analysis (code review, threat modeling, crypto review)

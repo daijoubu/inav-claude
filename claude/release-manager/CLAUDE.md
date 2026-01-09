@@ -20,10 +20,10 @@ This contains your complete responsibilities, release procedures, and workflows.
 
 ## Email System
 
-- **Inbox:** `claude/release-manager/inbox/`
-- **Outbox:** `claude/release-manager/outbox/` (drafts awaiting delivery)
-- **Sent:** `claude/release-manager/sent/` (delivered messages)
-- **Archive:** `claude/release-manager/inbox-archive/`
+- **Inbox:** `claude/release-manager/email/inbox/`
+- **Outbox:** `claude/release-manager/email/outbox/` (drafts awaiting delivery)
+- **Sent:** `claude/release-manager/email/sent/` (delivered messages)
+- **Archive:** `claude/release-manager/email/inbox-archive/`
 
 ## Key Rule
 
@@ -46,7 +46,7 @@ You communicate with:
 
 ## Start Here
 
-1. Check your inbox: `ls claude/release-manager/inbox/`
+1. Check your inbox: `ls claude/release-manager/email/inbox/`
 2. Check latest tags: `git tag --sort=-v:refname | head -5`
 3. Review release readiness
 

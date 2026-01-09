@@ -6,33 +6,33 @@ You are responsible for project planning, task assignment, progress tracking, an
 
 ## Quick Start
 
-1. **Check inbox:** `ls claude/manager/inbox/`
+1. **Check inbox:** `ls claude/manager/email/inbox/`
 2. **Review active projects:** Read `claude/projects/INDEX.md`
-3. **Assign new tasks:** Create task file in `manager/sent/`, copy to `developer/inbox/`
+3. **Assign new tasks:** Create task file in `manager/email/sent/`, copy to `developer/email/inbox/`
 
 ## Your Responsibilities
 
 ### Project Management
 
 - **Track all projects** in `claude/projects/INDEX.md`
-- **Create new projects** with summary.md and todo.md
+- **Create new projects** in `claude/projects/active/` with summary.md and todo.md
 - **Assign tasks** to developer via email system
-- **Archive completed projects** to `archived_projects/`
-- **Update statistics** in INDEX.md
+- **Complete projects** by moving to `claude/projects/completed/`
+- **Update statistics** in INDEX.md and completed/INDEX.md
 
 ### Communication with Other Roles
 
 **Email Folders:**
-- `manager/inbox/` - Incoming messages
-- `manager/inbox-archive/` - Processed messages
-- `manager/sent/` - Copies of sent messages
-- `manager/outbox/` - Draft messages awaiting delivery
+- `manager/email/inbox/` - Incoming messages
+- `manager/email/inbox-archive/` - Processed messages
+- `manager/email/sent/` - Copies of sent messages
+- `manager/email/outbox/` - Draft messages awaiting delivery
 
 **Message Flow:**
-- **To Developer:** Create in `manager/sent/`, copy to `developer/inbox/`
-- **To Release Manager:** Create in `manager/sent/`, copy to `release-manager/inbox/`
-- **From Developer:** Arrives in `manager/inbox/` (copied from `developer/sent/`)
-- **From Release Manager:** Arrives in `manager/inbox/` (copied from `release-manager/sent/`)
+- **To Developer:** Create in `manager/email/sent/`, copy to `developer/email/inbox/`
+- **To Release Manager:** Create in `manager/email/sent/`, copy to `release-manager/email/inbox/`
+- **From Developer:** Arrives in `manager/email/inbox/` (copied from `developer/email/sent/`)
+- **From Release Manager:** Arrives in `manager/email/inbox/` (copied from `release-manager/email/sent/`)
 
 **Outbox Usage:**
 The `outbox/` folder is for draft messages that need review before sending. When ready:
@@ -43,13 +43,13 @@ The `outbox/` folder is for draft messages that need review before sending. When
 
 ```
 1. User requests feature/fix
-2. Create project in claude/projects/<name>/
-3. Create task assignment in manager/sent/
-4. Copy assignment to developer/inbox/
-5. Wait for completion report in manager/inbox/
-6. Archive completion report to manager/inbox-archive/
-7. Archive completed project to archived_projects/
-8. Update INDEX.md
+2. Create project in claude/projects/active/<name>/
+3. Create task assignment in manager/email/sent/
+4. Copy assignment to developer/email/inbox/
+5. Wait for completion report in manager/email/inbox/
+6. Archive completion report to manager/email/inbox-archive/
+7. Move project directory to claude/projects/completed/
+8. Update INDEX.md (remove) and completed/INDEX.md (add)
 ```
 
 ## Project Lifecycle
@@ -57,13 +57,14 @@ The `outbox/` folder is for draft messages that need review before sending. When
 ### 1. Creating a New Project
 
 ```bash
-# Create project directory
-mkdir -p claude/projects/<project-name>
+# Copy from template
+cp -r claude/projects/active/_template claude/projects/active/<project-name>
 
-# Create required files
-touch claude/projects/<project-name>/summary.md
-touch claude/projects/<project-name>/todo.md
+# Or create manually
+mkdir -p claude/projects/active/<project-name>
 ```
+
+Edit the summary.md and todo.md files. See `claude/projects/README.md` for templates.
 
 **summary.md template:**
 ```markdown
@@ -134,7 +135,7 @@ X-Y hours
 
 ### 2. Assigning a Task
 
-Create assignment in `manager/sent/`:
+Create assignment in `manager/email/sent/`:
 
 **Filename:** `YYYY-MM-DD-HHMM-task-<brief-description>.md`
 
@@ -176,33 +177,73 @@ Create assignment in `manager/sent/`:
 
 **Then copy to developer:**
 ```bash
-cp claude/manager/sent/YYYY-MM-DD-HHMM-task-<name>.md \
-   claude/developer/inbox/
+cp claude/manager/email/sent/YYYY-MM-DD-HHMM-task-<name>.md \
+   claude/developer/email/inbox/
 ```
 
 ### 3. Processing Completion Reports
 
 **Check inbox:**
 ```bash
-ls -lt claude/manager/inbox/
+ls -lt claude/manager/email/inbox/
 ```
 
 **Read report and process:**
 1. Read completion report
 2. Verify work is complete
-3. Archive report: `mv manager/inbox/<report>.md manager/inbox-archive/`
-4. Archive project: `mv projects/<name> archived_projects/`
-5. Update INDEX.md
+3. Move project directory: `mv claude/projects/active/<name> claude/projects/completed/`
+4. Remove entry from INDEX.md
+5. Add entry to completed/INDEX.md
+6. Archive report: `mv manager/email/inbox/<report>.md manager/email/inbox-archive/`
 
-### 4. Updating INDEX.md
+See `claude/manager/email/README.md` for detailed email handling guidance.
+
+### 4. Completing a Project
+
+**Steps:**
+```bash
+# 1. Move project directory
+mv claude/projects/active/<project-name> claude/projects/completed/
+
+# 2. Update INDEX.md - remove the project entry
+
+# 3. Update completed/INDEX.md - add entry at top
+```
+
+**Why:** INDEX.md should only contain active projects. Completed projects go to completed/INDEX.md.
+
+### 5. Cancelling a Project
+
+When a project is abandoned (not just paused):
+
+```bash
+# Move to completed (cancelled projects are archived too)
+mv claude/projects/active/<project-name> claude/projects/completed/
+```
+
+Update the project's summary.md:
+- Change status to ❌ CANCELLED
+- Add cancellation reason
+
+In completed/INDEX.md, add with ❌ status:
+```markdown
+### ❌ project-name (2026-01-09)
+**Cancelled:** <reason>
+```
+
+**When to cancel vs backburner:**
+- **Cancel:** Requirements changed, no longer needed, blocked permanently
+- **Backburner:** Still valuable, just lower priority or waiting on something
+
+### 6. Updating INDEX.md
 
 **Location:** `claude/projects/INDEX.md`
 
 **When to update:**
-- Project created (add to Active section, update stats)
-- Project completed (move to Completed section, update stats)
-- Project cancelled (move to Cancelled section, update stats)
-- Project moved to backburner (move to Backburner section, update stats)
+- Project created (add entry, update counts)
+- Project completed (remove entry, add to completed/INDEX.md)
+- Project cancelled (remove entry, add to completed/INDEX.md with ❌)
+- Project paused (update status to ⏸️, move dir to backburner/)
 
 **What to update:**
 1. **Last Updated date** at top
@@ -312,11 +353,11 @@ Use in INDEX.md and project files:
 ### Email System
 
 **All tasks must go through email system:**
-1. Create in `manager/sent/`
-2. Copy to `developer/inbox/`
-3. Developer works and sends to `developer/sent/`
-4. Copy arrives in `manager/inbox/`
-5. Archive to `manager/inbox-archive/` when processed
+1. Create in `manager/email/sent/`
+2. Copy to `developer/email/inbox/`
+3. Developer works and sends to `developer/email/sent/`
+4. Copy arrives in `manager/email/inbox/`
+5. Archive to `manager/email/inbox-archive/` when processed
 
 ### Statistics Tracking
 
@@ -331,7 +372,7 @@ Use in INDEX.md and project files:
 
 ### Check for new reports
 ```bash
-ls -lt claude/manager/inbox/ | head
+ls -lt claude/manager/email/inbox/ | head
 ```
 
 ### View active projects
@@ -341,18 +382,18 @@ grep "^### 🚧" claude/projects/INDEX.md
 
 ### Archive a completion report
 ```bash
-mv claude/manager/inbox/<report>.md claude/manager/inbox-archive/
+mv claude/manager/email/inbox/<report>.md claude/manager/email/inbox-archive/
 ```
 
-### Archive a completed project
+### Complete a project
 ```bash
-mv claude/projects/<project-name> claude/archived_projects/
+mv claude/projects/active/<project-name> claude/projects/completed/
 ```
 
 ### Search projects
 ```bash
-grep -r "<keyword>" claude/projects/
-grep -r "<keyword>" claude/archived_projects/
+grep -r "<keyword>" claude/projects/active/
+grep -r "<keyword>" claude/projects/completed/
 ```
 
 ## Best Practices
@@ -378,12 +419,13 @@ grep -r "<keyword>" claude/archived_projects/
 ## Files You Manage
 
 ### Your Files
-- `claude/manager/sent/*` - Your outgoing messages
-- `claude/manager/inbox/*` - Incoming reports (process and archive)
-- `claude/manager/inbox-archive/*` - Archived reports
-- `claude/projects/INDEX.md` - Master project tracking
-- `claude/projects/*/summary.md` - Project summaries
-- `claude/projects/*/todo.md` - Project task lists
+- `claude/manager/email/sent/*` - Your outgoing messages
+- `claude/manager/email/inbox/*` - Incoming reports (process and archive)
+- `claude/manager/email/inbox-archive/*` - Archived reports
+- `claude/projects/INDEX.md` - Active project tracking
+- `claude/projects/completed/INDEX.md` - Completed project archive
+- `claude/projects/active/*/summary.md` - Project summaries
+- `claude/projects/active/*/todo.md` - Project task lists
 
 ### Don't Touch
 - Source code files (`.c`, `.h`, `.js`, `.jsx`, `.html`, `.css`)
@@ -403,22 +445,22 @@ grep -r "<keyword>" claude/archived_projects/
 
 ### INAV Firmware
 - **Repository:** `inavflight/inav` (upstream)
-- **Base Branch:** `maintenance-9.x` (for changes compatible with INAV 9.x configurator)
-- **Alternative:** `maintenance-10.x` (for breaking changes - incompatible with 9.x configurator)
-- **Master Branch:** ONLY for documentation and GitHub Actions/workflows
+- **Base Branch:** `maintenance-9.x` (active development for current version)
+- **Alternative:** `maintenance-10.x` (breaking changes for next major version)
+- **Master Branch:** Mirror of current version (receives merges, NOT a PR target)
 - **PR Target:** upstream (inavflight/inav)
 
 ### INAV Configurator
 - **Repository:** `inavflight/inav-configurator` (upstream)
-- **Base Branch:** `maintenance-9.x` (for changes compatible with INAV 9.x firmware)
-- **Alternative:** `maintenance-10.x` (for breaking changes - incompatible with 9.x firmware)
-- **Master Branch:** ONLY for documentation and GitHub Actions/workflows
+- **Base Branch:** `maintenance-9.x` (active development for current version)
+- **Alternative:** `maintenance-10.x` (breaking changes for next major version)
+- **Master Branch:** Mirror of current version (receives merges, NOT a PR target)
 - **PR Target:** upstream (inavflight/inav-configurator)
 
 **CRITICAL RULES:**
-- **NEVER use master branch** except for documentation or GitHub Actions/workflow updates
-- **Use maintenance-9.x** for changes that maintain compatibility between firmware and configurator
-- **Use maintenance-10.x** for breaking changes that require both firmware and configurator updates
+- **NEVER target PRs to master** - it receives merges only
+- **Use maintenance-9.x** for current version work (all features and fixes)
+- **Use maintenance-10.x** for breaking changes (incompatible with current version)
 - **Always specify:** "Branch: From `maintenance-9.x`" (or `maintenance-10.x` if breaking change)
 - **For PrivacyLRS:** "Branch: From `secure_01`"
 
@@ -432,7 +474,9 @@ grep -r "<keyword>" claude/archived_projects/
 PrivacyLRS:               base = secure_01
 inav (firmware):          base = maintenance-9.x (or maintenance-10.x if breaking)
 inav-configurator:        base = maintenance-9.x (or maintenance-10.x if breaking)
-master branch:            ONLY docs and GitHub Actions - NEVER code
+master branch:            Mirror of current version - NOT a PR target
+
+Merge flow:               maintenance-9.x → master → maintenance-10.x
 ```
 
 See `.claude/skills/create-pr/SKILL.md` for complete PR creation workflows.

@@ -1,193 +1,281 @@
 # Projects Directory
 
-This directory contains subdirectories for each feature or fix being worked on in the INAV codebase. Each project typically corresponds to a pull request.
+Central project registry for tracking all INAV-related projects.
 
 ## Quick Links
 
-📊 **[View Project Index](INDEX.md)** - See status of all projects at a glance
+| Link | Description |
+|------|-------------|
+| **[INDEX.md](INDEX.md)** | Active projects (TODO, IN PROGRESS, BACKBURNER) |
+| **[completed/INDEX.md](completed/INDEX.md)** | Completed and cancelled projects |
 
 ## Directory Structure
 
 ```
 projects/
-├── INDEX.md           - Project status tracking
-├── feature-name-1/
-│   ├── summary.md
-│   ├── todo.md
-│   └── notes.md (optional)
-├── fix-bug-name/
-│   ├── summary.md
-│   ├── todo.md
-│   └── notes.md (optional)
-└── README.md (this file)
+├── INDEX.md                 # Active projects index (keep concise!)
+├── README.md                # This file
+│
+├── active/                  # Projects being worked on
+│   └── <project-name>/
+│       ├── summary.md       # Full details
+│       └── todo.md          # Task tracking
+│
+├── backburner/              # Paused projects (will resume)
+│   └── <project-name>/
+│
+└── completed/               # Finished projects
+    ├── INDEX.md             # Completed projects index
+    └── <project-name>/      # Archived project directories
 ```
 
-## Naming Conventions
+## Lifecycle
 
-Project directories should be named using kebab-case and follow these patterns:
+```
+┌─────────────────────────────────────────────────────────────┐
+│  CREATE                                                     │
+│  ├─ Create active/<project-name>/ with summary.md, todo.md  │
+│  └─ Add entry to INDEX.md                                   │
+└─────────────────────────────────────────────────────────────┘
+                            │
+                            ▼
+┌─────────────────────────────────────────────────────────────┐
+│  WORK                                                       │
+│  ├─ Update todo.md as tasks complete                        │
+│  └─ Status in INDEX.md: 📋 TODO → 🚧 IN PROGRESS            │
+└─────────────────────────────────────────────────────────────┘
+                            │
+              ┌─────────────┴─────────────┐
+              ▼                           ▼
+┌──────────────────────────┐  ┌──────────────────────────────┐
+│  PAUSE (optional)        │  │  COMPLETE                    │
+│  ├─ mv to backburner/    │  │  ├─ mv to completed/         │
+│  └─ Status: ⏸️ BACKBURNER │  │  ├─ Remove from INDEX.md     │
+└──────────────────────────┘  │  └─ Add to completed/INDEX.md│
+              │               └──────────────────────────────┘
+              ▼
+┌──────────────────────────┐
+│  RESUME                  │
+│  ├─ mv to active/        │
+│  └─ Status: 🚧 IN PROGRESS│
+└──────────────────────────┘
+```
 
-- **Features:** `feature-<brief-description>`
-  - Example: `feature-improved-wind-estimation`
-  - Example: `feature-mag-calibration-ui`
+## Skills
 
-- **Bug Fixes:** `fix-<brief-description>`
-  - Example: `fix-rtl-altitude-bug`
-  - Example: `fix-serial-overflow`
+Use these skills for common operations:
 
-- **Refactoring:** `refactor-<brief-description>`
-  - Example: `refactor-navigation-estimator`
+| Skill | Description |
+|-------|-------------|
+| `/start-task` | Create new project with directory and assignment email |
+| `/finish-task` | Mark project complete, move to completed/, update indexes |
 
-- **Performance:** `perf-<brief-description>`
-  - Example: `perf-reduce-pid-latency`
+## Key Rules
 
-## Required Files
+### INDEX.md is Navigation Only
 
-### summary.md
+Each entry should be 10-15 lines max:
+- Status, type, priority, dates
+- One-sentence summary
+- Directory location
+- Links (issue, PR, email)
 
-Contains an overview of the project, its purpose, and implementation approach.
+**Details go in the project's summary.md, not INDEX.md.**
 
-**Template:**
+### Before Condensing INDEX Entries
+
+1. READ the project's summary.md
+2. VERIFY all details exist there
+3. If missing, ADD to summary.md first
+4. THEN condense the INDEX entry
+
+### Single Source of Truth
+
+- Project details → `<project-name>/summary.md`
+- Task tracking → `<project-name>/todo.md`
+- INDEX.md → Navigation and status only
+
+---
+
+## Detailed Reference
+
+### Creating a New Project
+
+1. **Create project directory:**
+   ```bash
+   mkdir -p claude/projects/active/<project-name>
+   ```
+
+2. **Create summary.md** using template below
+
+3. **Create todo.md** using template below
+
+4. **Add to INDEX.md** (concise entry only)
+
+5. **Send assignment email** (if assigning to developer)
+
+### INDEX.md Entry Format
+
+```markdown
+### 📋 project-name
+
+**Status:** TODO | **Type:** Bug Fix | **Priority:** MEDIUM
+**Created:** 2025-12-29 | **Assignee:** Developer
+
+One-sentence summary of what this project accomplishes.
+
+**Directory:** `active/project-name/`
+**Issue:** [#12345](url) | **Assignment:** `manager/email/sent/...`
+
+---
+```
+
+### summary.md Template
+
 ```markdown
 # Project: <Name>
 
-**Type:** Feature | Bug Fix | Refactor | Performance
-**Status:** Planning | In Progress | Testing | Ready for Review | Completed
-**Target Version:** INAV X.Y.Z
-**Pull Request:** #XXXX (when created)
+**Status:** 📋 TODO
+**Priority:** MEDIUM
+**Type:** Bug Fix | Feature | Refactor | Investigation
+**Created:** YYYY-MM-DD
+**Estimated Effort:** X-Y hours
 
 ## Overview
-<Brief description of what this project accomplishes>
 
-## Motivation
-<Why this change is needed>
+<What this project accomplishes in 2-3 sentences>
 
-## Technical Approach
-<High-level description of how this will be implemented>
+## Problem
 
-## Files to Modify
-- `path/to/file1.c` - Description of changes
-- `path/to/file2.h` - Description of changes
-- ...
+<What issue this solves>
 
-## Testing Strategy
-<How this will be tested>
-- SITL testing
-- Hardware testing (which boards?)
-- Unit tests (if applicable)
+## Solution
 
-## Risks & Considerations
-<Potential issues, backwards compatibility concerns, etc.>
-
-## Related Issues/PRs
-- Issue #XXX
-- Related PR #XXX
-- ...
-```
-
-### todo.md
-
-Contains actionable tasks with checkboxes for tracking progress.
-
-**Template:**
-```markdown
-# TODO: <Project Name>
-
-## Planning
-- [ ] Review existing code
-- [ ] Design implementation approach
-- [ ] Identify all files to modify
-- [ ] Review similar features in codebase
+<High-level approach>
 
 ## Implementation
-- [ ] Task 1: Brief description
-  - [ ] Subtask 1.1
-  - [ ] Subtask 1.2
-- [ ] Task 2: Brief description
-- [ ] Task 3: Brief description
 
-## Testing
-- [ ] Write/update unit tests
-- [ ] Test in SITL
-- [ ] Test on target hardware (specify board)
-- [ ] Verify no regressions in other features
+<Technical details, phases, files to modify>
 
-## Documentation
-- [ ] Update inline code comments
-- [ ] Update relevant .md files in docs/
-- [ ] Update settings.yaml if config changes
-- [ ] Add changelog entry
+## Success Criteria
 
-## Code Review Prep
-- [ ] Self-review all changes
-- [ ] Check code style consistency
-- [ ] Remove debug code
-- [ ] Verify all TODOs addressed
+- [ ] Criterion 1
+- [ ] Criterion 2
 
-## Pull Request
-- [ ] Create PR with detailed description
-- [ ] Link related issues
-- [ ] Address review comments
-- [ ] Merge when approved
+## Related
+
+- **Issue:** #XXXXX
+- **PR:** #XXXXX (when created)
+- **Assignment:** `path/to/email`
 ```
 
-### notes.md (Optional)
+### todo.md Template
 
-Freeform notes, design decisions, code snippets, research, etc.
+```markdown
+# Todo: <Project Name>
 
-## Workflow
+## Phase 1: <Name>
 
-### Starting a New Project
+- [ ] Task 1
+- [ ] Task 2
 
-1. Create a new directory with an appropriate name:
-   ```bash
-   mkdir -p claude/projects/feature-my-new-feature
-   ```
+## Phase 2: <Name>
 
-2. Copy templates and fill them in:
-   ```bash
-   cd claude/projects/feature-my-new-feature
-   # Create summary.md and todo.md using templates above
-   ```
+- [ ] Task 3
+- [ ] Task 4
 
-3. Update status in `summary.md` to "Planning" or "In Progress"
+## Completion
 
-### Working on a Project
-
-1. Check `todo.md` for next tasks
-2. Update checkboxes as you complete tasks
-3. Add notes to `notes.md` as needed
-4. Update `summary.md` if approach changes
+- [ ] Code compiles
+- [ ] Tests pass
+- [ ] PR created
+- [ ] Completion report sent
+```
 
 ### Completing a Project
 
-1. Ensure all tasks in `todo.md` are checked off
-2. Update `summary.md` status to "Completed"
-3. Add PR number to `summary.md`
-4. Optionally move to `archive/` subdirectory
+1. **Update summary.md:**
+   - Set status to ✅ COMPLETED
+   - Add PR number and completion date
 
-## Examples
+2. **Move directory:**
+   ```bash
+   mv claude/projects/active/<project>/ claude/projects/completed/
+   ```
 
-### Example Project Structure
+3. **Update INDEX.md:**
+   - Remove the project entry
+   - Update counts
 
-```
-projects/
-├── feature-improved-wind-estimation/
-│   ├── summary.md          # Overview, motivation, approach
-│   ├── todo.md             # Detailed task list
-│   └── notes.md            # Research notes, code snippets
-├── fix-rtl-altitude-bug/
-│   ├── summary.md
-│   └── todo.md
-└── archive/                # Completed projects
-    └── feature-xyz/
-        ├── summary.md
-        └── todo.md
-```
+4. **Update completed/INDEX.md:**
+   - Add entry at top of current year section
+   - Update total count
 
-## Tips
+### Cancelling a Project
 
-- Keep `todo.md` granular - tasks should be completable in one session
-- Update status regularly so you can pick up where you left off
-- Use `notes.md` for anything that doesn't fit in summary or todos
-- Reference specific file paths and line numbers in tasks
-- Mark dependent tasks clearly
+When abandoning a project (not just pausing):
+
+1. **Update summary.md:**
+   - Set status to ❌ CANCELLED
+   - Add cancellation reason and date
+
+2. **Move directory:**
+   ```bash
+   mv claude/projects/active/<project>/ claude/projects/completed/
+   ```
+
+3. **Update INDEX.md:**
+   - Remove the project entry
+   - Update counts
+
+4. **Update completed/INDEX.md:**
+   - Add entry with ❌ status:
+   ```markdown
+   ### ❌ project-name (2026-01-09)
+   **Cancelled:** <brief reason>
+   ```
+
+**When to cancel vs backburner:**
+- **Cancel:** Requirements changed, no longer needed, blocked permanently, superseded
+- **Backburner:** Still valuable, lower priority, waiting on external dependency
+
+### Status Icons
+
+| Icon | Status | Meaning |
+|------|--------|---------|
+| 📋 | TODO | Defined, not started |
+| 🚧 | IN PROGRESS | Actively being worked on |
+| ⏸️ | BACKBURNER | Paused, will resume |
+| ✅ | COMPLETED | Finished and merged |
+| ❌ | CANCELLED | Abandoned |
+
+### Priority Levels
+
+| Priority | When to Use |
+|----------|-------------|
+| CRITICAL | Blocking issue, fix immediately |
+| HIGH | Important, work on soon |
+| MEDIUM-HIGH | Should do, good to complete |
+| MEDIUM | Normal priority |
+| LOW | Nice to have |
+
+### Naming Conventions
+
+Use kebab-case with descriptive prefixes:
+
+- `feature-<description>` - New functionality
+- `fix-<description>` - Bug fixes
+- `refactor-<description>` - Code restructuring
+- `investigate-<description>` - Research/analysis
+- `reproduce-<description>` - Bug reproduction
+
+---
+
+## Not To Be Confused With
+
+| Directory | Purpose |
+|-----------|---------|
+| `claude/projects/` | Persistent project tracking (this directory) |
+| `claude/developer/workspace/` | Temporary working files (gitignored) |
+| `claude/developer/investigations/` | Research and analysis reports |
+| `claude/developer/reports/` | Completed analysis documents |

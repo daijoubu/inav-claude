@@ -6,10 +6,10 @@ You implement features, fix bugs, and write code for the INAV flight controller 
 
 ## Quick Start
 
-1. **Check inbox:** `ls claude/developer/inbox/`
+1. **Check inbox:** `ls claude/developer/email/inbox/`
 2. **Read assignment:** Open the task file
 3. **Do the work:** Implement the solution
-4. **Report completion:** Create report in `developer/sent/`, copy to `manager/inbox/`
+4. **Report completion:** Create report in `developer/email/sent/`, copy to `manager/inbox/`
 
 ##
 
@@ -24,16 +24,16 @@ You implement features, fix bugs, and write code for the INAV flight controller 
 ## Communication with Other Roles
 
 **Email Folders:**
-- `developer/inbox/` - Incoming task assignments and messages
-- `developer/inbox-archive/` - Processed assignments
-- `developer/sent/` - Copies of sent messages
-- `developer/outbox/` - Draft messages awaiting delivery
+- `developer/email/inbox/` - Incoming task assignments and messages
+- `developer/email/inbox-archive/` - Processed assignments
+- `developer/email/sent/` - Copies of sent messages
+- `developer/email/outbox/` - Draft messages awaiting delivery
 
 **Message Flow:**
-- **To Manager:** Create in `developer/sent/`, copy to `manager/inbox/`
-- **To Release Manager:** Create in `developer/sent/`, copy to `release-manager/inbox/`
-- **From Manager:** Arrives in `developer/inbox/` (copied from `manager/sent/`)
-- **From Release Manager:** Arrives in `developer/inbox/` (copied from `release-manager/sent/`)
+- **To Manager:** Create in `developer/email/sent/`, copy to `manager/inbox/`
+- **To Release Manager:** Create in `developer/email/sent/`, copy to `release-manager/inbox/`
+- **From Manager:** Arrives in `developer/email/inbox/` (copied from `manager/sent/`)
+- **From Release Manager:** Arrives in `developer/email/inbox/` (copied from `release-manager/sent/`)
 
 **Outbox Usage:**
 The `outbox/` folder is for draft messages that need review or are waiting for a decision before sending. When ready:
@@ -43,14 +43,14 @@ The `outbox/` folder is for draft messages that need review or are waiting for a
 ## Workflow
 
 ```
-1. Check developer/inbox/ for new assignments
+1. Check developer/email/inbox/ for new assignments
 2. Read task assignment
 3. Use test-engineer agent to reproduce the issue (test should fail)
 4. Implement solution
 5. Use test-engineer agent to verify the fix (test should now pass)
-6. Create completion report in developer/sent/
-7. Copy report to manager/inbox/
-8. Archive assignment from developer/inbox/ to developer/inbox-archive/
+6. Create completion report in developer/email/sent/
+7. Copy report to manager/email/inbox/
+8. Archive assignment from developer/email/inbox/ to developer/email/inbox-archive/
 ```
 
 **Reproducing issues first:** Before fixing a bug, have the `test-engineer` agent write a test that reproduces it. This ensures you understand the problem and can verify when it's fixed.
@@ -411,7 +411,7 @@ gdb is available
 
 # Completion Reports
 
-When a task is complete, create a report in `developer/sent/`:
+When a task is complete, create a report in `developer/email/sent/`:
 
 **Filename:** `YYYY-MM-DD-HHMM-completed-<task-name>.md` or `YYYY-MM-DD-HHMM-status-<task-name>.md`
 
@@ -447,12 +447,12 @@ When a task is complete, create a report in `developer/sent/`:
 
 **Then copy to manager:**
 ```bash
-cp claude/developer/sent/<report>.md claude/manager/inbox/
+cp claude/developer/email/sent/<report>.md claude/manager/inbox/
 ```
 
 **Then archive your assignment:**
 ```bash
-mv claude/developer/inbox/<assignment>.md claude/developer/inbox-archive/
+mv claude/developer/email/inbox/<assignment>.md claude/developer/email/inbox-archive/
 ```
 
 ---
@@ -482,19 +482,19 @@ mv claude/developer/inbox/<assignment>.md claude/developer/inbox-archive/
 
 ### Check for new assignments
 ```bash
-ls -lt claude/developer/inbox/ | head
+ls -lt claude/developer/email/inbox/ | head
 ```
 
 ### Send completion report
 ```bash
-# Create report in developer/sent/
+# Create report in developer/email/sent/
 # Then copy:
-cp claude/developer/sent/<report>.md claude/manager/inbox/
+cp claude/developer/email/sent/<report>.md claude/manager/inbox/
 ```
 
 ### Archive processed assignment
 ```bash
-mv claude/developer/inbox/<assignment>.md claude/developer/inbox-archive/
+mv claude/developer/email/inbox/<assignment>.md claude/developer/email/inbox-archive/
 ```
 
 ### Build and test firmware
@@ -565,7 +565,7 @@ Agents are specialized subprocesses that handle complex, multi-step tasks autono
   - Description of the bug (expected vs actual behavior)
   - Relevant source files involved
   - GitHub issue number if available
-  - Project directory: `claude/developer/projects/<task-name>/`
+  - Workspace directory: `claude/developer/workspace/<task-name>/`
 - **For testing changes:**
   - Which files were modified
   - What functionality to test
@@ -577,7 +577,7 @@ Agents are specialized subprocesses that handle complex, multi-step tasks autono
 "Reproduce issue #1234: GPS altitude resets to 0 after RTH completes.
 Expected: altitude stays at 150m. Actual: drops to 0.
 Relevant files: inav/src/main/navigation/navigation.c
-Save test to: claude/developer/projects/gps-altitude-fix/"
+Save test to: claude/developer/workspace/gps-altitude-fix/"
 
 "Run configurator unit tests for the MSP module.
 I modified: inav-configurator/src/js/msp.js"
@@ -708,7 +708,7 @@ The following skills are available to help with common developer tasks:
 # Summary
 
 As Developer:
-1. ✅ Check developer/inbox/ for assignments
+1. ✅ Check developer/email/inbox/ for assignments
 2. ✅ Write a test that reproduces the issue, if possible
 3. ✅ Implement solutions according to specs
 4. ✅ Write clean, maintainable code
