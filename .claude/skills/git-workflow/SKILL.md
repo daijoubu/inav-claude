@@ -125,7 +125,7 @@ git push -u origin your-branch-name
 # Branch naming: NO slashes (use: encryption-test-suite, fix-counter-sync)
 ```
 
-**For INAV/inav-configurator (backwards compatible changes):**
+**For INAV/inav-configurator (maintains backward compatibility):**
 ```bash
 # Branch from maintenance-9.x (most common case)
 git checkout -b your-branch-name upstream/maintenance-9.x
@@ -138,14 +138,14 @@ git push -u origin your-branch-name
 
 **For INAV/inav-configurator (breaking changes):**
 ```bash
-# Branch from maintenance-10.x (breaking changes only)
+# Branch from maintenance-10.x (MSP protocol changes, settings structure changes, etc.)
 git checkout -b your-branch-name upstream/maintenance-10.x
 
 # Push branch to remote
 git push -u origin your-branch-name
 ```
 
-**NEVER use master branch unless specifically instructed by the user.**
+**NEVER target PRs to master** - it receives merges only (maintenance-9.x → master → maintenance-10.x).
 
 ### Create Branch from Specific Commit
 

@@ -164,7 +164,9 @@ rm claude/locks/inav-configurator.lock
 
 ### 8. Send Completion Report
 
-Create completion report in `claude/developer/sent/` with:
+Create a comprehensive completion report in `claude/developer/email/sent/`. The manager will use this to update `claude/projects/<project-name>/`.
+
+**Filename:** `YYYY-MM-DD-HHMM-completed-<task-name>.md`
 
 ```markdown
 # Task Completion: <Task Name>
@@ -172,13 +174,30 @@ Create completion report in `claude/developer/sent/` with:
 **Date:** <date>
 **From:** Developer
 **Task:** <task-name>
+**Project:** <project-name in claude/projects/>
 
 ## Status: COMPLETE
+
+## Summary
+
+<Brief summary of what was accomplished>
+
+## Implementation Approach
+
+<How you implemented it and key technical decisions>
 
 ## Changes Made
 
 - <change 1>
 - <change 2>
+
+## Test Results
+
+<What testing was done, results>
+
+## Known Limitations / Follow-up
+
+<Any limitations or future work needed>
 
 ## Commit
 
@@ -200,8 +219,26 @@ Released <repo>.lock
 
 Copy to manager inbox:
 ```bash
-cp claude/developer/sent/<report>.md claude/manager/inbox/
+cp claude/developer/email/sent/<report>.md claude/manager/email/inbox/
 ```
+
+### Role Separation
+
+**Developer responsibilities:**
+- Complete the code work
+- Add reports, analysis, or notes to the project directory (`active/<project>/`)
+- Create commit and PR
+- Release the lock
+- Send completion report to manager inbox
+
+**Manager responsibilities (after receiving report):**
+- Verify work is complete
+- Move project directory from `active/` to `completed/`
+- Update `INDEX.md` (remove entry)
+- Update `completed/INDEX.md` (add entry)
+- Archive the completion report
+
+The developer updates project content. The manager handles project lifecycle (moving directories, updating indexes).
 
 ## Commit Message Guidelines
 

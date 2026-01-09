@@ -99,16 +99,44 @@ Best for: AI-assisted testing, interactive exploration
 
 **Status:** ✅ Verified working (tested 2025-12-18)
 
+**See also:** `claude/developer/docs/testing/chrome-devtools-mcp.md` for detailed MCP usage guide
+
 The Chrome DevTools MCP server provides direct integration with Claude Code for automated testing and UI interaction.
 
 **Capabilities verified:**
 - `mcp__chrome-devtools__list_pages` - List open browser pages
 - `mcp__chrome-devtools__take_snapshot` - Capture accessibility tree (PREFERRED)
-- `mcp__chrome-devtools__click` - Click UI elements
+- `mcp__chrome-devtools__click` - Click UI elements (see caveat below)
 - `mcp__chrome-devtools__fill` - Fill form inputs
 - `mcp__chrome-devtools__navigate_page` - Navigate to URLs
 - `mcp__chrome-devtools__evaluate_script` - Run JavaScript
 - `mcp__chrome-devtools__take_screenshot` - Capture visual screenshots (rarely needed)
+
+**⚠️ CRITICAL: Connect Button Requires JavaScript**
+
+The Connect/Disconnect button does NOT work with `mcp__chrome-devtools__click`. Always use `evaluate_script`:
+
+```javascript
+// ✅ CORRECT way to connect:
+mcp__chrome-devtools__evaluate_script({
+  function: `() => {
+    const connectLink = document.querySelector('a.connect');
+    if (connectLink) {
+      connectLink.click();
+      return { clicked: true };
+    }
+    return { clicked: false };
+  }`
+})
+
+// Then wait for connection:
+mcp__chrome-devtools__wait_for({
+  text: "Disconnect",
+  timeout: 8000
+})
+```
+
+See `claude/developer/docs/testing/chrome-devtools-mcp.md` for complete details and examples.
 
 **IMPORTANT: Prefer Snapshots over Screenshots**
 

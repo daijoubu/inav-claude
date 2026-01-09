@@ -25,10 +25,10 @@ Read ~/Documents/planes/inavflight/CLAUDE.md and ~/Documents/planes/inavflight/.
 
 ## Email System
 
-- **Inbox:** `claude/developer/inbox/`
-- **Outbox:** `claude/developer/outbox/` (drafts awaiting delivery)
-- **Sent:** `claude/developer/sent/` (delivered messages)
-- **Archive:** `claude/developer/inbox-archive/`
+- **Inbox:** `claude/developer/email/inbox/`
+- **Outbox:** `claude/developer/email/outbox/` (drafts awaiting delivery)
+- **Sent:** `claude/developer/email/sent/` (delivered messages)
+- **Archive:** `claude/developer/email/inbox-archive/`
 
 ## Key Rule
 
@@ -72,7 +72,7 @@ You communicate with:
 
 ## Start Here
 
-1. Check your inbox: `ls claude/developer/inbox/`
+1. Check your inbox: `ls claude/developer/email/inbox/`
 2. Read task assignments
 3. **Check lock files** before modifying code (see above)
 4. Implement solutions
@@ -94,8 +94,8 @@ claude/developer/
 │   ├── testing/          # Test scripts and utilities
 │   ├── build/            # Build helpers
 │   └── analysis/         # Code analysis tools
-├── projects/             # Active project working directories (gitignored) ← NEW!
-│   └── [project-name]/   # One subdirectory per active project/task
+├── workspace/            # Developer's active working directories (gitignored)
+│   └── [task-name]/      # One subdirectory per active task
 ├── investigations/       # Legacy investigation directories (gitignored)
 ├── work-in-progress/     # Legacy flat working directory (gitignored)
 ├── reports/              # Analysis reports (gitignored)
@@ -111,20 +111,24 @@ See `INDEX.md` for complete directory documentation.
 ### Organizing Your Work
 
 **When starting a task:**
-1. Create a project directory: `projects/task-name/`
+1. Create a workspace directory: `workspace/task-name/`
 2. Put all task-related files in that directory
-3. When complete, extract reusable scripts to `scripts/` with documentation
-4. Archive the project directory
+3. When complete:
+   - Extract reusable scripts to `scripts/` with documentation
+   - Send comprehensive completion report to manager (they update `claude/projects/`)
+   - Archive your workspace files
 
 **File organization rules:**
 - **Reusable scripts** → `scripts/testing/`, `scripts/build/`, or `scripts/analysis/`
-- **Project-specific files** → `projects/[task-name]/`
+- **Task-specific files** → `workspace/[task-name]/`
 - **Documentation** → `docs/` subdirectories
 - **Never** leave files in the root of `claude/developer/`
 
-**Example project structure:**
+> **Note:** `workspace/` is your local scratch space. Don't confuse it with `claude/projects/` which is the manager's project tracking directory.
+
+**Example workspace structure:**
 ```
-projects/fix-gps-bug/
+workspace/fix-gps-bug/
 ├── notes.md              # Investigation notes
 ├── session-state.md      # Session tracking
 ├── scripts/              # Task-specific test scripts

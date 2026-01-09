@@ -48,7 +48,7 @@ This document defines how roles communicate with each other in the INAV project.
 ### Folder Structure (per role)
 
 ```
-claude/{role}/
+claude/{role}/email/
 ├── inbox/           # Incoming messages
 ├── inbox-archive/   # Processed messages
 ├── sent/            # Copies of sent messages
@@ -57,9 +57,9 @@ claude/{role}/
 
 ### Sending a Message
 
-1. Create message file in `{your-role}/sent/` (or `outbox/` for drafts)
-2. Copy file to `{recipient-role}/inbox/`
-3. Recipient processes and archives to `inbox-archive/`
+1. Create message file in `{your-role}/email/sent/` (or `outbox/` for drafts)
+2. Copy file to `{recipient-role}/email/inbox/`
+3. Recipient processes and archives to `email/inbox-archive/`
 
 ### File Naming Convention
 
@@ -99,11 +99,11 @@ Types:
 ### Task Assignment Flow
 
 ```
-1. Manager creates task in manager/sent/
-2. Manager copies to developer/inbox/
+1. Manager creates task in manager/email/sent/
+2. Manager copies to developer/email/inbox/
 3. Developer reads and implements
-4. Developer creates report in developer/sent/
-5. Developer copies to manager/inbox/
+4. Developer creates report in developer/email/sent/
+5. Developer copies to manager/email/inbox/
 6. Manager reviews and archives
 ```
 
@@ -122,9 +122,9 @@ Types:
 
 ```
 1. Developer hits blocker
-2. Developer creates message in developer/outbox/ (draft)
+2. Developer creates message in developer/email/outbox/ (draft)
 3. Developer refines message
-4. Developer moves to developer/sent/, copies to manager/inbox/
+4. Developer moves to developer/email/sent/, copies to manager/email/inbox/
 5. Manager reviews and responds
 ```
 

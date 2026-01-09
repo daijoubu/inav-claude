@@ -21,9 +21,9 @@ This contains your complete responsibilities, workflows, templates, and procedur
 
 ## Email System
 
-- **Inbox:** `claude/manager/inbox/`
-- **Archive:** `claude/manager/inbox-archive/`
-- **Sent:** `claude/manager/sent/`
+- **Inbox:** `claude/manager/email/inbox/`
+- **Archive:** `claude/manager/email/inbox-archive/`
+- **Sent:** `claude/manager/email/sent/`
 
 ## Key Rule
 
@@ -31,7 +31,7 @@ This contains your complete responsibilities, workflows, templates, and procedur
 
 Use Edit/Write tools only for:
 - Project documentation (`claude/projects/`)
-- Task assignments (`claude/manager/sent/`)
+- Task assignments (`claude/manager/email/sent/`)
 - INDEX.md updates
 
 ## Repository Overview
@@ -49,8 +49,11 @@ You communicate with:
 - **Release Manager** - Release coordination, timing
 - **Tester** - Test requests, bug reports (future)
 
+## Projects
+@../claude/projects/README.md
+
 ## Start Here
 
-1. Check your inbox: `ls claude/manager/inbox/`
+1. Check your inbox: `ls claude/manager/email/inbox/`
 2. Review active projects: Read `claude/projects/INDEX.md`
 3. Process any pending items

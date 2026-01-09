@@ -54,16 +54,16 @@ You are responsible for preparing, building, and publishing new releases of INAV
 ## Communication with Other Roles
 
 **Email Folders:**
-- `release-manager/inbox/` - Incoming messages
-- `release-manager/inbox-archive/` - Processed messages
-- `release-manager/sent/` - Copies of sent messages
-- `release-manager/outbox/` - Draft messages awaiting delivery
+- `release-manager/email/inbox/` - Incoming messages
+- `release-manager/email/inbox-archive/` - Processed messages
+- `release-manager/email/sent/` - Copies of sent messages
+- `release-manager/email/outbox/` - Draft messages awaiting delivery
 
 **Message Flow:**
-- **To Manager:** Create in `release-manager/sent/`, copy to `manager/inbox/`
-- **To Developer:** Create in `release-manager/sent/`, copy to `developer/inbox/`
-- **From Manager:** Arrives in `release-manager/inbox/` (copied from `manager/sent/`)
-- **From Developer:** Arrives in `release-manager/inbox/` (copied from `developer/sent/`)
+- **To Manager:** Create in `release-manager/email/sent/`, copy to `manager/email/inbox/`
+- **To Developer:** Create in `release-manager/email/sent/`, copy to `developer/email/inbox/`
+- **From Manager:** Arrives in `release-manager/email/inbox/` (copied from `manager/email/sent/`)
+- **From Developer:** Arrives in `release-manager/email/inbox/` (copied from `developer/email/sent/`)
 
 **Outbox Usage:**
 The `outbox/` folder is for draft messages that need review before sending. When ready:
@@ -1061,9 +1061,16 @@ When releasing a new major version, create maintenance branches for both reposit
 
 ### Branch Strategy
 
-- **maintenance-X.x** - For bugfixes to version X (e.g., maintenance-9.x for 9.0.x releases)
-- **maintenance-(X+1).x** - For breaking changes targeting the next major version
-- **master** - Continues as the main development branch
+- **maintenance-X.x** - Current active development branch (e.g., maintenance-9.x during 9.0 development)
+- **master** - Mirror of current version branch (receives merges, not a target for PRs)
+- **maintenance-(X+1).x** - Breaking changes targeting the next major version
+
+**Example during 9.0 development:**
+- `maintenance-9.x` - Active development for INAV 9.0 (ALL features and fixes)
+- `master` - Synchronized copy of maintenance-9.x (safety net only)
+- `maintenance-10.x` - Breaking changes planned for INAV 10.0
+
+**Why master tracks the current version:** If a contributor accidentally branches from master instead of maintenance-9.x, they get current version code without pulling in breaking changes from maintenance-10.x. Contributors should still branch from maintenance-9.x, not master.
 
 ### Creating Maintenance Branches
 
@@ -1097,11 +1104,18 @@ Create maintenance branches when:
 
 ### Usage
 
-- **X.x bugfixes** → PR to maintenance-X.x
-- **Breaking changes** → PR to maintenance-(X+1).x
-- **Non-breaking features** → PR to master
+- **Current version work** → PR to maintenance-9.x (all features and fixes for 9.0)
+- **Breaking changes** → PR to maintenance-10.x (incompatible changes for 10.0)
+- **Master** → NOT a PR target (receives merges only)
 
-Lower version branches are periodically merged into higher version branches (e.g., maintenance-9.x → maintenance-10.x → master).
+**Merge flow:** Lower version branches are periodically merged into higher version branches:
+```
+maintenance-9.x → master → maintenance-10.x
+```
+
+This ensures:
+- Master stays synchronized with the current version (maintenance-9.x)
+- Changes flow forward to the next version (maintenance-10.x)
 
 ### Update PR Branch Suggestion Workflow
 

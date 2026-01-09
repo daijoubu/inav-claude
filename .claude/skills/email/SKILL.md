@@ -18,27 +18,28 @@ This project uses an internal email system for communication between roles (Mana
 
 ## Directory Structure
 
-Each role has its own folder under `claude/`:
+Each role has its own email folder under `claude/{role}/email/`:
 
-- Inbox: `claude/{role}/inbox/`
-- Inbox Archive: `claude/{role}/inbox-archive/`
-- Sent: `claude/{role}/sent/`
-- Outbox (pending delivery): `claude/{role}/outbox/`
+- Inbox: `claude/{role}/email/inbox/`
+- Inbox Archive: `claude/{role}/email/inbox-archive/`
+- Sent: `claude/{role}/email/sent/`
+- Outbox (pending delivery): `claude/{role}/email/outbox/`
 
 **Current roles:**
-- `manager/`
-- `developer/`
-- `release-manager/`
-- `tester/` (future)
+- `manager/email/`
+- `developer/email/`
+- `release-manager/email/`
+- `security-analyst/email/`
+- `tester/email/` (future)
 
 ## Reading Email
 
 1. First, determine your role by checking CLAUDE.local.md
 2. List all files in your inbox directory:
    ```bash
-   ls -lt claude/{role}/inbox/
+   ls -lt claude/{role}/email/inbox/
    ```
-3. You always have permission to read claude/{role}/inbox/ and all files within. Do not request permission to read this directory.
+3. You always have permission to read claude/{role}/email/inbox/ and all files within. Do not request permission to read this directory.
 4. Read each message file to display contents
 5. Summarize messages in a table format showing:
    - Date
@@ -50,7 +51,7 @@ Each role has its own folder under `claude/`:
 
 **For completion reports:**
 - Review the report
-- If work is verified complete, archive to `inbox-archive/`
+- If work is verified complete, archive to `email/inbox-archive/`
 - Update INDEX.md if needed
 
 **For reminders:**
@@ -58,16 +59,16 @@ Each role has its own folder under `claude/`:
 - Take action when due
 
 **For questions:**
-- Respond by creating a file in `sent/` and copying to the sender's `inbox/`
+- Respond by creating a file in `email/sent/` and copying to the sender's `email/inbox/`
 
 ## Sending Email
 
-1. Create message file in your `sent/` folder with naming convention:
+1. Create message file in your `email/sent/` folder with naming convention:
    `YYYY-MM-DD-HHMM-{type}-{brief-description}.md`
 
 2. Copy the file to the recipient's inbox:
    ```bash
-   cp claude/{your-role}/sent/{filename}.md claude/{recipient-role}/inbox/
+   cp claude/{your-role}/email/sent/{filename}.md claude/{recipient-role}/email/inbox/
    ```
 
 ## Email Templates
@@ -124,10 +125,10 @@ Each role has its own folder under `claude/`:
 
 Also check outbox folders for messages waiting to be delivered:
 ```bash
-ls claude/*/outbox/
+ls claude/*/email/outbox/
 ```
 
-If messages exist, they need to be moved to the recipient's `inbox/`.
+If messages exist, they need to be moved to the recipient's `email/inbox/`.
 
 ---
 

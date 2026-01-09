@@ -36,10 +36,10 @@ Remote: upstream → https://github.com/inavflight/inav.git
 **PRs for INAV work go to upstream (inavflight/inav).**
 
 **IMPORTANT:** For both `inav` and `inav-configurator` repositories:
-- **Use `maintenance-9.x`** for changes that maintain compatibility between firmware and configurator
-- **Use `maintenance-10.x`** for breaking changes (MSP protocol changes, incompatible with 9.x)
-- **NEVER use `master`** unless specifically instructed to do so by the user
-- The master branch is NOT for code development - only docs and CI/CD workflows
+- **Use `maintenance-9.x`** for changes that maintain backward compatibility between firmware and configurator
+- **Use `maintenance-10.x`** for breaking changes (MSP protocol changes, settings structure changes, incompatible with 9.x)
+- **NEVER target PRs to `master`** - it receives merges only, NOT a PR target
+- The master branch mirrors the current version via merge flow: `maintenance-9.x → master → maintenance-10.x`
 
 ---
 
@@ -185,6 +185,18 @@ cd inav
 git push -u origin your-branch-name
 ```
 
+**⚠️ If sandbox blocks GitHub SSH access:**
+
+If you encounter `ssh: connect to host github.com port 22: Network is unreachable`, retry with sandbox disabled:
+
+```bash
+# Retry push without sandbox
+git push -u origin your-branch-name
+# Use: dangerouslyDisableSandbox: true
+```
+
+This is a known sandbox limitation and is safe to bypass for git push operations.
+
 ### Step 4: Create Pull Request
 
 #### For PrivacyLRS (origin repository):
@@ -210,6 +222,18 @@ gh pr create --repo inavflight/inav \
   --base maintenance-10.x \
   --title "Your PR Title" \
   --body "Concise PR description"
+```
+
+**⚠️ If sandbox blocks GitHub API access:**
+
+If `gh pr create` fails with network errors, retry with sandbox disabled using `dangerouslyDisableSandbox: true`. This is safe for GitHub CLI operations.
+
+```bash
+# Example with draft PR
+gh pr create --draft --repo inavflight/inav \
+  --base maintenance-9.x \
+  --title "Your PR Title" \
+  --body "Description here"
 ```
 
 #### Using heredoc for multi-line PR descriptions:
@@ -438,9 +462,9 @@ gh pr edit <PR_NUMBER> --body "New description"
 
 **Remember:**
 - Always double-check you're targeting the correct repository AND base branch before creating the PR!
-- NEVER use master for code changes
-- Use maintenance-9.x for backwards compatible changes (most common)
-- Use maintenance-10.x for breaking changes (MSP protocol, settings format, etc.)
+- NEVER target PRs to master - it receives merges only
+- Use maintenance-9.x for changes that maintain backward compatibility (most common)
+- Use maintenance-10.x for breaking changes (MSP protocol, settings structure, etc.)
 
 ---
 

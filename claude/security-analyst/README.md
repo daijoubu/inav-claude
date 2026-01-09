@@ -6,10 +6,10 @@ You perform security analysis, cryptographic protocol review, threat modeling, a
 
 ## Quick Start
 
-1. **Check inbox:** `ls claude/security-analyst/inbox/`
+1. **Check inbox:** `ls claude/security-analyst/email/inbox/`
 2. **Read assignment:** Open the task file
 3. **Perform analysis:** Conduct security review, threat modeling, or cryptographic analysis
-4. **Report findings:** Create report in `security-analyst/sent/`, copy to `manager/inbox/`
+4. **Report findings:** Create report in `security-analyst/email/sent/`, copy to `manager/email/inbox/`
 
 ## Your Responsibilities
 
@@ -44,16 +44,16 @@ You perform security analysis, cryptographic protocol review, threat modeling, a
 ## Communication with Other Roles
 
 **Email Folders:**
-- `security-analyst/inbox/` - Incoming analysis requests and messages
-- `security-analyst/inbox-archive/` - Processed assignments
-- `security-analyst/sent/` - Copies of sent messages
-- `security-analyst/outbox/` - Draft messages awaiting delivery
+- `security-analyst/email/inbox/` - Incoming analysis requests and messages
+- `security-analyst/email/inbox-archive/` - Processed assignments
+- `security-analyst/email/sent/` - Copies of sent messages
+- `security-analyst/email/outbox/` - Draft messages awaiting delivery
 
 **Message Flow:**
-- **To Manager:** Create in `security-analyst/sent/`, copy to `manager/inbox/`
-- **To Developer:** Create in `security-analyst/sent/`, copy to `developer/inbox/`
-- **From Manager:** Arrives in `security-analyst/inbox/` (copied from `manager/sent/`)
-- **From Developer:** Arrives in `security-analyst/inbox/` (copied from `developer/sent/`)
+- **To Manager:** Create in `security-analyst/email/sent/`, copy to `manager/email/inbox/`
+- **To Developer:** Create in `security-analyst/email/sent/`, copy to `developer/email/inbox/`
+- **From Manager:** Arrives in `security-analyst/email/inbox/` (copied from `manager/email/sent/`)
+- **From Developer:** Arrives in `security-analyst/email/inbox/` (copied from `developer/email/sent/`)
 
 **Outbox Usage:**
 The `outbox/` folder is for draft reports that need review or are waiting for additional findings before sending. When ready:
@@ -132,14 +132,14 @@ git push -u origin fix-encryption-issue
 ## Workflow
 
 ```
-1. Check security-analyst/inbox/ for new assignments
+1. Check security-analyst/email/inbox/ for new assignments
 2. Read security analysis request
 3. **BEFORE CODE CHANGES: Complete Git Pre-Work Checklist above**
 4. Perform analysis (code review, threat modeling, crypto review)
 5. Document findings with severity ratings
-6. Create findings report in security-analyst/sent/
-7. Copy report to manager/inbox/
-8. Archive assignment from security-analyst/inbox/ to security-analyst/inbox-archive/
+6. Create findings report in security-analyst/email/sent/
+7. Copy report to manager/email/inbox/
+8. Archive assignment from security-analyst/email/inbox/ to security-analyst/email/inbox-archive/
 ```
 
 ## Repository Overview
@@ -676,9 +676,9 @@ grep -ri "password\|secret\|key.*=" PrivacyLRS/
 ## Files You Manage
 
 ### Your Files
-- `claude/security-analyst/sent/*` - Your outgoing reports
-- `claude/security-analyst/inbox/*` - Incoming assignments (process and archive)
-- `claude/security-analyst/inbox-archive/*` - Archived assignments
+- `claude/security-analyst/email/sent/*` - Your outgoing reports
+- `claude/security-analyst/email/inbox/*` - Incoming assignments (process and archive)
+- `claude/security-analyst/email/inbox-archive/*` - Archived assignments
 
 ### Don't Touch
 - Source code files (you analyze but don't modify)
