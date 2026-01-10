@@ -187,6 +187,13 @@ rules:
     category: write
     decision: allow
 
+  - name: "Allow Write/Edit to email directories"
+    tool_name_pattern: "^(Write|Edit)$"
+    tool_input_patterns:
+      file_path: ".*/claude/(developer|manager|release-manager|security-analyst)/(inbox|sent|inbox-archive|email)/.*"
+    category: write
+    decision: allow
+
   # ===================================================================
   # Ask Rules (File Modifications)
   # ===================================================================
