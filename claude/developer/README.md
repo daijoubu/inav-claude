@@ -95,20 +95,29 @@ INAV is an open-source flight controller firmware with advanced GPS navigation c
 
 # Building the Firmware (inav/)
 
-**Use the `inav-builder` agent** for building firmware. It handles cmake configuration, parallel compilation, and edge cases automatically.
+## ⚠️ ALWAYS Use the inav-builder Agent
+
+**Do NOT run cmake/make commands directly.** Use the `inav-builder` agent for ALL firmware builds. It handles:
+- cmake reconfiguration when CMakeLists.txt files change
+- Clean builds when switching targets
+- Parallel compilation
+- Edge cases and error diagnosis
 
 ```
 Invoke: Task tool with subagent_type="inav-builder"
-Prompt: "Build SITL" or "Build MATEKF405" or "Verify my changes compile"
+Prompt: "Build SITL" or "Build MATEKF405" or "Clean build DAKEFPVF722"
 ```
+
+Running make directly will miss cmake changes and cause hard-to-debug build issues.
 
 ## Quick Reference
 
-| Task | Command/Agent |
-|------|---------------|
-| Build SITL | `inav-builder` agent or `claude/developer/scripts/build/build_sitl.sh` |
-| Build hardware target | `inav-builder` agent or `cd inav/build && make -j4 TARGETNAME` |
-| Build and flash | `claude/developer/scripts/build/build-and-flash.sh TARGETNAME` |
+| Task | How |
+|------|-----|
+| Build SITL | `inav-builder` agent: "Build SITL" |
+| Build hardware target | `inav-builder` agent: "Build MATEKF405" |
+| Build and flash | `inav-builder` agent, then flash-firmware-dfu skill |
+| Clean build | `inav-builder` agent: "Clean build TARGETNAME" |
 | List targets | `cd inav/build && make help \| grep -E '^[A-Z]'` |
 
 ## Output Locations

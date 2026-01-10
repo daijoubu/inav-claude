@@ -1,6 +1,6 @@
 ---
 name: inav-builder
-description: "Build INAV firmware (SITL and hardware targets). Use PROACTIVELY when code changes need compilation verification. Returns build status and output file paths."
+description: "Build INAV firmware (SITL and hardware targets). Use PROACTIVELY for ALL firmware builds - don't run cmake/make directly. Handles cmake reconfiguration, clean builds, and edge cases automatically. Returns build status and output file paths."
 model: sonnet
 color: blue
 ---
