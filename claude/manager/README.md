@@ -155,18 +155,75 @@ Create assignment in `manager/email/sent/`:
 ## Background
 <Context and why this is needed>
 
-## What to Do
-1. Step 1
-2. Step 2
-3. Step 3
-
-## Success Criteria
-- [ ] Criterion 1
-- [ ] Criterion 2
-
 ## Files to Check
 - `path/to/file1`
 - `path/to/file2`
+
+## Recommended Workflow
+
+Follow the standard developer workflow:
+
+### 1. Create Branch
+Use **git-workflow** skill to create feature branch from base:
+```
+/git-workflow "Create branch fix/<issue>-<description> from <base-branch>"
+```
+
+### 2. Reproduce/Understand Issue
+Use **test-engineer** agent to write a test demonstrating the issue:
+```
+Task tool: subagent_type="test-engineer"
+Prompt: "Reproduce issue: <description>. Expected: <X>. Actual: <Y>.
+Relevant files: <paths>. Save test to: claude/developer/workspace/<task-name>/"
+```
+
+### 3. Implement Solution
+<Specific implementation guidance>
+
+**Helpful agents during implementation:**
+- **msp-expert** agent - For MSP protocol questions
+- **settings-lookup** agent - For CLI setting values/defaults
+- **Explore** agent - For understanding unfamiliar code
+
+### 4. Build & Compile
+Use **inav-builder** agent (REQUIRED - never run cmake/make directly):
+```
+Task tool: subagent_type="inav-builder"
+Prompt: "Build SITL" or "Build <TARGET_NAME>"
+```
+
+### 5. Verify Fix
+Use **test-engineer** agent to confirm the test now passes:
+```
+Task tool: subagent_type="test-engineer"
+Prompt: "Run test for <issue> to verify fix. Test location: claude/developer/workspace/<task-name>/"
+```
+
+**Additional testing agents:**
+- **sitl-operator** agent - Start/stop/configure SITL
+- **/test-crsf-sitl** skill - For CRSF telemetry testing
+
+### 6. Create PR
+Use **git-workflow** skill:
+```
+/git-workflow "Commit and create PR for <issue>"
+```
+
+### 7. Check PR Status
+Wait 3 minutes, then check for CI status and bot suggestions:
+```
+/check-builds <PR#>
+/pr-review <PR#>
+```
+Address any legitimate bot suggestions before completing.
+
+## Success Criteria
+- [ ] Test reproduces issue before fix
+- [ ] Implementation compiles without errors
+- [ ] Test passes after fix
+- [ ] PR created and CI passes
+- [ ] Bot suggestions addressed
+- [ ] <Additional task-specific criteria>
 
 ## Notes
 <Additional information>
