@@ -489,6 +489,11 @@ bash_rules:
     category: read
     decision: allow
 
+  - name: "Allow subshell expressions with read commands"
+    command_pattern: "^\\((ls|cat|grep|find|head|tail|echo|stat|file|wc|du|df)$"
+    category: read
+    decision: allow
+
   - name: "Allow shell control structures"
     command_pattern: "^(if|then|else|elif|fi|for|while|do|done|case|esac|break|continue|\\[|\\[\\[|test)$"
     category: read
