@@ -455,6 +455,18 @@ bash_rules:
     category: other
     decision: allow
 
+  - name: "Allow python3 test_4way_protocol.py"
+    command_pattern: "^python3$"
+    argument_pattern: "^test_4way_protocol\\.py.*"
+    category: other
+    decision: allow
+
+  - name: "Allow python3 test_4way_simple.py"
+    command_pattern: "^python3$"
+    argument_pattern: "^test_4way_simple\\.py.*"
+    category: other
+    decision: allow
+
   - name: "Allow direct execution of scripts in .claude/skills/"
     command_pattern: ".*(~/inavflight/\\.claude/skills/|/Documents/planes/inavflight/\\.claude/skills/|\\./\\.claude/skills/).*"
     category: other
@@ -488,7 +500,7 @@ bash_rules:
   # These are safe commands that only read/display data
 
   - name: "Allow common read commands"
-    command_pattern: "^(grep|egrep|find|cat|ls|head|tail|less|more|wc|sort|uniq|diff|stat|file|du|df|awk|sed|cut|xargs|printf|pwd|whoami|md5sum|lsusb|sleep|ss|date|touch)$"
+    command_pattern: "^(grep|egrep|find|cat|ls|head|tail|less|more|wc|sort|uniq|diff|stat|file|du|df|awk|sed|cut|xargs|printf|pwd|whoami|md5sum|lsusb|sleep|ss|date|touch|ld)$"
     category: read
     decision: allow
 
