@@ -386,6 +386,12 @@ bash_rules:
     category: write
     decision: allow
 
+  - name: "Allow rm for CMake cache"
+    command_pattern: "^rm$"
+    argument_pattern: "^-f CMakeCache\\.txt$"
+    category: write
+    decision: allow
+
   # ===================================================================
   # Dangerous Recursive Operations
   # ===================================================================
