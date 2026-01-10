@@ -1,5 +1,12 @@
 {
   "sandbox": {
+    "filesystem": {
+      "write": {
+        "allow": [
+          "/run/user/*/gvfsd"
+        ]
+      }
+    },
     "network": {
       "allowedHosts": [
         "github.com",
