@@ -87,6 +87,37 @@ Connect with INAV Configurator or serial terminal and type:
 dfu
 ```
 
+### Method D: MSP Reboot Command (INAV 9.x+)
+
+**Using MSP to reboot to DFU (most reliable programmatic method):**
+
+```python
+# Using mspapi2
+from mspapi2 import MSPSerial
+
+serial = MSPSerial("/dev/ttyACM0", 115200)
+serial.open()
+
+# Send MSP_REBOOT (68) with DFU parameter (1)
+code, payload = serial.request(68, b'\x01')
+
+serial.close()
+
+# Wait for reboot
+import time
+time.sleep(2)
+```
+
+This is the most reliable programmatic method because it:
+- Doesn't require CLI prompt timing
+- Works through the MSP protocol
+- Is supported by configurator and tools
+- Provides proper backwards compatibility
+
+**Parameter values:**
+- `b'\x00'` or empty = normal reboot
+- `b'\x01'` = reboot to DFU mode
+
 ## Step 2: Verify DFU Mode
 
 Check that the device is in DFU mode:
