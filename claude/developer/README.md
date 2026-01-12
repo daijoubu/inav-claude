@@ -65,21 +65,21 @@ These checklists contain critical rules that MUST be followed:
 
 **Use the TodoWrite tool to track these steps for each task:**
 
-| Step | Action | Agent/Skill |
-|------|--------|-------------|
-| 1 | Check inbox for assignments | `ls claude/developer/email/inbox/` |
-| 2 | Read task assignment | Read the task file |
-| 3 | Create a git branch | **git-workflow** skill or `/git-workflow` |
-| 4 | Reproduce the issue (test should fail) | **test-engineer** agent |
-| 5 | Implement the fix | Check for specialized agents first (see below), then code |
-| 6 | Compile the code | **inav-builder** agent |
-| 7 | Verify the fix (test should pass) | **test-engineer** agent |
-| 8 | Review your code | **inav-code-review** agent |
-| 9 | Create a pull request | **git-workflow** skill or `/git-workflow` |
-| 10 | Check PR status and bot suggestions | **check-pr-bots** agent or **check-builds** skill |
-| 11 | Create completion report | Create in `developer/email/sent/` |
-| 12 | Notify manager | Copy report to `manager/email/inbox/` |
-| 13 | Archive assignment | Move from `inbox/` to `inbox-archive/` |
+| Step | Action | Agent/Skill | Guides |
+|------|--------|-------------|--------|
+| 1 | Check inbox for assignments | `ls claude/developer/email/inbox/` | - |
+| 2 | Read task assignment | Read the task file | - |
+| 3 | Create a git branch | **git-workflow** skill or `/git-workflow` | `guides/CRITICAL-BEFORE-CODE.md`<br>`guides/git-workflow.md` |
+| 4 | Reproduce the issue (test should fail) | **test-engineer** agent | `guides/CRITICAL-BEFORE-TEST.md` |
+| 5 | Implement the fix | Check for specialized agents first (see below), then code | `guides/CRITICAL-BEFORE-CODE.md`<br>`guides/coding-standards.md` |
+| 6 | Compile the code | **inav-builder** agent | - |
+| 7 | Verify the fix (test should pass) | **test-engineer** agent | `guides/CRITICAL-BEFORE-TEST.md` |
+| 8 | Commit your changes | Follow git best practices | `guides/CRITICAL-BEFORE-COMMIT.md` |
+| 9 | Create a pull request | **create-pr** skill or `/create-pr` | `guides/CRITICAL-BEFORE-PR.md` |
+| 10 | Check PR status and bot suggestions | **check-pr-bots** agent or **check-builds** skill | - |
+| 11 | Create completion report | Create in `developer/email/sent/` | - |
+| 12 | Notify manager | Copy report to `manager/email/inbox/` | - |
+| 13 | Archive assignment | Move from `inbox/` to `inbox-archive/` | - |
 
 **Key principle:** Before fixing a bug, have the `test-engineer` agent write a test that reproduces it. This ensures you understand the problem and can verify when it's fixed.
 
@@ -207,10 +207,10 @@ mv claude/developer/email/inbox/<assignment>.md claude/developer/email/inbox-arc
 ## Additional Documentation
 
 **In `guides/` directory:**
+- `CRITICAL-BEFORE-TEST.md` - Testing philosophy and approach
 - `CRITICAL-BEFORE-CODE.md` - Pre-coding checklist (lock files, agents, search strategy)
 - `CRITICAL-BEFORE-COMMIT.md` - Git and commit best practices
-- `CRITICAL-BEFORE-PR.md` - Testing and code review requirements
-- `CRITICAL-BEFORE-TEST.md` - Testing philosophy and approach
+- `CRITICAL-BEFORE-PR.md` - PR creation checklist (testing, code review, bot checks)
 - `coding-standards.md` - Code organization, quality, comments
 
 **Agent documentation:** `.claude/agents/*.md`
@@ -219,32 +219,6 @@ mv claude/developer/email/inbox/<assignment>.md claude/developer/email/inbox-arc
 
 ---
 
-## Agents
-
-### inav-code-review
-**Purpose:** Perform comprehensive code review for INAV firmware and configurator changes
-
-**When to use:**
-- Before creating a pull request
-- After implementing code changes
-- When you want feedback on code quality and safety
-
-**Context to provide:**
-- List of changed files (or git diff)
-- Brief description of changes
-- PR number (if already created)
-- Any specific concerns (optional)
-
-**Example prompts:**
-```
-"Review changes in navigation/navigation_pos_estimator.c - GPS altitude fix"
-"Review PR #11234 changes before submission"
-"Review my motor mixer changes for embedded safety issues"
-```
-
-**Documentation:** See `.claude/agents/inav-code-review.md` for complete details
-
----
 
 ## Summary
 
