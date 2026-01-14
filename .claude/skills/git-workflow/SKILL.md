@@ -14,6 +14,21 @@ triggers:
 
 Common git operations for working with INAV repositories.
 
+## 🚨 Read Git Guidelines First
+
+**Before any git commit operation, read:** `claude/developer/guides/CRITICAL-BEFORE-COMMIT.md`
+
+This checklist covers:
+- Never use `git add -A`
+- Human review of commit messages
+- Commit message format and best practices
+- When to use (and not use) `--amend`
+- Hook handling
+
+**Read it now using the Read tool when performing commit operations.**
+
+---
+
 ## ⚠️ CRITICAL: Git Safety Rules ⚠️
 
 ### Questions Are Not Commands
@@ -76,6 +91,21 @@ git push -f upstream master
 - On your own feature branches that nobody else uses
 - When explicitly requested by the user
 - NEVER on master/main/shared branches under any circumstances
+
+## 🔒 Sandbox Restrictions
+
+**Claude Code runs in a sandbox that restricts network access:**
+
+- Git operations requiring network (fetch, pull, push) may fail with "Network is unreachable" or "Connection refused"
+- This is NOT a network outage - it's the sandbox blocking unapproved network operations
+- SSH to github.com (port 22) is in the allowed list but may require permission prompts
+- If git fetch/pull/push fails, the user needs to approve the network operation or run it manually
+
+**When you see network errors:**
+1. Don't assume the network is down
+2. Recognize it as a sandbox restriction
+3. Ask the user if they want to approve the operation or handle it manually
+4. The user can run git commands directly (unsandboxed) if needed
 
 ## Repository Structure
 
