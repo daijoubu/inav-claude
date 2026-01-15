@@ -2,54 +2,72 @@
 
 **Role:** Release Manager for INAV Project
 
-> **Note:** This guide is designed for use with an automated assistant (AI coding agent). The commands and workflows are structured for an AI to execute with human oversight. Human release managers can also follow this guide directly.
+> **Note:** This guide is designed to allow use with an automated assistant (AI coding agent) if you wish. The commands and workflows are structured for an AI to execute with human oversight. Human release managers can also follow this guide directly.
 
 You are responsible for preparing, building, and publishing new releases of INAV firmware and INAV Configurator.
 
+---
+
+## 🚨 CRITICAL: Read Phase Guides During Release
+
+**When performing a release, there is a guide for each step. When you get to each step, read the guide for the step you on. You do not need to read them all up front!:**
+
+1. **[Phase 1: Workflow and Preparation](guides/1-workflow-and-preparation.md)** - Start here
+2. **[Phase 2: Downloading Artifacts](guides/2-downloading-artifacts.md)** - Download from CI/nightly
+3. **[Phase 3: Verifying Artifacts](guides/3-verifying-artifacts.md)** - Verify DMG, SITL, test
+4. **[Phase 4: Building Locally](guides/4-building-locally.md)** - Only if inav-builder agent fails
+5. **[Phase 5: Changelog and Notes](guides/5-changelog-and-notes.md)** - Generate release notes
+6. **[Phase 6: Creating Releases](guides/6-creating-releases.md)** - Create tags and publish
+
+**Important:** Use the **inav-builder** agent for all builds. Only read Phase 4 if the agent encounters issues.
+
+---
+
 ## Quick Start
 
-1. Update the version number in the build configuration
-2. **Check release readiness:** Ensure all PRs for the release are merged
-3. **Create tags:** Tag both repositories with the version number
-4. **Generate changelog:** List all PRs merged since last release
-5. **Build artifacts:** Compile firmware for all targets, build configurator for all platforms
-6. **Create draft release:** Upload artifacts and changelog to GitHub
-7. **Publish:** After review, publish the release
+For a typical release:
+
+1. **Read Phase 1** - Verify release readiness, understand workflow
+2. **Download artifacts** - Follow Phase 2 (firmware from nightly, configurator from CI)
+3. **Verify artifacts** - Follow Phase 3 (DMG, SITL, testing)
+4. **Generate changelog** - Follow Phase 5 (list PRs, find incompatible settings)
+5. **Create releases** - Follow Phase 6 (create tags, upload, publish)
+
+---
 
 ## Your Responsibilities
 
 ### Release Preparation
-
 - Coordinate with maintainers on release timing
 - Verify all intended PRs are merged
 - Check CI status on both repositories
 - Ensure version numbers are updated in code
 
 ### Tagging
-
 - Create matching tags in both repositories
 - Follow semantic versioning (e.g., 8.0.0, 8.0.1)
 - Tags must match between firmware and configurator
 
 ### Changelog Generation
-
--Peruse the notes from recent releases to see the format and level of detail
+- Peruse the notes from recent releases to see the format and level of detail
 - List all PRs merged since previous release
 - Categorize changes (features, fixes, improvements)
 - Credit contributors
 
 ### Building
-
-- Compile firmware for all supported targets
-- Build configurator for Windows, macOS, Linux
+- Use the **inav-builder agent** to compile firmware for all supported targets **using Release mode**
+- Use the **inav-builder agent** to build configurator for Windows, macOS, Linux
 - Verify builds complete without errors
 
-### Publishing
+**⚠️ Important:** Always tell the agent to use `-DCMAKE_BUILD_TYPE=Release` when building firmware for releases
 
+### Publishing
 - Create draft GitHub releases
 - Upload all build artifacts
 - Write release notes
 - Coordinate final publish with maintainers
+
+---
 
 ## Communication with Other Roles
 
@@ -70,53 +88,7 @@ The `outbox/` folder is for draft messages that need review before sending. When
 1. Move from `outbox/` to `sent/`
 2. Copy to recipient's `inbox/`
 
-## Release Workflow
-
-**IMPORTANT:** Verify builds BEFORE creating tags. Never tag a commit that hasn't been proven to build successfully.
-
-```
-1. Verify release readiness
-   ├── All PRs merged to firmware repo
-   ├── Version numbers updated
-   └── CI passing on firmware target commit
-
-2. Download firmware artifacts FIRST
-   ├── Download firmware hex files from CI
-   ├── Download SITL binaries from same CI run
-   ├── Build Linux x64 SITL locally if needed (for glibc compatibility)
-   └── This provides SITL binaries needed for configurator
-
-3. Update SITL in configurator
-   ├── Create PR with SITL binaries from step 2
-   ├── Wait for configurator CI to pass
-   └── Merge SITL update PR
-
-4. Download configurator artifacts
-   ├── Download from CI run after SITL PR merged
-   ├── Verify macOS DMGs (no cross-platform contamination)
-   ├── Verify Windows SITL (cygwin1.dll present)
-   ├── Verify Linux SITL (glibc <= 2.35)
-   └── Test SITL functionality
-
-5. Generate changelog
-   ├── List PRs since last tag
-   ├── Categorize changes
-   ├── **Identify incompatible settings** (./find-incompatible-settings.sh)
-   └── Format release notes
-
-6. Create tags and draft releases (ONLY after artifacts verified)
-   ├── Create tag + draft release for firmware (targeting verified commit)
-   ├── Create tag + draft release for configurator (targeting verified commit)
-   ├── Upload verified artifacts
-   └── Add release notes
-
-7. Review and publish
-   ├── Final review of draft releases
-   ├── Maintainer approval
-   └── Publish releases
-```
-
-**Why this order matters:** If you tag first and then discover the build is broken, you have a tag pointing to a broken commit. By verifying artifacts first, you only tag commits that are proven to work.
+---
 
 ## Repositories
 
@@ -124,6 +96,8 @@ The `outbox/` folder is for draft messages that need review before sending. When
 |------------|------|--------|
 | INAV Firmware | `inav/` | https://github.com/iNavFlight/inav |
 | INAV Configurator | `inav-configurator/` | https://github.com/iNavFlight/inav-configurator |
+
+---
 
 ## Version Numbering
 
@@ -145,887 +119,7 @@ Version numbers are set in:
   - View: `jq -r .version package.json` (or `node -p "require('./package.json').version"`)
   - Update: `npm version <X.Y.Z> --no-git-tag-version`
 
-## RC Release Pattern (Cumulative Approach)
-
-Release Candidates (RC) follow a **cumulative** pattern where each RC builds on the previous one:
-
-### Release Notes Structure
-
-#### For Each RC Release:
-1. **Copy all content from previous RC** release notes
-2. **Add new section** at the top documenting changes since last RC
-3. **Keep all previous sections** intact
-
-Example progression:
-
-**RC1 Release Notes:**
-```
-# INAV 9.0.0-RC1
-
-[All new features for 9.0.0]
-```
-
-**RC2 Release Notes:**
-```
-# INAV 9.0.0-RC2
-
-## Changes in RC2 (from RC1)
-* Fix A
-* Fix B
-
-[All RC1 content below]
-```
-
-**RC3 Release Notes:**
-```
-# INAV 9.0.0-RC3
-
-## Changes in RC3 (from RC2)
-* Fix X
-* Fix Y
-
-## Changes in RC2 (from RC1)
-* Fix A
-* Fix B
-
-[All RC1 content below]
-```
-
-**Final 9.0.0 Release:**
-```
-# INAV 9.0.0
-
-## Changes in 9.0.0 (from RC3)
-* Final fix 1
-* Final fix 2
-
-## Changes in RC3 (from RC2)
-[RC3 changes]
-
-## Changes in RC2 (from RC1)
-[RC2 changes]
-
-[All RC1 content below]
-```
-
-### Wiki Release Notes
-
-The `inavwiki/X.Y.Z-Release-Notes.md` file is continuously updated:
-- RC1 creates the initial document
-- RC2 adds a "Changes in RC2" section at the top
-- RC3 adds a "Changes in RC3" section
-- Final release adds final changes section
-
-### GitHub Releases
-
-Both firmware and configurator GitHub releases follow the same cumulative pattern:
-- Each RC copies the previous RC notes
-- Adds incremental changes section
-- Updates "Full Changelog" link to compare against previous RC
-
-### Example References
-
-- Configurator RC1: https://github.com/iNavFlight/inav-configurator/releases/tag/9.0.0-RC1
-- Firmware RC2: https://github.com/iNavFlight/inav/releases/tag/9.0.0-RC2
-- Wiki (continuous): https://github.com/iNavFlight/inav/wiki/9.0.0-Release-Notes
-
-## Tagging Commands
-
-### Check Latest Tags
-
-```bash
-# Firmware
-cd inav
-git fetch --tags
-git tag --sort=-v:refname | head -10
-
-# Configurator
-cd inav-configurator
-git fetch --tags
-git tag --sort=-v:refname | head -10
-```
-
-### Create New Tag
-
-```bash
-# Firmware
-cd inav
-git checkout master
-git pull
-git tag -a <version> -m "INAV <version>"
-git push origin <version>
-
-# Configurator
-cd inav-configurator
-git checkout master
-git pull
-git tag -a <version> -m "INAV Configurator <version>"
-git push origin <version>
-```
-
-## Changelog Generation
-
-### List PRs Since Last Tag
-
-```bash
-# Firmware - PRs merged since last tag
-cd inav
-LAST_TAG=$(git describe --tags --abbrev=0)
-gh pr list --state merged --search "merged:>=$(git log -1 --format=%ai $LAST_TAG | cut -d' ' -f1)" --limit 100
-
-# Configurator - same approach
-cd inav-configurator
-LAST_TAG=$(git describe --tags --abbrev=0)
-gh pr list --state merged --search "merged:>=$(git log -1 --format=%ai $LAST_TAG | cut -d' ' -f1)" --limit 100
-```
-
-### Alternative: Using git log
-
-If `gh pr list` is slow or not working, use `git log` to find merge commits:
-
-```bash
-# Merged PRs since a specific date
-cd inav
-git log --since="2024-11-15" --oneline --merges | head -30
-
-# Merged PRs since last tag
-LAST_TAG=$(git describe --tags --abbrev=0)
-git log $LAST_TAG..HEAD --oneline --merges
-```
-
-The merge commit messages include PR numbers (e.g., "Merge pull request #11144").
-
-### Changelog Format
-
-```markdown
-## INAV <version> Release Notes
-
-### Firmware Changes
-
-#### New Features
-- PR #1234: Description (@contributor)
-
-#### Bug Fixes
-- PR #1236: Description (@contributor)
-
-#### Improvements
-- PR #1237: Description (@contributor)
-
-### Configurator Changes
-
-#### New Features
-- PR #100: Description (@contributor)
-
-### Full Changelog
-**Firmware:** https://github.com/iNavFlight/inav/compare/<prev-tag>...<new-tag>
-**Configurator:** https://github.com/iNavFlight/inav-configurator/compare/<prev-tag>...<new-tag>
-```
-
-## Downloading Release Artifacts
-
-For detailed instructions on downloading firmware hex files and configurator builds, see:
-
-**[Download Guide](download_guide.md)**
-
-Key points:
-- Firmware hex files come from inav-nightly releases
-- Configurator builds come from GitHub Actions CI artifacts
-- **CRITICAL: Organize configurator builds by platform** (linux/, macos/, windows/) to prevent cross-platform contamination
-- **NEVER flatten directories** containing multiple platforms together
-- **Rename firmware files** before upload: remove `_ci-YYYYMMDD-hash` suffix, add RC number for RC releases
-  - Use the rename script: `./claude/release-manager/rename-firmware-for-release.sh 9.0.0-RC3 downloads/firmware-9.0.0-RC3/`
-  - Example: `inav_9.0.0_TARGET_ci-20251129-abc123.hex` → `inav_9.0.0_RC2_TARGET.hex`
-- **Verify macOS DMG contents** before upload using `hdiutil` and `lipo` (see download guide)
-- After downloading, organizing, verifying, and renaming, **human must upload files** to the draft GitHub releases
-
-**Lesson learned (9.0.0 release):** A Windows .exe file was found inside a Mac DMG. The exact cause is unknown, but improper artifact handling during download/preparation is suspected. The download guide now includes platform separation and verification steps to prevent this.
-
-## Verifying macOS DMG Contents
-
-**CRITICAL:** Always verify macOS DMGs before uploading to prevent cross-platform contamination.
-
-### Using the Verification Script (Linux)
-
-A verification script is available at: `claude/release-manager/verify-dmg-contents.sh`
-
-```bash
-# Verify all DMGs in a directory
-./claude/release-manager/verify-dmg-contents.sh downloads/configurator-9.0.0-RC3/macos/*.dmg
-```
-
-**What it checks:**
-- ✅ No Windows files (.exe, .dll, .msi)
-- ✅ Valid Mach-O executable format
-- ✅ Correct architecture (arm64 vs x86_64)
-- ✅ Complete app bundle structure
-
-**How it works:**
-- Uses 7z to extract DMG to temporary directory
-- Does NOT modify original DMG file
-- Cleans up temp files after verification
-
-### Manual Verification (macOS)
-
-If on macOS, you can use native tools:
-
-```bash
-# Mount DMG read-only
-hdiutil attach INAV-Configurator_MacOS_arm64_9.0.0.dmg -readonly -quiet
-
-# Check for Windows files (should be zero)
-find /Volumes/INAV-Configurator -name "*.exe" -o -name "*.dll" -o -name "*.msi" | wc -l
-
-# Verify architecture
-lipo -info "/Volumes/INAV-Configurator/INAV Configurator.app/Contents/MacOS/inav-configurator"
-
-# Unmount
-hdiutil detach /Volumes/INAV-Configurator -quiet
-```
-
-## Verifying Windows SITL Files (cygwin1.dll)
-
-**CRITICAL:** Windows SITL requires `cygwin1.dll` to run. Without it, users get "cygwin1.dll not found" errors and SITL fails to launch.
-
-### Why This Matters
-
-The Windows SITL binary (`inav_SITL.exe`) is built using Cygwin and requires the Cygwin runtime DLL to execute. This file must be bundled with the configurator in the `resources/public/sitl/windows/` directory.
-
-### Using the Verification Script
-
-A verification script is available at: `claude/release-manager/verify-windows-sitl.sh`
-
-```bash
-# Verify Windows configurator zip or extracted directory
-./claude/release-manager/verify-windows-sitl.sh downloads/configurator-9.0.0-RC4/windows/INAV-Configurator_win_x64_9.0.0.zip
-```
-
-### Manual Verification
-
-```bash
-# For zip files - list contents and check for both required files
-unzip -l INAV-Configurator_win_x64_9.0.0.zip | grep -E "(cygwin1.dll|inav_SITL.exe)"
-
-# Expected output (both files must be present):
-# Note: Packaged builds use resources/sitl/ (not resources/public/sitl/)
-#    2953269  12-19-2024 01:41   resources/sitl/windows/cygwin1.dll
-#    1517041  12-21-2024 17:25   resources/sitl/windows/inav_SITL.exe
-```
-
-### Path Differences
-
-| Context | SITL Path |
-|---------|-----------|
-| Source repo | `resources/public/sitl/windows/` |
-| Packaged builds | `resources/sitl/windows/` |
-
-The `extraResource` config in `forge.config.js` copies `resources/public/sitl` to `resources/sitl` in packaged builds (see PR #2496).
-
-### What to Check
-
-- ✅ `cygwin1.dll` exists in `resources/sitl/windows/` (packaged) or `resources/public/sitl/windows/` (source)
-- ✅ `inav_SITL.exe` exists in same directory
-- ✅ File sizes are reasonable (cygwin1.dll ~2.9MB, inav_SITL.exe ~1.5MB)
-
-### If cygwin1.dll is Missing
-
-1. **DO NOT release** - Windows SITL will be broken
-2. Check if the configurator repo has the file in `resources/public/sitl/windows/`
-3. If missing from repo, obtain from a working Cygwin installation or previous release
-4. Create PR to add/fix the file before proceeding with release
-
-### Source of cygwin1.dll
-
-The `cygwin1.dll` file comes from the Cygwin build environment used to compile the Windows SITL binary. It should only be updated when:
-- The Cygwin toolchain version changes
-- There are compatibility issues with the current DLL
-
 ---
-
-## Using gh to Create Releases and Tags
-
-**TIP:** You can create both the tag and release in one step using `gh release create`, bypassing the need to work in locked local repositories.
-
-### For Firmware
-
-```bash
-# Create release + tag at specific commit on GitHub (no local repo access needed)
-gh release create 9.0.0-RC3 \
-  --repo iNavFlight/inav \
-  --target 34e3e4b3d8525931f825e766c28749a4c6342963 \
-  --title "INAV 9.0.0-RC3 release candidate for testing" \
-  --notes-file claude/release-manager/9.0.0-RC3-firmware-release-notes.md \
-  --prerelease \
-  --draft
-```
-
-### For Configurator
-
-```bash
-# Create release + tag at specific commit
-gh release create 9.0.0-RC3 \
-  --repo iNavFlight/inav-configurator \
-  --target 9dbd346dcf941b31f97ccb8418ede367044eb93c \
-  --title "INAV Configurator 9.0.0-RC3 release candidate for testing" \
-  --notes-file claude/release-manager/9.0.0-RC3-configurator-release-notes.md \
-  --prerelease \
-  --draft
-```
-
-### Benefits
-
-- Creates tag and release atomically
-- No need for local repository access
-- Works even when repository directory is locked
-- Can specify exact commit by SHA
-- Creates draft releases for review before publishing
-
-### Uploading Assets
-
-After creating the draft release, upload artifacts using `gh release upload`:
-
-```bash
-# Upload configurator builds by platform
-cd claude/release-manager/downloads/configurator-9.0.0-RC3
-gh release upload 9.0.0-RC3 linux/* --repo iNavFlight/inav-configurator
-gh release upload 9.0.0-RC3 macos/* --repo iNavFlight/inav-configurator
-gh release upload 9.0.0-RC3 windows/* --repo iNavFlight/inav-configurator
-
-# Upload firmware hex files
-cd ../firmware-9.0.0-RC3
-gh release upload 9.0.0-RC3 *.hex --repo iNavFlight/inav
-```
-
-## Building Firmware
-
-### Using Nightly Builds
-
-Pre-built firmware binaries are available from the nightly build system:
-
-**Nightly Releases:** https://github.com/iNavFlight/inav-nightly/releases
-
-To verify the nightly matches your release commit:
-
-```bash
-# Get latest commit on master
-cd inav
-git log -1 --format="%h %s" HEAD
-
-# Compare with the nightly release description
-# Nightly tags follow format: v9.0.0-YYYYMMDD.BUILD_NUMBER
-```
-
-The nightly builds include all targets and can be used directly for RC releases instead of building locally.
-
-### Building Locally
-
-Use the **inav-builder** agent for all firmware builds:
-
-```
-Task tool with subagent_type="inav-builder"
-Prompt: "Build MATEKF405" or "Build all targets"
-```
-
-The agent handles cmake configuration, parallel compilation, and error diagnosis automatically.
-
-See `.claude/agents/inav-builder.md` for detailed build commands and troubleshooting.
-
-### Output Location
-
-Firmware hex files are output to: `inav/build/inav_<version>_<TARGET>.hex`
-
-## Building Configurator
-
-### Using GitHub Actions CI (Preferred)
-
-Pull requests to the configurator repo automatically trigger CI builds for all platforms. Use these artifacts for releases instead of building locally.
-
-1. Create/merge a PR (e.g., SITL update PR)
-2. Wait for the CI workflow to complete
-3. Go to the PR or commit's "Checks" tab
-4. Download artifacts from the workflow run:
-   - `INAV-Configurator_linux_x64`
-   - `INAV-Configurator_macOS`
-   - `INAV-Configurator_win_x64`
-
-```bash
-# Or use gh CLI to download artifacts from a workflow run
-gh run download <run-id> --repo iNavFlight/inav-configurator
-
-# Flatten directory structure
-find . -mindepth 2 -type f -exec mv -t . {} +
-# Remove the now-empty subdirectories
-find . -mindepth 1 -type d -empty -delete
-```
-
-### Building Locally (Fallback)
-
-Only build locally if CI is unavailable.
-
-Use the **inav-builder** agent for all configurator builds:
-
-```
-Task tool with subagent_type="inav-builder"
-Prompt: "Build configurator" or "Build configurator for Linux"
-```
-
-The agent handles npm installation, build configuration, and error diagnosis automatically.
-
-See `.claude/agents/inav-builder.md` for detailed build commands and troubleshooting.
-
-### Output Location
-
-Configurator packages are output to: `inav-configurator/out/make/`
-
-## Updating SITL Binaries
-
-SITL binaries must be updated before tagging the configurator. They are stored in:
-```
-inav-configurator/resources/public/sitl/
-├── linux/
-│   ├── inav_SITL
-│   └── arm64/
-│       └── inav_SITL
-├── macos/
-│   └── inav_SITL
-└── windows/
-    ├── inav_SITL.exe
-    └── cygwin1.dll
-```
-
-### Download from Nightly
-
-```bash
-# Find matching nightly release
-gh release list --repo iNavFlight/inav-nightly --limit 5
-
-# Download SITL resources
-curl -L -o /tmp/sitl-resources.zip \
-  "https://github.com/iNavFlight/inav-nightly/releases/download/<tag>/sitl-resources.zip"
-unzip /tmp/sitl-resources.zip -d /tmp/sitl-extract
-
-# Copy to configurator
-cd inav-configurator
-cp /tmp/sitl-extract/resources/sitl/linux/inav_SITL resources/public/sitl/linux/
-cp /tmp/sitl-extract/resources/sitl/linux/arm64/inav_SITL resources/public/sitl/linux/arm64/
-cp /tmp/sitl-extract/resources/sitl/macos/inav_SITL resources/public/sitl/macos/
-cp /tmp/sitl-extract/resources/sitl/windows/inav_SITL.exe resources/public/sitl/windows/
-
-# Commit
-git add resources/public/sitl/
-git commit -m "Update SITL binaries for <version>"
-```
-
-### Building SITL Locally (Preferred for glibc Compatibility)
-
-Use the **inav-builder** agent to build SITL binaries locally:
-
-```
-Task tool with subagent_type="inav-builder"
-Prompt: "Build SITL"
-```
-
-This ensures:
-- Linux binaries meet glibc compatibility requirements (≤ 2.35 for Ubuntu 22.04 LTS)
-- Binaries match the exact firmware commit being released
-
-Build on a system with glibc 2.35 (Ubuntu 22.04 LTS) for maximum compatibility.
-
-**For releases, you need SITL binaries for all platforms:**
-- **Linux x64:** Build using the inav-builder agent on Ubuntu 22.04 LTS (glibc 2.35)
-- **Linux arm64:** Build on arm64 Ubuntu 22.04 or use CI artifacts
-- **macOS:** Use CI artifacts (must be built on macOS)
-- **Windows:** Use CI artifacts (includes cygwin1.dll from PR #11203)
-
-**When to build locally vs use CI:**
-- **Build locally:** Linux x64 (to ensure glibc ≤ 2.35 compatibility)
-- **Use CI artifacts:** Windows (needs cygwin1.dll), macOS (needs macOS build), Linux arm64
-
-### Linux SITL glibc Compatibility Requirement
-
-**CRITICAL:** Linux SITL binaries must be compiled on a system with glibc old enough to support all non-EOL Ubuntu LTS releases.
-
-| Period | Oldest Supported Ubuntu LTS | glibc Version |
-|--------|----------------------------|---------------|
-| 2025-2027 | Ubuntu 22.04.3 LTS | glibc 2.35 |
-
-**Why this matters:**
-- glibc is forward-compatible but NOT backward-compatible
-- A binary compiled on Ubuntu 24.04 (glibc 2.39) will fail on Ubuntu 22.04 with errors like:
-  ```
-  /lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.38' not found
-  ```
-- Users on older (but still supported) Ubuntu LTS releases would be unable to use SITL
-
-**How to verify:**
-```bash
-# Check glibc version requirements of a binary
-objdump -T inav_SITL | grep GLIBC | sed 's/.*GLIBC_//;s/ .*//' | sort -V | tail -1
-
-# Check system glibc version
-ldd --version | head -1
-```
-
-**Build recommendations:**
-- Build on Ubuntu 22.04 LTS or equivalent (glibc 2.35) for maximum compatibility
-- Alternatively, use a Docker container with an older base image
-- The inav-nightly CI should be configured to build on an appropriate base image
-
-### Notes
-
-- The `cygwin1.dll` in the Windows folder is a runtime dependency; only update if the build toolchain changes
-- SITL binaries are platform-specific and cannot be cross-used
-- Linux arm64 binary added in 9.0.0 for ARM-based Linux systems (e.g., Raspberry Pi)
-- Linux binaries must support glibc 2.35+ (see glibc compatibility section above)
-- Ensure the SITL version matches the firmware version being released
-- Test the SITL binaries work before committing (run configurator and try SITL mode)
-- The SITL PR triggers CI builds - use those artifacts for the configurator release
-
-## Managing Release Assets
-
-### Renaming Assets Without Re-uploading
-
-You can rename release assets directly via the GitHub API without re-uploading:
-
-```bash
-# Get release ID and asset IDs
-gh api repos/iNavFlight/inav/releases --jq '.[] | select(.draft == true) | {id: .id, name: .name}'
-gh api repos/iNavFlight/inav/releases/RELEASE_ID/assets --paginate --jq '.[] | "\(.id) \(.name)"'
-
-# Rename a single asset
-gh api -X PATCH "repos/iNavFlight/inav/releases/assets/ASSET_ID" -f name="new-filename.hex"
-
-# Bulk rename firmware assets (add RC number, remove ci- suffix)
-gh api repos/iNavFlight/inav/releases/RELEASE_ID/assets --paginate --jq '.[] | "\(.id) \(.name)"' > /tmp/assets.txt
-cat /tmp/assets.txt | while read -r id name; do
-  target=$(echo "$name" | sed -E 's/inav_[0-9]+\.[0-9]+\.[0-9]+_(.*)_ci-.*/\1/')
-  newname="inav_9.0.0_RC2_${target}.hex"
-  gh api -X PATCH "repos/iNavFlight/inav/releases/assets/$id" -f name="$newname" --silent
-done
-```
-
-**Important:** The GitHub API paginates results (30 per page by default). Always use `--paginate` when listing assets to get all of them.
-
-### Deleting Release Assets
-
-If a draft release has outdated assets that need to be replaced (e.g., from a previous upload attempt), delete them before uploading new ones:
-
-```bash
-# Delete an asset by ID
-gh api -X DELETE "repos/iNavFlight/inav/releases/assets/ASSET_ID"
-```
-
-### Asset Naming Conventions
-
-**Firmware (RC releases):**
-- Pattern: `inav_<version>_RC<n>_<TARGET>.hex`
-- Example: `inav_9.0.0_RC2_MATEKF405.hex`
-
-**Firmware (final releases):**
-- Pattern: `inav_<version>_<TARGET>.hex`
-- Example: `inav_9.0.0_MATEKF405.hex`
-
-**Configurator (RC releases):**
-- Pattern: `INAV-Configurator_<platform>_<version>_RC<n>.<ext>`
-- Example: `INAV-Configurator_linux_x64_9.0.0_RC2.deb`
-
-**Configurator (final releases):**
-- Pattern: `INAV-Configurator_<platform>_<version>.<ext>`
-- Example: `INAV-Configurator_linux_x64_9.0.0.deb`
-
-## Creating GitHub Releases
-
-### Create Draft Release
-
-```bash
-# Firmware
-cd inav
-gh release create <version> --draft --title "INAV <version>" --notes-file release-notes.md
-gh release upload <version> *.hex
-
-# Configurator
-cd inav-configurator
-gh release create <version> --draft --title "INAV Configurator <version>" --notes-file release-notes.md
-gh release upload <version> *.zip *.dmg *.exe *.AppImage *.deb *.rpm *.msi
-```
-
-### View/Edit Draft Release
-
-```bash
-# List releases
-gh release list
-
-# View release
-gh release view <version>
-
-# Edit release notes
-gh release edit <version> --notes-file updated-notes.md
-```
-
-### Publish Release
-
-```bash
-# Publish (removes draft status)
-gh release edit <version> --draft=false
-```
-
-## Artifact Download Timing
-
-**IMPORTANT:** You can download CI artifacts for a specific commit BEFORE creating the release tag.
-
-### How It Works
-
-1. **Commits are immutable** - Once a commit exists, it has a unique SHA
-2. **CI runs on commits** - GitHub Actions builds artifacts for each commit automatically
-3. **Tags point to commits** - A tag is just a named pointer to a specific commit
-
-### Workflow
-
-```bash
-# 1. Find the target commit
-gh api repos/iNavFlight/inav-configurator/commits/HEAD --jq '.sha'
-# Output: 9dbd346dcf941b31f97ccb8418ede367044eb93c
-
-# 2. Find the CI run for that commit
-gh run list --repo iNavFlight/inav-configurator --limit 20 --json headSha,databaseId | \
-  jq '.[] | select(.headSha == "9dbd346dcf941b31f97ccb8418ede367044eb93c")'
-
-# 3. Download artifacts from that CI run
-gh run download <run-id> --repo iNavFlight/inav-configurator
-
-# 4. Later, create tag pointing to that same commit
-gh release create 9.0.0-RC3 \
-  --repo iNavFlight/inav-configurator \
-  --target 9dbd346dcf941b31f97ccb8418ede367044eb93c \
-  --draft
-```
-
-### Benefits
-
-- Download and verify artifacts while repositories are locked
-- Organize and rename files in advance
-- Verify DMG contents thoroughly
-- Create releases when ready without rushing
-
-### For Firmware
-
-Firmware uses nightly builds instead of CI artifacts:
-
-```bash
-# 1. Get commit SHA
-gh api repos/iNavFlight/inav/commits/HEAD --jq '{sha: .sha, date: .commit.committer.date}'
-
-# 2. Find nightly build created after that commit
-gh release list --repo iNavFlight/inav-nightly --limit 20
-
-# 3. Download hex files from appropriate nightly
-gh release download v9.0.0-20251207.178 --repo iNavFlight/inav-nightly --pattern "*.hex"
-```
-
-## Identifying Incompatible Settings Changes
-
-**CRITICAL:** Before releasing a major version, identify any CLI settings that have been renamed or removed. These cause errors (shown in RED) when users load their old `diff all` into the new firmware.
-
-### Why This Matters
-
-When users upgrade from INAV 8.x to 9.x, they:
-1. Export configuration with `diff all` from old version
-2. Flash new firmware
-3. Load their old diff into new CLI
-
-If settings were renamed or removed, those lines will fail and show in RED. Users need to know about these incompatibilities upfront.
-
-### How to Find Incompatible Changes
-
-Compare `settings.yaml` between the previous stable release and the new release:
-
-```bash
-cd inav
-
-# For major releases (e.g., 8.0.1 → 9.0.0)
-git diff 8.0.1..9.0.0-RC3 -- src/main/fc/settings.yaml | grep -E "^[\+\-].*name:"
-
-# Look for:
-# - Lines starting with "-" = Settings removed or renamed
-# - Lines starting with "+" = New settings or renamed-to names
-```
-
-### Creating the Incompatibility Report
-
-Create a document listing:
-
-1. **Renamed settings** - Show old name → new name
-2. **Removed settings** - Explain why they were removed
-3. **Migration instructions** - How users should update their diff
-
-**Example:** `claude/release-manager/9.0.0-INCOMPATIBLE-SETTINGS.md`
-
-### Where to Document
-
-1. **Release notes** - Add "Incompatible Settings" section
-2. **Wiki release notes** - Add to upgrade instructions
-3. **Separate document** - For reference during user support
-
-### Common Types of Changes
-
-- **Renamed for clarity:** `controlrate_profile` → `use_control_profile`
-- **Terminology changes:** `pid_profile` → `control_profile` (major refactoring)
-- **Removed features:** `reboot_character` (legacy MSP method removed)
-- **Value format changes:** `pwm2centideg` → `decadegrees` (unit change)
-
-### Automation Script
-
-Save as `claude/release-manager/find-incompatible-settings.sh`:
-
-```bash
-#!/bin/bash
-# Find incompatible settings between two releases
-
-if [ $# -ne 2 ]; then
-    echo "Usage: $0 <old-version> <new-version>"
-    echo "Example: $0 8.0.1 9.0.0-RC3"
-    exit 1
-fi
-
-OLD=$1
-NEW=$2
-
-echo "=== Incompatible Settings: $OLD → $NEW ==="
-echo ""
-
-cd inav
-git diff $OLD..$NEW -- src/main/fc/settings.yaml | \
-  grep -E "^[\-].*name:" | \
-  grep -v "^\-\-\-" | \
-  sed 's/^-.*name: /REMOVED\/RENAMED: /'
-
-echo ""
-echo "=== Review git diff for context to determine renames vs removals ==="
-```
-
-### Release Notes Template for Incompatibilities
-
-Add this section to **both firmware and configurator release notes** for major version releases:
-
-```markdown
-## ⚠️ Incompatible Settings Changes
-
-The following CLI settings have been renamed or removed in INAV X.0. When loading an older `diff all`, these will show in RED:
-
-**Renamed Settings:**
-- `old_setting_name` → `new_setting_name` - Brief explanation
-- `another_old_name` → `another_new_name` - Brief explanation
-
-**Removed Settings:**
-- `removed_setting` - Reason for removal / what replaced it
-
-**Migration Instructions:**
-1. Export configuration from old version: CLI → `diff all` → Save to file
-2. Flash new firmware with **Full Chip Erase**
-3. Edit your saved diff file and update the renamed settings
-4. Load edited diff into new CLI
-
-See full upgrade guide: https://github.com/iNavFlight/inav/wiki/X.0.0-Release-Notes
-```
-
-**How to generate this content:**
-```bash
-# From release-manager directory
-./find-incompatible-settings.sh 8.0.1 9.0.0-RC3
-
-# Review output and create the renamed/removed lists
-# Use git diff to determine renames vs removals
-git diff 8.0.1..9.0.0-RC3 -- src/main/fc/settings.yaml | less
-```
-
-## Testing Artifacts Before Publishing
-
-**CRITICAL:** Always test at least one configurator build with SITL before publishing releases.
-
-### Why Test SITL?
-
-- SITL binaries must match the firmware version being released
-- Ensures SITL can launch and connect properly
-- Validates that SITL update PR was merged correctly
-- Prevents releasing broken SITL functionality to users
-
-### Quick SITL Test Procedure
-
-1. **Extract and run the configurator** (use native platform build):
-   ```bash
-   # Linux example
-   unzip INAV-Configurator_linux_x64_9.0.0.zip -d test-configurator
-   cd test-configurator
-   ./inav-configurator
-   ```
-
-2. **Launch SITL from Configurator:**
-   - Open INAV Configurator
-   - Click "Setup" tab or "Simulator"
-   - Click "Start SITL" or similar button
-   - Verify SITL process launches without errors
-
-3. **Verify SITL connects:**
-   - Check that configurator detects SITL as a connected device
-   - Verify serial port/connection appears
-   - Test basic connection (read FC config)
-
-4. **Check SITL version matches firmware:**
-   - In configurator, check firmware version shown
-   - Should match the release version (e.g., 9.0.0-RC3)
-   - If mismatched, SITL binaries were not updated
-
-### When to Test
-
-- **After downloading artifacts** but before uploading to GitHub
-- **After uploading to draft release** - can download from draft to verify
-- **Before publishing release** - final check
-
-### What Platforms to Test
-
-**Minimum:**
-- Test on your native platform (e.g., Linux x64)
-
-**Ideal:**
-- Test all three platforms (Linux, macOS, Windows)
-- Test both architectures (x64 and arm64) if possible
-
-**Reality:**
-- At minimum, test the platform you're working on
-- SITL is most critical to verify
-- Other platform-specific issues rare after DMG verification
-
-## Pre-Release Checklist
-
-### Code Readiness
-
-- [ ] All planned PRs merged
-- [ ] CI passing on master branch
-- [ ] No critical open issues blocking release
-- [ ] Version numbers updated in both repositories
-- [ ] SITL binaries updated in configurator
-
-### Documentation
-
-- [ ] Release notes drafted
-- [ ] **Incompatible settings changes identified and added to release notes** (use find-incompatible-settings.sh)
-- [ ] Breaking changes documented
-- [ ] New features documented
-
-### Artifact Verification
-
-- [ ] Firmware hex files downloaded and renamed
-- [ ] Configurator artifacts organized by platform (linux/, macos/, windows/)
-- [ ] macOS DMG contents verified (no .exe files, correct architecture)
-- [ ] **Windows SITL cygwin1.dll verified** (use verify-windows-sitl.sh)
-- [ ] **Configurator SITL tested** (launch SITL, verify version matches firmware)
-
-## Post-Release Tasks
-
-- [ ] Announce release (Discord, forums, etc.)
-- [ ] Update any pinned issues
-- [ ] Monitor for critical bug reports
-- [ ] Prepare hotfix if needed
-- [ ] Update this document with any lessons learned
 
 ## Maintenance Branches
 
@@ -1099,6 +193,8 @@ When creating new maintenance branches, update the GitHub Action that suggests v
 
 Update the branch names mentioned in the comment text (e.g., change `maintenance-9.x` and `maintenance-10.x` to the current version branches).
 
+---
+
 ## Hotfix Releases
 
 For critical bugs discovered after release:
@@ -1109,15 +205,20 @@ For critical bugs discovered after release:
 4. Build and release following normal process
 5. Document as hotfix in release notes
 
+---
+
 ## Files You Manage
 
 ### Your Workspace
 - `claude/release-manager/` - Your working directory
-- `claude/release-manager/releases/` - Release notes and changelogs
+- `claude/release-manager/guides/` - Phase-specific release guides
+- `claude/release-manager/downloads/` - Downloaded artifacts (organized by platform)
 
 ### Don't Modify Directly
 - Source code (coordinate with developers)
 - Build configurations (unless necessary for release)
+
+---
 
 ## Tools You Use
 
@@ -1176,6 +277,13 @@ Usage:
 ./claude/release-manager/verify-windows-sitl.sh downloads/configurator-9.0.0-RC4/windows/INAV-Configurator_win_x64_9.0.0/
 ```
 
+**`claude/release-manager/find-incompatible-settings.sh`**
+- Identifies CLI settings that were renamed or removed between versions
+- Critical for major version releases (e.g., 8.x → 9.x)
+- See [Phase 5: Changelog and Notes](guides/5-changelog-and-notes.md) for usage
+
+---
+
 ## Important Reminders
 
 1. **Always tag both repos** - Firmware and configurator versions must match
@@ -1183,6 +291,9 @@ Usage:
 3. **Test builds** - Verify at least one firmware and configurator build works
 4. **Backup** - Keep local copies of release artifacts
 5. **Communicate** - Coordinate with maintainers before publishing
+6. **Follow the phase guides** - Don't skip verification steps
+
+---
 
 ## Quick Commands Reference
 
@@ -1193,72 +304,76 @@ git tag --sort=-v:refname | head -5
 # PRs since tag
 gh pr list --state merged --limit 50
 
-# Create tag
-git tag -a X.Y.Z -m "INAV X.Y.Z"
-
-# Push tag
-git push origin X.Y.Z
-
-# Create draft release
-gh release create X.Y.Z --draft --title "INAV X.Y.Z"
+# Create draft release with tag
+gh release create X.Y.Z --repo <owner/repo> --target <commit-sha> --draft --prerelease
 
 # Upload to release
-gh release upload X.Y.Z file1 file2
+gh release upload X.Y.Z file1 file2 --repo <owner/repo>
 
 # Publish release
-gh release edit X.Y.Z --draft=false
+gh release edit X.Y.Z --draft=false --repo <owner/repo>
+
+# View release
+gh release view X.Y.Z --repo <owner/repo>
 ```
+
+For detailed command examples, see [Phase 6: Creating Releases](guides/6-creating-releases.md).
+
+---
 
 ## Public Release Documentation
 
 A public version of this release guide is maintained at:
 `inav/docs/development/release-create.md`
 
-When updating this README with new procedures or lessons learned, also update the public documentation to keep them in sync.
+When updating this README or phase guides with new procedures or lessons learned, also update the public documentation to keep them in sync.
 
 ---
 
-# Agents
+## Agents
 
-Use these agents via the Task tool for complex, multi-step operations:
+Use these agents via the Task tool for release operations:
 
-## inav-builder
+### inav-builder
 **Purpose:** Build INAV firmware (SITL and hardware targets) and configurator
 
 **When to use:**
 - Building firmware for specific targets
+- Building SITL binaries
 - Building or running the configurator locally
 - Diagnosing build errors
 
 **Example prompts:**
 ```
-"Build MATEKF405"
+"Build MATEKF405 with -DCMAKE_BUILD_TYPE=Release"
 "Build configurator"
 "Build SITL"
 ```
 
 **Configuration:** `.claude/agents/inav-builder.md`
 
+**Note:** This agent is the preferred way to build. Only read [Phase 4: Building Locally](guides/4-building-locally.md) if the agent encounters issues.
+
 ---
 
-# Useful Skills
+## Useful Skills
 
 The following skills are available to help with common release manager tasks:
 
-## Release Artifact Management
+### Release Artifact Management
 - **download-release-artifacts** - Download firmware and configurator builds from CI
 - **upload-release-assets** - Upload files to GitHub releases
 - **remove-release-assets** - Remove old/incorrect assets from releases
 
-## Building
+### Building
 - **build-sitl** - Build SITL firmware (prefer inav-builder agent)
 - **build-inav-target** - Build hardware target (prefer inav-builder agent)
 
-## Git Operations
+### Git Operations
 - **git-workflow** - Tag creation and branch management
 - **check-builds** - Verify CI builds pass before release
 
-## Communication
+### Communication
 - **email** - Coordinate with manager and developers
 - **communication** - Message templates and guidelines
 
@@ -1269,9 +384,27 @@ The following skills are available to help with common release manager tasks:
 As Release Manager:
 1. ✅ Create and push version tags
 2. ✅ Generate changelogs from merged PRs
-3. ✅ Build firmware and configurator
-4. ✅ Create and upload GitHub releases
-5. ✅ Coordinate release timing with maintainers
-6. ❌ Don't modify source code directly (coordinate with developers)
+3. ✅ Download and verify artifacts from CI/nightly
+4. ✅ Build firmware and configurator (using inav-builder agent)
+5. ✅ Create and upload GitHub releases
+6. ✅ Coordinate release timing with maintainers
+7. ❌ Don't modify source code directly (coordinate with developers)
 
 **Remember:** Releases affect all INAV users. Double-check everything before publishing.
+
+---
+
+## Getting Started with a Release
+
+**New to release management? Start here:**
+
+1. Read [Phase 1: Workflow and Preparation](guides/1-workflow-and-preparation.md) to understand the complete release process
+2. Follow each phase guide in order during your release
+3. Use the pre-release checklist in Phase 1 before publishing
+4. Keep the Quick Commands Reference above handy for common operations
+
+**For specific tasks:**
+- Downloading artifacts → [Phase 2](guides/2-downloading-artifacts.md)
+- Verifying builds → [Phase 3](guides/3-verifying-artifacts.md)
+- Writing release notes → [Phase 5](guides/5-changelog-and-notes.md)
+- Creating GitHub releases → [Phase 6](guides/6-creating-releases.md)
