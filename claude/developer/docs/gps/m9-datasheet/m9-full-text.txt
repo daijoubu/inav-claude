@@ -1,0 +1,2035 @@
+
+NEO-M9N
+u-blox M9 standard precision module
+Data sheet
+
+Abstract
+Technical data sheet describing the u-blox NEO-M9N module. NEOM9N oﬀers ultra-robust meter-level GNSS positioning performance with
+concurrent reception of up to four GNSS (GPS, GLONASS, BeiDou, Galileo)
+in a 12.2 x 16.0 mm package.
+
+www.u-blox.com
+UBX-19014285 - R02
+
+NEO-M9N - Data sheet
+
+Document information
+Title
+
+NEO-M9N
+
+Subtitle
+
+u-blox M9 standard precision module
+
+Document type
+
+Data sheet
+
+Document number
+
+UBX-19014285
+
+Revision and date
+
+R02
+
+Document status
+
+Advance information
+
+14-Nov-2019
+
+Product status
+
+Corresponding content status
+
+In development /
+prototype
+
+Objective speciﬁcation
+
+Target values. Revised and supplementary data will be published later.
+
+Engineering sample
+
+Advance information
+
+Data based on early testing. Revised and supplementary data will be
+published later.
+
+Initial production
+
+Early production information
+
+Data from product veriﬁcation. Revised and supplementary data may be
+published later.
+
+Mass production /
+End of life
+
+Production information
+
+Document contains the ﬁnal product speciﬁcation.
+
+This document applies to the following products:
+Product name
+
+Type number
+
+Firmware version
+
+PCN reference
+
+NEO-M9N
+
+NEO-M9N-00B-00
+
+SPG 4.00
+
+N/A
+
+u-blox reserves all rights to this document and the information contained herein. Products, names, logos and designs
+described herein may in whole or in part be subject to intellectual property rights. Reproduction, use, modiﬁcation or
+disclosure to third parties of this document or any part thereof without the express permission of u-blox is strictly prohibited.
+The information contained herein is provided "as is" and u-blox assumes no liability for the use of the information. No warranty,
+either express or implied, is given with respect to, including but not limited to, the accuracy, correctness, reliability and ﬁtness
+for a particular purpose of the information. This document may be revised by u-blox at any time. For most recent documents,
+please visit www.u blox.com.
+Copyright © 2019, u-blox AG.
+u-blox is a registered trademark of u-blox Holding AG in the EU and other countries.
+UBX-19014285 - R02
+Advance information
+
+Page 2 of 21
+
+NEO-M9N - Data sheet
+
+Contents
+1 Functional description......................................................................................................... 4
+1.1 Overview.................................................................................................................................................... 4
+1.2 Performance............................................................................................................................................. 4
+1.3 Supported GNSS constellations.......................................................................................................... 5
+1.4 Supported protocols............................................................................................................................... 5
+1.5 Firmware features................................................................................................................................... 6
+
+2 System description...............................................................................................................7
+2.1 Block diagram.......................................................................................................................................... 7
+
+3 Pin deﬁnition........................................................................................................................... 8
+3.1 Pin assigment.......................................................................................................................................... 8
+
+4 Electrical speciﬁcation...................................................................................................... 10
+4.1 Absolute maximum ratings................................................................................................................ 10
+4.2 Operating conditions............................................................................................................................10
+4.3 Indicative power requirements...........................................................................................................11
+
+5 Communications interfaces.............................................................................................12
+5.1 UART interface...................................................................................................................................... 12
+5.2 SPI interface...........................................................................................................................................12
+5.3 Slave I2C interface................................................................................................................................13
+5.4 USB interface.........................................................................................................................................15
+5.5 Default interface settings...................................................................................................................15
+
+6 Mechanical speciﬁcation.................................................................................................. 16
+7 Reliability tests and approvals....................................................................................... 17
+7.1 Approvals................................................................................................................................................ 17
+
+8 Labeling and ordering information................................................................................ 18
+8.1 Product labeling.................................................................................................................................... 18
+8.2 Explanation of product codes............................................................................................................ 18
+8.3 Ordering codes...................................................................................................................................... 18
+
+Related documents................................................................................................................ 19
+Revision history....................................................................................................................... 20
+
+UBX-19014285 - R02
+Advance information
+
+Contents
+
+Page 3 of 21
+
+NEO-M9N - Data sheet
+
+1 Functional description
+1.1 Overview
+The NEO-M9N module is built on the robust u-blox M9 GNSS chip, which provides exceptional
+sensitivity and acquisition times for all L1 GNSS systems. The u-blox M9 standard precision GNSS
+platform, which delivers meter-level accuracy, succeeds the well-known u-blox M8 product range.
+The receiver also provides higher navigation rate and improved security features compared to
+previous u-blox GNSS generations.
+u-blox M9 receivers support 4 GNSS concurrent reception. The high number of visible satellites
+allows the receiver to select the best signals. This maximizes the position accuracy, in particular
+under challenging conditions like deep urban canyons.
+u-blox M9 receivers detect jamming and spooﬁng events and report them to the host, which allows
+the system to react to such events. Advanced ﬁltering algorithms mitigate the impact of RF
+interference and jamming, and can allow the product to operate normally.
+The NEO-M9N module is available in the NEO form factor LCC package.
+
+1.2 Performance
+Parameter
+
+Speciﬁcation
+
+Receiver type
+
+Multi-constellation GNSS standard precision receiver
+
+Accuracy of time pulse signal
+
+RMS
+99%
+
+30ns
+60ns
+
+Frequency of time pulse signal
+
+0.25 Hz to 10 MHz
+(conﬁgurable)
+
+Operational limits1
+
+Dynamics
+
+≤4g
+
+Altitude
+
+80,000 m
+500 m/s
+
+Velocity
+Velocity accuracy2
+
+0.05 m/s
+
+Dynamic heading accuracy
+
+0.3 deg
+
+GNSS
+Acquisition
+
+3
+
+GPS+GLO+GAL+BDS
+
+GPS+GLO+GAL
+
+GPS+GLO
+
+GPS+BDS
+
+GPS+GAL
+
+Cold start
+
+24 s
+
+25 s
+
+26 s
+
+28 s
+
+29 s
+
+Hot start
+
+2s
+
+2s
+
+2s
+
+2s
+
+2s
+
+Aided start
+
+2s
+
+2s
+
+2s
+
+2s
+
+2s
+
+PVT
+
+25 Hz
+
+25 Hz
+
+25 Hz
+
+25 Hz
+
+25 Hz
+
+Tracking and nav.
+
+-167 dBm
+
+-167 dBm
+
+-167 dBm
+
+-166 dBm
+
+-166 dBm
+
+Reacquisition
+
+-160 dBm
+
+-160 dBm
+
+-160 dBm
+
+-160 dBm
+
+-160 dBm
+
+Cold start
+
+-148 dBm
+
+-148 dBm
+
+-148 dBm
+
+-148 dBm
+
+-148 dBm
+
+Hot start
+
+-159 dBm
+
+-159 dBm
+
+-159 dBm
+
+-159 dBm
+
+-159 dBm
+
+4
+
+Nav. update rate
+Sensitivity
+
+5
+
+1
+
+Assuming Airborne 4 g platform
+
+2
+
+50% @ 30 m/s for dynamic operation
+
+3
+4
+
+Commanded starts. All satellites at -130 dBm. GPS always in combination with QZSS and SBAS. Measured at room
+temperature.
+Dependent on the speed and latency of the aiding data connection, commanded starts.
+
+5
+
+Demonstrated with a good external LNA. Measured at room temperature.
+
+UBX-19014285 - R02
+Advance information
+
+1 Functional description
+
+Page 4 of 21
+
+NEO-M9N - Data sheet
+
+GNSS
+Position accuracy
+
+PVT
+
+GPS+GLO+GAL+BDS
+
+GPS+GLO+GAL
+
+GPS+GLO
+
+GPS+BDS
+
+GPS+GAL
+
+2.0 m CEP
+
+2.0 m CEP
+
+2.0 m CEP
+
+2.0 m CEP
+
+2.0 m CEP
+
+Table 1: NEO-M9N typical performance in multi-constellation GNSS modes
+GNSS
+Acquisition
+
+3
+
+GPS
+
+GLONASS
+
+BEIDOU
+
+GALILEO
+
+Cold start
+
+29 s
+
+27 s
+
+32 s
+
+42 s
+
+Hot start
+
+2s
+
+2s
+
+2s
+
+2s
+
+Aided start
+
+2s
+
+2s
+
+2s
+
+2s
+
+PVT
+
+25 Hz
+
+25 Hz
+
+25 Hz
+
+25 Hz
+
+Tracking and nav.
+
+-166 dBm
+
+-164 dBm
+
+-160 dBm
+
+-159 dBm
+
+Reacquisition
+
+-160 dBm
+
+-155 dBm
+
+-157 dBm
+
+-154 dBm
+
+Cold start
+
+-148 dBm
+
+-145 dBm
+
+-145 dBm
+
+-140 dBm
+
+Hot start
+
+-159 dBm
+
+-156 dBm
+
+-159 dBm
+
+-154 dBm
+
+PVT
+
+2.0 m CEP
+
+4.0 m CEP
+
+3.0 m CEP
+
+3.0 m CEP
+
+4
+
+Nav. update rate
+Sensitivity
+
+5
+
+Position accuracy
+
+Table 2: NEO-M9N typical performance in single GNSS modes
+
+1.3 Supported GNSS constellations
+The NEO-M9N is a concurrent GNSS receiver which can receive and track multiple GNSS systems.
+Owing to the multi-band RF front-end architecture all four major GNSS constellations, GPS,
+Galileo, GLONASS and BeiDou can be received concurrently. The NEO-M9N receiver can be
+conﬁgured for concurrent GPS, GLONASS, Galileo and BeiDou plus SBAS and QZSS reception. If
+power consumption is a key factor, then the receiver can be conﬁgured for a sub-set of GNSS
+constellations.
+The NEO-M9N supports the GNSS and their signals as shown in Table 3.
+GPS
+
+GLONASS
+
+Galileo
+
+BeiDou
+
+L1C/A (1575.42 MHz)
+
+L1OF (1602 MHz + k*562.5
+kHz, k = –7,..., 5, 6)
+
+E1-B/C (1575.42 MHz)
+
+B1I (1561.098 MHz)
+
+Table 3: Supported GNSS and signals on NEO-M9N
+
+The following GNSS assistance services can be activated on NEO-M9N:
+AssistNow™ Online
+
+AssistNow™ Oﬄine
+
+AssistNow™ Autonomous
+
+Supported
+
+Supported
+
+Supported
+
+Table 4: Supported Assisted GNSS (A-GNSS) Services
+
+NEO-M9N supports the following augmentation systems:
+SBAS
+
+QZSS
+
+EGNOS, GAGAN, MSAS and WAAS supported
+
+L1s (SAIF) supported Not supported
+
+IMES
+
+Diﬀerential GNSS
+RTCM 3.3
+
+Table 5: Supported Augmentation Systems of NEO-M9N
+
+The augmentation systems SBAS and QZSS can be enabled only if GPS operation is also
+enabled.
+
+1.4 Supported protocols
+The NEO-M9N supports the following protocols:
+Protocol
+
+Type
+
+UBX
+
+Input/output, binary, u-blox proprietary
+
+UBX-19014285 - R02
+Advance information
+
+1 Functional description
+
+Page 5 of 21
+
+NEO-M9N - Data sheet
+
+Protocol
+
+Type
+
+NMEA 4.10
+
+Input/output, ASCII
+
+RTCM 3.3
+
+Input only, binary
+
+Table 6: Supported protocols
+
+For a speciﬁcation of the protocols, see the u-blox NEO-M9N Interface description [2].
+
+1.5 Firmware features
+Feature
+
+Comment
+
+Assisted GNSS
+
+AssistNow Online, AssistNow Oﬄine and AssistNow Autonomous supported
+
+Backup modes
+
+Hardware backup mode, software backup mode
+
+Data batching
+
+Autonomous tracking up to 5 min
+
+Data-logger
+
+Position, velocity, time, and odometer data
+
+Geo-fencing
+
+Up to 4 circular areas
+
+Power save modes
+
+On/oﬀ, cyclic
+
+Odometer
+
+Measure traveled distance with support for diﬀerent user proﬁles
+
+Upgradeable ﬁrmware
+
+Firmware can be upgraded via host upload or updated in the internal ﬂash memory.
+
+Table 7: Firmware features
+Feature
+
+Comment
+
+Anti-jamming
+
+RF interference and jamming detection and reporting; Active GNSS in-band ﬁltering
+
+Anti-spooﬁng
+
+Spooﬁng detection and reporting
+
+Conﬁguration lockdown
+
+Receiver conﬁguration can be locked by command
+
+Message integrity
+
+All messages signed with SHA-256
+
+Secure boot
+
+Only signed FW images executed
+
+Table 8: Security features
+
+UBX-19014285 - R02
+Advance information
+
+1 Functional description
+
+Page 6 of 21
+
+NEO-M9N - Data sheet
+
+2 System description
+2.1 Block diagram
+
+Figure 1: NEO-M9N block diagram
+
+UBX-19014285 - R02
+Advance information
+
+2 System description
+
+Page 7 of 21
+
+NEO-M9N - Data sheet
+
+3 Pin deﬁnition
+3.1 Pin assigment
+The pin assignment of the NEO-M9N module is shown in Figure 2. The deﬁned conﬁguration of the
+PIOs is listed in Table 9.
+For detailed information on pin functions and characteristics, see the u-blox NEO-M9N Integration
+manual [1].
+
+Figure 2: NEO-M9N pin assignment
+Pin No
+
+Name
+
+I/O
+
+Description
+
+1
+
+SAFEBOOT_N
+
+I
+
+SAFEBOOT_N (used for FW updates and reconﬁguration, leave open)
+
+2
+
+D_SEL
+
+I
+
+Interface select (open or VCC = UART + I2C; GND = SPI)
+
+3
+
+TIMEPULSE
+
+O
+
+TIMEPULSE (1 PPS)
+
+4
+
+EXTINT
+
+I
+
+EXTINT (PIO7)
+
+5
+
+USB_DM
+
+I/O
+
+USB Data (DM)
+
+6
+
+USB_DP
+
+I/O
+
+USB Data (DP)
+
+7
+
+VDD_USB
+
+I
+
+USB Supply
+
+8
+
+RESET_N
+
+I
+
+RESET (active low)
+
+9
+
+VCC_RF
+
+O
+
+External LNA or active antenna power
+
+10
+
+GND
+
+I
+
+Ground
+
+UBX-19014285 - R02
+Advance information
+
+3 Pin deﬁnition
+
+Page 8 of 21
+
+NEO-M9N - Data sheet
+
+Pin No
+
+Name
+
+I/O
+
+Description
+
+11
+
+RF_IN
+
+I
+
+GNSS signal input
+
+12
+
+GND
+
+I
+
+Ground
+
+13
+
+GND
+
+I
+
+Ground
+
+14
+
+LNA_EN
+
+O
+
+Antenna/LNA control
+
+15
+
+Reserved
+
+-
+
+Reserved
+
+16
+
+Reserved
+
+-
+
+Reserved
+
+17
+
+Reserved
+
+-
+
+Reserved
+
+18
+
+SDA / SPI CS_N
+
+I/O
+
+I2C data if D_SEL = VCC (or open); SPI chip select if D_SEL = GND
+
+19
+
+SCL / SPI SLK
+
+I/O
+
+I2C clock if D_SEL = VCC (or open); SPI clock if D_SEL = GND
+
+20
+
+TXD1 / SPI MISO
+
+O
+
+UART output if D_SEL = VCC (or open); SPI MISO if D_SEL = GND
+
+21
+
+RXD1 / SPI MOSI
+
+I
+
+UART input if D_SEL = VCC (or open); SPI MOSI if D_SEL = GND
+
+22
+
+V_BCKP
+
+I
+
+Backup voltage supply
+
+23
+
+VCC
+
+I
+
+Supply voltage
+
+24
+
+GND
+
+I
+
+Ground
+
+Table 9: NEO-M9N pin assigment
+
+For detailed information on the pin functions and characteristics see the u-blox NEO-M9N
+Integration manual [1].
+
+UBX-19014285 - R02
+Advance information
+
+3 Pin deﬁnition
+
+Page 9 of 21
+
+NEO-M9N - Data sheet
+
+4 Electrical speciﬁcation
+The limiting values given are in accordance with the Absolute Maximum Rating System
+(IEC 134). Stress above one or more of the limiting values may cause permanent damage
+to the device. These are stress ratings only. Operation of the device at these or at any other
+conditions above those given below is not implied. Exposure to limiting values for extended
+periods may aﬀect device reliability.
+Where application information is given, it is advisory only and does not form part of the
+speciﬁcation.
+For detailed information on the device integration, please see the u-blox NEO-M9N
+Integration manual [1].
+
+4.1 Absolute maximum ratings
+Parameter
+
+Symbol
+
+Power supply voltage
+
+VCC
+
+Backup battery voltage
+
+V_BCKP
+
+Input pin voltage
+
+Vin
+
+VCC_RF output current
+
+ICC_RF
+
+Supply voltage USB
+
+VDD_USB
+
+USB signals
+
+USB_DN,
+USB_DP
+
+Input power at RF_IN
+
+Prﬁn
+
+Storage temperature
+
+Tstg
+
+Condition
+
+Min
+
+Max
+
+Units
+
+-0.5
+
+3.6
+
+V
+
+-0.5
+
+3.6
+
+V
+
+VCC ≤ 3.1 V
+
+-0.5
+
+VCC + 0.5
+
+V
+
+VCC > 3.1 V
+
+-0.5
+
+3.6
+
+V
+
+100
+
+mA
+
+–0.5
+
+3.6
+
+V
+
+-0.5
+
+VDD_USB + V
+0.5
+
+source impedance =
+50 Ω, continuous wave
+-40
+
+0
+
+dBm
+
++85
+
+°C
+
+Table 10: Absolute maximum ratings
+
+The product is not protected against overvoltage or reversed voltages. Voltage spikes
+exceeding the power supply voltage speciﬁcation, given in the table above, must be limited
+to values within the speciﬁed boundaries by using appropriate protection diodes.
+
+4.2 Operating conditions
+All speciﬁcations are at an ambient temperature of 25 °C. Extreme operating temperatures
+can signiﬁcantly impact the speciﬁcation values. Applications operating near the
+temperature limits should be tested to ensure the speciﬁcation.
+Parameter
+
+Symbol
+
+Min
+
+Typical
+
+Max
+
+Units
+
+Power supply voltage
+
+VCC
+
+2.7
+
+3.0
+
+3.6
+
+V
+
+Backup battery voltage
+
+V_BCKP
+
+1.65
+
+3.6
+
+V
+
+Backup battery current
+
+I_BCKP
+
+SW backup current
+
+I_SWBCKP
+
+Input pin voltage range
+
+Vin
+
+Digital IO pin low level input voltage
+
+Vil
+
+Digital IO pin high level input voltage
+
+Vih
+
+36
+
+VCC_RF voltage
+
+UBX-19014285 - R02
+Advance information
+
+VCC_RF
+
+mA
+VCC
+
+V
+
+0.4
+
+V
+
+0.8 * VCC
+
+V
+
+Digital IO pin low level output voltage Vol
+Digital IO pin high level output voltage Voh
+
+µA
+
+0.33
+0
+
+Condition
+
+0.4
+VCC – 0.4
+VCC - 0.1
+
+4 Electrical speciﬁcation
+
+V
+
+Iol = 2 mA
+
+V
+
+Ioh = 2 mA
+
+V
+
+Page 10 of 21
+
+NEO-M9N - Data sheet
+
+Parameter
+
+Symbol
+
+VCC_RF output current
+
+ICC_RF
+
+Receiver chain noise ﬁgure6
+
+NFtot
+
+Operating temperature
+
+Topr
+
+Min
+
+Typical
+
+Max
+
+Units
+
+50
+
+mA
+
+3.5
+-40
+
++25
+
+Condition
+
+dB
+85
+
+°C
+
+Table 11: Operating conditions
+
+Operation beyond the speciﬁed operating conditions can aﬀect device reliability.
+
+4.3 Indicative power requirements
+Table 12 lists examples of the total system supply current including RF and baseband section for
+a possible application.
+Values in Table 12 are provided for customer information only, as an example of typical
+current requirements. Values are characterized on samples with a commanded cold start.
+Actual power requirements can vary depending on FW version used, external circuitry,
+number of SVs tracked, signal strength, type and time of start, duration, and conditions of
+test.
+Symbol
+
+Parameter
+
+Conditions
+
+GPS+GLO+GAL+BDS
+
+GPS+GLO
+
+GPS
+
+Unit
+
+IPEAK
+
+Peak current
+
+Acquisition
+
+100
+
+100
+
+100
+
+mA
+
+IVCC7
+
+VCC current
+
+Acquisition
+
+50
+
+42
+
+37
+
+mA
+
+Tracking
+
+36
+
+31
+
+27
+
+mA
+
+20
+
+20
+
+19
+
+mA
+
+(Continuous mode)
+Tracking
+(Power save mode)
+Table 12: Currents to calculate the indicative power requirements
+
+All values in Table 12 are measured at 25 °C ambient temperature. SBAS and QZSS is activated in
+all measurements.
+
+6
+
+Only valid for the GPS
+
+7
+
+Simulated signal, current measured at 3.0 V
+
+UBX-19014285 - R02
+Advance information
+
+4 Electrical speciﬁcation
+
+Page 11 of 21
+
+NEO-M9N - Data sheet
+
+5 Communications interfaces
+There are several communications interfaces including UART, SPI, I2C8 and USB.
+All the inputs have internal pull-up resistors in normal operation and can be left open if not used.
+All the PIOs are supplied by VCC, therefore all the voltage levels of the PIO pins are related to VCC
+supply voltage.
+
+5.1 UART interface
+There is one UART interface: UART1, which operates up to and including a speed of 921600 baud.
+No hardware ﬂow control is supported.
+UART1 is enabled by default if D_SEL = 1 or unconnected.
+
+Figure 3: NEO-M9N module UART timing speciﬁcations
+Symbol
+
+Parameter
+
+Min
+
+Max
+
+Unit
+
+tECH
+
+High period of external data input
+
+0
+
+0.4
+
+µs
+
+tECL
+
+LOW period of external data input
+
+TBA
+
+TBA
+
+µs
+
+Ru
+
+Baudrate
+
+4800
+
+921600
+
+bd
+
+tCR
+
+Rise time of data
+
+5
+
+ns
+
+tCF
+
+Fall time of data
+
+5
+
+ns
+
+Table 13: NEO-M9N UART timings and speciﬁcations
+
+5.2 SPI interface
+The NEO-M9N has an SPI slave interface that can be selected by setting D_SEL = 0. The SPI pins
+available are: SPI_MISO (TXD), SPI_MOSI (RXD), SPI_CS_N, SPI_CLK. The SPI interface is designed
+to allow communication to a host CPU. The interface can be operated in slave mode only. Note that
+SPI is not available in the default conﬁguration because its pins are shared with the UART and I2C
+interfaces. The maximum transfer rate using SPI is 125 kB/s and the maximum SPI clock frequency
+is 5.5 MHz.
+This section provides SPI timing values for the NEO-M9N slave operation. The following tables
+present timing values under diﬀerent capacitive loading conditions. Default SPI conﬁguration is
+CPOL = 0 and CPHA = 0.
+
+8
+
+I2C is a registered trademark of Philips/NXP
+
+UBX-19014285 - R02
+Advance information
+
+5 Communications
+interfaces
+
+Page 12 of 21
+
+NEO-M9N - Data sheet
+
+Figure 4: NEO-M9N module SPI speciﬁcation mode 1: CPHA=0 SCK = 5.33 MHz
+
+Timings 1 - 12 are not speciﬁed here.
+Timing value at 2 pF load
+
+Min (ns)
+
+Max (ns)
+
+"A" - MISO data valid time (CS)
+
+14
+
+38
+
+"B" - MISO data valid time (SCK) weak driver mode
+
+21
+
+38
+
+"C" - MISO data hold time
+
+114
+
+130
+
+"D" - MISO rise/fall time, weak driver mode
+
+1
+
+4
+
+"E" - MISO data disable lag time
+
+20
+
+32
+
+Timing value at 20 pF load
+
+Min (ns)
+
+Max (ns)
+
+"A" - MISO data valid time (CS)
+
+19
+
+52
+
+"B" - MISO data valid time (SCK) weak driver mode
+
+25
+
+51
+
+"C" - MISO data hold time
+
+117
+
+137
+
+"D" - MISO rise/fall time, weak driver mode
+
+6
+
+16
+
+"E" - MISO data disable lag time
+
+20
+
+32
+
+Timing value at 60 pF load
+
+Min (ns)
+
+Max (ns)
+
+"A" - MISO data valid time (CS)
+
+29
+
+79
+
+"B" - MISO data valid time (SCK) weak driver mode
+
+35
+
+78
+
+"C" - MISO data hold time
+
+122
+
+152
+
+"D" - MISO rise/fall time, weak driver mode
+
+15
+
+41
+
+"E" - MISO data disable lag time
+
+20
+
+32
+
+Table 14: NEO-M9N SPI timings at 2pF load
+
+Table 15: NEO-M9N SPI timings at 20pF load
+
+Table 16: NEO-M9N SPI timings at 60pF load
+
+5.3 Slave I2C interface
+An I2C compliant interface is available for communication with an external host CPU. The interface
+can be operated in slave mode only. It is fully compatible with Fast-Mode of the I2C industry
+standard. Since the maximum SCL clock frequency is 400 kHz, the maximum bit rate is 400 kbit/
+
+UBX-19014285 - R02
+Advance information
+
+5 Communications
+interfaces
+
+Page 13 of 21
+
+NEO-M9N - Data sheet
+
+s. The interface stretches the clock when slowed down while serving interrupts, therefore the real
+bit rates may be slightly lower.
+The I2C interface is only available with the UART default mode. If the SPI interface is
+selected by using D_SEL = 0, the I2C interface is not available.
+
+Figure 5: NEO-M9N module I2C slave speciﬁcation
+Symbol
+
+Parameter
+
+Min (Standard /
+Fast-mode)
+
+Max
+
+Unit
+
+fSCL
+
+SCL clock frequency
+
+0
+
+400
+
+kHz
+
+tHD;STA
+
+Hold time (repeated) START condition
+
+4.0/1
+
+-
+
+µs
+
+tLOW
+
+Low period of the SCL clock
+
+5/2
+
+-
+
+µs
+
+tHIGH
+
+High period of the SCL clock
+
+4.0/1
+
+-
+
+µs
+
+tSU;STA
+
+Set-up time for a repeated START condition
+
+5/1
+
+-
+
+µs
+
+tHD;DAT
+
+Data hold time
+
+0/0
+
+-
+
+µs
+
+tSU;DAT
+
+Data set-up time
+
+250/100
+
+tr
+
+Rise time of both SDA and SCL signals
+
+-
+
+1000/300 (for C 400pF)
+
+ns
+
+tf
+
+Fall time of both SDA and SCL signals
+
+-
+
+300/300 (for C 400pF)
+
+ns
+
+tSU;STO
+
+Set-up time for STOP condition
+
+4.0/1
+
+-
+
+µs
+
+tBUF
+
+Bus free time between a STOP and START
+condition
+
+5/2
+
+-
+
+µs
+
+tVD;DAT
+
+Data valid time
+
+-
+
+4/1
+
+µs
+
+tVD;ACK
+
+Data valid acknowledge time
+
+-
+
+4/1
+
+µs
+
+VnL
+
+Noise margin at the low level
+
+0.1 VCC
+
+-
+
+V
+
+VnH
+
+Noise margin at the high level
+
+0.2 VCC
+
+-
+
+V
+
+ns
+
+Table 17: NEO-M9N I2C Slave timings and speciﬁcations
+
+UBX-19014285 - R02
+Advance information
+
+5 Communications
+interfaces
+
+Page 14 of 21
+
+NEO-M9N - Data sheet
+
+5.4 USB interface
+A USB interface, which is compatible to USB version 2.0 FS (Full Speed, 12 Mbit/s), can be used for
+communication to a host. The VDD_USB pin supplies the USB interface.
+
+5.5 Default interface settings
+Interface
+
+Settings
+
+UART
+
+38400 Baud, 8 bits, no parity bit, 1 stop bit.
+Output messages: NMEA GGA, GLL, GSA, GSV, RMC, VTG, TXT (no UBX).
+Input protocols: UBX, NMEA and RTCM 3.3.
+
+USB
+
+Output messages activated as in UART. Input protocols available as in UART.
+
+I2C
+
+Output messages activated as in UART. Input protocols available as in UART.
+
+SPI
+
+Output messages activated as in UART. Input protocols available as in UART.
+
+Table 18: Default interface settings
+
+Refer to the u-blox NEO-M9N Interface description [2] for information about further
+settings.
+By default the NEO-M9N outputs NMEA 4.10 messages that include satellite data for all GNSS
+bands being received. This results in a higher-than-before NMEA load output for each navigation
+period. Make sure the UART baud rate being used is suﬃcient for the selected navigation rate and
+the number of GNSS signals being received.
+
+UBX-19014285 - R02
+Advance information
+
+5 Communications
+interfaces
+
+Page 15 of 21
+
+NEO-M9N - Data sheet
+
+6 Mechanical speciﬁcation
+
+Figure 6: NEO-M9N mechanical drawing
+
+UBX-19014285 - R02
+Advance information
+
+6 Mechanical speciﬁcation
+
+Page 16 of 21
+
+NEO-M9N - Data sheet
+
+7 Reliability tests and approvals
+All u-blox modules are based on AEC-Q100 qualiﬁed GNSS chips.
+Tests for product family qualiﬁcations are according to ISO 16750 "Road vehicles – environmental
+conditions and testing for electrical and electronic equipment”, and appropriate standards.
+
+7.1 Approvals
+The NEO-M9N is designed to in compliance with the essential requirements and other relevant
+provisions of Radio Equipment Directive (RED) 2014/53/EU.
+The NEO-M9N complies with the Directive 2011/65/EU (EU RoHS 2) and its amendment Directive
+(EU) 2015/863 (EU RoHS 3).
+Declaration of Conformity (DoC) is available on the u-blox website.
+
+UBX-19014285 - R02
+Advance information
+
+7 Reliability tests
+and approvals
+
+Page 17 of 21
+
+NEO-M9N - Data sheet
+
+8 Labeling and ordering information
+8.1 Product labeling
+The labeling of the NEO-M9N modules provides product information and revision information. For
+more information contact u-blox sales.
+
+8.2 Explanation of product codes
+Three diﬀerent product code formats are used. The Product name is used in documentation such
+as this data sheet and identiﬁes all u-blox products, independent of packaging and quality grade.
+The Ordering code includes options and quality, while the Type number includes the hardware and
+ﬁrmware versions. Table 19 below details these three diﬀerent formats.
+Format
+
+Structure
+
+Code for this product
+
+Product name
+
+PPP-TGV
+
+NEO-M9N
+
+Ordering code
+
+PPP-TGV-NNQ
+
+NEO-M9N-00B
+
+Type number
+
+PPP-TGV-NNQ-XX
+
+NEO-M9N-00B-00
+
+Table 19: Product code formats
+
+The parts of the product code are explained in Table 20.
+Code
+
+Meaning
+
+Example
+
+PPP
+
+Product family
+
+NEO
+
+TG
+
+Platform
+
+M9 = u-blox M9
+
+V
+
+Variant
+
+N = Standard precision with SAW and LNA
+
+NNQ
+
+Option / Quality grade
+
+NN: Option [00...99]
+Q: Grade, A = Automotive, B = Professional
+
+XX
+
+Product detail
+
+Describes hardware and ﬁrmware versions
+
+Table 20: Part identiﬁcation code
+
+8.3 Ordering codes
+Ordering no.
+
+Product
+
+NEO-M9N-00B
+
+u-blox NEO-M9N module, professional grade
+
+Remark
+
+Table 21: Product ordering codes
+
+Product changes aﬀecting form, ﬁt or function are documented by u-blox. For a list of
+Product Change Notiﬁcations (PCNs) see our website at: https://www.u-blox.com/en/
+product-resources.
+
+UBX-19014285 - R02
+Advance information
+
+8 Labeling and
+ordering information
+
+Page 18 of 21
+
+NEO-M9N - Data sheet
+
+Related documents
+[1]
+[2]
+
+NEO-M9N Integration manual, doc. no. UBX-19014286
+NEO-M9N Interface description, doc. no. UBX-19035940
+For regular updates to u-blox documentation and to receive product change notiﬁcations
+please register on our homepage (http://www.u-blox.com).
+
+UBX-19014285 - R02
+Advance information
+
+Related documents
+
+Page 19 of 21
+
+NEO-M9N - Data sheet
+
+Revision history
+Revision
+
+Date
+
+Name
+
+Status / comments
+
+R01
+
+15-Aug-2019
+
+jesk
+
+Objective speciﬁcation
+
+R02
+
+11-Nov-2019
+
+jesk
+
+Advance information
+
+UBX-19014285 - R02
+Advance information
+
+Revision history
+
+Page 20 of 21
+
+NEO-M9N - Data sheet
+
+Contact
+For complete contact information visit us at www.u-blox.com.
+u-blox Oﬃces
+North, Central and South America
+
+Headquarters
+
+Asia, Australia, Paciﬁc
+
+Europe, Middle East, Africa
+u-blox America, Inc.
+Phone:
++1 703 483 3180
+E-mail:
+info_us@u-blox.com
+
+u-blox AG
+Phone:
++41 44 722 74 44
+E-mail:
+info@u-blox.com
+Support: support@u-blox.com
+
+u-blox Singapore Pte. Ltd.
+Phone:
++65 6734 3811
+E-mail:
+info_ap@u-blox.com
+Support: support_ap@u-blox.com
+
+Regional Oﬃce West Coast
+Phone:
++1 408 573 3640
+E-mail:
+info_us@u-blox.com
+
+Regional Oﬃce Australia
+Phone:
++61 2 8448 2016
+E-mail:
+info_anz@u-blox.com
+Support: support_ap@u-blox.com
+
+Technical Support
+Phone:
++1 703 483 3185
+E-mail:
+support_us@u-blox.com
+
+Regional Oﬃce China (Beijing)
+Phone:
++86 10 68 133 545
+E-mail:
+info_cn@u-blox.com
+Support: support_cn@u-blox.com
+Regional Oﬃce China (Chongqing)
+Phone:
++86 23 6815 1588
+E-mail:
+info_cn@u-blox.com
+Support: support_cn@u-blox.com
+Regional Oﬃce China (Shanghai)
+Phone:
++86 21 6090 4832
+E-mail:
+info_cn@u-blox.com
+Support: support_cn@u-blox.com
+Regional Oﬃce China (Shenzhen)
+Phone:
++86 755 8627 1083
+E-mail:
+info_cn@u-blox.com
+Support: support_cn@u-blox.com
+Regional Oﬃce India
+Phone:
++91 80 4050 9200
+E-mail:
+info_in@u-blox.com
+Support: support_in@u-blox.com
+Regional Oﬃce Japan (Osaka)
+Phone:
++81 6 6941 3660
+E-mail:
+info_jp@u-blox.com
+Support: support_jp@u-blox.com
+Regional Oﬃce Japan (Tokyo)
+Phone:
++81 3 5775 3850
+E-mail:
+info_jp@u-blox.com
+Support: support_jp@u-blox.com
+Regional Oﬃce Korea
+Phone:
++82 2 542 0861
+E-mail:
+info_kr@u-blox.com
+Support: support_kr@u-blox.com
+Regional Oﬃce Taiwan
+Phone:
++886 2 2657 1090
+E-mail:
+info_tw@u-blox.com
+Support: support_tw@u-blox.com
+
+UBX-19014285 - R02
+Advance information
+
+Page 21 of 21
+
+

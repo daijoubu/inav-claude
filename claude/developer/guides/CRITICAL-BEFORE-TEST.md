@@ -83,6 +83,7 @@ claude/developer/workspace/[task-name]/
 └── results.log
 ```
 
+Where a test file may be useful in the future for other issues, save it in your library of test tools
 ---
 
 ## Agent Usage

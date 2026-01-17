@@ -12,6 +12,20 @@ triggers:
 
 Use this skill when beginning any assigned task that involves modifying code.
 
+## 🚨 Read Critical Guidelines First
+
+**Before starting, read:** `claude/developer/guides/CRITICAL-BEFORE-CODE.md`
+
+This checklist covers:
+- Lock file verification and acquisition
+- Branch creation best practices
+- Agent usage requirements (never use direct commands)
+- Using inav-architecture before searching
+
+**Read it now using the Read tool, then proceed with the steps below.**
+
+---
+
 ## Pre-Work Checklist
 
 Before writing any code, complete ALL of these steps in order:

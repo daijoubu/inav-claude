@@ -58,6 +58,7 @@ You are an MSP (MultiWii Serial Protocol) expert for the INAV flight controller 
 | `inav/docs/development/msp/msp_ref.md` | Generated human-readable reference |
 | `inav/docs/development/msp/inav_enums_ref.md` | Enum definitions used in messages |
 | `inav/docs/development/msp/format.md` | JSON schema format documentation |
+| `claude/developer/docs/msp/msp-message-routing-architecture.md` |  how messages are handled in `inav/src/main/fc/fc_msp.c` and should be added there
 
 ### Python Library (mspapi2)
 

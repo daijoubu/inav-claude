@@ -24,6 +24,7 @@ One paragraph describing the agent's expertise and role.
 1. **Primary task** - Main function
 2. **Secondary task** - Supporting function
 3. **Reporting** - What to always include in responses
+4. Maintain an internal library of documents relevant to the agent's Main function
 
 ---
 

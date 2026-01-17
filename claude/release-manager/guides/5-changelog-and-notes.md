@@ -240,6 +240,75 @@ For RC releases, follow the **cumulative** pattern (see [Phase 1: Workflow and P
 
 ---
 
+## Final Release Notes Pattern
+
+**For final/stable releases** (e.g., 9.0.0, not RC), use a **summary** pattern instead of listing each individual RC:
+
+**Key points:**
+- List changes from last RC to final (e.g., "Changes in 9.0.0 since RC4")
+- Provide a high-level summary of ALL changes since the last stable release
+- Do NOT include individual RC sections (RC4, RC3, RC2, RC1)
+- Users care about what's new since the last stable, not the RC progression
+
+**Example for 9.0.0 final:**
+
+```markdown
+# INAV 9.0.0
+
+This is the stable 9.0.0 release. For complete details, see the [9.0.0 Release Notes Wiki](https://github.com/iNavFlight/inav/wiki/9.0.0-Release-Notes).
+
+---
+
+## Changes in 9.0.0 (since RC4)
+
+### New Features
+- Feature added after RC4
+
+### Bug Fixes
+- Fix added after RC4
+
+---
+
+## ⚠️ Important Upgrade Information
+
+### Flashing Notes
+- **Full chip erase REQUIRED** when upgrading from 8.x
+- Back up your configuration with `diff all` before flashing
+
+### Incompatible Settings Changes
+[List any renamed/removed settings]
+
+---
+
+## Highlights of INAV 9.0
+
+- **JavaScript Logic Conditions** - Full programming capability
+- **Enhanced Navigation** - Improved altitude control
+- **OSD Customization** - New elements and layouts
+- **Expanded Hardware Support** - 32+ new targets
+[Summary of key features across ALL RCs since 8.0.1]
+
+---
+
+**Full Changelog:** https://github.com/iNavFlight/inav/compare/8.0.1...9.0.0
+```
+
+**Why this format?**
+- Cleaner and more user-friendly
+- End users don't need the RC-by-RC progression
+- Focuses on what matters: changes since last stable release
+- Highlights section provides quick overview
+
+**What NOT to include:**
+- ❌ "Changes in RC4 (from RC3)"
+- ❌ "Changes in RC3 (from RC2)"
+- ❌ "Changes in RC2 (from RC1)"
+- ❌ "RC1 Key Features"
+
+These sections were useful during the RC testing phase, but for the final release, users just want a summary of what's new.
+
+---
+
 ## Where to Save Release Notes
 
 Create separate files for firmware and configurator:

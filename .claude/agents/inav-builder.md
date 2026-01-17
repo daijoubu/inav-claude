@@ -51,6 +51,8 @@ claude/developer/scripts/build/build-and-flash.sh <TARGET>
 ```
 - Builds firmware, converts to .bin, and flashes via DFU
 - Example: `claude/developer/scripts/build/build-and-flash.sh JHEMCUF435`
+- **⚠️ WARNING:** This script does NOT preserve FC settings despite the flag name
+- **RECOMMENDED:** Use the **fc-flasher** agent instead for settings-preserving flashes
 
 ### SITL Start/Run Scripts
 ```bash
@@ -74,9 +76,16 @@ claude/developer/scripts/testing/build_run_sitl.sh
 When directed to use skills, reference the skill documentation:
 - **build-sitl**: `.claude/skills/build-sitl/SKILL.md` - SITL build instructions
 - **build-inav-target**: `.claude/skills/build-inav-target/SKILL.md` - Hardware target builds
-- **flash-firmware-dfu**: `.claude/skills/flash-firmware-dfu/SKILL.md` - Flash firmware after building
+- **flash-firmware-dfu**: `.claude/skills/flash-firmware-dfu/SKILL.md` - Flash firmware documentation (use **fc-flasher** agent for actual flashing)
 - **sitl-arm**: `.claude/skills/sitl-arm/SKILL.md` - Arm SITL via MSP for testing
 - **find-symbol**: `.claude/skills/find-symbol/SKILL.md` - Find function definitions in code
+
+## Related Agents
+
+- **fc-flasher**: Flash compiled firmware to flight controllers with settings preservation (use AFTER hardware builds)
+- **test-engineer**: Run tests after building firmware
+- **sitl-operator**: Manage SITL simulator lifecycle
+- **target-developer**: Diagnose and fix target configuration issues (flash overflow, DMA conflicts, pin mapping) BEFORE building
 
 ## Build System Knowledge
 
@@ -96,12 +105,24 @@ cd inav
 mkdir -p build
 cd build
 cmake ..
+# Note: Builds with debug symbols by default
 ```
 
 **Build a specific hardware target:**
 ```bash
 cd inav/build
 make -j4 <TARGET_NAME>
+```
+
+**For production/release builds or building many targets:**
+```bash
+cd inav
+mkdir -p build-release
+cd build-release
+cmake -DCMAKE_BUILD_TYPE=Release ..
+# Saves ~100GB disk space when building all targets
+make -j4 <TARGET_NAME>
+# Or: make release  (builds all official release targets)
 ```
 
 **Build SITL (use script for best results):**
@@ -158,6 +179,7 @@ make help | grep -E '^[A-Z]'
 4. **Report results**:
    - On success: Provide the full path to the compiled firmware file
    - On failure: Report the specific error messages and line numbers
+   - You do not need to tell callers about the --no-warn-rwx-segments change
 
 ## Error Handling
 
@@ -171,9 +193,10 @@ Common build issues:
 - **Missing dependencies**: Suggest installing required packages (gcc, cmake, ruby, make)
 - **Syntax errors**: Report exact file and line
 - **Linker errors**: Report undefined symbols and their context
-- **Out of flash/RAM**: Report memory usage and overflow amount
+- **Out of flash/RAM**: Report memory usage and overflow amount - suggest using **target-developer** agent to analyze target configuration and optimize flash usage
 - **Linker --no-warn-rwx-segments error**: Use build_sitl.sh which handles this automatically, or older ld versions don't support this flag
 - **CMake cache conflicts**: Remove CMakeCache.txt when switching between SITL and hardware builds
+- **Target configuration problems** (DMA conflicts, gyro detection, pin mapping): Hand off to **target-developer** agent for diagnosis
 
 ## Response Format
 
@@ -183,10 +206,25 @@ Always include in your response:
 3. **For successful builds**:
    - Full path to compiled binary
    - Binary size (if available)
+   - **For hardware targets:** Proactively suggest using **fc-flasher** agent to flash with settings preservation
 4. **For failed builds**:
    - Error summary
    - Relevant error output
    - Affected files and line numbers
+
+**Example success response for hardware target:**
+```
+Build completed successfully!
+
+- **Target**: MATEKF405
+- **Binary**: inav/build/inav_9.0.0_MATEKF405.hex (423 KB)
+- **Status**: SUCCESS
+
+Ready to flash? I can hand off to the **fc-flasher** agent which will preserve your FC settings.
+```
+
+Do not include:
+ Detail about --no-warn-rwx-segments 
 
 ## Important Notes
 
@@ -203,6 +241,7 @@ Always include in your response:
 
 Internal documentation relevant to building:
 
+- `claude/developer/docs/build-system-reference.md` - **Complete build system guide** (CMAKE_BUILD_TYPE, compiler flags, output files, debug symbols)
 - `claude/developer/scripts/testing/inav/docs/BUILDING_SITL.md` - SITL build details
 - `claude/developer/docs/debugging/gcc-preprocessing-techniques.md` - Debug build issues
 - `claude/developer/README.md` - Section "Building the Firmware" for overview

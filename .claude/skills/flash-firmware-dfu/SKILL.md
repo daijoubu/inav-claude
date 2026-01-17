@@ -13,7 +13,30 @@ triggers:
 
 # Flashing INAV Firmware via DFU
 
-Flash compiled firmware to ARM flight controllers using DFU (Device Firmware Update).
+## IMPORTANT: Use the fc-flasher Agent
+
+**When this skill is invoked, you MUST immediately use the Task tool with `subagent_type=fc-flasher`.**
+
+The `fc-flasher` agent handles:
+- Automatic settings backup and restore
+- MSP reboot to DFU mode
+- Hex to bin conversion
+- DFU flashing
+- Verification
+
+**Example:**
+```
+User: "Flash inav_9.0.0_MATEKF405.hex"
+Assistant: [Immediately calls Task tool with subagent_type=fc-flasher and the hex file path]
+```
+
+**Do NOT use manual DFU steps unless the fc-flasher agent fails or you're troubleshooting.**
+
+---
+
+# Manual DFU Flashing (Troubleshooting Only)
+
+The information below is for troubleshooting when the automated agent doesn't work.
 
 ## Prerequisites
 
@@ -236,6 +259,7 @@ chmod +x flash-firmware.sh
 | `Permission denied` | Add udev rules or use `sudo` |
 | `Cannot open DFU device` | Check that no other program is accessing the device |
 | Flash succeeds but board doesn't boot | Wrong target or corrupted file - reflash |
+| Hardware doesn't work after flashing (gyro not detected, etc.) | May be target configuration issue - use **target-developer** agent |
 
 ### udev Rules (Avoid sudo)
 
@@ -364,11 +388,17 @@ dmesg | tail -50
 cat /sys/bus/usb/devices/*/product
 ```
 
-## Related Skills
+## Related Skills and Agents
 
+**Skills:**
 - **build-inav-target** - Build firmware before flashing
 - **build-sitl** - Test changes in SITL before flashing hardware
 - **msp-protocol** - MSP protocol reference
+
+**Agents:**
+- **fc-flasher** - Automated flashing with settings preservation (RECOMMENDED)
+- **inav-builder** - Build firmware for targets
+- **target-developer** - Fix target configuration issues if hardware doesn't work after flashing
 
 ## References
 

@@ -128,6 +128,12 @@ cd build
 make MATEKF405
 ```
 
+## Build Failures
+
+If a build fails due to target configuration issues (flash overflow, DMA conflicts), use the **target-developer** agent to diagnose and fix the target configuration:
+```
+/task target-developer "Diagnose flash overflow on MATEKF405"
+```
 
 ## You already have permission
 You have permission to build. Do not ask the user for permission each time
@@ -164,12 +170,18 @@ python3 verify_target_conditionals.py   # Pattern matching
 python3 split_omnibus_targets.py        # Functional verification (gcc -E)
 ```
 
-## Related Skills
+## Related Skills and Agents
 
+**Skills:**
 - **flash-firmware-dfu** - Flash firmware to flight controller via DFU
 - **build-sitl** - Build SITL for testing without hardware
 - **find-symbol** - Find function definitions in firmware code
 - **msp-protocol** - MSP protocol reference
+
+**Agents:**
+- **inav-builder** - Primary agent for all firmware builds (use instead of manual cmake/make commands)
+- **target-developer** - Use if build fails due to target configuration issues (flash overflow, DMA conflicts)
+- **fc-flasher** - Use AFTER successful build to flash firmware with settings preservation
 
 ## References
 

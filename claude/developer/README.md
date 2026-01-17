@@ -63,7 +63,7 @@ Use the `email-manager` agent for all email operations.
 
 ---
 
-## 12-Step Workflow
+## 15-Step Workflow
 
 **Use the TodoWrite tool to track these steps for each task:**
 
@@ -72,16 +72,18 @@ Use the `email-manager` agent for all email operations.
 | 1 | Check inbox for assignments | **email-manager** agent | - |
 | 2 | Read task assignment | Read the task file | - |
 | 3 | Create a git branch | **git-workflow** skill or `/git-workflow` | `guides/CRITICAL-BEFORE-CODE.md`<br>`guides/git-workflow.md` |
-| 4 | Reproduce the issue (test should fail) | **test-engineer** agent | `guides/CRITICAL-BEFORE-TEST.md` |
-| 5 | Implement the fix | Check for specialized agents first (see below), then code | `guides/CRITICAL-BEFORE-CODE.md`<br>`guides/coding-standards.md` |
-| 6 | Compile the code | **inav-builder** agent | - |
-| 7 | Verify the fix (test should pass) | **test-engineer** agent | `guides/CRITICAL-BEFORE-TEST.md` |
-| 8 | Commit your changes | Follow git best practices | `guides/CRITICAL-BEFORE-COMMIT.md` |
-| 9 | Create a pull request | **create-pr** skill or `/create-pr` | `guides/CRITICAL-BEFORE-PR.md` |
-| 10 | Check PR status and bot suggestions | **check-pr-bots** agent or **check-builds** skill | - |
-| 11 | Create completion report | **email-manager** agent | - |
-| 12 | Notify manager | **email-manager** agent | - |
-| 13 | Archive assignment | **email-manager** agent | - |
+| 4 | Draft user documentation (if needed) | Write draft for new features/behavior changes | `guides/CRITICAL-BEFORE-CODE.md` step 4 |
+| 5 | Reproduce the issue (test should fail) | **test-engineer** agent | `guides/CRITICAL-BEFORE-TEST.md` |
+| 6 | Implement the fix | Check for specialized agents first (see below), then code | `guides/CRITICAL-BEFORE-CODE.md`<br>`guides/coding-standards.md` |
+| 7 | Compile the code | **inav-builder** agent | - |
+| 8 | Verify the fix (test should pass) | **test-engineer** agent | `guides/CRITICAL-BEFORE-TEST.md` |
+| 9 | Finalize user documentation (if drafted) | Update draft, add to `inav/docs/` or `inavwiki/` | `guides/CRITICAL-BEFORE-PR.md` |
+| 10 | Commit your changes | Follow git best practices | `guides/CRITICAL-BEFORE-COMMIT.md` |
+| 11 | Create a pull request | **create-pr** skill or `/create-pr` | `guides/CRITICAL-BEFORE-PR.md` |
+| 12 | Check PR status and bot suggestions | **check-pr-bots** agent or **check-builds** skill | - |
+| 13 | Create completion report | **email-manager** agent | - |
+| 14 | Notify manager | **email-manager** agent | - |
+| 15 | Archive assignment | **email-manager** agent | - |
 
 **Key principle:** Before fixing a bug, have the `test-engineer` agent write a test that reproduces it. This ensures you understand the problem and can verify when it's fixed.
 

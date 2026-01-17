@@ -152,6 +152,9 @@ fcflash rescue /dev/ttyACM0 inav_8.0.0_MATEKF405SE.hex
 # Full erase before flash
 fcflash erase inav_8.0.0_MATEKF405SE.hex
 
+# Flash WITHOUT Erasing (normally preferred, do this by default)
+fcflash inav_8.0.0_MATEKF405SE.hex
+
 # Specific baud rate (USB serial mode)
 fcflash 921600 /dev/ttyUSB0 inav_8.0.0_MATEKF405SE.hex
 ```
