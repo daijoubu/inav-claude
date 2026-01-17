@@ -48,6 +48,27 @@ This directory contains organizational structures, communication channels, and d
 
 ---
 
+## 📊 Context Engineering Presentation
+
+**Want to learn how this system works?** See [`claude/presentation/presentation-slides.md`](presentation/presentation-slides.md)
+
+A 12-15 minute technical presentation explaining the context engineering techniques that make Claude Code consistently follow best practices:
+
+- **5 Core Techniques:** Role separation, JIT documentation, specialized agents, reusable skills, enforcement hooks
+- **Real Results:** 78 projects completed in 2 months with consistent workflow adherence
+- **Context Efficiency:** ~1,500 lines loaded per task vs ~10-15k without system
+- **Universal Workflow:** 12-step development process adaptable to any software project
+
+**Files:**
+- **Slides:** `claude/presentation/presentation-slides.md` (Marp format, dark theme)
+- **Export:** See `claude/presentation/EXPORT-INSTRUCTIONS.md` for HTML/PDF/PPTX
+- **Cheat Sheet:** `claude/presentation/PRESENTATION-CHEAT-SHEET.md`
+- **All materials:** `claude/presentation/` directory
+
+**Key Insight:** Context engineering turns Claude from a smart assistant into a reliable, professional development team member with consistent process adherence.
+
+---
+
 ## Directory Structure
 
 ```

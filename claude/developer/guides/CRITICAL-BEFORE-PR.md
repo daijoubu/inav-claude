@@ -74,6 +74,25 @@ Prompt: "Review changes in [files] - [brief description]"
 
 ---
 
+## 🔍 Finalize End-User Documentation
+
+**If you drafted user documentation before coding (see CRITICAL-BEFORE-CODE.md step 4):**
+
+1. **Update the draft** in `claude/developer/workspace/[task-name]/draft-user-docs.md`
+   - Verify it matches the actual implementation
+   - Update examples and configuration steps if they changed
+   - Ensure CLI/settings changes are accurate
+
+2. **Add documentation to the codebase:**
+   - Technical docs → `inav/docs/` (committed with PR)
+   - End-user guides → `inavwiki/` (separate PR to wiki repo if needed)
+
+3. **Mention in PR description:**
+   - List which documentation files were added/updated
+   - Or note "Documentation not needed (bug fix/target/refactor)"
+
+---
+
 ## Creating the Pull Request
 
 ### 1. Review Changes
@@ -82,6 +101,7 @@ Determine your base branch:
 - **INAV backward-compatible:** `maintenance-9.x`
 - **INAV breaking changes:** `maintenance-10.x`
 - **PrivacyLRS:** `secure_01`
+- **Never PR to master**
 
 Then review:
 ```bash
@@ -108,6 +128,7 @@ Use `/create-pr` skill or:
 ```bash
 gh pr create --title "Title" --body "Description"
 ```
+IMPORTANT **Never open a pull request to the master branch**
 
 **PR Description Requirements:**
 
@@ -152,25 +173,6 @@ Quick summary:
 1. Wait 3 minutes for bots to analyze
 2. Use **check-pr-bots** agent or **/check-builds** skill
 3. Review and address bot suggestions
-
----
-
-## Quick Checklist
-
-- [ ] Code compiles successfully
-- [ ] Code actually runs and works as expected
-- [ ] Edge cases tested
-- [ ] No regressions introduced
-- [ ] **inav-code-review** agent run and issues addressed
-- [ ] All changes committed (see `CRITICAL-BEFORE-COMMIT.md`)
-- [ ] Reviewed changes with `git diff <base-branch>...HEAD`
-- [ ] Pushed to remote
-- [ ] PR created with proper description
-- [ ] After PR: bot checks reviewed (step 10)
-
----
-
-**All items checked? Proceed with PR creation.**
 
 ---
 

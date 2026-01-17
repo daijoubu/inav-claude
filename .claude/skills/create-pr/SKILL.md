@@ -12,6 +12,21 @@ triggers:
 
 Complete workflow for creating pull requests for PrivacyLRS and INAV projects.
 
+## 🚨 Read PR Guidelines First
+
+**Before creating any pull request, read:** `claude/developer/guides/CRITICAL-BEFORE-PR.md`
+
+This checklist covers:
+- 🚨 Testing is MANDATORY (never create PR without testing)
+- Required testing steps (compile, run, test features, edge cases, regressions)
+- PR creation checklist
+- Wait 3 minutes and check for bot suggestions
+- PR description requirements
+
+**Read it now using the Read tool.**
+
+---
+
 ## Important: Repository-Specific PR Targets
 
 ### PrivacyLRS
@@ -305,40 +320,6 @@ Related to #456
 
 ## Common Workflow Mistakes to Avoid
 
-### ❌ Working Directly on Base Branch
-**WRONG:**
-```bash
-git checkout secure_01
-git cherry-pick abc123
-git push origin secure_01
-```
-
-**RIGHT:**
-```bash
-git checkout secure_01
-git checkout -b my-feature-branch
-git cherry-pick abc123
-git push -u origin my-feature-branch
-gh pr create --repo sensei-hacker/PrivacyLRS --base secure_01
-```
-
-**Why:** Working directly on the base branch bypasses the PR review process and can cause issues with the repository state.
-
-### ❌ Using Slashes in Branch Names (PrivacyLRS)
-**WRONG:**
-```bash
-git checkout -b security/encryption-tests
-git checkout -b feature/new-protocol
-```
-
-**RIGHT:**
-```bash
-git checkout -b encryption-tests
-git checkout -b new-protocol
-```
-
-**Why:** All repos uses flat branch naming without directory-style slashes.
-
 ### ❌ Forgetting to Specify Base Branch
 **WRONG:**
 ```bash
@@ -447,6 +428,9 @@ git push
 ```bash
 gh pr edit <PR_NUMBER> --body "New description"
 ```
+
+### "Network issues"
+You arer running the sandbox, remember?
 
 ---
 

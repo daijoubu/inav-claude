@@ -52,6 +52,29 @@ When invoked, you need:
 
 Copy the template and customize it for your specific agent. Create agents at `.claude/agents/<agent-name>.md`.
 
+**CRITICAL: YAML Front Matter Format**
+
+All agents MUST start with valid YAML front matter enclosed by `---` delimiters:
+
+```markdown
+---
+name: agent-name
+description: "One-sentence purpose. Use PROACTIVELY when [trigger]. Returns [output type]."
+model: haiku|sonnet|opus
+tools: ["Tool1", "Tool2"]
+skills: ["skill-name"]  # Only if needed (optional)
+color: blue  # Optional visual identifier
+---
+
+# Agent content starts here...
+```
+
+**Common mistakes to avoid:**
+- ❌ Missing opening `---`
+- ❌ Missing closing `---`
+- ❌ Starting with `# Agent: agent-name` instead of YAML
+- ❌ Not quoting the description field
+
 ---
 
 ## Creation Workflow
@@ -195,6 +218,18 @@ When you create an agent, respond with:
 - `.claude/skills/find-symbol/SKILL.md` - Can be used alongside for source lookup
 - `inav/src/main/fc/settings.yaml` - Primary data source (3000+ lines)
 ```
+
+Note each agent should have only ONE file in .claude/agents/. You can do this:
+```
+.claude/agents/target-developer-CREATION-SUMMARY.md
+.claude/agents/target-developer.md
+.claude/agents/target-developer-README-update.md
+```
+
+That's three different agents.
+Working files can be placed in the existing directory claude/developer/workspace/
+
+Also note agents are NOT created in inav/.claude/ , or inav-configurator/.claude/ . Do not create a new agents/ directory in a a new place. Use the existing .claude/agents/ directory.
 
 ---
 

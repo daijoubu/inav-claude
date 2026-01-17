@@ -1,16 +1,22 @@
 # Active Projects Index
 
-This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER).
+This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKED).
 
-**Last Updated:** 2026-01-09
-**Active:** 15 | **Backburner:** 5
+**Last Updated:** 2026-01-16
+**Active:** 12 | **Backburner:** 5 | **Blocked:** 2
 
 > **Completed projects:** See [completed/INDEX.md](completed/INDEX.md)
+> **Blocked projects:** See `blocked/` directory
 >
 > **When completing a project:**
 > 1. Move directory from `active/` to `completed/`
 > 2. Remove entry from this file
 > 3. Add entry to `completed/INDEX.md`
+>
+> **When blocking a project:**
+> 1. Move directory from `active/` to `blocked/`
+> 2. Update entry in this file with 🚫 BLOCKED status
+> 3. Note what is blocking progress
 
 ---
 
@@ -20,7 +26,8 @@ This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER).
 |--------|-------------|
 | 📋 **TODO** | Project defined but work not started |
 | 🚧 **IN PROGRESS** | Actively being worked on |
-| ⏸️ **BACKBURNER** | Paused, will resume later |
+| 🚫 **BLOCKED** | Waiting on external dependency (user reproduction, hardware, etc.) |
+| ⏸️ **BACKBURNER** | Paused, will resume later (internal decision) |
 | ❌ **CANCELLED** | Abandoned, not pursuing |
 
 
@@ -33,17 +40,57 @@ This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER).
 
 ## Active Projects
 
-### 📋 esc-passthrough-bluejay-am32
+### 📋 add-ray-morris-to-authors
 
-**Status:** TODO | **Type:** Bug Fix / Feature Parity | **Priority:** HIGH
+**Status:** TODO | **Type:** Documentation | **Priority:** LOW
+**Created:** 2026-01-15 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
+
+Add "Ray Morris (Sensei)" to the inav/AUTHORS file to recognize contributions.
+
+**Directory:** `active/add-ray-morris-to-authors/`
+**Assignment:** `manager/email/sent/2026-01-15-1030-task-add-ray-morris-to-authors.md`
+**Repository:** inav (firmware)
+
+---
+
+### 📋 fix-aikonf7-flash-size
+
+**Status:** TODO | **Type:** Bug Fix / Target Configuration | **Priority:** HIGH
+**Created:** 2026-01-12 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
+
+AIKONF7 target firmware exceeds flash capacity while other F722 targets work fine. Investigate target configuration differences and fix by adjusting features or build settings.
+
+**Directory:** `active/fix-aikonf7-flash-size/`
+**Assignment:** `manager/email/sent/2026-01-12-1525-task-fix-aikonf7-flash-size.md`
+**Note:** Build directory in use - don't modify until ready to test fix
+
+---
+
+### 📋 resolve-vtx-powerlevels-conflict
+
+**Status:** TODO | **Type:** Code Review / Technical Analysis | **Priority:** MEDIUM-HIGH
+**Created:** 2026-01-15 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
+
+Analyze merge conflict in bkleiner's PR #2202 (VTX power level from FC) and propose elegant solution to handle MSP VTX power level 0 without over-complicating the code.
+
+**Directory:** `active/resolve-vtx-powerlevels-conflict/`
+**Assignment:** `manager/email/sent/2026-01-15-2210-task-resolve-vtx-powerlevels-conflict.md`
+**PRs:** [#2202](https://github.com/iNavFlight/inav-configurator/pull/2202) (bkleiner), [#2486](https://github.com/iNavFlight/inav-configurator/pull/2486) (replacement)
+**Repository:** inav-configurator
+
+---
+
+### 🚫 esc-passthrough-bluejay-am32
+
+**Status:** BLOCKED | **Type:** Bug Fix / Feature Parity | **Priority:** HIGH
 **Created:** 2026-01-09 | **Assignee:** Developer
-**Branch:** From `maintenance-9.x`
+**Blocked Since:** 2026-01-10
 
 ESC passthrough (4-way interface) works with Bluejay/AM32 in Betaflight but fails in INAV. Port fixes from Betaflight PRs #13287 (timeout handling) and #14214 (motor IO access).
 
-**Key Issues:** Missing timeout handling in ReadByte(), outdated motor IO access method, narrow SILABS device detection, missing ESC reboot logic.
+**Blocking Issue:** Cannot reproduce the reported issue with current test setup. Need user with actual Bluejay/AM32 ESCs to verify behavior and provide reproduction steps.
 
-**Directory:** `active/esc-passthrough-bluejay-am32/`
+**Directory:** `blocked/esc-passthrough-bluejay-am32/`
 **Assignment:** ✉️ Assigned - `manager/email/sent/2026-01-09-1900-task-esc-passthrough-bluejay-am32.md`
 
 ---
@@ -89,49 +136,6 @@ Make file save dialogs default to the last directory used, eliminating repeated 
 
 ---
 
-### 📋 implement-pitot-sensor-validation
-
-**Status:** TODO
-**Type:** Safety Feature
-**Priority:** HIGH
-**Assignment:** ✉️ Assigned
-**Created:** 2026-01-02
-**Assignee:** Developer
-**Estimated Time:** 8-12 hours
-**Milestone:** 9.1 or 9.2
-**GitHub Issue:** [#11208](https://github.com/iNavFlight/inav/issues/11208)
-
-Implement GPS-based pitot sensor validation with automatic fallback to virtual airspeed and OSD warning ("PITOT FAIL - VIRTUAL").
-
-**Parent Analysis:** analyze-pitot-blockage-apa-issue (COMPLETED)
-
-**Project Directory:** `active/implement-pitot-sensor-validation/`
-
-**Assignment Email:** `claude/manager/sent/2026-01-02-0200-task-implement-pitot-sensor-validation.md`
-
----
-
-### 📋 fix-apa-formula-limits-iterm
-
-**Status:** TODO
-**Type:** Bug Fix / Safety
-**Priority:** HIGH
-**Assignment:** ✉️ Assigned
-**Created:** 2026-01-02
-**Assignee:** Developer
-**Estimated Time:** 2-3 hours
-**Milestone:** 9.1
-**GitHub Issue:** [#11208](https://github.com/iNavFlight/inav/issues/11208)
-
-Fix three APA formula issues: (1) Change limits [0.3,2.0]→[0.5,1.5], (2) Reduce I-term scaling, (3) Default apa_pow=0 (disabled). ~7 lines of code.
-
-**Parent Analysis:** analyze-pitot-blockage-apa-issue (COMPLETED)
-
-**Project Directory:** `active/fix-apa-formula-limits-iterm/`
-
-**Assignment Email:** `claude/manager/sent/2026-01-02-0205-task-fix-apa-formula-limits-iterm.md`
-
----
 
 ### 📋 enable-galileo-optimize-gps-rate
 
@@ -148,25 +152,6 @@ Implement top recommendations from u-blox GPS analysis: enable Galileo by defaul
 **Project Directory:** `active/enable-galileo-optimize-gps-rate/`
 **Reference Document:** `claude/developer/reports/ublox-gps-inav-vs-ardupilot.md`
 **Assignment Email:** `claude/manager/sent/2025-12-31-1530-task-enable-galileo-optimize-gps-rate.md`
-
----
-
-### 📋 fix-blackbox-zero-motors-bug
-
-**Status:** TODO
-**Type:** Bug Fix
-**Priority:** MEDIUM
-**Assignment:** ✉️ Assigned
-**Created:** 2025-12-29
-**Assignee:** Developer
-**Estimated Time:** 1-2 hours
-**Milestone:** 9.1
-
-Fix blackbox logging bug causing 207 decode failures on zero-motor aircraft. Simple one-word fix: change `CONDITION_MOTORS` to `CONDITION_AT_LEAST_MOTORS_1` at line 1079.
-
-**Project Directory:** `active/fix-blackbox-zero-motors-bug/`
-**Documentation:** `claude/developer/scripts/testing/inav/gps/MOTORS_CONDITION_BUG.md`
-**Assignment Email:** `claude/manager/sent/2025-12-29-1230-task-fix-blackbox-zero-motors-bug.md`
 
 ---
 
@@ -188,19 +173,21 @@ Fix blackbox logging bug causing 207 decode failures on zero-motor aircraft. Sim
 
 ---
 
-### 📋 implement-3d-hardware-acceleration-auto-fallback
+### 🚫 implement-3d-hardware-acceleration-auto-fallback
 
-**Status:** TODO
+**Status:** BLOCKED
 **Type:** Feature Enhancement / Error Handling
 **Priority:** MEDIUM
 **Assignment:** ✉️ Assigned
 **Created:** 2025-12-26
+**Blocked Since:** 2026-01-10
 **Assignee:** Developer
-**Estimated Time:** 4-6 hours
 
 Auto-detect WebGL support and gracefully fallback to 2D alternatives when 3D hardware acceleration unavailable (VMs, remote desktop, older systems).
 
-**Project Directory:** `active/implement-3d-hardware-acceleration-auto-fallback/`
+**Blocking Issue:** Cannot reproduce rendering issues requiring fallback logic. Need user who experiences the WebGL/3D acceleration failure to provide reproduction case and test environment details.
+
+**Project Directory:** `blocked/implement-3d-hardware-acceleration-auto-fallback/`
 **Assignment Email:** `claude/manager/sent/2025-12-26-task-3d-hardware-acceleration-auto-fallback.md`
 
 ---
@@ -308,41 +295,6 @@ Coordinate with PR authors to resolve frame 0x09 conflict between CRSF telemetry
 **Developer Analysis:** Complete (2025-12-06) - 38-test suite created, conflict identified
 
 **Location:** `active/coordinate-crsf-telemetry-pr-merge/`
-
----
-
-### 📋 privacylrs-fix-build-failures
-
-**Status:** TODO
-**Type:** Build Infrastructure / CI/CD Fix
-**Priority:** MEDIUM
-**Assignment:** ✉️ Assigned
-**Created:** 2025-12-02
-**Assignee:** Developer
-**Proposal Email:** `claude/security-analyst/sent/2025-12-02-0130-pr18-build-failures-unrelated.md`
-**Assignment Email:** `claude/manager/sent/2025-12-02-0150-build-infrastructure-fix-assignment.md`
-**Estimated Time:** 2-4 hours
-
-**Objective:** Fix pre-existing build failures blocking PR #18 (Finding #1 fix) validation.
-
-**Issues identified:**
-1. Test suite missing `#include <stdio.h>` (native platform)
-2. NimBLE-Arduino library conflicts (ESP32/ESP32S3 TX via UART)
-
-**Scope:**
-- Fix test_encryption.cpp compilation errors
-- Resolve NimBLE library duplicate definition errors
-- Verify all CI builds pass
-
-**Estimated effort:** 2-4 hours
-
-**Blocks:**
-- PR #18 validation (Finding #1 fix)
-- Future PRs to secure_01 branch
-
-**Note:** Security Analyst to monitor PR #18 status after build fixes complete.
-
-**Location:** `active/privacylrs-fix-build-failures/`
 
 ---
 

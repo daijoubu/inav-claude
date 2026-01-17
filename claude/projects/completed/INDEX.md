@@ -2,9 +2,195 @@
 
 Completed (✅) and cancelled (❌) projects.
 
-**Total Completed:** 74 | **Total Cancelled:** 4
+**Total Completed:** 83 | **Total Cancelled:** 4
 
 > **Active projects:** See [../INDEX.md](../INDEX.md)
+
+---
+
+### ✅ create-frsky-f405-target
+
+**Status:** COMPLETED (2026-01-16)
+**Type:** Target Development
+**Priority:** MEDIUM
+**Created:** 2026-01-16
+**Completed:** 2026-01-16 (same day!)
+**Assignee:** Developer
+**Branch:** feature-frsky-f405-target (no commits - documentation only)
+
+Created comprehensive INAV target configuration for FrSky F405 flight controller from schematic analysis. Delivered complete target.h (225 lines) and target.c (92 lines) with all peripherals mapped, plus critical TIM12 DMA limitation discovery and reusable DMA conflict analyzer tool.
+
+**Key Deliverables:**
+- Complete pin mappings (SPI1/2/3, I2C1/2, 6 UARTs, ADC, 9 motors)
+- DMA conflict analyzer tool (193 lines, reusable for all F405 targets)
+- TIM12 DMA research documentation (motors S7/S8 cannot use Dshot)
+- Pin conflict analysis with documented defaults
+
+**Critical Finding:** TIM12 exists on F405 but has no DMA support - motors S7/S8 limited to PWM/OneShot protocols.
+
+**Files Ready For:** Manufacturer PR when hardware available for testing.
+
+**Assignment Email:** `manager/email/sent/2026-01-16-1020-task-create-frsky-f405-target.md`
+
+---
+
+### ✅ privacylrs-fix-build-failures
+
+**Status:** COMPLETED (2026-01-16)
+**Type:** Build Infrastructure / CI/CD Fix
+**Priority:** MEDIUM
+**Created:** 2025-12-02
+**Completed:** 2026-01-16
+**Assignee:** Developer
+**Commit:** `9ec0d53a`
+**Repository:** PrivacyLRS (secure_01 branch)
+
+Fixed two pre-existing build failures in PrivacyLRS CI/CD pipeline: test compilation error (missing stdio.h include) and NimBLE library conflicts in ESP32/ESP32S3 TX targets (duplicate dependency declarations). All builds now passing, unblocking PR #18 validation.
+
+**Note:** Committed directly to secure_01 branch instead of using feature branch workflow - process improvement needed for future contributions.
+
+**Assignment Email:** `claude/manager/sent/2025-12-02-0150-build-infrastructure-fix-assignment.md`
+
+---
+
+### ✅ implement-pitot-sensor-validation
+
+**Status:** COMPLETED (2026-01-11)
+**Type:** Safety Feature Implementation
+**Priority:** HIGH
+**Created:** 2026-01-02
+**Completed:** 2026-01-11
+**Assignee:** Developer
+**PR:** [#11222](https://github.com/iNavFlight/inav/pull/11222) - MERGED
+**Issue:** [#11208](https://github.com/iNavFlight/inav/issues/11208)
+
+Implemented GPS-based pitot sensor validation with automatic fallback to virtual airspeed. Detects blocked/failed pitot tubes by comparing hardware readings against GPS groundspeed, displays "PITOT FAIL" OSD warning, and automatically switches to GPS-based airspeed to prevent dangerous control gains from invalid sensor readings.
+
+**Key Features:**
+- Pitot failure detection (30%-200% thresholds)
+- Automatic GPS airspeed fallback
+- OSD warning display
+- Hysteresis for stable transitions (1s detection, 2s recovery)
+- Defensive airspeed clamping (100-20000 cm/s)
+
+**Assignment Email:** `claude/manager/sent/2026-01-02-0200-task-implement-pitot-sensor-validation.md`
+
+---
+
+### ✅ fix-apa-formula-limits-iterm
+
+**Status:** COMPLETED (2026-01-11)
+**Type:** Bug Fix / Safety Improvement
+**Priority:** HIGH
+**Created:** 2026-01-02
+**Completed:** 2026-01-11
+**Assignee:** Developer
+**PR:** [#11222](https://github.com/iNavFlight/inav/pull/11222) - MERGED (same PR as pitot validation)
+**Issue:** [#11208](https://github.com/iNavFlight/inav/issues/11208)
+
+Fixed APA (Airspeed-based PID Attenuation) formula safety issues. Completed 2 of 3 objectives; the third (upper limit reduction) was explicitly decided against after testing and community feedback.
+
+**What was implemented:**
+- ✅ Reduced I-term scaling to prevent integral windup at low speeds
+- ✅ Default disabled (apa_pow = 0) - requires explicit pilot enablement
+- ❌ Upper limit kept at 2.0 (not reduced to 1.5) - Decision based on testing showing better high-speed performance without safety concerns, especially with new pitot validation
+
+**Note on 2.0 decision:** After initial implementation with 1.5 upper limit, testing and community feedback led to the decision to retain 2.0 for better performance at high speeds. The new pitot validation system mitigates previous safety concerns about the higher limit.
+
+**Assignment Email:** `claude/manager/sent/2026-01-02-0205-task-fix-apa-formula-limits-iterm.md`
+
+---
+
+### ✅ create-target-developer-agent
+
+**Status:** COMPLETED (2026-01-14)
+**Type:** Documentation / Agent Development
+**Priority:** MEDIUM-HIGH
+**Created:** 2026-01-12
+**Completed:** 2026-01-14
+**Assignee:** Developer
+
+Created comprehensive target development documentation and specialized agent by researching 100+ git commits. Delivered 6 documentation files (1,440 lines) covering target architecture, common issues, timer/DMA conflicts, troubleshooting, and real examples with commit hashes.
+
+**Deliverables:**
+- Documentation: `claude/developer/docs/targets/` (6 files)
+- Agent: `.claude/agents/target-developer.md` (213 lines)
+- Capabilities: Analyzes target configs, diagnoses flash overflow/DMA conflicts, searches git history, guides target creation
+
+**Assignment Email:** `claude/manager/sent/2026-01-12-1530-task-create-target-developer-agent.md`
+
+---
+
+### ✅ fix-terrain-data-not-loading
+
+**Status:** COMPLETED (2026-01-12)
+**Type:** Bug Fix
+**Priority:** HIGH
+**Created:** 2026-01-12
+**Completed:** 2026-01-12
+**Assignee:** Developer
+**PR:** #2518 - https://github.com/iNavFlight/inav-configurator/pull/2518
+
+Fixed terrain elevation chart not displaying in INAV Configurator Mission Control. Root cause: `plotElevation()` function was commented out in December 2024 due to ESM module compatibility issues during Vite migration.
+
+**Solution:** Integrated Chart.js v4 with proper ESM support, uncommented function, refactored for Chart.js API, added race condition protection and performance optimizations.
+
+**Testing:** Development and production builds tested successfully. Feature now displays terrain elevation profile along mission paths for safety checks.
+
+**Assignment Email:** `claude/manager/sent/2026-01-12-0955-task-fix-terrain-data-not-loading.md`
+
+---
+
+### ✅ review-multifunction-documentation
+
+**Status:** COMPLETED (2026-01-11)
+**Type:** Documentation Review
+**Priority:** MEDIUM
+**Created:** 2026-01-11
+**Completed:** 2026-01-11
+**Assignee:** Developer
+
+Reviewed MULTIFUNCTION mode documentation across inav/docs/ and inavwiki/, compared against firmware implementation, and fixed timing inaccuracy in wiki.
+
+**Changes:** Fixed reset timing error in inavwiki/Modes.md (3s → 4s). Branch `docs/fix-multifunction-reset-timing` pushed to inavwiki. All 6 functions verified accurate.
+
+**Branch:** `docs/fix-multifunction-reset-timing` (inavwiki)
+
+**Assignment Email:** `claude/manager/sent/2026-01-11-task-review-multifunction-documentation.md`
+
+---
+
+### ✅ review-blackbox-debug-documentation
+
+**Status:** COMPLETED (2026-01-11)
+**Type:** Documentation Review
+**Priority:** MEDIUM
+**Created:** 2026-01-11
+**Completed:** 2026-01-11
+**Assignee:** Developer
+**PR:** https://github.com/iNavFlight/inav/pull/11239 (Draft)
+
+Reviewed blackbox DEBUG documentation across inav/docs/ and inavwiki/, compared against firmware implementation, and updated documentation with missing information.
+
+**Changes:** Added missing SERVOS field, fixed typo (MOTOR → MOTORS), added Debug Mode Logging section to Blackbox.md. Catalogued all 14 blackbox fields and 26 debug modes.
+
+**Assignment Email:** `claude/manager/sent/2026-01-11-task-review-blackbox-debug-documentation.md`
+
+---
+
+### ✅ fix-blackbox-zero-motors-bug
+
+**Status:** COMPLETED (2026-01-10)
+**Type:** Bug Fix
+**Priority:** MEDIUM
+**Created:** 2025-12-29
+**Completed:** 2026-01-10
+**Assignee:** Developer
+**PR:** Merged
+
+Fixed blackbox logging bug causing 207 decode failures on zero-motor aircraft (fixed-wing with servos only). One-word fix: changed CONDITION_MOTORS to CONDITION_AT_LEAST_MOTORS_1 at line 1079.
+
+**Assignment Email:** `claude/manager/sent/2025-12-29-1230-task-fix-blackbox-zero-motors-bug.md`
 
 ---
 
