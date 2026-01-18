@@ -1,0 +1,48 @@
+Keyword: elliptic curve
+Occurrences: 44
+================================================================================
+
+Page   11: 15 Elliptic curve cryptography and pairings                                                           595
+Page   11: 15.1 The group of points of an elliptic curve . . . . . . . . . . . . . . . . . . . . . . . . . 596
+Page   11: 15.2 Elliptic curves over finite fields . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 597
+Page   11: 15.3 Elliptic curve cryptography . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 599
+Page  417: very useful in cryptography, most notably, groups based on elliptic curves — we shall study elliptic
+Page  424: as elliptic curve groups (see Chapter 15). See also Exercise 10.18 and Exercise 10.19.
+Page  484: groups (elliptic curves) where group membership verification can be much less expensive. 2
+Page  609: Elliptic curve cryptography and
+Page  609: Of all these, the group of points of an elliptic curve over a finite field turns out to be the
+Page  609: algorithm in an elliptic curve group of size q runs in time O( q). This means that to provide
+Page  609: Additional structure. Surprisingly, certain elliptic curve groups have an additional structure,
+Page  610: 15.1     The group of points of an elliptic curve
+Page  610: Elliptic curves come up naturally in several branches of mathematics. Here we will follow their
+Page  610: the first occurrence of elliptic curves in mathematics, looks at a cubic equation. The problem is
+Page  611: points on elliptic curves [5].
+Page  611: 15.2     Elliptic curves over finite fields
+Page  611: The curve (15.1) is an example of an elliptic curve defined over the rationals. For cryptographic
+Page  611: applications we are mostly interested in elliptic curves over finite fields. For simplicity, we only
+Page  611: consider elliptic curves defined over a prime finite field Fp where p > 3.
+Page  611: Definition 15.1. Let p > 3 be a prime and let a, b 2 Fp satisfy 4a3 + 27b2 6= 0. An elliptic curve
+Page  612: Points on the curve. Let E/Fp be an elliptic curve. In this section we will mainly focus on the
+Page  612: on the points of an elliptic curve. The group operation is written additively using the symbol “ ”
+Page  613: Equation (15.3) for an elliptic curve is called the Weierstrass form of the curve. There are many
+Page  613: equivalent ways of describing an elliptic curve and some are better suited for computation than the
+Page  613: Edwards curves.      Another way to describe an elliptic curve E/Fp is in Edwards form, which is
+Page  613: 15.3     Elliptic curve cryptography
+Page  613: Let E/Fp be an elliptic curve and let E(Fpe ) be the group of points on this curve. Now that we
+Page  613: Zq . As discussed at the beginning of the chapter, for most elliptic curves, the best known algorithm
+Page  614: resulting systems are called elliptic curve cryptosystems.
+Page  614: In 1999 the national institute of standards (NIST) published a list of elliptic curves for federal
+Page  614: use an elliptic curve with a higher security parameter. One option is a curve called secp521r1,
+Page  614: Let E/Fp be an elliptic curve where q := |E(Fp )| = p + 1 t. We will show in Section 17.2.4
+Page  615: Twist security. Every elliptic curve E/Fp has a related curve Ẽ/Fp called the twist of E. If E
+Page  617: 15.1 (A CCA attack on elliptic-curve ElGamal). Let E/Fp be an elliptic curve where q :=
+Page  617: of a point is not needed for many cryptographic systems. Let E/Fp be an elliptic curve y 2 =
+Page  618: 15.3 (Group law for Montgomery curves). Recall that an elliptic curve E/Fp in Montgomery
+Page  672: We might take G to be the elliptic curve group P256 defined over a finite field Fp where p is a
+Page  673: The standard was later updated to support elliptic curve groups defined over a finite field. The
+Page  673: The ECDSA signature scheme (G, S, V ) uses the group of points G of an elliptic curve over a
+Page  673: When using the elliptic curve P256, both p and q are 256-bit primes. An ECDSA signature
+Page  674: signature on m. This 0 is valid because the x-coordinate of the elliptic curve point ut 2 G is the
+Page  763: elliptic curve with a pairing as in Section 15.4. Our simulator will also work by modeling H as a
+Page  779: of several pre-defined groups, which include both elliptic curves and subgroups of finite fields. The
+Page  818: [111] R. Schoof. Elliptic curves over finite fields and the computation of square roots mod . Math-

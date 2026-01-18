@@ -1,0 +1,75 @@
+Keyword: collision resistance
+Occurrences: 71
+================================================================================
+
+Page    7: 8.5.3    Collision resistance of Davies-Meyer . . . . . . . . . . . . . . . . . . . . . . 297
+Page    8: 8.11   Security without collision resistance . . . . . . . . . . . . . . . . . . . . . . . . . . . 331
+Page    8: 8.11.2 Randomized hash functions: target collision resistance . . . . . . . . . . . . 333
+Page    8: 8.11.4 Using target collision resistance . . . . . . . . . . . . . . . . . . . . . . . . . 336
+Page    9: 10.6.1 Collision resistance based on DL . . . . . . . . . . . . . . . . . . . . . . . . 409
+Page    9: 10.6.2 Collision resistance based on RSA . . . . . . . . . . . . . . . . . . . . . . . 410
+Page  263: formulation of this collision resistance property, in which the adversary must find a collision with no
+Page  263: Hash functions that satisfy this very weak collision resistance property are called universal
+Page  297: functions that o↵er varying degrees of collision resistance. For example, SHA256 is a function
+Page  297: Extending cryptographic primitives. An important application for collision resistance is its
+Page  298: the valid tag may fool a user into running the virus. This argument shows that collision resistance
+Page  298: that collision resistance is, in fact, sufficient to prove security.
+Page  298: File integrity. Another application for collision resistance is file integrity also discussed in the
+Page  299: finding such an F 0 will be difficult if H is collision resistant. Collision resistance, thus, implies that
+Page  299: read-only storage is much easier to build than secret storage. Hence, collision resistance seems more
+Page  299: Security without collision resistance. By extending the input to the hash function with a few
+Page  300: resistance called target collision resistance or TCR for short. We show in Section 8.11.2 how to
+Page  300: in principle it is often possible to avoid relying on collision resistance, the resulting systems are not
+Page  300: collision resistance of H using the following (degenerate) game:
+Page  300: Attack Game 8.1 (Collision Resistance). For a given hash function H defined over (M, T )
+Page  300: collision resistance of H. We may not be able to write the explicit program code for A (since we do
+Page  300: (M, T ) there exists some efficient adversary AH that breaks the collision resistance of H. Hence,
+Page  301: In defining collision resistance we parameterize Attack Game 8.1 by the security parameter .
+Page  301: To exercise the definition of collision resistance, we begin with an easy application described in
+Page  302: It is clear that collision resistance of H is essential for the security of I 0 . Indeed, if an adversary
+Page  302: break the collision resistance of H since m and mi are a valid collision for H. On the other hand, if
+Page  303: same digest and will thus break collision resistance of H. This brute-force attack will break the
+Page  303: collision resistance of any hash function. Hence, for instance, hash functions that output 16-bit
+Page  305: constructing collision resistance for short messages, which we address in the next section.
+Page  305: Before proving collision resistance of HMD let us first introduce some terminology for the various
+Page  307: B breaks the collision resistance of h as required.
+Page  307: The Merkle-Damgård theorem (Theorem 8.3) shows that collision resistance of the compression
+Page  307: function is sufficient to ensure collision resistance of the iterated function. This condition, however,
+Page  310: a 128-bit output which is much too short for collision resistance: a collision could be found with
+Page  311: 8.5.3    Collision resistance of Davies-Meyer
+Page  312: crucial for collision resistance. SHA1 became the de-facto standard for collision resistant hashing
+Page  317: under an assumption that is (qualitatively, at least) weaker than collision resistance; in particular,
+Page  317: construction, and relies on the collision resistance of h. Indeed, it is vulnerable to an o✏ine
+Page  317: the collision resistance of h, of course), we can still get a security proof (see Exercise 8.18).
+Page  323: • On the negative side, it is not known how to reduce the collision resistance of the sponge
+Page  323: applications where collision resistance is not the main property we need. For example, in
+Page  334: Although hash functions like SHA256 were initially designed to provide collision resistance, we have
+Page  341: attacks”. While this structure is not a problem from the point of view of collision resistance, it
+Page  345: 8.11     Security without collision resistance
+Page  346: property called target collision resistance which we now define.
+Page  347: 8.11.2    Randomized hash functions: target collision resistance
+Page  347: At the beginning of the chapter we mentioned two applications for collision resistance: extending
+Page  347: problems that rely on a weaker security property than collision resistance. The resulting systems,
+Page  347: although more likely to be secure, are not as efficient as the ones obtained from collision resistance.
+Page  347: Target collision resistance. Let H be a keyed hash function. We define what it means for H
+Page  347: Attack Game 8.5 (Target collision resistance). For a given keyed hash function H over
+Page  348: Target collision resistance for long inputs. The function Htcr in (8.17) shows that a 2nd-
+Page  350: 8.11.4     Using target collision resistance
+Page  350: more read-only memory than in the system based on collision resistance. To verify integrity of file
+Page  351: MAC are longer than tags produced from extending MACs using a collision resistance hash (as in
+Page  351: than collision resistance and hence much more likely to hold for H.
+Page  351: MAC I. We show that forgeries of the first type can be used to break the target collision resistance
+Page  359: collision resistance, discussed in Section 8.2. This fact will be quite useful in Chapter 14.
+Page  359: 8.27 (Weak collision resistance). Let H be a keyed hash function defined over (K, M, T ). We
+Page  423: than the digest space T . We also defined a notion of collision resistance, which says that for every
+Page  423: 10.6.1    Collision resistance based on DL
+Page  424: 10.6.2    Collision resistance based on RSA
+Page  435: 10.18 (Collision resistance from discrete-log). Let G be a cyclic group of prime order q
+Page  435: 10.19 (Collision resistance in Z⇤p ). This exercise asks you to prove that the hash function
+Page  437: complete inversion. Both trapdoors break collision resistance.
+Page  475: • if md 0 6= md and c0ES = cES , then the collision resistance of the hash ensures that the escrow
+Page  534: We briefly show that collision resistance is not necessary for extending the message space of a
+Page  534: much weaker property than collision resistance and hence more likely to hold for H. For example,
+Page  603: isfies the following collision resistance property, which is a variation of 2nd-preimage collision
+Page  702: 19.15 (Collision resistance from Sigma protocols). Suppose (P, V ) is a Sigma protocol for
+Page  812: [28] D. R. Brown. Generic groups, collision resistance, and ECDSA. Designs, Codes and Cryp-

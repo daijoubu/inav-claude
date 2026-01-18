@@ -1,0 +1,72 @@
+Keyword: authenticated encryption
+Occurrences: 68
+================================================================================
+
+Page    8: 9 Authenticated Encryption                                                                          347
+Page    8: 9.1 Authenticated encryption: definitions . . . . . . . . . . . . . . . . . . . . . . . . . . 348
+Page    8: 9.1.1   One-time authenticated encryption . . . . . . . . . . . . . . . . . . . . . . . 349
+Page    8: 9.2 Implications of authenticated encryption . . . . . . . . . . . . . . . . . . . . . . . . 350
+Page    8: 9.2.3   Authenticated encryption implies chosen ciphertext security . . . . . . . . . 353
+Page    8: 9.4 Authenticated encryption ciphers from generic composition . . . . . . . . . . . . . . 357
+Page    8: 9.5 Nonce-based authenticated encryption with associated data . . . . . . . . . . . . . . 367
+Page  234: • When using secure MACs to build higher level systems (such as authenticated encryption) it
+Page  361: Authenticated Encryption
+Page  361: provide authenticated encryption or are simply said to be AE-secure. This chapter concludes
+Page  361: always use authenticated encryption to ensure both message secrecy and integrity. We stress that
+Page  361: In this chapter we develop the notion of authenticated encryption and construct several AE
+Page  362: The second paradigm for building authenticated encryption is to build them directly from a
+Page  362: Authenticated encryption standards. Cryptographic libraries such as OpenSSL often provide
+Page  362: combine these two primitives to provide authenticated encryption. Every system did it di↵erently
+Page  362: More recently, several standards have emerged for secure authenticated encryption. A popular
+Page  362: an authenticated encryption mode provided by the underlying cryptographic library and to not
+Page  362: 9.1    Authenticated encryption: definitions
+Page  362: We start by defining what it means for a cipher E to provide authenticated encryption. It must
+Page  363: CPA security and ciphertext integrity are the properties needed for authenticated encryption.
+Page  363: Definition 9.2. We say that a cipher E = (E, D) provides authenticated encryption, or is
+Page  363: 9.1.1   One-time authenticated encryption
+Page  364: Definition 9.4. We say that E = (E, D) provides one-time authenticated encryption, or is
+Page  364: MAC, provides one-time authenticated encryption. Replacing the MAC by a one-time MAC can
+Page  364: 9.2     Implications of authenticated encryption
+Page  367: 9.2.3   Authenticated encryption implies chosen ciphertext security
+Page  369: To further motivate the definition of authenticated encryption we show that it precisely captures
+Page  369: authenticated encryption. When S drops mi in its out-box, instead of encrypting mi , the ideal
+Page  370: the underlying cipher E provides authenticated encryption, the ideal implementation is — for all
+Page  370: We now argue informally that when E provides authenticated encryption, the real world im-
+Page  371: 9.4     Authenticated encryption ciphers from generic composition
+Page  371: We now turn to constructing authenticated encryption by combining a CPA-secure cipher and a
+Page  371: provides authenticated encryption.
+Page  372: the MAC, i.e., setting ke = km . The resulting system need not provide authenticated encryption
+Page  373: ISO 19772 standard for authenticated encryption made precisely this mistake [94]. Similarly, in
+Page  378: provides authenticated encryption assuming I is a secure one-time MAC and F is a secure PRF
+Page  381: • EtM provides authenticated encryption whenever the cipher is CPA-secure and the MAC is
+Page  381: Section 9.7), that uses EtM to provide authenticated encryption out of the box.
+Page  381: 9.5     Nonce-based authenticated encryption with associated data
+Page  381: In this section we extend the syntax of authenticated encryption to match the way in which it is
+Page  382: a networking protocol, authenticated encryption protects the packet body, but the header must
+Page  383: Authenticated encryption. We can now define nonce-based authenticated encryption for an
+Page  383: authenticated encryption with associated data.
+Page  387: We should point out that it already is possible to implement secure authenticated encryption
+Page  390: message. This is despite proper use of authenticated encryption on every frame.
+Page  392: and-MAC provides authenticated encryption.
+Page  392: addressed by authenticated encryption. In fact, many secure AEAD modes do not provide this level
+Page  392: to detect boundaries between consecutive encrypted records. Enhancing authenticated encryption
+Page  394: Attack 3: malleability. Recall that WEP attempts to provide authenticated encryption by
+Page  395: ratified in 2004. 802.11i provides authenticated encryption using a MAC-then-encrypt mode called
+Page  399: omitted if the encryption algorithm already provides authenticated encryption, as in the case
+Page  400: We note, however, that when the cipher used provides authenticated encryption (such as GCM
+Page  400: provides authenticated encryption.
+Page  402: 9.9 (MAC-then-encrypt). Prove that MAC-then-encrypt provides authenticated encryption
+Page  405: authenticated encryption. Recall from Section 7.4 that CPA security of (E, D) is insufficient for
+Page  550: We can think of signcryption as the public-key analogue of authenticated encryption for sym-
+Page  550: metric ciphers. Authenticated encryption is designed to achieve the same confidentiality and au-
+Page  551: ciphertext integrity game used in the definition of authenticated encryption (Attack Game 9.1).
+Page  556: Encrypt-then-MAC provides authenticated encryption while MAC-then-encrypt might not. In the
+Page  557: encryption scheme is CCA secure, provides authenticated encryption. Therefore, it should not be
+Page  736: record protocol, which provide authenticated encryption of packets, and which also guarantee that
+Page  738: provides authenticated encryption.
+Page  743: is used to secure a conversation between P and Q, using authenticated encryption. If P sends
+Page  759: semantically secure, Es provides one-time authenticated encryption, and the underlying signature
+Page  764: assumption (see Section 13.7.4), and assuming Es provides one-time authenticated encryption. We
+Page  771: out-box and in-box is implemented using an authenticated encryption scheme and the keys derived
+Page  777: authenticated encryption.
+Page  782: computes an authenticated encryption c of the server’s TLS state with the client, which includes

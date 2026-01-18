@@ -1,0 +1,459 @@
+Keyword: hash function
+Occurrences: 455
+================================================================================
+
+Page    7: 7.1 Universal hash functions (UHFs) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 248
+Page    7: 8.3 Birthday attacks on collision resistant hash functions . . . . . . . . . . . . . . . . . 289
+Page    7: 8.6.1    Other Merkle-Damgård hash functions . . . . . . . . . . . . . . . . . . . . . 300
+Page    8: 8.11.2 Randomized hash functions: target collision resistance . . . . . . . . . . . . 333
+Page    9: 10.6 Collision resistant hash functions from number-theoretic primitives . . . . . . . . . . 409
+Page   10: 12.5.1 Universal projective hash functions . . . . . . . . . . . . . . . . . . . . . . . 474
+Page   10: 12.5.2 Universal2 projective hash functions . . . . . . . . . . . . . . . . . . . . . . 476
+Page   13: 18.4.3 Slow hash functions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 630
+Page   13: 18.4.4 Slow memory-hard hash functions . . . . . . . . . . . . . . . . . . . . . . . 632
+Page  262: In this chapter we describe a general paradigm for constructing MACs using hash functions.
+Page  262: By a hash function we generally mean a function H that maps inputs in some large set M to
+Page  262: At a high level, MACs constructed from hash functions work in two steps. First, we use the
+Page  262: hash function to hash the message m to a short digest t. Second, we apply a PRF to the digest t,
+Page  262: For example, for ECBC (described in Fig. 6.5a), the CBC function acts as a hash function that
+Page  262: variety of hash functions. Some of these hash functions are very fast, and yield MACs that are
+Page  262: 7.1    Universal hash functions (UHFs)
+Page  262: We begin our discussion by defining a keyed hash function — a widely used tool in cryptography.
+Page  262: A keyed hash function H takes two inputs: a key k and a message m. It outputs a short digest
+Page  262: t := H(k, m). The key k can be thought of as a hash function selector: for every k we obtain a
+Page  262: specific function H(k, ·) from messages to digests. More precisely, keyed hash functions are defined
+Page  262: Definition 7.1 (Keyed hash functions). A keyed hash function H is a deterministic algo-
+Page  263: which m lies, and the digest space T , in which t lies. We say that the hash function H is defined
+Page  263: hash function H(k, ·) can map gigabyte long messages into just 256-bit digests.
+Page  263: exist. However, a general property we shall desire in a hash function is that it is hard to actually
+Page  263: build very efficient hash functions that satisfy this property without making any assumptions at all
+Page  263: Hash functions that satisfy this very weak collision resistance property are called universal
+Page  263: hash functions, or UHFs. Universal hash functions are used in various branches of computer
+Page  263: Attack Game 7.1 (universal hash function). For a keyed hash function H defined over
+Page  264: Definition 7.2. Let H be a keyed hash function defined over (K, M, T ),
+Page  264: • We say that H is an ✏-bounded universal hash function, or ✏-UHF, if UHFadv[A, H]  ✏
+Page  264: If H is a keyed hash function defined over (K, M, T ), an alternative characterization of the
+Page  264: Attack Game 7.2 (multi-query UHF). For a keyed hash function H over (K, M, T ), and a
+Page  264: Definition 7.3. We say that a hash function H over (K, M, T ) is a multi-query UHF if for all
+Page  265: Definition 7.4 (Keyed hash functions). A keyed hash function is an efficient algorithm H,
+Page  265: in defining ✏-UHFs for individual hash functions with no security or system parameters; in our
+Page  265: The challenge in constructing good universal hash functions (UHFs) is to construct a function that
+Page  265: length parameter and let p be a prime. We define a hash function Hpoly that hashes a message
+Page  265: The hash function Hpoly (k, m) is defined as follows:
+Page  266: A very useful feature of this hash function is that it can be evaluated without knowing the
+Page  272: Let H be a keyed hash function defined over (KH , M, X ) and let F be a PRF defined over
+Page  272: inputs to short digests. We build a new PRF, denoted F 0 , by composing the hash function H with
+Page  273: for F 0 to be a PRF the hash function H must be a UHF. Theorem 7.7 shows that this condition is
+Page  276: is the composition of the PRF F2 with a certain keyed hash function H,  b which is everything else
+Page  276: hash function H defined over (Zp , Zp ⇥ {1, . . . , `}, Zp ) as H(k, (a, i)) := a + i · k. However, H is just
+Page  276: the hash function. As an example, suppose that after signing Q := 232 messages the adversary’s
+Page  277: example above, ✏ need only be 1/264 and this can improve the speed of the hash function, especially
+Page  277: of size N where addition is defined “modulo N .” We use a hash function H and a PRF F that
+Page  277: • H is a keyed hash function defined over (KH , M, T ),
+Page  278: the output of a hash function. Indeed, let E = (E, D) be the cipher
+Page  278: Why encrypt the output of a hash function? Recall that in the PRF(UHF) composition MAC,
+Page  278: if the adversary finds two messages m1 , m2 that collide on the hash function (i.e., H(k1 , m1 ) =
+Page  278: information about the hash function key k1 that may completely break the MAC. To prevent this we
+Page  278: never find a hash function collision. In contrast, by encrypting the output of the hash function with
+Page  278: a CPA secure cipher we prevent the adversary from learning when a hash function collision occurred:
+Page  278: Wegman MAC is insecure when the hash function H is instantiated with Hpoly . To obtain a secure
+Page  278: Carter-Wegman MAC we strengthen the hash function H and require that it satisfy a stronger
+Page  278: Security of the Carter-Wegman MAC. To prove security of ICW we need the hash function
+Page  278: Attack Game 7.3 (di↵erence unpredictability). For a keyed hash function H defined over
+Page  278: Definition 7.5. Let H be a keyed hash function defined over (K, M, T ),
+Page  279: of di↵erence unpredictability for a keyed hash function whose digest space comes equipped with
+Page  279: When H is a keyed hash function defined over (K, M, T ), an alternative characterization of the
+Page  279: We give a simple example of a statistical DUF that is very similar to the hash function Hpoly
+Page  279: and key k 2 Zp define a new hash function Hxpoly (k, m) as:
+Page  280: ICW . This shows that the Carter-Wegman MAC is easily broken when the hash function H is
+Page  283: then we have to make an adjustment so that the digest space of the hash function is equal to the
+Page  285: tionally secure one-time MACs using hash functions.
+Page  285: Let H be a keyed hash function defined over (K, M, T ). Intuitively, H is a pairwise unpre-
+Page  285: Attack Game 7.5 (pairwise unpredicability). For a keyed hash function H defined over
+Page  285: Let H be a keyed hash function defined over (K, M, T ), where T = ZN for some N . We build a
+Page  285: new hash function H 0 derived from H with the same input and output space as H. The key space,
+Page  286: (` + 1)/p-PUF. We obtain the following keyed hash function defined over (Z2p , Z`
+Page  286: Let H be a keyed hash function defined over (K, M, T ). We can use H to define the MAC
+Page  287: H be a keyed hash function defined over (KH , M, X ) and let F be a PRF defined over (KF , R ⇥
+Page  289: 7.7 (XOR-DUFs). In Remark 7.3 we adapted the definition of DUF to a hash function whose
+Page  290: (a) Consider the nonce-based Carter-Wegman MAC built from the hash function Hxpoly . Show
+Page  290: (b) Consider the nonce-based Carter-Wegman MAC with an arbitrary hash function. Suppose
+Page  291: 7.15 (Composing UHFs). Let H1 be a keyed hash function defined over (K1 , X , Y). Let H2
+Page  291: be a keyed hash function defined over (K2 , Y, Z). Let H be the keyed hash function defined over
+Page  291: {0, 1}n . Define H : X ⇥ X ` ! X as the following keyed hash function:
+Page  292: (a) Let p be a prime, and let N < p be a positive integer. Consider the keyed hash function H
+Page  292: part (a) of Exercise 7.15, and the result of Exercise 7.16, you are to design a hash function
+Page  292: (a) Consider the keyed hash function H defined over (Z`p , Z`p , Zp ) as follows:
+Page  292: hash function in part (a) is sometimes preferable. Assume ` is even, and consider the keyed
+Page  292: hash function H 0 defined over (Z`p , Z`p , Zp ) as follows:
+Page  293: 7.20 (Division-free hash). This exercise develops a hash function that does not require and
+Page  293: (a) Consider the keyed hash function H defined over (IN             ` , I ` , Z ) as follows:
+Page  293: 7.21 (DUF to UHF conversion). Let H be a keyed hash function defined over (K, M, ZN ). We
+Page  293: construct a new keyed hash function H 0 , defined over (K, M ⇥ ZN , ZN ) as follows: H 0 (k, (m, x)) :=
+Page  293: Let p and N be integers greater than 1. Let H be a keyed hash function defined over (K, M, Ip ).
+Page  293: Let H 0 be the keyed hash function defined over (K, M, IN ) as follows: H 0 (k, m) := H(k, m) mod N .
+Page  293: (a) Hfxpoly is the keyed hash function defined over (Ip , IN        ` , I ) as follows:
+Page  294: (b) Hxpoly is the keyed hash function defined over (Ip , IN         , IN ) as follows:
+Page  294: (c) Hfpoly is the keyed hash function defined over (Ip , IN          ` , I ) as follows:
+Page  294: (d) Hpoly is the keyed hash function is defined over (Ip , IN        , IN ) as follows:
+Page  294: the previous exercise, show that if (3/2)N  p < 2N , the keyed hash function H defined over
+Page  294: and let p be a prime with N/4 < p < N/2. Let H be the hash function defined over (IN/4 , IN ⇥
+Page  295: Consider the keyed hash function H defined over (IN      2 , IN , IN ) as follows:
+Page  297: In the previous chapter we discussed universal hash functions (UHFs) and showed how they can be
+Page  297: used to construct MACs. Recall that UHFs are keyed hash functions for which finding collisions is
+Page  297: In this chapter we study keyless hash functions for which finding collisions is difficult. Informally,
+Page  297: no secret keys and anyone can evaluate the function. Let H be a keyless hash function from some
+Page  297: Collision resistant hash functions have many applications. We briefly mention two such appli-
+Page  299: What property should the hash function H satisfy for this integrity mechanism to be secure?
+Page  299: Security without collision resistance. By extending the input to the hash function with a few
+Page  300: A (keyless) hash function H : M ! T is an efficiently computable function from some (large)
+Page  300: Attack Game 8.1 (Collision Resistance). For a given hash function H defined over (M, T )
+Page  300: Definition 8.1. We say that a hash function H over (M, T ) is collision resistant if for all
+Page  300: not know m0 , m1 ), but this A certainly exists. Consequently, for any hash function H defined over
+Page  300: The way out of this is that, formally speaking, our hash functions are parameterized by a
+Page  300: As usual, we give a more mathematically precise definition of a collision resistant hash function
+Page  300: Definition 8.2 (Keyless hash functions). A (keyless) hash function is an efficient algorithm
+Page  301: picked when the hash function is designed, and are ignored from that point onward. SHA256, for
+Page  301: We do so using a collision resistant hash function: I 0 computes a tag for a long message m by first
+Page  301: More precisely, let H be a hash function that hashes long messages in M to short digests in TH .
+Page  301: Theorem 8.1. Suppose the MAC system I is a secure MAC and the hash function H is collision
+Page  303: 8.3     Birthday attacks on collision resistant hash functions
+Page  303: Cryptographic hash functions are most useful when the output digest size is small. The challenge
+Page  303: is to design hash functions whose output is as short as possible and yet finding collisions is difficult.
+Page  303: collisions. To illustrate this, consider a hash function H that outputs `-bit digests for some small `.
+Page  303: collision resistance of any hash function. Hence, for instance, hash functions that output 16-bit
+Page  303: cussed in Section B.1 in the appendix. Let H be a hash function defined over (M, T ) and set
+Page  303: N := |T |. For standard hash functions N is quite large, for example N = 2256 for SHA256.
+Page  304: consider a hash function H(·) that only outputs digests in a certain small subset of T . The resulting
+Page  305: the hash function and constant memory space.                          p
+Page  305: Put di↵erently, if after evaluating the hash function s times an adversary should obtain a
+Page  305: the digest size must be at least 240 bits. Cryptographic hash functions such as SHA256 output a
+Page  305: 256-bit digest. Other hash functions, such as SHA384 and SHA512, output even longer digests,
+Page  305: We now turn to constructing collision resistant hash functions. Many practical constructions follow
+Page  305: the Merkle-Damgård paradigm: start from a collision resistant hash function that hashes short
+Page  305: messages and build from it a collision resistant hash function that hashes much longer messages.
+Page  305: Let h : X ⇥ Y ! X be a hash function. We shall assume that Y is of the form {0, 1}` for some
+Page  305: function derived from h, denoted HMD and shown in Fig. 8.5, is a hash function defined over
+Page  305: • The hash function h is called the compression function of H.
+Page  306: Figure 8.5: The Merkle-Damgård iterated hash function
+Page  306: collision resistant hash function defined over (X ⇥ Y, X ). Then the Merkle-Damgård hash function
+Page  308: We briefly describe a cute attack that applies specifically to Merkle-Damgård hash functions. Let
+Page  308: H1 and H2 be Merkle-Damgård hash functions that output tags in X := {0, 1}n . Define H12 (M ) :=
+Page  308: We say that an s-collision for a hash function H is a set of messages M1 , . . . , Ms 2 M such that
+Page  308: The Merkle-Damgård paradigm shows that to construct a collision resistant hash function for long
+Page  309: Davies-Meyer. The SHA family of cryptographic hash functions all use Davies-Meyer.
+Page  309: tion gives a collision resistant hash function for arbitrary size inputs. Although this is an elegant
+Page  310: will result in a relatively slow hash function. Instead, one uses a custom block cipher specifically
+Page  310: round. Typical ciphers used in Merkle-Damgård hash functions use longer keys (typically, 512-bits
+Page  311: Theorem 8.4 (Davies-Meyer). Let hDM be the Davies-Meyer hash function derived from a block
+Page  312: specification of the Digital Signature Standard (DSS). This hash function, often called SHA0,
+Page  313: Table 8.1: Merkle-Damgård collision resistant hash functions
+Page  313: function. In 2002 NIST added [FIPS 180-2] two new hash functions to the SHA family: SHA256
+Page  313: 384 bits. These and a few other proposed hash functions are summarized in Table 8.1.
+Page  313: The years 2004–5 were bad years for collision resistant hash functions. A number of new attacks
+Page  313: showed how to find collisions for several hash functions. In particular, Wang, Yao, and Yao [121]
+Page  313: The SHA256 function. SHA256 is a Merkle-Damgård hash function using a Davies-Meyer
+Page  313: security. This is, in fact, how the SHA224 hash function works — it is identical to SHA256 with
+Page  314: 8.6.1     Other Merkle-Damgård hash functions
+Page  314: MD4 and MD5. Both cryptographic hash functions were designed by Ron Rivest in 1990–1 [106,
+Page  314: 107]. Both are Merkle-Damgård hash functions that output a 128-bit digest. They are quite similar,
+Page  314: although MD5 uses a stronger compression function than MD4. Collisions for both hash functions
+Page  314: can be found efficiently as described in Table 8.1. Consequently, these hash functions are no longer
+Page  316: ISO/IEC standard in 2004. Whirpool is a Merkle-Damgård hash function. Its compression function
+Page  316: Others. Many other Merkle-Damgård hash functions were proposed in the literature. Some
+Page  316: Merkle-Damgård hash functions such as SHA256 are widely deployed. Most Crypto libraries include
+Page  317: This leads us to the following problem: how to take a keyless Merkle-Damgård hash function,
+Page  320: HMAC implemented using a hash function H is denoted HMAC-H. The most common HMACs
+Page  323: For many years, essentially all collision resistant hash functions were based on the Merkle-Damgård
+Page  323: Section 8.7, we looked at several possible ways to convert a hash function H into a PRF
+Page  324: Theorem 8.6. Let H be the hash function obtained from a permutation ⇡ : {0, 1}n ! {0, 1}n , with
+Page  325: ⇡ is modeled as a random permutation ⇧, the hash function H is collision resistant, assuming 2v
+Page  328: The NIST standard for SHA3 specifies a family of sponge-based hash functions. At the heart
+Page  328: of these hash functions is a permutation called Keccak, which maps 1600-bit strings to 1600-bit
+Page  328: standard specifies four hash functions whose output lengths are fixed, and two hash functions with
+Page  328: Here are the four fixed-length output hash functions:
+Page  329: Here are the two variable-length output hash functions:
+Page  329: shown in Fig. 8.12. The resulting hash function H is called a Merkle tree hash.
+Page  329: The Merkle tree hash uses a collision resistant hash function h, such as SHA256, that outputs
+Page  329: the figure. More precisely, the hash function H is defined as follows:
+Page  330: In Exercise 8.8 we show that a closely related hash function, designed for variable length inputs,
+Page  333: suming the underlying hash function h is collision resistant.
+Page  334: Although hash functions like SHA256 were initially designed to provide collision resistance, we have
+Page  334: Intuitively, hash functions like SHA256 are designed to “thoroughly scramble” their inputs, and
+Page  334: taking an unkeyed hash function and turning it into a keyed function that is a secure PRF, and
+Page  334: to a cryptographic key t? Hashing, of course. In practice, one takes a hash function H, such as
+Page  335: using a hash function H to obtain the key t      H(s).
+Page  335: Now suppose we use a hash function H : S ! T to derive the key t from s. Intuitively, we
+Page  336: shelf” hash function like SHA256.
+Page  336: the sub-key derivation problem. Unfortunately, the practice of using “o↵ the shelf” hash functions
+Page  336: We now introduce a heuristic that we can use to model the use of hash functions in a variety of
+Page  336: The idea is that we simply model a hash function H as if it were a truly random function
+Page  337: This approach to analyzing constructions using hash function is analogous to the ideal cipher
+Page  337: be nice to be able to use an “o↵ the shelf” hash function H, and model it as a random oracle.
+Page  337: with any specific hash function. They do, however, rule out “generic attacks” on systems that would
+Page  337: work if the hash function were a random oracle. So, while such results do not rule out all attacks,
+Page  337: scheme S whose implementation makes use of a subroutine for computing a hash function H
+Page  338: F that uses a hash function H as an oracle, we denote by F O the function that uses the random
+Page  338: that uses a hash function H defined over (M, T ) as an oracle. For a given adversary A, we define
+Page  341: shows that grabbing a hash function “o↵ the shelf” and using it as if it were a random oracle is a
+Page  341: output hash function that could be used directly as a random oracle.
+Page  343: we replace HMAC0 with any hash function that is itself indi↵erentiable from a random oracle with
+Page  343: S = {0, . . . , d 1} for some positive integer d. To realize this, we can use a hash function H
+Page  343: is super-poly, then the hash function H 0 is indi↵erentiable from a random oracle with outputs in S.
+Page  343: the solution is a surprising and elegant application of universal hash functions (see Section 7.1).
+Page  343: Theorem 8.11 (Leftover Hash Lemma). Let H be a keyed hash function defined over (K, S, T ).
+Page  344: Because of these practical limitations, it is more typical to use cryptographic hash functions,
+Page  344: catastrophic security breach. Using cryptographic hash functions, while only heuristically secure
+Page  345: We start by defining two classic security properties for non-keyed hash functions. Let H be a hash
+Page  345: • For completeness, recall that a hash function is collision resistant if it is difficult to find two
+Page  346: Definition 8.6. Let H be a hash function defined over (M, T ). We define the advantage
+Page  346: as shown in Exercise 8.22. The converse is not true. A hash function can be 2nd-preimage resistant,
+Page  346: SHA1 is not collision resistant. Similarly, a hash function can be one-way, but not be 2nd-preimage
+Page  346: using a hash function H and store the resulting hashes in read-only memory. For a file F it should
+Page  346: function to a keyed hash function. We then require that the resulting keyed function satisfy a
+Page  347: 8.11.2    Randomized hash functions: target collision resistance
+Page  347: Target collision resistance. Let H be a keyed hash function. We define what it means for H
+Page  347: Attack Game 8.5 (Target collision resistance). For a given keyed hash function H over
+Page  347: Definition 8.7. We say that a keyed hash function H over (K, M, T ) is target collision resistant
+Page  347: hash functions (Section 7.1.2).
+Page  347: define a keyed hash function H 0 over (K, M, T ) as H 0 (k, m) := H(m). It is not difficult to see that
+Page  347: We show how to build a keyed TCR hash function from a keyless 2nd-preimage resistant function
+Page  350: Theorem 8.13. Suppose h is a TCR hash function that hashes messages in (T ⇥ {0, 1}` ). Then,
+Page  351: Theorem 8.14. Suppose the MAC system I is a secure MAC and the hash function H is TCR.
+Page  353: 8.1 (Truncating a CRHF is dangerous). Let H be a collision resistant hash function defined
+Page  353: over (M, {0, 1}n ). Use H to construct a hash function H 0 over (M, {0, 1}n ) that is also collision
+Page  353: 8.5 (Finding many collisions). LetpH be a hash function defined over (M, T ) where N := |T |
+Page  354: 8.7 (Collision finding in constant space). Let H be a hash function defined over (M, T )
+Page  354: a parallelizable approach: all the hash functions h within a single level can be computed in parallel.
+Page  354: Prove that the resulting hash function defined over (X L , X ) is collision resistant, assuming h
+Page  354: length can be encoded as an element of X . More precisely, the hash function is defined as follows:
+Page  355: be the compression function, let H be the resulting hash function, and let IV be the prescribed
+Page  356: message length. We will also consider the hash function H, which is the same as HMD , but which
+Page  356: Discussion: Let H be a hash function with an n-bit output. If H is a random function then
+Page  356: PRF from a hash function discussed in Section 8.7: Fenv (k, M ) := H(k k M k k). Here, we assume
+Page  356: ing a PRF from a hash function discussed in Section 8.7: Fpre (k, M ) := H(k k M ). Here, we assume
+Page  357: appending method for building a PRF from a hash function discussed in Section 8.7: Fpost0   (k, M ) :=
+Page  357: 8.22 (Relations among definitions). Let H be a hash function over (M, T ) where |M| 2|T |.
+Page  358: 8.25 (Strong 2nd-preimage resistance). Let H be a hash function defined over (X ⇥ Y, T )
+Page  358: (a) Show that HTCR (k, (x, y)) := H(k x, y) is a TCR hash function assuming H is a strong
+Page  358: SPR hash function. If X is relatively small and Y is much larger, we obtain a TCR for long
+Page  358: (b) Let H be a strong SPR. Use H to construct a collision resistant hash function H 0 defined
+Page  358: SPR must be as big as the range of a collision resistant hash function. This was not the
+Page  358: consider the hash function:
+Page  358: 8.26 (Enhanced TCR). Let H be a keyed hash function defined over (K, M, T ). We say that H
+Page  359: (b) Let H be a hash function defined over (K ⇥ M, T ). Show that modeling H as a random
+Page  359: (c) Let H be a strong SPR hash function over (X ⇥ Y, T ), as defined in Exercise 8.25, where
+Page  359: 8.27 (Weak collision resistance). Let H be a keyed hash function defined over (K, M, T ). We
+Page  359: {0, 1}n and Y := {0, 1}` . Define H as a keyed hash function over (K, {0, 1}L , X ) as follows:
+Page  360: 8.28 (The trouble with random oracles). Let H be a hash function defined over (K ⇥ X , Y).
+Page  360: the hash function H, the PRF F becomes insecure.
+Page  360: (a) Show that if H is any hash function that can be implemented by a program PH whose length
+Page  360: that typically real-world attacks treat the hash function as a black box. The attack on F clearly
+Page  385: Wegman MAC built from a keyed hash function called GHASH, a variant of the function Hxpoly
+Page  385: MAC. The GHASH function is defined over (X , X ` , X ) for ` := 232 1.
+Page  386: GHASH. It remains to describe the keyed hash function GHASH defined over (X , X ` , X ). This
+Page  386: hash function is used in a Carter-Wegman MAC and therefore, for security, must be a DUF. In
+Page  386: The hash function GHASH is almost the same as Hxpoly , except that the input message blocks
+Page  401: over (K, M, C) and let H1 : M ! T and H2 : C ! T be collision resistant hash functions. Define
+Page  401: tion 5.4.3. Let H : X L ! X be a collision resistant hash function. Consider the following attempt
+Page  404: 9.16 (Encrypted UHF MAC). Let H be a hash function defined over (KH , M, X ) and (E, D)
+Page  423: 10.6     Collision resistant hash functions from number-theoretic
+Page  423: hash functions based on the RSA and DL assumptions.
+Page  423: Recall from Section 8.1 that a hash function H defined over (M, T ) is an efficiently computable
+Page  423: Before presenting our DL-based hash function, we introduce a simple but surprisingly useful con-
+Page  423: The key to our hash function design is the following fact: given two di↵erent representations of
+Page  424: This fact suggests the following hash function Hdl , which is defined over (Zq ⇥ Zq , G). This
+Page  424: hash function is parameterized by the group G and the generator g, along with a randomly chosen
+Page  424: together, these system parameters define the hash function Hdl . For ↵, 2 Zq , we define
+Page  424: Theorem 10.4. The hash function Hdl is collision resistant under the DL assumption.
+Page  424: The good news is that the message space is larger than the digest space, and so the hash function
+Page  424: if we replace the set G by the set of encodings, the hash function Hdl is not compressing at all.
+Page  424: values e, n, and y are chosen once and for all, and together they determine a hash function Hrsa
+Page  424: a collision-resistant hash function for arbitrarily large message spaces. In applying Theorem 8.3,
+Page  425: Theorem 10.7. The hash function Hrsa is collision resistant under the RSA assumption.
+Page  426: modulus and y is a random element of Z⇤n . The values e, n, y define the hash function Hrsa , and
+Page  426: adversary B 0 runs adversary A with this hash function. Suppose that A finds a collision. This is a
+Page  435: generated by g 2 G. Let n be a poly-bounded parameter. We define a hash function H defined
+Page  435: over (Znq , G). The hash function is parameterized by the group G and n randomly chosen group
+Page  435: 10.19 (Collision resistance in Z⇤p ). This exercise asks you to prove that the hash function
+Page  435: define a hash function H that takes as input two integers in [1, p 1] and outputs an integer in
+Page  437: 10.27 (Trapdoor collison resistance). Let us show that the collision resistant hash functions
+Page  445: semantically secure public-key encryption scheme. In fact, this scheme makes use of a hash function,
+Page  445: and our proof of security works only when we model the hash function as a random oracle (see
+Page  445: • a hash function H : X ! K.
+Page  448: Es = (Es , Ds ), defined over (K, M, C), as well as a hash function H : X ! K.
+Page  449: • a hash function H : G ! K.
+Page  452: the hash function H : G ! K, namely that H is a secure key derivation function, or KDF for
+Page  452: somewhat more general, we consider an arbitrary, efficiently computable hash function F : X ! Y,
+Page  452: Attack Game 11.3 (secure key derivation). For a given hash function F : X ! Y, and for a
+Page  453: Definition 11.5 (secure key derivation). A hash function F : X ! Y is a secure KDF if for
+Page  453: It is plausible to conjecture that an “o↵ the shelf” hash function, like SHA256 or HKDF (see
+Page  453: Section 8.10.4 based on a universal hash function and the leftover hash lemma yields an uncondi-
+Page  459: over (K, M, C), and a hash function H : G ! K. The secret key sk is an element ↵ 2 Zq , and a
+Page  463: Let H : M ! G be a hash function, which we shall model as a random oracle (see Section 8.10.2).
+Page  467: Let H : G ! K be a hash function. We say that the Hash Diffie-Hellman (HDH) assumption
+Page  472: hash function and G is a PRG.
+Page  477: and a hash function H : X ! K, which we model as a random oracle. The message space for ETDF
+Page  483: Es = (Es , Ds ), defined over (K, M, C), and a hash function H : G ! K. The message space of EEG
+Page  484: g 2 G, a symmetric cipher Es = (Es , Ds ), defined over (K, M, C), and a hash function H : G2 ! K.
+Page  488: 12.5.1    Universal projective hash functions
+Page  488: The tool is called a projective hash function. It can perhaps be best understood as a form
+Page  488: Such a scheme is called a projective hash function. Given the auxiliary information h, the
+Page  488: is satisfied, then we say this scheme is a universal projective hash function.
+Page  489: So this is a projective hash function. To show that it is universal, it suffices to show that h and
+Page  490: 12.5.2     Universal2 projective hash functions
+Page  490: We can easily extend our universal projective hash function scheme for Lu ✓ G2 in Section 12.5.1
+Page  490: to obtain a universal2 projective hash function scheme for Lu . In this scheme, our “tags” will be
+Page  492: • a hash function H : G ! K,
+Page  492: • a hash function H 0 : G ⇥ G ! Zq .
+Page  493: projective hash functions defined in Sections 12.5.1 and 12.5.2.
+Page  494: queries. The game is described using the terminology of projective hash functions, as discussed
+Page  498: also need a hash function U : X ! R, mapping messages to randomizers, which will be modeled
+Page  499: representing the hash function U . The logic of the challenger is shown in Fig. 12.4. The adversary
+Page  502: • hash functions H : X ! K and U : X ! R.
+Page  503: • hash functions H : G ! K and U : G ! Zq .
+Page  511: Figure 12.7: OAEP padding using hash functions H and W , and optional associated data d
+Page  511: The scheme also uses two hash functions H and W , where
+Page  511: hash function H, as specified in the standard. For example, for SHA256, one sets d to the following
+Page  513: some hash function H 0 . This block is verified during decryption by recomputing H 0 (m, r) from the
+Page  513: padding scheme, called SAEP+, eliminates the hash function H and the corresponding xor on the
+Page  518: defined over (X , Y). Let U : X ! R be a hash function. Consider the trapdoor function scheme
+Page  522: 12.25 (Stronger properties for projective hash functions). We can strengthen Attack
+Page  522: ator g 2 G. Let H 0 : G3 ⇥ D ! Zq be a hash function. The encryption scheme EMCS = (G, E, D)
+Page  523: 12.28 (Generalizing universal projective hash functions). This exercise develops a construc-
+Page  523: tion for universal projective hash functions that generalizes the one presented in Section 12.5.1. Let
+Page  524: 12.29 (A universal projective hash function for EMCS ). Consider the encryption scheme
+Page  524: Design a universal projective hash function for L with outputs in G. The algorithm to evaluate
+Page  524: by g 2 G. Let H : G2 ! K be a hash function. We say that the Interactive Hash Diffie-Hellman
+Page  525: g 2 G. We also need a symmetric cipher Es = (Es , Ds ), defined over (K, M, C), and a hash function
+Page  525: (a) Suppose that we model the hash function H as a random oracle. Show that E2cdh is CCA
+Page  533: resistant hash function. We presented a similar construction for MACs in Fig. 8.1. Let S = (G, S, V )
+Page  533: be a signature scheme defined over (M, ⌃) and let H : M0 ! M be a hash function, where the set
+Page  534: Theorem 13.1. Suppose the signature scheme S is secure and the hash function H is collision
+Page  534: signature scheme. A second pre-image resistant (SPR) hash function is sufficient. Recall that in
+Page  534: Section 8.11.2 we used SPR hash functions to build target collision resistant (TCR) hash functions.
+Page  534: We then used a TCR hash function to extend the message space of a MAC. We can do the same
+Page  534: Let H be a TCR hash function defined over (KH , M, T ). Let S = (G, S, V ) be a signature
+Page  534: Theorem 13.2. Suppose S = (G, S, V ) is a secure signature scheme and the hash function H is
+Page  535: ingredient we need is a hash function H that maps messages in M to elements in X . This function
+Page  535: We will analyze SFDH by modeling the hash function H as a random oracle. Recall that in the
+Page  535: M ! X be a hash function. Then the derived FDH signature scheme SFDH is a secure signature
+Page  536: The importance of hashing. The hash function H is crucial to the security of SFDH . Without
+Page  536: This attack shows that the hash function H plays a central role in ensuring that SFDH is secure.
+Page  536: security of SFDH , when H is a concrete hash function, using standard assumptions about T and H.
+Page  536: For each public key pk = (n, e), the SRSA-FDH system needs a hash function H that maps
+Page  536: for every public key. Since hash functions generally have a fixed output space, it is preferable
+Page  536: We describe the signature scheme SRSA-FDH using a hash function H defined over (M, Y). We
+Page  537: proof of security. Because an RSA modulus n is large, at least 2048 bits, the hash function H
+Page  537: described appropriate long-output hash functions in Section 8.10.2.
+Page  537: For a given hash function H : M ! Y, the SRSA-FDH signature scheme works as follows:
+Page  538: the hash function H. These computations can be done by the attacker “o↵ line,” and the attacker
+Page  538: As in the proof of SFDH , our security proof for SRSA-FDH models the hash function H : M ! Y
+Page  538: Theorem 13.4. Let H : M ! Y be a hash function, where Y = {1, . . . , 22` 2 }. If the RSA
+Page  544: need a hash function H : M0 ! Y. Furthermore, we will need a PRF F defined over (K, M, {0, 1}).
+Page  545: Theorem 13.7. Let H : M0 ! Y be a hash function. Assume that the RSA assumption holds for
+Page  546: • Hash m to an h-bit hash value using a collision resistant hash function H, where h is also
+Page  546: a short DigestInfo (DI) field is appended that encodes the name of the hash function H used
+Page  547: Unfortunately, the proof of Theorem 13.4 requires that the output of the hash function H be
+Page  548: signature pair (m, ), with SHA256 as the hash function, the verifier does:
+Page  560: • a hash function H : G3 ⇥ I 2 ! K.
+Page  561: I2 CDH assumption holds for G, and the hash function H is modeled as a random oracle.
+Page  564: an AE-secure cipher, the I2 CDH assumption (Definition 13.9) holds in G, and the hash function H
+Page  566: as the hash function. A portion of the CA’s signature is shown on the bottom right of the figure.
+Page  569: Each hashi is the output of a hash function (so for SHA256, a 32-byte string). The data for
+Page  575: hash functions discussed in Exercise 10.27.
+Page  577: Now, for a hash function H : M0 ! M, define a new signature scheme (G, S 0 , V 0 ) as in (13.1).
+Page  577: This should hold for any hash function H.
+Page  577: with message space M, and using a hash function H : M ⇥ R ! Zn :
+Page  578: be a hash function defined over (M ⇥ U, R), and let W be a hash function defined over (R, U ).
+Page  578: trapdoor permutation defined over X := {0, 1}n . Let H be a hash function defined over (M0 , X ).
+Page  578: private key. As usual, let H : M ! Zn be a hash function. Alice wants Bob to sign a message
+Page  581: value of the VRF at x and ⇡ := as the validity proof for y. Here H is a hash function
+Page  582: from one-way and collision resistant hash functions. The resulting signatures, called hash-based
+Page  589: we use a PRG Gprg defined over (S, X n ) and a collision resistant hash function H : X n ! T .
+Page  593: technique of Section 8.9. Let H be a hash function from Yb2 to Yb and let us assume that Y is a
+Page  597: and t is the output size of the hash function H used in the Merkle tree.
+Page  603: (a) Let H be hash function defined over (X , Y). Algorithm G0 now works as follows: it runs
+Page  608: strengthen the iterated hash function in the Winternitz signature scheme.
+Page  608: building a Merkle tree over q leaves using a hash function H : Y 2 ! Y. Recall that each leaf
+Page  608: Let H : Y 2 ! Y be a hash function used to build the Merkle tree. As in the previous exercise, let
+Page  624: from some finite password space P, while the verifier’s key vk is H(pw ) for some hash function
+Page  625: Theorem 18.1. Suppose that hash function H : P ! Y is one-way (as in Definition 8.6). Then
+Page  627: o✏ine hashes, one in two passwords can be cracked. If the hash function H is SHA256 then this
+Page  627: evaluations of the hash function. This takes a few seconds on a modern (classical) computer.
+Page  630: Definition 18.3. Let H be a hash function defined over (D ⇥ S, Y). We define the advantage
+Page  630: Theorem 18.2 ([41]). Let H be a hash function defined over (D ⇥ S, Y) where H is modeled as
+Page  631: 18.4.3    Slow hash functions
+Page  631: A di↵erent approach to protecting weak passwords is to use a slow hash function. Recall that
+Page  631: hashing a password with a hash function such as SHA256 is fast. The speed of SHA256 is what
+Page  632: makes an o✏ine dictionary attack possible; the attacker can quickly evaluate the hash function on
+Page  632: Suppose that the server hashes passwords using a slow hash function. Say, the function takes a
+Page  632: How do we build a slow hash function? The first idea that comes to mind is to iterate a fast
+Page  632: hash function sufficiently many times until it becomes sufficiently slow. Specifically, for a hash
+Page  632: hash function.
+Page  632: For a hash function H defined over (X , X ), this PBKDF is defined over (P, S, X ), where X = P ⇥S.
+Page  632: A widely used method to construct a slow hash function is called PBKDF2, which stands for
+Page  633: 18.4.4    Slow memory-hard hash functions
+Page  633: This suggests that instead of SHA256 we should use a hash function H whose hardware imple-
+Page  633: How do we build a hash function H that has a large hardware footprint? One way is to ensure
+Page  633: Hash functions that require a lot of memory are called memory-hard functions. Several such
+Page  633: a (memory-easy) hash function h : X ! X where X := {0, 1}n . The resulting function, denoted
+Page  633: In our security analysis, we will treat the underlying hash function h as a random oracle. In
+Page  634: Fig. 18.6 is a description of Scrypt as a hash function. The Scrypt PBKDF, defined over
+Page  635: can evaluate the hash function h at many points in parallel.
+Page  637: password. It would be better if we had a provably secure memory-hard hash function whose memory
+Page  637: hash function does not prevent a parallel hardware attack. Consequently, slow memory-hard hash
+Page  637: a hash function. When a user, whose login ID is id , types in a password pw that is to be sent to
+Page  643: di↵erent hash function at every step in the chain. This has been analyzed in [78]. 2
+Page  651: Rainbow tables in practice. Rainbow tables for many popular hash functions are readily
+Page  653: 18.4 (A stronger model for slow hash functions). Suppose we modify the security definition
+Page  655: 18.12 (Improving S/key performance). In this question we reduce the number of hash function
+Page  655: chain). After n logins, how many times did the prover have to evaluate the hash function H?
+Page  655: How many times did the server evaluate the hash function H?
+Page  665: hash function H : M ⇥ G ! C, which will be modeled as a random oracle in the security proof.
+Page  665: protocol, and the challenge c is computed as c          H(m, ut ). Intuitively, the hash function H is
+Page  673: is prime. We will also need a hash function H defined over (M, Z⇤q ). The scheme works as follows:
+Page  684: hash function Hrsa (a, b) := ae y b .
+Page  686: • a hash function H : M ⇥ T ! C, which will be modeled as a random oracle; the set M will
+Page  688: parameter can be shared by many users. We need a hash function H : M ⇥ T ! C, where T is a
+Page  700: of a pre-image of the hash function Hdl in Section 10.6.1, and Okamato’s RSA-based protocol is a
+Page  700: “proof of knowledge” of a pre-image of the hash function Hrsa in Section 10.6.2.
+Page  703: From these components, we can build a hash function H : C ⇥ Z ! T , as follows. The hash
+Page  703: Discussion: The hash function Hdl in Section 10.6.1 can be viewed as a special case of this result,
+Page  703: applied to Schnorr’s protocol. The hash function Hrsa in Section 10.6.2 can be viewed as a special
+Page  710: hash function. We will investigate this approach in detail in the next section. For now, let us look
+Page  716: we use a hash function H to derive the challenge from the statement and the commitment. If we
+Page  717: are satisfied, where c is computed from the hash function as in (20.7).
+Page  717: As we shall see, if we model the hash function H as a random oracle, then the proof is sound,
+Page  718: (t, c, z) for ⇧ belong to T ⇥ C ⇥ Z. Let H : Y ⇥ T ! C be a hash function. We define the
+Page  719: tentially sound non-interactive proof system, if we model the hash function as a random oracle.
+Page  719: Shamir non-interactive proof system derived from ⇧ with hash function H. If ⇧ is existentially
+Page  720: Suppose that makes use of a hash function H : U ! C, and that we wish to model H as a
+Page  720: of a hash function H : U ! C, which is modeled as a random oracle. Let Sim be a simulator for ,
+Page  721: from ⇧ with hash function H. If we model H as a random oracle, then FS-⇧ is niZK.
+Page  729: using a hash function H 0 : G3 ⇥ G2 ! C.
+Page  729: H : M ! G is a hash function. You were asked to show in that exercise that if we model H as a
+Page  731: hash function H : U ! C, which we model as a random oracle. Consider a simulator Sim for , as
+Page  732: the Fiat-Shamir transform to ⇧ (see Exercise 20.14). The proof system          uses a hash function
+Page  741: order q generated by g 2 G, and H : G3 ⇥ IDSpace ! K is a hash function, where user identities
+Page  749: hash function. User P generates ↵ 2 Zq at random, while user Q generates 2 Zq at random. At
+Page  759: somewhat, so that all of the necessary keys are derived directly from the hash function H. Again,
+Page  762: by g 2 G, along with a hash function H. The hash function takes as input several group elements
+Page  763: the input to the hash function and therefore knows the output (k, k1 , k2 ). Therefore, the simulator
+Page  779: keys, respectively. Finally, the hash functions H1 , H2 are used to derive symmetric keys. They are
+Page  779: built from HKDF (Section 8.10.5) with a hash function such as SHA256.
+Page  779: The symmetric encryption scheme (Es , Ds ) and the hash function in HMAC and HKDF to use
+Page  779: server is able and willing to use. It also selects an encryption scheme (Es , Ds ) and a hash function
+Page  785: hash function (which we model as a random oracle). The server Q sends P the random nonce r,
+Page  785: with the MAC and key derivation all rolled in to the hash function.)
+Page  787: with a shared password pw , and H is a hash function, which we model as a random oracle. In
+Page  788: by g 2 G, and a hash function H, which we model as a random oracle. The protocol is described
+Page  790: group G of prime order q generated by g 2 G, and a hash function H, which we model as a
+Page  793: a, b 2 G, and a hash function H, which we model as a random oracle. In addition, the protocol
+Page  793: employs another hash function H 0 , which has range Zq ⇥ Zq , and which we also model as a random
+Page  796: The session key k is computed as k         H(w), where w = g ↵ and H is hash function. Also,
+Page  797: g 2 G and let H : G ⇥ Z2q ! K be a hash function. Consider a system with n users where, for
+Page  812: [18] E. Biham and R. Anderson. Tiger: a fast new hash function. In Proceedings of Fast Software
+Page  816: [89] I. Mironov. Hash functions: From merkle-damgard to shoup. In Proceedings of Eurocrypt
+Page  817: [105] B. Preneel, R. Govaerts, and J. Vandewalle. Hash functions based on block ciphers: a
+Page  818: [112] V. Shoup. A composition theorem for universal one-way hash functions. In Proceedings of

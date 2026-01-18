@@ -1,0 +1,34 @@
+Keyword: forward secrecy
+Occurrences: 30
+================================================================================
+
+Page   11: 13.7.5 Additional desirable properties: forward secrecy and non-repudiation . . . . 548
+Page   14: 21.3 Perfect forward secrecy and a protocol based on ephemeral encryption . . . . . . . . 747
+Page   14: 21.9.3 Modeling perfect forward secrecy . . . . . . . . . . . . . . . . . . . . . . . . 771
+Page  562: 13.7.5     Additional desirable properties: forward secrecy and non-repudiation
+Page  562: explore these di↵erences by defining two new signcryption properties: (1) forward secrecy, and (2)
+Page  562: 13.7.5.1    Property I: forward secrecy (security in case of a sender corruption)
+Page  562: Alice’s secret key. We refer to this property as sender corruption forward secrecy or simply forward
+Page  562: tion forward secrecy. The goal is to ensure that CCA security is maintained even if the adversary
+Page  562: Attack Game 13.8 (CCA security with sender corruption forward secrecy). The game
+Page  562: Definition 13.10. A signcryption scheme SC is said to provide forward secrecy if for all efficient
+Page  562: Forward secrecy for sign-then-encrypt. The sign-then-encrypt construction provides forward
+Page  562: Forward secrecy for encrypt-then-sign. One might be tempted to say the same thing for
+Page  563: However, all is not lost. There are a couple of ways to salvage the forward secrecy property of
+Page  563: forward secrecy more generically.
+Page  563: Forward secrecy for SC DH . The SC DH signcryption system is not forward secure: given the
+Page  563: nately, we can enhance SC DH to provide forward secrecy against sender corruptions.
+Page  564: Theorem 13.11. SC 0DH is a secure signcryption scheme that provides forward secrecy assuming E is
+Page  564: proof of CCA security with forward secrecy, where the adversary is given the sender’s secret key, is
+Page  565: Summary. Forward secrecy is clearly a desirable property in real-world systems. Non-
+Page  565: forward secrecy and non-repudiation.
+Page  737: secret key of any honest user. A stronger security notion, called “perfect forward secrecy,” defends
+Page  748: 21.3     Perfect forward secrecy and a protocol based on ephemeral
+Page  748: forward secrecy. If a protocol satisfies this property, we say that it is PFS secure.
+Page  749: Forward secrecy. Intuitively, protocol AKE2 is PFS secure because user long-terms keys are used
+Page  772: 21.9.3    Modeling perfect forward secrecy
+Page  772: We now show how to modify our static security definition to model perfect forward secrecy, that
+Page  773: definition of security with forward secrecy presented in Section 21.9.3.
+Page  782: Forward secrecy. A key exchange based on a pre-shared key (optionally) includes the quantities
+Page  782: steps in (21.7). This ensures forward secrecy in case the pre-shared key is leaked to an adversary
+Page  782: at some future time. This optional forward secrecy for session resumption is a feature of TLS 1.3

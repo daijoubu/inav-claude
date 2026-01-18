@@ -1,0 +1,21 @@
+Keyword: entropy
+Occurrences: 17
+================================================================================
+
+Page   94: entropy
+Page   94: additional interface that is used to continuously add entropy to the RNG’s internal state, as shown
+Page   94: in Fig. 3.14. The idea is that whenever the system has more random entropy to contribute to the
+Page   94: RNG, this entropy is added into the RNG internal state. Whenever someone reads bits from the
+Page   95: The UNIX RNG obtains its entropy from a number of hardware sources:
+Page   95: • keyboard events: inter-keypress timings provide entropy;
+Page   95: • hardware interrupts: time between hardware interrupts is a good source of entropy;
+Page   95: RNG internal state. Notice that keyboard input is not used as a source of entropy; only keypress
+Page   95: High entropy random generation. The entropy sources described above generate randomness
+Page   95: assuming sufficient entropy is provided as input. We discuss this in more detail in Section 8.10
+Page   95: The RdRand generator should not replace other entropy sources such as the four sources described
+Page   95: above; it should only augment them as an additional entropy source for the RNG. This way, if the
+Page  133: that every AES-128 round key, on its own, has the same amount of entropy as the AES-128 secret
+Page  388: This high entropy master secret is used to derive two keys kb!s and ks!b . The key kb!s encrypts
+Page  631: We can make the adversary’s task harder by adding artificial entropy to human passwords. The
+Page  631: user experience. The secret salt increases the entropy of the user’s password, without forcing the
+Page  698: on the security of its entropy source.

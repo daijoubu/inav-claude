@@ -1,0 +1,76 @@
+Keyword: stream cipher
+Occurrences: 72
+================================================================================
+
+Page    4: 3 Stream ciphers                                                                                      45
+Page    4: 3.2 Stream ciphers: encryption with a PRG . . . . . . . . . . . . . . . . . . . . . . . . .         48
+Page    4: 3.3 Stream cipher limitations: attacks on the one time pad . . . . . . . . . . . . . . . .          52
+Page    5: 3.9    Case study: cryptanalysis of the RC4 stream cipher . . . . . . . . . . . . . . . . . .          76
+Page   59: Stream ciphers
+Page   59: such ciphers. This chapter studies one type of cipher that does this: the stream cipher.
+Page   59: This modified one-time pad is called a stream cipher, and the function G is called a pseudo-
+Page   59: If ` < L, then by Shannon’s Theorem, this stream cipher cannot achieve perfect security;
+Page   59: between this stream cipher and a one-time pad; moreover, since the latter cipher is semantically
+Page   62: 3.2     Stream ciphers: encryption with a PRG
+Page   62: The stream cipher E = (E, D) constructed from G is defined over ({0, 1}` , {0, 1}L , {0, 1}L );
+Page   63: Theorem 3.1. If G is a secure PRG, then the stream cipher E constructed from G is a semantically
+Page   66: 3.3     Stream cipher limitations: attacks on the one time pad
+Page   66: Although stream ciphers are semantically secure they are highly brittle and become totally insecure
+Page   67: A stream cipher is well equipped to encrypt a single message from Alice to Bob. Alice, however,
+Page   67: messages m1 and m2 . The naive solution is to encrypt both messages using the same stream cipher
+Page   67: time pad is totally insecure. In particular, a stream cipher key should never be used to
+Page   67: use a stream cipher directly. We build multi-use ciphers in Chapter 5.
+Page   67: Incorrectly reusing a stream cipher key is a common error in deployed systems. For example,
+Page   67: Microsoft’s implementation of PPTP in Windows NT uses a stream cipher called RC4. The orig-
+Page   67: guarantees for integrity. When using a stream cipher, an adversary can change a ciphertext and
+Page   68: using a stream cipher. An email always starts with a standard header. Simplifying things a bit, we
+Page   81: There are many ways to build PRGs and stream ciphers in practice. One approach builds PRGs
+Page   82: Salsa20/12 and Salsa20/20 are fast stream ciphers designed by Dan Bernstein in 2005.
+Page   82: Salsa20/12 is one of four Profile 1 stream ciphers selected for the eStream portfolio of stream
+Page   82: ciphers. eStream is a project that identifies fast and secure stream ciphers that are appropriate
+Page   82: tively, were proposed by Bernstein in 2008. These stream ciphers have been incorporated into
+Page   82: Let us briefly describe the PRGs underlying the Salsa and ChaCha stream cipher families.
+Page   88: uses a stream cipher, called the CSS stream cipher, to encrypt movie contents. CSS was designed
+Page   88: the CSS stream cipher is particularly weak and can be broken in far less time than an exhaustive
+Page   88: Linear feedback shift registers (LFSR). The CSS stream cipher is built from two LFSRs.
+Page   88: LFSR can be implemented in hardware with few transistors. As a result, stream ciphers built
+Page   89: Stream ciphers from LSFRs. A single LFSR is completely insecure as a PRG since given n
+Page   89: Trivium, one of the eStream portfolio stream ciphers, is built this way.
+Page   89: One approach to building stream ciphers from LFSRs is to run several LFSRs in parallel and
+Page   89: combine their output using a non-linear operation. The CSS stream cipher, described next, com-
+Page   89: bines two LFSRs using addition over the integers. The A5/1 stream cipher used to encrypt GSM
+Page   89: cell phone traffic combines the outputs of three LFSRs. The Bluetooth E0 stream cipher combines
+Page   89: The CSS stream cipher.         The CSS stream cipher is built from the PRG shown in Fig. 3.11.
+Page   90: Figure 3.11: The CSS stream cipher
+Page   90: 3.9     Case study: cryptanalysis of the RC4 stream cipher
+Page   90: The RC4 stream cipher, designed by Ron Rivest in 1987, was historically used for securing Web
+Page   90: Our discussion of RC4 serves as an elegant example of stream cipher cryptanalysis.
+Page   91: The RC4 stream cipher key s is a seed for the PRG and is used to initialize the array S to a
+Page   91: RC4 encryption speed. RC4 is well suited for software implementations. Other stream ciphers,
+Page   91: software. Table 3.1 provides running times for RC4 and a few other software stream ciphers.
+Page   92: Table 3.1: Software stream cipher speeds (higher speed is better)
+Page   92: At one point RC4 was believed to be a secure stream cipher and was widely deployed in applications.
+Page  104: of stream ciphers. Suppose you are told that the stream cipher encryption of the message “attack
+Page  104: the given ciphertext is written in hex). What would be the stream cipher encryption of the message
+Page  104: 3.8 (The converse of Theorem 3.1). In Section 3.2, we showed how to build a stream cipher
+Page  108: build a stream cipher, but they can be used to build ciphers with stronger security properties (as
+Page  151: obtain a semantically secure stream cipher.
+Page  151: Let us consider this stream cipher in detail. This cipher E 0 = (E 0 , D0 ) has key space K, and
+Page  186: stream ciphers from Section 3.6 in the ideal permutation model. Let ⇡ : X ! X be a permutation,
+Page  186: This PRF is an abstraction of the PRF underlying the Salsa and ChaCha stream ciphers. Use
+Page  186: Discussion: The specific permutation ⇡ used in the Salsa and ChaCha stream ciphers is not quite
+Page  188: For example, suppose Alice uses the stream cipher E discussed in Section 3.2. Here, Alice’s key
+Page  189: Clearly, the stream cipher above is inadequate for the job. In fact, the stream cipher, as well
+Page  189: then she can just use a stream cipher to encrypt the whole lot, and be done with it. However, for
+Page  200: This cipher is much like the stream cipher one would get by building a PRG out of F using
+Page  363: In these settings one can use a one-time encryption scheme such as a stream cipher. The
+Page  393: • WEP encryption uses the RC4 stream cipher. We let RC4(s) denote the pseudo random
+Page  393: Attack 1: IV collisions. The designers of WEP understood that a stream cipher key should
+Page  394: use of related RC4 keys. In Chapter 3 we explained that a new and random stream cipher key must
+Page  472: assume that Es is a stream cipher (such as AES in counter mode).
+Page  473: As we saw in Section 3.3.2, any stream cipher is extremely malleable, and the public-key scheme
+Page  737: example, suppose that a stream cipher is used to maintain the secrecy of the data sent through
+Page  744: uses a stream cipher in its implementation. In this way, the adversary might be able to get P to
+Page  744: encrypt two di↵erent messages, using a stream cipher, under the same secret key. As discussed in
+Page  747: assume that this is a stream cipher. With these assumptions, given a ciphertext c that encrypts
+Page  796: is a stream cipher, show that protocol AKE4 is vulnerable to an identity misbinding attack.

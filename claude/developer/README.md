@@ -118,6 +118,7 @@ INAV is an open-source flight controller firmware with advanced GPS navigation c
 | **SITL** operations | **sitl-operator** | "Start SITL with fresh config" |
 | **Code review** before PR | **inav-code-review** | "Review changes in pid.c" |
 | **PR checks** after creating PR | **check-pr-bots** | "Check PR #11220 for bot comments" |
+| **Aerodynamics questions** | **aerodynamics-expert** | "Explain drag types", "What is Reynolds number effect?" |
 
 **Quick pattern matching:**
 - User mentions "email", "inbox", "check messages", completing tasks → **email-manager**
@@ -128,6 +129,7 @@ INAV is an open-source flight controller firmware with advanced GPS navigation c
 - Need to build anything → **inav-builder** (NEVER cmake/make/npm)
 - Need to flash firmware → **fc-flasher** (NEVER dfu-util directly)
 - Before creating PR → **inav-code-review**
+- User mentions "lift", "drag", "stall", "airspeed", "pitot", "Reynolds", aerodynamics → **aerodynamics-expert**
 
 See `.claude/agents/` for complete agent documentation.
 

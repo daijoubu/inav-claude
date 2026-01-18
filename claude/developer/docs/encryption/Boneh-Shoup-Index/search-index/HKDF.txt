@@ -1,0 +1,26 @@
+Keyword: HKDF
+Occurrences: 22
+================================================================================
+
+Page    8: 8.10.5 Case study: HKDF . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 330
+Page  344: 8.10.5    Case study: HKDF
+Page  344: HKDF is a key derivation function specified in RFC 5869, and is deployed in many standards.
+Page  344: HKDF is specified in terms of the HMAC construction (see Section 8.7). So it uses the function
+Page  344: The input to HKDF consists of a secret s, an optional salt value salt (discussed below), an
+Page  344: The execution of HKDF consists of two stages, called extract (which corresponds to what we
+Page  344: In the extract stage, HKDF uses salt and s to compute
+Page  345: When salt is empty, the extract stage of HKDF is the same as what we called HMAC0 in
+Page  345: Users of HKDF have the option of providing non-zero salt. The salt plays a role akin to the
+Page  345: the output of the extract stage of HKDF seems more likely to be indistinguishable from random,
+Page  388: function called HKDF (Section 8.10.5) to derive enough pseudo-random bits for the two keys. This
+Page  453: It is plausible to conjecture that an “o↵ the shelf” hash function, like SHA256 or HKDF (see
+Page  453: better to use something based on SHA256 or HKDF, which can more plausibly be modeled as a
+Page  779: built from HKDF (Section 8.10.5) with a hash function such as SHA256.
+Page  779: The symmetric encryption scheme (Es , Ds ) and the hash function in HMAC and HKDF to use
+Page  780: using HKDF.
+Page  780: from (21.6) using HKDF.
+Page  780: using HKDF. In the record protocol, kc!s is used to encrypt messages sent from the client to the
+Page  781: where H is implemented using HKDF. Both sides then delete the earlier keys ks!c and kc!s and
+Page  782: where H3 is a key derivation function based on HKDF, and N t is a random nonce from Q provided
+Page  782: computed, not sent, and not included in the HMAC and HKDF computations. Instead, the derived
+Page  782: where H4 and H5 are key derivation functions based on HKDF. Notice that this abbreviated key

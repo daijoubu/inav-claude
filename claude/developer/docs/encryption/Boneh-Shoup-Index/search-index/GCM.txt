@@ -1,0 +1,30 @@
+Keyword: GCM
+Occurrences: 26
+================================================================================
+
+Page    8: 9.7 Case study: Galois counter mode (GCM) . . . . . . . . . . . . . . . . . . . . . . . . 371
+Page  361: NIST standard called GCM (see Section 9.7).
+Page  362: method called Galois Counter Mode (GCM) uses encrypt-then-MAC to combine random counter
+Page  381: implement EtM themselves. Instead, it is best to use an encryption standard, like GCM (see
+Page  385: 9.7    Case study: Galois counter mode (GCM)
+Page  385: Galois counter mode (GCM) is a popular nonce-based AEAD cipher standardized by NIST in 2007.
+Page  385: GCM is an encrypt-then-MAC cipher combining a CPA-secure cipher and a secure MAC. The
+Page  385: GCM uses an underlying block cipher E = (E, D) such as AES defined over (K, X ) where
+Page  385: GCM can take variable size nonces, but let us first describe GCM using a 96-bit nonce N which
+Page  385: is the simplest case. The GCM encryption algorithm operates as follows:
+Page  386: The GCM decryption algorithm takes as input a key k 2 K, a ciphertext (c, t), associated data d
+Page  386: elements called a Galois field, which is where GCM gets its name. This field is defined by the
+Page  386: Security. The AEAD security of GCM is similar to the analysis we did for generic composition
+Page  386: as a PRF. The main di↵erence between GCM and our generic composition is that GCM “cuts a
+Page  386: GCM has no nonce re-use resistance. If a nonce is accidentally re-used on two di↵erent messages
+Page  386: not be re-used in GCM.
+Page  387: GCM and GHASH. In practice, the polynomial in (9.18) is evaluated using Horner’s method so that
+Page  387: expect that the bulk of the time during GCM encryption and decryption is spent on AES in counter
+Page  387: in 2013) GCM is about three times slower than pure counter mode due to the extra overhead of
+Page  387: make GCM just slightly more expensive than pure counter mode, which is the best one can hope
+Page  399: of GCM.
+Page  400: We note, however, that when the cipher used provides authenticated encryption (such as GCM
+Page  404: 9.14 (GCM analysis). Give a complete security analysis of GCM (see Section 9.7). Show that
+Page  405: (b) Show that GCM mode encryption is non-committing.
+Page  778: encryption, such as AES-128 in GCM mode. Algorithm S refers to a MAC signing algorithm, such
+Page  779: minimum, to support AES-128 in GCM mode and SHA256, as well as a few other common ciphers.

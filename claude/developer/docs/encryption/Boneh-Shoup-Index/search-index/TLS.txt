@@ -1,0 +1,120 @@
+Keyword: TLS
+Occurrences: 116
+================================================================================
+
+Page    2: notably the Transport Layer Security (TLS) protocol, making it relatively easy to incorporate
+Page    6: 5.4.4   Case study: CBC padding in TLS 1.0 . . . . . . . . . . . . . . . . . . . . . 196
+Page    8: 9.8 Case study: the TLS 1.3 record protocol . . . . . . . . . . . . . . . . . . . . . . . . 373
+Page   15: 21.10 Case study: TLS session setup . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 777
+Page   31: most real-world encryption schemes (for example, TLS) do not make any attempt at all to
+Page   82: several widely deployed protocols such as TLS and SSH.
+Page   90: traffic (in the SSL/TLS protocol) and wireless traffic (in the 802.11b WEP protocol). It is designed
+Page  205: mode. This method is used in older versions of the TLS protocol (e.g., TLS 1.0). It is inferior to
+Page  210: 5.4.4   Case study: CBC padding in TLS 1.0
+Page  210: The TLS 1.0 protocol defines the following padding function for encrypting a v-byte message
+Page  222: using the last ciphertext block of the ith message as the IV for the (i + 1)-st message. The TLS 1.0
+Page  222: in TLS 1.0.
+Page  317: HMAC is the most widely deployed MAC on the Internet. It is used in SSL, TLS, IPsec, SSH, and
+Page  317: a host of other security protocols. TLS and IPsec also use HMAC as a means for deriving session
+Page  320: function is denoted HMAC-SHA1-80. Implementations of TLS 1.0, for example, are required to
+Page  361: TLS 1.2 protocol and later versions as well as in the IPsec protocol and in a widely-used
+Page  361: of TLS (e.g., SSL 3.0 and its successor called TLS 1.0) and in the 802.11i WiFi encryption
+Page  374: Both SSL 3.0 and TLS 1.0 use a defective variant of randomized CBC encryption, discussed in
+Page  376: TLS 1.0 is an updated version of SSL 3.0. It defends against the attack of the previous section by
+Page  376: A padding oracle timing attack. Despite the defenses in TLS 1.0 a naive implementation of
+Page  376: to respond to a chosen ciphertext query and if a TLS error message is generated quickly it learns
+Page  376: SSL 3.0. To see how this might work, suppose an attacker intercepts an encrypted TLS 1.0 record
+Page  377: An even more sophisticated padding oracle timing attack on MtE, as used in TLS 1.0, is called
+Page  377: Lucky13 [3]. It is quite challenging to implement TLS 1.0 decryption in a way that hides the timing
+Page  377: Informative error messages. To make matters worse, the TLS 1.0 specification [39] states
+Page  377: other information. This issue was recognized and addressed in TLS 1.1. Moreover, upon decryption
+Page  387: 9.8    Case study: the TLS 1.3 record protocol
+Page  387: The Transport Layer Security (TLS) protocol is by far the most widely deployed security protocol.
+Page  387: Virtually every online purchase is protected by TLS. Although TLS is primarily used to protect
+Page  387: The original version of TLS was designed at Netscape where it was called the Secure Socket
+Page  387: The Internet Engineering Task Force (IETF) created the Transport Layer Security (TLS) work-
+Page  387: TLS 1.0 protocol in 1999 [39]. TLS 1.0 is a minor variation of SSL 3.0 and is often referred to
+Page  387: as SSL version 3.1. Minor updates were introduced in 2006, and again in 2008, leading to TLS
+Page  387: version 1.2. Due to several security vulnerabilities in TLS 1.2, the protocol was overhalled in 2017,
+Page  387: resulting in a much stronger TLS version 1.3. TLS has become ubiquitous, and is used worldwide
+Page  387: in many software systems. Here we will focus mostly on TLS 1.3
+Page  387: The TLS 1.3 record protocol. Abstractly, TLS consists of two components. The first, called
+Page  387: TLS session setup, negotiates the cipher suite that will be used to encrypt the session and then
+Page  387: sets up a shared secret between the browser and server. The second, called the TLS record
+Page  387: protocol uses this shared secret to securely transmit data between the two sides. TLS session
+Page  388: TLS record protocol.
+Page  388: In TLS terminology, the shared secret generated during session setup is called a master-secret.
+Page  388: messages from the browser to the server while ks!b encrypts messages in the reverse direction. TLS
+Page  388: The TLS record protocol sends data in records whose size is at most 214 bytes. If one side needs
+Page  388: TLS 1.3 uses a nonce-based AEAD cipher (E, D) to encrypt a record. Which nonce-based
+Page  388: AEAD cipher is used is determined by negotiation during TLS session setup. The AEAD encryption
+Page  388: during session setup and is fixed for the life of the session. TLS 1.3 could have used an
+Page  388: and then increment it sequentially for each record. The method used by TLS 1.3 is a little
+Page  388: The AEAD cipher outputs a ciphertext c which is then formatted into an encrypted TLS record
+Page  388: the nonce is not part of the encrypted TLS record. The recipient computes the nonce by itself.
+Page  388: the first message block sent over TLS is usually a fixed public value. If the nonce were set to zero
+Page  388: Randomizing the initial nonce “future proofs” TLS against such attacks.
+Page  389: shuts down the TLS session.
+Page  389: The length field. In TLS 1.3, as in earlier versions of TLS, the record length is sent in the clear.
+Page  389: record contents. For example, if an encrypted TLS record contains one of two images of di↵erent
+Page  389: When encrypting a TLS record the length field is not part of the associated data and conse-
+Page  389: order be processed twice, by simply replaying the record containing the purchase order. TLS uses
+Page  389: the 64-bit write sequence number to reject such replicated packets. TLS assumes in-order record
+Page  389: The cookie cutter attack. TLS provides a streaming interface, where records are sent as soon
+Page  389: over an encrypted TLS session. The fourth line indicates the end of the response.
+Page  389: server’s response is split across two TLS frames:
+Page  390: TLS assumes that the application layer will defend against this attack. In particular, the
+Page  390: that uses TLS must be aware of this issue, and defend against it using an EOM or equivalent
+Page  392: of secrecy. TLS 1.0, for example, sends the length of the every record in the clear making it easy
+Page  508: client and a server. The SSL 3.0 protocol was later replaced by an improved protocol called TLS 1.0
+Page  508: that defends against this attack, as discussed below. The latest version of TLS, called TLS 1.3, has
+Page  509: The TLS defense. When Bleichenbacher’s attack was discovered in 1998, there was a clear need
+Page  509: The solution, implemented in TLS 1.0, changes the RSA-PKCS1 server-side decryption process
+Page  509: the decrypted value. Clearly, the TLS session setup will fail further down the line and setup will
+Page  510: of c. Some justification for this process is provided by Jonsson and Kaliski [72]. The TLS 1.2
+Page  510: In any case, a TLS server MUST NOT generate an alert if processing an RSA-encrypted
+Page  510: teresting attack called DROWN [6]. While implementations of TLS 1.0 and above are immune
+Page  510: that, in a common TLS deployment, the server has only one TLS public-key pair. The same public
+Page  510: key is used to establish a session when the latest version of TLS is used, as when the old SSL 2.0
+Page  510: is used. As a result, an attacker can record the ciphertext c used in a TLS 1.2 session, encrypted
+Page  510: to decrypt this c. This lets the attacker decrypt the TLS session, despite the fact that TLS is
+Page  510: modern TLS.
+Page  568: after we discuss the TLS session setup mechanism. Several commercial tools make this quite easy
+Page  614: implementations of TLS 1.3 are required to support this curve for Diffie-Hellman key exchange. It
+Page  614: is the only mandatory curve in the TLS standard discussed in Section 21.10.
+Page  736: have a shared key; in particular, we looked at real-world protocols, such as IPsec and the TLS
+Page  778: 21.10      Case study: TLS session setup
+Page  778: In Section 9.8 we saw the TLS record protocol which is used to encrypt traffic between two parties
+Page  778: authenticated key exchange protocol used in TLS to setup a secure session. We only look at the
+Page  778: key exchange protocol used in TLS 1.3 which was introduced in 2017.
+Page  778: TLS 1.3. The essence of the TLS key exchange protocol is shown in Fig. 21.12. The protocol
+Page  778: supports both one-sided authentication and mutual authentication. The figure shows TLS mutual
+Page  779: Figure 21.12: The TLS 1.3 key exchange protocol
+Page  779: is determined by a negotiation in the first two messages of the protocol. TLS negotiates these
+Page  779: The protocol. The TLS key exchange in Fig. 21.12 works as follows. In the first flow, the client
+Page  779: group elements for each group. In TLS 1.3, the groups that may be used are constrained to be one
+Page  780: The TLS 1.3 protocol also allows the server to “piggyback” record protocol messages along
+Page  781: TLS 1.3 that was not present in earlier versions of the protocol.
+Page  781: Security. TLS 1.3, as described in Fig. 21.12, is very similar to our protocol AKE4 (specifically,
+Page  781: Additional features. TLS 1.3 provides several features beyond basic key exchange. One feature,
+Page  781: application data outside of the secure session. The TLS 1.3 key exchange provides an exporter
+Page  781: own use. This key is e↵ectively independent of all the keys used to secure the TLS session, but
+Page  781: Another feature is the ability to update traffic keys. In a long lived TLS session it may be
+Page  781: TLS provides support for an abbreviated session setup protocol if P and Q already share a secret
+Page  781: Usually, a pre-shared key is the result of a previous TLS key exchange between P and Q. A
+Page  781: pre-shared key can be generated at anytime after a TLS key exchange completes. Server Q sends a
+Page  782: When a client P wants to establish a TLS session with Q using a pre-shared key, it includes
+Page  782: at some future time. This optional forward secrecy for session resumption is a feature of TLS 1.3
+Page  782: that was not present in earlier versions of TLS.
+Page  782: computes an authenticated encryption c of the server’s TLS state with the client, which includes
+Page  782: in a TLS key exchange, it sends the key’s identity c to the server as part of the o↵er . The server
+Page  783: Zero round trip data. TLS 1.3 introduced a dangerous mechanism called 0-RTT that is de-
+Page  783: other keys in TLS depend on N s and this prevents replay attacks on data encrypted with those
+Page  797: 21.11 (TLS 1.3 is not a secure PAKE). In Section 21.10.1 we described the TLS 1.3 protocol
+Page  797: already has Cert Q . Your attack shows that one should not use TLS 1.3 as a PAKE. Specifically,
+Page  811: RC4 in TLS. In Proceedings of the 22th USENIX Security Symposium, pages 305–320, 2013.
+Page  811: [3] N. J. AlFardan and K. G. Paterson. Lucky thirteen: Breaking the TLS and DTLS record
+Page  811: Y. Shavitt. DROWN: Breaking TLS with SSLv2. In 25th USENIX Security Symposium,
+Page  812: attacks on HTTP over TLS and openvpn. In Proceedings of the 2016 ACM SIGSAC Con-
+Page  813: [39] T. Dierks and C. Allen. The TLS protocol version 1.0. Internet RFC 2246, 1999.
+Page  815: [72] J. Jonsson and B. Kaliski. On the security of RSA encryption in TLS. In CRYPTO, pages

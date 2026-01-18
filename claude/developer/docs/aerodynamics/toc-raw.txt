@@ -1,0 +1,397 @@
+                             Contents
+
+
+                                                                        ...
+Preface                                                                xlll
+
+
+1 Basic concepts and defdtions                                           1
+Preamble                                                                1
+1.1 Units and dimensions                                                1
+     1.1.1 Fundamental dimensions and units                             2
+     1.1.2 Fractions and multiples                                      2
+     1.1.3 Units of other physical quantities                           3
+     1.1.4 Imperial units                                               4
+1.2 Relevant properties                                                 4
+     1.2.1 Forms of matter                                              4
+     1.2.2 Fluids                                                       5
+     1.2.3 Pressure                                                     5
+     1.2.4 Temperature                                                  8
+     1.2.5 Density                                                      8
+     1.2.6 Viscosity                                                    8
+     1.2.7 Speed of sound and bulk elasticity                          10
+     1.2.8 Thermodynamic properties                                    11
+1.3 Aeronautical definitions                                           15
+     1.3.1 Wing geometry                                               15
+     1.3.2 Aerofoil geometry                                           17
+1.4 Dimensional analysis                                               19
+     1.4.1 Fundamental principles                                      19
+     1.4.2 Dimensional analysis applied to aerodynamic force           22
+1.5 Basic aerodynamics                                                 26
+     1.5.1 Aerodynamic force and moment                                26
+     1.5.2 Force and moment coefficients                               28
+     1.5.3 Pressure distribution on an aerofoil                        29
+     1S.4 Pitching moment                                              30
+     1.5.5 Types of drag                                               35
+     1.5.6 Estimation of the coefficients of lift, drag and pitching
+           moment from the pressure distribution                       38
+     1.5.7 Induced drag                                                41
+     1.5.8 Lift-dependent drag                                         44
+     1S.9 Aerofoil characteristics                                     44
+Exercises                                                               50
+vi Contents
+
+        2 Governing equations of fluid mechanics                                     52
+        Preamble                                                                      52
+        2.1 Introduction                                                              52
+              2.1.1   Air flow                                                        53
+              2.1.2   A comparison of steady and unsteady flow                        54
+        2.2   One-dimensional flow: the basic equations                               56
+              2.2.1   One-dimensional flow: the basic equations of conservation       56
+              2.2.2   Comments on the momentum and energy equations                   62
+        2.3   The measurement of air speed                                            62
+              2.3.1   The Pit&-static tube                                            62
+              2.3.2   The pressure coefficient                                        64
+              2.3.3   The air-speed indicator: indicated and equivalent air speeds    64
+              2.3.4   The incompressibility assumption                                66
+        2.4 Two-dimensional flow                                                      68
+              2.4.1   Component velocities                                            68
+              2.4.2   The equation of continuity or conservation of mass              71
+              2.4.3   The equation of continuity in polar coordinates                 72
+        2.5   The stream function and streamline                                      73
+              2.5.1   The stream function 11,                                         73
+              2.5.2   The streamline                                                  75
+              2.5.3   Velocity components in terms of 11,                             76
+        2.6   The momentum equation                                                   78
+              2.6.1   The Euler equations                                             83
+        2.7   Rates of strain, rotational flow and vorticity                          83
+              2.7.1   Distortion of fluid element in flow field                       83
+              2.7.2   Rate of shear strain                                            84
+              2.7.3   Rate of direct strain                                           85
+              2.1.4   Vorticity                                                       86
+              2.7.5   Vorticity in polar coordinates                                  86
+              2.7.6   Rotational and irrotational flow                                87
+              2.7.7   Circulation                                                     87
+        2.8   The Navier-Stokes equations                                             89
+              2.8.1   Relationship between rates of strain and viscous stresses       89
+              2.8.2   The derivation of the Navier-Stokes equations                   91
+        2.9   Properties of the Navier-Stokes equations                               91
+        2.10 Exact solutions of the Navier-Stokes equations                           95
+              2.10.1 Couette flow - simple shear flow                                 95
+              2.10.2 Plane Poiseuille flow - pressure-driven channel flow             96
+              2.10.3 Hiemenz flow - two-dimensional stagnation-point flow             97
+        Exercises                                                                    101
+
+        3 Potentialflow                                                              104
+        Preamble                                                                     104
+        3.1  Introduction                                                            104
+             3.1.1    The velocity potential                                         105
+             3.1.2    The equipotential                                              106
+             3.1.3    Velocity components in terms of q5                             107
+        3.2 Laplace’s equation                                                       109
+        3.3  Standard flows in terms of 11, and q5                                   110
+             3.3.1    Two-dimensional flow from a source (or towards a sink)         110
+             3.3.2    Line (point) vortex                                            112
+                                                                           Conbnts vii
+
+      3.3.3   Uniform flow                                                 114
+      3.3.4   Solid boundaries and image systems                           118
+      3.3.5   A source in a uniform horizontal stream                      119
+      3.3.6   Source-sink pair                                             122
+      3.3.7   A source set upstream of an equal sink in a uniform stream   125
+      3.3.8   Doublet                                                      126
+      3.3.9   Flow around a circular cylinder given by a doublet
+              in a uniform horizontal flow                                 129
+      3.3.10 A spinning cylinder in a uniform flow                         133
+      3.3.1 1 Bernoulli’s equation for rotational flow                     136
+3.4   Axisymmetric flows (inviscid and incompressible flows)               137
+      3.4.1   Cylindrical coordinate system                                137
+      3.4.2   Spherical coordinates                                        138
+      3.4.3   Axisymmetric flow from a point source
+              (or towards a point sink)                                    139
+      3.4.4   Point source and sink in a uniform axisymmetric flow         140
+      3.4.5   The point doublet and the potential flow around a sphere     142
+      3.4.6   Flow around slender bodies                                   144
+3.5   Computational (panel) methods                                        147
+A computational routine in FORTRAN 77                                      152
+Exercises                                                                  155
+
+4 Two-dimensional wing theory                                              159
+Preamble                                                                   159
+4.1   Introduction                                                         159
+      4.1.1 The Kutta condition                                            160
+      4.1.2    Circulation and vorticity                                   162
+      4.1.3    Circulation and lift (Kutta-Zhukovsky theorem)              167
+4.2   The development of aerofoil theory                                   169
+4.3   The general thin aerofoil theory                                     171
+4.4   The solution of the general equation                                 176
+      4.4.1    The thin symmetrical flat plate aerofoil                    177
+      4.4.2    The general thin aerofoil section                           178
+4.5   The flapped aerofoil                                                 1a2
+      4.5.1    The hinge moment coefficient                                I a4
+4.6   The jet flap                                                         185
+4.7   The normal force and pitching moment derivatives due to pitching     186
+      4.7.1    (Zq)(Mq)wing contributions                                  186
+4.8   Particular camber lines                                              190
+      4.8.1    Cubic camber lines                                          190
+      4.8.2    The NACA four-digit wing sections                           193
+4.9   Thickness problem for thin-aerofoil theory                           196
+      4.9.1    The thickness problem for thin aerofoils                    197
+4.10 Computational (panel) methods for two-dimensional lifting flows       200
+Exercises                                                                  207
+
+5 Finite wing theory                                                       210
+Preamble                                                                   210
+5.1 The vortex system                                                      211
+     5.1.1    The starting vortex                                          211
+     5.1.2    The trailing vortex system                                   212
+viii Contents
+
+              5.1.3 The bound vortex system                                           213
+              5.1.4 The horseshoe vortex                                              213
+         5.2 Laws of vortex motion                                                    214
+              5.2.1 Helmholtz's theorems                                              215
+              5.2.2 The Biot-Savart law                                               216
+              5.2.3 Variation of velocity in vortex flow                              220
+         5.3 The simplified horseshoe vortex                                          222
+              5.3.1 Formation flying effects                                          223
+              5.3.2 Influence of the downwash on the tailplane                        224
+              5.3.3 Ground effects                                                    226
+         5.4 Vortex sheets                                                            227
+              5.4.1 The use of vortex sheets to model the lifting effects of a wing   229
+         5.5 Relationship between spanwise loading and trailing vorticity             234
+              5.5.1 Induced velocity (downwash)                                       234
+              5.5.2 The consequences of downwash - trailing vortex drag               237
+              5.5.3 The characteristics of a simple symmetric
+                    loading - elliptic distribution                                   240
+              5.5.4 The general (series) distribution of lift                         243
+              5.5.5 Aerodynamic characteristics for symmetrical general loading       245
+         5.6 Determination of the load distribution on a given wing                   249
+              5.6.1 The general theory for wings of high aspect ratio                 249
+              5.6.2 General solution of Prandtl's integral equation                   25 1
+              5.6.3 Load distribution for minimum drag                                255
+         5.7 Swept and delta wings                                                    257
+              5.7.1 Yawed wings of infinite span                                      257
+              5.7.2 Swept wings of finite span                                        259
+              5.7.3 Wings of small aspect ratio                                       26 1
+         5.8 Computational (panel) methods for wings                                  269
+         Exercises                                                                    270
+
+         6 Compressible flow                                                          273
+         Preamble                                                                     273
+         6.1 Introduction                                                             274
+         6.2 Isentropic one-dimensional flow                                          275
+             6.2.1 Pressure, density and temperature ratios
+                    along a streamline in isentropic flow                             278
+             6.2.2 The ratio of areas at different sections of the stream
+                    tube in isentropic flow                                           28 1
+              6.2.3 Velocity along an isentropic stream tube                          283
+             6.2.4 Variation of mass flow with pressure                               284
+         6.3 One-dimensional flow: weak waves                                         294
+              6.3.1 The speed of sound (acoustic speed)                               29 5
+         6.4 One-dimensional flow: plane normal shock waves                           296
+              6.4.1 One-dimensional properties of normal shock waves                  297
+              6.4.2 Pressurdensity relations across the shock                         298
+              6.4.3 Static pressure jump across a normal shock                        299
+              6.4.4 Density jump across the normal shock                              300
+              6.4.5 Temperature rise across the normal shock                          300
+              6.4.6 Entropy change across the normal shock                            301
+              6.4.7 Mach number change across the normal shock                        301
+              6.4.8 Velocity change across the normal shock                           302
+                                                                          Contents ix
+
+     6.4.9 Total pressure change across the normal shock                 303
+     6.4.10 Pitdt tube equation                                          306
+6.5 Mach waves and shock waves in two-dimensional flow                   307
+6.6 Mach waves                                                           307
+     6.6.1 Mach wave reflection                                          315
+     6.6.2 Mach wave interference                                        317
+6.7 Shock waves                                                          318
+     6.7.1 Plane oblique shock relations                                 319
+     6.7.2 The shock polar                                               323
+     6.7.3 Two-dimensional supersonic flow past a wedge                  329
+6.8 Wings in compressible flow                                           331
+     6.8.1 Transonic flow, the critical Mach number                      331
+     6.8.2 Subcritical flow, small perturbation theory
+            (Prandtl-Glauert rule)                                       334
+     6.8.3 Supersonic linearized theory (Ackeret’s rule)                 347
+     6.8.4 Other aspects of supersonic wings                             367
+Exercises                                                                372
+
+7 Viscous flow and boundary layers                                       373
+Preamble                                                                 373
+7.1 Introduction                                                         373
+7.2 The development of the boundary layer                                375
+    7.2.1 Velocity profile                                               375
+    7.2.2 Boundary-layer thickness                                       377
+    7.2.3 Non-dimensional profile                                        377
+    7.2.4 Laminar and turbulent flows                                    377
+    7.2.5 Growth along a flat surface                                    378
+    7.2.6 Effects of an external pressure gradient                       379
+7.3 The boundary-layer equations                                         380
+    7.3.1 Derivation of the laminar boundary-layer equations             381
+    7.3.2 Various definitions of boundary-layer thickness                385
+    7.3.3 Skin friction drag                                             387
+    7.3.4 Solution of the boundary-layer equations for a flat plate      390
+    7.3.5 Solution for the general case                                  395
+7.4 Boundary-layer separation                                            396
+    7.4.1 Separation bubbles                                             398
+7.5 Flow past cylinders and spheres                                      399
+    7.5.1 Turbulence spheres                                             405
+    7.5.2 Golf balls                                                     406
+    7.5.3 Cricket balls                                                  407
+7.6 The momentum integral equation                                       408
+    7.6.1 An approximate velocity profile for the laminar
+            boundary layer                                               41 1
+7.7 Approximate methods for a boundary layer on a flat plate
+    with zero pressure gradient                                          414
+    7.7.1 Simplified form of the momentum integral equation              415
+    7.7.2 Rate of growth of a laminar boundary layer on a flat plate     415
+    7.7.3 Drag coefficient for a flat plate of streamwise
+            length L with wholly laminar boundary layer                  416
+    7.7.4 Turbulent velocity profile                                     416
+    7.7.5 Rate of growth of a turbulent boundary layer on a flat plate   418
+x Contents
+
+              7.7.6   Drag coefficient for a flat plate with wholly turbulent
+                      boundary layer                                               42 1
+             7.7.7    Conditions at transition                                     422
+             7.7.8    Mixed boundary layer flow on a flat plate with zero
+                      pressure gradient                                            423
+       7.8 Additional examples of the application of the momentum
+             integral equation                                                     428
+       7.9   Laminar-turbulent transition                                          43 1
+       7.10 The physics of turbulent boundary layers                               437
+             7.10.1 Reynolds averaging and turbulent stress                        438
+             7.10.2 Boundary-layer equations for turbulent flows                   440
+             7.10.3 Eddy viscosity                                                 440
+             7.10.4 Prandtl's mixing-length theory of turbulence                   443
+             7.10.5 Regimes of turbulent wall flow                                 444
+             7.10.6 Formulae for local skin-friction coefficient and drag          447
+             7.10.7 Distribution of Reynolds stresses and turbulent
+                      kinetic energy across the boundary layer                     448
+             7.10.8 Turbulence structure in the near-wall region                   449
+       7.11 Computational methods                                                  455
+             7.11.1 Methods based on the momentum integral equation                455
+             7.11.2 Transition prediction                                          458
+             7.1 1.3 Computational solution of the laminar boundary-layer
+                      equations                                                    459
+             7.11.4 Computational solution of turbulent boundary layers            463
+             7.11.5 Zero-equation methods                                          464
+             7.1 1.6 The k--E method - A typical two-equation method               465
+             7.11.7 Large-eddy simulation                                          467
+       7.12 Estimation of profile drag from velocity profile in wake               468
+              7.12.1 The momentum integral expression for the drag
+                      of a two-dimensional body                                    469
+             7.12.2 B.M. Jones' wake traverse method for determining
+                      profile drag                                                 470
+              7.12.3 Growth rate of two-dimensional wake, using
+                      the general momentum integral equation                       47 1
+       7.13 Some boundary-layer effects in supersonic flow                         473
+              7.13.1 Near-normal shock interaction with laminar
+                      boundary layer                                               474
+              7.13.2 Near-normal shock interaction with turbulent boundary layer   477
+              7.13.3 Shock-wave/boundary-layerinteraction
+                      in supersonic flow                                           477
+       Exercises                                                                   482
+
+        8 Flow control and wing design                                             485
+        Preamble                                                                   485
+        8.1  Introduction                                                          48 5
+        8.2  Maximizing lift for single-element aerofoils                          486
+        8.3  Multi-element aerofoils                                               492
+             8.3.1   The slat effect                                               495
+             8.3.2 The vane effect                                                 496
+             8.3.3   Off-the-surface recovery                                      496
+             8.3.4   Fresh boundary-layer effect                                   498
+                                                                        Contents xi
+
+      8.3.5 Use of multi-element aerofoils on racing cars               498
+      8.3.6 Gurney flaps                                                500
+      8.3.7 Movable flaps: artificial bird feathers                     504
+8.4   Boundary layer control for the prevention of separation           505
+      8.4.1 Boundary-layer suction                                      505
+      8.4.2 Control by tangential blowing                               507
+      8.4.3 Other methods of separation control                         512
+8.5   Reduction of skin-friction drag                                   514
+      8.5.1 Laminar flow control by boundary-layer suction              515
+      8.5.2 Compliant walls: artificial dolphin skins                   517
+      8.5.3 Riblets                                                     520
+8.6   Reduction of form drag                                            522
+8.7   Reduction of induced drag                                         522
+8.8   Reduction of wave drag                                            525
+
+9 Propellers and propulsion                                             527
+Preamble                                                                527
+9.1 Froude’s momentum theory of propulsion                              527
+9.2 Airscrew coefficients                                               533
+     9.2.1 Thrust coefficient                                           533
+     9.2.2 Torque coefficient                                           534
+     9.2.3 Efficiency                                                   535
+     9.2.4 Power coefficient                                            535
+     9.2.5 Activity factor                                              535
+9.3 Airscrew pitch                                                      538
+     9.3.1 Geometric pitch                                              539
+     9.3.2 Experimental mean pitch                                      539
+     9.3.3 Effect of geometric pitch on airscrew performance            539
+9.4 Blade element theory                                                541
+     9.4.1 The vortex system of an airscrew                             54 1
+     9.4.2 The performance of a blade element                           542
+9.5 The momentum theory applied to the helicopter rotor                 549
+     9.5.1 The actuator disc in hovering flight                         549
+     9.5.2 Vertical climbing flight                                     550
+     9.5.3 Slow, powered, descending flight                             550
+     9.5.4 Translational helicopter flight                              551
+9.6 The rocket motor                                                    552
+     9.6.1 The free motion of a rocket-propelled body                   554
+9.7 The hovercraft                                                      558
+Exercises                                                               56 1
+
+Appendix 1: symbols and notation                                        563
+Appendix 2: the international standard atmosphere                       567
+Appendix 3: a solution of integrals of the type of Glauert’s integral   569
+Appendix 4: conversion of imperial units to systkme
+            international (SI) units                                    572
+Bibliography                                                            574
+
+Index                                                                   577
+                                 Preface
+
+This volume is intended for students of engineering on courses or programmes of
+study to graduate level.
+   The sequence of subject development in this edition commences with definitions
+and concepts and goes on to cover incompressible flow, low speed aerofoil and wing
+theory, compressible flow, high speed wing theory, viscous flow, boundary layers,
+transition and turbulence, wing design, propellers and propulsion.
+   Accordingly the work deals first with the units, dimensions and properties of the
+physical quantities used in aerodynamics then introduces common aeronautical
+definitions before explaining the aerodynamic forces involved and the basics of
+aerofoil characteristics. The fundamental fluid dynamics required for the develop-
+ment of aerodynamics and the analysis of flows within and around solid boundaries
+for air at subsonic speeds is explored in depth in the next two chapters, which
+continue with those immediately following to use these and other methods to develop
+aerofoil and wing theories for the estimation of aerodynamic characteristics in these
+regimes. Attention is then turned to the aerodynamics of high speed air flows.
+The laws governing the behaviour of the physical properties of air are applied to
+the transonic and supersonic regimes and the aerodynamics of the abrupt changes
+in the flow characteristics at these speeds are explained. The exploitation of these and
+other theories is then used to explain the significant effects on wings in transonic and
+supersonic flight respectively, and to develop appropriate aerodynamic characteris-
+tics. Viscosity is a key physical quantity of air and its significance in aerodynamic
+situations is next considered in depth. The useful concept of the boundary layer and
+the development of properties of various flows when adjacent to solid boundaries,
+build to a body of reliable methods for estimating the fluid forces due to viscosity and
+notably, in aerodynamics, of skin friction and profile drag. Finally the two chapters
+on wing design and flow control, and propellers and propulsion respectively, bring
+together disparate aspects of the previous chapters as appropriate, to some practical
+and individual applications of aerodynamics.
+   It is recognized that aerodynamic design makes extensive use of computational
+aids. This is reflected in part in this volume by the introduction, where appropriate,
+of descriptions and discussions of relevant computational techniques. However,
+no comprehensive cover of computational methods is intended, and experience
+in computational techniques is not required for a complete understanding of the
+aerodynamics in this book.
+   Equally, although experimental data have been quoted no attempt has been made
+to describe techniques or apparatus, as we feel that experimental aerodynamics
+demands its own considered and separate treatment.
+

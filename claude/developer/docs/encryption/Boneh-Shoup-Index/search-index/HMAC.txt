@@ -1,0 +1,63 @@
+Keyword: HMAC
+Occurrences: 59
+================================================================================
+
+Page    7: 8.7 Case study: HMAC . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 302
+Page    7: 8.7.2    The HMAC standard . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 305
+Page  316: 8.7         Case study: HMAC
+Page  317: The two-key nest is very closely related to a classic MAC construction known as HMAC.
+Page  317: HMAC is the most widely deployed MAC on the Internet. It is used in SSL, TLS, IPsec, SSH, and
+Page  317: a host of other security protocols. TLS and IPsec also use HMAC as a means for deriving session
+Page  317: relation to HMAC.
+Page  319: 8.7.2   The HMAC standard
+Page  319: The HMAC standard is exactly the same as the two-key nest (Fig. 8.9), but with one important
+Page  319: To describe this in more detail, we first observe that HMAC itself is somewhat byte oriented, so
+Page  319: to be B bytes (rather than ` bits). A key k for HMAC is a byte string of arbitrary length. To
+Page  320: HMAC implemented using a hash function H is denoted HMAC-H. The most common HMACs
+Page  320: used in practice are HMAC-SHA1 and HMAC-SHA256. The HMAC standard also allows the output
+Page  320: of HMAC to be truncated. For example, when truncating the output of SHA1 to 80 bits, the HMAC
+Page  320: function is denoted HMAC-SHA1-80. Implementations of TLS 1.0, for example, are required to
+Page  320: support HMAC-SHA1-96.
+Page  320: Security of HMAC. Since the keys k10 , k20 are related — their XOR is equal to opad ipad —
+Page  336: as independent random keys. To implement F , we can even use a hash-based PRF, like HMAC, so
+Page  341: {0, 1}n . One recommended mode of operation is to use HMAC with a zero key:
+Page  341: HMAC0 (m) := HMAC(0` , m) = H(opad k H(ipad k m)).
+Page  341: HMAC0 is safe to use as a general purpose random oracle? We can only give heuristic evidence.
+Page  341: Essentially, what we want to argue is that there are no inherent structural weaknesses in HMAC0
+Page  342: For example, in the HMAC0 construction, the compression function h is modeled as a random
+Page  342: an ideal cipher ⇢. In either case, F [⇢] corresponds to the HMAC0 construction itself. Note the
+Page  342: asymmetry: in any attack game, the challenger only accesses ⇢ indirectly via F [⇢] (HMAC0 in this
+Page  342: Some safe modes. The HMAC0 construction can be proven to be indi↵erentiable from a random
+Page  342: One problem with using HMAC0 as a random oracle is that its output is fairly short. Fortunately,
+Page  342: it is fairly easy to use HMAC0 to get a random oracle with longer outputs. Here is how. Suppose
+Page  342: HMAC0 has an n-bit output, and we need a random oracle with, say, N > n bits of output. Set
+Page  342: function H 0 works as follows. On input m, we compute t         HMAC0 (e0 k m). Then, for i = 1, . . . , q,
+Page  342: we compute ti        HMAC0 (ei k t). Finally, we output the first N bits of t1 k t2 k · · · k tq . One
+Page  343: we replace HMAC0 with any hash function that is itself indi↵erentiable from a random oracle with
+Page  343: evaluate HMAC0 once on a long input.
+Page  344: HKDF is specified in terms of the HMAC construction (see Section 8.7). So it uses the function
+Page  344: HMAC(k, m), where k and m are variable length byte strings, which itself is implemented in terms
+Page  344: t   HMAC(salt, s).
+Page  345: zi    HMAC(t, zi 1 k info k Octet(i)) // Octet(i) is a single byte whose value is i
+Page  345: When salt is empty, the extract stage of HKDF is the same as what we called HMAC0 in
+Page  345: Section 8.10.3. As discussed there, HMAC0 can heuristically be viewed as a random oracle, and so
+Page  345: The expand stage is just a simple application of HMAC as a PRF to derive sub-keys, as we
+Page  345: from random, and that HMAC is a secure PRF — and we already know that HMAC is a secure
+Page  357: 8.19 (Dual PRFs). The security analysis of HMAC assumes that the underlying compression
+Page  357: wish to build a new PRF F̂ that is a dual PRF. This F̂ can be used as a building block for HMAC.
+Page  373: a faulty encrypt-then-MAC where the HMAC was not applied to the encryption IV [97].
+Page  391: number of MAC algorithms, but HMAC-SHA1-160 must be supported.
+Page  399: algorithms, but is required to support HMAC-SHA1-96, HMAC-MD5-96, and AES-XCBC-
+Page  633: In practice, PBKDF2 is often implemented using HMAC-SHA256 as the underlying PRF. The
+Page  633: data protection API (DPAPI) uses d = 8000 by default, but using HMAC-SHA512 as the PRF.
+Page  634: where F is a PRF defined over (P, X , X ). In practice one uses HMAC-SHA256 for F . If needed,
+Page  640: never wrap around. Implementations of HOTP typically use HMAC-SHA256 as the underlying
+Page  778: as HMAC-SHA256. Algorithms Sig P (·) and Sig Q (·) sign the provided data using P ’s or Q’s signing
+Page  779: The symmetric encryption scheme (Es , Ds ) and the hash function in HMAC and HKDF to use
+Page  780: • A tag computed using HMAC (see Section 8.7) on the conversation so far.
+Page  780: The key ksh used to encrypt these messages and the key ksm used in applying HMAC are derived
+Page  780: • A tag computed using HMAC (see Section 8.7) on the conversation so far.
+Page  780: The key kch used to encrypt these messages and the key kcm used in applying HMAC are derived
+Page  782: computed, not sent, and not included in the HMAC and HKDF computations. Instead, the derived
+Page  817: [97] R. Napier.    RNCryptor HMAC Vulnerability,              2013.      http://robnapier.net/
+Page  817: rncryptor-hmac-vulnerability.

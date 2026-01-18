@@ -386,9 +386,16 @@ As Release Manager:
 4. ✅ Build firmware and configurator (using inav-builder agent)
 5. ✅ Create and upload GitHub releases
 6. ✅ Coordinate release timing with maintainers
-7. ❌ Don't modify source code directly (coordinate with developers)
+7. ✅ Draft announcements for Discord/Facebook (remember Discord 2000-char limit!)
+8. ❌ Don't modify source code directly (coordinate with developers)
 
 **Remember:** Releases affect all INAV users. Double-check everything before publishing.
+
+### Announcement Tips
+- **Discord:** 2000-character limit - keep concise, use markdown
+- **Facebook:** No markdown, supports emojis and images (1200x630 PNG recommended)
+- Focus on top 5 features users care about most
+- Include download link and upgrade warnings
 
 ---
 

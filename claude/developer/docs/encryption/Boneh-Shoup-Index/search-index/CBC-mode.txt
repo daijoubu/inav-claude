@@ -1,0 +1,47 @@
+Keyword: CBC mode
+Occurrences: 43
+================================================================================
+
+Page    6: 5.4.3   CBC mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 191
+Page    6: 5.4.5   Concrete parameters and a comparison of counter and CBC modes . . . . . 196
+Page    6: 5.5.3   Nonce-based CBC mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 201
+Page  194: These last two constructions, counter mode and CBC mode, are called modes of operation of a
+Page  205: 5.4.3   CBC mode
+Page  205: unlike the counter mode construction in Section 5.4.2, in CBC mode, we must use a block cipher,
+Page  206: Figure 5.4: Encryption and decryption for CBC mode with ` = 3
+Page  210: Let E = (E, D) be a block cipher with domain X . Our description of CBC mode encryption using E
+Page  210: Suppose we wish to encrypt a v-byte message m using AES in CBC mode when v is not
+Page  210: with AES in CBC mode: let p := 16 (v mod 16), then append p bytes to the message m where
+Page  210: It is an easy fact to prove that every invertible padding scheme for CBC mode encryption built
+Page  210: Padding in CBC mode can be avoided using a method called ciphertext stealing as long as
+Page  210: 5.4.5   Concrete parameters and a comparison of counter and CBC modes
+Page  210: We conclude this section with a comparison of the counter and CBC mode constructions. We
+Page  211: lelize, whereas encryption in CBC mode is inherently sequential (decryption in CBC mode
+Page  211: tion on Intel’s Haswell processors is about seven times faster than CBC mode encryption,
+Page  211: shorter than CBC mode ciphertexts. Consider, for example, a one-byte plaintext (which arises
+Page  211: • Encryption only. CBC mode uses both algorithms E and D of the block cipher whereas
+Page  212: intervals do not overlap. In fact, this property is sufficient as well. In contrast, for CBC mode,
+Page  212: essentially same form (x, c); similarly, the CBC mode construction in Section 5.4.3 includes the IV
+Page  212: mode or CBC mode, a 1MB message results is a ciphertext that is just 16 bytes longer, which may
+Page  215: 5.5.3   Nonce-based CBC mode
+Page  222: 5.12 (Predictable IVs). Let us see why in CBC mode an unpredictable IV is necessary for CPA
+Page  223: 5.14 (An insecure nonce-based CBC mode). Consider the nonce-based CBC scheme E 0 de-
+Page  223: 5.17 (Single ciphertext block corruption in CBC mode). Let c be an ` block CBC-encrypted
+Page  224: 5.18 (The malleability of CBC mode). Let c be the CBC encryption of some message m 2 X ` ,
+Page  237: FCBC is similar to CBC mode encryption from Fig. 5.4, but with two important di↵erences. First,
+Page  237: namely 0n , where as CBC mode encryption uses a random IV per message.
+Page  365: randomized counter mode or randomized CBC mode then Mel can quite easily obtain the email
+Page  365: • randomized CBC mode: define ĉ to be the same as c except that ĉ[0] := c[0]       u       v.
+Page  373: is disabled in modern browsers). SSL 3.0 uses MtE to combine randomized CBC mode encryption
+Page  373: and a secure MAC. We showed in Chapter 5 that randomized CBC mode encryption is CPA-secure,
+Page  373: in AES. Recall that CBC mode encryption pads its input to a multiple of the block length and
+Page  374: message and then encrypt in CBC mode using key ke and a random IV. Thus, the following
+Page  374: the block cipher used in CBC mode encryption. It operates on 16-byte blocks.
+Page  390: • Another issue is the incorrect use of CBC mode encryption. SSHv1 always sets the CBC
+Page  391: 2. Encrypt. Encrypt the gray area in Fig. 9.3 using AES in randomized CBC mode with
+Page  391: randomized CBC mode encryption described in Exercise 5.12.
+Page  399: AES-CBC, and AES counter mode. For CBC modes the IV is prepended to the encrypted
+Page  401: and let (Ecbc , Dcbc ) be the cipher derived from (E, D) using randomized CBC mode, as in Sec-
+Page  402: and |X | is super-poly. Consider randomized CBC mode encryption built from (E, D) as the CPA-
+Page  402: when the underlying cipher is randomized CBC mode encryption and the MAC is a secure MAC.
+Page  403: E(k, m; ·) : R ! C is one to one (which holds for counter and CBC mode encryption). Show that

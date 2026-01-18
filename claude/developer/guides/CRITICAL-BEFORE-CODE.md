@@ -24,10 +24,12 @@ echo "Locked by: [task-name] at $(date)" > claude/locks/inav.lock
 ```
 
 ## 3. Create Git Branch
+The branch MUST be created off of the correct version branch in according with the create-pr Skill.
+Important: Do NOT branch off master.
 
 ```bash
 cd inav  # or inav-configurator
-git checkout master && git pull
+git checkout maintenance-9.x && git pull
 git checkout -b fix/issue-XXXX-description
 ```
 

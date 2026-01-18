@@ -3,7 +3,7 @@
 This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKED).
 
 **Last Updated:** 2026-01-16
-**Active:** 12 | **Backburner:** 5 | **Blocked:** 2
+**Active:** 14 | **Backburner:** 5 | **Blocked:** 2
 
 > **Completed projects:** See [completed/INDEX.md](completed/INDEX.md)
 > **Blocked projects:** See `blocked/` directory
@@ -40,6 +40,33 @@ This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKE
 
 ## Active Projects
 
+### 📋 analyze-pitch-throttle-airspeed
+
+**Status:** TODO | **Type:** Data Analysis / Testing | **Priority:** MEDIUM
+**Created:** 2026-01-16 | **Assignee:** Developer + Test Engineer | **Assignment:** ✉️ Assigned
+
+Design scripts to analyze flight logs and understand pitch/throttle/airspeed relationships. Find stable periods (2+ seconds) and match comparable segments to empirically determine how control inputs affect airspeed from real flight data.
+
+**Directory:** `active/analyze-pitch-throttle-airspeed/`
+**Data:** `/home/raymorris/Downloads/LOG0005*`
+**Assignment:** `manager/email/sent/2026-01-16-2255-task-analyze-pitch-throttle-airspeed.md`
+**Note:** Collaborative task - developer must coordinate with test engineer
+
+---
+
+### 📋 investigate-acc-weight-factors
+
+**Status:** TODO | **Type:** Code Analysis / Documentation | **Priority:** MEDIUM-HIGH
+**Created:** 2026-01-16 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
+
+Analyze and document acceleration weight factors in navigation position estimator. Study `acc_clip_factor`, `acc_vibration_factor`, and `accWeight` to understand physics model, verify implementation correctness, and identify potential errors in logic or math.
+
+**Directory:** `active/investigate-acc-weight-factors/`
+**Files:** `src/main/navigation/navigation_pos_estimator.c`, `navigation_pos_estimator_agl.c`
+**Assignment:** `manager/email/sent/2026-01-16-2248-task-investigate-acc-weight-factors.md`
+
+---
+
 ### 📋 add-ray-morris-to-authors
 
 **Status:** TODO | **Type:** Documentation | **Priority:** LOW
@@ -53,16 +80,18 @@ Add "Ray Morris (Sensei)" to the inav/AUTHORS file to recognize contributions.
 
 ---
 
-### 📋 fix-aikonf7-flash-size
+### ⏸️ fix-aikonf7-flash-size
 
-**Status:** TODO | **Type:** Bug Fix / Target Configuration | **Priority:** HIGH
-**Created:** 2026-01-12 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
+**Status:** BACKBURNER | **Type:** Bug Fix / Target Configuration | **Priority:** HIGH
+**Created:** 2026-01-12 | **Paused:** 2026-01-16 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
 
-AIKONF7 target firmware exceeds flash capacity while other F722 targets work fine. Investigate target configuration differences and fix by adjusting features or build settings.
+AIKONF7 target firmware at 98% flash capacity (470/480 KB). Developer completed investigation and proposed 3 solutions (remove 2/3/all obsolete flash chip drivers). Project paused pending decision on which flash chips are actually used in production.
+
+**Pause Reason:** Awaiting information on which flash chip variants are actually shipped in AIKONF7 hardware before implementing fix.
 
 **Directory:** `active/fix-aikonf7-flash-size/`
+**Question:** `manager/email/inbox/2026-01-16-1013-question-aikonf7-flash-size-guidance.md`
 **Assignment:** `manager/email/sent/2026-01-12-1525-task-fix-aikonf7-flash-size.md`
-**Note:** Build directory in use - don't modify until ready to test fix
 
 ---
 

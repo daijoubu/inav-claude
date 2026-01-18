@@ -1,0 +1,42 @@
+Keyword: key derivation
+Occurrences: 38
+================================================================================
+
+Page    8: 8.10   Key derivation and the random oracle model . . . . . . . . . . . . . . . . . . . . . . 320
+Page    8: 8.10.1 The key derivation problem . . . . . . . . . . . . . . . . . . . . . . . . . . . 320
+Page   95: where we discuss the key derivation problem.
+Page  177: In this section we describe an important application for PRFs called sub-key derivation. Alice
+Page  178: Sub-key derivation. What if Alice wants to repeatedly test proximity to Bob? The solution
+Page  334: 8.10     Key derivation and the random oracle model
+Page  334: In this section, we study another problem, called key derivation. Roughly speaking, the
+Page  334: useful not only for analyzing the key derivation problem, but a host of other problems as well.
+Page  334: 8.10.1    The key derivation problem
+Page  334: Let us look at the key derivation problem in more detail. Again, at a high level, the problem is to
+Page  336: Sub-key derivation. Before moving on, we consider the following, related problem: what to do
+Page  336: sub-key derivation problem to distinguish it from the key derivation problem. For the sub-key
+Page  336: Fortunately, for sub-key derivation, we already have all the tools we need at our disposal.
+Page  336: we can do everything we need — key derivation and sub-key derivation — using a single “o↵ the
+Page  336: So once we have solved the key derivation problem, we can use well-established tools to solve
+Page  336: the sub-key derivation problem. Unfortunately, the practice of using “o↵ the shelf” hash functions
+Page  336: for key derivation is not very well understood or analyzed. Nevertheless, there are some useful
+Page  336: applications, including key derivation. As we will see later in the text, this has become a popular
+Page  340: Key derivation in the random oracle model. Let us now return to the key derivation problem
+Page  343: We now return to the key derivation problem. Under the right circumstances, we can solve the key
+Page  344: modeled as random oracles, for key derivation, rather than UHFs. Indeed, if one uses a UHF
+Page  344: for key derivation, are also more forgiving.
+Page  344: HKDF is a key derivation function specified in RFC 5869, and is deployed in many standards.
+Page  344: called key derivation), and expand (which corresponds to what we called sub-key derivation).
+Page  344: Using the intermediate key t, along with info, the expand (or sub-key derivation) stage computes
+Page  345: we can use the analysis in Section 8.10.2 to show that this is a secure key derivation procedure in
+Page  388: derives the two keys by using the master secret and other randomness as a seed for a key derivation
+Page  452: the hash function H : G ! K, namely that H is a secure key derivation function, or KDF for
+Page  452: short. We already introduced a very general notion of a key derivation function in Section 8.10.
+Page  452: Attack Game 11.3 (secure key derivation). For a given hash function F : X ! Y, and for a
+Page  453: Definition 11.5 (secure key derivation). A hash function F : X ! Y is a secure KDF if for
+Page  632: Definition 18.4. A password-based key derivation function, or PBKDF, is a function H
+Page  632: password based key derivation function version 2. Let F be a PRF defined over (P, X , X ) where
+Page  646: pw as k     H(pw ) where H is a key derivation function as in Section 8.10.
+Page  782: where H3 is a key derivation function based on HKDF, and N t is a random nonce from Q provided
+Page  782: where H4 and H5 are key derivation functions based on HKDF. Notice that this abbreviated key
+Page  782: u := g ↵ and v := g , as in Fig. 21.12. They are used along with g ↵ in the symmetric key derivation
+Page  785: with the MAC and key derivation all rolled in to the hash function.)
