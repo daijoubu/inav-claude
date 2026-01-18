@@ -1,0 +1,120 @@
+Keyword: semantic security
+Occurrences: 116
+================================================================================
+
+Page    4: 2.3 Computational ciphers and semantic security . . . . . . . . . . . . . . . . . . . . . .         13
+Page    4: 2.3.2   Definition of semantic security . . . . . . . . . . . . . . . . . . . . . . . . .       15
+Page    4: 2.3.4   Consequences of semantic security . . . . . . . . . . . . . . . . . . . . . . .         22
+Page    4: 2.3.5   Bit guessing: an alternative characterization of semantic security . . . . . .          25
+Page    4: 2.4.4   Semantic security: the formalities . . . . . . . . . . . . . . . . . . . . . . . .      34
+Page    6: 5.3 Semantic security against chosen plaintext attack . . . . . . . . . . . . . . . . . . . 178
+Page    9: 11.3 Implications of semantic security . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 428
+Page    9: 11.3.2 Semantic security against chosen plaintext attack . . . . . . . . . . . . . . . 429
+Page    9: 11.5.1 Semantic security of ElGamal in the random oracle model . . . . . . . . . . 436
+Page    9: 11.5.2 Semantic security of ElGamal without random oracles . . . . . . . . . . . . 438
+Page   27: 2.3        Computational ciphers and semantic security
+Page   27: called semantic security. Furthermore, our definition of security will be flexible enough to allow
+Page   29: 2.3.2   Definition of semantic security
+Page   29: To motivate the definition of semantic security, consider a deterministic cipher E = (E, D), defined
+Page   29: Also, in defining semantic security, we address an issue raised in Example 2.5. In that example,
+Page   29: Now the details. To precisely formulate the definition of semantic security, we shall describe an
+Page   29: Actually, our attack game for defining semantic security comprises two alternative “sub-games,”
+Page   29: Attack Game 2.1 (semantic security). For a given cipher E = (E, D), defined over (K, M, C),
+Page   30: Definition 2.2 (semantic security). A cipher E is semantically secure if for all efficient
+Page   30: 0 if false. Semantic security says that the value ✏ in (2.4) is negligible. In the case where A is
+Page   31: evaluates a predicate (r) on c, which also depends on r. Here, semantic security says that the value
+Page   31: the one-time pad is semantically secure. Because the definition of semantic security is a bit more
+Page   32: rule out such an attack, and indeed, semantic security does.
+Page   32: efficient adversary B that breaks the semantic security of E; since semantic security implies that no
+Page   33: We shall show how to construct an efficient adversary B whose semantic security advantage in
+Page   34: Said even more briefly: to prove that semantic security implies security against message recovery,
+Page   34: that breaks semantic security.
+Page   36: be used to break semantic security. Conversely, it turns out that if an adversary can break semantic
+Page   36: 2.3.4   Consequences of semantic security
+Page   36: In this section, we examine the consequences of semantic security in the context of a specific
+Page   36: the example illustrates how one typically uses the assumption of semantic security in applications.
+Page   37: efficient SS adversary B that breaks the semantic security of E, which we are assuming is impossible.
+Page   39: 2.3.5    Bit guessing: an alternative characterization of semantic security
+Page   39: secure cipher. However, there is another characterization of semantic security that is typically more
+Page   39: Attack Game 2.4 (semantic security: bit-guessing version). For a given cipher E = (E, D),
+Page   46: In defining the notion of semantic security, we have to define what we mean by an efficient adversary.
+Page   48: 2.4.4    Semantic security: the formalities
+Page   48: Turning now to the specific situation of semantic security of a cipher, in Attack Game 2.1, we
+Page   51: break semantic security.
+Page   51: We define the adversary’s advantage, NE(n) adv[A, E], as in the definition of semantic security:
+Page   51: In particular, for every n-way nested adversary A attacking En , there exists a semantic security
+Page   52: efficient adversary whose semantic security advantage is 1.
+Page   53: 2.10 (Exercising the definition of semantic security). Let E = (E, D) be a semantically
+Page   53: is an efficient semantic security adversary B, where B is an elementary wrapper around A,
+Page   54: Hint: Your semantic security adversary B will output 1 with probability KRadv[A, E] in the
+Page   54: semantic security Experiment 0 and output 1 with probability at most ✏ in Experiment 1.
+Page   55: (a) Consider the following semantic security experiments, Experiments 0 and 1: in Experi-
+Page   55: as in the usual the definition of semantic security. Show that for every nested encryption
+Page   55: adversary A attacking E 0 , there exists a semantic security adversary B attacking E, where B
+Page   55: insecure if the adversary is given Ẽ(k, k). You have just shown that semantic security does
+Page   56: ing semantic security given Bob’s key kb . Denote this 2-way key splitting advantage by
+Page   56: (b) Show that for every 2-way key splitting adversary A there is a semantic security adversary B
+Page   57: 2.22 (Bias correction). Consider again the bit-guessing version of the semantic security attack
+Page   59: keys. Semantic security was introduced as a weaker notion of security that would perhaps allow
+Page   62: Note that for the purposes of analyzing the semantic security of E, the length associated with a
+Page   67: Although semantic security ensures that an adversary cannot read the plaintext, it provides no
+Page  102: 3.1 (Semantic security for random messages). One can define a notion of semantic secu-
+Page  103: 3.3 (Bit guessing definition of semantic security). This exercise develops an alternative
+Page  103: characterization of semantic security. Let E = (E, D) be a cipher defined over (K, M, C). Assume
+Page  108: shall expect for a block cipher is actually much stronger than semantic security: for a randomly
+Page  182: secure? Prove semantic security assuming the underlying block cipher is strongly secure.
+Page  188: glean information about other messages. This leads us to the notion of semantic security against a
+Page  188: semantic security (as in Definition 2.2), this may not provide Alice with any meaningful security
+Page  189: will want a cipher that achieves a level of security stronger than semantic security. The appropriate
+Page  189: notion of security is called semantic security against chosen plaintext attack. In Section 5.3 and the
+Page  190: semantically secure cipher. Does semantic security imply a corresponding security property in this
+Page  190: sponding to semantic security in the multi-key setting.
+Page  190: Attack Game 5.1 (multi-key semantic security). For a given cipher E = (E, D), defined over
+Page  190: Definition 5.1 (Multi-key semantic security). A cipher E is called multi-key semantically
+Page  190: As the next theorem shows, semantic security implies multi-key semantic security.
+Page  192: 5.3    Semantic security against chosen plaintext attack
+Page  192: notion of security for this task is semantic security against chosen plaintext attack, or CPA
+Page  195: It is convenient to use the bit-guessing versions of the CPA and semantic security attack games.
+Page  198: next, we play our “semantic security card,” claiming that
+Page  284: semantic security of the one-time pad. Unfortunately, security is lost entirely if the key is used
+Page  374: of m). This will break semantic security of EMtE . The attacker prepares a chosen ciphertext query ĉ
+Page  374: semantic security of the EMtE : the attacker learned something about the plaintext m.
+Page  375: of m[0]. So, not only can the attacker break semantic security, the attacker can actually recover one
+Page  440: We next define the notion of semantic security for a public-key encryption scheme. We stress
+Page  440: Attack Game 11.1 (semantic security). For a given public-key encryption scheme E =
+Page  441: Definition 11.2 (semantic security). A public-key encryption scheme E is semantically se-
+Page  442: 11.3     Implications of semantic security
+Page  442: sequences of semantic security. We first show that any semantically secure public-key scheme must
+Page  442: To see why, suppose E is deterministic. Then the following adversary A breaks semantic security
+Page  443: 11.3.2    Semantic security against chosen plaintext attack
+Page  443: semantic security, and semantic security against chosen plaintext attack (or CPA security, for
+Page  443: short). We showed that for symmetric ciphers, semantic security does not imply CPA security.
+Page  443: However, for public-key encryption schemes, semantic security does imply CPA security. Intuitively,
+Page  444: many public keys. In the public-key setting, semantic security implies not only CPA security, but
+Page  446: adversary’s point of view, k is completely random, and semantic security for ETDF follows directly
+Page  446: from the semantic security of Es . In the detailed proof, we implement the random oracle using
+Page  446: Proof. It is convenient to prove the theorem using the bit-guessing versions of the semantic security
+Page  450: 11.5.1     Semantic security of ElGamal in the random oracle model
+Page  450: point of view, k is completely random, and semantic security for EEG follows directly from the
+Page  450: semantic security of Es . 2
+Page  450: Proof. It is convenient to prove the theorem using the bit-guessing version of the semantic security
+Page  452: 11.5.2    Semantic security of ElGamal without random oracles
+Page  452: in a weaker random oracle semantic security model. In Exercise 11.14 we develop yet another
+Page  453: the adversary’s view, and therefore security follows by semantic security of Es . 2
+Page  453: semantic security game. We prove:
+Page  456: semantic security. We will define security more precisely after we look at some constructions.
+Page  461: Attack Game 11.4 (threshold decryption semantic security). For a public-key threshold
+Page  461: Definition 11.9 (threshold decryption semantic security). A public-key threshold decryption
+Page  465: you should show that the advantage of any adversary A in breaking the semantic security of EMMEG
+Page  465: We can define a notion of semantic security in terms of an attack game between a challenger and
+Page  466: encryptions of many messages under many public keys. Show that semantic security implies multi-
+Page  466: that breaks the scheme’s semantic security.
+Page  466: semantic security for a public-key encryption scheme implies multi-key CPA security; however,
+Page  470: of security called semantic security, which is completely analogous to the corresponding notion
+Page  470: of semantic security in the symmetric-key setting. We observed that in the public-key setting,
+Page  470: semantic security implies security against a chosen plaintext attack, i.e., CPA security.
+Page  480: proof of Theorem 11.2, which analyzed the semantic security of ETDF , we did this quite naturally
+Page  499: We note that the one-wayness assumption is implied by semantic security (see Exercise 12.10).
+Page  735: (with overwhelming probability) without a↵ecting the semantic security of the encryption
+Page  753: algorithm on a given public key and given message. Although semantic security implies that this
+Page  759: time ciphertext integrity. Semantic security for Es is only needed to achieve identity protection,

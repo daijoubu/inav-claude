@@ -1,0 +1,126 @@
+Keyword: key exchange
+Occurrences: 122
+================================================================================
+
+Page    9: 10.1 A toy problem: anonymous key exchange . . . . . . . . . . . . . . . . . . . . . . . . 394
+Page    9: 10.2.1 Key exchange using a one-way trapdoor function scheme . . . . . . . . . . . 396
+Page    9: 10.3.1 Key exchange based on the RSA assumption . . . . . . . . . . . . . . . . . 400
+Page    9: 10.4 Diffie-Hellman key exchange . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 401
+Page    9: 10.4.1 The key exchange protocol . . . . . . . . . . . . . . . . . . . . . . . . . . . 402
+Page    9: 10.4.2 Security of Diffie-Hellman key exchange . . . . . . . . . . . . . . . . . . . . 402
+Page    9: 10.8 Merkle puzzles: a partial solution to key exchange using block ciphers . . . . . . . . 413
+Page   11: 13.7.4 A construction based on Diffie-Hellman key exchange . . . . . . . . . . . . . 546
+Page   14: 21 Authenticated Key Exchange                                                                        735
+Page   14: 21.6 One-sided authenticated key exchange . . . . . . . . . . . . . . . . . . . . . . . . . . 758
+Page   15: 21.10.1 Authenticated key exchange with preshared keys . . . . . . . . . . . . . . . 780
+Page   15: 21.11 Password authenticated key exchange . . . . . . . . . . . . . . . . . . . . . . . . . . 783
+Page   15: 22.1 A key exchange protocol with an online TTP . . . . . . . . . . . . . . . . . . . . . . 799
+Page  398: key can be set manually at both endpoints or it can be negotiated using an IPsec key exchange
+Page  408: few chapters where we use them for public-key encryption, digital signatures, and key exchange.
+Page  408: chapter we develop the full machinery needed for key exchange in the presence of an active attacker
+Page  408: 10.1     A toy problem: anonymous key exchange
+Page  408: More precisely, we model Alice and Bob as communicating machines. A key exchange proto-
+Page  409: Attack Game 10.1 (Anonymous key exchange). For a key exchange protocol P = (A, B)
+Page  409: Definition 10.1. We say that an anonymous key exchange protocol P is secure against an eaves-
+Page  409: Given all the tools we developed in Part 1, it is natural to ask if anonymous key exchange can
+Page  409: In this section, we introduce a tool that will allow us to build an efficient and secure key exchange
+Page  410: 10.2.1    Key exchange using a one-way trapdoor function scheme
+Page  410: to build a secure anonymous key exchange protocol. The protocol runs as follows, as shown in
+Page  411: Figure 10.1: Key exchange using a trapdoor function scheme
+Page  414: 10.3.1    Key exchange based on the RSA assumption
+Page  414: Consider now what happens when we instantiate the key exchange protocol in Section 10.2.1 with
+Page  414: RSA assumption, this is a secure anonymous key exchange protocol.
+Page  415: used this relaxed correctness requirement in the context of key exchange, we would have to allow
+Page  415: 10.4      Diffie-Hellman key exchange
+Page  415: In this section, we explore another approach to constructing secure key exchange protocols, which
+Page  415: Consider the following “generic” key exchange protocol the makes use of two functions E and
+Page  416: 10.4.1    The key exchange protocol
+Page  416: So now we have everything we need to describe the Diffie-Hellman key exchange protocol. We
+Page  416: 10.4.2    Security of Diffie-Hellman key exchange
+Page  417: Figure 10.2: Diffie-Hellman key exchange
+Page  420: can use A to break 10% of all Diffie-Hellman key exchanges. However, this does not mean that A
+Page  426: The Diffie-Hellman key exchange is secure against a passive eavesdropper. Usually, however, an
+Page  426: This generic attack explains why we view key exchange secure against eavesdropping as a toy
+Page  427: 10.8     Merkle puzzles: a partial solution to key exchange using
+Page  427: Can we build a secure key exchange protocol using symmetric-key primitives? The answer is yes,
+Page  427: but the resulting protocol is very inefficient. We show how to do key exchange using a block cipher
+Page  429: submitting a research paper instead of taking the final exam. Merkle submitted his key exchange
+Page  429: It is natural to ask if a better key exchange protocol, based on block ciphers, can achieve better
+Page  429: 10.1 (Computationally unbounded adversaries). Show that an anonymous key exchange
+Page  506: key exchange protocols, public-key encryption is only applied to short messages: a symmetric key
+Page  508: sends the resulting ciphertext c to the server in a message called client key exchange.
+Page  508: • When the server receives a client key exchange message it extracts the ciphertext c and
+Page  509: server. The attacker creates a client key exchange message that contains c0 as the encrypted
+Page  509: Consequently, the server’s response to the attacker’s client key exchange message reveals some
+Page  510: takes a certain amount of time to respond to a client key exchange message when the PKCS1
+Page  532: identify Alice). In practice, DSKS attacks have been used to attack certain key exchange
+Page  553: how to prevent them when we discuss authenticated key exchange in Chapter 21.
+Page  560: 13.7.4    A construction based on Diffie-Hellman key exchange
+Page  560: variant of the Diffie-Hellman key exchange protocol from Section 10.4.1. The protocol uses a group
+Page  560: scheme we describe can be built from any non-interactive key exchange, but here we present it
+Page  560: concretely using Diffie-Hellman key exchange.
+Page  614: implementations of TLS 1.3 are required to support this curve for Diffie-Hellman key exchange. It
+Page  614: for encrypting plaintext data, then P256 can be used for Diffie-Hellman key exchange, public-key
+Page  622: To defeat MiTM attacks, one can combine an identification protocol with a session key exchange
+Page  736: Authenticated Key Exchange
+Page  736: are called authenticated key exchange (AKE) protocols, and are the subject of this chapter.
+Page  738: anonymous key exchange, discussed in Section 10.1. However, it is not enough to simply run such
+Page  738: is implemented using an anonymous key exchange protocol (as in Section 10.1).
+Page  738: anonymous key exchange protocol with P , obtaining a shared key k1 , and another anonymous key
+Page  738: Here, step 1 is implemented using an anonymous key exchange protocol. This key can then be
+Page  739: anonymous key exchange.
+Page  741: we get the key exchange protocol AKE1eg shown in Fig. 21.2. Here, G is a cyclic group of prime
+Page  751: more from a key exchange protocol.
+Page  759: 21.6     One-sided authenticated key exchange
+Page  760: construct key exchange protocols that e↵ectively allow a client and server to establish a one-
+Page  761: to another party that P ran the key exchange protocol with Q. For example, suppose P is a
+Page  761: It would be nice if key exchange protocols would provide some form of “deniability”, so that
+Page  765: globally unique name. In key exchange protocols, this is called a channel binding, although some
+Page  765: To add this feature to a key exchange protocol, we require when instances of users P and Q
+Page  765: key exchange protocol provides them with a channel binding.
+Page  765: The security property that a key exchange protocol with channel bindings should provide can
+Page  769: Definition 21.1 (statically secure authenticated key exchange). An AKE protocol ⇧ is
+Page  770: key exchange protocol, it uses its session key to implement a secure channel using authenticated
+Page  771: Theorem 21.1. Protocol AKE1 is a statically secure authenticated key exchange protocol, assuming:
+Page  773: Definition 21.2 (PFS secure key exchange). An AKE protocol ⇧ is PFS secure if there
+Page  773: Theorem 21.2. Protocol AKE2 is a PFS secure authenticated key exchange protocol assuming: the
+Page  774: Definition 21.3 (HSM secure authenticated key exchange). An AKE protocol ⇧ is HSM
+Page  774: Theorem 21.3. Protocol AKE3 is an HSM secure authenticated key exchange protocol assuming:
+Page  775: Theorem 21.4. Protocol AKE4 is an HSM secure authenticated key exchange protocol assuming:
+Page  776: Theorem 21.5. Protocol AKE5 is an HSM secure authenticated key exchange protocol under the
+Page  777: Theorem 21.6. Protocol AKE6 is an HSM secure authenticated key exchange protocol under the
+Page  778: authenticated key exchange protocol used in TLS to setup a secure session. We only look at the
+Page  778: key exchange protocol used in TLS 1.3 which was introduced in 2017.
+Page  778: TLS 1.3. The essence of the TLS key exchange protocol is shown in Fig. 21.12. The protocol
+Page  779: Figure 21.12: The TLS 1.3 key exchange protocol
+Page  779: The protocol. The TLS key exchange in Fig. 21.12 works as follows. In the first flow, the client
+Page  780: key exchange protocol.
+Page  780: with the second flow of the key exchange protocol. This is why c5 , c6 , c7 are not included in
+Page  780: falls out of the scope of our formal models of secure key exchange.
+Page  781: Additional features. TLS 1.3 provides several features beyond basic key exchange. One feature,
+Page  781: application data outside of the secure session. The TLS 1.3 key exchange provides an exporter
+Page  781: not expose earlier session data. At any time after the key exchange completes, either P or Q can
+Page  781: 21.10.1     Authenticated key exchange with preshared keys
+Page  781: key. This abbreviated key exchange, called a pre-shared key handshake, is more efficient than a
+Page  781: full key-exchange. It skips some of the computationally expensive key exchange steps in Fig. 21.12.
+Page  781: Usually, a pre-shared key is the result of a previous TLS key exchange between P and Q. A
+Page  781: pre-shared key can be generated at anytime after a TLS key exchange completes. Server Q sends a
+Page  782: If the server selects one of the provided identities, then P and Q do an abbreviated key exchange.
+Page  782: The key exchange proceeds as in Fig. 21.12, except that the ciphertexts c1 , c2 , c3 , c5 , c6 are not
+Page  782: exchange is much faster than a full key exchange because no signatures are computed by either
+Page  782: Forward secrecy. A key exchange based on a pre-shared key (optionally) includes the quantities
+Page  782: in a TLS key exchange, it sends the key’s identity c to the server as part of the o↵er . The server
+Page  783: This mechanism is only allowed when the client requests a key exchange using a pre-shared key.
+Page  784: 21.11      Password authenticated key exchange
+Page  784: In Section 21.6 we discussed one-sided authenticated key exchange protocols, where the server has
+Page  784: then examine a new type of key exchange protocol, called password based key exchange, which
+Page  786: feature that can be provided by key exchange protocols. We briefly introduced this notion in
+Page  786: security even when the server’s long-term key secret used in the key exchange has been compromised
+Page  787: We have discussed one-sided authenticated key exchanged protocols, and how these can be combined
+Page  787: These security problems are the motivation for password authenticated key exchange
+Page  787: incorrect if and only if either the key exchange protocol itself fails, or some higher level protocol
+Page  794: it is perhaps better if the key exchange protocol itself raises the alarm. This is easy to do using a
+Page  797: recover psk after a single attempted key exchange with Q. You may assume that the adversary
+Page  797: 21.12 (Non-interactive key exchange). Let G be a group of prime order q generated by
+Page  798: interaction, other than reading the bulletin board. This is called non-interactive key exchange
+Page  815: [75] C. Kaufman, P. Ho↵man, Y. Nir, P. Eronen, and T. Kivinen. Internet key exchange protocol

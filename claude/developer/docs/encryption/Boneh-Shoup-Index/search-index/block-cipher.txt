@@ -1,0 +1,310 @@
+Keyword: block cipher
+Occurrences: 306
+================================================================================
+
+Page    5: 4 Block ciphers                                                                                      94
+Page    5: 4.1 Block ciphers: basic definitions and properties . . . . . . . . . . . . . . . . . . . . . 94
+Page    5: 4.1.3  Strongly secure block ciphers . . . . . . . . . . . . . . . . . . . . . . . . . . 99
+Page    5: 4.1.4  Using a block cipher directly for encryption . . . . . . . . . . . . . . . . . . 100
+Page    5: 4.2 Constructing block ciphers in practice . . . . . . . . . . . . . . . . . . . . . . . . . . 105
+Page    5: 4.3 Sophisticated attacks on block ciphers . . . . . . . . . . . . . . . . . . . . . . . . . . 120
+Page    5: 4.4.3  When is a secure block cipher a secure PRF? . . . . . . . . . . . . . . . . . 132
+Page    5: 4.5 Constructing block ciphers from PRFs . . . . . . . . . . . . . . . . . . . . . . . . . . 139
+Page    6: 4.7.3   The Even-Mansour block cipher and the EX construction . . . . . . . . . . 156
+Page    9: 10.8 Merkle puzzles: a partial solution to key exchange using block ciphers . . . . . . . . 413
+Page  108: Block ciphers
+Page  108: eavesdroppers. Here, we study another kind of cipher, called a block cipher. We also study the
+Page  108: Block ciphers are the “work horse” of practical cryptography: not only can they can be used to
+Page  108: 4.1     Block ciphers: basic definitions and properties
+Page  108: Functionally, a block cipher is a deterministic cipher E = (E, D) whose message space and
+Page  108: Although syntactically a block cipher is just a special kind of cipher, the security property we
+Page  108: shall expect for a block cipher is actually much stronger than semantic security: for a randomly
+Page  108: One very important and popular block cipher is AES (the Advanced Encryption Standard).
+Page  108: The definition of security for a block cipher is formulated as a kind of “black box test.” The intu-
+Page  109: Figure 4.1: The block cipher AES
+Page  109: box — a randomly keyed block cipher, or a truly random permutation. Put another way, a secure
+Page  109: block cipher should be computationally indistinguishable from a random permutation.
+Page  109: Attack Game 4.1 (block cipher). For a given block cipher (E, D), defined over (K, X ), and for
+Page  110: Definition 4.1 (secure block cipher). A block cipher E is secure if for all efficient adversaries
+Page  110: Let E = (E, D) be a block cipher defined over (K, X ). To exercise the definition of security a bit, we
+Page  110: 4.1.1.1    A secure block cipher is unpredictable
+Page  112: Combining the above two implications, we conclude that if E is a secure block cipher, then it must
+Page  113: So it is clear that if a block cipher has any chance of being secure, it must have a large key
+Page  113: 4.1.3   Strongly secure block ciphers
+Page  114: One then defines a corresponding advantage for this attack game. A block cipher is then called
+Page  114: 4.1.4   Using a block cipher directly for encryption
+Page  114: Since a block cipher is a special kind of cipher, we can of course consider using it directly for
+Page  114: encryption. The question is: is a secure block cipher also semantically secure?
+Page  114: space. This will be implied by Theorem 4.1 below. However, data blocks for practical block ciphers
+Page  114: and encrypt each data block separately. This use of a block cipher to encrypt long messages is called
+Page  114: More precisely, suppose E = (E, D) is a block cipher defined over (K, X ). For any poly-bounded
+Page  115: di↵erence is that in Example 2.3, we suggested an alphabet of size 27, while if we use a block cipher
+Page  116: Theorem 4.1. Let E = (E, D) be a block cipher. Let `            1 be any poly-bounded value, and let
+Page  116: sequences of at most ` distinct data blocks. If E is a secure block cipher, then E 0 is a semantically
+Page  117: SSadv[A, E 0 ] is negligible, assuming that E is a secure block cipher. It is more convenient to work
+Page  117: Intuitively, the fact that E is a secure block cipher implies that the adversary should not notice
+Page  118: Since a block cipher is just a special kind of cipher, there is really nothing to say about the
+Page  118: definition of a block cipher that was not already said in Section 2.4. As usual, Definition 4.1 needs
+Page  119: Figure 4.6: Encryption in a real-world block cipher
+Page  119: 4.2    Constructing block ciphers in practice
+Page  119: Block ciphers are a basic primitive in cryptography from which many other systems are built.
+Page  119: Virtually all block ciphers used in practice use the same basic framework called the iterated
+Page  119: cipher paradigm. To construct an iterated block cipher the designer makes two choices:
+Page  119: • First, he picks a simple block cipher Ê := (Ê, D̂) that is clearly insecure on its own. We call Ê
+Page  119: Once these two choices are made, the iterated block cipher E is completely specified. The encryption
+Page  120: Table 4.1: Sample block ciphers
+Page  120: Table 4.1 lists a few common block ciphers and their parameters. We describe DES and AES in
+Page  120: Does iteration give a secure block cipher? Nobody knows. However, heuristic evidence
+Page  120: suggests that security of a block cipher comes from iterating a simple cipher many times. Not all
+Page  120: will never result in a secure block cipher since the iterate of Ê is just another linear function. There
+Page  120: is currently no way to classify which round ciphers will eventually result in a secure block cipher.
+Page  120: times it needs to be iterated before it becomes a secure block cipher. All we know is that certain
+Page  120: functions, like linear functions, never lead to secure block ciphers, while simple non-linear functions
+Page  120: appear to give a secure block cipher after a few iterations.
+Page  120: secure block cipher within a few rounds. Looking at Table 4.1 one is impressed that AES-128 uses
+Page  120: a simple round cipher and yet seems to produce a secure block cipher after only ten rounds.
+Page  121: A word of caution. While this section explains the inner workings of several block ciphers, it
+Page  121: does not teach how to design new block ciphers. In fact, one of the main take-away messages from
+Page  121: this section is that readers should not design block ciphers on their own, but instead always use
+Page  121: implement block ciphers on their own since implementations of block-ciphers tend to be vulnerable
+Page  121: the development of many new tools for analyzing block ciphers.
+Page  121: The precursor to DES is an earlier IBM block cipher called Lucifer. Certain variants of Lucifer
+Page  121: for a block cipher that used shorter blocks (64 bits) and shorter keys (56 bits). In response, the IBM
+Page  121: team designed a block cipher that met these requirements and eventually became DES. Setting the
+Page  121: was superseded by a new and more efficient block cipher standard called AES that uses 128-bit (or
+Page  121: The composition of n Feistel permutations is called an n-round Feistel network. Block ciphers
+Page  125: Recall that an exhaustive search attack on a block cipher (E, D) (Section 4.1.1.2) refers to the
+Page  125: their encryption y1 , . . . , yQ using a block cipher key k in K. The adversary finds k by trying all
+Page  125: For block ciphers like DES and AES-128 three blocks are enough to ensure that with high
+Page  127: Let E = (E, D) be a block cipher defined over (K, X ). We define the block cipher 3E = (E3 , D3 )
+Page  127: The 3E block cipher takes keys in K3 . For DES the 3E block cipher, called Triple-DES, uses keys
+Page  127: be a block cipher with key space K. We show that the 2E = (E2 , D2 ) construction, defined as
+Page  127: than enough to ensure uniqueness for block ciphers like Double-DES.
+Page  128: Theorem 4.2. Let E = (E, D) be a block cipher defined over (K, X ). There is an algorithm AEX
+Page  129: in Chapter 6). By the mid-1990s it became apparent that a new federal block cipher standard is
+Page  129: The AES process. In 1997 NIST put out a request for proposals for a new block cipher standard
+Page  129: to be called the Advanced Encryption Standard or AES. The AES block cipher had to operate
+Page  129: that Rijndael, a Belgian block cipher, had been selected as the AES cipher. The AES became an
+Page  129: Like many real-world block ciphers, AES is an iterated cipher that iterates a simple round cipher
+Page  130: Figure 4.11: Schematic of the AES-128 block cipher
+Page  134: 4.3     Sophisticated attacks on block ciphers
+Page  134: Widely deployed block ciphers like AES go through a lengthy selection process before they are
+Page  135: design their own block ciphers.
+Page  135: Attacking the design of block ciphers is a vast field with many sophisticated techniques: linear
+Page  135: block cipher. This technique, due to Matsui [85, 84], illustrates why designing efficient block-ciphers
+Page  135: Linear cryptanalysis. Let (E, D) be a block cipher where data blocks and keys are bit strings.
+Page  135: We say that the block cipher (E, D) has a linear relation if there exist sets of bit positions
+Page  135: probability exactly 1/2, and therefore ✏ = 0. Surprisingly, the DES block cipher has a linear
+Page  136: Lemma 4.3. Let (E, D) be a block cipher for which (4.14) holds. Let m1 , . . . , mt be messages
+Page  136: Linear cryptanalysis of DES. Matsui showed that 14-rounds of the DES block cipher has a
+Page  138: design secure block ciphers and why one should only use standardized and well-studied ciphers.
+Page  138: other block ciphers such as LOKI91 and Q.
+Page  143: speed up certain attacks and even completely break some systems. Consider again a block cipher
+Page  143: p     |K|. For block ciphers like AES-128 this means
+Page  143: The above discussion suggests that for a block cipher to resist a quantum exhaustive search
+Page  143: breaking the AES-256 block cipher, but at least quantum exhaustive search is out of the question.
+Page  144: To break a block cipher like AES-128 given a few plaintext/ciphertext pairs we would define
+Page  144: While secure block ciphers are the building block of many cryptographic systems, a closely related
+Page  144: cations. PRFs are conceptually simpler objects than block ciphers and, as we shall see, they have
+Page  144: a broad range of applications. PRFs and block ciphers are so closely related that we can use secure
+Page  144: block ciphers as a stand in for secure pseudo-random functions (under certain assumptions). This
+Page  144: practical, and plausibly secure block ciphers.
+Page  146: 4.4.3    When is a secure block cipher a secure PRF?
+Page  146: In this section, we ask the question: when is a secure block cipher a secure PRF? In answering this
+Page  146: Let E = (E, D) be a block cipher defined over (K, X ), and let N := |X |. We may naturally
+Page  146: view E as a PRF, defined over (K, X , X ). Now suppose that E is a secure block cipher; that is,
+Page  146: Theorem 4.4 (PRF Switching Lemma). Let E = (E, D) be a block cipher defined over (K, X ),
+Page  147: Corollary 4.5. Let E = (E, D) be a block cipher defined over (K, X ), and assume that N := |X |
+Page  147: is super-poly. Then E is a secure block cipher if and only if E is a secure PRF.
+Page  147: Actually, the proof of Theorem 4.4 has nothing to do with block ciphers and PRFs — it is
+Page  147: Proof of Theorem 4.4. Let E = (E, D) be a block cipher defined over (K, X ). Let A be an adversary
+Page  151: block cipher. Suppose E = (E, D) is a block cipher defined over (K, X ), where X = {0, 1}n . Let
+Page  151: N := |X | = 2n . Assume that N is super-poly and that E is a secure block cipher. Then by
+Page  151: This mode of operation of a block cipher is called deterministic counter mode. It is il-
+Page  153: 4.5     Constructing block ciphers from PRFs
+Page  153: In this section, we show how to construct a secure block cipher from any secure PRF whose output
+Page  153: construction (after its inventors). The result itself is mainly of theoretical interest, as block ciphers
+Page  153: justification for the design of some practical block ciphers as Feistel networks (see Section 4.2.1).
+Page  153: Let F be a PRF, defined over (K, X , X ), where X = {0, 1}n . We describe a block cipher
+Page  153: It is easy to see that E is a block cipher. It is useful to see algorithm E as consisting of 3
+Page  155: cipher E = (E, D) constructed from F is a secure block cipher.
+Page  159: tion 4.5, we see that from any secure PRG, we can construct a secure block cipher. While this
+Page  166: Block ciphers are used in a variety of cryptographic constructions. Sometimes it is impossible
+Page  166: the block cipher as if it were a family of random permutations. If E = (E, D) is a block cipher
+Page  166: they are used to model a construction based on a real block cipher, to obtain a heuristic security
+Page  166: adversary that exploits the design of a particular block cipher, even one that is secure in the sense
+Page  167: use of a permutation ⇡ : X ! X , rather than a block cipher. In the security analysis, one might
+Page  167: Let (E, D) be a block cipher defined over (K, X ) and let k be some random secret key in K. Suppose
+Page  167: yi = E(k , xi ) for all i = 1, . . . , Q is found. For block ciphers used in practice it is likely that
+Page  167: Attack Game 4.4 (key-recovery). For a given block cipher E = (E, D), defined over (K, X ),
+Page  168: sense of indistinguishability (Definition 4.1). The simplest example is the constant block cipher
+Page  168: but the block cipher is easily distinguished from a random permutation.
+Page  168: Theorem 4.12. Let E = (E, D) be a block cipher defined over (K, X ). Then there exists an
+Page  168: Proof. In the ideal cipher model, we are modeling the block cipher E = (E, D) as a family {⇧k }k 2K
+Page  169: Theorem 4.13. Let E = (E, D) be an ideal block cipher defined over (K, X ), and consider an
+Page  169: a random permutation is no harder than doing so for E. Of course, block ciphers used in practice
+Page  170: 4.7.3   The Even-Mansour block cipher and the EX construction
+Page  170: Mansour defined the following simple block cipher EEM = (E, D) defined over (X 2 , X ):
+Page  170: How do we analyze the security of this block cipher? Clearly for some ⇡’s this construction is
+Page  170: insecure, for example when ⇡ is the identity function. For what ⇡ is EEM a secure block cipher?
+Page  170: and ⇧ 1 . Hence, the Even-Mansour block cipher is secure (in the ideal cipher model) whenever |X |
+Page  170: ⇧AES plays the role of ⇡. Of course one round of AES is not a secure block cipher: the bound
+Page  170: block cipher E = (E, D) defined over (K, X ), we obtain a new block cipher called EX = (EX, DX)
+Page  170: Applying EX to the DES block cipher gives an efficient method to immunize DES against
+Page  170: exhaustive search attacks. With P1 = P2 we obtain a block cipher called DESX whose key size
+Page  171: one call to DES, the DESX block cipher is three times faster than the Triple-DES block cipher and
+Page  171: We shall prove security of the Even-Mansour block cipher (4.35) in the ideal permutation model
+Page  171: We prove their security in a single theorem below. Taking a single-key block cipher (i.e., |K| = 1)
+Page  171: proves security of Even-Mansour in the ideal permutation model. Taking a block cipher with a
+Page  171: Theorem 4.14. Let E = (E, D) be a block cipher defined over (K, X ). Let EX = (EX, DX) be
+Page  171: the block cipher derived from E as in construction (4.37), where P1 and P2 are each uniformly
+Page  171: We also note that it is actually no harder to prove that EX is a strongly secure block cipher (see
+Page  173: let pb be the probability that A outputs 1 in Experiment b of the block cipher attack game in the
+Page  173: Game 0. We begin by describing Game 0, which corresponds to Experiment 0 of the block cipher
+Page  175: Finally, observe that Game 1 is equivalent to Experiment 1 of the block cipher attack game in
+Page  180: 4.3 (Format preserving encryption). Suppose we are given a block cipher (E, D) operating
+Page  180: on domain X . We want a block cipher (E 0 , D0 ) that operates on a smaller domain X 0 ✓ X . Define
+Page  180: (b) Show that if (E, D) is a secure block cipher with domain X then (E 0 , D0 ) is a secure block
+Page  180: encryption, amounts to constructing a block cipher whose domain size is exactly 1016 . This
+Page  180: exercise shows that it suffices to construct a block cipher (E, D) with domain size 254 which is the
+Page  180: only two keys: for a block cipher (E, D) with key space K define 3E 0 as E((k1 , k2 ), m) :=
+Page  180: E(k1 , E(k2 , E(k1 , m))). Show that this block cipher can be defeated by a meet in the middle
+Page  180: attack using O(|K|) evaluation of E and D and using O(|K|) encryption queries to the block cipher
+Page  181: (c) Show that a similar construction is possible for block ciphers: given a secure block cipher
+Page  181: 4.9 (Strongly secure block ciphers). In Section 4.1.3 we sketched out the notion of a strongly
+Page  181: secure block cipher.
+Page  181: (a) Write out the complete definition of a strongly secure block cipher as a game between a
+Page  181: (b) Consider the following cipher E 0 = (E 0 , D0 ) built from a block cipher (E, D) defined over
+Page  182: secure? Prove semantic security assuming the underlying block cipher is strongly secure.
+Page  182: a block cipher (E, D) is iterated four times using four di↵erent keys: E4 ( (k1 , k2 , k3 , k4 ), m) :=
+Page  182: E k4 , E(k3 , E(k2 , E(k1 , m))) where (E, D) is a block cipher defined over (K, X ).
+Page  182: 4.11 (Tweakable block ciphers). A tweakable block cipher is a block cipher whose encryption
+Page  182: is a secure tweakable block cipher if every efficient adversary has negligible advantage.
+Page  182: This definition of security generalizes the notion of a strongly secure block cipher (see Section 4.1.3
+Page  182: and Exercise 4.9). In applications of tweakable block ciphers, this strong security notion is more
+Page  182: secure block cipher defined over (K, K).
+Page  183: where (E, D) is a strongly secure block cipher and F is a secure PRF. In Exercise 7.10 we
+Page  183: Hint: Use the assumption that (E, D) is a strongly secure block cipher to replace E(k1 , ·) in
+Page  183: Discussion: Tweakable block ciphers are used in disk sector encryption where encryption must
+Page  183: part (a), as the latter uses a di↵erent block cipher key with every evaluation, which can incur extra
+Page  183: 4.13 (Block cipher combiners). Continuing with Exercise 4.12, we want to build a block cipher
+Page  183: E = (E, D) from two block ciphers E1 = (E1 , D1 ) and E2 = (E2 , D2 ) so that if at some future time
+Page  184: (a) Show that two-round Luby-Racko↵ is not a secure block cipher.
+Page  184: (b) Show that three-round Luby-Racko↵ is not a strongly secure block cipher.
+Page  185: block cipher (E, D) built from a permutation ⇡ : X ! X where X = {0, 1}n . Recall that
+Page  185: (a) Show that E1 (P0 , m) := ⇡(m                P0 ) is not a secure block cipher.
+Page  185: (b) Show that E2 (P1 , m) := ⇡(m)               P1 is not a secure block cipher.
+Page  185: We show how to break this block cipher in time approximately 2n/2 .
+Page  185: (b) Use part (a) to construct an adversary A that wins the block cipher security game against
+Page  186: block cipher adversary A attacking (E, D) we have
+Page  189: secure ciphers, PRFs, and block ciphers, and look at a few case studies of “real world” systems.
+Page  194: PRF is usually instantiated with a block cipher. Finally, in Section 5.4.3, we present a cipher that
+Page  194: is constructed from a block cipher using a method called cipher block chaining (CBC) mode.
+Page  194: block cipher. Another mode of operation we have already seen in Section 4.1.4 is electronic codebook
+Page  200: In practice, F is typically implemented using the encryption function of a block cipher, and
+Page  200: it happens, the decryption function of the block cipher is not needed at all in this construction.
+Page  205: An historically important encryption method is to use a block cipher in cipher block chaining (CBC)
+Page  205: Suppose E = (E, D) is a block cipher defined over (K, X ), where X = {0, 1}n . Let N := |X | =
+Page  205: unlike the counter mode construction in Section 5.4.2, in CBC mode, we must use a block cipher,
+Page  205: as we actually need to use the decryption algorithm of the block cipher.
+Page  207: Theorem 5.4. If E = (E, D) is a secure block cipher defined over (K, X ), and N := |X | is
+Page  207: is negligible, assuming that E is a secure block cipher and that N is super-poly. Under these
+Page  208: where B is an efficient adversary; moreover, since we are assuming that E is a secure block cipher,
+Page  210: Let E = (E, D) be a block cipher with domain X . Our description of CBC mode encryption using E
+Page  210: from a secure block cipher gives a CPA secure cipher for messages of arbitrary length.
+Page  210: and that CBC is implemented with an n-bit block cipher. In each case, the message space consists
+Page  211: processors. More importantly, consider a hardware implementation of a single block cipher
+Page  211: • Encryption only. CBC mode uses both algorithms E and D of the block cipher whereas
+Page  215: F must match the block space of the underlying block cipher E = (E, D), which is defined over
+Page  215: Theorem 5.7. If E = (E, D) is a secure block cipher defined over (K, X ), and N := |X | is
+Page  215: we may use the underlying block cipher E for the PRF F ; however, it is essential that independent
+Page  221: 5.6 (CPA security from a block cipher). Let E = (E, D) be a block cipher defined over
+Page  221: This cipher is defined over (K, M, M ⇥ R). Show that if E is a secure block cipher, and 1/|R| is
+Page  221: (b) Consider the CBC construction Section 5.4.3, based on a block cipher E = (E, D) defined over
+Page  221: space X `+1 . Under the assumptions that E is a secure block cipher, |X | is super-poly, and `
+Page  222: 5.13 (CBC encryption with small blocks is insecure). Suppose the block cipher used for
+Page  223: explains why CBC cannot be used with a block cipher that has a small block size (e.g. n = 64
+Page  223: block cipher E = (E, D), and the PRF F is just the encryption algorithm E. If the two keys k and
+Page  234: practical PRFs such as AES (while AES is a block cipher it can be viewed as a PRF thanks to the
+Page  241: of F while cascade uses a di↵erent key in each round. Since block ciphers are typically optimized
+Page  243: that F is a block cipher, and that |X | is not too small. These assumptions will greatlypsimplify the
+Page  243: indices i, j, then our assumption that F is a block cipher guarantees that PF (k1 , xi ) = PF (k1 , xj ).
+Page  256: encryption algorithm of a block cipher such as AES, and let D be the corresponding decryption
+Page  256: showed that the PMAC0 , implemented using a block cipher, is incremental.
+Page  259: length messages. More specifically, if CBC is instantiated with a block cipher that operates on n-bit
+Page  275: very well want to use for our PRF a block cipher, like AES, that takes as input an n-bit block.
+Page  276: prefer to work with a PRF defined in terms of a block cipher, like AES, which takes as input an
+Page  289: 7.10 (Tweakable block ciphers). Continuing with Exercise 4.11, show that in the construc-
+Page  289: construction is a strongly secure tweakable block cipher:
+Page  289: Here (E, D) is a strongly secure block cipher defined over (K0 , X ) and h is an XOR-DUF defined
+Page  289: Discussion: XTS mode, used in disk encryption systems, is based on this tweakable block cipher.
+Page  290: function of a block cipher E defined over (K, X ), so R = X = T = ZN . A straightforward
+Page  290: secure block cipher defined over (KE , X ). The encrypted Carter-Wegman nonce-based MAC system
+Page  309: • Compression functions built from a block cipher. The most widely used method is called
+Page  309: In Chapter 4 we spent the e↵ort to build secure block ciphers like AES. It is natural to ask whether
+Page  309: Let E = (E, D) be a block cipher over (K, X ) where X = {0, 1}n . The Davies-Meyer com-
+Page  309: variable ti := E(mi , ti 1 ) ti 1 2 X . Note that the message block is used as the block cipher key
+Page  309: When using hDM in Merkle-Damgård the block cipher key (mi ) changes from one message block
+Page  309: to the next, which is an unusual way of using a block cipher. Common block ciphers are optimized
+Page  309: to encrypt long messages with a fixed key; changing the block cipher key on every block can slow
+Page  309: down the cipher. Consequently, using Davies-Meyer with an o↵-the-shelf block cipher such as AES
+Page  310: Figure 8.7: Other block cipher compression functions
+Page  310: will result in a relatively slow hash function. Instead, one uses a custom block cipher specifically
+Page  310: Another reason to not use an o↵-the-shelf block cipher in Davies-Meyer is that the block size
+Page  310: only 264 evaluations of the function. In addition, o↵-the-shelf block ciphers use relatively short
+Page  310: methods can convert a block cipher into a collision resistant compression function. For example,
+Page  311: chaining variable and the message block — in h1 the chaining variable is used as the block cipher
+Page  311: sumption about the block cipher. Simply assuming that E = (E, D) is a secure block cipher is
+Page  311: insufficient for proving that hDM is collision resistant. Instead, we have to model the block cipher
+Page  311: in which we treat the block cipher as if it were a family of random permutations. If E = (E, D) is
+Page  311: a block cipher with key space K and data block space X , then the family of random permutations
+Page  314: The SHA256 block cipher. To complete the description of SHA256 it remains to describe the
+Page  314: block cipher ESHA256 . The algorithm makes use of a few auxiliary functions defined in Table 8.2.
+Page  314: Interestingly, NIST never gave the block cipher ESHA256 an official name. The cipher was given
+Page  314: Similarly, the block cipher underlying SHA1 is called SHACAL-1. The SHACAL-2 block cipher is
+Page  315: Table 8.2: Functions used in the SHA256 block cipher
+Page  315: Table 8.3: The SHA256 block cipher
+Page  316: Figure 8.8: One round of the SHA256 block cipher
+Page  316: uses the Miyaguchi-Preneel method (Fig. 8.7) with a block cipher called W . This block cipher is
+Page  320: some block cipher E = (E, D). Then
+Page  320: When E is a secure block cipher, the fact that htop is a secure PRF is trivial (see Exercise 4.1
+Page  320: block cipher, there is no security guarantee for hbot . Nevertheless, we can prove that hbot is a
+Page  320: secure PRF, but this requires the ideal cipher model. Just assuming that E is a secure block cipher
+Page  320: In the ideal cipher model, we heuristically model a block cipher E = (E, D) defined over (K, X )
+Page  321: Theorem 8.5 (Security of hbot ). Let E = (E, D) be a block cipher over (K, X ), where |X | is
+Page  323: ⇡ : {0, 1}n ! {0, 1}n is used. We stress that unlike a block cipher, the function ⇡ has no key.
+Page  337: model introduced in Section 4.7, where we replace a block cipher E = (E, D) defined over (K, X )
+Page  342: oracle ⇢, or if h itself is built via Davies-Meyer, then the underlying block cipher is modeled as
+Page  342: oracle, or if h is built via Davies-Meyer and we model the underlying block cipher as an ideal cipher.
+Page  353: let E = (E, D) be a secure block cipher defined over (K, X ). Show that the encrypted-hash MAC
+Page  354: be collision resistant when instantiated with a real-world block cipher. Let (E, D) be a block cipher
+Page  355: (a) Suppose that E(k, x) = E(k, x) for all keys k 2 K and all x 2 X . The DES block cipher has
+Page  355: block cipher used in the Davies-Meyer construction as an ideal cipher, and adapt the attack game to
+Page  356: the underlying block cipher in the Davies-Meyer construction as an ideal cipher. For concreteness,
+Page  362: block cipher or a PRF without first constructing either a standalone cipher or MAC. These are
+Page  365: binary strings whose length is the same as the block size of the underlying block cipher. As usual
+Page  373: Let us assume that the underlying block cipher used in CBC operates on 16 byte blocks, as
+Page  374: the block cipher used in CBC mode encryption. It operates on 16-byte blocks.
+Page  385: GCM uses an underlying block cipher E = (E, D) such as AES defined over (K, X ) where
+Page  385: X := {0, 1}128 . The block cipher is used for both counter mode encryption and the Carter-Wegman
+Page  386: of encrypt-then-MAC (Theorem 9.4), and follows from the security of the underlying block cipher
+Page  401: 9.3 (An Android Keystore Attack). Let (E, D) be a secure block cipher defined over (K, X ),
+Page  402: both the cipher and the MAC. Let (E, D) be a block cipher defined over (K, X ) where X = {0, 1}n
+Page  403: 9.12 (Constructions based on strongly secure block ciphers). Let (E, D) be a block cipher
+Page  403: Show that (E 0 , D0 ) is CCA-secure provided (E, D) is a strongly secure block cipher and 1/|R| is
+Page  403: (E, D) is a strongly secure block cipher and 1/|R| is negligible.
+Page  404: Show that (Ẽ 00 , D̃00 ) is one-time AE-secure provided (E, D) is a strongly secure block cipher,
+Page  404: it is nonce-based AEAD secure assuming the security of the underlying block cipher as a PRF
+Page  405: block cipher (as defined in Exercise 4.11). Let (E, D) be a tweakable block cipher defined over
+Page  405: tweakable block cipher and |X | is super-poly.
+Page  427: block ciphers
+Page  427: but the resulting protocol is very inefficient. We show how to do key exchange using a block cipher
+Page  428: One can make this argument precise, by modeling the block cipher E as an ideal cipher, as we
+Page  428: block ciphers alone. As the story goes, Merkle came up with this clever protocol while taking a
+Page  429: It is natural to ask if a better key exchange protocol, based on block ciphers, can achieve better
+Page  429: Impagliazzo and Rudich [70] suggests that one cannot achieve better separation using block ciphers
+Page  648: They can also be used to recover the secret key k in a block cipher (E, D) from a known plaintext-
+Page  812: [17] K. Bhargavan and G. Leurent. On the practical (in-)security of 64-bit block ciphers: Collision
+Page  817: [100] Recommendation for block cipher modes of operation: The ccm mode for authentication and
+Page  817: [105] B. Preneel, R. Govaerts, and J. Vandewalle. Hash functions based on block ciphers: a
+Page  818: [115] F.-X. Standaert, G. Piret, and J.-J. Quisquater. Cryptanalysis of block ciphers: A survey.

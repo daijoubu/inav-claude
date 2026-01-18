@@ -1,0 +1,104 @@
+Keyword: CCA security
+Occurrences: 100
+================================================================================
+
+Page   10: 12.2 Understanding CCA security . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 458
+Page   10: 12.2.1 CCA security and ciphertext malleability . . . . . . . . . . . . . . . . . . . 458
+Page   10: 12.2.2 CCA security vs authentication . . . . . . . . . . . . . . . . . . . . . . . . . 459
+Page   10: 12.2.3 CCA security and key escrow . . . . . . . . . . . . . . . . . . . . . . . . . . 460
+Page   10: 12.5 CCA security from DDH without random oracles . . . . . . . . . . . . . . . . . . . 474
+Page   10: 12.6 CCA security via a generic transformation . . . . . . . . . . . . . . . . . . . . . . . 483
+Page  366: Attack Game 9.2 (CCA security). For a given cipher E = (E, D) defined over (K, M, C), and
+Page  366: Definition 9.5 (CCA security). A cipher E is called semantically secure against chosen ci-
+Page  367: Definition 9.6 (1CCA security). In Attack Game 9.2, if the adversary A is restricted to making
+Page  384: to other security notions, such as CCA security. Considering all of these variations in detail would
+Page  384: Definition 9.10 (CCA and 1CCA security with associated data). The definition of CCA
+Page  384: is 1CCA security, so for simplicity we focus on that notion for now. We construct a 1CCA-secure
+Page  470: CCA security. In the CPA attack game, the decryption key is never used, and so CPA security
+Page  470: decrypt messages. The notion of CCA security is designed to model a wide spectrum of real-world
+Page  470: We briefly introduced the notion of CCA security in the symmetric-key setting in Section 9.2,
+Page  470: symmetric-key setting. However, it turns out CCA security plays a more fundamental role in the
+Page  470: Attack Game 12.1 (CCA security). For a given public-key encryption scheme E = (G, E, D),
+Page  471: Definition 12.1 (CCA Security). A public-key encryption scheme E is called semantically
+Page  471: Definition 12.2 (1CCA security). In Attack Game 12.1, if the adversary A is restricted to
+Page  471: Notice that if we strip away the decryption queries, 1CCA security corresponds to semantic
+Page  471: security, and CCA security corresponds to CPA security. We showed in Theorem 11.1 that semantic
+Page  471: to chosen ciphertext security, namely, that 1CCA security implies CCA security.
+Page  471: Since 1CCA security implies CCA security, if we want to prove that a particular public-key
+Page  471: encryption scheme is CCA secure, we will typically simply prove 1CCA security. So it will be
+Page  472: 12.2     Understanding CCA security
+Page  472: The definition of CCA security may seem rather unintuitive at first. Indeed, one might ask: in the
+Page  472: In this section, we explore the definition of CCA security from several angles. Hopefully, by the
+Page  472: 12.2.1    CCA security and ciphertext malleability
+Page  473: CCA adversary A that has advantage 1 in the CCA security game. Here is how.
+Page  473: that no one can steal her homework by modifying the ciphertext she submitted. CCA security,
+Page  473: 12.2.2    CCA security vs authentication
+Page  473: When we first encountered the notion of CCA security in the symmetric-key setting, back in
+Page  473: Section 9.2, we saw that CCA security was implied by AE security, i.e., ciphertext integrity plus
+Page  474: achieve CCA security, yet CCA security is vital for security in real-world systems. (We will discuss
+Page  474: 12.2.3    CCA security and key escrow
+Page  475: of the escrow service, along with CCA security, ensures that the nosy auditor cannot obtain this
+Page  475: even if it does, CCA security and the fact that c0ES 6= cES ensures that no information about
+Page  475: To conclude our motivational discussion of CCA security we show that it abstractly captures a
+Page  476: while here we are working with the notion of CCA security. When S drops mi in its out-box,
+Page  476: CCA security implies that this ideal implementation of the service is for all practical purposes
+Page  477: Here is where we use the CCA security property: if the attacker could distinguish the second
+Page  477: modification from the first, we could use the attacker to break the CCA security of E.
+Page  477: CCA security) guarantees that the ci ’s are unique with overwhelming probability (the reader can
+Page  478: The next theorem proves the CCA security of ETDF  0   , assuming T is one-way given an image ora-
+Page  479: decryption queries of the form (y, ĉ), is as good as random, and so CCA security for ETDF    0   follows
+Page  479: immediately from 1CCA security for Es .
+Page  484: to establish the CCA security of EEG . Conversely, one can prove that EEG is CCA secure in the
+Page  484: Remark 12.1 (Group membership verification). To prove the CCA security of EEG             0 , we must
+Page  488: 12.5     CCA security from DDH without random oracles
+Page  497: 12.6      CCA security via a generic transformation
+Page  497: tion 12.3, we saw how to achieve CCA security in the random oracle model using a trapdoor
+Page  497: achieve CCA security in the random oracle model under the interactive CDH assumption, and with
+Page  497: a bit more e↵ort, we were able to achieve CCA security in Section 12.5 without resorting to the
+Page  504: Contrast this result to the construction in Section 12.4: to achieve CCA security, instead of the
+Page  504: In Section 9.6, we introduced the notion of CCA security for symmetric-key ciphers with associated
+Page  505: Definition 12.7 (CCA and 1CCA security with associated data). The definition of CCA
+Page  506: alone CCA security. Towards this goal, let us define the notion of a padding scheme.
+Page  509: would not be possible if RSA-PKCS1 were CCA-secure: CCA security implies that such attacks
+Page  512: The security of EOAEP . One might hope to prove CCA security of EOAEP in the random oracle
+Page  513: the concrete security bounds obtained when proving CCA security of RSA-OAEP based on the
+Page  514: breaks CCA security of the scheme. This issue suggests that the definition of CCA security may be
+Page  515: Consider a KEM Ekem = (G, Ekem , Dkem ), defined over (K, Ckem ). We define 1CCA security for
+Page  516: 1CCA security for such a mixed KEM is defined using an attack game that is the same as the attack
+Page  516: game defining 1CCA security for a public-key encryption scheme, except that in Experiment b, the
+Page  516: 12.7 (Multi-key CCA security). Generalize the definition of CCA security for a public-key
+Page  516: respect to any of these keys. Show that 1CCA security implies multi-key CCA security. You should
+Page  516: in breaking the multi-key CCA security of a scheme is at most Qk Qe · ✏, where ✏ is the advantage
+Page  517: 12.8 (Multi-key CCA security of ElGamal). Consider a slight modification of the public-key
+Page  517: adversary that attacks the multi-key CCA security of xEEG0 . Show that A’s advantage is at most
+Page  522: 12.27 (Non-adaptive CCA security and Cramer-Shoup lite). One can define a weaker
+Page  522: notion of CCA security, corresponding to a variant of the CCA attack game in which the adversary
+Page  523: as we did for ordinary CCA security, it suffices to assume that the adversary makes just a single
+Page  523: encryption query. Let us call the corresponding security notion non-adaptive 1CCA security.
+Page  525: a public-key encryption scheme whose CCA security (in the random oracle model) is based on the
+Page  526: tion 12.4, this scheme achieves CCA security under the CDH assumption, rather than the stronger
+Page  526: 12.33 (Multi-key CCA security of Twin CDH). Consider a slight modification of the public-
+Page  526: queries. Let A be an adversary that attacks the multi-key CCA security of xE2cdh . Show that A’s
+Page  552: Attack Game 13.6 (CCA security). For a given signcryption scheme SC = (G, E, D), defined
+Page  553: Definition 13.7 (CCA Security). A signcryption scheme SC is called semantically secure
+Page  555: The CCA security property ensures that this modification is indistinguishable from the second.
+Page  558: Proving chosen ciphertext security. Next, we sketch the proof of CCA security. It is convenient
+Page  559: Proof idea. CCA security for the signcryption scheme follows almost immediately from the CCA
+Page  560: Call this Game 1. Under CCA security for E, the adversary’s advantage in breaking CI in Game 0
+Page  562: tion forward secrecy. The goal is to ensure that CCA security is maintained even if the adversary
+Page  562: obtains the sender’s secret key. To do so we make a small tweak to the CCA security game (Attack
+Page  562: Attack Game 13.8 (CCA security with sender corruption forward secrecy). The game
+Page  563: query, completely breaking CCA security.
+Page  563: adversary corresponds to the notion of gCCA security discussed in Exercise 12.2, and is actually
+Page  563: along with an ephemeral secret key w = g ·↵R . The ephemeral secret key ensures CCA security even
+Page  564: Interestingly, the proof of CCA security for SC 0DH only relies on the simpler interactive Diffie-
+Page  564: proof of CCA security with forward secrecy, where the adversary is given the sender’s secret key, is
+Page  564: almost identical to the proof of ElGamal CCA security (Theorem 12.4), together with the random
+Page  565: encrypt, despite only providing a slightly weaker notion of CCA security, as discussed above.
+Page  734: voter ID. CCA security ensures these encrypted votes are non-malleable, which means (among other
+Page  741: hash for a tighter security reduction). For CCA security of the KEM we model H as a random
+Page  750: secure encryption scheme. Without CCA security, the protocol is vulnerable to a similar attack as
+Page  753: Also note that since we do not require CCA security, it is not necessary for P to explicitly check
+Page  759: Just as for protocol AKE3, since we do not require CCA security, there is no need for either user to
+Page  772: last assertion, together with the CCA security of encryption, implies that fresh session keys can be
+Page  781: ICDH assumption (for much the same reason as we need CCA security and the ICDH assumption

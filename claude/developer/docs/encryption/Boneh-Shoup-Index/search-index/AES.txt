@@ -1,0 +1,267 @@
+Keyword: AES
+Occurrences: 263
+================================================================================
+
+Page    5: 4.2.4  Case study: AES . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 115
+Page    5: 4.3.3  Fault-injection attacks on AES . . . . . . . . . . . . . . . . . . . . . . . . . 128
+Page  108: One very important and popular block cipher is AES (the Advanced Encryption Standard).
+Page  108: We will study the internal design of AES in more detail below, but for now, we just give a very
+Page  108: high-level description. AES keys are 128-bit strings (although longer key sizes may be used, such
+Page  108: as 192-bits or 256-bits). AES data blocks are 128-bit strings. See Fig. 4.1. AES was designed to be
+Page  109: m                        AES                              c
+Page  109: Figure 4.1: The block cipher AES
+Page  109: For AES, with |X | = 2128 , the number of permutations is about
+Page  109: while the number of permutations defined by 128-bit AES keys is at most 2128 .
+Page  113: would require about |X | log2 |X | bits. For AES, with |X | = 2128 , this means about 1040 bits!
+Page  113: While this is not a problem from a purely definitional point of view, for both aesthetic and
+Page  114: are very short: as we mentioned, data blocks for AES are just 128-bits long. If we want to encrypt
+Page  115: like AES with a 128-bit block size, the “alphabet” is much larger — it has 2128 elements. Despite
+Page  116: using AES
+Page  116: blocks. For example, suppose we are using AES, which has 128-bit data blocks. Then we could
+Page  120: AES-128        128             128                10             163
+Page  120: AES-256        256             128                14             115
+Page  120: Table 4.1 lists a few common block ciphers and their parameters. We describe DES and AES in
+Page  120: secure block cipher within a few rounds. Looking at Table 4.1 one is impressed that AES-128 uses
+Page  121: was superseded by a new and more efficient block cipher standard called AES that uses 128-bit (or
+Page  125: For block ciphers like DES and AES-128 three blocks are enough to ensure that with high
+Page  126: 4.2.2.1    Is AES-128 vulnerable to exhaustive search?
+Page  126: Let us extrapolate the DES results to AES. While these estimates are inherently imprecise, they
+Page  126: give some indication as to the complexity of exhaustive search on AES. The minimum AES key
+Page  126: accounting for the fact that evaluating AES is faster than evaluating DES, the required time far
+Page  126: exceeds our capabilities. It is fair to conclude that a brute-force exhaustive search attack on AES
+Page  127: will never be practical. However, more sophisticated brute-force attacks on AES-128 exploiting
+Page  129: 4.2.4     Case study: AES
+Page  129: The AES process. In 1997 NIST put out a request for proposals for a new block cipher standard
+Page  129: to be called the Advanced Encryption Standard or AES. The AES block cipher had to operate
+Page  129: candidates. A further round of intense cryptanalysis followed, culminating in the AES3 conference
+Page  129: arguing why their standard should be chosen as the AES. In October of 2000, NIST announced
+Page  129: that Rijndael, a Belgian block cipher, had been selected as the AES cipher. The AES became an
+Page  129: Rijndael was designed by Belgian cryptographers Joan Daemen and Vincent Rijmen [36]. AES
+Page  129: 128, 192, or 256 bits while AES only supports 128-bit blocks.
+Page  129: 4.2.4.1    The AES algorithm
+Page  129: Like many real-world block ciphers, AES is an iterated cipher that iterates a simple round cipher
+Page  130: ⇧AES :                             ⇧AES :             ˆ AES :
+Page  130: Figure 4.11: Schematic of the AES-128 block cipher
+Page  130: AES-128          128          128          10
+Page  130: AES-192          192          128          12
+Page  130: AES-256          256          128          14
+Page  130: For example, the structure of the cipher AES-128 with its ten rounds is shown in Fig. 4.11. Here
+Page  130: ⇧AES is a fixed permutation (a one-to-one function) on {0, 1}128 that does not depend on the key.
+Page  130: The last step of each round is to XOR the current round key with the output of ⇧AES . This is
+Page  130: repeated 9 times until in the last round a slightly modified permutation ⇧ ˆ AES is used. Inverting
+Page  130: the AES algorithm is done by running the entire structure in the reverse direction. This is possible
+Page  130: certain “ideal” assumptions about the permutation ⇧AES in each round. We present this analysis
+Page  130: To complete the description of AES it suffices to describe the permutation ⇧AES , and the AES
+Page  130: The AES round permutation. The permutation ⇧AES is made up of a sequence of three
+Page  130: specified in the AES standard as a hard-coded table of 256 entries. It is designed to have
+Page  131: The permutation ⇧AES used in the AES circuit of Fig. 4.11 is the sequential composition of the
+Page  131: AES uses a slightly di↵erent function we call ⇧  ˆ AES . This function is the same as ⇧AES except
+Page  131: that the MixColumns step is omitted. This omission is done so that the AES decryption circuit
+Page  131: looks somewhat similar to the AES encryption circuit. Security implications of this omission are
+Page  131: Because each step in ⇧AES is easily invertible, the entire permutation ⇧AES is easily invertible,
+Page  131: Implementing AES using pre-computed tables. The AES round function is built from
+Page  131: a permutation we called ⇧AES defined as a sequence of three steps: SubBytes, ShiftRows, and
+Page  131: MixColumns. The designers of AES did not intend for AES to be implemented that way on modern
+Page  131: processors. Instead, they proposed an implementation of ⇧AES the does all three steps at once using
+Page  131: To explain how this works, recall that ⇧AES takes as input a 4 ⇥ 4 matrix A = (ai )i=0,...,15 and
+Page  131: outputs a matrix A0 := ⇧AES (A) of the same dimensions. Let us use S[a] to denote the result of
+Page  131: Now, looking at (4.12), we can write the four columns of the output of ⇧AES (A) as:
+Page  132: Plugging these tables into (4.13) gives a fast way to evaluate ⇧AES (A):
+Page  132: The entire AES circuit written this way is a simple sequence of table lookups. Since each table Ti
+Page  132: The one exception to (4.13) is the very last round of AES where the MixColumns step is omitted.
+Page  132: This optimization of AES is optional. Implementations in constrained environments where
+Page  132: there is no room to store a 4KB table can choose to implement the three steps of ⇧AES in code,
+Page  132: which takes less than 4KB, but is not as fast. Thus AES can be adapted for both constrained and
+Page  132: As a word of caution, we note that a simplistic implementation of AES using this table lookup
+Page  132: The AES-128 key expansion method. Looking back at Fig. 4.11 we see that key expansion
+Page  132: for AES-128 needs to generate 11 rounds keys k0 , . . . , k10 where each round key is 128 bits. To do
+Page  132: so, the 128-bit AES key is partitioned into four 32-bit words w0,0 , w0,1 , w0,2 , w0,3 and these form
+Page  132: Here the function gi : {0, 1}32 ! {0, 1}32 is a fixed function specified in the AES standard. It
+Page  132: with a fixed round constant ci . The round constants c1 , . . . , c10 are specified in the AES standard:
+Page  132: The key expansion procedures for AES-192 and AES-256 are similar to those of AES-128. For
+Page  132: AES-192 each iteration generates six 32-bit words (192 bits total) in a similar manner to AES-128,
+Page  133: but only the first four 32-bit words (128 bits total) are used as the AES round key. For AES-256
+Page  133: each iteration generates eight 32-bit words (256 bits total) in a similar manner to AES-128, but
+Page  133: only the first four 32-bit words (128 bits total) are used as the AES round key.
+Page  133: The AES key expansion method is intentionally designed to be invertible: given the last round
+Page  133: key, one can work backwards to recover the full AES secret key k. The reason for this is to ensure
+Page  133: that every AES-128 round key, on its own, has the same amount of entropy as the AES-128 secret
+Page  133: key k. If AES-128 key expansion were not invertible then the last round key would not be uniform
+Page  133: side-channel attacks on AES, discussed next.
+Page  133: Security of AES. The AES algorithm withstood fairly sophisticated attempts at cryptanalysis
+Page  133: search attack. The best known key recovery attack on AES-128 takes 2126.1 evaluations of
+Page  133: AES [23]. This is about four times faster than exhaustive search and takes a prohibitively
+Page  133: long time. Therefore this attack has little impact on the security of AES-128.
+Page  133: The best known attack on AES-192 takes 2189.74 evaluation of AES which is again only about
+Page  133: four times faster than exhaustive search. The best known attack on AES-256 takes 2254.42
+Page  133: evaluation of AES which is about three times faster than exhaustive search. None of these
+Page  133: attacks impact the security of either AES variant.
+Page  133: AES-256 is vulnerable to a related key attack that exploits its relatively simple key expansion
+Page  133: the time it would take to mount an exhaustive search on AES-256. While the attack is quite
+Page  133: interesting, it does not a↵ect the security of AES-256 in well-implemented systems.
+Page  133: Hardware implementation of AES. At the time AES was standardized as a federal encryption
+Page  133: standard most implementations were software based. The wide-spread adoption of AES in software
+Page  133: a hardware implementation of AES.
+Page  133: AES-NI (AES new instructions) that speed-up and simplify the process of using AES in software.
+Page  133: • AESKEYGENASSIST: runs the key expansion procedure to generate the AES round keys from
+Page  133: the AES key.
+Page  134: • AESENC: runs one round of the AES encryption algorithm. The instruction is called as:
+Page  134: AESENC xmm15, xmm1
+Page  134: xmm1, . . . , xmm9 executes the first nine rounds of AES encryption.
+Page  134: • AESENCLAST: invoked similar to AESENC to run last round of the AES algorithm. Recall that
+Page  134: • AESDEC and AESDECLAST: runs one round of the AES decryption algorithm, analogous to the
+Page  134: These AES-NI hardware instructions provide a significant speed-up over a heavily optimized soft-
+Page  134: ware implementations of AES. Experiments by Emilia Käsper in 2009 show that on Intel Core 2
+Page  134: processors AES using the AES-NI instructions takes 1.35 cycles/byte (pipelined) while an optimized
+Page  134: In Intel’s Skylake processors introduced in 2015 the AESENC, AESDEC and AESENCLAST instruc-
+Page  134: struction can be dispatched every cycle. In other words, Intel partitioned the execution of AESENC
+Page  134: into a pipeline of four stages. Four AES blocks can be processed concurrently by di↵erent stages of
+Page  134: the pipeline. While processing a single AES-128 block takes (4 cycles) ⇥ (10 rounds) = 40 cycles
+Page  134: Hence, pipelining can speed up AES by almost a factor of four. As we will see in the next chapter,
+Page  134: Beyond speed, the hardware implementation of AES o↵ers better security because it is resistant
+Page  134: Widely deployed block ciphers like AES go through a lengthy selection process before they are
+Page  135: 1. Casual users of cryptography should only ever use standardized algorithms like AES, and not
+Page  135: of AES to take the following entertaining pledge (originally due to Je↵ Moser):
+Page  135: I promise that once I see how simple AES really is, I will not implement it in production
+Page  135: in implementing AES myself.
+Page  135: is so challenging. This method has been shown to not work against AES.
+Page  138: In this section, we describe a timing attack on AES that exploits memory caching behavior
+Page  138: running time as it encrypts a block of plaintext with AES. The attack we present exploits timing
+Page  139: fast table-based implementation of AES presented on page 117. An implementation that ignores
+Page  139: Recall that the table-based implementation of AES uses four tables T0 , T1 , T2 , T3 for all but the
+Page  139: AES begins, the S table is not in the L1 cache. The first time a table entry is read, that part of
+Page  139: only used in the last round of AES no parts of the table will be loaded in cache prior to the last
+Page  139: the 4 ⇥ 4 last round key, the final AES output is computed as the 4 ⇥ 4 matrix:
+Page  139: expected running time of the entire AES cipher is slightly less than when a0 6= a1 .
+Page  139: The attacker’s plan now is to run the victim AES implementation on many random input blocks
+Page  139: known di↵erences. Moreover, since key expansion in AES-128 is invertible, it is a simple matter to
+Page  139: reconstruct the AES-128 secret key from the last round key.
+Page  139: round key. For each candidate value the attacker obtains a candidate AES-128 key. This key can
+Page  139: be tested by trying it out on a few known plaintext/ciphertext pairs. Once a correct AES-128 key
+Page  140: on a Pentium IV Xeon successfully recovered the AES secret key using about 220 timing measure-
+Page  140: Mitigations. The simplest approach to defeat timing attacks on AES is to use the AES-NI
+Page  140: instructions that implement AES in hardware. These instructions are faster than a software im-
+Page  140: On processors that do not have built-in AES instructions one is forced to use a software imple-
+Page  140: AES. Several such implementations of AES using a technique called bit-slicing provide reasonable
+Page  140: invocation of AES. This prevents the cache-based timing attack, but only if the tables are not evicted
+Page  140: from L1 cache while AES is executing. Ensuring that the tables stay in L1 cache is non-trivial on a
+Page  140: modern processor. Interrupts during AES execution can evict cache lines. Similarly, hyperthreading
+Page  140: the AES tables into L1 cache another thread executing concurrently can inadvertently evict them.
+Page  140: Yet another approach is to pad AES execution to the maximum possible time to prevent timing
+Page  140: number of instructions at the end of every AES execution to randomly pad the running time does
+Page  140: 4.3.2.2   Power attacks on AES implementations
+Page  140: AES key. To make a purchase the user plugs the credit-card into a point-of-sale terminal. The
+Page  140: using the secret embedded AES key. We leave the exact details for how this works to a later
+Page  140: given time. In particular, an attacker can measure the amount of power consumed as the AES
+Page  140: AES-128 algorithm four times (the x-axis is time and y-axis is power). Each hump is one run of
+Page  140: AES and within each hump the ten rounds of AES-128 are clearly visible.
+Page  141: (a) Power used by four iterations of AES                     (b) S-box LSB output is 0 vs. 1
+Page  141: Figure 4.12: AES di↵erential power analysis (source: Kocher et al. [77])
+Page  141: on AES: during encryption the secret AES round keys are simply XORed into the cipher state.
+Page  141: simple power analysis was an attractive feature of AES.
+Page  141: Di↵erential power analysis. Despite AES’s resistance to SPA, a more sophisticated power
+Page  141: analysis attack successfully extracts the AES secret key from simple implementations. Choose an
+Page  141: AES key k at random and encrypt 4000 random plaintexts using the key k. For our test device the
+Page  142: Iterating this procedure for all 16 bytes of the AES-128 key recovers the entire key.
+Page  142: prior to executing AES the hardware draws a fixed amount of power to charge a capacitor and then
+Page  142: runs the entire AES algorithm using power in the capacitor. Once AES is done the excess power
+Page  142: left in the capacitor is discarded. The next application of AES again charges the capacitor and so
+Page  142: 4.3.3   Fault-injection attacks on AES
+Page  142: Fault injection attacks have been used to break vulnerable implementations of AES by causing
+Page  142: the AES engine to malfunction during encryption of a plaintext block. The resulting malformed
+Page  143: example, an AES engine could check that the computed AES ciphertext correctly decrypts to the
+Page  143: ciphertext. Unfortunately this slows down AES performance by a factor of two and is hardly done
+Page  143: p     |K|. For block ciphers like AES-128 this means
+Page  143: scale of computations. As a result, once quantum computers are built, AES-128 will be considered
+Page  143: search is on the order of 2128 . This threat of quantum computers is one reason why AES supports
+Page  143: breaking the AES-256 block cipher, but at least quantum exhaustive search is out of the question.
+Page  144: To break a block cipher like AES-128 given a few plaintext/ciphertext pairs we would define
+Page  144: 1 if AES(k, m) = c
+Page  144: fAES (k) =
+Page  144: p key k0 2 K that satisfies AES(k, m) = c and this key can be
+Page  170: Iterated Even-Mansour and AES. Looking back at our description of AES (Fig. 4.11) one
+Page  170: observes that the Even-Mansour cipher looks a lot like one round of AES where the round function
+Page  170: ⇧AES plays the role of ⇡. Of course one round of AES is not a secure block cipher: the bound
+Page  170: in (4.36) does not imply security because ⇧AES is not a random permutation.
+Page  170: Suppose one replaces each occurrence of ⇧AES in Fig. 4.11 by a di↵erent permutation: one
+Page  170: function for each round of AES. The resulting structure, called iterated Even-Mansour, can be
+Page  170: These results suggest a theoretical justification for the AES structure in the ideal cipher model.
+Page  204: 5.4.2.1    Case study: AES counter mode
+Page  204: The IPsec protocol uses a particular variant of AES counter mode, as specified in RFC 3686.
+Page  204: Recall that AES uses a 128 bit block. Rather than picking a random 128-bit IV for every message,
+Page  205: the maximum message length that can be encrypted is 232 AES blocks or 236 bytes.
+Page  210: as in the case of AES, this implies that we can only encrypt messages whose length is a multiple
+Page  210: Suppose we wish to encrypt a v-byte message m using AES in CBC mode when v is not
+Page  210: with AES in CBC mode: let p := 16 (v mod 16), then append p bytes to the message m where
+Page  210: padded message is 32 bytes long which is exactly two AES blocks.
+Page  210: consists of 16 bytes. The padded message is then 48 bytes long which is three AES blocks.
+Page  211: round that supports pipelining, as in Intel’s implementation of AES-128 (page 119). Pipelin-
+Page  212: For very long messages, the expansion is not too bad. For example, with AES and counter
+Page  223: bits). This is one reason why AES has a block size of 128 bits.
+Page  234: practical PRFs such as AES (while AES is a block cipher it can be viewed as a PRF thanks to the
+Page  236: integrity for very short messages. For example, viewing AES as a PRF gives a MAC for 128-bit
+Page  236: for short inputs (like AES) and produce a PRF, and therefore a MAC, for much longer inputs.
+Page  241: cipher like AES.
+Page  247: PRF (e.g. AES). In contrast, the encrypted PRF method of Section 6.5 only adds one additional
+Page  247: ECBC-AES and pf one would need an additional 511 evaluations of AES beyond what is needed
+Page  247: a bit. Then to MAC a megabyte message using ECBC-AES and pf would result in 4096 additional
+Page  247: evaluations of AES over the encrypted PRF method — an overhead of about 6%.
+Page  250: for AES). All our MACs so far are designed to authenticate messages whose length is a multiple of
+Page  251: length is not a multiple of the DES or AES block size. The padding scheme is identical to the
+Page  252: Let F be a PRF defined over (K, X , X ) where X = {0, 1}n . The NIST standard uses AES as
+Page  256: encryption algorithm of a block cipher such as AES, and let D be the corresponding decryption
+Page  275: very well want to use for our PRF a block cipher, like AES, that takes as input an n-bit block.
+Page  275: sequence of elements of Zp . So, for example, with n = 128 as in AES, we could choose a 128-bit
+Page  276: prefer to work with a PRF defined in terms of a block cipher, like AES, which takes as input an
+Page  309: In Chapter 4 we spent the e↵ort to build secure block ciphers like AES. It is natural to ask whether
+Page  309: down the cipher. Consequently, using Davies-Meyer with an o↵-the-shelf block cipher such as AES
+Page  310: may be too short, for example 128 bits for AES. An AES-based compression function would produce
+Page  316: very similar to AES, but has a 512-bit block size. The resulting hash output is 512-bits.
+Page  316: say, CBC-MAC with AES to the same message.
+Page  317: execute both, say, SHA256 for the hash and CBC-MAC with AES for the MAC. All other things
+Page  334: we can use as the key to some cryptographic primitive, like AES. Now, the secret data may be
+Page  334: to some standard cryptographic primitive, such as AES. The solution in all cases will be to hash
+Page  334: could be dangerous to use such a password directly as an AES key. Even if the password were
+Page  334: of passwords correspond to “weak keys” for AES that make it vulnerable to attack. Recall
+Page  334: that AES was designed to be used with a random bit string as the key, so how it behaves on
+Page  334: the contents of such a log. However, using the log directly as an AES key is problematic: it
+Page  334: point of view, and so should not be used directly as an AES key.
+Page  335: is that x is typically much longer (typically, thousands of bits long) than an AES key.
+Page  336: with the key t derived from s. In some applications, we might use t directly as, say, an AES key.
+Page  344: Now let us plug in some realistic numbers. If we want the output to be used as an AES key, we
+Page  373: in AES. Recall that CBC mode encryption pads its input to a multiple of the block length and
+Page  377: tion 5.4.2. We will assume that E has the general structure as presented in the case study on AES
+Page  385: CPA secure cipher is nonce-based counter mode, usually using AES. The secure MAC is a Carter-
+Page  385: GCM uses an underlying block cipher E = (E, D) such as AES defined over (K, X ) where
+Page  387: expect that the bulk of the time during GCM encryption and decryption is spent on AES in counter
+Page  387: mode. However, due to improvements in hardware implementations of AES, especially pipelining
+Page  387: of the AES-NI instructions, this is not always the case. On Intel’s Haswell processors (introduced
+Page  387: at a cost that is not much more than the cost of AES counter mode — this can be achieved using
+Page  391: is a multiple of the cipher block length (16 bytes for AES). The pad length can be anywhere
+Page  391: 2. Encrypt. Encrypt the gray area in Fig. 9.3 using AES in randomized CBC mode with
+Page  395: Both are implemented in 802.11i using AES as the underlying PRF. CCM was adopted by NIST
+Page  397: AES-CBC), the ESP secret key (e.g. kw!e or ke!w ), the source and destination IP addresses, the
+Page  398: of 16 bytes for AES-CBC). It also ensures that the resulting ciphertext length is a multiple of four
+Page  399: AES-CBC, and AES counter mode. For CBC modes the IV is prepended to the encrypted
+Page  399: algorithms, but is required to support HMAC-SHA1-96, HMAC-MD5-96, and AES-XCBC-
+Page  428: a reasonable time. For example, one can set L ⇡ |K| ⇡ 230 . When using AES one can force K to
+Page  472: assume that Es is a stream cipher (such as AES in counter mode).
+Page  574: name or using a PIN-code. The second is called the “advanced electronic signature” (AES). The
+Page  574: directive is technology neutral but, in practice, AES refers mainly to a cryptographic digital signa-
+Page  574: ture based on a public key infrastructure (PKI). An AES is considered to be more secure, and thus
+Page  574: enjoys greater legal acceptability. An electronic signature qualifies as an AES if it is: (1) uniquely
+Page  609: security comparable to AES-128, it suffices to use a group of size q ⇡ 2256 so that the time
+Page  614: and DDH) should be at least as hard as breaking AES-128. Consequently, if AES-128 is used
+Page  614: Some high security applications use AES-256 to encrypt plaintext data. In these cases one should
+Page  646: either 3DES or AES.
+Page  648: provided, then the inverse k is unique. Applying this to AES-128 we see that a table L of size
+Page  648: 128 ⇥ (2128 )(2/3) ⇡ 128 ⇥ 285 bits (about a billion exabytes) can be used to break AES in time 285 .
+Page  648: in Section 4.2.2.1. It is partially the reason for the shift towards AES-256. Note, however, that
+Page  648: building the table L requires significant (one-time) work; about 2128 evaluation of AES-128.
+Page  778: encryption, such as AES-128 in GCM mode. Algorithm S refers to a MAC signing algorithm, such
+Page  779: minimum, to support AES-128 in GCM mode and SHA256, as well as a few other common ciphers.
+Page  812: [19] A. Biryukov and D. Khovratovich. Related-key cryptanalysis of the full aes-192 and aes-256.
+Page  812: [23] A. Bogdanov, D. Khovratovich, and C. Rechberger. Biclique cryptanalysis of the full aes. In
+Page  812: [27] J. Bonneau and I. Mironov. Cache-collision timing attacks against aes. In in Proc. Crypto-
+Page  813: [36] J. Daemen and V. Rijmen. The Design of Rijndael: AES - The Advanced Encryption Stan-
+Page  813: [44] O. Dunkelman and N. Keller. The e↵ects of the omission of last round’s mixcolumns on aes.

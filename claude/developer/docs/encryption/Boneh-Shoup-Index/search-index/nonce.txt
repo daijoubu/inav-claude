@@ -1,0 +1,222 @@
+Keyword: nonce
+Occurrences: 218
+================================================================================
+
+Page    6: 5.5 Nonce-based encryption . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 198
+Page    6: 5.5.1   Nonce-based generic hybrid encryption . . . . . . . . . . . . . . . . . . . . . 200
+Page    6: 5.5.2   Nonce-based Counter mode . . . . . . . . . . . . . . . . . . . . . . . . . . . 200
+Page    6: 5.5.3   Nonce-based CBC mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 201
+Page    7: 7.5 Nonce-based MACs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 269
+Page    7: 7.5.1   Secure nonce-based MACs . . . . . . . . . . . . . . . . . . . . . . . . . . . . 269
+Page    8: 9.5 Nonce-based authenticated encryption with associated data . . . . . . . . . . . . . . 367
+Page   11: 14.6.4 Nonce-based Merkle signatures . . . . . . . . . . . . . . . . . . . . . . . . . 587
+Page   82: These PRGs take as input a 256-bit seed and a 64-bit nonce. For now we ignore the nonce and
+Page   82: simply set it to 0. We discuss the purpose of the nonce at the end of this section. The Salsa
+Page   82: j to form a 512-bit block. The third input, a 64-bit nonce, is always set to 0 for now.
+Page   82: counter j0 , j1 2 {0, 1}32 , and 64-bit nonce n0 , n1 2 {0, 1}32 . It outputs a 512-bit block denoted
+Page   83: except that we still need to discuss the use of nonces.
+Page   83: Using nonces. While the PRGs we discussed so far only take the seed as input, many PRGs used
+Page   83: in practice take an additional input called a nonce. That is, the PRG is a function G : S ⇥ N ! R
+Page   83: where S and R are as before and N is called a nonce space. The nonce lets us generate multiple
+Page   83: G(s, n1 ) for n1 6= n0 is another. The nonce turns the PRG into a more powerful primitive called
+Page   94: ephemeral values called nonces. Throughout the book we assume all parties have access to a
+Page  212: Leaving it to the higher-level application to supply the IV is actually an example of nonce-based
+Page  212: 5.5     Nonce-based encryption
+Page  212: The second, and more popular, approach is called nonce-based encryption. Instead of main-
+Page  212: called a nonce. The syntax for nonce-based encryption becomes
+Page  212: where c 2 C is the ciphertext, k 2 K is the key, m 2 M is the message, and N 2 N is the nonce.
+Page  213: The intention is that a message encrypted with a particular nonce should be decrypted with the
+Page  213: same nonce — it is up to the application using the encryption scheme to enforce this. More formally,
+Page  213: for all k 2 K, m 2 M, and N 2 N . We say that such a nonce-based cipher E = (E, D) is defined
+Page  213: Intuitively, a nonce-based encryption scheme is CPA secure if it does not leak any useful in-
+Page  213: formation to an eavesdropper, assuming that no nonce is used more than once in the encryption
+Page  213: ment on how nonces are used is very weak, much weaker than requiring that they are unpredictable,
+Page  213: Attack Game 5.3 (nonce-based CPA security). For a given cipher E = (E, D), defined
+Page  213: a nonce N i 2 N \ {N 1 , . . . , N i 1 }.
+Page  213: Note that in the above game, the nonces are completely under the adversary’s control, subject
+Page  213: Definition 5.3 (nonce-based CPA security). A nonce-based cipher E is called semantically
+Page  214: 5.5.1    Nonce-based generic hybrid encryption
+Page  214: Let us recast the generic hybrid construction in Section 5.4.1 as a nonce-based encryption scheme.
+Page  214: and F is a PRF defined over (K0 , X , K). We define the nonce-based cipher E 0 , which is defined over
+Page  214: All we have done is to treat the value x 2 X as a nonce; otherwise, the scheme is exactly the same
+Page  214: 5.5.2    Nonce-based Counter mode
+Page  214: Next, we recast the counter-mode cipher from Section 5.4.2 to the nonce-based encryption setting.
+Page  214: Let us make a first attempt, by simply treating the value x 2 X in that construction as a nonce.
+Page  214: Unfortunately, this scheme cannot satisfy the definition of nonce-based CPA security. The
+Page  214: problem is, an attacker could choose two distinct nonces x1 , x2 2 X , such that the intervals
+Page  214: powers of 2, so this is not an issue). Then we use as the nonce space {0, . . . , N/` 1}, and translate
+Page  214: the nonce N to the PRF input x := N `. It is easy to see that for any two distinct nonces N 1 and
+Page  214: Theorem 5.6. If F is a secure PRF, then the nonce-based cipher E described above is CPA secure.
+Page  215: 5.5.3   Nonce-based CBC mode
+Page  215: Finally, we consider how to recast the CBC-mode encryption scheme in Section 5.4.3 as a nonce-
+Page  215: based encryption scheme. As a first attempt, one might simply try to view the IV c[0] as a nonce.
+Page  215: Unfortunately, this does not yield a CPA secure nonce-based encryption scheme. In the nCPA
+Page  215: Again, the fix is fairly straightforward. The idea is to map nonces to pseudo-random IV’s by
+Page  215: (K, X ). In the nonce-based CBC scheme E 0 , the key space is K ⇥ K0 , and in the encryption and
+Page  215: decryption algorithms, the IV is computed from the nonce N and key k 0 as c[0] := F (k 0 , N ).
+Page  215: nonce-based cipher E 0 described above is CPA secure.
+Page  222: 5.9 (Generic nonce-based encryption and nonce re-use resilience). In the previous exer-
+Page  222: cipher into a nonce-based CPA-secure cipher.
+Page  222: (b) Show how to combine the two approaches to get a cipher that is nonce-based CPA secure,
+Page  222: quirement on nonces.
+Page  222: Discussion: This is an instance of a more general security property called nonce re-use
+Page  222: resilience: the scheme provides full security if nonces are unique, and even if they are not,
+Page  223: 5.14 (An insecure nonce-based CBC mode). Consider the nonce-based CBC scheme E 0 de-
+Page  223: scribed in Section 5.5.3. Suppose that the nonce space N is equal to block space X of the underlying
+Page  283: 7.5     Nonce-based MACs
+Page  283: randomizers is that they are distinct. This motivates the study of nonce-based MACs, which are
+Page  283: the analogue of nonce-based encryption (Section 5.5). Not only can this approach reduce the size
+Page  283: A nonce-based MAC is similar to an ordinary MAC and consists of a pair of deterministic
+Page  283: input N called a nonce that lies in a nonce-space N . Algorithms S and V work as follows:
+Page  283: • S takes as input a key k 2 K, a message m 2 M, and a nonce N 2 N . It outputs a tag t 2 T .
+Page  283: a nonce. It outputs either accept or reject.
+Page  283: We say that the nonce-based MAC is defined over (K, M, T , N ). As usual, we require that tags
+Page  283: generated by S are always accepted by V , as long as both are given the same nonce. The MAC
+Page  283: must satisfy the following correctness property: for all keys k, all messages m, and all nonces
+Page  283: nonce twice (on the same key). If the sender can maintain state then a nonce can be implemented
+Page  283: using a simple counter. Alternatively, nonces can be chosen at random, so long as the nonce space
+Page  283: is large enough to ensure that the probability of generating the same nonce twice is negligible.
+Page  283: 7.5.1   Secure nonce-based MACs
+Page  283: Nonce-based MACs must be existentially unforgeable under a chosen message attack when the
+Page  283: adversary chooses the nonces. The adversary, however, must never request a tag using a previously
+Page  283: used nonce. This captures the idea that nonces can be chosen arbitrarily, as long as they are never
+Page  283: reused. Nonce-based MAC security is defined using the following game.
+Page  283: Attack Game 7.4 (nonce-based MAC security). For a given nonce-based MAC system I =
+Page  284: Definition 7.6. We say that a nonce-based MAC system I is secure if for all efficient adver-
+Page  284: Nonce-based Carter-Wegman MAC. The Carter-Wegman MAC (Section 7.4) can be recast
+Page  284: as a nonce-based MAC: We simply view the randomizer r 2 R as a nonce, supplied as an input to
+Page  284: We obtain the following security theorem, which is the nonce-based analogue of Theorem 7.9. The
+Page  284: we insist that the same nonce is never used twice. If nonces are, in fact, generated by the signer
+Page  284: at random, then the Q2 -term returns; however, if the signer implements the nonce as a counter,
+Page  284: Analogous to the discussion in Remark 7.6, when using nonce-based Carter-Wegman it is vital
+Page  284: that the nonce is never re-used for di↵erent messages. If this happens, Carter-Wegman may be
+Page  288: (b) Rephrase the MAC system I as a nonce-based MAC system (as in Section 7.5). What are
+Page  288: Observe that if the nonce is accidentally re-used, or even always set to the same value, then the
+Page  288: PRF(UHF) composition. We refer to this as nonce re-use resistance.
+Page  289: 7.9 (Nonce-based CBC cipher with an XOR-DUF). Show that in the nonce-based CBC
+Page  289: cipher (Section 5.5.3) the PRF that is applied to the nonce can be replaced by an XOR-DUF.
+Page  290: 7.12 (Nonce-based Carter-Wegman: improved security bounds). In Section 7.5, we studied
+Page  290: a nonce-based version of the Carter-Wegman MAC. In particular, in Theorem 7.10, we derived the
+Page  290: 7.13 (Carter-Wegman MAC falls apart under nonce re-use). Suppose that when using a
+Page  290: nonce-based MAC, an implementation error causes the system to re-use a nonce more than once.
+Page  290: Let us show that the nonce-based Carter-Wegman MAC falls apart if this ever happens.
+Page  290: (a) Consider the nonce-based Carter-Wegman MAC built from the hash function Hxpoly . Show
+Page  290: that if the adversary obtains the tag on some one-block message m1 using nonce N and the tag
+Page  290: on a di↵erent one-block message m2 using the same nonce N , then the MAC system becomes
+Page  290: (b) Consider the nonce-based Carter-Wegman MAC with an arbitrary hash function. Suppose
+Page  290: that an adversary is free to re-use nonces at will. Show how to create an existential forgery.
+Page  290: make Carter-Wegman resistant to nonce re-use by encrypting the tag. To make things more con-
+Page  290: secure block cipher defined over (KE , X ). The encrypted Carter-Wegman nonce-based MAC system
+Page  290: I = (S, V ) has key space KH ⇥ KE2 , message space M, tag space X , nonce space X , and is defined
+Page  291: • For key (k1 , k2 , k3 ), message m, and nonce N , we define
+Page  291: • For key (k1 , k2 , k3 ), message m, tag v, and nonce N , we define
+Page  291: (a) Show that assuming no nonces get re-used, this scheme is just as secure as Carter-Wegman.
+Page  291: (b) Now suppose an adversary can re-use nonces at will. Show that for every such adversary
+Page  291: wrapper around A. Thus, while nonce re-use degrades security, it is not catastrophic.
+Page  381: 9.5     Nonce-based authenticated encryption with associated data
+Page  381: commonly used. First, as we did for encryption and for MACs, we define nonce-based authenticated
+Page  382: take as input a unique nonce. This approach can reduce ciphertext size and also improve security.
+Page  382: A cipher that supports associated data is called an AD cipher. The syntax for a nonce-based
+Page  382: and N 2 N is the nonce. Moreover, the encryption algorithm E is required to be deterministic.
+Page  382: which outputs a message m or reject. We say that the nonce-based AD cipher is defined over
+Page  382: by D, as long as both are given the same nonce and associated data. That is, for all keys k, all
+Page  382: messages m, all associated data d, and all nonces N 2 N :
+Page  382: CPA security. A nonce-based AD cipher is CPA-secure if it does not leak any useful information
+Page  382: to an eavesdropper assuming that no nonce is used more than once in the encryption process. CPA
+Page  382: security for a nonce-based AD cipher is defined as CPA security for a standard nonce-based cipher
+Page  382: associated data di 2 D, and a unique nonce N i 2 N \ {N 1 , . . . , N i 1 }.
+Page  382: the adversary’s control, as are the nonces N i , subject to the nonces being unique. For b = 0, 1, let
+Page  382: Definition 9.7 (CPA security). A nonce-based AD cipher is called semantically secure
+Page  383: Ciphertext integrity. A nonce-based AD cipher provides ciphertext integrity if an attacker who
+Page  383: can request encryptions under key k for messages, associated data, and nonces of his choice cannot
+Page  383: must never issue an encryption query using a previously used nonce.
+Page  383: of a message mi 2 M, associated data di 2 D, and a previously unused nonce
+Page  383: Definition 9.8. We say that a nonce-based AD cipher E = (E, D) has ciphertext integrity if
+Page  383: Authenticated encryption. We can now define nonce-based authenticated encryption for an
+Page  383: AD cipher. We refer to this notion as a nonce-based AEAD cipher which is shorthand for
+Page  383: Definition 9.9. We say that a nonce-based AD cipher E = (E, D) provides authenticated encryp-
+Page  383: tion, or is simply a nonce-based AEAD cipher, if E is CPA-secure and has ciphertext integrity.
+Page  383: Generic encrypt-then-MAC composition. We construct a nonce-based AEAD cipher E =
+Page  383: (EEtM , DEtM ) by combining a nonce-based CPA-secure cipher (E, D) (as in Section 5.5) with a
+Page  383: nonce-based secure MAC (S, V ) (as in Section 7.5) as follows:
+Page  383: Theorem 9.4. Let E = (E, D) be a nonce-based cipher and let I = (S, V ) be a nonce-based MAC
+Page  383: system. Then EEtM is a nonce-based AEAD cipher assuming E is CPA-secure and I is a secure
+Page  384: In Section 9.5, we introduced two new features to our ciphers: nonces and associated data. There
+Page  384: are two variations we could consider: ciphers with nonces but without associated data, and ciphers
+Page  384: with associated data but without nonces. We could also consider all of these variations with respect
+Page  384: namely CCA-secure ciphers with associated data (but without nonces).
+Page  384: AD cipher, without nonces. For such a cipher E = (E, D), the encryption algorithm may be
+Page  385: Galois counter mode (GCM) is a popular nonce-based AEAD cipher standardized by NIST in 2007.
+Page  385: CPA secure cipher is nonce-based counter mode, usually using AES. The secure MAC is a Carter-
+Page  385: GCM can take variable size nonces, but let us first describe GCM using a 96-bit nonce N which
+Page  385: input: key k 2 K, message m, associated data d, and nonce N 2 {0, 1}96
+Page  385: respective field. If the input nonce N is not 96-bits long, then N is padded to the closest multiple
+Page  386: and a nonce N . It operates as in encrypt-then-MAC: it first derives km  E(k, 0128 ) and checks the
+Page  386: The above discussion focused on the case where the nonce is 96 bits. The other case, where GHASH
+Page  386: is applied to the nonce to compute x, requires a more involved analysis — see Exercise 9.14.
+Page  386: GCM has no nonce re-use resistance. If a nonce is accidentally re-used on two di↵erent messages
+Page  386: (Exercise 7.13) and this can be used to break ciphertext integrity. Hence, it is vital that nonces
+Page  388: TLS 1.3 uses a nonce-based AEAD cipher (E, D) to encrypt a record. Which nonce-based
+Page  388: • nonce (8 bytes or longer): the nonce is computed by (1) padding the encrypting party’s
+Page  388: 64-bit write sequence number on the left with zeroes to the expected nonce length and (2)
+Page  388: equivalent and slightly easier to comprehend method: choose the initial nonce value at random
+Page  388: the nonce is not part of the encrypted TLS record. The recipient computes the nonce by itself.
+Page  388: Why is the initial nonce value random and not simply set to zero? In networking protocols
+Page  388: the first message block sent over TLS is usually a fixed public value. If the nonce were set to zero
+Page  388: Randomizing the initial nonce “future proofs” TLS against such attacks.
+Page  389: decryption algorithm will be given the wrong nonce as input causing it to reject the ciphertext.
+Page  403: defined over (K, (M⇥D ⇥ N ), X ). Show that the following cipher (E1 , D1 ) is a secure nonce-based
+Page  403: o↵ers similar nonce re-use resistance. One down-side of this system is that the tag t cannot be
+Page  404: it is nonce-based AEAD secure assuming the security of the underlying block cipher as a PRF
+Page  404: and that GHASH is an XOR-DUF. Start out with the easy case when the nonce is 96-bits. Then
+Page  404: proceed to the more general case where GHASH may be applied to the nonce to compute x.
+Page  405: nonce-based cipher (E 0 , D0 ) with key space K, message space X ` , ciphertext space X `+1 , and
+Page  405: nonce space N . For simplicity, the cipher does not support associated data.
+Page  405: (a) Prove that (E 0 , D0 ) is a nonce-based AE-secure cipher assuming (E, D) is a strongly secure
+Page  585: Here R is a nonce space and M is (possibly much larger) message space. Algorithm G is unchanged
+Page  585: random nonce r, but this nonce can be short, only about the size of a single element in X .
+Page  601: 14.6.4    Nonce-based Merkle signatures
+Page  601: A nonce-based signature is a tuple of three algorithms (G, S, V ) as in the case of stateless
+Page  601: signing algorithm S, however, takes an additional input N called a nonce that lies in some nonce-
+Page  601: same nonce N . That is, the system is existentially unforgeable, as long as the adversary does not
+Page  601: Stateless signatures are preferable to nonce-based ones, especially in an environment where
+Page  601: using the authority’s private key. A nonce-based signature in these settings would be harder to use
+Page  602: algorithm is never called twice with the same nonce. While this is certainly feasible, one typically
+Page  602: Nonce-based Merkle signatures. When nonce-based signatures are adequate, the nonce can
+Page  602: is negligible. In the nonce-based settings, we can simply make the nonce indicate what leaf to use.
+Page  602: The uniqueness of the nonce ensures that every signature uses a di↵erent leaf. This lets us greatly
+Page  602: Specifically, the nonce-based Merkle signing algorithm takes as input a tuple (sk , m, N ), where
+Page  602: N is a nonce, and outputs a signature. It signs m using leaf number N . The only modification to
+Page  602: Fig. 14.7 is that leaf number N is used instead of a random leaf. The nonce space N is simply the
+Page  602: Comparing signature sizes. Stateless Merkle signatures are much longer than nonce-based
+Page  602: ones. Consider, for example, nonce-based Merkle signatures supporting 240 signatures per public
+Page  602: key. Using q = 1024 and d = 4, and using the q-indexed signature from Section 14.6.1, a nonce-
+Page  602: We conclude by pointing out that in the nonce-based settings, the extreme parameters q = 240
+Page  602: Signature generation can also be done efficiently: if the nonce is a counter, counting from 1 to q,
+Page  603: random nonce r 2 R in the public and secret keys. The r associated with a key pair (pk , sk )
+Page  604: of a random oracle applied to the message to be signed plus a random nonce (as in Section 14.1.1).
+Page  604: probability which can occasionally force a re-try with a fresh nonce.
+Page  608: Discussion: Merkle tree traversal can speed up the signing algorithm of the nonce-based q-indexed
+Page  608: signature scheme from Section 14.6.1, where the nonce is a counter that indicates which leaf in the
+Page  608: addition to the nonce, the signer maintains the necessary O(log q)-size state needed for the tree
+Page  655: (a) V chooses a random nonce r R R, and sends c R E(vk , r) to P ;
+Page  656: Show that this protocol is secure against active attacks, assuming that the nonce space R is super-
+Page  740: • R denotes a large set, which will be used to generate random nonces.
+Page  742: the protocol (since Q must have signed the message containing P ’s random nonce); moreover, P
+Page  743: nonce r; likewise, the logic of P is modified accordingly. The resulting protocol runs as follows:
+Page  771: the size of the nonce space R is super-poly, the underlying public-key encryption scheme is CCA
+Page  771: loosely matching. We say two nonces, public keys, or ciphertexts are loosely matching if they are
+Page  772: compatible, and nonces do not repeat,
+Page  779: P sends to the server Q a group element u := g ↵ , a nonce N c , and an “o↵er”. The o↵er is a message
+Page  780: with a flow that consists of a group element v := g , a nonce N s , and a “mode” message which
+Page  782: where H3 is a key derivation function based on HKDF, and N t is a random nonce from Q provided
+Page  782: with a fresh nonce N t , causing the client to calculate and store multiple pre-shared keys.
+Page  783: cannot depend on the server nonce N s . This key must be derived before the client sees N s . All
+Page  783: To prevent replays the server can store the client nonce from every 0-RTT request it receives. If
+Page  783: the server ever sees a request with a duplicate client nonce, it can safely reject that request. Note
+Page  783: that the client nonce only needs to be stored for a limited amount of time; it can be deleted once
+Page  783: in real time, the repeated client nonce will not be detected in Asia and the replay request will be
+Page  785: Here, P is the client, Q is the server, pw is the password. Also, r is a random nonce, and H is a
+Page  785: hash function (which we model as a random oracle). The server Q sends P the random nonce r,
+Page  786: a nonce r to the client, who responds with s, v := H(pw , chb, 0, r, s). At this point, the adversary
+Page  787: this protocol, P and Q exchange random nonces r and s, and then compute the session key as

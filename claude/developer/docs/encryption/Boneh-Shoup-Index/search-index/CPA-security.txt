@@ -1,0 +1,68 @@
+Keyword: CPA security
+Occurrences: 64
+================================================================================
+
+Page  192: Attack Game 5.2 (CPA security). For a given cipher E = (E, D), defined over (K, M, C), and
+Page  193: Definition 5.2 (CPA security). A cipher E is called semantically secure against chosen
+Page  193: possibly satisfy the definition of CPA security. Suppose that E = (E, D) is a deterministic cipher.
+Page  194: seldom used. There are other modes of operations that provide CPA security, which we develop in
+Page  194: Example 5.2. Before proving CPA security of E 0 let us first see the construction in action. Suppose
+Page  195: CPA security of this cipher follows from the CPA security of the generic hybrid construction E 0
+Page  200: of E is variable length, and that for the purposes of defining CPA security using Attack Game 5.2,
+Page  207: of E is variable length, and that for the purposes of defining CPA security using Attack Game 5.2,
+Page  213: CPA security.
+Page  213: Attack Game 5.3 (nonce-based CPA security). For a given cipher E = (E, D), defined
+Page  213: Definition 5.3 (nonce-based CPA security). A nonce-based cipher E is called semantically
+Page  214: Unfortunately, this scheme cannot satisfy the definition of nonce-based CPA security. The
+Page  219: 5.2 (Multi-key CPA security). Generalize the definition of CPA security to the multi-key
+Page  219: argument, that (single-key) CPA security implies multi-key CPA security. You should show that
+Page  219: CPA security of a scheme is at most Q · ✏, where ✏ is the advantage of an adversary B (which is an
+Page  219: elementary wrapper around A) in attacking the scheme’s (single-key) CPA security.
+Page  219: 5.3 (An alternate definition of CPA security). This exercise develops an alternative char-
+Page  219: acterization of CPA security for a cipher E = (E, D), defined over (K, M, C). As usual, we need to
+Page  221: 5.6 (CPA security from a block cipher). Let E = (E, D) be a block cipher defined over
+Page  221: is encrypted twice. We may define a relaxed notion of CPA security that says that this is the only
+Page  222: cipher that satisfies a somewhat weaker notion of security called deterministic CPA security.
+Page  222: but also satisfies the definition of deterministic CPA security if we drop the uniqueness re-
+Page  222: than the length of m. Show an attacker that can win the CPA security game using ⇡ 2`/2
+Page  222: scheme’s CPA security.
+Page  224: 5.20 (Redundant bits do not harm CPA security). Let E = (E, D) be a CPA-secure cipher
+Page  224: from the ciphertext does not damage CPA security. Specifically, let g : C ! Y be some efficiently
+Page  224: the members of B. More precisely, CPA security of a broadcast encryption system is defined
+Page  361: Recall that in our discussion of CPA security in Chapter 5 we stressed that CPA security does
+Page  361: even if secrecy is the only requirement, CPA security is insufficient.
+Page  363: CPA security and ciphertext integrity are the properties needed for authenticated encryption.
+Page  372: at all), does not help the attacker break CPA security of EEtM . This is straightforward and is left
+Page  374: CPA security using a chosen ciphertext attack.
+Page  378: Proof idea. CPA security of the system follows immediately from CPA security of randomized
+Page  382: CPA security. A nonce-based AD cipher is CPA-secure if it does not leak any useful information
+Page  382: security for a nonce-based AD cipher is defined as CPA security for a standard nonce-based cipher
+Page  382: Definition 9.7 (CPA security). A nonce-based AD cipher is called semantically secure
+Page  390: the same prefix. Recall that for CPA security one must choose the IV at random.
+Page  402: encryption. Both CPA security and ciphertext integrity can be defeated.
+Page  405: authenticated encryption. Recall from Section 7.4 that CPA security of (E, D) is insufficient for
+Page  406: (i) the cipher is secure against a chosen plaintext attack (CPA security) when the adversary
+Page  442: security implies CPA security. This was not true for symmetric encryption schemes: the one-time
+Page  443: semantic security, and semantic security against chosen plaintext attack (or CPA security, for
+Page  443: short). We showed that for symmetric ciphers, semantic security does not imply CPA security.
+Page  443: However, for public-key encryption schemes, semantic security does imply CPA security. Intuitively,
+Page  443: The attack game defining CPA security in the public-key setting is the natural analog of the
+Page  443: Attack Game 11.2 (CPA security). For a given public-key encryption scheme E = (G, E, D),
+Page  443: Definition 11.4 (CPA security). A public-key encryption scheme E is called semantically
+Page  444: One can also consider multi-key CPA security, where the adversary sees many encryptions under
+Page  444: many public keys. In the public-key setting, semantic security implies not only CPA security, but
+Page  444: multi-key CPA security — see Exercise 11.10.
+Page  466: 11.10 (Multi-key CPA security). Generalize the definition of CPA security for a public-key
+Page  466: key CPA security. You should show that security degrades linearly in Qk Qe , where Qk is a bound
+Page  466: the advantage of any adversary A in breaking the multi-key CPA security of a scheme is at most
+Page  466: semantic security for a public-key encryption scheme implies multi-key CPA security; however,
+Page  466: reduction from multi-key CPA security for EMEG to the DDH assumption, which does not degrade
+Page  466: advantage of any adversary A in breaking the multi-key CPA security of EMEG is bounded by
+Page  470: semantic security implies security against a chosen plaintext attack, i.e., CPA security.
+Page  470: CCA security. In the CPA attack game, the decryption key is never used, and so CPA security
+Page  471: security, and CCA security corresponds to CPA security. We showed in Theorem 11.1 that semantic
+Page  471: security for a public-key encryption scheme implies CPA security. A similar result holds with respect
+Page  473: CPA security. Moreover, we saw that ciphertext integrity could be easily added to any CPA-secure
+Page  477: seem to be an essential property. Just as in the symmetric case, CPA security (which is implied by
+Page  497: very weak security property (weaker than CPA security) into a public-key encryption scheme that
+Page  506: to enable decryption, and should be randomized to have some hope of providing CPA security, let

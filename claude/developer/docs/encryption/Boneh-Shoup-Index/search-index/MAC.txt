@@ -1,0 +1,845 @@
+Keyword: MAC
+Occurrences: 841
+================================================================================
+
+Page    6: 6.2 MAC verification queries do not help the attacker . . . . . . . . . . . . . . . . . . . 217
+Page    6: 6.3 Constructing MACs from PRFs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 220
+Page    6: 6.4.3   Extension attacks: CBC and cascade are insecure MACs . . . . . . . . . . . 227
+Page    6: 6.5.1   ECBC and NMAC: MACs for variable length inputs . . . . . . . . . . . . . 229
+Page    6: 6.7 From prefix-free secure PRF to fully secure PRF (method 3): CMAC . . . . . . . . 233
+Page    6: 6.9 Case study: ANSI CBC-MAC . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 237
+Page    6: 6.10 Case study: CMAC . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 238
+Page    6: 6.11 PMAC: a parallel MAC . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 240
+Page    7: 7.3 PRF(UHF) composition: constructing MACs using UHFs . . . . . . . . . . . . . . . 258
+Page    7: 7.3.1   Using PRF(UHF) composition: ECBC and NMAC security . . . . . . . . . 261
+Page    7: 7.3.3   Using PRF(UHF) composition: PMAC0 security . . . . . . . . . . . . . . . 262
+Page    7: 7.4 The Carter-Wegman MAC . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 262
+Page    7: 7.5 Nonce-based MACs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 269
+Page    7: 7.5.1   Secure nonce-based MACs . . . . . . . . . . . . . . . . . . . . . . . . . . . . 269
+Page    7: 7.6 Unconditionally secure one-time MACs . . . . . . . . . . . . . . . . . . . . . . . . . 270
+Page    7: 7.6.3   From PUFs to unconditionally secure one-time MACs . . . . . . . . . . . . 272
+Page    7: 8.2 Building a MAC for large messages . . . . . . . . . . . . . . . . . . . . . . . . . . . 287
+Page    7: 8.7 Case study: HMAC . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 302
+Page    7: 8.7.2    The HMAC standard . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 305
+Page    8: 9.4.1   Encrypt-then-MAC . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 357
+Page    8: 9.4.2   MAC-then-encrypt is not generally secure: padding oracle attacks on SSL . 359
+Page    8: 9.4.4   Secure instances of MAC-then-encrypt . . . . . . . . . . . . . . . . . . . . . 363
+Page    8: 9.4.5   Encrypt-then-MAC or MAC-then-encrypt? . . . . . . . . . . . . . . . . . . 367
+Page   46: To model these types of interactions, we introduce the notion of an interactive machine.
+Page   46: Before such a machine M starts, it always gets the security parameter written in a special bu↵er,
+Page   46: and the rest of its internal state is initialized to some default value. Machine M has two other
+Page   46: special bu↵ers: an incoming message bu↵er and an outgoing message bu↵er. Machine M may be
+Page   46: We shall assume messages to and from the machine M are restricted to be of constant length.
+Page   46: of interactive machine.
+Page   46: Analogous to the discussion in footnote 1 on page 30, our definition of an efficient interactive machine will not
+Page   47: Definition 2.11 (efficient interactive machine). We say that M is an efficient interactive
+Page   47: machine if there exist a poly-bounded function t and a negligible function ✏, such that for all
+Page   47: We naturally model an adversary as an interactive machine. An efficient adversary is simply
+Page   47: an efficient interactive machine.
+Page   47: We can connect two interactive machines together, say M 0 and M , to create a new interactive
+Page   47: machine M 00 = hM 0 , M i. Messages from the environment to M 00 always get routed to M 0 . The
+Page   47: machine M 0 may send a message to the environment, or to M ; in the latter case, the output
+Page   47: the environment. We call M 0 the “open” machine (which interacts with the outside world), and M
+Page   47: the “closed” machine (which interacts only with M 0 ).
+Page   47: such machines together as above: the challenger becomes the open machine, and the adversary
+Page   47: becomes the closed machine.
+Page   47: To formalize this, we build B as a composed machine hM 0 , M i, where M 0 represents the interface
+Page   47: layer (the “open” machine), and M represents the instance of A (the “closed” machine). This leads
+Page   47: Definition 2.12 (elementary wrapper). An interactive machine M 0 is called an efficient
+Page   47: M (not necessarily computationally bounded), when we execute the composed machine hM 0 , M i in
+Page   47: If M 0 is an efficient interface, and M is any machine, then we say hM 0 , M i is an elementary
+Page   47: requirement of any machines we consider.
+Page   48: as a that of a single, efficient machine.
+Page   48: an interactive machine, as described above), the function SSadv[A, E]( ) in the security parameter
+Page   48: machine model, this “output” is a message sent to the challenger, and then the challenger halts).
+Page   77: adversary that is defined uniformly for all ; that is, it is a fixed machine that takes as input.
+Page   77: constructed a fixed adversary B that is defined uniformly for all ; that is, B is a fixed machine
+Page   77: machines that take as input, and the machines themselves should not depend on . Such linguistic
+Page   77: finite collection of adversaries, each of which is a fixed machine. We reiterate this because in the
+Page   89: four LFSRs using a 2-bit finite state machine. All these algorithms have been shown to be insecure
+Page  126: tributed idle cycles on their machines. The person whose machine found the secret-key received
+Page  126: a dedicated machine to do DES exhaustive key search. The machine, called DeepCrack, cost
+Page  126: won the ten thousand dollar prize: not quite enough to cover the cost of the machine, but more
+Page  138: on the same machine as the victim, for example, when a low-privilege process tries to extract a
+Page  138: on the victim machine. We will assume that the adversary can accurately measure the victim’s
+Page  138: variations due to caching in the machine’s memory hierarchy.
+Page  226: number with each report so that the user’s machine can bu↵er reports and ensure that the user
+Page  228: or MACs for short.
+Page  228: Definition 6.1. A MAC system I = (S, V ) is a pair of efficient algorithms, S and V , where S
+Page  228: • We require that tags generated by S are always accepted by V ; that is, the MAC must satisfy
+Page  228: want MAC systems where tags are as short as possible so that the overhead of transmitting the
+Page  228: We will explore a variety of MAC systems. The simplest type of system is one in which the
+Page  228: We shall call such a MAC system a deterministic MAC system. One property of a deterministic
+Page  228: MAC system is that it has unique tags: for a given key k, and a given message m, there is a
+Page  228: unique valid tag for m under k. Not all MAC systems we explore will have such a simple design:
+Page  228: way. As we shall see, such randomized MAC systems are not necessary to achieve security, but
+Page  228: Secure MACs. Next, we turn to describing what it means for a MAC to be secure. To construct
+Page  228: MACs that remain secure in a variety of applications we will insist on security in a very hostile
+Page  228: environment. Since most real-world systems that use MACs operate in less hostile settings, our
+Page  228: makes sense. Suppose an adversary is attacking a MAC system I = (S, V ). Let k be some
+Page  229: MAC Challenger                                Adversary A
+Page  229: Figure 6.2: MAC attack game (Attack Game 6.1)
+Page  229: randomly chosen MAC key, which is unknown to the attacker. We allow the attacker to request
+Page  229: Using the chosen message attack we ask the attacker to come up with an existential MAC
+Page  229: We say that a MAC system is secure if even an adversary who can mount a chosen message
+Page  229: forging the MAC for a meaningless message seems to be of little use. Nevertheless, as we will
+Page  229: see, this conservative definition is very natural and enables us to use MACs for lots of di↵erent
+Page  229: More precisely, we define secure MACs using an attack game between a challenger and an
+Page  229: Attack Game 6.1 (MAC security). For a given MAC system I = (S, V ), defined over
+Page  230: We define A’s advantage with respect to I, denoted MACadv[A, I], as the probability that A wins
+Page  230: the game. Finally, we say that A is a Q-query MAC adversary if A issues at most Q signing
+Page  230: Definition 6.2. We say that a MAC system I is secure if for all efficient adversaries A, the value
+Page  230: MACadv[A, I] is negligible.
+Page  230: an existential forgery. MAC systems that satisfy Definition 6.2 are said to be existentially
+Page  230: In the case of a deterministic MAC system, the only way for A to win Attack Game 6.1 is to
+Page  230: In the case of a randomized MAC system, our security definition captures a stronger property.
+Page  230: where t0 is new, is a valid existential forgery. Therefore, for a MAC to be secure it must be difficult
+Page  230: an odd thing to require of a MAC. If the adversary already has valid tags for m, why should we care
+Page  230: when using MACs to protect application code, users must provide their secret MAC key every time
+Page  230: To exercise the definition of secure MACs let us first see a few consequences of it. Let I = (S, V )
+Page  230: be a MAC defined over (K, M, T ), and let k be a random key in K.
+Page  230: tag for m1 should not be able to deduce from it a valid tag for m2 . A MAC system that satisfies
+Page  230: Example 6.4. Our definition of secure MACs gives the adversary the ability to obtain the tag for
+Page  230: there are many scenarios where chosen message attacks are feasible. The reason is that the MAC
+Page  231: the resulting backup tape the attacker obtains a tag on his chosen message. If the MAC system is
+Page  231: MAC to the multi-key setting, and prove that a secure MAC is also secure in the multi-key setting.
+Page  231: As usual, we give a more mathematically precise definition of a MAC, using the terminology defined
+Page  231: Definition 6.3 (MAC). A MAC system is a pair of efficient algorithms, S and V , along with
+Page  231: given to both the adversary and the challenger. The advantage MACadv[A, I] is then a function
+Page  231: of . Definition 6.2 should be read as saying that MACadv[A, I]( ) is a negligible function.
+Page  231: 6.2     MAC verification queries do not help the attacker
+Page  231: In our definition of secure MACs (Attack Game 6.1) the adversary has no way of testing whether a
+Page  231: question and send this packet to the victim’s machine. Then, by examining the machine’s behavior
+Page  232: Attack Game 6.2 (MAC security with verification queries). For a given MAC system
+Page  232: accept. We define A’s advantage with respect to I, denoted MACvq adv[A, I], as the probability
+Page  232: Attack Game 6.1, except that A can issue MAC verification queries. We prove that this extra
+Page  232: Theorem 6.1. If I is a secure MAC system, then it is also secure in the presence of verification
+Page  232: In particular, for every MAC adversary A that attacks I as in Attack Game 6.2, and which
+Page  232: MAC adversary B that attacks I as in Attack Game 6.1, where B is an elementary wrapper
+Page  232: MACvq adv[A, I]  MACadv[B, I] · Qv .
+Page  232: Proof idea. Let A be a MAC adversary that attacks I as in Attack Game 6.2, and which makes
+Page  233: at the same time, it plays the role of adversary in Attack Game 6.1, interacting with the MAC
+Page  233: forward mi to the MAC challenger, obtaining the tag ti
+Page  233: Pr[W0 ] = MACvq adv[A, I].                                 (6.1)
+Page  234: Pr[W2 ] = MACadv[B, I].                                   (6.4)
+Page  234: equivalent to Attack Game 6.1 used in defining secure MACs. The reduction introduces a factor of
+Page  234: • When constructing secure MACs it easier to use Attack Game 6.1 which restricts the adversary
+Page  234: • When using secure MACs to build higher level systems (such as authenticated encryption) it
+Page  234: is more convenient to assume that the MAC is secure with respect to the stronger adversary
+Page  234: 6.3    Constructing MACs from PRFs
+Page  234: We now turn to constructing secure MACs using the tools at our disposal. In previous chapters we
+Page  234: build a secure MAC.
+Page  234: are in K, inputs are in X , and outputs are in Y. For a PRF F we define the deterministic MAC
+Page  234: MAC. For completeness, we state this as a theorem:
+Page  235: deterministic MAC system I derived from F is a secure MAC.
+Page  235: In particular, for every Q-query MAC adversary A that attacks I as in Attack Game 6.1, there
+Page  235: MACadv[A, I]  PRFadv[B, F ] + 1/|Y|
+Page  235: Proof idea. Let A be an efficient MAC adversary. We derive an upper bound on MACadv[A, I]
+Page  235: Game 0. As usual, we begin by reviewing the challenger in the MAC Attack Game 6.1 as it applies
+Page  235: holds in Game 0. Clearly, Pr[W0 ] = MACadv[A, I].
+Page  235: ally A outputs a candidate MAC forgery (m, t) where m is not one of its chosen message queries.
+Page  236: MACadv[A, I] = Pr[W0 ]  Pr[W0 ]        Pr[W1 ] + Pr[W1 ]  PRFadv[B, F ] +
+Page  236: Concrete tag lengths. The theorem shows that to ensure MACadv[A, I] < 2 128 we need a
+Page  236: In the previous section we saw that any secure PRF is also a secure MAC. However, the concrete
+Page  236: integrity for very short messages. For example, viewing AES as a PRF gives a MAC for 128-bit
+Page  236: messages. Clearly, we want to build MACs for much longer messages.
+Page  236: All the MAC constructions in this chapter follow the same paradigm: they start from a PRF
+Page  236: for short inputs (like AES) and produce a PRF, and therefore a MAC, for much longer inputs.
+Page  236: several secure PRFs, and therefore secure MACs, that operate on long inputs.
+Page  241: 6.4.3   Extension attacks: CBC and cascade are insecure MACs
+Page  241: We show that the MACs derived from CBC and cascade are insecure. This will imply that CBC
+Page  241: The extension property immediately implies that the MAC derived from F ⇤ is terribly insecure.
+Page  241: The forger can request the MAC on message m and then deduce the MAC on m k m0 for any m0
+Page  241: An attack on CBC. We describe a simple MAC forger on the MAC derived from CBC. The
+Page  242: 3.     define a2 := a1 t and output t as a MAC forgery for the two-block message (a1 , a2 ) 2 X 2 .
+Page  242: Hence, (a1 , a2 ), t is an existential forgery for the MAC derived from CBC. Consequently, FCBC
+Page  242: cannot be a secure PRF. Note that the attack on the cascade MAC is far more devastating than
+Page  242: on the CBC MAC. But in any case, these attacks show that neither CBC nor cascade should be
+Page  242: used directly as MACs.
+Page  242: us secure MACs for variable length inputs. More generally, we show how to convert a prefix-free
+Page  242: • CMAC: a more efficient prefix-free encoding using randomization.
+Page  243: Our attack will, in fact, break EF as a MAC. The adversary picks Q random inputs x1 , . . . , xQ 2 X 2
+Page  243: and queries its MAC challenger at all Q inputs to obtain t1 , . . . , tQ 2 T . By the birthday paradox
+Page  243: obtain the MAC tag t for xi k a, and this tag t will also be a valid tag for xj k a. This attack easily
+Page  243: 6.5.1     ECBC and NMAC: MACs for variable length inputs
+Page  243: Applying EF to CBC results in a classic PRF (and hence a MAC) called encrypted-CBC or
+Page  243: ECBC for short. This MAC is standardized by ANSI (see Section 6.9) and is used in the banking
+Page  244: (b) The NMAC construction NMAC(k, m)                  (encrypted cascade)
+Page  245: ECBC-3DES MAC with constant probability.
+Page  245: 6.5.1.2   The NMAC PRF
+Page  245: Applying EF to cascade results in a PRF (and hence a MAC) called Nested MAC or NMAC
+Page  245: for short. A variant of this MAC is standardized by the IETF (see Section 8.7.2) and is widely
+Page  245: translation, all of NMAC can be built from a single secure PRF F , as shown in Fig. 6.5b.
+Page  245: Theorem 6.7 (NMAC security). Let F be a secure PRF defined over (K, X , K), where K can
+Page  245: be embedded into X . Then NMAC is a secure PRF defined over (K2 , X ` , K).
+Page  245: In particular, for every PRF adversary A that attacks NMAC as in Attack Game 4.2, and issues
+Page  245: PRFadv[A, NMAC]  (Q(` + 1)) · PRFadv[B1 , F ] + PRFadv[B2 , F ] +        .      (6.20)
+Page  245: Proof. NMAC is clearly extendable and is a prefix-free secure PRF by Theorem 6.4. Hence, if the
+Page  245: underlying PRF F is secure, then NMAC is a secure PRF by Theorem 6.5. 2
+Page  245: ECBC and NMAC are streaming MACs. Both ECBC and NMAC can be used to authenticate
+Page  245: of time. A MAC that has this property is said to be a streaming MAC. This property enables
+Page  245: applications to feed message blocks to the MAC one block at a time and at some arbitrary point
+Page  246: In contrast, some MAC systems require that the message length be prepended to the message
+Page  246: body (see Section 6.6). Such MACs are harder to use in practice since they require applications to
+Page  246: determine the message length before starting the MAC calculations.
+Page  246: This prefix-free encoding is not often used in practice since the resulting MAC is not a streaming
+Page  246: MAC: an application using this MAC must commit to the length of the message to MAC ahead of
+Page  247: The MAC resulting from this prefix-free encoding is a streaming MAC. This encoding, however,
+Page  247: increases the length of the message to MAC by v bits. When computing the MAC on a long message
+Page  247: application of the underlying PRF. For example, to MAC a megabyte message (220 bytes) using
+Page  247: a bit. Then to MAC a megabyte message using ECBC-AES and pf would result in 4096 additional
+Page  247: CMAC
+Page  247: a non-streaming MAC. The second required more evaluations of the underlying PRF for long mes-
+Page  247: that introduces no overhead beyond the underlying prefix-free secure PRF. The resulting MACs,
+Page  247: This approach is used in a NIST MAC standard called CMAC and described in Section 6.10.
+Page  250: for AES). All our MACs so far are designed to authenticate messages whose length is a multiple of
+Page  251: This pad is not injective and results in an insecure MAC: for any message m whose length is not
+Page  251: a multiple of the block length, the MAC on m is also a valid MAC for m k 0. Consequently, the
+Page  251: MAC is vulnerable to existential forgery.
+Page  251: cations that MAC many single block messages. When using CBC or cascade, the dummy block
+Page  251: The CMAC construction described in Section 6.10 provides an elegant solution to this problem.
+Page  251: CMAC avoids adding dummy blocks by using a randomized injective function.
+Page  251: 6.9     Case study: ANSI CBC-MAC
+Page  251: When building a MAC from a PRF, implementors often shorten the final tag by only outputting
+Page  251: has no e↵ect on its security as a PRF. Truncation, however, a↵ects the derived MAC. Theorem 6.2
+Page  251: shows that the smaller w is the less secure the MAC becomes. In particular, the theorem adds a
+Page  251: Both ANSI CBC-MAC standards specify a padding scheme to be used for messages whose
+Page  252: Figure 6.8: CMAC signing algorithm
+Page  252: 6.10        Case study: CMAC
+Page  252: Cipher-based MAC — CMAC — is a variant of ECBC adopted by the National Institute of Stan-
+Page  252: Iwata and Kurosawa. CMAC improves over ECBC used in the ANSI standard in two ways. First,
+Page  252: CMAC uses a randomized prefix-free encoding to convert a prefix-free secure PRF to a secure PRF.
+Page  252: This saves the final encryption used in ECBC. Second, CMAC uses a “two key” method to avoid
+Page  252: CMAC is the best approach to building a bit-wise secure PRF from the CBC prefix-free secure
+Page  252: PRF. It should be used in place of the ANSI method. In Exercise 6.14 we show that the CMAC
+Page  252: The CMAC bit-wise PRF. The CMAC algorithm consists of two steps. First, a sub-key
+Page  252: generation algorithm is used to derive three keys k0 , k1 , k2 from the MAC key k. Then the three
+Page  252: keys k0 , k1 , k2 are used to compute the MAC.
+Page  252: the PRF F . The CMAC signing algorithm is given in Table 6.1 and is illustrated in Fig. 6.8. The
+Page  252: Security. The CMAC algorithm described in Fig. 6.8 can be analyzed using the randomized
+Page  252: prefix-free encoding paradigm. In e↵ect, CMAC converts the CBC prefix-free secure PRF directly
+Page  253: Table 6.1: CMAC signing algorithm
+Page  253: Hence, CMAC fits the randomized prefix-free encoding paradigm and its security follows from
+Page  253: is essential for the analysis of the CMAC rpf .
+Page  254: say, ki := F (k, ↵i ) for constants ↵0 , ↵1 , ↵2 , the security of CMAC would follow directly from the
+Page  254: one to prove that CMAC is indeed secure [71].
+Page  254: 6.11       PMAC: a parallel MAC
+Page  254: The MACs we developed so far, ECBC, CMAC, and NMAC, are inherently sequential: block
+Page  254: hardware parallelism or pipelining to speed up MAC generation and verification. In this section
+Page  254: we construct a secure MAC that is well suited for a parallel architecture. The best construction is
+Page  254: called PMAC. We present PMAC0 which is a little easier to describe.
+Page  254: We build a new PRF, called PMAC0 , which takes as input a key and a message in Z`        p for
+Page  254: some `. It outputs a value in Z. A key for PMAC0 consists of k 2 Zp , k1 2 K2 , and k2 2 K2 . The
+Page  254: PMAC0 construction works as follows:
+Page  254: PMAC0 (~k, m):
+Page  254: a sequential machine this requires two additions modulo p per iteration. On a parallel machine
+Page  255: Figure 6.9: PMAC0 construction
+Page  255: PMAC0 is a secure PRF and hence gives a secure MAC for large messages. The proof will
+Page  255: PMAC0 is a secure PRF for any poly-bounded `.
+Page  255: In particular, for every PRF adversary A that attacks PMAC0 as in Attack Game 4.2, and
+Page  255: PRFadv[A, PMAC0 ]  PRFadv[B1 , F1 ] + PRFadv[B2 , F2 ] +              +       .   (6.28)
+Page  255: When using PMAC0 , the input message must be partitioned into blocks, where each block is an
+Page  255: where each block is an n-bit string in {0, 1}n , for some n. A better parallel MAC construction,
+Page  255: PMAC: better than PMAC0 . Although PMAC0 is well suited for a parallel architecture, there
+Page  255: is room for improvement. Better implementations of the PMAC0 approach are available. Examples
+Page  255: include PMAC [20] and XECB [57], both of which are parallelizable. PMAC, for example, provides
+Page  255: the following improvements over PMAC0 :
+Page  256: • PMAC uses arithmetic in the finite field GF(2n ) instead of in Zp . Elements of GF(2n ) can be
+Page  256: PMAC just uses F1 = F2 = F , where F is a PRF defined over (K, Y, Y), and the input space
+Page  256: of PMAC consists of sequences of elements of Y = {0, 1}n , rather than elements of Zp .
+Page  256: • The PMAC mask for block i is defined as i · k where 1 , 2 , . . . are fixed constants in GF(2n )
+Page  256: • PMAC derives the key k as k            F (k1 , 0n ) and sets k2   k1 . Hence PMAC uses a shorter
+Page  256: secret key than PMAC0 .
+Page  256: • PMAC uses a trick to save one application of F .
+Page  256: • PMAC uses a variant of the CMAC rpf to provide a bit-wise PRF.
+Page  256: The end result is that PMAC is as efficient as ECBC and NMAC on a sequential machine, but
+Page  256: has much better performance on a parallel or pipelined architecture. PMAC is the best PRF
+Page  256: PMAC0 is incremental. Suppose Bob computes the tag t for some long message m. Some time
+Page  256: using CBC-MAC the tag t is of no help — Bob must recompute the tag for m0 from scratch. With
+Page  256: PMAC0 we can do much better. Suppose the PRF F2 used in the construction of PMAC0 is the
+Page  256: t0 := PMAC0 (k, m0 ) for m0 can be easily derived from the tag t := PMAC0 (k, m) for m as follows:
+Page  256: Hence, given the tag on some long message m (as well as the MAC secret key) it is easy to derive
+Page  256: tags for local edits of m. MACs that have this property are said to be incremental. We just
+Page  256: showed that the PMAC0 , implemented using a block cipher, is incremental.
+Page  257: 6.1 (The 802.11b insecure MAC). Consider the following MAC (a variant of this was used for
+Page  257: need to know is that CRC32(m1 ) CRC32(m2 ) = CRC32(m1 m2 ). Define the following MAC
+Page  257: Show that this MAC system is insecure.
+Page  257: let I be the MAC system derived from F , as discussed in Section 6.3. Let A be an adversary
+Page  257: at most Qs signing queries. Theorem 6.1 says that there exists a Qs -query MAC adversary B
+Page  257: MACvq adv[A, I]  MACadv[B, I] · Qv . Theorem 6.2 says that there exists a (Qs + 1)-query PRF
+Page  257: such that MACadv[B, I]  PRFadv[B 0 , F ] + 1/|Y|. Putting these two statements together, we get
+Page  257: MACvq adv[A, I]  (PRFadv[B 0 , F ] + 1/|Y|) · Qv
+Page  257: MACvq adv[A, I]  PRFadv[B 00 , F ] + Qv /|Y|.
+Page  257: 6.3 (Multi-key MAC security). Just as we did for semantically secure encryption in Exer-
+Page  257: cise 5.2, we can extend the definition of a secure MAC from the single-key setting to the multi-key
+Page  257: and verification queries with respect to several MAC keys k1 , . . . , kQ . At the beginning of the
+Page  257: (b) Show that every efficient adversary A that wins your multi-key MAC attack game with
+Page  258: answers the query by querying its MAC challenger. If A outputs a forgery under key k! then
+Page  258: B wins the MAC forgery game. Show that B wins Attack Game 6.2 with probability ✏/Q.
+Page  258: 6.4 (Multicast MACs). Consider a scenario in which Alice wants to broadcast the same message
+Page  258: (a) In the most trivial solution, Alice shares a MAC key ki with each user Ui . When she broadcasts
+Page  258: Assuming the MAC is secure, show that this broadcast authentication scheme is secure even
+Page  258: Assuming the MAC is secure, show that this broadcast authentication scheme is secure pro-
+Page  258: 6.5 (MAC combiners). We want to build a MAC system I using two MAC systems I1 = (S1 , V1 )
+Page  259: (b) Suppose that I1 and I2 are deterministic MAC systems (see the definition on page 214), and
+Page  259: that both have tag space {0, 1}n . Define the deterministic MAC system I = (S, V ), where
+Page  259: 6.7 (Weakly secure MACs). It is natural to define a weaker notion of security for a MAC
+Page  259: and key spaces, of your choosing). Show how to “sabotage” this PRF to obtain a MAC that is
+Page  259: to define a CBC-MAC with a randomized IV. This is a MAC with a probabilistic signing algorithm
+Page  259: algorithms tests if t = FCBC (x1 IV , x2 , . . . , xv ). Show that this MAC is completely insecure, and
+Page  260: 6.14 (Generalized CMAC).
+Page  260: (a) Show that the CMAC rpf (Section 6.10) is a randomized 2 n -prefix-free encoding.
+Page  260: (b) Use the CMAC rpf to convert cascade into a bit-wise secure PRF.
+Page  260: 6.16 (An insecure variant of CMAC). Show that CMAC is insecure as a PRF if the sub-key
+Page  260: of a MAC system that do not work. Let I = (S, V ) be a deterministic MAC (see the definition
+Page  260: terministic MACs with message space M2 . You are to show that each of the resulting MACs are
+Page  261: 6.18 (Integrity for database records). Let (S, V ) be a secure MAC defined over (K, M, T ).
+Page  261: assuming that T n ✓ M). She stores (k, k 0 , t) on her own machine, away from the database.
+Page  261: (b) Does this approach ensure database integrity? Suppose the MAC (S, V ) is built from a secure
+Page  261: 6.19 (Timing attacks). Let (S, V ) be a deterministic MAC system where tags T are n-bytes
+Page  262: In the previous chapter we showed how to build secure MACs from secure PRFs. In particular,
+Page  262: we discussed the ECBC, NMAC, and PMAC constructions. We stated security theorems for these
+Page  262: MACs, but delayed their proofs to this chapter.
+Page  262: In this chapter we describe a general paradigm for constructing MACs using hash functions.
+Page  262: At a high level, MACs constructed from hash functions work in two steps. First, we use the
+Page  262: As we will see, ECBC, NMAC, and PMAC0 are instances of this “hash-then-PRF” paradigm.
+Page  262: deduce the security of ECBC, NMAC, and PMAC0 .
+Page  262: The hash-then-PRF paradigm is very general and enables us to build new MACs out of a wide
+Page  262: variety of hash functions. Some of these hash functions are very fast, and yield MACs that are
+Page  263: to ensure that the hash-then-PRF paradigm yields a secure MAC.
+Page  265: are computational UHFs. The third construction is based on PMAC0 from Section 6.11.
+Page  266: On a machine that has several multiplication units, say four units, we can use a 4-way parallel
+Page  271: length of the input message. In the next section we will use F to construct a secure MAC suitable
+Page  272: 7.3     PRF(UHF) composition: constructing MACs using UHFs
+Page  272: hash is a computational UHF. ECBC, NMAC, and PMAC0 can all be viewed as instances of
+Page  273: Figure 7.3: PRF(UHF) composition: MAC signing
+Page  273: recover the key k1 . Now consider the MAC obtained from PRF(UHF) composition using Hpoly . If
+Page  273: Hpoly ) he can recover the secret Hpoly key and then break the MAC. This shows that the term
+Page  275: 7.3.1   Using PRF(UHF) composition: ECBC and NMAC security
+Page  275: Using Theorem 7.7 we can quickly prove security of many MAC constructions. It suffices to show
+Page  275: that the MAC signing algorithm can be described as the composition of a PRF with a UHF. We
+Page  275: begin by showing that ECBC and NMAC can be described this way and give more examples in the
+Page  275: Security of ECBC and NMAC follows directly from PRF(UHF) composition. The proof for
+Page  275: (Theorem 7.7). Hence, ECBC and NMAC are secure PRFs.
+Page  275: NMAC theorems (Theorems 6.6 and 6.7) are obtained by plugging (7.10) and (7.11), respectively,
+Page  275: One can simplify the proof of ECBC and NMAC security by directly proving that CBC and
+Page  275: than we need. However, this stronger result enabled us to construct other secure MACs such as
+Page  275: CMAC (see Section 6.7).
+Page  275: NMAC, or PMAC0 especially for very long messages.
+Page  276: 7.3.3    Using PRF(UHF) composition: PMAC0 security
+Page  276: Next we show that the PMAC0 construction discussed in Section 6.11 is an instance of PRF(UHF)
+Page  276: composition. Recall that PMAC0 is built out of two PRFs, F1 , which is defined over (K1 , Zp , Y),
+Page  276: The reader should review the PMAC0 construction, especially Fig. 6.9. One can see that PMAC0
+Page  276: The security of PMAC0 follows from the above observations. The concrete security bound
+Page  276: In the design of PMAC0 , we assumed the input space of F1 was equal to Zp . While this simplifies
+Page  276: n-bit block. One can apply the same techniques discussed Section 7.3.2 to get a variant of PMAC0
+Page  276: 7.4     The Carter-Wegman MAC
+Page  276: In this section we present a di↵erent paradigm for constructing secure MAC systems that o↵ers
+Page  276: Recall that in PRF(UHF) composition the adversary’s advantage in breaking the MAC after
+Page  276: advantage in breaking the MAC should be no more than 2 64 then ✏ must be at most 1/2127 .
+Page  277: Figure 7.4: Carter-Wegman MAC signing algorithm
+Page  277: Our second MAC paradigm, called a Carter-Wegman MAC, maintains the same level of security
+Page  277: a PRF(UHF) composition MAC of comparable security. In Exercise 7.5 we explore a di↵erent
+Page  277: randomized MAC construction that achieves the same security as Carter-Wegman with the same
+Page  277: The Carter-Wegman MAC is our first example of a randomized MAC system. The signing
+Page  277: To describe the Carter-Wegman MAC first fix some large integer N and set T := ZN , the group
+Page  277: The Carter-Wegman MAC, denoted ICW , takes inputs in M and outputs tags in R ⇥ T . It uses
+Page  277: keys in KH ⇥ KF . The Carter-Wegman MAC derived from F and H works as follows (see
+Page  278: An encrypted UHF MAC. The Carter-Wegman MAC can be described as an encryption of
+Page  278: shown in Example 5.2. Then the Carter-Wegman MAC can be written as:
+Page  278: which we call the encrypted UHF MAC system derived from E and H.
+Page  278: Why encrypt the output of a hash function? Recall that in the PRF(UHF) composition MAC,
+Page  278: H(k1 , m2 )) then the MAC for m1 is the same as the MAC for m2 . Therefore, by requesting the
+Page  278: information about the hash function key k1 that may completely break the MAC. To prevent this we
+Page  278: The trouble is that the encrypted UHF MAC is not generally secure even when (E, D) is
+Page  278: Wegman MAC is insecure when the hash function H is instantiated with Hpoly . To obtain a secure
+Page  278: Carter-Wegman MAC we strengthen the hash function H and require that it satisfy a stronger
+Page  278: the encrypted UHF MAC.
+Page  278: Security of the Carter-Wegman MAC. To prove security of ICW we need the hash function
+Page  280: Carter-Wegman MAC ICW derived from F and H is a secure MAC.
+Page  280: In particular, for every MAC adversary A that attacks ICW as in Attack Game 6.1, there exist
+Page  280: MACadv[A, ICW ]  PRFadv[BF , F ] + DUFadv[BH , H] +       +     .             (7.24)
+Page  280: ICW . This shows that the Carter-Wegman MAC is easily broken when the hash function H is
+Page  280: Proof idea. Let A be an efficient MAC adversary that plays Attack Game 6.1 with respect to
+Page  280: ICW . We derive an upper bound on MACadv[A, ICW ]. As usual, we first replace the underlying
+Page  280: 2. The adversary might output a MAC forgery m, (r, v) where r 2 R is a fresh randomizer
+Page  280: 3. Finally, the adversary could output a MAC forgery m, (r, v) where r = rj for some uniquely
+Page  281: identical to the original MAC attack game with respect to I. We then slightly modify each game in
+Page  281: Game 0. We begin by describing in detail the challenger in the MAC Attack Game 6.1 with
+Page  281: MACadv[A, ICW ] = Pr[W0 ].                                        (7.25)
+Page  283: 7.5     Nonce-based MACs
+Page  283: randomizers is that they are distinct. This motivates the study of nonce-based MACs, which are
+Page  283: A nonce-based MAC is similar to an ordinary MAC and consists of a pair of deterministic
+Page  283: We say that the nonce-based MAC is defined over (K, M, T , N ). As usual, we require that tags
+Page  283: generated by S are always accepted by V , as long as both are given the same nonce. The MAC
+Page  283: 7.5.1   Secure nonce-based MACs
+Page  283: Nonce-based MACs must be existentially unforgeable under a chosen message attack when the
+Page  283: reused. Nonce-based MAC security is defined using the following game.
+Page  283: Attack Game 7.4 (nonce-based MAC security). For a given nonce-based MAC system I =
+Page  284: denoted nMACadv[A, I], as the probability that A wins the game. 2
+Page  284: Definition 7.6. We say that a nonce-based MAC system I is secure if for all efficient adver-
+Page  284: saries A, the value nMACadv[A, I] is negligible.
+Page  284: Nonce-based Carter-Wegman MAC. The Carter-Wegman MAC (Section 7.4) can be recast
+Page  284: as a nonce-based MAC: We simply view the randomizer r 2 R as a nonce, supplied as an input to
+Page  284: notation of Section 7.4, the MAC system is then
+Page  284: nMACadv[A, ICW ]  PRFadv[BF , F ] + DUFadv[BH , H] +                          .
+Page  284: 7.6    Unconditionally secure one-time MACs
+Page  285: In this section we ask the analogous question for MACs: can we build a “one-time MAC” that
+Page  285: We can model one-time MACs using the standard MAC Attack Game 6.1 used to define MAC
+Page  285: security. To capture the one-time nature of the MAC we allow the adversary to issue only one
+Page  285: signing query. We denote the adversary’s advantage in this restricted game by MAC1 adv[A, I].
+Page  285: Unconditional security means that MAC1 adv[A, I] is negligible for all adversaries A, even com-
+Page  285: tionally secure one-time MACs using hash functions.
+Page  286: 7.6.3    From PUFs to unconditionally secure one-time MACs
+Page  286: We now return to the problem of building unconditionally secure one-time MACs. In fact, PUFs
+Page  286: Let H be a keyed hash function defined over (K, M, T ). We can use H to define the MAC
+Page  286: The following theorem shows that PUFs are the MAC analogue of the one-time pad, since both
+Page  286: Theorem 7.12. Let H be an ✏-PUF and let I be the MAC system derived from H. Then for all
+Page  286: adversaries A (even inefficient ones), we have MAC1 adv[A, I]  ✏.
+Page  286: The PUF construction in Section 7.6.2 is very similar to the Carter-Wegman MAC. The only
+Page  286: the Carter-Wegman MAC with a truly random pad is an unconditionally secure one-time MAC.
+Page  287: Figure 7.5: Randomized PRF(UHF) composition: MAC signing
+Page  287: 7.4 (MAC(UHF) composition is insecure). The PRF(UHF) composition shows that a UHF
+Page  287: can extend the input domain of a specific type of MAC, namely a MAC that is itself a PRF. Show
+Page  287: that this construction cannot be extended to arbitrary MACs. That is, exhibit a secure MAC
+Page  287: I = (S, V ) and a computational UHF H for which the MAC(UHF) composition I 0 = (S 0 , V 0 )
+Page  287: that it remains a secure MAC, but the MAC(UHF) composition becomes insecure.
+Page  288: This MAC is defined over (KF ⇥KH , M, R⇥T ). The tag size is a little larger than in deterministic
+Page  288: (a) Suppose A is a MAC adversary that plays Attack Game 6.1 with respect to I and issues
+Page  288: MACadv[A, I]  PRFadv[BF , F ] + UHFadv[BH , H] +             UHFadv[BH , H]
+Page  288: MACadv[A, I]  PRFadv[BF , F ] + 4✏.                          (7.35)
+Page  288: In the Carter-Wegman MAC to get an error bound as in (7.35) we must set |R| to |Q|2 /✏ in
+Page  288: (b) Rephrase the MAC system I as a nonce-based MAC system (as in Section 7.5). What are
+Page  288: MAC system I still provides some security: security degrades to the security of deterministic
+Page  289: Show that following concrete security result: for every MAC adversary A that attacks ICW as in
+Page  290: MACvq adv[A, ICW ]  PRFadv[BF , F ] + Qv · DUFadv[BH , H] +         +    .
+Page  290: a nonce-based version of the Carter-Wegman MAC. In particular, in Theorem 7.10, we derived the
+Page  290: nMACadv[A, ICW ]  PRFadv[BF , F ] + DUFadv[BH , H] +           ,
+Page  290: nMACadv[A, ICW ]  BCadv[BE , E] +       + DUFadv[BH , H] + ,
+Page  290: nMACadv[A, ICW ]  BCadv[BE , E] + 2 · DUFadv[BH , H] +           .
+Page  290: 7.13 (Carter-Wegman MAC falls apart under nonce re-use). Suppose that when using a
+Page  290: nonce-based MAC, an implementation error causes the system to re-use a nonce more than once.
+Page  290: Let us show that the nonce-based Carter-Wegman MAC falls apart if this ever happens.
+Page  290: (a) Consider the nonce-based Carter-Wegman MAC built from the hash function Hxpoly . Show
+Page  290: on a di↵erent one-block message m2 using the same nonce N , then the MAC system becomes
+Page  290: insecure: the adversary can forge the MAC an any message of his choice with non-negligible
+Page  290: (b) Consider the nonce-based Carter-Wegman MAC with an arbitrary hash function. Suppose
+Page  290: secure block cipher defined over (KE , X ). The encrypted Carter-Wegman nonce-based MAC system
+Page  294: 7.25 (A PMAC0 alternative). Again, for positive integer d, let Id := {0, . . . , d 1}. Let N = 2n
+Page  294: (b) Show how to use H to modify PMAC0 so that the message space is Y ` (where Y = {0, 1}n
+Page  295: 7.29 (Converting a one-time MAC to a MAC). Suppose I = (S, V ) is a (possibly random-
+Page  295: ized) MAC defined over (K1 , M, T ), where T = {0, 1}n , that is one-time secure (see Section 7.6).
+Page  295: the MAC I 0 = (S 0 , V 0 ) defined over (K1 ⇥ K2 , M, R ⇥ T ) as follows:
+Page  295: Show that I 0 is a secure (many time) MAC.
+Page  297: used to construct MACs. Recall that UHFs are keyed hash functions for which finding collisions is
+Page  297: a MAC construction as an example. Suppose we are given a MAC system I = (S, V ) that only
+Page  297: of the MAC so that it can authenticate much longer inputs. Collision resistant hashing gives a very
+Page  297: simple solution. To compute a MAC for some long message m we first hash m and then apply S to
+Page  298: Figure 8.1: Hash-then-MAC construction
+Page  298: the resulting short digest, as described in Fig. 8.1. In other words, we define a new MAC system
+Page  298: I = (S 0 , V 0 ) where S 0 (k, m) := S(k, H(m)). MAC verification works analogously by first hashing
+Page  298: Clearly this hash-then-MAC construction would be insecure if it were easy to find collisions
+Page  298: (m1 , t). Hence, the adversary is able to forge a tag for m1 , which breaks the MAC. Even worse,
+Page  298: is necessary for this hash-then-MAC construction to be secure. Later on in the chapter we prove
+Page  298: The hash-then-MAC construction looks similar to the PRF(UHF) composition discussed in the
+Page  298: previous chapter (Section 7.3). These two methods build similar looking MACs from very di↵erent
+Page  298: of any MAC. On the other hand, a UHF can only extend the domain of a very specific type of MAC,
+Page  298: in the hash-then-MAC method is exactly the same as in the underlying MAC. The PRF(UHF)
+Page  298: The hash-then-MAC construction performs better than PRF(UHF) when we wish to compute
+Page  298: can verify integrity using its own MAC key. With the hash-then-MAC construction it suffices to
+Page  298: MAC, the UHF depends on the key ki and consequently we will need to rehash the entire message
+Page  299: In the introduction to Chapter 6 we proposed a MAC-based file integrity system. The system
+Page  299: the user’s secret MAC key. This key was used every time file integrity was verified. In comparison,
+Page  301: 8.2     Building a MAC for large messages
+Page  301: the introduction — extending the message space of a MAC. Suppose we are given a secure MAC
+Page  301: I = (S, V ) for short messages. Our goal is to build a new secure MAC I 0 for much longer messages.
+Page  301: Theorem 8.1. Suppose the MAC system I is a secure MAC and the hash function H is collision
+Page  301: resistant. Then the derived MAC system I 0 = (S 0 , V 0 ) defined in (8.1) is a secure MAC.
+Page  301: In particular, suppose A is a MAC adversary attacking I 0 (as in Attack Game 6.1). Then there
+Page  301: exist a MAC adversary BI and an efficient collision finder BH , which are elementary wrappers
+Page  302: MACadv[A, I 0 ]  MACadv[BI , I] + CRadv[BH , H].
+Page  302: can find a collision m0 , m1 on H, then he can win the MAC attack game as follows: submit m0 to the
+Page  302: MAC challenger for signing, obtaining a tag t0 := S(k, H(m0 )), and then output the message-tag
+Page  302: Proof idea. Our goal is to show that no efficient adversary can win the MAC Attack Game 6.1 for
+Page  302: our new MAC system I 0 . An adversary A in this game asks the challenger to MAC a few long
+Page  302: messages m1 , m2 , . . . 2 M and then tries to invent a new valid message-MAC pair (m, t). If A is
+Page  302: A produces forgeries of the second type then A can be used to break the MAC system I: the pair
+Page  302: (H(m), t) is a valid MAC forgery for I. Thus, if A wins the MAC attack game for I 0 we break
+Page  302: Proof. We make this intuition rigorous. Let m1 , m2 , . . . 2 M be A’s queries during the MAC attack
+Page  302: • Let X be the event that adversary A wins the MAC Attack Game 6.1 with respect to I 0 .
+Page  302: MACadv[A, I 0 ] = Pr[X]  Pr[X ^ ¬Y ] + Pr[Y ] = Pr[Z] + Pr[Y ]                       (8.2)
+Page  302: To prove the theorem we construct a collision finder BH and a MAC adversary BI such that
+Page  302: Pr[Y ] = CRadv[BH , H]      and    Pr[Z] = MACadv[BI , I].
+Page  302: Adversary BH plays the role of challenger to A in the MAC attack game, as follows:
+Page  303: MAC Adversary BI attacking I
+Page  303: MAC Challenger                                                     Adversary A
+Page  303: Algorithm BH responds to A’s signature queries exactly as in a real MAC attack game. Therefore,
+Page  303: real MAC attack game. Clearly when event Y happens, AH succeeds in finding a collision for H.
+Page  303: MAC adversary BI is just as simple and is shown in Fig. 8.4. When A outputs the final
+Page  303: happens. In other words, MACadv[BI , I] = Pr[Z], as required. The proof now follows from (8.2).
+Page  307: that is better suited for a multi-processor machine.
+Page  316: 8.7         Case study: HMAC
+Page  316: In this section, we return to our problem of building a secure MAC that works on long messages.
+Page  316: say, CBC-MAC with AES to the same message.
+Page  316: Of course, one might use the hash-then-MAC construction analyzed in Section 8.2. Recall that
+Page  316: in this construction, we combine a secure MAC system I = (S, V ) and a collision resistant hash
+Page  316: to get a short digest H(m), and then signs H(m) using S to obtain the MAC tag t = S(k, H(m)).
+Page  316: then the hash-then-MAC construction is completely broken. A collision-finding attack, such as a
+Page  317: over an extended period of time: in an attack on hash-then-MAC, an attacker could spend months
+Page  317: quietly computing on many machines to find a collision on H, without arousing any suspicions.
+Page  317: Another reason not to use the hash-then-MAC construction directly is that we need both a hash
+Page  317: function H and a MAC system I. So an implementation might need software and/or hardware to
+Page  317: execute both, say, SHA256 for the hash and CBC-MAC with AES for the MAC. All other things
+Page  317: being equal, it would be nice to simply use one algorithm as the basis for a MAC.
+Page  317: such as SHA256, and use it somehow to implement a keyed function that is a secure MAC, or even
+Page  317: Append the key: Fpost (k, M ) := H(M k k). This is somewhat similar to the hash-then-MAC
+Page  317: The two-key nest is very closely related to a classic MAC construction known as HMAC.
+Page  317: HMAC is the most widely deployed MAC on the Internet. It is used in SSL, TLS, IPsec, SSH, and
+Page  317: a host of other security protocols. TLS and IPsec also use HMAC as a means for deriving session
+Page  317: relation to HMAC.
+Page  319: Figure 8.10: A bit-wise version of NMAC
+Page  319: as none other than NMAC applied to hbot , which we introduced in Section 6.5.1 (in particular,
+Page  319: take a look at Fig. 6.5b). Actually, the construction in Fig. 8.10 is a bit-wise version of NMAC,
+Page  319: the two-key nest now follows directly from the NMAC security theorem (Theorem 6.7) and the
+Page  319: 8.7.2   The HMAC standard
+Page  319: The HMAC standard is exactly the same as the two-key nest (Fig. 8.9), but with one important
+Page  319: To describe this in more detail, we first observe that HMAC itself is somewhat byte oriented, so
+Page  319: to be B bytes (rather than ` bits). A key k for HMAC is a byte string of arbitrary length. To
+Page  320: HMAC implemented using a hash function H is denoted HMAC-H. The most common HMACs
+Page  320: used in practice are HMAC-SHA1 and HMAC-SHA256. The HMAC standard also allows the output
+Page  320: of HMAC to be truncated. For example, when truncating the output of SHA1 to 80 bits, the HMAC
+Page  320: function is denoted HMAC-SHA1-80. Implementations of TLS 1.0, for example, are required to
+Page  320: support HMAC-SHA1-96.
+Page  320: Security of HMAC. Since the keys k10 , k20 are related — their XOR is equal to opad ipad —
+Page  331: There are other solutions to this problem. For example, the system could store a MAC tag
+Page  331: system to manage the secret MAC key, and ensure that it is never read by the adversary. While
+Page  336: a MAC key, or two di↵erent encryption keys for bi-directional secure communications (so Alice
+Page  336: • derive a MAC key kmac          F (t, "MAC-KEY");
+Page  336: Assuming F is a secure PRF, then the keys kmac , kAB , and kBA behave, for all intents and purposes,
+Page  336: as independent random keys. To implement F , we can even use a hash-based PRF, like HMAC, so
+Page  341: {0, 1}n . One recommended mode of operation is to use HMAC with a zero key:
+Page  341: HMAC0 (m) := HMAC(0` , m) = H(opad k H(ipad k m)).
+Page  341: HMAC0 is safe to use as a general purpose random oracle? We can only give heuristic evidence.
+Page  341: Essentially, what we want to argue is that there are no inherent structural weaknesses in HMAC0
+Page  342: For example, in the HMAC0 construction, the compression function h is modeled as a random
+Page  342: an ideal cipher ⇢. In either case, F [⇢] corresponds to the HMAC0 construction itself. Note the
+Page  342: asymmetry: in any attack game, the challenger only accesses ⇢ indirectly via F [⇢] (HMAC0 in this
+Page  342: Some safe modes. The HMAC0 construction can be proven to be indi↵erentiable from a random
+Page  342: One problem with using HMAC0 as a random oracle is that its output is fairly short. Fortunately,
+Page  342: it is fairly easy to use HMAC0 to get a random oracle with longer outputs. Here is how. Suppose
+Page  342: HMAC0 has an n-bit output, and we need a random oracle with, say, N > n bits of output. Set
+Page  342: function H 0 works as follows. On input m, we compute t         HMAC0 (e0 k m). Then, for i = 1, . . . , q,
+Page  342: we compute ti        HMAC0 (ei k t). Finally, we output the first N bits of t1 k t2 k · · · k tq . One
+Page  343: we replace HMAC0 with any hash function that is itself indi↵erentiable from a random oracle with
+Page  343: evaluate HMAC0 once on a long input.
+Page  344: HKDF is specified in terms of the HMAC construction (see Section 8.7). So it uses the function
+Page  344: HMAC(k, m), where k and m are variable length byte strings, which itself is implemented in terms
+Page  344: t   HMAC(salt, s).
+Page  345: zi    HMAC(t, zi 1 k info k Octet(i)) // Octet(i) is a single byte whose value is i
+Page  345: When salt is empty, the extract stage of HKDF is the same as what we called HMAC0 in
+Page  345: Section 8.10.3. As discussed there, HMAC0 can heuristically be viewed as a random oracle, and so
+Page  345: The expand stage is just a simple application of HMAC as a PRF to derive sub-keys, as we
+Page  345: from random, and that HMAC is a secure PRF — and we already know that HMAC is a secure
+Page  345: Theorem 8.1 shows how to extend the domain of a MAC using a collision resistant hash. It is
+Page  345: natural to ask whether MAC domain extension is possible without relying on collision resistant
+Page  346: domain of a MAC and for providing file integrity. To give some intuition, consider the file integrity
+Page  347: the domain of a MAC and protecting file integrity. In this section we describe solutions to these
+Page  350: parallel machine. We refer to [11] for the details.
+Page  350: function. We show how to use such TCR functions to extend the domain for a MAC and to ensure
+Page  350: 8.11.4.2    Extending the domain of a MAC
+Page  350: Let H be a TCR hash defined over (KH , M, T ). Let I = (S, V ) be a MAC for authenticating short
+Page  351: MAC I 0 = (S 0 , V 0 ) for authenticating messages in M using keys in K as follows:
+Page  351: Note the MAC signing is randomized — we pick a random TCR key r, include r in the input to
+Page  351: MAC are longer than tags produced from extending MACs using a collision resistance hash (as in
+Page  351: Theorem 8.14. Suppose the MAC system I is a secure MAC and the hash function H is TCR.
+Page  351: Then the derived MAC system I 0 = (S 0 , V 0 ) defined in (8.19) is a secure MAC.
+Page  351: In particular, for every MAC adversary A attacking I 0 (as in Attack Game 6.1) that issues
+Page  351: at most Q signing queries, there exist an efficient MAC adversary BI and an efficient TCR
+Page  351: MACadv[A, I 0 ]  MACadv[BI , I] + Q · TCRadv[BH , H].
+Page  351: Proof idea. Our goal is to show that no efficient MAC adversary can successfully attack I 0 . Such
+Page  351: (ti , ri ) for i = 1, 2, . . . . It then tries to invent a new valid message-MAC pair (m, (t, r)). If A is
+Page  351: MAC I. We show that forgeries of the first type can be used to break the target collision resistance
+Page  351: Proof. Let X be the event that adversary A wins the MAC Attack Game 6.1 with respect to I 0 .
+Page  352: MACadv[A, I 0 ] = Pr[X]  Pr[X ^ ¬Y ] + Pr[Y ] = Pr[Z] + Pr[Y ]              (8.20)
+Page  352: To prove the theorem we construct a TCR adversary BH and a MAC adversary BI such that
+Page  352: Pr[Y ]  Q · TCRadv[BH , H]    and   Pr[Z] = MACadv[BI , I].
+Page  352: TCR adversary BH , which emulates a MAC challenger for A as follows:
+Page  352: Algorithm BH responds to A’s signature queries exactly as in a real MAC attack game. Therefore,
+Page  352: a real MAC attack game. Now, when event Y happens there exists a j 2 {1, 2, . . .} such that
+Page  353: 8.4 (Hash-then-encrypt MAC). Let H be a collision resistant hash defined over (M, X ) and
+Page  353: let E = (E, D) be a secure block cipher defined over (K, X ). Show that the encrypted-hash MAC
+Page  353: system (S, V ) defined by S(k, m) := E(k, H(m)) is a secure MAC.
+Page  357: 8.19 (Dual PRFs). The security analysis of HMAC assumes that the underlying compression
+Page  357: wish to build a new PRF F̂ that is a dual PRF. This F̂ can be used as a building block for HMAC.
+Page  358: (a) Show how to use an enhanced TCR to extend the domain of a MAC. Let H be a enhanced
+Page  358: TCR defined over (KH , M, X ) and let (S, V ) be a secure MAC defined over (K, X , T ). Show
+Page  359: that the following is a secure MAC for messages in M:
+Page  359: Discussion: The small domain MAC (S, V ) in this construction is only given h as the
+Page  359: input message, where as when using a TCR, the small domain MAC was given (r, h) as the
+Page  359: message. Hence, the message space of the small domain MAC can be much smaller when
+Page  359: is no generic birthday attack on an enhanced TCR. Consequently, the small domain MAC
+Page  359: (S, V ) can operate on shorter messages than needed in the MAC extension construction from
+Page  359: (a) Show that WCR is a weaker notion than a secure MAC: (1) show that every deterministic
+Page  359: secure MAC is WCR, (2) give an example of a secure WCR that is not a secure MAC.
+Page  359: (b) MAC domain extension with a WCR: let (S, V ) be a secure MAC and let H be a WCR. Show
+Page  359: that the MAC system (S 0 , V 0 ) defined by S 0 (k0 , k1 ), m := S k1 , H(k0 , m) is secure.
+Page  361: composition, is to combine a CPA-secure cipher with a secure MAC. There are many ways to
+Page  361: Let (E, D) be a cipher and (S, V ) be a MAC. Let kenc be a cipher key and kmac be a MAC key.
+Page  361: Encrypt-then-MAC Encrypt the message, c R E(kenc , m), then MAC the ciphertext, tag R
+Page  361: S(kmac , c); the result is the ciphertext-tag pair (c, tag). This method is supported in the
+Page  361: MAC-then-encrypt MAC the message, tag R S(kmac , m), then encrypt the message-tag pair,
+Page  361: secure MAC. The intuition is that the MAC on the ciphertext prevents any tampering with the
+Page  361: ciphertext. We will show that the second method can be insecure — the MAC and cipher can
+Page  362: tag     S(kmac , m)
+Page  362: tag      S(kmac , c)
+Page  362: encrypt-then-mac                            mac-then-encrypt
+Page  362: Figure 9.1: Two methods to combine encryption and MAC
+Page  362: block cipher or a PRF without first constructing either a standalone cipher or MAC. These are
+Page  362: interface for computing MACs on messages. In the past, it was up to developers to correctly
+Page  362: method called Galois Counter Mode (GCM) uses encrypt-then-MAC to combine random counter
+Page  362: mode encryption with a Carter-Wegman MAC (see Section 9.7). We will examine the details
+Page  362: have properties similar to a MAC. Let E = (E, D) be a cipher defined over (K, M, C). We define
+Page  362: the MAC Attack Game 6.1.
+Page  364: the encrypt-then-MAC construction of Fig. 9.1 using a semantically secure cipher and a one-time
+Page  364: MAC, provides one-time authenticated encryption. Replacing the MAC by a one-time MAC can
+Page  371: secure MAC. We show that encrypt-then-MAC is always AE-secure, but MAC-then-encrypt is not.
+Page  371: 9.4.1    Encrypt-then-MAC
+Page  371: Let E = (E, D) be a cipher defined over (Ke , M, C) and let I = (S, V ) be a MAC defined over
+Page  371: (Km , C, T ). The encrypt-then-MAC system EEtM = (EEtM , DEtM ), or EtM for short, is defined
+Page  371: Theorem 9.2. Let E = (E, D) be a cipher and let I = (S, V ) be a MAC system. Then EEtM is
+Page  371: AE-secure assuming E is CPA-secure and I is a secure MAC system. Also, EEtM is 1AE-secure
+Page  371: assuming E is semantically secure and I is a one-time secure MAC system.
+Page  371: Game 9.1 there exists a MAC adversary Bmac that attacks I as in Attack Game 6.1, where
+Page  371: Bmac is an elementary wrapper around Aci , and which makes no more signing queries than Aci
+Page  371: CIadv[Aci , EEtM ] = MACadv[Bmac , I].
+Page  371: reduction. Suppose Aci is a ciphertext integrity adversary attacking EEtM . We construct a MAC
+Page  371: adversary Bmac attacking I.
+Page  371: Adversary Bmac plays the role of adversary in a MAC attack game for I. It interacts with
+Page  371: a MAC challenger Cmac that starts by picking a random km R Km . Adversary Bmac works by
+Page  372: Query Cmac on ci and obtain ti R S(km , ci ) in response
+Page  372: It should be clear that Bmac responds to Aci ’s queries as in a real ciphertext integrity attack game.
+Page  372: is a message-tag pair that lets Bmac win the MAC attack game and therefore CIadv[Aci , EEtM ] =
+Page  372: MACadv[Bmac , I], as required.
+Page  372: Recall that our definition of a secure MAC from Chapter 6 requires that given a message-tag
+Page  372: Our definition of secure MAC ensures that the attacker cannot modify an EtM ciphertext without
+Page  372: 9.4.1.1    Common mistakes in implementing encrypt-then-MAC
+Page  372: A common mistake when implementing encrypt-then-MAC is to use the same key for the cipher and
+Page  372: the MAC, i.e., setting ke = km . The resulting system need not provide authenticated encryption
+Page  372: Another common mistake is to apply the MAC signing algorithm to only part of the ciphertext.
+Page  372: IV. When implementing encrypt-then-MAC EEtM = (EEtM , DEtM ) the encryption algorithm is
+Page  372: Here, E(ke , m) outputs the ciphertext (r, c), but the MAC signing algorithm is only applied to
+Page  372: c; the IV is not protected by the MAC. This mistake completely destroys ciphertext integrity:
+Page  373: a faulty encrypt-then-MAC where the HMAC was not applied to the encryption IV [97].
+Page  373: 9.4.2    MAC-then-encrypt is not generally secure: padding oracle attacks on SSL
+Page  373: Next, we consider the MAC-then-encrypt generic composition of a CPA secure cipher and a secure
+Page  373: MAC. We show that this construction need not be AE-secure and can lead to many real-world
+Page  373: To define MAC-then-encrypt precisely, let I = (S, V ) be a MAC defined over (Km , M, T ) and
+Page  373: let E = (E, D) be a cipher defined over (Ke , M ⇥ T , C). The MAC-then-encrypt system
+Page  373: is a CPA-secure cipher and I is a secure MAC. In fact, MtE can fail to be secure for widely-used
+Page  373: ciphers and MACs and this has lead to many significant attacks on deployed systems.
+Page  373: and a secure MAC. We showed in Chapter 5 that randomized CBC mode encryption is CPA-secure,
+Page  373: mode encryption and a secure MAC works as follows:
+Page  373: • EMtE ( (ke , km ), m): First use the MAC signing algorithm to compute a fixed-length tag
+Page  374: MAC tag and if valid return the remaining bytes as the message. Otherwise, output reject.
+Page  374: message m. The length of m is such that after a MAC tag t is appended to m the length of (m k t)
+Page  375: that the length of the message and MAC is a multiple of the block size (16 bytes), as needed for
+Page  377: that the server should send one type of error message (called bad record mac) when a received
+Page  377: ciphertext is rejected because of a MAC verification error and another type of error message
+Page  377: 9.4.4    Secure instances of MAC-then-encrypt
+Page  377: Theorem 9.3 shows that MAC-then-encrypt with randomized counter mode is AE-secure even
+Page  377: if the MAC is only one-time secure. That is, it suffices to use a weak MAC that is only secure
+Page  377: prove security using such a weak MAC is that the MAC value is encrypted, and consequently it is
+Page  377: harder for the adversary to attack the MAC. Since one-time MACs are a little shorter and faster
+Page  377: than many-time MACs, MAC-then-encrypt with randomized counter mode has a small advantage
+Page  377: over encrypt-then-MAC. Nevertheless, the attacks on MAC-then-encrypt presented in the previous
+Page  378: Algorithm D(ke , c) is defined similarly. Let I = (S, V ) be a secure one-time MAC defined over
+Page  378: The MAC-then-encrypt cipher EMtE = (EMtE , DMtE ), built from F and I and taking messages
+Page  378: Theorem 9.3. The cipher EMtE = (EMtE , DMtE ) in (9.11) built from the PRF F and MAC I
+Page  378: provides authenticated encryption assuming I is a secure one-time MAC and F is a secure PRF
+Page  378: Game 9.1 there exists two MAC adversaries Bmac and Bmac      that attack I as in Attack Game 6.1,
+Page  378: Q · MAC1 adv[Bmac , I] + MAC1 adv[Bmac , I] +         .
+Page  378: F . Here, ti is a MAC tag computed on mi . At the end of the attack game, adversary Aci outputs
+Page  379: the term MAC1 adv[Bmac 0  , I] in (9.12) comes from.
+Page  379: c 6= cj , we have (m, t) 6= (mj , tj ). To turn Aci into a one-time MAC adversary, we have to
+Page  379: the tag ti by a dummy tag. This guessing strategy is where the term Q · MAC1 adv[Bmac , I]
+Page  379: km R K m                    // Choose random MAC key
+Page  380: occurs. Based on these observations, we can easily construct an efficient MAC adversary Bmac    0   such
+Page  380: that Pr[Z2 ]  MAC1 adv[Bmac , I]. Adversary Bmac runs as follows. It plays the role of challenger to
+Page  380: adversary Bmac outputs a random pair in Y     |u|   `     `
+Page  380: |Pr[W2 ]     Pr[W1 ]|  MAC1 adv[Bmac , I].                        (9.14)
+Page  380: Final reduction. We claim that there is an efficient one-time MAC forger Bmac so that
+Page  380: Pr[W4 ] = MAC1 adv[Bmac , I]                                 (9.17)
+Page  380: Adversary Bmac interacts with a MAC challenger C and works as follows:
+Page  381: Bmac does not abort, and outputs a pair (m, t) that lets it win the one-time MAC attack game. It
+Page  381: follows that Pr[W4 ] = MAC1 adv[Bmac , I] as required. In summary, putting equations (9.13)–(9.17)
+Page  381: 9.4.5   Encrypt-then-MAC or MAC-then-encrypt?
+Page  381: • EtM provides authenticated encryption whenever the cipher is CPA-secure and the MAC is
+Page  381: secure. The MAC on the ciphertext prevents any tampering with the ciphertext.
+Page  381: even if the MAC is only one-time secure.
+Page  381: • A third mode, called encrypt-and-MAC (EaM), is discussed in Exercise 9.10. The exercise
+Page  381: shows that EaM is secure when using randomized counter-mode cipher as long as the MAC
+Page  381: MAC be a secure MAC. Otherwise, EtM may provide no security at all.
+Page  381: commonly used. First, as we did for encryption and for MACs, we define nonce-based authenticated
+Page  382: (E, D) essentially becomes a MAC system for the associated data d.
+Page  383: Generic encrypt-then-MAC composition. We construct a nonce-based AEAD cipher E =
+Page  383: nonce-based secure MAC (S, V ) (as in Section 7.5) as follows:
+Page  383: Theorem 9.4. Let E = (E, D) be a nonce-based cipher and let I = (S, V ) be a nonce-based MAC
+Page  383: MAC system.
+Page  384: Generic encrypt-then-MAC composition. In later applications, the notion that we will use
+Page  384: MAC (S, V ) as follows:
+Page  385: secure MAC system. Then EEtM is a 1CCA-secure AD cipher.
+Page  385: one-time secure MAC I = (S, V ), the signing algorithm is deterministic. So for such implementa-
+Page  385: GCM is an encrypt-then-MAC cipher combining a CPA-secure cipher and a secure MAC. The
+Page  385: CPA secure cipher is nonce-based counter mode, usually using AES. The secure MAC is a Carter-
+Page  385: Wegman MAC built from a keyed hash function called GHASH, a variant of the function Hxpoly
+Page  385: from Section 7.4. When encrypting the empty message the cipher becomes a MAC system called
+Page  385: GMAC providing integrity for the associated data.
+Page  385: MAC. The GHASH function is defined over (X , X ` , X ) for ` := 232 1.
+Page  385: ⇣         MAC:                             ⌘
+Page  385: output (c, t)    //    encrypt-then-MAC ciphertext
+Page  386: and a nonce N . It operates as in encrypt-then-MAC: it first derives km  E(k, 0128 ) and checks the
+Page  386: hash function is used in a Carter-Wegman MAC and therefore, for security, must be a DUF. In
+Page  386: of encrypt-then-MAC (Theorem 9.4), and follows from the security of the underlying block cipher
+Page  387: uses the same key for both the cipher and the MAC. While this is bad practice — it invalidates
+Page  387: due to export restrictions, then the MAC key must also be weak. SSL 2.0 supported only a small
+Page  387: number of algorithms and, in particular, only supported MD5-based MACs.
+Page  389: If decryption results in reject then the party sends a fatal bad record mac alert to its peer and
+Page  391: CPA-secure cipher with a secure MAC using encrypt-and-MAC (Exercise 9.10) in an attempt to
+Page  391: 3. MAC. A MAC is computed over a sequence-number and the plaintext data in the thick
+Page  391: number of MAC algorithms, but HMAC-SHA1-160 must be supported.
+Page  392: Although SSH uses encrypt-and-MAC, which is not generally secure, we show in Exercise 9.10
+Page  392: that for certain combinations of cipher and MAC, including the required ones in SSHv2, encrypt-
+Page  392: and-MAC provides authenticated encryption.
+Page  394: using a CRC checksum for integrity. In a sense, WEP uses the MAC-then-encrypt method, but it
+Page  394: uses CRC instead of a MAC. We show that despite the encryption step, this construction utterly
+Page  395: ratified in 2004. 802.11i provides authenticated encryption using a MAC-then-encrypt mode called
+Page  395: CCM. In particular, CCM uses (raw) CBC-MAC for the MAC and counter mode for encryption.
+Page  395: Here, packets from machines 1,2,3 are encrypted at the west gateway using IPsec and transmitted
+Page  398: MAC calculation. However, only the 32 least significant bits (LSB) are included in the ESP packet
+Page  398: a result, all further packets will be rejected due to MAC validation failure. This explains why the
+Page  399: The encryption process.        ESP implements the encrypt-then-MAC method in four steps. We
+Page  399: 3. MAC. An integrity tag is computed using an algorithm and key specified in the SA. The tag
+Page  399: is placed in the integrity tag field following the ciphertext. ESP supports a variety of MAC
+Page  399: algorithms, but is required to support HMAC-SHA1-96, HMAC-MD5-96, and AES-XCBC-
+Page  399: MAC-96 (XCBC-MAC is a variant of CMAC). The integrity tag field is optional and is
+Page  399: checks the tag field, and rejects the packet if MAC verification fails. The packet is then decrypted
+Page  400: encrypt-then-MAC and on the sequence number, ESP ensures that the recipient sees a data stream
+Page  400: layer processes data before passing it to the IP layer. Hence, this implements MAC-then-encrypt
+Page  401: randomized counter mode without any padding. No MAC is used, but before the plaintext is
+Page  402: MAC that are insecure when used in encrypt-then-MAC when the same secret key k is used for
+Page  402: both the cipher and the MAC. Let (E, D) be a block cipher defined over (K, X ) where X = {0, 1}n
+Page  402: where r is the random IV. Use RawCBC built from (E, D) as the secure MAC. This MAC is secure
+Page  402: cipher and the MAC in encrypt-then-MAC results in a cipher that does not provide authenticated
+Page  402: 9.9 (MAC-then-encrypt). Prove that MAC-then-encrypt provides authenticated encryption
+Page  402: when the underlying cipher is randomized CBC mode encryption and the MAC is a secure MAC.
+Page  402: of full blocks, and the tag t for the MAC is one full block, so the message that is CBC-encrypted
+Page  403: 9.10 (An AEAD from encrypt-and-MAC). Let (E, D) be randomized counter mode encryp-
+Page  403: This method is loosely called encrypt-and-MAC because the message m is both encrypted by the
+Page  403: cipher and is the input to the MAC signing algorithm, which here is a PRF.
+Page  403: truncated as one often does with a PRF-based MAC.
+Page  404: 9.13 (MAC from encryption). Let (E, D) be a cipher defined over (K, M, C). Define the
+Page  404: following MAC system (S, V ) also defined over (K, M, C):
+Page  404: Show that if (E, D) has ciphertext integrity then (S, V ) is a secure MAC system.
+Page  404: (a) Show that MAC-then-Encrypt is both CPA and PI secure.
+Page  404: Note: The MAC-then-Encrypt counter-example (Section 9.4.2) shows that a system that is
+Page  404: 9.16 (Encrypted UHF MAC). Let H be a hash function defined over (KH , M, X ) and (E, D)
+Page  404: be a cipher defined over (KE , X , C). Define the encrypted UHF MAC system I = (S, V ) as
+Page  405: Show that I is a secure MAC system assuming H is a computational UHF and (E, D) provides
+Page  405: this MAC system to be secure.
+Page  405: (a) Let (E, D) be an encrypt-then-MAC AE-secure cipher where the underlying encryption is
+Page  406: cipher and a secure MAC as building blocks.
+Page  408: chapter we develop the full machinery needed for key exchange in the presence of an active attacker
+Page  408: More precisely, we model Alice and Bob as communicating machines. A key exchange proto-
+Page  408: col P is a pair of probabilistic machines (A, B) that take turns in sending messages to each other.
+Page  408: At the end of the protocol, when both machines terminate, they both obtain the same value k. A
+Page  408: cution of the protocol. Since A and B are probabilistic machines, we obtain a di↵erent transcript
+Page  455: be stored on a di↵erent machine so that all the machines must cooperate in order to decrypt a
+Page  455: ciphertext. Decryption fails if even one machine does not participate. Consequently, to steal the
+Page  455: secret key, an attacker must break the security of all the machines, and this can be harder than
+Page  455: compromising a single machine. In what follows, we use s to denote the total number of shares.
+Page  473: encryption scheme using the encrypt-then-MAC method. We show here that this does not work in
+Page  473: using encrypt-then-MAC: Alice wraps the ciphertext (y, c) with some authentication data computed
+Page  473: from (y, c). Say, Alice computes a MAC tag t over (y, c) using a secret key that she shares with Bob
+Page  473: and sends (y, c, t) to Bob (or, instead of a MAC, she computes a digital signature on (y, c), a concept
+Page  519: scheme defined over (K ⇥ M, C), and let (S, V ) be a secure MAC with key space K. We construct
+Page  519: date the MAC tag t. Show that this is incorrect. That is, show a CPA-secure encryption scheme
+Page  519: (G, E, D) for which (G, E 0 , D0 ) is not CCA-secure (for any choice of MAC).
+Page  527: from a public distribution site or from a peer-to-peer network. Before installing U on their machine,
+Page  527: in the clear to everyone. A MAC system is of no use in this setting because SoftAreUs does not
+Page  528: A MAC system would do the job, but requires that Alice and Bob have a shared secret key. What
+Page  528: machine.
+Page  529: Non-repudiation does not come up in the context of MACs because MACs are non-binding.
+Page  529: attached MAC tag. Bob cannot use the tag to convince a judge that the message is from Alice
+Page  529: since Bob could have just as easily generated the tag himself using the MAC key. Hence Alice can
+Page  529: more precisely. Functionally, a digital signature is similar to a MAC. The main di↵erence is that in
+Page  529: a MAC, both the signing and verification algorithms use the same secret key, while in a signature
+Page  530: The definition of a secure signature scheme is similar to the definition of secure MAC. We give the
+Page  531: Verification queries. In our discussion of MACs we proved Theorem 6.1, which showed that
+Page  531: tag verification queries do not help the adversary forge MACs. In the case of digital signatures,
+Page  531: proved a similar fact for a secure MAC system in Exercise 6.3.
+Page  531: the definition of secure MACs. Here we only require that the adversary cannot forge a signature
+Page  531: In contrast, for MAC security we insisted that given a message-tag pair (m, t) the adversary
+Page  531: then-MAC construction in Section 9.4.1. It was also needed for proving that MAC verification
+Page  532: signature on a previously signed message, as we required for MACs. There are a few specific
+Page  533: resistant hash function. We presented a similar construction for MACs in Fig. 8.1. Let S = (G, S, V )
+Page  534: We then used a TCR hash function to extend the message space of a MAC. We can do the same
+Page  534: proof are almost identical to the same theorem and proof applied to MAC systems (Theorem 8.14).
+Page  534: in Theorem 13.1 above. The reason for this extra Q factor is the same as in the proof for MAC
+Page  550: • The signcryption analogue of encrypt-then-MAC is encrypt-then-sign: first encrypt the mes-
+Page  550: • The signcryption analogue of MAC-then-encrypt is sign-then-encrypt: first sign the message
+Page  556: Encrypt-then-MAC provides authenticated encryption while MAC-then-encrypt might not. In the
+Page  556: we are starting from a CCA-secure public-key system E, where as MAC-then-encrypt was built
+Page  557: from a CPA-secure cipher. In fact, we know by Exercise 9.15 that MAC-then-encrypt, where the
+Page  557: Unlike the encrypt-then-MAC construction, the encrypt-then-sign method requires a CCA-
+Page  557: symmetric setting, the encrypt-then-MAC construction requires a secure MAC, and our definition
+Page  557: of a secure MAC is the direct analogue of our definition of a strongly secure signature scheme.
+Page  575: 13.2 (Multi-key signature security). Just as we did for secure MACs in Exercise 6.3, show
+Page  595: especially in a distributed environment where many machines issue signatures using the same secret
+Page  601: phenomenon in Section 7.5 where stateful MACs were occasionally more efficient than their stateless
+Page  601: certificate authority is often implemented using several machines, each of which issues signatures
+Page  601: since all these machines would have to somehow synchronize their state to ensure that the signing
+Page  620: Login at a bank’s automated teller machine (ATM). Alice wants to withdraw cash from her
+Page  621: example, Alice plays the role of prover while the ATM machine plays the role of verifier. The
+Page  621: The stolen password can then be used to impersonate Alice to other machines.
+Page  626: many di↵erent usernames. These repeated attempt leverage client machines, called bots, located
+Page  633: In practice, PBKDF2 is often implemented using HMAC-SHA256 as the underlying PRF. The
+Page  633: data protection API (DPAPI) uses d = 8000 by default, but using HMAC-SHA512 as the PRF.
+Page  634: where F is a PRF defined over (P, X , X ). In practice one uses HMAC-SHA256 for F . If needed,
+Page  637: The common password problem. Users frequently have accounts on multiple machines and
+Page  637: a server, whose identity is id server , the user’s machine (e.g. the user’s web browser) automatically
+Page  640: never wrap around. Implementations of HOTP typically use HMAC-SHA256 as the underlying
+Page  645: t R Smac (k, c)
+Page  645: Vmac (k, m, t)
+Page  645: Figure 18.11: MAC based Challenge-Response identification
+Page  645: Let I = (Smac , Vmac ) be a MAC defined over (K, M, T ). The challenge-response protocol
+Page  645: ChalRespmac = (G, P, V ), shown in Fig. 18.11, works as follows:
+Page  646: 2. P computes t R Smac (k, c), and sends t to V ;
+Page  646: 3. V outputs Vmac (k, c, t).
+Page  646: Theorem 18.6. Suppose I is a secure MAC system, and that the size of the message space, |M|,
+Page  646: is super-poly. Then ID protocol ChalRespmac is weakly secure against active attacks.
+Page  646: breaks the MAC system (in the sense of Attack Game 6.2). 2
+Page  646: is sent to the server to complete the protocol. The MAC is implemented as a PRF derived from
+Page  646: Challenge-response using passwords. In describing protocol ChalRespmac , the key k was
+Page  646: chosen at random from the key space K of the underlying MAC system. In some settings it may
+Page  646: if Vmac (H(w), c, t) = accept then
+Page  647: replace the MAC with a signature scheme (G, Ssig , Vsig ) defined over (M, T ). The main change to
+Page  647: adversary must forge a signature, rather than a MAC. 2
+Page  647: MAC-based protocol, since vk need not be kept secret. However, the MAC-based protocol has
+Page  720: random oracle. A simulator for         is an interactive machine Sim 1 that responds to a series of
+Page  731: defined in Section 20.3.5, which is an interactive machine that responds to unjustified proof queries
+Page  750: mented, and fail to securely erase this data. Alternatively, the user’s machine could be temporarily
+Page  750: infected with malware that is able to observe the machine’s memory while the protocol is running.
+Page  778: encryption, such as AES-128 in GCM mode. Algorithm S refers to a MAC signing algorithm, such
+Page  778: as HMAC-SHA256. Algorithms Sig P (·) and Sig Q (·) sign the provided data using P ’s or Q’s signing
+Page  779: The symmetric encryption scheme (Es , Ds ) and the hash function in HMAC and HKDF to use
+Page  780: • A tag computed using HMAC (see Section 8.7) on the conversation so far.
+Page  780: The key ksh used to encrypt these messages and the key ksm used in applying HMAC are derived
+Page  780: • A tag computed using HMAC (see Section 8.7) on the conversation so far.
+Page  780: The key kch used to encrypt these messages and the key kcm used in applying HMAC are derived
+Page  782: computed, not sent, and not included in the HMAC and HKDF computations. Instead, the derived
+Page  785: with the MAC and key derivation all rolled in to the hash function.)
+Page  788: the key may be used as a MAC key, and used to authenticate publicly known messages.
+Page  793: keyboard entry, while the other is a server, which is a machine that keeps a password file, containing
+Page  815: [71] T. Iwata and K. Kurosawa. OMAC: One-key CBC MAC. In Proceedings of fast software
+Page  817: [97] R. Napier.    RNCryptor HMAC Vulnerability,              2013.      http://robnapier.net/
+Page  817: rncryptor-hmac-vulnerability.

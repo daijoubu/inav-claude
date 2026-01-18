@@ -1,0 +1,23 @@
+Keyword: AEAD
+Occurrences: 19
+================================================================================
+
+Page  383: AD cipher. We refer to this notion as a nonce-based AEAD cipher which is shorthand for
+Page  383: tion, or is simply a nonce-based AEAD cipher, if E is CPA-secure and has ciphertext integrity.
+Page  383: Generic encrypt-then-MAC composition. We construct a nonce-based AEAD cipher E =
+Page  383: EEtM is a secure AEAD cipher.
+Page  383: system. Then EEtM is a nonce-based AEAD cipher assuming E is CPA-secure and I is a secure
+Page  385: Galois counter mode (GCM) is a popular nonce-based AEAD cipher standardized by NIST in 2007.
+Page  386: Security. The AEAD security of GCM is similar to the analysis we did for generic composition
+Page  388: TLS 1.3 uses a nonce-based AEAD cipher (E, D) to encrypt a record. Which nonce-based
+Page  388: AEAD cipher is used is determined by negotiation during TLS session setup. The AEAD encryption
+Page  388: The AEAD cipher outputs a ciphertext c which is then formatted into an encrypted TLS record
+Page  389: When a record is received, the receiving party runs the AEAD decryption algorithm to decrypt c.
+Page  389: be given as input to the encryption algorithm. This does not compromise security: a secure AEAD
+Page  389: information in the record. A replicated or out-of-order record will be discarded because the AEAD
+Page  391: construct a secure AEAD cipher. Specifically, SSHv2 encryption works as follows (Fig. 9.3):
+Page  392: addressed by authenticated encryption. In fact, many secure AEAD modes do not provide this level
+Page  392: Generally speaking, AEAD ciphers are not designed to be used this way: plaintext data should
+Page  403: 9.10 (An AEAD from encrypt-and-MAC). Let (E, D) be randomized counter mode encryp-
+Page  403: AEAD cipher assuming |X | is super-poly.
+Page  404: it is nonce-based AEAD secure assuming the security of the underlying block cipher as a PRF

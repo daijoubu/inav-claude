@@ -1,0 +1,149 @@
+POWER vs FLIGHT PATH ANGLE - QUICK REFERENCE
+============================================
+
+For constant airspeed flight
+
+KEY EQUATION
+-----------
+P = P_level × (1 + [L/D] × sin(γ))
+
+Where:
+  P_level = power required in level flight at airspeed V
+  L/D     = lift-to-drag ratio (typical: 8-12 for model aircraft)
+  γ       = flight path angle (+ climb, - descent, radians or degrees)
+
+SIGN CONVENTION
+--------------
+  γ > 0  →  Climb    →  Power increases (gravity opposes)
+  γ = 0  →  Level    →  Baseline power
+  γ < 0  →  Descent  →  Power decreases (gravity assists)
+
+TYPICAL VALUES
+-------------
+Aircraft Type          L/D    Best Glide Angle
+-------------------------------------------------
+Sailplane/Glider      30-60      1.0° - 2.0°
+General Aviation      10-15      4.0° - 6.0°
+Fixed-wing RC Model    8-12      5.0° - 7.0°
+Flying Wing            6-10      6.0° - 9.5°
+Multirotor (fwd)       3-5       11° - 19°
+
+POWER TABLE (L/D = 10)
+---------------------
+Flight Path   sin(γ)   Power Factor   Power (if P_level=100W)
+-------------------------------------------------------------
+Climb 15°     +0.259   1 + 2.59       P = 359 W  (3.6× level)
+Climb 10°     +0.174   1 + 1.74       P = 274 W  (2.7× level)
+Climb  5°     +0.087   1 + 0.87       P = 187 W  (1.9× level)
+Level  0°      0.000   1 + 0.00       P = 100 W  (baseline)
+Descent -5°   -0.087   1 - 0.87       P =  13 W  (0.13× level)
+Glide -5.74°  -0.100   1 - 1.00       P =   0 W  (no power!)
+Descent -10°  -0.174   1 - 1.74       P = -74 W  (need brakes!)
+
+SPECIAL CASES
+------------
+Best Glide (P = 0):
+  γ_glide = arcsin(-1/[L/D])
+
+  For L/D = 10:  γ = -5.74° = -0.1 rad
+  Glide ratio: 10:1 (10m forward per 1m down)
+
+Maximum Climb Angle (P = P_max):
+  sin(γ_max) = (P_max - P_level) / (W × V)
+
+SMALL ANGLE APPROXIMATION
+------------------------
+For |γ| < 15°:  sin(γ) ≈ γ (γ in radians)
+
+Error:
+  5°  → 0.11%  (negligible)
+  10° → 0.52%  (excellent)
+  15° → 1.16%  (good)
+
+Code optimization:
+  float gamma_rad = atan2f(climb_rate, ground_speed);
+  float sin_gamma = (fabsf(gamma_rad) < 0.26f) ? gamma_rad : sinf(gamma_rad);
+
+WORKED EXAMPLE
+-------------
+Aircraft: Fixed-wing model
+  Cruise speed: 15 m/s
+  Level flight power: 150 W
+  L/D ratio: 10
+
+Scenario: Descend at 5° while maintaining 15 m/s
+
+Solution:
+  γ = -5° = -0.0873 rad
+  sin(-5°) = -0.0872
+
+  P = 150 × (1 + 10 × (-0.0872))
+    = 150 × (1 - 0.872)
+    = 150 × 0.128
+    = 19.2 W
+
+Power reduction: 87% less than level flight!
+
+PHYSICAL INTERPRETATION
+----------------------
+Descent at constant airspeed:
+  - Potential energy decreases (losing altitude)
+  - Kinetic energy constant (airspeed unchanged)
+  - Gravity provides energy to overcome drag
+  - Less propulsive power needed
+
+Energy rate from gravity:
+  P_gravity = W × V × sin(|γ|)
+
+This exactly equals the power reduction in the equation.
+
+INAV CODE SNIPPET
+----------------
+// Throttle optimization for constant airspeed descent
+float gamma = atan2f(climb_rate, ground_speed);
+float L_over_D = 10.0f;  // Estimated from aircraft type
+
+float power_factor;
+if (gamma < 0) {  // Descending
+    power_factor = 1.0f - fabsf(gamma) * L_over_D;  // Small angle approx
+    power_factor = constrainf(power_factor, 0.0f, 1.0f);
+} else {  // Climbing
+    power_factor = 1.0f + gamma * L_over_D;
+}
+
+throttle_pct = throttle_cruise * power_factor;
+
+LIMITATIONS
+----------
+Assumes:
+  - Constant airspeed (not accelerating)
+  - Steady flight (no transient dynamics)
+  - Small angles: L ≈ W (lift equals weight)
+  - Constant L/D (drag polar unchanged)
+  - No wind (flight path relative to air mass)
+
+Real aircraft:
+  - Propeller efficiency varies with speed
+  - Fuselage incidence changes drag
+  - Dynamic effects during maneuvers
+
+SAFETY NOTES
+-----------
+1. Steeper than glide angle requires brakes/spoilers
+2. Best glide maximizes range in emergency
+3. High climb angles need significant excess power
+4. Monitor airspeed - don't climb into stall!
+
+REFERENCES
+---------
+Houghton & Carpenter "Aerodynamics for Engineering Students" 5th Ed:
+  - Pages 26-34: Force equilibrium
+  - Pages 35-44: Drag and L/D ratio
+  - Pages 62-67: Performance calculations
+
+Full documentation:
+  ../knowledge-base/power-flight-path-angle.md
+
+---
+Created: 2026-01-18
+Agent: aerodynamics-expert

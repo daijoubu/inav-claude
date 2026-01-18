@@ -1,0 +1,95 @@
+Keyword: KDF
+Occurrences: 91
+================================================================================
+
+Page    8: 8.10.5 Case study: HKDF . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 330
+Page  344: 8.10.5    Case study: HKDF
+Page  344: HKDF is a key derivation function specified in RFC 5869, and is deployed in many standards.
+Page  344: HKDF is specified in terms of the HMAC construction (see Section 8.7). So it uses the function
+Page  344: The input to HKDF consists of a secret s, an optional salt value salt (discussed below), an
+Page  344: The execution of HKDF consists of two stages, called extract (which corresponds to what we
+Page  344: In the extract stage, HKDF uses salt and s to compute
+Page  345: When salt is empty, the extract stage of HKDF is the same as what we called HMAC0 in
+Page  345: Users of HKDF have the option of providing non-zero salt. The salt plays a role akin to the
+Page  345: the output of the extract stage of HKDF seems more likely to be indistinguishable from random,
+Page  388: function called HKDF (Section 8.10.5) to derive enough pseudo-random bits for the two keys. This
+Page  452: the hash function H : G ! K, namely that H is a secure key derivation function, or KDF for
+Page  452: Intuitively, H : G ! K is a secure KDF if no efficient adversary can e↵ectively distinguish
+Page  452: KDFadv[A, F ] := Pr[W0 ] Pr[W1 ] . 2
+Page  453: Definition 11.5 (secure key derivation). A hash function F : X ! Y is a secure KDF if for
+Page  453: every efficient adversary A, the value KDFadv[A, F ] is negligible.
+Page  453: It is plausible to conjecture that an “o↵ the shelf” hash function, like SHA256 or HKDF (see
+Page  453: Section 8.10.5), is a secure KDF. In fact, one may justify this assumption modeling the hash
+Page  453: One may even build a secure KDF without making any assumptions at all: the construction in
+Page  453: tionally secure KDF. Even though this construction is theoretically attractive and quite efficient,
+Page  453: better to use something based on SHA256 or HKDF, which can more plausibly be modeled as a
+Page  453: Theorem 11.5. If the DDH assumption holds for G, H : G ! K is a secure KDF, and Es is
+Page  453: exist a DDH adversary Bddh that plays Attack Game 10.6 with respect to G, a KDF adversary
+Page  453: Bkdf that plays Attack Game 11.3 with respect to H, and an SS adversary Bs that plays Attack
+Page  453: Game 2.1 with respect to Es , where Bddh , Bkdf , and Bs are elementary wrappers around A, such
+Page  453: SSadv[A, EEG ]  2 · DDHadv[Bddh , G] + 2 · KDFadv[Bkdf , H] + SSadv[Bs , Es ].     (11.14)
+Page  453: changed. Under the KDF assumption, k := H(w̃) looks like a random key in K, independent of
+Page  453: SSadv⇤ [A, EEG ]  DDHadv[Bddh , G] + KDFadv[Bkdf , H] + SSadv⇤ [Bs , Es ].              (11.15)
+Page  454: This allows us to play our “KDF card.” The challenger in this game is as in Fig. 11.4, except with
+Page  454: We may easily derive an efficient KDF adversary Bkdf that uses A as a subroutine, such that
+Page  454: |Pr[W1 ]   Pr[W2 ]| = KDFadv[Bkdf , H].                 (11.18)
+Page  454: Adversary Bkdf plays Attack Game 11.3 against a challenger Ckdf , and plays the role of challenger
+Page  455: (2)        obtain k from Ckdf
+Page  468: (b) Show that if H is a secure KDF and the DDH assumption holds for G, then the HDH
+Page  493: Theorem 12.9. If the DDH assumption holds in G, Es is 1CCA secure, H is a secure KDF, and
+Page  493: a 1CCA adversary Bs that attacks Es as in Definition 9.6, a KDF adversary Bkdf that attacks
+Page  493: Game 8.1, where Bddh , Bs , Bkdf , Bcr are elementary wrappers around A, such that
+Page  493: 1CCAadv[A, ECS ]  2 DDHadv[Bddh , G] + KDFadv[Bkdf , H]
+Page  493: 1CCAadv⇤ [A, ECS ]  DDHadv[Bddh , G] + KDFadv[Bkdf , H]
+Page  496: Game 7. Finally, the stage is set to play our “KDF card” and “1CCA card”. We replace the line
+Page  497: Pr[W6 ]    Pr[W7 ]  KDFadv[Bkdf , H]                           (12.29)
+Page  497: where Bkdf is an efficient adversary attacking H as a KDF, and Bs is a 1CCA adversary attacking
+Page  515: (assuming the DDH, H is a secure KDF, and H 0 is collision resistant).
+Page  632: Definition 18.4. A password-based key derivation function, or PBKDF, is a function H
+Page  632: usual, we say that the PBKDF is defined over (P, S, Y).
+Page  632: We discuss the security requirements for a PBKDF in Exercise 18.3. Our first example PBKDF,
+Page  632: called PBKDF1, is based on (18.5) and defined as:
+Page  632: PBKDF1H (pw , salt, d) := H (d) (pw , salt).
+Page  632: For a hash function H defined over (X , X ), this PBKDF is defined over (P, S, X ), where X = P ⇥S.
+Page  632: 18.4.3.1   The function PBKDF2
+Page  632: A widely used method to construct a slow hash function is called PBKDF2, which stands for
+Page  632: X := {0, 1}n . The derived PBKDF, denoted PBKDF2F , is defined over (P, X , X ) and works as
+Page  632: PBKDF2F (pw , salt, d) :=                                                  (18.6)
+Page  632: While (18.6) describes the basic PBKDF2, a simple extension outputs more bits if more are needed.
+Page  632: PBKDF2F (pw , salt, d) :=     PBKDF2F (pw , salt 1 , d), . . . , PBKDF2F (pw , salt b , d)   2 Xb   (18.7)
+Page  633: In practice, PBKDF2 is often implemented using HMAC-SHA256 as the underlying PRF. The
+Page  633: keybags in iOS 10, are protected using PBKDF2 with d set to ten million. In Windows 10, the
+Page  633: We discuss the security of PBKDF2 in more detail in Exercises 18.2 and 18.3.
+Page  633: A significant problem with PBKDF2 is that it is vulnerable to parallel hardware attacks. To explain
+Page  633: evaluate PBKDF2 on many inputs in parallel and is not well suited for an o✏ine dictionary attacks.
+Page  633: the PBKDF2 difficulty is set to d = 10, 000, a bank of about 500 such chips will run through all
+Page  634: Fig. 18.6 is a description of Scrypt as a hash function. The Scrypt PBKDF, defined over
+Page  634: >        PBKDF2F (pw , salt, 1) > =
+Page  634: ScryptPBKDFh (pw , salt, d) :=    y    Scrypth (x0 , d)                      (18.8)
+Page  634: output PBKDF2F (pw , y, 1)
+Page  634: Similarly, it can output an element in X b for b > 1 by adjusting the application of PBKDF2 on the
+Page  636: PBKDF in (18.8) to some password pw with a public salt. Normally the adversary would need to
+Page  636: 1. compute x00      PBKDF2F (pw , salt, 1) as in (18.8),
+Page  652: 18.2 (An attack on PBKDF2). Let pw 2 P be a password. Suppose the adversary obtains a
+Page  652: y0 := PBKDF2F (pw , salt, d), y1 := PBKDF2F (pw , salt, d + 1), y2 := PBKDF2F (pw , salt, d + 2)
+Page  652: 18.3 (Security of PBKDF2). Let Hh be a PBKDF defined over (P, S, Y), and suppose that
+Page  652: oracle. We say that the PBKDF is secure if no adversary that makes at most d 1 queries to h
+Page  652: respect to Hh as Pr[W0 ] Pr[W1 ] . We say that Hh is a secure PBKDF if no adversary that
+Page  653: PBKDF2F is secure when the underlying PRF F is modeled as a random oracle F : P ⇥ X ! X ,
+Page  653: Discussion: A security definition for a PBKDF H should require that a fast algorithm cannot
+Page  653: PBKDF from random.
+Page  653: was studied in [10] using a definition based on indi↵erentiability. They show that both PBKDF1
+Page  653: and PBKDF2 satisfy this stronger property.
+Page  653: rest of the security definition is unchanged. Exercise 18.2 shows that PBKDF2 is insecure under this
+Page  653: stronger security definition. Show that the PBKDF Hh defined as Hh (pw , salt, d) = h(d) (pw , salt, d)
+Page  753: KDF and we assume that DDH holds for G (or we use the HDH assumption in Exercise 11.14).
+Page  759: KDF and we assume that DDH holds for G (or we use the HDH assumption in Exercise 11.14).
+Page  779: built from HKDF (Section 8.10.5) with a hash function such as SHA256.
+Page  779: The symmetric encryption scheme (Es , Ds ) and the hash function in HMAC and HKDF to use
+Page  780: using HKDF.
+Page  780: from (21.6) using HKDF.
+Page  780: using HKDF. In the record protocol, kc!s is used to encrypt messages sent from the client to the
+Page  781: where H is implemented using HKDF. Both sides then delete the earlier keys ks!c and kc!s and
+Page  782: where H3 is a key derivation function based on HKDF, and N t is a random nonce from Q provided
+Page  782: computed, not sent, and not included in the HMAC and HKDF computations. Instead, the derived
+Page  782: where H4 and H5 are key derivation functions based on HKDF. Notice that this abbreviated key

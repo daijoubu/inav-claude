@@ -1,0 +1,59 @@
+Keyword: chosen ciphertext
+Occurrences: 55
+================================================================================
+
+Page    8: 9.2.1   Chosen ciphertext attacks: a motivating example . . . . . . . . . . . . . . . 350
+Page    8: 9.2.2   Chosen ciphertext attacks: definition . . . . . . . . . . . . . . . . . . . . . . 352
+Page    8: 9.2.3   Authenticated encryption implies chosen ciphertext security . . . . . . . . . 353
+Page   10: 12 Chosen ciphertext secure public key encryption                                                     456
+Page  363: tion 9.2, we will describe a very insidious class of attacks called chosen ciphertext attacks, and we
+Page  364: 9.2.1   Chosen ciphertext attacks: a motivating example
+Page  364: We now consider an even more aggressive type of attack, called a chosen ciphertext attack for
+Page  364: To motivate chosen ciphertext attacks suppose Alice sends an email message to Bob. For
+Page  365: showed how to break them. This attack is an example of a chosen ciphertext attack — by querying
+Page  365: In the next section, we formally define the notion of a chosen ciphertext attack, and show that
+Page  366: 9.2.2   Chosen ciphertext attacks: definition
+Page  366: In this section, we formally define the notion of a chosen ciphertext attack. In such an attack,
+Page  366: that if a cipher is AE-secure then it is secure against chosen ciphertext attack.
+Page  366: used to encrypt a single message. The system needs to be secure against chosen ciphertext attacks
+Page  367: semantically secure against chosen ciphertext attack, or simply, 1CCA-secure, if for all
+Page  367: 9.2.3   Authenticated encryption implies chosen ciphertext security
+Page  374: CPA security using a chosen ciphertext attack.
+Page  374: The chosen ciphertext attack. We show a chosen ciphertext attack on the system EMtE that
+Page  374: of m). This will break semantic security of EMtE . The attacker prepares a chosen ciphertext query ĉ
+Page  375: The attacker can use the ciphertexts c and c0 to form four useful chosen ciphertext queries: it can
+Page  375: last byte of m[0]. Each chosen ciphertext query reveals that byte with probability 1/256. Therefore,
+Page  375: on average, with 256 chosen ciphertext queries the attacker learns the exact value of the last byte
+Page  375: the previous phase (i.e., encryptions of the unshifted m) and issuing the resulting chosen ciphertext
+Page  375: A complete break of SSL 3.0. Chosen ciphertext attacks may seem theoretical, but they
+Page  375: chosen ciphertext attack on MtE to learn one byte of the cookie. That is, the attacker prepares ĉ
+Page  376: server’s response, gives the attacker the means to mount the desired chosen ciphertext attack. The
+Page  376: the browser makes to bank.com initiates a new SSL session. Hence, every chosen ciphertext query
+Page  376: to respond to a chosen ciphertext query and if a TLS error message is generated quickly it learns
+Page  376: chosen ciphertext attack based on this behavior to completely decrypt a secret cookie, as we did for
+Page  377: this with many chosen ciphertext queries, as we did for SSL 3.0, reveals the entire secret cookie.
+Page  377: because of a bad integrity tag. This could have enabled the chosen ciphertext attack of the previous
+Page  381: timing side-channel that leads to serious chosen ciphertext attacks. However, for specific
+Page  395: Attack 4: Chosen ciphertext attack. The protocol is vulnerable to a chosen ciphertext attack
+Page  402: still CPA secure, but E 0 is insecure against chosen ciphertext attack, in the following sense. In the
+Page  470: Chosen ciphertext secure public key
+Page  470: In this chapter, we study the stronger notion of security against chosen ciphertext attack, or
+Page  471: secure against a chosen ciphertext attack, or simply CCA secure, if for all efficient adver-
+Page  471: cryption scheme E is one-time semantically secure against chosen ciphertext attack, or
+Page  471: to chosen ciphertext security, namely, that 1CCA security implies CCA security.
+Page  473: The attack described so far is a good example of a chosen ciphertext attack, which could not
+Page  483: against chosen ciphertext attack, suppose the public key is u = g ↵ . Now, suppose an adversary
+Page  483: only if (u, v̂, ŵ) is a DH-triple. Thus, in the chosen ciphertext attack game, decryption queries can
+Page  508: there is a devastating chosen ciphertext attack on it, which we discuss next.
+Page  508: RSA-PKCS1 encryption is not secure against chosen ciphertext attacks. We describe an attack, due
+Page  508: Let us show a significant vulnerability in this system that is a result of a chosen ciphertext
+Page  509: This attack is a classic example of a real-world chosen ciphertext attack. The adversary has
+Page  514: a chosen ciphertext attack. The number of decryption queries and the computation time of the
+Page  552: Security against a chosen ciphertext attack. Next, we define the data confidentiality game,
+Page  552: which is an adaptation of the game used to define chosen ciphertext security (Attack Game 12.1).
+Page  553: against a chosen ciphertext attack, or simply CCA secure, if for all efficient adversaries A,
+Page  557: Proof sketch. We have to prove both ciphertext integrity and security against chosen ciphertext
+Page  558: Proving chosen ciphertext security. Next, we sketch the proof of CCA security. It is convenient
+Page  814: volcano: Chosen ciphertext attacks against apple imessage. In USENIX Security Symposium,
+Page  815: for chosen ciphertext security. In Eurocrypt 2012, pages 663–681, 2012.
+Page  816: [82] J. Manger. A chosen ciphertext attack on RSA optimal asymmetric encryption padding
