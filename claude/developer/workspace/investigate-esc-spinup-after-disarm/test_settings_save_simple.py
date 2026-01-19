@@ -39,6 +39,7 @@ def main():
         print(f"  - Is FC plugged in?")
         print(f"  - Is configurator closed?")
         print(f"  - Does {port} exist? (try: ls /dev/ttyACM*)")
+        print(f"  - If running in sandbox: retry with dangerouslyDisableSandbox: true")
         return 1
     except Exception as e:
         print(f"✗ Unexpected error opening serial port: {e}")
