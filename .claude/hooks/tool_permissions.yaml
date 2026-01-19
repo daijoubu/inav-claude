@@ -523,6 +523,12 @@ bash_rules:
     category: other
     decision: allow
 
+  - name: "Allow pdf_indexer.py execution"
+    command_pattern: "^(\\.?/)?pdf_indexer\\.py$|.*pdf_indexer\\.py$"
+    category: other
+    decision: allow
+    message: "pdf_indexer.py is allowed for PDF document indexing and searching"
+
   - name: "Allow SITL simulator execution"
     command_pattern: ".*SITL\\.elf$"
     category: other
