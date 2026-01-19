@@ -146,6 +146,14 @@ rules:
     category: other
     decision: allow
 
+  - name: "Allow Write/Edit to /tmp for agents"
+    tool_name_pattern: "^(Write|Edit)$"
+    tool_input_patterns:
+      file_path: "^/tmp/.*"
+    category: write
+    decision: allow
+    message: "/tmp access for temporary files and agent operations"
+
   - name: "Allow read-only file operations"
     tool_name_pattern: "^(Read|Glob|Grep)$"
     category: read
@@ -426,6 +434,12 @@ bash_rules:
   - name: "Allow touch for /tmp files"
     command_pattern: "^touch$"
     argument_pattern: "^/tmp/.*"
+    category: write
+    decision: allow
+
+  - name: "Allow mkdir for /tmp directories"
+    command_pattern: "^mkdir$"
+    argument_pattern: "^-p /tmp/.*|^/tmp/.*"
     category: write
     decision: allow
 
