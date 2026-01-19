@@ -206,6 +206,13 @@ rules:
     category: write
     decision: allow
 
+  - name: "Allow Write/Edit to /tmp directory"
+    tool_name_pattern: "^(Write|Edit)$"
+    tool_input_patterns:
+      file_path: "^/tmp/.*"
+    category: write
+    decision: allow
+
   # ===================================================================
   # Ask Rules (File Modifications)
   # ===================================================================
@@ -404,6 +411,24 @@ bash_rules:
     category: write
     decision: allow
 
+  - name: "Allow rm for /tmp files"
+    command_pattern: "^rm$"
+    argument_pattern: "^-f /tmp/.*"
+    category: write
+    decision: allow
+
+  - name: "Allow cp/mv with /tmp"
+    command_pattern: "^(cp|mv)$"
+    argument_pattern: ".*/tmp/.*"
+    category: write
+    decision: allow
+
+  - name: "Allow touch for /tmp files"
+    command_pattern: "^touch$"
+    argument_pattern: "^/tmp/.*"
+    category: write
+    decision: allow
+
   # ===================================================================
   # Dangerous Recursive Operations
   # ===================================================================
@@ -452,7 +477,7 @@ bash_rules:
 
   - name: "Allow python3 scripts in claude/ directories"
     command_pattern: "^python3$"
-    argument_pattern: ".*(*/inavflight/\\.claude/|\\./\\.claude/|claude/|\\.claude/).*"
+    argument_pattern: ".*(.*inavflight/\\.claude/|\\./\\.claude/|claude/|\\.claude/).*"
     category: other
     decision: allow
 
@@ -475,12 +500,12 @@ bash_rules:
     decision: allow
 
   - name: "Allow direct execution of scripts in .claude/skills/"
-    command_pattern: ".*(*/inavflight/\\.claude/skills/|\\./\\.claude/skills/).*"
+    command_pattern: ".*(.*inavflight/\\.claude/skills/|\\./\\.claude/skills/).*"
     category: other
     decision: allow
 
   - name: "Allow developer scripts"
-    command_pattern: ".*(*/inavflight/claude/developer/scripts/|claude/developer/scripts/).*"
+    command_pattern: ".*(.*inavflight/claude/developer/scripts/|claude/developer/scripts/).*"
     category: other
     decision: allow
 
