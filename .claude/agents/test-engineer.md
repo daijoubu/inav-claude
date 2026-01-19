@@ -333,6 +333,10 @@ IMPORTANT: Be sure to actually RUN the test and really look at the results. Do n
    - Check if serial port / network socket actually opens
    - Verify target device is responding before running tests
    - Clear error messages if connection fails
+   - **IMPORTANT:** Remind caller that connection errors may be sandbox-related:
+     - "Note: If running in sandbox, retry with dangerouslyDisableSandbox: true"
+     - Serial ports and network sockets are blocked by default in sandbox
+     - Permission denied / file not found may indicate sandbox restriction
 
 2. **Command Execution Verification**
    - Verify commands were sent successfully (check bytes written)
@@ -373,6 +377,7 @@ def test_settings_save():
     except serial.SerialException as e:
         print(f"✗ FAILED to connect: {e}")
         print("  Check: Is FC plugged in? Is configurator closed?")
+        print("  If running in sandbox: retry with dangerouslyDisableSandbox: true")
         return 1
 
     # Verify FC is responding
