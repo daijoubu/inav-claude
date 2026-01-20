@@ -566,6 +566,12 @@ bash_rules:
     category: read
     decision: allow
 
+  - name: "Allow blackbox_decode command"
+    command_pattern: "^blackbox_decode$"
+    category: other
+    decision: allow
+    message: "blackbox_decode is allowed for decoding INAV/Betaflight blackbox flight logs"
+
   # ===================================================================
   # Shell Control Structures & Parser Artifacts
   # ===================================================================
