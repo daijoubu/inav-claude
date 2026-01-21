@@ -277,6 +277,13 @@ bash_rules:
     decision: deny
     message: "STOP! The claude/ directory is at ~/inavflight/claude/, NOT inside inav/, inav-configurator/, or inavwiki/. Use the correct destination path."
 
+  - name: "Allow project moves between active/completed"
+    command_pattern: "^(cp|mv)$"
+    argument_pattern: ".*(claude/projects/(active|completed)).*"
+    category: write
+    decision: allow
+    message: "Manager project organization - moving between active and completed directories"
+
   # ===================================================================
   # Git Safety Rules
   # ===================================================================
