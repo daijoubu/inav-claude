@@ -6,7 +6,8 @@ Claude Code workflow infrastructure for INAV flight controller development using
 
 This repository provides a structured workflow for using Claude Code to develop INAV firmware and configurator features. It implements a role-based system where different Claude instances take on specific responsibilities (Manager, Developer, Release Manager), communicating through an email-like message passing system.
 
-## Quick Start  (tell Claude to read this readme and follow the steps here to set it up for you)
+## Quick Start
+(tell Claude to read this readme and follow the steps here to set it up for you)
 
 ### 1. Clone This Repository
 
