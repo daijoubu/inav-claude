@@ -651,6 +651,13 @@ bash_rules:
     decision: deny
     message: "pull requests should never target master"
 
+  - name: "Allow gh api with custom headers for repo queries"
+    command_pattern: "^gh$"
+    argument_pattern: "^api\\s+-H\\s+.*repos/.*"
+    category: read
+    decision: allow
+    message: "GitHub API query with custom headers for repository information"
+
   - name: "Allow gh api commands for PR comments"
     command_pattern: "^gh$"
     argument_pattern: "^api.*comments.*"
