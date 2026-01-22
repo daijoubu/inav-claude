@@ -663,6 +663,13 @@ bash_rules:
     category: read
     decision: allow
 
+  - name: "Allow gh api for PR status checks"
+    command_pattern: "^gh$"
+    argument_pattern: "^api\\s+repos/.*/pulls/.*/statuses.*"
+    category: read
+    decision: allow
+    message: "Querying pull request status checks via GitHub API"
+
   - name: "Allow GitHub CLI read operations"
     command_pattern: "^gh$"
     argument_pattern: "^(pr|issue|run|release|api|workflow).*(list|view|diff|checks|download).*"
