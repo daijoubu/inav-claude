@@ -677,6 +677,76 @@ bash_rules:
     decision: allow
     message: "Querying pull request details via GitHub API"
 
+  - name: "Allow gh pr view"
+    command_pattern: "^gh$"
+    argument_pattern: "^pr\\s+view\\s+.*"
+    category: read
+    decision: allow
+    message: "View pull request details"
+
+  - name: "Allow gh pr list"
+    command_pattern: "^gh$"
+    argument_pattern: "^pr\\s+list\\s+.*"
+    category: read
+    decision: allow
+    message: "List pull requests"
+
+  - name: "Allow gh issue view"
+    command_pattern: "^gh$"
+    argument_pattern: "^issue\\s+view\\s+.*"
+    category: read
+    decision: allow
+    message: "View issue details"
+
+  - name: "Allow gh issue list"
+    command_pattern: "^gh$"
+    argument_pattern: "^issue\\s+list\\s+.*"
+    category: read
+    decision: allow
+    message: "List issues"
+
+  - name: "Allow gh api for general repository queries"
+    command_pattern: "^gh$"
+    argument_pattern: "^api\\s+repos/.*"
+    category: read
+    decision: allow
+    message: "Query GitHub API for repository information"
+
+  - name: "Allow gh run list"
+    command_pattern: "^gh$"
+    argument_pattern: "^run\\s+list\\s+.*"
+    category: read
+    decision: allow
+    message: "List workflow runs"
+
+  - name: "Allow gh run view"
+    command_pattern: "^gh$"
+    argument_pattern: "^run\\s+view\\s+.*"
+    category: read
+    decision: allow
+    message: "View workflow run details"
+
+  - name: "Allow gh workflow list"
+    command_pattern: "^gh$"
+    argument_pattern: "^workflow\\s+list\\s+.*"
+    category: read
+    decision: allow
+    message: "List workflows"
+
+  - name: "Allow gh release list"
+    command_pattern: "^gh$"
+    argument_pattern: "^release\\s+(list|view|download)\\s+.*"
+    category: read
+    decision: allow
+    message: "View release information"
+
+  - name: "Allow gh repo view"
+    command_pattern: "^gh$"
+    argument_pattern: "^repo\\s+view\\s+.*"
+    category: read
+    decision: allow
+    message: "View repository details"
+
   - name: "Allow GitHub CLI read operations"
     command_pattern: "^gh$"
     argument_pattern: "^(pr|issue|run|release|api|workflow).*(list|view|diff|checks|download).*"
