@@ -644,6 +644,13 @@ bash_rules:
   # GitHub CLI Commands
   # ===================================================================
 
+  - name: "Block gh pr create targeting master"
+    command_pattern: "^gh$"
+    argument_pattern: ".*pr\\s+create.*--base\\s+master.*"
+    category: other
+    decision: deny
+    message: "pull requests should never target master"
+
   - name: "Allow gh api commands for PR comments"
     command_pattern: "^gh$"
     argument_pattern: "^api.*comments.*"
