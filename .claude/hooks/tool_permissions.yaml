@@ -92,7 +92,7 @@ logging:
   log_file: "~/inavflight/.claude/hooks/tool_permissions.log"  # Project-local log file
   log_inputs: true     # Log incoming hook JSON
   log_outputs: true    # Log hook decisions
-  max_log_size_kb: 300  # Rotate log when it exceeds this size (in KB)
+  max_log_size_kb: 64  # Rotate log when it exceeds this size (in KB)
 
 
 # =============================================================================
@@ -669,6 +669,13 @@ bash_rules:
     category: read
     decision: allow
     message: "Querying pull request status checks via GitHub API"
+
+  - name: "Allow gh api for PR commits and other queries"
+    command_pattern: "^gh$"
+    argument_pattern: "^api\\s+repos/.*pulls/.*(/commits|/comments|/reviews)?.*"
+    category: read
+    decision: allow
+    message: "Querying pull request details via GitHub API"
 
   - name: "Allow GitHub CLI read operations"
     command_pattern: "^gh$"
