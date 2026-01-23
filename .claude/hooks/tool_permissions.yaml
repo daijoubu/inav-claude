@@ -555,6 +555,13 @@ bash_rules:
     category: other
     decision: allow
 
+  - name: "Allow parameter group analysis scripts"
+    command_pattern: "^bash$"
+    argument_pattern: ".*\\.github/scripts/(extract-pg-sizes-nm|check-pg-struct-sizes)\\.sh.*"
+    category: read
+    decision: allow
+    message: "Parameter group analysis - reads ELF binaries with nm to extract size information"
+
   - name: "Allow pdf_indexer.py execution"
     command_pattern: "^(\\.?/)?pdf_indexer\\.py$|.*pdf_indexer\\.py$"
     category: other
