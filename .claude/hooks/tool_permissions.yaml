@@ -440,6 +440,17 @@ bash_rules:
     decision: allow
 
   # ===================================================================
+  # GitHub API Commands (curl)
+  # ===================================================================
+
+  - name: "Allow curl queries to GitHub API"
+    command_pattern: "^curl$"
+    argument_pattern: ".*api\\.github\\.com.*"
+    category: read
+    decision: allow
+    message: "GitHub API read-only queries (authenticated or public)"
+
+  # ===================================================================
   # Runtime Conditional Rules (Using precondition_script)
   # ===================================================================
 
