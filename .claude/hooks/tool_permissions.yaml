@@ -221,6 +221,14 @@ rules:
     category: write
     decision: allow
 
+  - name: "Allow editing .cjs test files"
+    tool_name_pattern: "^(Write|Edit)$"
+    tool_input_patterns:
+      file_path: ".*(test|tests)/.*\\.cjs$"
+    category: write
+    decision: allow
+    message: "CommonJS test file modification allowed"
+
   - name: "Allow editing projects/INDEX.md"
     tool_name_pattern: "^(Write|Edit)$"
     tool_input_patterns:
@@ -585,6 +593,20 @@ bash_rules:
     category: other
     decision: allow
 
+  - name: "Allow chmod +x on .cjs test files"
+    command_pattern: "^chmod$"
+    argument_pattern: "^\\+x.*(test|tests)/.*\\.cjs$"
+    category: write
+    decision: allow
+    message: "Making CommonJS test files executable"
+
+  - name: "Allow node execution of .cjs test files"
+    command_pattern: "^node$"
+    argument_pattern: ".*(test|tests)/.*\\.cjs.*"
+    category: other
+    decision: allow
+    message: "Running CommonJS test files with Node.js"
+
   # ===================================================================
   # Common Read-Only Commands (Broad Allow List)
   # ===================================================================
@@ -656,7 +678,7 @@ bash_rules:
     argument_pattern: ".*pr\\s+create.*--base\\s+master.*"
     category: other
     decision: deny
-    message: "pull requests should never target master"
+    message: "pull requests should never target master. Read CRITICAL-BEFORE-PR.md"
 
   - name: "Allow gh api with custom headers for repo queries"
     command_pattern: "^gh$"
