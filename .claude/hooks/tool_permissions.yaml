@@ -81,6 +81,11 @@ rules:
     category: read
     decision: allow
 
+  - name: "Allow TaskUpdate operations (manage existing tasks)"
+    tool_name_pattern: "^TaskUpdate$"
+    category: other
+    decision: allow
+
   - name: "Allow Write/Edit to /tmp for agents"
     tool_name_pattern: "^(Write|Edit)$"
     tool_input_patterns:
