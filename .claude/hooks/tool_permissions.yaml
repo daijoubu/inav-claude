@@ -146,6 +146,11 @@ rules:
     category: other
     decision: allow
 
+  - name: "Allow TaskCreate operations (launch specialized agents)"
+    tool_name_pattern: "^TaskCreate$"
+    category: other
+    decision: allow
+
   - name: "Allow Write/Edit to /tmp for agents"
     tool_name_pattern: "^(Write|Edit)$"
     tool_input_patterns:
