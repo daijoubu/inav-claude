@@ -10,78 +10,13 @@
 # =============================================================================
 # IMPORTANT: RULE ORDERING MATTERS!
 # =============================================================================
-#
 # Rules are processed IN ORDER, and the FIRST MATCHING RULE WINS.
-# This means:
-#
-#   ✓ CORRECT: Specific rules BEFORE general rules
-#      1. Block echo with > redirection (specific)
-#      2. Allow echo (general)
-#
-#   ✗ WRONG: General rules before specific rules
-#      1. Allow echo (general) - matches first, specific rule never reached!
-#      2. Block echo with > redirection (never reached)
-#
-# Common patterns for rule ordering:
-#
-#   1. DENY rules first (highest priority - block dangerous operations)
-#   2. Specific ALLOW rules (override denies for safe cases)
-#   3. General ALLOW rules (broad categories)
-#   4. ASK rules last (fallback for uncertain cases)
-#
-# Examples of good rule ordering:
-#
-#   # find command rules (specific to general):
-#   1. Allow: find -exec grep    (very specific, safe)
-#   2. Ask:   find -exec *       (broader, potentially dangerous)
-#   3. Allow: find               (general find without -exec)
-#
-#   # git command rules (deny, then allow):
-#   1. Deny:  git add -A         (dangerous pattern)
-#   2. Deny:  git push --force   (dangerous pattern)
-#   3. Allow: git status         (safe read operation)
-#   4. Allow: git commit         (safe write operation)
-#
-# =============================================================================
-# COMMON PATTERNS
-# =============================================================================
-#
-# Pattern: Allow command except with dangerous arguments
-#   - name: "Block dangerous usage"
-#     command_pattern: "^command$"
-#     argument_pattern: ".*dangerous-flag.*"
-#     decision: deny
-#   - name: "Allow safe usage"
-#     command_pattern: "^command$"
-#     decision: allow
-#
-# Pattern: Different treatment based on arguments
-#   - name: "Allow with safe args"
-#     command_pattern: "^git$"
-#     argument_pattern: "^(status|log|diff).*"
-#     decision: allow
-#   - name: "Ask for risky args"
-#     command_pattern: "^git$"
-#     argument_pattern: "^(push|commit).*"
-#     decision: ask
-#
-# Pattern: Runtime condition checking
-#   - name: "Allow if path exists"
-#     command_pattern: "^mkdir$"
-#     precondition_script: |
-#       DIR=$(echo "{ARGS}" | awk '{print $1}')
-#       [ -d "$DIR" ] && echo "allow" || echo "ask"
+# Order: DENY rules first → Specific ALLOW rules → General ALLOW → ASK rules last
 #
 # =============================================================================
 # CATEGORIES
 # =============================================================================
-#
-# Commands/tools are categorized as:
-#   - read:  Only reads data (grep, ls, git status, Read tool)
-#   - write: Modifies data (rm, git commit, Write tool, Edit tool)
-#   - other: Everything else (build tools, network operations)
-#
-# Categories have default behaviors (see "defaults" section below)
+# read: Only reads data | write: Modifies data | other: Everything else
 #
 # =============================================================================
 # LOGGING CONFIGURATION
@@ -109,17 +44,7 @@ defaults:
 # =============================================================================
 # GENERAL TOOL RULES (Non-Bash Tools)
 # =============================================================================
-# Rules for Claude Code tools like Read, Write, Edit, TodoWrite, Skill, etc.
-#
-# Processing: First match wins
-#
-# Fields:
-#   - name: Human-readable description (for logging)
-#   - tool_name_pattern: Regex matching tool name (e.g., "^Bash$", "^(Read|Write)$")
-#   - tool_input_patterns: Dict of regex patterns matching tool input fields
-#   - category: "read", "write", or "other" (affects default if decision not specified)
-#   - decision: "allow", "deny", or "ask" (optional if relying on category default)
-#   - message: Message shown to user/Claude when denying or asking
+# Rules for Claude Code tools (Read, Write, Edit, etc.). First match wins.
 
 rules:
   # ===================================================================
@@ -149,6 +74,11 @@ rules:
   - name: "Allow TaskCreate operations (launch specialized agents)"
     tool_name_pattern: "^TaskCreate$"
     category: other
+    decision: allow
+
+  - name: "Allow TaskList operations (view active tasks and agents)"
+    tool_name_pattern: "^TaskList$"
+    category: read
     decision: allow
 
   - name: "Allow Write/Edit to /tmp for agents"
@@ -219,13 +149,6 @@ rules:
     category: write
     decision: allow
 
-  - name: "Allow Write/Edit to /tmp directory"
-    tool_name_pattern: "^(Write|Edit)$"
-    tool_input_patterns:
-      file_path: "^/tmp/.*"
-    category: write
-    decision: allow
-
   - name: "Allow editing .cjs test files"
     tool_name_pattern: "^(Write|Edit)$"
     tool_input_patterns:
@@ -254,21 +177,7 @@ rules:
 # =============================================================================
 # BASH-SPECIFIC RULES
 # =============================================================================
-# Special rules for Bash tool that parse compound commands into subcommands.
-# Each subcommand is analyzed as "command" + "arguments".
-#
-# Processing: First match wins (even more important here!)
-#
-# Fields:
-#   - name: Human-readable description
-#   - command_pattern: Regex matching the command part (e.g., "^git$", "^rm$")
-#   - argument_pattern: Regex matching the arguments (optional)
-#   - category: "read", "write", or "other"
-#   - decision: "allow", "deny", or "ask"
-#   - message: Message for deny/ask decisions
-#   - precondition_script: Optional bash script that returns "allow", "deny", or "ask"
-#                          based on runtime conditions (e.g., check if path exists)
-#                          Available variables: {COMMAND}, {ARGS}, {FULL_COMMAND}
+# Rules for Bash commands. First match wins. Can use precondition_script for runtime checks.
 
 bash_rules:
   # ===================================================================
@@ -298,10 +207,8 @@ bash_rules:
     message: "Manager project organization - moving between active and completed directories"
 
   # ===================================================================
-  # Git Safety Rules
+  # Git Safety Rules (Deny before Allow)
   # ===================================================================
-  # IMPORTANT: Deny rules MUST come before allow rules
-  # Order: deny (highest priority) → specific allow → general allow
 
   - name: "Block git add -A"
     command_pattern: "^git$"
@@ -325,33 +232,9 @@ bash_rules:
     message: "STOP! IMPORTANT: Do NOT force push! That will break public history!"
 
   # Git read operations (safe)
-  - name: "Allow git status"
+  - name: "Allow git read operations"
     command_pattern: "^git$"
-    argument_pattern: "^(-c\\s+safe\\.directory=\\S+\\s+)?(-C\\s+\\S+\\s+)?status.*"
-    category: read
-    decision: allow
-
-  - name: "Allow git log"
-    command_pattern: "^git$"
-    argument_pattern: "^(-c\\s+safe\\.directory=\\S+\\s+)?(-C\\s+\\S+\\s+)?log.*"
-    category: read
-    decision: allow
-
-  - name: "Allow git diff"
-    command_pattern: "^git$"
-    argument_pattern: "^(-c\\s+safe\\.directory=\\S+\\s+)?(-C\\s+\\S+\\s+)?diff.*"
-    category: read
-    decision: allow
-
-  - name: "Allow other git read operations"
-    command_pattern: "^git$"
-    argument_pattern: "^(-c\\s+safe\\.directory=\\S+\\s+)?(-C\\s+\\S+\\s+)?(show|branch|remote|describe|rev-parse|rev-list|cat-file|ls-tree|ls-files|grep|merge-base|blame|tag).*"
-    category: read
-    decision: allow
-
-  - name: "Allow git fetch"
-    command_pattern: "^git$"
-    argument_pattern: "^(-c\\s+safe\\.directory=\\S+\\s+)?(-C\\s+\\S+\\s+)?fetch.*"
+    argument_pattern: "^(-c\\s+safe\\.directory=\\S+\\s+)?(-C\\s+\\S+\\s+)?(status|log|diff|show|branch|remote|describe|rev-parse|rev-list|cat-file|ls-tree|ls-files|grep|merge-base|blame|tag|fetch).*"
     category: read
     decision: allow
 
@@ -375,38 +258,28 @@ bash_rules:
     message: "Git commit detected - reminder added about not mentioning Claude/AI in commit messages"
 
   # ===================================================================
-  # Find Command Rules
+  # Find and Echo Command Rules
   # ===================================================================
-  # IMPORTANT: Specific patterns (find -exec grep) before general (find -exec)
-  # Order: allow safe -exec → ask dangerous -exec → allow general find
 
-  - name: "Allow find -exec with read commands"
+  - name: "Allow find -exec with read commands, ask for others"
     command_pattern: "^find$"
     argument_pattern: ".*-exec\\s+(grep|egrep|cat|ls|head|tail|file|stat|wc|diff)\\s+.*"
     category: read
     decision: allow
 
-  - name: "Ask for approval on find -exec (non-read commands)"
+  - name: "Ask for find -exec with non-read commands"
     command_pattern: "^find$"
     argument_pattern: ".*-exec.*"
     category: other
     decision: ask
-    message: "find with -exec requires approval (can execute arbitrary commands). find -exec with read commands (grep, cat, etc.) is allowed."
+    message: "find with -exec requires approval"
 
-  # General find (without -exec) is allowed later in "Allow common read commands"
-
-  # ===================================================================
-  # Echo Command Rules
-  # ===================================================================
-  # IMPORTANT: Block redirected echo BEFORE allowing general echo
-  # Order: block echo > file → allow echo
-
-  - name: "Block echo with file redirection"
+  - name: "Ask for echo with file redirection, allow otherwise"
     command_pattern: "^echo$"
     argument_pattern: ".*>>?.*"
     category: write
     decision: ask
-    message: "echo with file redirection requires approval (writes to file)"
+    message: "echo with file redirection requires approval"
 
   - name: "Allow echo without redirection"
     command_pattern: "^echo$"
@@ -418,18 +291,11 @@ bash_rules:
   # ===================================================================
   # Handle patterns like: cat > file << 'EOF' or cat > file <<EOF
 
-  - name: "Allow cat > to lock files"
+  - name: "Allow cat > to claude/ and lock files, ask for others"
     command_pattern: "^cat$"
-    argument_pattern: "^>\\s+.*claude/locks/.*\\.lock.*"
+    argument_pattern: "^>\\s+.*(claude/|locks/.*\\.lock).*"
     category: write
     decision: allow
-
-  - name: "Allow cat > to claude/ directories"
-    command_pattern: "^cat$"
-    argument_pattern: "^>\\s+(claude/|\\./claude/|\\.claude/).*"
-    category: write
-    decision: allow
-    message: "Writing to claude/ directory"
 
   - name: "Ask for cat > to other locations"
     command_pattern: "^cat$"
@@ -449,42 +315,12 @@ bash_rules:
     decision: allow
 
   # ===================================================================
-  # Safe File Removal
+  # Safe File Operations
   # ===================================================================
 
-  - name: "Allow rm for SITL temp files"
-    command_pattern: "^rm$"
-    argument_pattern: ".*eeprom\\.bin.*"
-    category: write
-    decision: allow
-
-  - name: "Allow rm for CMake cache"
-    command_pattern: "^rm$"
-    argument_pattern: "^-f CMakeCache\\.txt$"
-    category: write
-    decision: allow
-
-  - name: "Allow rm for /tmp files"
-    command_pattern: "^rm$"
-    argument_pattern: "^-f /tmp/.*"
-    category: write
-    decision: allow
-
-  - name: "Allow cp/mv with /tmp"
-    command_pattern: "^(cp|mv)$"
-    argument_pattern: ".*/tmp/.*"
-    category: write
-    decision: allow
-
-  - name: "Allow touch for /tmp files"
-    command_pattern: "^touch$"
-    argument_pattern: "^/tmp/.*"
-    category: write
-    decision: allow
-
-  - name: "Allow mkdir for /tmp directories"
-    command_pattern: "^mkdir$"
-    argument_pattern: "^-p /tmp/.*|^/tmp/.*"
+  - name: "Allow safe file operations (tmp, SITL, CMake)"
+    command_pattern: "^(rm|cp|mv|touch|mkdir)$"
+    argument_pattern: ".*/tmp/.*|^/tmp/.*|^-[pf] /tmp/.*|.*eeprom\\.bin.*|^-f CMakeCache\\.txt$"
     category: write
     decision: allow
 
@@ -503,68 +339,14 @@ bash_rules:
   # Build Tools & Compilers
   # ===================================================================
 
-  - name: "Allow cd (change directory)"
-    command_pattern: "^cd$"
-    category: read
-    decision: allow
-
-  - name: "Allow cmake (build system)"
-    command_pattern: "^cmake$"
+  - name: "Allow build tools and compilers"
+    command_pattern: "^(cd|cmake|make|dfu-util|npm|pip|pio|gcc|g\\+\\+|clang|arm-none-eabi-.*)$"
     category: other
     decision: allow
 
-  - name: "Allow ARM toolchain (arm-none-eabi-*)"
-    command_pattern: "^arm-none-eabi-.*$"
-    category: other
-    decision: allow
-
-  - name: "Allow make (build system)"
-    command_pattern: "^make$"
-    category: other
-    decision: allow
-
-  - name: "Allow dfu-util (device firmware update)"
-    command_pattern: "^dfu-util$"
-    category: other
-    decision: allow
-
-  - name: "Allow build and test commands"
-    command_pattern: "^(npm|pip|pio|gcc|g\\+\\+|clang)$"
-    argument_pattern: "^(test|build|compile|install|run).*"
-    category: other
-    decision: allow
-
-  - name: "Allow python3 scripts in claude/ directories"
-    command_pattern: "^python3$"
-    argument_pattern: ".*(.*inavflight/\\.claude/|\\./\\.claude/|claude/|\\.claude/).*"
-    category: other
-    decision: allow
-
-  - name: "Allow python3 fetch_issues.py"
-    command_pattern: "^python3$"
-    argument_pattern: "^fetch_issues\\.py.*"
-    category: other
-    decision: allow
-
-  - name: "Allow python3 test_4way_protocol.py"
-    command_pattern: "^python3$"
-    argument_pattern: "^test_4way_protocol\\.py.*"
-    category: other
-    decision: allow
-
-  - name: "Allow python3 test_4way_simple.py"
-    command_pattern: "^python3$"
-    argument_pattern: "^test_4way_simple\\.py.*"
-    category: other
-    decision: allow
-
-  - name: "Allow direct execution of scripts in .claude/skills/"
-    command_pattern: ".*(.*inavflight/\\.claude/skills/|\\./\\.claude/skills/).*"
-    category: other
-    decision: allow
-
-  - name: "Allow developer scripts"
-    command_pattern: ".*(.*inavflight/claude/developer/scripts/|claude/developer/scripts/).*"
+  - name: "Allow python3 and scripts in claude/ directories"
+    command_pattern: "^(python3|.*(\\.claude/|claude/).*)"
+    argument_pattern: ".*(\\.claude/|claude/|fetch_issues\\.py).*"
     category: other
     decision: allow
 
@@ -575,42 +357,17 @@ bash_rules:
     decision: allow
     message: "Parameter group analysis - reads ELF binaries with nm to extract size information"
 
-  - name: "Allow pdf_indexer.py execution"
-    command_pattern: "^(\\.?/)?pdf_indexer\\.py$|.*pdf_indexer\\.py$"
-    category: other
-    decision: allow
-    message: "pdf_indexer.py is allowed for PDF document indexing and searching"
-
-  - name: "Allow SITL simulator execution"
-    command_pattern: ".*SITL\\.elf$"
+  - name: "Allow SITL and special executables"
+    command_pattern: "^(pkill|kill|.*SITL\\.elf$|.*pdf_indexer\\.py$)"
     category: other
     decision: allow
 
-  - name: "Allow pkill for SITL"
-    command_pattern: "^pkill$"
-    argument_pattern: ".*SITL.*"
-    category: other
-    decision: allow
-
-  - name: "Allow kill for SITL processes"
-    command_pattern: "^kill$"
-    argument_pattern: ".*"
-    category: other
-    decision: allow
-
-  - name: "Allow chmod +x on .cjs test files"
-    command_pattern: "^chmod$"
-    argument_pattern: "^\\+x.*(test|tests)/.*\\.cjs$"
-    category: write
-    decision: allow
-    message: "Making CommonJS test files executable"
-
-  - name: "Allow node execution of .cjs test files"
-    command_pattern: "^node$"
+  - name: "Allow .cjs test file operations"
+    command_pattern: "^(chmod|node)$"
     argument_pattern: ".*(test|tests)/.*\\.cjs.*"
     category: other
     decision: allow
-    message: "Running CommonJS test files with Node.js"
+    message: "CommonJS test file operations (chmod +x, node execution)"
 
   # ===================================================================
   # Common Read-Only Commands (Broad Allow List)
@@ -618,17 +375,7 @@ bash_rules:
   # These are safe commands that only read/display data
 
   - name: "Allow common read commands"
-    command_pattern: "^(grep|egrep|find|cat|ls|head|tail|less|more|wc|sort|uniq|diff|stat|file|du|df|awk|sed|cut|xargs|printf|pwd|whoami|md5sum|lsusb|sleep|ss|date|touch|ld)$"
-    category: read
-    decision: allow
-
-  - name: "Allow file reading"
-    command_pattern: "^(rg|fd)$"
-    category: read
-    decision: allow
-
-  - name: "Allow pdfgrep for PDF searching"
-    command_pattern: "^pdfgrep$"
+    command_pattern: "^(grep|egrep|find|cat|ls|head|tail|less|more|wc|sort|uniq|diff|stat|file|du|df|awk|sed|cut|xargs|printf|pwd|whoami|md5sum|lsusb|sleep|ss|date|touch|ld|rg|fd|pdfgrep)$"
     category: read
     decision: allow
 
@@ -643,34 +390,8 @@ bash_rules:
   # ===================================================================
   # These handle bash syntax elements and parser edge cases
 
-  - name: "Allow bash comments"
-    command_pattern: "^#.*$"
-    category: read
-    decision: allow
-
-  - name: "Allow subshell expressions with read commands"
-    command_pattern: "^\\((ls|cat|grep|find|head|tail|echo|stat|file|wc|du|df)$"
-    category: read
-    decision: allow
-
-  - name: "Allow shell control structures"
-    command_pattern: "^(if|then|else|elif|fi|for|while|do|done|case|esac|break|continue|\\[|\\[\\[|test)$"
-    category: read
-    decision: allow
-
-  - name: "Ignore redirection operators"
-    command_pattern: "^([0-9]>|[0-9]|>>|>)$"
-    category: read
-    decision: allow
-
-  - name: "Ignore empty/whitespace commands"
-    command_pattern: "^\\s*$"
-    category: read
-    decision: allow
-
-  - name: "Allow -exec arguments from find"
-    command_pattern: "^(grep|cat|ls|file|stat)$"
-    argument_pattern: ".*"
+  - name: "Allow shell syntax elements"
+    command_pattern: "^(#.*|\\(.*|if|then|else|elif|fi|for|while|do|done|case|esac|break|continue|\\[|\\[\\[|test|[0-9]>|[0-9]|>>|>|\\s*)$"
     category: read
     decision: allow
 
@@ -685,112 +406,16 @@ bash_rules:
     decision: deny
     message: "pull requests should never target master. Read CRITICAL-BEFORE-PR.md"
 
-  - name: "Allow gh api with custom headers for repo queries"
+  - name: "Allow gh api for repository queries"
     command_pattern: "^gh$"
-    argument_pattern: "^api\\s+-H\\s+.*repos/.*"
+    argument_pattern: "^api\\s+.*"
     category: read
     decision: allow
-    message: "GitHub API query with custom headers for repository information"
-
-  - name: "Allow gh api commands for PR comments"
-    command_pattern: "^gh$"
-    argument_pattern: "^api.*comments.*"
-    category: read
-    decision: allow
-
-  - name: "Allow gh api for pull request queries with jq"
-    command_pattern: "^gh$"
-    argument_pattern: "^api\\s+repos/.*pulls.*--jq.*"
-    category: read
-    decision: allow
-
-  - name: "Allow gh api for PR status checks"
-    command_pattern: "^gh$"
-    argument_pattern: "^api\\s+repos/.*/pulls/.*/statuses.*"
-    category: read
-    decision: allow
-    message: "Querying pull request status checks via GitHub API"
-
-  - name: "Allow gh api for PR commits and other queries"
-    command_pattern: "^gh$"
-    argument_pattern: "^api\\s+repos/.*pulls/.*(/commits|/comments|/reviews)?.*"
-    category: read
-    decision: allow
-    message: "Querying pull request details via GitHub API"
-
-  - name: "Allow gh pr view"
-    command_pattern: "^gh$"
-    argument_pattern: "^pr\\s+view\\s+.*"
-    category: read
-    decision: allow
-    message: "View pull request details"
-
-  - name: "Allow gh pr list"
-    command_pattern: "^gh$"
-    argument_pattern: "^pr\\s+list\\s+.*"
-    category: read
-    decision: allow
-    message: "List pull requests"
-
-  - name: "Allow gh issue view"
-    command_pattern: "^gh$"
-    argument_pattern: "^issue\\s+view\\s+.*"
-    category: read
-    decision: allow
-    message: "View issue details"
-
-  - name: "Allow gh issue list"
-    command_pattern: "^gh$"
-    argument_pattern: "^issue\\s+list\\s+.*"
-    category: read
-    decision: allow
-    message: "List issues"
-
-  - name: "Allow gh api for general repository queries"
-    command_pattern: "^gh$"
-    argument_pattern: "^api\\s+repos/.*"
-    category: read
-    decision: allow
-    message: "Query GitHub API for repository information"
-
-  - name: "Allow gh run list"
-    command_pattern: "^gh$"
-    argument_pattern: "^run\\s+list\\s+.*"
-    category: read
-    decision: allow
-    message: "List workflow runs"
-
-  - name: "Allow gh run view"
-    command_pattern: "^gh$"
-    argument_pattern: "^run\\s+view\\s+.*"
-    category: read
-    decision: allow
-    message: "View workflow run details"
-
-  - name: "Allow gh workflow list"
-    command_pattern: "^gh$"
-    argument_pattern: "^workflow\\s+list\\s+.*"
-    category: read
-    decision: allow
-    message: "List workflows"
-
-  - name: "Allow gh release list"
-    command_pattern: "^gh$"
-    argument_pattern: "^release\\s+(list|view|download)\\s+.*"
-    category: read
-    decision: allow
-    message: "View release information"
-
-  - name: "Allow gh repo view"
-    command_pattern: "^gh$"
-    argument_pattern: "^repo\\s+view\\s+.*"
-    category: read
-    decision: allow
-    message: "View repository details"
+    message: "GitHub API queries"
 
   - name: "Allow GitHub CLI read operations"
     command_pattern: "^gh$"
-    argument_pattern: "^(pr|issue|run|release|api|workflow).*(list|view|diff|checks|download).*"
+    argument_pattern: "^(pr|issue|run|release|workflow|repo).*(list|view|diff|checks|download).*"
     category: read
     decision: allow
 
