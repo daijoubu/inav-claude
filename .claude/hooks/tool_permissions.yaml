@@ -197,6 +197,21 @@ bash_rules:
     decision: deny
     message: "STOP! The claude/ directory is at ~/inavflight/claude/, NOT inside inav/, inav-configurator/, or inavwiki/. Use the correct path when creating directories."
 
+  - name: "Allow mkdir for new projects in claude/projects/active"
+    command_pattern: "^mkdir$"
+    argument_pattern: ".*(claude/)?projects/active/.*"
+    category: write
+    decision: allow
+    precondition_script: |
+      # Verify that the parent directory (claude/projects/active) exists
+      # This prevents creating projects in the wrong location
+      if [ -d "claude/projects/active" ] || [ -d "/home/raymorris/Documents/planes/inavflight/claude/projects/active" ]; then
+        echo "allow"
+      else
+        echo "deny"
+      fi
+    message: "Creating new project directory under claude/projects/active/"
+
   - name: "Block cp/mv to wrong claude paths"
     command_pattern: "^(cp|mv)$"
     argument_pattern: ".*(inav/claude|inav-configurator/claude|inavwiki/claude).*"
