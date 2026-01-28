@@ -364,6 +364,13 @@ bash_rules:
     category: other
     decision: allow
 
+  - name: "Allow python3 search_indexes.py (read-only index lookup)"
+    command_pattern: "^python3$"
+    argument_pattern: ".*search_indexes\\.py.*"
+    category: read
+    decision: allow
+    message: "search_indexes.py is a read-only search/lookup tool for querying index files"
+
   - name: "Allow python3 and scripts in claude/ directories"
     command_pattern: "^(python3|.*(\\.claude/|claude/).*)"
     argument_pattern: ".*(\\.claude/|claude/|fetch_issues\\.py).*"
