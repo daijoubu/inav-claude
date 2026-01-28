@@ -122,9 +122,19 @@ def extract_pages(start: int, end: int, output_file: str = None, layout: bool = 
         print(f"Extracted pages {start}-{end} to {output_file}")
         return None
     else:
-        cmd.append("-")
-        result = subprocess.run(cmd, capture_output=True, text=True, check=True)
-        return result.stdout
+        # Use temp file for stdout (sandbox-compatible)
+        import tempfile
+        with tempfile.NamedTemporaryFile(mode='w+', delete=False, suffix='.txt') as tmp:
+            tmp_path = tmp.name
+
+        try:
+            cmd.append(tmp_path)
+            subprocess.run(cmd, check=True)
+
+            with open(tmp_path, 'r') as f:
+                return f.read()
+        finally:
+            Path(tmp_path).unlink(missing_ok=True)
 
 
 def search_term(term: str, case_sensitive: bool = False) -> List[Tuple[int, str]]:
@@ -138,19 +148,31 @@ def search_term(term: str, case_sensitive: bool = False) -> List[Tuple[int, str]
         cmd.append("-i")
     cmd.extend([term, str(PDF_FILE)])
 
-    result = subprocess.run(cmd, capture_output=True, text=True)
+    # Use temp file for output (sandbox-compatible)
+    import tempfile
+    with tempfile.NamedTemporaryFile(mode='w+', delete=False, suffix='.txt') as tmp:
+        tmp_path = tmp.name
 
-    matches = []
-    for line in result.stdout.splitlines():
-        if ":" in line:
-            page_str, content = line.split(":", 1)
-            try:
-                page_num = int(page_str)
-                matches.append((page_num, content.strip()))
-            except ValueError:
-                continue
+    try:
+        with open(tmp_path, 'w') as f:
+            result = subprocess.run(cmd, stdout=f)
 
-    return matches
+        matches = []
+        if result.returncode == 0:
+            with open(tmp_path, 'r') as f:
+                for line in f:
+                    line = line.strip()
+                    if ":" in line:
+                        page_str, content = line.split(":", 1)
+                        try:
+                            page_num = int(page_str)
+                            matches.append((page_num, content.strip()))
+                        except ValueError:
+                            continue
+
+        return matches
+    finally:
+        Path(tmp_path).unlink(missing_ok=True)
 
 
 def build_keyword_index(output_dir: str = "search-index"):
@@ -242,7 +264,9 @@ def main():
     args = parser.parse_args()
 
     if args.command == "extract":
-        extract_pages(args.start_page, args.end_page, args.output, layout=not args.no_layout)
+        result = extract_pages(args.start_page, args.end_page, args.output, layout=not args.no_layout)
+        if result:
+            print(result, end='')
 
     elif args.command == "search":
         matches = search_term(args.term, args.case_sensitive)
