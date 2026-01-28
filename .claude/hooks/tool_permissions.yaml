@@ -452,10 +452,10 @@ bash_rules:
 
   - name: "Allow curl queries to localhost debugging endpoints"
     command_pattern: "^curl$"
-    argument_pattern: ".*http://localhost:(9222|5174)/.*"
+    argument_pattern: ".*http://(localhost|127\\.0\\.0\\.1):(9222|5174).*"
     category: read
     decision: allow
-    message: "Chrome DevTools Protocol (port 9222) and development server (port 5174) debugging queries"
+    message: "Chrome DevTools Protocol (port 9222) and development server (port 5174) debugging queries (localhost or 127.0.0.1)"
 
   # ===================================================================
   # Runtime Conditional Rules (Using precondition_script)
