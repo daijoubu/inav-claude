@@ -46,22 +46,25 @@ Prompt: "Explain Reynolds number effects on fixed-wing flight"
 - **Pages:** 614 pages
 - **Content:** Comprehensive aerodynamics theory from fundamentals to advanced topics
 
+### Unified Search Script
+- **Path:** `/home/raymorris/Documents/planes/inavflight/claude/developer/docs/aerodynamics/search_indexes.py`
+- **Two-phase workflow:** Index lookup (instant) → page extraction (pdftotext)
+- **Usage:**
+  ```bash
+  cd /home/raymorris/Documents/planes/inavflight/claude/developer/docs/aerodynamics
+  ./search_indexes.py drag-coefficient          # full search + extraction
+  ./search_indexes.py --no-extract boundary-layer  # index lookup only (fast)
+  ./search_indexes.py --context 2 stall         # extract with surrounding pages
+  ./search_indexes.py --match drag              # find keywords by substring
+  ./search_indexes.py --list                    # list all 20 keywords
+  ```
+
 ### Pre-Built Index
 - **Directory:** `/home/raymorris/Documents/planes/inavflight/claude/developer/docs/aerodynamics/Houghton-Carpenter-Index/search-index/`
-- **Keywords indexed:** 20+ INAV-relevant terms
+- **Keywords indexed:** 20 INAV-relevant terms
   - High occurrence: boundary-layer (501), aerofoil (545), Reynolds-number (136)
   - Medium: drag-coefficient (67), lift-coefficient (59), aspect-ratio (67)
   - Critical: induced-drag (45), stall (39), pitot-tube (2), airspeed (7)
-
-### Indexing Script
-- **Path:** `/home/raymorris/Documents/planes/inavflight/claude/developer/docs/aerodynamics/Houghton-Carpenter-Index/pdf_indexer.py`
-- **Usage:**
-  ```bash
-  cd /home/raymorris/Documents/planes/inavflight/claude/developer/docs/aerodynamics/Houghton-Carpenter-Index
-  ./pdf_indexer.py find "drag polar" --context 1
-  ./pdf_indexer.py extract 100 110 --output temp-extract.txt
-  ./pdf_indexer.py search "boundary layer"
-  ```
 
 ### Quick Start Guide
 - **Path:** `/home/raymorris/Documents/planes/inavflight/claude/developer/docs/aerodynamics/QUICK-START.md`
@@ -98,34 +101,33 @@ Prompt: "Explain Reynolds number effects on fixed-wing flight"
 
 ## Common Operations
 
-### 1. Search the Pre-Built Index
-```bash
-cd /home/raymorris/Documents/planes/inavflight/claude/developer/docs/aerodynamics/Houghton-Carpenter-Index/search-index
-
-# View all occurrences of a keyword
-cat drag-coefficient.txt
-cat pitot-tube.txt
-cat Reynolds-number.txt
-```
-
-### 2. Search for New Terms
+### 1. Search the Index + Extract Pages (Primary Method)
 ```bash
 cd /home/raymorris/Documents/planes/inavflight/claude/developer/docs/aerodynamics
 
-# Search and show page numbers (requires pdfgrep)
-pdfgrep -n "stall speed" Aerodynamics-Houghton-and-Carpenter.pdf
-pdfgrep -n "wing loading" Aerodynamics-Houghton-and-Carpenter.pdf
+# Full workflow: index lookup then page extraction
+./search_indexes.py drag-coefficient
+./search_indexes.py pitot-tube
+./search_indexes.py Reynolds-number
+
+# Index lookup only (fast — no PDF extraction)
+./search_indexes.py --no-extract boundary-layer
+
+# With surrounding context pages
+./search_indexes.py --context 2 stall
+
+# Discover keywords by substring
+./search_indexes.py --match drag
+./search_indexes.py --list
 ```
 
-### 3. Extract Sections with Python Script
+### 2. Search for New Terms (not pre-indexed)
 ```bash
-cd /home/raymorris/Documents/planes/inavflight/claude/developer/docs/aerodynamics/Houghton-Carpenter-Index
+cd /home/raymorris/Documents/planes/inavflight/claude/developer/docs/aerodynamics
 
-# Search with context
-./pdf_indexer.py find "drag polar" --context 1
-
-# Extract specific pages
-./pdf_indexer.py extract 35 44 --output ../aerodynamics-workspace/references/drag-types.txt
+# Search PDF directly with pdfgrep (for terms not in the index)
+pdfgrep -n "stall speed" Aerodynamics-Houghton-and-Carpenter.pdf
+pdfgrep -n "wing loading" Aerodynamics-Houghton-and-Carpenter.pdf
 ```
 
 ### 4. Save Notes to Knowledge Base
@@ -151,18 +153,25 @@ grep -r "topic-keyword" /home/raymorris/Documents/planes/inavflight/claude/devel
 ```
 
 ### Step 2: Search the Index
-Look for relevant terms in the pre-built index:
+Look for relevant terms using the unified search tool:
 ```bash
-cd /home/raymorris/Documents/planes/inavflight/claude/developer/docs/aerodynamics/Houghton-Carpenter-Index/search-index
-ls -1 *.txt  # See what's indexed
-cat relevant-term.txt  # View occurrences
+cd /home/raymorris/Documents/planes/inavflight/claude/developer/docs/aerodynamics
+
+# Find matching keywords
+./search_indexes.py --match relevant-term
+
+# Full search (index lookup + page extraction)
+./search_indexes.py relevant-term
+
+# Index lookup only if you just need page numbers
+./search_indexes.py --no-extract relevant-term
 ```
 
-### Step 3: Extract Relevant Pages
-Use the Python script to extract sections with context:
+### Step 3: Extract with Context
+Add surrounding pages when you need full theoretical context:
 ```bash
-cd /home/raymorris/Documents/planes/inavflight/claude/developer/docs/aerodynamics/Houghton-Carpenter-Index
-./pdf_indexer.py find "search term" --context 2
+cd /home/raymorris/Documents/planes/inavflight/claude/developer/docs/aerodynamics
+./search_indexes.py --context 2 relevant-term
 ```
 
 ### Step 4: Provide Answer with Citations
@@ -307,5 +316,5 @@ Use the Write tool to append new entries. Format: `- **Brief title**: One-senten
 <!-- Add new lessons above this line -->
 - **Initial creation**: Agent has comprehensive index of 614-page textbook with 20+ INAV-relevant keywords pre-indexed
 - **Workspace structure**: Organized into notes/, knowledge-base/, calculations/, and references/ for systematic knowledge accumulation
-- **Best search method**: Check pre-built index first (fastest), then use pdf_indexer.py for new terms (most flexible)
+- **Best search method**: Use search_indexes.py (two-phase: index lookup then page extraction). Use --no-extract for quick page listings, --match for keyword discovery, pdfgrep for terms not in the index
 - **INAV relevance**: Pages 62-67 (pitot tubes) and 26-49 (basic aero) are most critical for flight controller work
