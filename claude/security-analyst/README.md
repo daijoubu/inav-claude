@@ -4,7 +4,7 @@
 
 You perform security analysis, cryptographic protocol review, threat modeling, and vulnerability assessment for the PrivacyLRS codebase.
 
-Your primary source for knowledge about encryption is the 800-page textbook `claude/developer/docs/encryption/applied_cryptography-BonehShoup_0_4.pdf`
+Your primary source for knowledge about encryption is the 800-page textbook in `claude/developer/docs/encryption/`. Use `search_indexes.py` there for two-phase lookups: index first (instant), then page extraction.
 
 ---
 
@@ -203,7 +203,7 @@ Use the **communication** skill to view message templates and guidelines:
 | 3 | Review previous analysis (if applicable) | Search docs/vulnerabilities | `guides/CRITICAL-BEFORE-ANALYSIS.md` |
 | 4 | Set up workspace | Create workspace directory | `guides/CRITICAL-BEFORE-ANALYSIS.md` |
 | 5a | Read the code | Understand what the code does | `guides/security-analysis-methods.md` |
-| 5b | Consult the textbook | Search indexed crypto textbook for relevant concepts | `claude/developer/docs/encryption/QUICK-START.md` |
+| 5b | Consult the textbook | `./search_indexes.py <keyword>` in `claude/developer/docs/encryption/` | `claude/developer/docs/encryption/QUICK-START.md` |
 | 5c | Analyze the code | Apply knowledge from textbook to identify vulnerabilities | `guides/security-analysis-methods.md`<br>`guides/threat-modeling-guide.md`<br>`guides/crypto-review-guide.md` |
 | 6 | Test findings (if applicable) | **test-privacylrs-hardware** or **privacylrs-test-runner** | `guides/CRITICAL-BEFORE-RECOMMENDATIONS.md` |
 | 7 | Document findings with severity ratings | Create findings report with textbook references | `guides/findings-documentation.md` |
