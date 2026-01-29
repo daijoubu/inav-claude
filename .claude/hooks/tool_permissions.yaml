@@ -86,13 +86,13 @@ rules:
     category: other
     decision: allow
 
-  - name: "Allow Write/Edit to /tmp for agents"
+  - name: "Allow Write/Edit to /tmp for agents and temporary claude-* files"
     tool_name_pattern: "^(Write|Edit)$"
     tool_input_patterns:
-      file_path: "^/tmp/.*"
+      file_path: "^/tmp/(claude-.*|.*)"
     category: write
     decision: allow
-    message: "/tmp access for temporary files and agent operations"
+    message: "/tmp access for temporary files, agents, and /tmp/claude-* temporary storage"
 
   - name: "Allow read-only file operations"
     tool_name_pattern: "^(Read|Glob|Grep)$"
@@ -338,11 +338,12 @@ bash_rules:
   # Safe File Operations
   # ===================================================================
 
-  - name: "Allow safe file operations (tmp, SITL, CMake)"
+  - name: "Allow safe file operations (tmp, claude-*, SITL, CMake)"
     command_pattern: "^(rm|cp|mv|touch|mkdir)$"
-    argument_pattern: ".*/tmp/.*|^/tmp/.*|^-[pf] /tmp/.*|.*eeprom\\.bin.*|^-f CMakeCache\\.txt$"
+    argument_pattern: ".*/tmp/(claude-.*|.*)|^/tmp/(claude-.*|.*)|^-[pf] /tmp/(claude-.*|.*)|.*eeprom\\.bin.*|^-f CMakeCache\\.txt$"
     category: write
     decision: allow
+    message: "Safe file operations allowed for /tmp/ and /tmp/claude-* directories"
 
   # ===================================================================
   # Dangerous Recursive Operations
