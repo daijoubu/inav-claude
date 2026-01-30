@@ -1,0 +1,423 @@
+Keyword: interface
+Occurrences: 419
+================================================================================
+
+Page    1: Interface description
+Page    1: This document describes the interface (version 32.01) of the u-blox
+Page    2: u-blox M9 SPG 4.04 - Interface description
+Page    2: Document type                               Interface description
+Page    3: u-blox M9 SPG 4.04 - Interface description
+Page    4: u-blox M9 SPG 4.04 - Interface description
+Page    5: u-blox M9 SPG 4.04 - Interface description
+Page    6: u-blox M9 SPG 4.04 - Interface description
+Page    7: u-blox M9 SPG 4.04 - Interface description
+Page    8: u-blox M9 SPG 4.04 - Interface description
+Page    9: u-blox M9 SPG 4.04 - Interface description
+Page   10: u-blox M9 SPG 4.04 - Interface description
+Page   11: u-blox M9 SPG 4.04 - Interface description
+Page   12: u-blox M9 SPG 4.04 - Interface description
+Page   12: 5 Conﬁguration interface...................................................................................................192
+Page   12: 5.4 Conﬁguration interface access....................................................................................................... 194
+Page   12: 5.4.1 UBX protocol interface............................................................................................................. 194
+Page   12: 5.9.5 CFG-I2C: Conﬁguration of the I2C interface........................................................................200
+Page   12: 5.9.6 CFG-I2CINPROT: Input protocol conﬁguration of the I2C interface................................200
+Page   12: 5.9.7 CFG-I2COUTPROT: Output protocol conﬁguration of the I2C interface........................200
+Page   12: 5.9.23 CFG-SPI: Conﬁguration of the SPI interface..................................................................... 227
+Page   12: 5.9.24 CFG-SPIINPROT: Input protocol conﬁguration of the SPI interface............................. 227
+Page   12: 5.9.25 CFG-SPIOUTPROT: Output protocol conﬁguration of the SPI interface..................... 227
+Page   12: 5.9.28 CFG-UART1: Conﬁguration of the UART1 interface........................................................231
+Page   12: 5.9.29 CFG-UART1INPROT: Input protocol conﬁguration of the UART1 interface................231
+Page   12: 5.9.30 CFG-UART1OUTPROT: Output protocol conﬁguration of the UART1 interface........232
+Page   12: 5.9.31 CFG-UART2: Conﬁguration of the UART2 interface........................................................232
+Page   12: 5.9.32 CFG-UART2INPROT: Input protocol conﬁguration of the UART2 interface................233
+Page   12: 5.9.33 CFG-UART2OUTPROT: Output protocol conﬁguration of the UART2 interface........233
+Page   12: 5.9.34 CFG-USB: Conﬁguration of the USB interface................................................................. 233
+Page   12: 5.9.35 CFG-USBINPROT: Input protocol conﬁguration of the USB interface..........................234
+Page   12: 5.9.36 CFG-USBOUTPROT: Output protocol conﬁguration of the USB interface..................234
+Page   13: u-blox M9 SPG 4.04 - Interface description
+Page   14: u-blox M9 SPG 4.04 - Interface description
+Page   14: This document describes the interface of the u-blox M9 standard precision GNSS ﬁrmware. The
+Page   14: interface consists of the following parts:
+Page   14: •   Conﬁguration interface
+Page   14: interface speciﬁcation. In the current documentation the receiver description is included in the
+Page   15: u-blox M9 SPG 4.04 - Interface description
+Page   16: u-blox M9 SPG 4.04 - Interface description
+Page   16: See Conﬁguration interface for a detailed description of the receiver conﬁguration system, the
+Page   16: explanation of the conﬁguration concept and its principles and interfaces.
+Page   16: The conﬁguration interface has changed from earlier u-blox positioning receivers. There is
+Page   16: advised to only use the Conﬁguration interface. See also Legacy UBX message ﬁelds reference.
+Page   17: u-blox M9 SPG 4.04 - Interface description
+Page   17: changed using the Conﬁguration interface (see also NMEA GNSS, satellite, and signal numbering).
+Page   18: u-blox M9 SPG 4.04 - Interface description
+Page   19: u-blox M9 SPG 4.04 - Interface description
+Page   20: u-blox M9 SPG 4.04 - Interface description
+Page   21: u-blox M9 SPG 4.04 - Interface description
+Page   21: Conﬁguration interface (CFG-NMEA-* items).
+Page   22: u-blox M9 SPG 4.04 - Interface description
+Page   23: u-blox M9 SPG 4.04 - Interface description
+Page   24: u-blox M9 SPG 4.04 - Interface description
+Page   25: u-blox M9 SPG 4.04 - Interface description
+Page   26: u-blox M9 SPG 4.04 - Interface description
+Page   27: u-blox M9 SPG 4.04 - Interface description
+Page   28: u-blox M9 SPG 4.04 - Interface description
+Page   29: u-blox M9 SPG 4.04 - Interface description
+Page   30: u-blox M9 SPG 4.04 - Interface description
+Page   31: u-blox M9 SPG 4.04 - Interface description
+Page   32: u-blox M9 SPG 4.04 - Interface description
+Page   33: u-blox M9 SPG 4.04 - Interface description
+Page   34: u-blox M9 SPG 4.04 - Interface description
+Page   35: u-blox M9 SPG 4.04 - Interface description
+Page   36: u-blox M9 SPG 4.04 - Interface description
+Page   37: u-blox M9 SPG 4.04 - Interface description
+Page   38: u-blox M9 SPG 4.04 - Interface description
+Page   39: u-blox M9 SPG 4.04 - Interface description
+Page   40: u-blox M9 SPG 4.04 - Interface description
+Page   41: u-blox M9 SPG 4.04 - Interface description
+Page   42: u-blox M9 SPG 4.04 - Interface description
+Page   43: u-blox M9 SPG 4.04 - Interface description
+Page   44: u-blox M9 SPG 4.04 - Interface description
+Page   45: u-blox M9 SPG 4.04 - Interface description
+Page   46: u-blox M9 SPG 4.04 - Interface description
+Page   47: u-blox M9 SPG 4.04 - Interface description
+Page   48: u-blox M9 SPG 4.04 - Interface description
+Page   49: u-blox M9 SPG 4.04 - Interface description
+Page   50: u-blox M9 SPG 4.04 - Interface description
+Page   51: u-blox M9 SPG 4.04 - Interface description
+Page   52: u-blox M9 SPG 4.04 - Interface description
+Page   53: u-blox M9 SPG 4.04 - Interface description
+Page   54: u-blox M9 SPG 4.04 - Interface description
+Page   55: u-blox M9 SPG 4.04 - Interface description
+Page   56: u-blox M9 SPG 4.04 - Interface description
+Page   57: u-blox M9 SPG 4.04 - Interface description
+Page   58: u-blox M9 SPG 4.04 - Interface description
+Page   59: u-blox M9 SPG 4.04 - Interface description
+Page   60: u-blox M9 SPG 4.04 - Interface description
+Page   61: u-blox M9 SPG 4.04 - Interface description
+Page   62: u-blox M9 SPG 4.04 - Interface description
+Page   63: u-blox M9 SPG 4.04 - Interface description
+Page   64: u-blox M9 SPG 4.04 - Interface description
+Page   65: u-blox M9 SPG 4.04 - Interface description
+Page   66: u-blox M9 SPG 4.04 - Interface description
+Page   67: u-blox M9 SPG 4.04 - Interface description
+Page   68: u-blox M9 SPG 4.04 - Interface description
+Page   69: u-blox M9 SPG 4.04 - Interface description
+Page   70: u-blox M9 SPG 4.04 - Interface description
+Page   71: u-blox M9 SPG 4.04 - Interface description
+Page   72: u-blox M9 SPG 4.04 - Interface description
+Page   73: u-blox M9 SPG 4.04 - Interface description
+Page   74: u-blox M9 SPG 4.04 - Interface description
+Page   75: u-blox M9 SPG 4.04 - Interface description
+Page   76: u-blox M9 SPG 4.04 - Interface description
+Page   77: u-blox M9 SPG 4.04 - Interface description
+Page   78: u-blox M9 SPG 4.04 - Interface description
+Page   79: u-blox M9 SPG 4.04 - Interface description
+Page   79: •   0x42434B50 = Software backup. USB interface
+Page   80: u-blox M9 SPG 4.04 - Interface description
+Page   81: u-blox M9 SPG 4.04 - Interface description
+Page   82: u-blox M9 SPG 4.04 - Interface description
+Page   83: u-blox M9 SPG 4.04 - Interface description
+Page   84: u-blox M9 SPG 4.04 - Interface description
+Page   85: u-blox M9 SPG 4.04 - Interface description
+Page   86: u-blox M9 SPG 4.04 - Interface description
+Page   87: u-blox M9 SPG 4.04 - Interface description
+Page   88: u-blox M9 SPG 4.04 - Interface description
+Page   89: u-blox M9 SPG 4.04 - Interface description
+Page   90: u-blox M9 SPG 4.04 - Interface description
+Page   91: u-blox M9 SPG 4.04 - Interface description
+Page   92: u-blox M9 SPG 4.04 - Interface description
+Page   93: u-blox M9 SPG 4.04 - Interface description
+Page   94: u-blox M9 SPG 4.04 - Interface description
+Page   95: u-blox M9 SPG 4.04 - Interface description
+Page   96: u-blox M9 SPG 4.04 - Interface description
+Page   97: u-blox M9 SPG 4.04 - Interface description
+Page   98: u-blox M9 SPG 4.04 - Interface description
+Page   99: u-blox M9 SPG 4.04 - Interface description
+Page  100: u-blox M9 SPG 4.04 - Interface description
+Page  101: u-blox M9 SPG 4.04 - Interface description
+Page  102: u-blox M9 SPG 4.04 - Interface description
+Page  103: u-blox M9 SPG 4.04 - Interface description
+Page  104: u-blox M9 SPG 4.04 - Interface description
+Page  105: u-blox M9 SPG 4.04 - Interface description
+Page  106: u-blox M9 SPG 4.04 - Interface description
+Page  107: u-blox M9 SPG 4.04 - Interface description
+Page  108: u-blox M9 SPG 4.04 - Interface description
+Page  109: u-blox M9 SPG 4.04 - Interface description
+Page  110: u-blox M9 SPG 4.04 - Interface description
+Page  111: u-blox M9 SPG 4.04 - Interface description
+Page  112: u-blox M9 SPG 4.04 - Interface description
+Page  113: u-blox M9 SPG 4.04 - Interface description
+Page  114: u-blox M9 SPG 4.04 - Interface description
+Page  115: u-blox M9 SPG 4.04 - Interface description
+Page  116: u-blox M9 SPG 4.04 - Interface description
+Page  117: u-blox M9 SPG 4.04 - Interface description
+Page  118: u-blox M9 SPG 4.04 - Interface description
+Page  119: u-blox M9 SPG 4.04 - Interface description
+Page  120: u-blox M9 SPG 4.04 - Interface description
+Page  121: u-blox M9 SPG 4.04 - Interface description
+Page  122: u-blox M9 SPG 4.04 - Interface description
+Page  123: u-blox M9 SPG 4.04 - Interface description
+Page  124: u-blox M9 SPG 4.04 - Interface description
+Page  125: u-blox M9 SPG 4.04 - Interface description
+Page  126: u-blox M9 SPG 4.04 - Interface description
+Page  127: u-blox M9 SPG 4.04 - Interface description
+Page  128: u-blox M9 SPG 4.04 - Interface description
+Page  129: u-blox M9 SPG 4.04 - Interface description
+Page  130: u-blox M9 SPG 4.04 - Interface description
+Page  131: u-blox M9 SPG 4.04 - Interface description
+Page  132: u-blox M9 SPG 4.04 - Interface description
+Page  133: u-blox M9 SPG 4.04 - Interface description
+Page  134: u-blox M9 SPG 4.04 - Interface description
+Page  135: u-blox M9 SPG 4.04 - Interface description
+Page  136: u-blox M9 SPG 4.04 - Interface description
+Page  137: u-blox M9 SPG 4.04 - Interface description
+Page  138: u-blox M9 SPG 4.04 - Interface description
+Page  139: u-blox M9 SPG 4.04 - Interface description
+Page  140: u-blox M9 SPG 4.04 - Interface description
+Page  141: u-blox M9 SPG 4.04 - Interface description
+Page  142: u-blox M9 SPG 4.04 - Interface description
+Page  143: u-blox M9 SPG 4.04 - Interface description
+Page  144: u-blox M9 SPG 4.04 - Interface description
+Page  145: u-blox M9 SPG 4.04 - Interface description
+Page  146: u-blox M9 SPG 4.04 - Interface description
+Page  147: u-blox M9 SPG 4.04 - Interface description
+Page  148: u-blox M9 SPG 4.04 - Interface description
+Page  148: to the QZSS SLAS Interface Speciﬁcation, available
+Page  149: u-blox M9 SPG 4.04 - Interface description
+Page  150: u-blox M9 SPG 4.04 - Interface description
+Page  151: u-blox M9 SPG 4.04 - Interface description
+Page  152: u-blox M9 SPG 4.04 - Interface description
+Page  153: u-blox M9 SPG 4.04 - Interface description
+Page  154: u-blox M9 SPG 4.04 - Interface description
+Page  155: u-blox M9 SPG 4.04 - Interface description
+Page  156: u-blox M9 SPG 4.04 - Interface description
+Page  157: u-blox M9 SPG 4.04 - Interface description
+Page  158: u-blox M9 SPG 4.04 - Interface description
+Page  159: u-blox M9 SPG 4.04 - Interface description
+Page  159: interface will be disabled.
+Page  160: u-blox M9 SPG 4.04 - Interface description
+Page  161: u-blox M9 SPG 4.04 - Interface description
+Page  162: u-blox M9 SPG 4.04 - Interface description
+Page  163: u-blox M9 SPG 4.04 - Interface description
+Page  164: u-blox M9 SPG 4.04 - Interface description
+Page  165: u-blox M9 SPG 4.04 - Interface description
+Page  166: u-blox M9 SPG 4.04 - Interface description
+Page  167: u-blox M9 SPG 4.04 - Interface description
+Page  167: The RTCM 3.x protocol can be disabled/enabled on communication interfaces using the
+Page  167: Conﬁguration interface, for example conﬁguration item CFG-UART1INPROT-RTCM3X.
+Page  168: u-blox M9 SPG 4.04 - Interface description
+Page  169: u-blox M9 SPG 4.04 - Interface description
+Page  170: u-blox M9 SPG 4.04 - Interface description
+Page  171: u-blox M9 SPG 4.04 - Interface description
+Page  172: u-blox M9 SPG 4.04 - Interface description
+Page  173: u-blox M9 SPG 4.04 - Interface description
+Page  174: u-blox M9 SPG 4.04 - Interface description
+Page  175: u-blox M9 SPG 4.04 - Interface description
+Page  176: u-blox M9 SPG 4.04 - Interface description
+Page  177: u-blox M9 SPG 4.04 - Interface description
+Page  178: u-blox M9 SPG 4.04 - Interface description
+Page  179: u-blox M9 SPG 4.04 - Interface description
+Page  180: u-blox M9 SPG 4.04 - Interface description
+Page  181: u-blox M9 SPG 4.04 - Interface description
+Page  182: u-blox M9 SPG 4.04 - Interface description
+Page  183: u-blox M9 SPG 4.04 - Interface description
+Page  184: u-blox M9 SPG 4.04 - Interface description
+Page  185: u-blox M9 SPG 4.04 - Interface description
+Page  186: u-blox M9 SPG 4.04 - Interface description
+Page  187: u-blox M9 SPG 4.04 - Interface description
+Page  188: u-blox M9 SPG 4.04 - Interface description
+Page  189: u-blox M9 SPG 4.04 - Interface description
+Page  190: u-blox M9 SPG 4.04 - Interface description
+Page  191: u-blox M9 SPG 4.04 - Interface description
+Page  192: u-blox M9 SPG 4.04 - Interface description
+Page  192: 5 Conﬁguration interface
+Page  192: This chapter describes the receiver conﬁguration interface.
+Page  192: UBX-21022436 - R02                              5 Conﬁguration interface                            Page 192 of 259
+Page  193: u-blox M9 SPG 4.04 - Interface description
+Page  193: value of any item can be set by the user at run-time (see UBX protocol interface) and it will
+Page  193: item can be set by the user at run-time (see UBX protocol interface) and it will become eﬀective
+Page  193: user at run-time (see UBX protocol interface) and it will become eﬀective upon a restart of the
+Page  193: UBX-21022436 - R02                       5 Conﬁguration interface                            Page 193 of 259
+Page  194: u-blox M9 SPG 4.04 - Interface description
+Page  194: 5.4 Conﬁguration interface access
+Page  194: The following sections describe the existing interfaces to access the Conﬁguration Database.
+Page  194: 5.4.1 UBX protocol interface
+Page  194: UBX-21022436 - R02                      5 Conﬁguration interface                            Page 194 of 259
+Page  195: u-blox M9 SPG 4.04 - Interface description
+Page  195: The conﬁguration interface supports two mechanisms of conﬁguration: the ﬁrst is a transactionless
+Page  195: UBX-21022436 - R02                      5 Conﬁguration interface                            Page 195 of 259
+Page  196: u-blox M9 SPG 4.04 - Interface description
+Page  196: CFG-I2C                                Conﬁguration of the I2C interface
+Page  196: CFG-I2CINPROT                          Input protocol conﬁguration of the I2C interface
+Page  196: CFG-I2COUTPROT                         Output protocol conﬁguration of the I2C interface
+Page  196: CFG-SPI                                Conﬁguration of the SPI interface
+Page  196: CFG-SPIINPROT                          Input protocol conﬁguration of the SPI interface
+Page  196: CFG-SPIOUTPROT                         Output protocol conﬁguration of the SPI interface
+Page  196: UBX-21022436 - R02                     5 Conﬁguration interface                              Page 196 of 259
+Page  197: u-blox M9 SPG 4.04 - Interface description
+Page  197: CFG-UART1                                        Conﬁguration of the UART1 interface
+Page  197: CFG-UART1INPROT                                  Input protocol conﬁguration of the UART1 interface
+Page  197: CFG-UART1OUTPROT                                 Output protocol conﬁguration of the UART1 interface
+Page  197: CFG-UART2                                        Conﬁguration of the UART2 interface
+Page  197: CFG-UART2INPROT                                  Input protocol conﬁguration of the UART2 interface
+Page  197: CFG-UART2OUTPROT                                 Output protocol conﬁguration of the UART2 interface
+Page  197: CFG-USB                                          Conﬁguration of the USB interface
+Page  197: CFG-USBINPROT                                    Input protocol conﬁguration of the USB interface
+Page  197: CFG-USBOUTPROT                                   Output protocol conﬁguration of the USB interface
+Page  197: UBX-21022436 - R02                               5 Conﬁguration interface                                    Page 197 of 259
+Page  198: u-blox M9 SPG 4.04 - Interface description
+Page  198: UBX-21022436 - R02                                5 Conﬁguration interface                                     Page 198 of 259
+Page  199: u-blox M9 SPG 4.04 - Interface description
+Page  199: UBX-21022436 - R02                               5 Conﬁguration interface                                  Page 199 of 259
+Page  200: u-blox M9 SPG 4.04 - Interface description
+Page  200: 5.9.5 CFG-I2C: Conﬁguration of the I2C interface
+Page  200: Settings needed to conﬁgure the I2C communication interface.
+Page  200: CFG-I2C-EXTENDEDTIMEOUT              0x10510002       L       -          -     Flag to disable timeouting the interface after
+Page  200: CFG-I2C-ENABLED                      0x10510003       L       -          -     Flag to indicate if the I2C interface should be
+Page  200: 5.9.6 CFG-I2CINPROT: Input protocol conﬁguration of the I2C interface
+Page  200: Input protocol enable ﬂags of the I2C interface.
+Page  200: 5.9.7 CFG-I2COUTPROT: Output protocol conﬁguration of the I2C interface
+Page  200: Output protocol enable ﬂags of the I2C interface.
+Page  200: UBX-21022436 - R02                               5 Conﬁguration interface                                       Page 200 of 259
+Page  201: u-blox M9 SPG 4.04 - Interface description
+Page  201: protocol on the I2C interface
+Page  201: protocol on the UART1 interface
+Page  201: protocol on the UART2 interface
+Page  201: protocol on the USB interface
+Page  201: protocol on the SPI interface
+Page  201: protocol on the I2C interface
+Page  201: protocol on the UART1 interface
+Page  201: protocol on the UART2 interface
+Page  201: protocol on the USB interface
+Page  201: protocol on the SPI interface
+Page  201: UBX-21022436 - R02                               5 Conﬁguration interface                                     Page 201 of 259
+Page  202: u-blox M9 SPG 4.04 - Interface description
+Page  202: UBX-21022436 - R02                               5 Conﬁguration interface                                      Page 202 of 259
+Page  203: u-blox M9 SPG 4.04 - Interface description
+Page  203: UBX-21022436 - R02                               5 Conﬁguration interface                                    Page 203 of 259
+Page  204: u-blox M9 SPG 4.04 - Interface description
+Page  204: UBX-21022436 - R02                    5 Conﬁguration interface                               Page 204 of 259
+Page  205: u-blox M9 SPG 4.04 - Interface description
+Page  205: UBX-21022436 - R02                    5 Conﬁguration interface                               Page 205 of 259
+Page  206: u-blox M9 SPG 4.04 - Interface description
+Page  206: UBX-21022436 - R02                      5 Conﬁguration interface                               Page 206 of 259
+Page  207: u-blox M9 SPG 4.04 - Interface description
+Page  207: UBX-21022436 - R02                      5 Conﬁguration interface                                Page 207 of 259
+Page  208: u-blox M9 SPG 4.04 - Interface description
+Page  208: UBX-21022436 - R02                     5 Conﬁguration interface                               Page 208 of 259
+Page  209: u-blox M9 SPG 4.04 - Interface description
+Page  209: UBX-21022436 - R02                     5 Conﬁguration interface                               Page 209 of 259
+Page  210: u-blox M9 SPG 4.04 - Interface description
+Page  210: UBX-21022436 - R02                     5 Conﬁguration interface                               Page 210 of 259
+Page  211: u-blox M9 SPG 4.04 - Interface description
+Page  211: UBX-21022436 - R02                     5 Conﬁguration interface                                Page 211 of 259
+Page  212: u-blox M9 SPG 4.04 - Interface description
+Page  212: UBX-21022436 - R02                     5 Conﬁguration interface                                Page 212 of 259
+Page  213: u-blox M9 SPG 4.04 - Interface description
+Page  213: UBX-21022436 - R02                     5 Conﬁguration interface                               Page 213 of 259
+Page  214: u-blox M9 SPG 4.04 - Interface description
+Page  214: UBX-21022436 - R02                     5 Conﬁguration interface                               Page 214 of 259
+Page  215: u-blox M9 SPG 4.04 - Interface description
+Page  215: UBX-21022436 - R02                               5 Conﬁguration interface                                      Page 215 of 259
+Page  216: u-blox M9 SPG 4.04 - Interface description
+Page  216: UBX-21022436 - R02                                 5 Conﬁguration interface                                     Page 216 of 259
+Page  217: u-blox M9 SPG 4.04 - Interface description
+Page  217: UBX-21022436 - R02                                 5 Conﬁguration interface                                      Page 217 of 259
+Page  218: u-blox M9 SPG 4.04 - Interface description
+Page  218: UBX-21022436 - R02                      5 Conﬁguration interface                               Page 218 of 259
+Page  219: u-blox M9 SPG 4.04 - Interface description
+Page  219: UBX-21022436 - R02                      5 Conﬁguration interface                            Page 219 of 259
+Page  220: u-blox M9 SPG 4.04 - Interface description
+Page  220: UBX-21022436 - R02                               5 Conﬁguration interface                                        Page 220 of 259
+Page  221: u-blox M9 SPG 4.04 - Interface description
+Page  221: UBX-21022436 - R02                                  5 Conﬁguration interface                                        Page 221 of 259
+Page  222: u-blox M9 SPG 4.04 - Interface description
+Page  222: UBX-21022436 - R02                                 5 Conﬁguration interface                                      Page 222 of 259
+Page  223: u-blox M9 SPG 4.04 - Interface description
+Page  223: UBX-21022436 - R02                              5 Conﬁguration interface                                   Page 223 of 259
+Page  224: u-blox M9 SPG 4.04 - Interface description
+Page  224: When true, data will be dumped to the interface on startup, unless CFG-RINV-BINARY is set.
+Page  224: UBX-21022436 - R02                               5 Conﬁguration interface                                       Page 224 of 259
+Page  225: u-blox M9 SPG 4.04 - Interface description
+Page  225: UBX-21022436 - R02                                   5 Conﬁguration interface                                    Page 225 of 259
+Page  226: u-blox M9 SPG 4.04 - Interface description
+Page  226: UBX-21022436 - R02                              5 Conﬁguration interface                                  Page 226 of 259
+Page  227: u-blox M9 SPG 4.04 - Interface description
+Page  227: 5.9.23 CFG-SPI: Conﬁguration of the SPI interface
+Page  227: Settings needed to conﬁgure the SPI communication interface.
+Page  227: CFG-SPI-EXTENDEDTIMEOUT              0x10640005       L       -          -     Flag to disable timeouting the interface after
+Page  227: CFG-SPI-ENABLED                      0x10640006       L       -          -     Flag to indicate if the SPI interface should be
+Page  227: 5.9.24 CFG-SPIINPROT: Input protocol conﬁguration of the SPI interface
+Page  227: Input protocol enable ﬂags of the SPI interface.
+Page  227: 5.9.25 CFG-SPIOUTPROT: Output protocol conﬁguration of the SPI interface
+Page  227: Output protocol enable ﬂags of the SPI interface.
+Page  227: UBX-21022436 - R02                               5 Conﬁguration interface                                       Page 227 of 259
+Page  228: u-blox M9 SPG 4.04 - Interface description
+Page  228: UBX-21022436 - R02                               5 Conﬁguration interface                                        Page 228 of 259
+Page  229: u-blox M9 SPG 4.04 - Interface description
+Page  229: UBX-21022436 - R02                               5 Conﬁguration interface                                        Page 229 of 259
+Page  230: u-blox M9 SPG 4.04 - Interface description
+Page  230: interface before triggering the TX ready pin
+Page  230: CFG-TXREADY-INTERFACE                   0x20a20005 E1            -          -     Interface where the TX ready feature should be
+Page  230: I2C                                    0               I2C interface
+Page  230: UBX-21022436 - R02                                  5 Conﬁguration interface                                       Page 230 of 259
+Page  231: u-blox M9 SPG 4.04 - Interface description
+Page  231: SPI                                    1               SPI interface
+Page  231: Table 55: Constants for CFG-TXREADY-INTERFACE
+Page  231: 5.9.28 CFG-UART1: Conﬁguration of the UART1 interface
+Page  231: Settings needed to conﬁgure the UART1 communication interface.
+Page  231: 5.9.29 CFG-UART1INPROT: Input protocol conﬁguration of the UART1 interface
+Page  231: Input protocol enable ﬂags of the UART1 interface.
+Page  231: UBX-21022436 - R02                                  5 Conﬁguration interface                                      Page 231 of 259
+Page  232: u-blox M9 SPG 4.04 - Interface description
+Page  232: interface
+Page  232: Output protocol enable ﬂags of the UART1 interface.
+Page  232: 5.9.31 CFG-UART2: Conﬁguration of the UART2 interface
+Page  232: Settings needed to conﬁgure the UART2 communication interface.
+Page  232: UBX-21022436 - R02                               5 Conﬁguration interface                                      Page 232 of 259
+Page  233: u-blox M9 SPG 4.04 - Interface description
+Page  233: 5.9.32 CFG-UART2INPROT: Input protocol conﬁguration of the UART2 interface
+Page  233: Input protocol enable ﬂags of the UART2 interface.
+Page  233: interface
+Page  233: Output protocol enable ﬂags of the UART2 interface.
+Page  233: 5.9.34 CFG-USB: Conﬁguration of the USB interface
+Page  233: Settings needed to conﬁgure the USB communication interface.
+Page  233: CFG-USB-ENABLED                 0x10650001      L       -       -       Flag to indicate if the USB interface should be
+Page  233: UBX-21022436 - R02                         5 Conﬁguration interface                                      Page 233 of 259
+Page  234: u-blox M9 SPG 4.04 - Interface description
+Page  234: 5.9.35 CFG-USBINPROT: Input protocol conﬁguration of the USB interface
+Page  234: Input protocol enable ﬂags of the USB interface.
+Page  234: 5.9.36 CFG-USBOUTPROT: Output protocol conﬁguration of the USB interface
+Page  234: Output protocol enable ﬂags of the USB interface.
+Page  234: UBX-21022436 - R02                           5 Conﬁguration interface                                   Page 234 of 259
+Page  235: u-blox M9 SPG 4.04 - Interface description
+Page  235: UBX-21022436 - R02             5 Conﬁguration interface                            Page 235 of 259
+Page  236: u-blox M9 SPG 4.04 - Interface description
+Page  236: UBX-21022436 - R02                         5 Conﬁguration interface                            Page 236 of 259
+Page  237: u-blox M9 SPG 4.04 - Interface description
+Page  237: UBX-21022436 - R02               5 Conﬁguration interface                            Page 237 of 259
+Page  238: u-blox M9 SPG 4.04 - Interface description
+Page  238: UBX-21022436 - R02              5 Conﬁguration interface                            Page 238 of 259
+Page  239: u-blox M9 SPG 4.04 - Interface description
+Page  239: UBX-21022436 - R02                          5 Conﬁguration interface                            Page 239 of 259
+Page  240: u-blox M9 SPG 4.04 - Interface description
+Page  241: u-blox M9 SPG 4.04 - Interface description
+Page  242: u-blox M9 SPG 4.04 - Interface description
+Page  243: u-blox M9 SPG 4.04 - Interface description
+Page  244: u-blox M9 SPG 4.04 - Interface description
+Page  245: u-blox M9 SPG 4.04 - Interface description
+Page  246: u-blox M9 SPG 4.04 - Interface description
+Page  247: u-blox M9 SPG 4.04 - Interface description
+Page  248: u-blox M9 SPG 4.04 - Interface description
+Page  249: u-blox M9 SPG 4.04 - Interface description
+Page  250: u-blox M9 SPG 4.04 - Interface description
+Page  251: u-blox M9 SPG 4.04 - Interface description
+Page  252: u-blox M9 SPG 4.04 - Interface description
+Page  253: u-blox M9 SPG 4.04 - Interface description
+Page  254: u-blox M9 SPG 4.04 - Interface description
+Page  254: CFG-TXREADY-INTERFACE                              0x20a20005 E1          -      -             0 (I2C)
+Page  255: u-blox M9 SPG 4.04 - Interface description
+Page  256: u-blox M9 SPG 4.04 - Interface description
+Page  257: u-blox M9 SPG 4.04 - Interface description
+Page  258: u-blox M9 SPG 4.04 - Interface description
+Page  258: R01         10-Jun-2021   jesk   - Combined all SPG 4.04 ﬁrmware interface descriptions
+Page  259: u-blox M9 SPG 4.04 - Interface description

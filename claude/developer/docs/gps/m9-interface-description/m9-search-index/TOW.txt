@@ -1,0 +1,100 @@
+Keyword: TOW
+Occurrences: 96
+================================================================================
+
+Page   44: Structure         $PUBX,04,time,date,utcTow,utcWk,leapSec,clkBias,clkDrift,tpGran,*cs\r\n
+Page   44: 4          utcTow             numeric     s           113851.00        UTC time of week
+Page   55: The ﬁelds iTOW, tAcc, numSV, hMSL, vAcc, velN, velE,
+Page   84: bit 5   U:1      alignToTow             -           -            Align pulse to top of second (period time must be
+Page   85: 'alignToTow' are set.
+Page   93: The ﬁelds iTOW, tAcc, numSV, hMSL, vAcc, velN, velE,
+Page   94: 4               U4    iTOW        -          ms           GPS time of week of the navigation epoch.
+Page   94: for description of navigation epoch and iTOW.
+Page  120: 8                   U4        tow                      -           s            GNSS time of week
+Page  135: 0                   U4        iTOW                   -           ms           GPS time of week of the navigation epoch.
+Page  135: See the description of iTOW for details.
+Page  135: 0                   U4        iTOW                   -           ms           GPS time of week of the navigation epoch. See
+Page  135: See section iTOW timestamps in the integration
+Page  136: 0             U4         iTOW                     -           ms           GPS time of week of the navigation epoch.
+Page  136: See section iTOW timestamps in the integration
+Page  137: 0             U4         iTOW                 -            ms          GPS time of week of the navigation epoch.
+Page  137: See section iTOW timestamps in the integration
+Page  137: 0             U4         iTOW                 -            ms          GPS time of week of the navigation epoch.
+Page  137: See section iTOW timestamps in the integration
+Page  137: 0             U4         iTOW                 -            ms          GPS time of week of the navigation epoch.
+Page  137: See section iTOW timestamps in the integration
+Page  138: 4             U4        iTOW                     -           ms           GPS time of week of the navigation epoch.
+Page  138: See section iTOW timestamps in the integration
+Page  139: 0                U4      iTOW           -           ms           GPS time of week of the navigation epoch.
+Page  139: See section iTOW timestamps in the integration
+Page  140: 0                 U4        iTOW                    -           ms           GPS time of week of the navigation epoch.
+Page  140: See section iTOW timestamps in the integration
+Page  141: 0                   U4        iTOW                   -           ms           GPS time of week of the navigation epoch.
+Page  141: See section iTOW timestamps in the integration
+Page  141: 0                   U4        iTOW                   -           ms           GPS time of week of the navigation epoch.
+Page  141: See section iTOW timestamps in the integration
+Page  144: 0                   U4        iTOW                  -            ms          GPS time of week of the navigation epoch.
+Page  144: See section iTOW timestamps in the integration
+Page  145: 0                 U4        iTOW                  -            ms          GPS time of week of the navigation epoch.
+Page  145: See the description of iTOW for details.
+Page  147: 0                   U4      iTOW          -           ms           GPS time of week of the navigation epoch.
+Page  147: See section iTOW timestamps in the integration
+Page  148: 0                   U4        iTOW                  -            ms           GPS time of week of the navigation epoch.
+Page  148: See the description of iTOW for details.
+Page  149: 0                   U4        iTOW                    -           ms           GPS time of week of the navigation epoch.
+Page  149: See section iTOW timestamps in the integration
+Page  149: bit 3   U:1       towSet                  -           -            1 = Time of Week valid (see section Time validity in the
+Page  150: 0                 U4        iTOW                   -           ms           GPS time of week of the navigation epoch.
+Page  150: See section iTOW timestamps in the integration
+Page  151: 0                   U4        iTOW                   -           ms           GPS time of week of the navigation epoch.
+Page  151: See section iTOW timestamps in the integration
+Page  151: 4                   U4        galTow                 -           s            Galileo time of week (rounded to seconds)
+Page  151: 8                   I4        fGalTow                -           ns           Fractional part of the Galileo time of week (range:
+Page  151: galTow + fGalTow * 1e-9
+Page  151: bit 0   U:1       galTowValid            -           -            1 = Valid galTow and fGalTow (see section Time validity
+Page  152: 0                   U4        iTOW                     -           ms           GPS time of week of the navigation epoch.
+Page  152: See section iTOW timestamps in the integration
+Page  152: 0                   U4        iTOW                     -           ms           GPS time of week of the navigation epoch.
+Page  152: See section iTOW timestamps in the integration
+Page  152: 4                   I4        fTOW                     -           ns           Fractional part of iTOW (range: +/-500000).
+Page  152: (iTOW * 1e-3) + (fTOW * 1e-9)
+Page  153: bit 0   U:1       towValid               -           -            1 = Valid GPS time of week (iTOW & fTOW, (see section
+Page  153: 0                   U4        iTOW                   -           ms           GPS time of week of the navigation epoch.
+Page  153: See section iTOW timestamps in the integration
+Page  154: 0                   U4        iTOW                   -           ms           GPS time of week of the navigation epoch.
+Page  154: 4                   U4        qzssTow                -           s            QZSS time of week (rounded to seconds)
+Page  155: 8                   I4        fQzssTow               -           ns           Fractional part of QZSS time of week (range:
+Page  155: qzssTow + (fQzssTow * 1e-9)
+Page  155: bit 0   U:1       qzssTowValid           -           -            1 = Valid QZSS time of week (qzssTow and fQzssTow)
+Page  155: 0                   U4        iTOW                   -           ms           GPS time of week of the navigation epoch.
+Page  155: See section iTOW timestamps in the integration
+Page  155: bit 0   U:1       validTOW               -           -            1 = Valid Time of Week (see section Time validity in the
+Page  156: 0                 U4        iTOW                   -           ms           GPS time of week of the navigation epoch.
+Page  156: See section iTOW timestamps in the integration
+Page  157: 0             U4        iTOW                  -            ms          GPS time of week of the navigation epoch.
+Page  157: See section iTOW timestamps in the integration
+Page  157: 4             U4        gpsTOW                -            ms          GPS measurement reference time
+Page  157: 8             U4        gloTOW                -            ms          GLONASS measurement reference time
+Page  157: 12            U4        bdsTOW                -            ms          BeiDou measurement reference time
+Page  157: 20            U4        qzssTOW               -            ms          QZSS measurement reference time
+Page  157: 24            U2        gpsTOWacc             2^-4         ms          GPS measurement reference time accuracy (0xﬀﬀ = >
+Page  158: 26                U2       gloTOWacc             2^-4         ms          GLONASS measurement reference time accuracy
+Page  158: 28                U2       bdsTOWacc             2^-4         ms          BeiDou measurement reference time accuracy (0xﬀﬀ
+Page  158: 32                U2       qzssTOWacc            2^-4         ms          QZSS measurement reference time accuracy (0xﬀﬀ =
+Page  158: bits 1…0   U:2      towSet                -            -           TOW set (0 = no, 1 or 2 = yes)
+Page  163: 8                   U4        towMsR                 -           ms           Tow of rising edge
+Page  163: 12                  U4        towSubMsR              -           ns           Millisecond fraction of tow of rising edge in
+Page  163: 16                  U4        towMsF                 -           ms           Tow of falling edge
+Page  163: 20                  U4        towSubMsF              -           ns           Millisecond fraction of tow of falling edge in
+Page  163: 0                   U4        towMS                  -           ms           Time pulse time of week according to time base
+Page  163: 4                   U4        towSubMS               2^-32       ms           Submillisecond part of towMS
+Page  164: to GNSS - week/tow may be invalid
+Page  164: 0                 I4        itow                   -           ms           integer millisecond tow received by source
+Page  164: 4                 I4        frac                   -           ns           sub-millisecond part of tow
+Page  198: The ﬁelds iTOW, tAcc, numSV, hMSL, vAcc, velN, velE, velD, sAcc, headAcc and pDOP in UBX-LOG-BATCH are only valid
+Page  228: CFG-TP-ALIGN_TO_TOW_TP1                0x1005000a     L       -          -     Align time pulse to top of second (TP1)
+Page  229: CFG-TP-ALIGN_TO_TOW_TP2                0x10050015     L       -          -     Align time pulse to top of second (TP2)
+Page  239: UBX-CFG-TP5.alignToTow                                  CFG-TP-ALIGN_TO_TOW_TP1, CFG-TP-
+Page  239: ALIGN_TO_TOW_TP2
+Page  254: CFG-TP-ALIGN_TO_TOW_TP1                            0x1005000a    L        -      -            1 (true)
+Page  254: CFG-TP-ALIGN_TO_TOW_TP2                            0x10050015    L        -      -            1 (true)

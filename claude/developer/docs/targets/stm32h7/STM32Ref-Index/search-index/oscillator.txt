@@ -1,0 +1,188 @@
+Keyword: oscillator
+Occurrences: 184
+================================================================================
+
+Page    8: 7.5.2       Oscillators description . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 319
+Page   11: 10.3.14 Using the HSE or LSE oscillator pins as GPIOs . . . . . . . . . . . . . . . . . 517
+Page  243: management and oscillators
+Page  246: 3.   Once VCORE is correct, the system is taken out of reset and the HSI oscillator is
+Page  246: 4.   Once the oscillator is stable, the system is initialized: Flash memory and option bytes
+Page  247: down                          Oscillator
+Page  262: Sys-oscillator
+Page  262: 7. When the system oscillator HSI or CSI is used, the state is controlled by HSIKERON and CSIKERON, otherwise the
+Page  262: system oscillator is OFF.
+Page  269: the requested supply level to be reached before enabling the default HSI oscillator.
+Page  271: requested supply level to be reached before enabling the default HSI oscillator. Once
+Page  278: selected, the system oscillator operates according to the HSIKERON and CSIKERON bits in
+Page  278: RCC_CR register. Other system oscillator sources are stopped.
+Page  278: •   Internal RC oscillator (LSI RC)
+Page  278: •   External 32.768 kHz oscillator (LSE OSC)
+Page  279: •     Internal RC oscillators (HSI and CSI)
+Page  280: System oscillator startup (when disabled).
+Page  282: oscillator, CSI oscillator, HSI48 and the HSE oscillator are also switched off. SRAM and
+Page  282: •   Internal RC oscillator (LSI RC)
+Page  282: •   External 32.768 kHz oscillator (LSE OSC)
+Page  306: •   2 external oscillators:
+Page  306: –    High-speed external oscillator (HSE) supporting a wide range of crystals from 4 to
+Page  306: –    Low-speed external oscillator (LSE) for the 32 kHz crystals
+Page  306: •   4 internal oscillators
+Page  306: –    High-speed internal oscillator (HSI)
+Page  306: –    48 MHz RC oscillator (HSI48)
+Page  306: –    Low-power Internal oscillator (CSI)
+Page  306: –    Low-speed internal oscillator (LSI)
+Page  307: OSC32_IN                               I            32 kHz oscillator input
+Page  307: OSC32_OUT                              O            32 kHz oscillator output
+Page  307: OSC_IN                               I            System oscillator input
+Page  308: OSC_OUT                O         System oscillator output
+Page  317: •    HSI (High-speed internal oscillator) clock: ~ 8, 16, 32 or 64 MHz
+Page  317: •    HSE (High-speed external oscillator) clock: 4 to 48 MHz
+Page  317: •    LSE (Low-speed external oscillator) clock: 32 kHz
+Page  317: •    LSI (Low-speed internal oscillator) clock: ~ 32 kHz
+Page  317: •    CSI (Low-power internal oscillator) clock: ~4 MHz
+Page  317: •    HSI48 (High-speed 48 MHz internal oscillator) clock: ~48 MHz
+Page  319: 7.5.2    Oscillators description
+Page  319: HSE oscillator
+Page  320: The oscillator is enabled by setting the HSEBYP bit to ‘0’ and HSEON bit to ‘1’.
+Page  320: capacitors have to be placed as close as possible to the oscillator pins in order to minimize
+Page  320: HSE oscillator is stable or not. At startup, the hse_ck clock is not released until this bit is set
+Page  320: LSE oscillator
+Page  321: The LSE oscillator is switched ON and OFF using the LSEON bit. The LSE remains enabled
+Page  321: HSI oscillator
+Page  321: The HSI is a high-speed internal RC oscillator which can be used directly as system clock,
+Page  321: oscillator or ceramic resonator.
+Page  322: RC oscillator frequencies can vary from one chip to another due to manufacturing process
+Page  322: oscillator frequency. The user application can trim the HSI frequency using the
+Page  322: CSI oscillator
+Page  322: The CSI is a low-power RC oscillator which can be used directly as system clock, peripheral
+Page  322: oscillator or ceramic resonator.
+Page  323: RC oscillator frequencies can vary from one chip to another due to manufacturing process
+Page  323: oscillator frequency. The user application can trim the CSI frequency using the
+Page  323: HSI48 oscillator
+Page  323: The HSI48 is an RC oscillator that delivers a 48 MHz clock that can be used directly as
+Page  323: The HSI48 oscillator mainly aims at providing a high precision clock to the USB peripheral
+Page  323: SOF signal, the LSE, or an external signal, to automatically adjust the oscillator frequency
+Page  323: The HSI48 oscillator is disabled as soon as the system enters Stop or Standby mode. When
+Page  323: the CRS is not used, this oscillator is free running and thus subject to manufacturing
+Page  323: The HSI48RDY flag indicates whether the HSI48 oscillator is stable or not. At startup, the
+Page  324: LSI oscillator
+Page  324: whether the LSI oscillator is stable or not. If an independent watchdog is started either by
+Page  325: A clock security system on the LSE oscillator can be enabled by software by programming
+Page  327: sections HSE oscillator, HSI oscillator and CSI oscillator).
+Page  332: select which oscillator (HSI and/or CSI) will be used to restart. The STOPWUCK bit selects
+Page  332: the oscillator used as system clock. The STOPKERWUCK bit selects the oscillator used as
+Page  332: peripheral needs a kernel clock generated by an oscillator different from the one used for
+Page  332: oscillator when the                exits Stop mode
+Page  333: 1. tsu(HSI) and tsu(CSI) are the startup times of the HSI and CSI oscillators (see refer to the product datasheet
+Page  345: The LSE clock is in the Backup domain, whereas the other oscillators are not. As a
+Page  345: is forced ON and cannot be disabled. After the LSI oscillator setup delay, the clock is
+Page  345: The HSI and CSI oscillators have dedicated user-accessible calibration bits for this
+Page  346: have a crystal. The ultralow power LSI oscillator has a large manufacturing process
+Page  359: oscillators are ready.
+Page  362: disabled by hardware if an oscillator failure is detected.
+Page  362: 1: Clock Security System on HSE ON (Clock detector ON if the HSE oscillator is
+Page  362: Set and cleared by software to bypass the oscillator with an external clock. The external
+Page  362: The HSEBYP bit can be written only if the HSE oscillator is disabled.
+Page  362: 0: HSE oscillator not bypassed (default after reset)
+Page  362: 1: HSE oscillator bypassed with an external clock
+Page  362: Set by hardware to indicate that the HSE oscillator is stable.
+Page  362: Set by hardware to indicate that the HSI48 oscillator is stable.
+Page  363: Set by hardware to indicate that the CSI oscillator is stable. This bit is activated only if the RC is
+Page  364: Set by hardware to indicate that the HSI oscillator is stable.
+Page  367: oscillators and the PLLs.
+Page  367: 001: PLL2 oscillator clock selected (pll2_p_ck)
+Page  367: before enabling the external oscillators and the PLLs.
+Page  367: oscillators and the PLLs.
+Page  367: 001: LSE oscillator clock selected (lse_ck)
+Page  368: before enabling the external oscillators and the PLLs.
+Page  397: external 32 kHz oscillator.
+Page  397: Set and reset by software to enable/disable interrupt caused by the HSI48 oscillator stabilization.
+Page  397: Set and reset by software to enable/disable interrupt caused by the CSI oscillator stabilization.
+Page  397: Set and reset by software to enable/disable interrupt caused by the HSE oscillator stabilization.
+Page  398: Set and reset by software to enable/disable interrupt caused by the HSI oscillator stabilization.
+Page  398: Set and reset by software to enable/disable interrupt caused by the LSE oscillator stabilization.
+Page  398: Set and reset by software to enable/disable interrupt caused by the LSI oscillator stabilization.
+Page  399: Set by hardware when a failure is detected on the external 32 kHz oscillator and LSECSSIE is set.
+Page  399: 0: No failure detected on the external 32 kHz oscillator (default after reset)
+Page  399: 1: A failure is detected on the external 32 kHz oscillator
+Page  399: 0: No clock ready interrupt caused by the HSI48 oscillator (default after reset)
+Page  399: 1: Clock ready interrupt caused by the HSI48 oscillator
+Page  404: external 32 kHz oscillator.
+Page  404: 0: No failure detected on 32 kHz oscillator (default after backup domain reset)
+Page  404: 1: Failure detected on 32 kHz oscillator
+Page  404: Set by software to enable the Clock Security System on 32 kHz oscillator.
+Page  404: 0: Clock Security System on 32 kHz oscillator OFF (default after backup domain reset)
+Page  404: 1: Clock Security System on 32 kHz oscillator ON
+Page  404: Bits 4:3 LSEDRV[1:0]: LSE oscillator driving capability
+Page  404: Set by software to select the driving capability of the LSE oscillator.
+Page  404: Bit 2 LSEBYP: LSE oscillator bypass
+Page  404: Set and reset by software to bypass oscillator in debug mode. This bit must not be written when the
+Page  404: 0: LSE oscillator not bypassed (default after backup domain reset)
+Page  404: 1: LSE oscillator bypassed
+Page  404: Bit 1 LSERDY: LSE oscillator ready
+Page  404: 0: LSE oscillator not ready (default after backup domain reset)
+Page  404: 1: LSE oscillator ready
+Page  404: Bit 0 LSEON: LSE oscillator enabled
+Page  404: 0: LSE oscillator OFF (default after backup domain reset)
+Page  404: 1: LSE oscillator ON
+Page  405: Bit 1 LSIRDY: LSI oscillator ready
+Page  405: Set and reset by hardware to indicate when the Low Speed Internal RC oscillator is stable.
+Page  405: Bit 0 LSION: LSI oscillator enable
+Page  482: fine-granularity trimmable RC oscillator HSI48. The CRS provides powerful means for
+Page  482: oscillator output frequency evaluation, based on comparison with a selectable
+Page  482: synchronization signal. It is capable of doing automatic adjustment of oscillator trimming
+Page  482: The synchronization signal can also be derived from the LSE oscillator output or it can be
+Page  482: –    LSE oscillator output
+Page  482: •   Automatic oscillator trimming capability with no need of CPU action
+Page  483: hsi48_ck     Digital input    HSI48 oscillator clock
+Page  484: crs_trim[0:5]   Digital output HSI48 oscillator smooth trimming value
+Page  487: The selection of the FELIM value is closely coupled with the HSI48 oscillator characteristics
+Page  487: size, expressed as a number of HSI48 oscillator clock ticks. The following formula can be
+Page  487: The CRS stops operating until the Stop or Standby mode is exited and the HSI48 oscillator
+Page  488: Bits 13:8 TRIM[5:0]: HSI48 oscillator smooth trimming
+Page  488: These bits provide a user-programmable trimming value to the HSI48 oscillator. They can be
+Page  488: of the HSI48 oscillator.
+Page  488: This bit enables the oscillator clock for the frequency error counter.
+Page  489: provided to the CRS to calibrate the HSI48 oscillator on the run. To guarantee the required
+Page  512: WKUPx and oscillators, configure the required function in the related RTC, PWR
+Page  517: 10.3.14   Using the HSE or LSE oscillator pins as GPIOs
+Page  517: When the HSE or LSE oscillator is switched OFF (default state after reset), the related
+Page  517: oscillator pins can be used as normal GPIOs.
+Page  517: When the HSE or LSE oscillator is switched ON (by setting the HSEON or LSEON bit in the
+Page  517: RCC_CSR register) the oscillator takes control of its associated pins and the GPIO
+Page  517: When the oscillator is configured in a user external clock mode, only the OSC_IN or
+Page 1232: •    Two analog noise sources, each based on three XORed free-running ring oscillator
+Page 1232: outputs. It is possible to disable those analog oscillators to save power, as described in
+Page 1553: feature is enabled even if the MCU oscillator is off.
+Page 1772: feature functions even if the MCU oscillator is off.
+Page 1843: –    External clock source over LPTIM input (working with no LP oscillator running,
+Page 1849: other embedded oscillator including LSE, LSI and HSI.
+Page 1849: function or Pulse counter function when all the embedded oscillators are turned off
+Page 1855: no embedded oscillator is enabled.
+Page 1866: 0: LPTIM is clocked by internal clock source (APB clock or any of the embedded oscillators)
+Page 1880: •     Clocked from an independent RC oscillator (can operate in Standby and Stop modes)
+Page 1889: A digital calibration feature is available to compensate for any deviation in crystal oscillator
+Page 1895: clock, the LSI oscillator clock, and the HSE clock. For more information on the RTC clock
+Page 1981: HSI or CSI oscillator must be selected as the clock source for I2CCLK in order to allow
+Page 1981: Caution:   This feature is available only when the I2C clock source is the HSI or CSI oscillator.
+Page 1984: oscillator (HSI or CSI): the address recognition is functional. The I2C address
+Page 2023: transmitter’s local oscillator)
+Page 2023: •   DREC: deviation of the receiver local oscillator
+Page 2096: transmitter’s local oscillator)
+Page 2096: •     DREC: deviation of the receiver local oscillator
+Page 2428: for both FDCAN1 and FDCAN2 from the HSI internal RC oscillator and the PLL, by
+Page 2458: For basic calibration the minimum number of oscillator periods between two consecutive
+Page 2458: together with the measured number of oscillator clock periods FDCAN_CCU_CSTAT.OCPC
+Page 2458: to define the number of oscillator clocks per bit time.
+Page 2458: FDCAN_CCU_CSTAT. When in state Precision_Calibrated the oscillator clock period
+Page 2458: counter FDCAN_CCU_CSTAT.OCPC signals the number of oscillator clock periods in the
+Page 2459: trimming of an on-chip oscillator. For calculation of the trimming values the Host has to read
+Page 2493: The value by which the oscillator frequency is divided to generate the bit time quanta. The
+Page 2497: Value by which the oscillator frequency is divided for generating the bit time quanta. The
+Page 2557: Bits 15:8 OCPM[7:0]: Oscillator clock periods minimum
+Page 2558: Bits 17:0 OCPC[17:0]: Oscillator clock period counter
+Page 2558: Captured number of oscillator clock periods in calibration field (32 or 64 bits). Only valid
+Page 3132: 1: Automatic clock stop/power-down disabled - all active clocks and oscillators continue to
+Page 3133: 1: Automatic clock stop/power-down disabled - all active clocks and oscillators continue to
+Page 3133: 1: Automatic clock stop/power-down disabled - all active clocks and oscillators continue to
+Page 3133: 1: Automatic clock stop disabled - all active clocks and oscillators continue to run during Stop
+Page 3221: Replaced HSI16 by HSI or CSI or internal oscillator in Section

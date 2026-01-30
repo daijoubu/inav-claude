@@ -1,0 +1,969 @@
+Keyword: RTC
+Occurrences: 965
+================================================================================
+
+Page   47: 45       Real-time clock (RTC) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1889
+Page   47: 45.2    RTC main features . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1890
+Page   47: 45.3    RTC functional description . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1890
+Page   47: 45.3.1      RTC block diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1890
+Page   47: 45.3.2      RTC pins and internal signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1892
+Page   47: 45.3.3      GPIOs controlled by the RTC . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1893
+Page   47: 45.3.8      RTC initialization and configuration . . . . . . . . . . . . . . . . . . . . . . . . . . 1897
+Page   47: 45.3.10 Resetting the RTC . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1900
+Page   47: 45.3.11 RTC synchronization . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1900
+Page   47: 45.3.12 RTC reference clock detection . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1901
+Page   47: 45.3.13 RTC smooth digital calibration . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1902
+Page   47: 45.4    RTC low-power modes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1907
+Page   47: 45.5    RTC interrupts . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1907
+Page   47: 45.6    RTC registers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1908
+Page   47: 45.6.1      RTC time register (RTC_TR) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1908
+Page   47: 45.6.2      RTC date register (RTC_DR) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1909
+Page   47: 45.6.3      RTC control register (RTC_CR) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1911
+Page   47: 45.6.4      RTC initialization and status register (RTC_ISR) . . . . . . . . . . . . . . . . 1914
+Page   47: 45.6.5      RTC prescaler register (RTC_PRER) . . . . . . . . . . . . . . . . . . . . . . . . 1917
+Page   47: 45.6.6      RTC wakeup timer register (RTC_WUTR) . . . . . . . . . . . . . . . . . . . . . 1918
+Page   47: 45.6.7      RTC alarm A register (RTC_ALRMAR) . . . . . . . . . . . . . . . . . . . . . . . 1919
+Page   48: 45.6.8      RTC alarm B register (RTC_ALRMBR) . . . . . . . . . . . . . . . . . . . . . . . 1920
+Page   48: 45.6.9      RTC write protection register (RTC_WPR) . . . . . . . . . . . . . . . . . . . . 1921
+Page   48: 45.6.10 RTC sub second register (RTC_SSR) . . . . . . . . . . . . . . . . . . . . . . . . 1921
+Page   48: 45.6.11 RTC shift control register (RTC_SHIFTR) . . . . . . . . . . . . . . . . . . . . . 1922
+Page   48: 45.6.12 RTC timestamp time register (RTC_TSTR) . . . . . . . . . . . . . . . . . . . . 1923
+Page   48: 45.6.13 RTC timestamp date register (RTC_TSDR) . . . . . . . . . . . . . . . . . . . 1924
+Page   48: 45.6.14 RTC time-stamp sub second register (RTC_TSSSR) . . . . . . . . . . . . 1925
+Page   48: 45.6.15 RTC calibration register (RTC_CALR) . . . . . . . . . . . . . . . . . . . . . . . . 1926
+Page   48: 45.6.16 RTC tamper configuration register (RTC_TAMPCR) . . . . . . . . . . . . . 1927
+Page   48: 45.6.17 RTC alarm A sub second register (RTC_ALRMASSR) . . . . . . . . . . . 1930
+Page   48: 45.6.18 RTC alarm B sub second register (RTC_ALRMBSSR) . . . . . . . . . . . 1931
+Page   48: 45.6.19 RTC option register (RTC_OR) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1932
+Page   48: 45.6.20 RTC backup registers (RTC_BKPxR) . . . . . . . . . . . . . . . . . . . . . . . . 1932
+Page   48: 45.6.21 RTC register map . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1933
+Page   50: 47.5.17 USART Smartcard mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2037
+Page   75: Table 363.   RTC pins and internal signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1892
+Page   75: Table 364.   RTC pin PC13 configuration . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1893
+Page   75: Table 365.   RTC_OUT mapping . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1894
+Page   75: Table 366.   RTC functions over modes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1894
+Page   75: Table 367.   Effect of low-power modes on RTC . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1907
+Page   75: Table 369.   RTC register map and reset values . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1933
+Page   90: Figure 533. RTC block overview . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1890
+Page   90: Figure 534. Detailed RTC block diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1891
+Page  127: 0x58004000 - 0x580043FF   RTC & BKP registers             Section 45.6: RTC registers
+Page  168: •    RTC backup registers
+Page  171: •    The other secured regions are also erased (Backup SRAM and RTC backup registers)
+Page  244: LSI, LSE, RTC,
+Page  249: To retain the content of the backup domain (RTC, backup registers and backup RAM) when
+Page  249: •   PC13 can be used either as GPIO or as RTC_AF1 or RTC_TAMP1 pin assuming they
+Page  249: have been configured by the RTC.
+Page  249: •   PI8/RTC_TAMP2 and PC1/RTC_TAMP3 when they are configured by the RTC as
+Page  250: •   PC13 can be used as RTC_AF1 or RTC_TAMP1 pin assuming they have been
+Page  250: configured by the RTC.
+Page  250: •   PI8/RTC_TAMP2 and PC1/RTC_TAMP3 when they are configured by the RTC as
+Page  250: After reset, the backup domain (RTC registers and RTC backup registers) is protected
+Page  250: For more detail on RTC and backup RAM access, refer to Section 7: Reset and Clock
+Page  251: RTC                LSE
+Page  257: VBATH and VBATL wakeup interrupts are available on the RTC tamper signals (see
+Page  257: Section 45: Real-time clock (RTC))
+Page  258: TEMPH and TEMPL wakeup interrupts are available on the RTC tamper signals (see
+Page  258: Section 45: Real-time clock (RTC)).
+Page  262: + SLEEPDEEP      falling edge, RTC alarm
+Page  262: return from ISR RTC Wakeup event, RTC
+Page  262: or WFE     tamper events, RTC time
+Page  274: IWDG reset, a rising edge on one of the enabled WKUPx pins or a RTC event. Program
+Page  278: •   Real-time clock (RTC)
+Page  278: This is configured via the RTCEN bit in the RCC Backup Domain Control Register
+Page  282: register contents are lost except for backup domain registers (RTC registers, RTC backup
+Page  282: •   Real-time clock (RTC)
+Page  282: This is configured via the RTCEN bit in the backup domain control register
+Page  282: a WKUP pin event, a RTC alarm, a tamper event, or a time stamp event is detected. All
+Page  283: – WKUP pins rising or falling edge, RTC alarm (Alarm A and Alarm B),
+Page  283: Mode exit                                RTC wakeup, tamper event, time stamp event, external reset in NRST
+Page  283: •            RTC_AF1 pin if configured for tamper, time stamp, RTC Alarm out, or RTC clock
+Page  285: In reset state, the RCC_BDCR register, the RTC registers (including the backup registers),
+Page  285: 0: Access to RTC, RTC Backup registers and backup SRAM disabled
+Page  285: 1: Access to RTC, RTC Backup registers and backup SRAM enabled
+Page  295: RTC                                                                                     pwr_d[1:3]_wkup
+Page  302: MA of BDMA_CMAR7 = &DatClrTC           Address of a variable located into SRAM4. This variable
+Page  307: OSC32_IN                                                                                To RTC/                                                                           PERx
+Page  311: RTC domain
+Page  311: – Debug features, Flash memory, RTC and
+Page  312: RTC domain
+Page  314: Register (RCC_BDCR). All RTC registers and the RCC_BDCR register are reset to
+Page  314: •   VSW voltage is outside the operating range. All RTC registers and the RCC_BDCR
+Page  318: VSW (Backup)                                                 RTCSRC
+Page  318: RTCEN
+Page  318: OSC32_IN                                   lse_ck                     lse_ck                              rcc_rtc_ck                                                                                                                      To
+Page  318: OSC32_OUT                                                               lsi_ck          D                                                                                                                                               RTC/AWU
+Page  318: RTCPRE                         MCO1SEL
+Page  321: advantage to provide a low-power highly accurate clock source to the real-time clock (RTC)
+Page  325: ready (LSERDY set by hardware), and after the RTC clock has been selected through the
+Page  325: RTCSEL bit.
+Page  325: If an LSE failure is detected, the LSE clock is no more delivered to the RTC but the value of
+Page  325: RTCSEL, LSECSSON and LSEON bits are not changed by the hardware.
+Page  325: the defective LSE (clear LSEON bit), and can change the RTC clock source (no clock or LSI
+Page  325: or HSE) through RTCSEL bits, or take any required action to secure the application.
+Page  336: RTC/AWU            RTCSEL          1                                                                                                                                (5)                                           1        2                                           0
+Page  336: 5. Clock HSE divided by RTCPRE.
+Page  344: RTC/AWU clock
+Page  344: The rtc_ck clock source can be:
+Page  344: The source clock is selected by programming the RTCSEL[1:0] bits in the RCC Backup
+Page  344: Domain Control Register (RCC_BDCR) and the RTCPRE[5:0] bits in the RCC Clock
+Page  344: If the LSE is selected as RTC clock, the RTC will work normally even if the backup or the
+Page  345: •   If LSE is selected as RTC clock, the RTC continues working even if the VDD supply is
+Page  345: •   If LSI is selected as the RTC clock, the AWU state is not guaranteed if the VDD supply
+Page  345: •   If the HSE clock is used as RTC clock, the RTC state is not guaranteed if the VDD
+Page  345: The rtc_ck clock is enabled through RTCEN bit located in the RCC Backup Domain Control
+Page  345: The RTC bus interface clock (APB clock) is enabled through RTCAPBEN and
+Page  345: RTCAPBLPEN bits located in RCC_APB4ENR/LPENR registers.
+Page  345: Note:      To read the RTC calendar register when the APB clock frequency is less than seven times
+Page  345: the RTC clock frequency (FAPB < 7 x FRTCLCK), the software must read the calendar time
+Page  345: and date registers twice. The data are correct if the second read access to RTC_TR gives
+Page  346: accurate RTC time base timeouts (when LSI is used as the RTC clock source) and/or
+Page  367: RTCPRE[5:0]                                                  SWS[2:0]              SW[2:0]
+Page  368: Bits 13:8 RTCPRE[5:0]: HSE division factor for RTC clock
+Page  368: Set and cleared by software to divide the HSE to generate a clock for RTC.
+Page  368: Caution: The software has to set these bits correctly to ensure that the clock supplied to the RTC is
+Page  368: lower than 1 MHz. These bits must be configured if needed before selecting the RTC clock source.
+Page  403: RTCEN
+Page  403: Res.    Res.   Res.   Res.   Res.    RTCSEL[1:0]        Res.                          LSEDRV[1:0]
+Page  403: Bit 15 RTCEN: RTC clock enable
+Page  403: 0: rtc_ck clock is disabled (default after backup domain reset)
+Page  403: 1: rtc_ck clock enabled
+Page  403: Bits 9:8 RTCSEL[1:0]:RTC clock source selection
+Page  403: Set by software to select the clock source for the RTC. These bits can be written only one time
+Page  403: If HSE is selected as RTC clock: this clock is lost when the system is in Stop mode or in case of a
+Page  403: 01: LSE clock used as RTC clock
+Page  403: 10: LSI clock used as RTC clock
+Page  403: 11: HSE clock divided by RTCPRE value is used as RTC clock
+Page  404: hardware), and after RTCSEL is selected.
+Page  405: Security System on LSE or by the Low Speed Watchdog or by the RTC.
+Page  423: RTCAMEN
+Page  424: Bit 16   RTCAMEN: RTC Autonomous mode enable
+Page  424: 0: RTC peripheral clocks are disabled when the CPU is in CStop (default after reset)
+Page  424: 1: RTC peripheral clocks enabled when D3 domain is in DRun.
+Page  447: RTCAPBEN
+Page  447: Bit 16 RTCAPBEN: RTC APB Clock Enable
+Page  447: 0: The register clock interface of the RTC (APB) is disabled
+Page  447: 1: The register clock interface of the RTC (APB) is enabled (default after reset)
+Page  469: RTCAPBLPEN
+Page  469: Bit 16 RTCAPBLPEN: RTC APB Clock Enable During CSleep Mode
+Page  469: 0: The register clock interface of the RTC (APB) is disabled during CSleep mode
+Page  469: 1: The register clock interface of the RTC (APB) is enabled during CSleep mode (default after reset)
+Page  472: RTCPRE[5:0]
+Page  474: ETH1MACRST                      Res.                         Res.                         RTCEN                                               Res.                                   Res.                                 Res.                                                      15
+Page  474: RTCSEL[1:0]                                                                                                                                                             I2C4SEL[1:0]
+Page  476: Res.                                Res.                      Res.                       ETH1TXEN                    SDMMC1EN                       RMVF                                    RTCAMEN        16
+Page  477: Res.                         ETH1TXLPEN                    SDMMC1LPEN                       RTCAPBEN                    TIM15EN                    Res.                             SPDIFRXEN     16
+Page  478: SDMMC1EN                              RTCAPBLPEN                   TIM15LPEN                       Res.                               SPDIFRXLPEN                       Res.                                   Res.       16
+Page  479: RTCAPBEN                   TIM15EN                    Res.                             SPDIFRXEN                      Res.                                Res.                     Res.                       ETH1TXEN       16
+Page  481: RTCAPBLPEN                    TIM15LPEN     16
+Page  512: registers. For the additional functions like RTC_OUT, RTC_TS, RTC_TAMPx,
+Page  512: WKUPx and oscillators, configure the required function in the related RTC, PWR
+Page  512: standard GPIO registers. For details about I/O control by the RTC, refer to
+Page  512: Section 45.3: RTC functional description on page 1890.
+Page  517: is not bypassed by the RTC configuration, these pins are set in an analog input mode.
+Page  553: RTC      -       -     -      -      -       A        -     -     -     -      -      -       A       -        -        -      -      -       -         -      A         -        -        -
+Page  558: D3                RTC          WKUP_IT        TI1_3                                A       -
+Page  560: rtc_alarm_a_     lptim1_ext_
+Page  560: RTC                                                                    A       -
+Page  560: rtc_alarm_b_     lptim1_ext_
+Page  560: RTC                                                                    A       -
+Page  560: RTC        rtc_tamp1_evt                                               A       -
+Page  560: RTC        rtc_tamp2_evt                                               A       -
+Page  560: D3       APB4     RTC        rtc_tamp3_evt                    LPTIM1      APB1   D2      A       -
+Page  561: rtc_alarm_a_ lptim2_ext_trg
+Page  561: RTC                                                                     A              -
+Page  561: rtc_alarm_b_ lptim2_ext_trg
+Page  561: RTC                                                                     A              -
+Page  561: RTC        rtc_tamp1_evt                                                A              -
+Page  561: RTC        rtc_tamp2_evt                                                A              -
+Page  561: RTC        rtc_tamp3_evt                                                A              -
+Page  571: D3      APB4     RTC           ALARMS         WKUP17                    D    CPU       -
+Page  571: D3      APB4     RTC                                                                   -
+Page  571: D3      APB4     RTC            WKUP          WKUP19                    C    ANY       -
+Page  584: exti_rtc_wkup        dmamux2_gen19
+Page  585: it_exti_wkup_rtc         dmamux2_trg13
+Page  675: 3                dmamux2_evt3               19             RTC_wkup
+Page  675: 13                RTC_wkup                  29             Reserved
+Page  730: exti_tamp_rtc_wkup                               RTC_TAMP_STAMP_ RTC tamper, timestamp
+Page  730: RTC Wakeup interrupt through
+Page  730: exti_wkup_rtc_wkup         10            3          RTC_WKUP                                           0x0000 004C
+Page  732: RTC alarms (A and B) through
+Page  732: exti_rtc_al      48           41          RTC_ALARM                                       0x0000 00E4
+Page  747: 17        RTC alarms                         Configurable        CPU only               Yes
+Page  747: RTC tamper, RTC timestamp,
+Page  747: 19        RTC wakeup timer                   Configurable           Any                 Yes
+Page  749: 2. RTC Tamper, RTC timestamp and RCC LSECSS signals are OR-ed together on the same EXTI event input.
+Page 1414: Delayed protection triggered                  DLYPRT         DLYPRTIE        DLYPRTC
+Page 1443: Bit 14 DLYPRTC: Delayed Protection Flag Clear
+Page 1507: Res.                                                                                           DLYPRTIE                       DLYPRTC                   DLYPRT                                            14
+Page 1846: lptim_ext_trig1                                    RTC_ALARMA
+Page 1846: lptim_ext_trig2                                    RTC_ALARMB
+Page 1846: lptim_ext_trig3                                  RTC_TAMP1_OUT
+Page 1846: lptim_ext_trig4                                  RTC_TAMP2_OUT
+Page 1846: lptim_ext_trig5                                  RTC_TAMP3_OUT
+Page 1847: lptim_ext_trig1                               RTC_ALARMA
+Page 1847: lptim_ext_trig2                               RTC_ALARMB
+Page 1847: lptim_ext_trig3                             RTC_TAMP1_OUT
+Page 1847: lptim_ext_trig4                             RTC_TAMP2_OUT
+Page 1847: lptim_ext_trig5                             RTC_TAMP3_OUT
+Page 1889: RM0433                                                                           Real-time clock (RTC)
+Page 1889: 45       Real-time clock (RTC)
+Page 1889: The RTC provides an automatic wakeup to manage all low-power modes.
+Page 1889: The real-time clock (RTC) is an independent BCD timer/counter. The RTC provides a time-
+Page 1889: The RTC includes also a periodic programmable wakeup flag with interrupt capability.
+Page 1889: After Backup domain reset, all RTC registers are protected against possible parasitic write
+Page 1889: As long as the supply voltage remains in the operating range, the RTC never stops,
+Page 1890: Real-time clock (RTC)                                                                                                  RM0433
+Page 1890: 45.2        RTC main features
+Page 1890: The RTC unit main features are the following (see Figure 534: Detailed RTC block diagram):
+Page 1890: 45.3        RTC functional description
+Page 1890: 45.3.1      RTC block diagram
+Page 1890: Figure 533. RTC block overview
+Page 1890: RTC_TAMPx
+Page 1890: RTC_TS
+Page 1890: RTC_REFIN
+Page 1890: APB                                                 RTC_OUT
+Page 1890: RTC kernel
+Page 1890: rtc_wut
+Page 1890: rtc_pclk                                                rtc_alra
+Page 1890: rtc_alrb
+Page 1890: rtc_tampx       3x
+Page 1890: rtc_ker_ck (RTCCLK)                                     rtc_ts
+Page 1891: RM0433                                                                                            Real-time clock (RTC)
+Page 1891: Figure 534. Detailed RTC block diagram
+Page 1891: RTC_TAMP3              Backup registers
+Page 1891: RTC_TAMP2              and RTC tamper                                                                   TAMPxF
+Page 1891: RTC_TAMP1               control register
+Page 1891: RTC_TS                                                                     Time stamp
+Page 1891: RTC_REFIN
+Page 1891: RTCCLK
+Page 1891: RTC_CALR          RTC_PRER          (default 256 Hz    RTC_PRER           (default 1 Hz)
+Page 1891: RTC_SSR                    RTC_TR,
+Page 1891: RTC_DR
+Page 1891: RTC_CALIB
+Page 1891: Output     RTC_OUT
+Page 1891: RTC_ALARM         control
+Page 1891: RTC_WUTR
+Page 1891: RTC_ALRMAR                                     =                               ALRAF
+Page 1891: RTC_ALRMASSR
+Page 1891: RTC_ALRMBR
+Page 1891: RTC_ALRMBSSR
+Page 1892: Real-time clock (RTC)                                                                                     RM0433
+Page 1892: RTC_TAMP1
+Page 1892: RTC_TAMP2                                         RTC tamper   Tamper-out
+Page 1892: RTC_TAMP3                                          registers
+Page 1892: The RTC includes:
+Page 1892: or under voltage of the RTC power supply domain, or by an over or under
+Page 1892: –    The backup registers (RTC_BKPxR) are implemented in the RTC domain that
+Page 1892: •     Output functions: RTC_OUT which selects one of the following two outputs:
+Page 1892: –    RTC_CALIB: 512 Hz or 1Hz clock output (with an LSE frequency of 32.768 kHz).
+Page 1892: This output is enabled by setting the COE bit in the RTC_CR register.
+Page 1892: –    RTC_ALARM: This output is enabled by configuring the OSEL[1:0] bits in the
+Page 1892: RTC_CR register which select the Alarm A, Alarm B or Wakeup outputs.
+Page 1892: –    RTC_TS: timestamp event
+Page 1892: –    RTC_TAMP1: tamper1 event detection
+Page 1892: –    RTC_TAMP2: tamper2 event detection
+Page 1892: –    RTC_TAMP3: tamper3 event detection
+Page 1892: –    RTC_REFIN: 50 or 60 Hz reference clock input
+Page 1892: 45.3.2      RTC pins and internal signals
+Page 1892: Table 363. RTC pins and internal signals
+Page 1892: RTC_TS                             Input     Timestamp input
+Page 1892: RTC_TAMPx (x = 1,2,3)              Input     Tamper input
+Page 1893: RM0433                                                                                            Real-time clock (RTC)
+Page 1893: Table 363. RTC pins and internal signals (continued)
+Page 1893: RTC_REFIN                           Input        Reference clock input
+Page 1893: RTC_OUT                            Output        RTC output
+Page 1893: rtc_ker_ck (RTCCLK)             Internal input   RTC clock source (LSE clock, LSI clock and HSE clock)
+Page 1893: rtc_pclk                        Internal input   RTC APB interface clock
+Page 1893: rtc_wut                      Internal output RTC wakeup event output for on chip peripherals
+Page 1893: rtc_alra                     Internal output RTC Alarm A event output for on chip peripherals
+Page 1893: rtc_alrb                     Internal output RTC Alarm B event output for on chip peripherals
+Page 1893: rtc_tampx                    Internal output RTC Tamper[1..3] event output for on chip peripherals
+Page 1893: rtc_ts                       Internal output RTC Timestamp event output for on chip peripherals
+Page 1893: 45.3.3           GPIOs controlled by the RTC
+Page 1893: RTC_OUT, RTC_TS and RTC_TAMP1 are mapped on the same pin (PC13). PC13 pin
+Page 1893: configuration is controlled by the RTC, whatever the PC13 GPIO configuration, except for
+Page 1893: the RTC_ALARM output open-drain mode. The RTC functions mapped on PC13 are
+Page 1893: Table 364. RTC pin PC13 configuration(1)
+Page 1893: PC13 Pin         bits                                      RTC_OUT       RTC_ALARM
+Page 1893: (RTC_CALIB                                           (RTC_TAMP1     (RTC_TS
+Page 1893: configuration (RTC_ALARM                                      _RMP           _TYPE
+Page 1893: RTC_ALARM                                                         0
+Page 1893: RTC_ALARM                                                         0
+Page 1893: RTC_CALIB
+Page 1893: RTC_TAMP1
+Page 1893: RTC_TS and
+Page 1893: RTC_TAMP1                   00               1                              Don’t care             1             1
+Page 1894: Real-time clock (RTC)                                                                                             RM0433
+Page 1894: Table 364. RTC pin PC13 configuration(1) (continued)
+Page 1894: PC13 Pin         bits                                RTC_OUT          RTC_ALARM
+Page 1894: (RTC_CALIB                                            (RTC_TAMP1        (RTC_TS
+Page 1894: configuration (RTC_ALARM                                 _RMP             _TYPE
+Page 1894: RTC_TS input
+Page 1894: In addition, it is possible to remap RTC_OUT on PB2 pin thanks to RTC_OUT_RMP bit. In
+Page 1894: Table 365. RTC_OUT mapping
+Page 1894: RTC_OUT_RMP            RTC_OUT on           RTC_OUT on
+Page 1894: (RTC_ALARM           (RTC_CALIB
+Page 1894: 00                   1                      0              RTC_CALIB                 -
+Page 1894: 01 or 10 or 11        Don’t care                                 RTC_ALARM                  -
+Page 1894: 00                   1                                           -             RTC_CALIB
+Page 1894: 01 or 10 or 11              0                                           -             RTC_ALARM
+Page 1894: 01 or 10 or 11              1                                    RTC_ALARM            RTC_CALIB
+Page 1894: The table below summarizes the RTC pins and functions capability in all modes.
+Page 1894: Table 366. RTC functions over modes
+Page 1894: Pin        RTC functions       power modes except
+Page 1894: RTC_TAMP1
+Page 1894: PC13           RTC_TS                   YES                           YES                 YES
+Page 1894: RTC_OUT
+Page 1894: PI8         RTC_TAMP2                  YES                           YES                 YES
+Page 1894: PC1          RTC_TAMP3                  YES                           YES                 YES
+Page 1895: RM0433                                                                                                                                          Real-time clock (RTC)
+Page 1895: Table 366. RTC functions over modes (continued)
+Page 1895: Pin     RTC functions            power modes except
+Page 1895: PB2       RTC_OUT                                    YES                                                      NO                              NO
+Page 1895: PB15     RTC_REFIN                                   YES                                                      NO                              NO
+Page 1895: The RTC clock source (RTCCLK) is selected through the clock controller among the LSE
+Page 1895: clock, the LSI oscillator clock, and the HSE clock. For more information on the RTC clock
+Page 1895: prescalers (see Figure 534: Detailed RTC block diagram):
+Page 1895: RTC_PRER register.
+Page 1895: RTC_PRER register.
+Page 1895: f RTCCLK
+Page 1895: The ck_apre clock is used to clock the binary RTC_SSR subseconds downcounter. When it
+Page 1895: reaches 0, RTC_SSR is reloaded with the content of PREDIV_S.
+Page 1895: f RTCCLK
+Page 1895: timer can also run with the RTCCLK divided by the programmable 4-bit asynchronous
+Page 1896: Real-time clock (RTC)                                                                           RM0433
+Page 1896: The RTC calendar time and date registers are accessed through shadow registers which
+Page 1896: •   RTC_SSR for the subseconds
+Page 1896: •   RTC_TR for the time
+Page 1896: •   RTC_DR for the date
+Page 1896: Every RTCCLK period, the current calendar value is copied into the shadow registers, and
+Page 1896: the RSF bit of RTC_ISR register is set (see Section 45.6.4: RTC initialization and status
+Page 1896: register (RTC_ISR)). The copy is not performed in Stop and Standby mode. When exiting
+Page 1896: these modes, the shadow registers are updated after up to 1 RTCCLK period.
+Page 1896: BYPSHAD control bit in the RTC_CR register. By default, this bit is cleared, and the user
+Page 1896: When reading the RTC_SSR, RTC_TR or RTC_DR registers in BYPSHAD=0 mode, the
+Page 1896: frequency of the APB clock (fAPB) must be at least 7 times the frequency of the RTC clock
+Page 1896: (fRTCCLK).
+Page 1896: The RTC unit provides programmable alarm: Alarm A and Alarm B. The description below is
+Page 1896: The programmable alarm function is enabled through the ALRAE bit in the RTC_CR
+Page 1896: or day match the values programmed in the alarm registers RTC_ALRMASSR and
+Page 1896: RTC_ALRMAR. Each calendar field can be independently selected through the MSKx bits
+Page 1896: of the RTC_ALRMAR register, and through the MASKSSx bits of the RTC_ALRMASSR
+Page 1896: register. The alarm interrupt is enabled through the ALRAIE bit in the RTC_CR register.
+Page 1896: Caution:    If the seconds field is selected (MSK1 bit reset in RTC_ALRMAR), the synchronous
+Page 1896: prescaler division factor set in the RTC_PRER register must be at least 3 to ensure correct
+Page 1896: Alarm A and Alarm B (if enabled by bits OSEL[1:0] in RTC_CR register) can be routed to the
+Page 1896: RTC_ALARM output. RTC_ALARM output polarity can be configured through bit POL the
+Page 1896: RTC_CR register.
+Page 1896: The wakeup function is enabled through the WUTE bit in the RTC_CR register.
+Page 1897: RM0433                                                                        Real-time clock (RTC)
+Page 1897: •    RTC clock (RTCCLK) divided by 2, 4, 8, or 16.
+Page 1897: When RTCCLK is LSE(32.768kHz), this allows to configure the wakeup interrupt period
+Page 1897: the RTC_ISR register, and the wakeup counter is automatically reloaded with its
+Page 1897: reload value (RTC_WUTR register value).
+Page 1897: When the periodic wakeup interrupt is enabled by setting the WUTIE bit in the RTC_CR
+Page 1897: The periodic wakeup flag can be routed to the RTC_ALARM output provided it has been
+Page 1897: enabled through bits OSEL[1:0] of RTC_CR register. RTC_ALARM output polarity can be
+Page 1897: configured through the POL bit in the RTC_CR register.
+Page 1897: 45.3.8   RTC initialization and configuration
+Page 1897: RTC register access
+Page 1897: The RTC registers are 32-bit registers. The APB interface introduces 2 wait-states in RTC
+Page 1897: RTC register write protection
+Page 1897: After system reset, the RTC registers are protected against parasitic write access by
+Page 1897: must be set in order to enable RTC registers write access.
+Page 1897: After Backup domain reset, all the RTC registers are write-protected. Writing to the RTC
+Page 1897: registers is enabled by writing a key into the Write Protection register, RTC_WPR.
+Page 1897: The following steps are required to unlock the write protection on all the RTC registers
+Page 1897: except for RTC_TAMPCR, RTC_BKPxR, RTC_OR and RTC_ISR[13:8].
+Page 1897: 1.   Write ‘0xCA’ into the RTC_WPR register.
+Page 1897: 2.   Write ‘0x53’ into the RTC_WPR register.
+Page 1898: Real-time clock (RTC)                                                                               RM0433
+Page 1898: 1.   Set INIT bit to 1 in the RTC_ISR register to enter initialization mode. In this mode, the
+Page 1898: 2.   Poll INITF bit of in the RTC_ISR register. The initialization phase mode is entered when
+Page 1898: INITF is set to 1. It takes around 2 RTCCLK clock cycles (due to clock synchronization).
+Page 1898: RTC_PRER register.
+Page 1898: 4.   Load the initial time and date values in the shadow registers (RTC_TR and RTC_DR),
+Page 1898: and configure the time format (12 or 24 hours) through the FMT bit in the RTC_CR
+Page 1898: then automatically loaded and the counting restarts after 4 RTCCLK clock cycles.
+Page 1898: Note:       After a system reset, the application can read the INITS flag in the RTC_ISR register to
+Page 1898: in the RTC_ISR register.
+Page 1898: of the RTC_CR register.
+Page 1898: 1.   Clear ALRAE in RTC_CR to disable Alarm A.
+Page 1898: 2.   Program the Alarm A registers (RTC_ALRMASSR/RTC_ALRMAR).
+Page 1898: 3.   Set ALRAE in the RTC_CR register to enable Alarm A again.
+Page 1898: Note:       Each change of the RTC_CR register is taken into account after around 2 RTCCLK clock
+Page 1898: value (WUT[15:0] in RTC_WUTR):
+Page 1899: RM0433                                                                           Real-time clock (RTC)
+Page 1899: 1.   Clear WUTE in RTC_CR to disable the wakeup timer.
+Page 1899: 2.   Poll WUTWF until it is set in RTC_ISR to make sure the access to wakeup auto-reload
+Page 1899: counter and to WUCKSEL[2:0] bits is allowed. It takes around 2 RTCCLK clock cycles
+Page 1899: (WUCKSEL[2:0] bits in RTC_CR). Set WUTE in RTC_CR to enable the timer again.
+Page 1899: The wakeup timer restarts down-counting. The WUTWF bit is cleared up to 2 RTCCLK
+Page 1899: When BYPSHAD control bit is cleared in the RTC_CR register
+Page 1899: To read the RTC calendar registers (RTC_SSR, RTC_TR and RTC_DR) properly, the APB
+Page 1899: clock frequency (fPCLK) must be equal to or greater than seven times the RTC clock
+Page 1899: frequency (fRTCCLK). This ensures a secure behavior of the synchronization mechanism.
+Page 1899: If the APB clock frequency is less than seven times the RTC clock frequency, the software
+Page 1899: must read the calendar time and date registers twice. If the second read of the RTC_TR
+Page 1899: the RTC clock frequency.
+Page 1899: The RSF bit is set in RTC_ISR register each time the calendar registers are copied into the
+Page 1899: RTC_SSR, RTC_TR and RTC_DR shadow registers. The copy is performed every
+Page 1899: RTCCLK cycles. To ensure consistency between the 3 values, reading either RTC_SSR or
+Page 1899: RTC_TR locks the values in the higher-order calendar shadow registers until RTC_DR is
+Page 1899: than 1 RTCCLK period: RSF must be cleared by software after the first calendar read, and
+Page 1899: then the software must wait until RSF is set before reading again the RTC_SSR, RTC_TR
+Page 1899: and RTC_DR registers.
+Page 1899: The software must then wait until it is set again before reading the RTC_SSR, RTC_TR and
+Page 1899: RTC_DR registers.
+Page 1899: After a system reset, the software must wait until RSF is set before reading the RTC_SSR,
+Page 1899: RTC_TR and RTC_DR registers. Indeed, a system reset resets the shadow registers to
+Page 1899: software must wait until RSF is set before reading the RTC_SSR, RTC_TR and RTC_DR
+Page 1899: After synchronization (refer to Section 45.3.11: RTC synchronization): the software must
+Page 1899: wait until RSF is set before reading the RTC_SSR, RTC_TR and RTC_DR registers.
+Page 1899: When the BYPSHAD control bit is set in the RTC_CR register (bypass shadow
+Page 1900: Real-time clock (RTC)                                                                           RM0433
+Page 1900: coherent with each other if an RTCCLK edge occurs between two read accesses to the
+Page 1900: registers. Additionally, the value of one of the registers may be incorrect if an RTCCLK edge
+Page 1900: 45.3.10     Resetting the RTC
+Page 1900: The calendar shadow registers (RTC_SSR, RTC_TR and RTC_DR) and some bits of the
+Page 1900: RTC status register (RTC_ISR) are reset to their default values by all available system reset
+Page 1900: reset and are not affected by a system reset: the RTC current calendar registers, the RTC
+Page 1900: control register (RTC_CR), the prescaler register (RTC_PRER), the RTC calibration register
+Page 1900: (RTC_CALR), the RTC shift register (RTC_SHIFTR), the RTC timestamp registers
+Page 1900: (RTC_TSSSR, RTC_TSTR and RTC_TSDR), the RTC tamper configuration register
+Page 1900: (RTC_TAMPCR), the RTC backup registers (RTC_BKPxR), the wakeup timer register
+Page 1900: (RTC_WUTR), the Alarm A and Alarm B registers (RTC_ALRMASSR/RTC_ALRMAR and
+Page 1900: RTC_ALRMBSSR/RTC_ALRMBR), and the Option register (RTC_OR).
+Page 1900: In addition, when it is clocked by the LSE, the RTC keeps on running under system reset if
+Page 1900: the reset source is different from the Backup domain reset one (refer to the RTC clock
+Page 1900: section of the Reset and clock controller for details on the list of RTC clock sources not
+Page 1900: affected by system reset). When a Backup domain reset occurs, the RTC is stopped and all
+Page 1900: the RTC registers are set to their reset values.
+Page 1900: 45.3.11     RTC synchronization
+Page 1900: The RTC can be synchronized to a remote clock with a high degree of precision. After
+Page 1900: reading the sub-second field (RTC_SSR or RTC_TSSSR), a calculation can be made of the
+Page 1900: precise offset between the times being maintained by the remote clock and the RTC. The
+Page 1900: RTC can then be adjusted to eliminate this offset by “shifting” its clock by a fraction of a
+Page 1900: second using RTC_SHIFTR.
+Page 1900: RTC_SSR contains the value of the synchronous prescaler counter. This allows one to
+Page 1900: calculate the exact time being maintained by the RTC down to a resolution of
+Page 1900: asynchronous prescaler output increases, which may increase the RTC dynamic
+Page 1900: The RTC can be finely adjusted using the RTC shift control register (RTC_SHIFTR). Writing
+Page 1900: to RTC_SHIFTR can shift (either delay or advance) the clock by up to a second with a
+Page 1901: RM0433                                                                            Real-time clock (RTC)
+Page 1901: As soon as a shift operation is initiated by a write to the RTC_SHIFTR register, the SHPF
+Page 1901: firmware must not write to RTC_SHIFTR when REFCKON=1.
+Page 1901: 45.3.12    RTC reference clock detection
+Page 1901: The update of the RTC calendar can be synchronized to a reference clock, RTC_REFIN,
+Page 1901: which is usually the mains frequency (50 or 60 Hz). The precision of the RTC_REFIN
+Page 1901: reference clock should be higher than the 32.768 kHz LSE clock. When the RTC_REFIN
+Page 1901: detection is enabled (REFCKON bit of RTC_CR set to 1), the calendar is still clocked by the
+Page 1901: LSE, and RTC_REFIN is used to compensate for the imprecision of the calendar update
+Page 1901: Each 1 Hz clock edge is compared to the nearest RTC_REFIN clock edge (if one is found
+Page 1901: the 1 Hz clock becomes misaligned due to the imprecision of the LSE clock, the RTC shifts
+Page 1901: The RTC detects if the reference clock source is present by using the 256 Hz clock
+Page 1901: the calendar is updated continuously based solely on the LSE clock. The RTC then waits for
+Page 1901: When the RTC_REFIN detection is enabled, PREDIV_A and PREDIV_S must be set to their
+Page 1901: Note:      RTC_REFIN clock detection is not available in Standby mode.
+Page 1902: Real-time clock (RTC)                                                                           RM0433
+Page 1902: 45.3.13     RTC smooth digital calibration
+Page 1902: The RTC frequency can be digitally calibrated with a resolution of about 0.954 ppm with a
+Page 1902: series of small adjustments (adding and/or subtracting individual RTCCLK pulses). These
+Page 1902: adjustments are fairly well distributed so that the RTC is well calibrated even when observed
+Page 1902: The smooth digital calibration is performed during a cycle of about 220 RTCCLK pulses, or
+Page 1902: counter, cal_cnt[19:0], clocked by RTCCLK.
+Page 1902: The smooth calibration register (RTC_CALR) specifies the number of RTCCLK clock cycles
+Page 1902: Note:       CALM[8:0] (RTC_CALR) specifies the number of RTCCLK pulses to be masked during the
+Page 1902: While CALM allows the RTC frequency to be reduced by up to 487.1 ppm with fine
+Page 1902: to ‘1’ effectively inserts an extra RTCCLK pulse every 211 RTCCLK cycles, which means
+Page 1902: Using CALM together with CALP, an offset ranging from -511 to +512 RTCCLK cycles can
+Page 1902: (FRTCCLK) is as follows:
+Page 1902: FCAL = FRTCCLK x [1 + (CALP x 512 - CALM) / (220 + CALM - CALP x 512)]
+Page 1902: RTC_PRER register) is less than 3. If CALP was already set to 1 and PREDIV_A bits are
+Page 1902: (PREDIV_S) should be reduced so that each second is accelerated by 8 RTCCLK clock
+Page 1902: With a nominal RTCCLK frequency of 32768 Hz, when PREDIV_A equals 1 (division factor
+Page 1903: RM0433                                                                           Real-time clock (RTC)
+Page 1903: FCAL = FRTCCLK x [1 + (256 - CALM) / (220 + CALM - 256)]
+Page 1903: setting if RTCCLK is exactly 32768.00 Hz.
+Page 1903: Verifying the RTC calibration
+Page 1903: RTC precision is ensured by measuring the precise frequency of RTCCLK and calculating
+Page 1903: applications to measure and verify the RTC precision.
+Page 1903: Measuring the precise frequency of the RTC over a limited interval can result in a
+Page 1903: measurement error of up to 2 RTCCLK clock cycles over the measurement period,
+Page 1903: guarantees that the measure is within 0.477 ppm (0.5 RTCCLK cycles over 32 seconds, due
+Page 1903: •    CALW16 bit of the RTC_CALR register can be set to 1 to force a 16- second calibration
+Page 1903: In this case, the RTC precision can be measured during 16 seconds with a maximum error
+Page 1903: of 0.954 ppm (0.5 RTCCLK cycles over 16 seconds). However, since the calibration
+Page 1903: resolution is reduced, the long term RTC precision is also reduced to 0.954 ppm: CALM[0]
+Page 1903: •    CALW8 bit of the RTC_CALR register can be set to 1 to force a 8- second calibration
+Page 1903: In this case, the RTC precision can be measured during 8 seconds with a maximum error of
+Page 1903: 1.907 ppm (0.5 RTCCLK cycles over 8s). The long term RTC precision is also reduced to
+Page 1903: The calibration register (RTC_CALR) can be updated on-the-fly while RTC_ISR/INITF=0, by
+Page 1903: 1.   Poll the RTC_ISR/RECALPF (re-calibration pending flag).
+Page 1903: 2.   If it is set to 0, write a new value to RTC_CALR, if necessary. RECALPF is then
+Page 1903: 3.   Within three ck_apre cycles after the write operation to RTC_CALR, the new calibration
+Page 1904: Real-time clock (RTC)                                                                             RM0433
+Page 1904: Time-stamp is enabled by setting the TSE or ITSE bits of RTC_CR register to 1.
+Page 1904: The calendar is saved in the time-stamp registers (RTC_TSSSR, RTC_TSTR, RTC_TSDR)
+Page 1904: when a time-stamp event is detected on the RTC_TS pin.
+Page 1904: The calendar is saved in the time-stamp registers (RTC_TSSSR, RTC_TSTR, RTC_TSDR)
+Page 1904: (TSF) in RTC_ISR register is set. In case the event is internal, the ITSF flag is also set in
+Page 1904: RTC_ISR register.
+Page 1904: By setting the TSIE bit in the RTC_CR register, an interrupt is generated when a time-stamp
+Page 1904: time-stamp overflow flag (TSOVF) flag is set and the time-stamp registers (RTC_TSTR and
+Page 1904: RTC_TSDR) maintain the results of the previous event.
+Page 1904: the TAMPTS control bit in Section 45.6.16: RTC tamper configuration register
+Page 1904: (RTC_TAMPCR).
+Page 1904: The RTC_TAMPx input events can be configured either for edge detection, or for level
+Page 1904: •    erase the RTC backup registers and backup SRAM (default configuration)
+Page 1904: RTC backup registers
+Page 1904: The backup registers (RTC_BKPxR) are not reset by system reset or when the device
+Page 1904: RTC backup registers (RTC_BKPxR) and Tamper detection initialization on page 1905)
+Page 1905: RM0433                                                                        Real-time clock (RTC)
+Page 1905: except if the TAMPxNOERASE bit is set, or if TAMPxMF is set in the RTC_TAMPCR
+Page 1905: RTC_TAMPCR register.
+Page 1905: Each RTC_TAMPx tamper detection input is associated with a flag TAMPxF in the RTC_ISR
+Page 1905: above and 2.5 ck_rtc additional cycles.
+Page 1905: By setting the TAMPIE bit in the RTC_TAMPCR register, an interrupt is generated when a
+Page 1905: setting the corresponding TAMPxIE bit in the RTC_TAMPCR register. Setting TAMPxIE is
+Page 1905: When TAMPxMF bit in cleared in RTC_TAMPCR register, the TAMPxF flag must be cleared
+Page 1905: When TAMPxMF bit is set, the TAMPxF flag is masked, and kept cleared in RTC_ISR
+Page 1905: the TSF bit or the TSOVF bit are set in RTC_ISR, in the same manner as if a normal
+Page 1905: If the TAMPFLT bits are “00”, the RTC_TAMPx pins generate tamper detection events when
+Page 1906: Real-time clock (RTC)                                                                              RM0433
+Page 1906: TAMPxTRG bit. The internal pull-up resistors on the RTC_TAMPx inputs are deactivated
+Page 1906: After a tamper event has been detected and cleared, the RTC_TAMPx should be disabled
+Page 1906: (RTC_BKPxR). This prevents the application from writing to the backup registers while the
+Page 1906: RTC_TAMPx input value still indicates a tamper detection. This is equivalent to a level
+Page 1906: detection on the RTC_TAMPx input.
+Page 1906: of the backup registers, the pin to which the RTC_TAMPx is mapped should be externally
+Page 1906: Level detection with filtering on RTC_TAMPx inputs
+Page 1906: The RTC_TAMPx inputs are precharged through the I/O internal pull-up resistance before
+Page 1906: RTC_TAMPx inputs.
+Page 1906: When the COE bit is set to 1 in the RTC_CR register, a reference clock is provided on the
+Page 1906: RTC_CALIB device output.
+Page 1906: If the COSEL bit in the RTC_CR register is reset and PREDIV_A = 0x7F, the RTC_CALIB
+Page 1906: frequency is fRTCCLK/64. This corresponds to a calibration output at 512 Hz for an RTCCLK
+Page 1906: frequency at 32.768 kHz. The RTC_CALIB duty cycle is irregular: there is a light jitter on
+Page 1906: 0xFF), the RTC_CALIB frequency is fRTCCLK/(256 * (PREDIV_A+1)). This corresponds to a
+Page 1906: 0xFF), with an RTCCLK frequency at 32.768 kHz. The 1 Hz output is affected when a shift
+Page 1907: RM0433                                                                        Real-time clock (RTC)
+Page 1907: Note:     When the RTC_CALIB or RTC_ALARM output is selected, the RTC_OUT pin is
+Page 1907: When COSEL bit is cleared, the RTC_CALIB output is the output of the 6th stage of the
+Page 1907: When COSEL bit is set, the RTC_CALIB output is the output of the 8th stage of the
+Page 1907: The OSEL[1:0] control bits in the RTC_CR register are used to activate the alarm output
+Page 1907: RTC_ALARM, and to select the function which is output. These functions reflect the
+Page 1907: contents of the corresponding flags in the RTC_ISR register.
+Page 1907: The polarity of the output is determined by the POL control bit in RTC_CR so that the
+Page 1907: The RTC_ALARM pin can be configured in output open drain or output push-pull using the
+Page 1907: control bit RTC_ALARM_TYPE in the RTC_OR register.
+Page 1907: Note:     Once the RTC_ALARM output is enabled, it has priority over RTC_CALIB (COE bit is don't
+Page 1907: When the RTC_CALIB or RTC_ALARM output is selected, the RTC_OUT pin is
+Page 1907: 45.4      RTC low-power modes
+Page 1907: Table 367. Effect of low-power modes on RTC
+Page 1907: The RTC remains active when the RTC clock source is LSE or LSI. RTC alarm,
+Page 1907: Standby         RTC tamper event, RTC timestamp event, and RTC Wakeup cause the device to
+Page 1907: 45.5      RTC interrupts
+Page 1907: All RTC interrupts are connected to the EXTI controller. Refer to Section 19: Extended
+Page 1907: To enable the RTC Alarm interrupt, the following sequence is required:
+Page 1907: 1.   Configure and enable the EXTI line corresponding to the RTC Alarm event in interrupt
+Page 1907: 2.   Configure and enable the RTC_ALARM IRQ channel in the NVIC.
+Page 1907: 3.   Configure the RTC to generate RTC alarms.
+Page 1907: To enable the RTC Tamper interrupt, the following sequence is required:
+Page 1908: Real-time clock (RTC)                                                                                         RM0433
+Page 1908: 1.   Configure and enable the EXTI line corresponding to the RTC Tamper event in interrupt
+Page 1908: 2.   Configure and Enable the RTC_TAMP_STAMP IRQ channel in the NVIC.
+Page 1908: 3.   Configure the RTC to detect the RTC tamper event.
+Page 1908: To enable the RTC TimeStamp interrupt, the following sequence is required:
+Page 1908: 1.   Configure and enable the EXTI line corresponding to the RTC TimeStamp event in
+Page 1908: 2.   Configure and Enable the RTC_TAMP_STAMP IRQ channel in the NVIC.
+Page 1908: 3.   Configure the RTC to detect the RTC time-stamp event.
+Page 1908: 2.   Configure and Enable the RTC_WKUP IRQ channel in the NVIC.
+Page 1908: 3.   Configure the RTC to detect the RTC Wakeup timer event.
+Page 1908: RTC_TS input (timestamp)               TSF         TSIE          yes        yes(1)          yes(1)
+Page 1908: RTC_TAMP1 input detection             TAMP1F       TAMPIE         yes        yes(1)          yes(1)
+Page 1908: RTC_TAMP2 input detection             TAMP2F       TAMPIE         yes        yes(1)          yes(1)
+Page 1908: RTC_TAMP3 input detection             TAMP3F       TAMPIE         yes        yes(1)          yes(1)
+Page 1908: 1. Wakeup from STOP and Standby modes is possible only when the RTC clock source is LSE or LSI.
+Page 1908: 45.6        RTC registers
+Page 1908: 45.6.1      RTC time register (RTC_TR)
+Page 1908: The RTC_TR is the calendar time shadow register. This register must be written in
+Page 1908: This register is write protected. The write access procedure is described in RTC register
+Page 1909: RM0433                                                                                                    Real-time clock (RTC)
+Page 1909: 45.6.2           RTC date register (RTC_DR)
+Page 1909: The RTC_DR is the calendar date shadow register. This register must be written in
+Page 1909: This register is write protected. The write access procedure is described in RTC register
+Page 1910: Real-time clock (RTC)                                            RM0433
+Page 1911: RM0433                                                                                    Real-time clock (RTC)
+Page 1911: 45.6.3          RTC control register (RTC_CR)
+Page 1911: This bit enables the RTC_CALIB output
+Page 1911: These bits are used to select the flag to be routed to RTC_ALARM output
+Page 1911: This bit is used to configure the polarity of RTC_ALARM output
+Page 1911: When COE=1, this bit selects which signal is output on RTC_CALIB.
+Page 1911: These frequencies are valid for RTCCLK at 32.768 kHz and prescalers at their default values
+Page 1912: Real-time clock (RTC)                                                                                       RM0433
+Page 1913: RM0433                                                                                Real-time clock (RTC)
+Page 1913: 0: Calendar values (when reading from RTC_SSR, RTC_TR, and RTC_DR) are taken from
+Page 1913: the shadow registers, which are updated once every two RTCCLK cycles.
+Page 1913: 1: Calendar values (when reading from RTC_SSR, RTC_TR, and RTC_DR) are taken
+Page 1913: Note: If the frequency of the APB clock is less than seven times the frequency of RTCCLK,
+Page 1913: Bit 4 REFCKON: RTC_REFIN reference clock detection enable (50 or 60 Hz)
+Page 1913: 0: RTC_REFIN detection disabled
+Page 1913: 1: RTC_REFIN detection enabled
+Page 1913: 0: RTC_TS input rising edge generates a time-stamp event
+Page 1913: 1: RTC_TS input falling edge generates a time-stamp event
+Page 1913: 000: RTC/16 clock is selected
+Page 1913: 001: RTC/8 clock is selected
+Page 1913: 010: RTC/4 clock is selected
+Page 1913: 011: RTC/2 clock is selected
+Page 1913: Note:       Bits 7, 6 and 4 of this register can be written in initialization mode only (RTC_ISR/INITF = 1).
+Page 1913: Bits 2 to 0 of this register can be written only when RTC_CR WUTE bit = 0 and RTC_ISR
+Page 1913: This register is write protected. The write access procedure is described in RTC register
+Page 1914: Real-time clock (RTC)                                                                                                    RM0433
+Page 1914: 45.6.4           RTC initialization and status register (RTC_ISR)
+Page 1914: This register is write protected (except for RTC_ISR[13:8] bits). The write access procedure
+Page 1914: is described in RTC register write protection on page 1897.
+Page 1914: The RECALPF status flag is automatically set to ‘1’ when software writes to the RTC_CALR
+Page 1914: register, indicating that the RTC_CALR register is blocked. When the new calibration settings
+Page 1914: Bit 15 TAMP3F: RTC_TAMP3 detection flag
+Page 1914: This flag is set by hardware when a tamper detection event is detected on the RTC_TAMP3
+Page 1914: Bit 14 TAMP2F: RTC_TAMP2 detection flag
+Page 1914: This flag is set by hardware when a tamper detection event is detected on the RTC_TAMP2
+Page 1914: Bit 13 TAMP1F: RTC_TAMP1 detection flag
+Page 1914: This flag is set by hardware when a tamper detection event is detected on the RTC_TAMP1
+Page 1915: RM0433                                                                                  Real-time clock (RTC)
+Page 1915: This flag must be cleared by software at least 1.5 RTCCLK periods before WUTF is set to 1
+Page 1915: This flag is set by hardware when the time/date registers (RTC_TR and RTC_DR) match the
+Page 1915: Alarm B register (RTC_ALRMBR).
+Page 1915: This flag is set by hardware when the time/date registers (RTC_TR and RTC_DR) match the
+Page 1915: Alarm A register (RTC_ALRMAR).
+Page 1915: 1: Initialization mode used to program time and date register (RTC_TR and RTC_DR), and
+Page 1915: prescaler register (RTC_PRER). Counters are stopped and start counting from the new
+Page 1915: When this bit is set to 1, the RTC is in initialization state, and the time, date and prescaler
+Page 1915: registers (RTC_SSRx, RTC_TRx and RTC_DRx). This bit is cleared by hardware in
+Page 1915: RTC_SHIFTR register. It is cleared by hardware when the corresponding shift operation has
+Page 1916: Real-time clock (RTC)                                                                                RM0433
+Page 1916: This bit is set by hardware up to 2 RTCCLK cycles after the WUTE bit has been set to 0 in
+Page 1916: RTC_CR, and is cleared up to 2 RTCCLK cycles after the WUTE bit has been set to 1. The
+Page 1916: been set to 0 in RTC_CR.
+Page 1916: been set to 0 in RTC_CR.
+Page 1917: RM0433                                                                                         Real-time clock (RTC)
+Page 1917: 45.6.5          RTC prescaler register (RTC_PRER)
+Page 1917: This register is write protected. The write access procedure is described in RTC register
+Page 1917: ck_apre frequency = RTCCLK frequency/(PREDIV_A+1)
+Page 1918: Real-time clock (RTC)                                                                                       RM0433
+Page 1918: 45.6.6          RTC wakeup timer register (RTC_WUTR)
+Page 1918: This register can be written only when WUTWF is set to 1 in RTC_ISR.
+Page 1918: This register is write protected. The write access procedure is described in RTC register
+Page 1918: RTC_CR register
+Page 1918: WUT[15:0] to 0x0000 with WUCKSEL[2:0] =011 (RTCCLK/2) is forbidden.
+Page 1919: RM0433                                                                                         Real-time clock (RTC)
+Page 1919: 45.6.7         RTC alarm A register (RTC_ALRMAR)
+Page 1919: This register can be written only when ALRAWF is set to 1 in RTC_ISR, or in initialization
+Page 1919: This register is write protected. The write access procedure is described in RTC register
+Page 1920: Real-time clock (RTC)                                                                                                 RM0433
+Page 1920: 45.6.8         RTC alarm B register (RTC_ALRMBR)
+Page 1920: This register can be written only when ALRBWF is set to 1 in RTC_ISR, or in initialization
+Page 1920: This register is write protected. The write access procedure is described in RTC register
+Page 1921: RM0433                                                                                            Real-time clock (RTC)
+Page 1921: 45.6.9          RTC write protection register (RTC_WPR)
+Page 1921: Refer to RTC register write protection for a description of how to unlock RTC register write
+Page 1921: 45.6.10         RTC sub second register (RTC_SSR)
+Page 1921: time/date is one second less than as indicated by RTC_TR/RTC_DR.
+Page 1922: Real-time clock (RTC)                                                                                              RM0433
+Page 1922: 45.6.11        RTC shift control register (RTC_SHIFTR)
+Page 1922: This register is write protected. The write access procedure is described in RTC register
+Page 1922: operation is pending (when SHPF=1, in RTC_ISR).
+Page 1922: shift operation is pending (when SHPF=1, in RTC_ISR).
+Page 1923: RM0433                                                                                          Real-time clock (RTC)
+Page 1923: 45.6.12         RTC timestamp time register (RTC_TSTR)
+Page 1923: The content of this register is valid only when TSF is set to 1 in RTC_ISR. It is cleared when
+Page 1924: Real-time clock (RTC)                                                                                                           RM0433
+Page 1924: 45.6.13           RTC timestamp date register (RTC_TSDR)
+Page 1924: The content of this register is valid only when TSF is set to 1 in RTC_ISR. It is cleared when
+Page 1925: RM0433                                                                                    Real-time clock (RTC)
+Page 1925: 45.6.14        RTC time-stamp sub second register (RTC_TSSSR)
+Page 1925: The content of this register is valid only when RTC_ISR/TSF is set. It is cleared when the
+Page 1925: RTC_ISR/TSF bit is reset.
+Page 1926: Real-time clock (RTC)                                                                                             RM0433
+Page 1926: 45.6.15         RTC calibration register (RTC_CALR)
+Page 1926: This register is write protected. The write access procedure is described in RTC register
+Page 1926: Bit 15 CALP: Increase frequency of RTC by 488.5 ppm
+Page 1926: 0: No RTCCLK pulses are added.
+Page 1926: 1: One RTCCLK pulse is effectively inserted every 211 pulses (frequency increased by
+Page 1926: the calendar with a fine resolution. if the input frequency is 32768 Hz, the number of RTCCLK
+Page 1926: Refer to Section 45.3.13: RTC smooth digital calibration.
+Page 1926: Note: CALM[1:0] are stuck at “00” when CALW8=’1’. Refer to Section 45.3.13: RTC smooth
+Page 1926: Note: CALM[0] is stuck at ‘0’ when CALW16=’1’. Refer to Section 45.3.13: RTC smooth
+Page 1926: The frequency of the calendar is reduced by masking CALM out of 220 RTCCLK pulses (32
+Page 1926: CALP. See Section 45.3.13: RTC smooth digital calibration on page 1902.
+Page 1927: RM0433                                                                                  Real-time clock (RTC)
+Page 1927: 45.6.16        RTC tamper configuration register (RTC_TAMPCR)
+Page 1928: Real-time clock (RTC)                                                                                   RM0433
+Page 1928: Bit 15 TAMPPUDIS: RTC_TAMPx pull-up disable
+Page 1928: This bit determines if each of the RTC_TAMPx pins are precharged before each sample.
+Page 1928: 0: Precharge RTC_TAMPx pins before sampling (enable internal pull-up)
+Page 1928: 1: Disable precharge of RTC_TAMPx pins.
+Page 1928: Bits 14:13 TAMPPRCH[1:0]: RTC_TAMPx precharge duration
+Page 1928: sample. TAMPPRCH is valid for each of the RTC_TAMPx inputs.
+Page 1928: 0x0: 1 RTCCLK cycle
+Page 1928: 0x1: 2 RTCCLK cycles
+Page 1928: 0x2: 4 RTCCLK cycles
+Page 1928: 0x3: 8 RTCCLK cycles
+Page 1928: Bits 12:11 TAMPFLT[1:0]: RTC_TAMPx filter count
+Page 1928: needed to activate a Tamper event. TAMPFLT is valid for each of the RTC_TAMPx inputs.
+Page 1928: 0x0: Tamper event is activated on edge of RTC_TAMPx input transitions to the active level
+Page 1928: (no internal pull-up on RTC_TAMPx input).
+Page 1928: Determines the frequency at which each of the RTC_TAMPx inputs are sampled.
+Page 1928: 0x0: RTCCLK / 32768 (1 Hz when RTCCLK = 32768 Hz)
+Page 1928: 0x1: RTCCLK / 16384 (2 Hz when RTCCLK = 32768 Hz)
+Page 1928: 0x2: RTCCLK / 8192 (4 Hz when RTCCLK = 32768 Hz)
+Page 1928: 0x3: RTCCLK / 4096 (8 Hz when RTCCLK = 32768 Hz)
+Page 1928: 0x4: RTCCLK / 2048 (16 Hz when RTCCLK = 32768 Hz)
+Page 1928: 0x5: RTCCLK / 1024 (32 Hz when RTCCLK = 32768 Hz)
+Page 1928: 0x6: RTCCLK / 512 (64 Hz when RTCCLK = 32768 Hz)
+Page 1928: 0x7: RTCCLK / 256 (128 Hz when RTCCLK = 32768 Hz)
+Page 1928: TAMPTS is valid even if TSE=0 in the RTC_CR register.
+Page 1928: Bit 6 TAMP3TRG: Active level for RTC_TAMP3 input
+Page 1928: 0: RTC_TAMP3 input staying low triggers a tamper detection event.
+Page 1928: 1: RTC_TAMP3 input staying high triggers a tamper detection event.
+Page 1928: 0: RTC_TAMP3 input rising edge triggers a tamper detection event.
+Page 1928: 1: RTC_TAMP3 input falling edge triggers a tamper detection event.
+Page 1929: RM0433                                                                                  Real-time clock (RTC)
+Page 1929: Bit 5 TAMP3E: RTC_TAMP3 detection enable
+Page 1929: 0: RTC_TAMP3 input detection disabled
+Page 1929: 1: RTC_TAMP3 input detection enabled
+Page 1929: Bit 4 TAMP2TRG: Active level for RTC_TAMP2 input
+Page 1929: 0: RTC_TAMP2 input staying low triggers a tamper detection event.
+Page 1929: 1: RTC_TAMP2 input staying high triggers a tamper detection event.
+Page 1929: 0: RTC_TAMP2 input rising edge triggers a tamper detection event.
+Page 1929: 1: RTC_TAMP2 input falling edge triggers a tamper detection event.
+Page 1929: Bit 3 TAMP2E: RTC_TAMP2 input detection enable
+Page 1929: 0: RTC_TAMP2 detection disabled
+Page 1929: 1: RTC_TAMP2 detection enabled
+Page 1929: Bit 1 TAMP1TRG: Active level for RTC_TAMP1 input
+Page 1929: 0: RTC_TAMP1 input staying low triggers a tamper detection event.
+Page 1929: 1: RTC_TAMP1 input staying high triggers a tamper detection event.
+Page 1929: 0: RTC_TAMP1 input rising edge triggers a tamper detection event.
+Page 1929: 1: RTC_TAMP1 input falling edge triggers a tamper detection event.
+Page 1929: Bit 0 TAMP1E: RTC_TAMP1 input detection enable
+Page 1929: 0: RTC_TAMP1 detection disabled
+Page 1929: 1: RTC_TAMP1 detection enabled
+Page 1930: Real-time clock (RTC)                                                                                         RM0433
+Page 1930: 45.6.17        RTC alarm A sub second register (RTC_ALRMASSR)
+Page 1930: This register can be written only when ALRAE is reset in RTC_CR register, or in initialization
+Page 1930: This register is write protected. The write access procedure is described in RTC register
+Page 1931: RM0433                                                                                      Real-time clock (RTC)
+Page 1931: 45.6.18        RTC alarm B sub second register (RTC_ALRMBSSR)
+Page 1931: This register can be written only when ALRBE is reset in RTC_CR register, or in initialization
+Page 1931: This register is write protected.The write access procedure is described in Section : RTC
+Page 1932: Real-time clock (RTC)                                                                                        RM0433
+Page 1932: 45.6.19        RTC option register (RTC_OR)
+Page 1932: RTC_    RTC_
+Page 1932: Bit 1 RTC_OUT_RMP: RTC_OUT remap
+Page 1932: Setting this bit allows to remap the RTC outputs on PB2 as follows:
+Page 1932: RTC_OUT_RMP = ‘0’:
+Page 1932: If OSEL/= ‘00’: RTC_ALARM is output on PC13
+Page 1932: If OSEL= ‘00’ and COE = ‘1’: RTC_CALIB is output on PC13
+Page 1932: RTC_OUT_RMP = ‘1’:
+Page 1932: If OSEL /= ‘00’ and COE = ‘0’: RTC_ALARM is output on PB2
+Page 1932: If OSEL = ‘00’ and COE = ‘1’: RTC_CALIB is output on PB2
+Page 1932: If OSEL /= ‘00’ and COE = ‘1’: RTC_CALIB is output on PB2 and RTC_ALARM is output on
+Page 1932: Bit 0 RTC_ALARM_TYPE: RTC_ALARM output type on PC13
+Page 1932: 0: RTC_ALARM, when mapped on PC13, is open-drain output
+Page 1932: 1: RTC_ALARM, when mapped on PC13, is push-pull output
+Page 1932: 45.6.20        RTC backup registers (RTC_BKPxR)
+Page 1933: RTC_TR
+Page 1933: RTC_CR
+Page 1933: RTC_DR
+Page 1933: RTC_ISR
+Page 1933: RTC_SSR
+Page 1933: RTC_WPR
+Page 1933: RTC_TSTR
+Page 1933: RTC_PRER
+Page 1933: RTC_WUTR
+Page 1933: RTC_SHIFTR
+Page 1933: RTC_ALRMBR
+Page 1933: RTC_ALRMAR
+Page 1933: RTC register map
+Page 1933: Table 369. RTC register map and reset values
+Page 1933: Real-time clock (RTC)
+Page 1934: RTC_
+Page 1934: RTC_
+Page 1934: RTC_ OR
+Page 1934: RTC_TSDR
+Page 1934: RTC_ CALR
+Page 1934: RTC_TSSSR
+Page 1934: RTC_BKP0R
+Page 1934: RTC_BKP31R
+Page 1934: RTC_TAMPCR
+Page 1934: Real-time clock (RTC)
+Page 1934: Table 369. RTC register map and reset values (continued)
+Page 1934: RTC_OUT_RMP                                                                                 TAMP1TRG                                                                                                 1
+Page 1934: RTC_ALARM_TYPE                                                                                TAMP1E
+Page 1985: SMBus Alert            ALERT        Write ALERTCF=1
+Page 1996: setting the ALERTCF bit.
+Page 1998: Bit 13 ALERTCF: Alert flag clear
+Page 2001: Res.                               Res.                          ALERTCF                          ALERT                                 Res.                                                                   Res.                            Res.                           START                                Res.             13
+Page 2003: communications, as well as LIN (local interconnection network), Smartcard protocol, IrDA
+Page 2005: •      Smartcard mode
+Page 2005: –   Supports the T=0 and T=1 asynchronous protocols for smartcards as defined in
+Page 2005: –   0.5 and 1.5 stop bits for Smartcard operation
+Page 2005: Smartcard mode                                                X                  -               -
+Page 2007: High. In Single-wire and Smartcard modes, this I/O is used to transmit and receive
+Page 2007: Synchronous master/slave mode and Smartcard mode
+Page 2007: The following pin is required in synchronous master/slave mode and Smartcard mode:
+Page 2007: This pin acts as Clock output in Synchronous master and Smartcard modes.
+Page 2007: In Smartcard mode, CK output provides the clock to the smartcard.
+Page 2008: Note:       In 7-bit data length mode, the Smartcard mode, LIN master mode and Auto baud rate (0x7F
+Page 2010: supported only in UART, SPI and Smartcard modes.
+Page 2011: •    1.5 stop bits: To be used in Smartcard mode.
+Page 2019: Oversampling by 8 is not available in the Smartcard, IrDA and LIN modes. In those modes,
+Page 2021: USART_CR: it can be either 1 or 2 in normal mode and 0.5 or 1.5 in Smartcard mode.
+Page 2021: •   0.5 stop bit (reception in Smartcard mode): no sampling is done for 0.5 stop bit. As a
+Page 2021: •   1.5 stop bits (Smartcard mode)
+Page 2021: When transmitting in Smartcard mode, the device must check that the data are
+Page 2021: USART_CR1) and the stop bit is checked to test if the Smartcard has detected a parity
+Page 2021: In the event of a parity error, the Smartcard forces the data signal low during the
+Page 2022: Equation 2: baud rate in Smartcard, LIN and IrDA modes (OVER8 = 0)
+Page 2037: 47.5.17    USART Smartcard mode
+Page 2037: This section is relevant only when Smartcard mode is supported. Refer to Section 47.4:
+Page 2037: Smartcard mode is selected by setting the SCEN bit in the USART_CR3 register. In
+Page 2037: Smartcard mode, the following bits must be kept cleared:
+Page 2037: The CLKEN bit can also be set to provide a clock to the Smartcard.
+Page 2037: The Smartcard interface is designed to support asynchronous Smartcard protocol as
+Page 2037: When connected to a Smartcard, the TX output of the USART drives a bidirectional line that
+Page 2037: is also driven by the Smartcard. The TX pin must be configured as open drain.
+Page 2037: Smartcard mode implements a single wire half duplex communication protocol.
+Page 2037: shifting on the next baud clock edge. In Smartcard mode this transmission is further
+Page 2037: •   In transmission, if the Smartcard detects a parity error, it signals this condition to the
+Page 2038: •   Smartcard auto-retry in transmission: A delay of 2.5 baud periods is inserted between
+Page 2038: receive frame. This is to indicate to the Smartcard that the data transmitted to the
+Page 2038: the Smartcard must resend the same character. If the received character is still
+Page 2038: •   Smartcard auto-retry in reception: the BUSY flag remains set if the USART NACKs the
+Page 2038: further transmit requests are outstanding. In Smartcard mode an empty transmit shift
+Page 2038: •   The de-assertion of TC flag is unaffected by Smartcard mode.
+Page 2038: Note:       Break characters are not significant in Smartcard mode. A 0x00 data with a framing error is
+Page 2039: The USART can provide a clock to the Smartcard through the SCLK output. In Smartcard
+Page 2039: When requesting a read from the Smartcard, in block mode, the software must program the
+Page 2039: read from the Smartcard in block mode. In parallel, the DMA must be enabled only after the
+Page 2039: expressed in baud time units. If the Smartcard does not send a new character in less than
+Page 2039: Note:     As in the Smartcard protocol definition, the BWT/CWT values should be defined from the
+Page 2039: by the Smartcard in the third byte of the block (prologue field). This value must be
+Page 2040: The Smartcard protocol defines two conventions: direct and inverse.
+Page 2041: The USART is programmed in standard Smartcard mode/direct convention. In this case, the
+Page 2055: and in Smartcard modes only. It must not be enabled in IrDA and LIN modes.
+Page 2055: Note: In 7-bits data length mode, the Smartcard mode, LIN master mode and Auto baud rate
+Page 2056: Note: If the USART does not support Smartcard mode, this bit is reserved and must be kept at
+Page 2056: Note: In LIN, IrDA and Smartcard modes, this bit must be kept cleared.
+Page 2058: (idle line) after the current word, except in Smartcard mode. In order to generate an idle
+Page 2058: In Smartcard mode, when TE is set, there is a 1 bit-time delay before the transmission
+Page 2058: In Smartcard mode, (SCEN = 1), the SCLK is always available when CLKEN = 1,
+Page 2061: Note: If neither synchronous mode nor Smartcard mode is supported, this bit is reserved and must
+Page 2061: In Smartcard mode, in order to provide correctly the SCLK clock to the smartcard, the steps
+Page 2063: Note: If the USART does not support the Smartcard mode, this bit is reserved and must be
+Page 2064: Bits 19:17 SCARCNT[2:0]: Smartcard auto-retry count
+Page 2064: This bitfield specifies the number of retries for transmission and reception in Smartcard
+Page 2064: Note: If Smartcard mode is not supported, this bit is reserved and must be kept at reset
+Page 2064: received data will be transferred. (used for Smartcard mode)
+Page 2066: Bit 5 SCEN: Smartcard mode enable
+Page 2066: This bit is used for enabling Smartcard mode.
+Page 2066: 0: Smartcard Mode disabled
+Page 2066: 1: Smartcard Mode enabled
+Page 2066: Note: If the USART does not support Smartcard mode, this bit is reserved and must be kept
+Page 2066: Bit 4 NACK: Smartcard NACK enable
+Page 2066: Note: If the USART does not support Smartcard mode, this bit is reserved and must be kept
+Page 2068: This is used in Smartcard mode. The Transmission Complete flag is set after this guard time
+Page 2068: Note: If Smartcard mode is not supported, this bit is reserved and must be kept at reset value.
+Page 2068: In Smartcard mode:
+Page 2068: Smartcard clock.
+Page 2068: Note: Bits [7:5] must be kept cleared if Smartcard mode is used.
+Page 2068: This bitfield is reserved and forced by hardware to ‘0’ when the Smartcard and IrDA
+Page 2069: This bitfield gives the Block length in Smartcard T=1 Reception. Its value equals the number
+Page 2069: In Smartcard mode, the Block length counter is reset when TXE=0 (TXFE = 0 in case FIFO
+Page 2069: In Smartcard mode, this value is used to implement the CWT and BWT. See Smartcard
+Page 2070: the transmit data. This bit must be used only in Smartcard mode, when data have not been
+Page 2070: USART does not support Smartcard mode, this bit is reserved and must be kept at reset
+Page 2070: supported in both UART and Smartcard modes.
+Page 2070: XX = 28 if FIFO/Smartcard mode is enabled
+Page 2070: XX = 08 if FIFO is enabled and Smartcard mode is disabled
+Page 2071: It is set by hardware in Smartcard mode, if the transmission of a frame containing data is
+Page 2071: complete and if the smartcard did not send back any NACK. An interrupt is generated if
+Page 2071: Note: If the USART does not support the Smartcard mode, this bit is reserved and kept at
+Page 2071: reset value. If the USART supports the Smartcard mode and the Smartcard mode is
+Page 2073: Smartcard mode). The detection is done when the number of received bytes (from the start
+Page 2073: Note: If Smartcard mode is not supported, this bit is reserved and kept at reset value. Refer
+Page 2073: In Smartcard mode, the timeout corresponds to the CWT or BWT timings.
+Page 2074: USART_RQR register, in order to discard the data (only in Smartcard T=0 mode, in case of
+Page 2076: When transmitting data in Smartcard mode, this bit is set when the maximum number of
+Page 2077: Note: If the USART does not support Smartcard mode, this bit is reserved and must be kept
+Page 2110: Note: In 7-bit data length mode, the Smartcard mode, LIN master mode and Auto baud rate
+Page 2119: XX = 08 if FIFO is enabled and Smartcard mode is disabled
+Page 2123: When transmitting data in Smartcard mode, this bit is set when the maximum number of
+Page 2210: In AC’97 mode or in SPDIF mode (bit PRTCFG[1:0] = 10 or PRTCFG[1:0] = 01 in the
+Page 2213: For AC’97 protocol or SPDIF (when bit PRTCFG[1:0] = 10 or PRTCFG[1:0] = 01), the
+Page 2214: In AC’97 and SPDIF protocol (bit PRTCFG[1:0] = 10 or PRTCFG[1:0] = 01), the slot size is
+Page 2224: PRTCFG          0b00      Free protocol for TDM
+Page 2227: To select this protocol, set PRTCFG[1:0] bits in the SAI_xCR1 register to 10. When AC’97
+Page 2229: To select SPDIF mode, set PRTCFG[1:0] bit to 01 in the SAI_xCR1 register.
+Page 2239: to operate in AC’97 mode (PRTCFG[1:0] = 10 in the SAI_xCR1 register). If CNRDYIE bit is
+Page 2241: Res.       Res.         MONO            SYNCEN[1:0]         CKSTR LSBFIRST                         DS[2:0]          Res.       PRTCFG[1:0]     MODE[1:0]
+Page 2243: selected (bit PRTCFG[1:0]), because the frame and the data size are fixed in such case. When the
+Page 2244: Bits 3:2 PRTCFG[1:0]: Protocol configuration
+Page 2244: Res.    Res.        MONO     SYNCEN[1:0]   CKSTR LSBFIRST          DS[2:0]        Res.    PRTCFG[1:0]     MODE[1:0]
+Page 2246: selected (bit PRTCFG[1:0]), because the frame and the data size are fixed in such case. When the
+Page 2246: Bits 3:2 PRTCFG[1:0]: Protocol configuration
+Page 2256: This bit has a meaning only if the AC’97 mode is selected through PRTCFG[1:0] bits and the audio
+Page 2257: This bit has a meaning only if the AC’97 mode is selected through PRTCFG[1:0] bits and the audio
+Page 2269: PRTCFG[1:0]
+Page 2417: Bit 11 DABORTC: DABORT flag clear bit
+Page 2426: Res.                                                                                                                                    Res.       Res.                                                         DABORTIE                     DABORTC                     DABORT                                                         SDIOEN          11
+Page 2751: it crosses the configured Receive threshold (RTC bits[1:0] defined in Rx queue
+Page 2807: a)   Receive Store and Forward (RSF) or RTC if Threshold mode is used.
+Page 2873: RFD[1:0]       Res.   Res.   Res.          RFA[2:0]                                                      Res.     RTC[1:0]
+Page 2874: complete packet has been written to it, ignoring the RTC field of this register. When this bit is
+Page 2874: specified by the RTC field of this register.
+Page 2874: because of the lower value of Rx Threshold, for example, RTC = 01.
+Page 2874: Bits 1:0 RTC[1:0]: Receive Queue Threshold Control
+Page 2878: RTC
+Page 3062: Res.   Res.      Res.   Res.   Res.   Res.   Res.    Res.           SCHEME[3:0]                     PORTCNT[3:0]
+Page 3062: Bits 3:0 PORTCNT[3:0]: Number of input ports connected
+Page 3067: PORTCNT[3:0]                                                                                                                                    CLAIMCLR[3:0]                         CLAIMSET[3:0]
+Page 3083: Res.   Res.      Res.   Res.   Res.         MEMWIDTH[2:0]       CONFIGTYP[1:0]                        ATBINPORTCNT[4:0]
+Page 3083: Bits 4:0 ATBINPORTCNT[4:0]: Number/type of ATB input port multiplexing
+Page 3089: ATBINPORTCNT[4:0]                                                                   LOCKTYPE                                                                                                                                                                                              Res.           2
+Page 3124: Res.   Res.      Res.   Res.   Res.   Res.   Res.    Res.           SCHEME[3:0]                     PORTCNT[3:0]
+Page 3124: Bits 3:0 PORTCNT[3:0]: Number of input ports connected
+Page 3130: PORTCNT[3:
+Page 3131: •          stop the clock to certain peripherals (CAN, SMBUS timeout, Watchdogs, Timers, RTC)
+Page 3136: Res.     Res.    Res.   Res.    Res.    Res.   Res.    Res.   Res.    Res.   Res.   Res.   Res.          Res.   RTC
+Page 3136: Bit 16 RTC: RTC stop in debug
+Page 3136: 0: Normal operation - RTC continues to operate while the core is in debug mode
+Page 3136: 1: Stop in debug - RTC is frozen while Cortex-M7 is in debug mode
+Page 3138: RTC
+Page 3221: Section 46: Real-time clock (RTC)
+Page 3221: Added Figure 527: RTC block overview.
+Page 3221: Updated title of Figure 528: Detailed RTC block diagram.
+Page 3221: Added Section 46.3.2: RTC pins and internal signals. Updated
+Page 3221: Table 353: RTC pins and internal signals.
+Page 3221: Updated Section 46.3.3: GPIOs controlled by the RTC.
+Page 3221: Updated Section 46.6.16: RTC tamper configuration register
+Page 3221: (RTC_TAMPCR).
+Page 3243: RTC_ALRMAR . . . . . . . . . . . . . . . . . . . . . . 1919
+Page 3243: RTC_ALRMBR . . . . . . . . . . . . . . . . . . . . . . 1920
+Page 3243: RTC_ALRMBSSR . . . . . . . . . . . . . . . . . . . . 1931
+Page 3243: RTC_BKPxR . . . . . . . . . . . . . . . . . . . . . . . . 1932
+Page 3243: RTC_CALR . . . . . . . . . . . . . . . . . . . . . . . . . 1926
+Page 3243: RTC_CR . . . . . . . . . . . . . . . . . . . . . . . . . . . 1911
+Page 3243: RTC_DR . . . . . . . . . . . . . . . . . . . . . . . . . . . 1909
+Page 3243: RTC_ISR . . . . . . . . . . . . . . . . . . . . . . . . . . . 1914
+Page 3243: RTC_OR . . . . . . . . . . . . . . . . . . . . . . . . . . . 1932
+Page 3243: RTC_PRER . . . . . . . . . . . . . . . . . . . . . . . . . 1917
+Page 3243: RTC_SHIFTR . . . . . . . . . . . . . . . . . . . . . . . 1922
+Page 3243: RTC_SSR . . . . . . . . . . . . . . . . . . . . . . . . . . 1921
+Page 3243: RTC_TR . . . . . . . . . . . 284-286, 289-290, 1908
+Page 3243: RTC_TSDR . . . . . . . . . . . . . . . . . . . . . . . . . 1924
+Page 3243: RTC_TSSSR . . . . . . . . . . . . . . . . . . . . . . . . 1925
+Page 3243: RTC_TSTR . . . . . . . . . . . . . . . . . . . . . . . . . 1923
+Page 3243: RTC_WPR . . . . . . . . . . . . . . . . . . . . . . . . . . 1921
+Page 3243: RTC_WUTR . . . . . . . . . . . . . . . . . . . . . . . . 1918

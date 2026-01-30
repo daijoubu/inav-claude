@@ -1,0 +1,750 @@
+Keyword: FMC
+Occurrences: 746
+================================================================================
+
+Page   20: 21         Flexible memory controller (FMC) . . . . . . . . . . . . . . . . . . . . . . . . . . . . 776
+Page   20: 21.1    FMC main features . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 776
+Page   20: 21.2    FMC block diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 777
+Page   20: 21.3    FMC internal signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 779
+Page   21: 21.10 FMC register map . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 857
+Page   70: Table 146.   FMC pins . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 779
+Page   70: Table 147.   FMC bank mapping options . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 782
+Page   71: Table 163.   FMC_BCRx bit fields . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 794
+Page   71: Table 164.   FMC_BTRx bit fields . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 795
+Page   71: Table 165.   FMC_BCRx bit fields . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 797
+Page   71: Table 166.   FMC_BTRx bit fields . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 798
+Page   71: Table 167.   FMC_BWTRx bit fields . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 798
+Page   71: Table 168.   FMC_BCRx bit fields . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 800
+Page   71: Table 169.   FMC_BTRx bit fields . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 801
+Page   71: Table 170.   FMC_BWTRx bit fields . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 801
+Page   71: Table 171.   FMC_BCRx bit fields . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 803
+Page   71: Table 172.   FMC_BTRx bit fields . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 804
+Page   71: Table 173.   FMC_BWTRx bit fields . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 804
+Page   71: Table 174.   FMC_BCRx bit fields . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 806
+Page   71: Table 175.   FMC_BTRx bit fields . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 806
+Page   71: Table 176.   FMC_BWTRx bit fields . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 807
+Page   71: Table 177.   FMC_BCRx bit fields . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 809
+Page   71: Table 178.   FMC_BTRx bit fields . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 809
+Page   71: Table 179.   FMC_BCRx bit fields . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 815
+Page   71: Table 180.   FMC_BTRx bit fields . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 815
+Page   71: Table 181.   FMC_BCRx bit fields . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 816
+Page   71: Table 182.   FMC_BTRx bit fields . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 817
+Page   71: Table 189.   FMC register map . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 857
+Page   81: Figure 51.   Kernel clock distribution for SDMMC, QUADSPI and FMC . . . . . . . . . . . . . . . . . . . . . . . 340
+Page   81: Figure 93.   FMC block diagram. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 778
+Page   81: Figure 94.   FMC memory banks (default mapping) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 782
+Page   99: FMC                    X                   -                  -                    -          X          X              -           X       X        X             X              X             X               X                X              X             X               -
+Page  100: FMC
+Page  103: SPI controller and the FMC.
+Page  103: and Flash memories, and external memories through the Quad-SPI controller and the FMC.
+Page  103: the FMC.
+Page  103: external memories through the Quad-SPI controller and the FMC.
+Page  103: memories through the Quad-SPI controller and the FMC, and all AHB and APB peripherals.
+Page  103: memories, and external memories through the Quad-SPI controller and the FMC.
+Page  104: memories through the Quad-SPI controller and the FMC.
+Page  104: DTCM, and external memories through the Quad-SPI controller and the FMC.
+Page  104: FMC.
+Page  105: Flash A           Flash B            FMC              QSPI
+Page  106: TARG 5                            FMC                           AXI4           64            3/3/6
+Page  124: FMC SDRAM Bank2 (or Reserved in case of FMC remap)
+Page  124: -     FMC SDRAM Bank1 (or remap of FMC NOR/PSRAM/SRAM 4 Bank1)
+Page  124: FMC SDRAM Bank1 (or remap of FMC NOR/PSRAM/SRAM 3 Bank1)
+Page  124: FMC SDRAM Bank1 (or remap of FMC NOR/PSRAM/SRAM 2 Bank1)
+Page  124: FMC SDRAM Bank1 (or remap of FMC NOR/PSRAM/SRAM 1 Bank1)
+Page  124: FMC NAND Flash memory                                  attribute
+Page  124: Reserved (or remap of FMC SDRAM Bank2)
+Page  124: FMC NOR/PSRAM/SRAM 4 Bank1 (or remap of FMC SDRAM Bank1) Normal             Write-       No
+Page  124: FMC NOR/PSRAM/SRAM 3 Bank1 (or remap of FMC SDRAM Bank1)
+Page  124: FMC NOR/PSRAM/SRAM 2 Bank1 (or remap of FMC SDRAM Bank1)
+Page  124: FMC NOR/PSRAM/SRAM 1 Bank1 (or remap of FMC SDRAM Bank1)
+Page  127: 0x52004000 - 0x52004FFF   FMC control registers    (D1)   Section 21.8.7: NAND Flash controller registers,
+Page  335: FMC           FMCSEL         200                  1                                   2                                                           0                                                                               3
+Page  340: The FMC, QUADSPI and SDMMC1/2 can also use a clock different from the bus interface
+Page  340: Figure 51. Kernel clock distribution for SDMMC, QUADSPI and FMC
+Page  340: FMCSEL
+Page  340: FMCEN                          FMC
+Page  340: rcc_hclk3           0                                  FMCLPEN
+Page  340: pll1_q_ck           1D                                                             fmc_ker_ck
+Page  388: Res.      Res.    Res.        Res.   Res.   Res.   Res.    Res.   Res.   Res.   QSPISEL[1:0] (1)    Res.   Res.   FMCSEL[1:0] (1)
+Page  388: Bits 1:0 FMCSEL[1:0]: FMC kernel clock source selection
+Page  406: FMCRST
+Page  406: Bit 12 FMCRST: FMC block reset
+Page  406: 0: does not reset FMC block (default after reset)
+Page  406: 1: resets FMC block
+Page  428: FMCEN
+Page  428: Bit 12 FMCEN: FMC Peripheral Clocks Enable
+Page  428: 0: FMC peripheral clocks disabled (default after reset)
+Page  428: 1: FMC peripheral clocks enabled
+Page  428: The peripheral clocks of the FMC are: the kernel clock selected by FMCSEL and provided to
+Page  428: fmc_ker_ck input, and the rcc_hclk3 bus interface clock.
+Page  450: FMCLPEN
+Page  451: Bit 12 FMCLPEN: FMC Peripheral Clocks Enable During CSleep Mode
+Page  451: 0: FMC peripheral clocks disabled during CSleep mode
+Page  451: 1: FMC peripheral clocks enabled during CSleep mode (default after reset):
+Page  451: The peripheral clocks of the FMC are: the kernel clock selected by FMCSEL and provided to
+Page  451: fmc_ker_ck input, and the rcc_hclk3 bus interface clock.
+Page  473: FMCSEL[1:0]
+Page  474: Res.                      FMCRST                         Res.                          Res.                                               Res.                                   Res.                                 Res.                                                      12
+Page  476: Res.                                Res.                      Res.                          Res.                       FMCEN                         Res.                                 LPTIM5AMEN       12
+Page  477: Res.                             Res.                        FMCLPEN                         LPTIM5EN                    SPI1EN                    Res.                                  Res.     12
+Page  478: FMCEN                                LPTIM5LPEN                    SPI1LPEN                       Res.                                     Res.                        Res.                                   Res.       12
+Page  480: Res.                                     Res.                        Res.                                   Res.                         Res.                             Res.                         FMCLPEN     12
+Page  733: fmc_gbl_it      55           48              FMC         FMC global interrupt           0x0000 0100
+Page  776: Flexible memory controller (FMC)                                                             RM0433
+Page  776: 21         Flexible memory controller (FMC)
+Page  776: The Flexible memory controller (FMC) includes three memory controllers:
+Page  776: 21.1       FMC main features
+Page  776: The FMC functional block makes the interface with: synchronous and asynchronous static
+Page  776: Each external device is accessed by means of a unique Chip Select. The FMC performs
+Page  776: The main features of the FMC controller are the following:
+Page  776: At startup the FMC pins must be configured by the user application. The FMC I/O pins which
+Page  777: RM0433                                                           Flexible memory controller (FMC)
+Page  777: The FMC registers that define the external device type and associated characteristics are
+Page  777: •    ECCEN and PBKEN bits in the FMC_PCR register
+Page  777: •    IFS, IRS and ILS bits in the FMC_SR register
+Page  777: •    MODE[2:0], CTB1/CTB2, NRFS and MRD bits in the FMC_SDCMR register
+Page  777: •    REIE and CRE bits in the FMC_SDRTR register.
+Page  777: Follow the below sequence to modify parameters while the FMC is enabled:
+Page  777: 1.   First disable the FMC controller to prevent further accesses to any memory controller
+Page  777: 3.   Enable the FMC controller again.
+Page  777: 2.   Disable the FMC controller by resetting the FMCEN bit in the FMC_BCR1 register.
+Page  777: 4.   Enable the FMC controller once all parameters have been updated.
+Page  777: 21.2     FMC block diagram
+Page  777: The FMC consists of the following main blocks:
+Page  777: •    The AHB interface (including the FMC configuration registers)
+Page  778: Flexible memory controller (FMC)                                                                      RM0433
+Page  778: Figure 93. FMC block diagram
+Page  778: fmc_it to NVIC
+Page  778: FMC_NL (or NADV)   NOR/PSRAM
+Page  778: FMC_CLK            signals
+Page  778: memory          FMC_NBL[3:0]
+Page  778: FMC_A[25:0]
+Page  778: FMC_D[31:0]
+Page  778: fmc_hclk
+Page  778: AXI/AHB                           FMC_NE[4:1]
+Page  778: FMC_NOE            NOR / PSRAM / SRAM
+Page  778: fmc_ker_ck         Configuration
+Page  778: registers                         FMC_NWE            shared signals
+Page  778: FMC_NWAIT
+Page  778: memory          FMC_NCE
+Page  778: FMC_INT
+Page  778: FMC_SDCLK
+Page  778: FMC_SDNWE
+Page  778: SDRAM           FMC_SDCKE[1:0]
+Page  778: controller       FMC_SDNE[1:0]
+Page  778: FMC_NRAS
+Page  778: FMC_NCAS
+Page  779: RM0433                                                           Flexible memory controller (FMC)
+Page  779: 21.3     FMC internal signals
+Page  779: Table 146 gives the list of FMC internal signals. FMC pins (or external signals) are
+Page  779: Table 146. FMC pins
+Page  779: fmc_it             Digital output    FMC interrupt
+Page  779: fmc_ker_ck             Digital input    FMC kernel clock
+Page  779: fmc_hclk             Digital input    FMC interface clock
+Page  779: The AHB slave interface allows internal CPUs to configure the FMC registers.
+Page  779: The AHB clock (fmc_hclk) is the reference clock for the FMC register accesses.
+Page  779: accesses according to data size accesses. The FMC Chip Select (FMC_NEx) does not
+Page  779: The FMC generates an AXI slave error when one of the following conditions is met:
+Page  779: •   Reading or writing to an FMC bank (Bank 1 to 4) which is not enabled.
+Page  779: FMC_BCRx register.
+Page  779: The FMC generates an AXI decoder error when ADDR[31:28] address bits are not
+Page  779: supported by the FMC bank base address following the BMAP[1:0] bits configuration.
+Page  779: The kernel clock for the FMC controller is the asynchronous fmc_ker_ck clock (refer to
+Page  779: Section 7: Reset and Clock Control (RCC) for fmc_ker_ck clock source selection).
+Page  780: Flexible memory controller (FMC)                                                                 RM0433
+Page  780: In this case, the FMC splits the AXI transaction into smaller consecutive memory
+Page  780: to “Normal memory”, the AXI transaction size is 64 bits and the FMC splits the
+Page  780: In this case, the FMC allows read/write transactions and accesses the right data
+Page  780: The FMC can be configured through a set of registers. Refer to Section 21.7.6, for a
+Page  781: RM0433                                                           Flexible memory controller (FMC)
+Page  781: From the FMC point of view, the external memory is divided into fixed-size banks of
+Page  782: Flexible memory controller (FMC)                                                                 RM0433
+Page  782: Figure 94. FMC memory banks (default mapping)
+Page  782: Not used by FMC
+Page  782: The FMC bank mapping can be modified through the BMAP[1:0] bits in the FMC_BCR1
+Page  782: Table 147. FMC bank mapping options
+Page  782: 0x9000 0000 - 0x9FFF FFFF                                Not used by FMC
+Page  783: RM0433                                                                       Flexible memory controller (FMC)
+Page  783: 1. In case of a 16-bit external memory width, the FMC will internally use ADDR[25:1] to generate the address
+Page  783: for external memory FMC_A[24:0]. In case of a 32-bit memory width, the FMC will internally use
+Page  783: Whatever the external memory width, FMC_A[0] should be connected to external memory address A[0].
+Page  783: Start address     End address          FMC bank            Memory space             Timing register
+Page  783: 0x8800 0000          0x8BFF FFFF                               Attribute               FMC_PATT (0x8C)
+Page  783: 0x8000 0000          0x83FF FFFF                               Common                 FMC_PMEM (0x88)
+Page  784: Flexible memory controller (FMC)                                                                                RM0433
+Page  784: SDRAM Bank1                          FMC_SDCR1                       FMC_SDTR1
+Page  784: SDRAM Bank2                          FMC_SDCR2                       FMC_SDTR2
+Page  784: 1. When interfacing with a 16-bit memory, the FMC internally uses the ADDR[11:1] internal address lines to
+Page  784: generate the external address. When interfacing with a 32-bit memory, the FMC internally uses
+Page  784: ADDR[12:2] lines to generate the external address. Whatever the memory width, FMC_A[0] has to be
+Page  784: 2. The AutoPrecharge is not supported. FMC_A[10] must be connected to the external memory address
+Page  785: RM0433                                                                                Flexible memory controller (FMC)
+Page  786: Flexible memory controller (FMC)                                                                                             RM0433
+Page  787: RM0433                                                                                               Flexible memory controller (FMC)
+Page  787: The FMC generates the appropriate signal timings to drive the following types of memories:
+Page  788: Flexible memory controller (FMC)                                                                         RM0433
+Page  788: The FMC outputs a unique Chip Select signal, NE[4:1], per bank. All the other signals
+Page  788: The FMC supports a wide range of devices through a programmable timings among which:
+Page  788: •      Programmable continuous clock (FMC_CLK) output.
+Page  788: The FMC output Clock (FMC_CLK) is a sub-multiple of the fmc_ker_ck clock. It can be
+Page  788: FMC_BCR1 register:
+Page  788: •      If the CCLKEN bit is reset, the FMC generates the clock (FMC_CLK) only during
+Page  788: •      If the CCLKEN bit is set, the FMC generates a continuous clock during asynchronous
+Page  788: and synchronous accesses. To generate the FMC_CLK continuous clock, Bank 1 must
+Page  788: FMC_CLK frequency will be changed depending on AXI data transaction (refer to
+Page  788: Section 21.7.5: Synchronous transactions for FMC_CLK divider ratio formula).
+Page  788: Address         Duration of the address                        FMC clock cycle
+Page  788: setup               setup phase                                (fmc_ker_ck)
+Page  788: Duration of the address hold     Asynchronous,   FMC clock cycle
+Page  788: phase                  muxed I/Os      (fmc_ker_ck)
+Page  788: Duration of the data setup                      FMC clock cycle
+Page  788: phase                                  (fmc_ker_ck)
+Page  788: Duration of the bus         Asynchronous and FMC clock cycle
+Page  788: turnaround phase            synchronous read  (fmc_ker_ck)
+Page  788: Number of FMC clock cycles
+Page  788: Clock divide                                                     FMC clock cycle
+Page  788: (fmc_ker_ck) to build one         Synchronous                       2       16
+Page  788: ratio                                                          (fmc_ker_ck)
+Page  788: the first data of the burst                     (fmc_ker_ck)
+Page  789: RM0433                                                                  Flexible memory controller (FMC)
+Page  789: FMC signal name                      I/O                           Function
+Page  789: NWAIT                          I           NOR Flash wait input signal to the FMC
+Page  789: FMC signal name           I/O                                 Function
+Page  789: NWAIT                I                  NOR Flash wait input signal to the FMC
+Page  790: Flexible memory controller (FMC)                                                                     RM0433
+Page  790: FMC signal name   I/O                                   Function
+Page  790: NWAIT          I                      PSRAM wait input signal to the FMC
+Page  790: FMC signal name   I/O                                   Function
+Page  790: NWAIT          I                      PSRAM wait input signal to the FMC
+Page  791: RM0433                                                              Flexible memory controller (FMC)
+Page  791: SRAM. The transactions not allowed (or not supported) by the FMC are shown in gray in
+Page  791: Asynchronous   R       32        16          Y       Split into 2 FMC accesses
+Page  791: (muxed I/Os    Asynchronous   W       32        16          Y       Split into 2 FMC accesses
+Page  791: and non-     Asynchronous   R       64        16          Y       Split into 4 FMC accesses
+Page  791: I/Os)      Asynchronous   W       64        16          Y       Split into 4 FMC accesses
+Page  791: Asynchronous   R       32        16          Y       Split into 2 FMC accesses
+Page  791: Asynchronous   W       32        16          Y       Split into 2 FMC accesses
+Page  791: (multiplexed   Asynchronous   R       64        16          Y       Split into 4 FMC accesses
+Page  791: I/Os and non-   Asynchronous   W       64        16          Y       Split into 4 FMC accesses
+Page  792: Flexible memory controller (FMC)                                                                          RM0433
+Page  792: Asynchronous       R        32       16          Y       Split into 2 FMC accesses
+Page  792: SRAM and                                                                Split into 2 FMC accesses
+Page  792: Asynchronous       R        64       16          Y       Split into 4 FMC accesses
+Page  792: Split into 4 FMC accesses
+Page  792: •      All controller output signals change on the rising edge of the fmc_ker_ck clock.
+Page  792: fmc_ker_ck clock. Whatever the CLKDIV value, all outputs change as follows:
+Page  792: falling edge of FMC_CLK clock.
+Page  792: edge of FMC_CLK clock.
+Page  792: •      The FMC always samples the data before de-asserting the Chip Select signal. This
+Page  792: •      If the Extended mode is enabled (EXTMOD bit is set in the FMC_BCRx register), up to
+Page  792: •      If the Extended mode is disabled (EXTMOD bit is reset in the FMC_BCRx register), the
+Page  792: FMC can operate in Mode1 or Mode2 as follows:
+Page  792: (MTYP = 0x0 or 0x01 in the FMC_BCRx register)
+Page  792: the FMC_BCRx register).
+Page  793: RM0433                                                                Flexible memory controller (FMC)
+Page  793: the required configuration of FMC_BCRx, and FMC_BTRx/FMC_BWTRx registers.
+Page  793: fmc_ker_ck cycles        fmc_ker_ck cycles
+Page  794: Flexible memory controller (FMC)                                                                        RM0433
+Page  794: 1 fmc_ker_ck
+Page  794: fmc_ker_ck cycles        fmc_ker_ck cycles
+Page  794: The fmc_ker_ck cycle at the end of the write transaction helps guarantee the address and
+Page  794: data hold time after the NWE rising edge. Due to the presence of this fmc_ker_ck cycle, the
+Page  794: Table 163. FMC_BCRx bit fields
+Page  794: 31                FMCEN           0x1
+Page  795: RM0433                                                            Flexible memory controller (FMC)
+Page  795: Table 163. FMC_BCRx bit fields (continued)
+Page  795: Table 164. FMC_BTRx bit fields
+Page  795: 19:16      BUSTURN     Time between NEx high to NEx low (BUSTURN fmc_ker_ck)
+Page  795: Duration of the second access phase (DATAST+1 fmc_ker_ck cycles
+Page  795: for write accesses, DATAST fmc_ker_ck cycles for read accesses).
+Page  795: Duration of the first access phase (ADDSET fmc_ker_ck cycles).
+Page  796: Flexible memory controller (FMC)                                                                  RM0433
+Page  796: fmc_ker_ck cycles        fmc_ker_ck cycles
+Page  797: RM0433                                                                      Flexible memory controller (FMC)
+Page  797: 1 fmc_ker_ck
+Page  797: Data bus                                          data driven by FMC
+Page  797: fmc_ker_ck cycles        fmc_ker_ck cycles
+Page  797: Table 165. FMC_BCRx bit fields
+Page  797: 31                 FMCEN            0x1
+Page  798: Flexible memory controller (FMC)                                                                   RM0433
+Page  798: Table 165. FMC_BCRx bit fields (continued)
+Page  798: Table 166. FMC_BTRx bit fields
+Page  798: 19:16      BUSTURN       Time between NEx high to NEx low (BUSTURN fmc_ker_ck)
+Page  798: Duration of the second access phase (DATAST fmc_ker_ck cycles) for
+Page  798: Duration of the first access phase (ADDSET fmc_ker_ck cycles) for
+Page  798: Table 167. FMC_BWTRx bit fields
+Page  798: 19:16      BUSTURN       Time between NEx high to NEx low (BUSTURN fmc_ker_ck)
+Page  798: Duration of the second access phase (DATAST fmc_ker_ck cycles) for
+Page  798: Duration of the first access phase (ADDSET fmc_ker_ck cycles) for
+Page  799: RM0433                                                               Flexible memory controller (FMC)
+Page  799: fmc_ker_ck cycles          fmc_ker_ck cycles
+Page  799: 1 fmc_ker_ck
+Page  799: fmc_ker_ck cycles         fmc_ker_ck cycles
+Page  800: Flexible memory controller (FMC)                                                                      RM0433
+Page  800: 1 fmc_ker_ck
+Page  800: fmc_ker_ck cycles       fmc_ker_ck cycles
+Page  800: Table 168. FMC_BCRx bit fields
+Page  800: 31              FMCEN            0x1
+Page  801: RM0433                                                            Flexible memory controller (FMC)
+Page  801: Table 168. FMC_BCRx bit fields (continued)
+Page  801: Table 169. FMC_BTRx bit fields
+Page  801: 19:16      BUSTURN     Time between NEx high to NEx low (BUSTURN fmc_ker_ck)
+Page  801: Duration of the access second phase (DATAST fmc_ker_ck cycles)
+Page  801: Duration of the access first phase (ADDSET fmc_ker_ck cycles) for
+Page  801: Table 170. FMC_BWTRx bit fields
+Page  801: 19:16      BUSTURN     Time between NEx high to NEx low (BUSTURN fmc_ker_ck)
+Page  801: Duration of the access second phase (DATAST fmc_ker_ck cycles)
+Page  801: Duration of the access first phase (ADDSET fmc_ker_ck cycles) for
+Page  802: Flexible memory controller (FMC)                                                             RM0433
+Page  802: Note:      The FMC_BWTRx register is valid only if the Extended mode is set (mode B), otherwise its
+Page  802: fmc_ker_ck cycles           fmc_ker_ck cycles
+Page  802: 1 fmc_ker_ck
+Page  802: fmc_ker_ck cycles       fmc_ker_ck cycles
+Page  803: RM0433                                                               Flexible memory controller (FMC)
+Page  803: Table 171. FMC_BCRx bit fields
+Page  803: 31         FMCEN       0x1
+Page  804: Flexible memory controller (FMC)                                                                 RM0433
+Page  804: Table 172. FMC_BTRx bit fields
+Page  804: 19:16      BUSTURN       Time between NEx high to NEx low (BUSTURN fmc_ker_ck)
+Page  804: Duration of the second access phase (DATAST fmc_ker_ck cycles)
+Page  804: Duration of the first access phase (ADDSET fmc_ker_ck cycles) for
+Page  804: Table 173. FMC_BWTRx bit fields
+Page  804: 19:16      BUSTURN      Time between NEx high to NEx low (BUSTURN fmc_ker_ck)
+Page  804: Duration of the second access phase (DATAST fmc_ker_ck cycles)
+Page  804: Duration of the first access phase (ADDSET fmc_ker_ck cycles) for
+Page  805: RM0433                                                                Flexible memory controller (FMC)
+Page  805: fmc_ker_ck fmc_ker_ck        fmc_ker_ck
+Page  805: fmc_ker_ck     fmc_ker_ck          fmc_ker_ck
+Page  806: Flexible memory controller (FMC)                                                                    RM0433
+Page  806: Table 174. FMC_BCRx bit fields
+Page  806: 31             FMCEN             0x1
+Page  806: Table 175. FMC_BTRx bit fields
+Page  806: 19:16      BUSTURN        Time between NEx high to NEx low (BUSTURN fmc_ker_ck)
+Page  806: Duration of the second access phase (DATAST fmc_ker_ck cycles) for
+Page  807: RM0433                                                        Flexible memory controller (FMC)
+Page  807: Table 175. FMC_BTRx bit fields (continued)
+Page  807: fmc_ker_ck cycles)
+Page  807: Duration of the first access phase (ADDSET fmc_ker_ck cycles) for
+Page  807: Table 176. FMC_BWTRx bit fields
+Page  807: 19:16      BUSTURN    Time between NEx high to NEx low (BUSTURN fmc_ker_ck)
+Page  807: Duration of the second access phase (DATAST + 1 fmc_ker_ck
+Page  807: fmc_ker_ck cycles)
+Page  807: Duration of the first access phase (ADDSET fmc_ker_ck cycles) for
+Page  808: Flexible memory controller (FMC)                                                              RM0433
+Page  808: fmc_ker_ck cycles      fmc_ker_ck cycles
+Page  808: fmc_ker_ck cycles                           MSv40380V2
+Page  808: 1 fmc_ker_ck
+Page  808: fmc_ker_ck cycles        fmc_ker_ck cycles
+Page  808: fmc_ker_ck cycles
+Page  809: RM0433                                                             Flexible memory controller (FMC)
+Page  809: Table 177. FMC_BCRx bit fields
+Page  809: 31          FMCEN            0x1
+Page  809: Table 178. FMC_BTRx bit fields
+Page  809: 19:16      BUSTURN      Time between NEx high to NEx low (BUSTURN fmc_ker_ck)
+Page  809: Duration of the second access phase (DATAST fmc_ker_ck cycles for
+Page  809: 15:8      DATAST       read accesses and DATAST+1 fmc_ker_ck cycles for write
+Page  810: Flexible memory controller (FMC)                                                                 RM0433
+Page  810: Table 178. FMC_BTRx bit fields (continued)
+Page  810: Duration of the middle phase of the access (ADDHLD fmc_ker_ck
+Page  810: Duration of the first access phase (ADDSET fmc_ker_ck cycles).
+Page  810: accept or to provide data, the ASYNCWAIT bit has to be set in FMC_BCRx register.
+Page  810: The data setup phase must be programmed so that WAIT can be detected 4 fmc_ker_ck
+Page  810: DATAST ≥ ( 4 × FMC_CLK ) + max_wait_assertion_time
+Page  810: DATAST ≥ ( 4 × FMC_CLK ) + ( max_wait_assertion_time – address_phase – hold_phase
+Page  810: DATAST ≥ ( 4 × FMC_CLK )
+Page  810: Figure 108 and Figure 109 show the number of fmc_ker_ck clock cycles that are added to the
+Page  811: RM0433                                                                     Flexible memory controller (FMC)
+Page  811: 4 fmc_ker_ck
+Page  811: 1. NWAIT polarity depends on WAITPOL bit setting in FMC_BCRx register.
+Page  811: 1 fmc_ker_ck
+Page  811: 3 fmc_ker_ck
+Page  811: 1. NWAIT polarity depends on WAITPOL bit setting in FMC_BCRx register.
+Page  812: Flexible memory controller (FMC)                                                                RM0433
+Page  812: The memory clock, FMC_CLK, is a sub-multiple of fmc_ker_ck. It depends on the value of
+Page  812: FMC_CLK divider ratio = max (CLKDIV + 1,MWID ( AXI data size ))
+Page  812: If MWID is 16 or 8-bit, the FMC_CLK divider ratio is always defined by the programmed
+Page  812: If MWID is 32-bit, the FMC_CLK divider ratio depends also on AXI data size.
+Page  812: •   If CLKDIV=1, MWID = 32 bits, AXI data size=8 bits, FMC_CLK=fmc_ker_ck/4.
+Page  812: •   If CLKDIV=1, MWID = 16 bits, AXI data size=8 bits, FMC_CLK=fmc_ker_ck/2.
+Page  812: NOR Flash memories specify a minimum time from NADV assertion to FMC_CLK high. To
+Page  812: meet this constraint, the FMC does not issue the clock to the memory during the first internal
+Page  812: register. The FMC does not include the clock cycle when NADV is low in the data latency
+Page  812: the exact relation between the NOR Flash latency and the FMC DATLAT parameter can be
+Page  812: •   NOR Flash latency = (DATLAT + 2) FMC_CLK clock cycles
+Page  812: •   or NOR Flash latency = (DATLAT + 3) FMC_CLK clock cycles
+Page  812: be set to its minimum value. As a result, the FMC samples the data and waits long enough
+Page  812: to evaluate if the data are valid. Thus the FMC detects when the memory exits latency and
+Page  812: correctly for both the FMC and the memory, otherwise invalid data are mistaken for good
+Page  813: RM0433                                                                Flexible memory controller (FMC)
+Page  813: example a single-burst transaction is requested on 16-bit memories, the FMC performs a
+Page  813: Cellular RAM 1.5 does not allow burst access to cross the page boundary. The FMC
+Page  813: reached by configuring the CPSIZE bits in the FMC_BCR1 register following the memory
+Page  813: period, which corresponds to (DATLAT+2) FMC_CLK clock cycles.
+Page  813: The FMC supports both NOR Flash wait state configurations, for each Chip Select, thanks
+Page  813: to the WAITCFG bit in the FMC_BCRx registers (x = 0..3).
+Page  814: Flexible memory controller (FMC)                                                                                       RM0433
+Page  814: fmc_ker_ck
+Page  814: FMC_CLK
+Page  814: fmc_ker_ck
+Page  814: FMC_CLK
+Page  814: fmc_ker_ck
+Page  815: RM0433                                                          Flexible memory controller (FMC)
+Page  815: Table 179. FMC_BCRx bit fields
+Page  815: Table 180. FMC_BTRx bit fields
+Page  815: 0x0 to get CLK = fmc_ker_ck (Not supported)
+Page  815: 23:20        CLKDIV    0x1 to get CLK = 2 × fmc_ker_ck
+Page  815: 19:16       BUSTURN    Time between NEx high to NEx low (BUSTURN fmc_ker_ck)
+Page  816: Flexible memory controller (FMC)                                                                             RM0433
+Page  816: Table 180. FMC_BTRx bit fields (continued)
+Page  816: fmc_ker_ck
+Page  816: FMC_CLK
+Page  816: fmc_ker_ck cycles
+Page  816: Table 181. FMC_BCRx bit fields
+Page  816: 31                FMCEN          0x1
+Page  817: RM0433                                                           Flexible memory controller (FMC)
+Page  817: Table 181. FMC_BCRx bit fields (continued)
+Page  817: Table 182. FMC_BTRx bit fields
+Page  817: 0x0 to get CLK = fmc_ker_ck (not supported)
+Page  817: 0x1 to get CLK = 2 × fmc_ker_ck
+Page  817: 19:16       BUSTURN     Time between NEx high to NEx low (BUSTURN fmc_ker_ck)
+Page  818: Flexible memory controller (FMC)                                                                                                                           RM0433
+Page  818: SRAM/NOR-Flash chip-select control registers for bank x (FMC_BCRx)
+Page  818: FMCEN
+Page  818: Bit 31 FMCEN: FMC controller Enable
+Page  818: This bit enables/disables the FMC controller.
+Page  818: 0: Disable the FMC controller
+Page  818: 1: Enable the FMC controller
+Page  818: Note: The FMCEN bit of the FMC_BCR2..4 registers is don’t care. It is only enabled through
+Page  818: the FMC_BCR1 register.
+Page  818: Bits 25:24 BMAP[1:0]: FMC bank mapping
+Page  818: These bits allow different remap or swap of the FMC NOR/PSRAM and SDRAM banks (refer
+Page  818: 10: SDRAM Bank2 remapped on FMC bank2 and still accessible at default mapping
+Page  818: Note: The BMAP bits of the FMC_BCR2..4 registers are don’t care. It is only enabled through
+Page  818: the FMC_BCR1 register.
+Page  819: RM0433                                                                   Flexible memory controller (FMC)
+Page  819: This bit disables the Write FIFO used by the FMC controller.
+Page  819: Note: The WFDIS bit of the FMC_BCR2..4 registers is don’t care. It is only enabled through
+Page  819: the FMC_BCR1 register.
+Page  819: This bit enables the FMC_CLK clock output to external memory devices.
+Page  819: 0: The FMC_CLK is only generated during the synchronous memory access (read/write
+Page  819: transaction). The FMC_CLK clock ratio is specified by the programmed CLKDIV value in the
+Page  819: FMC_BCRx register (default after reset).
+Page  819: 1: The FMC_CLK is generated continuously during asynchronous and synchronous access.
+Page  819: The FMC_CLK clock is activated when the CCLKEN is set.
+Page  819: Note: The CCLKEN bit of the FMC_BCR2..4 registers is don’t care. It is only enabled through
+Page  819: the FMC_BCR1 register. Bank 1 must be configured in Synchronous mode to generate
+Page  819: the FMC_CLK continuous clock.
+Page  819: If CCLKEN bit is set, the FMC_CLK clock ratio is specified by CLKDIV value in the
+Page  819: FMC_BTR1 register. CLKDIV in FMC_BWTR1 is don’t care.
+Page  819: in the FMC_BTR2..4 and FMC_BWTR2..4 registers for other banks has no effect.)
+Page  819: FMC_BCRx register.
+Page  819: boundaries between pages. When these bits are configured, the FMC controller splits
+Page  819: This bit enables/disables the FMC to use the wait signal even during an asynchronous
+Page  820: Flexible memory controller (FMC)                                                                          RM0433
+Page  820: This bit enables the FMC to program the write timings for asynchronous accesses inside the
+Page  820: FMC_BWTR register, thus resulting in different timings for read and write operations.
+Page  820: 0: values inside FMC_BWTR register are not taken into account (default after reset)
+Page  820: 1: values inside FMC_BWTR register are taken into account
+Page  820: Note: When the Extended mode is disabled, the FMC can operate in Mode1 or Mode2 as
+Page  820: This bit indicates whether write operations are enabled/disabled in the bank by the FMC:
+Page  820: 0: Write operations are disabled in the bank by the FMC, an AXI slave error is reported,
+Page  820: 1: Write operations are enabled for the bank by the FMC (default after reset).
+Page  821: RM0433                                                                  Flexible memory controller (FMC)
+Page  822: Flexible memory controller (FMC)                                                                            RM0433
+Page  822: SRAM/NOR-Flash chip-select timing registers for bank x (FMC_BTRx)
+Page  822: PSRAM and NOR Flash memories.If the EXTMOD bit is set in the FMC_BCRx register, then
+Page  822: configure read accesses (this register) and one to configure write accesses (FMC_BWTRx
+Page  822: are taken into account only when the EXTMOD bit in the FMC_BCRx register is 1.
+Page  822: This timing parameter is not expressed in fmc_ker_ck periods, but in FMC_CLK periods.
+Page  822: 0000: Data latency of 2 FMC_CLK clock cycles for first burst access
+Page  822: 1111: Data latency of 17 FMC_CLK clock cycles for first burst access (default value after
+Page  822: Bits 23:20 CLKDIV[3:0]: Clock divide ratio (for FMC_CLK signal)
+Page  822: These bits define the period of FMC_CLK clock output signal, expressed in number of
+Page  822: fmc_ker_ck cycles:
+Page  822: 0001: FMC_CLK period = 2 × fmc_ker_ck periods
+Page  822: 0010: FMC_CLK period = 3 × fmc_ker_ck periods
+Page  822: 1111: FMC_CLK period = 16 × fmc_ker_ck periods (default value after reset)
+Page  822: Note: Refer to Section 21.7.5: Synchronous transactions for FMC_CLK divider ratio formula)
+Page  823: RM0433                                                                     Flexible memory controller (FMC)
+Page  823: • There is a bus turnaround delay of 1 FMC clock cycle between:
+Page  823: • There is a bus turnaround delay of 2 FMC clock cycle between:
+Page  823: • There is a bus turnaround delay of 3 FMC clock cycle between:
+Page  823: 0000: BUSTURN phase duration = 0 fmc_ker_ck clock cycle added
+Page  823: 1111: BUSTURN phase duration = 15 x fmc_ker_ck clock cycles added (default value after
+Page  823: 0000 0001: DATAST phase duration = 1 × fmc_ker_ck clock cycles
+Page  823: 0000 0010: DATAST phase duration = 2 × fmc_ker_ck clock cycles
+Page  823: 1111 1111: DATAST phase duration = 255 × fmc_ker_ck clock cycles (default value after
+Page  823: 1 x fmc_ker_ck clock cycles.
+Page  824: Flexible memory controller (FMC)                                                                          RM0433
+Page  824: 0001: ADDHLD phase duration =1 × fmc_ker_ck clock cycle
+Page  824: 0010: ADDHLD phase duration = 2 × fmc_ker_ck clock cycle
+Page  824: 1111: ADDHLD phase duration = 15 × fmc_ker_ck clock cycles (default value after reset)
+Page  824: 0000: ADDSET phase duration = 0 × fmc_ker_ck clock cycle
+Page  824: 1111: ADDSET phase duration = 15 × fmc_ker_ck clock cycles (default value after reset)
+Page  824: On PSRAMs (CRAMs) the filled DATLAT must be set to 0, so that the FMC exits its latency
+Page  825: RM0433                                                                     Flexible memory controller (FMC)
+Page  825: SRAM/NOR-Flash write timing registers for bank x (FMC_BWTRx)
+Page  825: PSRAMs and NOR Flash memories. When the EXTMOD bit is set in the FMC_BCRx
+Page  825: bits are taken into account only when the EXTMOD bit in the FMC_BCRx register is 1.
+Page  825: (BUSTRUN + 1) fmc_ker_ck period ≥ tEHELmin.
+Page  825: • There is a bus turnaround delay of 2 FMC clock cycle between:
+Page  825: • There is a bus turnaround delay of 3 FMC clock cycle between:
+Page  825: 0000: BUSTURN phase duration = 0 fmc_ker_ck clock cycle added
+Page  825: 1111: BUSTURN phase duration = 15 fmc_ker_ck clock cycles added (default value after reset)
+Page  826: Flexible memory controller (FMC)                                                                           RM0433
+Page  826: 0000 0001: DATAST phase duration = 1 × fmc_ker_ck clock cycles
+Page  826: 0000 0010: DATAST phase duration = 2 × fmc_ker_ck clock cycles
+Page  826: 1111 1111: DATAST phase duration = 255 × fmc_ker_ck clock cycles (default value after reset)
+Page  826: 0001: ADDHLD phase duration = 1 × fmc_ker_ck clock cycle
+Page  826: 0010: ADDHLD phase duration = 2 × fmc_ker_ck clock cycle
+Page  826: 1111: ADDHLD phase duration = 15 × fmc_ker_ck clock cycles (default value after reset)
+Page  826: These bits are written by software to define the duration of the address setup phase in fmc_ker_ck
+Page  826: 0000: ADDSET phase duration = 0 × fmc_ker_ck clock cycle
+Page  826: 1111: ADDSET phase duration = 15 × fmc_ker_ck clock cycles (default value after reset)
+Page  827: RM0433                                                                       Flexible memory controller (FMC)
+Page  827: The FMC generates the appropriate signal timings to drive 8- and 16-bit NAND Flash
+Page  827: Memory setup          (fmc_ker_ck) required to set up the                    AHB clock cycle
+Page  827: time                  address before the command                           (fmc_ker_ck)
+Page  827: Minimum duration (in fmc_ker_ck
+Page  827: (fmc_ker_ck)
+Page  827: (fmc_ker_ck) during which the
+Page  827: the data if a write access is                       (fmc_ker_ck)
+Page  827: (fmc_ker_ck) during which the data                     AHB clock cycle
+Page  827: bus is kept in high-Z state after a                   (fmc_ker_ck)
+Page  827: FMC signal name              I/O                               Function
+Page  827: NWAIT/INT                  I     NAND Flash ready/busy input signal to the FMC
+Page  828: Flexible memory controller (FMC)                                                                           RM0433
+Page  828: Theoretically, there is no capacity limitation as the FMC can manage as many address
+Page  828: FMC signal name           I/O                                 Function
+Page  828: NWAIT/INT               I       NAND Flash ready/busy input signal to the FMC
+Page  828: Note:      Theoretically, there is no capacity limitation as the FMC can manage as many address
+Page  828: Asynchronous        R      16          8            Y         Split into 2 FMC accesses
+Page  828: Asynchronous    W          16          8            Y         Split into 2 FMC accesses
+Page  828: Asynchronous        R      32          8            Y         Split into 4 FMC accesses
+Page  828: Asynchronous    W          32          8            Y         Split into 4 FMC accesses
+Page  828: Asynchronous        R      32          8            Y         Split into 8 FMC accesses
+Page  828: Asynchronous    W          32          8            Y         Split into 8 FMC accesses
+Page  829: RM0433                                                           Flexible memory controller (FMC)
+Page  829: Asynchronous    R       32          16        Y        Split into 2 FMC accesses
+Page  829: Asynchronous   W        32          16        Y        Split into 2 FMC accesses
+Page  829: Asynchronous    R       32          16        Y        Split into 4 FMC accesses
+Page  829: Asynchronous   W        32          16        Y        Split into 4 FMC accesses
+Page  829: •    Control register: FMC_PCR
+Page  829: •    Interrupt status register: FMC_SR
+Page  829: •    ECC register: FMC_ECCR
+Page  829: •    Timing register for Common memory space: FMC_PMEM
+Page  829: •    Timing register for Attribute memory space: FMC_PATT
+Page  829: fmc_ker_ck cycles for the three phases of any NAND Flash access, plus one parameter that
+Page  830: Flexible memory controller (FMC)                                                                               RM0433
+Page  830: fmc_ker_ck
+Page  830: 2. For write accesses, the hold phase delay is (MEMHOLD) fmc_ker_ck cycles and for read access is
+Page  830: (MEMHOLD + 1) fmc_ker_ck cycles.
+Page  830: Flash memory device are driven by address signals from the FMC controller. This means
+Page  830: 1.   Program and enable the corresponding memory bank by configuring the FMC_PCR
+Page  830: and FMC_PMEM (and for some devices, FMC_PATT, see Section 21.8.5: NAND Flash
+Page  830: makes it possible to use a different timing configuration of the FMC, which can be used
+Page  831: RM0433                                                                     Flexible memory controller (FMC)
+Page  831: 5. CPU wrote byte A25 at address 0x8802 0000: FMC performs a write access using FMC_PATT2 timing
+Page  831: definition, where ATTHOLD ≥ 7 (providing that (7+1) × fmc_ker_ck = 112 ns > tWB max). This guarantees
+Page  832: Flexible memory controller (FMC)                                                               RM0433
+Page  832: delay of (MEMHOLD + 1) fmc_ker_ck cycles, and any CPU write access has a hold delay of
+Page  832: (MEMHOLD) fmc_ker_ck cycles that is inserted between the rising edge of the NWE signal
+Page  832: The FMC controller includes an error correction code computation hardware block. It
+Page  832: The ECC algorithm implemented in the FMC can perform 1-bit error correction and 2-bit
+Page  832: by the host CPU, the FMC_ECCR registers must be read to retrieve the computed value.
+Page  832: block, the ECCEN bit must be set to one in the FMC_PCR registers.
+Page  833: RM0433                                                                                        Flexible memory controller (FMC)
+Page  833: 1.          Enable the ECCEN bit in the FMC_PCR register.
+Page  833: 4.          Read the ECC value available in the FMC_ECCR register and store it in a variable.
+Page  833: 5.          Clear the ECCEN bit and then enable it in the FMC_PCR register before reading back
+Page  833: 6.          Read the new ECC value available in the FMC_ECCR register.
+Page  833: NAND Flash control registers (FMC_PCR)
+Page  833: These bits set time from ALE low to RE low in number of fmc_ker_ck clock cycles.
+Page  833: Time is: t_ar = (TAR + SET + 2) × tfmc_ker_ck where tfmc_ker_ck is the FMC clock period
+Page  833: 0000: 1 x fmc_ker_ck cycle (default)
+Page  833: 1111: 16 x fmc_ker_ck cycles
+Page  834: Flexible memory controller (FMC)                                                                      RM0433
+Page  834: These bits set time from CLE low to RE low in number of fmc_ker_ck clock cycles. The time
+Page  834: t_clr = (TCLR + SET + 2) × tfmc_ker_ck where tfmc_ker_ck is the fmc_ker_ck clock period
+Page  834: 0000: 1 x fmc_ker_ck cycle (default)
+Page  834: 1111: 16 x fmc_ker_ck cycles
+Page  834: FIFO status and interrupt register (FMC_SR)
+Page  834: This register contains information about the FIFO status and interrupt. The FMC features a
+Page  834: other than the FMC, while the FMC is draining its FIFO into the memory. One of these
+Page  835: RM0433                                                                           Flexible memory controller (FMC)
+Page  836: Flexible memory controller (FMC)                                                                              RM0433
+Page  836: Common memory space timing register (FMC_PMEM)
+Page  836: The FMC_PMEM read/write register contains the timing information for NAND Flash
+Page  836: These bits define the number of fmc_ker_ck clock cycles during which the data bus is kept
+Page  836: 0000 0000: 0 x fmc_ker_ck cycle
+Page  836: 1111 1110: 254 x fmc_ker_ck cycles
+Page  836: These bits define the number of fmc_ker_ck clock cycles for write accesses and
+Page  836: fmc_ker_ck+1 clock cycles for read accesses during which the address is held (and data for
+Page  836: 0000 0001: 1 fmc_ker_ck cycle for write access / 3 fmc_ker_ck cycle for read access
+Page  836: 1111 1110: 254 fmc_ker_ck cycles for write access / 257 fmc_ker_ck cycles for read access
+Page  836: These bits define the minimum number of fmc_ker_ck (+1) clock cycles to assert the
+Page  836: the end of the programmed value of fmc_ker_ck:
+Page  836: 0000 0001: x fmc_ker_ck cycles (+ wait cycle introduced by de-asserting NWAIT)
+Page  836: 1111 1110: 255 x fmc_ker_ck cycles (+ wait cycle introduced by de-asserting NWAIT)
+Page  836: These bits define the number of fmc_ker_ck (+1) clock cycles to set up the address before
+Page  836: 0000 0000: fmc_ker_ck cycles
+Page  836: 1111 1110: 255 x fmc_ker_ck cycles
+Page  837: RM0433                                                                     Flexible memory controller (FMC)
+Page  837: Attribute memory space timing registers (FMC_PATT)
+Page  837: The FMC_PATT read/write register contains the timing information for NAND Flash memory
+Page  837: These bits define the number of fmc_ker_ck clock cycles during which the data bus is kept in
+Page  837: 0000 0000: 0 x fmc_ker_ck cycle
+Page  837: 1111 1110: 254 x fmc_ker_ck cycles
+Page  837: These bits define the number of fmc_ker_ck clock cycles during which the address is held
+Page  837: 0000 0001: 1 x fmc_ker_ck cycle
+Page  837: 1111 1110: 254 x fmc_ker_ck cycles
+Page  837: These bits define the minimum number of x fmc_ker_ck (+1) clock cycles to assert the
+Page  837: the end of the programmed value of fmc_ker_ck:
+Page  837: 0000 0001: 2 x fmc_ker_ck cycles (+ wait cycle introduced by de-assertion of NWAIT)
+Page  837: 1111 1110: 255 x fmc_ker_ck cycles (+ wait cycle introduced by de-asserting NWAIT)
+Page  837: These bits define the number of fmc_ker_ck (+1) clock cycles to set up address before the
+Page  837: 0000 0000: 1 x fmc_ker_ck cycle
+Page  837: 1111 1110: 255 x fmc_ker_ck cycles
+Page  838: Flexible memory controller (FMC)                                                                             RM0433
+Page  838: ECC result registers (FMC_ECCR)
+Page  838: computation modules of the FMC NAND controller. When the CPU reads/writes the data
+Page  838: FMC_PCR registers), the CPU must read the computed ECC value from the FMC_ECC
+Page  838: otherwise. The FMC_ECCR register should be cleared after being read by setting the
+Page  839: RM0433                                                                  Flexible memory controller (FMC)
+Page  839: •    SDRAM clock can be fmc_ker_ck/2 or fmc_ker_ck/3
+Page  839: At startup, the SDRAM I/O pins used to interface the FMC SDRAM controller with the
+Page  839: A[12:0]           O                        Address                      FMC_A[12:0]
+Page  839: D[31:0]           I/O                Bidirectional data bus             FMC_D[31:0]
+Page  839: BA[1:0]           O                     Bank Address                   FMC_A[15:14]
+Page  839: NBL[3:0]           O                                                    FMC_NBL[3:0]
+Page  840: Flexible memory controller (FMC)                                                               RM0433
+Page  840: memory clock (FMC_SDCLK).
+Page  840: the Target Bank bits CTB1 and CTB2 in the FMC_SDCMR register:
+Page  840: 1.   Program the memory device features into the FMC_SDCRx register. The SDRAM
+Page  840: clock frequency, RBURST and RPIPE must be programmed in the FMC_SDCR1
+Page  840: 2.   Program the memory device timing into the FMC_SDTRx register. The TRP and TRC
+Page  840: timings must be programmed in the FMC_SDTR1 register.
+Page  840: FMC_SDCMR register to start delivering the clock to the memory (SDCKE is driven
+Page  840: FMC_SDCMR register to issue a “Precharge All” command.
+Page  840: as the number of consecutive Auto-refresh commands (NRFS) in the FMC_SDCMR
+Page  840: (CTB1 and/or CTB2) in the FMC_SDCMR register to issue a “Load Mode Register”
+Page  840: 8.   Program the refresh rate in the FMC_SDRTR register
+Page  840: Note:      If two SDRAM devices are connected to the FMC, all the accesses performed at the same
+Page  840: timings) in the FMC_SDTR1 register.
+Page  841: RM0433                                                                Flexible memory controller (FMC)
+Page  841: clearing the WP bit in the FMC_SDCRx register.
+Page  842: Flexible memory controller (FMC)                                                                   RM0433
+Page  842: The FMC SDRAM controller features a Cacheable read FIFO (6 lines x 32 bits). It is used to
+Page  842: programmed FMC_SDCRx) and during the RPIPE delay when set to 2xfmc_ker_ck clock
+Page  842: cycles as configured in FMC_SDCR1) following this formula: CAS Latency + 1 + (RPIPE
+Page  842: DIV2). The RBURST bit must be set in the FMC_SDCR1 register to anticipate the next read
+Page  842: •    CAS=3, RPIPE= 2xfmc_ker_ck. In this case, 5 data (not committed) are stored in the
+Page  842: •    CAS=3, RPIPE= 1xfmc_ker_ck. In this case, 4 data (not committed) are stored in the
+Page  843: RM0433                                                                    Flexible memory controller (FMC)
+Page  843: FMC SDRAM Controller
+Page  843: one of the address tags           FMC SDRAM Controller
+Page  843: •     RBURST control bit should be set to ‘1’ in the FMC_SDCR1 register.
+Page  844: Flexible memory controller (FMC)                                                              RM0433
+Page  844: These parameters are defined into the FMC_SDTRx register.
+Page  845: RM0433                                                                 Flexible memory controller (FMC)
+Page  846: Flexible memory controller (FMC)                                                                    RM0433
+Page  846: COUNT value in the register FMC_SDRTR. This value defines the number of memory clock
+Page  846: If the Auto-refresh command is generated by the FMC_SDCMR Command Mode register
+Page  847: RM0433                                                           Flexible memory controller (FMC)
+Page  847: bits (CTB1 and/or CTB2) in the FMC_SDCMR register.
+Page  847: Bank bits (CTB1 and/or CTB2) must be configured in the FMC_SDCMR register.
+Page  848: Flexible memory controller (FMC)                                                                                       RM0433
+Page  849: RM0433                                                             Flexible memory controller (FMC)
+Page  849: bits (CTB1 and/or CTB2) in the FMC_SDCMR register.
+Page  849: Target Bank bits (CTB1 and/or CTB2) must be configured in the FMC_SDCMR register.
+Page  850: Flexible memory controller (FMC)                                                                                                                                            RM0433
+Page  850: SDRAM Control registers for SDRAM memory bank x (FMC_SDCRx)
+Page  850: These bits define the delay, in fmc_ker_ck clock cycles, for reading data after CAS latency.
+Page  850: 00: No fmc_ker_ck clock cycle delay
+Page  850: 01: One fmc_ker_ck clock cycle delay
+Page  850: 10: Two fmc_ker_ck clock cycle delay
+Page  850: Note: The corresponding bits in the FMC_SDCR2 register is read only.
+Page  850: Note: The corresponding bit in the FMC_SDCR2 register is read only.
+Page  850: 10: SDCLK period = 2 x fmc_ker_ck periods
+Page  850: 11: SDCLK period = 3 x fmc_ker_ck periods
+Page  850: Note: The corresponding bits in the FMC_SDCR2 register is read only.
+Page  851: RM0433                                                                                 Flexible memory controller (FMC)
+Page  851: SDRAM Timing registers for SDRAM memory bank x (FMC_SDTRx)
+Page  852: Flexible memory controller (FMC)                                                                    RM0433
+Page  852: memory clock cycles. The TRP timing is only configured in the FMC_SDTR1 register. If two
+Page  852: Note: The corresponding bits in the FMC_SDTR2 register are don’t care.
+Page  852: If two SDRAM devices are used, the FMC_SDTR1 and FMC_SDTR2 must be programmed
+Page  852: cycles. The TRC timing is only configured in the FMC_SDTR1 register. If two SDRAM devices are
+Page  852: Note: The corresponding bits in the FMC_SDTR2 register are don’t care.
+Page  853: RM0433                                                                         Flexible memory controller (FMC)
+Page  853: Note: If two SDRAM devices are used, the FMC_SDTR1 and FMC_SDTR2 must be programmed
+Page  853: the timing parameters configured for Bank 1 (TMRD and TRAS timings) in the FMC_SDTR1
+Page  853: The TRP and TRC timings are only configured in the FMC_SDTR1 register. If two SDRAM
+Page  853: SDRAM Command mode register (FMC_SDCMR)
+Page  854: Flexible memory controller (FMC)                                                                      RM0433
+Page  854: SDRAM refresh timer register (FMC_SDRTR)
+Page  855: RM0433                                                                       Flexible memory controller (FMC)
+Page  855: As soon as the FMC_SDRTR register is programmed, the timer starts counting. If the value
+Page  856: Flexible memory controller (FMC)                                                                                                       RM0433
+Page  856: SDRAM Status register (FMC_SDSR)
+Page  857: RM0433                                                                                                                                                                                                Flexible memory controller (FMC)
+Page  857: 21.10         FMC register map
+Page  857: The following table summarizes the FMC registers.
+Page  857: Table 189. FMC register map
+Page  857: FMCEN
+Page  857: 0x00    FMC_BCR1
+Page  857: FMC_BCR2
+Page  857: FMC_BCR3
+Page  857: FMC_BCR4
+Page  857: FMC_BTR1                             DATLAT[3:0]                             CLKDIV[3:0] BUSTURN[3:0]                                                                                      DATAST[7:0]                                         ADDHLD[3:0] ADDSET[3:0]
+Page  857: FMC_BTR2                             DATLAT[3:0]                             CLKDIV[3:0] BUSTURN[3:0]                                                                                      DATAST[7:0]                                         ADDHLD[3:0] ADDSET[3:0]
+Page  857: FMC_BTR3                             DATLAT[3:0]                             CLKDIV[3:0] BUSTURN[3:0]                                                                                      DATAST[7:0]                                         ADDHLD[3:0] ADDSET[3:0]
+Page  857: FMC_BTR4                             DATLAT[3:0]                             CLKDIV[3:0] BUSTURN[3:0]                                                                                      DATAST[7:0]                                         ADDHLD[3:0] ADDSET[3:0]
+Page  857: FMC_BWTR1                                                                                                 BUSTURN[3:0]                                                                     DATAST[7:0]                                         ADDHLD[3:0] ADDSET[3:0]
+Page  857: FMC_BWTR2                                                                                                 BUSTURN[3:0]                                                                     DATAST[7:0]                                         ADDHLD[3:0] ADDSET[3:0]
+Page  857: FMC_BWTR3                                                                                                 BUSTURN[3:0]                                                                     DATAST[7:0]                                         ADDHLD[3:0] ADDSET[3:0]
+Page  857: FMC_BWTR4                                                                                                 BUSTURN[3:0]                                                                     DATAST[7:0]                                         ADDHLD[3:0] ADDSET[3:0]
+Page  857: FMC_PCR                                                                                                                                                  TAR[3:0]                                     TCLR[3:0]
+Page  857: FMC_SR
+Page  858: Flexible memory controller (FMC)                                                                                                                                                                                                              RM0433
+Page  858: Table 189. FMC register map (continued)
+Page  858: FMC_PMEM                      MEMHIZx[7:0]                                            MEMHOLDx[7:0]                                            MEMWAITx[7:0]                                             MEMSETx[7:0]
+Page  858: FMC_PATT                      ATTHIZ[7:0]                                           ATTHOLD[7:0]                                             ATTWAIT[7:0]                                               ATTSET[7:0]
+Page  858: FMC_ECCR                                                                                                                 ECC[31:0]
+Page  858: FMC_SDCR1                                                                                                                                                             WP       NB       NR[1:0] NC
+Page  858: FMC_SDCR2                                                                                                                                                             WP       NB       NR[1:0] NC
+Page  858: FMC_SDTR1                                      TRCD[3:0]                       TRP[3:0]                    TWR[3:0]                     TRC[3:0]                  TRAS[3:0]                   TXSR[3:0]                          TMRD[3:0]
+Page  858: FMC_SDTR2                                      TRCD[3:0]                       TRP[3:0]                    TWR[3:0]                     TRC[3:0]                  TRAS[3:0]                   TXSR[3:0]                          TMRD[3:0]
+Page  858: FMC_SDCMR                                                                                                                  MRD                                                         NRFS[3:0]                                     MODE[2:0]
+Page  858: FMC_SDRTR                                                                                                                                                                           COUNT[12:0]
+Page  858: FMC_SDSR
+Page 2164: FMCK
+Page 2164: Sampling rate  FMCK = 256 x FWS
+Page 2164: Sampling rate  FMCK = 256 x FWS
+Page 2174: In addition, the frequency of the MCK (FMCK) is given by the formula:
+Page 2217: sai_x_ker_ck         MCLK     FMCLK/ FFS   FRL (1)      OSR    NOMCK    MCKDIV[5:0]
+Page 3218: Section 22: Flexible memory controller (FMC)
+Page 3218: – Updated internal signals in Figure 86: FMC block diagram
+Page 3218: – HCLK renamed fmc_hclk
+Page 3218: – KCK_FMC renamed fmc_ker_ck
+Page 3218: (FMC_BTR1..4), modified DATAST example and updated
+Page 3218: registers 1..4 (FMC_BWTR1..4): updated BURSTURN description.
+Page 3218: Updated Section : SDRAM Control registers 1,2 (FMC_SDCR1,2)
+Page 3218: Added missing FMC_SDCR2 bits in Table 181: FMC register map.
+Page 3229: Section 21: Flexible memory controller (FMC)
+Page 3229: Updated Figure 94: FMC memory banks (default mapping) and
+Page 3229: Table 147: FMC bank mapping options to change Bank 4 to “not
+Page 3229: used by FMC).
+Page 3239: FMC_BCRx . . . . . . . . . . . . . . . . . . . . . . . . . .818     HRTIM_BMPER . . . . . . . . . . . . . . . . . . . . . 1487
+Page 3239: FMC_BTRx . . . . . . . . . . . . . . . . . . . . . . . . . .822     HRTIM_BMTRGR . . . . . . . . . . . . . . . . . . . . 1485
+Page 3239: FMC_BWTRx . . . . . . . . . . . . . . . . . . . . . . . . .825      HRTIM_CHPxR . . . . . . . . . . . . . . . . . . . . . . 1464
+Page 3239: FMC_ECCR . . . . . . . . . . . . . . . . . . . . . . . . . .838     HRTIM_CMP1CxR . . . . . . . . . . . . . . . . . . . 1449
+Page 3239: FMC_PATT . . . . . . . . . . . . . . . . . . . . . . . . . .837     HRTIM_CMP1xR . . . . . . . . . . . . . . . . . . . . . 1448
+Page 3239: FMC_PCR . . . . . . . . . . . . . . . . . . . . . . . . . . .833    HRTIM_CMP2xR . . . . . . . . . . . . . . . . . . . . . 1449
+Page 3239: FMC_PMEM . . . . . . . . . . . . . . . . . . . . . . . . . .836     HRTIM_CMP3xR . . . . . . . . . . . . . . . . . . . . . 1450
+Page 3239: FMC_SDCMR . . . . . . . . . . . . . . . . . . . . . . . .853        HRTIM_CMP4xR . . . . . . . . . . . . . . . . . . . . . 1450
+Page 3239: FMC_SDCRx . . . . . . . . . . . . . . . . . . . . . . . . .850      HRTIM_CNTxR . . . . . . . . . . . . . . . . . . . . . . 1447
+Page 3239: FMC_SDRTR . . . . . . . . . . . . . . . . . . . . . . . . .854      HRTIM_CPT1xCR . . . . . . . . . . . . . . . . . . . . 1466
+Page 3239: FMC_SDSR . . . . . . . . . . . . . . . . . . . . . . . . . .856     HRTIM_CPT1xR . . . . . . . . . . . . . . . . . . . . . 1451
+Page 3239: FMC_SDTRx . . . . . . . . . . . . . . . . . . . . . . . . .851      HRTIM_CPT2xCR . . . . . . . . . . . . . . . . . . . . 1467
+Page 3239: FMC_SR . . . . . . . . . . . . . . . . . . . . . . . . . . . .834   HRTIM_CPT2xR . . . . . . . . . . . . . . . . . . . . . 1451

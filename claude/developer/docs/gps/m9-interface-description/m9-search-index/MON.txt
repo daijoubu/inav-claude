@@ -1,0 +1,272 @@
+Keyword: MON
+Occurrences: 268
+================================================================================
+
+Page    5: 3.10.8.1 Jamming/interference monitor conﬁguration............................................................62
+Page    8: 3.14 UBX-MON (0x0a).............................................................................................................................. 124
+Page    8: 3.14.1 UBX-MON-BATCH (0x0a 0x32)............................................................................................ 124
+Page    8: 3.14.2 UBX-MON-COMMS (0x0a 0x36).......................................................................................... 125
+Page    8: 3.14.3 UBX-MON-GNSS (0x0a 0x28)...............................................................................................126
+Page    8: 3.14.4 UBX-MON-HW (0x0a 0x09)...................................................................................................126
+Page    8: 3.14.5 UBX-MON-HW2 (0x0a 0x0b)................................................................................................ 127
+Page    8: 3.14.6 UBX-MON-HW3 (0x0a 0x37)................................................................................................ 128
+Page    8: 3.14.7 UBX-MON-IO (0x0a 0x02)......................................................................................................129
+Page    8: 3.14.8 UBX-MON-MSGPP (0x0a 0x06)........................................................................................... 130
+Page    8: 3.14.9 UBX-MON-PATCH (0x0a 0x27).............................................................................................130
+Page    8: 3.14.10 UBX-MON-RF (0x0a 0x38).................................................................................................. 131
+Page    8: 3.14.11 UBX-MON-RXBUF (0x0a 0x07).......................................................................................... 132
+Page    8: 3.14.12 UBX-MON-RXR (0x0a 0x21)............................................................................................... 132
+Page    8: 3.14.13 UBX-MON-SPAN (0x0a 0x31).............................................................................................132
+Page    8: 3.14.14 UBX-MON-TXBUF (0x0a 0x08).......................................................................................... 133
+Page    8: 3.14.15 UBX-MON-VER (0x0a 0x04)............................................................................................... 134
+Page   12: 5.9.9 CFG-ITFM: Jamming and interference monitor conﬁguration........................................ 202
+Page   14: in the boot screen and in the UBX-MON-VER message. If the ﬁrmware has been loaded from a
+Page   14: conﬁgured using CFG-INFMSG. The UBX-MON-VER message can be polled using the UBX polling
+Page   15: The following information is available (✓) from the boot screen (B) and the UBX-MON-VER message
+Page   16: See the integration manual for a basic receiver conﬁguration most commonly used.
+Page   16: UBX-MON-VER. Similarly, the NMEA-Standard-GGA is the NMEA standard message (sentence) with
+Page   17: References to ﬁelds of the message add the ﬁeld name separated by a dot ("."), e.g. UBX-MON-
+Page   20: Polled                       Non-periodic messages that can only be polled. E.g. UBX-MON-VER.
+Page   22: shall be marked with a manufacturer mnemonic. The mnemonic assigned to u-blox is UBX and is
+Page   28: Comment           This message outputs the results of the Receiver Autonomous Integrity Monitoring Algorithm (RAIM).
+Page   37: 9          date               ddmmyy      -           091202           Date in day, month, year format. See section UTC
+Page   39: Comment           UTC, day, month, year and local time zone.
+Page   39: Structure         $xxZDA,time,day,month,year,ltzh,ltzn*cs\r\n
+Page   39: 3          month              mm           month       09               UTC month (range: 1-12)
+Page   44: 3          date               ddmmyy      -           091202           UTC date, day, month, year. See section UTC
+Page   46: indicate whether the date (year, month and day ﬁelds), and, respectively, the time (hour, min and
+Page   47: (e.g. "m" for meters, "s" for seconds). For civil (UTC) time representation units of years (y), months
+Page   47: (month), days (d), hours (h), minutes (min) and seconds (s) are used.
+Page   50: UBX-CFG-ITFM            0x06 0x39   •   Jamming/interference monitor conﬁguration (Get/set)
+Page   52: UBX-MON – Monitoring messages
+Page   52: UBX-MON-BATCH             0x0a 0x32      •   Data batching buﬀer status (Polled)
+Page   52: UBX-MON-COMMS             0x0a 0x36      •   Communication port information (Periodic/polled)
+Page   52: UBX-MON-GNSS              0x0a 0x28      •   Information message major GNSS selection (Polled)
+Page   52: UBX-MON-HW                0x0a 0x09      •   Hardware status (Periodic/polled)
+Page   52: UBX-MON-HW2               0x0a 0x0b      •   Extended hardware status (Periodic/polled)
+Page   52: UBX-MON-HW3               0x0a 0x37      •   I/O pin status (Periodic/polled)
+Page   52: UBX-MON-IO                0x0a 0x02      •   I/O system status (Periodic/polled)
+Page   52: UBX-MON-MSGPP             0x0a 0x06      •   Message parse and process status (Periodic/polled)
+Page   52: UBX-MON-PATCH             0x0a 0x27      •   Installed patches (Polled)
+Page   52: UBX-MON-RF                0x0a 0x38      •   RF information (Periodic/polled)
+Page   52: UBX-MON-RXBUF             0x0a 0x07      •   Receiver buﬀer status (Periodic/polled)
+Page   52: UBX-MON-RXR               0x0a 0x21      •   Receiver status information (Output)
+Page   52: UBX-MON-SPAN              0x0a 0x31      •   Signal characteristics (Periodic/polled)
+Page   52: UBX-MON-TXBUF             0x0a 0x08      •   Transmitter buﬀer status (Periodic/polled)
+Page   52: UBX-MON-VER               0x0a 0x04      •   Poll receiver and software version (Poll request)
+Page   55: Refer to UBX-MON-RF for a description of the ﬁelds in the message used to obtain the status of the antenna.
+Page   62: 3.10.8.1 Jamming/interference monitor conﬁguration
+Page   62: Jamming/interference monitor conﬁguration
+Page   62: 4                   X4        config2              -            -           Extra settings for jamming/interference monitor
+Page   63: bit 1   U:1       psmOncePer               -           -            1 = enable recording only one single position per PSM
+Page   81: bit 12     U:1       vmon                 -            -           SFDR Vehicle Monitoring Parameter (only available on
+Page   94: 10              U1    month       -          month        Month, range 1..12 (UTC)
+Page   94: 11              U1    day         -          d            Day of month, range 1..31 (UTC)
+Page   96: 4                   U1        month                   -           -            Month (1-12) of UTC time
+Page   98: 30                  U1       oldestMonth            -           -            Oldest month (1-12)
+Page   98: 38                  U1       newestMonth            -           -            Newest month (1-12)
+Page   99: bit 0   U:1       sendMonFirst           -           -            Send UBX-MON-BATCH message before sending the
+Page  100: 32            U1        month                  -           -            Month (1-12) of UTC time
+Page  100: 8             U1        month                  -           -            Month (1-12) of UTC time
+Page  101: 8             U1        month                 -            -           Month (1-12) of UTC time
+Page  103: 5             U1        month                  -           -            month (1..12)
+Page  104: 60            I4        Cuc                      2^-31       radians      Amplitude of cosine harmonic correction term to the
+Page  104: 64            I4        Cus                      2^-31       radians      Amplitude of sine harmonic correction term to the
+Page  104: 68            I4        Crc                      2^-6        m            Amplitude of cosine harmonic correction term to the
+Page  104: 72            I4        Crs                      2^-6        m            Amplitude of sine harmonic correction term to the
+Page  104: 76            I4        Cic                      2^-31       radians      Amplitude of cosine harmonic correction term to the
+Page  104: 80            I4        Cis                      2^-31       radians      Amplitude of sine harmonic correction term to the
+Page  109: 38            I2        cuc                      2^-29       radians      Amplitude of the cosine harmonic correction term to
+Page  109: 40            I2        cus                      2^-29       radians      Amplitude of the sine harmonic correction term to the
+Page  109: 42            I2        crc                      2^-5        radians      Amplitude of the cosine harmonic correction term to
+Page  109: 44            I2        crs                      2^-5        radians      Amplitude of the sine harmonic correction term to the
+Page  109: 46            I2        cic                      2^-29       radians      Amplitude of the cosine harmonic correction term to
+Page  110: 48            I2        cis                     2^-29       radians      Amplitude of the sine harmonic correction term to the
+Page  115: 28            I2        cuc                      2^-29       radians      Amplitude of cosine harmonic correction term to
+Page  115: 30            I2        cus                      2^-29       radians      Amplitude of sine harmonic correction term to
+Page  115: 42            I2        cic                      2^-29       radians      Amplitude of cos harmonic correction term to angle of
+Page  115: 48            I2        cis                      2^-29       radians      Amplitude of sine harmonic correction term to angle
+Page  115: 50            I2        crc                      2^-5        m            Amplitude of cosine harmonic correction term to orbit
+Page  119: 6                   U1        month                    -           -            Month, starting at 1
+Page  122: 28            I2        cuc                      2^-29       radians      Amp of cosine harmonic corr term to arg of lat
+Page  122: 30            I2        cus                      2^-29       radians      Amp of sine harmonic corr term to arg of lat
+Page  123: 42            I2        cic                      2^-29       radians      Amp of cos harmonic corr term to angle of inclination
+Page  123: 48            I2        cis                      2^-29       radians      Amp of sine harmonic corr term to angle of inclination
+Page  123: 50            I2        crc                      2^-5        m            Amp of cosine harmonic corr term to orbit radius
+Page  124: 3.14 UBX-MON (0x0a)
+Page  124: The messages in the UBX-MON class are used to report the receiver status, such as hardware status
+Page  124: 3.14.1 UBX-MON-BATCH (0x0a 0x32)
+Page  124: Message       UBX-MON-BATCH
+Page  125: 8                   U2        dropsSinceMon          -           -            Number of dropped epochs since last MON-BATCH
+Page  125: 3.14.2 UBX-MON-COMMS (0x0a 0x36)
+Page  125: Message             UBX-MON-COMMS
+Page  125: sysmon period
+Page  125: sysmon period
+Page  126: 3.14.3 UBX-MON-GNSS (0x0a 0x28)
+Page  126: Message             UBX-MON-GNSS
+Page  126: 3.14.4 UBX-MON-HW (0x0a 0x09)
+Page  127: Message             UBX-MON-HW
+Page  127: Comment             This message is deprecated in this protocol version. Use UBX-MON-HW3 and UBX-MON-RF instead.
+Page  127: 18                  U2        agcCnt                   -           -            AGC Monitor, as percentage of maximum gain,range 0
+Page  127: bits 3…2     U:2       jammingState             -           -            Output from jamming/interference monitor (0 =
+Page  127: should be monitored.
+Page  127: 3.14.5 UBX-MON-HW2 (0x0a 0x0b)
+Page  128: Message       UBX-MON-HW2
+Page  128: Comment       This message is deprecated in this protocol version. Use UBX-MON-HW3 and UBX-MON-RF instead.
+Page  128: 3.14.6 UBX-MON-HW3 (0x0a 0x37)
+Page  128: Message       UBX-MON-HW3
+Page  128: For the antenna supervisor status and other RF status information, see the UBX-MON-RF message.
+Page  129: that returned in the UBX-MON-VER message)
+Page  129: 3.14.7 UBX-MON-IO (0x0a 0x02)
+Page  129: Message             UBX-MON-IO
+Page  129: Comment             This message is deprecated in this protocol version. Use UBX-MON-COMMS instead.
+Page  130: 3.14.8 UBX-MON-MSGPP (0x0a 0x06)
+Page  130: Message       UBX-MON-MSGPP
+Page  130: Comment       This message is deprecated in this protocol version. Use UBX-MON-COMMS instead.
+Page  130: 3.14.9 UBX-MON-PATCH (0x0a 0x27)
+Page  130: Message       UBX-MON-PATCH
+Page  131: 3.14.10 UBX-MON-RF (0x0a 0x38)
+Page  131: Message             UBX-MON-RF
+Page  131: bits 1…0     U:2       jammingState          -            -           Output from jamming/interference monitor (0 =
+Page  131: should be monitored.
+Page  131: 18 + n·24           U2        agcCnt                -            -           AGC Monitor, as percentage of maximum gain, range
+Page  132: 3.14.11 UBX-MON-RXBUF (0x0a 0x07)
+Page  132: Message             UBX-MON-RXBUF
+Page  132: Comment             This message is deprecated in this protocol version. Use UBX-MON-COMMS instead.
+Page  132: sysmon period for each target
+Page  132: 3.14.12 UBX-MON-RXR (0x0a 0x21)
+Page  132: Message             UBX-MON-RXR
+Page  132: 3.14.13 UBX-MON-SPAN (0x0a 0x31)
+Page  133: Message       UBX-MON-SPAN
+Page  133: 3.14.14 UBX-MON-TXBUF (0x0a 0x08)
+Page  133: Message       UBX-MON-TXBUF
+Page  133: Comment       This message is deprecated in this protocol version. Use UBX-MON-COMMS instead.
+Page  133: sysmon period for each target
+Page  134: sysmon period for all targets
+Page  134: 3.14.15 UBX-MON-VER (0x0a 0x04)
+Page  134: Message             UBX-MON-VER
+Page  134: Message             UBX-MON-VER
+Page  135: For example, a host application can determine the optimal time to shut down the receiver by monitoring the
+Page  141: 6                   U1        month                  -           month        Month, range 1..12 (UTC)
+Page  141: 7                   U1        day                    -           d            Day of month, range 1..31 (UTC)
+Page  146: 14 + n·12           U1        udre                    -            -         Monitoring status
+Page  148: 8                   I4        gmsLon                1e-3         deg          Longitude of the used ground monitoring station
+Page  148: 12                  I4        gmsLat                1e-3         deg          Latitude of the used ground monitoring station
+Page  148: 16                  U1        gmsCode               -            -            Code of the used ground monitoring station according
+Page  148: bit 0   U:1       gmsAvailable          -            -            1 = Ground monitoring station available
+Page  155: 14                  U1        month                  -           month        Month, range 1..12 (UTC)
+Page  155: 15                  U1        day                    -           d            Day of month, range 1..31 (UTC)
+Page  196: CFG-ITFM                               Jamming and interference monitor conﬁguration
+Page  202: 5.9.9 CFG-ITFM: Jamming and interference monitor conﬁguration
+Page  202: Conﬁguration of jamming and interference monitor.
+Page  207: CFG-MSGOUT-UBX_MON_COMMS_      0x2091034f U1       -       -       Output rate of the UBX-MON-COMMS message
+Page  207: CFG-MSGOUT-UBX_MON_COMMS_      0x20910353 U1       -       -       Output rate of the UBX-MON-COMMS message
+Page  207: CFG-MSGOUT-UBX_MON_COMMS_      0x20910350 U1       -       -       Output rate of the UBX-MON-COMMS message
+Page  207: CFG-MSGOUT-UBX_MON_COMMS_      0x20910351 U1       -       -       Output rate of the UBX-MON-COMMS message
+Page  207: CFG-MSGOUT-UBX_MON_COMMS_      0x20910352 U1       -       -       Output rate of the UBX-MON-COMMS message
+Page  207: CFG-MSGOUT-UBX_MON_HW2_I2C     0x209101b9 U1       -       -       Output rate of the UBX-MON-HW2 message on
+Page  207: CFG-MSGOUT-UBX_MON_HW2_SPI     0x209101bd U1       -       -       Output rate of the UBX-MON-HW2 message on
+Page  207: CFG-MSGOUT-UBX_MON_HW2_        0x209101ba U1       -       -       Output rate of the UBX-MON-HW2 message on
+Page  207: CFG-MSGOUT-UBX_MON_HW2_        0x209101bb U1       -       -       Output rate of the UBX-MON-HW2 message on
+Page  207: CFG-MSGOUT-UBX_MON_HW2_USB     0x209101bc U1       -       -       Output rate of the UBX-MON-HW2 message on
+Page  207: CFG-MSGOUT-UBX_MON_HW3_I2C     0x20910354 U1       -       -       Output rate of the UBX-MON-HW3 message on
+Page  207: CFG-MSGOUT-UBX_MON_HW3_SPI     0x20910358 U1       -       -       Output rate of the UBX-MON-HW3 message on
+Page  207: CFG-MSGOUT-UBX_MON_HW3_        0x20910355 U1       -       -       Output rate of the UBX-MON-HW3 message on
+Page  207: CFG-MSGOUT-UBX_MON_HW3_        0x20910356 U1       -       -       Output rate of the UBX-MON-HW3 message on
+Page  207: CFG-MSGOUT-UBX_MON_HW3_USB     0x20910357 U1       -       -       Output rate of the UBX-MON-HW3 message on
+Page  207: CFG-MSGOUT-UBX_MON_HW_I2C      0x209101b4 U1       -       -       Output rate of the UBX-MON-HW message on
+Page  207: CFG-MSGOUT-UBX_MON_HW_SPI      0x209101b8 U1       -       -       Output rate of the UBX-MON-HW message on
+Page  207: CFG-MSGOUT-UBX_MON_HW_UART1 0x209101b5 U1          -       -       Output rate of the UBX-MON-HW message on
+Page  207: CFG-MSGOUT-UBX_MON_HW_UART2 0x209101b6 U1          -       -       Output rate of the UBX-MON-HW message on
+Page  207: CFG-MSGOUT-UBX_MON_HW_USB      0x209101b7 U1       -       -       Output rate of the UBX-MON-HW message on
+Page  208: CFG-MSGOUT-UBX_MON_IO_I2C     0x209101a5 U1       -       -       Output rate of the UBX-MON-IO message on
+Page  208: CFG-MSGOUT-UBX_MON_IO_SPI     0x209101a9 U1       -       -       Output rate of the UBX-MON-IO message on
+Page  208: CFG-MSGOUT-UBX_MON_IO_UART1   0x209101a6 U1       -       -       Output rate of the UBX-MON-IO message on
+Page  208: CFG-MSGOUT-UBX_MON_IO_UART2   0x209101a7 U1       -       -       Output rate of the UBX-MON-IO message on
+Page  208: CFG-MSGOUT-UBX_MON_IO_USB     0x209101a8 U1       -       -       Output rate of the UBX-MON-IO message on
+Page  208: CFG-MSGOUT-UBX_MON_MSGPP_I2C 0x20910196 U1        -       -       Output rate of the UBX-MON-MSGPP message
+Page  208: CFG-MSGOUT-UBX_MON_MSGPP_SPI 0x2091019a U1        -       -       Output rate of the UBX-MON-MSGPP message
+Page  208: CFG-MSGOUT-UBX_MON_MSGPP_     0x20910197 U1       -       -       Output rate of the UBX-MON-MSGPP message
+Page  208: CFG-MSGOUT-UBX_MON_MSGPP_     0x20910198 U1       -       -       Output rate of the UBX-MON-MSGPP message
+Page  208: CFG-MSGOUT-UBX_MON_MSGPP_     0x20910199 U1       -       -       Output rate of the UBX-MON-MSGPP message
+Page  208: CFG-MSGOUT-UBX_MON_RF_I2C     0x20910359 U1       -       -       Output rate of the UBX-MON-RF message on
+Page  208: CFG-MSGOUT-UBX_MON_RF_SPI     0x2091035d U1       -       -       Output rate of the UBX-MON-RF message on
+Page  208: CFG-MSGOUT-UBX_MON_RF_UART1 0x2091035a U1         -       -       Output rate of the UBX-MON-RF message on
+Page  208: CFG-MSGOUT-UBX_MON_RF_UART2 0x2091035b U1         -       -       Output rate of the UBX-MON-RF message on
+Page  208: CFG-MSGOUT-UBX_MON_RF_USB     0x2091035c U1       -       -       Output rate of the UBX-MON-RF message on
+Page  208: CFG-MSGOUT-UBX_MON_RXBUF_I2C 0x209101a0 U1        -       -       Output rate of the UBX-MON-RXBUF message
+Page  208: CFG-MSGOUT-UBX_MON_RXBUF_SPI 0x209101a4 U1        -       -       Output rate of the UBX-MON-RXBUF message
+Page  208: CFG-MSGOUT-UBX_MON_RXBUF_     0x209101a1 U1       -       -       Output rate of the UBX-MON-RXBUF message
+Page  208: CFG-MSGOUT-UBX_MON_RXBUF_     0x209101a2 U1       -       -       Output rate of the UBX-MON-RXBUF message
+Page  208: CFG-MSGOUT-UBX_MON_RXBUF_     0x209101a3 U1       -       -       Output rate of the UBX-MON-RXBUF message
+Page  208: CFG-MSGOUT-UBX_MON_RXR_I2C    0x20910187 U1       -       -       Output rate of the UBX-MON-RXR message on
+Page  208: CFG-MSGOUT-UBX_MON_RXR_SPI    0x2091018b U1       -       -       Output rate of the UBX-MON-RXR message on
+Page  208: CFG-MSGOUT-UBX_MON_RXR_       0x20910188 U1       -       -       Output rate of the UBX-MON-RXR message on
+Page  208: CFG-MSGOUT-UBX_MON_RXR_       0x20910189 U1       -       -       Output rate of the UBX-MON-RXR message on
+Page  208: CFG-MSGOUT-UBX_MON_RXR_USB    0x2091018a U1       -       -       Output rate of the UBX-MON-RXR message on
+Page  208: CFG-MSGOUT-UBX_MON_SPAN_I2C   0x2091038b U1       -       -       Output rate of the UBX-MON-SPAN message on
+Page  209: CFG-MSGOUT-UBX_MON_SPAN_SPI   0x2091038f U1       -       -       Output rate of the UBX-MON-SPAN message on
+Page  209: CFG-MSGOUT-UBX_MON_SPAN_      0x2091038c U1       -       -       Output rate of the UBX-MON-SPAN message on
+Page  209: CFG-MSGOUT-UBX_MON_SPAN_      0x2091038d U1       -       -       Output rate of the UBX-MON-SPAN message on
+Page  209: CFG-MSGOUT-UBX_MON_SPAN_USB 0x2091038e U1         -       -       Output rate of the UBX-MON-SPAN message on
+Page  209: CFG-MSGOUT-UBX_MON_TXBUF_I2C 0x2091019b U1        -       -       Output rate of the UBX-MON-TXBUF message
+Page  209: CFG-MSGOUT-UBX_MON_TXBUF_SPI 0x2091019f U1        -       -       Output rate of the UBX-MON-TXBUF message
+Page  209: CFG-MSGOUT-UBX_MON_TXBUF_     0x2091019c U1       -       -       Output rate of the UBX-MON-TXBUF message
+Page  209: CFG-MSGOUT-UBX_MON_TXBUF_     0x2091019d U1       -       -       Output rate of the UBX-MON-TXBUF message
+Page  209: CFG-MSGOUT-UBX_MON_TXBUF_     0x2091019e U1       -       -       Output rate of the UBX-MON-TXBUF message
+Page  236: UBX-CFG-LOGFILTER.psmOncePerWakupEnabled               CFG-LOGFILTER-ONCE_PER_WAKE_UP_ENA
+Page  244: CFG-MSGOUT-UBX_MON_COMMS_I2C          0x2091034f U1         -      -               0
+Page  244: CFG-MSGOUT-UBX_MON_COMMS_SPI          0x20910353 U1         -      -               0
+Page  244: CFG-MSGOUT-UBX_MON_COMMS_UART1        0x20910350 U1         -      -               0
+Page  244: CFG-MSGOUT-UBX_MON_COMMS_UART2        0x20910351 U1         -      -               0
+Page  244: CFG-MSGOUT-UBX_MON_COMMS_USB          0x20910352 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW2_I2C            0x209101b9 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW2_SPI            0x209101bd U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW2_UART1          0x209101ba U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW2_UART2          0x209101bb U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW2_USB            0x209101bc U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW3_I2C            0x20910354 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW3_SPI            0x20910358 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW3_UART1          0x20910355 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW3_UART2          0x20910356 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW3_USB            0x20910357 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW_I2C             0x209101b4 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW_SPI             0x209101b8 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW_UART1           0x209101b5 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW_UART2           0x209101b6 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW_USB             0x209101b7 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_IO_I2C             0x209101a5 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_IO_SPI             0x209101a9 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_IO_UART1           0x209101a6 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_IO_UART2           0x209101a7 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_IO_USB             0x209101a8 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_MSGPP_I2C          0x20910196 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_MSGPP_SPI          0x2091019a U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_MSGPP_UART1        0x20910197 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_MSGPP_UART2        0x20910198 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_MSGPP_USB          0x20910199 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RF_I2C             0x20910359 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RF_SPI             0x2091035d U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RF_UART1           0x2091035a U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RF_UART2           0x2091035b U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RF_USB             0x2091035c U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RXBUF_I2C          0x209101a0 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RXBUF_SPI          0x209101a4 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RXBUF_UART1        0x209101a1 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RXBUF_UART2        0x209101a2 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RXBUF_USB          0x209101a3 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RXR_I2C            0x20910187 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RXR_SPI            0x2091018b U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RXR_UART1          0x20910188 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RXR_UART2          0x20910189 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RXR_USB            0x2091018a U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_SPAN_I2C           0x2091038b U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_MON_SPAN_SPI               0x2091038f U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_MON_SPAN_UART1             0x2091038c U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_MON_SPAN_UART2             0x2091038d U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_MON_SPAN_USB               0x2091038e U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_MON_TXBUF_I2C              0x2091019b U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_MON_TXBUF_SPI              0x2091019f U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_MON_TXBUF_UART1            0x2091019c U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_MON_TXBUF_UART2            0x2091019d U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_MON_TXBUF_USB              0x2091019e U1         -      -               0

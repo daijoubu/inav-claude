@@ -1,0 +1,120 @@
+Keyword: Galileo
+Occurrences: 116
+================================================================================
+
+Page    7: 3.13.6.1 Galileo ephemeris assistance...................................................................................... 109
+Page    7: 3.13.6.2 Galileo almanac assistance.......................................................................................... 110
+Page    7: 3.13.6.3 Galileo GPS time oﬀset assistance............................................................................ 111
+Page    7: 3.13.6.4 Galileo UTC assistance..................................................................................................111
+Page    9: 3.15.19.1 Galileo time solution....................................................................................................151
+Page    9: 3.16.3.1 Galileo SAR short-RLM report..................................................................................... 159
+Page   10: 3.16.3.2 Galileo SAR long-RLM report....................................................................................... 160
+Page   11: 4.4.15.1 Galileo MSM1.................................................................................................................. 177
+Page   11: 4.4.16.1 Galileo MSM3.................................................................................................................. 177
+Page   11: 4.4.17.1 Galileo MSM4.................................................................................................................. 178
+Page   11: 4.4.18.1 Galileo MSM5.................................................................................................................. 179
+Page   11: 4.4.19.1 Galileo MSM6.................................................................................................................. 179
+Page   11: 4.4.20.1 Galileo MSM7.................................................................................................................. 180
+Page   17: In order to support some GNSS (e.g. BeiDou, Galileo, QZSS), which are not supported by some or
+Page   18: Galileo                 GAL            E                    2               n/a                3                   3
+Page   18: Galileo       E1-E36          2:1-36          211-246
+Page   18: Galileo       E1-E36          n/a          301-336              1-36      1-36                1-36      1-36
+Page   19: Galileo E1 C2                                   2             0               3          7                    3               7
+Page   19: Galileo E1 B2                                   2             1               3          7                    3               7
+Page   19: Galileo E5 aI                                   2             3               3          1                    3               1
+Page   19: Galileo E5 aQ                                   2             4               3          1                    3               1
+Page   19: Galileo E5 bI                                   2             5               3          2                    3               2
+Page   19: Galileo E5 bQ                                   2             6               3          2                    3               2
+Page   23: BeiDou and Galileo Only NMEA version 4.10 and later have support for these systems.
+Page   23: Extended satellite numbering In order to support some GNSS (e.g. BeiDou, Galileo, QZSS) that are
+Page   23: Galileo                         GA       NMEA 4.10+
+Page   32: GLONASS, Galileo and BeiDou. Note that the NMEA
+Page   36: Galileo program)
+Page   52: UBX-MGA-GAL               0x13 0x02      •   Galileo ephemeris assistance (Input)
+Page   52: •   Galileo almanac assistance (Input)
+Page   52: •   Galileo GPS time oﬀset assistance (Input)
+Page   52: •   Galileo UTC assistance (Input)
+Page   53: UBX-NAV-TIMEGAL          0x01 0x25    •   Galileo time solution (Periodic/polled)
+Page   53: UBX-RXM-RLM              0x02 0x59    •   Galileo SAR short-RLM report (Output)
+Page   53: •   Galileo SAR long-RLM report (Output)
+Page   60: When gnssId is 2 (Galileo)
+Page   60: •   0x01 = Galileo E1 (not supported for protocol
+Page   60: •   0x10 = Galileo E5a
+Page   60: •   0x20 = Galileo E5b
+Page   66: laboratories; derived from Galileo time
+Page   69: bit 2   U:1     galileo        -       -            Disable reporting of Galileo satellites
+Page   80: •   4 = Galileo time (not supported for protocol
+Page   85: •   4 = Galileo (not supported for protocol versions
+Page  109: 3.13.6.1 Galileo ephemeris assistance
+Page  109: Galileo ephemeris assistance
+Page  109: Comment       This message allows the delivery of Galileo ephemeris assistance to a receiver.
+Page  109: 2             U1        svId                     -           -            Galileo Satellite identiﬁer (see Satellite Numbering)
+Page  110: 3.13.6.2 Galileo almanac assistance
+Page  110: Galileo almanac assistance
+Page  110: Comment       This message allows the delivery of Galileo almanac assistance to a receiver.
+Page  110: 2             U1        svId                    -           -            Galileo Satellite identiﬁer (see Satellite Numbering)
+Page  111: 3.13.6.3 Galileo GPS time oﬀset assistance
+Page  111: Galileo GPS time oﬀset assistance
+Page  111: Comment       This message allows the delivery of Galileo time to GPS time oﬀset.
+Page  111: 3.13.6.4 Galileo UTC assistance
+Page  111: Galileo UTC assistance
+Page  111: Comment       This message allows the delivery of Galileo UTC assistance to a receiver.
+Page  112: 13            U1        tot                      3600        s            UTC parameters reference time of week (Galileo time)
+Page  120: •   2 = Galileo time
+Page  126: bit 3   U:1       GalileoSup            -            -           Galileo is supported
+Page  126: bit 3   U:1       GalileoDef            -            -           Galileo is default-enabled
+Page  126: bit 3   U:1       GalileoEna            -            -           Galileo is enabled
+Page  148: function is provided by Galileo Open Service
+Page  151: 3.15.19.1 Galileo time solution
+Page  151: Galileo time solution
+Page  151: Comment             This message reports the precise Galileo time of the most recent navigation solution including validity ﬂags
+Page  151: 4                   U4        galTow                 -           s            Galileo time of week (rounded to seconds)
+Page  151: 8                   I4        fGalTow                -           ns           Fractional part of the Galileo time of week (range:
+Page  151: The precise Galileo time of week in seconds is:
+Page  151: 12                  I2        galWno                 -           -            Galileo week number
+Page  151: 14                  I1        leapS                  -           s            Galileo leap seconds (Galileo-UTC)
+Page  153: •   5 = Galileo
+Page  153: ahead of UTC time. Galileo number of leap seconds is
+Page  154: •   5 = Galileo
+Page  154: only if validTimeToLsEvent = 1. (GPS and Galileo DN:
+Page  156: function is provided by Galileo Open Service
+Page  157: measurements variant, modulo 3600000 for the 22 LSB Galileo and Additional Navigation Satelllite Systems
+Page  159: 3.16.3.1 Galileo SAR short-RLM report
+Page  159: Galileo SAR short-RLM report
+Page  159: Comment             This message contains the contents of any Galileo Search and Rescue (SAR) Short Return Link Message
+Page  160: 3.16.3.2 Galileo SAR long-RLM report
+Page  160: Galileo SAR long-RLM report
+Page  160: Comment       This message contains the contents of any Galileo Search and Rescue (SAR) Long Return Link Message
+Page  164: •   3 = Galileo
+Page  168: • Galileo MSM1 (Input)
+Page  168: • Galileo MSM3 (Input)
+Page  168: • Galileo MSM4 (Input)
+Page  168: • Galileo MSM5 (Input)
+Page  168: • Galileo MSM6 (Input)
+Page  168: • Galileo MSM7 (Input)
+Page  177: 4.4.15.1 Galileo MSM1
+Page  177: Galileo MSM1
+Page  177: Comment           Compact Galileo Pseudoranges
+Page  177: 4.4.16.1 Galileo MSM3
+Page  177: Galileo MSM3
+Page  177: Comment           Compact Galileo Pseudoranges and PhaseRanges
+Page  178: 4.4.17.1 Galileo MSM4
+Page  178: Galileo MSM4
+Page  178: Comment           Full Galileo Pseudoranges and PhaseRanges plus CNR
+Page  179: 4.4.18.1 Galileo MSM5
+Page  179: Galileo MSM5
+Page  179: Comment           Full Galileo Pseudoranges, PhaseRanges, PhaseRangeRate and CNR
+Page  179: 4.4.19.1 Galileo MSM6
+Page  179: Galileo MSM6
+Page  179: Comment           Full Galileo Pseudoranges and PhaseRanges plus CNR (high resolution)
+Page  180: 4.4.20.1 Galileo MSM7
+Page  180: Galileo MSM7
+Page  180: Comment           Full Galileo Pseudoranges, PhaseRanges, PhaseRangeRate and CNR (high resolution)
+Page  217: Galileo time
+Page  220: CFG-NMEA-FILT_GAL                    0x10930013       L       -          -     Disable reporting of Galileo satellites
+Page  224: GAL                                 4               Align measurements to Galileo time
+Page  226: CFG-SIGNAL-GAL_ENA                  0x10310021      L       -       -      Galileo enable
+Page  226: CFG-SIGNAL-GAL_E1_ENA               0x10310007      L       -       -      Galileo E1
+Page  230: GAL                                    4               Galileo time reference
+Page  230: GAL                                    4               Galileo time reference
+Page  236: UBX-CFG-NMEA.galileo                                   CFG-NMEA-FILT_GAL

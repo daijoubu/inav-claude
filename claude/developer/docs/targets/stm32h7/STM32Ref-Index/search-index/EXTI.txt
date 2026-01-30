@@ -1,0 +1,592 @@
+Keyword: EXTI
+Occurrences: 588
+================================================================================
+
+Page    7: 6.2     EXTI, RCC and PWR interconnections . . . . . . . . . . . . . . . . . . . . . . . . . 294
+Page   12: (SYSCFG_EXTICR1) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 528
+Page   12: (SYSCFG_EXTICR2) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 529
+Page   12: (SYSCFG_EXTICR3) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 530
+Page   12: (SYSCFG_EXTICR4) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 531
+Page   18: 19         Extended interrupt and event controller (EXTI) . . . . . . . . . . . . . . . . . 738
+Page   18: 19.1   EXTI main features . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 738
+Page   18: 19.2   EXTI block diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 738
+Page   18: 19.2.1      EXTI connections between peripherals, CPU, and D3 domain . . . . . . 739
+Page   18: 19.3   EXTI functional description . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 740
+Page   18: 19.3.1      EXTI Configurable event input CPU wakeup . . . . . . . . . . . . . . . . . . . . 741
+Page   18: 19.3.2      EXTI configurable event input Any wakeup . . . . . . . . . . . . . . . . . . . . . 742
+Page   18: 19.3.3      EXTI direct event input CPU wakeup . . . . . . . . . . . . . . . . . . . . . . . . . 744
+Page   18: 19.3.4      EXTI direct event input Any wakeup . . . . . . . . . . . . . . . . . . . . . . . . . . 745
+Page   18: 19.3.5      EXTI D3 pending request clear selection . . . . . . . . . . . . . . . . . . . . . . 746
+Page   18: 19.4   EXTI event input mapping . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 746
+Page   18: 19.5   EXTI functional behavior . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 749
+Page   19: 19.5.1      EXTI CPU interrupt procedure . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 750
+Page   19: 19.5.2      EXTI CPU event procedure . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 750
+Page   19: 19.5.3      EXTI CPU wakeup procedure . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 751
+Page   19: 19.5.4      EXTI D3 domain wakeup for autonomous Run mode procedure . . . . 751
+Page   19: 19.5.5      EXTI software interrupt/event trigger procedure . . . . . . . . . . . . . . . . . 751
+Page   19: 19.6   EXTI registers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 752
+Page   19: 19.6.1      EXTI rising trigger selection register (EXTI_RTSR1) . . . . . . . . . . . . . . 752
+Page   19: 19.6.2      EXTI falling trigger selection register (EXTI_FTSR1) . . . . . . . . . . . . . 752
+Page   19: 19.6.3      EXTI software interrupt event register (EXTI_SWIER1) . . . . . . . . . . . 753
+Page   19: 19.6.4      EXTI D3 pending mask register (EXTI_D3PMR1) . . . . . . . . . . . . . . . . 753
+Page   19: 19.6.5      EXTI D3 pending clear selection register low (EXTI_D3PCR1L) . . . . 754
+Page   19: 19.6.6      EXTI D3 pending clear selection register high (EXTI_D3PCR1H) . . . 754
+Page   19: 19.6.7      EXTI rising trigger selection register (EXTI_RTSR2) . . . . . . . . . . . . . . 755
+Page   19: 19.6.8      EXTI falling trigger selection register (EXTI_FTSR2) . . . . . . . . . . . . . 756
+Page   19: 19.6.9      EXTI software interrupt event register (EXTI_SWIER2) . . . . . . . . . . . 756
+Page   19: 19.6.10 EXTI D3 pending mask register (EXTI_D3PMR2) . . . . . . . . . . . . . . . . 757
+Page   19: 19.6.11 EXTI D3 pending clear selection register low (EXTI_D3PCR2L) . . . . 758
+Page   19: 19.6.12 EXTI D3 pending clear selection register high (EXTI_D3PCR2H) . . . 758
+Page   19: 19.6.13 EXTI rising trigger selection register (EXTI_RTSR3) . . . . . . . . . . . . . . 759
+Page   19: 19.6.14 EXTI falling trigger selection register (EXTI_FTSR3) . . . . . . . . . . . . . 759
+Page   19: 19.6.15 EXTI software interrupt event register (EXTI_SWIER3) . . . . . . . . . . . 760
+Page   19: 19.6.16 EXTI D3 pending mask register (EXTI_D3PMR3) . . . . . . . . . . . . . . . . 760
+Page   19: 19.6.17 EXTI D3 pending clear selection register low (EXTI_D3PCR3L) . . . . 761
+Page   19: 19.6.18 EXTI D3 pending clear selection register high (EXTI_D3PCR3H) . . . 761
+Page   19: 19.6.19 EXTI interrupt mask register (EXTI_CPUIMR1) . . . . . . . . . . . . . . . . . 762
+Page   19: 19.6.20 EXTI event mask register (EXTI_CPUEMR1) . . . . . . . . . . . . . . . . . . . 762
+Page   19: 19.6.21 EXTI pending register (EXTI_CPUPR1) . . . . . . . . . . . . . . . . . . . . . . . 763
+Page   19: 19.6.22 EXTI interrupt mask register (EXTI_CPUIMR2) . . . . . . . . . . . . . . . . . 763
+Page   19: 19.6.23 EXTI event mask register (EXTI_CPUEMR2) . . . . . . . . . . . . . . . . . . . 764
+Page   19: 19.6.24 EXTI pending register (EXTI_CPUPR2) . . . . . . . . . . . . . . . . . . . . . . . 764
+Page   19: 19.6.25 EXTI interrupt mask register (EXTI_CPUIMR3) . . . . . . . . . . . . . . . . . 765
+Page   19: 19.6.26 EXTI event mask register (EXTI_CPUEMR3) . . . . . . . . . . . . . . . . . . . 766
+Page   19: 19.6.27 EXTI pending register (EXTI_CPUPR3) . . . . . . . . . . . . . . . . . . . . . . . 766
+Page   19: 19.6.28 EXTI register map . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 767
+Page   26: 27.5.1      Interrupt through EXTI block . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1068
+Page   69: Table 93.    EXTI wakeup inputs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 571
+Page   69: Table 94.    EXTI pending requests clear inputs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 574
+Page   70: Table 139.   EXTI Event input configurations and register control . . . . . . . . . . . . . . . . . . . . . . . . . . . . 740
+Page   70: Table 141.   EXTI Event input mapping . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 747
+Page   80: Figure 35.   EXTI, RCC and PWR interconnections . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 295
+Page   81: Figure 86.   EXTI block diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 739
+Page  127: 0x58000000 - 0x580003FF           EXTI                    Section 19.6: EXTI registers
+Page  240: VSSA                                                                exti_c_wkup
+Page  240: VREF+                                                                exti_d3_wkup
+Page  240: EXTI
+Page  242: exti_c_wkup                   CPU wakeup request
+Page  242: exti_d3_wkup                   D3 domain wakeup request
+Page  244: IO     EXTI,                    D2 domain           (CPU, peripherals,
+Page  254: connected to the EXTI and can generate an interrupt, assuming it has been enabled through
+Page  254: the EXTI registers. The pwr_pvd_wkup output interrupt can be generated when VDD or
+Page  254: above the PVD threshold depending on EXTI rising/falling edge configuration. As an
+Page  256: to the EXTI and can generate an interrupt if enabled through the EXTI registers. The
+Page  256: when VDDA rises above the AVD threshold depending on EXTI rising/falling edge
+Page  262: Any EXTI interrupt or
+Page  262: 6. When the CPU is in CStop and D3 domain in autonomous mode, the last EXTI Wakeup source is cleared.
+Page  264: The CPU subsystem is in CRun or CSleep or an EXTI wakeup is active.
+Page  264: The CPU subsystem is in CStop mode and all EXTI wakeups are inactive. The D1
+Page  264: The CPU subsystem is in CStop mode and all EXTI wakeups are inactive. The D1
+Page  265: EXTI wakeup active (system D3 domain autonomous mode)
+Page  265: EXTI wakeups inactive
+Page  269: exti_c_wkup
+Page  270: exti_c_wkup
+Page  272: exti_c_wkup
+Page  272: exti_d3_wkup
+Page  273: The system can enter Stop or Standby low-power mode when all EXTI wakeup sources are
+Page  274: An EXTI line must be configured in event mode. When the CPU resumes from
+Page  274: WFE, it is not necessary to clear the EXTI peripheral interrupt pending bit or the
+Page  274: The CPU subsystem exits from CStop, DStop and Stop modes by enabling an EXTI interrupt
+Page  274: The system can wakeup from Stop mode by enabling an EXTI wakeup, without waking up a
+Page  274: The CPU subsystem exits from DStandby mode by enabling an EXTI interrupt or event,
+Page  275: Mode exit              – Any event: Refer to Section 19.5.3: EXTI CPU wakeup procedure
+Page  275: any event: refer to Section 19.5.3: EXTI CPU wakeup procedure
+Page  276: – All CPU EXTI Wakeup sources are cleared.
+Page  276: – All CPU EXTI Wakeup sources are cleared.
+Page  276: – EXTI Interrupt enabled in NVIC: Refer to Table 138: NVIC, for peripheral
+Page  276: Mode exit               – EXTI event: Refer to Section 19.5.3: EXTI CPU wakeup procedure, for
+Page  276: – EXTI Interrupt even when disabled in NVIC: refer to Table 138: NVIC or
+Page  276: EXTI event: refer to Section 19.5.3: EXTI CPU wakeup procedure, for
+Page  276: EXTI and RCC wakeup synchronization (see Section 7.4.7: Power-on and
+Page  278: EXTI and RCC wakeup synchronization (see Section 7.4.7: Power-on and
+Page  278: the EXTI wakeup sources are inactive and at least one PDDS_Dn bit in PWR CPU control
+Page  280: – When the CPU is in CStop mode and there is no active EXTI Wakeup
+Page  280: Mode exit             – On a EXTI Wakeup.
+Page  280: Wakeup latency        + EXTI and RCC wakeup synchronization.
+Page  281: EXTI and RCC wakeup synchronization.
+Page  283: – The CPU subsystem is in CStop mode, and there is no active EXTI
+Page  294: The first part of the description explains how the EXTI, RCC and PWR blocks interact with
+Page  294: 6.2        EXTI, RCC and PWR interconnections
+Page  294: Figure 35 shows the main EXTI, RCC and PWR interconnections.
+Page  295: Figure 35. EXTI, RCC and PWR interconnections
+Page  295: interrupt                                            EXTI                                                        rcc_fclk_cpu
+Page  295: wakeup                                            cpu_it_exti_per(0)             Irq
+Page  295: cpu_it_exti_per(x)             Irq
+Page  295: d3_it_exti_per(0)   ...              D3
+Page  295: d3_it_exti_per(n)                                       rcc_fclk_d3
+Page  295: exti_cpu_wkup
+Page  295: exti_d3_wkup
+Page  296: connected to the NVIC via the EXTI.
+Page  296: connected to EXTI Direct Event inputs. The EXTI does not manage any CPU status pending
+Page  296: The peripherals signals are connected to EXTI Configurable Event inputs. These EXTI
+Page  296: Interaction between EXTI and PWR blocks
+Page  296: The EXTI delivers wakeup requests signals (exti_c_wkup, exti_d3_wkup) to the PWR
+Page  296: wakeup events connected to the EXTI. These wakeup requests are used by the PWR
+Page  297: Interaction between EXTI and D3 domain
+Page  297: All the wakeup event inputs received by the EXTI from the peripherals located in D3 domain
+Page  297: The EXTI D3_PenClear[3:0] inputs received from the D3 domain are used to acknowledge
+Page  297: connected to the EXTI. They can be used to switch the D3 domain from DRun to DStop
+Page  298: 5.   Configure the EXTI (CFG).
+Page  299: STRT   Power-on reset startup                   CFG   Peripherals initialization (BDMA, DMAMUX2, PWR, LPUART1, EXTI)
+Page  299: PROC   Data processing                          STP   Control of EXTI, BDMA and LPUART1 prior to go to CSTOP
+Page  300: EXTI programming
+Page  300: The EXTI block must be configured to provide the following services:
+Page  300: The EXTI block is configured once before performing the first data transfer. For incoming
+Page  300: All other event inputs must be disabled: EXTI_RTSRx_TRy = ‘0’ and
+Page  300: EXTI_FTSRx_TRy = ‘0’.
+Page  300: EXTI_SWIER1 to ‘1’. The GPIO connected to this event input must not toggle in order to
+Page  300: dmamux2_evt7 signal is used by the EXTI to switch back the D3 domain to Stop mode.
+Page  301: EXTI
+Page  303: D3_PendClear[1] in EXTI.
+Page  303: 2.   Full initialization of RCC, PWR, EXTI, LPUART1, GPIOs, LPTIM4, DMAMUX2, BDMA
+Page  303: Only the relevant steps of RCC, EXTI, PWR, LPUART1, BDMA and DMAMUX2
+Page  303: 4.   The CPU generates a wakeup event (EXTI_Event) to maintain D3 in Run mode when
+Page  304: EXTI_Event
+Page  304: EXTI_Event
+Page  304: EXTI_INIT
+Page  307: EXTI                                                                                                                        U
+Page  315: between the RCC, EXTI and PWR blocks.
+Page  316: EXTI
+Page  346: Note:      The FLASH, AXISRAM, ITCM, DTCM1, DTCM2, SRAM4, IWGD1, IWGD2, PWR, EXTI and
+Page  347: EXTI
+Page  348: Please refer to the description of EXTI block in order see which peripheral is able to perform
+Page  513: (EXTI)Section 19.3: EXTI functional description.
+Page  528: (SYSCFG_EXTICR1)
+Page  528: EXTI3[3:0]                      EXTI2[3:0]                    EXTI1[3:0]                   EXTI0[3:0]
+Page  529: Bits 15:0 EXTIx[3:0]: EXTI x configuration (x = 0 to 3)
+Page  529: These bits are written by software to select the source input for the EXTI input
+Page  529: (SYSCFG_EXTICR2)
+Page  529: EXTI7[3:0]                      EXTI6[3:0]                     EXTI5[3:0]                   EXTI4[3:0]
+Page  529: Bits 15:0 EXTIx[3:0]: EXTI x configuration (x = 4 to 7)
+Page  529: These bits are written by software to select the source input for the EXTI input for
+Page  530: (SYSCFG_EXTICR3)
+Page  530: EXTI11[3:0]                   EXTI10[3:0]                   EXTI9[3:0]                   EXTI8[3:0]
+Page  530: Bits 15:0 EXTIx[3:0]: EXTI x configuration (x = 8 to 11)
+Page  530: These bits are written by software to select the source input for the EXTI input for
+Page  531: (SYSCFG_EXTICR4)
+Page  531: EXTI15[3:0]                   EXTI14[3:0]                    EXTI13[3:0]                 EXTI12[3:0]
+Page  531: Bits 15:0 EXTIx[3:0]: EXTI x configuration (x = 12 to 15)
+Page  531: These bits are written by software to select the source input for the EXTI input for
+Page  548: EXTICR4
+Page  548: EXTICR3
+Page  548: EXTICR2
+Page  548: EXTICR1
+Page  548: EXTI11[3:0] EXTI10[3:0] EXTI9[3:0] EXTI8[3:0]
+Page  548: EXTI7[3:0] EXTI6[3:0] EXTI5[3:0] EXTI4[3:0]
+Page  548: EXTI3[3:0] EXTI2[3:0] EXTI1[3:0] EXTI0[3:0]
+Page  548: EXTI15[3:0] EXTI14[3:0] EXTI13[3:0] EXTI12[3:0]
+Page  553: EXTI     -       -     -      -      -        -       A     -     -     -      -      -       -       -       A         -      A      A       -         -       -        -        -        -
+Page  563: D3      APB4   SYSCFG           EXTI9                                                    S            -
+Page  564: SYSCFG        EXTI11        TRG24                                    A       -
+Page  564: SYSCFG        EXTI15        TRG25                                    A       -
+Page  564: D3       APB4   SYSCFG        EXTI11      adc_ext_trg6                               A       -
+Page  566: D3       APB4   SYSCFG        EXTI15      adc_jext_trg6                                A       -
+Page  567: D3      APB4   SYSCFG        EXTI11      adc_ext_trg6                                A            -
+Page  568: D3       APB4   SYSCFG        EXTI15     adc_jext_trg6                               A       -
+Page  570: The Extended interrupt and event controller module (EXTI) allows to wake up the system
+Page  570: These events are handled by the EXTI either as Configurable events (C), or as Direct
+Page  570: controller (EXTI) for further details.
+Page  570: Three types of peripheral output signals are connected to the EXTI input events:
+Page  570: Each EXTI input event has a different wakeup capability or possible target (see Target
+Page  571: Table 93. EXTI wakeup inputs(1)
+Page  571: exti0_wkup      WKUP0                                    -
+Page  571: exti1_wkup      WKUP1                                    -
+Page  571: exti2_wkup      WKUP2                                    -
+Page  571: exti3_wkup      WKUP3                                    -
+Page  571: exti4_wkup      WKUP4                                    -
+Page  571: exti5_wkup      WKUP5                                    -
+Page  571: exti6_wkup      WKUP6                                    -
+Page  571: exti7_wkup      WKUP7                                    -
+Page  571: exti8_wkup      WKUP8                                    -
+Page  571: exti9_wkup      WKUP9                                    -
+Page  571: exti10_wkup     WKUP10                                   -
+Page  571: exti11_wkup     WKUP11                                   -
+Page  571: exti12_wkup     WKUP12                                   -
+Page  571: exti13_wkup     WKUP13                                   -
+Page  571: exti14_wkup     WKUP14                                   -
+Page  571: EXTI
+Page  571: exti15_wkup     WKUP15                                   -
+Page  572: Table 93. EXTI wakeup inputs(1) (continued)
+Page  572: D3      APB4        SPI6            spi6_wkup       WKUP41         EXTI        D    ANY       -
+Page  573: Table 93. EXTI wakeup inputs(1) (continued)
+Page  573: bdma_ch5_it          WKUP71           EXTI         D      CPU            (1)
+Page  574: The Extended Interrupt and Event Controller (EXTI) module event inputs able to wake up
+Page  574: controller (EXTI) for further details.
+Page  574: Table 94. EXTI pending requests clear inputs
+Page  574: D3                                                                EXTI       APB4   D3
+Page  581: D3     APB4    EXTI       exti_exti0_it     dmamux1_gen6
+Page  582: D3     APB4       EXTI           exti_exti0_it          dmamux1_trg6
+Page  584: exti_lpuart_rx_it      dmamux2_gen7
+Page  584: exti_lpuart_tx_it      dmamux2_gen8
+Page  584: exti_lptim2_wkup       dmamux2_gen9
+Page  584: exti_lptim2_out       dmamux2_gen10
+Page  584: exti_lptim3_wkup      dmamux2_gen11
+Page  584: exti_lptim3_out       dmamux2_gen12
+Page  584: exti_lptim4_wkup      dmamux2_gen13
+Page  584: D3   APB4    EXTI        exti_lptim5_wkup      dmamux2_gen14                               Request
+Page  584: exti_i2c4_wkup        dmamux2_gen15                              generation
+Page  584: exti_spi6_wkup        dmamux2_gen16
+Page  584: exti_comp1_out        dmamux2_gen17
+Page  584: exti_comp2_out        dmamux2_gen18
+Page  584: exti_rtc_wkup        dmamux2_gen19
+Page  584: exti_syscfg_exti0     dmamux2_gen20
+Page  584: exti_syscfg_exti2     dmamux2_gen21
+Page  585: it_exti_tx_lpuart1       dmamux2_trg6
+Page  585: it_exti_rx_lpuart1       dmamux2_trg7
+Page  585: it_exti_out_lptim2       dmamux2_trg8
+Page  585: it_exti_out_lptim3       dmamux2_trg9
+Page  585: it_exti_wkup_i2c4         dmamux2_trg10
+Page  585: D3   APB4    EXTI
+Page  585: it_exti_wkup_spi6         dmamux2_trg11
+Page  585: it_exti_out_comp1         dmamux2_trg12
+Page  585: it_exti_wkup_rtc         dmamux2_trg13
+Page  585: it_exti_exti0_syscfg      dmamux2_trg14
+Page  585: it_exti_exti2_syscfg      dmamux2_trg15
+Page  674: 2             dmamux1_evt2               6                  extit0
+Page  674: 2             dmamux1_evt2               6                  extit0
+Page  675: 4                dmamux2_evt4               20          Syscfg_exti0_mux
+Page  675: 5                dmamux2_evt5               21          Syscfg_exti2_mux
+Page  675: 14             Syscfg_exti0_mux             30             Reserved
+Page  675: 15             Syscfg_exti2_mux             31             Reserved
+Page  730: PVD through EXTI line
+Page  730: exti_pwr_pvd_wkup            8           1           PVD_PVM                                           0x0000 0044
+Page  730: exti_tamp_rtc_wkup                               RTC_TAMP_STAMP_ RTC tamper, timestamp
+Page  730: exti_wkup_rtc_wkup         10            3          RTC_WKUP                                           0x0000 004C
+Page  730: the EXTI line
+Page  730: exti_exti0_wkup          13            6             EXTI0        EXTI Line 0 interrupt              0x0000 0058
+Page  730: exti_exti1_wkup          14            7             EXTI1        EXTI Line 1 interrupt              0x0000 005C
+Page  730: exti_exti2_wkup          15            8             EXTI2        EXTI Line 2 interrupt              0x0000 0060
+Page  731: exti_exti3_wkup    16            9             EXTI3        EXTI Line 3interrupt           0x0000 0064
+Page  731: exti_exti4_wkup    17           10             EXTI4        EXTI Line 4interrupt           0x0000 0068
+Page  731: exti_exti5_wkup
+Page  731: exti_exti6_wkup
+Page  731: exti_exti7_wkup    30           23            EXTI9_5       EXTI Line[9:5] interrupts      0x 0000 009C
+Page  731: exti_exti8_wkup
+Page  731: exti_exti9_wkup
+Page  732: exti_i2c1_ev_wkup
+Page  732: exti_i2c2_ev_wkup
+Page  732: exti_spi1_it
+Page  732: exti_spi2_it
+Page  732: exti_usart1_wkup
+Page  732: exti_usart2_wkup
+Page  732: exti_usart3_wkup
+Page  732: exti_exti10_it
+Page  732: exti_exti11_wkup
+Page  732: exti_exti12_wkup
+Page  732: 47           40           EXTI15_10      EXTI Line[15:10] interrupts     0x0000 00E0
+Page  732: exti_exti13_wkup
+Page  732: exti_exti14_wkup
+Page  732: exti_exti15_wkup
+Page  732: exti_rtc_al      48           41          RTC_ALARM                                       0x0000 00E4
+Page  732: EXTI Line interrupts
+Page  733: exti_spi3_wkup
+Page  733: exti_uart4_wkup
+Page  733: exti_uart5_wkup
+Page  733: Ethernet wakeup through EXTI
+Page  733: exti_eth_wkup     69           62          ETH_WKUP                                       0x0000 0138
+Page  733: exti_usart6_wkup                                            USART6 wakeup interrupt
+Page  734: exti_i2c3_ev_wkup
+Page  734: exti_usb1_wkup     83           76        OTG_HS_WKUP       OTG_HS wakeup interrupt      0x0000 0170
+Page  734: exti_uart7_wkup
+Page  734: exti_uart8_wkup
+Page  734: exti_spi4_wkup
+Page  734: exti_spi5_wkup
+Page  734: exti_spi6_wkup
+Page  734: exti_lptim_wkup
+Page  734: exti_cec_it
+Page  734: exti_i2c4_ev_it
+Page  735: exti_usb2_wkup    107         100         OTG_FS_WKUP       OTG_FS wakeup                   0x0000 01D0
+Page  735: exti_swpmi_wup                                               SWPMI wakeup
+Page  735: exti_mdios_wkup    126         119          MDIOS_WKUP       MDIOS wakeup                    0x0000 021C
+Page  736: exti_comp1_wkup      144         137             COMP                                           0x0000 0264
+Page  736: exti_comp2_wkup
+Page  736: exti_lptim2_wkup
+Page  736: exti_lptim3_wkup
+Page  736: exti_lptim4_wkup
+Page  736: exti_lptim5_wkup
+Page  736: exti_lpuart_rx_it   149         142            LPUART        LPUART global interrupt           0x0000 0278
+Page  736: exti_lpuart_tx_it
+Page  736: exti_d1_wwdg1_wkup     150         143         WWDG1_RST        Window Watchdog interrupt         0x0000 027C
+Page  737: exti_wkup1_wkup
+Page  737: exti_wkup2_wkup
+Page  737: exti_wkup3_wkup
+Page  737: exti_wkup4_wkup
+Page  737: exti_wkup5_wkup
+Page  737: exti_wkup6_wkup
+Page  738: Extended interrupt and event controller (EXTI)                                                  RM0433
+Page  738: 19         Extended interrupt and event controller (EXTI)
+Page  738: The Extended Interrupt and event controller (EXTI) manages wakeup through configurable
+Page  738: The EXTI wakeup requests allow the system to be woken up from Stop mode, and the CPU
+Page  738: 19.1       EXTI main features
+Page  738: The EXTI main features are the following:
+Page  738: –   No interrupt pending status register bit in the EXTI (the interrupt pending status is
+Page  738: 19.2       EXTI block diagram
+Page  738: As shown in Figure 86, the EXTI consists of a Register block accessed via an APB
+Page  738: The Register block contains all EXTI registers.
+Page  739: RM0433                                                            Extended interrupt and event controller (EXTI)
+Page  739: Figure 86. EXTI block diagram
+Page  739: Configurable event(x)                                      cpu_it_exti_per(x)
+Page  739: Event    events                  exti_cpu_wkup
+Page  739: Direct event(x)                                      exti_d3_wkup
+Page  739: d3_it_exti_per(x)
+Page  739: EXTI
+Page  739: 19.2.1             EXTI connections between peripherals, CPU, and D3 domain
+Page  739: CPU is in CStop mode are connected to an EXTI Configurable event input or Direct Event
+Page  739: •     Peripheral signals that generate a pulse are connected to an EXTI Configurable Event
+Page  739: input. For these events the EXTI provides a CPU status pending bit that has to be
+Page  739: connected to an EXTI Direct Event input. There is no CPU status pending bit within the
+Page  739: EXTI. The Interrupt or Wakeup is cleared by the CPU in the peripheral.
+Page  739: The EXTI Wakeup signals are connected to the PWR block, and are used to wakeup the D3
+Page  740: Extended interrupt and event controller (EXTI)                                                                       RM0433
+Page  740: 19.3            EXTI functional description
+Page  740: Depending on the EXTI Event input type and wakeup target(s), different logic
+Page  740: •      Active trigger edge enable, by EXTI rising trigger selection register (EXTI_RTSR1),
+Page  740: EXTI rising trigger selection register (EXTI_RTSR2), EXTI rising trigger selection
+Page  740: register (EXTI_RTSR3), and EXTI falling trigger selection register (EXTI_FTSR1),
+Page  740: EXTI falling trigger selection register (EXTI_FTSR2), EXTI falling trigger selection
+Page  740: register (EXTI_FTSR3)
+Page  740: •      Software trigger, by EXTI software interrupt event register (EXTI_SWIER1), EXTI
+Page  740: software interrupt event register (EXTI_SWIER2), EXTI software interrupt event
+Page  740: register (EXTI_SWIER3)
+Page  740: •      CPU Interrupt enable, by EXTI interrupt mask register (EXTI_CPUIMR1), EXTI
+Page  740: interrupt mask register (EXTI_CPUIMR2), EXTI interrupt mask register
+Page  740: (EXTI_CPUIMR3)
+Page  740: •      CPU Event enable, by EXTI event mask register (EXTI_CPUEMR1), EXTI event mask
+Page  740: register (EXTI_CPUEMR2), EXTI event mask register (EXTI_CPUEMR3)
+Page  740: •      D3 domain wakeup pending, by EXTI D3 pending mask register (EXTI_D3PMR1),
+Page  740: EXTI D3 pending mask register (EXTI_D3PMR2), EXTI D3 pending mask register
+Page  740: (EXTI_D3PMR3)
+Page  740: Table 139. EXTI Event input configurations and register control(1)
+Page  740: EXTI_CPUEMR
+Page  740: EXTI_CPUIMR
+Page  740: EXTI_D3PMR
+Page  740: EXTI_SWIER
+Page  740: EXTI_RTSR
+Page  740: EXTI_FTSR
+Page  741: RM0433                                                                              Extended interrupt and event controller (EXTI)
+Page  741: 19.3.1              EXTI Configurable event input CPU wakeup
+Page  741: cpu_it_exti_per(x)
+Page  741: EXTI
+Page  741: software, writing the EXTI software interrupt event register (EXTI_SWIER1), the EXTI
+Page  741: software interrupt event register (EXTI_SWIER2), or the EXTI software interrupt event
+Page  741: register (EXTI_SWIER3) register bit.
+Page  741: The rising edge EXTI rising trigger selection register (EXTI_RTSR1), EXTI rising trigger
+Page  741: selection register (EXTI_RTSR2), EXTI rising trigger selection register (EXTI_RTSR3), and
+Page  741: falling edge EXTI falling trigger selection register (EXTI_FTSR1), EXTI falling trigger
+Page  741: selection register (EXTI_FTSR2), EXTI falling trigger selection register (EXTI_FTSR3)
+Page  741: The devices feature dedicated interrupt mask registers, namely EXTI interrupt mask register
+Page  741: (EXTI_CPUIMR1) and EXTI interrupt mask register (EXTI_CPUIMR2), EXTI interrupt mask
+Page  741: register (EXTI_CPUIMR3), and EXTI pending register (EXTI_CPUPR1), EXTI pending
+Page  741: register (EXTI_CPUPR2), EXTI pending register (EXTI_CPUPR3) for Configurable events
+Page  741: Configurable events interrupts need to be acknowledged by software in the EXTI_CPUPR
+Page  742: Extended interrupt and event controller (EXTI)                                                           RM0433
+Page  742: The devices feature dedicated event mask registers, i.e. EXTI event mask register
+Page  742: (EXTI_CPUEMR1), EXTI event mask register (EXTI_CPUEMR2), and EXTI event mask
+Page  742: register (EXTI_CPUEMR3). The enabled event then generates an event on the CPU. All
+Page  742: register (EXTI_CPUPR) will not be set for an unmasked CPU event.
+Page  742: 19.3.2     EXTI configurable event input Any wakeup
+Page  742: EXTI_C1EMR
+Page  742: EXTI_C1IMR
+Page  743: RM0433                                                                                     Extended interrupt and event controller (EXTI)
+Page  743: cpu_it_exti_per(x)
+Page  743: EXTI
+Page  743: The event triggering logic for “Any” target has additional D3 Pending mask register EXTI D3
+Page  743: pending mask register (EXTI_D3PMR1), EXTI D3 pending mask register (EXTI_D3PMR2),
+Page  743: EXTI D3 pending mask register (EXTI_D3PMR3)and D3 Pending request logic. The D3
+Page  744: Extended interrupt and event controller (EXTI)                                                                                       RM0433
+Page  744: 19.3.3           EXTI direct event input CPU wakeup
+Page  744: cpu_it_exti_per(x)
+Page  744: EXTI
+Page  745: RM0433                                                                            Extended interrupt and event controller (EXTI)
+Page  745: 19.3.4           EXTI direct event input Any wakeup
+Page  745: cpu_it_exti_per(x)
+Page  745: d3_it_exti_per(x)
+Page  745: EXTI                                                                                             D3 Wakeup(x)
+Page  745: without resynchronization in the EXTI.
+Page  746: Extended interrupt and event controller (EXTI)                                                           RM0433
+Page  746: 19.3.5     EXTI D3 pending request clear selection
+Page  746: EXTI
+Page  746: The D3 Pending request clear selection registers EXTI D3 pending clear selection register
+Page  746: low (EXTI_D3PCR1L), EXTI D3 pending clear selection register high (EXTI_D3PCR1H),
+Page  746: EXTI D3 pending clear selection register low (EXTI_D3PCR2L), EXTI D3 pending clear
+Page  746: selection register high (EXTI_D3PCR2H), EXTI D3 pending clear selection register low
+Page  746: (EXTI_D3PCR3L) and EXTI D3 pending clear selection register high (EXTI_D3PCR3H)
+Page  746: 19.4       EXTI event input mapping
+Page  746: SYSCFG register SYSCFG_EXTICRn. The same pin from each IOPORT maps to the
+Page  746: corresponding EXTI Event input.
+Page  746: The EXTI Event inputs with a connection to the CPU NVIC are indicated in the Connection
+Page  746: to NVIC column. For the EXTI events not having a connection to the NVIC, the peripheral
+Page  746: interrupt is directly connected to the NVIC in parallel with the connection to the EXTI.
+Page  746: All EXTI Event inputs are OR-ed together and connected to the CPU event input (rxev).
+Page  747: RM0433                                                Extended interrupt and event controller (EXTI)
+Page  747: Table 141. EXTI Event input mapping
+Page  747: 0 - 15      EXTI[15:0]                         Configurable           Any                 Yes
+Page  748: Extended interrupt and event controller (EXTI)                                                    RM0433
+Page  748: Table 141. EXTI Event input mapping (continued)
+Page  749: RM0433                                                               Extended interrupt and event controller (EXTI)
+Page  749: Table 141. EXTI Event input mapping (continued)
+Page  749: 1. PVD and AVD signals are OR-ed together on the same EXTI event input.
+Page  749: 2. RTC Tamper, RTC timestamp and RCC LSECSS signals are OR-ed together on the same EXTI event input.
+Page  749: 19.5           EXTI functional behavior
+Page  749: EXTI_CPUPR
+Page  749: EXTI_CPUIMR             EXTI_CPUEMR
+Page  749: pending PRx bit in EXTI_CPUPR is set and the CPU interrupt signal is activated.
+Page  749: EXTI_CPUPR PRx pending bit shall be cleared by software writing it to ‘1’. This will clear the
+Page  750: Extended interrupt and event controller (EXTI)                                                 RM0433
+Page  750: when writing a ‘1’ in the software interrupt/event register EXTI_SWIER.
+Page  750: •    D3 domain wakeup without pending (EXTI_D3PMR = 0)
+Page  750: •    D3 domain wakeup with pending (EXTI_D3PMR = 1)
+Page  750: 19.5.1     EXTI CPU interrupt procedure
+Page  750: EXTI_CPUIMR register.
+Page  750: corresponding trigger edge enable bits in EXTI_RTSR and EXTI_FTSR registers.
+Page  750: –   For Configurable event inputs the associated EXTI pending bit needs to be
+Page  750: 19.5.2     EXTI CPU event procedure
+Page  750: •    Unmask the Event input by setting the corresponding mask bits of the EXTI_CPUEMR
+Page  750: corresponding trigger edge enable bits in EXTI_RTSR and EXTI_FTSR registers.
+Page  750: –   For Configurable event inputs there is no EXTI pending bit to clear.
+Page  751: RM0433                                              Extended interrupt and event controller (EXTI)
+Page  751: 19.5.3   EXTI CPU wakeup procedure
+Page  751: EXTI_CPUIMR and/or EXTI_CPUEMR registers. The CPU wakeup is generated at the
+Page  751: corresponding trigger edge enable bits in EXTI_RTSR and EXTI_FTSR registers.
+Page  751: 19.5.4   EXTI D3 domain wakeup for autonomous Run mode procedure
+Page  751: bits in the EXTI_CPUIMR and/or EXTI_CPUEMR registers.
+Page  751: corresponding trigger edge enable bits in EXTI_RTSR and EXTI_FTSR registers.
+Page  751: •   Select the D3 domain wakeup mechanism in EXTI_D3PMR.
+Page  751: –    When D3 domain wakeup without pending (EXTI_PMR = 0) is selected, the
+Page  751: –    When D3 domain wakeup with pending (EXTI_PMR = 1) is selected the Wakeup
+Page  751: associated EXTI_D3PMR register bit.
+Page  751: 19.5.5   EXTI software interrupt/event trigger procedure
+Page  751: the EXTI_RTSR and/or EXTI_FTSR registers.
+Page  751: mask bits in the EXTI_CPUIMR and/or EXTI_CPUEMR registers.
+Page  751: EXTI_SWIER register.
+Page  751: •   The Event input may be disabled by clearing the EXTI_RTSR and EXTI_FTSR register
+Page  752: Extended interrupt and event controller (EXTI)                                                                                RM0433
+Page  752: 19.6             EXTI registers
+Page  752: 19.6.1           EXTI rising trigger selection register (EXTI_RTSR1)
+Page  752: 19.6.2           EXTI falling trigger selection register (EXTI_FTSR1)
+Page  753: RM0433                                                         Extended interrupt and event controller (EXTI)
+Page  753: 19.6.3          EXTI software interrupt event register (EXTI_SWIER1)
+Page  753: 19.6.4          EXTI D3 pending mask register (EXTI_D3PMR1)
+Page  754: Extended interrupt and event controller (EXTI)                                                                                    RM0433
+Page  754: 19.6.5             EXTI D3 pending clear selection register low (EXTI_D3PCR1L)
+Page  754: 19.6.6             EXTI D3 pending clear selection register high (EXTI_D3PCR1H)
+Page  755: RM0433                                                                Extended interrupt and event controller (EXTI)
+Page  755: 19.6.7            EXTI rising trigger selection register (EXTI_RTSR2)
+Page  756: Extended interrupt and event controller (EXTI)                                                                                RM0433
+Page  756: 19.6.8           EXTI falling trigger selection register (EXTI_FTSR2)
+Page  756: 19.6.9           EXTI software interrupt event register (EXTI_SWIER2)
+Page  757: RM0433                                                          Extended interrupt and event controller (EXTI)
+Page  757: 19.6.10        EXTI D3 pending mask register (EXTI_D3PMR2)
+Page  758: Extended interrupt and event controller (EXTI)                                                                            RM0433
+Page  758: 19.6.11          EXTI D3 pending clear selection register low (EXTI_D3PCR2L)
+Page  758: 19.6.12          EXTI D3 pending clear selection register high (EXTI_D3PCR2H)
+Page  759: RM0433                                                                Extended interrupt and event controller (EXTI)
+Page  759: 19.6.13          EXTI rising trigger selection register (EXTI_RTSR3)
+Page  759: 19.6.14          EXTI falling trigger selection register (EXTI_FTSR3)
+Page  760: Extended interrupt and event controller (EXTI)                                                                                RM0433
+Page  760: 19.6.15          EXTI software interrupt event register (EXTI_SWIER3)
+Page  760: 19.6.16          EXTI D3 pending mask register (EXTI_D3PMR3)
+Page  761: RM0433                                                         Extended interrupt and event controller (EXTI)
+Page  761: 19.6.17         EXTI D3 pending clear selection register low (EXTI_D3PCR3L)
+Page  761: 19.6.18         EXTI D3 pending clear selection register high (EXTI_D3PCR3H)
+Page  762: Extended interrupt and event controller (EXTI)                                                                              RM0433
+Page  762: 19.6.19         EXTI interrupt mask register (EXTI_CPUIMR1)
+Page  762: 19.6.20         EXTI event mask register (EXTI_CPUEMR1)
+Page  763: RM0433                                                       Extended interrupt and event controller (EXTI)
+Page  763: 19.6.21        EXTI pending register (EXTI_CPUPR1)
+Page  763: 19.6.22        EXTI interrupt mask register (EXTI_CPUIMR2)
+Page  764: Extended interrupt and event controller (EXTI)                                                                               RM0433
+Page  764: 19.6.23          EXTI event mask register (EXTI_CPUEMR2)
+Page  764: 19.6.24          EXTI pending register (EXTI_CPUPR2)
+Page  765: RM0433                                                                  Extended interrupt and event controller (EXTI)
+Page  765: 19.6.25          EXTI interrupt mask register (EXTI_CPUIMR3)
+Page  766: Extended interrupt and event controller (EXTI)                                                                    RM0433
+Page  766: 19.6.26         EXTI event mask register (EXTI_CPUEMR3)
+Page  766: 19.6.27         EXTI pending register (EXTI_CPUPR3)
+Page  767: EXTI_FTSR2
+Page  767: EXTI_FTSR1
+Page  767: EXTI_RTSR3
+Page  767: EXTI_RTSR2
+Page  767: EXTI_RTSR1
+Page  767: EXTI_SWIER2
+Page  767: EXTI_SWIER1
+Page  767: EXTI_D3PMR2
+Page  767: EXTI_D3PMR1
+Page  767: EXTI_D3PCR2L
+Page  767: EXTI_D3PCR1L
+Page  767: EXTI_D3PCR2H
+Page  767: EXTI_D3PCR1H
+Page  767: EXTI register map
+Page  767: The following table gives the EXTI register map and the reset values.
+Page  767: Extended interrupt and event controller (EXTI)
+Page  768: EXTI_FTSR3
+Page  768: EXTI_SWIER3
+Page  768: EXTI_CPUPR2
+Page  768: EXTI_CPUPR1
+Page  768: EXTI_D3PMR3
+Page  768: EXTI_CPUIMR3
+Page  768: EXTI_CPUIMR2
+Page  768: EXTI_CPUIMR1
+Page  768: EXTI_D3PCR3L
+Page  768: EXTI_D3PCR3H
+Page  768: EXTI_CPUEMR3
+Page  768: EXTI_CPUEMR2
+Page  768: EXTI_CPUEMR1
+Page  768: Extended interrupt and event controller (EXTI)
+Page  769: EXTI_CPUPR3
+Page  769: Extended interrupt and event controller (EXTI)
+Page  897: EXTi mapped at                                                                                              AWD2          adc_awd2
+Page  897: JEXTi mapped at                                                                      HTR2[25:0]
+Page  920: EXTi mapped at
+Page  920: JEXTi mapped at adc_jext1_trg
+Page  920: adc_ext_trg6                   EXTI line 11                         External pin                                  00110
+Page  921: adc_jext_trg6             EXTI line 15                     External pin                  00110
+Page 1026: EXTI9                                External pin                               1101
+Page 1061: EXTI controller)
+Page 1068: controller. Each comparator has its own EXTI line and can generate either interrupts or
+Page 1068: 27.5.1      Interrupt through EXTI block
+Page 1068: Sequence to enable the COMPx interrupt through EXTI block:
+Page 1068: 1.     Configure the EXTI line, receiving the comp_wkup signal, in interrupt mode, select the
+Page 1068: rising, falling or either-edge sensitivity and enable the EXTI line.
+Page 1068: 2.     Configure and enable the NVIC IRQ channel mapped to the corresponding EXTI lines.
+Page 1068: comp1_wkup         through EXTI        through EXTI            yes                yes                 N/A
+Page 1068: comp2_whup         through EXTI        through EXTI            yes                yes                 N/A
+Page 1100: External trigger Input trigger from two EXTI signals to start analog
+Page 1100: signal           conversion (from GPIOs: EXTI11, EXTI15).
+Page 1101: dfsdm_jtrg24                                             EXTI11
+Page 1101: dfsdm_jtrg25                                             EXTI15
+Page 1907: All RTC interrupts are connected to the EXTI controller. Refer to Section 19: Extended
+Page 1907: interrupt and event controller (EXTI).
+Page 1907: 1.   Configure and enable the EXTI line corresponding to the RTC Alarm event in interrupt
+Page 1908: 1.   Configure and enable the EXTI line corresponding to the RTC Tamper event in interrupt
+Page 1908: 1.   Configure and enable the EXTI line corresponding to the RTC TimeStamp event in
+Page 1908: 1.   Configure and enable the EXTI line corresponding to the Wakeup timer even in
+Page 2567: EXTI
+Page 2567: EXTI
+Page 2800: and tied to the EXTI peripheral (line 86).
+Page 2802: interrupt. It is ORed with lpi_intr_o signal (see Section : LPI Interrupt) and tied to the EXTI
+Page 2805: pmt_intr_o. They are used for wakeup event detection at EXTI level.
+Page 2979: functional blocks (such as RCC and EXTI).
+Page 3196: Res.    Res.     Res.   Res.     NUMEXTINSEL[2:0]                                 NUMEXTIN[8:0]
+Page 3197: Bits 11:9 NUMEXTINSEL[2:0]: Number of external input selectors implemented
+Page 3197: Bits 8:0 NUMEXTIN[8:0]: Number of external inputs implemented
+Page 3211: Res.                                          Res.                                            Res.                                Res.                                          NUMEXTINSEL[2:0]                                Res.                                                                                                                           10
+Page 3211: NUMEXTIN[8:0]
+Page 3217: Peripherals interconnect matrix details and Table 89: EXTI wakeup
+Page 3217: Extended interrupt and event controller (EXTI)
+Page 3217: Replaced DMA1 by BDMA for events 66 to 73 in Table 133: EXTI
+Page 3223: Replace AIEC by EXTI and wait VDD11 by Wait VCORE in
+Page 3227: in Table 94: EXTI pending requests clear inputs.
+Page 3227: Updated EXTI connection in Table 97: DMAMUX2 and BDMA
+Page 3229: Section 19: Extended interrupt and event controller (EXTI)
+Page 3229: Added note related to WKUP1 to 6 in Table 141: EXTI Event input
+Page 3237: ETH_MACL3L4C1R . . . . . . . . . . . . . . . . . . .2940        EXTI_EMR . . . . . . . . . . . . . . . . . . . . . . 762, 764
+Page 3237: ETH_MACL4A0R . . . . . . . . . . . . . . . . . . . . .2937      EXTI_FTSR . . . . . . . . . . . . . . . . . . 752, 756, 759
+Page 3237: ETH_MACL4A1R . . . . . . . . . . . . . . . . . . . . .2942      EXTI_IMR . . . . 753-754, 757-758, 760-763, 765
+Page 3237: ETH_MACLCSR . . . . . . . . . . . . . . . . . . . . .2909       EXTI_PR . . . . . . . . . . . . . . . . . . . . 763-764, 766
+Page 3237: ETH_MACLETR . . . . . . . . . . . . . . . . . . . . . .2912     EXTI_RTSR . . . . . . . . . . . . . . . . . . 752, 755, 759
+Page 3237: ETH_MACLMIR . . . . . . . . . . . . . . . . . . . . . .2968     EXTI_SWIER . . . . . . . . . . . . . . . . . 753, 756, 760
+Page 3245: SYSCFG_EXTICR1 . . . . . . . . . . . . . . . . . . . .528          TIM12_TISEL . . . . . . . . . . . . . . . . . . . . . . . 1732
+Page 3245: SYSCFG_EXTICR2 . . . . . . . . . . . . . . . . . . . .529          TIM13_TISEL . . . . . . . . . . . . . . . . . . . . . . . 1743
+Page 3245: SYSCFG_EXTICR3 . . . . . . . . . . . . . . . . . . . .530          TIM14_TISEL . . . . . . . . . . . . . . . . . . . . . . . 1743
+Page 3245: SYSCFG_EXTICR4 . . . . . . . . . . . . . . . . . . . .531          TIM15_AF1 . . . . . . . . . . . . . . . . . . . . . . . . . 1804

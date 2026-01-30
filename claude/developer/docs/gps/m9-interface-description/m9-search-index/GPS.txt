@@ -1,0 +1,221 @@
+Keyword: GPS
+Occurrences: 217
+================================================================================
+
+Page    7: 3.13.6.3 Galileo GPS time oﬀset assistance............................................................................ 111
+Page    7: 3.13.8 UBX-MGA-GPS (0x13 0x00)..................................................................................................114
+Page    7: 3.13.8.1 GPS ephemeris assistance...........................................................................................114
+Page    7: 3.13.8.2 GPS almanac assistance.............................................................................................. 115
+Page    7: 3.13.8.3 GPS health assistance.................................................................................................. 116
+Page    7: 3.13.8.4 GPS UTC assistance...................................................................................................... 116
+Page    7: 3.13.8.5 GPS ionosphere assistance..........................................................................................117
+Page    9: 3.15.21 UBX-NAV-TIMEGPS (0x01 0x20).......................................................................................152
+Page    9: 3.15.21.1 GPS time solution........................................................................................................ 152
+Page   10: 4.4.3.1 GPS MSM1......................................................................................................................... 170
+Page   10: 4.4.4.1 GPS MSM3......................................................................................................................... 170
+Page   10: 4.4.5.1 GPS MSM4......................................................................................................................... 171
+Page   10: 4.4.6.1 GPS MSM5......................................................................................................................... 172
+Page   10: 4.4.7.1 GPS MSM6......................................................................................................................... 172
+Page   10: 4.4.8.1 GPS MSM7......................................................................................................................... 173
+Page   15: ✓ ✓ GPS;GLO;GAL;BDS               List of supported major GNSS (see GNSS identiﬁers).
+Page   17: MGA-GPS message for GPS assistance data, which exists in versions for ephemerides (UBX-MGA-
+Page   17: GPS-EPH) and almanacs (UBX-MGA-GPS-ALM).
+Page   17: identiﬁed as gnssId 6, svId 4, while the GPS SV4 is gnssId 0, svId 4.
+Page   18: GPS                     GPS            G                    0                   1              1                   1
+Page   18: GPS           G1-G32          0:1-32          1-32
+Page   18: GPS           G1-G32          1-32         1-32                 1-32      1-32                1-32      1-32
+Page   19: GPS L1C/A    2                                  0             0               1          1                    1               1
+Page   19: GPS L2 CL                                       0             3               1          6                    1               6
+Page   19: GPS L2 CM                                       0             4               1          5                    1               5
+Page   19: GPS L5 I                                        0             6               1          7                    1               7
+Page   19: GPS L5 Q                                        0             7               1          8                    1               8
+Page   20: Input                        Messages that are input to the receiver and never output. E.g. UBX-MGA-GPS-EPH.
+Page   22: GPS-only ﬁltering     CFG-NMEA-OUT_ONLYGPS        Enable to restrict output to only report GPS satellites.
+Page   22: GNSS to ﬁlter         CFG-NMEA-FILT_GPS etc.      Filters satellites based on the GNSS they belong to.
+Page   23: Main Talker ID The main NMEA Talker ID is "GN" (e.g. instead of "GP" for a GPS-only receiver).
+Page   23: GGA Talker IDs The NMEA speciﬁcation indicates that the GGA message is GPS-speciﬁc. However,
+Page   23: GPS, SBAS                       GP       NMEA 2.3+
+Page   29: Comment           Time and position, together with GPS ﬁxing-related data (number of satellites in use, and the resulting HDOP,
+Page   29: speciﬁcation indicates that the GGA message is GPS-speciﬁc. However, when the receiver is conﬁgured for
+Page   30: 13         diffAge               numeric     s           -                Age of diﬀerential corrections (null when DGPS is not
+Page   30: DGPS is not used)
+Page   32: The ﬁrst four characters indicate the status for GPS,
+Page   32: 11         diffAge               numeric     s           -                Age of diﬀerential corrections (null when DGPS is not
+Page   32: DGPS is not used)
+Page   33: •   The SV numbers (ﬁelds 'svid') are in the range of 1 to 32 for GPS satellites, and 33 to 64 for SBAS
+Page   41: •    RK = Combined GPS + dead reckoning solution
+Page   41: 14         diffAge            numeric     s           -                Age of diﬀerential corrections (blank when DGPS is not
+Page   46: gnssId appears in many UBX messages and uses 0 to indicate GPS, 1 for SBAS and so on (see GNSS
+Page   52: •   Galileo GPS time oﬀset assistance (Input)
+Page   52: UBX-MGA-GPS               0x13 0x00      •   GPS ephemeris assistance (Input)
+Page   52: •   GPS almanac assistance (Input)
+Page   52: •   GPS health assistance (Input)
+Page   52: •   GPS UTC assistance (Input)
+Page   52: •   GPS ionosphere assistance (Input)
+Page   53: UBX-NAV-TIMEGPS          0x01 0x20    •   GPS time solution (Periodic/polled)
+Page   59: •    To avoid cross-correlation issues, it is recommended that GPS and QZSS are always both enabled or
+Page   60: When gnssId is 0 (GPS)
+Page   60: •   0x01 = GPS L1C/A
+Page   60: •   0x10 = GPS L2C
+Page   60: •   0x20 = GPS L5
+Page   65: bit 7   U:1       dgpsMask                -           -            Apply DGPS settings
+Page   66: (linear extrapolation) in case of GPS signal loss, only
+Page   66: Observatory (USNO); derived from GPS time
+Page   67: bit 9   U:1      wknRoll                -           -            1 = apply GPS weeknumber rollover settings
+Page   67: 18                  U2       wknRollover            -           -            GPS week rollover number; GPS week numbers will be
+Page   68: bit 4   U:1       gpsOnlyFilter         -           -            Restrict output to GPS satellites only
+Page   69: bit 0   U:1     gps            -       -            Disable reporting of GPS satellites
+Page   72: 16                U4        gridOffset           -            ms          Grid oﬀset relative to GPS start of week
+Page   80: •   1 = GPS time
+Page   81: bit 7   U:1       utc                  -            -           UTC correction + GPS leap seconds parameters
+Page   82: receiver will only use GPS satellites for which integrity
+Page   85: •   1 = GPS
+Page   94: 4               U4    iTOW        -          ms           GPS time of week of the navigation epoch.
+Page  111: 3.13.6.3 Galileo GPS time oﬀset assistance
+Page  111: Galileo GPS time oﬀset assistance
+Page  111: Comment       This message allows the delivery of Galileo time to GPS time oﬀset.
+Page  114: 8             I4        tauGps                   2^-31       s            Correction to GPS time relative to GLONASS time
+Page  114: 3.13.8 UBX-MGA-GPS (0x13 0x00)
+Page  114: 3.13.8.1 GPS ephemeris assistance
+Page  114: Message       UBX-MGA-GPS-EPH
+Page  114: GPS ephemeris assistance
+Page  114: Comment       This message allows the delivery of GPS ephemeris assistance to a receiver.
+Page  114: 2             U1        svId                     -           -            GPS Satellite identiﬁer (see Satellite Numbering)
+Page  115: 3.13.8.2 GPS almanac assistance
+Page  115: Message       UBX-MGA-GPS-ALM
+Page  115: GPS almanac assistance
+Page  115: Comment       This message allows the delivery of GPS almanac assistance to a receiver.
+Page  115: 2             U1        svId                     -           -            GPS Satellite identiﬁer (see Satellite Numbering)
+Page  116: 3.13.8.3 GPS health assistance
+Page  116: Message       UBX-MGA-GPS-HEALTH
+Page  116: GPS health assistance
+Page  116: Comment       This message allows the delivery of GPS health assistance to a receiver.
+Page  116: 4             U1[32]    healthCode               -           -            Each byte represents a GPS SV (1-32). The 6 LSBs
+Page  116: 3.13.8.4 GPS UTC assistance
+Page  116: Message       UBX-MGA-GPS-UTC
+Page  116: GPS UTC assistance
+Page  116: Comment       This message allows the delivery of GPS UTC assistance to a receiver.
+Page  117: 13            U1        utcTot                 2^12        s            UTC parameters reference time of week (GPS time)
+Page  117: 3.13.8.5 GPS ionosphere assistance
+Page  117: Message       UBX-MGA-GPS-IONO
+Page  117: GPS ionosphere assistance
+Page  117: Comment       This message allows the delivery of GPS ionospheric assistance to a receiver.
+Page  120: •   0 = GPS time
+Page  126: bit 0   U:1       GPSSup                -            -           GPS is supported
+Page  126: bit 0   U:1       GPSDef                -            -           GPS is default-enabled
+Page  126: bit 0   U:1       GPSEna                -            -           GPS is enabled
+Page  127: 16                  U2        noisePerMS               -           -            Noise level as measured by the GPS core
+Page  131: 16 + n·24           U2        noisePerMS            -            -           Noise level as measured by the GPS core
+Page  135: 0                   U4        iTOW                   -           ms           GPS time of week of the navigation epoch.
+Page  135: 0                   U4        iTOW                   -           ms           GPS time of week of the navigation epoch. See
+Page  136: 0             U4         iTOW                     -           ms           GPS time of week of the navigation epoch.
+Page  137: 0             U4         iTOW                 -            ms          GPS time of week of the navigation epoch.
+Page  137: 0             U4         iTOW                 -            ms          GPS time of week of the navigation epoch.
+Page  137: 0             U4         iTOW                 -            ms          GPS time of week of the navigation epoch.
+Page  138: 4             U4        iTOW                     -           ms           GPS time of week of the navigation epoch.
+Page  139: 0                U4      iTOW           -           ms           GPS time of week of the navigation epoch.
+Page  140: 0                 U4        iTOW                    -           ms           GPS time of week of the navigation epoch.
+Page  141: 0                   U4        iTOW                   -           ms           GPS time of week of the navigation epoch.
+Page  141: 0                   U4        iTOW                   -           ms           GPS time of week of the navigation epoch.
+Page  144: 0                   U4        iTOW                  -            ms          GPS time of week of the navigation epoch.
+Page  145: 0                 U4        iTOW                  -            ms          GPS time of week of the navigation epoch.
+Page  146: •   16 GPS
+Page  146: •   2 = Receiver uses only GPS satellites for which
+Page  147: 0                   U4      iTOW          -           ms           GPS time of week of the navigation epoch.
+Page  147: •   1 = Klobuchar model transmitted by GPS
+Page  148: 0                   U4        iTOW                  -            ms           GPS time of week of the navigation epoch.
+Page  149: 0                   U4        iTOW                    -           ms           GPS time of week of the navigation epoch.
+Page  149: 4                   U1        gpsFix                  -           -            GPSﬁx Type, this value does not qualify a ﬁx as valid
+Page  149: and within the limits. See note on ﬂag gpsFixOk below.
+Page  149: •   0x04 = GPS + dead reckoning combined
+Page  149: bit 0   U:1       gpsFixOk                -           -            1 = position and velocity valid and within DOP and ACC
+Page  150: 0                 U4        iTOW                   -           ms           GPS time of week of the navigation epoch.
+Page  151: 0                   U4        iTOW                   -           ms           GPS time of week of the navigation epoch.
+Page  152: 0                   U4        iTOW                     -           ms           GPS time of week of the navigation epoch.
+Page  152: 3.15.21 UBX-NAV-TIMEGPS (0x01 0x20)
+Page  152: 3.15.21.1 GPS time solution
+Page  152: Message             UBX-NAV-TIMEGPS
+Page  152: GPS time solution
+Page  152: Comment             This message reports the precise GPS time of the most recent navigation solution including validity ﬂags and
+Page  152: 0                   U4        iTOW                     -           ms           GPS time of week of the navigation epoch.
+Page  152: The precise GPS time of week in seconds is:
+Page  153: 8                   I2        week                   -           -            GPS week number of the navigation epoch
+Page  153: 10                  I1        leapS                  -           s            GPS leap seconds (GPS-UTC)
+Page  153: bit 0   U:1       towValid               -           -            1 = Valid GPS time of week (iTOW & fTOW, (see section
+Page  153: bit 1   U:1       weekValid              -           -            1 = Valid GPS week number (see section Time validity
+Page  153: bit 2   U:1       leapSValid             -           -            1 = Valid GPS leap seconds
+Page  153: 0                   U4        iTOW                   -           ms           GPS time of week of the navigation epoch.
+Page  153: •   1 = Derived from time diﬀerence between GPS
+Page  153: •   2 = GPS
+Page  153: 9                   I1        currLs                 -           s            Current number of leap seconds since start of GPS
+Page  153: time (Jan 6, 1980). It reﬂects how much GPS time is
+Page  153: the same as GPS. BeiDou number of leap seconds is 14
+Page  153: less than GPS. GLONASS follows UTC time, so no leap
+Page  154: •   2 = GPS
+Page  154: 16                  U2        dateOfLsGps            -           -            GPS week number (WN) of the next leap second event
+Page  154: 18                  U2        dateOfLsGps            -           -            GPS day of week number (DN) for the next leap second
+Page  154: only if validTimeToLsEvent = 1. (GPS and Galileo DN:
+Page  154: 0                   U4        iTOW                   -           ms           GPS time of week of the navigation epoch.
+Page  155: 0                   U4        iTOW                   -           ms           GPS time of week of the navigation epoch.
+Page  156: 0                 U4        iTOW                   -           ms           GPS time of week of the navigation epoch.
+Page  157: 0             U4        iTOW                  -            ms          GPS time of week of the navigation epoch.
+Page  157: measurement reference time of week has to be forwarded correctly (modulo 14400000 for the 24 LSB GPS
+Page  157: 4             U4        gpsTOW                -            ms          GPS measurement reference time
+Page  157: 24            U2        gpsTOWacc             2^-4         ms          GPS measurement reference time accuracy (0xﬀﬀ = >
+Page  158: for GPS)
+Page  164: •   0 = GPS
+Page  167: • GPS MSM1 (Input)
+Page  167: • GPS MSM3 (Input)
+Page  167: • GPS MSM4 (Input)
+Page  167: • GPS MSM5 (Input)
+Page  167: • GPS MSM6 (Input)
+Page  167: • GPS MSM7 (Input)
+Page  170: 4.4.3.1 GPS MSM1
+Page  170: GPS MSM1
+Page  170: Comment           Compact GPS Pseudoranges
+Page  170: 4.4.4.1 GPS MSM3
+Page  170: GPS MSM3
+Page  170: Comment           Compact GPS Pseudoranges and PhaseRanges
+Page  171: 4.4.5.1 GPS MSM4
+Page  171: GPS MSM4
+Page  171: Comment           Full GPS Pseudoranges and PhaseRanges plus CNR
+Page  172: 4.4.6.1 GPS MSM5
+Page  172: GPS MSM5
+Page  172: Comment           Full GPS Pseudoranges, PhaseRanges, PhaseRangeRate and CNR
+Page  172: 4.4.7.1 GPS MSM6
+Page  172: GPS MSM6
+Page  172: Comment           Full GPS Pseudoranges and PhaseRanges plus CNR (high resolution)
+Page  173: 4.4.8.1 GPS MSM7
+Page  173: GPS MSM7
+Page  173: Comment           Full GPS Pseudoranges, PhaseRanges, PhaseRangeRate and CNR (high resolution)
+Page  213: CFG-MSGOUT-UBX_NAV_TIMEGPS_   0x20910047 U1       -       -       Output rate of the UBX-NAV-TIMEGPS message
+Page  213: CFG-MSGOUT-UBX_NAV_TIMEGPS_   0x2091004b U1       -       -       Output rate of the UBX-NAV-TIMEGPS message
+Page  213: CFG-MSGOUT-UBX_NAV_TIMEGPS_   0x20910048 U1       -       -       Output rate of the UBX-NAV-TIMEGPS message
+Page  213: CFG-MSGOUT-UBX_NAV_TIMEGPS_   0x20910049 U1       -       -       Output rate of the UBX-NAV-TIMEGPS message
+Page  213: CFG-MSGOUT-UBX_NAV_TIMEGPS_   0x2091004a U1       -       -       Output rate of the UBX-NAV-TIMEGPS message
+Page  215: CFG-NAVSPG-WKNROLLOVER               0x30110017 U2            -          -     GPS week rollover number
+Page  215: GPS week numbers will be set correctly from this week up to 1024 weeks after this week.
+Page  217: GPS time
+Page  220: CFG-NMEA-FILT_GPS                    0x10930011       L       -          -     Disable reporting of GPS satellites
+Page  220: CFG-NMEA-OUT_ONLYGPS                 0x10930025       L       -          -     Restrict output to GPS satellites only
+Page  222: GPS start of week.
+Page  222: If set to 0, the position update periods are aligned to the GPS week.
+Page  224: GPS                                 1               Align measurements to GPS time
+Page  225: If enabled, the receiver will only use GPS satellites for which integrity information is available
+Page  226: CFG-SIGNAL-GPS_ENA                  0x1031001f      L       -       -      GPS enable
+Page  226: CFG-SIGNAL-GPS_L1CA_ENA             0x10310001      L       -       -      GPS L1C/A
+Page  230: GPS                                    1               GPS time reference
+Page  230: GPS                                    1               GPS time reference
+Page  235: UBX-CFG-GNSS.gnssId                        CFG-SIGNAL-GPS_ENA, CFG-SIGNAL-SBAS_ENA, CFG-
+Page  237: UBX-CFG-NMEA.gps                             CFG-NMEA-FILT_GPS
+Page  237: UBX-CFG-NMEA.gpsOnlyFilter                   CFG-NMEA-OUT_ONLYGPS
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGPS_I2C           0x20910047 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGPS_SPI           0x2091004b U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGPS_UART1         0x20910048 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGPS_UART2         0x20910049 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGPS_USB           0x2091004a U1         -      -               0
+Page  251: CFG-NMEA-FILT_GPS                                 0x10930011    L        -       -           0 (false)
+Page  251: CFG-NMEA-OUT_ONLYGPS                              0x10930025    L        -       -           0 (false)
+Page  252: CFG-RATE-TIMEREF                                0x20210003 E1          -      -              1 (GPS)
+Page  253: CFG-SIGNAL-GPS_ENA                                   0x1031001f    L        -      -            1 (true)
+Page  253: CFG-SIGNAL-GPS_L1CA_ENA                              0x10310001    L        -      -            1 (true)

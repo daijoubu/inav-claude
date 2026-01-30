@@ -1,0 +1,1462 @@
+Keyword: pin
+Occurrences: 1458
+================================================================================
+
+Page    3: 3.3.13     Flash bank and register swapping (STM32H743/753 devices only) . . 154
+Page    6: 5.3.1       PWR pins and internal signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 241
+Page    7: 7.3     RCC pins and internal signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 307
+Page    8: 7.7.1       Register mapping overview . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 360
+Page   11: 10.3.2      I/O pin alternate function multiplexer and mapping . . . . . . . . . . . . . . . 511
+Page   11: 10.3.14 Using the HSE or LSE oscillator pins as GPIOs . . . . . . . . . . . . . . . . . 517
+Page   11: 10.3.15 Using the GPIO pins in the backup supply domain . . . . . . . . . . . . . . . 517
+Page   14: 14.3.5       DMA request mapping . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 618
+Page   15: 15.3.2      BDMA request mapping . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 650
+Page   15: 15.4.2      BDMA pins and internal signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 651
+Page   16: 16.3.2      DMAMUX1 mapping . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 672
+Page   16: 16.3.3      DMAMUX2 mapping . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 674
+Page   17: 17.4   DMA2D pins and internal signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 694
+Page   18: 19.4   EXTI event input mapping . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 746
+Page   20: 21.6    External device address mapping . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 781
+Page   20: 21.6.1      NOR/PSRAM address mapping . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 783
+Page   20: 21.6.2      NAND Flash memory address mapping . . . . . . . . . . . . . . . . . . . . . . . 783
+Page   20: 21.6.3      SDRAM address mapping . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 784
+Page   21: 22.3.2      QUADSPI pins and internal signals . . . . . . . . . . . . . . . . . . . . . . . . . . . 861
+Page   22: 23.3.2      DLYB pins and internal signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 890
+Page   22: 24.3.2      ADC pins and internal signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 898
+Page   23: 24.3.18 Stopping an ongoing conversion (ADSTP, JADSTP) . . . . . . . . . . . . . . 917
+Page   25: 25.4.2      DAC pins and internal signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1023
+Page   26: 27.3.2      COMP pins and internal signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1062
+Page   28: 29.4.2      DFSDM pins and internal signals . . . . . . . . . . . . . . . . . . . . . . . . . . . 1100
+Page   30: 31.3.3      LTDC pins and external signal interface . . . . . . . . . . . . . . . . . . . . . . 1182
+Page   33: 34.3.16 CRYP data registers and data swapping . . . . . . . . . . . . . . . . . . . . . . 1287
+Page   34: 35.3.8      Context swapping . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1323
+Page   35: 36.3.2       HRTIM pins and internal signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1343
+Page   38: 37.3.23 UIF bit remapping . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1563
+Page   40: 38.3.16 UIF bit remapping . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1653
+Page   41: 39.3.13 UIF bit remapping . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1715
+Page   43: 40.4.16 UIF bit remapping . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1776
+Page   44: 41.3.3     UIF bit remapping . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1836
+Page   45: 42.4.2      LPTIM pins and internal signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1846
+Page   45: 42.4.3      LPTIM input and trigger mapping . . . . . . . . . . . . . . . . . . . . . . . . . . . 1846
+Page   47: 45.3.2      RTC pins and internal signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1892
+Page   51: 49.4.7      Slave select (SS) pin management . . . . . . . . . . . . . . . . . . . . . . . . . . 2138
+Page   52: 49.9.2      Pin sharing with SPI function . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2161
+Page   53: 50.3.2       SAI pins and internal signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2207
+Page   54: 51.3.1      SPDIFRX pins and internal signals . . . . . . . . . . . . . . . . . . . . . . . . . . 2272
+Page   55: 52.3.2      SWPMI pins and internal signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2308
+Page   56: 53.3.2      MDIOS pins and internal signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2335
+Page   57: 54.4.2     SDMMC pins and internal signals . . . . . . . . . . . . . . . . . . . . . . . . . . . 2354
+Page   61: 56.4.2      USB OTG pin and internal signals . . . . . . . . . . . . . . . . . . . . . . . . . . . 2568
+Page   63: 56.14.51 OTG device IN endpoint x interrupt register (OTG_DIEPINTx) . . . . . 2653
+Page   64: 56.14.57 OTG device OUT endpoint x interrupt register (OTG_DOEPINTx) . . 2659
+Page   64: 57.3    Ethernet pins and internal signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2741
+Page   65: 57.9.5      Stopping and starting transmission . . . . . . . . . . . . . . . . . . . . . . . . . . 2809
+Page   65: 57.9.7      Programming guidelines for IEEE 1588 timestamping . . . . . . . . . . . 2810
+Page   66: 58.3.1      HDMI-CEC pin and internal signals . . . . . . . . . . . . . . . . . . . . . . . . . . 2979
+Page   67: 59.3.2      Debug infrastructure pins and internal signals . . . . . . . . . . . . . . . . . . 3000
+Page   68: Table 14.   FLASH AXI interface memory map vs swapping option . . . . . . . . . . . . . . . . . . . . . . . . . . 154
+Page   68: Table 15.   Flash register map vs swapping option . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 156
+Page   68: Table 28.   PWR input/output signals connected to package pins or balls . . . . . . . . . . . . . . . . . . . . . 241
+Page   68: Table 48.   RCC input/output signals connected to package pins or balls . . . . . . . . . . . . . . . . . . . . . 307
+Page   70: Table 104.   Packing/unpacking and endian behavior (bit PINC = MINC = 1) . . . . . . . . . . . . . . . . . . . 625
+Page   70: Table 112.   Programmable data width and endian behavior (when PINC = MINC = 1) . . . . . . . . . . . 656
+Page   70: Table 141.   EXTI Event input mapping . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 747
+Page   70: Table 146.   FMC pins . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 779
+Page   70: Table 147.   FMC bank mapping options . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 782
+Page   70: Table 150.   NAND memory mapping and timing registers. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 783
+Page   71: Table 153.   SDRAM address mapping . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 784
+Page   71: Table 154.   SDRAM address mapping with 8-bit data bus width. . . . . . . . . . . . . . . . . . . . . . . . . . . . . 785
+Page   71: Table 155.   SDRAM address mapping with 16-bit data bus width. . . . . . . . . . . . . . . . . . . . . . . . . . . . 786
+Page   71: Table 156.   SDRAM address mapping with 32-bit data bus width. . . . . . . . . . . . . . . . . . . . . . . . . . . . 787
+Page   71: Table 191.   QUADSPI pins . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 861
+Page   71: Table 198.   ADC input/output pins . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 898
+Page   72: Table 216.   DAC input/output pins . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1023
+Page   72: Table 227.   COMP input/output pins . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1063
+Page   72: Table 239.   DFSDM external pins . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1100
+Page   73: Table 260.   LTDC pins and signal interface. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1182
+Page   73: Table 263.   Pixel data mapping versus color format . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1187
+Page   73: Table 277.   DES/TDES data swapping feature . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1289
+Page   73: Table 278.   AES data swapping feature . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1291
+Page   73: Table 296.   Events mapping across Timer A to E . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1353
+Page   73: Table 298.   External events mapping and associated features . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1368
+Page   73: Table 300.   Filtering signals mapping per time . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1372
+Page   73: Table 301.   Windowing signals mapping per timer (EEFLTR[3:0] = 1111) . . . . . . . . . . . . . . . . . . . . 1374
+Page   74: Table 342.   LPTIM input/output pins . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1846
+Page   75: Table 363.   RTC pins and internal signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1892
+Page   75: Table 364.   RTC pin PC13 configuration . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1893
+Page   75: Table 365.   RTC_OUT mapping . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1894
+Page   76: Table 403.   Serial data line swapping . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2170
+Page   76: Table 408.   SAI input/output pins. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2207
+Page   76: Table 419.   SPDIFRX pins. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2272
+Page   76: Table 424.   SWPMI input/output signals connected to package pins or balls . . . . . . . . . . . . . . . . . . 2308
+Page   76: Table 430.   MDIOS input/output signals connected to package pins or balls . . . . . . . . . . . . . . . . . . 2335
+Page   76: Table 437.   SDMMC pins. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2354
+Page   77: Table 460.   CAN subsystem I/O pins. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2429
+Page   77: Table 489.   OTG_FS input/output pins . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2568
+Page   77: Table 490.   OTG_HS input/output pins . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2568
+Page   77: Table 502.   Ethernet peripheral pins . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2741
+Page   78: Table 558.   HDMI pin . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2979
+Page   79: Table 564.   JTAG/Serial-wire debug port pins . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3000
+Page   79: Table 565.   Trace port pins . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3000
+Page   79: Table 566.   Serial-wire trace port pins . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3000
+Page   79: Table 567.   Trigger pins . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3000
+Page   80: Figure 10.   Flash bank swapping sequence . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 155
+Page   80: Figure 12.   Example of protected region overlapping . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 171
+Page   81: Figure 60.   RCC mapping overview . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 360
+Page   81: Figure 94.   FMC memory banks (default mapping) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 782
+Page   82: Figure 141. Stopping ongoing regular conversions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 918
+Page   82: Figure 142. Stopping ongoing regular and injected conversions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 918
+Page   84: Figure 224. Input channel pins redirection . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1103
+Page   84: Figure 237. Coordinates and size of the window after cropping . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1162
+Page   85: Figure 275. CRYP interrupt mapping diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1295
+Page   85: Figure 277. Message data swapping feature . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1317
+Page   85: Figure 279. HASH interrupt mapping diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1325
+Page   87: Figure 388. PWM output state following BRK and BRK2 pins assertion (OSSI=1) . . . . . . . . . . . . . . 1555
+Page   91: Figure 566. I2C interrupt mapping diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1986
+Page   93: Figure 679. SPDIFRX interface interrupt mapping diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2289
+Page   94: Figure 732. Pin control in bus monitoring mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2439
+Page   94: Figure 733. Pin control in loop back mode. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2441
+Page   95: Figure 750. Device-mode FIFO address mapping and AHB FIFO access mapping . . . . . . . . . . . . . 2582
+Page   95: Figure 751. Host-mode FIFO address mapping and AHB FIFO access mapping . . . . . . . . . . . . . . . 2583
+Page   96: Figure 824. Mapping of trigger inputs to outputs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3041
+Page  125: considered “Reserved”. For the detailed mapping of available memory and register areas,
+Page  131: system masters through D3 domain’s AHB matrix. With a battery connected to the VBAT pin,
+Page  131: the BOOT pin and the boot base address programmed in the BOOT_ADD0 and
+Page  132: The values on the BOOT pin are latched on the 4th rising edge of SYSCLK after reset
+Page  132: release. It is up to the user to set the BOOT pin after reset.
+Page  132: The BOOT pin is also re-sampled when the device exits the Standby mode. Consequently,
+Page  132: •   USART1 on PA9/PA10 pins, USART2 on PA3/2pins, and USART3 on PB10/PB11 pins.
+Page  132: •   I2C1 on PB6/9 pins, I2C2 on PF0/PF1 pins, I2C3 on PA8/PC9 pins, and I2C4 on
+Page  132: PD12/13 pins
+Page  132: •   USB OTG FS in Device mode (DFU) on PA11/PA12 pins
+Page  132: •   SPI1 on PA7/6/5/4 pins, SPI2 on PI3/2/1/0 pins, SPI3 on PC12/11/10/PA15pins, and
+Page  132: SPI4 on PE14/13/12/11 pins.
+Page  133: –    Bank swapping: the address mapping of the user Flash memory of each bank can
+Page  139: jumps to the boot address configured through the BOOT pin and the BOOT_ADD0/1
+Page  140: jumps to the requested boot address configured through the BOOT pin and the option
+Page  140: Bank swapping
+Page  140: As shown in Figure 6, the embedded Flash memory offers a bank swapping feature that can
+Page  142: Bank/ register swapping
+Page  142: The embedded Flash memory allows swapping bank 1 and bank 2 memory mapping. This
+Page  142: bank and register swapping (STM32H743/753 devices only).
+Page  154: 3.3.13     Flash bank and register swapping (STM32H743/753 devices only)
+Page  154: Flash bank swapping
+Page  154: restart the device on the new firmware. Bank swapping is controlled by the SWAP_BANK bit
+Page  154: Note:      The Flash bank swapping is not available on STM32H750xB devices. The SWAP_BANK
+Page  154: Table 14. FLASH AXI interface memory map vs swapping option
+Page  155: yet been modified and the bank swapping is not yet effective.
+Page  155: 5.    Force a system reset or a POR. When the reset rises up, the bank swapping is
+Page  155: Figure 10 gives an overview of the bank swapping sequence.
+Page  155: Figure 10. Flash bank swapping sequence
+Page  156: Configuration and option byte register swapping
+Page  156: The embedded Flash memory bank swapping option controlled by the SWAP_BANK bit
+Page  156: addresses so that the swapping does not affect the access to these registers.
+Page  156: Table 15. Flash register map vs swapping option
+Page  157: latencies. If the bank swapping option is changed, it will be applied.
+Page  163: •    Bank swapping (see Section 3.3.13 on page 154)
+Page  163: SWAP_BANK_OPT: bank swapping option, set to 1 to swap user sectors and registers
+Page  164: •   No bank swapping (option byte value = 0x0)
+Page  165: •   BOOT_ADD0/1: MSB of the Arm® Cortex®-M7 boot address when BOOT pin is low
+Page  165: •   Arm® Cortex®-M7 boot address (MSB): 0x0800 (BOOT pin low for user Flash memory)
+Page  165: and 0x1FF0 (BOOT pin high for System Flash memory)
+Page  170: 1. Except for bank swapping option bit.
+Page  171: Figure 12. Example of protected region overlapping
+Page  194: Bit 31 SWAP_BANK: Bank swapping option configuration bit
+Page  194: Note: The Flash bank swapping is not available on STM32H750xB devices. The
+Page  196: Bit 31 SWAP_BANK_OPT: Bank swapping option status bit
+Page  196: Note: The Flash bank swapping is not available on STM32H750xB devices. The
+Page  198: Bit 31 SWAP_BANK_OPT: Bank swapping option configuration bit
+Page  204: These bits reflect the MSB of the Arm® Cortex®-M7 boot address when the BOOT pin is high.
+Page  204: These bits reflect the MSB of the Arm® Cortex®-M7 boot address when the BOOT pin is low.
+Page  205: pin is high.
+Page  205: pin is low.
+Page  230: PCROP is used to avoid sensitive software dumping.
+Page  232: the RSS is forced independently from boot configuration (boot pins and boot addresses).
+Page  237: FLASH_BOOT_CURR register is done by the BOOT pin (see Section 2.6: Boot
+Page  237: configuration) or by the swap bank mechanism (see Section : Bank swapping).
+Page  237: (boot pin=0)              (boot pin=1)
+Page  237: Use the BOOT pin to switch between two secure user software
+Page  237: Use the bank swapping feature to switch between two secure
+Page  237: Use the BOOT pin to switch between secure user software and
+Page  237: Use BOOT pin for bootloader based recovery (in non-secure
+Page  241: 5.3.1    PWR pins and internal signals
+Page  241: Table 28 lists the PWR inputs and output signals connected to package pins or balls, while
+Page  241: Table 28. PWR input/output signals connected to package pins or balls
+Page  241: Pin name                                           Description
+Page  243: supply through VCAP pin.
+Page  248: VCAP pins.
+Page  249: VDD is turned off, VBAT pin can be connected to an optional standby voltage which is
+Page  249: If the power supply/battery connected to the VBAT pin cannot
+Page  249: supply and the VBAT pin.
+Page  249: •   PC14 and PC15 can be used either as GPIO or as LSE pins.
+Page  249: •   PC13 can be used either as GPIO or as RTC_AF1 or RTC_TAMP1 pin assuming they
+Page  249: tamper pins.
+Page  250: •   PC14 and PC15 can be used as LSE pins only.
+Page  250: •   PC13 can be used as RTC_AF1 or RTC_TAMP1 pin assuming they have been
+Page  250: tamper pins.
+Page  251: •   The analog supply voltage input is available on a separate VDDA pin.
+Page  251: •   An isolated supply ground connection is provided on VSSA pin.
+Page  251: reference voltage, available on VREF+ pin. The user can connect a separate external
+Page  252: components through VREF+/VREF- pins.
+Page  253: The PDR can be enabled/disabled by the device PDR_ON input pin.
+Page  254: be used to monitor a voltage level on the PVD_IN pin. In this case PVD_IN voltage is
+Page  262: All PDDS_Dn bit     WKUP pins rising or
+Page  262: source    reset in NRST pin, IWDG
+Page  274: The CPU subsystem exits from Standby mode by enabling an external reset (NRST pin), an
+Page  274: IWDG reset, a rising edge on one of the enabled WKUPx pins or a RTC event. Program
+Page  274: execution restarts in the same way as after a system reset (such as boot pin sampling,
+Page  280: I/O pin configuration remain unchanged in Stop mode.
+Page  282: The system exits from Standby mode when an external Reset (NRST pin), an IWDG Reset,
+Page  282: a WKUP pin event, a RTC alarm, a tamper event, or a time stamp event is detected. All
+Page  283: – WKUP pins rising or falling edge, RTC alarm (Alarm A and Alarm B),
+Page  283: pin, IWDG reset.
+Page  283: In Standby mode, all I/O pins are high impedance without pull, except for:
+Page  283: •            RTC_AF1 pin if configured for tamper, time stamp, RTC Alarm out, or RTC clock
+Page  283: •            WKUP pins (if enabled). The WKUP pin pull configuration can be defined through
+Page  285: 111: External voltage level on PVD_IN pin, compared to internal VREFINT level.
+Page  291: Bits 5:0 WKUPCn+1: Clear Wakeup pin flag for WKUPn+1.
+Page  291: 1: Writing 1 clears the WKUPFn+1 Wakeup pin flag (bit is cleared to 0 by hardware)
+Page  291: Bits 5:0 WKUPn+1: Wakeup pin WKUPn+1 flag.
+Page  291: This bit is set by hardware and cleared only by a Reset pin or by setting the WKUPCn+1 bit in the
+Page  291: 1: A wakeup event was received from WKUPn+1 pin
+Page  292: Bits 27:16 WKUPPUPD[truncate(n/2)-7): Wakeup pin pull configuration for WKUP(truncate(n/2)-7)
+Page  292: The Wakeup pin pull configuration is kept in Standby mode.
+Page  292: Bits 13:8 WKUPPn-7: Wakeup pin polarity bit for WKUPn-7
+Page  292: These bits define the polarity used for event detection on WKUPn-7 external wakeup pin.
+Page  292: Bits 5:0 WKUPENn+1: Enable Wakeup Pin WKUPn+1
+Page  292: 0: An event on WKUPn+1 pin does not wakeup the system from Standby mode.
+Page  292: 1: A rising or falling edge on WKUPn+1 pin wakes-up the system from Standby mode.
+Page  292: Note: An additional wakeup event is detected if WKUPn+1 pin is enabled (by setting the
+Page  292: WKUPENn+1 bit) when WKUPn+1 pin level is already high when WKUPPn+1 selects rising
+Page  302: CH0        PINC of BDMA_CCR0 = ‘0’                Peripheral increment disabled.
+Page  302: PINC of BDMA_CCR7 = ‘0’                Peripheral increment disabled.
+Page  306: •   Bidirectional pin reset allowing to reset the microcontroller or external devices
+Page  307: 7.3                RCC pins and internal signals
+Page  307: Table 48 lists the RCC inputs and output signals connected to package pins or balls.
+Page  307: Table 48. RCC input/output signals connected to package pins or balls
+Page  308: Table 48. RCC input/output signals connected to package pins or balls (continued)
+Page  309: •      An external device via NRST pin
+Page  309: reset function can be disabled through PDR_ON pin (see Section 5.5: Power supply
+Page  310: •      A reset from NRST pin (external reset)
+Page  310: pin to reset the connected external devices. The pulse generator guarantees a minimum
+Page  310: reset pulse is generated while the NRST pin is asserted Low.
+Page  310: Note:      It is not recommended to let the NRST pin unconnected. When it is not used, connect this
+Page  310: pin to ground via a 10 to 100 nFcapacitor (CR in Figure 39).
+Page  311: NRST pin
+Page  311: Pin        NRST           x x x - x x x x x - - - - x
+Page  311: – Same as pin reset. The pin is asserted as
+Page  312: NRST pin
+Page  313: the boot phase, both PINRSTF and IWDG1RSTF bits are set, indicating that the IWDG1
+Page  313: also generated a pin reset.
+Page  313: PINRSTF
+Page  313: 2      Pin reset (NRST)                                            0           0           0           0          0         1         0         0        0        1
+Page  315: Boot from pin reset
+Page  315: When a pin reset occurs, VDD is still present. As a results:
+Page  320: In this mode, an external clock source must be provided to OSC_IN pin. This mode is
+Page  320: has to drive the OSC_IN pin while the OSC_OUT pin should be left HI-Z (see Figure 42).
+Page  320: capacitors have to be placed as close as possible to the oscillator pins in order to minimize
+Page  320: In this mode, an external clock source must be provided to OSC32_IN pin. The input clock
+Page  320: clock signal (square, sinus or triangle) with ~50% duty cycle has to drive the OSC32_IN pin
+Page  320: while the OSC32_OUT pin should be left HI-Z (see Figure 42).
+Page  325: Two micro-controller clock output (MCO) pins, MCO1 and MCO2, are available. A clock
+Page  325: The GPIO port corresponding to each MCO pin, has to be programmed in alternate function
+Page  325: The clock provided to the MCOs outputs must not exceed the maximum pin speed (refer to
+Page  325: the product datasheet for information on the supported pin speed).
+Page  348: BDMA, and SRAM4 in Autonomous mode, while keeping D3 in DRun mode (RUN_D3 set to
+Page  350: Refer to Section 7.7.1: Register mapping overview for additional information.
+Page  360: 7.7.1      Register mapping overview
+Page  360: Figure 60 shows the RCC mapping overview.
+Page  360: Figure 60. RCC mapping overview
+Page  360: mapping                     0x1FF
+Page  360: mapping
+Page  390: Note: I2S_CKIN is an external clock taken from a pin.
+Page  391: Note: I2S_CKIN is an external clock taken from a pin.
+Page  391: Note: I2S_CKIN is an external clock taken from a pin.
+Page  394: Note: I2S_CKIN is an external clock taken from a pin.
+Page  395: Note: I2S_CKIN is an external clock taken from a pin.
+Page  403: pin reset (NRST).
+Page  426: PINRSTF
+Page  427: Bit 22 PINRSTF: Pin reset flag (NRST) (1)
+Page  427: Set by hardware when a reset from pin occurs.
+Page  427: 0: No reset from pin occurred
+Page  427: 1: Reset from pin occurred (default after power-on reset)
+Page  432: take into account also the CPU operation modes, i.e. keeping D2 domain in DRun when the CPU is
+Page  432: take into account also the CPU operation modes, i.e. keeping D2 domain in DRun when the CPU is
+Page  432: take into account also the CPU operation modes, i.e. keeping D2 domain in DRun when the CPU is
+Page  476: Res.                                Res.                      Res.                          Res.                        Res.                      PINRSTF                                      Res.        22
+Page  482: based on the measured frequency error value, while keeping the possibility of a manual
+Page  489: clock precision after waking up from Sleep mode, the LSE clock or the SYNC pin should be
+Page  508: •    Highly flexible pin multiplexing allows the use of I/O pins as GPIOs or as one of several
+Page  509: Input driver                                                                                I/O pin
+Page  509: Input driver                                                                             I/O pin
+Page  511: The debug pins are in AF pull-up/pull-down after reset:
+Page  511: When the pin is configured as output, the value written to the output data register
+Page  511: (GPIOx_ODR) is output on the I/O pin. It is possible to use the output driver in push-pull
+Page  511: The input data register (GPIOx_IDR) captures the data present on the I/O pin at every AHB
+Page  511: All GPIO pins have weak internal pull-up and pull-down resistors, which can be activated or
+Page  511: 10.3.2   I/O pin alternate function multiplexer and mapping
+Page  511: The device I/O pins are connected to on-board peripherals/modules through a multiplexer
+Page  511: that allows only one peripheral alternate function (AF) connected to an I/O pin at a time. In
+Page  511: this way, there can be no conflict between peripherals available on the same I/O pin.
+Page  511: Each I/O pin has a multiplexer with up to sixteen alternate function inputs (AF0 to AF15) that
+Page  511: can be configured through the GPIOx_AFRL (for pin 0 to 7) and GPIOx_AFRH (for pin 8 to
+Page  511: •    The specific alternate function assignments for each pin are detailed in the device
+Page  511: functions mapped onto different I/O pins to optimize the number of peripherals available in
+Page  511: •    Debug function: after each device reset these pins are assigned as alternate function
+Page  511: pins immediately usable by the debugger host
+Page  511: •    System function: MCOx pins have to be configured in alternate function mode.
+Page  512: –    Configure the I/O pin used to output the core EVENTOUT signal by connecting it
+Page  512: Refer to the “Alternate function mapping” table in the device datasheet for the detailed
+Page  512: mapping of the alternate function I/O pins.
+Page  513: each I/O. With these registers, the user can connect an alternate function to some other pin
+Page  513: To know which functions are multiplexed on each GPIO pin, refer to the device datasheet.
+Page  514: •    The data present on the I/O pin are sampled into the input data register every AHB
+Page  514: input driver                                                I/O pin
+Page  514: •    The data present on the I/O pin are sampled into the input data register every AHB
+Page  515: I/O pin
+Page  515: •     The data present on the I/O pin are sampled into the input data register every AHB
+Page  516: Output data register                                                                                                                                                       I/O pin
+Page  516: value of the I/O pin. The output of the Schmitt trigger is forced to a constant value (0).
+Page  516: I/O pin
+Page  516: Some pins/balls are directly connected to PA0_C, PA1_C, PC2_C and PC3_C ADC analog
+Page  516: inputs (see Figure 72): there is a direct path between Pxy_C and Pxy pins/balls, through an
+Page  517: 10.3.14   Using the HSE or LSE oscillator pins as GPIOs
+Page  517: oscillator pins can be used as normal GPIOs.
+Page  517: RCC_CSR register) the oscillator takes control of its associated pins and the GPIO
+Page  517: configuration of these pins has no effect.
+Page  517: OSC32_IN pin is reserved for clock input and the OSC_OUT or OSC32_OUT pin can still be
+Page  517: 10.3.15   Using the GPIO pins in the backup supply domain
+Page  517: is not bypassed by the RTC configuration, these pins are set in an analog input mode.
+Page  518: Bits 31:0 MODER[15:0][1:0]: Port x configuration I/O pin y (y = 15 to 0)
+Page  518: Bits 15:0 OT[15:0]: Port x configuration I/O pin y (y = 15 to 0)
+Page  519: Bits 31:0 OSPEEDR[15:0][1:0]: Port x configuration I/O pin y (y = 15 to 0)
+Page  519: Bits 31:0 PUPDR[15:0][1:0]: Port x configuration I/O pin y (y = 15 to 0)
+Page  520: Bits 15:0 IDR[15:0]: Port x input data I/O pin y (y = 15 to 0)
+Page  520: Bits 15:0 ODR[15:0]: Port output data I/O pin y (y = 15 to 0)
+Page  521: Bits 31:16 BR[15:0]: Port x reset I/O pin y (y = 15 to 0)
+Page  521: Bits 15:0 BS[15:0]: Port x set I/O pin y (y = 15 to 0)
+Page  522: Bits 15:0 LCK[15:0]: Port x lock I/O pin y (y = 15 to 0)
+Page  523: Bits 31:0 AFR[7:0][3:0]: Alternate function selection for port x I/O pin y (y = 7 to 0)
+Page  523: Bits 31:0 AFR[15:8][3:0]: Alternate function selection for port x I/O pin y (y = 15 to 8)
+Page  529: 0000: PA[x] pin
+Page  529: 0001: PB[x] pin
+Page  529: 0010: PC[x] pin
+Page  529: 0011: PD[x] pin
+Page  529: 0100: PE[x] pin
+Page  529: 0101: PF[x] pin
+Page  529: 0110: PG[x] pin
+Page  529: 0111: PH[x] pin
+Page  529: 1000: PI[x] pin
+Page  529: 1001: PJ[x] pin
+Page  529: 1010: PK[x] pin
+Page  529: 0000: PA[x] pin
+Page  529: 0001: PB[x] pin
+Page  529: 0010: PC[x] pin
+Page  529: 0011: PD[x] pin
+Page  529: 0100: PE[x] pin
+Page  529: 0101: PF[x] pin
+Page  529: 0110: PG[x] pin
+Page  529: 0111: PH[x] pin
+Page  529: 1000: PI[x] pin
+Page  529: 1001: PJ[x] pin
+Page  529: 1010: PK[x] pin
+Page  530: 0000: PA[x] pin
+Page  530: 0001: PB[x] pin
+Page  530: 0010: PC[x] pin
+Page  530: 0011: PD[x] pin
+Page  530: 0100: PE[x] pin
+Page  530: 0101: PF[x] pin
+Page  530: 0110: PG[x] pin
+Page  530: 0111: PH[x] pin
+Page  530: 1000: PI[x] pin
+Page  530: 1001: PJ[x] pin
+Page  530: 1010: PK[x] pin
+Page  531: 0000: PA[x] pin
+Page  531: 0001: PB[x] pin
+Page  531: 0010: PC[x] pin
+Page  531: 0011: PD[x] pin
+Page  531: 0100: PE[x] pin
+Page  531: 0101: PF[x] pin
+Page  531: 0110: PG[x] pin
+Page  531: 0111: PH[x] pin
+Page  531: 1001: PJ[x] pin
+Page  531: 1010: PK[x] pin
+Page  538: This bit indicates Flash memory bank mapping.
+Page  539: These bits define the MSB of the core boot address when BOOT pin is low.
+Page  539: These bits define the MSB of the core boot address when BOOT pin is high.
+Page  551: system and result in a reduction of the number of pins and GPIOs.
+Page  575: •   It’s possible to synchronize a peripheral DMA request with a timer, with an external pin
+Page  575: be triggered by a timer, by an external pin event, or by a DMA transfer complete of
+Page  615: requests and streams mapping.
+Page  618: 14.3.5     DMA request mapping
+Page  618: The DMA request mapping from peripherals to DMA streams is described in Section 16.3.2:
+Page  618: DMAMUX1 mapping.
+Page  622: constant after each transfer depending on the PINC and MINC bits in the DMA_SxCR
+Page  623: The PINCOS bit in the DMA_SxCR register is used to align the increment offset size with
+Page  623: incremented by 4). The PINCOS bit has an impact on the AHB peripheral port only.
+Page  623: If the PINCOS bit is set, the address of the following transfer is the address of the previous
+Page  624: PINC = MINC = 1).
+Page  625: Table 104. Packing/unpacking and endian behavior (bit PINC = MINC = 1)
+Page  625: transfer - number          lane                number          PINCOS = 1          PINCOS = 0
+Page  638: PINCOS     MSIZE[1:0]       PSIZE[1:0]   MINC    PINC   CIRC      DIR[1:0]   PFCTRL    TCIE    HTIE    TEIE   DMEIE        EN
+Page  639: Bit 15 PINCOS: peripheral increment offset size
+Page  639: This bit has no meaning if bit PINC = '0'.
+Page  639: Bit 9 PINC: peripheral increment mode
+Page  645: PINCOS                            Res                                                                                                                                                      PINCOS                            Res                            Res                           Res                         Res.          15
+Page  645: PINC                            Res                                                                                                                                                        PINC                         CTEIF5                         CTEIF1                         TEIF5                        TEIF1           9
+Page  646: PINCOS
+Page  646: PINC
+Page  646: PINCOS
+Page  646: PINC
+Page  647: PINCOS
+Page  647: PINC
+Page  647: PINCOS
+Page  647: PINC
+Page  648: PINCOS
+Page  648: PINC
+Page  648: PINCOS
+Page  648: PINC
+Page  650: 15.3.2         BDMA request mapping
+Page  650: For the mapping of the different requests, refer to the Section 16.3: DMAMUX
+Page  651: 15.4.2   BDMA pins and internal signals
+Page  652: depending on the PINC and MINC bits of the BDMA_CCRx register.
+Page  653: If the incremented mode is enabled (PINC or MINC set to 1), the address of the next
+Page  655: PSIZE[1:0] field and PINC bit of the BDMA_CCRx register.
+Page  655: field and PINC bit of the BDMA_CCRx register.
+Page  656: Table 112. Programmable data width and endian behavior (when PINC = MINC = 1)
+Page  662: PINC, and DIR are read-only when EN = 1.
+Page  662: DBM                   PL[1:0]      MSIZE[1:0]    PSIZE[1:0]    MINC       PINC   CIRC   DIR    TEIE   HTIE   TCIE     EN
+Page  664: Bit 6 PINC: peripheral increment mode
+Page  665: –      Source attributes are defined by PSIZE and PINC, plus the BDMA_CPARx register.
+Page  665: –      Destination attributes are defined by PSIZE and PINC, plus the BDMA_CPARx
+Page  668: PINC
+Page  669: PINC
+Page  669: PINC
+Page  669: PINC
+Page  669: PINC
+Page  670: PINC
+Page  670: PINC
+Page  670: PINC
+Page  672: 16.3.2     DMAMUX1 mapping
+Page  672: The mapping of resources to DMAMUX1 is hardwired.
+Page  674: 16.3.3     DMAMUX2 mapping
+Page  684: DMAMXUX2 mapping implementation section).
+Page  684: (refer to the DMAMXUX2 mapping implementation section).
+Page  685: DMAMXUX mapping implementation section).
+Page  685: (refer to the DMAMXUX mapping implementation section).
+Page  686: DMAMUX2_CyCR register and the DMAMUX mapping implementation section).
+Page  687: of the DMAMUX2_CyCR register and the DMAMXUX mapping implementation section).
+Page  693: •   Output buffer byte swapping to support refresh of displays through parallel interface
+Page  694: 17.4        DMA2D pins and internal signals
+Page  700: When the byte swapping is activated (SB field of the DMA2D_OPFCR is set), the number of
+Page  702: Data ordering after byte swapping
+Page  706: •   Memory transfer with byte swapping: PL bits of DMA2D_NLR are odd or MA bits of the
+Page  737: 156          149             WKUP           WKUP0 to WKUP5 pins         0x0000 0294
+Page  746: 19.4       EXTI event input mapping
+Page  746: For the sixteen GPIO Event inputs the associated IOPORT pin has to be selected in the
+Page  746: SYSCFG register SYSCFG_EXTICRn. The same pin from each IOPORT maps to the
+Page  747: Table 141. EXTI Event input mapping
+Page  748: Table 141. EXTI Event input mapping (continued)
+Page  749: Table 141. EXTI Event input mapping (continued)
+Page  749: 4. Signals of WKUP1 to WKUP6 correspond to WKUPn pin+1.
+Page  751: A software trigger can be used to set the D3 Pending request logic, keeping the D3 domain
+Page  776: At startup the FMC pins must be configured by the user application. The FMC I/O pins which
+Page  779: Table 146 gives the list of FMC internal signals. FMC pins (or external signals) are
+Page  779: Table 146. FMC pins
+Page  781: 21.6     External device address mapping
+Page  782: Figure 94. FMC memory banks (default mapping)
+Page  782: The FMC bank mapping can be modified through the BMAP[1:0] bits in the FMC_BCR1
+Page  782: different address mapping.
+Page  782: Table 147. FMC bank mapping options
+Page  782: (Default mapping)          SDRAM banks
+Page  783: 21.6.1   NOR/PSRAM address mapping
+Page  783: 21.6.2   NAND Flash memory address mapping
+Page  783: Table 150. NAND memory mapping and timing registers
+Page  784: 21.6.3     SDRAM address mapping
+Page  784: Table 153 shows SDRAM mapping for a 13-bit row and an 11-bit column configuration.
+Page  784: Table 153. SDRAM address mapping
+Page  785: The following tables show the SDRAM address mapping versus the SDRAM controller
+Page  785: Table 154. SDRAM address mapping with 8-bit data bus width(1)(2)
+Page  786: Table 155. SDRAM address mapping with 16-bit data bus width(1)(2)
+Page  787: Table 156. SDRAM address mapping with 32-bit data bus width(1)(2)
+Page  813: pulses to the memory, keeping the Chip Select and output enable signals valid. It does not
+Page  818: Bits 25:24 BMAP[1:0]: FMC bank mapping
+Page  818: 00: Default mapping (refer to Figure 94 and Table 147).
+Page  818: 10: SDRAM Bank2 remapped on FMC bank2 and still accessible at default mapping
+Page  830: needed, see Section 21.6.2: NAND Flash memory address mapping for timing
+Page  832: keeping the MEMHOLD value at its minimum value. The CPU must then use the common
+Page  839: •    Multibank ping-pong access
+Page  839: At startup, the SDRAM I/O pins used to interface the FMC SDRAM controller with the
+Page  839: I/O pins which are not used by the application, can be used for other purposes.
+Page  841: ping-pong access).
+Page  842: ping-pong access).
+Page  861: 22.3.2   QUADSPI pins and internal signals
+Page  861: Table 191 lists the QUADSPI pins, six for interfacing with a single Flash memory, or 10 to 11
+Page  861: Table 191. QUADSPI pins
+Page  863: a byte with bits 7 and 3 of ALTERNATE set to ‘1’ (keeping the IO3 line high), and bits 6 and
+Page  863: 2 set to ‘0’ (keeping the IO2 line low). In this case the upper two bits of the nibble to be sent
+Page  864: Quad SPI mode, then the pins corresponding to IO2 and IO3 can be used for other functions
+Page  866: memory), then in this special case the transfers continue indefinitely, stopping only after an
+Page  869: By default, the QUADSPI never stops its prefetch operation, keeping the previous read
+Page  875: may use BK1_nCS and the pin outputting BK2_nCS can be used for other functions.
+Page  878: By default, the QUADSPI never stops its prefetch operation, keeping the previous read
+Page  890: 23.3.2     DLYB pins and internal signals
+Page  895: –   Allows slow bus frequency application while keeping optimum ADC performance
+Page  897: Figure 131 shows the ADC block diagram and Table 198 gives the ADC pin description.
+Page  898: 24.3.2     ADC pins and internal signals
+Page  898: Table 198. ADC input/output pins
+Page  899: Table 198. ADC input/output pins (continued)
+Page  913: Section 24.3.18: Stopping an ongoing conversion (ADSTP, JADSTP)).
+Page  917: 24.3.18   Stopping an ongoing conversion (ADSTP, JADSTP)
+Page  917: Stopping conversions will reset the ongoing ADC operation. Then the ADC can be
+Page  918: Figure 141. Stopping ongoing regular conversions
+Page  918: Figure 142. Stopping ongoing regular and injected conversions
+Page  919: external event (e.g. timer capture, input pins). If the EXTEN[1:0] control bits (for a regular
+Page  920: adc_ext_trg6                   EXTI line 11                         External pin                                  00110
+Page  921: adc_jext_trg6             EXTI line 15                     External pin                  00110
+Page  926: •    The Queue is flushed when stopping injected conversions by setting JADSTP=1 or
+Page  950: Note that stopping regular or injected conversions (setting ADSTP=1 or JADSTP=1)
+Page  960: Note:      Do not convert the same channel on the two ADCs (no overlapping sampling times for the
+Page  961: Note:    Do not convert the same channel on the two ADCs (no overlapping sampling times for the
+Page  971: Stopping the conversions in dual ADC modes
+Page  972: temperature sensor’s analog pin must be greater than the stabilization time specified in the
+Page  973: VBAT pin is internally connected to a bridge divider by 4. This bridge is automatically enabled
+Page 1020: update operations. An input reference pin, VREF+ (shared with others analog peripherals) is
+Page 1020: The DAC_OUTx pin can be used as general purpose input/output (GPIO) when the DAC
+Page 1020: •   Each DAC output can be disconnected from the DAC_OUTx output pin
+Page 1020: •   Input voltage reference from VREF+ pin or internal VREFBUF reference
+Page 1020: Figure 201 shows the block diagram of a DAC channel and Table 216 gives the pin
+Page 1023: 25.4.2   DAC pins and internal signals
+Page 1023: •      The DAC_OUTx can be disconnected from the output pin and used as an ordinary
+Page 1023: •      The dac_outx can use an internal pin connection to on-chip peripherals such as
+Page 1023: output pin and the corresponding GPIO can be used for another purpose.
+Page 1023: Table 216. DAC input/output pins
+Page 1023: Pin name             Signal type                                  Remarks
+Page 1025: DOR                          0x1AC                     available on DAC_OUT pin
+Page 1025: The analog output voltages on each DAC channel pin are determined by the following
+Page 1026: EXTI9                                External pin                               1101
+Page 1030: the DAC_OUTx pin interconnections.
+Page 1030: •    000: DAC is connected to the external pin
+Page 1030: •    001: DAC is connected to external pin and to on-chip peripherals
+Page 1030: •    010: DAC is connected to the external pin
+Page 1032: •       100: DAC is connected to the external pin
+Page 1032: •       101: DAC is connected to external pin and to on chip peripherals
+Page 1032: •       110: DAC is connected to external pin and to on chip peripherals
+Page 1032: 0   0      0                                   Connected to external pin
+Page 1032: 0   0      1                                   Connected to external pin and to on chip-peripherals (ex, comparators)
+Page 1032: 0   1      0                                   Connected to external pin
+Page 1033: 1      0   0                                     Connected to external pin
+Page 1033: 1      0   1       Sample and                    Connected to external pin and to on chip peripherals (ex, comparators)
+Page 1033: 1      1   0       Hold mode                     Connected to external pin and to on chip peripherals (ex, comparators)
+Page 1033: •      The buffer output will be disconnected from the pin internal/external connections and
+Page 1041: Refer to the trigger selection tables for the details on trigger configuration and mapping.
+Page 1043: Refer to the trigger selection tables for the details on trigger configuration and mapping.
+Page 1052: 000: DAC Channel 2 is connected to external pin with Buffer enabled
+Page 1052: 001: DAC Channel 2 is connected to external pin and to on chip peripherals with buffer
+Page 1052: 010: DAC Channel 2 is connected to external pin with buffer disabled
+Page 1052: 100: DAC Channel 2 is connected to external pin with Buffer enabled
+Page 1052: 101: DAC Channel 2 is connected to external pin and to on chip peripherals with Buffer
+Page 1052: 110: DAC Channel 2 is connected to external pin and to on chip peripherals with Buffer
+Page 1052: 000: DAC Channel 1 is connected to external pin with Buffer enabled
+Page 1052: 001: DAC Channel 1 is connected to external pin and to on chip peripherals with Buffer
+Page 1052: 010: DAC Channel 1 is connected to external pin with Buffer disabled
+Page 1052: 100: DAC Channel 1 is connected to external pin with Buffer enabled
+Page 1052: 101: DAC Channel 1 is connected to external pin and to on chip peripherals with Buffer
+Page 1052: 110: DAC Channel 1 is connected to external pin and to on chip peripherals with Buffer
+Page 1058: external components through the VREF+ pin.
+Page 1058: – VREF+ pin pulled-down to VSSA
+Page 1058: – VREF+ pin input mode
+Page 1058: – VREF+ pin connected to VREFBUF buffer output
+Page 1058: – VREF+ pin floating. The voltage is held with the external capacitor
+Page 1059: This bit controls the analog switch to connect or not the VREF+ pin.
+Page 1059: 0: VREF+ pin is internally connected to the voltage reference buffer output.
+Page 1059: 1: VREF+ pin is high impedance.
+Page 1061: –    I/O pins (different for either channel)
+Page 1061: •   Two I/O pins per channel selectable as non-inverting analog inputs
+Page 1061: •   Mapping of outputs to I/Os
+Page 1062: 27.3.2      COMP pins and internal signals
+Page 1063: The comparator output can be routed simultaneously internally and to the I/O pins.
+Page 1063: Table 227. COMP input/output pins
+Page 1064: input of the COMP channel 1 by enabling WINMODE bit. This can save the input pins of
+Page 1078: three I/Os can be connected to the external pins, thus enabling any type of external
+Page 1079: input/outputs are connected to external pins. In the default mode the operational amplifier
+Page 1079: functional. The two input pins and the output pin are connected as defined in Section 28.3.3:
+Page 1079: Note:    The inputs and output pins must be configured in analog mode (default state) in the
+Page 1079: The routing for the operational amplifier pins is determined by OPAMPx_CSR register.
+Page 1079: Signal                   Pin                   Internal                   comment
+Page 1079: ADC1_IN4          The pin is connected when the
+Page 1080: Note:       The amplifier output pin is directly connected to the output pad to minimize the output
+Page 1080: as soon as the OPAEN bit is set, the two input pins and the output pin are connected to the
+Page 1081: •   As soon as the OPAEN bit is set, the voltage on pin OPAMPx_VINP is buffered to pin
+Page 1081: Note:    The pin corresponding to OPAMPx_VINM is free for another usage.
+Page 1082: As soon as the OPAEN bit is set, the voltage on pin OPAMPx_VINP is amplified by the
+Page 1082: selected gain and visible on pin OPAMPx_VOUT.
+Page 1100: 29.4.2      DFSDM pins and internal signals
+Page 1100: Table 239. DFSDM external pins
+Page 1101: stopping the system clock to enter in the STOP mode of the device.
+Page 1102: input(s). It is provided on CKOUT pin. This output clock signal must be in the range
+Page 1102: Serial inputs (data and clock signals) from DATINy and CKINy pins can be redirected from
+Page 1102: the following channel pins. This serial input channel redirection is set by CHINSEL bit in
+Page 1102: y (DATINy, CKOUT) pins.
+Page 1102: •   Channel y will be configured: CHINSEL = 0 (input from given channel pins: DATINy,
+Page 1102: channel ((y-1)+1) pins: DATINy, CKINy).
+Page 1103: Figure 224. Input channel pins redirection
+Page 1103: A clock signal can be provided on CKOUT pin to drive external Σ∆ modulator clock inputs.
+Page 1103: register or by DFSDMEN=0 in DFSDM_CH0CFGR1 register). The output clock stopping is
+Page 1103: glitch on CKOUT pin. The output clock signal frequency must be in the range 0 - 20 MHz.
+Page 1104: signal is always provided from DATINy pin. A clock signal can be provided externally from
+Page 1104: CKINy pin or internally from a signal derived from the CKOUT signal source.
+Page 1104: In case of external clock source selection (SPICKSEL[1:0]=0) data signal (on DATINy pin) is
+Page 1104: sampled on rising or falling clock edge (of CKINy pin) according SITP[1:0] bits setting (in
+Page 1104: Internal clock source usage can save CKINy pin connection (CKINy pins can be used for
+Page 1104: In Manchester coded format, the data stream is sent in serial format through DATINy pin
+Page 1107: pin during 2 periods of CKOUT signal (which is controlled by CKOUTDIV bits in
+Page 1110: •    fCKIN is the channel input clock frequency (on given channel CKINy pin) or input data
+Page 1111: •    Input clock source. External source from CKINy pin or internal from CKOUT pin. It is
+Page 1124: –      occurred when there is clock absence on CKINy pin (see Clock absence detection
+Page 1126: 0: Channel inputs are taken from pins of the same channel y.
+Page 1126: 1: Channel inputs are taken from pins of the following channel (channel (y+1) modulo 8).
+Page 1127: 10: Manchester coded input on DATINy pin: rising edge = logic 0, falling edge = logic 1
+Page 1127: 11: Manchester coded input on DATINy pin: rising edge = logic 1, falling edge = logic 0
+Page 1131: where: fCKIN is the channel input clock frequency (on given channel CKINy pin) or input data rate in
+Page 1144: where: fCKIN is the channel input clock frequency (on given channel CKINy pin) or input data rate in
+Page 1156: EDM[1:0] bits in the DCMI_CR register. If less than 14 bits are used, the unused input pins
+Page 1156: Table 248 shows the DCMI pins.
+Page 1162: Figure 237. Coordinates and size of the window after cropping
+Page 1168: This bit indicates the level on the DCMI_VSYNC pin when the data are not valid
+Page 1168: This bit indicates the level on the DCMI_HSYNC pin when the data are not valid
+Page 1170: This bit gives the state of the DCMI_VSYNC pin with the correct programmed
+Page 1170: This bit gives the state of the DCMI_HSYNC pin with the correct programmed
+Page 1182: 31.3.3      LTDC pins and external signal interface
+Page 1182: Table 260. LTDC pins and signal interface
+Page 1182: The LTDC-TFT controller pins must be configured by the user application. The unused pins
+Page 1182: R[4:0], G[5:0] and B[4:0] data lines pins must be connected to LCD-TFT controller
+Page 1187: Table 263 describes the pixel data mapping depending on the selected format.
+Page 1187: Table 263. Pixel data mapping versus color format
+Page 1188: Table 263. Pixel data mapping versus color format (continued)
+Page 1245: –   Data swapping logic to support 1-, 8-, 16- or 32-bit data
+Page 1246: swapping
+Page 1246: swapping
+Page 1258: field in CRYP_CR register (see Section 34.3.16: CRYP data registers and data swapping for
+Page 1261: swapping
+Page 1261: swapping
+Page 1261: (O) is used, after bit/byte/half-word swapping, as ciphertext (C) and it is pushed into the
+Page 1261: Note:     For more information on data swapping, refer to Section 34.3.16: CRYP data registers and
+Page 1261: data swapping.
+Page 1262: swapping
+Page 1262: swapping
+Page 1262: A 64-bit ciphertext block (C) is used, after bit/byte/half-word swapping, as the input block (I).
+Page 1262: bit/byte/half-word swapping, produces the plaintext (P).
+Page 1262: Note:       For more information on data swapping refer to Section 34.3.16: CRYP data registers and
+Page 1262: data swapping.
+Page 1263: AHB2 data write                 swapping
+Page 1263: swapping
+Page 1263: K: key; C: cipher text; I: input block; O: output block; Ps: plain text before swapping (when
+Page 1263: decoding) or after swapping (when encoding); P: plain text; IV: initialization vectors.
+Page 1263: encryption, the first input block (I1), obtained after bit/byte/half-word swapping, is formed by
+Page 1264: Note:       For more information on data swapping refer to Section 34.3.16: CRYP data registers and
+Page 1264: data swapping.
+Page 1264: swapping
+Page 1264: swapping
+Page 1264: 1. K: key; C: cipher text; I: input block; O: output block; Ps: plain text before swapping (when decoding) or
+Page 1264: after swapping (when encoding); P: plain text; IV: initialization vectors.
+Page 1265: Note:    For more information on data swapping refer to Section 34.3.16: CRYP data registers and
+Page 1265: data swapping.
+Page 1266: swapping
+Page 1266: swapping
+Page 1266: In this mode a 128- bit plaintext data block (P) is used after bit/byte/half-word swapping as
+Page 1266: word swapping as ciphertext (C). It is then pushed into the OUT FIFO.
+Page 1266: For more information on data swapping refer to Section 34.3.16: CRYP data registers and
+Page 1266: data swapping.
+Page 1267: swapping
+Page 1267: swapping
+Page 1267: block (C) is used after bit/byte/half-word swapping as the input block (I). The keying
+Page 1267: output block (O), after bit/byte or half-word swapping, produces the plaintext (P). The AES-
+Page 1267: For more information on data swapping refer to Section 34.3.16: CRYP data registers and
+Page 1267: data swapping.
+Page 1268: AHB2 data write                   swapping
+Page 1268: swapping
+Page 1268: 1. K: key; C: cipher text; I: input block; O: output block; Ps: plain text before swapping (when decoding) or
+Page 1268: after swapping (when encoding); P: plain text; IV: Initialization vectors.
+Page 1268: In this mode the first input block (I1) obtained after bit/byte/half-word swapping is formed by
+Page 1268: For more information on data swapping, refer to Section 34.3.16: CRYP data registers and
+Page 1268: data swapping.
+Page 1269: swapping
+Page 1269: swapping
+Page 1269: 1. K: key; C: cipher text; I: input block; O: output block; Ps: plain text before swapping (when decoding) or
+Page 1269: after swapping (when encoding); P: plain text; IV: Initialization vectors.
+Page 1270: For more information on data swapping, refer to Section 34.3.16: CRYP data registers and
+Page 1270: data swapping.
+Page 1272: AHB2 data write                          swapping
+Page 1272: swapping
+Page 1272: 1. K: key; C: cipher text; I: input Block; o: output block; Ps: plain text before swapping (when decoding) or
+Page 1272: after swapping (when encoding); Cs: cipher text after swapping (when decoding) or before swapping (when
+Page 1273: AHB2 data write                            swapping
+Page 1273: swapping
+Page 1273: 1. K: key; C: cipher text; I: input Block; o: output block; Ps: plain text before swapping (when decoding) or
+Page 1273: after swapping (when encoding); Cs: cipher text after swapping (when decoding) or before swapping (when
+Page 1277: before jumping to the payload phase. The sequence is identical for encryption and
+Page 1284: before jumping to the payload phase. The sequence is identical for encryption and
+Page 1287: 34.3.16   CRYP data registers and data swapping
+Page 1287: DATATYPE=”00” (no data swapping):
+Page 1287: be described as below when DATATYPE=”00” (no data swapping):
+Page 1288: DES/TDES data swapping feature
+Page 1288: Depending on the type of data to be processed (e.g. byte swapping when data are ASCII
+Page 1288: text stream), a bit, byte, half-word or no swapping operation must be done on the data read
+Page 1288: swapping must be performed on the data produced by the little-endian DES processing core
+Page 1288: Note:               The same swapping is performed between the IN FIFO and the CRYP data block, and
+Page 1288: DATATYPE = 0b00: no swapping                                                       DATATYPE = 0b01: 16-bit or half-word swapping
+Page 1288: DATATYPE = 0b10: 8-bit or byte swapping                                             DATATYPE = 0b11: bit swapping
+Page 1288: A typical example of data swapping is given in Table 277.
+Page 1289: Table 277. DES/TDES data swapping feature
+Page 1289: Swapping performed
+Page 1289: 0b00           No swapping             TDES block size = 64bit = 2x 32 bit
+Page 1289: swapping             TDES block size = 64bit = 2x 32 bit
+Page 1289: 0b10       Byte (8-bit) swapping       TDES block size = 64bit = 2x 32 bit
+Page 1289: 0b11           Bit swapping          0b0110 1001 0111 0011 1111 1110 0000 0001
+Page 1290: AES data swapping feature
+Page 1290: Depending on the type of data to be processed (e.g. byte swapping when data are ASCII
+Page 1290: text stream), a bit, byte, half-word or no swapping operation must be done on data read from
+Page 1290: the input FIFO before entering the little-endian AES processing core. The same swapping
+Page 1290: Note:               The same swapping is performed between the CRYP_DIN and the CRYP data block, and
+Page 1290: DATATYPE “00”: no swapping
+Page 1290: DATATYPE “01”: 16-bit or half-word swapping
+Page 1290: DATATYPE “10”: 8-bit or byte swapping
+Page 1290: DATATYPE “11”: bit swapping
+Page 1291: Note:         The swapping operation concerns only the CRYP_DOUT and CRYP_DIN registers. The
+Page 1291: Typical examples of data swapping are given in Table 278.
+Page 1291: Table 278. AES data swapping feature
+Page 1291: Swapping performed
+Page 1291: 0b00                No swapping
+Page 1291: 0b01        Half-word (16-bit) swapping
+Page 1291: 0b10           Byte (8-bit) swapping
+Page 1291: 0b11                Bit swapping             0b0110 1001 0111 0011 0010 0000 0111 0100
+Page 1292: Key registers are not affected by the data swapping feature controlled by DATATYPE value
+Page 1292: Initialization vector registers are not affected by the data swapping feature controlled by
+Page 1295: Figure 275. CRYP interrupt mapping diagram
+Page 1299: registers and data swapping).
+Page 1299: 00: 32-bit data. No swapping for each word. First word pushed into the IN FIFO
+Page 1300: and data swapping for more details.
+Page 1301: and data swapping for more details.
+Page 1314: –    Automatic 32-bit words swapping to comply with the internal little-endian
+Page 1314: –    Word swapping supported: bits, bytes, half-words and 32-bit words
+Page 1315: swapping
+Page 1315: Banked Registers (context swapping)                HMAC
+Page 1316: In accordance to the kind of data to be processed (e.g. byte swapping when data are ASCII
+Page 1316: text stream) there must be a bit, byte, half-word or no swapping operation to be performed
+Page 1316: HASH_DIN data endianness when bit swapping is disabled (DATATYPE=”00”) can be
+Page 1317: Figure 277. Message data swapping feature
+Page 1317: DATATYPE “00”: no swapping
+Page 1317: DATATYPE “01”: 16-bit or half-word swapping
+Page 1317: DATATYPE “10”: 8-bit or byte swapping
+Page 1317: DATATYPE “11”: bit swapping
+Page 1318: swapping operation on the message input words using DATATYPE bitfield in
+Page 1322: no swapping mode (DATATYPE=00 in HASH_CR), the following data must be loaded
+Page 1323: 35.3.8   Context swapping
+Page 1325: Note:     If the context swapping does not involve HMAC operations, the HASH_CSR38 to
+Page 1325: If the context swapping occurs between two blocks (the last block was completely
+Page 1325: Figure 279. HASH interrupt mapping diagram
+Page 1331: swapping:
+Page 1331: 0x01: Only one bit of the last data written (after swapping) is valid i.e. M[0]
+Page 1331: 0x02: Only two bits of the last data written (after swapping) are valid i.e. M[1:0]
+Page 1331: 0x03: Only three bits of the last data written (after swapping) are valid i.e. M[2:0]
+Page 1331: 0x1F: Only 31 bits of the last data written (after swapping) are valid i.e. M[30:0]
+Page 1332: Note:         HASH_HR0, HASH_HR1, HASH_HR2, HASH_HR3 and HASH_HR4 mapping are
+Page 1343: 36.3.2        HRTIM pins and internal signals
+Page 1343: pins)
+Page 1343: HRTIM_SCOUT output pins)
+Page 1343: hrtim_evt6[4:1]                   watchdog, TIMx timers, trigger outputs) or off-chip (HRTIM_EEVx input pins)
+Page 1353: Table 296. Events mapping across Timer A to E
+Page 1366: •    digital input pins (typically connected to off-chip comparators and zero-crossing
+Page 1368: Table 298. External events mapping and associated features
+Page 1368: 1. OPAMP1_VOUT can be used as High-resolution timer internal event source. In this case, OPAMP1_VOUT (PC4) pin must
+Page 1368: be configured in input mode. The data from the GPIO pin is redirect to the HRTIM external events through the pin Schmitt
+Page 1368: trigger. If OPAMP1 is disabled, PC4 pin, configured in input mode, can be used as HRTIM external events.
+Page 1372: Table 300. Filtering signals mapping per time
+Page 1374: Table 301. Windowing signals mapping per timer (EEFLTR[3:0] = 1111)
+Page 1401: The chopping signal is stopped at the end of the output waveform active state, without
+Page 1402: COMPin
+Page 1407: The synchronization pulses are generated on the HRTIM_SCOUT output pin, with
+Page 1407: SYNCOUT[0] = 0, the HRTIM_SCOUT pin has a low idle level and issues a positive pulse of
+Page 1407: The idle level on the HRTIM_SCOUT pin is applied as soon as the SYNCOUT[1:0] bits are
+Page 1407: 2.   HRTIM_SCOUT pin configuration (see the General-purpose I/Os section)
+Page 1408: •       11: a positive pulse on the HRTIM_SCIN input pin
+Page 1410: simultaneously. A typical use case is for a non-overlapping multiphase converter, where all
+Page 1412: hrtim_dac_trgx pins are connected to the DACs as follows:
+Page 1413: Table 314 is a summary of the interrupt requests, their mapping and associated control, and
+Page 1419: selected HRTIM I/Os have to be configured as per the alternate function mapping table in
+Page 1419: maintain a safe state during the execution stepping. The outputs can be enabled again
+Page 1428: 11: External event (input pin). A positive pulse on HRTIM_SCIN input triggers the HRTIM.
+Page 1452: This register determines whether the deadtime is positive (signals not overlapping) or negative
+Page 1452: (signals overlapping).
+Page 1453: This register determines whether the deadtime is positive or negative (overlapping signals)
+Page 1501: 0: Fault 1 input is HRTIM_FLT5 input pin
+Page 1505: The tables below summarize the HRTIM registers mapping. The address offsets in
+Page 1531: The ETR input comes from multiple sources: input pins (default configuration), comparator
+Page 1532: •     External clock mode1: external input pin
+Page 1534: ETR pin                  ETR                                                                      mode 1            CK_PSC
+Page 1535: 3.   Select rising edge detection on the ETR pin by writing ETP=0 in the TIMx_SMCR
+Page 1541: •    Assigns the corresponding output pin to a programmable value defined by the output
+Page 1541: bit in the TIMx_CCER register). The output pin can keep its level (OCXM=0000), be set
+Page 1541: –    Write OCxM = 0011 to toggle OCx output pin when CNT matches CCRx
+Page 1550: (clock failure, parity error,...) and application fault (from input pins and built-in comparator),
+Page 1551: •    An external source connected to one of the BKIN pin (as per selection done in the
+Page 1551: •    An external source connected to one of the BKIN pin (as per selection done in the
+Page 1555: Figure 388. PWM output state following BRK and BRK2 pins assertion (OSSI=1)
+Page 1556: The TIMx_BKINy_COMPz pins are combining the COMPz output (to be configured in open
+Page 1556: with a single-pin.
+Page 1559: after a delay of tDELAY as soon as a positive edge is detected on the TI2 input pin.
+Page 1563: 37.3.23   UIF bit remapping
+Page 1564: the output of an XOR gate, combining the three input pins TIMx_CH1, TIMx_CH2 and
+Page 1564: in Figure 398. The “interfacing timer” captures the 3 timer input pins (CC1, CC2, CC3)
+Page 1573: Bit 11 UIFREMAP: UIF status bit remapping
+Page 1573: 0: No remapping. UIF status bit is not copied to TIMx_CNT register bit 31.
+Page 1573: 1: Remapping enabled. UIF status bit is copied to TIMx_CNT register bit 31.
+Page 1576: 0: The TIMx_CH1 pin is connected to TI1 input
+Page 1576: 1: The TIMx_CH1, CH2 and CH3 pins are connected to the TI1 input (XOR combination)
+Page 1591: 1: On - OC1N signal is output on the corresponding output pin depending on MOE, OSSI,
+Page 1592: 1: On - OC1 signal is output on the corresponding output pin depending on MOE, OSSI,
+Page 1593: Note:         The state of the external I/O pins connected to the complementary OCx and OCxN channels
+Page 1633: •      External clock mode1: external input pin (TIx)
+Page 1636: 4.      Select rising edge detection on the ETR pin by writing ETP=0 in the TIMx_SMCR
+Page 1641: •    Assigns the corresponding output pin to a programmable value defined by the output
+Page 1641: bit in the TIMx_CCER register). The output pin can keep its level (OCXM=000), be set
+Page 1641: and CCxE=1 to toggle OCx output pin when CNT matches CCRx, CCRx preload is not
+Page 1649: after a delay of tDELAY as soon as a positive edge is detected on the TI2 input pin.
+Page 1653: 38.3.16   UIF bit remapping
+Page 1653: to the output of a XOR gate, combining the three input pins TIMx_CH1 to TIMx_CH3.
+Page 1664: Bit 11 UIFREMAP: UIF status bit remapping
+Page 1664: 0: No remapping. UIF status bit is not copied to TIMx_CNT register bit 31.
+Page 1664: 1: Remapping enabled. UIF status bit is copied to TIMx_CNT register bit 31.
+Page 1666: 0: The TIMx_CH1 pin is connected to TI1 input
+Page 1666: 1: The TIMx_CH1, CH2 and CH3 pins are connected to the TI1 input (XOR combination)
+Page 1680: 1: On - OC1 signal is output on the corresponding output pin
+Page 1680: Note:          The state of the external IO pins connected to the standard OCx channels depends on the
+Page 1702: •     External clock mode1 (for TIM12): external input pin (TIx)
+Page 1709: 1.   Assigns the corresponding output pin to a programmable value defined by the output
+Page 1709: bit in the TIMx_CCER register). The output pin can keep its level (OCxM=’0000’), be
+Page 1709: –    Write OCxM = ‘0011’ to toggle OCx output pin when CNT matches CCRx
+Page 1713: after a delay of tDELAY as soon as a positive edge is detected on the TI2 input pin.
+Page 1715: 39.3.13   UIF bit remapping
+Page 1715: the output of a XOR gate, combining the two input pins TIMx_CH1 and TIMx_CH2.
+Page 1719: Bit 11 UIFREMAP: UIF status bit remapping
+Page 1719: 0: No remapping. UIF status bit is not copied to TIMx_CNT register bit 31.
+Page 1719: 1: Remapping enabled. UIF status bit is copied to TIMx_CNT register bit 31.
+Page 1721: 0: The TIM12_CH1 pin is connected to TI1 input
+Page 1721: 1: The TIM12_CH1, CH2 pins are connected to the TI1 input (XOR combination)
+Page 1729: 1: On - OC1 signal is output on the corresponding output pin.
+Page 1730: Note:           The states of the external I/O pins connected to the standard OCx channels depend on the
+Page 1735: Bit 11 UIFREMAP: UIF status bit remapping
+Page 1735: 0: No remapping. UIF status bit is not copied to TIMx_CNT register bit 31.
+Page 1735: 1: Remapping enabled. UIF status bit is copied to TIMx_CNT register bit 31.
+Page 1741: 1: On - OC1 signal is output on the corresponding output pin
+Page 1741: Note:           The state of the external I/O pins connected to the standard OCx channels depends on the
+Page 1757: •   External clock mode1: external input pin
+Page 1764: •   Assigns the corresponding output pin to a programmable value defined by the output
+Page 1764: bit in the TIMx_CCER register). The output pin can keep its level (OCXM=000), be set
+Page 1765: –      Write OCxM = 011 to toggle OCx output pin when CNT matches CCRx
+Page 1770: application fault (from input pins and built-in comparator), and can force the outputs to a
+Page 1771: •      An external source connected to one of the BKIN pin (as per selection done in the
+Page 1774: after a delay of tDELAY as soon as a positive edge is detected on the TI2 input pin.
+Page 1776: 40.4.16     UIF bit remapping
+Page 1777: the output of a XOR gate, combining the two input pins TIMx_CH1 and TIMx_CH2.
+Page 1783: Bit 11 UIFREMAP: UIF status bit remapping
+Page 1783: 0: No remapping. UIF status bit is not copied to TIMx_CNT register bit 31.
+Page 1783: 1: Remapping enabled. UIF status bit is copied to TIMx_CNT register bit 31.
+Page 1785: 0: The TIMx_CH1 pin is connected to TI1 input
+Page 1785: 1: The TIMx_CH1, CH2 pins are connected to the TI1 input (XOR combination)
+Page 1796: 1: On - OC1N signal is output on the corresponding output pin depending on MOE, OSSI,
+Page 1797: 1: On - OC1 signal is output on the corresponding output pin depending on MOE, OSSI,
+Page 1797: Note:          The state of the external I/O pins connected to the complementary OCx and OCxN channels
+Page 1808: Bit 11 UIFREMAP: UIF status bit remapping
+Page 1808: 0: No remapping. UIF status bit is not copied to TIMx_CNT register bit 31.
+Page 1808: 1: Remapping enabled. UIF status bit is copied to TIMx_CNT register bit 31.
+Page 1816: 1: On - OC1N signal is output on the corresponding output pin depending on MOE, OSSI,
+Page 1816: 1: On - OC1 signal is output on the corresponding output pin depending on MOE, OSSI,
+Page 1817: Note:             The state of the external I/O pins connected to the complementary OCx and OCxN channels
+Page 1836: 41.3.3      UIF bit remapping
+Page 1837: Bit 11 UIFREMAP: UIF status bit remapping
+Page 1837: 0: No remapping. UIF status bit is not copied to TIMx_CNT register bit 31.
+Page 1837: 1: Remapping enabled. UIF status bit is copied to TIMx_CNT register bit 31.
+Page 1846: 42.4.2      LPTIM pins and internal signals
+Page 1846: Table 343 and Table 342 gives the list of LPTIM internal signals and pins, respectively.
+Page 1846: Table 342. LPTIM input/output pins
+Page 1846: LPTIM_IN1                   Digital input      LPTIM Input 1 from GPIO pin on mux input 0
+Page 1846: LPTIM_IN2                   Digital input      LPTIM Input 2 from GPIO pin on mux input 0
+Page 1846: LPTIM_ETR                   Digital input      LPTIM external trigger GPIO pin
+Page 1846: LPTIM_OUT                   Digital output      LPTIM Output GPIO pin
+Page 1846: 42.4.3      LPTIM input and trigger mapping
+Page 1846: lptim_ext_trig0                     GPIO pin as LPTIM1_ETR alternate function
+Page 1847: lptim_ext_trig0                  GPIO pin as LPTIM2_ETR alternate function
+Page 1848: lptim_in1_mux0                   GPIO pin as LPTIM1_IN1 alternate function
+Page 1848: lptim_int2_mux0                   GPIO pin as LPTIM1_IN2 alternate function
+Page 1848: lptim_in1_mux0                   GPIO pin as LPTIM2_IN1 alternate function
+Page 1849: lptim_int2_mux0                     GPIO pin as LPTIM2_IN2 alternate function
+Page 1864: See Section 42.4.3: LPTIM input and trigger mapping for details.
+Page 1869: For connection details refer to Section 42.4.3: LPTIM input and trigger mapping.
+Page 1870: For connection details refer to Section 42.4.3: LPTIM input and trigger mapping.
+Page 1892: 45.3.2      RTC pins and internal signals
+Page 1892: Table 363. RTC pins and internal signals
+Page 1893: Table 363. RTC pins and internal signals (continued)
+Page 1893: RTC_OUT, RTC_TS and RTC_TAMP1 are mapped on the same pin (PC13). PC13 pin
+Page 1893: Table 364. RTC pin PC13 configuration(1)
+Page 1893: PC13 Pin         bits                                      RTC_OUT       RTC_ALARM
+Page 1894: Table 364. RTC pin PC13 configuration(1) (continued)
+Page 1894: PC13 Pin         bits                                RTC_OUT          RTC_ALARM
+Page 1894: Wakeup pin or
+Page 1894: In addition, it is possible to remap RTC_OUT on PB2 pin thanks to RTC_OUT_RMP bit. In
+Page 1894: Table 365. RTC_OUT mapping
+Page 1894: The table below summarizes the RTC pins and functions capability in all modes.
+Page 1894: Pin        RTC functions       power modes except
+Page 1895: Pin     RTC functions            power modes except
+Page 1904: when a time-stamp event is detected on the RTC_TS pin.
+Page 1905: The TAMPxF flag is asserted after the tamper event on the pin, with the latency provided
+Page 1905: A new tamper occurring on the same pin during this period and as long as TAMPxF is set
+Page 1905: A new tamper occurring on the same pin cannot be detected during the latency described
+Page 1905: When TAMPIE is cleared, each tamper pin event interrupt can be individually enabled by
+Page 1905: by software in order to allow a new tamper detection on the same pin.
+Page 1905: If the TAMPFLT bits are “00”, the RTC_TAMPx pins generate tamper detection events when
+Page 1906: Caution:    When using the edge detection, it is recommended to check by software the tamper pin
+Page 1906: of the backup registers, the pin to which the RTC_TAMPx is mapped should be externally
+Page 1907: Note:     When the RTC_CALIB or RTC_ALARM output is selected, the RTC_OUT pin is
+Page 1907: The RTC_ALARM pin can be configured in output open drain or output push-pull using the
+Page 1907: When the RTC_CALIB or RTC_ALARM output is selected, the RTC_OUT pin is
+Page 1911: 0: The pin is high when ALRAF/ALRBF/WUTF is asserted (depending on OSEL[1:0])
+Page 1911: 1: The pin is low when ALRAF/ALRBF/WUTF is asserted (depending on OSEL[1:0]).
+Page 1928: This bit determines if each of the RTC_TAMPx pins are precharged before each sample.
+Page 1928: 0: Precharge RTC_TAMPx pins before sampling (enable internal pull-up)
+Page 1928: 1: Disable precharge of RTC_TAMPx pins.
+Page 1929: Note: This bit enables the interrupt for all tamper pins events, whatever TAMPxIE level. If this
+Page 1936: connected to the I2C bus by a data pin (SDA) and by a clock pin (SCL). It can be connected
+Page 1936: This interface can also be connected to a SMBus with the data pin (SDA) and clock pin
+Page 1937: If SMBus feature is supported: the additional optional SMBus Alert pin (SMBA) is also
+Page 1969: through the SMBALERT# pin that it wants to talk. The host processes the interrupt and
+Page 1969: When configured as a slave device(SMBHEN=0), the SMBA pin is pulled low by setting the
+Page 1969: when a falling edge is detected on the SMBA pin and ALERTEN=1. An interrupt is
+Page 1969: line is considered high even if the external SMBA pin is low.
+Page 1969: If the SMBus ALERT pin is not needed, the SMBA pin can be used as a standard GPIO if
+Page 1983: alert pin detection is enabled (ALERTEN=1) and a falling edge is detected on the SMBA pin.
+Page 1986: Figure 566. I2C interrupt mapping diagram
+Page 1987: 0: Releases SMBA pin high and Alert Response Address Header disabled: 0001100x
+Page 1987: 1: Drives SMBA pin low and Alert Response Address Header enables: 0001100x followed by
+Page 1987: 0: SMBus Alert pin (SMBA) not supported.
+Page 1987: 1: SMBus Alert pin (SMBA) supported.
+Page 1987: Note: When ALERTEN=0, the SMBA pin can be used as a standard GPIO.
+Page 1988: Alert pin event detection (ALERT)
+Page 1996: and a SMBALERT event (falling edge) is detected on SMBA pin. It is cleared by software by
+Page 2004: •   Swappable Tx/Rx pin configuration
+Page 2007: USART bidirectional communications require a minimum of two pins: Receive Data In (RX)
+Page 2007: When the transmitter is disabled, the output pin returns to its I/O port configuration.
+Page 2007: When the transmitter is enabled and no data needs to be transmitted, the TX pin is
+Page 2007: The following pins are required in RS232 Hardware flow control mode:
+Page 2007: The following pin is required in RS485 Hardware control mode:
+Page 2007: Note:     DE and RTS share the same pin.
+Page 2007: The following pin is required in synchronous master/slave mode and Smartcard mode:
+Page 2007: This pin acts as Clock output in Synchronous master and Smartcard modes.
+Page 2007: In Synchronous Master mode, this pin outputs the transmitter data clock for
+Page 2007: parallel, data can be received synchronously on RX pin. This mechanism can be used
+Page 2007: This pin acts as Slave Select input in Synchronous slave mode.
+Page 2007: Note:     NSS and CTS share the same pin.
+Page 2010: data in the transmit shift register is output on the TX pin while the corresponding clock
+Page 2010: pulses are output on the SCLK pin.
+Page 2010: configuration) on the TX pin. In this mode, the USART_TDR register consists of a buffer
+Page 2011: transmission corrupts the data on the TX pin as the baud rate counters get frozen. The
+Page 2016: configuration) through the RX pin.
+Page 2032: communications in master mode. The SCLK pin is the output of the USART transmitter
+Page 2032: clock. No clock pulses are sent to the SCLK pin during start bit and stop bit. Depending on
+Page 2033: Note:     In master mode, the SCLK pin operates in conjunction with the TX pin. Thus, the clock is
+Page 2034: communications in slave mode. The SCLK pin is the input of the USART in slave mode.
+Page 2035: Slave Select (NSS) pin management
+Page 2035: SPI slave will always be selected and NSS input pin will be ignored.
+Page 2035: The external NSS pin remains free for other application uses.
+Page 2035: The SPI slave selection depends on NSS input pin. The slave is selected when NSS is
+Page 2036: •    The RX pin is no longer used.
+Page 2036: •    The TX pin is always released when no data is transmitted. Thus, it acts as a standard
+Page 2037: is also driven by the Smartcard. The TX pin must be configured as open drain.
+Page 2060: Bit 17 TXINV: TX pin active level inversion
+Page 2060: 0: TX pin signal works using the standard logic levels (VDD =1/idle, Gnd=0/mark)
+Page 2060: 1: TX pin signal values are inverted. ((VDD =0/mark, Gnd=1/idle).
+Page 2060: Bit 16 RXINV: RX pin active level inversion
+Page 2060: 0: RX pin signal works using the standard logic levels (VDD =1/idle, Gnd=0/mark)
+Page 2060: 1: RX pin signal values are inverted. ((VDD =0/mark, Gnd=1/idle).
+Page 2060: Bit 15 SWAP: Swap TX/RX pins
+Page 2060: 0: TX/RX pins are used as defined in standard pinout
+Page 2060: 1: The TX and RX pins functions are swapped. This allows to work in the case of a cross-wired
+Page 2061: This bit allows the user to enable the SCLK pin.
+Page 2061: 0: SCLK pin disabled
+Page 2061: 1: SCLK pin enabled
+Page 2061: This bit allows the user to select the polarity of the clock output on the SCLK pin in synchronous
+Page 2061: 0: Steady low value on SCLK pin outside transmission window
+Page 2061: 1: Steady high value on SCLK pin outside transmission window
+Page 2061: This bit is used to select the phase of the clock output on the SCLK pin in synchronous mode. It
+Page 2061: has to be output on the SCLK pin in synchronous mode.
+Page 2061: 0: The clock pulse of the last data bit is not output to the SCLK pin
+Page 2061: 1: The clock pulse of the last data bit is output to the SCLK pin
+Page 2062: When the DSI_NSS bit is set, the NSS pin input is ignored.
+Page 2062: 0: SPI slave selection depends on NSS input pin.
+Page 2062: 1: SPI slave is always selected and NSS input pin is ignored.
+Page 2064: 1: DE function is enabled. The DE signal is output on the RTS pin.
+Page 2065: completed before stopping. If data is written into the data register while nCTS is asserted,
+Page 2074: This bit is set/reset by hardware. It is an inverted copy of the status of the nCTS input pin.
+Page 2083: •   Swappable Tx/Rx pin configuration
+Page 2085: LPUART bidirectional communications requires a minimum of two pins: Receive Data In
+Page 2085: When the transmitter is disabled, the output pin returns to its I/O port configuration.
+Page 2085: When the transmitter is enabled and nothing is to be transmitted, the TX pin is at high
+Page 2085: The following pins are required in RS232 Hardware flow control mode:
+Page 2085: The following pin is required in RS485 Hardware control mode:
+Page 2085: Note:    DE and RTS share the same pin.
+Page 2087: data in the transmit shift register is output on the TX pin.
+Page 2087: configuration) on the TX pin. In this mode, the LPUART_TDR register consists of a buffer
+Page 2087: transmission will corrupt the data on the TX pin as the baud rate counters is frozen. The
+Page 2091: configuration) through the RX pin. In this mode, the LPUART_RDR register consists of a
+Page 2099: •     The RX pin is no longer used
+Page 2099: •     The TX pin is always released when no data is transmitted. Thus, it acts as a standard
+Page 2114: Bit 17 TXINV: TX pin active level inversion
+Page 2114: 0: TX pin signal works using the standard logic levels (VDD =1/idle, Gnd=0/mark)
+Page 2114: 1: TX pin signal values are inverted. ((VDD =0/mark, Gnd=1/idle).
+Page 2114: Bit 16 RXINV: RX pin active level inversion
+Page 2114: 0: RX pin signal works using the standard logic levels (VDD =1/idle, Gnd=0/mark)
+Page 2114: 1: RX pin signal values are inverted. ((VDD =0/mark, Gnd=1/idle).
+Page 2114: Bit 15 SWAP: Swap TX/RX pins
+Page 2114: 0: TX/RX pins are used as defined in standard pinout
+Page 2114: 1: The TX and RX pins functions are swapped. This allows to work in the case of a cross-wired
+Page 2117: 1: DE function is enabled. The DE signal is output on the RTS pin.
+Page 2117: completed before stopping. If data is written into the data register while nCTS is asserted,
+Page 2121: This bit is set/reset by hardware. It is an inverted copy of the status of the nCTS input pin.
+Page 2132: Four I/O pins are dedicated to SPI communication with external devices.
+Page 2132: •    MISO: Master In / Slave Out data. In the general case, this pin is used to transmit data
+Page 2132: •    MOSI: Master Out / Slave In data. In the general case, this pin is used to transmit data
+Page 2132: •    SCK: Serial Clock output pin for SPI masters and input pin for SPI slaves.
+Page 2132: •    SS: Slave select pin. Depending on the SPI and SS settings, this pin can be used to
+Page 2132: MOSI and MISO pins can be inverted in any SPI mode (see the IOSWP bit at SPI_CFG2
+Page 2133: linked using two unidirectional lines between the MOSI and the MISO pins. During the SPI
+Page 2133: 1. The SS pin is configured at output mode at master. The pins can be left unconnected then SS is managed
+Page 2133: communication. In this configuration, the MISO pin at master and the MOSI pin at slave are
+Page 2134: 1. The SS pin is configured at output mode at master. The pins can be left unconnected then SS is managed
+Page 2134: 2. In this configuration, the MISO pin at master and MOSI pin at slave can be used as GPIOs
+Page 2134: and MOSI pins at this mode to protect the outputs and limit the current blowing between them at this
+Page 2134: MISO or MOSI pins pair is not used for communication and can be used as standard
+Page 2134: pin and the SS pin (or SW managed internal signal) is active (see 49.4.6: Multi-master
+Page 2134: In slave configuration, the MISO output is disabled and the pin can be used as a GPIO.
+Page 2134: The slave continues to receive data from the MOSI pin while its slave select signal is
+Page 2134: Note:       At whatever master and slave modes, the data pin dedicated for transmission can be
+Page 2134: replaced by the data pin dedicated for reception and vice versa by changing the IOSWP bit
+Page 2135: 1. The SS pin is configured at output mode at master. The pins can be left unconnected then SS is managed
+Page 2135: 3. In this configuration, both the MISO pins can be used as GPIOs.
+Page 2135: dedicated GPIO pins to manage the chip select lines for each slave separately (see Figure
+Page 2136: 1. SS pin is not used on master side at this configuration. It has to be managed internally (SSM=1, SSI=1) to
+Page 2136: 2. As MISO pins of the slaves are connected together, all slaves must have the GPIO configuration of their
+Page 2136: MISO pin set as alternate function open-drain (see Section 10.3.7: I/O alternate function input/output on
+Page 2138: at the same time. For this detection, the SS pin is used configured at hardware input mode.
+Page 2138: the slave select input of the other node via the dedicated GPIO pin. After the session is
+Page 2138: 1. The SS pin is configured at hardware input mode at both nodes. Its active level enable the MISO line
+Page 2138: 49.4.7      Slave select (SS) pin management
+Page 2138: associated with the SS pin (hardware SS management). The user can configure which level
+Page 2138: of this input/output external signal (present on the SS pin) is considered as active one by the
+Page 2139: driven internally by the SSI bit value in the register SPI_CR1. The external SS pin is
+Page 2139: set as master. The SS pin is managed by the hardware.
+Page 2139: multi master capability. If the SS pin is pulled into an active level in this mode, the
+Page 2139: b)   In slave mode, the SS pin works as a standard ‘chip select’ input and the slave is
+Page 2139: pin is fixed. There is no such protection at the SS software management. Then the SSI bit
+Page 2140: pin                                                                                           SSOM, MIDI
+Page 2142: If CPOL is reset, the SCK pin has a low-level idle state. If CPOL is set, the SCK pin has a
+Page 2142: If the CPHA bit is set, the second edge on the SCK pin captures the first data bit transacted
+Page 2142: SCK pin captures the first data bit transacted (falling edge if the CPOL bit is set, rising edge
+Page 2144: 7.    Write the proper GPIO registers: Configure GPIO for MOSI, MISO and SCK pins.
+Page 2144: propagated onto the associated GPIO pins regardless the peripheral enable so
+Page 2144: affect level of signals at these pins.
+Page 2145: master. That is why the hardware management mode cannot be used when external SS pin
+Page 2148: SS can be managed by both software and hardware (Section 49.4.7: Slave select (SS) pin
+Page 2153: In slave mode, the clock generator is used to define time when the slave output at MISO pin
+Page 2154: Mode fault occurs when the master device has its internal SS signal (SS pin in SS hardware
+Page 2154: To avoid any multiple slave conflicts in a system comprising several MCUs, the SS pin must
+Page 2155: •    Put GPIO pin dedicated for another master SS control into active level
+Page 2155: •    Put GPIO pin dedicated for another master SS control into non active level
+Page 2161: 49.9.2   Pin sharing with SPI function
+Page 2161: The I2S shares four common pins with the SPI:
+Page 2161: •   SDO: Serial Data Output (mapped on the MOSI pin) to transmit the audio samples in
+Page 2161: swapping on page 2170.
+Page 2161: •   SDI: Serial Data Input (mapped on the MISO pin) to receive the audio samples in
+Page 2161: swapping on page 2170.
+Page 2161: •   WS: Word Select (mapped on the SS pin) is the frame synchronization. It is configured
+Page 2161: •   CK: Serial Clock (mapped on the SCK pin) is the serial bit clock. It is configured as
+Page 2161: An additional pin can be used when a master clock output is needed for some external
+Page 2170: Serial Data Line swapping
+Page 2170: Table 403. Serial data line swapping
+Page 2171: Table 403. Serial data line swapping (continued)
+Page 2173: reshaping stage                                          1
+Page 2185: peripheral SS input and the I/O value of the SS pin is ignored.
+Page 2185: The master mode communication must be suspended (using this bit or keeping TXDR
+Page 2190: outputs configured at alternate function mode by keeping them forced at state corresponding
+Page 2190: pin at inactive level after the transfer in according with SSOM, MIDI, MSSI, SSIOP bits setting
+Page 2191: Bit 15 IOSWP: swap functionality of MISO and MOSI pins
+Page 2191: When this bit is set, the function of MISO and MOSI pins alternate functions are inverted.
+Page 2191: Original MISO pin becomes MOSI and original MOSI pin becomes MISO.
+Page 2206: An I/O line controller manages a set of 4 dedicated pins (SD, SCK, FS, MCLK) for a given
+Page 2206: audio block in the SAI. Some of these pins can be shared if the two sub-blocks are declared
+Page 2206: as synchronous to leave some free to be used as general purpose I/Os. The MCLK pin can
+Page 2206: freed (except for pins SD_x).
+Page 2207: 50.3.2   SAI pins and internal signals
+Page 2207: Table 408. SAI input/output pins
+Page 2207: •     The bit clock and the frame synchronization are output on pin SCK_x and FS_x,
+Page 2207: •     If needed, the SAI can also generate a master clock on MCLK_x pin.
+Page 2208: •    If the SAI sub-block is configured in asynchronous mode, then SCK_x and FS_x pins
+Page 2208: or with the second audio sub-block, the corresponding SCK_x and FS_x pins are left
+Page 2208: In slave mode, MCLK_x pin is not used and can be assigned to another function.
+Page 2208: pin will be respectively configured as an output or an input.
+Page 2208: shared to reduce the number of external pins used for the communication. The audio block
+Page 2208: configured in synchronous mode sees its own SCK_x, FS_x, and MCLK_x pins released
+Page 2208: FS_x and SCK_x ad MCLK_x I/O pins are relevant (if the audio block is considered as
+Page 2211: FSPOL bit in the SAI_xFRCR register sets the active polarity of the FS pin from which a
+Page 2215: MCKDIV and OSR bits are ignored. In addition, MCLK_x I/O pin is released and can be
+Page 2215: driven Low if this pin is configured as the SAI pin in GPIO peripherals. MCKDIV can still be
+Page 2219: microphones share the same bitstream clock and data line. Thanks to a configuration pin
+Page 2229: •    FS, SCK, MCLK I/Os pins are left free.
+Page 2234: pin simultaneously, which could result in a short circuit. To ensure a gap between
+Page 2234: bit SLOTSZ[1:0] = 10 in the SAI_xSLOTR register. The SD output pin will then be tri-stated
+Page 2252: In master mode, if the master clock (available on MCLK_x pin) is used, the frame length should be
+Page 2253: In master mode, if the master clock (available on MCLK_x pin) is used, the frame length should be
+Page 2272: 51.3.1                         SPDIFRX pins and internal signals
+Page 2272: Table 418 lists the SPDIFRX internal input/output signals, Table 419 the SPDIFRX pins
+Page 2272: Table 419. SPDIFRX pins
+Page 2289: Figure 679. SPDIFRX interface interrupt mapping diagram
+Page 2308: 52.3.2      SWPMI pins and internal signals
+Page 2308: Table 424 lists the SWPMI slave inputs and output signals connected to package pins or
+Page 2308: Table 424. SWPMI input/output signals connected to package pins or balls
+Page 2311: functions on three GPIOs (refer to “Pinouts and pin description” in product datasheet). This
+Page 2315: a continuous transmission, keeping a very low CPU load, and allowing more latency for
+Page 2315: RAM memory must be filled by the software, keeping an offset of 8 between two
+Page 2319: a continuous reception, keeping a very low CPU load, using the DMA. The frame payloads
+Page 2325: 0: SPWMI_IO pin is controlled by GPIO controller
+Page 2335: 53.3.2   MDIOS pins and internal signals
+Page 2335: Table 430 lists the MDIOS inputs and output signals connected to package pins or balls,
+Page 2335: Table 430. MDIOS input/output signals connected to package pins or balls
+Page 2354: 54.4.2      SDMMC pins and internal signals
+Page 2354: Table 436 lists the SDMMC internal input/output signals, Table 437 the SDMMC pins
+Page 2354: sdmmc_io_in_ck            Digital input     internally connected to the SDMMC_CK pin (for DS
+Page 2354: Table 437. SDMMC pins
+Page 2355: Table 437. SDMMC pins
+Page 2356: data in the SDMMC receive path. It is derived from the SDMMC_CK pin.
+Page 2358: provides the division control. It also takes care of stopping the SDMMC_CK for i.e. flow
+Page 2364: Send command (STOP_TRANSMISSION), stopping any
+Page 2382: •    SDIO read wait operation by stopping the clock
+Page 2382: To allow the SD I/O card to interrupt the host, an interrupt function is available on pin 8
+Page 2382: In SD 1-bit mode pin 8 is dedicated to the interrupt function (IRQ), and there are no timing
+Page 2382: In SD 4-bit mode the host samples the level of pin 8 (SDMMC_D1/IRQ) into the interrupt
+Page 2388: 1.    Stopping the SDMMC_CK.
+Page 2388: The timing for pause read operation by stopping the SDMMC_CK for DS, HS, SDR12, and
+Page 2388: The timing for pause read operation by stopping the SDMMC_CK for SDR50, SDR104, and
+Page 2389: In ReadWait SDMMC_CK clock stopping, when RWSTART is set, the DSPM stops the clock
+Page 2395: 1.   Normal boot. (keeping CMD line low)
+Page 2412: 1: Read Wait control stopping SDMMC_CK
+Page 2428: The CAN subsystem I/O signals and pins are detailed, respectively, in Table 459 and
+Page 2429: Table 460. CAN subsystem I/O pins
+Page 2429: FDCAN1_RX           Digital input    FDCAN1 receive pin
+Page 2429: FDCAN1_TX           Digital output   FDCAN1 transmit pin
+Page 2429: FDCAN2_RX           Digital input    FDCAN2 receive pin
+Page 2429: FDCAN2_TX           Digital output   FDCAN2 transmit pin
+Page 2436: receivers. The length of the bus line has no impact. When transmitting via pin FDCAN_TX
+Page 2436: the protocol controller receives the transmitted data from its local CAN transceiver via pin
+Page 2437: defined as the sum of the measured delay from the FDCAN transmit output pin FDCAN_TX
+Page 2437: through the transceiver to the receive input pin FDCAN_RX plus the transmitter delay
+Page 2437: to bit res. The measurement is stopped when this edge is seen at the receive input pin
+Page 2439: Figure 732. Pin control in bus monitoring mode
+Page 2440: Four output functions are available for the CAN transmit pin FDCAN_TX by programming
+Page 2440: dominant or recessive values. The actual value at pin FDCAN_RX can be read from
+Page 2440: until the new configuration is visible at FDCAN_TX output pin. This applies also when
+Page 2440: reading FDCAN_RX input pin via FDCAN_TEST.RX.
+Page 2440: FDCAN_TX pin interferes with all CAN protocol functions. It is not recommended to use test
+Page 2440: input pin is disregarded by the FDCAN. The transmitted messages can be monitored at the
+Page 2440: FDCAN_TX transmit pin.
+Page 2440: FDCAN_RX pins. In this mode, FDCAN_RX pin is disconnected from the FDCAN and
+Page 2440: FDCAN_TX pin is held recessive. Figure 733 (right side) shows the connection of
+Page 2440: FDCAN_TX and FDCAN_RX pins to the FDCAN in case of internal loop back mode.
+Page 2441: Figure 733. Pin control in loop back mode
+Page 2443: •    Store received frame in Rx buffer and generate pulse at filter event pin
+Page 2458: falling edges at pin FDCAN1_RX is measured. The number of clock periods depends on the
+Page 2470: input pin fdcan_evt by writing FDCAN_TTOCN.GCS = 1. When a reference message is
+Page 2470: started and FDCAN_TTOCN.GCS is set, a HIGH level at event trigger pin fdcan_evt will set
+Page 2471: event-trigger input pin fdcan_evt sets FDCAN_TTOCN.FGP and restarts the schedule.
+Page 2471: ignored, as well as the event-trigger input pin fdcan_evt and the bits FDCAN_TTOCN.NIG,
+Page 2471: FDCAN_TTOCN.SWP) on stop watch trigger pin fdcan_swt. This will set interrupt flag
+Page 2479: program. With a stop watch event triggered by a rising edge on pin fdcan_swt internal time
+Page 2481: External synchronization is controlled by event trigger input pin fdcan_evt. If bit
+Page 2481: FDCAN_TTOCN.ESCN is set, a rising edge at event trigger pin fdcan_evt the FDCAN
+Page 2481: the rising edge at event trigger pin fdcan_evt is greater than 9 NTU, the phase lock bit
+Page 2482: at event trigger pin fdcan_evt is lower or equal to nine NTU, the phase lock bit
+Page 2482: Note:       The rising edge detection at event trigger pin fdcan_evt is enabled with the start of each
+Page 2488: Is used to control the filter event pins at the Extension Interface. A 1 at the respective
+Page 2488: bit position enables generation of a pulse at the related filter event pin with the
+Page 2490: Is used to control the filter event pins at the Extension Interface. A 1 at the respective
+Page 2490: bit position enables generation of a pulse at the related filter event pin with the
+Page 2493: Loop back mode and software control of Tx pin FDCANx_TX are hardware test modes.
+Page 2494: Bit 7 RX: Receive pin
+Page 2494: Monitors the actual value of transmit pin FDCANx_RX
+Page 2494: Bits 6:5 TX[1:0]: Control of transmit pin
+Page 2494: 01: Sample point can be monitored at pin FDCANx_TX
+Page 2494: 10: Dominant (0) level at pin FDCANx_TX
+Page 2494: 11: Recessive (1) at pin FDCANx_TX
+Page 2496: 1: FDCAN may be set in power down by stopping APB clock and kernel clock
+Page 2503: FDCAN_CCCR.INIT of its own, stopping all bus activities. Once FDCAN_CCCR.INIT has
+Page 2536: a rising edge at event trigger pin (see Section 55.3.16: Synchronization to external time
+Page 2537: 1: Gap control by input event trigger pin
+Page 2540: 0: No rising/falling edge at stop watch trigger pin detected
+Page 2540: 1 :Rising/falling edge at stop watch trigger pin detected
+Page 2545: pin is less or equal 9 NTU (see Section 55.3.16: Synchronization to external time
+Page 2545: via input pin (event trigger) if FDCAN_TTOCN.GCS = 1. Not set by Ref_Trigger_Gap or
+Page 2548: trigger pin, when FDCAN_TTOCN.SWS] is different from 00 and FDCAN_TTIR.SWE is 0,
+Page 2562: ULPI                UTMI+ Low Pin Interface
+Page 2567: AHB master          OTG_HS)                            ULPI interface (12 pins)           (external   USB2.0 (D+/D-)
+Page 2567: 1. This instance cannot be used in HS mode for pinning reasons                                                                                                 MSv40735V3
+Page 2568: 56.4.2      USB OTG pin and internal signals
+Page 2568: Table 489. OTG_FS input/output pins
+Page 2568: Table 490. OTG_HS input/output pins
+Page 2569: The host or peripheral (the default) role is assumed depending on the ID input pin. The ID
+Page 2570: ID pin of the On-the-Go specification Rev2.0, supplement to the USB2.0.
+Page 2570: OTG_HS complies with the standard FSM described by section 4.2.4: ID pin of the On-
+Page 2572: When a resume signaling is detected from the host, the resume interrupt (WKUPINT bit in
+Page 2572: (OTG_DIEPINT0/)OTG_DOEPINT0) registers. The available set of bits inside the
+Page 2572: (OTG_DIEPTSIZx), and status-interrupt (OTG_DIEPINTx) registers
+Page 2572: (OTG_DOEPTSIZx) and status-interrupt (OTG_DOEPINTx) register
+Page 2573: The device endpoint-x interrupt registers (OTG_DIEPINTx/OTG_DOPEPINTx) indicate the
+Page 2573: the core interrupt register (OEPINT bit in OTG_GINTSTS or IEPINT bit in OTG_GINTSTS,
+Page 2575: When HNP or SRP is enabled the VBUS sensing pin should be connected to VBUS. The
+Page 2575: When HNP and SRP are both disabled, the VBUS sensing pin does not need to be
+Page 2575: The application drives a USB reset signaling (single-ended zero) over the USB by keeping
+Page 2576: wakeup). In this case the remote wakeup interrupt (WKUPINT bit in OTG_GINTSTS) is
+Page 2582: Figure 750. Device-mode FIFO address mapping and AHB FIFO access mapping
+Page 2583: Figure 751. Host-mode FIFO address mapping and AHB FIFO access mapping
+Page 2587: PIN
+Page 2587: OTG_DIEPINTx/
+Page 2587: OTG_DOEPINTx                                x = #EP-1
+Page 2591: OTG_DIEPINTx
+Page 2591: ...          (OTG_DIEPINTx)
+Page 2592: OTG_DOEPINTx
+Page 2592: ...            (OTG_DOEPINTx)
+Page 2597: This bit when set indicates that there is a change in the value of the ID input pin.
+Page 2598: OTG_DIEPINTx) is triggered:
+Page 2598: 0:The TXFE (in OTG_DIEPINTx) interrupt indicates that the IN endpoint Tx FIFO is half
+Page 2598: 1:The TXFE (in OTG_DIEPINTx) interrupt indicates that the IN endpoint Tx FIFO is
+Page 2600: Writing a 1 to this bit, forces the core to device mode irrespective of the OTG_ID input pin.
+Page 2600: Writing a 1 to this bit, forces the core to host mode irrespective of the OTG_ID input pin.
+Page 2605: Res.    PTXFE HCINT            Res.         COMP                       IEPINT   Res.    Res.
+Page 2605: Bit 31 WKUPINT: Resume/remote wakeup detected interrupt
+Page 2607: Bit 19 OEPINT: OUT endpoint interrupt
+Page 2607: corresponding OTG_DOEPINTx register to determine the exact cause of the interrupt. The
+Page 2607: application must clear the appropriate status bit in the corresponding OTG_DOEPINTx
+Page 2607: Bit 18 IEPINT: IN endpoint interrupt
+Page 2607: corresponding OTG_DIEPINTx register to determine the exact cause of the interrupt. The
+Page 2607: application must clear the appropriate status bit in the corresponding OTG_DIEPINTx
+Page 2609: DISCIN CIDSC   LPMIN PTXFE                  RSTDE   FSUS    M/IISO   IISOIX   OEPIN
+Page 2609: WUIM   SRQIM                                 HCIM   PRTIM                                           IEPINT   Res.   Res.
+Page 2610: Bit 19 OEPINT: OUT endpoints interrupt mask
+Page 2610: Bit 18 IEPINT: IN endpoints interrupt mask
+Page 2621: detected interrupt bit in the core interrupt register (WKUPINT or DISCINT bit in
+Page 2630: bit, which asserts the suspend input pin of the PHY.
+Page 2630: disconnect detected interrupt bit in the core interrupt register (WKUPINT or DISCINT in
+Page 2630: wakeup detected interrupt bit of the core interrupt register (WKUPINT bit in
+Page 2630: (WKUPINT in OTG_GINTSTS), the core starts driving resume signaling without application
+Page 2641: This register works with each of the OTG_DIEPINTx registers for all endpoints to generate
+Page 2641: OTG_DIEPINTx register can be masked by writing to the corresponding bit in this register.
+Page 2642: This register works with each of the OTG_DOEPINTx registers for all endpoints to generate
+Page 2642: OTG_DOEPINTx register can be masked by writing into the corresponding bit in this
+Page 2644: of the OTG_GINTSTS register (OEPINT or IEPINT in OTG_GINTSTS, respectively). There
+Page 2644: the corresponding device endpoint-x interrupt register (OTG_DIEPINTx/OTG_DOEPINTx).
+Page 2644: OEPINT[15:0]
+Page 2644: IEPINT[15:0]
+Page 2644: Bits 31:16 OEPINT[15:0]: OUT endpoint interrupt bits
+Page 2644: Bits 15:0 IEPINT[15:0]: IN endpoint interrupt bits
+Page 2647: (TXFE_OTG_DIEPINTx).
+Page 2647: These bits act as mask bits for OTG_DIEPINTx.
+Page 2648: This register works with the OTG_DIEPINT1 register to generate a dedicated interrupt
+Page 2648: OTG_DOEPINT1 register can be masked by writing into the corresponding bit in this
+Page 2649: This register works with the OTG_DOEPINT1 register to generate a dedicated interrupt
+Page 2649: OTG_DOEPINT1 register can be masked by writing into the corresponding bit in this
+Page 2653: 56.14.51 OTG device IN endpoint x interrupt register (OTG_DIEPINTx)
+Page 2653: endpoints interrupt bit of the core interrupt register (IEPINT in OTG_GINTSTS) is set.
+Page 2659: 56.14.57 OTG device OUT endpoint x interrupt register (OTG_DOEPINTx)
+Page 2659: endpoints interrupt bit of the OTG_GINTSTS register (OEPINT bit in OTG_GINTSTS) is set.
+Page 2659: get the exact endpoint number for the OTG_DOEPINTx register. The application must clear
+Page 2667: WUIM                             WKUPINT                       AHBIDL                              Res.                           Res.                             Res.                       Res.       31
+Page 2667: OEPINT                            OEPINT                           Res.                          ULPICSM                           Res.                          DBCDNE                      BSVLD        19
+Page 2667: IEPINT                            IEPINT                          Res.                           ULPIAR                           Res.                          ADTOCHG                     ASVLD        18
+Page 2672: OEPINT
+Page 2672: IEPINT
+Page 2673: DIEPINT0
+Page 2674: DIEPINT7
+Page 2674: DIEPINT1
+Page 2675: DOEPINT1
+Page 2675: DOEPINT0
+Page 2676: DOEPINT8
+Page 2680: Ping protocol
+Page 2680: When the OTG_HS host operates in high speed, the application must initiate the ping
+Page 2680: endpoints.The application must initiate the ping protocol when it receives a
+Page 2680: a ping token either by setting the DOPING bit in OTG_HCTSIZx before enabling the channel
+Page 2680: or by just writing the OTG_HCTSIZx register with the DOPING bit set when the channel is
+Page 2680: already enabled. This enables the OTG_HS host to write a ping request entry to the request
+Page 2680: queue. The application must wait for the response to the ping token (a NAK, ACK, or
+Page 2680: TXERR interrupt) before continuing the transaction or sending another ping token. The
+Page 2680: endpoint for the requested ping. In DMA mode operation, the application does not need to
+Page 2680: set the DOPING bit in OTG_HCTSIZx for a NAK/NYET response in case of bulk/control
+Page 2680: OUT. The OTG_HS host automatically sets the DOPING bit in OTG_HCTSIZx, and issues
+Page 2680: the ping tokens for bulk/control OUT. The OTG_HS host continues sending ping tokens until
+Page 2702: 4.     The core automatically issues a ping token.
+Page 2715: interrupts the application with an STUP interrupt (OTG_DOEPINTx), indicating it can
+Page 2715: 3.   Assertion of the STUP interrupt (OTG_DOEPINTx) marks a successful completion of
+Page 2716: Wait for STP in OTG_DOEPINTx
+Page 2716: interrupt (B2BSTUP in OTG_DOEPINTx).
+Page 2717: 4.   Wait for the EPDISD interrupt (OTG_DOEPINTx), which indicates that the OUT
+Page 2719: 4.   Asserting the XFRC interrupt (OTG_DOEPINTx) marks a successful completion of the
+Page 2720: 4.   The assertion of the XFRC interrupt (in OTG_DOEPINTx) marks the completion of the
+Page 2720: 1.   For isochronous OUT endpoints, the XFRC interrupt (in OTG_DOEPINTx) may not
+Page 2720: could fail to detect the XFRC interrupt (OTG_DOEPINTx) under the following
+Page 2720: OTG_DOEPINTx) is not asserted on at least one of the isochronous OUT endpoints. At
+Page 2721: XFRC interrupt (OTG_DOEPINTx). In this case, the application must re-enable
+Page 2721: 6.   Wait for the EPDISD interrupt (in OTG_DOEPINTx) and enable the endpoint to receive
+Page 2722: an XFRC interrupt (in OTG_DOEPINTx).
+Page 2722: (in OTG_DOEPINTx) to determine that the intended transfer is complete.
+Page 2723: –    In interrupt mode, the application waits for the TXFE interrupt (in OTG_DIEPINTx)
+Page 2723: 3.   The core asserts the INEPNE (IN endpoint NAK effective) interrupt in OTG_DIEPINTx
+Page 2723: 2.   Wait for assertion of the INEPNE interrupt in OTG_DIEPINTx. This interrupt indicates
+Page 2723: OTG_DIEPCTLx. This also clears the INEPNE interrupt (in OTG_DIEPINTx).
+Page 2724: 3.   Wait for the INEPNE interrupt in OTG_DIEPINTx.
+Page 2724: 5.   Assertion of the EPDISD interrupt in OTG_DIEPINTx indicates that the core has
+Page 2726: optionally use TXFE (in OTG_DIEPINTx) before writing the data.
+Page 2727: 3.   Asserting the ITTXFE interrupt (in OTG_DIEPINTx) indicates that the application has
+Page 2727: 5.   Asserting the XFRC interrupt (in OTG_DIEPINTx) with no ITTXFE interrupt in
+Page 2727: OTG_DIEPINTx indicates the successful completion of an isochronous IN transfer. A
+Page 2727: 6.   Asserting the XFRC interrupt (in OTG_DIEPINTx), with or without the ITTXFE interrupt
+Page 2727: (in OTG_DIEPINTx), indicates the successful completion of an interrupt IN transfer. A
+Page 2728: empty interrupt in OTG_DIEPINTx. The application can ignore this interrupt, as it
+Page 2728: OTG_DIEPINTx on any isochronous IN endpoint, as it eventually results in an
+Page 2728: 6.   The assertion of the endpoint disabled interrupt in OTG_DIEPINTx indicates that the
+Page 2729: 3.   Assertion of the endpoint disabled interrupt (in OTG_DIEPINTx) indicates to the
+Page 2729: application must enable the ITTXFE interrupt in OTG_DIEPINTx and the OTEPDIS interrupt
+Page 2729: in OTG_DOEPINTx during the data stage of the control transfer, after the core has
+Page 2738: •   Stripping of up to two VLAN tags and providing the tags in the status.
+Page 2739: •   Ethernet packet time-stamping as described in IEEE 1588-2002 and IEEE 1588-2008
+Page 2739: step and two-step timestamping is supported in Tx direction.
+Page 2741: 57.3     Ethernet pins and internal signals
+Page 2741: Table 502 lists the Ethernet inputs and output signals connected to package pins or balls,
+Page 2741: Table 502. Ethernet peripheral pins
+Page 2741: Pin name
+Page 2742: Table 502. Ethernet peripheral pins (continued)
+Page 2742: Pin name
+Page 2749: 4.   If IEEE 1588 timestamping is enabled and the timestamp is available for the previous
+Page 2754: CRC/Pad Stripping (bit 20 of the Operating mode configuration register
+Page 2754: the Length/Type field and starts dropping bytes (including the FCS field). The state
+Page 2754: stripping for Type packet in Bit 21 of the Operating mode configuration register
+Page 2754: (ETH_MACCR). However, if the CRC stripping has been enabled for Type packets and
+Page 2755: stripping enabled?
+Page 2755: Send only the number of                 CRC stripping for Type                    Receive checksum
+Page 2756: •      Packet filtering and stripping based on any one of the two VLAN Tags in the Receive
+Page 2756: path. Stripping and providing up to two VLAN Tags in the Receive path as a part of the
+Page 2757: stripping        based on the EVLS and EIVLS bits.
+Page 2757: Disabling or skipping
+Page 2775: Refer to Section 57.9.7: Programming guidelines for IEEE 1588 timestamping for detailed
+Page 2785: packets by stopping the MAC transmitter.
+Page 2796: The Reduced media independent interface (RMII) specification reduces the pin count
+Page 2796: 16 pins for data and control. RMII specification reduces the pin count to 7.
+Page 2801: Advanced Micro Device to power up the sleeping device on the network. The MAC receives
+Page 2806: •    Stopping and Starting Transmission (see Section 57.9.5)
+Page 2806: •    Programming Guidelines for IEEE 1588 Timestamping (see Section 57.9.7)
+Page 2809: 57.9.5   Stopping and starting transmission
+Page 2810: 57.9.7      Programming guidelines for IEEE 1588 timestamping
+Page 2810: 2.   Set bit 0 of Timestamp control Register (ETH_MACTSCR) to enable timestamping.
+Page 2810: Timestamp Update registers. If one-step timestamping is required:
+Page 2810: a)   Enable one-step timestamping by programming bit 27 of the TDES3 Context
+Page 2810: 9.   Enable the MAC receiver and transmitter for proper timestamping.
+Page 2829: ping packets.
+Page 2846: address skipping starts from the end of the current descriptor to the start of the next
+Page 2874: Bit 6 DIS_TCP_EF: Disable Dropping of TCP/IP Checksum Error Packets
+Page 2881: Bit 21 CST: CRC stripping for Type packets
+Page 2882: Bit 20 ACS: Automatic Pad or CRC Stripping
+Page 2882: than or equal to 1,536 bytes are passed to the application without stripping the Pad or FCS
+Page 2885: Receive Checksum        Received Packet                                                                     FCS Stripping
+Page 2893: Bits 29:28 EIVLS[1:0]: Enable Inner VLAN Tag Stripping on Receive
+Page 2893: This field indicates the stripping operation on inner VLAN Tag in received packet:
+Page 2894: Bits 22:21 EVLS[1:0]: Enable VLAN Tag Stripping on Receive
+Page 2894: This field indicates the stripping operation on the outer VLAN Tag in received packet:
+Page 2915: Bit 11 OSTEN: One-Step Timestamping Enable
+Page 2945: packets for timestamping in the Receiver.
+Page 2946: For normal time stamping operation, MAC address registers 0 to 31 is considered for unicast
+Page 2961: stopping the PPS output signal generation.
+Page 2961: 11: Target Time registers are programmed only for starting or stopping the PPS output signal
+Page 2963: stopping the PPS output signal generation.
+Page 2963: 11: Target Time registers are programmed only for starting or stopping the PPS output signal
+Page 2979: 58.3.1   HDMI-CEC pin and internal signals
+Page 2979: isolate the CEC pin from the bus in such conditions. This can be done by using a MOS
+Page 2979: Table 558. HDMI pin
+Page 2980: be ignored. The EOM bit may be set in the header block to ‘ping’ other devices, to make
+Page 2990: (PING message)
+Page 2998: port. This allows breakpoint and watchpoint setting, code stepping, memory access
+Page 3000: 59.3.2      Debug infrastructure pins and internal signals
+Page 3000: Table 564. JTAG/Serial-wire debug port pins
+Page 3000: Pin
+Page 3000: Pin name
+Page 3000: Table 565. Trace port pins
+Page 3000: Pin
+Page 3000: Pin name          Type                               Description
+Page 3000: Table 566. Serial-wire trace port pins
+Page 3000: Pin
+Page 3000: Pin name          Type                               Description
+Page 3000: Table 567. Trigger pins
+Page 3000: Pin
+Page 3000: Pin name          Type                               Description
+Page 3002: The debugger supplies the clock for the debug port, SWTCLK, via the debug interface pin,
+Page 3003: •   a 5-pin standard JTAG debug port (JTAG-DP)
+Page 3003: •   a 2-pin (clock + data) “serial-wire” debug port (SW-DP)
+Page 3003: The two modes are mutually exclusive, since they share the same IO pins.
+Page 3004: The Serial wire debug protocol uses two pins:
+Page 3040: of events on the external DBTRIGO pin
+Page 3041: Figure 824. Mapping of trigger inputs to outputs
+Page 3069: •    Stopping
+Page 3069: This is a transitional state while stopping trace capture.
+Page 3070: Stopping
+Page 3072: Stopped state in circular buffer mode and SW FIFO mode, and also in Running and Stopping
+Page 3073: Stopped state in circular buffer mode and SW FIFO mode, and also in Running and Stopping
+Page 3074: 0: Disable trace capture (moves from Running, Stopping or Stopped state into Disabling or
+Page 3090: Using a smaller port width reduces the number of test points/connector pins needed, and
+Page 3091: Bits 31:0 PORTSIZE[31:0]: Indicates supported trace port sizes, from 1 to 32 pins. Bit n-1 when set
+Page 3091: Bit n-1 when set indicates that the current port size is n pins. The value of n must be within
+Page 3096: Bit 2 TCPRESENT: TRACECTL output pin availability
+Page 3096: Indicates whether the optional TRACECTL output pin is available for use.
+Page 3096: 0: TRACECTL pin is not present in this device.
+Page 3108: •     no synchronous trace output, that is, no TRACEDATA or TRACECLK pins
+Page 3109: SWO selected pin protocol register (SWO_SPPR)
+Page 3109: Bits 1:0 PPROT[1:0]: Pin protocol
+Page 3110: Bit 3 FTNONSTOP: Change of settings without stopping formatter
+Page 3110: Bit 2 TCPRESENT: TRACECTL pin present on SWO
+Page 3110: 0: TRACECTL pin not present
+Page 3132: This bit controls the direction of the bi-directional trigger pin, TRGIO.
+Page 3165: 3.        Local timestamping
+Page 3165: 4.        Global system timestamping
+Page 3174: 0: Remapping not supported
+Page 3190: purpose of stopping trace. One bit is provided for each processor comparator input.
+Page 3216: Updated Section 6.3.1: PWR pins and internal signals.
+Page 3217: Event input mapping.
+Page 3218: QUADSPI pins and internal signals. Modified error type for access
+Page 3218: added Section 24.3.2: DLYB pins and internal signals.
+Page 3218: ADC input/output pins. Changed ADC_CLK into adc_ker_ck.
+Page 3219: diagram. Added Section 26.3.2: DAC pins and internal signals..
+Page 3219: Section DCMI pins merged with Section 31.4.4: DCMI physical
+Page 3220: LCD-TFT pins and signal interface renamed LCD-TFT pins and
+Page 3220: (LPTIM4 and LPTIM5). Added Section 43.4.2: LPTIM pins and
+Page 3220: Section 43.4.3: LPTIM input and trigger mapping. Table 340:
+Page 3220: and trigger mapping.
+Page 3221: Added Section 46.3.2: RTC pins and internal signals. Updated
+Page 3221: Table 353: RTC pins and internal signals.
+Page 3222: diagram and added Section 52.3.1: SPDIFRX pins and internal
+Page 3222: pins and internal signals
+Page 3222: Added Section 57.4.2: USB OTG pin and internal signals.
+Page 3224: ADC input/output pins.
+Page 3224: Updated VREF+ range in Table 207: DAC input/output pins
+Page 3225: – TSELx bits: updated information on trigger selection/mapping
+Page 3225: Updated Note 1. in Table 289: External events mapping and
+Page 3229: mapping
+Page 3229: Updated Figure 94: FMC memory banks (default mapping) and
+Page 3229: Table 147: FMC bank mapping options to change Bank 4 to “not
+Page 3233: 29-Jun-2018        5     Specified that bank swapping is not available on STM32H750xB
+Page 3233: devices in Section 3.3.13: Flash bank and register swapping
+Page 3242: M7_PPBROM_PIDR1 . . . . . . . . . . . . . . . . .3147               OTG_DIEPINTx . . . . . . . . . . . . . . . . . . . . . . 2653
+Page 3242: MDIOS_DOUTRx . . . . . . . . . . . . . . . . . . . . .2347          OTG_DOEPINTx . . . . . . . . . . . . . . . . . . . . . 2659

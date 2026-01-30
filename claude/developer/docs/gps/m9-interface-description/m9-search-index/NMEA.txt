@@ -1,0 +1,589 @@
+Keyword: NMEA
+Occurrences: 585
+================================================================================
+
+Page    3: 2 NMEA protocol..................................................................................................................... 21
+Page    3: 2.1 NMEA frame structure........................................................................................................................ 21
+Page    3: 2.2 NMEA protocol conﬁguration.............................................................................................................21
+Page    3: 2.3 NMEA-proprietary messages.............................................................................................................22
+Page    3: 2.4 NMEA multi-GNSS operation.............................................................................................................23
+Page    3: 2.5 NMEA data ﬁelds..................................................................................................................................23
+Page    3: 2.5.1 NMEA Talker ID............................................................................................................................ 23
+Page    3: 2.5.2 NMEA extra ﬁelds........................................................................................................................ 24
+Page    3: 2.5.3 NMEA latitude and longitude format...................................................................................... 24
+Page    3: 2.5.4 NMEA GNSS, satellite, and signal numbering....................................................................... 24
+Page    3: 2.5.5 NMEA position ﬁx ﬂags..............................................................................................................24
+Page    3: 2.5.6 NMEA output of invalid or unknown data.............................................................................. 25
+Page    3: 2.6 NMEA messages overview..................................................................................................................26
+Page    4: 2.8.3.1 Set NMEA message output rate..................................................................................... 42
+Page    5: 3.10.13 UBX-CFG-NMEA (0x06 0x17)............................................................................................... 68
+Page    5: 3.10.13.1 Extended NMEA protocol conﬁguration V1..............................................................68
+Page   12: 5.9.14 CFG-NMEA: NMEA protocol conﬁguration........................................................................219
+Page   14: •   NMEA protocol
+Page   14: the boot screen is output automatically in UBX-INF-NOTICE or NMEA-Standard-TXT messages if
+Page   16: UBX-MON-VER. Similarly, the NMEA-Standard-GGA is the NMEA standard message (sentence) with
+Page   17: satellites will be reported with svId 255. In NMEA messages, the unknown satellites will be
+Page   17: The NMEA protocol (version 4.10 and later) identiﬁes GNSS satellites with a one-digit system ID
+Page   17: and a two-digit satellite number. u-blox receivers support this method in their NMEA output when
+Page   17: changed using the Conﬁguration interface (see also NMEA GNSS, satellite, and signal numbering).
+Page   17: all NMEA protocol versions, an "extended" SV numbering scheme can be enabled. This uses the
+Page   17: NMEA-deﬁned numbers where possible but adds other number ranges to support other GNSS. Note
+Page   17: by some NMEA parsing software. For example, QZSS satellites use numbers in the range 193 to 202.
+Page   17: The NMEA standard deﬁnes signal identiﬁers to distinguish diﬀerent signals sent by a single
+Page   18: Table 1 lists each GNSS along with the GNSS identiﬁer (UBX protocol), the NMEA system identiﬁers
+Page   18: (NMEA protocol), and abbreviations used in this document:
+Page   18: GNSS                    Abbreviations                 UBX gnssId                        NMEA system ID
+Page   18: See also NMEA Talker ID.
+Page   18: scheme for the NMEA protocol is provided in Table 3.
+Page   18: NMEA 2.3 - 4.0                    NMEA 4.10                     NMEA 4.11
+Page   18: 1   While not deﬁned by NMEA 4.10, u-blox receivers in this mode will use system ID 4 for BeiDou and, if extended satellite
+Page   19: NMEA 2.3 - 4.0                  NMEA 4.10                            NMEA 4.11
+Page   19: Table 3: NMEA protocol satellite numbering scheme
+Page   19: A summary of all the signal identiﬁcation schemes used in the NMEA protocol and the UBX protocol
+Page   19: the NMEA protocol, system and signal identiﬁers are in hexadecimal format. An unknown signal
+Page   19: identiﬁer is presented as 0 in the NMEA protocol.
+Page   19: UBX Protocol            NMEA Protocol 4.10                 NMEA Protocol 4.11
+Page   19: 3   While not deﬁned by NMEA 4.10, u-blox receivers in this mode will use system ID 4 for BeiDou and, if extended satellite
+Page   19: 4   BeiDou and QZSS signal ID are not deﬁned in the NMEA protocol version 4.10. Values shown in the table are only valid for
+Page   20: UBX Protocol            NMEA Protocol 4.10          NMEA Protocol 4.11
+Page   21: 2 NMEA protocol
+Page   21: The following sections give an overview of the NMEA messages used by u-blox positioning receivers.
+Page   21: By default, the NMEA messages sent by u-blox positioning receivers are based on the NMEA 0183
+Page   21: version 4.11 standard. For further information on the NMEA standard, refer to the NMEA 0183
+Page   21: on http://www.nmea.org/.
+Page   21: 2.1 NMEA frame structure
+Page   21: The following ﬁgure shows the structure of a NMEA protocol message (called "sentences" in the
+Page   21: 2.2 NMEA protocol conﬁguration
+Page   21: The NMEA protocol on u-blox receivers can be conﬁgured for customer applications by using the
+Page   21: Conﬁguration interface (CFG-NMEA-* items).
+Page   21: Several NMEA standard versions are supported. Version 4.11 (not in all products), 4.10, 4.00, 2.3, or
+Page   21: 2.1 can be conﬁgured. See Conﬁguration defaults for the default version. See CFG-NMEA-PROTVER
+Page   21: to conﬁgure the version. See NMEA multi-GNSS operation and NMEA data ﬁelds for details on how
+Page   21: The following ﬁltering ﬂags can be used to conﬁgure the output of some NMEA message ﬁelds:
+Page   21: Position ﬁltering    CFG-NMEA-OUT_INVFIX         Enable to permit positions from failed or invalid ﬁxes to be
+Page   21: Valid position ﬁltering CFG-NMEA-OUT_MSKFIX      Enable to permit positions from invalid ﬁxes to be reported (with
+Page   21: Time ﬁltering        CFG-NMEA-OUT_INVTIME        Enable to permit the receiver's best knowledge of time to be
+Page   21: UBX-21022436 - R02                            2 NMEA protocol                                        Page 21 of 259
+Page   22: Date ﬁltering         CFG-NMEA-OUT_INVDATE        Enable to permit the receiver's best knowledge of date to be
+Page   22: GPS-only ﬁltering     CFG-NMEA-OUT_ONLYGPS        Enable to restrict output to only report GPS satellites.
+Page   22: Track ﬁltering        CFG-NMEA-OUT_FROZENCOG Enable to permit course over ground (COG) to be reported even
+Page   22: The following ﬁltering ﬂags can be used to conﬁgure the output of some NMEA message ﬂags:
+Page   22: Compatibility mode    CFG-NMEA-COMPAT             Some older NMEA applications expect the NMEA output to be
+Page   22: Consideration mode    CFG-NMEA-CONSIDER           u-blox receivers use a sophisticated signal quality detection
+Page   22: Limit length mode     CFG-NMEA-LIMIT82            Enabling this mode will limit the NMEA sentence length to a
+Page   22: High precision mode   CFG-NMEA-HIGHPREC           Enabling this mode increases precision of the position output.
+Page   22: GNSS to ﬁlter         CFG-NMEA-FILT_GPS etc.      Filters satellites based on the GNSS they belong to.
+Page   22: Satellite numbering   CFG-NMEA-SVNUMBERING        This ﬁeld conﬁgures the display of satellites that do not have an
+Page   22: NMEA-deﬁned value. Note: this does not apply to satellites with
+Page   22: Main Talker ID        CFG-NMEA-MAINTALKERID       By default the main Talker ID (i.e. the Talker ID used for all
+Page   22: overridden. See also NMEA Talker ID.
+Page   22: GSV Talker ID         CFG-NMEA-GSVTALKERID        By default the Talker ID for GSV messages is GNSS-speciﬁc (as
+Page   22: deﬁned by NMEA). This ﬁeld enables the GSV Talker ID to be
+Page   22: BDS Talker ID         CFG-NMEA-BDSTALKERID        By default the Talker ID for BeiDou is "GB". This ﬁeld enables the
+Page   22: 2.3 NMEA-proprietary messages
+Page   22: The NMEA standard allows for proprietary, manufacturer-speciﬁc messages to be added. These
+Page   22: used for all non-standard messages. These proprietary NMEA messages therefore have the address
+Page   22: UBX-21022436 - R02                             2 NMEA protocol                                         Page 22 of 259
+Page   23: 2.4 NMEA multi-GNSS operation
+Page   23: Many applications that process NMEA messages assume that only a single GNSS is active.
+Page   23: However, when multiple GNSS are conﬁgured, the NMEA speciﬁcation requires the output to change
+Page   23: Main Talker ID The main NMEA Talker ID is "GN" (e.g. instead of "GP" for a GPS-only receiver).
+Page   23: GGA Talker IDs The NMEA speciﬁcation indicates that the GGA message is GPS-speciﬁc. However,
+Page   23: BeiDou and Galileo Only NMEA version 4.10 and later have support for these systems.
+Page   23: QZSS Only NMEA version 4.11 and later have support for this system.
+Page   23: not supported by some or all NMEA protocol versions, an "extended" SV numbering scheme can be
+Page   23: enabled. This uses the NMEA-deﬁned numbers where possible, but adds other number ranges to
+Page   23: which may not be supported by some NMEA parsing software. For example, QZSS satellites use
+Page   23: numbers in the range 193 to 202. See NMEA protocol conﬁguration and Satellite identiﬁers.
+Page   23: 2.5 NMEA data ﬁelds
+Page   23: Various data ﬁelds in NMEA messages depend on NMEA protocol conﬁguration or require a
+Page   23: 2.5.1 NMEA Talker ID
+Page   23: One of the ways the NMEA standard diﬀers depending on the GNSS is by using a two-letter message
+Page   23: GPS, SBAS                       GP       NMEA 2.3+
+Page   23: GLONASS                         GL       NMEA 2.3+
+Page   23: Galileo                         GA       NMEA 4.10+
+Page   23: BeiDou                          GB       NMEA 4.10+ (oﬃcial NMEA only since 4.11)
+Page   23: NavIC                           GI       NMEA 4.11+
+Page   23: QZSS                            GQ       NMEA 4.11+ (GP for NMEA 2.3 - 4.10)
+Page   23: UBX-21022436 - R02                           2 NMEA protocol                               Page 23 of 259
+Page   24: 2.5.2 NMEA extra ﬁelds
+Page   24: The following extra ﬁelds are available in NMEA 4.10 and later.
+Page   24: NMEA-Standard-GBS                systemId and signalId
+Page   24: NMEA-Standard-GNS                navStatus
+Page   24: NMEA-Standard-GRS                systemId and signalId
+Page   24: NMEA-Standard-GSA                systemId
+Page   24: NMEA-Standard-GSV                signalId
+Page   24: NMEA-Standard-RMC                navStatus
+Page   24: 2.5.3 NMEA latitude and longitude format
+Page   24: According to the NMEA standard, latitude and longitude are output in the format degrees, minutes
+Page   24: 2.5.4 NMEA GNSS, satellite, and signal numbering
+Page   24: numbered in the NMEA protocol.
+Page   24: NMEA deﬁnes satellite numbering systems for some, but not all GNSS. The exact behavior depends
+Page   24: on the conﬁgured NMEA protocol version and ("extended" or "strict") mode. See NMEA protocol
+Page   24: 2.5.5 NMEA position ﬁx ﬂags
+Page   24: This section shows how u-blox positioning receivers implement the NMEA protocol and the
+Page   24: The following ﬂags are used in NMEA 4.10 and later.
+Page   24: NMEA Message                                                    GLL, RMC           GGA         GLL, VTG        RMC, GNS
+Page   24: GNSS ﬁx, F = RTK ﬂoat, R = RTK ﬁxed. In NMEA GNS, u-blox uses a non-standard implementation where same single
+Page   24: UBX-21022436 - R02                                       2 NMEA protocol                                     Page 24 of 259
+Page   25: NMEA Message                                                       GLL, RMC         GGA          GLL, VTG       RMC, GNS
+Page   25: In high precision GNSS (HPG) products it is recommended to select NMEA version 4.10 or above.
+Page   25: The following ﬂags are used in NMEA 2.3 - 4.0.
+Page   25: NMEA Message                                                       GLL, RMC         GGA            GSA          GLL, VTG,
+Page   25: The ﬂags in NMEA 2.1 and earlier are the same as NMEA 2.3 but with the following diﬀerences:
+Page   25: 2.5.6 NMEA output of invalid or unknown data
+Page   25: NMEA protocol conﬁguration for options to adjust this behavior.
+Page   25: GNSS ﬁx. In NMEA GNS, u-blox uses a non-standard implementation where same single status is reported for all enabled
+Page   25: UBX-21022436 - R02                                        2 NMEA protocol                                      Page 25 of 259
+Page   26: Unlike the NMEA standard behavior to invalid data, dead reckoning products always report a
+Page   26: 2.6 NMEA messages overview
+Page   26: NMEA-Standard – Standard NMEA messages
+Page   26: NMEA-Standard-DTM        0xf0 0x0a   •   Datum reference (Output)
+Page   26: NMEA-Standard-GAQ        0xf0 0x45   •   Poll a standard message (Talker ID GA) (Poll request)
+Page   26: NMEA-Standard-GBQ        0xf0 0x44   •   Poll a standard message (Talker ID GB) (Poll request)
+Page   26: NMEA-Standard-GBS        0xf0 0x09   •   GNSS satellite fault detection (Output)
+Page   26: NMEA-Standard-GGA        0xf0 0x00   •   Global positioning system ﬁx data (Output)
+Page   26: NMEA-Standard-GLL        0xf0 0x01   •   Latitude and longitude, with time of position ﬁx and status (Output)
+Page   26: NMEA-Standard-GLQ        0xf0 0x43   •   Poll a standard message (Talker ID GL) (Poll request)
+Page   26: NMEA-Standard-GNQ        0xf0 0x42   •   Poll a standard message (Talker ID GN) (Poll request)
+Page   26: NMEA-Standard-GNS        0xf0 0x0d   •   GNSS ﬁx data (Output)
+Page   26: NMEA-Standard-GPQ        0xf0 0x40   •   Poll a standard message (Talker ID GP) (Poll request)
+Page   26: NMEA-Standard-GRS        0xf0 0x06   •   GNSS range residuals (Output)
+Page   26: NMEA-Standard-GSA        0xf0 0x02   •   GNSS DOP and active satellites (Output)
+Page   26: NMEA-Standard-GST        0xf0 0x07   •   GNSS pseudorange error statistics (Output)
+Page   26: NMEA-Standard-GSV        0xf0 0x03   •   GNSS satellites in view (Output)
+Page   26: NMEA-Standard-RLM        0xf0 0x0b   •   Return link message (RLM) (Output)
+Page   26: NMEA-Standard-RMC        0xf0 0x04   •   Recommended minimum data (Output)
+Page   26: NMEA-Standard-TXT        0xf0 0x41   •   Text transmission (Output)
+Page   26: NMEA-Standard-VLW        0xf0 0x0f   •   Dual ground/water distance (Output)
+Page   26: NMEA-Standard-VTG        0xf0 0x05   •   Course over ground and ground speed (Output)
+Page   26: NMEA-Standard-ZDA        0xf0 0x08   •   Time and date (Output)
+Page   26: NMEA-PUBX – u-blox proprietary NMEA messages
+Page   26: NMEA-PUBX-CONFIG         0xf1 0x41   •   Set protocols and baud rate (Set)
+Page   26: NMEA-PUBX-POSITION       0xf1 0x00   •   Poll a PUBX,00 message (Poll request)
+Page   26: NMEA-PUBX-RATE           0xf1 0x40   •   Set NMEA message output rate (Set)
+Page   26: NMEA-PUBX-SVSTATUS       0xf1 0x03   •   Poll a PUBX,03 message (Poll request)
+Page   26: NMEA-PUBX-TIME           0xf1 0x04   •   Poll a PUBX,04 message (Poll request)
+Page   26: Standard NMEA messages as deﬁned by the NMEA 0183 standard. See NMEA protocol for details.
+Page   26: UBX-21022436 - R02                             2 NMEA protocol                                      Page 26 of 259
+Page   27: Message           NMEA-Standard-DTM
+Page   27: 0          xxDTM                 string      -           $GPDTM           DTM Message ID (xx = current Talker ID, see NMEA
+Page   27: Message           NMEA-Standard-GAQ
+Page   27: Comment           Polls a standard NMEA message if the current Talker ID is GA.
+Page   27: UBX-21022436 - R02                                           2 NMEA protocol                                        Page 27 of 259
+Page   28: Message           NMEA-Standard-GBQ
+Page   28: Comment           Polls a standard NMEA message if the current Talker ID is GB
+Page   28: Message           NMEA-Standard-GBS
+Page   28: 0          xxGBS                 string      -           $GPGBS           GBS Message ID (xx = current Talker ID, see NMEA
+Page   28: UBX-21022436 - R02                                           2 NMEA protocol                                       Page 28 of 259
+Page   29: 9          systemId           hexadecimal -            1                NMEA-deﬁned GNSS system ID, see Signal Identiﬁers
+Page   29: table (only available in NMEA 4.10 and later)
+Page   29: 10         signalId           hexadecimal -            -                NMEA-deﬁned GNSS signal ID, see Signal Identiﬁers
+Page   29: table (only available in NMEA 4.10 and later)
+Page   29: Message           NMEA-Standard-GGA
+Page   29: ☞ The output of this message is dependent on the currently selected datum (default: WGS84). The NMEA
+Page   29: use, it is recommended that the NMEA-GNS message is used instead.
+Page   29: 0          xxGGA              string       -           $GPGGA           GGA Message ID (xx = current Talker ID, see NMEA
+Page   29: UBX-21022436 - R02                                         2 NMEA protocol                                             Page 29 of 259
+Page   30: Message           NMEA-Standard-GLL
+Page   30: 0          xxGLL                 string      -           $GPGLL           GLL Message ID (xx = current Talker ID, see NMEA Talker
+Page   30: available in NMEA 2.3 and later)
+Page   30: Message           NMEA-Standard-GLQ
+Page   30: Comment           Polls a standard NMEA message if the current Talker ID is GL
+Page   30: UBX-21022436 - R02                                           2 NMEA protocol                                          Page 30 of 259
+Page   31: Message           NMEA-Standard-GNQ
+Page   31: Comment           Polls a standard NMEA message if the current Talker ID is GN
+Page   31: Message           NMEA-Standard-GNS
+Page   31: 0          xxGNS                 string      -           $GPGNS           GNS Message ID (xx = current Talker ID, see NMEA
+Page   31: UBX-21022436 - R02                                           2 NMEA protocol                                       Page 31 of 259
+Page   32: GLONASS, Galileo and BeiDou. Note that the NMEA
+Page   32: only available in NMEA 4.10 and later)
+Page   32: Message           NMEA-Standard-GPQ
+Page   32: Comment           Polls a standard NMEA message if the current Talker ID is GP
+Page   32: UBX-21022436 - R02                                           2 NMEA protocol                                          Page 32 of 259
+Page   33: Message           NMEA-Standard-GRS
+Page   33: residuals of the ﬁrst 12 SVs are output, in order to remain consistent with the NMEA standard.
+Page   33: 0          xxGRS              string        -           $GPGRS           GRS Message ID (xx = current Talker ID, see NMEA
+Page   33: 15         systemId           hexadecimal -             1                NMEA-deﬁned GNSS system ID, see Signal Identiﬁers
+Page   33: table (only available in NMEA 4.10 and later)
+Page   33: 16         signalId           hexadecimal -             -                NMEA-deﬁned GNSS signal ID, see Signal Identiﬁers
+Page   33: table (only available in NMEA 4.10 and later)
+Page   33: Message           NMEA-Standard-GSA
+Page   33: UBX-21022436 - R02                                          2 NMEA protocol                                      Page 33 of 259
+Page   34: 0          xxGSA              string        -           $GPGSA           GSA Message ID (xx = current Talker ID, see NMEA
+Page   34: 18         systemId           hexadecimal -             1                NMEA-deﬁned GNSS system ID, see Signal Identiﬁers
+Page   34: table (only available in NMEA 4.10 and later)
+Page   34: Message           NMEA-Standard-GST
+Page   34: 0          xxGST              string        -           $GPGST           GST Message ID (xx = current Talker ID, see NMEA
+Page   34: UBX-21022436 - R02                                          2 NMEA protocol                                      Page 34 of 259
+Page   35: Message           NMEA-Standard-GSV
+Page   35: 0          xxGSV              string        -            $GPGSV           GSV Message ID (xx = GSV Talker ID, see NMEA Talker
+Page   35: 4 + N·4 signalId              hexadecimal -              -                NMEA-deﬁned GNSS signal ID, see Signal Identiﬁers
+Page   35: table (only available in NMEA 4.10 and later)
+Page   35: Message           NMEA-Standard-RLM
+Page   35: UBX-21022436 - R02                                           2 NMEA protocol                                      Page 35 of 259
+Page   36: 0          xxRLM              string      -           $GARLM           RLM message ID (xx = current Talker ID, see NMEA
+Page   36: Message           NMEA-Standard-RMC
+Page   36: Comment           The recommended minimum sentence deﬁned by NMEA for GNSS system data.
+Page   36: 0          xxRMC              string      -           $GPRMC           RMC Message ID (xx = current Talker ID, see NMEA
+Page   36: UBX-21022436 - R02                                        2 NMEA protocol                                          Page 36 of 259
+Page   37: available in NMEA 2.3 and later)
+Page   37: only available in NMEA 4.10 and later)
+Page   37: Message           NMEA-Standard-TXT
+Page   37: 0          xxTXT              string      -           $GPTXT           TXT Message ID (xx = current Talker ID, see NMEA
+Page   37: UBX-21022436 - R02                                        2 NMEA protocol                                      Page 37 of 259
+Page   38: Message           NMEA-Standard-VLW
+Page   38: 0          xxVLW              string        -           $GPVLW           VLW Message ID (xx = current Talker ID, see NMEA
+Page   38: NMEA 4.00 and later)
+Page   38: miles, ﬁxed ﬁeld, only available in NMEA 4.00 and later)
+Page   38: 7          gd                 numeric       nmi         1.2              Ground distance since reset (only available in NMEA
+Page   38: ﬁxed ﬁeld, only available in NMEA 4.00 and later)
+Page   38: Message           NMEA-Standard-VTG
+Page   38: 0          xxVTG              string        -           $GPVTG           VTG Message ID (xx = current Talker ID, see NMEA
+Page   38: UBX-21022436 - R02                                          2 NMEA protocol                                       Page 38 of 259
+Page   39: available in NMEA 2.3 and later)
+Page   39: Message           NMEA-Standard-ZDA
+Page   39: 0          xxZDA              string       -           $GPZDA           ZDA Message ID (xx = current Talker ID, see NMEA
+Page   39: Proprietary NMEA messages for u-blox positioning receivers. See also NMEA-proprietary messages.
+Page   39: Message           NMEA-PUBX-CONFIG
+Page   39: UBX-21022436 - R02                                         2 NMEA protocol                                     Page 39 of 259
+Page   40: Message           NMEA-PUBX-POSITION
+Page   40: Message           NMEA-PUBX-POSITION
+Page   40: UBX-21022436 - R02                                           2 NMEA protocol                                    Page 40 of 259
+Page   41: UBX-21022436 - R02                                        2 NMEA protocol                                          Page 41 of 259
+Page   42: 2.8.3.1 Set NMEA message output rate
+Page   42: Message           NMEA-PUBX-RATE
+Page   42: Set NMEA message output rate
+Page   42: 2          msgId                 string       -           GLL              NMEA message identiﬁer
+Page   42: Message           NMEA-PUBX-SVSTATUS
+Page   42: UBX-21022436 - R02                                            2 NMEA protocol                                       Page 42 of 259
+Page   43: Message           NMEA-PUBX-SVSTATUS
+Page   43: Message           NMEA-PUBX-TIME
+Page   43: UBX-21022436 - R02                                            2 NMEA protocol                                            Page 43 of 259
+Page   44: Message           NMEA-PUBX-TIME
+Page   44: UBX-21022436 - R02                                        2 NMEA protocol                                      Page 44 of 259
+Page   50: UBX-CFG-NMEA            0x06 0x17   •   Extended NMEA protocol conﬁguration V1 (Get/set)
+Page   61: •   1: NMEA protocol
+Page   62: •   1: NMEA protocol
+Page   64: message is set to 2, the message is sent every second navigation solution. For conﬁguring NMEA
+Page   64: messages, the section NMEA Messages Overview describes class and identiﬁer numbers used.
+Page   68: 3.10.13 UBX-CFG-NMEA (0x06 0x17)
+Page   68: 3.10.13.1 Extended NMEA protocol conﬁguration V1
+Page   68: Message             UBX-CFG-NMEA
+Page   68: Extended NMEA protocol conﬁguration V1
+Page   68: Get/set the NMEA protocol conﬁguration. See section NMEA Protocol Conﬁguration for a detailed description
+Page   68: of the conﬁguration eﬀects on NMEA output.
+Page   68: 1                   U1        nmeaVersion           -           -            •   0x4b = NMEA version 4.11 (not available in all
+Page   68: •   0x41 = NMEA version 4.10 (not available in all
+Page   68: •   0x40 = NMEA version 4.0 (not available in all
+Page   68: •   0x23 = NMEA version 2.3
+Page   68: •   0x21 = NMEA version 2.1
+Page   68: customer's NMEA parser expects a ﬁxed number of
+Page   69: NMEA-deﬁned value.
+Page   69: •   6 = Set main Talker ID to 'GQ' (available in NMEA
+Page   69: speciﬁc (as deﬁned by NMEA).
+Page   69: NMEA)
+Page   74: bit 1   U:1   inNmea         -       -            NMEA protocol
+Page   74: bit 1   U:1   outNmea        -       -            NMEA protocol
+Page   76: bit 1   U:1       inNmea                   -           -            NMEA protocol
+Page   76: bit 1   U:1       outNmea                  -           -            NMEA protocol
+Page   77: bit 1   U:1       inNmea                -           -
+Page   77: bit 1   U:1       outNmea               -           -
+Page   78: bit 1   U:1     inNmea         -       -
+Page   78: bit 1   U:1     outNmea        -       -
+Page  125: array. 0: UBX, 1: NMEA, 2: RTCM2, 5: RTCM3, 6:
+Page  137: after all enabled NAV class messages and after all enabled NMEA messages.
+Page  196: CFG-NMEA                               NMEA protocol conﬁguration
+Page  200: CFG-I2CINPROT-NMEA                   0x10710002       L       -          -     Flag to indicate if NMEA should be an input
+Page  201: CFG-I2COUTPROT-NMEA                  0x10720002       L       -          -     Flag to indicate if NMEA should be an output
+Page  201: Information message conﬁguration for the NMEA and UBX protocols.
+Page  201: CFG-INFMSG-NMEA_I2C                  0x20920006 X1            -          -     Information message enable ﬂags for the NMEA
+Page  201: CFG-INFMSG-NMEA_UART1                0x20920007 X1            -          -     Information message enable ﬂags for the NMEA
+Page  201: CFG-INFMSG-NMEA_UART2                0x20920008 X1            -          -     Information message enable ﬂags for the NMEA
+Page  201: CFG-INFMSG-NMEA_USB                  0x20920009 X1            -          -     Information message enable ﬂags for the NMEA
+Page  201: CFG-INFMSG-NMEA_SPI                  0x2092000a X1            -          -     Information message enable ﬂags for the NMEA
+Page  202: UBX_USB, CFG-INFMSG-UBX_SPI, CFG-INFMSG-NMEA_I2C, CFG-INFMSG-NMEA_UART1, CFG-INFMSG-NMEA_UART2,
+Page  202: CFG-INFMSG-NMEA_USB, CFG-INFMSG-NMEA_SPI
+Page  203: CFG-MSGOUT-NMEA_ID_DTM_I2C           0x209100a6 U1           -        -     Output rate of the NMEA-GX-DTM message on
+Page  203: CFG-MSGOUT-NMEA_ID_DTM_SPI           0x209100aa U1           -        -     Output rate of the NMEA-GX-DTM message on
+Page  203: CFG-MSGOUT-NMEA_ID_DTM_UART1 0x209100a7 U1                   -        -     Output rate of the NMEA-GX-DTM message on
+Page  203: CFG-MSGOUT-NMEA_ID_DTM_UART2 0x209100a8 U1                   -        -     Output rate of the NMEA-GX-DTM message on
+Page  203: CFG-MSGOUT-NMEA_ID_DTM_USB           0x209100a9 U1           -        -     Output rate of the NMEA-GX-DTM message on
+Page  203: CFG-MSGOUT-NMEA_ID_GBS_I2C           0x209100dd U1           -        -     Output rate of the NMEA-GX-GBS message on
+Page  204: CFG-MSGOUT-NMEA_ID_GBS_SPI   0x209100e1 U1       -       -       Output rate of the NMEA-GX-GBS message on
+Page  204: CFG-MSGOUT-NMEA_ID_GBS_UART1 0x209100de U1       -       -       Output rate of the NMEA-GX-GBS message on
+Page  204: CFG-MSGOUT-NMEA_ID_GBS_UART2 0x209100df U1       -       -       Output rate of the NMEA-GX-GBS message on
+Page  204: CFG-MSGOUT-NMEA_ID_GBS_USB   0x209100e0 U1       -       -       Output rate of the NMEA-GX-GBS message on
+Page  204: CFG-MSGOUT-NMEA_ID_GGA_I2C   0x209100ba U1       -       -       Output rate of the NMEA-GX-GGA message on
+Page  204: CFG-MSGOUT-NMEA_ID_GGA_SPI   0x209100be U1       -       -       Output rate of the NMEA-GX-GGA message on
+Page  204: CFG-MSGOUT-NMEA_ID_GGA_UART1 0x209100bb U1       -       -       Output rate of the NMEA-GX-GGA message on
+Page  204: CFG-MSGOUT-NMEA_ID_GGA_UART2 0x209100bc U1       -       -       Output rate of the NMEA-GX-GGA message on
+Page  204: CFG-MSGOUT-NMEA_ID_GGA_USB   0x209100bd U1       -       -       Output rate of the NMEA-GX-GGA message on
+Page  204: CFG-MSGOUT-NMEA_ID_GLL_I2C   0x209100c9 U1       -       -       Output rate of the NMEA-GX-GLL message on
+Page  204: CFG-MSGOUT-NMEA_ID_GLL_SPI   0x209100cd U1       -       -       Output rate of the NMEA-GX-GLL message on
+Page  204: CFG-MSGOUT-NMEA_ID_GLL_UART1 0x209100ca U1       -       -       Output rate of the NMEA-GX-GLL message on
+Page  204: CFG-MSGOUT-NMEA_ID_GLL_UART2 0x209100cb U1       -       -       Output rate of the NMEA-GX-GLL message on
+Page  204: CFG-MSGOUT-NMEA_ID_GLL_USB   0x209100cc U1       -       -       Output rate of the NMEA-GX-GLL message on
+Page  204: CFG-MSGOUT-NMEA_ID_GNS_I2C   0x209100b5 U1       -       -       Output rate of the NMEA-GX-GNS message on
+Page  204: CFG-MSGOUT-NMEA_ID_GNS_SPI   0x209100b9 U1       -       -       Output rate of the NMEA-GX-GNS message on
+Page  204: CFG-MSGOUT-NMEA_ID_GNS_UART1 0x209100b6 U1       -       -       Output rate of the NMEA-GX-GNS message on
+Page  204: CFG-MSGOUT-NMEA_ID_GNS_UART2 0x209100b7 U1       -       -       Output rate of the NMEA-GX-GNS message on
+Page  204: CFG-MSGOUT-NMEA_ID_GNS_USB   0x209100b8 U1       -       -       Output rate of the NMEA-GX-GNS message on
+Page  204: CFG-MSGOUT-NMEA_ID_GRS_I2C   0x209100ce U1       -       -       Output rate of the NMEA-GX-GRS message on
+Page  204: CFG-MSGOUT-NMEA_ID_GRS_SPI   0x209100d2 U1       -       -       Output rate of the NMEA-GX-GRS message on
+Page  204: CFG-MSGOUT-NMEA_ID_GRS_UART1 0x209100cf U1       -       -       Output rate of the NMEA-GX-GRS message on
+Page  204: CFG-MSGOUT-NMEA_ID_GRS_UART2 0x209100d0 U1       -       -       Output rate of the NMEA-GX-GRS message on
+Page  204: CFG-MSGOUT-NMEA_ID_GRS_USB   0x209100d1 U1       -       -       Output rate of the NMEA-GX-GRS message on
+Page  204: CFG-MSGOUT-NMEA_ID_GSA_I2C   0x209100bf U1       -       -       Output rate of the NMEA-GX-GSA message on
+Page  204: CFG-MSGOUT-NMEA_ID_GSA_SPI   0x209100c3 U1       -       -       Output rate of the NMEA-GX-GSA message on
+Page  205: CFG-MSGOUT-NMEA_ID_GSA_UART1 0x209100c0 U1       -       -       Output rate of the NMEA-GX-GSA message on
+Page  205: CFG-MSGOUT-NMEA_ID_GSA_UART2 0x209100c1 U1       -       -       Output rate of the NMEA-GX-GSA message on
+Page  205: CFG-MSGOUT-NMEA_ID_GSA_USB   0x209100c2 U1       -       -       Output rate of the NMEA-GX-GSA message on
+Page  205: CFG-MSGOUT-NMEA_ID_GST_I2C   0x209100d3 U1       -       -       Output rate of the NMEA-GX-GST message on
+Page  205: CFG-MSGOUT-NMEA_ID_GST_SPI   0x209100d7 U1       -       -       Output rate of the NMEA-GX-GST message on
+Page  205: CFG-MSGOUT-NMEA_ID_GST_UART1 0x209100d4 U1       -       -       Output rate of the NMEA-GX-GST message on
+Page  205: CFG-MSGOUT-NMEA_ID_GST_UART2 0x209100d5 U1       -       -       Output rate of the NMEA-GX-GST message on
+Page  205: CFG-MSGOUT-NMEA_ID_GST_USB   0x209100d6 U1       -       -       Output rate of the NMEA-GX-GST message on
+Page  205: CFG-MSGOUT-NMEA_ID_GSV_I2C   0x209100c4 U1       -       -       Output rate of the NMEA-GX-GSV message on
+Page  205: CFG-MSGOUT-NMEA_ID_GSV_SPI   0x209100c8 U1       -       -       Output rate of the NMEA-GX-GSV message on
+Page  205: CFG-MSGOUT-NMEA_ID_GSV_UART1 0x209100c5 U1       -       -       Output rate of the NMEA-GX-GSV message on
+Page  205: CFG-MSGOUT-NMEA_ID_GSV_UART2 0x209100c6 U1       -       -       Output rate of the NMEA-GX-GSV message on
+Page  205: CFG-MSGOUT-NMEA_ID_GSV_USB   0x209100c7 U1       -       -       Output rate of the NMEA-GX-GSV message on
+Page  205: CFG-MSGOUT-NMEA_ID_RLM_I2C   0x20910400 U1       -       -       Output rate of the NMEA-GX-RLM message on
+Page  205: CFG-MSGOUT-NMEA_ID_RLM_SPI   0x20910404 U1       -       -       Output rate of the NMEA-GX-RLM message on
+Page  205: CFG-MSGOUT-NMEA_ID_RLM_UART1 0x20910401 U1       -       -       Output rate of the NMEA-GX-RLM message on
+Page  205: CFG-MSGOUT-NMEA_ID_RLM_UART2 0x20910402 U1       -       -       Output rate of the NMEA-GX-RLM message on
+Page  205: CFG-MSGOUT-NMEA_ID_RLM_USB   0x20910403 U1       -       -       Output rate of the NMEA-GX-RLM message on
+Page  205: CFG-MSGOUT-NMEA_ID_RMC_I2C   0x209100ab U1       -       -       Output rate of the NMEA-GX-RMC message on
+Page  205: CFG-MSGOUT-NMEA_ID_RMC_SPI   0x209100af U1       -       -       Output rate of the NMEA-GX-RMC message on
+Page  205: CFG-MSGOUT-NMEA_ID_RMC_UART1 0x209100ac U1       -       -       Output rate of the NMEA-GX-RMC message on
+Page  205: CFG-MSGOUT-NMEA_ID_RMC_UART2 0x209100ad U1       -       -       Output rate of the NMEA-GX-RMC message on
+Page  205: CFG-MSGOUT-NMEA_ID_RMC_USB   0x209100ae U1       -       -       Output rate of the NMEA-GX-RMC message on
+Page  205: CFG-MSGOUT-NMEA_ID_VLW_I2C   0x209100e7 U1       -       -       Output rate of the NMEA-GX-VLW message on
+Page  205: CFG-MSGOUT-NMEA_ID_VLW_SPI   0x209100eb U1       -       -       Output rate of the NMEA-GX-VLW message on
+Page  205: CFG-MSGOUT-NMEA_ID_VLW_UART1 0x209100e8 U1       -       -       Output rate of the NMEA-GX-VLW message on
+Page  206: CFG-MSGOUT-NMEA_ID_VLW_UART2 0x209100e9 U1         -       -       Output rate of the NMEA-GX-VLW message on
+Page  206: CFG-MSGOUT-NMEA_ID_VLW_USB     0x209100ea U1       -       -       Output rate of the NMEA-GX-VLW message on
+Page  206: CFG-MSGOUT-NMEA_ID_VTG_I2C     0x209100b0 U1       -       -       Output rate of the NMEA-GX-VTG message on
+Page  206: CFG-MSGOUT-NMEA_ID_VTG_SPI     0x209100b4 U1       -       -       Output rate of the NMEA-GX-VTG message on
+Page  206: CFG-MSGOUT-NMEA_ID_VTG_UART1 0x209100b1 U1         -       -       Output rate of the NMEA-GX-VTG message on
+Page  206: CFG-MSGOUT-NMEA_ID_VTG_UART2 0x209100b2 U1         -       -       Output rate of the NMEA-GX-VTG message on
+Page  206: CFG-MSGOUT-NMEA_ID_VTG_USB     0x209100b3 U1       -       -       Output rate of the NMEA-GX-VTG message on
+Page  206: CFG-MSGOUT-NMEA_ID_ZDA_I2C     0x209100d8 U1       -       -       Output rate of the NMEA-GX-ZDA message on
+Page  206: CFG-MSGOUT-NMEA_ID_ZDA_SPI     0x209100dc U1       -       -       Output rate of the NMEA-GX-ZDA message on
+Page  206: CFG-MSGOUT-NMEA_ID_ZDA_UART1 0x209100d9 U1         -       -       Output rate of the NMEA-GX-ZDA message on
+Page  206: CFG-MSGOUT-NMEA_ID_ZDA_UART2 0x209100da U1         -       -       Output rate of the NMEA-GX-ZDA message on
+Page  206: CFG-MSGOUT-NMEA_ID_ZDA_USB     0x209100db U1       -       -       Output rate of the NMEA-GX-ZDA message on
+Page  206: CFG-MSGOUT-PUBX_ID_POLYP_I2C   0x209100ec U1       -       -       Output rate of the NMEA-GX-PUBX00 message
+Page  206: CFG-MSGOUT-PUBX_ID_POLYP_SPI   0x209100f0 U1       -       -       Output rate of the NMEA-GX-PUBX00 message
+Page  206: CFG-MSGOUT-PUBX_ID_POLYP_      0x209100ed U1       -       -       Output rate of the NMEA-GX-PUBX00 message
+Page  206: CFG-MSGOUT-PUBX_ID_POLYP_      0x209100ee U1       -       -       Output rate of the NMEA-GX-PUBX00 message
+Page  206: CFG-MSGOUT-PUBX_ID_POLYP_USB   0x209100ef U1       -       -       Output rate of the NMEA-GX-PUBX00 message
+Page  206: CFG-MSGOUT-PUBX_ID_POLYS_I2C   0x209100f1 U1       -       -       Output rate of the NMEA-GX-PUBX03 message
+Page  206: CFG-MSGOUT-PUBX_ID_POLYS_SPI   0x209100f5 U1       -       -       Output rate of the NMEA-GX-PUBX03 message
+Page  206: CFG-MSGOUT-PUBX_ID_POLYS_      0x209100f2 U1       -       -       Output rate of the NMEA-GX-PUBX03 message
+Page  206: CFG-MSGOUT-PUBX_ID_POLYS_      0x209100f3 U1       -       -       Output rate of the NMEA-GX-PUBX03 message
+Page  206: CFG-MSGOUT-PUBX_ID_POLYS_USB   0x209100f4 U1       -       -       Output rate of the NMEA-GX-PUBX03 message
+Page  206: CFG-MSGOUT-PUBX_ID_POLYT_I2C   0x209100f6 U1       -       -       Output rate of the NMEA-GX-PUBX04 message
+Page  206: CFG-MSGOUT-PUBX_ID_POLYT_SPI   0x209100fa U1       -       -       Output rate of the NMEA-GX-PUBX04 message
+Page  206: CFG-MSGOUT-PUBX_ID_POLYT_      0x209100f7 U1       -       -       Output rate of the NMEA-GX-PUBX04 message
+Page  206: CFG-MSGOUT-PUBX_ID_POLYT_      0x209100f8 U1       -       -       Output rate of the NMEA-GX-PUBX04 message
+Page  207: CFG-MSGOUT-PUBX_ID_POLYT_USB   0x209100f9 U1       -       -       Output rate of the NMEA-GX-PUBX04 message
+Page  219: 5.9.14 CFG-NMEA: NMEA protocol conﬁguration
+Page  219: This group conﬁgures the NMEA protocol. See section NMEA protocol conﬁguration for a detailed
+Page  219: description of the conﬁguration eﬀects on NMEA output.
+Page  220: CFG-NMEA-PROTVER                     0x20930001 E1            -          -     NMEA protocol version
+Page  220: CFG-NMEA-MAXSVS                      0x20930002 E1            -          -     Maximum number of SVs to report per Talker ID
+Page  220: CFG-NMEA-COMPAT                      0x10930003       L       -          -     Enable compatibility mode
+Page  220: This might be needed for certain applications, e.g. for an NMEA parser that expects a ﬁxed number of digits in position
+Page  220: CFG-NMEA-CONSIDER                    0x10930004       L       -          -     Enable considering mode
+Page  220: This will aﬀect NMEA output used satellite count. If set, also considered satellites (e.g. RAIMED) are counted as used
+Page  220: CFG-NMEA-LIMIT82                     0x10930005       L       -          -     Enable strict limit to 82 characters maximum
+Page  220: NMEA message length
+Page  220: CFG-NMEA-HIGHPREC                    0x10930006       L       -          -     Enable high precision mode
+Page  220: This ﬂag cannot be set in conjunction with either CFG-NMEA-COMPAT or CFG-NMEA-LIMIT82 mode.
+Page  220: CFG-NMEA-SVNUMBERING                 0x20930007 E1            -          -     Display conﬁguration for SVs that do not have
+Page  220: value deﬁned in NMEA
+Page  220: Conﬁgures the display of satellites that do not have an NMEA-deﬁned value.
+Page  220: CFG-NMEA-FILT_GPS                    0x10930011       L       -          -     Disable reporting of GPS satellites
+Page  220: CFG-NMEA-FILT_SBAS                   0x10930012       L       -          -     Disable reporting of SBAS satellites
+Page  220: CFG-NMEA-FILT_GAL                    0x10930013       L       -          -     Disable reporting of Galileo satellites
+Page  220: CFG-NMEA-FILT_QZSS                   0x10930015       L       -          -     Disable reporting of QZSS satellites
+Page  220: CFG-NMEA-FILT_GLO                    0x10930016       L       -          -     Disable reporting of GLONASS satellites
+Page  220: CFG-NMEA-FILT_BDS                    0x10930017       L       -          -     Disable reporting of BeiDou satellites
+Page  220: CFG-NMEA-OUT_INVFIX                  0x10930021       L       -          -     Enable position output for failed or invalid ﬁxes
+Page  220: CFG-NMEA-OUT_MSKFIX                  0x10930022       L       -          -     Enable position output for invalid ﬁxes
+Page  220: CFG-NMEA-OUT_INVTIME                 0x10930023       L       -          -     Enable time output for invalid times
+Page  220: CFG-NMEA-OUT_INVDATE                 0x10930024       L       -          -     Enable date output for invalid dates
+Page  220: CFG-NMEA-OUT_ONLYGPS                 0x10930025       L       -          -     Restrict output to GPS satellites only
+Page  220: CFG-NMEA-OUT_FROZENCOG               0x10930026       L       -          -     Enable course over ground output even if it is
+Page  220: CFG-NMEA-MAINTALKERID                0x20930031 E1            -          -     Main Talker ID
+Page  220: CFG-NMEA-GSVTALKERID                 0x20930032 E1            -          -     Talker ID for GSV NMEA messages
+Page  220: By default the Talker ID for GSV messages is GNSS-speciﬁc (as deﬁned by NMEA).
+Page  220: CFG-NMEA-BDSTALKERID                 0x30930033 U2            -          -     BeiDou Talker ID
+Page  221: Table 27: CFG-NMEA conﬁguration items
+Page  221: V21                                   21               NMEA protocol version 2.1
+Page  221: V23                                   23               NMEA protocol version 2.3
+Page  221: V40                                   40               NMEA protocol version 4.0 (not available in all products)
+Page  221: V41                                   41               NMEA protocol version 4.10 (not available in all products)
+Page  221: V411                                  42               NMEA protocol version 4.11 (not available in all products)
+Page  221: Table 28: Constants for CFG-NMEA-PROTVER
+Page  221: Table 29: Constants for CFG-NMEA-MAXSVS
+Page  221: Table 30: Constants for CFG-NMEA-SVNUMBERING
+Page  221: Table 31: Constants for CFG-NMEA-MAINTALKERID
+Page  221: GNSS                                   0               Use GNSS-speciﬁc Talker ID (as deﬁned by NMEA)
+Page  221: Table 32: Constants for CFG-NMEA-GSVTALKERID
+Page  227: CFG-SPIINPROT-NMEA                   0x10790002       L       -          -     Flag to indicate if NMEA should be an input
+Page  227: CFG-SPIOUTPROT-NMEA                  0x107a0002       L       -          -     Flag to indicate if NMEA should be an output
+Page  231: CFG-UART1INPROT-NMEA                    0x10730002       L       -          -     Flag to indicate if NMEA should be an input
+Page  232: CFG-UART1OUTPROT-NMEA                0x10740002       L       -          -     Flag to indicate if NMEA should be an output
+Page  233: CFG-UART2INPROT-NMEA            0x10750002      L       -       -       Flag to indicate if NMEA should be an input
+Page  233: CFG-UART2OUTPROT-NMEA           0x10760002      L       -       -       Flag to indicate if NMEA should be an output
+Page  234: CFG-USBINPROT-NMEA               0x10770002     L       -         -     Flag to indicate if NMEA should be an input
+Page  234: CFG-USBOUTPROT-NMEA              0x10780002     L       -         -     Flag to indicate if NMEA should be an output
+Page  235: INFMSG-UBX_SPI, CFG-INFMSG-NMEA_I2C, CFG-INFMSG-
+Page  235: NMEA_UART1, CFG-INFMSG-NMEA_UART2, CFG-INFMSG-
+Page  235: NMEA_USB, CFG-INFMSG-NMEA_SPI
+Page  235: NMEA_I2C, CFG-INFMSG-NMEA_UART1, CFG-INFMSG-
+Page  235: NMEA_UART2, CFG-INFMSG-NMEA_USB, CFG-INFMSG-
+Page  235: NMEA_SPI
+Page  236: UBX-CFG-NMEA
+Page  236: UBX-CFG-NMEA.bdsTalkerId                               CFG-NMEA-BDSTALKERID
+Page  236: UBX-CFG-NMEA.beidou                                    CFG-NMEA-FILT_BDS
+Page  236: UBX-CFG-NMEA.compat                                    CFG-NMEA-COMPAT
+Page  236: UBX-CFG-NMEA.consider                                  CFG-NMEA-CONSIDER
+Page  236: UBX-CFG-NMEA.dateFilt                                  CFG-NMEA-OUT_INVDATE
+Page  236: UBX-CFG-NMEA.galileo                                   CFG-NMEA-FILT_GAL
+Page  237: UBX-CFG-NMEA.glonass                         CFG-NMEA-FILT_GLO
+Page  237: UBX-CFG-NMEA.gps                             CFG-NMEA-FILT_GPS
+Page  237: UBX-CFG-NMEA.gpsOnlyFilter                   CFG-NMEA-OUT_ONLYGPS
+Page  237: UBX-CFG-NMEA.gsvTalkerId                     CFG-NMEA-GSVTALKERID
+Page  237: UBX-CFG-NMEA.highPrec                        CFG-NMEA-HIGHPREC
+Page  237: UBX-CFG-NMEA.limit82                         CFG-NMEA-LIMIT82
+Page  237: UBX-CFG-NMEA.mainTalkerId                    CFG-NMEA-MAINTALKERID
+Page  237: UBX-CFG-NMEA.mskPosFilt                      CFG-NMEA-OUT_MSKFIX
+Page  237: UBX-CFG-NMEA.nmeaVersion                     CFG-NMEA-PROTVER
+Page  237: UBX-CFG-NMEA.numSV                           CFG-NMEA-MAXSVS
+Page  237: UBX-CFG-NMEA.posFilt                         CFG-NMEA-OUT_INVFIX
+Page  237: UBX-CFG-NMEA.qzss                            CFG-NMEA-FILT_QZSS
+Page  237: UBX-CFG-NMEA.sbas                            CFG-NMEA-FILT_SBAS
+Page  237: UBX-CFG-NMEA.svNumbering                     CFG-NMEA-SVNUMBERING
+Page  237: UBX-CFG-NMEA.timeFilt                        CFG-NMEA-OUT_INVTIME
+Page  237: UBX-CFG-NMEA.trackFilt                       CFG-NMEA-OUT_FROZENCOG
+Page  237: UBX-CFG-PRT.inNmea                           CFG-I2CINPROT-NMEA
+Page  237: UBX-CFG-PRT.outNmea                          CFG-I2COUTPROT-NMEA
+Page  238: UBX-CFG-PRT.inNmea                          CFG-SPIINPROT-NMEA
+Page  238: UBX-CFG-PRT.outNmea                         CFG-SPIOUTPROT-NMEA
+Page  238: UBX-CFG-PRT.inNmea                          CFG-UART1INPROT-NMEA, CFG-UART2INPROT-NMEA
+Page  238: UBX-CFG-PRT.outNmea                         CFG-UART1OUTPROT-NMEA, CFG-UART2OUTPROT-NMEA
+Page  238: UBX-CFG-PRT.inNmea                          CFG-USBINPROT-NMEA
+Page  238: UBX-CFG-PRT.outNmea                         CFG-USBOUTPROT-NMEA
+Page  241: CFG-I2CINPROT-NMEA                                   0x10710002    L        -      -            1 (true)
+Page  241: CFG-I2COUTPROT-NMEA                                  0x10720002    L        -      -            1 (true)
+Page  241: CFG-INFMSG-NMEA_I2C                                  0x20920006 X1          -      -         0x07 (ERROR |
+Page  241: CFG-INFMSG-NMEA_UART1                                0x20920007 X1          -      -         0x07 (ERROR |
+Page  242: CFG-INFMSG-NMEA_UART2                                0x20920008 X1          -      -         0x07 (ERROR |
+Page  242: CFG-INFMSG-NMEA_USB                                  0x20920009 X1          -      -         0x07 (ERROR |
+Page  242: CFG-INFMSG-NMEA_SPI                                  0x2092000a X1          -      -         0x07 (ERROR |
+Page  242: CFG-MSGOUT-NMEA_ID_DTM_I2C                           0x209100a6 U1          -      -               0
+Page  242: CFG-MSGOUT-NMEA_ID_DTM_SPI                           0x209100aa U1          -      -               0
+Page  242: CFG-MSGOUT-NMEA_ID_DTM_UART1                         0x209100a7 U1          -      -               0
+Page  242: CFG-MSGOUT-NMEA_ID_DTM_UART2                         0x209100a8 U1          -      -               0
+Page  242: CFG-MSGOUT-NMEA_ID_DTM_USB                           0x209100a9 U1          -      -               0
+Page  242: CFG-MSGOUT-NMEA_ID_GBS_I2C                           0x209100dd U1          -      -               0
+Page  242: CFG-MSGOUT-NMEA_ID_GBS_SPI                           0x209100e1 U1          -      -               0
+Page  242: CFG-MSGOUT-NMEA_ID_GBS_UART1                         0x209100de U1          -      -               0
+Page  242: CFG-MSGOUT-NMEA_ID_GBS_UART2                         0x209100df U1          -      -               0
+Page  242: CFG-MSGOUT-NMEA_ID_GBS_USB                           0x209100e0 U1          -      -               0
+Page  242: CFG-MSGOUT-NMEA_ID_GGA_I2C                           0x209100ba U1          -      -               1
+Page  242: CFG-MSGOUT-NMEA_ID_GGA_SPI                           0x209100be U1          -      -               1
+Page  242: CFG-MSGOUT-NMEA_ID_GGA_UART1                         0x209100bb U1          -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GGA_UART2        0x209100bc U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GGA_USB          0x209100bd U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GLL_I2C          0x209100c9 U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GLL_SPI          0x209100cd U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GLL_UART1        0x209100ca U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GLL_UART2        0x209100cb U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GLL_USB          0x209100cc U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GNS_I2C          0x209100b5 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GNS_SPI          0x209100b9 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GNS_UART1        0x209100b6 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GNS_UART2        0x209100b7 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GNS_USB          0x209100b8 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GRS_I2C          0x209100ce U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GRS_SPI          0x209100d2 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GRS_UART1        0x209100cf U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GRS_UART2        0x209100d0 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GRS_USB          0x209100d1 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GSA_I2C          0x209100bf U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GSA_SPI          0x209100c3 U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GSA_UART1        0x209100c0 U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GSA_UART2        0x209100c1 U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GSA_USB          0x209100c2 U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GST_I2C          0x209100d3 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GST_SPI          0x209100d7 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GST_UART1        0x209100d4 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GST_UART2        0x209100d5 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GST_USB          0x209100d6 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GSV_I2C          0x209100c4 U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GSV_SPI          0x209100c8 U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GSV_UART1        0x209100c5 U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GSV_UART2        0x209100c6 U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GSV_USB          0x209100c7 U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_RLM_I2C          0x20910400 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_RLM_SPI          0x20910404 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_RLM_UART1        0x20910401 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_RLM_UART2        0x20910402 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_RLM_USB          0x20910403 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_RMC_I2C          0x209100ab U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_RMC_SPI          0x209100af U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_RMC_UART1        0x209100ac U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_RMC_UART2        0x209100ad U1         -      -               1
+Page  244: CFG-MSGOUT-NMEA_ID_RMC_USB            0x209100ae U1         -      -               1
+Page  244: CFG-MSGOUT-NMEA_ID_VLW_I2C            0x209100e7 U1         -      -               0
+Page  244: CFG-MSGOUT-NMEA_ID_VLW_SPI            0x209100eb U1         -      -               0
+Page  244: CFG-MSGOUT-NMEA_ID_VLW_UART1          0x209100e8 U1         -      -               0
+Page  244: CFG-MSGOUT-NMEA_ID_VLW_UART2          0x209100e9 U1         -      -               0
+Page  244: CFG-MSGOUT-NMEA_ID_VLW_USB            0x209100ea U1         -      -               0
+Page  244: CFG-MSGOUT-NMEA_ID_VTG_I2C            0x209100b0 U1         -      -               1
+Page  244: CFG-MSGOUT-NMEA_ID_VTG_SPI            0x209100b4 U1         -      -               1
+Page  244: CFG-MSGOUT-NMEA_ID_VTG_UART1          0x209100b1 U1         -      -               1
+Page  244: CFG-MSGOUT-NMEA_ID_VTG_UART2          0x209100b2 U1         -      -               1
+Page  244: CFG-MSGOUT-NMEA_ID_VTG_USB            0x209100b3 U1         -      -               1
+Page  244: CFG-MSGOUT-NMEA_ID_ZDA_I2C            0x209100d8 U1         -      -               0
+Page  244: CFG-MSGOUT-NMEA_ID_ZDA_SPI            0x209100dc U1         -      -               0
+Page  244: CFG-MSGOUT-NMEA_ID_ZDA_UART1          0x209100d9 U1         -      -               0
+Page  244: CFG-MSGOUT-NMEA_ID_ZDA_UART2          0x209100da U1         -      -               0
+Page  244: CFG-MSGOUT-NMEA_ID_ZDA_USB            0x209100db U1         -      -               0
+Page  251: CFG-NMEA-PROTVER                                  0x20930001 E1          -       -           41 (V41)
+Page  251: CFG-NMEA-MAXSVS                                   0x20930002 E1          -       -          0 (UNLIM)
+Page  251: CFG-NMEA-COMPAT                                   0x10930003    L        -       -           0 (false)
+Page  251: CFG-NMEA-CONSIDER                                 0x10930004    L        -       -           1 (true)
+Page  251: CFG-NMEA-LIMIT82                                  0x10930005    L        -       -           0 (false)
+Page  251: CFG-NMEA-HIGHPREC                                 0x10930006    L        -       -           0 (false)
+Page  251: CFG-NMEA-SVNUMBERING                              0x20930007 E1          -       -          0 (STRICT)
+Page  251: CFG-NMEA-FILT_GPS                                 0x10930011    L        -       -           0 (false)
+Page  251: CFG-NMEA-FILT_SBAS                                0x10930012    L        -       -           0 (false)
+Page  251: CFG-NMEA-FILT_GAL                                 0x10930013    L        -       -           0 (false)
+Page  251: CFG-NMEA-FILT_QZSS                                0x10930015    L        -       -           0 (false)
+Page  251: CFG-NMEA-FILT_GLO                                 0x10930016    L        -       -           0 (false)
+Page  251: CFG-NMEA-FILT_BDS                                 0x10930017    L        -       -           0 (false)
+Page  251: CFG-NMEA-OUT_INVFIX                               0x10930021    L        -       -           0 (false)
+Page  251: CFG-NMEA-OUT_MSKFIX                               0x10930022    L        -       -           0 (false)
+Page  251: CFG-NMEA-OUT_INVTIME                              0x10930023    L        -       -           0 (false)
+Page  251: CFG-NMEA-OUT_INVDATE                              0x10930024    L        -       -           0 (false)
+Page  251: CFG-NMEA-OUT_ONLYGPS                              0x10930025    L        -       -           0 (false)
+Page  251: CFG-NMEA-OUT_FROZENCOG                            0x10930026    L        -       -           0 (false)
+Page  251: CFG-NMEA-MAINTALKERID                             0x20930031 E1          -       -           0 (AUTO)
+Page  251: CFG-NMEA-GSVTALKERID                              0x20930032 E1          -       -           0 (GNSS)
+Page  251: CFG-NMEA-BDSTALKERID                              0x30930033 U2          -       -              0
+Page  251: Table 85: CFG-NMEA conﬁguration defaults
+Page  253: CFG-SPIINPROT-NMEA                                   0x10790002    L        -      -            1 (true)
+Page  253: CFG-SPIOUTPROT-NMEA                                  0x107a0002    L        -      -            1 (true)
+Page  255: CFG-UART1INPROT-NMEA                               0x10730002    L        -      -            1 (true)
+Page  255: CFG-UART1OUTPROT-NMEA                              0x10740002    L        -      -            1 (true)
+Page  255: CFG-UART2INPROT-NMEA                               0x10750002    L        -      -            1 (true)
+Page  255: CFG-UART2OUTPROT-NMEA                              0x10760002    L        -      -            0 (false)
+Page  256: CFG-USBINPROT-NMEA                                0x10770002    L        -      -            1 (true)
+Page  256: CFG-USBOUTPROT-NMEA                               0x10780002    L        -      -            1 (true)
+Page  258: - Explained the grouping of the NMEA GSV messages by the Talker and

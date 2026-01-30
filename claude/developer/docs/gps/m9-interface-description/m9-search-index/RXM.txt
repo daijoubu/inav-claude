@@ -1,0 +1,88 @@
+Keyword: RXM
+Occurrences: 84
+================================================================================
+
+Page    6: 3.10.22 UBX-CFG-RXM (0x06 0x11).................................................................................................. 81
+Page    6: 3.10.22.1 RXM conﬁguration......................................................................................................... 81
+Page    9: 3.16 UBX-RXM (0x02).............................................................................................................................. 157
+Page    9: 3.16.1 UBX-RXM-MEASX (0x02 0x14)............................................................................................ 157
+Page    9: 3.16.2 UBX-RXM-PMREQ (0x02 0x41)............................................................................................158
+Page    9: 3.16.3 UBX-RXM-RLM (0x02 0x59)................................................................................................. 159
+Page   10: 3.16.4 UBX-RXM-RTCM (0x02 0x32)...............................................................................................160
+Page   10: 3.16.5 UBX-RXM-SFRBX (0x02 0x13)............................................................................................. 161
+Page   51: UBX-CFG-RXM              0x06 0x11   •   RXM conﬁguration (Get/set)
+Page   53: UBX-RXM – Receiver manager messages
+Page   53: UBX-RXM-MEASX            0x02 0x14    •   Satellite measurements for RRLP (Periodic/polled)
+Page   53: UBX-RXM-PMREQ            0x02 0x41    •   Power management request (Command)
+Page   53: UBX-RXM-RLM              0x02 0x59    •   Galileo SAR short-RLM report (Output)
+Page   53: UBX-RXM-RTCM             0x02 0x32    •   RTCM input status (Output)
+Page   53: UBX-RXM-SFRBX            0x02 0x13    •   Broadcast navigation data subframe (Output)
+Page   79: and UBX-RXM-PMREQ for software backup.
+Page   81: 3.10.22 UBX-CFG-RXM (0x06 0x11)
+Page   81: 3.10.22.1 RXM conﬁguration
+Page   81: Message             UBX-CFG-RXM
+Page   81: RXM conﬁguration
+Page  157: 3.16 UBX-RXM (0x02)
+Page  157: The messages in the UBX-RXM class are used to output status and result data from the receiver
+Page  157: 3.16.1 UBX-RXM-MEASX (0x02 0x14)
+Page  157: Message       UBX-RXM-MEASX
+Page  158: 3.16.2 UBX-RXM-PMREQ (0x02 0x41)
+Page  158: Message           UBX-RXM-PMREQ
+Page  159: Message             UBX-RXM-PMREQ
+Page  159: 3.16.3 UBX-RXM-RLM (0x02 0x59)
+Page  159: Message             UBX-RXM-RLM
+Page  160: Message       UBX-RXM-RLM
+Page  160: 3.16.4 UBX-RXM-RTCM (0x02 0x32)
+Page  160: Message       UBX-RXM-RTCM
+Page  161: 3.16.5 UBX-RXM-SFRBX (0x02 0x13)
+Page  161: Message             UBX-RXM-SFRBX
+Page  214: CFG-MSGOUT-UBX_RXM_MEASX_I2C 0x20910204 U1        -       -       Output rate of the UBX-RXM-MEASX message
+Page  214: CFG-MSGOUT-UBX_RXM_MEASX_SPI 0x20910208 U1        -       -       Output rate of the UBX-RXM-MEASX message
+Page  214: CFG-MSGOUT-UBX_RXM_MEASX_     0x20910205 U1       -       -       Output rate of the UBX-RXM-MEASX message
+Page  214: CFG-MSGOUT-UBX_RXM_MEASX_     0x20910206 U1       -       -       Output rate of the UBX-RXM-MEASX message
+Page  214: CFG-MSGOUT-UBX_RXM_MEASX_     0x20910207 U1       -       -       Output rate of the UBX-RXM-MEASX message
+Page  214: CFG-MSGOUT-UBX_RXM_RAWX_I2C   0x209102a4 U1       -       -       Output rate of the UBX-RXM-RAWX message on
+Page  214: CFG-MSGOUT-UBX_RXM_RAWX_SPI   0x209102a8 U1       -       -       Output rate of the UBX-RXM-RAWX message on
+Page  214: CFG-MSGOUT-UBX_RXM_RAWX_      0x209102a5 U1       -       -       Output rate of the UBX-RXM-RAWX message on
+Page  214: CFG-MSGOUT-UBX_RXM_RAWX_      0x209102a6 U1       -       -       Output rate of the UBX-RXM-RAWX message on
+Page  214: CFG-MSGOUT-UBX_RXM_RAWX_USB 0x209102a7 U1         -       -       Output rate of the UBX-RXM-RAWX message on
+Page  214: CFG-MSGOUT-UBX_RXM_RLM_I2C    0x2091025e U1       -       -       Output rate of the UBX-RXM-RLM message on
+Page  214: CFG-MSGOUT-UBX_RXM_RLM_SPI    0x20910262 U1       -       -       Output rate of the UBX-RXM-RLM message on
+Page  214: CFG-MSGOUT-UBX_RXM_RLM_       0x2091025f U1       -       -       Output rate of the UBX-RXM-RLM message on
+Page  214: CFG-MSGOUT-UBX_RXM_RLM_       0x20910260 U1       -       -       Output rate of the UBX-RXM-RLM message on
+Page  214: CFG-MSGOUT-UBX_RXM_RLM_USB    0x20910261 U1       -       -       Output rate of the UBX-RXM-RLM message on
+Page  214: CFG-MSGOUT-UBX_RXM_RTCM_I2C   0x20910268 U1       -       -       Output rate of the UBX-RXM-RTCM message on
+Page  214: CFG-MSGOUT-UBX_RXM_RTCM_SPI   0x2091026c U1       -       -       Output rate of the UBX-RXM-RTCM message on
+Page  214: CFG-MSGOUT-UBX_RXM_RTCM_      0x20910269 U1       -       -       Output rate of the UBX-RXM-RTCM message on
+Page  214: CFG-MSGOUT-UBX_RXM_RTCM_      0x2091026a U1       -       -       Output rate of the UBX-RXM-RTCM message on
+Page  214: CFG-MSGOUT-UBX_RXM_RTCM_USB 0x2091026b U1         -       -       Output rate of the UBX-RXM-RTCM message on
+Page  214: CFG-MSGOUT-UBX_RXM_SFRBX_I2C 0x20910231 U1        -       -       Output rate of the UBX-RXM-SFRBX message
+Page  214: CFG-MSGOUT-UBX_RXM_SFRBX_SPI 0x20910235 U1        -       -       Output rate of the UBX-RXM-SFRBX message
+Page  215: CFG-MSGOUT-UBX_RXM_SFRBX_            0x20910232 U1            -          -     Output rate of the UBX-RXM-SFRBX message
+Page  215: CFG-MSGOUT-UBX_RXM_SFRBX_            0x20910233 U1            -          -     Output rate of the UBX-RXM-SFRBX message
+Page  215: CFG-MSGOUT-UBX_RXM_SFRBX_USB 0x20910234 U1                    -          -     Output rate of the UBX-RXM-SFRBX message
+Page  249: CFG-MSGOUT-UBX_RXM_MEASX_I2C            0x20910204 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_MEASX_SPI            0x20910208 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_MEASX_UART1          0x20910205 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_MEASX_UART2          0x20910206 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_MEASX_USB            0x20910207 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RAWX_I2C             0x209102a4 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RAWX_SPI             0x209102a8 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RAWX_UART1           0x209102a5 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RAWX_UART2           0x209102a6 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RAWX_USB             0x209102a7 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RLM_I2C              0x2091025e U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RLM_SPI              0x20910262 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RLM_UART1            0x2091025f U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RLM_UART2            0x20910260 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RLM_USB              0x20910261 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RTCM_I2C             0x20910268 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RTCM_SPI             0x2091026c U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RTCM_UART1           0x20910269 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RTCM_UART2           0x2091026a U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RTCM_USB             0x2091026b U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_SFRBX_I2C            0x20910231 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_SFRBX_SPI            0x20910235 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_SFRBX_UART1          0x20910232 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_SFRBX_UART2          0x20910233 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_SFRBX_USB            0x20910234 U1         -      -               0

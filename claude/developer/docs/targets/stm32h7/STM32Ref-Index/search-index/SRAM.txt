@@ -1,0 +1,329 @@
+Keyword: SRAM
+Occurrences: 325
+================================================================================
+
+Page    2: 2.4     Embedded SRAM . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 130
+Page   20: 21.6.1      NOR/PSRAM address mapping . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 783
+Page   20: 21.7    NOR Flash/PSRAM controller . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 787
+Page   20: 21.7.4      NOR Flash/PSRAM controller asynchronous transactions . . . . . . . . . 792
+Page   20: 21.7.6      NOR/PSRAM controller registers . . . . . . . . . . . . . . . . . . . . . . . . . . . . 818
+Page   70: Table 148.   NOR/PSRAM bank selection . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 783
+Page   70: Table 149.   NOR/PSRAM External memory address . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 783
+Page   71: Table 157.   Programmable NOR/PSRAM access parameters . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 788
+Page   71: Table 160.   Non-multiplexed I/Os PSRAM/SRAM . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 790
+Page   71: Table 161.   16-Bit multiplexed I/O PSRAM . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 790
+Page   71: Table 162.   NOR Flash/PSRAM: Example of supported memories and transactions . . . . . . . . . . . . . 791
+Page   80: Figure 36.   Timing diagram of SRAM4-to-LPUART1 transfer with BDMA and D3 domain
+Page   82: Figure 111. Synchronous multiplexed read mode waveforms - NOR, PSRAM (CRAM) . . . . . . . . . . . 814
+Page   82: Figure 112. Synchronous multiplexed write mode waveforms - PSRAM (CRAM). . . . . . . . . . . . . . . . 816
+Page   99: AXI SRAM                  X                   -                  -                    -          X          X              -           X       X        X             X              X             X               X                X              X             X               -
+Page   99: SRAM 1                   X                   -                  -                    -           -         X              -           X       -        X             X              X             X               X                X              X             X               -
+Page   99: SRAM 2                   X                   -                  -                    -           -         X              -           X       -        X             X              X             X               X                X              X             X               -
+Page   99: SRAM 3                   X                   -                  -                    -           -         X              -           X       -        X             X              X             X               X                X              X             X               -
+Page   99: SRAM4                    X                   -                  -                    -           -         X              -            -      -        X             X              X             X               X                X              X             X              X
+Page  100: SRAM
+Page  103: access internal AXI SRAM and Flash memories, and external memories through the Quad-
+Page  103: the system bus matrices, it can access the internal AXI SRAM, SRAM1, SRAM2, SRAM3
+Page  103: access the internal SRAM4, backup RAM, and AHB4 and APB4 peripherals through the
+Page  103: Through the system bus matrices, internal AXI SRAM, SRAM1, SRAM2, SRAM3 and Flash
+Page  104: through which it can access internal AXI SRAM and Flash memories, and external
+Page  104: for the SRAM, DTCM, ITCM and Flash memory). To operate a block with no clock upon
+Page  105: Slaves:      bridge        bridge                                                                                    SRAM
+Page  106: TARG 7                         AXI SRAM                         AXI3           64            2/2/2
+Page  124: -     FMC SDRAM Bank1 (or remap of FMC NOR/PSRAM/SRAM 4 Bank1)
+Page  124: FMC SDRAM Bank1 (or remap of FMC NOR/PSRAM/SRAM 3 Bank1)
+Page  124: FMC SDRAM Bank1 (or remap of FMC NOR/PSRAM/SRAM 2 Bank1)
+Page  124: FMC SDRAM Bank1 (or remap of FMC NOR/PSRAM/SRAM 1 Bank1)
+Page  124: FMC NOR/PSRAM/SRAM 4 Bank1 (or remap of FMC SDRAM Bank1) Normal             Write-       No
+Page  124: FMC NOR/PSRAM/SRAM 3 Bank1 (or remap of FMC SDRAM Bank1)
+Page  124: FMC NOR/PSRAM/SRAM 2 Bank1 (or remap of FMC SDRAM Bank1)
+Page  124: FMC NOR/PSRAM/SRAM 1 Bank1 (or remap of FMC SDRAM Bank1)
+Page  125: Backup SRAM
+Page  125: SRAM4
+Page  125: SRAM3
+Page  125: SRAM2                                    cache
+Page  125: SRAM1
+Page  125: AXI SRAM
+Page  127: AHB3   Section 21.7.6: NOR/PSRAM controller registers,
+Page  130: 2.4        Embedded SRAM
+Page  130: •   Up to 864 Kbytes of System SRAM
+Page  130: •   4 Kbytes of backup SRAM
+Page  130: The embedded system SRAM is divided into up to five blocks over the three power
+Page  130: •   D1 domain, AXI SRAM:
+Page  130: –    AXI SRAM is mapped at address 0x2400 0000 and accessible by all system
+Page  130: masters except BDMA through D1 domain AXI bus matrix. AXI SRAM can be
+Page  130: •   D2 domain, AHB SRAM:
+Page  130: –    AHB SRAM1 is mapped at address 0x3000 0000 and accessible by all system
+Page  130: masters except BDMA through D2 domain AHB matrix. AHB SRAM1 can be used
+Page  130: –    AHB SRAM2 is mapped at address 0x3002 0000 and accessible by all system
+Page  130: masters except BDMA through D2 domain AHB matrix. AHB SRAM2 can be used
+Page  130: –    AHB SRAM3 is mapped at address 0x3004 0000 and accessible by all system
+Page  130: masters except BDMA through D2 domain AHB matrix. AHB SRAM3 can be used
+Page  130: •   D3 domain, AHB SRAM:
+Page  130: –    AHB SRAM4 is mapped at address 0x3800 0000 and accessible by most of
+Page  130: system masters through D3 domain AHB matrix. AHB SRAM4 can be used as
+Page  130: The system AHB SRAM can be accessed as bytes, half-words (16-bit units) or words (32-bit
+Page  130: units), while the system AXI SRAM can be accessed as bytes, half-words, words or double-
+Page  130: The AHB masters can read/write-access an SRAM section concurrently with the Ethernet
+Page  130: MAC or the USB OTG HS peripheral accessing another SRAM section. For example, the
+Page  130: Ethernet MAC accesses the SRAM2 while the CPU accesses the SRAM1, concurrently.
+Page  130: The TCM SRAMs are dedicated to the Cortex®-M7:
+Page  131: the backup SRAM can be used to retain data during low-power mode (Standby and VBAT
+Page  131: SRAM data are protected by ECC:
+Page  131: •   8 ECC bits are added per 64-bit word for AXI-SRAM and ITCM-RAM.
+Page  132: •   All RAM address space: ITCM, DTCM RAMs and SRAMs
+Page  168: •    Backup SRAM
+Page  171: •    The other secured regions are also erased (Backup SRAM and RTC backup registers)
+Page  231: backup SRAM can be performed when the debugger is
+Page  231: backup SRAM)          Protection level 2:
+Page  282: oscillator, CSI oscillator, HSI48 and the HSE oscillator are also switched off. SRAM and
+Page  285: 0: Access to RTC, RTC Backup registers and backup SRAM disabled
+Page  285: 1: Access to RTC, RTC Backup registers and backup SRAM enabled
+Page  287: to indicate that the data written into the SRAM will be maintained in Standby and VBAT
+Page  298: The D3 domain features 64 Kbytes of SRAM (SRAM4), which can be used to retain data
+Page  298: Note:      SRAM4 remains available as long as the system is not in Standby mode.
+Page  298: If the system is in Standby mode, it is still possible to use the BKUP_SRAM. However, its
+Page  298: Run mode, it prepares the data to be transmitted via LPUART1, transfers them to SRAM4,
+Page  298: 3.   Transfer the data into SRAM4 (XFER).
+Page  298: 1.   Transfer the data from SRAM4 to LPUART1, using BDMA.
+Page  299: Figure 36. Timing diagram of SRAM4-to-LPUART1 transfer with BDMA and D3 domain
+Page  299: RECO   Recover from the CStandby               XFER   Transfer of processed data to SRAM4
+Page  300: •   A BDMA channel, such as channel 0, is used to transfer data from SRAM4 to
+Page  302: MA of BDMA_CMAR0 = &DatBuff            Address of memory buffer of SRAM4.
+Page  302: MA of BDMA_CMAR7 = &DatClrTC           Address of a variable located into SRAM4. This variable
+Page  303: 3.   The CPU processes the data to be transferred and copies them to SRAM4.
+Page  303: data stored in SRAM4 are retained while the D1 domain is in DStandby mode.
+Page  304: e)    Process the next data block and transfers them to SRAM4,
+Page  346: •    The CPU enabled SDMMC1, SPI5 and SRAM1, AXISRAM, ITCM, DTCM1, DTCM2
+Page  346: and SRAM4 are implicitly allocated to the CPU. The group composed of the CPU, bus
+Page  346: Note:      The FLASH, AXISRAM, ITCM, DTCM1, DTCM2, SRAM4, IWGD1, IWGD2, PWR, EXTI and
+Page  347: AXISRAM                                   PER...                                    SAI1
+Page  347: ITCM                                                                                                                     SRAM1
+Page  347: SRAM2
+Page  347: PER...                                    PER...                                   SRAM3
+Page  347: SRAM4
+Page  348: For example, the CPU can enter CStop mode, while the SAI4 is filling the SRAM4 with data
+Page  348: BDMA, and SRAM4 in Autonomous mode, while keeping D3 in DRun mode (RUN_D3 set to
+Page  348: •    AXISRAM, ITCM, DTCM1, DTCM2 and FLASH,
+Page  348: •    SRAM1, SRAM2 and SRAM3,
+Page  348: •    SRAM4 and BKPRAM.
+Page  348: As shown in Figure 56, FLASH, AXISRAM, SRAM4, ITCM, DTCM1 and DTCM2 are
+Page  348: If the CPU wants to use memories located into D2 domain (SRAM1, SRAM2 and SRAM3), it
+Page  349: CSleep mode (via DxSRAMyLPEN bits).
+Page  423: SRAM4AMEN
+Page  423: Bit 29          SRAM4AMEN: SRAM4 Autonomous mode enable
+Page  423: 0: SRAM4 clock is disabled when the CPU is in CStop (default after reset)
+Page  423: 1: SRAM4 peripheral bus clock enabled when D3 domain is in DRun.
+Page  423: Bit 28          BKPSRAMAMEN: Backup RAM Autonomous mode enable
+Page  432: SRAM3EN
+Page  432: SRAM2EN
+Page  432: SRAM1EN
+Page  432: Bit 31 SRAM3EN: SRAM3 block enable
+Page  432: When set, this bit indicates that the SRAM3 is allocated by the CPU. It causes the D2 domain to
+Page  432: 0: SRAM3 interface clock is disabled. (default after reset)
+Page  432: 1: SRAM3 interface clock is enabled.
+Page  432: Bit 30 SRAM2EN: SRAM2 block enable
+Page  432: When set, this bit indicates that the SRAM2 is allocated by the CPU. It causes the D2 domain to
+Page  432: 0: SRAM2 interface clock is disabled. (default after reset)
+Page  432: 1: SRAM2 interface clock is enabled.
+Page  432: Bit 29 SRAM1EN: SRAM1 block enable
+Page  432: When set, this bit indicates that the SRAM1 is allocated by the CPU. It causes the D2 domain to
+Page  432: 0: SRAM1 interface clock is disabled. (default after reset)
+Page  432: 1: SRAM1 interface clock is enabled.
+Page  450: AXISRAMLPEN
+Page  450: Bit 31 AXISRAMLPEN: AXISRAM Block Clock Enable During CSleep mode
+Page  450: 0: AXISRAM interface clock disabled during CSleep mode
+Page  450: 1: AXISRAM interface clock enabled during CSleep mode (default after reset)
+Page  454: SRAM3LPEN
+Page  454: SRAM2LPEN
+Page  454: SRAM1LPEN
+Page  454: Bit 31 SRAM3LPEN: SRAM3 Clock Enable During CSleep Mode
+Page  454: 0: SRAM3 clock disabled during CSleep mode
+Page  454: 1: SRAM3 clock enabled during CSleep mode (default after reset)
+Page  454: Bit 30 SRAM2LPEN: SRAM2 Clock Enable During CSleep Mode
+Page  454: 0: SRAM2 clock disabled during CSleep mode
+Page  454: 1: SRAM2 clock enabled during CSleep mode (default after reset)
+Page  454: Bit 29 SRAM1LPEN: SRAM1 Clock Enable During CSleep Mode
+Page  454: 0: SRAM1 clock disabled during CSleep mode
+Page  454: 1: SRAM1 clock enabled during CSleep mode (default after reset)
+Page  456: SRAM4LPEN
+Page  456: Bit 29 SRAM4LPEN: SRAM4 Clock Enable During CSleep Mode
+Page  456: 0: SRAM4 clock disabled during CSleep mode
+Page  456: 1: SRAM4 clock enabled during CSleep mode (default after reset)
+Page  476: Res.                                Res.                    SRAM3EN                         Res.                        Res.                         Res.                                      Res.        31
+Page  476: Res.                                Res.                    SRAM2EN                         Res.                        Res.                     LPWRRSTF                                      Res.        30
+Page  476: Res.                                Res.                    SRAM1EN                         Res.                        Res.                         Res.                                 SRAM4AMEN        29
+Page  477: SRAM3LPEN                           Res.                      AXISRAMLPEN                           Res.                      Res.                    Res.                              UART8EN      31
+Page  477: SRAM2LPEN                           Res.                        ITCMLPEN                            Res.                      Res.                    Res.                              UART7EN      30
+Page  477: SRAM1LPEN                           Res.                       DTCM2LPEN                            Res.                   HRTIMEN                    Res.                              DAC12EN      29
+Page  478: Res.                                   Res.                       HRTIMLPEN                      Res.                                DAC12LPEN                        Res.                                SRAM4LPEN     29
+Page  479: Res.                      Res.                    Res.                              UART8EN                       Res.                                Res.                   SRAM3EN                        Res.         31
+Page  479: Res.                      Res.                    Res.                              UART7EN                       Res.                                Res.                   SRAM2EN                        Res.         30
+Page  479: Res.                   HRTIMEN                    Res.                              DAC12EN                       Res.                                Res.                   SRAM1EN                        Res.         29
+Page  480: Res.                                UART8LPEN                        Res.                                   Res.                      SRAM3LPEN                           Res.                      AXISRAMLPEN    31
+Page  480: Res.                                UART7LPEN                        Res.                                   Res.                      SRAM2LPEN                           Res.                        ITCMLPEN     30
+Page  480: Res.                                DAC12LPEN                        Res.                                SRAM4LPEN                    SRAM1LPEN                           Res.                       DTCM2LPEN     29
+Page  532: AXI SRAML
+Page  532: SRAM1L
+Page  532: SRAM2L
+Page  532: SRAM3L
+Page  532: SRAM4L
+Page  532: Bit 15 AXISRAML: D1 AXI-SRAM double ECC error lock bit
+Page  532: and lock the AXI-SRAM double ECC error flag connection to TIM1/8/15/16/17 and
+Page  532: 0: AXI-SRAM double ECC error flag disconnected from TIM1/8/15/16/17/HRTIMER
+Page  532: 1: AXI-SRAM double ECC error flag connected to TIM1/8/15/16/17/HRTIMER Break
+Page  532: Bit 12 SRAM1L: D2 SRAM1 double ECC error lock bit
+Page  532: and lock the D2 SRAM1 double ECC error flag connection to TIM1/8/15/16/17 and
+Page  532: 0: D2 SRAM1 double ECC error flag disconnected from TIM1/8/15/16/17/HRTIMER
+Page  532: 1: D2 SRAM1 double ECC error flag connected to TIM1/8/15/16/17/HRTIMER Break
+Page  533: Bit 11 SRAM2L: D2 SRAM2 double ECC error lock bit
+Page  533: and lock the D2 SRAM2 double ECC error flag connection to TIM1/8/15/16/17 and
+Page  533: 0: D2 SRAM2 double ECC error flag disconnected from TIM1/8/15/16/17/HRTIMER
+Page  533: 1: D2 SRAM2 double ECC error flag connected to TIM1/8/15/16/17/HRTIMER Break
+Page  533: Bit 10 SRAM3L: D2 SRAM3 double ECC error lock bit
+Page  533: and lock the D2 SRAM3 double ECC error flag connection to TIM1/8/15/16/17 and
+Page  533: 0: D2 SRAM3 double ECC error flag disconnected from TIM1/8/15/16/17/HRTIMER
+Page  533: 1: D2 SRAM3 double ECC error flag connected to TIM1/8/15/16/17/HRTIMER Break
+Page  533: Bit 9 SRAM4L: D3 SRAM4 double ECC error lock bit
+Page  533: and lock the D3 SRAM4 double ECC error flag connection to TIM1/8/15/16/17 and
+Page  533: 0: D3 SRAM4 double ECC error flag disconnected from TIM1/8/15/16/17/HRTIMER
+Page  533: 1: D3 SRAM4 double ECC error flag connected to TIM1/8/15/16/17/HRTIMER Break
+Page  533: Bit 7 BKRAML: Backup SRAM double ECC error lock bit
+Page  533: and lock the Backup SRAM double ECC error flag connection to TIM1/8/15/16/17 and
+Page  533: 0: Backup SRAM double ECC error flag disconnected from
+Page  533: 1: Backup SRAM double ECC error flag connected to TIM1/8/15/16/17/HRTIMER
+Page  538: 0xCC: Level 2 (Flash memory readout protected, full debug features, boot from SRAM
+Page  548: Res.                          Res.                      Res.                           Res.                          Res.                              Res.                           Res.                           AXISRAML                                                                                                                                                                                                                                                                                                                                                                              Res.                       15
+Page  548: Res.                          Res.                      Res.                           Res.                          Res.                              Res.                           Res.                           SRAM1L                                                                                                                                                                                                                                                                                                                                                                                Res.                       12
+Page  548: Res.                          Res.                      Res.                           Res.                          Res.                              Res.                           Res.                           SRAM2L                                                                                                                                                                                                                                                                                                                                                                                Res.                       11
+Page  548: Res.                          Res.                      Res.                           Res.                          Res.                              Res.                           Res.                           SRAM3L                                                                                                                                                                                                                                                                                                                                                                                Res.                       10
+Page  548: Res.                          Res.                      Res.                           Res.                          Res.                              Res.                           Res.                           SRAM4L                                                                                                                                                                                                                                                                                                                                                                                Res.                       9
+Page  649: •   Access to D3 domain SRAM and AHB/APB peripherals (BDMA)
+Page  776: •   The NOR/PSRAM memory controller
+Page  776: –    Static random access memory (SRAM)
+Page  776: –    PSRAM (4 memory banks)
+Page  776: memory, PSRAM and SDRAM)
+Page  776: •   Write enable and byte lane select outputs for use with PSRAM, SRAM and SDRAM
+Page  776: except when crossing a page boundary (for PSRAM and SDRAM). In this case,
+Page  777: •    The NOR Flash/PSRAM/SRAM controller
+Page  778: FMC_NL (or NADV)   NOR/PSRAM
+Page  778: NOR/PSRAM
+Page  778: NOR / SRAM shared
+Page  778: FMC_NOE            NOR / PSRAM / SRAM
+Page  780: –    Accesses to devices that have the byte select feature (SRAM, ROM, PSRAM,
+Page  780: Wrap support for NOR Flash/PSRAM and SDRAM
+Page  780: detailed description of the NOR Flash/PSRAM controller registers. Refer to Section 21.8.7,
+Page  781: •   Bank 1 is used to address up to 4 NOR Flash memory or PSRAM devices. This bank is
+Page  781: split into 4 NOR/PSRAM subbanks with 4 dedicated Chip Selects, as follows:
+Page  781: –    Bank 1 - NOR/PSRAM 1
+Page  781: –    Bank 1 - NOR/PSRAM 2
+Page  781: –    Bank 1 - NOR/PSRAM 3
+Page  781: –    Bank 1 - NOR/PSRAM 4
+Page  782: NOR/PSRAM/
+Page  782: SRAM
+Page  782: register. Table 147 shows the configuration to swap the NOR/PSRAM bank with SDRAM
+Page  782: BMAP[1:0]=00            NOR/PSRAM and
+Page  782: 0x6000 0000 - 0x6FFF FFFF      NOR/PSRAM bank             SDRAM bank1        NOR/PSRAM bank
+Page  782: 0xC000 0000 - 0xCFFF FFFF          SDRAM bank1         NOR/PSRAM bank         SDRAM bank1
+Page  783: 21.6.1   NOR/PSRAM address mapping
+Page  783: Table 148. NOR/PSRAM bank selection
+Page  783: 00                        Bank 1 - NOR/PSRAM 1
+Page  783: 01                        Bank 1 - NOR/PSRAM 2
+Page  783: 10                        Bank 1 - NOR/PSRAM 3
+Page  783: 11                        Bank 1 - NOR/PSRAM 4
+Page  783: Table 149. NOR/PSRAM External memory address
+Page  787: 21.7            NOR Flash/PSRAM controller
+Page  787: •     Asynchronous SRAM and ROM
+Page  787: •     PSRAM (Cellular RAM)
+Page  788: be configured in Synchronous mode (see Section 21.7.6: NOR/PSRAM controller
+Page  788: dedicated registers (see Section 21.7.6: NOR/PSRAM controller registers).
+Page  788: for wait management (for PSRAM and NOR Flash memory accessed in Burst mode).
+Page  788: Table 157. Programmable NOR/PSRAM access parameters
+Page  789: NOR Flash memory, SRAM and PSRAM.
+Page  790: PSRAM/SRAM, non-multiplexed I/Os
+Page  790: Table 160. Non-multiplexed I/Os PSRAM/SRAM
+Page  790: CLK         O                   Clock (only for PSRAM synchronous access)
+Page  790: NE[x]        O      Chip Select, x = 1..4 (called NCE by PSRAM (Cellular RAM i.e. CRAM))
+Page  790: NL(= NADV)      O        Address valid only for PSRAM input (memory signal name: NADV)
+Page  790: NWAIT          I                      PSRAM wait input signal to the FMC
+Page  790: PSRAM, 16-bit multiplexed I/Os
+Page  790: Table 161. 16-Bit multiplexed I/O PSRAM
+Page  790: NE[x]        O      Chip Select, x = 1..4 (called NCE by PSRAM (Cellular RAM i.e. CRAM))
+Page  790: NL(= NADV)      O            Address valid PSRAM input (memory signal name: NADV)
+Page  790: NWAIT          I                      PSRAM wait input signal to the FMC
+Page  791: transactions when the memory data bus is 16-bit wide for NOR Flash memory, PSRAM and
+Page  791: SRAM. The transactions not allowed (or not supported) by the FMC are shown in gray in
+Page  791: Table 162. NOR Flash/PSRAM: Example of supported memories and transactions(1)
+Page  791: PSRAM
+Page  792: Table 162. NOR Flash/PSRAM: Example of supported memories and transactions(1)
+Page  792: SRAM and                                                                Split into 2 FMC accesses
+Page  792: 21.7.4     NOR Flash/PSRAM controller asynchronous transactions
+Page  792: Asynchronous transactions on static memories (NOR Flash memory, PSRAM, SRAM) are
+Page  792: –   Mode 1 is the default mode when SRAM/PSRAM memory type is selected
+Page  793: Mode 1 - SRAM/PSRAM (CRAM)
+Page  796: Mode A - SRAM/PSRAM (CRAM) OE toggling
+Page  812: For some PSRAM memories which must be configured to Synchronous mode, during the
+Page  812: ordered. Once PSRAM BCR register is configured, the memory attribute of PSRAM address
+Page  814: Figure 111. Synchronous multiplexed read mode waveforms - NOR, PSRAM (CRAM)
+Page  814: 1. Byte lane outputs (NBL are not shown; for NOR access, they are held high, and, for PSRAM (CRAM)
+Page  816: Figure 112. Synchronous multiplexed write mode waveforms - PSRAM (CRAM)
+Page  818: 21.7.6                 NOR/PSRAM controller registers
+Page  818: SRAM/NOR-Flash chip-select control registers for bank x (FMC_BCRx)
+Page  818: This register contains the control information of each memory bank, used for SRAMs,
+Page  818: PSRAM and NOR Flash memories.
+Page  818: These bits allow different remap or swap of the FMC NOR/PSRAM and SDRAM banks (refer
+Page  818: 01: NOR/PSRAM bank and SDRAM bank 1/bank2 are swapped.
+Page  819: For PSRAM (CRAM) operating in Burst mode, the bit enables synchronous accesses during
+Page  820: –      Mode 1 is the default mode when the SRAM/PSRAM memory type is selected
+Page  820: 1: NWAIT signal is active during wait state (not used for PSRAM).
+Page  821: 00: SRAM (default after reset for Bank 2...4)
+Page  821: 01: PSRAM (CRAM)
+Page  821: with NOR and PSRAM memories:
+Page  822: SRAM/NOR-Flash chip-select timing registers for bank x (FMC_BTRx)
+Page  822: This register contains the control information of each memory bank, used for SRAMs,
+Page  822: PSRAM and NOR Flash memories.If the EXTMOD bit is set in the FMC_BCRx register, then
+Page  822: In asynchronous NOR Flash, SRAM or PSRAM accesses, this value is don’t care.
+Page  824: Figure 95 to Figure 107), used in SRAMs, ROMs and asynchronous NOR Flash:
+Page  824: In mode 1 and PSRAM memory, the minimum value for ADDSET is 1.
+Page  824: Note:       PSRAMs (CRAMs) have a variable latency due to internal refresh. Therefore these
+Page  824: On PSRAMs (CRAMs) the filled DATLAT must be set to 0, so that the FMC exits its latency
+Page  825: SRAM/NOR-Flash write timing registers for bank x (FMC_BWTRx)
+Page  825: This register contains the control information of each memory bank. It is used for SRAMs,
+Page  825: PSRAMs and NOR Flash memories. When the EXTMOD bit is set in the FMC_BCRx
+Page  826: Figure 107), used in asynchronous SRAM, PSRAM and NOR Flash memory accesses:
+Page  840: access by the NOR Flash/PSRAM/SRAM or NAND Flash controller.
+Page 1343: SRAM parity error, Cortex®-M7 lockup (HardFault), PVD output).
+Page 1404: •      the SRAM parity checker
+Page 1551: - the SRAM parity error signal
+Page 1748: - SRAM parity error signal
+Page 1749: - SRAM parity error signal
+Page 1771: - the SRAM parity error signal
+Page 1892: Temperature                                                            SRAM
+Page 1892: –    In addition, the tamper detection forbids software access to the backup SRAM
+Page 1904: •    erase the RTC backup registers and backup SRAM (default configuration)
+Page 1927: hardware. The backup registers and the backup SRAM are not erased.
+Page 1927: 0: Tamper 3 event erases the backup registers and the backup SRAM.
+Page 1927: 1: Tamper 3 event does not erase the backup registers and the backup SRAM.
+Page 1927: hardware. The backup registers and the backup SRAM are not erased.
+Page 1927: 0: Tamper 2 event erases the backup registers and the backup SRAM.
+Page 1927: 1: Tamper 2 event does not erase the backup registers and the backup SRAM.
+Page 1927: hardware.The backup registers and the backup SRAM are not erased.
+Page 1928: 0: Tamper 1 event erases the backup registers and the backup SRAM.
+Page 1928: 1: Tamper 1 event does not erase the backup registers and the backup SRAM.
+Page 1983: in the I2C_CR1 register. Data is loaded from an SRAM area configured using the DMA
+Page 1983: the I2C_CR1 register. Data is loaded from the I2C_RXDR register to an SRAM area
+Page 2004: •   Received/transmitted bytes are buffered in reserved SRAM using centralized DMA.
+Page 2044: register. Data are loaded from an SRAM area configured using the DMA peripheral (refer to
+Page 2045: Data are loaded from the USART_RDR register to an SRAM area configured using the DMA
+Page 2083: •   Received/transmitted bytes are buffered in reserved SRAM using centralized DMA.
+Page 2100: register. Data are loaded from an SRAM area configured using the DMA peripheral (refer to
+Page 2101: Data are loaded from the LPUART_RDR register to a SRAM area configured using the DMA
+Page 2566: Size of dedicated SRAM                                                 4 KB
+Page 2815: application creates the descriptors in the system memory (SRAM). The following two types
+Page 2999: SRAM
+Page 3001: SRAM
+Page 3002: SRAM
+Page 3069: that of the ETF SRAM, 8 Kbytes in this case. Being a circular buffer, if the FIFO
+Page 3218: In Section : SRAM/NOR-Flash chip-select timing registers 1..4
+Page 3218: BURSTURN description. In Section : SRAM/NOR-Flash write timing
+Page 3223: Section 2.3: Embedded SRAM

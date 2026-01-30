@@ -1,0 +1,1955 @@
+Keyword: CFG
+Occurrences: 1951
+================================================================================
+
+Page    5: 3.10 UBX-CFG (0x06)..................................................................................................................................54
+Page    5: 3.10.1 UBX-CFG-ANT (0x06 0x13)..................................................................................................... 54
+Page    5: 3.10.2 UBX-CFG-BATCH (0x06 0x93)................................................................................................ 55
+Page    5: 3.10.3 UBX-CFG-CFG (0x06 0x09)..................................................................................................... 56
+Page    5: 3.10.4 UBX-CFG-DAT (0x06 0x06)..................................................................................................... 57
+Page    5: 3.10.5 UBX-CFG-GEOFENCE (0x06 0x69)........................................................................................ 58
+Page    5: 3.10.6 UBX-CFG-GNSS (0x06 0x3e)...................................................................................................59
+Page    5: 3.10.7 UBX-CFG-INF (0x06 0x02).......................................................................................................61
+Page    5: 3.10.8 UBX-CFG-ITFM (0x06 0x39)....................................................................................................62
+Page    5: 3.10.9 UBX-CFG-LOGFILTER (0x06 0x47)........................................................................................ 62
+Page    5: 3.10.10 UBX-CFG-MSG (0x06 0x01)..................................................................................................63
+Page    5: 3.10.11 UBX-CFG-NAV5 (0x06 0x24)................................................................................................ 64
+Page    5: 3.10.12 UBX-CFG-NAVX5 (0x06 0x23)..............................................................................................66
+Page    5: 3.10.13 UBX-CFG-NMEA (0x06 0x17)............................................................................................... 68
+Page    5: 3.10.14 UBX-CFG-ODO (0x06 0x1e)...................................................................................................69
+Page    5: 3.10.15 UBX-CFG-PM2 (0x06 0x3b).................................................................................................. 70
+Page    5: 3.10.16 UBX-CFG-PMS (0x06 0x86).................................................................................................. 72
+Page    5: 3.10.17 UBX-CFG-PRT (0x06 0x00)................................................................................................... 73
+Page    6: 3.10.18 UBX-CFG-PWR (0x06 0x57)..................................................................................................78
+Page    6: 3.10.19 UBX-CFG-RATE (0x06 0x08).................................................................................................79
+Page    6: 3.10.20 UBX-CFG-RINV (0x06 0x34)................................................................................................. 80
+Page    6: 3.10.21 UBX-CFG-RST (0x06 0x04)................................................................................................... 80
+Page    6: 3.10.22 UBX-CFG-RXM (0x06 0x11).................................................................................................. 81
+Page    6: 3.10.23 UBX-CFG-SBAS (0x06 0x16)................................................................................................ 82
+Page    6: 3.10.24 UBX-CFG-TP5 (0x06 0x31)................................................................................................... 83
+Page    6: 3.10.25 UBX-CFG-USB (0x06 0x1b)................................................................................................... 85
+Page    6: 3.10.26 UBX-CFG-VALDEL (0x06 0x8c)............................................................................................ 86
+Page    6: 3.10.27 UBX-CFG-VALGET (0x06 0x8b)............................................................................................88
+Page    6: 3.10.28 UBX-CFG-VALSET (0x06 0x8a)............................................................................................89
+Page   12: 5.9.1 CFG-ANA: AssistNow Autonomous and Oﬄine conﬁguration........................................ 197
+Page   12: 5.9.2 CFG-BATCH: Batched output conﬁguration........................................................................ 197
+Page   12: 5.9.3 CFG-GEOFENCE: Geofencing conﬁguration........................................................................ 198
+Page   12: 5.9.4 CFG-HW: Hardware conﬁguration......................................................................................... 199
+Page   12: 5.9.5 CFG-I2C: Conﬁguration of the I2C interface........................................................................200
+Page   12: 5.9.6 CFG-I2CINPROT: Input protocol conﬁguration of the I2C interface................................200
+Page   12: 5.9.7 CFG-I2COUTPROT: Output protocol conﬁguration of the I2C interface........................200
+Page   12: 5.9.8 CFG-INFMSG: Information message conﬁguration........................................................... 201
+Page   12: 5.9.9 CFG-ITFM: Jamming and interference monitor conﬁguration........................................ 202
+Page   12: 5.9.10 CFG-LOGFILTER: Data logger conﬁguration..................................................................... 202
+Page   12: 5.9.11 CFG-MOT: Motion detector conﬁguration.........................................................................203
+Page   12: 5.9.12 CFG-MSGOUT: Message output conﬁguration................................................................ 203
+Page   12: 5.9.13 CFG-NAVSPG: Standard precision navigation conﬁguration.........................................215
+Page   12: 5.9.14 CFG-NMEA: NMEA protocol conﬁguration........................................................................219
+Page   12: 5.9.15 CFG-ODO: Odometer and low-speed course over ground ﬁlter conﬁguration............ 221
+Page   12: 5.9.16 CFG-PM: Conﬁguration for receiver power management...............................................222
+Page   12: 5.9.17 CFG-QZSS: QZSS system conﬁguration............................................................................223
+Page   12: 5.9.18 CFG-RATE: Navigation and measurement rate conﬁguration.......................................223
+Page   12: 5.9.19 CFG-RINV: Remote inventory............................................................................................... 224
+Page   12: 5.9.20 CFG-SBAS: SBAS conﬁguration...........................................................................................224
+Page   12: 5.9.21 CFG-SEC: Security conﬁguration.........................................................................................226
+Page   12: 5.9.22 CFG-SIGNAL: Satellite systems (GNSS) signal conﬁguration.......................................226
+Page   12: 5.9.23 CFG-SPI: Conﬁguration of the SPI interface..................................................................... 227
+Page   12: 5.9.24 CFG-SPIINPROT: Input protocol conﬁguration of the SPI interface............................. 227
+Page   12: 5.9.25 CFG-SPIOUTPROT: Output protocol conﬁguration of the SPI interface..................... 227
+Page   12: 5.9.26 CFG-TP: Time pulse conﬁguration...................................................................................... 227
+Page   12: 5.9.27 CFG-TXREADY: TX ready conﬁguration............................................................................. 230
+Page   12: 5.9.28 CFG-UART1: Conﬁguration of the UART1 interface........................................................231
+Page   12: 5.9.29 CFG-UART1INPROT: Input protocol conﬁguration of the UART1 interface................231
+Page   12: 5.9.30 CFG-UART1OUTPROT: Output protocol conﬁguration of the UART1 interface........232
+Page   12: 5.9.31 CFG-UART2: Conﬁguration of the UART2 interface........................................................232
+Page   12: 5.9.32 CFG-UART2INPROT: Input protocol conﬁguration of the UART2 interface................233
+Page   12: 5.9.33 CFG-UART2OUTPROT: Output protocol conﬁguration of the UART2 interface........233
+Page   12: 5.9.34 CFG-USB: Conﬁguration of the USB interface................................................................. 233
+Page   12: 5.9.35 CFG-USBINPROT: Input protocol conﬁguration of the USB interface..........................234
+Page   12: 5.9.36 CFG-USBOUTPROT: Output protocol conﬁguration of the USB interface..................234
+Page   14: conﬁgured using CFG-INFMSG. The UBX-MON-VER message can be polled using the UBX polling
+Page   16: conﬁguration can be changed during normal operation by sending UBX-CFG-VALSET messages
+Page   16: some backwards compatibility provided in UBX-CFG conﬁguration messages. Users are strongly
+Page   17: Names of conﬁguration items are of the form CFG-GROUP-ITEM. For example, CFG-NAVSPG-
+Page   17: a fourth level to the item name, such as CFG-NAVSPG-DYNMODEL-AUTOMOT for the automotive
+Page   17: can be used (e.g. "set CFG-NAVSPG-DYNMODEL to PORT for portable applications").
+Page   20: UBX-CFG-RST.
+Page   20: Get                          Output-only conﬁguration or command messages. E.g. UBX-CFG-DAT.
+Page   20: Set                          Input-only conﬁguration or command messages. E.g. UBX-CFG-VALDEL.
+Page   20: Get/set                      Input/output conﬁguration or command messages. E.g. UBX-CFG-NAVX5.
+Page   21: Conﬁguration interface (CFG-NMEA-* items).
+Page   21: 2.1 can be conﬁgured. See Conﬁguration defaults for the default version. See CFG-NMEA-PROTVER
+Page   21: Position ﬁltering    CFG-NMEA-OUT_INVFIX         Enable to permit positions from failed or invalid ﬁxes to be
+Page   21: Valid position ﬁltering CFG-NMEA-OUT_MSKFIX      Enable to permit positions from invalid ﬁxes to be reported (with
+Page   21: Time ﬁltering        CFG-NMEA-OUT_INVTIME        Enable to permit the receiver's best knowledge of time to be
+Page   22: Date ﬁltering         CFG-NMEA-OUT_INVDATE        Enable to permit the receiver's best knowledge of date to be
+Page   22: GPS-only ﬁltering     CFG-NMEA-OUT_ONLYGPS        Enable to restrict output to only report GPS satellites.
+Page   22: Track ﬁltering        CFG-NMEA-OUT_FROZENCOG Enable to permit course over ground (COG) to be reported even
+Page   22: Compatibility mode    CFG-NMEA-COMPAT             Some older NMEA applications expect the NMEA output to be
+Page   22: Consideration mode    CFG-NMEA-CONSIDER           u-blox receivers use a sophisticated signal quality detection
+Page   22: Limit length mode     CFG-NMEA-LIMIT82            Enabling this mode will limit the NMEA sentence length to a
+Page   22: High precision mode   CFG-NMEA-HIGHPREC           Enabling this mode increases precision of the position output.
+Page   22: GNSS to ﬁlter         CFG-NMEA-FILT_GPS etc.      Filters satellites based on the GNSS they belong to.
+Page   22: Satellite numbering   CFG-NMEA-SVNUMBERING        This ﬁeld conﬁgures the display of satellites that do not have an
+Page   22: Main Talker ID        CFG-NMEA-MAINTALKERID       By default the main Talker ID (i.e. the Talker ID used for all
+Page   22: CFG-SIGNAL-*). This ﬁeld enables the main Talker ID to be
+Page   22: GSV Talker ID         CFG-NMEA-GSVTALKERID        By default the Talker ID for GSV messages is GNSS-speciﬁc (as
+Page   22: BDS Talker ID         CFG-NMEA-BDSTALKERID        By default the Talker ID for BeiDou is "GB". This ﬁeld enables the
+Page   37: This message can be conﬁgured using the CFG-INFMSG conﬁguration group.
+Page   40: CFG-DAT.
+Page   48: When messages from the class CFG are sent to the receiver, the receiver will send an
+Page   50: UBX-CFG – Conﬁguration and command messages
+Page   50: UBX-CFG-ANT             0x06 0x13   •   Antenna control settings (Get/set)
+Page   50: UBX-CFG-BATCH           0x06 0x93   •   Get/set data batching conﬁguration (Get/set)
+Page   50: UBX-CFG-CFG             0x06 0x09   •   Clear, save and load conﬁgurations (Command)
+Page   50: UBX-CFG-DAT             0x06 0x06   •   Set user-deﬁned datum (Set)
+Page   50: UBX-CFG-GEOFENCE        0x06 0x69   •   Geofencing conﬁguration (Get/set)
+Page   50: UBX-CFG-GNSS            0x06 0x3e   •   GNSS system conﬁguration (Get/set)
+Page   50: UBX-CFG-INF             0x06 0x02   •   Poll conﬁguration for one protocol (Poll request)
+Page   50: UBX-CFG-ITFM            0x06 0x39   •   Jamming/interference monitor conﬁguration (Get/set)
+Page   50: UBX-CFG-LOGFILTER       0x06 0x47   •   Data logger conﬁguration (Get/set)
+Page   50: UBX-CFG-MSG             0x06 0x01   •   Poll a message conﬁguration (Poll request)
+Page   50: UBX-CFG-NAV5            0x06 0x24   •   Navigation engine settings (Get/set)
+Page   50: UBX-CFG-NAVX5           0x06 0x23   •   Navigation engine expert settings (Get/set)
+Page   50: UBX-CFG-NMEA            0x06 0x17   •   Extended NMEA protocol conﬁguration V1 (Get/set)
+Page   50: UBX-CFG-ODO             0x06 0x1e   •   Odometer, low-speed COG engine settings (Get/set)
+Page   50: UBX-CFG-PM2             0x06 0x3b   •   Extended power management conﬁguration (Get/set)
+Page   50: UBX-CFG-PMS             0x06 0x86   •   Power mode setup (Get/set)
+Page   50: UBX-CFG-PRT             0x06 0x00   •   Polls the conﬁguration for one I/O port (Poll request)
+Page   51: UBX-CFG-PWR              0x06 0x57   •   Put receiver in a deﬁned power state (Set)
+Page   51: UBX-CFG-RATE             0x06 0x08   •   Navigation/measurement rate settings (Get/set)
+Page   51: UBX-CFG-RINV             0x06 0x34   •   Contents of remote inventory (Get/set)
+Page   51: UBX-CFG-RST              0x06 0x04   •   Reset receiver / Clear backup data structures (Command)
+Page   51: UBX-CFG-RXM              0x06 0x11   •   RXM conﬁguration (Get/set)
+Page   51: UBX-CFG-SBAS             0x06 0x16   •   SBAS conﬁguration (Get/set)
+Page   51: UBX-CFG-TP5              0x06 0x31   •   Time pulse parameters (Get/set)
+Page   51: UBX-CFG-USB              0x06 0x1b   •   USB conﬁguration (Get/set)
+Page   51: UBX-CFG-VALDEL           0x06 0x8c   •   Delete conﬁguration item values (Set)
+Page   51: UBX-CFG-VALGET           0x06 0x8b   •   Get conﬁguration items (Poll request)
+Page   51: UBX-CFG-VALSET           0x06 0x8a   •   Set conﬁguration item values (Set)
+Page   53: acknowledgement) of input messages, such as UBX-CFG messages.
+Page   54: 3.10 UBX-CFG (0x06)
+Page   54: The messages in the UBX-CFG class are used to conﬁgure the receiver and poll current conﬁguration
+Page   54: 3.10.1 UBX-CFG-ANT (0x06 0x13)
+Page   54: Message       UBX-CFG-ANT
+Page   54: Comment       This message is deprecated in protocol versions greater than 23.01. Use UBX-CFG-VALSET, UBX-CFG-
+Page   54: VALGET, UBX-CFG-VALDEL instead.
+Page   55: 3.10.2 UBX-CFG-BATCH (0x06 0x93)
+Page   55: Message             UBX-CFG-BATCH
+Page   55: Comment             This message is deprecated in protocol versions greater than 23.01. Use UBX-CFG-VALSET, UBX-CFG-
+Page   55: VALGET, UBX-CFG-VALDEL instead.
+Page   56: 3.10.3 UBX-CFG-CFG (0x06 0x09)
+Page   56: Message             UBX-CFG-CFG
+Page   56: behavior of this message has changed for protocol versions greater than 23.01. Use UBX-CFG-VALSET and
+Page   56: UBX-CFG-VALDEL with the appropriate layers instead. These new messages support selective saving and
+Page   56: ☞ Old functionality of this message is not available in protocol versions greater than 23.01. Use UBX-CFG-
+Page   56: VALSET, UBX-CFG-VALGET, UBX-CFG-VALDEL instead.
+Page   57: 3.10.4 UBX-CFG-DAT (0x06 0x06)
+Page   57: Message             UBX-CFG-DAT
+Page   57: Comment             This message is deprecated in protocol versions greater than 23.01. Use UBX-CFG-VALSET, UBX-CFG-
+Page   57: VALGET, UBX-CFG-VALDEL instead.
+Page   57: Message             UBX-CFG-DAT
+Page   58: Comment       This message is deprecated in protocol versions greater than 23.01. Use UBX-CFG-VALSET, UBX-CFG-
+Page   58: VALGET, UBX-CFG-VALDEL instead.
+Page   58: 3.10.5 UBX-CFG-GEOFENCE (0x06 0x69)
+Page   58: Message       UBX-CFG-GEOFENCE
+Page   58: Comment       This message is deprecated in protocol versions greater than 23.01. Use UBX-CFG-VALSET, UBX-CFG-
+Page   58: VALGET, UBX-CFG-VALDEL instead.
+Page   59: 3.10.6 UBX-CFG-GNSS (0x06 0x3e)
+Page   59: Message       UBX-CFG-GNSS
+Page   59: Comment       This message is deprecated in protocol versions greater than 23.01. Use UBX-CFG-VALSET, UBX-CFG-
+Page   59: VALGET, UBX-CFG-VALDEL instead.
+Page   60: •     Conﬁguration speciﬁc to the GNSS system can be done via other messages (e.g. UBX-CFG-SBAS).
+Page   60: bits 23…16      U:8         sigCfgMask            -            -           Signal conﬁguration mask
+Page   61: 3.10.7 UBX-CFG-INF (0x06 0x02)
+Page   61: Message       UBX-CFG-INF
+Page   61: Comment       This message is deprecated in protocol versions greater than 23.01. Use UBX-CFG-VALSET, UBX-CFG-
+Page   61: VALGET, UBX-CFG-VALDEL instead.
+Page   61: Message       UBX-CFG-INF
+Page   61: Comment       This message is deprecated in protocol versions greater than 23.01. Use UBX-CFG-VALSET, UBX-CFG-
+Page   61: VALGET, UBX-CFG-VALDEL instead.
+Page   62: 3.10.8 UBX-CFG-ITFM (0x06 0x39)
+Page   62: Message             UBX-CFG-ITFM
+Page   62: Comment             This message is deprecated in protocol versions greater than 23.01. Use UBX-CFG-VALSET, UBX-CFG-
+Page   62: VALGET, UBX-CFG-VALDEL instead.
+Page   62: 3.10.9 UBX-CFG-LOGFILTER (0x06 0x47)
+Page   63: Message             UBX-CFG-LOGFILTER
+Page   63: Comment             This message is deprecated in protocol versions greater than 23.01. Use UBX-CFG-VALSET, UBX-CFG-
+Page   63: VALGET, UBX-CFG-VALDEL instead.
+Page   63: 3.10.10 UBX-CFG-MSG (0x06 0x01)
+Page   63: Message             UBX-CFG-MSG
+Page   63: Comment             This message is deprecated in protocol versions greater than 23.01. Use UBX-CFG-VALSET, UBX-CFG-
+Page   63: VALGET, UBX-CFG-VALDEL instead.
+Page   64: Message       UBX-CFG-MSG
+Page   64: Comment       This message is deprecated in protocol versions greater than 23.01. Use UBX-CFG-VALSET, UBX-CFG-
+Page   64: VALGET, UBX-CFG-VALDEL instead.
+Page   64: Message       UBX-CFG-MSG
+Page   64: Comment       This message is deprecated in protocol versions greater than 23.01. Use UBX-CFG-VALSET, UBX-CFG-
+Page   64: VALGET, UBX-CFG-VALDEL instead.
+Page   64: 3.10.11 UBX-CFG-NAV5 (0x06 0x24)
+Page   65: Message             UBX-CFG-NAV5
+Page   65: Comment             This message is deprecated in protocol versions greater than 23.01. Use UBX-CFG-VALSET, UBX-CFG-
+Page   65: VALGET, UBX-CFG-VALDEL instead.
+Page   66: 3.10.12 UBX-CFG-NAVX5 (0x06 0x23)
+Page   66: Message     UBX-CFG-NAVX5
+Page   66: Comment     This message is deprecated in protocol versions greater than 23.01. Use UBX-CFG-VALSET, UBX-CFG-
+Page   66: VALGET, UBX-CFG-VALDEL instead.
+Page   67: bit 14     U:1      aop                    -           -            1 = apply aopCfg (useAOP ﬂag) and aopOrbMaxErr
+Page   67: 27                  U1       aopCfg                 -           -            AssistNow Autonomous conﬁguration
+Page   68: 3.10.13 UBX-CFG-NMEA (0x06 0x17)
+Page   68: Message             UBX-CFG-NMEA
+Page   68: Comment             This message is deprecated in protocol versions greater than 23.01. Use UBX-CFG-VALSET, UBX-CFG-
+Page   68: VALGET, UBX-CFG-VALDEL instead.
+Page   69: CFG-GNSS).
+Page   69: 3.10.14 UBX-CFG-ODO (0x06 0x1e)
+Page   70: Message             UBX-CFG-ODO
+Page   70: Comment             This message is deprecated in protocol versions greater than 23.01. Use UBX-CFG-VALSET, UBX-CFG-
+Page   70: VALGET, UBX-CFG-VALDEL instead.
+Page   70: 5                   X1        odoCfg                -           -            Odometer ﬁlter settings
+Page   70: 3.10.15 UBX-CFG-PM2 (0x06 0x3b)
+Page   70: Message             UBX-CFG-PM2
+Page   70: Comment             This message is deprecated in protocol versions greater than 23.01. Use UBX-CFG-VALSET, UBX-CFG-
+Page   70: VALGET, UBX-CFG-VALDEL instead.
+Page   72: 3.10.16 UBX-CFG-PMS (0x06 0x86)
+Page   72: Message           UBX-CFG-PMS
+Page   72: Comment           This message is deprecated in protocol versions greater than 23.01. Use UBX-CFG-VALSET, UBX-CFG-
+Page   72: VALGET, UBX-CFG-VALDEL instead.
+Page   73: 3.10.17 UBX-CFG-PRT (0x06 0x00)
+Page   73: Message       UBX-CFG-PRT
+Page   73: Comment       This message is deprecated in protocol versions greater than 23.01. Use UBX-CFG-VALSET, UBX-CFG-
+Page   73: VALGET, UBX-CFG-VALDEL instead.
+Page   73: 0             U1        PortID                   -           -            Port identiﬁer number (see the other versions of CFG-
+Page   73: Message       UBX-CFG-PRT
+Page   73: Comment       This message is deprecated in protocol versions greater than 23.01. Use UBX-CFG-VALSET, UBX-CFG-
+Page   73: VALGET, UBX-CFG-VALDEL instead.
+Page   73: multiple of the normal length (see the other versions of CFG-PRT). Output messages from the module contain
+Page   73: message resulting from the CFG-PRT message.
+Page   75: Message             UBX-CFG-PRT
+Page   75: Comment             This message is deprecated in protocol versions greater than 23.01. Use UBX-CFG-VALSET, UBX-CFG-
+Page   75: VALGET, UBX-CFG-VALDEL instead.
+Page   75: multiple of the normal length (see the other versions of CFG-PRT). Output messages from the module contain
+Page   76: Message             UBX-CFG-PRT
+Page   76: Comment             This message is deprecated in protocol versions greater than 23.01. Use UBX-CFG-VALSET, UBX-CFG-
+Page   76: VALGET, UBX-CFG-VALDEL instead.
+Page   77: Message             UBX-CFG-PRT
+Page   77: Comment             This message is deprecated in protocol versions greater than 23.01. Use UBX-CFG-VALSET, UBX-CFG-
+Page   77: VALGET, UBX-CFG-VALDEL instead.
+Page   77: multiple of the normal length (see the other versions of CFG-PRT). Output messages from the module contain
+Page   78: 3.10.18 UBX-CFG-PWR (0x06 0x57)
+Page   79: Message       UBX-CFG-PWR
+Page   79: Comment       ☞ This message is deprecated in protocol versions greater than 17. Use UBX-CFG-RST for GNSS start/stop
+Page   79: 3.10.19 UBX-CFG-RATE (0x06 0x08)
+Page   79: Message       UBX-CFG-RATE
+Page   79: Comment       This message is deprecated in protocol versions greater than 23.01. Use UBX-CFG-VALSET, UBX-CFG-
+Page   79: VALGET, UBX-CFG-VALDEL instead.
+Page   80: 3.10.20 UBX-CFG-RINV (0x06 0x34)
+Page   80: Message             UBX-CFG-RINV
+Page   80: Comment             This message is deprecated in protocol versions greater than 23.01. Use UBX-CFG-VALSET, UBX-CFG-
+Page   80: VALGET, UBX-CFG-VALDEL instead.
+Page   80: 3.10.21 UBX-CFG-RST (0x06 0x04)
+Page   80: Message             UBX-CFG-RST
+Page   81: 3.10.22 UBX-CFG-RXM (0x06 0x11)
+Page   81: Message             UBX-CFG-RXM
+Page   82: 3.10.23 UBX-CFG-SBAS (0x06 0x16)
+Page   82: Message             UBX-CFG-SBAS
+Page   82: Comment             This message is deprecated in protocol versions greater than 23.01. Use UBX-CFG-VALSET, UBX-CFG-
+Page   82: VALGET, UBX-CFG-VALDEL instead.
+Page   82: deprecated; use UBX-CFG-GNSS to enable/disable
+Page   82: superseded by UBX-CFG-GNSS for protocol versions
+Page   83: 3.10.24 UBX-CFG-TP5 (0x06 0x31)
+Page   83: Message           UBX-CFG-TP5
+Page   83: Comment           This message is deprecated in protocol versions greater than 27. Use UBX-CFG-VALSET, UBX-CFG-VALGET,
+Page   83: UBX-CFG-VALDEL instead.
+Page   85: CFG-SMGR to 0 to disable alignment.
+Page   85: CFG-GNSS.
+Page   85: 3.10.25 UBX-CFG-USB (0x06 0x1b)
+Page   85: Message             UBX-CFG-USB
+Page   85: Comment             This message is deprecated in protocol versions greater than 23.01. Use UBX-CFG-VALSET, UBX-CFG-
+Page   85: VALGET, UBX-CFG-VALDEL instead.
+Page   86: 3.10.26 UBX-CFG-VALDEL (0x06 0x8c)
+Page   86: Message             UBX-CFG-VALDEL
+Page   86: this message multiple times with the result being applied at the end, see version 1 of UBX-CFG-VALDEL
+Page   87: Message             UBX-CFG-VALDEL
+Page   87: •     See version 0 of UBX-CFG-VALDEL for simpliﬁed version of this message.
+Page   87: •     Any request for another UBX-CFG- message type (including UBX-CFG-VALSET and UBX-CFG-VALGET)
+Page   87: •   0 = Transactionless UBX-CFG-VALDEL: In the
+Page   87: next UBX-CFG-VALDEL, it can be either 0 or 1.
+Page   87: UBX-CFG-VALDEL, it can be either 0, 1, 2 or
+Page   88: CFG-VALDEL messages.
+Page   88: CFG-VALDEL, it can be either 0, 1, 2 or 3.
+Page   88: next UBX-CFG-VALDEL, it can be either 0 or 1.
+Page   88: 3.10.27 UBX-CFG-VALGET (0x06 0x8b)
+Page   88: Message       UBX-CFG-VALGET
+Page   89: Message       UBX-CFG-VALGET
+Page   89: 4+n           U1          cfgData                -           -            Conﬁguration data (key and value pairs)
+Page   89: 3.10.28 UBX-CFG-VALSET (0x06 0x8a)
+Page   89: Message       UBX-CFG-VALSET
+Page   89: this message multiple times with the result being applied at the end, see version 1 of UBX-CFG-VALSET
+Page   90: 4+n                 U1           cfgData                 -           -            Conﬁguration data (key and value pairs)
+Page   90: Message             UBX-CFG-VALSET
+Page   90: •     See version 0 of UBX-CFG-VALSET for simpliﬁed version of this message.
+Page   90: •     Any request for another UBX-CFG-message type (including UBX-CFG-VALDEL and UBX-CFG-VALGET)
+Page   91: •   0 = Transactionless UBX-CFG-VALSET: In the
+Page   91: next UBX-CFG-VALSET, it can be either 0 or 1.
+Page   91: UBX-CFG-VALSET, it can be either 0, 1, 2 or
+Page   91: CFG-VALSET messages.
+Page   91: CFG-VALSET, it can be either 0, 1, 2 or 3.
+Page   91: UBX-CFG-VALSET, it can be either 0 or 1.
+Page   91: 4+n                 U1        cfgData                -           -            Conﬁguration data (key and value pairs)
+Page   93: The content of this message is inﬂuenced by the conﬁguration (group CFG-BATCH-*). Depending on the items
+Page   95: This message does not handle activation of recording or ﬁltering of log entries (see CFG-LOGFILTER: Data
+Page   95: 1             X1        logCfg                -            -           Conﬁg ﬂags
+Page   99: Comment             This message is used to request logged data (log recording must ﬁrst be disabled), see CFG-LOGFILTER: Data
+Page  102: Acknowledgments are enabled by setting the CFG-NAVSPG-ACKAIDING item.
+Page  128: 4             U1         cfgSource              -           -            Source of low-level conﬁguration
+Page  128: 8             U4         lowLevCfg              -           -            Low-level conﬁguration (obsolete for protocol versions
+Page  135: 4                   U1        aopCfg                 -           -            AssistNow Autonomous conﬁguration
+Page  140: Ellipsoid, but can be changed with the message CFG-NAVSPG-USE_USRDAT.
+Page  162: The delay ﬁgures and timebase given in CFG-TP Conﬁguration Items are also applied to the time results
+Page  162: to the conﬁguration in CFG-TP Conﬁguration
+Page  163: conﬁguration in CFG-NAVSPG-* conﬁguration
+Page  163: recommended conﬁguration when using this message is to set both the measurement rate (CFG-RATE) and
+Page  163: the timepulse frequency (CFG-TP) to 1 Hz.
+Page  165: recommended to issue a GNSS stop command using UBX-CFG-RST before in order to keep the BBR memory
+Page  167: Conﬁguration interface, for example conﬁguration item CFG-UART1INPROT-RTCM3X.
+Page  192: easier, more readable text representation uses the form CFG-GROUP-ITEM. This is also referred to
+Page  194: • UBX-CFG-VALGET to read conﬁguration items from the database
+Page  194: • UBX-CFG-VALSET to set conﬁguration items in the database
+Page  194: • UBX-CFG-VALDEL to delete conﬁguration items from the database
+Page  194: in the UBX-CFG-VALSET and UBX-CFG-VALGET messages.
+Page  195: Note that a transaction can only come from a single source, a UBX-CFG-VALSET message or a UBX-
+Page  195: CFG-VALDEL message. This means that in any given transaction it is not possible to mix a delete
+Page  196: Refer to UBX-CFG-VALSET and UBX-CFG-VALDEL messages for a detailed description of how to
+Page  196: reset. When using UBX-CFG-RST the processor goes through a reset cycle with these reset types
+Page  196: CFG-ANA                                AssistNow Autonomous and Oﬄine conﬁguration
+Page  196: CFG-BATCH                              Batched output conﬁguration
+Page  196: CFG-GEOFENCE                           Geofencing conﬁguration
+Page  196: CFG-HW                                 Hardware conﬁguration
+Page  196: CFG-I2C                                Conﬁguration of the I2C interface
+Page  196: CFG-I2CINPROT                          Input protocol conﬁguration of the I2C interface
+Page  196: CFG-I2COUTPROT                         Output protocol conﬁguration of the I2C interface
+Page  196: CFG-INFMSG                             Information message conﬁguration
+Page  196: CFG-ITFM                               Jamming and interference monitor conﬁguration
+Page  196: CFG-LOGFILTER                          Data logger conﬁguration
+Page  196: CFG-MOT                                Motion detector conﬁguration
+Page  196: CFG-MSGOUT                             Message output conﬁguration
+Page  196: CFG-NAVSPG                             Standard precision navigation conﬁguration
+Page  196: CFG-NMEA                               NMEA protocol conﬁguration
+Page  196: CFG-ODO                                Odometer and low-speed course over ground ﬁlter conﬁguration
+Page  196: CFG-PM                                 Conﬁguration for receiver power management
+Page  196: CFG-QZSS                               QZSS system conﬁguration
+Page  196: CFG-RATE                               Navigation and measurement rate conﬁguration
+Page  196: CFG-RINV                               Remote inventory
+Page  196: CFG-SBAS                               SBAS conﬁguration
+Page  196: CFG-SEC                                Security conﬁguration
+Page  196: CFG-SIGNAL                             Satellite systems (GNSS) signal conﬁguration
+Page  196: CFG-SPI                                Conﬁguration of the SPI interface
+Page  196: CFG-SPIINPROT                          Input protocol conﬁguration of the SPI interface
+Page  196: CFG-SPIOUTPROT                         Output protocol conﬁguration of the SPI interface
+Page  197: CFG-TP                                           Time pulse conﬁguration
+Page  197: CFG-TXREADY                                      TX ready conﬁguration
+Page  197: CFG-UART1                                        Conﬁguration of the UART1 interface
+Page  197: CFG-UART1INPROT                                  Input protocol conﬁguration of the UART1 interface
+Page  197: CFG-UART1OUTPROT                                 Output protocol conﬁguration of the UART1 interface
+Page  197: CFG-UART2                                        Conﬁguration of the UART2 interface
+Page  197: CFG-UART2INPROT                                  Input protocol conﬁguration of the UART2 interface
+Page  197: CFG-UART2OUTPROT                                 Output protocol conﬁguration of the UART2 interface
+Page  197: CFG-USB                                          Conﬁguration of the USB interface
+Page  197: CFG-USBINPROT                                    Input protocol conﬁguration of the USB interface
+Page  197: CFG-USBOUTPROT                                   Output protocol conﬁguration of the USB interface
+Page  197: 5.9.1 CFG-ANA: AssistNow Autonomous and Oﬄine conﬁguration
+Page  197: CFG-ANA-USE_ANA                      0x10230001      L         -      -     Use AssistNow Autonomous
+Page  197: CFG-ANA-ORBMAXERR                    0x30230002 U2             -      m     Maximum acceptable (modeled) orbit error
+Page  197: Table 5: CFG-ANA conﬁguration items
+Page  197: 5.9.2 CFG-BATCH: Batched output conﬁguration
+Page  197: CFG-BATCH-ENABLE                     0x10260013      L         -      -     Enable data batching
+Page  197: Enable the feature. Note that it will do nothing unless a positive value is set for CFG-BATCH-MAXENTRIES.
+Page  197: CFG-BATCH-PIOENABLE                  0x10260014      L         -      -     Enable PIO notiﬁcation
+Page  197: CFG-BATCH-MAXENTRIES                 0x30260015 U2             -      -     Maximum entries in buﬀer
+Page  197: CFG-BATCH-WARNTHRS                   0x30260016 U2             -      -     Buﬀer ﬁll level warning threshold
+Page  197: CFG-BATCH-PIOACTIVELOW               0x10260018      L         -      -     PIO is active low
+Page  197: If this is set the PIO selected with CFG-BATCH-PIOID will be driven low when the buﬀer ﬁll level reaches WARNTHRS.
+Page  197: CFG-BATCH-PIOID                      0x20260019 U1             -      -     PIO ID for buﬀer level notiﬁcation
+Page  197: CFG-BATCH-EXTRAPVT                   0x1026001a      L         -      -     Include extra PVT data
+Page  198: CFG-BATCH-EXTRAODO                   0x1026001b       L       -         -     Include odometer data
+Page  198: Table 6: CFG-BATCH conﬁguration items
+Page  198: 5.9.3 CFG-GEOFENCE: Geofencing conﬁguration
+Page  198: CFG-GEOFENCE-CONFLVL                 0x20240011 E1            -         -     Required conﬁdence level for state evaluation
+Page  198: CFG-GEOFENCE-USE_PIO                 0x10240012       L       -         -     Use PIO combined fence state output
+Page  198: CFG-GEOFENCE-PINPOL                  0x20240013 E1            -         -     PIO pin polarity
+Page  198: CFG-GEOFENCE-PIN                     0x20240014 U1            -         -     PIO pin number
+Page  198: CFG-GEOFENCE-USE_FENCE1              0x10240020       L       -         -     Use ﬁrst geofence
+Page  198: CFG-GEOFENCE-FENCE1_LAT              0x40240021       I4    1e-7       deg    Latitude of the ﬁrst geofence circle center
+Page  198: CFG-GEOFENCE-FENCE1_LON              0x40240022       I4    1e-7       deg    Longitude of the ﬁrst geofence circle center
+Page  198: CFG-GEOFENCE-FENCE1_RAD              0x40240023 U4          0.01        m     Radius of the ﬁrst geofence circle
+Page  198: CFG-GEOFENCE-USE_FENCE2              0x10240030       L       -         -     Use second geofence
+Page  198: CFG-GEOFENCE-FENCE2_LAT              0x40240031       I4    1e-7       deg    Latitude of the second geofence circle center
+Page  198: CFG-GEOFENCE-FENCE2_LON              0x40240032       I4    1e-7       deg    Longitude of the second geofence circle center
+Page  198: CFG-GEOFENCE-FENCE2_RAD              0x40240033 U4          0.01        m     Radius of the second geofence circle
+Page  198: CFG-GEOFENCE-USE_FENCE3              0x10240040       L       -         -     Use third geofence
+Page  198: CFG-GEOFENCE-FENCE3_LAT              0x40240041       I4    1e-7       deg    Latitude of the third geofence circle center
+Page  198: CFG-GEOFENCE-FENCE3_LON              0x40240042       I4    1e-7       deg    Longitude of the third geofence circle center
+Page  198: CFG-GEOFENCE-FENCE3_RAD              0x40240043 U4          0.01        m     Radius of the third geofence circle
+Page  198: CFG-GEOFENCE-USE_FENCE4              0x10240050       L       -         -     Use fourth geofence
+Page  198: CFG-GEOFENCE-FENCE4_LAT              0x40240051       I4    1e-7       deg    Latitude of the fourth geofence circle center
+Page  198: CFG-GEOFENCE-FENCE4_LON              0x40240052       I4    1e-7       deg    Longitude of the fourth geofence circle center
+Page  198: CFG-GEOFENCE-FENCE4_RAD              0x40240053 U4          0.01        m     Radius of the fourth geofence circle
+Page  198: Table 7: CFG-GEOFENCE conﬁguration items
+Page  199: Table 8: Constants for CFG-GEOFENCE-CONFLVL
+Page  199: Table 9: Constants for CFG-GEOFENCE-PINPOL
+Page  199: 5.9.4 CFG-HW: Hardware conﬁguration
+Page  199: CFG-HW-ANT_CFG_VOLTCTRL              0x10a3002e      L        -       -     Active antenna voltage control ﬂag
+Page  199: CFG-HW-ANT_CFG_SHORTDET              0x10a3002f      L        -       -     Short antenna detection ﬂag
+Page  199: CFG-HW-ANT_CFG_SHORTDET_POL          0x10a30030      L        -       -     Short antenna detection polarity
+Page  199: CFG-HW-ANT_CFG_OPENDET               0x10a30031      L        -       -     Open antenna detection ﬂag
+Page  199: CFG-HW-ANT_CFG_OPENDET_POL           0x10a30032      L        -       -     Open antenna detection polarity
+Page  199: CFG-HW-ANT_CFG_PWRDOWN               0x10a30033      L        -       -     Power down antenna ﬂag
+Page  199: Enable power down antenna logic in the event of antenna short circuit. CFG-HW-ANT_CFG_SHORTDET must be enabled
+Page  199: CFG-HW-ANT_CFG_PWRDOWN_POL           0x10a30034      L        -       -     Power down antenna logic polarity
+Page  199: CFG-HW-ANT_CFG_RECOVER               0x10a30035      L        -       -     Automatic recovery from short state ﬂag
+Page  199: CFG-HW-ANT_SUP_SWITCH_PIN            0x20a30036 U1            -       -     ANT1 PIO number
+Page  199: CFG-HW-ANT_SUP_SHORT_PIN             0x20a30037 U1            -       -     ANT0 PIO number
+Page  199: CFG-HW-ANT_SUP_OPEN_PIN              0x20a30038 U1            -       -     ANT2 PIO number
+Page  199: CFG-HW-ANT_ON_SHORT_US               0x30a3003c U2            -       -     ANT on->short timeout[us]
+Page  200: CFG-HW-ANT_SUP_ENGINE                0x20a30054 E1            -          -     Antenna supervisor engine selection
+Page  200: CFG-HW-ANT_SUP_SHORT_THR             0x20a30055 U1            -         mV     Antenna supervisor MADC engine short
+Page  200: CFG-HW-ANT_SUP_OPEN_THR              0x20a30056 U1            -         mV     Antenna supervisor MADC engine open
+Page  200: Table 10: CFG-HW conﬁguration items
+Page  200: Table 11: Constants for CFG-HW-ANT_SUP_ENGINE
+Page  200: 5.9.5 CFG-I2C: Conﬁguration of the I2C interface
+Page  200: CFG-I2C-ADDRESS                      0x20510001 U1            -          -     I2C address of the receiver (7 bits)
+Page  200: CFG-I2C-EXTENDEDTIMEOUT              0x10510002       L       -          -     Flag to disable timeouting the interface after
+Page  200: CFG-I2C-ENABLED                      0x10510003       L       -          -     Flag to indicate if the I2C interface should be
+Page  200: Table 12: CFG-I2C conﬁguration items
+Page  200: 5.9.6 CFG-I2CINPROT: Input protocol conﬁguration of the I2C interface
+Page  200: CFG-I2CINPROT-UBX                    0x10710001       L       -          -     Flag to indicate if UBX should be an input
+Page  200: CFG-I2CINPROT-NMEA                   0x10710002       L       -          -     Flag to indicate if NMEA should be an input
+Page  200: CFG-I2CINPROT-RTCM3X                 0x10710004       L       -          -     Flag to indicate if RTCM3X should be an input
+Page  200: Table 13: CFG-I2CINPROT conﬁguration items
+Page  200: 5.9.7 CFG-I2COUTPROT: Output protocol conﬁguration of the I2C interface
+Page  200: CFG-I2COUTPROT-UBX                   0x10720001       L       -          -     Flag to indicate if UBX should be an output
+Page  201: CFG-I2COUTPROT-NMEA                  0x10720002       L       -          -     Flag to indicate if NMEA should be an output
+Page  201: Table 14: CFG-I2COUTPROT conﬁguration items
+Page  201: 5.9.8 CFG-INFMSG: Information message conﬁguration
+Page  201: CFG-INFMSG-UBX_I2C                   0x20920001 X1            -          -     Information message enable ﬂags for the UBX
+Page  201: CFG-INFMSG-UBX_UART1                 0x20920002 X1            -          -     Information message enable ﬂags for the UBX
+Page  201: CFG-INFMSG-UBX_UART2                 0x20920003 X1            -          -     Information message enable ﬂags for the UBX
+Page  201: CFG-INFMSG-UBX_USB                   0x20920004 X1            -          -     Information message enable ﬂags for the UBX
+Page  201: CFG-INFMSG-UBX_SPI                   0x20920005 X1            -          -     Information message enable ﬂags for the UBX
+Page  201: CFG-INFMSG-NMEA_I2C                  0x20920006 X1            -          -     Information message enable ﬂags for the NMEA
+Page  201: CFG-INFMSG-NMEA_UART1                0x20920007 X1            -          -     Information message enable ﬂags for the NMEA
+Page  201: CFG-INFMSG-NMEA_UART2                0x20920008 X1            -          -     Information message enable ﬂags for the NMEA
+Page  201: CFG-INFMSG-NMEA_USB                  0x20920009 X1            -          -     Information message enable ﬂags for the NMEA
+Page  201: CFG-INFMSG-NMEA_SPI                  0x2092000a X1            -          -     Information message enable ﬂags for the NMEA
+Page  201: Table 15: CFG-INFMSG conﬁguration items
+Page  202: Table 16: Constants for CFG-INFMSG-UBX_I2C, CFG-INFMSG-UBX_UART1, CFG-INFMSG-UBX_UART2, CFG-INFMSG-
+Page  202: UBX_USB, CFG-INFMSG-UBX_SPI, CFG-INFMSG-NMEA_I2C, CFG-INFMSG-NMEA_UART1, CFG-INFMSG-NMEA_UART2,
+Page  202: CFG-INFMSG-NMEA_USB, CFG-INFMSG-NMEA_SPI
+Page  202: 5.9.9 CFG-ITFM: Jamming and interference monitor conﬁguration
+Page  202: CFG-ITFM-BBTHRESHOLD                 0x20410001 U1             -         -     Broadband jamming detection threshold
+Page  202: CFG-ITFM-CWTHRESHOLD                 0x20410002 U1             -         -     CW jamming detection threshold
+Page  202: CFG-ITFM-ENABLE                      0x1041000d       L        -         -     Enable interference detection
+Page  202: CFG-ITFM-ANTSETTING                  0x20410010 E1             -         -     Antenna setting
+Page  202: CFG-ITFM-ENABLE_AUX                  0x10410013       L        -         -     Scan auxiliary bands
+Page  202: Table 17: CFG-ITFM conﬁguration items
+Page  202: Table 18: Constants for CFG-ITFM-ANTSETTING
+Page  202: 5.9.10 CFG-LOGFILTER: Data logger conﬁguration
+Page  202: CFG-LOGFILTER-RECORD_ENA             0x10de0002       L        -         -     Recording enabled
+Page  202: CFG-LOGFILTER-ONCE_PER_WAKE_         0x10de0003       L        -         -     Once per wake up
+Page  202: Note: the value set here does not take eﬀect unless CFG-LOGFILTER-APPLY_ALL_FILTERS is enabled.
+Page  202: CFG-LOGFILTER-APPLY_ALL_FILTERS 0x10de0004            L        -         -     Apply all ﬁlter settings
+Page  203: CFG-LOGFILTER-MIN_INTERVAL           0x30de0005 U2           -        s     Minimum time interval between logged
+Page  203: Note: the value set here does not take eﬀect unless CFG-LOGFILTER-APPLY_ALL_FILTERS is enabled.
+Page  203: CFG-LOGFILTER-TIME_THRS              0x30de0006 U2           -        s     Time threshold
+Page  203: Note: the value set here does not take eﬀect unless CFG-LOGFILTER-APPLY_ALL_FILTERS is enabled.
+Page  203: CFG-LOGFILTER-SPEED_THRS             0x30de0007 U2           -       m/s    Speed threshold
+Page  203: Note: value set here does not take eﬀect unless CFG-LOGFILTER-APPLY_ALL_FILTERS is enabled.
+Page  203: CFG-LOGFILTER-POSITION_THRS          0x40de0008 U4           -        m     Position threshold
+Page  203: Note: the value set here does not take eﬀect unless CFG-LOGFILTER-APPLY_ALL_FILTERS is enabled.
+Page  203: Table 19: CFG-LOGFILTER conﬁguration items
+Page  203: 5.9.11 CFG-MOT: Motion detector conﬁguration
+Page  203: CFG-MOT-GNSSSPEED_THRS               0x20250038 U1         0.01      m/s    GNSS speed threshold below which platform
+Page  203: CFG-MOT-GNSSDIST_THRS                0x3025003b U2           -        -     Distance above which GNSS-based stationary
+Page  203: Table 20: CFG-MOT conﬁguration items
+Page  203: 5.9.12 CFG-MSGOUT: Message output conﬁguration
+Page  203: CFG-MSGOUT-NMEA_ID_DTM_I2C           0x209100a6 U1           -        -     Output rate of the NMEA-GX-DTM message on
+Page  203: CFG-MSGOUT-NMEA_ID_DTM_SPI           0x209100aa U1           -        -     Output rate of the NMEA-GX-DTM message on
+Page  203: CFG-MSGOUT-NMEA_ID_DTM_UART1 0x209100a7 U1                   -        -     Output rate of the NMEA-GX-DTM message on
+Page  203: CFG-MSGOUT-NMEA_ID_DTM_UART2 0x209100a8 U1                   -        -     Output rate of the NMEA-GX-DTM message on
+Page  203: CFG-MSGOUT-NMEA_ID_DTM_USB           0x209100a9 U1           -        -     Output rate of the NMEA-GX-DTM message on
+Page  203: CFG-MSGOUT-NMEA_ID_GBS_I2C           0x209100dd U1           -        -     Output rate of the NMEA-GX-GBS message on
+Page  204: CFG-MSGOUT-NMEA_ID_GBS_SPI   0x209100e1 U1       -       -       Output rate of the NMEA-GX-GBS message on
+Page  204: CFG-MSGOUT-NMEA_ID_GBS_UART1 0x209100de U1       -       -       Output rate of the NMEA-GX-GBS message on
+Page  204: CFG-MSGOUT-NMEA_ID_GBS_UART2 0x209100df U1       -       -       Output rate of the NMEA-GX-GBS message on
+Page  204: CFG-MSGOUT-NMEA_ID_GBS_USB   0x209100e0 U1       -       -       Output rate of the NMEA-GX-GBS message on
+Page  204: CFG-MSGOUT-NMEA_ID_GGA_I2C   0x209100ba U1       -       -       Output rate of the NMEA-GX-GGA message on
+Page  204: CFG-MSGOUT-NMEA_ID_GGA_SPI   0x209100be U1       -       -       Output rate of the NMEA-GX-GGA message on
+Page  204: CFG-MSGOUT-NMEA_ID_GGA_UART1 0x209100bb U1       -       -       Output rate of the NMEA-GX-GGA message on
+Page  204: CFG-MSGOUT-NMEA_ID_GGA_UART2 0x209100bc U1       -       -       Output rate of the NMEA-GX-GGA message on
+Page  204: CFG-MSGOUT-NMEA_ID_GGA_USB   0x209100bd U1       -       -       Output rate of the NMEA-GX-GGA message on
+Page  204: CFG-MSGOUT-NMEA_ID_GLL_I2C   0x209100c9 U1       -       -       Output rate of the NMEA-GX-GLL message on
+Page  204: CFG-MSGOUT-NMEA_ID_GLL_SPI   0x209100cd U1       -       -       Output rate of the NMEA-GX-GLL message on
+Page  204: CFG-MSGOUT-NMEA_ID_GLL_UART1 0x209100ca U1       -       -       Output rate of the NMEA-GX-GLL message on
+Page  204: CFG-MSGOUT-NMEA_ID_GLL_UART2 0x209100cb U1       -       -       Output rate of the NMEA-GX-GLL message on
+Page  204: CFG-MSGOUT-NMEA_ID_GLL_USB   0x209100cc U1       -       -       Output rate of the NMEA-GX-GLL message on
+Page  204: CFG-MSGOUT-NMEA_ID_GNS_I2C   0x209100b5 U1       -       -       Output rate of the NMEA-GX-GNS message on
+Page  204: CFG-MSGOUT-NMEA_ID_GNS_SPI   0x209100b9 U1       -       -       Output rate of the NMEA-GX-GNS message on
+Page  204: CFG-MSGOUT-NMEA_ID_GNS_UART1 0x209100b6 U1       -       -       Output rate of the NMEA-GX-GNS message on
+Page  204: CFG-MSGOUT-NMEA_ID_GNS_UART2 0x209100b7 U1       -       -       Output rate of the NMEA-GX-GNS message on
+Page  204: CFG-MSGOUT-NMEA_ID_GNS_USB   0x209100b8 U1       -       -       Output rate of the NMEA-GX-GNS message on
+Page  204: CFG-MSGOUT-NMEA_ID_GRS_I2C   0x209100ce U1       -       -       Output rate of the NMEA-GX-GRS message on
+Page  204: CFG-MSGOUT-NMEA_ID_GRS_SPI   0x209100d2 U1       -       -       Output rate of the NMEA-GX-GRS message on
+Page  204: CFG-MSGOUT-NMEA_ID_GRS_UART1 0x209100cf U1       -       -       Output rate of the NMEA-GX-GRS message on
+Page  204: CFG-MSGOUT-NMEA_ID_GRS_UART2 0x209100d0 U1       -       -       Output rate of the NMEA-GX-GRS message on
+Page  204: CFG-MSGOUT-NMEA_ID_GRS_USB   0x209100d1 U1       -       -       Output rate of the NMEA-GX-GRS message on
+Page  204: CFG-MSGOUT-NMEA_ID_GSA_I2C   0x209100bf U1       -       -       Output rate of the NMEA-GX-GSA message on
+Page  204: CFG-MSGOUT-NMEA_ID_GSA_SPI   0x209100c3 U1       -       -       Output rate of the NMEA-GX-GSA message on
+Page  205: CFG-MSGOUT-NMEA_ID_GSA_UART1 0x209100c0 U1       -       -       Output rate of the NMEA-GX-GSA message on
+Page  205: CFG-MSGOUT-NMEA_ID_GSA_UART2 0x209100c1 U1       -       -       Output rate of the NMEA-GX-GSA message on
+Page  205: CFG-MSGOUT-NMEA_ID_GSA_USB   0x209100c2 U1       -       -       Output rate of the NMEA-GX-GSA message on
+Page  205: CFG-MSGOUT-NMEA_ID_GST_I2C   0x209100d3 U1       -       -       Output rate of the NMEA-GX-GST message on
+Page  205: CFG-MSGOUT-NMEA_ID_GST_SPI   0x209100d7 U1       -       -       Output rate of the NMEA-GX-GST message on
+Page  205: CFG-MSGOUT-NMEA_ID_GST_UART1 0x209100d4 U1       -       -       Output rate of the NMEA-GX-GST message on
+Page  205: CFG-MSGOUT-NMEA_ID_GST_UART2 0x209100d5 U1       -       -       Output rate of the NMEA-GX-GST message on
+Page  205: CFG-MSGOUT-NMEA_ID_GST_USB   0x209100d6 U1       -       -       Output rate of the NMEA-GX-GST message on
+Page  205: CFG-MSGOUT-NMEA_ID_GSV_I2C   0x209100c4 U1       -       -       Output rate of the NMEA-GX-GSV message on
+Page  205: CFG-MSGOUT-NMEA_ID_GSV_SPI   0x209100c8 U1       -       -       Output rate of the NMEA-GX-GSV message on
+Page  205: CFG-MSGOUT-NMEA_ID_GSV_UART1 0x209100c5 U1       -       -       Output rate of the NMEA-GX-GSV message on
+Page  205: CFG-MSGOUT-NMEA_ID_GSV_UART2 0x209100c6 U1       -       -       Output rate of the NMEA-GX-GSV message on
+Page  205: CFG-MSGOUT-NMEA_ID_GSV_USB   0x209100c7 U1       -       -       Output rate of the NMEA-GX-GSV message on
+Page  205: CFG-MSGOUT-NMEA_ID_RLM_I2C   0x20910400 U1       -       -       Output rate of the NMEA-GX-RLM message on
+Page  205: CFG-MSGOUT-NMEA_ID_RLM_SPI   0x20910404 U1       -       -       Output rate of the NMEA-GX-RLM message on
+Page  205: CFG-MSGOUT-NMEA_ID_RLM_UART1 0x20910401 U1       -       -       Output rate of the NMEA-GX-RLM message on
+Page  205: CFG-MSGOUT-NMEA_ID_RLM_UART2 0x20910402 U1       -       -       Output rate of the NMEA-GX-RLM message on
+Page  205: CFG-MSGOUT-NMEA_ID_RLM_USB   0x20910403 U1       -       -       Output rate of the NMEA-GX-RLM message on
+Page  205: CFG-MSGOUT-NMEA_ID_RMC_I2C   0x209100ab U1       -       -       Output rate of the NMEA-GX-RMC message on
+Page  205: CFG-MSGOUT-NMEA_ID_RMC_SPI   0x209100af U1       -       -       Output rate of the NMEA-GX-RMC message on
+Page  205: CFG-MSGOUT-NMEA_ID_RMC_UART1 0x209100ac U1       -       -       Output rate of the NMEA-GX-RMC message on
+Page  205: CFG-MSGOUT-NMEA_ID_RMC_UART2 0x209100ad U1       -       -       Output rate of the NMEA-GX-RMC message on
+Page  205: CFG-MSGOUT-NMEA_ID_RMC_USB   0x209100ae U1       -       -       Output rate of the NMEA-GX-RMC message on
+Page  205: CFG-MSGOUT-NMEA_ID_VLW_I2C   0x209100e7 U1       -       -       Output rate of the NMEA-GX-VLW message on
+Page  205: CFG-MSGOUT-NMEA_ID_VLW_SPI   0x209100eb U1       -       -       Output rate of the NMEA-GX-VLW message on
+Page  205: CFG-MSGOUT-NMEA_ID_VLW_UART1 0x209100e8 U1       -       -       Output rate of the NMEA-GX-VLW message on
+Page  206: CFG-MSGOUT-NMEA_ID_VLW_UART2 0x209100e9 U1         -       -       Output rate of the NMEA-GX-VLW message on
+Page  206: CFG-MSGOUT-NMEA_ID_VLW_USB     0x209100ea U1       -       -       Output rate of the NMEA-GX-VLW message on
+Page  206: CFG-MSGOUT-NMEA_ID_VTG_I2C     0x209100b0 U1       -       -       Output rate of the NMEA-GX-VTG message on
+Page  206: CFG-MSGOUT-NMEA_ID_VTG_SPI     0x209100b4 U1       -       -       Output rate of the NMEA-GX-VTG message on
+Page  206: CFG-MSGOUT-NMEA_ID_VTG_UART1 0x209100b1 U1         -       -       Output rate of the NMEA-GX-VTG message on
+Page  206: CFG-MSGOUT-NMEA_ID_VTG_UART2 0x209100b2 U1         -       -       Output rate of the NMEA-GX-VTG message on
+Page  206: CFG-MSGOUT-NMEA_ID_VTG_USB     0x209100b3 U1       -       -       Output rate of the NMEA-GX-VTG message on
+Page  206: CFG-MSGOUT-NMEA_ID_ZDA_I2C     0x209100d8 U1       -       -       Output rate of the NMEA-GX-ZDA message on
+Page  206: CFG-MSGOUT-NMEA_ID_ZDA_SPI     0x209100dc U1       -       -       Output rate of the NMEA-GX-ZDA message on
+Page  206: CFG-MSGOUT-NMEA_ID_ZDA_UART1 0x209100d9 U1         -       -       Output rate of the NMEA-GX-ZDA message on
+Page  206: CFG-MSGOUT-NMEA_ID_ZDA_UART2 0x209100da U1         -       -       Output rate of the NMEA-GX-ZDA message on
+Page  206: CFG-MSGOUT-NMEA_ID_ZDA_USB     0x209100db U1       -       -       Output rate of the NMEA-GX-ZDA message on
+Page  206: CFG-MSGOUT-PUBX_ID_POLYP_I2C   0x209100ec U1       -       -       Output rate of the NMEA-GX-PUBX00 message
+Page  206: CFG-MSGOUT-PUBX_ID_POLYP_SPI   0x209100f0 U1       -       -       Output rate of the NMEA-GX-PUBX00 message
+Page  206: CFG-MSGOUT-PUBX_ID_POLYP_      0x209100ed U1       -       -       Output rate of the NMEA-GX-PUBX00 message
+Page  206: CFG-MSGOUT-PUBX_ID_POLYP_      0x209100ee U1       -       -       Output rate of the NMEA-GX-PUBX00 message
+Page  206: CFG-MSGOUT-PUBX_ID_POLYP_USB   0x209100ef U1       -       -       Output rate of the NMEA-GX-PUBX00 message
+Page  206: CFG-MSGOUT-PUBX_ID_POLYS_I2C   0x209100f1 U1       -       -       Output rate of the NMEA-GX-PUBX03 message
+Page  206: CFG-MSGOUT-PUBX_ID_POLYS_SPI   0x209100f5 U1       -       -       Output rate of the NMEA-GX-PUBX03 message
+Page  206: CFG-MSGOUT-PUBX_ID_POLYS_      0x209100f2 U1       -       -       Output rate of the NMEA-GX-PUBX03 message
+Page  206: CFG-MSGOUT-PUBX_ID_POLYS_      0x209100f3 U1       -       -       Output rate of the NMEA-GX-PUBX03 message
+Page  206: CFG-MSGOUT-PUBX_ID_POLYS_USB   0x209100f4 U1       -       -       Output rate of the NMEA-GX-PUBX03 message
+Page  206: CFG-MSGOUT-PUBX_ID_POLYT_I2C   0x209100f6 U1       -       -       Output rate of the NMEA-GX-PUBX04 message
+Page  206: CFG-MSGOUT-PUBX_ID_POLYT_SPI   0x209100fa U1       -       -       Output rate of the NMEA-GX-PUBX04 message
+Page  206: CFG-MSGOUT-PUBX_ID_POLYT_      0x209100f7 U1       -       -       Output rate of the NMEA-GX-PUBX04 message
+Page  206: CFG-MSGOUT-PUBX_ID_POLYT_      0x209100f8 U1       -       -       Output rate of the NMEA-GX-PUBX04 message
+Page  207: CFG-MSGOUT-PUBX_ID_POLYT_USB   0x209100f9 U1       -       -       Output rate of the NMEA-GX-PUBX04 message
+Page  207: CFG-MSGOUT-UBX_LOG_INFO_I2C    0x20910259 U1       -       -       Output rate of the UBX-LOG-INFO message on
+Page  207: CFG-MSGOUT-UBX_LOG_INFO_SPI    0x2091025d U1       -       -       Output rate of the UBX-LOG-INFO message on
+Page  207: CFG-MSGOUT-UBX_LOG_INFO_       0x2091025a U1       -       -       Output rate of the UBX-LOG-INFO message on
+Page  207: CFG-MSGOUT-UBX_LOG_INFO_       0x2091025b U1       -       -       Output rate of the UBX-LOG-INFO message on
+Page  207: CFG-MSGOUT-UBX_LOG_INFO_USB    0x2091025c U1       -       -       Output rate of the UBX-LOG-INFO message on
+Page  207: CFG-MSGOUT-UBX_MON_COMMS_      0x2091034f U1       -       -       Output rate of the UBX-MON-COMMS message
+Page  207: CFG-MSGOUT-UBX_MON_COMMS_      0x20910353 U1       -       -       Output rate of the UBX-MON-COMMS message
+Page  207: CFG-MSGOUT-UBX_MON_COMMS_      0x20910350 U1       -       -       Output rate of the UBX-MON-COMMS message
+Page  207: CFG-MSGOUT-UBX_MON_COMMS_      0x20910351 U1       -       -       Output rate of the UBX-MON-COMMS message
+Page  207: CFG-MSGOUT-UBX_MON_COMMS_      0x20910352 U1       -       -       Output rate of the UBX-MON-COMMS message
+Page  207: CFG-MSGOUT-UBX_MON_HW2_I2C     0x209101b9 U1       -       -       Output rate of the UBX-MON-HW2 message on
+Page  207: CFG-MSGOUT-UBX_MON_HW2_SPI     0x209101bd U1       -       -       Output rate of the UBX-MON-HW2 message on
+Page  207: CFG-MSGOUT-UBX_MON_HW2_        0x209101ba U1       -       -       Output rate of the UBX-MON-HW2 message on
+Page  207: CFG-MSGOUT-UBX_MON_HW2_        0x209101bb U1       -       -       Output rate of the UBX-MON-HW2 message on
+Page  207: CFG-MSGOUT-UBX_MON_HW2_USB     0x209101bc U1       -       -       Output rate of the UBX-MON-HW2 message on
+Page  207: CFG-MSGOUT-UBX_MON_HW3_I2C     0x20910354 U1       -       -       Output rate of the UBX-MON-HW3 message on
+Page  207: CFG-MSGOUT-UBX_MON_HW3_SPI     0x20910358 U1       -       -       Output rate of the UBX-MON-HW3 message on
+Page  207: CFG-MSGOUT-UBX_MON_HW3_        0x20910355 U1       -       -       Output rate of the UBX-MON-HW3 message on
+Page  207: CFG-MSGOUT-UBX_MON_HW3_        0x20910356 U1       -       -       Output rate of the UBX-MON-HW3 message on
+Page  207: CFG-MSGOUT-UBX_MON_HW3_USB     0x20910357 U1       -       -       Output rate of the UBX-MON-HW3 message on
+Page  207: CFG-MSGOUT-UBX_MON_HW_I2C      0x209101b4 U1       -       -       Output rate of the UBX-MON-HW message on
+Page  207: CFG-MSGOUT-UBX_MON_HW_SPI      0x209101b8 U1       -       -       Output rate of the UBX-MON-HW message on
+Page  207: CFG-MSGOUT-UBX_MON_HW_UART1 0x209101b5 U1          -       -       Output rate of the UBX-MON-HW message on
+Page  207: CFG-MSGOUT-UBX_MON_HW_UART2 0x209101b6 U1          -       -       Output rate of the UBX-MON-HW message on
+Page  207: CFG-MSGOUT-UBX_MON_HW_USB      0x209101b7 U1       -       -       Output rate of the UBX-MON-HW message on
+Page  208: CFG-MSGOUT-UBX_MON_IO_I2C     0x209101a5 U1       -       -       Output rate of the UBX-MON-IO message on
+Page  208: CFG-MSGOUT-UBX_MON_IO_SPI     0x209101a9 U1       -       -       Output rate of the UBX-MON-IO message on
+Page  208: CFG-MSGOUT-UBX_MON_IO_UART1   0x209101a6 U1       -       -       Output rate of the UBX-MON-IO message on
+Page  208: CFG-MSGOUT-UBX_MON_IO_UART2   0x209101a7 U1       -       -       Output rate of the UBX-MON-IO message on
+Page  208: CFG-MSGOUT-UBX_MON_IO_USB     0x209101a8 U1       -       -       Output rate of the UBX-MON-IO message on
+Page  208: CFG-MSGOUT-UBX_MON_MSGPP_I2C 0x20910196 U1        -       -       Output rate of the UBX-MON-MSGPP message
+Page  208: CFG-MSGOUT-UBX_MON_MSGPP_SPI 0x2091019a U1        -       -       Output rate of the UBX-MON-MSGPP message
+Page  208: CFG-MSGOUT-UBX_MON_MSGPP_     0x20910197 U1       -       -       Output rate of the UBX-MON-MSGPP message
+Page  208: CFG-MSGOUT-UBX_MON_MSGPP_     0x20910198 U1       -       -       Output rate of the UBX-MON-MSGPP message
+Page  208: CFG-MSGOUT-UBX_MON_MSGPP_     0x20910199 U1       -       -       Output rate of the UBX-MON-MSGPP message
+Page  208: CFG-MSGOUT-UBX_MON_RF_I2C     0x20910359 U1       -       -       Output rate of the UBX-MON-RF message on
+Page  208: CFG-MSGOUT-UBX_MON_RF_SPI     0x2091035d U1       -       -       Output rate of the UBX-MON-RF message on
+Page  208: CFG-MSGOUT-UBX_MON_RF_UART1 0x2091035a U1         -       -       Output rate of the UBX-MON-RF message on
+Page  208: CFG-MSGOUT-UBX_MON_RF_UART2 0x2091035b U1         -       -       Output rate of the UBX-MON-RF message on
+Page  208: CFG-MSGOUT-UBX_MON_RF_USB     0x2091035c U1       -       -       Output rate of the UBX-MON-RF message on
+Page  208: CFG-MSGOUT-UBX_MON_RXBUF_I2C 0x209101a0 U1        -       -       Output rate of the UBX-MON-RXBUF message
+Page  208: CFG-MSGOUT-UBX_MON_RXBUF_SPI 0x209101a4 U1        -       -       Output rate of the UBX-MON-RXBUF message
+Page  208: CFG-MSGOUT-UBX_MON_RXBUF_     0x209101a1 U1       -       -       Output rate of the UBX-MON-RXBUF message
+Page  208: CFG-MSGOUT-UBX_MON_RXBUF_     0x209101a2 U1       -       -       Output rate of the UBX-MON-RXBUF message
+Page  208: CFG-MSGOUT-UBX_MON_RXBUF_     0x209101a3 U1       -       -       Output rate of the UBX-MON-RXBUF message
+Page  208: CFG-MSGOUT-UBX_MON_RXR_I2C    0x20910187 U1       -       -       Output rate of the UBX-MON-RXR message on
+Page  208: CFG-MSGOUT-UBX_MON_RXR_SPI    0x2091018b U1       -       -       Output rate of the UBX-MON-RXR message on
+Page  208: CFG-MSGOUT-UBX_MON_RXR_       0x20910188 U1       -       -       Output rate of the UBX-MON-RXR message on
+Page  208: CFG-MSGOUT-UBX_MON_RXR_       0x20910189 U1       -       -       Output rate of the UBX-MON-RXR message on
+Page  208: CFG-MSGOUT-UBX_MON_RXR_USB    0x2091018a U1       -       -       Output rate of the UBX-MON-RXR message on
+Page  208: CFG-MSGOUT-UBX_MON_SPAN_I2C   0x2091038b U1       -       -       Output rate of the UBX-MON-SPAN message on
+Page  209: CFG-MSGOUT-UBX_MON_SPAN_SPI   0x2091038f U1       -       -       Output rate of the UBX-MON-SPAN message on
+Page  209: CFG-MSGOUT-UBX_MON_SPAN_      0x2091038c U1       -       -       Output rate of the UBX-MON-SPAN message on
+Page  209: CFG-MSGOUT-UBX_MON_SPAN_      0x2091038d U1       -       -       Output rate of the UBX-MON-SPAN message on
+Page  209: CFG-MSGOUT-UBX_MON_SPAN_USB 0x2091038e U1         -       -       Output rate of the UBX-MON-SPAN message on
+Page  209: CFG-MSGOUT-UBX_MON_TXBUF_I2C 0x2091019b U1        -       -       Output rate of the UBX-MON-TXBUF message
+Page  209: CFG-MSGOUT-UBX_MON_TXBUF_SPI 0x2091019f U1        -       -       Output rate of the UBX-MON-TXBUF message
+Page  209: CFG-MSGOUT-UBX_MON_TXBUF_     0x2091019c U1       -       -       Output rate of the UBX-MON-TXBUF message
+Page  209: CFG-MSGOUT-UBX_MON_TXBUF_     0x2091019d U1       -       -       Output rate of the UBX-MON-TXBUF message
+Page  209: CFG-MSGOUT-UBX_MON_TXBUF_     0x2091019e U1       -       -       Output rate of the UBX-MON-TXBUF message
+Page  209: CFG-MSGOUT-UBX_NAV_           0x20910079 U1       -       -       Output rate of the UBX-NAV-AOPSTATUS
+Page  209: CFG-MSGOUT-UBX_NAV_           0x2091007d U1       -       -       Output rate of the UBX-NAV-AOPSTATUS
+Page  209: CFG-MSGOUT-UBX_NAV_           0x2091007a U1       -       -       Output rate of the UBX-NAV-AOPSTATUS
+Page  209: CFG-MSGOUT-UBX_NAV_           0x2091007b U1       -       -       Output rate of the UBX-NAV-AOPSTATUS
+Page  209: CFG-MSGOUT-UBX_NAV_           0x2091007c U1       -       -       Output rate of the UBX-NAV-AOPSTATUS
+Page  209: CFG-MSGOUT-UBX_NAV_CLOCK_I2C 0x20910065 U1        -       -       Output rate of the UBX-NAV-CLOCK message
+Page  209: CFG-MSGOUT-UBX_NAV_CLOCK_SPI 0x20910069 U1        -       -       Output rate of the UBX-NAV-CLOCK message
+Page  209: CFG-MSGOUT-UBX_NAV_CLOCK_     0x20910066 U1       -       -       Output rate of the UBX-NAV-CLOCK message
+Page  209: CFG-MSGOUT-UBX_NAV_CLOCK_     0x20910067 U1       -       -       Output rate of the UBX-NAV-CLOCK message
+Page  209: CFG-MSGOUT-UBX_NAV_CLOCK_USB 0x20910068 U1        -       -       Output rate of the UBX-NAV-CLOCK message
+Page  209: CFG-MSGOUT-UBX_NAV_COV_I2C    0x20910083 U1       -       -       Output rate of the UBX-NAV-COV message on
+Page  209: CFG-MSGOUT-UBX_NAV_COV_SPI    0x20910087 U1       -       -       Output rate of the UBX-NAV-COV message on
+Page  209: CFG-MSGOUT-UBX_NAV_COV_       0x20910084 U1       -       -       Output rate of the UBX-NAV-COV message on
+Page  209: CFG-MSGOUT-UBX_NAV_COV_       0x20910085 U1       -       -       Output rate of the UBX-NAV-COV message on
+Page  209: CFG-MSGOUT-UBX_NAV_COV_USB    0x20910086 U1       -       -       Output rate of the UBX-NAV-COV message on
+Page  209: CFG-MSGOUT-UBX_NAV_DOP_I2C    0x20910038 U1       -       -       Output rate of the UBX-NAV-DOP message on
+Page  209: CFG-MSGOUT-UBX_NAV_DOP_SPI    0x2091003c U1       -       -       Output rate of the UBX-NAV-DOP message on
+Page  210: CFG-MSGOUT-UBX_NAV_DOP_       0x20910039 U1       -       -       Output rate of the UBX-NAV-DOP message on
+Page  210: CFG-MSGOUT-UBX_NAV_DOP_       0x2091003a U1       -       -       Output rate of the UBX-NAV-DOP message on
+Page  210: CFG-MSGOUT-UBX_NAV_DOP_USB    0x2091003b U1       -       -       Output rate of the UBX-NAV-DOP message on
+Page  210: CFG-MSGOUT-UBX_NAV_EOE_I2C    0x2091015f U1       -       -       Output rate of the UBX-NAV-EOE message on
+Page  210: CFG-MSGOUT-UBX_NAV_EOE_SPI    0x20910163 U1       -       -       Output rate of the UBX-NAV-EOE message on
+Page  210: CFG-MSGOUT-UBX_NAV_EOE_UART1 0x20910160 U1        -       -       Output rate of the UBX-NAV-EOE message on
+Page  210: CFG-MSGOUT-UBX_NAV_EOE_UART2 0x20910161 U1        -       -       Output rate of the UBX-NAV-EOE message on
+Page  210: CFG-MSGOUT-UBX_NAV_EOE_USB    0x20910162 U1       -       -       Output rate of the UBX-NAV-EOE message on
+Page  210: CFG-MSGOUT-UBX_NAV_GEOFENCE_ 0x209100a1 U1        -       -       Output rate of the UBX-NAV-GEOFENCE
+Page  210: CFG-MSGOUT-UBX_NAV_GEOFENCE_ 0x209100a5 U1        -       -       Output rate of the UBX-NAV-GEOFENCE
+Page  210: CFG-MSGOUT-UBX_NAV_GEOFENCE_ 0x209100a2 U1        -       -       Output rate of the UBX-NAV-GEOFENCE
+Page  210: CFG-MSGOUT-UBX_NAV_GEOFENCE_ 0x209100a3 U1        -       -       Output rate of the UBX-NAV-GEOFENCE
+Page  210: CFG-MSGOUT-UBX_NAV_GEOFENCE_ 0x209100a4 U1        -       -       Output rate of the UBX-NAV-GEOFENCE
+Page  210: CFG-MSGOUT-UBX_NAV_ODO_I2C    0x2091007e U1       -       -       Output rate of the UBX-NAV-ODO message on
+Page  210: CFG-MSGOUT-UBX_NAV_ODO_SPI    0x20910082 U1       -       -       Output rate of the UBX-NAV-ODO message on
+Page  210: CFG-MSGOUT-UBX_NAV_ODO_       0x2091007f U1       -       -       Output rate of the UBX-NAV-ODO message on
+Page  210: CFG-MSGOUT-UBX_NAV_ODO_       0x20910080 U1       -       -       Output rate of the UBX-NAV-ODO message on
+Page  210: CFG-MSGOUT-UBX_NAV_ODO_USB    0x20910081 U1       -       -       Output rate of the UBX-NAV-ODO message on
+Page  210: CFG-MSGOUT-UBX_NAV_ORB_I2C    0x20910010 U1       -       -       Output rate of the UBX-NAV-ORB message on
+Page  210: CFG-MSGOUT-UBX_NAV_ORB_SPI    0x20910014 U1       -       -       Output rate of the UBX-NAV-ORB message on
+Page  210: CFG-MSGOUT-UBX_NAV_ORB_       0x20910011 U1       -       -       Output rate of the UBX-NAV-ORB message on
+Page  210: CFG-MSGOUT-UBX_NAV_ORB_       0x20910012 U1       -       -       Output rate of the UBX-NAV-ORB message on
+Page  210: CFG-MSGOUT-UBX_NAV_ORB_USB    0x20910013 U1       -       -       Output rate of the UBX-NAV-ORB message on
+Page  210: CFG-MSGOUT-UBX_NAV_POSECEF_   0x20910024 U1       -       -       Output rate of the UBX-NAV-POSECEF message
+Page  210: CFG-MSGOUT-UBX_NAV_POSECEF_   0x20910028 U1       -       -       Output rate of the UBX-NAV-POSECEF message
+Page  210: CFG-MSGOUT-UBX_NAV_POSECEF_   0x20910025 U1       -       -       Output rate of the UBX-NAV-POSECEF message
+Page  211: CFG-MSGOUT-UBX_NAV_POSECEF_   0x20910026 U1       -       -       Output rate of the UBX-NAV-POSECEF message
+Page  211: CFG-MSGOUT-UBX_NAV_POSECEF_   0x20910027 U1       -       -       Output rate of the UBX-NAV-POSECEF message
+Page  211: CFG-MSGOUT-UBX_NAV_POSLLH_    0x20910029 U1       -       -       Output rate of the UBX-NAV-POSLLH message
+Page  211: CFG-MSGOUT-UBX_NAV_POSLLH_SPI 0x2091002d U1       -       -       Output rate of the UBX-NAV-POSLLH message
+Page  211: CFG-MSGOUT-UBX_NAV_POSLLH_    0x2091002a U1       -       -       Output rate of the UBX-NAV-POSLLH message
+Page  211: CFG-MSGOUT-UBX_NAV_POSLLH_    0x2091002b U1       -       -       Output rate of the UBX-NAV-POSLLH message
+Page  211: CFG-MSGOUT-UBX_NAV_POSLLH_    0x2091002c U1       -       -       Output rate of the UBX-NAV-POSLLH message
+Page  211: CFG-MSGOUT-UBX_NAV_PVT_I2C    0x20910006 U1       -       -       Output rate of the UBX-NAV-PVT message on
+Page  211: CFG-MSGOUT-UBX_NAV_PVT_SPI    0x2091000a U1       -       -       Output rate of the UBX-NAV-PVT message on
+Page  211: CFG-MSGOUT-UBX_NAV_PVT_UART1 0x20910007 U1        -       -       Output rate of the UBX-NAV-PVT message on
+Page  211: CFG-MSGOUT-UBX_NAV_PVT_UART2 0x20910008 U1        -       -       Output rate of the UBX-NAV-PVT message on
+Page  211: CFG-MSGOUT-UBX_NAV_PVT_USB    0x20910009 U1       -       -       Output rate of the UBX-NAV-PVT message on
+Page  211: CFG-MSGOUT-UBX_NAV_SAT_I2C    0x20910015 U1       -       -       Output rate of the UBX-NAV-SAT message on
+Page  211: CFG-MSGOUT-UBX_NAV_SAT_SPI    0x20910019 U1       -       -       Output rate of the UBX-NAV-SAT message on
+Page  211: CFG-MSGOUT-UBX_NAV_SAT_UART1 0x20910016 U1        -       -       Output rate of the UBX-NAV-SAT message on
+Page  211: CFG-MSGOUT-UBX_NAV_SAT_UART2 0x20910017 U1        -       -       Output rate of the UBX-NAV-SAT message on
+Page  211: CFG-MSGOUT-UBX_NAV_SAT_USB    0x20910018 U1       -       -       Output rate of the UBX-NAV-SAT message on
+Page  211: CFG-MSGOUT-UBX_NAV_SBAS_I2C   0x2091006a U1       -       -       Output rate of the UBX-NAV-SBAS message on
+Page  211: CFG-MSGOUT-UBX_NAV_SBAS_SPI   0x2091006e U1       -       -       Output rate of the UBX-NAV-SBAS message on
+Page  211: CFG-MSGOUT-UBX_NAV_SBAS_      0x2091006b U1       -       -       Output rate of the UBX-NAV-SBAS message on
+Page  211: CFG-MSGOUT-UBX_NAV_SBAS_      0x2091006c U1       -       -       Output rate of the UBX-NAV-SBAS message on
+Page  211: CFG-MSGOUT-UBX_NAV_SBAS_USB   0x2091006d U1       -       -       Output rate of the UBX-NAV-SBAS message on
+Page  211: CFG-MSGOUT-UBX_NAV_SIG_I2C    0x20910345 U1       -       -       Output rate of the UBX-NAV-SIG message on
+Page  211: CFG-MSGOUT-UBX_NAV_SIG_SPI    0x20910349 U1       -       -       Output rate of the UBX-NAV-SIG message on
+Page  211: CFG-MSGOUT-UBX_NAV_SIG_UART1 0x20910346 U1        -       -       Output rate of the UBX-NAV-SIG message on
+Page  211: CFG-MSGOUT-UBX_NAV_SIG_UART2 0x20910347 U1        -       -       Output rate of the UBX-NAV-SIG message on
+Page  212: CFG-MSGOUT-UBX_NAV_SIG_USB    0x20910348 U1       -       -       Output rate of the UBX-NAV-SIG message on
+Page  212: CFG-MSGOUT-UBX_NAV_SLAS_I2C   0x20910336 U1       -       -       Output rate of the UBX-NAV-SLAS message on
+Page  212: CFG-MSGOUT-UBX_NAV_SLAS_SPI   0x2091033a U1       -       -       Output rate of the UBX-NAV-SLAS message on
+Page  212: CFG-MSGOUT-UBX_NAV_SLAS_      0x20910337 U1       -       -       Output rate of the UBX-NAV-SLAS message on
+Page  212: CFG-MSGOUT-UBX_NAV_SLAS_      0x20910338 U1       -       -       Output rate of the UBX-NAV-SLAS message on
+Page  212: CFG-MSGOUT-UBX_NAV_SLAS_USB   0x20910339 U1       -       -       Output rate of the UBX-NAV-SLAS message on
+Page  212: CFG-MSGOUT-UBX_NAV_STATUS_    0x2091001a U1       -       -       Output rate of the UBX-NAV-STATUS message
+Page  212: CFG-MSGOUT-UBX_NAV_STATUS_SPI 0x2091001e U1       -       -       Output rate of the UBX-NAV-STATUS message
+Page  212: CFG-MSGOUT-UBX_NAV_STATUS_    0x2091001b U1       -       -       Output rate of the UBX-NAV-STATUS message
+Page  212: CFG-MSGOUT-UBX_NAV_STATUS_    0x2091001c U1       -       -       Output rate of the UBX-NAV-STATUS message
+Page  212: CFG-MSGOUT-UBX_NAV_STATUS_    0x2091001d U1       -       -       Output rate of the UBX-NAV-STATUS message
+Page  212: CFG-MSGOUT-UBX_NAV_TIMEBDS_   0x20910051 U1       -       -       Output rate of the UBX-NAV-TIMEBDS message
+Page  212: CFG-MSGOUT-UBX_NAV_TIMEBDS_   0x20910055 U1       -       -       Output rate of the UBX-NAV-TIMEBDS message
+Page  212: CFG-MSGOUT-UBX_NAV_TIMEBDS_   0x20910052 U1       -       -       Output rate of the UBX-NAV-TIMEBDS message
+Page  212: CFG-MSGOUT-UBX_NAV_TIMEBDS_   0x20910053 U1       -       -       Output rate of the UBX-NAV-TIMEBDS message
+Page  212: CFG-MSGOUT-UBX_NAV_TIMEBDS_   0x20910054 U1       -       -       Output rate of the UBX-NAV-TIMEBDS message
+Page  212: CFG-MSGOUT-UBX_NAV_TIMEGAL_   0x20910056 U1       -       -       Output rate of the UBX-NAV-TIMEGAL message
+Page  212: CFG-MSGOUT-UBX_NAV_TIMEGAL_   0x2091005a U1       -       -       Output rate of the UBX-NAV-TIMEGAL message
+Page  212: CFG-MSGOUT-UBX_NAV_TIMEGAL_   0x20910057 U1       -       -       Output rate of the UBX-NAV-TIMEGAL message
+Page  212: CFG-MSGOUT-UBX_NAV_TIMEGAL_   0x20910058 U1       -       -       Output rate of the UBX-NAV-TIMEGAL message
+Page  212: CFG-MSGOUT-UBX_NAV_TIMEGAL_   0x20910059 U1       -       -       Output rate of the UBX-NAV-TIMEGAL message
+Page  212: CFG-MSGOUT-UBX_NAV_TIMEGLO_   0x2091004c U1       -       -       Output rate of the UBX-NAV-TIMEGLO message
+Page  212: CFG-MSGOUT-UBX_NAV_TIMEGLO_   0x20910050 U1       -       -       Output rate of the UBX-NAV-TIMEGLO message
+Page  212: CFG-MSGOUT-UBX_NAV_TIMEGLO_   0x2091004d U1       -       -       Output rate of the UBX-NAV-TIMEGLO message
+Page  212: CFG-MSGOUT-UBX_NAV_TIMEGLO_   0x2091004e U1       -       -       Output rate of the UBX-NAV-TIMEGLO message
+Page  212: CFG-MSGOUT-UBX_NAV_TIMEGLO_   0x2091004f U1       -       -       Output rate of the UBX-NAV-TIMEGLO message
+Page  213: CFG-MSGOUT-UBX_NAV_TIMEGPS_   0x20910047 U1       -       -       Output rate of the UBX-NAV-TIMEGPS message
+Page  213: CFG-MSGOUT-UBX_NAV_TIMEGPS_   0x2091004b U1       -       -       Output rate of the UBX-NAV-TIMEGPS message
+Page  213: CFG-MSGOUT-UBX_NAV_TIMEGPS_   0x20910048 U1       -       -       Output rate of the UBX-NAV-TIMEGPS message
+Page  213: CFG-MSGOUT-UBX_NAV_TIMEGPS_   0x20910049 U1       -       -       Output rate of the UBX-NAV-TIMEGPS message
+Page  213: CFG-MSGOUT-UBX_NAV_TIMEGPS_   0x2091004a U1       -       -       Output rate of the UBX-NAV-TIMEGPS message
+Page  213: CFG-MSGOUT-UBX_NAV_TIMELS_I2C 0x20910060 U1       -       -       Output rate of the UBX-NAV-TIMELS message
+Page  213: CFG-MSGOUT-UBX_NAV_TIMELS_SPI 0x20910064 U1       -       -       Output rate of the UBX-NAV-TIMELS message
+Page  213: CFG-MSGOUT-UBX_NAV_TIMELS_    0x20910061 U1       -       -       Output rate of the UBX-NAV-TIMELS message
+Page  213: CFG-MSGOUT-UBX_NAV_TIMELS_    0x20910062 U1       -       -       Output rate of the UBX-NAV-TIMELS message
+Page  213: CFG-MSGOUT-UBX_NAV_TIMELS_    0x20910063 U1       -       -       Output rate of the UBX-NAV-TIMELS message
+Page  213: CFG-MSGOUT-UBX_NAV_TIMEQZSS_ 0x20910386 U1        -       -       Output rate of the UBX-NAV-TIMEQZSS
+Page  213: CFG-MSGOUT-UBX_NAV_TIMEQZSS_ 0x2091038a U1        -       -       Output rate of the UBX-NAV-TIMEQZSS
+Page  213: CFG-MSGOUT-UBX_NAV_TIMEQZSS_ 0x20910387 U1        -       -       Output rate of the UBX-NAV-TIMEQZSS
+Page  213: CFG-MSGOUT-UBX_NAV_TIMEQZSS_ 0x20910388 U1        -       -       Output rate of the UBX-NAV-TIMEQZSS
+Page  213: CFG-MSGOUT-UBX_NAV_TIMEQZSS_ 0x20910389 U1        -       -       Output rate of the UBX-NAV-TIMEQZSS
+Page  213: CFG-MSGOUT-UBX_NAV_TIMEUTC_   0x2091005b U1       -       -       Output rate of the UBX-NAV-TIMEUTC message
+Page  213: CFG-MSGOUT-UBX_NAV_TIMEUTC_   0x2091005f U1       -       -       Output rate of the UBX-NAV-TIMEUTC message
+Page  213: CFG-MSGOUT-UBX_NAV_TIMEUTC_   0x2091005c U1       -       -       Output rate of the UBX-NAV-TIMEUTC message
+Page  213: CFG-MSGOUT-UBX_NAV_TIMEUTC_   0x2091005d U1       -       -       Output rate of the UBX-NAV-TIMEUTC message
+Page  213: CFG-MSGOUT-UBX_NAV_TIMEUTC_   0x2091005e U1       -       -       Output rate of the UBX-NAV-TIMEUTC message
+Page  213: CFG-MSGOUT-UBX_NAV_VELECEF_   0x2091003d U1       -       -       Output rate of the UBX-NAV-VELECEF message
+Page  213: CFG-MSGOUT-UBX_NAV_VELECEF_   0x20910041 U1       -       -       Output rate of the UBX-NAV-VELECEF message
+Page  213: CFG-MSGOUT-UBX_NAV_VELECEF_   0x2091003e U1       -       -       Output rate of the UBX-NAV-VELECEF message
+Page  213: CFG-MSGOUT-UBX_NAV_VELECEF_   0x2091003f U1       -       -       Output rate of the UBX-NAV-VELECEF message
+Page  213: CFG-MSGOUT-UBX_NAV_VELECEF_   0x20910040 U1       -       -       Output rate of the UBX-NAV-VELECEF message
+Page  213: CFG-MSGOUT-UBX_NAV_VELNED_    0x20910042 U1       -       -       Output rate of the UBX-NAV-VELNED message
+Page  214: CFG-MSGOUT-UBX_NAV_VELNED_    0x20910046 U1       -       -       Output rate of the UBX-NAV-VELNED message
+Page  214: CFG-MSGOUT-UBX_NAV_VELNED_    0x20910043 U1       -       -       Output rate of the UBX-NAV-VELNED message
+Page  214: CFG-MSGOUT-UBX_NAV_VELNED_    0x20910044 U1       -       -       Output rate of the UBX-NAV-VELNED message
+Page  214: CFG-MSGOUT-UBX_NAV_VELNED_    0x20910045 U1       -       -       Output rate of the UBX-NAV-VELNED message
+Page  214: CFG-MSGOUT-UBX_RXM_MEASX_I2C 0x20910204 U1        -       -       Output rate of the UBX-RXM-MEASX message
+Page  214: CFG-MSGOUT-UBX_RXM_MEASX_SPI 0x20910208 U1        -       -       Output rate of the UBX-RXM-MEASX message
+Page  214: CFG-MSGOUT-UBX_RXM_MEASX_     0x20910205 U1       -       -       Output rate of the UBX-RXM-MEASX message
+Page  214: CFG-MSGOUT-UBX_RXM_MEASX_     0x20910206 U1       -       -       Output rate of the UBX-RXM-MEASX message
+Page  214: CFG-MSGOUT-UBX_RXM_MEASX_     0x20910207 U1       -       -       Output rate of the UBX-RXM-MEASX message
+Page  214: CFG-MSGOUT-UBX_RXM_RAWX_I2C   0x209102a4 U1       -       -       Output rate of the UBX-RXM-RAWX message on
+Page  214: CFG-MSGOUT-UBX_RXM_RAWX_SPI   0x209102a8 U1       -       -       Output rate of the UBX-RXM-RAWX message on
+Page  214: CFG-MSGOUT-UBX_RXM_RAWX_      0x209102a5 U1       -       -       Output rate of the UBX-RXM-RAWX message on
+Page  214: CFG-MSGOUT-UBX_RXM_RAWX_      0x209102a6 U1       -       -       Output rate of the UBX-RXM-RAWX message on
+Page  214: CFG-MSGOUT-UBX_RXM_RAWX_USB 0x209102a7 U1         -       -       Output rate of the UBX-RXM-RAWX message on
+Page  214: CFG-MSGOUT-UBX_RXM_RLM_I2C    0x2091025e U1       -       -       Output rate of the UBX-RXM-RLM message on
+Page  214: CFG-MSGOUT-UBX_RXM_RLM_SPI    0x20910262 U1       -       -       Output rate of the UBX-RXM-RLM message on
+Page  214: CFG-MSGOUT-UBX_RXM_RLM_       0x2091025f U1       -       -       Output rate of the UBX-RXM-RLM message on
+Page  214: CFG-MSGOUT-UBX_RXM_RLM_       0x20910260 U1       -       -       Output rate of the UBX-RXM-RLM message on
+Page  214: CFG-MSGOUT-UBX_RXM_RLM_USB    0x20910261 U1       -       -       Output rate of the UBX-RXM-RLM message on
+Page  214: CFG-MSGOUT-UBX_RXM_RTCM_I2C   0x20910268 U1       -       -       Output rate of the UBX-RXM-RTCM message on
+Page  214: CFG-MSGOUT-UBX_RXM_RTCM_SPI   0x2091026c U1       -       -       Output rate of the UBX-RXM-RTCM message on
+Page  214: CFG-MSGOUT-UBX_RXM_RTCM_      0x20910269 U1       -       -       Output rate of the UBX-RXM-RTCM message on
+Page  214: CFG-MSGOUT-UBX_RXM_RTCM_      0x2091026a U1       -       -       Output rate of the UBX-RXM-RTCM message on
+Page  214: CFG-MSGOUT-UBX_RXM_RTCM_USB 0x2091026b U1         -       -       Output rate of the UBX-RXM-RTCM message on
+Page  214: CFG-MSGOUT-UBX_RXM_SFRBX_I2C 0x20910231 U1        -       -       Output rate of the UBX-RXM-SFRBX message
+Page  214: CFG-MSGOUT-UBX_RXM_SFRBX_SPI 0x20910235 U1        -       -       Output rate of the UBX-RXM-SFRBX message
+Page  215: CFG-MSGOUT-UBX_RXM_SFRBX_            0x20910232 U1            -          -     Output rate of the UBX-RXM-SFRBX message
+Page  215: CFG-MSGOUT-UBX_RXM_SFRBX_            0x20910233 U1            -          -     Output rate of the UBX-RXM-SFRBX message
+Page  215: CFG-MSGOUT-UBX_RXM_SFRBX_USB 0x20910234 U1                    -          -     Output rate of the UBX-RXM-SFRBX message
+Page  215: CFG-MSGOUT-UBX_TIM_TM2_I2C           0x20910178 U1            -          -     Output rate of the UBX-TIM-TM2 message on
+Page  215: CFG-MSGOUT-UBX_TIM_TM2_SPI           0x2091017c U1            -          -     Output rate of the UBX-TIM-TM2 message on
+Page  215: CFG-MSGOUT-UBX_TIM_TM2_UART1 0x20910179 U1                    -          -     Output rate of the UBX-TIM-TM2 message on
+Page  215: CFG-MSGOUT-UBX_TIM_TM2_UART2 0x2091017a U1                    -          -     Output rate of the UBX-TIM-TM2 message on
+Page  215: CFG-MSGOUT-UBX_TIM_TM2_USB           0x2091017b U1            -          -     Output rate of the UBX-TIM-TM2 message on
+Page  215: CFG-MSGOUT-UBX_TIM_TP_I2C            0x2091017d U1            -          -     Output rate of the UBX-TIM-TP message on
+Page  215: CFG-MSGOUT-UBX_TIM_TP_SPI            0x20910181 U1            -          -     Output rate of the UBX-TIM-TP message on
+Page  215: CFG-MSGOUT-UBX_TIM_TP_UART1          0x2091017e U1            -          -     Output rate of the UBX-TIM-TP message on
+Page  215: CFG-MSGOUT-UBX_TIM_TP_UART2          0x2091017f U1            -          -     Output rate of the UBX-TIM-TP message on
+Page  215: CFG-MSGOUT-UBX_TIM_TP_USB            0x20910180 U1            -          -     Output rate of the UBX-TIM-TP message on
+Page  215: CFG-MSGOUT-UBX_TIM_VRFY_I2C          0x20910092 U1            -          -     Output rate of the UBX-TIM-VRFY message on
+Page  215: CFG-MSGOUT-UBX_TIM_VRFY_SPI          0x20910096 U1            -          -     Output rate of the UBX-TIM-VRFY message on
+Page  215: CFG-MSGOUT-UBX_TIM_VRFY_             0x20910093 U1            -          -     Output rate of the UBX-TIM-VRFY message on
+Page  215: CFG-MSGOUT-UBX_TIM_VRFY_             0x20910094 U1            -          -     Output rate of the UBX-TIM-VRFY message on
+Page  215: CFG-MSGOUT-UBX_TIM_VRFY_USB          0x20910095 U1            -          -     Output rate of the UBX-TIM-VRFY message on
+Page  215: Table 21: CFG-MSGOUT conﬁguration items
+Page  215: 5.9.13 CFG-NAVSPG: Standard precision navigation conﬁguration
+Page  215: CFG-NAVSPG-FIXMODE                   0x20110011 E1            -          -     Position ﬁx mode
+Page  215: CFG-NAVSPG-INIFIX3D                  0x10110013       L       -          -     Initial ﬁx must be a 3D ﬁx
+Page  215: CFG-NAVSPG-WKNROLLOVER               0x30110017 U2            -          -     GPS week rollover number
+Page  215: CFG-NAVSPG-USE_PPP                   0x10110019       L       -          -     Use precise point positioning (PPP)
+Page  216: CFG-NAVSPG-UTCSTANDARD               0x2011001c E1             -         -     UTC standard to be used
+Page  216: CFG-NAVSPG-DYNMODEL                  0x20110021 E1             -         -     Dynamic platform model
+Page  216: CFG-NAVSPG-ACKAIDING                 0x10110025        L       -         -     Acknowledge assistance input messages
+Page  216: CFG-NAVSPG-USE_USRDAT                0x10110061        L       -         -     Use user geodetic datum parameters
+Page  216: This must be set together with all CFG-NAVSPG-USERDAT_* parameters.
+Page  216: CFG-NAVSPG-USRDAT_MAJA               0x50110062 R8             -         m     Geodetic datum semi-major axis
+Page  216: This will only be used if CFG-NAVSPG-USE_USERDAT is set. It must be set together with all other CFG-NAVSPG-
+Page  216: CFG-NAVSPG-USRDAT_FLAT               0x50110063 R8             -         -     Geodetic datum 1.0 / ﬂattening
+Page  216: This will only be used if CFG-NAVSPG-USE_USERDAT is set. It must be set together with all other CFG-NAVSPG-
+Page  216: CFG-NAVSPG-USRDAT_DX                 0x40110064 R4             -         m     Geodetic datum X axis shift at the origin
+Page  216: This will only be used if CFG-NAVSPG-USE_USERDAT is set. It must be set together with all other CFG-NAVSPG-
+Page  216: CFG-NAVSPG-USRDAT_DY                 0x40110065 R4             -         m     Geodetic datum Y axis shift at the origin
+Page  216: This will only be used if CFG-NAVSPG-USE_USERDAT is set. It must be set together with all other CFG-NAVSPG-
+Page  216: CFG-NAVSPG-USRDAT_DZ                 0x40110066 R4             -         m     Geodetic datum Z axis shift at the origin
+Page  216: This will only be used if CFG-NAVSPG-USE_USERDAT is set. It must be set together with all other CFG-NAVSPG-
+Page  216: CFG-NAVSPG-USRDAT_ROTX               0x40110067 R4             -     arcsec Geodetic datum rotation about the X axis
+Page  216: This will only be used if CFG-NAVSPG-USE_USERDAT is set. It must be set together with all other CFG-NAVSPG-
+Page  216: CFG-NAVSPG-USRDAT_ROTY               0x40110068 R4             -     arcsec Geodetic datum rotation about the Y axis ()
+Page  216: This will only be used if CFG-NAVSPG-USE_USERDAT is set. It must be set together with all other CFG-NAVSPG-
+Page  216: CFG-NAVSPG-USRDAT_ROTZ               0x40110069 R4             -     arcsec Geodetic datum rotation about the Z axis
+Page  216: This will only be used if CFG-NAVSPG-USE_USERDAT is set. It must be set together with all other CFG-NAVSPG-
+Page  216: CFG-NAVSPG-USRDAT_SCALE              0x4011006a R4             -        ppm    Geodetic datum scale factor
+Page  216: This will only be used if CFG-NAVSPG-USE_USERDAT is set. It must be set together with all other CFG-NAVSPG-
+Page  216: CFG-NAVSPG-INFIL_MINSVS              0x201100a1 U1             -         -     Minimum number of satellites for navigation
+Page  216: CFG-NAVSPG-INFIL_MAXSVS              0x201100a2 U1             -         -     Maximum number of satellites for navigation
+Page  217: CFG-NAVSPG-INFIL_MINCNO                0x201100a3 U1             -    dBHz Minimum satellite signal level for navigation
+Page  217: CFG-NAVSPG-INFIL_MINELEV               0x201100a4      I1        -        deg    Minimum elevation for a GNSS satellite to be
+Page  217: CFG-NAVSPG-INFIL_NCNOTHRS              0x201100aa U1             -         -     Number of satellites required to have C/N0
+Page  217: above CFG-NAVSPG-INFIL_CNOTHRS for a ﬁx to
+Page  217: CFG-NAVSPG-INFIL_CNOTHRS               0x201100ab U1             -         -     C/N0 threshold for deciding whether to attempt
+Page  217: CFG-NAVSPG-OUTFIL_PDOP                 0x301100b1 U2            0.1        -     Output ﬁlter position DOP mask (threshold)
+Page  217: CFG-NAVSPG-OUTFIL_TDOP                 0x301100b2 U2            0.1        -     Output ﬁlter time DOP mask (threshold)
+Page  217: CFG-NAVSPG-OUTFIL_PACC                 0x301100b3 U2             -         m     Output ﬁlter position accuracy mask (threshold)
+Page  217: CFG-NAVSPG-OUTFIL_TACC                 0x301100b4 U2             -         m     Output ﬁlter time accuracy mask (threshold)
+Page  217: CFG-NAVSPG-OUTFIL_FACC                 0x301100b5 U2          0.01        m/s    Output ﬁlter frequency accuracy mask
+Page  217: CFG-NAVSPG-CONSTR_ALT                  0x401100c1      I4     0.01         m     Fixed altitude (mean sea level) for 2D ﬁx mode
+Page  217: CFG-NAVSPG-CONSTR_ALTVAR               0x401100c2 U4        0.0001        m^2    Fixed altitude variance for 2D mode
+Page  217: CFG-NAVSPG-CONSTR_DGNSSTO              0x201100c4 U1             -         s     DGNSS timeout
+Page  217: CFG-NAVSPG-SIGATTCOMP                  0x201100d6 E1             -         -     Permanently attenuated signal compensation
+Page  217: Table 22: CFG-NAVSPG conﬁguration items
+Page  217: Table 23: Constants for CFG-NAVSPG-FIXMODE
+Page  217: Table 24: Constants for CFG-NAVSPG-UTCSTANDARD
+Page  218: Table 25: Constants for CFG-NAVSPG-DYNMODEL
+Page  219: Table 26: Constants for CFG-NAVSPG-SIGATTCOMP
+Page  219: 5.9.14 CFG-NMEA: NMEA protocol conﬁguration
+Page  220: CFG-NMEA-PROTVER                     0x20930001 E1            -          -     NMEA protocol version
+Page  220: CFG-NMEA-MAXSVS                      0x20930002 E1            -          -     Maximum number of SVs to report per Talker ID
+Page  220: CFG-NMEA-COMPAT                      0x10930003       L       -          -     Enable compatibility mode
+Page  220: CFG-NMEA-CONSIDER                    0x10930004       L       -          -     Enable considering mode
+Page  220: CFG-NMEA-LIMIT82                     0x10930005       L       -          -     Enable strict limit to 82 characters maximum
+Page  220: CFG-NMEA-HIGHPREC                    0x10930006       L       -          -     Enable high precision mode
+Page  220: This ﬂag cannot be set in conjunction with either CFG-NMEA-COMPAT or CFG-NMEA-LIMIT82 mode.
+Page  220: CFG-NMEA-SVNUMBERING                 0x20930007 E1            -          -     Display conﬁguration for SVs that do not have
+Page  220: CFG-NMEA-FILT_GPS                    0x10930011       L       -          -     Disable reporting of GPS satellites
+Page  220: CFG-NMEA-FILT_SBAS                   0x10930012       L       -          -     Disable reporting of SBAS satellites
+Page  220: CFG-NMEA-FILT_GAL                    0x10930013       L       -          -     Disable reporting of Galileo satellites
+Page  220: CFG-NMEA-FILT_QZSS                   0x10930015       L       -          -     Disable reporting of QZSS satellites
+Page  220: CFG-NMEA-FILT_GLO                    0x10930016       L       -          -     Disable reporting of GLONASS satellites
+Page  220: CFG-NMEA-FILT_BDS                    0x10930017       L       -          -     Disable reporting of BeiDou satellites
+Page  220: CFG-NMEA-OUT_INVFIX                  0x10930021       L       -          -     Enable position output for failed or invalid ﬁxes
+Page  220: CFG-NMEA-OUT_MSKFIX                  0x10930022       L       -          -     Enable position output for invalid ﬁxes
+Page  220: CFG-NMEA-OUT_INVTIME                 0x10930023       L       -          -     Enable time output for invalid times
+Page  220: CFG-NMEA-OUT_INVDATE                 0x10930024       L       -          -     Enable date output for invalid dates
+Page  220: CFG-NMEA-OUT_ONLYGPS                 0x10930025       L       -          -     Restrict output to GPS satellites only
+Page  220: CFG-NMEA-OUT_FROZENCOG               0x10930026       L       -          -     Enable course over ground output even if it is
+Page  220: CFG-NMEA-MAINTALKERID                0x20930031 E1            -          -     Main Talker ID
+Page  220: assignment of the receiver's channels (see CFG-SIGNAL).
+Page  220: CFG-NMEA-GSVTALKERID                 0x20930032 E1            -          -     Talker ID for GSV NMEA messages
+Page  220: CFG-NMEA-BDSTALKERID                 0x30930033 U2            -          -     BeiDou Talker ID
+Page  221: Table 27: CFG-NMEA conﬁguration items
+Page  221: Table 28: Constants for CFG-NMEA-PROTVER
+Page  221: Table 29: Constants for CFG-NMEA-MAXSVS
+Page  221: Table 30: Constants for CFG-NMEA-SVNUMBERING
+Page  221: Table 31: Constants for CFG-NMEA-MAINTALKERID
+Page  221: Table 32: Constants for CFG-NMEA-GSVTALKERID
+Page  221: 5.9.15 CFG-ODO: Odometer and low-speed course over ground ﬁlter
+Page  221: CFG-ODO-USE_ODO                         0x10220001       L       -          -   Use odometer
+Page  222: CFG-ODO-PROFILE                        0x20220005 E1            -         -    Odometer proﬁle conﬁguration
+Page  222: Table 33: CFG-ODO conﬁguration items
+Page  222: Table 34: Constants for CFG-ODO-PROFILE
+Page  222: 5.9.16 CFG-PM: Conﬁguration for receiver power management
+Page  222: CFG-PM-OPERATEMODE                     0x20d00001 E1            -         -    General mode of operation.
+Page  222: CFG-PM-POSUPDATEPERIOD                 0x40d00002 U4            -        s     Position update period for PSMOO.
+Page  222: CFG-PM-ACQPERIOD                       0x40d00003 U4            -        s     Acquisition period used if the receiver previously
+Page  222: CFG-PM-GRIDOFFSET                      0x40d00004 U4            -        s     Position update period grid oﬀset relative to
+Page  222: CFG-PM-ONTIME                          0x30d00005 U2            -        s     Time to stay in Tracking state.
+Page  222: CFG-PM-MINACQTIME                      0x20d00006 U1            -        s     Minimum time to spend in Acquisition state
+Page  222: CFG-PM-MAXACQTIME                      0x20d00007 U1            -        s     Maximum time to spend in Acquisition state
+Page  222: CFG-PM-DONOTENTEROFF                   0x10d00008       L       -         -    Behavior of receiver in case it cannot achieve a
+Page  222: CFG-PM-WAITTIMEFIX                     0x10d00009       L       -         -    Wait for time ﬁx
+Page  222: CFG-PM-UPDATEEPH                       0x10d0000a       L       -         -    Update ephemeris regularly.
+Page  222: CFG-PM-EXTINTSEL                       0x20d0000b E1            -         -    EXTINT pin select
+Page  222: CFG-PM-EXTINTWAKE                      0x10d0000c       L       -         -    EXTINT pin control (Wake)
+Page  223: CFG-PM-EXTINTBACKUP                 0x10d0000d      L       -       -      EXTINT pin control (Backup)
+Page  223: CFG-PM-EXTINTINACTIVE               0x10d0000e      L       -       -      EXTINT pin control (Inactive)
+Page  223: Enable to force backup in case EXTINT pin is inactive for time longer than CFG-PM-EXTINTINACTIVITY.
+Page  223: CFG-PM-EXTINTINACTIVITY             0x40d0000f U4        0.001      s      Inactivity time out on EXTINT pin if enabled
+Page  223: CFG-PM-LIMITPEAKCURR                0x10d00010      L       -       -      Limit peak current
+Page  223: Table 35: CFG-PM conﬁguration items
+Page  223: Table 36: Constants for CFG-PM-OPERATEMODE
+Page  223: Table 37: Constants for CFG-PM-EXTINTSEL
+Page  223: 5.9.17 CFG-QZSS: QZSS system conﬁguration
+Page  223: Note that enabling and disabling of individual GNSS is done via the CFG-SIGNAL conﬁguration
+Page  223: CFG-QZSS-USE_SLAS_DGNSS             0x10370005      L       -       -      Apply QZSS SLAS DGNSS corrections
+Page  223: CFG-QZSS-USE_SLAS_TESTMODE          0x10370006      L       -       -      Use QZSS SLAS data when it is in test mode
+Page  223: CFG-QZSS-USE_SLAS_RAIM_             0x10370007      L       -       -      Raim out measurements that are not corrected
+Page  223: Table 38: CFG-QZSS conﬁguration items
+Page  223: 5.9.18 CFG-RATE: Navigation and measurement rate conﬁguration
+Page  223: CFG-RATE-MEAS                       0x30210001 U2        0.001      s      Nominal time between GNSS measurements
+Page  223: CFG-RATE-NAV                        0x30210002 U2           -       -      Ratio of number of measurements to number of
+Page  223: CFG-RATE-TIMEREF                    0x20210003 E1           -       -      Time system to which measurements are
+Page  224: Table 39: CFG-RATE conﬁguration items
+Page  224: Table 40: Constants for CFG-RATE-TIMEREF
+Page  224: 5.9.19 CFG-RINV: Remote inventory
+Page  224: CFG-RINV-DUMP                        0x10c70001       L       -          -     Dump data at startup
+Page  224: When true, data will be dumped to the interface on startup, unless CFG-RINV-BINARY is set.
+Page  224: CFG-RINV-BINARY                      0x10c70002       L       -          -     Data is binary
+Page  224: CFG-RINV-DATA_SIZE                   0x20c70003 U1            -          -     Size of data
+Page  224: CFG-RINV-CHUNK0                      0x50c70004 X8            -          -     Data bytes 1-8 (LSB)
+Page  224: CFG-RINV-CHUNK1                      0x50c70005 X8            -          -     Data bytes 9-16
+Page  224: CFG-RINV-CHUNK2                      0x50c70006 X8            -          -     Data bytes 17-24
+Page  224: CFG-RINV-CHUNK3                      0x50c70007 X8            -          -     Data bytes 25-30 (MSB)
+Page  224: Table 41: CFG-RINV conﬁguration items
+Page  224: 5.9.20 CFG-SBAS: SBAS conﬁguration
+Page  224: CFG-SBAS-USE_TESTMODE                0x10360002       L       -          -     Use SBAS data when it is in test mode (SBAS
+Page  224: CFG-SBAS-USE_RANGING                 0x10360003       L       -          -     Use SBAS GEOs as a ranging source (for
+Page  224: CFG-SBAS-USE_DIFFCORR                0x10360004       L       -          -     Use SBAS diﬀerential corrections
+Page  224: CFG-SBAS-USE_INTEGRITY               0x10360005       L       -          -     Use SBAS integrity information
+Page  225: CFG-SBAS-PRNSCANMASK                     0x50360006 X8            -         -     SBAS PRN search conﬁguration
+Page  225: Table 42: CFG-SBAS conﬁguration items
+Page  226: Table 43: Constants for CFG-SBAS-PRNSCANMASK
+Page  226: 5.9.21 CFG-SEC: Security conﬁguration
+Page  226: CFG-SEC-CFG_LOCK                    0x10f60009      L       -       -      Conﬁguration lockdown
+Page  226: CFG-SEC-CFG_LOCK_UNLOCKGRP1         0x30f6000a U2           -       -      Conﬁguration lockdown exempted group 1
+Page  226: CFG-SEC-CFG_LOCK_UNLOCKGRP2         0x30f6000b U2           -       -      Conﬁguration lockdown exempted group 2
+Page  226: Table 44: CFG-SEC conﬁguration items
+Page  226: 5.9.22 CFG-SIGNAL: Satellite systems (GNSS) signal conﬁguration
+Page  226: Conﬁguration speciﬁc to a GNSS system is available in other groups (e.g. CFG-SBAS).
+Page  226: CFG-SIGNAL-GPS_ENA                  0x1031001f      L       -       -      GPS enable
+Page  226: CFG-SIGNAL-GPS_L1CA_ENA             0x10310001      L       -       -      GPS L1C/A
+Page  226: CFG-SIGNAL-SBAS_ENA                 0x10310020      L       -       -      SBAS enable
+Page  226: CFG-SIGNAL-SBAS_L1CA_ENA            0x10310005      L       -       -      SBAS L1C/A
+Page  226: CFG-SIGNAL-GAL_ENA                  0x10310021      L       -       -      Galileo enable
+Page  226: CFG-SIGNAL-GAL_E1_ENA               0x10310007      L       -       -      Galileo E1
+Page  226: CFG-SIGNAL-BDS_ENA                  0x10310022      L       -       -      BeiDou Enable
+Page  226: CFG-SIGNAL-BDS_B1_ENA               0x1031000d      L       -       -      BeiDou B1I
+Page  226: CFG-SIGNAL-QZSS_ENA                 0x10310024      L       -       -      QZSS enable
+Page  226: CFG-SIGNAL-QZSS_L1CA_ENA            0x10310012      L       -       -      QZSS L1C/A
+Page  226: CFG-SIGNAL-GLO_ENA                  0x10310025      L       -       -      GLONASS enable
+Page  227: CFG-SIGNAL-GLO_L1_ENA                0x10310018       L       -          -     GLONASS L1
+Page  227: Table 45: CFG-SIGNAL conﬁguration items
+Page  227: 5.9.23 CFG-SPI: Conﬁguration of the SPI interface
+Page  227: CFG-SPI-MAXFF                        0x20640001 U1            -          -     Number of bytes containing 0xFF to receive
+Page  227: CFG-SPI-CPOLARITY                    0x10640002       L       -          -     Clock polarity select: 0: Active Hight Clock,
+Page  227: CFG-SPI-CPHASE                       0x10640003       L       -          -     Clock phase select: 0: Data captured on ﬁrst
+Page  227: CFG-SPI-EXTENDEDTIMEOUT              0x10640005       L       -          -     Flag to disable timeouting the interface after
+Page  227: CFG-SPI-ENABLED                      0x10640006       L       -          -     Flag to indicate if the SPI interface should be
+Page  227: Table 46: CFG-SPI conﬁguration items
+Page  227: 5.9.24 CFG-SPIINPROT: Input protocol conﬁguration of the SPI interface
+Page  227: CFG-SPIINPROT-UBX                    0x10790001       L       -          -     Flag to indicate if UBX should be an input
+Page  227: CFG-SPIINPROT-NMEA                   0x10790002       L       -          -     Flag to indicate if NMEA should be an input
+Page  227: CFG-SPIINPROT-RTCM3X                 0x10790004       L       -          -     Flag to indicate if RTCM3X should be an input
+Page  227: Table 47: CFG-SPIINPROT conﬁguration items
+Page  227: 5.9.25 CFG-SPIOUTPROT: Output protocol conﬁguration of the SPI interface
+Page  227: CFG-SPIOUTPROT-UBX                   0x107a0001       L       -          -     Flag to indicate if UBX should be an output
+Page  227: CFG-SPIOUTPROT-NMEA                  0x107a0002       L       -          -     Flag to indicate if NMEA should be an output
+Page  227: Table 48: CFG-SPIOUTPROT conﬁguration items
+Page  227: 5.9.26 CFG-TP: Time pulse conﬁguration
+Page  227: CFG-TP-PULSE_DEF                     0x20050023 E1            -          -     Determines whether the time pulse is
+Page  227: CFG-TP-PULSE_LENGTH_DEF              0x20050030 E1            -          -     Determines whether the time pulse length is
+Page  228: CFG-TP-ANT_CABLEDELAY                  0x30050001    I2     1e-9         s     Antenna cable delay in [ns]
+Page  228: CFG-TP-PERIOD_TP1                      0x40050002 U4        1e-6         s     Time pulse period (TP1) in [us]
+Page  228: This will only be used if CFG-TP-PULSE_DEF=PERIOD.
+Page  228: CFG-TP-PERIOD_LOCK_TP1                 0x40050003 U4        1e-6         s     Time pulse period when locked to GNSS time
+Page  228: Only used if CFG-TP-PULSE_DEF=PERIOD and CFG-TP-USE_LOCKED_TP1 is set.
+Page  228: CFG-TP-FREQ_TP1                        0x40050024 U4          -         Hz     Time pulse frequency (TP1) in [Hz]
+Page  228: This will only be used if CFG-TP-PULSE_DEF=FREQ.
+Page  228: CFG-TP-FREQ_LOCK_TP1                   0x40050025 U4          -         Hz     Time pulse frequency when locked to GNSS time
+Page  228: Only used if CFG-TP-PULSE_DEF=FREQ and CFG-TP-USE_LOCKED_TP1 is set.
+Page  228: CFG-TP-LEN_TP1                         0x40050004 U4        1e-6         s     Time pulse length (TP1) in [us]
+Page  228: Only used if CFG-TP-PULSE_LENGTH_DEF=LENGTH is set.
+Page  228: CFG-TP-LEN_LOCK_TP1                    0x40050005 U4        1e-6         s     Time pulse length when locked to GNSS time
+Page  228: Only used if CFG-TP-PULSE_LENGTH_DEF=LENGTH and CFG-TP-USE_LOCKED_TP1 is set.
+Page  228: CFG-TP-DUTY_TP1                        0x5005002a R8          -          %     Time pulse duty cycle (TP1) in [%]
+Page  228: Only used if CFG-TP-PULSE_LENGTH_DEF=RATIO is set.
+Page  228: CFG-TP-DUTY_LOCK_TP1                   0x5005002b R8          -          %     Time pulse duty cycle when locked to GNSS time
+Page  228: Only used if CFG-TP-PULSE_LENGTH_DEF=RATIO and CFG-TP-USE_LOCKED_TP1 are set.
+Page  228: CFG-TP-USER_DELAY_TP1                  0x40050006    I4     1e-9         s     User-conﬁgurable time pulse delay (TP1) in [ns]
+Page  228: CFG-TP-TP1_ENA                         0x10050007     L       -          -     Enable the ﬁrst time pulse
+Page  228: CFG-TP-SYNC_GNSS_TP1                   0x10050008     L       -          -     Sync time pulse to GNSS time or local clock
+Page  228: CFG-TP-USE_LOCKED_TP1                  0x10050009     L       -          -     Use locked parameters when possible (TP1)
+Page  228: If set, use CFG-TP-PERIOD_LOCK_TP1 and CFG-TP-LEN_LOCK_TP1 as soon as GNSS time is valid. Otherwise, use CFG-
+Page  228: TP-PERIOD_TP1 and CFG-TP-LEN_TP1.
+Page  228: CFG-TP-ALIGN_TO_TOW_TP1                0x1005000a     L       -          -     Align time pulse to top of second (TP1)
+Page  228: To use this feature, CFG-TP-SYNC_GNSS_TP1 must be set.
+Page  228: CFG-TP-POL_TP1                         0x1005000b     L       -          -     Set time pulse polarity (TP1)
+Page  228: CFG-TP-TIMEGRID_TP1                    0x2005000c E1          -          -     Time grid to use (TP1)
+Page  228: Only relevant if CFG-TP-SYNC_GNSS_TP1 is set.
+Page  228: in CFG-SIGNAL-*.
+Page  229: CFG-TP-PERIOD_TP2                      0x4005000d U4        1e-6         s     Time pulse period (TP2) in [us]
+Page  229: This will only be used if CFG-TP-PULSE_DEF=PERIOD.
+Page  229: CFG-TP-PERIOD_LOCK_TP2                 0x4005000e U4        1e-6         s     Time pulse period when locked to GNSS time
+Page  229: Only used if CFG-TP-PULSE_DEF=PERIOD and CFG-TP-USE_LOCKED_TP2 is set.
+Page  229: CFG-TP-FREQ_TP2                        0x40050026 U4          -         Hz     Time pulse frequency (TP2)
+Page  229: Only used if CFG-TP-PULSE_DEF=FREQ.
+Page  229: CFG-TP-FREQ_LOCK_TP2                   0x40050027 U4          -         Hz     Time pulse frequency when locked to GNSS time
+Page  229: Only used if CFG-TP-PULSE_DEF=FREQ and CFG-TP-USE_LOCKED_TP2 is set.
+Page  229: CFG-TP-LEN_TP2                         0x4005000f U4        1e-6         s     Time pulse length (TP2) in [us]
+Page  229: Only used if CFG-TP-PULSE_LENGTH_DEF=LENGTH is set.
+Page  229: CFG-TP-LEN_LOCK_TP2                    0x40050010 U4        1e-6         s     Time pulse length when locked to GNSS time
+Page  229: Only used if CFG-TP-PULSE_LENGTH_DEF=LENGTH and CFG-TP-USE_LOCKED_TP2 is set.
+Page  229: CFG-TP-DUTY_TP2                        0x5005002c R8          -          %     Time pulse duty cycle (TP2) in [%]
+Page  229: Only used if CFG-TP-PULSE_LENGTH_DEF=RATIO is set.
+Page  229: CFG-TP-DUTY_LOCK_TP2                   0x5005002d R8          -          %     Time pulse duty cycle when locked to GNSS time
+Page  229: Only used if CFG-TP-PULSE_LENGTH_DEF=RATIO and CFG-TP-USE_LOCKED_TP2 are set.
+Page  229: CFG-TP-USER_DELAY_TP2                  0x40050011    I4     1e-9         s     User-conﬁgurable time pulse delay (TP2) in [ns]
+Page  229: CFG-TP-TP2_ENA                         0x10050012     L       -          -     Enable the second time pulse
+Page  229: CFG-TP-SYNC_GNSS_TP2                   0x10050013     L       -          -     Sync time pulse to GNSS time or local clock
+Page  229: CFG-TP-USE_LOCKED_TP2                  0x10050014     L       -          -     Use locked parameters when possible (TP2)
+Page  229: If set, use CFG-TP-PERIOD_LOCK_TP2 and CFG-TP-LEN_LOCK_TP2 as soon as GNSS time is valid. Otherwise, use CFG-
+Page  229: TP-PERIOD_TP2 and CFG-TP-LEN_TP2.
+Page  229: CFG-TP-ALIGN_TO_TOW_TP2                0x10050015     L       -          -     Align time pulse to top of second (TP2)
+Page  229: To use this feature, CFG-TP-SYNC_GNSS_TP2 must be set.
+Page  229: CFG-TP-POL_TP2                         0x10050016     L       -          -     Set time pulse polarity (TP2)
+Page  229: CFG-TP-TIMEGRID_TP2                    0x20050017 E1          -          -     Time grid to use (TP2)
+Page  229: Only relevant if CFG-TP-SYNC_GNSS_TP2 is set.
+Page  229: in CFG-SIGNAL-*.
+Page  229: Table 49: CFG-TP conﬁguration items
+Page  230: Table 50: Constants for CFG-TP-PULSE_DEF
+Page  230: Table 51: Constants for CFG-TP-PULSE_LENGTH_DEF
+Page  230: Table 52: Constants for CFG-TP-TIMEGRID_TP1
+Page  230: Table 53: Constants for CFG-TP-TIMEGRID_TP2
+Page  230: 5.9.27 CFG-TXREADY: TX ready conﬁguration
+Page  230: CFG-TXREADY-ENABLED                     0x10a20001       L       -          -     Flag to indicate if TX ready pin mechanism
+Page  230: CFG-TXREADY-POLARITY                    0x10a20002       L       -          -     The polarity of the TX ready pin: false:high-
+Page  230: CFG-TXREADY-PIN                         0x20a20003 U1            -          -     Pin number to use for the TX ready functionality
+Page  230: CFG-TXREADY-THRESHOLD                   0x30a20004 U2            -          -     Amount of data that should be ready on the
+Page  230: CFG-TXREADY-INTERFACE                   0x20a20005 E1            -          -     Interface where the TX ready feature should be
+Page  230: Table 54: CFG-TXREADY conﬁguration items
+Page  231: Table 55: Constants for CFG-TXREADY-INTERFACE
+Page  231: 5.9.28 CFG-UART1: Conﬁguration of the UART1 interface
+Page  231: CFG-UART1-BAUDRATE                      0x40520001 U4            -          -     The baud rate that should be conﬁgured on the
+Page  231: CFG-UART1-STOPBITS                      0x20520002 E1            -          -     Number of stopbits that should be used on
+Page  231: CFG-UART1-DATABITS                      0x20520003 E1            -          -     Number of databits that should be used on
+Page  231: CFG-UART1-PARITY                        0x20520004 E1            -          -     Parity mode that should be used on UART1
+Page  231: CFG-UART1-ENABLED                       0x10520005       L       -          -     Flag to indicate if the UART1 should be enabled
+Page  231: Table 56: CFG-UART1 conﬁguration items
+Page  231: Table 57: Constants for CFG-UART1-STOPBITS
+Page  231: Table 58: Constants for CFG-UART1-DATABITS
+Page  231: Table 59: Constants for CFG-UART1-PARITY
+Page  231: 5.9.29 CFG-UART1INPROT: Input protocol conﬁguration of the UART1 interface
+Page  231: CFG-UART1INPROT-UBX                     0x10730001       L       -          -     Flag to indicate if UBX should be an input
+Page  231: CFG-UART1INPROT-NMEA                    0x10730002       L       -          -     Flag to indicate if NMEA should be an input
+Page  232: CFG-UART1INPROT-RTCM3X               0x10730004       L       -          -     Flag to indicate if RTCM3X should be an input
+Page  232: Table 60: CFG-UART1INPROT conﬁguration items
+Page  232: 5.9.30 CFG-UART1OUTPROT: Output protocol conﬁguration of the UART1
+Page  232: CFG-UART1OUTPROT-UBX                 0x10740001       L       -          -     Flag to indicate if UBX should be an output
+Page  232: CFG-UART1OUTPROT-NMEA                0x10740002       L       -          -     Flag to indicate if NMEA should be an output
+Page  232: Table 61: CFG-UART1OUTPROT conﬁguration items
+Page  232: 5.9.31 CFG-UART2: Conﬁguration of the UART2 interface
+Page  232: CFG-UART2-BAUDRATE                   0x40530001 U4            -          -     The baud rate that should be conﬁgured on the
+Page  232: CFG-UART2-STOPBITS                   0x20530002 E1            -          -     Number of stopbits that should be used on
+Page  232: CFG-UART2-DATABITS                   0x20530003 E1            -          -     Number of databits that should be used on
+Page  232: CFG-UART2-PARITY                     0x20530004 E1            -          -     Parity mode that should be used on UART2
+Page  232: CFG-UART2-ENABLED                    0x10530005       L       -          -     Flag to indicate if the UART2 should be enabled
+Page  232: Table 62: CFG-UART2 conﬁguration items
+Page  232: Table 63: Constants for CFG-UART2-STOPBITS
+Page  232: Table 64: Constants for CFG-UART2-DATABITS
+Page  233: Table 65: Constants for CFG-UART2-PARITY
+Page  233: 5.9.32 CFG-UART2INPROT: Input protocol conﬁguration of the UART2 interface
+Page  233: CFG-UART2INPROT-UBX             0x10750001      L       -       -       Flag to indicate if UBX should be an input
+Page  233: CFG-UART2INPROT-NMEA            0x10750002      L       -       -       Flag to indicate if NMEA should be an input
+Page  233: CFG-UART2INPROT-RTCM3X          0x10750004      L       -       -       Flag to indicate if RTCM3X should be an input
+Page  233: Table 66: CFG-UART2INPROT conﬁguration items
+Page  233: 5.9.33 CFG-UART2OUTPROT: Output protocol conﬁguration of the UART2
+Page  233: CFG-UART2OUTPROT-UBX            0x10760001      L       -       -       Flag to indicate if UBX should be an output
+Page  233: CFG-UART2OUTPROT-NMEA           0x10760002      L       -       -       Flag to indicate if NMEA should be an output
+Page  233: Table 67: CFG-UART2OUTPROT conﬁguration items
+Page  233: 5.9.34 CFG-USB: Conﬁguration of the USB interface
+Page  233: CFG-USB-ENABLED                 0x10650001      L       -       -       Flag to indicate if the USB interface should be
+Page  233: CFG-USB-SELFPOW                 0x10650002      L       -       -       Self-powered device
+Page  233: CFG-USB-VENDOR_ID               0x3065000a U2           -       -       Vendor ID
+Page  233: CFG-USB-PRODUCT_ID              0x3065000b U2           -       -       Vendor ID
+Page  233: CFG-USB-POWER                   0x3065000c U2           -      mA       Power consumption
+Page  233: CFG-USB-VENDOR_STR0             0x5065000d X8           -       -       Vendor string characters 0-7
+Page  233: CFG-USB-VENDOR_STR1             0x5065000e X8           -       -       Vendor string characters 8-15
+Page  233: CFG-USB-VENDOR_STR2             0x5065000f X8           -       -       Vendor string characters 16-23
+Page  233: CFG-USB-VENDOR_STR3             0x50650010 X8           -       -       Vendor string characters 24-31
+Page  233: CFG-USB-PRODUCT_STR0            0x50650011 X8           -       -       Product string characters 0-7
+Page  233: CFG-USB-PRODUCT_STR1            0x50650012 X8           -       -       Product string characters 8-15
+Page  233: CFG-USB-PRODUCT_STR2            0x50650013 X8           -       -       Product string characters 16-23
+Page  233: CFG-USB-PRODUCT_STR3            0x50650014 X8           -       -       Product string characters 24-31
+Page  233: CFG-USB-SERIAL_NO_STR0          0x50650015 X8           -       -       Serial number string characters 0-7
+Page  233: CFG-USB-SERIAL_NO_STR1          0x50650016 X8           -       -       Serial number string characters 8-15
+Page  233: CFG-USB-SERIAL_NO_STR2          0x50650017 X8           -       -       Serial number string characters 16-23
+Page  234: CFG-USB-SERIAL_NO_STR3           0x50650018 X8          -         -     Serial number string characters 24-31
+Page  234: Table 68: CFG-USB conﬁguration items
+Page  234: 5.9.35 CFG-USBINPROT: Input protocol conﬁguration of the USB interface
+Page  234: CFG-USBINPROT-UBX                0x10770001     L       -         -     Flag to indicate if UBX should be an input
+Page  234: CFG-USBINPROT-NMEA               0x10770002     L       -         -     Flag to indicate if NMEA should be an input
+Page  234: CFG-USBINPROT-RTCM3X             0x10770004     L       -         -     Flag to indicate if RTCM3X should be an input
+Page  234: Table 69: CFG-USBINPROT conﬁguration items
+Page  234: 5.9.36 CFG-USBOUTPROT: Output protocol conﬁguration of the USB interface
+Page  234: CFG-USBOUTPROT-UBX               0x10780001     L       -         -     Flag to indicate if UBX should be an output
+Page  234: CFG-USBOUTPROT-NMEA              0x10780002     L       -         -     Flag to indicate if NMEA should be an output
+Page  234: Table 70: CFG-USBOUTPROT conﬁguration items
+Page  234: Note that the mapping from UBX-CFG message ﬁelds to conﬁguration items is not necessarily 1:1
+Page  234: and that that some legacy UBX-CFG messages may not be available for certain products.
+Page  234: UBX-CFG-ANT
+Page  234: UBX-CFG-ANT.ocd                                             CFG-HW-ANT_CFG_OPENDET
+Page  234: UBX-CFG-ANT.pdwnOnSCD                                       CFG-HW-ANT_CFG_PWRDOWN
+Page  234: UBX-CFG-ANT.pinOCD                                          CFG-HW-ANT_SUP_OPEN_PIN
+Page  234: UBX-CFG-ANT.pinSCD                                          CFG-HW-ANT_SUP_SHORT_PIN
+Page  234: UBX-CFG-ANT.pinSwitch                                       CFG-HW-ANT_SUP_SWITCH_PIN
+Page  234: UBX-CFG-ANT.recovery                                        CFG-HW-ANT_CFG_RECOVER
+Page  234: UBX-CFG-ANT.scd                                             CFG-HW-ANT_CFG_SHORTDET
+Page  234: UBX-CFG-ANT.svcs                                            CFG-HW-ANT_CFG_VOLTCTRL
+Page  234: UBX-CFG-BATCH
+Page  234: UBX-CFG-BATCH.bufSize                                       CFG-BATCH-MAXENTRIES
+Page  234: UBX-CFG-BATCH.enable                                        CFG-BATCH-ENABLE
+Page  234: UBX-CFG-BATCH.extraOdo                                      CFG-BATCH-EXTRAODO
+Page  234: UBX-CFG-BATCH.extraPvt                                      CFG-BATCH-EXTRAPVT
+Page  234: UBX-CFG-BATCH.notifThrs                                     CFG-BATCH-WARNTHRS
+Page  234: UBX-CFG-BATCH.pioActiveLow                                  CFG-BATCH-PIOACTIVELOW
+Page  234: UBX-CFG-BATCH.pioEnable                                     CFG-BATCH-PIOENABLE
+Page  235: UBX-CFG-BATCH.pioId                        CFG-BATCH-PIOID
+Page  235: UBX-CFG-DAT
+Page  235: UBX-CFG-DAT.dX                             CFG-NAVSPG-USRDAT_DX
+Page  235: UBX-CFG-DAT.dY                             CFG-NAVSPG-USRDAT_DY
+Page  235: UBX-CFG-DAT.dZ                             CFG-NAVSPG-USRDAT_DZ
+Page  235: UBX-CFG-DAT.ﬂat                            CFG-NAVSPG-USRDAT_FLAT
+Page  235: UBX-CFG-DAT.majA                           CFG-NAVSPG-USE_USRDAT, CFG-NAVSPG-USRDAT_MAJA
+Page  235: UBX-CFG-DAT.rotX                           CFG-NAVSPG-USRDAT_ROTX
+Page  235: UBX-CFG-DAT.rotY                           CFG-NAVSPG-USRDAT_ROTY
+Page  235: UBX-CFG-DAT.rotZ                           CFG-NAVSPG-USRDAT_ROTZ
+Page  235: UBX-CFG-DAT.scale                          CFG-NAVSPG-USRDAT_SCALE
+Page  235: UBX-CFG-GEOFENCE
+Page  235: UBX-CFG-GEOFENCE.confLvl                   CFG-GEOFENCE-CONFLVL
+Page  235: UBX-CFG-GEOFENCE.lat                       CFG-GEOFENCE-FENCE1_LAT, CFG-GEOFENCE-
+Page  235: FENCE2_LAT, CFG-GEOFENCE-FENCE3_LAT, CFG-
+Page  235: UBX-CFG-GEOFENCE.lon                       CFG-GEOFENCE-FENCE1_LON, CFG-GEOFENCE-
+Page  235: FENCE2_LON, CFG-GEOFENCE-FENCE3_LON, CFG-
+Page  235: UBX-CFG-GEOFENCE.numFences                 CFG-GEOFENCE-USE_FENCE1, CFG-GEOFENCE-
+Page  235: USE_FENCE2, CFG-GEOFENCE-USE_FENCE3, CFG-
+Page  235: UBX-CFG-GEOFENCE.pin                       CFG-GEOFENCE-PIN
+Page  235: UBX-CFG-GEOFENCE.pinPolarity               CFG-GEOFENCE-PINPOL
+Page  235: UBX-CFG-GEOFENCE.pioEnabled                CFG-GEOFENCE-USE_PIO
+Page  235: UBX-CFG-GEOFENCE.radius                    CFG-GEOFENCE-FENCE1_RAD, CFG-GEOFENCE-
+Page  235: FENCE2_RAD, CFG-GEOFENCE-FENCE3_RAD, CFG-
+Page  235: UBX-CFG-GNSS
+Page  235: UBX-CFG-GNSS.gnssId                        CFG-SIGNAL-GPS_ENA, CFG-SIGNAL-SBAS_ENA, CFG-
+Page  235: SIGNAL-BDS_ENA, CFG-SIGNAL-QZSS_ENA, CFG-SIGNAL-
+Page  235: UBX-CFG-INF
+Page  235: UBX-CFG-INF.infMsgMask                     CFG-INFMSG-UBX_I2C, CFG-INFMSG-UBX_UART1, CFG-
+Page  235: INFMSG-UBX_UART2, CFG-INFMSG-UBX_USB, CFG-
+Page  235: INFMSG-UBX_SPI, CFG-INFMSG-NMEA_I2C, CFG-INFMSG-
+Page  235: NMEA_UART1, CFG-INFMSG-NMEA_UART2, CFG-INFMSG-
+Page  235: NMEA_USB, CFG-INFMSG-NMEA_SPI
+Page  235: UBX-CFG-INF.protocolID                     CFG-INFMSG-UBX_UART1, CFG-INFMSG-UBX_UART2, CFG-
+Page  235: INFMSG-UBX_USB, CFG-INFMSG-UBX_SPI, CFG-INFMSG-
+Page  235: NMEA_I2C, CFG-INFMSG-NMEA_UART1, CFG-INFMSG-
+Page  235: NMEA_UART2, CFG-INFMSG-NMEA_USB, CFG-INFMSG-
+Page  235: UBX-CFG-ITFM
+Page  235: UBX-CFG-ITFM.antSetting                    CFG-ITFM-ANTSETTING
+Page  235: UBX-CFG-ITFM.bbThreshold                   CFG-ITFM-BBTHRESHOLD
+Page  235: UBX-CFG-ITFM.cwThreshold                   CFG-ITFM-CWTHRESHOLD
+Page  235: UBX-CFG-ITFM.enable                        CFG-ITFM-ENABLE
+Page  235: UBX-CFG-ITFM.enable2                       CFG-ITFM-ENABLE_AUX
+Page  235: UBX-CFG-LOGFILTER
+Page  236: UBX-CFG-LOGFILTER.applyAllFilterSettings               CFG-LOGFILTER-APPLY_ALL_FILTERS
+Page  236: UBX-CFG-LOGFILTER.minInterval                          CFG-LOGFILTER-MIN_INTERVAL
+Page  236: UBX-CFG-LOGFILTER.positionThreshold                    CFG-LOGFILTER-POSITION_THRS
+Page  236: UBX-CFG-LOGFILTER.psmOncePerWakupEnabled               CFG-LOGFILTER-ONCE_PER_WAKE_UP_ENA
+Page  236: UBX-CFG-LOGFILTER.recordEnabled                        CFG-LOGFILTER-RECORD_ENA
+Page  236: UBX-CFG-LOGFILTER.speedThreshold                       CFG-LOGFILTER-SPEED_THRS
+Page  236: UBX-CFG-LOGFILTER.timeThreshold                        CFG-LOGFILTER-TIME_THRS
+Page  236: UBX-CFG-MOT
+Page  236: UBX-CFG-MOT.gnssDistThdl                               CFG-MOT-GNSSDIST_THRS
+Page  236: UBX-CFG-MOT.gnssSpeedThdl                              CFG-MOT-GNSSSPEED_THRS
+Page  236: UBX-CFG-NAV5
+Page  236: UBX-CFG-NAV5.cnoThresh                                 CFG-NAVSPG-INFIL_CNOTHRS
+Page  236: UBX-CFG-NAV5.cnoThreshNumSVs                           CFG-NAVSPG-INFIL_NCNOTHRS
+Page  236: UBX-CFG-NAV5.dgnssTimeout                              CFG-NAVSPG-CONSTR_DGNSSTO
+Page  236: UBX-CFG-NAV5.dynModel                                  CFG-NAVSPG-DYNMODEL
+Page  236: UBX-CFG-NAV5.ﬁxMode                                    CFG-NAVSPG-FIXMODE
+Page  236: UBX-CFG-NAV5.ﬁxedAlt                                   CFG-NAVSPG-CONSTR_ALT
+Page  236: UBX-CFG-NAV5.ﬁxedAltVar                                CFG-NAVSPG-CONSTR_ALTVAR
+Page  236: UBX-CFG-NAV5.minElev                                   CFG-NAVSPG-INFIL_MINELEV
+Page  236: UBX-CFG-NAV5.pAcc                                      CFG-NAVSPG-OUTFIL_PACC
+Page  236: UBX-CFG-NAV5.pDop                                      CFG-NAVSPG-OUTFIL_PDOP
+Page  236: UBX-CFG-NAV5.staticHoldMaxDist                         CFG-MOT-GNSSDIST_THRS
+Page  236: UBX-CFG-NAV5.staticHoldThresh                          CFG-MOT-GNSSSPEED_THRS
+Page  236: UBX-CFG-NAV5.tAcc                                      CFG-NAVSPG-OUTFIL_TACC, CFG-NAVSPG-OUTFIL_FACC
+Page  236: UBX-CFG-NAV5.tDop                                      CFG-NAVSPG-OUTFIL_TDOP
+Page  236: UBX-CFG-NAV5.utcStandard                               CFG-NAVSPG-UTCSTANDARD
+Page  236: UBX-CFG-NAVX5
+Page  236: UBX-CFG-NAVX5.ackAiding                                CFG-NAVSPG-ACKAIDING
+Page  236: UBX-CFG-NAVX5.aopOrbMaxErr                             CFG-ANA-ORBMAXERR
+Page  236: UBX-CFG-NAVX5.iniFix3D                                 CFG-NAVSPG-INIFIX3D
+Page  236: UBX-CFG-NAVX5.maxSVs                                   CFG-NAVSPG-INFIL_MAXSVS
+Page  236: UBX-CFG-NAVX5.minCNO                                   CFG-NAVSPG-INFIL_MINCNO
+Page  236: UBX-CFG-NAVX5.minSVs                                   CFG-NAVSPG-INFIL_MINSVS
+Page  236: UBX-CFG-NAVX5.sigAttenCompMode                         CFG-NAVSPG-SIGATTCOMP
+Page  236: UBX-CFG-NAVX5.useAOP                                   CFG-ANA-USE_ANA
+Page  236: UBX-CFG-NAVX5.usePPP                                   CFG-NAVSPG-USE_PPP
+Page  236: UBX-CFG-NAVX5.wknRollover                              CFG-NAVSPG-WKNROLLOVER
+Page  236: UBX-CFG-NMEA
+Page  236: UBX-CFG-NMEA.bdsTalkerId                               CFG-NMEA-BDSTALKERID
+Page  236: UBX-CFG-NMEA.beidou                                    CFG-NMEA-FILT_BDS
+Page  236: UBX-CFG-NMEA.compat                                    CFG-NMEA-COMPAT
+Page  236: UBX-CFG-NMEA.consider                                  CFG-NMEA-CONSIDER
+Page  236: UBX-CFG-NMEA.dateFilt                                  CFG-NMEA-OUT_INVDATE
+Page  236: UBX-CFG-NMEA.galileo                                   CFG-NMEA-FILT_GAL
+Page  237: UBX-CFG-NMEA.glonass                         CFG-NMEA-FILT_GLO
+Page  237: UBX-CFG-NMEA.gps                             CFG-NMEA-FILT_GPS
+Page  237: UBX-CFG-NMEA.gpsOnlyFilter                   CFG-NMEA-OUT_ONLYGPS
+Page  237: UBX-CFG-NMEA.gsvTalkerId                     CFG-NMEA-GSVTALKERID
+Page  237: UBX-CFG-NMEA.highPrec                        CFG-NMEA-HIGHPREC
+Page  237: UBX-CFG-NMEA.limit82                         CFG-NMEA-LIMIT82
+Page  237: UBX-CFG-NMEA.mainTalkerId                    CFG-NMEA-MAINTALKERID
+Page  237: UBX-CFG-NMEA.mskPosFilt                      CFG-NMEA-OUT_MSKFIX
+Page  237: UBX-CFG-NMEA.nmeaVersion                     CFG-NMEA-PROTVER
+Page  237: UBX-CFG-NMEA.numSV                           CFG-NMEA-MAXSVS
+Page  237: UBX-CFG-NMEA.posFilt                         CFG-NMEA-OUT_INVFIX
+Page  237: UBX-CFG-NMEA.qzss                            CFG-NMEA-FILT_QZSS
+Page  237: UBX-CFG-NMEA.sbas                            CFG-NMEA-FILT_SBAS
+Page  237: UBX-CFG-NMEA.svNumbering                     CFG-NMEA-SVNUMBERING
+Page  237: UBX-CFG-NMEA.timeFilt                        CFG-NMEA-OUT_INVTIME
+Page  237: UBX-CFG-NMEA.trackFilt                       CFG-NMEA-OUT_FROZENCOG
+Page  237: UBX-CFG-ODO
+Page  237: UBX-CFG-ODO.proﬁle                           CFG-ODO-PROFILE
+Page  237: UBX-CFG-ODO.useODO                           CFG-ODO-USE_ODO
+Page  237: UBX-CFG-PM2
+Page  237: UBX-CFG-PM2.doNotEnterOﬀ                     CFG-PM-DONOTENTEROFF
+Page  237: UBX-CFG-PM2.extintBackup                     CFG-PM-EXTINTBACKUP
+Page  237: UBX-CFG-PM2.extintInactive                   CFG-PM-EXTINTINACTIVE
+Page  237: UBX-CFG-PM2.extintInactivityMs               CFG-PM-EXTINTINACTIVITY
+Page  237: UBX-CFG-PM2.extintSel                        CFG-PM-EXTINTSEL
+Page  237: UBX-CFG-PM2.extintWake                       CFG-PM-EXTINTWAKE
+Page  237: UBX-CFG-PM2.gridOﬀset                        CFG-PM-GRIDOFFSET
+Page  237: UBX-CFG-PM2.limitPeakCurr                    CFG-PM-LIMITPEAKCURR
+Page  237: UBX-CFG-PM2.maxStartupStateDur               CFG-PM-MAXACQTIME
+Page  237: UBX-CFG-PM2.minAcqTime                       CFG-PM-MINACQTIME
+Page  237: UBX-CFG-PM2.mode                             CFG-PM-OPERATEMODE
+Page  237: UBX-CFG-PM2.onTime                           CFG-PM-ONTIME
+Page  237: UBX-CFG-PM2.searchPeriod                     CFG-PM-ACQPERIOD
+Page  237: UBX-CFG-PM2.updateEPH                        CFG-PM-UPDATEEPH
+Page  237: UBX-CFG-PM2.updatePeriod                     CFG-PM-POSUPDATEPERIOD
+Page  237: UBX-CFG-PM2.waitTimeFix                      CFG-PM-WAITTIMEFIX
+Page  237: UBX-CFG-PRT
+Page  237: UBX-CFG-PRT.en                               CFG-TXREADY-ENABLED
+Page  237: UBX-CFG-PRT.extendedTxTimeout                CFG-I2C-EXTENDEDTIMEOUT
+Page  237: UBX-CFG-PRT.inNmea                           CFG-I2CINPROT-NMEA
+Page  237: UBX-CFG-PRT.inProtoMask                      CFG-I2C-ENABLED
+Page  237: UBX-CFG-PRT.inRtcm3                          CFG-I2CINPROT-RTCM3X
+Page  237: UBX-CFG-PRT.inUbx                            CFG-I2CINPROT-UBX
+Page  237: UBX-CFG-PRT.outNmea                          CFG-I2COUTPROT-NMEA
+Page  238: UBX-CFG-PRT.outProtoMask                    CFG-I2C-ENABLED
+Page  238: UBX-CFG-PRT.outUbx                          CFG-I2COUTPROT-UBX
+Page  238: UBX-CFG-PRT.pin                             CFG-TXREADY-PIN
+Page  238: UBX-CFG-PRT.pol                             CFG-TXREADY-POLARITY
+Page  238: UBX-CFG-PRT.slaveAddr                       CFG-I2C-ADDRESS
+Page  238: UBX-CFG-PRT.thres                           CFG-TXREADY-THRESHOLD
+Page  238: UBX-CFG-PRT.en                              CFG-TXREADY-ENABLED
+Page  238: UBX-CFG-PRT.extendedTxTimeout               CFG-SPI-EXTENDEDTIMEOUT
+Page  238: UBX-CFG-PRT.ﬀCnt                            CFG-SPI-MAXFF
+Page  238: UBX-CFG-PRT.inNmea                          CFG-SPIINPROT-NMEA
+Page  238: UBX-CFG-PRT.inProtoMask                     CFG-SPI-ENABLED
+Page  238: UBX-CFG-PRT.inRtcm3                         CFG-SPIINPROT-RTCM3X
+Page  238: UBX-CFG-PRT.inUbx                           CFG-SPIINPROT-UBX
+Page  238: UBX-CFG-PRT.outNmea                         CFG-SPIOUTPROT-NMEA
+Page  238: UBX-CFG-PRT.outProtoMask                    CFG-SPI-ENABLED
+Page  238: UBX-CFG-PRT.outUbx                          CFG-SPIOUTPROT-UBX
+Page  238: UBX-CFG-PRT.pin                             CFG-TXREADY-PIN
+Page  238: UBX-CFG-PRT.pol                             CFG-TXREADY-POLARITY
+Page  238: UBX-CFG-PRT.spiMode                         CFG-SPI-CPOLARITY, CFG-SPI-CPHASE
+Page  238: UBX-CFG-PRT.thres                           CFG-TXREADY-THRESHOLD
+Page  238: UBX-CFG-PRT.baudRate                        CFG-UART1-BAUDRATE, CFG-UART2-BAUDRATE
+Page  238: UBX-CFG-PRT.charLen                         CFG-UART1-DATABITS, CFG-UART2-DATABITS
+Page  238: UBX-CFG-PRT.inNmea                          CFG-UART1INPROT-NMEA, CFG-UART2INPROT-NMEA
+Page  238: UBX-CFG-PRT.inProtoMask                     CFG-UART1-ENABLED, CFG-UART2-ENABLED
+Page  238: UBX-CFG-PRT.inRtcm3                         CFG-UART1INPROT-RTCM3X, CFG-UART2INPROT-RTCM3X
+Page  238: UBX-CFG-PRT.inUbx                           CFG-UART1INPROT-UBX, CFG-UART2INPROT-UBX
+Page  238: UBX-CFG-PRT.nStopBits                       CFG-UART1-STOPBITS, CFG-UART2-STOPBITS
+Page  238: UBX-CFG-PRT.outNmea                         CFG-UART1OUTPROT-NMEA, CFG-UART2OUTPROT-NMEA
+Page  238: UBX-CFG-PRT.outProtoMask                    CFG-UART1-ENABLED, CFG-UART2-ENABLED
+Page  238: UBX-CFG-PRT.outUbx                          CFG-UART1OUTPROT-UBX, CFG-UART2OUTPROT-UBX
+Page  238: UBX-CFG-PRT.parity                          CFG-UART1-PARITY, CFG-UART2-PARITY
+Page  238: UBX-CFG-PRT.inNmea                          CFG-USBINPROT-NMEA
+Page  238: UBX-CFG-PRT.inProtoMask                     CFG-USB-ENABLED
+Page  238: UBX-CFG-PRT.inRtcm3                         CFG-USBINPROT-RTCM3X
+Page  238: UBX-CFG-PRT.inUbx                           CFG-USBINPROT-UBX
+Page  238: UBX-CFG-PRT.outNmea                         CFG-USBOUTPROT-NMEA
+Page  238: UBX-CFG-PRT.outProtoMask                    CFG-USB-ENABLED
+Page  238: UBX-CFG-PRT.outUbx                          CFG-USBOUTPROT-UBX
+Page  238: UBX-CFG-RATE
+Page  238: UBX-CFG-RATE.measRate                       CFG-RATE-MEAS
+Page  238: UBX-CFG-RATE.navRate                        CFG-RATE-NAV
+Page  238: UBX-CFG-RATE.timeRef                        CFG-RATE-TIMEREF
+Page  238: UBX-CFG-RINV
+Page  239: UBX-CFG-RINV.data                                       CFG-RINV-DATA_SIZE, CFG-RINV-CHUNK0, CFG-RINV-
+Page  239: CHUNK1, CFG-RINV-CHUNK2, CFG-RINV-CHUNK3
+Page  239: UBX-CFG-RINV.ﬂags                                       CFG-RINV-DUMP, CFG-RINV-BINARY
+Page  239: UBX-CFG-SBAS
+Page  239: UBX-CFG-SBAS.diﬀCorr                                    CFG-SBAS-USE_DIFFCORR
+Page  239: UBX-CFG-SBAS.integrity                                  CFG-SBAS-USE_INTEGRITY
+Page  239: UBX-CFG-SBAS.range                                      CFG-SBAS-USE_RANGING
+Page  239: UBX-CFG-SBAS.scanmode1                                  CFG-SBAS-PRNSCANMASK
+Page  239: UBX-CFG-SBAS.test                                       CFG-SBAS-USE_TESTMODE
+Page  239: UBX-CFG-SLAS
+Page  239: UBX-CFG-SLAS.enabled                                    CFG-QZSS-USE_SLAS_DGNSS
+Page  239: UBX-CFG-SLAS.raim                                       CFG-QZSS-USE_SLAS_RAIM_UNCORR
+Page  239: UBX-CFG-SLAS.test                                       CFG-QZSS-USE_SLAS_TESTMODE
+Page  239: UBX-CFG-TP5
+Page  239: UBX-CFG-TP5.active                                      CFG-TP-TP1_ENA, CFG-TP-TP2_ENA
+Page  239: UBX-CFG-TP5.alignToTow                                  CFG-TP-ALIGN_TO_TOW_TP1, CFG-TP-
+Page  239: UBX-CFG-TP5.antCableDelay                               CFG-TP-ANT_CABLEDELAY
+Page  239: UBX-CFG-TP5.freqPeriod                                  CFG-TP-PERIOD_TP1, CFG-TP-FREQ_TP1, CFG-TP-
+Page  239: PERIOD_TP2, CFG-TP-FREQ_TP2
+Page  239: UBX-CFG-TP5.freqPeriodLock                              CFG-TP-PERIOD_LOCK_TP1, CFG-TP-FREQ_LOCK_TP1,
+Page  239: CFG-TP-PERIOD_LOCK_TP2, CFG-TP-FREQ_LOCK_TP2
+Page  239: UBX-CFG-TP5.gridUtcGnss                                 CFG-TP-TIMEGRID_TP1, CFG-TP-TIMEGRID_TP2
+Page  239: UBX-CFG-TP5.isFreq                                      CFG-TP-PULSE_DEF
+Page  239: UBX-CFG-TP5.isLength                                    CFG-TP-PULSE_LENGTH_DEF
+Page  239: UBX-CFG-TP5.lockGnssFreq                                CFG-TP-SYNC_GNSS_TP1, CFG-TP-SYNC_GNSS_TP2
+Page  239: UBX-CFG-TP5.lockedOtherSet                              CFG-TP-USE_LOCKED_TP1, CFG-TP-USE_LOCKED_TP2
+Page  239: UBX-CFG-TP5.polarity                                    CFG-TP-POL_TP1, CFG-TP-POL_TP2
+Page  239: UBX-CFG-TP5.pulseLenRatio                               CFG-TP-LEN_TP1, CFG-TP-DUTY_TP1, CFG-TP-LEN_TP2,
+Page  239: CFG-TP-DUTY_TP2
+Page  239: UBX-CFG-TP5.pulseLenRatioLock                           CFG-TP-LEN_LOCK_TP1, CFG-TP-DUTY_LOCK_TP1, CFG-
+Page  239: TP-LEN_LOCK_TP2, CFG-TP-DUTY_LOCK_TP2
+Page  239: UBX-CFG-TP5.userConﬁgDelay                              CFG-TP-USER_DELAY_TP1, CFG-TP-USER_DELAY_TP2
+Page  239: UBX-CFG-USB
+Page  239: UBX-CFG-USB.powerConsumption                            CFG-USB-POWER
+Page  239: UBX-CFG-USB.powerMode                                   CFG-USB-SELFPOW
+Page  239: UBX-CFG-USB.productID                                   CFG-USB-PRODUCT_ID
+Page  239: UBX-CFG-USB.productString                               CFG-USB-PRODUCT_STR0, CFG-USB-PRODUCT_STR1,
+Page  239: CFG-USB-PRODUCT_STR2, CFG-USB-PRODUCT_STR3
+Page  239: UBX-CFG-USB.serialNumber                                CFG-USB-SERIAL_NO_STR0, CFG-USB-SERIAL_NO_STR1,
+Page  239: CFG-USB-SERIAL_NO_STR2, CFG-USB-SERIAL_NO_STR3
+Page  239: UBX-CFG-USB.vendorID                                    CFG-USB-VENDOR_ID
+Page  239: UBX-CFG-USB.vendorString                                CFG-USB-VENDOR_STR0, CFG-USB-VENDOR_STR1, CFG-
+Page  239: USB-VENDOR_STR2, CFG-USB-VENDOR_STR3
+Page  240: CFG-ANA-USE_ANA                                     0x10230001    L        -      -            1 (true)
+Page  240: CFG-ANA-ORBMAXERR                                   0x30230002 U2          -      m              100
+Page  240: Table 72: CFG-ANA conﬁguration defaults
+Page  240: CFG-BATCH-ENABLE                                    0x10260013    L        -      -            0 (false)
+Page  240: CFG-BATCH-PIOENABLE                                 0x10260014    L        -      -            0 (false)
+Page  240: CFG-BATCH-MAXENTRIES                                0x30260015 U2          -      -               0
+Page  240: CFG-BATCH-WARNTHRS                                  0x30260016 U2          -      -               0
+Page  240: CFG-BATCH-PIOACTIVELOW                              0x10260018    L        -      -            0 (false)
+Page  240: CFG-BATCH-PIOID                                     0x20260019 U1          -      -               0
+Page  240: CFG-BATCH-EXTRAPVT                                  0x1026001a    L        -      -            0 (false)
+Page  240: CFG-BATCH-EXTRAODO                                  0x1026001b    L        -      -            0 (false)
+Page  240: Table 73: CFG-BATCH conﬁguration defaults
+Page  240: CFG-GEOFENCE-CONFLVL                                0x20240011 E1          -      -            0 (L000)
+Page  240: CFG-GEOFENCE-USE_PIO                                0x10240012    L        -      -            0 (false)
+Page  240: CFG-GEOFENCE-PINPOL                                 0x20240013 E1          -      -           0 (LOW_IN)
+Page  240: CFG-GEOFENCE-PIN                                    0x20240014 U1          -      -               0
+Page  240: CFG-GEOFENCE-USE_FENCE1                             0x10240020    L        -      -            0 (false)
+Page  240: CFG-GEOFENCE-FENCE1_LAT                             0x40240021    I4      1e-7   deg              0
+Page  240: CFG-GEOFENCE-FENCE1_LON                             0x40240022    I4      1e-7   deg              0
+Page  240: CFG-GEOFENCE-FENCE1_RAD                             0x40240023 U4         0.01    m               0
+Page  240: CFG-GEOFENCE-USE_FENCE2                             0x10240030    L        -      -            0 (false)
+Page  240: CFG-GEOFENCE-FENCE2_LAT                             0x40240031    I4      1e-7   deg              0
+Page  240: CFG-GEOFENCE-FENCE2_LON                             0x40240032    I4      1e-7   deg              0
+Page  240: CFG-GEOFENCE-FENCE2_RAD                             0x40240033 U4         0.01    m               0
+Page  240: CFG-GEOFENCE-USE_FENCE3                             0x10240040    L        -      -            0 (false)
+Page  240: CFG-GEOFENCE-FENCE3_LAT                             0x40240041    I4      1e-7   deg              0
+Page  240: CFG-GEOFENCE-FENCE3_LON                             0x40240042    I4      1e-7   deg              0
+Page  240: CFG-GEOFENCE-FENCE3_RAD                             0x40240043 U4         0.01    m               0
+Page  240: CFG-GEOFENCE-USE_FENCE4                             0x10240050    L        -      -            0 (false)
+Page  240: CFG-GEOFENCE-FENCE4_LAT                             0x40240051    I4      1e-7   deg              0
+Page  240: CFG-GEOFENCE-FENCE4_LON                             0x40240052    I4      1e-7   deg              0
+Page  240: CFG-GEOFENCE-FENCE4_RAD                             0x40240053 U4         0.01    m               0
+Page  240: Table 74: CFG-GEOFENCE conﬁguration defaults
+Page  241: CFG-HW-ANT_CFG_VOLTCTRL                              0x10a3002e    L        -      -            0 (false)
+Page  241: CFG-HW-ANT_CFG_SHORTDET                              0x10a3002f    L        -      -            0 (false)
+Page  241: CFG-HW-ANT_CFG_SHORTDET_POL                          0x10a30030    L        -      -            1 (true)
+Page  241: CFG-HW-ANT_CFG_OPENDET                               0x10a30031    L        -      -            0 (false)
+Page  241: CFG-HW-ANT_CFG_OPENDET_POL                           0x10a30032    L        -      -            1 (true)
+Page  241: CFG-HW-ANT_CFG_PWRDOWN                               0x10a30033    L        -      -            0 (false)
+Page  241: CFG-HW-ANT_CFG_PWRDOWN_POL                           0x10a30034    L        -      -            1 (true)
+Page  241: CFG-HW-ANT_CFG_RECOVER                               0x10a30035    L        -      -            0 (false)
+Page  241: CFG-HW-ANT_SUP_SWITCH_PIN                            0x20a30036 U1          -      -               16
+Page  241: CFG-HW-ANT_SUP_SHORT_PIN                             0x20a30037 U1          -      -               15
+Page  241: CFG-HW-ANT_SUP_OPEN_PIN                              0x20a30038 U1          -      -               8
+Page  241: CFG-HW-ANT_ON_SHORT_US                               0x30a3003c U2          -      -              500
+Page  241: CFG-HW-ANT_SUP_ENGINE                                0x20a30054 E1          -      -            0 (EXT)
+Page  241: CFG-HW-ANT_SUP_SHORT_THR                             0x20a30055 U1          -     mV               0
+Page  241: CFG-HW-ANT_SUP_OPEN_THR                              0x20a30056 U1          -     mV               0
+Page  241: Table 75: CFG-HW conﬁguration defaults
+Page  241: CFG-I2C-ADDRESS                                      0x20510001 U1          -      -              132
+Page  241: CFG-I2C-EXTENDEDTIMEOUT                              0x10510002    L        -      -            0 (false)
+Page  241: CFG-I2C-ENABLED                                      0x10510003    L        -      -            1 (true)
+Page  241: Table 76: CFG-I2C conﬁguration defaults
+Page  241: CFG-I2CINPROT-UBX                                    0x10710001    L        -      -            1 (true)
+Page  241: CFG-I2CINPROT-NMEA                                   0x10710002    L        -      -            1 (true)
+Page  241: CFG-I2CINPROT-RTCM3X                                 0x10710004    L        -      -            1 (true)
+Page  241: Table 77: CFG-I2CINPROT conﬁguration defaults
+Page  241: CFG-I2COUTPROT-UBX                                   0x10720001    L        -      -            1 (true)
+Page  241: CFG-I2COUTPROT-NMEA                                  0x10720002    L        -      -            1 (true)
+Page  241: Table 78: CFG-I2COUTPROT conﬁguration defaults
+Page  241: CFG-INFMSG-UBX_I2C                                   0x20920001 X1          -      -              0x00
+Page  241: CFG-INFMSG-UBX_UART1                                 0x20920002 X1          -      -              0x00
+Page  241: CFG-INFMSG-UBX_UART2                                 0x20920003 X1          -      -              0x00
+Page  241: CFG-INFMSG-UBX_USB                                   0x20920004 X1          -      -              0x00
+Page  241: CFG-INFMSG-UBX_SPI                                   0x20920005 X1          -      -              0x00
+Page  241: CFG-INFMSG-NMEA_I2C                                  0x20920006 X1          -      -         0x07 (ERROR |
+Page  241: CFG-INFMSG-NMEA_UART1                                0x20920007 X1          -      -         0x07 (ERROR |
+Page  242: CFG-INFMSG-NMEA_UART2                                0x20920008 X1          -      -         0x07 (ERROR |
+Page  242: CFG-INFMSG-NMEA_USB                                  0x20920009 X1          -      -         0x07 (ERROR |
+Page  242: CFG-INFMSG-NMEA_SPI                                  0x2092000a X1          -      -         0x07 (ERROR |
+Page  242: Table 79: CFG-INFMSG conﬁguration defaults
+Page  242: CFG-ITFM-BBTHRESHOLD                                 0x20410001 U1          -      -               3
+Page  242: CFG-ITFM-CWTHRESHOLD                                 0x20410002 U1          -      -               15
+Page  242: CFG-ITFM-ENABLE                                      0x1041000d    L        -      -            0 (false)
+Page  242: CFG-ITFM-ANTSETTING                                  0x20410010 E1          -      -         0 (UNKNOWN)
+Page  242: CFG-ITFM-ENABLE_AUX                                  0x10410013    L        -      -            0 (false)
+Page  242: Table 80: CFG-ITFM conﬁguration defaults
+Page  242: CFG-LOGFILTER-RECORD_ENA                             0x10de0002    L        -      -            0 (false)
+Page  242: CFG-LOGFILTER-ONCE_PER_WAKE_UP_ENA                   0x10de0003    L        -      -            0 (false)
+Page  242: CFG-LOGFILTER-APPLY_ALL_FILTERS                      0x10de0004    L        -      -            0 (false)
+Page  242: CFG-LOGFILTER-MIN_INTERVAL                           0x30de0005 U2          -      s               0
+Page  242: CFG-LOGFILTER-TIME_THRS                              0x30de0006 U2          -      s               0
+Page  242: CFG-LOGFILTER-SPEED_THRS                             0x30de0007 U2          -     m/s              0
+Page  242: CFG-LOGFILTER-POSITION_THRS                          0x40de0008 U4          -      m               0
+Page  242: Table 81: CFG-LOGFILTER conﬁguration defaults
+Page  242: CFG-MOT-GNSSSPEED_THRS                               0x20250038 U1         0.01   m/s              0
+Page  242: CFG-MOT-GNSSDIST_THRS                                0x3025003b U2          -      -               0
+Page  242: Table 82: CFG-MOT conﬁguration defaults
+Page  242: CFG-MSGOUT-NMEA_ID_DTM_I2C                           0x209100a6 U1          -      -               0
+Page  242: CFG-MSGOUT-NMEA_ID_DTM_SPI                           0x209100aa U1          -      -               0
+Page  242: CFG-MSGOUT-NMEA_ID_DTM_UART1                         0x209100a7 U1          -      -               0
+Page  242: CFG-MSGOUT-NMEA_ID_DTM_UART2                         0x209100a8 U1          -      -               0
+Page  242: CFG-MSGOUT-NMEA_ID_DTM_USB                           0x209100a9 U1          -      -               0
+Page  242: CFG-MSGOUT-NMEA_ID_GBS_I2C                           0x209100dd U1          -      -               0
+Page  242: CFG-MSGOUT-NMEA_ID_GBS_SPI                           0x209100e1 U1          -      -               0
+Page  242: CFG-MSGOUT-NMEA_ID_GBS_UART1                         0x209100de U1          -      -               0
+Page  242: CFG-MSGOUT-NMEA_ID_GBS_UART2                         0x209100df U1          -      -               0
+Page  242: CFG-MSGOUT-NMEA_ID_GBS_USB                           0x209100e0 U1          -      -               0
+Page  242: CFG-MSGOUT-NMEA_ID_GGA_I2C                           0x209100ba U1          -      -               1
+Page  242: CFG-MSGOUT-NMEA_ID_GGA_SPI                           0x209100be U1          -      -               1
+Page  242: CFG-MSGOUT-NMEA_ID_GGA_UART1                         0x209100bb U1          -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GGA_UART2        0x209100bc U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GGA_USB          0x209100bd U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GLL_I2C          0x209100c9 U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GLL_SPI          0x209100cd U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GLL_UART1        0x209100ca U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GLL_UART2        0x209100cb U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GLL_USB          0x209100cc U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GNS_I2C          0x209100b5 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GNS_SPI          0x209100b9 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GNS_UART1        0x209100b6 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GNS_UART2        0x209100b7 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GNS_USB          0x209100b8 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GRS_I2C          0x209100ce U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GRS_SPI          0x209100d2 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GRS_UART1        0x209100cf U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GRS_UART2        0x209100d0 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GRS_USB          0x209100d1 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GSA_I2C          0x209100bf U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GSA_SPI          0x209100c3 U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GSA_UART1        0x209100c0 U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GSA_UART2        0x209100c1 U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GSA_USB          0x209100c2 U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GST_I2C          0x209100d3 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GST_SPI          0x209100d7 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GST_UART1        0x209100d4 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GST_UART2        0x209100d5 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GST_USB          0x209100d6 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GSV_I2C          0x209100c4 U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GSV_SPI          0x209100c8 U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GSV_UART1        0x209100c5 U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GSV_UART2        0x209100c6 U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GSV_USB          0x209100c7 U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_RLM_I2C          0x20910400 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_RLM_SPI          0x20910404 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_RLM_UART1        0x20910401 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_RLM_UART2        0x20910402 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_RLM_USB          0x20910403 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_RMC_I2C          0x209100ab U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_RMC_SPI          0x209100af U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_RMC_UART1        0x209100ac U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_RMC_UART2        0x209100ad U1         -      -               1
+Page  244: CFG-MSGOUT-NMEA_ID_RMC_USB            0x209100ae U1         -      -               1
+Page  244: CFG-MSGOUT-NMEA_ID_VLW_I2C            0x209100e7 U1         -      -               0
+Page  244: CFG-MSGOUT-NMEA_ID_VLW_SPI            0x209100eb U1         -      -               0
+Page  244: CFG-MSGOUT-NMEA_ID_VLW_UART1          0x209100e8 U1         -      -               0
+Page  244: CFG-MSGOUT-NMEA_ID_VLW_UART2          0x209100e9 U1         -      -               0
+Page  244: CFG-MSGOUT-NMEA_ID_VLW_USB            0x209100ea U1         -      -               0
+Page  244: CFG-MSGOUT-NMEA_ID_VTG_I2C            0x209100b0 U1         -      -               1
+Page  244: CFG-MSGOUT-NMEA_ID_VTG_SPI            0x209100b4 U1         -      -               1
+Page  244: CFG-MSGOUT-NMEA_ID_VTG_UART1          0x209100b1 U1         -      -               1
+Page  244: CFG-MSGOUT-NMEA_ID_VTG_UART2          0x209100b2 U1         -      -               1
+Page  244: CFG-MSGOUT-NMEA_ID_VTG_USB            0x209100b3 U1         -      -               1
+Page  244: CFG-MSGOUT-NMEA_ID_ZDA_I2C            0x209100d8 U1         -      -               0
+Page  244: CFG-MSGOUT-NMEA_ID_ZDA_SPI            0x209100dc U1         -      -               0
+Page  244: CFG-MSGOUT-NMEA_ID_ZDA_UART1          0x209100d9 U1         -      -               0
+Page  244: CFG-MSGOUT-NMEA_ID_ZDA_UART2          0x209100da U1         -      -               0
+Page  244: CFG-MSGOUT-NMEA_ID_ZDA_USB            0x209100db U1         -      -               0
+Page  244: CFG-MSGOUT-PUBX_ID_POLYP_I2C          0x209100ec U1         -      -               0
+Page  244: CFG-MSGOUT-PUBX_ID_POLYP_SPI          0x209100f0 U1         -      -               0
+Page  244: CFG-MSGOUT-PUBX_ID_POLYP_UART1        0x209100ed U1         -      -               0
+Page  244: CFG-MSGOUT-PUBX_ID_POLYP_UART2        0x209100ee U1         -      -               0
+Page  244: CFG-MSGOUT-PUBX_ID_POLYP_USB          0x209100ef U1         -      -               0
+Page  244: CFG-MSGOUT-PUBX_ID_POLYS_I2C          0x209100f1 U1         -      -               0
+Page  244: CFG-MSGOUT-PUBX_ID_POLYS_SPI          0x209100f5 U1         -      -               0
+Page  244: CFG-MSGOUT-PUBX_ID_POLYS_UART1        0x209100f2 U1         -      -               0
+Page  244: CFG-MSGOUT-PUBX_ID_POLYS_UART2        0x209100f3 U1         -      -               0
+Page  244: CFG-MSGOUT-PUBX_ID_POLYS_USB          0x209100f4 U1         -      -               0
+Page  244: CFG-MSGOUT-PUBX_ID_POLYT_I2C          0x209100f6 U1         -      -               0
+Page  244: CFG-MSGOUT-PUBX_ID_POLYT_SPI          0x209100fa U1         -      -               0
+Page  244: CFG-MSGOUT-PUBX_ID_POLYT_UART1        0x209100f7 U1         -      -               0
+Page  244: CFG-MSGOUT-PUBX_ID_POLYT_UART2        0x209100f8 U1         -      -               0
+Page  244: CFG-MSGOUT-PUBX_ID_POLYT_USB          0x209100f9 U1         -      -               0
+Page  244: CFG-MSGOUT-UBX_LOG_INFO_I2C           0x20910259 U1         -      -               0
+Page  244: CFG-MSGOUT-UBX_LOG_INFO_SPI           0x2091025d U1         -      -               0
+Page  244: CFG-MSGOUT-UBX_LOG_INFO_UART1         0x2091025a U1         -      -               0
+Page  244: CFG-MSGOUT-UBX_LOG_INFO_UART2         0x2091025b U1         -      -               0
+Page  244: CFG-MSGOUT-UBX_LOG_INFO_USB           0x2091025c U1         -      -               0
+Page  244: CFG-MSGOUT-UBX_MON_COMMS_I2C          0x2091034f U1         -      -               0
+Page  244: CFG-MSGOUT-UBX_MON_COMMS_SPI          0x20910353 U1         -      -               0
+Page  244: CFG-MSGOUT-UBX_MON_COMMS_UART1        0x20910350 U1         -      -               0
+Page  244: CFG-MSGOUT-UBX_MON_COMMS_UART2        0x20910351 U1         -      -               0
+Page  244: CFG-MSGOUT-UBX_MON_COMMS_USB          0x20910352 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW2_I2C            0x209101b9 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW2_SPI            0x209101bd U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW2_UART1          0x209101ba U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW2_UART2          0x209101bb U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW2_USB            0x209101bc U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW3_I2C            0x20910354 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW3_SPI            0x20910358 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW3_UART1          0x20910355 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW3_UART2          0x20910356 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW3_USB            0x20910357 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW_I2C             0x209101b4 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW_SPI             0x209101b8 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW_UART1           0x209101b5 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW_UART2           0x209101b6 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW_USB             0x209101b7 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_IO_I2C             0x209101a5 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_IO_SPI             0x209101a9 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_IO_UART1           0x209101a6 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_IO_UART2           0x209101a7 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_IO_USB             0x209101a8 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_MSGPP_I2C          0x20910196 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_MSGPP_SPI          0x2091019a U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_MSGPP_UART1        0x20910197 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_MSGPP_UART2        0x20910198 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_MSGPP_USB          0x20910199 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RF_I2C             0x20910359 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RF_SPI             0x2091035d U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RF_UART1           0x2091035a U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RF_UART2           0x2091035b U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RF_USB             0x2091035c U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RXBUF_I2C          0x209101a0 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RXBUF_SPI          0x209101a4 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RXBUF_UART1        0x209101a1 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RXBUF_UART2        0x209101a2 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RXBUF_USB          0x209101a3 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RXR_I2C            0x20910187 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RXR_SPI            0x2091018b U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RXR_UART1          0x20910188 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RXR_UART2          0x20910189 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RXR_USB            0x2091018a U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_SPAN_I2C           0x2091038b U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_MON_SPAN_SPI               0x2091038f U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_MON_SPAN_UART1             0x2091038c U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_MON_SPAN_UART2             0x2091038d U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_MON_SPAN_USB               0x2091038e U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_MON_TXBUF_I2C              0x2091019b U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_MON_TXBUF_SPI              0x2091019f U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_MON_TXBUF_UART1            0x2091019c U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_MON_TXBUF_UART2            0x2091019d U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_MON_TXBUF_USB              0x2091019e U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_AOPSTATUS_I2C          0x20910079 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_AOPSTATUS_SPI          0x2091007d U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_AOPSTATUS_UART1        0x2091007a U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_AOPSTATUS_UART2        0x2091007b U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_AOPSTATUS_USB          0x2091007c U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_CLOCK_I2C              0x20910065 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_CLOCK_SPI              0x20910069 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_CLOCK_UART1            0x20910066 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_CLOCK_UART2            0x20910067 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_CLOCK_USB              0x20910068 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_COV_I2C                0x20910083 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_COV_SPI                0x20910087 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_COV_UART1              0x20910084 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_COV_UART2              0x20910085 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_COV_USB                0x20910086 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_DOP_I2C                0x20910038 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_DOP_SPI                0x2091003c U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_DOP_UART1              0x20910039 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_DOP_UART2              0x2091003a U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_DOP_USB                0x2091003b U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_EOE_I2C                0x2091015f U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_EOE_SPI                0x20910163 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_EOE_UART1              0x20910160 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_EOE_UART2              0x20910161 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_EOE_USB                0x20910162 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_GEOFENCE_I2C           0x209100a1 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_GEOFENCE_SPI           0x209100a5 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_GEOFENCE_UART1         0x209100a2 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_GEOFENCE_UART2         0x209100a3 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_GEOFENCE_USB           0x209100a4 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_ODO_I2C                0x2091007e U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_ODO_SPI                0x20910082 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_ODO_UART1            0x2091007f U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_ODO_UART2            0x20910080 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_ODO_USB              0x20910081 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_ORB_I2C              0x20910010 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_ORB_SPI              0x20910014 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_ORB_UART1            0x20910011 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_ORB_UART2            0x20910012 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_ORB_USB              0x20910013 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_POSECEF_I2C          0x20910024 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_POSECEF_SPI          0x20910028 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_POSECEF_UART1        0x20910025 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_POSECEF_UART2        0x20910026 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_POSECEF_USB          0x20910027 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_POSLLH_I2C           0x20910029 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_POSLLH_SPI           0x2091002d U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_POSLLH_UART1         0x2091002a U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_POSLLH_UART2         0x2091002b U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_POSLLH_USB           0x2091002c U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_PVT_I2C              0x20910006 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_PVT_SPI              0x2091000a U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_PVT_UART1            0x20910007 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_PVT_UART2            0x20910008 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_PVT_USB              0x20910009 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SAT_I2C              0x20910015 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SAT_SPI              0x20910019 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SAT_UART1            0x20910016 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SAT_UART2            0x20910017 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SAT_USB              0x20910018 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SBAS_I2C             0x2091006a U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SBAS_SPI             0x2091006e U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SBAS_UART1           0x2091006b U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SBAS_UART2           0x2091006c U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SBAS_USB             0x2091006d U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SIG_I2C              0x20910345 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SIG_SPI              0x20910349 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SIG_UART1            0x20910346 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SIG_UART2            0x20910347 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SIG_USB              0x20910348 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SLAS_I2C             0x20910336 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SLAS_SPI             0x2091033a U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SLAS_UART1           0x20910337 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_SLAS_UART2            0x20910338 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_SLAS_USB              0x20910339 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_STATUS_I2C            0x2091001a U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_STATUS_SPI            0x2091001e U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_STATUS_UART1          0x2091001b U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_STATUS_UART2          0x2091001c U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_STATUS_USB            0x2091001d U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEBDS_I2C           0x20910051 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEBDS_SPI           0x20910055 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEBDS_UART1         0x20910052 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEBDS_UART2         0x20910053 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEBDS_USB           0x20910054 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGAL_I2C           0x20910056 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGAL_SPI           0x2091005a U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGAL_UART1         0x20910057 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGAL_UART2         0x20910058 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGAL_USB           0x20910059 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGLO_I2C           0x2091004c U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGLO_SPI           0x20910050 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGLO_UART1         0x2091004d U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGLO_UART2         0x2091004e U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGLO_USB           0x2091004f U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGPS_I2C           0x20910047 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGPS_SPI           0x2091004b U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGPS_UART1         0x20910048 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGPS_UART2         0x20910049 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGPS_USB           0x2091004a U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMELS_I2C            0x20910060 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMELS_SPI            0x20910064 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMELS_UART1          0x20910061 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMELS_UART2          0x20910062 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMELS_USB            0x20910063 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEQZSS_I2C          0x20910386 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEQZSS_SPI          0x2091038a U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEQZSS_UART1        0x20910387 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEQZSS_UART2        0x20910388 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEQZSS_USB          0x20910389 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEUTC_I2C           0x2091005b U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEUTC_SPI           0x2091005f U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEUTC_UART1         0x2091005c U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEUTC_UART2         0x2091005d U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_NAV_TIMEUTC_USB          0x2091005e U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_NAV_VELECEF_I2C          0x2091003d U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_NAV_VELECEF_SPI          0x20910041 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_NAV_VELECEF_UART1        0x2091003e U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_NAV_VELECEF_UART2        0x2091003f U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_NAV_VELECEF_USB          0x20910040 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_NAV_VELNED_I2C           0x20910042 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_NAV_VELNED_SPI           0x20910046 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_NAV_VELNED_UART1         0x20910043 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_NAV_VELNED_UART2         0x20910044 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_NAV_VELNED_USB           0x20910045 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_MEASX_I2C            0x20910204 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_MEASX_SPI            0x20910208 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_MEASX_UART1          0x20910205 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_MEASX_UART2          0x20910206 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_MEASX_USB            0x20910207 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RAWX_I2C             0x209102a4 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RAWX_SPI             0x209102a8 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RAWX_UART1           0x209102a5 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RAWX_UART2           0x209102a6 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RAWX_USB             0x209102a7 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RLM_I2C              0x2091025e U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RLM_SPI              0x20910262 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RLM_UART1            0x2091025f U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RLM_UART2            0x20910260 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RLM_USB              0x20910261 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RTCM_I2C             0x20910268 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RTCM_SPI             0x2091026c U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RTCM_UART1           0x20910269 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RTCM_UART2           0x2091026a U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RTCM_USB             0x2091026b U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_SFRBX_I2C            0x20910231 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_SFRBX_SPI            0x20910235 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_SFRBX_UART1          0x20910232 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_SFRBX_UART2          0x20910233 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_SFRBX_USB            0x20910234 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_TIM_TM2_I2C              0x20910178 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_TIM_TM2_SPI              0x2091017c U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_TIM_TM2_UART1            0x20910179 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_TIM_TM2_UART2            0x2091017a U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_TIM_TM2_USB              0x2091017b U1         -      -               0
+Page  250: CFG-MSGOUT-UBX_TIM_TP_I2C                         0x2091017d U1          -       -                0
+Page  250: CFG-MSGOUT-UBX_TIM_TP_SPI                         0x20910181 U1          -       -                0
+Page  250: CFG-MSGOUT-UBX_TIM_TP_UART1                       0x2091017e U1          -       -                0
+Page  250: CFG-MSGOUT-UBX_TIM_TP_UART2                       0x2091017f U1          -       -                0
+Page  250: CFG-MSGOUT-UBX_TIM_TP_USB                         0x20910180 U1          -       -                0
+Page  250: CFG-MSGOUT-UBX_TIM_VRFY_I2C                       0x20910092 U1          -       -                0
+Page  250: CFG-MSGOUT-UBX_TIM_VRFY_SPI                       0x20910096 U1          -       -                0
+Page  250: CFG-MSGOUT-UBX_TIM_VRFY_UART1                     0x20910093 U1          -       -                0
+Page  250: CFG-MSGOUT-UBX_TIM_VRFY_UART2                     0x20910094 U1          -       -                0
+Page  250: CFG-MSGOUT-UBX_TIM_VRFY_USB                       0x20910095 U1          -       -                0
+Page  250: Table 83: CFG-MSGOUT conﬁguration defaults
+Page  250: CFG-NAVSPG-FIXMODE                                0x20110011 E1          -       -             3 (AUTO)
+Page  250: CFG-NAVSPG-INIFIX3D                               0x10110013    L        -       -             0 (false)
+Page  250: CFG-NAVSPG-WKNROLLOVER                            0x30110017 U2          -       -              2117
+Page  250: CFG-NAVSPG-USE_PPP                                0x10110019    L        -       -             0 (false)
+Page  250: CFG-NAVSPG-UTCSTANDARD                            0x2011001c E1          -       -             0 (AUTO)
+Page  250: CFG-NAVSPG-DYNMODEL                               0x20110021 E1          -       -             0 (PORT)
+Page  250: CFG-NAVSPG-ACKAIDING                              0x10110025    L        -       -             0 (false)
+Page  250: CFG-NAVSPG-USE_USRDAT                             0x10110061    L        -       -             0 (false)
+Page  250: CFG-NAVSPG-USRDAT_MAJA                            0x50110062 R8          -       m             6378137
+Page  250: CFG-NAVSPG-USRDAT_FLAT                            0x50110063 R8          -       -      298.25722356300002502
+Page  250: CFG-NAVSPG-USRDAT_DX                              0x40110064 R4          -       m                0
+Page  250: CFG-NAVSPG-USRDAT_DY                              0x40110065 R4          -       m                0
+Page  250: CFG-NAVSPG-USRDAT_DZ                              0x40110066 R4          -       m                0
+Page  250: CFG-NAVSPG-USRDAT_ROTX                            0x40110067 R4          -     arcsec             0
+Page  250: CFG-NAVSPG-USRDAT_ROTY                            0x40110068 R4          -     arcsec             0
+Page  250: CFG-NAVSPG-USRDAT_ROTZ                            0x40110069 R4          -     arcsec             0
+Page  250: CFG-NAVSPG-USRDAT_SCALE                           0x4011006a R4          -     ppm                0
+Page  250: CFG-NAVSPG-INFIL_MINSVS                           0x201100a1 U1          -       -                3
+Page  250: CFG-NAVSPG-INFIL_MAXSVS                           0x201100a2 U1          -       -                32
+Page  250: CFG-NAVSPG-INFIL_MINCNO                           0x201100a3 U1          -     dBHz               6
+Page  250: CFG-NAVSPG-INFIL_MINELEV                          0x201100a4    I1       -      deg               5
+Page  250: CFG-NAVSPG-INFIL_NCNOTHRS                         0x201100aa U1          -       -                0
+Page  250: CFG-NAVSPG-INFIL_CNOTHRS                          0x201100ab U1          -       -                0
+Page  250: CFG-NAVSPG-OUTFIL_PDOP                            0x301100b1 U2         0.1      -               250
+Page  250: CFG-NAVSPG-OUTFIL_TDOP                            0x301100b2 U2         0.1      -               250
+Page  250: CFG-NAVSPG-OUTFIL_PACC                            0x301100b3 U2          -       m               100
+Page  250: CFG-NAVSPG-OUTFIL_TACC                            0x301100b4 U2          -       m               350
+Page  250: CFG-NAVSPG-OUTFIL_FACC                            0x301100b5 U2         0.01    m/s              150
+Page  251: CFG-NAVSPG-CONSTR_ALT                             0x401100c1    I4      0.01     m              0
+Page  251: CFG-NAVSPG-CONSTR_ALTVAR                          0x401100c2 U4        0.0001   m^2           10000
+Page  251: CFG-NAVSPG-CONSTR_DGNSSTO                         0x201100c4 U1          -       s              60
+Page  251: CFG-NAVSPG-SIGATTCOMP                             0x201100d6 E1          -       -            0 (DIS)
+Page  251: Table 84: CFG-NAVSPG conﬁguration defaults
+Page  251: CFG-NMEA-PROTVER                                  0x20930001 E1          -       -           41 (V41)
+Page  251: CFG-NMEA-MAXSVS                                   0x20930002 E1          -       -          0 (UNLIM)
+Page  251: CFG-NMEA-COMPAT                                   0x10930003    L        -       -           0 (false)
+Page  251: CFG-NMEA-CONSIDER                                 0x10930004    L        -       -           1 (true)
+Page  251: CFG-NMEA-LIMIT82                                  0x10930005    L        -       -           0 (false)
+Page  251: CFG-NMEA-HIGHPREC                                 0x10930006    L        -       -           0 (false)
+Page  251: CFG-NMEA-SVNUMBERING                              0x20930007 E1          -       -          0 (STRICT)
+Page  251: CFG-NMEA-FILT_GPS                                 0x10930011    L        -       -           0 (false)
+Page  251: CFG-NMEA-FILT_SBAS                                0x10930012    L        -       -           0 (false)
+Page  251: CFG-NMEA-FILT_GAL                                 0x10930013    L        -       -           0 (false)
+Page  251: CFG-NMEA-FILT_QZSS                                0x10930015    L        -       -           0 (false)
+Page  251: CFG-NMEA-FILT_GLO                                 0x10930016    L        -       -           0 (false)
+Page  251: CFG-NMEA-FILT_BDS                                 0x10930017    L        -       -           0 (false)
+Page  251: CFG-NMEA-OUT_INVFIX                               0x10930021    L        -       -           0 (false)
+Page  251: CFG-NMEA-OUT_MSKFIX                               0x10930022    L        -       -           0 (false)
+Page  251: CFG-NMEA-OUT_INVTIME                              0x10930023    L        -       -           0 (false)
+Page  251: CFG-NMEA-OUT_INVDATE                              0x10930024    L        -       -           0 (false)
+Page  251: CFG-NMEA-OUT_ONLYGPS                              0x10930025    L        -       -           0 (false)
+Page  251: CFG-NMEA-OUT_FROZENCOG                            0x10930026    L        -       -           0 (false)
+Page  251: CFG-NMEA-MAINTALKERID                             0x20930031 E1          -       -           0 (AUTO)
+Page  251: CFG-NMEA-GSVTALKERID                              0x20930032 E1          -       -           0 (GNSS)
+Page  251: CFG-NMEA-BDSTALKERID                              0x30930033 U2          -       -              0
+Page  251: Table 85: CFG-NMEA conﬁguration defaults
+Page  251: CFG-ODO-USE_ODO                                   0x10220001    L        -       -           0 (false)
+Page  251: CFG-ODO-PROFILE                                   0x20220005 E1          -       -           0 (RUN)
+Page  251: Table 86: CFG-ODO conﬁguration defaults
+Page  251: CFG-PM-OPERATEMODE                                0x20d00001 E1          -       -           0 (FULL)
+Page  251: CFG-PM-POSUPDATEPERIOD                            0x40d00002 U4          -       s              10
+Page  251: CFG-PM-ACQPERIOD                                  0x40d00003 U4          -       s              10
+Page  251: CFG-PM-GRIDOFFSET                                 0x40d00004 U4          -       s              0
+Page  251: CFG-PM-ONTIME                                     0x30d00005 U2          -       s              0
+Page  251: CFG-PM-MINACQTIME                                 0x20d00006 U1          -       s              0
+Page  252: CFG-PM-MAXACQTIME                               0x20d00007 U1          -      s                 0
+Page  252: CFG-PM-DONOTENTEROFF                            0x10d00008    L        -      -              0 (false)
+Page  252: CFG-PM-WAITTIMEFIX                              0x10d00009    L        -      -              0 (false)
+Page  252: CFG-PM-UPDATEEPH                                0x10d0000a    L        -      -              1 (true)
+Page  252: CFG-PM-EXTINTSEL                                0x20d0000b E1          -      -            0 (EXTINT0)
+Page  252: CFG-PM-EXTINTWAKE                               0x10d0000c    L        -      -              0 (false)
+Page  252: CFG-PM-EXTINTBACKUP                             0x10d0000d    L        -      -              0 (false)
+Page  252: CFG-PM-EXTINTINACTIVE                           0x10d0000e    L        -      -              0 (false)
+Page  252: CFG-PM-EXTINTINACTIVITY                         0x40d0000f U4        0.001    s                 0
+Page  252: CFG-PM-LIMITPEAKCURR                            0x10d00010    L        -      -              0 (false)
+Page  252: Table 87: CFG-PM conﬁguration defaults
+Page  252: CFG-QZSS-USE_SLAS_DGNSS                         0x10370005    L        -      -              1 (true)
+Page  252: CFG-QZSS-USE_SLAS_TESTMODE                      0x10370006    L        -      -              0 (false)
+Page  252: CFG-QZSS-USE_SLAS_RAIM_UNCORR                   0x10370007    L        -      -              0 (false)
+Page  252: Table 88: CFG-QZSS conﬁguration defaults
+Page  252: CFG-RATE-MEAS                                   0x30210001 U2        0.001    s               1000
+Page  252: CFG-RATE-NAV                                    0x30210002 U2          -      -                 1
+Page  252: CFG-RATE-TIMEREF                                0x20210003 E1          -      -              1 (GPS)
+Page  252: Table 89: CFG-RATE conﬁguration defaults
+Page  252: CFG-RINV-DUMP                                   0x10c70001    L        -      -              0 (false)
+Page  252: CFG-RINV-BINARY                                 0x10c70002    L        -      -              0 (false)
+Page  252: CFG-RINV-DATA_SIZE                              0x20c70003 U1          -      -                 22
+Page  252: CFG-RINV-CHUNK0                                 0x50c70004 X8          -      -        0x203a656369746f4e
+Page  252: CFG-RINV-CHUNK1                                 0x50c70005 X8          -      -        0x2061746164206f6e
+Page  252: CFG-RINV-CHUNK2                                 0x50c70006 X8          -      -       0x0000216465766173
+Page  252: CFG-RINV-CHUNK3                                 0x50c70007 X8          -      -       0x0000000000000000
+Page  252: Table 90: CFG-RINV conﬁguration defaults
+Page  252: CFG-SBAS-USE_TESTMODE                           0x10360002    L        -      -              0 (false)
+Page  252: CFG-SBAS-USE_RANGING                            0x10360003    L        -      -              1 (true)
+Page  252: CFG-SBAS-USE_DIFFCORR                           0x10360004    L        -      -              1 (true)
+Page  252: CFG-SBAS-USE_INTEGRITY                          0x10360005    L        -      -              0 (false)
+Page  252: CFG-SBAS-PRNSCANMASK                            0x50360006 X8          -      -     0x0000000000072b88 (ALL |
+Page  252: Table 91: CFG-SBAS conﬁguration defaults
+Page  253: CFG-SEC-CFG_LOCK                                     0x10f60009    L        -      -            0 (false)
+Page  253: CFG-SEC-CFG_LOCK_UNLOCKGRP1                          0x30f6000a U2          -      -               0
+Page  253: CFG-SEC-CFG_LOCK_UNLOCKGRP2                          0x30f6000b U2          -      -               0
+Page  253: Table 92: CFG-SEC conﬁguration defaults
+Page  253: CFG-SIGNAL-GPS_ENA                                   0x1031001f    L        -      -            1 (true)
+Page  253: CFG-SIGNAL-GPS_L1CA_ENA                              0x10310001    L        -      -            1 (true)
+Page  253: CFG-SIGNAL-SBAS_ENA                                  0x10310020    L        -      -            1 (true)
+Page  253: CFG-SIGNAL-SBAS_L1CA_ENA                             0x10310005    L        -      -            1 (true)
+Page  253: CFG-SIGNAL-GAL_ENA                                   0x10310021    L        -      -            1 (true)
+Page  253: CFG-SIGNAL-GAL_E1_ENA                                0x10310007    L        -      -            1 (true)
+Page  253: CFG-SIGNAL-BDS_ENA                                   0x10310022    L        -      -            1 (true)
+Page  253: CFG-SIGNAL-BDS_B1_ENA                                0x1031000d    L        -      -            1 (true)
+Page  253: CFG-SIGNAL-QZSS_ENA                                  0x10310024    L        -      -            1 (true)
+Page  253: CFG-SIGNAL-QZSS_L1CA_ENA                             0x10310012    L        -      -            1 (true)
+Page  253: CFG-SIGNAL-GLO_ENA                                   0x10310025    L        -      -            1 (true)
+Page  253: CFG-SIGNAL-GLO_L1_ENA                                0x10310018    L        -      -            1 (true)
+Page  253: Table 93: CFG-SIGNAL conﬁguration defaults
+Page  253: CFG-SPI-MAXFF                                        0x20640001 U1          -      -               50
+Page  253: CFG-SPI-CPOLARITY                                    0x10640002    L        -      -            0 (false)
+Page  253: CFG-SPI-CPHASE                                       0x10640003    L        -      -            0 (false)
+Page  253: CFG-SPI-EXTENDEDTIMEOUT                              0x10640005    L        -      -            0 (false)
+Page  253: CFG-SPI-ENABLED                                      0x10640006    L        -      -            0 (false)
+Page  253: Table 94: CFG-SPI conﬁguration defaults
+Page  253: CFG-SPIINPROT-UBX                                    0x10790001    L        -      -            1 (true)
+Page  253: CFG-SPIINPROT-NMEA                                   0x10790002    L        -      -            1 (true)
+Page  253: CFG-SPIINPROT-RTCM3X                                 0x10790004    L        -      -            1 (true)
+Page  253: Table 95: CFG-SPIINPROT conﬁguration defaults
+Page  253: CFG-SPIOUTPROT-UBX                                   0x107a0001    L        -      -            1 (true)
+Page  253: CFG-SPIOUTPROT-NMEA                                  0x107a0002    L        -      -            1 (true)
+Page  253: Table 96: CFG-SPIOUTPROT conﬁguration defaults
+Page  253: CFG-TP-PULSE_DEF                                     0x20050023 E1          -      -           0 (PERIOD)
+Page  253: CFG-TP-PULSE_LENGTH_DEF                              0x20050030 E1          -      -          1 (LENGTH)
+Page  253: CFG-TP-ANT_CABLEDELAY                                0x30050001    I2      1e-9    s               50
+Page  253: CFG-TP-PERIOD_TP1                                    0x40050002 U4         1e-6    s            1000000
+Page  254: CFG-TP-PERIOD_LOCK_TP1                             0x40050003 U4         1e-6    s            1000000
+Page  254: CFG-TP-FREQ_TP1                                    0x40050024 U4          -     Hz               1
+Page  254: CFG-TP-FREQ_LOCK_TP1                               0x40050025 U4          -     Hz               1
+Page  254: CFG-TP-LEN_TP1                                     0x40050004 U4         1e-6    s               0
+Page  254: CFG-TP-LEN_LOCK_TP1                                0x40050005 U4         1e-6    s            100000
+Page  254: CFG-TP-DUTY_TP1                                    0x5005002a R8          -      %               0
+Page  254: CFG-TP-DUTY_LOCK_TP1                               0x5005002b R8          -      %               10
+Page  254: CFG-TP-USER_DELAY_TP1                              0x40050006    I4      1e-9    s               0
+Page  254: CFG-TP-TP1_ENA                                     0x10050007    L        -      -            1 (true)
+Page  254: CFG-TP-SYNC_GNSS_TP1                               0x10050008    L        -      -            1 (true)
+Page  254: CFG-TP-USE_LOCKED_TP1                              0x10050009    L        -      -            1 (true)
+Page  254: CFG-TP-ALIGN_TO_TOW_TP1                            0x1005000a    L        -      -            1 (true)
+Page  254: CFG-TP-POL_TP1                                     0x1005000b    L        -      -            1 (true)
+Page  254: CFG-TP-TIMEGRID_TP1                                0x2005000c E1          -      -            0 (UTC)
+Page  254: CFG-TP-PERIOD_TP2                                  0x4005000d U4         1e-6    s            1000000
+Page  254: CFG-TP-PERIOD_LOCK_TP2                             0x4005000e U4         1e-6    s            1000000
+Page  254: CFG-TP-FREQ_TP2                                    0x40050026 U4          -     Hz               1
+Page  254: CFG-TP-FREQ_LOCK_TP2                               0x40050027 U4          -     Hz               1
+Page  254: CFG-TP-LEN_TP2                                     0x4005000f U4         1e-6    s               0
+Page  254: CFG-TP-LEN_LOCK_TP2                                0x40050010 U4         1e-6    s            100000
+Page  254: CFG-TP-DUTY_TP2                                    0x5005002c R8          -      %               0
+Page  254: CFG-TP-DUTY_LOCK_TP2                               0x5005002d R8          -      %               10
+Page  254: CFG-TP-USER_DELAY_TP2                              0x40050011    I4      1e-9    s               0
+Page  254: CFG-TP-TP2_ENA                                     0x10050012    L        -      -            0 (false)
+Page  254: CFG-TP-SYNC_GNSS_TP2                               0x10050013    L        -      -            1 (true)
+Page  254: CFG-TP-USE_LOCKED_TP2                              0x10050014    L        -      -            1 (true)
+Page  254: CFG-TP-ALIGN_TO_TOW_TP2                            0x10050015    L        -      -            1 (true)
+Page  254: CFG-TP-POL_TP2                                     0x10050016    L        -      -            1 (true)
+Page  254: CFG-TP-TIMEGRID_TP2                                0x20050017 E1          -      -            0 (UTC)
+Page  254: Table 97: CFG-TP conﬁguration defaults
+Page  254: CFG-TXREADY-ENABLED                                0x10a20001    L        -      -            0 (false)
+Page  254: CFG-TXREADY-POLARITY                               0x10a20002    L        -      -            0 (false)
+Page  254: CFG-TXREADY-PIN                                    0x20a20003 U1          -      -               0
+Page  254: CFG-TXREADY-THRESHOLD                              0x30a20004 U2          -      -               0
+Page  254: CFG-TXREADY-INTERFACE                              0x20a20005 E1          -      -             0 (I2C)
+Page  254: Table 98: CFG-TXREADY conﬁguration defaults
+Page  254: CFG-UART1-BAUDRATE                                 0x40520001 U4          -      -             38400
+Page  254: CFG-UART1-STOPBITS                                 0x20520002 E1          -      -            1 (ONE)
+Page  255: CFG-UART1-DATABITS                                 0x20520003 E1          -      -           0 (EIGHT)
+Page  255: CFG-UART1-PARITY                                   0x20520004 E1          -      -           0 (NONE)
+Page  255: CFG-UART1-ENABLED                                  0x10520005    L        -      -            1 (true)
+Page  255: Table 99: CFG-UART1 conﬁguration defaults
+Page  255: CFG-UART1INPROT-UBX                                0x10730001    L        -      -            1 (true)
+Page  255: CFG-UART1INPROT-NMEA                               0x10730002    L        -      -            1 (true)
+Page  255: CFG-UART1INPROT-RTCM3X                             0x10730004    L        -      -            1 (true)
+Page  255: Table 100: CFG-UART1INPROT conﬁguration defaults
+Page  255: CFG-UART1OUTPROT-UBX                               0x10740001    L        -      -            1 (true)
+Page  255: CFG-UART1OUTPROT-NMEA                              0x10740002    L        -      -            1 (true)
+Page  255: Table 101: CFG-UART1OUTPROT conﬁguration defaults
+Page  255: CFG-UART2-BAUDRATE                                 0x40530001 U4          -      -             38400
+Page  255: CFG-UART2-STOPBITS                                 0x20530002 E1          -      -            1 (ONE)
+Page  255: CFG-UART2-DATABITS                                 0x20530003 E1          -      -           0 (EIGHT)
+Page  255: CFG-UART2-PARITY                                   0x20530004 E1          -      -           0 (NONE)
+Page  255: CFG-UART2-ENABLED                                  0x10530005    L        -      -            1 (true)
+Page  255: Table 102: CFG-UART2 conﬁguration defaults
+Page  255: CFG-UART2INPROT-UBX                                0x10750001    L        -      -            1 (true)
+Page  255: CFG-UART2INPROT-NMEA                               0x10750002    L        -      -            1 (true)
+Page  255: CFG-UART2INPROT-RTCM3X                             0x10750004    L        -      -            1 (true)
+Page  255: Table 103: CFG-UART2INPROT conﬁguration defaults
+Page  255: CFG-UART2OUTPROT-UBX                               0x10760001    L        -      -            0 (false)
+Page  255: CFG-UART2OUTPROT-NMEA                              0x10760002    L        -      -            0 (false)
+Page  255: Table 104: CFG-UART2OUTPROT conﬁguration defaults
+Page  255: CFG-USB-ENABLED                                    0x10650001    L        -      -            1 (true)
+Page  255: CFG-USB-SELFPOW                                    0x10650002    L        -      -            1 (true)
+Page  255: CFG-USB-VENDOR_ID                                  0x3065000a U2          -      -             5446
+Page  255: CFG-USB-PRODUCT_ID                                 0x3065000b U2          -      -              425
+Page  255: CFG-USB-POWER                                      0x3065000c U2          -     mA               0
+Page  255: CFG-USB-VENDOR_STR0                                0x5065000d X8          -      -      0x4120786f6c622d75
+Page  255: CFG-USB-VENDOR_STR1                                0x5065000e X8          -      -      0x2e777777202d2047
+Page  255: CFG-USB-VENDOR_STR2                                0x5065000f X8          -      -      0x632e786f6c622d75
+Page  256: CFG-USB-VENDOR_STR3                               0x50650010 X8          -      -      0x0000000000006d6f
+Page  256: CFG-USB-PRODUCT_STR0                              0x50650011 X8          -      -      0x4720786f6c622d75
+Page  256: CFG-USB-PRODUCT_STR1                              0x50650012 X8          -      -      0x656365722053534e
+Page  256: CFG-USB-PRODUCT_STR2                              0x50650013 X8          -      -      0x0000000072657669
+Page  256: CFG-USB-PRODUCT_STR3                              0x50650014 X8          -      -      0x0000000000000000
+Page  256: CFG-USB-SERIAL_NO_STR0                            0x50650015 X8          -      -      0x0000000000000000
+Page  256: CFG-USB-SERIAL_NO_STR1                            0x50650016 X8          -      -      0x0000000000000000
+Page  256: CFG-USB-SERIAL_NO_STR2                            0x50650017 X8          -      -      0x0000000000000000
+Page  256: CFG-USB-SERIAL_NO_STR3                            0x50650018 X8          -      -      0x0000000000000000
+Page  256: Table 105: CFG-USB conﬁguration defaults
+Page  256: CFG-USBINPROT-UBX                                 0x10770001    L        -      -            1 (true)
+Page  256: CFG-USBINPROT-NMEA                                0x10770002    L        -      -            1 (true)
+Page  256: CFG-USBINPROT-RTCM3X                              0x10770004    L        -      -            1 (true)
+Page  256: Table 106: CFG-USBINPROT conﬁguration defaults
+Page  256: CFG-USBOUTPROT-UBX                                0x10780001    L        -      -            1 (true)
+Page  256: CFG-USBOUTPROT-NMEA                               0x10780002    L        -      -            1 (true)
+Page  256: Table 107: CFG-USBOUTPROT conﬁguration defaults
+Page  258: - Updated UBX-CFG-ODO: The low-speed COG ﬁlter is not supported
+Page  258: - Updated UBX-CFG-OTP: Oscillator oﬀset calibration is not supported
+Page  258: - Updated UBX-CFG-PT2: Clariﬁed use of reAcqCno
+Page  258: - Added conﬁguration item CFG-HW-ANT_ON_SHORT_US for the antenna

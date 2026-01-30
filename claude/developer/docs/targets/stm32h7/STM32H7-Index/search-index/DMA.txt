@@ -1,0 +1,89 @@
+Keyword: DMA
+Occurrences: 85
+================================================================================
+
+Page    2: clocks) with Fractional mode                          (DMA2D) to reduce CPU load
+Page    2: 4 DMA controllers to unload the CPU
+Page    2: controller (MDMA) with linked list support            encoder input (up to 240 MHz)
+Page    2: • 2× dual-port DMAs with FIFO                         • 2× 16-bit advanced motor control timers (up to
+Page    2: • 1× basic DMA with request router capabilities         240 MHz)
+Page    2: • Ethernet MAC interface with DMA controller
+Page    3: 3.10     DMA controllers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34
+Page    3: 3.11     Chrom-ART Accelerator (DMA2D) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34
+Page    4: 3.41     Ethernet MAC interface with dedicated DMA controller (ETH) . . . . . . . . . 52
+Page   21: (DMA2D)
+Page   23: DMA1                   DMA2             SDMMC2 OTG_HS                                                                       OTG_FS
+Page   23: 8 Stream 8 Stream                    DMA/                                                                       DMA/          DMA/
+Page   23: 16KB        16KB                                                                                                                                                                                    DMA
+Page   23: MDMA
+Page   23: (DMA2D)                                                                                                                                                                                                                                                  AHB/APB
+Page   23: 2 compl. chan.(TIM15_CH1[1:2]N),                 TIM15                                                                                                                         DMA
+Page   23: BDMA                                                           DAP
+Page   24: DMA1                   DMA2             SDMMC2 OTG_HS                                                                       OTG_FS
+Page   24: AXI/AHB12 (240MHz)                                            8 Stream 8 Stream                    DMA/                                                                       DMA/          DMA/
+Page   24: 16KB        16KB                                                                                                                                                                                    DMA
+Page   24: MDMA                                                                                                                          FMC
+Page   24: (DMA2D)                                                                                                                                                                                                                                                  AHB/APB
+Page   24: 2 compl. chan.(TIM15_CH1[1:2]N),                TIM15                                                                                                                         DMA
+Page   24: BDMA                                                           DAP
+Page   26: either from the CPU or the MDMA (even in Sleep mode) through a specific AHB slave
+Page   26: The MDMA can be used to load code or data in ITCM or DTCM RAMs.
+Page   33: 16KB 16KB                 128 Kbyte                                                     DMA1                      DMA2                 MAC     SDMMC2 USBHS1   U
+Page   33: DMA1_PERIPH
+Page   33: DMA2_PERIPH
+Page   33: DMA1_MEM
+Page   33: DMA2_MEM
+Page   33: SDMMC1    MDMA       DMA2D        LTDC
+Page   33: AXI  APB                                                 BDMA
+Page   34: 3.10       DMA controllers
+Page   34: The devices feature four DMA instances to unload CPU activity:
+Page   34: •   A master direct memory access (MDMA)
+Page   34: The MDMA is a high-speed DMA controller, which is in charge of all types of memory
+Page   34: The MDMA is located in D1 domain. It is able to interface with the other DMA
+Page   34: controllers located in D2 domain to extend the standard DMA capabilities, or can
+Page   34: manage peripheral DMA requests directly.
+Page   34: •   Two dual-port DMAs (DMA1, DMA2) located in D2 domain, with FIFO and request
+Page   34: •   One basic DMA (BDMA) located in D3 domain, with request router capabilities.
+Page   34: The DMA request router could be considered as an extension of the DMA controller. It
+Page   34: routes the DMA peripheral requests to the DMA controller itself. This allowing managing the
+Page   34: DMA requests with a high flexibility, maximizing the number of DMA requests that run
+Page   34: concurrently, as well as generating DMA requests from peripheral output trigger or DMA
+Page   34: 3.11       Chrom-ART Accelerator (DMA2D)
+Page   34: The Chrom-Art Accelerator (DMA2D) is a graphical accelerator which offers advanced bit
+Page   34: direct color. It embeds dedicated memory to store color lookup tables. The DMA2D also
+Page   34: DMAs.
+Page   36: The ADC can be served by the DMA controller, thus allowing to automatically transfer ADC
+Page   38: •    DMA capability for each channel including DMA underrun error detection
+Page   38: to different DMA streams.
+Page   39: peripherals or microcontroller memory (through DMA/CPU transfers into DFSDM).
+Page   39: –    internal sources: ADC data or memory data streams (DMA)
+Page   40: •    DMA capability to read the final conversion data
+Page   42: DMA     Capture/       Comple-               timer
+Page   43: DMA     Capture/                 Comple-                  timer
+Page   43: offers specific modes and features to offload the CPU: DMA requests, Burst mode
+Page   44: TIM1 and TIM8 support independent DMA request generation.
+Page   44: TIM2, TIM3, TIM4, TIM5 all have independent DMA request generation. They are
+Page   45: TIM6 and TIM7 support independent DMA request generation.
+Page   47: •   1-byte buffer with DMA capability
+Page   48: All USART interfaces can be served by the DMA controller.
+Page   48: Continuous communication using DMA                          X                     X
+Page   49: LPUART interface can be served by the DMA controller.
+Page   49: Hardware CRC calculation and 8x 8-bit embedded Rx and Tx FIFOs with DMA capability.
+Page   49: bit embedded Rx and Tx FIFOs with DMA capability.
+Page   50: •   Communication using DMA for audio samples
+Page   50: •   Communication using DMA for control and user channel information
+Page   50: SWPMI can be served by the DMA controller.
+Page   51: The SDMMC host interface embeds a dedicated DMA controller allowing high-speed
+Page   52: •    Internal USB DMA
+Page   52: 3.41       Ethernet MAC interface with dedicated DMA controller (ETH)
+Page   53: •   Dedicated DMA controller allowing high-speed transfers between the dedicated SRAM
+Page  117: MDMA               8.3           7.6               7
+Page  117: DMA2D               21            20                18
+Page  117: DMA1               1.1            1                1
+Page  117: DMA2               1.7           1.4              1.1
+Page  118: BDMA              6.2           5.8            5.5
+Page  224: MDMA               4.6            3.8        3.4      3.2
+Page  224: DMA2D              2.9            2.4        2.1      1.9
+Page  224: DMA1              54.0           48.0       41.0     37.0
+Page  224: DMA2              55.0           49.0       42.0     37.0
+Page  225: BDMA               6.6            5.9         5.3         4.8

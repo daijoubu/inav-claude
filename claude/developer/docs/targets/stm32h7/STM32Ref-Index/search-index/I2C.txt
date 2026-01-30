@@ -1,0 +1,858 @@
+Keyword: I2C
+Occurrences: 854
+================================================================================
+
+Page   48: 46         Inter-integrated circuit (I2C) interface . . . . . . . . . . . . . . . . . . . . . . . . 1935
+Page   48: 46.2    I2C main features . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1935
+Page   48: 46.3    I2C implementation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1936
+Page   48: 46.4    I2C functional description . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1936
+Page   48: 46.4.1      I2C block diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1937
+Page   48: 46.4.2      I2C clock requirements . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1938
+Page   48: 46.4.4      I2C initialization . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1939
+Page   48: 46.4.7      I2C slave mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1946
+Page   48: 46.4.8      I2C master mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1955
+Page   48: 46.4.9      I2C_TIMINGR register configuration examples . . . . . . . . . . . . . . . . . 1967
+Page   48: 46.4.12 SMBus: I2C_TIMEOUTR register configuration examples . . . . . . . . 1973
+Page   49: 46.5   I2C low-power modes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1984
+Page   49: 46.6   I2C interrupts . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1985
+Page   49: 46.7   I2C registers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1986
+Page   49: 46.7.1      I2C2 control register 1 (I2C_CR1) . . . . . . . . . . . . . . . . . . . . . . . . . . . 1986
+Page   49: 46.7.2      I2C2 control register 2 (I2C_CR2) . . . . . . . . . . . . . . . . . . . . . . . . . . . 1989
+Page   49: 46.7.3      I2C2 own address 1 register (I2C_OAR1) . . . . . . . . . . . . . . . . . . . . . 1992
+Page   49: 46.7.4      I2C2 own address 2 register (I2C_OAR2) . . . . . . . . . . . . . . . . . . . . . 1993
+Page   49: 46.7.5      I2C2 timing register (I2C_TIMINGR) . . . . . . . . . . . . . . . . . . . . . . . . . 1994
+Page   49: 46.7.6      I2C2 timeout register (I2C_TIMEOUTR) . . . . . . . . . . . . . . . . . . . . . . 1995
+Page   49: 46.7.7      I2C2 interrupt and status register (I2C_ISR) . . . . . . . . . . . . . . . . . . . 1996
+Page   49: 46.7.8      I2C2 interrupt clear register (I2C_ICR)( . . . . . . . . . . . . . . . . . . . . . . . 1998
+Page   49: 46.7.9      I2C2 PEC register (I2C_PECR) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1999
+Page   49: 46.7.10 I2C2 receive data register (I2C_RXDR) . . . . . . . . . . . . . . . . . . . . . . 2000
+Page   49: 46.7.11 I2C2 transmit data register (I2C_TXDR) . . . . . . . . . . . . . . . . . . . . . . 2000
+Page   49: 46.7.12 I2C register map . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2001
+Page   75: Table 370.   STM32H743/753 and STM32H750 I2C implementation . . . . . . . . . . . . . . . . . . . . . . . . 1936
+Page   75: Table 372.   I2C-SMBUS specification data setup and hold times . . . . . . . . . . . . . . . . . . . . . . . . . . . 1942
+Page   75: Table 373.   I2C configuration. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1946
+Page   75: Table 374.   I2C-SMBUS specification clock timings . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1957
+Page   75: Table 375.   Examples of timing settings for fI2CCLK = 8 MHz . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1967
+Page   75: Table 376.   Examples of timings settings for fI2CCLK = 16 MHz . . . . . . . . . . . . . . . . . . . . . . . . . . . 1967
+Page   75: Table 377.   Examples of timings settings for fI2CCLK = 48 MHz . . . . . . . . . . . . . . . . . . . . . . . . . . . 1968
+Page   75: Table 380.   Examples of TIMEOUTA settings for various i2c_ker_ck frequencies
+Page   75: Table 381.   Examples of TIMEOUTB settings for various i2c_ker_ck frequencies . . . . . . . . . . . . . . 1973
+Page   75: Table 382.   Examples of TIMEOUTA settings for various i2c_ker_ck frequencies
+Page   75: Table 383.   Effect of low-power modes on the I2C . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1984
+Page   75: Table 384.   I2C Interrupt requests . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1985
+Page   75: Table 385.   I2C register map and reset values . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2001
+Page   81: Figure 48.   Kernel clock distribution for I2Cs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 339
+Page   90: Figure 536. I2C block diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1937
+Page   90: Figure 537. I2C bus protocol . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1939
+Page   90: Figure 539. I2C initialization flowchart . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1943
+Page   90: Figure 543. Transfer sequence flowchart for I2C slave transmitter, NOSTRETCH=0. . . . . . . . . . . . 1950
+Page   90: Figure 544. Transfer sequence flowchart for I2C slave transmitter, NOSTRETCH=1. . . . . . . . . . . . 1951
+Page   90: Figure 545. Transfer bus diagrams for I2C slave transmitter. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1952
+Page   91: Figure 548. Transfer bus diagrams for I2C slave receiver . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1954
+Page   91: Figure 553. Transfer sequence flowchart for I2C master transmitter for N≤255 bytes . . . . . . . . . . . 1960
+Page   91: Figure 554. Transfer sequence flowchart for I2C master transmitter for N>255 bytes . . . . . . . . . . . 1961
+Page   91: Figure 555. Transfer bus diagrams for I2C master transmitter . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1962
+Page   91: Figure 556. Transfer sequence flowchart for I2C master receiver for N≤255 bytes. . . . . . . . . . . . . . 1964
+Page   91: Figure 557. Transfer sequence flowchart for I2C master receiver for N >255 bytes . . . . . . . . . . . . . 1965
+Page   91: Figure 558. Transfer bus diagrams for I2C master receiver . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1966
+Page   91: Figure 566. I2C interrupt mapping diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1986
+Page  127: 0x58001C00 - 0x58001FFF            I2C4                    Section 46.7: I2C registers
+Page  129: 0x40005C00 - 0x40005FFF                   I2C3                       Section 46.7: I2C registers
+Page  129: 0x40005800 - 0x40005BFF                   I2C2                       Section 46.7: I2C registers
+Page  129: 0x40005400 - 0x400057FF                   I2C1                       Section 46.7: I2C registers
+Page  132: •   I2C1 on PB6/9 pins, I2C2 on PF0/PF1 pins, I2C3 on PA8/PC9 pins, and I2C4 on
+Page  296: Example: i2c1_wkup, usart1_wkup and lptim1_wkup.
+Page  305: Other peripherals located in D3 domain, such as I2C4, SPI6, SAI4 or ADC3, can be used to
+Page  335: I2C1,2,3       I2C123SEL       100                                                                                          1                       0                      2              3
+Page  336: I2C4            I2C4SEL        100                                                                                         1                       0                      2              3
+Page  337: Peripherals such as SPIs, I2Cs, UARTs do not need a specific kernel clock frequency but a
+Page  337: from Stop mode (i.e. UART, I2C...).
+Page  339: Figure 48. Kernel clock distribution for I2Cs
+Page  339: I2C4SEL                                                                                       I2C4
+Page  339: I2C4AMEN
+Page  339: I2C4EN
+Page  339: rcc_pclk4            0                 I2C4LPEN                                      i2c_ker_ck_req
+Page  339: pll3_r_ck              1 D                                                             i2c_ker_ck
+Page  339: I2C123SEL                                                                                      I2C[3:1]
+Page  339: I2C[3:1]EN        Logic
+Page  339: rcc_pclk1            0                                                               i2c_ker_ck_req
+Page  339: I2C[3:1]LPEN
+Page  339: pll3_r_ck              1 D                                                             i2c_ker_ck
+Page  347: PER...                                    I2C2
+Page  347: I2C4
+Page  348: Autonomous mode with the capability of some peripherals (UARTs, I2Cs) to request the
+Page  348: expecting messages via I2C4, the whole system can be put in Stop mode. When the I2C4
+Page  348: the I2C4). The I2C4 then decodes the incoming message. Several cases are then possible:
+Page  348: •    If the device address of the message does not match, then I2C4 releases its “kernel
+Page  348: local memory. I2C4 is able to generate a wakeup event on address match to switch the
+Page  348: wake up the CPU, then I2C4 generates a wakeup event to activate the CPU.
+Page  357: Only I2C, U(S)ART and LPUART peripherals are able to request the kernel clock. This
+Page  392: I2C123SEL[1:0]
+Page  392: Bits 13:12 I2C123SEL[1:0]: I2C1,2,3 kernel clock source selection
+Page  394: LPTIM345SEL[2:0] (1)           LPTIM2SEL[2:0] (1)    I2C4SEL[1:0] (1)   Res.    Res.     Res.   Res.   Res.   LPUART1SEL[2:0] (1)
+Page  396: Bits 9:8   I2C4SEL[1:0]: I2C4 kernel clock source selection
+Page  414: I2C3RST
+Page  414: I2C2RST
+Page  414: I2C1RST
+Page  414: Bit 23 I2C3RST: I2C3 block reset
+Page  414: 0: does not reset the I2C3 block (default after reset)
+Page  414: 1: resets the I2C3 block
+Page  414: Bit 22 I2C2RST: I2C2 block reset
+Page  414: 0: does not reset the I2C2 block (default after reset)
+Page  414: 1: resets the I2C2 block
+Page  415: Bit 21 I2C1RST: I2C1 block reset
+Page  415: 0: does not reset the I2C1 block (default after reset)
+Page  415: 1: resets the I2C1 block
+Page  420: I2C4RST
+Page  421: Bit 7 I2C4RST: I2C4 block reset
+Page  421: 0: does not reset the I2C4 block (default after reset)
+Page  421: 1: resets the I2C4 block
+Page  423: I2C4AMEN
+Page  424: Bit 7   I2C4AMEN: I2C4 Autonomous mode enable
+Page  424: 0: I2C4 peripheral clocks are disabled when the CPU is in CStop (default after reset)
+Page  424: 1: I2C4 peripheral clocks enabled when D3 domain is in DRun.
+Page  438: I2C3EN
+Page  438: I2C2EN
+Page  438: I2C1EN
+Page  439: Bit 23 I2C3EN: I2C3 Peripheral Clocks Enable
+Page  439: 0: I2C3 peripheral clocks disable (default after reset)
+Page  439: 1: I2C3 peripheral clocks enabled
+Page  439: The peripheral clocks of the I2C3 are: the kernel clock selected by I2C123SEL and provided to
+Page  439: i2c_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  439: Bit 22 I2C2EN: I2C2 Peripheral Clocks Enable
+Page  439: 0: I2C2 peripheral clocks disable (default after reset)
+Page  439: 1: I2C2 peripheral clocks enabled
+Page  439: The peripheral clocks of the I2C2 are: the kernel clock selected by I2C123SEL and provided to
+Page  439: i2c_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  439: Bit 21 I2C1EN: I2C1 Peripheral Clocks Enable
+Page  439: 0: I2C1 peripheral clocks disable (default after reset)
+Page  439: 1: I2C1 peripheral clocks enabled
+Page  439: The peripheral clocks of the I2C1 are: the kernel clock selected by I2C123SEL and provided to
+Page  439: i2c_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  447: I2C4EN
+Page  448: Bit 7 I2C4EN: I2C4 Peripheral Clocks Enable
+Page  448: 0: I2C4 peripheral clocks disabled (default after reset)
+Page  448: 1: I2C4 peripheral clocks enabled
+Page  448: The peripheral clocks of the I2C4 are: the kernel clock selected by I2C4SEL and provided to
+Page  448: i2c_ker_ck input, and the rcc_pclk4 bus interface clock.
+Page  460: I2C3LPEN
+Page  460: I2C2LPEN
+Page  460: I2C1LPEN
+Page  461: Bit 23 I2C3LPEN: I2C3 Peripheral Clocks Enable During CSleep Mode
+Page  461: 0: I2C3 peripheral clocks disabled during CSleep mode
+Page  461: 1: I2C3 peripheral clocks enabled during CSleep mode (default after reset):
+Page  461: The peripheral clocks of the I2C3 are: the kernel clock selected by I2C123SEL and provided to
+Page  461: i2c_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  461: Bit 22 I2C2LPEN: I2C2 Peripheral Clocks Enable During CSleep Mode
+Page  461: 0: I2C2 peripheral clocks disabled during CSleep mode
+Page  461: 1: I2C2 peripheral clocks enabled during CSleep mode (default after reset):
+Page  461: The peripheral clocks of the I2C2 are: the kernel clock selected by I2C123SEL and provided to
+Page  461: i2c_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  461: Bit 21 I2C1LPEN: I2C1 Peripheral Clocks Enable During CSleep Mode
+Page  461: 0: I2C1 peripheral clocks disabled during CSleep mode
+Page  461: 1: I2C1 peripheral clocks enabled during CSleep mode (default after reset):
+Page  461: The peripheral clocks of the I2C1 are: the kernel clock selected by I2C123SEL and provided to
+Page  461: i2c_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  469: I2C4LPEN
+Page  470: Bit 7 I2C4LPEN: I2C4 Peripheral Clocks Enable During CSleep Mode
+Page  470: 0: I2C4 peripheral clocks disabled during CSleep mode
+Page  470: 1: I2C4 peripheral clocks enabled during CSleep mode (default after reset)
+Page  470: The peripheral clocks of the I2C4 are: the kernel clock selected by I2C4SEL and provided to
+Page  470: i2c_ker_ck input, and the rcc_pclk4 bus interface clock.
+Page  473: I2C123SEL[1:0]
+Page  474: RTCSEL[1:0]                                                                                                                                                             I2C4SEL[1:0]
+Page  475: Res.                            Res.                      SAI2RST                      Res.                                I2C3RST                     Res.                                 Res.                       Res.       23
+Page  475: Res.                            Res.                      SAI1RST                      Res.                                I2C2RST                     Res.                                 Res.                       Res.       22
+Page  475: Res.                          SAI4RST                       Res.                       Res.                                I2C1RST                     Res.                              BDMARST                       Res.       21
+Page  475: Res.                          I2C4RST                       Res.                       Res.                               TIM13RST                     Res.                              GPIOHRST                      Res.        7
+Page  476: Res.                              GPIOHEN                     Res.                          Res.                        Res.                         Res.                                   I2C4AMEN        7
+Page  477: Res.                             Res.                           Res.                             Res.                    SAI2EN                    Res.                                I2C3EN     23
+Page  477: Res.                             Res.                           Res.                             Res.                    SAI1EN                    Res.                                I2C2EN     22
+Page  477: Res.                             Res.                           Res.                          SAI4EN                       Res.                    Res.                                I2C1EN     21
+Page  477: Res.                             Res.                           Res.                           I2C4EN                      Res.                    Res.                               TIM13EN      7
+Page  478: Res.                                   Res.                       SAI2LPEN                       Res.                                  I2C3LPEN                       Res.                                   Res.       23
+Page  478: Res.                                   Res.                       SAI1LPEN                       Res.                                  I2C2LPEN                       Res.                                   Res.       22
+Page  478: Res.                                 SAI4LPEN                       Res.                         Res.                                  I2C1LPEN                       Res.                                BDMALPEN      21
+Page  478: Res.                                 I2C4LPEN                       Res.                         Res.                                 TIM13LPEN                       Res.                                GPIOHLPEN      7
+Page  479: Res.                    SAI2EN                    Res.                                I2C3EN                      Res.                                Res.                     Res.                          Res.        23
+Page  479: Res.                    SAI1EN                    Res.                                I2C2EN                      Res.                                Res.                     Res.                          Res.        22
+Page  479: SAI4EN                      Res.                    Res.                                I2C1EN                      Res.                              DMA1EN                     Res.                          Res.        21
+Page  479: I2C4EN                      Res.                    Res.                               TIM13EN                      Res.                              GPIOHEN                     Res.                         Res.         7
+Page  480: Res.                                  I2C3LPEN                       Res.                                   Res.                         Res.                             Res.                           Res.      23
+Page  480: Res.                                  I2C2LPEN                       Res.                                   Res.                         Res.                             Res.                           Res.      22
+Page  480: Res.                                  I2C1LPEN                       Res.                                DMA1LPEN                        Res.                             Res.                           Res.      21
+Page  481: I2C4LPEN                        Res.       7
+Page  526: •        I2C Fm+ configuration
+Page  526: PB9     PB8       PB7   PB6    I2C4   I2C3   I2C2   I2C1
+Page  527: This bit enables I2C Fm+ on PB(9).
+Page  527: This bit enables I2C Fm+ on PB(8).
+Page  528: this bit enables I2C Fm+ on PB(7).
+Page  528: This bit enables I2C Fm+ on PB(6).
+Page  528: Bit 3 I2C4FMP: I2C4 Fm+
+Page  528: This bit enables Fm+ on I2C4.
+Page  528: Bit 2 I2C3FMP: I2C3 Fm+
+Page  528: This bit enables Fm+ on I2C3.
+Page  528: Bit 1 I2C2FMP: I2C2 Fm+
+Page  528: This bit enables Fm+ on I2C2.
+Page  528: Bit 0 I2C1FMP: I2C1 Fm+
+Page  528: This bit enables Fm+ on I2C1.
+Page  548: Res.                          Res.                                                     Res.                                                                                           Res.                            FLASHL                                                                                                                                                                                                                                                                                                                                                                             I2C4FMP                      3
+Page  548: Res.                          Res.                                                     Res.                                                                                           Res.                            PVDL                                                                                                                                                                                                                                                                                                                                                                               I2C3FMP                      2
+Page  548: Res.                          Res.                                                     Res.                                                                                            CS                              Res.                                                                                                                                                                                                                                                                                                                                                                              I2C2FMP                      1
+Page  548: BKS                           Res.                                                     Res.                                                                                            EN                                                                                                                                                                                                                                                                                                                                                                                                                I2C1FMP
+Page  571: D2      APB1     I2C1          i2c1_wkup      WKUP22                    C    CPU       -
+Page  571: D2      APB1     I2C2          i2c2_wkup      WKUP23                    D    CPU       -
+Page  571: D2      APB1     I2C3          i2c3_wkup      WKUP24                    D    CPU       -
+Page  571: D2      APB1     I2C4          i2c4_wkup      WKUP25                    D    ANY       -
+Page  573: I2C4              i2c4_ev_it         WKUP62                        D      CPU
+Page  573: I2C4             i2c4_err_it         WKUP63                        D      CPU            (1)
+Page  579: i2c1_rx_dma      dmamux1_req_in33
+Page  579: D2     APB1   I2C1
+Page  579: i2c1_tx_dma     dmamux1_req_in34
+Page  579: i2c2_rx_dma      dmamux1_req_in35
+Page  579: D2     APB1   I2C2
+Page  579: i2c2_tx_dma     dmamux1_req_in36
+Page  580: i2c3_rx_dma      dmamux1_req_in73
+Page  580: D2       APB1   I2C3
+Page  580: i2c3_tx_dma      dmamux1_req_in74
+Page  583: dma_rx_i2c4      dmamux2_req_in13
+Page  583: D2     APB1   I2C4
+Page  583: dma_tx_i2c4      dmamux2_req_in14
+Page  584: exti_i2c4_wkup        dmamux2_gen15                              generation
+Page  584: D3   APB4    I2C4           it_evt_i2c4        dmamux2_gen22
+Page  585: it_exti_wkup_i2c4         dmamux2_trg10
+Page  673: 30             TIM4_CH2           73          i2c3_rx_dma          116          Reserved
+Page  673: 31             TIM4_CH3           74          i2c3_tx_dma          117          Reserved
+Page  673: 33             i2c1_rx_dma        76          cryp_in_dma          119          Reserved
+Page  673: 34             i2c1_tx_dma        77       cryp_out_dma           120           Reserved
+Page  673: 35             i2c2_rx_dma        78          hash_in_dma         121           Reserved
+Page  673: 36             i2c2_tx_dma        79       uart7_rx_dma           122           Reserved
+Page  674: 13              i2c4_rx_dma              29                Reserved
+Page  674: 14              i2c4_tx_dma              30                Reserved
+Page  675: 6                dmamux2_evt6               22            I2c4_event_it
+Page  675: 15                 I2c4_wkup                31             Reserved
+Page  675: 10                 I2c4_wkup                26             Reserved
+Page  732: i2c1_ev_it
+Page  732: 38           31            I2C1_EV       I2C1 event interrupt            0x0000 00BC
+Page  732: exti_i2c1_ev_wkup
+Page  732: i2c1_err_it      39           32            I2C1_ER       I2C1 error interrupt            0x0000 00C0
+Page  732: i2c2_ev_it
+Page  732: 40           33            I2C2_EV       I2C2 event interrupt            0x0000 00C4
+Page  732: exti_i2c2_ev_wkup
+Page  732: i2c2_err_it      41           34            I2C2_ER       I2C2 error interrupt            0x0000 00C8
+Page  734: i2c3_ev_it
+Page  734: 79           72            I2C3_EV       I2C3 event interrupt         0x0000 0160
+Page  734: exti_i2c3_ev_wkup
+Page  734: i2c3_err_it      80           73            I2C3_ER       I2C3 error interrupt         0x0000 0164
+Page  734: i2c4_ev_it
+Page  734: 102           95            I2C4_EV       I2C4 event interrupt         0x0000 01BC
+Page  734: exti_i2c4_ev_it
+Page  735: i2c4_err_it     103          96             I2C4_ER       I2C4 error interrupt            0x0000 01C0
+Page  747: 22        I2C1 wakeup                           Direct           CPU only               Yes
+Page  747: 23        I2C2 wakeup                           Direct           CPU only               Yes
+Page  747: 24        I2C3 wakeup                           Direct           CPU only               Yes
+Page  747: 25        I2C4 wakeup                           Direct              Any                 Yes
+Page  748: 62        I2C4 Event interrupt                 Direct           CPU only              No(5)
+Page  748: 63        I2C4 Error interrupt                 Direct           CPU only              No(5)
+Page 1935: RM0433                                                         Inter-integrated circuit (I2C) interface
+Page 1935: 46       Inter-integrated circuit (I2C) interface
+Page 1935: The I2C (inter-integrated circuit) bus interface handles communications between the
+Page 1935: microcontroller and the serial I2C bus. It provides multimaster capability, and controls all I2C
+Page 1935: 46.2     I2C main features
+Page 1935: •    I2C bus specification rev03 compatibility:
+Page 1936: Inter-integrated circuit (I2C) interface                                                               RM0433
+Page 1936: implementation (see Section 46.3: I2C implementation):
+Page 1936: •     Independent clock: a choice of independent clock sources allowing the I2C
+Page 1936: communication speed to be independent from the i2c_pclk reprogramming
+Page 1936: 46.3          I2C implementation
+Page 1936: This manual describes the full set of features implemented in I2C peripheral. In the
+Page 1936: STM32H7xxx devices I2C1, I2C2, I2C3 and I2C4 implement the full set of features as
+Page 1936: Table 370. STM32H743/753 and STM32H750 I2C implementation
+Page 1936: I2C features(1)                            I2C1        I2C2        I2C3        I2C4
+Page 1936: 46.4          I2C functional description
+Page 1936: connected to the I2C bus by a data pin (SDA) and by a clock pin (SCL). It can be connected
+Page 1936: 1 MHz) I2C bus.
+Page 1937: RM0433                                                            Inter-integrated circuit (I2C) interface
+Page 1937: 46.4.1         I2C block diagram
+Page 1937: The block diagram of the I2C interface is shown in Figure 536.
+Page 1937: Figure 536. I2C block diagram
+Page 1937: I2CCLK
+Page 1937: I2c_ker_ck
+Page 1937: filter                      I2C_SDA
+Page 1937: Slave clock                         GPIO     I2C_SCL
+Page 1937: control &                                    I2C_SMBA
+Page 1937: I2c_pclk                               Registers
+Page 1937: The I2C is clocked by an independent clock source which allows to the I2C to operate
+Page 1937: independently from the i2c_pclk frequency.
+Page 1937: For I2C I/Os supporting 20 mA output current drive for Fast-mode Plus operation, the driving
+Page 1937: Refer to Section 46.3: I2C implementation.
+Page 1938: Inter-integrated circuit (I2C) interface                                                             RM0433
+Page 1938: 46.4.2      I2C clock requirements
+Page 1938: The I2C kernel is clocked by i2c_ker_ck.
+Page 1938: The i2c_ker_ck period tI2CCLK must respect the following conditions:
+Page 1938: tI2CCLK < (tLOW - tfilters) / 4 and tI2CCLK < tHIGH
+Page 1938: Analog filter delay is maximum 260 ns. Digital filter delay is DNF x tI2CCLK.
+Page 1938: The i2c_pclk clock period tPCLK must respect the following condition:
+Page 1938: Caution:    When the I2C kernel is clocked by i2c_pclk, this clock must respect the conditions for
+Page 1938: tI2CCLK.
+Page 1938: In Master mode, the I2C interface initiates a data transfer and generates the clock signal. A
+Page 1939: RM0433                                                                 Inter-integrated circuit (I2C) interface
+Page 1939: Figure 537. I2C bus protocol
+Page 1939: Acknowledge can be enabled or disabled by software. The I2C interface addresses can be
+Page 1939: 46.4.4   I2C initialization
+Page 1939: The I2C peripheral clock must be configured and enabled in the clock controller.
+Page 1939: Then the I2C can be enabled by setting the PE bit in the I2C_CR1 register.
+Page 1939: When the I2C is disabled (PE=0), the I2C performs a software reset. Refer to
+Page 1939: Before enabling the I2C peripheral by setting the PE bit in I2C_CR1 register, the user must
+Page 1939: and SCL inputs. This analog filter is compliant with the I2C specification which requires the
+Page 1939: configuring the DNF[3:0] bit in the I2C_CR1 register.
+Page 1939: only if it remains stable for more than DNF x i2c_ker_ck periods. This allows to suppress
+Page 1939: spikes with a programmable length of 1 to 15 i2c_ker_ck periods.
+Page 1939: Pulse width of                                          Programmable length from 1 to 15 I2C peripheral
+Page 1940: Inter-integrated circuit (I2C) interface                                                                        RM0433
+Page 1940: Caution:    Changing the filter configuration is not allowed when the I2C is enabled.
+Page 1940: I2C timings
+Page 1940: SCLDEL[3:0] and SDADEL[3:0] bits in the I2C_TIMINGR register.
+Page 1940: The STM32CubeMX tool calculates and provides the I2C_TIMINGR content in the I2C
+Page 1940: tSYNC1 SDADEL: SCL stretched low by the I2C
+Page 1940: the SDADEL delay, if it is already available in I2C_TXDR.
+Page 1940: SCL stretched low by the I2C
+Page 1941: RM0433                                                           Inter-integrated circuit (I2C) interface
+Page 1941: SDA output. This delay is tSDADEL = SDADEL x tPRESC + tI2CCLK where tPRESC = (PRESC+1)
+Page 1941: x tI2CCLK.
+Page 1941: tSYNC1 + {[SDADEL x (PRESC+1) + 1] x tI2CCLK }
+Page 1941: –    When enabled, input delay brought by the digital filter: tDNF = DNF x tI2CCLK
+Page 1941: –    Delay due to SCL synchronization to i2c_ker_ck clock (2 to 3 i2c_ker_ck periods)
+Page 1941: {tf (max) +tHD;DAT (min) -tAF(min) - [(DNF +3) x tI2CCLK]} / {(PRESC +1) x tI2CCLK } ≤ SDADEL
+Page 1941: SDADEL ≤ {tHD;DAT (max) -tAF(max) - [(DNF+4) x tI2CCLK]} / {(PRESC +1) x tI2CCLK }
+Page 1941: SDADEL ≤ {tVD;DAT (max) -tr (max) -260 ns - [(DNF+4) x tI2CCLK]} / {(PRESC +1) x tI2CCLK }.
+Page 1941: Refer to Table 372: I2C-SMBUS specification data setup and hold times for tf, tr, tHD;DAT and
+Page 1941: clock because the data was not yet written in I2C_TXDR register, SCL line is kept at
+Page 1941: tPRESC = (PRESC+1) x tI2CCLK.
+Page 1941: {[tr (max) + tSU;DAT (min)] / [(PRESC+1)] x tI2CCLK]} - 1 <= SCLDEL
+Page 1941: Refer to Table 372: I2C-SMBUS specification data setup and hold times for tr and tSU;DAT
+Page 1942: Inter-integrated circuit (I2C) interface                                                             RM0433
+Page 1942: Note:         At every clock pulse, after SCL falling edge detection, the I2C master or slave stretches SCL
+Page 1942: low during at least [(SDADEL+SCLDEL+1) x (PRESC+1) + 1] x tI2CCLK, in both transmission
+Page 1942: and reception modes. In transmission mode, in case the data is not yet written in I2C_TXDR
+Page 1942: when SDADEL counter is finished, the I2C keeps on stretching SCL low until the next data
+Page 1942: Table 372. I2C-SMBUS specification data setup and hold times
+Page 1942: programming the PRESC[3:0], SCLH[7:0] and SCLL[7:0] bits in the I2C_TIMINGR register.
+Page 1942: tI2CCLK.
+Page 1942: (PRESC+1) x tI2CCLK. tSCLH impacts the SCL high time tHIGH .
+Page 1942: Refer to I2C master initialization for more details.
+Page 1942: Caution:      Changing the timing configuration is not allowed when the I2C is enabled.
+Page 1942: The I2C slave NOSTRETCH mode must also be configured before enabling the peripheral.
+Page 1942: Refer to I2C slave initialization for more details.
+Page 1942: Caution:      Changing the NOSTRETCH configuration is not allowed when the I2C is enabled.
+Page 1943: RM0433                                                                    Inter-integrated circuit (I2C) interface
+Page 1943: Figure 539. I2C initialization flowchart
+Page 1943: Clear PE bit in I2C_CR1
+Page 1943: Configure ANFOFF and DNF[3:0] in I2C_CR1
+Page 1943: SCLL[7:0] in I2C_TIMINGR
+Page 1943: Configure NOSTRETCH in I2C_CR1
+Page 1943: Set PE bit in I2C_CR1
+Page 1943: A software reset can be performed by clearing the PE bit in the I2C_CR1 register. In that
+Page 1943: case I2C lines SCL and SDA are released. Internal states machines are reset and
+Page 1943: 1.   I2C_CR2 register: START, STOP, NACK
+Page 1943: 2.   I2C_ISR register: BUSY, TXE, TXIS, RXNE, ADDR, NACKF, TCR, TC, STOPF, BERR,
+Page 1943: 1.   I2C_CR2 register: PECBYTE
+Page 1943: 2.   I2C_ISR register: PECERR, TIMEOUT, ALERT
+Page 1944: Inter-integrated circuit (I2C) interface                                                              RM0433
+Page 1944: received), the shift register is copied into I2C_RXDR register if it is empty (RXNE=0). If
+Page 1944: is stretched low until I2C_RXDR is read. The stretch is inserted between the 8th and 9th
+Page 1944: I2C_RXDR                data0                      data1              data2
+Page 1945: RM0433                                                                       Inter-integrated circuit (I2C) interface
+Page 1945: If the I2C_TXDR register is not empty (TXE=0), its content is copied into the shift register
+Page 1945: out on SDA line. If TXE=1, meaning that no data is written yet in I2C_TXDR, SCL line is
+Page 1945: stretched low until I2C_TXDR is written. The stretch is done after the 9th SCL pulse.
+Page 1945: I2C_TXDR              data0                     data1                        data2
+Page 1945: The I2C has a byte counter embedded in hardware in order to manage byte transfer and to
+Page 1945: it can be enabled by software by setting the SBC (Slave Byte Control) bit in the I2C_CR2
+Page 1945: I2C_CR2 register. If the number of bytes to be transferred (NBYTES) is greater than 255, or
+Page 1945: mode must be selected by setting the RELOAD bit in the I2C_CR2 register. In this mode,
+Page 1946: Inter-integrated circuit (I2C) interface                                                          RM0433
+Page 1946: •     Automatic end mode (AUTOEND = ‘1’ in the I2C_CR2 register). In this mode, the
+Page 1946: •     Software end mode (AUTOEND = ‘0’ in the I2C_CR2 register). In this mode, software
+Page 1946: software when the START or STOP bit is set in the I2C_CR2 register. This mode must
+Page 1946: Table 373. I2C configuration
+Page 1946: 46.4.7      I2C slave mode
+Page 1946: I2C slave initialization
+Page 1946: registers I2C_OAR1 and I2C_OAR2 are available in order to program the slave own
+Page 1946: setting the OA1MODE bit in the I2C_OAR1 register.
+Page 1946: OA1 is enabled by setting the OA1EN bit in the I2C_OAR1 register.
+Page 1946: the I2C_OAR2 register. Therefore for OA2MSK configured from 1 to 6, only OA2[7:2],
+Page 1946: excludes the I2C reserved addresses (0000 XXX and 1111 XXX), which are not
+Page 1946: enable bit, if they are programmed in the I2C_OAR1 or I2C_OAR2 register with
+Page 1946: OA2 is enabled by setting the OA2EN bit in the I2C_OAR2 register.
+Page 1946: •     The General Call address is enabled by setting the GCEN bit in the I2C_CR1 register.
+Page 1946: When the I2C is selected by one of its enabled addresses, the ADDR interrupt status flag is
+Page 1947: RM0433                                                         Inter-integrated circuit (I2C) interface
+Page 1947: does not support clock stretching, the I2C must be configured with NOSTRETCH=1 in the
+Page 1947: I2C_CR1 register.
+Page 1947: ADDCODE[6:0] bits in the I2C_ISR register in order to check which address matched. DIR
+Page 1947: In default mode, the I2C slave stretches the SCL clock in the following situations:
+Page 1947: written in I2C_TXDR register, or if the first data byte is not written when the ADDR flag
+Page 1947: is cleared (TXE=1). This stretch is released when the data is written to the I2C_TXDR
+Page 1947: •    In reception when the I2C_RXDR register is not read yet and a new data reception is
+Page 1947: completed. This stretch is released when I2C_RXDR is read.
+Page 1947: •    After SCL falling edge detection, the I2C stretches SCL low during
+Page 1947: [(SDADEL+SCLDEL+1) x (PRESC+1) + 1] x tI2CCLK.
+Page 1947: When NOSTRETCH = 1 in the I2C_CR1 register, the I2C slave does not stretch the SCL
+Page 1947: •    In transmission, the data must be written in the I2C_TXDR register before the first SCL
+Page 1947: set in the I2C_ISR register and an interrupt is generated if the ERRIE bit is set in the
+Page 1947: I2C_CR1 register. The OVR flag is also set when the first data transmission starts and
+Page 1947: •    In reception, the data must be read from the I2C_RXDR register before the 9th SCL
+Page 1947: is set in the I2C_ISR register and an interrupt is generated if the ERRIE bit is set in the
+Page 1947: I2C_CR1 register.
+Page 1948: Inter-integrated circuit (I2C) interface                                                                      RM0433
+Page 1948: be enabled by setting the SBC bit in the I2C_CR1 register. This is required to be compliant
+Page 1948: pulses. The user can read the data from the I2C_RXDR register, and then decide to
+Page 1948: acknowledge it or not by configuring the ACK bit in the I2C_CR2 register. The SCL stretch is
+Page 1948: Note:       The SBC bit must be configured when the I2C is disabled, or when the slave is not
+Page 1948: Clear {OA1EN, OA2EN} in I2C_OAR1 and I2C_OAR2
+Page 1948: Configure SBC in I2C_CR1*
+Page 1948: DMA in I2C_CR1
+Page 1949: RM0433                                                           Inter-integrated circuit (I2C) interface
+Page 1949: A transmit interrupt status (TXIS) is generated when the I2C_TXDR register becomes
+Page 1949: empty. An interrupt is generated if the TXIE bit is set in the I2C_CR1 register.
+Page 1949: The TXIS bit is cleared when the I2C_TXDR register is written with the next data byte to be
+Page 1949: When a NACK is received, the NACKF bit is set in the I2C_ISR register and an interrupt is
+Page 1949: generated if the NACKIE bit is set in the I2C_CR1 register. The slave automatically releases
+Page 1949: When a STOP is received and the STOPIE bit is set in the I2C_CR1 register, the STOPF
+Page 1949: flag is set in the I2C_ISR register and an interrupt is generated. In most applications, the
+Page 1949: received (ADDR=1), the user can choose either to send the content of the I2C_TXDR
+Page 1949: register as the first data byte, or to flush the I2C_TXDR register by setting the TXE bit in
+Page 1949: user cannot flush the I2C_TXDR register content in the ADDR subroutine, in order to
+Page 1949: the I2C_TXDR register:
+Page 1949: •    If this data byte is not the one to be sent, the I2C_TXDR register can be flushed by
+Page 1950: Inter-integrated circuit (I2C) interface                                                    RM0433
+Page 1950: Figure 543. Transfer sequence flowchart for I2C slave transmitter, NOSTRETCH=0
+Page 1950: I2C_ISR.ADDR
+Page 1950: Read ADDCODE and DIR in I2C_ISR
+Page 1950: Optional: Set I2C_ISR.TXE = 1
+Page 1950: Set I2C_ICR.ADDRCF
+Page 1950: I2C_ISR.TXIS
+Page 1950: Write I2C_TXDR.TXDATA
+Page 1951: RM0433                                                             Inter-integrated circuit (I2C) interface
+Page 1951: Figure 544. Transfer sequence flowchart for I2C slave transmitter, NOSTRETCH=1
+Page 1951: I2C_ISR.TXIS                                             I2C_ISR.STOPF
+Page 1951: Write I2C_TXDR.TXDATA                                   Optional: Set I2C_ISR.TXE = 1
+Page 1951: and I2C_ISR.TXIS=1
+Page 1951: Set I2C_ICR.STOPCF
+Page 1952: Inter-integrated circuit (I2C) interface                                                                                                             RM0433
+Page 1952: Figure 545. Transfer bus diagrams for I2C slave transmitter
+Page 1952: Example I2C slave transmitter 3 bytes with 1st data flushed,
+Page 1952: Example I2C slave transmitter 3 bytes without 1st data flush,
+Page 1952: Example I2C slave transmitter 3 bytes, NOSTRETCH=1:
+Page 1953: RM0433                                                           Inter-integrated circuit (I2C) interface
+Page 1953: RXNE is set in I2C_ISR when the I2C_RXDR is full, and generates an interrupt if RXIE is
+Page 1953: set in I2C_CR1. RXNE is cleared when I2C_RXDR is read.
+Page 1953: When a STOP is received and STOPIE is set in I2C_CR1, STOPF is set in I2C_ISR and an
+Page 1953: I2C_ISR.ADDR
+Page 1953: Read ADDCODE and DIR in I2C_ISR
+Page 1953: Set I2C_ICR.ADDRCF
+Page 1953: I2C_ISR.RXNE
+Page 1953: Write I2C_RXDR.RXDATA
+Page 1954: Inter-integrated circuit (I2C) interface                                                                                                      RM0433
+Page 1954: I2C_ISR.RXNE                                                                        I2C_ISR.STOPF
+Page 1954: Read I2C_RXDR.RXDATA                                                                      Set I2C_ICR.STOPCF
+Page 1954: Figure 548. Transfer bus diagrams for I2C slave receiver
+Page 1954: Example I2C slave receiver 3 bytes, NOSTRETCH=0:
+Page 1954: Example I2C slave receiver 3 bytes, NOSTRETCH=1:                                                                  legend:
+Page 1955: RM0433                                                       Inter-integrated circuit (I2C) interface
+Page 1955: 46.4.8   I2C master mode
+Page 1955: I2C master initialization
+Page 1955: Before enabling the peripheral, the I2C master clock must be configured by setting the
+Page 1955: SCLH and SCLL bits in the I2C_TIMINGR register.
+Page 1955: The STM32CubeMX tool calculates and provides the I2C_TIMINGR content in the I2C
+Page 1955: The I2C detects its own SCL low level after a tSYNC1 delay depending on the SCL falling
+Page 1955: edge, SCL input noise filters (analog + digital) and SCL synchronization to the I2CxCLK
+Page 1955: clock. The I2C releases SCL to high level once the SCLL counter reaches the value
+Page 1955: programmed in the SCLL[7:0] bits in the I2C_TIMINGR register.
+Page 1955: The I2C detects its own SCL high level after a tSYNC2 delay depending on the SCL rising
+Page 1955: edge, SCL input noise filters (analog + digital) and SCL synchronization to I2CxCLK clock.
+Page 1955: The I2C ties SCL to low level once the SCLH counter is reached reaches the value
+Page 1955: programmed in the SCLH[7:0] bits in the I2C_TIMINGR register.
+Page 1955: tSCL = tSYNC1 + tSYNC2 + {[(SCLH+1) + (SCLL+1)] x (PRESC+1) x tI2CCLK}
+Page 1955: –    When enabled, input delay induced by the digital filter: DNF x tI2CCLK
+Page 1955: –    Delay due to SCL synchronization with i2c_ker_ck clock (2 to 3 i2c_ker_ck
+Page 1955: –    When enabled, input delay induced by the digital filter: DNF x tI2CCLK
+Page 1955: –    Delay due to SCL synchronization with i2c_ker_ck clock (2 to 3 i2c_ker_ck
+Page 1956: Inter-integrated circuit (I2C) interface                                                                                                         RM0433
+Page 1956: Caution:    In order to be I2C or SMBus compliant, the master clock must respect the timings given
+Page 1957: RM0433                                                                  Inter-integrated circuit (I2C) interface
+Page 1957: Table 374. I2C-SMBUS specification clock timings
+Page 1957: Refer to Section 46.4.9: I2C_TIMINGR register configuration examples for examples of
+Page 1957: I2C_TIMINGR settings vs. i2c_ker_ck frequency.
+Page 1957: the addressed slave in the I2C_CR2 register:
+Page 1957: The user must then set the START bit in I2C_CR2 register. Changing all the above bits is
+Page 1958: Inter-integrated circuit (I2C) interface                                                                                        RM0433
+Page 1958: If the I2C is addressed as a slave (ADDR=1) while the START bit is set, the I2C switches to
+Page 1958: Enable interrupts and/or DMA in I2C_CR1
+Page 1958: sequence by clearing the HEAD10R bit in the I2C_CR2 register. In this case the master
+Page 1959: RM0433                                                                                 Inter-integrated circuit (I2C) interface
+Page 1959: A TXIS event generates an interrupt if the TXIE bit is set in the I2C_CR1 register. The flag is
+Page 1959: cleared when the I2C_TXDR register is written with the next data byte to be transmitted.
+Page 1959: must be selected by setting the RELOAD bit in the I2C_CR2 register. In this case, when
+Page 1959: A RESTART condition can be requested by setting the START bit in the I2C_CR2
+Page 1959: A STOP condition can be requested by setting the STOP bit in the I2C_CR2
+Page 1959: sent after the NACK reception. the NACKF flag is set in the I2C_ISR register, and an
+Page 1960: Inter-integrated circuit (I2C) interface                                                              RM0433
+Page 1960: Figure 553. Transfer sequence flowchart for I2C master transmitter for N≤255 bytes
+Page 1960: Set I2C_CR2.START
+Page 1960: I2C_ISR.NACKF =                          I2C_ISR.TXIS
+Page 1960: Write I2C_TXDR
+Page 1960: I2C_ISR.TC =
+Page 1960: No         Set I2C_CR2.START with
+Page 1961: RM0433                                                                           Inter-integrated circuit (I2C) interface
+Page 1961: Figure 554. Transfer sequence flowchart for I2C master transmitter for N>255 bytes
+Page 1961: Set I2C_CR2.START
+Page 1961: I2C_ISR.NACKF                                      I2C_ISR.TXIS
+Page 1961: Write I2C_TXDR
+Page 1961: I2C_ISR.TC
+Page 1961: Set I2C_CR2.START
+Page 1961: I2C_ISR.TCR
+Page 1962: Inter-integrated circuit (I2C) interface                                                                                               RM0433
+Page 1962: Figure 555. Transfer bus diagrams for I2C master transmitter
+Page 1962: Example I2C master transmitter 2 bytes, automatic end mode (STOP)
+Page 1962: Example I2C master transmitter 2 bytes, software end mode (RESTART)
+Page 1963: RM0433                                                         Inter-integrated circuit (I2C) interface
+Page 1963: SCL pulse. An RXNE event generates an interrupt if the RXIE bit is set in the I2C_CR1
+Page 1963: register. The flag is cleared when I2C_RXDR is read.
+Page 1963: selected by setting the RELOAD bit in the I2C_CR2 register. In this case, when
+Page 1963: A RESTART condition can be requested by setting the START bit in the I2C_CR2
+Page 1963: A STOP condition can be requested by setting the STOP bit in the I2C_CR2
+Page 1964: Inter-integrated circuit (I2C) interface                                                            RM0433
+Page 1964: Figure 556. Transfer sequence flowchart for I2C master receiver for N≤255 bytes
+Page 1964: Set I2C_CR2.START
+Page 1964: I2C_ISR.RXNE
+Page 1964: Read I2C_RXDR
+Page 1964: I2C_ISR.TC =
+Page 1964: No                Set I2C_CR2.START with
+Page 1965: RM0433                                                        Inter-integrated circuit (I2C) interface
+Page 1965: Figure 557. Transfer sequence flowchart for I2C master receiver for N >255 bytes
+Page 1965: Set I2C_CR2.START
+Page 1965: I2C_ISR.RXNE
+Page 1965: Read I2C_RXDR
+Page 1965: I2C_ISR.TC =
+Page 1965: Set I2C_CR2.START with
+Page 1965: I2C_ISR.TCR
+Page 1966: Inter-integrated circuit (I2C) interface                                                                                      RM0433
+Page 1966: Figure 558. Transfer bus diagrams for I2C master receiver
+Page 1966: Example I2C master receiver 2 bytes, automatic end mode (STOP)
+Page 1966: Example I2C master receiver 2 bytes, software end mode (RESTART)
+Page 1967: RM0433                                                                          Inter-integrated circuit (I2C) interface
+Page 1967: 46.4.9             I2C_TIMINGR register configuration examples
+Page 1967: The tables below provide examples of how to program the I2C_TIMINGR to obtain timings
+Page 1967: compliant with the I2C specification. In order to get more accurate configuration values, the
+Page 1967: STM32CubeMX tool (I2C Configuration window) must be used.
+Page 1967: Table 375. Examples of timing settings for fI2CCLK = 8 MHz
+Page 1967: 2. tSYNC1 + tSYNC2 minimum value is 4 x tI2CCLK = 500 ns. Example with tSYNC1 + tSYNC2 = 1000 ns.
+Page 1967: 3.    tSYNC1 + tSYNC2 minimum value is 4 x tI2CCLK = 500 ns. Example with tSYNC1 + tSYNC2 = 750 ns.
+Page 1967: 4.    tSYNC1 + tSYNC2 minimum value is 4 x tI2CCLK = 500 ns. Example with tSYNC1 + tSYNC2 = 655 ns.
+Page 1967: Table 376. Examples of timings settings for fI2CCLK = 16 MHz
+Page 1968: Inter-integrated circuit (I2C) interface                                                                                RM0433
+Page 1968: 2. tSYNC1 + tSYNC2 minimum value is 4 x tI2CCLK = 250 ns. Example with tSYNC1 + tSYNC2 = 1000 ns.
+Page 1968: 3.    tSYNC1 + tSYNC2 minimum value is 4 x tI2CCLK = 250 ns. Example with tSYNC1 + tSYNC2 = 750 ns.
+Page 1968: 4. tSYNC1 + tSYNC2 minimum value is 4 x tI2CCLK = 250 ns. Example with tSYNC1 + tSYNC2 = 500 ns.
+Page 1968: Table 377. Examples of timings settings for fI2CCLK = 48 MHz
+Page 1968: 2. tSYNC1 + tSYNC2 minimum value is 4x tI2CCLK = 83.3 ns. Example with tSYNC1 + tSYNC2 = 1000 ns
+Page 1968: 3. tSYNC1 + tSYNC2 minimum value is 4x tI2CCLK = 83.3 ns. Example with tSYNC1 + tSYNC2 = 750 ns
+Page 1968: 4. tSYNC1 + tSYNC2 minimum value is 4x tI2CCLK = 83.3 ns. Example with tSYNC1 + tSYNC2 = 250 ns
+Page 1968: This section is relevant only when SMBus feature is supported. Refer to Section 46.3: I2C
+Page 1968: devices can communicate with each other and with the rest of the system. It is based on I2C
+Page 1969: RM0433                                                       Inter-integrated circuit (I2C) interface
+Page 1969: Default Address (0b1100 001) is enabled by setting SMBDEN bit in I2C_CR1 register. The
+Page 1969: SBC bit in I2C_CR1 register. Refer to Slave Byte Control mode on page 1948 for more
+Page 1969: This peripheral supports the Host Notify protocol by setting the SMBHEN bit in the I2C_CR1
+Page 1969: ALERTEN bit in the I2C_CR1 register. The Alert Response Address is enabled at the same
+Page 1969: When configured as a host (SMBHEN=1), the ALERT flag is set in the I2C_ISR register
+Page 1969: generated if the ERRIE bit is set in the I2C_CR1 register. When ALERTEN=0, the ALERT
+Page 1970: Inter-integrated circuit (I2C) interface                                                                                  RM0433
+Page 1971: RM0433                                                            Inter-integrated circuit (I2C) interface
+Page 1971: been high for tIDLE greater than tHIGH,MAX. (refer to Table 372: I2C-SMBUS specification data
+Page 1971: This section is relevant only when SMBus feature is supported. Refer to Section 46.3: I2C
+Page 1971: In addition to I2C initialization, some other specific initialization must be done in order to
+Page 1971: SBC bit in the I2C_CR1 register. Refer to Slave Byte Control mode on page 1948 for more
+Page 1971: bit in the I2C_CR1 register.
+Page 1971: I2C_CR1 register.
+Page 1971: I2C_CR1 register.
+Page 1971: PEC calculation is enabled by setting the PECEN bit in the I2C_CR1 register. Then the PEC
+Page 1971: transfer is managed with the help of a hardware byte counter: NBYTES[7:0] in the I2C_CR2
+Page 1971: register. The PECEN bit must be configured before enabling the I2C.
+Page 1971: Caution:   Changing the PECEN configuration is not allowed when the I2C is enabled.
+Page 1972: Inter-integrated circuit (I2C) interface                                                       RM0433
+Page 1972: I2C_TIMEOUTR register. The timers must be programmed in such a way that they detect a
+Page 1972: Then the timer is enabled by setting the TIMOUTEN in the I2C_TIMEOUTR register.
+Page 1972: If SCL is tied low for a time greater than (TIMEOUTA+1) x 2048 x tI2CCLK, the TIMEOUT
+Page 1972: flag is set in the I2C_ISR register.
+Page 1972: Refer to Table 380: Examples of TIMEOUTA settings for various i2c_ker_ck
+Page 1972: Then the timer is enabled by setting the TEXTEN bit in the I2C_TIMEOUTR register.
+Page 1972: (TIMEOUTB+1) x 2048 x tI2CCLK, and in the timeout interval described in Bus idle
+Page 1972: detection on page 1971 section, the TIMEOUT flag is set in the I2C_ISR register.
+Page 1972: Refer to Table 381: Examples of TIMEOUTB settings for various i2c_ker_ck
+Page 1972: Then the timer is enabled by setting the TIMOUTEN bit in the I2C_TIMEOUTR register.
+Page 1972: tI2CCLK, the TIMEOUT flag is set in the I2C_ISR register.
+Page 1972: Refer to Table 382: Examples of TIMEOUTA settings for various i2c_ker_ck frequencies
+Page 1973: RM0433                                                             Inter-integrated circuit (I2C) interface
+Page 1973: 46.4.12    SMBus: I2C_TIMEOUTR register configuration examples
+Page 1973: This section is relevant only when SMBus feature is supported. Refer to Section 46.3: I2C
+Page 1973: Table 380. Examples of TIMEOUTA settings for various i2c_ker_ck frequencies
+Page 1973: fI2CCLK    TIMEOUTA[11:0] bits     TIDLE bit TIMEOUTEN bit               tTIMEOUT
+Page 1973: Table 381. Examples of TIMEOUTB settings for various i2c_ker_ck frequencies
+Page 1973: fI2CCLK       TIMEOUTB[11:0] bits        TEXTEN bit                  tLOW:EXT
+Page 1973: Table 382. Examples of TIMEOUTA settings for various i2c_ker_ck frequencies
+Page 1973: fI2CCLK    TIMEOUTA[11:0] bits     TIDLE bit TIMEOUTEN bit                 tTIDLE
+Page 1973: This section is relevant only when SMBus feature is supported. Refer to Section 46.3: I2C
+Page 1973: In addition to I2C slave transfer management (refer to Section 46.4.7: I2C slave mode)
+Page 1974: Inter-integrated circuit (I2C) interface                                                           RM0433
+Page 1974: I2C_PECR register is automatically transmitted if the master requests an extra byte after the
+Page 1974: I2C_ISR.ADDR =
+Page 1974: Read ADDCODE and DIR in I2C_ISR                 SCL
+Page 1974: I2C_CR2.NBYTES = N + 1                   stretched
+Page 1974: Set I2C_ICR.ADDRCF
+Page 1974: I2C_ISR.TXIS
+Page 1974: Write I2C_TXDR.TXDATA
+Page 1975: RM0433                                                                 Inter-integrated circuit (I2C) interface
+Page 1975: When the I2C is used in SMBus mode, SBC must be programmed to ‘1’ in order to allow the
+Page 1975: is compared with the internal I2C_PECR register content. A NACK is automatically
+Page 1975: copied into the I2C_RXDR register like any other data, and the RXNE flag is set.
+Page 1975: ERRIE bit is set in the I2C_CR1 register.
+Page 1976: Inter-integrated circuit (I2C) interface                                                   RM0433
+Page 1976: I2C_ISR.ADDR =
+Page 1976: Read ADDCODE and DIR in I2C_ISR               SCL
+Page 1976: I2C_CR2.NBYTES = 1, RELOAD =1              stretched
+Page 1976: Set I2C_ICR.ADDRCF
+Page 1976: I2C_ISR.RXNE =1?
+Page 1976: I2C_ISR.TCR = 1?
+Page 1976: Read I2C_RXDR.RXDATA
+Page 1976: Program I2C_CR2.NACK = 0
+Page 1976: I2C_CR2.NBYTES = 1
+Page 1976: Read I2C_RXDR.RXDATA
+Page 1976: I2C_ISR.RXNE =1?
+Page 1976: Read I2C_RXDR.RXDATA
+Page 1977: RM0433                                                                                 Inter-integrated circuit (I2C) interface
+Page 1977: This section is relevant only when SMBus feature is supported. Refer to Section 46.3: I2C
+Page 1977: In addition to I2C master transfer management (refer to Section 46.4.8: I2C master mode)
+Page 1977: set when NBYTES=0x1, the content of the I2C_PECR register is automatically transmitted.
+Page 1978: Inter-integrated circuit (I2C) interface                                                                                         RM0433
+Page 1978: transmitted, the I2C_PECR register content is transmitted and the TC flag is set after the
+Page 1979: RM0433                                                        Inter-integrated circuit (I2C) interface
+Page 1979: versus the I2C_PECR register content. A NACK response is given to the PEC byte, followed
+Page 1979: automatically checked versus the I2C_PECR register content. The TC flag is set after the
+Page 1980: Inter-integrated circuit (I2C) interface                                                                                              RM0433
+Page 1981: RM0433                                                          Inter-integrated circuit (I2C) interface
+Page 1981: Section 46.3: I2C implementation.
+Page 1981: The I2C is able to wakeup the MCU from Stop mode (APB clock is off), when it is
+Page 1981: Wakeup from Stop mode is enabled by setting the WUPEN bit in the I2C_CR1 register. The
+Page 1981: HSI or CSI oscillator must be selected as the clock source for I2CCLK in order to allow
+Page 1981: During Stop mode, the HSI or CSI is switched off. When a START is detected, the I2C
+Page 1981: In case of an address match, the I2C stretches SCL low during MCU wakeup time. The
+Page 1981: Note:      If the I2C clock is the system clock, or if WUPEN = 0, the HSI or CSI is not switched on after
+Page 1981: I2C is performing a transfer as a master, or as an addressed slave after the ADDR flag is
+Page 1981: Caution:   This feature is available only when the I2C clock source is the HSI or CSI oscillator.
+Page 1981: Caution:   If wakeup from Stop mode is disabled (WUPEN=0), the I2C peripheral must be disabled
+Page 1981: The bus error flag is set only if the I2C is involved in the transfer as master or addressed
+Page 1981: In case of a misplaced START or RESTART detection in slave mode, the I2C enters
+Page 1981: When a bus error is detected, the BERR flag is set in the I2C_ISR register, and an interrupt
+Page 1981: is generated if the ERRIE bit is set in the I2C_CR1 register.
+Page 1982: Inter-integrated circuit (I2C) interface                                                          RM0433
+Page 1982: When an arbitration loss is detected, the ARLO flag is set in the I2C_ISR register, and an
+Page 1982: interrupt is generated if the ERRIE bit is set in the I2C_CR1 register.
+Page 1982: I2C_TXDR register is sent if TXE=0, 0xFF if not.
+Page 1982: –    When a new byte must be sent and the I2C_TXDR register has not been written
+Page 1982: When an overrun or underrun error is detected, the OVR flag is set in the I2C_ISR register,
+Page 1982: and an interrupt is generated if the ERRIE bit is set in the I2C_CR1 register.
+Page 1982: I2C implementation.
+Page 1982: A PEC error is detected when the received PEC byte does not match with the I2C_PECR
+Page 1982: When a PEC error is detected, the PECERR flag is set in the I2C_ISR register, and an
+Page 1982: interrupt is generated if the ERRIE bit is set in the I2C_CR1 register.
+Page 1982: I2C implementation.
+Page 1983: RM0433                                                       Inter-integrated circuit (I2C) interface
+Page 1983: When a timeout error is detected, the TIMEOUT flag is set in the I2C_ISR register, and an
+Page 1983: interrupt is generated if the ERRIE bit is set in the I2C_CR1 register.
+Page 1983: I2C implementation.
+Page 1983: The ALERT flag is set when the I2C interface is configured as a Host (SMBHEN=1), the
+Page 1983: An interrupt is generated if the ERRIE bit is set in the I2C_CR1 register.
+Page 1983: in the I2C_CR1 register. Data is loaded from an SRAM area configured using the DMA
+Page 1983: I2C_TXDR register whenever the TXIS bit is set.
+Page 1983: the I2C_CR1 register. Data is loaded from the I2C_RXDR register to an SRAM area
+Page 1984: Inter-integrated circuit (I2C) interface                                                                     RM0433
+Page 1984: •    If SMBus is supported (see Section 46.3: I2C implementation): the PEC transfer is
+Page 1984: continues to work normally or stops, depending on the DBG_I2Cx_ configuration bits in the
+Page 1984: 46.5        I2C low-power modes
+Page 1984: Table 383. Effect of low-power modes on the I2C
+Page 1984: Sleep              No effect. I2C interrupts cause the device to exit the Sleep mode.
+Page 1984: The I2C registers content is kept. If WUPEN = 1 and I2C is clocked by an internal
+Page 1984: oscillator (HSI or CSI): the address recognition is functional. The I2C address
+Page 1984: match condition causes the device to exit the Stop mode. If WUPEN=0: the I2C
+Page 1984: The I2C peripheral is powered down and must be reinitialized after exiting
+Page 1984: 1. The ADDR match event can wake-up the device from Stop mode only if the I2C instance supports the
+Page 1984: Wakeup from Stop mode feature. Refer to I2C implementation table.
+Page 1985: RM0433                                                                Inter-integrated circuit (I2C) interface
+Page 1985: 46.6          I2C interrupts
+Page 1985: In I2C two interrupts (i2c_event_it and i2c_error_it) and a wakeup event signal (i2c_wkup)
+Page 1985: Table 384. I2C Interrupt requests
+Page 1985: bit         i2c_event_it i2c_error_it i2c_wkup
+Page 1985: Receive buffer not                  Read I2C_RXDR
+Page 1985: Transmit buffer                     Write I2C_TXDR
+Page 1985: Transfer Complete                  Write I2C_CR2 with
+Page 1986: Inter-integrated circuit (I2C) interface                                                                                        RM0433
+Page 1986: Figure 566. I2C interrupt mapping diagram
+Page 1986: RXIE                                                                     I2C event interrupt
+Page 1986: ADDRIE                                                                              I2C global interrupt
+Page 1986: ALERT                                   I2C error interrupt
+Page 1986: 46.7            I2C registers
+Page 1986: 46.7.1          I2C2 control register 1 (I2C_CR1)
+Page 1986: one is completed. The latency of the second write access can be up to 2 x i2c_pclk + 6 x
+Page 1986: i2c_ker_ck.
+Page 1986: Refer to Section 46.3: I2C implementation.
+Page 1987: RM0433                                                              Inter-integrated circuit (I2C) interface
+Page 1987: Refer to Section 46.3: I2C implementation.
+Page 1987: Refer to Section 46.3: I2C implementation.
+Page 1987: Refer to Section 46.3: I2C implementation.
+Page 1987: by hardware to ‘0’. Refer to Section 46.3: I2C implementation.
+Page 1987: Note: This bit can only be programmed when the I2C is disabled (PE = 0).
+Page 1988: Inter-integrated circuit (I2C) interface                                                                              RM0433
+Page 1988: Note: This bit can only be programmed when the I2C is disabled (PE = 0).
+Page 1988: filter, filters spikes with a length of up to DNF[3:0] * tI2CCLK
+Page 1988: 0001: Digital filter enabled and filtering capability up to 1 tI2CCLK
+Page 1988: 1111: digital filter enabled and filtering capability up to15 tI2CCLK
+Page 1988: This filter can only be programmed when the I2C is disabled (PE = 0).
+Page 1989: RM0433                                                                     Inter-integrated circuit (I2C) interface
+Page 1989: Note: When PE=0, the I2C SCL and SDA lines are released. Internal state machines and
+Page 1989: 46.7.2          I2C2 control register 2 (I2C_CR2)
+Page 1989: one is completed. The latency of the second write access can be up to 2 x i2c_pclk + 6 x
+Page 1989: i2c_ker_ck.
+Page 1989: Refer to Section 46.3: I2C implementation.
+Page 1990: Inter-integrated circuit (I2C) interface                                                                   RM0433
+Page 1990: also be cleared by software by writing ‘1’ to the ADDRCF bit in the I2C_ICR register.
+Page 1990: If the I2C is already in master mode with AUTOEND = 0, setting this bit generates a
+Page 1990: The START bit can be set even if the bus is BUSY or I2C is in slave mode.
+Page 1991: RM0433                                                               Inter-integrated circuit (I2C) interface
+Page 1992: Inter-integrated circuit (I2C) interface                                                                        RM0433
+Page 1992: 46.7.3          I2C2 own address 1 register (I2C_OAR1)
+Page 1992: one is completed. The latency of the second write access can be up to 2 x i2c_pclk + 6 x
+Page 1992: i2c_ker_ck.
+Page 1993: RM0433                                                                           Inter-integrated circuit (I2C) interface
+Page 1993: 46.7.4          I2C2 own address 2 register (I2C_OAR2)
+Page 1993: one is completed. The latency of the second write access can be up to 2 x i2c_pclk + 6 x
+Page 1993: i2c_ker_ck.
+Page 1993: As soon as OA2MSK is not equal to 0, the reserved I2C addresses (0b0000xxx and
+Page 1994: Inter-integrated circuit (I2C) interface                                                                     RM0433
+Page 1994: 46.7.5          I2C2 timing register (I2C_TIMINGR)
+Page 1994: This field is used to prescale i2c_ker_ck in order to generate the clock period tPRESC used for
+Page 1994: data setup and hold counters (refer to I2C timings on page 1940) and for SCL high and low
+Page 1994: level counters (refer to I2C master initialization on page 1955).
+Page 1994: tPRESC = (PRESC+1) x tI2CCLK
+Page 1994: Note:           This register must be configured when the I2C is disabled (PE = 0).
+Page 1994: Note:           The STM32CubeMX tool calculates and provides the I2C_TIMINGR content in the I2C
+Page 1995: RM0433                                                                   Inter-integrated circuit (I2C) interface
+Page 1995: 46.7.6         I2C2 timeout register (I2C_TIMEOUTR)
+Page 1995: one is completed. The latency of the second write access can be up to 2 x i2c_pclk + 6 x
+Page 1995: i2c_ker_ck.
+Page 1995: than tLOW:EXT is done by the I2C interface, a timeout error is detected (TIMEOUT=1).
+Page 1995: tLOW:EXT= (TIMEOUTB+1) x 2048 x tI2CCLK
+Page 1995: tTIMEOUT= (TIMEOUTA+1) x 2048 x tI2CCLK
+Page 1995: tIDLE= (TIMEOUTA+1) x 4 x tI2CCLK
+Page 1995: “0x00000000”. Refer to Section 46.3: I2C implementation.
+Page 1996: Inter-integrated circuit (I2C) interface                                                                            RM0433
+Page 1996: 46.7.7          I2C2 interrupt and status register (I2C_ISR)
+Page 1996: Refer to Section 46.3: I2C implementation.
+Page 1996: Refer to Section 46.3: I2C implementation.
+Page 1997: RM0433                                                              Inter-integrated circuit (I2C) interface
+Page 1997: Refer to Section 46.3: I2C implementation.
+Page 1998: Inter-integrated circuit (I2C) interface                                                                        RM0433
+Page 1998: This bit is set by hardware when the received data is copied into the I2C_RXDR register, and
+Page 1998: is ready to be read. It is cleared when I2C_RXDR is read.
+Page 1998: This bit is set by hardware when the I2C_TXDR register is empty and the data to be
+Page 1998: transmitted must be written in the I2C_TXDR register. It is cleared when the next data to be
+Page 1998: sent is written in the I2C_TXDR register.
+Page 1998: This bit is set by hardware when the I2C_TXDR register is empty. It is cleared when the next
+Page 1998: data to be sent is written in the I2C_TXDR register.
+Page 1998: I2C_TXDR.
+Page 1998: 46.7.8          I2C2 interrupt clear register (I2C_ICR)(
+Page 1998: Writing 1 to this bit clears the ALERT flag in the I2C_ISR register.
+Page 1998: Refer to Section 46.3: I2C implementation.
+Page 1998: Writing 1 to this bit clears the TIMEOUT flag in the I2C_ISR register.
+Page 1998: Refer to Section 46.3: I2C implementation.
+Page 1998: Writing 1 to this bit clears the PECERR flag in the I2C_ISR register.
+Page 1998: Refer to Section 46.3: I2C implementation.
+Page 1999: RM0433                                                                        Inter-integrated circuit (I2C) interface
+Page 1999: Writing 1 to this bit clears the OVR flag in the I2C_ISR register.
+Page 1999: Writing 1 to this bit clears the ARLO flag in the I2C_ISR register.
+Page 1999: Writing 1 to this bit clears the BERRF flag in the I2C_ISR register.
+Page 1999: Writing 1 to this bit clears the STOPF flag in the I2C_ISR register.
+Page 1999: Writing 1 to this bit clears the NACKF flag in I2C_ISR register.
+Page 1999: Writing 1 to this bit clears the ADDR flag in the I2C_ISR register. Writing 1 to this bit also
+Page 1999: clears the START bit in the I2C_CR2 register.
+Page 1999: 46.7.9           I2C2 PEC register (I2C_PECR)
+Page 1999: “0x00000000”. Refer to Section 46.3: I2C implementation.
+Page 2000: Inter-integrated circuit (I2C) interface                                                                    RM0433
+Page 2000: 46.7.10         I2C2 receive data register (I2C_RXDR)
+Page 2000: Data byte received from the I2C bus
+Page 2000: 46.7.11         I2C2 transmit data register (I2C_TXDR)
+Page 2000: Data byte to be transmitted to the I2C bus
+Page 2001: I2C_
+Page 2001: I2C_
+Page 2001: I2C_ISR
+Page 2001: I2C_ICR
+Page 2001: I2C_CR2
+Page 2001: I2C_CR1
+Page 2001: I2C_PECR
+Page 2001: I2C_OAR2
+Page 2001: I2C_OAR1
+Page 2001: I2C_RXDR
+Page 2001: I2C register map
+Page 2001: Table 385. I2C register map and reset values
+Page 2001: The table below provides the I2C register map and reset values.
+Page 2001: Inter-integrated circuit (I2C) interface
+Page 2002: Inter-integrated circuit (I2C) interface                                                                                                                                                                              RM0433
+Page 2002: Table 385. I2C register map and reset values (continued)
+Page 2002: I2C_TXDR                                                                                                                                                                                      TXDATA[7:0]
+Page 2152: (the TXTF flag is set at SPI2C_SR register), the TXC flag can be monitored to ensure that
+Page 2575: I2C interface connected to an external PMIC (power management IC). When the application
+Page 2998: communications interfaces (USB, USART, SPI, I2C, Ethernet, CAN etc). This is
+Page 3134: Res.    Res.    Res.   Res.   Res.   Res.    Res.    Res.    I2C3    I2C2    I2C1   Res.   Res.   Res.   Res.    Res.
+Page 3134: Bit 23 I2C3: I2C3 SMBUS timeout stop in debug
+Page 3134: 0: Normal operation - I2C3 SMBUS timeout continues to operate while the core is in debug mode
+Page 3134: 1: Stop in debug - I2C3 SMBUS timeout is frozen while Cortex-M7 is in debug mode
+Page 3134: Bit 22 I2C2: I2C2 SMBUS timeout stop in debug
+Page 3134: 0: Normal operation - I2C2 SMBUS timeout continues to operate while the core is in debug mode
+Page 3134: 1: Stop in debug - I2C2 SMBUS timeout is frozen while Cortex-M7 is in debug mode
+Page 3134: Bit 21 I2C1: I2C1 SMBUS timeout stop in debug
+Page 3134: 0: Normal operation - I2C1 SMBUS timeout continues to operate while the core is in debug mode
+Page 3134: 1: Stop in debug - I2C1 SMBUS timeout is frozen while the core is in debug mode
+Page 3136: Res.     Res.    Res.                         LPTIM2   Res.   I2C4    Res.   Res.   Res.   Res.   Res.   Res.   Res.
+Page 3137: Bit 7 I2C4: I2C4 SMBUS timeout stop in debug
+Page 3137: 0: Normal operation - I2C4 SMBUS timeout continues to operate while the core is in debug mode
+Page 3137: 1: Stop in debug - I2C4 SMBUS timeout is frozen while the core is in debug mode
+Page 3138: I2C3
+Page 3138: I2C2
+Page 3138: I2C1
+Page 3138: I2C4
+Page 3221: Section 47: Inter-integrated circuit (I2C) interface
+Page 3221: Own address 1 register (I2C_OAR1) and Section 47.7.4: Own
+Page 3221: address 2 register (I2C_OAR2).
+Page 3225: Section 47: Inter-integrated circuit (I2C) interface
+Page 3225: register (I2C_ICR) register.
+Page 3231: Section 46: Inter-integrated circuit (I2C) interface
+Page 3231: Updated Figure 536: I2C block diagram.
+Page 3231: Updated Section 46.4.4: I2C initialization removing the reference to
+Page 3231: Updated Table 383: Effect of low-power modes on the I2C.
+Page 3231: Updated Section 46.6: I2C interrupts.
+Page 3231: Updated START bit 13 description in Section 46.7.2: I2C2 control
+Page 3231: register 2 (I2C_CR2).
+Page 3240: I2C_CR1 . . . . . . . . . . . . . . . . . . . . . . . . . . .1986     LPUART_RQR . . . . . . . . . . . . . . . . . . . . . . 2119
+Page 3240: I2C_CR2 . . . . . . . . . . . . . . . . . . . . . . . . . . .1989     LPUART_TDR . . . . . . . . . . . . . . . . . . . . . . . 2125
+Page 3240: I2C_ICR . . . . . . . . . . . . . . . . . . . . . . . . . . . .1998   LTDC_AWCR . . . . . . . . . . . . . . . . . . . . . . . 1194
+Page 3240: I2C_ISR . . . . . . . . . . . . . . . . . . . . . . . . . . . .1996   LTDC_BCCR . . . . . . . . . . . . . . . . . . . . . . . . 1197
+Page 3240: I2C_OAR1 . . . . . . . . . . . . . . . . . . . . . . . . . .1992      LTDC_BPCR . . . . . . . . . . . . . . . . . . . . . . . . 1193
+Page 3240: I2C_OAR2 . . . . . . . . . . . . . . . . . . . . . . . . . .1993      LTDC_CDSR . . . . . . . . . . . . . . . . . . . . . . . . 1201
+Page 3240: I2C_PECR . . . . . . . . . . . . . . . . . . . . . . . . . .1999      LTDC_CPSR . . . . . . . . . . . . . . . . . . . . . . . . 1200
+Page 3240: I2C_RXDR . . . . . . . . . . . . . . . . . . . . . . . . . .2000      LTDC_GCR . . . . . . . . . . . . . . . . . . . . . . . . . 1195
+Page 3240: I2C_TIMEOUTR . . . . . . . . . . . . . . . . . . . . . .1995          LTDC_ICR . . . . . . . . . . . . . . . . . . . . . . . . . . 1199
+Page 3240: I2C_TIMINGR . . . . . . . . . . . . . . . . . . . . . . .1994         LTDC_IER . . . . . . . . . . . . . . . . . . . . . . . . . . 1198
+Page 3240: I2C_TXDR . . . . . . . . . . . . . . . . . . . . . . . . . .2000      LTDC_ISR . . . . . . . . . . . . . . . . . . . . . . . . . . 1199
+Page 3240: I2Cx_CR2 . . . . . . . . . . . . . . . . . . . . . . . . . . .1989    LTDC_LIPCR . . . . . . . . . . . . . . . . . . . . . . . 1200

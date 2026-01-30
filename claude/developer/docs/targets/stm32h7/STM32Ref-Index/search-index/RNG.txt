@@ -1,0 +1,227 @@
+Keyword: RNG
+Occurrences: 223
+================================================================================
+
+Page   32: 33         True random number generator (RNG) . . . . . . . . . . . . . . . . . . . . . . . 1230
+Page   32: 33.2   RNG main features . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1230
+Page   32: 33.3   RNG functional description . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1231
+Page   32: 33.3.1      RNG block diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1231
+Page   32: 33.3.2      RNG internal signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1231
+Page   32: 33.3.4      RNG initialization . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1234
+Page   32: 33.3.5      RNG operation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1235
+Page   32: 33.3.6      RNG clocking . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1236
+Page   32: 33.4   RNG low-power usage . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1237
+Page   32: 33.5   RNG interrupts . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1238
+Page   32: 33.6   RNG processing time . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1238
+Page   32: 33.8   RNG registers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1240
+Page   32: 33.8.1      RNG control register (RNG_CR) . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1240
+Page   32: 33.8.2      RNG status register (RNG_SR) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1241
+Page   32: 33.8.3      RNG data register (RNG_DR) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1242
+Page   32: 33.8.4      RNG register map . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1243
+Page   73: Table 269.   RNG internal input/output signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1231
+Page   73: Table 270.   RNG interrupt requests . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1238
+Page   73: Table 271.   RNG register map and reset map . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1243
+Page   81: Figure 54.   Kernel clock distribution For ADCs, SWPMI, RNG and FDCAN (2) . . . . . . . . . . . . . . . . . 343
+Page   85: Figure 246. RNG block diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1231
+Page   85: Figure 248. RNG initialization overview . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1235
+Page  128: 0x48021800 - 0x48021BFF          RNG                   Section 33.8: RNG registers
+Page  319: peripherals only need a bus interface clock (e.g. RNG, TIMx).
+Page  335: RNG           RNGSEL         66                   1                                                                                                                                                0          2        3
+Page  343: Figure 54. Kernel clock distribution For ADCs, SWPMI, RNG and FDCAN (2)
+Page  343: RNGSEL
+Page  343: RNGEN         Logic                 RNG
+Page  343: hsi48_ck            0                       RNGLPEN
+Page  343: pll1_q_ck                                                                  rng_ker_ck
+Page  354: 1. For RNG block, the kernel clock is not delivered if the CPU to which it is allocated is in CStop mode, even if the clock
+Page  392: Res.    Res.          (1)        Res.   Res.   RNGSEL[1:0] (1)      Res.        Res.    USART16SEL[2:0] (1)     USART234578SEL[2:0] (1)
+Page  393: Bits 9:8 RNGSEL[1:0]: RNG kernel clock source selection
+Page  410: RNGRST
+Page  410: Bit 6 RNGRST: Random Number Generator block reset
+Page  410: 0: does not reset RNG block (default after reset)
+Page  410: 1: resets RNG block
+Page  432: RNGEN
+Page  433: Bit 6 RNGEN: RNG peripheral clocks enable
+Page  433: 0: RNG peripheral clocks disabled (default after reset)
+Page  433: 1: RNG peripheral clocks enabled:
+Page  433: The peripheral clocks of the RNG are: the kernel clock selected by RNGSEL and provided to
+Page  433: rng_ker_ck input, and the rcc_hclk2 bus interface clock.
+Page  454: RNGLPEN
+Page  454: Bit 6 RNGLPEN: RNG peripheral clock enable during CSleep mode
+Page  454: 0: RNG peripheral clocks disabled during CSleep mode
+Page  454: 1: RNG peripheral clock enabled during CSleep mode (default after reset)
+Page  454: The peripheral clocks of the RNG are: the kernel clock selected by RNGSEL and provided to
+Page  454: rng_ker_ck input, and the rcc_hclk2 bus interface clock.
+Page  473: RNGSEL[1:0]
+Page  475: Res.                            Res.                        Res.                       Res.                               TIM12RST                     Res.                              GPIOGRST                     RNGRST       6
+Page  476: WWDG1EN                              GPIOGEN                    RNGEN                          Res.                        Res.                         Res.                                      Res.         6
+Page  477: RNGLPEN                            Res.                           Res.                          Reserved                     Res.                    Res.                               TIM12EN      6
+Page  479: Res.                      Res.                    Res.                               TIM12EN                   WWDG1EN                              GPIOGEN                   RNGEN                          Res.         6
+Page  480: Res.                                 TIM12LPEN                   WWDG1LPEN                               GPIOGLPEN                     RNGLPEN                            Res.                           Res.       6
+Page  734: HASH and RNG
+Page  734: hash_rng_it      87           80          HASH_RNG                                     0x0000 0180
+Page 1230: True random number generator (RNG)                                                                 RM0433
+Page 1230: 33          True random number generator (RNG)
+Page 1230: The RNG is a true random number generator that provides full entropy outputs to the
+Page 1230: The RNG can be used to construct a NIST compliant Deterministic Random Bit Generator
+Page 1230: The RNG true random number generator has been validated according to the German
+Page 1230: 33.2        RNG main features
+Page 1230: •   The RNG delivers 32-bit true random numbers, produced by an analog entropy source
+Page 1230: f RNG
+Page 1231: RM0433                                                                                              True random number generator (RNG)
+Page 1231: 33.3     RNG functional description
+Page 1231: 33.3.1   RNG block diagram
+Page 1231: Figure 246 shows the RNG block diagram.
+Page 1231: Figure 246. RNG block diagram
+Page 1231: rng_it                                                                                                                                           T-RNGv2
+Page 1231: control       RNG_CR
+Page 1231: data     RNG_DR
+Page 1231: interface         status   RNG_SR
+Page 1231: rng_clk
+Page 1231: RNG clock domain
+Page 1231: 33.3.2   RNG internal signals
+Page 1231: Table 269 describes a list of useful-to-know internal signals available at the RNG level, not
+Page 1231: Table 269. RNG internal input/output signals
+Page 1231: rng_it                       Digital output               RNG global interrupt request
+Page 1231: rng_hclk2                                  Digital input               AHB2 clock
+Page 1231: rng_clk                           Digital input               RNG dedicated clock, asynchronous to rng_hclk2
+Page 1232: True random number generator (RNG)                                                                     RM0433
+Page 1232: The true random number generator (RNG) delivers truly random data through its AHB
+Page 1232: interface at deterministic intervals. The RNG implements the entropy source model pictured
+Page 1232: The main components of the RNG are:
+Page 1232: Section 33.4: RNG low-power usage.
+Page 1232: •    A sampling stage of these outputs clocked by a dedicated clock input (rng_clk),
+Page 1233: RM0433                                                       True random number generator (RNG)
+Page 1233: (rng_hclk).
+Page 1233: Note:    In Section 33.7: Entropy source validation recommended RNG clock frequencies are given.
+Page 1233: Because this noise source output is biased, the RNG implements a post-processing
+Page 1233: More specifically, for each of the two noise source bits the RNG takes half of the bits from
+Page 1233: The conditioning component in the RNG is a deterministic function that increases the
+Page 1233: Note:    The latency during the RNG initialization is described in Section 33.6: RNG processing time.
+Page 1233: has been received and when output FIFO needs a refill. Thus the RNG output entropy is
+Page 1233: maximum when the RNG 128-bit FIFO is emptied by application after 64 RNG clock cycles.
+Page 1233: The times required between two random number generations, and between the RNG
+Page 1233: initialization and availability of first sample are described in Section 33.6: RNG processing
+Page 1233: the RNG_DR register, the content of the 128-bit conditioning output register is pushed into
+Page 1233: Whenever a random number is available through the RNG_DR register the DRDY flag
+Page 1233: reading four words from the RNG_DR register.
+Page 1233: from “0” to “1”. Interrupt is then cleared automatically by the RNG as explained above.
+Page 1234: True random number generator (RNG)                                                               RM0433
+Page 1234: The RNG implements the following health check features:
+Page 1234: –    Real-time “too slow” sampling clock detector, flagging an error when one RNG
+Page 1234: The CECS and SECS status bits in the RNG_SR register indicate when an error condition is
+Page 1234: 33.3.4      RNG initialization
+Page 1234: The RNG simplified state machine is pictured on Figure 248
+Page 1234: 4.   The output buffer is refilled automatically according to the RNG usage.
+Page 1235: RM0433                                                         True random number generator (RNG)
+Page 1235: The associated initialization time can be found in Section 33.6: RNG processing time.
+Page 1235: Figure 248. RNG initialization overview
+Page 1235: 33.3.5   RNG operation
+Page 1235: To run the RNG using interrupts the following steps are recommended:
+Page 1235: 1.   Enable the interrupts by setting the IE bit in the RNG_CR register. At the same time
+Page 1235: enable the RNG by setting the bit RNGEN=1.
+Page 1235: –     No error occurred. The SEIS and CEIS bits should be set to ‘0’ in the RNG_SR
+Page 1235: –     A random number is ready. The DRDY bit must be set to ‘1’ in the RNG_SR
+Page 1235: –     If above two conditions are true the content of the RNG_DR register can be read
+Page 1235: bit will still be high). If one or both of above conditions are false, the RNG_DR
+Page 1236: True random number generator (RNG)                                                                  RM0433
+Page 1236: To run the RNG in polling mode following steps are recommended:
+Page 1236: 1.   Enable the random number generation by setting the RNGEN bit to “1” in the RNG_CR
+Page 1236: 2.   Read the RNG_SR register and check that:
+Page 1236: 3.   If above conditions are true read the content of the RNG_DR register up to four
+Page 1236: high). If one or both of above conditions are false, the RNG_DR register must not be
+Page 1236: Note:       When data is not ready (DRDY=”0”) RNG_DR returns zero.
+Page 1236: as described in Section 33.4: RNG low-power usage on page 1237.
+Page 1236: generator software must be built around the RNG true random number generator.
+Page 1236: 33.3.6      RNG clocking
+Page 1236: The RNG runs on two different clocks: the AHB bus clock and a dedicated RNG clock.
+Page 1236: RNG clock is used for noise source sampling. Recommended clock configurations are
+Page 1236: Caution:    When the CED bit in the RNG_CR register is set to “0”, the RNG clock frequency must be
+Page 1236: error (CECS or CEIS in the RNG_SR register) and the RNG will stop producing random
+Page 1236: See Section 33.3.1: RNG block diagram for details (AHB and RNG clock domains).
+Page 1236: source behavior and the frequency of the RNG source clock as detailed in this section.
+Page 1236: When the clock error detection is enabled (CED = 0) and if the RNG clock frequency is too
+Page 1236: low, the RNG stops generating random numbers and sets to “1” both the CEIS and CECS
+Page 1236: RNG clock is configured correctly (see Section 33.3.6: RNG clocking) and then it must clear
+Page 1237: RM0433                                                        True random number generator (RNG)
+Page 1237: the CEIS bit interrupt flag. As soon as the RNG clock operates correctly, the CECS bit will
+Page 1237: The RNG operates only when the CECS flag is set to “0”. However note that the clock error
+Page 1237: has no impact on the previously generated random numbers, and the RNG_DR register
+Page 1237: When a noise source (or seed) error occurs, the RNG stops generating random numbers
+Page 1237: available in the RNG_DR register, it must not be used as it may not have enough entropy. If
+Page 1237: be automatically restarted by the RNG.
+Page 1237: The following sequence shall be used to fully recover from a seed error after the RNG
+Page 1237: 2.   Read out 12 words from the RNG_DR register, and discard each of them in order to
+Page 1237: 33.4     RNG low-power usage
+Page 1237: If power consumption is a concern, the RNG can be disabled as soon as the DRDY bit is set
+Page 1237: to “1” by setting the RNGEN bit to “0” in the RNG_CR register. As the post-processing logic
+Page 1237: and the output buffer remain operational while RNGEN=’0’ following features are available
+Page 1237: the RNG_DR register.
+Page 1237: numbers can be still be read from the RNG_DR register. If it is not the case the RNG
+Page 1237: corresponds to 16 RNG clock cycles to sample new bits, and 216 AHB clock cycles to
+Page 1237: When disabling the RNG the user deactivates all the analog seed generators, whose power
+Page 1237: all the logic clocked by the RNG clock. Note that this strategy is adding latency before a
+Page 1237: random sample is available on the RNG_DR register, because of the RNG initialization time.
+Page 1237: If the RNG block is disabled during initialization (i.e. well before the DRDY bit rises for the
+Page 1237: first time), the initialization sequence will resume from where it was stopped when RNGEN
+Page 1238: True random number generator (RNG)                                                                 RM0433
+Page 1238: 33.5        RNG interrupts
+Page 1238: In the RNG an interrupt can be produced on the following events:
+Page 1238: Table 270. RNG interrupt requests
+Page 1238: mask bits or the general interrupt control bit IE in the RNG_CR register. The status of the
+Page 1238: individual interrupt sources can be read from the RNG_SR register.
+Page 1238: Note:       Interrupts are generated only when RNG is enabled.
+Page 1238: 33.6        RNG processing time
+Page 1238: f RNG
+Page 1238: Section 33.3.4: RNG initialization). Indeed, after enabling the RNG for the first time, random
+Page 1238: •    128 RNG clock cycles + 426 AHB cycles, if fAHB < fthreshold
+Page 1238: •    192 RNG clock cycles + 213 AHB cycles, if fAHB ≥ fthreshold
+Page 1238: With fthreshold = (213 x fRNG)/ 64
+Page 1238: In order to assess the amount of entropy available from the RNG, STMicroelectronics has
+Page 1238: software. The customer could also test the RNG against an older NIST SP800-22 set of
+Page 1239: RM0433                                                         True random number generator (RNG)
+Page 1239: STMicroelectronics has validated the RNG true random number generator in the following
+Page 1239: •    RNG clock rng_clk= 48 MHz (CED bit = ’0’ in RNG_CR register) and rng_clk = 400 kHz
+Page 1239: (CED bit = ‘1’ in RNG_CR register).
+Page 1239: •    AHB clock rng_hclk= 216 MHz
+Page 1240: True random number generator (RNG)                                                                           RM0433
+Page 1240: 33.8            RNG registers
+Page 1240: The RNG is associated with a control register, a data register and a status register.
+Page 1240: 33.8.1          RNG control register (RNG_CR)
+Page 1240: Res.    Res.     Res.   Res.   Res.   Res.   Res.    Res.   Res.   Res.   CED    Res.    IE    RNGEN   Res.     Res.
+Page 1240: The clock error detection cannot be enabled nor disabled on-the-fly when the RNG is
+Page 1240: enabled, i.e. to enable or disable CED the RNG must be disabled.
+Page 1240: 0: RNG Interrupt is disabled
+Page 1240: 1: RNG Interrupt is enabled. An interrupt is pending as soon as DRDY=’1’, SEIS=’1’ or
+Page 1240: CEIS=’1’ in the RNG_SR register.
+Page 1240: Bit 2 RNGEN: True random number generator enable
+Page 1240: logic clocked by the RNG clock is gated.
+Page 1241: RM0433                                                                        True random number generator (RNG)
+Page 1241: 33.8.2          RNG status register (RNG_SR)
+Page 1241: An interrupt is pending if IE = ‘1’ in the RNG_CR register.
+Page 1241: 0: The RNG clock is correct (fRNGCLK> fHCLK/32)
+Page 1241: 1: The RNG has been detected too slow (fRNGCLK< fHCLK/32)
+Page 1241: An interrupt is pending if IE = ‘1’ in the RNG_CR register.
+Page 1241: 0: The RNG clock is correct (fRNGCLK> fHCLK/32). If the CEIS bit is set, this means that a
+Page 1241: 1: The RNG clock is too slow (fRNGCLK< fHCLK/32).
+Page 1241: Note: CECS bit is valid only if the CED bit in the RNG_CR register is set to “0”.
+Page 1241: 0: The RNG_DR register is not yet valid, no random data is available.
+Page 1241: 1: The RNG_DR register contains valid random data.
+Page 1241: Once the output buffer becomes empty (after reading the RNG_DR register), this bit returns to
+Page 1241: Note: The DRDY bit can rise when the peripheral is disabled (RNGEN=’0’ in the RNG_CR
+Page 1241: If IE=’1’ in the RNG_CR register, an interrupt is generated when DRDY=’1’.
+Page 1242: True random number generator (RNG)                                                                     RM0433
+Page 1242: 33.8.3         RNG data register (RNG_DR)
+Page 1242: The RNG_DR register is a read-only register that delivers a 32-bit random value when read.
+Page 1242: The content of this register is valid when DRDY=’1’, even if RNGEN=’0’.
+Page 1243: RM0433                                                     True random number generator (RNG)
+Page 1243: 33.8.4     RNG register map
+Page 1243: Table 271 gives the RNG register map and reset values.
+Page 1243: Table 271. RNG register map and reset map
+Page 1243: RNGEN
+Page 1243: RNG_CR
+Page 1243: RNG_SR
+Page 1243: RNG_DR                                 RNDATA[31:0]
+Page 3230: Section 33: True random number generator (RNG)
+Page 3243: RNG_CR . . . . . . . . . . . . . . . . . . . . . . . . . . . 1240
+Page 3243: RNG_DR . . . . . . . . . . . . . . . . . . . . . . . . . . . 1242
+Page 3243: RNG_SR . . . . . . . . . . . . . . . . . . . . . . . . . . . 1241

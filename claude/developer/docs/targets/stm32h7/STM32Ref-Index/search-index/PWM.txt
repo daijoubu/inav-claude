@@ -1,0 +1,353 @@
+Keyword: PWM
+Occurrences: 349
+================================================================================
+
+Page   38: 37.3.8      PWM input mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1539
+Page   38: 37.3.11 PWM mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1542
+Page   38: 37.3.12 Asymmetric PWM mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1545
+Page   38: 37.3.13 Combined PWM mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1546
+Page   38: 37.3.14 Combined 3-phase PWM mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1547
+Page   38: 37.3.19 6-step PWM generation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1558
+Page   39: 38.3.6      PWM input mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1640
+Page   40: 38.3.9      PWM mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1642
+Page   40: 38.3.10 Asymmetric PWM mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1646
+Page   40: 38.3.11 Combined PWM mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1646
+Page   41: 39.3.6      PWM input mode (only for TIM12) . . . . . . . . . . . . . . . . . . . . . . . . . . . 1707
+Page   41: 39.3.9      PWM mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1710
+Page   41: 39.3.10 Combined PWM mode (TIM12 only) . . . . . . . . . . . . . . . . . . . . . . . . . 1711
+Page   42: 40.4.7      PWM input mode (only for TIM15) . . . . . . . . . . . . . . . . . . . . . . . . . . . 1763
+Page   43: 40.4.10 PWM mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1765
+Page   43: 40.4.11 Combined PWM mode (TIM15 only) . . . . . . . . . . . . . . . . . . . . . . . . . 1766
+Page   73: Table 293.   Timer resolution and min. PWM frequency for fHRTIM = 400 MHz . . . . . . . . . . . . . . . . . 1345
+Page   87: Figure 376. PWM input mode timing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1540
+Page   87: Figure 378. Edge-aligned PWM waveforms (ARR=8) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1543
+Page   87: Figure 379. Center-aligned PWM waveforms (ARR=8) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1544
+Page   87: Figure 380. Generation of 2 phase-shifted PWM signals with 50% duty cycle . . . . . . . . . . . . . . . . . 1546
+Page   87: Figure 381. Combined PWM mode on channel 1 and 3 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1547
+Page   87: Figure 382. 3-phase combined PWM signals with multiple trigger pulses per period . . . . . . . . . . . . 1548
+Page   87: Figure 388. PWM output state following BRK and BRK2 pins assertion (OSSI=1) . . . . . . . . . . . . . . 1555
+Page   87: Figure 389. PWM output state following BRK assertion (OSSI=0) . . . . . . . . . . . . . . . . . . . . . . . . . . 1556
+Page   88: Figure 431. PWM input mode timing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1640
+Page   88: Figure 433. Edge-aligned PWM waveforms (ARR=8) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1643
+Page   88: Figure 434. Center-aligned PWM waveforms (ARR=8) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1645
+Page   88: Figure 435. Generation of 2 phase-shifted PWM signals with 50% duty cycle . . . . . . . . . . . . . . . . . 1646
+Page   88: Figure 436. Combined PWM mode on channels 1 and 3 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1647
+Page   89: Figure 468. PWM input mode timing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1708
+Page   89: Figure 470. Edge-aligned PWM waveforms (ARR=8) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1711
+Page   89: Figure 471. Combined PWM mode on channel 1 and 2 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1712
+Page   89: Figure 496. PWM input mode timing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1763
+Page   90: Figure 498. Edge-aligned PWM waveforms (ARR=8) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1766
+Page   90: Figure 499. Combined PWM mode on channel 1 and 2 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1767
+Page 1061: •   cycle-by-cycle current control loop when combined with a PWM output from a timer
+Page 1061: –    break events for fast PWM shutdowns
+Page 1063: •    emergency shut-down of PWM signals, using BKIN and BKIN2 inputs
+Page 1065: current spikes at the beginning of the PWM period (typically the recovery current in power
+Page 1065: PWM
+Page 1339: signals. This allows to produce a large variety of control signal (PWM, phase-shifted,
+Page 1341: •    Addition of deadtime when the 2 outputs are configured in complementary PWM mode
+Page 1345: Table 293. Timer resolution and min. PWM frequency for fHRTIM = 400 MHz
+Page 1345: CKPSC[2:0](1)       Prescaling ratio                fCOUNTER          Resolution      Min PWM frequency
+Page 1345: The Full-resolution is available for edge positioning, PWM period adjustment and externally
+Page 1353: Figure 287 represents how a PWM signal is generated using two compare events.
+Page 1357: The captures are enabled again at the beginning of the next PWM period.
+Page 1371: switching noise at the beginning of a PWM period. This mode is active for EExFLTR[3:0]
+Page 1376: necessary to shut down the PWM outputs in a delayed manner, either once the active pulse
+Page 1384: instance an update on the counter roll-over of a 100 kHz PWM that has to be done at a
+Page 1392: (typically the end of a PWM period).
+Page 1392: The burst mode controller is able to take over the control of any of the 10 PWM outputs. The
+Page 1399: This is applicable to a converter which only requires a simple PWM (typically a buck
+Page 1399: will provide a burst mode with 2 periods active every 6 PWM periods, as shown on
+Page 1420: Figure 336 presents the management of two converters with identical frequency PWM
+Page 1452: This register holds the value of the deadtime following a falling edge of reference PWM signal.
+Page 1453: This register holds the value of the deadtime following a rising edge of reference PWM signal.
+Page 1514: signals (input capture) or generating output waveforms (output compare, PWM,
+Page 1514: complementary PWM with dead-time insertion).
+Page 1514: –    PWM generation (Edge and Center-aligned Mode)
+Page 1529: counter has reached zero. This can be useful when generating PWM signals.
+Page 1529: Although this limits the maximum number of repetition to 32768 PWM cycles, it makes
+Page 1529: it possible to update the duty cycle twice per PWM period. When refreshing compare
+Page 1529: registers only once per PWM period in center-aligned mode, maximum resolution is
+Page 1531: •       PWM reset input for cycle-by-cycle current regulation (see Section 37.3.7)
+Page 1539: 37.3.8   PWM input mode
+Page 1540: (in TIMx_CCR2 register) of the PWM applied on TI1 using the following procedure
+Page 1540: Figure 376. PWM input mode timing
+Page 1542: 37.3.11     PWM mode
+Page 1542: The PWM mode can be selected independently on each channel (one PWM per OCx
+Page 1542: output) by writing ‘0110’ (PWM mode 1) or ‘0111’ (PWM mode 2) in the OCxM bits in the
+Page 1542: In PWM mode (1 or 2), TIMx_CNT and TIMx_CCRx are always compared to determine
+Page 1542: The timer is able to generate PWM in edge-aligned mode or center-aligned mode
+Page 1543: PWM edge-aligned mode
+Page 1543: In the following example, we consider PWM mode 1. The reference PWM signal
+Page 1543: Figure 378 shows some edge-aligned PWM waveforms in an example where
+Page 1543: Figure 378. Edge-aligned PWM waveforms (ARR=8)
+Page 1543: In PWM mode 1, the reference signal OCxRef is low as long as
+Page 1543: greater than the auto-reload value in TIMx_ARR, then OCxREF is held at ‘1’. 0% PWM
+Page 1543: PWM center-aligned mode
+Page 1544: Figure 379 shows some center-aligned PWM waveforms in an example where:
+Page 1544: •   PWM mode is the PWM mode 1,
+Page 1544: Figure 379. Center-aligned PWM waveforms (ARR=8)
+Page 1545: 37.3.12   Asymmetric PWM mode
+Page 1545: Asymmetric mode allows two center-aligned PWM signals to be generated with a
+Page 1545: TIMx_CCRx register. One register controls the PWM during up-counting, the second during
+Page 1545: down counting, so that PWM is adjusted every half PWM cycle:
+Page 1545: Asymmetric PWM mode can be selected independently on two channel (one OCx output
+Page 1545: per pair of CCR registers) by writing ‘1110’ (Asymmetric PWM mode 1) or ‘1111’
+Page 1545: (Asymmetric PWM mode 2) in the OCxM bits in the TIMx_CCMRx register.
+Page 1545: When a given channel is used as asymmetric PWM channel, its complementary channel
+Page 1545: (Asymmetric PWM mode 1), it is possible to output either the OC2REF signal on channel 2,
+Page 1545: or an OC2REFC signal resulting from asymmetric PWM mode 1.
+Page 1545: Figure 380 represents an example of signals that can be generated using Asymmetric PWM
+Page 1545: mode (channels 1 to 4 are configured in Asymmetric PWM mode 1). Together with the
+Page 1546: Figure 380. Generation of 2 phase-shifted PWM signals with 50% duty cycle
+Page 1546: 37.3.13      Combined PWM mode
+Page 1546: Combined PWM mode allows two edge or center-aligned PWM signals to be generated with
+Page 1546: AND logical combination of two reference PWMs:
+Page 1546: Combined PWM mode can be selected independently on two channels (one OCx output per
+Page 1546: pair of CCR registers) by writing ‘1100’ (Combined PWM mode 1) or ‘1101’ (Combined PWM
+Page 1546: When a given channel is used as combined PWM channel, its complementary channel must
+Page 1546: be configured in the opposite PWM mode (for instance, one in Combined PWM mode 1 and
+Page 1546: the other in Combined PWM mode 2).
+Page 1546: Figure 381 represents an example of signals that can be generated using Asymmetric PWM
+Page 1546: –       Channel 1 is configured in Combined PWM mode 2,
+Page 1546: –       Channel 2 is configured in PWM mode 1,
+Page 1546: –       Channel 3 is configured in Combined PWM mode 2,
+Page 1546: –       Channel 4 is configured in PWM mode 1.
+Page 1547: Figure 381. Combined PWM mode on channel 1 and 3
+Page 1547: 37.3.14        Combined 3-phase PWM mode
+Page 1547: Combined 3-phase PWM mode allows one to three center-aligned PWM signals to be
+Page 1547: PWMs:
+Page 1547: Combined 3-phase PWM mode can be selected independently on channels 1 to 3 by setting
+Page 1548: Figure 382. 3-phase combined PWM signals with multiple trigger pulses per period
+Page 1548: The TRGO2 waveform shows how the ADC can be synchronized on given 3-phase PWM
+Page 1550: In output mode (forced, output compare or PWM), OCxREF can be re-directed to the OCx
+Page 1550: This allows you to send a specific waveform (such as PWM or static active level) on one
+Page 1550: The purpose of the break function is to protect power switches driven by PWM signals
+Page 1550: shuts down the PWM outputs and forces them to a predefined safe state. A number of
+Page 1555: –       The BRK input can either disable (inactive state) or force the PWM outputs to a
+Page 1555: –       BRK2 can only disable (inactive state) the PWM outputs.
+Page 1555: Figure 388. PWM output state following BRK and BRK2 pins assertion (OSSI=1)
+Page 1556: Figure 389. PWM output state following BRK assertion (OSSI=0)
+Page 1557: used in Output compare and PWM modes. It does not work in Forced mode. The
+Page 1557: PWM mode.
+Page 1557: Note:    In case of a PWM with a 100% duty cycle (if CCRx>ARR), then OCxREF is enabled again at
+Page 1558: 37.3.19     6-step PWM generation
+Page 1559: waveform can be done in output compare mode or PWM mode. You select One-pulse mode
+Page 1560: value. To do this you enable PWM mode 2 by writing OC1M=111 in the TIMx_CCMR1
+Page 1560: had occurred. OCxFE acts only if the channel is configured in PWM1 or PWM2 mode.
+Page 1560: This mode must not be used with center-aligned PWM modes. It is mandatory to have
+Page 1564: This is done using the advanced-control timers (TIM1 or TIM8) to generate PWM signals to
+Page 1564: COM event). The TIM1 timer is used to generate PWM signals to drive the motor. To do this,
+Page 1564: after a programmed delay (in output compare or PWM mode). This pulse is sent to the
+Page 1565: Example: you want to change the PWM configuration of your advanced-control timer TIM1
+Page 1565: •   Program the channel 2 in PWM 2 mode with the desired delay: write the OC2M bits to
+Page 1565: timer is programmed to generate PWM signals, the capture/compare control signals are
+Page 1565: trigger input (CCUS=1 in the TIMx_CR2 register). The PWM control bits (CCxE, OCxM) are
+Page 1581: This flag must be reset to re-start PWM operation.
+Page 1586: 0110: PWM mode 1 - In upcounting, channel 1 is active as long as TIMx_CNT<TIMx_CCR1
+Page 1586: 0111: PWM mode 2 - In upcounting, channel 1 is inactive as long as
+Page 1586: event is detected (on TRGI signal). Then, a comparison is performed as in PWM mode 1
+Page 1586: performed as in PWM mode 1 and the channels becomes inactive again at the next update.
+Page 1586: trigger event is detected (on TRGI signal). Then, a comparison is performed as in PWM
+Page 1586: comparison is performed as in PWM mode 1 and the channels becomes active again at the
+Page 1586: 1100: Combined PWM mode 1 - OC1REF has the same behavior as in PWM mode 1.
+Page 1586: 1101: Combined PWM mode 2 - OC1REF has the same behavior as in PWM mode 2.
+Page 1586: 1110: Asymmetric PWM mode 1 - OC1REF has the same behavior as in PWM mode 1.
+Page 1586: 1111: Asymmetric PWM mode 2 - OC1REF has the same behavior as in PWM mode 2.
+Page 1586: Note: In PWM mode, the OCREF level changes only when the result of the comparison
+Page 1586: changes or when the output compare mode switches from “frozen” mode to “PWM”
+Page 1587: 2: The PWM mode can be used without validating the preload register only in one
+Page 1587: the channel is configured in PWM1 or PWM2 mode.
+Page 1595: It means in PWM mode (REP+1) corresponds to:
+Page 1595: the number of PWM periods in edge-aligned mode
+Page 1595: the number of half PWM period in center-aligned mode.
+Page 1603: Note: it is also possible to apply this distortion on combined PWM signals.
+Page 1603: Note: it is also possible to apply this distortion on combined PWM signals.
+Page 1603: Note: it is also possible to apply this distortion on combined PWM signals.
+Page 1619: signals (input capture) or generating output waveforms (output compare and PWM).
+Page 1619: –    PWM generation (Edge- and Center-aligned modes)
+Page 1640: 38.3.6      PWM input mode
+Page 1640: TIMx_CCR2 register) of the PWM applied on TI1 using the following procedure (depending
+Page 1640: Figure 431. PWM input mode timing
+Page 1640: 1. The PWM input mode can be used only with the TIMx_CH1/TIMx_CH2 signals due to the fact that only
+Page 1642: 38.3.9      PWM mode
+Page 1642: The PWM mode can be selected independently on each channel (one PWM per OCx
+Page 1642: output) by writing 110 (PWM mode 1) or ‘111 (PWM mode 2) in the OCxM bits in the
+Page 1642: In PWM mode (1 or 2), TIMx_CNT and TIMx_CCRx are always compared to determine
+Page 1643: cleared by an external event through the ETR signal until the next PWM period), the
+Page 1643: the “frozen” configuration (no comparison, OCxM=‘000) to one of the PWM modes
+Page 1643: This forces the PWM by software while the timer is running.
+Page 1643: The timer is able to generate PWM in edge-aligned mode or center-aligned mode
+Page 1643: PWM edge-aligned mode
+Page 1643: In the following example, we consider PWM mode 1. The reference PWM signal OCxREF is
+Page 1643: PWM waveforms in an example where TIMx_ARR=8.
+Page 1643: Figure 433. Edge-aligned PWM waveforms (ARR=8)
+Page 1644: In PWM mode 1, the reference signal ocxref is low as long as TIMx_CNT>TIMx_CCRx else
+Page 1644: TIMx_ARR, then ocxref is held at 100%. PWM is not possible in this mode.
+Page 1644: PWM center-aligned mode
+Page 1644: Figure 434 shows some center-aligned PWM waveforms in an example where:
+Page 1644: •   PWM mode is the PWM mode 1,
+Page 1645: Figure 434. Center-aligned PWM waveforms (ARR=8)
+Page 1646: 38.3.10     Asymmetric PWM mode
+Page 1646: Asymmetric mode allows two center-aligned PWM signals to be generated with a
+Page 1646: TIMx_CCRx registers. One register controls the PWM during up-counting, the second
+Page 1646: during down counting, so that PWM is adjusted every half PWM cycle:
+Page 1646: Asymmetric PWM mode can be selected independently on two channels (one OCx output
+Page 1646: per pair of CCR registers) by writing ‘1110’ (Asymmetric PWM mode 1) or ‘1111’
+Page 1646: (Asymmetric PWM mode 2) in the OCxM bits in the TIMx_CCMRx register.
+Page 1646: When a given channel is used as asymmetric PWM channel, its secondary channel can also
+Page 1646: be used. For instance, if an OC1REFC signal is generated on channel 1 (Asymmetric PWM
+Page 1646: signal resulting from asymmetric PWM mode 2.
+Page 1646: Figure 435 shows an example of signals that can be generated using Asymmetric PWM
+Page 1646: mode (channels 1 to 4 are configured in Asymmetric PWM mode 1).
+Page 1646: Figure 435. Generation of 2 phase-shifted PWM signals with 50% duty cycle
+Page 1646: 38.3.11     Combined PWM mode
+Page 1646: Combined PWM mode allows two edge or center-aligned PWM signals to be generated with
+Page 1646: AND logical combination of two reference PWMs:
+Page 1646: Combined PWM mode can be selected independently on two channels (one OCx output per
+Page 1646: pair of CCR registers) by writing ‘1100’ (Combined PWM mode 1) or ‘1101’ (Combined PWM
+Page 1647: When a given channel is used as combined PWM channel, its secondary channel must be
+Page 1647: configured in the opposite PWM mode (for instance, one in Combined PWM mode 1 and the
+Page 1647: other in Combined PWM mode 2).
+Page 1647: Figure 436 shows an example of signals that can be generated using Asymmetric PWM
+Page 1647: •    Channel 1 is configured in Combined PWM mode 2,
+Page 1647: •    Channel 2 is configured in PWM mode 1,
+Page 1647: •    Channel 3 is configured in Combined PWM mode 2,
+Page 1647: •    Channel 4 is configured in PWM mode 1
+Page 1647: Figure 436. Combined PWM mode on channels 1 and 3
+Page 1647: used in Output compare and PWM modes. It does not work in Forced mode.
+Page 1648: This function can be used only in the output compare and PWM modes. It does not work in
+Page 1648: PWM mode.
+Page 1648: Note:       In case of a PWM with a 100% duty cycle (if CCRx>ARR), OCxREF is enabled again at the
+Page 1649: waveform can be done in output compare mode or PWM mode. You select One-pulse mode
+Page 1650: value. To do this you enable PWM mode 2 by writing OC1M=111 in the TIMx_CCMR1
+Page 1650: had occurred. OCxFE acts only if the channel is configured in PWM1 or PWM2 mode.
+Page 1650: This mode must not be used with center-aligned PWM modes. It is mandatory to have
+Page 1675: 0110: PWM mode 1 - In upcounting, channel 1 is active as long as TIMx_CNT<TIMx_CCR1
+Page 1675: 0111: PWM mode 2 - In upcounting, channel 1 is inactive as long as
+Page 1675: event is detected (on TRGI signal). Then, a comparison is performed as in PWM mode 1
+Page 1675: performed as in PWM mode 1 and the channels becomes inactive again at the next update.
+Page 1675: trigger event is detected (on TRGI signal). Then, a comparison is performed as in PWM
+Page 1675: comparison is performed as in PWM mode 1 and the channels becomes active again at the
+Page 1675: 1100: Combined PWM mode 1 - OC1REF has the same behavior as in PWM mode 1.
+Page 1675: 1101: Combined PWM mode 2 - OC1REF has the same behavior as in PWM mode 2.
+Page 1675: 1110: Asymmetric PWM mode 1 - OC1REF has the same behavior as in PWM mode 1.
+Page 1675: 1111: Asymmetric PWM mode 2 - OC1REF has the same behavior as in PWM mode 2.
+Page 1675: 2: In PWM mode, the OCREF level changes only when the result of the comparison
+Page 1675: changes or when the output compare mode switches from “frozen” mode to “PWM”
+Page 1676: 2: The PWM mode can be used without validating the preload register only in one-
+Page 1676: the channel is configured in PWM1 or PWM2 mode.
+Page 1694: signals (input capture) or generating output waveforms (output compare, PWM).
+Page 1694: –    PWM generation (edge-aligned mode)
+Page 1695: –        PWM generation (edge-aligned mode)
+Page 1707: 39.3.6   PWM input mode (only for TIM12)
+Page 1707: TIMx_CCR2 register) of the PWM applied on TI1 using the following procedure (depending
+Page 1708: Figure 468. PWM input mode timing
+Page 1708: 1. The PWM input mode can be used only with the TIMx_CH1/TIMx_CH2 signals due to the fact that only
+Page 1710: 39.3.9      PWM mode
+Page 1710: The PWM mode can be selected independently on each channel (one PWM per OCx
+Page 1710: output) by writing ‘0110’ (PWM mode 1) or ‘0111’ (PWM mode 2) in the OCxM bits in the
+Page 1710: In PWM mode (1 or 2), TIMx_CNT and TIMx_CCRx are always compared to determine
+Page 1710: The timer is able to generate PWM in edge-aligned mode only since the counter is
+Page 1710: In the following example, we consider PWM mode 1. The reference PWM signal OCxREF is
+Page 1710: aligned PWM waveforms in an example where TIMx_ARR=8.
+Page 1711: Figure 470. Edge-aligned PWM waveforms (ARR=8)
+Page 1711: 39.3.10   Combined PWM mode (TIM12 only)
+Page 1711: Combined PWM mode allows two edge or center-aligned PWM signals to be generated with
+Page 1711: AND logical combination of two reference PWMs:
+Page 1711: Combined PWM mode can be selected independently on two channels (one OCx output per
+Page 1711: pair of CCR registers) by writing ‘1100’ (Combined PWM mode 1) or ‘1101’ (Combined PWM
+Page 1711: When a given channel is used as a combined PWM channel, its complementary channel
+Page 1711: must be configured in the opposite PWM mode (for instance, one in Combined PWM mode
+Page 1711: 1 and the other in Combined PWM mode 2).
+Page 1711: Figure 471 represents an example of signals that can be generated using combined PWM
+Page 1711: •    Channel 1 is configured in Combined PWM mode 2,
+Page 1711: •    Channel 2 is configured in PWM mode 1,
+Page 1712: Figure 471. Combined PWM mode on channel 1 and 2
+Page 1712: waveform can be done in output compare mode or PWM mode. You select One-pulse mode
+Page 1713: value. To do this you enable PWM mode 2 by writing OC1M=’0111’ in the
+Page 1714: had occurred. OCxFE acts only if the channel is configured in PWM1 or PWM2 mode.
+Page 1714: This mode must not be used with center-aligned PWM modes. It is mandatory to have
+Page 1726: 0110: PWM mode 1 - channel 1 is active as long as TIMx_CNT<TIMx_CCR1 else it is
+Page 1726: 0111: PWM mode 2 - channel 1 is inactive as long as TIMx_CNT<TIMx_CCR1 else it is
+Page 1726: TRGI signal). Then, a comparison is performed as in PWM mode 1 and the channels
+Page 1726: (on TRGI signal). Then, a comparison is performed as in PWM mode 2 and the
+Page 1726: 1100: Combined PWM mode 1 - OC1REF has the same behavior as in PWM mode 1.
+Page 1726: 1101: Combined PWM mode 2 - OC1REF has the same behavior as in PWM mode 2.
+Page 1726: Note: In PWM mode 1 or 2, the OCREF level changes only when the result of the comparison
+Page 1726: changes or when the output compare mode switches from “frozen” mode to “PWM”
+Page 1727: Note: The PWM mode can be used without validating the preload register only in one-pulse
+Page 1727: only if the channel is configured in PWM1 or PWM2 mode.
+Page 1739: 0110: PWM mode 1 - Channel 1 is active as long as TIMx_CNT < TIMx_CCR1 else inactive.
+Page 1739: 0111: PWM mode 2 - Channel 1 is inactive as long as TIMx_CNT < TIMx_CCR1 else active
+Page 1739: Note: In PWM mode 1 or 2, the OCREF level changes when the result of the comparison
+Page 1739: changes or when the output compare mode switches from frozen to PWM mode.
+Page 1739: Note: The PWM mode can be used without validating the preload register only in one pulse
+Page 1739: channel is configured in PWM1 or PWM2 mode.
+Page 1746: signals (input capture) or generating output waveforms (output compare, PWM,
+Page 1746: complementary PWM with dead-time insertion).
+Page 1746: –    PWM generation (edge mode)
+Page 1747: –    PWM generation (edge-aligned mode)
+Page 1756: has reached zero. This can be useful when generating PWM signals.
+Page 1763: 40.4.7   PWM input mode (only for TIM15)
+Page 1763: TIMx_CCR2 register) of the PWM applied on TI1 using the following procedure (depending
+Page 1763: Figure 496. PWM input mode timing
+Page 1763: 1. The PWM input mode can be used only with the TIMx_CH1/TIMx_CH2 signals due to the fact that only
+Page 1765: 40.4.10   PWM mode
+Page 1765: The PWM mode can be selected independently on each channel (one PWM per OCx
+Page 1765: output) by writing ‘110’ (PWM mode 1) or ‘111’ (PWM mode 2) in the OCxM bits in the
+Page 1766: In PWM mode (1 or 2), TIMx_CNT and TIMx_CCRx are always compared to determine
+Page 1766: In the following example, we consider PWM mode 1. The reference PWM signal OCxREF is
+Page 1766: aligned PWM waveforms in an example where TIMx_ARR=8.
+Page 1766: Figure 498. Edge-aligned PWM waveforms (ARR=8)
+Page 1766: 40.4.11     Combined PWM mode (TIM15 only)
+Page 1766: Combined PWM mode allows two edge or center-aligned PWM signals to be generated with
+Page 1767: AND logical combination of two reference PWMs:
+Page 1767: Combined PWM mode can be selected independently on two channels (one OCx output per
+Page 1767: pair of CCR registers) by writing ‘1100’ (Combined PWM mode 1) or ‘1101’ (Combined PWM
+Page 1767: When a given channel is used as a combined PWM channel, its complementary channel
+Page 1767: must be configured in the opposite PWM mode (for instance, one in Combined PWM mode
+Page 1767: 1 and the other in Combined PWM mode 2).
+Page 1767: Figure 499 represents an example of signals that can be generated using Asymmetric PWM
+Page 1767: •    Channel 1 is configured in Combined PWM mode 2,
+Page 1767: •    Channel 2 is configured in PWM mode 1,
+Page 1767: Figure 499. Combined PWM mode on channel 1 and 2
+Page 1769: In output mode (forced, output compare or PWM), OCxREF can be re-directed to the OCx
+Page 1769: This allows you to send a specific waveform (such as PWM or static active level) on one
+Page 1770: The purpose of the break function is to protect power switches driven by PWM signals
+Page 1770: down the PWM outputs and forces them to a predefined safe state.
+Page 1774: waveform can be done in output compare mode or PWM mode. You select One-pulse mode
+Page 1775: value. To do this you enable PWM mode 2 by writing OC1M=111 in the TIMx_CCMR1
+Page 1775: had occurred. OCxFE acts only if the channel is configured in PWM1 or PWM2 mode.
+Page 1775: This mode must not be used with center-aligned PWM modes. It is mandatory to have
+Page 1793: 0110: PWM mode 1 - Channel 1 is active as long as TIMx_CNT<TIMx_CCR1 else inactive.
+Page 1793: 0111: PWM mode 2 - Channel 1 is inactive as long as TIMx_CNT<TIMx_CCR1 else
+Page 1793: event is detected (on TRGI signal). Then, a comparison is performed as in PWM
+Page 1793: a comparison is performed as in PWM mode 1 and the channels becomes inactive
+Page 1793: PWM mode 2 and the channels becomes inactive again at the next update. In down-
+Page 1793: signal). Then, a comparison is performed as in PWM mode 1 and the channels
+Page 1793: 1100: Combined PWM mode 1 - OC1REF has the same behavior as in PWM mode 1.
+Page 1793: 1101: Combined PWM mode 2 - OC1REF has the same behavior as in PWM mode 2.
+Page 1793: 2: In PWM mode, the OCREF level changes only when the result of the comparison
+Page 1793: changes or when the output compare mode switches from “frozen” mode to “PWM”
+Page 1794: 2: The PWM mode can be used without validating the preload register only in one
+Page 1794: channel is configured in PWM1 or PWM2 mode.
+Page 1799: It means in PWM mode (REP+1) corresponds to the number of PWM periods in edge-
+Page 1813: 0110: PWM mode 1 - Channel 1 is active as long as TIMx_CNT<TIMx_CCR1 else inactive.
+Page 1813: 0111: PWM mode 2 - Channel 1 is inactive as long as TIMx_CNT<TIMx_CCR1 else active.
+Page 1813: 2: In PWM mode 1 or 2, the OCREF level changes only when the result of the
+Page 1813: to “PWM” mode.
+Page 1814: 2: The PWM mode can be used without validating the preload register only in one
+Page 1814: the channel is configured in PWM1 or PWM2 mode.
+Page 1819: It means in PWM mode (REP+1) corresponds to the number of PWM periods in edge-
+Page 1843: •      Configurable output: Pulse, PWM
+Page 1852: PWM
+Page 1852: PWM
+Page 1853: PWM
+Page 1853: •    The PWM mode: the LPTIM output is set as soon as the counter value in LPTIM_CNT
+Page 1853: •    The One-pulse mode: the output waveform is similar to the one of the PWM mode for
+Page 1854: •     Resetting the WAVE bit to ‘0’ forces the LPTIM to generate either a PWM waveform or
+Page 1854: PWM
+Page 1854: PWM
+Page 1864: 0: Deactivate Set-once mode, PWM / One Pulse waveform (depending on OPMODE bit)
+Page 2325: 0: SPWMI_IO pin is controlled by GPIO controller
+Page 3230: Section 37.3.7: Input capture mode, Section 37.3.8: PWM input

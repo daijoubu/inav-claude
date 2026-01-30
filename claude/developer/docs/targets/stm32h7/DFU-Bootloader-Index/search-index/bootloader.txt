@@ -1,0 +1,1603 @@
+Keyword: bootloader
+Occurrences: 1599
+================================================================================
+
+Page 1: bootloader, stored in the internal boot ROM (system memory) of STM32 devices, and
+Page 3: 4        General bootloader description . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 32
+Page 5: 19.3.1      How to identify STM32F105xx/107xx bootloader versions . . . . . . . . . 105
+Page 5: 19.3.3      USART bootloader Get-Version command returns 0x20
+Page 5: in bootloader V2.0 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 107
+Page 9: 45       STM32G07xxx/08xxx device bootloader . . . . . . . . . . . . . . . . . . . . . . . 237
+Page 10: 46         STM32G0B0xx device bootloader . . . . . . . . . . . . . . . . . . . . . . . . . . . . 243
+Page 10: 47         STM32G0B1xx/0C1xx device bootloader . . . . . . . . . . . . . . . . . . . . . . 248
+Page 11: 58.4    Jump to bootloader . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 319
+Page 17: 92        Device-dependent bootloader parameters . . . . . . . . . . . . . . . . . . . . . 482
+Page 18: Table 3.    Embedded bootloaders. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 36
+Page 18: Table 4.    STM32 F2, F4, and F7 voltage range configuration using bootloader . . . . . . . . . . . . . . . . 47
+Page 18: Table 6.    Jitter software calculation on bootloader USART detection . . . . . . . . . . . . . . . . . . . . . . . . 48
+Page 18: Table 11.   STM32C011xx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 58
+Page 18: Table 13.   STM32C031xx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 60
+Page 18: Table 15.   STM32C051xx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 65
+Page 18: Table 17.   STM32C071xx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 69
+Page 18: Table 19.   STM32C091xx/92xx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 74
+Page 18: Table 21.   STM32F03xx4/6 bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 76
+Page 18: Table 23.   STM32F030xC bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 78
+Page 18: Table 25.   STM32F05xxx and STM32F030x8 devices bootloader versions . . . . . . . . . . . . . . . . . . . . 80
+Page 18: Table 27.   STM32F04xxx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 84
+Page 18: Table 29.   STM32F070x6 bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 88
+Page 18: Table 31.   STM32F070xB bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 92
+Page 18: Table 33.   STM32F071xx/072xx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 96
+Page 18: Table 35.   STM32F09xxx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 98
+Page 18: Table 37.   STM32F10xxx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 100
+Page 18: Table 39.   STM32F105xx/107xx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 105
+Page 18: Table 41.   STM32F10xxx XL-density bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 109
+Page 18: Table 43.   STM32F2xxxx bootloader V2.x versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 112
+Page 18: Table 45.   STM32F2xxxx bootloader V3.x versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 116
+Page 18: Table 47.   STM32F301xx/302x4(6/8) bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 120
+Page 19: Table 49.    STM32F302xB(C)/303xB(C) bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 123
+Page 19: Table 51.    STM32F302xD(E)/303xD(E) bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 127
+Page 19: Table 53.    STM32F303x4(6/8)/334xx/328xx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . 129
+Page 19: Table 55.    STM32F318xx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 132
+Page 19: Table 57.    STM32F358xx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 134
+Page 19: Table 59.    STM32F373xx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 138
+Page 19: Table 61.    STM32F378xx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 140
+Page 19: Table 63.    STM32F398xx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 143
+Page 19: Table 65.    STM32F40xxx/41xxx bootloader V3.x versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 147
+Page 19: Table 67.    STM32F40xxx/41xxx bootloader V9.x versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 152
+Page 19: Table 69.    STM32F401xB(C) bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 157
+Page 19: Table 71.    STM32F401xD(E) bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 162
+Page 19: Table 73.    STM32F410xx bootloader V11.x versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 167
+Page 19: Table 75.    STM32F411xx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 172
+Page 19: Table 77.    STM32F412xx bootloader V9.x versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 178
+Page 19: Table 79.    STM32F413xx/423xx bootloader V9.x versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 184
+Page 19: Table 81.    STM32F42xxx/43xxx bootloader V7.x versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 190
+Page 19: Table 83.    STM32F42xxx/43xxx bootloader V9.x versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 197
+Page 19: Table 85.    STM32F446xx bootloader V9.x versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 203
+Page 19: Table 87.    STM32F469xx/479xx bootloader V9.x versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 210
+Page 19: Table 89.    STM32F72xxx/73xxx bootloader V9.x versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 216
+Page 19: Table 91.    STM32F74xxx/75xxx bootloader V7.x versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 220
+Page 19: Table 93.    STM32F74xxx/75xxx bootloader V9.x versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 226
+Page 19: Table 95.    STM32F76xxx/77xxx bootloader V9.x versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 233
+Page 19: Table 97.    STM32G03xxx/04xxx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 236
+Page 19: Table 99.    STM32G07xxx/08xxx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 240
+Page 20: Table 101.   STM32G0B0xx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 247
+Page 20: Table 103.   STM32G0B1xx/0C1xx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 252
+Page 20: Table 105.   STM32G05xxx/061xx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 256
+Page 20: Table 107.   STM32G431xx/441xx bootloader version. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 261
+Page 20: Table 109.   STM32G47xxx/48xxx bootloader version . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 266
+Page 20: Table 111.   STM32G491xx/4A1xx bootloader version . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 272
+Page 20: Table 114.   STM32H503xx bootloader version . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 278
+Page 20: Table 117.   STM32H523xx/533xx bootloader version . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 285
+Page 20: Table 120.   STM32H562xx/563xx/573xx bootloader version . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 291
+Page 20: Table 122.   STM32H72xxx/73xxx bootloader version . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 297
+Page 20: Table 124.   STM32H74xxx/75xxx bootloader version . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 303
+Page 20: Table 126.   STM32H7A3xx/7B3xx/7B0xx bootloader version . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 312
+Page 20: Table 129.   STM32H7Rxxx/7Sxxx bootloader version . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 319
+Page 20: Table 131.   STM32L01xxx/02xxx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 323
+Page 20: Table 133.   STM32L031xx/041xx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 326
+Page 20: Table 135.   STM32L05xxx/06xxx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 329
+Page 20: Table 137.   STM32L07xxx/08xxx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 334
+Page 20: Table 139.   STM32L07xxx/08xxx bootloader V11.x versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 338
+Page 20: Table 141.   STM32L1xxx6(8/B)A bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 340
+Page 20: Table 143.   STM32L1xxx6(8/B) bootloader versions. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 342
+Page 20: Table 145.   STM32L1xxxC bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 346
+Page 20: Table 147.   STM32L1xxxD bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 350
+Page 20: Table 149.   STM32L1xxxE bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 354
+Page 20: Table 151.   STM32L412xx/422xx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 360
+Page 21: Table 153.   STM32L43xxx/44xxx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 367
+Page 21: Table 155.   STM32L45xxx/46xxx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 375
+Page 21: Table 157.   STM32L47xxx/48xxx bootloader V10.x versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 381
+Page 21: Table 159.   STM32L47xxx/48xxx bootloader V9.x versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 387
+Page 21: Table 161.   STM32L496xx/4A6xx bootloader version . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 394
+Page 21: Table 163.   STM32L4P5xx/4Q5xx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 401
+Page 21: Table 165.   STM32L4Rxx/4Sxx bootloader versions. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 408
+Page 21: Table 168.   STM32L552xx/62xx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 414
+Page 21: Table 170.   STM32WB10xx/15xx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 418
+Page 21: Table 172.   STM32WB30xx/35xx/50xx/55xx bootloader versions. . . . . . . . . . . . . . . . . . . . . . . . . . . . 423
+Page 21: Table 175.   STM32WBA5xxx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 427
+Page 21: Table 178.   STM32WBA62xx/63xx/64xx/65xx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . 431
+Page 21: Table 180.   STM32WB05xx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 433
+Page 21: Table 182.   STM32WB06xx/07xx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 435
+Page 21: Table 184.   STM32WB09xx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 437
+Page 21: Table 186.   STM32WL3xxx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 439
+Page 21: Table 188.   STM32WLE5xx/55xx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 442
+Page 21: Table 190.   STM32U031xx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 447
+Page 21: Table 192.   STM32U073xx/83xx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 452
+Page 21: Table 195.   STM32U375xx/85xx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 459
+Page 21: Table 198.   STM32U535xx/545xx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 465
+Page 21: Table 201.   STM32U575xx/85xx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 471
+Page 21: Table 204.   STM32U595xx/99xx/A5xx/A9xx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . . 476
+Page 22: Table 207.   STM32U5F7xx/F9xx/G7xx/G9xx bootloader versions . . . . . . . . . . . . . . . . . . . . . . . . . . . 481
+Page 22: Table 210.   USART bootloader minimum timings (ms) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 493
+Page 22: Table 211.   USB bootloader minimum timings (ms) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 496
+Page 22: Table 212.   I2C bootloader minimum timings (ms) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 499
+Page 22: Table 213.   SPI bootloader minimum timings (ms) for STM32 devices . . . . . . . . . . . . . . . . . . . . . . . . 501
+Page 23: Figure 7.    Access to securable memory area from the bootloader . . . . . . . . . . . . . . . . . . . . . . . . . . . 52
+Page 24: Figure 50. Dual bank boot implementation for STM32F42xxx/43xxx bootloader V9.x . . . . . . . . . . . 195
+Page 24: Figure 67. Dual bank boot implementation for STM32G47xxx/48xxx bootloader V13.x . . . . . . . . . . 266
+Page 24: Figure 79. Dual bank boot implementation for STM32L07xxx/08xxx bootloader V4.x. . . . . . . . . . . . 332
+Page 24: Figure 81. Dual bank boot implementation for STM32L07xxx/08xxx bootloader V11.x. . . . . . . . . . . 337
+Page 24: Figure 88. Dual bank boot Implementation for STM32L412xx/422xx bootloader V9.x . . . . . . . . . . . 358
+Page 24: Figure 90. Dual bank boot Implementation for STM32L3x2xx/44xxx bootloader V9.x . . . . . . . . . . . 365
+Page 24: Figure 92. Dual bank boot implementation for STM32L45xxx/46xxx bootloader V9.x. . . . . . . . . . . . 373
+Page 24: Figure 94. Dual bank boot implementation for STM32L47xxx/48xxx bootloader V10.x. . . . . . . . . . . 379
+Page 24: Figure 96. Dual bank boot implementation for STM32L47xxx/48xxx bootloader V9.x. . . . . . . . . . . . 385
+Page 24: Figure 98. Dual bank boot Implementation for STM32L496xx/4A6xx bootloader V9.x . . . . . . . . . . . 392
+Page 24: Figure 100. Dual bank boot implementation for STM32L4P5xx/4Q5xx bootloader V9.x . . . . . . . . . . . 399
+Page 25: Figure 102. Dual bank boot implementation for STM32L4Rxxx/STM32L4Sxxx bootloader V9.x . . . . 406
+Page 26: –     AN3154: CAN protocol used in the STM32 bootloader
+Page 26: –     AN3155: USART protocol used in the STM32 bootloader
+Page 26: –     AN3156: USB DFU protocol used in the STM32 bootloader
+Page 26: –     AN4221: I2C protocol used in the STM32 bootloader
+Page 26: –     AN4286: SPI protocol used in the STM32 bootloader
+Page 26: –     AN5405: FDCAN protocol used in the STM32 bootloader
+Page 26: –     AN5927: I3C protocol used in the STM32 bootloader
+Page 31: Note:    BL_USART_Loop refers to the USART bootloader execution loop.
+Page 31: BL_CAN_Loop refers to the CAN bootloader execution loop.
+Page 31: BL_I2C_Loop refers to the I2C bootloader execution loop.
+Page 31: BL_I3C_Loop refers to the I3C bootloader execution loop.
+Page 31: BL_SPI_Loop refers to the SPI bootloader execution loop.
+Page 32: General bootloader description                                                                         AN2606
+Page 32: 4             General bootloader description
+Page 32: The bootloader is activated by applying one of the patterns described in Table 2.
+Page 32: If boot from Bank2 option is activated (for products supporting this feature), the bootloader
+Page 32: STM32xxxx” (example: Figure 48), otherwise bootloader selection protocol is executed as
+Page 32: and bootloader cannot be executed (unless jumping to it from flash user code, all
+Page 33: AN2606                                                                       General bootloader description
+Page 34: General bootloader description                                                                        AN2606
+Page 34: In addition to the patterns described above, the user can execute bootloader by performing
+Page 34: a jump to system memory from user code. Before jumping to bootloader:
+Page 34: bootloader SW.
+Page 34: System memory boot mode can be exited by getting out from bootloader activation
+Page 34: Note:         When executing the Go command, the peripheral registers used by the bootloader are not
+Page 34: information, refer to the known limitations detailed for each product bootloader version.
+Page 34: first remap the system memory bootloader at address 0x00000000 using SYSCFG register
+Page 34: (except for STM32F7 series), then jump to bootloader. For the STM32F7 series, the user
+Page 34: must disable nDBOOT and/or nDBANK features (in option bytes), then jump to bootloader.
+Page 34: Note:         For STM32 devices embedding bootloader using the DFU/CAN interface in which the
+Page 34: value is done dynamically by the bootloader firmware and is based on the internal oscillator
+Page 35: AN2606                                                              General bootloader description
+Page 35: the bootloader can calculate a wrong HSE frequency value. In this case, the bootloader
+Page 35: Depending upon the device, the bootloader can support one or more embedded serial
+Page 35: peripherals used to download the code to the internal flash memory. The bootloader
+Page 35: For a given STM32 device, the bootloader is identified by means of the:
+Page 35: USB) communication protocol used in the bootloader. This version can be retrieved
+Page 35: using the bootloader Get Version command.
+Page 35: 2.   Bootloader identifier (ID): version of the STM32 device bootloader, coded on one
+Page 35: –   X specifies the embedded serial peripheral(s) used by the device bootloader:
+Page 35: –   Y specifies the device bootloader version
+Page 35: For example, if the bootloader ID is 0x10, this is the first version, which uses only
+Page 35: The bootloader ID is programmed in the last byte address - 1 of the device system
+Page 35: Note:    The bootloader ID format is applied to all STM32 products, except the STM32F1xx devices.
+Page 35: The bootloader version for the STM32F1xx applies only to the embedded device bootloader
+Page 36: General bootloader description                                                                       AN2606
+Page 36: Table 3 provides identification information of the bootloaders embedded in STM32 devices.
+Page 36: Table 3. Embedded bootloaders
+Page 37: AN2606                                                                   General bootloader description
+Page 37: Table 3. Embedded bootloaders (continued)
+Page 38: General bootloader description                                                                AN2606
+Page 38: Table 3. Embedded bootloaders (continued)
+Page 39: AN2606                                                                General bootloader description
+Page 39: Table 3. Embedded bootloaders (continued)
+Page 40: General bootloader description                                                                 AN2606
+Page 40: Table 3. Embedded bootloaders (continued)
+Page 41: AN2606                                                                General bootloader description
+Page 41: Table 3. Embedded bootloaders (continued)
+Page 42: General bootloader description                                                              AN2606
+Page 42: Table 3. Embedded bootloaders (continued)
+Page 43: AN2606                                                                  General bootloader description
+Page 43: Table 3. Embedded bootloaders (continued)
+Page 44: General bootloader description                                                                                          AN2606
+Page 44: 1. For connectivity line devices, the USART bootloader returns V2.0 instead of V2.2 for the protocol version. For more details
+Page 44: To use the USART bootloader, the host must be connected to the RX and TX pins of the
+Page 45: AN2606                                                                         General bootloader description
+Page 45: To use the I2C bootloader, connect the host (controller) and the desired I2Cx interface
+Page 45: To use the SPI bootloader, connect the host (master) and the desired SPIx interface (slave)
+Page 46: General bootloader description                                                                          AN2606
+Page 46: Note:      When a bootloader firmware supports DFU, it is mandatory that no USB host is connected
+Page 46: phase, the user can plug a USB cable without impacting the selected bootloader execution,
+Page 46: It is recommended to keep the RX pins of unused bootloader interfaces (USART_RX,
+Page 46: lines, if present, on the same level (low/high) at the startup of the bootloader (detection
+Page 46: All write operations using bootloader commands must be word-aligned (the address must
+Page 46: Some products embed a bootloader with specific features:
+Page 46: the bootloader, two options are available:
+Page 46: bootloader firmware manages the erase operation of this location before any write. A
+Page 47: AN2606                                                                    General bootloader description
+Page 47: the bootloader software through a virtual memory location. This memory location is not
+Page 47: physical but can be read and written using usual bootloader read/write operations
+Page 47: Table 4. STM32 F2, F4, and F7 voltage range configuration using bootloader
+Page 47: Table 5 lists the valid memory areas, depending upon the bootloader commands.
+Page 48: General bootloader description                                                                   AN2606
+Page 48: STM32 bootloader UART interface must support a ±5% deviation in baudrate.
+Page 48: multiple retry connections to overcome it. Connect and check for correct bootloader
+Page 48: Table 6. Jitter software calculation on bootloader USART detection
+Page 49: AN2606                                                              General bootloader description
+Page 49: Table 6. Jitter software calculation on bootloader USART detection (continued)
+Page 49: When using the bootloader interface to write in the flash memory, respect the alignment on
+Page 50: General bootloader description                                                                AN2606
+Page 51: AN2606                                                                  General bootloader description
+Page 52: General bootloader description                                                                                                                      AN2606
+Page 52: Figure 7. Access to securable memory area from the bootloader
+Page 52: 1. The bootloader does not check the integrity of the user address, it is up to the user to ensure the validity of the address to
+Page 53: AN2606                                                             General bootloader description
+Page 53: The bootloader does not enable IWDG. It tries to update the prescaler value if the IWDG
+Page 53: bootloader.
+Page 53: If the IWDG was not enabled before the boot on bootloader (using HW boot or by a jump
+Page 53: bootloader tries to change the prescaler value.
+Page 53: (IWDG is not enabled), even after the jump. When using the bootloader to jump to the
+Page 53: To address the evolution of STM32 devices on security, the bootloader (BL) is now available
+Page 53: The system memory is non secure and allocated to the bootloader. In some projects a
+Page 53: SW (functionally independent from the bootloader) called ExitSecureMemory is
+Page 54: General bootloader description                                                                     AN2606
+Page 54: jumps to the bootloader. This adds a constraint to the boot timing.
+Page 54: >    Some secure option bytes are not be accessible as the bootloader is
+Page 55: AN2606                                                              General bootloader description
+Page 56: General bootloader description                                         AN2606
+Page 57: The STM32C011xx bootloader is activated by applying Pattern 11 (see Table 2). Table 10
+Page 57: shows the hardware resources used by this bootloader.
+Page 57: used by the bootloader firmware
+Page 57: the bootloader firmware
+Page 58: Figure 13 shows the bootloader selection mechanism.
+Page 58: Table 11 lists the STM32C011xx devices bootloader versions.
+Page 58: Table 11. STM32C011xx bootloader versions
+Page 58: V5.1          Initial bootloader version              None
+Page 59: The STM32C031xx bootloader is activated by applying Pattern 11 (see Table 2). Table 12
+Page 59: shows the hardware resources used by this bootloader.
+Page 59: used by the bootloader firmware.
+Page 59: contain the bootloader firmware.
+Page 60: Figure 14 shows the bootloader selection mechanism.
+Page 60: Table 13 lists the STM32C031xx devices bootloader versions.
+Page 60: Table 13. STM32C031xx bootloader versions
+Page 60: V5.2                 Initial bootloader version           None
+Page 61: The STM32C051xx bootloader is activated by applying Pattern 11 (see Table 2). Table 14
+Page 61: shows the hardware resources used by this bootloader.
+Page 61: the bootloader firmware.
+Page 61: bootloader firmware.
+Page 63: 1. SPI Tx (MISO) is handled by DMA. On the bootloader start-up after SPI initialization as soon as the bit DMATx enable on
+Page 63: The bootloader follows boot model V2 (see Section 4.10), there are no specific constraints.
+Page 64: Figure 15 shows the bootloader selection mechanism.
+Page 65: Table 15 lists the STM32C051xx devices bootloader versions.
+Page 65: Table 15. STM32C051xx bootloader versions
+Page 65: Empty check flag cleared by error on the bootloader startup phase
+Page 65: – Root cause: on the startup phase the bootloader SW performs a system
+Page 65: Initial bootloader   – Behavior: when Empty check boot mode is used and the flash memory
+Page 65: version                is empty, the MCU boots on the bootloader but the flag is cleared by the
+Page 66: The STM32C071xx bootloader is activated by applying Pattern 11 (see Table 2). Table 14
+Page 66: shows the hardware resources used by this bootloader.
+Page 66: bootloader so that USB can be clocked by HSI48 48 MHz
+Page 66: Common to                                            the bootloader firmware.
+Page 66: bootloader firmware.
+Page 68: 2. SPI Tx (MISO) is handled by DMA. On the bootloader start-up after SPI initialization as soon as the bit DMATx enable on
+Page 68: Figure 15 shows the bootloader selection mechanism.
+Page 68: Yes     bootloader using
+Page 68: Table 15 lists the STM32C071xx devices bootloader versions.
+Page 69: Table 17. STM32C071xx bootloader versions
+Page 69: – Root cause: during startup the bootloader SW performs a
+Page 69: V13.1        bootloader    – Behavior: when Empty check boot mode is used and the flash
+Page 69: version         memory is empty, the MCU boots on the bootloader but the flag
+Page 70: The STM32C091xx/92xx bootloader is activated by applying Pattern 11 (see Table 2).
+Page 70: Table 14 shows the hardware resources used by this bootloader.
+Page 70: the bootloader firmware.
+Page 70: bootloader firmware.
+Page 72: 1. SPI Tx (MISO) is handled by DMA. On the bootloader start-up after SPI initialization, as soon as the bit DMATx enable on
+Page 72: The bootloader follows boot model V2 (see Section 4.10), there are no specific constraints.
+Page 73: Figure 15 shows the bootloader selection mechanism.
+Page 74: Table 15 lists the STM32C091xx/92xx devices bootloader versions.
+Page 74: Table 19. STM32C091xx/92xx bootloader versions
+Page 74: Empty check flag cleared by error on the bootloader startup phase
+Page 74: – Root cause: on the startup phase the bootloader SW performs a system
+Page 74: Initial bootloader   – Behavior: when Empty check boot mode is used and the flash memory
+Page 74: version                is empty, the MCU boots on the bootloader but the flag is cleared by the
+Page 75: The STM32F03xx4/6 bootloader is activated by applying Pattern 2 (see Table 2). Table 20
+Page 75: shows the hardware resources used by this bootloader.
+Page 75: the bootloader firmware.
+Page 75: bootloader firmware.
+Page 75: is required for the bootloader execution.
+Page 75: Note:       After the STM32F03xx4/6 device has booted in bootloader mode, serial wire debug (SWD)
+Page 75: uses the PA14 pin (SWCLK), already used by the bootloader (USART1_TX).
+Page 76: Figure 18 shows the bootloader selection mechanism.
+Page 76: Table 21 lists the STM32F03xx4/6 devices bootloader versions.
+Page 76: Table 21. STM32F03xx4/6 bootloader versions
+Page 76: V1.0         Initial bootloader version
+Page 77: The STM32F030xC bootloader is activated by applying Pattern 2 (see Table 2). Table 22
+Page 77: shows the hardware resources used by this bootloader.
+Page 77: by the bootloader firmware
+Page 77: the bootloader firmware.
+Page 78: Note:     After the devices have booted in bootloader mode using USART2, the serial wire debug
+Page 78: PA14 pin (SWCLK), already used by the bootloader (USART2_RX).
+Page 78: is required for the bootloader execution.
+Page 78: Figure 19 shows the bootloader selection mechanism.
+Page 78: Table 23 lists the STM32F030xC devices bootloader versions.
+Page 78: Table 23. STM32F030xC bootloader versions
+Page 78: V5.2           Initial bootloader version
+Page 78: by the bootloader
+Page 79: The STM32F05xxx and STM32F030x8 devices bootloader is activated by applying
+Page 79: bootloader.
+Page 79: are used by the bootloader firmware.
+Page 79: contain the bootloader firmware.
+Page 79: is required for the bootloader execution.
+Page 79: Note:         After the STM32F05xxx and STM32F030x8 devices have booted in bootloader mode, the
+Page 79: because SWD uses PA14 pin (SWCLK), already used by the bootloader (USART2_TX).
+Page 80: Figure 20 shows the bootloader selection mechanism.
+Page 80: Table 25 lists the STM32F05xxx and STM32F030x8 devices bootloader versions.
+Page 80: Table 25. STM32F05xxx and STM32F030x8 devices bootloader versions
+Page 80: – At bootloader startup, the HSITRIM value is set
+Page 80: V2.1         Initial bootloader version
+Page 81: The STM32F04xxx bootloader is activated by applying Pattern 6 (described in Table 2).
+Page 81: Table 26 shows the hardware resources used by this bootloader.
+Page 81: Common to all                                        the bootloader firmware
+Page 81: bootloader firmware
+Page 82: Note:       After the devices have booted in bootloader mode using USART2, the serial wire debug
+Page 82: PA14 pin (SWCLK), already used by the bootloader (USART2_RX).
+Page 82: is required for the bootloader execution.
+Page 82: user code to system bootloader. Such jump goes back to user flash memory space. If the
+Page 82: bootloader is executed when jumped to. To jump to the bootloader one of the following three
+Page 83: Figure 21 shows the bootloader selection mechanism.
+Page 83: bootloader using USB                                 Execute
+Page 84: Table 27. STM32F04xxx bootloader versions
+Page 84: Initial       – At bootloader startup, the HSITRIM value is set to 0 (in HSITRIM bits on RCC_CR
+Page 84: V10.0    bootloader      register) instead of default value (16), as a consequence a deviation is generated in
+Page 84: (4 MHz). PA13 is set in input pull-up mode even if not used by the bootloader.
+Page 84: – USB bootloader fails on some machines using a high speed controller. The bootloader
+Page 84: Add dynamic     De-synchronization between USB controller and bootloader SW due to the controller
+Page 84: USART/USB       for the bootloader SW (based on interrupt routines) to serve all needed transactions
+Page 85: The STM32F070x6 bootloader is activated by applying Pattern 6 (described in Table 2).
+Page 85: Table 28 shows the hardware resources used by this bootloader.
+Page 85: The external clock can be used for all bootloader interfaces
+Page 85: the bootloader firmware
+Page 85: bootloader firmware.
+Page 86: Note:     If HSI deviation exceeds 1% the bootloader might not function correctly.
+Page 86: Note:     After the STM32F070x6 devices have booted in bootloader mode using USART2, the serial
+Page 86: SWD uses PA14 pin (SWCLK), already used by the bootloader (USART2_RX).
+Page 86: The bootloader has two cases of operation depending on the presence of the external clock
+Page 86: (HSE) at bootloader startup:
+Page 86: USART2, and I2C1 are functional and can be used to communicate with the bootloader
+Page 86: The external clock (HSE) must be kept if it is connected at bootloader startup, because it is
+Page 86: code to system bootloader. Such jump results in a jump back to user flash space, but if the
+Page 86: bootloader is executed when jumped to.
+Page 87: Figure 22 shows the bootloader selection mechanism.
+Page 87: bootloader using USB       BL_I2C_Loop for          BL_USART_Loop
+Page 88: Table 29 lists the STM32F070x6 devices bootloader versions.
+Page 88: Table 29. STM32F070x6 bootloader versions
+Page 88: Initial bootloader – At bootloader startup, the HSITRIM value is set to 0 (in HSITRIM bits on
+Page 88: – USB bootloader fails on some machines using a high speed controller. The
+Page 88: bootloader is detected. but then data transaction fails.
+Page 88: De-synchronization between USB controller and bootloader SW due to the
+Page 88: Clock configuration   seems not sufficient for the bootloader SW (based on interrupt routines) to
+Page 89: The STM32F070xB bootloader is activated by applying Pattern 2 (described in Table 2).
+Page 89: Table 30 shows the hardware resources used by this bootloader.
+Page 89: The external clock can be used for all bootloader interfaces
+Page 89: the bootloader firmware
+Page 89: bootloader firmware.
+Page 90: Note:       If HSI deviation exceeds 1% the bootloader might not function correctly.
+Page 90: Note:       After the devices have booted in bootloader mode using USART2, the serial wire debug
+Page 90: PA14 pin (SWCLK), already used by the bootloader (USART2_RX).
+Page 90: The bootloader has two cases of operation depending on the presence of the external clock
+Page 90: (HSE) at bootloader startup:
+Page 90: USART2, and I2C1 are functional and can be used to communicate with the bootloader
+Page 90: The external clock (HSE) must be kept if it is connected at bootloader startup, because it is
+Page 91: Figure 23 shows the bootloader selection mechanism.
+Page 91: bootloader using USB       BL_I2C_Loop for           BL_USART_Loop
+Page 92: Table 31 lists the STM32F070xB devices bootloader versions.
+Page 92: Table 31. STM32F070xB bootloader versions
+Page 92: Initial bootloader     – At bootloader startup, the HSITRIM value is set to 0 (in HSITRIM bits on
+Page 92: PA13 is set in alternate push-pull mode even if not used by the bootloader.
+Page 92: – USB bootloader fails on some machines using a high speed controller. The
+Page 92: bootloader is detected. but then data transaction fails.
+Page 92: De-synchronization between USB controller and bootloader SW due to the
+Page 92: Clock configuration       seems not sufficient for the bootloader SW (based on interrupt routines) to
+Page 93: The STM32F071xx/072xx bootloader is activated by applying Pattern 2 (described in
+Page 93: Table 2). Table 32 shows the hardware resources used by this bootloader.
+Page 93: Common to all                                       the bootloader firmware
+Page 93: bootloader firmware
+Page 94: Note:         After the devices have booted in bootloader mode using USART2, the serial wire debug
+Page 94: PA14 pin (SWCLK), already used by the bootloader (USART2_RX).
+Page 94: is required for the bootloader execution.
+Page 95: Figure 24 shows the bootloader selection mechanism.
+Page 95: bootloader using USB                                Execute
+Page 95: Table 33 lists the STM32F071xx/072xx devices bootloader versions.
+Page 96: Table 33. STM32F071xx/072xx bootloader versions
+Page 96: – At bootloader startup, the HSITRIM value is set to (0) (in HSITRIM bits on RCC_CR
+Page 96: PA13 set in alternate push-pull, pull-up mode even if not used by bootloader.
+Page 96: – USB bootloader fails on some machines using a high speed controller. The bootloader
+Page 96: De-synchronization between USB controller and bootloader SW due to the controller
+Page 96: V10.1    bootloader
+Page 96: for the bootloader SW (based on interrupt routines) to serve all needed transactions
+Page 97: The STM32F09xxx bootloader is activated by applying Pattern 6 (described in
+Page 97: Table 2).Table 34 shows the hardware resources used by this bootloader.
+Page 97: to all                                          bootloader firmware
+Page 97: bootloader firmware.
+Page 98: Note:     After the devices have booted in bootloader mode using USART2, the serial wire debug
+Page 98: PA14 pin (SWCLK), already used by the bootloader (USART2_RX).
+Page 98: is required for the bootloader execution.
+Page 98: Table 35 lists the STM32F09xxx devices bootloader versions.
+Page 98: Table 35. STM32F09xxx bootloader versions
+Page 98: At bootloader startup, the HSITRIM value is set to 0 in HSITRIM bits
+Page 98: Initial bootloader
+Page 98: PA13 set in input pull-up mode even if not used by the bootloader.
+Page 99: The STM32F10xxx bootloader is activated by applying Pattern 1 (described in Table 2).
+Page 99: Table 36 shows the hardware resources used by this bootloader.
+Page 99: by the bootloader firmware.
+Page 99: the bootloader firmware.
+Page 99: is required for the bootloader execution.
+Page 100: Figure 26 shows the bootloader selection mechanism.
+Page 100: Table 37 lists the STM32F10xxx devices bootloader versions:
+Page 100: Table 37. STM32F10xxx bootloader versions
+Page 100: V2.0       Initial bootloader version
+Page 100: – Update the bootloader version to V2.1
+Page 100: a NACK response to the first 0x200 bytes of RAM used by the bootloader
+Page 101: Note:    The bootloader ID format is applied to all STM32 devices except the STM32F1xx devices.
+Page 101: The bootloader version for the STM32F1xx applies only to the embedded device’s
+Page 101: bootloader version and not to its supported protocols.
+Page 102: The STM32F105xx/107xx bootloader is activated by applying Pattern 1 (described in
+Page 102: Table 2). Table 38 shows the hardware resources used by this bootloader.
+Page 102: bootloaders and it must provide one of the following
+Page 102: HSE enabled          For CAN bootloader, the PLL is used only to generate
+Page 102: by the bootloader firmware.
+Page 102: the bootloader firmware.
+Page 102: the host for USARTx bootloader.
+Page 103: CAN2                  Enabled            Note: CAN1 is clocked during the CAN bootloader
+Page 103: bootloader. This internal clock is used also for DFU and CAN bootloaders, but only for the
+Page 103: bootloader execution after the selection phase.
+Page 104: Figure 27 shows the bootloader selection mechanism.
+Page 104: no   bootloader using USB
+Page 105: Table 39 lists the STM32F105xx/107xx devices bootloader versions:
+Page 105: Table 39. STM32F105xx/107xx bootloader versions
+Page 105: V1.0        Initial bootloader version
+Page 105: unused peripherals in this bootloader are connected to low level or left floating
+Page 105: – Go command updated (for all bootloaders): USART1, USART2, CAN2,
+Page 105: of 0x20 in bootloader V2.0. Refer to Section 19.3.3 for more details.
+Page 105: – Updated bootloader version to V2.2.
+Page 105: Note:    The bootloader ID format is applied to all STM32 devices except the STM32F1xx products.
+Page 105: The version for STM32F1xx applies only to the embedded device’s bootloader version and
+Page 105: 19.3.1   How to identify STM32F105xx/107xx bootloader versions
+Page 105: There are two ways to distinguish between bootloader versions:
+Page 105: •      When using the USART bootloader, the Get-Version command defined in AN3155 has
+Page 105: been corrected in V2.1 version. It returns 0x22 instead of 0x20 as in bootloader V2.0.
+Page 105: •      The values of the vector table at the beginning of the bootloader code are different. The
+Page 105: bootloader V2.0 0x1FFFE9A1 for bootloader V2.1, and 0x1FFFE9C1 for bootloader
+Page 106: •   V2.1 in bootloader V2.1
+Page 106: •   V2.2 in bootloader V2.2.
+Page 106: The bootloader cannot be used if the USART1_RX (PA10), USART2_RX (PD6, remapped),
+Page 106: held low or left floating during the bootloader activation phase.
+Page 106: The bootloader cannot be connected through CAN2 (remapped), DFU (OTG FS in Device
+Page 106: internally grounded. In this case, the bootloader cannot be used at all.
+Page 106: None. The bootloader cannot be used.
+Page 106: a high level during the bootloader activation phase as described below:
+Page 106: –    If USART1 is used to connect to the bootloader, PD6 and PB5 must be kept at a
+Page 106: –    If USART2 is used to connect to the bootloader, PA10, PB5, PA11, and PA12 must
+Page 106: –    If CAN2 is used to connect to the bootloader, PA10, PD6, PA11, and PA12 must be
+Page 106: –    If DFU is used to connect to the bootloader, PA10, PB5, and PD6 must be kept at
+Page 106: 19.3.3    USART bootloader Get-Version command returns 0x20
+Page 106: 0x22. This limitation is present on bootloader versions V1.0 and V2.0, while it is fixed in
+Page 106: bootloader version 2.1.
+Page 107: in bootloader V2.0
+Page 107: This limitation is fixed in bootloader version 2.1 by configuring PA9 as alternate function
+Page 108: The STM32F10xxx XL-density bootloader is activated by applying Pattern 3 (described in
+Page 108: Table 2). Table 40 shows the hardware resources used by this bootloader.
+Page 108: RAM                             -        0x20000000, are used by the bootloader
+Page 108: Common to all        System memory                   -        0x1FFFE000 contain the bootloader
+Page 108: is required for the bootloader execution.
+Page 109: Table 41. STM32F10xxx XL-density bootloader versions
+Page 109: V2.1                      Initial bootloader version
+Page 109: Note:    The bootloader ID format is applied to all STM32 devices families except the STM32F1xx
+Page 109: family. The bootloader version for the STM32F1xx applies only to the embedded device
+Page 109: bootloader version and not to its supported protocols.
+Page 110: Two bootloader versions are available on STM32F2xxxx devices:
+Page 110: The STM32F2xxxx bootloader is activated by applying Pattern 1 (described in Table 2).
+Page 110: Table 42 shows the hardware resources used by this bootloader.
+Page 110: bootloader firmware.
+Page 110: bootloader commands.
+Page 111: is required for the bootloader code.
+Page 111: Figure 29 shows the bootloader selection mechanism.
+Page 112: Table 43 lists the STM32F2xxxx devices V2.x bootloader versions:
+Page 112: Table 43. STM32F2xxxx bootloader V2.x versions
+Page 112: the bootloader device, but the NACK (0x1F) is not sent to the host.
+Page 112: Initial bootloader     As a result, the next two bytes (the number of bytes to be
+Page 113: The STM32F2xxxx bootloader is activated by applying Pattern 1 (described in Table 2).
+Page 113: Table 44 shows the hardware resources used by this bootloader.
+Page 113: the bootloader firmware.
+Page 113: bootloader firmware.
+Page 113: bootloader commands.
+Page 114: CAN2                  Enabled        Note: CAN1 is clocked during CAN2 bootloader execution
+Page 115: Figure 30 shows the bootloader selection mechanism.
+Page 115: bootloader using USB                               CANx
+Page 116: Table 45 lists the STM32F2xxxx devices V3.x bootloader versions:
+Page 116: Table 45. STM32F2xxxx bootloader V3.x versions
+Page 116: 0x6000 0000), the command is aborted by the bootloader
+Page 116: V3.2      Initial bootloader version         result, the next two bytes (which are the number of bytes
+Page 117: The STM32F301xx/302x4(6/8) bootloader is activated by applying Pattern 2 (described in
+Page 117: Table 2). Table 46 shows the hardware resources used by this bootloader.
+Page 117: The external clock can be used for all bootloader interfaces
+Page 117: the bootloader firmware
+Page 117: bootloader firmware
+Page 118: The bootloader has two cases of operation, depending upon the presence of the external
+Page 118: clock (HSE) at bootloader startup:
+Page 118: and USART2 are functional and can be used to communicate with the bootloader
+Page 118: The external clock (HSE) must be kept if it is connected at bootloader startup, because it is
+Page 119: Figure 31 shows the bootloader selection mechanism.
+Page 119: no                                            Execute                   bootloader using USB
+Page 120: Table 47 lists the STM32F301xx/302x4(6/8) devices bootloader versions:
+Page 120: Table 47. STM32F301xx/302x4(6/8) bootloader versions
+Page 120: – USB bootloader fails on some machines using a high speed controller. The bootloader
+Page 120: De-synchronization between USB controller and bootloader SW due to the controller
+Page 120: Initial        for the bootloader SW (based on interrupt routines) to serve all needed transactions
+Page 120: V4.0     bootloader       (the delay needed by the BL is nearly 25 µs). Some servicing IT are missed. This
+Page 121: The STM32F302xB(C)/303xB(C) bootloader is activated by applying Pattern 2 (described in
+Page 121: Table 2). Table 48 shows the hardware resources used by this bootloader.
+Page 121: The external clock can be used for all bootloader
+Page 121: the bootloader firmware.
+Page 121: the bootloader firmware.
+Page 121: host for USARTx bootloader.
+Page 122: The bootloader has two cases of operation depending on the presence of the external clock
+Page 122: (HSE) at bootloader startup:
+Page 122: and USART2 are functional and can be used to communicate with the bootloader
+Page 122: The external clock (HSE) must be kept if it is connected at bootloader startup, because it is
+Page 123: Figure 32 shows the bootloader selection mechanism.
+Page 123: Disable all       bootloader using USB
+Page 123: Table 49 lists the STM32F302xB(C)/303xB(C) devices bootloader versions.
+Page 123: Table 49. STM32F302xB(C)/303xB(C) bootloader versions
+Page 123: V4.1                              Initial bootloader version                   None
+Page 124: The STM32F302xD(E)/303xD(E) bootloader is activated by applying Pattern 2 (described in
+Page 124: Table 2). Table 50 shows the hardware resources used by this bootloader.
+Page 124: The external clock can be used for all bootloader
+Page 124: the bootloader firmware
+Page 124: bootloader firmware
+Page 125: The bootloader has two cases of operation depending on the presence of the external clock
+Page 125: (HSE) at bootloader startup:
+Page 125: and USART2 are functional and can be used to communicate with the bootloader
+Page 125: The external clock (HSE) must be kept if it is connected at bootloader startup, because it is
+Page 126: BL_USART_Loop for         bootloader using USB
+Page 127: Table 51.      STM32F302xD(E)/303xD(E) bootloader versions
+Page 127: – The USB bootloader fails on some machines using a high speed
+Page 127: controller. The bootloader is detected. but then data transaction fails.
+Page 127: De-synchronization between USB controller and bootloader SW due to
+Page 127: delay seems not sufficient for the bootloader SW (based on interrupt
+Page 127: Initial bootloader   routines) to serve all needed transactions (the delay needed by the BL is
+Page 128: The STM32F303x4(6/8)/334xx/328xx bootloader is activated by applying Pattern 2
+Page 128: (described in Table 2). Table 52 shows the hardware resources used by this bootloader.
+Page 128: by the bootloader firmware
+Page 128: the bootloader firmware
+Page 128: is required for the bootloader execution.
+Page 129: Figure 34 shows the bootloader selection mechanism.
+Page 129: Table 53 lists the STM32F303x4(6/8)/334xx/328xx devices bootloader versions:
+Page 129: Table 53. STM32F303x4(6/8)/334xx/328xx bootloader versions
+Page 129: V5.0                 Initial bootloader version                       None
+Page 130: The STM32F318xx bootloader is activated by applying Pattern 2 (described in Table 2).
+Page 130: Table 54 shows the hardware resources used by this bootloader.
+Page 130: the bootloader firmware
+Page 130: bootloader firmware
+Page 131: is required for the bootloader execution.
+Page 132: Table 55. STM32F318xx bootloader versions
+Page 132: V5.0            Initial bootloader version              None
+Page 133: The STM32F358xx bootloader is activated by applying Pattern 2 (described in Table 2).
+Page 133: Table 56 shows the hardware resources used by this bootloader.
+Page 133: the bootloader firmware.
+Page 133: the bootloader firmware.
+Page 133: host for USARTx bootloader.
+Page 133: is required for the bootloader execution.
+Page 134: Figure 36 shows the bootloader selection mechanism.
+Page 134: Table 57 lists the STM32F358xx devices bootloader versions.
+Page 134: Table 57. STM32F358xx bootloader versions
+Page 134: V5.0        Initial bootloader version
+Page 134: baudrate supported by the bootloader is 57600 baud.
+Page 135: The STM32F373xx bootloader is activated by applying Pattern 2 (described in Table 2).
+Page 135: Table 58 shows the hardware resources used by this bootloader.
+Page 135: The external clock can be used for all bootloader interfaces
+Page 135: the bootloader firmware.
+Page 135: bootloader firmware
+Page 135: host for USARTx bootloader.
+Page 136: at bootloader startup:
+Page 136: and USART2 are functional and can be used to communicate with the bootloader.
+Page 136: Note:        The external clock (HSE) must be kept if it is connected at bootloader startup, because it is
+Page 137: Figure 37 shows the bootloader selection mechanism.
+Page 137: yes         Disable all        bootloader using USB
+Page 137: Table 59 lists the STM32F373xx devices bootloader versions.
+Page 138: Table 59. STM32F373xx bootloader versions
+Page 138: – The USB bootloader fails on some machines using a high speed controller. The
+Page 138: bootloader is detected. but then data transaction fails.
+Page 138: De-synchronization between USB controller and bootloader SW due to the
+Page 138: seems not sufficient for the bootloader SW (based on interrupt routines) to
+Page 138: V4.1     bootloader       Some servicing IT are missed. This results in a communication fail, causing
+Page 139: The STM32F378xx bootloader is activated by applying Pattern 2 (described in Table 2).
+Page 139: Table 60 shows the hardware resources used by this bootloader.
+Page 139: the bootloader firmware.
+Page 139: the bootloader firmware
+Page 139: host for USARTx bootloader.
+Page 139: is required for the bootloader execution.
+Page 140: Figure 38 shows the bootloader selection mechanism.
+Page 140: Table 61 lists the STM32F378xx devices bootloader versions.
+Page 140: Table 61. STM32F378xx bootloader versions
+Page 140: V5.0          Initial bootloader version
+Page 140: baudrate supported by the bootloader is 57600 baud.
+Page 141: The STM32F398xx bootloader is activated by applying Pattern 2 (described in Table 2).
+Page 141: Table 62 shows the hardware resources used by this bootloader.
+Page 141: the bootloader firmware
+Page 141: bootloader firmware
+Page 142: The system clock is derived from the embedded internal high-speed RC for all bootloader
+Page 142: interfaces. No external quartz is required for bootloader operations.
+Page 142: Figure 39 shows the bootloader selection mechanism.
+Page 143: Table 63 lists the STM32F398xx devices bootloader versions.
+Page 143: Table 63. STM32F398xx bootloader versions
+Page 143: V5.0             Initial bootloader version                  None
+Page 144: The STM32F40xxx/41xxx bootloader is activated by applying Pattern 1 (described in
+Page 144: Table 2). Table 64 shows the hardware resources used by this bootloader.
+Page 144: by the bootloader firmware.
+Page 144: the bootloader firmware.
+Page 144: in run time using bootloader commands.
+Page 145: CAN2                 Enabled          Note: CAN1 is clocked during CAN2 bootloader
+Page 146: Figure 40 shows the bootloader selection mechanism.
+Page 146: bootloader using USB                               CANx
+Page 147: Table 65 lists the STM32F40xxx/41xxx devices V3.x bootloader versions:
+Page 147: Table 65. STM32F40xxx/41xxx bootloader V3.x versions
+Page 147: (i.e. address 0x6000 0000), the command is aborted by the bootloader
+Page 147: V3.0      Initial bootloader version          its checksum) are considered as a new command and its checksum(1).
+Page 147: After executing Go command (jump to user code) the bootloader resets
+Page 147: After executing Go command (jump to user code) the bootloader resets
+Page 147: The STM32F40xxx/41xxx bootloader is activated by applying Pattern 1 (described in
+Page 147: Table 2). Table 66 shows the hardware resources used by this bootloader.
+Page 147: Note:           The bootloader version V9.0 is embedded only in STM32F405xx/415xx devices in
+Page 148: the bootloader firmware
+Page 148: bootloader firmware
+Page 148: bootloader commands.
+Page 149: CAN2                 Enabled         Note: CAN1 is clocked during CAN2 bootloader execution
+Page 150: and SPIx bootloaders. This internal clock is also used for CAN and DFU (USB FS device),
+Page 151: I2Cx Address              BL_I2C_Loop for          bootloader using
+Page 152: Table 67 lists the STM32F40xxx/41xxx devices V9.x bootloader versions.
+Page 152: Table 67. STM32F40xxx/41xxx bootloader V9.x versions
+Page 152: This bootloader is an updated           – For the USART interface, two consecutive NACKs (instead of
+Page 152: version of bootloader v3.1.               1 NACK) are sent when a Read Memory or Write Memory
+Page 152: This new version of bootloader
+Page 152: The RAM used by this bootloader is
+Page 152: bootloader resets AHB1ENR value to 0x0000 0000 and thus
+Page 152: The ID of this bootloader is 0x90.
+Page 152: This bootloader is an updated
+Page 152: version of bootloader v9.0 that will
+Page 152: bootloader version.
+Page 153: The STM32F401xB(C) bootloader is activated by applying Pattern 1 (described in Table 2).
+Page 153: Table 68 shows the hardware resources used by this bootloader.
+Page 153: the bootloader firmware
+Page 153: bootloader firmware
+Page 153: bootloader commands.
+Page 155: and SPIx bootloaders. This internal clock is also used for CAN and DFU (USB FS device),
+Page 156: yes                           bootloader using USB
+Page 157: Table 69. STM32F401xB(C) bootloader versions
+Page 157: the bootloader resets AHB1ENR value to 0x0000
+Page 157: V13.0        Initial bootloader version   active (must be re-enabled by user code at startup)
+Page 157: – The bootloader does not support the reset of
+Page 158: The STM32F401xD(E) bootloader is activated by applying Pattern 1 (described in Table 2).
+Page 158: Table 70 shows the hardware resources used by this bootloader.
+Page 158: the bootloader firmware
+Page 158: bootloader firmware
+Page 158: bootloader commands.
+Page 160: and SPIx bootloaders. This internal clock is also used for DFU (USB FS device), but only for
+Page 161: Figure 43 shows the bootloader selection mechanism.
+Page 161: yes                           bootloader using USB
+Page 162: Table 71 lists the STM32F401xD(E) devices bootloader version.
+Page 162: Table 71. STM32F401xD(E) bootloader versions
+Page 162: the bootloader resets AHB1ENR value to 0x0000
+Page 162: V13.1        Initial bootloader version
+Page 163: The STM32F410xx bootloader is activated by applying Pattern 1 (described in Table 2).
+Page 163: Table 72 shows the hardware resources used by this bootloader.
+Page 163: RCC                  HSI enabled configured to 60 MHz and for USART and I2C bootloader
+Page 163: bootloader firmware
+Page 163: bootloader firmware
+Page 163: – Flash write operation by byte (refer to bootloader memory
+Page 165: The system clock is derived from the embedded internal high-speed RC for all bootloader
+Page 165: interfaces. No external quartz is required for bootloader operations.
+Page 166: Figure 44 shows the bootloader selection mechanism.
+Page 167: Table 73 lists the STM32F410xx devices bootloader V11.x versions.
+Page 167: Table 73.      STM32F410xx bootloader V11.x versions
+Page 167: bootloader resets AHB1ENR value to 0x0000 0000
+Page 167: V11.0       Initial bootloader version
+Page 167: Support I2C4 and SPI1 for     bootloader resets AHB1ENR value to 0x0000 0000
+Page 168: The STM32F411xx bootloader is activated by applying Pattern 1 (described in Table 2).
+Page 168: Table 74 shows the hardware resources used by this bootloader.
+Page 168: bootloader firmware
+Page 168: bootloader firmware
+Page 168: voltage range can be configured in run time using bootloader
+Page 170: I2Cx, and SPIx bootloaders. This internal clock is also used for DFU (USB FS device), but
+Page 171: Figure 45 shows the bootloader selection mechanism.
+Page 171: yes                           bootloader using USB
+Page 172: The following table lists the STM32F411xx devices bootloader version.
+Page 172: Table 75. STM32F411xx bootloader versions
+Page 172: bootloader resets AHB1ENR value to 0x0000 0000
+Page 172: V13.0       Initial bootloader version
+Page 173: The STM32F412xx bootloader is activated by applying Pattern 1 (described in Table 2).
+Page 173: Table 76 shows the hardware resources used by this bootloader.
+Page 173: HSI enabled    configured to 60 MHz and for USART and I2C bootloader
+Page 173: the bootloader firmware
+Page 173: bootloader firmware
+Page 173: – Flash write operation by byte (refer to bootloader memory
+Page 174: CAN2                 Enabled        Note: CAN1 is clocked during CAN2 bootloader execution
+Page 176: I2Cx bootloaders. This internal clock is also used for CAN and DFU (USB FS device), but
+Page 177: Figure 46 shows the bootloader selection mechanism.
+Page 177: bootloader using USB
+Page 178: The following table lists the STM32F412xx devices bootloader V9.x versions.
+Page 178: Table 77. STM32F412xx bootloader V9.x versions
+Page 178: the bootloader resets AHB1ENR value to 0x0000
+Page 178: V9.0         Initial bootloader version   0000 and thus CCM RAM, when present, is not
+Page 178: the bootloader resets AHB1ENR value to 0x0000
+Page 179: The STM32F413xx/423xx bootloader is activated by applying Pattern 1 (described in
+Page 179: Table 2h). The following table shows the hardware resources used by this bootloader.
+Page 179: bootloader operation.
+Page 179: by the bootloader firmware
+Page 179: the bootloader firmware
+Page 180: CAN2                  Enabled        Note: CAN1 is clocked during CAN2 bootloader
+Page 182: I2Cx bootloaders. This internal clock is also used for CAN and DFU (USB FS device), but
+Page 183: Figure 47 shows the bootloader selection mechanism.
+Page 183: bootloader using USB
+Page 184: The following table lists the STM32F413xx/423xx devices bootloader V9.x versions.
+Page 184: Table 79. STM32F413xx/423xx bootloader V9.x versions
+Page 184: bootloader resets AHB1ENR value to 0x0000 0000
+Page 184: V9.0       Initial bootloader version
+Page 185: The STM32F42xxx/43xxx bootloader is activated by applying Pattern 5 (described in
+Page 185: Table 2). The following table shows the hardware resources used by this bootloader.
+Page 185: are used by the bootloader firmware
+Page 185: contain the bootloader firmware
+Page 185: time using bootloader commands.
+Page 186: bootloader execution because CAN1 manages
+Page 187: I2Cx bootloaders. This internal clock is also used for CAN and DFU (USB FS device), but
+Page 188: Figure 48 and Figure 49 show the bootloader selection mechanism.
+Page 189: bootloader using USB                      BL_CAN_Loop for
+Page 190: The following table lists the STM32F42xxx/43xxx devices bootloader V7.x versions.
+Page 190: Table 81. STM32F42xxx/43xxx bootloader V7.x versions
+Page 190: V7.0       Initial bootloader version
+Page 190: the bootloader resets AHB1ENR value to 0x0000
+Page 191: The STM32F42xxx/43xxx bootloader is activated by applying Pattern 5 (described in
+Page 191: Table 2). The following table shows the hardware resources used by this bootloader.
+Page 191: used by the bootloader firmware
+Page 191: contain the bootloader firmware
+Page 191: configured in run time using bootloader commands.
+Page 192: CAN2                  Enabled        Note: CAN1 is clocked during CAN2 bootloader
+Page 194: I2Cx, and SPIx bootloaders. This internal clock is also used for CAN and DFU (USB FS
+Page 195: Figure 50 and Figure 51 show the bootloader selection mechanism.
+Page 195: Figure 50. Dual bank boot implementation for STM32F42xxx/43xxx bootloader V9.x
+Page 196: bootloader using USB                                  BL_CAN_Loop for
+Page 197: Table 83 lists the STM32F42xxx/43xxx devices bootloader V9.x versions.
+Page 197: Table 83. STM32F42xxx/43xxx bootloader V9.x versions
+Page 197: This bootloader is an updated
+Page 197: version of bootloader v7.0.
+Page 197: This new version of bootloader
+Page 197: The RAM used by this bootloader        After executing Go command (jump to user code)
+Page 197: is increased from 8 Kb to 12 Kb.       the bootloader resets AHB1ENR value to 0x0000
+Page 197: The ID of this bootloader is 0x90      0000 and thus CCM RAM, when present, is not
+Page 197: This bootloader is an updated          command is not functional. Use Write Memory
+Page 197: version of bootloader v9.0. This       command and write directly to the option bytes in
+Page 197: USART, CAN, I2C and SPI). The          the bootloader resets AHB1ENR value to 0x0000
+Page 197: ID of this bootloader is 0x91          0000 and thus CCM RAM, when present, is not
+Page 198: The STM32F446xx bootloader is activated by applying Pattern 1 (described in Table 2). The
+Page 198: following table shows the hardware resources used by this bootloader.
+Page 198: for USART, I2C and SPI bootloader
+Page 198: RAM                            -          0x20000000, are used by the bootloader
+Page 198: System memory                  -          0x1FFF0000, contain the bootloader
+Page 198: section bootloader memory management
+Page 199: bootloader execution because in CAN1
+Page 201: I2Cx bootloaders. This internal clock is also used for CAN and DFU (USB FS device), but
+Page 202: Figure 52 shows the bootloader selection mechanism.
+Page 202: bootloader using USB                                   BL_CAN_Loop for
+Page 203: The following table lists the STM32F446xx devices bootloader V9.x versions:
+Page 203: Table 85. STM32F446xx bootloader V9.x versions
+Page 203: bootloader resets AHB1ENR value to 0x0000 0000
+Page 203: V9.0       Initial bootloader version
+Page 204: The STM32F469xx/479xx bootloader is activated by applying Pattern 5 (described in
+Page 204: Table 2). Table 86 shows the hardware resources used by this bootloader.
+Page 204: RAM                            -         0x20000000, are used by the bootloader
+Page 204: System memory                  -         0x1FFF0000, contain the bootloader
+Page 204: configured in run time using bootloader
+Page 205: bootloader execution because CAN1
+Page 207: I2Cx bootloaders. This internal clock is also used for CAN and DFU (USB FS device), but
+Page 208: Figure 53 and Figure 54 show the bootloader selection mechanism.
+Page 209: USB cable                          bootloader using USB
+Page 210: Table 87 lists the STM32F469xx/479xx devices V9.x bootloader versions:
+Page 210: Table 87.      STM32F469xx/479xx bootloader V9.x versions
+Page 210: bootloader resets AHB1ENR value to 0x0000 0000
+Page 210: V9.0        Initial bootloader version
+Page 211: The STM32F72xxx/73xxx bootloader is activated by applying Pattern 8 (described in
+Page 211: Table 2). Table 88 shows the hardware resources used by this bootloader.
+Page 211: bootloader operation.
+Page 211: Common to all                                                    bootloader firmware
+Page 211: System memory                        -          0x1FF00000, contain the bootloader
+Page 211: bootloader memory management
+Page 214: I2Cx bootloaders. This internal clock is also used for CAN and DFU (USB FS device), but
+Page 215: Figure 55 shows the bootloader selection mechanism.
+Page 216: Table 89 lists the STM32F72xxx/73xxx devices bootloader V9.x versions.
+Page 216: Table 89.     STM32F72xxx/73xxx bootloader V9.x versions
+Page 216: V9.0        Initial bootloader version   In that case bootloader may respond with a baudrate
+Page 217: Two bootloader versions are available:
+Page 217: The STM32F74xxx/75xxx bootloader is activated by applying Pattern 8 (described in
+Page 217: Table 2). Table 90 shows the hardware resources used by this bootloader.
+Page 217: bootloader operation.
+Page 217: Common to all                                       by the bootloader firmware
+Page 217: bootloader firmware
+Page 217: - Flash write operation by byte (refer to bootloader
+Page 218: CAN2                 Enabled        Note: CAN1 is clocked during CAN2 bootloader execution
+Page 219: I2Cx bootloaders. This internal clock is also used for CAN and DFU (USB FS device), but
+Page 220: bootloader using USB
+Page 220: Table 91.    STM32F74xxx/75xxx bootloader V7.x versions
+Page 220: bootloader may respond with a baudrate up to ± 5% different from host
+Page 220: V7.0         Initial bootloader version     baudrate.
+Page 221: The STM32F74xxx/75xxx bootloader is activated by applying Pattern 8 (described in
+Page 221: Table 2). The following table shows the hardware resources used by this bootloader.
+Page 221: bootloader operation.
+Page 221: bootloaders. Any failure (or removal) of the
+Page 221: by the bootloader firmware
+Page 221: bootloader firmware
+Page 221: - Flash write operation by byte (refer to bootloader
+Page 222: CAN2                 Enabled        Note: CAN1 is clocked during CAN2 bootloader execution
+Page 224: I2Cx, and SPIx bootloaders. This internal clock is also used for CAN and DFU (USB FS
+Page 225: Figure 57 shows the bootloader selection mechanism.
+Page 225: bootloader using USB
+Page 226: The following table lists the STM32F74xxx/75xxx bootloader V9.x versions:
+Page 226: Table 93.    STM32F74xxx/75xxx bootloader V9.x versions
+Page 226: In that case bootloader may respond with a
+Page 226: V9.0            Initial bootloader version   baudrate up to ± 5% different from host
+Page 227: The STM32F76xxx/77xxx bootloader is activated by applying Pattern 9 (described in
+Page 227: Table 2). The following table shows the hardware resources used by this bootloader.
+Page 227: HSI enabled configured to 60 MHz and for USART and I2C bootloader
+Page 227: bootloader firmware
+Page 227: bootloader firmware
+Page 227: - Flash write operation by byte (refer to bootloader memory
+Page 228: CAN2                 Enabled       Note: CAN1 is clocked during CAN2 bootloader execution
+Page 230: I2Cx bootloaders. This internal clock is also used for CAN and DFU (USB FS device), but
+Page 231: Figure 58 and Figure 59 show the bootloader selection mechanism.
+Page 232: bootloader using USB
+Page 233: The following table lists the STM32F76xxx/77xxx devices bootloader V9.x versions.
+Page 233: Table 95.     STM32F76xxx/77xxx bootloader V9.x versions
+Page 233: V9.3          Initial bootloader version
+Page 233: In that case bootloader may respond with a
+Page 234: The STM32G03xxx/G04xxx bootloader is activated by applying Pattern 11 (described in
+Page 234: Table 2). The following table shows the hardware resources used by this bootloader. Note
+Page 234: used by the bootloader firmware
+Page 234: USARTx bootloader SysTick timer          Enabled
+Page 235: Figure 60 shows the bootloader selection mechanism.
+Page 236: Table 97 lists the STM32G03xxx/G04xxx devices bootloader versions.
+Page 236: Table 97. STM32G03xxx/04xxx bootloader versions
+Page 236: V5.1        Initial bootloader version           stays to low level, system is stuck in the
+Page 237: AN2606                                                       STM32G07xxx/08xxx device bootloader
+Page 237: 45          STM32G07xxx/08xxx device bootloader
+Page 237: The STM32G07xxx/G08xxx bootloader is activated by applying Pattern 11 (described in
+Page 237: Table 2). Table 98 shows the hardware resources used by this bootloader.
+Page 237: used by the bootloader firmware
+Page 237: contain the bootloader firmware
+Page 238: STM32G07xxx/08xxx device bootloader                                                                   AN2606
+Page 239: AN2606                                                                     STM32G07xxx/08xxx device bootloader
+Page 239: 1. SPI Tx (MISO) is handled by DMA. On the bootloader start-up after SPI initialization as soon as the bit DMATx enable on
+Page 240: STM32G07xxx/08xxx device bootloader                                                                                        AN2606
+Page 240: Figure 61 shows the bootloader selection mechanism.
+Page 240: Table 99 lists the STM32G07xxx/8xxx devices bootloader versions.
+Page 240: Table 99. STM32G07xxx/08xxx bootloader versions
+Page 240: V11.0             Initial bootloader version         Not supporting packages smaller than LQFP64
+Page 241: AN2606                                                          STM32G07xxx/08xxx device bootloader
+Page 241: Table 99. STM32G07xxx/08xxx bootloader versions (continued)
+Page 241: bootloader crash if the SRAM is not initialized
+Page 241: – Empty check flag cleared by bootloader at boot
+Page 241: (host sends I2C address to the bootloader), the
+Page 241: bootloader.
+Page 242: STM32G07xxx/08xxx device bootloader                                                            AN2606
+Page 242: refer to Section 45.1) used by the bootloader to their default values (as defined in RM0444).
+Page 242: 1.   When jumping to the bootloader from user flash, the first operation is to reset the
+Page 242: –   This detection leads to boot on the bootloader.
+Page 242: –   As per the new boot sequence, the bootloader clears this flag.
+Page 242: programmed by the bootloader.
+Page 243: AN2606                                                                 STM32G0B0xx device bootloader
+Page 243: 46          STM32G0B0xx device bootloader
+Page 243: The STM32G0B0xx bootloader is activated by applying Pattern 11 (described in Table 2).
+Page 243: The following table shows the hardware resources used by this bootloader. Note that
+Page 243: RCC                                 The external clock can be used for all bootloader
+Page 243: Common to all                                            used by the bootloader firmware
+Page 243: The bootloader firmware is shared on two banks:
+Page 244: STM32G0B0xx device bootloader                                                                          AN2606
+Page 245: AN2606                                                                             STM32G0B0xx device bootloader
+Page 245: DFU(2)                                                               USB peripheral is used by the bootloader.‘
+Page 245: 1. SPI Tx (MISO) is handled by DMA. On the bootloader start-up after SPI initialization as soon as the bit DMATx enable on
+Page 246: STM32G0B0xx device bootloader                                                                                                AN2606
+Page 246: Figure 62 shows the bootloader selection mechanism.
+Page 246: detected and USB                                               bootloader using USB
+Page 247: AN2606                                                               STM32G0B0xx device bootloader
+Page 247: Table 101 lists the STM32G0B0xx devices bootloader versions.
+Page 247: Table 101. STM32G0B0xx bootloader versions
+Page 247: Empty check flag cleared by error on the bootloader startup phase
+Page 247: Initial       – Root cause: on the startup phase the bootloader SW performs a
+Page 247: V13.0     bootloader      system deinitialization, leading to write the default value on the
+Page 247: memory is empty, the MCU boots on the bootloader but the flag is
+Page 248: STM32G0B1xx/0C1xx device bootloader                                                                       AN2606
+Page 248: 47          STM32G0B1xx/0C1xx device bootloader
+Page 248: The STM32G0B1xx/0C1xx bootloader is activated by applying Pattern 11 (described in
+Page 248: Table 2). The following table shows the hardware resources used by this bootloader.
+Page 248: by the bootloader firmware
+Page 248: The bootloader firmware is shared on two banks:
+Page 249: AN2606                                                      STM32G0B1xx/0C1xx device bootloader
+Page 250: STM32G0B1xx/0C1xx device bootloader                                                                                  AN2606
+Page 250: DFU                                                              peripheral is used by the bootloader.‘
+Page 250: 1. SPI Tx (MISO) is handled by DMA. On the bootloader start-up after SPI initialization as soon as the bit DMATx enable on
+Page 251: AN2606                                                               STM32G0B1xx/0C1xx device bootloader
+Page 251: Figure 63 shows the bootloader selection mechanism.
+Page 251: Synchro mechanism            yes                               bootloader using USB
+Page 252: STM32G0B1xx/0C1xx device bootloader                                                                  AN2606
+Page 252: Table 103 lists the STM32G0B1xx/0C1xx devices bootloader versions.
+Page 252: Table 103. STM32G0B1xx/0C1xx bootloader versions
+Page 252: V9.2     bootloader    Empty check flag cleared by error on the bootloader startup phase
+Page 252: – Root cause: on the startup phase the bootloader SW performs a
+Page 252: memory is empty, the MCU boots on the bootloader but the flag is
+Page 253: The STM32G05xxx/061xx bootloader is activated by applying Pattern 11 (described in
+Page 253: Table 2). The following table shows the hardware resources used by this bootloader. Note
+Page 253: the bootloader firmware
+Page 253: bootloader firmware
+Page 253: bootloader                                            host for USART2s.
+Page 255: Figure 64 shows the bootloader selection mechanism.
+Page 255: Table 105 lists the STM32G05xxx/061xx devices bootloader versions.
+Page 256: Table 105. STM32G05xxx/061xx bootloader versions
+Page 256: Initial bootloader
+Page 257: The STM32G431xx/441xx bootloader is activated by applying Pattern 15 (described in
+Page 257: Table 2). The following table shows the hardware resources used by this bootloader.
+Page 257: by the bootloader firmware
+Page 257: the bootloader firmware
+Page 259: 1. SPI Tx (MISO) is handled by DMA. On the bootloader start-up after SPI initialization as soon as the bit DMATx enable on
+Page 260: The following figure shows the bootloader selection mechanism.
+Page 260: bootloader using USB
+Page 261: Table 107. STM32G431xx/441xx bootloader version
+Page 261: V13.3 (0xD3)     Initial bootloader version
+Page 262: The STM32G47xxx/48xxx bootloader is activated by applying Pattern 14 (described in
+Page 262: Table 2). The following table shows the hardware resources used by this bootloader.
+Page 262: used by the bootloader firmware
+Page 262: contain the bootloader firmware
+Page 264: DFU                                                                  USB peripheral is used by the bootloader.
+Page 264: 1. SPI Tx (MISO) is handled by DMA. On the bootloader start-up after SPI initialization as soon as the bit DMATx enable on
+Page 265: The following figures show the bootloader selection mechanism.
+Page 265: bootloader using USB
+Page 266: Figure 67. Dual bank boot implementation for STM32G47xxx/48xxx bootloader V13.x
+Page 266: Table 109. STM32G47xxx/48xxx bootloader version
+Page 266: V13.3 (0xD3)          Initial bootloader version        Boot from bank2 is not working
+Page 267: Table 109. STM32G47xxx/48xxx bootloader version (continued)
+Page 268: The STM32G491xx/4A1xx bootloader is activated by applying Pattern 15 (described in
+Page 268: Table 2). The following table shows the hardware resources used by this bootloader.
+Page 268: used by the bootloader firmware
+Page 268: contain the bootloader firmware
+Page 270: DFU                                                                  USB peripheral is used by the bootloader.
+Page 270: 1. SPI Tx (MISO) is handled by DMA. On the bootloader start-up after SPI initialization, as soon as bit DMATx enable on SPI
+Page 271: bootloader using USB
+Page 272: Table 111.   STM32G491xx/4A1xx bootloader version
+Page 272: V13.2         Initial bootloader version     None
+Page 273: The STM32H503xx bootloader is activated by applying Pattern 17 (described in Table 2).
+Page 273: Table 112 shows the hardware resources used by this bootloader.
+Page 273: The bootloader follows boot model V3_2 (see Section 4.10), so it inherits all its constraints.
+Page 273: used by the bootloader firmware
+Page 273: contain the bootloader firmware
+Page 275: DFU                                                     USB peripheral is used by the bootloader.
+Page 276: byte detection by the bootloader.
+Page 277: Yes   bootloader using
+Page 278: Table 114. STM32H503xx bootloader version
+Page 278: V14.1      Initial bootloader version
+Page 279: The STM32H523xx/533xx bootloader is activated by applying Pattern 17 (described in
+Page 279: Table 2). Table 115 shows the hardware resources used by this bootloader.
+Page 279: The bootloader follows boot model V3_2 (see Section 4.10), so it inherits all its constraints.
+Page 279: used by the bootloader firmware
+Page 279: contain the bootloader firmware
+Page 282: after SYNC byte detection by the bootloader.
+Page 284: Figure 70 shows the bootloader selection mechanism.
+Page 284: Yes   bootloader using
+Page 285: Table 117. STM32H523xx/533xx bootloader version
+Page 285: V14.0        Initial bootloader version
+Page 286: The STM32H562xx/563xx/573xx bootloader is activated by applying Pattern 17 (described
+Page 286: in Table 2). Table 118 shows the hardware resources used by this bootloader.
+Page 286: The bootloader follows boot model V3_2 (see Section 4.10), so it inherits all its constraints.
+Page 286: the bootloader firmware
+Page 286: bootloader firmware
+Page 288: DFU                                                peripheral is used by the bootloader.
+Page 289: detection by the bootloader.
+Page 290: Figure 71 shows the bootloader selection mechanism.
+Page 290: Yes   bootloader using
+Page 291: Table 120. STM32H562xx/563xx/573xx bootloader version
+Page 291: V14.3     Initial bootloader version
+Page 291: 2.    After the erase, go back to the bootloader.
+Page 291: 3.    To continue using the bootloader, a reconnect is needed.
+Page 292: The STM32H72xxx/73xxx bootloader is activated by applying Pattern 10 (described in
+Page 292: Table 2). Table 121 shows the hardware resources used by this bootloader.
+Page 292: the bootloader firmware
+Page 292: System memory                -      bootloader firmware. The bootloader start address is
+Page 296: Figure 72 shows the bootloader selection mechanism.
+Page 296: yes                    bootloader using
+Page 297: Table 122 lists the STM32H72xxx/73xxx devices bootloader versions.
+Page 297: Table 122. STM32H72xxx/73xxx bootloader version
+Page 297: V9.1    Initial bootloader version   – String returned describing the memory size when using
+Page 298: The STM32H74xxx/75xxx bootloader is activated by applying Pattern 10 (described in
+Page 298: Table 2). Table 123 shows the hardware resources used by this bootloader.
+Page 298: Common to all                                           bootloader firmware
+Page 298: System memory                  -    contain the bootloader firmware. The bootloader start
+Page 298: fixed on the bootloader with 0x91 version.
+Page 298: USART1 is detected on the bootloader version 0x91.
+Page 299: USART3 is detected on the bootloader version 0x91.
+Page 299: USART3 is detected on the bootloader version 0x91.
+Page 301: Note:       To connect to the bootloader USART1 using PB14/PB15 pins, user must send two
+Page 302: Figure 73 shows the bootloader selection mechanism.
+Page 302: yes                    bootloader using
+Page 303: Table 124 lists the STM32H74xxx/75xxx devices bootloader versions.
+Page 303: Table 124. STM32H74xxx/75xxx bootloader version
+Page 303: Initial bootloader version                       – SPI1 connection is not working
+Page 304: Table 124. STM32H74xxx/75xxx bootloader version (continued)
+Page 305: Table 124. STM32H74xxx/75xxx bootloader version (continued)
+Page 306: The STM32H7A3xx/7B3xx/7B0xx bootloader is activated by applying Pattern 10 (described
+Page 306: in Table 2). Table 125 shows the hardware resources used by this bootloader.
+Page 306: used by the bootloader firmware
+Page 306: System memory                -    the bootloader firmware. The bootloader start address
+Page 306: Fixed on the bootloader with 0x92 versions.
+Page 306: USART1 is detected on the bootloader version 0x92.
+Page 306: USART2 is detected on the bootloader version 0x92.
+Page 307: USART3 is detected on the bootloader version 0x92.
+Page 307: USART3 is detected on the bootloader version 0x92.
+Page 311: Figure 73 shows the bootloader selection mechanism.
+Page 311: yes                    bootloader using
+Page 312: Table 126 lists the STM32H7A3xx/7B3xx/7B0xx devices bootloader versions.
+Page 312: Table 126. STM32H7A3xx/7B3xx/7B0xx bootloader version
+Page 312: V9.0    Initial bootloader version        returns 256 x 2 KB)
+Page 312: – OTP memory is not supported by the bootloader
+Page 312: – Crash loop when booting on the bootloader, setting
+Page 313: The STM32H7Rxxx/7S7xxx bootloader is activated by applying Pattern 17 (described in
+Page 313: Table 2). Table 127 shows the hardware resources used by this bootloader.
+Page 313: the bootloader firmware
+Page 313: bootloader firmware.
+Page 313: detected on the bootloader version 0x91.
+Page 313: detected on the bootloader version 0x91.
+Page 316: detection by the bootloader.
+Page 318: Figure 73 shows the bootloader selection mechanism.
+Page 318: Yes   bootloader using
+Page 319: Table 129 lists the STM32H7Rxxx/7Sxxx devices bootloader versions.
+Page 319: Table 129. STM32H7Rxxx/7Sxxx bootloader version
+Page 319: V14.3        Initial bootloader version, used only for RevY           None
+Page 319: 58.4     Jump to bootloader
+Page 319: If a user application jumping to the bootloader has the protection clock bits (xSPICKP or
+Page 319: FMCCKP) enabled, the bootloader will be stuck/crash on the clock configuration.
+Page 319: At the startup; the bootloader deinitialises all the peripherals (including the clock), then
+Page 319: reconfigures the clock based on PLL1 from HSI. In this case the bootloader is not be able to
+Page 320: The STM32L01xxx/02xxx bootloader is activated by applying Pattern 6 (described in
+Page 320: Table 2). Table 130 shows the hardware resources used by this bootloader.
+Page 320: used by the bootloader firmware
+Page 320: contain the bootloader firmware
+Page 321: bootloader is running.
+Page 321: bootloader with SPI1 interface for devices on
+Page 321: The system clock is derived from the embedded internal high-speed RC for all bootloader
+Page 321: interfaces. No external quartz is required for bootloader operations.
+Page 321: code to system bootloader. Such jump results in a jump back to user flash memory space.
+Page 321: empty), then system bootloader is executed when jumped to.
+Page 322: The Table 76 shows the bootloader selection mechanism.
+Page 323: The following table lists the STM32L01xxx/02xxx devices bootloader versions.
+Page 323: Table 131. STM32L01xxx/02xxx bootloader versions
+Page 323: V12.2    Initial bootloader version
+Page 323: SPI communication is not synchronized and bootloader
+Page 324: The STM32L031xx/041xx bootloader is activated by applying Pattern 2 (described in
+Page 324: Table 2). The following table shows the hardware resources used by this bootloader.
+Page 324: used by the bootloader firmware
+Page 324: contain the bootloader firmware
+Page 325: The system clock is derived from the embedded internal high-speed RC for all bootloader
+Page 325: interfaces. No external quartz is required for bootloader operations.
+Page 325: The bootloader Read/Write commands do not support SRAM space for this product.
+Page 326: Figure 77 shows the bootloader selection mechanism.
+Page 326: Table 133 lists the STM32L031xx/041xx devices bootloader versions.
+Page 326: Table 133. STM32L031xx/041xx bootloader versions
+Page 326: V12.0                       Initial bootloader version                  None
+Page 327: The STM32L05xxx/06xxx bootloader is activated by applying Pattern 1 (described in
+Page 327: Table 2). Table 134 shows the hardware resources used by this bootloader.
+Page 327: the bootloader firmware
+Page 327: bootloader firmware
+Page 328: The system clock is derived from the embedded internal high-speed RC for all bootloader
+Page 328: interfaces. No external quartz is required for bootloader operations.
+Page 329: Figure 78 shows the bootloader selection mechanism.
+Page 329: Table 135 lists the STM32L05xxx/06xxx devices bootloader versions:
+Page 329: Table 135. STM32L05xxx/06xxx bootloader versions
+Page 329: V12.0        Initial bootloader version
+Page 330: Two bootloader versions are available on STM32L07xxx/08xxx devices:
+Page 330: The STM32L07xxx/08xxx bootloader is activated by applying Pattern 2 or Pattern 7 when
+Page 330: resources used by this bootloader.
+Page 330: bootloader firmware.
+Page 330: bootloader firmware.
+Page 331: The system clock is derived from the embedded internal high-speed RC for all bootloader
+Page 331: interfaces. No external quartz is required for bootloader operations.
+Page 332: Figure 79 and Figure 80 show the bootloader selection mechanism.
+Page 332: Figure 79. Dual bank boot implementation for STM32L07xxx/08xxx bootloader V4.x
+Page 333: Execute DFU bootloader        BL_USART_Loop
+Page 333: Table 137 lists the STM32L07xxx/08xxx devices bootloader versions.
+Page 334: Table 137. STM32L07xxx/08xxx bootloader versions
+Page 334: Initial bootloader   PA4, PA5, PA6 and PA7 IOs are configured in pull-down mode despite not
+Page 334: version              used by bootloader
+Page 334: used by bootloader
+Page 334: – The USB bootloader fails on some machines using a high speed
+Page 334: controller. The bootloader is detected. but then data transaction fails.
+Page 334: De-synchronization between USB controller and bootloader SW due to the
+Page 334: implements the     delay seems not sufficient for the bootloader SW (based on interrupt
+Page 335: The STM32L07xxx/08xxx bootloader is activated by applying Pattern 2 or Pattern 7 when
+Page 335: resources used by this bootloader.
+Page 335: bootloader firmware
+Page 335: bootloader firmware
+Page 336: The system clock is derived from the embedded internal high-speed RC for all bootloader
+Page 336: interfaces. No external quartz is required for bootloader operations.
+Page 337: Figure 81 and Figure 82 show the bootloader selection mechanism.
+Page 337: Figure 81. Dual bank boot implementation for STM32L07xxx/08xxx bootloader V11.x
+Page 338: Table 139 lists the STM32L07xxx/08xxx devices bootloader versions:
+Page 338: Table 139. STM32L07xxx/08xxx bootloader V11.x versions
+Page 338: V11.1             Initial bootloader version                                                 None
+Page 339: The STM32L1xxx6(8/B)A bootloader is activated by applying Pattern 1 (described in
+Page 339: Table 2). Table 140 shows the hardware resources used by this bootloader.
+Page 339: used by the bootloader firmware.
+Page 339: contain the bootloader firmware.
+Page 339: external quartz is required for the bootloader execution.
+Page 340: The figure below shows the bootloader selection mechanism.
+Page 340: The following table lists the STM32L1xxx6(8/B)A devices bootloader versions:
+Page 340: Table 141. STM32L1xxx6(8/B)A bootloader versions
+Page 340: the command is aborted by the bootloader device, but the
+Page 340: V2.0          Initial bootloader version
+Page 341: The STM32L1xxx6(8/B) bootloader is activated by applying Pattern 1 (described in Table 2).
+Page 341: The following table shows the hardware resources used by this bootloader.
+Page 341: RAM                              -        0x20000000, are used by the bootloader
+Page 341: System memory                    -        0x1FF00000 contain the bootloader
+Page 341: external quartz is required for the bootloader execution.
+Page 342: The figure below shows the bootloader selection mechanism.
+Page 342: The following table lists the STM32L1xxx6(8/B) devices bootloader versions:
+Page 342: Table 143. STM32L1xxx6(8/B) bootloader versions
+Page 342: the command is aborted by the bootloader device, but
+Page 342: V2.0        Initial bootloader version
+Page 343: The STM32L1xxxC bootloader is activated by applying Pattern 1 (described in Table 2). The
+Page 343: following table shows the hardware resources used by this bootloader.
+Page 343: RAM                              -      0x20000000, are used by the bootloader
+Page 343: System memory                    -      0x1FF00000 contains the bootloader
+Page 344: bootloader.
+Page 344: bootloader. This internal clock is also used the for DFU, but only for the selection phase. An
+Page 345: The figure below shows the bootloader selection mechanism.
+Page 345: bootloader using USB
+Page 346: Table 145 lists the STM32L1xxxC devices bootloader versions.
+Page 346: Table 145. STM32L1xxxC bootloader versions
+Page 346: – The USB bootloader fails on some machines using a high speed controller.
+Page 346: The bootloader is detected. but then data transaction fails.
+Page 346: Initial          De-synchronization between USB controller and bootloader SW due to the
+Page 346: V4.0        bootloader       controller high speed transactions. Controller high speed inter-packet delay
+Page 346: version          seems not sufficient for the bootloader SW (based on interrupt routines) to
+Page 347: The STM32L1xxxD bootloader is activated by applying Pattern 4 (described in Table 2). The
+Page 347: following table shows the hardware resources used by this bootloader.
+Page 347: RAM                              -      0x20000000, are used by the bootloader
+Page 347: System memory                    -      0x1FF00000 contain the bootloader
+Page 348: rate from the host for USARTx bootloader.
+Page 348: bootloader. This internal clock is used also for DFU, but only for the selection phase. An
+Page 349: The figure below shows the bootloader selection mechanism.
+Page 349: bootloader using USB
+Page 350: The following table lists the STM32L1xxxD devices bootloader versions:
+Page 350: Table 147. STM32L1xxxD bootloader versions
+Page 350: – In the bootloader code the PA13 (JTMS/SWDIO) I/O output speed is
+Page 350: connect to the device in Serial Wire mode when the bootloader is
+Page 350: V4.1     Initial bootloader version        – When the DFU is selected, the RTC is reset and thus all RTC
+Page 350: Note: When the USART bootloader is selected there is no change on
+Page 350: 0x2000 C000) the bootloader cannot jump to that user code,
+Page 350: – The USB bootloader fails on some machines using a high speed
+Page 350: controller. The bootloader is detected. but then data transaction fails.
+Page 350: De-synchronization between USB controller and bootloader SW due
+Page 350: DFU interface robustness            packet delay seems not sufficient for the bootloader SW (based on
+Page 351: The STM32L1xxxE bootloader is activated by applying Pattern 4 (described in Table 2). The
+Page 351: following table shows the hardware resources used by this bootloader.
+Page 351: RAM                              -      0x20000000, are used by the bootloader
+Page 351: System memory                    -      0x1FF00000 contains the bootloader
+Page 352: rate from the host for USARTx bootloader.
+Page 352: bootloader. This internal clock is used also for DFU, but only for the selection phase. An
+Page 353: The figure below shows the bootloader selection mechanism.
+Page 353: bootloader using USB
+Page 354: Table 149 lists the STM32L1xxxE devices bootloader versions:
+Page 354: Table 149. STM32L1xxxE bootloader versions
+Page 354: – The USB bootloader fails on some machines using a high speed
+Page 354: controller. The bootloader is detected. but then data transaction fails.
+Page 354: De-synchronization between USB controller and bootloader SW due to
+Page 354: Initial bootloader     the controller high speed transactions. Controller high speed inter-
+Page 354: version                packet delay seems not sufficient for the bootloader SW (based on
+Page 355: The STM32L412xx/422xx bootloader is activated by applying Pattern 16 (described in
+Page 355: Table 2). Table 150 shows the hardware resources used by this bootloader.
+Page 355: RCC                                      USB bootloader operation.
+Page 355: by the bootloader firmware
+Page 355: the bootloader firmware
+Page 355: bootloader if the voltage scaling range 2 is selected.
+Page 357: peripheral is used by the bootloader.
+Page 357: 1. SPI Tx (MISO) is handled by DMA. On the bootloader statup after SPI initialisation as soon as the bit DMATx enable on SPI
+Page 358: The following figures show the bootloader selection mechanism.
+Page 358: Figure 88. Dual bank boot Implementation for STM32L412xx/422xx bootloader V9.x
+Page 359: bootloader using USB
+Page 360: Table 151 lists the STM32L412xx/422xx devices bootloader version.
+Page 360: Table 151. STM32L412xx/422xx bootloader versions
+Page 360: V13.1        Initial bootloader version
+Page 361: The bootloader V9.1 version is updated to fix known limitations relative to USB-DFU
+Page 361: The STM32L43xxx/44xxx bootloader is activated by applying Pattern 16 (described in
+Page 361: Table 2). Table 152 shows the hardware resources used by this bootloader.
+Page 361: and USB bootloader operation.
+Page 361: by the bootloader firmware
+Page 361: the bootloader firmware
+Page 361: bootloader if the voltage scaling range 2 is selected.
+Page 364: peripheral is used by the bootloader.
+Page 364: SPI Tx (MISO) is handled by DMA. On the bootloader start-up after SPI initialization, as
+Page 365: The following figures show the bootloader selection mechanism.
+Page 365: Figure 90. Dual bank boot Implementation for STM32L3x2xx/44xxx bootloader V9.x
+Page 366: bootloader using USB         BL_CAN_Loop for
+Page 367: Table 153 lists the STM32L43xxx/44xxx devices bootloader versions.
+Page 367: Table 153. STM32L43xxx/44xxx bootloader versions
+Page 367: V9.1       Initial bootloader version
+Page 367: – On the Go command, system bootloader de-init clears the
+Page 368: Table 153. STM32L43xxx/44xxx bootloader versions (continued)
+Page 368: a. During bootloader SPI write flash memory operation, some
+Page 368: V9.1       Initial bootloader version     write memory without 64-bits cast. WA1 and WA3 are more efficient
+Page 368: reset) on system bootloader, it is possible that CAN interface does
+Page 369: The STM32L45xxx/46xxx bootloader is activated by applying Pattern 16 (described in
+Page 369: Table 2). Table 154 shows the hardware resources used by this bootloader.
+Page 369: bootloader operation.
+Page 369: the bootloader firmware
+Page 369: bootloader firmware
+Page 369: The DFU cannot be used to communicate with bootloader if
+Page 372: peripheral is used by the bootloader.
+Page 373: The following figures show the bootloader selection mechanism.
+Page 373: Figure 92. Dual bank boot implementation for STM32L45xxx/46xxx bootloader V9.x
+Page 374: bootloader using USB         BL_CAN_Loop for
+Page 375: Table 155 lists the STM32L45xxx/46xxx devices bootloader versions.
+Page 375: Table 155. STM32L45xxx/46xxx bootloader versions
+Page 375: V9.2         Initial bootloader version     command and its ACK request. Its duration
+Page 376: Two bootloader versions are available:
+Page 376: The STM32L47xxx/48xxx bootloader is activated by applying Pattern 7 (described in
+Page 376: Table 2). Table 156 shows the hardware resources used by this bootloader.
+Page 376: HSI enabled   configured to 24 MHz and for USART and I2C bootloader
+Page 376: the bootloader firmware
+Page 376: bootloader firmware
+Page 376: The DFU cannot be used to communicate with bootloader if
+Page 378: For USARTx and I2Cx bootloaders no external clock is required.
+Page 378: USB bootloader (DFU) requires either an LSE (low-speed external clock) or a HSE (high-
+Page 379: Figure 94 and Figure 95 show the bootloader selection mechanism.
+Page 379: Figure 94. Dual bank boot implementation for STM32L47xxx/48xxx bootloader V10.x
+Page 380: Execute DFU bootloader
+Page 381: Table 157 lists the STM32L47xxx/48xxx devices bootloader V10.x versions:
+Page 381: Table 157. STM32L47xxx/48xxx bootloader V10.x versions
+Page 381: V10.1    Initial bootloader version         is corrupted.
+Page 381: bootloader interface, then jump to it, and that code
+Page 382: The STM32L47xxx/48xxx bootloader is activated by applying Pattern 7 (described in
+Page 382: Table 2). Table 158 shows the hardware resources used by this bootloader.
+Page 382: HSI enabled     configured to 72 MHz and for USART and I2C bootloader
+Page 382: the bootloader firmware
+Page 382: bootloader firmware
+Page 382: The DFU cannot be used to communicate with bootloader if
+Page 384: DFU                                                          peripheral is used by the bootloader.
+Page 384: 1. SPI Tx (MISO) is handled by DMA. On the bootloader start-up after SPI initialization, as soon as the bit DMATx enable on
+Page 385: Figure 96 and Figure 97 show the bootloader selection mechanism.
+Page 385: Figure 96. Dual bank boot implementation for STM32L47xxx/48xxx bootloader V9.x
+Page 386: CANx                                     BL_CAN_Loop                                  Execute DFU bootloader
+Page 387: Table 159 lists the STM32L47xxx/48xxx devices bootloader V9.x versions:
+Page 387: Table 159. STM32L47xxx/48xxx bootloader V9.x versions
+Page 387: V9.0    Initial bootloader version     Workaround: if the file size is larger than 256 bytes, add
+Page 387: PcROP option bytes cannot be written as the bootloader
+Page 387: During bootloader SPI write flash memory operation,
+Page 387: Root cause: the bootloader uses 64-bit cast write
+Page 388: The STM32L496xx/4A6xx bootloader is activated by applying Pattern 6 (described in
+Page 388: Table 2). Table 160 shows the hardware resources used by this bootloader.
+Page 388: HSI enabled    configured to 72 MHz and for USART, I2C and SPI bootloader
+Page 388: the bootloader firmware
+Page 388: bootloader firmware
+Page 388: The DFU cannot be used to communicate with bootloader if
+Page 391: DFU                                                 peripheral is used by the bootloader.
+Page 392: The figures below show the bootloader selection mechanism.
+Page 392: Figure 98. Dual bank boot Implementation for STM32L496xx/4A6xx bootloader V9.x
+Page 393: bootloader using USB        BL_CAN_Loop for
+Page 394: Table 161 lists the STM32L496xx/4A6xx devices bootloader versions.
+Page 394: Table 161. STM32L496xx/4A6xx bootloader version
+Page 394: – The Bank Erase command is aborted by the bootloader device, and
+Page 394: V9.3      Initial bootloader version     b. WA2: read back after write and in case of error start write again.
+Page 395: The STM32L4P5xx/4Q5xx bootloader is activated by applying Pattern 7 (described in
+Page 395: Table 2). Table 164 shows the hardware resources used by this bootloader.
+Page 395: bootloader operation.
+Page 395: the bootloader firmware
+Page 395: bootloader firmware
+Page 395: The DFU cannot be used to communicate with bootloader if
+Page 398: DFU                                                peripheral is used by the bootloader.
+Page 399: Figure 102 and Figure 103 show the bootloader selection mechanisms.
+Page 399: Figure 100. Dual bank boot implementation for STM32L4P5xx/4Q5xx bootloader V9.x
+Page 400: yes                   bootloader using      BL_CAN_Loop
+Page 401: Table 163 lists the STM32L4P5xx/4Q5xx devices bootloader versions.
+Page 401: Table 163. STM32L4P5xx/4Q5xx bootloader versions
+Page 401: bootloader uses byte access while PcROP must
+Page 401: Initial bootloader version on cut     be accessed using half-word access.
+Page 401: bootloader interface then jump to it, and that code
+Page 402: The STM32L4Rxx/4Sxx bootloader is activated by applying Pattern 6 (described in Table 2).
+Page 402: Table 164 shows the hardware resources used by this bootloader.
+Page 402: bootloader operation.
+Page 402: the bootloader firmware
+Page 402: the bootloader firmware
+Page 402: The DFU cannot be used to communicate with bootloader if
+Page 405: DFU                                                peripheral is used by the bootloader.
+Page 406: Figure 102 and Figure 103 show the bootloader selection mechanisms.
+Page 406: Figure 102. Dual bank boot implementation for STM32L4Rxxx/STM32L4Sxxx bootloader V9.x
+Page 407: yes                   bootloader using      BL_CAN_Loop
+Page 408: Table 165 lists the STM32L4Rxx/4Sxx devices bootloader versions.
+Page 408: Table 165. STM32L4Rxx/4Sxx bootloader versions
+Page 408: V9.0        Initial bootloader version on cut 1.0 samples   None
+Page 409: The STM32L552xx/62xx bootloader is activated by applying Pattern 12 (described in
+Page 409: Table 2). Table 166 shows the hardware resources used by this bootloader.
+Page 409: The bootloader follows boot model V3_1 (see Section 4.10), so it inherits all its constraints.
+Page 409: bootloader firmware
+Page 412: DFU                                               peripheral is used by the bootloader.
+Page 413: Figure 104 shows the bootloader selection mechanism.
+Page 413: Synchro mechanism                yes                            bootloader using USB
+Page 414: Table 168 lists the STM32L552xx/62xx devices bootloader versions.
+Page 414: Table 168. STM32L552xx/62xx bootloader versions
+Page 414: Initial bootloader version on      – No read/write SRAM2 in all protocols
+Page 415: The STM32WB10xx/15xx bootloader is activated by applying Pattern 6 (described in
+Page 415: Table 2). Table 171 shows the hardware resources used by this bootloader.
+Page 415: the bootloader firmware
+Page 415: bootloader firmware
+Page 417: Figure 105 shows the bootloader selection mechanism.
+Page 418: Table 170. STM32WB10xx/15xx bootloader versions
+Page 418: V11.1    Initial bootloader version   – Workaround: Use No-Stretch Write Unprotect
+Page 419: The STM32WB30xx/35xx/50xx/55xx bootloader is activated by applying Pattern 16
+Page 419: (described in Table 2). Table 171 shows the hardware resources used by this bootloader.
+Page 419: RAM                                 -          0x20000000, are used by the bootloader
+Page 419: System memory                       -          0x1FFF0000, contain the bootloader
+Page 421: DFU                                                               bootloader.
+Page 422: Figure 106 shows the bootloader selection mechanism.
+Page 422: USB cable                                 bootloader using
+Page 423: Table 172. STM32WB30xx/35xx/50xx/55xx bootloader versions
+Page 423: V13.5         Initial bootloader version
+Page 424: The STM32WBA5xxx bootloader is activated by applying Pattern12 (described in Table 2).
+Page 424: Table 173 shows the hardware resources used by this bootloader.
+Page 424: The bootloader follows boot model V3_1 (see Section 4.10), so it inherits all its constraints.
+Page 424: bootloader firmware
+Page 424: bootloader firmware
+Page 427: Table 175. STM32WBA5xxx bootloader versions
+Page 427: V11.0        Initial bootloader version for Rev A samples   None
+Page 427: V11.1        Initial bootloader version for Rev B samples   None
+Page 428: The STM32WBA62xx/63xx/64xx/65xx bootloader is activated by applying Pattern12
+Page 428: (described in Table 2). Table 176 shows the hardware resources used by this bootloader.
+Page 428: The bootloader follows boot model V3_1 (see Section 4.10), so it inherits all its constraints.
+Page 428: all                                                the bootloader firmwaree
+Page 428: bootloader firmware
+Page 430: 1. SPI Tx (MISO) is handled by DMA. On the bootloader start-up after SPI initialization, as soon as the bit DMATx enable on
+Page 431: bootloader using
+Page 431: Table 178. STM32WBA62xx/63xx/64xx/65xx bootloader versions
+Page 431: V13.2                   Initial bootloader version         None
+Page 432: The STM32WB05xx bootloader is activated by applying Pattern 18 (described in Table 2).
+Page 432: Table 179 shows the hardware resources used by this bootloader.
+Page 432: contain the bootloader firmware
+Page 433: Figure 109 shows the bootloader selection mechanism.
+Page 433: Table 180. STM32WB05xx bootloader versions
+Page 433: V2.0              Final bootloader version       None
+Page 434: The STM32WB06xx/07xx bootloader is activated by applying Pattern 18 (described in
+Page 434: Table 2). Table 181 shows the hardware resources used by this bootloader.
+Page 434: contain the bootloader firmware
+Page 435: Figure 110 shows the bootloader selection mechanism.
+Page 435: Table 182. STM32WB06xx/07xx bootloader versions
+Page 435: V4.0               Final bootloader version      None
+Page 436: The STM32WB09xx bootloader is activated by applying Pattern 18 (described in Table 2).
+Page 436: Table 183 shows the hardware resources used by this bootloader.
+Page 436: contain the bootloader firmware
+Page 437: Figure 113 shows the bootloader selection mechanism.
+Page 437: Table 184. STM32WB09xx bootloader versions
+Page 437: V1.0              Final bootloader version       None
+Page 438: The STM32WL3xxx bootloader is activated by applying Pattern 18 (described in Table 2).
+Page 438: Table 185 shows the hardware resources used by this bootloader.
+Page 438: contain the bootloader firmware
+Page 439: Figure 112 shows the bootloader selection mechanism.
+Page 439: Table 186. STM32WL3xxx bootloader versions
+Page 439: V4.0                Initial bootloader version    None
+Page 440: The STM32WLE5xx/55xx bootloader is activated by applying Pattern 13 (described in
+Page 440: Table 2). Table 187 shows the hardware resources used by this bootloader.
+Page 440: used by the bootloader firmware
+Page 440: contain the bootloader firmware
+Page 442: Figure 113 shows the bootloader selection mechanism.
+Page 442: Table 188. STM32WLE5xx/55xx bootloader versions
+Page 442: V12.2        Initial bootloader version on rev. Z samples    – FLASH_SFR (Offset - 0x80)
+Page 442: V12.3        Final bootloader version on rev. Z samples      – FLASH_SFR (Offset - 0x80)
+Page 442: V12.4        Final bootloader version on rev. Y samples      – FLASH_SFR (Offset - 0x80)
+Page 443: The STM32U031xx bootloader is activated by applying Pattern 11 (described in Table 2).
+Page 443: Table 189 shows the hardware resources used by this bootloader.
+Page 443: bootloader firmware
+Page 443: bootloader firmware
+Page 445: 1. SPI Tx (MISO) is handled by DMA. On the bootloader start-up after SPI initialization, as soon as the bit DMATx enable on
+Page 446: Figure 114 shows the bootloader selection mechanism.
+Page 447: Table 190. STM32U031xx bootloader versions
+Page 447: Empty check flag cleared by error on the bootloader startup phase
+Page 447: – Root cause: on the startup phase the bootloader SW performs a
+Page 447: V11.1    bootloader    – Behavior: when Empty check boot mode is used and the flash
+Page 447: version         memory is empty, the MCU boots on the bootloader but the flag is
+Page 448: The STM32U073xx/83xx bootloader is activated by applying Pattern 11 (described in
+Page 448: Table 2). Table 191 shows the hardware resources used by this bootloader.
+Page 448: bootloader to allow USB to be clocked by HSI48 48 MHz
+Page 448: Common to all                                         the bootloader firmware
+Page 448: bootloader firmware
+Page 450: 1. SPI Tx (MISO) is handled by DMA. On the bootloader start-up after SPI initialization, as soon as the bit DMATx enable on
+Page 451: Figure 115 shows the bootloader selection mechanism.
+Page 451: Yes   bootloader using
+Page 452: Table 192. STM32U073xx/83xx bootloader versions
+Page 452: Empty check flag cleared by error on the bootloader startup phase
+Page 452: – Root cause: on the startup phase the bootloader SW performs a
+Page 452: V13.0    bootloader    – Behavior: when Empty check boot mode is used and the flash memory
+Page 452: version         is empty, the MCU boots on the bootloader but the flag is cleared by
+Page 453: The STM32U375xx/85xx bootloader is activated by applying Pattern 12 (described in
+Page 453: Table 2). Table 193 shows the hardware resources used by this bootloader.
+Page 453: The bootloader follows boot model V3_1 (see Section 4.10), so it inherits all its constraints.
+Page 453: the bootloader firmware
+Page 453: bootloader firmware
+Page 456: detection by the bootloader.
+Page 456: 1. SPI Tx (MISO) is handled by DMA. On the bootloader start-up after SPI initialization as soon as the bit DMATx enable on
+Page 456: The bootloader follows boot model V3_1 (see Section 4.10), so it inherits all its constraints.
+Page 458: Yes   bootloader using
+Page 459: Table 195. STM32U375xx/85xx bootloader versions
+Page 459: V14.1    Initial bootloader version
+Page 460: The STM32U535xx/545xx bootloader is activated by applying Pattern 12 (described in
+Page 460: Table 2). Table 196 shows the hardware resources used by this bootloader.
+Page 460: The bootloader follows boot model V3_1 (see Section 4.10), so it inherits all its constraints.
+Page 460: the bootloader firmware
+Page 460: bootloader firmware
+Page 464: Figure 117 shows the bootloader selection mechanism.
+Page 464: Yes                           bootloader using
+Page 465: Table 198. STM32U535xx/545xx bootloader versions
+Page 465: V9.1        Initial bootloader version
+Page 466: The STM32U575xx/85xx bootloader is activated by applying Pattern 12 (described in
+Page 466: Table 2). Table 199 shows the hardware resources used by this bootloader.
+Page 466: The bootloader follows boot model V3_1 (see Section 4.10), so it inherits all its constraints.
+Page 466: the bootloader firmware
+Page 466: bootloader firmware
+Page 469: DFU                                                      peripheral is used by the bootloader.
+Page 470: Yes                           bootloader using
+Page 471: Table 201. STM32U575xx/85xx bootloader versions
+Page 471: V9.2       Initial bootloader version
+Page 471: bootloader
+Page 472: The STM32U595xx/99xx/A5xx/A9xx bootloader is activated by applying Pattern 12
+Page 472: (described in Table 2). Table 202 shows the hardware resources used by this bootloader.
+Page 472: The bootloader follows boot model V3_1 (see Section 4.10), so it inherits all its constraints.
+Page 472: bootloader firmware
+Page 472: bootloader firmware
+Page 476: Figure 119 shows the bootloader selection mechanism.
+Page 476: bootloader using                               Yes
+Page 476: Table 204. STM32U595xx/99xx/A5xx/A9xx bootloader versions
+Page 476: V9.2         Initial bootloader version
+Page 477: The STM32U5F7xx/F9xx/G7xx/G9xx bootloader is activated by applying Pattern 12
+Page 477: (described in Table 2). Table 205 shows the hardware resources used by this bootloader.
+Page 477: the bootloader firmware
+Page 477: bootloader firmware
+Page 481: Figure 119 shows the bootloader selection mechanism.
+Page 481: bootloader using                               Yes
+Page 481: Table 207. STM32U5F7xx/F9xx/G7xx/G9xx bootloader versions
+Page 481: V9.0         Initial bootloader version
+Page 482: Device-dependent bootloader parameters                                                      AN2606
+Page 482: 92           Device-dependent bootloader parameters
+Page 482: The bootloader protocol command set and sequences for each serial peripheral are the
+Page 482: same for all STM32 devices. Some parameters depend on device and bootloader version:
+Page 482: •    Valid RAM addresses (RAM area used during bootloader execution is not accessible)
+Page 482: accepted by the bootloader when the Read Memory, Go and Write Memory commands
+Page 483: AN2606                                                        Device-dependent bootloader parameters
+Page 484: Device-dependent bootloader parameters                                                   AN2606
+Page 485: AN2606                                                   Device-dependent bootloader parameters
+Page 486: Device-dependent bootloader parameters                                                   AN2606
+Page 487: AN2606                                                   Device-dependent bootloader parameters
+Page 488: Device-dependent bootloader parameters                                                                          AN2606
+Page 489: This section details the timings of the bootloader firmware to use for correct synchronization
+Page 489: Two types of timings are described, namely STM32 device bootloader resources
+Page 489: After these timings the bootloader is ready to receive and execute host commands.
+Page 489: After bootloader reset, the host must wait until the STM32 bootloader is ready to start
+Page 489: bootloader startup timing, during which resources used by bootloader are initialized.
+Page 489: Depending on the bootloader model, the startup timing calculation differs from one product
+Page 492: 1. Receiving characters different from 0x7F (or line glitches) causes bootloader to start communication using
+Page 493: the USB peripheral. To minimize bootloader detection time when PA9 pin is not used, keep
+Page 493: Table 210. USART bootloader minimum timings (ms)
+Page 494: Table 210. USART bootloader minimum timings (ms) (continued)
+Page 495: Table 210. USART bootloader minimum timings (ms) (continued)
+Page 496: Table 211. USB bootloader minimum timings (ms)
+Page 497: Table 211. USB bootloader minimum timings (ms) (continued)
+Page 498: Table 211. USB bootloader minimum timings (ms) (continued)
+Page 498: execute bootloader commands correctly. This timeout is implemented between two I2C
+Page 498: frame. If the timeout period elapses, a system reset is generated to avoid bootloader crash.
+Page 498: wait until the bootloader device performs page erasing to complete the remaining steps of
+Page 499: Table 212. I2C bootloader minimum timings (ms)
+Page 500: Table 212. I2C bootloader minimum timings (ms) (continued)
+Page 501: Table 213. SPI bootloader minimum timings (ms) for STM32 devices
+Page 507: bootloaders, Table 208: Bootloader device-dependent parameters, Table 209:
+Page 507: Bootloader startup timings (ms), Table 210: USART bootloader minimum timings (ms),
+Page 507: 21-Feb-2019       36       Table 211: USB bootloader minimum timings (ms), Table 212: I2C bootloader minimum
+Page 507: USART bootloader minimum timings (ms), Table 211: USB bootloader minimum
+Page 507: 06-May-2019       37       timings (ms), Table 212: I2C bootloader minimum timings (ms).
+Page 507: Embedded bootloaders, Table 78: STM32F413xx/423xx configuration in system
+Page 507: memory boot mode, Table 124: STM32H74xxx/75xxx bootloader version, Table 132:
+Page 507: STM32L43xxx/44xxx bootloader versions, Table 154: STM32L45xxx/46xxx
+Page 507: bootloader version, Table 172: STM32WB30xx/35xx/50xx/55xx bootloader versions,
+Page 507: timings (ms), Table 210: USART bootloader minimum timings (ms), Table 211: USB
+Page 507: bootloader minimum timings (ms), Table 212: I2C bootloader minimum timings (ms)
+Page 507: bank boot implementation for STM32L4Rxxx/STM32L4Sxxx bootloader V9.x
+Page 507: Embedded bootloaders, Table 97: STM32G03xxx/04xxx bootloader versions,
+Page 507: Table 151: STM32L412xx/422xx bootloader versions, Table 153:
+Page 507: STM32L43xxx/44xxx bootloader versions, Table 155: STM32L45xxx/46xxx
+Page 507: bootloader versions, Table 157: STM32L47xxx/48xxx bootloader V10.x versions,
+Page 507: Table 159: STM32L47xxx/48xxx bootloader V9.x versions, Table 161:
+Page 507: STM32L496xx/4A6xx bootloader version, Table 163: STM32L4P5xx/4Q5xx
+Page 507: bootloader versions, Table 208: Bootloader device-dependent parameters,
+Page 507: Table 209: Bootloader startup timings (ms), Table 210: USART bootloader minimum
+Page 507: timings (ms), Table 211: USB bootloader minimum timings (ms), Table 212: I2C
+Page 507: bootloader minimum timings (ms)
+Page 507: Added Figure 67: Dual bank boot implementation for STM32G47xxx/48xxx bootloader
+Page 508: Updated Table 3: Embedded bootloaders, Table 168: STM32L552xx/62xx bootloader
+Page 508: versions, Table 172: STM32WB30xx/35xx/50xx/55xx bootloader versions
+Page 508: – Table 89: STM32F72xxx/73xxx bootloader V9.x versions, Table 91:
+Page 508: STM32F74xxx/75xxx bootloader V7.x versions, Table 93: STM32F74xxx/75xxx
+Page 508: bootloader V9.x versions, Table 95: STM32F76xxx/77xxx bootloader V9.x versions,
+Page 508: 25-Oct-2019       41       Table 124: STM32H74xxx/75xxx bootloader version, Table 163:
+Page 508: STM32L4P5xx/4Q5xx bootloader versions, Table 166: STM32L552xx/62xx
+Page 508: (ms), Table 210: USART bootloader minimum timings (ms), Table 212: I2C
+Page 508: bootloader minimum timings (ms)
+Page 508: Embedded bootloaders, Table 208: Bootloader device-dependent parameters,
+Page 508: Table 209: Bootloader startup timings (ms), Table 210: USART bootloader minimum
+Page 508: 05-Dec-2019       42       timings (ms), Table 211: USB bootloader minimum timings (ms), Table 212: I2C
+Page 508: bootloader minimum timings (ms)
+Page 509: Embedded bootloaders, Table 106: STM32G431xx/441xx configuration in system
+Page 509: memory boot mode, Table 109: STM32G47xxx/48xxx bootloader version, Table 124:
+Page 509: STM32H74xxx/75xxx bootloader version, Table 126: STM32H7A3xx/7B3xx/7B0xx
+Page 509: bootloader version, Table 163: STM32L4P5xx/4Q5xx bootloader versions, Table 166:
+Page 509: STM32L552xx/62xx bootloader versions, Table 171: STM32WB30xx/35xx/50xx/55xx
+Page 509: – Figure 90: Dual bank boot Implementation for STM32L3x2xx/44xxx bootloader V9.x,
+Page 509: Figure 92: Dual bank boot implementation for STM32L45xxx/46xxx bootloader V9.x,
+Page 509: Figure 98: Dual bank boot Implementation for STM32L496xx/4A6xx bootloader V9.x
+Page 509: Deleted Figure 48. Access to securable memory area from the bootloader for
+Page 509: bootloader for STM32G07xxx/G08xxx, Figure 52. Access to securable memory area,
+Page 509: Embedded bootloaders, Table 8: ExitSecureMemory entry address, Table 108:
+Page 509: STM32H7A3xx/7B3xx/7B0xx bootloader version, Table 144: STM32L1xxxC
+Page 509: startup timings (ms), Table 210: USART bootloader minimum timings (ms), Table 211:
+Page 509: USB bootloader minimum timings (ms) and Table 212: I2C bootloader minimum timings
+Page 510: products, Table 3: Embedded bootloaders and in Section 3: Glossary
+Page 510: STM32G431xx/441xx bootloader version, Table 108: STM32G47xxx/48xxx
+Page 510: bootloader version, Table 125: STM32H7A3xx/7B3xx/7B0xx configuration in system
+Page 510: memory boot mode, Table 126: STM32H7A3xx/7B3xx/7B0xx bootloader version,
+Page 510: Table 137: STM32L07xxx/08xxx bootloader versions, Table 138:
+Page 510: Table 188: STM32WLE5xx/55xx bootloader versions, Table 208: Bootloader device-
+Page 510: USART bootloader minimum timings (ms)
+Page 510: for STM32WLE5xx/55xx, Table 188: STM32WLE5xx/55xx bootloader versions
+Page 510: – Table 3: Embedded bootloaders, Table 96: STM32G03xxx/G04xxx configuration in
+Page 510: memory boot mode, Table 153: STM32L43xxx/44xxx bootloader versions, Table 155:
+Page 510: STM32L45xxx/46xxx bootloader versions
+Page 511: – Table 1: Applicable products, Table 3: Embedded bootloaders, Table 8:
+Page 511: ExitSecureMemory entry address, Table 95: STM32F76xxx/77xxx bootloader V9.x
+Page 511: startup timings (ms), Table 210: USART bootloader minimum timings (ms),
+Page 511: Table 211: USB bootloader minimum timings (ms), Table 212: I2C bootloader
+Page 511: Added Section 46: STM32G0B0xx device bootloader and Section 47:
+Page 511: STM32G0B1xx/0C1xx device bootloader
+Page 511: – Table 1: Applicable products, Table 3: Embedded bootloaders, Table 8:
+Page 511: bootloader minimum timings (ms), Table 212: I2C bootloader minimum timings (ms)
+Page 512: Embedded bootloaders, Table 7: Flash memory alignment constraints, Table 208:
+Page 512: 21-Feb-2023       57       (ms), Table 210: USART bootloader minimum timings (ms), Table 211: USB
+Page 512: bootloader minimum timings (ms), Table 212: I2C bootloader minimum timings (ms)
+Page 512: – Table 1: Applicable products, Table 3: Embedded bootloaders, Table 208: Bootloader
+Page 512: 04-Apr-2023       58       Table 210: USART bootloader minimum timings (ms), Table 211: USB bootloader
+Page 512: minimum timings (ms), Table 212: I2C bootloader minimum timings (ms)
+Page 512: Updated Table 3: Embedded bootloaders, Table 99: STM32G07xxx/08xxx bootloader
+Page 513: Updated Table 2: Bootloader activation patterns, Table 3: Embedded bootloaders,
+Page 513: Table 69: STM32F401xB(C) bootloader versions, Table 102: STM32G0B1xx/0C1xx
+Page 513: system memory boot mode, Table 120: STM32H562xx/563xx/573xx bootloader
+Page 513: STM32L552xx/62xx bootloader versions, Table 196: STM32U535xx/545xx
+Page 513: bootloader versions, Table 201: STM32U575xx/85xx bootloader versions, Table 202:
+Page 513: STM32U595xx/99xx/A5xx/A9xx bootloader versions, and Table 209: Bootloader
+Page 513: Updated Table 1: Applicable products, Table 3: Embedded bootloaders, and tables 208
+Page 514: Updated Table 1: Applicable products, Table 3: Embedded bootloaders, Table 7: Flash
+Page 514: bootloader version, Table 118: STM32H562xx/563xx/573xx configuration in system
+Page 514: mode, Table 124: STM32H74xxx/75xxx bootloader version, Table 125:
+Page 514: memory area from the bootloader, Figure 69: Bootloader V14 selection for
+Page 514: Applicable products, Table 3: Embedded bootloaders, Table 7: Flash memory
+Page 514: bootloader versions, Table 121: STM32H72xxx/73xxx configuration in system memory
+Page 515: products, Table 3: Embedded bootloaders, and tables 208 to 213.
+Page 515: bootloader versions, Table 157: STM32L47xxx/48xxx bootloader V10.x versions, and
+Page 515: Updated Table 1: Applicable products, Table 3: Embedded bootloaders, tables 6 to 10,
+Page 515: STM32G0B0xx bootloader versions, Table 103: STM32G0B1xx/0C1xx bootloader
+Page 515: versions, Table 105: STM32G05xxx/061xx bootloader versions, Table 107:
+Page 515: STM32G431xx/441xx bootloader version, Table 115: STM32H523xx/533xx
+Page 515: bootloader version, Table 127: STM32H7Rxxx/7Sxxx configuration in system memory
+Page 515: boot mode, Table 159: STM32L47xxx/48xxx bootloader V9.x versions, Table 173:
+Page 515: Section 58.4: Jump to bootloader, Section 79: STM32WBA62xx/63xx/64xx/65xx
+Page 515: Updated Table 3: Embedded bootloaders, Table 99: STM32G07xxx/08xxx bootloader
+Page 515: 10-Apr-2025     66       versions, Table 124: STM32H74xxx/75xxx bootloader version, and Table 208:
+Page 516: Embedded bootloaders, Table 7: Flash memory alignment constraints, Table 17:
+Page 516: STM32C071xx bootloader versions, Table 97: STM32G03xxx/04xxx bootloader
+Page 516: versions, Table 107: STM32G431xx/441xx bootloader version, Table 173:
+Page 516: STM32WBA5xxx bootloader versions, Table 208: Bootloader device-dependent
+Page 516: STM32F04xxx bootloader versions, Table 29: STM32F070x6 bootloader versions,
+Page 516: Table 31: STM32F070xB bootloader versions, Table 33: STM32F071xx/072xx
+Page 516: bootloader versions, Table 47: STM32F301xx/302x4(6/8) bootloader versions,
+Page 516: Table 49: STM32F302xB(C)/303xB(C) bootloader versions, Table 51:
+Page 516: STM32F302xD(E)/303xD(E) bootloader versions, Table 59: STM32F373xx bootloader
+Page 516: versions, Table 137: STM32L07xxx/08xxx bootloader versions, Table 145:
+Page 516: STM32L1xxxC bootloader versions, Table 147: STM32L1xxxD bootloader versions,
+Page 516: and Table 149: STM32L1xxxE bootloader versions.
+Page 516: Updated Table 3: Embedded bootloaders, Table 18: STM32C091xx/92xx configuration
+Page 516: memory boot mode, Table 129: STM32H7Rxxx/7Sxxx bootloader version, and
+Page 516: 18-Nov-2025       69     Table 201: STM32U575xx/85xx bootloader versions.

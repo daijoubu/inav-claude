@@ -1,0 +1,358 @@
+Keyword: sleep mode
+Occurrences: 354
+================================================================================
+
+Page    6: 5.7.5       CSleep mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 275
+Page   68: Table 34.   CSleep mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 275
+Page  260: CSleep mode.
+Page  260: subsystem operates in CRun or CSleep mode.
+Page  261: - The CPU subsystem is in CRun or CSleep mode
+Page  262: 1. The CPU subsystem has an allocated peripheral in the D2 domain and operates in CRun or CSleep mode.
+Page  273: To reduce power consumption in CSleep mode, the individual peripheral clocks can be
+Page  273: For the peripherals still receiving a clock in CSleep mode, their clock can be slowed down
+Page  273: before entering CSleep mode.
+Page  274: The CPU subsystem exits from CSleep mode through any interrupt or event depending on
+Page  275: 5.7.5    CSleep mode
+Page  275: The CSleep mode applies only to the CPU subsystem. In CSleep mode, the CPU clock is
+Page  275: Entering CSleep mode
+Page  275: The CSleep mode is entered according to Section 5.7.3: Entering low-power modes, when
+Page  275: Refer to Table 34 for details on how to enter to CSleep mode.
+Page  275: Exiting from CSleep mode
+Page  275: The CSleep mode is exited according to Section 5.7.4: Exiting from low-power modes.
+Page  275: Refer to Table 34 for more details on how to exit from CSleep mode.
+Page  275: Table 34. CSleep mode
+Page  275: CSleep mode                                      Description
+Page  290: This bit allows defining the Deepsleep mode for System D3 domain.
+Page  290: This bit allows defining the Deepsleep mode for D2 domain.
+Page  290: This bit allows defining the Deepsleep mode for D1 domain.
+Page  346: to ‘1’), and define if this peripheral remains active in CSleep mode (by setting PERxLPEN to
+Page  349: CSleep mode (via DxSRAMyLPEN bits).
+Page  350: The CPU can control the peripheral clocks gating when it is in CSleep mode via the
+Page  355: 2.   The CPU is in CSleep mode, and the peripheral is allocated with PERxLPEN = ‘1’.
+Page  356: 2.    The CPU is in CSleep mode, and the peripheral is allocated with PERxLPEN = ‘1’.
+Page  357: –    The CPU is in CRun or CSleep mode or,
+Page  450: Bit 31 AXISRAMLPEN: AXISRAM Block Clock Enable During CSleep mode
+Page  450: 0: AXISRAM interface clock disabled during CSleep mode
+Page  450: 1: AXISRAM interface clock enabled during CSleep mode (default after reset)
+Page  450: Bit 30 ITCMLPEN: D1ITCM Block Clock Enable During CSleep mode
+Page  450: 0: D1 ITCM interface clock disabled during CSleep mode
+Page  450: 1: D1 ITCM interface clock enabled during CSleep mode (default after reset)
+Page  450: Bit 29 DTCM2LPEN: D1 DTCM2 Block Clock Enable During CSleep mode
+Page  450: 0: D1 DTCM2 interface clock disabled during CSleep mode
+Page  450: 1: D1 DTCM2 interface clock enabled during CSleep mode (default after reset)
+Page  450: Bit 28 D1DTCM1LPEN: D1DTCM1 Block Clock Enable During CSleep mode
+Page  450: 0: D1DTCM1 interface clock disabled during CSleep mode
+Page  450: 1: D1DTCM1 interface clock enabled during CSleep mode (default after reset)
+Page  450: Bit 16 SDMMC1LPEN: SDMMC1 and SDMMC1 Delay Clock Enable During CSleep Mode
+Page  450: 0: SDMMC1 and SDMMC1 Delay clock disabled during CSleep mode
+Page  450: 1: SDMMC1 and SDMMC1 Delay clock enabled during CSleep mode (default after reset)
+Page  451: Bit 14 QSPILPEN: QUADSPI and QUADSPI Delay Clock Enable During CSleep Mode
+Page  451: 0: QUADSPI and QUADSPI Delay clock disabled during CSleep mode
+Page  451: 1: QUADSPI and QUADSPI Delay clock enabled during CSleep mode (default after reset)
+Page  451: Bit 12 FMCLPEN: FMC Peripheral Clocks Enable During CSleep Mode
+Page  451: 0: FMC peripheral clocks disabled during CSleep mode
+Page  451: 1: FMC peripheral clocks enabled during CSleep mode (default after reset):
+Page  451: Bit 8 FLASHLPEN: Flash interface Clock Enable During CSleep Mode
+Page  451: 0: Flash interface clock disabled during CSleep mode
+Page  451: 1: Flash interface clock enabled during CSleep mode (default after reset)
+Page  451: Bit 5 JPGDECLPEN: JPGDEC Clock Enable During CSleep Mode
+Page  451: 0: JPGDEC peripheral clock disabled during CSleep mode
+Page  451: 1: JPGDEC peripheral clock enabled during CSleep mode (default after reset)
+Page  451: Bit 4 DMA2DLPEN: DMA2D Clock Enable During CSleep Mode
+Page  451: 0: DMA2D peripheral clock disabled during CSleep mode
+Page  451: 1: DMA2D peripheral clock enabled during CSleep mode (default after reset)
+Page  451: Bit 0 MDMALPEN: MDMA Clock Enable During CSleep Mode
+Page  451: 0: MDMA peripheral clock disabled during CSleep mode
+Page  451: 1: MDMA peripheral clock enabled during CSleep mode (default after reset)
+Page  452: Bit 27 USB2OTGHSLPEN: USB2OTG (OTG_US2) peripheral clock enable during CSleep mode
+Page  452: 0: USB2OTG peripheral clocks disabled during CSleep mode
+Page  452: 1: USB2OTG peripheral clocks enabled during CSleep mode (default after reset)
+Page  452: Bit 26 USB1OTGHSULPILPEN: USB_PHY1 clock enable during CSleep mode
+Page  452: 0: USB_PHY1 peripheral clock disabled during CSleep mode
+Page  452: 1: USB_PHY1 peripheral clock enabled during CSleep mode (default after reset)
+Page  452: Bit 25 USB1OTGHSLPEN: USB1OTG (OTG_HS1) peripheral clock enable during CSleep mode
+Page  452: 0: USB1OTG peripheral clock disabled during CSleep mode
+Page  452: 1: USB1OTG peripheral clock enabled during CSleep mode (default after reset)
+Page  452: Bit 17 ETH1RXLPEN: Ethernet Reception Clock Enable During CSleep Mode
+Page  452: 0: Ethernet Reception clock disabled during CSleep mode
+Page  452: 1: Ethernet Reception clock enabled during CSleep mode (default after reset)
+Page  453: Bit 16 ETH1TXLPEN: Ethernet Transmission Clock Enable During CSleep Mode
+Page  453: 0: Ethernet Transmission clock disabled during CSleep mode
+Page  453: 1: Ethernet Transmission clock enabled during CSleep mode (default after reset)
+Page  453: Bit 15 ETH1MACLPEN: Ethernet MAC bus interface Clock Enable During CSleep Mode
+Page  453: 0: Ethernet MAC bus interface clock disabled during CSleep mode
+Page  453: 1: Ethernet MAC bus interface clock enabled during CSleep mode (default after reset)
+Page  453: Bit 5 ADC12LPEN: ADC1/2 Peripheral Clocks Enable During CSleep Mode
+Page  453: 0: ADC1/2 peripheral clocks disabled during CSleep mode
+Page  453: 1: ADC1/2 peripheral clocks enabled during CSleep mode (default after reset)
+Page  453: Bit 1 DMA2LPEN: DMA2 Clock Enable During CSleep Mode
+Page  453: 0: DMA2 clock disabled during CSleep mode
+Page  453: 1: DMA2 clock enabled during CSleep mode (default after reset)
+Page  453: Bit 0 DMA1LPEN: DMA1 Clock Enable During CSleep Mode
+Page  453: 0: DMA1 clock disabled during CSleep mode
+Page  453: 1: DMA1 clock enabled during CSleep mode (default after reset)
+Page  454: Bit 31 SRAM3LPEN: SRAM3 Clock Enable During CSleep Mode
+Page  454: 0: SRAM3 clock disabled during CSleep mode
+Page  454: 1: SRAM3 clock enabled during CSleep mode (default after reset)
+Page  454: Bit 30 SRAM2LPEN: SRAM2 Clock Enable During CSleep Mode
+Page  454: 0: SRAM2 clock disabled during CSleep mode
+Page  454: 1: SRAM2 clock enabled during CSleep mode (default after reset)
+Page  454: Bit 29 SRAM1LPEN: SRAM1 Clock Enable During CSleep Mode
+Page  454: 0: SRAM1 clock disabled during CSleep mode
+Page  454: 1: SRAM1 clock enabled during CSleep mode (default after reset)
+Page  454: Bit 9 SDMMC2LPEN: SDMMC2 and SDMMC2 Delay Clock Enable During CSleep Mode
+Page  454: 0: SDMMC2 and SDMMC2 Delay clock disabled during CSleep mode
+Page  454: 1: SDMMC2 and SDMMC2 Delay clock enabled during CSleep mode (default after reset)
+Page  454: Bit 6 RNGLPEN: RNG peripheral clock enable during CSleep mode
+Page  454: 0: RNG peripheral clocks disabled during CSleep mode
+Page  454: 1: RNG peripheral clock enabled during CSleep mode (default after reset)
+Page  455: Bit 5 HASHLPEN: HASH peripheral clock enable during CSleep mode
+Page  455: 0: HASH peripheral clock disabled during CSleep mode
+Page  455: 1: HASH peripheral clock enabled during CSleep mode (default after reset)
+Page  455: Bit 4 CRYPTLPEN: CRYPT peripheral clock enable during CSleep mode
+Page  455: 0: CRYPT peripheral clock disabled during CSleep mode
+Page  455: 1: CRYPT peripheral clock enabled during CSleep mode (default after reset)
+Page  455: Bit 0 DCMILPEN: DCMI peripheral clock enable during CSleep mode
+Page  455: 0: DCMI peripheral clock disabled during CSleep mode
+Page  455: 1: DCMI peripheral clock enabled during CSleep mode (default after reset)
+Page  456: Bit 29 SRAM4LPEN: SRAM4 Clock Enable During CSleep Mode
+Page  456: 0: SRAM4 clock disabled during CSleep mode
+Page  456: 1: SRAM4 clock enabled during CSleep mode (default after reset)
+Page  456: Bit 28 BKPRAMLPEN: Backup RAM Clock Enable During CSleep Mode
+Page  456: 0: Backup RAM clock disabled during CSleep mode
+Page  456: 1: Backup RAM clock enabled during CSleep mode (default after reset)
+Page  456: Bit 24 ADC3LPEN: ADC3 Peripheral Clocks Enable During CSleep Mode
+Page  456: 0: ADC3 peripheral clocks disabled during CSleep mode
+Page  456: 1: ADC3 peripheral clocks enabled during CSleep mode (default after reset)
+Page  456: Bit 21 BDMALPEN: BDMA Clock Enable During CSleep Mode
+Page  456: 0: BDMA clock disabled during CSleep mode
+Page  456: 1: BDMA clock enabled during CSleep mode (default after reset)
+Page  457: Bit 19 CRCLPEN: CRC peripheral clock enable during CSleep mode
+Page  457: 0: CRC peripheral clock disabled during CSleep mode
+Page  457: 1: CRC peripheral clock enabled during CSleep mode (default after reset)
+Page  457: Bit 10 GPIOKLPEN: GPIOK peripheral clock enable during CSleep mode
+Page  457: 0: GPIOK peripheral clock disabled during CSleep mode
+Page  457: 1: GPIOK peripheral clock enabled during CSleep mode (default after reset)
+Page  457: Bit 9 GPIOJLPEN: GPIOJ peripheral clock enable during CSleep mode
+Page  457: 0: GPIOJ peripheral clock disabled during CSleep mode
+Page  457: 1: GPIOJ peripheral clock enabled during CSleep mode (default after reset)
+Page  457: Bit 8 GPIOILPEN: GPIOI peripheral clock enable during CSleep mode
+Page  457: 0: GPIOI peripheral clock disabled during CSleep mode
+Page  457: 1: GPIOI peripheral clock enabled during CSleep mode (default after reset)
+Page  457: Bit 7 GPIOHLPEN: GPIOH peripheral clock enable during CSleep mode
+Page  457: 0: GPIOH peripheral clock disabled during CSleep mode
+Page  457: 1: GPIOH peripheral clock enabled during CSleep mode (default after reset)
+Page  457: Bit 6 GPIOGLPEN: GPIOG peripheral clock enable during CSleep mode
+Page  457: 0: GPIOG peripheral clock disabled during CSleep mode
+Page  457: 1: GPIOG peripheral clock enabled during CSleep mode (default after reset)
+Page  457: Bit 5 GPIOFLPEN: GPIOF peripheral clock enable during CSleep mode
+Page  457: 0: GPIOF peripheral clock disabled during CSleep mode
+Page  457: 1: GPIOF peripheral clock enabled during CSleep mode (default after reset)
+Page  457: Bit 4 GPIOELPEN: GPIOE peripheral clock enable during CSleep mode
+Page  457: 0: GPIOE peripheral clock disabled during CSleep mode
+Page  457: 1: GPIOE peripheral clock enabled during CSleep mode (default after reset)
+Page  457: Bit 3 GPIODLPEN: GPIOD peripheral clock enable during CSleep mode
+Page  457: 0: GPIOD peripheral clock disabled during CSleep mode
+Page  457: 1: GPIOD peripheral clock enabled during CSleep mode (default after reset)
+Page  458: Bit 2 GPIOCLPEN: GPIOC peripheral clock enable during CSleep mode
+Page  458: 0: GPIOC peripheral clock disabled during CSleep mode
+Page  458: 1: GPIOC peripheral clock enabled during CSleep mode (default after reset)
+Page  458: Bit 1 GPIOBLPEN: GPIOB peripheral clock enable during CSleep mode
+Page  458: 0: GPIOB peripheral clock disabled during CSleep mode
+Page  458: 1: GPIOB peripheral clock enabled during CSleep mode (default after reset)
+Page  458: Bit 0 GPIOALPEN: GPIOA peripheral clock enable during CSleep mode
+Page  458: 0: GPIOA peripheral clock disabled during CSleep mode
+Page  458: 1: GPIOA peripheral clock enabled during CSleep mode (default after reset)
+Page  459: Bit 6 WWDG1LPEN: WWDG1 Clock Enable During CSleep Mode
+Page  459: 0: WWDG1 clock disable during CSleep mode
+Page  459: 1: WWDG1 clock enabled during CSleep mode (default after reset)
+Page  459: Bit 3 LTDCLPEN: LTDC peripheral clock enable during CSleep mode
+Page  459: 0: LTDC clock disabled during CSleep mode
+Page  459: 1: LTDC clock provided to the LTDC during CSleep mode (default after reset)
+Page  460: Bit 31 UART8LPEN: UART8 Peripheral Clocks Enable During CSleep Mode
+Page  460: 0: UART8 peripheral clocks disabled during CSleep mode
+Page  460: 1: UART8 peripheral clocks enabled during CSleep mode (default after reset):
+Page  460: Bit 30 UART7LPEN: UART7 Peripheral Clocks Enable During CSleep Mode
+Page  460: 0: UART7 peripheral clocks disabled during CSleep mode
+Page  460: 1: UART7 peripheral clocks enabled during CSleep mode (default after reset):
+Page  460: Bit 29 DAC12LPEN: DAC1/2 peripheral clock enable during CSleep mode
+Page  460: 0: DAC1/2 peripheral clock disabled during CSleep mode
+Page  460: 1: DAC1/2 peripheral clock enabled during CSleep mode (default after reset)
+Page  460: Bit 27 CECLPEN: HDMI-CEC Peripheral Clocks Enable During CSleep Mode
+Page  460: 0: HDMI-CEC peripheral clocks disabled during CSleep mode
+Page  460: 1: HDMI-CEC peripheral clocks enabled during CSleep mode (default after reset)
+Page  461: Bit 23 I2C3LPEN: I2C3 Peripheral Clocks Enable During CSleep Mode
+Page  461: 0: I2C3 peripheral clocks disabled during CSleep mode
+Page  461: 1: I2C3 peripheral clocks enabled during CSleep mode (default after reset):
+Page  461: Bit 22 I2C2LPEN: I2C2 Peripheral Clocks Enable During CSleep Mode
+Page  461: 0: I2C2 peripheral clocks disabled during CSleep mode
+Page  461: 1: I2C2 peripheral clocks enabled during CSleep mode (default after reset):
+Page  461: Bit 21 I2C1LPEN: I2C1 Peripheral Clocks Enable During CSleep Mode
+Page  461: 0: I2C1 peripheral clocks disabled during CSleep mode
+Page  461: 1: I2C1 peripheral clocks enabled during CSleep mode (default after reset):
+Page  461: Bit 20 UART5LPEN: UART5 Peripheral Clocks Enable During CSleep Mode
+Page  461: 0: UART5 peripheral clocks disabled during CSleep mode
+Page  461: 1: UART5 peripheral clocks enabled during CSleep mode (default after reset)
+Page  461: Bit 19 UART4LPEN: UART4 Peripheral Clocks Enable During CSleep Mode
+Page  461: 0: UART4 peripheral clocks disabled during CSleep mode
+Page  461: 1: UART4 peripheral clocks enabled during CSleep mode (default after reset)
+Page  461: Bit 18 USART3LPEN: USART3 Peripheral Clocks Enable During CSleep Mode
+Page  461: 0: USART3 peripheral clocks disabled during CSleep mode
+Page  461: 1: USART3 peripheral clocks enabled during CSleep mode (default after reset):
+Page  461: Bit 17 USART2LPEN: USART2 Peripheral Clocks Enable During CSleep Mode
+Page  461: 0: USART2 peripheral clocks disabled during CSleep mode
+Page  461: 1: USART2 peripheral clocks enabled during CSleep mode (default after reset)
+Page  461: Bit 16 SPDIFRXLPEN: SPDIFRX Peripheral Clocks Enable During CSleep Mode
+Page  461: 0: SPDIFRX peripheral clocks disabled during CSleep mode
+Page  461: 1: SPDIFRX peripheral clocks enabled during CSleep mode (default after reset)
+Page  462: Bit 15 SPI3LPEN: SPI3 Peripheral Clocks Enable During CSleep Mode
+Page  462: 0: SPI3 peripheral clocks disabled during CSleep mode
+Page  462: 1: SPI3 peripheral clocks enabled during CSleep mode (default after reset)
+Page  462: Bit 14 SPI2LPEN: SPI2 Peripheral Clocks Enable During CSleep Mode
+Page  462: 0: SPI2 peripheral clocks disabled during CSleep mode
+Page  462: 1: SPI2 peripheral clocks enabled during CSleep mode (default after reset)
+Page  462: Bit 9 LPTIM1LPEN: LPTIM1 Peripheral Clocks Enable During CSleep Mode
+Page  462: 0: LPTIM1 peripheral clocks disabled during CSleep mode
+Page  462: 1: LPTIM1 peripheral clocks enabled during CSleep mode (default after reset)
+Page  462: Bit 8 TIM14LPEN: TIM14 peripheral clock enable during CSleep mode
+Page  462: 0: TIM14 peripheral clock disabled during CSleep mode
+Page  462: 1: TIM14 peripheral clock enabled during CSleep mode (default after reset)
+Page  462: Bit 7 TIM13LPEN: TIM13 peripheral clock enable during CSleep mode
+Page  462: 0: TIM13 peripheral clock disabled during CSleep mode
+Page  462: 1: TIM13 peripheral clock enabled during CSleep mode (default after reset)
+Page  462: Bit 6 TIM12LPEN: TIM12 peripheral clock enable during CSleep mode
+Page  462: 0: TIM12 peripheral clock disabled during CSleep mode
+Page  462: 1: TIM12 peripheral clock enabled during CSleep mode (default after reset)
+Page  462: Bit 5 TIM7LPEN: TIM7 peripheral clock enable during CSleep mode
+Page  462: 0: TIM7 peripheral clock disabled during CSleep mode
+Page  462: 1: TIM7 peripheral clock enabled during CSleep mode (default after reset)
+Page  462: Bit 4 TIM6LPEN: TIM6 peripheral clock enable during CSleep mode
+Page  462: 0: TIM6 peripheral clock disabled during CSleep mode
+Page  462: 1: TIM6 peripheral clock enabled during CSleep mode (default after reset)
+Page  462: Bit 3 TIM5LPEN: TIM5 peripheral clock enable during CSleep mode
+Page  462: 0: TIM5 peripheral clock disabled during CSleep mode
+Page  462: 1: TIM5 peripheral clock enabled during CSleep mode (default after reset)
+Page  463: Bit 2 TIM4LPEN: TIM4 peripheral clock enable during CSleep mode
+Page  463: 0: TIM4 peripheral clock disabled during CSleep mode
+Page  463: 1: TIM4 peripheral clock enabled during CSleep mode (default after reset)
+Page  463: Bit 1 TIM3LPEN: TIM3 peripheral clock enable during CSleep mode
+Page  463: 0: TIM3 peripheral clock disabled during CSleep mode
+Page  463: 1: TIM3 peripheral clock enabled during CSleep mode (default after reset)
+Page  463: Bit 0 TIM2LPEN: TIM2 peripheral clock enable during CSleep mode
+Page  463: 0: TIM2 peripheral clock disabled during CSleep mode
+Page  463: 1: TIM2 peripheral clock enabled during CSleep mode (default after reset)
+Page  464: Bit 8 FDCANLPEN: FDCAN Peripheral Clocks Enable During CSleep Mode
+Page  464: 0: FDCAN peripheral clocks disabled during CSleep mode
+Page  464: 1: FDCAN peripheral clocks enabled during CSleep mode (default after reset)
+Page  464: Bit 5 MDIOSLPEN: MDIOS peripheral clock enable during CSleep mode
+Page  464: 0: MDIOS peripheral clock disabled during CSleep mode
+Page  464: 1: MDIOS peripheral clock enabled during CSleep mode (default after reset)
+Page  464: Bit 4 OPAMPLPEN: OPAMP peripheral clock enable during CSleep mode
+Page  464: 0: OPAMP peripheral clock disabled during CSleep mode
+Page  464: 1: OPAMP peripheral clock enabled during CSleep mode (default after reset)
+Page  465: Bit 2 SWPLPEN: SWPMI Peripheral Clocks Enable During CSleep Mode
+Page  465: 0: SWPMI peripheral clocks disabled during CSleep mode
+Page  465: 1: SWPMI peripheral clocks enabled during CSleep mode (default after reset)
+Page  465: Bit 1 CRSLPEN: Clock Recovery System peripheral clock enable during CSleep mode
+Page  465: 0: CRS peripheral clock disabled during CSleep mode
+Page  465: 1: CRS peripheral clock enabled during CSleep mode (default after reset)
+Page  466: Bit 29 HRTIMLPEN: HRTIM peripheral clock enable during CSleep mode
+Page  466: 0: HRTIM peripheral clock disabled during CSleep mode
+Page  466: 1: HRTIM peripheral clock enabled during CSleep mode (default after reset)
+Page  466: Bit 28 DFSDM1LPEN: DFSDM1 Peripheral Clocks Enable During CSleep Mode
+Page  466: 0: DFSDM1 peripheral clocks disabled during CSleep mode
+Page  466: 1: DFSDM1 peripheral clocks enabled during CSleep mode (default after reset)
+Page  466: Bit 24 SAI3LPEN: SAI3 Peripheral Clocks Enable During CSleep Mode
+Page  466: 0: SAI3 peripheral clocks disabled during CSleep mode
+Page  466: 1: SAI3 peripheral clocks enabled during CSleep mode (default after reset)
+Page  466: Bit 23 SAI2LPEN: SAI2 Peripheral Clocks Enable During CSleep Mode
+Page  466: 0: SAI2 peripheral clocks disabled during CSleep mode
+Page  466: 1: SAI2 peripheral clocks enabled during CSleep mode (default after reset)
+Page  467: Bit 22 SAI1LPEN: SAI1 Peripheral Clocks Enable During CSleep Mode
+Page  467: 0: SAI1 peripheral clocks disabled during CSleep mode
+Page  467: 1: SAI1 peripheral clocks enabled during CSleep mode (default after reset)
+Page  467: Bit 20 SPI5LPEN: SPI5 Peripheral Clocks Enable During CSleep Mode
+Page  467: 0: SPI5 peripheral clocks disabled during CSleep mode
+Page  467: 1: SPI5 peripheral clocks enabled during CSleep mode (default after reset)
+Page  467: Bit 18 TIM17LPEN: TIM17 peripheral clock enable during CSleep mode
+Page  467: 0: TIM17 peripheral clock disabled during CSleep mode
+Page  467: 1: TIM17 peripheral clock enabled during CSleep mode (default after reset)
+Page  467: Bit 17 TIM16LPEN: TIM16 peripheral clock enable during CSleep mode
+Page  467: 0: TIM16 peripheral clock disabled during CSleep mode
+Page  467: 1: TIM16 peripheral clock enabled during CSleep mode (default after reset)
+Page  467: Bit 16 TIM15LPEN: TIM15 peripheral clock enable during CSleep mode
+Page  467: 0: TIM15 peripheral clock disabled during CSleep mode
+Page  467: 1: TIM15 peripheral clock enabled during CSleep mode (default after reset)
+Page  467: Bit 13 SPI4LPEN: SPI4 Peripheral Clocks Enable During CSleep Mode
+Page  467: 0: SPI4 peripheral clocks disabled during CSleep mode
+Page  467: 1: SPI4 peripheral clocks enabled during CSleep mode (default after reset)
+Page  467: Bit 12 SPI1LPEN: SPI1 Peripheral Clocks Enable During CSleep Mode
+Page  467: 0: SPI1 peripheral clocks disabled during CSleep mode
+Page  467: 1: SPI1 peripheral clocks enabled during CSleep mode (default after reset)
+Page  467: Bit 5 USART6LPEN: USART6 Peripheral Clocks Enable During CSleep Mode
+Page  467: 0: USART6 peripheral clocks disabled during CSleep mode
+Page  467: 1: USART6 peripheral clocks enabled during CSleep mode (default after reset)
+Page  468: Bit 4 USART1LPEN: USART1 Peripheral Clocks Enable During CSleep Mode
+Page  468: 0: USART1 peripheral clocks disabled during CSleep mode
+Page  468: 1: USART1 peripheral clocks enabled during CSleep mode (default after reset)
+Page  468: Bit 1 TIM8LPEN: TIM8 peripheral clock enable during CSleep mode
+Page  468: 0: TIM8 peripheral clock disabled during CSleep mode
+Page  468: 1: TIM8 peripheral clock enabled during CSleep mode (default after reset)
+Page  468: Bit 0 TIM1LPEN: TIM1 peripheral clock enable during CSleep mode
+Page  468: 0: TIM1 peripheral clock disabled during CSleep mode
+Page  468: 1: TIM1 peripheral clock enabled during CSleep mode (default after reset)
+Page  469: Bit 21 SAI4LPEN: SAI4 Peripheral Clocks Enable During CSleep Mode
+Page  469: 0: SAI4 peripheral clocks disabled during CSleep mode
+Page  469: 1: SAI4 peripheral clocks enabled during CSleep mode (default after reset)
+Page  469: Bit 16 RTCAPBLPEN: RTC APB Clock Enable During CSleep Mode
+Page  469: 0: The register clock interface of the RTC (APB) is disabled during CSleep mode
+Page  469: 1: The register clock interface of the RTC (APB) is enabled during CSleep mode (default after reset)
+Page  469: Bit 15 VREFLPEN: VREF peripheral clock enable during CSleep mode
+Page  469: 0: VREF peripheral clock disabled during CSleep mode
+Page  469: 1: VREF peripheral clock enabled during CSleep mode (default after reset)
+Page  469: Bit 14 COMP12LPEN: COMP1/2 peripheral clock enable during CSleep mode
+Page  469: 0: COMP1/2 peripheral clock disabled during CSleep mode
+Page  469: 1: COMP1/2 peripheral clock enabled during CSleep mode (default after reset)
+Page  470: Bit 12 LPTIM5LPEN: LPTIM5 Peripheral Clocks Enable During CSleep Mode
+Page  470: 0: LPTIM5 peripheral clocks disabled during CSleep mode
+Page  470: 1: LPTIM5 peripheral clocks enabled during CSleep mode (default after reset)
+Page  470: Bit 11 LPTIM4LPEN: LPTIM4 Peripheral Clocks Enable During CSleep Mode
+Page  470: 0: LPTIM4 peripheral clocks disabled during CSleep mode
+Page  470: 1: LPTIM4 peripheral clocks enabled during CSleep mode (default after reset)
+Page  470: Bit 10 LPTIM3LPEN: LPTIM3 Peripheral Clocks Enable During CSleep Mode
+Page  470: 0: LPTIM3 peripheral clocks disabled during CSleep mode
+Page  470: 1: LPTIM3 peripheral clocks enabled during CSleep mode (default after reset)
+Page  470: Bit 9 LPTIM2LPEN: LPTIM2 Peripheral Clocks Enable During CSleep Mode
+Page  470: 0: LPTIM2 peripheral clocks disabled during CSleep mode
+Page  470: 1: LPTIM2 peripheral clocks enabled during CSleep mode (default after reset)
+Page  470: Bit 7 I2C4LPEN: I2C4 Peripheral Clocks Enable During CSleep Mode
+Page  470: 0: I2C4 peripheral clocks disabled during CSleep mode
+Page  470: 1: I2C4 peripheral clocks enabled during CSleep mode (default after reset)
+Page  470: Bit 5 SPI6LPEN: SPI6 Peripheral Clocks Enable During CSleep Mode
+Page  470: 0: SPI6 peripheral clocks disabled during CSleep mode
+Page  470: 1: SPI6 peripheral clocks enabled during CSleep mode (default after reset)
+Page  470: Bit 3 LPUART1LPEN: LPUART1 Peripheral Clocks Enable During CSleep Mode
+Page  470: 0: LPUART1 peripheral clocks disabled during CSleep mode
+Page  470: 1: LPUART1 peripheral clocks enabled during CSleep mode (default after reset)
+Page  471: Bit 1 SYSCFGLPEN: SYSCFG peripheral clock enable during CSleep mode
+Page  471: 0: SYSCFG peripheral clock disabled during CSleep mode
+Page  471: 1: SYSCFG peripheral clock enabled during CSleep mode (default after reset)
+Page  487: CRS interrupts cause the device to exit the Sleep mode.
+Page  489: When using USB LPM (Link Power Management) and the device is in Sleep mode, the
+Page  489: clock precision after waking up from Sleep mode, the LSE clock or the SYNC pin should be
+Page 1068: Comparator interrupts cause the device to exit the Sleep mode.
+Page 1858: Sleep                    No effect. LPTIM interrupts cause the device to exit Sleep mode.
+Page 1984: Sleep              No effect. I2C interrupts cause the device to exit the Sleep mode.
+Page 2323: Sleep               No effect. SWPMI interrupts cause the device to exit the Sleep mode.
+Page 2439: Power down (Sleep mode)
+Page 2579: USB suspend exit causes the device to exit Sleep mode. Peripheral                  Available while USB is in
+Page 2580: PHY clock bit and then configuring the system deep sleep mode in the power control
+Page 2621: sleep (L1) state. It is set in sleep mode after a delay of 50 μs (TL1Residency).
+Page 2622: Enables suspending the PHY in L1 Sleep mode. For maximum power saving during L1
+Page 2622: Sleep mode, this bit should be set to '1' by application SW in all the cases.
+Page 2622: Enables suspending the PHY in L1 Sleep mode. For maximum power saving during L1
+Page 2622: Sleep mode, this bit should be set to '1' by application SW in all the cases.
+Page 2800: When the MAC is in sleep mode and the remote wakeup bit is enabled in the PMT control
+Page 3133: Bit 0 DBGSLEEP_D1: Allow D1 domain debug in Sleep mode
+Page 3133: 0: Normal operation - processor clock is stopped automatically in Sleep mode
+Page 3155: Counts the number of cycles spent in sleep mode (WFI, WFE, sleep-on-exit).

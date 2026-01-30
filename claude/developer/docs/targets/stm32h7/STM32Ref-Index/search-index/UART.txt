@@ -1,0 +1,859 @@
+Keyword: UART
+Occurrences: 855
+================================================================================
+
+Page    7: LPUART1 transmission . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 298
+Page    7: 6.3.2       Memory-to-peripheral transfer using LPUART1 interface . . . . . . . . . . 298
+Page    7: LPUART1 transmission . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 303
+Page   49: /universal asynchronous receiver transmitter (UART) . . . . . . . . . . 2003
+Page   50: transmitter (LPUART) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2082
+Page   50: 48.1    LPUART introduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2082
+Page   50: 48.2    LPUART main features . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2083
+Page   50: 48.3    LPUART functional description . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2084
+Page   50: 48.3.1      LPUART block diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2084
+Page   50: 48.3.2      LPUART signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2085
+Page   50: 48.3.3      LPUART character description . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2085
+Page   50: 48.3.4      LPUART FIFOs and thresholds . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2086
+Page   50: 48.3.5      LPUART transmitter . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2087
+Page   50: 48.3.6      LPUART receiver . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2090
+Page   50: 48.3.7      LPUART baud rate generation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2094
+Page   50: 48.3.8      Tolerance of the LPUART receiver to clock deviation . . . . . . . . . . . . 2096
+Page   51: 48.3.9      LPUART multiprocessor communication . . . . . . . . . . . . . . . . . . . . . . 2096
+Page   51: 48.3.10 LPUART parity control . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2098
+Page   51: 48.3.11 LPUART single-wire Half-duplex communication . . . . . . . . . . . . . . . 2099
+Page   51: 48.3.12 Continuous communication using DMA and LPUART . . . . . . . . . . . . 2100
+Page   51: 48.3.14 LPUART low-power management . . . . . . . . . . . . . . . . . . . . . . . . . . . 2105
+Page   51: 48.4    LPUART interrupts . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2108
+Page   51: 48.5    LPUART registers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .2110
+Page   51: 48.5.1      Control register 1 (LPUART_CR1) . . . . . . . . . . . . . . . . . . . . . . . . . . . 2110
+Page   51: 48.5.2      Control register 2 (LPUART_CR2) . . . . . . . . . . . . . . . . . . . . . . . . . . . 2113
+Page   51: 48.5.3      Control register 3 (LPUART_CR3) . . . . . . . . . . . . . . . . . . . . . . . . . . . 2115
+Page   51: 48.5.4      Baud rate register (LPUART_BRR) . . . . . . . . . . . . . . . . . . . . . . . . . . 2118
+Page   51: 48.5.5      Request register (LPUART_RQR) . . . . . . . . . . . . . . . . . . . . . . . . . . . 2119
+Page   51: 48.5.6      Interrupt and status register (LPUART_ISR) . . . . . . . . . . . . . . . . . . . 2119
+Page   51: 48.5.7      Interrupt flag clear register (LPUART_ICR) . . . . . . . . . . . . . . . . . . . . 2123
+Page   51: 48.5.8      Receive data register (LPUART_RDR) . . . . . . . . . . . . . . . . . . . . . . . 2124
+Page   51: 48.5.9      Transmit data register (LPUART_TDR) . . . . . . . . . . . . . . . . . . . . . . . 2125
+Page   51: 48.5.10 Prescaler register (LPUART_PRESC) . . . . . . . . . . . . . . . . . . . . . . . . 2125
+Page   51: 48.5.11 LPUART register map . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2127
+Page   68: Table 46.   LPUART1 Initial programming (LPUART1_INIT) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 303
+Page   68: Table 47.   LPUART1 Initial programming (LPUART1_Start) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 303
+Page   75: Table 386.   USART/LPUART features . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2005
+Page   75: Table 393.   Error calculation for programmed baud rates at lpuart_ker_ck_pres= 32,768 KHz . . . . 2095
+Page   75: Table 395.   Tolerance of the LPUART receiver . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2096
+Page   75: Table 397.   LPUART interrupt requests. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2108
+Page   75: Table 398.   LPUART register map and reset values . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2127
+Page   80: Figure 36.   Timing diagram of SRAM4-to-LPUART1 transfer with BDMA and D3 domain
+Page   80: Figure 37.   Timing diagram of LPUART1 transmission with D3 domain
+Page   81: Figure 49.   Kernel clock distribution for UARTs, USARTs and LPUART1 . . . . . . . . . . . . . . . . . . . . . 339
+Page   92: Figure 594. LPUART block diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2084
+Page   92: Figure 595. LPUART word length programming . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2086
+Page   92: Figure 598. lpuart_ker_ck clock divider block diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2093
+Page   92: Figure 603. Hardware flow control between 2 LPUARTs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2102
+Page  127: 0x58000C00 - 0x58000FFF         LPUART1                    Section 48.5: LPUART registers
+Page  129: 0x40007C00 - 0x40007FFF                  UART8                       Section 47.7: USART registers
+Page  129: 0x40007800 - 0x40007BFF                  UART7                       Section 47.7: USART registers
+Page  129: 0x40005000 - 0x400053FF                  UART5                       Section 47.7: USART registers
+Page  129: 0x40004C00 - 0x40004FFF                  UART4                       Section 47.7: USART registers
+Page  294: transfers through an example of LINUART1 transmission.
+Page  298: LPUART1 transmission
+Page  298: 6.3.2      Memory-to-peripheral transfer using LPUART1 interface
+Page  298: Run mode, it prepares the data to be transmitted via LPUART1, transfers them to SRAM4,
+Page  298: LPUART1 and go back to Stop mode when the transfer is complete.
+Page  298: 2.   Process the new data to be sent via LPUART1 (PROC).
+Page  298: 4.   Configure the DMAMUX2, the BDMA, the LPUART1, and the RCC (CFG).
+Page  298: 1.   Transfer the data from SRAM4 to LPUART1, using BDMA.
+Page  298: 2.   When the LPUART1 interface indicates that the last byte has been transferred, the D3
+Page  299: Figure 36. Timing diagram of SRAM4-to-LPUART1 transfer with BDMA and D3 domain
+Page  299: D3 processing                                 MEM to LPUART1 Transfer                                                  MEM to LPUART1
+Page  299: STRT   Power-on reset startup                   CFG   Peripherals initialization (BDMA, DMAMUX2, PWR, LPUART1, EXTI)
+Page  299: PROC   Data processing                          STP   Control of EXTI, BDMA and LPUART1 prior to go to CSTOP
+Page  299: used for the data transfer, that is BDMA, DMAMUX2, LPUART1 and LPTIM4. These
+Page  299: LPUART1 can use its own APB clock as kernel clock. Since the system will not enter Stop
+Page  299: mode before LPUART1 has completed data transfer, PLLx can be used to provide clocks to
+Page  300: •   Set the device to Stop mode when the data transfer via LPUART1 is complete.
+Page  300: Two BDMA channels are required to execute data transfers via LPUART1.
+Page  300: LPUART1, using the TXE flag.
+Page  300: requests is triggered by the LPUART1 transmit interrupt (lpuart1_tx_it). The LPUART1
+Page  300: interface generates lpuart1_tx_it interrupt when the transmit complete event is detected.
+Page  300: LPUART1.
+Page  301: LPUART1                          DMAMUX2
+Page  301: lpuart1_tx_dma                                           SYNC0                                 CH0
+Page  301: lpuart1_tx_it
+Page  301: DMAREQ_ID of DMAMUX2_C0CR = ‘7’                             Selects LPUART_TX BDMA request.
+Page  301: SIG_ID of DMAMUX2_RG0CR = ‘0d24’                           Selects LPUART TX interrupt as trigger.
+Page  302: PA of BDMA_CPAR0 = &LPUART1_TDR        Address of LPUART1_TDR.
+Page  302: PA of BDMA_CPAR7 = &LPUART1_ICR        Address of LPUART1_ICR (Interrupt Flag Clear Reg.).
+Page  302: LPUART programming
+Page  302: In the use-case described herein, the capability of the LPUART1 to request the kernel clock
+Page  302: LPUART1 is programmed so that is generates a BDMA request when its TX-FIFO is not full.
+Page  302: LPUART1 also generates an interrupt when the TX-FIFO and its transmit shift register are
+Page  302: Table 46 gives the key settings concerning the handling of Stop mode for LPUART1.
+Page  303: Table 46. LPUART1 Initial programming (LPUART1_INIT)
+Page  303: FIFOEN of LPUART1_CR1 = ‘1’     Enables FIFO. BDMA will then use TXFNF (TXFIFO Not Full) flag for generating
+Page  303: TCIE of LPUART1_CR1 = ‘0’       Disables interrupt when the transmit buffer is empty.
+Page  303: UE of LPUART1_CR1 = ‘1’         Enables BDMA.
+Page  303: TE of LPUART1_CR1 = ‘1’         Enables the LPUART1.
+Page  303: TXE of LPUART1_CR1 = ‘1’        Enables transmission.
+Page  303: DMAT of LPUART1_CR3 = ‘1’       Enables the BDMA mode for transmission.
+Page  303: Respect the sequence described in Table 47 to enable LPUART1.
+Page  303: Table 47. LPUART1 Initial programming (LPUART1_Start)
+Page  303: TCCF of LPUART1_ICR = ‘1’     Clears the TC flag, to avoid immediate interrupt generation, which would clear the
+Page  303: TCIE of LPUART1_CR1 = ‘1’     Enables interrupt when the transmit buffer is empty.
+Page  303: LPUART1 transmission
+Page  303: 2.   Full initialization of RCC, PWR, EXTI, LPUART1, GPIOs, LPTIM4, DMAMUX2, BDMA
+Page  303: Only the relevant steps of RCC, EXTI, PWR, LPUART1, BDMA and DMAMUX2
+Page  303: 5.   The CPU enables the BDMA to start LPUART transmission and goes to Stop mode. As
+Page  303: 6.   As soon as the BDMA is enabled, it serves the request from LPUART1 in order to fill its
+Page  303: set to 0), the BDMA no longer provides data to the LPUART1. The LPUART1
+Page  303: BDMA channel 7 (BDMA_Ch7). This transfer clears LPUART1 TC flag, and the
+Page  303: lpuart1_tx_it is reset to ‘0’.
+Page  304: Note:            The CPU does not need to initialize BDMA, DMAMUX2 and LPUART1 again.
+Page  304: Figure 37. Timing diagram of LPUART1 transmission with D3 domain
+Page  304: LPUART1_Start
+Page  304: LPUART1_Start
+Page  304: LPUART1_INIT
+Page  304: LPUART1_TXD                                                       D1 D2 D3                               DN                                                             D1 D2 D3              DN
+Page  304: lpuart1_tx_it                                                                                                  5
+Page  304: can be stopped once the data have been transferred to LPUART1 TX-FIFO, instead of
+Page  304: this case, the LPUART1 must use ck_hsi or ck_csi as kernel clock when the system
+Page  304: switches from Run to Stop mode. LPUART1 must be programmed to wake up D3 domain
+Page  304: transfers to LPUART1_TDR and then switch back the D3 domain to Stop mode. This
+Page  304: implementation is possible because the LPUART1 can request the kernel clock as long as
+Page  334: reprogramming the peripherals. As an example an on-going transfer with UART will not be
+Page  335: UART4,5,7,8        SEL
+Page  336: LPUART1         LPUART1SEL       100       D3                                1                                   2                                   0                      3              4                     5
+Page  337: Peripherals such as SPIs, I2Cs, UARTs do not need a specific kernel clock frequency but a
+Page  337: from Stop mode (i.e. UART, I2C...).
+Page  338: Note:           UARTs also need the LSE clock when high baud rates are not required.
+Page  339: Figure 49. Kernel clock distribution for UARTs, USARTs and LPUART1
+Page  339: csi_ker_ck             4                                                                        UART[5:4]
+Page  339: lse_ck             5                   UART[5:4]EN
+Page  339: UART[5:4]LPEN                                     uart_ker_ck_req
+Page  339: uart_ker_ck
+Page  339: RCC                             PKSU                                                                        UART[8:7]
+Page  339: UART[8:7]EN
+Page  339: UART[8:7]LPEN                                     uart_ker_ck_req
+Page  339: uart_ker_ck
+Page  339: LPUART1SEL
+Page  339: LPUART1AMEN                                            LPUART1
+Page  339: rcc_pclk4            0                   LPUART1EN
+Page  339: pll2_q_ck            1                 LPUART1PLEN                                       lpuart_ker_ck_req
+Page  339: pll3_q_ck            2 D                                                                 lpuart_ker_ck
+Page  348: Autonomous mode with the capability of some peripherals (UARTs, I2Cs) to request the
+Page  352: Some peripherals (SAI, UART...) also require a dedicated clock for their communication
+Page  357: Only I2C, U(S)ART and LPUART peripherals are able to request the kernel clock. This
+Page  393: Bits 2:0 USART234578SEL[2:0]: USART2/3, UART4,5, 7/8 (APB1) kernel clock source selection
+Page  394: LPTIM345SEL[2:0] (1)           LPTIM2SEL[2:0] (1)    I2C4SEL[1:0] (1)   Res.    Res.     Res.   Res.   Res.   LPUART1SEL[2:0] (1)
+Page  396: Bits 2:0   LPUART1SEL[2:0]: LPUART1 kernel clock source selection
+Page  414: UART8RST
+Page  414: UART7RST
+Page  414: UART5RST
+Page  414: UART4RST
+Page  414: Bit 31 UART8RST: UART8 block reset
+Page  414: 0: does not reset the UART8 block (default after reset)
+Page  414: 1: resets the UART8 block
+Page  414: Bit 30 UART7RST: UART7 block reset
+Page  414: 0: does not reset the UART7 block (default after reset)
+Page  414: 1: resets the UART7 block
+Page  415: Bit 20 UART5RST: UART5 block reset
+Page  415: 0: does not reset the UART5 block (default after reset)
+Page  415: 1: resets the UART5 block
+Page  415: Bit 19 UART4RST: UART4 block reset
+Page  415: 0: does not reset the UART4 block (default after reset)
+Page  415: 1: resets the UART4 block
+Page  420: LPUART1RST
+Page  421: Bit 3 LPUART1RST: LPUART1 block reset
+Page  421: 0: does not reset the LPUART1 block (default after reset)
+Page  421: 1: resets the LPUART1 block
+Page  423: LPUART1AMEN
+Page  425: Bit 3   LPUART1AMEN: LPUART1 Autonomous mode enable
+Page  425: 0: LPUART1 peripheral clocks are disabled when the CPU is in CStop (default after reset)
+Page  425: 1: LPUART1 peripheral clocks enabled when D3 domain is in DRun.
+Page  438: UART8EN
+Page  438: UART7EN
+Page  438: UART5EN
+Page  438: UART4EN
+Page  438: Bit 31 UART8EN: UART8 Peripheral Clocks Enable
+Page  438: 0: UART8 peripheral clocks disable (default after reset)
+Page  438: 1: UART8 peripheral clocks enabled
+Page  438: The peripheral clocks of the UART8 are: the kernel clock selected by USART234578SEL and
+Page  438: Bit 30 UART7EN: UART7 Peripheral Clocks Enable
+Page  438: 0: UART7 peripheral clocks disable (default after reset)
+Page  438: 1: UART7 peripheral clocks enabled
+Page  438: The peripheral clocks of the UART7 are: the kernel clock selected by USART234578SEL and
+Page  439: Bit 20 UART5EN: UART5 Peripheral Clocks Enable
+Page  439: 0: UART5 peripheral clocks disable (default after reset)
+Page  439: 1: UART5 peripheral clocks enabled
+Page  439: The peripheral clocks of the UART5 are: the kernel clock selected by USART234578SEL and
+Page  439: provided to uart_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  439: Bit 19 UART4EN: UART4 Peripheral Clocks Enable
+Page  439: 0: UART4 peripheral clocks disable (default after reset)
+Page  439: 1: UART4 peripheral clocks enabled
+Page  439: The peripheral clocks of the UART4 are: the kernel clock selected by USART234578SEL and
+Page  439: provided to uart_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  447: LPUART1EN
+Page  448: Bit 3 LPUART1EN: LPUART1 Peripheral Clocks Enable
+Page  448: 0: LPUART1 peripheral clocks disabled (default after reset)
+Page  448: 1: LPUART1 peripheral clocks enabled
+Page  448: The peripheral clocks of the LPUART1 are: the kernel clock selected by LPUART1SEL and
+Page  448: provided to lpuart_ker_ck input, and the rcc_pclk4 bus interface clock.
+Page  460: UART8LPEN
+Page  460: UART7LPEN
+Page  460: UART5LPEN
+Page  460: UART4LPEN
+Page  460: Bit 31 UART8LPEN: UART8 Peripheral Clocks Enable During CSleep Mode
+Page  460: 0: UART8 peripheral clocks disabled during CSleep mode
+Page  460: 1: UART8 peripheral clocks enabled during CSleep mode (default after reset):
+Page  460: The peripheral clocks of the UART8 are: the kernel clock selected by USART234578SEL and
+Page  460: Bit 30 UART7LPEN: UART7 Peripheral Clocks Enable During CSleep Mode
+Page  460: 0: UART7 peripheral clocks disabled during CSleep mode
+Page  460: 1: UART7 peripheral clocks enabled during CSleep mode (default after reset):
+Page  460: The peripheral clocks of the UART7 are: the kernel clock selected by USART234578SEL and
+Page  461: Bit 20 UART5LPEN: UART5 Peripheral Clocks Enable During CSleep Mode
+Page  461: 0: UART5 peripheral clocks disabled during CSleep mode
+Page  461: 1: UART5 peripheral clocks enabled during CSleep mode (default after reset)
+Page  461: The peripheral clocks of the UART5 are: the kernel clock selected by USART234578SEL and
+Page  461: provided to uart_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  461: Bit 19 UART4LPEN: UART4 Peripheral Clocks Enable During CSleep Mode
+Page  461: 0: UART4 peripheral clocks disabled during CSleep mode
+Page  461: 1: UART4 peripheral clocks enabled during CSleep mode (default after reset)
+Page  461: The peripheral clocks of the UART4 are: the kernel clock selected by USART234578SEL and
+Page  461: provided to uart_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  469: LPUART1LPEN
+Page  470: Bit 3 LPUART1LPEN: LPUART1 Peripheral Clocks Enable During CSleep Mode
+Page  470: 0: LPUART1 peripheral clocks disabled during CSleep mode
+Page  470: 1: LPUART1 peripheral clocks enabled during CSleep mode (default after reset)
+Page  470: The peripheral clocks of the LPUART1 are: the kernel clock selected by LPUART1SEL and
+Page  470: provided to lpuart_ker_ck input, and the rcc_pclk4 bus interface clock.
+Page  474: DMA2RST                       Res.                       LSIRDY                        LSERDY                                             LSERDYC                                LSERDYF                              LSERDYIE                              LPUART1SEL[2:0]        1
+Page  475: Res.                            Res.                        Res.                       Res.                              UART8RST                      Res.                                 Res.                       Res.       31
+Page  475: Res.                            Res.                        Res.                       Res.                              UART7RST                      Res.                                 Res.                       Res.       30
+Page  475: Res.                            Res.                      SPI5RST                      Res.                              UART5RST                      Res.                                 Res.                       Res.       20
+Page  475: Res.                            Res.                        Res.                       Res.                              UART4RST                      Res.                               CRCRST                       Res.       19
+Page  475: Res.                        LPUART1RST                      Res.                       Res.                               TIM5RST                    LTDCRST                             GPIODRST                      Res.        3
+Page  476: LTDCEN                              GPIODEN                     Res.                          Res.                        Res.                         Res.                                LPUART1AMEN        3
+Page  477: SRAM3LPEN                           Res.                      AXISRAMLPEN                           Res.                      Res.                    Res.                              UART8EN      31
+Page  477: SRAM2LPEN                           Res.                        ITCMLPEN                            Res.                      Res.                    Res.                              UART7EN      30
+Page  477: Res.                             Res.                           Res.                             Res.                    SPI5EN                    Res.                              UART5EN      20
+Page  477: Res.                             Res.                           Res.                             Res.                      Res.                    Res.                              UART4EN      19
+Page  477: Res.                             Res.                           Res.                        LPUART1EN                      Res.                    Res.                               TIM5EN       3
+Page  478: Res.                                   Res.                         Res.                         Res.                                UART8LPEN                        Res.                                   Res.       31
+Page  478: Res.                                   Res.                         Res.                         Res.                                UART7LPEN                        Res.                                   Res.       30
+Page  478: Res.                                   Res.                       SPI5LPEN                       Res.                                UART5LPEN                        Res.                                   Res.       20
+Page  478: Res.                                   Res.                         Res.                         Res.                                UART4LPEN                        Res.                                 CRCLPEN      19
+Page  478: Res.                               LPUART1LPEN                     Res.                         Res.                                 TIM5LPEN                     LTDCLPEN                               GPIODLPEN      3
+Page  479: Res.                      Res.                    Res.                              UART8EN                       Res.                                Res.                   SRAM3EN                        Res.         31
+Page  479: Res.                      Res.                    Res.                              UART7EN                       Res.                                Res.                   SRAM2EN                        Res.         30
+Page  479: Res.                    SPI5EN                    Res.                              UART5EN                       Res.                                Res.                     Res.                          Res.        20
+Page  479: Res.                      Res.                    Res.                              UART4EN                       Res.                               CRCEN                     Res.                          Res.        19
+Page  479: LPUART1EN                     Res.                    Res.                               TIM5EN                     LTDCEN                              GPIODEN                    Res.                         Res.          3
+Page  480: Res.                                UART8LPEN                        Res.                                   Res.                      SRAM3LPEN                           Res.                      AXISRAMLPEN    31
+Page  480: Res.                                UART7LPEN                        Res.                                   Res.                      SRAM2LPEN                           Res.                        ITCMLPEN     30
+Page  480: Res.                                UART5LPEN                        Res.                                   Res.                         Res.                             Res.                           Res.      20
+Page  480: Res.                                UART4LPEN                        Res.                                 CRCLPEN                        Res.                             Res.                           Res.      19
+Page  481: LPUART1LPEN                       Res.       3
+Page  572: D2      APB1       UART4           uart4_wkup       WKUP30                     D    CPU       -
+Page  572: D2      APB1       UART5           uart5_wkup       WKUP31                     D    CPU       -
+Page  572: D2      APB1       UART7           uart7_wkup       WKUP32                     D    CPU       -
+Page  572: D2      APB1       UART8           uart8_wkup       WKUP33                     D    CPU       -
+Page  572: D3      APB4      LPUART          lpuart_rx_wkup    WKUP34                     D    ANY       -
+Page  572: D3      APB4      LPUART          lpuart_tx_wkup    WKUP35                     D    ANY        -
+Page  573: D3         APB4       LPUART1              lpuart1_it         WKUP64                        D      CPU
+Page  579: uart4_rx_dma     dmamux1_req_in63
+Page  579: D1     APB1   UART4
+Page  579: uart4_tx_dma     dmamux1_req_in64
+Page  580: uart5_rx_dma      dmamux1_req_in65
+Page  580: D1       APB1   UART5
+Page  580: uart5_tx_dma      dmamux1_req_in66
+Page  580: uart7_rx_dma      dmamux1_req_in79
+Page  580: D2       APB1   UART7                                           DMAMUX1 AHB1        D2      Requests
+Page  580: uart7_tx_dma      dmamux1_req_in80
+Page  580: uart8_rx_dma      dmamux1_req_in81
+Page  580: D2       APB1   UART8
+Page  580: uart8_tx_dma      dmamux1_req_in82
+Page  583: dma_rx_lpuart     dmamux2_req_in9   DMAMUX2 AHB4     D3     Requests
+Page  583: D3     APB4 LPUART
+Page  583: dma_tx_lpuart    dmamux2_req_in10
+Page  584: exti_lpuart_rx_it      dmamux2_gen7
+Page  584: exti_lpuart_tx_it      dmamux2_gen8
+Page  584: it_tx_lpuart1       dmamux2_gen24
+Page  584: D3   APB4 LPUART
+Page  584: it_rx_lpuart1       dmamux2_gen25
+Page  585: it_exti_tx_lpuart1       dmamux2_trg6
+Page  585: it_exti_rx_lpuart1       dmamux2_trg7
+Page  673: 20             TIM2_CH3           63       uart4_rx_dma           106           TIM15_UP
+Page  673: 21             TIM2_CH4           64       uart4_tx_dma           107          TIM15_TRIG
+Page  673: 22              TIM2_UP           65       uart5_rx_dma           108          TIM15_COM
+Page  673: 23             TIM3_CH1           66       uart5_tx_dma           109          TIM16_CH1
+Page  673: 36             i2c2_tx_dma        79       uart7_rx_dma           122           Reserved
+Page  673: 37             spi1_rx_dma        80       uart7_tx_dma           123           Reserved
+Page  673: 38             spi1_tx_dma        81       uart8_rx_dma           124           Reserved
+Page  673: 39             spi2_rx_dma        82       uart8_tx_dma           125           Reserved
+Page  674: 9              lpuart1_rx_dma            25                Reserved
+Page  674: 10             lpuart1_tx_dma            26                Reserved
+Page  675: 7                lpuart_rx_wkup             23               spi6_it
+Page  675: 8                lpuart_tx_wkup             24            Lpuart1_it_T
+Page  675: 9                 lptim2_wkup               25            Lpuart1_it_R
+Page  675: 6               lpuart1_rx_wkup             22             Reserved
+Page  675: 7               lpuart1_tx_wkup             23             Reserved
+Page  733: uart4_gbl_it
+Page  733: 59           52             UART4        UART4 global interrupt         0x0000 0110
+Page  733: exti_uart4_wkup
+Page  733: uart5_gbl_it
+Page  733: 60           53             UART5        UART5 global interrupt         0x0000 0114
+Page  733: exti_uart5_wkup
+Page  734: uart7_gbl_it
+Page  734: 89           82             UART7        UART7 global interrupt       0x0000 0188
+Page  734: exti_uart7_wkup
+Page  734: uart8_gbl_it
+Page  734: 90           83             UART8        UART8 global interrupt       0x0000 018C
+Page  734: exti_uart8_wkup
+Page  736: lpuart_gbl_it
+Page  736: exti_lpuart_rx_it   149         142            LPUART        LPUART global interrupt           0x0000 0278
+Page  736: exti_lpuart_tx_it
+Page  747: 30        UART4 wakeup                          Direct           CPU only               Yes
+Page  747: 31        UART5 wakeup                          Direct           CPU only               Yes
+Page  747: 32        UART7 wakeup                          Direct           CPU only               Yes
+Page  747: 33        UART8 wakeup                          Direct           CPU only               Yes
+Page  747: 34        LPUART1 RX wakeup                     Direct              Any                 Yes
+Page  747: 35        LPUART1 TX wakeup                     Direct              Any                 Yes
+Page  748: 64        LPUART1 global Interrupt             Direct           CPU only              No(5)
+Page 1901: (ck_apre) generated from the 32.768 kHz quartz. The detection is performed during a time
+Page 2003: /universal asynchronous receiver transmitter (UART)
+Page 2005: Table 386. USART/LPUART features
+Page 2005: USART modes/features(1)                USART1/2/3/6       UART4/5/7/8       LPUART
+Page 2010: supported only in UART, SPI and Smartcard modes.
+Page 2055: Note: FIFO mode can be used on standard UART communication, in SPI master/slave mode
+Page 2060: connection to another UART.
+Page 2070: supported in both UART and Smartcard modes.
+Page 2082: Low-power universal asynchronous receiver transmitter (LPUART)                                 RM0433
+Page 2082: transmitter (LPUART)
+Page 2082: (LPUART).
+Page 2082: 48.1        LPUART introduction
+Page 2082: The LPUART is an UART which allows bidirectional UART communications with a limited
+Page 2082: power consumption. Only 32.768 kHz LSE clock is required to allow UART communications
+Page 2082: up to 9600 baud/s. Higher baud rates can be reached when the LPUART is clocked by clock
+Page 2082: Even when the microcontroller is in low-power mode, the LPUART can wait for an incoming
+Page 2082: UART frame while having an extremely low energy consumption. The LPUART includes all
+Page 2083: RM0433                         Low-power universal asynchronous receiver transmitter (LPUART)
+Page 2083: 48.2     LPUART main features
+Page 2084: Low-power universal asynchronous receiver transmitter (LPUART)                                                   RM0433
+Page 2084: 48.3        LPUART functional description
+Page 2084: 48.3.1      LPUART block diagram
+Page 2084: Figure 594. LPUART block diagram
+Page 2084: LPUART
+Page 2084: lpuart_ker_ck clock domain
+Page 2084: lpuart_wkup
+Page 2084: lpuart_it                          lpuart_pclk
+Page 2084: lpuart_tx_dma                            clock domain
+Page 2084: lpuart_rx_dma
+Page 2084: LPUART_CR1
+Page 2084: LPUART_ISR
+Page 2084: LPUART_CR2                                                          CTS/NSS
+Page 2084: LPUART_CR3                                         flow control
+Page 2084: LPUART_RQR
+Page 2084: LPUART_ICR                               TX Shift Reg
+Page 2084: LPUART_TDR
+Page 2084: LPUART_RDR
+Page 2084: LPUART_
+Page 2084: LPUART_                                 Baudrate
+Page 2084: LPUART_BRR                              orversampling
+Page 2084: lpuart_pclk
+Page 2084: LPUART_              lpuart_ker_ck_pres
+Page 2084: lpuart_ker_ck             PRESC
+Page 2084: •     The lpuart_pclk clock domain
+Page 2084: The lpuart_pclk clock signal feeds the peripheral bus interface. It must be active when
+Page 2084: accesses to the LPUART registers are required.
+Page 2084: •     The lpuart_ker_ck kernel clock domain
+Page 2084: The lpuart_ker_ck is the LPUART clock source. It is independent of the lpuart_pclk
+Page 2084: and delivered by the RCC. So, the LPUART registers can be written/read even when
+Page 2084: the lpuart_ker_ck is stopped.
+Page 2084: When the dual clock domain feature is disabled, the lpuart_ker_ck is the same as the
+Page 2084: lpuart_pclk clock.
+Page 2084: There is no constraint between lpuart_pclk and lpuart_ker_ck: lpuart_ker_ck can be
+Page 2084: faster or slower than lpuart_pclk, with no more limitation than the ability for the software to
+Page 2085: RM0433                        Low-power universal asynchronous receiver transmitter (LPUART)
+Page 2085: 48.3.2   LPUART signals
+Page 2085: LPUART bidirectional communications requires a minimum of two pins: Receive Data In
+Page 2085: 48.3.3   LPUART character description
+Page 2085: M1: bit 28) in the LPUART_CR1 register (see Figure 568).
+Page 2086: Low-power universal asynchronous receiver transmitter (LPUART)                                                                                     RM0433
+Page 2086: Figure 595. LPUART word length programming
+Page 2086: 48.3.4      LPUART FIFOs and thresholds
+Page 2086: The LPUART can operate in FIFO mode.
+Page 2086: The LPUART comes with a Transmit FIFO (TXFIFO) and a Receive FIFO (RXFIFO). The
+Page 2086: FIFO mode is enabled by setting FIFOEN bit (bit 29) in LPUART_CR1 register.
+Page 2087: RM0433                       Low-power universal asynchronous receiver transmitter (LPUART)
+Page 2087: The status flags are available in the LPUART_ISR register.
+Page 2087: LPUART_CR3 control register.
+Page 2087: In this case, the RXFT flag is set in the LPUART_ISR register. This means that
+Page 2087: RXFTCFG data have been received: 1 data in LPUART_RDR and (RXFTCFG - 1) data
+Page 2087: received: FIFO size - 1 data in the RXFIFO and 1 data in the LPUART_RDR. As a
+Page 2087: 48.3.5   LPUART transmitter
+Page 2087: During an LPUART transmission, data shifts out least significant bit first (default
+Page 2087: configuration) on the TX pin. In this mode, the LPUART_TDR register consists of a buffer
+Page 2087: When FIFO mode is enabled, the data written to the LPUART_TDR register are queued in
+Page 2087: Note:    The TE bit must be set before writing the data to be transmitted to the LPUART_TDR.
+Page 2088: Low-power universal asynchronous receiver transmitter (LPUART)                                                                                    RM0433
+Page 2088: LPUART_CR2 (bits 13,12).
+Page 2088: •     2 Stop bits: This will be supported by normal LPUART, Single-wire and Modem
+Page 2088: 1.    Program the M bits in LPUART_CR1 to define the word length.
+Page 2088: 2.    Select the desired baud rate using the LPUART_BRR register.
+Page 2088: 3.    Program the number of stop bits in LPUART_CR2.
+Page 2088: 4.    Enable the LPUART by writing the UE bit in LPUART_CR1 register to ‘1’.
+Page 2088: 5.    Select DMA enable (DMAT) in LPUART_CR3 if Multi buffer Communication is to take
+Page 2088: 6.    Set the TE bit in LPUART_CR1 to send an idle frame as first transmission.
+Page 2088: 7.    Write the data to send in the LPUART_TDR register. Repeat this operation for each
+Page 2088: – When FIFO mode is disabled, writing a data in the LPUART_TDR clears the TXE
+Page 2088: – When FIFO mode is enabled, writing a data in the LPUART_TDR adds one data to
+Page 2088: the TXFIFO. Write operations to the LPUART_TDR are performed when TXFNF flag
+Page 2088: 8.    When the last data is written to the LPUART_TDR register, wait until TC=1. This
+Page 2089: RM0433                      Low-power universal asynchronous receiver transmitter (LPUART)
+Page 2089: This check is required to avoid corrupting the last transmission when the LPUART is
+Page 2089: –    the data have been moved from the LPUART_TDR register to the shift register
+Page 2089: –    the LPUART_TDR register is empty;
+Page 2089: –    the next data can be written to the LPUART_TDR register without overwriting the
+Page 2089: When a transmission is ongoing, a write instruction to the LPUART_TDR register
+Page 2089: When no transmission is ongoing, a write instruction to the LPUART_TDR register
+Page 2089: – the LPUART_TDR register is empty;
+Page 2089: – the next data can be written to the LPUART_TDR register without overwriting the
+Page 2089: LPUART_TDR register stores the data in the TXFIFO. Data are copied from the
+Page 2089: LPUART_TDR. It is cleared when the TXFIFO is full. This flag generates an interrupt if
+Page 2089: LPUART_CR1 register.
+Page 2089: After writing the last data in the LPUART_TDR register, it is mandatory to wait for TC=1
+Page 2089: before disabling the LPUART or causing the microcontroller to enter the low-power
+Page 2090: Low-power universal asynchronous receiver transmitter (LPUART)                                                        RM0433
+Page 2090: LPUART_DR             F1                     F2                           F3
+Page 2090: LPUART                                                     because TXE=0             because TXE=0    because TXE=1
+Page 2090: character). The LPUART inserts a logic 1 signal (STOP) for the duration of 2 bits at the end
+Page 2090: Setting the TE bit drives the LPUART to send an idle frame before the first data frame.
+Page 2090: 48.3.6          LPUART receiver
+Page 2090: The LPUART can receive data words of either 7 or 8 or 9 bits depending on the M bits in the
+Page 2090: LPUART_CR1 register.
+Page 2090: In the LPUART, the start bit is detected when a falling edge occurs on the Rx line, followed
+Page 2091: RM0433                       Low-power universal asynchronous receiver transmitter (LPUART)
+Page 2091: During an LPUART reception, data are shifted in least significant bit first (default
+Page 2091: configuration) through the RX pin. In this mode, the LPUART_RDR register consists of a
+Page 2091: 1.   Program the M bits in LPUART_CR1 to define the word length.
+Page 2091: 2.   Select the desired baud rate using the baud rate register LPUART_BRR
+Page 2091: 3.   Program the number of stop bits in LPUART_CR2.
+Page 2091: 4.   Enable the LPUART by writing the UE bit in LPUART_CR1 register to ‘1’.
+Page 2091: 5.   Select DMA enable (DMAR) in LPUART_CR3 if multibuffer communication is to take
+Page 2091: 6.   Set the RE bit LPUART_CR1. This enables the receiver which begins searching for a
+Page 2091: empty. Reading the LPUART_RDR returns the oldest data entered in the RXFIFO.
+Page 2091: software read from the LPUART_RDR register. The RXNE flag can also be
+Page 2091: cleared by writing 1 to the RXFRQ in the LPUART_RQR register. The RXNE bit
+Page 2091: empty. After every read operation from the LPUART_RDR register, a data is
+Page 2091: LPUART_RQR register. When the RXFIFO is full, the first entry in the RXFIFO
+Page 2092: Low-power universal asynchronous receiver transmitter (LPUART)                                        RM0433
+Page 2092: LPUART_RDR is performed.;
+Page 2092: Data can not be transferred from the shift register to the LPUART_RDR register until
+Page 2092: LPUART_RDR is performed.
+Page 2093: RM0433                           Low-power universal asynchronous receiver transmitter (LPUART)
+Page 2093: enabling the LPUART.
+Page 2093: •   Possible use of the LPUART in low-power mode
+Page 2093: The clock source frequency is lpuart_ker_ck.
+Page 2093: the lpuart_ker_ck clock source can be configured in the RCC (see Section Reset and clock
+Page 2093: controller (RCC)). Otherwise, the lpuart_ker_ck is the same as lpuart_pclk.
+Page 2093: The lpuart_ker_ck can be divided by a programmable factor in the LPUART_PRESC
+Page 2093: Figure 598. lpuart_ker_ck clock divider block diagram
+Page 2093: lpuart_ker_ck_pres   LPUARTx_BRR
+Page 2093: lpuart_ker_ck             LPUARTx_PRESC[3:0]                          register and
+Page 2093: Some lpuart_ker_ck sources allow the LPUART to receive data while the MCU is in low-
+Page 2093: power mode. Depending on the received data and wakeup mode selection, the LPUART
+Page 2093: the LPUART_RDR register or by DMA.
+Page 2093: For the other clock sources, the system must be active to allow LPUART communications.
+Page 2094: Low-power universal asynchronous receiver transmitter (LPUART)                                                 RM0433
+Page 2094: •   the invalid data is transferred from the Shift register to the LPUART_RDR register.
+Page 2094: LPUART_CR3 register.
+Page 2094: The FE bit is reset by writing 1 to the FECF in the LPUART_ICR register.
+Page 2094: LPUART_CR2: it can be either 1 or 2 in normal mode.
+Page 2094: 48.3.7      LPUART baud rate generation
+Page 2094: programmed in the LPUART_BRR register.
+Page 2094: 256 × lpuart ckpres
+Page 2094: LPUARTDIV
+Page 2094: LPUARTDIV is defined in the LPUART_BRR register.
+Page 2094: to LPUART_BRR. Hence the baud rate register value should not be changed during
+Page 2094: It is forbidden to write values lower than 0x300 in the LPUART_BRR register.
+Page 2094: The maximum baud rate that can be reached when the LPUART clock source is the LSE, is
+Page 2094: 9600 baud. Higher baud rates can be reached when the LPUART is clocked by clock
+Page 2094: sources different from the LSE clock. For example, if the LPUART clock source frequency is
+Page 2095: RM0433                          Low-power universal asynchronous receiver transmitter (LPUART)
+Page 2095: Table 393. Error calculation for programmed baud rates at lpuart_ker_ck_pres= 32,768 KHz
+Page 2095: Baud rate                               lpuart_ker_ck_pres= 32,768 KHz
+Page 2096: Low-power universal asynchronous receiver transmitter (LPUART)                                      RM0433
+Page 2096: 48.3.8         Tolerance of the LPUART receiver to clock deviation
+Page 2096: The asynchronous receiver of the LPUART works correctly only if the total clock system
+Page 2096: deviation is less than the tolerance of the LPUART receiver. The causes which contribute to
+Page 2096: DTRA + DQUANT + DREC + DTCL + DWU < LPUART receiver tolerance
+Page 2096: The LPUART receiver can receive data correctly at up to the maximum tolerated deviation
+Page 2096: •     Number of Stop bits defined through STOP[1:0] bits in the LPUART_CR2 register
+Page 2096: •     LPUART_BRR register value.
+Page 2096: Table 395. Tolerance of the LPUART receiver
+Page 2096: 48.3.9         LPUART multiprocessor communication
+Page 2096: It is possible to perform LPUART multiprocessor communications (with several LPUARTs
+Page 2096: connected in a network). For instance one of the LPUARTs can be the master, with its TX
+Page 2096: output connected to the RX inputs of the other LPUARTs. The others are slaves, with their
+Page 2096: recipient actively receives the full message contents, thus reducing redundant LPUART
+Page 2097: RM0433                        Low-power universal asynchronous receiver transmitter (LPUART)
+Page 2097: To use the Mute mode feature, the MME bit must be set in the LPUART_CR1 register.
+Page 2097: and then set again quickly (within two lpuart_ker_ck cycles), otherwise Mute mode might
+Page 2097: •    the RWU bit in LPUART_ISR register is set to ‘1’. RWU can be controlled automatically
+Page 2097: by hardware or by software, through the MMRQ bit in the LPUART_RQR register,
+Page 2097: The LPUART can enter or exit from Mute mode using one of two methods, depending on
+Page 2097: the WAKE bit in the LPUART_CR1 register:
+Page 2097: The LPUART enters Mute mode when the MMRQ bit is written to 1 and the RWU is
+Page 2097: The LPUART wakes up when an Idle frame is detected. The RWU bit is then cleared by
+Page 2097: hardware but the IDLE bit is not set in the LPUART_ISR register. An example of Mute mode
+Page 2097: If the LPUART is activated while the line is IDLE, the idle state is detected after the duration
+Page 2098: Low-power universal asynchronous receiver transmitter (LPUART)                                                   RM0433
+Page 2098: ADD bits in the LPUART_CR2 register.
+Page 2098: The LPUART enters Mute mode when an address character is received which does not
+Page 2098: LPUART enters Mute mode.
+Page 2098: The LPUART also enters Mute mode when the MMRQ bit is written to ‘1’. The RWU bit is
+Page 2098: The LPUART exits from Mute mode when an address character is received which matches
+Page 2098: (programmed in the LUART_CR2 register)
+Page 2098: 48.3.10     LPUART parity control
+Page 2098: be enabled by setting the PCE bit in the LPUART_CR1 register. Depending on the frame
+Page 2098: length defined by the M bits, the possible LPUART frame formats are as listed in Table 396.
+Page 2098: Table 396: LPUART frame formats
+Page 2098: M bits                 PCE bit                                 LPUART frame(1)
+Page 2099: RM0433                             Low-power universal asynchronous receiver transmitter (LPUART)
+Page 2099: Table 396: LPUART frame formats
+Page 2099: M bits                 PCE bit                                LPUART frame(1)
+Page 2099: parity is selected (PS bit in LPUART_CR1 = 0).
+Page 2099: selected (PS bit in LPUART_CR1 = 1).
+Page 2099: If the parity check fails, the PE flag is set in the LPUART_ISR register and an interrupt is
+Page 2099: generated if PEIE is set in the LPUART_CR1 register. The PE flag is cleared by software
+Page 2099: writing 1 to the PECF in the LPUART_ICR register.
+Page 2099: If the PCE bit is set in LPUART_CR1, then the MSB bit of the data written in the data
+Page 2099: 48.3.11   LPUART single-wire Half-duplex communication
+Page 2099: Single-wire Half-duplex mode is selected by setting the HDSEL bit in the LPUART_CR3
+Page 2099: •     LINEN and CLKEN bits in the LPUART_CR2 register,
+Page 2099: •     SCEN and IREN bits in the LPUART_CR3 register.
+Page 2099: The LPUART can be configured to follow a Single-wire Half-duplex protocol where the TX
+Page 2099: communication is made with a control bit HDSEL in LPUART_CR3.
+Page 2100: Low-power universal asynchronous receiver transmitter (LPUART)                                     RM0433
+Page 2100: Apart from this, the communication protocol is similar to normal LPUART mode. Any conflict
+Page 2100: Note:       In LPUART communications, in the case of 1-stop bit configuration, the RXNE flag is set in
+Page 2100: 48.3.12     Continuous communication using DMA and LPUART
+Page 2100: The LPUART is capable of performing continuous communication using the DMA. The DMA
+Page 2100: flags in the LPUART_ISR register.
+Page 2100: DMA mode can be enabled for transmission by setting DMAT bit in the LPUART_CR3
+Page 2100: the Direct memory access controller sections) to the LPUART_TDR register whenever the
+Page 2100: TXE flag (TXFNF flag if FIFO mode is enabled) is set. To map a DMA channel for LPUART
+Page 2100: 1.   Write the LPUART_TDR register address in the DMA control register to configure it as
+Page 2100: the transfer. The data is loaded into the LPUART_TDR register from this memory area
+Page 2100: 6.   Clear the TC flag in the LPUART_ISR register by setting the TCCF bit in the
+Page 2100: LPUART_ICR register.
+Page 2100: LPUART communication is complete. This is required to avoid corrupting the last
+Page 2100: transmission before disabling the LPUART or entering low-power mode. Software must wait
+Page 2101: RM0433                                Low-power universal asynchronous receiver transmitter (LPUART)
+Page 2101: DMA mode can be enabled for reception by setting the DMAR bit in LPUART_CR3 register.
+Page 2101: Data are loaded from the LPUART_RDR register to a SRAM area configured using the DMA
+Page 2101: byte is received. To map a DMA channel for LPUART reception, use the following
+Page 2101: 1.     Write the LPUART_RDR register address in the DMA control register to configure it as
+Page 2101: of the transfer. The data is loaded from LPUART_RDR to this memory area after each
+Page 2102: Low-power universal asynchronous receiver transmitter (LPUART)                                                      RM0433
+Page 2102: enable bit (EIE bit in the LPUART_CR3 register), which, if set, enables an interrupt after the
+Page 2102: Figure 603. Hardware flow control between 2 LPUARTs
+Page 2102: LPUART 1                                                    LPUART 2
+Page 2103: RM0433                        Low-power universal asynchronous receiver transmitter (LPUART)
+Page 2103: CTSE bits respectively to 1 (in the LPUART_CR3 register).
+Page 2103: LPUART receiver is ready to receive a new data. When the receive register is full, nRTS is
+Page 2103: An interrupt is generated if the CTSIE bit in the LPUART_CR3 register is set. Figure 605
+Page 2104: Low-power universal asynchronous receiver transmitter (LPUART)                                                 RM0433
+Page 2104: Note:       For correct behavior, nCTS must be asserted at least 3 LPUART clock source periods
+Page 2104: The driver enable feature is enabled by setting bit DEM in the LPUART_CR3 control
+Page 2104: LPUART_CR1 control register. The de-assertion time is the time between the end of the last
+Page 2104: using the DEDT [4:0] bitfields in the LPUART_CR1 control register. The polarity of the DE
+Page 2104: signal can be configured using the DEP bit in the LPUART_CR3 control register.
+Page 2104: The LPUART DEAT and DEDT are expressed in LPUART clock source (fCK) cycles:
+Page 2105: RM0433                        Low-power universal asynchronous receiver transmitter (LPUART)
+Page 2105: 48.3.14   LPUART low-power management
+Page 2105: The LPUART has advanced low-power mode functions allowing it to transfer properly data
+Page 2105: even when the lpuart_pclk clock is disabled.
+Page 2105: The LPUART is able to wake up the MCU from low-power mode when the UESM bit is set.
+Page 2105: When the usart_pclk is gated, the LPUART provides a wakeup interrupt (usart_wkup) if a
+Page 2105: luart_pclk clock has to be activated to empty the LPUART data register.
+Page 2105: In this case, the lpuart_wkup interrupt source is the RXNE set to ‘1’. The RXNEIE bit
+Page 2105: luart_pclk clock has to be activated
+Page 2105: In this case, the lpuart_wkup interrupt source can be:
+Page 2105: lpuart_wkup interrupt source can be one of the following events:
+Page 2105: LPUART transfers as possible during low-power mode with the benefit of optimizing
+Page 2105: Alternatively, a specific lpuart_wkup interrupt may be selected through the WUS bitfields.
+Page 2105: When the wakeup event is detected, the WUF flag is set by hardware and lpuart_wkup
+Page 2105: interrupt is generated if the WUFIE bit is set. In this case the lpuart_wkup interrupt is not
+Page 2106: Low-power universal asynchronous receiver transmitter (LPUART)                                 RM0433
+Page 2106: Note:       Before entering low-power mode, make sure that no LPUART transfer is ongoing. Checking
+Page 2106: REACK bit must be checked to ensure the LPUART is actually enabled.
+Page 2106: If the LPUART is put into Mute mode before entering low-power mode:
+Page 2106: Wakeup from low-power mode when LPUART kernel clock lpuart_ker_ck is
+Page 2106: If during low-power mode, the lpuart_ker_ck clock is switched OFF, when a falling edge on
+Page 2106: the LPUART receive line is detected, the LPUART interface requests the lpuart_ker_ck
+Page 2106: clock to be switched ON thanks to the lpuart_ker_ck_req signal. The lpuart_ker_ck is then
+Page 2107: RM0433                         Low-power universal asynchronous receiver transmitter (LPUART)
+Page 2107: LPUART sends a wakeup event to the MCU
+Page 2107: lpuart_ker_ck
+Page 2107: lpuart_ker_ck
+Page 2107: event. In the case the wakeup event is the start bit detection, the LPUART sends the
+Page 2108: Low-power universal asynchronous receiver transmitter (LPUART)                                     RM0433
+Page 2108: Determining the maximum LPUART baud rate that allows to correctly wake up
+Page 2108: depends on the wakeup time parameter (refer to the device datasheet) and on the LPUART
+Page 2108: receiver tolerance (see Section 48.3.8: Tolerance of the LPUART receiver to clock
+Page 2108: In these conditions, according to Table 395: Tolerance of the LPUART receiver, the
+Page 2108: LPUART receiver tolerance equals 3.41%.
+Page 2108: DTRA + DQUANT + DREC + DTCL + DWU < LPUART receiver tolerance
+Page 2108: DWUmax = tWULPUART/ (11 x Tbit Min)
+Page 2108: Tbit Min = = tWULPUART/ (11 x DWUmax)
+Page 2108: where tWULPUART is the wakeup time from low-power mode.
+Page 2108: lpuart_ker_ck inaccuracy.
+Page 2108: For example, if HSI is used as lpuart_ker_ck, and the HSI inaccuracy is of 1%, then we
+Page 2108: tWULPUART = 3 µs (values provided only as examples; for correct values, refer to the
+Page 2108: 48.4         LPUART interrupts
+Page 2108: Refer to Table 391 for a detailed description of all LPUART interrupt requests.
+Page 2108: Table 397. LPUART interrupt requests
+Page 2108: bit                                     lpuart_it    lpuart_wkup
+Page 2109: RM0433                                Low-power universal asynchronous receiver transmitter (LPUART)
+Page 2109: Table 397. LPUART interrupt requests (continued)
+Page 2109: bit                                           lpuart_it     lpuart_wkup
+Page 2109: 1. RXFF flag is asserted if the LPUART receives n+1 data (n being the RXFIFO size): n data in the RXFIFO and 1 data in
+Page 2109: LPUART_RDR. In Stop mode, LPUART_RDR is not clocked. As a result, this register will not be written and once n data
+Page 2110: Low-power universal asynchronous receiver transmitter (LPUART)                                                             RM0433
+Page 2110: 48.5             LPUART registers
+Page 2110: 48.5.1           Control register 1 (LPUART_CR1)
+Page 2110: 1: An LPUART interrupt is generated when RXFF=1 in the LPUART_ISR register
+Page 2110: 1: An LPUART interrupt is generated when TXFE=1 in the LPUART_ISR register
+Page 2110: This bit can only be written when the LPUART is disabled (UE=0).
+Page 2111: RM0433                             Low-power universal asynchronous receiver transmitter (LPUART)
+Page 2111: the beginning of the start bit. It is expressed in lpuart_ker_ck clock cycles. For more
+Page 2111: This bitfield can only be written when the LPUART is disabled (UE=0).
+Page 2111: lpuart_ker_ck clock cycles. For more details, refer Section 48.3.13: RS232 Hardware flow
+Page 2111: If the LPUART_TDR register is written during the DEDT time, the new data is transmitted
+Page 2111: This bitfield can only be written when the LPUART is disabled (UE=0).
+Page 2111: 1: A LPUART interrupt is generated when the CMF bit is set in the LPUART_ISR register.
+Page 2111: This bit activates the Mute mode function of the LPUART. When set, the LPUART can switch
+Page 2111: This bit can only be written when the LPUART is disabled (UE=0).
+Page 2111: This bit determines the LPUART wakeup method from Mute mode. It is set or cleared by
+Page 2111: This bitfield can only be written when the LPUART is disabled (UE=0).
+Page 2111: This bitfield can only be written when the LPUART is disabled (UE=0).
+Page 2111: This bitfield can only be written when the LPUART is disabled (UE=0).
+Page 2112: Low-power universal asynchronous receiver transmitter (LPUART)                                             RM0433
+Page 2112: 1: An LPUART interrupt is generated whenever PE=1 in the LPUART_ISR register
+Page 2112: 1: A LPUART interrupt is generated whenever TXE/TXFNF =1 in the LPUART_ISR register
+Page 2112: 1: An LPUART interrupt is generated whenever TC=1 in the LPUART_ISR register
+Page 2112: 1: A LPUART interrupt is generated whenever ORE=1 or RXNE/RXFNE=1 in the
+Page 2112: LPUART_ISR register
+Page 2112: 1: An LPUART interrupt is generated whenever IDLE=1 in the LPUART_ISR register
+Page 2112: poll the TEACK bit in the LPUART_ISR register.
+Page 2113: RM0433                                 Low-power universal asynchronous receiver transmitter (LPUART)
+Page 2113: Bit 1 UESM: LPUART enable in Stop mode
+Page 2113: When this bit is cleared, the LPUART is not able to wake up the MCU from low-power mode.
+Page 2113: When this bit is set, the LPUART is able to wake up the MCU from low-power mode,
+Page 2113: provided that the LPUART clock selection is HSI or LSE in the RCC.
+Page 2113: 0: LPUART not able to wake up the MCU from low-power mode.
+Page 2113: 1: LPUART able to wake up the MCU from low-power mode. When this function is active,
+Page 2113: the clock source for the LPUART must be HSI or LSE (see RCC chapter)
+Page 2113: Bit 0 UE: LPUART enable
+Page 2113: When this bit is cleared, the LPUART prescalers and outputs are stopped immediately, and
+Page 2113: current operations are discarded. The configuration of the LPUART is kept, but all the status
+Page 2113: flags, in the LPUART_ISR are reset. This bit is set and cleared by software.
+Page 2113: 0: LPUART prescaler and outputs disabled, low-power mode
+Page 2113: 1: LPUART enabled
+Page 2113: before and the software must wait for the TC bit in the LPUART_ISR to be set before
+Page 2113: 48.5.2          Control register 2 (LPUART_CR2)
+Page 2114: Low-power universal asynchronous receiver transmitter (LPUART)                                           RM0433
+Page 2114: Bits 31:28 ADD[7:4]: Address of the LPUART node
+Page 2114: This bitfield gives the address of the LPUART node or a character code to be recognized.
+Page 2114: This bitfield can only be written when reception is disabled (RE = 0) or the LPUART is disabled
+Page 2114: Bits 27:24 ADD[3:0]: Address of the LPUART node
+Page 2114: This bitfield gives the address of the LPUART node or a character code to be recognized.
+Page 2114: This bitfield can only be written when reception is disabled (RE = 0) or the LPUART is disabled
+Page 2114: This bitfield can only be written when the LPUART is disabled (UE=0).
+Page 2114: This bitfield can only be written when the LPUART is disabled (UE=0).
+Page 2114: This bitfield can only be written when the LPUART is disabled (UE=0).
+Page 2114: This bitfield can only be written when the LPUART is disabled (UE=0).
+Page 2114: connection to another UART.
+Page 2114: This bitfield can only be written when the LPUART is disabled (UE=0).
+Page 2115: RM0433                                  Low-power universal asynchronous receiver transmitter (LPUART)
+Page 2115: This bitfield can only be written when the LPUART is disabled (UE=0).
+Page 2115: This bit can only be written when the LPUART is disabled (UE=0)
+Page 2115: 48.5.3         Control register 3 (LPUART_CR3)
+Page 2116: Low-power universal asynchronous receiver transmitter (LPUART)                                        RM0433
+Page 2116: 1: An LPUART interrupt is generated when Receive FIFO reaches the threshold
+Page 2116: 1: A LPUART interrupt is generated when TXFIFO reaches the threshold programmed in
+Page 2116: 1: An LPUART interrupt is generated whenever WUF=1 in the LPUART_ISR register
+Page 2116: If the LPUART does not support the wakeup from Stop feature, this bit is reserved and
+Page 2116: This bitfield can only be written when the LPUART is disabled (UE=0).
+Page 2116: Note: If the LPUART does not support the wakeup from Stop feature, this bit is reserved and
+Page 2117: RM0433                         Low-power universal asynchronous receiver transmitter (LPUART)
+Page 2117: This bit can only be written when the LPUART is disabled (UE=0).
+Page 2117: This bit can only be written when the LPUART is disabled (UE=0).
+Page 2117: This bit can only be written when the LPUART is disabled (UE=0).
+Page 2117: LPUART_RDR register.
+Page 2117: This bit can only be written when the LPUART is disabled (UE=0).
+Page 2117: 1: An interrupt is generated whenever CTSIF=1 in the LPUART_ISR register
+Page 2117: This bit can only be written when the LPUART is disabled (UE=0)
+Page 2117: This bit can only be written when the LPUART is disabled (UE=0).
+Page 2118: Low-power universal asynchronous receiver transmitter (LPUART)                                                  RM0433
+Page 2118: This bit can only be written when the LPUART is disabled (UE=0).
+Page 2118: error, overrun error or noise flag (FE=1 or ORE=1 or NE=1 in the LPUART_ISR register).
+Page 2118: 1: An interrupt is generated when FE=1 or ORE=1 or NE=1 in the LPUART_ISR register.
+Page 2118: 48.5.4           Baud rate register (LPUART_BRR)
+Page 2118: This register can only be written when the LPUART is disabled (UE=0). It may be
+Page 2118: Note:            It is forbidden to write values lower than 0x300 in the LPUART_BRR register.
+Page 2118: Provided that LPUART_BRR must be ≥ 0x300 and LPUART_BRR is 20 bits, a care should
+Page 2119: RM0433                                 Low-power universal asynchronous receiver transmitter (LPUART)
+Page 2119: 48.5.5          Request register (LPUART_RQR)
+Page 2119: will set the flag TXFE (TXFIFO empty, bit 23 in the LPUART_ISR register).
+Page 2119: Writing 1 to this bit puts the LPUART in Mute mode and resets the RWU flag.
+Page 2119: 48.5.6          Interrupt and status register (LPUART_ISR)
+Page 2120: Low-power universal asynchronous receiver transmitter (LPUART)                                            RM0433
+Page 2120: TXFTCFG in LPUART_CR3 register i.e. the TXFIFO contains TXFTCFG empty locations.
+Page 2120: An interrupt is generated if the TXFTIE bit =1 (bit 31) in the LPUART_CR3 register.
+Page 2120: RXFTCFG in LPUART_CR3 register i.e. the Receive FIFO contains RXFTCFG data. An
+Page 2120: interrupt is generated if the RXFTIE bit =1 (bit 27) in the LPUART_CR3 register.
+Page 2120: RXFIFO size + 1 (RXFIFO full + 1 data in the LPUART_RDR register.
+Page 2120: An interrupt is generated if the RXFFIE bit =1 in the LPUART_CR1 register.
+Page 2120: in the LPUART_RQR register.
+Page 2120: An interrupt is generated if the TXFEIE bit =1 (bit 30) in the LPUART_CR1 register.
+Page 2120: the LPUART.
+Page 2120: It can be used to verify that the LPUART is ready for reception before entering low-power
+Page 2120: Note: If the LPUART does not support the wakeup from Stop feature, this bit is reserved and
+Page 2120: the LPUART.
+Page 2120: in the LPUART_CR1 register, in order to respect the TE=0 minimum period.
+Page 2120: WUS bitfield. It is cleared by software, writing a 1 to the WUCF in the LPUART_ICR register.
+Page 2120: An interrupt is generated if WUFIE=1 in the LPUART_CR3 register.
+Page 2120: If the LPUART does not support the wakeup from Stop feature, this bit is reserved and
+Page 2121: RM0433                             Low-power universal asynchronous receiver transmitter (LPUART)
+Page 2121: This bit indicates if the LPUART is in Mute mode. It is cleared/set by hardware when a
+Page 2121: is selected by the WAKE bit in the LPUART_CR1 register.
+Page 2121: MMRQ bit in the LPUART_RQR register.
+Page 2121: Note: If the LPUART does not support the wakeup from Stop feature, this bit is reserved and
+Page 2121: 1 to the SBKRQ bit in the LPUART_CR3 register. It is automatically reset by hardware
+Page 2121: cleared by software, writing 1 to the CMCF in the LPUART_ICR register.
+Page 2121: An interrupt is generated if CMIE=1in the LPUART_CR1 register.
+Page 2121: 0: LPUART is idle (no reception)
+Page 2121: by software, by writing 1 to the CTSCF bit in the LPUART_ICR register.
+Page 2121: An interrupt is generated if CTSIE=1 in the LPUART_CR3 register.
+Page 2122: Low-power universal asynchronous receiver transmitter (LPUART)                                         RM0433
+Page 2122: LPUART_TDR register has been transferred into the shift register. It is cleared by a write to
+Page 2122: the LPUART_TDR register.
+Page 2122: data can be written in the LPUART_TDR. Every write in the LPUART_TDR places the data
+Page 2122: flag is cleared indicating that data can not be written into the LPUART_TDR.
+Page 2122: An interrupt is generated if the TXEIE/TXFNFIE bit =1 in the LPUART_CR1 register.
+Page 2122: TXE/TXFF is set. An interrupt is generated if TCIE=1 in the LPUART_CR1 register. It is
+Page 2122: cleared by software, writing 1 to the TCCF in the LPUART_ICR register or by a write to the
+Page 2122: LPUART_TDR register.
+Page 2122: An interrupt is generated if TCIE=1 in the LPUART_CR1 register.
+Page 2122: RXNE bit is set by hardware when the content of the LPUART_RDR shift register has been
+Page 2122: transferred to the LPUART_RDR register. It is cleared by a read to the LPUART_RDR
+Page 2122: RXNE flag can also be cleared by writing 1 to the RXFRQ in the LPUART_RQR register.
+Page 2122: the LPUART_RDR register. Every read of the LPUART_RDR frees a location in the
+Page 2122: LPUART_RQR register.
+Page 2122: An interrupt is generated if RXNEIE/RXFNEIE=1 in the LPUART_CR1 register.
+Page 2122: IDLEIE=1 in the LPUART_CR1 register. It is cleared by software, writing 1 to the IDLECF in
+Page 2122: the LPUART_ICR register.
+Page 2122: If Mute mode is enabled (MME=1), IDLE is set if the LPUART is not mute (RWU=0),
+Page 2123: RM0433                                 Low-power universal asynchronous receiver transmitter (LPUART)
+Page 2123: ready to be transferred into the LPUART_RDR register while RXNE=1 (RXFF = 1 in case
+Page 2123: LPUART_ICR register.
+Page 2123: An interrupt is generated if RXNEIE/ RXFNEIE=1 or EIE = 1 in the LPUART_CR1 register.
+Page 2123: Note: When this bit is set, the LPUART_RDR register content is not lost but the shift register
+Page 2123: the LPUART_CR3 register.
+Page 2123: cleared by software, writing 1 to the NFCF bit in the LPUART_ICR register.
+Page 2123: In FIFO mode, this error is associated with the character in the LPUART_RDR.
+Page 2123: is detected. It is cleared by software, writing 1 to the FECF bit in the LPUART_ICR register.
+Page 2123: An interrupt is generated if EIE = 1 in the LPUART_CR1 register.
+Page 2123: Note: In FIFO mode, this error is associated with the character in the LPUART_RDR.
+Page 2123: software, writing 1 to the PECF in the LPUART_ICR register.
+Page 2123: An interrupt is generated if PEIE = 1 in the LPUART_CR1 register.
+Page 2123: Note: In FIFO mode, this error is associated with the character in the LPUART_RDR.
+Page 2123: 48.5.7          Interrupt flag clear register (LPUART_ICR)
+Page 2124: Low-power universal asynchronous receiver transmitter (LPUART)                                                     RM0433
+Page 2124: Writing 1 to this bit clears the WUF flag in the LPUART_ISR register.
+Page 2124: Note: If the LPUART does not support the wakeup from Stop feature, this bit is reserved and
+Page 2124: Writing 1 to this bit clears the CMF flag in the LPUART_ISR register.
+Page 2124: Writing 1 to this bit clears the CTSIF flag in the LPUART_ISR register.
+Page 2124: Writing 1 to this bit clears the TC flag in the LPUART_ISR register.
+Page 2124: Writing 1 to this bit clears the IDLE flag in the LPUART_ISR register.
+Page 2124: Writing 1 to this bit clears the ORE flag in the LPUART_ISR register.
+Page 2124: Writing 1 to this bit clears the NE flag in the LPUART_ISR register.
+Page 2124: Writing 1 to this bit clears the FE flag in the LPUART_ISR register.
+Page 2124: Writing 1 to this bit clears the PE flag in the LPUART_ISR register.
+Page 2124: 48.5.8           Receive data register (LPUART_RDR)
+Page 2125: RM0433                                  Low-power universal asynchronous receiver transmitter (LPUART)
+Page 2125: 48.5.9           Transmit data register (LPUART_TDR)
+Page 2125: When transmitting with the parity enabled (PCE bit set to 1 in the LPUART_CR1 register),
+Page 2125: 48.5.10          Prescaler register (LPUART_PRESC)
+Page 2125: This register can only be written when the LPUART is disabled (UE=0).
+Page 2126: Low-power universal asynchronous receiver transmitter (LPUART)                                       RM0433
+Page 2126: The LPUART input clock can be divided by a prescaler:
+Page 2127: LPUART_
+Page 2127: LPUART_
+Page 2127: LPUART_
+Page 2127: LPUART_
+Page 2127: LPUART_
+Page 2127: LPUART_
+Page 2127: LPUART_
+Page 2127: LPUART_
+Page 2127: LPUART_
+Page 2127: LPUART register map
+Page 2127: Table 398. LPUART register map and reset values
+Page 2127: The table below gives the LPUART register map and reset values.
+Page 2127: Low-power universal asynchronous receiver transmitter (LPUART)
+Page 2128: Low-power universal asynchronous receiver transmitter (LPUART)                          RM0433
+Page 2128: Table 398. LPUART register map and reset values (continued)
+Page 2128: LPUART_                                                                        PRESCAL
+Page 2217: • When the FIFO threshold bits in SAI_xCR2 register are configured as FIFO quarter full
+Page 2217: SAI_xSR register) if less than a quarter of the FIFO contains data (FLVL[2:0] bits in
+Page 2217: by hardware when at least a quarter of the FIFO contains data (FLVL[2:0] bits in SAI_xSR
+Page 2218: • When the FIFO threshold bits in SAI_xCR2 register are configured as FIFO three quarter
+Page 2218: SAI_xSR register) if less than three quarters of the FIFO contain data (FLVL[2:0] bits in
+Page 2218: by hardware when at least three quarters of the FIFO contain data (FLVL[2:0] bits in
+Page 2218: • When the FIFO threshold bits in SAI_xCR2 register are configured as FIFO quarter fully
+Page 2218: SAI_xSR register) if at least one quarter of the FIFO data locations are available
+Page 2218: SAI_xSR register) is cleared by hardware when less than a quarter of the FIFO data
+Page 2218: • When the FIFO threshold bits in SAI_xCR2 register are configured as FIFO three quarter
+Page 2218: 1 in SAI_xSR register) if at least three quarters of the FIFO data locations are available
+Page 2218: SAI_xSR register) is cleared by hardware when the FIFO has less than three quarters of
+Page 2457: T3: Evaluate messages              T4: Quartz message received      T5: Evaluate quartz messages
+Page 2457: T6: Configuration change enabled   T7: Watchdog event:              T8: Watchdog event: no quartz message
+Page 2457: no quartz message received       received or configuration change enabled
+Page 2457: with a stable, quartz-controlled clock. calibration frames are detected by the FDCAN1
+Page 2458: In case there is only one CAN transmitter with a quartz clock in the network, this node has to
+Page 2458: field or in the identifier. This assures that the non-quartz nodes can enter state
+Page 2458: Basic_Calibrated and then acknowledge the quartz node messages.
+Page 2559: When a quartz message is received, state Precision_Calibrated (CCU_CSTAT.CALS = 10)
+Page 2559: monitors the quartz message received input. In case no message from a quartz controlled
+Page 3101: Res.   Res.      Res.   Res.   UART                       FIFO SIZE[2:0]                               MUXNUM[4:0]
+Page 3101: Bit 11 SWOUARTNRZ: Support of SWO UART or NRZ
+Page 3101: Indicates whether serial wire output, UART or NRZ, is supported.
+Page 3107: SWOUARTNRZ                                         Res.                                Res.                                                            Res.                                  Res.                                                                               Res.                            Res.                                       Res.                11
+Page 3108: The SWO output supports Manchester encoded and UART NRZ formats.
+Page 3113: Res.   Res.      Res.   Res.   UART                       FIFO SIZE[2:0]                            MUXNUM[4:0]
+Page 3113: Bit 11 SWOUARTNRZ: SWO UART or NRZ support
+Page 3113: Indicates whether serial wire output, UART or NRZ, is supported.
+Page 3119: Res.                                   Res.                                 SWOUARTNRZ                                         Res.                               Res.                                                                        Res.                                 Res.                                            Res.                       11
+Page 3217: Renamed USART7RST/EN/LPEN bits into UART7RST/EN/LPEN,
+Page 3217: and USART8RST/EN/LPEN bits into UART8RST/EN/LPEN in
+Page 3223: Changed usart4_gbl_it into uart4_gbl_it in Table 130: NVIC.
+Page 3231: (USART) /universal asynchronous receiver transmitter (UART)
+Page 3231: Section title updated to include UART
+Page 3232: transmitter (LPUART)
+Page 3232: Updated Section : Determining the maximum LPUART baud rate
+Page 3232: Transmit data register (LPUART_TDR) and Receive data register
+Page 3232: (LPUART_RDR) reset value changed from undefined to
+Page 3232: LPUART feature in Control register 3 (LPUART_CR3) and Interrupt
+Page 3232: and status register (LPUART_ISR).
+Page 3240: LPUART_BRR . . . . . . . . . . . . . . . . . . . . . . . 2118
+Page 3240: LPUART_CR1 . . . . . . . . . . . . . . . . . . . . . . . 2110
+Page 3240: LPUART_CR2 . . . . . . . . . . . . . . . . . . . . . . . 2113
+Page 3240: LPUART_CR3 . . . . . . . . . . . . . . . . . . . . . . . 2115
+Page 3240: LPUART_ICR . . . . . . . . . . . . . . . . . . . . . . . 2123
+Page 3240: LPUART_ISR . . . . . . . . . . . . . . . . . . . . . . . 2119
+Page 3240: LPUART_PRESC . . . . . . . . . . . . . . . . . . . . 2125
+Page 3240: I                                                                     LPUART_RDR . . . . . . . . . . . . . . . . . . . . . . 2124
+Page 3240: I2C_CR1 . . . . . . . . . . . . . . . . . . . . . . . . . . .1986     LPUART_RQR . . . . . . . . . . . . . . . . . . . . . . 2119
+Page 3240: I2C_CR2 . . . . . . . . . . . . . . . . . . . . . . . . . . .1989     LPUART_TDR . . . . . . . . . . . . . . . . . . . . . . . 2125

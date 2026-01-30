@@ -1,0 +1,1097 @@
+Keyword: USART
+Occurrences: 1093
+================================================================================
+
+Page   49: 47       Universal synchronous receiver transmitter (USART)
+Page   49: 47.1   USART introduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2003
+Page   49: 47.2   USART main features . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2004
+Page   49: 47.3   USART extended features . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2005
+Page   49: 47.4   USART implementation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2005
+Page   49: 47.5   USART functional description . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2006
+Page   49: 47.5.1      USART block diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2006
+Page   49: 47.5.2      USART signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2007
+Page   49: 47.5.3      USART character description . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2008
+Page   49: 47.5.4      USART FIFOs and thresholds . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2010
+Page   49: 47.5.5      USART transmitter . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2010
+Page   49: 47.5.6      USART receiver . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2014
+Page   49: 47.5.7      USART baud rate generation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2022
+Page   49: 47.5.8      Tolerance of the USART receiver to clock deviation . . . . . . . . . . . . . 2023
+Page   49: 47.5.9      USART Auto baud rate detection . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2024
+Page   49: 47.5.10 USART multiprocessor communication . . . . . . . . . . . . . . . . . . . . . . . 2026
+Page   49: 47.5.11 USART Modbus communication . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2028
+Page   49: 47.5.12 USART parity control . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2029
+Page   49: 47.5.13 USART LIN (local interconnection network) mode . . . . . . . . . . . . . . 2030
+Page   50: 47.5.14 USART synchronous mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2032
+Page   50: 47.5.15 USART single-wire Half-duplex communication . . . . . . . . . . . . . . . . 2036
+Page   50: 47.5.16 USART receiver timeout . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2036
+Page   50: 47.5.17 USART Smartcard mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2037
+Page   50: 47.5.18 USART IrDA SIR ENDEC block . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2041
+Page   50: 47.5.19 Continuous communication using USART and DMA . . . . . . . . . . . . . 2044
+Page   50: 47.5.21 USART low-power management . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2049
+Page   50: 47.6    USART interrupts . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2052
+Page   50: 47.7    USART registers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2055
+Page   50: 47.7.1      USART control register 1 (USART_CR1) . . . . . . . . . . . . . . . . . . . . . 2055
+Page   50: 47.7.2      USART control register 2 (USART_CR2) . . . . . . . . . . . . . . . . . . . . . 2059
+Page   50: 47.7.3      USART control register 3 (USART_CR3) . . . . . . . . . . . . . . . . . . . . . 2062
+Page   50: 47.7.4      USART baud rate register (USART_BRR) . . . . . . . . . . . . . . . . . . . . 2067
+Page   50: 47.7.5      USART guard time and prescaler register (USART_GTPR) . . . . . . . 2067
+Page   50: 47.7.6      USART receiver timeout register (USART_RTOR) . . . . . . . . . . . . . . 2068
+Page   50: 47.7.7      USART request register (USART_RQR) . . . . . . . . . . . . . . . . . . . . . . 2069
+Page   50: 47.7.8      USART interrupt and status register (USART_ISR) . . . . . . . . . . . . . 2070
+Page   50: 47.7.9      USART interrupt flag clear register (USART_ICR) . . . . . . . . . . . . . . 2076
+Page   50: 47.7.10 USART receive data register (USART_RDR) . . . . . . . . . . . . . . . . . . 2078
+Page   50: 47.7.11 USART transmit data register (USART_TDR) . . . . . . . . . . . . . . . . . . 2078
+Page   50: 47.7.12 USART prescaler register (USART_PRESC) . . . . . . . . . . . . . . . . . . 2079
+Page   50: 47.7.13 USART register map . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2080
+Page   75: Table 386.   USART/LPUART features . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2005
+Page   75: Table 388.   Tolerance of the USART receiver when BRR [3:0] = 0000. . . . . . . . . . . . . . . . . . . . . . . 2024
+Page   75: Table 389.   Tolerance of the USART receiver when BRR[3:0] is different from 0000 . . . . . . . . . . . . 2024
+Page   75: Table 390.   USART frame formats . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2029
+Page   75: Table 391.   USART interrupt requests. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2052
+Page   75: Table 392.   USART register map and reset values . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2080
+Page   81: Figure 49.   Kernel clock distribution for UARTs, USARTs and LPUART1 . . . . . . . . . . . . . . . . . . . . . 339
+Page   91: Figure 567. USART block diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2006
+Page   91: Figure 572. usart_ker_ck clock divider block diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2018
+Page   91: Figure 579. USART example of synchronous master transmission. . . . . . . . . . . . . . . . . . . . . . . . . . 2033
+Page   91: Figure 580. USART data clock timing diagram in synchronous master mode
+Page   91: Figure 581. USART data clock timing diagram in synchronous master mode
+Page   91: Figure 582. USART data clock timing diagram in synchronous slave mode
+Page   91: Figure 589. Hardware flow control between 2 USARTs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2046
+Page  128: 0x40011400 - 0x400117FF        USART6                  Section 47.7: USART registers
+Page  128: 0x40011000 - 0x400113FF        USART1                  Section 47.7: USART registers
+Page  129: 0x40007C00 - 0x40007FFF                  UART8                       Section 47.7: USART registers
+Page  129: 0x40007800 - 0x40007BFF                  UART7                       Section 47.7: USART registers
+Page  129: 0x40005000 - 0x400053FF                  UART5                       Section 47.7: USART registers
+Page  129: 0x40004C00 - 0x40004FFF                  UART4                       Section 47.7: USART registers
+Page  129: 0x40004800 - 0x40004BFF                 USART3                       Section 47.7: USART registers
+Page  129: 0x40004400 - 0x400047FF                 USART2                       Section 47.7: USART registers
+Page  132: •   USART1 on PA9/PA10 pins, USART2 on PA3/2pins, and USART3 on PB10/PB11 pins.
+Page  296: Example: i2c1_wkup, usart1_wkup and lptim1_wkup.
+Page  335: USART1,6       USART16SEL       100                                          1                                   2                                   0                      3              4                     5
+Page  335: USART2,3       USART234578
+Page  339: Figure 49. Kernel clock distribution for UARTs, USARTs and LPUART1
+Page  339: USART16SEL
+Page  339: USART1
+Page  339: rcc_pclk2            0                     USART1EN
+Page  339: pll2_q_ck            1                                                                   usart_ker_ck_req
+Page  339: USART1LPEN
+Page  339: pll3_q_ck            2                                                                   usart_ker_ck
+Page  339: csi_ker_ck             4                                                                         USART6
+Page  339: USART6EN
+Page  339: USART6LPEN                                      usart_ker_ck_req
+Page  339: USART234578SEL                                                                                       usart_ker_ck
+Page  339: USART[3:2]
+Page  339: USART[3:2]EN           Logic
+Page  339: USART[3:2]LPEN                                      usart_ker_ck_req
+Page  339: pll3_q_ck            2                                                                   usart_ker_ck
+Page  392: Res.    Res.          (1)        Res.   Res.   RNGSEL[1:0] (1)      Res.        Res.    USART16SEL[2:0] (1)     USART234578SEL[2:0] (1)
+Page  393: Bits 5:3 USART16SEL[2:0]: USART1 and 6 kernel clock source selection
+Page  393: Bits 2:0 USART234578SEL[2:0]: USART2/3, UART4,5, 7/8 (APB1) kernel clock source selection
+Page  414: USART3RST
+Page  414: USART2RST
+Page  415: Bit 18 USART3RST: USART3 block reset
+Page  415: 0: does not reset the USART3 block (default after reset)
+Page  415: 1: resets the USART3 block
+Page  415: Bit 17 USART2RST: USART2 block reset
+Page  415: 0: does not reset the USART2 block (default after reset)
+Page  415: 1: resets the USART2 block
+Page  418: USART6RST
+Page  418: USART1RST
+Page  419: Bit 5 USART6RST: USART6 block reset
+Page  419: 0: does not reset the USART6 block (default after reset)
+Page  419: 1: resets the USART6 block
+Page  419: Bit 4 USART1RST: USART1 block reset
+Page  419: 0: does not reset the USART1 block (default after reset)
+Page  419: 1: resets the USART1 block
+Page  438: USART3EN
+Page  438: USART2EN
+Page  438: The peripheral clocks of the UART8 are: the kernel clock selected by USART234578SEL and
+Page  438: provided to usart_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  438: The peripheral clocks of the UART7 are: the kernel clock selected by USART234578SEL and
+Page  438: provided to usart_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  439: The peripheral clocks of the UART5 are: the kernel clock selected by USART234578SEL and
+Page  439: The peripheral clocks of the UART4 are: the kernel clock selected by USART234578SEL and
+Page  439: Bit 18 USART3EN: USART3 Peripheral Clocks Enable
+Page  439: 0: USART3 peripheral clocks disable (default after reset)
+Page  439: 1: USART3 peripheral clocks enabled
+Page  439: The peripheral clocks of the USART3 are: the kernel clock selected by USART234578SEL and
+Page  439: provided to usart_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  439: Bit 17 USART2EN: USART2 Peripheral Clocks Enable
+Page  439: 0: USART2 peripheral clocks disable (default after reset)
+Page  439: 1: USART2 peripheral clocks enabled
+Page  439: The peripheral clocks of the USART2 are: the kernel clock selected by USART234578SEL and
+Page  439: provided to usart_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  444: USART6EN
+Page  444: USART1EN
+Page  445: Bit 5 USART6EN: USART6 Peripheral Clocks Enable
+Page  445: 0: USART6 peripheral clocks disabled (default after reset)
+Page  445: 1: USART6 peripheral clocks enabled:
+Page  445: The peripheral clocks of the USART6 are: the kernel clock selected by USART16SEL and provided
+Page  445: to usart_ker_ck input, and the rcc_pclk2 bus interface clock.
+Page  446: Bit 4 USART1EN: USART1 Peripheral Clocks Enable
+Page  446: 0: USART1 peripheral clocks disabled (default after reset)
+Page  446: 1: USART1 peripheral clocks enabled:
+Page  446: The peripheral clocks of the USART1 are: the kernel clock selected by USART16SEL and provided
+Page  446: to usart_ker_ck input, and the rcc_pclk2 bus interface clock.
+Page  460: USART3LPEN
+Page  460: USART2LPEN
+Page  460: The peripheral clocks of the UART8 are: the kernel clock selected by USART234578SEL and
+Page  460: provided to usart_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  460: The peripheral clocks of the UART7 are: the kernel clock selected by USART234578SEL and
+Page  460: provided to usart_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  461: The peripheral clocks of the UART5 are: the kernel clock selected by USART234578SEL and
+Page  461: The peripheral clocks of the UART4 are: the kernel clock selected by USART234578SEL and
+Page  461: Bit 18 USART3LPEN: USART3 Peripheral Clocks Enable During CSleep Mode
+Page  461: 0: USART3 peripheral clocks disabled during CSleep mode
+Page  461: 1: USART3 peripheral clocks enabled during CSleep mode (default after reset):
+Page  461: The peripheral clocks of the USART3 are: the kernel clock selected by USART234578SEL and
+Page  461: provided to usart_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  461: Bit 17 USART2LPEN: USART2 Peripheral Clocks Enable During CSleep Mode
+Page  461: 0: USART2 peripheral clocks disabled during CSleep mode
+Page  461: 1: USART2 peripheral clocks enabled during CSleep mode (default after reset)
+Page  461: The peripheral clocks of the USART2 are: the kernel clock selected by USART234578SEL and
+Page  461: provided to usart_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  466: USART6LPEN
+Page  466: USART1LPEN
+Page  467: Bit 5 USART6LPEN: USART6 Peripheral Clocks Enable During CSleep Mode
+Page  467: 0: USART6 peripheral clocks disabled during CSleep mode
+Page  467: 1: USART6 peripheral clocks enabled during CSleep mode (default after reset)
+Page  467: The peripheral clocks of the USART6 are: the kernel clock selected by USART16SEL and provided
+Page  467: to usart_ker_ck input, and the rcc_pclk2 bus interface clock.
+Page  468: Bit 4 USART1LPEN: USART1 Peripheral Clocks Enable During CSleep Mode
+Page  468: 0: USART1 peripheral clocks disabled during CSleep mode
+Page  468: 1: USART1 peripheral clocks enabled during CSleep mode (default after reset)
+Page  468: The peripheral clocks of the USART1 are: the kernel clock selected by USART16SEL and provided
+Page  468: to usart_ker_ck inputs, and the rcc_pclk2 bus interface clock.
+Page  473: USART16SEL[2:0]                          Res.                                                                                                                                                                                                                                                                                                                                                                                                                            PLL2FRACEN           4
+Page  473: USART234578SEL[2:0]                     SAI1SEL[2:0]                                                                            Res.                                                                                                           Res.                                                                                                           Res.                                                                                                         PLL1VCOSEL           1
+Page  475: Res.                            Res.                     TIM17RST                      Res.                              USART3RST                     Res.                                 Res.                       Res.
+Page  475: Res.                            Res.                     TIM16RST                      Res.                              USART2RST                     Res.                                 Res.                       Res.       17
+Page  475: Res.                          SPI6RST                   USART6RST                   MDIOSRST                              TIM7RST                      Res.                              GPIOFRST                    HASHRST       5
+Page  475: Res.                            Res.                    USART1RST                   OPAMPRST                              TIM6RST                      Res.                              GPIOERST                    CRYPTRST      4
+Page  477: Res.                             Res.                           Res.                             Res.                   TIM17EN                    Res.                              USART3EN
+Page  477: Res.                         ETH1RXLPEN                         Res.                             Res.                   TIM16EN                    Res.                              USART2EN     17
+Page  477: HASHLPEN                         ADC12LPEN                    JPGDECLPEN                         SPI6EN                   USART6EN                  MDIOSEN                              TIM7EN       5
+Page  477: CRYPTLPEN                           Res.                       DMA2DLPEN                            Res.                  USART1EN                  OPAMPEN                              TIM6EN       4
+Page  478: Res.                                   Res.                                                      Res.                               USART3LPEN                        Res.                                   Res.
+Page  478: Res.                                   Res.                      TIM16LPEN                       Res.                               USART2LPEN                        Res.                                   Res.       17
+Page  478: JPGDECEN                               SPI6LPEN                    USART6LPEN                   MDIOSLPEN                               TIM7LPEN                        Res.                                GPIOFLPEN      5
+Page  478: DMA2DEN                                 Res.                      USART1LPEN                   OPAMPLPEN                               TIM6LPEN                        Res.                                GPIOELPEN      4
+Page  479: Res.                   TIM17EN                    Res.                              USART3EN                      Res.                                                         Res.                          Res.
+Page  479: Res.                   TIM16EN                    Res.                              USART2EN                      Res.                                Res.                     Res.                       ETH1RXEN       17
+Page  479: SPI6EN                  USART6EN                  MDIOSEN                              TIM7EN                       Res.                              GPIOFEN                  HASHEN                       ADC12EN         5
+Page  479: Res.                  USART1EN                  OPAMPEN                              TIM6EN                       Res.                              GPIOEEN                  CRYPTEN                        Res.          4
+Page  480: Res.                               USART3LPEN                        Res.                                   Res.                         Res.                             Res.                           Res.
+Page  480: Res.                               USART2LPEN                        Res.                                   Res.                         Res.                         ETH1RXLPEN                         Res.      17
+Page  481: SPI6LPEN                   USART6LPEN      5
+Page  481: Res.                    USART1LPEN      4
+Page  571: D2      APB2   USART1         usart1_wkup     WKUP26                    D    CPU       -
+Page  571: D2      APB1   USART2         usart2_wkup     WKUP27                    D    CPU       -
+Page  572: D2      APB1      USART3           usart3_wkup      WKUP28                     D    CPU        -
+Page  572: D2      APB2      USART6           usart6_wkup      WKUP29                     D    CPU       -
+Page  579: usart1_rx_dma    dmamux1_req_in41
+Page  579: D2     APB2 USART1
+Page  579: usart1_tx_dma    dmamux1_req_in42
+Page  579: usart2_rx_dma    dmamux1_req_in43
+Page  579: D2     APB1 USART2
+Page  579: usart2_tx_dma    dmamux1_req_in44
+Page  579: usart3_rx_dma    dmamux1_req_in45
+Page  579: D2     APB1 USART3
+Page  579: usart3_tx_dma    dmamux1_req_in46
+Page  580: usart6_rx_dma     dmamux1_req_in71
+Page  580: D2       APB2 USART6
+Page  580: usart6_tx_dma     dmamux1_req_in72
+Page  672: 1        dmamux1_req_gen0         44          usart2_tx_dma         87       sai1a_dma
+Page  672: 2        dmamux1_req_gen1         45          usart3_rx_dma         88       sai1b_dma
+Page  672: 3        dmamux1_req_gen2         46          usart3_tx_dma         89       sai2a_dma
+Page  673: 28             TIM3_TRIG          71       usart6_rx_dma           114         sai3_b_dma
+Page  673: 29             TIM4_CH1           72       usart6_tx_dma           115          adc3_dma
+Page  673: 41          usart1_rx_dma         84          spi4_tx_dma         127           Reserved
+Page  673: 42          usart1_tx_dma         85          spi5_rx_dma           -                -
+Page  673: 43          usart2_rx_dma         86          spi5_tx_dma           -                -
+Page  732: usart1_gbl_it
+Page  732: 44           37            USART1        USART1 global interrupt         0x0000 00D4
+Page  732: exti_usart1_wkup
+Page  732: usart2_gbl_it
+Page  732: 45           38            USART2        USART2 global interrupt         0x0000 00D8
+Page  732: exti_usart2_wkup
+Page  732: usart3_gbl_it
+Page  732: 46           39            USART3        USART3 global interrupt         0x0000 00DC
+Page  732: exti_usart3_wkup
+Page  733: usart6_gbl_it                                             USART6 global interrupt
+Page  733: 78           71            USART6                                       0x0000 015C
+Page  733: exti_usart6_wkup                                            USART6 wakeup interrupt
+Page  747: 26        USART1 wakeup                         Direct           CPU only               Yes
+Page  747: 27        USART2 wakeup                         Direct           CPU only               Yes
+Page  747: 28        USART3 wakeup                         Direct           CPU only               Yes
+Page  747: 29        USART6 wakeup                         Direct           CPU only               Yes
+Page 2003: RM0433   Universal synchronous receiver transmitter (USART) /universal asynchronous receiver
+Page 2003: 47        Universal synchronous receiver transmitter (USART)
+Page 2003: (USART).
+Page 2003: 47.1      USART introduction
+Page 2003: The USART offers a flexible means to perform Full-duplex data exchange with external
+Page 2003: The USART supports both synchronous one-way and Half-duplex Single-wire
+Page 2004: Universal synchronous receiver transmitter (USART) /universal asynchronous receiver transmit-
+Page 2004: 47.2        USART main features
+Page 2005: RM0433     Universal synchronous receiver transmitter (USART) /universal asynchronous receiver
+Page 2005: 47.3         USART extended features
+Page 2005: –   13-bit break generation and 10/11 bit break detection when USART is hardware
+Page 2005: 47.4         USART implementation
+Page 2005: Table 386 describes USART implementation on STM32H743/753 and STM32H750 devices.
+Page 2005: Table 386. USART/LPUART features
+Page 2005: USART modes/features(1)                USART1/2/3/6       UART4/5/7/8       LPUART
+Page 2005: USART data length                                                        7, 8 and 9 bits
+Page 2006: Universal synchronous receiver transmitter (USART) /universal asynchronous receiver transmit-
+Page 2006: 47.5        USART functional description
+Page 2006: 47.5.1      USART block diagram
+Page 2006: Figure 567. USART block diagram
+Page 2006: USART
+Page 2006: usart_ker_ck clock domain
+Page 2006: usart_wkup
+Page 2006: usart_it                           usart_pclk
+Page 2006: usart_tx_dma                            clock domain
+Page 2006: usart_rx_dma
+Page 2006: USART_CR1
+Page 2006: USART_ISR
+Page 2006: USART_CR2                                                         CTS/NSS
+Page 2006: USART_CR3                                          flow control
+Page 2006: USART_RQR
+Page 2006: USART_ICR                                TX Shift Reg
+Page 2006: USART_TDR
+Page 2006: USART_RDR
+Page 2006: USART_
+Page 2006: USART_GTPR                               generator &
+Page 2006: USART_BRR                               orversampling
+Page 2006: usart_pclk
+Page 2006: USART_               usart_ker_ck_pres
+Page 2006: usart_ker_ck            PRESC
+Page 2006: •   The usart_pclk clock domain
+Page 2006: The usart_pclk clock signal feeds the peripheral bus interface. It must be active when
+Page 2006: accesses to the USART registers are required.
+Page 2006: •    The usart_ker_ck kernel clock domain.
+Page 2006: The usart_ker_ck is the USART clock source. It is independent from usart_pclk and
+Page 2006: delivered by the RCC. The USART registers can consequently be written/read even
+Page 2006: when the usart_ker_ck clock is stopped.
+Page 2006: When the dual clock domain feature is disabled, the usart_ker_ck clock is the same as
+Page 2006: the usart_pclk clock.
+Page 2006: There is no constraint between usart_pclk and usart_ker_ck: usart_ker_ck can be faster
+Page 2006: or slower than usart_pclk. The only limitation is the software ability to manage the
+Page 2006: When the USART operates in SPI slave mode, it handles data flow using the serial interface
+Page 2006: The usart_ker_ck clock must be at least 3 times faster than the clock on the CK input.
+Page 2007: RM0433   Universal synchronous receiver transmitter (USART) /universal asynchronous receiver
+Page 2007: 47.5.2    USART signals
+Page 2007: USART bidirectional communications
+Page 2007: USART bidirectional communications require a minimum of two pins: Receive Data In (RX)
+Page 2007: When it is low, this signal indicates that the USART is ready to receive data.
+Page 2008: Universal synchronous receiver transmitter (USART) /universal asynchronous receiver transmit-
+Page 2008: 47.5.3      USART character description
+Page 2008: bit 28) in the USART_CR1 register (see Figure 568):
+Page 2009: RM0433   Universal synchronous receiver transmitter (USART) /universal asynchronous receiver
+Page 2010: Universal synchronous receiver transmitter (USART) /universal asynchronous receiver transmit-
+Page 2010: 47.5.4      USART FIFOs and thresholds
+Page 2010: The USART can operate in FIFO mode.
+Page 2010: The USART comes with a Transmit FIFO (TXFIFO) and a Receive FIFO (RXFIFO). The
+Page 2010: FIFO mode is enabled by setting FIFOEN in USART_CR1 register (bit 29). This mode is
+Page 2010: The status flags are available in the USART_ISR register.
+Page 2010: bitfields in USART_CR3 control register.
+Page 2010: In this case, the RXFT flag is set in the USART_ISR register. This means that
+Page 2010: RXFTCFG data have been received: 1 data in USART_RDR and (RXFTCFG - 1) data
+Page 2010: received (FIFO size -1 data in the RXFIFO and 1 data in the USART_RDR). As a
+Page 2010: 47.5.5      USART transmitter
+Page 2010: During an USART transmission, data shifts out the least significant bit first (default
+Page 2010: configuration) on the TX pin. In this mode, the USART_TDR register consists of a buffer
+Page 2010: When FIFO mode is enabled, the data written to the transmit data register (USART_TDR)
+Page 2011: RM0433   Universal synchronous receiver transmitter (USART) /universal asynchronous receiver
+Page 2011: Note:     The TE bit must be set before writing the data to be transmitted to the USART_TDR.
+Page 2011: USART_CR2, bits 13,12.
+Page 2011: •    2 stop bits: This will be supported by normal USART, Single-wire and Modem modes.
+Page 2012: Universal synchronous receiver transmitter (USART) /universal asynchronous receiver transmit-
+Page 2012: 1.   Program the M bits in USART_CR1 to define the word length.
+Page 2012: 2.   Select the desired baud rate using the USART_BRR register.
+Page 2012: 3.   Program the number of stop bits in USART_CR2.
+Page 2012: 4.   Enable the USART by writing the UE bit in USART_CR1 register to 1.
+Page 2012: 5.   Select DMA enable (DMAT) in USART_CR3 if multibuffer communication must take
+Page 2012: place. Configure the DMA register as explained in Section 47.5.10: USART
+Page 2012: 6.   Set the TE bit in USART_CR1 to send an idle frame as first transmission.
+Page 2012: 7.   Write the data to send in the USART_TDR register. Repeat this for each data to be
+Page 2012: –   When FIFO mode is disabled, writing a data to the USART_TDR clears the TXE
+Page 2012: –   When FIFO mode is enabled, writing a data to the USART_TDR adds one data to
+Page 2012: the TXFIFO. Write operations to the USART_TDR are performed when TXFNF
+Page 2012: 8.   When the last data is written to the USART_TDR register, wait until TC=1.
+Page 2012: This check is required to avoid corrupting the last transmission when the USART is
+Page 2013: RM0433   Universal synchronous receiver transmitter (USART) /universal asynchronous receiver
+Page 2013: –    the data have been moved from the USART_TDR register to the shift register and
+Page 2013: –    the USART_TDR register is empty;
+Page 2013: –    the next data can be written to the USART_TDR register without overwriting the
+Page 2013: When a transmission is ongoing, a write instruction to the USART_TDR register stores
+Page 2013: When no transmission is ongoing, a write instruction to the USART_TDR register
+Page 2013: –    the USART_TDR register is empty;
+Page 2013: –    the next data can be written to the USART_TDR register without overwriting the
+Page 2013: USART_TDR register stores the data in the TXFIFO. Data are copied from the
+Page 2013: USART_TDR register. It is cleared when the TXFIFO is full. This flag generates an
+Page 2013: USART_CR1 register.
+Page 2013: After writing the last data to the USART_TDR register, it is mandatory to wait until TC is set
+Page 2013: before disabling the USART or causing the microcontroller to enter the low-power mode
+Page 2014: Universal synchronous receiver transmitter (USART) /universal asynchronous receiver transmit-
+Page 2014: character). The USART inserts a logic 1 signal (stop) for the duration of 2 bits at the end of
+Page 2014: Setting the TE bit drives the USART to send an idle frame before the first data frame.
+Page 2014: 47.5.6      USART receiver
+Page 2014: The USART can receive data words of either 7 or 8 or 9 bits depending on the M bits in the
+Page 2014: USART_CR1 register.
+Page 2014: In the USART, the start bit is detected when a specific sequence of samples is recognized.
+Page 2015: RM0433       Universal synchronous receiver transmitter (USART) /universal asynchronous receiver
+Page 2016: Universal synchronous receiver transmitter (USART) /universal asynchronous receiver transmit-
+Page 2016: During an USART reception, data are shifted out least significant bit first (default
+Page 2016: 1.   Program the M bits in USART_CR1 to define the word length.
+Page 2016: 2.   Select the desired baud rate using the baud rate register USART_BRR
+Page 2016: 3.   Program the number of stop bits in USART_CR2.
+Page 2016: 4.   Enable the USART by writing the UE bit in USART_CR1 register to ‘1’.
+Page 2016: 5.   Select DMA enable (DMAR) in USART_CR3 if multibuffer communication is to take
+Page 2016: place. Configure the DMA register as explained in Section 47.5.10: USART
+Page 2016: 6.   Set the RE bit USART_CR1. This enables the receiver which begins searching for a
+Page 2016: empty. Reading the USART_RDR returns the oldest data entered in the RXFIFO.
+Page 2016: software read from the USART_RDR register. The RXNE flag can also be cleared
+Page 2016: by programming RXFRQ bit to ‘1’ in the USART_RQR register. The RXNE flag
+Page 2016: After every read operation from USART_RDR, a data is retrieved from the
+Page 2016: can also be cleared by programming RXFRQ bit to ‘1’ in USART_RQR. When the
+Page 2017: RM0433   Universal synchronous receiver transmitter (USART) /universal asynchronous receiver
+Page 2017: When a break character is received, the USART handles it as a framing error.
+Page 2017: USART_RDR register.
+Page 2017: Data can not be transferred from the shift register to the USART_RDR register until
+Page 2017: USART_RDR register.
+Page 2017: The ORE bit is reset by setting the ORECF bit in the USART_ICR register.
+Page 2018: Universal synchronous receiver transmitter (USART) /universal asynchronous receiver transmit-
+Page 2018: before enabling the USART.
+Page 2018: •   Possible use of the USART in low-power mode
+Page 2018: The clock source frequency is usart_ker_ck.
+Page 2018: the usart_ker_ck clock source can be configurable in the RCC (see Section 7: Reset and
+Page 2018: Clock Control (RCC)). Otherwise the usart_ker_ck clock is the same as usart_pclk.
+Page 2018: The usart_ker_ck clock can be divided by a programmable factor, defined in the
+Page 2018: USART_PRESC register.
+Page 2018: Figure 572. usart_ker_ck clock divider block diagram
+Page 2018: usart_ker_ck_pres
+Page 2018: USARTx_BRR register
+Page 2018: usart_ker_ck             USARTx_PRESC[3:0]                         and oversampling
+Page 2018: Some usart_ker_ck sources allow the USART to receive data while the MCU is in low-power
+Page 2018: mode. Depending on the received data and wakeup mode selected, the USART wakes up
+Page 2018: read to the USART_RDR register or by DMA.
+Page 2018: For the other clock sources, the system must be active to allow USART communications.
+Page 2018: USART_CR1 register either to 16 or 8 times the baud rate clock (see Figure 573 and
+Page 2019: RM0433   Universal synchronous receiver transmitter (USART) /universal asynchronous receiver
+Page 2019: usart_ker_ck_pres/8). In this case the maximum receiver tolerance to clock deviation is
+Page 2019: reduced (refer to Section 47.5.8: Tolerance of the USART receiver to clock deviation on
+Page 2019: usart_ker_ck_pres/16 (where usart_ker_ck_pres is the USART input clock divided by a
+Page 2019: Programming the ONEBIT bit in the USART_CR3 register selects the method used to
+Page 2019: of the USART receiver to clock deviation on page 2023). In this case the NE bit
+Page 2019: •   The invalid data is transferred from the Shift register to the USART_RDR register.
+Page 2019: if the EIE bit is set in the USART_CR3 register.
+Page 2020: Universal synchronous receiver transmitter (USART) /universal asynchronous receiver transmit-
+Page 2021: RM0433   Universal synchronous receiver transmitter (USART) /universal asynchronous receiver
+Page 2021: •   the invalid data is transferred from the Shift register to the USART_RDR register
+Page 2021: if the EIE bit is set in the USART_CR3 register.
+Page 2021: The FE bit is reset by writing ‘1’ to the FECF in the USART_ICR register.
+Page 2021: USART_CR: it can be either 1 or 2 in normal mode and 0.5 or 1.5 in Smartcard mode.
+Page 2021: USART_CR1) and the stop bit is checked to test if the Smartcard has detected a parity
+Page 2021: period during which sampling occurs halfway through (refer to Section 47.5.16: USART
+Page 2022: Universal synchronous receiver transmitter (USART) /universal asynchronous receiver transmit-
+Page 2022: 47.5.7      USART baud rate generation
+Page 2022: programmed in the USART_BRR register.
+Page 2022: Equation 1: baud rate for standard USART (SPI mode included) (OVER8 = ‘0’ or ‘1’)
+Page 2022: usart_ker_ckpres
+Page 2022: USARTDIV
+Page 2022: 2 × usart_ker_ckpres
+Page 2022: USARTDIV
+Page 2022: usart_ker_ckpres
+Page 2022: USARTDIV
+Page 2022: USARTDIV is an unsigned fixed point number that is coded on the USART_BRR register.
+Page 2022: •   When OVER8 = 0, BRR = USARTDIV.
+Page 2022: –    BRR[2:0] = USARTDIV[3:0] shifted 1 bit to the right.
+Page 2022: –    BRR[15:4] = USARTDIV[15:4]
+Page 2022: to USART_BRR. Hence the baud rate register value should not be changed during
+Page 2022: In case of oversampling by 16 and 8, USARTDIV must be greater than or equal to 16.
+Page 2022: How to derive USARTDIV from USART_BRR register values
+Page 2022: To obtain 9600 baud with usart_ker_ck_pres= 8 MHz:
+Page 2022: USARTDIV = 8 000 000/9600
+Page 2022: BRR = USARTDIV = 833d = 0341h
+Page 2022: USARTDIV = 2 * 8 000 000/9600
+Page 2022: USARTDIV = 1666,66 (1667d = 683h)
+Page 2023: RM0433   Universal synchronous receiver transmitter (USART) /universal asynchronous receiver
+Page 2023: To obtain 921.6 Kbaud with usart_ker_ck_pres = 48 MHz:
+Page 2023: USARTDIV = 48 000 000/921 600
+Page 2023: BRR = USARTDIV = 52d = 34h
+Page 2023: USARTDIV = 2 * 48 000 000/921 600
+Page 2023: USARTDIV = 104 (104d = 68h)
+Page 2023: BRR[3:0] = USARTDIV[3:0] >> 1 = 8h >> 1 = 4h
+Page 2023: 47.5.8    Tolerance of the USART receiver to clock deviation
+Page 2023: The USART asynchronous receiver operates correctly only if the total clock system
+Page 2023: deviation is less than the tolerance of the USART receiver.
+Page 2023: DTRA + DQUANT + DREC + DTCL + DWU < USART receiver tolerance
+Page 2023: t WUUSART
+Page 2023: t WUUSART
+Page 2023: t WUUSART
+Page 2023: tWUUSART is the time between the detection of the start bit falling edge and the
+Page 2024: Universal synchronous receiver transmitter (USART) /universal asynchronous receiver transmit-
+Page 2024: The USART receiver can receive data correctly at up to the maximum tolerated deviation
+Page 2024: •     9-, 10- or 11-bit character length defined by the M bits in the USART_CR1 register
+Page 2024: •     Oversampling by 8 or 16 defined by the OVER8 bit in the USART_CR1 register
+Page 2024: •     Bits BRR[3:0] of USART_BRR register are equal to or different from 0000.
+Page 2024: the USART_CR3 register.
+Page 2024: Table 388. Tolerance of the USART receiver when BRR [3:0] = 0000
+Page 2024: Table 389. Tolerance of the USART receiver when BRR[3:0] is different from 0000
+Page 2024: 47.5.9      USART Auto baud rate detection
+Page 2024: The USART can detect and automatically set the USART_BRR register value based on the
+Page 2024: •     When oversampling by 16, the baud rate ranges from usart_ker_ck_pres/65535 and
+Page 2024: usart_ker_ck_pres/16.
+Page 2024: •     When oversampling by 8, the baud rate ranges from usart_ker_ck_pres/65535 and
+Page 2024: usart_ker_ck_pres/8.
+Page 2024: selected through the ABRMOD[1:0] field in the USART_CR2 register. There are four modes
+Page 2025: RM0433   Universal synchronous receiver transmitter (USART) /universal asynchronous receiver
+Page 2025: In this case the USART measures the duration of the start bit (falling edge to rising
+Page 2025: In this case, the USART measures the duration of the Start and of the 1st data bit. The
+Page 2025: Prior to activating the auto baud rate detection, the USART_BRR register must be initialized
+Page 2025: The automatic baud rate detection is activated by setting the ABREN bit in the USART_CR2
+Page 2025: register. The USART will then wait for the first character on the RX line. The auto baud rate
+Page 2025: operation completion is indicated by the setting of the ABRF flag in the USART_ISR
+Page 2025: that the RXFIFO is empty by checking the RXFNE flag in USART_ISR register.
+Page 2025: Note:     The BRR value might be corrupted if the USART is disabled (UE=0) during an auto baud
+Page 2026: Universal synchronous receiver transmitter (USART) /universal asynchronous receiver transmit-
+Page 2026: 47.5.10     USART multiprocessor communication
+Page 2026: It is possible to perform USART multiprocessor communications (with several USARTs
+Page 2026: connected in a network). For instance one of the USARTs can be the master with its TX
+Page 2026: output connected to the RX inputs of the other USARTs, while the others are slaves with
+Page 2026: recipient actively receives the full message contents, thus reducing redundant USART
+Page 2026: To use the Mute mode feature, the MME bit must be set in the USART_CR1 register.
+Page 2026: and then set again quickly (within two usart_ker_ck cycles), otherwise Mute mode might
+Page 2026: •   the RWU bit in USART_ISR register is set to ‘1’. RWU can be controlled automatically
+Page 2026: by hardware or by software, through the MMRQ bit in the USART_RQR register, under
+Page 2026: The USART can enter or exit from Mute mode using one of two methods, depending on the
+Page 2026: WAKE bit in the USART_CR1 register:
+Page 2026: The USART enters Mute mode when the MMRQ bit is written to ‘1’ and the RWU is
+Page 2026: The USART wakes up when an Idle frame is detected. The RWU bit is then cleared by
+Page 2026: hardware but the IDLE bit is not set in the USART_ISR register. An example of Mute mode
+Page 2027: RM0433   Universal synchronous receiver transmitter (USART) /universal asynchronous receiver
+Page 2027: If the USART is activated while the line is IDLE, the idle state is detected after the duration
+Page 2027: ADD bits in the USART_CR2 register.
+Page 2027: The USART enters Mute mode when an address character is received which does not
+Page 2027: USART enters Mute mode. When FIFO management is enabled, the software should
+Page 2027: The USART also enters Mute mode when the MMRQ bit is written to 1. The RWU bit is also
+Page 2027: The USART exits from Mute mode when an address character is received which matches
+Page 2028: Universal synchronous receiver transmitter (USART) /universal asynchronous receiver transmit-
+Page 2028: (programmed in the USART_CR2 register)
+Page 2028: 47.5.11     USART Modbus communication
+Page 2028: The USART offers basic support for the implementation of Modbus/RTU and Modbus/ASCII
+Page 2028: The USART offers basic support for the end of the block detection, without software
+Page 2028: USART_CR2 register and the RTOIE in the USART_CR1 register. The value corresponding
+Page 2028: The USART manages this mechanism using the character match function.
+Page 2029: RM0433    Universal synchronous receiver transmitter (USART) /universal asynchronous receiver
+Page 2029: 47.5.12    USART parity control
+Page 2029: be enabled by setting the PCE bit in the USART_CR1 register. Depending on the frame
+Page 2029: length defined by the M bits, the possible USART frame formats are as listed in Table 390.
+Page 2029: Table 390. USART frame formats
+Page 2029: M bits                 PCE bit                                  USART frame(1)
+Page 2029: parity is selected (PS bit in USART_CR1 = 0).
+Page 2029: selected (PS bit in USART_CR1 = 1).
+Page 2029: If the parity check fails, the PE flag is set in the USART_ISR register and an interrupt is
+Page 2029: generated if PEIE is set in the USART_CR1 register. The PE flag is cleared by software
+Page 2029: writing 1 to the PECF in the USART_ICR register.
+Page 2029: If the PCE bit is set in USART_CR1, then the MSB bit of the data written in the data register
+Page 2030: Universal synchronous receiver transmitter (USART) /universal asynchronous receiver transmit-
+Page 2030: 47.5.13     USART LIN (local interconnection network) mode
+Page 2030: This section is relevant only when LIN mode is supported. Refer to Section 47.4: USART
+Page 2030: The LIN mode is selected by setting the LINEN bit in the USART_CR2 register. In LIN
+Page 2030: •    CLKEN in the USART_CR2 register,
+Page 2030: •    STOP[1:0], SCEN, HDSEL and IREN in the USART_CR3 register.
+Page 2030: must be the same as for normal USART transmission with the following differences:
+Page 2030: independent from the normal USART receiver. A break can be detected whenever it occurs,
+Page 2030: When the receiver is enabled (RE=1 in USART_CR1), the circuit looks at the RX input for a
+Page 2030: USART_CR2) or 11 (when LBDL=1 in USART_CR2) consecutive bits are detected as ‘0,
+Page 2030: and are followed by a delimiter character, the LBDF flag is set in USART_ISR. If the LBDIE
+Page 2030: If the LIN mode is disabled (LINEN=0), the receiver continues working as normal USART,
+Page 2031: RM0433   Universal synchronous receiver transmitter (USART) /universal asynchronous receiver
+Page 2032: Universal synchronous receiver transmitter (USART) /universal asynchronous receiver transmit-
+Page 2032: 47.5.14     USART synchronous mode
+Page 2032: USART_CR2 register to ‘1’. In synchronous mode, the following bits must be kept cleared:
+Page 2032: •      LINEN bit in the USART_CR2 register,
+Page 2032: •      SCEN, HDSEL and IREN bits in the USART_CR3 register.
+Page 2032: In this mode, the USART can be used to control bidirectional synchronous serial
+Page 2032: communications in master mode. The SCLK pin is the output of the USART transmitter
+Page 2032: the state of the LBCL bit in the USART_CR2 register, clock pulses are, or are not, generated
+Page 2032: during the last valid data bit (address mark). The CPOL bit in the USART_CR2 register is
+Page 2032: used to select the clock polarity, and the CPHA bit in the USART_CR2 register is used to
+Page 2032: In synchronous master mode, the USART transmitter operates exactly like in asynchronous
+Page 2032: In synchronous master mode, the USART receiver operates in a different way compared to
+Page 2033: RM0433   Universal synchronous receiver transmitter (USART) /universal asynchronous receiver
+Page 2033: (USART_TDR data register written). This means that it is not possible to receive
+Page 2033: Figure 579. USART example of synchronous master transmission
+Page 2033: USART
+Page 2033: Figure 580. USART data clock timing diagram in synchronous master mode
+Page 2034: Universal synchronous receiver transmitter (USART) /universal asynchronous receiver transmit-
+Page 2034: Figure 581. USART data clock timing diagram in synchronous master mode
+Page 2034: USART_CR2 register to ‘1’. In synchronous slave mode, the following bits must be kept
+Page 2034: •      LINEN and CLKEN bits in the USART_CR2 register,
+Page 2034: •      SCEN, HDSEL and IREN bits in the USART_CR3 register.
+Page 2034: In this mode, the USART can be used to control bidirectional synchronous serial
+Page 2034: communications in slave mode. The SCLK pin is the input of the USART in slave mode.
+Page 2034: (usart_ker_ck_pres) must be greater than 3 times the CK input frequency.
+Page 2034: The CPOL bit and the CPHA bit in the USART_CR2 register are used to select the clock
+Page 2034: USART_TDR.
+Page 2035: RM0433   Universal synchronous receiver transmitter (USART) /universal asynchronous receiver
+Page 2035: Figure 582. USART data clock timing diagram in synchronous slave mode
+Page 2035: the USART_CR2 register:
+Page 2035: the USART is disabled (UE=0) to ensure that the clock pulses function correctly.
+Page 2035: In SPI slave mode, the USART must be enabled before starting the master communications
+Page 2035: (or between frames while the clock is stable). Otherwise, if the USART slave is enabled
+Page 2035: When an underrun error occurs, the UDR flag is set in the USART_ISR register, and the SPI
+Page 2035: triggered if EIE bit is set in the USART_CR3 register.
+Page 2035: The underrun error flag is cleared by setting bit UDRCF in the USART_ICR register.
+Page 2036: Universal synchronous receiver transmitter (USART) /universal asynchronous receiver transmit-
+Page 2036: Note:       An underrun error may occur if the moment the data is written to the USART_TDR is too
+Page 2036: close to the first SCLK transmission edge. To avoid this underrun error, the USART_TDR
+Page 2036: should be written 3 usart_ker_ck cycles before the first SCLK edge.
+Page 2036: 47.5.15     USART single-wire Half-duplex communication
+Page 2036: Single-wire Half-duplex mode is selected by setting the HDSEL bit in the USART_CR3
+Page 2036: •    LINEN and CLKEN bits in the USART_CR2 register,
+Page 2036: •    SCEN and IREN bits in the USART_CR3 register.
+Page 2036: The USART can be configured to follow a Single-wire Half-duplex protocol where the TX
+Page 2036: communication is made with a control bit HDSEL in USART_CR3.
+Page 2036: Apart from this, the communication protocol is similar to normal USART mode. Any conflict
+Page 2036: 47.5.16     USART receiver timeout
+Page 2036: The receiver timeout feature is enabled by setting the RTOEN bit in the USART_CR2
+Page 2036: The timeout duration is programmed using the RTO bitfields in the USART_RTOR register.
+Page 2036: When the timeout duration has elapsed, the RTOF flag in the USART_ISR register is set. A
+Page 2036: timeout will be generated if RTOIE bit in USART_CR1 register is set.
+Page 2037: RM0433    Universal synchronous receiver transmitter (USART) /universal asynchronous receiver
+Page 2037: 47.5.17    USART Smartcard mode
+Page 2037: USART implementation on page 2005.
+Page 2037: Smartcard mode is selected by setting the SCEN bit in the USART_CR3 register. In
+Page 2037: •   LINEN bit in the USART_CR2 register,
+Page 2037: •   HDSEL and IREN bits in the USART_CR3 register.
+Page 2037: The USART should be configured as:
+Page 2037: •   8 bits plus parity: M=1 and PCE=1 in the USART_CR1 register
+Page 2037: •   1.5 stop bits when transmitting and receiving data: STOP=’11’ in the USART_CR2
+Page 2037: When connected to a Smartcard, the TX output of the USART drives a bidirectional line that
+Page 2037: USART by driving the line low (NACK). This NACK signal (pulling transmit line low for 1
+Page 2037: bits). The USART can handle automatic re-sending of data according to the protocol.
+Page 2038: Universal synchronous receiver transmitter (USART) /universal asynchronous receiver transmit-
+Page 2038: The number of retries is programmed in the SCARCNT bitfield. If the USART continues
+Page 2038: enabled) may be set using the TXFRQ bit in the USART_RQR register.
+Page 2038: the NACK detection by the USART and the start bit of the repeated character. The TC
+Page 2038: USART has not been correctly received. A parity error is NACKed by the receiver if the
+Page 2038: USART stops transmitting the NACK and signals the error as a parity error.
+Page 2038: •   Smartcard auto-retry in reception: the BUSY flag remains set if the USART NACKs the
+Page 2038: •   In transmission, the USART inserts the Guard Time (as programmed in the Guard Time
+Page 2038: Figure 584 shows how the NACK signal is sampled by the USART. In this example the
+Page 2038: USART is transmitting data and is configured with 1.5 stop bits. The receiver part of the
+Page 2038: USART is enabled in order to check the integrity of the data and the NACK signal.
+Page 2039: RM0433   Universal synchronous receiver transmitter (USART) /universal asynchronous receiver
+Page 2039: The USART can provide a clock to the Smartcard through the SCLK output. In Smartcard
+Page 2039: USART_GTPR register. SCLK frequency can be programmed from usart_ker_ck_pres/2 to
+Page 2039: usart_ker_ck_pres/62, where usart_ker_ck_pres is the peripheral input clock divided by a
+Page 2039: bit in the USART_CR3 register.
+Page 2039: Note:     The RXNE/RXFNE interrupt must be enabled even when using the USART in DMA mode to
+Page 2039: the CWT period after the end of the previous character, the USART will signal it to the
+Page 2039: A block length counter is used to count all the characters received by the USART. This
+Page 2039: counter is reset when the USART is transmitting. The length of the block is communicated
+Page 2039: programmed to the BLEN field in the USART_RTOR register. When using DMA mode,
+Page 2040: Universal synchronous receiver transmitter (USART) /universal asynchronous receiver transmit-
+Page 2040: As the USART does not know which convention is used by the card, it needs to be able to
+Page 2040: hardware, but through a software sequence. Moreover, supposing that the USART is
+Page 2040: TS = LHHL LLL LLH => the USART received character will be ‘03’ and the parity will be odd.
+Page 2041: RM0433    Universal synchronous receiver transmitter (USART) /universal asynchronous receiver
+Page 2041: The USART is programmed in standard Smartcard mode/direct convention. In this case, the
+Page 2041: direct convention. Software then reprograms the USART for inverse convention
+Page 2041: correctly received this time, by the reprogrammed USART
+Page 2041: the USART and to also generate a new reset command to the card, then wait again for the
+Page 2041: The USART is programmed in 9-bit/no-parity mode, no bit inversion. In this mode it receives
+Page 2041: match, then programs the USART accordingly for the next character reception.
+Page 2041: 47.5.18    USART IrDA SIR ENDEC block
+Page 2041: This section is relevant only when IrDA mode is supported. Refer to Section 47.4: USART
+Page 2041: IrDA mode is selected by setting the IREN bit in the USART_CR3 register. In IrDA mode,
+Page 2041: •   LINEN, STOP and CLKEN bits in the USART_CR2 register,
+Page 2041: •   SCEN and HDSEL bits in the USART_CR3 register.
+Page 2041: output from USART. The output pulse stream is transmitted to an external output driver and
+Page 2041: infrared LED. USART supports only bit rates up to 115.2 Kbps for the SIR ENDEC. In
+Page 2041: detector and outputs the received NRZ serial bit stream to the USART. The decoder input is
+Page 2041: USART is sending data to the IrDA encoder), any data on the IrDA receive line is
+Page 2041: ignored by the IrDA decoder and if the Receiver is busy (when the USART is receiving
+Page 2041: decoded data from the USART), data on the TX from the USART to IrDA is not
+Page 2042: Universal synchronous receiver transmitter (USART) /universal asynchronous receiver transmit-
+Page 2042: USART.
+Page 2042: programmed in the USART_GTPR). Pulses of width less than 1 PSC period are always
+Page 2042: •   In IrDA mode, the stop bits in the USART_CR2 register must be configured to ‘1 stop
+Page 2042: detection the USART should discard pulses of duration shorter than 1/PSC. A valid low
+Page 2042: clock (PSC value in the USART_GTPR).
+Page 2043: RM0433   Universal synchronous receiver transmitter (USART) /universal asynchronous receiver
+Page 2043: OR              USART_TX
+Page 2043: USART
+Page 2043: USART_RX
+Page 2044: Universal synchronous receiver transmitter (USART) /universal asynchronous receiver transmit-
+Page 2044: 47.5.19     Continuous communication using USART and DMA
+Page 2044: The USART is capable of performing continuous communications using the DMA. The DMA
+Page 2044: Note:       Refer to Section 47.4: USART implementation on page 2005 to determine if the DMA mode
+Page 2044: is supported. If DMA is not supported, use the USART as explained in Section 47.5.6. To
+Page 2044: in the USART_ISR register.
+Page 2044: DMA mode can be enabled for transmission by setting DMAT bit in the USART_CR3
+Page 2044: controller (DMA)) to the USART_TDR register whenever the TXE flag (TXFNF flag if FIFO
+Page 2044: mode is enabled) is set. To map a DMA channel for USART transmission, use the following
+Page 2044: 1.   Write the USART_TDR register address in the DMA control register to configure it as
+Page 2044: the transfer. The data is loaded into the USART_TDR register from this memory area
+Page 2044: 6.   Clear the TC flag in the USART_ISR register by setting the TCCF bit in the
+Page 2044: USART_ICR register.
+Page 2044: is set in the DMA_ISR register), the TC flag can be monitored to make sure that the USART
+Page 2044: disabling the USART or before the system enters a low-power mode when the peripheral
+Page 2045: RM0433      Universal synchronous receiver transmitter (USART) /universal asynchronous receiver
+Page 2045: USART_TDR             F1                F2                                F3
+Page 2045: USART_TDR
+Page 2045: blocks and   USART_TDR USART_TDR USART_TDR (TCIF=1 in
+Page 2045: enables USART                                   DMA_ISR)
+Page 2045: DMA mode can be enabled for reception by setting the DMAR bit in USART_CR3 register.
+Page 2045: Data are loaded from the USART_RDR register to an SRAM area configured using the DMA
+Page 2045: channel for USART reception, use the following procedure:
+Page 2045: 1.     Write the USART_RDR register address in the DMA control register to configure it as
+Page 2045: of the transfer. The data is loaded from USART_RDR to this memory area after each
+Page 2046: Universal synchronous receiver transmitter (USART) /universal asynchronous receiver transmit-
+Page 2046: USART_TDR                                        F1                           F2                                F3
+Page 2046: USART_TDR
+Page 2046: blocks and enables          from USART_TDR                 from USART_TDR    from USART_TDR (TCIF=1 in
+Page 2046: the USART                                                                                   DMA_ISR)
+Page 2046: enable bit (EIE bit in the USART_CR3 register), which, if set, enables an interrupt after the
+Page 2046: Figure 589. Hardware flow control between 2 USARTs
+Page 2046: USART 1                                                    USART 2
+Page 2047: RM0433   Universal synchronous receiver transmitter (USART) /universal asynchronous receiver
+Page 2047: CTSE bits to ‘1’ in the USART_CR3 register.
+Page 2047: USART receiver is ready to receive a new data. When the receive register is full, nRTS is
+Page 2047: An interrupt is generated if the CTSIE bit in the USART_CR3 register is set. Figure 591
+Page 2048: Universal synchronous receiver transmitter (USART) /universal asynchronous receiver transmit-
+Page 2048: Note:       For correct behavior, nCTS must be asserted at least 3 USART clock source periods before
+Page 2048: The driver enable feature is enabled by setting bit DEM in the USART_CR3 control register.
+Page 2048: USART_CR1 control register. The de-assertion time is the time between the end of the last
+Page 2048: using the DEDT [4:0] bitfields in the USART_CR1 control register. The polarity of the DE
+Page 2048: signal can be configured using the DEP bit in the USART_CR3 control register.
+Page 2048: In USART, the DEAT and DEDT are expressed in sample time units (1/8 or 1/16 bit time,
+Page 2049: RM0433    Universal synchronous receiver transmitter (USART) /universal asynchronous receiver
+Page 2049: 47.5.21    USART low-power management
+Page 2049: The USART has advanced low-power mode functions, that allow transferring properly data
+Page 2049: even when the usart_pclk clock is disabled.
+Page 2049: The USART is able to wake up the MCU from low-power mode when the UESM bit is set.
+Page 2049: When the usart_pclk is gated, the USART provides a wakeup interrupt (usart_wkup) if a
+Page 2049: specific action requiring the activation of the usart_pclk clock is needed:
+Page 2049: usart_pclk clock has to be activated to empty the USART data register.
+Page 2049: In this case, the usart_wkup interrupt source is RXNE set to ‘1’. The RXNEIE bit must
+Page 2049: usart_pclk clock has to be activated to:
+Page 2049: In this case, the usart_wkup interrupt source can be:
+Page 2049: usart_wkup interrupt source can be one of the following events:
+Page 2049: USART transfers as possible during low-power mode with the benefit of optimizing
+Page 2049: Alternatively, a specific usart_wkup interrupt can be selected through the WUS bitfields.
+Page 2049: When the wakeup event is detected, the WUF flag is set by hardware and a usart_wkup
+Page 2049: interrupt is generated if the WUFIE bit is set. In this case the usart_wkup interrupt is not
+Page 2050: Universal synchronous receiver transmitter (USART) /universal asynchronous receiver transmit-
+Page 2050: Note:       Before entering low-power mode, make sure that no USART transfers are ongoing.
+Page 2050: REACK bit must be checked to make sure the USART is enabled.
+Page 2050: If the USART is put into Mute mode before entering low-power mode:
+Page 2050: Wakeup from low-power mode when USART kernel clock (usart_ker_ck) is
+Page 2050: If during low-power mode, the usart_ker_ck clock is switched OFF when a falling edge on
+Page 2050: the USART receive line is detected, the USART interface requests the usart_ker_ck clock to
+Page 2050: be switched ON thanks to the usart_ker_ck_req signal. usart_ker_ck is then used for the
+Page 2050: If the wakeup event is not verified, usart_ker_ck is switched OFF again, the MCU is not
+Page 2051: RM0433   Universal synchronous receiver transmitter (USART) /universal asynchronous receiver
+Page 2051: Figure 592 shows the USART behavior when the wakeup event is verified.
+Page 2051: USART sends a wakeup event to the MCU
+Page 2051: Usart_ker_ck
+Page 2051: Figure 593 shows the USART behavior when the wakeup event is not verified.
+Page 2051: Usart_ker_ck
+Page 2051: event. If the wakeup event is the start bit detection, the USART sends the wakeup event to
+Page 2052: Universal synchronous receiver transmitter (USART) /universal asynchronous receiver transmit-
+Page 2052: Determining the maximum USART baud rate that allows to correctly wake up
+Page 2052: USART receiver tolerance (see Section 47.5.8: Tolerance of the USART receiver to clock
+Page 2052: In these conditions, according to Table 388: Tolerance of the USART receiver when BRR
+Page 2052: [3:0] = 0000, the USART receiver tolerance equals 3.41%.
+Page 2052: DTRA + DQUANT + DREC + DTCL + DWU < USART receiver tolerance
+Page 2052: DWUmax = tWUUSART/ (11 x Tbit Min)
+Page 2052: Tbit Min = = tWUUSART/ (11 x DWUmax)
+Page 2052: where tWUUSART is the wakeup time from low-power mode.
+Page 2052: usart_ker_ck inaccuracy.
+Page 2052: For example, if HSI is used as usart_ker_ck, and the HSI inaccuracy is of 1%, then we
+Page 2052: tWUUSART = 3 µs (values provided only as examples; for correct values, refer to the
+Page 2052: 47.6         USART interrupts
+Page 2052: During USART communications, an interrupt (usart_it) can be generated by different events.
+Page 2052: The USART block can also generate a wakeup interrupt (usart_wkup).
+Page 2052: Refer to Table 391 for a detailed description of all USART interrupt requests.
+Page 2052: Table 391. USART interrupt requests
+Page 2052: bit                                     usart_it    usart_wkup
+Page 2053: RM0433         Universal synchronous receiver transmitter (USART) /universal asynchronous receiver
+Page 2053: Table 391. USART interrupt requests (continued)
+Page 2053: bit                                     usart_it   usart_wkup
+Page 2054: Universal synchronous receiver transmitter (USART) /universal asynchronous receiver transmit-
+Page 2054: Table 391. USART interrupt requests (continued)
+Page 2054: bit                                            usart_it     usart_wkup
+Page 2054: 1. RXFF flag is asserted if the USART receives n+1 data (n being the RXFIFO size): n data in the RXFIFO and 1 data in
+Page 2054: USART_RDR. In Stop mode, USART_RDR is not clocked. As a result, this register will not be written and once n data are
+Page 2055: RM0433         Universal synchronous receiver transmitter (USART) /universal asynchronous receiver
+Page 2055: 47.7             USART registers
+Page 2055: 47.7.1           USART control register 1 (USART_CR1)
+Page 2055: 1: USART interrupt generated when RXFF=1 in the USART_ISR register
+Page 2055: 1: USART interrupt generated when TXFE=1 in the USART_ISR register
+Page 2055: This bitfield can only be written when the USART is disabled (UE=0).
+Page 2055: This bit can only be written when the USART is disabled (UE=0).
+Page 2056: Universal synchronous receiver transmitter (USART) /universal asynchronous receiver transmit-
+Page 2056: 1: USART interrupt generated when the EOBF flag is set in the USART_ISR register
+Page 2056: Note: If the USART does not support Smartcard mode, this bit is reserved and must be kept at
+Page 2056: reset value. Refer to Section 47.4: USART implementation on page 2005.
+Page 2056: 1: USART interrupt generated when the RTOF bit is set in the USART_ISR register.
+Page 2056: Note: If the USART does not support the Receiver timeout feature, this bit is reserved and
+Page 2056: must be kept at reset value. Section 47.4: USART implementation on page 2005.
+Page 2056: This bitfield can only be written when the USART is disabled (UE=0).
+Page 2056: reset value. Refer to Section 47.4: USART implementation on page 2005.
+Page 2056: If the USART_TDR register is written during the DEDT time, the new data is transmitted only
+Page 2056: This bitfield can only be written when the USART is disabled (UE=0).
+Page 2056: reset value. Refer to Section 47.4: USART implementation on page 2005.
+Page 2056: This bit can only be written when the USART is disabled (UE=0).
+Page 2056: 1: USART interrupt generated when the CMF bit is set in the USART_ISR register.
+Page 2056: This bit enables the USART Mute mode function. When set, the USART can switch between
+Page 2056: This bit can only be written when the USART is disabled (UE=0).
+Page 2057: RM0433   Universal synchronous receiver transmitter (USART) /universal asynchronous receiver
+Page 2057: This bit determines the USART wakeup method from Mute mode. It is set or cleared by
+Page 2057: This bitfield can only be written when the USART is disabled (UE=0).
+Page 2057: This bitfield can only be written when the USART is disabled (UE=0).
+Page 2057: This bitfield can only be written when the USART is disabled (UE=0).
+Page 2057: 1: USART interrupt generated whenever PE=1 in the USART_ISR register
+Page 2057: 1: USART interrupt generated whenever TXE/TXFNF =1 in the USART_ISR register
+Page 2057: 1: USART interrupt generated whenever TC=1 in the USART_ISR register
+Page 2057: 1: USART interrupt generated whenever ORE=1 or RXNE/RXFNE=1 in the USART_ISR
+Page 2057: 1: USART interrupt generated whenever IDLE=1 in the USART_ISR register
+Page 2058: Universal synchronous receiver transmitter (USART) /universal asynchronous receiver transmit-
+Page 2058: the software can poll the TEACK bit in the USART_ISR register.
+Page 2058: Bit 1 UESM: USART enable in low-power mode
+Page 2058: When this bit is cleared, the USART cannot wake up the MCU from low-power mode.
+Page 2058: When this bit is set, the USART can wake up the MCU from low-power mode.
+Page 2058: 0: USART not able to wake up the MCU from low-power mode.
+Page 2058: 1: USART able to wake up the MCU from low-power mode.
+Page 2058: If the USART does not support the wakeup from Stop feature, this bit is reserved and
+Page 2058: must be kept at reset value. Refer to Section 47.4: USART implementation on
+Page 2058: Bit 0 UE: USART enable
+Page 2058: When this bit is cleared, the USART prescalers and outputs are stopped immediately, and all
+Page 2058: current operations are discarded. The USART configuration is kept, but all the USART_ISR
+Page 2058: 0: USART prescaler and outputs disabled, low-power mode
+Page 2058: 1: USART enabled
+Page 2058: previously reset and the software must wait for the TC bit in the USART_ISR to be set
+Page 2059: RM0433        Universal synchronous receiver transmitter (USART) /universal asynchronous receiver
+Page 2059: 47.7.2         USART control register 2 (USART_CR2)
+Page 2059: Bits 31:28 ADD[7:4]: Address of the USART node
+Page 2059: This bitfield gives the address of the USART node or a character code to be recognized.
+Page 2059: This bitfield can only be written when reception is disabled (RE = 0) or the USART is disabled
+Page 2059: Bits 27:24 ADD[3:0]: Address of the USART node
+Page 2059: This bitfield gives the address of the USART node or a character code to be recognized.
+Page 2059: This bitfield can only be written when reception is disabled (RE = 0) or the USART is disabled
+Page 2059: When this feature is enabled, the RTOF flag in the USART_ISR register is set if the RX line is idle
+Page 2059: Note: If the USART does not support the Receiver timeout feature, this bit is reserved and must be
+Page 2059: kept at reset value. Refer to Section 47.4: USART implementation on page 2005.
+Page 2059: This bitfield can only be written when ABREN = 0 or the USART is disabled (UE=0).
+Page 2059: If the USART does not support the auto baud rate feature, this bit is reserved and must be kept
+Page 2059: at reset value. Refer to Section 47.4: USART implementation on page 2005.
+Page 2060: Universal synchronous receiver transmitter (USART) /universal asynchronous receiver transmit-
+Page 2060: Note: If the USART does not support the auto baud rate feature, this bit is reserved and must be kept
+Page 2060: at reset value. Refer to Section 47.4: USART implementation on page 2005.
+Page 2060: This bitfield can only be written when the USART is disabled (UE=0).
+Page 2060: This bitfield can only be written when the USART is disabled (UE=0).
+Page 2060: This bitfield can only be written when the USART is disabled (UE=0).
+Page 2060: This bitfield can only be written when the USART is disabled (UE=0).
+Page 2060: This bitfield can only be written when the USART is disabled (UE=0).
+Page 2060: SBKRQ bit in the USART_CR1 register, and to detect LIN Sync breaks.
+Page 2060: This bitfield can only be written when the USART is disabled (UE=0).
+Page 2060: Note: If the USART does not support LIN mode, this bit is reserved and must be kept at reset value.
+Page 2060: Refer to Section 47.4: USART implementation on page 2005.
+Page 2061: RM0433    Universal synchronous receiver transmitter (USART) /universal asynchronous receiver
+Page 2061: This bitfield can only be written when the USART is disabled (UE=0).
+Page 2061: This bit can only be written when the USART is disabled (UE=0).
+Page 2061: be kept at reset value. Refer to Section 47.4: USART implementation on page 2005.
+Page 2061: This bit can only be written when the USART is disabled (UE=0).
+Page 2061: Refer to Section 47.4: USART implementation on page 2005.
+Page 2061: This bit can only be written when the USART is disabled (UE=0).
+Page 2061: Refer to Section 47.4: USART implementation on page 2005.
+Page 2061: format selected by the M bit in the USART_CR1 register.
+Page 2061: This bit can only be written when the USART is disabled (UE=0).
+Page 2061: Refer to Section 47.4: USART implementation on page 2005.
+Page 2062: Universal synchronous receiver transmitter (USART) /universal asynchronous receiver transmit-
+Page 2062: 1: An interrupt is generated whenever LBDF=1 in the USART_ISR register
+Page 2062: Section 47.4: USART implementation on page 2005.
+Page 2062: This bit can only be written when the USART is disabled (UE=0).
+Page 2062: Section 47.4: USART implementation on page 2005.
+Page 2062: This bit can only be written when the USART is disabled (UE=0)
+Page 2062: Refer to Section 47.4: USART implementation on page 2005.
+Page 2062: Refer to Section 47.4: USART implementation on page 2005.
+Page 2062: 47.7.3          USART control register 3 (USART_CR3)
+Page 2063: RM0433    Universal synchronous receiver transmitter (USART) /universal asynchronous receiver
+Page 2063: 1: USART interrupt generated when Receive FIFO reaches the threshold programmed in
+Page 2063: 1: USART interrupt generated whenever TCBGT=1 in the USART_ISR register
+Page 2063: Note: If the USART does not support the Smartcard mode, this bit is reserved and must be
+Page 2063: kept at reset value. Refer to Section 47.4: USART implementation on page 2005.
+Page 2063: 1: USART interrupt generated when TXFIFO reaches the threshold programmed in
+Page 2063: 1: USART interrupt generated whenever WUF=1 in the USART_ISR register
+Page 2063: If the USART does not support the wakeup from Stop feature, this bit is reserved and
+Page 2063: must be kept at reset value. Refer to Section 47.4: USART implementation on
+Page 2064: Universal synchronous receiver transmitter (USART) /universal asynchronous receiver transmit-
+Page 2064: This bitfield can only be written when the USART is disabled (UE=0).
+Page 2064: If the USART does not support the wakeup from Stop feature, this bit is reserved and
+Page 2064: must be kept at reset value. Refer to Section 47.4: USART implementation on
+Page 2064: This bitfield must be programmed only when the USART is disabled (UE=0).
+Page 2064: When the USART is enabled (UE=1), this bitfield may only be written to 0x0, in order to stop
+Page 2064: value. Refer to Section 47.4: USART implementation on page 2005.
+Page 2064: This bit can only be written when the USART is disabled (UE=0).
+Page 2064: reset value. Refer to Section 47.4: USART implementation on page 2005.
+Page 2064: This bit can only be written when the USART is disabled (UE=0).
+Page 2064: reset value. Section 47.4: USART implementation on page 2005.
+Page 2064: This bit can only be written when the USART is disabled (UE=0).
+Page 2065: RM0433   Universal synchronous receiver transmitter (USART) /universal asynchronous receiver
+Page 2065: USART_RDR register. When FIFO mode is enabled, the RXFIFO will be bypassed and data
+Page 2065: will be written directly in USART_RDR register. Even when FIFO management is enabled,
+Page 2065: This bit can only be written when the USART is disabled (UE=0).
+Page 2065: This bit can only be written when the USART is disabled (UE=0).
+Page 2065: 1: An interrupt is generated whenever CTSIF=1 in the USART_ISR register
+Page 2065: kept at reset value. Refer to Section 47.4: USART implementation on page 2005.
+Page 2065: This bit can only be written when the USART is disabled (UE=0)
+Page 2065: kept at reset value. Refer to Section 47.4: USART implementation on page 2005.
+Page 2065: This bit can only be written when the USART is disabled (UE=0).
+Page 2065: kept at reset value. Refer to Section 47.4: USART implementation on page 2005.
+Page 2066: Universal synchronous receiver transmitter (USART) /universal asynchronous receiver transmit-
+Page 2066: This bitfield can only be written when the USART is disabled (UE=0).
+Page 2066: Note: If the USART does not support Smartcard mode, this bit is reserved and must be kept
+Page 2066: at reset value. Refer to Section 47.4: USART implementation on page 2005.
+Page 2066: This bitfield can only be written when the USART is disabled (UE=0).
+Page 2066: Note: If the USART does not support Smartcard mode, this bit is reserved and must be kept
+Page 2066: at reset value. Refer to Section 47.4: USART implementation on page 2005.
+Page 2066: This bit can only be written when the USART is disabled (UE=0).
+Page 2066: This bit can only be written when the USART is disabled (UE=0).
+Page 2066: Refer to Section 47.4: USART implementation on page 2005.
+Page 2066: This bit can only be written when the USART is disabled (UE=0).
+Page 2066: Refer to Section 47.4: USART implementation on page 2005.
+Page 2066: = 1 in the USART_ISR register).
+Page 2066: USART_ISR register.
+Page 2067: RM0433        Universal synchronous receiver transmitter (USART) /universal asynchronous receiver
+Page 2067: 47.7.4           USART baud rate register (USART_BRR)
+Page 2067: This register can only be written when the USART is disabled (UE=0). It may be
+Page 2067: BRR[15:4] = USARTDIV[15:4]
+Page 2067: When OVER8 = 0, BRR[3:0] = USARTDIV[3:0].
+Page 2067: BRR[2:0] = USARTDIV[3:0] shifted 1 bit to the right.
+Page 2067: 47.7.5           USART guard time and prescaler register (USART_GTPR)
+Page 2068: Universal synchronous receiver transmitter (USART) /universal asynchronous receiver transmit-
+Page 2068: This bitfield can only be written when the USART is disabled (UE=0).
+Page 2068: Refer to Section 47.4: USART implementation on page 2005.
+Page 2068: Used for programming the prescaler for dividing the USART source clock to achieve the low-
+Page 2068: Used for programming the prescaler for dividing the USART source clock to provide the
+Page 2068: This bitfield can only be written when the USART is disabled (UE=0).
+Page 2068: modes are not supported. Refer to Section 47.4: USART implementation on page 2005.
+Page 2068: 47.7.6         USART receiver timeout register (USART_RTOR)
+Page 2069: RM0433        Universal synchronous receiver transmitter (USART) /universal asynchronous receiver
+Page 2069: timeout feature is not supported. Refer to Section 47.4: USART implementation on page 2005.
+Page 2069: 47.7.7          USART request register (USART_RQR)
+Page 2070: Universal synchronous receiver transmitter (USART) /universal asynchronous receiver transmit-
+Page 2070: sent due to errors (NACK) and the FE flag is active in the USART_ISR register. If the
+Page 2070: USART does not support Smartcard mode, this bit is reserved and must be kept at reset
+Page 2070: (Transmit FIFO empty, bit 23 in the USART_ISR register). Flushing the Transmit FIFO is
+Page 2070: Writing 1 to this bit puts the USART in Mute mode and resets the RWU flag.
+Page 2070: Writing 1 to this bit resets the ABRF flag in the USART_ISR and requests an automatic baud
+Page 2070: Note: If the USART does not support the auto baud rate feature, this bit is reserved and must
+Page 2070: be kept at reset value. Refer to Section 47.4: USART implementation on page 2005.
+Page 2070: 47.7.8          USART interrupt and status register (USART_ISR)
+Page 2071: RM0433    Universal synchronous receiver transmitter (USART) /universal asynchronous receiver
+Page 2071: TXFTCFG of USART_CR3 register i.e. the TXFIFO contains TXFTCFG empty locations. An
+Page 2071: interrupt is generated if the TXFTIE bit =1 (bit 31) in the USART_CR3 register.
+Page 2071: This bit is set by hardware when the threshold programmed in RXFTCFG in USART_CR3
+Page 2071: one data in the USART_RDR register. An interrupt is generated if the RXFTIE bit =1 (bit 27)
+Page 2071: in the USART_CR3 register.
+Page 2071: are available i.e. 15 data in the RXFIFO and 1 data in the USART_RDR. Consequently,
+Page 2071: This bit is set when the last data written in the USART_TDR has been transmitted correctly
+Page 2071: TCBGTIE=1 in the USART_CR3 register.
+Page 2071: This bit is cleared by software, by writing 1 to the TCBGTCF in the USART_ICR register or
+Page 2071: by a write to the USART_TDR register.
+Page 2071: Note: If the USART does not support the Smartcard mode, this bit is reserved and kept at
+Page 2071: reset value. If the USART supports the Smartcard mode and the Smartcard mode is
+Page 2071: enabled, the TCBGT reset value is ‘1’. Refer to Section 47.4: USART implementation
+Page 2071: RXFIFO size + 1 (RXFIFO full + 1 data in the USART_RDR register.
+Page 2071: An interrupt is generated if the RXFFIE bit =1 in the USART_CR1 register.
+Page 2071: in the USART_RQR register.
+Page 2071: An interrupt is generated if the TXFEIE bit =1 (bit 30) in the USART_CR1 register.
+Page 2072: Universal synchronous receiver transmitter (USART) /universal asynchronous receiver transmit-
+Page 2072: the USART.
+Page 2072: It can be used to verify that the USART is ready for reception before entering low-power
+Page 2072: Note: If the USART does not support the wakeup from Stop feature, this bit is reserved and
+Page 2072: kept at reset value. Refer to Section 47.4: USART implementation on page 2005.
+Page 2072: the USART.
+Page 2072: in the USART_CR1 register, in order to respect the TE=0 minimum period.
+Page 2072: WUS bitfield. It is cleared by software, writing a 1 to the WUCF in the USART_ICR register.
+Page 2072: An interrupt is generated if WUFIE=1 in the USART_CR3 register.
+Page 2072: If the USART does not support the wakeup from Stop feature, this bit is reserved and
+Page 2072: kept at reset value. Refer to Section 47.4: USART implementation on page 2005.
+Page 2072: This bit indicates if the USART is in Mute mode. It is cleared/set by hardware when a
+Page 2072: is selected by the WAKE bit in the USART_CR1 register.
+Page 2072: MMRQ bit in the USART_RQR register.
+Page 2072: Note: If the USART does not support the wakeup from Stop feature, this bit is reserved and
+Page 2072: kept at reset value. Refer to Section 47.4: USART implementation on page 2005.
+Page 2072: 1 to the SBKRQ bit in the USART_CR3 register. It is automatically reset by hardware during
+Page 2072: cleared by software, writing 1 to the CMCF in the USART_ICR register.
+Page 2072: An interrupt is generated if CMIE=1in the USART_CR1 register.
+Page 2072: 0: USART is idle (no reception)
+Page 2073: RM0433   Universal synchronous receiver transmitter (USART) /universal asynchronous receiver
+Page 2073: the ABRRQ in the USART_RQR register.
+Page 2073: Note: If the USART does not support the auto baud rate feature, this bit is reserved and kept
+Page 2073: It is cleared by software, by writing 1 to the ABRRQ bit in the USART_CR3 register.
+Page 2073: Note: If the USART does not support the auto baud rate feature, this bit is reserved and kept
+Page 2073: appears while the software has not yet loaded any value into USART_TDR. This flag is
+Page 2073: reset by setting UDRCF bit in the USART_ICR register.
+Page 2073: Note: If the USART does not support the SPI slave mode, this bit is reserved and kept at
+Page 2073: reset value. Refer to Section 47.4: USART implementation on page 2005.
+Page 2073: An interrupt is generated if the EOBIE=1 in the USART_CR2 register.
+Page 2073: It is cleared by software, writing 1 to the EOBCF in the USART_ICR register.
+Page 2073: to Section 47.4: USART implementation on page 2005.
+Page 2073: the USART_ICR register.
+Page 2073: An interrupt is generated if RTOIE=1 in the USART_CR2 register.
+Page 2073: If the USART does not support the Receiver timeout feature, this bit is reserved and
+Page 2074: Universal synchronous receiver transmitter (USART) /universal asynchronous receiver transmit-
+Page 2074: by software, by writing 1 to the CTSCF bit in the USART_ICR register.
+Page 2074: An interrupt is generated if CTSIE=1 in the USART_CR3 register.
+Page 2074: writing 1 to the LBDCF in the USART_ICR.
+Page 2074: An interrupt is generated if LBDIE = 1 in the USART_CR2 register.
+Page 2074: Note: If the USART does not support LIN mode, this bit is reserved and kept at reset value.
+Page 2074: Refer to Section 47.4: USART implementation on page 2005.
+Page 2074: USART_TDR register has been transferred into the shift register. It is cleared by writing to
+Page 2074: the USART_TDR register. The TXE flag can also be set by writing 1 to the TXFRQ in the
+Page 2074: USART_RQR register, in order to discard the data (only in Smartcard T=0 mode, in case of
+Page 2074: meaning that data can be written in the USART_TDR. Every write operation to the
+Page 2074: USART_TDR places the data in the TXFIFO. This flag remains set until the TXFIFO is full.
+Page 2074: USART_TDR.
+Page 2074: An interrupt is generated if the TXEIE/TXFNFIE bit =1 in the USART_CR1 register.
+Page 2074: This bit indicates that the last data written in the USART_TDR has been transmitted out of
+Page 2074: An interrupt is generated if TCIE=1 in the USART_CR1 register.
+Page 2074: TC bit is is cleared by software, by writing 1 to the TCCF in the USART_ICR register or by a
+Page 2074: write to the USART_TDR register.
+Page 2075: RM0433   Universal synchronous receiver transmitter (USART) /universal asynchronous receiver
+Page 2075: RXNE bit is set by hardware when the content of the USART_RDR shift register has been
+Page 2075: transferred to the USART_RDR register. It is cleared by reading from the USART_RDR
+Page 2075: register. The RXNE flag can also be cleared by writing 1 to the RXFRQ in the USART_RQR
+Page 2075: read from the USART_RDR register. Every read operation from the USART_RDR frees a
+Page 2075: cleared by writing 1 to the RXFRQ in the USART_RQR register.
+Page 2075: An interrupt is generated if RXNEIE/RXFNEIE=1 in the USART_CR1 register.
+Page 2075: IDLEIE=1 in the USART_CR1 register. It is cleared by software, writing 1 to the IDLECF in
+Page 2075: the USART_ICR register.
+Page 2075: If Mute mode is enabled (MME=1), IDLE is set if the USART is not mute (RWU=0),
+Page 2075: ready to be transferred into the USART_RDR register while RXNE=1 (RXFF = 1 in case
+Page 2075: USART_ICR register.
+Page 2075: An interrupt is generated if RXNEIE/ RXFNEIE=1 or EIE = 1 in the USART_CR1 register.
+Page 2075: Note: When this bit is set, the USART_RDR register content is not lost but the shift register is
+Page 2075: the USART_CR3 register.
+Page 2076: Universal synchronous receiver transmitter (USART) /universal asynchronous receiver transmit-
+Page 2076: software, writing 1 to the NFCF bit in the USART_ICR register.
+Page 2076: bit to 1 to increase the USART tolerance to deviations (Refer to Section 47.5.8:
+Page 2076: Tolerance of the USART receiver to clock deviation on page 2023).
+Page 2076: In FIFO mode, this error is associated with the character in the USART_RDR.
+Page 2076: is detected. It is cleared by software, writing 1 to the FECF bit in the USART_ICR register.
+Page 2076: An interrupt is generated if EIE = 1 in the USART_CR1 register.
+Page 2076: Note: In FIFO mode, this error is associated with the character in the USART_RDR.
+Page 2076: software, writing 1 to the PECF in the USART_ICR register.
+Page 2076: An interrupt is generated if PEIE = 1 in the USART_CR1 register.
+Page 2076: Note: In FIFO mode, this error is associated with the character in the USART_RDR.
+Page 2076: 47.7.9          USART interrupt flag clear register (USART_ICR)
+Page 2076: Writing 1 to this bit clears the WUF flag in the USART_ISR register.
+Page 2076: Note: If the USART does not support the wakeup from Stop feature, this bit is reserved and
+Page 2076: must be kept at reset value. Refer to Section 47.4: USART implementation on
+Page 2077: RM0433    Universal synchronous receiver transmitter (USART) /universal asynchronous receiver
+Page 2077: Writing 1 to this bit clears the CMF flag in the USART_ISR register.
+Page 2077: Writing 1 to this bit clears the UDRF flag in the USART_ISR register.
+Page 2077: Note: If the USART does not support SPI slave mode, this bit is reserved and must be kept at
+Page 2077: reset value. Refer to Section 47.4: USART implementation on page 2005
+Page 2077: Writing 1 to this bit clears the EOBF flag in the USART_ISR register.
+Page 2077: Note: If the USART does not support Smartcard mode, this bit is reserved and must be kept
+Page 2077: at reset value. Refer to Section 47.4: USART implementation on page 2005.
+Page 2077: Writing 1 to this bit clears the RTOF flag in the USART_ISR register.
+Page 2077: Note: If the USART does not support the Receiver timeout feature, this bit is reserved and
+Page 2077: must be kept at reset value. Refer to Section 47.4: USART implementation on
+Page 2077: Writing 1 to this bit clears the CTSIF flag in the USART_ISR register.
+Page 2077: kept at reset value. Refer to Section 47.4: USART implementation on page 2005.
+Page 2077: Writing 1 to this bit clears the LBDF flag in the USART_ISR register.
+Page 2077: to Section 47.4: USART implementation on page 2005.
+Page 2077: Writing 1 to this bit clears the TCBGT flag in the USART_ISR register.
+Page 2077: Writing 1 to this bit clears the TC flag in the USART_ISR register.
+Page 2077: Writing 1 to this bit clears the TXFE flag in the USART_ISR register.
+Page 2077: Writing 1 to this bit clears the IDLE flag in the USART_ISR register.
+Page 2077: Writing 1 to this bit clears the ORE flag in the USART_ISR register.
+Page 2077: Writing 1 to this bit clears the NE flag in the USART_ISR register.
+Page 2077: Writing 1 to this bit clears the FE flag in the USART_ISR register.
+Page 2077: Writing 1 to this bit clears the PE flag in the USART_ISR register.
+Page 2078: Universal synchronous receiver transmitter (USART) /universal asynchronous receiver transmit-
+Page 2078: 47.7.10         USART receive data register (USART_RDR)
+Page 2078: 47.7.11         USART transmit data register (USART_TDR)
+Page 2078: The USART_TDR register provides the parallel interface between the internal bus and the
+Page 2078: When transmitting with the parity enabled (PCE bit set to 1 in the USART_CR1 register),
+Page 2079: RM0433        Universal synchronous receiver transmitter (USART) /universal asynchronous receiver
+Page 2079: 47.7.12         USART prescaler register (USART_PRESC)
+Page 2079: This register can only be written when the USART is disabled (UE=0).
+Page 2079: The USART input clock can be divided by a prescaler factor:
+Page 2080: Universal synchronous receiver transmitter (USART) /universal asynchronous receiver transmit-
+Page 2080: 47.7.13       USART register map
+Page 2080: The table below gives the USART register map and reset values.
+Page 2080: Table 392. USART register map and reset values
+Page 2080: USART_
+Page 2080: USART_
+Page 2080: USART_       TXFT             RXFT              S
+Page 2080: USART_
+Page 2080: USART_
+Page 2080: USART_
+Page 2080: USART_
+Page 2080: USART_
+Page 2080: USART_
+Page 2081: RM0433      Universal synchronous receiver transmitter (USART) /universal asynchronous receiver
+Page 2081: Table 392. USART register map and reset values (continued)
+Page 2081: USART_
+Page 2081: USART_
+Page 2081: USART_                                                                             PRESCAL
+Page 2085: When it is low, this signal indicates that the USART is ready to receive data.
+Page 2088: place. Configure the DMA register as explained in Section 47.5.10: USART
+Page 2091: place. Configure the DMA register as explained in Section 47.5.10: USART
+Page 2092: When a break character is received, the USART handles it as a framing error.
+Page 2100: Note:       Refer to Section 47.4: USART implementation on page 2005 to determine if the DMA mode
+Page 2101: USART_TDR             F1                F2                                F3
+Page 2101: USART_TDR
+Page 2101: blocks and   USART_TDR USART_TDR USART_TDR (TCIF=1 in
+Page 2101: enables USART                                   DMA_ISR)
+Page 2102: USART_TDR                                        F1                            F2                                 F3
+Page 2102: USART_TDR
+Page 2102: blocks and enables          from USART_TDR                  from USART_TDR    from USART_TDR (TCIF=1 in
+Page 2102: the USART                                                                                    DMA_ISR)
+Page 2105: When the usart_pclk is gated, the LPUART provides a wakeup interrupt (usart_wkup) if a
+Page 2105: specific action requiring the activation of the usart_pclk clock is needed:
+Page 2106: If the wakeup event is not verified, the usart_ker_ck is switched OFF again, the MCU is not
+Page 2116: must be kept at reset value. Refer to Section 47.4: USART implementation.
+Page 2116: must be kept at reset value. Refer to Section 47.4: USART implementation.
+Page 2124: kept at reset value. Refer to Section 47.4: USART implementation.
+Page 2998: communications interfaces (USB, USART, SPI, I2C, Ethernet, CAN etc). This is
+Page 3217: Renamed USART7RST/EN/LPEN bits into UART7RST/EN/LPEN,
+Page 3217: and USART8RST/EN/LPEN bits into UART8RST/EN/LPEN in
+Page 3221: transmitter (USART)
+Page 3221: Section 48.5.14: USART synchronous mode: removed Figure RX
+Page 3221: in Figure 574: USART data clock timing diagram in synchronous
+Page 3221: master mode (M bits =’00’) and Figure 575: USART data clock
+Page 3221: address match, FIFO disabled) in Section 48.5.21: USART low-
+Page 3223: Changed usart4_gbl_it into uart4_gbl_it in Table 130: NVIC.
+Page 3231: (USART) /universal asynchronous receiver transmitter (UART)
+Page 3231: Added DWU formula in Section 47.5.8: Tolerance of the USART
+Page 3231: Updated Section 47.5.21: USART low-power management
+Page 3231: Added Section : Determining the maximum USART baud rate that
+Page 3231: Section 47.7.7: USART request register (USART_RQR).
+Page 3231: Updated notes related to reserved bit/bitfield depending on USART
+Page 3231: feature in USART control register 1 (USART_CR1), USART control
+Page 3231: register 2 (USART_CR2), USART control register 3 (USART_CR3),
+Page 3231: USART interrupt and status register (USART_ISR) and USART
+Page 3231: interrupt flag clear register (USART_ICR).
+Page 3246: TIMx_SR . . . . . . 1581, 1671, 1736, 1811, 1840                   USART_BRR . . . . . . . . . . . . . . . . . . . . . . . . 2067
+Page 3246: TPIU_AUTHSTAT . . . . . . . . . . . . . . . . . . . .3100          USART_CR1 . . . . . . . . . . . . . . . . . . . . 406, 2055
+Page 3246: TPIU_CIDR0 . . . . . . . . . . . . . . . . . . . . . . . .3104     USART_CR2 . . . . . . . . . . . . . . . . . . . . . . . . 2059
+Page 3246: TPIU_CIDR1 . . . . . . . . . . . . . . . . . . . . . . . .3105     USART_CR3 . . . . . . . . . . . . . . . . . . . . . . . . 2062
+Page 3246: TPIU_CIDR2 . . . . . . . . . . . . . . . . . . . . . . . .3105     USART_GTPR . . . . . . . . . . . . . . . . . . . . . . 2067
+Page 3246: TPIU_CIDR3 . . . . . . . . . . . . . . . . . . . . . . . .3106     USART_ICR . . . . . . . . . . . . . . . . . . . . . . . . 2076
+Page 3246: TPIU_CLAIMCLR . . . . . . . . . . . . . . . . . . . . .3098        USART_ISR . . . . . . . . . . . . . . . . . . . . . . . . 2070
+Page 3246: TPIU_CLAIMSET . . . . . . . . . . . . . . . . . . . . .3098        USART_PRESC . . . . . . . . . . . . . . . . . . . . . 2079
+Page 3246: TPIU_CURPSIZE . . . . . . . . . . . . . . . . . . . . .3091        USART_RDR . . . . . . . . . . . . . . . . . . . . . . . 2078
+Page 3246: TPIU_CURTPM . . . . . . . . . . . . . . . . . . . . . .3094        USART_RQR . . . . . . . . . . . . . . . . . . . . . . . 2069
+Page 3246: TPIU_DEVID . . . . . . . . . . . . . . . . . . . . . . . .3101     USART_RTOR . . . . . . . . . . . . . . . . . . . . . . 2068
+Page 3246: TPIU_DEVTYPE . . . . . . . . . . . . . . . . . . . . .3101         USART_TDR . . . . . . . . . . . . . . . . . . . . . . . . 2078

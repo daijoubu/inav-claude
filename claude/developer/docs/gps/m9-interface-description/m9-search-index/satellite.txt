@@ -1,0 +1,245 @@
+Keyword: satellite
+Occurrences: 241
+================================================================================
+
+Page    3: 1.5 GNSS, satellite, and signal identiﬁers..............................................................................................17
+Page    3: 1.5.3 Satellite identiﬁers...................................................................................................................... 18
+Page    3: 2.5.4 NMEA GNSS, satellite, and signal numbering....................................................................... 24
+Page    3: 2.7.4.1 GNSS satellite fault detection..........................................................................................28
+Page    4: 2.7.12.1 GNSS DOP and active satellites.................................................................................... 33
+Page    4: 2.7.14.1 GNSS satellites in view....................................................................................................35
+Page    4: 2.8.4.2 Satellite status.................................................................................................................... 43
+Page    5: 3.6 GNSS, satellite, and signal numbering............................................................................................ 49
+Page    7: 3.13.3.1 BeiDou ephemeris assistance for satellites svId 1..37........................................... 103
+Page    9: 3.15.13.1 Satellite information....................................................................................................144
+Page    9: 3.16.1.1 Satellite measurements for RRLP.............................................................................. 157
+Page   12: 5.9.22 CFG-SIGNAL: Satellite systems (GNSS) signal conﬁguration.......................................226
+Page   17: 1.5 GNSS, satellite, and signal identiﬁers
+Page   17: Many UBX protocol messages contain infomation about speciﬁc satellites. Any single satellite can
+Page   17: be identiﬁed by a gnssId ﬁeld indicating the GNSS the satellite is part of and an svId (SV for
+Page   17: space vehicle) ﬁeld indicating the number of the satellite in that system. Usually, the svId is the
+Page   17: native number associated with the satellite in the speciﬁc GNSS. For example the GLONASS SV4 is
+Page   17: Some legacy UBX protocol messages combine both the satellite number and the GNSS
+Page   17: identiﬁcation into a one-byte (type U1) ﬁeld. See the single svid mapping in Satellite identiﬁers to
+Page   17: identify the corresponding GNSS and satellite.
+Page   17: GLONASS satellites can be tracked before they have been identiﬁed. In UBX messages, the unknown
+Page   17: satellites will be reported with svId 255. In NMEA messages, the unknown satellites will be
+Page   17: GLONASS satellites.
+Page   17: Signal identiﬁers are used when diﬀerent signals from the same GNSS satellite need to be
+Page   17: The NMEA protocol (version 4.10 and later) identiﬁes GNSS satellites with a one-digit system ID
+Page   17: and a two-digit satellite number. u-blox receivers support this method in their NMEA output when
+Page   17: changed using the Conﬁguration interface (see also NMEA GNSS, satellite, and signal numbering).
+Page   17: by some NMEA parsing software. For example, QZSS satellites use numbers in the range 193 to 202.
+Page   17: GNSS satellite (e.g. L2 CL and CM). u-blox positioning receivers use those identiﬁers for signal
+Page   18: A particular product may not support all of the described GNSS identiﬁers, satellite numbers,
+Page   18: 1.5.3 Satellite identiﬁers
+Page   18: The satellite numbering scheme for the UBX protocol is provided in Table 2. The satellite numbering
+Page   18: Table 2: UBX protocol satellite numbering scheme
+Page   18: 1   While not deﬁned by NMEA 4.10, u-blox receivers in this mode will use system ID 4 for BeiDou and, if extended satellite
+Page   19: Table 3: NMEA protocol satellite numbering scheme
+Page   19: 3   While not deﬁned by NMEA 4.10, u-blox receivers in this mode will use system ID 4 for BeiDou and, if extended satellite
+Page   19: u-blox products and, for QZSS signal ID, if extended satellite numbering is enabled.
+Page   22: GPS-only ﬁltering     CFG-NMEA-OUT_ONLYGPS        Enable to restrict output to only report GPS satellites.
+Page   22: all satellites, which were considered for navigation, are
+Page   22: If consideration mode is disabled, only those satellites which
+Page   22: GNSS to ﬁlter         CFG-NMEA-FILT_GPS etc.      Filters satellites based on the GNSS they belong to.
+Page   22: Satellite numbering   CFG-NMEA-SVNUMBERING        This ﬁeld conﬁgures the display of satellites that do not have an
+Page   22: NMEA-deﬁned value. Note: this does not apply to satellites with
+Page   22: an unknown ID. See also Satellite identiﬁers.
+Page   23: GSV Talker and Signal IDs The GSV message reports the signal strength of the visible satellites.
+Page   23: sent for each GNSS and signal. The Signal ID of a satellite may be unknown. Such satellites are
+Page   23: Extended satellite numbering In order to support some GNSS (e.g. BeiDou, Galileo, QZSS) that are
+Page   23: which may not be supported by some NMEA parsing software. For example, QZSS satellites use
+Page   23: numbers in the range 193 to 202. See NMEA protocol conﬁguration and Satellite identiﬁers.
+Page   24: 2.5.4 NMEA GNSS, satellite, and signal numbering
+Page   24: See GNSS, satellite, and signal identiﬁers for details on how GNSS, satellites and signals are
+Page   24: NMEA deﬁnes satellite numbering systems for some, but not all GNSS. The exact behavior depends
+Page   24: No position ﬁx (at power-up, after losing satellite lock)           V               0               N              N
+Page   25: No position ﬁx (at power-up, after losing satellite lock)             V               0             1                N
+Page   26: NMEA-Standard-GBS        0xf0 0x09   •   GNSS satellite fault detection (Output)
+Page   26: NMEA-Standard-GSA        0xf0 0x02   •   GNSS DOP and active satellites (Output)
+Page   26: NMEA-Standard-GSV        0xf0 0x03   •   GNSS satellites in view (Output)
+Page   26: •   Satellite status (Output)
+Page   28: 2.7.4.1 GNSS satellite fault detection
+Page   28: GNSS satellite fault detection
+Page   28: satellites that pass the RAIM test successfully.
+Page   28: no or successful edits happened). These ﬁelds are never output if 4 or fewer satellites are used for
+Page   28: •   The ﬁelds prob, bias and stdev are only output if at least one satellite failed in the RAIM test.
+Page   28: If more than one satellites fail the RAIM test, only the information for the worst satellite is output in this
+Page   29: 5          svid               numeric      -           03               Satellite ID of most likely failed satellite
+Page   29: 7          bias               numeric      m           -21.4            Estimated bias of most likely failed satellite (a priori
+Page   29: Comment           Time and position, together with GPS ﬁxing-related data (number of satellites in use, and the resulting HDOP,
+Page   29: 7          numSV              numeric      -           08               Number of satellites used (range: 0-12)
+Page   31: Comment           Time and position, together with GNSS ﬁxing-related data (number of satellites in use, and the resulting
+Page   32: 7          numSV                 numeric     -           10               Number of satellites used (range: 0-99)
+Page   33: 2.7.12.1 GNSS DOP and active satellites
+Page   33: GNSS DOP and active satellites
+Page   33: Comment           The GNSS receiver operating mode, satellites used for navigation, and DOP values.
+Page   33: •   The SV numbers (ﬁelds 'svid') are in the range of 1 to 32 for GPS satellites, and 33 to 64 for SBAS
+Page   33: satellites (33 = SBAS PRN 120, 34 = SBAS PRN 121, and so on)
+Page   34: 3+n        svid               numeric       -           29               Satellite number
+Page   35: 2.7.14.1 GNSS satellites in view
+Page   35: GNSS satellites in view
+Page   35: Comment           The number of satellites in view, together with each SV ID, elevation azimuth, and signal strength (C/No) value.
+Page   35: Only four satellite details are transmitted in one message.
+Page   35: 3          numSV              numeric       -            10               Number of known satellites in view regarding both the
+Page   35: 4 + n·4 svid                  numeric       -            23               Satellite ID
+Page   41: 18         numSvs             numeric     -           9                Number of satellites used in the navigation solution
+Page   43: 2.8.4.2 Satellite status
+Page   43: Satellite status
+Page   43: Comment           The PUBX,03 message contains satellite status information.
+Page   43: 2          n                     numeric     -            11                 Number of GNSS satellites tracked
+Page   43: 3 + n·6 sv                       numeric     -            23                 Satellite ID according to UBX svId mapping (see Satellite
+Page   43: 4 + n·6 s                        character   -            -                  Satellite status:
+Page   43: 5 + n·6 az                       numeric     deg          -                  Satellite azimuth (range: 0-359)
+Page   43: 6 + n·6 el                       numeric     deg          -                  Satellite elevation (<= 90)
+Page   43: 8 + n·6 lck                      numeric     s            010                Satellite carrier lock time (range: 0-64)
+Page   44: been received from a satellite.
+Page   49: 3.6 GNSS, satellite, and signal numbering
+Page   49: See GNSS, satellite, and signal identiﬁers for details on how GNSS, satellites and signals are
+Page   51: UBX-MGA-BDS              0x13 0x03   •   BeiDou ephemeris assistance for satellites svId 1..37 (Input)
+Page   53: UBX-NAV-SAT              0x01 0x35    •   Satellite information (Periodic/polled)
+Page   53: UBX-RXM-MEASX            0x02 0x14    •   Satellite measurements for RRLP (Periodic/polled)
+Page   60: •     See section Satellite Numbering for a description of the GNSS IDs available.
+Page   60: 4 + n·8             U1          gnssId                -            -           System identiﬁer (see Satellite Numbering)
+Page   66: 12          I1        minElev             -          deg          Minimum elevation for a GNSS satellite to be used in
+Page   66: 24          U1        cnoThreshNumS       -          -            Number of satellites required to have C/N0 above
+Page   67: 10                  U1       minSVs                 -           #SVs         Minimum number of satellites for navigation
+Page   67: 11                  U1       maxSVs                 -           #SVs         Maximum number of satellites for navigation
+Page   67: 12                  U1       minCNO                 -           dBHz         Minimum satellite signal level for navigation
+Page   68: bit 4   U:1       gpsOnlyFilter         -           -            Restrict output to GPS satellites only
+Page   69: 4               X4      gnssToFilter   -       -            Filters out satellites based on their GNSS. If a bitﬁeld
+Page   69: is enabled, the corresponding satellites will be not
+Page   69: bit 0   U:1     gps            -       -            Disable reporting of GPS satellites
+Page   69: bit 1   U:1     sbas           -       -            Disable reporting of SBAS satellites
+Page   69: bit 2   U:1     galileo        -       -            Disable reporting of Galileo satellites
+Page   69: bit 4   U:1     qzss           -       -            Disable reporting of QZSS satellites
+Page   69: bit 5   U:1     glonass        -       -            Disable reporting of GLONASS satellites
+Page   69: bit 6   U:1     beidou         -       -            Disable reporting of BeiDou satellites
+Page   69: 8               U1      svNumbering    -       -            Conﬁgures the display of satellites that do not have an
+Page   69: Note: this does not apply to satellites with an unknown
+Page   69: •   0 = Strict - Satellites are not output
+Page   69: Satellite Numbering)
+Page   82: receiver will only use GPS satellites for which integrity
+Page   85: satellites. To ensure timing based purely on a given
+Page   94: 27              U1    numSV       -          -            Number of satellites used in Nav Solution
+Page  100: 38            U1        numSV                  -           -            Number of satellites used in the position ﬁx
+Page  103: 2             U1        svId                   -           -            Satellite identiﬁer (see Satellite Numbering)
+Page  103: 3             U1        gnssId                 -           -            GNSS identiﬁer (see Satellite Numbering)
+Page  103: 3.13.3.1 BeiDou ephemeris assistance for satellites svId 1..37
+Page  103: BeiDou ephemeris assistance for satellites svId 1..37
+Page  103: 2             U1        svId                   -           -            BeiDou satellite identiﬁer (see Satellite Numbering)
+Page  103: 4             U1        SatH1                  -           -            Autonomous satellite Health ﬂag
+Page  105: 2             U1        svId                     -           -            BeiDou satellite identiﬁer (see Satellite Numbering)
+Page  105: 32            I2        a0                       2^-20       s            Almanac satellite clock bias
+Page  105: 34            I2        a1                       2^-38       s/s          Almanac satellite clock rate
+Page  105: This message allows the delivery of health assistance data for all satellites with svId 1 to 30.
+Page  109: 2             U1        svId                     -           -            Galileo Satellite identiﬁer (see Satellite Numbering)
+Page  110: 2             U1        svId                    -           -            Galileo Satellite identiﬁer (see Satellite Numbering)
+Page  111: 20            I2        m0                       2^-15       semi-        Satellite mean anomaly at reference time
+Page  111: 22            I2        af0                      2^-19       s            Satellite clock correction bias 'truncated'
+Page  111: 24            I2        af1                      2^-38       s/s          Satellite clock correction linear 'truncated'
+Page  111: 26            U1        healthE1B                -           -            Satellite E1-B signal health status
+Page  111: 27            U1        healthE5b                -           -            Satellite E5b signal health status
+Page  112: 2             U1        svId                     -           -            GLONASS    Satellite       identiﬁer    (see   Satellite
+Page  112: 6             U1        M                        -           -            Type of GLONASS satellite (1 indicates GLONASS-M)
+Page  113: 2             U1        svId                     -           -            GLONASS    Satellite        identiﬁer   (see   Satellite
+Page  113: 6             U1        M                        -           -            Type of GLONASS satellite (1 indicates GLONASS-M)
+Page  113: indicates operability of satellite)
+Page  113: circles      node of satellite orbit in PC-90.02 coordinate system
+Page  114: 2             U1        svId                     -           -            GPS Satellite identiﬁer (see Satellite Numbering)
+Page  115: 2             U1        svId                     -           -            GPS Satellite identiﬁer (see Satellite Numbering)
+Page  122: 2             U1        svId                     -           -            QZSS Satellite identiﬁer (see Satellite Numbering),
+Page  123: 2             U1        svId                     -           -            QZSS Satellite identiﬁer (see Satellite Numbering),
+Page  135: ﬁgures, or satellite and signal information. The messages are generated with the conﬁgured
+Page  139: 9 + n·6          U1      svId           -           -            Satellite ID
+Page  139: store multiple ephemeris data sets per satellite.
+Page  142: 23              U1    numSV           -          -            Number of satellites used in Nav Solution
+Page  144: 3.15.13.1 Satellite information
+Page  144: Satellite information
+Page  144: 5                   U1        numSvs                -            -           Number of satellites
+Page  144: 8 + n·12            U1        gnssId                -            -           GNSS identiﬁer       (see   Satellite   Numbering)      for
+Page  144: 9 + n·12            U1        svId                  -            -           Satellite identiﬁer (see Satellite Numbering) for
+Page  146: •   2 = Receiver uses only GPS satellites for which
+Page  147: 8 + n·16            U1      gnssId        -           -            GNSS identiﬁer        (see   Satellite   Numbering)   for
+Page  147: 9 + n·16            U1      svId          -           -            Satellite identiﬁer (see Satellite Numbering) for
+Page  148: compute the satellite's position in current navigation
+Page  148: 17                  U1        qzssSvId              -            -            Satellite identiﬁer of the QZS/GEO whose correction
+Page  148: data is used (see Satellite Numbering)
+Page  149: 20 + n·8            U1        gnssId                  -           -            GNSS identiﬁer (see Satellite Numbering)
+Page  149: 21 + n·8            U1        svId                    -           -            Satellite identiﬁer (see Satellite Numbering)
+Page  157: 3.16.1.1 Satellite measurements for RRLP
+Page  157: Satellite measurements for RRLP
+Page  157: Services) Protocol (RRLP) [1]. One exception is the satellite and GNSS IDs, which here are given according to
+Page  157: the Satellite Numbering scheme. The correct satellites have to be selected and their satellite ID translated
+Page  158: 34                U1       numSV                 -            -           Number of satellites in repeated block
+Page  158: 44 + n·24         U1       gnssId                -            -           GNSS ID (see Satellite Numbering)
+Page  158: 45 + n·24         U1       svId                  -            -           Satellite ID (see Satellite Numbering)
+Page  160: 2             U1       svId                   -           -            Identiﬁer of transmitting satellite (see Satellite
+Page  160: 2             U1       svId                   -           -            Identiﬁer of transmitting satellite (see Satellite
+Page  161: 0                   U1       gnssId                -            -           GNSS identiﬁer (see Satellite Numbering)
+Page  161: 1                   U1       svId                  -            -           Satellite identiﬁer (see Satellite Numbering)
+Page  167: Standards for Differential GNSS (Global Navigation Satellite Systems) Service, Version 3.
+Page  169: Diﬀerential GNSS (Global Navigation Satellite Systems) Service, Version 3 available from http://
+Page  169: Comment           See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  169: Comment           See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  170: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  170: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  171: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  172: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  172: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  173: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  173: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  174: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  175: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  175: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  176: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  176: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  177: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  177: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  178: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  179: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  179: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  180: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  180: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  181: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  182: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  182: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  183: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  183: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  184: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  184: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  185: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  186: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  186: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  187: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  187: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  188: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  189: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  189: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  190: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  190: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  196: CFG-SIGNAL                             Satellite systems (GNSS) signal conﬁguration
+Page  216: CFG-NAVSPG-INFIL_MINSVS              0x201100a1 U1             -         -     Minimum number of satellites for navigation
+Page  216: CFG-NAVSPG-INFIL_MAXSVS              0x201100a2 U1             -         -     Maximum number of satellites for navigation
+Page  217: CFG-NAVSPG-INFIL_MINCNO                0x201100a3 U1             -    dBHz Minimum satellite signal level for navigation
+Page  217: CFG-NAVSPG-INFIL_MINELEV               0x201100a4      I1        -        deg    Minimum elevation for a GNSS satellite to be
+Page  217: CFG-NAVSPG-INFIL_NCNOTHRS              0x201100aa U1             -         -     Number of satellites required to have C/N0
+Page  220: This will aﬀect NMEA output used satellite count. If set, also considered satellites (e.g. RAIMED) are counted as used
+Page  220: satellites as well.
+Page  220: Conﬁgures the display of satellites that do not have an NMEA-deﬁned value.
+Page  220: Note: this does not apply to satellites with an unknown ID.
+Page  220: See also Satellite Numbering.
+Page  220: CFG-NMEA-FILT_GPS                    0x10930011       L       -          -     Disable reporting of GPS satellites
+Page  220: CFG-NMEA-FILT_SBAS                   0x10930012       L       -          -     Disable reporting of SBAS satellites
+Page  220: CFG-NMEA-FILT_GAL                    0x10930013       L       -          -     Disable reporting of Galileo satellites
+Page  220: CFG-NMEA-FILT_QZSS                   0x10930015       L       -          -     Disable reporting of QZSS satellites
+Page  220: CFG-NMEA-FILT_GLO                    0x10930016       L       -          -     Disable reporting of GLONASS satellites
+Page  220: CFG-NMEA-FILT_BDS                    0x10930017       L       -          -     Disable reporting of BeiDou satellites
+Page  220: CFG-NMEA-OUT_ONLYGPS                 0x10930025       L       -          -     Restrict output to GPS satellites only
+Page  221: STRICT                                 0               Strict - satellites are not output
+Page  225: If enabled, the receiver will only use GPS satellites for which integrity information is available
+Page  226: 5.9.22 CFG-SIGNAL: Satellite systems (GNSS) signal conﬁguration
+Page  228: from the constellation's satellites. To ensure timing based purely on a given GNSS, restrict the supported constellations
+Page  229: from the constellation's satellites. To ensure timing based purely on a given GNSS, restrict the supported constellations
+Page  258: - Updated the description of satellite and signal identiﬁers

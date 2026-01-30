@@ -1,0 +1,233 @@
+Keyword: checksum
+Occurrences: 229
+================================================================================
+
+Page    4: 3.4 UBX checksum.......................................................................................................................................48
+Page   27: 9          cs                    hexadecimal -           *67              Checksum
+Page   27: 2          cs                    hexadecimal -           *2B              Checksum
+Page   28: 2          cs                    hexadecimal -           *28              Checksum
+Page   29: 11         cs                 hexadecimal -            *5B              Checksum
+Page   30: 15         cs                    hexadecimal -           *5B              Checksum
+Page   30: 8          cs                    hexadecimal -           *60              Checksum
+Page   31: 2          cs                    hexadecimal -           *3A              Checksum
+Page   31: 2          cs                    hexadecimal -           *3A              Checksum
+Page   32: 14         cs                    hexadecimal -           *71              Checksum
+Page   32: 2          cs                    hexadecimal -           *3A              Checksum
+Page   33: 17         cs                 hexadecimal -             *70              Checksum
+Page   34: 19         cs                 hexadecimal -             *0D              Checksum
+Page   34: 9          cs                 hexadecimal -             *7E              Checksum
+Page   35: 5 + N·4 cs                    hexadecimal -              *7F              Checksum
+Page   36: 5          cs                 hexadecimal -           *57              Checksum
+Page   37: 14         cs                 hexadecimal -           *57              Checksum
+Page   37: 5          cs                 hexadecimal -           *67              Checksum
+Page   38: 9          cs                 hexadecimal -             *06              Checksum
+Page   39: 10         cs                 hexadecimal -            *06              Checksum
+Page   39: 7          cs                 hexadecimal -            *64              Checksum
+Page   40: 7          cs                    hexadecimal -           *25              Checksum
+Page   40: 2          cs                    hexadecimal -           *33              Checksum
+Page   41: 21         cs                 hexadecimal -           *5B              Checksum
+Page   42: 9          cs                    hexadecimal -            *5D              Checksum
+Page   43: 2          cs                    hexadecimal -            *30                Checksum
+Page   43: 3 + n·6 cs                       hexadecimal -            *0D                Checksum
+Page   44: 2          cs                 hexadecimal -           *37              Checksum
+Page   44: 10         cs                 hexadecimal -           *3C              Checksum
+Page   45: • Checksum protected – uses a low-overhead checksum algorithm
+Page   45: include the preamble, message class, message ID, length, or UBX checksum ﬁelds. The number
+Page   45: • The two 1-byte CK_A and CK_B ﬁelds hold a 16-bit checksum whose calculation is deﬁned in
+Page   45: UBX checksum section. This concludes the frame.
+Page   48: 3.4 UBX checksum
+Page   48: The checksum is calculated over the message, starting and including the class ﬁeld up until, but
+Page   48: excluding, the checksum ﬁelds (see the ﬁgure UBX frame structure).
+Page   48: The checksum algorithm used is the 8-bit Fletcher algorithm, which is used in the TCP standard
+Page   48: • Buffer[N] is an array of bytes that contains the data over which the checksum is to be
+Page   48: • After the loop, the two U1 values contain the checksum, transmitted after the message
+Page   49: Header     Class ID    Length (bytes)                      Payload               Checksum
+Page   54: Header       Class   ID     Length (Bytes)                             Payload                   Checksum
+Page   54: Header       Class   ID     Length (Bytes)                             Payload                   Checksum
+Page   55: Header       Class   ID     Length (Bytes)                              Payload                    Checksum
+Page   55: Header       Class   ID     Length (Bytes)                              Payload                    Checksum
+Page   56: Header         Class   ID      Length (Bytes)                               Payload                      Checksum
+Page   57: Header        Class   ID     Length (Bytes)                               Payload                     Checksum
+Page   58: Header         Class   ID     Length (Bytes)                               Payload                     Checksum
+Page   58: Header         Class   ID     Length (Bytes)                               Payload                     Checksum
+Page   60: Header         Class   ID     Length (Bytes)                              Payload                    Checksum
+Page   61: Header         Class   ID     Length (Bytes)                              Payload                    Checksum
+Page   61: Header         Class   ID     Length (Bytes)                              Payload                    Checksum
+Page   62: Header      Class   ID     Length (Bytes)                              Payload                   Checksum
+Page   63: Header         Class   ID     Length (Bytes)                               Payload                    Checksum
+Page   64: Header        Class   ID      Length (Bytes)                              Payload                   Checksum
+Page   64: Header        Class   ID      Length (Bytes)                              Payload                   Checksum
+Page   64: Header        Class   ID      Length (Bytes)                              Payload                   Checksum
+Page   65: Header      Class   ID       Length (Bytes)                               Payload                      Checksum
+Page   67: Header      Class   ID     Length (Bytes)                               Payload                    Checksum
+Page   68: Header      Class   ID     Length (Bytes)                               Payload                      Checksum
+Page   70: Header      Class   ID     Length (Bytes)                               Payload                    Checksum
+Page   70: Header      Class   ID     Length (Bytes)                               Payload                    Checksum
+Page   72: Header      Class   ID     Length (Bytes)                               Payload                      Checksum
+Page   73: Header         Class   ID     Length (Bytes)                              Payload                   Checksum
+Page   73: Header         Class   ID     Length (Bytes)                              Payload                   Checksum
+Page   75: Header         Class   ID     Length (Bytes)                               Payload                      Checksum
+Page   76: Header         Class   ID     Length (Bytes)                               Payload                     Checksum
+Page   77: Header      Class   ID     Length (Bytes)                               Payload                    Checksum
+Page   79: Header         Class   ID     Length (Bytes)                              Payload                    Checksum
+Page   79: Header         Class   ID     Length (Bytes)                              Payload                    Checksum
+Page   80: Header         Class   ID     Length (Bytes)                                  Payload                   Checksum
+Page   81: Header      Class   ID     Length (Bytes)                              Payload                    Checksum
+Page   81: Header      Class   ID     Length (Bytes)                              Payload                    Checksum
+Page   82: Header       Class   ID     Length (Bytes)                               Payload                      Checksum
+Page   84: Header      Class   ID     Length (Bytes)                               Payload                    Checksum
+Page   85: Header      Class   ID     Length (Bytes)                                   Payload                  Checksum
+Page   86: Header          Class   ID      Length (Bytes)                                Payload                      Checksum
+Page   87: Header          Class   ID      Length (Bytes)                                 Payload                     Checksum
+Page   88: Header         Class   ID     Length (Bytes)                                 Payload                    Checksum
+Page   89: Header         Class   ID     Length (Bytes)                               Payload                    Checksum
+Page   90: Header          Class   ID      Length (Bytes)                              Payload                     Checksum
+Page   91: Header       Class   ID     Length (Bytes)                              Payload                     Checksum
+Page   91: Header       Class   ID     Length (Bytes)                              Payload                     Checksum
+Page   92: Header       Class    ID     Length (Bytes)                              Payload            Checksum
+Page   92: Header       Class    ID     Length (Bytes)                              Payload            Checksum
+Page   92: Header       Class    ID     Length (Bytes)                              Payload            Checksum
+Page   93: Header       Class   ID     Length (Bytes)                               Payload                     Checksum
+Page   93: Header       Class   ID     Length (Bytes)                               Payload                     Checksum
+Page   95: Header       Class   ID     Length (Bytes)                              Payload                    Checksum
+Page   96: Header       Class   ID      Length (Bytes)                               Payload                     Checksum
+Page   96: Header       Class   ID      Length (Bytes)                               Payload                     Checksum
+Page   97: Header         Class   ID     Length (Bytes)                              Payload                    Checksum
+Page   97: Header         Class   ID     Length (Bytes)                              Payload                    Checksum
+Page   98: Header      Class   ID     Length (Bytes)                               Payload                    Checksum
+Page   99: Header       Class   ID     Length (Bytes)                               Payload                      Checksum
+Page   99: Header       Class   ID     Length (Bytes)                               Payload                      Checksum
+Page  100: Header       Class   ID     Length (Bytes)                               Payload                    Checksum
+Page  100: Header       Class   ID     Length (Bytes)                               Payload                    Checksum
+Page  101: Header       Class   ID     Length (Bytes)                              Payload                    Checksum
+Page  102: Header       Class    ID     Length (Bytes)                              Payload                     Checksum
+Page  102: Header       Class    ID     Length (Bytes)                              Payload                     Checksum
+Page  103: Header       Class   ID     Length (Bytes)                                Payload                   Checksum
+Page  103: Header       Class   ID     Length (Bytes)                                Payload                   Checksum
+Page  104: Header         Class   ID     Length (Bytes)                               Payload                   Checksum
+Page  105: Header         Class   ID     Length (Bytes)                              Payload                     Checksum
+Page  106: Header         Class   ID     Length (Bytes)                              Payload                     Checksum
+Page  106: Header         Class   ID     Length (Bytes)                              Payload                     Checksum
+Page  107: Header         Class   ID     Length (Bytes)                               Payload                Checksum
+Page  107: Header         Class   ID     Length (Bytes)                               Payload                Checksum
+Page  107: Header         Class   ID     Length (Bytes)                               Payload                Checksum
+Page  108: Header       Class   ID     Length (Bytes)                               Payload                   Checksum
+Page  108: Header       Class   ID     Length (Bytes)                               Payload                   Checksum
+Page  109: Header         Class   ID     Length (Bytes)                               Payload                    Checksum
+Page  110: Header        Class   ID     Length (Bytes)                               Payload                     Checksum
+Page  111: Header         Class   ID     Length (Bytes)                               Payload                        Checksum
+Page  111: Header         Class   ID     Length (Bytes)                               Payload                        Checksum
+Page  112: Header         Class   ID     Length (Bytes)                              Payload                      Checksum
+Page  113: Header         Class   ID     Length (Bytes)                                Payload                    Checksum
+Page  114: Header         Class   ID     Length (Bytes)                               Payload                    Checksum
+Page  114: Header         Class   ID     Length (Bytes)                               Payload                    Checksum
+Page  115: Header         Class   ID     Length (Bytes)                               Payload                    Checksum
+Page  116: Header         Class   ID     Length (Bytes)                               Payload                      Checksum
+Page  116: Header         Class   ID     Length (Bytes)                               Payload                      Checksum
+Page  117: Header       Class   ID     Length (Bytes)                              Payload                     Checksum
+Page  118: Header       Class   ID       Length (Bytes)                              Payload                     Checksum
+Page  118: Header       Class   ID       Length (Bytes)                              Payload                     Checksum
+Page  119: Header         Class   ID     Length (Bytes)                               Payload                     Checksum
+Page  120: Header         Class   ID     Length (Bytes)                               Payload                     Checksum
+Page  121: Header       Class   ID     Length (Bytes)                               Payload                    Checksum
+Page  121: Header       Class   ID     Length (Bytes)                               Payload                    Checksum
+Page  121: Header       Class   ID     Length (Bytes)                               Payload                    Checksum
+Page  122: Header         Class   ID     Length (Bytes)                               Payload                    Checksum
+Page  123: Header         Class   ID     Length (Bytes)                               Payload                      Checksum
+Page  124: Header       Class   ID     Length (Bytes)                               Payload                    Checksum
+Page  124: Header       Class   ID     Length (Bytes)                               Payload                    Checksum
+Page  125: Header       Class   ID     Length (Bytes)                               Payload                    Checksum
+Page  126: Header       Class   ID     Length (Bytes)                              Payload                    Checksum
+Page  127: Header         Class   ID     Length (Bytes)                               Payload                      Checksum
+Page  128: Header        Class   ID     Length (Bytes)                              Payload                    Checksum
+Page  128: Header        Class   ID     Length (Bytes)                              Payload                    Checksum
+Page  129: Header         Class   ID     Length (Bytes)                              Payload                     Checksum
+Page  130: Header       Class   ID     Length (Bytes)                               Payload                   Checksum
+Page  130: Header       Class   ID     Length (Bytes)                               Payload                   Checksum
+Page  131: Header       Class   ID     Length (Bytes)                              Payload                      Checksum
+Page  132: Header       Class   ID     Length (Bytes)                              Payload                   Checksum
+Page  132: Header       Class   ID     Length (Bytes)                              Payload                   Checksum
+Page  133: Header        Class   ID      Length (Bytes)                              Payload                     Checksum
+Page  133: Header        Class   ID      Length (Bytes)                              Payload                     Checksum
+Page  134: Header         Class   ID     Length (Bytes)                               Payload                   Checksum
+Page  134: Header         Class   ID     Length (Bytes)                               Payload                   Checksum
+Page  135: Header       Class   ID     Length (Bytes)                              Payload                      Checksum
+Page  135: Header       Class   ID     Length (Bytes)                              Payload                      Checksum
+Page  136: Header        Class     ID     Length (Bytes)                              Payload                     Checksum
+Page  136: Header        Class     ID     Length (Bytes)                              Payload                     Checksum
+Page  137: Header       Class   ID     Length (Bytes)                              Payload                    Checksum
+Page  137: Header       Class   ID     Length (Bytes)                              Payload                    Checksum
+Page  138: Header         Class   ID     Length (Bytes)                               Payload                     Checksum
+Page  138: Header         Class   ID     Length (Bytes)                               Payload                     Checksum
+Page  140: Header       Class   ID      Length (Bytes)                               Payload                    Checksum
+Page  140: Header       Class   ID      Length (Bytes)                               Payload                    Checksum
+Page  141: Header       Class   ID     Length (Bytes)                                Payload                   Checksum
+Page  143: Header      Class   ID     Length (Bytes)                             Payload                     Checksum
+Page  144: Header       Class   ID     Length (Bytes)                               Payload                    Checksum
+Page  145: Header       Class   ID     Length (Bytes)                              Payload                      Checksum
+Page  146: Header         Class   ID     Length (Bytes)                            Payload                    Checksum
+Page  148: Header       Class   ID     Length (Bytes)                               Payload                     Checksum
+Page  149: Header       Class   ID      Length (Bytes)                               Payload                     Checksum
+Page  150: Header       Class   ID     Length (Bytes)                               Payload                      Checksum
+Page  151: Header       Class   ID     Length (Bytes)                                  Payload                 Checksum
+Page  152: Header         Class   ID     Length (Bytes)                                Payload                   Checksum
+Page  152: Header         Class   ID     Length (Bytes)                                Payload                   Checksum
+Page  153: Header       Class   ID     Length (Bytes)                                 Payload                  Checksum
+Page  154: Header       Class   ID     Length (Bytes)                                Payload                    Checksum
+Page  155: Header       Class   ID     Length (Bytes)                                 Payload                  Checksum
+Page  156: Header       Class   ID     Length (Bytes)                              Payload                   Checksum
+Page  156: Header       Class   ID     Length (Bytes)                              Payload                   Checksum
+Page  157: Header       Class   ID     Length (Bytes)                             Payload                   Checksum
+Page  158: Header      Class   ID     Length (Bytes)                               Payload                     Checksum
+Page  159: Header      Class   ID     Length (Bytes)                               Payload                     Checksum
+Page  159: Header      Class   ID     Length (Bytes)                               Payload                     Checksum
+Page  160: Header      Class   ID     Length (Bytes)                              Payload                     Checksum
+Page  160: Header      Class   ID     Length (Bytes)                              Payload                     Checksum
+Page  161: Header      Class   ID     Length (Bytes)                              Payload                     Checksum
+Page  162: Header         Class   ID     Length (Bytes)                                 Payload                  Checksum
+Page  162: Header         Class   ID     Length (Bytes)                                 Payload                  Checksum
+Page  163: Header       Class   ID     Length (Bytes)                               Payload                   Checksum
+Page  164: Header       Class   ID     Length (Bytes)                               Payload                   Checksum
+Page  165: Header         Class   ID     Length (Bytes)                             Payload                Checksum
+Page  165: Header         Class   ID     Length (Bytes)                             Payload                Checksum
+Page  165: Header         Class   ID     Length (Bytes)                             Payload                Checksum
+Page  166: Header       Class   ID     Length (Bytes)                             Payload                     Checksum
+Page  166: Header       Class   ID     Length (Bytes)                             Payload                     Checksum
+Page  169: 3 + nData         U1[3]     crc                  -           -         Checksum
+Page  170: 3 + nData         U1[3]     crc                  -           -         Checksum
+Page  170: 3 + nData         U1[3]     crc                  -           -         Checksum
+Page  171: 3 + nData         U1[3]    crc                   -           -         Checksum
+Page  171: 3 + nData         U1[3]    crc                   -           -         Checksum
+Page  172: 3 + nData         U1[3]    crc                   -           -         Checksum
+Page  173: 3 + nData         U1[3]    crc                   -           -         Checksum
+Page  173: 3 + nData         U1[3]    crc                   -           -         Checksum
+Page  174: 3 + nData         U1[3]    crc                   -           -         Checksum
+Page  174: 3 + nData         U1[3]    crc                   -           -         Checksum
+Page  175: 3 + nData         U1[3]    crc                   -           -         Checksum
+Page  176: 3 + nData         U1[3]     crc                  -           -         Checksum
+Page  176: 3 + nData         U1[3]     crc                  -           -         Checksum
+Page  177: 3 + nData         U1[3]    crc                   -           -         Checksum
+Page  177: 3 + nData         U1[3]    crc                   -           -         Checksum
+Page  178: 3 + nData         U1[3]    crc                   -           -         Checksum
+Page  178: 3 + nData         U1[3]    crc                   -           -         Checksum
+Page  179: 3 + nData         U1[3]     crc                  -           -         Checksum
+Page  180: 3 + nData         U1[3]    crc                   -           -         Checksum
+Page  180: 3 + nData         U1[3]    crc                   -           -         Checksum
+Page  181: 3 + nData         U1[3]     crc                  -           -         Checksum
+Page  181: 3 + nData         U1[3]     crc                  -           -         Checksum
+Page  182: 3 + nData         U1[3]    crc                   -           -         Checksum
+Page  183: 3 + nData         U1[3]    crc                   -           -         Checksum
+Page  183: 3 + nData         U1[3]    crc                   -           -         Checksum
+Page  184: 3 + nData         U1[3]     crc                  -           -         Checksum
+Page  184: 3 + nData         U1[3]     crc                  -           -         Checksum
+Page  185: 3 + nData         U1[3]    crc                   -           -         Checksum
+Page  185: 3 + nData         U1[3]    crc                   -           -         Checksum
+Page  186: 3 + nData         U1[3]    crc                   -           -         Checksum
+Page  187: 3 + nData         U1[3]    crc                   -           -         Checksum
+Page  187: 3 + nData         U1[3]    crc                   -           -         Checksum
+Page  188: 3 + nData         U1[3]    crc                   -           -         Checksum
+Page  188: 3 + nData         U1[3]    crc                   -           -         Checksum
+Page  189: 3 + nData         U1[3]    crc                   -           -         Checksum
+Page  190: 3 + nData         U1[3]     crc                  -           -         Checksum
+Page  190: 3 + nData         U1[3]     crc                  -           -         Checksum
+Page  191: 3 + nData        U1[3]   crc            -       -         Checksum

@@ -1,0 +1,682 @@
+Keyword: IMU
+Occurrences: 678
+================================================================================
+
+Page   29: 29.8.13 DFSDM filter x extremes detector maximum register
+Page   29: 29.8.14 DFSDM filter x extremes detector minimum register
+Page   72: Table 243.   Filter maximum output resolution (peak data values from filter output)
+Page   72: Table 244.   Integrator maximum output resolution (peak data values from integrator
+Page   76: Table 421.   Minimum spdifrx_ker_ck frequency versus audio sampling rate . . . . . . . . . . . . . . . . . . 2288
+Page   77: Table 500.   Minimum duration for soft disconnect . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2640
+Page   83: Figure 179. Regular and injected oversampling modes used simultaneously . . . . . . . . . . . . . . . . . . . 955
+Page   83: Figure 183. Injected simultaneous mode on 4 channels: dual ADC mode . . . . . . . . . . . . . . . . . . . . . 960
+Page   83: Figure 184. Regular simultaneous mode on 16 channels: dual ADC mode . . . . . . . . . . . . . . . . . . . . 962
+Page   83: Figure 190. Alternate + regular simultaneous . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 967
+Page   84: Figure 195. DMA Requests in regular simultaneous mode when DAMDF=0b00 . . . . . . . . . . . . . . . . 969
+Page   84: Figure 196. DMA requests in regular simultaneous mode when DAMDF=0b10 . . . . . . . . . . . . . . . . . 970
+Page  101: multiple masters to multiple slaves. This allows efficient simultaneous operation of high-
+Page  101: from multiple masters to multiple slaves. This allows efficient simultaneous operation of
+Page  106: The AXI switch matrix uses a priority-based arbitration when two ASIB simultaneously
+Page  130: words (64-bit units). These memories can be addressed at maximum system clock
+Page  133: –    simultaneous operations: two read/program/erase operations executed in parallel
+Page  135: Note:    The application can simultaneously request a read and a write operation through each AXI
+Page  136: queues and buffers to perform Flash read, write and erase operations with maximum
+Page  144: 1. Refer to the Reset and clock control section RCC section for the maximum product FACLK frequency.
+Page  148: The parallelism is the maximum number of bits that can be written to 0 in one shot during a
+Page  149: Flash memory receives simultaneously a write and an erase request for the same bank,
+Page  150: Note:      If a bank erase is requested simultaneously to the sector erase (BER1/2 bit set), the bank
+Page  150: If a sector erase is requested simultaneously to the bank erase (SER1/2 bit set), the bank
+Page  151: To erase all sectors of both banks simultaneously (STM32H743/753 only), excepted for
+Page  152: To erase all sectors of both banks simultaneously (STM32H743/753 only), including those
+Page  172: The minimum execute-only PCROP area that can be set is 16 Flash words (or 512 bytes).
+Page  172: The maximum area is the whole user Flash memory, configured by setting to the same
+Page  173: The minimum secure-only area that can be set is 16 Flash words (or 512 bytes). The
+Page  173: maximum area is the whole user Flash memory bank, configured by setting to the same
+Page  211: PSIZE2 selects the maximum number of bits that can be written to 0 in one shot during a
+Page  248: maximum frequency. By default VOS3 is selected after system reset. VOS can be
+Page  250: to 2 MHz with a maximum load of 30 pF. These I/Os must not be used as current sources
+Page  256: below a minimum level.
+Page  310: pin to reset the connected external devices. The pulse generator guarantees a minimum
+Page  325: The clock provided to the MCOs outputs must not exceed the maximum pin speed (refer to
+Page  334: starting from number 4 represents the clock sources. Column 3 gives the maximum allowed
+Page  351: –    A maximum delay of two periods of the enabled clock may occur between the
+Page  351: –    A maximum delay of 1.5 periods of the disabled clock may occur between the
+Page  371: exceed the maximum frequency.
+Page  587: maximum 128 bytes data burst size (e.g. 16x64-bit or 32x32-bit).
+Page  589: (knowing that a buffer transfer is the minimum data aggregate to be transferred by the
+Page  589: This burst length defines the maximum transfer length which cannot be interrupted at
+Page  590: The minimum amount of data to be transferred for each request (buffer size, up to 128-
+Page  591: This is the minimum logical amount of data (up to 128 bytes) which is transferred on an
+Page  603: be maximum 100 (burst of 16), else the result is unpredictable.
+Page  604: maximum 100 (burst of 16), else the result is unpredictable.
+Page  626: bursts must not cross the 1 Kbyte address boundary because the minimum address space
+Page  631: maximum of 65535 data items can be managed by the DMA in a single transaction,
+Page  707: value represents the guaranteed minimum number of cycles between two consecutive
+Page  726: the AXI master port. These bits represent the minimum guaranteed number of cycles
+Page  783: Memory width(1)         Data address issued to the memory           Maximum memory capacity (bits)
+Page  784: Maximum
+Page  789: The maximum capacity is 512 Mbits (26 address lines).
+Page  789: The maximum capacity is 512 Mbits.
+Page  790: The maximum capacity is 512 Mbits.
+Page  790: The maximum capacity is 512 Mbits (26 address lines).
+Page  792: guarantees that the memory data hold timing constraint is met (minimum Chip Enable
+Page  795: Minimum value for ADDSET is 0.
+Page  798: Minimum value for ADDSET is 0.
+Page  798: Minimum value for ADDSET is 0.
+Page  801: read accesses. Minimum value for ADDSET is 0.
+Page  801: write accesses. Minimum value for ADDSET is 0.
+Page  804: read accesses. Minimum value for ADDSET is 0.
+Page  804: write accesses. Minimum value for ADDSET is 0.
+Page  807: read accesses. Minimum value for ADDSET is 1.
+Page  807: write accesses. Minimum value for ADDSET is 1.
+Page  810: Minimum value for ADDSET is 1.
+Page  810: where max_wait_assertion_time is the maximum time taken by the memory to assert
+Page  812: NOR Flash memories specify a minimum time from NADV assertion to FMC_CLK high. To
+Page  812: be set to its minimum value. As a result, the FMC samples the data and waits long enough
+Page  823: write) transaction. This delay allows to match the minimum time between consecutive
+Page  823: transactions (tEHEL from NEx high to NEx low) and the maximum time needed by the memory
+Page  824: In Muxed mode or Mode D, the minimum value for ADDSET is 1.
+Page  824: In mode 1 and PSRAM memory, the minimum value for ADDSET is 1.
+Page  825: minimum time between consecutive transactions (tEHEL from ENx high to ENx low):
+Page  826: clock period duration. In muxed mode, the minimum ADDSET value is 1.
+Page  827: Minimum duration (in fmc_ker_ck
+Page  832: keeping the MEMHOLD value at its minimum value. The CPU must then use the common
+Page  836: These bits define the minimum number of fmc_ker_ck (+1) clock cycles to assert the
+Page  837: These bits define the minimum number of x fmc_ker_ck (+1) clock cycles to assert the
+Page  840: initialization sequence must be generated simultaneously to Bank 1and Bank 2 by setting
+Page  846: access and the auto-refresh requests are generated simultaneously, the auto-refresh
+Page  847: The SDRAM device must remain in Self-refresh mode for a minimum period of time of
+Page  847: guarantee this minimum period, the BUSY status flag remains high after the Self-refresh
+Page  853: These bits define the minimum Self-refresh period in number of memory clock cycles.
+Page  853: Note:             If two SDRAM devices are connected, all the accesses performed simultaneously to both
+Page  854: simultaneously to the two devices with CTB1 and CTB2 bits set otherwise the command will
+Page  855: memory access and Auto-refresh requests are generated simultaneously, the Auto-refresh
+Page  859: Quad-SPI Flash memories are accessed simultaneously.
+Page  859: •   Dual-flash mode, where 8 bits can be sent/received simultaneously by accessing two
+Page  864: In dual SPI mode, two bits are sent/received simultaneously over the IO0/IO1 signals.
+Page  864: In quad SPI mode, four bits are sent/received simultaneously over the IO0/IO1/IO2/IO3
+Page  869: (CSHT) field can be used to specify the minimum number of CLK cycles (up to 8) that nCS
+Page  870: the Chip Select minimum high time in the CSHT bits, and the functional mode (Mode 0 or
+Page  872: The maximum amount of data read in each frame is 4 bytes. If more data is requested in
+Page  877: simultaneously to double throughput and capacity.
+Page  879: CSHT+1 defines the minimum number of CLK cycles which the chip select (nCS) must
+Page  895: –   Allows slow bus frequency application while keeping optimum ADC performance
+Page  899: Option 1) has the advantage of reaching the maximum ADC clock frequency whatever the
+Page  914: For each channel, SMP[2:0] bits must be programmed to respect a minimum sampling time
+Page  923: cycles (that is two conversions with a sampling time of 1.5 clock periods), the minimum
+Page  923: Note:    It is not possible to use both the auto-injected and discontinuous modes simultaneously.
+Page  924: 1. The maximum latency value can be found in the electrical characteristics of the device datasheet.
+Page  925: It is not possible to use both auto-injected mode and discontinuous mode simultaneously:
+Page  954: they have to be used simultaneously (this is related to a unique accumulation unit).
+Page  955: Figure 179. Regular and injected oversampling modes used simultaneously
+Page  956: injected simultaneous mode and regular simultaneous mode. In this case, the two ADCs
+Page  957: In dual ADC mode the start of conversion is triggered alternately or simultaneously by the
+Page  957: •   Injected simultaneous mode
+Page  957: •   Regular simultaneous mode
+Page  957: •   Injected simultaneous mode + Regular simultaneous mode
+Page  957: •   Regular simultaneous mode + Alternate trigger mode
+Page  957: •   Injected simultaneous mode + Interleaved mode
+Page  958: In regular simultaneous or interleaved modes: once the user sets bit ADSTART or bit
+Page  958: In injected simultaneous or alternate trigger modes: once the user sets bit JADSTART or bit
+Page  960: Injected simultaneous mode
+Page  960: In simultaneous mode, one must convert sequences with the same length and inside a
+Page  960: Figure 183. Injected simultaneous mode on 4 channels: dual ADC mode
+Page  960: If JDISCEN=1, each simultaneous conversion of the injected sequence requires an injected
+Page  960: •    Once a simultaneous injected sequence of conversions has ended, a new injected
+Page  961: Regular simultaneous mode with independent injected
+Page  961: the ADC_CFGR register). A simultaneous trigger is provided to the slave ADC.
+Page  961: on master or on the slave) will abort the current simultaneous conversions, which are re-
+Page  961: In regular simultaneous mode, one must convert sequences with the same length and
+Page  962: Figure 184. Regular simultaneous mode on 16 channels: dual ADC mode
+Page  962: If DISCEN=1 then each “n” simultaneous conversions of the regular sequence require a
+Page  962: •    Once a simultaneous conversion of the sequence has ended, the next conversion in
+Page  962: •    Once a simultaneous regular sequence of conversions has ended, a new regular
+Page  962: It is possible to use the DMA to handle data in regular simultaneous mode combined with
+Page  962: When regular simultaneous mode is combined with AUTDLY mode, it is mandatory for the
+Page  962: •    For each simultaneous conversions of the sequence, the length of the conversion of
+Page  962: Note:      This combination of regular simultaneous mode and AUTDLY mode is restricted to the use
+Page  962: The minimum delay which separates 2 conversions in interleaved mode is configured in the
+Page  963: •   The minimum possible DELAY is 1 to ensure that there is at least one cycle time
+Page  963: •   The maximum DELAY is equal to the number of cycles corresponding to the selected
+Page  964: If DISCEN=1, each “n” simultaneous conversions (“n” is defined by DISCNUM) of the
+Page  965: period. The minimum time interval between 2 trigger events that start conversions on the
+Page  966: Combined regular/injected simultaneous mode
+Page  966: It is possible to interrupt the simultaneous conversion of a regular group to start the
+Page  966: simultaneous conversion of an injected group.
+Page  966: Combined regular simultaneous + alternate trigger mode
+Page  966: It is possible to interrupt the simultaneous conversion of a regular group to start the alternate
+Page  966: trigger interrupting a simultaneous regular conversion.
+Page  967: Figure 190. Alternate + regular simultaneous
+Page  967: Combined injected simultaneous plus interleaved
+Page  967: It is possible to interrupt an interleaved conversion with a simultaneous injected event.
+Page  967: In this case the interleaved conversion is interrupted immediately and the simultaneous
+Page  969: regular simultaneous mode when DAMDF=0b00).
+Page  969: Figure 195. DMA Requests in regular simultaneous mode when DAMDF=0b00
+Page  969: In simultaneous regular and interleaved modes, it is also possible to save one DMA channel
+Page  969: interleaved mode and in regular simultaneous mode when resolution is above 16-bit.
+Page  970: This mode is used in interleaved mode and in regular simultaneous mode when
+Page  970: Figure 196. DMA requests in regular simultaneous mode when DAMDF=0b10
+Page  971: This mode is used in interleaved and regular simultaneous mode when the result is 8-
+Page  972: DFSDM mode in dual ADC simultaneous mode
+Page  972: The dual mode is not required to use DFSDM in dual ADC simultaneous mode since
+Page  972: source results in simultaneous conversion with DFSDM interface.
+Page  975: –    FULL_SCALE is the maximum digital value of the ADC output. For example with
+Page  983: In dual ADC regular simultaneous mode and interleaved mode, the bit ADSTP of the master
+Page  987: It is not possible to use both auto-injected mode and discontinuous mode simultaneously: the
+Page  988: It is not possible to use both auto-injected mode and discontinuous mode simultaneously: the
+Page 1014: 00001: Combined regular simultaneous + injected simultaneous mode
+Page 1014: 00010: Combined regular simultaneous + alternate trigger mode
+Page 1014: 00011: Combined Interleaved mode + injected simultaneous mode
+Page 1014: 00101: Injected simultaneous mode only
+Page 1014: 00110: Regular simultaneous mode only
+Page 1020: independently or simultaneously when both channels are grouped together for synchronous
+Page 1020: •   One DAC interface, maximum two output channels
+Page 1020: •   Dual DAC channel for independent or simultaneous conversions
+Page 1029: less than the maximum amplitude defined by the MAMPx[3:0] bits. Once the configured
+Page 1034: output channels can be used either independently or simultaneously.
+Page 1036: 3.   Configure the two DAC channel WAVEx[1:0] bits as 1x and the same maximum
+Page 1036: 3.   Configure the two DAC channel WAVEx[1:0] bits as 1x and set different maximum
+Page 1036: Simultaneous software start
+Page 1037: Simultaneous trigger without wave generation
+Page 1037: Simultaneous trigger with single LFSR generation
+Page 1037: Simultaneous trigger with different LFSR generation
+Page 1038: Simultaneous trigger with single triangle generation
+Page 1038: •   Configure the two DAC channel WAVEx[1:0] bits as 1x and the same maximum
+Page 1038: Simultaneous trigger with different triangle generation
+Page 1038: •   Configure the two DAC channel WAVEx[1:0] bits as 1x and set different maximum
+Page 1058: a. The minimum VDDA voltage depends on VRS setting, refer to the product datasheet.
+Page 1063: The comparator output can be routed simultaneously internally and to the I/O pins.
+Page 1067: to have the optimum trade-off for a given application.
+Page 1086: Note:       The closer the trimming value is to the optimum trimming value, the longer it takes to
+Page 1086: stabilize (with a maximum stabilization time remaining below 1 ms in any case).
+Page 1096: for digital processing: filter type, filter order, length of filter, integrator length. The maximum
+Page 1096: This timing control is capable of triggering simultaneous conversions or inserting a
+Page 1096: An extremes detector block watches final output data and stores maximum and minimum
+Page 1097: –    store minimum and maximum values of output data values
+Page 1099: Control unit                                                                                             Maximum value
+Page 1099: Minimum value
+Page 1099: 1) end of conversion             Maximum value
+Page 1099: 2) analog watchdog               Minimum value
+Page 1107: DFSDM_CH0CFGR1 register). This condition also defines the minimum data rate to be able
+Page 1107: The maximum data rate of Manchester coded data must be less than the CKOUT signal.
+Page 1115: Table 243. Filter maximum output resolution (peak data values from filter output)
+Page 1116: Table 244. Integrator maximum output resolution (peak data values from integrator
+Page 1116: analog signal reaches or crosses given maximum and minimum threshold values. An
+Page 1117: several comparison requests may be received simultaneously. In this case, the channel
+Page 1117: DFSDM clock cycles (if AWDCH[7:0] = 0xFF). Because the maximum input channel
+Page 1119: The purpose of an extremes detector is to collect the minimum and maximum values of final
+Page 1119: If the output data word is higher than the value stored in the extremes detector maximum
+Page 1119: If the output data word is lower than the value stored in the extremes detector minimum
+Page 1119: The minimum and maximum register values can be refreshed by software (by reading given
+Page 1119: detector minimum data register DFSDM_FLTxEXMIN is filled with 0x7FFFFF (maximum
+Page 1119: positive value) and the extremes detector maximum register DFSDM_FLTxEXMAX is filled
+Page 1119: with 0x800000 (minimum negative value).
+Page 1119: settings. The maximum output data rate is:
+Page 1120: Maximum output data rate in case of parallel data input:
+Page 1142: 29.8.13            DFSDM filter x extremes detector maximum register
+Page 1142: Bits 31:8 EXMAX[23:0]: Extremes detector maximum value
+Page 1142: Bits 2:0 EXMAXCH[2:0]: Extremes detector maximum data channel.
+Page 1143: 29.8.14           DFSDM filter x extremes detector minimum register
+Page 1143: Bits 31:8 EXMIN[23:0]: Extremes detector minimum value
+Page 1143: Bits 2:0 EXMINCH[2:0]: Extremes detector minimum data channel
+Page 1154: from the camera are stable and can be sampled. The maximum DCMI_PIXCLK period must
+Page 1164: For B&W, YCbCr or RGB data, the maximum input size is 2048 × 2048 pixels. No limit in
+Page 1194: Refer to device datasheet for maximum active width supported following maximum pixel
+Page 1194: Refer to device datasheet for maximum active height supported following maximum pixel
+Page 1215: •   Fully-programmable minimum coded unit (MCU)
+Page 1233: maximum when the RNG 128-bit FIFO is emptied by application after 64 RNG clock cycles.
+Page 1281: that the counter blocks range associated to q is equal to 28q-4, i.e. if q maximum
+Page 1314: •    Automatic padding to complete the input bit string to fit digest minimum block size of
+Page 1347: •       The minimum value must be greater than or equal to 3 periods of the fHRTIM clock
+Page 1347: •       The maximum value must be less than or equal to 0xFFFF - 1 periods of the fHRTIM
+Page 1348: simultaneously.
+Page 1349: overflow at the maximum period value and the repetition counter will not decrement.
+Page 1350: simultaneously in the HRTIM_RSTxR register, among the following sources:
+Page 1350: Several events can be selected simultaneously to handle multiple reset sources. In this
+Page 1350: simultaneous reset of several counters.
+Page 1351: reached, so that the maximum amount of time is left for processing before the next period
+Page 1352: The event sources are ORed and multiple events can be simultaneously selected.
+Page 1354: selected simultaneously in the HRTIM_CPT1xCR and HRTIM_CPT2xCR registers, among
+Page 1354: Several events can be selected simultaneously to handle multiple capture triggers. In this
+Page 1360: Note:           The deadtime cannot be used simultaneously with the push-pull mode.
+Page 1361: Table 297 gives the resolution and maximum absolute values depending on the prescaler
+Page 1365: When set and reset requests from two different sources are simultaneous, the reset action
+Page 1365: Compare 4 simultaneously (i.e. when the effective set/reset cannot be determined a priori
+Page 1365: As a summary, in case of simultaneous events, the effective set (reset) event will be
+Page 1366: Up to 10 external event channels can be conditioned and are available simultaneously for
+Page 1369: simultaneously, the reset has the highest priority in the crossbar and the output becomes
+Page 1381: The minimum pulsewidth that can be handled in balanced idle mode is 4 fHRTIM clock
+Page 1381: If the capture occurs before the counter has reached this minimum value, the current pulse
+Page 1381: simultaneously. The output state will change on the first active transition following the output
+Page 1384: can be updated simultaneously with TIMB). This is used for converters requiring
+Page 1384: multiple timers (not necessarily synchronized) to be disabled and resumed simultaneously.
+Page 1385: master, TIMB and TIMC. TIMB and TIMC must be updated simultaneously with the master
+Page 1385: have TIMB and TIMC timers updated simultaneously with the master timer.
+Page 1385: have TIMD and TIME timers updated simultaneously with Timer A.
+Page 1385: the source event can be used to trigger a simultaneous update in any of TIMx timing units.
+Page 1386: simultaneous update
+Page 1386: given event can be used to trigger a simultaneous update in another or multiple TIMx timers.
+Page 1386: TyRST=1 in                      Can be done simultaneously with update in
+Page 1387: simultaneous update
+Page 1388: be used for a simultaneous
+Page 1390: The FAULT state has priority over the RUN state: if TxyOEN bit is set simultaneously with a
+Page 1404: HRTIM_FLTxR register, and they can be selected simultaneously (the sysfault is
+Page 1404: •      One fault channel simultaneously disabling several timing units
+Page 1407: any new synchronization request is discarded. Consequently, the maximum synchronization
+Page 1407: SYNCSTRTM/SYNCSTRTx bits) simultaneously with the synchronization output mode
+Page 1410: simultaneously. A typical use case is for a non-overlapping multiphase converter, where all
+Page 1411: 0400), HRTIM_ADC1R will be typically updated simultaneously with Timer A
+Page 1415: both simultaneously. Each timer (master, TIMA...E) has its own DMA enable register.
+Page 1417: necessary to have all transferred data taken into account simultaneously, the user must
+Page 1417: that all new register values are transferred simultaneously. This is done independently
+Page 1426: Note: This bit must not be changed within a minimum of 8 cycles of fHRTIM clock.
+Page 1427: Note: This bit must not be changed within a minimum of 8 cycles of fHRTIM clock.
+Page 1427: Note: This bit must not be changed within a minimum of 8 cycles of fHRTIM clock.
+Page 1427: Note: This bit must not be changed within a minimum of 8 cycles of fHRTIM clock.
+Page 1427: Note: This bit must not be changed within a minimum of 8 cycles of fHRTIM clock.
+Page 1427: Note: This bit must not be changed within a minimum of 8 cycles of fHRTIM clock.
+Page 1433: The maximum value is 0x0000 FFDF.
+Page 1447: The maximum value is 0x0000 FFDF.
+Page 1475: registers that have to be simultaneously taken into account.
+Page 1475: registers that have to be simultaneously taken into account.
+Page 1529: Although this limits the maximum number of repetition to 32768 PWM cycles, it makes
+Page 1529: registers only once per PWM period in center-aligned mode, maximum resolution is
+Page 1559: be started in response to a stimulus and to generate a pulse with a programmable length
+Page 1560: minimum delay tDELAY min we can get.
+Page 1560: If you want to output a waveform with the minimum delay, you can set the OCxFE bit in the
+Page 1560: TIMx_CCMRx register. Then OCxRef (and OCx) are forced in response to the stimulus,
+Page 1560: This mode allows the counter to be started in response to a stimulus and to generate a
+Page 1565: cleared by the TI1 change. Set the prescaler to get a maximum counter period longer
+Page 1577: 2: It is possible to simultaneously use external clock mode 2 with the following slave
+Page 1587: ON. The minimum delay to activate CC1 output when an edge occurs on the trigger input is
+Page 1649: be started in response to a stimulus and to generate a pulse with a programmable length
+Page 1650: minimum delay tDELAY min we can get.
+Page 1650: If you want to output a waveform with the minimum delay, you can set the OCxFE bit in the
+Page 1650: TIMx_CCMRx register. Then OCxRef (and OCx) is forced in response to the stimulus,
+Page 1650: This mode allows the counter to be started in response to a stimulus and to generate a
+Page 1667: 2: It is possible to simultaneously use external clock mode 2 with the following slave modes:
+Page 1676: ON. The minimum delay to activate CC1 output when an edge occurs on the trigger input is
+Page 1712: be started in response to a stimulus and to generate a pulse with a programmable length
+Page 1714: minimum delay tDELAY min we can get.
+Page 1714: If you want to output a waveform with the minimum delay, you can set the OCxFE bit in the
+Page 1714: TIMx_CCMRx register. Then OCxRef (and OCx) are forced in response to the stimulus,
+Page 1714: This mode allows the counter to be started in response to a stimulus and to generate a
+Page 1727: is ON. The minimum delay to activate the CC1 output when an edge occurs on the trigger
+Page 1739: ON. The minimum delay to activate CC1 output when an edge occurs on the trigger input is
+Page 1774: be started in response to a stimulus and to generate a pulse with a programmable length
+Page 1775: minimum delay tDELAY min we can get.
+Page 1775: If you want to output a waveform with the minimum delay, you can set the OCxFE bit in the
+Page 1775: TIMx_CCMRx register. Then OCxRef (and OCx) are forced in response to the stimulus,
+Page 1775: This mode allows the counter to be started in response to a stimulus and to generate a
+Page 1794: ON. The minimum delay to activate CC1 output when an edge occurs on the trigger input is
+Page 1814: ON. The minimum delay to activate CC1 output when an edge occurs on the trigger input is
+Page 1856: two reset mechanisms from being used simultaneously. So
+Page 1874: watchdog produces a reset. The timing varies between a minimum and a maximum value
+Page 1876: Refer to the datasheet for the minimum and maximum values of the tWWDG.
+Page 1895: The minimum division factor is 1 and the maximum division factor is 222.
+Page 1895: This corresponds to a maximum input frequency of around 4 MHz.
+Page 1900: increasing the synchronous prescaler value (PREDIV_S[14:0]. The maximum resolution
+Page 1903: In this case, the RTC precision can be measured during 16 seconds with a maximum error
+Page 1903: In this case, the RTC precision can be measured during 8 seconds with a maximum error of
+Page 1938: Analog filter delay is maximum 260 ns. Digital filter delay is DNF x tI2CCLK.
+Page 1941: The maximum tHD;DAT can be 3.45 µs, 0.9 µs and 0.45 µs for Standard-mode, Fast-mode
+Page 1941: and Fast-mode Plus, but must be less than the maximum of tVD;DAT by a transition time.
+Page 1941: This maximum must only be met if the device does not stretch the LOW period (tLOW) of the
+Page 1941: the maximum values from the standard increases the constraints for the SDADEL and
+Page 1967: 2. tSYNC1 + tSYNC2 minimum value is 4 x tI2CCLK = 500 ns. Example with tSYNC1 + tSYNC2 = 1000 ns.
+Page 1967: 3.    tSYNC1 + tSYNC2 minimum value is 4 x tI2CCLK = 500 ns. Example with tSYNC1 + tSYNC2 = 750 ns.
+Page 1967: 4.    tSYNC1 + tSYNC2 minimum value is 4 x tI2CCLK = 500 ns. Example with tSYNC1 + tSYNC2 = 655 ns.
+Page 1968: 2. tSYNC1 + tSYNC2 minimum value is 4 x tI2CCLK = 250 ns. Example with tSYNC1 + tSYNC2 = 1000 ns.
+Page 1968: 3.    tSYNC1 + tSYNC2 minimum value is 4 x tI2CCLK = 250 ns. Example with tSYNC1 + tSYNC2 = 750 ns.
+Page 1968: 4. tSYNC1 + tSYNC2 minimum value is 4 x tI2CCLK = 250 ns. Example with tSYNC1 + tSYNC2 = 500 ns.
+Page 1968: 2. tSYNC1 + tSYNC2 minimum value is 4x tI2CCLK = 83.3 ns. Example with tSYNC1 + tSYNC2 = 1000 ns
+Page 1968: 3. tSYNC1 + tSYNC2 minimum value is 4x tI2CCLK = 83.3 ns. Example with tSYNC1 + tSYNC2 = 750 ns
+Page 1968: 4. tSYNC1 + tSYNC2 minimum value is 4x tI2CCLK = 83.3 ns. Example with tSYNC1 + tSYNC2 = 250 ns
+Page 1969: simultaneously accesses all SMBALERT# devices through the Alert Response Address
+Page 1972: timeout before the maximum time given in the SMBus specification.
+Page 1972: tLOW:MEXT for a master. As the standard specifies only a maximum, the user can choose
+Page 1973: •     Configuring the maximum duration of tTIMEOUT to 25 ms:
+Page 1973: •     Configuring the maximum duration of tLOW:SEXT and tLOW:MEXT to 8 ms:
+Page 1973: •     Configuring the maximum duration of tIDLE to 50 µs
+Page 2007: USART bidirectional communications require a minimum of two pins: Receive Data In (RX)
+Page 2010: Since the maximum data word length is 9 bits, the TXFIFO is 9-bit wide. However the
+Page 2018: The communication speed range (specially the maximum communication speed) is also
+Page 2018: noise. This allows obtaining the best a trade-off between the maximum communication
+Page 2019: usart_ker_ck_pres/8). In this case the maximum receiver tolerance to clock deviation is
+Page 2019: deviations. In this case, the maximum speed is limited to maximum
+Page 2024: The USART receiver can receive data correctly at up to the maximum tolerated deviation
+Page 2037: minimum of 1/2 baud clock. In normal operation a full transmit shift register starts
+Page 2038: guardtime). If the software wants to repeat it again, it must insure the minimum 2 baud
+Page 2038: erroneous after the maximum number of retries specified in the SCARCNT bitfield, the
+Page 2039: check of the maximum wait time between two consecutive characters. This time is
+Page 2039: before the start of the block, this register field must be programmed to the minimum value
+Page 2040: programming the BLEN value. However, before the start of the block, the maximum value of
+Page 2042: the width of the pulse is 3 times the low-power baud rate which can be a minimum of
+Page 2042: specification specifies a minimum of 10 ms delay between transmission and reception (IrDA
+Page 2049: For example, the application can set the threshold to the maximum RXFIFO size if the
+Page 2052: Determining the maximum USART baud rate that allows to correctly wake up
+Page 2052: The maximum baud rate allowing to correctly wake up the microcontroller from low-power
+Page 2052: 0%, the maximum value of DWU is 3.41%. In reality, we need to consider at least the
+Page 2052: As a result, the maximum baud rate allowing to wakeup correctly from low-power mode
+Page 2072: in the USART_CR1 register, in order to respect the TE=0 minimum period.
+Page 2076: When transmitting data in Smartcard mode, this bit is set when the maximum number of
+Page 2082: minimum power consumption.
+Page 2085: LPUART bidirectional communications requires a minimum of two pins: Receive Data In
+Page 2086: Since 9 bits the maximum data word length is 9 bits, the TXFIFO is 9-bits wide. However the
+Page 2093: The communication speed range (specially the maximum communication speed) is also
+Page 2094: The maximum baud rate that can be reached when the LPUART clock source is the LSE, is
+Page 2094: 100 MHz, the maximum baud rate that can be reached is about 33 Mbaud.
+Page 2096: The LPUART receiver can receive data correctly at up to the maximum tolerated deviation
+Page 2105: For example, the application can set the threshold to the maximum RXFIFO size if the
+Page 2108: Determining the maximum LPUART baud rate that allows to correctly wake up
+Page 2108: The maximum baud rate allowing to correctly wake up the MCU from low-power mode
+Page 2108: 0%, the maximum value of DWU is 3.41%. In reality, we need to consider at least the
+Page 2108: As a result, the maximum baud rate allowing to wakeup correctly from low-power mode
+Page 2120: in the LPUART_CR1 register, in order to respect the TE=0 minimum period.
+Page 2123: When transmitting data in Smartcard mode, this bit is set when the maximum number of
+Page 2130: •    Adjustable minimum delays between data and between SS and data flow
+Page 2130: Maximum configurable data size [bits]     32       32      32       16       16          16
+Page 2133: data from the slave via the MISO line simultaneously. When the data frame transfer is
+Page 2136: simultaneously around the circle while returning back to the master. Sessions have fixed the
+Page 2142: During SPI communication, receive and transmit operations are performed simultaneously.
+Page 2143: If the access is a multiple of the minimum data size needed for a single data frame, 2 or 4
+Page 2144: Note:       The minimum data length is 4 bits. If a data length of less than 4 bits is selected, it is forced
+Page 2150: frame has to be always accessed at minimum.
+Page 2151: To operate at its maximum speed and to facilitate the data register read/write process
+Page 2152: complete data frame has to be always accessed at minimum.
+Page 2155: length from 5 to 33 bits when maximum data size is 32-bit and from 5 to 17 bits for the
+Page 2155: peripheral instances where maximum data size is limited to 16-bit. The length of the
+Page 2155: maximum data size is applied, the CRC33_17 bit has to be set additionally to define the
+Page 2186: clock periods at minimum.
+Page 2191: Specifies minimum time delay (expressed in SPI clock cycles periods) inserted between two
+Page 2197: CRCPOLY register when DSIZE is configured to maximum 32-bit or 16-bit size and CRC is
+Page 2211: The minimum number of bits to transfer in an audio frame is 8.
+Page 2213: The maximum number of slots per audio frame is fixed at 16.
+Page 2234: pin simultaneously, which could result in a short circuit. To ensure a gap between
+Page 2252: The minimum number of bits to transfer in an audio frame must be equal to 8, otherwise the audio
+Page 2253: The minimum number of bits to transfer in an audio frame must be equal to 8, otherwise the audio
+Page 2254: Each SLOTEN bit corresponds to a slot position from 0 to 15 (maximum 16 slots).
+Page 2254: number of inactive slots). The maximum number of slots is 16.
+Page 2255: Each SLOTEN bit corresponds to a slot position from 0 to 15 (maximum 16 slots).
+Page 2255: number of inactive slots). The maximum number of slots is 16.
+Page 2271: •    Maximum symbol rate: 12.288 MHz
+Page 2276: The longest and shortest transition detector block detects the maximum (MAX_CNT)
+Page 2276: and minimum (MIN_CNT) duration between two transitions. The TRCNT counter is used to
+Page 2276: The maximum duration is normally found during the preamble period. This maximum
+Page 2276: duration is sent out as MAX_CNT. The minimum duration is sent out as MIN_CNT.
+Page 2283: The maximum latency allowed is TSAMPLE - 2TPCLK - 2Tspdifrx_ker_ck
+Page 2288: the received data with a clock at least 11 times higher than the maximum symbol rate, or
+Page 2288: Table 421. Minimum spdifrx_ker_ck frequency versus audio sampling rate
+Page 2288: Symbol Rate                             Minimum spdifrx_ker_ck frequency                                                                 Comments
+Page 2291: the minimum clock frequency versus supported audio sampling rate.
+Page 2291: times higher than the maximum audio sampling rate the application is supposed to
+Page 2292: –    SERR indicates that the synchronization fails because the maximum allowed re-
+Page 2294: Bits 13:12 NBTR[1:0]: Maximum allowed re-tries during synchronization phase(1)
+Page 2311: Note:    The maximum bitrate is 2 Mbit/s.
+Page 2339: this maximum delay cannot be guaranteed, go back to step #1.
+Page 2350: SDMMC_CK speed limited to maximum allowed I/O speed)
+Page 2350: (SDR104 SDMMC_CK speed limited to maximum allowed I/O speed, SPI mode and
+Page 2350: (SDR104 SDMMC_CK speed limited to maximum allowed I/O speed, SPI mode and
+Page 2350: (depending maximum allowed I/O speed).
+Page 2352: 4. Maximum frequency depending on maximum allowed IO speed.
+Page 2353: 4. Maximum frequency depending on maximum allowed IO speed.
+Page 2356: (limited by maximum I/O speed).
+Page 2362: and NRC timing constraints. NCC is the minimum delay between two host commands, and
+Page 2362: NRC is the minimum delay between the host command and the card response.
+Page 2381: SDR50 4-bit mode (50Mbyte/s) the minimum sdmmc_hclk frequency is 37.5MHz
+Page 2381: SDMMC bus         Maximum SDMMC_CK          Minimum AHB clock
+Page 2388: DDR50, the SDMMC_CK may be stopped minimum 2 SDMMC_CK cycles and maximum 5
+Page 2389: SDMMC_D2 low after minimum 2 SDMMC_CK cycles and maximum 5 SDMMC_CK cycles,
+Page 2393: 1.   Switch on Vcc power supply and wait unit minimum operating level is reached.
+Page 2394: The host and card enter and exit interrupt mode (Wait-IRQ) simultaneously. In interrupt
+Page 2394: host sends simultaneously, it will lose sending after the transmission bit.
+Page 2395: Note:    On a simultaneous send interrupt service request response Start bit collision the host will
+Page 2399: The expected maximum busy time shall be set in the DATATIME register before sending the
+Page 2400: 4.    After minimum 1ms enable the Vcc power to the card.
+Page 2400: 5.    After the power ramp period set the SDMMC to the power-off state for minimum 1ms.
+Page 2402: The minimum 5ms time to stop the SDMMC_CK is derived from the internal ungated
+Page 2402: SDMMC_CK clock, which will have a maximum frequency of 25MHz (SD mode), as set by
+Page 2402: The maximum 1 ms time for the card to drive the SDMMC_Dn and SDMMC_CMD lines high
+Page 2402: is derived from the internal ungated SDMMC_CK which will have a maximum frequency of
+Page 2407: 2      The clock frequency can be changed to the maximum card bus frequency when relative
+Page 2433: Controls the message transfer from the message RAM to the CAN core. A maximum of 32
+Page 2436: The maximum configurable bitrate in the CAN FD data phase depends on the FDCAN
+Page 2437: down to the next integer number of mtq (minimum time quantum, that is one period of
+Page 2437: 127 mtq. In case this sum exceeds 127 mtq, the maximum value (127 mtq) is used for
+Page 2438: programming FDCAN_TDCR.TDCF. This defines a minimum value for the SSP position.
+Page 2440: This mode is provided for hardware self-test. To be independent from external stimulation,
+Page 2453: The Tx event FIFO can be configured to a maximum of 32 elements. The Tx event FIFO
+Page 2456: a maximum error of one fdcan_pclk period. The number of bits used for measurement
+Page 2456: The minimum distance between two consecutive falling edges from recessive to
+Page 2457: T0: HW reset                       T1: Check for minimum            T2: Message received
+Page 2458: Precision calibration must be repeated in predefined maximum intervals supervised by the
+Page 2458: For basic calibration the minimum number of oscillator periods between two consecutive
+Page 2458: periods is below the minimum configured by FDCAN_CCFG.OCPM (as an example,
+Page 2458: calibration accuracy and the maximum distance between two calibration messages.
+Page 2463: number of NTUs between two times the watchdog has to be served. The maximum number
+Page 2463: even with maximum clock drift.
+Page 2465: as the FSE switches to its trigger. The RAM access speed defines the minimum time step
+Page 2467: of basic cycles in the system matrix is, respectively, 1, 2, 4, 8, 16, 32, 64). The maximum
+Page 2467: a maximum cycle count of FDCAN_TTMLM.CCM = 0x3F matches occur at cycle counts 3,
+Page 2469: counts up to 0xFFFF = maximum cycle time.
+Page 2474: FDCAN_TTOST.RTO set to the maximum value of 127.
+Page 2475: between the maximum MSC and the minimum MSC for all trigger memory
+Page 2501: phase, the number of minimum time quanta (mtq) between the start of the transmitted bit
+Page 2504: Defines the minimum value for the SSP position, dominant edges on FDCAN_RX that
+Page 2532: 0x00–FF: Maximum time after which the application has to serve the application
+Page 2537: time in all nodes simultaneously.
+Page 2546: FDCAN_TTOCF.LDSDL < 7, this results in a maximum range for NAV of
+Page 2557: Bits 15:8 OCPM[7:0]: Oscillator clock periods minimum
+Page 2557: Configures the minimum number of periods in two CAN bit times. OCPM is used in basic
+Page 2576: a minimum of 10 ms and a maximum of 20 ms. The application takes care of the timing
+Page 2576: –    Program the maximum packet size (MPS)
+Page 2578: As request queues can hold a maximum of 8 entries each, the application can push to
+Page 2578: SB for a maximum of 8 pending periodic transactions plus 8 pending non-periodic
+Page 2584: minimum space of (largest packet size / 4) + 1 must be allocated to receive packets. If
+Page 2585: Transmit FIFO RAM allocation: the minimum RAM space required for each IN endpoint
+Page 2585: Transmit FIFO is the maximum packet size for that particular IN endpoint.
+Page 2585: minimum space of (largest packet size / 4) + 1 must be allocated to receive packets. If
+Page 2585: The minimum amount of RAM required for the host Non-periodic Transmit FIFO is the
+Page 2585: largest maximum packet size among all supported non-periodic OUT channels.
+Page 2585: The minimum amount of RAM required for host periodic Transmit FIFO is the largest
+Page 2585: maximum packet size out of all the supported periodic OUT channels. If there is at least one
+Page 2585: isochronous OUT endpoint, then the space must be at least two times the maximum packet
+Page 2602: TRDT minimum value
+Page 2602: TRDT minimum value
+Page 2607: because the Rx FIFO does not have enough space to accommodate a maximum size
+Page 2616: Maximum value is 1024
+Page 2617: Minimum value is 16
+Page 2617: Minimum value is 16
+Page 2622: Enables suspending the PHY in L1 Sleep mode. For maximum power saving during L1
+Page 2622: because this exceeds maximum TL1HubDrvResume2.
+Page 2622: Enables suspending the PHY in L1 Sleep mode. For maximum power saving during L1
+Page 2624: Minimum value is 16
+Page 2624: Minimum value is 16
+Page 2628: channel, up to a maximum of 16 bits. Bits in this register are set and cleared when the
+Page 2628: bit per channel, up to a maximum of 16 bits.
+Page 2630: The application must leave this bit set for a minimum duration of at least 10 ms to start a
+Page 2630: required minimum duration, before clearing the bit, even though there is no maximum limit
+Page 2632: Bits 10:0 MPSIZ[10:0]: Maximum packet size
+Page 2632: Indicates the maximum packet size of the associated endpoint.
+Page 2636: application is expected to program this field as an integer multiple of the maximum packet
+Page 2638: maximum speed the application can support. However, the actual bus speed is determined
+Page 2640: Table 500 contains the minimum duration (according to device state) for which the Soft
+Page 2640: the specified minimum duration.
+Page 2640: Table 500. Minimum duration for soft disconnect
+Page 2640: Operating speed                              Device state                          Minimum duration
+Page 2644: is one interrupt bit per endpoint, up to a maximum of 16 bits for OUT endpoints and 16 bits
+Page 2653: Bits 10:0 MPSIZ[10:0]: Maximum packet size
+Page 2653: The application must program this field with the maximum packet size for the current logical
+Page 2655: This field is decremented every time a packet (maximum size or short packet) is read from
+Page 2655: maximum packet size of the endpoint, to be interrupted at the end of each packet.
+Page 2657: This field is decremented every time a packet (maximum size or short packet) is read from
+Page 2657: be set to the maximum packet size of the endpoint, to be interrupted at the end of each
+Page 2658: Bits 1:0 MPSIZ[1:0]: Maximum packet size
+Page 2658: The maximum packet size for control OUT endpoint 0 is the same as what is programmed in
+Page 2661: maximum packet size of the endpoint, to be interrupted at the end of each packet.
+Page 2664: Bits 10:0 MPSIZ[10:0]: Maximum packet size
+Page 2664: The application must program this field with the maximum packet size for the current logical
+Page 2665: This field is decremented every time a packet (maximum size or short packet) is written to
+Page 2665: be set to the maximum packet size of the endpoint, to be interrupted at the end of each
+Page 2680: actual packet size based on the programmed maximum packet size and transfer size.
+Page 2681: MPS: Maximum packet size                                      Done
+Page 2682: –    The application is attempting to send two maximum-packet-size packets (transfer
+Page 2686: –    The application is attempting to receive two maximum-packet-size packets
+Page 2686: –    The receive FIFO can contain at least one maximum-packet-size packet and two
+Page 2688: –    The application is attempting to send one packet in every frame (up to 1 maximum
+Page 2693: –       The application is attempting to receive one packet (up to 1 maximum packet size)
+Page 2693: –       The receive FIFO can hold at least one maximum-packet-size packet and two
+Page 2695: –       The application is attempting to send one packet every frame (up to 1 maximum
+Page 2699: –   The application is attempting to receive one packet (up to 1 maximum packet size)
+Page 2699: –   The receive FIFO can hold at least one maximum-packet-size packet and two
+Page 2701: Packet babble occurs if the device sends more data than the maximum packet size for
+Page 2711: setup data. If thresholding is not enabled, at a minimum, this must be equal to 1
+Page 2711: be able to transmit control IN data. At a minimum, this must be equal to 1 max
+Page 2711: 2.   Program the MPSIZ field in OTG_DIEPCTL0 to set the maximum packet size. This
+Page 2711: step configures control endpoint 0. The maximum packet size for a control endpoint
+Page 2712: –   Maximum packet size
+Page 2718: a multiple of the maximum packet size of the endpoint, adjusted to the word boundary.
+Page 2718: (maximum packet size or short packet) written to the receive FIFO decrements the
+Page 2718: (0 ≤ packet size < maximum packet size)
+Page 2719: always be set to the number of maximum-packet-size packets that can be received in a
+Page 2724: payload that constitutes multiple maximum-packet-size packets and a single short
+Page 2724: –    To transmit a few maximum-packet-size packets and a short packet at the end of
+Page 2725: –    To transmit a few maximum-packet-size packets and a zero-length data packet at
+Page 2725: first sends maximum-packet-size data packets and the second sends the zero-
+Page 2725: FIFO. The maximum number of packets maintained by the core at any time in an IN
+Page 2726: –    The application can only transmit multiples of maximum-packet-size data packets
+Page 2726: or multiples of maximum-packet-size packets, plus a short packet at the end. To
+Page 2726: transmit a few maximum-packet-size packets and a short packet at the end of the
+Page 2731: 5.    The device drives VBUS above the A-device session valid (2.0 V minimum) for VBUS
+Page 2740: •   Descriptor architecture allowing large blocks of data transfer with minimum CPU
+Page 2744: maximum of two buffers. This enables two buffers to be used and physically addressed,
+Page 2746: Transmit process can simultaneously acquire two packets without closing the Status
+Page 2751: The maximum number of Retry requests expires. In this case, the MAC aborts the
+Page 2771: –    Digital rollover mode: In this mode, the maximum value in the nanoseconds field
+Page 2777: containing <egress_correction_value> represented in binary. The maximum value
+Page 2780: TCP header in TDES3[22:19]. The maximum length of TCP packet payload that can be seg-
+Page 2780: tion, the DMA uses the Maximum Segment Size (MSS) provided by the application through
+Page 2782: The context descriptor can provide the maximum segment size (MSS) value for
+Page 2806: d)   If fixed length value is enabled, select the maximum burst length possible on the
+Page 2807: (ETH_DMACTXCR)) to configure the parameters such as the maximum burst-length
+Page 2814: c)   Program the maximum size of the segment in:
+Page 2818: from Ethernet Source address till the end of the TCP header. The maximum
+Page 2818: header length supported for TSO feature is 1023 bytes. The maximum
+Page 2820: minimum value of this field must be 5.
+Page 2825: TDES2                  Inner VLAN tag[31:16]                  Maximum segment size[14:0]
+Page 2826: Maximum Segment Size
+Page 2834: – The TCP, UDP, or ICMP segment length is less than minimum allowed
+Page 2837: specified maximum Ethernet size of 1518, 1522, or 2000 bytes (9018 or
+Page 2846: Bits 13:0 MSS[13:0]: Maximum Segment Size
+Page 2846: This field specifies the maximum segment size that should be used while segmenting the
+Page 2847: These bits indicate the maximum number of beats to be transferred in one DMA data transfer.
+Page 2847: This is the maximum value that is used in a single block Read or Write. The DMA always
+Page 2848: These bits indicate the maximum number of beats to be transferred in one DMA data transfer.
+Page 2848: This is the maximum value that is used in a single block Read or Write. The DMA always
+Page 2849: This field indicates the size of the Rx buffers specified in bytes. The maximum buffer size is
+Page 2853: This field sets the maximum number of Tx descriptors in the circular descriptor ring. The
+Page 2853: maximum number of descriptors is limited to 1K descriptors. It is recommended to put a
+Page 2853: minimum ring descriptor length of 4.
+Page 2854: This register sets the maximum number of Rx descriptors in the circular descriptor ring. The
+Page 2854: maximum number of descriptors is limited to 1K descriptors.
+Page 2870: has crossed the maximum count. In such a scenario, the overflow packet counter is reset to
+Page 2875: When set, this bit indicates that the Rx Queue Missed Packet Counter crossed the maximum
+Page 2875: maximum limit.
+Page 2876: This field indicates the current number of packets in the Rx queue. The theoretical maximum
+Page 2881: These bits control the minimum IPG between packets during transmission.
+Page 2881: This range of minimum IPG is valid in full-duplex mode.
+Page 2881: In the half-duplex mode, the minimum IPG can be configured only for 64-bit times (IPG =
+Page 2881: not consider the minimum IPG.
+Page 2881: ETH_MACECR register is reset. When EIPGEN is set, then the minimum IPG (greater than
+Page 2882: receive simultaneously. This bit is RO with default value of 1'b1 in the full-duplex-only
+Page 2886: bits), along with IPG field in ETH_MACCR, gives the minimum IPG greater than 96 bit times
+Page 2886: minimum IPG greater than 96 bit times in steps of 8 bit times.
+Page 2886: as minimum IPG less than or equal to 96 bit times in steps of 8 bit times.
+Page 2908: – The minimum allowed offset is 12, which refers to the 13th byte of the packet.
+Page 2911: This field specifies the minimum time (in milliseconds) for which the link status from the PHY
+Page 2911: This field specifies the minimum time (in microseconds) for which the MAC waits after it stops
+Page 2926: When this bit is set, the counter does not roll over to zero after reaching the maximum value.
+Page 2926: •          Receive statistic counters reach half of their maximum values (0x8000_0000 for 32 bit
+Page 2926: •          Receive statistic counters cross their maximum values (0xFFFF_FFFF for 32 bit
+Page 2926: This bit is set when the Rx_LPI_Tran_Cntr counter reaches half of the maximum value or the
+Page 2926: maximum value.
+Page 2926: This bit is set when the Rx_LPI_USEC_Cntr counter reaches half of the maximum value or
+Page 2926: the maximum value.
+Page 2927: This bit is set when the rxunicastpackets_g counter reaches half of the maximum value or the
+Page 2927: maximum value.
+Page 2927: This bit is set when the rxalignmenterror counter reaches half of the maximum value or the
+Page 2927: maximum value.
+Page 2927: This bit is set when the rxcrcerror counter reaches half of the maximum value or the
+Page 2927: maximum value.
+Page 2927: statistic counters reach half their maximum values (0x8000_0000 for 32 bit counter and
+Page 2927: 0x8000 for 16 bit counter), and when they cross their maximum values (0xFFFF_FFFF for
+Page 2928: This bit is set when the Tx_LPI_Tran_Cntr counter reaches half of the maximum value or the
+Page 2928: maximum value.
+Page 2928: This bit is set when the Tx_LPI_USEC_Cntr counter reaches half of the maximum value or
+Page 2928: the maximum value.
+Page 2928: This bit is set when the txpacketcount_g counter reaches half of the maximum value or the
+Page 2928: maximum value.
+Page 2928: This bit is set when the txmulticol_g counter reaches half of the maximum value or the
+Page 2928: maximum value.
+Page 2928: This bit is set when the txsinglecol_g counter reaches half of the maximum value or the
+Page 2928: maximum value.
+Page 2929: when receive statistic counters reach half of their maximum value or the maximum values.
+Page 2929: maximum value or the maximum value.
+Page 2929: maximum value or the maximum value.
+Page 2929: maximum value or the maximum value.
+Page 2929: maximum value or the maximum value.
+Page 2929: Setting this bit masks the interrupt when the rxcrcerror counter reaches half of the maximum
+Page 2929: value or the maximum value.
+Page 2930: when the transmit statistic counters reach half of their maximum value or the maximum
+Page 2930: maximum value or the maximum value.
+Page 2930: maximum value or the maximum value.
+Page 2930: maximum value or the maximum value.
+Page 2930: maximum value or the maximum value.
+Page 2930: maximum value or the maximum value.
+Page 2950: When Bit 9 is set in ETH_MACTSCR, each bit represents 1 ns. The maximum value is
+Page 2978: minimum processing and memory overhead.
+Page 2983: This is done to guarantee the maximum priority to a failed transmission and the lowest one
+Page 2983: the minimum nominal data bit duration of the last bit in the message (ACK bit).
+Page 2994: set at the end of the maximum bit-extension tolerance allowed by RXTOL, in case falling edge is still
+Page 2995: either at the time the misplaced rising edge occurs, or at the end of the maximum BRE tolerance
+Page 3002: at its maximum frequency.
+Page 3072: pointer reaches its maximum value, it wraps around.
+Page 3073: pointer reaches its maximum value, it wraps around.
+Page 3076: Reading this register returns the maximum fill level of the trace memory in 32-bit words since
+Page 3077: The maximum value that can be written into this register is MEM_SIZE - 1. In this case, the
+Page 3098: the last synchronization packet of 128 bits. It is a 12-bit counter with a maximum count value
+Page 3098: value is the maximum number of complete frames between full synchronization packets.
+Page 3157: register back to determine the maximum mask size supported.
+Page 3164: Software can write directly to any of 32 x 32-bit ITM stimulus registers to generate
+Page 3164: to an enabled stimulus port, the ITM combines the identity of the port, the size of the
+Page 3165: outputs packets from the FIFO onto the trace bus. Reading a stimulus port register
+Page 3165: returns the status of the stimulus register (empty or pending) in bit 0.
+Page 3165: ITM stimulus register x (M7_ITM_STIMx)
+Page 3165: STIMULUS[31:16]
+Page 3165: STIMULUS[15:0]
+Page 3165: Bits 31:0 STIMULUS[31:0]: Software event packet / FIFOREADY
+Page 3165: 0: Stimulus port buffer is full (or port is disabled)
+Page 3165: 1: Stimulus port can accept new write data
+Page 3166: Bits 31:0 STIMENA[31:0]: Stimulus port enable
+Page 3166: Each bit n (0:31) enables the stimulus port associated with the M7_ITM_STIMn register.
+Page 3166: Bits 3:0 PRIVMASK[3:0]: Enable unprivileged access to ITM stimulus ports
+Page 3166: Each bit controls eight stimulus ports:
+Page 3172: 0x000 to M7_ITM_STIM0-31                                                                                                         STIMULUS[31:0]
+Page 3187: The threshold represents the minimum interval between cycle count trace packets.
+Page 3190: Bits 31:0 MAXSPEC[31:0]: Maximum speculation depth
+Page 3190: Indicates the maximum speculation depth of the instruction trace stream. This is the
+Page 3190: maximum number of P0 elements that have not been committed in the trace stream at any
+Page 3190: 0x2: Maximum trace speculation depth is 2
+Page 3193: 0x08: Maximum of 64-bit global timestamp implemented
+Page 3195: 0x4: 32-bit maximum address size
+Page 3195: 0x4: 32-bit maximum address size
+Page 3195: Bits 11:0 CCITMIN[11:0]: Instruction trace cycle counting minimum threshold
+Page 3195: 0x4: Minimum threshold is 4 instruction trace cycle
+Page 3216: Updated maximum frequency for ADC1, 2, 3 in Table 51: Kernel
+Page 3219: Updated notes in Section : Combined regular/injected simultaneous
+Page 3219: mode and Section : Combined regular simultaneous + alternate
+Page 3219: Added Section : DFSDM mode in dual ADC simultaneous mode.
+Page 3223: Updated maximum frequency for ADC1, 2, 3 in Table 51: Kernel
+Page 3226: Updated maximum allowed clock frequency for ADC1, 2, 3
+Page 3231: Added Section : Determining the maximum USART baud rate that
+Page 3232: Updated Section : Determining the maximum LPUART baud rate

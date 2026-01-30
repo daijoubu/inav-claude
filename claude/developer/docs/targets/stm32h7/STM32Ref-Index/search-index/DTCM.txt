@@ -1,0 +1,59 @@
+Keyword: DTCM
+Occurrences: 55
+================================================================================
+
+Page   99: Cortex-M7 -DTCM
+Page   99: DTCM                      -                 -                  -                   X            -          -            X             -      -         -             -              -             -               -                -              -             -              -
+Page  100: DTCM-RAM              L1-Cache
+Page  100: DTCM
+Page  101: The DTCM and ITCM (data and instruction tightly coupled RAMs) are connected through
+Page  101: DTCM and ITCM through AHBS, a specific CPU slave AHB. The ITCM is accessed by
+Page  101: The Cortex-M7 CPU provides AHB/TCM-bus (ITCM and DTCM buses) translation from its
+Page  101: AHBS slave AHB, allowing the MDMA controller to access the ITCM and DTCM.
+Page  102: and DTCM) and AHB3, AHB4, APB3 and APB4 peripherals (excluding AHB1, APB1 and
+Page  102: Cortex®-M7 DTCM bus
+Page  102: The Cortex®-M7 CPU uses the 2x32-bit DTCM bus for accessing data in the DTCM. The
+Page  102: 2x32-bit DTCM bus allows load/load and load/store instruction pairs to be dual-issued on
+Page  102: the DTCM memory. It can also fetch instructions.
+Page  102: access the ITCM and the DTCM.
+Page  103: matrices, the memory bus can access all internal memories except ITCM and DTCM, and
+Page  103: peripheral bus can access all internal memories except ITCM and DTCM, external
+Page  104: DTCM, and external memories through the Quad-SPI controller and the FMC.
+Page  104: except ITCM and DTCM, and external memories through the Quad-SPI controller and the
+Page  104: for the SRAM, DTCM, ITCM and Flash memory). To operate a block with no clock upon
+Page  125: DTCM
+Page  130: used for application data which are not allocated in DTCM RAM or reserved for
+Page  130: •   DTCM-RAM on TCM interface is mapped at the address 0x2000 0000 and accessible
+Page  130: DTCM-RAM can be used as read-write segment to host critical real-time data (such as
+Page  132: •   All RAM address space: ITCM, DTCM RAMs and SRAMs
+Page  160: •   Secure DTCM size (ST_RAM_SIZE)
+Page  160: These bits selects the size of the secure DTCM, an option that is available only when
+Page  164: •   ST_RAM_SIZE: option to set the size of DTCM RAM to be protected (2kB, 4kB, 8kB or
+Page  346: •    The CPU enabled SDMMC1, SPI5 and SRAM1, AXISRAM, ITCM, DTCM1, DTCM2
+Page  346: Note:      The FLASH, AXISRAM, ITCM, DTCM1, DTCM2, SRAM4, IWGD1, IWGD2, PWR, EXTI and
+Page  347: DTCM1
+Page  347: DTCM2
+Page  348: •    AXISRAM, ITCM, DTCM1, DTCM2 and FLASH,
+Page  348: As shown in Figure 56, FLASH, AXISRAM, SRAM4, ITCM, DTCM1 and DTCM2 are
+Page  450: DTCM2LPEN
+Page  450: DTCM1LPEN
+Page  450: Bit 29 DTCM2LPEN: D1 DTCM2 Block Clock Enable During CSleep mode
+Page  450: 0: D1 DTCM2 interface clock disabled during CSleep mode
+Page  450: 1: D1 DTCM2 interface clock enabled during CSleep mode (default after reset)
+Page  450: Bit 28 D1DTCM1LPEN: D1DTCM1 Block Clock Enable During CSleep mode
+Page  450: 0: D1DTCM1 interface clock disabled during CSleep mode
+Page  450: 1: D1DTCM1 interface clock enabled during CSleep mode (default after reset)
+Page  477: SRAM1LPEN                           Res.                       DTCM2LPEN                            Res.                   HRTIMEN                    Res.                              DAC12EN      29
+Page  477: Res.                             Res.                       DTCM1LPEN                            Res.                  DFSDM1EN                    Res.                                  Res.     28
+Page  480: Res.                                DAC12LPEN                        Res.                                SRAM4LPEN                    SRAM1LPEN                           Res.                       DTCM2LPEN     29
+Page  480: Res.                                     Res.                        Res.                               BKPRAMLPEN                       Res.                             Res.                       DTCM1LPEN     28
+Page  526: •        Management of DTCM secured section status
+Page  532: DTCML
+Page  532: Bit 13 DTCML: D1 DTCM double ECC error lock bit
+Page  532: and lock the DTCM double ECC error flag connection to TIM1/8/15/16/17 and
+Page  532: 0: DTCM double ECC error flag disconnected from TIM1/8/15/16/17/HRTIMER Break
+Page  532: 1: DTCM double ECC error flag connected to TIM1/8/15/16/17/HRTIMER Break inputs
+Page  544: Bits 1:0 SDRS[1:0]: Secured DTCM RAM Size
+Page  544: These bits indicates the size of the secured DTCM RAM.
+Page  548: Res.                          Res.                      Res.                           Res.                          Res.                              Res.                           Res.                            DTCML                                                                                                                                                                                                                                                                                                                                                                                Res.                       13
+Page 3226: DTCM, core with FPU replaced by CPU for I-bus, D_bus and S-bus.

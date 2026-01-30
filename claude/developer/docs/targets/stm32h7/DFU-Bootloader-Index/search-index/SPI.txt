@@ -1,0 +1,1295 @@
+Keyword: SPI
+Occurrences: 1291
+================================================================================
+
+Page 1: the available serial peripherals (such as USART, CAN, USB, I2C, I3C, SPI, FDCAN). A
+Page 16: 87.2    SPI1 pinout on WLCSP68-G . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 456
+Page 17: 93.5     SPI connection timing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 501
+Page 22: Table 213.   SPI bootloader minimum timings (ms) for STM32 devices . . . . . . . . . . . . . . . . . . . . . . . . 501
+Page 23: Figure 4.    SPI connection . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 45
+Page 25: Figure 125. SPI connection timing description. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 501
+Page 26: –     AN4286: SPI protocol used in the STM32 bootloader
+Page 31: BL_SPI_Loop refers to the SPI bootloader execution loop.
+Page 34: In some products using interrupts (integrating USB, SPI, non auto baud rate USART),
+Page 35: X = 8: I2C and SPI are used
+Page 35: X = 9: USART, CAN (or FDCAN), DFU, I2C, and SPI are used
+Page 35: X = 11: USART, I2C, and SPI are used
+Page 35: X = 12: USART and SPI are used
+Page 35: X = 13: USART, DFU, I2C, and SPI are used
+Page 35: X = 14: USART, DFU, I2C, I3C, FDCAN, and SPI are used
+Page 35: X = 16: USART, USB-DFU, FDCAN, and SPI are used
+Page 35: X = 17: USART, SPI, and FDCAN are used
+Page 35: X = 18: USART, SPI, FDCAN, and I2C are used
+Page 36: SPI1/SPI2                                         SPI (V2.0)
+Page 36: SPI1/SPI2                                         SPI (V1.1)
+Page 36: SPI1/SPI2                                         SPI (V2.0)
+Page 38: I2C1/I2C2/I2C3                                   SPI(V1.1)
+Page 38: SPI1/SPI2                                        I2C (V1.0)
+Page 38: SPI1/ SPI2/ SPI4                                 SPI(V1.1)
+Page 38: SPI1/SPI2/ SPI3                                  SPI(V1.1)
+Page 38: SPI1/SPI2/SPI3                                     SPI(V1.1)
+Page 38: SPI1/SPI2                                        SPI (V1.1)
+Page 38: SPI1/SPI2/ SPI3                                    SPI(V1.1)
+Page 38: SPI1/SPI3/SPI4                                   SPI (V1.1)
+Page 38: SPI1/SPI3/SPI4                                   SPI (V1.1)
+Page 38: SPI1/ SPI2/SPI4                                  SPI(V1.1)
+Page 38: SPI1/SPI2/ SPI4                                  SPI (V1.1)
+Page 39: SPI1/SPI2/SPI4                                   SPI (V1.2)
+Page 39: SPI1/SPI2/SPI4                                   SPI (V1.2)
+Page 39: SPI1/SPI2/SPI4                                   SPI (V1.2)
+Page 39: SPI1/SPI2                                        SPI (V1.1)
+Page 39: SPI1/SPI2                                        SPI (V1.1)
+Page 39: STM32G0B1xx/0C1xx           SPI1/SPI2                      0x92   0x1FFF9FFE SPI (V1.1)
+Page 39: SPI1/SPI2                                          SPI (V1.1)
+Page 39: SPI1/SPI2                                        SPI (V1.1)
+Page 39: SPI1/SPI2                                        SPI (V1.1)
+Page 40: SPI1/SPI2/SPI3                                     SPI (V2.0)
+Page 40: SPI1/SPI2/SPI3                                     SPI (V2.0)
+Page 40: SPI1/SPI2/SPI3                                     SPI (V2.0)
+Page 40: SPI1/SPI2/SPI3/SPI4                                SPI (V1.1)
+Page 40: SPI1/SPI2/SPI3/SPI4                                SPI (V1.1)
+Page 40: SPI1/SPI2/SPI3                                     SPI (V1.2)
+Page 40: SPI1/SPI2/SPI3                                    SPI (V2.0)
+Page 41: SPI1                                               SPI (V1.1)
+Page 41: SPI1                                               SPI (V1.1)
+Page 41: L0                                   SPI1/ SPI2                                         SPI (V1.1)
+Page 41: SPI1/SPI2                      0xB2   0x1FF01FFE SPI (V1.1)
+Page 42: SPI1/SPI2                                        SPI (V1.1)
+Page 42: SPI1/SPI2                                        SPI (V1.1)
+Page 42: SPI1/SPI2                                        SPI (V1.1)
+Page 42: SPI1/SPI2                      0x92   0x1FFF6FFE SPI (V1.1)
+Page 42: SPI1/SPI2                                        SPI (V1.1)
+Page 42: SPI1/SPI2                                        SPI (V1.1)
+Page 42: SPI1/SPI2                                        SPI (V1.1)
+Page 42: L5       STM32L552xx/562xx           SPI1/SPI2/SPI3                 0x92   0x0BF97FFE SPI (V1.1)
+Page 42: SPI1/SPI2                                        SPI (V1.1)
+Page 42: SPI1/SPI2                                        SPI (V1.1)
+Page 43: SPI1/SPI2/SPI3                                   SPI (V2.0)
+Page 43: STM32U535xx/545xx            SPI1/SPI2/SPI3                 0x91   0x0BF99EFE SPI (V1.1)
+Page 43: STM32U575xx/STM32U585xx      SPI1/SPI2/SPI3                 0x93   0x0BF99EFE SPI (V1.1)
+Page 43: SPI1/SPI2/SPI3                 0x92   0x0BF99EFE SPI (V1.1)
+Page 43: SPI1/SPI2/SPI3                 0x90   0x0BF99EFE SPI (V1.1)
+Page 43: SPI1                                             SPI (V1.1)
+Page 43: SPI1/SPI2                                        SPI (V1.1)
+Page 43: SPI3                                              SPI (V1.1)
+Page 43: SPI2/SPI3                                         SPI (V2.0)
+Page 43: SPI1/SPI2                                          SPI (V1.1)
+Page 45: To use the SPI bootloader, connect the host (master) and the desired SPIx interface (slave)
+Page 45: Figure 4. SPI connection
+Page 45: SPI host                                                                  STM32
+Page 46: SPI_MOSI, and CAN_RX, if present) at a known (low or high) level and keep the USB D+/D-
+Page 62: The SPI1 configuration is:
+Page 62: SPI1                 Enabled
+Page 62: SPI1          SPI1_MOSI pin        Input
+Page 62: SPI1_MISO pin(1)     Output
+Page 62: SPI1_SCK pin
+Page 62: SPI1_NSS pin
+Page 63: The SPI2 configuration is:
+Page 63: SPI2                     Enabled
+Page 63: SPI2             SPI2_MOSI pin            Input
+Page 63: SPI2_MISO pin(1)         Output
+Page 63: SPI2_SCK pin
+Page 63: SPI2_NSS pin
+Page 63: 1. SPI Tx (MISO) is handled by DMA. On the bootloader start-up after SPI initialization as soon as the bit DMATx enable on
+Page 63: SPI CR2 register is set to 0x1, the MISO line is set to 3.3 V.
+Page 64: Configure SPIx
+Page 64: SPIx detects                       Disable all other    Disable all other
+Page 64: BL_SPI_Loop         BL_I2C_Loop         BL_USART_Loop
+Page 64: no                             for SPIx            for I2Cx            for USARTx
+Page 67: The SPI1 configuration is:
+Page 67: SPI1                 Enabled
+Page 67: SPI1                                               PA7 pin: target data Input line, used in push-pull, pull down
+Page 67: SPI1_MOSI pin        Input
+Page 67: SPI1_MISO pin(2)     Output
+Page 67: SPI1_SCK pin                         PA5 pin: target clock line, used in push-pull, pull down mode.
+Page 67: SPI1_NSS pin
+Page 67: The SPI2 configuration is:
+Page 67: SPI2                 Enabled
+Page 67: SPI2          SPI2_MOSI pin        Input
+Page 67: SPI2_MISO pin(2)     Output
+Page 67: SPI2_SCK pin
+Page 67: SPI2_NSS pin
+Page 68: 2. SPI Tx (MISO) is handled by DMA. On the bootloader start-up after SPI initialization as soon as the bit DMATx enable on
+Page 68: SPI CR2 register is set to 0x1, the MISO line is set to 3.3 V.
+Page 68: SPIx detects                                               Execute
+Page 68: Synchro             Yes                                 BL_SPI_Loop
+Page 68: mechanism                                                  for SPIx
+Page 68: Configure SPIx
+Page 71: The SPI1 configuration is:
+Page 71: SPI1                 Enabled
+Page 71: SPI1          SPI1_MOSI pin        Input
+Page 71: SPI1_MISO pin(1)     Output
+Page 71: SPI1_SCK pin
+Page 71: SPI1_NSS pin
+Page 72: The SPI2 configuration is:
+Page 72: SPI2                     Enabled
+Page 72: SPI2             SPI2_MOSI pin            Input
+Page 72: SPI2_MISO pin(1)         Output
+Page 72: SPI2_SCK pin
+Page 72: SPI2_NSS pin
+Page 72: 1. SPI Tx (MISO) is handled by DMA. On the bootloader start-up after SPI initialization, as soon as the bit DMATx enable on
+Page 72: SPI CR2 register is set to 0x1, the MISO line is set to 3.3 V.
+Page 73: Configure SPIx           SPIx detects          Disable all interrupt       Execute
+Page 73: Synchro        Yes   sources and other        BL_SPI_Loop for
+Page 73: mechanism              interfaces clocks           SPIx
+Page 148: HSI enabled     phase) and when USART or SPI or I2C interfaces are
+Page 150: The SPI2 configuration is:
+Page 150: SPI1                  Enabled
+Page 150: SPI1                                                  PA7 pin: slave data input line, used in push-pull, pull-down
+Page 150: SPI1_MOSI pin         Input
+Page 150: SPI1_MISO pin         Output
+Page 150: SPI1_SCK pin                          PA5 pin: slave clock line, used in push-pull, pull-down mode
+Page 150: SPI1_NSS pin
+Page 150: The SPI2 configuration is:
+Page 150: SPI2                  Enabled
+Page 150: SPI2                                                  PI3 pin: slave data input line, used in push-pull, pull-down
+Page 150: SPI2_MOSI pin         Input
+Page 150: SPI2_MISO pin         Output
+Page 150: SPI2_SCK pin          Input           PI1 pin: slave clock line, used in push-pull, pull-down mode
+Page 150: SPI2_NSS pin          Input
+Page 150: and SPIx bootloaders. This internal clock is also used for CAN and DFU (USB FS device),
+Page 151: Configure SPIx                             yes       Configure
+Page 151: SPIx detects
+Page 151: BL_SPI_Loop for
+Page 151: SPIx
+Page 152: supports I2C1, I2C2, I2C3, SPI1         – For the CAN interface, the Write Unprotect command is not
+Page 152: and SPI2 interfaces.                      functional. Use Write Memory command and write directly to
+Page 153: HSI enabled     phase) and when USART or SPI or I2C interface is selected
+Page 154: The SPI1 configuration is:
+Page 154: SPI1                  Enabled
+Page 154: SPI1                                                 PA7 pin: slave data input line, used in push-pull, pull-down
+Page 154: SPI1_MOSI pin         Input
+Page 154: SPI1_MISO pin         Output
+Page 154: SPI1_SCK pin                         PA5 pin: slave clock line, used in push-pull, pull-down mode
+Page 154: SPI1_NSS pin
+Page 155: The SPI2 configuration is:
+Page 155: SPI2                  Enabled
+Page 155: SPI2            SPI2_MOSI pin         Input
+Page 155: SPI2_MISO pin         Output
+Page 155: SPI2_SCK pin
+Page 155: SPI2_NSS pin
+Page 155: The SPI3 configuration is:
+Page 155: SPI3                  Enabled
+Page 155: SPI3            SPI3_MOSI pin         Input
+Page 155: SPI3_MISO pin         Output
+Page 155: SPI3_SCK pin
+Page 155: SPI3_NSS pin
+Page 155: and SPIx bootloaders. This internal clock is also used for CAN and DFU (USB FS device),
+Page 156: Configure SPIx
+Page 156: SPIx detects
+Page 156: BL_SPI_Loop for
+Page 156: SPIx
+Page 158: HSI enabled      phase) and when USART or SPI or I2C interface is
+Page 159: The SPI1 configuration is:
+Page 159: SPI1                  Enabled
+Page 159: SPI1                                               PA7 pin: slave data input line, used in push-pull, pull-down
+Page 159: SPI1_MOSI pin         Input
+Page 159: SPI1_MISO pin         Output
+Page 159: SPI1_SCK pin          Input
+Page 159: SPI1_NSS pin          Input
+Page 160: The SPI2 configuration is:
+Page 160: SPI2                  Enabled
+Page 160: SPI2                                                  PB15 pin: slave data input line, used in push-pull, pull-
+Page 160: SPI2_MOSI pin         Input
+Page 160: SPI2_MISO pin         Output
+Page 160: SPI2_SCK pin          Input
+Page 160: SPI2_NSS pin          Input
+Page 160: The SPI3 configuration is:
+Page 160: SPI3                  Enabled
+Page 160: SPI3                                                  PC12 pin: slave data input line, used in push-pull, pull-
+Page 160: SPI3_MOSI pin         Input
+Page 160: SPI3_MISO pin         Output
+Page 160: SPI3_SCK pin          Input
+Page 160: SPI3_NSS pin          Input
+Page 160: and SPIx bootloaders. This internal clock is also used for DFU (USB FS device), but only for
+Page 161: Configure SPIx
+Page 161: SPIx detects
+Page 161: BL_SPI_Loop for
+Page 161: SPIx
+Page 165: The SPI1 configuration is:
+Page 165: SPI1                 Enabled
+Page 165: SPI1_MOSI pin        Input
+Page 165: SPI1                                               mode for STM32F410Tx devices.
+Page 165: SPI1_MISO pin        Output
+Page 165: SPI1_SCK pin                       PA5 pin: slave clock line, used in push-pull, pull-down mode.
+Page 165: SPI1_NSS pin
+Page 165: The SPI2 configuration is:
+Page 165: SPI2                 Enabled
+Page 165: SPI2                                               PC3 pin: slave data input line, used in push-pull, pull-down
+Page 165: SPI2_MOSI pin        Input
+Page 165: SPI2_MISO pin        Output
+Page 165: SPI2_SCK pin         Input         PB13 pin: slave clock line, used in push-pull, pull-down mode
+Page 165: SPI2_NSS pin         Input
+Page 166: Configure SPIx
+Page 166: SPIx detects Synchro        yes
+Page 166: BL_SPI_Loop for     BL_I2C_Loop for      BL_USART_Loop
+Page 166: SPIx                 I2Cx              for USARTx
+Page 167: Support I2C4 and SPI1 for     bootloader resets AHB1ENR value to 0x0000 0000
+Page 168: HSI enabled    phase) and when USART or SPI or I2C interface is selected
+Page 169: The SPI1 configuration is:
+Page 169: SPI1                Enabled
+Page 169: SPI1                                            PA7 pin: slave data input line, used in push-pull, pull-down
+Page 169: SPI1_MOSI pin       Input
+Page 169: SPI1_MISO pin       Output
+Page 169: SPI1_SCK pin        Input           PA5 pin: slave clock line, used in push-pull, pull-down mode
+Page 169: SPI1_NSS pin        Input
+Page 170: The SPI2 configuration is:
+Page 170: SPI2                Enabled
+Page 170: SPI2                                             PB15 pin: slave data input line, used in push-pull, pull-down
+Page 170: SPI2_MOSI pin       Input
+Page 170: SPI2_MISO pin       Output
+Page 170: SPI2_SCK pin        Input           PB13 pin: slave clock line, used in push-pull, pull-down mode
+Page 170: SPI2_NSS pin        Input
+Page 170: The SPI3 configuration is:
+Page 170: SPI3                Enabled
+Page 170: SPI3                                             PC12 pin: slave data input line, used in push-pull, pull-down
+Page 170: SPI3_MOSI pin       Input
+Page 170: SPI3_MISO pin       Output
+Page 170: SPI3_SCK pin        Input           PC10 pin: slave clock line, used in push-pull, pull-down mode
+Page 170: SPI3_NSS pin        Input
+Page 170: I2Cx, and SPIx bootloaders. This internal clock is also used for DFU (USB FS device), but
+Page 171: Configure SPIx
+Page 171: SPIx detects
+Page 171: BL_SPI_Loop for
+Page 171: SPIx                                        MS35032V1
+Page 175: The SPI1 configuration is:
+Page 175: SPI1                 Enabled
+Page 175: SPI1
+Page 175: SPI1_MOSI pin        Input
+Page 175: SPI1_MISO pin        Output
+Page 175: SPI1_SCK pin                        PA5 pin: slave clock line, used in push-pull, pull-down mode
+Page 175: SPI1_NSS pin                        PA4 pin: slave chip select pin used in push-pull, pull-up mode.
+Page 176: The SPI3 configuration is:
+Page 176: SPI3                 Enabled
+Page 176: SPI3                                                PC12 pin: slave data input line, used in push-pull, pull-down
+Page 176: SPI3_MOSI pin        Input
+Page 176: SPI3_MISO pin        Output
+Page 176: SPI3_SCK pin                        PC10 pin: slave clock line, used in push-pull, pull-down mode
+Page 176: SPI3_NSS pin
+Page 176: The SPI4 configuration is:
+Page 176: SPI4                 Enabled
+Page 176: SPI4                                                PE14 pin: slave data input line, used in push-pull, pull-down
+Page 176: SPI4_MOSI pin        Input
+Page 176: SPI4_MISO pin        Output
+Page 176: SPI4_NSS pin
+Page 177: Configure SPIx
+Page 177: BL_SPI_Loop                    BL_I2C_Loop            BL_USART_Loop
+Page 177: for SPIx                       for I2Cx               for USARTx
+Page 177: detected on SPIx                                  yes                     reset                      yes
+Page 181: The SPI1 configuration is:
+Page 181: SPI1                  Enabled        – Full Duplex
+Page 181: SPI1_MOSI pin         Input
+Page 181: SPI1                                                 down mode
+Page 181: SPI1_MISO pin         Output
+Page 181: SPI1_SCK pin          Input
+Page 181: SPI1_NSS pin          Input
+Page 181: The SPI3 configuration is:
+Page 181: SPI3                  Enabled        – Full Duplex
+Page 181: SPI3_MOSI pin         Input
+Page 181: SPI3                                                 down mode
+Page 181: SPI3_MISO pin         Output
+Page 181: SPI3_SCK pin          Input
+Page 181: SPI3_NSS pin          Input
+Page 182: The SPI4 configuration is:
+Page 182: SPI4                  Enabled        – Full Duplex
+Page 182: SPI4_MOSI pin         Input
+Page 182: SPI4                                                  down mode
+Page 182: SPI4_MISO pin         Output
+Page 182: SPI4_NSS pin          Input
+Page 183: Configure SPIx
+Page 183: BL_SPI_Loop                    BL_I2C_Loop          BL_USART_Loop
+Page 183: for SPIx                       for I2Cx             for USARTx
+Page 183: detected on SPIx                                      yes                    reset                    yes
+Page 191: detection phase) and when USART or SPI or I2C
+Page 193: The SPI1 configuration is:
+Page 193: SPI1                  Enabled        Slave mode, Full Duplex, -bit MSB, Speed up to 8
+Page 193: SPI1_MOSI pin         Input
+Page 193: SPI1                                                   PA6 pin: slave data output line, used in push-pull,
+Page 193: SPI1_MISO pin         Output
+Page 193: SPI1_SCK pin          Input
+Page 193: SPI1_NSS pin          Input
+Page 193: The SPI2 configuration is:
+Page 193: SPI2                  Enabled        Slave mode, Full Duplex, 8-bit MSB, Speed up to 8
+Page 193: SPI2_MOSI pin         Input
+Page 193: SPI2                                                   PI2 pin: slave data output line, used in push-pull, pull-
+Page 193: SPI2_MISO pin         Output
+Page 193: SPI2_SCK pin          Input
+Page 193: SPI2_NSS pin          Input
+Page 193: The SPI4 configuration is:
+Page 193: SPI4                  Enabled        Slave mode, Full Duplex, 8-bit MSB, Speed up to 8
+Page 193: SPI4_MOSI pin         Input
+Page 193: SPI4                                                   PE13 pin: slave data output line, used in push-pull,
+Page 193: SPI4_MISO pin         Output
+Page 193: SPI4_NSS pin          Input
+Page 194: I2Cx, and SPIx bootloaders. This internal clock is also used for CAN and DFU (USB FS
+Page 196: Configure SPIx
+Page 196: yes BL_SPI_Loop for
+Page 196: SPIx
+Page 196: on SPIx                                 yes
+Page 197: supports I2C2, I2C3, SPI1, SPI2,
+Page 197: V9.0     and SPI4 interfaces.
+Page 197: USART, CAN, I2C and SPI). The          the bootloader resets AHB1ENR value to 0x0000
+Page 198: for USART, I2C and SPI bootloader
+Page 200: The SPI1 configuration is:
+Page 200: SPI1                  Enabled
+Page 200: SPI1_MOSI pin         Input
+Page 200: SPI1
+Page 200: SPI1_MISO pin         Output
+Page 200: SPI1_SCK pin          Input
+Page 200: SPI1_NSS pin          Input
+Page 200: The SPI2 configuration is:
+Page 200: SPI2                  Enabled
+Page 200: SPI2_MOSI pin         Input
+Page 200: SPI2
+Page 200: SPI2_MISO pin         Output
+Page 200: SPI2_SCK pin          Input
+Page 200: SPI2_NSS pin          Input
+Page 201: The SPI4 configuration is:
+Page 201: SPI4                  Enabled
+Page 201: SPI4_MOSI pin         Input
+Page 201: SPI4
+Page 201: SPI4_MISO pin         Output
+Page 201: SPI4_SCK pin          Input
+Page 201: SPI4_NSS pin          Input
+Page 202: Configure SPIx
+Page 202: detected on SPIx                     interrupt sources
+Page 202: SPIx
+Page 204: USART or SPI or I2C interfaces are
+Page 206: The SPI1 configuration is:
+Page 206: SPI1                  Enabled
+Page 206: SPI1_MOSI pin         Input
+Page 206: SPI1
+Page 206: SPI1_MISO pin         Output
+Page 206: SPI1_SCK pin          Input
+Page 206: SPI1_NSS pin          Input
+Page 206: The SPI2 configuration is:
+Page 206: SPI2                  Enabled
+Page 206: SPI2_MOSI pin         Input
+Page 206: SPI2
+Page 206: SPI2_MISO pin         Output
+Page 206: SPI2_SCK pin          Input
+Page 206: SPI2_NSS pin          Input
+Page 207: The SPI4 configuration is:
+Page 207: SPI4                  Enabled
+Page 207: SPI4_MOSI pin         Input
+Page 207: SPI4
+Page 207: SPI4_MISO pin         Output
+Page 207: SPI4_NSS pin          Input
+Page 209: Configure SPIx                          Execute                   Execute                Execute
+Page 209: BL_SPI_Loop for          BL_I2C_Loop for        BL_USART_Loop
+Page 209: SPIx                      I2Cx                for USARTx
+Page 209: detected on SPIx
+Page 213: The SPI1 configuration is:
+Page 213: SPI1                   Enabled
+Page 213: SPI1_MOSI pin          Input
+Page 213: SPI1
+Page 213: SPI1_MISO pin          Output
+Page 213: SPI1_SCK pin           Input
+Page 213: SPI1_NSS pin           Input
+Page 213: The SPI2 configuration is:
+Page 213: SPI2                   Enabled
+Page 213: SPI2_MOSI pin          Input
+Page 213: SPI2
+Page 213: SPI2_MISO pin          Output
+Page 213: SPI2_SCK pin           Input
+Page 213: SPI2_NSS pin           Input
+Page 214: The SPI4 configuration is:
+Page 214: SPI4                    Enabled
+Page 214: SPI4_MOSI pin           Input
+Page 214: SPI4
+Page 214: SPI4_MISO pin           Output
+Page 214: SPI4_NSS pin            Input
+Page 217: •    V9.x supporting USART1, USART3, CAN2, I2C1, I2C2, I2C3, SPI1, SPI2, SPI4, and
+Page 221: HSI enabled      clock configured to 60 MHz and for USART, I2C and SPI
+Page 223: The SPI1 configuration is:
+Page 223: SPI1                 Enabled
+Page 223: SPI1            SPI1_MOSI pin        Input
+Page 223: SPI1_MISO pin        Output
+Page 223: SPI1_SCK pin         Input
+Page 223: SPI1_NSS pin         Input
+Page 223: The SPI2 configuration is:
+Page 223: SPI2                 Enabled        Slave mode, Full Duplex, 8-bit MSB, Speed up to 8 MHz,
+Page 223: SPI2_MOSI pin        Input
+Page 223: SPI2                                                PI2 pin: slave data output line, used in push-pull, pull-
+Page 223: SPI2_MISO pin        Output
+Page 223: SPI2_SCK pin         Input
+Page 223: SPI2_NSS pin         Input
+Page 224: The SPI4 configuration is:
+Page 224: SPI4                  Enabled
+Page 224: SPI4             SPI4_MOSI pin         Input
+Page 224: SPI4_MISO pin         Output
+Page 224: SPI4_NSS pin          Input
+Page 224: I2Cx, and SPIx bootloaders. This internal clock is also used for CAN and DFU (USB FS
+Page 225: Configure SPIx
+Page 225: BL_SPI_Loop                   BL_I2C_Loop          BL_USART_Loop
+Page 225: for SPIx                      for I2Cx             for USARTx
+Page 225: detected on SPIx                                  yes                    reset                    yes
+Page 229: The SPI1 configuration is:
+Page 229: SPI1                  Enabled     Slave mode, Full Duplex, 8-bit MSB, Speed up to 8 MHz,
+Page 229: SPI1_MOSI pin         Input
+Page 229: SPI1
+Page 229: SPI1_MISO pin         Output
+Page 229: SPI1_SCK pin          Input       PA5 pin: slave clock line, used in push-pull, pull-down mode
+Page 229: SPI1_NSS pin          Input
+Page 229: The SPI2 configuration is:
+Page 229: SPI2                  Enabled
+Page 229: SPI2
+Page 229: SPI2_MOSI pin         Input       PI3 pin: slave data input line, used in push-pull, pull-down mode
+Page 229: SPI2_MISO pin         Output
+Page 229: SPI2_SCK pin          Input       PI1 pin: slave clock line, used in push-pull, pull-down mode
+Page 229: SPI2_NSS pin          Input
+Page 229: The SPI4 configuration is:
+Page 229: SPI4                  Enabled
+Page 229: SPI4                                           PE14 pin: slave data input line, used in push-pull, pull-down
+Page 229: SPI4_MOSI pin         Input
+Page 229: SPI4_MISO pin         Output
+Page 229: SPI4_NSS pin          Input
+Page 232: Configure SPIx
+Page 232: BL_SPI_Loop                 BL_I2C_Loop          BL_USART_Loop
+Page 232: for SPIx                    for I2Cx             for USARTx
+Page 232: detected on SPIx                                                                    interfaces clocks
+Page 238: The SPI1 configuration is:
+Page 238: SPI1                  Enabled
+Page 238: SPI1_MOSI pin         Input
+Page 238: SPI1
+Page 238: SPI1_MISO pin         Output
+Page 238: SPI1_SCK pin          Input
+Page 238: SPI1_NSS pin          Input
+Page 238: Note: This IO can be tied to GND if the SPI master
+Page 239: The SPI2 configuration is:
+Page 239: SPI2                       Enabled
+Page 239: SPI2_MOSI pin              Input
+Page 239: SPI2
+Page 239: SPI2_MISO pin              Output
+Page 239: SPI2_SCK pin               Input
+Page 239: SPI2_NSS pin               Input
+Page 239: Note: This IO can be tied to GND if the SPI master
+Page 239: 1. SPI Tx (MISO) is handled by DMA. On the bootloader start-up after SPI initialization as soon as the bit DMATx enable on
+Page 239: SPI CR2 register is set to 0x1, the MISO line is set to 3.3 V.
+Page 240: Configure SPIx
+Page 240: no                                                          BL_SPI_Loop               BL_I2C_Loop         BL_USART_Loop
+Page 240: for SPIx                  for I2Cx            for USARTx
+Page 240: detected on SPIx
+Page 244: The SPI1 configuration is:
+Page 244: SPI1                  Enabled
+Page 244: SPI1_MOSI pin         Input
+Page 244: SPI1
+Page 244: SPI1_MISO pin         Output
+Page 244: SPI1_SCK pin          Input
+Page 244: SPI1_NSS pin          Input
+Page 244: Note: This IO can be tied to GND if the SPI master
+Page 245: The SPI2 configuration is:
+Page 245: SPI2                       Enabled
+Page 245: SPI2_MOSI pin              Input
+Page 245: SPI2
+Page 245: SPI2_MISO pin              Output
+Page 245: SPI2_SCK pin               Input
+Page 245: SPI2_NSS pin               Input
+Page 245: Note: This IO can be tied to GND if the SPI master
+Page 245: 1. SPI Tx (MISO) is handled by DMA. On the bootloader start-up after SPI initialization as soon as the bit DMATx enable on
+Page 245: SPI CR2 register is set to 0x1, the MISO line is set to 3.3 V.
+Page 246: Configure SPIx
+Page 246: BL_SPI_Loop
+Page 246: for SPIx
+Page 246: detected on SPIx
+Page 249: The SPI1 configuration is:
+Page 249: SPI1                  Enabled
+Page 249: SPI1_MOSI pin         Input
+Page 249: SPI1
+Page 249: SPI1_MISO pin         Output
+Page 249: SPI1_SCK pin          Input
+Page 249: SPI1_NSS pin          Input
+Page 249: Note: This IO can be tied to GND if the SPI master does
+Page 250: The SPI2 configuration is:
+Page 250: SPI2                     Enabled
+Page 250: SPI2_MOSI pin            Input
+Page 250: SPI2
+Page 250: SPI2_MISO pin            Output
+Page 250: SPI2_SCK pin             Input
+Page 250: SPI2_NSS pin             Input
+Page 250: Note: This IO can be tied to GND if the SPI master does
+Page 250: 1. SPI Tx (MISO) is handled by DMA. On the bootloader start-up after SPI initialization as soon as the bit DMATx enable on
+Page 250: SPI CR2 register is set to 0x1, the MISO line is set to 3.3 V.
+Page 251: Configure SPIx
+Page 251: 0x7F received                          BL_SPI_Loop                 BL_I2C_Loop          BL_USART_Loop
+Page 251: on USARTx        yes                    for SPIx                    for I2Cx             for USARTx
+Page 251: detected on SPIx
+Page 258: The SPI1 configuration is:
+Page 258: SPI1                  Enabled
+Page 258: SPI1           SPI1_MOSI pin         Input
+Page 258: SPI1_MISO pin         Output
+Page 258: SPI1_SCK pin
+Page 258: SPI1_NSS pin
+Page 259: The SPI2 configuration is:
+Page 259: SPI2                        Enabled
+Page 259: SPI2_MOSI pin               Input
+Page 259: SPI2
+Page 259: SPI2_MISO pin               Output
+Page 259: SPI2_SCK pin                Input
+Page 259: SPI2_NSS pin                Input
+Page 259: Note: This IO can be tied to GND if the SPI master does
+Page 259: 1. SPI Tx (MISO) is handled by DMA. On the bootloader start-up after SPI initialization as soon as the bit DMATx enable on
+Page 259: SPI CR2 register is set to 0x1, the MISO line is set to 3.3 V.
+Page 260: Configure SPIx
+Page 260: BL_SPI_Loop               BL_I2C_Loop          BL_USART_Loop
+Page 260: for SPIx                  for I2Cx             for USARTx
+Page 260: detected on SPIx
+Page 263: The SPI1 configuration is:
+Page 263: SPI1                  Enabled
+Page 263: SPI1            SPI1_MOSI pin         Input
+Page 263: SPI1_MISO pin         Output
+Page 263: SPI1_SCK pin          Input
+Page 263: SPI1_NSS pin          Input
+Page 264: The SPI2 configuration is:
+Page 264: SPI2                       Enabled
+Page 264: SPI2_MOSI pin              Input
+Page 264: SPI2
+Page 264: SPI2_MISO pin              Output
+Page 264: SPI2_SCK pin               Input
+Page 264: SPI2_NSS pin               Input
+Page 264: Note: This IO can be tied to GND if the SPI master
+Page 264: 1. SPI Tx (MISO) is handled by DMA. On the bootloader start-up after SPI initialization as soon as the bit DMATx enable on
+Page 264: SPI CR2 register is set to 0x1, the MISO line is set to 3.3 V.
+Page 265: Configure SPIx
+Page 265: BL_SPI_Loop               BL_I2C_Loop          BL_USART_Loop
+Page 265: for SPIx                  for I2Cx             for USARTx
+Page 265: detected on SPIx
+Page 269: The SPI1 configuration is:
+Page 269: SPI1                  Enabled
+Page 269: SPI1            SPI1_MOSI pin         Input
+Page 269: SPI1_MISO pin         Output
+Page 269: SPI1_SCK pin          Input
+Page 269: SPI1_NSS pin          Input
+Page 270: The SPI2 configuration is:
+Page 270: SPI2                       Enabled
+Page 270: SPI2_MOSI pin              Input
+Page 270: SPI2
+Page 270: SPI2_MISO pin              Output
+Page 270: SPI2_SCK pin               Input
+Page 270: SPI2_NSS pin               Input
+Page 270: Note: This IO can be tied to GND if the SPI master
+Page 270: 1. SPI Tx (MISO) is handled by DMA. On the bootloader start-up after SPI initialization, as soon as bit DMATx enable on SPI
+Page 271: Configure SPIx
+Page 271: BL_SPI_Loop               BL_I2C_Loop          BL_USART_Loop
+Page 271: for SPIx                  for I2Cx             for USARTx
+Page 271: detected on SPIx
+Page 274: The SPI1 configuration is:
+Page 274: SPI1                  Enabled
+Page 274: SPI1                SPI1_MOSI pin         Input
+Page 274: SPI1_MISO pin         Output
+Page 274: SPI1_SCK pin          Input
+Page 274: SPI1_NSS pin          Input
+Page 274: The SPI2 configuration is:
+Page 274: SPI2                  Enabled
+Page 274: SPI2                SPI2_MOSI pin         Input
+Page 274: SPI2_MISO pin         Output
+Page 274: SPI2_SCK pin          Input
+Page 274: SPI2_NSS pin          Input
+Page 275: The SPI3 configuration is:
+Page 275: SPI3                  Enabled
+Page 275: SPI3               SPI3_MOSI pin         Input
+Page 275: SPI3_MISO pin         Output
+Page 275: SPI3_SCK pin          Input
+Page 275: SPI3_NSS pin          Input
+Page 276: Special commands supported (USART/I2C/SPI/FDCAN/I3C)
+Page 277: SPIx detects                                     Execute
+Page 277: synchro       Yes                            BL_SPI_Loop
+Page 277: mechanism                                        for SPIx
+Page 277: Configure SPIx                      I3Cx detects                                    Execute
+Page 280: The SPI1 configuration is:
+Page 280: SPI1                  Enabled
+Page 280: SPI1                SPI1_MOSI pin         Input
+Page 280: SPI1_MISO pin         Output
+Page 280: SPI1_SCK pin
+Page 280: SPI1_NSS pin
+Page 281: The SPI2 configuration is:
+Page 281: SPI2                  Enabled
+Page 281: SPI2               SPI2_MOSI pin         Input
+Page 281: SPI2_MISO pin         Output
+Page 281: SPI2_SCK pin
+Page 281: SPI2_NSS pin
+Page 281: The SPI3 configuration is:
+Page 281: SPI3                  Enabled
+Page 281: SPI3               SPI3_MOSI pin         Input
+Page 281: SPI3_MISO pin         Output
+Page 281: SPI3_SCK pin
+Page 281: SPI3_NSS pin
+Page 283: Special commands supported (USART/I2C/SPI/FDCAN/I3C)
+Page 284: SPIx detects                                  Execute
+Page 284: synchro       Yes                         BL_SPI_Loop
+Page 284: mechanism                                     for SPIx
+Page 284: Configure SPIx                         I3Cx detects                                 Execute
+Page 287: The SPI1 configuration is:
+Page 287: SPI1                 Enabled
+Page 287: SPI1
+Page 287: SPI1_MOSI pin        Input
+Page 287: SPI1_MISO pin        Output
+Page 287: SPI1_SCK pin         Input          PA5 pin: slave clock line, used in push-pull, no pull mode.
+Page 287: SPI1_NSS pin         Input          PA4 pin: slave chip select pin used in push-pull, no pull mode.
+Page 287: The SPI2 configuration is:
+Page 287: SPI2                 Enabled
+Page 287: SPI2
+Page 287: SPI2_MOSI pin        Input          PC1 pin: slave data input line, used in push, pull no pull mode
+Page 287: SPI2_MISO pin        Output
+Page 287: SPI2_SCK pin         Input          PB10 pin: slave clock line, used in push-pull, no pull mode.
+Page 287: SPI2_NSS pin         Input
+Page 288: The SPI3 configuration is:
+Page 288: SPI3                 Enabled
+Page 288: SPI3                                               PC12 pin: slave data input line, used in push-pull no pull
+Page 288: SPI3_MOSI pin        Input
+Page 288: SPI3_MISO pin        Output
+Page 288: SPI3_SCK pin         Input          PC10 pin: slave clock line, used in push-pull, no pull mode.
+Page 288: SPI3_NSS pin         Input
+Page 289: Special commands supported (USART/I2C/SPI/FDCAN/I3C)
+Page 290: SPIx detects                                 Execute
+Page 290: synchro       Yes                        BL_SPI_Loop
+Page 290: mechanism                                    for SPIx
+Page 290: Configure SPIx                      I3Cx detects                                Execute
+Page 294: The SPI1 configuration is:
+Page 294: SPI1                 Enabled
+Page 294: SPI1
+Page 294: SPI1_MOSI pin        Input
+Page 294: SPI1_MISO pin        Output
+Page 294: SPI1_SCK pin         Input         PA5 pin: slave clock line, used in push-pull, no pull mode.
+Page 294: SPI1_NSS pin         Input         PA4 pin: slave chip select pin used in push-pull, no pull mode.
+Page 294: The SPI3 configuration is:
+Page 294: SPI3                 Enabled
+Page 294: SPI3                                             PC12 pin: slave data input line, used in push-pull no pull
+Page 294: SPI3_MOSI pin        Input
+Page 294: SPI3_MISO pin        Output
+Page 294: SPI3_SCK pin         Input         PC10 pin: slave clock line, used in push-pull, no pull mode.
+Page 294: SPI3_NSS pin         Input
+Page 294: The SPI4 configuration is:
+Page 294: SPI4                 Enabled
+Page 294: SPI4_MOSI pin        Input
+Page 294: SPI4                                             mode
+Page 294: SPI4_MISO pin        Output
+Page 294: SPI4_SCK pin         Input         PE12 pin: slave clock line, used in push-pull, pull-dpwn mode.
+Page 294: SPI4_NSS pin         Input
+Page 294: Note: This IO can be tied to GND if the SPI master does not
+Page 296: Configure SPIx                                                                                  Disable all interrupt
+Page 296: BL_SPI_Loop              BL_I2C_Loop          BL_USART_Loop
+Page 296: yes                   for SPIx                 for I2Cx             for USARTx
+Page 296: SPIx detects
+Page 298: detection phase) and when USART or SPI or I2C
+Page 300: The SPI1 configuration is:
+Page 300: SPI1                  Enabled
+Page 300: SPI1             SPI1_MOSI pin         Input
+Page 300: SPI1_MISO pin         Output
+Page 300: SPI1_SCK pin          Input
+Page 300: SPI1_NSS pin          Input
+Page 300: The SPI2 configuration is:
+Page 300: SPI2                  Enabled
+Page 300: SPI2             SPI2_MOSI pin         Input
+Page 300: SPI2_MISO pin         Output
+Page 300: SPI2_SCK pin          Input
+Page 300: SPI2_NSS pin          Input
+Page 300: The SPI3 configuration is:
+Page 300: SPI3                  Enabled
+Page 300: SPI3             SPI3_MOSI pin         Input
+Page 300: SPI3_MISO pin         Output
+Page 300: SPI3_SCK pin          Input
+Page 300: SPI3_NSS pin          Input
+Page 301: The SPI4 configuration is:
+Page 301: SPI4                  Enabled
+Page 301: SPI4               SPI4_MOSI pin         Input
+Page 301: SPI4_MISO pin         Output
+Page 301: SPI4_SCK pin          Input
+Page 301: SPI4_NSS pin          Input
+Page 302: Configure SPIx                                                                                  Disable all interrupt
+Page 302: BL_SPI_Loop              BL_I2C_Loop          BL_USART_Loop
+Page 302: yes                   for SPIx                 for I2Cx             for USARTx
+Page 302: SPIx detects
+Page 303: Initial bootloader version                       – SPI1 connection is not working
+Page 303: V13.3                                                    – Bank erase is not working on USART/SPI and I2C
+Page 303: using USART or SPI
+Page 308: The SPI1 configuration is:
+Page 308: SPI1                 Enabled
+Page 308: SPI1             SPI1_MOSI pin        Input
+Page 308: SPI1_MISO pin        Output
+Page 308: SPI1_SCK pin         Input
+Page 308: SPI1_NSS pin         Input
+Page 308: The SPI2 configuration is:
+Page 308: SPI2                 Enabled
+Page 308: SPI2             SPI2_MOSI pin        Input
+Page 308: SPI2_MISO pin        Output
+Page 308: SPI2_SCK pin         Input
+Page 308: SPI2_NSS pin         Input
+Page 308: The SPI3 configuration is:
+Page 308: SPI3                 Enabled
+Page 308: SPI3             SPI3_MOSI pin        Input
+Page 308: SPI3_MISO pin        Output
+Page 308: SPI3_SCK pin         Input
+Page 308: SPI3_NSS pin         Input
+Page 309: The SPI4 configuration is:
+Page 309: SPI4                  Enabled
+Page 309: SPI4            SPI4_MOSI pin         Input
+Page 309: SPI4_MISO pin         Output
+Page 309: SPI4_SCK pin          Input
+Page 309: SPI4_NSS pin          Input
+Page 311: Configure SPIx
+Page 311: BL_SPI_Loop              BL_I2C_Loop          BL_USART_Loop
+Page 311: yes                   for SPIx                 for I2Cx             for USARTx
+Page 311: SPIx detects
+Page 315: The SPI1 configuration is:
+Page 315: SPI1                 Enabled
+Page 315: SPI1                                              PA7 pin: slave data input line, used in push-pull, no pull
+Page 315: SPI1_MOSI pin        Input
+Page 315: SPI1_MISO pin        Output
+Page 315: SPI1_SCK pin                        PA5 pin: slave clock line, used in push-pull, no pull mode.
+Page 315: SPI1_NSS pin
+Page 315: The SPI2 configuration is:
+Page 315: SPI2                 Enabled
+Page 315: SPI2                                              PB15 pin: slave data input line, used in push-pull, no pull
+Page 315: SPI2_MOSI pin        Input
+Page 315: SPI2_MISO pin        Output
+Page 315: SPI2_SCK pin                        PB13 pin: slave clock line, used in push-pull, no pull mode.
+Page 315: SPI2_NSS pin
+Page 315: The SPI3 configuration is:
+Page 315: SPI3                 Enabled
+Page 315: SPI3                                              PC12 pin: slave data input line, used in push-pull, no pull
+Page 315: SPI3_MOSI pin        Input
+Page 315: SPI3_MISO pin        Output
+Page 315: SPI3_SCK pin                        PB3 pin: slave clock line, used in push-pull, no pull mode.
+Page 315: SPI3_NSS pin
+Page 317: Special commands supported (USART/I2C/SPI/FDCAN/USB/I3C)
+Page 318: SPIx detects                                  Execute
+Page 318: synchro       Yes                         BL_SPI_Loop
+Page 318: mechanism                                     for SPIx
+Page 318: Configure SPIx                        I3Cx detects                                 Execute
+Page 319: If a user application jumping to the bootloader has the protection clock bits (xSPICKP or
+Page 319: The following fields cannot be modified when xSPICKP bit from RCC_CKPROTR register is
+Page 319: set to 1: PLL2ON, PLL2SEN, PLL2TEN, HSEON, HSION, CSION, XSPIxEN, XSPIxLPEN,
+Page 319: and XSPIxRST..
+Page 319: Ensure that the protection clock bits (xSPICKP or FMCCKP) are disabled before jumping to
+Page 321: The SPI1 configuration is:
+Page 321: SPI1                  Enabled
+Page 321: SPI1_MOSI pin         Input
+Page 321: SPI1 (for all device
+Page 321: packages except        SPI1_MISO pin         Output
+Page 321: SPI1_SCK pin          Input
+Page 321: SPI1_NSS pin          Input
+Page 321: Note: This IO can be tied to GND if the SPI master
+Page 321: The SPI1 configuration is:
+Page 321: SPI1                  Enabled
+Page 321: SPI1_MOSI pin         Input
+Page 321: SPI1 (only for                                           Note: This IO is also used as SWCLK for debug
+Page 321: SPI1_MISO pin               Output
+Page 321: SPI1_SCK pin          Input
+Page 321: SPI1_NSS pin          Input       Note: NSS pin synchronization is required on
+Page 321: bootloader with SPI1 interface for devices on
+Page 322: Configure SPIx
+Page 322: SPIx detects
+Page 322: BL_SPI_Loop         BL_USART_Loop
+Page 322: for SPIx            for USARTx
+Page 323: Bootloader not functional with SPI1 interface for devices
+Page 323: For the SPI1 interface for devices in TSSOP14, a falling
+Page 323: Adds support of SPI interface
+Page 323: communication, to properly synchronize the SPI interface.
+Page 323: SPI communication is not synchronized and bootloader
+Page 323: does not work properly with the SPI interface.
+Page 325: The SPI1 configuration is:
+Page 325: SPI1                  Enabled
+Page 325: SPI1_MOSI pin         Input
+Page 325: SPI1                SPI1_MISO pin         Output
+Page 325: SPI1_SCK pin          Input
+Page 325: SPI1_NSS pin          Input
+Page 325: Note: This IO can be tied to GND if the SPI master
+Page 326: Configure SPIx
+Page 326: SPIx detects
+Page 326: BL_SPI_Loop for
+Page 326: SPIx
+Page 328: The SPI1 configuration is:
+Page 328: SPI1                 Enabled
+Page 328: SPI1                                               PA7 pin: slave data input line, used in push-pull, pull-down
+Page 328: SPI1_MOSI pin        Input
+Page 328: SPI1_MISO pin        Output
+Page 328: SPI1_SCK pin         Input         PA5 pin: slave clock line, used in push-pull, pull-down mode
+Page 328: SPI1_NSS pin         Input
+Page 328: The SPI2 configuration is:
+Page 328: SPI2                 Enabled
+Page 328: SPI2            SPI2_MOSI pin        Input
+Page 328: SPI2_MISO pin        Output
+Page 328: SPI2_SCK pin         Input
+Page 328: SPI2_NSS pin         Input
+Page 329: Configure SPIx
+Page 329: SPIx detects
+Page 329: BL_SPI_Loop for
+Page 329: SPIx
+Page 330: •     V11.x supporting USART1, USART2, I2C1, I2C2, SPI1 and SPI2. This version is
+Page 336: The SPI1 configuration is:
+Page 336: SPI1                 Enabled
+Page 336: SPI1_MOSI pin        Input
+Page 336: SPI1                                                mode
+Page 336: SPI1_MISO pin        Output
+Page 336: SPI1_SCK pin         Input          PA5 pin: slave clock line, used in push-pull, pull-down mode
+Page 336: SPI1_NSS pin         Input
+Page 336: Note: This IO can be tied to GND if the SPI master does not
+Page 336: The SPI2 configuration is:
+Page 336: SPI2                 Enabled
+Page 336: SPI2_MOSI pin        Input
+Page 336: SPI2                                                mode
+Page 336: SPI2_MISO pin        Output
+Page 336: SPI2_SCK pin         Input          PB13 pin: slave clock line, used in push-pull, pull-down mode
+Page 336: SPI2_NSS pin         Input
+Page 336: Note: This IO can be tied to GND if the SPI master does not
+Page 338: Configure SPIx
+Page 338: SPIx detects
+Page 338: BL_SPI_Loop             BL_I2C_Loop         BL_USART_Loop
+Page 338: for SPIx                for I2Cx            for USARTx
+Page 355: HSI enabled         clock configured to 72 MHz and for USART, I2C, SPI and
+Page 356: The SPI1 configuration is:
+Page 356: SPI1                  Enabled
+Page 356: SPI1_MOSI pin         Input
+Page 356: SPI1
+Page 356: SPI1_MISO pin         Output
+Page 356: SPI1_SCK pin          Input
+Page 356: SPI1_NSS pin          Input
+Page 356: Note: This IO can be tied to GND if the SPI master does
+Page 357: The SPI2 configuration is:
+Page 357: SPI2                     Enabled
+Page 357: SPI2_MOSI pin            Input
+Page 357: SPI2
+Page 357: SPI2_MISO pin            Output
+Page 357: SPI2_SCK pin             Input
+Page 357: SPI2_NSS pin             Input
+Page 357: Note: This IO can be tied to GND if the SPI master does
+Page 357: 1. SPI Tx (MISO) is handled by DMA. On the bootloader statup after SPI initialisation as soon as the bit DMATx enable on SPI
+Page 357: Note:          If VDDUSB pin is not connected to VDD, SPI flash memory write operations may be
+Page 359: Configure SPIx
+Page 359: BL_SPI_Loop               BL_I2C_Loop          BL_USART_Loop
+Page 359: for SPIx                  for I2Cx             for USARTx
+Page 359: detected on SPIx
+Page 361: HSI enabled     clock configured to 60 MHz and for USART, I2C, SPI
+Page 363: The SPI1 configuration is:
+Page 363: SPI1                 Enabled
+Page 363: SPI1_MOSI pin        Input
+Page 363: SPI1
+Page 363: SPI1_MISO pin        Output
+Page 363: SPI1_SCK pin         Input
+Page 363: SPI1_NSS pin         Input
+Page 363: Note: This IO can be tied to GND if the SPI master does
+Page 363: The SPI2 configuration is:
+Page 363: SPI2                 Enabled
+Page 363: SPI2_MOSI pin        Input
+Page 363: SPI2
+Page 363: SPI2_MISO pin        Output
+Page 363: SPI2_SCK pin         Input
+Page 363: SPI2_NSS pin         Input
+Page 363: Note: This IO can be tied to GND if the SPI master does
+Page 364: Note:       If VDDUSB pin is not connected to VDD, SPI flash memory write operations may be
+Page 364: SPI Tx (MISO) is handled by DMA. On the bootloader start-up after SPI initialization, as
+Page 364: soon as the bit DMATx enable on SPI CR2 register is set to 0x1, the MISO line is set to
+Page 366: Configure I2Cx                         BL_SPI_Loop                  BL_I2C_Loop                BL_USART_Loop
+Page 366: for SPIx                     for I2Cx                   for USARTx
+Page 366: Configure SPIx
+Page 366: SPIx detects                 yes                                     Reconfigure System
+Page 368: – SPI write operation fail Limitation:
+Page 368: a. During bootloader SPI write flash memory operation, some
+Page 368: by SPI DMA and it leads to double access on same flash memory
+Page 368: a. The limitation leads to a modification in customer SPI host
+Page 368: c. Limitation has been seen only on SPI and cannot impact
+Page 369: HSI enabled     configured to 72 MHz and for USART, I2C, SPI and USB
+Page 371: The SPI1 configuration is:
+Page 371: SPI1                 Enabled
+Page 371: SPI1_MOSI pin        Input
+Page 371: SPI1                                                 mode
+Page 371: SPI1_MISO pin        Output
+Page 371: SPI1_SCK pin         Input           PA5 pin: slave clock line, used in push-pull, pull-down mode
+Page 371: SPI1_NSS pin         Input
+Page 371: Note: This IO can be tied to GND if the SPI master does not
+Page 371: The SPI2 configuration is:
+Page 371: SPI2                 Enabled
+Page 371: SPI2_MOSI pin        Input
+Page 371: SPI2
+Page 371: SPI2_MISO pin        Output
+Page 371: SPI2_SCK pin         Input
+Page 371: SPI2_NSS pin         Input
+Page 371: Note: This IO can be tied to GND if the SPI master does not
+Page 372: Note:       If VDDUSB pin is not connected to VDD, SPI flash memory write operations may be
+Page 374: Configure SPIx
+Page 374: BL_SPI_Loop                  BL_I2C_Loop                BL_USART_Loop
+Page 374: for SPIx                     for I2Cx                   for USARTx
+Page 374: detected on SPIx
+Page 375: – SPI write operation fail limitation:
+Page 375: a. During Bootloader SPI write flash memory
+Page 375: which is interrupted by SPI DMA and it leads to
+Page 375: customer SPI host software by adding 3-4 ms
+Page 375: c. Limitation has been seen only on SPI and
+Page 376: •     V9.x supporting USART, I2C, SPI, CAN and DFU (USB FS device).
+Page 384: The SPI1 configuration is:
+Page 384: SPI1                      Enabled
+Page 384: SPI1                                                         PA7 pin: slave data input line, used in push-pull, pull-down
+Page 384: SPI1_MOSI pin             Input
+Page 384: SPI1_MISO pin             Output
+Page 384: SPI1_SCK pin
+Page 384: SPI1_NSS pin
+Page 384: The SPI2 configuration is:
+Page 384: SPI2                      Enabled
+Page 384: SPI2                                                         PB15 pin: slave data input line, used in push-pull, pull-
+Page 384: SPI2_MOSI pin             Input
+Page 384: SPI2_MISO pin             Output
+Page 384: SPI2_SCK pin
+Page 384: SPI2_NSS pin
+Page 384: 1. SPI Tx (MISO) is handled by DMA. On the bootloader start-up after SPI initialization, as soon as the bit DMATx enable on
+Page 384: SPI CR2 register is set to 0x1, the MISO line is set to 3.3 V.
+Page 385: Note:            If VDDUSB pin is not connected to VDD, SPI flash memory write operations may be
+Page 386: Configure I2Cx                         Execute BL_SPI_Loop                 Execute BL_I2C_Loop
+Page 386: for SPIx                            for I2Cx
+Page 386: Configure SPIx                                                                                                  Execute
+Page 386: detected on SPIx            yes
+Page 387: During bootloader SPI write flash memory operation,
+Page 387: operation, interrupted by SPI DMA. This leads to double
+Page 387: The limitation leads to a modification in customer SPI
+Page 387: Limitation has been seen only on SPI and cannot impact
+Page 388: HSI enabled    configured to 72 MHz and for USART, I2C and SPI bootloader
+Page 390: The SPI1 configuration is:
+Page 390: SPI1                 Enabled
+Page 390: SPI1_MOSI pin        Input
+Page 390: SPI1                                             mode
+Page 390: SPI1_MISO pin        Output
+Page 390: SPI1_SCK pin         Input         PA5 pin: slave clock line, used in push-pull, pull-down mode
+Page 390: SPI1_NSS pin         Input
+Page 390: Note: This IO can be tied to GND if the SPI master does not
+Page 390: The SPI2 configuration is:
+Page 390: SPI2                 Enabled
+Page 390: SPI2_MOSI pin        Input
+Page 390: SPI2                                             mode
+Page 390: SPI2_MISO pin        Output
+Page 390: SPI2_SCK pin         Input         PB13 pin: slave clock line, used in push-pull, pull-down mode
+Page 390: SPI2_NSS pin         Input
+Page 390: Note: This IO can be tied to GND if the SPI master does not
+Page 391: Note:         If VDDUSB pin is not connected to VDD, SPI flash memory write operations may be
+Page 393: Configure SPIx
+Page 393: BL_SPI_Loop               BL_I2C_Loop               BL_USART_Loop
+Page 393: for SPIx                  for I2Cx                  for USARTx
+Page 393: detected on SPIx                                                    interfaces clocks
+Page 394: – SPI write operation fail
+Page 394: a. During Bootloader SPI write flash memory operation, some
+Page 394: by SPI DMA and it leads to double access on same flash memory
+Page 394: a. The limitation leads to a modification in customer SPI host
+Page 394: c. Limitation has been seen only on SPI and cannot impact
+Page 395: HSI enabled    configured to 60 MHz and for USART, I2C, SPI and USB
+Page 397: The SPI1 configuration is:
+Page 397: SPI1                 Enabled
+Page 397: SPI1_MOSI pin        Input
+Page 397: SPI1                                             mode
+Page 397: SPI1_MISO pin        Output
+Page 397: SPI1_SCK pin         Input         PA5 pin: slave clock line, used in push-pull, pull-down mode
+Page 397: SPI1_NSS pin         Input
+Page 397: Note: This IO can be tied to GND if the SPI master does not
+Page 397: The SPI2 configuration is:
+Page 397: SPI2                 Enabled
+Page 397: SPI2_MOSI pin        Input
+Page 397: SPI2                                             mode
+Page 397: SPI2_MISO pin        Output
+Page 397: SPI2_SCK pin         Input         PB13 pin: slave clock line, used in push-pull, pull-down mode
+Page 397: SPI2_NSS pin         Input
+Page 397: Note: This IO can be tied to GND if the SPI master does not
+Page 400: Configure SPIx
+Page 400: Detected                           BL_SPI_Loop            BL_I2C_Loop           BL_USART_Loop
+Page 400: for SPIx               for I2Cx              for USARTx
+Page 400: detected on SPIx
+Page 402: HSI enabled      configured to 60 MHz and for USART, I2C, SPI and USB
+Page 404: The SPI1 configuration is:
+Page 404: SPI1                 Enabled
+Page 404: SPI1_MOSI pin        Input
+Page 404: SPI1
+Page 404: SPI1_MISO pin        Output
+Page 404: SPI1_SCK pin         Input
+Page 404: SPI1_NSS pin         Input
+Page 404: Note: This IO can be tied to GND if the SPI master does
+Page 404: The SPI2 configuration is:
+Page 404: SPI2                 Enabled
+Page 404: SPI2_MOSI pin        Input
+Page 404: SPI2
+Page 404: SPI2_MISO pin        Output
+Page 404: SPI2_SCK pin         Input
+Page 404: SPI2_NSS pin         Input
+Page 404: Note: This IO can be tied to GND if the SPI master does
+Page 407: Configure SPIx
+Page 407: Detected                           BL_SPI_Loop            BL_I2C_Loop           BL_USART_Loop
+Page 407: for SPIx               for I2Cx              for USARTx
+Page 407: detected on SPIx
+Page 410: The SPI1 configuration is:
+Page 410: SPI1               Enabled
+Page 410: SPI1         SPI1_MOSI pin      Input          PA7 pin: slave data input line, used in push-pull, pull-down mode
+Page 410: SPI1_MISO pin      Output
+Page 410: SPI1_SCK pin       Input          PA5 pin: slave clock line, used in push-pull, pull-down mode
+Page 410: SPI1_NSS pin       Input          Note: This IO can be tied to GND if the SPI master does not use
+Page 411: The SPI2 configuration is:
+Page 411: SPI2               Enabled
+Page 411: SPI2_MOSI pin      Input
+Page 411: SPI2                                       mode
+Page 411: SPI2_MISO pin      Output
+Page 411: SPI2_SCK pin       Input      PB13 pin: slave clock line, used in push-pull, pull-down mode
+Page 411: SPI2_NSS pin       Input
+Page 411: Note: This IO can be tied to GND if the SPI master does not use
+Page 411: The SPI configuration is:
+Page 411: SPI3               Enabled
+Page 411: SPI3_MOSI pin      Input      PB5 pin: slave data input line, used in push-pull, pull-down mode
+Page 411: SPI3
+Page 411: SPI3_MISO pin      Output
+Page 411: SPI3_SCK pin       Input      PG9 pin: slave clock line, used in push-pull, pull-down mode
+Page 411: SPI3_NSS pin       Input
+Page 411: Note: This IO can be tied to GND if the SPI master does not use
+Page 412: Special commands supported (USART/I2C/SPI/FDCAN)
+Page 413: Configure SPIx                                                                            Disable all interrupt
+Page 413: 0x7F received                          BL_SPI_Loop                  BL_I2C_Loop          BL_USART_Loop
+Page 413: on USARTx             yes               for SPIx                     for I2Cx             for USARTx
+Page 413: detected on SPIx
+Page 414: – SPI3 not working
+Page 416: The SPI1 configuration is:
+Page 416: SPI1                  Enabled
+Page 416: SPI1_MOSI pin         Input
+Page 416: SPI1                                               mode
+Page 416: SPI1_MISO pin         Output
+Page 416: SPI1_SCK pin          Input         PA5 pin: slave clock line, used in push-pull, pull-down mode
+Page 416: SPI1_NSS pin          Input
+Page 416: Note: This IO can be tied to GND if the SPI master does not
+Page 417: Configure SPIx
+Page 417: SPIx detects
+Page 417: BL_SPI_Loop             BL_I2C_Loop         BL_USART_Loop
+Page 417: for SPIx                for I2Cx            for USARTx
+Page 420: The SPI1 configuration is:
+Page 420: SPI1                 Enabled                 – 8-bit MSB
+Page 420: SPI1_MOSI pin        Input
+Page 420: SPI1                                                            push-pull, pull-down mode
+Page 420: SPI1_MISO pin        Output
+Page 420: SPI1_SCK pin         Input
+Page 420: SPI1_NSS pin         Input
+Page 420: SPI master does not use it.
+Page 421: The SPI2 configuration is:
+Page 421: SPI2                 Enabled                   – 8-bit MSB
+Page 421: SPI2_MOSI pin        Input
+Page 421: SPI2                                                              push-pull, pull-down mode
+Page 421: SPI2_MISO pin        Output
+Page 421: SPI2_SCK pin         Input
+Page 421: SPI2_NSS pin         Input
+Page 421: SPI master does not use it.
+Page 422: Configure SPIx
+Page 422: Detected                         BL_SPI_Loop            BL_I2C_Loop       BL_USART_Loop
+Page 422: for SPIx               for I2Cx          for USARTx
+Page 422: detected on SPIx
+Page 425: The SPI3 configuration is:
+Page 425: SPI3                  Enabled
+Page 425: SPI3
+Page 425: SPI3_MOSI pin         Input          PB8 pin: slave data input line, used in push-pull, no pull mode
+Page 425: SPI3_MISO pin         Output
+Page 425: SPI3_SCK pin                         PA0 pin: slave clock line, used in push-pull, no pull mode
+Page 425: SPI3_NSS pin                         PA5 pin: slave chip select pin used in push-pull, no pull mode.
+Page 425: Special commands supported (USART/I2C/SPI)
+Page 426: Configure SPIx
+Page 426: SPIx detects                                                                     Configure
+Page 426: BL_SPI_Loop for      BL_I2C_Loop for      BL_USART_Loop
+Page 426: SPIx                  I2Cx              for USARTx
+Page 429: The SPI2 configuration is:
+Page 429: SPI2                 Enabled
+Page 429: SPI2          SPI2_MOSI pin        Input
+Page 429: SPI2_MISO pin(1)     Output
+Page 429: SPI2_SCK pin
+Page 429: SPI2_NSS pin
+Page 429: The SPI3 configuration is:
+Page 429: SPI3                 Enabled
+Page 429: SPI3          SPI3_MOSI pin        Input
+Page 429: SPI3_MISO pin        Output
+Page 429: SPI3_SCK pin
+Page 429: SPI3_NSS pin
+Page 430: 1. SPI Tx (MISO) is handled by DMA. On the bootloader start-up after SPI initialization, as soon as the bit DMATx enable on
+Page 430: SPI CR2 register is set to 0x1, the MISO line is set to 3.3 V.
+Page 430: Special commands supported (USART/I2C/SPI)
+Page 441: The SPI1 configuration is:
+Page 441: SPI1                 Enabled
+Page 441: SPI1_MOSI pin        Input
+Page 441: SPI1
+Page 441: SPI1_MISO pin        Output
+Page 441: SPI1_SCK pin         Input
+Page 441: SPI1_NSS pin         Input
+Page 441: Note: This IO can be tied to GND if the SPI master
+Page 441: The SPI2 configuration is:
+Page 441: SPI2                 Enabled
+Page 441: SPI2_MOSI pin        Input
+Page 441: SPI2
+Page 441: SPI2_MISO pin        Output
+Page 441: SPI2_SCK pin         Input
+Page 441: SPI2_NSS pin         Input
+Page 441: Note: This IO can be tied to GND if the SPI master
+Page 442: Configure SPIx
+Page 442: SPIx detects
+Page 442: BL_SPI_Loop             BL_USART_Loop
+Page 442: for SPIx                for USARTx
+Page 444: The SPI1 configuration is:
+Page 444: SPI1                 Enabled
+Page 444: SPI1_MOSI pin        Input
+Page 444: SPI1                                               down mode
+Page 444: SPI1_MISO pin(1)     Output
+Page 444: SPI1_SCK pin                        mode. PA1 pin is used instead of PA5 on TSSOP20 package.
+Page 444: SPI1_NSS pin
+Page 445: The SPI2 configuration is:
+Page 445: SPI2                    Enabled
+Page 445: SPI2              SPI2_MOSI pin           Input
+Page 445: SPI2_MISO pin(1)        Output
+Page 445: SPI2_SCK pin            Input
+Page 445: SPI2_NSS pin            Input
+Page 445: 1. SPI Tx (MISO) is handled by DMA. On the bootloader start-up after SPI initialization, as soon as the bit DMATx enable on
+Page 445: SPI CR2 register is set to 1, the MISO line is set to 3.3 V.
+Page 446: Configure SPIx
+Page 446: no                                                 BL_SPI_Loop                BL_I2C_Loop         BL_USART_Loop
+Page 446: for SPIx                   for I2Cx            for USARTx
+Page 446: detected on SPIx
+Page 449: The SPI configuration is:
+Page 449: SPI                  Enabled
+Page 449: SPI1           SPI1_MOSI pin        Input
+Page 449: SPI1_MISO pin(1)     Output
+Page 449: SPI1_SCK pin
+Page 449: SPI1_NSS pin
+Page 450: The SPI configuration is:
+Page 450: SPI                     Enabled
+Page 450: SPI2              SPI2_MOSI pin           Input
+Page 450: SPI2_MISO pin(1)        Output
+Page 450: SPI2_SCK pin
+Page 450: SPI2_NSS pin
+Page 450: 1. SPI Tx (MISO) is handled by DMA. On the bootloader start-up after SPI initialization, as soon as the bit DMATx enable on
+Page 450: SPI CR2 register is set to 1, the MISO line is set to 3.3 V.
+Page 451: SPIx detects                                    Execute
+Page 451: No         synchro      Yes                            BL_SPI_Loop
+Page 451: mechanism                                       for SPIx
+Page 451: Configure SPIx
+Page 454: The SPI1 configuration is:
+Page 454: SPI1                 Enabled
+Page 454: SPI1_MOSI pin        Input
+Page 454: SPI1                                                PA6 pin: Slave data output line used in alternate function with
+Page 454: SPI1_MISO pin        Output
+Page 454: SPI1_SCK pin         Input
+Page 454: SPI1_NSS pin         Input
+Page 455: The SPI2 configuration is:
+Page 455: SPI2               Enabled
+Page 455: SPI2         SPI2_MOSI pin      Input
+Page 455: SPI2_MISO pin(1)   Output
+Page 455: SPI2_SCK pin       Input
+Page 455: SPI2_NSS pin       Input
+Page 455: The SPI3 configuration is:
+Page 455: SPI3               Enabled
+Page 455: SPI3         SPI3_MOSI pin      Input
+Page 455: SPI3_MISO pin(1)   Output
+Page 455: SPI3_SCK pin       Input
+Page 455: SPI3_NSS pin       Input
+Page 456: 1. SPI Tx (MISO) is handled by DMA. On the bootloader start-up after SPI initialization as soon as the bit DMATx enable on
+Page 456: SPI CR2 register is set to 0x1, the MISO line is set to 3.3 V.
+Page 456: 87.2           SPI1 pinout on WLCSP68-G
+Page 456: The SPI1 pinout on the WLCSP68-G package is different from all the other packages: it
+Page 456: use an independent voltage for the SPI1 pins through VDDIO2, to provide them a voltage
+Page 457: Special commands supported (USART/I2C/SPI/FDCAN)
+Page 458: SPIx detects                                Execute
+Page 458: Synchro       Yes                        BL_SPI_Loop
+Page 458: mechanism                                   for SPIx
+Page 458: Configure SPIx                   I3Cx detects
+Page 459: – Switch SPI1 support on PortG when using
+Page 459: PortG SPI1 pins
+Page 461: The SPI1 configuration is:
+Page 461: SPI1              Enabled
+Page 461: SPI1                                               PA7 pin: slave data input line, used in push-pull, pull-down
+Page 461: SPI1_MOSI pin     Input
+Page 461: SPI1_MISO pin     Output
+Page 461: SPI1_SCK pin      Input              PA5 pin: slave clock line, used in push-pull, no pull mode
+Page 461: SPI1_NSS pin      Input
+Page 462: The SPI2 configuration is:
+Page 462: SPI2                 Enabled
+Page 462: SPI2                                               PB15 pin: slave data input line, used in push-pull, no pull
+Page 462: SPI2_MOSI pin        Input
+Page 462: SPI2_MISO pin        Output
+Page 462: SPI2_SCK pin         Input              PB13 pin: slave clock line, used in push-pull, no pull mode
+Page 462: SPI2_NSS pin         Input
+Page 462: The SPI3 configuration is:
+Page 462: SPI3                 Enabled
+Page 462: SPI3       SPI3_MOSI pin        Input
+Page 462: SPI3_MISO pin        Output
+Page 462: SPI3_SCK pin         Input
+Page 462: SPI3_NSS pin         Input
+Page 463: Special commands supported (USART/I2C/SPI/FDCAN)
+Page 464: SPIx detects                                    Execute
+Page 464: Synchro       Yes                            BL_SPI_Loop
+Page 464: mechanism                                       for SPIx
+Page 464: Configure SPIx
+Page 467: The SPI1 configuration is:
+Page 467: SPI1               Enabled
+Page 467: SPI1                                              PA7 pin: slave data input line, used in push-pull, pull-down
+Page 467: SPI1_MOSI pin      Input
+Page 467: SPI1_MISO pin      Output
+Page 467: SPI1_SCK pin       Input             PA5 pin: slave clock line, used in push-pull, pull-down mode
+Page 467: SPI1_NSS pin       Input
+Page 468: The SPI2 configuration is:
+Page 468: SPI2               Enabled
+Page 468: SPI2                                            PB15 pin: slave data input line, used in push-pull, pull-down
+Page 468: SPI2_MOSI pin      Input
+Page 468: SPI2_MISO pin      Output
+Page 468: SPI2_SCK pin       Input           PB13 pin: slave clock line, used in push-pull, pull-down mode
+Page 468: SPI2_NSS pin       Input
+Page 468: The SPI3 configuration is:
+Page 468: SPI3               Enabled
+Page 468: SPI3         SPI3_MOSI pin      Input
+Page 468: SPI3_MISO pin      Output
+Page 468: SPI3_SCK pin       Input
+Page 468: SPI3_NSS pin       Input
+Page 469: Special commands supported (USART/I2C/SPI/FDCAN)
+Page 470: SPIx detects                                    Execute
+Page 470: Synchro       Yes                            BL_SPI_Loop
+Page 470: mechanism                                       for SPIx
+Page 470: Configure SPIx
+Page 473: The SPI1 configuration is:
+Page 473: SPI                   Enabled
+Page 473: SPI1
+Page 473: SPI1_MOSI pin         Input          PA7 pin: slave data input line, used in push-pull, no pull mode
+Page 473: SPI1_MISO pin         Output
+Page 473: SPI1_SCK pin          Input          PA5 pin: slave clock line, used in push-pull, no pull mode
+Page 473: SPI1_NSS pin          Input          PA4 pin: slave chip select pin used in push-pull, no pull mode.
+Page 474: The SPI2 configuration is:
+Page 474: SPI                  Enabled
+Page 474: SPI2                                              PB15 pin: slave data input line, used in push-pull, no pull
+Page 474: SPI2_MOSI pin        Input
+Page 474: SPI2_MISO pin        Output
+Page 474: SPI2_SCK pin         Input          PB13 pin: slave clock line, used in push-pull, no pull mode
+Page 474: SPI2_NSS pin         Input
+Page 474: The SPI3 configuration is:
+Page 474: SPI                  Enabled
+Page 474: SPI3          SPI3_MOSI pin        Input          PB5 pin: slave data input line, used in push-pull, no pull mode
+Page 474: SPI3_MISO pin        Output
+Page 474: SPI3_SCK pin         Input
+Page 474: SPI3_NSS pin         Input
+Page 475: Special commands supported (USART/I2C/SPI/FDCAN)
+Page 476: SPIx detects                                          Execute
+Page 476: Synchro            Yes                             BL_SPI_Loop
+Page 476: mechanism                                             for SPIx
+Page 476: Configure SPIx
+Page 478: The SPI1 configuration is:
+Page 478: SPI                   Enabled
+Page 478: SPI1                                               PA7 pin: slave data input line, used in push-pull, no pull
+Page 478: SPI1_MOSI pin         Input
+Page 478: SPI1_MISO pin         Output
+Page 478: SPI1_SCK pin          Input          PA5 pin: slave clock line, used in push-pull, no pull mode
+Page 478: SPI1_NSS pin          Input
+Page 479: The SPI2 configuration is:
+Page 479: SPI                   Enabled
+Page 479: SPI2                                               PB15 pin: slave data input line, used in push-pull, no pull
+Page 479: SPI2_MOSI pin         Input
+Page 479: SPI2_MISO pin         Output
+Page 479: SPI2_SCK pin          Input          PB13 pin: slave clock line, used in push-pull, no pull mode
+Page 479: SPI2_NSS pin          Input
+Page 479: The SPI3 configuration is:
+Page 479: SPI                   Enabled
+Page 479: SPI3          SPI3_MOSI pin         Input
+Page 479: SPI3_MISO pin         Output
+Page 479: SPI3_SCK pin          Input
+Page 479: SPI3_NSS pin          Input
+Page 480: Special commands supported (USART/I2C/SPI/FDCAN)
+Page 481: SPIx detects                                          Execute
+Page 481: Synchro            Yes                             BL_SPI_Loop
+Page 481: mechanism                                             for SPIx
+Page 481: Configure SPIx
+Page 501: 93.5     SPI connection timing
+Page 501: SPI connection timing is the time that the host must wait for between sending the
+Page 501: Figure 125. SPI connection timing description
+Page 501: a     Duration of 1 byte sending through SPI (depends on communication speed)
+Page 501: Table 213. SPI bootloader minimum timings (ms) for STM32 devices
+Page 501: Device           One SPI byte sending                 Delay between two bytes                   SPI connection
+Page 515: Updated Figure 4: SPI connection, figures 13 to 15, 60 to 66, 68 to 71, 74 and 75,
