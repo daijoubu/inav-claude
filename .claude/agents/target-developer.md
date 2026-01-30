@@ -80,6 +80,7 @@ Callers must provide one or more of:
 - `claude/developer/docs/targets/troubleshooting-guide.md` - Systematic debugging
 - `claude/developer/docs/targets/examples.md` - Real fixes from git history
 - `claude/developer/docs/targets/timer-dma-conflicts.md` - DMA resolution
+- `claude/developer/docs/targets/stm32h7/STM32H7-Index` - Fully indexed version of the (large) h7 datasheet, with tools for searching it
 
 ### Tools
 - `raytools/dma_resolver/dma_resolver.html` - DMA conflict resolver

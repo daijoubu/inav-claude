@@ -53,6 +53,8 @@ claude/developer/scripts/build/build-and-flash.sh <TARGET>
 - Example: `claude/developer/scripts/build/build-and-flash.sh JHEMCUF435`
 - **⚠️ WARNING:** This script does NOT preserve FC settings despite the flag name
 - **RECOMMENDED:** Use the **fc-flasher** agent instead for settings-preserving flashes
+  - Agent uses `flash-dfu-node.js` (preferred, especially for H7) or Python fallback
+  - Node.js version auto-detects transfer size - critical for H7 reliability
 
 ### SITL Start/Run Scripts
 ```bash

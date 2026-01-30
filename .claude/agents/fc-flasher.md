@@ -20,13 +20,25 @@ You are a flight controller firmware flasher specialist for the INAV project. Yo
 
 ## CRITICAL: Use the Correct Flashing Script
 
-**ALWAYS use:** `claude/developer/scripts/build/flash-dfu-preserve-settings.py`
+**PREFERRED (ALWAYS for H7, recommended for all):** `claude/developer/scripts/build/flash-dfu-node.js`
+
+**FALLBACK:** `claude/developer/scripts/build/flash-dfu-preserve-settings.py`
 
 **DO NOT use:** `claude/developer/scripts/build/build-and-flash.sh`
 
-The bash script uses regular dfu-util which does NOT preserve settings despite the flag. The Python script performs selective page erase (only the 7 pages containing firmware, leaving config area intact), exactly like INAV Configurator does.
+### Why Node.js Version is Preferred
 
-Do not use "python3 <<" - use the python scripts in files. If you need a new script, write it to a file.
+The Node.js flasher (`flash-dfu-node.js`):
+- ✅ **Auto-detects DFU transfer size** from USB descriptor (critical for reliability)
+- ✅ **Works correctly on H7 targets** (Python version fails at ~69.5%)
+- ✅ **Direct port of working configurator code** (exact protocol implementation)
+- ✅ **Selective page erase** (preserves settings area)
+- ✅ **Works on all MCU types** (F4, F7, H7, AT32, etc.)
+- ✅ **Cleaner progress output** (1% increments)
+
+The bash script uses regular dfu-util which does NOT preserve settings despite the flag. Both Node.js and Python scripts perform selective page erase (only pages containing firmware, leaving config area intact), exactly like INAV Configurator does.
+
+Do not use "python3 <<" - use the scripts in files. If you need a new script, write it to a file.
 
 ---
 
@@ -49,32 +61,43 @@ When invoked, you should receive:
 
 ## Available Scripts and Tools
 
-### Primary Flashing Script
+### Primary Flashing Script (Node.js - PREFERRED)
+```bash
+claude/developer/scripts/build/flash-dfu-node.js <firmware.hex>
+```
+- **Direct port of working inav-configurator DFU protocol**
+- **Auto-detects DFU transfer size** from USB descriptor (critical!)
+- **Works correctly on H7 targets** (Python version fails at ~69.5%)
+- Automatic flash layout detection from DFU device descriptor
+- Selective page erase (preserves settings area)
+- Automatic FC reboot after flash
+- Progress reporting (write %, verify %)
+- Clean output (1% increments)
+
+**Usage:**
+```bash
+# Works for ALL MCU types - H7, F4, F7, AT32, etc.
+claude/developer/scripts/build/flash-dfu-node.js inav_9.0.0_MATEKF405.hex
+claude/developer/scripts/build/flash-dfu-node.js inav_9.0.0_MATEKH743.hex
+claude/developer/scripts/build/flash-dfu-node.js inav_9.0.0_AT32F435.hex
+```
+
+**Dependencies:**
+```bash
+cd claude/developer/scripts/build
+npm install  # Installs node-usb
+```
+
+### Fallback Flashing Script (Python)
 ```bash
 python3 claude/developer/scripts/build/flash-dfu-preserve-settings.py <firmware.hex> [mcu_type]
 ```
 - Direct translation from inav-configurator DFU code
-- **Automatic flash layout detection** from DFU device descriptor (like configurator)
+- **Note:** Fails at ~69.5% on H7 targets - use Node.js version for H7
+- Works well for F4/F7/AT32
+- Automatic flash layout detection from DFU device descriptor
 - Selective page erase (preserves settings area)
-- Automatic FC reboot after flash
-- Progress reporting (erase %, write %)
 - Manual MCU type override available if needed
-
-**Automatic Detection (Recommended):**
-```bash
-# Script automatically detects flash layout from DFU device - works for all MCU types
-python3 claude/developer/scripts/build/flash-dfu-preserve-settings.py inav_9.0.0_MATEKF405.hex
-python3 claude/developer/scripts/build/flash-dfu-preserve-settings.py inav_9.0.0_MATEKH743.hex
-python3 claude/developer/scripts/build/flash-dfu-preserve-settings.py inav_9.0.0_AT32F435.hex
-```
-
-**Manual MCU Type (Fallback):**
-Only needed if automatic detection fails:
-```bash
-# F4, F7, H7, or AT32F435
-python3 claude/developer/scripts/build/flash-dfu-preserve-settings.py inav_9.0.0_MATEKF405.hex F4
-python3 claude/developer/scripts/build/flash-dfu-preserve-settings.py inav_9.0.0_MATEKH743.hex H7
-```
 
 **Dependencies:**
 ```bash
@@ -137,6 +160,7 @@ If no hex file exists, use the **inav-builder** agent to build firmware first.
 ### 2. Put FC into DFU Mode
 
 **Method A: MSP Reboot (if FC is running):**
+Temporarily bypass the sandbox.
 ```bash
 .claude/skills/flash-firmware-dfu/reboot-to-dfu.py /dev/ttyACM0
 ```
@@ -150,7 +174,7 @@ Instruct user: "Hold BOOT button while plugging in USB"
 ```
 
 ### 3. Verify DFU Mode
-
+Temporarily bypass the sandbox.
 ```bash
 dfu-util -l
 ```
@@ -161,18 +185,19 @@ Found DFU: [0483:df11] ver=2200, devnum=X, cfg=1, intf=0, path="...", alt=0, nam
 ```
 
 ### 4. Flash Firmware
-
+If you get an error, it may be because of the sandbox, which you need to disable.
 ```bash
-python3 claude/developer/scripts/build/flash-dfu-preserve-settings.py inav/build/inav_9.0.0_MATEKF405.hex
+claude/developer/scripts/build/flash-dfu-node.js inav/build/inav_9.0.0_MATEKF405.hex
 ```
 
 Script will:
 1. Parse hex file
-2. **Query DFU device to detect flash layout automatically**
+2. **Query DFU device to detect flash layout and transfer size automatically**
 3. Calculate pages to erase based on detected layout
 4. Erase only the pages containing firmware (preserving config)
-5. Write firmware in chunks with progress reporting
-6. Exit DFU mode and reboot FC automatically
+5. Write firmware in chunks with progress reporting (1% increments)
+6. Verify firmware after writing
+7. Exit DFU mode and reboot FC automatically
 
 ### 5. Verify FC Boot
 
@@ -216,9 +241,13 @@ ls -lh inav/build/inav_9.0.0_MATEKF405.hex
 # 3. Verify DFU mode
 dfu-util -l
 
-# 4. Flash firmware (preserves settings)
-python3 claude/developer/scripts/build/flash-dfu-preserve-settings.py \
+# 4. Flash firmware (preserves settings) - PREFERRED METHOD
+claude/developer/scripts/build/flash-dfu-node.js \
   inav/build/inav_9.0.0_MATEKF405.hex
+
+# Alternative: Python version (if Node.js unavailable, but NOT for H7)
+# python3 claude/developer/scripts/build/flash-dfu-preserve-settings.py \
+#   inav/build/inav_9.0.0_MATEKF405.hex
 
 # 5. Wait for reboot
 sleep 3
@@ -227,7 +256,7 @@ sleep 3
 ls /dev/ttyACM0
 ```
 
-**Note:** The script automatically detects the flash layout from the DFU device descriptor, so you don't need to specify the MCU type. This works exactly like the INAV Configurator.
+**Note:** The Node.js script automatically detects both the flash layout AND transfer size from the DFU device descriptor. This is critical for H7 targets and matches exactly how the INAV Configurator works.
 
 ---
 
@@ -459,13 +488,16 @@ If you see 100% completion, the flash succeeded. Wait 3-5 seconds and verify the
 
 ## Important Notes
 
-- **Settings preservation requires the Python script** - don't use dfu-util directly
+- **Use Node.js version for H7 targets** - Python version fails at ~69.5% due to transfer size issues
+- **Node.js version is preferred for all targets** - more reliable, exact configurator port
+- **Settings preservation requires specialized scripts** - don't use dfu-util directly
 - **DFU mode must be confirmed** before attempting flash (`dfu-util -l`)
 - **FC reboots automatically** after flash - no manual unplug needed
 - **Wait 3-5 seconds** after flash for FC to fully boot
 - **Serial port may change** between ACM0, ACM1, USB0 after reboot
 - **Always verify target matches hardware** to avoid bricking
-- **The Python script is a direct translation** from inav-configurator's DFU code
+- **Both Node.js and Python scripts** are direct translations from inav-configurator's DFU code
+- **Transfer size auto-detection is critical** - the Node.js version reads this from USB descriptors
 
 ---
 
@@ -474,7 +506,8 @@ If you see 100% completion, the flash succeeded. Wait 3-5 seconds and verify the
 Internal documentation relevant to flashing:
 
 **Flashing scripts:**
-- `claude/developer/scripts/build/flash-dfu-preserve-settings.py` - Primary flashing script (settings-preserving)
+- `claude/developer/scripts/build/flash-dfu-node.js` - **PRIMARY flashing script (PREFERRED - especially for H7)**
+- `claude/developer/scripts/build/flash-dfu-preserve-settings.py` - Fallback flashing script (don't use for H7)
 - `.claude/skills/flash-firmware-dfu/reboot-to-dfu.py` - MSP reboot to DFU
 - `.claude/skills/flash-firmware-dfu/fc-cli.py` - CLI command tool
 
@@ -503,5 +536,8 @@ When you discover something important about FLASHING FIRMWARE that will likely h
 Use the Edit tool to append new entries. Format: `- **Brief title**: One-sentence insight`
 
 ### Lessons
+
+- **H7 transfer size**: H7 targets require 1024-byte transfers (not 2048). Node.js flasher auto-detects this from DFU descriptor; Python version hardcodes 2048 and fails at ~69.5%.
+- **Prefer Node.js flasher**: Direct port of configurator with proper transfer size detection. Works reliably on all MCU types including H7.
 
 <!-- Add new lessons above this line -->
