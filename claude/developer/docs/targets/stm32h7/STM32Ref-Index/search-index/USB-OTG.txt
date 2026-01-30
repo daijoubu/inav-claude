@@ -1,0 +1,39 @@
+Keyword: USB OTG
+Occurrences: 35
+================================================================================
+
+Page   61: 56.4.2      USB OTG pin and internal signals . . . . . . . . . . . . . . . . . . . . . . . . . . . 2568
+Page  130: MAC or the USB OTG HS peripheral accessing another SRAM section. For example, the
+Page  132: •   USB OTG FS in Device mode (DFU) on PA11/PA12 pins
+Page 2562: The USB OTG is a dual-role device (DRD) controller that supports both device and host
+Page 2562: Table 487: OTG_HS speeds supported below.The USB OTG supports both HNP and SRP.
+Page 2568: 56.4.2      USB OTG pin and internal signals
+Page 2568: OTG_FS_DP              Digital input/output USB OTG D+ line
+Page 2568: OTG_FS_DM              Digital input/output USB OTG D- line
+Page 2568: OTG_FS_ID              Digital input       USB OTG ID
+Page 2568: OTG_FS_VBUS            Analog input        USB OTG VBUS
+Page 2568: OTG_FS_SOF             Digital output      USB OTG Start Of Frame (visibility)
+Page 2568: OTG_HS_DP              Digital input/output USB OTG D+ line
+Page 2568: OTG_HS_DM              Digital input/output USB OTG D- line
+Page 2568: OTG_HS_ID              Digital input       USB OTG ID
+Page 2568: OTG_HS_VBUS            Analog input        USB OTG VBUS
+Page 2568: OTG_HS_SOF             Digital output      USB OTG Start Of Frame (visibility)
+Page 2568: OTG_HS_ULPI_CK         Digital input       USB OTG ULPI clock
+Page 2568: OTG_HS_ULPI_DIR        Digital input       USB OTG ULPI data bus direction control
+Page 2568: OTG_HS_ULPI_STP        Digital output      USB OTG ULPI data stream stop
+Page 2568: OTG_HS_ULPI_NXT        Digital input       USB OTG ULPI next data stream request
+Page 2568: OTG_HS_ULPI_D[0..7]    Digital input/output USB OTG ULPI 8-bit bi-directional data bus
+Page 2568: usb_sof                Digital output      USB OTG start-of-frame event for on chip peripherals
+Page 2568: usb_wkup               Digital output      USB OTG wakeup event output
+Page 2568: usb_gbl_it             Digital output      USB OTG global interrupt
+Page 2568: usb_ep1_in_it          Digital output      USB OTG endpoint 1 in interrupt
+Page 2568: usb_ep1_out_it         Digital output      USB OTG endpoint 1 out interrupt
+Page 2568: The USB OTG receives the 48 MHz clock from the reset and clock controller (RCC). The
+Page 2568: It is informed of USB events through the single USB OTG interrupt line described in
+Page 2569: To guarantee a correct operation for the USB OTG_HS peripheral, the AHB frequency
+Page 2569: The USB OTG_HS core includes an ULPI interface to connect an external HS PHY.
+Page 2639: The application uses this bit to signal the USB OTG core to perform a soft disconnect. As
+Page 2667: The table below gives the USB OTG register map and reset values.
+Page 2711: 5.   For USB OTG_HS in DMA mode, the OTG_DOEPDMA0 register should have a valid
+Page 2711: 3.   For USB OTG_HS in DMA mode, program the OTG_DOEPCTL0 register to enable
+Page 3222: Added Section 57.4.2: USB OTG pin and internal signals.

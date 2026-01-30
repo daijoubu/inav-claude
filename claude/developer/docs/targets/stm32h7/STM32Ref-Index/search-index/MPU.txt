@@ -1,0 +1,175 @@
+Keyword: MPU
+Occurrences: 171
+================================================================================
+
+Page   21: 21.8.6      Computation of the error correction code (ECC)
+Page   34: 35.3.5      Message digest computing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1318
+Page   52: 49.5.3      CRC computation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2155
+Page   71: Table 204.   Offset computation versus data resolution . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 937
+Page  152: Flash memory also retrieves the 10-bit ECC information, computes the ECC of the Flash
+Page  153: CRC computation uses CRC-32 (Ethernet) polynomial 0x4C11DB7:
+Page  153: both operations. To avoid the CRC computation from being corrupted, the application shall
+Page  153: 4.   Define the user Flash memory area on which the CRC has to be computed.Two
+Page  153: The CRC can be computed for a whole bank by setting the ALL_BANK bit in the
+Page  154: CRC computation does not raise standard read error flags such as RDSERR1/2,
+Page  181: –    CRC computation on PCROP or secure-only area error
+Page  181: –    CRC computation complete
+Page  186: When CRCENDIE1 bit is set to 1, an interrupt is generated when the CRC computation has
+Page  186: 0: no interrupt generated when CRC computation complete on bank 1
+Page  186: 1: interrupt generated when CRC computation complete on bank 1
+Page  190: CRCEND1 bit is raised when the CRC computation has completed on bank 1. An interrupt is
+Page  190: CRC computation. Writing 1 to CLR_CRCEND1 bit in FLASH_CCR1 register clears
+Page  190: 0: CRC computation not complete on bank 1
+Page  190: 1: CRC computation complete on bank 1
+Page  191: computation on bank 1.
+Page  206: on which the CRC is calculated. The CRC can be computed either between two addresses
+Page  206: computation. CRC_SECT can be set only when CRC_EN of FLASH_CR register is set to 1.
+Page  209: When CRCENDIE2 bit is set to 1, an interrupt is generated when the CRC computation has
+Page  209: 0: no interrupt generated when CRC computation complete on bank 2
+Page  209: 1: interrupt generated when CRC computation complete on bank 2
+Page  213: CRCEND2 bit is raised when the CRC computation has completed on bank 2. An interrupt is
+Page  213: CRC computation. Writing 1 to CLR_CRCEND2 bit in FLASH_CCR2 register clears
+Page  213: 0: CRC computation not complete on bank 2
+Page  213: 1: CRC computation complete on bank 2
+Page  214: computation on bank 2.
+Page  222: calculation. The CRC can be computed either between two addresses (using registers
+Page  222: computation. CRC_SECT can be set only when CRC_EN of FLASH_CR register is set to 1.
+Page  327: Output frequency computation
+Page  536: This value is provided by the cell and can be used by the CPU to compute an I/O
+Page  536: This value is provided by the cell and can be used by the CPU to compute an I/O
+Page  593: block start address is computed (based on the information in the MDMA_CxBRUR
+Page  699: The DMA2D blender blends the source pixels by pair to compute the resulting pixel.
+Page  700: (MA field of the DMA2D_OMAR) must be even, and the output line offset computed in bytes
+Page  770: verifying the Flash memory integrity. The CRC calculation unit helps compute a signature of
+Page  770: •   CRC computation done in 4 AHB clock cycles (HCLK) for the 32-bit data size
+Page  771: CRC computation
+Page  771: (stored in CRC_DR) and the new one. CRC computation is done on the whole 32-bit data
+Page  771: The duration of the computation depends on data width:
+Page  771: given number of bytes. For instance, a CRC for 5 bytes can be computed with a word write
+Page  780: memory region MPU attributes. This may lead to inconsistent transfers.
+Page  780: The memory region MPU attribute must be configured as “Device” or “strongly-ordered”
+Page  780: example, if byte accesses are performed to 16-bit memories with the MPU attribute set
+Page  781: •   Bank 3 is used to address NAND Flash memory devices.The MPU memory attribute for
+Page  832: 21.8.6     Computation of the error correction code (ECC)
+Page  832: The FMC controller includes an error correction code computation hardware block. It
+Page  832: used for ECC computation.
+Page  832: computation.
+Page  832: by the host CPU, the FMC_ECCR registers must be read to retrieve the computed value.
+Page  832: Once read, they should be cleared by resetting the ECCEN bit to ‘0’. To compute a new data
+Page  833: Execute below the sequence to perform an ECC computation:
+Page  833: block computes the ECC value.
+Page  833: computes the ECC value.
+Page  834: Bit 6 ECCEN: ECC computation logic enable bit
+Page  838: This register contain the current error correction code value computed by the ECC
+Page  838: computation modules of the FMC NAND controller. When the CPU reads/writes the data
+Page  838: Computation of the error correction code (ECC) in NAND Flash memory), the data
+Page  838: computation module. When X bytes have been read (according to the ECCPS field in the
+Page  838: FMC_PCR registers), the CPU must read the computed ECC value from the FMC_ECC
+Page  838: registers. It then verifies if these computed parity data are the same as the parity value
+Page  838: ECCEN bit to ‘0’. To compute a new data block, the ECCEN bit must be set to ’1’.
+Page  838: This field contains the value computed by the ECC computation logic. Table 187 describes
+Page  894: the related computational burden from the CPU.
+Page  937: Table 204. Offset computation versus data resolution
+Page  975: precisely known. When VDDA is connected to VREF+, it is possible to compute the actual
+Page 1030: The formulas to compute the right sample and refresh timings are described in the table
+Page 1034: to compute and set the content of OTRIMx[4:0] bits in a faster way,
+Page 1109: The user can then compute the data rate according to the digital filter settings (FORD,
+Page 1114: The filter has the following transfer function (impulse response in H domain):
+Page 1119: correction. For each extremes detector, the input channels to be considered into computing
+Page 1210: The line length is computed as follows:
+Page 1233: Also note that post-processing computations are triggered when at least 32 bits of raw data
+Page 1252: authentication code (MAC) is computed in parallel, thus generating the corresponding
+Page 1252: fixed finite field for computing the message authentication code. It requires an initial value
+Page 1253: message is encrypted while a message authentication code (MAC) is computed in parallel,
+Page 1253: computing the message authentication code. It requires an initial value.
+Page 1259: properly compute authentication tags while doing a GCM encryption or a CCM decryption
+Page 1261: processing involved in the four operation modes supplied by the DES computing core:
+Page 1266: involved in the four basic operation modes supplied by the AES computing core: AES-ECB
+Page 1267: phase is computed by the AES core. Refer to Section 34.3.7: Preparing the CRYP AES key
+Page 1276: with hash computation only.
+Page 1276: •     The Payload phase: the peripheral processes the plaintext (P) with hash computation,
+Page 1283: computation only.
+Page 1283: •     The Payload phase: the peripheral processes the plaintext (P), with hash computation,
+Page 1292: core after each computation round of the TDES or AES core.
+Page 1309: computation is complete, the saved context can be read from memory and written back into
+Page 1314: The hash processor computes FIPS (Federal Information Processing Standards) approved
+Page 1314: digests of length of 160, 224, 256 bits, for messages of up to (261 – 1) bits. It also computes
+Page 1314: •    Fast computation of SHA-1, SHA-224, SHA-256, and MD5
+Page 1314: •    Interruptible message digest computation, on a per-32-bit word basis
+Page 1314: –    Hashing computation suspend/resume mechanism, including using DMA
+Page 1316: With each algorithm, the HASH computes a condensed representation of a message or data
+Page 1316: is computationally infeasible to find a message that corresponds to a given message digest
+Page 1318: 35.3.5      Message digest computing
+Page 1318: The hash processor sequentially processes 512-bit blocks when computing the message
+Page 1318: processor by the DMA or the CPU, the HASH automatically starts computing the message
+Page 1318: digest. This operation is known as ‘partial digest computation’.
+Page 1318: input FIFO. In order to perform the hash computation on this data below sequence shall be
+Page 1318: computation is managed depends on the way data are fed into the processor:
+Page 1318: –    The partial digest computation is triggered when the software writes an additional
+Page 1318: –    The final digest computation is triggered when the last block is entered and the
+Page 1318: –    The partial digest computation is triggered automatically each time the FIFO is full.
+Page 1318: –    The final digest computation is triggered automatically when the last block has
+Page 1318: –    The partial digest computations are triggered as for single DMA transfers.
+Page 1318: However the final digest computation is not triggered automatically when the last
+Page 1319: this digest computation. To launch the final digest computation, the software must
+Page 1319: computation as it is done for single DMA transfers (see description before).
+Page 1319: 4.   Once computed, the digest can be read from the output registers as described in
+Page 1319: When computing a condensed representation of a message, the process of feeding data
+Page 1319: into the hash processor (with automatic partial digest computation every 512-bit block) loops
+Page 1319: message padding is correctly performed before the final message digest computation.
+Page 1319: Section 35.3.5: Message digest computing.
+Page 1320: above) and then perform the digest computation.
+Page 1320: 4.    The hash computing is complete with the message digest available in the HASH_HRx
+Page 1321: Four different steps are required to compute the HMAC:
+Page 1321: 3.    Once the last key word has been entered and computation has started, the hash
+Page 1321: and computation starts, the HMAC result can be found in the HASH_H0...HASH_H7
+Page 1321: Note:    The computation latency of the HMAC primitive depends on the lengths of the keys and
+Page 1322: start message padding and inner hash computation (see ‘U’ as don’t care)
+Page 1322: 4.    Final outer hash computing is then performed by the HASH. The HMAC SHA-1
+Page 1325: For more information refer to Section 35.3.5: Message digest computing.
+Page 1326: Digest computation completed flag                                      DCIS                      DCIE
+Page 1326: Mode of operation              FIFO load(1)            Computation phase                    Total
+Page 1327: MODE= 1. Changing this bit during a computation has no effect.
+Page 1328: this bit during a computation has no effect.
+Page 1328: this bit during a computation has no effect.
+Page 1329: compute the message digest of a new message.
+Page 1334: Note:        When starting a digest computation for a new bit stream (by writing the INIT bit to 1), these
+Page 1337: used by the preemptive task, and when the hash computation is complete, the saved
+Page 1355: of software computation and interrupt servicing.
+Page 1356: Auto-delayed mode: Compare 2 and Compare 4 values are recomputed and used for
+Page 1357: Auto-delayed mode with timeout: Compare 2 and Compare 4 values are recomputed
+Page 1358: is taken into account to compute the auto-delayed compare value. A new capture is possible
+Page 1439: 01: CMP4 value is recomputed and is active following a capture 2 event
+Page 1439: 10: CMP4 value is recomputed and is active following a capture 2 event, or is recomputed and active
+Page 1439: 11: CMP4 value is recomputed and is active following a capture event, or is recomputed and active
+Page 1439: 01: CMP2 value is recomputed and is active following a capture 1 event
+Page 1439: 10: CMP2 value is recomputed and is active following a capture 1 event, or is recomputed and active
+Page 1439: 11: CMP2 value is recomputed and is active following a capture 1 event, or is recomputed and active
+Page 2040: Note:       The error checking code (LRC/CRC) must be computed/verified by software.
+Page 2057: control is enabled, the computed parity is inserted at the MSB position (9th bit if M=1; 8th bit
+Page 2111: control is enabled, the computed parity is inserted at the MSB position (9th bit if M=1; 8th bit
+Page 2155: 49.5.3   CRC computation
+Page 2156: The CRC computation is done, bit by bit, on the sampling clock edge defined by the CPHA
+Page 2156: In transmission, the CRC computation is frozen during CRC transaction and the TXCRC is
+Page 2187: Bit 22 CRCEN: hardware CRC computation enable
+Page 2198: When CRC calculation is enabled, the TXCRC[31:0] bits contain the computed CRC value
+Page 2199: When CRC calculation is enabled, the RXCRC[31:0] bits contain the computed CRC value
+Page 2233: Both µ-Law or A-Law companding standard can be computed based on 1’s complement or
+Page 2271: This signal can be connected to timer events, in order to compute frequency drift.
+Page 2277: thresholds are computed as follow:
+Page 2277: THHI and THLO are computed as follow:
+Page 2280: Compute COARSE thresholds                                         COARSE SYNC
+Page 2280: Compute FINE thresholds (THLO, THHI)
+Page 2367: •   Two CRC16 are computed per data line
+Page 2535: largest suitable values in achieve the best computational accuracy for the drift
+Page 2733: DMPULLDOWN = signal from core to PHY to enable/disable the pull-down on the DM line inside the PHY.
+Page 2735: DMPULLDOWN = signal from core to PHY to enable/disable the pull-down on the DM line inside the PHY.
+Page 2763: Note:       The 16 or 12 bits of VLAN Tag are considered for CRC-32 computation based on ETV bit in
+Page 2766: technologies such as network communication, local computing, and distributed objects. The
+Page 2766: microsecond range with minimal network and local clock computing resources.
+Page 2769: Port 1 uses all four timestamps to compute the mean link delay.
+Page 2770: In the peer-to-peer transparent clock, the computation of the link delay is based on an
+Page 2774: slave receives this message when its local clock is SlaveClockTimen and computes
+Page 2835: When the HF bit is set, this field contains the Hash value computed by the
+Page 2899: This (approximate) computation is based on the packet size (64, 1518, 2000, 9018, 16384, or
+Page 2908: – 8-bit Offset Pointer: Specifies the byte to start the CRC16 computation.

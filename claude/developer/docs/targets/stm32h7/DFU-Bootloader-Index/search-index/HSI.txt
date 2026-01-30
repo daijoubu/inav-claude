@@ -1,0 +1,295 @@
+Keyword: HSI
+Occurrences: 291
+================================================================================
+
+Page 34: clock (HSI, MSI). When (because of temperature variations or other conditions) the internal
+Page 47: •     Software baudrate detection using internal HSI and timer (use GPIO as input, detect
+Page 57: RCC                   HSI enabled     The system clock frequency is 24 MHz (no PLL)
+Page 59: RCC                   HSI enabled    The system clock frequency is 24 MHz (no PLL)
+Page 61: RCC                  HSI enabled
+Page 61: the HSI
+Page 66: HSI enabled      The system clock frequency is 24 MHz (no PLL)
+Page 66: HSI48 enabled
+Page 66: bootloader so that USB can be clocked by HSI48 48 MHz
+Page 68: to 24 MHz with HSI                                                      interfaces clocks
+Page 68: and HSI48 for USB
+Page 70: RCC                   HSI enabled
+Page 70: the HSI
+Page 75: RCC                   HSI enabled
+Page 75: by HSI). 1 flash Wait State.
+Page 77: The system clock frequency is 48 MHz with HSI 8 MHz
+Page 77: RCC                   HSI enabled
+Page 79: RCC                   HSI enabled     PLL clocked by HSI).
+Page 80: – At bootloader startup, the HSITRIM value is set
+Page 80: to 0 (in HSITRIM bits on RCC_CR register)
+Page 81: The system clock frequency is 48 MHz with HSI48 48 MHz
+Page 81: HSI enabled
+Page 81: allow USB to be clocked by HSI48 48 MHz.
+Page 84: Initial       – At bootloader startup, the HSITRIM value is set to 0 (in HSITRIM bits on RCC_CR
+Page 85: HSI enabled     MHz using the HSI. If an external clock (HSE) is not
+Page 85: present, the system is kept clocked from the HSI.
+Page 86: Note:     If HSI deviation exceeds 1% the bootloader might not function correctly.
+Page 86: •   If HSE is not present, the HSI is kept as default clock source and only USART1,
+Page 87: 48 MHz using HSI
+Page 88: Initial bootloader – At bootloader startup, the HSITRIM value is set to 0 (in HSITRIM bits on
+Page 88: fixed to HSI 8 MHz
+Page 89: HSI enabled     MHz using the HSI. If an external clock (HSE) is not
+Page 89: present, the system is kept clocked from the HSI.
+Page 90: Note:       If HSI deviation exceeds 1% the bootloader might not function correctly.
+Page 90: •    If HSE is not present, the HSI is kept as default clock source and only USART1,
+Page 91: 48 MHz using HSI
+Page 92: Initial bootloader     – At bootloader startup, the HSITRIM value is set to 0 (in HSITRIM bits on
+Page 92: fixed to HSI 8 MHz        serve all needed transactions (the delay needed by the BL is nearly 25 µs).
+Page 93: The system clock frequency is 48 MHz with HSI48 48 MHz
+Page 93: HSI enabled
+Page 93: HSI48 48 MHz.
+Page 96: – At bootloader startup, the HSITRIM value is set to (0) (in HSITRIM bits on RCC_CR
+Page 97: The system clock frequency is 48 MHz with HSI48 48 MHz as
+Page 97: RCC                  HSI enabled
+Page 98: At bootloader startup, the HSITRIM value is set to 0 in HSITRIM bits
+Page 99: RCC                  HSI enabled          The system clock frequency is 24 MHz using the PLL.
+Page 102: HSI enabled          detection for CAN and DFUs (once CAN or DFU is
+Page 108: RCC                   HSI enabled
+Page 110: RCC                  HSI enabled The system clock frequency is 24 MHz.
+Page 113: The HSI clock source is used at startup (interface detection
+Page 113: HSI enabled     phase) and when USARTx interfaces are selected (once
+Page 117: The system clock frequency is 48 MHz with HSI48 48 MHz
+Page 117: HSI enabled
+Page 118: •    If HSE is not present, the HSI is kept as default clock source, and only USART1 and
+Page 119: 48 MHz using HSI
+Page 121: HSI enabled        MHz using the HSI. If an external clock (HSE) is not
+Page 121: present, the system is kept clocked from the HSI.
+Page 122: •    If HSE is not present, the HSI is kept as default clock source, and only USART1 and
+Page 123: 48MHz using HSI
+Page 124: The system clock frequency is 48 MHz with HSI48 48 MHz
+Page 124: HSI enabled
+Page 125: •   If HSE is not present, the HSI is kept as default clock source, and only USART1 and
+Page 126: 48 MHz using HSI
+Page 128: The system clock frequency is 60 MHz with HSI 8 MHz
+Page 128: RCC                   HSI enabled
+Page 130: The system clock frequency is 60 MHz with HSI 8 MHz as
+Page 130: RCC                   HSI enabled
+Page 133: RCC                   HSI enabled       The system clock frequency is 8 MHz using the HSI.
+Page 135: HSI enabled     48 MHz using the HSI. If an external clock (HSE) is not
+Page 135: present, the system is kept clocked from the HSI.
+Page 136: •    If HSE is not present, the HSI is kept as default clock source, and only USART1 and
+Page 137: 48MHz using HSI
+Page 139: RCC                   HSI enabled       The system clock frequency is 8 MHz using the HSI.
+Page 141: The system clock frequency is 60 MHz with HSI 8 MHz as
+Page 141: RCC                  HSI enabled
+Page 144: The HSI clock source is used at startup (interface
+Page 144: HSI enabled      detection phase) and when USARTx interfaces are
+Page 145: Note:         Due to HSI deviation and since HSI is used to detect HSE value, use low rather than high
+Page 148: The HSI clock source is used at startup (interface detection
+Page 148: HSI enabled     phase) and when USART or SPI or I2C interfaces are
+Page 150: Note:         Due to HSI deviation and since HSI is used to detect HSE value, use low rather than high
+Page 153: The HSI clock source is used at startup (interface detection
+Page 153: HSI enabled     phase) and when USART or SPI or I2C interface is selected
+Page 156: Note:          Due to HSI deviation and since HSI is used to detect HSE value, use low rather than high
+Page 158: The HSI clock source is used at startup (interface detection
+Page 158: HSI enabled      phase) and when USART or SPI or I2C interface is
+Page 160: Note:         Due to HSI deviation and since HSI is used to detect HSE value, use low rather than high
+Page 163: The HSI is used at startup as clock source for system clock
+Page 163: RCC                  HSI enabled configured to 60 MHz and for USART and I2C bootloader
+Page 168: The HSI clock source is used at startup (interface detection
+Page 168: HSI enabled    phase) and when USART or SPI or I2C interface is selected
+Page 170: Note:        Due to HSI deviation and since HSI is used to detect HSE value, use low rather than high
+Page 173: The HSI is used at startup as clock source for system clock
+Page 173: HSI enabled    configured to 60 MHz and for USART and I2C bootloader
+Page 176: Note:         Due to HSI deviation and since HSI is used to detect HSE value, use low rather than high
+Page 179: The HSI is used at startup as clock source for system
+Page 179: HSI enabled       clock configured to 60 MHz and for USART and I2C
+Page 182: Note:         Due to HSI deviation and since HSI is used to detect HSE value, use low rather than high
+Page 185: The HSI clock source is used at startup
+Page 185: HSI enabled      (interface detection phase) and when USART
+Page 187: Note:         Due to HSI deviation and since HSI is used to detect HSE value, use low rather than high
+Page 191: The HSI clock source is used at startup (interface
+Page 191: HSI enabled
+Page 194: Note:     Due to HSI deviation and since HSI is used to detect HSE value, use low rather than high
+Page 198: The HSI is used at startup as clock source
+Page 198: HSI enabled
+Page 201: Note:         Due to HSI deviation and since HSI is used to detect HSE value, use low rather than high
+Page 204: The HSI clock source is used at startup
+Page 204: HSI enabled        (interface detection phase) and when
+Page 207: Note:         Due to HSI deviation and since HSI is used to detect HSE value, use low rather than high
+Page 211: The HSI is used at startup as clock
+Page 211: HSI enabled
+Page 214: Note:         Due to HSI deviation and since HSI is used to detect HSE value, use low rather than high
+Page 217: The HSI is used at startup as clock source for system
+Page 217: HSI enabled    clock configured to 60 MHz and for USART and I2C
+Page 219: Note:         Due to HSI deviation and since HSI is used to detect HSE value, use low rather than high
+Page 221: The HSI is used at startup as clock source for system
+Page 221: HSI enabled      clock configured to 60 MHz and for USART, I2C and SPI
+Page 224: Note:         Due to HSI deviation and since HSI is used to detect HSE value, use low rather than high
+Page 227: The HSI is used at startup as clock source for system clock
+Page 227: HSI enabled configured to 60 MHz and for USART and I2C bootloader
+Page 230: Note:         Due to HSI deviation and since HSI is used to detect HSE value, use low rather than high
+Page 234: RCC                   HSI enabled
+Page 234: clocked by HSI).
+Page 237: RCC                   HSI enabled
+Page 237: clocked by HSI).
+Page 241: value when Go command is used. HSITRIM
+Page 241: when Go command is used (HSITRIM is not
+Page 243: HSI enabled   clocked by HSI). If an external clock (HSE) is not
+Page 243: present, the system is kept clocked from the HSI
+Page 246: 60 MHz using HSI
+Page 248: HSI enabled
+Page 248: clocked by HSI).
+Page 248: by HSI48 48 MHz.
+Page 251: 60 MHz with HSI
+Page 253: RCC                   HSI enabled
+Page 253: clocked by HSI).
+Page 257: HSI enabled
+Page 257: clocked by HSI)
+Page 257: by HSI48 48 MHz
+Page 260: 72 MHz with HSI
+Page 260: using CRS and HSI48 as
+Page 262: HSI enabled
+Page 262: PLL clocked by HSI)
+Page 262: clocked by HSI48 48 MHz
+Page 265: 72 MHz with HSI
+Page 265: using CRS and HSI48 as
+Page 268: HSI enabled
+Page 268: PLL clocked by HSI)
+Page 268: clocked by HSI48 48 MHz
+Page 271: 72 MHz with HSI
+Page 271: using CRS and HSI48 as
+Page 273: HSI enabled
+Page 273: clocked by the HSI)
+Page 273: clocked by HSI48 48 MHz
+Page 277: with HSI and PLL
+Page 279: HSI enabled
+Page 279: clocked by the HSI)
+Page 279: clocked by HSI48 48 MHz
+Page 284: with HSI and PLL
+Page 286: HSI enabled
+Page 286: by the HSI)
+Page 286: HSI48 48 MHz
+Page 290: with HSI and PLL
+Page 292: HSI enabled
+Page 292: the HSI)
+Page 292: HSI48 48 MHz
+Page 296: 66 MHz with HSI
+Page 298: The system clock frequency is 64 MHz using the HSI.
+Page 298: The HSI clock source is used at startup (interface
+Page 298: HSI enabled
+Page 298: clocked by HSI48 48 MHz
+Page 302: 64 MHz with HSI
+Page 303: – Switch USB clock input from HSE to HSI48
+Page 306: HSI enabled The system clock frequency is 64 MHz using the HSI.
+Page 306: RCC                               by HSI48 48 MHz
+Page 311: 64 MHz with HSI
+Page 313: HSI enabled
+Page 313: clocked by HSI
+Page 313: HSI48 enabled
+Page 313: HSI48 48 MHz.
+Page 318: with HSI and PLL
+Page 319: set to 1: PLL1ON, PLL2ON, PLL1QEN, PLL2REN, HSEON, HSION, CSION, FMCEN,
+Page 319: set to 1: PLL2ON, PLL2SEN, PLL2TEN, HSEON, HSION, CSION, XSPIxEN, XSPIxLPEN,
+Page 319: reconfigures the clock based on PLL1 from HSI. In this case the bootloader is not be able to
+Page 320: The system clock frequency is 32 MHz with HSI 16
+Page 320: RCC                   HSI enabled
+Page 324: The system clock frequency is 32 MHz with HSI 16
+Page 324: RCC                   HSI enabled
+Page 327: The system clock frequency is 32 MHz with HSI 16 MHz as
+Page 327: RCC                  HSI enabled
+Page 330: The system clock frequency is 32 MHz with HSI 16 MHz as
+Page 330: RCC                  HSI enabled
+Page 333: to 32 MHz with HSI
+Page 333: MHz with HSI as clock source
+Page 335: The system clock frequency is 32 MHz with HSI 16 MHz as
+Page 335: RCC                  HSI enabled
+Page 339: RCC                  HSI enabled     The system clock frequency is 16 MHz.
+Page 341: RCC                   HSI enabled         The system clock frequency is 16 MHz.
+Page 343: using the HSI. This is used only for
+Page 343: HSI enabled       USARTx and during USB detection for DFU
+Page 347: using the HSI. This is used only for
+Page 347: HSI enabled       USARTx and during USB detection for DFU
+Page 351: using the HSI. This is used only for
+Page 351: HSI enabled       USARTx and during USB detection for DFU
+Page 355: The HSI is used at startup as clock source for system
+Page 355: HSI enabled         clock configured to 72 MHz and for USART, I2C, SPI and
+Page 355: by HSI48 48 MHz.
+Page 359: 72 MHz with HSI
+Page 359: using CRS and HSI48 as
+Page 361: The HSI is used at startup as clock source for system
+Page 361: HSI enabled     clock configured to 60 MHz and for USART, I2C, SPI
+Page 361: by HSI48 48 MHz.
+Page 366: 60 MHz with HSI
+Page 366: using CRS and HSI48 as                     interfaces clocks           interfaces clocks                 USARTx
+Page 369: The HSI is used at startup as clock source for system clock
+Page 369: HSI enabled     configured to 72 MHz and for USART, I2C, SPI and USB
+Page 369: HSI48 48 MHz.
+Page 374: 72 MHz with HSI
+Page 374: using CRS and HSI48 as
+Page 376: The HSI is used at startup as clock source for system clock
+Page 376: HSI enabled   configured to 24 MHz and for USART and I2C bootloader
+Page 378: source of the USB. The system clock is kept clocked to 24 MHz by the HSI.
+Page 380: to 24 MHz with HSI
+Page 380: MHz with HSI as clock source
+Page 382: The HSI is used at startup as clock source for system clock
+Page 382: HSI enabled     configured to 72 MHz and for USART and I2C bootloader
+Page 386: with HSI
+Page 386: Configure USB clock to 48 MHz with HSI
+Page 388: The HSI is used at startup as clock source for system clock
+Page 388: HSI enabled    configured to 72 MHz and for USART, I2C and SPI bootloader
+Page 388: HSI 48 MHz.
+Page 393: 72 MHz with HSI
+Page 393: CRS and HSI48 as clock
+Page 395: The HSI is used at startup as clock source for system clock
+Page 395: HSI enabled    configured to 60 MHz and for USART, I2C, SPI and USB
+Page 395: HSI 48 MHz.
+Page 400: MHz with HSI
+Page 400: using CRS and HSI48 as
+Page 402: The HSI is used at startup as clock source for system clock
+Page 402: HSI enabled      configured to 60 MHz and for USART, I2C, SPI and USB
+Page 402: HSI 48 MHz.
+Page 407: MHz with HSI
+Page 407: using CRS and HSI48 as
+Page 409: HSI enabled
+Page 409: HSI).
+Page 409: RCC                                CRS is enabled for the DFU to allow USB to be clocked by HSI
+Page 413: 60 MHz with HSI
+Page 419: to be clocked by HSI 48 MHz.
+Page 422: using CRS and HSI48 as
+Page 424: RCC                   HSI enabled
+Page 424: HSI).
+Page 428: The system clock frequency is 60 MHz (using HSI through
+Page 428: HSI enabled
+Page 431: from HSI ĺ3//                    No
+Page 432: RCC                  HSI enabled       The system clock frequency is 16 MHz using HSI
+Page 433: to 16 MHz from HSI
+Page 434: RCC                  HSI enabled       The system clock frequency is 16 MHz using HSI
+Page 435: to 16 MHz from HSI
+Page 436: RCC                  HSI enabled       The system clock frequency is 16 MHz using HSI
+Page 437: to 16 MHz from HSI
+Page 438: RCC                  HSI enabled       The system clock frequency is 16 MHz using HSI
+Page 439: to 16 MHz from HSI
+Page 440: RCC                  HSI enabled
+Page 440: clocked by HSI).
+Page 443: HSI16         The system clock frequency is 24 MHz (using PLL clocked by
+Page 443: enabled       HSI16).
+Page 448: HSI enabled
+Page 448: by HSI).
+Page 448: HSI48 enabled
+Page 448: bootloader to allow USB to be clocked by HSI48 48 MHz
+Page 451: to 24 MHz with HSI and                                      interface clocks
+Page 451: PLL and HSI48 for USB
+Page 453: HSI48
+Page 453: HSI 48 MHz
+Page 460: HSI enabled
+Page 460: HSI).
+Page 460: HSI48 enabled
+Page 460: HSI 48 MHz.
+Page 464: with HSI and PLL
+Page 466: HSI enabled
+Page 466: HSI).
+Page 466: HSI48 enabled
+Page 466: HSI 48 MHz.
+Page 470: with HSI and PLL
+Page 472: HSI enabled
+Page 472: HSI).
+Page 476: with HSI and PLL
+Page 477: HSI enabled
+Page 477: by HSI).
+Page 481: with HSI and PLL

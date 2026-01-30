@@ -1,0 +1,164 @@
+Keyword: LSI
+Occurrences: 160
+================================================================================
+
+Page   63: 56.14.43 OTG device VBUS pulsing time register
+Page  244: LSI, LSE, RTC,
+Page  277: In DStop mode domain peripherals using the LSI or LSE clock and peripherals having a
+Page  278: In Stop mode, the domain peripherals that use the LSI or LSE clock, and the peripherals
+Page  278: •   Internal RC oscillator (LSI RC)
+Page  278: This is configured via the LSION bit in the RCC Clock Control and Status Register
+Page  279: •     Peripherals capable of running on the LSI or LSE clock.
+Page  282: •   Internal RC oscillator (LSI RC)
+Page  282: This is configured by the LSION bit in the Control/status register (RCC_CSR).
+Page  303: clock is gated. LPTIM4 still operates since it uses ck_lsi clock.
+Page  306: –    Low-speed internal oscillator (LSI)
+Page  307: lsi_ck              M                                                                 perx_ker_ckreq
+Page  307: LSI       lsi_ck                                        PLL3                                                             rcc_perx_ker_ck
+Page  317: •    LSI (Low-speed internal oscillator) clock: ~ 32 kHz
+Page  318: LSION or IWDG1 activated
+Page  318: lsi_ck                                                                                                                                                                                              To
+Page  318: LSI    tempo                                                                                                                                                                                                     IWDG1
+Page  318: OSC32_OUT                                                               lsi_ck          D                                                                                                                                               RTC/AWU
+Page  318: lsi_ck    5          csi_ck     1   traceclkin
+Page  318: lsi_ck
+Page  324: LSI oscillator
+Page  324: The LSI acts as a low-power clock source that can be kept running when the system is in
+Page  324: The LSI can be switched ON and OFF using the LSION bit. The LSIRDY flag indicates
+Page  324: whether the LSI oscillator is stable or not. If an independent watchdog is started either by
+Page  324: hardware or software, the LSI is forced ON and cannot be disabled.
+Page  324: The LSI remains enabled when the system enters Stop or Standby mode (refer to
+Page  324: At LSI startup, the clock is not provided until the hardware sets the LSIRDY bit. An interrupt
+Page  324: In addition, the LSI clock can be driven to the MCO2 output and used as a clock source for
+Page  324: Note:      Bits LSION and LSIRDY are located into the RCC Clock Control and Status Register
+Page  325: the defective LSE (clear LSEON bit), and can change the RTC clock source (no clock or LSI
+Page  335: lsi_ck
+Page  336: lsi_ck
+Page  343: lsi_ck          3
+Page  344: lsi_ck                     1 D                                         cec_ker_ck (im)
+Page  344: lsi_ck              4
+Page  344: lsi_ck              4
+Page  344: lsi_ck              4
+Page  344: •        or the lsi_ck clock
+Page  345: •   If LSI is selected as the RTC clock, the AWU state is not guaranteed if the VDD supply
+Page  345: independent watchdog (IWDG1) is connected to the LSI. The window watchdog (WWDG1)
+Page  345: If an independent watchdog is started by either hardware option or software access, the LSI
+Page  345: is forced ON and cannot be disabled. After the LSI oscillator setup delay, the clock is
+Page  346: •    Calibrating the LSI with the HSI
+Page  346: The LSI frequency can also be measured: this is useful for applications that do not
+Page  346: have a crystal. The ultralow power LSI oscillator has a large manufacturing process
+Page  346: accurate RTC time base timeouts (when LSI is used as the RTC clock source) and/or
+Page  354: no lsi_ck
+Page  354: 1         1           and no            X                              0                   0                and lse_ck or lsi_ck or hsi_ker_ck or csi_ker_ck are not
+Page  354: lsi_ck or                                         1
+Page  354: 1         1                             X                           (1)                    0                PERxLPEN=‘1’ and lsi_ck or lse_ck are selected.
+Page  354: selected is lsi_ck or lse_ck.
+Page  355: the kernel source clock of the peripheral is lse_ck or lsi_ck.
+Page  355: not lsi_ck                                                                                           or lsi_ck are not selected.
+Page  356: 1         X          1                            1                                          0                    0               even if req_ker_perx = ‘0’, lse_ck or lsi_ck or
+Page  356: not lsi_ck
+Page  356: lse_ck or lsi_ck are selected, while D3 is in
+Page  356: lsi_ck                                                                                        The bus interface clock is not provided as D3 is
+Page  356: lsi_ck.
+Page  357: In order for the LPTIMER to operate with lse_ck or lsi_ck when the circuit is in Stop mode,
+Page  357: the user application has to select the lsi_ck or lse_ck input via LPTIMxSEL fields, and set
+Page  359: LSIRDYF         LSI ready                                      LSIRDYIE                 Set LSIRDYC to ‘1’
+Page  367: 101:LSI clock selected (lsi_ck)
+Page  392: 100: lsi_ck clock selected as kernel peripheral clock
+Page  392: 01: lsi_ck clock is selected as kernel clock
+Page  393: 11: lsi_ck clock is selected as kernel clock
+Page  395: 100: lsi_ck clock selected as kernel peripheral clock
+Page  395: 100: lsi_ck clock selected as kernel peripheral clock
+Page  397: LSIRDYIE
+Page  398: Bit 0 LSIRDYIE: LSI ready Interrupt Enable
+Page  398: Set and reset by software to enable/disable interrupt caused by the LSI oscillator stabilization.
+Page  398: 0: LSI ready interrupt disabled (default after reset)
+Page  398: 1: LSI ready interrupt enabled
+Page  399: LSIRDYF
+Page  400: Bit 0 LSIRDYF: LSI ready Interrupt Flag
+Page  400: Reset by software by writing LSIRDYC bit.
+Page  400: Set by hardware when the LSI clock becomes stable and LSIRDYIE is set.
+Page  400: 0: No clock ready interrupt caused by the LSI (default after reset)
+Page  400: 1: Clock ready interrupt caused by the LSI
+Page  401: LSIRDYC
+Page  402: Bit 0 LSIRDYC: LSI ready Interrupt Clear
+Page  402: Set by software to clear LSIRDYF.
+Page  402: 0: LSIRDYF no effect (default after reset)
+Page  402: 1: LSIRDYF cleared
+Page  403: 10: LSI clock used as RTC clock
+Page  405: LSIRDY
+Page  405: LSION
+Page  405: Bit 1 LSIRDY: LSI oscillator ready
+Page  405: This bit needs 3 cycles of lsi_ck clock to fall down after LSION has been set to ‘0’.
+Page  405: This bit can be set even when LSION is not enabled if there is a request for LSI clock by the Clock
+Page  405: 0: LSI clock is not ready (default after reset)
+Page  405: 1: LSI clock is ready
+Page  405: Bit 0 LSION: LSI oscillator enable
+Page  405: 0: LSI is OFF (default after reset)
+Page  405: 1: LSI is ON
+Page  474: DMA2RST                       Res.                       LSIRDY                        LSERDY                                             LSERDYC                                LSERDYF                              LSERDYIE                              LPUART1SEL[2:0]        1
+Page  474: DMA1RST                    MDMARST                        LSION                         LSEON                                             LSIRDYC                                LSIRDYF                              LSIRDYIE
+Page  558: RCC            lsi_ck       TI1_1                                A       -
+Page 1022: lsi_ck        THOLD1
+Page 1022: lsi_ck        THOLD2
+Page 1023: •      Sample and Hold block and registers operational in Stop mode, using LSI clock source
+Page 1023: registers can run in Stop mode using the LSI clock source.
+Page 1030: speed clock (LSI) in addition to the dac_pclk clock, allowing to use the DAC channels in
+Page 1030: The timings for the three phases above are in units of LSI clocks. As an example, to
+Page 1030: assuming LSI ~32 KHz is selected:
+Page 1032: lsi_ck                                                   phase
+Page 1039: selected using lsi_ck clock
+Page 1050: of DAC_SHSR2 is complete. (It takes about 3 LSI periods of synchronization).
+Page 1050: DAC_SHSR1 is complete. (It takes about 3 LSI periods of synchronization).
+Page 1053: Note:          It represents the number of LSI clocks to perform a sample phase. Sampling time =
+Page 1053: (TSAMPLE1[9:0] + 1) x LSI clock period.
+Page 1053: Note:          It represents the number of LSI clocks to perform a sample phase. Sampling time =
+Page 1053: (TSAMPLE1[9:0] + 1) x LSI clock period.
+Page 1054: Hold time= (THOLD[9:0]) x LSI clock period
+Page 1054: Hold time= (THOLD[9:0]) x LSI clock period
+Page 1055: Refresh time= (TREFRESH[7:0]) x LSI clock period
+Page 1055: Refresh time= (TREFRESH[7:0]) x LSI clock period
+Page 1825: 0001: LSI
+Page 1843: –    Internal clock sources: LSE, LSI, HSI or APB clock
+Page 1849: clock signal which can be chosen among APB, LSI, LSE or HSI sources through the Reset
+Page 1849: other embedded oscillator including LSE, LSI and HSI.
+Page 1858: The LPTIM peripheral is active when it is clocked by LSE or LSI. LPTIM
+Page 1880: The independent watchdog (IWDG) is clocked by its own dedicated low-speed clock (LSI)
+Page 1880: lsi_ck                8-bit
+Page 1881: lsi_ck                       LSI clock
+Page 1891: LSI
+Page 1893: rtc_ker_ck (RTCCLK)             Internal input   RTC clock source (LSE clock, LSI clock and HSE clock)
+Page 1895: clock, the LSI oscillator clock, and the HSE clock. For more information on the RTC clock
+Page 1907: The RTC remains active when the RTC clock source is LSE or LSI. RTC alarm,
+Page 1908: 1. Wakeup from STOP and Standby modes is possible only when the RTC clock source is LSE or LSI.
+Page 2442: of each section has to be done carefully to avoid falsification or loss of data.
+Page 2591: Section 56.14.43: OTG device VBUS pulsing time register
+Page 2594: 1:OTG Version 2.0. In this version the core supports only data line pulsing for SRP.
+Page 2600: Bit 22 TSDPS: TermSel DLine pulsing selection
+Page 2600: 0: Data line pulsing using utmi_txvalid (default)
+Page 2600: 1: Data line pulsing using utmi_termsel
+Page 2645: This register specifies the VBUS discharge time after VBUS pulsing during SRP.
+Page 2645: Specifies the VBUS discharge time after VBUS pulsing during SRP. This value equals:
+Page 2645: 56.14.43 OTG device VBUS pulsing time register
+Page 2645: This register specifies the VBUS pulsing time during SRP.
+Page 2646: Bits 15:0 DVBUSP[15:0]: Device VBUS pulsing time. This feature is only relevant to OTG1.3.
+Page 2646: Specifies the VBUS pulsing time during SRP. This value equals:
+Page 2646: VBUS pulsing time in PHY clocks / 1 024
+Page 2731: VBUS power. A device must perform both data-line pulsing and VBUS pulsing, but a host can
+Page 2731: detect either data-line pulsing or VBUS pulsing for SRP. HNP is a method by which the B-
+Page 2731: VBUS pulsing
+Page 2731: 3            Data line pulsing                   Connect
+Page 2731: OTG_HS controller detects data-line pulsing.
+Page 2731: pulsing.
+Page 2732: Data line pulsing                           Connect
+Page 2732: CHRG_VBUS                                                              VBUS pulsing
+Page 2733: status register. The OTG_HS controller perform data-line pulsing followed by VBUS
+Page 2733: pulsing.
+Page 2733: 5.   The host detects SRP from either the data-line or VBUS pulsing, and turns on VBUS.
+Page 2733: 6.   The OTG_HS controller performs VBUS pulsing.
+Page 2968: LSI[7:0]
+Page 2968: sum of this field and logSyncInterval (LSI) field is provided in the logMinDelayReqInterval
+Page 2968: Bits 7:0 LSI[7:0]:
+Page 2977: ETH_MACLMIR         LMPDRI[7:0]                                                                LSI[7:0]
+Page 3216: Removed lsi_ck as USBxOTG clock in Section : Peripherals
+Page 3219: APB1 clock and LSI clock replaced by dac_pclk and by lsi_ck in the

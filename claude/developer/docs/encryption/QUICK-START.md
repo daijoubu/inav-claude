@@ -2,182 +2,102 @@
 
 ## What You Have
 
-✅ **800-page cryptography textbook (Boneh & Shoup) available for reference**
-✅ **Indexing scripts ready** (may need manual fallback - see TROUBLESHOOTING.md)
-✅ **Python script for searching** (if PDF allows)
-⚠️ **Note:** If automated tools don't work, use PDF reader + manual index (see below)
+✅ **~800-page cryptography textbook (Boneh & Shoup) indexed and ready**
+✅ **52 crypto-relevant keywords pre-indexed**
+✅ **`search_indexes.py` — two-phase search tool (index lookup + page extraction)**
 
-## 3 Fastest Ways to Find Information
+## How It Works
 
-### 1. Search the Pre-Built Index (Fastest)
-```bash
-cd claude/developer/docs/encryption/Boneh-Shoup-Index/search-index
+`search_indexes.py` uses a two-phase approach:
 
-# View all occurrences of "ChaCha20"
-cat ChaCha20.txt
+1. **Phase 1 — Index lookup** (instant): Reads the pre-built `search-index/*.txt` files to find which pages mention your keyword, with a snippet of matched text.
+2. **Phase 2 — Page extraction** (uses pdftotext): Extracts only the matched pages from the PDF so you can read the surrounding content.
 
-# View all occurrences of "timing attack"
-cat timing-attack.txt
+If a keyword has too many results (>20 by default), Phase 2 is skipped automatically — the script warns you and suggests a more specific keyword or `--max N`.
 
-# View all occurrences of "authenticated encryption"
-cat authenticated-encryption.txt
-```
-
-### 2. Search for Any Term (Quick)
-```bash
-cd claude/developer/docs/encryption
-
-# Search and show page numbers
-pdfgrep -n "your search term" applied_cryptography-BonehShoup_0_4.pdf
-
-# Examples:
-pdfgrep -n "nonce reuse" applied_cryptography-BonehShoup_0_4.pdf
-pdfgrep -n "constant time" applied_cryptography-BonehShoup_0_4.pdf
-pdfgrep -n "forward secrecy" applied_cryptography-BonehShoup_0_4.pdf
-```
-
-### 3. Use the Python Script (Most Powerful)
-```bash
-cd claude/developer/docs/encryption/Boneh-Shoup-Index
-
-# Search with context
-./pdf_indexer.py find "GCM mode" --context 1
-
-# Extract specific pages
-./pdf_indexer.py extract 200 250 --output temp-extract.txt
-
-# Simple search
-./pdf_indexer.py search "Poly1305"
-```
-
-## Extract Key Sections for PrivacyLRS Reference
+## Basic Usage
 
 ```bash
 cd claude/developer/docs/encryption
 
-# Example: Extract authenticated encryption chapter
-./Boneh-Shoup-Index/pdf_indexer.py extract 300 350 \
-  --output Boneh-Shoup-Index/relevant-to-privacylrs/authenticated-encryption.txt
+# Search index + extract matched pages (full workflow)
+./search_indexes.py ChaCha20
 
-# Example: Extract timing attack section
-./Boneh-Shoup-Index/pdf_indexer.py find "timing attack" --context 2 \
-  > Boneh-Shoup-Index/relevant-to-privacylrs/timing-attacks.txt
+# Phase 1 only — fast page listing, no PDF extraction
+./search_indexes.py --no-extract AES
+
+# Add context pages around each match
+./search_indexes.py --context 2 timing-attack
+
+# Browse available keywords
+./search_indexes.py --list
+./search_indexes.py --match cipher
 ```
 
 ## Most Relevant Topics for PrivacyLRS Security Analysis
 
-| Topic | Relevance | Use in Security Analysis |
-|-------|-----------|--------------------------|
-| ChaCha20 | HIGH | Stream cipher analysis, performance review |
-| Poly1305 | HIGH | MAC verification, authenticated encryption |
-| Timing attacks | CRITICAL | Side-channel analysis, constant-time review |
-| Authenticated encryption (AEAD) | CRITICAL | Protocol design review |
-| Key derivation (HKDF) | HIGH | Key management review |
-| Nonce handling | CRITICAL | Implementation correctness |
-| Forward secrecy | HIGH | Protocol security properties |
-| Random number generation | CRITICAL | Cryptographic strength |
+| Topic | Relevance | Index Keyword | Use in Security Analysis |
+|-------|-----------|---------------|--------------------------|
+| Timing attacks | CRITICAL | `timing-attack` | Side-channel analysis, constant-time review |
+| Authenticated encryption | CRITICAL | `AEAD`, `authenticated-encryption` | Protocol design review |
+| Nonce handling | CRITICAL | `nonce` | Implementation correctness |
+| Random number gen | CRITICAL | `PRNG`, `entropy` | Cryptographic strength |
+| ChaCha20 | HIGH | `ChaCha20` | Stream cipher analysis |
+| Poly1305 | HIGH | `Poly1305` | MAC verification |
+| Key derivation | HIGH | `HKDF`, `KDF` | Key management review |
+| Forward secrecy | HIGH | `forward-secrecy` | Protocol security properties |
 
 ## Pre-Indexed Keywords
 
-All in `search-index/` directory (counts will vary):
+Browse with `./search_indexes.py --list` or search by substring with `--match`:
 
-**Symmetric Encryption:**
-- `AES.txt`
-- `ChaCha20.txt`
-- `stream-cipher.txt`
-- `block-cipher.txt`
-- `CTR-mode.txt`
-- `GCM.txt`
+**Symmetric Encryption:** `AES`, `ChaCha20`, `stream-cipher`, `block-cipher`, `CTR-mode`, `GCM`
 
-**Authentication:**
-- `MAC.txt`
-- `HMAC.txt`
-- `Poly1305.txt`
-- `authenticated-encryption.txt`
-- `AEAD.txt`
+**Authentication:** `MAC`, `HMAC`, `Poly1305`, `authenticated-encryption`, `AEAD`
 
-**Security Properties:**
-- `CPA-security.txt`
-- `CCA-security.txt`
-- `forward-secrecy.txt`
-- `semantic-security.txt`
+**Security Properties:** `CPA-security`, `CCA-security`, `forward-secrecy`, `semantic-security`
 
-**Attacks:**
-- `timing-attack.txt`
-- `side-channel.txt`
-- `padding-oracle.txt`
-- `replay-attack.txt`
-- `man-in-the-middle.txt`
+**Attacks:** `timing-attack`, `side-channel`, `padding-oracle`, `replay-attack`, `man-in-the-middle`
 
-**Key Management:**
-- `key-derivation.txt`
-- `KDF.txt`
-- `HKDF.txt`
-- `nonce.txt`
-- `entropy.txt`
+**Key Management:** `key-derivation`, `KDF`, `HKDF`, `key-rotation`, `key-schedule`, `nonce`, `entropy`
 
-... and many more!
+**Asymmetric / Signatures:** `RSA`, `elliptic-curve`, `Ed25519`, `Curve25519`, `digital-signature`, `ECDH`, `Diffie-Hellman`
 
-## Files Created
-
-```
-claude/developer/docs/encryption/
-├── applied_cryptography-BonehShoup_0_4.pdf (26 MB, ~800 pages)
-├── QUICK-START.md (this file)
-└── Boneh-Shoup-Index/
-    ├── README.md (index guide with PrivacyLRS relevance ratings)
-    ├── pdf_indexer.py (Python indexing tool)
-    ├── chapters/ (for extracted chapters)
-    ├── relevant-to-privacylrs/ (PrivacyLRS-critical sections)
-    └── search-index/ (50+ pre-indexed crypto keywords)
-        ├── ChaCha20.txt
-        ├── timing-attack.txt
-        ├── authenticated-encryption.txt
-        └── ... (50+ more)
-```
-
-## Usage in Security Analysis
-
-### When Reviewing Cryptographic Code
-
-1. **Read the code** to understand what it does
-2. **Search the textbook** for relevant concepts:
-   ```bash
-   ./pdf_indexer.py find "MAC verification" --context 2
-   ```
-3. **Extract key sections** for reference while analyzing
-4. **Document findings** with references to specific pages
-
-### Example Workflow
+## Security Analysis Workflow
 
 ```bash
 # 1. You're reviewing MAC verification in auth.c
 
-# 2. Search for timing attack information
-cd claude/developer/docs/encryption/Boneh-Shoup-Index
-./pdf_indexer.py find "timing attack" --context 1 > /tmp/timing-ref.txt
+# 2. Search textbook for relevant concepts
+cd claude/developer/docs/encryption
+./search_indexes.py timing-attack
 
-# 3. Read the reference
-cat /tmp/timing-ref.txt
-
-# 4. Check if code uses constant-time comparison
+# 3. Check if code uses constant-time comparison
 grep "memcmp\|sodium_memcmp" PrivacyLRS/src/auth.c
 
-# 5. Document finding with textbook reference
+# 4. Document finding with textbook reference
 # "See Boneh & Shoup p.XXX on timing attacks"
 ```
 
-## Next Steps
+## Files
 
-1. Browse the search index: `ls -lh Boneh-Shoup-Index/search-index/`
-2. Search for terms relevant to your security analysis
-3. Extract sections you need frequently
-4. Build PrivacyLRS-specific reference documentation from extracted sections
+```
+claude/developer/docs/encryption/
+├── search_indexes.py ← start here
+├── CLAUDE.md (quick reference)
+├── QUICK-START.md (this file)
+├── applied_cryptography-BonehShoup_0_4.pdf (26 MB, ~800 pages)
+└── Boneh-Shoup-Index/
+    ├── README.md (index guide with PrivacyLRS relevance ratings)
+    ├── pdf_indexer.py (per-document search tool)
+    ├── relevant-to-privacylrs/ (PrivacyLRS-critical sections)
+    └── search-index/ (52 pre-indexed crypto keywords)
+```
 
 ## Tips
 
-- **For quick lookups:** Use the pre-built index files
-- **For exploration:** Use `pdfgrep` to search
-- **For reading:** Extract sections to text with `pdftotext -layout`
-- **For analysis:** Use the Python script to extract with context
+- **Start with `search_indexes.py`** — it reads the index first (instant), then extracts only the pages you need
+- **Use `--no-extract`** for quick page listings when you just need to know where something is
+- **Use `--match`** to discover keyword names (e.g., `--match key` finds `key-derivation`, `key-rotation`, `key-schedule`, etc.)
+- **Use `--context N`** when you need surrounding pages for full theoretical understanding
 - **For findings reports:** Reference specific page numbers (e.g., "See Boneh & Shoup p.XXX")

@@ -1,0 +1,834 @@
+Keyword: CRC
+Occurrences: 830
+================================================================================
+
+Page    4: 3.9.19      FLASH CRC control register for bank 1 (FLASH_CRCCR1) . . . . . . . . 205
+Page    4: 3.9.20      FLASH CRC start address register for bank 1
+Page    4: (FLASH_CRCSADD1R) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 206
+Page    4: 3.9.21      FLASH CRC end address register for bank 1
+Page    4: (FLASH_CRCEADD1R) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 207
+Page    4: 3.9.22      FLASH CRC data register (FLASH_CRCDATAR) . . . . . . . . . . . . . . . . 207
+Page    5: 3.9.34      FLASH CRC control register for bank 2 (FLASH_CRCCR2) . . . . . . . . 221
+Page    5: 3.9.35      FLASH CRC start address register for bank 2
+Page    5: (FLASH_CRCSADD2R) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 222
+Page    5: 3.9.36      FLASH CRC end address register for bank 2
+Page    5: (FLASH_CRCEADD2R) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 223
+Page   19: 20       Cyclic redundancy check calculation unit (CRC) . . . . . . . . . . . . . . . . 770
+Page   20: 20.2    CRC main features . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 770
+Page   20: 20.3    CRC functional description . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 771
+Page   20: 20.3.1      CRC block diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 771
+Page   20: 20.3.2      CRC internal signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 771
+Page   20: 20.3.3      CRC operation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 771
+Page   20: 20.4    CRC registers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 773
+Page   20: 20.4.1      Data register (CRC_DR) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 773
+Page   20: 20.4.2      Independent data register (CRC_IDR) . . . . . . . . . . . . . . . . . . . . . . . . 773
+Page   20: 20.4.3      Control register (CRC_CR) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 774
+Page   20: 20.4.4      Initial CRC value (CRC_INIT) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 774
+Page   20: 20.4.5      CRC polynomial (CRC_POL) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 775
+Page   20: 20.4.6      CRC register map . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 775
+Page   52: 49.5.3      CRC computation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2155
+Page   53: 49.11.10 SPI polynomial register (SPI_CRCPOLY) . . . . . . . . . . . . . . . . . . . . . 2197
+Page   53: 49.11.11 SPI transmitter CRC register (SPI_TXCRC) . . . . . . . . . . . . . . . . . . . 2198
+Page   53: 49.11.12 SPI receiver CRC register (SPI_RXCRC) . . . . . . . . . . . . . . . . . . . . . 2198
+Page   70: Table 144.   CRC internal input/output signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 771
+Page   70: Table 145.   CRC register map and reset values . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 775
+Page   76: Table 440.   Short response with CRC token format . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2363
+Page   76: Table 441.   Short response without CRC token format . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2363
+Page   76: Table 442.   Long response with CRC token format . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2363
+Page   77: Table 455.   4-bit mode Start, interrupt, and CRC-status Signaling detection . . . . . . . . . . . . . . . . . . 2386
+Page   81: Figure 92.   CRC calculation unit block diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 771
+Page   93: Figure 691. SWPMI single buffer mode reception with CRC error. . . . . . . . . . . . . . . . . . . . . . . . . . . 2322
+Page   94: Figure 707. DDR mode CRC status / boot acknowledgment clocking. . . . . . . . . . . . . . . . . . . . . . . . 2367
+Page  126: 0x58024C00 - 0x58024FFF          CRC                   Section 20.4: CRC registers
+Page  133: •   Cyclic redundancy check (CRC) hardware module
+Page  136: CRC module
+Page  153: Cyclic redundancy codes (CRC)
+Page  153: The embedded Flash memory implements a cyclic redundancy check (CRC) hardware
+Page  153: The area processed by the CRC module can be defined either by sectors or by start/end
+Page  153: Note:    Only one CRC check operation on bank 1 or 2 can be launched at a time. To avoid
+Page  153: corruption, do not configure the CRC calculation on the one bank, while calculating the CRC
+Page  153: When enabled, the CRC hardware module performs multiple reads by chunks of 4, 16, 64 or
+Page  153: consecutive read operations are pushed by the CRC module into the required read
+Page  153: CRC computation uses CRC-32 (Ethernet) polynomial 0x4C11DB7:
+Page  153: The CRC operation is concurrent with option byte change as the same hardware is used for
+Page  153: both operations. To avoid the CRC computation from being corrupted, the application shall
+Page  153: complete the option byte change (by reading the result of the change) before running a CRC
+Page  153: The sequence recommended to configure a CRC operation in the bank 1/2 is the following:
+Page  153: 2.   Enable the CRC feature by setting the CRC_EN bit in FLASH_CR1/2.
+Page  153: 3.   Program the desired data size in the CRC_BURST field of FLASH_CRCCR1/2.
+Page  153: 4.   Define the user Flash memory area on which the CRC has to be computed.Two
+Page  153: –   Define the area start and end addresses by programing FLASH_CRCSADD1/2R
+Page  153: and FLASH_CRCEADD1/2R, respectively,
+Page  153: –   or select the targeted sectors by setting the CRC_BY_SECT bit in
+Page  153: FLASH_CRCCR1/2 and by programming consecutively the target sector numbers
+Page  153: in the CRC_SECT field of the FLASH_CRCCR1/2 register. Set ADD_SECT bit
+Page  153: after each CRC_SECT programming.
+Page  153: 5.   Start the CRC operation by setting the START_CRC bit.
+Page  153: 6.   Wait until the CRC_BUSY1/2 flag is reset in FLASH_SR1/2 register.
+Page  153: 7.   Retrieve the CRC result in the FLASH_CRCDATAR register.
+Page  153: The CRC can be computed for a whole bank by setting the ALL_BANK bit in the
+Page  153: FLASH_CRCCR1/2 register.
+Page  154: Note:      The application should avoid running a CRC on PCROP- or secure-only user Flash memory
+Page  154: area since it may alter the expected CRC value.
+Page  154: CRC computation does not raise standard read error flags such as RDSERR1/2,
+Page  156: 0x050       0x150         FLASH_CRCCR1                  FLASH_CRCCR2               Bank 1    Bank 2    Bank 2     Bank 1
+Page  156: 0x054       0x154       FLASH_CRCSADD1R               FLASH_CRCSADD2R              Bank 1    Bank 2    Bank 2     Bank 1
+Page  156: 0x058       0x158       FLASH_CRCEADD1R               FLASH_CRCEADD2R              Bank 1    Bank 2    Bank 2     Bank 1
+Page  156: 0x05C      0x15C                        FLASH_CRCDATAR                                    N/A                 N/A
+Page  167: FLASH_CRCCR1/2                                      -
+Page  167: FLASH_CRCSADD1/2R                                     -
+Page  167: FLASH_CRCEADD1/2R                                     -
+Page  167: FLASH_CRCDATAR                                      -
+Page  175: Note:    CRC_BUSY1/2 is not taken into account.
+Page  181: –    CRC computation on PCROP or secure-only area error
+Page  181: –    CRC computation complete
+Page  182: on bank 1        CRCEND1                 CRCENDIE1
+Page  182: CRC complete event                                                                                              N/A          N/A
+Page  182: on bank 2        CRCEND2                 CRCENDIE2
+Page  183: CRC end of calculation event
+Page  183: Setting the CRC end-of-calculation interrupt enable bit (CRCENDIE1/2) in the
+Page  183: FLASH_CR1/2 register enables the generation of an interrupt at the end of a CRC operation
+Page  183: on bank 1/2. The CRCEND1/2 bit in the FLASH_SR1/2 register is also set when this event
+Page  183: Setting CLR_CRCEND1/2 bit to 1 in FLASH_CCR1/2 register clears CRCEND1/2 flag.
+Page  185: CRCENDIE1
+Page  185: CRC_EN
+Page  186: Bit 27 CRCENDIE1: Bank 1 CRC end of calculation interrupt enable bit
+Page  186: When CRCENDIE1 bit is set to 1, an interrupt is generated when the CRC computation has
+Page  186: completed on bank 1. CRCENDIE1 can be programmed only when LOCK1 is cleared to 0.
+Page  186: 0: no interrupt generated when CRC computation complete on bank 1
+Page  186: 1: interrupt generated when CRC computation complete on bank 1
+Page  187: Bit 15 CRC_EN: Bank 1 CRC control bit
+Page  187: Setting CRC_EN bit to 1 enables the CRC calculation on bank 1. CRC_EN does not start
+Page  187: CRC calculation but enables CRC configuration through FLASH_CRCCR1 register.
+Page  187: When CRC calculation is performed on bank 1, it can only be disabled by setting CRC_EN bit
+Page  187: to 0. Resetting CRC_EN clears CRC configuration and resets the content of
+Page  187: FLASH_CRCDATAR register.
+Page  187: Clearing CRC_EN to 0 sets CRCDATA to 0x0.
+Page  187: CRC_EN can be programmed only when LOCK1 is cleared to 0.
+Page  190: CRCEND1
+Page  190: CRC_BUSY1
+Page  190: Bit 27 CRCEND1: Bank 1 CRC end of calculation flag
+Page  190: CRCEND1 bit is raised when the CRC computation has completed on bank 1. An interrupt is
+Page  190: generated if CRCENDIE1 is set to 1. It is not necessary to reset CRCEND1 before restarting
+Page  190: CRC computation. Writing 1 to CLR_CRCEND1 bit in FLASH_CCR1 register clears
+Page  190: CRCEND1.
+Page  190: 0: CRC computation not complete on bank 1
+Page  190: 1: CRC computation complete on bank 1
+Page  191: Bit 3 CRC_BUSY1: Bank 1 CRC busy flag
+Page  191: CRC_BUSY1 flag is set when a CRC calculation is ongoing on bank 1. This bit cannot be
+Page  191: forced to 0. The user must wait until the CRC calculation has completed or disable CRC
+Page  191: 0: no CRC calculation ongoing on bank 1
+Page  191: 1: CRC calculation ongoing on bank 1
+Page  193: CLR_CRCEND1
+Page  193: Bit 27 CLR_CRCEND1: Bank 1 CRCEND1 flag clear bit
+Page  193: Setting this bit to 1 resets to 0 CRCEND1 flag in FLASH_SR1 register.
+Page  195: It is not possible to start an option byte change operation if a CRC calculation is ongoing on
+Page  195: bank 1 or bank 2. Trying to set OPTSTART when CRC_BUSY1/2 of FLASH_SR1/2 register
+Page  205: 3.9.19          FLASH CRC control register for bank 1 (FLASH_CRCCR1)
+Page  205: This register can be modified only if CRC_EN bit is set to 1 in FLASH_CR1 register.
+Page  205: CRC_BURST
+Page  205: CLEAN_CRC
+Page  205: START_CRC
+Page  205: CRC_BY_SECT
+Page  205: CRC_SECT
+Page  205: Bits 21:20 CRC_BURST: Bank 1 CRC burst size
+Page  205: CRC_BURST bits set the size of the bursts that are generated by the CRC calculation unit.
+Page  205: Bit 17 CLEAN_CRC: Bank 1 CRC clear bit
+Page  205: Setting CLEAN_CRC to 1 clears the current CRC result stored in the FLASH_CRCDATAR
+Page  206: Bit 16 START_CRC: Bank 1 CRC start bit
+Page  206: START_CRC bit triggers a CRC calculation on bank 1 using the current configuration. No
+Page  206: CRC calculation can launched when an option byte change operation is ongoing because all
+Page  206: Bit 10 CLEAN_SECT: Bank 1 CRC sector list clear bit
+Page  206: Setting CLEAN_SECT to 1 clears the list of sectors on which the CRC is calculated.
+Page  206: Bit 9 ADD_SECT: Bank 1 CRC sector select bit
+Page  206: Setting ADD_SECT to 1 adds the sector whose number is CRC_SECT to the list of sectors
+Page  206: on which the CRC is calculated.
+Page  206: Bit 8 CRC_BY_SECT: Bank 1 CRC sector mode select bit
+Page  206: When CRC_BY_SECT is set to 1, the CRC calculation is performed at sector level, on the
+Page  206: CRC_SECT bits. To clean the list, use CLEAN_SECT bit.
+Page  206: When CRC_BY_SECT is reset to 0, the CRC calculation is performed on all addresses
+Page  206: between CRC_START_ADDR and CRC_END_ADDR.
+Page  206: Bit 7 ALL_BANK: Bank 1 CRC select bit
+Page  206: CRC is calculated.
+Page  206: Bits 2:0 CRC_SECT: Bank 1 CRC sector number
+Page  206: CRC_SECT is used to select one or more user Flash sectors to be added to the list of sectors
+Page  206: on which the CRC is calculated. The CRC can be computed either between two addresses
+Page  206: (using registers FLASH_CRCSADD1R and FLASH_CRCEADD1R) or on a list of sectors. If
+Page  206: the sector number in CRC_SECT and then setting ADD_SECT to 1.
+Page  206: The list of sectors can be erased either by setting CLEAN_SECT bit or by disabling the CRC
+Page  206: computation. CRC_SECT can be set only when CRC_EN of FLASH_CR register is set to 1.
+Page  206: 3.9.20            FLASH CRC start address register for bank 1
+Page  206: (FLASH_CRCSADD1R)
+Page  206: Res.    Res.       Res.   Res.    Res.    Res.    Res.    Res.   Res.    Res.    Res.   Res.      CRC_START_ADDR[19:16]
+Page  206: CRC_START_ADDR[15:2]                                                Res.    Res.
+Page  207: Bits 19:2 CRC_START_ADDR[19:2]: CRC start address on bank 1
+Page  207: CRC_START_ADDR is used when CRC_BY_SECT is cleared to 0. It must be programmed
+Page  207: to the start address of the bank 1 memory area on which the CRC calculation is performed.
+Page  207: 3.9.21           FLASH CRC end address register for bank 1
+Page  207: (FLASH_CRCEADD1R)
+Page  207: Res.    Res.     Res.    Res.   Res.   Res.     Res.    Res.   Res.    Res.   Res.   Res.        CRC_END_ADDR[19:16]
+Page  207: CRC_END_ADDR[15:2]                                             Res.     Res.
+Page  207: Bits 19:2 CRC_END_ADDR[19:2]: CRC end address on bank 1
+Page  207: CRC_END_ADDR is used when CRC_BY_SECT is cleared to 0. It must be programmed to
+Page  207: the end address of the bank 1 memory area on which the CRC calculation is performed
+Page  207: 3.9.22           FLASH CRC data register (FLASH_CRCDATAR)
+Page  207: CRC_DATA
+Page  207: CRC_DATA
+Page  207: Bits 31:0 CRC_DATA: CRC result
+Page  207: CRC_DATA bits contain the result of the last CRC calculation.
+Page  209: CRCENDIE2
+Page  209: CRC_EN
+Page  209: Bit 27 CRCENDIE2: Bank 2 CRC end of calculation interrupt enable bit
+Page  209: When CRCENDIE2 bit is set to 1, an interrupt is generated when the CRC computation has
+Page  209: completed on bank 2. CRCENDIE2 can be programmed only when LOCK2 is cleared to 0.
+Page  209: 0: no interrupt generated when CRC computation complete on bank 2
+Page  209: 1: interrupt generated when CRC computation complete on bank 2
+Page  210: Bit 15 CRC_EN: Bank 2 CRC control bit
+Page  210: Setting CRC_EN bit to 1 enables the CRC calculation on bank 2. CRC_EN does not start
+Page  210: CRC calculation but enables CRC configuration through FLASH_CRCCR2 register.
+Page  210: When CRC calculation is performed on bank 2, it can only be disabled by setting CRC_EN bit
+Page  210: to 0. Resetting CRC_EN clears CRC configuration and resets the content of
+Page  210: FLASH_CRCDATAR register.
+Page  210: CRC_EN can be programmed only when LOCK2 is cleared to 0.
+Page  213: CRCEND2
+Page  213: CRC_BUSY2
+Page  213: Bit 27 CRCEND2: Bank 2 CRC end of calculation flag
+Page  213: CRCEND2 bit is raised when the CRC computation has completed on bank 2. An interrupt is
+Page  213: generated if CRCENDIE2 is set to 1. It is not necessary to reset CRCEND2 before restarting
+Page  213: CRC computation. Writing 1 to CLR_CRCEND2 bit in FLASH_CCR2 register clears
+Page  213: CRCEND2.
+Page  213: 0: CRC computation not complete on bank 2
+Page  213: 1: CRC computation complete on bank 2
+Page  214: Bit 3 CRC_BUSY2: Bank 2 CRC busy flag
+Page  214: CRC_BUSY2 flag is set when a CRC calculation is ongoing on bank 2. This bit cannot be
+Page  214: forced to 0. The user must wait until the CRC calculation has completed or disable CRC
+Page  214: 0: no CRC calculation ongoing on bank 2
+Page  214: 1: CRC calculation ongoing on bank 2.
+Page  216: CLR_CRCEND2
+Page  216: Bit 27 CLR_CRCEND2: Bank 2 CRCEND2 flag clear bit
+Page  216: Setting this bit to 1 resets to 0 CRCEND2 flag in FLASH_SR2 register.
+Page  221: 3.9.34          FLASH CRC control register for bank 2 (FLASH_CRCCR2)
+Page  221: The values in this register can be changed only if CRC_EN bit is set to 1 in FLASH_CR2
+Page  221: CRC_BURST
+Page  221: CLEAN_CRC
+Page  221: START_CRC
+Page  221: CRC_BY_SECT
+Page  221: CRC_SECT
+Page  221: Bits 21:20 CRC_BURST: Bank 2 CRC burst size
+Page  221: CRC_BURST bits set the size of the bursts that are generated by the CRC calculation unit.
+Page  221: Bit 17 CLEAN_CRC: Bank 2 CRC clear bit
+Page  221: Setting CLEAN_CRC to 1 clears the current CRC result stored in the FLASH_CRCDATAR
+Page  221: Bit 16 START_CRC: Bank 2 CRC start bit
+Page  221: START_CRC bit triggers a CRC calculation on bank 2 using the current configuration. It is not
+Page  221: possible to start a CRC calculation when an option byte change operation is ongoing
+Page  221: Bit 10 CLEAN_SECT: Bank 2 CRC sector list clear bit
+Page  221: Setting CLEAN_SECT to 1 clears the list of sectors on which the CRC is calculated.
+Page  221: Bit 9 ADD_SECT: Bank 2 CRC sector select bit
+Page  221: Setting ADD_SECT to 1 adds the sector whose number is CRC_SECT to the list of sectors
+Page  221: on which the CRC is calculated.
+Page  222: Bit 8 CRC_BY_SECT: Bank 2 CRC sector mode select bit
+Page  222: When CRC_BY_SECT is set to 1, the CRC calculation is performed at sector level, on the
+Page  222: sectors selected by CRC_SECT.
+Page  222: When CRC_BY_SECT is reset to 0, the CRC calculation is performed on all addresses
+Page  222: between CRC_START_ADDR and CRC_END_ADDR.
+Page  222: Bit 7 ALL_BANK: Bank 2 CRC select bit
+Page  222: the CRC is calculated.
+Page  222: Bits 2:0 CRC_SECT: Bank 2 CRC sector number
+Page  222: CRC_SECT is used to select one or more user Flash sectors to be added to the CRC
+Page  222: calculation. The CRC can be computed either between two addresses (using registers
+Page  222: FLASH_CRCSADD2R and FLASH_CRCEADD2R) or on a list of sectors. If this latter option
+Page  222: number in CRC_SECT and then setting ADD_SECT. to 1
+Page  222: The list of sectors can be erased either by setting CLEAN_SECT bit or by disabling the CRC
+Page  222: computation. CRC_SECT can be set only when CRC_EN of FLASH_CR register is set to 1.
+Page  222: 3.9.35           FLASH CRC start address register for bank 2
+Page  222: (FLASH_CRCSADD2R)
+Page  222: Res.    Res.      Res.    Res.   Res.   Res.   Res.    Res.   Res.    Res.   Res.   Res.    CRC_START_ADDR[19:16]
+Page  222: CRC_START_ADDR[15:2]                                           Res.    Res.
+Page  222: Bits 19:2 CRC_START_ADDR[19:2]: CRC start address on bank 2
+Page  222: CRC_START_ADDR is used when CRC_BY_SECT is cleared to 0. It must be programmed
+Page  222: to the start address of the bank 2 memory area on which the CRC calculation is performed.
+Page  223: 3.9.36           FLASH CRC end address register for bank 2
+Page  223: (FLASH_CRCEADD2R)
+Page  223: Res.    Res.      Res.   Res.   Res.    Res.    Res.    Res.   Res.    Res.   Res.   Res.        CRC_END_ADDR[19:16]
+Page  223: CRC_END_ADDR[15:2]                                             Res.     Res.
+Page  223: Bits 19:2 CRC_END_ADDR[19:2]: CRC end address on bank 2
+Page  223: CRC_END_ADDR is used when CRC_BY_SECT is cleared to 0. It must be programmed to
+Page  223: the end address of the bank 2 memory area on which the CRC calculation is performed.
+Page  224: Res.                              Res.                         CLR_CRCEND1                       CRCEND1                         CRCENDIE1                                                                                Res.             27
+Page  224: Res.                               Res.                            Res.                         CRC_EN                                                                                  Res.             15
+Page  224: Res.                               Res.                        CRC_BUSY1                          BER1                                                                                                   3
+Page  225: CRC_BY_SECT
+Page  225: CRC_BURST
+Page  225: CLEAN_CRC
+Page  225: START_CRC
+Page  225: CRC_SECT
+Page  225: FLASH_CRCCR1
+Page  226: CRCDATAR
+Page  226: CRCEADD1R
+Page  226: CRCSADD1R
+Page  226: CLR_CRCEND2                       CRCEND2                         CRCENDIE2                                                                                Res.                         Res.                                                                      Res.                                  Res.                        27
+Page  226: Res.                            Res.                         CRC_EN                                                                                  Res.                         Res.                                                                                                                                        15
+Page  226: CRC_DATA[31:0]
+Page  226: CRC_END_ADDR[31:0]
+Page  226: CRC_START_ADDR[31:0]
+Page  226: Res.                        CRC_BUSY2                          BER2                                                                                                                                                                                                                                                            3
+Page  228: CRC_BY_SECT
+Page  228: CRC_BURST
+Page  228: CLEAN_CRC
+Page  228: START_CRC
+Page  228: CRC_SECT
+Page  228: FLASH_CRCCR2
+Page  228: CRC_START_ADDR[19:2]
+Page  228: CRCS ADD2R
+Page  228: CRC_END_ADDR[19:2]
+Page  228: CRCEADD2R
+Page  228: CRC_DATA[31:0]
+Page  228: CRCDATAR
+Page  411: CRCRST
+Page  411: Bit 19 CRCRST: CRC block reset
+Page  411: 0: does not reset the CRC block (default after reset)
+Page  411: 1: resets the CRC block
+Page  423: CRCAMEN
+Page  424: Bit 19   CRCAMEN: CRC Autonomous mode enable
+Page  424: 0: CRC peripheral clocks are disabled when the CPU is in CStop (default after reset)
+Page  424: 1: CRC peripheral clocks enabled when D3 domain is in DRun.
+Page  434: CRCEN
+Page  435: Bit 19 CRCEN: CRC peripheral clock enable
+Page  435: 0: CRC peripheral clock disabled (default after reset)
+Page  435: 1: CRC peripheral clock enabled
+Page  456: CRCLPEN
+Page  457: Bit 19 CRCLPEN: CRC peripheral clock enable during CSleep mode
+Page  457: 0: CRC peripheral clock disabled during CSleep mode
+Page  457: 1: CRC peripheral clock enabled during CSleep mode (default after reset)
+Page  475: Res.                            Res.                        Res.                       Res.                              UART4RST                      Res.                               CRCRST                       Res.       19
+Page  476: Res.                               CRCEN                      Res.                          Res.                        Res.                       D1RSTF                                   CRCAMEN        19
+Page  478: Res.                                   Res.                         Res.                         Res.                                UART4LPEN                        Res.                                 CRCLPEN      19
+Page  479: Res.                      Res.                    Res.                              UART4EN                       Res.                               CRCEN                     Res.                          Res.        19
+Page  480: Res.                                UART4LPEN                        Res.                                 CRCLPEN                        Res.                             Res.                           Res.      19
+Page  770: Cyclic redundancy check calculation unit (CRC)                                                RM0433
+Page  770: 20         Cyclic redundancy check calculation unit (CRC)
+Page  770: The CRC (cyclic redundancy check) calculation unit is used to get a CRC code from 8-, 16-
+Page  770: Among other applications, CRC-based techniques are used to verify data transmission or
+Page  770: verifying the Flash memory integrity. The CRC calculation unit helps compute a signature of
+Page  770: 20.2       CRC main features
+Page  770: •   Uses CRC-32 (Ethernet) polynomial: 0x4C11DB7
+Page  770: •   Programmable CRC initial value
+Page  770: •   CRC computation done in 4 AHB clock cycles (HCLK) for the 32-bit data size
+Page  771: RM0433                                                  Cyclic redundancy check calculation unit (CRC)
+Page  771: 20.3     CRC functional description
+Page  771: 20.3.1   CRC block diagram
+Page  771: Figure 92. CRC calculation unit block diagram
+Page  771: crc_hclk
+Page  771: CRC computation
+Page  771: 20.3.2   CRC internal signals
+Page  771: Table 144. CRC internal input/output signals
+Page  771: crc_hclk             Digital input     AHB clock
+Page  771: 20.3.3   CRC operation
+Page  771: The CRC calculation unit has a single 32-bit read/write data register (CRC_DR). It is used to
+Page  771: input new data (write access), and holds the result of the previous CRC calculation (read
+Page  771: Each write operation to the data register creates a combination of the previous CRC value
+Page  771: (stored in CRC_DR) and the new one. CRC computation is done on the whole 32-bit data
+Page  771: The CRC_DR register can be accessed by word, right-aligned half-word and right-aligned
+Page  771: due to the previous CRC calculation.
+Page  771: given number of bytes. For instance, a CRC for 5 bytes can be computed with a word write
+Page  772: Cyclic redundancy check calculation unit (CRC)                                                     RM0433
+Page  772: in the CRC_CR register.
+Page  772: For example: input data 0x1A2B3C4D is used for CRC calculation as:
+Page  772: The output data can also be reversed by setting the REV_OUT bit in the CRC_CR register.
+Page  772: The CRC calculator can be initialized to a programmable value using the RESET control bit
+Page  772: in the CRC_CR register (the default value is 0xFFFFFFFF).
+Page  772: The initial CRC value can be programmed with the CRC_INIT register. The CRC_DR
+Page  772: register is automatically initialized upon CRC_INIT register write access.
+Page  772: The CRC_IDR register can be used to hold a temporary value related to CRC calculation. It
+Page  772: is not affected by the RESET bit in the CRC_CR register.
+Page  772: The polynomial coefficients are fully programmable through the CRC_POL register, and the
+Page  772: POLYSIZE[1:0] bits in the CRC_CR register. Even polynomials are not supported.
+Page  772: If the CRC data is less than 32-bit, its value can be read from the least significant bits of the
+Page  772: CRC_DR register.
+Page  772: To obtain a reliable CRC calculation, the change on-fly of the polynomial value or size can
+Page  772: not be performed during a CRC calculation. As a result, if a CRC calculation is ongoing, the
+Page  772: application must either reset it or perform a CRC_DR read before changing the polynomial.
+Page  772: The default polynomial value is the CRC-32 (Ethernet) polynomial: 0x4C11DB7.
+Page  773: RM0433                                                           Cyclic redundancy check calculation unit (CRC)
+Page  773: 20.4          CRC registers
+Page  773: 20.4.1        Data register (CRC_DR)
+Page  773: This register is used to write new data to the CRC calculator.
+Page  773: It holds the previous CRC calculation result when it is read.
+Page  773: 20.4.2        Independent data register (CRC_IDR)
+Page  773: This register is not affected by CRC resets generated by the RESET bit in the CRC_CR register
+Page  774: Cyclic redundancy check calculation unit (CRC)                                                                         RM0433
+Page  774: 20.4.3            Control register (CRC_CR)
+Page  774: This bit is set by software to reset the CRC calculation unit and set the data register to the value
+Page  774: stored in the CRC_INIT register. This bit can only be set, it is automatically cleared by hardware
+Page  774: 20.4.4            Initial CRC value (CRC_INIT)
+Page  774: CRC_INIT[31:16]
+Page  774: CRC_INIT[15:0]
+Page  775: RM0433                                                                                                       Cyclic redundancy check calculation unit (CRC)
+Page  775: Bits 31:0 CRC_INIT[31:0]: Programmable initial CRC value
+Page  775: This register is used to write the CRC initial value.
+Page  775: 20.4.5          CRC polynomial (CRC_POL)
+Page  775: This register is used to write the coefficients of the polynomial to be used for CRC calculation.
+Page  775: 20.4.6          CRC register map
+Page  775: Table 145. CRC register map and reset values
+Page  775: CRC_DR                                                                                                            DR[31:0]
+Page  775: CRC_IDR                                                                                                               IDR[31:0]
+Page  775: CRC_CR
+Page  775: CRC_INIT                                                                                                       CRC_INIT[31:0]
+Page  775: CRC_POL                                                                                                   Polynomial coefficients
+Page 1162: In continuous grab mode, you can configure the FCRC bits in DCMI_CR to grab all pictures,
+Page 1167: Res.   ENABLE   Res.   Res.      EDM[1:0]     FCRC[1:0]     VSPOL HSPOL PCKPOL     ESS    JPEG   CROP   CM       CAPTURE
+Page 1167: Bits 9:8 FCRC[1:0]: Frame capture rate control
+Page 1179: EDM FCRC
+Page 1970: calculated by using the C(x) = x8 + x2 + x + 1 CRC-8 polynomial on all the message bytes
+Page 2040: BLEN=LEN. If the block is using the CRC mechanism (2 epilog bytes), BLEN=LEN+1 must
+Page 2040: Note:       The error checking code (LRC/CRC) must be computed/verified by software.
+Page 2069: of information characters + the length of the Epilogue Field (1-LEC/2-CRC) - 1.
+Page 2069: BLEN = 1 -> 0 information characters + CRC
+Page 2069: BLEN = 255 -> 254 information characters + CRC (total 256 characters))
+Page 2130: •    Programmable number of data within a transaction to control SS and CRC
+Page 2130: •    Hardware CRC feature can secure communication at the end of transaction by:
+Page 2130: - Adding CRC value at Tx mode
+Page 2130: - Automatic CRC error checking for Rx mode
+Page 2130: •    Error detection with interrupt capability in case of data overrun, CRC error, data
+Page 2131: SPI_CRCPOLY                                                       CRC
+Page 2131: SPI_TXCRC                                                       Controller
+Page 2131: SPI_RXCRC                                                                                       MOSI
+Page 2144: c)        CRCSIZE[4:0] is required if CRCEN is set,
+Page 2144: 10. Write to SPI_CRCPOLY and into TCRCINI, RCRCINI and CRC33_17 bits at
+Page 2144: SPI2S_CR1 register to configure the CRC polynomial and CRC calculation if needed.
+Page 2147: transaction controls the CRC and the hardware SS management when applied. If TSIZE is
+Page 2149: or CRC frame transaction is still ongoing in the peripheral bus.
+Page 2149: When CRC is used, it is sent automatically after the last data in the block is processed.
+Page 2149: TXC/EOT is set when CRC frame is completed in this case. When a transmission is
+Page 2155: CRC error (CRCE)
+Page 2155: This flag is used to verify the validity of the value received when the CRCEN bit in the
+Page 2155: SPI_CFG1 register is set. The CRCE flag in the SPI_SR register is set if the value received
+Page 2155: in the shift register does not match the receiver SPI_RXCRC value, after the last data is
+Page 2155: received (as defined by TSIZE). The CRCE flag triggers an interrupt if CRCIE bit is set.
+Page 2155: Clearing the bit CRCE is done by a writing 1 to the CRCEC bit in the SPI_IFCR.
+Page 2155: 49.5.3   CRC computation
+Page 2155: Two separate 33-bit or two separate 17-bit CRC calculators are implemented in order to
+Page 2155: check the reliability of transmitted and received data. The SPI offers any CRC polynomial
+Page 2155: polynomial is defined by the most significant bit of the value stored at the CRCPOLY
+Page 2155: maximum data size is applied, the CRC33_17 bit has to be set additionally to define the
+Page 2155: CRCSIZE field in the SPI_CFG1 then defines how many the most significant bits from CRC
+Page 2155: calculation registers are transacted and compared as CRC frame. It is defined
+Page 2155: CRC principle
+Page 2155: The CRC calculation is enabled by setting the CRCEN bit in the SPI_CFG1 register before
+Page 2155: the SPI is enabled (SPE = 1). The CRC value is then calculated using the CRC polynomial
+Page 2156: defined by the CRCPOLY register and CRC33_17 bit. When SPI is enabled, the CRC
+Page 2156: The CRC computation is done, bit by bit, on the sampling clock edge defined by the CPHA
+Page 2156: and CPOL bits in the SPIx_CR1 register. The calculated CRC value is checked
+Page 2156: When a mismatch is detected between the CRC calculated internally on the received data
+Page 2156: and the CRC received from the transmitter, a CRCERR flag is set to indicate a data
+Page 2156: corruption error. The right procedure for handling the CRC depends on the SPI configuration
+Page 2156: CRC transfer management
+Page 2156: of data is transacted, the TXCRC is transmitted and the data received on the line are
+Page 2156: compared to the RXCRC value.
+Page 2156: TSIZE cannot be set to 0xFFFF value if CRC is enabled. A correct way of sending e.g.
+Page 2156: 65535 data with CRC is to set:
+Page 2156: In transmission, the CRC computation is frozen during CRC transaction and the TXCRC is
+Page 2156: transmitted, in a frame of length equal to the CRCSIZE field value.
+Page 2156: In reception, the RXCRC is also frozen when desired number of data is transacted.
+Page 2156: Information to be compared with the RXCRC register content is then received in a frame of
+Page 2156: length equal to the CRCSIZE value.
+Page 2156: Once the CRC frame is completed, an automatic check is performed comparing the
+Page 2156: received CRC value and the value calculated in the SPIx_RXCRC register. Software has to
+Page 2156: check the CRCERR flag in the SPI_SR register to determine if the data transfers were
+Page 2156: corrupted or not. Software clears the CRCERR flag by writing 1 to the CRCERRC.
+Page 2156: The user takes no care about any flushing redundant CRC information, it is done
+Page 2156: Resetting the SPIx_TXCRC and SPIx_RXCRC values
+Page 2156: The SPI_TXCRC and SPI_RXCRC values are initialized automatically when new data is
+Page 2156: sampled after a CRC phase. This allows the use of DMA circular mode in order to transfer
+Page 2156: data without any interruption (several data blocks covered by intermediate CRC checking
+Page 2156: or to all ones in dependency on setting bits TCRCINI and RCRCINI at SPI2S_CR1 register.
+Page 2156: The CRC values are reset when the SPI is disabled.
+Page 2159: CRC Error                                     CRCE       CRCEIE       Writing CRCEC to 1             YES        YES
+Page 2162: SPI polynomial register (SPI_CRCPOLY)                       -
+Page 2162: SPI transmitter CRC register (SPI_TXCRC)                    -
+Page 2162: SPI receiver CRC register (SPI_RXCRC)                       -
+Page 2185: TCRC    RCRC    CRC33                        C         MAS
+Page 2185: Bit 15 TCRCINI: CRC calculation initialization pattern control for transmitter
+Page 2185: Bit 14 RCRCINI: CRC calculation initialization pattern control for receiver
+Page 2185: Bit 13 CRC33_17: 32-bit CRC polynomial configuration
+Page 2185: 0: full size (33-bit or 17-bit) CRC polynomial is not used
+Page 2185: 1: full size (33-bit or 17-bit) CRC polynomial is used
+Page 2186: the FIFOs content is flushed, CRC calculation initialized, receive data register is read zero.
+Page 2187: TSIZE cannot be set to 0xFFFF value when CRC is enabled.
+Page 2187: CRC
+Page 2187: Res.          MBR[2:0]          Res.   Res.   Res.    Res.   Res.          Res.                 CRCSIZE[4:0]
+Page 2187: Bit 22 CRCEN: hardware CRC computation enable
+Page 2187: 0: CRC calculation disabled
+Page 2187: 1: CRC calculation Enabled
+Page 2188: Bits 20:16 CRCSIZE[4:0]: length of CRC frame to be transacted and compared
+Page 2188: Most significant bits are taken into account from polynomial calculation when CRC result is
+Page 2188: Note: The most significant bit at CRCSIZE bit field is reserved at the peripheral instances
+Page 2190: When SPI master has to be disabled temporary for a specific configuration reason (e.g. CRC
+Page 2192: TSERF   MODF    TIFRE   CRCE
+Page 2192: Bit 7 CRCEIE: CRC error interrupt enable
+Page 2192: 0: CRC interrupt disabled
+Page 2192: 1: CRC interrupt enabled
+Page 2193: RXPLVL[1:0]     TXC   SUSP   TSERF   MODF    TIFRE   CRCE   OVR    UDR     TXTF   EOT   DXP     TXP    RXP
+Page 2194: end of master reception.When CRC mode is enabled, TXC is set only after the CRC
+Page 2194: transmission is on going (including CRC).
+Page 2194: 1: Last TxFIFO or CRC frame transmission completed
+Page 2194: Bit 7 CRCE: CRC error
+Page 2194: 0: no CRC error
+Page 2194: 1: CRC error detected
+Page 2194: This bit is cleared by write 1 to CRCEC bit at SPI2S_IFCR
+Page 2195: master and slave, the event handles CRC transaction.
+Page 2195: SUSP   TSERF   MODF    TIFRE   CRCE   OVR    UDR      TXTF   EOT
+Page 2196: Bit 7 CRCEC: CRC error flag clear
+Page 2196: Writing a 1 into this bit clears CRCE flag in the SPI2S_SR register
+Page 2197: 49.11.10 SPI polynomial register (SPI_CRCPOLY)
+Page 2197: CRCPOLY[31:16]
+Page 2197: CRCPOLY[15:0]
+Page 2197: Bits 31:0 CRCPOLY[31:0]: CRC polynomial register
+Page 2197: This register contains the polynomial for the CRC calculation.
+Page 2197: register. It has to be set greater than DSIZE. CRC33_17 bit has to be set additionally with
+Page 2197: CRCPOLY register when DSIZE is configured to maximum 32-bit or 16-bit size and CRC is
+Page 2198: 49.11.11 SPI transmitter CRC register (SPI_TXCRC)
+Page 2198: TXCRC[31:16]
+Page 2198: TXCRC[15:0]
+Page 2198: Bits 31:0 TXCRC[31:0]: CRC register for transmitter
+Page 2198: When CRC calculation is enabled, the TXCRC[31:0] bits contain the computed CRC value
+Page 2198: of the subsequently transmitted bytes. CRC calculation is initialized when the CRCEN bit of
+Page 2198: SPI_CR1 is written to 1 or when a data block is transacted completely. The CRC is
+Page 2198: calculated serially using the polynomial programmed in the SPI_CRCPOLY register.
+Page 2198: The number of bits considered at calculation depends on SPI_CRCPOLY register and
+Page 2198: CRCSIZE bits settings at SPI_CFG1 register.
+Page 2198: 49.11.12 SPI receiver CRC register (SPI_RXCRC)
+Page 2198: RXCRC[31:16]
+Page 2198: RXCRC[15:0]
+Page 2199: Bits 31:0 RXCRC[31:0]: CRC register for receiver
+Page 2199: When CRC calculation is enabled, the RXCRC[31:0] bits contain the computed CRC value
+Page 2199: of the subsequently received bytes. CRC calculation is initialized when the CRCEN bit of
+Page 2199: SPI_CR1 is written to 1 or when a data block is transacted completely. The CRC is
+Page 2199: calculated serially using the polynomial programmed in the SPI_CRCPOLY register.
+Page 2199: The number of bits considered at calculation depends on SPI_CRCPOLY register and
+Page 2199: CRCSIZE bits settings at SPI_CFG1 register.
+Page 2202: CRC33_17
+Page 2202: RCRCINI
+Page 2202: TCRCINI
+Page 2202: CRCEN
+Page 2202: CRCSIZE[4:0]                                                                                           FTHLV[3:0]                               DSIZE[4:0]
+Page 2202: CRCEIE
+Page 2202: CRCERR
+Page 2202: CRCEC
+Page 2202: SPI_CRCPOLY                                           CRCPOLY[31:16](1)                                                                                                                       CRCPOLY[15:0]
+Page 2202: SPI_TXCRC                                                TXCRC[31:16](1)                                                                                                                        TXCRC[15:0]
+Page 2202: SPI_RXCRC                                                RXCRC[31:16](1)                                                                                                                          RXCRC[15:0]
+Page 2307: •   Automatic CRC-16 calculation and generation in transmission
+Page 2307: •   Automatic CRC-16 calculation and checking in reception
+Page 2307: •   CRC error, underrun, overrun flags
+Page 2312: bit CRC and an End of frame (EOF) (Refer to Figure 684: SWP frame structure).
+Page 2312: SOF      D0          D1      D2   ...              CRC (2 bytes)    EOF
+Page 2312: In transmission, the SOF insertion, the CRC calculation and insertion, and the EOF insertion
+Page 2312: In reception, the SOF deletion, the CRC calculation and checking, and the EOF deletion are
+Page 2312: possibly CRC error events.
+Page 2313: •    Send the 16-bit CRC, automatically calculated by the SWPMI core,
+Page 2313: SWP output               SOF    D0     D1     D2     D3     D4   D5     D6   D7         CRC   EOF
+Page 2314: SWP output        SOF     D0     D1   D2      D3   D4     D5   D6    D7        CRC        EOF SOF   D0    D1    D2    D3
+Page 2317: Once the complete frame has been received, including the CRC and the End of frame
+Page 2318: SWP     SOF   D0    D1      D2      D3    D4   D5    D6   D7    D8   D9   D10   D11   D12   D13     CRC      EOF
+Page 2319: input   SOF   D0     D1      D2       D3      D4     D5      D6      D7     D8     D9    D10    D11    D12   D13        CRC      EOF
+Page 2320: •    The CRC error flag (equivalent to RXBERF flag in the SWPMI_ISR register) is
+Page 2320: CRC error description.
+Page 2320: In case of a CRC error, both RXBFF and RXBERF flags are set, thus bit 24 and bit 26 are
+Page 2321: input      SOF   D0   D1    D2     D3   D4    D5    D6       D7   D8    D9   D10 D11      D12   D13      CRC       EOF SOF       D0
+Page 2321: corrupted CRC (the first bit of the first CRC byte sent is inverted), followed by an EOF. If
+Page 2322: CRC error during payload reception
+Page 2322: Once the two CRC bytes have been received, if the CRC is wrong, the RXBERF flag in the
+Page 2322: with CRC error).The user must set CRXBERF bit in SWPMI_ICR to clear RXBERF flag.
+Page 2322: Figure 691. SWPMI single buffer mode reception with CRC error
+Page 2322: SOF    D0     D1     D2     D3      D4   D5    D6      D7      D8      D9   D10      D11   D12    D13     CRC    EOF
+Page 2324: Receive buffer error (CRC error)      RXBERF        RXBEIE         yes        no         no
+Page 2328: Bit 2 RXBERF: Receive CRC error flag
+Page 2328: This flag is set by hardware to indicate a CRC error in the received frame. It is set
+Page 2328: 0: No CRC error in reception
+Page 2328: 1: CRC error in reception detected
+Page 2329: Bit 2 CRXBERF: Clear receive CRC error flag
+Page 2330: Bit 2 RXBERIE: Receive CRC error interrupt enable
+Page 2351: SDMMC_D                          Data block     CRC           Data block   CRC           Data block      CRC
+Page 2351: CRC                                  CRC
+Page 2351: SDMMC_D                        Data block CRC
+Page 2351: Busy       Data block CRC
+Page 2359: shift        CRC                  SDMMC_CMD
+Page 2359: shift        CRC
+Page 2359: starts. When the command has been sent the CRC is appended and the command
+Page 2359: –    for a response with CRC, the received CRC code and the internally generated
+Page 2359: –    for a response without CRC, no CRC is checked, and the appropriate status flag is
+Page 2360: SDMMC_CMD write                                                        CRC status error
+Page 2360: •      Send: The command is sent and the CRC is appended.
+Page 2361: with CRC or without CRC. The received CRC code when present will be verified
+Page 2361: against the internally generated CRC code.
+Page 2361: –    When the CRC status passes or no CRC is present the CMDREND flag is set, the
+Page 2361: –    When the CRC status fails the CCRCFAIL flag is set and the CPSM moves to the
+Page 2362: [7:1]              7             x       CRC7
+Page 2362: a CRC is present or not.
+Page 2363: variable entry. Most responses, except some, are protected by a CRC. Every command
+Page 2363: OCR register, argument or 127-bits CID or CSD register including internal CRC, and one
+Page 2363: Table 440. Short response with CRC token format
+Page 2363: [7:1]            7             x       CRC7
+Page 2363: Table 441. Short response without CRC token format
+Page 2363: Table 442. Long response with CRC token format
+Page 2363: 7:1            x       CRC7 (included in CID or CSD)
+Page 2364: The Command and Short Response with CRC, the CRC generator calculates the CRC
+Page 2364: checksum for all 40 bits before the CRC code. This includes the start bit, transmitter bit,
+Page 2364: For the Long Response the CRC checksum is calculated only over the 120 bits of R2 CID or
+Page 2364: CSD. Note that the start bit, transmitter bit and the six reserved bits are not used in the CRC
+Page 2364: The CRC checksum is a 7-bit value:
+Page 2364: CRC[6:0] = Remainder [(M(x) * x7) / G(x)]
+Page 2364: M(x) = (first bit) * xn + (second bit) * xn-1+... + (last bit before CRC) * x0
+Page 2365: Set at the end of the command response when the CRC is OK. (CPSM moves from RECEIVE to
+Page 2365: Set at the end of the command response when the CRC is FAIL. (CPSM moves from RECEIVE to
+Page 2365: CCRCFAIL
+Page 2365: Set after the voltage switch (VSWITCHEN = 1) command response when the CRC is OK and the
+Page 2365: CRC status Receive                                                                              Move to Idle
+Page 2366: Odd CRC                      SDMMC_D[7:0]
+Page 2366: FIFO                                         Even CRC
+Page 2366: Odd CRC
+Page 2366: Even CRC
+Page 2367: •   Two CRC16 are computed per data line
+Page 2367: –     Odd bits CRC16 clocked on the falling edge of the clock.
+Page 2367: –     Even bits CRC16 clocked on the rising edge of the clock.
+Page 2367: •   CRC status / boot acknowledgment and Busy signaling are full cycle and are only
+Page 2367: 0      b 7 b7 b3 b3 b7 b7 b 3 b3               b7 b7 b3 b3 crc15 crc15 crc14 crc14    crc0 crc0    1
+Page 2367: 0      b 6 b6 b2 b2 b6 b6 b 2 b2               b6 b6 b2 b2 crc15 crc15 crc14 crc14    crc0 crc0    1
+Page 2367: 0      b 5 b5 b1 b1 b5 b5 b 1 b1               b5 b5 b1 b1 crc15 crc15 crc14 crc14    crc0 crc0    1
+Page 2367: 0      b 4 b4 b0 b0 b4 b4 b 0 b0               b4 b4 b0 b0 crc15 crc15 crc14 crc14    crc0 crc0    1
+Page 2367: Block length                                      CRC
+Page 2367: CRC odd
+Page 2367: CRC even
+Page 2367: Figure 707. DDR mode CRC status / boot acknowledgment clocking
+Page 2367: CRC status / boot ack
+Page 2368: (CRC status
+Page 2368: (CRC status OK                 DTHOLD=1                or                                                     End of packet
+Page 2368: No CRC)                    CPSM Abort               or                                                    DATACOUNT =
+Page 2370: received, the DPSM waits until it receives the CRC code.
+Page 2370: data bytes are received, the DPSM waits until it receives the CRC code.
+Page 2370: a)   If the received CRC code matches the internally generated CRC code, the DPSM
+Page 2370: b)   If the received CRC code fails the internally generated CRC code any further data
+Page 2370: - When not all data has been received (DATACOUNT > 0), the CRC fail status flag
+Page 2370: (DCRCFAIL) is set and the DPSM stays in the Receive state.
+Page 2370: empty after which the CRC fail status flag (DCRCFAIL) is set and the DPSM
+Page 2370: –    When DPSM has been started with DTEN, after an error (DCRCFAIL when
+Page 2371: send, the DPSM sends an internally generated CRC code and End bit, and moves
+Page 2371: data bytes are send, the DPSM sends an internally generated CRC code and End
+Page 2372: •   Busy state: the DPSM waits for the CRC status token when expected, and wait for a
+Page 2372: –   If a CRC status token is expected and indicate “non-erroneous transmission” or
+Page 2372: when there is no CRC expected:
+Page 2372: –   If a CRC status token is expected and indicates “erroneous transmission”.
+Page 2372: busy after which the CRC fail status flag (DCRCFAIL) is set. The FIFO will be
+Page 2372: after which the CRC fail status flag (DCRCFAIL) is set and the DPSM moves to
+Page 2372: –   If a CRC status (Ncrc) timeout occurs while the DPSM is in the Busy state, it sets
+Page 2372: - If the CPSM_Abort signal is received before the 2 last bits of the CRC response
+Page 2372: - If the CPSM_Abort signal is received during or after the 2 last bits of the CRC
+Page 2372: response when DATACOUNT=0 or when no CRC is expected and DATACOUNT =
+Page 2372: –   When DPSM has been started with DTEN, after an error (DCRCFAIL when
+Page 2373: –     when a CRC status is expected and no start bit is received withing 8 SDMMC_CK
+Page 2373: •    In transmit busy is timed out 2 cycles after the CRC token end bit or stream data end
+Page 2373: Description        Start bit                  Data(1)                   CRC16     End bit     DTMODE
+Page 2373: Set at the end of the complete data transfer when the CRC is OK and busy has finished.
+Page 2373: RX  Set at the end of the complete data transfer when the CRC is OK and all data has been
+Page 2374: Set at the end of the CRC when FAIL and busy has finished. (DPSM stay in BUSY when
+Page 2374: DCRCFAIL
+Page 2374: RX  Set at the end of the CRC when FAIL and FIFO is empty. (DPSM stays in RECEIVE when
+Page 2374: Set when no CRC token start bit received within Ncrc, or no end of busy received before
+Page 2374: Note: The DCRCFAIL flag may also be set when CRC failed before the busy timeout.
+Page 2374: When DTHOLD = 1: Set at the end of data block transfer when the CRC is OK and busy
+Page 2374: RX  When RWSTART = 1: Set at the end of data block transfer when the CRC is OK, when
+Page 2374: When DTHOLD = 1: Set at the end of data block transfer when the CRC is OK and busy
+Page 2374: When DTHOLD = 1: Set at the end of data block transfer when the CRC is OK and all
+Page 2375: CRC       Receive                    Send further data        Send stop transmission
+Page 2375: CRC status Busy                                                 Send stop transmission
+Page 2376: transfer from the FIFO is indicated by one of the error flags (DCRCFAIL, DTIMEOUT,
+Page 2380: RXOVERR, DCRCFAIL, or DTIMEOUT):
+Page 2380: –    The TXUNDERR, RXOVERR, DCRCFAIL, or DTIMEOUT interrupt is generated.
+Page 2381: RXOVERR, DCRCFAIL, DTIMEOUT, DABORT, HOLD, or DATAEND).
+Page 2383: SDMMC_D0        S     Last data    E            S    CRC      E
+Page 2383: SDMMC_D1        S     Last data    E            S    CRC      E
+Page 2383: S     Last data    E            S    CRC      E
+Page 2384: SDMMC_D0                                                        S   Data   E          S CRC status E           S   Data    E
+Page 2385: SDMMC_D0                                                                  S     Data     E                   S CRC status E
+Page 2386: Table 455. 4-bit mode Start, interrupt, and CRC-status Signaling detection
+Page 2386: SDMMC data line                   Start              Interrupt            CRC-status
+Page 2386: SDMMC_D0                         0             1 or CRC-status              0
+Page 2387: data block CRC status end (DPSM in Busy). Before sending the suspend command to the
+Page 2389: after the End bit of the current received data block CRC. The clock start again after writing 1
+Page 2390: after the End bit of the current received data block CRC. The ReadWait signaling on
+Page 2392: CRC token End bit. This requires the CMD12 sending to be tied to the data block
+Page 2393: 2.   Wait for all data to be sent by the DPSM and the CRC token to be received, (DATAEND
+Page 2395: reception of the response is indicated by the CMDREND or the command CRC
+Page 2395: indicated by the CMDREND or the command CRC error flags.
+Page 2396: SDMMC_Dn                 S 010 E            S     + CRC E    S     + CRC E
+Page 2396: –    when data CRC fails the DCRCFAIL flag is also generated.
+Page 2397: SDMMC_Dn                   S 010 E        S     + CRC
+Page 2397: E   S     + CRC
+Page 2398: –   when data CRC fails the DCRCFAIL flag is also generated.
+Page 2401: –    if the response CRC is pass, the Voltage Switch procedure continues the host will
+Page 2402: –   if the response CRC is fail (CCRCFAIL flag) or no response is received before the
+Page 2408: 01: Short response, expect CMDREND or CCRCFAIL flag
+Page 2408: 10: Short response, expect CMDREND flag (No CRC)
+Page 2408: 11: Long response, expect CMDREND or CCRCFAIL flag
+Page 2414: CPSM        DPSM    DA    DBCK          DATA   CMD     CMDR  RX                                DCRC    CCRC
+Page 2416: (CRC check passed) and DPSM moves to the READWAIT state. Interrupt flag is cleared by
+Page 2416: Bit 6 CMDREND: Command response received (CRC check passed, or no CRC)
+Page 2416: Bit 1 DCRCFAIL: Data block sent/received (CRC check failed)
+Page 2416: Bit 0 CCRCFAIL: Command response received (CRC check failed)
+Page 2416: DBCK DHOLD    DATA    CMD  CMDR                                  DCRC    CCRC
+Page 2418: Bit 1 DCRCFAILC: DCRCFAIL flag clear bit
+Page 2418: Set by software to clear the DCRCFAIL flag.
+Page 2418: 0: DCRCFAIL not cleared
+Page 2418: 1: DCRCFAIL cleared
+Page 2418: Bit 0 CCRCFAILC: CCRCFAIL flag clear bit
+Page 2418: Set by software to clear the CCRCFAIL flag.
+Page 2418: 0: CCRCFAIL not cleared
+Page 2418: 1: CCRCFAIL cleared
+Page 2419: DBCK DHOLD DATA                  CMDR                                 DCRC     CCRC
+Page 2421: Bit 1 DCRCFAILIE: Data CRC fail interrupt enable
+Page 2421: Set and cleared by software to enable/disable interrupt caused by data CRC failure.
+Page 2421: 0: Data CRC fail interrupt disabled
+Page 2421: 1: Data CRC fail interrupt enabled
+Page 2421: Bit 0 CCRCFAILIE: Command CRC fail interrupt enable
+Page 2421: Set and cleared by software to enable/disable interrupt caused by command CRC failure.
+Page 2421: 0: Command CRC fail interrupt disabled
+Page 2421: 1: Command CRC fail interrupt enabled
+Page 2426: Res.                                                                                                Res.                            IDMABMODE Res.                                                              DCRCFAILIE                   DCRCFAILC                   DCRCFAIL                                                        DTDIR           1
+Page 2426: Res.                                                                                                Res.                             IDMAEN        Res.                                                         CCRCFAILIE                   CCRCFAILC                   CCRCFAIL                                                         DTEN           0
+Page 2434: frame mode (FFM) where control field, data field, and CRC field of a CAN frame are
+Page 2436: switched back from the fast timing at the CRC delimiter or when an error is detected,
+Page 2437: •    The data phase ends at the sample point of the CRC delimiter, that stops checking
+Page 2443: condition (e.g. CRC error), this message is discarded with the following impact:
+Page 2483: 1: FDCAN frame format (new DLC-coding and CRC)
+Page 2487: – 1: FDCAN frame format (new DLC-coding and CRC)
+Page 2503: 110: CRCError: The CRC check sum of a received message was incorrect. The CRC of
+Page 2503: an incoming message does not match with the CRC calculated from the received data.
+Page 2503: stuff bit of a FDCAN CRC sequence will be shown as a Form error, not Stuff error
+Page 2573: –    Optionally program the SNOOP mode for OUT endpoint not to check the CRC
+Page 2577: –    USB transaction error due to CRC failure, timeout, bit stuff error, false EOP
+Page 2623: – No PID/CRC5 errors in either EXT token or LPM token (else ERROR)
+Page 2633: CRC check failure
+Page 2659: This interrupt is asserted when the core detects an overflow or a CRC error for an OUT
+Page 2718: –    OUT data packets received with bad data CRC are flushed from the receive FIFO
+Page 2720: –    When the isochronous OUT data packet is received with CRC errors
+Page 2738: •   Automatic CRC and pad generation controllable on a per-frame basis
+Page 2754: for filtering and the FCS field used to verify the CRC for the packet. The received packet is
+Page 2754: CRC/Pad Stripping (bit 20 of the Operating mode configuration register
+Page 2754: received Ethernet packet data to the RFC module if you have not enabled the CRC
+Page 2754: (ETH_MACCR). However, if the CRC stripping has been enabled for Type packets and
+Page 2755: <1536 & Auto CRC/Pad                     Length/Type field ≥1536
+Page 2755: Send only the number of                 CRC stripping for Type                    Receive checksum
+Page 2755: CRC error? OR                   and Status to the Application
+Page 2760: CRC of the received destination address to index the content of the Hash table. A value of
+Page 2760: register. If the corresponding bit (indicated by the 6-bit CRC) is set to 1, the unicast packet is
+Page 2761: MAC uses the upper 6-bits CRC of received multicast address to index the content of the
+Page 2763: VTHM bit is set, the most significant four bits of CRC-32 of VLAN tag are used to index the
+Page 2763: Note:       The 16 or 12 bits of VLAN Tag are considered for CRC-32 computation based on ETV bit in
+Page 2763: When ETV bit is reset, most significant four bits of CRC-32 of VLAN Tag are inverted and
+Page 2763: When ETV bit is set, most significant four bits of CRC-32 of VLAN Tag are directly used to
+Page 2779: 8.   The MAC recalculates the CRC and performs padding for the generated ARP reply
+Page 2780: The MAC always calculates and appends CRC and inserts Padding (if required) for all pack-
+Page 2780: ets segmented by the DMA. If the TSE bit of TDES3 is enabled, the CRC PAD Control
+Page 2780: 16383 bytes causing a CRC error.
+Page 2785: 3.    If the byte count of the status indicates 64 bytes and there is no CRC error, the MAC
+Page 2800: if Filter CRC-16 matches the CRC of the incoming pattern, the MAC identifies the packet as
+Page 2801: •   Filter CRC-16
+Page 2801: The remote wakeup CRC block determines the CRC value that is compared with Filter
+Page 2801: CRC-16. The remote wakeup packet is checked only for length error, FCS error, dribble bit
+Page 2801: long, if the packet has a valid CRC value, it is considered valid. The remote wakeup packet
+Page 2801: …CRC
+Page 2802: the packet has a valid CRC value, MAC considers it a valid packet.
+Page 2814: (ETH_MACVHTR). The upper four bits of the calculated CRC are used to index the
+Page 2818: transmitting the packets. The application must set the CRC Pad Control bits
+Page 2819: CRC Pad Control
+Page 2819: This field controls the CRC and Pad Insertion for Tx packet. It is valid only
+Page 2819: – 00: CRC and Pad Insertion
+Page 2819: The MAC appends the cyclic redundancy check (CRC) at the end of the
+Page 2819: MAC automatically appends padding and CRC to a packet with length
+Page 2819: – 01: CRC Insertion (Disable Pad Insertion)
+Page 2819: The MAC appends the CRC at the end of the transmitted packet but it
+Page 2819: – 10: Disable CRC Insertion
+Page 2819: The MAC does not append the CRC at the end of the transmitted
+Page 2819: packet. The application should ensure that the padding and CRC bytes
+Page 2819: – 11: CRC Replacement
+Page 2819: recalculated CRC bytes. The application should ensure that the padding
+Page 2819: and CRC bytes are present in the packet being transferred from the
+Page 2819: CRC and pad insertion is always done for segmentation.
+Page 2820: The application must appropriately set the CRC Pad Control bits when SA
+Page 2827: replaces the CRC bytes.
+Page 2837: CRC Error
+Page 2837: When this bit is set, it indicates that a Cyclic Redundancy Check (CRC)
+Page 2838: – RDES3[24]: CRC Error
+Page 2838: transferred to system memory (including CRC).
+Page 2874: When this bit is reset, the Rx queue drops packets with error status (CRC error, receive error,
+Page 2874: error and length less than 64 bytes), including pad-bytes and CRC. When this bit is reset, the
+Page 2881: Bit 21 CST: CRC stripping for Type packets
+Page 2882: Bit 20 ACS: Automatic Pad or CRC Stripping
+Page 2884: impact whether CRC length is included in the packet length.
+Page 2885: DCRCC
+Page 2886: Bit 16 DCRCC: Disable CRC Checking for Received Packets
+Page 2886: When this bit is set, the MAC receiver does not check the CRC field in the received packets.
+Page 2886: When this bit is reset, the MAC receiver always checks the CRC field in the received packets.
+Page 2891: through the CRC logic and the upper six bits of the CRC register are used to index the
+Page 2891: 1.        Calculate the 32-bit CRC for the DA (See IEEE 802.3, Section 3.2.8 for the steps to
+Page 2891: calculate CRC32).
+Page 2892: through the CRC logic and the upper six bits of the CRC register are used to index the
+Page 2892: 1.        Calculate the 32-bit CRC for the DA (See IEEE 802.3, Section 3.2.8 for the steps to
+Page 2892: calculate CRC32).
+Page 2893: When this bit is set, the most significant four bits of CRC of VLAN Tag are used to index the
+Page 2893: When the ETV bit is set, the CRC of the 12-bit VLAN Identifier (VID) is used for comparison.
+Page 2893: When the ETV bit is reset, the CRC of the 16-bit VLAN tag is used for comparison.
+Page 2895: register) in the incoming packet is passed through the CRC logic. The upper four bits of the
+Page 2895: calculated CRC are used to index the contents of the VLAN Hash table. For example, a
+Page 2895: 1.          Calculate the 32-bit CRC for the VLAN tag or ID (For steps to calculate CRC32, see
+Page 2907: 6                          Filter 1 CRC - 16                                        Filter 0 CRC - 16
+Page 2907: 7                          Filter 3 CRC - 16                                        Filter 2 CRC - 16
+Page 2908: – If Bit j (byte number) of the byte mask is set, the CRC block processes the Filter i Offset
+Page 2908: – Bit 2 (Inverse mode), when set, reverses the logic of the CRC16 Hash function signal, to
+Page 2908: reject a packet with matching CRC_16 value.
+Page 2908: This filter i CRC-16 register contains the CRC_16 value calculated from the pattern and
+Page 2908: – The 16-bit CRC calculation uses the following polynomial:
+Page 2908: Filter i CRC-16       associated with that mask. Each filter has the following:
+Page 2908: bit is 1', the corresponding byte is taken into the CRC16 calculation.
+Page 2908: – 8-bit Offset Pointer: Specifies the byte to start the CRC16 computation.
+Page 2908: The pointer and the mask are used together to locate the bytes to be used in the CRC16
+Page 2909: Filter i Command                      Frame Type and CRC Status                                            Interrupt Generation
+Page 2909: CAST        INV           EN      Received Frame Cast Type                      CRC Status                              RWK INTR
+Page 2926: RXCRCERPIS
+Page 2927: Bit 5 RXCRCERPIS: MMC Receive CRC Error Packet Counter Interrupt Status
+Page 2927: This bit is set when the rxcrcerror counter reaches half of the maximum value or the
+Page 2929: RXCRCERPIM
+Page 2929: Bit 5 RXCRCERPIM: MMC Receive CRC Error Packet Counter Interrupt Mask
+Page 2929: Setting this bit masks the interrupt when the rxcrcerror counter reaches half of the maximum
+Page 2932: Rx CRC error packets register (RX_CRC_ERROR_PACKETS)
+Page 2932: This register provides the number of packets received by Ethernet peripheral with CRC
+Page 2932: RXCRCERR[31:16]
+Page 2932: RXCRCERR[15:0]
+Page 2932: Bits 31:0 RXCRCERR[31:0]: Rx CRC Error Packets
+Page 2932: This field indicates the number of packets received with CRC error.
+Page 2969: DCRCC
+Page 2972: RXCRCERPIS
+Page 2972: RXCRCERPIM
+Page 2973: RX_CRC_ERROR_
+Page 2973: RXCRCERR[31:0]
+Page 3216: – Added FLASH_CRCEADD2R at add. offset = 0x158
+Page 3216: – Added FLASH_CRCEADD2R at add offset = 0x15C
+Page 3223: Section 21: Cyclic redundancy check calculation unit (CRC)
+Page 3223: Updated first two features of Section 21.2: CRC main features.
+Page 3234: ADCx_CDR . . . . . . . . . . . . . . . . . . . . . . . . .1015       CRC_CR . . . . . . . . . . . . . . . . . . . . . . . . . . . . 774
+Page 3234: ADCx_CDR2 . . . . . . . . . . . . . . . . . . . . . . . .1015        CRC_DR . . . . . . . . . . . . . . . . . . . . . . . . . . . . 773
+Page 3234: ADCx_CSR . . . . . . . . . . . . . . . . . . . . . . . . .1010       CRC_IDR . . . . . . . . . . . . . . . . . . . . . . . . . . . 773
+Page 3234: ADCx_HTR3 . . . . . . . . . . . . . . . . . . . . . . . .1007        CRC_INIT . . . . . . . . . . . . . . . . . . . . . . . . . . . 774
+Page 3234: AP_BASE . . . . . . . . . . . . . . . . . . . . . . . . . . .3021    CRC_POL . . . . . . . . . . . . . . . . . . . . . . . . . . . 775
+Page 3238: FLASH_CRCCR1 . . . . . . . . . . . . . . . . . . . . . 205
+Page 3238: FLASH_CRCCR2 . . . . . . . . . . . . . . . . . . . . . 221
+Page 3238: FLASH_CRCDATAR . . . . . . . . . . . . . . . . . . . 207
+Page 3238: FLASH_CRCEADD1R . . . . . . . . . . . . . . . . . 207
+Page 3238: FLASH_CRCEADD2R . . . . . . . . . . . . . . . . . 223
+Page 3238: FLASH_CRCSADD1R . . . . . . . . . . . . . . . . . 206
+Page 3238: FLASH_CRCSADD2R . . . . . . . . . . . . . . . . . 222
+Page 3243: RX_CRC_ERROR_PACKETS . . . . . . . . . . 2932
+Page 3244: S                                                                     SPI_CRCPOLY . . . . . . . . . . . . . . . . . . . . . . 2197
+Page 3244: SPI_RXCRC . . . . . . . . . . . . . . . . . . . . . . . . 2198
+Page 3244: SPI_TXCRC . . . . . . . . . . . . . . . . . . . . . . . . 2198

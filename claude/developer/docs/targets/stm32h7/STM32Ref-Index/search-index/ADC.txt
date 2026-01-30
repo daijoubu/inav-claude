@@ -1,0 +1,2209 @@
+Keyword: ADC
+Occurrences: 2205
+================================================================================
+
+Page   22: 24         Analog-to-digital converters (ADC) . . . . . . . . . . . . . . . . . . . . . . . . . . . 894
+Page   22: 24.2    ADC main features . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 895
+Page   22: 24.3    ADC functional description . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 897
+Page   22: 24.3.1      ADC block diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 897
+Page   22: 24.3.2      ADC pins and internal signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 898
+Page   22: 24.3.4      ADC1/2/3 connectivity . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 901
+Page   22: 24.3.6      ADC deep-power-down mode (DEEPPWD) & ADC voltage regulator
+Page   23: 24.3.8       Calibration (ADCAL, ADCALDIF, ADCALLIN, ADC_CALFACT) . . . . . 905
+Page   23: 24.3.9       ADC on-off control (ADEN, ADDIS, ADRDY) . . . . . . . . . . . . . . . . . . . . 911
+Page   23: 24.3.10 Constraints when writing the ADC control bits . . . . . . . . . . . . . . . . . . . 912
+Page   23: 24.3.12 Channel preselection register (ADC_PCSEL) . . . . . . . . . . . . . . . . . . . 913
+Page   23: 24.3.32 Dual ADC modes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 957
+Page   23: 24.4   ADC interrupts . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 976
+Page   23: 24.5   ADC registers (for each ADC) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 977
+Page   23: 24.5.1       ADC interrupt and status register (ADC_ISR) . . . . . . . . . . . . . . . . . . . 977
+Page   23: 24.5.2       ADC interrupt enable register (ADC_IER) . . . . . . . . . . . . . . . . . . . . . . 979
+Page   23: 24.5.3       ADC control register (ADC_CR) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 981
+Page   23: 24.5.4       ADC configuration register (ADC_CFGR) . . . . . . . . . . . . . . . . . . . . . . 986
+Page   24: 24.5.5      ADC configuration register 2 (ADC_CFGR2) . . . . . . . . . . . . . . . . . . . 990
+Page   24: 24.5.6      ADC sample time register 1 (ADC_SMPR1) . . . . . . . . . . . . . . . . . . . . 992
+Page   24: 24.5.7      ADC sample time register 2 (ADC_SMPR2) . . . . . . . . . . . . . . . . . . . . 993
+Page   24: 24.5.8      ADC channel preselection register (ADC_PCSEL) . . . . . . . . . . . . . . . 994
+Page   24: 24.5.9      ADC watchdog threshold register 1 (ADC_LTR1) . . . . . . . . . . . . . . . . 994
+Page   24: 24.5.10 ADC watchdog threshold register 1 (ADC_HTR1) . . . . . . . . . . . . . . . . 995
+Page   24: 24.5.11 ADC regular sequence register 1 (ADC_SQR1) . . . . . . . . . . . . . . . . . 996
+Page   24: 24.5.12 ADC regular sequence register 2 (ADC_SQR2) . . . . . . . . . . . . . . . . . 997
+Page   24: 24.5.13 ADC regular sequence register 3 (ADC_SQR3) . . . . . . . . . . . . . . . . . 998
+Page   24: 24.5.14 ADC regular sequence register 4 (ADC_SQR4) . . . . . . . . . . . . . . . . . 999
+Page   24: 24.5.15 ADC regular Data Register (ADC_DR) . . . . . . . . . . . . . . . . . . . . . . . 1000
+Page   24: 24.5.16 ADC injected sequence register (ADC_JSQR) . . . . . . . . . . . . . . . . . 1001
+Page   24: 24.5.17 ADC offset register (ADC_OFRy) . . . . . . . . . . . . . . . . . . . . . . . . . . . 1003
+Page   24: 24.5.18 ADC injected data register (ADC_JDRy) . . . . . . . . . . . . . . . . . . . . . . 1004
+Page   24: 24.5.19 ADC analog watchdog 2 configuration register
+Page   24: (ADC_AWD2CR) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1004
+Page   24: 24.5.20 ADC analog watchdog 3 configuration register
+Page   24: (ADC_AWD3CR) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1005
+Page   24: 24.5.21 ADC watchdog lower threshold register 2 (ADC_LTR2) . . . . . . . . . . 1005
+Page   24: 24.5.22 ADC watchdog higher threshold register 2 (ADC_HTR2) . . . . . . . . . 1006
+Page   24: 24.5.23 ADC watchdog lower threshold register 3 (ADC_LTR3) . . . . . . . . . . 1006
+Page   24: 24.5.24 ADC watchdog higher threshold register 3 (ADC_HTR3) . . . . . . . . . 1007
+Page   24: 24.5.25 ADC differential mode selection register (ADC_DIFSEL) . . . . . . . . . 1007
+Page   24: 24.5.26 ADC calibration factors register (ADC_CALFACT) . . . . . . . . . . . . . . 1008
+Page   24: 24.5.27 ADC calibration factor register 2 (ADC_CALFACT2) . . . . . . . . . . . . . 1008
+Page   24: 24.6    ADC common registers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1010
+Page   24: 24.6.1      ADC x common status register (ADCx_CSR) (x=1/2 or 3) . . . . . . . . 1010
+Page   24: 24.6.2      ADC x common control register (ADCx_CCR) (x=1/2 or 3) . . . . . . . . 1012
+Page   24: 24.6.3      ADC x common regular data register for dual mode
+Page   24: (ADCx_CDR) (x=1/2 or 3) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1015
+Page   24: 24.6.4      ADC x common regular data register for 32-bit dual mode
+Page   24: (ADCx_CDR2) (x=1/2 or 3) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1015
+Page   24: 24.6.5      ADC register map . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1016
+Page   35: 36.3.18 ADC triggers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1410
+Page   37: 36.5.54 HRTIM ADC Trigger 1 Register (HRTIM_ADC1R) . . . . . . . . . . . . . . . 1492
+Page   37: 36.5.55 HRTIM ADC Trigger 2 Register (HRTIM_ADC2R) . . . . . . . . . . . . . . . 1493
+Page   37: 36.5.56 HRTIM ADC Trigger 3 Register (HRTIM_ADC3R) . . . . . . . . . . . . . . . 1494
+Page   37: 36.5.57 HRTIM ADC Trigger 4 Register (HRTIM_ADC4R) . . . . . . . . . . . . . . . 1496
+Page   38: 37.3.27 ADC synchronization . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1571
+Page   71: Table 197.   ADC internal input/output signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 898
+Page   71: Table 198.   ADC input/output pins . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 898
+Page   71: Table 201.   ADC1, ADC2 and ADC3 - External triggers for regular channels . . . . . . . . . . . . . . . . . . . 920
+Page   71: Table 202.   ADC1, ADC2 and ADC3 - External triggers for injected channels . . . . . . . . . . . . . . . . . . 921
+Page   72: Table 210.   ADC interrupts per each ADC. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 976
+Page   72: Table 211.   DELAY bits versus ADC resolution. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1014
+Page   72: Table 212.   ADC global register map. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1016
+Page   72: Table 213.   ADC register map and reset values for each ADC (offset=0x000
+Page   72: for master ADC, 0x100 for slave ADC) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1016
+Page   72: Table 214.   ADC register map and reset values (master and slave ADC
+Page   81: Figure 54.   Kernel clock distribution For ADCs, SWPMI, RNG and FDCAN (2) . . . . . . . . . . . . . . . . . 343
+Page   81: Figure 72.   Analog inputs connected to ADC inputs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 517
+Page   82: Figure 131. ADC block diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 897
+Page   82: Figure 132. ADC clock scheme . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 900
+Page   82: Figure 133. ADC1 connectivity . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 901
+Page   82: Figure 134. ADC2 connectivity . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 902
+Page   82: Figure 135. ADC3 connectivity . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 903
+Page   82: Figure 136. ADC calibration . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 907
+Page   82: Figure 137. Updating the ADC offset calibration factor . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 907
+Page   82: Figure 139. Enabling / Disabling the ADC . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 911
+Page   82: Figure 143. Triggers are shared between ADC master and ADC slave . . . . . . . . . . . . . . . . . . . . . . . 920
+Page   83: Figure 172. ADCy_AWDx_OUT signal generation (on all regular channels). . . . . . . . . . . . . . . . . . . . 950
+Page   83: Figure 173. ADCy_AWDx_OUT signal generation (AWDx flag not cleared by SW) . . . . . . . . . . . . . . 950
+Page   83: Figure 174. ADCy_AWDx_OUT signal generation (on a single regular channel) . . . . . . . . . . . . . . . . 951
+Page   83: Figure 175. ADCy_AWDx_OUT signal generation (on all injected channels) . . . . . . . . . . . . . . . . . . . 951
+Page   83: Figure 182. Dual ADC block diagram(1) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 959
+Page   83: Figure 183. Injected simultaneous mode on 4 channels: dual ADC mode . . . . . . . . . . . . . . . . . . . . . 960
+Page   83: Figure 184. Regular simultaneous mode on 16 channels: dual ADC mode . . . . . . . . . . . . . . . . . . . . 962
+Page   83: Figure 185. Interleaved mode on 1 channel in continuous conversion mode: dual ADC mode . . . . . 963
+Page   83: Figure 186. Interleaved mode on 1 channel in single conversion mode: dual ADC mode . . . . . . . . . 964
+Page   83: Figure 188. Alternate trigger: injected group of each ADC . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 965
+Page   83: Figure 189. Alternate trigger: 4 injected channels (each ADC) in discontinuous mode . . . . . . . . . . . . 966
+Page   86: Figure 330. ADC trigger selection overview . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1411
+Page  126: 0x58026000 - 0x580263FF         ADC3                   Section 24.6: ADC common registers
+Page  128: 0x40022000 - 0x400223FF     ADC1 - ADC2         (D2)   Section 24.6: ADC common registers
+Page  241: VREF+,VREF-        Input/ External reference voltage for ADCs and DAC
+Page  243: •   VDDA external analog power supply for ADCs, DACs, OPAMPs, comparators and
+Page  243: •   VREF+ external reference voltage for ADC and DAC.
+Page  244: REF_BUF                          ADC, DAC
+Page  251: supply to be filtered and shielded from noise on the PCB, thus improving ADC and DAC
+Page  251: To achieve better accuracy low-voltage signals, the ADC and DAC also have a separate
+Page  279: •     The ADC or DAC can also consume power during Stop mode, unless they are disabled
+Page  279: before entering this mode. To disable them, the ADON bit in the ADC_CR2 register and
+Page  305: Other peripherals located in D3 domain, such as I2C4, SPI6, SAI4 or ADC3, can be used to
+Page  335: ADC1,2
+Page  335: ADCSEL        36 (4)                            0                                                           1                                                                                                       2
+Page  335: ADC3                                     D3
+Page  343: Figure 54. Kernel clock distribution For ADCs, SWPMI, RNG and FDCAN (2)
+Page  343: ADC3AMEN
+Page  343: ADCSEL
+Page  343: ADC3EN         Logic                ADC3
+Page  343: pll2_p_ck            0                      ADC3LPEN
+Page  343: pll3_r_ck            1 D                                                   adc_ker_ck
+Page  343: ADC12EN          Logic                ADC12
+Page  343: ADC12LPEN
+Page  343: adc_ker_ck
+Page  394: Res.        SPI6SEL[2:0] (1)         Res.       SAI4BSEL[2:0] (1)         SAI4ASEL[2:0] (1)     Res.   Res.   Res.   ADCSEL[1:0] (1)
+Page  395: Bits 17:16   ADCSEL[1:0]: SAR ADC kernel clock source selection
+Page  408: ADC12RST
+Page  408: Bit 5 ADC12RST: ADC1 and 2 block reset
+Page  408: 0: does not reset ADC1 and 2 block (default after reset)
+Page  408: 1: resets ADC1 and 2 block
+Page  411: ADC3RST
+Page  411: Bit 24 ADC3RST: ADC3 block reset
+Page  411: 0: does not reset the ADC3 block (default after reset)
+Page  411: 1: resets the ADC3 block
+Page  423: ADC3AMEN
+Page  423: Bit 24          ADC3AMEN: ADC3 Autonomous mode enable
+Page  423: 0: ADC3 peripheral clocks are disabled when the CPU is in CStop (default after reset)
+Page  423: 1: ADC3 peripheral clocks enabled when D3 domain is in DRun.
+Page  430: ADC12EN
+Page  431: Bit 5 ADC12EN: ADC1/2 Peripheral Clocks Enable
+Page  431: 0: ADC1 and 2 peripheral clocks disabled (default after reset)
+Page  431: 1: ADC1 and 2 peripheral clocks enabled
+Page  431: The peripheral clocks of the ADC1 and 2 are: the kernel clock selected by ADCSEL and provided to
+Page  431: adc_ker_ck input, and the rcc_hclk1 bus interface clock.
+Page  434: ADC3EN
+Page  434: Bit 24 ADC3EN: ADC3 Peripheral Clocks Enable
+Page  434: 0: ADC3 peripheral clocks disabled (default after reset)
+Page  434: 1: ADC3 peripheral clocks enabled
+Page  434: The peripheral clocks of the ADC3 are: the kernel clock selected by ADCSEL and provided to
+Page  434: adc_ker_ck input, and the rcc_hclk4 bus interface clock.
+Page  452: ADC12LPEN
+Page  453: Bit 5 ADC12LPEN: ADC1/2 Peripheral Clocks Enable During CSleep Mode
+Page  453: 0: ADC1/2 peripheral clocks disabled during CSleep mode
+Page  453: 1: ADC1/2 peripheral clocks enabled during CSleep mode (default after reset)
+Page  453: The peripheral clocks of the ADC1 and 2 are: the kernel clock selected by ADCSEL and provided to
+Page  453: adc_ker_ck input, and the rcc_hclk1 bus interface clock.
+Page  456: ADC3LPEN
+Page  456: Bit 24 ADC3LPEN: ADC3 Peripheral Clocks Enable During CSleep Mode
+Page  456: 0: ADC3 peripheral clocks disabled during CSleep mode
+Page  456: 1: ADC3 peripheral clocks enabled during CSleep mode (default after reset)
+Page  456: The peripheral clocks of the ADC3 are: the kernel clock selected by ADCSEL and provided to
+Page  456: adc_ker_ck input, and the rcc_hclk4 bus interface clock.
+Page  474: ADCSEL[1;0]
+Page  474: ADC12RST                   JPGDECRST                        Res.                       LSECSSON                                           HSI48RDYC                              HSI48RDYF                            HSI48RDYIE                                   Res.             5
+Page  475: Res.                            Res.                      SAI3RST                      Res.                                  Res.                      Res.                              ADC3RST                       Res.       24
+Page  476: Res.                              ADC3EN                      Res.                          Res.                        Res.                      SFTRSTF                                  ADC3AMEN        24
+Page  476: Res.                              GPIOFEN                   HASHEN                        ADC12EN                    JPGDECEN                        Res.                                   SPI6AMEN        5
+Page  477: HASHLPEN                         ADC12LPEN                    JPGDECLPEN                         SPI6EN                   USART6EN                  MDIOSEN                              TIM7EN       5
+Page  478: Res.                                   Res.                       SAI3LPEN                       Res.                                     Res.                        Res.                                 ADC3LPEN     24
+Page  479: Res.                    SAI3EN                    Res.                                  Res.                      Res.                              ADC3EN                     Res.                          Res.        24
+Page  479: SPI6EN                  USART6EN                  MDIOSEN                              TIM7EN                       Res.                              GPIOFEN                  HASHEN                       ADC12EN         5
+Page  480: Res.                                     Res.                        Res.                                 ADC3LPEN                       Res.                             Res.                           Res.      24
+Page  480: MDIOSLPEN                               TIM7LPEN                        Res.                                GPIOFLPEN                     HASHLPEN                        ADC12LPEN                    JPGDECLPEN      5
+Page  512: –    For the ADC and DAC, configure the desired I/O in analog mode in the
+Page  512: GPIOx_MODER register and configure the required function in the ADC and DAC
+Page  516: Some pins/balls are directly connected to PA0_C, PA1_C, PC2_C and PC3_C ADC analog
+Page  517: Figure 72. Analog inputs connected to ADC inputs
+Page  517: To ADC
+Page  517: To ADC
+Page  552: ADC1
+Page  552: ADC2
+Page  552: ADC3
+Page  552: ADC1    -      -      -      -      -       -        -     -     -     A      -      -       -       -       -        A       -      -      -          -      -        -        -        -        -       -
+Page  552: ADC2    -      -      -      -      -       -        -     -     -     -      A      -       -       -       -        A       -      -      -          -      -        -        -        -        -       -
+Page  553: ADC1
+Page  553: ADC2
+Page  553: ADC3
+Page  553: ADC3      -       -     -      -      -        -       -     -     -     A      A      -       -       -        -        -      -      -       -         -       -        -        -        -
+Page  556: ADC1        adc1_awd1    ETR3                                  A       -
+Page  556: D2       AHB1    ADC1        adc1_awd2    ETR4                                  A       -
+Page  556: ADC1        adc1_awd3    ETR5                                  A       -
+Page  556: ADC3        adc3_awd1    ETR6                                  A       -
+Page  556: AHB4    ADC3        adc3_awd2    ETR7                                  A       -
+Page  556: ADC3        adc3_awd3    ETR8                                  A       -
+Page  557: ADC2        adc2_awd1    ETR3                                  A            -
+Page  557: D2      AHB1    ADC2        adc2_awd2    ETR4                                  A            -
+Page  557: ADC2        adc2_awd3    ETR5                                  A            -
+Page  557: ADC3        adc3_awd1    ETR6                                  A            -
+Page  557: AHB4    ADC3        adc3_awd2    ETR7                                  A            -
+Page  557: ADC3        adc3_awd3    ETR8                                  A            -
+Page  559: AHB1    ADC1        adc1_awd1     hrtim_evt13                               B            -
+Page  559: AHB1    ADC1        adc1_awd2     hrtim_evt23                               B            -
+Page  559: AHB1    ADC1        adc1_awd3     hrtim_evt33                               B            -
+Page  559: AHB1    ADC2        adc2_awd1     hrtim_evt43                               B            -
+Page  559: AHB1    ADC2        adc2_awd2     hrtim_evt53                               B            -
+Page  559: AHB1    ADC2        adc2_awd3     hrtim_evt63                               A            -
+Page  564: HRTIM1 hrtim_adc_trg1        TRG9                                    S       -
+Page  564: HRTIM1 hrtim_adc_trg3       TRG10                                    S       -
+Page  564: TIM1         CC1        adc_ext_trg0                               S       -
+Page  564: APB2     TIM1         CC2        adc_ext_trg1                               S       -
+Page  564: TIM1         CC3        adc_ext_trg2                               S       -
+Page  564: D2                                                         ADC1
+Page  564: TIM2         CC2        adc_ext_trg3                AHB1   D2      S       -
+Page  564: / ADC2
+Page  564: APB1     TIM3        TRGO        adc_ext_trg4                               S       -
+Page  564: TIM4         CC4        adc_ext_trg5                               S       -
+Page  564: D3       APB4   SYSCFG        EXTI11      adc_ext_trg6                               A       -
+Page  565: TIM8        TRGO        adc_ext_trg7                                S            -
+Page  565: TIM8        TRGO2       adc_ext_trg8                                S            -
+Page  565: TIM1        TRGO        adc_ext_trg9                                S            -
+Page  565: TIM1        TRGO2       adc_ext_trg10                               S            -
+Page  565: TIM2        TRGO        adc_ext_trg11                               S            -
+Page  565: APB1     TIM4        TRGO        adc_ext_trg12                               S            -
+Page  565: TIM6        TRGO        adc_ext_trg13     ADC1                      S            -
+Page  565: APB2    TIM15        TRGO        adc_ext_trg14    / ADC2                     S            -
+Page  565: APB1     TIM3         CC4        adc_ext_trg15                               S            -
+Page  565: HRTIM1 hrtim_adc_trg1 adc_ext_trg16                                   A            -
+Page  565: APB2   HRTIM1 hrtim_adc_trg3 adc_ext_trg17                                   A            -
+Page  565: LPTIM1      lptim1_out   adc_ext_trg18                               A            -
+Page  565: LPTIM2      lptim2_out   adc_ext_trg19                               A            -
+Page  565: LPTIM3      lptim3_out   adc_ext_trg20                               A            -
+Page  565: TIM1        TRGO        adc_jext_trg0                               S            -
+Page  565: TIM1         CC4        adc_jext_trg1                               S            -
+Page  565: TIM2        TRGO        adc_jext_trg2     ADC1                      S            -
+Page  565: TIM2         CC1        adc_jext_trg3    / ADC2                     S            -
+Page  565: TIM3         CC4        adc_jext_trg4                               S            -
+Page  565: TIM4        TRGO        adc_jext_trg5                               S            -
+Page  566: D3       APB4   SYSCFG        EXTI15      adc_jext_trg6                                A       -
+Page  566: TIM8         CC4        adc_jext_trg7                                S       -
+Page  566: TIM1        TRGO2       adc_jext_trg8                                S       -
+Page  566: TIM8        TRGO        adc_jext_trg9                                S       -
+Page  566: TIM8        TRGO2       adc_jext_trg10                               S       -
+Page  566: TIM3         CC3        adc_jext_trg11                               S       -
+Page  566: TIM3        TRGO        adc_jext_trg12                               S       -
+Page  566: D2       APB1                                                ADC1
+Page  566: TIM3         CC1        adc_jext_trg13                AHB1   D2      S       -
+Page  566: / ADC2
+Page  566: TIM6        TRGO        adc_jext_trg14                               S       -
+Page  566: TIM15        TRGO        adc_jext_trg15                               S       -
+Page  566: APB2   HRTIM1 hrtim_adc_trg2 adc_jext_trg16                                   A       -
+Page  566: HRTIM1 hrtim_adc_trg4 adc_jext_trg17                                   A       -
+Page  566: APB1    LPTIM1      lptim1_out   adc_jext_trg18                               A       -
+Page  566: LPTIM2      lptim2_out   adc_jext_trg19                               A       -
+Page  566: LPTIM3      lptim2_out   adc_jext_trg20                               A       -
+Page  567: TIM1         CC1        adc_ext_trg0                                S            -
+Page  567: APB2     TIM1         CC2        adc_ext_trg1                                S            -
+Page  567: TIM1         CC3        adc_ext_trg2                                S            -
+Page  567: TIM2         CC2        adc_ext_trg3                                S            -
+Page  567: APB1     TIM3        TRGO        adc_ext_trg4                                S            -
+Page  567: TIM4         CC4        adc_ext_trg5                                S            -
+Page  567: D3      APB4   SYSCFG        EXTI11      adc_ext_trg6                                A            -
+Page  567: TIM8        TRGO        adc_ext_trg7                                S            -
+Page  567: TIM8        TRGO2       adc_ext_trg8                                S            -
+Page  567: TIM1        TRGO        adc_ext_trg9                                S            -
+Page  567: TIM1        TRGO2       adc_ext_trg10    ADC3        AHB4   D3      S            -
+Page  567: TIM2        TRGO        adc_ext_trg11                               S            -
+Page  567: APB1     TIM4        TRGO        adc_ext_trg12                               S            -
+Page  567: TIM6        TRGO        adc_ext_trg13                               S            -
+Page  567: APB2    TIM15        TRGO        adc_ext_trg14                               S            -
+Page  567: APB1     TIM3         CC4        adc_ext_trg15                               S            -
+Page  567: HRTIM1 hrtim_adc_trg1 adc_ext_trg16                                   A            -
+Page  567: APB2   HRTIM1 hrtim_adc_trg3 adc_ext_trg17                                   A            -
+Page  567: LPTIM1      lptim1_out   adc_ext_trg18                               A            -
+Page  567: LPTIM2      lptim2_out   adc_ext_trg19                               A            -
+Page  567: LPTIM3      lptim3_out   adc_ext_trg20                               A            -
+Page  568: TIM1         TRGO      adc_jext_trg0                              SI       -
+Page  568: TIM1         CC4       adc_jext_trg1                               S       -
+Page  568: TIM2         TRGO      adc_jext_trg2                               S       -
+Page  568: TIM2         CC1       adc_jext_trg3                               S       -
+Page  568: TIM3         CC4       adc_jext_trg4                               S       -
+Page  568: TIM4         TRGO      adc_jext_trg5                               S       -
+Page  568: D3       APB4   SYSCFG        EXTI15     adc_jext_trg6                               A       -
+Page  568: TIM8         CC4       adc_jext_trg7                               S       -
+Page  568: TIM1        TRGO2      adc_jext_trg8                               S       -
+Page  568: TIM8         TRGO      adc_jext_trg9                               S       -
+Page  568: TIM8        TRGO2     adc_jext_trg10                               S       -
+Page  568: ADC3        AHB4   D3
+Page  568: TIM3         CC3      adc_jext_trg11                               S       -
+Page  568: TIM3         TRGO     adc_jext_trg12                               S       -
+Page  568: D2                TIM3         CC1      adc_jext_trg13                               S       -
+Page  568: TIM6         TRGO     adc_jext_trg14                               S       -
+Page  568: TIM15         TRGO     adc_jext_trg15                               S       -
+Page  568: hrtim_adc_
+Page  568: HRTIM1                  adc_jext_trg16                               A       -
+Page  568: hrtim_adc_
+Page  568: HRTIM1                  adc_jext_trg17                               A       -
+Page  568: APB1    LPTIM1        OUT      adc_jext_trg18                               A       -
+Page  568: LPTIM2        OUT      adc_jext_trg19                               A       -
+Page  568: LPTIM3        OUT      adc_jext_trg20                               A       -
+Page  573: D3         AHB4          ADC3               adc3_it           WKUP75                        D      CPU
+Page  578: D2       AHB1   ADC1         adc1_dma        dmamux1_req_in9
+Page  578: D2       AHB1   ADC2         adc2_dma        dmamux1_req_in10
+Page  581: D3     AHB4   ADC3         adc3_dma       dmamux1_req_in115
+Page  583: D3     APB4   ADC3         dma_adc3        dmamux2_req_in17
+Page  584: it_adc3           dmamux2_gen26
+Page  584: D3   AHB4   ADC3
+Page  584: out_awd1_adc3         dmamux2_gen27
+Page  623: ADC scan mode). This feature can be enabled using the CIRC bit in the DMA_SxCR
+Page  654: ADC scan mode). This feature is enabled using the CIRC bit in the BDMA_CCRx register.
+Page  654: DMA requests (such as quit the ADC scan mode), before disabling the DMA channel.
+Page  672: 9             adc1_dma            52           TIM8_TRIG            95       HR_REQ(1)
+Page  672: 10             adc2_dma            53           TIM8_COM             96       HR_REQ(2)
+Page  673: 29             TIM4_CH1           72       usart6_tx_dma           115          adc3_dma
+Page  674: 1            dmamux2_req_gen0            17               adc3_dma
+Page  675: 10                 lptim2_out               26              adc3_it
+Page  675: 11                lptim3_wkup               27             adc3_awd1
+Page  731: adc1_it                                                 ADC1 and ADC2
+Page  731: 25           18            ADC1_2                                       0x0000 0088
+Page  731: adc2_it                                                 global interrupt
+Page  735: adc3_it       134         127              ADC3         ADC3 global interrupt           0x0000 023C
+Page  748: 75        ADC3 interrupt                       Direct           CPU only              No(5)
+Page  894: Analog-to-digital converters (ADC)                                                            RM0433
+Page  894: 24         Analog-to-digital converters (ADC)
+Page  894: This section describes the ADC implementation:
+Page  894: •    ADC1 and ADC2 are tightly coupled and can operate in dual mode (ADC1 is master).
+Page  894: •    ADC3 is instantiated separately.
+Page  894: Each ADC consists of a 16-bit successive approximation analog-to-digital converter.
+Page  894: Each ADC has up to 20 multiplexed channels. A/D conversion of the various channels can
+Page  894: be performed in single, continuous, scan or discontinuous mode. The result of the ADC is
+Page  894: The ADCs are mapped on the AHB bus to allow fast data handling.
+Page  895: RM0433                                                          Analog-to-digital converters (ADC)
+Page  895: 24.2     ADC main features
+Page  895: –   Up to 2x ADCs which can operate in dual mode
+Page  895: –   ADC conversion time is independent from the AHB bus clock frequency
+Page  895: –   Speed adaptive low-power mode to reduce ADC consumption when operating at
+Page  895: –   Allows slow bus frequency application while keeping optimum ADC performance
+Page  895: –   Provides automatic control to avoid ADC overrun in low AHB bus clock frequency
+Page  895: •   Each ADC features an external analog input channel
+Page  895: –    The internal reference voltage (VREFINT), connected to ADC3
+Page  895: –   The internal temperature sensor (VSENSE), connected to ADC3
+Page  895: –   The VBAT monitoring channel (VBAT/4), connected to ADC3
+Page  895: –   The internal DAC channel 1 and channel 2, connected to ADC2
+Page  895: –   Each ADC can convert a single channel or can scan a sequence of channels
+Page  896: Analog-to-digital converters (ADC)                                                            RM0433
+Page  896: •    Dual ADC mode for ADC1 and 2
+Page  896: •    Interrupt generation at ADC ready, the end of sampling, the end of conversion (regular
+Page  896: •    3 analog watchdogs per ADC
+Page  896: •    ADC input range: VREF– ≤ VIN ≤ VREF+
+Page  896: Figure 131 shows the block diagram of one ADC.
+Page  897: RM0433                                                                                                                       Analog-to-digital converters (ADC)
+Page  897: 24.3                   ADC functional description
+Page  897: 24.3.1                 ADC block diagram
+Page  897: Figure 131 shows the ADC block diagram and Table 198 gives the ADC pin description.
+Page  897: Figure 131. ADC block diagram
+Page  897: [19:0]                                                                                                                                                                   adc_it
+Page  897: AHB            adc_dma
+Page  897: VSENSE                                      ADCAL
+Page  897: VREFINT                                  ADCALDIF                                           Oversampler           DMNGT[1:0]                           adc_ker_ck
+Page  897: ADCx_INP[19:0]                                  selection &                         VIN     SAR ADC                                                                             adc_hclk
+Page  897: ADCx_INN[19:0]                                                                                  CONVERTED                                                    ROVSM
+Page  897: adc_ext0_trg                                                                                                                 OFFSETy_CH[4:0]         options
+Page  897: adc_ext1_trg                                                        h/w                                                      SSATE
+Page  897: adc_ext2_trg                                                        trigger
+Page  897: adc_ext20_trg                                        trigger enable              Discontinuous                                   Analog watchdog 1,2,3
+Page  897: AWD1          adc_awd1
+Page  897: EXTi mapped at                                                                                              AWD2          adc_awd2
+Page  897: product level                               EXTSEL[4:0]                                                    AWD3          adc_awd3
+Page  897: adc_jext0_trg                                                        H/W                                       AWD1SGL
+Page  897: adc_jext1_trg                                                        trigger
+Page  897: adc_jext2_trg                                     JEXTEN[1:0]                           JDISCNUM[2:0]    LTR1[25:0]
+Page  897: adc_jext20_trg                                                                           Injced Context AWD2CH[19:0]
+Page  897: (1) Only ADC1 and ADC2
+Page  898: Analog-to-digital converters (ADC)                                                                         RM0433
+Page  898: 24.3.2     ADC pins and internal signals
+Page  898: Table 197. ADC internal input/output signals
+Page  898: adc_ext_trg[20:0]           Inputs
+Page  898: These inputs are shared between the ADC master and the ADC
+Page  898: adc_jext_trg[20:0]          Inputs
+Page  898: These inputs are shared between the ADC master and the ADC
+Page  898: adc_awd1
+Page  898: adc_awd2                   Outputs
+Page  898: adc_awd3
+Page  898: adc_it                     Output     ADC interrupt
+Page  898: adc_hclk                    Input     AHB clock
+Page  898: adc_ker_ck                  Input     ADC kernel clock
+Page  898: adc_dma                    Output     ADC DMA requests
+Page  898: Table 198. ADC input/output pins
+Page  898: Input, analog reference       The higher/positive reference voltage for the ADC,
+Page  898: Input, analog reference       The lower/negative reference voltage for the ADC,
+Page  898: Positive input analog         Connected either to external channels: ADCx_INPi
+Page  898: channels for each ADC         or internal channels.
+Page  898: channels for each ADC         ADCx_INNi
+Page  899: RM0433                                                              Analog-to-digital converters (ADC)
+Page  899: Table 198. ADC input/output pins (continued)
+Page  899: Up to 20 analog input channels (x = ADC
+Page  899: ADCx_INP[19:0]
+Page  899: – ADCx_INP[0:5] fast channels
+Page  899: – ADCx_INP[6:19] slow channels
+Page  899: Up to 20 analog input channels (x = ADC
+Page  899: ADCx_INN[19:0]
+Page  899: – ADCx_INN[0:5] fast channels
+Page  899: – ADCx_INN[6:19] slow channels
+Page  899: The dual clock-domain architecture means that the ADCs clock is independent from the
+Page  899: The input clock is the same for the three ADCs and can be selected between two different
+Page  899: clock sources (see Figure 132: ADC clock scheme):
+Page  899: 1.   The ADC clock can be a specific clock source, named adc_ker_ck which is
+Page  899: generate the ADC clock (adc_ker_ck) dedicated clock).
+Page  899: To select this scheme, CKMODE[1:0] bits of the ADCx_CCR register must be reset.
+Page  899: 2.   The ADC clock can be derived from the AHB clock of the ADC bus interface, divided by
+Page  899: To select this scheme, CKMODE[1:0] bits of the ADCx_CCR register must be different
+Page  899: Option 1) has the advantage of reaching the maximum ADC clock frequency whatever the
+Page  899: AHB clock scheme selected. The ADC clock can eventually be divided by the following ratio:
+Page  899: PRESC[3:0] in the ADCx_CCR register.
+Page  899: useful when the ADC is triggered by a timer and if the application requires that the ADC is
+Page  900: Analog-to-digital converters (ADC)                                                                            RM0433
+Page  900: Figure 132. ADC clock scheme
+Page  900: RCC                         ADC1, ADC2 or ADC3
+Page  900: clock           adc_hclk
+Page  900: of ADCx_CCR
+Page  900: Analog ADC1 or ADC3
+Page  900: Analog ADC2
+Page  900: /1, 2, 4, 6, 8, 10,                Fadc_ker_ck         (slave)
+Page  900: adc_ker_ck                                  00
+Page  900: of ADCx_CCR            of ADCx_CCR
+Page  900: 1. Refer to the RCC section to see how adc_hclk and adc_ker_ck can be generated.
+Page  900: Clock ratio constraint between ADC clock and AHB clock
+Page  900: There are generally no constraints to be respected for the ratio between the ADC clock and
+Page  900: •     Fadc_hclk ≥ Fadc_ker_ck / 4 if the resolution of all channels are 16-bit, 14-bit,12-bit or 10-
+Page  900: •     Fadc_hclk ≥ Fadc_ker_ck / 3 if there are some channels with resolutions equal to 8-bit
+Page  900: There is ADC boost control bit BOOST in the ADC_CR register.
+Page  900: This bit must be set when the ADC clock is more than 20 MHz. When ADC clock is less than
+Page  901: RM0433                                                                   Analog-to-digital converters (ADC)
+Page  901: 24.3.4   ADC1/2/3 connectivity
+Page  901: ADC1 and ADC2 are tightly coupled and share some external channels as described in the
+Page  901: ADC3 is instantiated separately, but some inputs are shared with ADC1 and ADC2.
+Page  901: Figure 133. ADC1 connectivity
+Page  901: ADC1
+Page  901: ADC12_INP0,                               VINP[0]
+Page  901: ADC12_INN1                                VINN[0]    Fast channel
+Page  901: ADC12_INP1
+Page  901: ADC1_INP2
+Page  901: ADC12_INP3
+Page  901: ADC12_INP4
+Page  901: ADC12_INP5
+Page  901: ADC1_INP6,                               VINP[6]
+Page  901: ADC1_INN2                                VINN[6]    Slow channel
+Page  901: ADC12_INP7,                               VINP[7]                                              VREF+
+Page  901: ADC12_INN3                                VINN[7]    Slow channel
+Page  901: ADC12_INP8,                               VINP[8]                                       VINP
+Page  901: ADC12_INN4                                VINN[8]    Slow channel
+Page  901: ADC12_INP9,                               VINP[9]
+Page  901: ADC1
+Page  901: ADC12_INN5                                VINN[9]    Slow channel                       VINN
+Page  901: ADC123_INP10
+Page  901: ADC123_INP11,                                VINP[11]                                             VREF-
+Page  901: ADC123_INN10                                 VINN[11]   Slow channel
+Page  901: ADC123_INP12,                                VINP[12]
+Page  901: ADC123_INN11                                 VINN[12]   Slow channel
+Page  901: ADC12_INP13,                                VINP[13]
+Page  901: ADC12_INN12                                 VINN[13]   Slow channel
+Page  901: ADC12_INP14
+Page  901: ADC12_INP15
+Page  901: ADC1_INP16
+Page  901: ADC1_INP17,                                VINP[17]
+Page  901: ADC1_INN16                                 VINN[17]   Slow channel
+Page  901: ADC12_INP18
+Page  901: ADC12_INP19,                                VINP[19]
+Page  901: ADC12_INN18                                 VINN[19]   Slow channel
+Page  901: 1. ADCx_INNy signal can only be used when the corresponding ADC input channel is configured as
+Page  902: Analog-to-digital converters (ADC)                                                                              RM0433
+Page  902: Figure 134. ADC2 connectivity
+Page  902: ADC2
+Page  902: ADC12_INP0,                               VINP[0]
+Page  902: ADC12_INN1                                VINN[0]    Fast channel
+Page  902: ADC12_INP1
+Page  902: ADC2_INP2
+Page  902: ADC12_INP3
+Page  902: ADC12_INP4
+Page  902: ADC12_INP5
+Page  902: ADC2_INP6,                               VINP[6]
+Page  902: ADC2_INN2                                VINN[6]    Slow channel
+Page  902: ADC12_INP7,                               VINP[7]                                              VREF+
+Page  902: ADC12_INN3                                VINN[7]    Slow channel
+Page  902: ADC12_INP8,                               VINP[8]                                       VINP
+Page  902: ADC12_INN4                                VINN[8]    Slow channel
+Page  902: ADC12_INP9,                               VINP[9]
+Page  902: ADC2
+Page  902: ADC12_INN5                                VINN[9]    Slow channel                       VINN
+Page  902: ADC123_INP10
+Page  902: ADC123_INP11,                                VINP[11]                                             VREF-
+Page  902: ADC123_INN10                                 VINN[11]   Slow channel
+Page  902: ADC123_INP12,                                VINP[12]
+Page  902: ADC123_INN11                                 VINN[12]   Slow channel
+Page  902: ADC12_INP13,                                 VINP[13]
+Page  902: ADC12_INN12                                  VINN[13]   Slow channel
+Page  902: ADC12_INP14
+Page  902: ADC12_INP15
+Page  902: ADC12_INP18
+Page  902: ADC12_INP19,                                 VINP[19]
+Page  902: ADC12_INN18                                  VINN[19]   Slow channel
+Page  902: 1. ADCx_INNy signal can only be used when the corresponding ADC input channel is configured as
+Page  903: RM0433                                                                   Analog-to-digital converters (ADC)
+Page  903: Figure 135. ADC3 connectivity
+Page  903: ADC3
+Page  903: ADC3_INP0,                                VINP[0]
+Page  903: ADC3_INN1                                 VINN[0]    Fast channel
+Page  903: ADC3_INP1
+Page  903: ADC3_INP2
+Page  903: ADC3_INP3
+Page  903: ADC3_INP4
+Page  903: ADC3_INP5
+Page  903: ADC3_INP6,                                VINP[6]
+Page  903: ADC3_INN2                                 VINN[6]    Slow channel
+Page  903: ADC3_INP7,                                VINP[7]                                              VREF+
+Page  903: ADC3_INN3                                 VINN[7]    Slow channel
+Page  903: ADC3_INP8,                                VINP[8]                                       VINP
+Page  903: ADC3_INN4                                 VINN[8]    Slow channel
+Page  903: ADC3_INP9,                                VINP[9]
+Page  903: ADC3
+Page  903: ADC3_INN5                                 VINN[9]    Slow channel                       VINN
+Page  903: ADC123_INP10
+Page  903: ADC123_INP11,                                VINP[11]                                             VREF-
+Page  903: ADC123_INN10                                 VINN[11]   Slow channel
+Page  903: ADC123_INP12,                                VINP[12]
+Page  903: ADC123_INN11                                 VINN[12]   Slow channel
+Page  903: ADC3_INP13
+Page  903: ADC3_INP14,                                VINP[14]
+Page  903: ADC3_INN13                                 VINN[14]   Slow channel
+Page  903: ADC3_INP15,                                VINP[15]
+Page  903: ADC3_INN14                                 VINN[15]   Slow channel
+Page  903: ADC3_INP16,                                VINP[16]
+Page  903: ADC3_INN15                                 VINN[16]   Slow channel
+Page  903: 1. ADCx_INNy signal can only be used when the corresponding ADC input channel is configured as
+Page  904: Analog-to-digital converters (ADC)                                                             RM0433
+Page  904: The ADCs implement an AHB slave port for control/status register and data access. The
+Page  904: 24.3.6     ADC deep-power-down mode (DEEPPWD) & ADC voltage regulator
+Page  904: By default, the ADC is in deep-power-down mode where its supply is internally switched off
+Page  904: to reduce the leakage currents (the reset state of bit DEEPPWD is 1 in the ADC_CR
+Page  904: To start ADC operations, it is first needed to exit deep-power-down mode by clearing bit
+Page  904: Then, it is mandatory to enable the ADC internal voltage regulator by setting the bit
+Page  904: ADVREGEN=1 into ADC_CR register. The software must wait for the startup time of the
+Page  904: ADC voltage regulator (TADCVREG_STUP) before launching a calibration or enabling the
+Page  904: ADC. This delay must be implemented by software.
+Page  904: For the startup time of the ADC voltage regulator, please refer to device datasheet for
+Page  904: TADCVREG_STUP parameter.
+Page  904: After ADC operations are complete, the ADC can be disabled (ADEN=0). It is possible to
+Page  904: save power by also disabling the ADC voltage regulator. This is done by writing bit
+Page  904: ADC deep-power-down mode by setting bit DEEPPWD=1 into ADC_CR register. This is
+Page  904: Note:      Writing DEEPPWD=1 automatically disables the ADC voltage regulator and bit ADVREGEN
+Page  904: In ADC deep-power-down mode (DEEPPWD=1), the internal analog calibration is lost and it
+Page  904: previously saved (refer to Section 24.3.8: Calibration (ADCAL, ADCALDIF, ADCALLIN,
+Page  904: ADC_CALFACT)).
+Page  905: RM0433                                                                                           Analog-to-digital converters (ADC)
+Page  905: into bits DIFSEL[19:0] in the ADC_DIFSEL register. This configuration must be written while
+Page  905: the ADC is disabled (ADEN=0).
+Page  905: ADC_Full_Scale                                     V INP – V INN
+Page  905: When ADC is configured as differential mode, both input should be biased at VREF+ / 2
+Page  905: For a complete description of how the input channels are connected for each ADC, refer to
+Page  905: Figure 133: ADC1 connectivity to Figure 135: ADC3 connectivity.
+Page  905: not be converted at same time by different ADCs. Some channels are shared between
+Page  905: ADC1/ADC2: this can make the channel on the other ADC unusable.
+Page  905: 24.3.8     Calibration (ADCAL, ADCALDIF, ADCALLIN, ADC_CALFACT)
+Page  905: Each ADC provides an automatic calibration procedure which drives all the calibration
+Page  905: sequence including the power-on/off sequence of the ADC. During the procedure, the ADC
+Page  905: applied internally to the ADC until the next ADC power-off. During the calibration procedure,
+Page  905: the application must not use the ADC and must wait until calibration is complete.
+Page  905: Calibration is preliminary to any ADC operation. It removes the systematic errors which may
+Page  905: •    Write ADCALDIF=0 before launching a calibration which will be applied for single-
+Page  905: •    Write ADCALDIF=1 before launching a calibration which will be applied for differential
+Page  906: Analog-to-digital converters (ADC)                                                                RM0433
+Page  906: •    Write ADCALLIN=1 before launching a calibration which will run the linearity calibration
+Page  906: •    Write ADCALLIN=0 before launching a calibration which will not run the linearity
+Page  906: The calibration is then initiated by software by setting bit ADCAL=1. Calibration can only be
+Page  906: initiated when the ADC is disabled (when ADEN=0). ADCAL bit stays at 1 during all the
+Page  906: this time, the associated calibration factor is stored internally in the analog ADC and also in
+Page  906: the bits CALFACT_S[10:0] or CALFACT_D[10:0] of ADC_CALFACT register (depending on
+Page  906: accessed using the ADC_CALFACT2 register with ADEN set to 1.
+Page  906: The internal analog calibration is kept if the ADC is disabled (ADEN=0). However, if the ADC
+Page  906: before re-enabling the ADC.
+Page  906: The internal analog calibration is lost each time the power of the ADC is removed (example,
+Page  906: recalibrating the ADC, it is possible to re-write the calibration factor into the ADC_CALFACT
+Page  906: and ADC_CALFACT2 register without recalibrating, supposing that the software has
+Page  906: The calibration factor can be written if the ADC is enabled but not converting (ADEN=1 and
+Page  906: will automatically be injected into the analog ADC. This loading is transparent and does not
+Page  906: Software procedure to calibrate the ADC
+Page  906: 1.   Ensure DEEPPWD=0, ADVREGEN=1 and check that the ADC voltage regulator
+Page  906: 3.   Select the input mode for this calibration by setting ADCALDIF=0 (Single-ended input)
+Page  906: or ADCALDIF=1 (Differential input). Select if Linearity calibration enable or not by
+Page  906: ADCALLIN=1(enabled) or ADCALLIN=0(disabled).
+Page  906: 4.   Set ADCAL=1.
+Page  906: 5.   Wait until ADCAL=0.
+Page  906: 6.   The offset calibration factor can be read from ADC_CALFACT register.
+Page  906: 7.   The linearity calibration factor can be read from ADC_CALFACT2 register, following the
+Page  906: be set to 1 prior to accessing ADC_CALFACT2 register).
+Page  907: RM0433                                                                             Analog-to-digital converters (ADC)
+Page  907: Figure 136. ADC calibration
+Page  907: ADCALDIF           0: Single-ended input    1: Differential input
+Page  907: ADCALLIN           0: Linear calibrarion disable     1: Linear calibration enable
+Page  907: ADCAL
+Page  907: ADC State     OFF         Startup                   Calibrate                                   OFF
+Page  907: Software procedure to re-inject a calibration factor into the ADC
+Page  907: 1.    Ensure ADEN=1 and ADSTART=0 and JADSTART=0 (ADC enabled and no
+Page  907: ADC only if the internal analog calibration factor differs from the one stored in bits
+Page  907: Figure 137. Updating the ADC offset calibration factor
+Page  907: ADC state Ready (not converting)           Converting channel        Ready Converting channel
+Page  907: ADC_CALFACT
+Page  908: Analog-to-digital converters (ADC)                                                                         RM0433
+Page  908: Converting single-ended and differential analog inputs with a single ADC
+Page  908: If the ADC is supposed to convert both differential and single-ended inputs, two calibrations
+Page  908: must be performed, one with ADCALDIF=0 and one with ADCALDIF=1. The procedure is
+Page  908: 1.   Disable the ADC.
+Page  908: 2.   Calibrate the ADC in single-ended input mode (with ADCALDIF=0) and Linearity
+Page  908: calibration enable (with ADCALLIN=1). This updates the registers CALFACT_S[10:0]
+Page  908: 3.   Calibrate the ADC in Differential input modes (with ADCALDIF=1) and Linearity
+Page  908: calibration disable (with ADCALLIN=0). This updates the register CALFACT_D[10:0].
+Page  908: 4.   Enable the ADC, configure the channels and launch the conversions. Each time there
+Page  908: calibration will automatically be injected into the analog ADC.
+Page  908: ADC state    RDY CONV CH 1           RDY CONV CH2 RDY CONV CH3 RDY         CONV CH4
+Page  908: Once the calibration is done (ADCAL bit cleared by hardware) with ADCALLIN=1, the 160-
+Page  908: bit linearity correction factor can be read using the ADC_CALFACT2 30-bit registers (6 read
+Page  908: The six LINCALRDYW1..6 control/status bits in ADC_CR are set when the calibration is
+Page  908: the linearity factor into the LINCALFACT[29:0] of the ADC_CALFACT2 register. The bit will
+Page  908: be reset by hardware when the ADC_CALFACT2 register can be read (software must poll
+Page  909: RM0433                                                          Analog-to-digital converters (ADC)
+Page  909: 1.   Ensure DEEPPWD=0, ADVREGEN=1 and that the ADC voltage regulator startup time
+Page  909: bits[159:150] are available in ADC_CALFACT2[29:0].
+Page  909: 5.   Read ADC_CALFACT2[29:0].
+Page  909: bits[149:120] are available in ADC_CALFACT2[29:0].
+Page  909: 8.   Read ADC_CALFACT2[29:0].
+Page  909: bits[119:90] are available in ADC_CALFACT2[29:0].
+Page  909: 11. Read ADC_CALFACT2[29:0].
+Page  909: bits[89:60] are available in ADC_CALFACT2[29:0].
+Page  909: 14. Read ADC_CALFACT2[29:0].
+Page  909: bits[59:30] are available in ADC_CALFACT2[29:0].
+Page  909: 17. Read ADC_CALFACT2[29:0].
+Page  909: bits[29:0] are available in ADC_CALFACT2[29:0].
+Page  909: 20. Read ADC_CALFACT2[29:0].
+Page  909: only when ADEN=1 and ADSTART=0 and JADSTART=0 (ADC enabled and no conversion
+Page  910: Analog-to-digital converters (ADC)                                                              RM0433
+Page  910: The six LINCALRDYW1..6 control/status bits in ADC_CR are reset when the calibration has
+Page  910: 1.   Ensure DEEPPWD=0, ADVREGEN=1 and that ADC voltage regulator startup time has
+Page  910: 3.   Write ADC_CALFACT2[9:0] with previously saved linearity correction factor
+Page  910: 6.   Write ADC_CALFACT2[29:0] with previously saved linearity correction factor
+Page  910: 9.   Write ADC_CALFACT2[29:0] with previously saved linearity correction factor
+Page  910: 12. Write ADC_CALFACT2[29:0] with previously saved linearity correction factor
+Page  910: 15. Write ADC_CALFACT2[29:0] with previously saved linearity correction factor
+Page  910: 18. Write ADC_CALFACT2[29:0] with previously saved linearity correction factor bits[29:0].
+Page  910: LINCALRDYW1..6 bits only when ADEN=1 and ADSTART=0 and JADSTART=0 (ADC
+Page  911: RM0433                                                            Analog-to-digital converters (ADC)
+Page  911: 24.3.9   ADC on-off control (ADEN, ADDIS, ADRDY)
+Page  911: First of all, follow the procedure explained in Section 24.3.6: ADC deep-power-down mode
+Page  911: (DEEPPWD) & ADC voltage regulator (ADVREGEN)).
+Page  911: Once DEEPPWD=0 and ADVREGEN=1, the ADC can be enabled and the ADC needs a
+Page  911: control bits enable or disable the ADC:
+Page  911: •     ADEN=1 enables the ADC. The flag ADRDY will be set once the ADC is ready for
+Page  911: •     ADDIS=1 disables the ADC. ADEN and ADDIS are then automatically cleared by
+Page  911: hardware as soon as the analog ADC is effectively disabled.
+Page  911: Software procedure to enable the ADC
+Page  911: 1.    Clear the ADRDY bit in the ADC_ISR register by writing ‘1’.
+Page  911: 3.    Wait until ADRDY=1 (ADRDY is set after the ADC startup time). This can be done
+Page  911: 4.    Clear the ADRDY bit in the ADC_ISR register by writing ‘1’ (optional).
+Page  911: Software procedure to disable the ADC
+Page  911: 3.    If required by the application, wait until ADEN=0, until the analog ADC is effectively
+Page  911: Figure 139. Enabling / Disabling the ADC
+Page  911: ADC                                                                 REQ
+Page  912: Analog-to-digital converters (ADC)                                                               RM0433
+Page  912: 24.3.10    Constraints when writing the ADC control bits
+Page  912: The software can write the RCC control bits to configure and enable the ADC clock (refer to
+Page  912: RCC Section), the control bits DIFSEL in the ADC_DIFSEL register, ADCx_CCR register
+Page  912: and the control bits ADCAL and ADEN in the ADC_CR register, only if the ADC is disabled
+Page  912: the ADC_CR register only if the ADC is enabled and there is no pending request to disable
+Page  912: the ADC (ADEN must be equal to 1 and ADDIS to 0).
+Page  912: For all the other control bits of the ADC_CFGR, ADC_SMPRy, ADC_TRy, ADC_SQRy,
+Page  912: ADC_JDRy, ADC_OFRy and ADC_IER registers:
+Page  912: to write them only if the ADC is enabled (ADEN=1) and if there is no regular conversion
+Page  912: to write them only if the ADC is enabled (ADEN=1) and if there is no injected
+Page  912: The software can write ADSTP or JADSTP control bits in the ADC_CR register only if the
+Page  912: ADC is enabled and eventually converting and if there is no pending request to disable the
+Page  912: ADC (ADSTART or JADSTART must be equal to 1 and ADDIS to 0).
+Page  912: The software can write the register ADC_JSQR at any time, when the ADC is enabled
+Page  912: The software is allowed to write the ADC_JSQR register only when JADSTART is cleared to
+Page  912: ADC_CFGR register).
+Page  912: Note:      There is no hardware protection to prevent these forbidden write accesses and ADC
+Page  912: behavior may become in an unknown state. To recover from this situation, the ADC must be
+Page  912: disabled (clear ADEN=0 as well as all the bits of ADC_CR register).
+Page  912: There are up to 20 multiplexed channels per ADC:
+Page  912: •    6 fast analog inputs coming from Analog PADs and GPIO pads (ADCx_INP/INN[0..5])
+Page  912: •    Up to 14 slow analog inputs coming from GPIO pads (ADCx_INP/INN[6..19]).
+Page  912: •    The ADCs are connected to 5 internal analog inputs:
+Page  912: –    the internal temperature sensor (VSENSE) is connected to ADC3_INP/INN18
+Page  912: –    the internal reference voltage (VREFINT) is connected to ADC3_INP/INN19
+Page  912: –    the VBAT monitoring channel (VBAT/4) is connected to ADC3_INP/INN17
+Page  912: –    DAC internal channel 1, connected to ADC2_INP/INN16
+Page  912: ADCx_INP/INN3, ADCx_INP/INN8, ADCx_INP/INN2, ADCx_INP/INN2, ADCx_INP/INN0,
+Page  912: ADCx_INP/INN2, ADCx_INP/INN2, ADCx_INP/INN15.
+Page  912: order in the conversion sequence must be selected in the ADC_SQRy registers. The
+Page  913: RM0433                                                            Analog-to-digital converters (ADC)
+Page  913: ADC_SQR1 register.
+Page  913: their order in the conversion sequence must be selected in the ADC_JSQR register.
+Page  913: in the ADC_JSQR register.
+Page  913: ADC_SQRy registers must not be modified while regular conversions can occur. For this,
+Page  913: the ADC regular conversions must be first stopped by writing ADSTP=1 (refer to
+Page  913: The software is allowed to modify on-the-fly the ADC_JSQR register when JADSTART is set
+Page  913: to 1 only when the context queue is enabled (JQDIS=0 in ADC_CFGR register).
+Page  913: The temperature sensor VSENSE is connected to channel ADC3 VINP[18].
+Page  913: The internal reference voltage VREFINT is connected to ADC3 VINP[19].
+Page  913: The VBAT channel is connected to channel ADC3 VINP[17].
+Page  913: be enabled by programming bits VREFEN, VSENSEEN or VBATEN in the ADCx_CCR
+Page  913: 24.3.12   Channel preselection register (ADC_PCSEL)
+Page  913: For each channel selected through SQRx or JSQRx, the corresponding ADC_PCSEL bit
+Page  913: This ADC_PCSEL bit controls the analog switch integrated in the IO level. The ADC input
+Page  913: MUX selects the ADC input according to the SQRx and JSQRx with very high speed, the
+Page  913: analog switch integrated in the IO cannot react as fast as ADC mux do. To avoid the delay
+Page  913: The selection is based on the VINP[i] of the each ADC input. If ADC1 will convert the
+Page  913: ADC123_INP2(VINP[2]) as differential mode, ADC123_INP6(VINP[6]) also need to be
+Page  913: selected in ADC_PCSEL.
+Page  913: Some I/Os are connected to several VINP[i] of the ADCx. The control inputs of the analog
+Page  913: switch are ORed with the corresponding ADC_PCSEL register bits.
+Page  913: Before starting a conversion, the ADC must establish a direct connection between the
+Page  913: voltage source under measurement and the embedded sampling capacitor of the ADC. This
+Page  914: Analog-to-digital converters (ADC)                                                            RM0433
+Page  914: the SMP[2:0] bits in the ADC_SMPR1 and ADC_SMPR2 registers. It is therefore possible to
+Page  914: •    SMP = 000: 1.5 ADC clock cycles
+Page  914: •    SMP = 001: 2.5 ADC clock cycles
+Page  914: •    SMP = 010: 8.5 ADC clock cycles
+Page  914: •    SMP = 011: 16.5 ADC clock cycles
+Page  914: •    SMP = 100: 32.5 ADC clock cycles
+Page  914: •    SMP = 101: 64.5 ADC clock cycles
+Page  914: •    SMP = 110: 387.5 ADC clock cycles
+Page  914: •    SMP = 111: 810.5 ADC clock cycles
+Page  914: TCONV = Sampling time + 7.5 ADC clock cycles
+Page  914: With Fadc_ker_ck = 24 MHz and a sampling time of 1.5 ADC clock cycles (14-bit mode):
+Page  914: TCONV = (1.5 + 7.5) ADC clock cycles = 9 ADC clock cycles = 0.375 µs (14 bit mode for
+Page  914: The ADC notifies the end of the sampling phase by setting the status bit EOSMP (only for
+Page  914: as specified in the ADC characteristics section of the datasheets.
+Page  914: In Single conversion mode, the ADC performs once all the conversions of the channels.
+Page  914: •    Setting the ADSTART bit in the ADC_CR register (for a regular channel, with software
+Page  914: •    Setting the JADSTART bit in the ADC_CR register (for an injected channel, with
+Page  914: •    The converted data are stored into the 32-bit ADC_DR register
+Page  915: RM0433                                                              Analog-to-digital converters (ADC)
+Page  915: •    The converted data are stored into one of the four 32-bit ADC_JDRy registers
+Page  915: Then the ADC stops until a new external regular or injected trigger occurs or until bit
+Page  915: the ADC performs once all the regular conversions of the channels and then automatically
+Page  915: ADC_CR register.
+Page  915: •    The converted data are stored into the 32-bit ADC_DR register
+Page  915: Then, a new sequence restarts immediately and the ADC continuously repeats the
+Page  916: Analog-to-digital converters (ADC)                                                             RM0433
+Page  916: Software starts ADC regular conversions by setting ADSTART=1.
+Page  916: Software starts ADC injected conversions by setting JADSTART=1.
+Page  916: ADSTART and JADSTART also provide information on whether any ADC operation is
+Page  916: currently ongoing. It is possible to re-configure the ADC while ADSTART=0 and
+Page  916: JADSTART=0 are both true, indicating that the ADC is idle.
+Page  917: RM0433                                                                        Analog-to-digital converters (ADC)
+Page  917: TCONV= TSMPL + TSAR = [1.5 |min + 7.5 |14bit] x Tadc_ker_ck
+Page  917: TCONV = TSMPL + TSAR = 62.5 ns |min + 312.5 ns |14bit = 375.0 ns (for Fadc_ker_ck = 24 MHz)
+Page  917: ADC state     RDY         Sampling Ch(N)                    Converting Ch(N)            Sampling Ch(N+1)
+Page  917: ADC_DR                                     Data N-1                                       Data N
+Page  917: Stopping conversions will reset the ongoing ADC operation. Then the ADC can be
+Page  917: partial result discarded (ADC_DR register is not updated with the current conversion).
+Page  917: partial result discarded (ADC_JDRy register is not updated with the current conversion).
+Page  917: The scan sequence is also aborted and reset (meaning that relaunching the ADC would re-
+Page  917: software must poll ADSTART (or JADSTART) until the bit is reset before assuming the ADC
+Page  918: Analog-to-digital converters (ADC)                                                                                     RM0433
+Page  918: ADC state                                  Sample         Convert                   Sample
+Page  918: ADC_DR                          Data N-2                                              Data N-1
+Page  918: ADC state        RDY                                             RDY                     C    RDY Sampl        RDY
+Page  918: ADC_JDR                             DATA M-1
+Page  918: ADC_DR                      DATA N-2                                         DATA N-1
+Page  919: RM0433                                                              Analog-to-digital converters (ADC)
+Page  920: Analog-to-digital converters (ADC)                                                                                     RM0433
+Page  920: Each ADC master shares the same input triggers with its ADC slave as described in
+Page  920: Figure 143. Triggers are shared between ADC master and ADC slave
+Page  920: ADC MASTER
+Page  920: adc_ext0_trg
+Page  920: adc_ext1_trg                                           External regular trigger
+Page  920: adc_ext31_trg
+Page  920: ADC SLAVE
+Page  920: adc_jext0_trg
+Page  920: JEXTi mapped at adc_jext1_trg
+Page  920: adc_jext31_trg
+Page  920: Table 201 and Table 202 give all the possible external triggers of the three ADCs for regular
+Page  920: Table 201. ADC1, ADC2 and ADC3 - External triggers for regular channels
+Page  920: adc_ext_trg0                TIM1_CC1 event               Internal signal from on-chip timers                      00000
+Page  920: adc_ext_trg1                TIM1_CC2 event               Internal signal from on-chip timers                      00001
+Page  920: adc_ext_trg2                TIM1_CC3 event               Internal signal from on-chip timers                      00010
+Page  920: adc_ext_trg3                TIM2_CC2 event               Internal signal from on-chip timers                      00011
+Page  920: adc_ext_trg4               TIM3_TRGO event               Internal signal from on-chip timers                      00100
+Page  920: adc_ext_trg5                TIM4_CC4 event               Internal signal from on-chip timers                      00101
+Page  920: adc_ext_trg6                   EXTI line 11                         External pin                                  00110
+Page  920: adc_ext_trg7               TIM8_TRGO event               Internal signal from on-chip timers                      00111
+Page  920: adc_ext_trg8               TIM8_TRGO2 event              Internal signal from on-chip timers                      01000
+Page  921: RM0433                                                           Analog-to-digital converters (ADC)
+Page  921: Table 201. ADC1, ADC2 and ADC3 - External triggers for regular channels (continued)
+Page  921: adc_ext_trg9          TIM1_TRGO event          Internal signal from on-chip timers      01001
+Page  921: adc_ext_trg10         TIM1_TRGO2 event          Internal signal from on-chip timers      01010
+Page  921: adc_ext_trg11          TIM2_TRGO event          Internal signal from on-chip timers      01011
+Page  921: adc_ext_trg12          TIM4_TRGO event          Internal signal from on-chip timers      01100
+Page  921: adc_ext_trg13          TIM6_TRGO event          Internal signal from on-chip timers      01101
+Page  921: adc_ext_trg14         TIM15_TRGO event         Internal signal from on-chip timers       01110
+Page  921: adc_ext_trg15           TIM3_CC4 event          Internal signal from on-chip timers      01111
+Page  921: adc_ext_trg16       HRTIM1_ADCTRG1 event       Internal signal from on-chip timers       10000
+Page  921: adc_ext_trg17       HRTIM1_ADCTRG3 event       Internal signal from on-chip timers       10001
+Page  921: adc_ext_trg18         LPTIM1_OUT event         Internal signal from on-chip timers       10010
+Page  921: adc_ext_trg19         LPTIM2_OUT event         Internal signal from on-chip timers       10011
+Page  921: adc_ext_trg20         LPTIM3_OUT event         Internal signal from on-chip timers       10100
+Page  921: adc_ext_trg21              Reserved                              -                       10101
+Page  921: adc_ext_trg22              Reserved                              -                       10110
+Page  921: adc_ext_trg23              Reserved                              -                       10111
+Page  921: adc_ext_trg24              Reserved                              -                       11000
+Page  921: adc_ext_trg25              Reserved                              -                       11001
+Page  921: adc_ext_trg26              Reserved                              -                       11010
+Page  921: adc_ext_trg27              Reserved                              -                       11011
+Page  921: adc_ext_trg28              Reserved                              -                       11100
+Page  921: adc_ext_trg29              Reserved                              -                       11101
+Page  921: adc_ext_trg30              Reserved                              -                       11110
+Page  921: adc_ext_trg31              Reserved                              -                       11111
+Page  921: Table 202. ADC1, ADC2 and ADC3 - External triggers for injected channels
+Page  921: adc_jext_trg0          TIM1_TRGO event         Internal signal from on-chip timers       00000
+Page  921: adc_jext_trg1           TIM1_CC4 event          Internal signal from on-chip timers      00001
+Page  921: adc_jext_trg2          TIM2_TRGO event         Internal signal from on-chip timers       00010
+Page  921: adc_jext_trg3           TIM2_CC1 event          Internal signal from on-chip timers      00011
+Page  921: adc_jext_trg4           TIM3_CC4 event         Internal signal from on-chip timers       00100
+Page  921: adc_jext_trg5          TIM4_TRGO event         Internal signal from on-chip timers       00101
+Page  921: adc_jext_trg6             EXTI line 15                     External pin                  00110
+Page  921: adc_jext_trg7           TIM8_CC4 event         Internal signal from on-chip timers       00111
+Page  921: adc_jext_trg8         TIM1_TRGO2 event         Internal signal from on-chip timers       01000
+Page  922: Analog-to-digital converters (ADC)                                                                 RM0433
+Page  922: Table 202. ADC1, ADC2 and ADC3 - External triggers for injected channels (continued)
+Page  922: adc_jext_trg9            TIM8_TRGO event             Internal signal from on-chip timers      01001
+Page  922: adc_jext_trg10          TIM8_TRGO2 event             Internal signal from on-chip timers      01010
+Page  922: adc_jext_trg11            TIM3_CC3 event             Internal signal from on-chip timers      01011
+Page  922: adc_jext_trg12           TIM3_TRGO event             Internal signal from on-chip timers      01100
+Page  922: adc_jext_trg13            TIM3_CC1 event             Internal signal from on-chip timers      01101
+Page  922: adc_jext_trg14           TIM6_TRGO event             Internal signal from on-chip timers      01110
+Page  922: adc_jext_trg15          TIM15_TRGO event             Internal signal from on-chip timers      01111
+Page  922: adc_jext_trg16       HRTIM1_ADCTRG2 event            Internal signal from on-chip timers      10000
+Page  922: adc_jext_trg17       HRTIM1_ADCTRG4 event            Internal signal from on-chip timers      10001
+Page  922: adc_jext_trg18          LPTIM1_OUT event             Internal signal from on-chip timers      10010
+Page  922: adc_jext_trg19          LPTIM2_OUT event             Internal signal from on-chip timers      10011
+Page  922: adc_jext_trg20          LPTIM3_OUT event             Internal signal from on-chip timers      10100
+Page  922: adc_jext_trg21               Reserved                                 -                       10101
+Page  922: adc_jext_trg22               Reserved                                 -                       10110
+Page  922: adc_jext_trg23               Reserved                                 -                       10111
+Page  922: adc_jext_trg24               Reserved                                 -                       11000
+Page  922: adc_jext_trg25               Reserved                                 -                       11001
+Page  922: adc_jext_trg26               Reserved                                 -                       11010
+Page  922: adc_jext_trg27               Reserved                                 -                       11011
+Page  922: adc_jext_trg28               Reserved                                 -                       11100
+Page  922: adc_jext_trg29               Reserved                                 -                       11101
+Page  922: adc_jext_trg30               Reserved                                 -                       11110
+Page  922: adc_jext_trg31               Reserved                                 -                       11111
+Page  922: To use triggered injection, the JAUTO bit in the ADC_CFGR register must be cleared.
+Page  922: setting the ADSTART bit in the ADC_CR register.
+Page  922: 2.    If an external injected trigger occurs, or if the JADSTART bit in the ADC_CR register is
+Page  923: RM0433                                                           Analog-to-digital converters (ADC)
+Page  923: longer than the injection sequence. For instance, if the sequence length is 20 ADC clock
+Page  923: interval between triggers must be 21 ADC clock cycles.
+Page  923: If the JAUTO bit in the ADC_CFGR register is set, then the channels in the injected group
+Page  923: a sequence of up to 20 conversions programmed in the ADC_SQRy and ADC_JSQR
+Page  923: In this mode, the ADSTART bit in the ADC_CR register must be set to start regular
+Page  924: Analog-to-digital converters (ADC)                                                                                RM0433
+Page  924: adc_ker_ck
+Page  924: Reset ADC
+Page  924: This mode is enabled by setting the DISCEN bit in the ADC_CFGR register.
+Page  924: sequence of conversions selected in the ADC_SQRy registers. The value of n is specified
+Page  924: by writing to the DISCNUM[2:0] bits in the ADC_CFGR register.
+Page  924: When an external trigger occurs, it starts the next n conversions selected in the ADC_SQR
+Page  924: defined by the L[3:0] bits in the ADC_SQR1 register.
+Page  925: RM0433                                                            Analog-to-digital converters (ADC)
+Page  925: case (if DISCEN=1, CONT=1), the ADC behaves as if continuous mode was disabled.
+Page  925: This mode is enabled by setting the JDISCEN bit in the ADC_CFGR register. It converts the
+Page  925: sequence selected in the ADC_JSQR register, channel by channel, after an external
+Page  925: ADC_JSQR registers until all the conversions in the sequence are done. The total sequence
+Page  925: length is defined by the JL[1:0] bits in the ADC_JSQR register.
+Page  925: sequence of conversions. JQDIS bit of ADC_CFGR register must be reset to enable this
+Page  925: ADC_JSQR register)
+Page  925: •    Definition of the injected sequence (bits JSQx[4:0] and JL[1:0] in ADC_JSQR register)
+Page  926: Analog-to-digital converters (ADC)                                                              RM0433
+Page  926: All the parameters of the context are defined into a single register ADC_JSQR and this
+Page  926: immediately changes the context and the ADC is ready to receive injected triggers.
+Page  926: the value of the control bit JQM of register ADC_CFGR:
+Page  926: –   If JQM=0, the Queue is empty just after enabling the ADC, but then it can never be
+Page  926: when disabling the ADC by setting ADDIS=1:
+Page  927: RM0433                                                                                   Analog-to-digital converters (ADC)
+Page  927: ADC J context
+Page  927: ADC state                         RDY           Conversion1   Conversion2    Conversion3           RDY       Conversion1       RDY
+Page  927: ADC J context
+Page  927: ADC state                  RDY                 Conversion1    Conversion2                  RDY               Conversion1          RDY
+Page  928: Analog-to-digital converters (ADC)                                                                                                      RM0433
+Page  928: ADC
+Page  928: ADC state      RDY                                              Conversion1        Conversion2         RDY            Conversion1
+Page  928: ADC
+Page  928: ADC state      RDY                                               Conversion1     Conversion2            RDY            Conversion1
+Page  929: RM0433                                                                                    Analog-to-digital converters (ADC)
+Page  929: ADC J context
+Page  929: ADC state                RDY                 Conversion1   RDY   Conversion1    RDY    Conversion1   RDY        Conversion1        RDY Conv
+Page  929: situation, the user must ensure that there is no ADC trigger happening when writing a new
+Page  930: Analog-to-digital converters (ADC)                                                                                           RM0433
+Page  930: ADC
+Page  930: ADC state                      RDY     Conversion1 RDY        Conversion1                     RDY         Conversion1     RDY
+Page  930: ADC J context EMPTY        P1                                                            P3
+Page  930: ADC state              RDY                     STP                   RDY                     Conversion1 RDY
+Page  931: RM0433                                                                          Analog-to-digital converters (ADC)
+Page  931: ADC J
+Page  931: ADC state       RDY                 Conv1 STP          RDY         Conversion1 RDY Conversion1 RDY
+Page  931: ADC J context EMPTY P1                                                             P3
+Page  931: ADC state               RDY                   STP                   RDY                 Conversion1 RDY
+Page  932: Analog-to-digital converters (ADC)                                                                                  RM0433
+Page  932: ADC J context EMPTY     P1                           EMPTY (0x0000)               P3                   EMPTY
+Page  932: ADC state      RDY                   Conv1 STP                 RDY                    Conversion1    RDY
+Page  932: ADC J context            P1
+Page  932: ADC state             RDY                     REQ-OFF               OFF
+Page  933: RM0433                                                                   Analog-to-digital converters (ADC)
+Page  933: ADC J context            P1                     EMPTY (0x0000)
+Page  933: ADC state            RDY                   REQ-OFF      OFF
+Page  933: Queue of context: Starting the ADC with an empty queue
+Page  933: The following procedure must be followed to start ADC operation with an empty queue, in
+Page  933: case the first context is not known at the time the ADC is initialized. This procedure is only
+Page  933: It is possible to disable the queue by setting bit JQDIS=1 into the ADC_CFGR register.
+Page  933: Queue of context: Programming of the register ADC_JSQR
+Page  933: When the injected conversion queue of context is enabled (JQDIS=0), the ADC_JSQR must
+Page  933: ADC_JSQR is reprogrammed before the injected conversion start, reprogrammed data is
+Page  933: put on the queue. When queue of context is empty, ADC_JSQR read back as 0x0000.
+Page  933: When ADC_JSQR is programmed when already 2 contexts are queued, it will raise JQOVF
+Page  934: Analog-to-digital converters (ADC)                                                              RM0433
+Page  934: It is possible to perform faster conversion by reducing the ADC resolution.
+Page  934: Tadc_ker_ck (ADC clock     Tadc_ker_ck (ns)
+Page  934: RES                            Fadc_ker_ck=24
+Page  934: (ADC clock cycles)                       (with Sampling Time=       Fadc_ker_ck=24
+Page  934: 1.5 ADC clock cycles)           MHz
+Page  934: 16     8.5 ADC clock cycles       354.2           10 ADC clock cycles           416.7
+Page  934: 14     7.5 ADC clock cycles       312.5            9 ADC clock cycles            375
+Page  934: 12     6.5 ADC clock cycles       270.8            8 ADC clock cycles           333.3
+Page  934: 10     5.5 ADC clock cycles       229.2            7 ADC clock cycles           291.7
+Page  934: 8     4.5 ADC clock cycles       187.5            6 ADC clock cycles           250.0
+Page  934: The ADC notifies the application for each end of regular conversion (EOC) event and each
+Page  934: The ADC sets the EOC flag as soon as a new regular conversion data is available in the
+Page  934: ADC_DR register. An interrupt can be generated if bit EOCIE is set. EOC flag is cleared by
+Page  934: the software either by writing 1 to it or by reading ADC_DR.
+Page  934: The ADC sets the JEOC flag as soon as a new injected conversion data is available in one
+Page  934: of the ADC_JDRy register. An interrupt can be generated if bit JEOCIE is set. JEOC flag is
+Page  934: cleared by the software either by writing 1 to it or by reading the corresponding ADC_JDRy
+Page  934: The ADC also notifies the end of Sampling phase by setting the status bit EOSMP (for
+Page  934: The ADC notifies the application for each end of regular sequence (EOS) and for each end
+Page  934: The ADC sets the EOS flag as soon as the last data of the regular conversion sequence is
+Page  934: available in the ADC_DR register. An interrupt can be generated if bit EOSIE is set. EOS
+Page  934: The ADC sets the JEOS flag as soon as the last data of the injected conversion sequence is
+Page  935: RM0433                                                                                  Analog-to-digital converters (ADC)
+Page  935: ADC state(2)    RDY        CH1        CH9       CH10     CH17            RDY           CH1    CH9     CH10     CH17         RDY
+Page  935: ADC_DR
+Page  935: ADC state(2) READY    CH1        CH9        CH10       CH17        CH1   CH9    CH10    STP     READY         CH1         CH9
+Page  935: ADC_DR                         D1          D9        D10         D17   D1                    D9                          D1
+Page  936: Analog-to-digital converters (ADC)                                                                                                                 RM0433
+Page  936: ADC state(2)                RDY             CH1        CH2         CH3         CH4       READY        CH1     CH2          CH3         CH4     RDY
+Page  936: ADC_DR                                              D1          D2          D3                D4           D1             D2         D3         D4
+Page  936: ADC(2)      RDY          CH1   CH2        CH3           CH4          CH1         CH2      CH3           CH4        CH1        STOP       RDY
+Page  936: ADC_DR                              D1            D2         D3           D4           D1        D2         D3           D4
+Page  936: Data register, data alignment and offset (ADC_DR, ADC_JDRy, OFFSETy,
+Page  936: converted data is stored into the ADC_DR data register which is 32 bits wide.
+Page  936: converted data is stored into the corresponding ADC_JDRy data register which is 32 bits
+Page  936: The OVSS[3:0] and LSHIFT[3:0] bitfields in the ADC_CFGR2 register selects the alignment
+Page  937: RM0433                                                               Analog-to-digital converters (ADC)
+Page  937: in OFFSETy[25:0] bit field into ADC_OFRy register. The channel to which the offset will be
+Page  937: applied is programmed into the bits OFFSETy_CH[4:0] of ADC_OFRy register. In this case,
+Page  937: When reading data from ADC_DR (regular channel) or from ADC_JDRy (injected channel,
+Page  937: y=1,2,3,4), the offset compensation is disabled when ADC_OFRy [25:0] bitfield is reset.
+Page  937: Otherwise, the offset for ADC_OFRy[30:26] channel is enabled.
+Page  938: Analog-to-digital converters (ADC)                                                                                        RM0433
+Page  939: RM0433                                                                             Analog-to-digital converters (ADC)
+Page  940: Analog-to-digital converters (ADC)                                                                       RM0433
+Page  940: For each offset correction channel 1 to 4, a RSHIFT1..4 bit in the ADC_CFGR2 register
+Page  940: This mode is enabled with the SSATE bit in the ADC_OFRy register.
+Page  941: RM0433                                                                  Analog-to-digital converters (ADC)
+Page  941: ADC overrun (OVSR, OVRMOD)
+Page  941: When an overrun condition occurs, the ADC is still operating and can continue to convert
+Page  941: normally and the ADC_DR register will always contain the latest converted data.
+Page  941: ADCSTART(1)
+Page  941: ADC state(2)      RDY        CH1   CH2     CH3    CH4    CH5   CH6   CH7   STOP          RDY
+Page  941: ADC_DR read access
+Page  941: ADC_DR (OVRMOD=0)                             D1     D2      D3    D4
+Page  941: ADC_DR (OVRMOD=1)                             D1     D2      D3    D4    D5    D6
+Page  941: handle each data. Each time a conversion is complete, EOC is set and the ADC_DR
+Page  942: Analog-to-digital converters (ADC)                                                              RM0433
+Page  942: It may be useful to let the ADC convert one or more channels without reading the data each
+Page  942: prevent the ADC from continuing to convert and the ADC_DR register will always contain
+Page  942: stored in the ADC_DR register.
+Page  942: When the DMA mode is enabled (DMNGT bit = 01 or 11 in the ADC_CFGR register in single
+Page  942: ADC mode or MDMA different from 0b00 in dual ADC mode), a DMA request is generated
+Page  942: ADC_DR register to the destination location selected by the software.
+Page  942: transfer request in time, the ADC stops generating DMA requests and the data
+Page  942: (refer to Section : ADC overrun (OVSR, OVRMOD)).
+Page  942: configured with bit DMNGT of the ADC_CFGR register in single ADC mode, or with bit
+Page  942: DAMDF of the ADCx_CCR register in dual ADC mode:
+Page  942: In this mode, the ADC generates a DMA transfer request each time a new conversion data
+Page  942: •    The content of the ADC data register is frozen.
+Page  943: RM0433                                                           Analog-to-digital converters (ADC)
+Page  943: In this mode, the ADC generates a DMA transfer request each time a new conversion data
+Page  943: The ADC conversion results can be transferred directly to the Digital Filter for Sigma Delta
+Page  943: The ADC transfers 16 least significant bits of the regular data register data to the DFSDM,
+Page  943: ADC_DR[31:16] = don’t care
+Page  943: ADC_DR[15] = sign
+Page  943: ADC_DR[14:0] = data
+Page  943: The ADC implements an auto-delayed conversion mode controlled by the AUTDLY
+Page  943: of encountering an ADC overrun.
+Page  943: •   For a regular conversion: once the ADC_DR register has been read or if the EOC bit
+Page  943: This is a way to automatically adapt the speed of the ADC to the speed of the system which
+Page  944: Analog-to-digital converters (ADC)                                                               RM0433
+Page  944: •    Once the injected sequence is complete, the ADC waits for the delay (if not ended) of
+Page  945: RM0433                                                                                                 Analog-to-digital converters (ADC)
+Page  945: ADC_DR read access
+Page  945: ADC state       RDY            CH1     DLY        CH2    DLY    CH3                  DLY             CH1           DLY         STOP               RDY
+Page  945: ADC_DR                                      D1                D2                           D3                                          D1
+Page  945: ADC state     RDY        CH1         DLY         CH2         DLY             CH5         CH6        CH3           DLY           CH1            DLY          CH2
+Page  945: ADC_DR
+Page  945: ADC_DR                                    D1                                      D2                                      D3                        D1
+Page  945: ADC_JDR1                                                                                                                 D5
+Page  945: ADC_JDR2                                                                                                                          D6
+Page  946: Analog-to-digital converters (ADC)                                                                            RM0433
+Page  946: ADC       RDY     CH1       DLY RDY CH2 DLY RDY CH5 RDY CH6            CH3    DLY RDY CH1 DLY RDYCH2
+Page  946: ADC_DR read access
+Page  946: ADC_DR                                 D1                        D2                           D3             D1
+Page  946: ADC_JDR1                                                                                 D5
+Page  946: ADC_JDR2                                                                                           D6
+Page  947: RM0433                                                                                                                  Analog-to-digital converters (ADC)
+Page  947: ADC
+Page  947: ADC_DR read access
+Page  947: ADC_DR                                           D1                                                      D2                                                     D3
+Page  947: ADC_JDR1                                                                                                                                D5
+Page  947: ADC_JDR2                                                                                                                                     D6
+Page  947: ADC state         RDY            CH1              DLY (CH1)              CH2            CH5         CH6         DLY (inj)      DLY(CH2)              CH3            DLY         CH1
+Page  947: ADC_DR read access
+Page  947: ADC_DR                                                      D1                                                   D2                                                       D3
+Page  947: ADC_JDR1                                                                                                                                   D5
+Page  947: ADC_JDR2                                                                                                                                        D6
+Page  948: Analog-to-digital converters (ADC)                                                                            RM0433
+Page  948: ADC_IER register (x=1,2,3).
+Page  948: The ADC conversion result is compared to the lower and higher thresholds before
+Page  948: The AWD analog watchdog 1 is enabled by setting the AWD1EN bit in the ADC_CFGR
+Page  948: Table 207 shows how the ADC_CFGRy registers should be configured to enable the analog
+Page  948: The AWD1 analog watchdog status bit is set if the analog voltage converted by the ADC is
+Page  949: RM0433                                                           Analog-to-digital converters (ADC)
+Page  949: These thresholds are programmed in bits HTR1[25:0] of the ADC_HTR1 register and
+Page  949: LTR1[25:0] of the ADC_LTR1 register for the analog watchdog 1.
+Page  949: programmed with the ADC_HTR2, ADC_LTR2, ADC_LTR3, and ADC_HTR3 registers.
+Page  949: ADCx_AWDy_OUT signal output generation
+Page  949: Each analog watchdog is associated to an internal hardware signal ADCx_AWDy_OUT
+Page  949: (x=ADC number, y=watchdog number) which is directly connected to the ETR input
+Page  949: how to select the ADCx_AWDy_OUT signal as ETR.
+Page  950: Analog-to-digital converters (ADC)                                                                            RM0433
+Page  950: ADCx_AWDy_OUT is activated when the associated analog watchdog is enabled:
+Page  950: •     ADCx_AWDy_OUT is set when a guarded conversion is outside the programmed
+Page  950: •     ADCx_AWDy_OUT is reset after the end of the next guarded conversion which is
+Page  950: •     ADCx_AWDy_OUT is also reset when disabling the ADC (when setting ADDIS=1).
+Page  950: has no influence on the generation of ADCy_AWDx_OUT.
+Page  950: generation of ADCx_AWDy_OUT (ex: ADCy_AWDy_OUT can toggle while AWDx flag
+Page  950: Figure 172. ADCy_AWDx_OUT signal generation (on all regular channels)
+Page  950: ADC
+Page  950: ADCy_AWDx_OUT
+Page  950: Figure 173. ADCy_AWDx_OUT signal generation (AWDx flag not cleared by SW)
+Page  950: ADC
+Page  950: ADCy_AWDx_OUT
+Page  951: RM0433                                                                                Analog-to-digital converters (ADC)
+Page  951: Figure 174. ADCy_AWDx_OUT signal generation (on a single regular channel)
+Page  951: ADC
+Page  951: ADCy_AWDx_OUT
+Page  951: Figure 175. ADCy_AWDx_OUT signal generation (on all injected channels)
+Page  951: ADC
+Page  951: ADCy_AWDx_OUT
+Page  952: Analog-to-digital converters (ADC)                                                                   RM0433
+Page  952: The oversampling ratio N is defined using the OSR[9:0] bits in the ADC_CFGR2 register,
+Page  952: 10 bits, and is defined using the OVSS[3:0] bits in the ADC_CFGR2 register.
+Page  952: least significant bits left apart by the shifting, before being transferred into the ADC_DR data
+Page  953: RM0433                                                            Analog-to-digital converters (ADC)
+Page  953: Single ADC operating modes support when oversampling
+Page  953: In oversampling mode, most of the ADC operating modes are maintained:
+Page  953: •    ADC conversions start either by software or with triggers
+Page  953: •    ADC stop during a conversion (abort)
+Page  953: bits in ADC_CFGR register) are accumulated, truncated, rounded and shifted in the
+Page  953: ADC_CFGR is ignored and the data are always provided right-aligned.
+Page  953: comparison is done between ADC_DR[11:4] and HT[0:7] / LT[[0:7], and HT[11:8] / LT[11:8]
+Page  953: TROVS bit in ADC_CFGR2, to be able to have an oversampling frequency defined by a
+Page  954: Analog-to-digital converters (ADC)                                                                               RM0433
+Page  955: RM0433                                                              Analog-to-digital converters (ADC)
+Page  956: Analog-to-digital converters (ADC)                                                                         RM0433
+Page  956: the ADC must be configured as following: JAUTO=1, DISCEN=0, JDISCEN=0, ROVSE=1,
+Page  956: Dual ADC modes support when oversampling
+Page  956: It is possible to have oversampling enabled when working in dual ADC configuration, for the
+Page  956: injected simultaneous mode and regular simultaneous mode. In this case, the two ADCs
+Page  956: All other dual ADC modes are not supported when either regular or injected oversampling is
+Page  957: RM0433                                                             Analog-to-digital converters (ADC)
+Page  957: 24.3.32   Dual ADC modes
+Page  957: In devices with two ADCs or more, dual ADC modes can be used (see Figure 182):
+Page  957: •   ADC1 and ADC2 can be used together in dual mode (ADC1 is master)
+Page  957: In dual ADC mode the start of conversion is triggered alternately or simultaneously by the
+Page  957: ADCx master to the ADC slave, depending on the mode selected by the bits DUAL[4:0] in
+Page  957: the ADCx_CCR register.
+Page  957: In dual ADC mode (when bits DUAL[4:0] in ADCx_CCR register are not equal to zero), the
+Page  957: bits CONT, AUTDLY, DISCEN, DISCNUM[2:0], JDISCEN, JQM, JAUTO of the ADC_CFGR
+Page  957: register are shared between the master and slave ADC: the bits in the slave ADC are
+Page  957: always equal to the corresponding bits of the master ADC.
+Page  957: JEXTEN, JEXTSEL of the master ADC only, to configure a software or hardware trigger,
+Page  958: Analog-to-digital converters (ADC)                                                            RM0433
+Page  958: and a regular or injected trigger. (the bits EXTEN[1:0] and JEXTEN[1:0] of the slave ADC
+Page  958: ADSTP of the master ADC, the corresponding bit of the slave ADC is also automatically
+Page  958: set. However, bit ADSTART or bit ADSTP of the slave ADC is not necessary cleared at the
+Page  958: same time as the master ADC bit.
+Page  958: JADSTP of the master ADC, the corresponding bit of the slave ADC is also automatically
+Page  958: set. However, bit JADSTART or bit JADSTP of the slave ADC is not necessary cleared at
+Page  958: the same time as the master ADC bit.
+Page  958: In dual ADC mode, the converted data of the master and slave ADC can be read in parallel,
+Page  958: by reading the ADC common data register (ADCx_CDR). The status bits can be also read in
+Page  958: parallel by reading the dual-mode status register (ADCx_CSR).
+Page  959: RM0433                                                                                  Analog-to-digital converters (ADC)
+Page  959: Figure 182. Dual ADC block diagram(1)
+Page  959: Slave ADC
+Page  959: ADCx_INP0,                                        Internal triggers
+Page  959: ADCx_INN0
+Page  959: ADCx_INP2,        GPIO                                                         Regular data register
+Page  959: ADCx_INN2         ports                                                             (32-bits)
+Page  959: ADCx_INP19,                                                                               Injected data registers
+Page  959: ADCx_INN19                                                                                      (4 x32-bits)
+Page  959: Master ADC
+Page  959: 1.    External triggers also exist on slave ADC but are not shown for the purposes of this diagram.
+Page  959: 2.    The ADC common data register (ADCx_CDR) contains both the master and slave ADC regular converted data.
+Page  960: Analog-to-digital converters (ADC)                                                                 RM0433
+Page  960: the injected group multiplexer of the master ADC (selected by the JEXTSEL[4:0] bits in the
+Page  960: ADC_JSQR register).
+Page  960: Note:      Do not convert the same channel on the two ADCs (no overlapping sampling times for the
+Page  960: two ADCs when converting the same channel).
+Page  960: Regular conversions can be performed on one or all ADCs. In that case, they are
+Page  960: •    At the end of injected sequence of conversion event (JEOS) on the master ADC, the
+Page  960: converted data is stored into the master ADC_JDRy registers and a JEOS interrupt is
+Page  960: •    At the end of injected sequence of conversion event (JEOS) on the slave ADC, the
+Page  960: converted data is stored into the slave ADC_JDRy registers and a JEOS interrupt is
+Page  960: ADC_JDRy and slave ADC_JDRy registers).
+Page  960: Figure 183. Injected simultaneous mode on 4 channels: dual ADC mode
+Page  960: MASTER ADC          CH1           CH2    CH3        CH4
+Page  960: SLAVE ADC         CH15         CH14    CH13       CH12
+Page  960: Sampling               MASTER and SLAVE ADC
+Page  960: trigger event is accepted only if both JEOS bits of the master and the slave ADC have
+Page  960: •    Once a regular sequence of conversions of the master ADC has ended, a new regular
+Page  960: trigger event of the master ADC is accepted only if the master data register (ADC_DR)
+Page  960: has been read. Any new regular trigger events occurring for the master ADC during the
+Page  960: There is the same behavior for regular sequences occurring on the slave ADC.
+Page  961: RM0433                                                           Analog-to-digital converters (ADC)
+Page  961: from the regular group multiplexer of the master ADC (selected by the EXTSEL[4:0] bits in
+Page  961: the ADC_CFGR register). A simultaneous trigger is provided to the slave ADC.
+Page  961: Note:    Do not convert the same channel on the two ADCs (no overlapping sampling times for the
+Page  961: two ADCs when converting the same channel).
+Page  961: •   At the end of each conversion event (EOC) on the master ADC, a master EOC interrupt
+Page  961: is generated (if EOCIE is enabled) and software can read the ADC_DR of the master
+Page  961: ADC.
+Page  961: •   At the end of each conversion event (EOC) on the slave ADC, a slave EOC interrupt is
+Page  961: generated (if EOCIE is enabled) and software can read the ADC_DR of the slave ADC.
+Page  961: register (ADCx_CDR).
+Page  961: –    Configure the DMA master ADC channel to read ADC_DR from the master. DMA
+Page  961: requests are generated at each EOC event of the master ADC.
+Page  961: –    Configure the DMA slave ADC channel to read ADC_DR from the slave. DMA
+Page  961: requests are generated at each EOC event of the slave ADC.
+Page  961: •    Configuring Dual ADC mode data format DAMDF[1:0] bits, which leaves one DMA
+Page  961: ADC channel to read the common ADC register (ADCx_CDR)
+Page  961: have occurred. At that time, the slave ADC converted data is available in the
+Page  961: upper half-word of the ADCx_CDR 32-bit register and the master ADC converted
+Page  961: data is available in the lower half-word of ADCx_CCR register.
+Page  961: –   both EOC flags are cleared when the DMA reads the ADCx_CCR register.
+Page  962: Analog-to-digital converters (ADC)                                                                  RM0433
+Page  962: Figure 184. Regular simultaneous mode on 16 channels: dual ADC mode
+Page  962: MASTER ADC         CH1          CH2     CH3     CH4    ...          CH16
+Page  962: SLAVE ADC        CH16      CH14        CH13    CH12   ...           CH1
+Page  962: Sampling                   MASTER and SLAVE ADC
+Page  962: the sequence is started only if the common data register, ADCx_CDR (or the regular
+Page  962: data register of the master ADC) has been read (delay phase).
+Page  962: trigger event is accepted only if the common data register (ADCx_CDR) has been read
+Page  962: the slave ADC is inferior to the length of the conversion of the master ADC. Note that
+Page  962: trigger source comes from the regular channel multiplexer of the master ADC.
+Page  962: •    The master ADC starts immediately.
+Page  962: •    The slave ADC starts after a delay of several ADC clock cycles after the sampling
+Page  962: phase of the master ADC has complete.
+Page  962: DELAY bits in the ADCx_CCR register. This delay starts to count after the end of the
+Page  962: sampling phase of the master conversion. This way, an ADC cannot start a conversion if the
+Page  963: RM0433                                                            Analog-to-digital converters (ADC)
+Page  963: complementary ADC is still sampling its input (only one ADC can sample the input signal at
+Page  963: between the opening of the analog switch of the master ADC sampling phase and the
+Page  963: closing of the analog switch of the slave ADC sampling phase.
+Page  963: resolution. However the user must properly calculate this delay to ensure that an ADC
+Page  963: does not start a conversion while the other ADC is still sampling its input.
+Page  963: If the CONT bit is set on both master and slave ADCs, the selected regular channels of both
+Page  963: ADCs are continuously converted.
+Page  963: conversion event (EOC) on the slave ADC. A slave and master EOC interrupts are
+Page  963: generated (if EOCIE is enabled) and the software can read the ADC_DR of the slave/master
+Page  963: ADC.
+Page  963: register (ADCx_CDR). But in this case, the user must ensure that the duration of the
+Page  963: requests on each ADC cannot be used and it is mandatory to use the MDMA mode, as
+Page  963: •   A single DMA channel is used (the one of the master). Configure the DMA master ADC
+Page  963: channel to read the common ADC register (ADCx_CDR).
+Page  963: occurred. At that time, the slave ADC converted data is available in the upper half-word
+Page  963: of the ADCx_CDR 32-bit register and the master ADC converted data is available in the
+Page  963: lower half-word of ADCx_CCR register.
+Page  963: •   Both EOC flags are cleared when the DMA reads the ADCx_CCR register.
+Page  963: Figure 185. Interleaved mode on 1 channel in continuous conversion mode: dual ADC
+Page  963: MASTER ADC                CH1           CH1
+Page  963: SLAVE ADC                       CH1           CH1
+Page  963: 3.5 ADCCLK 3.5 ADCCLK              slave ADC
+Page  964: Analog-to-digital converters (ADC)                                                                                     RM0433
+Page  964: Figure 186. Interleaved mode on 1 channel in single conversion mode: dual ADC
+Page  964: MASTER ADC                     CH1                                     CH1
+Page  964: SLAVE ADC                             CH1                                   CH1
+Page  964: 3.5 ADCCLK     End of conversion on 3.5 ADCCLK             End of conversion on
+Page  964: cycles      master and slave ADC    cycles              master and slave ADC
+Page  964: ADC1 (master)       CH1            CH1          CH1                       CH1         CH1          CH1
+Page  964: ADC2 (slave)                 CH2          CH2            CH2                    CH2          CH2          CH0
+Page  964: from the injected group multiplexer of the master ADC.
+Page  965: RM0433                                                                    Analog-to-digital converters (ADC)
+Page  965: Injected discontinuous mode disabled (JDISCEN=0 for both ADC)
+Page  965: 1.   When the 1st trigger occurs, all injected master ADC channels in the group are
+Page  965: 2.   When the 2nd trigger occurs, all injected slave ADC channels in the group are
+Page  965: A JEOS interrupt, if enabled, is generated after all injected channels of the master ADC in
+Page  965: A JEOS interrupt, if enabled, is generated after all injected channels of the slave ADC in the
+Page  965: the master ADC in the group.
+Page  965: Figure 188. Alternate trigger: injected group of each ADC
+Page  965: 1st trigger        master ADC      master ADC       master ADC
+Page  965: MASTER ADC
+Page  965: SLAVE ADC
+Page  965: slave ADC         slave ADC      slave ADC
+Page  965: 3rd trigger          master ADC      master ADC    master ADC
+Page  965: MASTER ADC
+Page  965: SLAVE ADC
+Page  965: slave ADC     slave ADC     slave ADC
+Page  965: Note:    Regular conversions can be enabled on one or all ADCs. In this case the regular
+Page  965: ADC has to perform an injected conversion. It is resumed when the injected conversion is
+Page  965: The time interval between 2 trigger events must be greater than or equal to 1 ADC clock
+Page  965: same ADC is the same as in the single ADC mode.
+Page  966: Analog-to-digital converters (ADC)                                                                                RM0433
+Page  966: Injected discontinuous mode enabled (JDISCEN=1 for both ADC)
+Page  966: If the injected discontinuous mode is enabled for both master and slave ADCs:
+Page  966: •       When the 1st trigger occurs, the first injected channel of the master ADC is converted.
+Page  966: •       When the 2nd trigger occurs, the first injected channel of the slave ADC is converted.
+Page  966: A JEOS interrupt, if enabled, is generated after all injected channels of the master ADC in
+Page  966: A JEOS interrupt, if enabled, is generated after all injected channels of the slave ADC in the
+Page  966: Figure 189. Alternate trigger: 4 injected channels (each ADC) in discontinuous mode
+Page  966: JEOC on                                                     master ADC
+Page  966: master ADC         master ADC           master ADC
+Page  966: MASTER ADC
+Page  966: SLAVE ADC
+Page  966: master ADC        master ADC              master ADC                 JEOC, JEOS on
+Page  966: master ADC
+Page  966: sequences. If the above conditions are not respected, the ADC with the shortest sequence
+Page  966: may restart while the ADC with the longest sequence is completing the previous
+Page  967: RM0433                                                                          Analog-to-digital converters (ADC)
+Page  967: conversion, the regular conversion of all (master/slave) ADCs is stopped and resumed
+Page  967: sequences. If the above conditions are not respected, the ADC with the shortest sequence
+Page  967: may restart while the ADC with the longest sequence is completing the previous
+Page  967: ADC MASTER reg       CH1          CH2             CH3              CH3          CH4                      CH4          CH5
+Page  967: ADC MASTER inj                                         CH1
+Page  967: ADC SLAVE reg        CH4          CH6             CH7              CH7          CH8                      CH8          CH9
+Page  967: ADC SLAVE inj                                                                         CH1
+Page  967: ADC MASTER reg       CH1     CH2        CH3                CH3       CH4         CH4            CH5              CH5    CH6
+Page  967: ADC MASTER inj                            CH14                         CH14                       CH14
+Page  967: ADC SLAVE reg        CH7      CH8      CH9                 CH9     CH10          CH10         CH11               CH11   CH12
+Page  967: ADC SLAVE inj                                     CH15                                           CH15
+Page  968: Analog-to-digital converters (ADC)                                                                                              RM0433
+Page  968: ADC1 (master)       CH0            CH0          CH0                   Conversions        CH0          CH0            CH0
+Page  968: ADC2 (slave)                CH0           CH0            CH0                                    CH0          CH0            CH0
+Page  968: ADC1 (master)       CH1            CH1          CH1                   Conversions        CH1          CH1            CH1
+Page  968: ADC2 (slave)                CH2           CH2            CH2                                    CH2          CH2            CH2
+Page  968: ADC1 (master)        CH1            CH1           CH1                   Conversions         CH1          CH1           CH1
+Page  968: ADC2 (slave)                CH2            CH2           CH2                                      CH2           CH2            CH2
+Page  969: RM0433                                                                Analog-to-digital converters (ADC)
+Page  969: DMA requests in dual ADC mode
+Page  969: In all dual ADC modes, it is possible to use two DMA channels (one for the master, one for
+Page  969: ADC Master regular      CH1             CH1
+Page  969: ADC Master EOC
+Page  969: ADC Slave regular          CH2             CH2
+Page  969: ADC Slave EOC
+Page  969: DMA request from ADC Master
+Page  969: ADC_DR          ADC_DR
+Page  969: DMA request from ADC Slave
+Page  969: ADC_DR           ADC_DR
+Page  969: in the ADCx_CCR register:
+Page  969: alternatively available in the ADCx_CDR2 32-bit register. This mode is used in
+Page  969: 1st DMA request: ADCx_CDR2[31:0] = MST_ADC_DR[31:0]
+Page  969: 2nd DMA request: ADCx_CDR2[31:0] = SLV_ADC_DR[31:0]
+Page  969: and the 32-bit register ADCx_CDR contains the two half-words representing two ADC-
+Page  970: Analog-to-digital converters (ADC)                                                                                           RM0433
+Page  970: converted data items. The slave ADC data take the upper half-word and the master
+Page  970: ADC data take the lower half-word.
+Page  970: 1st DMA request: ADCx_CDR[31:0] = SLV_ADC_DR[15:0] | MST_ADC_DR[15:0]
+Page  970: 2nd DMA request: ADCx_CDR[31:0] = SLV_ADC_DR[15:0] |
+Page  970: MST_ADC_DR[15:0]
+Page  970: ADC Master regular             CH1             CH1                              CH1             CH1
+Page  970: ADC Slave EOC
+Page  970: ADC Slave regular
+Page  970: ADC Slave EOC
+Page  970: ADC Master
+Page  970: ADC Slave
+Page  970: ADC Master regular
+Page  970: ADC Master EOC          Delay            Delay           Delay             Delay              Delay
+Page  970: ADC Slave regular
+Page  970: ADC Slave EOC
+Page  970: ADC Master
+Page  970: ADC Slave
+Page  971: RM0433                                                        Analog-to-digital converters (ADC)
+Page  971: Note:    When using Multi ADC mode, the user must take care to configure properly the duration of
+Page  971: on each DMA request (two data items are available), two bytes representing two ADC
+Page  971: ADCx_CDR[7:0] = MST_ADC_DR[7:0]t0
+Page  971: ADCx_CDR[15:8] = SLV_ADC_DR[7:0]t0
+Page  971: ADCx_CDR[23:16] = MST_ADC_DR[7:0]t1
+Page  971: ADCx_CDR[31:24] = SLV_ADC_DR[7:0]t1
+Page  971: ADCx_CDR[7:0] = MST_ADC_DR[7:0]t2
+Page  971: ADCx_CDR[15:8] = SLV_ADC_DR[7:0]t2
+Page  971: ADCx_CDR[23:16] = MST_ADC_DR[7:0]t3
+Page  971: ADCx_CDR[31:24] = SLV_ADC_DR[7:0]t3
+Page  971: In dual ADC mode (when DUAL[4:0] is not equal to b00000), if an overrun is detected on
+Page  971: one of the ADCs, the DMA requests are no longer issued to ensure that all the data
+Page  971: It may happen that the EOC bit corresponding to one ADC remains set because the data
+Page  971: register of this ADC contains valid data.
+Page  971: DMA one shot mode/ DMA circular mode when Multi ADC mode is selected
+Page  971: When DAMDF mode is selected (0b10 or 0b11), bit DMNGT[1:0]=0b10 in the master ADC’s
+Page  971: ADCx_CCR register must also be configured to select between DMA one shot mode and
+Page  971: Stopping the conversions in dual ADC modes
+Page  971: The user must set the control bits ADSTP/JADSTP of the master ADC to stop the
+Page  971: conversions of both ADC in dual ADC mode. The other ADSTP control bit of the slave ADC
+Page  971: has no effect in dual ADC mode.
+Page  971: Once both ADC are effectively stopped, the bits ADSTART/JADSTART of the master and
+Page  971: slave ADCs are both cleared by hardware.
+Page  971: DFSDM mode in dual ADC mode interleaved mode
+Page  971: In dual ADC interleaved modes, the ADC conversion results can be transferred directly to
+Page  972: Analog-to-digital converters (ADC)                                                                          RM0433
+Page  972: This mode is enabled by setting the bits DMNGT[1:0] = 0b10 in the master ADC’s
+Page  972: ADC_CFGR register.
+Page  972: The ADC transfers alternatively the 16 least significant bits of the regular data register from
+Page  972: ADC_DR[31:16] = 0x0000
+Page  972: ADC_DR[15] = sign
+Page  972: ADC_DR[14:0] = data
+Page  972: DFSDM mode in dual ADC simultaneous mode
+Page  972: The dual mode is not required to use DFSDM in dual ADC simultaneous mode since
+Page  972: The temperature sensor is internally connected to ADC3 VINP[18] input channel which is
+Page  972: ADCx
+Page  972: sensor                              ADC input
+Page  972: Note:      The VSENSEEN bit must be set to enable the conversion of internal channel ADC3 VINP[18]
+Page  973: RM0433                                                                                   Analog-to-digital converters (ADC)
+Page  973: 1.   Select the ADC3 VINP[18] input channels (with the appropriate sampling time).
+Page  973: 3.   Set the VSENSEEN bit in the ADCx_CCR register to wake up the temperature sensor
+Page  973: 4.   Start the ADC conversion.
+Page  973: 5.   Read the resulting VSENSE data in the ADC data register.
+Page  973: •    TS_DATA is the actual temperature sensor output value converted by ADC
+Page  973: VSENSE at the correct level. The ADC also has a startup time after power-on, so to minimize
+Page  973: The VBATEN bit in the ADCx_CCR register is used to switch to the battery voltage. As the
+Page  973: VBAT voltage could be higher than VDDA, to ensure the correct operation of the ADC, the
+Page  973: when VBATEN is set, to connect VBAT/4 to the ADC3 VINP[17]input channels. As a
+Page  973: when needed, for ADC conversion.
+Page  974: Analog-to-digital converters (ADC)                                                                                 RM0433
+Page  974: ADCx
+Page  974: ADC input
+Page  974: Note:      The VBATEN bit must be set to enable the conversion of internal channels ADC3 VINP[17]
+Page  974: ADC VREF+ voltage level.
+Page  974: The internal voltage reference is internally connected to the input channel ADC3 VINP[19].
+Page  974: VREFEN control bit           ADCx
+Page  974: ADC input
+Page  974: Note:      The VREFEN bit into ADCx_CCR register must be set to enable the conversion of internal
+Page  974: channels ADC3 VINP[19] (VREFINT).
+Page  975: RM0433                                                                                                     Analog-to-digital converters (ADC)
+Page  975: calibration data acquired by the ADC during the manufacturing process at VDDA = 3.3 V can
+Page  975: •   VREFINT_DATA is the actual VREFINT output value converted by ADC
+Page  975: Converting a supply-relative ADC measurement to an absolute voltage value
+Page  975: The ADC is designed to deliver a digital value corresponding to the ratio between VREF+ and
+Page  975: For most applications VDDA value is unknown and ADC converted values are right-aligned.
+Page  975: V CHANNELx = ------------------------------------- × ADC_DATA
+Page  975: 3.3 V × VREFINT_CAL × ADC_DATA
+Page  975: For applications where VDDA is known and ADC converted values are right-aligned, the
+Page  975: V CHANNELx = ------------------------------------- × ADC_DATA
+Page  975: –    ADC_DATA is the value measured by the ADC on channel x (right-aligned)
+Page  975: –    VREFINT_DATA is the actual VREFINT output value converted by the ADC
+Page  975: –    FULL_SCALE is the maximum digital value of the ADC output. For example with
+Page  975: Note:    If ADC measurements are done using an output format other than 16-bit right-aligned, all
+Page  976: Analog-to-digital converters (ADC)                                                                RM0433
+Page  976: 24.4       ADC interrupts
+Page  976: For each ADC, an interrupt can be generated:
+Page  976: •    After ADC power-up, when the ADC is ready (flag ADRDY)
+Page  976: Table 210. ADC interrupts per each ADC
+Page  976: ADC ready                                                       ADRDY           ADRDYIE
+Page  977: RM0433                                                                          Analog-to-digital converters (ADC)
+Page  977: 24.5            ADC registers (for each ADC)
+Page  977: 24.5.1          ADC interrupt and status register (ADC_ISR)
+Page  977: LT3[7:0] and HT3[7:0] of ADC_TR3 register. It is cleared by software writing 1 to it.
+Page  977: LT2[7:0] and HT2[7:0] of ADC_TR2 register. It is cleared by software writing 1 to it.
+Page  977: LT1[11:0] and HT1[11:0] of ADC_TR1 register. It is cleared by software. writing 1 to it.
+Page  978: Analog-to-digital converters (ADC)                                                                      RM0433
+Page  978: available in the corresponding ADC_JDRy register. It is cleared by software writing 1 to it or by
+Page  978: reading the corresponding ADC_JDRy register
+Page  978: Bit 4 OVSR: ADC overrun
+Page  978: available in the ADC_DR register. It is cleared by software writing 1 to it or by reading the ADC_DR
+Page  978: Bit 0 ADRDY: ADC ready
+Page  978: This bit is set by hardware after the ADC has been enabled (bit ADEN=1) and when the ADC
+Page  978: 0: ADC not yet ready to start conversion (or the flag event was already acknowledged and cleared
+Page  978: 1: ADC is ready to start conversion
+Page  979: RM0433                                                                        Analog-to-digital converters (ADC)
+Page  979: 24.5.2           ADC interrupt enable register (ADC_IER)
+Page  980: Analog-to-digital converters (ADC)                                                                         RM0433
+Page  980: Bit 0 ADRDYIE: ADC ready interrupt enable
+Page  980: This bit is set and cleared by software to enable/disable the ADC Ready interrupt.
+Page  981: RM0433                                                                      Analog-to-digital converters (ADC)
+Page  981: 24.5.3        ADC control register (ADC_CR)
+Page  981: ADCA   ADCA   DEEP ADVREG                           LINCAL LINCAL LINCAL                                          ADCAL
+Page  981: Bit 31 ADCAL: ADC calibration
+Page  981: This bit is set by software to start the calibration of the ADC. Program first the bit ADCALDIF to
+Page  981: 1: Write 1 to calibrate the ADC. Read at 1 means that a calibration in progress.
+Page  981: Note: The software is allowed to launch a calibration by setting ADCAL only when ADEN=0.
+Page  981: The software is allowed to update the calibration factor by writing ADC_CALFACT only when
+Page  981: ADEN=1 and ADSTART=0 and JADSTART=0 (ADC enabled and no conversion is ongoing)
+Page  981: Bit 30 ADCALDIF: Differential mode for calibration
+Page  981: 0: Writing ADCAL will launch a calibration in Single-ended inputs Mode.
+Page  981: 1: Writing ADCAL will launch a calibration in Differential inputs Mode.
+Page  981: Note: The software is allowed to write this bit only when the ADC is disabled and is not calibrating
+Page  981: (ADCAL=0, JADSTART=0, JADSTP=0, ADSTART=0, ADSTP=0, ADDIS=0 and ADEN=0).
+Page  981: This bit is set and cleared by software to put the ADC in deep-power-down mode.
+Page  981: 0: ADC not in deep-power down
+Page  981: 1: ADC in deep-power-down (default reset state)
+Page  981: Note: The software is allowed to write this bit only when the ADC is disabled (ADCAL=0,
+Page  981: Bit 28 ADVREGEN: ADC voltage regulator enable
+Page  981: This bits is set by software to enable the ADC voltage regulator.
+Page  981: Before performing any operation such as launching a calibration or enabling the ADC, the ADC
+Page  981: 0: ADC Voltage regulator disabled
+Page  981: 1: ADC Voltage regulator enabled.
+Page  981: For more details about the ADC voltage regulator enable and disable sequences, refer to
+Page  981: Section 24.3.6: ADC deep-power-down mode (DEEPPWD) & ADC voltage regulator (ADVREGEN).
+Page  981: The software can program this bit field only when the ADC is disabled (ADCAL=0, JADSTART=0,
+Page  982: Analog-to-digital converters (ADC)                                                                           RM0433
+Page  982: linearity factor 6 into the LINCALFACT[29:0] of the ADC_CALFACT2 register. The bit will be reset by
+Page  982: hardware when the ADC_CALFACT2 register can be read (software must poll the bit until it is
+Page  982: LINCALFACT[29:0] of the ADC_CALFACT2 register. A bit set will launch the linearity factor 6 update
+Page  982: Note: ADC_CALFACT2[29:10] contains 0. ADC_CALFACT2[9:0] corresponds linearity correction
+Page  982: 24.3.8: Calibration (ADCAL, ADCALDIF, ADCALLIN, ADC_CALFACT) for details.
+Page  982: when ADEN=1 and ADSTART=0 and JADSTART=0 (ADC enabled and no conversion is
+Page  982: Note: ADC_CALFACT2[29:0] corresponds linearity correction factor bits[149:120].
+Page  982: Note: ADC_CALFACT2[29:0] correspond linearity correction factor bits[119:90].
+Page  982: Note: ADC_CALFACT2[29:0] corresponds linearity correction factor bits[89:60].
+Page  982: Note: ADC_CALFACT2[29:0] corresponds linearity correction factor bits[59:30].
+Page  982: Note: ADC_CALFACT2[29:0] corresponds linearity correction factor bits[29:0].
+Page  983: RM0433                                                                  Analog-to-digital converters (ADC)
+Page  983: Bit 16 ADCALLIN: Linearity calibration
+Page  983: 0: Writing ADCAL will launch a calibration without the Linearity calibration.
+Page  983: 1: Writing ADCAL will launch a calibration with he Linearity calibration.
+Page  983: Note: The software is allowed to write this bit only when the ADC is disabled and is not calibrating
+Page  983: (ADCAL=0, JADSTART=0, JADSTP=0, ADSTART=0, ADSTP=0, ADDIS=0 and ADEN=0).
+Page  983: 0: Boost mode off. Used when ADC clock < 20 MHz to save power at lower clock frequency.
+Page  983: 1: Boost mode on. Must be used when ADC clock > 20 MHz.
+Page  983: When dual mode is enabled (bits DAMDF of ADCx_CCR register are not equal to zero), the bit
+Page  983: BOOST of the slave ADC is no more writable and its content must be equal to the master ADC
+Page  983: Bit 5 JADSTP: ADC stop of injected conversion command
+Page  983: It is cleared by hardware when the conversion is effectively discarded and the ADC injected
+Page  983: sequence and triggers can be re-configured. The ADC is then ready to accept a new start of injected
+Page  983: 0: No ADC stop injected conversion command ongoing
+Page  983: Note: The software is allowed to set JADSTP only when JADSTART=1 and ADDIS=0 (ADC is
+Page  983: disable the ADC).
+Page  983: Bit 4 ADSTP: ADC stop of regular conversion command
+Page  983: It is cleared by hardware when the conversion is effectively discarded and the ADC regular
+Page  983: sequence and triggers can be re-configured. The ADC is then ready to accept a new start of regular
+Page  983: 0: No ADC stop regular conversion command ongoing
+Page  983: Note: The software is allowed to set ADSTP only when ADSTART=1 and ADDIS=0 (ADC is enabled
+Page  983: ADC).
+Page  983: In dual ADC regular simultaneous mode and interleaved mode, the bit ADSTP of the master
+Page  983: ADC must be used to stop regular conversions. The other ADSTP bit is inactive.
+Page  984: Analog-to-digital converters (ADC)                                                                       RM0433
+Page  984: Bit 3 JADSTART: ADC start of injected conversion
+Page  984: This bit is set by software to start ADC conversion of injected channels. Depending on the
+Page  984: 0: No ADC injected conversion is ongoing.
+Page  984: 1: Write 1 to start injected conversions. Read 1 means that the ADC is operating and eventually
+Page  984: Note: The software is allowed to set JADSTART only when ADEN=1 and ADDIS=0 (ADC is enabled
+Page  984: and there is no pending request to disable the ADC).
+Page  985: RM0433                                                                  Analog-to-digital converters (ADC)
+Page  985: Bit 2 ADSTART: ADC start of regular conversion
+Page  985: This bit is set by software to start ADC conversion of regular channels. Depending on the
+Page  985: 0: No ADC regular conversion is ongoing.
+Page  985: 1: Write 1 to start regular conversions. Read 1 means that the ADC is operating and eventually
+Page  985: Note: The software is allowed to set ADSTART only when ADEN=1 and ADDIS=0 (ADC is enabled
+Page  985: and there is no pending request to disable the ADC)
+Page  985: Bit 1 ADDIS: ADC disable command
+Page  985: This bit is set by software to disable the ADC (ADDIS command) and put it into power-down state
+Page  985: It is cleared by hardware once the ADC is effectively disabled (ADEN is also cleared by hardware at
+Page  985: 1: Write 1 to disable the ADC. Read 1 means that an ADDIS command is in progress.
+Page  985: Bit 0 ADEN: ADC enable control
+Page  985: This bit is set by software to enable the ADC. The ADC will be effectively ready to operate once the
+Page  985: It is cleared by hardware when the ADC is disabled, after the execution of the ADDIS command.
+Page  985: 0: ADC is disabled (OFF state)
+Page  985: 1: Write 1 to enable the ADC.
+Page  985: Note: The software is allowed to set ADEN only when all bits of ADC_CR registers are 0 (ADCAL=0,
+Page  986: Analog-to-digital converters (ADC)                                                                                      RM0433
+Page  986: 24.5.4           ADC configuration register (ADC_CFGR)
+Page  986: 00000: ADC analog input channel-0 monitored by AWD1
+Page  986: 00001: ADC analog input channel-1 monitored by AWD1
+Page  986: 10010: ADC analog input channel-19 monitored by AWD1
+Page  986: When dual mode is enabled (DAMDF bits in ADCx_CCR register are not equal to zero), the bit
+Page  986: JAUTO of the slave ADC is no more writable and its content is equal to the bit JAUTO of the
+Page  986: master ADC.
+Page  987: RM0433                                                                     Analog-to-digital converters (ADC)
+Page  987: When dual mode is enabled (DAMDF bits in ADCx_CCR register are not equal to zero), the bit
+Page  987: JQM of the slave ADC is no more writable and its content is equal to the bit JQM of the master
+Page  987: ADC.
+Page  987: When dual mode is enabled (bits DAMDF of ADCx_CCR register are not equal to zero), the bit
+Page  987: JDISCEN of the slave ADC is no more writable and its content is equal to the bit JDISCEN of
+Page  987: the master ADC.
+Page  987: When dual mode is enabled (DAMDF bits in ADCx_CCR register are not equal to zero), the bits
+Page  987: DISCNUM[2:0] of the slave ADC are no more writable and their content is equal to the bits
+Page  987: DISCNUM[2:0] of the master ADC.
+Page  988: Analog-to-digital converters (ADC)                                                                             RM0433
+Page  988: When dual mode is enabled (DAMDF bits in ADCx_CCR register are not equal to zero), the bit
+Page  988: DISCEN of the slave ADC is no more writable and its content is equal to the bit DISCEN of the
+Page  988: master ADC.
+Page  988: When dual mode is enabled (DAMDF bits in ADCx_CCR register are not equal to zero), the bit
+Page  988: AUTDLY of the slave ADC is no more writable and its content is equal to the bit AUTDLY of the
+Page  988: master ADC.
+Page  988: When dual mode is enabled (DAMDF bits in ADCx_CCR register are not equal to zero), the bit
+Page  988: CONT of the slave ADC is no more writable and its content is equal to the bit CONT of the
+Page  988: master ADC.
+Page  988: 0: ADC_DR register is preserved with the old data when an overrun is detected.
+Page  988: 1: ADC_DR register is overwritten with the last conversion result when an overrun is detected.
+Page  989: RM0433                                                                  Analog-to-digital converters (ADC)
+Page  989: This bit is set and cleared by software to select how ADC interface output data are managed.
+Page  989: In dual-ADC modes, this bit is not relevant and replaced by control bit DAMDF of the
+Page  989: ADCx_CCR register.
+Page  990: Analog-to-digital converters (ADC)                                                                                 RM0433
+Page  990: 24.5.5          ADC configuration register 2 (ADC_CFGR2)
+Page  991: RM0433                                                                      Analog-to-digital converters (ADC)
+Page  991: (ADC_DR, ADC_JDRy, OFFSETy, OFFSETy_CH, OVSS, LSHIFT, RSHIFT, SSATE) for details).
+Page  992: Analog-to-digital converters (ADC)                                                                                            RM0433
+Page  992: 24.5.6            ADC sample time register 1 (ADC_SMPR1)
+Page  992: 000: 1.5 ADC clock cycles
+Page  992: 001: 2.5 ADC clock cycles
+Page  992: 010: 8.5 ADC clock cycles
+Page  992: 011: 16.5 ADC clock cycles
+Page  992: 100: 32.5 ADC clock cycles
+Page  992: 101: 64.5 ADC clock cycles
+Page  992: 110: 387.5.5 ADC clock cycles
+Page  992: 111: 810.5 ADC clock cycles
+Page  993: RM0433                                                                                      Analog-to-digital converters (ADC)
+Page  993: 24.5.7            ADC sample time register 2 (ADC_SMPR2)
+Page  993: 000: 1.5 ADC clock cycles
+Page  993: 001: 2.5 ADC clock cycles
+Page  993: 010: 8.5 ADC clock cycles
+Page  993: 011: 16.5 ADC clock cycles
+Page  993: 100: 32.5 ADC clock cycles
+Page  993: 101: 64.5 ADC clock cycles
+Page  993: 110: 387.5 ADC clock cycles
+Page  993: 111: 810.5 ADC clock cycles
+Page  994: Analog-to-digital converters (ADC)                                                                                                                          RM0433
+Page  994: 24.5.8          ADC channel preselection register (ADC_PCSEL)
+Page  994: 0: Input Channel x (Vinp x) is not pre selcted for conversion, the ADC conversion result with
+Page  994: 24.5.9          ADC watchdog threshold register 1 (ADC_LTR1)
+Page  995: RM0433                                                                 Analog-to-digital converters (ADC)
+Page  995: 24.5.10        ADC watchdog threshold register 1 (ADC_HTR1)
+Page  996: Analog-to-digital converters (ADC)                                                                                       RM0433
+Page  996: 24.5.11          ADC regular sequence register 1 (ADC_SQR1)
+Page  997: RM0433                                                                        Analog-to-digital converters (ADC)
+Page  997: 24.5.12         ADC regular sequence register 2 (ADC_SQR2)
+Page  998: Analog-to-digital converters (ADC)                                                                                        RM0433
+Page  998: 24.5.13          ADC regular sequence register 3 (ADC_SQR3)
+Page  999: RM0433                                                                         Analog-to-digital converters (ADC)
+Page  999: 24.5.14         ADC regular sequence register 4 (ADC_SQR4)
+Page 1000: Analog-to-digital converters (ADC)                                                                          RM0433
+Page 1000: 24.5.15       ADC regular Data Register (ADC_DR)
+Page 1001: RM0433                                                                            Analog-to-digital converters (ADC)
+Page 1001: 24.5.16          ADC injected sequence register (ADC_JSQR)
+Page 1001: ADC_CFGR register).
+Page 1001: ADC_CFGR register).
+Page 1001: ADC_CFGR register).
+Page 1001: ADC_CFGR register).
+Page 1002: Analog-to-digital converters (ADC)                                                                           RM0433
+Page 1003: RM0433                                                                       Analog-to-digital converters (ADC)
+Page 1003: 24.5.17        ADC offset register (ADC_OFRy)
+Page 1003: alignment and offset (ADC_DR, ADC_JDRy, OFFSETy, OFFSETy_CH, OVSS, LSHIFT,
+Page 1003: result can be read from in the ADC_DR (regular conversion) or from in the ADC_JDRyi
+Page 1004: Analog-to-digital converters (ADC)                                                                                     RM0433
+Page 1004: 24.5.18           ADC injected data register (ADC_JDRy)
+Page 1004: 24.5.19           ADC analog watchdog 2 configuration register
+Page 1004: (ADC_AWD2CR)
+Page 1004: AWD2CH[i] = 0: ADC analog input channel-i is not monitored by AWD2
+Page 1004: AWD2CH[i] = 1: ADC analog input channel-i is monitored by AWD2
+Page 1005: RM0433                                                                     Analog-to-digital converters (ADC)
+Page 1005: 24.5.20        ADC analog watchdog 3 configuration register
+Page 1005: (ADC_AWD3CR)
+Page 1005: AWD3CH[i] = 0: ADC analog input channel-i is not monitored by AWD3
+Page 1005: AWD3CH[i] = 1: ADC analog input channel-i is monitored by AWD3
+Page 1005: 24.5.21        ADC watchdog lower threshold register 2 (ADC_LTR2)
+Page 1006: Analog-to-digital converters (ADC)                                                                   RM0433
+Page 1006: 24.5.22        ADC watchdog higher threshold register 2 (ADC_HTR2)
+Page 1006: 24.5.23        ADC watchdog lower threshold register 3 (ADC_LTR3)
+Page 1007: RM0433                                                                     Analog-to-digital converters (ADC)
+Page 1007: 24.5.24        ADC watchdog higher threshold register 3 (ADC_HTR3)
+Page 1007: 24.5.25        ADC differential mode selection register (ADC_DIFSEL)
+Page 1007: DIFSEL[i] = 0: ADC analog input channel-i is configured in single ended mode
+Page 1007: DIFSEL[i] = 1: ADC analog input channel-i is configured in differential mode
+Page 1007: Note: The software is allowed to write these bits only when the ADC is disabled (ADCAL=0,
+Page 1008: Analog-to-digital converters (ADC)                                                                                         RM0433
+Page 1008: 24.5.26        ADC calibration factors register (ADC_CALFACT)
+Page 1008: from the current one stored into the analog ADC, it will then be applied once a new differential
+Page 1008: (ADC is enabled and no calibration is ongoing and no conversion is ongoing).
+Page 1008: from the current one stored into the analog ADC, it will then be applied once a new single-ended
+Page 1008: (ADC is enabled and no calibration is ongoing and no conversion is ongoing).
+Page 1008: 24.5.27        ADC calibration factor register 2 (ADC_CALFACT2)
+Page 1009: RM0433                                                                    Analog-to-digital converters (ADC)
+Page 1009: from the current one stored into the analog ADC, it will then be applied once a new single-ended
+Page 1009: (ADC is enabled and no calibration is ongoing and no conversion is ongoing).
+Page 1010: Analog-to-digital converters (ADC)                                                                               RM0433
+Page 1010: 24.6              ADC common registers
+Page 1010: These registers define the control and status registers common to master and slave ADCs:
+Page 1010: 24.6.1            ADC x common status register (ADCx_CSR) (x=1/2 or 3)
+Page 1010: Address offset: 0x00 (this offset address is relative to the master ADC base address +
+Page 1010: This register provides an image of the status bits of the different ADCs. Nevertheless it is
+Page 1010: be cleared by writing 0 to it in the corresponding ADC_ISR register.
+Page 1010: ADC1 and ADC2 are controlled by the same interface, while ADC3 is controlled separately.
+Page 1010: Bit 26 JQOVF_SLV: Injected Context Queue Overflow flag of the slave ADC
+Page 1010: This bit is a copy of the JQOVF bit in the corresponding ADCx+1_ISR register.
+Page 1010: Bit 25 AWD3_SLV: Analog watchdog 3 flag of the slave ADC
+Page 1010: This bit is a copy of the AWD3 bit in the corresponding ADCx+1_ISR register.
+Page 1010: Bit 24 AWD2_SLV: Analog watchdog 2 flag of the slave ADC
+Page 1010: This bit is a copy of the AWD2 bit in the corresponding ADCx+1_ISR register.
+Page 1010: Bit 23 AWD1_SLV: Analog watchdog 1 flag of the slave ADC
+Page 1010: This bit is a copy of the AWD1 bit in the corresponding ADCx+1_ISR register.
+Page 1010: Bit 22 JEOS_SLV: End of injected sequence flag of the slave ADC
+Page 1010: This bit is a copy of the JEOS bit in the corresponding ADCx+1_ISR register.
+Page 1010: Bit 21 JEOC_SLV: End of injected conversion flag of the slave ADC
+Page 1010: This bit is a copy of the JEOC bit in the corresponding ADCx+1_ISR register.
+Page 1010: Bit 20 OVR_SLV: Overrun flag of the slave ADC
+Page 1010: This bit is a copy of the OVSR bit in the corresponding ADCx+1_ISR register.
+Page 1010: Bit 19 EOS_SLV: End of regular sequence flag of the slave ADC
+Page 1010: This bit is a copy of the EOS bit in the corresponding ADCx+1_ISR register.
+Page 1010: Bit 18 EOC_SLV: End of regular conversion of the slave ADC
+Page 1010: This bit is a copy of the EOC bit in the corresponding ADCx+1_ISR register.
+Page 1010: Bit 17 EOSMP_SLV: End of Sampling phase flag of the slave ADC
+Page 1010: This bit is a copy of the EOSMP2 bit in the corresponding ADCx+1_ISR register.
+Page 1011: RM0433                                                                  Analog-to-digital converters (ADC)
+Page 1011: Bit 16 ADRDY_SLV: Slave ADC ready
+Page 1011: This bit is a copy of the ADRDY bit in the corresponding ADCx+1_ISR register.
+Page 1011: Bit 10 JQOVF_MST: Injected Context Queue Overflow flag of the master ADC
+Page 1011: This bit is a copy of the JQOVF bit in the corresponding ADC_ISR register.
+Page 1011: Bit 9 AWD3_MST: Analog watchdog 3 flag of the master ADC
+Page 1011: This bit is a copy of the AWD3 bit in the corresponding ADC_ISR register.
+Page 1011: Bit 8 AWD2_MST: Analog watchdog 2 flag of the master ADC
+Page 1011: This bit is a copy of the AWD2 bit in the corresponding ADC_ISR register.
+Page 1011: Bit 7 AWD1_MST: Analog watchdog 1 flag of the master ADC
+Page 1011: This bit is a copy of the AWD1 bit in the corresponding ADC_ISR register.
+Page 1011: Bit 6 JEOS_MST: End of injected sequence flag of the master ADC
+Page 1011: This bit is a copy of the JEOS bit in the corresponding ADC_ISR register.
+Page 1011: Bit 5 JEOC_MST: End of injected conversion flag of the master ADC
+Page 1011: This bit is a copy of the JEOC bit in the corresponding ADC_ISR register.
+Page 1011: Bit 4 OVR_MST: Overrun flag of the master ADC
+Page 1011: This bit is a copy of the OVSR bit in the corresponding ADC_ISR register.
+Page 1011: Bit 3 EOS_MST: End of regular sequence flag of the master ADC
+Page 1011: This bit is a copy of the EOS bit in the corresponding ADC_ISR register.
+Page 1011: Bit 2 EOC_MST: End of regular conversion of the master ADC
+Page 1011: This bit is a copy of the EOC bit in the corresponding ADC_ISR register.
+Page 1011: Bit 1 EOSMP_MST: End of Sampling phase flag of the master ADC
+Page 1011: This bit is a copy of the EOSMP bit in the corresponding ADC_ISR register.
+Page 1011: Bit 0 ADRDY_MST: Master ADC ready
+Page 1011: This bit is a copy of the ADRDY bit in the corresponding ADC_ISR register.
+Page 1012: Analog-to-digital converters (ADC)                                                                              RM0433
+Page 1012: 24.6.2          ADC x common control register (ADCx_CCR) (x=1/2 or 3)
+Page 1012: Address offset: 0x08 (this offset address is relative to the master ADC base address +
+Page 1012: ADC1 and ADC2 are controlled by the same interface, while ADC3 is controlled separately.
+Page 1012: Note: The software is allowed to write this bit only when the ADCs are disabled (ADCAL=0,
+Page 1012: Note: The software is allowed to write this bit only when the ADCs are disabled (ADCAL=0,
+Page 1012: Note: The software is allowed to write this bit only when the ADCs are disabled (ADCAL=0,
+Page 1013: RM0433                                                                     Analog-to-digital converters (ADC)
+Page 1013: Bits 21:18 PRESC[3:0]: ADC prescaler
+Page 1013: These bits are set and cleared by software to select the frequency of the clock to the ADC.
+Page 1013: The clock is common for all the ADCs.
+Page 1013: 0000: input ADC clock not divided
+Page 1013: 0001: input ADC clock divided by 2
+Page 1013: 0010: input ADC clock divided by 4
+Page 1013: 0011: input ADC clock divided by 6
+Page 1013: 0100: input ADC clock divided by 8
+Page 1013: 0101: input ADC clock divided by 10
+Page 1013: 0110: input ADC clock divided by 12
+Page 1013: 0111: input ADC clock divided by 16
+Page 1013: 1000: input ADC clock divided by 32
+Page 1013: 1001: input ADC clock divided by 64
+Page 1013: 1010: input ADC clock divided by 128
+Page 1013: 1011: input ADC clock divided by 256
+Page 1013: Note: The software is allowed to write these bits only when the ADC is disabled (ADCAL=0,
+Page 1013: JADSTART=0, ADSTART=0, ADSTP=0, ADDIS=0 and ADEN=0). The ADC prescaler
+Page 1013: Bits 17:16 CKMODE[1:0]: ADC clock mode
+Page 1013: These bits are set and cleared by software to define the ADC clock scheme (which is
+Page 1013: common to both master and slave ADCs):
+Page 1013: 00: CK_ADCx (x=1 to 3) (Asynchronous clock mode), generated at product level (refer to
+Page 1013: 01: adc_hclk/1 (Synchronous clock mode). This configuration must be enabled only if the
+Page 1013: 10: adc_hclk/2 (Synchronous clock mode)
+Page 1013: 11: adc_hclk/4 (Synchronous clock mode)
+Page 1013: Note: The software is allowed to write these bits only when the ADCs are disabled
+Page 1013: (ADCAL=0, JADSTART=0, ADSTART=0, ADSTP=0, ADDIS=0 and ADEN=0).
+Page 1013: Bits 15:14 DAMDF[1:0]: Dual ADC Mode Data Format
+Page 1013: register ADCx_CDR.
+Page 1013: 00: Dual ADC mode without data packing (ADCx_CDR and ADCx_CDR2 registers not
+Page 1014: Analog-to-digital converters (ADC)                                                                             RM0433
+Page 1014: Refer to Table 211 for the value of ADC resolution versus DELAY bits values.
+Page 1014: Note: The software is allowed to write these bits only when the ADCs are disabled
+Page 1014: (ADCAL=0, JADSTART=0, ADSTART=0, ADSTP=0, ADDIS=0 and ADEN=0).
+Page 1014: Bits 4:0 DUAL[4:0]: Dual ADC mode selection
+Page 1014: All the ADCs independent:
+Page 1014: 00001 to 01001: Dual mode, master and slave ADCs working together
+Page 1014: Note: The software is allowed to write these bits only when the ADCs are disabled
+Page 1014: (ADCAL=0, JADSTART=0, ADSTART=0, ADSTP=0, ADDIS=0 and ADEN=0).
+Page 1014: Table 211. DELAY bits versus ADC resolution
+Page 1014: 0000        1.5 * Tadc_ker_ck 1.5 * Tadc_ker_ck 1.5 * Tadc_ker_ck 1.5 * Tadc_ker_ck 1.5 * Tadc_ker_ck
+Page 1014: 0001        2.5 * Tadc_ker_ck 2.5 * Tadc_ker_ck 2.5 * Tadc_ker_ck 2.5 * Tadc_ker_ck 2.5 * Tadc_ker_ck
+Page 1014: 0010        3.5 * Tadc_ker_ck 3.5 * Tadc_ker_ck 3.5 * Tadc_ker_ck 3.5 * Tadc_ker_ck 3.5 * Tadc_ker_ck
+Page 1014: 0011        4.5 * Tadc_ker_ck 4.5 * Tadc_ker_ck 4.5 * Tadc_ker_ck 4.5 * Tadc_ker_ck 4.5 * Tadc_ker_ck
+Page 1014: 0100        5.5 * Tadc_ker_ck 5.5 * Tadc_ker_ck 5.5 * Tadc_ker_ck 5.5 * Tadc_ker_ck 4.5 * Tadc_ker_ck
+Page 1014: 0101        6.5 * Tadc_ker_ck 6.5 * Tadc_ker_ck 6.5 * Tadc_ker_ck 5.5 * Tadc_ker_ck 4.5 * Tadc_ker_ck
+Page 1014: 0110        7.5 * Tadc_ker_ck 7.5 * Tadc_ker_ck 6.5 * Tadc_ker_c 5.5 * Tadc_ker_ck 4.5 * Tadc_ker_ck
+Page 1014: 0111        8.5 * Tadc_ker_ck 7.5 * Tadc_ker_ck 6.5 * Tadc_ker_ck 5.5 * Tadc_ker_ck 4.5 * Tadc_ker_ck
+Page 1014: 1000        8.5 * Tadc_ker_ck 7.5 * Tadc_ker_ck 6.5 * Tadc_ker_ck 5.5 * Tadc_ker_ck 4.5 * Tadc_ker_ck
+Page 1015: RM0433                                                                                  Analog-to-digital converters (ADC)
+Page 1015: 24.6.3          ADC x common regular data register for dual mode
+Page 1015: (ADCx_CDR) (x=1/2 or 3)
+Page 1015: Address offset: 0x0C (this offset address is relative to the master ADC base address +
+Page 1015: ADC1 and ADC2 are controlled by the same interface, while ADC3 is controlled separately.
+Page 1015: Bits 31:16 RDATA_SLV[15:0]: Regular data of the slave ADC
+Page 1015: In dual mode, these bits contain the regular data of the slave ADC. Refer to Section 24.3.32:
+Page 1015: Dual ADC modes.
+Page 1015: offset (ADC_DR, ADC_JDRy, OFFSETy, OFFSETy_CH, OVSS, LSHIFT, RSHIFT, SSATE))
+Page 1015: Bits 15:0 RDATA_MST[15:0]: Regular data of the master ADC.
+Page 1015: In dual mode, these bits contain the regular data of the master ADC. Refer to
+Page 1015: Section 24.3.32: Dual ADC modes.
+Page 1015: offset (ADC_DR, ADC_JDRy, OFFSETy, OFFSETy_CH, OVSS, LSHIFT, RSHIFT, SSATE))
+Page 1015: In MDMA=0b11 mode, bits 15:8 contains SLV_ADC_DR[7:0], bits 7:0 contains
+Page 1015: MST_ADC_DR[7:0].
+Page 1015: 24.6.4          ADC x common regular data register for 32-bit dual mode
+Page 1015: (ADCx_CDR2) (x=1/2 or 3)
+Page 1015: Address offset: 0x10 (this offset address is relative to the master ADC base address +
+Page 1015: ADC1 and ADC2 are controlled by the same interface, while ADC3 is controlled separately.
+Page 1016: Analog-to-digital converters (ADC)                                                                                                                                                                                                                                                                                            RM0433
+Page 1016: Bits 31:0 RDATA_ALT[31:0]: Regular data of the master/slave alternated ADCs
+Page 1016: ADC. Refer to Section 24.3.32: Dual ADC modes.
+Page 1016: (ADC_DR, ADC_JDRy, OFFSETy, OFFSETy_CH, OVSS, LSHIFT, RSHIFT, SSATE).
+Page 1016: 24.6.5         ADC register map
+Page 1016: The following table summarizes the ADC registers.
+Page 1016: Table 212. ADC global register map
+Page 1016: 0x000 - 0x0D0                                                                                                                                           Master ADC1 or Master ADC3
+Page 1016: 0x100 - 0x1D0                                                                                                                                                                  Slave ADC2
+Page 1016: 0x300 - 0x310                                                                         Master and slave ADCs common registers (ADC1/2 or ADC3)
+Page 1016: Table 213. ADC register map and reset values for each ADC (offset=0x000
+Page 1016: for master ADC, 0x100 for slave ADC)
+Page 1016: ADC_ISR
+Page 1016: ADC_IER
+Page 1016: ADCALDIF
+Page 1016: ADCALLIN
+Page 1016: ADCAL
+Page 1016: ADC_CR
+Page 1016: ADC_CFGR                    AWD1CH[4:0]                                                                                                                                                                                                                                                                                             GT
+Page 1016: ADC_CFGR2                                                                                                                              OSR[9:0]                                                                                                                    OVSR[3:0]
+Page 1016: ADC_SMPR1                         SMP9[2:0] SMP8[2:0] SMP7[2:0] SMP6[2:0] SMP5[2:0] SMP4[2:0] SMP3[2:0] SMP2[2:0] SMP1[2:0] SMP0[2:0]
+Page 1016: ADC_SMPR2
+Page 1017: RM0433                                                                                                                                                                             Analog-to-digital converters (ADC)
+Page 1017: Table 213. ADC register map and reset values for each ADC (offset=0x000
+Page 1017: for master ADC, 0x100 for slave ADC) (continued)
+Page 1017: ADC_PCSEL
+Page 1017: ADC_LTR1                                                                                                                                                            LTR1[25:0]
+Page 1017: ADC_HTR1                                                                                                                                                           HTR1[25:0]
+Page 1017: ADC_SQR1                                               SQ4[4:0]                                  SQ3[4:0]                                              SQ2[4:0]                                                         SQ1[4:0]                                                           L[3:0]
+Page 1017: ADC_SQR2                                               SQ9[4:0]                                  SQ8[4:0]                                              SQ7[4:0]                                                         SQ6[4:0]                                                  SQ5[4:0]
+Page 1017: ADC_SQR3                                              SQ14[4:0]                                 SQ13[4:0]                                             SQ12[4:0]                                                        SQ11[4:0]                                                 SQ10[4:0]
+Page 1017: ADC_SQR4                                                                                                                                                                                                               SQ16[4:0]                                                 SQ15[4:0]
+Page 1017: ADC_DR                                                                                                                            RDATA[31:0]
+Page 1017: ADC_JSQR              JSQ4[4:0]                                            JSQ3[4:0]                                    JSQ2[4:0]                                                        JSQ1[4:0]                                                        JEXTSEL[4:0]                             JL[1:0]
+Page 1017: ADC_OFR1
+Page 1017: ADC_OFR2
+Page 1017: ADC_OFR3
+Page 1018: Analog-to-digital converters (ADC)                                                                                                                                                                                                                    RM0433
+Page 1018: Table 213. ADC register map and reset values for each ADC (offset=0x000
+Page 1018: for master ADC, 0x100 for slave ADC) (continued)
+Page 1018: ADC_OFR4
+Page 1018: ADC_JDR1                                                                                                                    JDATA1[31:0]
+Page 1018: ADC_JDR2                                                                                                                    JDATA2[31:0]
+Page 1018: ADC_JDR3                                                                                                                    JDATA3[31:0]
+Page 1018: ADC_JDR4                                                                                                                    JDATA4[31:0]
+Page 1018: ADC_AWD2CR                                                                                                                                                                      AWD2CH[19:0]
+Page 1018: ADC_AWD3CR                                                                                                                                                                      AWD3CH[19:0]
+Page 1018: ADC_LTR2                                                                                                                                           LTR2[25:0]
+Page 1018: ADC_HTR2                                                                                                                                          HTR2[25:0]
+Page 1018: ADC_LTR3                                                                                                                                           LTR3[25:0]
+Page 1018: ADC_HTR3                                                                                                                                          HTR3[25:0]
+Page 1018: ADC_DIFSEL                                                                                                                                                                      DIFSEL[19:0]
+Page 1018: ADC_CALFACT                                                                        CALFACT_D[10:0]                                                                                                          CALFACT_S[10:0]
+Page 1018: ADC_
+Page 1019: RM0433                                                                                                                                                                                                   Analog-to-digital converters (ADC)
+Page 1019: Table 214. ADC register map and reset values (master and slave ADC
+Page 1019: ADCx_CSR
+Page 1019: slave ADC2                                                                                                                                                       master ADC1
+Page 1019: ADCx_CCR                                                                                                   PRESC[3:0]                                                                                            DELAY[3:0]                                                                         DUAL[4:0]
+Page 1019: ADCx_CDR                                              RDATA_SLV[15:0]                                                                                                                                                      RDATA_MST[15:0]
+Page 1019: ADCx_CDR2                                                                                                                                   RDATA_ALT[31:0]
+Page 1023: comparator, operational amplifier and ADC (if available).
+Page 1023: connected to on-chip peripherals such as comparator, operational amplifier and ADC (if
+Page 1058: can be used as voltage reference for ADCs, DACs and also as voltage reference for
+Page 1079: ADC1_IN8
+Page 1079: PC5(INM0)               ADC2_IN8          controlled by bits PGA_GAIN
+Page 1079: ADC1_IN9
+Page 1079: ADC2_IN9
+Page 1079: ADC1_IN4          The pin is connected when the
+Page 1079: OPAMP1_VOUT                    PC4                 ADC2_IN4          OPAMP is enabled. The ADC
+Page 1079: COMP1_INM7         input is controlled by ADC.
+Page 1081: The signal on the OPAMP1 output is also seen as an ADC input. As a consequence, the
+Page 1081: signals before feeding them to the ADC input, assuming the input signal frequency is
+Page 1096: processing options to offer up to 24-bit final ADC resolution. DFSDM also features optional
+Page 1096: parallel data stream input from internal ADC peripherals or from microcontroller memory.
+Page 1096: channels (from internal ADCs or from microcontrollers memory).
+Page 1097: –    internal sources: ADCs data or memory (CPU/DMA write) data streams
+Page 1098: Input from internal ADC                                  X
+Page 1099: ADC 0
+Page 1099: ADC 7
+Page 1100: ADC input
+Page 1100: dfsdm_dat_adc[15:0]                       Up to 4 internal ADC data buses as parallel inputs.
+Page 1100: dfsdm_jtrg9                                                     HRTIM1_ADCTRG1
+Page 1101: dfsdm_jtrg10                                             HRTIM1_ADCTRG3
+Page 1101: parallel internal data sources (ADCs or CPU/DMA wire from memory).
+Page 1111: •    internal ADC results(a)
+Page 1111: data source: internal ADC(a) or direct write by CPU/DMA.
+Page 1111: Input from internal ADC(a)
+Page 1111: In case of ADC data parallel input (DATMPX[1:0]=1) the ADC[y+1] result is assigned to
+Page 1111: channel y input (ADC1 is filling DFSDM_CHDATIN0R register, ADC2 is filling
+Page 1111: DFSDM_CHDATIN1R register, ... , ADC8 is filling DFSDM_CHDATIN7R register). End of
+Page 1111: conversion event from ADC[y+1] causes update of channel y data (parallel data from
+Page 1111: ADC[y+1] are put as next sample to digital filter). Data from ADC[y+1] is written into
+Page 1111: a. ADC1 and ADC2 only.
+Page 1112: no effect in case of ADC data input.
+Page 1112: Note:       Extension of ADC specification: in case the internal ADC is configured in interleaved mode
+Page 1112: (e.g. ADC1 together with ADC2 - see ADC specification) then each result from ADC1 or
+Page 1112: from ADC2 will come to the same 16-bit bus - to the bus of ADC1 - which is coming into
+Page 1112: channel 0 (even samples come from ADC1 and odd samples from ADC2). Channel 1
+Page 1112: associated with ADC2 will be free.
+Page 1120: where: f DATAIN_RATE ...input data rate from ADC or from CPU/DMA
+Page 1126: 1: Data to channel y are taken from internal analog to digital converter ADCy+1 output register
+Page 1126: update as 16-bit values (if ADCy+1 is available). Data from ADCs are written into INDAT0[15:0]
+Page 1126: Note: DATMPX[1:0] = 1 is supported only by ADC1 and ADC2.
+Page 1130: Data can be written by CPU/DMA (if DATMPX[1:0]=2) or directly by internal ADC (if
+Page 1130: Data can be written by CPU/DMA (if DATMPX[1:0]=2) or directly by internal ADC (if
+Page 1144: case of parallel data input (from internal ADC or from CPU/DMA write)
+Page 1339: links to built-in ADC and DAC converters. Last, it features light-load management mode and
+Page 1340: –    4 triggers to ADC converters
+Page 1341: •    Triggers for the ADC and DAC converters
+Page 1342: hrtim_adc_trg[4:1]                                                                                                                               Run/Idle                   HRTIM_CHA1
+Page 1343: Digital input either on-chip (from other built-in peripherals: comparator, ADC analog
+Page 1344: hrtim_adc_trg[4:1]                   ADC start of conversion triggers
+Page 1349: –      as an ADC trigger
+Page 1366: •    on-chip events for other peripheral (ADC’s analog watchdogs and general purpose
+Page 1367: Note:            The external events used as triggers for reset, capture, burst mode, ADC triggers and
+Page 1367: prevent any output state change and counter reset, except if they are used as ADC triggers.
+Page 1368: 1        Yes          -           -             -         PC10         COMP1          TIM1_TRGO          ADC1_AWD1
+Page 1368: 2        Yes          -           -             -         PC12         COMP2          TIM2_TRGO          ADC1_AWD2
+Page 1368: 3        Yes          -           -             -          PD5             -          TIM3_TRGO          ADC1_AWD3
+Page 1368: 4        Yes          -           -             -         PG11       OPAMP1(1)        TIM7_TRGO          ADC2_AWD1
+Page 1368: 5        Yes          -           -             -         PG12             -          LPTIM1 OUT         ADC2_AWD2
+Page 1368: 6          -        Yes          Yes            -          PB4         COMP1          TIM6_TRGO          ADC2_AWD3
+Page 1383: HRTIM_ADC1R
+Page 1383: HRTIM      HRTIM_ADC2R
+Page 1383: Common      HRTIM_ADC3R               selected timer
+Page 1383: HRTIM_ADC4R
+Page 1410: 36.3.18     ADC triggers
+Page 1410: The ADCs can be triggered by the master and the 5 timing units.
+Page 1410: the 2 ADCs. Up to 32 events can be combined (ORed) for each trigger output, in registers
+Page 1410: HRTIM_ADC1R to HRTIM_ADC4R, as shown on Figure 330. Triggers 1/3 and 2/4 are using
+Page 1410: phases can be sampled in a row using a single ADC trigger output.
+Page 1411: Figure 330. ADC trigger selection overview
+Page 1411: 5             ADC                                            5           ADC
+Page 1411: HRTIM_ADC1R to HRTIM_ADC4R registers are preloaded and can be updated
+Page 1411: For instance, if ADC trigger 1 outputs Timer A CMP2 events (HRTIM_ADC1R = 0x0000
+Page 1411: 0400), HRTIM_ADC1R will be typically updated simultaneously with Timer A
+Page 1411: When the preload is disabled (PREEN bit reset) in the source timer, the HRTIM_ADCxR
+Page 1420: The topology is given on Figure 335 with the connection to the ADC for voltage reading.
+Page 1420: ADC
+Page 1420: The ADC is triggered twice per period, precisely in the middle of the ON time, using CMP2
+Page 1421: ADC          ADC ADC        ADC ADC       ADC
+Page 1421: CHA2                     ADC
+Page 1422: ADC                 ADC             ADC
+Page 1422: controlled depends on the topologies and resources used (including the ADC triggers):
+Page 1423: The ADC trigger can be generated on TxCMP2 compare event. Since all ADC trigger
+Page 1423: them combined into a single ADC trigger to save ADC resources (for instance 1 ADC
+Page 1424: CHA2                     ADC
+Page 1474: Bits 27:25 AD4USRC[2:0]: ADC Trigger 4 Update Source
+Page 1474: Bits 24:22 AD3USRC[2:0]: ADC Trigger 3 Update Source
+Page 1474: Bits 21:19 AD2USRC[2:0]: ADC Trigger 2 Update Source
+Page 1474: Bits 18:16 AD1USRC[2:0]: ADC Trigger 1 Update Source
+Page 1474: These bits define the source which will trigger the update of the HRTIM_ADC1R register (transfer
+Page 1492: 36.5.54          HRTIM ADC Trigger 1 Register (HRTIM_ADC1R)
+Page 1492: Bits 31:0 These bits select the trigger source for th ADC Trigger 1 output (hrtim_adc_trg1). Refer to
+Page 1492: HRTIM_ADC3R bits description for details
+Page 1493: 36.5.55       HRTIM ADC Trigger 2 Register (HRTIM_ADC2R)
+Page 1493: Bits 31:0 These bits select the trigger source for th ADC Trigger 2 output (hrtim_adc_trg2). Refer to
+Page 1493: HRTIM_ADC4R bits description for details
+Page 1494: 36.5.56        HRTIM ADC Trigger 3 Register (HRTIM_ADC3R)
+Page 1494: ADC3 ADC3T ADC3T ADC3T ADC3T ADC3T ADC3T ADC3T ADC3T ADC3T ADC3T ADC3T ADC3T ADC3T ADC3T ADC3T
+Page 1494: ADC3T ADC3T ADC3T ADC3T ADC3T ADC3T ADC3E ADC3E ADC3E ADC3E ADC3E ADC3M ADC3M ADC3M ADC3M ADC3M
+Page 1494: Bit 31 ADC3TEPER: ADC trigger 3 on Timer E Period
+Page 1494: Refer to ADC3TAPER description
+Page 1494: Bit 30 ADC3TEC4: ADC trigger 3 on Timer E Compare 4
+Page 1494: Refer to ADC3TAC2 description
+Page 1494: Bit 29 ADC3TEC3: ADC trigger 3 on Timer E Compare 3
+Page 1494: Refer to ADC3TAC2 description
+Page 1494: Bit 28 ADC3TEC2: ADC trigger 3 on Timer E Compare 2
+Page 1494: Refer to ADC3TAC2 description
+Page 1494: Bit 27 ADC3TDPER: ADC trigger 3 on Timer D Period
+Page 1494: Refer to ADC3TAPER description
+Page 1494: Bit 26 ADC3TDC4: ADC trigger 3 on Timer D Compare 4
+Page 1494: Refer to ADC3TAC2 description
+Page 1494: Bit 25 ADC3TDC3: ADC trigger 3 on Timer D Compare 3
+Page 1494: Refer to ADC3TAC2 description
+Page 1494: Bit 24 ADC3TDC2: ADC trigger 3 on Timer D Compare 2
+Page 1494: Refer to ADC3TAC2 description
+Page 1494: Bit 23 ADC3TCPER: ADC trigger 3 on Timer C Period
+Page 1494: Refer to ADC3TAPER description
+Page 1494: Bit 22 ADC3TCC4: ADC trigger 3 on Timer C Compare 4
+Page 1494: Refer to ADC3TAC2 description
+Page 1494: Bit 21 ADC3TCC3: ADC trigger 3 on Timer C Compare 3
+Page 1494: Refer to ADC3TAC2 description
+Page 1494: Bit 20 ADC3TCC2: ADC trigger 3 on Timer C Compare 2
+Page 1494: Refer to ADC3TAC2 description
+Page 1494: Bit 19 ADC3TBRST: ADC trigger 3 on Timer B Reset and counter roll-over
+Page 1494: Refer to ADC3TBRST description
+Page 1494: Bit 18 ADC3TBPER: ADC trigger 3 on Timer B Period
+Page 1494: Refer to ADC3TAPER description
+Page 1494: Bit 17 ADC3TBC4: ADC trigger 3 on Timer B Compare 4
+Page 1494: Refer to ADC3TAC2 description
+Page 1495: Bit 16 ADC3TBC3: ADC trigger 3 on Timer B Compare 3
+Page 1495: Refer to ADC3TAC2 description
+Page 1495: Bit 15 ADC3TBC2: ADC trigger 3 on Timer B Compare 2
+Page 1495: Refer to ADC3TAC2 description
+Page 1495: Bit 14 ADC3TARST: ADC trigger 3 on Timer A Reset and counter roll-over
+Page 1495: This bit enables the generation of an ADC Trigger upon Timer A reset and roll-over event, on ADC
+Page 1495: Bit 13 ADC3TAPER: ADC trigger 3 on Timer A Period
+Page 1495: This bit enables the generation of an ADC Trigger upon Timer A period event, on ADC Trigger 3
+Page 1495: output (hrtim_adc_trg3).
+Page 1495: Bit 12 ADC3TAC4: ADC trigger 3 on Timer A Compare 4
+Page 1495: Refer to ADC3TAC2 description
+Page 1495: Bit 11 ADC3TAC3: ADC trigger 3 on Timer A Compare 3
+Page 1495: Refer to ADC3TAC2 description
+Page 1495: Bit 10 ADC3TAC2: ADC trigger 3 on Timer A Compare 2
+Page 1495: This bit enables the generation of an ADC Trigger upon Timer A Compare 2 event, on ADC Trigger 3
+Page 1495: output (hrtim_adc_trg3).
+Page 1495: Bit 9 ADC3EEV5: ADC trigger 3 on External Event 5
+Page 1495: Refer to ADC3EEV1 description
+Page 1495: Bit 8 ADC3EEV4: ADC trigger 3 on External Event 4
+Page 1495: Refer to ADC3EEV1 description
+Page 1495: Bit 7 ADC3EEV3: ADC trigger 3 on External Event 3
+Page 1495: Refer to ADC3EEV1 description
+Page 1495: Bit 6 ADC3EEV2: ADC trigger 3 on External Event 2
+Page 1495: Refer to ADC3EEV1 description
+Page 1495: Bit 5 ADC3EEV1: ADC trigger 3 on External Event 1
+Page 1495: This bit enables the generation of an ADC Trigger upon External event 1, on ADC Trigger 3 output
+Page 1495: (hrtim_adc_trg3).
+Page 1495: Bit 4 ADC3MPER: ADC trigger 3 on Master Period
+Page 1495: This bit enables the generation of an ADC Trigger upon Master timer period event, on ADC Trigger 3
+Page 1495: output (hrtim_adc_trg3).
+Page 1495: Bit 3 ADC3MC4: ADC trigger 3 on Master Compare 4
+Page 1495: Refer to ADC3MC1 description
+Page 1495: Bit 2 ADC3MC3: ADC trigger 3 on Master Compare 3
+Page 1495: Refer to ADC3MC1 description
+Page 1495: Bit 1 ADC3MC2: ADC trigger 3 on Master Compare 2
+Page 1495: Refer to ADC3MC1 description
+Page 1495: Bit 0 ADC3MC1: ADC trigger 3 on Master Compare 1
+Page 1495: This bit enables the generation of an ADC Trigger upon Master Compare 1 event, on ADC Trigger 3
+Page 1495: output (hrtim_adc_trg3).
+Page 1496: 36.5.57        HRTIM ADC Trigger 4 Register (HRTIM_ADC4R)
+Page 1496: ADC4T ADC4T ADC4T ADC4T ADC4T ADC4T ADC4T ADC4T ADC4T ADC4T ADC4T ADC4T ADC4T ADC4T ADC4T ADC4T
+Page 1496: ADC4T ADC4T ADC4T ADC4T ADC4T ADC4T ADC4E ADC4E ADC4E ADC4E ADC4E ADC4M ADC4M ADC4M ADC4M ADC4M
+Page 1496: Bit 31 ADC4TERST: ADC trigger 4 on Timer E Reset and counter roll-over (1)
+Page 1496: Refer to ADC4TCRST description
+Page 1496: Bit 30 ADC4TEC4: ADC trigger 4 on Timer E Compare 4
+Page 1496: Refer to ADC4TAC2 description
+Page 1496: Bit 29 ADC4TEC3: ADC trigger 4 on Timer E Compare 3
+Page 1496: Refer to ADC4TAC2 description
+Page 1496: Bit 28 ADC4TEC2: ADC trigger 4 on Timer E Compare 2
+Page 1496: Refer to ADC4TAC2 description
+Page 1496: Bit 27 ADC4TDRST: ADC trigger 4 on Timer D Reset and counter roll-over (1)
+Page 1496: Refer to ADC4TCRST description
+Page 1496: Bit 26 ADC4TDPER: ADC trigger 4 on Timer D Period
+Page 1496: Refer to ADC4TAPER description
+Page 1496: Bit 25 ADC4TDC4: ADC trigger 4 on Timer D Compare 4
+Page 1496: Refer to ADC4TAC2 description
+Page 1496: Bit 24 ADC4TDC3: ADC trigger 4 on Timer D Compare 3
+Page 1496: Refer to ADC4TAC2 description
+Page 1496: Bit 23 ADC4TDC2: ADC trigger 2 on Timer D Compare 2
+Page 1496: Refer to ADC4TAC2 description
+Page 1496: Bit 22 ADC4TCRST: ADC trigger 4 on Timer C Reset and counter roll-over (1)
+Page 1496: This bit enables the generation of an ADC Trigger upon Timer C reset and roll-over event, on ADC
+Page 1496: Trigger 4 output (hrtim_adc_trg4).
+Page 1496: Bit 21 ADC4TCPER: ADC trigger 4 on Timer C Period
+Page 1496: Refer to ADC4TAPER description
+Page 1496: Bit 20 ADC4TCC4: ADC trigger 4 on Timer C Compare 4
+Page 1496: Refer to ADC4TAC2 description
+Page 1496: Bit 19 ADC4TCC3: ADC trigger 4 on Timer C Compare 3
+Page 1496: Refer to ADC4TAC2 description
+Page 1496: Bit 18 ADC4TCC2: ADC trigger 4 on Timer C Compare 2
+Page 1496: Refer to ADC4TAC2 description
+Page 1497: Bit 17 ADC4TBPER: ADC trigger 4 on Timer B Period
+Page 1497: Refer to ADC4TAPER description
+Page 1497: Bit 16 ADC4TBC4: ADC trigger 4 on Timer B Compare 4
+Page 1497: Refer to ADC4TAC2 description
+Page 1497: Bit 15 ADC4TBC3: ADC trigger 4 on Timer B Compare 3
+Page 1497: Refer to ADC4TAC2 description
+Page 1497: Bit 14 ADC4TBC2: ADC trigger 4 on Timer B Compare 2
+Page 1497: Refer to ADC4TAC2 description
+Page 1497: Bit 13 ADC4TAPER: ADC trigger 4 on Timer A Period
+Page 1497: This bit enables the generation of an ADC Trigger upon Timer A event, on ADC Trigger 4 output
+Page 1497: (hrtim_adc_trg4).
+Page 1497: Bit 12 ADC4TAC4: ADC trigger 4 on Timer A Compare 4
+Page 1497: Refer to ADC4TAC2 description
+Page 1497: Bit 11 ADC4TAC3: ADC trigger 4 on Timer A Compare 3
+Page 1497: Refer to ADC4TAC2 description
+Page 1497: Bit 10 ADC4TAC2: ADC trigger 4 on Timer A Compare 2
+Page 1497: This bit enables the generation of an ADC Trigger upon Timer A Compare 2, on ADC Trigger 4
+Page 1497: output (hrtim_adc_trg4).
+Page 1497: Bit 9 ADC4EEV10: ADC trigger 4 on External Event 10 (1)
+Page 1497: Refer to ADC4EEV6 description
+Page 1497: Bit 8 ADC4EEV9: ADC trigger 4 on External Event 9 (1)
+Page 1497: Refer to ADC4EEV6 description
+Page 1497: Bit 7 ADC4EEV8: ADC trigger 4 on External Event 8 (1)
+Page 1497: Refer to ADC4EEV6 description
+Page 1497: Bit 6 ADC4EEV7: ADC trigger 4 on External Event 7 (1)
+Page 1497: Refer to ADC4EEV6 description
+Page 1497: Bit 5 ADC4EEV6: ADC trigger 4 on External Event 6 (1)
+Page 1497: This bit enables the generation of an ADC Trigger upon external event 6, on ADC Trigger 4 output
+Page 1497: (hrtim_adc_trg4).
+Page 1497: Bit 4 ADC4MPER: ADC trigger 4 on Master Period
+Page 1497: This bit enables the generation of an ADC Trigger upon Master period event, on ADC Trigger 4
+Page 1497: output (hrtim_adc_trg4).
+Page 1497: Bit 3 ADC4MC4: ADC trigger 4 on Master Compare 4
+Page 1497: Refer to ADC4MC1 description
+Page 1497: Bit 2 ADC4MC3: ADC trigger 4 on Master Compare 3
+Page 1497: Refer to ADC4MC1 description
+Page 1497: Bit 1 ADC4MC2: ADC trigger 4 on Master Compare 2
+Page 1497: Refer to ADC4MC1 description
+Page 1497: Bit 0 ADC4MC1: ADC trigger 4 on Master Compare 1
+Page 1497: This bit enables the generation of an ADC Trigger upon Master Compare 1 event, on ADC Trigger 4
+Page 1497: output (hrtim_adc_trg4).
+Page 1497: 1. These triggers are differing from HRTIM_ADC1R/HRTIM_ADC3R to HRTIM_ADC2R/HRTIM_ADC4R.
+Page 1512: HRTIM_ADC4R(1)
+Page 1512: HRTIM_ADC3R(1)
+Page 1512: HRTIM_ADC2R(1)
+Page 1512: HRTIM_ADC1R(1)
+Page 1512: FLT4LCK Res.                                    AD2TERST                             ADC3TEPER                             AD2TERST                             AD1TEPER                                   Res.                                Res.                               Res.                             Res.                31
+Page 1515: ETR    Polarity selection &                    Input                                                       to DAC/ADC
+Page 1531: ADC1 AWD1                                               ADC2 AWD1
+Page 1531: ADC1 AWD2                                               ADC2 AWD2
+Page 1531: ADC1 AWD3                                               ADC2 AWD3
+Page 1531: ADC3 AWD1                                               ADC3 AWD1
+Page 1531: ADC3 AWD2                                               ADC3 AWD2
+Page 1531: ADC3 AWD3                                               ADC3 AWD3
+Page 1541: microcontroller (for instance, for compound waveform generation or for ADC triggering).
+Page 1548: The TRGO2 waveform shows how the ADC can be synchronized on given 3-phase PWM
+Page 1548: signals. Refer to Section 37.3.27: ADC synchronization for more details.
+Page 1570: Note:       The clock of the slave peripherals (timer, ADC, ...) receiving the TRGO or the TRGO2
+Page 1571: 37.3.27   ADC synchronization
+Page 1571: The timer can generate an ADC triggering event with various internal signals, such as reset,
+Page 1571: The triggers are issued on the TRGO2 internal line which is redirected to the ADC. There is
+Page 1571: Note:     The clock of the slave peripherals (timer, ADC, ...) receiving the TRGO or the TRGO2
+Page 1571: Note:     The clock of the ADC must be enabled prior to receive events from the master timer, and
+Page 1575: These bits allow the information to be sent to ADC for synchronization (TRGO2) to be
+Page 1575: Note: The clock of the slave timer or ADC must be enabled prior to receive events from the
+Page 1576: Note: The clock of the slave timer or ADC must be enabled prior to receive events from the
+Page 1579: Note: The clock of the slave peripherals (timer, ADC, ...) receiving the TRGO or the TRGO2
+Page 1604: 0011: ADC1 AWD1
+Page 1604: 0100: ADC1 AWD2
+Page 1604: 0101: ADC1 AWD3
+Page 1604: 0110: ADC3 AWD1
+Page 1604: 0111: ADC3 AWD2
+Page 1604: 1000: ADC3 AWD3
+Page 1608: 0011: ADC2 AWD1
+Page 1608: 0100: ADC2 AWD2
+Page 1608: 0101: ADC2 AWD3
+Page 1608: 0110: ADC3 AWD1
+Page 1608: 0111: ADC3 AWD2
+Page 1608: 1000: ADC3 AWD3
+Page 1620: to DAC/ADC
+Page 1661: Note:     The clock of the slave peripherals (timer, ADC, ...) receiving the TRGO or the TRGO2
+Page 1666: Note: The clock of the slave timer or ADC must be enabled prior to receive events from the
+Page 1669: Note: The clock of the slave peripherals (timer, ADC, ...) receiving the TRGO or the TRGO2
+Page 1782: Note:       The clock of the slave peripherals (timer, ADC, ...) receiving the TRGO or the TRGO2
+Page 1787: Note: The clock of the slave peripherals (timer, ADC, ...) receiving the TRGO or the TRGO2
+Page 1839: Note: The clock of the slave timer or ADC must be enabled prior to receive events from the
+Page 2227: SDO               DATA LEFT RIGHT    ADC    MIC   VD    VD    LVD      ADC           STATUS
+Page 2362: a single card (addressed command) or all connected cards (broadcast command are
+Page 2761: Broadcast address filtering
+Page 2761: The MAC does not filter any broadcast packets by default. To program the MAC to reject all
+Page 2761: broadcast packets, set the DBF bit in Packet filtering control register (ETH_MACPFR).
+Page 2762: Broadcast     0       X        X       X       X       X        0                Pass
+Page 2768: 1.   The master broadcasts the PTP Sync messages to all its nodes. The Sync message
+Page 2801: address (including broadcast address) to determine whether these packets meet the
+Page 2801: cast (including broadcast) address) are checked to determine whether they meet the remote
+Page 2807: d)   Unicast, multicast, broadcast, and control frames filter settings.
+Page 2888: Bit 5 DBF: Disable Broadcast Packets
+Page 2888: When this bit is set, the AFM module blocks all incoming broadcast packets. In addition, it
+Page 2888: When this bit is reset, the AFM module passes all received broadcast packets.
+Page 2925: Bit 8 UCDBC: Update MMC Counters for Dropped Broadcast Packets
+Page 2925: When set, the MAC updates all related MMC Counters for Broadcast packets that are
+Page 2925: When reset, the MMC Counters are not updated for dropped Broadcast packets.
+Page 2980: needs to reject a broadcast message.
+Page 2980: field. Note that the special address 0xF is used for broadcast messages.
+Page 2984: •    a message is negatively acknowledged in a broadcast message
+Page 2984: When BRE is detected in a broadcast message with BRESTP=1 an error bit is generated
+Page 2984: •    A broadcast message is received containing SBPE AND BRDNOGEN=1
+Page 2984: When LBPE is detected in a broadcast message an error bit is generated even if
+Page 2991: addressed to different destination are ignored. Broadcast messages are always received.
+Page 2991: without acknowledge sent. Broadcast messages are always received.
+Page 2991: Bit 7 BRDNOGEN: Avoid Error-Bit Generation in Broadcast
+Page 2991: 0: BRE detection with BRESTP=1 and BREGEN=0 on a broadcast message generates an Error-Bit
+Page 2991: on the CEC line. LBPE detection with LBPEGEN=0 on a broadcast message generates an Error-Bit
+Page 2991: case of an SBPE detection in a broadcast message if listen mode is set.
+Page 2991: Note: If BRDNOGEN=0, an Error-bit is generated upon LBPE detection in broadcast even if
+Page 2991: Note: If BRDNOGEN=0, an Error-bit is generated upon BRE detection with BRESTP=1 in broadcast
+Page 2994: received. In case of broadcast transmission, TXACKE informs application that a negative
+Page 2994: on the CEC line. RXACKE applies only for broadcast messages and in listen mode also for not
+Page 2994: CEC line if LBPEGEN=1. In case of broadcast, Error-Bit is generated even in case of LBPEGEN=0.
+Page 2995: sent. In case of broadcast, a negative acknowledge is sent.
+Page 3183: Bit 3 BB: Branch broadcast mode
+Page 3193: Bit 5 TRCBB: Support for branch broadcast tracing
+Page 3193: 1: Branch broadcast trace is implemented
+Page 3196: Bit 8 SUPPADC: Support of data address comparisons
+Page 3216: Updated maximum frequency for ADC1, 2, 3 in Table 51: Kernel
+Page 3218: Section 25: Analog-to-digital converters (ADC)
+Page 3218: Number of ADCs changed to 3 in Section 25.1: Introduction.
+Page 3218: Added internal signals in Section 25.3.1: ADC block diagram.
+Page 3218: Changed ADCx_IN[19:0] into ADCx_INP[19:0] and
+Page 3218: ADCx_INN[19:0] in Figure 124: ADC block diagram and Table 190:
+Page 3218: ADC input/output pins. Changed ADC_CLK into adc_ker_ck.
+Page 3218: Updated Figure 126: ADC1 connectivity, Figure 127: ADC2
+Page 3218: connectivity and Figure 128: ADC3 connectivity and added note
+Page 3218: below figure. Updated Figure 175: Dual ADC block diagram(1).
+Page 3218: Section 25.3.12: Channel preselection register (ADCx_PCSEL).
+Page 3219: Section 25: Analog-to-digital converters (ADC) (continued)
+Page 3219: Added Section : DFSDM mode in dual ADC simultaneous mode.
+Page 3219: Changed ADC3_IN18 into ADC3 VINP[18] in Section 25.3.33:
+Page 3219: Changed ADC3_IN17 into ADC3 VINP[17] in Section 25.3.34:
+Page 3219: Changed ADC3_IN19 into ADC3 VINP[19] in Section 25.3.35:
+Page 3219: Changed all bit access type to ‘r’ in Section 25.5.15: ADC x regular
+Page 3219: Data Register (ADCx_DR) (x=1 to 3).
+Page 3219: Updated Table 206: ADC register map and reset values (master
+Page 3219: and slave ADC common registers) offset =0x300).
+Page 3220: Modified ADC3TAPER bit description in Section 37.5.56: HRTIM
+Page 3220: ADC Trigger 3 Register (HRTIM_ADC3R).
+Page 3220: Modified ADC4TCRST, ADC4TAPER, ADC4TAC2, ADC4EEV6,
+Page 3220: ADC4MPER and DC4MC1 bit descriptions in and Section 37.5.57:
+Page 3220: HRTIM ADC Trigger 4 Register (HRTIM_ADC4R).
+Page 3223: Updated maximum frequency for ADC1, 2, 3 in Table 51: Kernel
+Page 3224: Section 25: Analog-to-digital converters (ADC)
+Page 3224: Section 25.2: ADC main features: suppressed ADC supply
+Page 3224: Updated Figure 124: ADC block diagram, Figure 126: ADC1
+Page 3224: connectivity, Figure 127: ADC2 connectivity and Figure 128: ADC3
+Page 3224: VINN connected to ADC_INN instead of ADC_INN-1 in Table 190:
+Page 3224: ADC input/output pins.
+Page 3224: Updated Figure 136: Triggers are shared between ADC master and
+Page 3224: ADC slave, Figure 191: Temperature sensor channel block
+Page 3224: conversion mode: dual ADC mode and Figure 179: Interleaved
+Page 3224: mode on 1 channel in single conversion mode: dual ADC mode.
+Page 3224: Section 25.6.2: ADC x common control register (ADCx_CCR) (x=12
+Page 3224: – Updated Table 203: DELAY bits versus ADC resolution.
+Page 3224: ADCx_OR register suppressed since all bits are reserved.
+Page 3224: Renamed ADCx_LHTR1 into ADCx_HTR1.
+Page 3224: Changed ADCx_ISR bit access type to rc_w1.
+Page 3224: Updated iterators for all ADC common registers
+Page 3226: Updated maximum allowed clock frequency for ADC1, 2, 3
+Page 3227: – Changed EXTx into adc_ext_trgx and JEXTx into adc_jext_trgx
+Page 3227: 4         for ADC3
+Page 3229: Section 24: Analog-to-digital converters (ADC)
+Page 3229: fADC and TADC replaced by fADC_ker_ck and tADC_ker_ck in the whole
+Page 3229: Added fADC_ker_ck in Figure 132: ADC clock scheme.
+Page 3229: FHCLK replaced by Fadc_hclk in Section : Clock ratio constraint
+Page 3229: between ADC clock and AHB clock.
+Page 3229: Replaced EXTSEL by JEXTSEL and adc_ext_trg0/1 by
+Page 3229: adc_jext_trg0/1 in Table 202: ADC1, ADC2 and ADC3 - External
+Page 3229: Updated note for JEOIE in Section 24.5.2: ADC interrupt enable
+Page 3229: register (ADC_IER)
+Page 3229: Updated conditions for programming ADC_JSQR register in
+Page 3229: Section 24.3.10: Constraints when writing the ADC control bits,
+Page 3229: notes related to all Section 24.5.16: ADC injected sequence register
+Page 3229: (ADC_JSQR) bitfields (product errata sheets updated accordingly).
+Page 3229: Updated note related to offset correction in Section : Single ADC
+Page 3229: Updated Section 24.5.8: ADC channel preselection register
+Page 3229: (ADC_PCSEL).
+Page 3229: Removed calibration value in Section 24.5.26: ADC calibration
+Page 3229: factors register (ADC_CALFACT).
+Page 3234: ADC_AWD2CR . . . . . . . . . . . . . . . . . . . . . .1004
+Page 3234: ADC_AWD3CR . . . . . . . . . . . . . . . . . . . . . .1005
+Page 3234: ADC_CALFACT . . . . . . . . . . . . . . . . . . . . . .1008
+Page 3234: ADC_CALFACT2 . . . . . . . . . . . . . . . . . . . . .1008
+Page 3234: ADC_CFGR . . . . . . . . . . . . . . . . . . . . . . . . . .986
+Page 3234: ADC_CFGR2 . . . . . . . . . . . . . . . . . . . . . . . . .990       B
+Page 3234: ADC_CR . . . . . . . . . . . . . . . . . . . . . . . . . . . .981    BDMA_CCRx . . . . . . . . . . . . . . . . . . . . . . . . 662
+Page 3234: ADC_DIFSEL . . . . . . . . . . . . . . . . . . . . . . . .1007       BDMA_CM0ARx . . . . . . . . . . . . . . . . . . . . . . 667
+Page 3234: ADC_DR . . . . . . . . . . . . . . . . . . . . . . . . . . .1000     BDMA_CM1ARx . . . . . . . . . . . . . . . . . . . . . . 668
+Page 3234: ADC_HTR1 . . . . . . . . . . . . . . . . . . . . . . . . . .995      BDMA_CNDTRx . . . . . . . . . . . . . . . . . . . . . . 666
+Page 3234: ADC_HTR2 . . . . . . . . . . . . . . . . . . . . . . . . .1006       BDMA_CPARx . . . . . . . . . . . . . . . . . . . . . . . 666
+Page 3234: ADC_IER . . . . . . . . . . . . . . . . . . . . . . . . . . . .979   BDMA_IFCR . . . . . . . . . . . . . . . . . . . . . . . . . 661
+Page 3234: ADC_ISR . . . . . . . . . . . . . . . . . . . . . . . . . . . .977   BDMA_ISR . . . . . . . . . . . . . . . . . . . . . . . . . . 658
+Page 3234: ADC_JDRy . . . . . . . . . . . . . . . . . . . . . . . . . .1004
+Page 3234: ADC_JSQR . . . . . . . . . . . . . . . . . . . . . . . . .1001
+Page 3234: ADC_LTR1 . . . . . . . . . . . . . . . . . . . . . . . . . . .994    C
+Page 3234: ADC_LTR2 . . . . . . . . . . . . . . . . . . . . . . . . . .1005     CEC_CFGR . . . . . . . . . . . . . . . . . . . . . . . . . 2990
+Page 3234: ADC_LTR3 . . . . . . . . . . . . . . . . . . . . . . . . . .1006     CEC_CR . . . . . . . . . . . . . . . . . . . . . . . . . . . 2989
+Page 3234: ADC_OFRy . . . . . . . . . . . . . . . . . . . . . . . . .1003       CEC_IER . . . . . . . . . . . . . . . . . . . . . . . . . . . 2995
+Page 3234: ADC_PCSEL . . . . . . . . . . . . . . . . . . . . . . . . .994       CEC_ISR . . . . . . . . . . . . . . . . . . . . . . . . . . . 2993
+Page 3234: ADC_SMPR1 . . . . . . . . . . . . . . . . . . . . . . . . .992       CEC_RXDR . . . . . . . . . . . . . . . . . . . . . . . . . 2993
+Page 3234: ADC_SMPR2 . . . . . . . . . . . . . . . . . . . . . . . . .993       CEC_TXDR . . . . . . . . . . . . . . . . . . . . . . . . . 2993
+Page 3234: ADC_SQR1 . . . . . . . . . . . . . . . . . . . . . . . . . .996      COMP_CFGR1 . . . . . . . . . . . . . . . . . . . . . . 1072
+Page 3234: ADC_SQR2 . . . . . . . . . . . . . . . . . . . . . . . . . .997      COMP_CFGR2 . . . . . . . . . . . . . . . . . . . . . . 1074
+Page 3234: ADC_SQR3 . . . . . . . . . . . . . . . . . . . . . . . . . .998      COMP_ICFR . . . . . . . . . . . . . . . . . . . . . . . . 1070
+Page 3234: ADC_SQR4 . . . . . . . . . . . . . . . . . . . . . . . . . .999      COMP_OR . . . . . . . . . . . . . . . . . . . . . . . . . 1071
+Page 3234: ADCx_CCR . . . . . . . . . . . . . . . . . . . . . . . . .1012       COMP_SR . . . . . . . . . . . . . . . . . . . . . . . . . . 1070
+Page 3234: ADCx_CDR . . . . . . . . . . . . . . . . . . . . . . . . .1015       CRC_CR . . . . . . . . . . . . . . . . . . . . . . . . . . . . 774
+Page 3234: ADCx_CDR2 . . . . . . . . . . . . . . . . . . . . . . . .1015        CRC_DR . . . . . . . . . . . . . . . . . . . . . . . . . . . . 773
+Page 3234: ADCx_CSR . . . . . . . . . . . . . . . . . . . . . . . . .1010       CRC_IDR . . . . . . . . . . . . . . . . . . . . . . . . . . . 773
+Page 3234: ADCx_HTR3 . . . . . . . . . . . . . . . . . . . . . . . .1007        CRC_INIT . . . . . . . . . . . . . . . . . . . . . . . . . . . 774
+Page 3239: HRTIM_ADC1R . . . . . . . . . . . . . . . . . . . . . .1492         HRTIM_RSTAR . . . . . . . . . . . . . . . . . . . . . . 1461
+Page 3239: HRTIM_ADC2R . . . . . . . . . . . . . . . . . . . . . .1493         HRTIM_RSTBR . . . . . . . . . . . . . . . . . . . . . . 1463
+Page 3239: HRTIM_ADC3R . . . . . . . . . . . . . . . . . . . . . .1494         HRTIM_RSTCR . . . . . . . . . . . . . . . . . . . . . . 1463
+Page 3239: HRTIM_ADC4R . . . . . . . . . . . . . . . . . . . . . .1496         HRTIM_RSTDR . . . . . . . . . . . . . . . . . . . . . . 1463

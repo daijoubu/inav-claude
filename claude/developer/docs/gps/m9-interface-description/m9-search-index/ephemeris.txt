@@ -1,0 +1,51 @@
+Keyword: ephemeris
+Occurrences: 47
+================================================================================
+
+Page    7: 3.13.3.1 BeiDou ephemeris assistance for satellites svId 1..37........................................... 103
+Page    7: 3.13.6.1 Galileo ephemeris assistance...................................................................................... 109
+Page    7: 3.13.7.1 GLONASS ephemeris assistance................................................................................112
+Page    7: 3.13.8.1 GPS ephemeris assistance...........................................................................................114
+Page    8: 3.13.10.1 QZSS ephemeris assistance..................................................................................... 122
+Page   43: •   e = Ephemeris available, but not used for
+Page   51: UBX-MGA-BDS              0x13 0x03   •   BeiDou ephemeris assistance for satellites svId 1..37 (Input)
+Page   52: UBX-MGA-GAL               0x13 0x02      •   Galileo ephemeris assistance (Input)
+Page   52: UBX-MGA-GLO               0x13 0x06      •   GLONASS ephemeris assistance (Input)
+Page   52: UBX-MGA-GPS               0x13 0x00      •   GPS ephemeris assistance (Input)
+Page   52: UBX-MGA-QZSS              0x13 0x05      •   QZSS ephemeris assistance (Input)
+Page   71: bit 12   U:1    updateEPH        -           -            Update ephemeris
+Page   71: •   0 do not wake up to update Ephemeris data
+Page   72: •   1 update Ephemeris. The receiver adds extra
+Page   72: wake-up cycles to update the Ephemeris data.
+Page   81: bit 0   U:1       eph                  -            -           Ephemeris
+Page  103: 3.13.3.1 BeiDou ephemeris assistance for satellites svId 1..37
+Page  103: BeiDou ephemeris assistance for satellites svId 1..37
+Page  103: Comment       This message allows the delivery of BeiDou D1/D2 ephemeris assistance to a receiver.
+Page  104: 23            U1        IODE                     -           -            Issue of Data, Ephemeris
+Page  104: 24            U4        toe                      2^3         s            Ephemeris reference time
+Page  105: Comment       This message allows the delivery of BeiDou health assistance from D1/D2 ephemeris to a receiver.
+Page  109: 3.13.6.1 Galileo ephemeris assistance
+Page  109: Galileo ephemeris assistance
+Page  109: Comment       This message allows the delivery of Galileo ephemeris assistance to a receiver.
+Page  109: 4             U2        iodNav                   -           -            Ephemeris and clock correction Issue of Data
+Page  110: 50            U2        toe                     60          s            Ephemeris reference time
+Page  112: 3.13.7.1 GLONASS ephemeris assistance
+Page  112: GLONASS ephemeris assistance
+Page  112: Comment       This message allows the delivery of GLONASS ephemeris assistance to a receiver.
+Page  113: 38            U1        E                        -           days         Ephemeris data age indicator
+Page  114: 3.13.8.1 GPS ephemeris assistance
+Page  114: GPS ephemeris assistance
+Page  114: Comment       This message allows the delivery of GPS ephemeris assistance to a receiver.
+Page  115: 40            U2        toe                      2^4         s            Reference time of ephemeris
+Page  122: 3.13.10.1 QZSS ephemeris assistance
+Page  122: QZSS ephemeris assistance
+Page  122: Comment       This message allows the delivery of QZSS ephemeris assistance to a receiver.
+Page  123: 40            U2        toe                      2^4         s            Reference time of ephemeris
+Page  139: 11 + n·6         X1      eph            -           -            Ephemeris data
+Page  139: store multiple ephemeris data sets per satellite.
+Page  139: ephemeris data from now on:
+Page  139: •   0 = Ephemeris can no longer be used
+Page  144: •   1 = ephemeris is used
+Page  145: bit 11   U:1       ephAvail              -            -           1 = ephemeris is available for this SV
+Page  222: CFG-PM-UPDATEEPH                       0x10d0000a       L       -         -    Update ephemeris regularly.
+Page  222: Disable to not wake up to update ephemeris data, enable adds extra wakeup cycles to update the ephemeris data.

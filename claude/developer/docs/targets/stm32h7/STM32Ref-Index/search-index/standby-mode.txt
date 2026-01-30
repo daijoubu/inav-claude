@@ -1,0 +1,224 @@
+Keyword: standby mode
+Occurrences: 220
+================================================================================
+
+Page    6: 5.7.9       DStandby mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 280
+Page    6: 5.7.10      Standby mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 282
+Page    8: 7.5.7       Handling clock generators in Stop and Standby mode . . . . . . . . . . . . 332
+Page   46: 44.3.6      Behavior in Stop and Standby modes . . . . . . . . . . . . . . . . . . . . . . . . 1882
+Page   68: Table 40.   DStandby mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 281
+Page   68: Table 42.   Standby mode. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 283
+Page   80: Figure 33.   Dynamic Voltage Scaling D1, D2, system Standby mode . . . . . . . . . . . . . . . . . . . . . . . . 270
+Page   80: Figure 34.   Dynamic voltage scaling behavior with D1 and D2 in DStandby mode and
+Page  132: The BOOT pin is also re-sampled when the device exits the Standby mode. Consequently,
+Page  158: from DStandby mode to DRun mode, the embedded Flash memory behaves as during
+Page  163: continue counting (1) or not (0) when the device is in Stop or Standby mode, respectively.
+Page  163: When the IWDG is kept running during Stop or Standby mode, it can wake up the device
+Page  163: DStandby mode. It is active low.
+Page  175: 1. D3 domain must always be in DStandby mode. When all clocks are stopped and the CPU is in CStop, the
+Page  175: switch the D1 domain to DStop or DStandby mode.
+Page  175: The microcontroller can then switch the domain to DStop or DStandby mode.
+Page  196: Bit 18 IWDG_FZ_SDBY: IWDG Standby mode freeze option status bit
+Page  196: When set the independent watchdog IWDG1 is frozen in system Standby mode.
+Page  196: 0: Independent watchdog frozen in Standby mode
+Page  196: 1: Independent watchdog keep running in Standby mode.
+Page  197: 0: a reset is generated when entering DStandby mode on D1 domain
+Page  197: 1: no reset generated when entering DStandby mode on D1 domain
+Page  199: Bit 18 IWDG_FZ_SDBY: IWDG Standby mode freeze option configuration bit
+Page  199: 0: Independent watchdog frozen in Standby mode
+Page  199: 1: Independent watchdog keep running in Standby mode.
+Page  199: 0: a reset is generated when entering DStandby mode on D1 domain.
+Page  199: 1: no reset generated when entering DStandby mode on D1 domain
+Page  247: When exiting from Standby mode, the supply configuration is known by the system since the
+Page  248: •    Standby mode
+Page  249: •   In Standby mode
+Page  249: backup domain. The external source shall be switched ON when exiting Standby mode.
+Page  259: DStop or DStandby mode.
+Page  259: •   For system D3 domain to operate in Standby mode, both D1 and D2 domains must be
+Page  259: are in DStandby mode.
+Page  260: DStandby mode.
+Page  261: PDDS_D2 bit selects DStandby mode,
+Page  261: subsystem operates in CStop mode and PDDS_D2 bit selects DStandby mode.
+Page  261: - All PDDS_Dn(a) bits for all domains select Standby mode.
+Page  262: 8. All domains are in DStandby mode.
+Page  263: exiting from Stop mode or Standby mode, the Run mode voltage scaling is reset to the
+Page  263: LP SVOS5                                Standby mode
+Page  264: domain and D2 domain are either in DStop or DStandby mode.
+Page  264: •       In Standby mode, VCORE supply is switched off.
+Page  264: domain and D2 domain are both in DStandby mode.
+Page  264: enter DStandby mode.
+Page  264: If a domain is in DStandby mode, the corresponding power is switched off.
+Page  265: Standby mode
+Page  266: •    The system enters or exits from Standby mode (state transitions in Stop and Standby
+Page  266: –     When exiting from Standby mode, the SBF is set.
+Page  267: domains are in DStandby mode
+Page  269: in Standby mode
+Page  269: DStandby mode.The D2 domain bus matrix clock is stopped and the power is switched
+Page  269: 3.    The CPU subsystem then enters to CStop mode, D1 domain enters DStandby mode
+Page  269: and the system enters Standby mode. The system clock is stopped and the voltage
+Page  270: 6.     The CPU subsystem puts the D2 domain in DStandby mode.
+Page  270: Figure 33. Dynamic Voltage Scaling D1, D2, system Standby mode
+Page  271: with D1 and D2 domains in DStandby mode
+Page  271: DStandby mode. The D2 domain bus matrix clock is stopped and its power switched
+Page  271: domain exits from DStandby mode and the CPU subsystem exits from CStop mode.
+Page  271: D2 domain remains in DStandby mode.
+Page  272: Figure 34. Dynamic voltage scaling behavior with D1 and D2 in DStandby mode and
+Page  273: cleared and the other domains are in DStop or DStandby mode.
+Page  274: The CPU subsystem exits from DStandby mode by enabling an EXTI interrupt or event,
+Page  274: regardless on how DStandby mode was entered. Program execution restarts from CPU
+Page  274: The D2 domain can exit from DStop or DStandby mode when the CPU allocates a first
+Page  274: The CPU subsystem exits from Standby mode by enabling an external reset (NRST pin), an
+Page  278: DStandby mode.
+Page  280: 5.7.9      DStandby mode
+Page  280: Like DStop mode, DStandby mode is based on the CPU subsystem CStop mode. However
+Page  280: the domain VCORE supply is powered off. A domain enters DStandby mode only when the
+Page  280: A domain enters DStandby mode only when the CPU subsystem is in CStop mode if
+Page  280: (PWR_CPUCR) for the domain is configured accordingly. In DStandby mode, the domain is
+Page  280: Entering DStandby mode
+Page  280: The DStandby mode is entered according to Section 5.7.3: Entering low-power modes,
+Page  280: selects Standby mode.
+Page  280: Refer to Table 40 for details on how to enter DStandby mode.
+Page  280: If Flash memory programming is ongoing, the DStandby mode entry is delayed until the
+Page  280: If an access to the domain bus matrix is ongoing, the DStandby mode entry is delayed until
+Page  280: Note:      When the CPU sets the PDDS_D2 bit to select Standby mode, the D2 domain enters
+Page  280: DStandby mode (the CPU has no allocated peripherals in the D2 domain).
+Page  280: Exiting from DStandby mode
+Page  280: The DStandby mode is exited according to Section 5.7.4: Exiting from low-power modes.
+Page  280: Refer to Table 40 for more details on how to exit from DStandby mode.
+Page  280: Note:      When the D2 domain is in DStandby mode and the CPU sets the domain PDDS_D2 bit to
+Page  280: select Stop mode, the D2 domain remains in DStandby mode. The D2 domain will only exit
+Page  281: When exiting from DStandby mode, the domain CPU and peripherals are reset. However
+Page  281: matrix clocks and voltage scaling are the same as when entering DStandby mode.
+Page  281: •     When the system has entered Stop or Standby mode, the CPU subsystem clocks,
+Page  281: When the D2 domain exits from DStandby mode due to the CPU subsystem (i.e when
+Page  281: DStandby mode. To ensure correct operation, it is recommended to follow the sequence
+Page  281: 2.    Then wait for the domain has exited from DStandby mode. To do this, check the
+Page  281: Table 40. DStandby mode
+Page  281: DStandby mode                                    Description
+Page  281: – The PDDS_Dn bits for the domain select Standby mode.
+Page  282: 5.7.10     Standby mode
+Page  282: The Standby mode allows achieving the lowest power consumption. Like Stop mode, it is
+Page  282: The system D3 domain enters Standby mode only when the D1 and D2 domain are in
+Page  282: DStandby. When the system D3 domain enters Standby mode, the voltage regulator is
+Page  282: In system Standby mode, the following features can be selected by programming individual
+Page  282: Entering Standby mode
+Page  282: The Standby mode is entered according to Section 5.7.3: Entering low-power modes, when
+Page  282: Refer to Table 42 for more details on how to enter to Standby mode.
+Page  282: Exiting from Standby mode
+Page  282: The Standby mode is exited according to Section 5.7.4: Exiting from low-power modes.
+Page  282: Refer to Table 42 for more details on how to exit from Standby mode.
+Page  282: The system exits from Standby mode when an external Reset (NRST pin), an IWDG Reset,
+Page  282: After waking up from Standby mode, the program execution restarts in the same way as
+Page  283: Table 42. Standby mode
+Page  283: Standby mode                                             Description
+Page  283: I/O states in Standby mode
+Page  283: In Standby mode, all I/O pins are high impedance without pull, except for:
+Page  286: Note: Since the AVD is disabled in Standby mode, this bit is equal to 0 after Standby or reset
+Page  286: Note: since the PVD is disabled in Standby mode, this bit is equal to 0 after Standby or reset
+Page  286: This register is not reset by wakeup from Standby mode, RESET signal and VDD POR. It is
+Page  287: Reset value: 0x0000 0006 (reset only by POR only, not reset by wakeup from Standby mode
+Page  289: set, this bit can be cleared only when the D2 domain is no longer in DStandby mode.
+Page  289: 0: D2 domain has not been in DStandby mode
+Page  289: 1: D2 domain has been in DStandby mode.
+Page  289: set, this bit can be cleared only when the D1 domain is no longer in DStandby mode.
+Page  289: 0: D1 domain has not been in DStandby mode
+Page  289: 1: D1 domain has been in DStandby mode.
+Page  289: 0: System has not been in Standby mode
+Page  289: 1: System has been in Standby mode
+Page  290: 1: Allow Standby mode when D3 domain enters Deepsleep.
+Page  290: 1: Allow DStandby mode when D2 domain enters Deepsleep.
+Page  290: 1: Allow DStandby mode when D1 domain enters Deepsleep.
+Page  292: The Wakeup pin pull configuration is kept in Standby mode.
+Page  292: 0: An event on WKUPn+1 pin does not wakeup the system from Standby mode.
+Page  292: 1: A rising or falling edge on WKUPn+1 pin wakes-up the system from Standby mode.
+Page  298: while the D1 and D2 domains enter DStandby mode.
+Page  298: Note:      SRAM4 remains available as long as the system is not in Standby mode.
+Page  298: If the system is in Standby mode, it is still possible to use the BKUP_SRAM. However, its
+Page  298: 1.   Recover the application from the system Standby mode (RECO).
+Page  298: 6.   Configure the PWR block to allow the D1 domain to go to DStandby mode (STP).
+Page  299: •   Prevent system D3 domain to enter Standby mode when the data transfer is complete.
+Page  303: data stored in SRAM4 are retained while the D1 domain is in DStandby mode.
+Page  306: •   Clock generation handling in Stop and Standby mode
+Page  311: When the system exits from Standby mode, a stby_rst reset is applied. The stby_rst signal
+Page  312: DStandby mode.
+Page  312: DStandby mode.
+Page  312: – When the device exits Standby mode, a
+Page  313: 10     D1 exits DStandby mode                                      0           0           0           0          0         0         0         0        1        0
+Page  313: 11     D2 exits DStandby mode                                      0           0           0           0          0         0         0         1        0        0
+Page  313: D1 erroneously enters DStandby mode or
+Page  314: •   D1 domain accidentally enters DStandby mode
+Page  314: case, whenever a D1 domain DStandby mode entry sequence is successfully
+Page  320: mode (refer to Section 7.5.7: Handling clock generators in Stop and Standby mode for
+Page  321: when the system enters Stop or Standby mode.
+Page  321: please refer to Section 7.5.7: Handling clock generators in Stop and Standby mode for
+Page  322: Handling clock generators in Stop and Standby mode for additional information).
+Page  323: The HSI48 oscillator is disabled as soon as the system enters Stop or Standby mode. When
+Page  324: Stop or Standby mode for the independent watchdog (IWDG) and Auto-Wakeup Unit
+Page  324: The LSI remains enabled when the system enters Stop or Standby mode (refer to
+Page  324: Section 7.5.7: Handling clock generators in Stop and Standby mode for additional
+Page  324: system enters Standby mode (see Section 7.4.2: System reset).
+Page  325: A wakeup is generated in Standby mode. In other modes an interrupt (rcc_lsecss_it) can
+Page  328: •    The system enters Stop or Standby mode.
+Page  330: or Standby mode.
+Page  332: 7.5.7         Handling clock generators in Stop and Standby mode
+Page  333: When the microcontroller exists system Standby mode, the HSI is selected as system and
+Page  347: domains are in DStop or DStandby mode. This is done by setting RUN_D3 bit in
+Page  347: •     If RUN_D3 is set to ‘0’, then D3 domain enters DStop or DStandby mode when the
+Page  348: The Autonomous mode does not prevent the D3 domain to enter DStop or DStandby mode.
+Page  349: •     D3 can run while D1 and D2 are in DStop/DStandby mode thanks to RUN_D3 bits of
+Page  349: •     The system remains in Standby mode as long as D1, D2 and D3 are in DStandby.
+Page  349: –      When a domain is in DStandby mode, it means that the domain including its CPU
+Page  351: domain is in DStop/DStandby mode, then the power controller (PWR) has first to
+Page  361: Cleared by hardware when entering Stop or Standby mode.
+Page  361: Cleared by hardware when entering Stop or Standby mode.
+Page  361: Cleared by hardware when entering Stop or Standby mode. Note that the hardware prevents writing
+Page  362: This bit is “set only” (disabled by a system reset or when the system enters in Standby mode).
+Page  362: Cleared by hardware to stop the HSE when entering Stop or Standby mode.
+Page  362: Standby mode.
+Page  364: Set by hardware to force the HSI to ON when the product leaves Standby mode or in case of a
+Page  368: See Section 7.5.7: Handling clock generators in Stop and Standby mode for details.
+Page  369: See Section 7.5.7: Handling clock generators in Stop and Standby mode for details.
+Page  487: The CRS stops operating until the Stop or Standby mode is exited and the HSI48 oscillator
+Page  517: powered off (when the device enters Standby mode). In this case, if their GPIO configuration
+Page  526: •        Reset generation in Stop and Standby mode
+Page  544: This bit indicates if a reset is generated when D1 domain enters DStandby mode.
+Page  544: 0: A reset is generated by entering D1 Standby mode
+Page  544: 1: D1 Standby mode is entered without reset generation
+Page  546: Bit 16 FZIWDGSTB: Freeze independent watchdog in Standby mode
+Page  546: This bit indicates if the independent watchdog is frozen in Standby mode.
+Page  546: 0: Independent Watchdog frozen in Standby mode
+Page  546: 1: Independent Watchdog running in Standby mode
+Page 1039: Standby mode.
+Page 1068: bit                 mode             modes             Standby mode
+Page 1843: running in all power modes except for Standby mode. Given its capability to run even with
+Page 1858: exiting Standby mode.
+Page 1880: Standby modes.
+Page 1882: can continue counting or not during the Stop mode and the Standby mode respectively. If
+Page 1882: the IWDG is kept running during Stop or Standby modes, it can wake up the device from this
+Page 1882: 44.3.6      Behavior in Stop and Standby modes
+Page 1883: Reset value: 0x0000 0000 (reset by Standby mode)
+Page 1885: Reset value: 0x0000 0FFF (reset by Standby mode)
+Page 1886: Reset value: 0x0000 0000 (not reset by Standby mode)
+Page 1887: Reset value: 0x0000 0FFF (reset by Standby mode)
+Page 1894: Standby modes
+Page 1895: Standby modes
+Page 1896: register (RTC_ISR)). The copy is not performed in Stop and Standby mode. When exiting
+Page 1901: Note:      RTC_REFIN clock detection is not available in Standby mode.
+Page 1904: •    generate an interrupt, capable to wakeup from Stop and Standby modes
+Page 1904: wakes up from Standby mode.
+Page 1907: exit the Standby mode.
+Page 1908: 1. Wakeup from STOP and Standby modes is possible only when the RTC clock source is LSE or LSI.
+Page 1984: Standby mode.
+Page 2455: only possible while the device is in Standby mode. Registers FDCAN_DBTP and
+Page 2579: Standby mode.                                                                      applications.
+Page 3132: Bit 8 DBGSTBY_D3: Allow debug in D3 Standby mode
+Page 3132: Standby mode(1).
+Page 3132: run during Standby mode, and the domain supply is maintained, allowing full debug
+Page 3132: capability. On exit from Standby mode, a system reset is performed.
+Page 3133: Bit 2 DBGSTBY_D1: Allow D1 domain debug in Standby mode
+Page 3133: Standby mode.
+Page 3133: run during Standby mode, and the domain supply is maintained, allowing full debug
+Page 3133: capability. On exit from Standby mode, a domain reset is performed.
+Page 3133: DAPCLK active in Standby mode, even if DBGSTBY_D3 is reset. However the remaining D3 domain clocks
+Page 3223: system Standby mode and Figure 29: Dynamic voltage scaling
+Page 3223: behavior with D1 and D2 in DStandby mode and D3 in autonomous

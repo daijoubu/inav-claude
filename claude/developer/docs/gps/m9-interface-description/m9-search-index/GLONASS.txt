@@ -1,0 +1,98 @@
+Keyword: GLONASS
+Occurrences: 94
+================================================================================
+
+Page    7: 3.13.7.1 GLONASS ephemeris assistance................................................................................112
+Page    7: 3.13.7.2 GLONASS almanac assistance................................................................................... 113
+Page    7: 3.13.7.3 GLONASS auxiliary time oﬀset assistance...............................................................114
+Page    9: 3.15.20.1 GLONASS time solution............................................................................................. 152
+Page   10: 4.4.9.1 GLONASS MSM1.............................................................................................................. 173
+Page   10: 4.4.10.1 GLONASS MSM3............................................................................................................174
+Page   10: 4.4.11.1 GLONASS MSM4............................................................................................................174
+Page   11: 4.4.12.1 GLONASS MSM5............................................................................................................175
+Page   11: 4.4.13.1 GLONASS MSM6............................................................................................................176
+Page   11: 4.4.14.1 GLONASS MSM7............................................................................................................176
+Page   17: native number associated with the satellite in the speciﬁc GNSS. For example the GLONASS SV4 is
+Page   17: GLONASS satellites can be tracked before they have been identiﬁed. In UBX messages, the unknown
+Page   17: GLONASS satellites.
+Page   18: GLONASS                 GLO            R                    6                   2              2                   2
+Page   18: GLONASS       R1-R32          6:1-32          65-96
+Page   19: GLONASS          R1-R32      65-96     65-96                 65-96     65-96                      65-96        65-96
+Page   20: GLONASS L1 OF2                                   6             0              2            1             2             1
+Page   20: GLONASS L2 OF                                    6             2              2            3             2             3
+Page   23: GLONASS                         GL       NMEA 2.3+
+Page   32: GLONASS, Galileo and BeiDou. Note that the NMEA
+Page   52: UBX-MGA-GLO               0x13 0x06      •   GLONASS ephemeris assistance (Input)
+Page   52: •   GLONASS almanac assistance (Input)
+Page   52: •   GLONASS auxiliary time oﬀset assistance (Input)
+Page   53: UBX-NAV-TIMEGLO          0x01 0x23    •   GLONASS time solution (Periodic/polled)
+Page   61: When gnssId is 6 (GLONASS)
+Page   61: •   0x01 = GLONASS L1
+Page   61: •   0x10 = GLONASS L2
+Page   66: (SU); derived from GLONASS time
+Page   69: bit 5   U:1     glonass        -       -            Disable reporting of GLONASS satellites
+Page   80: •   2 = GLONASS time (not supported for protocol
+Page   85: •   2 = GLONASS
+Page  112: 3.13.7.1 GLONASS ephemeris assistance
+Page  112: GLONASS ephemeris assistance
+Page  112: Comment       This message allows the delivery of GLONASS ephemeris assistance to a receiver.
+Page  112: 2             U1        svId                     -           -            GLONASS    Satellite       identiﬁer    (see   Satellite
+Page  112: 6             U1        M                        -           -            Type of GLONASS satellite (1 indicates GLONASS-M)
+Page  113: 3.13.7.2 GLONASS almanac assistance
+Page  113: GLONASS almanac assistance
+Page  113: Comment       This message allows the delivery of GLONASS almanac assistance to a receiver.
+Page  113: 2             U1        svId                     -           -            GLONASS    Satellite        identiﬁer   (see   Satellite
+Page  113: 6             U1        M                        -           -            Type of GLONASS satellite (1 indicates GLONASS-M)
+Page  113: 8             I2        tau                      2^-18       s            Coarse time correction to GLONASS time
+Page  114: 3.13.7.3 GLONASS auxiliary time oﬀset assistance
+Page  114: GLONASS auxiliary time oﬀset assistance
+Page  114: Comment       This message allows the delivery of auxiliary GLONASS assistance (including the GLONASS time oﬀsets to
+Page  114: 8             I4        tauGps                   2^-31       s            Correction to GPS time relative to GLONASS time
+Page  120: •   6 = GLONASS time
+Page  126: bit 1   U:1       GlonassSup            -            -           GLONASS is supported
+Page  126: bit 1   U:1       GlonassDef            -            -           GLONASS is default-enabled
+Page  126: bit 1   U:1       GlonassEna            -            -           GLONASS is enabled
+Page  147: 11 + n·16           U1      freqId        -           -            Only used for GLONASS: This is the frequency slot + 7
+Page  152: 3.15.20.1 GLONASS time solution
+Page  152: GLONASS time solution
+Page  152: 4                   U4        TOD                      -           s            GLONASS time of day (rounded to integer seconds)
+Page  152: The precise GLONASS time of day in seconds is:
+Page  153: and GLONASS time
+Page  153: less than GPS. GLONASS follows UTC time, so no leap
+Page  154: •   6 = GLONASS
+Page  157: 8             U4        gloTOW                -            ms          GLONASS measurement reference time
+Page  158: 26                U2       gloTOWacc             2^-4         ms          GLONASS measurement reference time accuracy
+Page  161: 3                   U1       freqId                -            -           Only used for GLONASS: This is the frequency slot + 7
+Page  164: •   1 = GLONASS
+Page  167: • GLONASS MSM1 (Input)
+Page  167: • GLONASS MSM3 (Input)
+Page  167: • GLONASS MSM4 (Input)
+Page  167: • GLONASS MSM5 (Input)
+Page  167: • GLONASS MSM6 (Input)
+Page  167: • GLONASS MSM7 (Input)
+Page  173: 4.4.9.1 GLONASS MSM1
+Page  173: GLONASS MSM1
+Page  173: Comment           Compact GLONASS Pseudoranges
+Page  174: 4.4.10.1 GLONASS MSM3
+Page  174: GLONASS MSM3
+Page  174: Comment           Compact GLONASS Pseudoranges and PhaseRanges
+Page  174: 4.4.11.1 GLONASS MSM4
+Page  174: GLONASS MSM4
+Page  174: Comment           Full GLONASS Pseudoranges and PhaseRanges plus CNR
+Page  175: 4.4.12.1 GLONASS MSM5
+Page  175: GLONASS MSM5
+Page  175: Comment           Full GLONASS Pseudoranges, PhaseRanges, PhaseRangeRate and CNR
+Page  176: 4.4.13.1 GLONASS MSM6
+Page  176: GLONASS MSM6
+Page  176: Comment           Full GLONASS Pseudoranges and PhaseRanges plus CNR (high resolution)
+Page  176: 4.4.14.1 GLONASS MSM7
+Page  176: GLONASS MSM7
+Page  176: Comment           Full GLONASS Pseudoranges, PhaseRanges, PhaseRangeRate and CNR (high resolution)
+Page  217: GLONASS time
+Page  220: CFG-NMEA-FILT_GLO                    0x10930016       L       -          -     Disable reporting of GLONASS satellites
+Page  224: GLO                                 2               Align measurements to GLONASS time
+Page  226: CFG-SIGNAL-GLO_ENA                  0x10310025      L       -       -      GLONASS enable
+Page  227: CFG-SIGNAL-GLO_L1_ENA                0x10310018       L       -          -     GLONASS L1
+Page  230: GLO                                    2               GLONASS time reference
+Page  230: GLO                                    2               GLONASS time reference
+Page  237: UBX-CFG-NMEA.glonass                         CFG-NMEA-FILT_GLO

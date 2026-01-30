@@ -1,0 +1,52 @@
+Keyword: CEP
+Occurrences: 48
+================================================================================
+
+Page   16: explanation of the conﬁguration concept and its principles and interfaces.
+Page   36: 2          time               hhmmss.ss -             083559.00        Time of reception ﬁeld to indicate RLM timestamp in
+Page   57: 0                   R8       majA                     -           m            Semi-major axis ( accepted range = 6,300,000.0 to
+Page   57: 8                   R8       flat                     -           -            1.0 / ﬂattening ( accepted range is 0.0 to 500.0 ).
+Page   57: 16                  R4       dX                       -           m            X axis shift at the origin ( accepted range is +/- 5000.0
+Page   57: 20                  R4       dY                       -           m            Y axis shift at the origin ( accepted range is +/- 5000.0
+Page   57: 24                  R4       dZ                       -           m            Z axis shift at the origin ( accepted range is +/- 5000.0
+Page   57: 28                  R4       rotX                     -           s            Rotation about the X axis ( accepted range is +/- 20.0
+Page   57: 32                  R4       rotY                     -           s            Rotation about the Y axis ( accepted range is +/- 20.0
+Page   57: 36                  R4       rotZ                     -           s            Rotation about the Z axis ( accepted range is +/- 20.0
+Page   57: 40                  R4       scale                    -           ppm          Scale change ( accepted range is 0.0 to 50.0 parts per
+Page   58: 8             R8        majA                     -           m            Semi-major axis ( accepted range = 6,300,000.0 to
+Page   58: 16            R8        flat                     -           -            1.0 / ﬂattening ( accepted range is 0.0 to 500.0 ).
+Page   58: 24            R4        dX                       -           m            X axis shift at the origin ( accepted range is +/- 5000.0
+Page   58: 28            R4        dY                       -           m            Y axis shift at the origin ( accepted range is +/- 5000.0
+Page   58: 32            R4        dZ                       -           m            Z axis shift at the origin ( accepted range is +/- 5000.0
+Page   58: 36            R4        rotX                     -           s            Rotation about the X axis ( accepted range is +/- 20.0
+Page   58: 40            R4        rotY                     -           s            Rotation about the Y axis ( accepted range is +/- 20.0
+Page   58: 44            R4        rotZ                     -           s            Rotation about the Z axis ( accepted range is +/- 20.0
+Page   58: 48            R4        scale                    -           ppm          Scale change ( accepted range is 0.0 to 50.0 parts per
+Page   63: bit 1   U:1       psmOncePer               -           -            1 = enable recording only one single position per PSM
+Page   68: 30                  U2        aopOrbMaxErr          -           m            Maximum      acceptable     (modeled)     AssistNow
+Page   70: 13                  U1        cogMaxPosAcc          -           m            Maximum acceptable position accuracy for computing
+Page   73: receiver accepts any value bigger than 5 s.
+Page   73: In addition a message currently in transmission may be corrupted by a protocol change. Host data reception
+Page   77: switching oﬀ reception. Range: 0 (mechanism oﬀ) - 63
+Page  102: •   1 = The message was accepted for use by the
+Page  102: •   0 = The receiver accepted the data
+Page  106: 14            U1        wnRec                    -           week         BeiDou week number of reception of this UTC
+Page  107: Comment       This message is used to transfer a block of MGA-ANO data from host to the receiver. Upon reception of this
+Page  107: message, the receiver will write the payload data to its internal non-volatile memory (ﬂash). Also, on reception
+Page  118: This message is equivalent to the UBX-MGA-INI-POS_LLH message, except for the coordinate system.
+Page  118: This message is equivalent to the UBX-MGA-INI-POS_XYZ message, except for the coordinate system.
+Page  119: MGA-INI-TIME_GNSS message, except for the time base.
+Page  119: is equivalent to the UBX-MGA-INI-TIME_UTC message, except for the time base.
+Page  157: Services) Protocol (RRLP) [1]. One exception is the satellite and GNSS IDs, which here are given according to
+Page  197: CFG-ANA-ORBMAXERR                    0x30230002 U2             -      m     Maximum acceptable (modeled) orbit error
+Page  216: Accepted range is from 6,300,000.0 to 6,500,000.0 meters
+Page  216: Accepted range is 0.0 to 500.0.
+Page  216: Accepted range is +/- 5000.0 meters.
+Page  216: Accepted range is +/- 5000.0 meters.
+Page  216: Accepted range is +/- 5000.0 meters.
+Page  216: Accepted range is +/- 20.0 milli arc seconds.
+Page  216: Accepted range is +/- 20.0 milli-arc seconds.
+Page  216: Accepted range is +/- 20.0 milli-arc seconds.
+Page  216: Accepted range is 0.0 to 50.0 parts per million.
+Page  227: before switching oﬀ reception. Range: 0
+Page  236: UBX-CFG-LOGFILTER.psmOncePerWakupEnabled               CFG-LOGFILTER-ONCE_PER_WAKE_UP_ENA

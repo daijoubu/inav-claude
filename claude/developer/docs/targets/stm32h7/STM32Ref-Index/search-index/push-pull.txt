@@ -1,0 +1,55 @@
+Keyword: push-pull
+Occurrences: 51
+================================================================================
+
+Page   85: Figure 291. Push-pull mode block diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1359
+Page   85: Figure 292. Push-pull mode example . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1360
+Page  508: •    Output states: push-pull or open drain + pull-up/down
+Page  508: •    Output push-pull with pull-up or pull-down capability
+Page  508: •    Alternate function push-pull with pull-up or pull-down capability
+Page  509: Push-pull,
+Page  509: Push-pull,
+Page  510: 1. GP = general-purpose, PP = push-pull, PU = pull-up, PD = pull-down, OD = open-drain, AF = alternate
+Page  511: (GPIOx_ODR) is output on the I/O pin. It is possible to use the output driver in push-pull
+Page  514: –      Push-pull mode: A “0” in the Output register activates the N-MOS whereas a “1” in
+Page  515: Push-pull or
+Page  515: •     The output buffer can be configured in open-drain or push-pull mode
+Page  516: VSS     push-pull or
+Page  518: 0: Output push-pull (reset state)
+Page 1347: Compare 1                                                       Push-pull            stage
+Page 1359: Push-pull mode
+Page 1359: This mode primarily aims at driving converters using push-pull topologies. It also needs to
+Page 1359: The push-pull mode is enabled by setting PSHPLL bit in the HRTIM_TIMxCR register.
+Page 1359: period basis, maintaining the other output to its inactive state. The redirection rate (push-pull
+Page 1359: frequency) is defined by the timer’s period event, as shown on Figure 291. The push-pull
+Page 1359: Figure 291. Push-pull mode block diagram
+Page 1359: Roll-over                      Push-Pull
+Page 1359: The push-pull mode is only available when the timer operates in continuous mode: the
+Page 1359: disable the timer to stop a push-pull operation and to reset the counter before re-enabling it.
+Page 1359: Note:         The push-pull operation cannot be used when a deadtime is enabled (mutually exclusive
+Page 1359: active. CPPSTAT is reset when the push-pull mode is disabled.
+Page 1360: Figure 292. Push-pull mode example
+Page 1360: Push-Pull logic
+Page 1360: Note:           The deadtime cannot be used simultaneously with the push-pull mode.
+Page 1364: •        It does not have its own crossbar unit, nor push-pull or deadtime mode
+Page 1376: is completed or once a push-pull period is completed. These features are enabled with
+Page 1376: idle is applied to a single output. When the push-pull mode is enabled, the IPPSTAT flag in
+Page 1376: This mode is available whatever the timer operating mode (regular, push-pull, deadtime). It
+Page 1379: Only available in push-pull mode, it allows to have balanced pulsewidth on the two outputs
+Page 1380: push-pull is maintained for one additional period so that the shorten pulse can be repeated:
+Page 1381: –    Push-pull mode enabled
+Page 1398: The behavior described above is slightly different when the push-pull mode is enabled. The
+Page 1398: push-pull mode forces an output reset at the beginning of the period if the output is inactive,
+Page 1405: Push-pull
+Page 1419: The set/reset crossbar, the dead-time and push-pull unit, the idle/balanced fault detection
+Page 1439: Bit 6 PSHPLL: Push-Pull mode enable
+Page 1439: This bit enables the push-pull mode.
+Page 1439: 0: Push-Pull mode disabled
+Page 1439: 1: Push-Pull mode enabled
+Page 1441: This status bit indicates on which output the signal was applied, in push-pull mode balanced fault
+Page 1441: This status bit indicates on which output the signal is currently applied, in push-pull mode. It is only
+Page 1894: 1. OD: open drain; PP: push-pull.
+Page 1907: The RTC_ALARM pin can be configured in output open drain or output push-pull using the
+Page 1932: 1: RTC_ALARM, when mapped on PC13, is push-pull output
+Page 2355: All data lines operate in push-pull mode.
+Page 2355: SDMMC_CMD only operates in push-pull mode:

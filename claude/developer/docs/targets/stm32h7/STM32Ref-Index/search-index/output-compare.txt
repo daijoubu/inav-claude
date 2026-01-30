@@ -1,0 +1,179 @@
+Keyword: output compare
+Occurrences: 175
+================================================================================
+
+Page   38: 37.3.10 Output compare mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1541
+Page   39: 38.3.8      Output compare mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1641
+Page   41: 39.3.8      Output compare mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1709
+Page   43: 40.4.9      Output compare mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1764
+Page   87: Figure 377. Output compare mode, toggle on OC1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1542
+Page   88: Figure 432. Output compare mode, toggle on OC1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1642
+Page   89: Figure 469. Output compare mode, toggle on OC1. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1710
+Page   90: Figure 497. Output compare mode, toggle on OC1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1765
+Page 1514: signals (input capture) or generating output waveforms (output compare, PWM,
+Page 1514: –    Output Compare
+Page 1514: –    Output compare
+Page 1525: '00'. The Output compare interrupt flag of channels configured in output is set when: the
+Page 1540: In output mode (CCxS bits = 00 in the TIMx_CCMRx register), each output compare signal
+Page 1540: independently of any comparison between the output compare register and the counter.
+Page 1540: To force an output compare signal (OCXREF/OCx) to its active level, user just needs to
+Page 1541: accordingly. This is described in the output compare mode section below.
+Page 1541: 37.3.10   Output compare mode
+Page 1541: In output compare mode, the update event UEV has no effect on OCxREF and OCx output.
+Page 1541: The timing resolution is one count of the counter. Output compare mode can also be used to
+Page 1542: Figure 377. Output compare mode, toggle on OC1
+Page 1550: In output mode (forced, output compare or PWM), OCxREF can be re-directed to the OCx
+Page 1557: used in Output compare and PWM modes. It does not work in Forced mode. The
+Page 1559: waveform can be done in output compare mode or PWM mode. You select One-pulse mode
+Page 1564: after a programmed delay (in output compare or PWM mode). This pulse is sent to the
+Page 1573: 01: Center-aligned mode 1. The counter counts up and down alternatively. Output compare
+Page 1573: 10: Center-aligned mode 2. The counter counts up and down alternatively. Output compare
+Page 1573: 11: Center-aligned mode 3. The counter counts up and down alternatively. Output compare
+Page 1585: Output compare mode
+Page 1585: Bit 24 OC2M[3]: Output Compare 2 mode - bit 3
+Page 1585: Bits16 OC1M[3]: Output Compare 1 mode - bit 3
+Page 1585: Bit 15 OC2CE: Output Compare 2 clear enable
+Page 1585: Bits 14:12 OC2M[2:0]: Output Compare 2 mode
+Page 1585: Bit 11 OC2PE: Output Compare 2 preload enable
+Page 1585: Bit 10 OC2FE: Output Compare 2 fast enable
+Page 1585: Bit 7 OC1CE: Output Compare 1 clear enable
+Page 1586: Bits 6:4 OC1M: Output Compare 1 mode
+Page 1586: 0000: Frozen - The comparison between the output compare register TIMx_CCR1 and the
+Page 1586: changes or when the output compare mode switches from “frozen” mode to “PWM”
+Page 1587: Bit 3 OC1PE: Output Compare 1 preload enable
+Page 1587: Bit 2 OC1FE: Output Compare 1 fast enable
+Page 1589: Output compare mode
+Page 1589: Bit 24 OC4M[3]: Output Compare 4 mode - bit 3
+Page 1589: Bit 16 OC3M[3]: Output Compare 3 mode - bit 3
+Page 1589: Bit 15 OC4CE: Output compare 4 clear enable
+Page 1589: Bits 14:12 OC4M: Output compare 4 mode
+Page 1589: Bit 11 OC4PE: Output compare 4 preload enable
+Page 1589: Bit 10 OC4FE: Output compare 4 fast enable
+Page 1589: Bit 7 OC3CE: Output compare 3 clear enable
+Page 1589: Bits 6:4 OC3M: Output compare 3 mode
+Page 1589: Bit 3 OC3PE: Output compare 3 preload enable
+Page 1589: Bit 2 OC3FE: Output compare 3 fast enable
+Page 1602: Output compare mode
+Page 1602: Bit 15 OC6CE: Output compare 6 clear enable
+Page 1602: Bits 24, 14, 13, 12 OC6M[3:0]: Output compare 6 mode
+Page 1602: Bit 11 OC6PE: Output compare 6 preload enable
+Page 1602: Bit 10 OC6FE: Output compare 6 fast enable
+Page 1602: Bit 7 OC5CE: Output compare 5 clear enable
+Page 1602: Bits 16, 6, 5, 4 OC5M[3:0]: Output compare 5 mode
+Page 1602: Bit 3 OC5PE: Output compare 5 preload enable
+Page 1602: Bit 2 OC5FE: Output compare 5 fast enable
+Page 1619: signals (input capture) or generating output waveforms (output compare and PWM).
+Page 1619: –    Output compare
+Page 1619: –    Output compare
+Page 1629: '00'. The Output compare interrupt flag of channels configured in output is set when: the
+Page 1641: In output mode (CCxS bits = 00 in the TIMx_CCMRx register), each output compare signal
+Page 1641: independently of any comparison between the output compare register and the counter.
+Page 1641: To force an output compare signal (ocxref/OCx) to its active level, you just need to write 101
+Page 1641: accordingly. This is described in the Output Compare Mode section.
+Page 1641: 38.3.8   Output compare mode
+Page 1641: In output compare mode, the update event UEV has no effect on ocxref and OCx output.
+Page 1641: The timing resolution is one count of the counter. Output compare mode can also be used to
+Page 1642: Figure 432. Output compare mode, toggle on OC1
+Page 1643: •   When the output compare mode (OCxM bits in TIMx_CCMRx register) switches from
+Page 1647: used in Output compare and PWM modes. It does not work in Forced mode.
+Page 1648: This function can be used only in the output compare and PWM modes. It does not work in
+Page 1649: waveform can be done in output compare mode or PWM mode. You select One-pulse mode
+Page 1658: In this example, we control the enable of TIM2 with the output compare 1 of Timer 3. Refer
+Page 1658: 1.   Configure TIM3 master mode to send its Output Compare 1 Reference (OC1REF)
+Page 1659: 1.    Configure TIM3 master mode to send its Output Compare 1 Reference (OC1REF)
+Page 1664: 01: Center-aligned mode 1. The counter counts up and down alternatively. Output compare
+Page 1664: 10: Center-aligned mode 2. The counter counts up and down alternatively. Output compare
+Page 1664: 11: Center-aligned mode 3. The counter counts up and down alternatively. Output compare
+Page 1674: Output compare mode
+Page 1674: Bit 24 OC2M[3]: Output Compare 2 mode - bit 3
+Page 1674: Bit 16 OC1M[3]: Output Compare 1 mode - bit 3
+Page 1674: Bit 15 OC2CE: Output compare 2 clear enable
+Page 1674: Bits 14:12 OC2M[2:0]: Output compare 2 mode
+Page 1674: Bit 11 OC2PE: Output compare 2 preload enable
+Page 1674: Bit 10 OC2FE: Output compare 2 fast enable
+Page 1674: Bit 7 OC1CE: Output compare 1 clear enable
+Page 1675: Bits 6:4 OC1M: Output compare 1 mode
+Page 1675: 0000: Frozen - The comparison between the output compare register TIMx_CCR1 and the
+Page 1675: changes or when the output compare mode switches from “frozen” mode to “PWM”
+Page 1676: Bit 3 OC1PE: Output compare 1 preload enable
+Page 1676: Bit 2 OC1FE: Output compare 1 fast enable
+Page 1678: Output compare mode
+Page 1678: Bit 24 OC4M[3]: Output Compare 2 mode - bit 3
+Page 1678: Bit 16 OC3M[3]: Output Compare 1 mode - bit 3
+Page 1678: Bit 15 OC4CE: Output compare 4 clear enable
+Page 1678: Bits 14:12 OC4M: Output compare 4 mode
+Page 1678: Bit 11 OC4PE: Output compare 4 preload enable
+Page 1678: Bit 10 OC4FE: Output compare 4 fast enable
+Page 1678: Bit 7 OC3CE: Output compare 3 clear enable
+Page 1678: Bits 6:4 OC3M: Output compare 3 mode
+Page 1678: Bit 3 OC3PE: Output compare 3 preload enable
+Page 1678: Bit 2 OC3FE: Output compare 3 fast enable
+Page 1694: signals (input capture) or generating output waveforms (output compare, PWM).
+Page 1694: –    Output compare
+Page 1694: –    Output compare
+Page 1695: –        Output compare
+Page 1695: –        Output compare
+Page 1708: In output mode (CCxS bits = ‘00’ in the TIMx_CCMRx register), each output compare signal
+Page 1708: independently of any comparison between the output compare register and the counter.
+Page 1708: To force an output compare signal (OCXREF/OCx) to its active level, you just need to write
+Page 1709: described in the output compare mode section below.
+Page 1709: 39.3.8   Output compare mode
+Page 1709: In output compare mode, the update event UEV has no effect on OCxREF and OCx output.
+Page 1709: The timing resolution is one count of the counter. Output compare mode can also be used to
+Page 1710: Figure 469. Output compare mode, toggle on OC1.
+Page 1712: waveform can be done in output compare mode or PWM mode. You select One-pulse mode
+Page 1725: Output compare mode
+Page 1725: Bit 24 OC2M[3]: Output Compare 2 mode - bit 3
+Page 1725: Bit 16 OC1M[3]: Output Compare 1 mode - bit 3
+Page 1726: Bits 14:12 OC2M[2:0]: Output compare 2 mode
+Page 1726: Bit 11 OC2PE: Output compare 2 preload enable
+Page 1726: Bit 10 OC2FE: Output compare 2 fast enable
+Page 1726: Bits 6:4 OC1M[3:0]: Output compare 1 mode (refer to bit 16 for OC1M[3])
+Page 1726: 0000: Frozen - The comparison between the output compare register TIMx_CCR1 and the
+Page 1726: changes or when the output compare mode switches from “frozen” mode to “PWM”
+Page 1727: Bit 3 OC1PE: Output compare 1 preload enable
+Page 1727: Bit 2 OC1FE: Output compare 1 fast enable
+Page 1733: Output Compare
+Page 1739: Output compare mode
+Page 1739: Bit 16 OC1M[3]: Output Compare 1 mode - bit 3
+Page 1739: Bits 6:4 OC1M[3:0]: Output compare 1 mode (refer to bit 16 for OC1M[3])
+Page 1739: 0000: Frozen. The comparison between the output compare register TIMx_CCR1 and the
+Page 1739: changes or when the output compare mode switches from frozen to PWM mode.
+Page 1739: Bit 3 OC1PE: Output compare 1 preload enable
+Page 1739: Bit 2 OC1FE: Output compare 1 fast enable
+Page 1744: Output compare
+Page 1746: signals (input capture) or generating output waveforms (output compare, PWM,
+Page 1746: –    Output compare
+Page 1746: –    Output compare
+Page 1747: –    Output compare
+Page 1747: –    Output compare
+Page 1764: In output mode (CCxS bits = 00 in the TIMx_CCMRx register), each output compare signal
+Page 1764: independently of any comparison between the output compare register and the counter.
+Page 1764: To force an output compare signal (OCXREF/OCx) to its active level, you just need to write
+Page 1764: accordingly. This is described in the output compare mode section below.
+Page 1764: 40.4.9      Output compare mode
+Page 1764: In output compare mode, the update event UEV has no effect on OCxREF and OCx output.
+Page 1764: The timing resolution is one count of the counter. Output compare mode can also be used to
+Page 1765: Figure 497. Output compare mode, toggle on OC1
+Page 1769: In output mode (forced, output compare or PWM), OCxREF can be re-directed to the OCx
+Page 1774: waveform can be done in output compare mode or PWM mode. You select One-pulse mode
+Page 1792: Output compare mode:
+Page 1792: Bit 24 OC2M[3]: Output Compare 2 mode - bit 3
+Page 1792: Bit 16 OC1M[3]: Output Compare 1 mode - bit 3
+Page 1792: Bits 14:12 OC2M[2:0]: Output Compare 2 mode
+Page 1792: Bit 11 OC2PE: Output Compare 2 preload enable
+Page 1792: Bit 10 OC2FE: Output Compare 2 fast enable
+Page 1793: Bits 6:4 OC1M: Output Compare 1 mode
+Page 1793: 0000: Frozen - The comparison between the output compare register TIMx_CCR1 and the
+Page 1793: changes or when the output compare mode switches from “frozen” mode to “PWM”
+Page 1794: Bit 3 OC1PE: Output Compare 1 preload enable
+Page 1794: Bit 2 OC1FE: Output Compare 1 fast enable
+Page 1813: Output compare mode:
+Page 1813: Bit 16 OC1M[3]: Output Compare 1 mode (bit 3)
+Page 1813: Bits 6:4 OC1M[2:0]: Output Compare 1 mode (bits 2 to 0)
+Page 1813: 0000: Frozen - The comparison between the output compare register TIMx_CCR1 and the
+Page 1813: comparison changes or when the output compare mode switches from “frozen” mode
+Page 1814: Bit 3 OC1PE: Output Compare 1 preload enable
+Page 1814: Bit 2 OC1FE: Output Compare 1 fast enable
+Page 2579: the input capture feature, the output compare feature and the timer can be triggered by the
+Page 2579: the TIM input trigger, so that the input capture feature, the output compare feature and the

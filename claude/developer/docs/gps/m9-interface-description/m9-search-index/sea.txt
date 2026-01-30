@@ -1,0 +1,87 @@
+Keyword: sea
+Occurrences: 83
+================================================================================
+
+Page   29: 9          alt                numeric      m           499.6            Altitude above mean sea level
+Page   30: mean sea level
+Page   32: 9          alt                   numeric     m           111.1            Altitude above mean sea level
+Page   32: mean sea level
+Page   65: •   5 = sea
+Page   66: 4           I4        fixedAlt            0.01       m            Fixed altitude (mean sea level) for 2D ﬁx mode
+Page   67: bit 14     U:1      aop                    -           -            1 = apply aopCfg (useAOP ﬂag) and aopOrbMaxErr
+Page   67: bit 6   U:1      adr                    -           -            Apply ADR/UDR sensor fusion on/oﬀ setting (useAdr
+Page   67: bit 0   U:1      useAOP                 -           -            1 = enable AssistNow Autonomous
+Page   68: 39                  U1        useAdr                -           -            Only supported on certain products
+Page   72: •   0 receiver enters (Inactive) Awaiting next search
+Page   72: search state but keeps trying to acquire a ﬁx
+Page   72: 12                U4        searchPeriod         -            ms          Acquisition retry period if previously failed. If set to 0,
+Page   72: 22                U2        minAcqTime           -            s           Minimal search time
+Page   73: 2             U2        period                   -           s            Position update period and search period.
+Page   82: 4                   X4        scanmode1             -            -           Which SBAS PRN numbers to search for (bitmask).
+Page   82: are searched.
+Page   95: 40            I4        hMSL                  -            mm          Height above mean sea level
+Page   96: Comment             This message can be used for a time-based search of a log. It can ﬁnd the index of the ﬁrst log entry with time
+Page   96: Searching a log is eﬀective for a given time later than the base date (January 1st, 2004). Searching a log for
+Page   96: a given time earlier than the base date will result in an 'entry not found' response. (Searching a log for a given
+Page   96: Searching a log for a given time greater than the last recorded entry's time will return the index of the last
+Page   96: recorded entry. (If the logging has stopped due to lack of ﬁle space, such a search will result in a UBX-ACK-
+Page  100: 12            I4        hMSL                   -           mm           Height above mean sea level
+Page  135: bit 0   U:1       useAOP                 -           -            AOP enabled ﬂag
+Page  141: 16                  I4        hMSL                   -           mm           Height above mean sea level
+Page  142: 36              I4    hMSL            -          mm           Height above mean sea level
+Page  144: •   1 = searching signal
+Page  146: Comment             This message displays information about signals currently tracked or searched by the receiver.
+Page  147: •   1 = searching signal
+Page  156: •   1 = Communications Research Labratory (CRL),
+Page  159: Comment             This message contains the contents of any Galileo Search and Rescue (SAR) Short Return Link Message
+Page  160: Comment       This message contains the contents of any Galileo Search and Rescue (SAR) Long Return Link Message
+Page  164: •   1 = Communications Research Laboratory (CRL),
+Page  217: CFG-NAVSPG-CONSTR_ALT                  0x401100c1      I4     0.01         m     Fixed altitude (mean sea level) for 2D ﬁx mode
+Page  218: SEA                           5           Sea
+Page  222: Disable to make the receiver enter (Inactive) Awaiting next search state, enable to make the receiver not enter (Inactive)
+Page  222: Awaiting next search state but keep trying to acquire a ﬁx instead.
+Page  225: CFG-SBAS-PRNSCANMASK                     0x50360006 X8            -         -     SBAS PRN search conﬁguration
+Page  225: This conﬁguration item determines which SBAS PRNs should be searched. Setting it to 0 indicates auto-scanning all
+Page  225: (bit 38), where a bit set enables searching for the corresponding PRN.
+Page  225: ALL                         0x0000000000000000          Enable search for all SBAS PRNs
+Page  225: PRN120                      0x0000000000000001          Enable search for SBAS PRN120
+Page  225: PRN121                      0x0000000000000002          Enable search for SBAS PRN121
+Page  225: PRN122                      0x0000000000000004          Enable search for SBAS PRN122
+Page  225: PRN123                      0x0000000000000008          Enable search for SBAS PRN123
+Page  225: PRN124                      0x0000000000000010          Enable search for SBAS PRN124
+Page  225: PRN125                      0x0000000000000020          Enable search for SBAS PRN125
+Page  225: PRN126                      0x0000000000000040          Enable search for SBAS PRN126
+Page  225: PRN127                      0x0000000000000080          Enable search for SBAS PRN127
+Page  225: PRN128                      0x0000000000000100          Enable search for SBAS PRN128
+Page  225: PRN129                      0x0000000000000200          Enable search for SBAS PRN129
+Page  225: PRN130                      0x0000000000000400          Enable search for SBAS PRN130
+Page  225: PRN131                      0x0000000000000800          Enable search for SBAS PRN131
+Page  225: PRN132                      0x0000000000001000          Enable search for SBAS PRN132
+Page  225: PRN133                      0x0000000000002000          Enable search for SBAS PRN133
+Page  225: PRN134                      0x0000000000004000          Enable search for SBAS PRN134
+Page  225: PRN135                      0x0000000000008000          Enable search for SBAS PRN135
+Page  225: PRN136                      0x0000000000010000          Enable search for SBAS PRN136
+Page  225: PRN137                      0x0000000000020000          Enable search for SBAS PRN137
+Page  225: PRN138                      0x0000000000040000          Enable search for SBAS PRN138
+Page  225: PRN139                      0x0000000000080000          Enable search for SBAS PRN139
+Page  225: PRN140                      0x0000000000100000          Enable search for SBAS PRN140
+Page  225: PRN141                      0x0000000000200000          Enable search for SBAS PRN141
+Page  225: PRN142                      0x0000000000400000          Enable search for SBAS PRN142
+Page  225: PRN143                      0x0000000000800000          Enable search for SBAS PRN143
+Page  225: PRN144                      0x0000000001000000          Enable search for SBAS PRN144
+Page  225: PRN145                      0x0000000002000000          Enable search for SBAS PRN145
+Page  225: PRN146                      0x0000000004000000          Enable search for SBAS PRN146
+Page  225: PRN147                      0x0000000008000000          Enable search for SBAS PRN147
+Page  225: PRN148                      0x0000000010000000          Enable search for SBAS PRN148
+Page  225: PRN149                      0x0000000020000000          Enable search for SBAS PRN149
+Page  225: PRN150                      0x0000000040000000          Enable search for SBAS PRN150
+Page  225: PRN151                      0x0000000080000000          Enable search for SBAS PRN151
+Page  226: PRN152                  0x0000000100000000         Enable search for SBAS PRN152
+Page  226: PRN153                  0x0000000200000000         Enable search for SBAS PRN153
+Page  226: PRN154                  0x0000000400000000         Enable search for SBAS PRN154
+Page  226: PRN155                  0x0000000800000000         Enable search for SBAS PRN155
+Page  226: PRN156                  0x0000001000000000         Enable search for SBAS PRN156
+Page  226: PRN157                  0x0000002000000000         Enable search for SBAS PRN157
+Page  226: PRN158                  0x0000004000000000         Enable search for SBAS PRN158
+Page  236: UBX-CFG-NAVX5.useAOP                                   CFG-ANA-USE_ANA
+Page  237: UBX-CFG-PM2.searchPeriod                     CFG-PM-ACQPERIOD

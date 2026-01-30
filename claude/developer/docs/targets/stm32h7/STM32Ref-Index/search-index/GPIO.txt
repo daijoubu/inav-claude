@@ -1,0 +1,508 @@
+Keyword: GPIO
+Occurrences: 504
+================================================================================
+
+Page   11: 10       General-purpose I/Os (GPIO) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 508
+Page   11: 10.2    GPIO main features . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 508
+Page   11: 10.3    GPIO functional description . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 508
+Page   11: 10.3.1      General-purpose I/O (GPIO) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 511
+Page   11: 10.3.6      GPIO locking mechanism . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 513
+Page   11: 10.3.14 Using the HSE or LSE oscillator pins as GPIOs . . . . . . . . . . . . . . . . . 517
+Page   11: 10.3.15 Using the GPIO pins in the backup supply domain . . . . . . . . . . . . . . . 517
+Page   11: 10.4    GPIO registers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 517
+Page   11: 10.4.1      GPIO port mode register (GPIOx_MODER) (x =A to K) . . . . . . . . . . . 518
+Page   11: 10.4.2      GPIO port output type register (GPIOx_OTYPER) (x = A to K) . . . . . . 518
+Page   11: 10.4.3      GPIO port output speed register (GPIOx_OSPEEDR)
+Page   11: 10.4.4      GPIO port pull-up/pull-down register (GPIOx_PUPDR)
+Page   11: 10.4.5      GPIO port input data register (GPIOx_IDR) (x = A to K) . . . . . . . . . . . 520
+Page   11: 10.4.6      GPIO port output data register (GPIOx_ODR) (x = A to K) . . . . . . . . . 520
+Page   11: 10.4.7      GPIO port bit set/reset register (GPIOx_BSRR) (x = A to K) . . . . . . . . 520
+Page   11: 10.4.8      GPIO port configuration lock register (GPIOx_LCKR)
+Page   11: 10.4.9      GPIO alternate function low register (GPIOx_AFRL)
+Page   12: 10.4.10 GPIO alternate function high register (GPIOx_AFRH)
+Page   12: 10.4.11 GPIO register map . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 524
+Page   26: 27.3.8      Comparator output on GPIOs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1066
+Page   47: 45.3.3      GPIOs controlled by the RTC . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1893
+Page   69: Table 88.    GPIO register map and reset values . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 524
+Page   72: Table 228.   COMP1_OUT assignment to GPIOs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1066
+Page   72: Table 229.   COMP2_OUT assignment to GPIOs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1066
+Page  126: 0x58022800 - 0x58022BFF         GPIOK                  Section 10.4: GPIO registers
+Page  126: 0x58022400 - 0x580227FF         GPIOJ          AHB4    Section 10.4: GPIO registers
+Page  126: 0x58022000 - 0x580223FF         GPIOI          (D3)    Section 10.4: GPIO registers
+Page  126: 0x58021C00 - 0x58021FFF         GPIOH                  Section 10.4: GPIO registers
+Page  126: 0x58021800 - 0x58021BFF         GPIOG                  Section 10.4: GPIO registers
+Page  126: 0x58021400 - 0x580217FF         GPIOF                  Section 10.4: GPIO registers
+Page  126: 0x58021000 - 0x580213FF         GPIOE                  Section 10.4: GPIO registers
+Page  126: 0x58020C00 - 0x58020FFF         GPIOD                  Section 10.4: GPIO registers
+Page  126: 0x58020800 - 0x58020BFF         GPIOC                  Section 10.4: GPIO registers
+Page  126: 0x58020400 - 0x580207FF         GPIOB                  Section 10.4: GPIO registers
+Page  126: 0x58020000 - 0x580203FF         GPIOA                  Section 10.4: GPIO registers
+Page  249: •   PC14 and PC15 can be used either as GPIO or as LSE pins.
+Page  249: •   PC13 can be used either as GPIO or as RTC_AF1 or RTC_TAMP1 pin assuming they
+Page  250: PI8 GPIOs is restricted: only one I/O can be used as an output at a time, at a speed limited
+Page  292: associated GPIO port pull configuration shall be set to the same value or to ‘00’.
+Page  300: EXTI_SWIER1 to ‘1’. The GPIO connected to this event input must not toggle in order to
+Page  300: avoid spurious wakeup. To prevent the GPIO to disturb, the following sequence can be
+Page  303: 2.   Full initialization of RCC, PWR, EXTI, LPUART1, GPIOs, LPTIM4, DMAMUX2, BDMA
+Page  325: The GPIO port corresponding to each MCO pin, has to be programmed in alternate function
+Page  411: GPIOGRST
+Page  411: GPIOHRST
+Page  411: GPIODRST
+Page  411: GPIOCRST
+Page  411: GPIOKRST
+Page  411: GPIOERST
+Page  411: GPIOBRST
+Page  411: GPIOARST
+Page  411: GPIOFRST
+Page  411: GPIOJRST
+Page  411: GPIOIRST
+Page  411: Bit 10 GPIOKRST: GPIOK block reset
+Page  411: 0: does not reset the GPIOK block (default after reset)
+Page  411: 1: resets the GPIOK block
+Page  411: Bit 9 GPIOJRST: GPIOJ block reset
+Page  411: 0: does not reset the GPIOJ block (default after reset)
+Page  411: 1: resets the GPIOJ block
+Page  412: Bit 8 GPIOIRST: GPIOI block reset
+Page  412: 0: does not reset the GPIOI block (default after reset)
+Page  412: 1: resets the GPIOI block
+Page  412: Bit 7 GPIOHRST: GPIOH block reset
+Page  412: 0: does not reset the GPIOH block (default after reset)
+Page  412: 1: resets the GPIOH block
+Page  412: Bit 6 GPIOGRST: GPIOG block reset
+Page  412: 0: does not reset the GPIOG block (default after reset)
+Page  412: 1: resets the GPIOG block
+Page  412: Bit 5 GPIOFRST: GPIOF block reset
+Page  412: 0: does not reset the GPIOF block (default after reset)
+Page  412: 1: resets the GPIOF block
+Page  412: Bit 4 GPIOERST: GPIOE block reset
+Page  412: 0: does not reset the GPIOE block (default after reset)
+Page  412: 1: resets the GPIOE block
+Page  412: Bit 3 GPIODRST: GPIOD block reset
+Page  412: 0: does not reset the GPIOD block (default after reset)
+Page  412: 1: resets the GPIOD block
+Page  412: Bit 2 GPIOCRST: GPIOC block reset
+Page  412: 0: does not reset the GPIOC block (default after reset)
+Page  412: 1: resets the GPIOC block
+Page  412: Bit 1 GPIOBRST: GPIOB block reset
+Page  412: 0: does not reset the GPIOB block (default after reset)
+Page  412: 1: resets the GPIOB block
+Page  412: Bit 0 GPIOARST: GPIOA block reset
+Page  412: 0: does not reset the GPIOA block (default after reset)
+Page  412: 1: resets the GPIOA block
+Page  434: GPIOGEN
+Page  434: GPIOHEN
+Page  434: GPIODEN
+Page  434: GPIOCEN
+Page  434: GPIOKEN
+Page  434: GPIOEEN
+Page  434: GPIOBEN
+Page  434: GPIOAEN
+Page  434: GPIOFEN
+Page  434: GPIOJEN
+Page  434: GPIOIEN
+Page  435: Bit 10 GPIOKEN: GPIOK peripheral clock enable
+Page  435: 0: GPIOK peripheral clock disabled (default after reset)
+Page  435: 1: GPIOK peripheral clock enabled
+Page  435: Bit 9 GPIOJEN: GPIOJ peripheral clock enable
+Page  435: 0: GPIOJ peripheral clock disabled (default after reset)
+Page  435: 1: GPIOJ peripheral clock enabled
+Page  435: Bit 8 GPIOIEN: GPIOI peripheral clock enable
+Page  435: 0: GPIOI peripheral clock disabled (default after reset)
+Page  435: 1: GPIOI peripheral clock enabled
+Page  435: Bit 7 GPIOHEN: GPIOH peripheral clock enable
+Page  435: 0: GPIOH peripheral clock disabled (default after reset)
+Page  435: 1: GPIOH peripheral clock enabled
+Page  435: Bit 6 GPIOGEN: GPIOG peripheral clock enable
+Page  435: 0: GPIOG peripheral clock disabled (default after reset)
+Page  435: 1: GPIOG peripheral clock enabled
+Page  435: Bit 5 GPIOFEN: GPIOF peripheral clock enable
+Page  435: 0: GPIOF peripheral clock disabled (default after reset)
+Page  435: 1: GPIOF peripheral clock enabled
+Page  435: Bit 4 GPIOEEN: GPIOE peripheral clock enable
+Page  435: 0: GPIOE peripheral clock disabled (default after reset)
+Page  435: 1: GPIOE peripheral clock enabled
+Page  435: Bit 3 GPIODEN: GPIOD peripheral clock enable
+Page  435: 0: GPIOD peripheral clock disabled (default after reset)
+Page  435: 1: GPIOD peripheral clock enabled
+Page  436: Bit 2 GPIOCEN: GPIOC peripheral clock enable
+Page  436: 0: GPIOC peripheral clock disabled (default after reset)
+Page  436: 1: GPIOC peripheral clock enabled
+Page  436: Bit 1 GPIOBEN: GPIOB peripheral clock enable
+Page  436: 0: GPIOB peripheral clock disabled (default after reset)
+Page  436: 1: GPIOB peripheral clock enabled
+Page  436: Bit 0 GPIOAEN: GPIOA peripheral clock enable
+Page  436: 0: GPIOA peripheral clock disabled (default after reset)
+Page  436: 1: GPIOA peripheral clock enabled
+Page  456: GPIOGLPEN
+Page  456: GPIOHLPEN
+Page  456: GPIODLPEN
+Page  456: GPIOCLPEN
+Page  456: GPIOKLPEN
+Page  456: GPIOELPEN
+Page  456: GPIOBLPEN
+Page  456: GPIOALPEN
+Page  456: GPIOFLPEN
+Page  456: GPIOJLPEN
+Page  456: GPIOILPEN
+Page  457: Bit 10 GPIOKLPEN: GPIOK peripheral clock enable during CSleep mode
+Page  457: 0: GPIOK peripheral clock disabled during CSleep mode
+Page  457: 1: GPIOK peripheral clock enabled during CSleep mode (default after reset)
+Page  457: Bit 9 GPIOJLPEN: GPIOJ peripheral clock enable during CSleep mode
+Page  457: 0: GPIOJ peripheral clock disabled during CSleep mode
+Page  457: 1: GPIOJ peripheral clock enabled during CSleep mode (default after reset)
+Page  457: Bit 8 GPIOILPEN: GPIOI peripheral clock enable during CSleep mode
+Page  457: 0: GPIOI peripheral clock disabled during CSleep mode
+Page  457: 1: GPIOI peripheral clock enabled during CSleep mode (default after reset)
+Page  457: Bit 7 GPIOHLPEN: GPIOH peripheral clock enable during CSleep mode
+Page  457: 0: GPIOH peripheral clock disabled during CSleep mode
+Page  457: 1: GPIOH peripheral clock enabled during CSleep mode (default after reset)
+Page  457: Bit 6 GPIOGLPEN: GPIOG peripheral clock enable during CSleep mode
+Page  457: 0: GPIOG peripheral clock disabled during CSleep mode
+Page  457: 1: GPIOG peripheral clock enabled during CSleep mode (default after reset)
+Page  457: Bit 5 GPIOFLPEN: GPIOF peripheral clock enable during CSleep mode
+Page  457: 0: GPIOF peripheral clock disabled during CSleep mode
+Page  457: 1: GPIOF peripheral clock enabled during CSleep mode (default after reset)
+Page  457: Bit 4 GPIOELPEN: GPIOE peripheral clock enable during CSleep mode
+Page  457: 0: GPIOE peripheral clock disabled during CSleep mode
+Page  457: 1: GPIOE peripheral clock enabled during CSleep mode (default after reset)
+Page  457: Bit 3 GPIODLPEN: GPIOD peripheral clock enable during CSleep mode
+Page  457: 0: GPIOD peripheral clock disabled during CSleep mode
+Page  457: 1: GPIOD peripheral clock enabled during CSleep mode (default after reset)
+Page  458: Bit 2 GPIOCLPEN: GPIOC peripheral clock enable during CSleep mode
+Page  458: 0: GPIOC peripheral clock disabled during CSleep mode
+Page  458: 1: GPIOC peripheral clock enabled during CSleep mode (default after reset)
+Page  458: Bit 1 GPIOBLPEN: GPIOB peripheral clock enable during CSleep mode
+Page  458: 0: GPIOB peripheral clock disabled during CSleep mode
+Page  458: 1: GPIOB peripheral clock enabled during CSleep mode (default after reset)
+Page  458: Bit 0 GPIOALPEN: GPIOA peripheral clock enable during CSleep mode
+Page  458: 0: GPIOA peripheral clock disabled during CSleep mode
+Page  458: 1: GPIOA peripheral clock enabled during CSleep mode (default after reset)
+Page  475: Res.                         LPTIM3RST                      Res.                       Res.                                  Res.                      Res.                              GPIOKRST                      Res.       10
+Page  475: Res.                         LPTIM2RST                      Res.                       Res.                              LPTIM1RST                     Res.                              GPIOJRST                   SDMMC2RST      9
+Page  475: Res.                            Res.                        Res.                    FDCANRST                              TIM14RST                     Res.                              GPIOIRST                      Res.        8
+Page  475: Res.                          I2C4RST                       Res.                       Res.                               TIM13RST                     Res.                              GPIOHRST                      Res.        7
+Page  475: Res.                            Res.                        Res.                       Res.                               TIM12RST                     Res.                              GPIOGRST                     RNGRST       6
+Page  475: Res.                          SPI6RST                   USART6RST                   MDIOSRST                              TIM7RST                      Res.                              GPIOFRST                    HASHRST       5
+Page  475: Res.                            Res.                    USART1RST                   OPAMPRST                              TIM6RST                      Res.                              GPIOERST                    CRYPTRST      4
+Page  475: Res.                        LPUART1RST                      Res.                       Res.                               TIM5RST                    LTDCRST                             GPIODRST                      Res.        3
+Page  475: Res.                            Res.                        Res.                       RST                                TIM4RST                      Res.                              GPIOCRST                      Res.        2
+Page  475: Res.                        SYSCFGRST                     TIM8RST                    CRSRST                               TIM3RST                      Res.                              GPIOBRST                      Res.        1
+Page  475: WW1RSC                           Res.                      TIM1RST                      Res.                               TIM2RST                      Res.                              GPIOARST                   CAMITFRST
+Page  476: Res.                              GPIOKEN                     Res.                          Res.                        Res.                         Res.                                 LPTIM3AMEN       10
+Page  476: Res.                              GPIOJEN                  SDMMC2EN                         Res.                        Res.                         Res.                                 LPTIM2AMEN        9
+Page  476: Res.                              GPIOIEN                     Res.                          Res.                        Res.                         Res.                                      Res.         8
+Page  476: Res.                              GPIOHEN                     Res.                          Res.                        Res.                         Res.                                   I2C4AMEN        7
+Page  476: WWDG1EN                              GPIOGEN                    RNGEN                          Res.                        Res.                         Res.                                      Res.         6
+Page  476: Res.                              GPIOFEN                   HASHEN                        ADC12EN                    JPGDECEN                        Res.                                   SPI6AMEN        5
+Page  476: Res.                              GPIOEEN                   CRYPTEN                         Res.                      DMA2DEN                        Res.                                      Res.         4
+Page  476: LTDCEN                              GPIODEN                     Res.                          Res.                        Res.                         Res.                                LPUART1AMEN        3
+Page  476: Res.                              GPIOCEN                     Res.                          Res.                        Res.                         Res.                                      Res.         2
+Page  476: Res.                              GPIOBEN                     Res.                        DMA2EN                        Res.                         Res.                                      Res.         1
+Page  476: Res.                              GPIOAEN                    DCMIEN                       DMA1EN                      MDMAEN                         Res.                                  BDMAAMEN
+Page  478: Res.                                LPTIM3LPEN                      Res.                         Res.                                     Res.                        Res.                                GPIOKLPEN     10
+Page  478: Res.                                LPTIM2LPEN                      Res.                         Res.                                LPTIM1LPEN                       Res.                                GPIOJLPEN      9
+Page  478: Res.                                    Res.                        Res.                      FDCANLPEN                               TIM14LPEN                       Res.                                GPIOILPEN      8
+Page  478: Res.                                 I2C4LPEN                       Res.                         Res.                                 TIM13LPEN                       Res.                                GPIOHLPEN      7
+Page  478: Res.                                    Res.                        Res.                         Res.                                 TIM12LPEN                   WWDG1LPEN                               GPIOGLPEN      6
+Page  478: JPGDECEN                               SPI6LPEN                    USART6LPEN                   MDIOSLPEN                               TIM7LPEN                        Res.                                GPIOFLPEN      5
+Page  478: DMA2DEN                                 Res.                      USART1LPEN                   OPAMPLPEN                               TIM6LPEN                        Res.                                GPIOELPEN      4
+Page  478: Res.                               LPUART1LPEN                     Res.                         Res.                                 TIM5LPEN                     LTDCLPEN                               GPIODLPEN      3
+Page  478: Res.                                   Res.                        Res.                      SWPLPEN                                 TIM4LPEN                        Res.                                GPIOCLPEN      2
+Page  478: Res.                               SYSCFGLPEN                    TIM8LPEN                    CRSLPEN                                 TIM3LPEN                        Res.                                GPIOBLPEN      1
+Page  478: MDMAEN                                   Res.                       TIM1LPEN                      Res.                                  TIM2LPEN                        Res.                                GPIOALPEN
+Page  479: LPTIM3EN                     Res.                    Res.                                  Res.                      Res.                              GPIOKEN                    Res.                          Res.        10
+Page  479: LPTIM2EN                     Res.                    Res.                              LPTIM1EN                      Res.                              GPIOJEN                  SDMMC2EN                        Res.         9
+Page  479: Res.                      Res.                  FDCANEN                              TIM14EN                      Res.                              GPIOIEN                     Res.                         Res.         8
+Page  479: I2C4EN                      Res.                    Res.                               TIM13EN                      Res.                              GPIOHEN                     Res.                         Res.         7
+Page  479: Res.                      Res.                    Res.                               TIM12EN                   WWDG1EN                              GPIOGEN                   RNGEN                          Res.         6
+Page  479: SPI6EN                  USART6EN                  MDIOSEN                              TIM7EN                       Res.                              GPIOFEN                  HASHEN                       ADC12EN         5
+Page  479: Res.                  USART1EN                  OPAMPEN                              TIM6EN                       Res.                              GPIOEEN                  CRYPTEN                        Res.          4
+Page  479: LPUART1EN                     Res.                    Res.                               TIM5EN                     LTDCEN                              GPIODEN                    Res.                         Res.          3
+Page  479: Res.                      Res.                   SWPEN                               TIM4EN                       Res.                              GPIOCEN                    Res.                         Res.          2
+Page  479: SYSCFGEN                    TIM8EN                   CRSEN                               TIM3EN                       Res.                              GPIOBEN                    Res.                        DMA2EN         1
+Page  479: Res.                    TIM1EN                    Res.                               TIM2EN                       Res.                              GPIOAEN                   DCMIEN                       DMA1EN
+Page  480: Res.                                     Res.                        Res.                                GPIOKLPEN     1                 Res.                             Res.                           Res.      10
+Page  480: Res.                                LPTIM1LPEN                       Res.                                GPIOJLPEN                   SDMMC2LPEN                           Res.                           Res.       9
+Page  480: FDCANLPEN                               TIM14LPEN                       Res.                                GPIOILPEN                       Res.                             Res.                       FLASHLPEN      8
+Page  480: Res.                                 TIM13LPEN                       Res.                                GPIOHLPEN                       Res.                             Res.                           Res.       7
+Page  480: Res.                                 TIM12LPEN                   WWDG1LPEN                               GPIOGLPEN                     RNGLPEN                            Res.                           Res.       6
+Page  480: MDIOSLPEN                               TIM7LPEN                        Res.                                GPIOFLPEN                     HASHLPEN                        ADC12LPEN                    JPGDECLPEN      5
+Page  480: OPAMPLPEN                               TIM6LPEN                        Res.                                GPIOELPEN                    CRYPTLPEN                           Res.                       DMA2DLPEN      4
+Page  480: Res.                                 TIM5LPEN                     LTDCLPEN                               GPIODLPEN                       Res.                             Res.                           Res.       3
+Page  480: SWPLPEN                                TIM4LPEN                        Res.                                GPIOCLPEN                       Res.                             Res.                           Res.       2
+Page  480: CRSLPEN                                TIM3LPEN                        Res.                                GPIOBLPEN                       Res.                          DMA2LPEN                          Res.       1
+Page  480: Res.                                 TIM2LPEN                        Res.                                GPIOALPEN                   CAMITFLPEN                        DMA1LPEN                      MDMALPEN
+Page  508: General-purpose I/Os (GPIO)                                                                      RM0433
+Page  508: 10         General-purpose I/Os (GPIO)
+Page  508: Each general-purpose I/O port has four 32-bit configuration registers (GPIOx_MODER,
+Page  508: GPIOx_OTYPER, GPIOx_OSPEEDR and GPIOx_PUPDR), two 32-bit data registers
+Page  508: (GPIOx_IDR and GPIOx_ODR) and a 32-bit set/reset register (GPIOx_BSRR). In addition
+Page  508: all GPIOs have a 32-bit locking register (GPIOx_LCKR) and two 32-bit alternate function
+Page  508: selection registers (GPIOx_AFRH and GPIOx_AFRL).
+Page  508: 10.2       GPIO main features
+Page  508: •    Output data from output data register (GPIOx_ODR) or peripheral (alternate function
+Page  508: •    Input data to input data register (GPIOx_IDR) or peripheral (alternate function input)
+Page  508: •    Bit set and reset register (GPIOx_ BSRR) for bitwise write access to GPIOx_ODR
+Page  508: •    Locking mechanism (GPIOx_LCKR) provided to freeze the I/O port configurations
+Page  508: •    Highly flexible pin multiplexing allows the use of I/O pins as GPIOs or as one of several
+Page  508: 10.3       GPIO functional description
+Page  508: port bit of the general-purpose I/O (GPIO) ports can be individually configured by software in
+Page  508: accessed as 32-bit words, half-words or bytes. The purpose of the GPIOx_BSRR and
+Page  508: GPIOx_BRR registers is to allow atomic read/modify accesses to any of the GPIOx_ODR
+Page  509: RM0433                                                                                                                                                                                                                           General-purpose I/Os (GPIO)
+Page  510: General-purpose I/Os (GPIO)                                                                                   RM0433
+Page  511: RM0433                                                                  General-purpose I/Os (GPIO)
+Page  511: 10.3.1   General-purpose I/O (GPIO)
+Page  511: (GPIOx_ODR) is output on the I/O pin. It is possible to use the output driver in push-pull
+Page  511: The input data register (GPIOx_IDR) captures the data present on the I/O pin at every AHB
+Page  511: All GPIO pins have weak internal pull-up and pull-down resistors, which can be activated or
+Page  511: not depending on the value in the GPIOx_PUPDR register.
+Page  511: can be configured through the GPIOx_AFRL (for pin 0 to 7) and GPIOx_AFRH (for pin 8 to
+Page  511: configured in alternate function mode through GPIOx_MODER register.
+Page  511: •    GPIO: configure the desired I/O as output, input or analog in the GPIOx_MODER
+Page  511: –    Connect the I/O to the desired AFx in one of the GPIOx_AFRL or GPIOx_AFRH
+Page  511: –    Select the type, pull-up/pull-down and output speed via the GPIOx_OTYPER,
+Page  511: GPIOx_PUPDR and GPIOx_OSPEEDER registers, respectively.
+Page  512: General-purpose I/Os (GPIO)                                                                    RM0433
+Page  512: –    Configure the desired I/O as an alternate function in the GPIOx_MODER register.
+Page  512: GPIOx_MODER register and configure the required function in the ADC and DAC
+Page  512: standard GPIO registers. For details about I/O control by the RTC, refer to
+Page  512: Each of the GPIO ports has four 32-bit memory-mapped control registers (GPIOx_MODER,
+Page  512: GPIOx_OTYPER, GPIOx_OSPEEDR, GPIOx_PUPDR) to configure up to 16 I/Os. The
+Page  512: GPIOx_MODER register is used to select the I/O mode (input, output, AF, analog). The
+Page  512: GPIOx_OTYPER and GPIOx_OSPEEDR registers are used to select the output type (push-
+Page  512: pull or open-drain) and speed. The GPIOx_PUPDR register is used to select the pull-
+Page  512: Each GPIO has two 16-bit memory-mapped data registers: input and output data registers
+Page  512: (GPIOx_IDR and GPIOx_ODR). GPIOx_ODR stores the data to be output, it is read/write
+Page  512: (GPIOx_IDR), a read-only register.
+Page  512: See Section 10.4.5: GPIO port input data register (GPIOx_IDR) (x = A to K) and
+Page  512: Section 10.4.6: GPIO port output data register (GPIOx_ODR) (x = A to K) for the register
+Page  512: The bit set reset register (GPIOx_BSRR) is a 32-bit register which allows the application to
+Page  512: set and reset each individual bit in the output data register (GPIOx_ODR). The bit set reset
+Page  512: register has twice the size of GPIOx_ODR.
+Page  512: To each bit in GPIOx_ODR, correspond two control bits in GPIOx_BSRR: BS(i) and BR(i).
+Page  512: Writing any bit to 0 in GPIOx_BSRR does not have any effect on the corresponding bit in
+Page  512: GPIOx_ODR. If there is an attempt to both set and reset a bit in GPIOx_BSRR, the set
+Page  512: Using the GPIOx_BSRR register to change the values of individual bits in GPIOx_ODR is a
+Page  512: “one-shot” effect that does not lock the GPIOx_ODR bits. The GPIOx_ODR bits can always
+Page  512: be accessed directly. The GPIOx_BSRR register provides a way of performing atomic
+Page  513: RM0433                                                                   General-purpose I/Os (GPIO)
+Page  513: There is no need for the software to disable interrupts when programming the GPIOx_ODR
+Page  513: 10.3.6   GPIO locking mechanism
+Page  513: It is possible to freeze the GPIO control registers by applying a specific write sequence to
+Page  513: the GPIOx_LCKR register. The frozen registers are GPIOx_MODER, GPIOx_OTYPER,
+Page  513: GPIOx_OSPEEDR, GPIOx_PUPDR, GPIOx_AFRL and GPIOx_AFRH.
+Page  513: To write the GPIOx_LCKR register, a specific write / read sequence has to be applied. When
+Page  513: GPIOx_LCKR bit freezes the corresponding bit in the control registers (GPIOx_MODER,
+Page  513: GPIOx_OTYPER, GPIOx_OSPEEDR, GPIOx_PUPDR, GPIOx_AFRL and GPIOx_AFRH.
+Page  513: The LOCK sequence (refer to Section 10.4.8: GPIO port configuration lock register
+Page  513: (GPIOx_LCKR) (x = A to K)) can only be performed using a word (32-bit long) access to the
+Page  513: GPIOx_LCKR register due to the fact that GPIOx_LCKR bit 16 has to be set at the same
+Page  513: For more details refer to LCKR register description in Section 10.4.8: GPIO port
+Page  513: configuration lock register (GPIOx_LCKR) (x = A to K).
+Page  513: This means that a number of possible peripheral functions are multiplexed on each GPIO
+Page  513: using the GPIOx_AFRL and GPIOx_AFRH alternate function registers. The application can
+Page  513: To know which functions are multiplexed on each GPIO pin, refer to the device datasheet.
+Page  514: General-purpose I/Os (GPIO)                                                                                                                                      RM0433
+Page  514: GPIOx_PUPDR register
+Page  514: GPIOx_PUPDR register
+Page  515: RM0433                                                                                                                                 General-purpose I/Os (GPIO)
+Page  515: in the GPIOx_PUPDR register
+Page  516: General-purpose I/Os (GPIO)                                                                                                                                                                                                                                 RM0433
+Page  517: RM0433                                                                                                                  General-purpose I/Os (GPIO)
+Page  517: GPIOx_MODER                                                                     PxySO bit in
+Page  517: GPIO
+Page  517: 10.3.14   Using the HSE or LSE oscillator pins as GPIOs
+Page  517: oscillator pins can be used as normal GPIOs.
+Page  517: RCC_CSR register) the oscillator takes control of its associated pins and the GPIO
+Page  517: used as normal GPIO.
+Page  517: 10.3.15   Using the GPIO pins in the backup supply domain
+Page  517: The PC13/PC14/PC15/PI8 GPIO functionality is lost when the core supply domain is
+Page  517: powered off (when the device enters Standby mode). In this case, if their GPIO configuration
+Page  517: 10.4      GPIO registers
+Page  517: This section gives a detailed description of the GPIO registers.
+Page  518: General-purpose I/Os (GPIO)                                                                                           RM0433
+Page  518: 10.4.1            GPIO port mode register (GPIOx_MODER) (x =A to K)
+Page  518: 10.4.2            GPIO port output type register (GPIOx_OTYPER) (x = A to K)
+Page  519: RM0433                                                                                          General-purpose I/Os (GPIO)
+Page  519: 10.4.3          GPIO port output speed register (GPIOx_OSPEEDR)
+Page  519: 10.4.4          GPIO port pull-up/pull-down register (GPIOx_PUPDR)
+Page  520: General-purpose I/Os (GPIO)                                                                                                                     RM0433
+Page  520: 10.4.5            GPIO port input data register (GPIOx_IDR) (x = A to K)
+Page  520: 10.4.6            GPIO port output data register (GPIOx_ODR) (x = A to K)
+Page  520: the GPIOx_BSRR or GPIOx_BRR registers (x = A..F).
+Page  520: 10.4.7            GPIO port bit set/reset register (GPIOx_BSRR) (x = A to K)
+Page  521: RM0433                                                                                 General-purpose I/Os (GPIO)
+Page  521: 10.4.8           GPIO port configuration lock register (GPIOx_LCKR)
+Page  521: GPIO. During the write sequence, the value of LCKR[15:0] must not change. When the
+Page  521: Note:            A specific write sequence is used to write to the GPIOx_LCKR register. Only word access
+Page  522: General-purpose I/Os (GPIO)                                                                                       RM0433
+Page  522: 1: Port configuration lock key active. The GPIOx_LCKR register is locked until the next MCU
+Page  522: 10.4.9          GPIO alternate function low register (GPIOx_AFRL)
+Page  523: RM0433                                                                                 General-purpose I/Os (GPIO)
+Page  523: 10.4.10          GPIO alternate function high register (GPIOx_AFRH)
+Page  524: GPIOA_PUPDR
+Page  524: GPIOx_MODER
+Page  524: GPIOB_MODER
+Page  524: GPIOA_MODER
+Page  524: GPIOx_OTYPER
+Page  524: GPIOx_OSPEEDR
+Page  524: GPIOB_OSPEEDR
+Page  524: GPIOA_OSPEEDR
+Page  524: General-purpose I/Os (GPIO)
+Page  524: GPIO register map
+Page  524: Table 88. GPIO register map and reset values
+Page  524: The following table gives the GPIO register map and reset values.
+Page  525: GPIOx_IDR
+Page  525: GPIOx_ODR
+Page  525: GPIOx_AFRL
+Page  525: GPIOx_AFRH
+Page  525: GPIOx_LCKR
+Page  525: GPIOx_BSRR
+Page  525: GPIOx_PUPDR
+Page  525: GPIOB_PUPDR
+Page  525: Table 88. GPIO register map and reset values (continued)
+Page  525: General-purpose I/Os (GPIO)
+Page  526: •        Management of the external interrupt line connection to the GPIOs
+Page  551: system and result in a reduction of the number of pins and GPIOs.
+Page  746: For the sixteen GPIO Event inputs the associated IOPORT pin has to be selected in the
+Page  895: –    Up to 6 fast channels from dedicated GPIO pads
+Page  895: –    Up to 14 slow channels from dedicated GPIO pads
+Page  895: –   by hardware triggers with configurable polarity (internal timers events or GPIO
+Page  899: Output, channel preselection Connected to GPIO to select the channel in
+Page  912: •    6 fast analog inputs coming from Analog PADs and GPIO pads (ADCx_INP/INN[0..5])
+Page  912: •    Up to 14 slow analog inputs coming from GPIO pads (ADCx_INP/INN[6..19]).
+Page  959: ADCx_INP2,        GPIO                                                         Regular data register
+Page 1020: The DAC_OUTx pin can be used as general purpose input/output (GPIO) when the DAC
+Page 1023: GPIO
+Page 1023: output pin and the corresponding GPIO can be used for another purpose.
+Page 1062: VREFINT                            Scaler                                                       GPIO alternate
+Page 1062: The I/Os used as comparator inputs must be configured in analog mode in the GPIO
+Page 1063: output on GPIOs.
+Page 1063: output on GPIOs.
+Page 1066: 27.3.8      Comparator output on GPIOs
+Page 1066: GPIOs through the AFOP field of the COMP_OR register, bits [10:0], and through the GPIO
+Page 1066: Table 228. COMP1_OUT assignment to GPIOs
+Page 1066: Table 229. COMP2_OUT assignment to GPIOs
+Page 1067: The assignment to GPIOs for both comparator channel outputs must be done before locking
+Page 1067: connected to one of GPIOs programmable in alternate function as timer break input. See
+Page 1067: Table 228 and Table 229. The selected GPIO(s) must be set in open drain mode. The
+Page 1067: COMP output passes through the GPIO to the timer break input. With a pull-up resistor, the
+Page 1067: selected GPIO can be used as timer break input logic OR-ed with the comparator output.
+Page 1071: Output port (GPIO) correspondence:
+Page 1071: 0: COMP1_OUT is selected for the alternate function of the corresponding GPIO
+Page 1071: 1: COMP2_OUT is selected for the alternate function of the corresponding GPIO
+Page 1072: Output port (GPIO) correspondence:
+Page 1072: 0: COMP1_OUT is selected for the alternate function of the corresponding GPIO
+Page 1072: 1: COMP2_OUT is selected for the alternate function of the corresponding GPIO
+Page 1079: corresponding GPIOx_MODER register.
+Page 1080: Starting from the default value of OPAMPx_CSR, and the default state of GPIOx_MODER,
+Page 1081: •   configure VP_SEL bits as “GPIO connected to OPAMPx_VINP”, 00
+Page 1082: •      configure VP_SEL bits as “GPIO connected to OPAMPx_VINP”, 00
+Page 1083: •      configure VP_SEL bits as “GPIO connected to OPAMPx_VINP”.
+Page 1084: •   configure VP_SEL bits as “GPIO connected to OPAMPx_VINP”.
+Page 1085: •     configure VP_SEL bits as “GPIO connected to OPAMPx_VINP”.
+Page 1090: 00: GPIO connected to OPAMPx_VINP
+Page 1093: 00: GPIO connected to OPAMPx_VINP
+Page 1100: signal           conversion (from GPIOs: EXTI11, EXTI15).
+Page 1368: be configured in input mode. The data from the GPIO pin is redirect to the HRTIM external events through the pin Schmitt
+Page 1419: The HRTIM outputs are ready to be connected to the MCU I/Os. In the GPIO controller, the
+Page 1419: the outputs (using the GPIO controller) before performing a peripheral reset.
+Page 1551: output in inactive state or releases the control to the GPIO controller (typically to
+Page 1553: or even releasing the control to the GPIO controller (selected by the OSSI bit). This
+Page 1553: (taken over by the GPIO controller), otherwise the enable output remains high.
+Page 1553: –    If OSSI=0, the timer releases the output control (taken over by the GPIO controller
+Page 1555: over by GPIO
+Page 1556: OCx                                        I/O state defined by the GPIO controller (HI-Z)
+Page 1556: I/O state                                  I/O state defined by the GPIO controller (HI-Z)
+Page 1572: (OSSI bit = 1), or have their control taken over by the GPIO controller (OSSI bit = 0),
+Page 1572: inactive state (OSSI bit = 1), or have their control taken over by the GPIO controller (OSSI
+Page 1593: output state is defined by the GPIO controller and can be
+Page 1593: 1. When both outputs of a channel are not used (control taken over by GPIO), the OISx, OISxN, CCxP and CCxNP bits must
+Page 1593: depends on the OCx and OCxN channel state and the GPIO registers.
+Page 1599: is taken over by the GPIO logic, which forces a Hi-Z state).
+Page 1600: is taken over by the GPIO logic and which imposes a Hi-Z state).
+Page 1663: inactive state (OSSI bit = 1), or have their control taken over by the GPIO controller (OSSI
+Page 1680: OCx channel state and the GPIO and AFIO registers.
+Page 1730: state of the OCx channel and on the GPIO registers.
+Page 1741: OCx channel state and the GPIO registers.
+Page 1770: inactive state or releases the control to the GPIO controller (typically to have it in Hi-Z
+Page 1782: inactive state (OSSI bit = 1), or have their control taken over by the GPIO controller (OSSI
+Page 1797: output state is defined by the GPIO controller and can be
+Page 1797: 1. When both outputs of a channel are not used (control taken over by GPIO controller), the OISx, OISxN, CCxP and CCxNP
+Page 1817: output state is defined by the GPIO controller and can be
+Page 1817: 1. When both outputs of a channel are not used (control taken over by GPIO controller), the OISx, OISxN, CCxP and CCxNP
+Page 1846: LPTIM_IN1                   Digital input      LPTIM Input 1 from GPIO pin on mux input 0
+Page 1846: LPTIM_IN2                   Digital input      LPTIM Input 2 from GPIO pin on mux input 0
+Page 1846: LPTIM_ETR                   Digital input      LPTIM external trigger GPIO pin
+Page 1846: LPTIM_OUT                   Digital output      LPTIM Output GPIO pin
+Page 1846: lptim_ext_trig0                     GPIO pin as LPTIM1_ETR alternate function
+Page 1847: lptim_ext_trig0                  GPIO pin as LPTIM2_ETR alternate function
+Page 1848: lptim_in1_mux0                   GPIO pin as LPTIM1_IN1 alternate function
+Page 1848: lptim_int2_mux0                   GPIO pin as LPTIM1_IN2 alternate function
+Page 1848: lptim_in1_mux0                   GPIO pin as LPTIM2_IN1 alternate function
+Page 1849: lptim_int2_mux0                     GPIO pin as LPTIM2_IN2 alternate function
+Page 1849: The LPTIM inputs, either external (mapped to microcontroller GPIOs) or internal (mapped
+Page 1893: 45.3.3           GPIOs controlled by the RTC
+Page 1893: configuration is controlled by the RTC, whatever the PC13 GPIO configuration, except for
+Page 1894: GPIO                                                        1
+Page 1894: this case it is mandatory to configure PB2 GPIO registers as alternate function with the
+Page 1906: level just after enabling the tamper detection (by reading the GPIO registers), and before
+Page 1937: Shift register   noise      noise    GPIO
+Page 1937: Slave clock                         GPIO     I2C_SCL
+Page 1969: If the SMBus ALERT pin is not needed, the SMBA pin can be used as a standard GPIO if
+Page 1987: Note: When ALERTEN=0, the SMBA pin can be used as a standard GPIO.
+Page 2133: free for other application uses and act as GPIOs.
+Page 2134: 2. In this configuration, the MISO pin at master and MOSI pin at slave can be used as GPIOs
+Page 2134: GPIOs.
+Page 2134: In master mode, the MOSI output is disabled and may be used as GPIO. The clock
+Page 2134: In slave configuration, the MISO output is disabled and the pin can be used as a GPIO.
+Page 2135: 3. In this configuration, both the MISO pins can be used as GPIOs.
+Page 2135: dedicated GPIO pins to manage the chip select lines for each slave separately (see Figure
+Page 2135: 612.). The master must select one of the slaves individually by pulling low the GPIO
+Page 2136: 2. As MISO pins of the slaves are connected together, all slaves must have the GPIO configuration of their
+Page 2138: the slave select input of the other node via the dedicated GPIO pin. After the session is
+Page 2138: GPIO                        SS
+Page 2138: Master               SS (1)                    GPIO                Master
+Page 2139: free for other application uses (as GPIO or other alternate function).
+Page 2140: GPIO
+Page 2144: 7.    Write the proper GPIO registers: Configure GPIO for MOSI, MISO and SCK pins.
+Page 2144: propagated onto the associated GPIO pins regardless the peripheral enable so
+Page 2155: •    Put GPIO pin dedicated for another master SS control into active level
+Page 2155: •    Put GPIO pin dedicated for another master SS control into non active level
+Page 2190: Bit 31 AFCNTR: alternate function GPIOs control
+Page 2190: 0: the peripheral takes no control of GPIOs while it is disabled
+Page 2190: 1: the peripheral keeps always control of all associated GPIOs
+Page 2208: back as GPIOs while the audio block configured in asynchronous mode is the one for which
+Page 2215: driven Low if this pin is configured as the SAI pin in GPIO peripherals. MCKDIV can still be
+Page 2307: on GPIOs, in case of external transceiver connection
+Page 2310: push pull low in GPIO controller and then clear the SWPTEN bit in SWPMI_CR register
+Page 2310: (refer to Section 10: General-purpose I/Os (GPIO)).
+Page 2311: functions on three GPIOs (refer to “Pinouts and pin description” in product datasheet). This
+Page 2325: 0: SPWMI_IO pin is controlled by GPIO controller
+Page 2332: (SWPMI_RX, SWPMI_TX and SWPMI_SUSPEND signals are not available on GPIOs)
+Page 2332: are available as alternate function on GPIOs. This configuration is selected to connect an
+Page 2403: GPIO
+Page 2403: GPIO
+Page 2574: the 5 V VBUS line. The external charge pump can be driven by any GPIO output. This is
+Page 2575: the 5 V VBUS line. The external charge pump can be driven by any GPIO output or via an
+Page 2575: the overcurrent flag output from the charge pump to any GPIO input and configure it to
+Page 2979: standard GPIO, assuming that it is configured as alternate function open drain. The 27 kΩ
+Page 3039: 0         DBTRIGI                    GPIO
+Page 3040: 0      DBTRIGO                  GPIO
+Page 3217: Section 11: General-purpose I/Os (GPIO)
+Page 3217: Table 84: GPIO register map and reset values:
+Page 3217: – updated GPIOx_MODER reset values
+Page 3217: – changed index to A to K for GPIOx_AFRH.
+Page 3217: – added GPIOC..K_PUPDR
+Page 3221: Updated Section 46.3.3: GPIOs controlled by the RTC.
+Page 3239: GPIOx_AFRH . . . . . . . . . . . . . . . . . . . . . . . . .523     HRTIM_EECR1 . . . . . . . . . . . . . . . . . . . . . . 1488
+Page 3239: GPIOx_AFRL . . . . . . . . . . . . . . . . . . . . . . . . .522     HRTIM_EECR2 . . . . . . . . . . . . . . . . . . . . . . 1490
+Page 3239: GPIOx_BSRR . . . . . . . . . . . . . . . . . . . . . . . .520       HRTIM_EECR3 . . . . . . . . . . . . . . . . . . . . . . 1491
+Page 3239: GPIOx_IDR . . . . . . . . . . . . . . . . . . . . . . . . . .520    HRTIM_EEFxR1 . . . . . . . . . . . . . . . . . . . . . 1458
+Page 3239: GPIOx_LCKR . . . . . . . . . . . . . . . . . . . . . . . . .521     HRTIM_EEFxR2 . . . . . . . . . . . . . . . . . . . . . 1460
+Page 3239: GPIOx_MODER . . . . . . . . . . . . . . . . . . . . . . .518        HRTIM_FLTINR1 . . . . . . . . . . . . . . . . . . . . 1498
+Page 3239: GPIOx_ODR . . . . . . . . . . . . . . . . . . . . . . . . .520      HRTIM_FLTINR2 . . . . . . . . . . . . . . . . . . . . 1500
+Page 3239: GPIOx_OSPEEDR . . . . . . . . . . . . . . . . . . . . .519          HRTIM_FLTxR . . . . . . . . . . . . . . . . . . . . . . 1473
+Page 3239: GPIOx_OTYPER . . . . . . . . . . . . . . . . . . . . . .518         HRTIM_ICR . . . . . . . . . . . . . . . . . . . . . . . . . 1478
+Page 3239: GPIOx_PUPDR . . . . . . . . . . . . . . . . . . . . . . .519        HRTIM_IER . . . . . . . . . . . . . . . . . . . . . . . . . 1479

@@ -1,0 +1,659 @@
+Keyword: PLL
+Occurrences: 655
+================================================================================
+
+Page    8: 7.5.5       PLL description . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 326
+Page    8: 7.7.9       RCC PLLs Clock Source Selection Register (RCC_PLLCKSELR) . . . 374
+Page    8: 7.7.10      RCC PLLs Configuration Register (RCC_PLLCFGR) . . . . . . . . . . . . . 376
+Page    8: 7.7.11      RCC PLL1 Dividers Configuration Register (RCC_PLL1DIVR) . . . . . . 379
+Page    8: 7.7.12      RCC PLL1 Fractional Divider Register (RCC_PLL1FRACR) . . . . . . . 381
+Page    8: 7.7.13      RCC PLL2 Dividers Configuration Register (RCC_PLL2DIVR) . . . . . . 382
+Page    8: 7.7.14      RCC PLL2 Fractional Divider Register (RCC_PLL2FRACR) . . . . . . . 384
+Page    8: 7.7.15      RCC PLL3 Dividers Configuration Register (RCC_PLL3DIVR) . . . . . . 385
+Page    8: 7.7.16      RCC PLL3 Fractional Divider Register (RCC_PLL3FRACR) . . . . . . . 387
+Page   80: Figure 43.   PLL block diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 326
+Page   80: Figure 44.   PLLs Initialization Flowchart . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 329
+Page  244: VBAT                        HSE, PLLs                                                      switch
+Page  267: 2.   The system performance is first increased to a medium-speed clock from the PLL with
+Page  267: increase the clock frequency by enabling the PLL.
+Page  267: c)   Once the PLL is locked, switch the system clock.
+Page  267: 3.   The system performance is then increased to high-speed clock from the PLL with
+Page  267: b)   Disable the PLL.
+Page  267: 6.   The system performance can then be increased to high-speed clock from the PLL. To
+Page  267: increase the clock frequency by enabling the PLL.
+Page  267: c)   Once the PLL is locked, switch the system clock.
+Page  268: PLLxON
+Page  268: VOSRDY PLL             VOSRDY                      VOSRDY     VOSRDY PLL
+Page  268: RUN from HSI                    Run from PLL                  RUN from HSI        Run from PLL
+Page  268: 1.   The system is running from the PLL in high-performance mode (VOS1 voltage scaling).
+Page  268: clock frequency can be increased by enabling the PLL.
+Page  268: c)      Once the PLL is locked, the system clock can be switched.
+Page  269: PLLnON
+Page  269: Run from PLL             Clock Stopped                       RUN from HSI            Run from PLL
+Page  269: 1.    The system is running from the PLL in high-performance mode (VOS1 voltage scaling).
+Page  270: b)      Before enabling the PLL, it waits for the requested supply level to be reached by
+Page  270: c)      Once the PLL is locked, the system clock can be switched.
+Page  270: PLLxON
+Page  270: Wait                 VOSRDY PLL
+Page  270: Run from PLL       Power down                          RUN from HSI                Run from PLL
+Page  271: 1.   The system is running from the PLL with system in high performance mode (VOS1
+Page  272: PLLxON
+Page  272: RUN from PLL            Clock stopped                           Clock stopped
+Page  278: including a PLL and the D3 domain bus matrix clocks are stopped. When HSI or CSI is
+Page  282: disabled. The complete VCORE domain is consequently powered off. The PLLs, HSI
+Page  299: mode before LPUART1 has completed data transfer, PLLx can be used to provide clocks to
+Page  306: •   3 separate PLLs using integer or fractional ratios
+Page  306: •   Possibility to change the PLL fractional ratios on-the-fly
+Page  307: hse_ck                           PLL1
+Page  307: PLL2
+Page  307: LSI       lsi_ck                                        PLL3                                                             rcc_perx_ker_ck
+Page  317: The RCC provides up to 3 PLLs; each of them can be configured with integer or fractional
+Page  318: VDD Domain                                          pll1_q_ck     3
+Page  318: pll2_p_ck     1                                                                                                                                           To TPIU
+Page  318: HSION                                              pll1_p_ck     3
+Page  318: CSIKERON                                                         SW      pll1_r_ck     3
+Page  318: Clock                                                               pll1_p_ck    3
+Page  318: 0                              pll[3:1]_q_ck
+Page  318: hse_ck                                 pll[3:2]_p_ck
+Page  318: PLLSRC                                                                                 pll[3:2]_r_ck
+Page  318: 0                                                        PLL1
+Page  318: 1           ÷ DIVM1                                                   pll1_p_ck
+Page  318: 2                        1 to 16                                      pll1_q_ck                                                                                                                               To
+Page  318: DIVR1         pll1_r_ck      csi_ker_ck
+Page  318: PLL2                          hsi48_ck
+Page  318: ref2_ck                                       pll2_p_ck
+Page  318: MHz                                          pll2_q_ck
+Page  318: pll2_r_ck
+Page  318: PLL3
+Page  318: ref3_ck                                       pll3_p_ck                                                                                                                    ETH_MII_TX_CLK
+Page  318: MHz                                         pll3_q_ck
+Page  318: pll3_r_ck
+Page  320: •    The HSE is selected as reference clock for PLL1, with PLL1 enabled and selected to
+Page  321: peripheral clock, or as PLL input. A predivider allows the application to select an HSI output
+Page  321: •    The HSI is selected as reference clock for PLL1, with PLL1 enabled and selected to
+Page  321: one enabled PLL (PLLxON bit set to ‘1’). In that case the hardware does not update the
+Page  322: clock, or PLL input.
+Page  322: •    The CSI is selected as reference clock for PLL1, with PLL1 enabled and selected to
+Page  324: was used as clock source for PLLs when the failure occurred, the PLLs are also disabled.
+Page  326: 7.5.5          PLL description
+Page  326: The RCC features three PLLs:
+Page  326: •       A main PLL, PLL1, which is generally used to provide clocks to the CPU and to some
+Page  326: •       Two dedicated PLLs, PLL2 and PLL3, which are used to generate the kernel clock for
+Page  326: The PLLs integrated into the RCC are completely independent. They offer the following
+Page  326: overshoots on PLLs outputs.
+Page  326: •       Each PLL offer 3 outputs with post-dividers
+Page  326: Figure 43. PLL block diagram
+Page  326: PLLx                       PLLxRGE
+Page  326: DIVPxEN                         pllx_p_ck
+Page  326: PLLxVCOSEL
+Page  326: ÷ 1,2,3,..128   pllx_q_ck
+Page  326: DIVNx                   PLLxVCOSEL
+Page  326: ÷ 4,5…,128…,512                                               ÷ 1,2,3,..128   pllx_r_ck
+Page  326: PLLxFRACEN                             SH_REG                                              LDO        1V
+Page  327: The PLLs are controlled via RCC_PLLxDIVR, RCC_PLLxFRACR, RCC_PLLCFGR and
+Page  327: The frequency of the reference clock provided to the PLLs (refx_ck) must range from 1 to
+Page  327: 16 MHz. The user application has to program properly the DIVMx dividers of the RCC PLLs
+Page  327: Clock Source Selection Register (RCC_PLLCKSELR) in order to match this condition. In
+Page  327: addition, the PLLxRGE of the RCC PLLs Configuration Register (RCC_PLLCFGR) field
+Page  327: performance of the PLL.
+Page  327: The PLLs operate in integer mode when the value of SH_REG (FRACNx shadow register)
+Page  327: is set to ‘0’. The SH_REG is updated with the FRACNx value when PLLxFRACEN bit goes
+Page  327: The PLLs can be enabled by setting PLLxON to ‘1’. The bits PLLxRDY indicate that the PLL
+Page  327: Note:    Before enabling the PLLs, make sure that the reference frequency (refx_ck) provided to the
+Page  327: PLL is stable, so the hardware does not allow changing DIVMx when the PLLx is ON and it
+Page  327: is also not possible to change PLLSRC when one of the PLL is ON.
+Page  327: The hardware prevents writing PLL1ON to ‘0’ if the PLL1 is currently used to deliver the
+Page  327: The following PLL parameters cannot be changed once the PLL is enabled: DIVNx,
+Page  327: PLLxRGE, PLLxVCOSEL, DIVPx, DIVQx, DIVRx, DIVPxEN, DIVQxEN and DIVRxEN.
+Page  327: To insure an optimal behavior of the PLL when one of the post-divider (DIVP, DIVQ or DIVR)
+Page  327: If the above rules are not respected, the PLL output frequency is not guaranteed.
+Page  327: When the PLL is configured in integer mode (SH_REG = ‘0’), the VCO frequency (FVCO) is
+Page  327: F PLL_y_CK = ( F VCO ⁄ ( DIVy + 1 ) ) with y = P, Q or R
+Page  327: When the PLL is configured in fractional mode (SH_REG different from ‘0’), the DIVN divider
+Page  327: must be initialized before enabling the PLLs. However, it is possible to change the value of
+Page  327: FRACNx on-the-fly without disturbing the PLL output.
+Page  328: For each PLL, the VCO frequency is given by the following formula:
+Page  328: Note:      For PLL1, DIVP can only take odd values.
+Page  328: The PLLs are disabled by hardware when:
+Page  328: •    An HSE failure occurs when HSE or PLL (clocked by HSE) are used as system clock.
+Page  328: PLL initialization phase
+Page  328: Figure 44 shows the recommended PLL initialization sequence in integer and fractional
+Page  328: mode. The PLLx are supposed to be disabled at the start of the initialization sequence:
+Page  328: 1.   Initialize the PLLs registers according to the required frequency.
+Page  328: –    Set PLLxFRACEN of RCC PLLs Configuration Register (RCC_PLLCFGR) to ‘0’
+Page  328: then set PLLxFRACEN to ‘1’.
+Page  328: 2.   Once the PLLxON bit is set to ‘1’, the user application has to wait until PLLxRDY bit is
+Page  328: set to ‘1’. If the PLLx is in fractional mode, the PLLxFRACEN bit must not be set back
+Page  328: to ‘0’ as long as PLLxRDY = ‘0’.
+Page  328: 3.   Once the PLLxRDY bit is set to ‘1’, the PLLx is ready to be used.
+Page  328: 4.   If the application intends to tune the PLLx frequency on-the-fly (possible only in
+Page  328: a)   PLLxFRACEN must be set to ‘0’,
+Page  328: When PLLxFRACEN = ‘0’, the Sigma-Delta modulator is still operating with the
+Page  328: b)   A new value must be uploaded into PLLxFRACR (FracValue(n)).
+Page  328: c)   PLLxFRACEN must be set to ‘1’, in order to latch the content of PLLxFRACR into
+Page  328: Note:      When the PLLxRDY goes to ‘1’, it means that the difference between the PLLx output
+Page  329: Figure 44. PLLs Initialization Flowchart
+Page  329: PLL enable sequence                             PLL enable sequence
+Page  329: - (PLLSRC)                                       - (PLLSRC)
+Page  329: - DIVMx                                          - DIVMx                                      for each PLL
+Page  329: PLLx config (RCC_PLLCFGR)                        Init fractional value (RCC_PLLxFRACR)
+Page  329: - PLLxVCOSEL, PLLxRGE                            - FRACN= FracInitValue
+Page  329: - PLLxFRACEN = 0                                 PLLx config (RCC_PLLCFGR)
+Page  329: - DIVPxEN, DIVQxEN, DIVRxEN                      - PLLxVCOSEL, PLLxRGE
+Page  329: Init PLLx dividers (RCC_PLLxDIVR)                - PLLxFRACEN = 1
+Page  329: Init PLLx dividers (RCC_PLLxDIVR)
+Page  329: Enable PLLx (RCC_CR)
+Page  329: - PLLxON = 1
+Page  329: Enable PLLx (RCC_CR)
+Page  329: - PLLxON = 1
+Page  329: PLLxRDY = 1 ?
+Page  329: PLLxRDY = 1 ?
+Page  329: Disable fractional mode (RCC_PLLCFGR)
+Page  329: - PLLxFRACEN = 0
+Page  329: Init fractional value (RCC_PLLxFRACR)      Value update
+Page  329: Enable fractional mode (RCC_PLLCFGR)
+Page  329: - PLLxFRACEN = 1
+Page  330: After a system reset, the HSI is selected as system clock and all PLLs are switched OFF.
+Page  330: •    or pll1_p_ck
+Page  330: source is ready (clock stable after startup delay or PLL locked). If a clock source that is not
+Page  332: •    PLL1, PLL2 and PLL3
+Page  332: The content of the RCC registers is not altered except for PLL1ON, PLL2ON, PLL3ON
+Page  335: pll1_q_ck
+Page  335: pll2_p_ck
+Page  335: pll2_q_ck
+Page  335: pll3_p_ck
+Page  335: pll3_q_ck
+Page  335: pll2_r_ck
+Page  335: pll3_r_ck
+Page  336: pll1_q_ck
+Page  336: pll2_p_ck
+Page  336: pll2_q_ck
+Page  336: pll3_p_ck
+Page  336: pll3_q_ck
+Page  336: pll2_r_ck
+Page  336: pll3_r_ck
+Page  336: •      The PLL1 when the amount of active PLLs has to be reduced
+Page  336: •      The PLL2 or 3 for optimal flexibility in frequency generation
+Page  337: pll1_q_ck          0
+Page  337: pll2_p_ck          1
+Page  337: pll3_p_ck          2 D
+Page  337: pll1_q_ck          0                                                     sai_b_ker_ck
+Page  337: pll2_p_ck          1
+Page  337: pll3_p_ck          2 D
+Page  337: pll1_q_ck         0                SAI[3:2]EN
+Page  337: RCC               pll2_p_ck         1              SAI[3:2]LPEN
+Page  337: pll3_p_ck         2 D                                                   sai_A_ker_ck
+Page  337: pll1_q_ck          0
+Page  337: pll2_p_ck         1
+Page  337: pll3_p_ck         2 D                                                   Aclk
+Page  337: •        PLL1 when the amount of active PLLs has to be reduced
+Page  337: •        PLL2 or PLL3 if better flexibility is required. As an example, this solution allows
+Page  337: changing the frequency bus via PLL1 without affecting the speed of some serial
+Page  338: pll1_q_ck          0
+Page  338: pll2_r_ck          1                                               spdifrx_ker_ck
+Page  338: pll3_r_ck          2 D
+Page  338: pll1_q_ck           0                     SPI[3:1]EN       Logic      SPI/I2S[3:1]
+Page  338: pll2_p_ck           1                   SPI[3:1]LPEN
+Page  338: pll3_p_ck                                                           spi_ker_ck
+Page  338: pll2_q_ck            1                   SPI[5:4]LPEN
+Page  338: pll3_q_ck            2 D                                            spi_ker_ck
+Page  338: pll2_q_ck           1                     SPI6LPEN
+Page  338: pll3_q_ck           2 D                                            spi_ker_ck
+Page  339: pll3_r_ck              1 D                                                             i2c_ker_ck
+Page  339: pll3_r_ck              1 D                                                             i2c_ker_ck
+Page  339: pll2_q_ck            1                                                                   usart_ker_ck_req
+Page  339: pll3_q_ck            2                                                                   usart_ker_ck
+Page  339: pll2_q_ck            1
+Page  339: pll3_q_ck            2                                                                   usart_ker_ck
+Page  339: pll2_q_ck            1                 LPUART1PLEN                                       lpuart_ker_ck_req
+Page  339: pll3_q_ck            2 D                                                                 lpuart_ker_ck
+Page  340: pll3_r_ck
+Page  340: pll1_q_ck           0                                                              sdmmc_ker_ck
+Page  340: pll2_r_ck           1
+Page  340: pll1_q_ck           1D                                                             quadspi_ker_ck
+Page  340: pll2_r_ck          2
+Page  340: pll1_q_ck           1D                                                             fmc_ker_ck
+Page  340: pll2_r_ck          2
+Page  341: pll1_q_ck            1
+Page  341: pll3_q_ck            2 D
+Page  343: pll2_p_ck            0                      ADC3LPEN
+Page  343: pll3_r_ck            1 D                                                   adc_ker_ck
+Page  343: pll1_q_ck                                                                  rng_ker_ck
+Page  343: pll1_q_ck                                                                  fdcan_ker_ck
+Page  343: pll2_q_ck            2
+Page  344: pll2_p_ck                1                          LPTIM1LPEN
+Page  344: pll3_r_ck               2                                                  CLKMUX
+Page  344: pll2_p_ck                1                         LPTIM2LPEN
+Page  344: pll3_r_ck               2                                                  CLKMUX
+Page  344: pll2_p_ck                1                       LPTIM[5:3]LPEN
+Page  344: pll3_r_ck               2                                                  CLKMUX
+Page  345: clock source either directly or via PLL1. The number of system clock counts between
+Page  346: the HSI or CSI are used via the PLLx, the system clock can also be fine-tuned by using
+Page  346: the fractional divider of the PLLs.
+Page  347: kernel clocks of all the peripherals of the CPU_SS as well as the CPU clock. The PLLs, if
+Page  348: ‘1’). In this example, the RCC does not switch off the PLLs as the D3 domain is always in
+Page  359: •     rcc_it: a general interrupt line, providing events when the PLLs are ready, or when the
+Page  359: PLL1RDYF        PLL1 ready                                     PLL1RDYIE                Set PLL1RDYC to ‘1’
+Page  359: PLL2RDYF        PLL2 ready                                     PLL2RDYIE                Set PLL2RDYC to ‘1’
+Page  359: PLL3RDYF        PLL3 ready                                     PLL3RDYIE                Set PLL3RDYC to ‘1’
+Page  361: PLL3RDY
+Page  361: PLL2RDY
+Page  361: PLL1RDY
+Page  361: PLL3ON
+Page  361: PLL2ON
+Page  361: PLL1ON
+Page  361: Bit 29 PLL3RDY: PLL3 clock ready flag
+Page  361: Set by hardware to indicate that the PLL3 is locked.
+Page  361: 0: PLL3 unlocked (default after reset)
+Page  361: 1: PLL3 locked
+Page  361: Bit 28 PLL3ON: PLL3 enable
+Page  361: Set and cleared by software to enable PLL3.
+Page  361: 0: PLL3 OFF (default after reset)
+Page  361: 1: PLL3 ON
+Page  361: Bit 27 PLL2RDY: PLL2 clock ready flag
+Page  361: Set by hardware to indicate that the PLL2 is locked.
+Page  361: 0: PLL2 unlocked (default after reset)
+Page  361: 1: PLL2 locked
+Page  361: Bit 26 PLL2ON: PLL2 enable
+Page  361: Set and cleared by software to enable PLL2.
+Page  361: 0: PLL2 OFF (default after reset)
+Page  361: 1: PLL2 ON
+Page  361: Bit 25 PLL1RDY: PLL1 clock ready flag
+Page  361: Set by hardware to indicate that the PLL1 is locked.
+Page  361: 0: PLL1 unlocked (default after reset)
+Page  361: 1: PLL1 locked
+Page  361: Bit 24 PLL1ON: PLL1 enable
+Page  361: Set and cleared by software to enable PLL1.
+Page  361: this bit to ‘0’, if the PLL1 output is used as the system clock.
+Page  361: 0: PLL1 OFF (default after reset)
+Page  361: 1: PLL1 ON
+Page  362: selected as reference clock for PLL1 with PLL1 enabled (PLL1ON bit set to ‘1’).
+Page  363: selected as reference clock for PLL1 with PLL1 enabled (PLL1ON bit set to ‘1’).
+Page  363: HSIDIV cannot be changed if the HSI is selected as reference clock for at least one enabled PLL
+Page  363: (PLLxON bit set to ‘1’). In that case, the new HSIDIV value is ignored.
+Page  364: selected as reference clock for PLL1 with PLL1 enabled (PLL1ON bit set to ‘1’).
+Page  367: oscillators and the PLLs.
+Page  367: 001: PLL2 oscillator clock selected (pll2_p_ck)
+Page  367: 011: PLL1 clock selected (pll1_p_ck)
+Page  367: before enabling the external oscillators and the PLLs.
+Page  367: oscillators and the PLLs.
+Page  367: 011: PLL1 clock selected (pll1_q_ck)
+Page  368: before enabling the external oscillators and the PLLs.
+Page  369: 011: PLL1 used as system clock (pll1_p_ck)
+Page  369: 011: PLL1 selected as system clock (pll1_p_ck)
+Page  374: 7.7.9           RCC PLLs Clock Source Selection Register (RCC_PLLCKSELR)
+Page  374: DIVM2[3:0]              Res.   Res.                DIVM1[5:0]               Res.   Res.   PLLSRC[1:0]
+Page  374: Bits 25:20 DIVM3[5:0]: Prescaler for PLL3
+Page  374: Set and cleared by software to configure the prescaler of the PLL3.
+Page  374: The hardware does not allow any modification of this prescaler when PLL3 is enabled (PLL3ON =
+Page  374: In order to save power when PLL3 is not used, the value of DIVM3 must be set to ‘0’.
+Page  374: Bits 17:12 DIVM2[5:0]: Prescaler for PLL2
+Page  374: Set and cleared by software to configure the prescaler of the PLL2.
+Page  374: The hardware does not allow any modification of this prescaler when PLL2 is enabled (PLL2ON =
+Page  374: In order to save power when PLL2 is not used, the value of DIVM2 must be set to ‘0’.
+Page  375: Bits 9:4 DIVM1[5:0]: Prescaler for PLL1
+Page  375: Set and cleared by software to configure the prescaler of the PLL1.
+Page  375: The hardware does not allow any modification of this prescaler when PLL1 is enabled (PLL1ON =
+Page  375: In order to save power when PLL1 is not used, the value of DIVM1 must be set to ‘0’.
+Page  375: Bits 1:0 PLLSRC[1:0]: DIVMx and PLLs clock source selection
+Page  375: Set and reset by software to select the PLL clock source.
+Page  375: These bits can be written only when all PLLs are disabled.
+Page  375: In order to save power, when no PLL is used, the value of PLLSRC must be set to ‘11’.
+Page  375: 00: HSI selected as PLL clock (hsi_ck) (default after reset)
+Page  375: 01: CSI selected as PLL clock (csi_ck)
+Page  375: 10: HSE selected as PLL clock (hse_ck)
+Page  375: 11: No clock send to DIVMx divider and PLLs
+Page  376: 7.7.10          RCC PLLs Configuration Register (RCC_PLLCFGR)
+Page  376: PLL3FRACEN
+Page  376: PLL2FRACEN
+Page  376: PLL1FRACEN
+Page  376: PLL3VCOSEL
+Page  376: PLL2VCOSEL
+Page  376: PLL1VCOSEL
+Page  376: Res.    Res.    Res.   Res.   PLL3RGE[[1:0]                                  PLL2RGE[[1:0]                                       PLL1RGE[[1:0]
+Page  376: Bit 24 DIVR3EN: PLL3 DIVR divider output enable
+Page  376: Set and reset by software to enable the pll3_r_ck output of the PLL3.
+Page  376: To save power, DIVR3EN and DIVR3 bits must be set to ‘0’ when the pll3_r_ck is not used.
+Page  376: This bit can be written only when the PLL3 is disabled (PLL3ON = ‘0’ and PLL3RDY = ‘0’).
+Page  376: 0: pll3_r_ck output is disabled
+Page  376: 1: pll3_r_ck output is enabled (default after reset)
+Page  376: Bit 23 DIVQ3EN: PLL3 DIVQ divider output enable
+Page  376: Set and reset by software to enable the pll3_q_ck output of the PLL3.
+Page  376: To save power, DIVR3EN and DIVR3 bits must be set to ‘0’ when the pll3_r_ck is not used.
+Page  376: This bit can be written only when the PLL3 is disabled (PLL3ON = ‘0’ and PLL3RDY = ‘0’).
+Page  376: 0: pll3_q_ck output is disabled
+Page  376: 1: pll3_q_ck output is enabled (default after reset)
+Page  376: Bit 22 DIVP3EN: PLL3 DIVP divider output enable
+Page  376: Set and reset by software to enable the pll3_p_ck output of the PLL3.
+Page  376: This bit can be written only when the PLL3 is disabled (PLL3ON = ‘0’ and PLL3RDY = ‘0’).
+Page  376: To save power, DIVR3EN and DIVR3 bits must be set to ‘0’ when the pll3_r_ck is not used.
+Page  376: 0: pll3_p_ck output is disabled
+Page  376: 1: pll3_p_ck output is enabled (default after reset)
+Page  376: Bit 21 DIVR2EN: PLL2 DIVR divider output enable
+Page  376: Set and reset by software to enable the pll2_r_ck output of the PLL2.
+Page  376: To save power, DIVR3EN and DIVR3 bits must be set to ‘0’ when the pll3_r_ck is not used.
+Page  376: This bit can be written only when the PLL2 is disabled (PLL2ON = ‘0’ and PLL2RDY = ‘0’).
+Page  376: 0: pll2_r_ck output is disabled
+Page  376: 1: pll2_r_ck output is enabled (default after reset)
+Page  376: Bit 20 DIVQ2EN: PLL2 DIVQ divider output enable
+Page  376: Set and reset by software to enable the pll2_q_ck output of the PLL2.
+Page  376: To save power, DIVR3EN and DIVR3 bits must be set to ‘0’ when the pll3_r_ck is not used.
+Page  376: This bit can be written only when the PLL2 is disabled (PLL2ON = ‘0’ and PLL2RDY = ‘0’).
+Page  376: 0: pll2_q_ck output is disabled
+Page  376: 1: pll2_q_ck output is enabled (default after reset)
+Page  377: Bit 19 DIVP2EN: PLL2 DIVP divider output enable
+Page  377: Set and reset by software to enable the pll2_p_ck output of the PLL2.
+Page  377: This bit can be written only when the PLL2 is disabled (PLL2ON = ‘0’ and PLL2RDY = ‘0’).
+Page  377: To save power, DIVR3EN and DIVR3 bits must be set to ‘0’ when the pll3_r_ck is not used.
+Page  377: 0: pll2_p_ck output is disabled
+Page  377: 1: pll2_p_ck output is enabled (default after reset)
+Page  377: Bit 18 DIVR1EN: PLL1 DIVR divider output enable
+Page  377: Set and reset by software to enable the pll1_r_ck output of the PLL1.
+Page  377: To save power, DIVR3EN and DIVR3 bits must be set to ‘0’ when the pll3_r_ck is not used.
+Page  377: This bit can be written only when the PLL1 is disabled (PLL1ON = ‘0’ and PLL1RDY = ‘0’).
+Page  377: 0: pll1_r_ck output is disabled
+Page  377: 1: pll1_r_ck output is enabled (default after reset)
+Page  377: Bit 17 DIVQ1EN: PLL1 DIVQ divider output enable
+Page  377: Set and reset by software to enable the pll1_q_ck output of the PLL1.
+Page  377: In order to save power, when the pll1_q_ck output of the PLL1 is not used, the pll1_q_ck must be
+Page  377: This bit can be written only when the PLL1 is disabled (PLL1ON = ‘0’ and PLL1RDY = ‘0’).
+Page  377: 0: pll1_q_ck output is disabled
+Page  377: 1: pll1_q_ck output is enabled (default after reset)
+Page  377: Bit 16 DIVP1EN: PLL1 DIVP divider output enable
+Page  377: Set and reset by software to enable the pll1_p_ck output of the PLL1.
+Page  377: This bit can be written only when the PLL1 is disabled (PLL1ON = ‘0’ and PLL1RDY = ‘0’).
+Page  377: In order to save power, when the pll1_p_ck output of the PLL1 is not used, the pll1_p_ck must be
+Page  377: 0: pll1_p_ck output is disabled
+Page  377: 1: pll1_p_ck output is enabled (default after reset)
+Page  377: Bits 11:10 PLL3RGE[1:0]: PLL3 input frequency range
+Page  377: Set and reset by software to select the proper reference frequency range used for PLL3.
+Page  377: These bits must be written before enabling the PLL3.
+Page  377: 00: The PLL3 input (ref3_ck) clock range frequency is between 1 and 2 MHz (default after reset)
+Page  377: 01: The PLL3 input (ref3_ck) clock range frequency is between 2 and 4 MHz
+Page  377: 10: The PLL3 input (ref3_ck) clock range frequency is between 4 and 8 MHz
+Page  377: 11: The PLL3 input (ref3_ck) clock range frequency is between 8 and 16 MHz
+Page  377: Bit 9 PLL3VCOSEL: PLL3 VCO selection
+Page  377: Set and reset by software to select the proper VCO frequency range used for PLL3.
+Page  377: This bit must be written before enabling the PLL3.
+Page  377: Bit 8 PLL3FRACEN: PLL3 fractional latch enable
+Page  377: In order to latch the FRACN3 value into the Sigma-Delta modulator, PLL3FRACEN must be set to
+Page  377: refer to Section : PLL initialization phase for additional information.
+Page  378: Bits 7:6 PLL2RGE[1:0]: PLL2 input frequency range
+Page  378: Set and reset by software to select the proper reference frequency range used for PLL2.
+Page  378: These bits must be written before enabling the PLL2.
+Page  378: 00: The PLL2 input (ref2_ck) clock range frequency is between 1 and 2 MHz (default after reset)
+Page  378: 01: The PLL2 input (ref2_ck) clock range frequency is between 2 and 4 MHz
+Page  378: 10: The PLL2 input (ref2_ck) clock range frequency is between 4 and 8 MHz
+Page  378: 11: The PLL2 input (ref2_ck) clock range frequency is between 8 and 16 MHz
+Page  378: Bit 5 PLL2VCOSEL: PLL2 VCO selection
+Page  378: Set and reset by software to select the proper VCO frequency range used for PLL2.
+Page  378: This bit must be written before enabling the PLL2.
+Page  378: Bit 4 PLL2FRACEN: PLL2 fractional latch enable
+Page  378: In order to latch the FRACN2 value into the Sigma-Delta modulator, PLL2FRACEN must be set to
+Page  378: refer to Section : PLL initialization phase for additional information.
+Page  378: Bits 3:2 PLL1RGE[1:0]: PLL1 input frequency range
+Page  378: Set and reset by software to select the proper reference frequency range used for PLL1.
+Page  378: This bit must be written before enabling the PLL1.
+Page  378: 00: The PLL1 input (ref1_ck) clock range frequency is between 1 and 2 MHz (default after reset)
+Page  378: 01: The PLL1 input (ref1_ck) clock range frequency is between 2 and 4 MHz
+Page  378: 10: The PLL1 input (ref1_ck) clock range frequency is between 4 and 8 MHz
+Page  378: 11: The PLL1 input (ref1_ck) clock range frequency is between 8 and 16 MHz
+Page  378: Bit 1 PLL1VCOSEL: PLL1 VCO selection
+Page  378: Set and reset by software to select the proper VCO frequency range used for PLL1.
+Page  378: These bits must be written before enabling the PLL1.
+Page  378: Bit 0 PLL1FRACEN: PLL1 fractional latch enable
+Page  378: In order to latch the FRACN1 value into the Sigma-Delta modulator, PLL1FRACEN must be set to
+Page  378: refer to Section : PLL initialization phase for additional information.
+Page  379: 7.7.11         RCC PLL1 Dividers Configuration Register (RCC_PLL1DIVR)
+Page  379: Bits 30:24 DIVR1[6:0]: PLL1 DIVR division factor
+Page  379: Set and reset by software to control the frequency of the pll1_r_ck clock.
+Page  379: These bits can be written only when the PLL1 is disabled (PLL1ON = ‘0’ and PLL1RDY = ‘0’).
+Page  379: 0000000: pll1_r_ck = vco1_ck
+Page  379: 0000001: pll1_r_ck = vco1_ck / 2 (default after reset)
+Page  379: 0000010: pll1_r_ck = vco1_ck / 3
+Page  379: 0000011: pll1_r_ck = vco1_ck / 4
+Page  379: 1111111: pll1_r_ck = vco1_ck / 128
+Page  380: Bits 22:16 DIVQ1[6:0]: PLL1 DIVQ division factor
+Page  380: Set and reset by software to control the frequency of the pll1_q_ck clock.
+Page  380: These bits can be written only when the PLL1 is disabled (PLL1ON = ‘0’ and PLL1RDY = ‘0’).
+Page  380: 0000000: pll1_q_ck = vco1_ck
+Page  380: 0000001: pll1_q_ck = vco1_ck / 2 (default after reset)
+Page  380: 0000010: pll1_q_ck = vco1_ck / 3
+Page  380: 0000011: pll1_q_ck = vco1_ck / 4
+Page  380: 1111111: pll1_q_ck = vco1_ck / 128
+Page  380: Bits 15:9 DIVP1[6:0]: PLL1 DIVP division factor
+Page  380: Set and reset by software to control the frequency of the pll1_p_ck clock.
+Page  380: These bits can be written only when the PLL1 is disabled (PLL1ON = ‘0’ and PLL1RDY = ‘0’).
+Page  380: 0000001: pll1_p_ck = vco1_ck / 2 (default after reset)
+Page  380: 0000011: pll1_p_ck = vco1_ck / 4
+Page  380: 1111111: pll1_p_ck = vco1_ck / 128
+Page  380: Bits 8:0 DIVN1[8:0]: Multiplication factor for PLL1 VCO
+Page  380: These bits can be written only when the PLL is disabled (PLL1ON = ‘0’ and PLL1RDY = ‘0’).
+Page  380: –    192 to 836 MHz if PLL1VCOSEL = ‘0’
+Page  380: –    150 to 420 MHz if PLL1VCOSEL = ‘1’
+Page  381: 7.7.12            RCC PLL1 Fractional Divider Register (RCC_PLL1FRACR)
+Page  381: Bits 15:3 FRACN1[12:0]: Fractional part of the multiplication factor for PLL1 VCO
+Page  381: These bits can be written at any time, allowing dynamic fine-tuning of the PLL1 VCO.
+Page  381: –    192 to 836 MHz if PLL1VCOSEL = ‘0’
+Page  381: –    150 to 420 MHz if PLL1VCOSEL = ‘1’
+Page  381: To change the FRACN value on-the-fly even if the PLL is enabled, the application has to proceed as
+Page  381: –   set the bit PLL1FRACEN to ‘0’,
+Page  381: –   set the bit PLL1FRACEN to ‘1’.
+Page  382: 7.7.13          RCC PLL2 Dividers Configuration Register (RCC_PLL2DIVR)
+Page  382: Bits 30:24 DIVR2[6:0]: PLL2 DIVR division factor
+Page  382: Set and reset by software to control the frequency of the pll2_r_ck clock.
+Page  382: These bits can be written only when the PLL2 is disabled (PLL2ON = ‘0’ and PLL2RDY = ‘0’).
+Page  382: 0000000: pll2_r_ck = vco2_ck
+Page  382: 0000001: pll2_r_ck = vco2_ck / 2 (default after reset)
+Page  382: 0000010: pll2_r_ck = vco2_ck / 3
+Page  382: 0000011: pll2_r_ck = vco2_ck / 4
+Page  382: 1111111: pll2_r_ck = vco2_ck / 128
+Page  383: Bits 22:16 DIVQ2[6:0]: PLL2 DIVQ division factor
+Page  383: Set and reset by software to control the frequency of the pll2_q_ck clock.
+Page  383: These bits can be written only when the PLL2 is disabled (PLL2ON = ‘0’ and PLL2RDY = ‘0’).
+Page  383: 0000000: pll2_q_ck = vco2_ck
+Page  383: 0000001: pll2_q_ck = vco2_ck / 2 (default after reset)
+Page  383: 0000010: pll2_q_ck = vco2_ck / 3
+Page  383: 0000011: pll2_q_ck = vco2_ck / 4
+Page  383: 1111111: pll2_q_ck = vco2_ck / 128
+Page  383: Bits 15:9 DIVP2[6:0]: PLL2 DIVP division factor
+Page  383: Set and reset by software to control the frequency of the pll2_p_ck clock.
+Page  383: These bits can be written only when the PLL2 is disabled (PLL2ON = ‘0’ and PLL2RDY = ‘0’).
+Page  383: 0000000: pll2_p_ck = vco2_ck
+Page  383: 0000001: pll2_p_ck = vco2_ck / 2 (default after reset)
+Page  383: 0000010: pll2_p_ck = vco2_ck / 3
+Page  383: 0000011: pll2_p_ck = vco2_ck / 4
+Page  383: 1111111: pll2_p_ck = vco2_ck / 128
+Page  383: Bits 8:0 DIVN2[8:0]: Multiplication factor for PLL2 VCO
+Page  383: These bits can be written only when the PLL is disabled (PLL2ON = ‘0’ and PLL2RDY = ‘0’).
+Page  383: –    192 to 836 MHz if PLL2VCOSEL = ‘0’
+Page  383: –    150 to 420 MHz if PLL2VCOSEL = ‘1’
+Page  384: 7.7.14          RCC PLL2 Fractional Divider Register (RCC_PLL2FRACR)
+Page  384: Bits 15:3 FRACN2[12:0]: Fractional part of the multiplication factor for PLL2 VCO
+Page  384: These bits can be written at any time, allowing dynamic fine-tuning of the PLL2 VCO.
+Page  384: –    192 to 836 MHz if PLL2VCOSEL = ‘0’
+Page  384: –    150 to 420 MHz if PLL2VCOSEL = ‘1’
+Page  384: In order to change the FRACN value on-the-fly even if the PLL is enabled, the application has to
+Page  384: –    set the bit PLL2FRACEN to ‘0’,
+Page  384: –    set the bit PLL2FRACEN to ‘1’.
+Page  385: 7.7.15         RCC PLL3 Dividers Configuration Register (RCC_PLL3DIVR)
+Page  385: Bits 30:24 DIVR3[6:0]: PLL3 DIVR division factor
+Page  385: Set and reset by software to control the frequency of the pll3_r_ck clock.
+Page  385: These bits can be written only when the PLL3 is disabled (PLL3ON = ‘0’ and PLL3RDY = ‘0’).
+Page  385: 0000000: pll3_r_ck = vco3_ck
+Page  385: 0000001: pll3_r_ck = vco3_ck / 2 (default after reset)
+Page  385: 0000010: pll3_r_ck = vco3_ck / 3
+Page  385: 0000011: pll3_r_ck = vco3_ck / 4
+Page  385: 1111111: pll3_r_ck = vco3_ck / 128
+Page  386: Bits 22:16 DIVQ3[6:0]: PLL3 DIVQ division factor
+Page  386: Set and reset by software to control the frequency of the pll3_q_ck clock.
+Page  386: These bits can be written only when the PLL3 is disabled (PLL3ON = ‘0’ and PLL3RDY = ‘0’).
+Page  386: 0000000: pll3_q_ck = vco3_ck
+Page  386: 0000001: pll3_q_ck = vco3_ck / 2 (default after reset)
+Page  386: 0000010: pll3_q_ck = vco3_ck / 3
+Page  386: 0000011: pll3_q_ck = vco3_ck / 4
+Page  386: 1111111: pll3_q_ck = vco3_ck / 128
+Page  386: Bits 15:9 DIVP3[6:0]: PLL3 DIVP division factor
+Page  386: Set and reset by software to control the frequency of the pll3_p_ck clock.
+Page  386: These bits can be written only when the PLL3 is disabled (PLL3ON = ‘0’ and PLL3RDY = ‘0’).
+Page  386: 0000000: pll3_p_ck = vco3_ck
+Page  386: 0000001: pll3_p_ck = vco3_ck / 2 (default after reset)
+Page  386: 0000010: pll3_p_ck = vco3_ck / 3
+Page  386: 0000011: pll3_p_ck = vco3_ck / 4
+Page  386: 1111111: pll3_p_ck = vco3_ck / 128
+Page  386: Bits 8:0 DIVN3[7:0]: Multiplication factor for PLL3 VCO
+Page  386: These bits can be written only when the PLL is disabled (PLL3ON = ‘0’ and PLL3RDY = ‘0’).
+Page  386: –   192 to 836 MHz if PLL3VCOSEL = ‘0’
+Page  386: –   150 to 420 MHz if PLL3VCOSEL = ‘1’
+Page  387: 7.7.16            RCC PLL3 Fractional Divider Register (RCC_PLL3FRACR)
+Page  387: Bits 15:3 FRACN3[12:0]: Fractional part of the multiplication factor for PLL3 VCO
+Page  387: These bits can be written at any time, allowing dynamic fine-tuning of the PLL3 VCO.
+Page  387: –    192 to 836 MHz if PLL3VCOSEL = ‘0’
+Page  387: –    150 to 420 MHz if PLL3VCOSEL = ‘1’
+Page  387: In order to change the FRACN value on-the-fly even if the PLL is enabled, the application has to
+Page  387: –    set the bit PLL1FRACEN to ‘0’,
+Page  387: –    set the bit PLL1FRACEN to ‘1’.
+Page  388: 0: pll1_q_ck clock is selected as kernel peripheral clock (default after reset)
+Page  388: 1: pll2_r_ck clock is selected as kernel peripheral clock
+Page  388: 01: pll1_q_ck clock selected as kernel peripheral clock
+Page  388: 10: pll2_r_ck clock selected as kernel peripheral clock
+Page  388: 01: pll1_q_ck clock selected as kernel peripheral clock
+Page  388: 10: pll2_r_ck clock selected as kernel peripheral clock
+Page  389: 01: pll1_q_ck clock is selected as FDCAN kernel clock
+Page  389: 10: pll2_q_ck clock is selected as FDCAN kernel clock
+Page  389: 00: pll1_q_ck clock selected as SPDIFRX kernel clock (default after reset)
+Page  389: 01: pll2_r_ck clock selected as SPDIFRX kernel clock
+Page  389: 10: pll3_r_ck clock selected as SPDIFRX kernel clock
+Page  390: 001: pll2_q_ck clock is selected as kernel clock
+Page  390: 010: pll3_q_ck clock is selected as kernel clock
+Page  390: 000: pll1_q_ck clock selected as SPI/I2S1,2 and 3 kernel clock (default after reset)
+Page  390: 001: pll2_p_ck clock selected as SPI/I2S1,2 and 3 kernel clock
+Page  390: 010: pll3_p_ck clock selected as SPI/I2S1,2 and 3 kernel clock
+Page  391: 000: pll1_q_ck clock selected as SAI2 and SAI3 kernel clock (default after reset)
+Page  391: 001: pll2_p_ck clock selected as SAI2 and SAI3 kernel clock
+Page  391: 010: pll3_p_ck clock selected as SAI2 and SAI3 kernel clock
+Page  391: 000: pll1_q_ck clock selected as SAI1 and DFSDM1 Aclk kernel clock (default after reset)
+Page  391: 001: pll2_p_ck clock selected as SAI1 and DFSDM1 Aclk kernel clock
+Page  391: 010: pll3_p_ck clock selected as SAI1 and DFSDM1 Aclk kernel clock
+Page  392: 001: pll2_p_ck clock selected as kernel peripheral clock
+Page  392: 010: pll3_r_ck clock selected as kernel peripheral clock
+Page  392: 01: pll1_q_ck clock is selected as kernel clock
+Page  392: 10: pll3_q_ck clock is selected as kernel clock
+Page  392: 01: pll3_r_ck clock is selected as kernel clock
+Page  393: 01: pll1_q_ck clock is selected as kernel clock
+Page  393: 001: pll2_q_ck clock is selected as kernel clock
+Page  393: 010: pll3_q_ck clock is selected as kernel clock
+Page  393: 001: pll2_q_ck clock is selected as kernel clock
+Page  393: 010: pll3_q_ck clock is selected as kernel clock
+Page  394: 001: pll2_q_ck clock selected as kernel peripheral clock
+Page  394: 010: pll3_q_ck clock selected as kernel peripheral clock
+Page  394: 000: pll1_q_ck clock selected as kernel peripheral clock (default after reset)
+Page  394: 001: pll2_p_ck clock selected as kernel peripheral clock
+Page  394: 010: pll3_p_ck clock selected as kernel peripheral clock
+Page  395: 000: pll1_q_ck clock selected as kernel peripheral clock (default after reset)
+Page  395: 001: pll2_p_ck clock selected as kernel peripheral clock
+Page  395: 010: pll3_p_ck clock selected as kernel peripheral clock
+Page  395: 00: pll2_p_ck clock selected as kernel peripheral clock (default after reset)
+Page  395: 01: pll3_r_ck clock selected as kernel peripheral clock
+Page  395: 001: pll2_p_ck clock selected as kernel peripheral clock
+Page  395: 010: pll3_r_ck clock selected as kernel peripheral clock
+Page  395: 001: pll2_p_ck clock selected as kernel peripheral clock
+Page  395: 010: pll3_r_ck clock selected as kernel peripheral clock
+Page  396: 01: pll3_r_ck clock selected as kernel peripheral clock
+Page  396: 001: pll2_q_ck clock is selected as kernel peripheral clock
+Page  396: 010: pll3_q_ck clock is selected as kernel peripheral clock
+Page  397: PLL3RDYIE
+Page  397: PLL2RDYIE
+Page  397: PLL1RDYIE
+Page  397: Bit 8 PLL3RDYIE: PLL3 ready Interrupt Enable
+Page  397: Set and reset by software to enable/disable interrupt caused by PLL3 lock.
+Page  397: 0: PLL3 lock interrupt disabled (default after reset)
+Page  397: 1: PLL3 lock interrupt enabled
+Page  397: Bit 7 PLL2RDYIE: PLL2 ready Interrupt Enable
+Page  397: Set and reset by software to enable/disable interrupt caused by PLL2 lock.
+Page  397: 0: PLL2 lock interrupt disabled (default after reset)
+Page  397: 1: PLL2 lock interrupt enabled
+Page  397: Bit 6 PLL1RDYIE: PLL1 ready Interrupt Enable
+Page  397: Set and reset by software to enable/disable interrupt caused by PLL1 lock.
+Page  397: 0: PLL1 lock interrupt disabled (default after reset)
+Page  397: 1: PLL1 lock interrupt enabled
+Page  399: PLL3RDYF
+Page  399: PLL2RDYF
+Page  399: PLL1RDYF
+Page  399: Bit 8 PLL3RDYF: PLL3 ready Interrupt Flag
+Page  399: Reset by software by writing PLL3RDYC bit.
+Page  399: Set by hardware when the PLL3 locks and PLL3RDYIE is set.
+Page  399: 0: No clock ready interrupt caused by PLL3 lock (default after reset)
+Page  399: 1: Clock ready interrupt caused by PLL3 lock
+Page  399: Bit 7 PLL2RDYF: PLL2 ready Interrupt Flag
+Page  399: Reset by software by writing PLL2RDYC bit.
+Page  399: Set by hardware when the PLL2 locks and PLL2RDYIE is set.
+Page  399: 0: No clock ready interrupt caused by PLL2 lock (default after reset)
+Page  399: 1: Clock ready interrupt caused by PLL2 lock
+Page  399: Bit 6 PLL1RDYF: PLL1 ready Interrupt Flag
+Page  399: Reset by software by writing PLL1RDYC bit.
+Page  399: Set by hardware when the PLL1 locks and PLL1RDYIE is set.
+Page  399: 0: No clock ready interrupt caused by PLL1 lock (default after reset)
+Page  399: 1: Clock ready interrupt caused by PLL1 lock
+Page  401: PLL3RDYC
+Page  401: PLL2RDYC
+Page  401: PLL1RDYC
+Page  401: Bit 8 PLL3RDYC: PLL3 ready Interrupt Clear
+Page  401: Set by software to clear PLL3RDYF.
+Page  401: 0: PLL3RDYF no effect (default after reset)
+Page  401: 1: PLL3RDYF cleared
+Page  401: Bit 7 PLL2RDYC: PLL2 ready Interrupt Clear
+Page  401: Set by software to clear PLL2RDYF.
+Page  401: 0: PLL2RDYF no effect (default after reset)
+Page  401: 1: PLL2RDYF cleared
+Page  401: Bit 6 PLL1RDYC: PLL1 ready Interrupt Clear
+Page  401: Set by software to clear PLL1RDYF.
+Page  401: 0: PLL1RDYF no effect (default after reset)
+Page  401: 1: PLL1RDYF cleared
+Page  472: PLLCKSELR
+Page  472: Res.                              Res.                             Res.                              Res.                                                                                       Res.                                                                       PLL3RDY      29
+Page  472: Res.                              Res.                             Res.                              Res.                                                                                       Res.                                                                        PLL3ON      28
+Page  472: Res.                              Res.                             Res.                              Res.                                                                                       Res.                                                                       PLL2RDY      27
+Page  472: Res.                              Res.                             Res.                              Res.                                                                                       Res.                                                                        PLL2ON      26
+Page  472: Res.                             Res.                              Res.                                                                                       Res.                                                                       PLL1RDY      25
+Page  472: Res.                             Res.                              Res.                                                                                       Res.                                                    0 0 0 0 0 0         PLL1ON      24
+Page  472: PLLSRC[1:0]
+Page  473: RCC_PLLCFGR
+Page  473: RCC_PLL3DIVR
+Page  473: RCC_PLL2DIVR
+Page  473: RCC_PLL1DIVR
+Page  473: RCC_PLL3FRACR
+Page  473: RCC_PLL2FRACR
+Page  473: RCC_PLL1FRACR
+Page  473: PLL3RGE[1:0]
+Page  473: Res.                               Res.                                                                                                                                                                                                                                                                                                                                                                                         PLL3VCOSEL           9
+Page  473: Res.                                                                                                                                                                                                                                                                                                                                                                                         PLL3FRACEN           8
+Page  473: PLL2RGE[1:0]         7
+Page  473: Res.                                                                                                                                                                                                                                                                                                                                                                                                                            PLL2VCOSEL           5
+Page  473: USART16SEL[2:0]                          Res.                                                                                                                                                                                                                                                                                                                                                                                                                            PLL2FRACEN           4
+Page  473: PLL1RGE[1:0]
+Page  473: USART234578SEL[2:0]                     SAI1SEL[2:0]                                                                            Res.                                                                                                           Res.                                                                                                           Res.                                                                                                         PLL1VCOSEL           1
+Page  473: Res.                                                                                                           Res.                                                                                                           Res.                                                                                                         PLL1FRACEN
+Page  474: Res.                        Res.                         Res.                                                                          PLL3RDYC                               PLL3RDYF                             PLL3RDYIE                                                     8
+Page  474: Res.                        Res.                         Res.                          Res.                                            PLL2RDYC                               PLL2RDYF                             PLL2RDYIE                                    Res.             7
+Page  474: Res.                        Res.                         Res.                        LSECSSD                                           PLL1RDYC                               PLL1RDYF                             PLL1RDYIE                                    Res.             6
+Page 1182: following the panel requirements. The LCD_CLK is generated from a specific PLL
+Page 1359: The push-pull mode is enabled by setting PSHPLL bit in the HRTIM_TIMxCR register.
+Page 1359: PSHPLL               output
+Page 1439: Bit 6 PSHPLL: Push-Pull mode enable
+Page 1507: UPDIE                          UPDC                       UPD                       PSHPLL                 6
+Page 1552: disabled. If it is enabled, a fail safe clock mode (for example by using the internal PLL and/or
+Page 1771: disabled. If it is enabled, a fail safe clock mode (example, using the internal PLL and/or the
+Page 2428: for both FDCAN1 and FDCAN2 from the HSI internal RC oscillator and the PLL, by
+Page 2456: dominant is measured, this time to be assumed two CAN bit times, counted in PLL
+Page 2601: 0: 480 MHz internal PLL clock
+Page 3002: (CK_SYS), except when the PLL1 is the source for the system clock. In this case,
+Page 3002: TRACECLK is derived directly from the PLL1 VCO output, divided by three. This is required
+Page 3243: QUADSPI_DCR . . . . . . . . . . . . . . . . . . . . . . .879          RCC_PLL1DIVR . . . . . . . . . . . . . . . . . . . . . . 379
+Page 3243: QUADSPI_DLR . . . . . . . . . . . . . . . . . . . . . . .881          RCC_PLL1FRACR . . . . . . . . . . . . . . . . . . . . 381
+Page 3243: QUADSPI_DR . . . . . . . . . . . . . . . . . . . . . . . .885         RCC_PLL2DIVR . . . . . . . . . . . . . . . . . . . . . . 382
+Page 3243: QUADSPI_FCR . . . . . . . . . . . . . . . . . . . . . . .881          RCC_PLL2FRACR . . . . . . . . . . . . . . . . . . . . 384
+Page 3243: QUADSPI_LPTR . . . . . . . . . . . . . . . . . . . . . .887           RCC_PLL3DIVR . . . . . . . . . . . . . . . . . . . . . . 385
+Page 3243: QUADSPI_SR . . . . . . . . . . . . . . . . . . . . . . . .880         RCC_PLL3FRACR . . . . . . . . . . . . . . . . . . . . 387
+Page 3243: RCC_PLLCFGR . . . . . . . . . . . . . . . . . . . . . . 376
+Page 3243: R                                                                     RCC_PLLCKSELR . . . . . . . . . . . . . . . . . . . . 374

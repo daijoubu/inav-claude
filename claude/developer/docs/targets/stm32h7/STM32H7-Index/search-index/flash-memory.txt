@@ -1,0 +1,85 @@
+Keyword: flash memory
+Occurrences: 81
+================================================================================
+
+Page    1: • Up to 2 Mbytes of flash memory with read-
+Page    3: 3.3.1       Embedded flash memory . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+Page    8: Table 7.    Flash memory and SRAM memory mapping for STM32H742xI/G . . . . . . . . . . . . . . . . . . . 54
+Page    8: running from flash memory, cache ON, regulator ON. . . . . . . . . . . . . . . . . . . . . . . . . . . . 112
+Page    8: running from flash memory, cache OFF, regulator ON. . . . . . . . . . . . . . . . . . . . . . . . . . . 112
+Page    9: Table 52.   Flash memory characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 132
+Page    9: Table 53.   Flash memory programming . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 133
+Page    9: Table 54.   Flash memory endurance and data retention . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 133
+Page   10: running from flash memory, cache ON,
+Page   10: running from flash memory, cache OFF,
+Page   11: Table 149.   Flash memory characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 239
+Page   11: Table 150.   Flash memory programming . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 239
+Page   11: Table 151.   Flash memory endurance and data retention . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 240
+Page   17: memories with a dual-bank flash memory of up to 2 Mbytes, up to 1 Mbyte of RAM
+Page   17: –    A Quad-SPI flash memory interface
+Page   19: Flash memory in Kbytes                                                                                      2 x 512 Kbytes
+Page   26: 3.3.1      Embedded flash memory
+Page   26: The STM32H742xI/G and STM32H743xI/G devices embed up to 2 Mbytes of flash memory
+Page   26: The flash memory is organized as 266-bit flash words memory that can be used for storing
+Page   26: The flash memory is divided into two independent banks. Each bank is organized as follows:
+Page   26: •    A user flash memory block of 512 Kbytes (STM32H7xxxG) or 1-Mbyte (STM32H7xxxI)
+Page   26: containing eight user sectors of 128 Kbytes (4 K flash memory words)
+Page   26: •    128 Kbytes of System flash memory from which the device can boot
+Page   35: verifying the flash memory integrity. The CRC calculation unit helps compute a signature of
+Page   36: –      NOR flash memory/OneNAND flash memory
+Page   36: –      NAND flash memory with ECC hardware to check up to 8 Kbytes of data
+Page   36: Up to 256 Mbytes of external flash memory can be mapped, and 8-, 16- and 32-bit data
+Page   54: Table 7. Flash memory and SRAM memory mapping for STM32H742xI/G
+Page   54: Flash memory               2048               0x0800 0000
+Page  110: •     The flash memory access time is adjusted with the minimum wait states number,
+Page  112: running from flash memory, cache ON, regulator ON
+Page  112: running from flash memory, cache OFF, regulator ON
+Page  123: VOS3, HSI, flash memory in normal mode                4.4         5.6
+Page  123: VOS3, HSI, flash memory in low-power
+Page  123: VOS4, HSI, flash memory in normal mode                15          20
+Page  123: VOS4, HSI, flash memory in low-power
+Page  123: VOS5, HSI, flash memory in normal mode                30          71
+Page  123: VOS5, HSI, flash memory in low-power
+Page  123: VOS3, CSI, flash memory in normal mode                27          37
+Page  123: VOS3, CSI, flash memory in low power
+Page  123: VOS4, CSI, flash memory in normal mode                38          48
+Page  123: VOS4, CSI, flash memory in low-power
+Page  123: VOS5, CSI, flash memory in normal mode                52          64
+Page  123: VOS5, CSI, flash memory in low-power
+Page  123: Wakeup from Stop,       VOS3, HSI, flash memory in normal mode                2.6         3.4
+Page  123: clock kept running      VOS3, CSI, flash memory in normal mode                26          36
+Page  132: Flash memory
+Page  132: The devices are shipped to customers with the flash memory erased.
+Page  132: Table 52. Flash memory characteristics
+Page  133: Table 53. Flash memory programming
+Page  133: Table 54. Flash memory endurance and data retention
+Page  217: •     The flash memory access time is adjusted with the minimum wait states number,
+Page  219: running from flash memory, cache ON,
+Page  219: running from flash memory, cache OFF,
+Page  229: VOS3, HSI, flash memory in normal mode                4.4         5.6
+Page  229: VOS3, HSI, flash memory in low-power
+Page  229: VOS4, HSI, flash memory in normal mode                15          20
+Page  229: VOS4, HSI, flash memory in low-power
+Page  229: VOS5, HSI, flash memory in normal mode                39          71
+Page  229: VOS5, HSI, flash memory in low-power
+Page  229: VOS3, CSI, flash memory in normal mode                30          37
+Page  229: VOS3, CSI, flash memory in low power
+Page  229: VOS4, CSI, flash memory in normal mode                38          48
+Page  229: VOS4, CSI, flash memory in low-power
+Page  229: VOS5, CSI, flash memory in normal mode                68          75
+Page  229: VOS5, CSI, flash memory in low-power
+Page  229: tWUSTOP_            Wakeup from Stop,     VOS3, HSI, flash memory in normal mode                2.6         3.4
+Page  229: KERON               clock kept running    VOS3, CSI, flash memory in normal mode                26          36
+Page  239: Flash memory
+Page  239: The devices are shipped to customers with the flash memory erased.
+Page  239: Table 149. Flash memory characteristics
+Page  239: Table 150. Flash memory programming
+Page  240: Table 151. Flash memory endurance and data retention
+Page  348: Flash memory size
+Page  351: running from flash memory, cache ON, regulator ON, Table 36: Typical and maximum
+Page  352: Added STM32H743xG part numbers corresponding to 1 Mbyte of flash memory as well
+Page  353: – Table 53: Flash memory programming: removed reference to single bank
+Page  354: – Table 150: Flash memory programming: removed reference to single bank
+Page  355: – Added tERASE128KB typical and maximum values in Table 52: Flash memory
+Page  355: – Added tERASE128KB typical and maximum values in Table 149: Flash memory
+Page  355: – Updated tERASE128KB in Table 150: Flash memory programming.

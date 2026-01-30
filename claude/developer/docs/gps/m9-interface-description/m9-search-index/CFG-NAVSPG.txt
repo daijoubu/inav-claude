@@ -1,0 +1,124 @@
+Keyword: CFG-NAVSPG
+Occurrences: 120
+================================================================================
+
+Page   12: 5.9.13 CFG-NAVSPG: Standard precision navigation conﬁguration.........................................215
+Page   17: Names of conﬁguration items are of the form CFG-GROUP-ITEM. For example, CFG-NAVSPG-
+Page   17: a fourth level to the item name, such as CFG-NAVSPG-DYNMODEL-AUTOMOT for the automotive
+Page   17: can be used (e.g. "set CFG-NAVSPG-DYNMODEL to PORT for portable applications").
+Page  102: Acknowledgments are enabled by setting the CFG-NAVSPG-ACKAIDING item.
+Page  140: Ellipsoid, but can be changed with the message CFG-NAVSPG-USE_USRDAT.
+Page  163: conﬁguration in CFG-NAVSPG-* conﬁguration
+Page  196: CFG-NAVSPG                             Standard precision navigation conﬁguration
+Page  215: 5.9.13 CFG-NAVSPG: Standard precision navigation conﬁguration
+Page  215: CFG-NAVSPG-FIXMODE                   0x20110011 E1            -          -     Position ﬁx mode
+Page  215: CFG-NAVSPG-INIFIX3D                  0x10110013       L       -          -     Initial ﬁx must be a 3D ﬁx
+Page  215: CFG-NAVSPG-WKNROLLOVER               0x30110017 U2            -          -     GPS week rollover number
+Page  215: CFG-NAVSPG-USE_PPP                   0x10110019       L       -          -     Use precise point positioning (PPP)
+Page  216: CFG-NAVSPG-UTCSTANDARD               0x2011001c E1             -         -     UTC standard to be used
+Page  216: CFG-NAVSPG-DYNMODEL                  0x20110021 E1             -         -     Dynamic platform model
+Page  216: CFG-NAVSPG-ACKAIDING                 0x10110025        L       -         -     Acknowledge assistance input messages
+Page  216: CFG-NAVSPG-USE_USRDAT                0x10110061        L       -         -     Use user geodetic datum parameters
+Page  216: This must be set together with all CFG-NAVSPG-USERDAT_* parameters.
+Page  216: CFG-NAVSPG-USRDAT_MAJA               0x50110062 R8             -         m     Geodetic datum semi-major axis
+Page  216: This will only be used if CFG-NAVSPG-USE_USERDAT is set. It must be set together with all other CFG-NAVSPG-
+Page  216: CFG-NAVSPG-USRDAT_FLAT               0x50110063 R8             -         -     Geodetic datum 1.0 / ﬂattening
+Page  216: This will only be used if CFG-NAVSPG-USE_USERDAT is set. It must be set together with all other CFG-NAVSPG-
+Page  216: CFG-NAVSPG-USRDAT_DX                 0x40110064 R4             -         m     Geodetic datum X axis shift at the origin
+Page  216: This will only be used if CFG-NAVSPG-USE_USERDAT is set. It must be set together with all other CFG-NAVSPG-
+Page  216: CFG-NAVSPG-USRDAT_DY                 0x40110065 R4             -         m     Geodetic datum Y axis shift at the origin
+Page  216: This will only be used if CFG-NAVSPG-USE_USERDAT is set. It must be set together with all other CFG-NAVSPG-
+Page  216: CFG-NAVSPG-USRDAT_DZ                 0x40110066 R4             -         m     Geodetic datum Z axis shift at the origin
+Page  216: This will only be used if CFG-NAVSPG-USE_USERDAT is set. It must be set together with all other CFG-NAVSPG-
+Page  216: CFG-NAVSPG-USRDAT_ROTX               0x40110067 R4             -     arcsec Geodetic datum rotation about the X axis
+Page  216: This will only be used if CFG-NAVSPG-USE_USERDAT is set. It must be set together with all other CFG-NAVSPG-
+Page  216: CFG-NAVSPG-USRDAT_ROTY               0x40110068 R4             -     arcsec Geodetic datum rotation about the Y axis ()
+Page  216: This will only be used if CFG-NAVSPG-USE_USERDAT is set. It must be set together with all other CFG-NAVSPG-
+Page  216: CFG-NAVSPG-USRDAT_ROTZ               0x40110069 R4             -     arcsec Geodetic datum rotation about the Z axis
+Page  216: This will only be used if CFG-NAVSPG-USE_USERDAT is set. It must be set together with all other CFG-NAVSPG-
+Page  216: CFG-NAVSPG-USRDAT_SCALE              0x4011006a R4             -        ppm    Geodetic datum scale factor
+Page  216: This will only be used if CFG-NAVSPG-USE_USERDAT is set. It must be set together with all other CFG-NAVSPG-
+Page  216: CFG-NAVSPG-INFIL_MINSVS              0x201100a1 U1             -         -     Minimum number of satellites for navigation
+Page  216: CFG-NAVSPG-INFIL_MAXSVS              0x201100a2 U1             -         -     Maximum number of satellites for navigation
+Page  217: CFG-NAVSPG-INFIL_MINCNO                0x201100a3 U1             -    dBHz Minimum satellite signal level for navigation
+Page  217: CFG-NAVSPG-INFIL_MINELEV               0x201100a4      I1        -        deg    Minimum elevation for a GNSS satellite to be
+Page  217: CFG-NAVSPG-INFIL_NCNOTHRS              0x201100aa U1             -         -     Number of satellites required to have C/N0
+Page  217: above CFG-NAVSPG-INFIL_CNOTHRS for a ﬁx to
+Page  217: CFG-NAVSPG-INFIL_CNOTHRS               0x201100ab U1             -         -     C/N0 threshold for deciding whether to attempt
+Page  217: CFG-NAVSPG-OUTFIL_PDOP                 0x301100b1 U2            0.1        -     Output ﬁlter position DOP mask (threshold)
+Page  217: CFG-NAVSPG-OUTFIL_TDOP                 0x301100b2 U2            0.1        -     Output ﬁlter time DOP mask (threshold)
+Page  217: CFG-NAVSPG-OUTFIL_PACC                 0x301100b3 U2             -         m     Output ﬁlter position accuracy mask (threshold)
+Page  217: CFG-NAVSPG-OUTFIL_TACC                 0x301100b4 U2             -         m     Output ﬁlter time accuracy mask (threshold)
+Page  217: CFG-NAVSPG-OUTFIL_FACC                 0x301100b5 U2          0.01        m/s    Output ﬁlter frequency accuracy mask
+Page  217: CFG-NAVSPG-CONSTR_ALT                  0x401100c1      I4     0.01         m     Fixed altitude (mean sea level) for 2D ﬁx mode
+Page  217: CFG-NAVSPG-CONSTR_ALTVAR               0x401100c2 U4        0.0001        m^2    Fixed altitude variance for 2D mode
+Page  217: CFG-NAVSPG-CONSTR_DGNSSTO              0x201100c4 U1             -         s     DGNSS timeout
+Page  217: CFG-NAVSPG-SIGATTCOMP                  0x201100d6 E1             -         -     Permanently attenuated signal compensation
+Page  217: Table 22: CFG-NAVSPG conﬁguration items
+Page  217: Table 23: Constants for CFG-NAVSPG-FIXMODE
+Page  217: Table 24: Constants for CFG-NAVSPG-UTCSTANDARD
+Page  218: Table 25: Constants for CFG-NAVSPG-DYNMODEL
+Page  219: Table 26: Constants for CFG-NAVSPG-SIGATTCOMP
+Page  235: UBX-CFG-DAT.dX                             CFG-NAVSPG-USRDAT_DX
+Page  235: UBX-CFG-DAT.dY                             CFG-NAVSPG-USRDAT_DY
+Page  235: UBX-CFG-DAT.dZ                             CFG-NAVSPG-USRDAT_DZ
+Page  235: UBX-CFG-DAT.ﬂat                            CFG-NAVSPG-USRDAT_FLAT
+Page  235: UBX-CFG-DAT.majA                           CFG-NAVSPG-USE_USRDAT, CFG-NAVSPG-USRDAT_MAJA
+Page  235: UBX-CFG-DAT.rotX                           CFG-NAVSPG-USRDAT_ROTX
+Page  235: UBX-CFG-DAT.rotY                           CFG-NAVSPG-USRDAT_ROTY
+Page  235: UBX-CFG-DAT.rotZ                           CFG-NAVSPG-USRDAT_ROTZ
+Page  235: UBX-CFG-DAT.scale                          CFG-NAVSPG-USRDAT_SCALE
+Page  236: UBX-CFG-NAV5.cnoThresh                                 CFG-NAVSPG-INFIL_CNOTHRS
+Page  236: UBX-CFG-NAV5.cnoThreshNumSVs                           CFG-NAVSPG-INFIL_NCNOTHRS
+Page  236: UBX-CFG-NAV5.dgnssTimeout                              CFG-NAVSPG-CONSTR_DGNSSTO
+Page  236: UBX-CFG-NAV5.dynModel                                  CFG-NAVSPG-DYNMODEL
+Page  236: UBX-CFG-NAV5.ﬁxMode                                    CFG-NAVSPG-FIXMODE
+Page  236: UBX-CFG-NAV5.ﬁxedAlt                                   CFG-NAVSPG-CONSTR_ALT
+Page  236: UBX-CFG-NAV5.ﬁxedAltVar                                CFG-NAVSPG-CONSTR_ALTVAR
+Page  236: UBX-CFG-NAV5.minElev                                   CFG-NAVSPG-INFIL_MINELEV
+Page  236: UBX-CFG-NAV5.pAcc                                      CFG-NAVSPG-OUTFIL_PACC
+Page  236: UBX-CFG-NAV5.pDop                                      CFG-NAVSPG-OUTFIL_PDOP
+Page  236: UBX-CFG-NAV5.tAcc                                      CFG-NAVSPG-OUTFIL_TACC, CFG-NAVSPG-OUTFIL_FACC
+Page  236: UBX-CFG-NAV5.tDop                                      CFG-NAVSPG-OUTFIL_TDOP
+Page  236: UBX-CFG-NAV5.utcStandard                               CFG-NAVSPG-UTCSTANDARD
+Page  236: UBX-CFG-NAVX5.ackAiding                                CFG-NAVSPG-ACKAIDING
+Page  236: UBX-CFG-NAVX5.iniFix3D                                 CFG-NAVSPG-INIFIX3D
+Page  236: UBX-CFG-NAVX5.maxSVs                                   CFG-NAVSPG-INFIL_MAXSVS
+Page  236: UBX-CFG-NAVX5.minCNO                                   CFG-NAVSPG-INFIL_MINCNO
+Page  236: UBX-CFG-NAVX5.minSVs                                   CFG-NAVSPG-INFIL_MINSVS
+Page  236: UBX-CFG-NAVX5.sigAttenCompMode                         CFG-NAVSPG-SIGATTCOMP
+Page  236: UBX-CFG-NAVX5.usePPP                                   CFG-NAVSPG-USE_PPP
+Page  236: UBX-CFG-NAVX5.wknRollover                              CFG-NAVSPG-WKNROLLOVER
+Page  250: CFG-NAVSPG-FIXMODE                                0x20110011 E1          -       -             3 (AUTO)
+Page  250: CFG-NAVSPG-INIFIX3D                               0x10110013    L        -       -             0 (false)
+Page  250: CFG-NAVSPG-WKNROLLOVER                            0x30110017 U2          -       -              2117
+Page  250: CFG-NAVSPG-USE_PPP                                0x10110019    L        -       -             0 (false)
+Page  250: CFG-NAVSPG-UTCSTANDARD                            0x2011001c E1          -       -             0 (AUTO)
+Page  250: CFG-NAVSPG-DYNMODEL                               0x20110021 E1          -       -             0 (PORT)
+Page  250: CFG-NAVSPG-ACKAIDING                              0x10110025    L        -       -             0 (false)
+Page  250: CFG-NAVSPG-USE_USRDAT                             0x10110061    L        -       -             0 (false)
+Page  250: CFG-NAVSPG-USRDAT_MAJA                            0x50110062 R8          -       m             6378137
+Page  250: CFG-NAVSPG-USRDAT_FLAT                            0x50110063 R8          -       -      298.25722356300002502
+Page  250: CFG-NAVSPG-USRDAT_DX                              0x40110064 R4          -       m                0
+Page  250: CFG-NAVSPG-USRDAT_DY                              0x40110065 R4          -       m                0
+Page  250: CFG-NAVSPG-USRDAT_DZ                              0x40110066 R4          -       m                0
+Page  250: CFG-NAVSPG-USRDAT_ROTX                            0x40110067 R4          -     arcsec             0
+Page  250: CFG-NAVSPG-USRDAT_ROTY                            0x40110068 R4          -     arcsec             0
+Page  250: CFG-NAVSPG-USRDAT_ROTZ                            0x40110069 R4          -     arcsec             0
+Page  250: CFG-NAVSPG-USRDAT_SCALE                           0x4011006a R4          -     ppm                0
+Page  250: CFG-NAVSPG-INFIL_MINSVS                           0x201100a1 U1          -       -                3
+Page  250: CFG-NAVSPG-INFIL_MAXSVS                           0x201100a2 U1          -       -                32
+Page  250: CFG-NAVSPG-INFIL_MINCNO                           0x201100a3 U1          -     dBHz               6
+Page  250: CFG-NAVSPG-INFIL_MINELEV                          0x201100a4    I1       -      deg               5
+Page  250: CFG-NAVSPG-INFIL_NCNOTHRS                         0x201100aa U1          -       -                0
+Page  250: CFG-NAVSPG-INFIL_CNOTHRS                          0x201100ab U1          -       -                0
+Page  250: CFG-NAVSPG-OUTFIL_PDOP                            0x301100b1 U2         0.1      -               250
+Page  250: CFG-NAVSPG-OUTFIL_TDOP                            0x301100b2 U2         0.1      -               250
+Page  250: CFG-NAVSPG-OUTFIL_PACC                            0x301100b3 U2          -       m               100
+Page  250: CFG-NAVSPG-OUTFIL_TACC                            0x301100b4 U2          -       m               350
+Page  250: CFG-NAVSPG-OUTFIL_FACC                            0x301100b5 U2         0.01    m/s              150
+Page  251: CFG-NAVSPG-CONSTR_ALT                             0x401100c1    I4      0.01     m              0
+Page  251: CFG-NAVSPG-CONSTR_ALTVAR                          0x401100c2 U4        0.0001   m^2           10000
+Page  251: CFG-NAVSPG-CONSTR_DGNSSTO                         0x201100c4 U1          -       s              60
+Page  251: CFG-NAVSPG-SIGATTCOMP                             0x201100d6 E1          -       -            0 (DIS)
+Page  251: Table 84: CFG-NAVSPG conﬁguration defaults

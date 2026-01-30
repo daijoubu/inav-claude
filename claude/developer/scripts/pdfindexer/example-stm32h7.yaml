@@ -1,0 +1,133 @@
+# Example config for STM32H7 microcontroller datasheet indexing
+# Usage: ./pdfindexer.py --config example-stm32h7.yaml build-index
+
+pdf_file: ../../docs/targets/stm32h7/stm32h743vi.pdf
+index_dir: search-index
+
+keywords:
+  # Core and architecture
+  - Cortex-M7
+  - FPU
+  - floating point
+  - MPU
+  - memory protection
+  - instruction cache
+  - data cache
+  - ITCM
+  - DTCM
+  - AXI
+  - AHB
+  - APB
+
+  # Memory
+  - flash memory
+  - SRAM
+  - backup SRAM
+  - EEPROM
+  - external memory
+  - QSPI
+  - SDRAM
+  - memory controller
+  - FMC
+
+  # DMA
+  - DMA
+  - MDMA
+  - direct memory access
+  - DMA channel
+  - DMA request
+  - DMA stream
+
+  # Timers
+  - timer
+  - PWM
+  - pulse width
+  - input capture
+  - output compare
+  - quadrature encoder
+  - motor control timer
+  - general purpose timer
+  - watchdog
+  - IWDG
+  - WWDG
+
+  # Communication peripherals
+  - SPI
+  - I2C
+  - UART
+  - USART
+  - CAN
+  - CAN FD
+  - USB
+  - USB OTG
+  - Ethernet
+  - SDIO
+  - MMC
+
+  # Analog
+  - ADC
+  - DAC
+  - analog to digital
+  - digital to analog
+  - comparator
+  - operational amplifier
+  - voltage reference
+  - VREF
+
+  # Interrupts and NVIC
+  - interrupt
+  - NVIC
+  - interrupt priority
+  - exception
+  - IRQ
+
+  # Clock and power
+  - clock
+  - PLL
+  - HSE
+  - HSI
+  - LSE
+  - LSI
+  - oscillator
+  - RCC
+  - reset
+  - power domain
+  - voltage scaling
+  - low power mode
+  - stop mode
+  - standby mode
+  - sleep mode
+
+  # GPIO
+  - GPIO
+  - pin
+  - alternate function
+  - pull-up
+  - pull-down
+  - open drain
+  - push-pull
+
+  # Special features
+  - EXTI
+  - external interrupt
+  - RTC
+  - real-time clock
+  - CRC
+  - random number
+  - RNG
+  - true random
+
+  # Debug
+  - debug
+  - SWD
+  - JTAG
+  - trace
+  - breakpoint
+
+  # Flight controller specific
+  - gyroscope
+  - accelerometer
+  - magnetometer
+  - barometer
+  - sensor
+  - IMU

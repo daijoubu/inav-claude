@@ -1,0 +1,43 @@
+Keyword: DMA stream
+Occurrences: 39
+================================================================================
+
+Page   14: 14.3.7       DMA streams . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 619
+Page   15: 14.5.5      DMA stream x configuration register (DMA_SxCR) . . . . . . . . . . . . . . . 638
+Page   15: 14.5.6      DMA stream x number of data register (DMA_SxNDTR) . . . . . . . . . . 641
+Page   15: 14.5.7      DMA stream x peripheral address register (DMA_SxPAR) . . . . . . . . . 642
+Page   15: 14.5.8      DMA stream x memory 0 address register (DMA_SxM0AR) . . . . . . . . 642
+Page   15: 14.5.9      DMA stream x memory 1 address register (DMA_SxM1AR) . . . . . . . . 642
+Page   15: 14.5.10 DMA stream x FIFO control register (DMA_SxFCR) . . . . . . . . . . . . . . 643
+Page  586: the DMA stream memory buffer or other peripherals (w/ integrated FIFO).
+Page  588: mdma_str[0:31]                   Digital input   MDMA stream request
+Page  615: Each DMA stream is driven by one DMAMUX1 output channel (request). Any DMAMUX1
+Page  615: •   Priorities between DMA stream requests are software-programmable (4 levels
+Page  617: dma_it[0:7]                              DMA stream [0:7] global interrupts
+Page  617: dma_str[0:7]                              DMA stream [0:7] requests
+Page  618: The DMA request mapping from peripherals to DMA streams is described in Section 16.3.2:
+Page  619: An arbiter manages the 8 DMA stream requests based on their priority for each of the two
+Page  619: 14.3.7   DMA streams
+Page  620: Peripheral DMA request connected to the DMA stream x
+Page  621: Peripheral DMA request connected to the DMA stream x
+Page  628: even if a burst transaction is requested during the DMA stream configuration.
+Page  628: avoid permanent underrun or overrun conditions, depending on the DMA stream direction:
+Page  631: programmed by software into the DMA_SxNDTR register before the DMA stream is
+Page  632: The following sequence must be followed to configure a DMA stream x (where x is the
+Page  633: Warning:   To switch off a peripheral connected to a DMA stream
+Page  633: request, it is mandatory to, first, switch off the DMA stream to
+Page  634: For each DMA stream, an interrupt can be produced on the following events:
+Page  638: 14.5.5            DMA stream x configuration register (DMA_SxCR)
+Page  641: 14.5.6          DMA stream x number of data register (DMA_SxNDTR)
+Page  642: 14.5.7          DMA stream x peripheral address register (DMA_SxPAR)
+Page  642: 14.5.8          DMA stream x memory 0 address register (DMA_SxM0AR)
+Page  642: 14.5.9          DMA stream x memory 1 address register (DMA_SxM1AR)
+Page  643: 14.5.10         DMA stream x FIFO control register (DMA_SxFCR)
+Page 1027: DMA stream and re-initialize both DMA and DAC channelx to restart the transfer correctly.
+Page 2144: 11. Configure DMA streams dedicated for the SPI Tx and Rx in DMA registers if the DMA
+Page 2188: Bit 15 TXDMAEN: Tx DMA stream enable
+Page 2188: Bit 14 RXDMAEN: Rx DMA stream enable
+Page 2231: 1.   Disable the DMA stream (via the DMA peripheral) if the DMA is used.
+Page 2231: 5.   Enable again the DMA stream (DMA peripheral) if the DMA used to manage data
+Page 2248: received data lost). Before flushing, SAI DMA stream/interruption must be disabled
+Page 2250: received data lost). Before flushing, SAI DMA stream/interruption must be disabled

@@ -1,0 +1,39 @@
+Keyword: odometer
+Occurrences: 35
+================================================================================
+
+Page    5: 3.10.14.1 Odometer, low-speed COG engine settings..............................................................70
+Page    7: 3.12.9.1 Odometer log entry........................................................................................................ 100
+Page    9: 3.15.7.1 Odometer solution..........................................................................................................138
+Page    9: 3.15.12.1 Reset odometer............................................................................................................ 143
+Page   12: 5.9.15 CFG-ODO: Odometer and low-speed course over ground ﬁlter conﬁguration............ 221
+Page   38: Comment           The distance traveled, relative to the water and over the ground. This message relates to the odometer feature
+Page   50: UBX-CFG-ODO             0x06 0x1e   •   Odometer, low-speed COG engine settings (Get/set)
+Page   51: UBX-LOG-                 0x21 0x0f   •   Odometer log entry (Output)
+Page   53: UBX-NAV-ODO              0x01 0x09    •   Odometer solution (Periodic/polled)
+Page   53: UBX-NAV-RESETODO         0x01 0x10    •   Reset odometer (Command)
+Page   55: bit 3   U:1       extraOdo              -            -           Store odometer data
+Page   56: Note: the odometer feature itself must also be
+Page   70: 3.10.14.1 Odometer, low-speed COG engine settings
+Page   70: Odometer, low-speed COG engine settings
+Page   70: 4                   U1        flags                 -           -            Odometer/Low-speed COG ﬁlter ﬂags
+Page   70: bit 0   U:1       useODO                -           -            Odometer-enabled ﬂag
+Page   70: 5                   X1        odoCfg                -           -            Odometer ﬁlter settings
+Page   93: bit 1   U:1       extraOdo                -           -            Odometer data is valid
+Page   94: Note: the odometer feature itself must also be
+Page  100: 3.12.9.1 Odometer log entry
+Page  100: Odometer log entry
+Page  100: Comment       This message is used to report an odometer log entry
+Page  101: 16            U4        distance              -            -           Odometer distance traveled since the last time the
+Page  101: odometer was reset by a UBX-NAV-RESETODO
+Page  138: 3.15.7.1 Odometer solution
+Page  138: Odometer solution
+Page  143: 3.15.12.1 Reset odometer
+Page  143: Reset odometer
+Page  143: Comment             This message resets the traveled distance computed by the odometer (see UBX-NAV-ODO).
+Page  196: CFG-ODO                                Odometer and low-speed course over ground ﬁlter conﬁguration
+Page  198: CFG-BATCH-EXTRAODO                   0x1026001b       L       -         -     Include odometer data
+Page  221: 5.9.15 CFG-ODO: Odometer and low-speed course over ground ﬁlter
+Page  221: The items in this group allow the user to conﬁgure the Odometer feature and Low-Speed Course
+Page  221: CFG-ODO-USE_ODO                         0x10220001       L       -          -   Use odometer
+Page  222: CFG-ODO-PROFILE                        0x20220005 E1            -         -    Odometer proﬁle conﬁguration

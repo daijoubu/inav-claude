@@ -4,140 +4,93 @@
 
 ✅ **614-page PDF indexed and ready to search**
 ✅ **20 INAV-relevant keywords pre-indexed**
+✅ **`search_indexes.py` — two-phase search tool (index lookup + page extraction)**
 ✅ **Table of contents extracted (pages 8-16)**
-✅ **Python script for advanced indexing**
-✅ **Full toolset: pdftotext, pdfgrep, pdftohtml, qpdf**
 
-## 3 Fastest Ways to Find Information
+## How It Works
 
-### 1. Search the Pre-Built Index (Fastest)
-```bash
-cd claude/developer/docs/aerodynamics/Houghton-Carpenter-Index/search-index
+`search_indexes.py` uses a two-phase approach:
 
-# View all occurrences of "drag coefficient" (67 found)
-cat drag-coefficient.txt
+1. **Phase 1 — Index lookup** (instant): Reads the pre-built `search-index/*.txt` files to find which pages mention your keyword, with a snippet of matched text.
+2. **Phase 2 — Page extraction** (uses pdftotext): Extracts only the matched pages from the PDF so you can read the surrounding content.
 
-# View all occurrences of "pitot tube" (2 found)
-cat pitot-tube.txt
+If a keyword has too many results (>20 by default), Phase 2 is skipped automatically — the script warns you and suggests a more specific keyword.
 
-# View all occurrences of "Reynolds number" (136 found)
-cat Reynolds-number.txt
-```
-
-### 2. Search for Any Term (Quick)
-```bash
-cd claude/developer/docs/aerodynamics
-
-# Search and show page numbers
-pdfgrep -n "your search term" Aerodynamics-Houghton-and-Carpenter.pdf
-
-# Examples:
-pdfgrep -n "stall speed" Aerodynamics-Houghton-and-Carpenter.pdf
-pdfgrep -n "wing loading" Aerodynamics-Houghton-and-Carpenter.pdf
-pdfgrep -n "moment arm" Aerodynamics-Houghton-and-Carpenter.pdf
-```
-
-### 3. Use the Python Script (Most Powerful)
-```bash
-cd claude/developer/docs/aerodynamics/Houghton-Carpenter-Index
-
-# Search with context
-./pdf_indexer.py find "drag polar" --context 1
-
-# Extract specific pages
-./pdf_indexer.py extract 100 110 --output temp-extract.txt
-
-# Simple search
-./pdf_indexer.py search "boundary layer"
-```
-
-## Extract Key Sections for INAV Reference
+## Basic Usage
 
 ```bash
 cd claude/developer/docs/aerodynamics
 
-# Extract the critical airspeed measurement section (already done)
-pdftotext -layout -f 62 -l 67 Aerodynamics-Houghton-and-Carpenter.pdf \
-  Houghton-Carpenter-Index/relevant-to-inav/section-2.3-airspeed.txt
+# Search index + extract matched pages (full workflow)
+./search_indexes.py drag-coefficient
 
-# Extract drag types section (highly relevant for INAV mission planning)
-pdftotext -layout -f 35 -l 44 Aerodynamics-Houghton-and-Carpenter.pdf \
-  Houghton-Carpenter-Index/relevant-to-inav/drag-types.txt
+# Phase 1 only — fast page listing, no PDF extraction
+./search_indexes.py --no-extract boundary-layer
 
-# Extract basic aerodynamics section
-pdftotext -layout -f 26 -l 49 Aerodynamics-Houghton-and-Carpenter.pdf \
-  Houghton-Carpenter-Index/relevant-to-inav/basic-aerodynamics.txt
+# Add context pages around each match
+./search_indexes.py --context 2 stall
+
+# Browse available keywords
+./search_indexes.py --list
+./search_indexes.py --match drag
 ```
 
 ## Most Relevant Pages for INAV Development
 
-| Pages | Topic | Use in INAV |
-|-------|-------|-------------|
-| 62-67 | Pitot-static tube & airspeed | Airspeed sensor calibration |
-| 26-49 | Basic aerodynamics, coefficients | Flight dynamics, state estimation |
-| 35-44 | Drag types (induced, parasitic) | Mission planning, range estimation |
-| 15-19 | Wing/aerofoil geometry | Aircraft configuration |
-| 1-14 | Fundamental definitions | General reference |
-| 19-26 | Reynolds number, scaling | Environmental effects |
+| Pages | Topic | Index to Search | Use in INAV |
+|-------|-------|-----------------|-------------|
+| 62-67 | Pitot-static tube & airspeed | `pitot-tube`, `pitot-static`, `airspeed` | Airspeed sensor calibration |
+| 26-49 | Basic aerodynamics, coefficients | `lift-coefficient`, `drag-coefficient` | Flight dynamics, state estimation |
+| 35-44 | Drag types (induced, parasitic) | `induced-drag`, `parasitic-drag` | Mission planning, range estimation |
+| 15-19 | Wing/aerofoil geometry | `aerofoil`, `aspect-ratio` | Aircraft configuration |
+| 1-14 | Fundamental definitions | `angle-of-attack`, `wing-loading` | General reference |
+| 19-26 | Reynolds number, scaling | `Reynolds-number` | Environmental effects |
 
 ## Pre-Indexed Keywords
 
-All in `search-index/` directory:
+Browse with `./search_indexes.py --list` or search by substring with `--match`:
 
 **High occurrence (100+):**
-- `boundary-layer.txt` (501 occurrences)
-- `aerofoil.txt` (545 occurrences)
-- `Reynolds-number.txt` (136 occurrences)
+- `boundary-layer` (501 occurrences)
+- `aerofoil` (545 occurrences)
+- `Reynolds-number` (136 occurrences)
 
 **Medium occurrence (50-100):**
-- `drag-coefficient.txt` (67)
-- `lift-coefficient.txt` (59)
-- `aspect-ratio.txt` (67)
-- `pressure-coefficient.txt` (52)
+- `drag-coefficient` (67)
+- `lift-coefficient` (59)
+- `aspect-ratio` (67)
+- `pressure-coefficient` (52)
 
-**Lower occurrence but HIGHLY relevant:**
-- `induced-drag.txt` (45)
-- `stall.txt` (39)
-- `moment-coefficient.txt` (42)
-- `angle-of-attack.txt` (18)
-- `airspeed.txt` (7)
-- `pitot-static.txt` (5)
-- `pitot-tube.txt` (2)
+**Lower occurrence but HIGHLY relevant to INAV:**
+- `induced-drag` (45)
+- `stall` (39)
+- `moment-coefficient` (42)
+- `angle-of-attack` (18)
+- `airspeed` (7)
+- `pitot-static` (5)
+- `pitot-tube` (2)
 
-## Files Created
+## Files
 
 ```
 claude/developer/docs/aerodynamics/
-├── Aerodynamics-Houghton-and-Carpenter.pdf (16 MB, 614 pages)
+├── search_indexes.py ← start here
+├── CLAUDE.md (quick reference)
 ├── QUICK-START.md (this file)
-├── TOOLS-SUMMARY.md (detailed tool documentation)
-├── toc-raw.txt (table of contents dump)
+├── Aerodynamics-Houghton-and-Carpenter.pdf (16 MB, 614 pages)
 └── Houghton-Carpenter-Index/
     ├── README.md (index guide with INAV relevance ratings)
     ├── full-toc.txt (formatted table of contents)
-    ├── pdf_indexer.py (Python indexing tool)
-    ├── chapters/ (for extracted chapters)
+    ├── pdf_indexer.py (per-document search tool)
     ├── relevant-to-inav/ (INAV-critical sections)
-    │   └── section-2.3-airspeed-measurement.txt (already extracted)
+    │   └── section-2.3-airspeed-measurement.txt
     └── search-index/ (20 pre-indexed keywords)
-        ├── drag-coefficient.txt
-        ├── lift-coefficient.txt
-        ├── pitot-tube.txt
-        └── ... (17 more)
 ```
-
-## Next Steps
-
-1. Browse the table of contents: `cat Houghton-Carpenter-Index/full-toc.txt`
-2. Check what's indexed: `ls -lh Houghton-Carpenter-Index/search-index/`
-3. Search for terms relevant to your work
-4. Extract sections you need frequently
-5. Build INAV-specific reference documentation from extracted sections
 
 ## Tips
 
-- **For quick lookups:** Use the pre-built index files
-- **For exploration:** Use `pdfgrep` to search
-- **For reading:** Extract sections to text with `pdftotext -layout`
-- **For documentation:** Use the Python script to extract with context
+- **Start with `search_indexes.py`** — it reads the index first (instant), then extracts only the pages you need
+- **Use `--no-extract`** for quick page listings when you just need to know where something is
+- **Use `--match`** to discover keyword names (e.g., `--match pitot` finds both `pitot-tube` and `pitot-static`)
+- **Use `--context N`** when you need surrounding pages for full understanding
 - **For code comments:** Reference specific page numbers (e.g., "See H&C p.64")

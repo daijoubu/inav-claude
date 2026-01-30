@@ -1,0 +1,122 @@
+Keyword: BeiDou
+Occurrences: 118
+================================================================================
+
+Page    7: 3.13.3.1 BeiDou ephemeris assistance for satellites svId 1..37........................................... 103
+Page    7: 3.13.3.2 BeiDou almanac assistance......................................................................................... 104
+Page    7: 3.13.3.3 BeiDou health assistance............................................................................................. 105
+Page    7: 3.13.3.4 BeiDou UTC assistance.................................................................................................105
+Page    7: 3.13.3.5 BeiDou ionosphere assistance.....................................................................................106
+Page    9: 3.15.18.1 BeiDou time solution................................................................................................... 150
+Page   11: 4.4.33.1 BeiDou MSM1..................................................................................................................187
+Page   11: 4.4.34.1 BeiDou MSM3..................................................................................................................188
+Page   11: 4.4.35.1 BeiDou MSM4..................................................................................................................188
+Page   11: 4.4.36.1 BeiDou MSM5..................................................................................................................189
+Page   12: 4.4.37.1 BeiDou MSM6..................................................................................................................190
+Page   12: 4.4.38.1 BeiDou MSM7..................................................................................................................190
+Page   17: In order to support some GNSS (e.g. BeiDou, Galileo, QZSS), which are not supported by some or
+Page   18: BeiDou                  BDS            B                    3               n/a               (4)   1              4
+Page   18: BeiDou        B1-B5           3:1-5           159-163
+Page   18: BeiDou        B1-B5           n/a          401-405              1-5       1-5                 1-5       1-5
+Page   18: 1   While not deﬁned by NMEA 4.10, u-blox receivers in this mode will use system ID 4 for BeiDou and, if extended satellite
+Page   19: BeiDou B1I D1        2                          3             0             (4)   3
+Page   19: BeiDou B1I D22                                  3             1             (4)3        (1)4                  4               1
+Page   19: BeiDou B2I D1                                   3             2             (4)3        (3)4                  4               B
+Page   19: BeiDou B2I D2                                   3             3             (4)3        (3)4                  4               B
+Page   19: BeiDou B1 Cp (pilot)                            3             5             (4)3        N/A                   4               3
+Page   19: BeiDou B1 Cd (data)                             3             6             (4)3        N/A                   4               3
+Page   19: BeiDou B2 ap (pilot)                            3             7             (4)3        N/A                   4               5
+Page   19: BeiDou B2 ad (data)                             3             8             (4)3        N/A                   4               5
+Page   19: 3   While not deﬁned by NMEA 4.10, u-blox receivers in this mode will use system ID 4 for BeiDou and, if extended satellite
+Page   19: 4   BeiDou and QZSS signal ID are not deﬁned in the NMEA protocol version 4.10. Values shown in the table are only valid for
+Page   22: BDS Talker ID         CFG-NMEA-BDSTALKERID        By default the Talker ID for BeiDou is "GB". This ﬁeld enables the
+Page   22: BeiDou Talker ID to be overridden.
+Page   23: BeiDou and Galileo Only NMEA version 4.10 and later have support for these systems.
+Page   23: Extended satellite numbering In order to support some GNSS (e.g. BeiDou, Galileo, QZSS) that are
+Page   23: BeiDou                          GB       NMEA 4.10+ (oﬃcial NMEA only since 4.11)
+Page   32: GLONASS, Galileo and BeiDou. Note that the NMEA
+Page   51: UBX-MGA-BDS              0x13 0x03   •   BeiDou ephemeris assistance for satellites svId 1..37 (Input)
+Page   51: •   BeiDou almanac assistance (Input)
+Page   51: •   BeiDou health assistance (Input)
+Page   51: •   BeiDou UTC assistance (Input)
+Page   51: •   BeiDou ionosphere assistance (Input)
+Page   53: UBX-NAV-TIMEBDS          0x01 0x24    •   BeiDou time solution (Periodic/polled)
+Page   60: When gnssId is 3 (BeiDou)
+Page   60: •   0x01 = BeiDou B1I
+Page   60: •   0x10 = BeiDou B2I
+Page   60: •   0x80 = BeiDou B2A
+Page   66: Center (NTSC), China; derived from BeiDou time
+Page   69: bit 6   U:1     beidou         -       -            Disable reporting of BeiDou satellites
+Page   69: BeiDou Talker ID. If these are set to zero, then the
+Page   69: default BeiDou Talker ID will be used.
+Page   80: •   3 = BeiDou time (not supported for protocol
+Page   85: •   3 = BeiDou
+Page  103: 3.13.3.1 BeiDou ephemeris assistance for satellites svId 1..37
+Page  103: BeiDou ephemeris assistance for satellites svId 1..37
+Page  103: Comment       This message allows the delivery of BeiDou D1/D2 ephemeris assistance to a receiver.
+Page  103: 2             U1        svId                   -           -            BeiDou satellite identiﬁer (see Satellite Numbering)
+Page  104: 3.13.3.2 BeiDou almanac assistance
+Page  104: BeiDou almanac assistance
+Page  104: Comment       This message allows the delivery of BeiDou almanac assistance to a receiver.
+Page  105: 2             U1        svId                     -           -            BeiDou satellite identiﬁer (see Satellite Numbering)
+Page  105: 3.13.3.3 BeiDou health assistance
+Page  105: BeiDou health assistance
+Page  105: Comment       This message allows the delivery of BeiDou health assistance from D1/D2 ephemeris to a receiver.
+Page  105: 4             U2[30]    healthCode               -           -            Each two-byte value represents a BeiDou SV (1-30).
+Page  105: 3.13.3.4 BeiDou UTC assistance
+Page  105: BeiDou UTC assistance
+Page  105: Comment       This message allows the delivery of BeiDou UTC assistance to a receiver.
+Page  106: 14            U1        wnRec                    -           week         BeiDou week number of reception of this UTC
+Page  106: 3.13.3.5 BeiDou ionosphere assistance
+Page  106: BeiDou ionosphere assistance
+Page  106: Comment       This message allows the delivery of BeiDou ionospheric assistance to a receiver.
+Page  120: •   3 = BeiDou time
+Page  126: bit 2   U:1       BeidouSup             -            -           BeiDou is supported
+Page  126: bit 2   U:1       BeidouDef             -            -           BeiDou is default-enabled
+Page  126: bit 2   U:1       BeidouEna             -            -           BeiDou is enabled
+Page  147: •   2 = BeiDou corrections
+Page  147: •   3 = Klobuchar model transmitted by BeiDou
+Page  150: 3.15.18.1 BeiDou time solution
+Page  150: BeiDou time solution
+Page  153: •   4 = BeiDou
+Page  153: the same as GPS. BeiDou number of leap seconds is 14
+Page  154: •   4 = BeiDou
+Page  154: from 1 = Sun to 7 = Sat. BeiDou DN: from 0 = Sun to 6
+Page  157: 12            U4        bdsTOW                -            ms          BeiDou measurement reference time
+Page  158: 28                U2       bdsTOWacc             2^-4         ms          BeiDou measurement reference time accuracy (0xﬀﬀ
+Page  164: •   2 = BeiDou
+Page  168: • BeiDou MSM1 (Input)
+Page  168: • BeiDou MSM3 (Input)
+Page  168: • BeiDou MSM4 (Input)
+Page  168: • BeiDou MSM5 (Input)
+Page  168: • BeiDou MSM6 (Input)
+Page  168: • BeiDou MSM7 (Input)
+Page  187: 4.4.33.1 BeiDou MSM1
+Page  187: BeiDou MSM1
+Page  187: Comment           Compact BeiDou Pseudoranges
+Page  188: 4.4.34.1 BeiDou MSM3
+Page  188: BeiDou MSM3
+Page  188: Comment           Compact BeiDou Pseudoranges and PhaseRanges
+Page  188: 4.4.35.1 BeiDou MSM4
+Page  188: BeiDou MSM4
+Page  188: Comment           Full BeiDou Pseudoranges and PhaseRanges plus CNR
+Page  189: 4.4.36.1 BeiDou MSM5
+Page  189: BeiDou MSM5
+Page  189: Comment           Full BeiDou Pseudoranges, PhaseRanges, PhaseRangeRate and CNR
+Page  190: 4.4.37.1 BeiDou MSM6
+Page  190: BeiDou MSM6
+Page  190: Comment           Full BeiDou Pseudoranges and PhaseRanges plus CNR (high resolution)
+Page  190: 4.4.38.1 BeiDou MSM7
+Page  190: BeiDou MSM7
+Page  190: Comment           Full BeiDou pseudoranges, PhaseRanges, PhaseRangeRate and CNR (high resolution)
+Page  217: derived from BeiDou time
+Page  220: CFG-NMEA-FILT_BDS                    0x10930017       L       -          -     Disable reporting of BeiDou satellites
+Page  220: CFG-NMEA-BDSTALKERID                 0x30930033 U2            -          -     BeiDou Talker ID
+Page  221: Sets the two ASCII characters that should be used for the BeiDou Talker ID.
+Page  221: If these are set to zero, the default BeiDou Talker ID will be used.
+Page  224: BDS                                 3               Align measurements to BeiDou time
+Page  226: CFG-SIGNAL-BDS_ENA                  0x10310022      L       -       -      BeiDou Enable
+Page  226: CFG-SIGNAL-BDS_B1_ENA               0x1031000d      L       -       -      BeiDou B1I
+Page  230: BDS                                    3               BeiDou time reference
+Page  230: BDS                                    3               BeiDou time reference
+Page  236: UBX-CFG-NMEA.beidou                                    CFG-NMEA-FILT_BDS

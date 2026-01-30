@@ -1,0 +1,84 @@
+Keyword: voltage scaling
+Occurrences: 80
+================================================================================
+
+Page    6: 5.6.2       Voltage scaling . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 263
+Page   80: Figure 29.   VCORE voltage scaling versus system power modes . . . . . . . . . . . . . . . . . . . . . . . . . . . . 263
+Page   80: Figure 31.   Dynamic voltage scaling in Run mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 268
+Page   80: Figure 32.   Dynamic voltage scaling behavior with D1,
+Page   80: Figure 33.   Dynamic Voltage Scaling D1, D2, system Standby mode . . . . . . . . . . . . . . . . . . . . . . . . 270
+Page   80: Figure 34.   Dynamic voltage scaling behavior with D1 and D2 in DStandby mode and
+Page  239: (clock frequency) and the voltage scaling.
+Page  239: –    Voltage scaling control
+Page  248: register 1 (PWR_CR1). Main mode and LP mode are allowed if SVOS3 voltage scaling
+Page  259: The following voltage scaling features allow controlling the power with respect to the
+Page  259: required system performance (see Section 5.6.2: Voltage scaling):
+Page  259: •   To obtain a given system performance, the corresponding voltage scaling shall be set
+Page  259: the Run mode voltage scaling.
+Page  259: latency, configure the SVOS bits to Stop mode voltage scaling.
+Page  261: VCORE supply level through VOS voltage scaling bits.
+Page  263: 5.6.2    Voltage scaling
+Page  263: voltage scaling with the following features:
+Page  263: •   Run mode voltage scaling
+Page  263: •   Stop mode voltage scaling
+Page  263: For more details on voltage scaling values, refer to the product datasheets.
+Page  263: After reset, the system starts on the lowest Run mode voltage scaling (VOS3). The voltage
+Page  263: exiting from Stop mode or Standby mode, the Run mode voltage scaling is reset to the
+Page  263: register 1 (PWR_CR1). The Stop mode voltage scaling for SVOS4 and SVOS5 also sets the
+Page  263: Figure 29. VCORE voltage scaling versus system power modes
+Page  264: •       In Run mode, VCORE is defined by the VOS voltage scaling.
+Page  264: •       In Stop mode, VCORE is defined by the SVOS voltage scaling.
+Page  267: •    Figure 31 shows VCORE voltage scaling behavior in Run mode.
+Page  267: •    Figure 32 shows VCORE voltage scaling behavior in Stop mode.
+Page  267: •    Figure 33 shows VCORE voltage regulator and voltage scaling behavior in Standby
+Page  267: •    Figure 34 shows VCORE voltage scaling behavior in Run mode with D1 and D2
+Page  267: Example of VCORE voltage scaling behavior in Run mode
+Page  267: voltage scaling VOS2. To do this:
+Page  267: a)   Program the voltage scaling to VOS2.
+Page  267: voltage scaling VOS1. To do this:
+Page  267: a)   Program the voltage scaling to VOS1.
+Page  267: 4.   The system performance is then reduced to a medium-speed clock with voltage scaling
+Page  267: b)   Then decrease the voltage scaling to VOS2.
+Page  267: 5.   The next step is to reduce the system performance to HSI clock with voltage scaling
+Page  267: c)   Decrease the voltage scaling to VOS3.
+Page  267: a)   Program the voltage scaling to VOS1.
+Page  268: Figure 31. Dynamic voltage scaling in Run mode
+Page  268: Example of VCORE voltage scaling behavior in Stop mode
+Page  268: 1.   The system is running from the PLL in high-performance mode (VOS1 voltage scaling).
+Page  268: performance system clock, hence the voltage scaling shall stay at VOS1 level.
+Page  268: hardware lowers the voltage scaling to the software preselected SVOS4 level.
+Page  268: hardware then sets the voltage scaling to VOS3 level and waits for the requested
+Page  268: a)      The software first sets the voltage scaling to VOS1.
+Page  269: Figure 32. Dynamic voltage scaling behavior with D1,
+Page  269: Example of VCORE voltage regulator and voltage scaling behavior
+Page  269: 1.    The system is running from the PLL in high-performance mode (VOS1 voltage scaling).
+Page  269: off. The system performance is unchanged hence the voltage scaling does not change.
+Page  269: mode. The hardware sets the voltage scaling to the default VOS3 level and waits for
+Page  270: a)      The software first increases the voltage scaling to VOS1 level
+Page  270: Figure 33. Dynamic Voltage Scaling D1, D2, system Standby mode
+Page  271: Example of VCORE voltage scaling behavior in Run mode
+Page  271: voltage scaling).
+Page  271: off. The system performance is unchanged hence the voltage scaling does not change.
+Page  271: hardware lowers the voltage scaling to the software preselected SVOS4 level.
+Page  271: exits from Stop mode. The hardware sets the voltage scaling to the default VOS3 level
+Page  271: Stop mode. The system clock is stopped and the voltage scaling is lowered to the
+Page  271: The hardware sets the voltage scaling to the default VOS3 level and waits for the
+Page  272: Figure 34. Dynamic voltage scaling behavior with D1 and D2 in DStandby mode and
+Page  277: and voltage scaling depend on the system mode.
+Page  277: matrix clocks and voltage scaling values are the same as when entering DStop mode.
+Page  277: matrix clocks and voltage scaling are reset.
+Page  280: + Voltage Scaling refer to Table 38 (see Section 5.6.2: Voltage scaling)
+Page  281: the state of the CPU subsystem clocks, domain(s) bus matrix clocks and voltage scaling
+Page  281: matrix clocks and voltage scaling are the same as when entering DStandby mode.
+Page  281: domain(s) bus matrix clocks and voltage scaling are reset.
+Page  284: Bits 15:14 SVOS: System Stop mode voltage scaling selection
+Page  286: Bits 15:14 ACTVOS: VOS currently applied for VCORE voltage scaling selection.
+Page  290: Bits 15:14 VOS: Voltage scaling selection according to performance
+Page  290: – When increasing the performance, the voltage scaling shall be changed before increasing
+Page  290: changing the voltage scaling.
+Page  290: Bit 13 VOSRDY: VOS Ready bit for VCORE voltage scaling output selection.
+Page  371: Caution:    Care must be taken when using the voltage scaling. Due to the propagation delay of the
+Page 3216: Updated Figure 24: VCORE voltage scaling versus system power
+Page 3223: Figure 27: Dynamic voltage scaling behavior with D1, D2 and
+Page 3223: system in Stop mode, Figure 28: Dynamic Voltage Scaling D1, D2,
+Page 3223: system Standby mode and Figure 29: Dynamic voltage scaling

@@ -1,0 +1,50 @@
+Keyword: erase
+Occurrences: 46
+================================================================================
+
+Page 46: •   On products that do not support mass erase operation, to perform this operation using
+Page 46: then the Read unprotect command). This operation results in a mass erase of the
+Page 46: erased using the Erase command. When writing in a Data memory location, the
+Page 46: bootloader firmware manages the erase operation of this location before any write. A
+Page 46: of 4) and the number of data must also be a multiple of 4. To erase a Data memory
+Page 46: cannot be erased using Erase command. When writing in an OTP memory location,
+Page 47: – 0x04: voltage range [2.7 V, 3.6 V] and double word write/erase
+Page 82: erase first sector before jump or execute code from SRAM while flash is empty), the system
+Page 86: first four bytes of user flash (at 0x0800 0000) are empty at the moment of jump (i.e. erase
+Page 190: bank. Return to Single Bank mode, erase desired
+Page 197: bank. Return to Single Bank mode, erase desired
+Page 197: disabling PcROP when RDP1 is           bank. Return to Single Bank mode, erase desired
+Page 233: Bank2 sector erase issue when using USB
+Page 233: (i) leads to erase sector (i+4)
+Page 241: leading to not waiting for the erase operation
+Page 241: 40 ms for the erase termination before running
+Page 247: FLITF error after one sector erase
+Page 247: – Workaround: erase only by one sector when targeting Bank2
+Page 252: FLITF error after one sector erase
+Page 252: – Workaround: erase only by one sector when targeting Bank2
+Page 256: erase command, as it can take few ms, and can cause an issue if the host
+Page 291: V14.4     – Change BL system clock     EEPROM sector erase not working on 1 Mbyte devices.
+Page 291: 0x0BF9 F500. When an erase sector is needed:
+Page 291: c)    Byte0: number of sectors to erase (N)
+Page 291: e)    Example: to erase sector 3, 4, and 13, write 0x0303040D at address 0x20004000.
+Page 291: 2.    After the erase, go back to the bootloader.
+Page 303: – Mass erase does not work correctly on I2C (only
+Page 303: Bank2 is erased in this command)
+Page 303: V13.3                                                    – Bank erase is not working on USART/SPI and I2C
+Page 303: (0xD3)                                                    – DFU mass-erase not working
+Page 304: – Behavior: when erase on bank2 is requested, SW
+Page 304: erase can hang the system.
+Page 304: Fix V9.0 limitations                              – Workaround: worst case erase timing from the
+Page 304: – Fix the configuration of PWR control register      product datasheet can be added after the erase
+Page 304: CR3. Bootloader is no more blocking the            command to allow the FLITF to complete the erase.
+Page 304: change of PWR source                               A safer method is to use a RAM patch for the erase
+Page 304: – Adjust USB, I2C erase and program timings          command.
+Page 321: the jump (i.e. erase first sector before jump or execute code from SRAM while flash is
+Page 394: erase operation through page erase using the Erase command
+Page 414: – FDCAN erase not working as page number
+Page 414: V9.1                                        – FDCAN erase not working as page number
+Page 459: time is not working, only the first page is erased
+Page 459: – FDCAN: cannot erase more than 32 flash memory
+Page 459: – FDCAN: cannot erase more than 32 flash memory
+Page 498: when implementing the host side. After sending the code of pages to erase, the host must
+Page 498: erase command.

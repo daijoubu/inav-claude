@@ -1,0 +1,200 @@
+Keyword: SV
+Occurrences: 196
+================================================================================
+
+Page    4: 2.7.14 GSV............................................................................................................................................... 34
+Page    4: 2.8.4 SVSTATUS (PUBX,03)................................................................................................................. 42
+Page    7: 3.13.3.1 BeiDou ephemeris assistance for satellites svId 1..37........................................... 103
+Page   17: be identiﬁed by a gnssId ﬁeld indicating the GNSS the satellite is part of and an svId (SV for
+Page   17: space vehicle) ﬁeld indicating the number of the satellite in that system. Usually, the svId is the
+Page   17: native number associated with the satellite in the speciﬁc GNSS. For example the GLONASS SV4 is
+Page   17: identiﬁed as gnssId 6, svId 4, while the GPS SV4 is gnssId 0, svId 4.
+Page   17: identiﬁcation into a one-byte (type U1) ﬁeld. See the single svid mapping in Satellite identiﬁers to
+Page   17: satellites will be reported with svId 255. In NMEA messages, the unknown satellites will be
+Page   17: "strict" SV numbering is selected. In most cases this is the default setting, but it can be checked or
+Page   17: all NMEA protocol versions, an "extended" SV numbering scheme can be enabled. This uses the
+Page   18: GNSS          SV Range        gnssId:svId     single svid
+Page   18: GNSS          SV Range        strict       extended             strict    extended            strict    extended
+Page   19: GNSS             SV Range    strict    extended              strict    extended                   strict       extended
+Page   22: This algorithm considers all SV measurements, and may
+Page   22: Satellite numbering   CFG-NMEA-SVNUMBERING        This ﬁeld conﬁgures the display of satellites that do not have an
+Page   22: messages other than GSV) is determined by the GNSS
+Page   22: GSV Talker ID         CFG-NMEA-GSVTALKERID        By default the Talker ID for GSV messages is GNSS-speciﬁc (as
+Page   22: deﬁned by NMEA). This ﬁeld enables the GSV Talker ID to be
+Page   23: GSV Talker and Signal IDs The GSV message reports the signal strength of the visible satellites.
+Page   23: In multi-GNSS operation, other messages use the main Talker ID "GN" but the Talker ID in the GSV
+Page   23: The GSV messages are grouped by the Talker and Signal IDs. Separate sets of GSV messages are
+Page   23: presented in their own set with Signal ID 0. Grouping the GSV messages by the Signal ID is supported
+Page   23: not supported by some or all NMEA protocol versions, an "extended" SV numbering scheme can be
+Page   24: NMEA-Standard-GSV                signalId
+Page   26: NMEA-Standard-GSV        0xf0 0x03   •   GNSS satellites in view (Output)
+Page   26: NMEA-PUBX-SVSTATUS       0xf1 0x03   •   Poll a PUBX,03 message (Poll request)
+Page   28: Structure         $xxGBS,time,errLat,errLon,errAlt,svid,prob,bias,stddev,systemId,signalId*cs\r\n
+Page   29: 5          svid               numeric      -           03               Satellite ID of most likely failed satellite
+Page   29: Structure         $xxGGA,time,lat,NS,lon,EW,quality,numSV,HDOP,alt,altUnit,sep,sepUnit,diffAge,diffSta ↲
+Page   29: 7          numSV              numeric      -           08               Number of satellites used (range: 0-12)
+Page   31: Structure         $xxGNS,time,lat,NS,lon,EW,posMode,numSV,HDOP,alt,sep,diffAge,diffStation,navStatus*c ↲
+Page   32: 7          numSV                 numeric     -           10               Number of satellites used (range: 0-99)
+Page   33: Comment           If less than 12 SVs are available, the remaining ﬁelds are output empty. If more than 12 SVs are used, only the
+Page   33: residuals of the ﬁrst 12 SVs are output, in order to remain consistent with the NMEA standard.
+Page   33: 3+n        residual           numeric       m           0.54             Range residuals for SVs used in navigation. The SV order
+Page   33: •   If less than 12 SVs are used for navigation, the remaining ﬁelds are left empty. If more than 12 SVs are
+Page   33: •   The SV numbers (ﬁelds 'svid') are in the range of 1 to 32 for GPS satellites, and 33 to 64 for SBAS
+Page   33: Structure         $xxGSA,opMode,navMode{,svid},PDOP,HDOP,VDOP,systemId*cs\r\n
+Page   34: 3+n        svid               numeric       -           29               Satellite number
+Page   34: 2.7.14 GSV
+Page   35: Message           NMEA-Standard-GSV
+Page   35: Comment           The number of satellites in view, together with each SV ID, elevation azimuth, and signal strength (C/No) value.
+Page   35: In a multi-GNSS system, sets of GSV messages will be output multiple times, one set for each GNSS.
+Page   35: Structure         $xxGSV,numMsg,msgNum,numSV{,svid,elv,az,cno},signalId*cs\r\n
+Page   35: Examples          $GPGSV,3,1,09,09,,,17,10,,,40,12,,,49,13,,,35,1*6F\r\n
+Page   35: $GPGSV,3,2,09,15,,,44,17,,,45,19,,,44,24,,,50,1*64\r\n
+Page   35: $GPGSV,3,3,09,25,,,40,1*6E\r\n
+Page   35: $GPGSV,1,1,03,12,,,42,24,,,47,32,,,37,5*66\r\n
+Page   35: $GPGSV,1,1,01,03,05,218,,0*59\r\n
+Page   35: $GAGSV,1,1,00,2*76\r\n
+Page   35: 0          xxGSV              string        -            $GPGSV           GSV Message ID (xx = GSV Talker ID, see NMEA Talker
+Page   35: 1          numMsg             digit         -            3                Number of messages, total number of GSV messages
+Page   35: 3          numSV              numeric       -            10               Number of known satellites in view regarding both the
+Page   35: 4 + n·4 svid                  numeric       -            23               Satellite ID
+Page   41: ,TDOP,numSvs,reserved,DR,*cs\r\n
+Page   41: 18         numSvs             numeric     -           9                Number of satellites used in the navigation solution
+Page   42: 2.8.4 SVSTATUS (PUBX,03)
+Page   42: Message           NMEA-PUBX-SVSTATUS
+Page   43: Message           NMEA-PUBX-SVSTATUS
+Page   43: Structure         $PUBX,03,GT{,sv,s,az,el,cno,lck},*cs\r\n
+Page   43: 3 + n·6 sv                       numeric     -            23                 Satellite ID according to UBX svId mapping (see Satellite
+Page   51: UBX-MGA-BDS              0x13 0x03   •   BeiDou ephemeris assistance for satellites svId 1..37 (Input)
+Page   55: bit 0   U:1       svcs                  -            -           Enable antenna supply voltage control signal
+Page   55: The ﬁelds iTOW, tAcc, numSV, hMSL, vAcc, velN, velE,
+Page   65: cnoThreshNumSVs)
+Page   67: bit 2   U:1      minMax                 -           -            1 = apply min/max SVs settings
+Page   67: 10                  U1       minSVs                 -           #SVs         Minimum number of satellites for navigation
+Page   67: 11                  U1       maxSVs                 -           #SVs         Maximum number of satellites for navigation
+Page   68: 2                   U1        numSV                 -           -            Maximum number of SVs to report per TalkerId.
+Page   68: •   8 = 8 SVs
+Page   68: •   12 = 12 SVs
+Page   68: •   16 = 16 SVs
+Page   69: 8               U1      svNumbering    -       -            Conﬁgures the display of satellites that do not have an
+Page   69: for all messages other than GSV) is determined by the
+Page   69: 10              U1      gsvTalkerId    -       -            By default the Talker ID for GSV messages is GNSS-
+Page   69: This ﬁeld enables the GSV Talker ID to be overridden.
+Page   93: The ﬁelds iTOW, tAcc, numSV, hMSL, vAcc, velN, velE,
+Page   94: 27              U1    numSV       -          -            Number of satellites used in Nav Solution
+Page  100: 38            U1        numSV                  -           -            Number of satellites used in the position ﬁx
+Page  103: 2             U1        svId                   -           -            Satellite identiﬁer (see Satellite Numbering)
+Page  103: 3.13.3.1 BeiDou ephemeris assistance for satellites svId 1..37
+Page  103: BeiDou ephemeris assistance for satellites svId 1..37
+Page  103: 2             U1        svId                   -           -            BeiDou satellite identiﬁer (see Satellite Numbering)
+Page  105: 2             U1        svId                     -           -            BeiDou satellite identiﬁer (see Satellite Numbering)
+Page  105: This message allows the delivery of health assistance data for all satellites with svId 1 to 30.
+Page  105: 4             U2[30]    healthCode               -           -            Each two-byte value represents a BeiDou SV (1-30).
+Page  109: 2             U1        svId                     -           -            Galileo Satellite identiﬁer (see Satellite Numbering)
+Page  110: 52            I4        af0                     2^-34       s            SV clock bias correction coeﬃcient
+Page  110: 56            I4        af1                     2^-46       s/s          SV clock drift correction coeﬃcient
+Page  110: 60            I1        af2                     2^-59       s/s          SV clock drift rate correction coeﬃcient
+Page  110: 2             U1        svId                    -           -            Galileo Satellite identiﬁer (see Satellite Numbering)
+Page  112: 2             U1        svId                     -           -            GLONASS    Satellite       identiﬁer    (see   Satellite
+Page  112: 8             I4        x                        2^-11       km           X component of the SV position in PZ-90.02
+Page  112: 12            I4        y                        2^-11       km           Y component of the SV position in PZ-90.02
+Page  112: 16            I4        z                        2^-11       km           Z component of the SV position in PZ-90.02
+Page  112: 20            I4        dx                       2^-20       km/s         X component of the SV velocity in PZ-90.02 coordinate
+Page  112: 24            I4        dy                       2^-20       km/s         Y component of the SV velocity in PZ-90.02 coordinate
+Page  112: 28            I4        dz                       2^-20       km/s         Z component of the SV velocity in PZ-90.02 coordinate
+Page  112: 32            I1        ddx                      2^-30       km/s^2       X component of the SV acceleration in PZ-90.02
+Page  113: 33            I1        ddy                      2^-30       km/s^2       Y component of the SV acceleration in PZ-90.02
+Page  113: 34            I1        ddz                      2^-30       km/s^2       Z component of the SV acceleration in PZ-90.02
+Page  113: 40            I4        tau                      2^-30       s            SV clock bias
+Page  113: 2             U1        svId                     -           -            GLONASS    Satellite        identiﬁer   (see   Satellite
+Page  114: 2             U1        svId                     -           -            GPS Satellite identiﬁer (see Satellite Numbering)
+Page  114: 6             U1        svHealth                 -           -            SV health
+Page  115: 2             U1        svId                     -           -            GPS Satellite identiﬁer (see Satellite Numbering)
+Page  115: 3             U1        svHealth                 -           -            SV health information
+Page  116: 4             U1[32]    healthCode               -           -            Each byte represents a GPS SV (1-32). The 6 LSBs
+Page  122: 2             U1        svId                     -           -            QZSS Satellite identiﬁer (see Satellite Numbering),
+Page  122: 6             U1        svHealth                 -           -            SV health
+Page  123: 2             U1        svId                     -           -            QZSS Satellite identiﬁer (see Satellite Numbering),
+Page  123: 3             U1        svHealth                 -           -            Almanac SV health information
+Page  124: 4             U1[5]     healthCode             -           -            Each byte represents a QZSS SV (1-5). The 6 LSBs
+Page  124: subframes 4/5, data ID = 3, SV ID = 51
+Page  138: structure     0xb5 0x62      0x01    0x34   8 + numSv·6                                  see below                   CK_A CK_B
+Page  139: 5                U1      numSv          -           -            Number of SVs in the database
+Page  139: Start of repeated group (numSv times)
+Page  139: 9 + n·6          U1      svId           -           -            Satellite ID
+Page  139: 10 + n·6         X1      svFlag         -           -            Information Flags
+Page  139: bits 1…0   U:2     health         -           -            SV health:
+Page  139: bits 3…2   U:2     visibility     -           -            SV health:
+Page  140: End of repeated group (numSv times)
+Page  142: 23              U1    numSV           -          -            Number of satellites used in Nav Solution
+Page  144: Comment             This message displays information about SVs that are either known to be visible or currently tracked by the
+Page  144: structure           0xb5 0x62    0x01    0x35   8 + numSvs·12                                see below                  CK_A CK_B
+Page  144: 5                   U1        numSvs                -            -           Number of satellites
+Page  144: Start of repeated group (numSvs times)
+Page  144: 9 + n·12            U1        svId                  -            -           Satellite identiﬁer (see Satellite Numbering) for
+Page  144: bit 3   U:1       svUsed                -            -           1 = Signal in the subset speciﬁed in Signal Identiﬁers
+Page  144: bit 6   U:1       diffCorr              -            -           1 = diﬀerential correction data is available for this SV
+Page  144: •   0 = no orbit information is available for this SV
+Page  145: bit 11   U:1       ephAvail              -            -           1 = ephemeris is available for this SV
+Page  145: bit 12   U:1       almAvail              -            -           1 = almanac is available for this SV
+Page  145: bit 13   U:1       anoAvail              -            -           1 = AssistNow Oﬄine data is available for this SV
+Page  145: SV
+Page  145: End of repeated group (numSvs times)
+Page  146: 8                   U1        cnt                     -            -         Number of SV data following
+Page  146: 12 + n·12           U1        svid                    -            -         SV ID
+Page  146: 15 + n·12           U1        svSys                   -            -         System (WAAS/EGNOS/...)
+Page  146: 16 + n·12           U1        svService               -            -         Services available
+Page  147: 9 + n·16            U1      svId          -           -            Satellite identiﬁer (see Satellite Numbering) for
+Page  148: 17                  U1        qzssSvId              -            -            Satellite identiﬁer of the QZS/GEO whose correction
+Page  148: bit 1   U:1       qzssSv                -            -            1 = Correction providing QZSS SV available
+Page  148: bit 2   U:1       testMode              -            -            1 = Currently used QZSS SV in test mode
+Page  149: 21 + n·8            U1        svId                    -           -            Satellite identiﬁer (see Satellite Numbering)
+Page  151: bit 2   U:1       leapSValid             -           -            1 = Valid leap second
+Page  151: bit 2   U:1       leapSValid             -           -            1 = Valid leapS
+Page  153: bit 2   U:1       leapSValid             -           -            1 = Valid GPS leap seconds
+Page  155: bit 2   U:1       leapSValid             -           -            1 = Valid QZSS leap seconds
+Page  157: structure     0xb5 0x62    0x02    0x14   44 + numSV·24                              see below                 CK_A CK_B
+Page  158: 34                U1       numSV                 -            -           Number of satellites in repeated block
+Page  158: Start of repeated group (numSV times)
+Page  158: 45 + n·24         U1       svId                  -            -           Satellite ID (see Satellite Numbering)
+Page  158: End of repeated group (numSV times)
+Page  160: 2             U1       svId                   -           -            Identiﬁer of transmitting satellite (see Satellite
+Page  160: 2             U1       svId                   -           -            Identiﬁer of transmitting satellite (see Satellite
+Page  161: 1                   U1       svId                  -            -           Satellite identiﬁer (see Satellite Numbering)
+Page  198: The ﬁelds iTOW, tAcc, numSV, hMSL, vAcc, velN, velE, velD, sAcc, headAcc and pDOP in UBX-LOG-BATCH are only valid
+Page  205: CFG-MSGOUT-NMEA_ID_GSV_I2C   0x209100c4 U1       -       -       Output rate of the NMEA-GX-GSV message on
+Page  205: CFG-MSGOUT-NMEA_ID_GSV_SPI   0x209100c8 U1       -       -       Output rate of the NMEA-GX-GSV message on
+Page  205: CFG-MSGOUT-NMEA_ID_GSV_UART1 0x209100c5 U1       -       -       Output rate of the NMEA-GX-GSV message on
+Page  205: CFG-MSGOUT-NMEA_ID_GSV_UART2 0x209100c6 U1       -       -       Output rate of the NMEA-GX-GSV message on
+Page  205: CFG-MSGOUT-NMEA_ID_GSV_USB   0x209100c7 U1       -       -       Output rate of the NMEA-GX-GSV message on
+Page  216: CFG-NAVSPG-INFIL_MINSVS              0x201100a1 U1             -         -     Minimum number of satellites for navigation
+Page  216: CFG-NAVSPG-INFIL_MAXSVS              0x201100a2 U1             -         -     Maximum number of satellites for navigation
+Page  220: CFG-NMEA-MAXSVS                      0x20930002 E1            -          -     Maximum number of SVs to report per Talker ID
+Page  220: CFG-NMEA-SVNUMBERING                 0x20930007 E1            -          -     Display conﬁguration for SVs that do not have
+Page  220: By default the main Talker ID (i.e. the Talker ID used for all messages other than GSV) is determined by the GNSS
+Page  220: CFG-NMEA-GSVTALKERID                 0x20930032 E1            -          -     Talker ID for GSV NMEA messages
+Page  220: By default the Talker ID for GSV messages is GNSS-speciﬁc (as deﬁned by NMEA).
+Page  220: This ﬁeld enables the GSV Talker ID to be overridden.
+Page  221: 8SVS                                   8               8 SVs
+Page  221: 12SVS                                 12               12 SVs
+Page  221: 16SVS                                 16               16 SVs
+Page  221: Table 29: Constants for CFG-NMEA-MAXSVS
+Page  221: Table 30: Constants for CFG-NMEA-SVNUMBERING
+Page  221: Table 32: Constants for CFG-NMEA-GSVTALKERID
+Page  234: UBX-CFG-ANT.svcs                                            CFG-HW-ANT_CFG_VOLTCTRL
+Page  236: UBX-CFG-NAV5.cnoThreshNumSVs                           CFG-NAVSPG-INFIL_NCNOTHRS
+Page  236: UBX-CFG-NAVX5.maxSVs                                   CFG-NAVSPG-INFIL_MAXSVS
+Page  236: UBX-CFG-NAVX5.minSVs                                   CFG-NAVSPG-INFIL_MINSVS
+Page  237: UBX-CFG-NMEA.gsvTalkerId                     CFG-NMEA-GSVTALKERID
+Page  237: UBX-CFG-NMEA.numSV                           CFG-NMEA-MAXSVS
+Page  237: UBX-CFG-NMEA.svNumbering                     CFG-NMEA-SVNUMBERING
+Page  243: CFG-MSGOUT-NMEA_ID_GSV_I2C          0x209100c4 U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GSV_SPI          0x209100c8 U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GSV_UART1        0x209100c5 U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GSV_UART2        0x209100c6 U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GSV_USB          0x209100c7 U1         -      -               1
+Page  250: CFG-NAVSPG-INFIL_MINSVS                           0x201100a1 U1          -       -                3
+Page  250: CFG-NAVSPG-INFIL_MAXSVS                           0x201100a2 U1          -       -                32
+Page  251: CFG-NMEA-MAXSVS                                   0x20930002 E1          -       -          0 (UNLIM)
+Page  251: CFG-NMEA-SVNUMBERING                              0x20930007 E1          -       -          0 (STRICT)
+Page  251: CFG-NMEA-GSVTALKERID                              0x20930032 E1          -       -           0 (GNSS)
+Page  258: - Explained the grouping of the NMEA GSV messages by the Talker and

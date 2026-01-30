@@ -1,0 +1,162 @@
+Keyword: VREF
+Occurrences: 158
+================================================================================
+
+Page    1: • Flexible external memory controller with up to                   • Voltage reference for analog peripheral/VREF+
+Page    9: Table 91.   VREFBUF characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 176
+Page   11: Table 189.   VREFBUF characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 289
+Page   13: Figure 42.   Power supply and reference decoupling (VREF+ not connected to VDDA). . . . . . . . . . . . . 172
+Page   13: Figure 43.   Power supply and reference decoupling (VREF+ connected to VDDA). . . . . . . . . . . . . . . . 172
+Page   14: Figure 94.   Power supply and reference decoupling (VREF+ not connected to VDDA). . . . . . . . . . . . . 284
+Page   14: Figure 95.   Power supply and reference decoupling (VREF+ connected to VDDA). . . . . . . . . . . . . . . . 284
+Page   23: VREF                                                                                                                          AHB/APB
+Page   24: VREF                                                                                                                          AHB/APB
+Page   38: •    input voltage reference VREF+ or internal VREFBUF reference.
+Page   55: VREF+ 20                                                                                                                                                                             56 PD9
+Page   57: VREF+    32                                                                                                            77   PD8
+Page   58: L      VDDA    VREF+    PH5     PA5      PB1    PB2    PG1    PE12     PB10    PH11    PB13     VSS    VDD
+Page   59: VREF+     38                                                                                                                                                                                                                                                                        95   PB15
+Page   60: N       VREF-   PA1   PA0    PA4     PC4      PF13    PG0    VDD    VDD    VDD     PE13   PH7    PD12    PD11    PD10
+Page   60: P       VREF+   PA2   PA6    PA5     PC5      PF12    PF15   PE8    PE9    PE11    PE14   PB12   PB13    PD9      PD8
+Page   61: VREF+     41                                                         116   PD14
+Page   62: M    VREF+    PC1      PC2    PC3    VDD                                                       VDD    PJ9     VSS     NC        NC
+Page   62: N    VREF-    PH2      PA2    PA1    PA0     PJ0    VDD     VDD    PE10   VDD    VDD    VDD    PJ8    PJ7     PJ6    VSS        NC
+Page   67: -          -         -           -       N1              -          -        N1              VREF-       S              -          -                  -                 -
+Page   67: 20        -(7)       32         L2         P1            38         41         M1              VREF+       S              -          -                  -                 -
+Page   87: 7. VREF+ pin, and consequently the internal voltage reference, are not available on the TFBGA100 package. On this package,
+Page  103: VREF
+Page  103: VREF+                                           VREF+                 OPAMP,
+Page  103: VREF-                                                               Comparator
+Page  103: VREF-
+Page  106: VREFBUF used                1.8
+Page  106: COMP, VREFBUF not               0
+Page  109: VREFINT           Internal reference voltages                                       1.180          1.216        1.255          V
+Page  109: tS_vrefint(1)(2)    reading the internal reference                 -                    4.3            -            -
+Page  109: ΔVREFINT(2)        spread over the temperature          -40°C < TJ < 105°C              -            5            15           mV
+Page  110: VREFINT_DIV1 1/4 reference voltage                                   -                     -       25       -
+Page  110: VREFINT_DIV2 1/2 reference voltage                                   -                     -       50       -
+Page  110: VREFINT
+Page  110: VREFINT_DIV3 3/4 reference voltage                                   -                     -       75       -
+Page  110: VREFIN_CAL       Raw data acquired at temperature of 30 °C, VDDA = 3.3 V                    1FF1E860 - 1FF1E861
+Page  122: VREFBUF               0.6            0.4            0.4
+Page  168: VREF+    Positive reference voltage                                                                   V
+Page  168: VREF-    Negative reference voltage                       -                         VSSA
+Page  169: VAIN(3)    Conversion voltage range                          -                          0        -      VREF+
+Page  169: Common mode input                                                      VREF/2−        V   /2+            V
+Page  169: VCMIV                                                        -                            VREF/2 REF
+Page  169: 3. Depending on the package, VREF+ can be internally connected to VDDA and VREF- to VSSA.
+Page  170: 4. ADC clock frequency ≤ 36 MHz, 2 V ≤ VDDA ≤3.3 V, 1.6 V ≤ VREF ≤ VDDA, BOOSTEN (for I/O) = 1.
+Page  170: 5. ENOB, SINAD, SNR and THD are specified for VDDA = VREF = 3.3 V.
+Page  171: VREF+                             VDDA
+Page  171: 0                                                                                                                                                                                                             VREF+ (VDDA)
+Page  171: (1/2n)*VREF+
+Page  171: (2/2n)*VREF+
+Page  171: (3/2n)*VREF+
+Page  171: (4/2n)*VREF+
+Page  171: (5/2n)*VREF+
+Page  171: (6/2n)*VREF+
+Page  171: (7/2n)*VREF+
+Page  171: (2n-3/2n)*VREF+
+Page  171: (2n-2/2n)*VREF+
+Page  171: (2n-1/2n)*VREF+
+Page  171: (2n/2n)*VREF+
+Page  171: VDDA(4)          VREF+(4)
+Page  172: depending on whether VREF+ is connected to VDDA or not. The 100 nF capacitors should be
+Page  172: Figure 42. Power supply and reference decoupling (VREF+ not connected to VDDA)
+Page  172: VREF+(1)
+Page  172: VSSA/VREF-(1)
+Page  172: 1. VREF+ input is available on all package whereas the VREF– s available only on UFBGA176+25 and
+Page  172: TFBGA240+25. When VREF- is not available, it is internally connected to VDDA and VSSA.
+Page  172: Figure 43. Power supply and reference decoupling (VREF+ connected to VDDA)
+Page  172: VREF+/VDDA(1)
+Page  172: VREF-/VSSA(1)
+Page  172: 1. VREF+ input is available on all package whereas the VREF– s available only on UFBGA176+25 and
+Page  172: TFBGA240+25. When VREF- is not available, it is internally connected to VDDA and VSSA.
+Page  173: VREF+       Positive reference voltage                 -                   1.80       -       VDDA
+Page  173: VREF-                                                  -                    -       VSSA         -
+Page  173: VREF+
+Page  173: DAC output buffer OFF          0         -       VREF+
+Page  173: Middle code offset for 1             VREF+ = 3.6 V              -        850         -
+Page  173: trim code step                       VREF+ = 1.8 V              -        425         -
+Page  174: VREF+                               buffer OFF
+Page  174: DAC output       VREF+ = 3.6 V          -           -          ±12
+Page  174: Offset                                       RL ≥ 5 ㏀        VREF+ = 1.8 V          -           -          ±25           LSB
+Page  175: DAC output       VREF+ = 3.6 V          -           -           ±5
+Page  175: calibration                              VREF+ = 1.8 V          -           -           ±7
+Page  175: when the buffer is OFF, and from code giving 0.2 V and (VREF+ - 0.2 V) when the buffer is ON.
+Page  176: Table 91. VREFBUF characteristics(1)
+Page  176: VREFBUF       Voltage Reference                                    VSCALE = 000                       -       VDDA
+Page  177: Table 91. VREFBUF characteristics(1) (continued)
+Page  177: Tcoeff     Temperature coefficient −40 °C < TJ < +125 °C                      -             -          -         xVREFINT
+Page  177: VREFBUF_OUT during
+Page  177: VREFBUF
+Page  177: 3. To properly control VREFBUF IINRUSH current during the startup phase and the change of scaling, VDDA voltage should be in
+Page  180: VBG(2)       Scaler input voltage                              -                   Refer to VREFINT
+Page  209: VREF
+Page  209: VREF+                                           VREF+                 OPAMP,
+Page  209: VREF-                                                               Comparator
+Page  209: VREF-
+Page  212: VREFBUF used             1.8       -
+Page  212: COMP, VREFBUF not         0        -
+Page  216: VREFINT           Internal reference voltages                                       1.180          1.216        1.255          V
+Page  216: tS_vrefint(1)(2)    reading the internal reference                 -                    4.3            -            -
+Page  216: ΔVREFINT(2)        spread over the temperature         -40°C < TJ < 125 °C              -            5            15           mV
+Page  217: VREFINT_DIV1 1/4 reference voltage                                   -                     -       25       -
+Page  217: VREFINT_DIV2 1/2 reference voltage                                   -                     -       50       -
+Page  217: VREFINT
+Page  217: VREFINT_DIV3 3/4 reference voltage                                   -                     -       75       -
+Page  217: VREFIN_CAL       Raw data acquired at temperature of 30 °C, VDDA = 3.3 V                    1FF1E860 - 1FF1E861
+Page  228: VREF              0.4            0.2        0.2        0.1
+Page  276: VREF+                                                                 -                                                         1.62              -          VDDA            V
+Page  276: VREF-                                                                 -                                                                          VSSA                        V
+Page  277: VAIN(5)                                         -                               -            -         0        -     VREF+       V
+Page  277: Common mode                                                                               VREF/2   VREF/   VREF/2
+Page  279: 5. Depending on the package, VREF+ can be internally connected to VDDA and VREF- to VSSA.
+Page  282: 3. ADC clock frequency = 25 MHz, ADC resolution = 16 bits, VDDA=VREF+=3.3 V and BOOST=11.
+Page  283: VREF+                         VDDA
+Page  283: 0                                                                                                                                                                                                  VREF+ (VDDA)
+Page  283: (1/2n)*VREF+
+Page  283: (2/2n)*VREF+
+Page  283: (3/2n)*VREF+
+Page  283: (4/2n)*VREF+
+Page  283: (5/2n)*VREF+
+Page  283: (6/2n)*VREF+
+Page  283: (7/2n)*VREF+
+Page  283: (2n-3/2n)*VREF+
+Page  283: (2n-2/2n)*VREF+
+Page  283: (2n-1/2n)*VREF+
+Page  283: (2n/2n)*VREF+
+Page  283: VDDA(4)         VREF+(4)
+Page  284: depending on whether VREF+ is connected to VDDA or not. The 100 nF capacitors should be
+Page  284: Figure 94. Power supply and reference decoupling (VREF+ not connected to VDDA)
+Page  284: VREF+(1)
+Page  284: VSSA/VREF-(1)
+Page  284: 1. VREF+ input is available on all package whereas the VREF– s available only on UFBGA176+25 and
+Page  284: TFBGA240+25. When VREF- is not available, it is internally connected to VDDA and VSSA.
+Page  284: Figure 95. Power supply and reference decoupling (VREF+ connected to VDDA)
+Page  284: VREF+/VDDA(1)
+Page  284: VREF-/VSSA(1)
+Page  284: 1. VREF+ input is available on all package whereas the VREF– s available only on UFBGA176+25 and
+Page  284: TFBGA240+25. When VREF- is not available, it is internally connected to VDDA and VSSA.
+Page  285: VREF+     Positive reference voltage                  -                  1.80       -        VDDA
+Page  285: VREF-                                                 -                    -      VSSA         -
+Page  285: VREF+
+Page  285: DAC output buffer OFF         0         -       VREF+
+Page  286: Middle code offset for 1                VREF+ = 3.6 V             -       850        -
+Page  286: trim code step                      VREF+ = 1.8 V             -       425        -
+Page  286: VREF+                                                      -       160        -
+Page  287: DAC output         VREF+ = 3.6 V          -            -          ±15
+Page  287: Offset error at code        CL ≤ 50 pF,        VREF+ = 1.8 V          -            -          ±30
+Page  287: DAC output         VREF+ = 3.6 V          -            -           ±6
+Page  287: CL ≤ 50 pF,        VREF+ = 1.8 V          -            -           ±7
+Page  288: when the buffer is OFF, and from code giving 0.2 V and (VREF+ - 0.2 V) when the buffer is ON.
+Page  289: Table 189. VREFBUF characteristics(1)
+Page  289: VREFBUF                                                        VSCALE = 000                   -       VDDA
+Page  289: Tcoeff     Temperature coefficient             −40 °C < TJ < +125 °C                 -       -      VREFINT
+Page  290: Table 189. VREFBUF characteristics(1) (continued)
+Page  290: VREFBUF_OUT during
+Page  290: VREFBUF
+Page  290: 3. To properly control VREFBUF IINRUSH current during the startup phase and the change of scaling, VDDA voltage should be in
+Page  350: – Added note to VREF+ pin.
+Page  352: Updated Tcoeff in Table 91: VREFBUF characteristics and tS_vbat in Table 94: VBAT
+Page  355: – Changed VDAC_OUT maximum value to VREF+ −0.2 in Table 188: DAC accuracy.

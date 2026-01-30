@@ -1,0 +1,61 @@
+Keyword: pull-up
+Occurrences: 57
+================================================================================
+
+Page   11: 10.4.4      GPIO port pull-up/pull-down register (GPIOx_PUPDR)
+Page  292: 00: No pull-up
+Page  292: 01: Pull-up
+Page  508: •    Output states: push-pull or open drain + pull-up/down
+Page  508: •    Input states: floating, pull-up/down, analog
+Page  508: •    Input pull-up
+Page  508: •    Output open-drain with pull-up or pull-down capability
+Page  508: •    Output push-pull with pull-up or pull-down capability
+Page  508: •    Alternate function push-pull with pull-up or pull-down capability
+Page  508: •    Alternate function open-drain with pull-up or pull-down capability
+Page  510: 1. GP = general-purpose, PP = push-pull, PU = pull-up, PD = pull-down, OD = open-drain, AF = alternate
+Page  511: The debug pins are in AF pull-up/pull-down after reset:
+Page  511: •    PA15: JTDI in pull-up
+Page  511: •    PA13: JTMS/SWDAT in pull-up
+Page  511: •    PB4: NJTRST in pull-up
+Page  511: All GPIO pins have weak internal pull-up and pull-down resistors, which can be activated or
+Page  511: –    Select the type, pull-up/pull-down and output speed via the GPIOx_OTYPER,
+Page  514: •    The pull-up and pull-down resistors are activated depending on the value in the
+Page  514: •    The pull-up and pull-down resistors are activated depending on the value in the
+Page  515: •     The weak pull-up and pull-down resistors are activated or not depending on the value
+Page  516: •    The weak pull-up and pull-down resistors are disabled by hardware
+Page  517: Pull-up
+Page  519: 10.4.4          GPIO port pull-up/pull-down register (GPIOx_PUPDR)
+Page  519: These bits are written by software to configure the I/O pull-up or pull-down
+Page  519: 00: No pull-up, pull-down
+Page  519: 01: Pull-up
+Page 1067: COMP output passes through the GPIO to the timer break input. With a pull-up resistor, the
+Page 1391: pull-up or pull-down resistors, for instance.
+Page 1890: •       Tamper detection event with configurable filter and internal pull-up
+Page 1906: TAMPxTRG bit. The internal pull-up resistors on the RTC_TAMPx inputs are deactivated
+Page 1906: The RTC_TAMPx inputs are precharged through the I/O internal pull-up resistance before
+Page 1906: The trade-off between tamper detection latency and power consumption through the pull-up
+Page 1906: Note:       Refer to the datasheets for the electrical characteristics of the pull-up resistors.
+Page 1928: Bit 15 TAMPPUDIS: RTC_TAMPx pull-up disable
+Page 1928: 0: Precharge RTC_TAMPx pins before sampling (enable internal pull-up)
+Page 1928: These bit determines the duration of time during which the pull-up/is activated before each
+Page 1928: (no internal pull-up on RTC_TAMPx input).
+Page 2036: configured as alternate function open-drain with an external pull-up.
+Page 2099: configured as alternate function open-drain with an external pull-up.
+Page 2382: the application must provide external pull-up resistors on all data lines (SDMMC_D[3:0]).
+Page 2394: rate in Open Drain mode, which depend on the capacitive load and pull-up resistor. The
+Page 2569: •   integrated ID pull-up resistor used to sample the ID line for A/B device identification.
+Page 2569: •   DP/DM integrated pull-up and pull-down resistors controlled by the OTG_HS core
+Page 2569: depending on the current role of the device. As a peripheral, it enables the DP pull-up
+Page 2569: DP/DM. Pull-up and pull-down resistors are dynamically switched when the peripheral
+Page 2569: •   Pull-up/pull-down resistor ECN circuit. The DP pull-up consists of 2 resistors controlled
+Page 2569: USB Rev2.0. The dynamic trimming of the DP pull-up strength allows to achieve a
+Page 2571: connects the DP pull-up resistor to signal full-speed device connection to the host and
+Page 2575: stable again after the electrical debounce caused by the attachment of a pull-up resistor on
+Page 2600: states stp and data. Any pull-up or pull-down resistors employed by this feature can be
+Page 2619: Bit 3 PS2DET: DM pull-up detection status
+Page 2731: 4.    To initiate SRP, the device turns on its data line pull-up resistor for 5 to 10 ms. The
+Page 2734: indicate a device role. The PHY enables the OTG_DP pull-up resistor to indicate a
+Page 2735: The A-device responds by activating its OTG_DP pull-up resistor within 3 ms of
+Page 2979: the device. It is connected to a +3.3 V supply voltage via a 27 kΩ pull-up resistor. The output
+Page 2979: pull-up must be added externally to the microcontroller.
+Page 3004: •      SWDIO: bi-directional serial data (100kΩ pull-up required)

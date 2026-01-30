@@ -1,0 +1,126 @@
+Keyword: WWDG
+Occurrences: 122
+================================================================================
+
+Page   46: 43         System window watchdog (WWDG) . . . . . . . . . . . . . . . . . . . . . . . . . 1873
+Page   46: 43.2   WWDG main features . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1873
+Page   46: 43.3   WWDG functional description . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1873
+Page   46: 43.3.1      WWDG block diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1874
+Page   46: 43.3.2      WWDG internal signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1874
+Page   46: 43.4   WWDG registers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1877
+Page   46: 43.4.1      Control register (WWDG_CR) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1877
+Page   46: 43.4.2      Configuration register (WWDG_CFR) . . . . . . . . . . . . . . . . . . . . . . . . 1877
+Page   46: 43.4.3      Status register (WWDG_SR) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1878
+Page   46: 43.4.4      WWDG register map . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1879
+Page   75: Table 359.   WWDG internal input/output signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1874
+Page   75: Table 360.   WWDG register map and reset values . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1879
+Page  127: 0x50003000 - 0x50003FFF         WWDG1                     Section 43.4: WWDG registers
+Page  306: •   WWDG reset supported
+Page  307: wwdg1_out_rst                                                                                                 rcc_pwd_dx_req
+Page  307: WWDG1                                                                                                                                                            pwr_hold_ctrl
+Page  308: wwdg1_out_rst               I      Reset line driven by the WWDG1, indicating that a timeout occurred.
+Page  310: •      A reset from the window watchdogs depending on WWDG configuration
+Page  310: (wwdg1_out_rst)
+Page  310: (20 μs min)              wwdg1_out_rst
+Page  311: WWDG1
+Page  312: WWDG1
+Page  312: – Resets the CPU, and the WWDG1 block
+Page  312: WWDG1     wwdg1_out_rst x x x - x x x x x - - - - x       – Same as pwr_bor_rst reset.
+Page  313: WWDG1RSTF
+Page  313: 6      WWDG1 reset (wwdg1_out_rst)                                 0           1           0           0          0         1         0         0        0        1
+Page  315: wwdg1_out_rst (if WW1RSC = ‘1’).
+Page  345: independent watchdog (IWDG1) is connected to the LSI. The window watchdog (WWDG1)
+Page  345: Caution:   Before enabling the WWDG1, the application must set the WW1RSC bit to ‘1’. If the
+Page  345: WW1RSC remains to ‘0’, when the WWDG1 is enabled, its the behavior is not guaranteed.
+Page  422: Bit 0 WW1RSC: WWDG1 reset scope control
+Page  422: In order to work properly, before enabling the WWDG1, this bit must be set to ‘1’.
+Page  426: WWDG1RSTF
+Page  426: Bit 28 WWDG1RSTF: Window Watchdog reset flag (1)
+Page  426: 0: No window watchdog reset occurred from WWDG1 (default after power-on reset)
+Page  426: 1: window watchdog reset occurred from WWDG1
+Page  437: WWDG1EN
+Page  437: Bit 6 WWDG1EN: WWDG1 Clock Enable
+Page  437: Note that in order to work properly, before enabling the WWDG1, the bit WW1RSC must be set to
+Page  437: 0: WWDG1 peripheral clock disable (default after reset)
+Page  437: 1: WWDG1 peripheral clock enabled
+Page  459: WWDG1LPEN
+Page  459: Bit 6 WWDG1LPEN: WWDG1 Clock Enable During CSleep Mode
+Page  459: 0: WWDG1 clock disable during CSleep mode
+Page  459: 1: WWDG1 clock enabled during CSleep mode (default after reset)
+Page  476: Res.                             BKPRAMEN                     Res.                          Res.                        Res.                    WWDG1RSTF                                BKPRAMAMEN        28
+Page  476: WWDG1EN                              GPIOGEN                    RNGEN                          Res.                        Res.                         Res.                                      Res.         6
+Page  478: Res.                                    Res.                        Res.                         Res.                                 TIM12LPEN                   WWDG1LPEN                               GPIOGLPEN      6
+Page  479: Res.                      Res.                    Res.                               TIM12EN                   WWDG1EN                              GPIOGEN                   RNGEN                          Res.         6
+Page  480: Res.                                 TIM12LPEN                   WWDG1LPEN                               GPIOGLPEN                     RNGLPEN                            Res.                           Res.       6
+Page  573: D1         APB3        WWDG1            wwdg1_out_rst         WKUP82                        C      CPU
+Page  730: wwdg1_it                7           0            WWDG1         Window Watchdog interrupt          0x0000 0040
+Page  736: exti_d1_wwdg1_wkup     150         143         WWDG1_RST        Window Watchdog interrupt         0x0000 027C
+Page 1873: RM0433                                                         System window watchdog (WWDG)
+Page 1873: 43       System window watchdog (WWDG)
+Page 1873: The system window watchdog (WWDG) is used to detect the occurrence of a software fault,
+Page 1873: The WWDG clock is prescaled from the APB clock and has a configurable time-window that
+Page 1873: The WWDG is best suited for applications which require the watchdog to react within an
+Page 1873: 43.2     WWDG main features
+Page 1873: 43.3     WWDG functional description
+Page 1873: If the watchdog is activated (the WDGA bit is set in the WWDG_CR register) and when the
+Page 1873: The application program must write in the WWDG_CR register at regular intervals during
+Page 1873: WWDG_CR register must be between 0xFF and 0xC0.
+Page 1873: Refer to Figure 530 and to Section 43.3.2: WWDG internal signals for the WWDG block
+Page 1874: System window watchdog (WWDG)                                                                                                 RM0433
+Page 1874: 43.3.1      WWDG block diagram
+Page 1874: WWDG
+Page 1874: WWDG_CFR
+Page 1874: wwdg_out_rst
+Page 1874: WWDG_SR                                                                     WDGA
+Page 1874: Write to WWDG_CR
+Page 1874: WWDG_CR            T[6:0]                                               EWI            wwdg_it
+Page 1874: 43.3.2      WWDG internal signals
+Page 1874: Table 359 gives the list of WWDG internal signals.
+Page 1874: Table 359. WWDG internal input/output signals
+Page 1874: wwdg_out_rst                   Digital output            WWDG reset signal output
+Page 1874: wwdg_it                  Digital output            WWDG early interrupt output
+Page 1874: WWDG_CR register, then it cannot be disabled again except by a reset.
+Page 1874: due to the unknown status of the prescaler when writing to the WWDG_CR register (see
+Page 1874: Figure 531). The Configuration register (WWDG_CFR) contains the high limit of the window:
+Page 1875: RM0433                                                         System window watchdog (WWDG)
+Page 1875: setting the EWI bit in the WWDG_CFR register. When the downcounter reaches the value
+Page 1875: and/or system recovery/graceful degradation, without generating a WWDG reset. In this
+Page 1875: case, the corresponding interrupt service routine (ISR) should reload the WWDG counter to
+Page 1875: avoid the WWDG reset, then trigger the required actions.
+Page 1875: The EWI interrupt is cleared by writing '0' to the EWIF bit in the WWDG_SR register.
+Page 1875: the WWDG reset is eventually generated.
+Page 1875: Use the formula in Figure 531 to calculate the WWDG timeout.
+Page 1875: Warning:     When writing to the WWDG_CR register, always write 1 in the
+Page 1876: System window watchdog (WWDG)                                                                                RM0433
+Page 1876: wwdg_ewit
+Page 1876: wwdg_rst
+Page 1876: t WWDG = t PCLK × 4096 × 2                   × ( T [ 5:0 ] + 1 )        ( ms )
+Page 1876: tWWDG: WWDG timeout
+Page 1876: t WWDG = ( 1 ⁄ 48000 ) × 4096 × 2 × ( 63 + 1 ) = 43.69ms
+Page 1876: Refer to the datasheet for the minimum and maximum values of the tWWDG.
+Page 1876: When the CPU enters debug mode, WWDG1 counter either continues to work normally or
+Page 1877: RM0433                                                                           System window watchdog (WWDG)
+Page 1877: 43.4             WWDG registers
+Page 1877: 43.4.1           Control register (WWDG_CR)
+Page 1877: 43.4.2           Configuration register (WWDG_CFR)
+Page 1878: System window watchdog (WWDG)                                                                                        RM0433
+Page 1878: 43.4.3           Status register (WWDG_SR)
+Page 1879: RM0433                                                                                                                                            System window watchdog (WWDG)
+Page 1879: 43.4.4       WWDG register map
+Page 1879: The following table gives the WWDG register map and reset values.
+Page 1879: Table 360. WWDG register map and reset values
+Page 1879: WWDG_CR                                                                                                                                                                                                           T[6:0]
+Page 1879: WWDG_CFR                                                                                                                                                                                                      W[6:0]
+Page 1879: WWDG_SR
+Page 3133: WWDG
+Page 3133: Bit 6 WWDG1: WWDG1 stop in debug
+Page 3133: 0: Normal operation - WWDG1 continues to operate while the core is in debug mode
+Page 3133: 1: Stop in debug - WWDG1 is frozen while the core is in debug mode
+Page 3138: WWDG1
+Page 3225: Section 44: System window watchdog (WWDG)
+Page 3225: Corrected math equations used to calculate the WWDG period.
+Page 3231: Section 43: System window watchdog (WWDG)
+Page 3231: Updated Table 360: WWDG register map and reset values.
+Page 3246: WWDG_CFR . . . . . . . . . . . . . . . . . . . . . . . . 1877
+Page 3246: WWDG_CR . . . . . . . . . . . . . . . . . . . . . . . . . 1877
+Page 3246: WWDG_SR . . . . . . . . . . . . . . . . . . . . . . . . . 1878

@@ -33,10 +33,8 @@ When invoked, you should receive:
 **Example invocations:**
 ```
 "Where is the PID controller code?"
-"I need to find where RTH logic lives"
 "Which file handles CRSF telemetry?"
 "Where do I add a new CLI setting?"
-"Find the gyro sampling code"
 "I'm searching for the MSP protocol handler"
 "Help me locate the navigation state machine"
 ```
@@ -367,13 +365,6 @@ main_sources(COMMON_SRC
   - `inav/src/main/navigation/navigation_multicopter.c` - Multirotor RTH
 - **Settings:** `nav_rth_*` settings (15+ settings, use `settings-lookup` agent)
 
-### "How do I add a new sensor driver?"
-1. Add driver file in `drivers/accgyro/`, `drivers/barometer/`, or `drivers/compass/`
-2. Follow existing driver patterns (use `busDevice_t` for SPI/I2C)
-3. Add sensor abstraction in `sensors/gyro.c`, `sensors/barometer.c`, or `sensors/compass.c`
-4. Define `USE_XXX` in relevant `target.h` files
-5. Update `inav/src/main/CMakeLists.txt` to include new source files
-
 ### "What file handles CRSF telemetry?"
 - **Receiver:** `inav/src/main/rx/crsf.c` - CRSF receiver protocol (TX -> FC)
 - **Telemetry:** `inav/src/main/telemetry/crsf.c` - CRSF telemetry output (FC -> TX)
@@ -397,11 +388,6 @@ main_sources(COMMON_SRC
 - **Protocol definitions:** `inav/src/main/msp/msp_protocol.h`
 - **Message handlers:** Search for `MSP_` in msp/ directory
 - Use `msp-expert` agent for MSP-specific questions
-
-### "Where is the task scheduler configured?"
-- **Task definitions:** `inav/src/main/fc/fc_tasks.c` - Priorities and desired rates
-- **Scheduler implementation:** `inav/src/main/scheduler/scheduler.c`
-- **Task list:** `inav/src/main/scheduler/scheduler_tasks.c`
 
 ### "Where do I find GPS protocol handling?"
 - **Core:** `inav/src/main/sensors/gps_common.c` - Protocol abstraction

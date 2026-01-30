@@ -157,6 +157,10 @@ See Response Format below.
 // Settings defined in fc/settings.yaml, NOT direct C code
 // Access: navConfig()->nav_rth_altitude
 // NEVER edit generated settings files directly
+
+// CRITICAL: If modifying a PG struct, increment version in PG_REGISTER
+// Example: PG_REGISTER(systemConfig_t, systemConfig, PGN_SYSTEM_CONFIG, 7) → 8
+// Failure to increment causes EEPROM corruption
 ```
 
 **Hardware abstraction:**

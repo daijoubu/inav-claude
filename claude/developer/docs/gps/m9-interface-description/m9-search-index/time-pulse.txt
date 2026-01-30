@@ -1,0 +1,60 @@
+Keyword: time pulse
+Occurrences: 56
+================================================================================
+
+Page    6: 3.10.24.1 Time pulse parameters................................................................................................. 83
+Page   10: 3.18.2.1 Time pulse time data.................................................................................................... 163
+Page   12: 5.9.26 CFG-TP: Time pulse conﬁguration...................................................................................... 227
+Page   44: 9          tpGran             numeric     ns          43               Time pulse granularity, the quantization error of the
+Page   51: UBX-CFG-TP5              0x06 0x31   •   Time pulse parameters (Get/set)
+Page   53: UBX-TIM-TP               0x0d 0x01    •   Time pulse time data (Periodic/polled)
+Page   83: 3.10.24.1 Time pulse parameters
+Page   83: Time pulse parameters
+Page   84: 0                   U1       tpIdx                  -           -            Time pulse selection       (0   =   TIMEPULSE,     1   =
+Page   84: 24                  I4       userConfig             -           ns           User-conﬁgurable time pulse delay
+Page   84: bit 0   U:1      active                 -           -            If set enable time pulse; if pin assigned to another
+Page   84: bit 1   U:1      lockGnssFreq           -           -            If set, synchronize time pulse to GNSS as soon as
+Page  162: as time pulse and time mark measurements.
+Page  163: 3.18.2.1 Time pulse time data
+Page  163: Time pulse time data
+Page  163: 0                   U4        towMS                  -           ms           Time pulse time of week according to time base
+Page  163: 8                   I4        qErr                   -           ps           Quantization error of time pulse
+Page  163: 12                  U2        week                   -           weeks        Time pulse week number according to time base
+Page  197: CFG-TP                                           Time pulse conﬁguration
+Page  227: 5.9.26 CFG-TP: Time pulse conﬁguration
+Page  227: Use this group to conﬁgure the generation of time pulses.
+Page  227: CFG-TP-PULSE_DEF                     0x20050023 E1            -          -     Determines whether the time pulse is
+Page  227: CFG-TP-PULSE_LENGTH_DEF              0x20050030 E1            -          -     Determines whether the time pulse length is
+Page  228: CFG-TP-PERIOD_TP1                      0x40050002 U4        1e-6         s     Time pulse period (TP1) in [us]
+Page  228: CFG-TP-PERIOD_LOCK_TP1                 0x40050003 U4        1e-6         s     Time pulse period when locked to GNSS time
+Page  228: CFG-TP-FREQ_TP1                        0x40050024 U4          -         Hz     Time pulse frequency (TP1) in [Hz]
+Page  228: CFG-TP-FREQ_LOCK_TP1                   0x40050025 U4          -         Hz     Time pulse frequency when locked to GNSS time
+Page  228: CFG-TP-LEN_TP1                         0x40050004 U4        1e-6         s     Time pulse length (TP1) in [us]
+Page  228: CFG-TP-LEN_LOCK_TP1                    0x40050005 U4        1e-6         s     Time pulse length when locked to GNSS time
+Page  228: CFG-TP-DUTY_TP1                        0x5005002a R8          -          %     Time pulse duty cycle (TP1) in [%]
+Page  228: CFG-TP-DUTY_LOCK_TP1                   0x5005002b R8          -          %     Time pulse duty cycle when locked to GNSS time
+Page  228: CFG-TP-USER_DELAY_TP1                  0x40050006    I4     1e-9         s     User-conﬁgurable time pulse delay (TP1) in [ns]
+Page  228: CFG-TP-TP1_ENA                         0x10050007     L       -          -     Enable the ﬁrst time pulse
+Page  228: if pin associated with time pulse is assigned for another function, the other function takes precedence.
+Page  228: CFG-TP-SYNC_GNSS_TP1                   0x10050008     L       -          -     Sync time pulse to GNSS time or local clock
+Page  228: CFG-TP-ALIGN_TO_TOW_TP1                0x1005000a     L       -          -     Align time pulse to top of second (TP1)
+Page  228: Time pulse period must be an integer fraction of 1 second.
+Page  228: CFG-TP-POL_TP1                         0x1005000b     L       -          -     Set time pulse polarity (TP1)
+Page  229: CFG-TP-PERIOD_TP2                      0x4005000d U4        1e-6         s     Time pulse period (TP2) in [us]
+Page  229: CFG-TP-PERIOD_LOCK_TP2                 0x4005000e U4        1e-6         s     Time pulse period when locked to GNSS time
+Page  229: CFG-TP-FREQ_TP2                        0x40050026 U4          -         Hz     Time pulse frequency (TP2)
+Page  229: CFG-TP-FREQ_LOCK_TP2                   0x40050027 U4          -         Hz     Time pulse frequency when locked to GNSS time
+Page  229: CFG-TP-LEN_TP2                         0x4005000f U4        1e-6         s     Time pulse length (TP2) in [us]
+Page  229: CFG-TP-LEN_LOCK_TP2                    0x40050010 U4        1e-6         s     Time pulse length when locked to GNSS time
+Page  229: CFG-TP-DUTY_TP2                        0x5005002c R8          -          %     Time pulse duty cycle (TP2) in [%]
+Page  229: CFG-TP-DUTY_LOCK_TP2                   0x5005002d R8          -          %     Time pulse duty cycle when locked to GNSS time
+Page  229: CFG-TP-USER_DELAY_TP2                  0x40050011    I4     1e-9         s     User-conﬁgurable time pulse delay (TP2) in [ns]
+Page  229: CFG-TP-TP2_ENA                         0x10050012     L       -          -     Enable the second time pulse
+Page  229: CFG-TP-SYNC_GNSS_TP2                   0x10050013     L       -          -     Sync time pulse to GNSS time or local clock
+Page  229: CFG-TP-ALIGN_TO_TOW_TP2                0x10050015     L       -          -     Align time pulse to top of second (TP2)
+Page  229: Time pulse period must be an integer fraction of 1 second.
+Page  229: CFG-TP-POL_TP2                         0x10050016     L       -          -     Set time pulse polarity (TP2)
+Page  229: PERIOD                               0              Time pulse period [us]
+Page  230: FREQ                                   1               Time pulse frequency [Hz]
+Page  230: RATIO                                  0               Time pulse ratio
+Page  230: LENGTH                                 1               Time pulse length

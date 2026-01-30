@@ -1,0 +1,353 @@
+Keyword: RTC
+Occurrences: 349
+================================================================================
+
+Page   10: 3.16.4 UBX-RXM-RTCM (0x02 0x32)...............................................................................................160
+Page   10: 3.16.4.1 RTCM input status.........................................................................................................160
+Page   10: 4 RTCM protocol...................................................................................................................167
+Page   10: 4.1 RTCM introduction.............................................................................................................................167
+Page   10: 4.2 RTCM 3.x conﬁguration.................................................................................................................... 167
+Page   10: 4.3 RTCM messages overview................................................................................................................167
+Page   10: 4.4 RTCM 3.3 messages..........................................................................................................................169
+Page   14: •   RTCM protocol
+Page   53: UBX-RXM-RTCM             0x02 0x32    •   RTCM input status (Output)
+Page   71: bit 11   U:1    updateRTC        -           -            Update real time clock
+Page   71: •  0 do not wake up to update RTC. RTC is updated
+Page   71: • 1 update RTC. The receiver adds extra wake-up
+Page   71: cycles to update the RTC.
+Page   74: bit 2   U:1   inRtcm         -       -            RTCM2 protocol
+Page   74: bit 5   U:1   inRtcm3        -       -            RTCM3 protocol (not supported for protocol versions
+Page   75: bit 5   U:1       outRtcm3                 -           -            RTCM3 protocol (not supported for protocol versions
+Page   76: bit 2   U:1       inRtcm                   -           -            RTCM2 protocol
+Page   76: bit 5   U:1       inRtcm3                  -           -            RTCM3 protocol (not supported for protocol versions
+Page   76: bit 5   U:1       outRtcm3                 -           -            RTCM3 protocol (not supported for protocol versions
+Page   77: (The bitﬁeld inRtcm3 is not supported for protocol
+Page   77: bit 2   U:1       inRtcm                -           -
+Page   77: bit 5   U:1       inRtcm3               -           -
+Page   77: (The bitﬁeld outRtcm3 is not supported for protocol
+Page   77: bit 5   U:1       outRtcm3              -           -
+Page   78: (The bitﬁeld inRtcm3 is not supported for protocol
+Page   78: bit 2   U:1     inRtcm         -       -
+Page   78: bit 5   U:1     inRtcm3        -       -
+Page   78: (The bitﬁeld outRtcm3 is not supported for protocol
+Page   78: bit 5   U:1     outRtcm3       -       -
+Page   81: bit 8   U:1       rtc                  -            -           RTC
+Page  125: array. 0: UBX, 1: NMEA, 2: RTCM2, 5: RTCM3, 6:
+Page  127: bit 0   U:1       rtcCalib                 -           -            RTC is calibrated
+Page  127: bit 4   U:1       xtalAbsent               -           -            RTC xtal has been determined to be absent (not
+Page  129: bit 0   U:1       rtcCalib                -            -           RTC is calibrated
+Page  129: bit 2   U:1       xtalAbsent              -            -           RTC xtal has been determined to be absent
+Page  145: bit 17   U:1       rtcmCorrUsed          -            -           1 = RTCM corrections have been used for a signal in
+Page  147: •   3 = RTCM2 corrections
+Page  147: •   4 = RTCM3 OSR corrections
+Page  147: •   5 = RTCM3 SSR corrections
+Page  160: 3.16.4 UBX-RXM-RTCM (0x02 0x32)
+Page  160: 3.16.4.1 RTCM input status
+Page  160: Message       UBX-RXM-RTCM
+Page  160: RTCM input status
+Page  160: Comment       This message shows info on a received RTCM input message. It is output upon successful parsing of an RTCM
+Page  160: input message, irrespective of whether the RTCM message is supported or not by the receiver.
+Page  161: 1                   X1       flags                 -            -           RTCM input status ﬂags
+Page  161: bit 0   U:1      crcFailed             -            -           0 when RTCM message received and passed CRC
+Page  161: bits 2…1     U:2      msgUsed               -            -           2 = RTCM message used successfully by the receiver,
+Page  161: RTCM message 4072 (not available on all products)
+Page  161: •   For RTCM 2.3: Reference station ID of the
+Page  161: received RTCM 2 input message. Valid range
+Page  161: •   For RTCM 3.3: Reference station ID (DF003) of
+Page  161: the received RTCM input message. Valid range
+Page  161: 0-4095. Reported only for the standard RTCM
+Page  161: the u-blox proprietary RTCM messages 4072.x.
+Page  164: Comment           This message contains veriﬁcation information about previous time received via assistance data or from RTC.
+Page  164: •   2 = source was RTC
+Page  167: 4 RTCM protocol
+Page  167: 4.1 RTCM introduction
+Page  167: The RTCM (Radio Technical Commission for Maritime Services) protocols are used to supply the
+Page  167: GNSS receiver with real-time diﬀerential correction data. The RTCM protocol speciﬁcations are
+Page  167: available from http://www.rtcm.org.
+Page  167: The RTCM 3.x support is implemented according to RTCM Standard 10403.3 Recommended
+Page  167: 4.2 RTCM 3.x conﬁguration
+Page  167: The conﬁguration of RTCM 3.x input or RTCM 3.x output (if available) is further detailed in the
+Page  167: The RTCM 3.x protocol can be disabled/enabled on communication interfaces using the
+Page  167: Conﬁguration interface, for example conﬁguration item CFG-UART1INPROT-RTCM3X.
+Page  167: 4.3 RTCM messages overview
+Page  167: RTCM-3X – RTCM 3.3 messages
+Page  167: RTCM-3X-TYPE1005        0xf5 0x05   Message type 1005
+Page  167: RTCM-3X-TYPE1006        0xf5 0x06   Message type 1006
+Page  167: RTCM-3X-TYPE1071        0xf5 0x47   Message type 1071
+Page  167: RTCM-3X-TYPE1073        0xf5 0x49   Message type 1073
+Page  167: RTCM-3X-TYPE1074        0xf5 0x4a   Message type 1074
+Page  167: RTCM-3X-TYPE1075        0xf5 0x4b   Message type 1075
+Page  167: RTCM-3X-TYPE1076        0xf5 0x4c   Message type 1076
+Page  167: RTCM-3X-TYPE1077        0xf5 0x4d   Message type 1077
+Page  167: RTCM-3X-TYPE1081        0xf5 0x51   Message type 1081
+Page  167: RTCM-3X-TYPE1083        0xf5 0x53   Message type 1083
+Page  167: RTCM-3X-TYPE1084        0xf5 0x54   Message type 1084
+Page  167: RTCM-3X-TYPE1085        0xf5 0x55   Message type 1085
+Page  167: RTCM-3X-TYPE1086        0xf5 0x56   Message type 1086
+Page  167: RTCM-3X-TYPE1087        0xf5 0x57   Message type 1087
+Page  167: UBX-21022436 - R02                          4 RTCM protocol                                   Page 167 of 259
+Page  168: RTCM-3X-TYPE1091     0xf5 0x5b   Message type 1091
+Page  168: RTCM-3X-TYPE1093     0xf5 0x5d   Message type 1093
+Page  168: RTCM-3X-TYPE1094     0xf5 0x5e   Message type 1094
+Page  168: RTCM-3X-TYPE1095     0xf5 0x5f   Message type 1095
+Page  168: RTCM-3X-TYPE1096     0xf5 0x60   Message type 1096
+Page  168: RTCM-3X-TYPE1097     0xf5 0x61   Message type 1097
+Page  168: RTCM-3X-TYPE1101     0xf5 0x65   Message type 1101
+Page  168: RTCM-3X-TYPE1103     0xf5 0x67   Message type 1103
+Page  168: RTCM-3X-TYPE1104     0xf5 0x68   Message type 1104
+Page  168: RTCM-3X-TYPE1105     0xf5 0x69   Message type 1105
+Page  168: RTCM-3X-TYPE1106     0xf5 0x6a   Message type 1106
+Page  168: RTCM-3X-TYPE1107     0xf5 0x6b   Message type 1107
+Page  168: RTCM-3X-TYPE1111     0xf5 0x6f   Message type 1111
+Page  168: RTCM-3X-TYPE1113     0xf5 0x71   Message type 1113
+Page  168: RTCM-3X-TYPE1114     0xf5 0x72   Message type 1114
+Page  168: RTCM-3X-TYPE1115     0xf5 0x73   Message type 1115
+Page  168: RTCM-3X-TYPE1116     0xf5 0x74   Message type 1116
+Page  168: RTCM-3X-TYPE1117     0xf5 0x75   Message type 1117
+Page  168: RTCM-3X-TYPE1121     0xf5 0x79   Message type 1121
+Page  168: RTCM-3X-TYPE1123     0xf5 0x7b   Message type 1123
+Page  168: RTCM-3X-TYPE1124     0xf5 0x7c   Message type 1124
+Page  168: RTCM-3X-TYPE1125     0xf5 0x7d   Message type 1125
+Page  168: RTCM-3X-TYPE1126     0xf5 0x7e   Message type 1126
+Page  168: RTCM-3X-TYPE1127     0xf5 0x7f   Message type 1127
+Page  168: UBX-21022436 - R02                      4 RTCM protocol                            Page 168 of 259
+Page  169: 4.4 RTCM 3.3 messages
+Page  169: For details see RTCM protocol and the RTCM Standard 10403.3 Recommended Standards for
+Page  169: www.rtcm.org.
+Page  169: Message           RTCM-3X-TYPE1005
+Page  169: Comment           See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  169: 0                 X1        rtcmByte0            -           -         RTCM frame byte 0
+Page  169: 1                 X1        rtcmByte1            -           -         RTCM frame byte 1
+Page  169: 2                 X1        rtcmByte2            -           -         RTCM frame byte 2
+Page  169: Message           RTCM-3X-TYPE1006
+Page  169: Comment           See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  169: 0                 X1        rtcmByte0            -           -         RTCM frame byte 0
+Page  169: 1                 X1        rtcmByte1            -           -         RTCM frame byte 1
+Page  169: UBX-21022436 - R02                                       4 RTCM protocol                                Page 169 of 259
+Page  170: 2                 X1        rtcmByte2            -           -         RTCM frame byte 2
+Page  170: Message           RTCM-3X-TYPE1071
+Page  170: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  170: 0                 X1        rtcmByte0            -           -         RTCM frame byte 0
+Page  170: 1                 X1        rtcmByte1            -           -         RTCM frame byte 1
+Page  170: 2                 X1        rtcmByte2            -           -         RTCM frame byte 2
+Page  170: Message           RTCM-3X-TYPE1073
+Page  170: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  170: UBX-21022436 - R02                                       4 RTCM protocol                                Page 170 of 259
+Page  171: 0                 X1       rtcmByte0             -           -         RTCM frame byte 0
+Page  171: 1                 X1       rtcmByte1             -           -         RTCM frame byte 1
+Page  171: 2                 X1       rtcmByte2             -           -         RTCM frame byte 2
+Page  171: Message           RTCM-3X-TYPE1074
+Page  171: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  171: 0                 X1       rtcmByte0             -           -         RTCM frame byte 0
+Page  171: 1                 X1       rtcmByte1             -           -         RTCM frame byte 1
+Page  171: 2                 X1       rtcmByte2             -           -         RTCM frame byte 2
+Page  171: UBX-21022436 - R02                                       4 RTCM protocol                                Page 171 of 259
+Page  172: Message           RTCM-3X-TYPE1075
+Page  172: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  172: 0                 X1       rtcmByte0             -           -         RTCM frame byte 0
+Page  172: 1                 X1       rtcmByte1             -           -         RTCM frame byte 1
+Page  172: 2                 X1       rtcmByte2             -           -         RTCM frame byte 2
+Page  172: Message           RTCM-3X-TYPE1076
+Page  172: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  172: 0                 X1       rtcmByte0             -           -         RTCM frame byte 0
+Page  172: 1                 X1       rtcmByte1             -           -         RTCM frame byte 1
+Page  172: 2                 X1       rtcmByte2             -           -         RTCM frame byte 2
+Page  172: UBX-21022436 - R02                                       4 RTCM protocol                                Page 172 of 259
+Page  173: Message           RTCM-3X-TYPE1077
+Page  173: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  173: 0                 X1       rtcmByte0             -           -         RTCM frame byte 0
+Page  173: 1                 X1       rtcmByte1             -           -         RTCM frame byte 1
+Page  173: 2                 X1       rtcmByte2             -           -         RTCM frame byte 2
+Page  173: Message           RTCM-3X-TYPE1081
+Page  173: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  173: 0                 X1       rtcmByte0             -           -         RTCM frame byte 0
+Page  173: UBX-21022436 - R02                                       4 RTCM protocol                                Page 173 of 259
+Page  174: 1                 X1       rtcmByte1             -           -         RTCM frame byte 1
+Page  174: 2                 X1       rtcmByte2             -           -         RTCM frame byte 2
+Page  174: Message           RTCM-3X-TYPE1083
+Page  174: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  174: 0                 X1       rtcmByte0             -           -         RTCM frame byte 0
+Page  174: 1                 X1       rtcmByte1             -           -         RTCM frame byte 1
+Page  174: 2                 X1       rtcmByte2             -           -         RTCM frame byte 2
+Page  174: Message           RTCM-3X-TYPE1084
+Page  174: UBX-21022436 - R02                                       4 RTCM protocol                                Page 174 of 259
+Page  175: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  175: 0                 X1       rtcmByte0             -           -         RTCM frame byte 0
+Page  175: 1                 X1       rtcmByte1             -           -         RTCM frame byte 1
+Page  175: 2                 X1       rtcmByte2             -           -         RTCM frame byte 2
+Page  175: Message           RTCM-3X-TYPE1085
+Page  175: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  175: 0                 X1       rtcmByte0             -           -         RTCM frame byte 0
+Page  175: 1                 X1       rtcmByte1             -           -         RTCM frame byte 1
+Page  175: 2                 X1       rtcmByte2             -           -         RTCM frame byte 2
+Page  175: UBX-21022436 - R02                                       4 RTCM protocol                                Page 175 of 259
+Page  176: Message           RTCM-3X-TYPE1086
+Page  176: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  176: 0                 X1        rtcmByte0            -           -         RTCM frame byte 0
+Page  176: 1                 X1        rtcmByte1            -           -         RTCM frame byte 1
+Page  176: 2                 X1        rtcmByte2            -           -         RTCM frame byte 2
+Page  176: Message           RTCM-3X-TYPE1087
+Page  176: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  176: 0                 X1        rtcmByte0            -           -         RTCM frame byte 0
+Page  176: 1                 X1        rtcmByte1            -           -         RTCM frame byte 1
+Page  176: UBX-21022436 - R02                                       4 RTCM protocol                                Page 176 of 259
+Page  177: 2                 X1       rtcmByte2             -           -         RTCM frame byte 2
+Page  177: Message           RTCM-3X-TYPE1091
+Page  177: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  177: 0                 X1       rtcmByte0             -           -         RTCM frame byte 0
+Page  177: 1                 X1       rtcmByte1             -           -         RTCM frame byte 1
+Page  177: 2                 X1       rtcmByte2             -           -         RTCM frame byte 2
+Page  177: Message           RTCM-3X-TYPE1093
+Page  177: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  177: UBX-21022436 - R02                                       4 RTCM protocol                                Page 177 of 259
+Page  178: 0                 X1       rtcmByte0             -           -         RTCM frame byte 0
+Page  178: 1                 X1       rtcmByte1             -           -         RTCM frame byte 1
+Page  178: 2                 X1       rtcmByte2             -           -         RTCM frame byte 2
+Page  178: Message           RTCM-3X-TYPE1094
+Page  178: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  178: 0                 X1       rtcmByte0             -           -         RTCM frame byte 0
+Page  178: 1                 X1       rtcmByte1             -           -         RTCM frame byte 1
+Page  178: 2                 X1       rtcmByte2             -           -         RTCM frame byte 2
+Page  178: UBX-21022436 - R02                                       4 RTCM protocol                                Page 178 of 259
+Page  179: Message           RTCM-3X-TYPE1095
+Page  179: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  179: 0                 X1        rtcmByte0            -           -         RTCM frame byte 0
+Page  179: 1                 X1        rtcmByte1            -           -         RTCM frame byte 1
+Page  179: 2                 X1        rtcmByte2            -           -         RTCM frame byte 2
+Page  179: Message           RTCM-3X-TYPE1096
+Page  179: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  179: 0                 X1        rtcmByte0            -           -         RTCM frame byte 0
+Page  179: 1                 X1        rtcmByte1            -           -         RTCM frame byte 1
+Page  179: 2                 X1        rtcmByte2            -           -         RTCM frame byte 2
+Page  179: UBX-21022436 - R02                                       4 RTCM protocol                                Page 179 of 259
+Page  180: Message           RTCM-3X-TYPE1097
+Page  180: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  180: 0                 X1       rtcmByte0             -           -         RTCM frame byte 0
+Page  180: 1                 X1       rtcmByte1             -           -         RTCM frame byte 1
+Page  180: 2                 X1       rtcmByte2             -           -         RTCM frame byte 2
+Page  180: Message           RTCM-3X-TYPE1101
+Page  180: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  180: 0                 X1       rtcmByte0             -           -         RTCM frame byte 0
+Page  180: UBX-21022436 - R02                                       4 RTCM protocol                                Page 180 of 259
+Page  181: 1                 X1        rtcmByte1            -           -         RTCM frame byte 1
+Page  181: 2                 X1        rtcmByte2            -           -         RTCM frame byte 2
+Page  181: Message           RTCM-3X-TYPE1103
+Page  181: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  181: 0                 X1        rtcmByte0            -           -         RTCM frame byte 0
+Page  181: 1                 X1        rtcmByte1            -           -         RTCM frame byte 1
+Page  181: 2                 X1        rtcmByte2            -           -         RTCM frame byte 2
+Page  181: Message           RTCM-3X-TYPE1104
+Page  181: UBX-21022436 - R02                                       4 RTCM protocol                                Page 181 of 259
+Page  182: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  182: 0                 X1       rtcmByte0             -           -         RTCM frame byte 0
+Page  182: 1                 X1       rtcmByte1             -           -         RTCM frame byte 1
+Page  182: 2                 X1       rtcmByte2             -           -         RTCM frame byte 2
+Page  182: Message           RTCM-3X-TYPE1105
+Page  182: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  182: 0                 X1       rtcmByte0             -           -         RTCM frame byte 0
+Page  182: 1                 X1       rtcmByte1             -           -         RTCM frame byte 1
+Page  182: 2                 X1       rtcmByte2             -           -         RTCM frame byte 2
+Page  182: UBX-21022436 - R02                                       4 RTCM protocol                                Page 182 of 259
+Page  183: Message           RTCM-3X-TYPE1106
+Page  183: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  183: 0                 X1       rtcmByte0             -           -         RTCM frame byte 0
+Page  183: 1                 X1       rtcmByte1             -           -         RTCM frame byte 1
+Page  183: 2                 X1       rtcmByte2             -           -         RTCM frame byte 2
+Page  183: Message           RTCM-3X-TYPE1107
+Page  183: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  183: 0                 X1       rtcmByte0             -           -         RTCM frame byte 0
+Page  183: 1                 X1       rtcmByte1             -           -         RTCM frame byte 1
+Page  183: UBX-21022436 - R02                                       4 RTCM protocol                                Page 183 of 259
+Page  184: 2                 X1        rtcmByte2            -           -         RTCM frame byte 2
+Page  184: Message           RTCM-3X-TYPE1111
+Page  184: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  184: 0                 X1        rtcmByte0            -           -         RTCM frame byte 0
+Page  184: 1                 X1        rtcmByte1            -           -         RTCM frame byte 1
+Page  184: 2                 X1        rtcmByte2            -           -         RTCM frame byte 2
+Page  184: Message           RTCM-3X-TYPE1113
+Page  184: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  184: UBX-21022436 - R02                                       4 RTCM protocol                                Page 184 of 259
+Page  185: 0                 X1       rtcmByte0             -           -         RTCM frame byte 0
+Page  185: 1                 X1       rtcmByte1             -           -         RTCM frame byte 1
+Page  185: 2                 X1       rtcmByte2             -           -         RTCM frame byte 2
+Page  185: Message           RTCM-3X-TYPE1114
+Page  185: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  185: 0                 X1       rtcmByte0             -           -         RTCM frame byte 0
+Page  185: 1                 X1       rtcmByte1             -           -         RTCM frame byte 1
+Page  185: 2                 X1       rtcmByte2             -           -         RTCM frame byte 2
+Page  185: UBX-21022436 - R02                                       4 RTCM protocol                                Page 185 of 259
+Page  186: Message           RTCM-3X-TYPE1115
+Page  186: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  186: 0                 X1       rtcmByte0             -           -         RTCM frame byte 0
+Page  186: 1                 X1       rtcmByte1             -           -         RTCM frame byte 1
+Page  186: 2                 X1       rtcmByte2             -           -         RTCM frame byte 2
+Page  186: Message           RTCM-3X-TYPE1116
+Page  186: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  186: 0                 X1       rtcmByte0             -           -         RTCM frame byte 0
+Page  186: 1                 X1       rtcmByte1             -           -         RTCM frame byte 1
+Page  186: 2                 X1       rtcmByte2             -           -         RTCM frame byte 2
+Page  186: UBX-21022436 - R02                                       4 RTCM protocol                                Page 186 of 259
+Page  187: Message           RTCM-3X-TYPE1117
+Page  187: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  187: 0                 X1       rtcmByte0             -           -         RTCM frame byte 0
+Page  187: 1                 X1       rtcmByte1             -           -         RTCM frame byte 1
+Page  187: 2                 X1       rtcmByte2             -           -         RTCM frame byte 2
+Page  187: Message           RTCM-3X-TYPE1121
+Page  187: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  187: 0                 X1       rtcmByte0             -           -         RTCM frame byte 0
+Page  187: UBX-21022436 - R02                                       4 RTCM protocol                                Page 187 of 259
+Page  188: 1                 X1       rtcmByte1             -           -         RTCM frame byte 1
+Page  188: 2                 X1       rtcmByte2             -           -         RTCM frame byte 2
+Page  188: Message           RTCM-3X-TYPE1123
+Page  188: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  188: 0                 X1       rtcmByte0             -           -         RTCM frame byte 0
+Page  188: 1                 X1       rtcmByte1             -           -         RTCM frame byte 1
+Page  188: 2                 X1       rtcmByte2             -           -         RTCM frame byte 2
+Page  188: Message           RTCM-3X-TYPE1124
+Page  188: UBX-21022436 - R02                                       4 RTCM protocol                                Page 188 of 259
+Page  189: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  189: 0                 X1       rtcmByte0             -           -         RTCM frame byte 0
+Page  189: 1                 X1       rtcmByte1             -           -         RTCM frame byte 1
+Page  189: 2                 X1       rtcmByte2             -           -         RTCM frame byte 2
+Page  189: Message           RTCM-3X-TYPE1125
+Page  189: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  189: 0                 X1       rtcmByte0             -           -         RTCM frame byte 0
+Page  189: 1                 X1       rtcmByte1             -           -         RTCM frame byte 1
+Page  189: 2                 X1       rtcmByte2             -           -         RTCM frame byte 2
+Page  189: UBX-21022436 - R02                                       4 RTCM protocol                                Page 189 of 259
+Page  190: Message           RTCM-3X-TYPE1126
+Page  190: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  190: 0                 X1        rtcmByte0            -           -         RTCM frame byte 0
+Page  190: 1                 X1        rtcmByte1            -           -         RTCM frame byte 1
+Page  190: 2                 X1        rtcmByte2            -           -         RTCM frame byte 2
+Page  190: Message           RTCM-3X-TYPE1127
+Page  190: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  190: 0                 X1        rtcmByte0            -           -         RTCM frame byte 0
+Page  190: 1                 X1        rtcmByte1            -           -         RTCM frame byte 1
+Page  190: UBX-21022436 - R02                                       4 RTCM protocol                                Page 190 of 259
+Page  191: 2                X1      rtcmByte2      -       -         RTCM frame byte 2
+Page  191: UBX-21022436 - R02                          4 RTCM protocol                                Page 191 of 259
+Page  200: CFG-I2CINPROT-RTCM3X                 0x10710004       L       -          -     Flag to indicate if RTCM3X should be an input
+Page  214: CFG-MSGOUT-UBX_RXM_RTCM_I2C   0x20910268 U1       -       -       Output rate of the UBX-RXM-RTCM message on
+Page  214: CFG-MSGOUT-UBX_RXM_RTCM_SPI   0x2091026c U1       -       -       Output rate of the UBX-RXM-RTCM message on
+Page  214: CFG-MSGOUT-UBX_RXM_RTCM_      0x20910269 U1       -       -       Output rate of the UBX-RXM-RTCM message on
+Page  214: CFG-MSGOUT-UBX_RXM_RTCM_      0x2091026a U1       -       -       Output rate of the UBX-RXM-RTCM message on
+Page  214: CFG-MSGOUT-UBX_RXM_RTCM_USB 0x2091026b U1         -       -       Output rate of the UBX-RXM-RTCM message on
+Page  227: CFG-SPIINPROT-RTCM3X                 0x10790004       L       -          -     Flag to indicate if RTCM3X should be an input
+Page  232: CFG-UART1INPROT-RTCM3X               0x10730004       L       -          -     Flag to indicate if RTCM3X should be an input
+Page  233: CFG-UART2INPROT-RTCM3X          0x10750004      L       -       -       Flag to indicate if RTCM3X should be an input
+Page  234: CFG-USBINPROT-RTCM3X             0x10770004     L       -         -     Flag to indicate if RTCM3X should be an input
+Page  237: UBX-CFG-PRT.inRtcm3                          CFG-I2CINPROT-RTCM3X
+Page  238: UBX-CFG-PRT.inRtcm3                         CFG-SPIINPROT-RTCM3X
+Page  238: UBX-CFG-PRT.inRtcm3                         CFG-UART1INPROT-RTCM3X, CFG-UART2INPROT-RTCM3X
+Page  238: UBX-CFG-PRT.inRtcm3                         CFG-USBINPROT-RTCM3X
+Page  241: CFG-I2CINPROT-RTCM3X                                 0x10710004    L        -      -            1 (true)
+Page  249: CFG-MSGOUT-UBX_RXM_RTCM_I2C             0x20910268 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RTCM_SPI             0x2091026c U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RTCM_UART1           0x20910269 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RTCM_UART2           0x2091026a U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RTCM_USB             0x2091026b U1         -      -               0
+Page  253: CFG-SPIINPROT-RTCM3X                                 0x10790004    L        -      -            1 (true)
+Page  255: CFG-UART1INPROT-RTCM3X                             0x10730004    L        -      -            1 (true)
+Page  255: CFG-UART2INPROT-RTCM3X                             0x10750004    L        -      -            1 (true)
+Page  256: CFG-USBINPROT-RTCM3X                              0x10770004    L        -      -            1 (true)

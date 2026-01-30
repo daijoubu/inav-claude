@@ -1,0 +1,59 @@
+Keyword: exception
+Occurrences: 55
+================================================================================
+
+Page   18: 18.1.2      Interrupt and exception vectors . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 730
+Page  729: •   low-latency exception and interrupt handling
+Page  729: All interrupts, including the core exceptions, are managed by the NVIC.
+Page  729: For more information on exceptions and NVIC programming, refer to PM0253 programming
+Page  730: 18.1.2           Interrupt and exception vectors
+Page  730: The exception vectors connected to the NVIC are the following: reset, NMI, HardFault,
+Page  868: •   If it is the Cortex® CPU, bus fault exception is generated when enabled (or a hard fault
+Page  868: exception when bus fault is disabled)
+Page  915: Injected channels cannot be converted continuously. The only exception is when an injected
+Page 1351: exception of the very first start following counter enable (TxCEN bit set).
+Page 1405: By default, the auxiliary outputs are copies of outputs Tx1 and Tx2. The exceptions are:
+Page 1582: matches the compare value, with some exception in center-aligned mode (refer to the CMS
+Page 1672: matches the compare value, with some exception in center-aligned mode (refer to the CMS
+Page 2144: reserved bits and bit fields included there with next exceptions:
+Page 2435: a protocol exception event by setting bit FDCAN_PSR.PXE. When protocol exception
+Page 2435: sample point. In case protocol exception handling is disabled (FDCAN_CCCR.PXHD = 1),
+Page 2465: time can never (with the exception of initialization) be seen at a value lower than n, with n
+Page 2469: synchronization), no transmission is enabled with the exception of the reference message.
+Page 2473: With the exception of global time discontinuity, the global time provided to the application
+Page 2478: condition where the CAN communication is stopped. With the exception of IWT, these error
+Page 2491: trigger memory elements outside INIT state is not allowed. There is an exception for TMIN and TMEX when
+Page 2495: Bit 12 PXHD: Protocol exception handling disable
+Page 2495: 0: Protocol exception handling enabled
+Page 2495: 1: Protocol exception handling disabled
+Page 2501: Bit 14 PXE: Protocol exception event
+Page 2501: 0: No protocol exception event occurred since last read access
+Page 2501: 1: Protocol exception event occurred
+Page 2503: 100: Bit1Error: During the transmission of a message (with the exception of the arbitration
+Page 2998: real time, analyze and identify faults, autonomously handle exceptions, etc.
+Page 3152: A watchpoint debug event either generates a DebugMonitor exception, or causes the
+Page 3152: Bit 27 NOTRCPKT: Trace sampling and exception tracing support (read-only)
+Page 3153: Bit 18 EXCEVTENA: Enable for exception overhead counter overflow event generation
+Page 3153: Bit 16 EXCTRCENA: Enable for exception trace generation
+Page 3155: DWT exception count register (M7_DWT_EXCCNT)
+Page 3155: Bits 7:0 EXCCNT[7:0]: Exception overhead cycle counter
+Page 3155: Counts the number of cycles spent in exception processing.
+Page 3181: •        Exception information
+Page 3188: Bit 19 EXLEVEL_S3: Trace disable, exception level 3
+Page 3188: Disables tracing in the specified exception level in Secure state for exception level 3.
+Page 3188: 0: Enable ViewInst in this exception level
+Page 3188: 1: Disable ViewInst in this exception level
+Page 3188: Bit 16 EXLEVEL_S0: Trace disable, exception level 0
+Page 3188: Disables tracing in the specified exception level in Secure state for exception level 0.
+Page 3188: 0: Enable ViewInst in this exception level
+Page 3188: 1: Disable ViewInst in this exception level
+Page 3188: Bit 11 TRCERR: Tracing of system error exception
+Page 3188: Selects whether a system error exception must always be traced.
+Page 3188: 0: System error exception is traced only if the instruction or exception immediately
+Page 3188: before the system error exception is traced
+Page 3188: 1: System error exception is always traced regardless of the value of ViewInst
+Page 3188: Bit 10 TRCRESET: Tracing of reset exception
+Page 3188: Selects whether a reset exception must always be traced.
+Page 3188: 0: Reset exception is traced only if the instruction or exception immediately
+Page 3188: before the reset exception is traced
+Page 3188: 1: Reset exception is always traced regardless of the value of ViewInst
