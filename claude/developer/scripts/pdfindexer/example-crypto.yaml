@@ -1,0 +1,76 @@
+# Example config for cryptography textbook indexing
+# Usage: ./pdfindexer.py --config example-crypto.yaml build-index
+
+pdf_file: ../../docs/encryption/applied_cryptography-BonehShoup_0_4.pdf
+index_dir: search-index
+
+keywords:
+  # Symmetric encryption
+  - AES
+  - ChaCha20
+  - stream cipher
+  - block cipher
+  - CTR mode
+  - GCM
+  - authenticated encryption
+  - AEAD
+
+  # MACs and Hashing
+  - MAC
+  - HMAC
+  - Poly1305
+  - hash function
+  - SHA-256
+  - collision resistance
+
+  # Key exchange and agreement
+  - Diffie-Hellman
+  - ECDH
+  - key exchange
+  - key agreement
+  - ephemeral key
+
+  # Random number generation
+  - random number
+  - PRNG
+  - entropy
+  - nonce
+
+  # Asymmetric crypto
+  - RSA
+  - elliptic curve
+  - Ed25519
+  - Curve25519
+  - digital signature
+
+  # Security properties
+  - forward secrecy
+  - CPA security
+  - CCA security
+  - semantic security
+  - IND-CPA
+  - IND-CCA
+
+  # Attacks
+  - timing attack
+  - side channel
+  - padding oracle
+  - replay attack
+  - man-in-the-middle
+  - chosen plaintext
+  - chosen ciphertext
+
+  # Key management
+  - key derivation
+  - KDF
+  - HKDF
+  - key rotation
+  - key schedule
+
+  # Modes and protocols
+  - CBC mode
+  - ECB mode
+  - initialization vector
+  - IV
+  - TLS
+  - handshake
