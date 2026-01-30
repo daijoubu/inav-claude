@@ -2,9 +2,79 @@
 
 Completed (✅) and cancelled (❌) projects.
 
-**Total Completed:** 83 | **Total Cancelled:** 4
+**Total Completed:** 86 | **Total Cancelled:** 4
 
 > **Active projects:** See [../INDEX.md](../INDEX.md)
+
+---
+
+### ✅ fix-magnetometer-gui-control-undefined
+
+**Status:** COMPLETED (2026-01-29)
+**Type:** Bug Fix
+**Priority:** MEDIUM-HIGH
+**Created:** 2026-01-29
+**Completed:** 2026-01-29 (same day!)
+**Assignee:** Developer
+**PR:** [#2544](https://github.com/iNavFlight/inav-configurator/pull/2544)
+**Repository:** inav-configurator
+
+Fixed JavaScript ReferenceError preventing magnetometer tab from loading. Root cause: 4 instances across 3 files incorrectly called `GUI_control.prototype.log()` instead of singleton `GUI.log()`. Simple find-and-replace fix aligned with 201 other files using correct pattern.
+
+**Files Changed:**
+- `tabs/magnetometer.js:653` - Magnetometer 3D initialization
+- `tabs/firmware_flasher.js:829` - Firmware flasher connection error
+- `js/serial_backend.js:348,416` - Serial connection errors
+
+**Testing:** Chrome DevTools Protocol confirmed zero errors after fix.
+
+**Assignment Email:** `manager/email/sent/2026-01-29-1030-task-fix-magnetometer-gui-control-undefined.md`
+
+---
+
+### ✅ fix-gps-preset-fields-blank
+
+**Status:** COMPLETED (2026-01-29)
+**Type:** Bug Fix
+**Priority:** MEDIUM-HIGH
+**Created:** 2026-01-27
+**Completed:** 2026-01-29
+**Assignee:** Developer
+**PR:** [#2526](https://github.com/iNavFlight/inav-configurator/pull/2526) (commits added to existing PR)
+**Repository:** inav-configurator
+
+Fixed bug where GPS configuration fields went blank after changing update rate or constellation settings in manual mode. Identified and fixed 4 root causes: race condition in settings load, unwanted auto-detection on page load, unexpected auto-save behavior, and memory leaks from event handlers.
+
+**Solution:** Made `process_html()` async, removed auto-apply on load, removed `data-live` attributes, added hardware detection UI with manual control, namespaced event handlers.
+
+**Reporter:** Jetrell (lead test pilot) - confirmed fixed by sensei-hacker.
+
+**Assignment Email:** `manager/email/sent/2026-01-27-1030-task-fix-gps-preset-fields-blank.md`
+
+---
+
+### ✅ redesign-led-strip-ui
+
+**Status:** COMPLETED (2026-01-29) - Draft PR awaiting manual testing
+**Type:** UI/UX Design & Implementation
+**Priority:** MEDIUM
+**Created:** 2026-01-26
+**Completed:** 2026-01-29
+**Assignee:** Developer
+**PR:** [#2543](https://github.com/iNavFlight/inav-configurator/pull/2543) (DRAFT)
+**Repository:** inav-configurator
+
+Complete redesign of LED Strip configuration tab with improved layout, three aviation-standard Quick Layout presets (X-Frame, Cross-Frame, Wing), and enhanced functionality. Removed cramped step progress bar, reorganized into numbered sections with inline instructions, migrated to inline-block layout, and fixed clear button functionality.
+
+**Deliverables:**
+- New preset system with aviation navigation light standards (FAA/ICAO)
+- Fixed clear buttons properly remove functions/directions/colors
+- Auto-add Color function feature
+- CSS best practices documentation added to CLAUDE.md
+
+**Status:** Code review passed, manual testing pending (PR marked DRAFT).
+
+**Assignment Email:** `manager/email/sent/2026-01-27-0000-task-redesign-led-strip-ui.md`
 
 ---
 
