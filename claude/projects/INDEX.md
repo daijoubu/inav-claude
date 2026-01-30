@@ -2,8 +2,8 @@
 
 This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKED).
 
-**Last Updated:** 2026-01-16
-**Active:** 14 | **Backburner:** 5 | **Blocked:** 2
+**Last Updated:** 2026-01-29
+**Active:** 12 | **Backburner:** 5 | **Blocked:** 2
 
 > **Completed projects:** See [completed/INDEX.md](completed/INDEX.md)
 > **Blocked projects:** See `blocked/` directory

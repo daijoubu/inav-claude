@@ -186,6 +186,9 @@ claude/developer/scripts/testing/start_sitl.sh
 
 IMPORTANT: You are in a sandbox. You probably need to dangerouslySkipPermissions to connect
 
+If you need to send RC channels to SITL, configure UART2 to MSP and send them there. Set receiver_type = MSP
+You may use the continuous RC script to send a stream of RC channels seperate from any reading you need to do on UART1
+
 ### 3. SITL Arming Test
 
 Arm SITL via MSP to test flight modes:
@@ -307,14 +310,13 @@ python3 gps_test_v6.py
 
 ### Configurator UI Testing
 
-1. **Start configurator:**
-   ```bash
-   cd inav-configurator && npm start
-   ```
-
-2. **Run automated UI tests:**
+1. **Run automated UI tests:**
    Use Chrome DevTools MCP for interactive testing, or Playwright for automated tests.
 
+2. 1. **IF Configurator isn't ALREADY running, Start configurator:**
+   ```bash
+   cd inav-configurator && ./start-with-debugging.sh
+   ```
 ---
 
 IMPORTANT: Be sure to actually RUN the test and really look at the results. Do not just think about a test, or write about a test, or calculate a result you want. DO the test.

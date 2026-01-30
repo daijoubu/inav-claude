@@ -1,0 +1,471 @@
+Keyword: watchdog
+Occurrences: 467
+================================================================================
+
+Page   23: 24.3.30 Analog window watchdog (AWD1EN, JAWD1EN, AWD1SGL,
+Page   24: 24.5.9      ADC watchdog threshold register 1 (ADC_LTR1) . . . . . . . . . . . . . . . . 994
+Page   24: 24.5.10 ADC watchdog threshold register 1 (ADC_HTR1) . . . . . . . . . . . . . . . . 995
+Page   24: 24.5.19 ADC analog watchdog 2 configuration register
+Page   24: 24.5.20 ADC analog watchdog 3 configuration register
+Page   24: 24.5.21 ADC watchdog lower threshold register 2 (ADC_LTR2) . . . . . . . . . . 1005
+Page   24: 24.5.22 ADC watchdog higher threshold register 2 (ADC_HTR2) . . . . . . . . . 1006
+Page   24: 24.5.23 ADC watchdog lower threshold register 3 (ADC_LTR3) . . . . . . . . . . 1006
+Page   24: 24.5.24 ADC watchdog higher threshold register 3 (ADC_HTR3) . . . . . . . . . 1007
+Page   28: 29.4.10 Analog watchdog . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1116
+Page   28: 29.7.3      DFSDM channel y analog watchdog and short-circuit detector register
+Page   28: 29.7.4      DFSDM channel y watchdog filter data register
+Page   29: 29.8.9      DFSDM filter x analog watchdog high threshold register
+Page   29: 29.8.10 DFSDM filter x analog watchdog low threshold register
+Page   29: 29.8.11 DFSDM filter x analog watchdog status register
+Page   29: 29.8.12 DFSDM filter x analog watchdog clear flag register
+Page   46: 43         System window watchdog (WWDG) . . . . . . . . . . . . . . . . . . . . . . . . . 1873
+Page   46: 43.3.3      Enabling the watchdog . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1874
+Page   46: 43.3.5      Advanced watchdog interrupt feature . . . . . . . . . . . . . . . . . . . . . . . . 1875
+Page   46: 43.3.6      How to program the watchdog timeout . . . . . . . . . . . . . . . . . . . . . . . 1875
+Page   46: 44         Independent watchdog (IWDG) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1880
+Page   46: 44.3.4      Hardware watchdog . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1882
+Page   59: 55.4.5     FDCAN RAM watchdog register (FDCAN_RWD) . . . . . . . . . . . . . . . 2494
+Page   60: 55.5.4      Calibration watchdog register (FCCAN_CCU_CWD) . . . . . . . . . . . . 2558
+Page   72: Table 207.   Analog watchdog channel selection . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 948
+Page   72: Table 208.   Analog watchdog 1,2,3 comparison . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 949
+Page   83: Figure 171. Analog watchdog guarded area . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 948
+Page   90: Figure 530. Watchdog block diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1874
+Page   90: Figure 531. Window watchdog timing diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1876
+Page   90: Figure 532. Independent watchdog block diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1880
+Page  131: –      Option bytes to configure read and write protection, BOR level, watchdog
+Page  163: •    Watchdog management
+Page  163: –     IWDG_FZ_STOP: independent watchdog (IWDG1) counter active in Stop mode if
+Page  163: –     IWDG_FZ_SDBY: independent watchdog (IWDG1) counter active in Standby
+Page  163: –     IWDG1_SW: hardware (0) or software (1) IWDG1 watchdog control selection
+Page  163: Note:          If the hardware watchdog “control selection” feature is enabled (set to 0), the watchdog is
+Page  163: automatically enabled at power-on, thus generating a reset unless the watchdog key
+Page  164: •   Watchdog management
+Page  196: When set the independent watchdog IWDG1 is frozen in system Standby mode.
+Page  196: 0: Independent watchdog frozen in Standby mode
+Page  196: 1: Independent watchdog keep running in Standby mode.
+Page  196: When set the independent watchdog IWDG1 is in system Stop mode.
+Page  196: 0: Independent watchdog frozen in system Stop mode
+Page  196: 1: Independent watchdog keep running in system Stop mode.
+Page  197: 0: IWDG1 watchdog is controlled by hardware
+Page  197: 1: IWDG1 watchdog is controlled by software
+Page  199: This option bit is used to freeze or not the independent watchdog IWDG1 in system Standby
+Page  199: 0: Independent watchdog frozen in Standby mode
+Page  199: 1: Independent watchdog keep running in Standby mode.
+Page  199: This option bit is used to freeze or not the independent watchdog IWDG1 in system Stop
+Page  199: 0: Independent watchdog frozen in system Stop mode
+Page  199: 1: Independent watchdog keep running in system Stop mode.
+Page  199: IWDG1_SW option bit is used to select if IWDG1 independent watchdog is controlled by
+Page  199: 0: IWDG1 watchdog is controlled by hardware
+Page  199: 1: IWDG1 watchdog is controlled by software
+Page  278: •   Independent watchdog (IWDG)
+Page  278: watchdog (IWDG).
+Page  282: •   Independent watchdog (IWDG)
+Page  282: Independent watchdog (IWDG).
+Page  309: •      A watchdog timeout
+Page  310: •      A reset from the independent watchdogs (iwdg1_out_rst)
+Page  310: •      A reset from the window watchdogs depending on WWDG configuration
+Page  324: Stop or Standby mode for the independent watchdog (IWDG) and Auto-Wakeup Unit
+Page  324: whether the LSI oscillator is stable or not. If an independent watchdog is started either by
+Page  345: Watchdog clocks
+Page  345: The RCC provides the clock for the four watchdog blocks available on the circuit. The
+Page  345: independent watchdog (IWDG1) is connected to the LSI. The window watchdog (WWDG1)
+Page  345: If an independent watchdog is started by either hardware option or software access, the LSI
+Page  405: Security System on LSE or by the Low Speed Watchdog or by the RTC.
+Page  426: Bit 28 WWDG1RSTF: Window Watchdog reset flag (1)
+Page  426: Set by hardware when a window watchdog reset occurs.
+Page  426: 0: No window watchdog reset occurred from WWDG1 (default after power-on reset)
+Page  426: 1: window watchdog reset occurred from WWDG1
+Page  426: Bit 26 IWDG1RSTF: Independent Watchdog reset flag (1)
+Page  426: Set by hardware when an independent watchdog reset occurs.
+Page  426: 0: No independent watchdog reset occurred (default after power-on reset)
+Page  426: 1: Independent watchdog reset occurred
+Page  526: •        Management of independent watchdog behavior (hardware or software / freeze)
+Page  543: Bit 16 IWDG1M: Independent Watchdog 1 mode
+Page  543: This bit indicates the control mode of the Independent Watchdog 1 (IWDG1).
+Page  546: Bit 16 FZIWDGSTB: Freeze independent watchdog in Standby mode
+Page  546: This bit indicates if the independent watchdog is frozen in Standby mode.
+Page  546: 0: Independent Watchdog frozen in Standby mode
+Page  546: 1: Independent Watchdog running in Standby mode
+Page  547: Bit 0 FZIWDGSTP: Freeze independent watchdog in Stop mode
+Page  547: This bit indicates if the independent watchdog is frozen in Stop mode.
+Page  547: 0: Independent Watchdog frozen in Stop mode
+Page  547: 1: Independent Watchdog running in Stop mode
+Page  730: wwdg1_it                7           0            WWDG1         Window Watchdog interrupt          0x0000 0040
+Page  736: exti_d1_wwdg1_wkup     150         143         WWDG1_RST        Window Watchdog interrupt         0x0000 027C
+Page  894: The analog watchdog features allow the application to detect if the input voltage goes
+Page  896: or injected), end of sequence conversion (regular or injected), analog watchdog 1, 2 or
+Page  896: •    3 analog watchdogs per ADC
+Page  897: adc_ext20_trg                                        trigger enable              Discontinuous                                   Analog watchdog 1,2,3
+Page  898: Internal analog watchdog output signal connected to on-chip
+Page  898: timers. (x = Analog watchdog number 1,2,3)
+Page  937: analog watchdog 1, 2, 3.
+Page  942: time (if there is an analog watchdog for instance). In this case, the OVRMOD bit must be
+Page  948: 24.3.30    Analog window watchdog (AWD1EN, JAWD1EN, AWD1SGL,
+Page  948: The three AWD analog watchdogs monitor whether some channels remain within a
+Page  948: Figure 171. Analog watchdog guarded area
+Page  948: An interrupt can be enabled for each of the 3 analog watchdogs by setting AWDyIE in the
+Page  948: Description of analog watchdog 1
+Page  948: The AWD analog watchdog 1 is enabled by setting the AWD1EN bit in the ADC_CFGR
+Page  948: register. This watchdog monitors whether either one selected channel or all enabled
+Page  948: watchdog on one or more channels.
+Page  948: Table 207. Analog watchdog channel selection
+Page  948: watchdog
+Page  948: The AWD1 analog watchdog status bit is set if the analog voltage converted by the ADC is
+Page  949: LTR1[25:0] of the ADC_LTR1 register for the analog watchdog 1.
+Page  949: analog watchdog 1,2,3.
+Page  949: Table 208. Analog watchdog 1,2,3 comparison
+Page  949: Analog watchdog comparison
+Page  949: 1. The watchdog comparison is performed on the raw converted data before any alignment cal-
+Page  949: Description of analog watchdog 2 and 3
+Page  949: The second and third analog watchdogs are more flexible and can guard several selected
+Page  949: The corresponding watchdog is enabled when any bit of AWDCHy[19:0] (y=2,3) is set.
+Page  949: Each analog watchdog is associated to an internal hardware signal ADCx_AWDy_OUT
+Page  949: (x=ADC number, y=watchdog number) which is directly connected to the ETR input
+Page  950: ADCx_AWDy_OUT is activated when the associated analog watchdog is enabled:
+Page  953: Analog watchdog
+Page  953: The analog watchdog functionality is maintained (AWDSGL and AWDEN bits), with the
+Page  953: aligned, the effective analog watchdog comparison can only be performed on 8 bits. The
+Page  976: •    When an analog watchdog detection occurs (flag AWD1, AWD2 and AWD3)
+Page  976: Analog watchdog 1 status bit is set                             AWD1            AWD1IE
+Page  976: Analog watchdog 2 status bit is set                             AWD2            AWD2IE
+Page  976: Analog watchdog 3 status bit is set                             AWD3            AWD3IE
+Page  977: Bit 9 AWD3: Analog watchdog 3 flag
+Page  977: 0: No analog watchdog 3 event occurred (or the flag event was already acknowledged and cleared
+Page  977: 1: Analog watchdog 3 event occurred
+Page  977: Bit 8 AWD2: Analog watchdog 2 flag
+Page  977: 0: No analog watchdog 2 event occurred (or the flag event was already acknowledged and cleared
+Page  977: 1: Analog watchdog 2 event occurred
+Page  977: Bit 7 AWD1: Analog watchdog 1 flag
+Page  977: 0: No analog watchdog 1 event occurred (or the flag event was already acknowledged and cleared
+Page  977: 1: Analog watchdog 1 event occurred
+Page  979: Bit 9 AWD3IE: Analog watchdog 3 interrupt enable
+Page  979: This bit is set and cleared by software to enable/disable the analog watchdog 2 interrupt.
+Page  979: 0: Analog watchdog 3 interrupt disabled
+Page  979: 1: Analog watchdog 3 interrupt enabled
+Page  979: Bit 8 AWD2IE: Analog watchdog 2 interrupt enable
+Page  979: This bit is set and cleared by software to enable/disable the analog watchdog 2 interrupt.
+Page  979: 0: Analog watchdog 2 interrupt disabled
+Page  979: 1: Analog watchdog 2 interrupt enabled
+Page  979: Bit 7 AWD1IE: Analog watchdog 1 interrupt enable
+Page  979: This bit is set and cleared by software to enable/disable the analog watchdog 1 interrupt.
+Page  979: 0: Analog watchdog 1 interrupt disabled
+Page  979: 1: Analog watchdog 1 interrupt enabled
+Page  986: Bits 30:26 AWD1CH[4:0]: Analog watchdog 1 channel selection
+Page  986: analog watchdog.
+Page  986: Bit 24 JAWD1EN: Analog watchdog 1 enable on injected channels
+Page  986: 0: Analog watchdog 1 disabled on injected channels
+Page  986: 1: Analog watchdog 1 enabled on injected channels
+Page  987: Bit 23 AWD1EN: Analog watchdog 1 enable on regular channels
+Page  987: 0: Analog watchdog 1 disabled on regular channels
+Page  987: 1: Analog watchdog 1 enabled on regular channels
+Page  987: Bit 22 AWD1SGL: Enable the watchdog 1 on a single channel or on all channels
+Page  987: This bit is set and cleared by software to enable the analog watchdog on the channel identified by
+Page  987: 0: Analog watchdog 1 enabled on all channels
+Page  987: 1: Analog watchdog 1 enabled on a single channel
+Page  994: 24.5.9          ADC watchdog threshold register 1 (ADC_LTR1)
+Page  994: Bits 25:0 LTR1[25:0]: Analog watchdog 1 lower threshold
+Page  994: These bits are written by software to define the lower threshold for the analog watchdog 1.
+Page  994: Refer to Section 24.3.30: Analog window watchdog (AWD1EN, JAWD1EN, AWD1SGL, AWD1CH,
+Page  995: 24.5.10        ADC watchdog threshold register 1 (ADC_HTR1)
+Page  995: Bits 25:0 HTR1[25:0]: Analog watchdog 1 higher threshold
+Page  995: These bits are written by software to define the higher threshold for the analog watchdog 1.
+Page  995: Refer to Section 24.3.30: Analog window watchdog (AWD1EN, JAWD1EN, AWD1SGL, AWD1CH,
+Page 1004: 24.5.19           ADC analog watchdog 2 configuration register
+Page 1004: Bits 19:0 AWD2CH[19:0]: Analog watchdog 2 channel selection
+Page 1004: by the analog watchdog 2.
+Page 1004: When AWD2CH[19:0] = 000..0, the analog Watchdog 2 is disabled
+Page 1005: 24.5.20        ADC analog watchdog 3 configuration register
+Page 1005: Bits 19:0 AWD3CH[19:0]: Analog watchdog 3 channel selection
+Page 1005: by the analog watchdog 3.
+Page 1005: When AWD3CH[19:0] = 000..0, the analog Watchdog 3 is disabled
+Page 1005: 24.5.21        ADC watchdog lower threshold register 2 (ADC_LTR2)
+Page 1005: Bits 25:0 LTR2[25:0]: Analog watchdog 2 lower threshold
+Page 1005: These bits are written by software to define the lower threshold for the analog watchdog 2.
+Page 1005: Refer to Section 24.3.30: Analog window watchdog (AWD1EN, JAWD1EN, AWD1SGL, AWD1CH,
+Page 1006: 24.5.22        ADC watchdog higher threshold register 2 (ADC_HTR2)
+Page 1006: Bits 25:0 HTR2[25:0]: Analog watchdog 2 higher threshold
+Page 1006: These bits are written by software to define the higher threshold for the analog watchdog 2.
+Page 1006: Refer to Section 24.3.30: Analog window watchdog (AWD1EN, JAWD1EN, AWD1SGL, AWD1CH,
+Page 1006: 24.5.23        ADC watchdog lower threshold register 3 (ADC_LTR3)
+Page 1006: Bits 25:0 LTR3[25:0]: Analog watchdog 3 lower threshold
+Page 1006: These bits are written by software to define the lower threshold for the analog watchdog 3.
+Page 1006: Refer to Section 24.3.30: Analog window watchdog (AWD1EN, JAWD1EN, AWD1SGL, AWD1CH,
+Page 1007: 24.5.24        ADC watchdog higher threshold register 3 (ADC_HTR3)
+Page 1007: Bits 25:0 HTR3[25:0]: Analog watchdog 3 higher threshold
+Page 1007: These bits are written by software to define the higher threshold for the analog watchdog 3.
+Page 1007: Refer to Section 24.3.30: Analog window watchdog (AWD1EN, JAWD1EN, AWD1SGL, AWD1CH,
+Page 1010: Bit 25 AWD3_SLV: Analog watchdog 3 flag of the slave ADC
+Page 1010: Bit 24 AWD2_SLV: Analog watchdog 2 flag of the slave ADC
+Page 1010: Bit 23 AWD1_SLV: Analog watchdog 1 flag of the slave ADC
+Page 1011: Bit 9 AWD3_MST: Analog watchdog 3 flag of the master ADC
+Page 1011: Bit 8 AWD2_MST: Analog watchdog 2 flag of the master ADC
+Page 1011: Bit 7 AWD1_MST: Analog watchdog 1 flag of the master ADC
+Page 1096: DFSDM features an analog watchdog function. Analog watchdog can be assigned to any of
+Page 1096: the input channel data stream or to final output data. Analog watchdog has its own digital
+Page 1097: •   Analog watchdog feature:
+Page 1097: •   Break generation on analog watchdog event or short-circuit detector event
+Page 1097: •   Interrupts: end of conversion, overrun, analog watchdog, short-circuit, channel clock
+Page 1099: 8 watchdog filters
+Page 1099: 8 watchdog comparators                                                      Right bit-shift
+Page 1099: Analog watchdog 0
+Page 1099: Analog watchdog 3
+Page 1099: 2) analog watchdog               Minimum value
+Page 1100: break signal     Break signals event generation from Analog watchdog or
+Page 1102: watchdog, short-circuit detector, extremes detector, control block) is generated by the RCC
+Page 1102: filter or Analog watchdog or Short-circuit detector. Those serial transceivers receive data
+Page 1106: When a clock absence event has occurred, the data conversion (and/or analog watchdog
+Page 1111: •    Analog watchdog filter and short-circuit detector threshold settings. To configure
+Page 1111: channel analog watchdog filter parameters and channel short-circuit detector
+Page 1116: 29.4.10     Analog watchdog
+Page 1116: The analog watchdog purpose is to trigger an external signal (break or interrupt) when an
+Page 1116: Each analog watchdog will supervise serial data receiver outputs (after the analog watchdog
+Page 1116: monitored or not by the analog watchdog x will be selected by AWDCH[7:0] in
+Page 1116: Analog watchdog conversions on input channels are independent from standard
+Page 1116: conversions. In this case, the analog watchdog uses its own filters and signal processing on
+Page 1116: watchdog conversions are performed in a continuous mode on the selected input channels
+Page 1117: –    input serial data are processed by dedicated analog watchdog Sincx channel
+Page 1117: threshold compared with the analog watchdog filter output because data coming from the
+Page 1117: analog watchdog filter is up to a 16-bit resolution. Bits AWHT[7:0] / AWLT[7:0] are not taken
+Page 1117: Parameters of the analog watchdog filter configuration for each input channel are set in
+Page 1117: Each input channel has its own comparator which compares the analog watchdog data
+Page 1117: (from analog watchdog filter) with analog watchdog threshold values (AWHT/AWLT). When
+Page 1117: AWFOSR = 0 (analog watchdog filter is bypassed) cannot be used for analog watchdog
+Page 1117: watched channels and analog watchdog filter parameters with respect to input sampling
+Page 1118: Analog watchdog filter data for given channel y is available for reading by firmware on field
+Page 1118: WDATA[15:0] in DFSDM_CHyWDATR register. That analog watchdog filter data is
+Page 1118: given by the analog watchdog filter setting and the channel input clock frequency.
+Page 1118: The analog watchdog filter conversion works like a regular Fast Continuous Conversion
+Page 1118: watchdog filter output (at channel input clock frequency fCKIN):
+Page 1118: The status of an analog watchdog event is signalized in DFSDM_FLTxAWSR register where
+Page 1118: The global status of an analog watchdog is signalized by the AWDF flag bit in
+Page 1118: signalizes that at least one watchdog occurred (AWHTF[y]=1 or AWLTF[y]=1 for at least one
+Page 1118: An analog watchdog event can be assigned to break output signal. There are four break
+Page 1118: break signal assignment to a given analog watchdog event is done by BKAWH[3:0] and
+Page 1119: Four break outputs are totally available (shared with the analog watchdog function).
+Page 1121: analog watchdog, extremes detector, offset correction. The msb of output data word
+Page 1123: •    Analog watchdog interrupt:
+Page 1124: –      occurred when converted data (output data or data from analog watchdog filter -
+Page 1124: –      separate indication of high or low analog watchdog threshold error by AWHTF[7:0]
+Page 1124: Analog watchdog               AWHTF[7:0],
+Page 1128: 29.7.3           DFSDM channel y analog watchdog and short-circuit detector register
+Page 1128: Short-circuit detector and analog watchdog settings for channel y.
+Page 1128: Bits 23:22 AWFORD[1:0]: Analog watchdog Sinc filter order on channel y
+Page 1128: Bits 20:16 AWFOSR[4:0]: Analog watchdog filter oversampling ratio (decimation rate) on channel y
+Page 1129: 29.7.4           DFSDM channel y watchdog filter data register
+Page 1129: This register contains the data resulting from the analog watchdog filter associated to the
+Page 1129: Bits 15:0 WDATA[15:0]: Input channel y watchdog data
+Page 1129: Data converted by the analog watchdog filter for input channel y. This data is continuously converted
+Page 1131: Bit 30 AWFSEL: Analog watchdog fast mode select
+Page 1131: 0: Analog watchdog on data output value (after the digital filter). The comparison is done after offset
+Page 1131: 1: Analog watchdog on channel transceivers value (after watchdog filter)
+Page 1133: Bits 23:16 AWDCH[7:0]: Analog watchdog channel selection
+Page 1133: These bits select the input channel to be guarded continuously by the analog watchdog.
+Page 1133: AWDCH[y] = 0: Analog watchdog is disabled on channel y
+Page 1133: AWDCH[y] = 1: Analog watchdog is enabled on channel y
+Page 1134: Bit 4 AWDIE: Analog watchdog interrupt enable
+Page 1134: 0: Analog watchdog interrupt is disabled
+Page 1134: 1: Analog watchdog interrupt is enabled
+Page 1135: Bit 4 AWDF: Analog watchdog
+Page 1135: 0: No Analog watchdog event occurred
+Page 1135: 1: The analog watchdog block detected voltage which crosses the value programmed in the
+Page 1140: 29.8.9          DFSDM filter x analog watchdog high threshold register
+Page 1140: Bits 31:8 AWHT[23:0]: Analog watchdog high threshold
+Page 1140: These bits are written by software to define the high threshold for the analog watchdog.
+Page 1140: 16-bit threshold as compared with the analog watchdog filter output (because data coming from
+Page 1140: the analog watchdog filter are up to a 16-bit resolution). Bits AWHT[7:0] are not taken into
+Page 1140: Bits 3:0 BKAWH[3:0]: Break signal assignment to analog watchdog high threshold event
+Page 1140: BKAWH[i] = 0: Break i signal is not assigned to an analog watchdog high threshold event
+Page 1140: BKAWH[i] = 1: Break i signal is assigned to an analog watchdog high threshold event
+Page 1140: 29.8.10         DFSDM filter x analog watchdog low threshold register
+Page 1141: Bits 31:8 AWLT[23:0]: Analog watchdog low threshold
+Page 1141: These bits are written by software to define the low threshold for the analog watchdog.
+Page 1141: the 16-bit threshold as compared with the analog watchdog filter output (because data coming
+Page 1141: from the analog watchdog filter are up to a 16-bit resolution). Bits AWLT[7:0] are not taken into
+Page 1141: Bits 3:0 BKAWL[3:0]: Break signal assignment to analog watchdog low threshold event
+Page 1141: BKAWL[i] = 0: Break i signal is not assigned to an analog watchdog low threshold event
+Page 1141: BKAWL[i] = 1: Break i signal is assigned to an analog watchdog low threshold event
+Page 1141: 29.8.11          DFSDM filter x analog watchdog status register
+Page 1141: Bits 15:8 AWHTF[7:0]: Analog watchdog high threshold flag
+Page 1141: Bits 7:0 AWLTF[7:0]: Analog watchdog low threshold flag
+Page 1142: 29.8.12            DFSDM filter x analog watchdog clear flag register
+Page 1142: Bits 15:8 CLRAWHTF[7:0]: Clear the analog watchdog high threshold flag
+Page 1142: Bits 7:0 CLRAWLTF[7:0]: Clear the analog watchdog low threshold flag
+Page 1343: hrtim_evt6[4:1]                   watchdog, TIMx timers, trigger outputs) or off-chip (HRTIM_EEVx input pins)
+Page 1366: •    on-chip events for other peripheral (ADC’s analog watchdogs and general purpose
+Page 1531: outputs and analog watchdogs. The selection is done with the ETRSEL[3:0] bitfield.
+Page 1551: –    the analog watchdog output of the DFSDM1 peripheral
+Page 1771: –       the analog watchdog output of the DFSDM1 peripheral
+Page 1873: RM0433                                                         System window watchdog (WWDG)
+Page 1873: 43       System window watchdog (WWDG)
+Page 1873: The system window watchdog (WWDG) is used to detect the occurrence of a software fault,
+Page 1873: causes the application program to abandon its normal sequence. The watchdog circuit
+Page 1873: The WWDG is best suited for applications which require the watchdog to react within an
+Page 1873: –    Reset (if watchdog activated) when the downcounter value becomes lower than
+Page 1873: –    Reset (if watchdog activated) if the downcounter is reloaded outside the window
+Page 1873: •   Early wakeup interrupt (EWI): triggered (if enabled and the watchdog activated) when
+Page 1873: If the watchdog is activated (the WDGA bit is set in the WWDG_CR register) and when the
+Page 1874: System window watchdog (WWDG)                                                                                                 RM0433
+Page 1874: Figure 530. Watchdog block diagram
+Page 1874: 43.3.3      Enabling the watchdog
+Page 1874: The watchdog is always disabled after a reset. It is enabled by setting the WDGA bit in the
+Page 1874: This downcounter is free-running, counting down even if the watchdog is disabled. When
+Page 1874: the watchdog is enabled, the T6 bit must be set to prevent generating an immediate reset.
+Page 1874: watchdog produces a reset. The timing varies between a minimum and a maximum value
+Page 1874: window register value and greater than 0x3F. Figure 531 describes the window watchdog
+Page 1875: RM0433                                                         System window watchdog (WWDG)
+Page 1875: 43.3.5   Advanced watchdog interrupt feature
+Page 1875: 43.3.6   How to program the watchdog timeout
+Page 1876: System window watchdog (WWDG)                                                                                RM0433
+Page 1876: Figure 531. Window watchdog timing diagram
+Page 1877: RM0433                                                                           System window watchdog (WWDG)
+Page 1877: watchdog can generate a reset.
+Page 1877: 0: Watchdog disabled
+Page 1877: 1: Watchdog enabled
+Page 1877: These bits contain the value of the watchdog counter, decremented every
+Page 1878: System window watchdog (WWDG)                                                                                        RM0433
+Page 1879: RM0433                                                                                                                                            System window watchdog (WWDG)
+Page 1880: Independent watchdog (IWDG)                                                                                          RM0433
+Page 1880: 44          Independent watchdog (IWDG)
+Page 1880: The devices feature an embedded watchdog peripheral that offers a combination of high
+Page 1880: safety level, timing accuracy and flexibility of use. The Independent watchdog peripheral
+Page 1880: The independent watchdog (IWDG) is clocked by its own dedicated low-speed clock (LSI)
+Page 1880: The IWDG is best suited for applications that require the watchdog to run as a totally
+Page 1880: constraints. For further information on the window watchdog, refer to Section 43 on page
+Page 1880: –         Reset (if watchdog activated) when the downcounter value becomes lower than
+Page 1880: –         Reset (if watchdog activated) if the downcounter is reloaded outside the window
+Page 1880: Figure 532 shows the functional blocks of the independent watchdog module.
+Page 1880: Figure 532. Independent watchdog block diagram
+Page 1880: 1. The watchdog function is implemented in the VDD voltage domain that is still functional in Stop and
+Page 1881: RM0433                                                                 Independent watchdog (IWDG)
+Page 1881: When the independent watchdog is started by writing the value 0x0000 CCCC in the Key
+Page 1881: IWDG_RLR value is reloaded in the counter and the watchdog reset is prevented.
+Page 1881: The IWDG can also work as a window watchdog by setting the appropriate window in the
+Page 1882: Independent watchdog (IWDG)                                                                      RM0433
+Page 1882: 44.3.4      Hardware watchdog
+Page 1882: If the “Hardware watchdog” feature is enabled through the device option bits, the watchdog
+Page 1883: RM0433                                                                            Independent watchdog (IWDG)
+Page 1883: otherwise the watchdog generates a reset when the counter reaches 0.
+Page 1883: Writing the key value 0xCCCC starts the watchdog (except if the hardware watchdog option is
+Page 1884: Independent watchdog (IWDG)                                                                                         RM0433
+Page 1885: RM0433                                                                               Independent watchdog (IWDG)
+Page 1885: Bits 11:0 RL[11:0]: Watchdog counter reload value
+Page 1885: software to define the value to be loaded in the watchdog counter each time the value 0xAAAA
+Page 1885: is written in the Key register (IWDG_KR). The watchdog counter counts down from this value.
+Page 1886: Independent watchdog (IWDG)                                                                                       RM0433
+Page 1886: Bit 2 WVU: Watchdog counter window value update
+Page 1886: Bit 1 RVU: Watchdog counter reload value update
+Page 1886: Bit 0 PVU: Watchdog prescaler value update
+Page 1887: RM0433                                                                             Independent watchdog (IWDG)
+Page 1887: Bits 11:0 WIN[11:0]: Watchdog counter window value
+Page 1888: Independent watchdog (IWDG)
+Page 2277: expires. The transition timer is like a watchdog timer that generates a trigger after 70
+Page 2441: Application watchdog (FDCAN1 only)
+Page 2441: The application watchdog is served by reading register FDCAN_TTOST. When the
+Page 2441: application watchdog is not served in time, bit FDCAN_TTOST.AWE is set, all TTCAN
+Page 2441: The TT application watchdog can be disabled by programming the application watchdog
+Page 2441: limit FDCAN_TTOCF.AWL to 0x00. The TT application watchdog should not be disabled in
+Page 2457: T6: Configuration change enabled   T7: Watchdog event:              T8: Watchdog event: no quartz message
+Page 2458: calibration watchdog.
+Page 2458: A calibration watchdog event also sets interrupt flag FDCAN_CCU_IR.CWE. If enabled by
+Page 2462: application watchdog are not started before either the FDCAN_CCCR.INIT is reset, or
+Page 2463: The TTCAN module provides an application watchdog to verity the function of the
+Page 2463: application program. The Host has to serve this watchdog regularly, else all CAN bus
+Page 2463: activity is stopped. The application watchdog limit FDCAN_TTOCF.AWL specifies the
+Page 2463: number of NTUs between two times the watchdog has to be served. The maximum number
+Page 2463: of NTUs is 256. The application watchdog is served by reading register FDCAN_TTOST.
+Page 2463: FDCAN_TTOST.AWE indicates whether the watchdog has been served in time. In case the
+Page 2463: application failed to serve the application watchdog, interrupt flag FDCAN_TTIR.AW is set.
+Page 2463: For software development, the application watchdog may be disabled by programming
+Page 2474: •    Application_Watchdog (S3)
+Page 2474: application watchdog.The application watchdog is configured via
+Page 2474: watchdog is not served in time, bit FDCAN_TTOST.AWE and interrupt flag
+Page 2494: 55.4.5          FDCAN RAM watchdog register (FDCAN_RWD)
+Page 2494: The RAM watchdog monitors the READY output of the message RAM. A message RAM
+Page 2494: access starts the message RAM watchdog counter with the value configured by the
+Page 2494: FDCAN_IR.WDI bit is set. The RAM watchdog counter is clocked by the fdcan_pclk clock.
+Page 2495: Bits 15:8 WDV[7:0]: Watchdog value
+Page 2495: Actual message RAM watchdog counter value.
+Page 2495: Bits 7:0 WDC[7:0]: Watchdog configuration
+Page 2495: Start value of the message RAM watchdog counter. With the reset value of 00 the counter
+Page 2505: Bit 26 WDI: Watchdog interrupt
+Page 2505: 0: No message RAM watchdog event occurred
+Page 2505: 1: Message RAM watchdog event due to missing READY
+Page 2508: Bit 26 WDIE: Watchdog interrupt enable
+Page 2510: Bit 26 WDIL: Watchdog interrupt Line
+Page 2532: Bits 23:16 AWL[7:0]: Application watchdog limit.
+Page 2532: The application watchdog can be disabled by programming AWL to 0x00.
+Page 2532: watchdog. The application watchdog is incremented once each 256 NTUs.
+Page 2539: Bit 17 AW: Application watchdog.
+Page 2539: 0: Application watchdog served in time
+Page 2539: 1: Application watchdog not served in time
+Page 2541: Bit 17 AWE: Application watchdog interrupt enable
+Page 2543: Bit 17 AWL: Application watchdog interrupt Line
+Page 2545: Bit 29 AWE: Application watchdog event.
+Page 2545: The application watchdog is served by reading FDCAN_TTOST. When the watchdog is
+Page 2545: 0: Application watchdog served in time
+Page 2545: 1: Failed to serve application watchdog in time
+Page 2556: (CCU_CSTAT.CALS = 00). The calibration watchdog value CWD.WDV is also reset.
+Page 2556: Registers FDCAN_CCFG, CCU_CSTAT and the calibration watchdog configuration
+Page 2558: 55.5.4        Calibration watchdog register (FCCAN_CCU_CWD)
+Page 2558: The calibration watchdog is started after the first falling edge when the calibration FSM is in
+Page 2558: state Not_Calibrated (CCU_CSTAT.CALS = 00). In this state the calibration watchdog
+Page 2558: watchdog has counted down to 0, the calibration FSM stays in state Not_Calibrated
+Page 2559: When in state Basic_Calibrated (CCU_CSTAT.CALS = 01), the calibration watchdog is
+Page 2559: calibration watchdog has counted down to 0, the calibration FSM returns to state
+Page 2559: is entered and the calibration watchdog is restarted. In this state the calibration watchdog
+Page 2559: node is received by the attached TTCAN until the calibration watchdog has counted down to
+Page 2559: A calibration watchdog event also sets interrupt flag CCU_IR.CWE. If enabled by
+Page 2559: Bits 31:16 WDV[15:0]: Watchdog value
+Page 2559: Actual calibration watchdog counter value.
+Page 2559: Watchdog configuration
+Page 2559: Start value of the calibration watchdog counter. With the reset value of 00 the counter is
+Page 2560: Bit 0 CWE: Calibration watchdog event
+Page 2560: 0: No calibration watchdog event
+Page 2560: 1: Calibration watchdog event occurred
+Page 2560: Bit 0 CWEE: Calibration watchdog event enable
+Page 2754: 6.   By default, the MAC is programmed for watchdog timer to be enabled, that is, packets
+Page 2754: watchdog timer (bit 16 of Watchdog timeout register (ETH_MACWTR)) to override the
+Page 2754: fixed timeout of 2,048 or 10,240 bytes. You can disable the watchdog timer by
+Page 2754: However, even if the watchdog timer is disabled, a packet greater than 32 Kbytes is cut
+Page 2754: off and a watchdog timeout status is given.
+Page 2804: Watchdog Timer) is given for flexible control and periodic scheduling of Receive Interrupt.
+Page 2837: Receive Watchdog Timeout
+Page 2837: When this bit is set, it indicates that the Receive Watchdog Timer has
+Page 2837: truncated after watchdog timeout.
+Page 2838: – RDES3[22]: Watchdog Timeout
+Page 2855: Bit 9: Receive Watchdog Timeout
+Page 2855: Bit 9 RWTE: Receive Watchdog Timeout Enable
+Page 2855: When this bit is set along with the AIE bit, the Receive Watchdog Timeout interrupt is
+Page 2855: enabled. When this bit is reset, the Receive Watchdog Timeout interrupt is disabled.
+Page 2858: Channel Rx interrupt watchdog timer register (ETH_DMACRXIWTR)
+Page 2858: The Receive Interrupt Watchdog Timer register indicates the watchdog timeout for Receive
+Page 2858: the watchdog timer for the RI bit of the ETH_DMACSR register.
+Page 2858: Bits 7:0 RWT[7:0]: Receive Interrupt Watchdog Timer Count
+Page 2858: field, for which the watchdog timer is set.
+Page 2858: The watchdog timer is triggered with the programmed value after the Rx DMA completes the
+Page 2858: When the watchdog timer runs out, the RI bit is set and the timer is stopped. The watchdog
+Page 2862: Bit 9 RWT: Receive Watchdog Timeout
+Page 2874: watchdog timeout, or overflow). However, if the start byte (write) pointer of a packet is already
+Page 2881: The watchdog timeout limit, Jumbo Packet Enable and 2K Packet Enable have higher
+Page 2881: Enabled and greater than 2,000 bytes with 2K Packet Enabled. The watchdog timeout, if
+Page 2881: enabled, terminates the received packet when watchdog limit is reached. Therefore, the
+Page 2881: programmed giant packet limit should be less than the watchdog limit to get the giant packet
+Page 2882: Bit 19 WD: Watchdog Disable
+Page 2882: When this bit is set, the MAC disables the watchdog timer on the receiver. The MAC can
+Page 2890: Watchdog timeout register (ETH_MACWTR)
+Page 2890: The Watchdog Timeout register controls the watchdog timeout for received packets.
+Page 2890: Bit 8 PWE: Programmable Watchdog Enable
+Page 2890: used as watchdog timeout for a received packet. When this bit is cleared, the watchdog
+Page 2890: Bits 3:0 WTO[3:0]: Watchdog Timeout
+Page 2890: used as watchdog timeout for a received packet. If the length of a received packet exceeds
+Page 2904: Bit 8 RWT: Receive Watchdog Timeout
+Page 3131: •          stop the clock to certain peripherals (CAN, SMBUS timeout, Watchdogs, Timers, RTC)
+Page 3136: Bit 18 WDGLSD1: LS watchdog for D1 stop in debug
+Page 3136: 0: Normal operation - watchdog continues to count while the core is in debug mode
+Page 3136: 1: Stop in debug - watchdog is frozen while Cortex-M7 is in debug mode
+Page 3224: Updated Section : Analog watchdog.
+Page 3225: Section 44: System window watchdog (WWDG)
+Page 3231: Section 43: System window watchdog (WWDG)
+Page 3231: Updated Figure 530: Watchdog block diagram and Figure 531:
+Page 3231: Window watchdog timing diagram.
+Page 3231: Updated Section 43.3.3: Enabling the watchdog and

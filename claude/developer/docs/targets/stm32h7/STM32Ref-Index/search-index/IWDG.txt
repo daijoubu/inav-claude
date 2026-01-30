@@ -1,0 +1,193 @@
+Keyword: IWDG
+Occurrences: 189
+================================================================================
+
+Page   46: 44         Independent watchdog (IWDG) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1880
+Page   46: 44.2   IWDG main features . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1880
+Page   46: 44.3   IWDG functional description . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1880
+Page   46: 44.3.1      IWDG block diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1880
+Page   46: 44.3.2      IWDG internal signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1881
+Page   46: 44.4   IWDG registers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1883
+Page   46: 44.4.1      Key register (IWDG_KR) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1883
+Page   46: 44.4.2      Prescaler register (IWDG_PR) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1884
+Page   47: 44.4.3      Reload register (IWDG_RLR) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1885
+Page   47: 44.4.4      Status register (IWDG_SR) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1886
+Page   47: 44.4.5      Window register (IWDG_WINR) . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1887
+Page   47: 44.4.6      IWDG register map . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1888
+Page   75: Table 361.   IWDG internal input/output signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1881
+Page   75: Table 362.   IWDG register map and reset values . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1888
+Page  127: 0x58004800 - 0x58004BFF           IWDG1                    Section 44.4: IWDG registers
+Page  161: IWDG_FZ_SDBY
+Page  161: IWDG_FZ_STOP
+Page  161: IWDG1_SW
+Page  163: –     IWDG_FZ_STOP: independent watchdog (IWDG1) counter active in Stop mode if
+Page  163: –     IWDG_FZ_SDBY: independent watchdog (IWDG1) counter active in Standby
+Page  163: –     IWDG1_SW: hardware (0) or software (1) IWDG1 watchdog control selection
+Page  163: Depending on the configuration of IWDG_STOP and IWDG_STBY options, the IWDG can
+Page  163: When the IWDG is kept running during Stop or Standby mode, it can wake up the device
+Page  164: –    IWDG1 active in Standby and Stop modes (option byte value = 0x1)
+Page  164: –    IWDG1 not automatically enabled at power-on (option byte value = 0x1)
+Page  195: IWDG_FZ_SDBY
+Page  195: IWDG_FZ_STOP
+Page  195: IWDG1_SW
+Page  196: Bit 18 IWDG_FZ_SDBY: IWDG Standby mode freeze option status bit
+Page  196: When set the independent watchdog IWDG1 is frozen in system Standby mode.
+Page  196: Bit 17 IWDG_FZ_STOP: IWDG Stop mode freeze option status bit
+Page  196: When set the independent watchdog IWDG1 is in system Stop mode.
+Page  197: Bit 4 IWDG1_SW: IWDG1 control mode option status bit
+Page  197: 0: IWDG1 watchdog is controlled by hardware
+Page  197: 1: IWDG1 watchdog is controlled by software
+Page  198: IWDG_FZ_SDBY
+Page  198: IWDG_FZ_STOP
+Page  198: IWDG1_SW
+Page  199: Bit 18 IWDG_FZ_SDBY: IWDG Standby mode freeze option configuration bit
+Page  199: This option bit is used to freeze or not the independent watchdog IWDG1 in system Standby
+Page  199: Bit 17 IWDG_FZ_STOP: IWDG Stop mode freeze option configuration bit
+Page  199: This option bit is used to freeze or not the independent watchdog IWDG1 in system Stop
+Page  199: Bit 4 IWDG1_SW: IWDG1 control mode option configuration bit
+Page  199: IWDG1_SW option bit is used to select if IWDG1 independent watchdog is controlled by
+Page  199: 0: IWDG1 watchdog is controlled by hardware
+Page  199: 1: IWDG1 watchdog is controlled by software
+Page  224: IWDG_FZ_SDBY                            Res.                          CLR_PGSERR1                       PGSERR1                        PGSERRIE1                                                                                Res.             18
+Page  224: IWDG_FZ_STOP                            Res.                         CLR_WRPERR1                       WRPERR1                        WRPERRIE1                                                                                 Res.             17
+Page  224: IWDG1_SW                              MER                                Res.                            Res.                                                                                                                                  4
+Page  225: IWDG_FZ_SDBY
+Page  225: IWDG_FZ_STOP
+Page  225: IWDG1_SW
+Page  227: Res.                                                                                                                                                                                                                                                        Res.                                   FZ_IWDG_SDBY                               IWDG_FZ_SDBY                            Res.               18
+Page  227: Res.                                                                                                                                                                                                                                                        Res.                                   FZ_IWDG_STOP                               IWDG_FZ_STOP                            Res.               17
+Page  227: Res.                                     IWDG1_SW                                   IWDG1_SW                              MER                 4
+Page  262: source    reset in NRST pin, IWDG
+Page  274: IWDG reset, a rising edge on one of the enabled WKUPx pins or a RTC event. Program
+Page  278: •   Independent watchdog (IWDG)
+Page  278: The IWDG is started by writing to its Key register or by hardware option. Once started it
+Page  278: watchdog (IWDG).
+Page  282: •   Independent watchdog (IWDG)
+Page  282: The IWDG is started by programming its Key register or by hardware option. Once
+Page  282: Independent watchdog (IWDG).
+Page  282: The system exits from Standby mode when an external Reset (NRST pin), an IWDG Reset,
+Page  283: pin, IWDG reset.
+Page  307: iwdg1_out_rst              Reset
+Page  307: IWDG1                                                                         Control                                                                            pwr_dx_wkup
+Page  308: iwdg1_out_rst               I      Reset line driven by the IWDG1, indicating that a timeout occurred.
+Page  310: •      A reset from the independent watchdogs (iwdg1_out_rst)
+Page  310: iwdg1_out_rst) perform a system reset of the circuit, which is also propagated to the NRST
+Page  310: CR                                           iwdg1_out_rst
+Page  311: IWDG1
+Page  311: – Resets VDD domain: IWDG1, LDO...
+Page  312: IWDG1
+Page  312: IWDG1     iwdg1_out_rst x x x - x x x x x - - - - x       – Same as pwr_bor_rst reset.
+Page  313: according to the situation that generated the reset. For example when an IWDG1 timeout
+Page  313: the boot phase, both PINRSTF and IWDG1RSTF bits are set, indicating that the IWDG1
+Page  313: IWDG1RSTF
+Page  313: 8      IWDG1 reset (iwdg1_out_rst)                                 0           0           1           0          0         1         0         0        0        1
+Page  315: Note:    The boot sequence is similar for pwr_bor_rst, lpwr_rst, STFxRESET, iwdg1_out_rst and
+Page  316: NRST goes                                PAD Reset (or pwr_bor_rst, SFTRESET, iwdg1_out_rst,…)
+Page  318: LSION or IWDG1 activated
+Page  318: LSI    tempo                                                                                                                                                                                                     IWDG1
+Page  324: Stop or Standby mode for the independent watchdog (IWDG) and Auto-Wakeup Unit
+Page  345: independent watchdog (IWDG1) is connected to the LSI. The window watchdog (WWDG1)
+Page  345: provided to the IWDGs.
+Page  346: an IWDG timeout with an acceptable accuracy.
+Page  347: IWDG1
+Page  426: IWDG1RSTF
+Page  426: Bit 26 IWDG1RSTF: Independent Watchdog reset flag (1)
+Page  476: Res.                                Res.                      Res.                   USB1OTGHSULPIEN                    Res.                    IWDG1RSTF                                      Res.        26
+Page  543: Res.   Res.    Res.     Res.   Res.   Res.   Res.    Res.   Res.    Res.   Res.     Res.   Res.   Res.   Res.   IWDG1M
+Page  543: Bit 16 IWDG1M: Independent Watchdog 1 mode
+Page  543: This bit indicates the control mode of the Independent Watchdog 1 (IWDG1).
+Page  543: 0: IWDG1 controlled by hardware
+Page  543: 1: IWDG1 controlled by software
+Page  546: FZIWDGS
+Page  546: Bit 16 FZIWDGSTB: Freeze independent watchdog in Standby mode
+Page  547: FZIWDG
+Page  547: Bit 0 FZIWDGSTP: Freeze independent watchdog in Stop mode
+Page  549: D1SBRST                          SECURE                                      IWDG1M                                                                                                                         MESAD_2                                                                                                                                                        MEPAD_1                                            Res.                                                                          16
+Page  550: RES.                             PKP                           FZIWDGSTB                          Res.             16
+Page  550: IO_HSLV                         FZIWDGST
+Page 1880: Independent watchdog (IWDG)                                                                                          RM0433
+Page 1880: 44          Independent watchdog (IWDG)
+Page 1880: The independent watchdog (IWDG) is clocked by its own dedicated low-speed clock (LSI)
+Page 1880: The IWDG is best suited for applications that require the watchdog to run as a totally
+Page 1880: 44.2        IWDG main features
+Page 1880: 44.3        IWDG functional description
+Page 1880: 44.3.1      IWDG block diagram
+Page 1880: IWDG_PR           IWDG_SR        IWDG_RLR            IWDG_KR
+Page 1880: 12-bit                                iwdg1_out_
+Page 1881: RM0433                                                                 Independent watchdog (IWDG)
+Page 1881: register (IWDG_KR), the counter starts counting down from the reset value of 0xFFF. When
+Page 1881: it reaches the end of count value (0x000) a reset signal is generated (IWDG reset).
+Page 1881: Whenever the key value 0x0000 AAAA is written in the Key register (IWDG_KR), the
+Page 1881: IWDG_RLR value is reloaded in the counter and the watchdog reset is prevented.
+Page 1881: 44.3.2   IWDG internal signals
+Page 1881: Table 361 gives the list of IWDG internal signals.
+Page 1881: Table 361. IWDG internal input/output signals
+Page 1881: iwdg1_out_rst                    IWDG1 reset signal output
+Page 1881: The IWDG can also work as a window watchdog by setting the appropriate window in the
+Page 1881: Window register (IWDG_WINR).
+Page 1881: Window register (IWDG_WINR), then a reset is provided.
+Page 1881: The default value of the Window register (IWDG_WINR) is 0x0000 0FFF, so if it is not
+Page 1881: the downcounter to the Reload register (IWDG_RLR) value and ease the cycle number
+Page 1881: Configuring the IWDG when the window option is enabled
+Page 1881: 1.   Enable the IWDG by writing 0x0000 CCCC in the Key register (IWDG_KR).
+Page 1881: 2.   Enable register access by writing 0x0000 5555 in the Key register (IWDG_KR).
+Page 1881: 3.   Write the IWDG prescaler by programming Prescaler register (IWDG_PR) from 0 to 7.
+Page 1881: 4.   Write the Reload register (IWDG_RLR).
+Page 1881: 5.   Wait for the registers to be updated (IWDG_SR = 0x0000 0000).
+Page 1881: 6.   Write to the Window register (IWDG_WINR). This automatically refreshes the counter
+Page 1881: value in the Reload register (IWDG_RLR).
+Page 1881: register (IWDG_SR) is set to 0x0000 0000.
+Page 1881: Configuring the IWDG when the window option is disabled
+Page 1881: When the window option it is not used, the IWDG can be configured as follows:
+Page 1882: Independent watchdog (IWDG)                                                                      RM0433
+Page 1882: 1.   Enable the IWDG by writing 0x0000 CCCC in the Key register (IWDG_KR).
+Page 1882: 2.   Enable register access by writing 0x0000 5555 in the Key register (IWDG_KR).
+Page 1882: 3.   Write the prescaler by programming the Prescaler register (IWDG_PR) from 0 to 7.
+Page 1882: 4.   Write the Reload register (IWDG_RLR).
+Page 1882: 5.   Wait for the registers to be updated (IWDG_SR = 0x0000 0000).
+Page 1882: 6.   Refresh the counter value with IWDG_RLR (IWDG_KR = 0x0000 AAAA).
+Page 1882: (IWDG_KR) is written by the software before the counter reaches end of count or if the
+Page 1882: Depending on the IWDG_FZ_STOP and IWDG_FZ_STBY options configuration, the IWDG
+Page 1882: the IWDG is kept running during Stop or Standby modes, it can wake up the device from this
+Page 1882: Once running, the IWDG cannot be stopped.
+Page 1882: Write access to Prescaler register (IWDG_PR), Reload register (IWDG_RLR) and Window
+Page 1882: register (IWDG_WINR) is protected. To modify them, the user must first write the code
+Page 1882: 0x0000 5555 in the Key register (IWDG_KR). A write access to this register with a different
+Page 1882: When the microcontroller enters Debug mode (core halted), the IWDG counter either
+Page 1882: continues to work normally or stops, depending on DBG_IWDG_STOP configuration bit in
+Page 1883: RM0433                                                                            Independent watchdog (IWDG)
+Page 1883: 44.4            IWDG registers
+Page 1883: 44.4.1          Key register (IWDG_KR)
+Page 1883: Writing the key value 0x5555 to enable access to the IWDG_PR, IWDG_RLR and
+Page 1883: IWDG_WINR registers (see Section 44.3.7: Register access protection)
+Page 1884: Independent watchdog (IWDG)                                                                                         RM0433
+Page 1884: 44.4.2          Prescaler register (IWDG_PR)
+Page 1884: Status register (IWDG_SR) must be reset in order to be able to change the prescaler divider.
+Page 1884: register (IWDG_SR) is reset.
+Page 1885: RM0433                                                                               Independent watchdog (IWDG)
+Page 1885: 44.4.3          Reload register (IWDG_RLR)
+Page 1885: is written in the Key register (IWDG_KR). The watchdog counter counts down from this value.
+Page 1885: The RVU bit in the Status register (IWDG_SR) must be reset to be able to change the reload
+Page 1885: register (IWDG_SR) is reset.
+Page 1886: Independent watchdog (IWDG)                                                                                       RM0433
+Page 1886: 44.4.4          Status register (IWDG_SR)
+Page 1887: RM0433                                                                             Independent watchdog (IWDG)
+Page 1887: 44.4.5          Window register (IWDG_WINR)
+Page 1887: The WVU bit in the Status register (IWDG_SR) must be reset in order to be able to change the
+Page 1887: read from this register is valid only when the WVU bit in the Status register (IWDG_SR)
+Page 1888: IWDG_PR
+Page 1888: IWDG_SR
+Page 1888: IWDG_KR
+Page 1888: IWDG_RLR
+Page 1888: IWDG_WINR
+Page 1888: Independent watchdog (IWDG)
+Page 1888: IWDG register map
+Page 1888: Table 362. IWDG register map and reset values
+Page 1888: The following table gives the IWDG register map and reset values.
+Page 3227: SYSCFG user register 11 (SYSCFG_UR11): swapped IWDG1M
+Page 3227: SYSCFG user register 12 (SYSCFG_UR12): swapped IWDG2M
+Page 3240: IWDG_KR . . . . . . . . . . . . . . . . . . . . . . . . . .1883       LTDC_LxBFCR . . . . . . . . . . . . . . . . . . . . . . 1208
+Page 3240: IWDG_PR . . . . . . . . . . . . . . . . . . . . . . . . . .1884       LTDC_LxCACR . . . . . . . . . . . . . . . . . . . . . . 1206
+Page 3240: IWDG_RLR . . . . . . . . . . . . . . . . . . . . . . . . .1885        LTDC_LxCFBAR . . . . . . . . . . . . . . . . . . . . . 1209
+Page 3240: IWDG_SR . . . . . . . . . . . . . . . . . . . . . . . . . .1886       LTDC_LxCFBLNR . . . . . . . . . . . . . . . . . . . . 1210
+Page 3240: IWDG_WINR . . . . . . . . . . . . . . . . . . . . . . . .1887         LTDC_LxCFBLR . . . . . . . . . . . . . . . . . . . . . 1209

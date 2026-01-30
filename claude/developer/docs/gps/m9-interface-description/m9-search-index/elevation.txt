@@ -1,0 +1,13 @@
+Keyword: elevation
+Occurrences: 9
+================================================================================
+
+Page   35: Comment           The number of satellites in view, together with each SV ID, elevation azimuth, and signal strength (C/No) value.
+Page   35: 5 + n·4 elv                   numeric       deg          38               Elevation (<= 90)
+Page   43: 6 + n·6 el                       numeric     deg          -                  Satellite elevation (<= 90)
+Page   65: bit 1   U:1       minEl                   -           -            Apply minimum elevation settings
+Page   66: 12          I1        minElev             -          deg          Minimum elevation for a GNSS satellite to be used in
+Page  139: •   3 = above elevation mask
+Page  144: 11 + n·12           I1        elev                  -            deg         Elevation (range: +/-90), unknown if out of range
+Page  144: 12 + n·12           I2        azim                  -            deg         Azimuth (range 0-360), unknown if elevation is out of
+Page  217: CFG-NAVSPG-INFIL_MINELEV               0x201100a4      I1        -        deg    Minimum elevation for a GNSS satellite to be

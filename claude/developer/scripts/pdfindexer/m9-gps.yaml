@@ -1,0 +1,158 @@
+# M9 GPS Interface Description Indexer
+# Usage: ./pdfindexer.py --config m9-gps.yaml build-index
+
+pdf_file: ../../docs/gps/m9-interface-description/u-blox-M9-SPG-4.04_InterfaceDescription_UBX-21022436.pdf
+index_dir: m9-search-index
+
+keywords:
+  # GNSS Constellations
+  - Galileo
+  - GPS
+  - GLONASS
+  - BeiDou
+  - QZSS
+  - NavIC
+  - SBAS
+  - multi-GNSS
+  - dual frequency
+  - L1
+  - L2
+  - L5
+
+  # Update rates and timing
+  - update rate
+  - measurement rate
+  - navigation rate
+  - Hz
+  - output rate
+  - time pulse
+  - timing accuracy
+  - UTC
+  - time solution
+  - PVT
+
+  # Accuracy and performance
+  - accuracy
+  - horizontal accuracy
+  - vertical accuracy
+  - position accuracy
+  - velocity accuracy
+  - CEP
+  - HDOP
+  - VDOP
+  - PDOP
+  - dilution of precision
+  - time to first fix
+  - TTFF
+  - cold start
+  - warm start
+  - hot start
+
+  # Protocols and messages
+  - UBX protocol
+  - UBX message
+  - NMEA
+  - NMEA message
+  - CFG
+  - NAV
+  - MON
+  - RXM
+  - ACK
+  - message format
+  - checksum
+  - polling
+  - periodic
+
+  # Configuration
+  - configuration
+  - CFG-NAVSPG
+  - CFG-RATE
+  - CFG-GNSS
+  - CFG-SIGNAL
+  - dynamic model
+  - static model
+  - airborne
+  - pedestrian
+  - automotive
+  - sea
+  - fix mode
+  - 2D fix
+  - 3D fix
+
+  # Power management
+  - power saving
+  - power mode
+  - low power
+  - sleep mode
+  - acquisition
+  - tracking
+  - cyclic tracking
+  - power consumption
+  - current draw
+
+  # Satellite information
+  - satellite
+  - SV
+  - space vehicle
+  - PRN
+  - signal strength
+  - C/N0
+  - carrier to noise
+  - elevation
+  - azimuth
+  - ephemeris
+  - almanac
+  - navigation data
+
+  # Jamming and interference
+  - jamming
+  - interference
+  - jamming detection
+  - spoofing
+  - anti-jamming
+  - CW jamming
+  - RF interference
+
+  # Navigation modes
+  - navigation mode
+  - stationary
+  - portable
+  - automotive
+  - pedestrian
+  - airborne 1g
+  - airborne 2g
+  - airborne 4g
+  - wrist
+
+  # Hardware interfaces
+  - UART
+  - I2C
+  - SPI
+  - DDC
+  - baud rate
+  - serial port
+  - USB
+  - interface
+
+  # Data fields
+  - latitude
+  - longitude
+  - altitude
+  - velocity
+  - heading
+  - ground speed
+  - vertical velocity
+  - course
+  - time of week
+  - TOW
+
+  # Additional features
+  - dead reckoning
+  - sensor fusion
+  - assisted GPS
+  - A-GPS
+  - AssistNow
+  - backup battery
+  - RTC
+  - geofence
+  - odometer

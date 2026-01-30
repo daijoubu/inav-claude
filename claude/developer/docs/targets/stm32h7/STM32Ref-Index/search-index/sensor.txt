@@ -1,0 +1,54 @@
+Keyword: sensor
+Occurrences: 50
+================================================================================
+
+Page   23: 24.3.33 Temperature sensor . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 972
+Page   38: 37.3.25 Interfacing with Hall sensors . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1564
+Page   84: Figure 198. Temperature sensor channel block diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 972
+Page   88: Figure 398. Example of Hall sensor interface . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1566
+Page  298: •    to retain the data from/to a sensor when the CPU enters CStop with D1 or D2 domain in
+Page  895: –   The internal temperature sensor (VSENSE), connected to ADC3
+Page  898: VSENSE                                Output voltage from internal temperature sensor
+Page  912: –    the internal temperature sensor (VSENSE) is connected to ADC3_INP/INN18
+Page  913: Temperature sensor, VREFINT and VBAT internal channels
+Page  913: The temperature sensor VSENSE is connected to channel ADC3 VINP[18].
+Page  972: 24.3.33    Temperature sensor
+Page  972: The temperature sensor can measure the junction temperature (TJ) of the device in the –40
+Page  972: The temperature sensor is internally connected to ADC3 VINP[18] input channel which is
+Page  972: used to convert the sensor’s output voltage to a digital value. The sampling time for the
+Page  972: temperature sensor’s analog pin must be greater than the stabilization time specified in the
+Page  972: When not in use, the sensor can be put in power-down mode.
+Page  972: Figure 198 shows the block diagram of the temperature sensor.
+Page  972: Figure 198. Temperature sensor channel block diagram
+Page  972: sensor                              ADC input
+Page  972: (temperature sensor, VSENSE).
+Page  973: To use the sensor:
+Page  973: 3.   Set the VSENSEEN bit in the ADCx_CCR register to wake up the temperature sensor
+Page  973: •    TS_CAL2 is the temperature sensor calibration value acquired at 110°C
+Page  973: •    TS_CAL1 is the temperature sensor calibration value acquired at 30°C
+Page  973: •    TS_DATA is the actual temperature sensor output value converted by ADC
+Page  973: Note:     The sensor has a startup time after waking from power-down mode before it can output
+Page 1012: Bit 23 VSENSEEN: Temperature sensor voltage enable
+Page 1012: 0: Temperature sensor channel disabled
+Page 1012: 1: Temperature sensor channel enabled
+Page 1514: •   Supports incremental (quadrature) encoder and Hall-sensor circuitry for positioning
+Page 1553: power drivers, thermal sensors or any security components.
+Page 1561: The count direction correspond to the rotation direction of the connected sensor. The table
+Page 1562: selected. This might occur if the sensor is positioned near to one of the switching points. For
+Page 1563: The timer, when configured in Encoder Interface mode provides information on the sensor’s
+Page 1564: 37.3.25     Interfacing with Hall sensors
+Page 1565: than the time between 2 changes on the sensors,
+Page 1566: Figure 398. Example of Hall sensor interface
+Page 1619: •   Supports incremental (quadrature) encoder and hall-sensor circuitry for positioning
+Page 1651: The count direction correspond to the rotation direction of the connected sensor. The table
+Page 1652: selected. This might occur if the sensor is positioned near to one of the switching points. For
+Page 1653: The timer, when configured in Encoder Interface mode provides information on the sensor’s
+Page 1653: An example of this feature used to interface Hall sensors is given in Section 37.3.25:
+Page 1653: Interfacing with Hall sensors on page 1564.
+Page 1666: See also Section 37.3.25: Interfacing with Hall sensors on page 1564
+Page 1772: sensors or any security components.
+Page 2769: ordinary clock is associated with an application device such as a sensor or an actuator.
+Page 3219: Temperature sensor.
+Page 3224: ADC slave, Figure 191: Temperature sensor channel block
+Page 3224: Removed temperature sensor precision and replaced ambient by
+Page 3224: junction temperature in Section 25.3.33: Temperature sensor.

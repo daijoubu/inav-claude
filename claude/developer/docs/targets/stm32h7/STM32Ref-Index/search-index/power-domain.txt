@@ -1,0 +1,27 @@
+Keyword: power domain
+Occurrences: 23
+================================================================================
+
+Page   96: Figure 816. Power domains of debug infrastructure . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3001
+Page  158: When the D1 power domain, which contains the embedded Flash memory, is switched
+Page  239: different power domains and of the supply configuration controller.
+Page  245: Default                           – VCORE Power Domains are supplied from the LDO according to
+Page  245: – VCORE Power Domains are supplied from the LDO according to
+Page  259: The VCORE domain is split into the following power domains.
+Page  259: The D1, D2 and system D3 power domains can operate in one of the following operating
+Page 3001: Power domains
+Page 3001: Figure 816. Power domains of debug infrastructure
+Page 3001: The debug components are distributed across the power domains D1 and D3. The D3
+Page 3001: power domain is considered to be always on when the debugger is connected. It therefore
+Page 3001: the other power domain is switched off. In addition, it contains the timestamp generator, the
+Page 3001: The D1 power domain contains the Cortex-M7 core and the associated debug and trace
+Page 3001: power domain therefore needs to be on whenever a debug access to the Cortex-M7 is
+Page 3002: CK_DBG_D1 clocks the trace components in the D1 power domain: System ROM table 2,
+Page 3003: The device includes power-saving features allowing individual power domains to be
+Page 3003: switched off or stopped when not required. If a power domain is switched off or not clocked,
+Page 3003: respective power domain resets. The debug port (SWJ-DP) is reset by a power-on reset of
+Page 3023: power domain: SWO, SWTF, TSG. The DBGMCU is not referenced by the table as it is not a
+Page 3031: The timestamp generator is located in the D3 power domain, and the timestamp is
+Page 3031: distributed to the Cortex-M7. To simplify the distribution over power domain boundaries, the
+Page 3031: 64-bit timestamp is encoded in seven bits, then decoded in the destination power domain,
+Page 3031: Power domain D3             Power domain D1

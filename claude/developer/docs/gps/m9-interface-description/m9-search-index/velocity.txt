@@ -1,0 +1,47 @@
+Keyword: velocity
+Occurrences: 43
+================================================================================
+
+Page    9: 3.15.11.1 Navigation position velocity time solution............................................................. 141
+Page    9: 3.15.25.1 Velocity solution in ECEF............................................................................................156
+Page    9: 3.15.26.1 Velocity solution in NED frame................................................................................. 156
+Page   38: Comment           Velocity is given as course over ground (COG) and speed over ground (SOG).
+Page   41: 13         vVel               numeric     m/s         0.007            Vertical velocity (positive downwards)
+Page   53: UBX-NAV-PVT              0x01 0x07    •   Navigation position velocity time solution (Periodic/polled)
+Page   53: UBX-NAV-VELECEF          0x01 0x11    •   Velocity solution in ECEF (Periodic/polled)
+Page   53: UBX-NAV-VELNED           0x01 0x12    •   Velocity solution in NED frame (Periodic/polled)
+Page   70: bit 2   U:1       outLPVel              -           -            Output low-pass ﬁltered velocity ﬂag
+Page   70: 16                  U1        velLpGain             -           -            Velocity low-pass ﬁlter level, range 0..255
+Page   93: Comment             This message combines position, velocity and time solution, including accuracy ﬁgures.
+Page   95: 52            I4        velN                  -            mm/s        NED north velocity
+Page   95: 56            I4        velE                  -            mm/s        NED east velocity
+Page   95: 60            I4        velD                  -            mm/s        NED down velocity
+Page  112: 20            I4        dx                       2^-20       km/s         X component of the SV velocity in PZ-90.02 coordinate
+Page  112: 24            I4        dy                       2^-20       km/s         Y component of the SV velocity in PZ-90.02 coordinate
+Page  112: 28            I4        dz                       2^-20       km/s         Z component of the SV velocity in PZ-90.02 coordinate
+Page  135: position, altitude and velocity in a number of formats, and status ﬂags and accuracy estimate
+Page  136: Comment       This message outputs the covariance matrices for the position and velocity solutions in the topocentric
+Page  136: 6             U1         velCovValid              -           -            Velocity covariance matrix validity ﬂag
+Page  136: 40            R4         velCovNN                 -           m^2/s^2 Velocity covariance matrix value v_NN
+Page  136: 44            R4         velCovNE                 -           m^2/s^2 Velocity covariance matrix value v_NE
+Page  136: 48            R4         velCovND                 -           m^2/s^2 Velocity covariance matrix value v_ND
+Page  136: 52            R4         velCovEE                 -           m^2/s^2 Velocity covariance matrix value v_EE
+Page  136: 56            R4         velCovED                 -           m^2/s^2 Velocity covariance matrix value v_ED
+Page  136: 60            R4         velCovDD                 -           m^2/s^2 Velocity covariance matrix value v_DD
+Page  141: 3.15.11.1 Navigation position velocity time solution
+Page  141: Navigation position velocity time solution
+Page  141: Comment             This message combines position, velocity and time solution, including accuracy ﬁgures.
+Page  142: 48              I4    velN            -          mm/s         NED north velocity
+Page  142: 52              I4    velE            -          mm/s         NED east velocity
+Page  142: 56              I4    velD            -          mm/s         NED down velocity
+Page  149: bit 0   U:1       gpsFixOk                -           -            1 = position and velocity valid and within DOP and ACC
+Page  156: 3.15.25.1 Velocity solution in ECEF
+Page  156: Velocity solution in ECEF
+Page  156: 4                 I4        ecefVX                 -           cm/s         ECEF X velocity
+Page  156: 8                 I4        ecefVY                 -           cm/s         ECEF Y velocity
+Page  156: 12                I4        ecefVZ                 -           cm/s         ECEF Z velocity
+Page  156: 3.15.26.1 Velocity solution in NED frame
+Page  156: Velocity solution in NED frame
+Page  157: 4             I4        velN                  -            cm/s        North velocity component
+Page  157: 8             I4        velE                  -            cm/s        East velocity component
+Page  157: 12            I4        velD                  -            cm/s        Down velocity component

@@ -1,0 +1,45 @@
+Keyword: ITCM
+Occurrences: 41
+================================================================================
+
+Page   99: Cortex-M7 - ITCM
+Page   99: ITCM                    -                  -                 X                     -           -          -            X             -      -         -             -              -             -               -                -              -             -              -
+Page  100: 100/3247                   ITCM
+Page  100: ITCM-RAM                  ®
+Page  101: The DTCM and ITCM (data and instruction tightly coupled RAMs) are connected through
+Page  101: DTCM and ITCM through AHBS, a specific CPU slave AHB. The ITCM is accessed by
+Page  101: The Cortex-M7 CPU provides AHB/TCM-bus (ITCM and DTCM buses) translation from its
+Page  101: AHBS slave AHB, allowing the MDMA controller to access the ITCM and DTCM.
+Page  102: The Cortex®-M7 CPU uses the 64-bit AXIM bus to access all memories (excluding ITCM,
+Page  102: Cortex®-M7 ITCM bus
+Page  102: The Cortex®-M7 CPU uses the 64-bit ITCM bus for fetching instructions from and accessing
+Page  102: data in the ITCM.
+Page  102: access the ITCM and the DTCM.
+Page  103: matrices, the memory bus can access all internal memories except ITCM and DTCM, and
+Page  103: peripheral bus can access all internal memories except ITCM and DTCM, external
+Page  104: Through the system bus matrices, it can access all internal memories except ITCM and
+Page  104: except ITCM and DTCM, and external memories through the Quad-SPI controller and the
+Page  104: for the SRAM, DTCM, ITCM and Flash memory). To operate a block with no clock upon
+Page  125: ITCM
+Page  130: •   ITCM-RAM on TCM interface mapped at the address 0x0000 0000 and accessible by
+Page  131: ITCM-RAM can be used to host code for time-critical routines (such as interrupt
+Page  131: •   8 ECC bits are added per 64-bit word for AXI-SRAM and ITCM-RAM.
+Page  132: •   All RAM address space: ITCM, DTCM RAMs and SRAMs
+Page  132: •   Boot address 1: ITCM-RAM at 0x0000 0000
+Page  346: •    The CPU enabled SDMMC1, SPI5 and SRAM1, AXISRAM, ITCM, DTCM1, DTCM2
+Page  346: Note:      The FLASH, AXISRAM, ITCM, DTCM1, DTCM2, SRAM4, IWGD1, IWGD2, PWR, EXTI and
+Page  347: ITCM                                                                                                                     SRAM1
+Page  348: •    AXISRAM, ITCM, DTCM1, DTCM2 and FLASH,
+Page  348: As shown in Figure 56, FLASH, AXISRAM, SRAM4, ITCM, DTCM1 and DTCM2 are
+Page  450: ITCMLPEN
+Page  450: Bit 30 ITCMLPEN: D1ITCM Block Clock Enable During CSleep mode
+Page  450: 0: D1 ITCM interface clock disabled during CSleep mode
+Page  450: 1: D1 ITCM interface clock enabled during CSleep mode (default after reset)
+Page  477: SRAM2LPEN                           Res.                        ITCMLPEN                            Res.                      Res.                    Res.                              UART7EN      30
+Page  480: Res.                                UART7LPEN                        Res.                                   Res.                      SRAM2LPEN                           Res.                        ITCMLPEN     30
+Page  532: ITCML
+Page  532: Bit 14 ITCML: D1 ITCM double ECC error lock bit
+Page  532: and lock the ITCM double ECC error flag connection to TIM1/8/15/16/17 and
+Page  532: 0: ITCM double ECC error flag disconnected from TIM1/8/15/16/17/HRTIMER Break
+Page  532: 1: ITCM double ECC error flag connected to TIM1/8/15/16/17/HRTIMER Break inputs
+Page  548: Res.                          Res.                      Res.                           Res.                          Res.                              Res.                           Res.                            ITCML                                                                                                                                                                                                                                                                                                                                                                                Res.                       14

@@ -1,0 +1,699 @@
+Keyword: AXI
+Occurrences: 695
+================================================================================
+
+Page    2: 2.2     AXI interconnect matrix (AXIM) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 104
+Page    2: 2.2.1       AXI introduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 104
+Page    2: 2.2.2       AXI interconnect main features . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 104
+Page    2: 2.2.3       AXI interconnect functional description . . . . . . . . . . . . . . . . . . . . . . . . 105
+Page    2: 2.2.4       AXI interconnect registers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 107
+Page    2: 2.2.5       AXI interconnect register map . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 116
+Page   17: 17.4.9       DMA2D AXI master port timer . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 702
+Page   17: 17.4.16 AXI dead time . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 707
+Page   18: 17.6.20 DMA2D AXI master timer configuration register (DMA2D_AMTCR) . . 726
+Page   20: 21.5    AXI interface . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 779
+Page   29: 29.8.13 DFSDM filter x extremes detector maximum register
+Page   68: Table 5.    AXI interconnect register map and reset values . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 116
+Page   68: Table 14.   FLASH AXI interface memory map vs swapping option . . . . . . . . . . . . . . . . . . . . . . . . . . 154
+Page   72: Table 243.   Filter maximum output resolution (peak data values from filter output)
+Page   72: Table 244.   Integrator maximum output resolution (peak data values from integrator
+Page   80: Figure 2.    AXI interconnect . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 105
+Page   98: •      AXI: Advanced extensible Interface protocol
+Page   99: An AXI bus matrix, two AHB bus matrices and bus bridges allow interconnecting bus
+Page   99: Cortex-M7 - AXIM
+Page   99: MDMA - AXI
+Page   99: AXI SRAM                  X                   -                  -                    -          X          X              -           X       X        X             X              X             X               X                X              X             X               -
+Page  100: AXIM
+Page  100: AXI    Flash
+Page  100: AXI     Flash
+Page  100: AXI
+Page  100: AXI
+Page  100: AXI     AXI
+Page  100: GPV                 64-bit AXI bus matrix
+Page  100: 32-bit bus           AXI  APB
+Page  101: AXI bus matrix in D1 domain
+Page  101: The D1 domain multi AXI bus matrix ensures and arbitrates concurrent accesses from
+Page  101: Refer to Section 2.2: AXI interconnect matrix (AXIM) for more information on AXI
+Page  101: The AXI bus matrix incorporates AHB/AXI bus bridge functionality on its slave bus
+Page  101: interfaces. The AXI/AHB bus bridges on its master interfaces marked as 32-bit in Figure 1
+Page  102: This 32-bit bus connects the D2 domain to the AXI bus matrix in the D1 domain. It allows
+Page  102: Cortex®-M7 AXIM bus
+Page  102: The Cortex®-M7 CPU uses the 64-bit AXIM bus to access all memories (excluding ITCM,
+Page  102: The AXIM bus connects the CPU to the AXI bus matrix in the D1 domain.
+Page  103: The SDMMC1 uses a 32-bit bus, connected to the AXI bus matrix, through which it can
+Page  103: access internal AXI SRAM and Flash memories, and external memories through the Quad-
+Page  103: the system bus matrices, it can access the internal AXI SRAM, SRAM1, SRAM2, SRAM3
+Page  103: The MDMA controller has two bus masters: an AXI 64-bit bus, connected to the AXI bus
+Page  103: The DMA2D graphics accelerator uses a 64-bit bus, connected to the AXI bus matrix.
+Page  103: Through the system bus matrices, internal AXI SRAM, SRAM1, SRAM2, SRAM3 and Flash
+Page  104: The LCD-TFT display controller, LTDC, uses a 64-bit bus, connected to the AXI bus matrix,
+Page  104: through which it can access internal AXI SRAM and Flash memories, and external
+Page  104: 2.2        AXI interconnect matrix (AXIM)
+Page  104: 2.2.1      AXI introduction
+Page  104: The AXI (advanced extensible interface) interconnect is based on the Arm® CoreLink™
+Page  104: The ASIBs are connected to the AMIBs via an AXI switch matrix.
+Page  104: Each ASIB is a slave on an AXI bus or AHB (advanced high-performance bus). Similarly,
+Page  104: each AMIB is a master on an AXI or AHB bus. Where an ASIB or AMIB is connected to an
+Page  104: AHB, it converts between the AHB and the AXI protocol.
+Page  104: The AXI interconnect includes a GPV (global programmer view) which contains registers for
+Page  104: 2.2.2      AXI interconnect main features
+Page  104: •   64-bit AXI bus switch matrix with six ASIBs and seven AMIBs, in D1 domain
+Page  104: •   AHB/AXI bridge function built into the ASIBs
+Page  105: 2.2.3    AXI interconnect functional description
+Page  105: The AXI interconnect is shown in Figure 2.
+Page  105: Figure 2. AXI interconnect
+Page  105: AHB                    AXI              AHB                AXI                AXI            AXI
+Page  105: GPV                                                    AXI switch matrix
+Page  105: AXI
+Page  105: AXI            AXI              AXI               AXI               AXI               AXI             AXI
+Page  105: AXI/AHB       AXI/AHB                                                                                     AXI
+Page  105: INI 2                                   Cortex-M7                                             AXI4                  64           7/32
+Page  105: INI 4                                        MDMA                                             AXI4                  64           4/1
+Page  105: INI 5                                        DMA2D                                            AXI4                  64           2/1
+Page  105: INI 6                                         LTDC                                            AXI4                  64           1/1
+Page  106: TARG 1                 Peripheral 3 and D3 AHB                 AXI4(1)         32            1/1/1
+Page  106: TARG 2                          D2 AHB                         AXI4            32            1/1/1
+Page  106: TARG 3                           Flash A                        AXI4           64            3/2/5
+Page  106: TARG 4                          Flash B                         AXI4           64            3/2/5
+Page  106: TARG 5                            FMC                           AXI4           64            3/3/6
+Page  106: TARG 6                         QUADSPI                          AXI4           64            2/1/3
+Page  106: TARG 7                         AXI SRAM                         AXI3           64            2/2/2
+Page  106: 1. Conversion to AHB protocol is done via an AXI/AHB bridge sitting between AXI interconnect and the
+Page  106: The AXI switch matrix uses a priority-based arbitration when two ASIB simultaneously
+Page  106: priority. The read channel QoS value is programmed in the AXI interconnect - INI x read
+Page  106: QoS register (AXI_INIx_READ_QOS), and the write channel in the AXI interconnect - INI x
+Page  106: write QoS register (AXI_INIx_WRITE_QOS). The default QoS value for all channels is 0
+Page  106: The GPV contains configuration registers for the AXI interconnect (see Section 2.2.4).
+Page  107: 2.2.4           AXI interconnect registers
+Page  107: AXI interconnect - peripheral ID4 register (AXI_PERIPH_ID_4)
+Page  107: AXI interconnect - peripheral ID0 register (AXI_PERIPH_ID_0)
+Page  108: AXI interconnect - peripheral ID1 register (AXI_PERIPH_ID_1)
+Page  108: AXI interconnect - peripheral ID2 register (AXI_PERIPH_ID_2)
+Page  109: AXI interconnect - peripheral ID3 register (AXI_PERIPH_ID_3)
+Page  109: AXI interconnect - component ID0 register (AXI_COMP_ID_0)
+Page  110: AXI interconnect - component ID1 register (AXI_COMP_ID_1)
+Page  110: AXI interconnect - component ID2 register (AXI_COMP_ID_2)
+Page  111: AXI interconnect - component ID3 register (AXI_COMP_ID_3)
+Page  111: AXI interconnect - TARG x bus matrix issuing functionality register
+Page  111: (AXI_TARGx_FN_MOD_ISS_BM)
+Page  112: AXI interconnect - TARG x bus matrix functionality 2 register
+Page  112: (AXI_TARGx_FN_MOD2)
+Page  112: AXI interconnect - TARG x long burst functionality modification register
+Page  112: (AXI_TARGx_FN_MOD_LB)
+Page  113: AXI interconnect - TARG x issuing functionality modification register
+Page  113: (AXI_TARGx_FN_MOD)
+Page  113: AXI interconnect - INI x functionality modification 2 register
+Page  113: (AXI_INIx_FN_MOD2)
+Page  114: AXI interconnect - INI x AHB functionality modification register
+Page  114: (AXI_INIx_FN_MOD_AHB)
+Page  114: Bit 1 WR_INC_OVERRIDE: Converts all AHB-Lite read transactions to a series of single beat AXI
+Page  114: Bit 0 RD_INC_OVERRIDE: Converts all AHB-Lite write transactions to a series of single beat AXI
+Page  114: transactions, and each AHB-Lite write beat is acknowledged with the AXI buffered write
+Page  114: AXI interconnect - INI x read QoS register (AXI_INIx_READ_QOS)
+Page  115: AXI interconnect - INI x write QoS register (AXI_INIx_WRITE_QOS)
+Page  115: AXI interconnect - INI x issuing functionality modification register
+Page  115: (AXI_INIx_FN_MOD)
+Page  116: AXI_COMP_
+Page  116: AXI_COMP_
+Page  116: AXI_PERIPH
+Page  116: AXI_PERIPH_
+Page  116: AXI_PERIPH_
+Page  116: AXI_PERIPH_
+Page  116: AXI_PERIPH_
+Page  116: AXI_PERIPH_
+Page  116: AXI_PERIPH_
+Page  116: AXI_PERIPH_
+Page  116: AXI interconnect register map
+Page  116: Table 5. AXI interconnect register map and reset values
+Page  117: AXI_COMP_
+Page  117: AXI_COMP_
+Page  117: AXI_TARG1_
+Page  117: AXI_TARG1_
+Page  117: AXI_TARG1_
+Page  117: AXI_TARG1_
+Page  117: Table 5. AXI interconnect register map and reset values (continued)
+Page  118: AXI_TARG3_
+Page  118: AXI_TARG2_
+Page  118: AXI_TARG2_
+Page  118: AXI_TARG2_
+Page  118: AXI_TARG2_
+Page  118: Table 5. AXI interconnect register map and reset values (continued)
+Page  119: AXI_TARG7_
+Page  119: AXI_TARG7_
+Page  119: AXI_TARG6_
+Page  119: AXI_TARG5_
+Page  119: AXI_TARG4_
+Page  119: Table 5. AXI interconnect register map and reset values (continued)
+Page  120: AXI_INI1_
+Page  120: AXI_INI1_
+Page  120: AXI_INI1_
+Page  120: AXI_INI1_
+Page  120: AXI_TARG7_
+Page  120: AXI_INI1_FN_
+Page  120: Table 5. AXI interconnect register map and reset values (continued)
+Page  121: AXI_INI3_
+Page  121: AXI_INI3_
+Page  121: AXI_INI3_
+Page  121: AXI_INI3_
+Page  121: AXI_INI2_
+Page  121: AXI_INI2_
+Page  121: AXI_INI2_
+Page  121: Table 5. AXI interconnect register map and reset values (continued)
+Page  122: AXI_INI6_
+Page  122: AXI_INI5_
+Page  122: AXI_INI5_
+Page  122: AXI_INI5_
+Page  122: AXI_INI4_
+Page  122: AXI_INI4_
+Page  122: AXI_INI4_
+Page  122: AXI_INI3_
+Page  122: Table 5. AXI interconnect register map and reset values (continued)
+Page  123: AXI_INI6_
+Page  123: AXI_INI6_
+Page  123: Table 5. AXI interconnect register map and reset values (continued)
+Page  125: AXI SRAM
+Page  127: 0x51000000 - 0x510FFFFF            GPV                     Section 2.2: AXI interconnect matrix (AXIM)
+Page  130: •   D1 domain, AXI SRAM:
+Page  130: –    AXI SRAM is mapped at address 0x2400 0000 and accessible by all system
+Page  130: masters except BDMA through D1 domain AXI bus matrix. AXI SRAM can be
+Page  130: units), while the system AXI SRAM can be accessed as bytes, half-words, words or double-
+Page  130: words (64-bit units). These memories can be addressed at maximum system clock
+Page  131: •   8 ECC bits are added per 64-bit word for AXI-SRAM and ITCM-RAM.
+Page  131: The Flash memory interface manages CPU AXI accesses to the Flash memory. It
+Page  134: 64-bit AXI bus
+Page  134: AXI Interface 1                             256
+Page  134: 64-bit AXI bus
+Page  134: AXI Interface 2                             256            Non-volatile
+Page  135: D1 domain bus clock (embedded Flash memory AXI
+Page  135: The embedded Flash memory offers two 64-bit AXI slave ports for code and data accesses,
+Page  135: Note:    The application can simultaneously request a read and a write operation through each AXI
+Page  136: AXI interface 1
+Page  136: 64-bit AXI bus
+Page  136: 64-bit AXI bus
+Page  136: AXI Interface 2
+Page  136: queues and buffers to perform Flash read, write and erase operations with maximum
+Page  136: Thanks to the addition of a read and write data buffer, the AXI slave port handles the
+Page  137: AXI system
+Page  138: Bank 1                              128 K          Sector 0         AXI ports       0x0
+Page  138: AXI ports
+Page  138: AXI ports
+Page  138: AXI ports
+Page  141: Flash memories are read through the AXI interface, while the option bytes are read through
+Page  142: The AXI interface read channel operates as follows:
+Page  142: •   When the read command queue is full, any new AXI read request stalls the bus read
+Page  143: 64-bit AXI bus
+Page  143: AXI Interface1
+Page  143: To AXI
+Page  143: 64-bit AXI bus
+Page  143: AXI Interface2
+Page  143: To AXI
+Page  143: 1.   Freely perform read accesses to any AXI-mapped area.
+Page  143: embedded Flash memory AXI interface clock frequency (sys_ck) and the internal voltage
+Page  144: AXI Interface clock frequency vs VCORE range
+Page  144: 1. Refer to the Reset and clock control section RCC section for the maximum product FACLK frequency.
+Page  144: to accommodate AXI interface clock frequencies with a safety margin (see Table 12).
+Page  144: When changing the AXI bus frequency, the application software must follow the below
+Page  144: 3.    Modify the embedded Flash memory clock source and/or the AXI bus clock prescaler in
+Page  144: 4.    Check that the new embedded Flash memory clock source and/or the new AXI bus
+Page  144: memory clock source status and/or the AXI bus prescaler value in the RCC_CFGR
+Page  144: 1.    Modify the embedded Flash memory clock source and/or the AXI bus clock prescaler in
+Page  144: 2.    Check that the embedded Flash memory new clock source and/or the new AXI bus
+Page  144: memory clock source status and/or the AXI interface prescaler value in the
+Page  145: The AXI interface write channel operates as follows:
+Page  145: •    A 256-bit write data buffer is associated with each AXI interface. It supports multiple
+Page  145: •    When the write queue is full, any new AXI write request stalls the bus write channel
+Page  146: 64-bit AXI bus
+Page  146: AXI Interface1
+Page  146: 64-bit AXI bus
+Page  146: AXI Interface2
+Page  146: Note:                       No write protection check is performed when the embedded Flash memory accepts AXI
+Page  148: The parallelism is the maximum number of bits that can be written to 0 in one shot during a
+Page  153: command queue together with other AXI read requests, thus avoiding to deny AXI read
+Page  154: accessible through AXI interface. This feature can be used after a firmware upgrade to
+Page  154: AXI slave interface, depending on the SWAP_BANK bit configuration.
+Page  154: Table 14. FLASH AXI interface memory map vs swapping option
+Page  155: AXI bus                           memory
+Page  157: The embedded Flash memory uses the microcontroller system clock (sys_ck), here the AXI
+Page  172: The maximum area is the whole user Flash memory, configured by setting to the same
+Page  173: maximum area is the whole user Flash memory bank, configured by setting to the same
+Page  179: each time a new data is sent back to the requester through the AXI interface.
+Page  179: through the AXI interface.
+Page  180: time a data is sent back to the requester through the AXI interface.
+Page  180: time a data is sent back to the requester through the AXI interface.
+Page  181: •   On AXI system bus:
+Page  182: 1. Programming still possible on the AXI interface that did not trigger the inconsistency error, on the Flash bank that does not
+Page  211: PSIZE2 selects the maximum number of bits that can be written to 0 in one shot during a
+Page  248: maximum frequency. By default VOS3 is selected after system reset. VOS can be
+Page  250: to 2 MHz with a maximum load of 30 pF. These I/Os must not be used as current sources
+Page  279: If an access to a bus matrix (AXI, AHB or APB) is ongoing, the Stop mode entry is delayed
+Page  309: Clocks for APB (rcc_apb_ck), AHB (rcc_ahb_ck) and AXI (rcc_axi_ck) bridges
+Page  319: APB or AXI clock depending on which bus the peripheral is connected to. Some
+Page  319: AXI). These clocks are derived from the system clock (sys_ck).
+Page  325: The clock provided to the MCOs outputs must not exceed the maximum pin speed (refer to
+Page  331: D1CPRE (1)          HPRE (1)                                                                                           AXI peripheral clocks
+Page  334: starting from number 4 represents the clock sources. Column 3 gives the maximum allowed
+Page  336: 1. The bus clocks are the bus interface clocks to which the peripherals are connected, it can be APB, AHB or AXI clocks.
+Page  346: •    The CPU enabled SDMMC1, SPI5 and SRAM1, AXISRAM, ITCM, DTCM1, DTCM2
+Page  346: Note:      The FLASH, AXISRAM, ITCM, DTCM1, DTCM2, SRAM4, IWGD1, IWGD2, PWR, EXTI and
+Page  347: AXISRAM                                   PER...                                    SAI1
+Page  348: •    AXISRAM, ITCM, DTCM1, DTCM2 and FLASH,
+Page  348: As shown in Figure 56, FLASH, AXISRAM, SRAM4, ITCM, DTCM1 and DTCM2 are
+Page  351: –    A maximum delay of two periods of the enabled clock may occur between the
+Page  351: –    A maximum delay of 1.5 periods of the disabled clock may occur between the
+Page  352: rcc_perx_bus_ck (for peripheral ‘x’). This clock can be an APB, AHB or AXI clock,
+Page  357: The clocks of the CPU, AHB and AXI bridges and APB busses are enabled according to the
+Page  357: •   The AXI bridge clock is enabled when the CPU is in CRun mode.
+Page  371: exceed the maximum frequency.
+Page  450: AXISRAMLPEN
+Page  450: Bit 31 AXISRAMLPEN: AXISRAM Block Clock Enable During CSleep mode
+Page  450: 0: AXISRAM interface clock disabled during CSleep mode
+Page  450: 1: AXISRAM interface clock enabled during CSleep mode (default after reset)
+Page  477: SRAM3LPEN                           Res.                      AXISRAMLPEN                           Res.                      Res.                    Res.                              UART8EN      31
+Page  480: Res.                                UART8LPEN                        Res.                                   Res.                      SRAM3LPEN                           Res.                      AXISRAMLPEN    31
+Page  532: AXI SRAML
+Page  532: Bit 15 AXISRAML: D1 AXI-SRAM double ECC error lock bit
+Page  532: and lock the AXI-SRAM double ECC error flag connection to TIM1/8/15/16/17 and
+Page  532: 0: AXI-SRAM double ECC error flag disconnected from TIM1/8/15/16/17/HRTIMER
+Page  532: 1: AXI-SRAM double ECC error flag connected to TIM1/8/15/16/17/HRTIMER Break
+Page  548: Res.                          Res.                      Res.                           Res.                          Res.                              Res.                           Res.                           AXISRAML                                                                                                                                                                                                                                                                                                                                                                              Res.                       15
+Page  576: MDMA         AXI   D1   DMA2 stream 0 transfer
+Page  577: D1     AHB3    DMA2D       dma2d_tc_trg mdma_str25        MDMA         AXI   D1   DMA2D transfer complete
+Page  586: The MDMA controller provides a master AXI interface for main memory and peripheral
+Page  586: •   AXI/AHB master bus architecture, one dedicated to main memory/peripheral accesses
+Page  587: maximum 128 bytes data burst size (e.g. 16x64-bit or 32x32-bit).
+Page  588: 64-bit AXI master
+Page  589: The MDMA controller performs a direct memory transfer: as an AXI/AHB master, it can take
+Page  589: the control of the AXI/AHB bus matrix to initiate AXI/AHB transactions.
+Page  589: This burst length defines the maximum transfer length which cannot be interrupted at
+Page  592: In order to maximize data bandwidth and bus usage, the following mechanisms are used,
+Page  593: AXI system bus.
+Page  601: –     if a transfer error occurs on the AHB/AXI master buses (bus error/hard fault)
+Page  603: Note: When the destination bus is system/AXI bus (DBUS=0) and DINC=00, DBURST must
+Page  603: be maximum 100 (burst of 16), else the result is unpredictable.
+Page  604: Note: When the source bus is system/AXI bus (SBUS=0) and SINC=00, SBURST must be
+Page  604: maximum 100 (burst of 16), else the result is unpredictable.
+Page  610: The channel configuration (LAR address) must be in the AXI address space.
+Page  611: 0: The system/AXI bus is used as destination (write operation) on channel x.
+Page  611: 0: The system/AXI bus is used as source (read operation) on channel x.
+Page  631: maximum of 65535 data items can be managed by the DMA in a single transaction,
+Page  692: •   Single AXI master bus architecture.
+Page  692: •   Internal timer to control AXI bandwidth
+Page  693: The DMA2D controller performs direct memory transfer. As an AXI master, it can take the
+Page  693: control of the AXI bus matrix to initiate AXI transactions.
+Page  694: AXI bus
+Page  694: dma2d_aclk                       Input       32-bit AXI bus clock
+Page  698: •    CLUT written through the AXI master port when an automatic loading of the CLUT is
+Page  702: 17.4.9       DMA2D AXI master port timer
+Page  702: An 8-bit timer is embedded into the AXI master port to provide an optional limitation of the
+Page  702: This timer is clocked by the AXI clock and counts a dead time between two consecutive
+Page  702: The timer enabling and the dead time value are configured through the AXI master port
+Page  707: •   AXI master port errors signaled by the TEIF flag of the DMA2D_ISR register.
+Page  707: 17.4.16   AXI dead time
+Page  707: To limit the AXI bandwidth usage, a dead time between two consecutive AXI accesses can
+Page  707: transactions on the AXI bus.
+Page  708: the next AXI transfer.
+Page  726: 17.6.20         DMA2D AXI master timer configuration register (DMA2D_AMTCR)
+Page  726: Dead time value in the AXI clock cycle inserted between two consecutive accesses on
+Page  726: the AXI master port. These bits represent the minimum guaranteed number of cycles
+Page  726: between two consecutive AXI accesses.
+Page  776: •   to translate AXI transactions into the appropriate external device protocol
+Page  777: •    The AXI interface
+Page  778: AXI/AHB                           FMC_NE[4:1]
+Page  778: 64-bit AXI bus
+Page  779: 21.5     AXI interface
+Page  779: The AXI slave interface allows internal CPUs and other bus master peripherals to access
+Page  779: AXI transactions are translated into the external device protocol. As the AXI data bus is 64-
+Page  779: bit wide, the AXI transactions might be split into several consecutive 32-, 16- or 8-bit
+Page  779: The FMC generates an AXI slave error when one of the following conditions is met:
+Page  779: The FMC generates an AXI decoder error when ADDR[31:28] address bits are not
+Page  780: The requested AXI transaction data size can be 8-, 16-, 32- or 64-bit wide whereas the
+Page  780: accessed external device has a fixed data width. The AXI transaction size depends on
+Page  780: Therefore, some simple transaction rules can be followed, depending on AXI transaction
+Page  780: •   AXI transaction size and memory data size are equal to prevent issues from occurring.
+Page  780: •   AXI transaction size is greater than the memory size:
+Page  780: In this case, the FMC splits the AXI transaction into smaller consecutive memory
+Page  780: to “Normal memory”, the AXI transaction size is 64 bits and the FMC splits the
+Page  780: •   AXI transaction size is smaller than the memory size:
+Page  783: Memory width(1)         Data address issued to the memory           Maximum memory capacity (bits)
+Page  784: Maximum
+Page  785: 2. Access to Reserved (Res.) address range generates an AXI slave error.
+Page  786: 2. Access to Reserved space (Res.) generates an AXI Slave error.
+Page  787: 2. Access to Reserved space (Res.) generates an AXI slave error.
+Page  788: AXI data size has to be the same as the memory data width (MWID) otherwise the
+Page  788: FMC_CLK frequency will be changed depending on AXI data transaction (refer to
+Page  789: The maximum capacity is 512 Mbits (26 address lines).
+Page  789: The maximum capacity is 512 Mbits.
+Page  790: The maximum capacity is 512 Mbits.
+Page  790: The maximum capacity is 512 Mbits (26 address lines).
+Page  791: AXI data Memory
+Page  792: AXI data Memory
+Page  792: 1. NBL[1:0] are also driven by AXI write strobes.
+Page  810: where max_wait_assertion_time is the maximum time taken by the memory to assert
+Page  812: CLKDIV and the MWID/ AXI data size, following the formula given below:
+Page  812: FMC_CLK divider ratio = max (CLKDIV + 1,MWID ( AXI data size ))
+Page  812: If MWID is 32-bit, the FMC_CLK divider ratio depends also on AXI data size.
+Page  812: •   If CLKDIV=1, MWID = 32 bits, AXI data size=8 bits, FMC_CLK=fmc_ker_ck/4.
+Page  812: •   If CLKDIV=1, MWID = 16 bits, AXI data size=8 bits, FMC_CLK=fmc_ker_ck/2.
+Page  813: burst transaction of length 1 (if the AXI transfer is 16 bits), or length 2 (if the AXI transfer is
+Page  820: 0: Write operations are disabled in the bank by the FMC, an AXI slave error is reported,
+Page  821: Accessing a disabled bank causes an ERROR on AXI bus.
+Page  823: transactions (tEHEL from NEx high to NEx low) and the maximum time needed by the memory
+Page  828: AXI data Memory     Allowed/
+Page  829: AXI data Memory     Allowed/
+Page  834: on AXI bus
+Page  834: This is used to quickly write to the FIFO and free the AXI bus for transactions to peripherals
+Page  843: AXI Master                 Data 1             Device
+Page  843: AXI Master                 Data 2             Device
+Page  844: The address management depends on the next AXI request:
+Page  846: SDRAM devices. Otherwise, the SDRAM address range is violated and an AXI slave
+Page  860: AXI bus
+Page  860: AXI bus                                                      BK2_IO0/SO
+Page  862: memory-mapped mode the address is given directly via the AXI (from the Cortex® or from a
+Page  863: In memory-mapped mode, the data which is read is sent back directly over the AXI to the
+Page  872: The maximum amount of data read in each frame is 4 bytes. If more data is requested in
+Page  899: Option 1) has the advantage of reaching the maximum ADC clock frequency whatever the
+Page  924: 1. The maximum latency value can be found in the electrical characteristics of the device datasheet.
+Page  963: •   The maximum DELAY is equal to the number of cycles corresponding to the selected
+Page  975: –    FULL_SCALE is the maximum digital value of the ADC output. For example with
+Page 1020: •   One DAC interface, maximum two output channels
+Page 1029: less than the maximum amplitude defined by the MAMPx[3:0] bits. Once the configured
+Page 1036: 3.   Configure the two DAC channel WAVEx[1:0] bits as 1x and the same maximum
+Page 1036: 3.   Configure the two DAC channel WAVEx[1:0] bits as 1x and set different maximum
+Page 1038: •   Configure the two DAC channel WAVEx[1:0] bits as 1x and the same maximum
+Page 1038: •   Configure the two DAC channel WAVEx[1:0] bits as 1x and set different maximum
+Page 1086: stabilize (with a maximum stabilization time remaining below 1 ms in any case).
+Page 1096: for digital processing: filter type, filter order, length of filter, integrator length. The maximum
+Page 1096: An extremes detector block watches final output data and stores maximum and minimum
+Page 1097: –    store minimum and maximum values of output data values
+Page 1099: Control unit                                                                                             Maximum value
+Page 1099: 1) end of conversion             Maximum value
+Page 1107: The maximum data rate of Manchester coded data must be less than the CKOUT signal.
+Page 1115: Table 243. Filter maximum output resolution (peak data values from filter output)
+Page 1116: Table 244. Integrator maximum output resolution (peak data values from integrator
+Page 1116: analog signal reaches or crosses given maximum and minimum threshold values. An
+Page 1117: DFSDM clock cycles (if AWDCH[7:0] = 0xFF). Because the maximum input channel
+Page 1119: The purpose of an extremes detector is to collect the minimum and maximum values of final
+Page 1119: If the output data word is higher than the value stored in the extremes detector maximum
+Page 1119: The minimum and maximum register values can be refreshed by software (by reading given
+Page 1119: detector minimum data register DFSDM_FLTxEXMIN is filled with 0x7FFFFF (maximum
+Page 1119: positive value) and the extremes detector maximum register DFSDM_FLTxEXMAX is filled
+Page 1119: settings. The maximum output data rate is:
+Page 1120: Maximum output data rate in case of parallel data input:
+Page 1142: 29.8.13            DFSDM filter x extremes detector maximum register
+Page 1142: Bits 31:8 EXMAX[23:0]: Extremes detector maximum value
+Page 1142: Bits 2:0 EXMAXCH[2:0]: Extremes detector maximum data channel.
+Page 1154: from the camera are stable and can be sampled. The maximum DCMI_PIXCLK period must
+Page 1164: For B&W, YCbCr or RGB data, the maximum input size is 2048 × 2048 pixels. No limit in
+Page 1180: •    AXI master interface with burst of 16 double-words
+Page 1181: 64-bit AXI bus
+Page 1181: AXI
+Page 1181: AXI interface: for data transfer from memories to the FIFO.
+Page 1181: ltdc_aclk                       Digital input         Clock for LCD-TFT registers in AXI clock domain
+Page 1182: •     AXI clock domain (ltdc_aclk)
+Page 1182: This domain contains the LCD-TFT AXI master interface for data transfer from the
+Page 1183: -                  AXI domain                  APB domain                     Pixel clock domain
+Page 1191: •      Transfer error interrupt: generated when an AXI bus error occurs during data transfer
+Page 1194: Refer to device datasheet for maximum active width supported following maximum pixel
+Page 1194: Refer to device datasheet for maximum active height supported following maximum pixel
+Page 1233: maximum when the RNG 128-bit FIFO is emptied by application after 64 RNG clock cycles.
+Page 1281: that the counter blocks range associated to q is equal to 28q-4, i.e. if q maximum
+Page 1347: •       The maximum value must be less than or equal to 0xFFFF - 1 periods of the fHRTIM
+Page 1349: overflow at the maximum period value and the repetition counter will not decrement.
+Page 1351: reached, so that the maximum amount of time is left for processing before the next period
+Page 1361: Table 297 gives the resolution and maximum absolute values depending on the prescaler
+Page 1407: any new synchronization request is discarded. Consequently, the maximum synchronization
+Page 1433: The maximum value is 0x0000 FFDF.
+Page 1447: The maximum value is 0x0000 FFDF.
+Page 1529: Although this limits the maximum number of repetition to 32768 PWM cycles, it makes
+Page 1529: registers only once per PWM period in center-aligned mode, maximum resolution is
+Page 1565: cleared by the TI1 change. Set the prescaler to get a maximum counter period longer
+Page 1874: watchdog produces a reset. The timing varies between a minimum and a maximum value
+Page 1876: Refer to the datasheet for the minimum and maximum values of the tWWDG.
+Page 1895: The minimum division factor is 1 and the maximum division factor is 222.
+Page 1895: This corresponds to a maximum input frequency of around 4 MHz.
+Page 1900: increasing the synchronous prescaler value (PREDIV_S[14:0]. The maximum resolution
+Page 1903: In this case, the RTC precision can be measured during 16 seconds with a maximum error
+Page 1903: In this case, the RTC precision can be measured during 8 seconds with a maximum error of
+Page 1938: Analog filter delay is maximum 260 ns. Digital filter delay is DNF x tI2CCLK.
+Page 1941: The maximum tHD;DAT can be 3.45 µs, 0.9 µs and 0.45 µs for Standard-mode, Fast-mode
+Page 1941: and Fast-mode Plus, but must be less than the maximum of tVD;DAT by a transition time.
+Page 1941: This maximum must only be met if the device does not stretch the LOW period (tLOW) of the
+Page 1941: the maximum values from the standard increases the constraints for the SDADEL and
+Page 1972: timeout before the maximum time given in the SMBus specification.
+Page 1972: tLOW:MEXT for a master. As the standard specifies only a maximum, the user can choose
+Page 1973: •     Configuring the maximum duration of tTIMEOUT to 25 ms:
+Page 1973: •     Configuring the maximum duration of tLOW:SEXT and tLOW:MEXT to 8 ms:
+Page 1973: •     Configuring the maximum duration of tIDLE to 50 µs
+Page 2010: Since the maximum data word length is 9 bits, the TXFIFO is 9-bit wide. However the
+Page 2018: The communication speed range (specially the maximum communication speed) is also
+Page 2018: noise. This allows obtaining the best a trade-off between the maximum communication
+Page 2019: usart_ker_ck_pres/8). In this case the maximum receiver tolerance to clock deviation is
+Page 2019: deviations. In this case, the maximum speed is limited to maximum
+Page 2024: The USART receiver can receive data correctly at up to the maximum tolerated deviation
+Page 2038: erroneous after the maximum number of retries specified in the SCARCNT bitfield, the
+Page 2039: check of the maximum wait time between two consecutive characters. This time is
+Page 2040: programming the BLEN value. However, before the start of the block, the maximum value of
+Page 2049: For example, the application can set the threshold to the maximum RXFIFO size if the
+Page 2052: Determining the maximum USART baud rate that allows to correctly wake up
+Page 2052: The maximum baud rate allowing to correctly wake up the microcontroller from low-power
+Page 2052: 0%, the maximum value of DWU is 3.41%. In reality, we need to consider at least the
+Page 2052: As a result, the maximum baud rate allowing to wakeup correctly from low-power mode
+Page 2076: When transmitting data in Smartcard mode, this bit is set when the maximum number of
+Page 2086: Since 9 bits the maximum data word length is 9 bits, the TXFIFO is 9-bits wide. However the
+Page 2093: The communication speed range (specially the maximum communication speed) is also
+Page 2094: The maximum baud rate that can be reached when the LPUART clock source is the LSE, is
+Page 2094: 100 MHz, the maximum baud rate that can be reached is about 33 Mbaud.
+Page 2096: The LPUART receiver can receive data correctly at up to the maximum tolerated deviation
+Page 2105: For example, the application can set the threshold to the maximum RXFIFO size if the
+Page 2108: Determining the maximum LPUART baud rate that allows to correctly wake up
+Page 2108: The maximum baud rate allowing to correctly wake up the MCU from low-power mode
+Page 2108: 0%, the maximum value of DWU is 3.41%. In reality, we need to consider at least the
+Page 2108: As a result, the maximum baud rate allowing to wakeup correctly from low-power mode
+Page 2123: When transmitting data in Smartcard mode, this bit is set when the maximum number of
+Page 2130: Maximum configurable data size [bits]     32       32      32       16       16          16
+Page 2151: To operate at its maximum speed and to facilitate the data register read/write process
+Page 2155: length from 5 to 33 bits when maximum data size is 32-bit and from 5 to 17 bits for the
+Page 2155: peripheral instances where maximum data size is limited to 16-bit. The length of the
+Page 2155: maximum data size is applied, the CRC33_17 bit has to be set additionally to define the
+Page 2197: CRCPOLY register when DSIZE is configured to maximum 32-bit or 16-bit size and CRC is
+Page 2213: The maximum number of slots per audio frame is fixed at 16.
+Page 2254: Each SLOTEN bit corresponds to a slot position from 0 to 15 (maximum 16 slots).
+Page 2254: number of inactive slots). The maximum number of slots is 16.
+Page 2255: Each SLOTEN bit corresponds to a slot position from 0 to 15 (maximum 16 slots).
+Page 2255: number of inactive slots). The maximum number of slots is 16.
+Page 2271: •    Maximum symbol rate: 12.288 MHz
+Page 2276: The longest and shortest transition detector block detects the maximum (MAX_CNT)
+Page 2276: The maximum duration is normally found during the preamble period. This maximum
+Page 2283: The maximum latency allowed is TSAMPLE - 2TPCLK - 2Tspdifrx_ker_ck
+Page 2288: the received data with a clock at least 11 times higher than the maximum symbol rate, or
+Page 2291: times higher than the maximum audio sampling rate the application is supposed to
+Page 2292: –    SERR indicates that the synchronization fails because the maximum allowed re-
+Page 2294: Bits 13:12 NBTR[1:0]: Maximum allowed re-tries during synchronization phase(1)
+Page 2311: Note:    The maximum bitrate is 2 Mbit/s.
+Page 2339: this maximum delay cannot be guaranteed, go back to step #1.
+Page 2350: SDMMC_CK speed limited to maximum allowed I/O speed)
+Page 2350: (SDR104 SDMMC_CK speed limited to maximum allowed I/O speed, SPI mode and
+Page 2350: (SDR104 SDMMC_CK speed limited to maximum allowed I/O speed, SPI mode and
+Page 2350: (depending maximum allowed I/O speed).
+Page 2352: 4. Maximum frequency depending on maximum allowed IO speed.
+Page 2353: 4. Maximum frequency depending on maximum allowed IO speed.
+Page 2356: (limited by maximum I/O speed).
+Page 2381: SDMMC bus         Maximum SDMMC_CK          Minimum AHB clock
+Page 2388: DDR50, the SDMMC_CK may be stopped minimum 2 SDMMC_CK cycles and maximum 5
+Page 2389: SDMMC_D2 low after minimum 2 SDMMC_CK cycles and maximum 5 SDMMC_CK cycles,
+Page 2399: The expected maximum busy time shall be set in the DATATIME register before sending the
+Page 2402: SDMMC_CK clock, which will have a maximum frequency of 25MHz (SD mode), as set by
+Page 2402: The maximum 1 ms time for the card to drive the SDMMC_Dn and SDMMC_CMD lines high
+Page 2402: is derived from the internal ungated SDMMC_CK which will have a maximum frequency of
+Page 2407: 2      The clock frequency can be changed to the maximum card bus frequency when relative
+Page 2433: Controls the message transfer from the message RAM to the CAN core. A maximum of 32
+Page 2436: The maximum configurable bitrate in the CAN FD data phase depends on the FDCAN
+Page 2437: 127 mtq. In case this sum exceeds 127 mtq, the maximum value (127 mtq) is used for
+Page 2453: The Tx event FIFO can be configured to a maximum of 32 elements. The Tx event FIFO
+Page 2456: a maximum error of one fdcan_pclk period. The number of bits used for measurement
+Page 2458: Precision calibration must be repeated in predefined maximum intervals supervised by the
+Page 2458: calibration accuracy and the maximum distance between two calibration messages.
+Page 2463: number of NTUs between two times the watchdog has to be served. The maximum number
+Page 2463: even with maximum clock drift.
+Page 2467: of basic cycles in the system matrix is, respectively, 1, 2, 4, 8, 16, 32, 64). The maximum
+Page 2467: a maximum cycle count of FDCAN_TTMLM.CCM = 0x3F matches occur at cycle counts 3,
+Page 2469: counts up to 0xFFFF = maximum cycle time.
+Page 2474: FDCAN_TTOST.RTO set to the maximum value of 127.
+Page 2475: between the maximum MSC and the minimum MSC for all trigger memory
+Page 2532: 0x00–FF: Maximum time after which the application has to serve the application
+Page 2546: FDCAN_TTOCF.LDSDL < 7, this results in a maximum range for NAV of
+Page 2576: a minimum of 10 ms and a maximum of 20 ms. The application takes care of the timing
+Page 2576: –    Program the maximum packet size (MPS)
+Page 2578: As request queues can hold a maximum of 8 entries each, the application can push to
+Page 2578: SB for a maximum of 8 pending periodic transactions plus 8 pending non-periodic
+Page 2585: Transmit FIFO is the maximum packet size for that particular IN endpoint.
+Page 2585: largest maximum packet size among all supported non-periodic OUT channels.
+Page 2585: maximum packet size out of all the supported periodic OUT channels. If there is at least one
+Page 2585: isochronous OUT endpoint, then the space must be at least two times the maximum packet
+Page 2607: because the Rx FIFO does not have enough space to accommodate a maximum size
+Page 2616: Maximum value is 1024
+Page 2622: Enables suspending the PHY in L1 Sleep mode. For maximum power saving during L1
+Page 2622: because this exceeds maximum TL1HubDrvResume2.
+Page 2622: Enables suspending the PHY in L1 Sleep mode. For maximum power saving during L1
+Page 2628: channel, up to a maximum of 16 bits. Bits in this register are set and cleared when the
+Page 2628: bit per channel, up to a maximum of 16 bits.
+Page 2630: required minimum duration, before clearing the bit, even though there is no maximum limit
+Page 2632: Bits 10:0 MPSIZ[10:0]: Maximum packet size
+Page 2632: Indicates the maximum packet size of the associated endpoint.
+Page 2636: application is expected to program this field as an integer multiple of the maximum packet
+Page 2638: maximum speed the application can support. However, the actual bus speed is determined
+Page 2644: is one interrupt bit per endpoint, up to a maximum of 16 bits for OUT endpoints and 16 bits
+Page 2653: Bits 10:0 MPSIZ[10:0]: Maximum packet size
+Page 2653: The application must program this field with the maximum packet size for the current logical
+Page 2655: This field is decremented every time a packet (maximum size or short packet) is read from
+Page 2655: maximum packet size of the endpoint, to be interrupted at the end of each packet.
+Page 2657: This field is decremented every time a packet (maximum size or short packet) is read from
+Page 2657: be set to the maximum packet size of the endpoint, to be interrupted at the end of each
+Page 2658: Bits 1:0 MPSIZ[1:0]: Maximum packet size
+Page 2658: The maximum packet size for control OUT endpoint 0 is the same as what is programmed in
+Page 2661: maximum packet size of the endpoint, to be interrupted at the end of each packet.
+Page 2664: Bits 10:0 MPSIZ[10:0]: Maximum packet size
+Page 2664: The application must program this field with the maximum packet size for the current logical
+Page 2665: This field is decremented every time a packet (maximum size or short packet) is written to
+Page 2665: be set to the maximum packet size of the endpoint, to be interrupted at the end of each
+Page 2680: actual packet size based on the programmed maximum packet size and transfer size.
+Page 2681: MPS: Maximum packet size                                      Done
+Page 2682: –    The application is attempting to send two maximum-packet-size packets (transfer
+Page 2686: –    The application is attempting to receive two maximum-packet-size packets
+Page 2686: –    The receive FIFO can contain at least one maximum-packet-size packet and two
+Page 2688: –    The application is attempting to send one packet in every frame (up to 1 maximum
+Page 2693: –       The application is attempting to receive one packet (up to 1 maximum packet size)
+Page 2693: –       The receive FIFO can hold at least one maximum-packet-size packet and two
+Page 2695: –       The application is attempting to send one packet every frame (up to 1 maximum
+Page 2699: –   The application is attempting to receive one packet (up to 1 maximum packet size)
+Page 2699: –   The receive FIFO can hold at least one maximum-packet-size packet and two
+Page 2701: Packet babble occurs if the device sends more data than the maximum packet size for
+Page 2711: 2.   Program the MPSIZ field in OTG_DIEPCTL0 to set the maximum packet size. This
+Page 2711: step configures control endpoint 0. The maximum packet size for a control endpoint
+Page 2712: –   Maximum packet size
+Page 2718: a multiple of the maximum packet size of the endpoint, adjusted to the word boundary.
+Page 2718: (maximum packet size or short packet) written to the receive FIFO decrements the
+Page 2718: (0 ≤ packet size < maximum packet size)
+Page 2719: always be set to the number of maximum-packet-size packets that can be received in a
+Page 2724: payload that constitutes multiple maximum-packet-size packets and a single short
+Page 2724: –    To transmit a few maximum-packet-size packets and a short packet at the end of
+Page 2725: –    To transmit a few maximum-packet-size packets and a zero-length data packet at
+Page 2725: first sends maximum-packet-size data packets and the second sends the zero-
+Page 2725: FIFO. The maximum number of packets maintained by the core at any time in an IN
+Page 2726: –    The application can only transmit multiples of maximum-packet-size data packets
+Page 2726: or multiples of maximum-packet-size packets, plus a short packet at the end. To
+Page 2726: transmit a few maximum-packet-size packets and a short packet at the end of the
+Page 2744: maximum of two buffers. This enables two buffers to be used and physically addressed,
+Page 2751: The maximum number of Retry requests expires. In this case, the MAC aborts the
+Page 2771: –    Digital rollover mode: In this mode, the maximum value in the nanoseconds field
+Page 2777: containing <egress_correction_value> represented in binary. The maximum value
+Page 2780: TCP header in TDES3[22:19]. The maximum length of TCP packet payload that can be seg-
+Page 2780: tion, the DMA uses the Maximum Segment Size (MSS) provided by the application through
+Page 2782: The context descriptor can provide the maximum segment size (MSS) value for
+Page 2806: d)   If fixed length value is enabled, select the maximum burst length possible on the
+Page 2806: AXI Bus (bits [7:1])
+Page 2807: (ETH_DMACTXCR)) to configure the parameters such as the maximum burst-length
+Page 2814: c)   Program the maximum size of the segment in:
+Page 2818: from Ethernet Source address till the end of the TCP header. The maximum
+Page 2818: header length supported for TSO feature is 1023 bytes. The maximum
+Page 2825: TDES2                  Inner VLAN tag[31:16]                  Maximum segment size[14:0]
+Page 2826: Maximum Segment Size
+Page 2837: specified maximum Ethernet size of 1518, 1522, or 2000 bytes (9018 or
+Page 2846: Bits 13:0 MSS[13:0]: Maximum Segment Size
+Page 2846: This field specifies the maximum segment size that should be used while segmenting the
+Page 2847: These bits indicate the maximum number of beats to be transferred in one DMA data transfer.
+Page 2847: This is the maximum value that is used in a single block Read or Write. The DMA always
+Page 2848: These bits indicate the maximum number of beats to be transferred in one DMA data transfer.
+Page 2848: This is the maximum value that is used in a single block Read or Write. The DMA always
+Page 2849: This field indicates the size of the Rx buffers specified in bytes. The maximum buffer size is
+Page 2853: This field sets the maximum number of Tx descriptors in the circular descriptor ring. The
+Page 2853: maximum number of descriptors is limited to 1K descriptors. It is recommended to put a
+Page 2854: This register sets the maximum number of Rx descriptors in the circular descriptor ring. The
+Page 2854: maximum number of descriptors is limited to 1K descriptors.
+Page 2870: has crossed the maximum count. In such a scenario, the overflow packet counter is reset to
+Page 2875: When set, this bit indicates that the Rx Queue Missed Packet Counter crossed the maximum
+Page 2875: maximum limit.
+Page 2876: This field indicates the current number of packets in the Rx queue. The theoretical maximum
+Page 2926: When this bit is set, the counter does not roll over to zero after reaching the maximum value.
+Page 2926: •          Receive statistic counters reach half of their maximum values (0x8000_0000 for 32 bit
+Page 2926: •          Receive statistic counters cross their maximum values (0xFFFF_FFFF for 32 bit
+Page 2926: This bit is set when the Rx_LPI_Tran_Cntr counter reaches half of the maximum value or the
+Page 2926: maximum value.
+Page 2926: This bit is set when the Rx_LPI_USEC_Cntr counter reaches half of the maximum value or
+Page 2926: the maximum value.
+Page 2927: This bit is set when the rxunicastpackets_g counter reaches half of the maximum value or the
+Page 2927: maximum value.
+Page 2927: This bit is set when the rxalignmenterror counter reaches half of the maximum value or the
+Page 2927: maximum value.
+Page 2927: This bit is set when the rxcrcerror counter reaches half of the maximum value or the
+Page 2927: maximum value.
+Page 2927: statistic counters reach half their maximum values (0x8000_0000 for 32 bit counter and
+Page 2927: 0x8000 for 16 bit counter), and when they cross their maximum values (0xFFFF_FFFF for
+Page 2928: This bit is set when the Tx_LPI_Tran_Cntr counter reaches half of the maximum value or the
+Page 2928: maximum value.
+Page 2928: This bit is set when the Tx_LPI_USEC_Cntr counter reaches half of the maximum value or
+Page 2928: the maximum value.
+Page 2928: This bit is set when the txpacketcount_g counter reaches half of the maximum value or the
+Page 2928: maximum value.
+Page 2928: This bit is set when the txmulticol_g counter reaches half of the maximum value or the
+Page 2928: maximum value.
+Page 2928: This bit is set when the txsinglecol_g counter reaches half of the maximum value or the
+Page 2928: maximum value.
+Page 2929: when receive statistic counters reach half of their maximum value or the maximum values.
+Page 2929: maximum value or the maximum value.
+Page 2929: maximum value or the maximum value.
+Page 2929: maximum value or the maximum value.
+Page 2929: maximum value or the maximum value.
+Page 2929: Setting this bit masks the interrupt when the rxcrcerror counter reaches half of the maximum
+Page 2929: value or the maximum value.
+Page 2930: when the transmit statistic counters reach half of their maximum value or the maximum
+Page 2930: maximum value or the maximum value.
+Page 2930: maximum value or the maximum value.
+Page 2930: maximum value or the maximum value.
+Page 2930: maximum value or the maximum value.
+Page 2930: maximum value or the maximum value.
+Page 2950: When Bit 9 is set in ETH_MACTSCR, each bit represents 1 ns. The maximum value is
+Page 2983: This is done to guarantee the maximum priority to a failed transmission and the lowest one
+Page 2994: set at the end of the maximum bit-extension tolerance allowed by RXTOL, in case falling edge is still
+Page 2995: either at the time the misplaced rising edge occurs, or at the end of the maximum BRE tolerance
+Page 3002: at its maximum frequency.
+Page 3072: pointer reaches its maximum value, it wraps around.
+Page 3073: pointer reaches its maximum value, it wraps around.
+Page 3076: Reading this register returns the maximum fill level of the trace memory in 32-bit words since
+Page 3077: The maximum value that can be written into this register is MEM_SIZE - 1. In this case, the
+Page 3098: the last synchronization packet of 128 bits. It is a 12-bit counter with a maximum count value
+Page 3098: value is the maximum number of complete frames between full synchronization packets.
+Page 3157: register back to determine the maximum mask size supported.
+Page 3190: Bits 31:0 MAXSPEC[31:0]: Maximum speculation depth
+Page 3190: Indicates the maximum speculation depth of the instruction trace stream. This is the
+Page 3190: maximum number of P0 elements that have not been committed in the trace stream at any
+Page 3190: 0x2: Maximum trace speculation depth is 2
+Page 3193: 0x08: Maximum of 64-bit global timestamp implemented
+Page 3195: 0x4: 32-bit maximum address size
+Page 3195: 0x4: 32-bit maximum address size
+Page 3216: Updated maximum frequency for ADC1, 2, 3 in Table 51: Kernel
+Page 3218: Updated Section 22.5: AXI interface to add 32-bit accesses.
+Page 3218: Read FIFO depth changed to 6x64 bits. AXI bus width correct (64
+Page 3220: ck_axi_d1 renamed ltdc_aclk in the whole document.
+Page 3223: Updated maximum frequency for ADC1, 2, 3 in Table 51: Kernel
+Page 3226: Updated maximum allowed clock frequency for ADC1, 2, 3
+Page 3231: Added Section : Determining the maximum USART baud rate that
+Page 3232: Updated Section : Determining the maximum LPUART baud rate
+Page 3234: A                                                                    AXI_PERIPH_ID_4 . . . . . . . . . . . . . . . . . . . . 107
+Page 3234: AXI_TARGx_FN_MOD . . . . . . . . . . . . . . . . . 113
+Page 3234: AXI_TARGx_FN_MOD_ISS_BM . . . . . . . . . 111
+Page 3234: AXI_TARGx_FN_MOD_LB . . . . . . . . . . . . . . 112
+Page 3234: AXI_TARGx_FN_MOD2 . . . . . . . . . . . . . . . . 112
+Page 3234: AXI_COMP_ID_0 . . . . . . . . . . . . . . . . . . . . . .109         CRS_ICR . . . . . . . . . . . . . . . . . . . . . . . . . . . . 492
+Page 3234: AXI_COMP_ID_1 . . . . . . . . . . . . . . . . . . . . . .110         CRS_ISR . . . . . . . . . . . . . . . . . . . . . . . . . . . . 490
+Page 3234: AXI_COMP_ID_2 . . . . . . . . . . . . . . . . . . . . . .110         CRYP_CR . . . . . . . . . . . . . . . . . . . . . . . . . . 1298
+Page 3234: AXI_COMP_ID_3 . . . . . . . . . . . . . . . . . . . . . .111         CRYP_CSGCMCCMxR . . . . . . . . . . . . . . . 1309
+Page 3234: AXI_INIx_FN_MOD . . . . . . . . . . . . . . . . . . . .115           CRYP_CSGCMxR . . . . . . . . . . . . . . . . . . . . 1310
+Page 3234: AXI_INIx_FN_MOD_AHB . . . . . . . . . . . . . . .114                 CRYP_DIN . . . . . . . . . . . . . . . . . . . . . . . . . 1300
+Page 3234: AXI_INIx_FN_MOD2 . . . . . . . . . . . . . . . . . . .113            CRYP_DMACR . . . . . . . . . . . . . . . . . . . . . . 1302
+Page 3234: AXI_INIx_READ_QOS . . . . . . . . . . . . . . . . . .114             CRYP_DOUT . . . . . . . . . . . . . . . . . . . . . . . 1301
+Page 3234: AXI_INIx_WRITE_QOS . . . . . . . . . . . . . . . . .115              CRYP_IMSCR . . . . . . . . . . . . . . . . . . . . . . . 1302
+Page 3234: AXI_PERIPH_ID_0 . . . . . . . . . . . . . . . . . . . .107           CRYP_IV0LR . . . . . . . . . . . . . . . . . . . . . . . 1308
+Page 3234: AXI_PERIPH_ID_1 . . . . . . . . . . . . . . . . . . . .108           CRYP_IV0RR . . . . . . . . . . . . . . . . . . . . . . . 1308
+Page 3234: AXI_PERIPH_ID_2 . . . . . . . . . . . . . . . . . . . .108           CRYP_IV1LR . . . . . . . . . . . . . . . . . . . . . . . 1309
+Page 3234: AXI_PERIPH_ID_3 . . . . . . . . . . . . . . . . . . . .109           CRYP_IV1RR . . . . . . . . . . . . . . . . . . . . . . . 1309

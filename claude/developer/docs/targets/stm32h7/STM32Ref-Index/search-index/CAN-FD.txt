@@ -1,0 +1,52 @@
+Keyword: CAN FD
+Occurrences: 48
+================================================================================
+
+Page 2428: protocol specification version 2.0 part A, B) and CAN FD protocol specification version 1.0.
+Page 2428: the time triggered feature. The CAN FD option can be used together with event-triggered
+Page 2431: •   CAN FD with max. 64 data bytes supported
+Page 2434: CAN FD operation
+Page 2435: recessive signifies a CAN FD frame, while FDF dominant signifies a classic CAN frame. In a
+Page 2435: CAN FD frame, the two bits following FDF, res and BRS, decide whether the bitrate inside
+Page 2435: this CAN FD frame is switched. A CAN FD bitrate switch is signified by res dominant and
+Page 2435: CAN FD operation is enabled by programming FDCAN_CCCR.FDOE. If
+Page 2435: FDCAN_CCCR.FDOE = 1, transmission and reception of CAN FD frames is enabled.
+Page 2435: Transmission and reception of classic CAN frames is always possible. Whether a CAN FD
+Page 2435: CAN FD frame. When CAN FD operation is disabled, no CAN FD frames are transmitted,
+Page 2435: FDCAN_CCCR.FDOE = 1 and FDCAN_CCCR.BRSE = 1, transmission of CAN FD frames
+Page 2435: transmitted in CAN FD format with bitrate switching.
+Page 2435: •   The failure rate in the CAN FD data phase is significant higher than in the CAN FD
+Page 2435: arbitration phase. In this case disable the CAN FD bitrate switching option for
+Page 2435: verified that they are able to communicate in CAN FD format. If this is true, all nodes
+Page 2435: switch to CAN FD operation.
+Page 2435: •   End-of-line programming in case not all nodes are CAN FD capable. Non CAN FD
+Page 2436: In CAN FD fast frames, the bit timing will be switched inside the frame, after the BRS (bitrate
+Page 2436: The maximum configurable bitrate in the CAN FD data phase depends on the FDCAN
+Page 2436: In both data frame formats, CAN FD long frames and CAN FD fast frames, the value of the
+Page 2436: transmitted dominant. In CAN FD remote frames the ESI bit is always transmitted dominant,
+Page 2436: independent of the transmitter error state. The data length code of CAN FD remote frames
+Page 2437: measurement is started within each transmitted CAN FD frame at the falling edge of bit FDF
+Page 2459: fdcan_ker_ck of 20 / 40 / 80 MHz CAN FD operation is possible.
+Page 2459: higher than the time quanta clock (fdcan_tq_ck). CAN FD operation is not possible.
+Page 2459: Configuration of the CCU and FDCAN1 is required. CAN FD operation is not possible.
+Page 2482: The element size can be configured for storage of CAN FD messages with up to 64 bytes
+Page 2483: R1 bits 19:16 0-8: Classic CAN + CAN FD: received frame has 0-8 data bytes
+Page 2483: 9-15: CAN FD: received frame has 12/16/20/24/32/48/64 data bytes
+Page 2484: be configured for storage of CAN FD messages with up to 64 bytes data field via register
+Page 2484: 0: ESI bit in CAN FD format depends only on error passive flag
+Page 2484: 1: ESI bit in CAN FD format transmitted recessive
+Page 2485: 1: Frame transmitted in CAN FD format
+Page 2485: 0: CAN FD frames transmitted without bitrate switching
+Page 2485: 1: CAN FD frames transmitted with bitrate switching
+Page 2485: T1 bits 19:16 0 - 8: Classic CAN + CAN FD: received frame has 0-8 data bytes
+Page 2485: 9 - 15: CAN FD: received frame has 12/16/20/24/32/48/64 data bytes
+Page 2486: the transmitted FD frame. As required by the CAN FD protocol specification, an error active node may
+Page 2486: FDCAN_CCCR.FDOE enables the transmission in CAN FD format.
+Page 2486: 3. Bits ESI, FDF, and BRS are only evaluated when CAN FD operation is enabled FDCAN_CCCR.FDOE = 1.
+Page 2495: If this bit is set, the FDCAN uses the CAN FD frame format as specified by the Bosch CAN
+Page 2495: 0: CAN FD frame format according to ISO11898-1
+Page 2495: 1: CAN FD frame format according to Bosch CAN FD Specification V1.0
+Page 2498: In CAN FD mode the internal timestamp counter TCP does not provide a constant time
+Page 2498: CAN FD requires an external counter for timestamp generation (TSS = 10).
+Page 2521: sizes higher than 8 bytes are intended for CAN FD operation only.
+Page 2524: bytes are intended for CAN FD operation only.

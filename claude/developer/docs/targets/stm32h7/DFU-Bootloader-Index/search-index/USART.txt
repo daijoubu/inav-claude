@@ -1,0 +1,2042 @@
+Keyword: USART
+Occurrences: 2038
+================================================================================
+
+Page 1: the available serial peripherals (such as USART, CAN, USB, I2C, I3C, SPI, FDCAN). A
+Page 5: 19.3.3      USART bootloader Get-Version command returns 0x20
+Page 17: 93.2     USART connection timing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 492
+Page 18: Table 6.    Jitter software calculation on bootloader USART detection . . . . . . . . . . . . . . . . . . . . . . . . 48
+Page 22: Table 210.   USART bootloader minimum timings (ms) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 493
+Page 23: Figure 1.    USART connection . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 44
+Page 25: Figure 122. USART connection timing description . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 492
+Page 26: –     AN3155: USART protocol used in the STM32 bootloader
+Page 31: Note:    BL_USART_Loop refers to the USART bootloader execution loop.
+Page 34: In some products using interrupts (integrating USB, SPI, non auto baud rate USART),
+Page 35: 1.   Bootloader (protocol) version: version of the serial peripheral (e.g. USART, CAN,
+Page 35: X = 1: one USART is used
+Page 35: X = 2: two USARTs are used
+Page 35: X = 3: USART, CAN, and DFU are used
+Page 35: X = 4: USART and DFU are used
+Page 35: X = 5: USART and I2C are used
+Page 35: X = 7: USART, CAN, DFU, and I2C are used
+Page 35: X = 9: USART, CAN (or FDCAN), DFU, I2C, and SPI are used
+Page 35: X = 10: USART, I2C, and DFU are used
+Page 35: X = 11: USART, I2C, and SPI are used
+Page 35: X = 12: USART and SPI are used
+Page 35: X = 13: USART, DFU, I2C, and SPI are used
+Page 35: X = 14: USART, DFU, I2C, I3C, FDCAN, and SPI are used
+Page 35: X = 15: USART, USB-DFU, I2C, and I3C are used
+Page 35: X = 16: USART, USB-DFU, FDCAN, and SPI are used
+Page 35: X = 17: USART, SPI, and FDCAN are used
+Page 35: X = 18: USART, SPI, FDCAN, and I2C are used
+Page 35: one USART.
+Page 36: USART1                                              USART (V3.1)
+Page 36: USART1                                              USART (V3.1)
+Page 36: USART1/USART2                                     USART (V4.0)
+Page 36: USART1/USART2                                     USART (V3.1)
+Page 36: USART1/USART2/USART3                              USART (V4.0)
+Page 36: STM32F05xxx/STM32F030x8           USART1/USART2                  0x21    0x1FFFF7A6 USART (V3.1)
+Page 36: STM32F03xx4/6                     USART1                         0x10    0x1FFFF7A6 USART (V3.1)
+Page 36: USART1                                              USART (V3.1)
+Page 36: USART1/USART2                                     USART (V3.1)
+Page 36: USART1/USART2                                     USART (V3.1)
+Page 36: USART1/USART2                                     USART (V3.1)
+Page 36: USART1/USART2                                     USART (V3.1)
+Page 36: USART1/USART2                                       USART (V3.1)
+Page 36: Low-density       USART1                          NA         NA       USART (V2.2)
+Page 36: Medium-density USART1                             NA         NA       USART (V2.2)
+Page 36: High-density      USART1                          NA         NA       USART (V2.2)
+Page 36: USART1                            0x10    0x1FFFF7D6 USART (V2.2)
+Page 36: USART1                         0x10    0x1FFFF7D6 USART (V2.2)
+Page 36: USART
+Page 36: USART1/USART2 (remapped)
+Page 36: STM32F10xxx XL-density            USART1/USART2 (remapped)       0x21    0x1FFFF7D6 USART (V3.0)
+Page 37: USART1/USART3                  0x20   0x1FFF77DE USART (V3.0)
+Page 37: F2       STM32F2xxxx                    USART1/USART3                                    USART (V3.1)
+Page 37: USART1/USART2                                      USART (V3.1)
+Page 37: USART1/USART2                                      USART (V3.1)
+Page 37: USART1/USART2                                      USART (V3.1)
+Page 37: USART1/USART2                                      USART (V3.1)
+Page 37: USART1/USART2                                      USART (V3.1)
+Page 37: USART1/USART2                                      USART (V3.1)
+Page 37: USART1/USART2                                      USART (V3.1)
+Page 37: USART1/USART2                                      USART (V3.1)
+Page 37: USART1/USART2                                      USART (V3.1)
+Page 38: USART1/USART3                                    USART (V3.1)
+Page 38: STM32F40xxx/41xxx           USART1/USART3                                    USART (V3.1)
+Page 38: USART1/USART3                                    USART (V3.1)
+Page 38: STM32F42xxx/43xxx           USART1/USART3                                    USART (V3.1)
+Page 38: USART1/USART2                                    USART (V3.1)
+Page 38: USART1/USART2                                      USART (V3.1)
+Page 38: USART1/USART2                                    USART (V3.1)
+Page 38: USART1/USART2                                      USART (V3.1)
+Page 38: USART1/USART2                                    USART (V3.1)
+Page 38: USART3/CAN2                                      CAN (V2.0)
+Page 38: USART1/USART2                                    USART (V3.1)
+Page 38: USART3/CAN2                                      CAN (V2.0)
+Page 38: USART1/USART3                                    USART (V3.1)
+Page 38: USART1/USART3                                    USART (V3.1)
+Page 39: USART1/USART3                                    USART (V3.1)
+Page 39: USART1/USART3                                      USART (V3.1)
+Page 39: F7       STM32F74xxx/75xxx           USART1/USART3                                    USART (V3.1)
+Page 39: USART1/USART3                                    USART (V3.1)
+Page 39: USART1/USART2/USART3                             USART (V3.1)
+Page 39: USART1/USART2                                      USART (V3.1)
+Page 39: USART1/USART2/USART3                             USART (V3.1)
+Page 39: USART1/USART2/USART3                             USART (V3.1)
+Page 39: USART1/USART2                                      USART (V3.1)
+Page 39: USART1/USART2/USART3                               USART (V3.1)
+Page 39: USART1/USART2/USART3                             USART (V3.1)
+Page 39: USART1/USART2/USART3                             USART (V3.1)
+Page 40: USART1/USART2/USART3                               USART (V4.0)
+Page 40: USART1/USART2/USART3                               USART (V4.0)
+Page 40: USART1/USART2/USART3                               USART (V4.0)
+Page 40: USART1/USART2/USART3                               USART (V3.1)
+Page 40: USART1/USART2/USART3                               USART (V3.1)
+Page 40: USART1/USART2/USART3                               USART (V3.1)
+Page 40: USART1/USART2/USART3                                USART (V4.0)
+Page 41: USART2                                             USART (V3.1)
+Page 41: USART2                                             USART (V3.1)
+Page 41: USART1/USART2                                      USART (V3.1)
+Page 41: USART1/USART2                                      USART (V3.1)
+Page 41: STM32L07xxx/08xxx           USART1/USART2                                    USART (V3.1)
+Page 41: STM32L1xxx6(8/B)            USART1/USART2                  0x20   0x1FF00FFE USART (V3.0)
+Page 41: STM32L1xxx6(8/B)A           USART1/USART2                  0x20   0x1FF00FFE USART (V3.1)
+Page 41: USART1/USART2                                      USART (V3.1)
+Page 41: USART1/USART2                                      USART (V3.1)
+Page 41: USART1/USART2                                      USART (V3.1)
+Page 42: USART1/USART2/USART3                             USART (V3.1)
+Page 42: USART1/USART2/USART3                             USART (V3.1)
+Page 42: USART1/USART2/USART3                             USART (V3.1)
+Page 42: USART1/USART2/ USART3                            USART (V3.1)
+Page 42: STM32L47xxx/48xxx           USART1/USART2/ USART3                            USART (V3.1)
+Page 42: USART1/USART2/USART3                             USART (V3.1)
+Page 42: USART1/USART2/USART3                             USART (V3.1)
+Page 42: USART1/USART2/USART3                             USART (V3.1)
+Page 42: USART1/USART2/USART3                             USART (V3.1)
+Page 42: USART1/USART2/USART3                             USART (V3.1)
+Page 42: U0                                   USART1/USART2/USART3                             USART (V3.1)
+Page 43: USART1/USART3                                    USART(V4.0)
+Page 43: USART1/USART3                                    USART (V3.1)
+Page 43: USART1/USART2/USART3                             USART (V3.1)
+Page 43: USART1/USART2/USART3                             USART (V3.1)
+Page 43: USART1/USART2/USART3                             USART (V3.1)
+Page 43: USART1                                           USART (V3.1)
+Page 43: WB                                    USART1                                           USART (V3.2)
+Page 43: USART1/USART2                                     USART (V3.1)
+Page 43: USART1/USART2                                     USART (V4.0)
+Page 43: STM32WB05xx                                                                     USART (V2.0)
+Page 43: WB0 STM32WB06xx/7xx                    USART1                          NA        NA       USART (V4.0)
+Page 43: STM32WB09xx                                                                     USART (V1.0)
+Page 43: STM32WL3xxx                  USART                           NA        NA       USART (V4.0)
+Page 43: WL                                    USART1/USART2                                      USART (V3.1)
+Page 44: 1. For connectivity line devices, the USART bootloader returns V2.0 instead of V2.2 for the protocol version. For more details
+Page 44: To use the USART bootloader, the host must be connected to the RX and TX pins of the
+Page 44: desired USARTx interface via a serial cable.
+Page 44: Figure 1. USART connection
+Page 46: It is recommended to keep the RX pins of unused bootloader interfaces (USART_RX,
+Page 48: Table 6. Jitter software calculation on bootloader USART detection
+Page 48: STM32C051xx USART1
+Page 48: STM32C051xx USART2                  Software baudrate detection               -2%
+Page 48: STM32C071xx USART1                         Auto-baudrate                 Not applicable
+Page 48: STM32C071xx USART2                  Software baudrate detection               -2%
+Page 48: STM32C091xx/92xx USART1                    Auto-baudrate                 Not applicable
+Page 48: STM32C091xx/92xx USART2/3           Software baudrate detection               -2%
+Page 48: STM32G05xxx/061xx USART1                   Auto-baudrate                 Not applicable
+Page 48: STM32G05xxx/061xx USART2                                                      -2%
+Page 48: STM32G07/8x USART3                  Software baudrate detection
+Page 48: STM32G03/4x USART2
+Page 48: STM32G07/8x USART1/USART2
+Page 48: STM32G03/4x USART1
+Page 49: Table 6. Jitter software calculation on bootloader USART detection (continued)
+Page 49: STM32U031xx USART1/2                      Auto-baudrate                     Not applicable
+Page 49: STM32U073/83xx USART1/2
+Page 49: STM32U073/83xx USART3               Software baudrate detection                  -2%
+Page 57: Once initialized, the USART1 configuration is 8 bits,
+Page 57: USART1                Enabled
+Page 57: PA10 pin: USART1 in reception mode. Used in input
+Page 57: USART1              USART1_RX pin         Input
+Page 57: PA9 pin: USART1 in transmission mode. Used in
+Page 57: USART1_TX pin         Output
+Page 57: Note:       On WLCSP12, SO8N, TSSOP20, and UFQFN20 packages USART1 PA9/PA10 IOs are
+Page 58: Configure USARTx
+Page 58: on USARTx
+Page 58: BL_I2C_Loop           BL_USART_Loop
+Page 58: for I2Cx              for USARTx
+Page 59: Once initialized, the USART1 configuration is 8 bits,
+Page 59: USART1                Enabled
+Page 59: PA10 pin: USART1 in reception mode. Used in
+Page 59: USART1_RX pin         Input
+Page 59: USART1
+Page 59: PA9 pin: USART1 in transmission mode. Used in
+Page 59: USART1_TX pin         Output
+Page 60: Configure USARTx
+Page 60: on USARTx
+Page 60: BL_I2C_Loop            BL_USART_Loop
+Page 60: for I2Cx               for USARTx
+Page 61: Once initialized, the USART1 configuration is 8 bits, even
+Page 61: USART1               Enabled
+Page 61: PA10 pin: USART in reception mode.
+Page 61: USART1_RX pin        Input
+Page 61: USART1                                               Used in alternate function with pull-up mode.
+Page 61: PA9 pin: USART in transmission mode.
+Page 61: USART1_TX pin        Output           TSSOP20, and UFQFN28, PA11 is to PA9.
+Page 61: USART_RX.
+Page 61: Once initialized, the USART2 configuration is 8 bits, even
+Page 61: USART2               Enabled
+Page 61: PA3 pin: USART2 in reception mode. Used in alternate
+Page 61: USART2_RX pin        Input
+Page 61: USART2
+Page 61: PA2 pin: USART2 in transmission mode. Kept in reset
+Page 61: USART2_TX pin        Output
+Page 61: configuration until 0x7F detected on USART_RX
+Page 61: Used for USART detection. Baudrate calculation is based on
+Page 64: on USARTx
+Page 64: yes                                               Configure USARTx
+Page 64: BL_SPI_Loop         BL_I2C_Loop         BL_USART_Loop
+Page 64: no                             for SPIx            for I2Cx            for USARTx
+Page 66: Once initialized, the USART1 configuration is 8 bits, even
+Page 66: USART1               Enabled
+Page 66: PA10 pin(1): USART1 in reception mode. Used in input pull-
+Page 66: USART1         USART1_RX pin        Input
+Page 66: PA9 pin(1): USART1 in transmission mode. Set as input until
+Page 66: USART1_TX pin        Output
+Page 66: USART1 is detected.
+Page 66: Once initialized, the USART2 configuration is 8 bits, even
+Page 66: USART2               Enabled
+Page 66: PA3 pin: USART2 in reception mode. Used in alternate
+Page 66: USART2         USART2_RX pin        Input
+Page 66: PA2 pin: USART2 in transmission mode. Set as input until
+Page 66: USART2_TX pin        Output
+Page 66: USART2 is detected.
+Page 68: 1. Differently from other STM32C0 products, USART1 is not remapped to PA11/PA12 on small packages, as these pins are
+Page 68: detected on         Yes                               BL_USART_Loop
+Page 68: USART Tx                                                for USARTx
+Page 68: Configure USARTx                                                       interfaces clocks
+Page 70: Once initialized, the USART1 configuration is 8 bits, even
+Page 70: USART1                Enabled
+Page 70: PA10 pin: USART in reception mode.
+Page 70: USART1_RX pin         Input
+Page 70: USART1                                                Used in alternate function with pull-up mode.
+Page 70: PA9 pin: USART in transmission mode.
+Page 70: USART1_TX pin         Output           WLCSP24, and UFQFN28, PA11 is remapped to PA9.
+Page 70: USART_RX.
+Page 70: Once initialized, the USART2 configuration is 8 bits, even
+Page 70: USART2                Enabled
+Page 70: PA3 pin: USART2 in reception mode. Used in alternate
+Page 70: USART2_RX pin         Input
+Page 70: USART2
+Page 70: PA2 pin: USART2 in transmission mode. Kept in reset
+Page 70: USART2_TX pin         Output
+Page 70: configuration until 0x7F detected on USART_RX
+Page 70: Used for USART detection. Baudrate calculation is based on
+Page 71: Once initialized the USART3 configuration is: 8- bits, even
+Page 71: USART3               Enabled
+Page 71: PC11 pin: USART in reception mode.
+Page 71: USART3_RX pin        Input
+Page 71: USART3                                             PC10 pin: USART in transmission mode.
+Page 71: USART3_TX pin        Output          Kept in reset configuration until 0x7F detected on
+Page 71: USART_RX
+Page 71: Used for USART detection. Baudrate calculation is based on
+Page 73: clock to 48 MHz           detected on    Yes   sources and other       BL_USART_Loop
+Page 73: with MSIS (MSI/2)          USART Tx              interfaces clocks        for USARTx
+Page 73: Configure USARTx
+Page 75: Once initialized, the USART1 configuration is 8 bits, even
+Page 75: USART1                Enabled
+Page 75: USART1                                                   PA10 pin: USART1 in reception mode. Used in input pull-
+Page 75: USART1_RX pin         Input
+Page 75: PA9 pin: USART1 in transmission mode. Used in alternate
+Page 75: USART1_TX pin         Output
+Page 75: Once initialized, the USART1 configuration is 8 bits, even
+Page 75: USART1                Enabled
+Page 75: USART1                                                   PA15 pin: USART1 in reception mode. Used in input pull-
+Page 75: USART1_RX pin            Input
+Page 75: PA14 pin: USART1 in transmission mode. Used in
+Page 75: USART1_TX pin         Output
+Page 75: USART1s           SysTick timer         Enabled
+Page 75: uses the PA14 pin (SWCLK), already used by the bootloader (USART1_TX).
+Page 76: USARTx
+Page 76: USARTx
+Page 76: BL_USART_Loop
+Page 76: for USARTx
+Page 76: For the USART interface, two consecutive NACKs
+Page 77: USART1                Enabled
+Page 77: PA10 pin: USART1 in reception mode. Used in input
+Page 77: USART1             USART1_RX pin         Input
+Page 77: PA9 pin: USART1 in transmission mode. Used in
+Page 77: USART1_TX pin         Output
+Page 77: USART2                Enabled
+Page 77: USART2                                                  PA3 pin: USART2 in reception mode. Used in input pull-
+Page 77: USART2_RX pin         Input
+Page 77: PA2 pin: USART2 in transmission mode. Used in input
+Page 77: USART2_TX pin         Output
+Page 77: USART2                Enabled
+Page 77: USART2                                                  PA15 pin: USART2 in reception mode. Used in input
+Page 77: USART2_RX pin         Input
+Page 77: PA14 pin: USART2 in transmission mode. Used in
+Page 77: USART2_TX pin         Output
+Page 77: USARTx             SysTick timer         Enabled
+Page 77: the host for USARTx.
+Page 78: Note:     After the devices have booted in bootloader mode using USART2, the serial wire debug
+Page 78: PA14 pin (SWCLK), already used by the bootloader (USART2_RX).
+Page 78: USARTx                                                     sources and other
+Page 78: USARTx
+Page 78: BL_I2C_Loop for        BL_USART_Loop
+Page 78: I2Cx                for USARTx
+Page 79: Once initialized, the USART1 configuration is 8
+Page 79: USART1                Enabled
+Page 79: PA10 pin: USART1 in reception mode. Used in
+Page 79: USART1                 USART1_RX pin         Input
+Page 79: PA9 pin: USART1 in transmission mode. Used
+Page 79: USART1_TX pin         Output
+Page 79: Once initialized, the USART2 configuration is 8
+Page 79: USART2                Enabled
+Page 79: PA15 pin: USART2 in reception mode. Used in
+Page 79: USART2                 USART2_RX pin         Input
+Page 79: PA14 pin: USART2 in transmission mode.
+Page 79: USART2_TX pin         Output
+Page 79: USARTx                 SysTick timer         Enabled
+Page 79: because SWD uses PA14 pin (SWCLK), already used by the bootloader (USART2_TX).
+Page 80: USARTx
+Page 80: USARTx
+Page 80: BL_USART_Loop
+Page 80: for USARTx
+Page 80: – For the USART interface, two consecutive
+Page 81: USART1               Enabled
+Page 81: PA10 pin: USART1 in reception mode. Used in input pull-up
+Page 81: USART1          USART1_RX pin        Input
+Page 81: PA9 pin: USART1 in transmission mode. Used in alternate
+Page 81: USART1_TX pin        Output
+Page 81: USART2               Enabled
+Page 81: PA15 pin: USART2 in reception mode. Used in input pull-up
+Page 81: USART2          USART2_RX pin        Input
+Page 81: PA14 pin: USART2 in transmission mode. Used in alternate
+Page 81: USART2_TX pin        Output
+Page 81: USARTx          SysTick timer        Enabled
+Page 81: host for USARTx.
+Page 82: Note:       After the devices have booted in bootloader mode using USART2, the serial wire debug
+Page 82: PA14 pin (SWCLK), already used by the bootloader (USART2_RX).
+Page 83: on USARTx
+Page 83: no                                                              BL_I2C_Loop for              USARTx
+Page 83: interrupts                                 BL_USART_Loop
+Page 83: for USARTx
+Page 84: USART/USB       for the bootloader SW (based on interrupt routines) to serve all needed transactions
+Page 85: USART1               Enabled
+Page 85: USART1                                                PA10 pin: USART1 in reception mode. Used in alternate
+Page 85: USART1_RX pin        Input
+Page 85: USART1_TX pin        Output          PA9 pin: USART1 in transmission mode.
+Page 85: USART2               Enabled
+Page 85: USART2
+Page 85: USART2_RX pin        Input           PA15 pin: USART2 in reception mode
+Page 85: USART2_TX pin        Output          PA14 pin: USART2 in transmission mode
+Page 85: USARTx           SysTick timer        Enabled
+Page 85: host for USARTx.
+Page 86: Note:     After the STM32F070x6 devices have booted in bootloader mode using USART2, the serial
+Page 86: SWD uses PA14 pin (SWCLK), already used by the bootloader (USART2_RX).
+Page 86: configured to 48 MHz with HSE as clock source. The DFU interface, USART1,
+Page 86: USART2, and I2C1 are functional and can be used to communicate with the bootloader
+Page 86: •   If HSE is not present, the HSI is kept as default clock source and only USART1,
+Page 86: USART2, and I2C1 are functional.
+Page 87: on USARTx
+Page 87: interfaces clock’s       interfaces clock’s            USARTx
+Page 87: bootloader using USB       BL_I2C_Loop for          BL_USART_Loop
+Page 87: interrupts                I2Cx                  for USARTx
+Page 89: USART1                Enabled
+Page 89: PA10 pin: USART1 in reception mode. Used in alternate
+Page 89: USART1          USART1_RX pin         Input
+Page 89: PA9 pin: USART1 in transmission mode. Used in input pull-
+Page 89: USART1_TX pin         Output
+Page 89: USART2                Enabled
+Page 89: PA15 pin: USART2 in reception mode. Used in alternate
+Page 89: USART2          USART2_RX pin         Input
+Page 89: PA14 pin: USART2 in transmission mode. Used in input
+Page 89: USART2_TX pin         Output
+Page 89: USARTx          SysTick timer         Enabled
+Page 89: host for USARTx.
+Page 90: Note:       After the devices have booted in bootloader mode using USART2, the serial wire debug
+Page 90: PA14 pin (SWCLK), already used by the bootloader (USART2_RX).
+Page 90: configured to 48 MHz with HSE as clock source. The DFU interface, USART1,
+Page 90: USART2, and I2C1 are functional and can be used to communicate with the bootloader
+Page 90: •    If HSE is not present, the HSI is kept as default clock source and only USART1,
+Page 90: USART2, and I2C1 are functional.
+Page 91: on USARTx
+Page 91: interfaces clock’s       interfaces clock’s            USARTx
+Page 91: bootloader using USB       BL_I2C_Loop for           BL_USART_Loop
+Page 91: interrupts                I2Cx                   for USARTx
+Page 93: USART1               Enabled
+Page 93: PA10 pin: USART1 in reception mode. Used in input pull-up
+Page 93: USART1          USART1_RX pin        Input
+Page 93: PA9 pin: USART1 in transmission mode. Used in alternate
+Page 93: USART1_TX pin        Output
+Page 93: USART2               Enabled
+Page 93: PA15 pin: USART2 in reception mode. Used in input pull-up
+Page 93: USART2          USART2_RX pin        Input
+Page 93: PA14 pin: USART2 in transmission mode. Used in alternate
+Page 93: USART2_TX pin        Output
+Page 93: USARTx          SysTick timer        Enabled
+Page 93: host for USARTx.
+Page 94: Note:         After the devices have booted in bootloader mode using USART2, the serial wire debug
+Page 94: PA14 pin (SWCLK), already used by the bootloader (USART2_RX).
+Page 95: USARTx
+Page 95: no                                                              BL_I2C_Loop for             USARTx
+Page 95: interrupts                                BL_USART_Loop
+Page 95: for USARTx
+Page 97: USART1               Enabled
+Page 97: PA10 pin: USART1 in reception mode. Used in input pull-up
+Page 97: USART1     USART1_RX pin        Input
+Page 97: PA9 pin: USART1 in transmission mode. Used in alternate
+Page 97: USART1_TX pin        Output
+Page 97: USART2               Enabled
+Page 97: PA3 pin: USART2 in reception mode. Used in input pull-up
+Page 97: USART2_RX pin        Input
+Page 97: PA15 pin: USART2 in reception mode. Used in input pull-up
+Page 97: USART2
+Page 97: PA2 pin: USART2 in transmission mode. Used in alternate
+Page 97: USART2_TX pin        Output
+Page 97: PA14 pin: USART2 in transmission mode. Used in alternate
+Page 97: USARTx     SysTick timer        Enabled
+Page 97: for USARTx.
+Page 98: Note:     After the devices have booted in bootloader mode using USART2, the serial wire debug
+Page 98: PA14 pin (SWCLK), already used by the bootloader (USART2_RX).
+Page 98: USARTx                                                       sources and other
+Page 98: USARTx
+Page 98: BL_I2C_Loop for        BL_USART_Loop
+Page 98: I2Cx                for USARTx
+Page 99: Once initialized, the USART1 configuration is 8 bits,
+Page 99: USART1               Enabled
+Page 99: PA10 pin: USART1 in reception mode. Used in input no
+Page 99: USART1        USART1_RX pin        Input
+Page 99: PA9 pin: USART1 in transmission mode. Used in
+Page 99: USART1_TX pin        Output push-pull
+Page 99: USARTx        SysTick timer        Enabled
+Page 100: USARTx
+Page 100: USARTx
+Page 100: BL_USART_Loop
+Page 100: for USARTx
+Page 102: This is used only for USARTx and during CAN2, USB
+Page 102: Once initialized, the USART1 configuration is 8 bits,
+Page 102: USART1                Enabled
+Page 102: PA10 pin: USART1 in reception mode. Used in input no
+Page 102: USART1          USART1_RX pin         Input
+Page 102: PA9 pin: USART1 in transmission mode. Used in input
+Page 102: USART1_TX pin         Output push-pull
+Page 102: Once initialized, the USART2 configuration is 8 bits,
+Page 102: USART2                Enabled              even parity, and one stop bit. The USART2 uses its
+Page 102: USART2
+Page 102: USART2_RX pin         Input                PD6 pin: USART2 receive (remapped pin)
+Page 102: USART2_TX pin         Output push-pull PD5 pin: USART2 transmit (remapped pin)
+Page 102: USARTx          SysTick timer         Enabled
+Page 102: the host for USARTx bootloader.
+Page 103: The system clock is derived from the embedded internal high-speed RC for USARTx
+Page 104: USARTx                                                        14.7456MHz or
+Page 104: USARTx
+Page 104: CANx                      BL_USART_Loop
+Page 104: for USARTx
+Page 105: – Go command updated (for all bootloaders): USART1, USART2, CAN2,
+Page 105: •      When using the USART bootloader, the Get-Version command defined in AN3155 has
+Page 106: The bootloader cannot be used if the USART1_RX (PA10), USART2_RX (PD6, remapped),
+Page 106: mode), USART1 or USART2 (remapped).
+Page 106: On 64-pin packages, the USART2_RX signal remapped PD6 pin is not available and it is
+Page 106: –    If USART1 is used to connect to the bootloader, PD6 and PB5 must be kept at a
+Page 106: –    If USART2 is used to connect to the bootloader, PA10, PB5, PA11, and PA12 must
+Page 106: 19.3.3    USART bootloader Get-Version command returns 0x20
+Page 106: In USART mode, the Get-Version command (defined in AN3155) returns 0x20 instead of
+Page 107: (connected to VBUS = 5 V) is also shared with USART TX pin, configured as alternate
+Page 107: push-pull and forced to 0 since the USART peripheral is not yet clocked. As a consequence,
+Page 107: push-pull when a correct 0x7F is received on RX pin and the USART is clocked. Otherwise,
+Page 108: Once initialized, the USART1 configuration
+Page 108: USART1                Enabled
+Page 108: PA10 pin: USART1 in reception mode.
+Page 108: USART1               USART1_RX pin         Input
+Page 108: PA9 pin: USART1 in transmission mode.
+Page 108: USART1_TX pin         Output push-pull
+Page 108: Once initialized, the USART2 configuration
+Page 108: USART2                Enabled
+Page 108: PD6 pin: USART2 receives (remapped
+Page 108: USART2_RX pin         Input
+Page 108: USART2                                                        pins). Used in input pull-up mode.
+Page 108: PD5 pin: USART2 transmits (remapped
+Page 108: USART2_TX pin         Output push-pull   pins). Used in alternate push-pull, pull-up
+Page 108: USARTx               SysTick timer         Enabled
+Page 109: USARTx
+Page 109: USARTx                                 BL_USART_Loop
+Page 109: for USARTx
+Page 110: •    V2.x supporting USART1 and USART3
+Page 110: •    V3.x supporting USART1, USART3, CAN2, and DFU (USB FS device)
+Page 110: Once initialized, the USART1 configuration is 8 bits, even
+Page 110: USART1               Enabled
+Page 110: USART1
+Page 110: USART1_RX pin        Input          PA10 pin: USART1 in reception mode
+Page 110: USART1_TX pin        Output         PA9 pin: USART1 in transmission mode
+Page 110: Once initialized, the USART3 configuration is 8 bits, even
+Page 110: USART3               Enabled
+Page 110: USART3 (on
+Page 110: PC10/PC11)       USART3_RX pin        Input          PC11 pin: USART3 in reception mode
+Page 110: USART3_TX pin        Output         PC10 pin: USART3 in transmission mode
+Page 111: Once initialized, the USART3 configuration is 8 bits, even
+Page 111: USART3               Enabled
+Page 111: USART3 (on
+Page 111: PB10/PB11)      USART3_RX pin        Input          PB11 pin: USART3 in reception mode
+Page 111: USART3_TX pin        Output         PB10 pin: USART3 in transmission mode
+Page 111: USARTx          SysTick timer        Enabled
+Page 111: USARTx
+Page 111: USARTx
+Page 111: BL_USART_Loop
+Page 111: for USARTx
+Page 113: HSI enabled     phase) and when USARTx interfaces are selected (once
+Page 113: Once initialized, the USART1 configuration is 8 bits, even
+Page 113: USART1               Enabled
+Page 113: PA10 pin: USART1 in reception mode. Used in input no pull
+Page 113: USART1          USART1_RX pin        Input
+Page 113: PA9 pin: USART1 in transmission mode. Used in no pull
+Page 113: USART1_TX pin        Output
+Page 113: Once initialized, the USART3 configuration is 8 bits, even
+Page 113: USART3               Enabled
+Page 113: USART3 (on                                           PB11 pin: USART3 in reception mode. Used in pull-up
+Page 113: USART3_RX pin        Input
+Page 113: PB10 pin: USART3 in transmission mode. Used in pull-up
+Page 113: USART3_TX pin        Output
+Page 114: Once initialized, the USART3 configuration is 8 bits, even
+Page 114: USART3                Enabled
+Page 114: USART3 (on                                          PC11 pin: USART3 in reception mode. Used in pull-up
+Page 114: USART3_RX pin         Input
+Page 114: PC10 pin: USART3 in transmission mode. Used in pull-up
+Page 114: USART3_TX pin         Output
+Page 114: USARTx         SysTick timer         Enabled
+Page 114: host for USARTx.
+Page 114: The system clock is derived from the embedded internal high-speed RC for USARTx. This
+Page 115: USARTx
+Page 115: 0x7F received on                      BL_USART_Loop
+Page 115: USARTx                               for USARTx
+Page 116: – For the USART interface, two consecutive NACKs
+Page 117: USART1               Enabled
+Page 117: PA10 pin: USART1 in reception mode. Used in alternate
+Page 117: USART1          USART1_RX pin        Input
+Page 117: PA9 pin: USART1 in transmission mode. Used in alternate
+Page 117: USART1_TX pin        Output
+Page 117: USART2               Enabled
+Page 117: PA3 pin: USART2 in reception mode. Used in alternate
+Page 117: USART2          USART2_RX pin        Input
+Page 117: PA2 pin: USART2 in transmission mode. Used in alternate
+Page 117: USART2_TX pin        Output
+Page 117: USARTx          SysTick timer        Enabled
+Page 117: host for USARTx.
+Page 118: clock is configured to 48 MHz with HSE as clock source. The DFU interface, USART1
+Page 118: and USART2 are functional and can be used to communicate with the bootloader
+Page 118: •    If HSE is not present, the HSI is kept as default clock source, and only USART1 and
+Page 118: USART2 are functional.
+Page 119: USARTx
+Page 119: USARTx
+Page 119: BL_USART_Loop                       interrupts
+Page 119: for USARTx
+Page 121: Once initialized, the USART1 configuration is 8 bits, even
+Page 121: USART1                Enabled
+Page 121: PA10 pin: USART1 in reception mode. Used in alternate
+Page 121: USART1          USART1_RX pin         Input
+Page 121: PA9 pin: USART1 in transmission mode. Used in
+Page 121: USART1_TX pin         Output
+Page 121: Once initialized, the USART2 configuration is 8 bits, even
+Page 121: USART2                Enabled            parity, and one stop bit. The USART2 uses its remapped
+Page 121: USART2                                                   PD6 pin: USART2 in reception mode. Used in alternate
+Page 121: USART2_RX pin         Input
+Page 121: PD5 pin: USART2 in transmission mode. Used in
+Page 121: USART2_TX pin         Output
+Page 121: USARTx          SysTick timer         Enabled
+Page 121: host for USARTx bootloader.
+Page 122: clock is configured to 48 MHz with HSE as clock source. The DFU interface, USART1
+Page 122: and USART2 are functional and can be used to communicate with the bootloader
+Page 122: •    If HSE is not present, the HSI is kept as default clock source, and only USART1 and
+Page 122: USART2 are functional.
+Page 123: 0x7F received                          USARTx
+Page 123: no              on USARTx
+Page 123: BL_USART_Loop
+Page 123: for USARTx
+Page 124: USART1               Enabled
+Page 124: PA10 pin: USART1 in reception mode. Used in alternate
+Page 124: USART1             USART1_RX pin        Input
+Page 124: PA9 pin: USART1 in transmission mode. Used in alternate
+Page 124: USART1_TX pin        Output
+Page 124: USART2               Enabled
+Page 124: PA3 pin: USART2 in reception mode. Used in alternate
+Page 124: USART2             USART2_RX pin        Input
+Page 124: PA2 pin: USART2 in transmission mode. Used in alternate
+Page 124: USART2_TX pin        Output
+Page 124: USARTx             SysTick timer        Enabled
+Page 124: host for USARTx.
+Page 125: clock is configured to 48 MHz with HSE as clock source. The DFU interface, USART1
+Page 125: and USART2 are functional and can be used to communicate with the bootloader
+Page 125: •   If HSE is not present, the HSI is kept as default clock source, and only USART1 and
+Page 125: USART2 are functional.
+Page 126: Configure USARTx            interfaces clock’s
+Page 126: no           USARTx
+Page 126: BL_USART_Loop for         bootloader using USB
+Page 126: USARTx                      interrupts
+Page 128: USART1                Enabled
+Page 128: PA10 pin: USART1 in reception mode. Used in alternate
+Page 128: USART1          USART1_RX pin         Input
+Page 128: PA9 pin: USART1 in transmission mode. Used in
+Page 128: USART1_TX pin         Output
+Page 128: USART2                Enabled
+Page 128: PA3 pin: USART2 in reception mode. Used in alternate
+Page 128: USART2          USART2_RX pin         Input
+Page 128: PA2 pin: USART2 in transmission mode. Used in
+Page 128: USART2_TX pin         Output
+Page 128: USARTx          SysTick timer         Enabled
+Page 128: the host for USARTx.
+Page 129: USARTx
+Page 129: 0x7F received on               BL_USART_Loop
+Page 129: USARTx                        for USARTx
+Page 130: USART1                Enabled
+Page 130: PA10 pin: USART1 in reception mode. Used in alternate
+Page 130: USART1          USART1_RX pin         Input
+Page 130: PA9 pin: USART1 in transmission mode. Used in alternate
+Page 130: USART1_TX pin         Output
+Page 130: USART2                Enabled
+Page 130: PA3 pin: USART2 in reception mode. Used in alternate
+Page 130: USART2          USART2_RX pin         Input
+Page 130: PA2 pin: USART2 in transmission mode. Used in alternate
+Page 130: USART2_TX pin         Output
+Page 130: USARTx          SysTick timer         Enabled
+Page 130: host for USARTx.
+Page 131: USARTx
+Page 131: 0x7F received on              BL_USART_Loop
+Page 131: USARTx                       for USARTx
+Page 133: Once initialized, the USART1 configuration is 8 bits, even
+Page 133: USART1                Enabled
+Page 133: PA10 pin: USART1 in reception mode. Used in alternate
+Page 133: USART1           USART1_RX pin         Input
+Page 133: PA9 pin: USART1 in transmission mode. Used in
+Page 133: USART1_TX pin         Output
+Page 133: Once initialized, the USART2 configuration is 8 bits, even
+Page 133: USART2                Enabled           parity, and one stop bit. The USART2 uses its remapped
+Page 133: USART2                                                   PD6 pin: USART2 in reception mode. Used in alternate
+Page 133: USART2_RX pin         Input
+Page 133: PD5 pin: USART2 in transmission mode. Used in
+Page 133: USART2_TX pin         Output
+Page 133: USARTx           SysTick timer         Enabled
+Page 133: host for USARTx bootloader.
+Page 134: USARTx
+Page 134: 0x7F received                   BL_USART_Loop
+Page 134: on USARTx                        for USARTx
+Page 134: For USART1 and USART2 interfaces, the maximum
+Page 135: Once initialized, the USART1 configuration is 8 bits, even
+Page 135: USART1               Enabled
+Page 135: PA10 pin: USART1 in reception mode. Used in alternate
+Page 135: USART1          USART1_RX pin        Input
+Page 135: PA9 pin: USART1 in transmission mode. Used in alternate
+Page 135: USART1_TX pin        Output
+Page 135: Once initialized, the USART2 configuration is 8 bits, even
+Page 135: USART2               Enabled         parity, and one stop bit. The USART2 uses its remapped
+Page 135: USART2                                               PD6 pin: USART2 in reception mode. Used in alternate
+Page 135: USART2_RX pin        Input
+Page 135: PD5 pin: USART2 in transmission mode. Used in alternate
+Page 135: USART2_TX pin        Output
+Page 135: USARTx          SysTick timer        Enabled
+Page 135: host for USARTx bootloader.
+Page 136: clock is configured to 48 MHz with HSE as clock source. The DFU interface, USART1
+Page 136: and USART2 are functional and can be used to communicate with the bootloader.
+Page 136: •    If HSE is not present, the HSI is kept as default clock source, and only USART1 and
+Page 136: USART2 are functional.
+Page 137: 0x7F received                     USARTx
+Page 137: no             on USARTx
+Page 137: BL_USART_Loop
+Page 137: for USARTx
+Page 139: Once initialized, the USART1 configuration is 8 bits, even
+Page 139: USART1                Enabled
+Page 139: PA10 pin: USART1 in reception mode. Used in alternate
+Page 139: USART1           USART1_RX pin         Input
+Page 139: PA9 pin: USART1 in transmission mode. Used in
+Page 139: USART1_TX pin         Output
+Page 139: Once initialized, the USART2 configuration is 8 bits, even
+Page 139: USART2                Enabled           parity, and one stop bit. The USART2 uses its remapped
+Page 139: USART2                                                   PD6 pin: USART2 in reception mode. Used in alternate
+Page 139: USART2_RX pin         Input
+Page 139: PD5 pin: USART2 in transmission mode. Used in
+Page 139: USART2_TX pin         Output
+Page 139: USARTx           SysTick timer         Enabled
+Page 139: host for USARTx bootloader.
+Page 140: USARTx
+Page 140: 0x7F received                BL_USART_Loop
+Page 140: on USARTx                     for USARTx
+Page 140: For USART1 and USART2 interfaces, the maximum
+Page 141: USART1               Enabled
+Page 141: PA10 pin: USART1 in reception mode. Used in alternate
+Page 141: USART1          USART1_RX pin        Input
+Page 141: PA9 pin: USART1 in transmission mode. Used in alternate
+Page 141: USART1_TX pin        Output
+Page 141: USART2               Enabled
+Page 141: PA3 pin: USART2 in reception mode. Used in alternate
+Page 141: USART2          USART2_RX pin        Input
+Page 141: PA2 pin: USART2 in transmission mode. Used in alternate
+Page 141: USART2_TX pin        Output
+Page 141: USARTx          SysTick timer        Enabled
+Page 141: host for USARTx.
+Page 142: on USARTx
+Page 142: interfaces clock’s         Configure USARTx
+Page 142: BL_USART_Loop
+Page 142: for USARTx
+Page 144: HSI enabled      detection phase) and when USARTx interfaces are
+Page 144: Once initialized, the USART1 configuration is 8 bits,
+Page 144: USART1               Enabled
+Page 144: PA10 pin: USART1 in reception mode. Used in input no
+Page 144: USART1          USART1_RX pin        Input
+Page 144: PA9 pin: USART1 in transmission mode. Used in input
+Page 144: USART1_TX pin        Output
+Page 145: Once initialized, the USART3 configuration is 8 bits,
+Page 145: USART3               Enabled
+Page 145: USART3 (on                                              PB11 pin: USART3 in reception mode. Used in input
+Page 145: USART3_RX pin        Input
+Page 145: PB10 pin: USART3 in transmission mode. Used in input
+Page 145: USART3_TX pin        Output
+Page 145: Once initialized, the USART3 configuration is 8 bits,
+Page 145: USART3               Enabled
+Page 145: USART3 (on                                              PC11 pin: USART3 in reception mode. used in input
+Page 145: USART3_RX pin        Input
+Page 145: PC10 pin: USART3 in transmission mode. used in input
+Page 145: USART3_TX pin        Output
+Page 145: USARTx            SysTick timer        Enabled
+Page 145: the host for USARTx.
+Page 145: The system clock is derived from the embedded internal high-speed RC for USARTx. This
+Page 146: USARTx
+Page 146: 0x7F received on                      BL_USART_Loop
+Page 146: USARTx                               for USARTx
+Page 147: – For the USART interface, two consecutive NACKs (instead of 1 NACK)
+Page 148: HSI enabled     phase) and when USART or SPI or I2C interfaces are
+Page 148: USART1               Enabled
+Page 148: PA10 pin: USART1 in reception mode. Used in input no pull
+Page 148: USART1          USART1_RX pin        Input
+Page 148: PA9 pin: USART1 in transmission mode. Used in input no
+Page 148: USART1_TX pin        Output
+Page 148: USART3               Enabled
+Page 148: USART3 (on
+Page 148: PB11 pin: USART3 in reception mode. Used in input pull-up
+Page 148: PB10/PB11)      USART3_RX pin        Input
+Page 148: USART3_TX pin        Output          PB10 pin: USART3 in transmission mode
+Page 148: USART3               Enabled
+Page 148: USART3 (on                                           PC11 pin: USART3 in reception mode. Used in input pull-up
+Page 148: USART3_RX pin        Input
+Page 148: PC10 pin: USART3 in transmission mode. Used in input
+Page 148: USART3_TX pin        Output
+Page 148: USARTx          SysTick timer        Enabled
+Page 148: host for USARTx.
+Page 150: The system clock is derived from the embedded internal high-speed RC for USARTx, I2Cx,
+Page 151: USARTx
+Page 151: USARTx                                         BL_USART_Loo
+Page 151: p for USARTx
+Page 152: This bootloader is an updated           – For the USART interface, two consecutive NACKs (instead of
+Page 153: HSI enabled     phase) and when USART or SPI or I2C interface is selected
+Page 153: USART1                Enabled
+Page 153: PA10 pin: USART1 in reception mode. Used in input no pull
+Page 153: USART1          USART1_RX pin         Input
+Page 153: PA9 pin: USART1 in transmission mode. Used in input no
+Page 153: USART1_TX pin         Output
+Page 153: USART2                Enabled
+Page 153: PD6 pin: USART2 in reception mode. Used in input pull-up
+Page 153: USART2          USART2_RX pin         Input
+Page 153: PD5 pin: USART2 in transmission mode. Used in input pull-
+Page 153: USART2_TX pin         Output
+Page 154: USARTx          SysTick timer         Enabled
+Page 154: host for USARTx.
+Page 155: The system clock is derived from the embedded internal high-speed RC for USARTx, I2Cx,
+Page 156: USARTx
+Page 156: BL_USART_Loop
+Page 156: for USARTx
+Page 156: USARTx
+Page 158: HSI enabled      phase) and when USART or SPI or I2C interface is
+Page 158: USART1                Enabled
+Page 158: PA10 pin: USART1 in reception mode. Used in no pull
+Page 158: USART1          USART1_RX pin         Input
+Page 158: PA9 pin: USART1 in transmission mode. Used in no pull
+Page 158: USART1_TX pin         Output
+Page 158: USART2                Enabled
+Page 158: PD6 pin: USART2 in reception mode. Used in pull-up
+Page 158: USART2          USART2_RX pin         Input
+Page 158: PD5 pin: USART2 in transmission mode. Used in pull-up
+Page 158: USART2_TX pin         Output
+Page 158: USARTx          SysTick timer         Enabled
+Page 158: host for USARTx.
+Page 160: The system clock is derived from the embedded internal high-speed RC for USARTx, I2Cx,
+Page 161: USARTx
+Page 161: BL_USART_Loop
+Page 161: for USARTx
+Page 161: on USARTx
+Page 163: RCC                  HSI enabled configured to 60 MHz and for USART and I2C bootloader
+Page 163: USART1               Enabled
+Page 163: PA10 pin: USART1 in reception mode. Used in alternate
+Page 163: USART1          USART1_RX pin        Input
+Page 163: PA9 pin: USART1 in transmission mode. Used in alternate
+Page 163: USART1_TX pin        Output
+Page 163: USART2               Enabled
+Page 163: PA3 pin: USART2 in reception mode. Used in alternate push-
+Page 163: USART2          USART2_RX pin        Input
+Page 163: PA2 pin: USART2 in transmission mode. Used in alternate
+Page 163: USART2_TX pin        Output
+Page 163: USARTx          SysTick timer        Enabled
+Page 163: host for USARTx.
+Page 166: on USARTx
+Page 166: Configure USARTx
+Page 166: BL_SPI_Loop for     BL_I2C_Loop for      BL_USART_Loop
+Page 166: SPIx                 I2Cx              for USARTx
+Page 168: HSI enabled    phase) and when USART or SPI or I2C interface is selected
+Page 168: USART1              Enabled
+Page 168: PA10 pin: USART1 in reception mode. Used in input no pull
+Page 168: USART1      USART1_RX pin       Input
+Page 168: PA9 pin: USART1 in transmission mode. Used in input no pull
+Page 168: USART1_TX pin       Output
+Page 168: USART2              Enabled
+Page 168: PD6 pin: USART2 in reception mode. Used in input pull-up
+Page 168: USART2      USART2_RX pin       Input
+Page 168: PD5 pin: USART2 in transmission mode. Used in input pull-up
+Page 168: USART2_TX pin       Output
+Page 169: USARTx      SysTick timer       Enabled
+Page 169: for USARTx.
+Page 170: The system clock is derived from the embedded internal high-speed RC for USARTx, I2Cx
+Page 171: USARTx
+Page 171: BL_USART_Loop
+Page 171: for USARTx
+Page 171: USARTx
+Page 173: HSI enabled    configured to 60 MHz and for USART and I2C bootloader
+Page 173: USART1               Enabled
+Page 173: PA10 pin: USART1 in reception mode. Used in input no pull
+Page 173: USART1          USART1_RX pin        Input
+Page 173: PA9 pin: USART1 in transmission mode. Used in input no pull
+Page 173: USART1_TX pin        Output
+Page 173: USART2               Enabled
+Page 173: PD6 pin: USART2 in reception mode. Used in input pull-up
+Page 173: USART2          USART2_RX pin        Input
+Page 173: PD5 pin: USART2 in transmission mode. Used in input pull-
+Page 173: USART2_TX pin        Output
+Page 174: USART3               Enabled
+Page 174: PB11 pin: USART3 in reception mode. Used in input pull-up
+Page 174: USART3        USART3_RX pin        Input
+Page 174: PB10 pin: USART3 in transmission mode. Used in input pull-
+Page 174: USART3_TX pin        Output
+Page 174: USARTx        SysTick timer        Enabled
+Page 174: host for USARTx.
+Page 176: The system clock is derived from the embedded internal high-speed RC for USARTx and
+Page 177: interfaces clocks             interfaces clocks             USARTx
+Page 177: BL_SPI_Loop                    BL_I2C_Loop            BL_USART_Loop
+Page 177: for SPIx                       for I2Cx               for USARTx
+Page 177: on USARTx
+Page 178: V9.1       Fix USART3 interface pinout    0000 and thus CCM RAM, when present, is not
+Page 179: HSI enabled       clock configured to 60 MHz and for USART and I2C
+Page 179: USART1                Enabled
+Page 179: PA10 pin: USART1 in reception mode. Used in input no
+Page 179: USART1          USART1_RX pin         Input
+Page 179: PA9 pin: USART1 in transmission mode. Used in input no
+Page 179: USART1_TX pin         Output
+Page 179: USART2                Enabled
+Page 179: PD6 pin: USART2 in reception mode. Used in input pull-
+Page 179: USART2          USART2_RX pin         Input
+Page 179: PD5 pin: USART2 in transmission mode. Used in input
+Page 179: USART2_TX pin         Output
+Page 180: USART3                Enabled
+Page 180: PB11 pin: USART3 in reception mode. Used in input pull-
+Page 180: USART3          USART3_RX pin         Input
+Page 180: PB10 pin: USART3 in transmission mode. Used in input
+Page 180: USART3_TX pin         Output
+Page 180: USARTx          SysTick timer         Enabled
+Page 180: host for USARTx.
+Page 182: The system clock is derived from the embedded internal high-speed RC for USARTx and
+Page 183: interfaces clocks             interfaces clocks           USARTx
+Page 183: BL_SPI_Loop                    BL_I2C_Loop          BL_USART_Loop
+Page 183: for SPIx                       for I2Cx             for USARTx
+Page 183: USARTx
+Page 185: HSI enabled      (interface detection phase) and when USART
+Page 186: USART1                Enabled
+Page 186: PA10 pin: USART1 in reception mode. Used in
+Page 186: USART1               USART1_RX pin         Input
+Page 186: PA9 pin: USART1 in transmission mode. Used
+Page 186: USART1_TX pin         Output
+Page 186: USART3                Enabled
+Page 186: USART3                                                      PB11 pin: USART3 in reception mode. Used in
+Page 186: USART3_RX pin         Input
+Page 186: PB10 pin: USART3 in transmission mode.
+Page 186: USART3_TX pin         Output
+Page 186: USART3                Enabled
+Page 186: USART3                                                      PC11 pin: USART3 in reception mode. Used in
+Page 186: USART3_RX pin         Input
+Page 186: PC10 pin: USART3 in transmission mode.
+Page 186: USART3_TX pin         Output
+Page 186: USARTx               SysTick timer         Enabled
+Page 186: rate from the host for USARTx.
+Page 187: The system clock is derived from the embedded internal high-speed RC for USARTx and
+Page 189: Configure I2Cx                         USARTx
+Page 189: 0x7F received                     BL_USART_Loop
+Page 189: on USARTx                          for USARTx
+Page 191: detection phase) and when USART or SPI or I2C
+Page 191: USART1                Enabled
+Page 191: PA10 pin: USART1 in reception mode. Used in input
+Page 191: USART1            USART1_RX pin         Input
+Page 191: PA9 pin: USART1 in transmission mode. Used in
+Page 191: USART1_TX pin         Output
+Page 192: USART3                Enabled
+Page 192: USART3                                                 PB11 pin: USART3 in reception mode. Used in input
+Page 192: USART3_RX pin         Input
+Page 192: PB10 pin: USART3 in transmission mode. Used in
+Page 192: USART3_TX pin         Output
+Page 192: USART3                Enabled
+Page 192: USART3
+Page 192: (on PC10/PC11)    USART3_RX pin         Input          PC11 pin: USART3 in reception mode.
+Page 192: USART3_TX pin         Output         PC10 pin: USART3 in transmission mode.
+Page 192: USARTx            SysTick timer         Enabled
+Page 192: the host for USARTx.
+Page 194: The system clock is derived from the embedded internal high-speed RC for USARTx, I2Cx
+Page 196: Configure USARTx
+Page 196: BL_USART_Loop for
+Page 196: 0x7F received                             USARTx
+Page 196: on USARTx
+Page 197: USART, CAN, I2C and SPI). The          the bootloader resets AHB1ENR value to 0x0000
+Page 198: for USART, I2C and SPI bootloader
+Page 199: USART1                Enabled
+Page 199: PA10 pin: USART1 in reception mode.
+Page 199: USART1               USART1_RX pin         Input
+Page 199: PA9 pin: USART1 in transmission mode.
+Page 199: USART1_TX pin         Output
+Page 199: USART3                Enabled
+Page 199: USART3 (on                                                  PB11 pin: USART3 in reception mode.
+Page 199: USART3_RX pin         Input
+Page 199: PB10 pin: USART3 in transmission mode.
+Page 199: USART3_TX pin         Output
+Page 199: USART3                Enabled
+Page 199: USART3 (on                                                  PC11 pin: USART3 in reception mode.
+Page 199: USART3_RX pin         Input
+Page 199: PC10 pin: USART3 in transmission mode.
+Page 199: USART3_TX pin         Output
+Page 199: USARTx               SysTick timer         Enabled
+Page 199: rate from the host for USARTx.
+Page 201: The system clock is derived from the embedded internal high-speed RC for USARTx and
+Page 202: USARTx
+Page 202: BL_USART_Loop
+Page 202: 0x7F received                                     for USARTx
+Page 202: on USARTx
+Page 204: USART or SPI or I2C interfaces are
+Page 205: USART1                Enabled
+Page 205: PA10 pin: USART1 in reception mode.
+Page 205: USART1               USART1_RX pin         Input
+Page 205: PA9 pin: USART1 in transmission mode.
+Page 205: USART1_TX pin         Output
+Page 205: USART3                Enabled
+Page 205: USART3 (on
+Page 205: USART3_RX pin         Input            PB11 pin: USART3 in reception mode.
+Page 205: PB10 pin: USART3 in transmission mode.
+Page 205: USART3_TX pin         Output
+Page 205: USART3                Enabled
+Page 205: USART3 (on                                                  PC11 pin: USART3 in reception mode.
+Page 205: USART3_RX pin         Input
+Page 205: PC10 pin: USART3 in transmission mode.
+Page 205: USART3_TX pin         Output
+Page 205: USARTx               SysTick timer         Enabled
+Page 205: baud rate from the host for USARTx.
+Page 207: The system clock is derived from the embedded internal high-speed RC for USARTx and
+Page 209: Configure I2Cx                                                                       Configure USARTx
+Page 209: BL_SPI_Loop for          BL_I2C_Loop for        BL_USART_Loop
+Page 209: SPIx                      I2Cx                for USARTx
+Page 209: on USARTx
+Page 211: 60 MHz and for USART and I2C
+Page 212: USART1                 Enabled
+Page 212: PA10 pin: USART1 in reception mode.
+Page 212: USART1           USART1_RX pin          Input
+Page 212: PA9 pin: USART1 in transmission
+Page 212: USART1_TX pin          Output
+Page 212: USART3                 Enabled
+Page 212: USART3                                                       PB11 pin: USART3 in reception mode.
+Page 212: USART3_RX pin          Input
+Page 212: PB10 pin: USART3 in transmission
+Page 212: USART3_TX pin          Output
+Page 212: USART3                 Enabled
+Page 212: USART3                                                       PC11 pin: USART3 in reception mode.
+Page 212: USART3_RX pin          Input
+Page 212: PC10 pin: USART3 in transmission
+Page 212: USART3_TX pin          Output
+Page 212: USARTx           SysTick timer          Enabled
+Page 212: baud rate from the host for USARTx.
+Page 214: The system clock is derived from the embedded internal high-speed RC for USARTx and
+Page 217: •    V7.x supporting USART1, USART3, CAN2, I2C1, I2C2, I2C3, and DFU (USB FS
+Page 217: •    V9.x supporting USART1, USART3, CAN2, I2C1, I2C2, I2C3, SPI1, SPI2, SPI4, and
+Page 217: HSI enabled    clock configured to 60 MHz and for USART and I2C
+Page 218: USART1               Enabled
+Page 218: PA10 pin: USART1 in reception mode. Used in input no
+Page 218: USART1          USART1_RX pin        Input
+Page 218: PA9 pin: USART1 in transmission mode. Used in input no
+Page 218: USART1_TX pin        Output
+Page 218: USART3               Enabled
+Page 218: USART3 (on                                          PB11 pin: USART3 in reception mode. Used in input pull-
+Page 218: USART3_RX pin        Input
+Page 218: PB10 pin: USART3 in transmission mode. Used in input
+Page 218: USART3_TX pin        Output
+Page 218: USART3               Enabled
+Page 218: USART3
+Page 218: PC11 pin: USART3 in reception mode. Used in input pull-
+Page 218: (on             USART3_RX pin        Input
+Page 218: PC10 pin: USART3 in transmission mode. Used in input
+Page 218: USART3_TX pin        Output
+Page 218: USARTx          SysTick timer        Enabled
+Page 218: host for USARTx.
+Page 219: The system clock is derived from the embedded internal high-speed RC for USARTx and
+Page 220: interfaces clocks                USARTx
+Page 220: BL_I2C_Loop               BL_USART_Loop
+Page 220: 0x7F received on                                for I2Cx                  for USARTx
+Page 220: USARTx
+Page 221: HSI enabled      clock configured to 60 MHz and for USART, I2C and SPI
+Page 221: USART1               Enabled
+Page 221: PA10 pin: USART1 in reception mode. Used in input no
+Page 221: USART1          USART1_RX pin        Input
+Page 221: PA9 pin: USART1 in transmission mode. Used in input no
+Page 221: USART1_TX pin        Output
+Page 222: USART3               Enabled
+Page 222: USART3 (on                                          PB11 pin: USART3 in reception mode. Used in input pull-
+Page 222: USART3_RX pin        Input
+Page 222: PB10 pin: USART3 in transmission mode. Used in input
+Page 222: USART3_TX pin        Output
+Page 222: USART3               Enabled
+Page 222: USART3 (on                                          PC11 pin: USART3 in reception mode. Used in input pull-
+Page 222: USART3_RX pin        Input
+Page 222: PC10 pin: USART3 in transmission mode. Used in input
+Page 222: USART3_TX pin        Output
+Page 222: USARTx          SysTick timer        Enabled
+Page 222: host for USARTx.
+Page 224: The system clock is derived from the embedded internal high-speed RC for USARTx, I2Cx
+Page 225: interfaces clocks            interfaces clocks           USARTx
+Page 225: BL_SPI_Loop                   BL_I2C_Loop          BL_USART_Loop
+Page 225: for SPIx                      for I2Cx             for USARTx
+Page 225: USARTx
+Page 227: HSI enabled configured to 60 MHz and for USART and I2C bootloader
+Page 227: USART1               Enabled
+Page 227: PA10 pin: USART1 in reception mode. Used in input no pull
+Page 227: USART1        USART1_RX pin        Input
+Page 227: PA9 pin: USART1 in transmission mode. Used in input no pull
+Page 227: USART1_TX pin        Output
+Page 227: USART3               Enabled
+Page 227: USART3 (on                                      PB11 pin: USART3 in reception mode. Used in input pull-up
+Page 227: USART3_RX pin           Input
+Page 227: PB10 pin: USART3 in transmission mode. Used in input pull-up
+Page 227: USART3_TX pin        Output
+Page 228: USART3               Enabled
+Page 228: USART3 (on                                       PC11 pin: USART3 in reception mode. Used in input pull-up
+Page 228: USART3_RX pin           Input
+Page 228: PC10 pin: USART3 in transmission mode. Used in input pull-up
+Page 228: USART3_TX pin        Output
+Page 228: USARTx        SysTick timer        Enabled
+Page 228: for USARTx.
+Page 230: The system clock is derived from the embedded internal high-speed RC for USARTx and
+Page 232: interfaces clocks        interfaces clocks            USARTx
+Page 232: BL_SPI_Loop                 BL_I2C_Loop          BL_USART_Loop
+Page 232: for SPIx                    for I2Cx             for USARTx
+Page 232: USARTx
+Page 234: USART1                Enabled
+Page 234: PA10 pin: USART1 in reception mode. Used in
+Page 234: USART1             USART1_RX pin         Input
+Page 234: PA9 pin: USART1 in transmission mode. Used in
+Page 234: USART1_TX pin         Output
+Page 234: USART2                Enabled
+Page 234: PA3 pin: USART2 in reception mode. Used in
+Page 234: USART2             USART2_RX pin         Input
+Page 234: PA2 pin: USART2 in transmission mode. Used in
+Page 234: USART2_TX pin         Output
+Page 234: USARTx bootloader SysTick timer          Enabled
+Page 234: from the host for USARTx.
+Page 235: Note:      On SO8, WLCSP18, TSSOP20, and UFQFN28 packages USART1 PA9/PA10 IOs are
+Page 235: USARTx
+Page 235: on USARTx
+Page 235: for I2Cx                USARTx
+Page 235: BL_USART_Loop
+Page 235: for USARTx
+Page 236: USART2 detection sequence and no other
+Page 236: 8/20 and 28 pins                   is stuck in the USART2 detection sequence
+Page 236: – Improve USART2 detection
+Page 237: USART1                Enabled
+Page 237: PA10 pin: USART1 in reception mode. Used in
+Page 237: USART1             USART1_RX pin         Input
+Page 237: PA9 pin: USART1 in transmission mode. Used in
+Page 237: USART1_TX pin         Output
+Page 237: USART2                Enabled
+Page 237: PA3 pin: USART2 in reception mode. Used in
+Page 237: USART2             USART2_RX pin         Input
+Page 237: PA2 pin: USART2 in transmission mode. Used in
+Page 237: USART2_TX pin         Output
+Page 237: USART3                Enabled
+Page 237: PC11 pin: USART3 in reception mode. Used in
+Page 237: USART3             USART3_RX pin         Input
+Page 237: PC10 pin: USART3 in transmission mode. Used in
+Page 237: USART3_TX pin         Output
+Page 240: USARTx
+Page 240: on USARTx                                                                                    Disable all other
+Page 240: interfaces clocks          interfaces clocks       USARTx
+Page 240: no                                                          BL_SPI_Loop               BL_I2C_Loop         BL_USART_Loop
+Page 240: for SPIx                  for I2Cx            for USARTx
+Page 241: – Option byte launch missing when using USART
+Page 241: Root cause: USART3 detection method changed
+Page 241: USART3 detection loop is done on every
+Page 241: blocked on the USART3 SW loop, causing the
+Page 243: USART1                Enabled
+Page 243: PA10 pin: USART1 in reception mode. Used in
+Page 243: USART1               USART1_RX pin         Input
+Page 243: PA9 pin: USART1 in transmission mode. Used in
+Page 243: USART1_TX pin         Output
+Page 243: USART2                Enabled
+Page 243: PA3 pin: USART2 in reception mode. Used in
+Page 243: USART2               USART2_RX pin         Input
+Page 243: PA2 pin: USART2 in transmission mode. Used in
+Page 243: USART2_TX pin         Output
+Page 244: USART3                Enabled
+Page 244: PC11 pin: USART3 in reception mode. Used in
+Page 244: USART3              USART3_RX pin         Input
+Page 244: PC10 pin: USART3 in transmission mode. Used in
+Page 244: USART3_TX pin         Output
+Page 246: Configure USARTx                                                                              sources and other
+Page 246: on USARTx                                                          sources and other
+Page 246: interfaces clocks               BL_I2C_Loop for       BL_USART_Loop
+Page 246: I2Cx address                                                              I2Cx               for USARTx
+Page 248: USART1                Enabled
+Page 248: PA10 pin: USART1 in reception mode. Used in
+Page 248: USART1             USART1_RX pin         Input
+Page 248: PA9 pin: USART1 in transmission mode. Used in
+Page 248: USART1_TX pin         Output
+Page 248: USART2                Enabled
+Page 248: PA3 pin: USART2 in reception mode. Used in alternate
+Page 248: USART2             USART2_RX pin         Input
+Page 248: PA2 pin: USART2 in transmission mode. Used in
+Page 248: USART2_TX pin         Output
+Page 248: USART3                Enabled
+Page 248: PC11 pin: USART3 in reception mode. Used in
+Page 248: USART3             USART3_RX pin         Input
+Page 248: PC10 pin: USART3 in transmission mode. Used in
+Page 248: USART3_TX pin         Output
+Page 251: Configure USARTx
+Page 251: 0x7F received                          BL_SPI_Loop                 BL_I2C_Loop          BL_USART_Loop
+Page 251: on USARTx        yes                    for SPIx                    for I2Cx             for USARTx
+Page 253: USART1                Enabled
+Page 253: PA10 pin: USART1 in reception mode. Used in alternate
+Page 253: USART1_RX pin         Input
+Page 253: USART1
+Page 253: PA9 pin: USART1 in transmission mode. Used in
+Page 253: USART1_TX pin         Output
+Page 253: USART2                Enabled
+Page 253: PA3 pin: USART2 in reception mode. Used in alternate
+Page 253: USART2           USART2_RX pin         Input
+Page 253: PA2 pin: USART2 in transmission mode. Used in
+Page 253: USART2_TX pin         Output
+Page 253: USARTx                                                Used to automatically detect the serial baud rate from the
+Page 253: bootloader                                            host for USART2s.
+Page 255: USARTx
+Page 255: on USARTx
+Page 255: I2Cx                  USARTx
+Page 255: BL_USART_Loop
+Page 255: for USARTx
+Page 256: V5.0                           USART2 SW jitter issue on detection phase
+Page 257: USART1                 Enabled
+Page 257: PA10 pin: USART1 in reception mode. Used in alternate
+Page 257: USART1           USART1_RX pin          Input
+Page 257: PA9 pin: USART1 in transmission mode. Used in
+Page 257: USART1_TX pin          Output
+Page 257: USART2                 Enabled
+Page 257: PA3 pin: USART2 in reception mode. Used in alternate
+Page 257: USART2           USART2_RX pin          Input
+Page 257: PA2 pin: USART2 in transmission mode. Used in
+Page 257: USART2_TX pin          Output
+Page 257: USART3                 Enabled
+Page 257: PC11 pin: USART3 in reception mode. Used in alternate
+Page 257: USART3           USART3_RX pin          Input
+Page 257: PC10 pin: USART3 in transmission mode. Used in
+Page 257: USART3_TX pin          Output
+Page 260: Configure USARTx
+Page 260: BL_SPI_Loop               BL_I2C_Loop          BL_USART_Loop
+Page 260: for SPIx                  for I2Cx             for USARTx
+Page 260: on USARTx             yes
+Page 262: USART1                Enabled
+Page 262: PA10 pin: USART1 in reception mode. Used in
+Page 262: USART1             USART1_RX pin         Input
+Page 262: PA9 pin: USART1 in transmission mode. Used in
+Page 262: USART1_TX pin         Output
+Page 262: USART2                Enabled
+Page 262: PA3 pin: USART2 in reception mode. Used in
+Page 262: USART2             USART2_RX pin         Input
+Page 262: PA2 pin: USART2 in transmission mode. Used in
+Page 262: USART2_TX pin         Output
+Page 262: USART3                Enabled
+Page 262: PC11 pin: USART3 in reception mode. Used in
+Page 262: USART3             USART3_RX pin         Input
+Page 262: PC10 pin: USART3 in transmission mode. Used in
+Page 262: USART3_TX pin         Output
+Page 265: Configure USARTx
+Page 265: BL_SPI_Loop               BL_I2C_Loop          BL_USART_Loop
+Page 265: for SPIx                  for I2Cx             for USARTx
+Page 265: on USARTx             yes
+Page 268: USART1                Enabled
+Page 268: PA10 pin: USART1 in reception mode. Used in
+Page 268: USART1             USART1_RX pin         Input
+Page 268: PA9 pin: USART1 in transmission mode. Used in
+Page 268: USART1_TX pin         Output
+Page 268: USART2                Enabled
+Page 268: PA3 pin: USART2 in reception mode. Used in
+Page 268: USART2             USART2_RX pin         Input
+Page 268: PA2 pin: USART2 in transmission mode. Used in
+Page 268: USART2_TX pin         Output
+Page 268: USART3                Enabled
+Page 268: PC11 pin: USART3 in reception mode. Used in
+Page 268: USART3             USART3_RX pin         Input
+Page 268: PC10 pin: USART3 in transmission mode. Used in
+Page 268: USART3_TX pin         Output
+Page 271: Configure USARTx
+Page 271: BL_SPI_Loop               BL_I2C_Loop          BL_USART_Loop
+Page 271: for SPIx                  for I2Cx             for USARTx
+Page 271: on USARTx             yes
+Page 273: USART1                 Enabled
+Page 273: PA10 pin: USART1 in reception mode. Used in
+Page 273: USART1              USART1_RX pin          Input
+Page 273: PA9 pin: USART1 in transmission mode. Set as
+Page 273: USART1_TX pin          Output
+Page 273: input until USART1 is detected.
+Page 273: USART2                 Enabled
+Page 273: PA15 pin: USART2 in reception mode. Used in
+Page 273: USART2              USART2_RX pin          Input
+Page 273: PA5 pin: USART2 in transmission mode. Set as
+Page 273: USART2_TX pin          Output
+Page 273: input until USART2 is detected.
+Page 273: USART3                 Enabled
+Page 273: PA3 pin: USART3 in reception mode. Used in
+Page 273: USART3              USART3_RX pin          Input
+Page 273: PA4 pin: USART3 in transmission mode. Set as
+Page 273: USART3_TX pin          Output
+Page 273: input until USART3 is detected.
+Page 276: Special commands supported (USART/I2C/SPI/FDCAN/I3C)
+Page 277: Yes                           BL_USART_Loop
+Page 277: on USARTx                and other
+Page 277: for USARTx
+Page 277: USARTx
+Page 279: USART1                 Enabled
+Page 279: PA10 pin: USART1 in reception mode. Used in
+Page 279: USART1             USART1_RX pin          Input
+Page 279: PA9 pin: USART1 in transmission mode. Set as
+Page 279: USART1_TX pin          Output
+Page 279: input until USART1 is detected.
+Page 279: USART2                 Enabled
+Page 279: PA3 pin: USART2 in reception mode. Used in
+Page 279: USART2             USART2_RX pin          Input
+Page 279: PA2 pin: USART2 in transmission mode. Set as
+Page 279: USART2_TX pin          Output
+Page 279: input until USART2 is detected.
+Page 279: USART3                 Enabled
+Page 279: PD9 pin: USART3 in reception mode. Used in
+Page 279: USART3             USART3_RX pin          Input
+Page 279: PD8 pin: USART3 in transmission mode. Set as
+Page 279: USART3_TX pin          Output
+Page 279: input until USART3 is detected.
+Page 283: Special commands supported (USART/I2C/SPI/FDCAN/I3C)
+Page 284: Yes                        BL_USART_Loop
+Page 284: on USARTx                and other
+Page 284: for USARTx
+Page 284: USARTx
+Page 286: USART1               Enabled
+Page 286: PA10 pin: USART1 in reception mode. Used in alternate
+Page 286: USART1           USART1_RX pin        Input
+Page 286: PA9 pin: USART1 in transmission mode. Set as input until
+Page 286: USART1_TX pin        Output
+Page 286: USART1 is detected.
+Page 286: USART2               Enabled
+Page 286: PA3 pin: USART2 in reception mode. Used in alternate push-
+Page 286: USART2           USART2_RX pin        Input
+Page 286: PA2 pin: USART2 in transmission mode. Set as input until
+Page 286: USART2_TX pin        Output
+Page 286: USART2 is detected.
+Page 286: USART3               Enabled
+Page 286: PD9 pin: USART3 in reception mode. Used in alternate push-
+Page 286: USART3           USART3_RX pin        Input
+Page 286: PD8 pin: USART3 in transmission mode. Set as input until
+Page 286: USART3_TX pin        Output
+Page 286: USART3 is detected.
+Page 289: Special commands supported (USART/I2C/SPI/FDCAN/I3C)
+Page 290: Yes                       BL_USART_Loop
+Page 290: on USARTx                and other
+Page 290: for USARTx
+Page 290: USARTx
+Page 292: USART1               Enabled
+Page 292: PA10 pin: USART1 in reception mode. Used in alternate
+Page 292: USART1_RX pin        Input
+Page 292: USART1                                              push-pull, pull-up mode.
+Page 292: PA9 pin: USART1 in transmission mode. Used in alternate
+Page 292: USART1_TX pin        Output         push-pull, pull-up mode. Set as input until USART1 is
+Page 292: USART2               Enabled
+Page 292: PA3 pin: USART2 in reception mode. Used in alternate push-
+Page 292: USART2_RX pin        Input
+Page 292: USART2                                              pull, pull-up mode.
+Page 292: PA2 pin: USART2 in transmission mode. Used in alternate
+Page 292: USART2_TX pin        Output         push-pull, pull-up mode. Set as input until USART2 is
+Page 293: USART3                Enabled
+Page 293: PB11 pin: USART3 in reception mode. Used in alternate
+Page 293: USART3 (on     USART3_RX pin         Input
+Page 293: PB10 pin: USART3 in transmission mode. Used in alternate
+Page 293: USART3_TX pin         Output         push-pull, pull-down mode. Set as input until USART3 is
+Page 293: USART3                Enabled
+Page 293: PD9 pin: USART3 in reception mode. Used in alternate push-
+Page 293: USART3 (on     USART3_RX pin         Input
+Page 293: PD8 pin: USART3 in transmission mode. Used in alternate
+Page 293: USART3_TX pin         Output         push-pull, pull-down mode. Set as input until USART3 is
+Page 296: detected                                                                                           USARTx
+Page 296: BL_SPI_Loop              BL_I2C_Loop          BL_USART_Loop
+Page 296: yes                   for SPIx                 for I2Cx             for USARTx
+Page 296: on USARTx
+Page 297: V9.3    – Modify USART TX        None
+Page 298: detection phase) and when USART or SPI or I2C
+Page 298: USART1                Enabled
+Page 298: PA10 pin: USART1 in reception mode. Used in
+Page 298: USART1 (on          USART1_RX pin         Input
+Page 298: PA9 pin: USART1 in transmission mode. Used in
+Page 298: USART1_TX pin         Output        alternate push-pull, pull-up mode. Set as input until
+Page 298: USART1 is detected on the bootloader version 0x91.
+Page 298: USART1                Enabled
+Page 298: USART1 (on                                              PB15 pin: USART1 in reception mode.Used in input
+Page 298: USART1_RX pin         Input
+Page 298: PB14 pin: USART1 in transmission mode. Used in
+Page 298: USART1_TX pin         Output
+Page 299: USART2                Enabled
+Page 299: PA3 pin: USART2 in reception mode. Used in
+Page 299: USART2_RX pin         Input          alternate push-pull, no pull mode. Used in alternate
+Page 299: USART2
+Page 299: PA2 pin: USART2 in transmission mode. Used in
+Page 299: USART2_TX pin         Output         alternate push-pull, pull-up mode. Set as input until
+Page 299: USART3 is detected on the bootloader version 0x91.
+Page 299: USART3                Enabled
+Page 299: PB11 pin: USART3 in reception mode. Used in
+Page 299: USART3_RX pin         Input
+Page 299: USART3                                                   alternate push-pull, pull-up mode.
+Page 299: PB10 pin: USART3 in transmission mode. Used in
+Page 299: USART3_TX pin         Output         alternate push-pull, pull-up mode. Set as input until
+Page 299: USART3 is detected on the bootloader version 0x91.
+Page 301: Note:       To connect to the bootloader USART1 using PB14/PB15 pins, user must send two
+Page 302: detected                                                                                           USARTx
+Page 302: BL_SPI_Loop              BL_I2C_Loop          BL_USART_Loop
+Page 302: yes                   for SPIx                 for I2Cx             for USARTx
+Page 302: on USARTx
+Page 303: – USART2 connection is not working
+Page 303: V13.3                                                    – Bank erase is not working on USART/SPI and I2C
+Page 303: using USART or SPI
+Page 303: pulled down if USART1 on PB14/PB15 is not used
+Page 304: V9.1      and fix them                                    Same data are output on the USART1_TX PB14
+Page 304: (0x91)   – Fix FDCAN version from V1.0 to V1.1             when using USART1 on PA10/PA9.
+Page 304: – Fix write issue when using FDCAN                – Root cause: both USART1 TX pins PA9 and PB14
+Page 304: possible use cases                              – Behavior: same data are output on USART1 TX
+Page 304: your design to not damage it when using USART1
+Page 304: Same data are output on the USART1_TX PA9 when
+Page 304: using USART1 on PB15/PB14.
+Page 304: – Root cause: both USART1 TX pins PB14 and PA9
+Page 304: – Behavior: same data are output on USART1 TX
+Page 304: your design to not damage it when using USART1
+Page 305: – Same data on PA9 when USART1 is used on   interfaces.
+Page 305: V9.2    – Same data on PB14 when USART1 is used     0x30047FFF) and ITCM memories not accessible
+Page 306: USART1               Enabled
+Page 306: PA10 pin: USART1 in reception mode. Used in
+Page 306: USART1_RX pin        Input
+Page 306: USART1                                               alternate push-pull, pull-up mode.
+Page 306: PA9 pin: USART1 in transmission mode. Used in
+Page 306: USART1_TX pin        Output       alternate push-pull, pull-up mode. Set as input until
+Page 306: USART1 is detected on the bootloader version 0x92.
+Page 306: USART2               Enabled
+Page 306: PA3 pin: USART2 in reception mode. Used in alternate
+Page 306: USART2_RX pin        Input
+Page 306: USART2                                               push-pull, pull-up mode.
+Page 306: PA2 pin: USART2 in transmission mode. Used in
+Page 306: USART2_TX pin        Output       alternate push-pull, pull-up mode. Set as input until
+Page 306: USART2 is detected on the bootloader version 0x92.
+Page 307: USART3                Enabled
+Page 307: PB11 pin: USART3 in reception mode. Used in
+Page 307: USART3 on       USART3_RX pin         Input
+Page 307: PB10 pin: USART3 in transmission mode. Used in
+Page 307: USART3_TX pin         Output         alternate push-pull, pull-down mode. Set as input until
+Page 307: USART3 is detected on the bootloader version 0x92.
+Page 307: USART3                Enabled
+Page 307: PD9 pin: USART3 in reception mode. Used in alternate
+Page 307: USART3 on       USART3_RX pin         Input
+Page 307: PD8 pin: USART3 in transmission mode. Used in
+Page 307: USART3_TX pin         Output         alternate push-pull, pull-down mode. Set as input until
+Page 307: USART3 is detected on the bootloader version 0x92.
+Page 311: Configure USARTx                                                                                  Disable all interrupt
+Page 311: detected                                                                                         USARTx TX
+Page 311: BL_SPI_Loop              BL_I2C_Loop          BL_USART_Loop
+Page 311: yes                   for SPIx                 for I2Cx             for USARTx
+Page 311: on USARTx
+Page 312: V9.2    – Modify USART TX from          None
+Page 313: USART1                Enabled
+Page 313: PA10 pin: USART1 in reception mode. Used in alternate
+Page 313: USART1_RX pin         Input
+Page 313: USART1                                                  push-pull, pull-up mode.
+Page 313: PA9 pin: USART1 in transmission mode. Used in alternate
+Page 313: USART1_TX pin         Output            push-pull, pull-up mode. Set as input until USART1 is
+Page 313: USART2                Enabled
+Page 313: PA3 pin: USART2 in reception mode. Used in alternate
+Page 313: USART2_RX pin         Input             push-pull, no pull mode. Used in alternate push-pull, no
+Page 313: USART2
+Page 313: PA2 pin: USART2 in transmission mode. Used in alternate
+Page 313: USART2_TX pin         Output            push-pull, no pull mode. Set as input until USART3 is
+Page 313: USART3                Enabled
+Page 313: PD9 pin: USART3 in reception mode. Used in alternate
+Page 313: USART3          USART3_RX pin         Input
+Page 313: PD8 pin: USART3 in transmission mode. Set as input until
+Page 313: USART3_TX pin         Output
+Page 313: USART3.
+Page 317: Special commands supported (USART/I2C/SPI/FDCAN/USB/I3C)
+Page 318: Yes                       BL_USART_Loop
+Page 318: on USARTx                and other
+Page 318: for USARTx
+Page 318: USARTx
+Page 320: USART2                Enabled
+Page 320: USART2 (on                                              PA10 pin: USART2 in reception mode. Used in input
+Page 320: USART2_RX pin         Input
+Page 320: PA9 pin: USART2 in transmission mode. Used in
+Page 320: USART2_TX pin         Output
+Page 320: USART2                Enabled
+Page 320: USART2 (on                                              PA3 pin: USART2 in reception mode.Used in input
+Page 320: USART2_RX pin         Input
+Page 320: PA2 pin: USART2 in transmission mode. Used in
+Page 320: USART2_TX pin         Output
+Page 320: USART2              SysTick timer         Enabled
+Page 320: from the host for USARTx.
+Page 322: on USARTx
+Page 322: interfaces clocks       USARTx
+Page 322: BL_SPI_Loop         BL_USART_Loop
+Page 322: for SPIx            for USARTx
+Page 324: USART2                Enabled
+Page 324: USART2 (on                                              PA10 pin: USART2 in reception mode. Used in input
+Page 324: USART2_RX pin         Input
+Page 324: PA9 pin: USART2 in transmission mode. Used in
+Page 324: USART2_TX pin         Output
+Page 324: USART2                Enabled
+Page 324: USART2 (on                                              PA3 pin: USART2 in reception mode. Used in input
+Page 324: USART2_RX pin         Input
+Page 324: PA2 pin: USART2 in transmission mode.Used in
+Page 324: USART2_TX pin         Output
+Page 324: USART2              SysTick timer         Enabled
+Page 324: from the host for USARTx.
+Page 326: USARTx
+Page 326: Disable all other       USARTx
+Page 326: BL_USART_Loop
+Page 326: mechanism                         Execute            for USARTx
+Page 327: USART1               Enabled
+Page 327: PA10 pin: USART1 in reception mode. Used in alternate
+Page 327: USART1          USART1_RX pin        Input
+Page 327: PA9 pin: USART1 in transmission mode. Used in alternate
+Page 327: USART1_TX pin        Output
+Page 327: USART2               Enabled
+Page 327: PA3 pin: USART2 in reception mode. Used in alternate
+Page 327: USART2          USART2_RX pin        Input
+Page 327: PA2 pin: USART2 in transmission mode. Used in alternate
+Page 327: USART2_TX pin        Output
+Page 327: USARTx          SysTick timer        Enabled
+Page 327: host for USARTx.
+Page 329: USARTx
+Page 329: Disable all other          USARTx
+Page 329: BL_USART_Loop
+Page 329: mechanism                        Execute               for USARTx
+Page 330: •     V4.x supporting USART1, USART2 USART2, and DFU (USB FS device). This version
+Page 330: •     V11.x supporting USART1, USART2, I2C1, I2C2, SPI1 and SPI2. This version is
+Page 330: USART1               Enabled
+Page 330: PA10 pin: USART2 in reception mode. Used in alternate
+Page 330: USART1            USART1_RX pin        Input
+Page 330: PA9 pin: USART2 in transmission mode. Used in alternate
+Page 330: USART1_TX pin        Output
+Page 330: USART2               Enabled
+Page 330: PA3 pin: USART2 in reception mode. Used in alternate push-
+Page 330: USART2            USART2_RX pin        Input
+Page 330: PA2 pin: USART2 in transmission mode. Used in alternate
+Page 330: USART2_TX pin        Output
+Page 330: USARTx            SysTick timer        Enabled
+Page 330: host for USARTx.
+Page 333: USARTx
+Page 333: USARTx
+Page 333: Execute DFU bootloader        BL_USART_Loop
+Page 333: using USB interrupts           for USARTx
+Page 335: USART1               Enabled
+Page 335: PA10 pin: USART2 in reception mode. Used in alternate
+Page 335: USART1          USART1_RX pin        Input
+Page 335: PA9 pin: USART2 in transmission mode. Used in alternate
+Page 335: USART1_TX pin        Output
+Page 335: USART2               Enabled
+Page 335: PA3 pin: USART2 in reception mode. Used in alternate push-
+Page 335: USART2          USART2_RX pin        Input
+Page 335: PA2 pin: USART2 in transmission mode. Used in alternate
+Page 335: USART2_TX pin        Output
+Page 335: USARTx          SysTick timer        Enabled
+Page 335: host for USARTx.
+Page 338: on USARTx
+Page 338: interfaces clocks          interfaces clocks       USARTx
+Page 338: BL_SPI_Loop             BL_I2C_Loop         BL_USART_Loop
+Page 338: for SPIx                for I2Cx            for USARTx
+Page 339: Once initialized, the USART1 configuration is 8
+Page 339: USART1               Enabled
+Page 339: PA10 pin: USART1 in reception mode. Used in
+Page 339: USART1               USART1_RX pin        Input
+Page 339: PA9 pin: USART1 in transmission mode. Used in
+Page 339: USART1_TX pin        Output
+Page 339: Once initialized, the USART2 configuration is 8
+Page 339: USART2               Enabled
+Page 339: PD6 pin: USART2 in reception mode. Used in
+Page 339: USART2               USART2_RX pin        Input
+Page 339: PD5 pin: USART2 in transmission mode. Used in
+Page 339: USART2_TX pin        Output
+Page 339: USARTx               SysTick timer        Enabled
+Page 340: USARTx
+Page 340: USARTx
+Page 340: BL_USART_Loop
+Page 340: for USARTx
+Page 341: Once initialized, the USART1 configuration
+Page 341: USART1                Enabled
+Page 341: PA10 pin: USART1 in reception mode.
+Page 341: USART1               USART1_RX pin         Input
+Page 341: PA9 pin: USART1 in transmission mode.
+Page 341: USART1_TX pin         Output
+Page 341: Once initialized, the USART2 configuration
+Page 341: USART2                Enabled
+Page 341: PD6 pin: USART2 in reception mode. Used
+Page 341: USART2               USART2_RX pin         Input
+Page 341: PD5 pin: USART2 in transmission mode.
+Page 341: USART2_TX pin         Output
+Page 341: USARTx               SysTick timer         Enabled
+Page 342: USARTx
+Page 342: USARTx
+Page 342: BL_USART_Loop
+Page 342: for USARTx
+Page 343: HSI enabled       USARTx and during USB detection for DFU
+Page 343: Once initialized, the USART1 configuration
+Page 343: USART1                Enabled
+Page 343: PA10 pin: USART1 in reception mode.
+Page 343: USART1                USART1_RX pin         Input
+Page 343: PA9 pin: USART1 in transmission mode.
+Page 343: USART1_TX pin         Output
+Page 344: Once initialized, the USART2 configuration
+Page 344: USART2                Enabled               is 8 bits, even parity and 1 stop bit. The
+Page 344: USART2 uses its remapped pins.
+Page 344: USART2                                                            PD6 pin: USART2 in reception mode. Used
+Page 344: USART2_RX pin         Input
+Page 344: PD5 pin: USART2 in transmission mode.
+Page 344: USART2_TX pin         Output
+Page 344: USARTx                SysTick timer         Enabled               rate from the host for the USARTx
+Page 344: The system clock is derived from the embedded internal high-speed RC for the USARTx
+Page 345: no            USARTx
+Page 345: USARTx
+Page 345: BL_USART_Loop
+Page 345: for USARTx
+Page 346: – For the USART interface, two consecutive instead of one NACKs are sent
+Page 347: HSI enabled       USARTx and during USB detection for DFU
+Page 347: Once initialized, the USART1 configuration
+Page 347: USART1                Enabled
+Page 347: PA10 pin: USART1 in reception mode.
+Page 347: USART1                USART1_RX pin         Input
+Page 347: PA9 pin: USART1 in transmission mode.
+Page 347: USART1_TX pin         Output
+Page 348: Once initialized, the USART2 configuration
+Page 348: USART2                Enabled               is 8 bits, even parity, and one stop bit. The
+Page 348: USART2 uses its remapped pins.
+Page 348: USART2                                                            PD6 pin: USART2 in reception mode. Used
+Page 348: USART2_RX pin         Input
+Page 348: PD5 pin: USART2 in transmission mode.
+Page 348: USART2_TX pin         Output
+Page 348: USARTx                SysTick timer         Enabled
+Page 348: rate from the host for USARTx bootloader.
+Page 348: The system clock is derived from the embedded internal high-speed RC for USARTx
+Page 349: 0x7F received on                        USARTx             clock to 32MHz and
+Page 349: USARTx                                                  USB clock to 48 MHz
+Page 349: BL_USART_Loop
+Page 349: for USARTx
+Page 350: Note: When the USART bootloader is selected there is no change on
+Page 350: – For the USART interface, two consecutive NACKs (instead of one)
+Page 351: HSI enabled       USARTx and during USB detection for DFU
+Page 351: Once initialized, the USART1 configuration
+Page 351: USART1                Enabled
+Page 351: PA10 pin: USART1 in reception mode.
+Page 351: USART1                USART1_RX pin         Input
+Page 351: PA9 pin: USART1 in transmission mode.
+Page 351: USART1_TX pin         Output
+Page 352: Once initialized, the USART2 configuration
+Page 352: USART2                Enabled               is 8 bits, even parity, and one stop bit. The
+Page 352: USART2 uses its remapped pins.
+Page 352: USART2                                                            PD6 pin: USART2 in reception mode. Used
+Page 352: USART2_RX pin         Input
+Page 352: PD5 pin: USART2 in transmission mode.
+Page 352: USART2_TX pin         Output
+Page 352: USARTx                SysTick timer         Enabled
+Page 352: rate from the host for USARTx bootloader.
+Page 352: The system clock is derived from the embedded internal high-speed RC for USARTx
+Page 353: Configure USARTx
+Page 353: on USARTx
+Page 353: Execute BL_USART_Loop
+Page 353: no                                          for USARTx
+Page 354: – For the USART interface, two consecutive NACKs (instead of 1 NACK)
+Page 355: HSI enabled         clock configured to 72 MHz and for USART, I2C, SPI and
+Page 355: USART1               Enabled
+Page 355: PA10 pin: USART1 in reception mode. Used in input no
+Page 355: USART1          USART1_RX pin        Input
+Page 355: PA9 pin: USART1 in transmission mode. Used in input
+Page 355: USART1_TX pin        Output
+Page 355: USART2               Enabled
+Page 355: PA3 pin: USART2 in reception mode. Used in input pull-
+Page 355: USART2          USART2_RX pin        Input
+Page 355: PA2 pin: USART2 in transmission mode. Used in input
+Page 355: USART2_TX pin        Output
+Page 355: USART3               Enabled
+Page 355: PC11 pin: USART3 in reception mode. Used in input
+Page 355: USART3          USART3_RX pin        Input
+Page 355: PC10 pin: USART3 in transmission mode. Used in input
+Page 355: USART3_TX pin        Output
+Page 356: USARTx           SysTick timer         Enabled
+Page 356: the host for USARTx.
+Page 359: interfaces clocks        interfaces clocks           USARTx
+Page 359: BL_SPI_Loop               BL_I2C_Loop          BL_USART_Loop
+Page 359: for SPIx                  for I2Cx             for USARTx
+Page 359: on USARTx             yes
+Page 360: – On connection phase, USART responds with two
+Page 361: HSI enabled     clock configured to 60 MHz and for USART, I2C, SPI
+Page 361: USART1                Enabled
+Page 361: PA10 pin: USART1 in reception mode. Used in input no
+Page 361: USART1          USART1_RX pin         Input
+Page 361: PA9 pin: USART1 in transmission mode. Used in input
+Page 361: USART1_TX pin         Output
+Page 362: USART2               Enabled
+Page 362: PA3 pin: USART2 in reception mode. Used in input pull-
+Page 362: USART2           USART2_RX pin        Input
+Page 362: PA2 pin: USART2 in transmission mode. Used in input
+Page 362: USART2_TX pin        Output
+Page 362: USART3               Enabled
+Page 362: USART3                                                PC11 pin: USART3 in reception mode. Used in input
+Page 362: USART3_RX pin        Input
+Page 362: USART3_TX pin        Output          PC10 pin: USART3 in transmission mode
+Page 362: USARTx           SysTick timer        Enabled
+Page 362: the host for USARTx.
+Page 366: using CRS and HSI48 as                     interfaces clocks           interfaces clocks                 USARTx
+Page 366: Configure I2Cx                         BL_SPI_Loop                  BL_I2C_Loop                BL_USART_Loop
+Page 366: for SPIx                     for I2Cx                   for USARTx
+Page 366: USARTx                yes
+Page 368: USART/I2C/CAN
+Page 369: HSI enabled     configured to 72 MHz and for USART, I2C, SPI and USB
+Page 369: USART1               Enabled
+Page 369: PA10 pin: USART1 in reception mode. Used in input no pull
+Page 369: USART1          USART1_RX pin        Input
+Page 369: PA9 pin: USART1 in transmission mode. Used in input no
+Page 369: USART1_TX pin        Output
+Page 369: USART2               Enabled
+Page 369: PA3 pin: USART2 in reception mode. Used in input pull-up
+Page 369: USART2          USART2_RX pin        Input
+Page 369: PA2 pin: USART2 in transmission mode. Used in input pull-
+Page 369: USART2_TX pin        Output
+Page 370: USART3               Enabled
+Page 370: USART3                                               PC11 pin: USART3 in reception mode. Used in input pull-up
+Page 370: USART3_RX pin        Input
+Page 370: USART3_TX pin        Output          PC10 pin: USART3 in transmission mode
+Page 370: USARTx          SysTick timer        Enabled
+Page 370: host for USARTx.
+Page 374: interfaces clocks           interfaces clocks                 USARTx
+Page 374: BL_SPI_Loop                  BL_I2C_Loop                BL_USART_Loop
+Page 374: for SPIx                     for I2Cx                   for USARTx
+Page 374: on USARTx
+Page 375: cannot impact USART/I2C/CAN.
+Page 376: •     V10.x supporting USART, I2C and DFU (USB FS device).
+Page 376: •     V9.x supporting USART, I2C, SPI, CAN and DFU (USB FS device).
+Page 376: HSI enabled   configured to 24 MHz and for USART and I2C bootloader
+Page 377: USART1               Enabled
+Page 377: PA10 pin: USART1 in reception mode. Used in input no pull
+Page 377: USART1         USART1_RX pin        Input
+Page 377: PA9 pin: USART1 in transmission mode. Used in input no pull
+Page 377: USART1_TX pin        Output
+Page 377: USART2               Enabled
+Page 377: PA3 pin: USART2 in reception mode. Used in input pull-up
+Page 377: USART2         USART2_RX pin        Input
+Page 377: PA2 pin: USART2 in transmission mode. Used in input pull-up
+Page 377: USART2_TX pin        Output
+Page 377: USART3               Enabled
+Page 377: USART3                                             PC11 pin: USART3 in reception mode. Used i input pull-up
+Page 377: USART3_RX pin        Input
+Page 377: USART3_TX pin        Output         PC10 pin: USART3 in transmission mode
+Page 377: USARTx         SysTick timer        Enabled
+Page 377: for USARTx.
+Page 378: For USARTx and I2Cx bootloaders no external clock is required.
+Page 380: USARTx
+Page 380: BL_USART_Loop
+Page 380: for USARTx
+Page 380: on USARTx
+Page 382: HSI enabled     configured to 72 MHz and for USART and I2C bootloader
+Page 382: USART1               Enabled
+Page 382: PA10 pin: USART1 in reception mode. Used in input no pull
+Page 382: USART1          USART1_RX pin        Input
+Page 382: PA9 pin: USART1 in transmission mode. Used in input no
+Page 382: USART1_TX pin        Output
+Page 383: USART2                Enabled
+Page 383: PA3 pin: USART2 in reception mode. Used in input pull-up
+Page 383: USART2          USART2_RX pin         Input
+Page 383: PA2 pin: USART2 in transmission mode. Used in input pull-
+Page 383: USART2_TX pin         Output
+Page 383: USART3                Enabled
+Page 383: PC11 pin: USART3 in reception mode. Used in input pull-
+Page 383: USART3          USART3_RX pin         Input
+Page 383: PC10 pin: USART3 in transmission mode Used in input
+Page 383: USART3_TX pin         Output
+Page 383: USARTx          SysTick timer         Enabled
+Page 383: host for USARTx.
+Page 386: Configure USARTx
+Page 386: BL_USART_Loop
+Page 386: for USARTx
+Page 386: USARTx
+Page 387: USART/I2C/CAN/USB.
+Page 388: HSI enabled    configured to 72 MHz and for USART, I2C and SPI bootloader
+Page 388: USART1               Enabled
+Page 388: PA10 pin: USART1 in reception mode. Used in input no pull
+Page 388: USART1          USART1_RX pin        Input
+Page 388: PA9 pin: USART1 in transmission mode. Used in input no pull
+Page 388: USART1_TX pin        Output
+Page 388: USART2               Enabled
+Page 388: PA3 pin: USART2 in reception mode. Used in input no pull
+Page 388: USART2          USART2_RX pin        Input
+Page 388: PA2 pin: USART2 in transmission mode. Used in input no pull
+Page 388: USART2_TX pin        Output
+Page 389: USART3               Enabled
+Page 389: PC11 pin: USART3 in reception mode. Used in input no pull
+Page 389: USART3        USART3_RX pin        Input
+Page 389: PC10 pin: USART3 in transmission mode. Used in input no
+Page 389: USART3_TX pin        Output
+Page 389: USARTx        SysTick timer        Enabled
+Page 389: host for USARTx.
+Page 393: interfaces clocks        interfaces clocks              USARTx
+Page 393: BL_SPI_Loop               BL_I2C_Loop               BL_USART_Loop
+Page 393: for SPIx                  for I2Cx                  for USARTx
+Page 393: on USARTx             yes
+Page 394: USART/I2C/CAN.
+Page 395: HSI enabled    configured to 60 MHz and for USART, I2C, SPI and USB
+Page 395: USART1               Enabled
+Page 395: PA10 pin: USART1 in reception mode. Used in input no pull
+Page 395: USART1          USART1_RX pin        Input
+Page 395: PA9 pin: USART1 in transmission mode. Used in input no
+Page 395: USART1_TX pin        Output
+Page 395: USART2               Enabled
+Page 395: USART2                                              PA3 pin: USART2 in reception mode. Used in input pull-up
+Page 395: USART2_RX pin        Input
+Page 395: USART2_TX pin        Output         PA2 pin: USART2 in transmission mode
+Page 396: USART3               Enabled
+Page 396: PC11 pin: USART3 in reception mode. Used in input pull-up
+Page 396: USART3         USART3_RX pin        Input
+Page 396: PC10 pin: USART3 in transmission mode. Used in input pull-
+Page 396: USART3_TX pin        Output
+Page 400: USARTx                                  Disable all           Disable all
+Page 400: no                              interfaces clocks     interfaces clocks      Configure USARTx
+Page 400: Detected                           BL_SPI_Loop            BL_I2C_Loop           BL_USART_Loop
+Page 400: for SPIx               for I2Cx              for USARTx
+Page 402: HSI enabled      configured to 60 MHz and for USART, I2C, SPI and USB
+Page 402: USART1                Enabled
+Page 402: PA10 pin: USART1 in reception mode. Used in input no pull
+Page 402: USART1          USART1_RX pin         Input
+Page 402: PA9 pin: USART1 in transmission mode. Used in input no
+Page 402: USART1_TX pin         Output
+Page 402: USART2                Enabled
+Page 402: PA3 pin: USART2 in reception mode. Used in input pull-up
+Page 402: USART2          USART2_RX pin         Input
+Page 402: PA2 pin: USART2 in transmission mode. Used in input pull-
+Page 402: USART2_TX pin         Output
+Page 403: USART3               Enabled
+Page 403: PC11 pin: USART3 in reception mode. Used in input pull-
+Page 403: USART3        USART3_RX pin        Input
+Page 403: PC10 pin: USART3 in transmission mode. Used in input
+Page 403: USART3_TX pin        Output
+Page 403: USARTx        SysTick timer        Enabled
+Page 403: host for USARTx.
+Page 407: USARTx                                  Disable all           Disable all
+Page 407: no                              interfaces clocks     interfaces clocks      Configure USARTx
+Page 407: Detected                           BL_SPI_Loop            BL_I2C_Loop           BL_USART_Loop
+Page 407: for SPIx               for I2Cx              for USARTx
+Page 409: USART1               Enabled
+Page 409: PA10 pin: USART1 in reception mode. Used in alternate push-
+Page 409: USART1     USART1_RX pin        Input
+Page 409: PA9 pin: USART1 in transmission mode. Used in alternate push-
+Page 409: USART1_TX pin        Output
+Page 409: USART2               Enabled
+Page 409: PA3 pin: USART2 in reception mode. Used in alternate push-
+Page 409: USART2     USART2_RX pin        Input
+Page 409: PA2 pin: USART2 in transmission mode. Used in alternate push-
+Page 409: USART2_TX pin        Output
+Page 409: USART3               Enabled
+Page 409: PC11 pin: USART3 in reception mode. Used in alternate push-
+Page 409: USART3     USART3_RX pin        Input
+Page 409: PC10 pin: USART3 in transmission mode. Used in alternate
+Page 409: USART3_TX pin        Output
+Page 412: Special commands supported (USART/I2C/SPI/FDCAN)
+Page 413: interfaces clocks           interfaces clocks           USARTx
+Page 413: 0x7F received                          BL_SPI_Loop                  BL_I2C_Loop          BL_USART_Loop
+Page 413: on USARTx             yes               for SPIx                     for I2Cx             for USARTx
+Page 414: – USART3 not working
+Page 414: USART/I2C
+Page 415: USART1               Enabled
+Page 415: PA10 pin: USART1 in reception mode. Used in alternate
+Page 415: USART1          USART1_RX pin        Input
+Page 415: PA9 pin: USART1 in transmission mode. Used in alternate
+Page 415: USART1_TX pin        Output
+Page 417: on USARTx
+Page 417: interfaces clocks          interfaces clocks       USARTx
+Page 417: BL_SPI_Loop             BL_I2C_Loop         BL_USART_Loop
+Page 417: for SPIx                for I2Cx            for USARTx
+Page 419: USART1               Enabled
+Page 419: PA10 pin: USART1 in reception mode.
+Page 419: USART1              USART1_RX pin        Input
+Page 419: PA9 pin: USART1 in transmission mode.
+Page 419: USART1_TX pin        Output
+Page 422: USARTx                                Disable all           Disable all
+Page 422: no                            interfaces clocks     interfaces clocks   Configure USARTx
+Page 422: Detected                         BL_SPI_Loop            BL_I2C_Loop       BL_USART_Loop
+Page 422: for SPIx               for I2Cx          for USARTx
+Page 423: FrameError errors on USART Bootloader and not recoverable unless Hardware Reset is
+Page 424: USART1                Enabled
+Page 424: PA8 pin: USART1 in reception mode. Used in alternate push-
+Page 424: USART1          USART1_RX pin         Input
+Page 424: PB12 pin: USART1 in transmission mode. Not set until
+Page 424: USART1_TX pin         Output
+Page 424: USART1 is detected.
+Page 424: USART2                Enabled
+Page 424: PA11 pin: USART2 in reception mode. Used in alternate
+Page 424: USART2          USART2_RX pin         Input
+Page 424: PA12 pin: USART2 in transmission mode. Not set until
+Page 424: USART2_TX pin         Output
+Page 424: USART2 is detected.
+Page 425: Special commands supported (USART/I2C/SPI)
+Page 426: Configure USARTx
+Page 426: on USARTx
+Page 426: yes                                                   USARTx TX
+Page 426: BL_SPI_Loop for      BL_I2C_Loop for      BL_USART_Loop
+Page 426: SPIx                  I2Cx              for USARTx
+Page 428: USART1               Enabled
+Page 428: PA8 pin: USART1 in reception mode. Used in alternate
+Page 428: USART1         USART1_RX pin        Input
+Page 428: PB12 pin: USART1 in transmission mode. Kept in reset
+Page 428: USART1_TX pin        Output
+Page 428: configuration until 0x7F detected on USART_RX.
+Page 428: USART3               Enabled
+Page 428: PA11 pin: USART3 in reception mode. Used in alternate push-
+Page 428: USART3         USART3_RX pin        Input
+Page 428: PA12 pin: USART2 in transmission mode. Kept in reset
+Page 428: USART3_TX pin        Output
+Page 428: configuration until 0x7F detected on USART_RX.
+Page 430: Special commands supported (USART/I2C/SPI)
+Page 431: detected on       Yes                              BL_USART_Loop
+Page 431: USART Tx                                             for USARTx
+Page 431: USARTx              No         No
+Page 432: USART                Enabled           Once initialized, the configuration is 8-bit, no parity
+Page 432: PB0 pin: USART in reception mode. Used in
+Page 432: USART_RX pin         Input
+Page 432: USART                                                      alternate push-pull, pull-up mode.
+Page 432: PA1 pin: USART in transmission mode. Not set until
+Page 432: USART_TX pin         Output
+Page 432: USART is detected.
+Page 433: Configure USART
+Page 433: on USART?
+Page 433: Execute BL_USART_Loop
+Page 433: for USART
+Page 434: USART                Enabled           Once initialized, the configuration is 8-bit, no parity
+Page 434: PA8 pin: USART in reception mode. Used in
+Page 434: USART_RX pin         Input
+Page 434: USART                                                    alternate push-pull, pull-up mode.
+Page 434: PA9 pin: USART in transmission mode. Not set until
+Page 434: USART_TX pin         Output
+Page 434: USART is detected.
+Page 435: Configure USART
+Page 435: on USART?
+Page 435: Execute BL_USART_Loop
+Page 435: for USART
+Page 436: USART                Enabled           Once initialized, the configuration is 8-bit, no parity
+Page 436: PB0 pin: USART in reception mode. Used in
+Page 436: USART_RX pin         Input
+Page 436: USART                                                      alternate push-pull, pull-up mode.
+Page 436: PA1 pin: USART in transmission mode. Not set until
+Page 436: USART_TX pin         Output
+Page 436: USART is detected.
+Page 437: Configure USART
+Page 437: on USART?
+Page 437: Execute BL_USART_Loop
+Page 437: for USART
+Page 438: USART                Enabled           Once initialized, the configuration is 8-bit, no parity
+Page 438: USART               USART_RX pin         Input
+Page 438: USART_TX pin         Output            UART Tx = PA1
+Page 439: Configure USART
+Page 439: on USART?
+Page 439: Execute BL_USART_Loop
+Page 439: for USART
+Page 440: USART1               Enabled
+Page 440: PA10 pin: USART1 in reception mode. Used in
+Page 440: USART1            USART1_RX pin        Input
+Page 440: PA9 pin: USART1 in transmission mode. Used in
+Page 440: USART1_TX pin        Output
+Page 440: USART2               Enabled
+Page 440: PA3 pin: USART2 in reception mode. Used in
+Page 440: USART2            USART2_RX pin        Input
+Page 440: PA2 pin: USART2 in transmission mode. Used in
+Page 440: USART2_TX pin        Output
+Page 442: Configure USARTx
+Page 442: on USARTx
+Page 442: BL_SPI_Loop             BL_USART_Loop
+Page 442: for SPIx                for USARTx
+Page 443: USART1               Enabled
+Page 443: PA10 pin: USART in reception mode. Used in alternate
+Page 443: USART1_RX pin        Input
+Page 443: USART1                                             function input, pull-up mode.
+Page 443: PA9 pin: USART in transmission mode. Kept in reset
+Page 443: USART1_TX pin        Output        configuration until 0x7F is detected on USART_RX. PA11 is
+Page 443: USART2               Enabled
+Page 443: PA3 pin: USART in reception mode. Used in alternate function
+Page 443: USART2          USART2_RX pin        Input
+Page 443: PA2 pin: USART in transmission mode. Kept in reset
+Page 443: USART2_TX pin        Output
+Page 443: configuration until 0x7F is detected on USART_RX.
+Page 443: USART3               Enabled
+Page 443: PC11 pin: USART in reception mode. Used in alternate
+Page 443: USART3_RX pin        Input
+Page 443: USART3
+Page 443: PC10 pin: USART in transmission mode. Kept in reset
+Page 443: USART3_TX pin        Output
+Page 443: configuration until 0x7F is detected on USART_RX.
+Page 443: Used on detection on USART and its IT for baudrate
+Page 446: Configure USARTx
+Page 446: on USARTx                                                                             Disable all other
+Page 446: detected                                                                             USARTx TX
+Page 446: no                                                 BL_SPI_Loop                BL_I2C_Loop         BL_USART_Loop
+Page 446: for SPIx                   for I2Cx            for USARTx
+Page 448: USART1               Enabled
+Page 448: PA10 pin: USART in reception mode. Used in alternate
+Page 448: USART1          USART1_RX pin        Input
+Page 448: PA9 pin: USART in transmission mode. Kept in reset
+Page 448: USART1_TX pin        Output
+Page 448: configuration until 0x7F is detected on USART_RX.
+Page 448: USART2               Enabled
+Page 448: PA3 pin: USART in reception mode. Used in alternate
+Page 448: USART2          USART2_RX pin        Input
+Page 448: PA2 pin: USART in transmission mode. Kept in reset
+Page 448: USART2_TX pin        Output
+Page 448: configuration until 0x7F is detected on USART_RX.
+Page 448: USART3               Enabled
+Page 448: PC11 pin: USART in reception mode. Used in alternate
+Page 448: USART3_RX pin        Input
+Page 448: USART3
+Page 448: PC10 pin: USART in transmission mode. Kept in reset
+Page 448: USART3_TX pin        Output
+Page 448: configuration until 0x7F is detected on USART_RX.
+Page 448: Used on detection on USART and its IT for baudrate
+Page 451: Yes                          BL_USART_Loop
+Page 451: Configure system clock                on USARTx                and other
+Page 451: for USARTx
+Page 451: Configure USARTx                                          interface clocks
+Page 453: USART1               Enabled
+Page 453: PA10 pin: USART1 in reception mode. Used in alternate
+Page 453: USART1     USART1_RX pin        Input
+Page 453: PA9 pin: USART1 in transmission mode. Kept in reset
+Page 453: USART1_TX pin        Output
+Page 453: configuration until 0x7F detected on USART_RX.
+Page 453: USART3               Enabled
+Page 453: PC11 pin: USART3 in reception mode. Used in alternate
+Page 453: USART3     USART3_RX pin        Input
+Page 453: PC10 pin: USART3 in transmission mode. Kept in reset
+Page 453: USART3_TX pin        Output
+Page 453: configuration until 0x7F detected on USART_RX.
+Page 457: Special commands supported (USART/I2C/SPI/FDCAN)
+Page 458: DenitIalize                    detected on    Yes                       BL_USART_Loo
+Page 458: system                        USART Tx                                  p for USARTx
+Page 458: USARTx
+Page 460: USART1               Enabled
+Page 460: PA10 pin: USART1 in reception mode. Used in alternate
+Page 460: USART1     USART1_RX pin        Input
+Page 460: PA9 pin: USART1 in transmission mode. Set as input until
+Page 460: USART1_TX pin        Output
+Page 460: USART1 is detected.
+Page 460: USART3               Enabled
+Page 460: PC11 pin: USART3 in reception mode. Used in alternate
+Page 460: USART3     USART3_RX pin        Input
+Page 460: PC10 pin: USART3 in transmission mode. Set as input until
+Page 460: USART3_TX pin        Output
+Page 460: USART1 is detected.
+Page 463: Special commands supported (USART/I2C/SPI/FDCAN)
+Page 464: De-Init system                                 Yes                           BL_USART_Loop
+Page 464: on USARTx                    and other
+Page 464: Configure system                                                                for USARTx
+Page 464: USARTx                                                  Disable all
+Page 466: USART1               Enabled
+Page 466: PA10 pin: USART1 in reception mode. Used in alternate
+Page 466: USART1     USART1_RX pin        Input
+Page 466: PA9 pin: USART1 in transmission mode. Used in alternate
+Page 466: USART1_TX pin        Output
+Page 466: USART2               Enabled
+Page 466: PA3 pin: USART2 in reception mode. Used in alternate push-
+Page 466: USART2     USART2_RX pin        Input
+Page 466: PA2 pin: USART2 in transmission mode. Used in alternate
+Page 466: USART2_TX pin        Output
+Page 466: USART3               Enabled
+Page 466: PC11 pin: USART3 in reception mode. Used in alternate
+Page 466: USART3     USART3_RX pin        Input
+Page 466: PC10 pin: USART3 in transmission mode. Used in alternate
+Page 466: USART3_TX pin        Output
+Page 469: Special commands supported (USART/I2C/SPI/FDCAN)
+Page 470: De-Init system                               Yes                           BL_USART_Loop
+Page 470: on USARTx                    and other
+Page 470: Configure system                                                              for USARTx
+Page 470: USARTx                                                Disable all
+Page 472: USART1               Enabled
+Page 472: PA10 pin: USART1 in reception mode. Used in alternate push-
+Page 472: USART1         USART1_RX pin        Input
+Page 472: PA9 pin: USART1 in transmission mode. Set as input until
+Page 472: USART1_TX pin        Output
+Page 472: USART1 is detected.
+Page 472: USART2               Enabled
+Page 472: PA3 pin: USART2 in reception mode. Used in alternate push-
+Page 472: USART2         USART2_RX pin        Input
+Page 472: PA2 pin: USART2 in transmission mode. Set as input until
+Page 472: USART2_TX pin        Output
+Page 472: USART1 is detected.
+Page 472: USART3               Enabled
+Page 472: PC11 pin: USART3 in reception mode. Used in alternate push-
+Page 472: USART3         USART3_RX pin        Input
+Page 472: PC10 pin: USART3 in transmission mode. Set as input until
+Page 472: USART3_TX pin        Output
+Page 472: USART1 is detected.
+Page 475: Special commands supported (USART/I2C/SPI/FDCAN)
+Page 476: De-Init system                                               Yes                           BL_USART_Loop
+Page 476: USARTx                        and other
+Page 476: Configure System                                                                               for USARTx
+Page 476: USARTx
+Page 477: USART1               Enabled
+Page 477: PA10 pin: USART1 in reception mode. Used in alternate
+Page 477: USART1          USART1_RX pin        Input
+Page 477: PA9 pin: USART1 in transmission mode. Set as input until
+Page 477: USART1_TX pin        Output
+Page 477: USART1 is detected.
+Page 477: USART2               Enabled
+Page 477: PA3 pin: USART2 in reception mode. Used in alternate push-
+Page 477: USART2          USART2_RX pin        Input
+Page 477: PA2 pin: USART2 in transmission mode. Set as input until
+Page 477: USART2_TX pin        Output
+Page 477: USART1 is detected.
+Page 477: USART3               Enabled
+Page 477: PC11 pin: USART3 in reception mode. Used in alternate
+Page 477: USART3          USART3_RX pin        Input
+Page 477: PC10 pin: USART3 in transmission mode. Set as input until
+Page 477: USART3_TX pin        Output
+Page 477: USART1 is detected.
+Page 480: Special commands supported (USART/I2C/SPI/FDCAN)
+Page 481: De-Init system                                               Yes                           BL_USART_Loop
+Page 481: USARTx                        and other
+Page 481: Configure System                                                                               for USARTx
+Page 481: USARTx
+Page 492: 93.2       USART connection timing
+Page 492: USART connection timing is the time that the host must wait for between sending the
+Page 492: Figure 122. USART connection timing description
+Page 492: a    Duration of 1 byte sending through USART (depends on Baudrate)
+Page 492: b    Duration of USART peripheral configuration                                              MS35041V1
+Page 493: PA9 low during USART detection phase, from the moment the device is reset, until a device
+Page 493: Table 210. USART bootloader minimum timings (ms)
+Page 493: One USART              USART               USART
+Page 494: Table 210. USART bootloader minimum timings (ms) (continued)
+Page 494: One USART        USART           USART
+Page 495: Table 210. USART bootloader minimum timings (ms) (continued)
+Page 495: One USART             USART               USART
+Page 507: Bootloader startup timings (ms), Table 210: USART bootloader minimum timings (ms),
+Page 507: USART bootloader minimum timings (ms), Table 211: USB bootloader minimum
+Page 507: timings (ms), Table 210: USART bootloader minimum timings (ms), Table 211: USB
+Page 507: Table 209: Bootloader startup timings (ms), Table 210: USART bootloader minimum
+Page 508: (ms), Table 210: USART bootloader minimum timings (ms), Table 212: I2C
+Page 508: Table 209: Bootloader startup timings (ms), Table 210: USART bootloader minimum
+Page 509: startup timings (ms), Table 210: USART bootloader minimum timings (ms), Table 211:
+Page 510: USART bootloader minimum timings (ms)
+Page 511: startup timings (ms), Table 210: USART bootloader minimum timings (ms),
+Page 511: 01-Apr-2021     48         parameters, Table 209: Bootloader startup timings (ms), Table 210: USART
+Page 512: 21-Feb-2023       57       (ms), Table 210: USART bootloader minimum timings (ms), Table 211: USB
+Page 512: 04-Apr-2023       58       Table 210: USART bootloader minimum timings (ms), Table 211: USB bootloader

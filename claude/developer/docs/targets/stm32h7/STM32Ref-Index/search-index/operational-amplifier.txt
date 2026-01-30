@@ -1,0 +1,70 @@
+Keyword: operational amplifier
+Occurrences: 66
+================================================================================
+
+Page   27: 28       Operational amplifiers (OPAMP) . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1078
+Page   72: Table 234.   Operational amplifier possible connections . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1079
+Page 1023: comparator, operational amplifier and ADC (if available).
+Page 1023: connected to on-chip peripherals such as comparator, operational amplifier and ADC (if
+Page 1078: Operational amplifiers (OPAMP)                                                                    RM0433
+Page 1078: 28          Operational amplifiers (OPAMP)
+Page 1078: The devices embed two operational amplifiers with two inputs and one output each. The
+Page 1078: interconnections. The operational amplifiers can be configured internally as a follower, as an
+Page 1078: The operational amplifier clock is necessary for accessing the registers. When the
+Page 1078: When the output of the operational amplifier is no more needed the operational amplifier can
+Page 1079: RM0433                                                                    Operational amplifiers (OPAMP)
+Page 1079: The default configuration of the operational amplifier is a functional mode where the three
+Page 1079: input/outputs are connected to external pins. In the default mode the operational amplifier
+Page 1079: operational amplifier to high-speed mode for a better slew rate. Both normal and high-speed
+Page 1079: As soon as the OPAEN bit in OPAMPx_CSR register is set, the operational amplifier is
+Page 1079: The routing for the operational amplifier pins is determined by OPAMPx_CSR register.
+Page 1079: The connections of the two operational amplifiers (OPAMP1 and OPAMP2) are described in
+Page 1079: Table 234. Operational amplifier possible connections
+Page 1080: Operational amplifiers (OPAMP)                                                                     RM0433
+Page 1080: The operational amplifier inputs and outputs are all accessible on terminals. The amplifiers
+Page 1080: operational amplifier.
+Page 1080: •    OPAHSM can be set to “operational amplifier high-speed” mode in order to have high
+Page 1081: RM0433                                                            Operational amplifiers (OPAMP)
+Page 1081: compatible with the operational amplifier gain bandwidth specification.
+Page 1082: Operational amplifiers (OPAMP)                                                                 RM0433
+Page 1083: RM0433                                                                Operational amplifiers (OPAMP)
+Page 1084: Operational amplifiers (OPAMP)                                                                                      RM0433
+Page 1085: RM0433                                                                          Operational amplifiers (OPAMP)
+Page 1086: Operational amplifiers (OPAMP)                                                                        RM0433
+Page 1086: Each operational amplifier can be trimmed by the user. Specific registers allow to have
+Page 1086: For each operational amplifier and each mode two trimming value needs to be trimmed, one
+Page 1086: There are two registers for trimming the offsets for each operational amplifiers, one for
+Page 1087: RM0433                                                               Operational amplifiers (OPAMP)
+Page 1087: Here are the steps to perform a full calibration of either one of the operational amplifiers:
+Page 1087: 1.   Set the OPAEN bit in OPAMPx_CSR to 1 to enable the operational amplifier.
+Page 1087: All operational amplifier can be calibrated at the same time.
+Page 1087: Note:    During the whole calibration phase the external connection of the operational amplifier
+Page 1088: Operational amplifiers (OPAMP)                                                                                       RM0433
+Page 1088: Bit 30 CALOUT: Operational amplifier calibration output
+Page 1089: RM0433                                                                         Operational amplifiers (OPAMP)
+Page 1089: Bits 17:14 PGA_GAIN: Operational amplifier Programmable amplifier gain value
+Page 1089: Bit 8 OPAHSM: Operational amplifier high-speed mode
+Page 1089: The operational amplifier must be disable to change this configuration.
+Page 1089: 0: operational amplifier in normal mode
+Page 1089: 1: operational amplifier in high-speed mode
+Page 1090: Operational amplifiers (OPAMP)                                                                                        RM0433
+Page 1090: Bit 0 OPAEN: Operational amplifier Enable
+Page 1090: 0: operational amplifier disabled
+Page 1090: 1: operational amplifier enabled
+Page 1091: RM0433                                                                               Operational amplifiers (OPAMP)
+Page 1092: Operational amplifiers (OPAMP)                                                                                 RM0433
+Page 1092: Bit 30 CALOUT: Operational amplifier calibration output
+Page 1092: Bits 17:14 PGA_GAIN: Operational amplifier Programmable amplifier gain value
+Page 1093: RM0433                                                                               Operational amplifiers (OPAMP)
+Page 1093: Bit 8 OPAHSM: Operational amplifier high-speed mode
+Page 1093: The operational amplifier must be disable to change this configuration.
+Page 1093: 0: operational amplifier in normal mode
+Page 1093: 1: operational amplifier in high-speed mode
+Page 1093: Bit 0 OPAEN: Operational amplifier Enable
+Page 1093: 0: operational amplifier disabled
+Page 1093: 1: operational amplifier enabled
+Page 1094: Operational amplifiers (OPAMP)                                                                                RM0433
+Page 1095: Operational amplifiers (OPAMP)
+Page 3219: Section 29: Operational amplifiers (OPAMP)
+Page 3225: Section 29: Operational amplifiers (OPAMP)
+Page 3225: Operational amplifier possible connections.

@@ -1,0 +1,209 @@
+Keyword: VREF
+Occurrences: 205
+================================================================================
+
+Page   26: 26         Voltage reference buffer (VREFBUF) . . . . . . . . . . . . . . . . . . . . . . . . . 1058
+Page   26: 26.2    VREFBUF functional description . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1058
+Page   26: 26.3    VREFBUF registers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1059
+Page   26: 26.3.1      VREFBUF control and status register (VREFBUF_CSR) . . . . . . . . . 1059
+Page   26: 26.3.2      VREFBUF calibration control register (VREFBUF_CCR) . . . . . . . . . 1060
+Page   26: 26.3.3      VREFBUF register map . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1060
+Page   72: Table 224.   VREF buffer modes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1058
+Page   72: Table 225.   VREFBUF register map and reset values. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1060
+Page   84: Figure 200. VREFINT channel block diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 974
+Page  127: 0x58003C00 - 0x58003FFF           VREF                     Section 26.3: VREFBUF registers
+Page  240: VREF+                                                                exti_d3_wkup
+Page  240: VREF-
+Page  241: VREF+,VREF-        Input/ External reference voltage for ADCs and DAC
+Page  243: •   VREF+ external reference voltage for ADC and DAC.
+Page  243: –    When the voltage reference buffer is enabled, VREF+ and VREF- are delivered by
+Page  243: –    When the voltage reference buffer is disabled, VREF+ is delivered by an
+Page  244: VREF+                                             VREF+                 OPAMP,
+Page  244: VREF-                                             VREF-
+Page  251: Analog reference voltage VREF+/VREF-
+Page  251: reference voltage, available on VREF+ pin. The user can connect a separate external
+Page  251: reference voltage on VREF+.
+Page  251: The VREF+ controls the highest voltage, represented by the full scale value, the lower
+Page  251: voltage reference (VREF-) being connected to VSSA.
+Page  252: When enabled by ENVR bit in the VREFBUF control and status register (see Section 26:
+Page  252: Voltage reference buffer (VREFBUF)), VREF+ is provided from the internal voltage reference
+Page  252: components through VREF+/VREF- pins.
+Page  252: When the internal voltage reference buffer is disabled by ENVR, VREF+ s delivered by an
+Page  254: compared to the internal VREFINT level.
+Page  285: 111: External voltage level on PVD_IN pin, compared to internal VREFINT level.
+Page  420: VREFRST
+Page  420: Bit 15 VREFRST: VREF block reset
+Page  420: 0: does not reset the VREF block (default after reset)
+Page  420: 1: resets the VREF block
+Page  423: VREFAMEN
+Page  424: Bit 15   VREFAMEN: VREF Autonomous mode enable
+Page  424: 0: VREF peripheral clocks are disabled when the CPU is in CStop (default after reset)
+Page  424: 1: VREF peripheral clocks enabled when D3 domain is in DRun.
+Page  447: VREFEN
+Page  447: Bit 15 VREFEN: VREF peripheral clock enable
+Page  447: 0: VREF peripheral clock disabled (default after reset)
+Page  447: 1: VREF peripheral clock enabled
+Page  469: VREFLPEN
+Page  469: Bit 15 VREFLPEN: VREF peripheral clock enable during CSleep mode
+Page  469: 0: VREF peripheral clock disabled during CSleep mode
+Page  469: 1: VREF peripheral clock enabled during CSleep mode (default after reset)
+Page  475: Res.                          VREFRST                       Res.                       Res.                                SPI3RST                     Res.                                 Res.                       Res.       15
+Page  476: Res.                                Res.                      Res.                      ETH1MACEN                       Res.                         Res.                                  VREFAMEN        15
+Page  477: Res.                        ETH1MACLPEN                         Res.                          VREFEN                       Res.                    Res.                                SPI3EN     15
+Page  478: Res.                                VREFLPEN                       Res.                         Res.                                  SPI3LPEN                       Res.                                   Res.       15
+Page  479: VREFEN                      Res.                    Res.                                SPI3EN                      Res.                                Res.                     Res.                      ETH1MACEN       15
+Page  481: VREFLPEN                        Res.      15
+Page  895: –    The internal reference voltage (VREFINT), connected to ADC3
+Page  896: •    ADC input range: VREF– ≤ VIN ≤ VREF+
+Page  897: VREF+
+Page  897: VREFINT                                  ADCALDIF                                           Oversampler           DMNGT[1:0]                           adc_ker_ck
+Page  897: VREF-                                 SMPx[2:0]                                                                                         TROVS
+Page  898: VREFINT                               Output voltage from internal reference voltage
+Page  898: VREF+
+Page  898: positive                      1.62 V ≤ VREF+ ≤ VDDA
+Page  898: VREF-
+Page  898: negative                      VREF- = VSSA
+Page  898: Negative input analog         Connected to VREF- or external channels:
+Page  901: ADC12_INP7,                               VINP[7]                                              VREF+
+Page  901: ADC123_INP11,                                VINP[11]                                             VREF-
+Page  902: ADC12_INP7,                               VINP[7]                                              VREF+
+Page  902: ADC123_INP11,                                VINP[11]                                             VREF-
+Page  903: ADC3_INP7,                                VINP[7]                                              VREF+
+Page  903: ADC123_INP11,                                VINP[11]                                             VREF-
+Page  903: VREFINT
+Page  905: difference between the external voltage VINP[i] (positive input) and VREF- (negative input).
+Page  905: The output data for the differential mode is an unsigned data. When VINP[i] is VREF-, VINN[i]
+Page  905: is VREF+, the output data is 0x0000 (16-bit resolution mode), when VINP[i] is VREF+, VINN[i]
+Page  905: is VREF-, the output data is 0xFFFF.
+Page  905: When ADC is configured as differential mode, both input should be biased at VREF+ / 2
+Page  906: VREF+ voltage changed more than 10%.
+Page  912: –    the internal reference voltage (VREFINT) is connected to ADC3_INP/INN19
+Page  913: Temperature sensor, VREFINT and VBAT internal channels
+Page  913: The internal reference voltage VREFINT is connected to ADC3 VINP[19].
+Page  913: be enabled by programming bits VREFEN, VSENSEEN or VBATEN in the ADCx_CCR
+Page  974: ADC VREF+ voltage level.
+Page  974: Figure 199 shows the block diagram of the VREFINT sensing feature.
+Page  974: Figure 200. VREFINT channel block diagram
+Page  974: VREFEN control bit           ADCx
+Page  974: VREFINT
+Page  974: Note:      The VREFEN bit into ADCx_CCR register must be set to enable the conversion of internal
+Page  974: channels ADC3 VINP[19] (VREFINT).
+Page  975: precisely known. When VDDA is connected to VREF+, it is possible to compute the actual
+Page  975: VDDA voltage using the embedded internal reference voltage (VREFINT). VREFINT and its
+Page  975: VREF+ = 3.3 V x VREFINT_CAL / VREFINT_DATA
+Page  975: •   VREFINT_CAL is the VREFINT calibration value
+Page  975: •   VREFINT_DATA is the actual VREFINT output value converted by ADC
+Page  975: The ADC is designed to deliver a digital value corresponding to the ratio between VREF+ and
+Page  975: By replacing VREF+ by the formula provided above, the absolute voltage value is given by
+Page  975: 3.3 V × VREFINT_CAL × ADC_DATA
+Page  975: VREFINT_DATA × FULL_SCALE
+Page  975: –    VREFINT_CAL is the VREFINT calibration value
+Page  975: –    VREFINT_DATA is the actual VREFINT output value converted by the ADC
+Page 1012: Res.    Res.    Res.   Res.   Res.   Res.   Res.   VBATEN        VREFEN          PRESC[3:0]               CKMODE[1:0]
+Page 1012: Bit 22 VREFEN: VREFINT enable
+Page 1012: This bit is set and cleared by software to enable/disable the VREFINT channel.
+Page 1012: 0: VREFINT channel disabled
+Page 1012: 1: VREFINT channel enabled
+Page 1019: VREFEN
+Page 1020: update operations. An input reference pin, VREF+ (shared with others analog peripherals) is
+Page 1020: Refer to voltage reference buffer (VREFBUF) section.
+Page 1020: •   Input voltage reference from VREF+ pin or internal VREFBUF reference
+Page 1022: VREF+
+Page 1023: VREF+
+Page 1023: positive                       VREF+ ≤ VDDAmax (refer to datasheet)
+Page 1025: Digital inputs are converted to output voltages on a linear conversion between 0 and VREF+.
+Page 1033: Where VOUT is the analog output, D is the digital input, G is the gain, Vref is the nominal full-
+Page 1033: compare it to VREF+/2 signal through an internal bridge, then toggle its output signal to
+Page 1033: VREF+ values change and can be done at any point during application by software.
+Page 1034: If the VDD/VDDA, VREF+ and temperature conditions will not change during the device
+Page 1058: Voltage reference buffer (VREFBUF)                                                                           RM0433
+Page 1058: 26          Voltage reference buffer (VREFBUF)
+Page 1058: external components through the VREF+ pin.
+Page 1058: 26.2        VREFBUF functional description
+Page 1058: VRS bits in the VREFBUF_CSR register:
+Page 1058: Table 224. VREF buffer modes
+Page 1058: ENVR        HIZ                                VREF buffer configuration
+Page 1058: VREFBUF buffer OFF:
+Page 1058: – VREF+ pin pulled-down to VSSA
+Page 1058: 0            1      – VREFBUF buffer OFF
+Page 1058: – VREF+ pin input mode
+Page 1058: 1            0      – VREFBUF buffer ON
+Page 1058: – VREF+ pin connected to VREFBUF buffer output
+Page 1058: – VREFBUF buffer OFF
+Page 1058: – VREF+ pin floating. The voltage is held with the external capacitor
+Page 1058: After enabling the VREFBUF by setting ENVR bit and clearing HIZ bit in the VREFBUF_CSR register,
+Page 1059: RM0433                                                                        Voltage reference buffer (VREFBUF)
+Page 1059: 26.3             VREFBUF registers
+Page 1059: 26.3.1           VREFBUF control and status register (VREFBUF_CSR)
+Page 1059: This bit controls the analog switch to connect or not the VREF+ pin.
+Page 1059: 0: VREF+ pin is internally connected to the voltage reference buffer output.
+Page 1059: 1: VREF+ pin is high impedance.
+Page 1059: Refer to Table 224: VREF buffer modes for the mode descriptions depending on ENVR bit
+Page 1060: Voltage reference buffer (VREFBUF)                                                                                                                                                                                                      RM0433
+Page 1060: 26.3.2           VREFBUF calibration control register (VREFBUF_CCR)
+Page 1060: 26.3.3           VREFBUF register map
+Page 1060: The following table gives the VREFBUF register map and the reset values.
+Page 1060: Table 225. VREFBUF register map and reset values
+Page 1060: VREFBUF_CSR
+Page 1060: VREFBUF_CCR                                                                                                                                                                                                          TRIM[5:0]
+Page 1062: COMP2_INM2                           ¼ VREF_COMP                        ITEN
+Page 1062: ½ VREF_COMP
+Page 1062: ¾ VREF_COMP       BRGEN
+Page 1062: comp_inm2                  VREF_COMP
+Page 1062: VREFINT                            Scaler                                                       GPIO alternate
+Page 1062: COMP1_INM2                          ¼ VREF_COMP                        ITEN
+Page 1062: ½ VREF_COMP
+Page 1062: ¾ VREF_COMP
+Page 1062: comp_inm2                    VREF_COMP
+Page 1062: VREFINT                                Scaler
+Page 1069: order to reduce the consumption. When it is disconnected, the 1/4 VREF_COMP,
+Page 1069: 1/2 VREF_COMP and 3/4 VREF_COMP levels are equal to VREF_COMP.
+Page 1069: VREF_COMP
+Page 1069: VREFINT              +
+Page 1069: 3/4 VREF_COMP
+Page 1069: 1/2 VREF_COMP
+Page 1069: 1/4 VREF_COMP
+Page 1073: 000 = 1/4 VREF_COMP
+Page 1073: 001 = 1/2 VREF_COMP
+Page 1073: 010 = 3/4 VREF_COMP
+Page 1073: 011 = VREF_COMP
+Page 1074: This bit is set and cleared by software (only if LOCK not set). This bit enables the VREFINT
+Page 1074: 0: VREFINT scaler disabled (if SCALEN bit of COMP_CFGR2 register is also low)
+Page 1074: 1: VREFINT scaler enabled
+Page 1074: VREF_COMP (similar to VREFINT).
+Page 1074: If SCALEN and BRGEN are set, the four scaler outputs provide VREF_COMP, 3/4 VREF_COMP,
+Page 1074: 1/2 VREF_COMP and 1/4 VREF_COMP levels, respectively.
+Page 1075: 000 = 1/4 VREF_COMP
+Page 1075: 001 = 1/2 VREF_COMP
+Page 1075: 010 = 3/4 VREF_COMP
+Page 1075: 011 = VREF_COMP
+Page 1076: This bit is set and cleared by software (only if LOCK not set). This bit enables the VREFINT
+Page 1076: 0: VREFINT scaler disabled (if SCALEN bit of COMP_CFGR1 register is also low)
+Page 1076: 1: VREFINT scaler enabled
+Page 1076: VREF_COMP (similar to VREFINT).
+Page 1076: If SCALEN and BRGEN are set, the four scaler outputs provide VREF_COMP, 3/4 VREF_COMP,
+Page 1076: 1/2 VREF_COMP and 1/4 VREF_COMP levels, respectively.
+Page 1088: 0: INTVREF of OPAMP is not output
+Page 1088: 1: INTVREF of OPAMP is output
+Page 1089: 0000: Non-inverting internal Gain 2, VREF- referenced
+Page 1089: 0001: Non-inverting internal Gain 4, VREF- referenced
+Page 1089: 0010: Non-inverting internal Gain 8, VREF- referenced
+Page 1089: 0011: Non-inverting internal Gain 16, VREF- referenced
+Page 1089: 0100: Non-inverting internal Gain 2 with filtering on INM0, VREF- referenced
+Page 1089: 0101: Non-inverting internal Gain 4 with filtering on INM0, VREF- referenced
+Page 1089: 0110: Non-inverting internal Gain 8 with filtering on INM0, VREF- referenced
+Page 1089: 0111: Non-inverting internal Gain 16 with filtering on INM0, VREF- referenced
+Page 1092: 0: INTVREF of OPAMP is not output
+Page 1092: 1: INTVREF of OPAMP is output
+Page 1092: 0000: Non-inverting internal Gain 2, VREF- referenced
+Page 1092: 0001: Non-inverting internal Gain 4, VREF- referenced
+Page 1092: 0010: Non-inverting internal Gain 8, VREF- referenced
+Page 1092: 0011: Non-inverting internal Gain 16, VREF- referenced
+Page 1092: 0100: Non-inverting internal Gain 2 with filtering on INM0, VREF- referenced
+Page 1092: 0101: Non-inverting internal Gain 4 with filtering on INM0, VREF- referenced
+Page 1092: 0110: Non-inverting internal Gain 8 with filtering on INMINM0, VREF- referenced
+Page 1092: 0111: Non-inverting internal Gain 16 with filtering on INM0, VREF- referenced
+Page 3224: VREFINT channel block diagram.
+Page 3224: Updated VREF+ range in Table 207: DAC input/output pins
+Page 3246: TPIU_LAR . . . . . . . . . . . . . . . . . . . . . . . . . .3099   VREFBUF_CCR . . . . . . . . . . . . . . . . . . . . . 1060
+Page 3246: TPIU_LSR . . . . . . . . . . . . . . . . . . . . . . . . . .3099   VREFBUF_CSR . . . . . . . . . . . . . . . . . . . . . 1059

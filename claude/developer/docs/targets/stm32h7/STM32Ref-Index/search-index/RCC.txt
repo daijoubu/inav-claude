@@ -1,0 +1,1120 @@
+Keyword: RCC
+Occurrences: 1116
+================================================================================
+
+Page    4: 3.9.19      FLASH CRC control register for bank 1 (FLASH_CRCCR1) . . . . . . . . 205
+Page    5: 3.9.34      FLASH CRC control register for bank 2 (FLASH_CRCCR2) . . . . . . . . 221
+Page    7: 6.2     EXTI, RCC and PWR interconnections . . . . . . . . . . . . . . . . . . . . . . . . . 294
+Page    7: 7        Reset and Clock Control (RCC) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 306
+Page    7: 7.1     RCC main features . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 306
+Page    7: 7.2     RCC block diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 307
+Page    7: 7.3     RCC pins and internal signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 307
+Page    7: 7.4     RCC reset block functional description . . . . . . . . . . . . . . . . . . . . . . . . . 309
+Page    7: 7.5     RCC clock block functional description . . . . . . . . . . . . . . . . . . . . . . . . . 317
+Page    8: 7.6   RCC Interrupts . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 359
+Page    8: 7.7   RCC register description . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 360
+Page    8: 7.7.2       RCC Source Control Register (RCC_CR) . . . . . . . . . . . . . . . . . . . . . . 361
+Page    8: 7.7.3       RCC Internal Clock Source Calibration Register (RCC_ICSCR) . . . . . 365
+Page    8: 7.7.4       RCC Clock Recovery RC Register (RCC_CRRCR) . . . . . . . . . . . . . . 366
+Page    8: 7.7.5       RCC Clock Configuration Register (RCC_CFGR) . . . . . . . . . . . . . . . . 367
+Page    8: 7.7.6       RCC Domain 1 Clock Configuration Register (RCC_D1CFGR) . . . . . 370
+Page    8: 7.7.7       RCC Domain 2 Clock Configuration Register (RCC_D2CFGR) . . . . . 372
+Page    8: 7.7.8       RCC Domain 3 Clock Configuration Register (RCC_D3CFGR) . . . . . 373
+Page    8: 7.7.9       RCC PLLs Clock Source Selection Register (RCC_PLLCKSELR) . . . 374
+Page    8: 7.7.10      RCC PLLs Configuration Register (RCC_PLLCFGR) . . . . . . . . . . . . . 376
+Page    8: 7.7.11      RCC PLL1 Dividers Configuration Register (RCC_PLL1DIVR) . . . . . . 379
+Page    8: 7.7.12      RCC PLL1 Fractional Divider Register (RCC_PLL1FRACR) . . . . . . . 381
+Page    8: 7.7.13      RCC PLL2 Dividers Configuration Register (RCC_PLL2DIVR) . . . . . . 382
+Page    8: 7.7.14      RCC PLL2 Fractional Divider Register (RCC_PLL2FRACR) . . . . . . . 384
+Page    8: 7.7.15      RCC PLL3 Dividers Configuration Register (RCC_PLL3DIVR) . . . . . . 385
+Page    8: 7.7.16      RCC PLL3 Fractional Divider Register (RCC_PLL3FRACR) . . . . . . . 387
+Page    8: 7.7.17      RCC Domain 1 Kernel Clock Configuration Register
+Page    8: (RCC_D1CCIPR) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 388
+Page    8: 7.7.18      RCC Domain 2 Kernel Clock Configuration Register
+Page    8: (RCC_D2CCIP1R) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 389
+Page    8: 7.7.19      RCC Domain 2 Kernel Clock Configuration Register
+Page    8: (RCC_D2CCIP2R) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 392
+Page    8: 7.7.20      RCC Domain 3 Kernel Clock Configuration Register
+Page    8: (RCC_D3CCIPR) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 394
+Page    8: 7.7.21      RCC Clock Source Interrupt Enable Register (RCC_CIER) . . . . . . . . 397
+Page    9: 7.7.22     RCC Clock Source Interrupt Flag Register (RCC_CIFR) . . . . . . . . . . 399
+Page    9: 7.7.23     RCC Clock Source Interrupt Clear Register (RCC_CICR) . . . . . . . . . 401
+Page    9: 7.7.24     RCC Backup Domain Control Register (RCC_BDCR) . . . . . . . . . . . . 403
+Page    9: 7.7.25     RCC Clock Control and Status Register (RCC_CSR) . . . . . . . . . . . . . 405
+Page    9: 7.7.26     RCC AHB3 Reset Register (RCC_AHB3RSTR) . . . . . . . . . . . . . . . . . 406
+Page    9: 7.7.27     RCC AHB1 Peripheral Reset Register(RCC_AHB1RSTR) . . . . . . . . . 408
+Page    9: 7.7.28     RCC AHB2 Peripheral Reset Register (RCC_AHB2RSTR) . . . . . . . . 410
+Page    9: 7.7.29     RCC AHB4 Peripheral Reset Register (RCC_AHB4RSTR) . . . . . . . . 411
+Page    9: 7.7.30     RCC APB3 Peripheral Reset Register (RCC_APB3RSTR) . . . . . . . . . 413
+Page    9: 7.7.31     RCC APB1 Peripheral Reset Register (RCC_APB1LRSTR) . . . . . . . . 414
+Page    9: 7.7.32     RCC APB1 Peripheral Reset Register (RCC_APB1HRSTR) . . . . . . . 417
+Page    9: 7.7.33     RCC APB2 Peripheral Reset Register (RCC_APB2RSTR) . . . . . . . . . 418
+Page    9: 7.7.34     RCC APB4 Peripheral Reset Register (RCC_APB4RSTR) . . . . . . . . . 420
+Page    9: 7.7.35     RCC Global Control Register (RCC_GCR) . . . . . . . . . . . . . . . . . . . . . 422
+Page    9: 7.7.36     RCC D3 Autonomous mode Register (RCC_D3AMR) . . . . . . . . . . . . 423
+Page    9: 7.7.37     RCC Reset Status Register (RCC_RSR) . . . . . . . . . . . . . . . . . . . . . . 426
+Page    9: 7.7.38     RCC AHB3 Clock Register (RCC_AHB3ENR) . . . . . . . . . . . . . . . . . . 428
+Page    9: 7.7.39     RCC AHB1 Clock Register (RCC_AHB1ENR) . . . . . . . . . . . . . . . . . . 430
+Page    9: 7.7.40     RCC AHB2 Clock Register (RCC_AHB2ENR) . . . . . . . . . . . . . . . . . . 432
+Page    9: 7.7.41     RCC AHB4 Clock Register (RCC_AHB4ENR) . . . . . . . . . . . . . . . . . . 434
+Page    9: 7.7.42     RCC APB3 Clock Register (RCC_APB3ENR) . . . . . . . . . . . . . . . . . . . 437
+Page    9: 7.7.43     RCC APB1 Clock Register (RCC_APB1LENR) . . . . . . . . . . . . . . . . . . 438
+Page    9: 7.7.44     RCC APB1 Clock Register (RCC_APB1HENR) . . . . . . . . . . . . . . . . . 442
+Page    9: 7.7.45     RCC APB2 Clock Register (RCC_APB2ENR) . . . . . . . . . . . . . . . . . . . 444
+Page    9: 7.7.46     RCC APB4 Clock Register (RCC_APB4ENR) . . . . . . . . . . . . . . . . . . . 447
+Page    9: 7.7.47     RCC AHB3 Sleep Clock Register (RCC_AHB3LPENR) . . . . . . . . . . . 450
+Page    9: 7.7.48     RCC AHB1 Sleep Clock Register (RCC_AHB1LPENR) . . . . . . . . . . . 452
+Page    9: 7.7.49     RCC AHB2 Sleep Clock Register (RCC_AHB2LPENR) . . . . . . . . . . . 454
+Page    9: 7.7.50     RCC AHB4 Sleep Clock Register (RCC_AHB4LPENR) . . . . . . . . . . . 456
+Page    9: 7.7.51     RCC APB3 Sleep Clock Register (RCC_APB3LPENR) . . . . . . . . . . . 459
+Page    9: 7.7.52     RCC APB1 Low Sleep Clock Register (RCC_APB1LLPENR) . . . . . . 460
+Page    9: 7.7.53     RCC APB1 High Sleep Clock Register (RCC_APB1HLPENR) . . . . . . 464
+Page    9: 7.7.54     RCC APB2 Sleep Clock Register (RCC_APB2LPENR) . . . . . . . . . . . 466
+Page    9: 7.7.55     RCC APB4 Sleep Clock Register (RCC_APB4LPENR) . . . . . . . . . . . 469
+Page    9: 7.8     RCC register map . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 472
+Page   68: Table 48.   RCC input/output signals connected to package pins or balls . . . . . . . . . . . . . . . . . . . . . 307
+Page   69: Table 49.    RCC internal input/output signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 308
+Page   69: Table 51.    Reset source identification (RCC_RSR) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 313
+Page   69: Table 60.    RCC_RSR address offset and reset value . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 426
+Page   69: Table 61.    RCC_AHB3ENR address offset and reset value . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 428
+Page   69: Table 62.    RCC_AHB1ENR address offset and reset value . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 430
+Page   69: Table 63.    RCC_AHB2ENR address offset and reset value . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 432
+Page   69: Table 64.    RCC_AHB4ENR address offset and reset value . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 434
+Page   69: Table 65.    RCC_APB3ENR address offset and reset value . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 437
+Page   69: Table 66.    RCC_APB1ENR address offset and reset value . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 438
+Page   69: Table 67.    RCC_APB1ENR address offset and reset value . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 442
+Page   69: Table 68.    RCC_APB2ENR address offset and reset value . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 444
+Page   69: Table 69.    RCC_APB4ENR address offset and reset value . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 447
+Page   69: Table 70.    RCC_AHB3LPENR address offset and reset value . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 450
+Page   69: Table 71.    RCC_AHB1LPENR address offset and reset value . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 452
+Page   69: Table 72.    RCC_AHB2LPENR address offset and reset value . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 454
+Page   69: Table 73.    RCC_AHB4LPENR address offset and reset value . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 456
+Page   69: Table 74.    RCC_APB3LPENR address offset and reset value . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 459
+Page   69: Table 75.    RCC_APB1LLPENR address offset and reset value . . . . . . . . . . . . . . . . . . . . . . . . . . . . 460
+Page   69: Table 76.    RCC_APB1HLPENR address offset and reset value . . . . . . . . . . . . . . . . . . . . . . . . . . . . 464
+Page   69: Table 77.    RCC_APB2LPENR address offset and reset value . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 466
+Page   69: Table 78.    RCC_APB4LPENR address offset and reset value . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 469
+Page   69: Table 79.    RCC register map and reset values . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 472
+Page   80: Figure 35.   EXTI, RCC and PWR interconnections . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 295
+Page   80: Figure 38.   RCC Block diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 307
+Page   81: Figure 60.   RCC mapping overview . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 360
+Page  104: reset, the software must first enable its clock through RCC_AHBxENR or RCC_APBxENR
+Page  126: 0x58024400 - 0x580247FF          RCC                   Section 7.7: RCC register description
+Page  144: 1. Refer to the Reset and clock control section RCC section for the maximum product FACLK frequency.
+Page  144: the RCC_CFGR register of the reset and clock controller (RCC).
+Page  144: memory clock source status and/or the AXI bus prescaler value in the RCC_CFGR
+Page  144: register of the reset and clock controller (RCC).
+Page  144: the RCC_CFGR register of reset and clock controller (RCC).
+Page  144: RCC_CFGR register of reset and clock controller (RCC).
+Page  153: 3.   Program the desired data size in the CRC_BURST field of FLASH_CRCCR1/2.
+Page  153: FLASH_CRCCR1/2 and by programming consecutively the target sector numbers
+Page  153: in the CRC_SECT field of the FLASH_CRCCR1/2 register. Set ADD_SECT bit
+Page  153: FLASH_CRCCR1/2 register.
+Page  156: 0x050       0x150         FLASH_CRCCR1                  FLASH_CRCCR2               Bank 1    Bank 2    Bank 2     Bank 1
+Page  157: reset and clock control (RCC). The main effects of this reset are the following:
+Page  157: and clock control (RCC). When the reset falls, all option byte registers are reset. When the
+Page  167: FLASH_CRCCR1/2                                      -
+Page  175: (RCC) that it is busy (i.e. BSY1/2, QW1/2, WBNE1/2 is set), the microcontroller cannot
+Page  187: CRC calculation but enables CRC configuration through FLASH_CRCCR1 register.
+Page  205: 3.9.19          FLASH CRC control register for bank 1 (FLASH_CRCCR1)
+Page  210: CRC calculation but enables CRC configuration through FLASH_CRCCR2 register.
+Page  221: 3.9.34          FLASH CRC control register for bank 2 (FLASH_CRCCR2)
+Page  225: FLASH_CRCCR1
+Page  228: FLASH_CRCCR2
+Page  240: 32-bit                                                                       RCC
+Page  248: register (PWR_D3CR) or the RCC ck_sys frequency. The different system supply
+Page  250: Control (RCC).
+Page  260: CPU and CPU subsystem peripheral(s) allocated via RCC PERxEN bits are
+Page  260: operate according to RCC PERxLPEN.
+Page  273: configuring at any time PERxEN bit in RCC_C1_xxxxENR or RCC_DnxxxxENR to reduce
+Page  273: disabled by configuring PERxLPEN bit in RCC_C1_xxxxLPENR or RCC_DnxxxxLPENR.
+Page  275: PERxLPEN bits in RCC_C1_xxxxENR or RCC_DnxxxxENR.
+Page  276: EXTI and RCC wakeup synchronization (see Section 7.4.7: Power-on and
+Page  278: EXTI and RCC wakeup synchronization (see Section 7.4.7: Power-on and
+Page  278: RCC_CR register. Other system oscillator sources are stopped.
+Page  278: This is configured via the RTCEN bit in the RCC Backup Domain Control Register
+Page  278: (RCC_BDCR).
+Page  278: This is configured via the LSION bit in the RCC Clock Control and Status Register
+Page  278: (RCC_CSR).
+Page  278: This is configured via the LSEON bit in the RCC Backup Domain Control Register
+Page  278: (RCC_BDCR).
+Page  279: •     This is configured via the HSIKERON and CSIKERON bits in the RCC Clock Control
+Page  279: and Status Register (RCC_CSR).
+Page  280: Wakeup latency        + EXTI and RCC wakeup synchronization.
+Page  281: state can be checked in RCC_CR register:
+Page  281: –     When RCC DnCKRDY = 0, the domain bus matrix clock is stalled.
+Page  281: –     If RCC DnCKRDY = 1, the domain bus matrix clock is enabled.
+Page  281: EXTI and RCC wakeup synchronization.
+Page  282: (RCC_BDCR).
+Page  282: This is configured by the LSION bit in the Control/status register (RCC_CSR).
+Page  282: (RCC_BDCR).
+Page  285: In reset state, the RCC_BDCR register, the RTC registers (including the backup registers),
+Page  286: This register shall not be accessed when VSWRST bit in RCC_BDCR register resets the
+Page  294: The first part of the description explains how the EXTI, RCC and PWR blocks interact with
+Page  294: 6.2        EXTI, RCC and PWR interconnections
+Page  294: Figure 35 shows the main EXTI, RCC and PWR interconnections.
+Page  295: Figure 35. EXTI, RCC and PWR interconnections
+Page  295: FLASH_busy              RCC
+Page  295: interrupt                                            EXTI                                                        rcc_fclk_cpu
+Page  295: d3_it_exti_per(n)                                       rcc_fclk_d3
+Page  296: Interaction between PWR and RCC blocks
+Page  296: The RCC block controls the clock generation in accordance with the system operating
+Page  297: To synchronize the system mode transitions, the RCC block is tightly coupled with the PWR
+Page  297: •   The RCC informs the PWR controller when peripherals located in Dx domain are
+Page  297: •   The RCC also warns the PWR block when a domain clock is activated/deactivated.
+Page  297: •   Similarly, the PWR controller informs the RCC about the VCORE supply status of each
+Page  297: domain (pwr_d[1:3]_wkup). This information is used by the RCC when a domain
+Page  298: Refer to Section 7: Reset and Clock Control (RCC) and Section 5: Power control (PWR)for
+Page  298: 4.   Configure the DMAMUX2, the BDMA, the LPUART1, and the RCC (CFG).
+Page  299: RCC programming
+Page  303: 2.   Full initialization of RCC, PWR, EXTI, LPUART1, GPIOs, LPTIM4, DMAMUX2, BDMA
+Page  303: Only the relevant steps of RCC, EXTI, PWR, LPUART1, BDMA and DMAMUX2
+Page  304: RCC_INIT
+Page  306: Reset and Clock Control (RCC)                                                                      RM0433
+Page  306: 7          Reset and Clock Control (RCC)
+Page  306: The RCC block manages the clock and reset generation for the whole microcontroller.
+Page  306: The RCC block is located in the D3 domain (refer to Section 5: Power control (PWR) for a
+Page  306: 7.1        RCC main features
+Page  307: RM0433                                                                                                                                            Reset and Clock Control (RCC)
+Page  307: 7.2                RCC block diagram
+Page  307: Figure 38 shows the RCC block diagram.
+Page  307: Figure 38. RCC Block diagram
+Page  307: RCC (D3)
+Page  307: rcc_sft_rst                                                                                              pwr_bor_rst
+Page  307: wwdg1_out_rst                                                                                                 rcc_pwd_dx_req
+Page  307: Reset                         rcc_c_rst               Clock Manager
+Page  307: TIM1,8,      rcc_ckfail_evt                           VDD                                             hse_ck
+Page  307: 15, 16, 17                                                                                             hsi_ck                                                        rcc_bus_ck
+Page  307: csi_ck                                                        rcc_c_ck
+Page  307: (SCGU)                            rcc_fclk_c
+Page  307: LSI       lsi_ck                                        PLL3                                                             rcc_perx_ker_ck
+Page  307: hsi_ck                                                                      Peripheral                         rcc_perx_bus_ck
+Page  307: rcc_it
+Page  307: rcc_hsecss_it
+Page  307: rcc_lsecss_it                                                                                                  E                                    MCO2
+Page  307: 7.3                RCC pins and internal signals
+Page  307: Table 48 lists the RCC inputs and output signals connected to package pins or balls.
+Page  307: Table 48. RCC input/output signals connected to package pins or balls
+Page  308: Reset and Clock Control (RCC)                                                                                   RM0433
+Page  308: Table 48. RCC input/output signals connected to package pins or balls (continued)
+Page  308: The RCC exchanges a lot of internal signals with all components of the product, for that
+Page  308: Table 49. RCC internal input/output signals
+Page  308: rcc_it           O          General interrupt request line
+Page  308: rcc_hsecss_it          O          HSE clock security failure interrupt
+Page  308: rcc_lsecss_it          O          LSE clock security failure interrupt
+Page  308: rcc_ckfail_evt         O
+Page  308: rcc_perx_rst           O          Reset generated by the RCC for the peripherals.
+Page  308: Low-Power request generated by the RCC. Generally used to ask to the PWR
+Page  308: rcc_pwd_d[3:1]_req        O
+Page  309: RM0433                                                                         Reset and Clock Control (RCC)
+Page  309: Table 49. RCC internal input/output signals (continued)
+Page  309: rcc_perx_ker_ck            O     Kernel clock signals generated by the RCC, for some peripherals.
+Page  309: rcc_perx_bus_ck            O     Bus interface clock signals generated by the RCC for peripherals.
+Page  309: Clocks for APB (rcc_apb_ck), AHB (rcc_ahb_ck) and AXI (rcc_axi_ck) bridges
+Page  309: rcc_bus_ck            O
+Page  309: generated by the RCC.
+Page  309: rcc_c_ck             O
+Page  309: Clock for the CPU, generated by the RCC.
+Page  309: rcc_fclk_c            O
+Page  309: 7.4           RCC reset block functional description
+Page  310: Reset and Clock Control (RCC)                                                                       RM0433
+Page  310: flags in the RCC_RSR (or RCC_C1_RSR) register, the debug features, the Flash memory
+Page  310: RCC
+Page  311: RM0433                                                               Reset and Clock Control (RCC)
+Page  311: The CPU can reset itself by means of the CPURST bit in RCC AHB3 Reset Register
+Page  311: (RCC_AHB3RSTR).
+Page  312: Reset and Clock Control (RCC)                                                                RM0433
+Page  312: RCC
+Page  312: through the bit located into RCC AHB3
+Page  312: CPURST         x - - - x - - - - - - - - -        Reset Register (RCC_AHB3RSTR).
+Page  313: RM0433                                                                                                           Reset and Clock Control (RCC)
+Page  313: The CPU can identify the reset source by checking the reset flags in the RCC_RSR (or
+Page  313: RCC_C1_RSR) register.
+Page  313: Table 51 shows how the status bits of RCC_RSR (or RCC_C1_RSR) register behaves,
+Page  313: occurs (line #10), if the CPU is reading the RCC_RSR (or RCC_C1_RSR) register during
+Page  313: Table 51. Reset source identification (RCC_RSR)(1)
+Page  314: Reset and Clock Control (RCC)                                                                  RM0433
+Page  314: LPWRRSTF bits in RCC Reset Status Register (RCC_RSR) indicates that a low-power
+Page  314: •   A software reset, triggered by setting BDRST bit in the RCC Backup Domain Control
+Page  314: Register (RCC_BDCR). All RTC registers and the RCC_BDCR register are reset to
+Page  314: •   VSW voltage is outside the operating range. All RTC registers and the RCC_BDCR
+Page  315: RM0433                                                                  Reset and Clock Control (RCC)
+Page  315: RCC Source Control Register (RCC_CR) is set to ‘1’.
+Page  315: between the RCC, EXTI and PWR blocks.
+Page  316: Reset and Clock Control (RCC)                                                                                                                RM0433
+Page  316: Delay due to handshake RCC, PWR and
+Page  317: RM0433                                                               Reset and Clock Control (RCC)
+Page  317: 7.5      RCC clock block functional description
+Page  317: The RCC provides a wide choice of clock generators:
+Page  317: The RCC provides up to 3 PLLs; each of them can be configured with integer or fractional
+Page  317: As shown in the Figure 41, the RCC offers 2 clock outputs (MCO1 and MCO2), with a great
+Page  318: Reset and Clock Control (RCC)                                                                                                                                                                                                                   RM0433
+Page  318: RCC
+Page  318: OSC32_IN                                   lse_ck                     lse_ck                              rcc_rtc_ck                                                                                                                      To
+Page  319: RM0433                                                                        Reset and Clock Control (RCC)
+Page  319: The RCC provides clocks to the complete circuit. To avoid misunderstanding, the following
+Page  319: The peripheral clocks are the clocks provided by the RCC to the peripherals. Two kinds
+Page  319: A peripheral receives from the RCC a bus interface clock in order to access its
+Page  320: Reset and Clock Control (RCC)                                                                        RM0433
+Page  320: selected by setting the HSEBYP and HSEON bits of the RCC Source Control Register
+Page  320: (RCC_CR) to ‘1’. The external clock source (square, sinus or triangle) with ~50% duty cycle
+Page  320: The HSERDY flag of the RCC Source Control Register (RCC_CR), indicates whether the
+Page  320: by hardware. An interrupt can be generated if enabled in the RCC Clock Source Interrupt
+Page  320: Enable Register (RCC_CIER).
+Page  320: LSEON bits of RCC Backup Domain Control Register (RCC_BDCR) to ‘1’. The external
+Page  321: RM0433                                                                Reset and Clock Control (RCC)
+Page  321: The LSERDY flag of the RCC Backup Domain Control Register (RCC_BDCR) indicates
+Page  321: RCC Clock Source Interrupt Enable Register (RCC_CIER).
+Page  322: Reset and Clock Control (RCC)                                                                      RM0433
+Page  322: HSION, HSIRDY and HSIDIV bits are located in the RCC Source Control Register
+Page  322: (RCC_CR).
+Page  322: Note:      HSICAL[11:0] and HSITRIM[5:0] bits are located in the RCC Internal Clock Source
+Page  322: Calibration Register (RCC_ICSCR).
+Page  323: RM0433                                                                Reset and Clock Control (RCC)
+Page  323: Note:    CSION and CSIRDY bits are located in the RCC Source Control Register (RCC_CR).
+Page  323: Note:    CSICAL[7:0] and CSITRIM[4:0] bits are located into the RCC Internal Clock Source
+Page  323: Calibration Register (RCC_ICSCR)
+Page  323: Note:    HSI48ON and HSI48RDY bits are located in the RCC Source Control Register (RCC_CR).
+Page  324: Reset and Clock Control (RCC)                                                                      RM0433
+Page  324: can be generated if enabled in the RCC Clock Source Interrupt Enable Register
+Page  324: (RCC_CIER).
+Page  324: Note:      Bits LSION and LSIRDY are located into the RCC Clock Control and Status Register
+Page  324: (RCC_CSR).
+Page  324: rcc_hsecss_it), thus allowing the MCU to perform rescue operations. If the HSE output
+Page  324: which causes the automatic generation of an NMI. The HSECSSF flag in RCC Clock Source
+Page  324: Interrupt Flag Register (RCC_CIFR) is set to ‘1’ to allow the application to identify the failure
+Page  324: HSECSSC bit in the RCC Clock Source Interrupt Clear Register (RCC_CICR).
+Page  325: RM0433                                                               Reset and Clock Control (RCC)
+Page  325: the LSECSSON bit in the RCC Backup Domain Control Register (RCC_BDCR).
+Page  325: A wakeup is generated in Standby mode. In other modes an interrupt (rcc_lsecss_it) can
+Page  325: and MCO2[2:0] located in the RCC Clock Configuration Register (RCC_CFGR).
+Page  326: Reset and Clock Control (RCC)                                                                                                       RM0433
+Page  326: The RCC features three PLLs:
+Page  326: The PLLs integrated into the RCC are completely independent. They offer the following
+Page  327: RM0433                                                              Reset and Clock Control (RCC)
+Page  327: The PLLs are controlled via RCC_PLLxDIVR, RCC_PLLxFRACR, RCC_PLLCFGR and
+Page  327: RCC_CR registers.
+Page  327: 16 MHz. The user application has to program properly the DIVMx dividers of the RCC PLLs
+Page  327: Clock Source Selection Register (RCC_PLLCKSELR) in order to match this condition. In
+Page  327: addition, the PLLxRGE of the RCC PLLs Configuration Register (RCC_PLLCFGR) field
+Page  328: Reset and Clock Control (RCC)                                                                    RM0433
+Page  328: –    Set PLLxFRACEN of RCC PLLs Configuration Register (RCC_PLLCFGR) to ‘0’
+Page  329: RM0433                                                                               Reset and Clock Control (RCC)
+Page  329: Select clock source (RCC_CKSELR)                 Select clock source (RCC_CKSELR)
+Page  329: Init pre-divider (RCC_CKSELR)                    Init pre-divider (RCC_CKSELR)               Can be repeated
+Page  329: PLLx config (RCC_PLLCFGR)                        Init fractional value (RCC_PLLxFRACR)
+Page  329: - PLLxFRACEN = 0                                 PLLx config (RCC_PLLCFGR)
+Page  329: Init PLLx dividers (RCC_PLLxDIVR)                - PLLxFRACEN = 1
+Page  329: Init PLLx dividers (RCC_PLLxDIVR)
+Page  329: Enable PLLx (RCC_CR)
+Page  329: Enable PLLx (RCC_CR)
+Page  329: Disable fractional mode (RCC_PLLCFGR)
+Page  329: Init fractional value (RCC_PLLxFRACR)      Value update
+Page  329: Enable fractional mode (RCC_PLLCFGR)
+Page  330: Reset and Clock Control (RCC)                                                                    RM0433
+Page  330: This function is controlled by programming the RCC Clock Configuration Register
+Page  330: (RCC_CFGR). A switch from one clock source to another occurs only if the target clock
+Page  330: The SWS status bits in the RCC Clock Configuration Register (RCC_CFGR) indicate which
+Page  330: clock is currently used as system clock. The other status bits in the RCC_CR register
+Page  330: Most of the prescalers are controlled via RCC_D1CFGR, RCC_D2CFGR and
+Page  330: RCC_D3CFGR registers.
+Page  331: RM0433                                                                                                     Reset and Clock Control (RCC)
+Page  331: RCC
+Page  331: rcc_c_ck
+Page  331: rcc_fclk_c
+Page  331: rcc_aclk
+Page  331: rcc_hclk3
+Page  331: ÷ 1,2,4,8,16         rcc_pclk3                                     APB3 peripheral clocks
+Page  331: rcc_hclk[2:1]                                      AHB1&2 peripheral clocks
+Page  331: rcc_pclk1                                     APB1 peripheral clocks
+Page  331: rcc_timx_ker_ck
+Page  331: rcc_pclk2                                     APB2 peripheral clocks
+Page  331: rcc_timy_ker_ck
+Page  331: rcc_hclk4
+Page  331: rcc_fclk_d3
+Page  331: rcc_pclk4
+Page  331: This block also provides the clock for the timers (rcc_timx_ker_ck and rcc_timy_ker_ck).
+Page  331: D2PPRE1 (1)        TIMPRE             Frcc_timx_ker_ck             Frcc_pclk1
+Page  331: D2PPRE2                              Frcc_timy_ker_ck             Frcc_pclk2
+Page  331: 0xx                 0         →       Frcc_hclk1                Frcc_hclk1              The timer clock is equal to the bus clock.
+Page  331: 100                 0         →       Frcc_hclk1             Frcc_hclk1 / 2
+Page  331: 101                 0         →     Frcc_hclk1 / 2           Frcc_hclk1 / 4             The timer clock is twice as fast as the bus
+Page  331: 110                 0         →     Frcc_hclk1 / 4           Frcc_hclk1 / 8             clock.
+Page  331: 111                 0         →     Frcc_hclk1 / 8          Frcc_hclk1 / 16
+Page  332: Reset and Clock Control (RCC)                                                                                  RM0433
+Page  332: D2PPRE1 (1) TIMPRE            Frcc_timx_ker_ck       Frcc_pclk1
+Page  332: D2PPRE2                      Frcc_timy_ker_ck       Frcc_pclk2
+Page  332: 0xx           1       →      Frcc_hclk1          Frcc_hclk1         The timer clock is equal to the bus clock.
+Page  332: 100           1       →      Frcc_hclk1        Frcc_hclk1 / 2
+Page  332: 101           1       →      Frcc_hclk1        Frcc_hclk1 / 4
+Page  332: 110           1       →     Frcc_hclk1 / 2     Frcc_hclk1 / 8
+Page  332: 111          1       →     Frcc_hclk1 / 4    Frcc_hclk1 / 16
+Page  332: 1. D2PPRE1 and D2PPRE2 belong to RCC Domain 2 Clock Configuration Register (RCC_D2CFGR).
+Page  332: 2. TIMPRE belongs to RCC Clock Configuration Register (RCC_CFGR).
+Page  332: The content of the RCC registers is not altered except for PLL1ON, PLL2ON, PLL3ON
+Page  332: All these bits belong to the RCC Clock Configuration Register (RCC_CFGR). Table 53 gives
+Page  333: RM0433                                                                                Reset and Clock Control (RCC)
+Page  333: HSIKERON and CSIKERON bits belong to RCC Source Control Register (RCC_CR).
+Page  333: kernel clock, the RCC registers are reset to their initial values except for the RCC_RSR (or
+Page  333: RCC_C1_RSR) and RCC_BDCR registers.
+Page  334: Reset and Clock Control (RCC)                                                                 RM0433
+Page  334: Table 55 shows the kernel clock that the RCC can deliver to the peripherals. Each row of
+Page  335: RM0433                                                                                                                                                              Reset and Clock Control (RCC)
+Page  336: Reset and Clock Control (RCC)                                                                                                                                                                                                                       RM0433
+Page  337: RM0433                                                                                                Reset and Clock Control (RCC)
+Page  337: RCC               pll2_p_ck         1              SAI[3:2]LPEN
+Page  337: rcc_pclk2        0
+Page  338: Reset and Clock Control (RCC)                                                                                             RM0433
+Page  338: RCC
+Page  338: rcc_pclk2            0                     SPI[5:4]EN
+Page  338: rcc_pclk4           0                        SPI6EN
+Page  339: RM0433                                                                                                            Reset and Clock Control (RCC)
+Page  339: rcc_pclk4            0                 I2C4LPEN                                      i2c_ker_ck_req
+Page  339: RCC
+Page  339: rcc_pclk1            0                                                               i2c_ker_ck_req
+Page  339: rcc_pclk2            0                     USART1EN
+Page  339: rcc_pclk1            0
+Page  339: RCC                             PKSU                                                                        UART[8:7]
+Page  339: rcc_pclk4            0                   LPUART1EN
+Page  340: Reset and Clock Control (RCC)                                                                                                     RM0433
+Page  340: RCC
+Page  340: RCC          QSPISEL
+Page  340: rcc_hclk3           0                                 QSPILPEN
+Page  340: rcc_hclk3           0                                  FMCLPEN
+Page  341: RM0433                                                                                                 Reset and Clock Control (RCC)
+Page  341: RCC            PKSU
+Page  342: Reset and Clock Control (RCC)                                                                                                  RM0433
+Page  342: RCC                                                                   PKEU
+Page  342: rcc_hclk1
+Page  343: RM0433                                                                                              Reset and Clock Control (RCC)
+Page  343: RCC
+Page  343: rcc_pclk1                                   SWPLPEN
+Page  344: Reset and Clock Control (RCC)                                                                                             RM0433
+Page  344: RCC                                      CECSEL
+Page  344: rcc_pclk1                0                            LPTIM1EN                     LPTIM1
+Page  344: rcc_pclk4                0                           LPTIM2EN                      LPTIM2
+Page  344: rcc_pclk4                0                         LPTIM[5:3]EN                  LPTIM[5:3]
+Page  344: The source clock is selected by programming the RTCSEL[1:0] bits in the RCC Backup
+Page  344: Domain Control Register (RCC_BDCR) and the RTCPRE[5:0] bits in the RCC Clock
+Page  344: Configuration Register (RCC_CFGR).
+Page  345: RM0433                                                                Reset and Clock Control (RCC)
+Page  345: The rtc_ck clock is enabled through RTCEN bit located in the RCC Backup Domain Control
+Page  345: Register (RCC_BDCR).
+Page  345: RTCAPBLPEN bits located in RCC_APB4ENR/LPENR registers.
+Page  345: The RCC provides the clock for the four watchdog blocks available on the circuit. The
+Page  345: The WW1RSC bit is located in RCC Global Control Register (RCC_GCR).
+Page  345: purpose (see RCC Internal Clock Source Calibration Register (RCC_ICSCR)). When
+Page  346: Reset and Clock Control (RCC)                                                                      RM0433
+Page  346: The RCC handles the distribution of the CPU, bus interface and peripheral clocks for the
+Page  346: The peripheral allocation is used by the RCC to automatically control the clock gating
+Page  346: RCC are common resources and are implicitly allocated to the CPU.
+Page  347: RM0433                                                                                                       Reset and Clock Control (RCC)
+Page  347: RCC
+Page  347: When the CPU enters CStop mode, the RCC automatically disables the bus interface and
+Page  347: enabled, are not disabled by the RCC since D3 is still running.
+Page  348: Reset and Clock Control (RCC)                                                                    RM0433
+Page  348: The autonomous bits are located in RCC D3 Autonomous mode Register (RCC_D3AMR).
+Page  348: ‘1’). In this example, the RCC does not switch off the PLLs as the D3 domain is always in
+Page  349: RM0433                                                                Reset and Clock Control (RCC)
+Page  350: Reset and Clock Control (RCC)                                                                                  RM0433
+Page  350: •      RCC_xxxxENR registers or
+Page  350: •      RCC_C1_xxxxENR registers.
+Page  350: •      RCC_xxxxLPENR registers or
+Page  350: •      RCC_C1_xxxxLPENR registers.
+Page  350: rcc_perx_ker_ck                                                                in1_ck   1
+Page  350: rcc_perx_ker_ck
+Page  351: RM0433                                                               Reset and Clock Control (RCC)
+Page  351: be the rising edge of the PERxEN bits of RCC_xxxxENR registers, or a kernel
+Page  351: be the falling edge of the PERxEN bits of RCC_xxxxENR registers, or a kernel
+Page  351: provide a supply voltage to D2, then the RCC has to wait for an acknowledge from the
+Page  351: RCC and the PWR blocks feature four flags:
+Page  351: –    D1CKRDY/D2CKRDY located in RCC Source Control Register (RCC_CR)
+Page  351: corresponding PERxEN bit to ‘1’ in the RCC_xxxxENR register,
+Page  351: b)   Read back the RCC_xxxxENR register to make sure that the previous write
+Page  352: Reset and Clock Control (RCC)                                                                    RM0433
+Page  352: rcc_perx_bus_ck (for peripheral ‘x’). This clock can be an APB, AHB or AXI clock,
+Page  352: The clocks used as bus interface for peripherals located in D1 domain, could be rcc_aclk,
+Page  352: rcc_hclk3 or rcc_pclk3, depending on the bus connected to each peripheral. For simplicity
+Page  352: sake, these clocks are named rcc_bus_d1_ck.
+Page  352: In the same way, the signal named rcc_bus_d2_ck represents rcc_hclk1, rcc_hclk2,
+Page  352: rcc_pclk1 or rcc_pclk2, depending on the bus connected to each peripheral of D2 domain.
+Page  352: Similarly, the signal rcc_bus_d3_ck represents rcc_hclk4 or rcc_pclk4 for peripherals
+Page  352: write these bits to ‘1’ via RCC_C1_xxxxENR or RCC_xxxxENR registers.
+Page  352: The PERxAMEN bits are belong to RCC D3 Autonomous mode Register
+Page  352: (RCC_D3AMR).
+Page  353: RM0433                                                                                   Reset and Clock Control (RCC)
+Page  353: SCGU                rcc_bus_d1_ck                           SCEU
+Page  353: (System              rcc_bus_d2_ck                 (System Clock Enabling Unit)
+Page  353: rcc_bus_d3_ck
+Page  353: clock generation)                                                                                                     rcc_perx_bus_ck
+Page  353: rcc_perx_bus_en
+Page  353: busif     rcc_perx_bus_d1_en
+Page  353: RCC                                    D3_state                rcc_perx_bus_d3_en
+Page  353: rcc_perx_ker_ck
+Page  353: rcc_perx_ker_cpu_en
+Page  353: rcc_perx_ker_en
+Page  353: clock Selection)                                             rcc_perx_ker_d3_en
+Page  354: Reset and Clock Control (RCC)                                                                                                                                        RM0433
+Page  354: rcc_perx_bus_d1_en
+Page  354: rcc_perx_ker_c_en
+Page  355: RM0433                                                                                                                                            Reset and Clock Control (RCC)
+Page  355: rcc_perx_bus_d3_en
+Page  355: rcc_perx_ker_d3_en
+Page  356: Reset and Clock Control (RCC)                                                                                                                                               RM0433
+Page  356: rcc_perx_bus_d3_en
+Page  356: rcc_perx_ker_d3_en
+Page  357: RM0433                                                              Reset and Clock Control (RCC)
+Page  357: •   The CPU clock rcc_c_ck is enabled when the CPU is in CRun mode.
+Page  357: •   RCC_xxxxENR.PERxEN bits of peripherals located on D2 domain
+Page  358: Reset and Clock Control (RCC)                                                                                                     RM0433
+Page  358: RCC                                                       SCEU
+Page  358: rcc_c_ck
+Page  358: (System                                    rcc_bus_d1_ck
+Page  358: rcc_bus_d2_ck
+Page  358: rcc_bus_d3_ck
+Page  358: rcc_bus_dx represents the clocks for the bus matrix and the peripheral bus interface for domain x
+Page  359: RM0433                                                                                     Reset and Clock Control (RCC)
+Page  359: 7.6            RCC Interrupts
+Page  359: The RCC provides 3 interrupt lines:
+Page  359: •     rcc_it: a general interrupt line, providing events when the PLLs are ready, or when the
+Page  359: •     rcc_hsecss_it: an interrupt line dedicated to the failure detection of the HSE Clock
+Page  359: •     rcc_lsecss_it: an interrupt line dedicated to the failure detection of the LSE Clock
+Page  359: The interrupt enable is controlled via RCC Clock Source Interrupt Enable Register
+Page  359: (RCC_CIER), except for the HSE CSS failure. When the HSE CSS feature is enabled, it not
+Page  359: The interrupt flags can be checked via RCC Clock Source Interrupt Flag Register
+Page  359: (RCC_CIFR), and those flags can be cleared via RCC Clock Source Interrupt Clear
+Page  359: Register (RCC_CICR).
+Page  359: rcc_it
+Page  359: LSECSSF         LSE Clock security system failure              LSECSSFIE                Set LSECSSC to ‘1’    rcc_lsecss_it
+Page  359: HSECSSF         HSE Clock security system failure              -                        Set HSECSSC to ‘1’    rcc_hsecss_it
+Page  360: Reset and Clock Control (RCC)                                                                     RM0433
+Page  360: 7.7        RCC register description
+Page  360: •    RCC_xxxxENR or RCC_C1_xxxxENR to control the PERxEN bits
+Page  360: •    RCC_xxxxLPENR or RCC_C1_xxxxLPENR to control the PERxLPEN bits
+Page  360: •    RCC_RSR or RCC_C1_RSR to control the reset flag status bits.
+Page  360: Figure 60 shows the RCC mapping overview.
+Page  360: Figure 60. RCC mapping overview
+Page  360: RCC_C1_APB4LPENR
+Page  360: RCC_C1_RSR
+Page  360: RCC_APB4LPENR                             RCC_APB4LPENR
+Page  360: RCC_RSR                      0x0D0       RCC_RSR
+Page  360: RCC_APB4RSTR                             RCC_APB4RSTR
+Page  360: RCC_CR                      0x000       RCC_CR
+Page  361: RM0433                                                                                                          Reset and Clock Control (RCC)
+Page  361: 7.7.2                  RCC Source Control Register (RCC_CR)
+Page  362: Reset and Clock Control (RCC)                                                                             RM0433
+Page  363: RM0433                                                                          Reset and Clock Control (RCC)
+Page  364: Reset and Clock Control (RCC)                                                                            RM0433
+Page  365: RM0433                                                                              Reset and Clock Control (RCC)
+Page  365: 7.7.3          RCC Internal Clock Source Calibration Register (RCC_ICSCR)
+Page  366: Reset and Clock Control (RCC)                                                                                    RM0433
+Page  366: 7.7.4             RCC Clock Recovery RC Register (RCC_CRRCR)
+Page  367: RM0433                                                                                             Reset and Clock Control (RCC)
+Page  367: 7.7.5                   RCC Clock Configuration Register (RCC_CFGR)
+Page  368: Reset and Clock Control (RCC)                                                                               RM0433
+Page  368: 0: The Timers kernel clock is equal to rcc_hclk1 if D2PPREx is corresponding to division by 1 or 2,
+Page  368: else it is equal to 2 x Frcc_pclkx_d2 (default after reset)
+Page  368: 1: The Timers kernel clock is equal to rcc_hclk1 if D2PPREx is corresponding to division by 1, 2 or
+Page  368: 4, else it is equal to 4 x Frcc_pclkx_d2
+Page  368: 1: The HRTIM prescaler clock source is the CPU clock (rcc_c_ck).
+Page  369: RM0433                                                                       Reset and Clock Control (RCC)
+Page  370: Reset and Clock Control (RCC)                                                                                               RM0433
+Page  370: 7.7.6           RCC Domain 1 Clock Configuration Register (RCC_D1CFGR)
+Page  370: slowest APB clock among rcc_pclk[4:1] after D1CPRE update. The application can check if the
+Page  371: RM0433                                                                      Reset and Clock Control (RCC)
+Page  371: Set and reset by software to control the division factor of rcc_pclk3.
+Page  371: The clock is divided by the new prescaler factor from 1 to 16 cycles of rcc_hclk3 after D1PPRE
+Page  371: 0xx: rcc_pclk3 = rcc_hclk3 (default after reset)
+Page  371: 100: rcc_pclk3 = rcc_hclk3 / 2
+Page  371: 101: rcc_pclk3 = rcc_hclk3 / 4
+Page  371: 110: rcc_pclk3 = rcc_hclk3 / 8
+Page  371: 111: rcc_pclk3 = rcc_hclk3 / 16
+Page  371: Set and reset by software to control the division factor of rcc_hclk3 and rcc_aclk. Changing this
+Page  371: 0xxx: rcc_hclk3 = sys_d1cpre_ck (default after reset)
+Page  371: 1000: rcc_hclk3 = sys_d1cpre_ck / 2
+Page  371: 1001: rcc_hclk3 = sys_d1cpre_ck / 4
+Page  371: 1010: rcc_hclk3 = sys_d1cpre_ck / 8
+Page  371: 1011: rcc_hclk3 = sys_d1cpre_ck / 16
+Page  371: 1100: rcc_hclk3 = sys_d1cpre_ck / 64
+Page  371: 1101: rcc_hclk3 = sys_d1cpre_ck / 128
+Page  371: 1110: rcc_hclk3 = sys_d1cpre_ck / 256
+Page  371: 1111: rcc_hclk3 = sys_d1cpre_ck / 512
+Page  371: clock among rcc_pclk[4:1] after HPRE update.
+Page  371: Note: Note also that rcc_hclk3 = rcc_aclk.
+Page  372: Reset and Clock Control (RCC)                                                                                       RM0433
+Page  372: 7.7.7             RCC Domain 2 Clock Configuration Register (RCC_D2CFGR)
+Page  372: The clock is divided by the new prescaler factor from 1 to 16 cycles of rcc_hclk1 after D2PPRE2
+Page  372: 0xx: rcc_pclk2 = rcc_hclk1 (default after reset)
+Page  372: 100: rcc_pclk2 = rcc_hclk1 / 2
+Page  372: 101: rcc_pclk2 = rcc_hclk1 / 4
+Page  372: 110: rcc_pclk2 = rcc_hclk1 / 8
+Page  372: 111: rcc_pclk2 = rcc_hclk1 / 16
+Page  372: The clock is divided by the new prescaler factor from 1 to 16 cycles of rcc_hclk1 after D2PPRE1
+Page  372: 0xx: rcc_pclk1 = rcc_hclk1 (default after reset)
+Page  372: 100: rcc_pclk1 = rcc_hclk1 / 2
+Page  372: 101: rcc_pclk1 = rcc_hclk1 / 4
+Page  372: 110: rcc_pclk1 = rcc_hclk1 / 8
+Page  372: 111: rcc_pclk1 = rcc_hclk1 / 16
+Page  373: RM0433                                                                               Reset and Clock Control (RCC)
+Page  373: 7.7.8            RCC Domain 3 Clock Configuration Register (RCC_D3CFGR)
+Page  373: The clock is divided by the new prescaler factor from 1 to 16 cycles of rcc_hclk4 after D3PPRE
+Page  373: 0xx: rcc_pclk4 = rcc_hclk4 (default after reset)
+Page  373: 100: rcc_pclk4 = rcc_hclk4 / 2
+Page  373: 101: rcc_pclk4 = rcc_hclk4 / 4
+Page  373: 110: rcc_pclk4 = rcc_hclk4 / 8
+Page  373: 111: rcc_pclk4 = rcc_hclk4 / 16
+Page  374: Reset and Clock Control (RCC)                                                                             RM0433
+Page  374: 7.7.9           RCC PLLs Clock Source Selection Register (RCC_PLLCKSELR)
+Page  375: RM0433                                                                    Reset and Clock Control (RCC)
+Page  376: Reset and Clock Control (RCC)                                                                                                                                            RM0433
+Page  376: 7.7.10          RCC PLLs Configuration Register (RCC_PLLCFGR)
+Page  377: RM0433                                                                         Reset and Clock Control (RCC)
+Page  378: Reset and Clock Control (RCC)                                                                              RM0433
+Page  379: RM0433                                                                        Reset and Clock Control (RCC)
+Page  379: 7.7.11         RCC PLL1 Dividers Configuration Register (RCC_PLL1DIVR)
+Page  380: Reset and Clock Control (RCC)                                                                        RM0433
+Page  381: RM0433                                                                                  Reset and Clock Control (RCC)
+Page  381: 7.7.12            RCC PLL1 Fractional Divider Register (RCC_PLL1FRACR)
+Page  382: Reset and Clock Control (RCC)                                                                                 RM0433
+Page  382: 7.7.13          RCC PLL2 Dividers Configuration Register (RCC_PLL2DIVR)
+Page  383: RM0433                                                                      Reset and Clock Control (RCC)
+Page  384: Reset and Clock Control (RCC)                                                                                   RM0433
+Page  384: 7.7.14          RCC PLL2 Fractional Divider Register (RCC_PLL2FRACR)
+Page  385: RM0433                                                                        Reset and Clock Control (RCC)
+Page  385: 7.7.15         RCC PLL3 Dividers Configuration Register (RCC_PLL3DIVR)
+Page  386: Reset and Clock Control (RCC)                                                                          RM0433
+Page  387: RM0433                                                                                  Reset and Clock Control (RCC)
+Page  387: 7.7.16            RCC PLL3 Fractional Divider Register (RCC_PLL3FRACR)
+Page  388: Reset and Clock Control (RCC)                                                                                              RM0433
+Page  388: 7.7.17             RCC Domain 1 Kernel Clock Configuration Register
+Page  388: (RCC_D1CCIPR)
+Page  388: 00: rcc_hclk3 clock selected as kernel peripheral clock (default after reset)
+Page  388: 00: rcc_hclk3 clock selected as kernel peripheral clock (default after reset)
+Page  389: RM0433                                                                                                             Reset and Clock Control (RCC)
+Page  389: 7.7.18                 RCC Domain 2 Kernel Clock Configuration Register
+Page  389: (RCC_D2CCIP1R)
+Page  389: 0: rcc_pclk2 is selected as DFSDM1 Clk kernel clock (default after reset)
+Page  390: Reset and Clock Control (RCC)                                                                                RM0433
+Page  391: RM0433                                                                        Reset and Clock Control (RCC)
+Page  392: Reset and Clock Control (RCC)                                                                                                    RM0433
+Page  392: 7.7.19           RCC Domain 2 Kernel Clock Configuration Register
+Page  392: (RCC_D2CCIP2R)
+Page  392: 000: rcc_pclk1 clock selected as kernel peripheral clock (default after reset)
+Page  392: 00: rcc_pclk1 clock is selected as kernel clock (default after reset)
+Page  393: RM0433                                                                        Reset and Clock Control (RCC)
+Page  393: 000: rcc_pclk2 clock is selected as kernel clock (default after reset)
+Page  393: 000: rcc_pclk1 clock is selected as kernel clock (default after reset)
+Page  394: Reset and Clock Control (RCC)                                                                                                 RM0433
+Page  394: 7.7.20            RCC Domain 3 Kernel Clock Configuration Register
+Page  394: (RCC_D3CCIPR)
+Page  394: 000: rcc_pclk4 clock selected as kernel peripheral clock (default after reset)
+Page  395: RM0433                                                                           Reset and Clock Control (RCC)
+Page  395: 000: rcc_pclk4 clock selected as kernel peripheral clock (default after reset)
+Page  395: 000: rcc_pclk4 clock selected as kernel peripheral clock (default after reset)
+Page  396: Reset and Clock Control (RCC)                                                                          RM0433
+Page  396: 00: rcc_pclk4 clock selected as kernel peripheral clock (default after reset)
+Page  396: 000: rcc_pclk_d3 clock is selected as kernel peripheral clock (default after reset)
+Page  397: RM0433                                                                                                       Reset and Clock Control (RCC)
+Page  397: 7.7.21          RCC Clock Source Interrupt Enable Register (RCC_CIER)
+Page  398: Reset and Clock Control (RCC)                                                                             RM0433
+Page  399: RM0433                                                                                                    Reset and Clock Control (RCC)
+Page  399: 7.7.22          RCC Clock Source Interrupt Flag Register (RCC_CIFR)
+Page  400: Reset and Clock Control (RCC)                                                          RM0433
+Page  401: RM0433                                                                                                         Reset and Clock Control (RCC)
+Page  401: 7.7.23          RCC Clock Source Interrupt Clear Register (RCC_CICR)
+Page  402: Reset and Clock Control (RCC)                                  RM0433
+Page  403: RM0433                                                                                          Reset and Clock Control (RCC)
+Page  403: 7.7.24             RCC Backup Domain Control Register (RCC_BDCR)
+Page  403: After a system reset, the RCC_BDCR register is write-protected. To modify this register, the
+Page  403: DBP bit in the PWR control register 1 (PWR_CR1) has to be set to ‘1’. RCC_BDCR bits are
+Page  404: Reset and Clock Control (RCC)                                                                           RM0433
+Page  405: RM0433                                                                             Reset and Clock Control (RCC)
+Page  405: 7.7.25          RCC Clock Control and Status Register (RCC_CSR)
+Page  406: Reset and Clock Control (RCC)                                                                                                   RM0433
+Page  406: 7.7.26                    RCC AHB3 Reset Register (RCC_AHB3RSTR)
+Page  407: RM0433                                                            Reset and Clock Control (RCC)
+Page  408: Reset and Clock Control (RCC)                                                                                                          RM0433
+Page  408: 7.7.27                 RCC AHB1 Peripheral Reset Register(RCC_AHB1RSTR)
+Page  409: RM0433                                                           Reset and Clock Control (RCC)
+Page  410: Reset and Clock Control (RCC)                                                                                              RM0433
+Page  410: 7.7.28            RCC AHB2 Peripheral Reset Register (RCC_AHB2RSTR)
+Page  411: RM0433                                                                                                      Reset and Clock Control (RCC)
+Page  411: 7.7.29          RCC AHB4 Peripheral Reset Register (RCC_AHB4RSTR)
+Page  412: Reset and Clock Control (RCC)                                           RM0433
+Page  413: RM0433                                                                             Reset and Clock Control (RCC)
+Page  413: 7.7.30            RCC APB3 Peripheral Reset Register (RCC_APB3RSTR)
+Page  414: Reset and Clock Control (RCC)                                                                                                                                            RM0433
+Page  414: 7.7.31                    RCC APB1 Peripheral Reset Register (RCC_APB1LRSTR)
+Page  415: RM0433                                                                    Reset and Clock Control (RCC)
+Page  416: Reset and Clock Control (RCC)                                            RM0433
+Page  417: RM0433                                                                                      Reset and Clock Control (RCC)
+Page  417: 7.7.32            RCC APB1 Peripheral Reset Register (RCC_APB1HRSTR)
+Page  418: Reset and Clock Control (RCC)                                                                                                                      RM0433
+Page  418: 7.7.33          RCC APB2 Peripheral Reset Register (RCC_APB2RSTR)
+Page  419: RM0433                                                                   Reset and Clock Control (RCC)
+Page  420: Reset and Clock Control (RCC)                                                                                                                               RM0433
+Page  420: 7.7.34                    RCC APB4 Peripheral Reset Register (RCC_APB4RSTR)
+Page  421: RM0433                                                                  Reset and Clock Control (RCC)
+Page  422: Reset and Clock Control (RCC)                                                                               RM0433
+Page  422: 7.7.35          RCC Global Control Register (RCC_GCR)
+Page  423: RM0433                                                                                                                                  Reset and Clock Control (RCC)
+Page  423: 7.7.36                      RCC D3 Autonomous mode Register (RCC_D3AMR)
+Page  424: Reset and Clock Control (RCC)                                                                              RM0433
+Page  425: RM0433                                                                       Reset and Clock Control (RCC)
+Page  426: Reset and Clock Control (RCC)                                                                                                                                 RM0433
+Page  426: 7.7.37                RCC Reset Status Register (RCC_RSR)
+Page  426: Table 60. RCC_RSR address offset and reset value
+Page  426: RCC_RSR                                                  0x0D0
+Page  426: RCC_C1_RSR                                                  0x130
+Page  427: RM0433                                                                                 Reset and Clock Control (RCC)
+Page  427: 1. Refer to Table 51: Reset source identification (RCC_RSR) for details on flag behavior.
+Page  428: Reset and Clock Control (RCC)                                                                                                   RM0433
+Page  428: 7.7.38              RCC AHB3 Clock Register (RCC_AHB3ENR)
+Page  428: Table 61. RCC_AHB3ENR address offset and reset value
+Page  428: RCC_AHB3ENR                               0x0D4
+Page  428: RCC_C1_AHB3ENR                                 0x134
+Page  428: fmc_ker_ck input, and the rcc_hclk3 bus interface clock.
+Page  429: RM0433                                                                 Reset and Clock Control (RCC)
+Page  430: Reset and Clock Control (RCC)                                                                                                                              RM0433
+Page  430: 7.7.39                RCC AHB1 Clock Register (RCC_AHB1ENR)
+Page  430: Table 62. RCC_AHB1ENR address offset and reset value
+Page  430: RCC_AHB1ENR                                                        0x0D8
+Page  430: RCC_C1_AHB1ENR                                                          0x138
+Page  430: rcc_hclk1 bus interface clock.
+Page  430: rcc_hclk1 bus interface clock.
+Page  431: RM0433                                                                      Reset and Clock Control (RCC)
+Page  431: adc_ker_ck input, and the rcc_hclk1 bus interface clock.
+Page  432: Reset and Clock Control (RCC)                                                                                                            RM0433
+Page  432: 7.7.40                    RCC AHB2 Clock Register (RCC_AHB2ENR)
+Page  432: Table 63. RCC_AHB2ENR address offset and reset value
+Page  432: RCC_AHB2ENR                                   0x0DC
+Page  432: RCC_C1_AHB2ENR                                      0x13C
+Page  433: RM0433                                                                  Reset and Clock Control (RCC)
+Page  433: rng_ker_ck input, and the rcc_hclk2 bus interface clock.
+Page  434: Reset and Clock Control (RCC)                                                                                                                           RM0433
+Page  434: 7.7.41          RCC AHB4 Clock Register (RCC_AHB4ENR)
+Page  434: Table 64. RCC_AHB4ENR address offset and reset value
+Page  434: RCC_AHB4ENR                                             0x0E0
+Page  434: RCC_C1_AHB4ENR                                               0x140
+Page  434: adc_ker_ck input, and the rcc_hclk4 bus interface clock.
+Page  435: RM0433                                                                   Reset and Clock Control (RCC)
+Page  436: Reset and Clock Control (RCC)                                            RM0433
+Page  437: RM0433                                                                                     Reset and Clock Control (RCC)
+Page  437: 7.7.42            RCC APB3 Clock Register (RCC_APB3ENR)
+Page  437: Table 65. RCC_APB3ENR address offset and reset value
+Page  437: RCC_APB3ENR                                 0x0E4
+Page  437: RCC_C1_APB3ENR                                    0x144
+Page  438: Reset and Clock Control (RCC)                                                                                                                                     RM0433
+Page  438: 7.7.43                  RCC APB1 Clock Register (RCC_APB1LENR)
+Page  438: Table 66. RCC_APB1ENR address offset and reset value
+Page  438: RCC_APB1LENR                                                  0x0E8
+Page  438: RCC_C1_APB1LENR                                                    0x148
+Page  438: provided to usart_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  438: provided to usart_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  438: cec_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  439: RM0433                                                                    Reset and Clock Control (RCC)
+Page  439: i2c_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  439: i2c_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  439: i2c_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  439: provided to uart_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  439: provided to uart_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  439: provided to usart_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  439: provided to usart_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  439: spdifrx_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  440: Reset and Clock Control (RCC)                                                                        RM0433
+Page  440: spi_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  440: spi_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  440: lptim_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  441: RM0433                                                                Reset and Clock Control (RCC)
+Page  442: Reset and Clock Control (RCC)                                                                                                   RM0433
+Page  442: 7.7.44            RCC APB1 Clock Register (RCC_APB1HENR)
+Page  442: Table 67. RCC_APB1ENR address offset and reset value
+Page  442: RCC_APB1HENR                                   0x0EC
+Page  442: RCC_C1_APB1HENR                                     0x14C
+Page  442: fdcan_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  443: RM0433                                                                 Reset and Clock Control (RCC)
+Page  443: swpmi_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  444: Reset and Clock Control (RCC)                                                                                                                   RM0433
+Page  444: 7.7.45          RCC APB2 Clock Register (RCC_APB2ENR)
+Page  444: Table 68. RCC_APB2ENR address offset and reset value
+Page  444: RCC_APB2ENR                                      0x0F0
+Page  444: RCC_C1_APB2ENR                                         0x150
+Page  444: provided to Aclk and clk inputs respectively, and the rcc_pclk2 bus interface clock.
+Page  444: sai_a_ker_ck and sai_b_ker_ck inputs, and the rcc_pclk2 bus interface clock.
+Page  444: sai_a_ker_ck and sai_b_ker_ck inputs, and the rcc_pclk2 bus interface clock.
+Page  445: RM0433                                                                     Reset and Clock Control (RCC)
+Page  445: sai_a_ker_ck and sai_b_ker_ck inputs, and the rcc_pclk2 bus interface clock.
+Page  445: spi_ker_ck input, and the rcc_pclk2 bus interface clock.
+Page  445: spi_ker_ck input, and the rcc_pclk2 bus interface clock.
+Page  445: spi_ker_ck input, and the rcc_pclk2 bus interface clock.
+Page  445: to usart_ker_ck input, and the rcc_pclk2 bus interface clock.
+Page  446: Reset and Clock Control (RCC)                                                                     RM0433
+Page  446: to usart_ker_ck input, and the rcc_pclk2 bus interface clock.
+Page  447: RM0433                                                                                                           Reset and Clock Control (RCC)
+Page  447: 7.7.46                 RCC APB4 Clock Register (RCC_APB4ENR)
+Page  447: Table 69. RCC_APB4ENR address offset and reset value
+Page  447: RCC_APB4ENR                                             0x0F4
+Page  447: RCC_C1_APB4ENR                                                0x154
+Page  447: provided to sai_a_ker_ck and sai_b_ker_ck inputs respectively, and the rcc_pclk4 bus interface
+Page  448: Reset and Clock Control (RCC)                                                                          RM0433
+Page  448: to lptim_ker_ck input, and the rcc_pclk4 bus interface clock.
+Page  448: to lptim_ker_ck input, and the rcc_pclk4 bus interface clock.
+Page  448: to lptim_ker_ck input, and the rcc_pclk4 bus interface clock.
+Page  448: lptim_ker_ck input, and the rcc_pclk4 bus interface clock.
+Page  448: i2c_ker_ck input, and the rcc_pclk4 bus interface clock.
+Page  448: spi_ker_ck input, and the rcc_pclk4 bus interface clock.
+Page  448: provided to lpuart_ker_ck input, and the rcc_pclk4 bus interface clock.
+Page  449: RM0433                                                                  Reset and Clock Control (RCC)
+Page  450: Reset and Clock Control (RCC)                                                                                                                            RM0433
+Page  450: 7.7.47                       RCC AHB3 Sleep Clock Register (RCC_AHB3LPENR)
+Page  450: Table 70. RCC_AHB3LPENR address offset and reset value
+Page  450: RCC_AHB3LPENR                                       0x0FC
+Page  450: RCC_C1_AHB3LPENR                                            0x15C
+Page  451: RM0433                                                                      Reset and Clock Control (RCC)
+Page  451: fmc_ker_ck input, and the rcc_hclk3 bus interface clock.
+Page  452: Reset and Clock Control (RCC)                                                                                                                                       RM0433
+Page  452: 7.7.48                  RCC AHB1 Sleep Clock Register (RCC_AHB1LPENR)
+Page  452: Table 71. RCC_AHB1LPENR address offset and reset value
+Page  452: RCC_AHB1LPENR                                                                0x100
+Page  452: RCC_C1_AHB1LPENR                                                               0x160
+Page  452: rcc_hclk1 bus interface clock.
+Page  452: rcc_hclk1 bus interface clock.
+Page  453: RM0433                                                                   Reset and Clock Control (RCC)
+Page  453: adc_ker_ck input, and the rcc_hclk1 bus interface clock.
+Page  454: Reset and Clock Control (RCC)                                                                                                                          RM0433
+Page  454: 7.7.49                        RCC AHB2 Sleep Clock Register (RCC_AHB2LPENR)
+Page  454: Table 72. RCC_AHB2LPENR address offset and reset value
+Page  454: RCC_AHB2LPENR                                       0x104
+Page  454: RCC_C1_AHB2LPENR                                         0x164
+Page  454: rng_ker_ck input, and the rcc_hclk2 bus interface clock.
+Page  455: RM0433                                                                   Reset and Clock Control (RCC)
+Page  456: Reset and Clock Control (RCC)                                                                                                                                                       RM0433
+Page  456: 7.7.50          RCC AHB4 Sleep Clock Register (RCC_AHB4LPENR)
+Page  456: Table 73. RCC_AHB4LPENR address offset and reset value
+Page  456: RCC_AHB4LPENR                                                      0x108                                       0x3128 07FF
+Page  456: RCC_C1_AHB4LPENR                                                                0x168
+Page  456: adc_ker_ck input, and the rcc_hclk4 bus interface clock.
+Page  457: RM0433                                                                     Reset and Clock Control (RCC)
+Page  458: Reset and Clock Control (RCC)                                                              RM0433
+Page  459: RM0433                                                                                       Reset and Clock Control (RCC)
+Page  459: 7.7.51            RCC APB3 Sleep Clock Register (RCC_APB3LPENR)
+Page  459: Table 74. RCC_APB3LPENR address offset and reset value
+Page  459: RCC_APB3LPENR                                    0x10C
+Page  459: RCC_C1_APB3LPENR                                   0x16C
+Page  460: Reset and Clock Control (RCC)                                                                                                                                                             RM0433
+Page  460: 7.7.52                      RCC APB1 Low Sleep Clock Register (RCC_APB1LLPENR)
+Page  460: Table 75. RCC_APB1LLPENR address offset and reset value
+Page  460: RCC_APB1LLPENR                                                         0x110
+Page  460: RCC_C1_APB1LLPENR                                                        0x170
+Page  460: provided to usart_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  460: provided to usart_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  460: cec_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  461: RM0433                                                                    Reset and Clock Control (RCC)
+Page  461: i2c_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  461: i2c_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  461: i2c_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  461: provided to uart_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  461: provided to uart_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  461: provided to usart_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  461: provided to usart_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  461: spdifrx_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  462: Reset and Clock Control (RCC)                                                                        RM0433
+Page  462: spi_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  462: spi_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  462: lptim_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  463: RM0433                                                                    Reset and Clock Control (RCC)
+Page  464: Reset and Clock Control (RCC)                                                                                                                 RM0433
+Page  464: 7.7.53            RCC APB1 High Sleep Clock Register (RCC_APB1HLPENR)
+Page  464: Table 76. RCC_APB1HLPENR address offset and reset value
+Page  464: RCC_APB1HLPENR                                       0x114
+Page  464: RCC_C1_APB1HLPENR                                      0x174
+Page  464: fdcan_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  465: RM0433                                                                 Reset and Clock Control (RCC)
+Page  465: swpmi_ker_ck input, and the rcc_pclk1 bus interface clock.
+Page  466: Reset and Clock Control (RCC)                                                                                                                                        RM0433
+Page  466: 7.7.54          RCC APB2 Sleep Clock Register (RCC_APB2LPENR)
+Page  466: Table 77. RCC_APB2LPENR address offset and reset value
+Page  466: RCC_APB2LPENR                                          0x118
+Page  466: RCC_C1_APB2LPENR                                                    0x178
+Page  466: provided to Aclk and clk inputs respectively, and the rcc_pclk2 bus interface clock.
+Page  466: sai_a_ker_ck and sai_b_ker_ck inputs, and the rcc_pclk2 bus interface clock.
+Page  466: sai_a_ker_ck and sai_b_ker_ck inputs, and the rcc_pclk2 bus interface clock.
+Page  467: RM0433                                                                      Reset and Clock Control (RCC)
+Page  467: sai_a_ker_ck and sai_b_ker_ck inputs, and the rcc_pclk2 bus interface clock.
+Page  467: spi_ker_ck input, and the rcc_pclk2 bus interface clock.
+Page  467: spi_ker_ck input, and the rcc_pclk2 bus interface clock.
+Page  467: spi_ker_ck input, and the rcc_pclk2 bus interface clock.
+Page  467: to usart_ker_ck input, and the rcc_pclk2 bus interface clock.
+Page  468: Reset and Clock Control (RCC)                                                                     RM0433
+Page  468: to usart_ker_ck inputs, and the rcc_pclk2 bus interface clock.
+Page  469: RM0433                                                                                                                            Reset and Clock Control (RCC)
+Page  469: 7.7.55                     RCC APB4 Sleep Clock Register (RCC_APB4LPENR)
+Page  469: Table 78. RCC_APB4LPENR address offset and reset value
+Page  469: RCC_APB4LPENR                                                    0x11C
+Page  469: RCC_C1_APB4LPENR                                                              0x17C
+Page  469: provided to sai_a_ker_ck and sai_b_ker_ck inputs respectively, and the rcc_pclk4 bus interface
+Page  470: Reset and Clock Control (RCC)                                                                          RM0433
+Page  470: to lptim_ker_ck input, and the rcc_pclk4 bus interface clock.
+Page  470: to lptim_ker_ck input, and the rcc_pclk4 bus interface clock.
+Page  470: to lptim_ker_ck input, and the rcc_pclk4 bus interface clock.
+Page  470: lptim_ker_ck input, and the rcc_pclk4 bus interface clock.
+Page  470: i2c_ker_ck input, and the rcc_pclk4 bus interface clock.
+Page  470: spi_ker_ck input, and the rcc_pclk4 bus interface clock.
+Page  470: provided to lpuart_ker_ck input, and the rcc_pclk4 bus interface clock.
+Page  471: RM0433                                                                 Reset and Clock Control (RCC)
+Page  472: RCC_
+Page  472: RCC_CR
+Page  472: RCC_CFGR
+Page  472: RCC_ICSCR
+Page  472: RCC_CRRCR
+Page  472: RCC_D3CFGR
+Page  472: RCC_D2CFGR
+Page  472: RCC_D1CFGR
+Page  472: Reset and Clock Control (RCC)
+Page  472: RCC register map
+Page  472: Table 79. RCC register map and reset values
+Page  473: RCC_D1CCIPR
+Page  473: RCC_PLLCFGR
+Page  473: RCC_PLL3DIVR
+Page  473: RCC_PLL2DIVR
+Page  473: RCC_PLL1DIVR
+Page  473: RCC_D2CCIP2R
+Page  473: RCC_D2CCIP1R
+Page  473: RCC_PLL3FRACR
+Page  473: RCC_PLL2FRACR
+Page  473: RCC_PLL1FRACR
+Page  473: Table 79. RCC register map and reset values (continued)
+Page  473: Reset and Clock Control (RCC)
+Page  474: RCC_
+Page  474: RCC_
+Page  474: RCC_CSR
+Page  474: RCC_CIFR
+Page  474: RCC_CIER
+Page  474: RCC_CICR
+Page  474: RCC_BDCR
+Page  474: RCC_D3CCIPR
+Page  474: Reset and Clock Control (RCC)
+Page  474: Table 79. RCC register map and reset values (continued)
+Page  475: RCC_
+Page  475: RCC_
+Page  475: RCC_
+Page  475: RCC_
+Page  475: RCC_
+Page  475: RCC_
+Page  475: RCC_
+Page  475: RCC_GCR
+Page  475: Table 79. RCC register map and reset values (continued)
+Page  475: Reset and Clock Control (RCC)
+Page  476: RCC_
+Page  476: RCC_
+Page  476: RCC_
+Page  476: RCC_
+Page  476: RCC_
+Page  476: RCC_RSR
+Page  476: RCC_D3AMR
+Page  476: Reset and Clock Control (RCC)
+Page  476: Table 79. RCC register map and reset values (continued)
+Page  477: RCC_
+Page  477: RCC_
+Page  477: RCC_
+Page  477: RCC_
+Page  477: RCC_
+Page  477: RCC_
+Page  477: RCC_
+Page  477: Table 79. RCC register map and reset values (continued)
+Page  477: Reset and Clock Control (RCC)
+Page  478: RCC_
+Page  478: RCC_
+Page  478: RCC_
+Page  478: RCC_
+Page  478: RCC_
+Page  478: RCC_
+Page  478: RCC_C1_
+Page  478: Reset and Clock Control (RCC)
+Page  478: Table 79. RCC register map and reset values (continued)
+Page  479: RCC_C1_
+Page  479: RCC_C1_
+Page  479: RCC_C1_
+Page  479: RCC_C1_
+Page  479: RCC_C1_
+Page  479: RCC_C1_
+Page  479: RCC_C1_
+Page  479: RCC_C1_
+Page  479: Table 79. RCC register map and reset values (continued)
+Page  479: Reset and Clock Control (RCC)
+Page  480: RCC_C1_
+Page  480: RCC_C1_
+Page  480: RCC_C1_
+Page  480: RCC_C1_
+Page  480: RCC_C1_
+Page  480: RCC_C1_
+Page  480: RCC_C1_
+Page  480: Reset and Clock Control (RCC)
+Page  480: Table 79. RCC register map and reset values (continued)
+Page  481: RCC_C1_
+Page  481: RCC_C1_
+Page  481: Table 79. RCC register map and reset values (continued)
+Page  481: Reset and Clock Control (RCC)
+Page  483: RCC
+Page  512: and RCC registers. These functions have priority over the configuration in the
+Page  517: RCC_CSR register) the oscillator takes control of its associated pins and the GPIO
+Page  553: RCC      A       -     -      -      -        -       -     A     -     -      -      A       A       A        -        -      -      -       -         -       -        -        -        -
+Page  554: RCC          lse_ck      ETR3                                   A       -
+Page  555: D3      AHB4     RCC          lse_ck    crs_sync1     CRS        APB1   D2      A            -
+Page  558: RCC           lse_ck        TI1_4                                A       -
+Page  558: D3       AHB4     RCC            csi_ck       TI1_5     TIM15       APB2   D2      A       -
+Page  558: RCC           MCO2          TI1_6                                A       -
+Page  558: RCC            lsi_ck       TI1_1                                A       -
+Page  558: RCC           lse_ck        TI1_2                                A       -
+Page  558: RCC         HSE_1MHZ        TI1_2                                A       -
+Page  558: RCC           MCO1          TI1_3                                A       -
+Page  571: D3      AHB4     RCC           CSS_LSE                                                 -
+Page  573: D3         AHB4          RCC                 rcc_it           WKUP61                        D      CPU             -
+Page  573: D3         AHB4          RCC          hse_css_rcc_wkup        WKUP87                        D      CPU             -
+Page  730: The RCC Clock Security
+Page  730: lsecss_rcc_it                                     CSS_LSE     CSS LSE
+Page  730: rcc_it            12            5             RCC          RCC global interrupt               0x0000 0054
+Page  741: register    register     register                      register    register    register         rcc_fclk_cpu
+Page  741: rcc_fclk_cpu
+Page  743: rcc_fclk_cpu
+Page  743: rcc_fclk_cpu
+Page  744: rcc_fclk_cpu
+Page  744: Delay                                   rcc_fclk_cpu
+Page  745: rcc_fclk_cpu                                                                     request
+Page  745: Delay                                      rcc_fclk_cpu
+Page  747: RCC LSECSS(2)
+Page  748: 61        RCC interrupt                        Direct           CPU only              No(5)
+Page  749: 2. RTC Tamper, RTC timestamp and RCC LSECSS signals are OR-ed together on the same EXTI event input.
+Page  779: Section 7: Reset and Clock Control (RCC) for fmc_ker_ck clock source selection).
+Page  899: It can be configured in the RCC (refer to RCC Section for more information on how to
+Page  899: prescaler is set to 1 (HPRE[3:0] = 0xxx in RCC_CFGR register).
+Page  900: RCC                         ADC1, ADC2 or ADC3
+Page  900: 1. Refer to the RCC section to see how adc_hclk and adc_ker_ck can be generated.
+Page  912: The software can write the RCC control bits to configure and enable the ADC clock (refer to
+Page  912: RCC Section), the control bits DIFSEL in the ADC_DIFSEL register, ADCx_CCR register
+Page 1013: Section Reset and Clock Control (RCC))
+Page 1013: AHB clock prescaler is set to 1 (HPRE[3:0] = 0xxx in RCC_CFGR register) and if the system
+Page 1078: RCC APB1 Clock Register (RCC_APB1LENR)).
+Page 1102: watchdog, short-circuit detector, extremes detector, control block) is generated by the RCC
+Page 1102: clock selected by SAI1SEL[1:0] field in RCC configuration (see ).
+Page 1184: The LCD controller can be reset by setting the corresponding bit in the RCC_APBRSTR
+Page 1192: •   Enable the LTDC clock in the RCC register.
+Page 1418: The HRTIM clock source must be enabled in the Reset and Clock control unit (RCC).
+Page 1514: milliseconds using the timer prescaler and the RCC clock controller prescalers.
+Page 1515: CK_TIM18 from RCC
+Page 1619: milliseconds using the timer prescaler and the RCC clock controller prescalers.
+Page 1620: TIMxCLK from RCC
+Page 1694: milliseconds using the timer prescaler and the RCC clock controller prescalers.
+Page 1746: milliseconds using the timer prescaler and the RCC clock controller prescalers.
+Page 1748: Internal clock (CK_INT) from RCC
+Page 1830: TIMxCLK from RCC
+Page 1849: and Clock controller (RCC). Also, the LPTIM can be clocked using an external clock signal
+Page 1895: source configuration, refer to Section 7: Reset and Clock Control (RCC).
+Page 2006: delivered by the RCC. The USART registers can consequently be written/read even
+Page 2018: Reset and Clock Control (RCC)). The clock source must be selected through the UE bit
+Page 2018: the usart_ker_ck clock source can be configurable in the RCC (see Section 7: Reset and
+Page 2018: Clock Control (RCC)). Otherwise the usart_ker_ck clock is the same as usart_pclk.
+Page 2084: and delivered by the RCC. So, the LPUART registers can be written/read even when
+Page 2093: and clock controller (RCC)). The clock source must be selected through the UE bit, before
+Page 2093: the lpuart_ker_ck clock source can be configured in the RCC (see Section Reset and clock
+Page 2093: controller (RCC)). Otherwise, the lpuart_ker_ck is the same as lpuart_pclk.
+Page 2113: provided that the LPUART clock selection is HSI or LSE in the RCC.
+Page 2113: the clock source for the LPUART must be HSI or LSE (see RCC chapter)
+Page 2132: from the RCC to feed the clock generator at least. On the other side, a specific slave logic
+Page 2149: into STOP mode. Refer to the RCC section for further information.
+Page 2157: The generation of spi_ker_ck and spi_pclk clock are controlled by the RCC block
+Page 2157: according to register settings and the processors modes. Refer to the RCC section for
+Page 2215: the SAI clock generator (sai_x_ker_ck) is delivered by the product clock controller (RCC).
+Page 2308: Refer to the bit SWPSRC in Section 7.7.18: RCC Domain 2 Kernel Clock Configuration
+Page 2308: Register (RCC_D2CCIP1R) to select the swpmi_ker_ck (SWPMI core clock source).
+Page 2326: programmed in the RCC (Reset and Clock Control), according to the following formula:
+Page 2375: time                                                           the RCC.SDMMCxRST
+Page 2400: 1.    Reset the SDMMC with the RCC.SDMMCxRST register bit. This will reset the SDMMC
+Page 2568: The USB OTG receives the 48 MHz clock from the reset and clock controller (RCC). The
+Page 2743: 2. Refer to RCC chapter "Clock distribution for Ethernet" for a detailed description of the Ethernet clock architecture.
+Page 2885: DCRCC
+Page 2886: Bit 16 DCRCC: Disable CRC Checking for Received Packets
+Page 2969: DCRCC
+Page 2978: •   Independent 32 kHz CEC kernel (refer to Section RCC kernel clock distribution)
+Page 2979: functional blocks (such as RCC and EXTI).
+Page 3090: programmed in the RCC.
+Page 3193: QSUP             CONDTYPE[1:0 NUMEVENT[1:0 RETST               TRCCC TRCCO
+Page 3193: Bit 7 TRCCCI: Support for cycle counting in the instruction trace
+Page 3193: Bit 6 TRCCOND: Support for conditional instruction tracing
+Page 3210: TRCCOND
+Page 3210: TRCCCI
+Page 3215: SYSCFG clock should be enabled first in the RCC_APB4ENR register.
+Page 3216: Section 8: Reset and Clock Control (RCC)
+Page 3216: VSWRST bit renamed BDRST in RCC_BDCR and bit description
+Page 3216: CAMITFEN renamed DCMIEN in RCC_AHB2ENR; and
+Page 3216: CAMITFLPEN renamed DCMILPEN in RCC_AHB2LPENR.
+Page 3216: FLITFLPEN bit renamed FLASHLPEN in RCC_AHB3LPENR.
+Page 3216: HDMICECLPEN renamed CECLPEN in RCC_APB1LLPENR,
+Page 3217: Section 8: Reset and Clock Control (RCC) (continued)
+Page 3217: Section 8.7.31: RCC APB1 Peripheral Reset Register
+Page 3217: (RCC_APB1LRSTR), Section 8.7.43: RCC APB1 Clock Register
+Page 3217: (RCC_APB1LENR) and Section 8.7.52: RCC APB1 Low Sleep
+Page 3217: Clock Register (RCC_APB1LLPENR).
+Page 3223: Section 8: Reset and Clock Control (RCC)
+Page 3226: Section 7: Reset and Clock Control (RCC)
+Page 3226: In RCC_AHB1ENR/RCC_C1_AHB1ENR/RCC_C2_AHB1ENR:
+Page 3226: RCC_AHB1LPENR/RCC_C1_AHB1LPENR/RCC_C2_AHB1LPEN
+Page 3226: Bits changed to reserved: TMPSENSRST of RCC_APB4RSTR
+Page 3226: register, TMPSENSEN of RCC_APB4ENR and TMPSENSLPEN of
+Page 3226: RCC_APB4LPENR.
+Page 3231: RCC and modified Figure 538: Setup and hold timings.
+Page 3238: FLASH_CRCCR1 . . . . . . . . . . . . . . . . . . . . . 205
+Page 3238: FLASH_CRCCR2 . . . . . . . . . . . . . . . . . . . . . 221
+Page 3243: OTG_HS_DOEPEACHMSK1 . . . . . . . . . . .2649                         RCC_D2APB2ENR . . . . . . . . . . . . . . . . . . . . 444
+Page 3243: OTG_PCGCCTL . . . . . . . . . . . . . . . . . . . . .2666             RCC_D2APB2LPENR . . . . . . . . . . . . . . . . . . 466
+Page 3243: RCC_D2APB2RSTR . . . . . . . . . . . . . . . . . . . 418
+Page 3243: RCC_D2CCIP1R . . . . . . . . . . . . . . . . . . . . . . 389
+Page 3243: RCC_D2CCIP2R . . . . . . . . . . . . . . . . . . . . . . 392
+Page 3243: purpose . . . . . . . . . . . . . . . . . . . . . . . . . . . .1746   RCC_D2CFGR . . . . . . . . . . . . . . . . . . . . . . . 372
+Page 3243: PWR_CSR . . . . . . . . . . . . . . . . . . . 287, 291-292            RCC_D3AHB1ENR . . . . . . . . . . . . . . . . . . . . 434
+Page 3243: RCC_D3AHB1LPENR . . . . . . . . . . . . . . . . . . 456
+Page 3243: Q                                                                     RCC_D3AHB1RSTR . . . . . . . . . . . . . . . . . . . 411
+Page 3243: RCC_D3AMR . . . . . . . . . . . . . . . . . . . . . . . . 423
+Page 3243: QUADSPI _PIR . . . . . . . . . . . . . . . . . . . . . . .887         RCC_D3APB1ENR . . . . . . . . . . . . . . . . . . . . 447
+Page 3243: QUADSPI _PSMAR . . . . . . . . . . . . . . . . . . . .886             RCC_D3APB1LPENR . . . . . . . . . . . . . . . . . . 469
+Page 3243: QUADSPI _PSMKR . . . . . . . . . . . . . . . . . . . .886             RCC_D3APB1RSTR . . . . . . . . . . . . . . . . . . . 420
+Page 3243: QUADSPI_ABR . . . . . . . . . . . . . . . . . . . . . . .885          RCC_D3CCIPR . . . . . . . . . . . . . . . . . . . . . . . 394
+Page 3243: QUADSPI_AR . . . . . . . . . . . . . . . . . . . . . . . .884         RCC_D3CFGR . . . . . . . . . . . . . . . . . . . . . . . 373
+Page 3243: QUADSPI_CCR . . . . . . . . . . . . . . . . . . . . . . .882          RCC_GCR . . . . . . . . . . . . . . . . . . . . . . . . . . . 422
+Page 3243: QUADSPI_CR . . . . . . . . . . . . . . . . . . . . . . . .876         RCC_HSICFGR . . . . . . . . . . . . . . . . . . . . . . 365
+Page 3243: QUADSPI_DCR . . . . . . . . . . . . . . . . . . . . . . .879          RCC_PLL1DIVR . . . . . . . . . . . . . . . . . . . . . . 379
+Page 3243: QUADSPI_DLR . . . . . . . . . . . . . . . . . . . . . . .881          RCC_PLL1FRACR . . . . . . . . . . . . . . . . . . . . 381
+Page 3243: QUADSPI_DR . . . . . . . . . . . . . . . . . . . . . . . .885         RCC_PLL2DIVR . . . . . . . . . . . . . . . . . . . . . . 382
+Page 3243: QUADSPI_FCR . . . . . . . . . . . . . . . . . . . . . . .881          RCC_PLL2FRACR . . . . . . . . . . . . . . . . . . . . 384
+Page 3243: QUADSPI_LPTR . . . . . . . . . . . . . . . . . . . . . .887           RCC_PLL3DIVR . . . . . . . . . . . . . . . . . . . . . . 385
+Page 3243: QUADSPI_SR . . . . . . . . . . . . . . . . . . . . . . . .880         RCC_PLL3FRACR . . . . . . . . . . . . . . . . . . . . 387
+Page 3243: RCC_PLLCFGR . . . . . . . . . . . . . . . . . . . . . . 376
+Page 3243: R                                                                     RCC_PLLCKSELR . . . . . . . . . . . . . . . . . . . . 374
+Page 3243: RCC_RSR . . . . . . . . . . . . . . . . . . . . . . . . . . . 426
+Page 3243: RCC_BDCR . . . . . . . . . . . . . . . . . . . . . . . . . .403
+Page 3243: RCC_CFGR) . . . . . . . . . . . . . . . . . . . . . . . . .367
+Page 3243: RCC_CICR . . . . . . . . . . . . . . . . . . . . . . . . . . .401
+Page 3243: RCC_CIER . . . . . . . . . . . . . . . . . . . . . . . . . . .397
+Page 3243: RCC_CIFR . . . . . . . . . . . . . . . . . . . . . . . . . . .399
+Page 3243: RCC_CR . . . . . . . . . . . . . . . . . . . . . . . . . . . .361
+Page 3243: RCC_CRRCR . . . . . . . . . . . . . . . . . . . . . . . .366
+Page 3243: RCC_CSR . . . . . . . . . . . . . . . . . . . . . . . . . . .405
+Page 3243: RCC_D1AHB1ENR . . . . . . . . . . . . . . . . . . . .428
+Page 3243: RCC_D1AHB1LPENR . . . . . . . . . . . . . . . . . .450
+Page 3243: RCC_D1AHB1RSTR . . . . . . . . . . . . . . . . . . .406
+Page 3243: RCC_D1APB1ENR . . . . . . . . . . . . . . . . . . . .437
+Page 3243: RCC_D1APB1LPENR . . . . . . . . . . . . . . 459-460
+Page 3243: RCC_D1APB1RSTR . . . . . . . . . . . . . . . . . . .413
+Page 3243: RCC_D1CCIPR . . . . . . . . . . . . . . . . . . . . . . .388
+Page 3243: RCC_D1CFGR . . . . . . . . . . . . . . . . . . . . . . . .370
+Page 3243: RCC_D2AHB1ENR . . . . . . . . . . . . . . . . . . . .430
+Page 3243: RCC_D2AHB1LPENR . . . . . . . . . . . . . . . . . .452
+Page 3243: RCC_D2AHB1RSTR . . . . . . . . . . . . . . . . . . .408
+Page 3243: RCC_D2AHB2ENR . . . . . . . . . . . . . . . . . . . .432
+Page 3243: RCC_D2AHB2LPENR . . . . . . . . . . . . . . . . . .454
+Page 3243: RCC_D2AHB2RSTR . . . . . . . . . . . . . . . . . . .410
+Page 3243: RCC_D2APB1HENR . . . . . . . . . . . . . . . . . . .442
+Page 3243: RCC_D2APB1HLPENR . . . . . . . . . . . . . . . . .464
+Page 3243: RCC_D2APB1HRSTR . . . . . . . . . . . . . . . . . .417
+Page 3243: RCC_D2APB1LENR . . . . . . . . . . . . . . . . . . .438
+Page 3243: RCC_D2APB1LRSTR . . . . . . . . . . . . . . . . . .414

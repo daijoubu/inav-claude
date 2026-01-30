@@ -1,0 +1,299 @@
+Keyword: HSE
+Occurrences: 295
+================================================================================
+
+Page 34: external clock source (HSE) is required for DFU/CAN operations, the detection of the HSE
+Page 35: the bootloader can calculate a wrong HSE frequency value. In this case, the bootloader
+Page 85: HSI enabled     MHz using the HSI. If an external clock (HSE) is not
+Page 85: HSE enabled
+Page 85: The CSS interrupt is enabled for HSE. Any failure (or
+Page 86: (HSE) at bootloader startup:
+Page 86: •   If HSE is present and has a value of 24, 18, 16, 12, 8, 6, or 4 MHz, the system clock is
+Page 86: configured to 48 MHz with HSE as clock source. The DFU interface, USART1,
+Page 86: •   If HSE is not present, the HSI is kept as default clock source and only USART1,
+Page 86: The external clock (HSE) must be kept if it is connected at bootloader startup, because it is
+Page 87: HSE= 24, 18, 16,                             no
+Page 87: 48 MHz using HSE
+Page 89: HSI enabled     MHz using the HSI. If an external clock (HSE) is not
+Page 89: RCC                   HSE enabled
+Page 89: -       HSE. Any failure (or removal) of the external clock
+Page 90: (HSE) at bootloader startup:
+Page 90: •    If HSE is present and has a value of 24, 18, 16, 12, 8, 6, or 4 MHz, the system clock is
+Page 90: configured to 48 MHz with HSE as clock source. The DFU interface, USART1,
+Page 90: •    If HSE is not present, the HSI is kept as default clock source and only USART1,
+Page 90: The external clock (HSE) must be kept if it is connected at bootloader startup, because it is
+Page 91: HSE= 24, 18, 16, 12, 8,                        no
+Page 91: 48 MHz using HSE
+Page 102: HSE enabled          For CAN bootloader, the PLL is used only to generate
+Page 102: 48 MHz when 14.7456 MHz is used as HSE.
+Page 104: interrupt sources                  HSE= 8MHz,
+Page 104: HSE= 8MHz,                                                        Execute DFU
+Page 113: RCC                              The HSE clock source is used only when the CAN or the
+Page 113: HSE enabled DFU (USB FS device) interfaces are selected.
+Page 114: This timer is used to determine the value of the HSE. Once
+Page 114: TIM11                 Enabled        the HSE frequency is determined, the system clock is
+Page 114: configured to 60 MHz using PLL and HSE.
+Page 115: Frame detected                                                            HSE detected
+Page 115: no              no                        HSE detected               no                Disable all
+Page 117: RCC                  HSE enabled       24,18,16,12,9,8,6,4,3 MHz.
+Page 118: clock (HSE) at bootloader startup:
+Page 118: •    If HSE is present and has a value of 24, 18, 16, 12, 9, 8, 6, 4, or 3 MHz, the system
+Page 118: clock is configured to 48 MHz with HSE as clock source. The DFU interface, USART1
+Page 118: •    If HSE is not present, the HSI is kept as default clock source, and only USART1 and
+Page 118: The external clock (HSE) must be kept if it is connected at bootloader startup, because it is
+Page 119: HSE= 24,
+Page 119: 48 MHz using HSE
+Page 121: HSI enabled        MHz using the HSI. If an external clock (HSE) is not
+Page 121: HSE enabled        18,16, 12, 9, 8, 6, 4, 3 MHz.
+Page 122: (HSE) at bootloader startup:
+Page 122: •    If HSE is present and has a value of 24, 18, 16, 12, 9, 8, 6, 4 or 3 MHz, the system
+Page 122: clock is configured to 48 MHz with HSE as clock source. The DFU interface, USART1
+Page 122: •    If HSE is not present, the HSI is kept as default clock source, and only USART1 and
+Page 122: The external clock (HSE) must be kept if it is connected at bootloader startup, because it is
+Page 123: HSE = 24, 18, 16, 12, 9,
+Page 123: to 48MHz using HSE
+Page 124: RCC                  HSE enabled 16, 12, 9, 8, 6, 4, 3 MHz.
+Page 125: (HSE) at bootloader startup:
+Page 125: •   If HSE is present and has a value of 24, 18, 16, 12, 9, 8, 6, 4 or 3 MHz, the system
+Page 125: clock is configured to 48 MHz with HSE as clock source. The DFU interface, USART1
+Page 125: •   If HSE is not present, the HSI is kept as default clock source, and only USART1 and
+Page 125: The external clock (HSE) must be kept if it is connected at bootloader startup, because it is
+Page 126: HSE = 24, 18, 16,
+Page 126: 48 MHz using HSE
+Page 135: HSI enabled     48 MHz using the HSI. If an external clock (HSE) is not
+Page 135: HSE enabled 6, 4, 3 MHz.
+Page 136: There are two operation modes, depending upon the presence of the external clock (HSE)
+Page 136: •    If HSE is present and has a value of 24, 18, 16, 12, 9, 8, 6, 4, or 3 MHz, the system
+Page 136: clock is configured to 48 MHz with HSE as clock source. The DFU interface, USART1
+Page 136: •    If HSE is not present, the HSI is kept as default clock source, and only USART1 and
+Page 136: Note:        The external clock (HSE) must be kept if it is connected at bootloader startup, because it is
+Page 137: HSE = 24,
+Page 137: to 48MHz using HSE
+Page 144: RCC                                   The HSE clock source is used only when the CAN or
+Page 144: HSE enabled      the DFU (USB FS device) interfaces are selected.
+Page 145: This timer is used to determine the value of the HSE.
+Page 145: TIM11                Enabled          Once the HSE frequency is determined, the system
+Page 145: clock is configured to 60 MHz using PLL and HSE.
+Page 145: Note:         Due to HSI deviation and since HSI is used to detect HSE value, use low rather than high
+Page 145: frequency HSE crystals (low frequency values are better detected due to larger error
+Page 146: Frame detected                                                            HSE detected
+Page 146: no              no                        HSE detected               no                Disable all
+Page 148: RCC                              The HSE clock source is used only when the CAN or the
+Page 148: HSE enabled DFU (USB FS device) interfaces are selected.
+Page 150: This timer is used to determine the value of the HSE. Once
+Page 150: TIM11                 Enabled         the HSE frequency is determined, the system clock is
+Page 150: configured to 60 MHz using PLL and HSE.
+Page 150: Note:         Due to HSI deviation and since HSI is used to detect HSE value, use low rather than high
+Page 150: frequency HSE crystal values (low frequency values are better detected due to larger error
+Page 151: on CANx                                                                      no           HSE detected
+Page 151: no                                             HSE detected          no
+Page 153: RCC                               The HSE clock source is used only when the DFU (USB FS
+Page 153: HSE enabled device) interface is selected. The external clock must
+Page 155: This timer is used to determine the value of the HSE. Once
+Page 155: TIM11                 Enabled        the HSE frequency is determined, the system clock is
+Page 155: configured to 60 MHz using PLL and HSE.
+Page 156: Note:          Due to HSI deviation and since HSI is used to detect HSE value, use low rather than high
+Page 156: frequency HSE crystal values (low frequency values are better detected due to larger error
+Page 156: USB cable                                                HSE detected          no
+Page 158: The HSE clock source is used only when the DFU (USB
+Page 158: HSE enabled FS device) interface is selected.
+Page 160: This timer is used to determine the value of the HSE. Once
+Page 160: TIM11                 Enabled        the HSE frequency is determined, the system clock is
+Page 160: configured to 60 MHz using PLL and HSE.
+Page 160: Note:         Due to HSI deviation and since HSI is used to detect HSE value, use low rather than high
+Page 160: frequency HSE crystal values (low frequency values are better detected due to larger error
+Page 161: USB cable                                                HSE detected          no
+Page 168: The HSE clock source is used only when the DFU (USB FS
+Page 168: HSE enabled device) interface is selected.
+Page 170: This timer is used to determine the value of the HSE. Once the
+Page 170: TIM11               Enabled         HSE frequency is determined, the system clock is configured to
+Page 170: 60 MHz using PLL and HSE.
+Page 170: Note:        Due to HSI deviation and since HSI is used to detect HSE value, use low rather than high
+Page 170: frequency HSE crystal values (low frequency values are better detected due to larger error
+Page 171: USB cable                                                HSE detected          no
+Page 173: The HSE is used only when the CAN or the DFU (USB FS
+Page 173: RCC                  HSE enabled is configured to 60 MHz with HSE as clock source. The HSE
+Page 176: This timer is used to determine the value of the HSE. Once
+Page 176: TIM11                Enabled        HSE frequency is determined, the system clock is configured
+Page 176: to 60 MHz using PLL and HSE.
+Page 176: Note:         Due to HSI deviation and since HSI is used to detect HSE value, use low rather than high
+Page 176: frequency HSE crystal values (low frequency values are better detected due to larger error
+Page 177: HSE detected                 no      no           HSE detected
+Page 179: The HSE is used only when the CAN or the DFU (USB FS
+Page 179: RCC                   HSE enabled clock configured to 60 MHz with HSE as clock source.
+Page 179: The HSE frequency must be multiple of 1 MHz and
+Page 182: This timer is used to determine the value of the HSE.
+Page 182: TIM11                 Enabled        Once HSE frequency is determined, the system clock is
+Page 182: configured to 60 MHz using PLL and HSE.
+Page 182: Note:         Due to HSI deviation and since HSI is used to detect HSE value, use low rather than high
+Page 182: frequency HSE crystal values (low frequency values are better detected due to larger error
+Page 183: HSE detected                no      no         HSE detected
+Page 185: RCC                                    The HSE clock source is used only when the
+Page 185: HSE enabled      are selected.
+Page 187: HSE. Once the HSE frequency is determined,
+Page 187: PLL and HSE.
+Page 187: Note:         Due to HSI deviation and since HSI is used to detect HSE value, use low rather than high
+Page 187: frequency HSE crystal values (low frequency values are better detected due to larger error
+Page 189: HSE detected
+Page 189: no             on CANx                         HSE detected           no                   Disable all
+Page 191: The HSE clock source is used only when the CAN or
+Page 191: HSE enabled the DFU (USB FS device) interfaces are selected.
+Page 193: This timer is used to determine the value of the HSE.
+Page 193: CAN2 and DFUs     TIM11                 Enabled        Once the HSE frequency is determined, the system
+Page 193: clock is configured to 60 MHz using PLL and HSE.
+Page 194: Note:     Due to HSI deviation and since HSI is used to detect HSE value, use low rather than high
+Page 194: frequency HSE crystal values (low frequency values are better detected due to larger error
+Page 196: no                                                                              HSE detected
+Page 196: HSE detected
+Page 198: The HSE is used only when the CAN or the
+Page 198: HSE enabled         configured to 60 MHz with HSE as clock
+Page 198: The HSE frequency must be multiple of
+Page 201: the HSE. Once the HSE frequency is
+Page 201: configured to 60 MHz using PLL and HSE.
+Page 201: Note:         Due to HSI deviation and since HSI is used to detect HSE value, use low rather than high
+Page 201: frequency HSE crystal values (low frequency values are better detected due to larger error
+Page 202: HSE detected
+Page 202: on CANx                        HSE detected                no                          Disable all
+Page 204: The HSE clock source is used only when
+Page 204: HSE enabled        interfaces are selected.
+Page 207: Note:         Due to HSI deviation and since HSI is used to detect HSE value, use low rather than high
+Page 207: frequency HSE crystal values (low frequency values are better detected due to larger error
+Page 209: no       HSE detected
+Page 209: Synchro mechanism                            HSE detected          no
+Page 211: The HSE is used only when the CAN
+Page 211: RCC                    HSE enabled              clock configured to 60 MHz with HSE
+Page 211: The HSE frequency must be a multiple
+Page 214: value of the HSE. Once HSE
+Page 214: PLL and HSE.
+Page 214: Note:         Due to HSI deviation and since HSI is used to detect HSE value, use low rather than high
+Page 214: frequency HSE crystal values (low frequency values are better detected due to larger error
+Page 217: The HSE is used only when the CAN or the DFU (USB FS
+Page 217: RCC                  HSE enabled    clock configured to 60 MHz with HSE as clock source.
+Page 217: The HSE frequency must be multiple of 1 MHz and
+Page 219: This timer is used to determine the value of the HSE.
+Page 219: TIM11                 Enabled        Once HSE frequency is determined, the system clock is
+Page 219: configured to 60 MHz using PLL and HSE.
+Page 219: Note:         Due to HSI deviation and since HSI is used to detect HSE value, use low rather than high
+Page 219: frequency HSE crystal values (low frequency values are better detected due to larger error
+Page 220: Detected                                HSE detected              no      no                 HSE detected
+Page 221: The HSE is used only when the CAN or the DFU (USB FS
+Page 221: HSE enabled clock configured to 60 MHz with HSE as clock source.
+Page 221: RCC                              The HSE frequency must be multiple of 1 MHz and
+Page 224: This timer is used to determine the value of the HSE.
+Page 224: TIM11                 Enabled        Once HSE frequency is determined, the system clock is
+Page 224: configured to 60 MHz using PLL and HSE.
+Page 224: Note:         Due to HSI deviation and since HSI is used to detect HSE value, use low rather than high
+Page 224: frequency HSE crystal values (low frequency values are better detected due to larger error
+Page 225: HSE detected                no      no         HSE detected
+Page 227: The HSE is used only when the CAN or the DFU (USB FS
+Page 227: HSE
+Page 227: RCC                               configured to 60 MHz with HSE as clock source.
+Page 227: The HSE frequency must be a multiple of 1 MHz, ranging from
+Page 230: This timer is used to determine the value of the HSE. Once
+Page 230: TIM11                Enabled      HSE frequency is determined, the system clock is configured to
+Page 230: 60 MHz using PLL and HSE.
+Page 230: Note:         Due to HSI deviation and since HSI is used to detect HSE value, use low rather than high
+Page 230: frequency HSE crystal values (low frequency values are better detected due to larger error
+Page 232: Detected                                HSE detected            no   no          HSE detected
+Page 243: HSI enabled   clocked by HSI). If an external clock (HSE) is not
+Page 243: HSE enabled
+Page 246: HSE= 48, 32, 16,                          no
+Page 246: 60 MHz using HSE                  System Init (Clock, GPIOs,
+Page 303: – Switch USB clock input from HSE to HSI48
+Page 319: set to 1: PLL1ON, PLL2ON, PLL1QEN, PLL2REN, HSEON, HSION, CSION, FMCEN,
+Page 319: set to 1: PLL2ON, PLL2SEN, PLL2TEN, HSEON, HSION, CSION, XSPIxEN, XSPIxLPEN,
+Page 343: HSE enabled
+Page 345: HSE = 24, 16, 12, 8,
+Page 347: HSE enabled
+Page 349: Detected                                                     HSE detected         no
+Page 351: HSE enabled
+Page 353: System Init (Clock, GPIOs,                                             HSE                  Generate
+Page 361: RCC                                   The HSE is used only when the CAN interface is
+Page 361: HSE enabled     selected. The HSE must have one of the following
+Page 361: The CSS interrupt is enabled when HSE is enabled. Any
+Page 363: This timer is used to determine the value of the HSE.
+Page 363: TIM16                Enabled         Once the HSE frequency is determined, the system
+Page 363: clock is configured to 60 MHz using PLL and HSE.
+Page 366: HSE detected               no
+Page 369: HSE enabled The HSE is used only when the CAN interface is selected.
+Page 369: The HSE must have one of the following values
+Page 369: The CSS interrupt is enabled when HSE is enabled. Any
+Page 371: This timer is used to determine the value of the HSE. Once
+Page 371: TIM16                Enabled         the HSE frequency is determined, the system clock is
+Page 371: configured to 60 MHz using PLL and HSE.
+Page 374: Detected                                                              HSE detected                no
+Page 376: The HSE is used only when the USB interface is selected and
+Page 376: HSE enabled the LSE is not present. The HSE must have one of the
+Page 376: 32.768 kHz. If the LSE is not detected, the HSE is used
+Page 376: HSE is used if USB is connected.
+Page 376: Common to all                                        The CSS interrupt is enabled when LSE or HSE is enabled.
+Page 378: This timer is used to determine the value of the HSE. Once
+Page 378: TIM17                Enabled        the HSE frequency is determined, the system clock is
+Page 378: configured to 24 MHz using PLL and HSE.
+Page 378: USB bootloader (DFU) requires either an LSE (low-speed external clock) or a HSE (high-
+Page 378: •     If the LSE is present regardless of the HSE presence, the MSI is configured and
+Page 378: •     If the HSE is present, the system clock and USB clock are configured, respectively, to
+Page 378: 24 MHz and 48 MHz with HSE as clock source.
+Page 380: yes                                                                         HSE detected             no
+Page 380: to 48 MHz with HSE
+Page 382: The HSE is used only when the USB interface is selected
+Page 382: and the LSE is not present. The HSE must have one of the
+Page 382: HSE enabled following values: 24, 20, 18, 16, 12, 8, 6, 4 MHz.
+Page 382: 32.768 kHz. If the LSE is not detected, the HSE is used
+Page 382: HSE is used if USB is connected.
+Page 382: The CSS interrupt is enabled when LSE or HSE is enabled.
+Page 385: If the HSE is present, the system clock and USB clock are configured, respectively, to 72
+Page 385: and 48 MHz with PLL (clocked by HSE) as a clock source.
+Page 386: HSE detected            no              no         HSE detected
+Page 388: RCC                              The HSE is used only when the CAN interface is selected.
+Page 388: HSE enabled The HSE must have one of the following values:
+Page 388: The CSS interrupt is enabled when HSE is enabled. Any
+Page 390: This timer is used to determine the value of the HSE. Once
+Page 390: TIM16                Enabled       the HSE frequency is determined, the system clock is
+Page 390: configured to 60 MHz using PLL and HSE.
+Page 393: yes                                         HSE detected               no
+Page 395: RCC                              The HSE is used only when the CAN interface is selected.
+Page 395: HSE enabled The HSE must have one of the following values 24, 20, 18,
+Page 395: The CSS interrupt is enabled when HSE is enabled. Any
+Page 400: HSE detected         no
+Page 402: RCC                                    The HSE is used only when the CAN interface is selected.
+Page 402: HSE enabled      The HSE must have one of the following values: 24, 20, 18,
+Page 402: The CSS interrupt is enabled when HSE is enabled. Any
+Page 404: This timer is used to determine the value of the HSE. Once
+Page 404: TIM16                Enabled         the HSE frequency is determined, the system clock is
+Page 404: configured to 60 MHz using PLL and HSE.
+Page 407: HSE detected         no
+Page 428: HSE enabled
+Page 428: HSE must be 32 MHz to have the USB working.
+Page 431: clocks using HSE
+Page 472: HSE enabled
+Page 476: using HSE
+Page 477: HSE enabled
+Page 481: using HSE
+Page 489: Device                            Minimum startup     HSE timeout
+Page 490: Device                            Minimum startup   HSE timeout
+Page 490: HSE connected             3
+Page 490: HSE not connected        230
+Page 490: HSE connected             6
+Page 490: HSE not connected        230
+Page 490: HSE connected             45
+Page 490: HSE not connected        560.8
+Page 490: HSE connected            43.4
+Page 490: HSE not connected        2.36
+Page 490: HSE connected            7.53             NA
+Page 490: HSE not connected       146.71            NA
+Page 490: HSE connected            43.4
+Page 490: HSE not connected        2.36
+Page 491: Device                            Minimum startup    HSE timeout
+Page 492: Device                                          Minimum startup             HSE timeout
+Page 493: HSE connected
+Page 493: HSE not connected
+Page 493: HSE connected
+Page 493: HSE not connected
+Page 494: HSE connected
+Page 494: HSE not connected
+Page 496: Note:      For STM32F105xx/107xx devices, if the external HSE crystal frequency is different from
+Page 496: is due to the HSE detection mechanism based on Start Of Frame (SOF) detection.
+Page 496: HSE = 25 MHz                                              460
+Page 496: STM32F105xx/107xx                HSE = 14.7465 MHz                                        4500
+Page 496: HSE = 8 MHz                                              13700

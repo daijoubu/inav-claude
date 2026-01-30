@@ -1,0 +1,94 @@
+Keyword: NVIC
+Occurrences: 90
+================================================================================
+
+Page   18: 18.1   NVIC features . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 729
+Page   26: 27.5.2      Interrupt through NVIC of the CPU . . . . . . . . . . . . . . . . . . . . . . . . . . 1069
+Page   70: Table 138.   NVIC . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 730
+Page  181: only interrupt signal from the embedded Flash memory that drives the NVIC (nested
+Page  274: peripheral interrupt acknowledged by the NVIC can wake up the system.
+Page  274: –    An NVIC IRQ interrupt.
+Page  274: must be enabled in the peripheral control register and in the NVIC.
+Page  274: NVIC peripheral IRQ channel pending bit in the NVIC interrupt clear pending
+Page  274: register have to be cleared. Only NVIC interrupts with sufficient priority will wakeup
+Page  274: must be enabled in the peripheral control register and optionally in the NVIC.
+Page  274: enabled, the NVIC peripheral IRQ channel pending bit (in the NVIC interrupt clear
+Page  274: All NVIC interrupts will wakeup the MCU, even the disabled ones.
+Page  274: Only enabled NVIC interrupts with sufficient priority will wakeup and interrupt the
+Page  274: NVIC IRQ channel pending bit as the pending bits corresponding to the event line
+Page  275: – CPU NVIC interrupts and events cleared.
+Page  275: – CPU NVIC interrupts and events cleared.
+Page  275: – Any Interrupt enabled in NVIC: Refer to Table 138: NVIC
+Page  275: – Any Interrupt even when disabled in NVIC: refer to Table 138: NVIC or
+Page  276: – CPU NVIC interrupts and events cleared.
+Page  276: – CPU NVIC interrupts and events cleared.
+Page  276: – EXTI Interrupt enabled in NVIC: Refer to Table 138: NVIC, for peripheral
+Page  276: – EXTI Interrupt even when disabled in NVIC: refer to Table 138: NVIC or
+Page  295: NVIC
+Page  296: All the interrupts associated to system peripherals are directly connected to the NVIC,
+Page  296: connected to the NVIC via the EXTI.
+Page  302: An interrupt issued by LPTIM4 is pending on the CPU NVIC. LPTIM4 interrupt handler must
+Page  303: and NVIC.
+Page  304: NVIC init
+Page  570: the NVIC of CPU. They are referred to as xxx_it.
+Page  573: 2. The source peripheral signal is not connected to the NVIC.
+Page  595: interrupt if the respective interrupt channel is enabled in the NVIC.
+Page  617: To NVIC
+Page  729: 18.1     NVIC features
+Page  729: The NVIC includes the following features:
+Page  729: The NVIC and the processor core interface are closely coupled, which enables low latency
+Page  729: All interrupts, including the core exceptions, are managed by the NVIC.
+Page  729: For more information on exceptions and NVIC programming, refer to PM0253 programming
+Page  730: The exception vectors connected to the NVIC are the following: reset, NMI, HardFault,
+Page  730: Table 138. NVIC(1)
+Page  730: NVIC
+Page  731: Table 138. NVIC(1) (continued)
+Page  731: NVIC
+Page  732: Table 138. NVIC(1) (continued)
+Page  732: NVIC
+Page  733: Table 138. NVIC(1) (continued)
+Page  733: NVIC
+Page  734: Table 138. NVIC(1) (continued)
+Page  734: NVIC
+Page  735: Table 138. NVIC(1) (continued)
+Page  735: NVIC
+Page  736: Table 138. NVIC(1) (continued)
+Page  736: NVIC
+Page  737: Table 138. NVIC(1) (continued)
+Page  737: NVIC
+Page  737: 1. When different signals are connected to the same NVIC interrupt line, they are OR-ed.
+Page  738: interrupt requests to the CPU NVIC and to the D3 domain DMAMUX2, and events to the
+Page  739: nvic(n)
+Page  739: The CPU interrupts are connected to their respective CPU NVIC, and, similarly, the CPU
+Page  741: interrupt. Each event provides a individual CPU interrupt to the CPU NVIC. The
+Page  746: The EXTI Event inputs with a connection to the CPU NVIC are indicated in the Connection
+Page  746: to NVIC column. For the EXTI events not having a connection to the NVIC, the peripheral
+Page  746: interrupt is directly connected to the NVIC in parallel with the connection to the EXTI.
+Page  747: Event input                 Source             Event input type   Wakeup target(s)   Connection to NVIC
+Page  748: Event input                    Source         Event input type   Wakeup target(s)   Connection to NVIC
+Page  749: Event input                   Source                     Event input type       Wakeup target(s)      Connection to NVIC
+Page  749: 3. Not available on CPU NVIC, to be used for system wakeup only or CPU event input (rxev).
+Page  749: 5. Available on CPU NVIC directly from the peripheral
+Page  750: •    Enable the associated interrupt source in the CPU NVIC or use the SEVONPEND, so
+Page  778: fmc_it to NVIC
+Page 1064: The interrupt line, connected to the NVIC of CPU, requires the APB clock (comp_pclk) to
+Page 1068: The comparators also provide an interrupt line to the NVIC of CPU. This functionality is used
+Page 1068: 2.     Configure and enable the NVIC IRQ channel mapped to the corresponding EXTI lines.
+Page 1069: 27.5.2        Interrupt through NVIC of the CPU
+Page 1069: Sequence to enable the COMPx interrupt through NVIC of the CPU:
+Page 1069: 1.   Configure and enable the NVIC IRQ channel mapped to the comp_it line.
+Page 1191: Those interrupts events are connected to the NVIC controller as described in Figure 244.
+Page 1295: signal from the CRYP peripheral that drives the NVIC (nested vectored interrupt controller).
+Page 1907: 2.   Configure and enable the RTC_ALARM IRQ channel in the NVIC.
+Page 1908: 2.   Configure and Enable the RTC_TAMP_STAMP IRQ channel in the NVIC.
+Page 1908: 2.   Configure and Enable the RTC_TAMP_STAMP IRQ channel in the NVIC.
+Page 1908: 2.   Configure and Enable the RTC_WKUP IRQ channel in the NVIC.
+Page 2324: All SWPMI interrupts are connected to the NVIC.
+Page 2324: 1.   Configure and enable the SWPMI interrupt channel in the NVIC
+Page 2567: CPU                                                                        Interrupt: EP1 in                      NVIC
+Page 2567: CPU                                                                      Interrupt: EP1 in                        NVIC
+Page 3041: 1          nIRQ1                   Cortex-M7 NVIC        Interrupt request
+Page 3041: 2          nIRQ2                   Cortex-M7 NVIC        Interrupt request
+Page 3217: NVIC.
+Page 3223: Changed usart4_gbl_it into uart4_gbl_it in Table 130: NVIC.
+Page 3228: Updated Table 138: NVIC and Section 18.1.1: SysTick calibration

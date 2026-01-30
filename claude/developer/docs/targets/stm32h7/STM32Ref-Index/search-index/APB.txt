@@ -1,0 +1,682 @@
+Keyword: APB
+Occurrences: 678
+================================================================================
+
+Page    9: 7.7.30     RCC APB3 Peripheral Reset Register (RCC_APB3RSTR) . . . . . . . . . 413
+Page    9: 7.7.31     RCC APB1 Peripheral Reset Register (RCC_APB1LRSTR) . . . . . . . . 414
+Page    9: 7.7.32     RCC APB1 Peripheral Reset Register (RCC_APB1HRSTR) . . . . . . . 417
+Page    9: 7.7.33     RCC APB2 Peripheral Reset Register (RCC_APB2RSTR) . . . . . . . . . 418
+Page    9: 7.7.34     RCC APB4 Peripheral Reset Register (RCC_APB4RSTR) . . . . . . . . . 420
+Page    9: 7.7.42     RCC APB3 Clock Register (RCC_APB3ENR) . . . . . . . . . . . . . . . . . . . 437
+Page    9: 7.7.43     RCC APB1 Clock Register (RCC_APB1LENR) . . . . . . . . . . . . . . . . . . 438
+Page    9: 7.7.44     RCC APB1 Clock Register (RCC_APB1HENR) . . . . . . . . . . . . . . . . . 442
+Page    9: 7.7.45     RCC APB2 Clock Register (RCC_APB2ENR) . . . . . . . . . . . . . . . . . . . 444
+Page    9: 7.7.46     RCC APB4 Clock Register (RCC_APB4ENR) . . . . . . . . . . . . . . . . . . . 447
+Page    9: 7.7.51     RCC APB3 Sleep Clock Register (RCC_APB3LPENR) . . . . . . . . . . . 459
+Page    9: 7.7.52     RCC APB1 Low Sleep Clock Register (RCC_APB1LLPENR) . . . . . . 460
+Page    9: 7.7.53     RCC APB1 High Sleep Clock Register (RCC_APB1HLPENR) . . . . . . 464
+Page    9: 7.7.54     RCC APB2 Sleep Clock Register (RCC_APB2LPENR) . . . . . . . . . . . 466
+Page    9: 7.7.55     RCC APB4 Sleep Clock Register (RCC_APB4LPENR) . . . . . . . . . . . 469
+Page   56: 53.3.6      MDIOS APB frequency . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2339
+Page   69: Table 65.    RCC_APB3ENR address offset and reset value . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 437
+Page   69: Table 66.    RCC_APB1ENR address offset and reset value . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 438
+Page   69: Table 67.    RCC_APB1ENR address offset and reset value . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 442
+Page   69: Table 68.    RCC_APB2ENR address offset and reset value . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 444
+Page   69: Table 69.    RCC_APB4ENR address offset and reset value . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 447
+Page   69: Table 74.    RCC_APB3LPENR address offset and reset value . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 459
+Page   69: Table 75.    RCC_APB1LLPENR address offset and reset value . . . . . . . . . . . . . . . . . . . . . . . . . . . . 460
+Page   69: Table 76.    RCC_APB1HLPENR address offset and reset value . . . . . . . . . . . . . . . . . . . . . . . . . . . . 464
+Page   69: Table 77.    RCC_APB2LPENR address offset and reset value . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 466
+Page   69: Table 78.    RCC_APB4LPENR address offset and reset value . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 469
+Page   96: Figure 821. APB-D CoreSight component topology . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3025
+Page   98: •      APB: advanced peripheral bus.
+Page   99: APB3 peripherals              X                   -                  -                    -           -         X              -            -      -        X             X              X             X               X                X              X             X               -
+Page   99: APB1 peripherals                -                X                   -                    -           -         X              -           X       -        X             X              X             X                -                -              -             -              -
+Page   99: APB2 peripherals                -                X                   -                    -           -         X              -           X       -        X             X              X             X                -                -              -             -              -
+Page   99: APB4 peripherals              X                   -                  -                    -           -         X              -            -      -        X             X              X             X               X                X              X             X              X
+Page  100: APB3
+Page  100: APB
+Page  100: 32-bit bus           AXI  APB
+Page  101: The AHB/APB bridges in D1 and D3 domains allow connecting peripherals on APB3 and
+Page  101: APB4 to AHB3 and AHB4, respectively. The AHB/APB bridges in D2 domain allow
+Page  101: peripherals on APB1 and APB2 to connect to AHB1. These AHB/APB bridges provide full
+Page  101: synchronous interfacing, which allows the APB peripherals to operate with clocks
+Page  101: The AHB/APB bridges also allow APB1 and APB2 peripherals to connect to DMA1 and
+Page  101: The AHB/APB bridges convert 8-bit / 16-bit APB data to 32-bit AHB data, by replicating it to
+Page  102: and DTCM) and AHB3, AHB4, APB3 and APB4 peripherals (excluding AHB1, APB1 and
+Page  102: APB2 peripherals).
+Page  102: The Cortex®-M7 CPU uses the 32-bit AHBP bus for accessing AHB1, AHB2, APB1 and
+Page  102: APB2 peripherals via the AHB bus matrix in the D2 domain.
+Page  103: memories through the Quad-SPI controller and the FMC, and all AHB and APB peripherals.
+Page  103: A direct access to APB1 and APB2 is available, without passing through AHB1. Direct path
+Page  103: to APB1 and APB2 bridges allows reducing the bandwidth usage on AHB1 bus by improving
+Page  103: data treatment efficiency for APB and AHB peripherals.
+Page  103: access the internal SRAM4, backup RAM, and AHB4 and APB4 peripherals through the
+Page  104: reset, the software must first enable its clock through RCC_AHBxENR or RCC_APBxENR
+Page  127: 0x58003000 - 0x580033FF         LPTIM5             APB4   Section 42.7: LPTIM registers
+Page  127: APB3
+Page  128: 0x40014800 - 0x40014BFF         TIM17           APB2   Section 40.6: TIM16/TIM17 registers
+Page  129: APB1
+Page  261: •   Gating the clocks to the APBx and AHBx peripherals when they are not used, through
+Page  279: If an access to a bus matrix (AXI, AHB or APB) is ongoing, the Stop mode entry is delayed
+Page  295: ApbBridge_dx_busy
+Page  299: LPUART1 can use its own APB clock as kernel clock. Since the system will not enter Stop
+Page  309: Clocks for APB (rcc_apb_ck), AHB (rcc_ahb_ck) and AXI (rcc_axi_ck) bridges
+Page  319: APB or AXI clock depending on which bus the peripheral is connected to. Some
+Page  319: The bus matrix clocks are the clocks provided to the different bridges (APB, AHB or
+Page  331: ÷ 1,2,4,8,16         rcc_pclk3                                     APB3 peripheral clocks
+Page  331: rcc_pclk1                                     APB1 peripheral clocks
+Page  331: rcc_pclk2                                     APB2 peripheral clocks
+Page  331: ÷ 1,2,4,8,16                                                       APB4 peripheral clocks
+Page  331: The frequency of the timers clock depends on the APB prescaler corresponding to the bus
+Page  334: disturbed if its APB clock is changed on-the-fly.
+Page  336: 1. The bus clocks are the bus interface clocks to which the peripherals are connected, it can be APB, AHB or AXI clocks.
+Page  345: The RTC bus interface clock (APB clock) is enabled through RTCAPBEN and
+Page  345: RTCAPBLPEN bits located in RCC_APB4ENR/LPENR registers.
+Page  345: Note:      To read the RTC calendar register when the APB clock frequency is less than seven times
+Page  345: the RTC clock frequency (FAPB < 7 x FRTCLCK), the software must read the calendar time
+Page  345: are connected to the APB clock.
+Page  352: rcc_perx_bus_ck (for peripheral ‘x’). This clock can be an APB, AHB or AXI clock,
+Page  357: The clocks of the CPU, AHB and AXI bridges and APB busses are enabled according to the
+Page  357: –    If the CPU is in CSleep with at least an APB bus having its clock enabled.
+Page  357: •   The APB1,2,3 busses are enabled when:
+Page  357: •   The APB4 bus is enabled when: the D3 domain is in DRun.
+Page  360: RCC_C1_APB4LPENR
+Page  360: RCC_APB4LPENR                             RCC_APB4LPENR
+Page  360: RCC_APB4RSTR                             RCC_APB4RSTR
+Page  368: APB1 and APB2 domains.
+Page  370: slowest APB clock among rcc_pclk[4:1] after D1CPRE update. The application can check if the
+Page  371: Bits 6:4 D1PPRE[2:0]: D1 domain APB3 prescaler
+Page  371: Note: The clocks are divided by the new prescaler factor from1 to 16 periods of the slowest APB
+Page  372: Bits 10:8 D2PPRE2[2:0]: D2 domain APB2 prescaler
+Page  372: Set and reset by software to control D2 domain APB2 clock division factor.
+Page  372: Bits 6:4 D2PPRE1[2:0]: D2 domain APB1 prescaler
+Page  372: Set and reset by software to control D2 domain APB1 clock division factor.
+Page  373: Bits 6:4 D3PPRE[2:0]: D3 domain APB4 prescaler
+Page  373: Set and reset by software to control D3 domain APB4 clock division factor.
+Page  390: 000: APB clock is selected as kernel clock (default after reset)
+Page  393: Bits 2:0 USART234578SEL[2:0]: USART2/3, UART4,5, 7/8 (APB1) kernel clock source selection
+Page  413: 7.7.30            RCC APB3 Peripheral Reset Register (RCC_APB3RSTR)
+Page  414: 7.7.31                    RCC APB1 Peripheral Reset Register (RCC_APB1LRSTR)
+Page  417: 7.7.32            RCC APB1 Peripheral Reset Register (RCC_APB1HRSTR)
+Page  418: 7.7.33          RCC APB2 Peripheral Reset Register (RCC_APB2RSTR)
+Page  420: 7.7.34                    RCC APB4 Peripheral Reset Register (RCC_APB4RSTR)
+Page  437: 7.7.42            RCC APB3 Clock Register (RCC_APB3ENR)
+Page  437: Table 65. RCC_APB3ENR address offset and reset value
+Page  437: RCC_APB3ENR                                 0x0E4
+Page  437: RCC_C1_APB3ENR                                    0x144
+Page  438: 7.7.43                  RCC APB1 Clock Register (RCC_APB1LENR)
+Page  438: Table 66. RCC_APB1ENR address offset and reset value
+Page  438: RCC_APB1LENR                                                  0x0E8
+Page  438: RCC_C1_APB1LENR                                                    0x148
+Page  442: 7.7.44            RCC APB1 Clock Register (RCC_APB1HENR)
+Page  442: Table 67. RCC_APB1ENR address offset and reset value
+Page  442: RCC_APB1HENR                                   0x0EC
+Page  442: RCC_C1_APB1HENR                                     0x14C
+Page  444: 7.7.45          RCC APB2 Clock Register (RCC_APB2ENR)
+Page  444: Table 68. RCC_APB2ENR address offset and reset value
+Page  444: RCC_APB2ENR                                      0x0F0
+Page  444: RCC_C1_APB2ENR                                         0x150
+Page  447: 7.7.46                 RCC APB4 Clock Register (RCC_APB4ENR)
+Page  447: Table 69. RCC_APB4ENR address offset and reset value
+Page  447: RCC_APB4ENR                                             0x0F4
+Page  447: RCC_C1_APB4ENR                                                0x154
+Page  447: RTCAPBEN
+Page  447: Bit 16 RTCAPBEN: RTC APB Clock Enable
+Page  447: 0: The register clock interface of the RTC (APB) is disabled
+Page  447: 1: The register clock interface of the RTC (APB) is enabled (default after reset)
+Page  459: 7.7.51            RCC APB3 Sleep Clock Register (RCC_APB3LPENR)
+Page  459: Table 74. RCC_APB3LPENR address offset and reset value
+Page  459: RCC_APB3LPENR                                    0x10C
+Page  459: RCC_C1_APB3LPENR                                   0x16C
+Page  460: 7.7.52                      RCC APB1 Low Sleep Clock Register (RCC_APB1LLPENR)
+Page  460: Table 75. RCC_APB1LLPENR address offset and reset value
+Page  460: RCC_APB1LLPENR                                                         0x110
+Page  460: RCC_C1_APB1LLPENR                                                        0x170
+Page  464: 7.7.53            RCC APB1 High Sleep Clock Register (RCC_APB1HLPENR)
+Page  464: Table 76. RCC_APB1HLPENR address offset and reset value
+Page  464: RCC_APB1HLPENR                                       0x114
+Page  464: RCC_C1_APB1HLPENR                                      0x174
+Page  466: 7.7.54          RCC APB2 Sleep Clock Register (RCC_APB2LPENR)
+Page  466: Table 77. RCC_APB2LPENR address offset and reset value
+Page  466: RCC_APB2LPENR                                          0x118
+Page  466: RCC_C1_APB2LPENR                                                    0x178
+Page  469: 7.7.55                     RCC APB4 Sleep Clock Register (RCC_APB4LPENR)
+Page  469: Table 78. RCC_APB4LPENR address offset and reset value
+Page  469: RCC_APB4LPENR                                                    0x11C
+Page  469: RCC_C1_APB4LPENR                                                              0x17C
+Page  469: RTCAPBLPEN
+Page  469: Bit 16 RTCAPBLPEN: RTC APB Clock Enable During CSleep Mode
+Page  469: 0: The register clock interface of the RTC (APB) is disabled during CSleep mode
+Page  469: 1: The register clock interface of the RTC (APB) is enabled during CSleep mode (default after reset)
+Page  475: APB4RSTR
+Page  475: APB2RSTR
+Page  475: APB3RSTR
+Page  475: APB1LRSTR
+Page  475: APB1HRSTR
+Page  476: APB3ENR
+Page  477: APB4ENR
+Page  477: APB2ENR
+Page  477: APB1LENR
+Page  477: APB1HENR
+Page  477: Res.                         ETH1TXLPEN                    SDMMC1LPEN                       RTCAPBEN                    TIM15EN                    Res.                             SPDIFRXEN     16
+Page  478: APB4LPENR
+Page  478: APB2LPENR
+Page  478: APB3LPENR
+Page  478: APB1LLPENR
+Page  478: APB1HLPENR
+Page  478: SDMMC1EN                              RTCAPBLPEN                   TIM15LPEN                       Res.                               SPDIFRXLPEN                       Res.                                   Res.       16
+Page  479: APB4ENR
+Page  479: APB2ENR
+Page  479: APB3ENR
+Page  479: APB1LENR
+Page  479: APB1HENR
+Page  479: RTCAPBEN                   TIM15EN                    Res.                             SPDIFRXEN                      Res.                                Res.                     Res.                       ETH1TXEN       16
+Page  480: APB3LPENR
+Page  480: APB1LLPENR
+Page  480: APB1HLPENR
+Page  481: APB4LPENR
+Page  481: APB2LPENR
+Page  481: RTCAPBLPEN                    TIM15LPEN     16
+Page  552: APB1                                                    APB2                                     AHB1                                          APB4
+Page  552: APB1
+Page  552: APB2
+Page  553: APB1                                                    APB2                                     AHB1                          APB4
+Page  553: APB4
+Page  554: APB2
+Page  554: APB1
+Page  554: TIM2      APB1   D2
+Page  554: D3       APB4    COMP2       comp2_out     ETR2                                   I       -
+Page  554: D2       APB2
+Page  554: D3       APB4
+Page  554: APB2     TIM1         TRGO         ITR0                                  S       -
+Page  554: APB1     TIM2         TRGO         ITR1                                  S       -
+Page  554: D2       APB2    TIM15         TRGO         ITR2                                  S       -
+Page  554: APB1     TIM4         TRGO         ITR3                                  S       -
+Page  554: TIM3      APB1   D2
+Page  554: D3       APB4    COMP2       comp2_out     TI1_2                                  I       -
+Page  554: APB2     TIM1         TRGO         ITR0                                  S       -
+Page  554: D2       APB1                                           TIM4      APB1   D2
+Page  554: APB2     TIM8         TRGO         ITR3                                  S       -
+Page  555: APB2
+Page  555: APB1     TIM4         TRGO        ITR3                                  S            -
+Page  555: D2              USB1          SOF         ITR7        TIM5       APB1   D2      S            -
+Page  555: APB2
+Page  555: APB1
+Page  555: APB1                                         TIM12       APB1   D2
+Page  555: USB1          SOF       crs_sync2     CRS        APB1   D2      A            -
+Page  555: USB2          SOF       crs_sync3     CRS        APB1   D2      A            -
+Page  555: D3      AHB4     RCC          lse_ck    crs_sync1     CRS        APB1   D2      A            -
+Page  556: APB2    TIM15        TRGO        ITR0                                  S       -
+Page  556: APB1     TIM3        TRGO        ITR2                                  S       -
+Page  556: D3       APB4
+Page  556: TIM1       APB2   D2
+Page  556: APB4    COMP1       comp1_out   BRK_1                                  B       -
+Page  556: D2       APB2   DFSDM1                    BRK_3                                 B       -
+Page  556: D3       APB4
+Page  556: D2       APB2   DFSDM1                   BRK2_3                                 B       -
+Page  557: APB2     TIM1        TRGO        ITR0                                  S            -
+Page  557: APB1     TIM4        TRGO        ITR2                                  S            -
+Page  557: D3      APB4
+Page  557: TIM8       APB2   D2
+Page  557: APB4    COMP1       comp1_out   BRK_1                                  B            -
+Page  557: D2      APB2   DFSDM1                    BRK_3                                 B            -
+Page  557: D3      APB4
+Page  557: D2      APB2   DFSDM1                   BRK2_3                                 B            -
+Page  558: APB2     TIM1          TRGO          ITR0                                 S       -
+Page  558: APB1     TIM3          TRGO          ITR1                                 S       -
+Page  558: APB2
+Page  558: APB1     TIM3           CH1          TI1_2                                A       -
+Page  558: D3       AHB4     RCC            csi_ck       TI1_5     TIM15       APB2   D2      A       -
+Page  558: D2       APB1     TIM3           CH2          TI2_2                                A       -
+Page  558: D3       APB4
+Page  558: D2       APB2   DFSDM1                        BRK_3                                B       -
+Page  558: APB4    COMP1        comp1_out       BRK_1     TIM16       APB2   D2      B       -
+Page  558: D2       APB2   DFSDM1                        BRK_3                                B       -
+Page  558: D2       APB1   SPDIFRX                       TI1_1                                A       -
+Page  558: D3                                                      TIM17       APB2   D2
+Page  558: APB4
+Page  558: D2       APB2   DFSDM1                        BRK_3                                B       -
+Page  559: D3      APB4    COMP1       comp1_out     hrtim_evt11                               B            -
+Page  559: APB2     TIM1         TRGO        hrtim_evt12                               B            -
+Page  559: D3      APB4    COMP2          OUT        hrtim_evt21                               B            -
+Page  559: APB2     TIM2         TRGO        hrtim_evt22                               B            -
+Page  559: APB2     TIM3         TRGO        hrtim_evt32                               B            -
+Page  559: APB1
+Page  559: APB1    LPTIM1       lptim1_out   hrtim_evt52                               B            -
+Page  559: D3      APB4    COMP1       comp1_out     hrtim_evt61                               I            -
+Page  559: HRTIM       APB2   D2
+Page  559: APB1     TIM6         TRGO        hrtim_evt62                               S            -
+Page  559: D3      APB4    COMP2       comp2_out     hrtim_evt71                               I            -
+Page  559: APB1     TIM7         TRGO        hrtim_evt72                               S            -
+Page  559: APB1     TIM6         TRGO        hrtim_evt82                               S            -
+Page  559: D2      APB1
+Page  559: APB2    TIM15         TRGO        hrtim_evt92                               S            -
+Page  559: APB1     CAN        TTCAN_RTP     hrtim_evt93                               A            -
+Page  559: D3      APB4    LPTIM2       lptim2_out                                             A            -
+Page  559: D2      APB1     CAN        TTCAN_SOC                                               A            -
+Page  560: D3       APB4
+Page  560: APB2
+Page  560: APB1                                                 HRTIM       APB2   D2
+Page  560: APB2
+Page  560: APB1     TIM7          TRGO                                                     S       -
+Page  560: D3       APB4     RTC        rtc_tamp3_evt                    LPTIM1      APB1   D2      A       -
+Page  561: D3      APB4    COMP1        comp1_out                        LPTIM2      APB4   D3      I              -
+Page  561: D3      APB4
+Page  561: LPTIM3      APB4   D3
+Page  561: D2      APB2
+Page  562: D3       APB4
+Page  562: LPTIM4      APB4   D3
+Page  562: D2       APB2
+Page  562: D3       APB4    LPTIM4      lptim4_out                     LPTIM5      APB4   D3      S
+Page  563: APB2     TIM1          TRGO                                                      S            -
+Page  563: APB1     TIM5          TRGO                                                      S            -
+Page  563: TIM8          TRGO                            channel APB1     D2       S            -
+Page  563: APB2
+Page  563: APB1
+Page  563: D3      APB4   SYSCFG           EXTI9                                                    S            -
+Page  564: APB2
+Page  564: APB1
+Page  564: APB2    TIM16         OC1           TRG6                                    S       -
+Page  564: APB1                                            DFSDM1       APB2   D2
+Page  564: APB2
+Page  564: D3       APB4
+Page  564: D2       APB1    LPTIM1      lptim1_out     TRG26                                    A       -
+Page  564: D3       APB4
+Page  564: APB2     TIM1         CC2        adc_ext_trg1                               S       -
+Page  564: APB1     TIM3        TRGO        adc_ext_trg4                               S       -
+Page  564: D3       APB4   SYSCFG        EXTI11      adc_ext_trg6                               A       -
+Page  565: APB2
+Page  565: APB1     TIM4        TRGO        adc_ext_trg12                               S            -
+Page  565: APB2    TIM15        TRGO        adc_ext_trg14    / ADC2                     S            -
+Page  565: APB1     TIM3         CC4        adc_ext_trg15                               S            -
+Page  565: APB2   HRTIM1 hrtim_adc_trg3 adc_ext_trg17                                   A            -
+Page  565: D3      APB4
+Page  565: APB2
+Page  565: APB1
+Page  566: D3       APB4   SYSCFG        EXTI15      adc_jext_trg6                                A       -
+Page  566: APB2
+Page  566: D2       APB1                                                ADC1
+Page  566: APB2   HRTIM1 hrtim_adc_trg2 adc_jext_trg16                                   A       -
+Page  566: APB1    LPTIM1      lptim1_out   adc_jext_trg18                               A       -
+Page  566: D3       APB4
+Page  567: APB2     TIM1         CC2        adc_ext_trg1                                S            -
+Page  567: APB1     TIM3        TRGO        adc_ext_trg4                                S            -
+Page  567: D3      APB4   SYSCFG        EXTI11      adc_ext_trg6                                A            -
+Page  567: APB2
+Page  567: APB1     TIM4        TRGO        adc_ext_trg12                               S            -
+Page  567: APB2    TIM15        TRGO        adc_ext_trg14                               S            -
+Page  567: APB1     TIM3         CC4        adc_ext_trg15                               S            -
+Page  567: APB2   HRTIM1 hrtim_adc_trg3 adc_ext_trg17                                   A            -
+Page  567: D3      APB4
+Page  568: APB2
+Page  568: APB1
+Page  568: D3       APB4   SYSCFG        EXTI15     adc_jext_trg6                               A       -
+Page  568: APB2
+Page  568: APB1
+Page  568: APB2                    trg2
+Page  568: APB1    LPTIM1        OUT      adc_jext_trg18                               A       -
+Page  568: D3       APB4
+Page  568: APB2
+Page  568: D2       APB1                                                         APB4   D3
+Page  568: APB2
+Page  569: APB1
+Page  569: APB2      HRTIM1                            SWT3                                           A            -
+Page  569: FDCAN       APB1       D2
+Page  569: APB1
+Page  569: APB2      HRTIM1                            EVT3                                           A            -
+Page  569: APB1
+Page  569: APB2      HRTIM1                            PTP2                                           A            -
+Page  569: APB1        CAN             TMP             PTP3                                           A            -
+Page  571: D3      APB4   SYSCFG                                                   C    ANY
+Page  571: D3      APB4     RTC           ALARMS         WKUP17                    D    CPU       -
+Page  571: D3      APB4     RTC                                                                   -
+Page  571: D3      APB4     RTC            WKUP          WKUP19                    C    ANY       -
+Page  571: D3      APB4    COMP1          comp1_out      WKUP20                    C    ANY       -
+Page  571: D3      APB4    COMP2          comp2_out      WKUP21                    C    ANY       -
+Page  571: D2      APB1     I2C1          i2c1_wkup      WKUP22                    C    CPU       -
+Page  571: D2      APB1     I2C2          i2c2_wkup      WKUP23                    D    CPU       -
+Page  571: D2      APB1     I2C3          i2c3_wkup      WKUP24                    D    CPU       -
+Page  571: D2      APB1     I2C4          i2c4_wkup      WKUP25                    D    ANY       -
+Page  571: D2      APB2   USART1         usart1_wkup     WKUP26                    D    CPU       -
+Page  571: D2      APB1   USART2         usart2_wkup     WKUP27                    D    CPU       -
+Page  572: D2      APB1      USART3           usart3_wkup      WKUP28                     D    CPU        -
+Page  572: D2      APB2      USART6           usart6_wkup      WKUP29                     D    CPU       -
+Page  572: D2      APB1       UART4           uart4_wkup       WKUP30                     D    CPU       -
+Page  572: D2      APB1       UART5           uart5_wkup       WKUP31                     D    CPU       -
+Page  572: D2      APB1       UART7           uart7_wkup       WKUP32                     D    CPU       -
+Page  572: D2      APB1       UART8           uart8_wkup       WKUP33                     D    CPU       -
+Page  572: D3      APB4      LPUART          lpuart_rx_wkup    WKUP34                     D    ANY       -
+Page  572: D3      APB4      LPUART          lpuart_tx_wkup    WKUP35                     D    ANY        -
+Page  572: D2      APB2        SPI1            spi1_wkup       WKUP36                     D    CPU       -
+Page  572: D2      APB1        SPI2            spi2_wkup       WKUP37                     D    CPU       -
+Page  572: D2      APB1        SPI3            spi3_wkup       WKUP38                     D    CPU       -
+Page  572: D2      APB2        SPI4            spi4_wkup       WKUP39                     D    CPU       -
+Page  572: D2      APB2        SPI5            spi5_wkup       WKUP40                     D    CPU       -
+Page  572: D3      APB4        SPI6            spi6_wkup       WKUP41         EXTI        D    ANY       -
+Page  572: D2      APB1       MDIOS           mdios_wkup       WKUP42                     D    CPU        -
+Page  572: D2      APB1       LPTIM1          lptim1_wkup      WKUP47                     D    CPU       -
+Page  572: D3      APB4       LPTIM2          lptim2_wkup      WKUP48                     D    ANY       -
+Page  572: D3      APB4       LPTIM2           lptim2_out      WKUP49                     C    ANY
+Page  572: D3      APB4       LPTIM3          lptim3_wkup      WKUP50                     D    ANY       -
+Page  572: D3      APB4       LPTIM3           lptim3_out      WKUP51                     C    ANY
+Page  572: D3      APB4       LPTIM4          lptim4_wkup      WKUP52                     D    ANY       -
+Page  572: D3      APB4       LPTIM5          lptim5_wkup      WKUP53                     D    ANY       -
+Page  572: D2      APB1       SWPMI           swpmi_wkup       WKUP54                     D    CPU        -
+Page  573: D3         APB4
+Page  573: D3         APB4       LPUART1              lpuart1_it         WKUP64                        D      CPU
+Page  573: D3         APB4          SPI6                spi6_it          WKUP64                        D      CPU
+Page  573: D3         APB4          SAI4             sai4_gbl_it         WKUP76                        D      CPU            (1)
+Page  573: D1         APB3        WWDG1            wwdg1_out_rst         WKUP82                        C      CPU
+Page  573: D1         APB1          CEC               cec_wkup           WKUP85                        C      CPU            -
+Page  574: D3                                                                EXTI       APB4   D3
+Page  574: APB4
+Page  576: D1       APB3     LTDC        ltdc_li_it   mdma_str16                            LTDC line interrupt
+Page  578: D2       APB2   TIM1       tim1_ch4_dma      dmamux1_req_in14
+Page  578: D2       APB1   TIM2       tim2_ch3_dma      dmamux1_req_in20
+Page  578: D2       APB1   TIM3
+Page  578: D2       APB1   TIM4
+Page  579: D2     APB1   I2C1
+Page  579: D2     APB1   I2C2
+Page  579: D2     APB2   SPI1
+Page  579: D2     APB1   SPI2
+Page  579: D2     APB2 USART1
+Page  579: D2     APB1 USART2
+Page  579: D2     APB1 USART3
+Page  579: D2     APB2   TIM8       tim8_ch4_dma     dmamux1_req_in50
+Page  579: D1     APB1   TIM3
+Page  579: D2     APB1   SPI3
+Page  579: D1     APB1   UART4
+Page  580: D1       APB1   UART5
+Page  580: D2       APB1   DAC1       dac_ch1_dma       dmamux1_req_in67
+Page  580: D2       APB1   DAC2       dac_ch2_dma       dmamux1_req_in68
+Page  580: D2       APB1   TIM6       tim6_up_dma       dmamux1_req_in69
+Page  580: D2       APB1   TIM7       tim7_up_dma       dmamux1_req_in70
+Page  580: D2       APB2 USART6
+Page  580: D2       APB1   I2C3
+Page  580: D2       APB1   UART7                                           DMAMUX1 AHB1        D2      Requests
+Page  580: D2       APB1   UART8
+Page  580: D2       APB2   SPI4
+Page  580: D2       APB2   SPI5
+Page  580: D2       APB2   SAI1
+Page  580: D2       APB2   SAI2
+Page  580: D2       APB1   SWPMI
+Page  580: D2       APB1 SPDIFRX
+Page  581: D2     APB2   HRTIM1
+Page  581: D2     APB2 DFSDM1
+Page  581: D2     APB2   TIM15
+Page  581: D2     APB2   TIM16
+Page  581: D2     APB2   TIM17
+Page  581: D2     APB2    SAI3
+Page  581: D2     APB1   LPTIM1       lptim1_out       dmamux1_gen3                                    Request
+Page  581: D2     APB1   LPTIM2       lptim2_out       dmamux1_gen4                                   generation
+Page  581: D2     APB1   LPTIM3       lptim3_out       dmamux1_gen5
+Page  581: D3     APB4    EXTI       exti_exti0_it     dmamux1_gen6
+Page  581: D2     APB1   TIM12        tim12_trgo       dmamux1_gen7
+Page  582: D2     APB1     LPTIM1            lptim1_out            dmamux1_trg3
+Page  582: D2     APB1     LPTIM2            lptim2_out            dmamux1_trg4
+Page  582: D2     APB1     LPTIM3            lptim3_out            dmamux1_trg5
+Page  582: D3     APB4       EXTI           exti_exti0_it          dmamux1_trg6
+Page  582: D2     APB1      TIM12            tim12_trgo            dmamux1_trg7
+Page  583: D3     APB4 LPUART
+Page  583: D3     APB4   SPI6
+Page  583: D2     APB1   I2C4
+Page  583: D3     APB4   SAI4
+Page  583: D3     APB4   ADC3         dma_adc3        dmamux2_req_in17
+Page  584: D3   APB4    EXTI        exti_lptim5_wkup      dmamux2_gen14                               Request
+Page  584: D3   APB4    I2C4           it_evt_i2c4        dmamux2_gen22
+Page  584: D3   APB4    SPI6             it_spi6          dmamux2_gen23
+Page  584: D3   APB4 LPUART
+Page  585: D3   APB4    EXTI
+Page  649: •   Access to D3 domain SRAM and AHB/APB peripherals (BDMA)
+Page  650: The BDMA controller is connected to DMA requests from the AHB/APB peripherals through
+Page  650: The BDMA controller is connected to DMA requests from the AHB/APB peripherals through
+Page  657: Assuming the AHB/APB bridge is an AHB 32-bit slave peripheral that does not take into
+Page  657: account the HSIZE data, any AHB byte or half-word transfer is changed into a 32-bit APB
+Page  657: converted to an APB word write transfer of 0xB0B0B0B0 to the 0x0 address.
+Page  657: an APB word write transfer of 0xB1B0B1B0 to the 0x0 address.
+Page  738: As shown in Figure 86, the EXTI consists of a Register block accessed via an APB
+Page  739: APB interface
+Page  741: APB
+Page  743: APB
+Page  744: APB
+Page  745: APB
+Page  746: APB interface
+Page 1022: 32-bit APB
+Page 1030: 1 to synchronize between both clocks domains (APB and low speed clock) and
+Page 1038: DAC_DOR1 (three APB clock cycles later). Then the DAC channel1 triangle counter is
+Page 1062: APB bus
+Page 1063: comp_pclk         Digital input    APB clock for both COMP channels
+Page 1064: The clock comp_pclk provided by the clock controller is synchronous with the APB clock.
+Page 1064: independently from the APB clock. This allows the comparator to work even in Stop mode.
+Page 1064: The interrupt line, connected to the NVIC of CPU, requires the APB clock (comp_pclk) to
+Page 1064: work. In absence of the APB clock, the interrupt signal comp_it cannot be generated.
+Page 1068: when the CPU is active to handle low latency interrupt. It requires APB clock running.
+Page 1069: COMP_CFGR1                         (With APB clock)
+Page 1069: COMP_CFGR2                         (With APB clock)
+Page 1069: Note:         It is mandatory to enable APB clock to use this interrupt. If clock is not enabled, interrupt is
+Page 1078: RCC APB1 Clock Register (RCC_APB1LENR)).
+Page 1099: APB bus
+Page 1099: APB bus
+Page 1120: fDATAIN_RATE ≤ fAPB
+Page 1120: where fAPB is the bus frequency to which the DFSDM peripheral is connected.
+Page 1181: 32-bit APB bus
+Page 1182: •     APB clock domain (ltdc_pclk):
+Page 1183: Care must be taken while accessing the LTDC registers, the APB bus is stalled during the
+Page 1183: -                  AXI domain                  APB domain                     Pixel clock domain
+Page 1184: The LCD controller can be reset by setting the corresponding bit in the RCC_APBRSTR
+Page 1342: 4      APB and                                                                                                                                  HRTIM_CHA2
+Page 1342: APB bus
+Page 1344: hrtim_pclk         Digital input APB clock
+Page 1344: fpclk (hrtim_pclk): APB bus clock, needed for register read/write accesses
+Page 1537: APB Bus
+Page 1551: written, a delay of 1 APB clock cycle is applied before the writing is effective. Consequently,
+Page 1551: it is necessary to wait 1 APB clock period to correctly read back the bit after the write
+Page 1572: For safety purposes, when the counter is stopped (TIMx = 1 in DBGMCU_APB2FZ1), the
+Page 1597: Note: Any write operation to this bit takes a delay of 1 APB clock cycle to become effective.
+Page 1598: Note: Any write operation to this bit takes a delay of 1 APB clock cycle to become effective.
+Page 1599: Note: Any write operation to this bit takes a delay of 1 APB clock cycle to become effective.
+Page 1599: Note: Any write operation to this bit takes a delay of 1 APB clock cycle to become effective.
+Page 1638: APB Bus
+Page 1662: For safety purposes, when the counter is stopped (TIMx = 1 in DBGMCU_APB1FZ2), the
+Page 1705: APB Bus
+Page 1760: APB Bus
+Page 1770: be modified at the same time. When the BKE and BKP bits are written, a delay of 1 APB
+Page 1770: APB clock period to correctly read back the bit after the write operation.
+Page 1782: For safety purposes, when the counter is stopped (TIMx = 1 in DBGMCU_APB2FZ1), the
+Page 1801: 2: Any write operation to this bit takes a delay of 1 APB clock cycle to become effective.
+Page 1801: Note: Any write operation to this bit takes a delay of 1 APB clock cycle to become effective.
+Page 1821: 2. Any write operation to this bit takes a delay of 1 APB clock cycle to become effective.
+Page 1821: 2. Any write operation to this bit takes a delay of 1 APB clock cycle to become effective.
+Page 1843: –    Internal clock sources: LSE, LSI, HSI or APB clock
+Page 1844: 32-bit APB bus
+Page 1845: 32-bit APB bus
+Page 1845: 32-bit APB bus
+Page 1846: lptim_pclk               Digital input     LPTIM APB clock domain
+Page 1849: clock signal which can be chosen among APB, LSI, LSE or HSI sources through the Reset
+Page 1849: same time an internal clock signal is provided to the LPTIM either from APB or any
+Page 1854: The LPTIM_ARR register and LPTIM_CMP register are updated immediately after the APB
+Page 1855: The LPTIM APB interface and the LPTIM kernel logic use different clocks, so there is some
+Page 1855: latency between the APB write and the moment when these values are available to the
+Page 1856: located in the APB clock domain and the LPTIM counter is located in the LPTIM kernel
+Page 1856: reset signal issued by the APB clock domain when writing '1' to the COUNTRST bit.
+Page 1860: ARROK is set by hardware to inform application that the APB bus write operation to the LPTIM_ARR
+Page 1860: CMPOK is set by hardware to inform application that the APB bus write operation to the
+Page 1864: 0: Registers are updated after each APB bus write access
+Page 1866: 0: LPTIM is clocked by internal clock source (APB clock or any of the embedded oscillators)
+Page 1867: different from APB clock).
+Page 1873: The WWDG clock is prescaled from the APB clock and has a configurable time-window that
+Page 1874: APB bus
+Page 1874: pclk                     Digital input            APB bus clock
+Page 1876: tPCLK: APB clock period measured in ms
+Page 1876: As an example, lets assume APB frequency is equal to 48 MHz, WDGTB[2:0] is set to 3 and
+Page 1876: stops, depending on DBGMCU_APB3LFZ1. For more details, refer to Section 59: Debug
+Page 1890: 32-bit APB bus
+Page 1890: APB                                                 RTC_OUT
+Page 1893: rtc_pclk                        Internal input   RTC APB interface clock
+Page 1896: are synchronized with PCLK (APB clock). They can also be accessed directly in order to
+Page 1896: frequency of the APB clock (fAPB) must be at least 7 times the frequency of the RTC clock
+Page 1897: The RTC registers are 32-bit registers. The APB interface introduces 2 wait-states in RTC
+Page 1899: To read the RTC calendar registers (RTC_SSR, RTC_TR and RTC_DR) properly, the APB
+Page 1899: If the APB clock frequency is less than seven times the RTC clock frequency, the software
+Page 1899: read access must be done. In any case the APB clock frequency must never be lower than
+Page 1900: Note:       While BYPSHAD=1, instructions which read the calendar registers require one extra APB
+Page 1913: Note: If the frequency of the APB clock is less than seven times the frequency of RTCCLK,
+Page 1916: Note:       The bits ALRAF, ALRBF, WUTF and TSF are cleared 2 APB clock cycles after programming
+Page 1937: APB bus
+Page 1943: PE must be kept low during at least 3 APB clock cycles in order to perform the software
+Page 1981: The I2C is able to wakeup the MCU from Stop mode (APB clock is off), when it is
+Page 1989: least 3 APB clock cycles.
+Page 2006: 32-bit APB bus
+Page 2084: 32-bit APB bus
+Page 2131: 32-bit APB bus
+Page 2154: transaction starts (propagation of the data into TxFIFO takes few APB clock cycles). If the
+Page 2175: depends as well on the way those registers are accessed via the APB bus.
+Page 2175: Figure 637 shows the allowed settings between APB access sizes, DATFMT and DATLEN.
+Page 2175: Note:     Caution shall be taken when the APB access size is 32 bits, and DATLEN = 0. For read
+Page 2176: APB Access                              SPI_RXDR, SPI_TXDR                         SPI_RXDR, SPI_TXDR
+Page 2206: 32-bit APB bus
+Page 2206: SAI                               APB Interface
+Page 2206: APB Interface
+Page 2206: 32-bit APB bus                                                     MSv35476V2
+Page 2207: sai_pclk           Input      APB clock.
+Page 2209: Note:    Due to internal resynchronization stages, PCLK APB frequency must be higher than twice
+Page 2271: This peripheral can be fully controlled via the APB1 bus, and can handle two DMA channels:
+Page 2272: 32-bit APB bus
+Page 2288: •         The APB clock (spdifrx_pclk), which is used for the register interface,
+Page 2308: 32-bit APB bus
+Page 2309: swpmi_pclk                      APB clock
+Page 2335: APB_INTERFACE                  MDIOS_ADAPTER
+Page 2335: APB bus
+Page 2335: mdios_pclk                       APB clock
+Page 2339: 53.3.6   MDIOS APB frequency
+Page 2339: MDIOS_DOUTRn register, the frequency of the APB bus must be at least 1.5 times the
+Page 2339: MDC frequency. For example, if MDC is at 20MHz, the APB must be at 30MHz or faster.
+Page 2428: fdcan_pclk                              CAN subsystem APB interface clock input
+Page 2430: 32-bit APB bus
+Page 2430: 32-bit APB bus
+Page 2430: interface                                     APB
+Page 2430: 32-bit APB bus
+Page 2431: •   Two clock domains: APB bus interface and CAN core kernel clock
+Page 2432: 32-bit APB bus
+Page 2432: interface                                   APB
+Page 2432: The sync block synchronizes signals from the APB clock domain to the CAN kernel clock
+Page 2433: APB Interface
+Page 2433: Connects the FDCAN to the APB bus.
+Page 2440: Due to the synchronization mechanism between CAN kernel clock and APB clock domain,
+Page 2440: there may be a delay of several APB clock periods between writing to FDCAN_TEST.TX
+Page 2456: 32-bit APB bus
+Page 2456: Note:       The FDCAN requires that the CAN time quanta clock is always below or equal to the APB
+Page 2459: correct operation of tFDCAN1and FDCAN2, the APB clock fdcan_pclk needs to be equal or
+Page 2463: same event is visible in the APB clock domain (when FDCAN_TTIR.TTMI is set or
+Page 2463: completed (either transmitted or received). The output is controlled in the APB clock
+Page 2467: •    APB clock frequency
+Page 2472: time and Ref_Mark, both synchronized into the APB clock domain and truncated to 16 bit.
+Page 2472: synchronized into the APB clock domain and truncated to 16 bit. The fractional part is used
+Page 2496: 1: FDCAN may be set in power down by stopping APB clock and kernel clock
+Page 2537: is reset after one APB clock period. The external clock synchronization takes effect at the
+Page 2537: is reset after one APB clock period. The global time preset takes effect when the node
+Page 2979: cec_pclk         Digital input    APB clock
+Page 2980: 32-bit APB bus
+Page 2999: APB-D
+Page 2999: JTDI                     DAPBUS                                                                          (system debug bus)
+Page 2999: DAPBUS
+Page 2999: AHB-AP APB-AP
+Page 2999: APB mux
+Page 2999: table 1        APB-D
+Page 3001: APB-D
+Page 3001: JTDI                     DAPBUS                                                                           (system debug bus)
+Page 3001: DAPBUS
+Page 3001: AHB-AP APB-AP
+Page 3001: APB mux
+Page 3001: table 1        APB-D
+Page 3001: components. It also contains the system trace components located on the APB-D. This
+Page 3002: APB-D
+Page 3002: JTDI                     DAPBUS                                                                          (system debug bus)
+Page 3002: DAPBUS
+Page 3002: AHB-AP APB-AP
+Page 3002: APB mux
+Page 3002: table 1        APB-D                                                                                  CK_DBG_D3
+Page 3015: Res.   Res.      Res.   Res.   Res.   Res.   Res.   Res.            APBANKSEL[3:0]                 DPBANKSEL[3:0]
+Page 3016: 0x2: AP2 - System debug access port (APB-AP)
+Page 3016: Bits 7:4 APBANKSEL[3:0]: AP register bank select bits
+Page 3017: DAPBUS       AP0
+Page 3017: System Debug Bus (APB-D)
+Page 3017: (APB-AP)
+Page 3018: 3.   AP2: System access port (APB-AP). Allows access to the debug and trace features on
+Page 3018: the system APB debug bus, that is, all components not included in the processor core.
+Page 3018: •    bits [7:4]: contents of the DP_SELECT register’s APBANKSEL field
+Page 3018: APBANKSEL field to select the register bank to be accessed.
+Page 3019: Address      APBANKSEL   A(3:2)     Name                               Description
+Page 3020: Reset value: 0x0000 0002 (APB-AP), 0x4000 0002 (AHB-AP)
+Page 3020: In the APB-AP, this field is reserved. In the AHB-APs, this field sets the protection attribute
+Page 3020: In the APB-AP, this field is reserved. In the AHB-APs, this field sets the protection attributes
+Page 3020: in the APB-AP.
+Page 3021: 0x2: Packed transfers enabled (Only in AHB-APs - reserved in APB-AP). A 32-bit AP access
+Page 3021: For APB-AP, this field is read-only and fixed at 0x2 (32-bit).
+Page 3021: AP2 (System APB-AP): 0xE00E0
+Page 3022: 0x02: APB-AP (AP2)
+Page 3023: These components are accessible by the debugger via the system APB-AP and its
+Page 3023: associated APB-D debug bus. They are also accessible by the Cortex-M7 processor.
+Page 3023: The MCU debug unit (DBGMCU) is also accessed via the APB-D. This non-CoreSight
+Page 3023: There are two ROM tables on the APB-D bus. The ROM table is a CoreSight component
+Page 3023: that contains the base addresses of all the CoreSight components on the APB-D bus. These
+Page 3023: standard CoreSight component. The table occupies a 4-Kbyte, 32-bit wide chunk of APB-D
+Page 3024: The second table occupies a 4-Kbyte, 32-bit wide chunk of APB-D address space, from
+Page 3024: The topology for the CoreSight components on the APB-D is shown in Figure 821.
+Page 3025: Figure 821. APB-D CoreSight component topology
+Page 3025: APB-AP                        @0xE00E0000                            @0xE00F0000                              @0xE00F1000
+Page 3031: The TSG registers are accessible over the APB-D. This allows the debugger or debug
+Page 3031: Debug APB   Timestamp generator
+Page 3039: associated APB-D. The Cortex-M7 CTI is physically integrated in the Cortex-M7 core, and is
+Page 3039: APB-D
+Page 3069: accessible over the system APB-D.
+Page 3069: APB-D is accessible from the system bus.
+Page 3072: entries from the trace memory over the APB interface via the ETF_RRD register. The pointer
+Page 3073: entries into the trace memory over the APB interface via the ETF_RWD register. The pointer
+Page 3131: DBGMCU_APB2FZ1).
+Page 3131: accessible to the debugger via the APB-D bus at base address 0xE00E1000. They are also
+Page 3133: DBGMCU APB3 peripheral freeze register (DBGMCU_APB3FZ1)
+Page 3134: DBGMCU APB1L peripheral freeze register (DBGMCU_APB1LFZ1)
+Page 3135: DBGMCU APB2 peripheral freeze register (DBGMCU_APB2FZ1)
+Page 3136: DBGMCU APB4 peripheral freeze register (DBGMCU_APB4FZ1)
+Page 3138: DBGMCU_APB3FZ
+Page 3138: DBGMCU_APB1LF
+Page 3138: DBGMCU_APB2FZ
+Page 3138: DBGMCU_APB4FZ
+Page 3139: The Cortex-M7 PPB ROM table occupies a 4-Kbyte, 32-bit wide chunk of APB-D address
+Page 3215: SYSCFG clock should be enabled first in the RCC_APB4ENR register.
+Page 3216: HDMICECLPEN renamed CECLPEN in RCC_APB1LLPENR,
+Page 3217: Section 8.7.31: RCC APB1 Peripheral Reset Register
+Page 3217: (RCC_APB1LRSTR), Section 8.7.43: RCC APB1 Clock Register
+Page 3217: (RCC_APB1LENR) and Section 8.7.52: RCC APB1 Low Sleep
+Page 3217: Clock Register (RCC_APB1LLPENR).
+Page 3219: APB1 clock and LSI clock replaced by dac_pclk and by lsi_ck in the
+Page 3222: – D1APB1 by APB3
+Page 3222: – D2APB1 by APB1
+Page 3222: – D2APB2 by APB2
+Page 3222: – D3APB4byAPB4
+Page 3222: WDGLSD2 bit changed to reserved in Section : DBGMCU APB4
+Page 3222: (DBGMCU_APB4FZ1)DBGMCU_APB4FZ1.
+Page 3226: Bits changed to reserved: TMPSENSRST of RCC_APB4RSTR
+Page 3226: register, TMPSENSEN of RCC_APB4ENR and TMPSENSLPEN of
+Page 3226: RCC_APB4LPENR.
+Page 3233: DBGMCU_APB1HFZ1 removed.
+Page 3235: CSTF_PRIORITY . . . . . . . . . . . . . . . . . . . . .3059         DBGMCU_APB1LFZ1 . . . . . . . . . . . . . . . . . 3134
+Page 3235: CTI_APPCLEAR . . . . . . . . . . . . . . . . . . . . .3043          DBGMCU_APB2FZ1 . . . . . . . . . . . . . . . . . . 3135
+Page 3235: CTI_APPPULSE . . . . . . . . . . . . . . . . . . . . .3044          DBGMCU_APB3FZ1 . . . . . . . . . . . . . . . . . . 3133
+Page 3235: CTI_APPSET . . . . . . . . . . . . . . . . . . . . . . . .3043      DBGMCU_APB4FZ1 . . . . . . . . . . . . . . . . . . 3136
+Page 3243: OTG_HS_DOEPEACHMSK1 . . . . . . . . . . .2649                         RCC_D2APB2ENR . . . . . . . . . . . . . . . . . . . . 444
+Page 3243: OTG_PCGCCTL . . . . . . . . . . . . . . . . . . . . .2666             RCC_D2APB2LPENR . . . . . . . . . . . . . . . . . . 466
+Page 3243: RCC_D2APB2RSTR . . . . . . . . . . . . . . . . . . . 418
+Page 3243: QUADSPI _PIR . . . . . . . . . . . . . . . . . . . . . . .887         RCC_D3APB1ENR . . . . . . . . . . . . . . . . . . . . 447
+Page 3243: QUADSPI _PSMAR . . . . . . . . . . . . . . . . . . . .886             RCC_D3APB1LPENR . . . . . . . . . . . . . . . . . . 469
+Page 3243: QUADSPI _PSMKR . . . . . . . . . . . . . . . . . . . .886             RCC_D3APB1RSTR . . . . . . . . . . . . . . . . . . . 420
+Page 3243: RCC_D1APB1ENR . . . . . . . . . . . . . . . . . . . .437
+Page 3243: RCC_D1APB1LPENR . . . . . . . . . . . . . . 459-460
+Page 3243: RCC_D1APB1RSTR . . . . . . . . . . . . . . . . . . .413
+Page 3243: RCC_D2APB1HENR . . . . . . . . . . . . . . . . . . .442
+Page 3243: RCC_D2APB1HLPENR . . . . . . . . . . . . . . . . .464
+Page 3243: RCC_D2APB1HRSTR . . . . . . . . . . . . . . . . . .417
+Page 3243: RCC_D2APB1LENR . . . . . . . . . . . . . . . . . . .438
+Page 3243: RCC_D2APB1LRSTR . . . . . . . . . . . . . . . . . .414

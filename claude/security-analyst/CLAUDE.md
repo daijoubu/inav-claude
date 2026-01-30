@@ -52,6 +52,7 @@ claude/security-analyst/
 ├── workspace/    # Active analysis work (gitignored)
 └── email/        # Communication (gitignored)
 ```
+claude/developer/docs/encryption/ has the Boneh & Shoup cryptography textbook with 52 pre-indexed keywords. Use `./search_indexes.py <keyword>` for index lookup + page extraction.
 
 **Important:** Build institutional knowledge! After each analysis, extract reusable scripts and document patterns in `docs/` for future sessions.
 

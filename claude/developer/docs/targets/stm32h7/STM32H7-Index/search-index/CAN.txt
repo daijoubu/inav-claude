@@ -1,0 +1,230 @@
+Keyword: CAN
+Occurrences: 226
+================================================================================
+
+Page    1: • 3 separate power domains which can be
+Page    2: • 2× CAN controllers: 2 with CAN FD, 1 with
+Page    2: time-triggered CAN (TT-CAN)                         96-bit unique ID
+Page    4: 3.39     Controller area network (FDCAN1, FDCAN2) . . . . . . . . . . . . . . . . . . . . . 51
+Page   17: I2S peripherals can be clocked by a dedicated internal audio PLL or by an external
+Page   17: –    One FDCAN plus one TT-FDCAN interface
+Page   18: range from a 1.62 to 3.6 V power supply. The supply voltage can drop down to 1.62 V by
+Page   18: •   Printers, and scanners
+Page   20: FDCAN/TT-
+Page   20: FDCAN
+Page   22: 2.   The maximum CPU frequency of 480 MHz can be obtained on devices revision V.
+Page   22: 5.   VDD/VDDA can drop down to 1.62 V by using an external power supervisor (see Section 3.5.2: Power supply supervisor) and connecting PDR_ON pin to
+Page   23: irDA USART6                                                                                                                                             32-bit AHB BUS-MATRIX                                                         RAM                                                              TT-FDCAN1                            TX, RX
+Page   23: irDA USART1                                                                                                                                                                                                                                                                                             FDCAN2                              TX, RX
+Page   24: irDA USART6                                                                                                                                             32-bit AHB BUS-MATRIX                                                         RAM                                                              TT-FDCAN1                            TX, RX
+Page   24: irDA USART1                                                                                                                                                                                                                                                                                             FDCAN2                              TX, RX
+Page   25: allows defining up to 16 protected regions that can in turn be divided into up to 8
+Page   25: independent subregions, where region address, size, and attributes can be configured. The
+Page   26: that can be used for storing programs and data.
+Page   26: The flash memory is organized as 266-bit flash words memory that can be used for storing
+Page   26: •    128 Kbytes of System flash memory from which the device can boot
+Page   26: Both ITCM and DTCM RAMs are 0 wait state memories. either They can be accessed
+Page   26: routines or stack/heap memory. Both DTCM-RAMs can be used in parallel (for
+Page   26: The MDMA can be used to load code or data in ITCM or DTCM RAMs.
+Page   27: memories may occur. They can be detected and corrected by ECC. This is an expected
+Page   27: VDD50USB can be supplied through the USB cable to generate the VDD33USB via the
+Page   27: The USB regulator can be bypassed to supply directly VDD33USB with
+Page   28: following power domains that can be independently switch off.
+Page   28: During the power-down phase, VDD can temporarily become lower than other supplies only
+Page   29: The PDR supervisor can be enabled/disabled through PDR_ON pin.
+Page   29: 2.7 V) can be configured through option bytes. A reset is generated when VDD drops
+Page   29: The same voltage regulator supplies the 3 power domains (D1, D2 and D3). D1 and D2 can
+Page   29: Voltage regulator output can be adjusted according to application needs through 6 power
+Page   30: A domain can enter low-power mode (DStop or DStandby) when the processor, its
+Page   30: Finally the system can enter Stop or Standby when all EXTI wakeup sources are cleared
+Page   31: kernel peripheral clock), the system frequency can be changed without modifying the
+Page   31: The system starts on the HSI clock. The user application can then select the clock
+Page   32: Each of the GPIO pins can be configured by software as output (push-pull or open-drain,
+Page   32: The I/O configuration can be locked if needed by following a specific sequence in order to
+Page   34: controllers located in D2 domain to extend the standard DMA capabilities, or can
+Page   34: Each of the 16 channels can perform single block transfers, repeated block transfers
+Page   34: An interrupt can be generated when an operation is complete or at a programmed
+Page   35: The EXTI controller performs interrupt and event management. In addition, it can wake up
+Page   36: It can operate in any of the following modes:
+Page   36: Up to 256 Mbytes of external flash memory can be mapped, and 8-, 16- and 32-bit data
+Page   36: converters, which resolution can be configured to 16, 14, 12, 10 or 8 bits.
+Page   36: Scan mode. In Scan mode, automatic conversion is performed on a selected group of
+Page   36: The ADC can be served by the DMA controller, thus allowing to automatically transfer ADC
+Page   37: In addition, an analog watchdog feature can accurately monitor the converted voltage of
+Page   37: can measure the device junction temperature ranging from − 40 up to +125 °C.
+Page   38: The two 12-bit buffered DAC channels can be used to convert two digital signals into two
+Page   38: The reference voltage can be one of the following:
+Page   38: All comparators can wake up from Stop mode, generate interrupts and breaks for the timers,
+Page   39: and one output each. These three I/Os can be connected to the external pins, thus enabling
+Page   39: any type of external interconnections. The operational amplifiers can be configured
+Page   39: represent analog value on Σ∆ modulators inputs). DFSDM can also interface PDM (Pulse
+Page   40: –     “regular” conversions can be requested at any time or even in Continuous mode
+Page   40: The devices embed a camera interface that can connect with camera modules and CMOS
+Page   40: interface can achieve a data transfer rate up to 140 Mbyte/s using a 80 MHz pixel clock. It
+Page   40: •    Parallel data communication can be 8-, 10-, 12- or 14-bit
+Page   41: The JPEG Codec (only available on STM32H743xI/G) can encode and decode a JPEG
+Page   41: All timer counters can be frozen in Debug mode.
+Page   43: It consists of 6 timers, 1 master and 5 slaves, totaling 10 high-resolution outputs, which can
+Page   43: The slave timers can be combined to control multiswitch complex converters or operate
+Page   43: LED). It can also be used as a general purpose timer, for instance to achieve high-resolution
+Page   44: The advanced-control timers (TIM1, TIM8) can be seen as three-phase PWM generators
+Page   44: inserted dead times. They can also be considered as complete general-purpose timers.
+Page   44: Their 4 independent channels can be used for:
+Page   44: The advanced-control timer can work together with the TIMx timers via the Timer Link
+Page   44: TIM2, TIM3, TIM4 and TIM5 general-purpose timers can work together, or with the
+Page   44: Any of these general-purpose timers can be used to generate PWM outputs.
+Page   44: One-pulse mode output. They can be synchronized with the TIM2, TIM3, TIM4, TIM5
+Page   45: These timers are mainly used for DAC trigger and waveform generation. They can also be
+Page   45: main clock, it can operate in Stop and Standby modes. It can be used either as a watchdog
+Page   45: The window watchdog is based on a 7-bit downcounter that can be set as free-running. It
+Page   45: can be used as a watchdog to reset the device when a problem occurs. It is clocked from
+Page   45: the main clock. It has an early warning interrupt capability and the counter can be frozen in
+Page   46: •   On-the-fly correction from 1 to 32767 RTC clock pulses. This can be used to
+Page   46: •   Reference clock detection: a more precise second source clock (50 or 60 Hz) can be
+Page   46: •   Timestamp feature which can be used to save the calendar content. This function can
+Page   46: The RTC clock sources can be:
+Page   46: All RTC events (Alarm, Wakeup Timer, Timestamp or Tamper) can generate an interrupt and
+Page   48: wake up the MCU from Stop mode.The wakeup from Stop mode is programmable and can
+Page   48: All USART interfaces can be served by the DMA controller.
+Page   49: The LPUART has a clock domain independent from the CPU clock, and can wakeup the
+Page   49: system from Stop mode. The wakeup from Stop mode are programmable and can be done
+Page   49: 9600 baud. Therefore, even in Stop mode, the LPUART can wait for an incoming frame
+Page   49: while having an extremely low energy consumption. Higher speed clock can be used to
+Page   49: LPUART interface can be served by the DMA controller.
+Page   49: can be operated in Master or Slave mode, in Simplex or Full-duplex communication mode,
+Page   49: and can be configured to operate with a 16-/32-bit resolution as an input or output channel.
+Page   49: the I2S interfaces is/are configured in Master mode, the master clock can be output to the
+Page   49: In addition, up to 6 microphones can be supported thanks to an embedded PDM interface.
+Page   49: The SAI can work in master or slave configuration. The audio sub-blocks can be either
+Page   49: receiver or transmitter and can work synchronously or asynchronously (with respect to the
+Page   49: other one). The SAI can be connected with other SAIs to work synchronously.
+Page   50: decode the incoming data stream. The user can select the wanted SPDIF input, and when a
+Page   50: SWPMI can be served by the DMA controller.
+Page   51: 3.39      Controller area network (FDCAN1, FDCAN2)
+Page   51: The controller area network (CAN) subsystem consists of two CAN modules, a shared
+Page   51: Both CAN modules (FDCAN1 and FDCAN2) are compliant with ISO 11898-1 (CAN protocol
+Page   51: specification version 2.0 part A, B) and CAN FD protocol specification version 1.0.
+Page   51: FDCAN1 supports time triggered CAN (TT-FDCAN) specified in ISO 11898-4, including
+Page   51: compensation. The FDCAN1 contains additional registers, specific to the time triggered
+Page   51: feature. The CAN FD option can be used together with event-triggered and time-triggered
+Page   51: CAN communication.
+Page   51: transmit event FIFOs, transmit buffers (and triggers for TT-FDCAN). This message RAM is
+Page   51: shared between the two FDCAN1 and FDCAN2 modules.
+Page   51: The common clock calibration unit is optional. It can be used to generate a calibrated clock
+Page   51: for both FDCAN1 and FDCAN2 from the HSI internal RC oscillator and the PLL, by
+Page   51: evaluating CAN messages received by the FDCAN1.
+Page   52: The OTG PHY is connected to the microcontroller ULPI port through 12 signals. It can
+Page   52: for RMII, and can be clocked using the 25 MHz (MII) from the microcontroller.
+Page   53: The debug can be controlled via a JTAG/Serial-wire debug access port, using industry
+Page   62: 3. This ball should not remain floating. It can be connected to VSS or VDD. It is reserved for future use.
+Page   65: FDCAN1_RX, FMC_D30,
+Page   74: FDCAN2_RX,
+Page   74: NSS, FDCAN2_TX,       VBUS
+Page   80: NSS, FDCAN1_RX,
+Page   80: FDCAN1_TX,
+Page   80: -          -         -           -       E12           128        151       D16             PH13       I/O        FT_h            -       FDCAN1_TX, FMC_D21,         -
+Page   80: -          -         -           -       E13           129        152       B17             PH14       I/O        FT_h            -       FDCAN1_RX, FMC_D22,         -
+Page   82: FDCAN1_RX,
+Page   82: 82        E8         115       C10         C12           143        165       E12              PD1       I/O        FT_h            -            FDCAN1_TX,             -
+Page   85: FDCAN2_RX,
+Page   85: FDCAN2_TX,
+Page   86: FDCAN1_RX,
+Page   86: FDCAN1_TX,
+Page   87: 3. This ball should not remain floating. It can be connected to VSS or VDD. It is reserved for future use.
+Page   87: this pin is double-bonded to VDDA which can be connected to an external reference. The internal voltage reference buffer is
+Page   88: I2C1/2/3/4/                                                          FDCAN1/2/                 UART
+Page   88: HRTIM_CH     LPUART1_                    SPI2_NSS                       CTS/                    FDCAN1_      OTG_FS_
+Page   88: HRTIM_CH       RTS/                      SPI2_SCK/                      RTS/                    FDCAN1_      OTG_FS_
+Page   89: I2C1/2/3/4/                                                                  FDCAN1/2/                   UART
+Page   89: I2C1/2/3/4/                                                                   FDCAN1/2/                  UAR
+Page   89: TIM17_                       HRTIM_                        SPI1_MOSI/                      SPI3_MOSI/       SPI6_       FDCAN2_       OTG_HS_     ETH_
+Page   89: TIM16_                       HRTIM_                                                         USART1_       LPUART1_      FDCAN2_       QUADSPI_    DFSD
+Page   90: I2C1/2/3/4/                                                            FDCAN1/2/                UAR
+Page   90: DFSDM1_                                                  SDMMC1_                    FDCAN1_      SDMMC2_    ETH
+Page   90: DFSDM1_                    SPI2_NSS/                     SDMMC1_                    FDCAN1_      SDMMC2_      I2C
+Page   90: SPI2_NSS/       DFSDM1_        USART3_                   FDCAN2_      OTG_HS_
+Page   90: LPTIM2_                   SPI2_SCK/       DFSDM1_          CTS/                    FDCAN2_      OTG_HS_
+Page   92: I2C1/2/3/4/                                                         FDCAN1/2/               UAR
+Page   92: DFSDM1_                                  SAI3_SCK_                                FDCAN1_
+Page   92: DFSDM1_                                                                           FDCAN1_
+Page   93: I2C1/2/3/4/                                                         FDCAN1/2/                UAR
+Page   98: I2C1/2/3/4/                                                         FDCAN1/2/                UAR
+Page   98: TIM8_                                                                          FDCAN1_
+Page   98: TIM8_                                                                          FDCAN1_
+Page   99: I2C1/2/3/4/                                                         FDCAN1/2/                 UART
+Page   99: FDCAN1_
+Page  106: 4. In low-power dissipation state, TA can be extended to this range as long as TJ does not exceed TJmax (see Section 8.10:
+Page  107: the VCAP pin. CEXT is specified in Table 25. Two external capacitors can be connected to
+Page  110: 1.    The shortest sampling time for the application can be determined by multiple iterations.
+Page  115: the pin is externally held low. The value of this current consumption can be simply computed
+Page  115: required by the application, this supply current consumption can be avoided by configuring
+Page  115: Caution:       Any floating input pin can also settle to an intermediate voltage level or switch inadvertently,
+Page  115: digital value. This can be done either by using pull-up/down resistors or by configuring the
+Page  120: FDCAN registers         16            15             14
+Page  120: FDCAN kernel           7.8           7.6            7.1
+Page  126: The high-speed external (HSE) clock can be supplied with a 4 to 48 MHz crystal/ceramic
+Page  126: reached. This value is measured for a standard crystal resonator and it can vary significantly with the crystal manufacturer.
+Page  126: and CL2. The PCB and MCU pin capacitance must be included (10 pF can be used as a
+Page  127: The low-speed external (LSE) clock can be supplied with a 32.768 kHz crystal/ceramic
+Page  128: reached. This value is measured for a standard crystal resonator and it can vary significantly with the crystal manufacturer.
+Page  135: Most of the common failures (unexpected reset and program counter corruption) can be
+Page  135: To complete these trials, ESD stress can be applied directly on the device, over the range of
+Page  135: specification values. When unexpected behavior is detected, the software can be hardened
+Page  139: The GPIOs (general purpose input/outputs) can sink or source up to ±8 mA, and sink or
+Page  139: In the user application, the number of I/O pins which can drive current must be limited to
+Page  139: consumption of the MCU sourced on VDD, cannot exceed the absolute maximum rating
+Page  139: consumption of the MCU sunk on VSS cannot exceed the absolute maximum rating
+Page  142: The HSLV bit of SYSCFG_CCCSR register can be used to optimize the I/O speed when the
+Page  143: 2. The frequency of the GPIOs that can be supplied in VBAT mode (PC13, PC14, PC15 and PI8) is limited to 2 MHz
+Page  145: 2. The user must ensure that the level on the NRST pin can go below the VIL(NRST) max level specified in
+Page  169: 3. Depending on the package, VREF+ can be internally connected to VDDA and VREF- to VSSA.
+Page  170: input pins should be avoided as this significantly reduces the accuracy of the conversion
+Page  174: 3. In buffered mode, the output can overshoot above the final value for low input code (starting from the minimum value).
+Page  176: 1. The DAC integrates an output buffer that can be used to reduce the output impedance and to drive external loads directly
+Page  176: without the use of an external operational amplifier. The buffer can be bypassed by configuring the BOFFx bit in the
+Page  177: 2.     In degraded mode, the voltage reference buffer cannot accurately maintain the output voltage (VDDA−drop voltage).
+Page  201: CAN (controller area network) interface
+Page  201: function characteristics (FDCANx_TX and FDCANx_RX).
+Page  213: 7. In low-power dissipation state, TA can be extended to this range as long as TJ does not exceed TJmax (see Section 8.10:
+Page  214: the VCAP pin. CEXT is specified in Table 124. Two external capacitors can be connected to
+Page  217: 1.    The shortest sampling time for the application can be determined by multiple iterations.
+Page  222: the pin is externally held low. The value of this current consumption can be simply computed
+Page  222: required by the application, this supply current consumption can be avoided by configuring
+Page  222: Caution:       Any floating input pin can also settle to an intermediate voltage level or switch inadvertently,
+Page  222: digital value. This can be done either by using pull-up/down resistors or by configuring the
+Page  227: FDCAN registers        19.0            17.0       15.0        13.0
+Page  227: FDCAN kernel           9.1            7.9         6.9         6.4
+Page  232: The high-speed external (HSE) clock can be supplied with a 4 to 48 MHz crystal/ceramic
+Page  232: reached. This value is measured for a standard crystal resonator and it can vary significantly with the crystal manufacturer.
+Page  232: and CL2. The PCB and MCU pin capacitance must be included (10 pF can be used as a
+Page  233: The low-speed external (LSE) clock can be supplied with a 32.768 kHz crystal/ceramic
+Page  233: reached. This value is measured for a standard crystal resonator and it can vary significantly with the crystal manufacturer.
+Page  241: Most of the common failures (unexpected reset and program counter corruption) can be
+Page  241: To complete these trials, ESD stress can be applied directly on the device, over the range of
+Page  241: specification values. When unexpected behavior is detected, the software can be hardened
+Page  245: The GPIOs (general purpose input/outputs) can sink or source up to ±8 mA, and sink or
+Page  245: In the user application, the number of I/O pins which can drive current must be limited to
+Page  245: consumption of the MCU sourced on VDD, cannot exceed the absolute maximum rating
+Page  245: consumption of the MCU sunk on VSS cannot exceed the absolute maximum rating
+Page  248: The HSLV bit of SYSCFG_CCCSR register can be used to optimize the I/O speed when the
+Page  249: 2. The frequency of the GPIOs that can be supplied in VBAT mode (PC13, PC14, PC15 and PI8) is limited to 2 MHz
+Page  251: 2. The user must ensure that the level on the NRST pin can go below the VIL(NRST) max level specified in
+Page  279: 5. Depending on the package, VREF+ can be internally connected to VDDA and VREF- to VSSA.
+Page  282: input pins should be avoided as this significantly reduces the accuracy of the conversion
+Page  287: 3. In buffered mode, the output can overshoot above the final value for low input code (starting from the minimum value).
+Page  288: 1. The DAC integrates an output buffer that can be used to reduce the output impedance and to drive external loads directly
+Page  288: without the use of an external operational amplifier. The buffer can be bypassed by configuring the BOFFx bit in the
+Page  290: 2.    In degraded mode, the voltage reference buffer cannot accurately maintain the output voltage (VDDA−drop voltage).
+Page  324: Dambar cannot be located on the lower radius or the foot. Minimum space between
+Page  330: Dambar cannot be located on the lower radius or the foot. Minimum space between
+Page  336: Dambar cannot be located on the lower radius or the foot. Minimum space between
+Page  340: Dambar cannot be located on the lower radius or the foot. Minimum space between
+Page  349: herein. However, no level of security certification and/or built-in security measures can
+Page  349: information. As the status and/or level of security certification for an ST product can
+Page  349: •   While robust security testing may be done, no level of certification can absolutely
+Page  351: CAN1_TX/RX to FDCAN1_TX/RX and CAN1_TXFD/RXFD to
+Page  351: FDCAN1_TXFD_MODE/RXFD_MODE; changed CAN2_TX/RX to FDCAN2_TX/RX
+Page  351: and CAN2_TXFD/RXFD to FDCAN2_TXFD_MODE/RXFD_MODE and replaced
+Page  355: Updated number of microphones that can be supported by the SAI in Section 3.34:
+Page  355: Removed FDCAN1_RXFD_MODE, FDCAN1_TXFD_MODE, FDCAN2_RXFD_MODE
+Page  355: and FDCAN2_TXFD_MODE functions from Table 9: Pin/ball definition and all alternate

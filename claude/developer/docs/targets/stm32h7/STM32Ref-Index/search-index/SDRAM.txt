@@ -1,0 +1,207 @@
+Keyword: SDRAM
+Occurrences: 203
+================================================================================
+
+Page   20: 21.6.3      SDRAM address mapping . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 784
+Page   21: 21.9     SDRAM controller . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 839
+Page   21: 21.9.1      SDRAM controller main features . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 839
+Page   21: 21.9.2      SDRAM External memory interface signals . . . . . . . . . . . . . . . . . . . . . 839
+Page   21: 21.9.3      SDRAM controller functional description . . . . . . . . . . . . . . . . . . . . . . . 840
+Page   21: 21.9.5      SDRAM controller registers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 850
+Page   70: Table 152.   SDRAM bank selection . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 784
+Page   71: Table 153.   SDRAM address mapping . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 784
+Page   71: Table 154.   SDRAM address mapping with 8-bit data bus width. . . . . . . . . . . . . . . . . . . . . . . . . . . . . 785
+Page   71: Table 155.   SDRAM address mapping with 16-bit data bus width. . . . . . . . . . . . . . . . . . . . . . . . . . . . 786
+Page   71: Table 156.   SDRAM address mapping with 32-bit data bus width. . . . . . . . . . . . . . . . . . . . . . . . . . . . 787
+Page   71: Table 188.   SDRAM signals. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 839
+Page   82: Figure 115. Burst write SDRAM access waveforms . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 841
+Page   82: Figure 116. Burst read SDRAM access . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 842
+Page  124: FMC SDRAM Bank2 (or Reserved in case of FMC remap)
+Page  124: -     FMC SDRAM Bank1 (or remap of FMC NOR/PSRAM/SRAM 4 Bank1)
+Page  124: FMC SDRAM Bank1 (or remap of FMC NOR/PSRAM/SRAM 3 Bank1)
+Page  124: FMC SDRAM Bank1 (or remap of FMC NOR/PSRAM/SRAM 2 Bank1)
+Page  124: FMC SDRAM Bank1 (or remap of FMC NOR/PSRAM/SRAM 1 Bank1)
+Page  124: Reserved (or remap of FMC SDRAM Bank2)
+Page  124: FMC NOR/PSRAM/SRAM 4 Bank1 (or remap of FMC SDRAM Bank1) Normal             Write-       No
+Page  124: FMC NOR/PSRAM/SRAM 3 Bank1 (or remap of FMC SDRAM Bank1)
+Page  124: FMC NOR/PSRAM/SRAM 2 Bank1 (or remap of FMC SDRAM Bank1)
+Page  124: FMC NOR/PSRAM/SRAM 1 Bank1 (or remap of FMC SDRAM Bank1)
+Page  127: Section 21.9.5: SDRAM controller registers
+Page  776: •   The Synchronous DRAM (SDRAM/Mobile LPSDR SDRAM) controller
+Page  776: memories, SDRAM memories, and NAND flash memory. Its main purposes are:
+Page  776: •   Interface with synchronous DRAM (SDRAM/Mobile LPSDR SDRAM) memories
+Page  776: memory, PSRAM and SDRAM)
+Page  776: •   Write enable and byte lane select outputs for use with PSRAM, SRAM and SDRAM
+Page  776: except when crossing a page boundary (for PSRAM and SDRAM). In this case,
+Page  776: •   Cacheable Read FIFO with 6 x64-bit depth (6 x14-bit address tag) for SDRAM
+Page  777: When the SDRAM controller is used, if the SDCLK Clock ratio or refresh rate has to be
+Page  777: 1.   Put the SDRAM device in Self-refresh mode.
+Page  777: •    The SDRAM controller
+Page  778: SDRAM           FMC_SDCKE[1:0]
+Page  778: SDRAM signals
+Page  779: •   Writing to a write protected SDRAM bank (WP bit set in the SDRAM_SDCRx register).
+Page  779: •   Violation of the SDRAM address range (access to reserved address range)
+Page  779: •   Attempting to read/write access from/to SDRAM bank when it is not yet initialized
+Page  780: SDRAM)
+Page  780: Wrap support for NOR Flash/PSRAM and SDRAM
+Page  781: description of the SDRAM controller registers.
+Page  781: •   Bank 2 is used for SDRAM device, SDRAM bank 1 or SDRAM bank 2 depending on
+Page  781: •   Bank 5 and 6 are used to address SDRAM devices (1 device per bank).
+Page  782: SDRAM Bank
+Page  782: SDRAM Bank 1
+Page  782: 0xCFFF FFFF                                 SDRAM
+Page  782: SDRAM Bank 2
+Page  782: register. Table 147 shows the configuration to swap the NOR/PSRAM bank with SDRAM
+Page  782: banks or remap the SDRAM bank2, thus allowing to access the SDRAM banks at two
+Page  782: Start -End address                                                        SDRAM bank 2
+Page  782: (Default mapping)          SDRAM banks
+Page  782: 0x6000 0000 - 0x6FFF FFFF      NOR/PSRAM bank             SDRAM bank1        NOR/PSRAM bank
+Page  782: 0x7000 0000 - 0x7FFF FFFF          SDRAM bank1            SDRAM bank2         SDRAM bank2
+Page  782: 0xC000 0000 - 0xCFFF FFFF          SDRAM bank1         NOR/PSRAM bank         SDRAM bank1
+Page  782: 0xD000 0000 - 0xDFFF FFFF          SDRAM bank2            SDRAM bank2         SDRAM bank2
+Page  784: 21.6.3     SDRAM address mapping
+Page  784: Two SDRAM banks are available as indicated in Table 152.
+Page  784: Table 152. SDRAM bank selection
+Page  784: SDRAM Bank1                          FMC_SDCR1                       FMC_SDTR1
+Page  784: SDRAM Bank2                          FMC_SDCR2                       FMC_SDTR2
+Page  784: Table 153 shows SDRAM mapping for a 13-bit row and an 11-bit column configuration.
+Page  784: Table 153. SDRAM address mapping
+Page  785: The ADDR[27:0] bits are translated into an external SDRAM address depending on the
+Page  785: SDRAM controller configuration:
+Page  785: The following tables show the SDRAM address mapping versus the SDRAM controller
+Page  785: Table 154. SDRAM address mapping with 8-bit data bus width(1)(2)
+Page  786: Table 155. SDRAM address mapping with 16-bit data bus width(1)(2)
+Page  787: Table 156. SDRAM address mapping with 32-bit data bus width(1)(2)
+Page  818: These bits allow different remap or swap of the FMC NOR/PSRAM and SDRAM banks (refer
+Page  818: 01: NOR/PSRAM bank and SDRAM bank 1/bank2 are swapped.
+Page  818: 10: SDRAM Bank2 remapped on FMC bank2 and still accessible at default mapping
+Page  839: 21.9     SDRAM controller
+Page  839: 21.9.1   SDRAM controller main features
+Page  839: The main features of the SDRAM controller are the following:
+Page  839: •    Two SDRAM banks with independent configuration
+Page  839: •    SDRAM clock can be fmc_ker_ck/2 or fmc_ker_ck/3
+Page  839: •    SDRAM power-up initialization by software
+Page  839: 21.9.2   SDRAM External memory interface signals
+Page  839: At startup, the SDRAM I/O pins used to interface the FMC SDRAM controller with the
+Page  839: external SDRAM devices must configured by the user application. The SDRAM controller
+Page  839: Table 188. SDRAM signals
+Page  839: SDRAM signal                                Description                 Alternate function
+Page  839: SDCLK             O                     SDRAM clock                          -
+Page  839: SDCKE0: SDRAM Bank 1 Clock Enable
+Page  839: SDCKE1: SDRAM Bank 2 Clock Enable
+Page  839: SDNE0: SDRAM Bank 1 Chip Enable
+Page  839: SDNE1: SDRAM Bank 2 Chip Enable
+Page  840: 21.9.3     SDRAM controller functional description
+Page  840: All SDRAM controller outputs (signals, address and data) change on the falling edge of the
+Page  840: SDRAM initialization
+Page  840: 1.   Program the memory device features into the FMC_SDCRx register. The SDRAM
+Page  840: SDRAM datasheet for the required delay after power-up).
+Page  840: register. Refer to the SDRAM datasheet for the number of Auto-refresh commands that
+Page  840: command and program the SDRAM device. In particular the Burst Length (BL) has to
+Page  840: same for both SDRAM banks, this step has to be repeated twice, once for each bank
+Page  840: and the Target Bank bits set accordingly. For mobile SDRAM devices, the MRD field is
+Page  840: adapted to SDRAM devices.
+Page  840: At this stage the SDRAM device is ready to accept commands. If a system reset occurs
+Page  840: during an ongoing SDRAM access, the data bus might still be driven by the SDRAM device.
+Page  840: Therefor the SDRAM device must be first reinitialized after reset before issuing any new
+Page  840: Note:      If two SDRAM devices are connected to the FMC, all the accesses performed at the same
+Page  840: issued using the timing parameters configured for SDRAM Bank 1 (TMRD andTRAS
+Page  841: SDRAM controller write cycle
+Page  841: The SDRAM controller accepts single and burst write requests and translates them into
+Page  841: single memory accesses. In both cases, the SDRAM controller keeps track of the active row
+Page  841: Before performing any write access, the SDRAM bank write protection must be disabled by
+Page  841: Figure 115. Burst write SDRAM access waveforms
+Page  841: The SDRAM controller always checks the next access.
+Page  841: •   if the next access targets another row (not active), the SDRAM controller generates a
+Page  842: SDRAM controller read cycle
+Page  842: The SDRAM controller accepts single and burst read requests and translates them into
+Page  842: single memory accesses. In both cases, the SDRAM controller keeps track of the active row
+Page  842: Figure 116. Burst read SDRAM access
+Page  842: The FMC SDRAM controller features a Cacheable read FIFO (6 lines x 32 bits). It is used to
+Page  842: SDRAM device
+Page  843: Each time a read request occurs, the SDRAM controller checks:
+Page  843: FMC SDRAM Controller
+Page  843: read request@0x00        SDRAM
+Page  843: one of the address tags           FMC SDRAM Controller
+Page  843: read request@0x04        SDRAM
+Page  843: SDRAM controller anticipates the next read access during the CAS latency period and the
+Page  844: In this case, the SDRAM controller increments the address.
+Page  844: –   If the new read request does not target an active row, the SDRAM controller
+Page  844: sequential and the current access was performed to a row boundary, the SDRAM controller
+Page  844: If necessary, the SDRAM controller inserts additional clock cycles between the following
+Page  846: SDRAM controller activates the first row in the next bank and initiates a new read/write
+Page  846: SDRAM devices. Otherwise, the SDRAM address range is violated and an AXI slave
+Page  846: 32-bit SDRAM memories, at boundary bank, the SDRAM controller continues to
+Page  846: read/write from the second SDRAM device (assuming it has been initialized):
+Page  846: a)   The SDRAM controller activates the first row (after precharging the active row, if
+Page  846: b)   If the first row is already activated, the SDRAM controller just initiates a read/write
+Page  846: SDRAM controller refresh cycle
+Page  846: The Auto-refresh command is used to refresh the SDRAM device content. The SDRAM
+Page  846: If SDRAM lines are not in idle state (not all row are closed), the SDRAM controller generates
+Page  847: The auto-refresh cycles are performed by the SDRAM device itself to retain data
+Page  847: The auto-refresh cycles are performed by the SDRAM controller.
+Page  847: The SDRAM clock stops running after a TRAS delay and the internal refresh timer stops
+Page  847: •   One of the devices is not activated (SDRAM bank is not initialized).
+Page  847: Before entering Self-Refresh mode, the SDRAM controller automatically issues a PALL
+Page  847: In Self-refresh mode, all SDRAM device inputs become don’t care except for SDCKE which
+Page  847: The SDRAM device must remain in Self-refresh mode for a minimum period of time of
+Page  847: As soon as an SDRAM device is selected, the SDRAM controller generates a sequence of
+Page  849: As soon as an SDRAM device is selected, the SDRAM controller exits from the Power-down
+Page  849: mode. After the memory access, the selected SDRAM device remains in Normal mode.
+Page  849: During Power-down mode, all SDRAM device input and output buffers are deactivated
+Page  849: The SDRAM device cannot remain in Power-down mode longer than the refresh period and
+Page  849: cannot perform the Auto-refresh cycles by itself. Therefore, the SDRAM controller carries
+Page  850: 21.9.5                SDRAM controller registers
+Page  850: SDRAM Control registers for SDRAM memory bank x (FMC_SDCRx)
+Page  850: This register contains the control parameters for each SDRAM memory bank
+Page  850: This bit enables Burst read mode. The SDRAM controller anticipates the next read commands
+Page  850: Bits 11:10 SDCLK[1:0]: SDRAM clock configuration
+Page  850: These bits define the SDRAM clock period for both SDRAM banks and allow disabling the clock
+Page  850: before changing the frequency. In this case the SDRAM must be re-initialized.
+Page  850: This bit enables Write mode access to the SDRAM bank.
+Page  851: This bits sets the SDRAM CAS latency in number of memory clock cycles
+Page  851: SDRAM Timing registers for SDRAM memory bank x (FMC_SDTRx)
+Page  851: This register contains the timing parameters of each SDRAM bank
+Page  852: SDRAM devices are used, the TRP must be programmed with the timing of the slowest device.
+Page  852: Note: TWR must be programmed to match the write recovery time (tWR) defined in the SDRAM
+Page  852: If two SDRAM devices are used, the FMC_SDTR1 and FMC_SDTR2 must be programmed
+Page  852: with the same TWR timing corresponding to the slowest SDRAM device.
+Page  852: If only one SDRAM device is used, the TWR timing must be kept at reset value (0xF) for the
+Page  852: cycles. The TRC timing is only configured in the FMC_SDTR1 register. If two SDRAM devices are
+Page  852: Note: TRC must match the TRC and TRFC (Auto Refresh period) timings defined in the SDRAM
+Page  853: Note: If two SDRAM devices are used, the FMC_SDTR1 and FMC_SDTR2 must be programmed
+Page  853: with the same TXSR timing corresponding to the slowest SDRAM device.
+Page  853: Note:             If two SDRAM devices are connected, all the accesses performed simultaneously to both
+Page  853: The TRP and TRC timings are only configured in the FMC_SDTR1 register. If two SDRAM
+Page  853: SDRAM Command mode register (FMC_SDCMR)
+Page  853: This register contains the command issued when the SDRAM device is accessed. This
+Page  853: register is used to initialize the SDRAM device, and to activate the Self-refresh and the
+Page  853: to one or to both SDRAM banks according to CTB1 and CTB2 command bits. This register
+Page  853: is the same for both SDRAM banks.
+Page  854: This 14-bit field defines the SDRAM Mode Register content. The Mode Register is programmed
+Page  854: extended mode register for mobile SDRAM.
+Page  854: This bit indicates whether the command will be issued to SDRAM Bank 1 or not.
+Page  854: 0: Command not issued to SDRAM Bank 1
+Page  854: 1: Command issued to SDRAM Bank 1
+Page  854: This bit indicates whether the command will be issued to SDRAM Bank 2 or not.
+Page  854: 0: Command not issued to SDRAM Bank 2
+Page  854: 1: Command issued to SDRAM Bank 2
+Page  854: These bits define the command issued to the SDRAM device.
+Page  854: Note: If two SDRAM banks are used, the Auto-refresh and PALL command must be issued
+Page  854: Note: If only one SDRAM bank is used and a command is issued with it’s associated CTB bit set, the
+Page  854: SDRAM refresh timer register (FMC_SDRTR)
+Page  854: Refresh rate = ( COUNT + 1 ) × SDRAM clock frequency
+Page  854: COUNT = ( SDRAM refresh period ⁄ Number of rows ) – 20
+Page  855: where 64 ms is the SDRAM refresh period.
+Page  855: The refresh rate must be increased by 20 SDRAM clock cycles (as in the above example) to
+Page  855: This 13-bit field is loaded into a timer which is decremented using the SDRAM clock. This
+Page  855: least to 41 SDRAM clock cycles.
+Page  855: This register is common to SDRAM bank 1 and bank 2.
+Page  855: This 13-bit field defines the refresh rate of the SDRAM device. It is expressed in number of memory
+Page  855: clock cycles. It must be set at least to 41 SDRAM clock cycles (0x29).
+Page  855: Refresh rate = (COUNT + 1) x SDRAM frequency clock
+Page  855: COUNT = (SDRAM refresh period / Number of rows) - 20
+Page  856: SDRAM Status register (FMC_SDSR)
+Page  856: These bits define the Status Mode of SDRAM Bank 2.
+Page  856: These bits define the Status Mode of SDRAM Bank 1.
+Page 3218: Updated Section : SDRAM Control registers 1,2 (FMC_SDCR1,2)

@@ -1,0 +1,199 @@
+Keyword: DMA channel
+Occurrences: 195
+================================================================================
+
+Page   13: 13.3.4       MDMA channel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 590
+Page   13: 13.5.2       MDMA channel x interrupt/status register (MDMA_CxISR) . . . . . . . . . 596
+Page   14: 13.5.3       MDMA channel x interrupt flag clear register (MDMA_CxIFCR) . . . . . 597
+Page   14: 13.5.4       MDMA channel x error status register (MDMA_CxESR) . . . . . . . . . . . 598
+Page   14: 13.5.5       MDMA channel x control register (MDMA_CxCR) . . . . . . . . . . . . . . . . 600
+Page   14: 13.5.6       MDMA channel x transfer configuration register (MDMA_CxTCR) . . . 602
+Page   14: 13.5.7       MDMA channel x block number of data register (MDMA_CxBNDTR) . 605
+Page   14: 13.5.8       MDMA channel x source address register (MDMA_CxSAR) . . . . . . . . 607
+Page   14: 13.5.9       MDMA channel x destination address register (MDMA_CxDAR) . . . . 607
+Page   14: 13.5.10 MDMA channel x block repeat address update register
+Page   14: 13.5.11 MDMA channel x link address register (MDMA_CxLAR) . . . . . . . . . . . 610
+Page   14: 13.5.12 MDMA channel x trigger and bus selection register (MDMA_CxTBR) 611
+Page   14: 13.5.13 MDMA channel x mask address register (MDMA_CxMAR) . . . . . . . . 612
+Page   14: 13.5.14 MDMA channel x mask data register (MDMA_CxMDR) . . . . . . . . . . . 612
+Page   15: 15.4.5      BDMA channels . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 652
+Page   15: 15.6.3      BDMA channel x configuration register (BDMA_CCRx) . . . . . . . . . . . 662
+Page   16: 15.6.4      BDMA channel x number of data to transfer register
+Page   16: 15.6.5      BDMA channel x peripheral address register (BDMA_CPARx) . . . . . . 666
+Page   16: 15.6.6      BDMA channel x memory 0 address register (BDMA_CM0ARx) . . . . 667
+Page   16: 15.6.7      BDMA channel x memory 1 address register (BDMA_CM1ARx) . . . . 668
+Page  300: Two BDMA channels are required to execute data transfers via LPUART1.
+Page  300: •   A BDMA channel, such as channel 0, is used to transfer data from SRAM4 to
+Page  300: •   The second BDMA channel role is to switch the D3 domain to Stop mode. For that
+Page  300: channel 7 synchronization block (SYNC7) are used in conjunction with BDMA channel
+Page  300: BDMA channel 0 does not use DMAMUX2 trigger capabilities. Refer to Table 45 for
+Page  300: BDMA channel 7 uses REQ_GEN0 to generate BDMA requests. The generation of BDMA
+Page  303: BDMA channel 7 (BDMA_Ch7). This transfer clears LPUART1 TC flag, and the
+Page  586: •   The priorities between the DMA channels are software-programmable (4 levels
+Page  587: two MDMA channels, in the destination memory, by simply programming the 2 channels
+Page  587: •   5 event flags (MDMA Channel Transfer Complete, MDMA Block Transfer complete,
+Page  589: DMA1/2 memory buffer) and the “real time” requirements for other MDMA channels
+Page  589: MDMA without doing a new arbitration between MDMA channel requests).
+Page  590: 13.3.4     MDMA channel
+Page  590: new block transfer will then be executed (on the next MDMA channel request) based on this
+Page  590: MDMA channel will be disabled and the end of channel transfer interrupt will be generated.
+Page  592: An arbiter manages the MDMA channel requests based on their priority. When MDMA is idle
+Page  593: •   It is the last block which needs to be transferred for the current MDMA channel
+Page  594: For each MDMA channel, an interrupt can be produced on the following events:
+Page  596: 13.5.2            MDMA channel x interrupt/status register (MDMA_CxISR)
+Page  597: 13.5.3          MDMA channel x interrupt flag clear register (MDMA_CxIFCR)
+Page  598: 13.5.4            MDMA channel x error status register (MDMA_CxESR)
+Page  600: 13.5.5            MDMA channel x control register (MDMA_CxCR)
+Page  602: 13.5.6           MDMA channel x transfer configuration register (MDMA_CxTCR)
+Page  605: 13.5.7         MDMA channel x block number of data register (MDMA_CxBNDTR)
+Page  607: 13.5.8        MDMA channel x source address register (MDMA_CxSAR)
+Page  607: 13.5.9        MDMA channel x destination address register (MDMA_CxDAR)
+Page  609: 13.5.10        MDMA channel x block repeat address update register
+Page  610: 13.5.11         MDMA channel x link address register (MDMA_CxLAR)
+Page  611: 13.5.12           MDMA channel x trigger and bus selection register (MDMA_CxTBR)
+Page  612: 13.5.13         MDMA channel x mask address register (MDMA_CxMAR)
+Page  612: 13.5.14         MDMA channel x mask data register (MDMA_CxMDR)
+Page  622: The DMA channels can also work without being triggered by a request from a peripheral.
+Page  632: 5.    Use DMAMUX1 to route a DMA request line to the DMA channel.
+Page  649: •   All BDMA channels independently configurable:
+Page  650: arbitrates between the DMA channels and their associated received requests. The BDMA
+Page  651: bdma_req[x]                 Input      BDMA channel x request
+Page  651: bdma_ack[x]                Output      BDMA channel x acknowledge
+Page  651: bdma_it[x]                Output      BDMA channel x interrupt
+Page  652: 15.4.5     BDMA channels
+Page  652: A DMA channel is programmed at block transfer level.
+Page  653: data transfer (once the number of single data to transfer reaches zero). The DMA channel
+Page  653: Note:    If the channel x is disabled, the BDMA registers are not reset. The DMA channel registers
+Page  653: The following sequence is needed to configure a DMA channel x:
+Page  654: DMA requests (such as quit the ADC scan mode), before disabling the DMA channel.
+Page  654: The BDMA channels may operate without being triggered by a request from a peripheral.
+Page  654: The BDMA channels can operate in double-buffer mode.
+Page  655: The steps described below allow the configuration of a BDMA channel x in double-buffer
+Page  655: target memory of the corresponding BDMA channel x, is given by the CT bit of the
+Page  655: Any BDMA channel can operate in peripheral-to-peripheral mode:
+Page  655: •   when the hardware request from a peripheral is selected to trigger the BDMA channel
+Page  655: •   when no peripheral request is selected and connected to the BDMA channel
+Page  658: DMA channel x. Separate interrupt enable bits are available for flexibility.
+Page  662: 15.6.3             BDMA channel x configuration register (BDMA_CCRx)
+Page  666: 15.6.4          BDMA channel x number of data to transfer register
+Page  666: 15.6.5          BDMA channel x peripheral address register (BDMA_CPARx)
+Page  667: 15.6.6        BDMA channel x memory 0 address register (BDMA_CM0ARx)
+Page  668: 15.6.7           BDMA channel x memory 1 address register (BDMA_CM1ARx)
+Page  674: DMAMUX2 channels 0 to 7 are connected to BDMA channels 0 to 7.
+Page  676: DMA channels
+Page  677: related DMA channel y:
+Page  677: 1.   Set and configure completely the DMA channel y, except enabling the channel y.
+Page  677: 3.   Last, activate the DMA channel y by setting the EN bit in the DMA y channel register.
+Page  736: bdma_ch0_it        136         129          BDMA_CH0        BDMA channel 0 interrupt          0x0000 0244
+Page  736: bdma_ch1_it        137         130          BDMA_CH1        BDMA channel 1 interrupt          0x0000 0248
+Page  736: bdma_ch2_it        138         131          BDMA_CH2        BDMA channel 2 interrupt          0x0000 024C
+Page  736: bdma_ch3_it        139         132          BDMA_CH3        BDMA channel 3 interrupt          0x0000 0250
+Page  736: bdma_ch4_it        140         133          BDMA_CH4        BDMA channel 4 interrupt          0x0000 0254
+Page  736: bdma_ch5_it        141         134          BDMA_CH5        BDMA channel 5 interrupt          0x0000 0258
+Page  736: bdma_ch6_it        142         135          BDMA_CH6        BDMA channel 6 interrupt          0x0000 025C
+Page  736: bdma_ch7_it        143         136          BDMA_CH7        BDMA channel 7 interrupt          0x0000 0260
+Page  868: •   If it is a DMA, a DMA transfer error is generated and the corresponding DMA channel is
+Page  961: •   Using two DMA channels (one for the master and one for the slave). In this case bits
+Page  961: –   A single DMA channel is used (the one of the master). Configure the DMA master
+Page  963: •   A single DMA channel is used (the one of the master). Configure the DMA master ADC
+Page  969: In all dual ADC modes, it is possible to use two DMA channels (one for the master, one for
+Page  969: In simultaneous regular and interleaved modes, it is also possible to save one DMA channel
+Page  969: and transfer both data using a single DMA channel. For this DAMDF bits must be configured
+Page 1027: Each DAC channel has a DMA capability. Two DMA channels are used to service DAC
+Page 1027: unique DMA channel.
+Page 1027: is issued and the DMA channelx underrun flag DMAUDRx in the DAC_SR register is set,
+Page 1131: Bit 21 RDMAEN: DMA channel enabled to read data for the regular conversion
+Page 1131: 0: The DMA channel is not enabled to read regular data
+Page 1131: 1: The DMA channel is enabled to read regular data
+Page 1132: Bit 5 JDMAEN: DMA channel enabled to read data for the injected channel group
+Page 1132: 0: The DMA channel is not enabled to read injected data
+Page 1132: 1: The DMA channel is enabled to read injected data
+Page 1154: general-purpose DMA channel. The image buffer is managed by the DMA, not by the
+Page 1217: •    The MDMA channel must be stopped to prevent unwanted MDMA trigger.
+Page 1218: •    The MDMA channel must be stopped to prevent unwanted MDMA trigger.
+Page 1219: •    The MDMA channel must be stopped to prevent unwanted MDMA trigger.
+Page 1220: •    The MDMA channel must be stopped to prevent unwanted MDMA trigger.
+Page 1244: data (two DMA channels are required). The peripheral also includes input and output FIFOs
+Page 1293: DMA channel control
+Page 1294: DMA channel control
+Page 1415: Note:     Before disabling a DMA channel (DMA enable bit reset in TIMxDIER), it is necessary to
+Page 1415: DMA Channel                             Event
+Page 1416: •    update multiple data registers with one DMA channel only,
+Page 1416: The burst DMA feature is only available for one DMA channel, but any of the 6 channels can
+Page 1572: 1.   Configure the corresponding DMA channel as follows:
+Page 1572: –    DMA channel peripheral address is the DMAR register address
+Page 1572: –    DMA channel memory address is the address of the buffer in the RAM containing
+Page 1572: 5.   Enable the DMA channel
+Page 1662: 1.   Configure the corresponding DMA channel as follows:
+Page 1662: –     DMA channel peripheral address is the DMAR register address
+Page 1662: –     DMA channel memory address is the address of the buffer in the RAM containing
+Page 1662: 5.   Enable the DMA channel
+Page 1781: 1.   Configure the corresponding DMA channel as follows:
+Page 1781: –     DMA channel peripheral address is the DMAR register address
+Page 1781: –     DMA channel memory address is the address of the buffer in the RAM containing
+Page 1781: 5.   Enable the DMA channel
+Page 2044: mode is enabled) is set. To map a DMA channel for USART transmission, use the following
+Page 2044: controller generates an interrupt on the DMA channel interrupt vector.
+Page 2045: controller generates an interrupt on the DMA channel interrupt vector.
+Page 2058: The DMA requests are also reset when UE = 0 so the DMA channel must be disabled
+Page 2100: TXE flag (TXFNF flag if FIFO mode is enabled) is set. To map a DMA channel for LPUART
+Page 2100: controller generates an interrupt on the DMA channel interrupt vector.
+Page 2101: byte is received. To map a DMA channel for LPUART reception, use the following
+Page 2101: controller generates an interrupt on the DMA channel interrupt vector.
+Page 2113: The DMA requests are also reset when UE = 0 so the DMA channel must be disabled
+Page 2152: When starting communication using DMA, to prevent DMA channel management raising
+Page 2152: configured for SPI TX and the SPI RX DMA channel.
+Page 2152: If the DMA channel PSIZE value is equal to 16-bit or 32-bit and SPI data size is less than or
+Page 2152: equal to 8-bit, then packing mode is enabled. Similarly, If the DMA channel PSIZE value is
+Page 2180: separated DMA channel for TX and RX paths. Each DMA channel can be enabled via
+Page 2181: –    Enable the DMA channel,
+Page 2182: –    Enable the DMA channels,
+Page 2183: –    Enable the DMA channel,
+Page 2239: There is one DMA channel per audio sub-block supporting basic DMA request/acknowledge
+Page 2240: 2.   Configure SAI DMA channel.
+Page 2240: Note:        Before configuring the SAI block, the SAI DMA channel must be disabled.
+Page 2271: This peripheral can be fully controlled via the APB1 bus, and can handle two DMA channels:
+Page 2271: •    A DMA channel dedicated to the transfer of audio samples
+Page 2271: •    A DMA channel dedicated to the transfer of IEC60958 channel status and user
+Page 2281: channel status and audio samples can be read via interrupt or DMA channels. When
+Page 2284: them through SPDIFRX_CSR register, and use a dedicated DMA channel or interrupt to
+Page 2285: via a dedicated DMA channel. This feature allows the SPDIFRX to acquire continuously the
+Page 2288: The SPDIFRX offers two independent DMA channels:
+Page 2288: •         A DMA channel dedicated to the data transfer
+Page 2288: •         A DMA channel dedicated to the channel status and user data transfer
+Page 2291: user information (DMA channel selection and activation, priority, number of data to
+Page 2292: –    CBDMAEN = RXDMAEN = 1 (enable DMA channels)
+Page 2293: If an interrupt is coming from the DMA channel used of the channel status (SPDIFRX_CSR):
+Page 2293: If an interrupt is coming from the DMA channel used of the audio samples
+Page 2312: The software buffer usage requires the use of a DMA channel to transfer data from the
+Page 2314: The DMA channel or stream must be configured in following mode (refer to DMA section):
+Page 2315: The DMA channel or stream must be configured in following mode (refer to DMA section):
+Page 2317: The software buffer usage requires the use of a DMA channel to transfer data from the
+Page 2318: The DMA channel or stream must be configured in following mode (refer to DMA section):
+Page 2320: In order to work with n reception buffers in RAM, the DMA channel or stream must be
+Page 2634: read/write operation. The application can read the corresponding DMA channel address
+Page 2740: •   Tx DMA channel with TCP Segmentation Offload (TSO) feature enabled
+Page 2745: is suspended, bit 2 and 16 of the corresponding DMA channel Status register are set,
+Page 2745: DMA by clearing Bit 0 of Transmit control register of corresponding DMA channel, the
+Page 2747: Transmit Control Register of corresponding DMA channel, the DMA enters the Stop
+Page 2749: the packet data buffers of the corresponding DMA channel.
+Page 2749: pointer register of corresponding DMA channel.
+Page 2749: the DMA channel enters the Suspend state and goes to step 11.
+Page 2783: corresponding to a DMA channel (see Channel interrupt enable register
+Page 2783: corresponding to a DMA channel (see Channel status register (ETH_DMACSR)).
+Page 2803: only, and it contains bits corresponding to each DMA channel (TX & RX pair), the MTL, and
+Page 2803: (ETH_DMACSR)) captures all the interrupt events of that TxDMA and RxDMA channel. The
+Page 2803: There are two groups of interrupts in the DMA channel namely Normal and Abnormal
+Page 2804: bit is set whenever the Tx DMA channel closes the descriptor in which the IOC bit is set
+Page 2816: registers of a DMA channel:
+Page 2844: to determine the interrupt status of DMA channels, MTL queues, and the MAC.
+Page 2844: Bit 0 DC0IS: DMA Channel Interrupt Status
+Page 2844: This bit indicates an interrupt event in DMA Channel. To reset this bit to 0, the software must
+Page 2844: read the corresponding register in DMA Channel to get the exact cause of the interrupt and
+Page 2844: The Debug status register gives the Receive and Transmit process status for DMA Channel
+Page 2845: Bits 15:12 TPS0[3:0]: DMA Channel Transmit Process State
+Page 2845: Bits 11:8 RPS0[3:0]: DMA Channel Receive Process State
+Page 2845: The DMA Channel Control register specifies the MSS value for segmentation, length to skip
+Page 2846: The DMA Channel Transmit Control register controls the Tx features such as PBL, TCP
+Page 2848: The DMA Channel Receive Control register controls the Rx features such as PBL, buffer
+Page 2862: the corresponding DMA channel engine disables all bus accesses.

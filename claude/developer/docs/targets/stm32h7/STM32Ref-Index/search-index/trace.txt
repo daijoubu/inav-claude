@@ -1,0 +1,394 @@
+Keyword: trace
+Occurrences: 390
+================================================================================
+
+Page   67: 59.5     Trace and debug subsystem functional description . . . . . . . . . . . . . . . 3023
+Page   67: 59.5.4      Trace funnel (CSTF) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3058
+Page   67: 59.5.5      Embedded trace FIFO (ETF) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3068
+Page   67: 59.5.6      Trace port interface unit (TPIU) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3090
+Page   67: 59.5.7      Serial wire output (SWO) and SWO trace funnel (SWTF) . . . . . . . . . 3108
+Page   67: 59.6.2      Cortex-M7 data watchpoint and trace unit (DWT) . . . . . . . . . . . . . . . 3151
+Page   67: 59.6.3      Cortex-M7 instrumentation trace macrocell (ITM) . . . . . . . . . . . . . . . 3164
+Page   67: 59.6.5      Cortex-M7 embedded trace macrocell (ETM) . . . . . . . . . . . . . . . . . . 3181
+Page   79: Table 565.   Trace port pins . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3000
+Page   79: Table 566.   Serial-wire trace port pins . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3000
+Page  318: lsi_ck    5          csi_ck     1   traceclkin
+Page 2998: The debug infrastructure allows software designers to debug and trace their embedded
+Page 2998: industry standard debugging tools. A trace port allows data to be captured for logging and
+Page 2998: The trace and debug system has been designed to support a variety of typical use cases:
+Page 2998: •   Low cost trace
+Page 2998: Limited trace capability is available over the single-wire debug output. This supports
+Page 2998: detection and program counter sampling. Single-wire trace can be maintained even
+Page 2998: •   Tracing code execution via the trace port
+Page 2998: Trace information is combined into a single trace stream and output to a trace port
+Page 2998: analyzer in real time. An ID embedded in the trace allows the analyzer to identify the
+Page 2998: •   Capturing trace continuously in a circular buffer
+Page 2998: Instead of streaming it off-chip, the combined trace information can be stored on-chip in
+Page 2998: a circular buffer. The trace storage can be started and stopped by a debugger
+Page 2998: •   Draining the buffer to the trace port
+Page 2998: The stored trace can be dumped off-chip to the trace port analyzer. The buffer draining
+Page 2998: The debugger can read the contents of the trace buffer via the debug port. This is
+Page 2998: slower than the trace port, but allows basic trace functionality on the debugger without
+Page 2998: the cost of a trace port analyzer.
+Page 2998: •   Analyzing stored trace in software
+Page 2998: The trace buffer can be read by the processor core, or transferred into system memory
+Page 2998: •   Uploading stored trace
+Page 2998: The stored trace can also be uploaded to a host machine using one of the MCU’s many
+Page 2998: especially useful if the trace port is not accessible, for example remote monitoring and
+Page 2999: A comprehensive set of trace and debug features is provided to support software
+Page 2999: •    Serial-wire trace port
+Page 2999: •    Trace port
+Page 2999: •    Arm® CoreSight™ debug and trace components
+Page 2999: Debug access port                Cortex-M7 debug                  Trace & debug       Legend
+Page 2999: nJTRST                                                                                                       ATB (trace bus)
+Page 2999: trace port
+Page 2999: ETF            SWO      TRACESWO
+Page 2999: Sys                                      Trace port
+Page 2999: TRACECK
+Page 2999: TRACED[3:0]
+Page 3000: Table 565. Trace port pins
+Page 3000: TRACED0                       O    Trace synchronous data out 0
+Page 3000: TRACED1                       O    Trace synchronous data out 1
+Page 3000: TRACED2                       O    Trace synchronous data out 2
+Page 3000: TRACED3                       O    Trace synchronous data out 3
+Page 3000: TRACECK                       O    Trace clock
+Page 3000: Table 566. Serial-wire trace port pins
+Page 3000: TRACESWO                      O    Single wire trace asynchronous data out                        PB3(1)
+Page 3000: 1. TRACESWO is multiplexed with JTDO. This means that single wire trace is only available when using the
+Page 3001: nJTRST                                                                                                        ATB (trace bus)
+Page 3001: trace port
+Page 3001: ETF             SWO      TRACESWO
+Page 3001: Sys                                       Trace port
+Page 3001: TRACECK
+Page 3001: TRACED[3:0]
+Page 3001: DBGMCU and the serial wire trace features.
+Page 3001: The D1 power domain contains the Cortex-M7 core and the associated debug and trace
+Page 3001: components. It also contains the system trace components located on the APB-D. This
+Page 3001: required, or whenever a trace functionality is active on the processor.
+Page 3002: nJTRST                                                                                                       ATB (trace bus)
+Page 3002: trace port
+Page 3002: ETF            SWO      TRACESWO
+Page 3002: Sys                     TRACECLK         Trace port
+Page 3002: TRACECK
+Page 3002: TRACED[3:0]
+Page 3002: CK_DBG_D3 clocks the SWO and serial wire trace funnel.
+Page 3002: CK_DBG_D1 clocks the trace components in the D1 power domain: System ROM table 2,
+Page 3002: CoreSight trace funnel, ETF, system CTI and TPIU. It is a gated version of the D1 domain
+Page 3002: TRACECLK is the trace port output clock. It is a gated version of the system clock
+Page 3002: TRACECLK is derived directly from the PLL1 VCO output, divided by three. This is required
+Page 3002: in order to support the high data throughput on the trace port when the processor operates
+Page 3003: The debug and trace components included in the processor (ETM ITM, DWG, FPB etc) are
+Page 3018: 1.   AP0: Cortex-M7 access port (AHB-AP). Allows access to the debug and trace features
+Page 3018: 3.   AP2: System access port (APB-AP). Allows access to the debug and trace features on
+Page 3018: All access ports are of MEM-AP type, that is, the debug and trace component registers are
+Page 3023: 59.5          Trace and debug subsystem functional description
+Page 3023: The trace and debug subsystem features the following CoreSight components:
+Page 3023: •   Trace port interface unit (TPIU)
+Page 3023: •   Trace bus funnel (CSTF)
+Page 3023: •   Embedded trace FIFO (ETF)
+Page 3023: •   Serial wire output trace funnel (SWTF)
+Page 3023: Trace bus replicator branches the trace bus from the CPU’s ITM CoreSight component to
+Page 3023: ETF and SWO, through trace bus funnels.
+Page 3024: 0x004          Trace funnel     0xE00F3000       0x5C013000         0x3000        4 Kbyte   0x00003003
+Page 3025: Trace funnel (CSTF)
+Page 3025: Trace port interface (TPIU)
+Page 3025: Trace FIFO (ETF)
+Page 3025: SWO trace funnel (SWTF)
+Page 3031: reference for all of the trace sources in the system, namely the ETM and ITM in the
+Page 3031: processor core. These components insert timestamps in the trace streams that allow the
+Page 3031: trace analyzer to recover the chronological order of trace packets, which can be lost when
+Page 3031: multiple trace sources are multiplexed into one stream at the funnels.
+Page 3031: value is changed, the timestamp generator resynchronizes all the trace sources.
+Page 3034: This field must be programmed with the trace generator clock frequency whenever it
+Page 3039: The CTIs allow events from various sources to trigger debug and/or trace activity. For
+Page 3039: example, a transition detected on an external trigger input can start code trace.
+Page 3039: 1      ETFACQCOMP                    ETF           to be generated when the trace FIFO is
+Page 3040: generated when the trace FIFO is full
+Page 3040: Trace port flush trigger - causes the TPIU
+Page 3040: Trace Port enable trigger - starts trace output
+Page 3040: on the external trace port
+Page 3040: ETF enable trigger - starts filling the Trace
+Page 3040: ETF flush trigger - causes the Trace FIFO to
+Page 3041: trace
+Page 3041: trace
+Page 3058: 59.5.4          Trace funnel (CSTF)
+Page 3058: The trace funnel is a CoreSight component that combines the ATB buses from two trace
+Page 3058: settings to be configured. The priorities can be modified only when trace is disabled. The
+Page 3058: Trace funnel registers
+Page 3063: 0x12: Trace funnel
+Page 3067: Trace funnel register map and reset values
+Page 3068: 59.5.5         Embedded trace FIFO (ETF)
+Page 3068: The ETF is an 8 Kbyte memory that captures trace data from two trace sources, namely the
+Page 3068: ETM and ITM of the CPU core. The ETF is a design configuration of the CoreSight™ trace
+Page 3068: The trace memory is used as a FIFO that is drained through the ATB master interface.
+Page 3068: Trace data is captured into the trace RAM and when full, the incoming trace stream is
+Page 3068: stalled. When the Trace buffer is not empty, trace data is drained out through the ATB
+Page 3068: In this mode, the role of the FIFO is to smooth the flow of trace information arriving at
+Page 3068: the trace port. Since the trace data can be very bursty in nature, the peak data rate can
+Page 3068: rate at the trace port, which can then be sized according to the average rate rather than
+Page 3069: the peak. The trace is stored off-chip in real time by the trace port analyzer tool, and so
+Page 3069: the trace log can be very big.
+Page 3069: The trace memory is used as a FIFO that can be read through the RRD Register while
+Page 3069: trace is being captured. Trace data is captured into the trace RAM and when full, the
+Page 3069: incoming trace stream is stalled.
+Page 3069: This mode allows the trace to be transferred by DMA into the system memory, or to a
+Page 3069: The trace memory is used as a circular buffer. Trace data is captured into the Trace
+Page 3069: the trace memory is full, incoming trace data continues to be overwritten into the trace
+Page 3069: In this mode, the ETF stores the trace data on-chip, so the trace log size is limited to
+Page 3069: becomes full, incoming trace data overwrites the oldest stored data and the oldest
+Page 3069: stored data is lost. Therefore the contents of the trace buffer represent the most recent
+Page 3069: the activity since the trace was started.
+Page 3069: There are three possible methods to read out the buffer contents once the trace stops:
+Page 3069: –    via the Trace port - with the TPIU enabled, the contents of the buffer are output
+Page 3069: over the Trace port. This can be done by setting the DRAINBUF bit in the
+Page 3069: This state is entered after a reset, or when trace capture is disabled. The ETF must
+Page 3069: Trace capture is performed in this state. It is entered by enabling trace capture while in
+Page 3069: Trace capture is stopped in this state, but the contents of the buffer can be read out or
+Page 3069: This is a transitional state while disabling trace capture.
+Page 3069: This is a transitional state while stopping trace capture.
+Page 3070: For more information on the trace memory controller CoreSight™ component, refer to the
+Page 3070: Arm® CoreSight™ trace memory controller technical reference manual [3].
+Page 3071: Bit 4 EMPTY: Trace FIFO empty
+Page 3071: 0: Trace FIFO contains data
+Page 3071: 1: Trace FIFO is empty.
+Page 3071: Note: Empty trace FIFO does not mean that the ETF pipeline is empty. The latter is indicated
+Page 3071: This bit is set when trace capture has stopped, and all internal pipelines and buffers have
+Page 3071: This bit is set when trace capture has stopped and all internal pipelines and buffers have
+Page 3071: The Triggered bit is set when trace capture is in progress and the TMC has detected a
+Page 3071: This bit does not indicate that a trigger has been embedded in the formatted output trace data
+Page 3071: from the TMC. Trigger indication on the output trace stream is determined by the
+Page 3071: Bit 0 FULL: Trace buffer full
+Page 3071: In software and hardware FIFO modes, this flag indicates that the current space in the trace
+Page 3072: of data from the trace buffer. When all of the trace buffer has been read, the Empty bit in the
+Page 3072: entries from the trace memory over the APB interface via the ETF_RRD register. The pointer
+Page 3073: entries into the trace memory over the APB interface via the ETF_RWD register. The pointer
+Page 3074: In Circular buffer mode, specifies the number of 32-bit words to capture in the trace RAM
+Page 3074: incoming trace stream, ATID =7'h7D. On capturing the specified number of data words, a
+Page 3074: The number of 32-bit words written into the trace RAM following the trigger is the value stored
+Page 3074: either on TRIGIN or in the incoming trace stream, are ignored until the counter reaches zero.
+Page 3074: This register is cleared when READY goes high, so that the state of the counter when trace
+Page 3074: capture has stopped does not affect a subsequent trace capture session. Writing to this
+Page 3074: Bit 0 TCEN: Trace capture enable
+Page 3074: 0: Disable trace capture (moves from Running, Stopping or Stopped state into Disabling or
+Page 3074: 1: Enable trace capture (moves from Disabled state into Running state)
+Page 3075: In this mode, the trace memory is used as a circular buffer. Trace data is captured into the
+Page 3075: Trace memory starting from the location pointed to by the write pointer register. Even when
+Page 3075: the trace memory is full, incoming trace data continues to be overwritten into the trace
+Page 3075: In this mode, the trace memory is used as a FIFO that can be read through the RRD Register
+Page 3075: while trace is being captured. Trace data is captured into the trace RAM and when full, the
+Page 3075: incoming trace stream is stalled.
+Page 3075: In this mode, the trace memory is used as a FIFO that is drained through the ATB master
+Page 3075: interface. Trace data is captured into the trace RAM and when full, the incoming trace stream
+Page 3075: is stalled. When the Trace buffer is non-empty, trace data is drained out through the ATB
+Page 3076: Reading this register returns the maximum fill level of the trace memory in 32-bit words since
+Page 3076: This register is used for performance analysis of the trace system.
+Page 3076: Reading this register returns the current fill level of the trace memory in 32-bit words.
+Page 3077: bit words in the trace memory. When the space in the FIFO is less than or equal to this value,
+Page 3077: FULL bit output is asserted after the first 32-bit word is written to trace memory.
+Page 3078: This bit is used to enable draining of the trace data through the ATB master interface after the
+Page 3078: formatter has stopped. This is useful in Circular buffer mode to capture trace data into trace
+Page 3078: memory and then to drain the captured trace through the ATB master interface.
+Page 3078: Writing a one to this bit when in Stopped state starts the drain of the contents of the trace
+Page 3078: When trace capture is complete in Circular buffer mode, all of the captured trace must be
+Page 3078: retrieved from the trace memory through the same mechanism, either read all trace data out
+Page 3078: through RRD reads, or drain all trace data by setting the DRAINBUF bit. Setting the
+Page 3078: DRAINBUF bit after some of the captured trace has been read out through RRD results in
+Page 3078: 1: Stop trace capture when a trigger event occurs
+Page 3079: 1: Stop trace capture when flush is completed
+Page 3079: 1: Indicate a trigger in the trace stream when flush is completed
+Page 3079: If ENFT and ENTI are both clear, this bit is ignored and no trigger is inserted into the trace
+Page 3079: 1: Indicate a trigger in the trace stream when trigger event occurs
+Page 3079: If ENFT and ENTI are both clear, this bit is ignored and no trigger is inserted into the trace
+Page 3079: 1: Indicate a trigger in the trace stream when a rising edge is detected on the TRIGIN input.
+Page 3079: If ENFT and ENTI are both clear, this bit is ignored and no trigger is inserted into the trace
+Page 3079: 1: Flush the trace FIFO and pipeline
+Page 3079: 1: Flush the trace FIFO and pipeline if a trigger event occurs
+Page 3079: 1: Flush the trace FIFO and pipeline if when a rising edge is detected on the FLUSHIN input
+Page 3080: Setting this bit enables the insertion of triggers in the formatted trace stream. A trigger is
+Page 3080: indicated by inserting one byte of data 8'h00 with ATID 7'h7D in the trace stream. Trigger
+Page 3080: indication on the trace stream is additionally controlled by the register bits TRIGONFL,
+Page 3080: 0: Formatting is disabled. Incoming trace data is assumed to be from a single trace source.
+Page 3080: If multiple ATIDs are received by the ETF when trace capture is enabled and the formatter is
+Page 3080: disabled, it results in interleaving of trace data. Disabling of formatting is supported only in
+Page 3084: 0x3: Captures trace data from the ATB slave interface into RAM that can be drained through
+Page 3084: 0x2: Component is a trace link because it has an ATB master interface through which trace
+Page 3090: 59.5.6         Trace port interface unit (TPIU)
+Page 3090: The TPIU is a CoreSight™ component that formats the trace stream and outputs it on the
+Page 3090: external trace port signals. The TPIU has a single ATB slave port for incoming trace data.
+Page 3090: The trace port is a synchronous parallel port, comprising a clock output, TRACECK, and
+Page 3090: four data outputs, TRACED(7:0). The trace port width is programmable in the range 1 to 8.
+Page 3090: frees up IOs for other purposes. However it restricts the bandwidth of the trace port and
+Page 3090: hence the quantity of trace information that can be output in real time. The TRACECK
+Page 3090: output must be enabled by setting the TRACECLKEN bit in the DBGMCU_CR register
+Page 3090: before trace is sent to the TPIU. Furthermore, the TRACECK frequency can be
+Page 3090: For more information on the Trace port interface CoreSight™ component, refer to the Arm®
+Page 3091: Bits 31:0 PORTSIZE[31:0]: Indicates supported trace port sizes, from 1 to 32 pins. Bit n-1 when set
+Page 3091: Bits 31:0 PORTSIZE[31:0]: Indicates current trace port size
+Page 3092: Enables delaying the indication of triggers to any external connected trace capture or storage
+Page 3094: Indicates whether the FF/00 pattern is supported as output over the trace port.
+Page 3094: Indicates whether the AA/55 pattern is supported as output over the trace port.
+Page 3094: Indicates whether the walking 0’s pattern is supported as output over the trace port.
+Page 3094: Indicates whether the walking 1’s pattern is supported as output over the trace port.
+Page 3094: Indicates whether the FF/00 pattern is enabled as output over the trace port
+Page 3095: Indicates whether the AA/55 pattern is enabled as output over the trace port
+Page 3095: Indicates whether the walking 0’s pattern is enabled as output over the trace port
+Page 3095: Indicates whether the walking 1’s pattern is enabled as output over the trace port
+Page 3095: Bits 7:0 PATTCOUNT[7:0]: Number of TRACECLKIN cycles
+Page 3095: The field provides a 8-bit counter value to indicate the number of TRACECLKIN cycles for
+Page 3096: Bit 2 TCPRESENT: TRACECTL output pin availability
+Page 3096: Indicates whether the optional TRACECTL output pin is available for use.
+Page 3096: 0: TRACECTL pin is not present in this device.
+Page 3096: The formatter has received a stop request signal and all trace data and post-amble is sent.
+Page 3096: Any additional trace data on the ATB interface is ignored.
+Page 3096: 1: Indicate a trigger in the trace stream when flush is completed
+Page 3096: 1: Indicate a trigger in the trace stream when trigger event occurs
+Page 3097: 1: Indicate a trigger in the trace stream when the TRIGIN input from the system CTI is
+Page 3097: 1: Flush the trace
+Page 3097: 1: Flush the trace if a trigger event occurs
+Page 3097: 1: Flush the trace if the FLUSHIN input from the system CTI is asserted
+Page 3097: Bit 0 ENFTC: Enable the embedding of triggers in formatted trace
+Page 3101: Bit 9 TCLKDATA: Support of trace clock plus data
+Page 3101: Bit 5 CLKRELAT: ATB clock and TRACECLKIN relation
+Page 3101: Indicates the relationship between the ATB clock and TRACECLKIN (synchronous or
+Page 3102: 0x1: Trace port component
+Page 3102: 0x1: Trace sink component
+Page 3108: 59.5.7         Serial wire output (SWO) and SWO trace funnel (SWTF)
+Page 3108: The SWO is a CoreSight component that formats the trace stream from the processor ITM
+Page 3108: and outputs it on the single wire TRACESWO output. The SWO trace funnel (SWTF) must
+Page 3108: be programmed to enable the trace bus from the Cortex-M7 ITM before trace is enabled.
+Page 3108: •     no synchronous trace output, that is, no TRACEDATA or TRACECLK pins
+Page 3109: The baud rate is the trace clock frequency divided by (PRESCALER - 1). The baud rate
+Page 3109: changes instantly, so it is recommended to stop the trace source and wait until the port is idle
+Page 3110: Bit 2 TCPRESENT: TRACECTL pin present on SWO
+Page 3110: 0: TRACECTL pin not present
+Page 3113: Bit 9 TCLKDATA: Trace clock plus data support
+Page 3113: Indicates whether trace clock plus data is supported
+Page 3113: Bit 5 CLKRELAT: ATB clock to TRACECLKIN relation
+Page 3113: Indicates the relationship between the ATB clock and TRACECLKIN (synchronous or
+Page 3114: 0x1: Trace port component
+Page 3114: 0x1: Trace sink component
+Page 3125: 0x12: Trace funnel
+Page 3131: •          maintain the clock and power to the system debug and trace components when in low
+Page 3132: TRGO                                         D3DBG D1DBG TRACE
+Page 3132: Bit 20 TRACECLKEN: Trace port clock enable
+Page 3132: This bit enables the trace port clock, TRACECLK.
+Page 3132: 0: Disabled - TRACECLK is disabled
+Page 3132: 1: Enabled - TRACECLK is active
+Page 3138: TRACECLKEN
+Page 3138: •     Data watchpoint and trace unit (DWT)
+Page 3138: •     Instrumentation trace macrocell (ITM)
+Page 3138: •     Embedded trace macrocell (ETM)
+Page 3140: Data watchpoint/trace (DWT)
+Page 3140: Embedded trace (ETM)
+Page 3140: @0xE0042000                    Instrumentation trace (ITM)
+Page 3151: 59.6.2      Cortex-M7 data watchpoint and trace unit (DWT)
+Page 3152: •          one or more DWT data trace packets, containing one or more of:
+Page 3152: Bit 27 NOTRCPKT: Trace sampling and exception tracing support (read-only)
+Page 3153: Bit 16 EXCTRCENA: Enable for exception trace generation
+Page 3158: Bit 5 EMITRANGE: Data trace address offset packet enable
+Page 3158: Enables generation of data trace address offset packets (containing data address bits 0 to
+Page 3161: 0xE: Trace generator component
+Page 3164: 59.6.3          Cortex-M7 instrumentation trace macrocell (ITM)
+Page 3164: The ITM generates trace information as packets. There are four sources that can generate
+Page 3164: 1.     Software trace
+Page 3165: outputs packets from the FIFO onto the trace bus. Reading a stimulus port register
+Page 3165: 2.        Hardware trace
+Page 3165: The DWT generates trace packets in response to a data trace event, a PC sample or a
+Page 3165: performance profiling counter wraparound. The ITM outputs these packets on the trace
+Page 3165: counter value is output in a timestamp packet on the trace bus. The counter is reset to
+Page 3165: Write data is output on the trace bus as a software event packet. When reading, bit 0 is a
+Page 3165: ITM trace enable register (M7_ITM_TER)
+Page 3166: ITM trace privilege registers (M7_ITM_TPR)
+Page 3166: ITM trace control register (M7_ITM_TCR)
+Page 3166: Res.   Res.     Res.   Res.   Res.   Res.    Res.        Res.   BUSY                  TRACEBUSID[6:0]
+Page 3167: Bits 22:16 TRACEBUSID[6:0]: Identifier for multi-source trace stream formatting
+Page 3167: If multi-source trace is in use, the debugger must write a non-zero value to this field. Note:
+Page 3167: different IDs must be used for each trace source in the system.
+Page 3167: Prescale used with the trace packet reference clock The possible values are:
+Page 3167: Enables forwarding of hardware event packets from the DWT unit to the trace port.
+Page 3171: 0xE: Trace generator component
+Page 3172: M7_ITM_TCR                                                                               TRACEBUSID[6:0]
+Page 3178: 0xE: Trace generator component
+Page 3181: 59.6.5          Cortex-M7 embedded trace macrocell (ETM)
+Page 3181: generates trace packets that allow the execution of the Cortex-M7 core to be traced. In the
+Page 3181: STM32H7, the ETM is configured for instruction trace only, so data accesses are not
+Page 3181: included in the trace information.
+Page 3181: The ETM receives information from the CPU over the processor trace interface, including:
+Page 3181: Bit 0 EN: Trace program enable
+Page 3181: 0: Trace unit is disabled
+Page 3181: 1: Trace unit is enabled
+Page 3182: Bit 0 IDLE: Trace unit inactive
+Page 3183: ETM trace configuration register (M7_ETM_CONFIG)
+Page 3183: 0x1: Conditional load instructions are traced
+Page 3183: 0x2: Conditional store instructions are traced
+Page 3183: 0x3: Conditional load and store instructions are traced
+Page 3183: 0x7: All conditional instructions are traced
+Page 3183: Bit 4 CCI: Cycle counting in instruction trace
+Page 3184: Only accepts writes when trace unit is disabled
+Page 3184: Only accepts writes when trace unit is disabled
+Page 3185: 1: Entry to low power state does not affect resources and event trace generation
+Page 3185: Bits 3:0 INSTEN[3:0]: Instruction trace event element enable
+Page 3185: Only accepts writes when trace unit is disabled
+Page 3185: Bit 9 DSTALL: Stall processor based on data trace buffer space
+Page 3185: Bit 8 ISTALL: Stall processor based on instruction trace buffer space
+Page 3186: Only accepts writes when trace unit is disabled
+Page 3186: Bits 4:0 PERIOD[4:0]: Trace bytes between synchronization requests
+Page 3186: Defines the number of bytes of trace information between trace synchronization requests.
+Page 3187: Bits 11:0 THRESHOLD[11:0]: Threshold value for instruction trace cycle counting
+Page 3187: The threshold represents the minimum interval between cycle count trace packets.
+Page 3187: ETM trace ID register (M7_ETM_TRACEID)
+Page 3187: Res.   Res.     Res.   Res.   Res.   Res.   Res.   Res.   Res.                            TRACEID[6:0]
+Page 3187: Bits 6:0 TRACEID[6:0]: Trace ID
+Page 3188: Bit 19 EXLEVEL_S3: Trace disable, exception level 3
+Page 3188: Bit 16 EXLEVEL_S0: Trace disable, exception level 0
+Page 3188: Selects whether a system error exception must always be traced.
+Page 3188: 0: System error exception is traced only if the instruction or exception immediately
+Page 3188: before the system error exception is traced
+Page 3188: 1: System error exception is always traced regardless of the value of ViewInst
+Page 3188: Selects whether a reset exception must always be traced.
+Page 3188: 0: Reset exception is traced only if the instruction or exception immediately
+Page 3188: before the reset exception is traced
+Page 3188: 1: Reset exception is always traced regardless of the value of ViewInst
+Page 3189: Bits 23:16 STOP[7:0]: Selector of single address comparators to stop trace
+Page 3189: Defines the single address comparators to stop trace with the ViewInst Start/Stop control.
+Page 3189: Bits 7:0 START[7:0]: Selector of single address comparators to start trace
+Page 3189: Defines the single address comparators to start trace with the ViewInst Start/Stop control.
+Page 3190: Bits 19:16 STOP[3:0]: Selector of processor comparator input to stop trace
+Page 3190: purpose of stopping trace. One bit is provided for each processor comparator input.
+Page 3190: Bits 3:0 START[3:0]: Selector of processor comparator input to start trace
+Page 3190: purpose of starting trace. One bit is provided for each processor comparator input.
+Page 3190: Indicates the maximum speculation depth of the instruction trace stream. This is the
+Page 3190: maximum number of P0 elements that have not been committed in the trace stream at any
+Page 3190: 0x2: Maximum trace speculation depth is 2
+Page 3191: 0x0: No P0 keys used in instruction trace only configuration
+Page 3191: 0x0: No P1 keys used in instruction trace only configuration
+Page 3193: 0x1: APSR condition flag values traced
+Page 3193: Bits 11:10 NUMEVENT[1:0]: Number of events supported in the trace
+Page 3193: Bit 7 TRCCCI: Support for cycle counting in the instruction trace
+Page 3193: 1: Cycle counting in the instruction trace is implemented
+Page 3193: 1: Conditional instruction trace is implemented
+Page 3193: 1: Branch broadcast trace is implemented
+Page 3194: Bits 31:24 DESIGNER[7:0]: Trace unit designer entity
+Page 3194: Bits 11:8 TRCARCHMAJ[3:0]: Major trace unit architecture version number
+Page 3194: Bits 7:4 TRCARCHMIN[3:0]: Minor trace unit architecture version number
+Page 3195: Indicates whether the NOOVERFLOW of trace stall control is implemented.
+Page 3195: 0x0: Only one processor can be traced
+Page 3195: 1: Trace stall control (TRCSTALLCTLR) is implemented
+Page 3195: Bit 25 SYNCPR: Trace synchronization period support
+Page 3195: 0: TRCSYNCPR is read-only for instruction trace only configuration; the trace
+Page 3195: Bits 11:0 CCITMIN[11:0]: Instruction trace cycle counting minimum threshold
+Page 3195: 0x4: Minimum threshold is 4 instruction trace cycle
+Page 3196: UNCN          NUMCNTR[2:0]       NUMSEQSTATE[2:0]      Res.                                  TRACEIDSIZE[5:0]
+Page 3197: Bits 21:16 TRACEIDSIZE[5:0]: Number of bits of trace ID
+Page 3197: 0x07: Seven-bit trace ID implemented.
+Page 3200: Request to maintain power to the ETM and access to the trace registers.
+Page 3201: 0: Trace register power uninterrupted since the last read of PDS register
+Page 3201: 1: Trace register power interrupted since the last read of PDS register
+Page 3205: 0x1: Processor trace
+Page 3205: 0x3: Trace source
+Page 3209: M7_ETM_TRACEID
+Page 3209: TRACEID[6:0]
+Page 3211: TRACEIDSIZE[5:0]
+Page 3213: 3.    DDI 0461B (ID010111) - Arm® CoreSight™ Trace Memory Controller r0p1 Technical
+Page 3233: Updated ITM trace privilege registers (M7_ITM_TPR).
+Page 3241: M7_DWT_PIDR0 . . . . . . . . . . . . . . . . . . . . .3159    M7_ETM_TRACEID . . . . . . . . . . . . . . . . . . 3187

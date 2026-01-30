@@ -1,0 +1,35 @@
+Keyword: NMEA message
+Occurrences: 31
+================================================================================
+
+Page    3: 2.6 NMEA messages overview..................................................................................................................26
+Page    4: 2.8.3.1 Set NMEA message output rate..................................................................................... 42
+Page   17: satellites will be reported with svId 255. In NMEA messages, the unknown satellites will be
+Page   21: The following sections give an overview of the NMEA messages used by u-blox positioning receivers.
+Page   21: By default, the NMEA messages sent by u-blox positioning receivers are based on the NMEA 0183
+Page   21: The following ﬁltering ﬂags can be used to conﬁgure the output of some NMEA message ﬁelds:
+Page   22: The following ﬁltering ﬂags can be used to conﬁgure the output of some NMEA message ﬂags:
+Page   22: used for all non-standard messages. These proprietary NMEA messages therefore have the address
+Page   23: Many applications that process NMEA messages assume that only a single GNSS is active.
+Page   23: Various data ﬁelds in NMEA messages depend on NMEA protocol conﬁguration or require a
+Page   24: NMEA Message                                                    GLL, RMC           GGA         GLL, VTG        RMC, GNS
+Page   25: NMEA Message                                                       GLL, RMC         GGA          GLL, VTG       RMC, GNS
+Page   25: NMEA Message                                                       GLL, RMC         GGA            GSA          GLL, VTG,
+Page   26: 2.6 NMEA messages overview
+Page   26: NMEA-Standard – Standard NMEA messages
+Page   26: NMEA-PUBX – u-blox proprietary NMEA messages
+Page   26: NMEA-PUBX-RATE           0xf1 0x40   •   Set NMEA message output rate (Set)
+Page   26: Standard NMEA messages as deﬁned by the NMEA 0183 standard. See NMEA protocol for details.
+Page   27: Comment           Polls a standard NMEA message if the current Talker ID is GA.
+Page   28: Comment           Polls a standard NMEA message if the current Talker ID is GB
+Page   30: Comment           Polls a standard NMEA message if the current Talker ID is GL
+Page   31: Comment           Polls a standard NMEA message if the current Talker ID is GN
+Page   32: Comment           Polls a standard NMEA message if the current Talker ID is GP
+Page   39: Proprietary NMEA messages for u-blox positioning receivers. See also NMEA-proprietary messages.
+Page   42: 2.8.3.1 Set NMEA message output rate
+Page   42: Set NMEA message output rate
+Page   42: 2          msgId                 string       -           GLL              NMEA message identiﬁer
+Page   64: messages, the section NMEA Messages Overview describes class and identiﬁer numbers used.
+Page  137: after all enabled NAV class messages and after all enabled NMEA messages.
+Page  220: NMEA message length
+Page  220: CFG-NMEA-GSVTALKERID                 0x20930032 E1            -          -     Talker ID for GSV NMEA messages

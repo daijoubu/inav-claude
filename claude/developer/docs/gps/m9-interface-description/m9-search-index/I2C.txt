@@ -1,0 +1,244 @@
+Keyword: I2C
+Occurrences: 240
+================================================================================
+
+Page    6: 3.10.17.5 Port conﬁguration for I2C (DDC) port........................................................................ 77
+Page   12: 5.9.5 CFG-I2C: Conﬁguration of the I2C interface........................................................................200
+Page   12: 5.9.6 CFG-I2CINPROT: Input protocol conﬁguration of the I2C interface................................200
+Page   12: 5.9.7 CFG-I2COUTPROT: Output protocol conﬁguration of the I2C interface........................200
+Page   51: •   Port conﬁguration for I2C (DDC) port (Get/set)
+Page   61: •    I/O port 0 is I2C (DDC).
+Page   77: 3.10.17.5 Port conﬁguration for I2C (DDC) port
+Page   77: Port conﬁguration for I2C (DDC) port
+Page   77: 0                   U1        portID                -           -            Port identiﬁer number (= 0 for I2C (DDC) port)
+Page   78: 4                 X4      mode           -       -            I2C (DDC) Mode Flags
+Page  196: CFG-I2C                                Conﬁguration of the I2C interface
+Page  196: CFG-I2CINPROT                          Input protocol conﬁguration of the I2C interface
+Page  196: CFG-I2COUTPROT                         Output protocol conﬁguration of the I2C interface
+Page  200: 5.9.5 CFG-I2C: Conﬁguration of the I2C interface
+Page  200: Settings needed to conﬁgure the I2C communication interface.
+Page  200: CFG-I2C-ADDRESS                      0x20510001 U1            -          -     I2C address of the receiver (7 bits)
+Page  200: CFG-I2C-EXTENDEDTIMEOUT              0x10510002       L       -          -     Flag to disable timeouting the interface after
+Page  200: CFG-I2C-ENABLED                      0x10510003       L       -          -     Flag to indicate if the I2C interface should be
+Page  200: Table 12: CFG-I2C conﬁguration items
+Page  200: 5.9.6 CFG-I2CINPROT: Input protocol conﬁguration of the I2C interface
+Page  200: Input protocol enable ﬂags of the I2C interface.
+Page  200: CFG-I2CINPROT-UBX                    0x10710001       L       -          -     Flag to indicate if UBX should be an input
+Page  200: protocol on I2C
+Page  200: CFG-I2CINPROT-NMEA                   0x10710002       L       -          -     Flag to indicate if NMEA should be an input
+Page  200: protocol on I2C
+Page  200: CFG-I2CINPROT-RTCM3X                 0x10710004       L       -          -     Flag to indicate if RTCM3X should be an input
+Page  200: protocol on I2C
+Page  200: Table 13: CFG-I2CINPROT conﬁguration items
+Page  200: 5.9.7 CFG-I2COUTPROT: Output protocol conﬁguration of the I2C interface
+Page  200: Output protocol enable ﬂags of the I2C interface.
+Page  200: CFG-I2COUTPROT-UBX                   0x10720001       L       -          -     Flag to indicate if UBX should be an output
+Page  200: protocol on I2C
+Page  201: CFG-I2COUTPROT-NMEA                  0x10720002       L       -          -     Flag to indicate if NMEA should be an output
+Page  201: protocol on I2C
+Page  201: Table 14: CFG-I2COUTPROT conﬁguration items
+Page  201: CFG-INFMSG-UBX_I2C                   0x20920001 X1            -          -     Information message enable ﬂags for the UBX
+Page  201: protocol on the I2C interface
+Page  201: CFG-INFMSG-NMEA_I2C                  0x20920006 X1            -          -     Information message enable ﬂags for the NMEA
+Page  201: protocol on the I2C interface
+Page  202: Table 16: Constants for CFG-INFMSG-UBX_I2C, CFG-INFMSG-UBX_UART1, CFG-INFMSG-UBX_UART2, CFG-INFMSG-
+Page  202: UBX_USB, CFG-INFMSG-UBX_SPI, CFG-INFMSG-NMEA_I2C, CFG-INFMSG-NMEA_UART1, CFG-INFMSG-NMEA_UART2,
+Page  203: CFG-MSGOUT-NMEA_ID_DTM_I2C           0x209100a6 U1           -        -     Output rate of the NMEA-GX-DTM message on
+Page  203: port I2C
+Page  203: CFG-MSGOUT-NMEA_ID_GBS_I2C           0x209100dd U1           -        -     Output rate of the NMEA-GX-GBS message on
+Page  203: port I2C
+Page  204: CFG-MSGOUT-NMEA_ID_GGA_I2C   0x209100ba U1       -       -       Output rate of the NMEA-GX-GGA message on
+Page  204: port I2C
+Page  204: CFG-MSGOUT-NMEA_ID_GLL_I2C   0x209100c9 U1       -       -       Output rate of the NMEA-GX-GLL message on
+Page  204: port I2C
+Page  204: CFG-MSGOUT-NMEA_ID_GNS_I2C   0x209100b5 U1       -       -       Output rate of the NMEA-GX-GNS message on
+Page  204: port I2C
+Page  204: CFG-MSGOUT-NMEA_ID_GRS_I2C   0x209100ce U1       -       -       Output rate of the NMEA-GX-GRS message on
+Page  204: port I2C
+Page  204: CFG-MSGOUT-NMEA_ID_GSA_I2C   0x209100bf U1       -       -       Output rate of the NMEA-GX-GSA message on
+Page  204: port I2C
+Page  205: CFG-MSGOUT-NMEA_ID_GST_I2C   0x209100d3 U1       -       -       Output rate of the NMEA-GX-GST message on
+Page  205: port I2C
+Page  205: CFG-MSGOUT-NMEA_ID_GSV_I2C   0x209100c4 U1       -       -       Output rate of the NMEA-GX-GSV message on
+Page  205: port I2C
+Page  205: CFG-MSGOUT-NMEA_ID_RLM_I2C   0x20910400 U1       -       -       Output rate of the NMEA-GX-RLM message on
+Page  205: port I2C
+Page  205: CFG-MSGOUT-NMEA_ID_RMC_I2C   0x209100ab U1       -       -       Output rate of the NMEA-GX-RMC message on
+Page  205: port I2C
+Page  205: CFG-MSGOUT-NMEA_ID_VLW_I2C   0x209100e7 U1       -       -       Output rate of the NMEA-GX-VLW message on
+Page  205: port I2C
+Page  206: CFG-MSGOUT-NMEA_ID_VTG_I2C     0x209100b0 U1       -       -       Output rate of the NMEA-GX-VTG message on
+Page  206: port I2C
+Page  206: CFG-MSGOUT-NMEA_ID_ZDA_I2C     0x209100d8 U1       -       -       Output rate of the NMEA-GX-ZDA message on
+Page  206: port I2C
+Page  206: CFG-MSGOUT-PUBX_ID_POLYP_I2C   0x209100ec U1       -       -       Output rate of the NMEA-GX-PUBX00 message
+Page  206: on port I2C
+Page  206: CFG-MSGOUT-PUBX_ID_POLYS_I2C   0x209100f1 U1       -       -       Output rate of the NMEA-GX-PUBX03 message
+Page  206: on port I2C
+Page  206: CFG-MSGOUT-PUBX_ID_POLYT_I2C   0x209100f6 U1       -       -       Output rate of the NMEA-GX-PUBX04 message
+Page  206: on port I2C
+Page  207: CFG-MSGOUT-UBX_LOG_INFO_I2C    0x20910259 U1       -       -       Output rate of the UBX-LOG-INFO message on
+Page  207: port I2C
+Page  207: I2C                                                                on port I2C
+Page  207: CFG-MSGOUT-UBX_MON_HW2_I2C     0x209101b9 U1       -       -       Output rate of the UBX-MON-HW2 message on
+Page  207: port I2C
+Page  207: CFG-MSGOUT-UBX_MON_HW3_I2C     0x20910354 U1       -       -       Output rate of the UBX-MON-HW3 message on
+Page  207: port I2C
+Page  207: CFG-MSGOUT-UBX_MON_HW_I2C      0x209101b4 U1       -       -       Output rate of the UBX-MON-HW message on
+Page  207: port I2C
+Page  208: CFG-MSGOUT-UBX_MON_IO_I2C     0x209101a5 U1       -       -       Output rate of the UBX-MON-IO message on
+Page  208: port I2C
+Page  208: CFG-MSGOUT-UBX_MON_MSGPP_I2C 0x20910196 U1        -       -       Output rate of the UBX-MON-MSGPP message
+Page  208: on port I2C
+Page  208: CFG-MSGOUT-UBX_MON_RF_I2C     0x20910359 U1       -       -       Output rate of the UBX-MON-RF message on
+Page  208: port I2C
+Page  208: CFG-MSGOUT-UBX_MON_RXBUF_I2C 0x209101a0 U1        -       -       Output rate of the UBX-MON-RXBUF message
+Page  208: on port I2C
+Page  208: CFG-MSGOUT-UBX_MON_RXR_I2C    0x20910187 U1       -       -       Output rate of the UBX-MON-RXR message on
+Page  208: port I2C
+Page  208: CFG-MSGOUT-UBX_MON_SPAN_I2C   0x2091038b U1       -       -       Output rate of the UBX-MON-SPAN message on
+Page  208: port I2C
+Page  209: CFG-MSGOUT-UBX_MON_TXBUF_I2C 0x2091019b U1        -       -       Output rate of the UBX-MON-TXBUF message
+Page  209: on port I2C
+Page  209: AOPSTATUS_I2C                                                     message on port I2C
+Page  209: CFG-MSGOUT-UBX_NAV_CLOCK_I2C 0x20910065 U1        -       -       Output rate of the UBX-NAV-CLOCK message
+Page  209: on port I2C
+Page  209: CFG-MSGOUT-UBX_NAV_COV_I2C    0x20910083 U1       -       -       Output rate of the UBX-NAV-COV message on
+Page  209: port I2C
+Page  209: CFG-MSGOUT-UBX_NAV_DOP_I2C    0x20910038 U1       -       -       Output rate of the UBX-NAV-DOP message on
+Page  209: port I2C
+Page  210: CFG-MSGOUT-UBX_NAV_EOE_I2C    0x2091015f U1       -       -       Output rate of the UBX-NAV-EOE message on
+Page  210: port I2C
+Page  210: I2C                                                               message on port I2C
+Page  210: CFG-MSGOUT-UBX_NAV_ODO_I2C    0x2091007e U1       -       -       Output rate of the UBX-NAV-ODO message on
+Page  210: port I2C
+Page  210: CFG-MSGOUT-UBX_NAV_ORB_I2C    0x20910010 U1       -       -       Output rate of the UBX-NAV-ORB message on
+Page  210: port I2C
+Page  210: I2C                                                               on port I2C
+Page  211: I2C                                                               on port I2C
+Page  211: CFG-MSGOUT-UBX_NAV_PVT_I2C    0x20910006 U1       -       -       Output rate of the UBX-NAV-PVT message on
+Page  211: port I2C
+Page  211: CFG-MSGOUT-UBX_NAV_SAT_I2C    0x20910015 U1       -       -       Output rate of the UBX-NAV-SAT message on
+Page  211: port I2C
+Page  211: CFG-MSGOUT-UBX_NAV_SBAS_I2C   0x2091006a U1       -       -       Output rate of the UBX-NAV-SBAS message on
+Page  211: port I2C
+Page  211: CFG-MSGOUT-UBX_NAV_SIG_I2C    0x20910345 U1       -       -       Output rate of the UBX-NAV-SIG message on
+Page  211: port I2C
+Page  212: CFG-MSGOUT-UBX_NAV_SLAS_I2C   0x20910336 U1       -       -       Output rate of the UBX-NAV-SLAS message on
+Page  212: port I2C
+Page  212: I2C                                                               on port I2C
+Page  212: I2C                                                               on port I2C
+Page  212: I2C                                                               on port I2C
+Page  212: I2C                                                               on port I2C
+Page  213: I2C                                                               on port I2C
+Page  213: CFG-MSGOUT-UBX_NAV_TIMELS_I2C 0x20910060 U1       -       -       Output rate of the UBX-NAV-TIMELS message
+Page  213: on port I2C
+Page  213: I2C                                                               message on port I2C
+Page  213: I2C                                                               on port I2C
+Page  213: I2C                                                               on port I2C
+Page  213: I2C                                                               on port I2C
+Page  214: CFG-MSGOUT-UBX_RXM_MEASX_I2C 0x20910204 U1        -       -       Output rate of the UBX-RXM-MEASX message
+Page  214: on port I2C
+Page  214: CFG-MSGOUT-UBX_RXM_RAWX_I2C   0x209102a4 U1       -       -       Output rate of the UBX-RXM-RAWX message on
+Page  214: port I2C
+Page  214: CFG-MSGOUT-UBX_RXM_RLM_I2C    0x2091025e U1       -       -       Output rate of the UBX-RXM-RLM message on
+Page  214: port I2C
+Page  214: CFG-MSGOUT-UBX_RXM_RTCM_I2C   0x20910268 U1       -       -       Output rate of the UBX-RXM-RTCM message on
+Page  214: port I2C
+Page  214: CFG-MSGOUT-UBX_RXM_SFRBX_I2C 0x20910231 U1        -       -       Output rate of the UBX-RXM-SFRBX message
+Page  214: on port I2C
+Page  215: CFG-MSGOUT-UBX_TIM_TM2_I2C           0x20910178 U1            -          -     Output rate of the UBX-TIM-TM2 message on
+Page  215: port I2C
+Page  215: CFG-MSGOUT-UBX_TIM_TP_I2C            0x2091017d U1            -          -     Output rate of the UBX-TIM-TP message on
+Page  215: port I2C
+Page  215: CFG-MSGOUT-UBX_TIM_VRFY_I2C          0x20910092 U1            -          -     Output rate of the UBX-TIM-VRFY message on
+Page  215: port I2C
+Page  230: I2C                                    0               I2C interface
+Page  235: UBX-CFG-INF.infMsgMask                     CFG-INFMSG-UBX_I2C, CFG-INFMSG-UBX_UART1, CFG-
+Page  235: INFMSG-UBX_SPI, CFG-INFMSG-NMEA_I2C, CFG-INFMSG-
+Page  235: NMEA_I2C, CFG-INFMSG-NMEA_UART1, CFG-INFMSG-
+Page  237: UBX-CFG-PRT.extendedTxTimeout                CFG-I2C-EXTENDEDTIMEOUT
+Page  237: UBX-CFG-PRT.inNmea                           CFG-I2CINPROT-NMEA
+Page  237: UBX-CFG-PRT.inProtoMask                      CFG-I2C-ENABLED
+Page  237: UBX-CFG-PRT.inRtcm3                          CFG-I2CINPROT-RTCM3X
+Page  237: UBX-CFG-PRT.inUbx                            CFG-I2CINPROT-UBX
+Page  237: UBX-CFG-PRT.outNmea                          CFG-I2COUTPROT-NMEA
+Page  238: UBX-CFG-PRT.outProtoMask                    CFG-I2C-ENABLED
+Page  238: UBX-CFG-PRT.outUbx                          CFG-I2COUTPROT-UBX
+Page  238: UBX-CFG-PRT.slaveAddr                       CFG-I2C-ADDRESS
+Page  241: CFG-I2C-ADDRESS                                      0x20510001 U1          -      -              132
+Page  241: CFG-I2C-EXTENDEDTIMEOUT                              0x10510002    L        -      -            0 (false)
+Page  241: CFG-I2C-ENABLED                                      0x10510003    L        -      -            1 (true)
+Page  241: Table 76: CFG-I2C conﬁguration defaults
+Page  241: CFG-I2CINPROT-UBX                                    0x10710001    L        -      -            1 (true)
+Page  241: CFG-I2CINPROT-NMEA                                   0x10710002    L        -      -            1 (true)
+Page  241: CFG-I2CINPROT-RTCM3X                                 0x10710004    L        -      -            1 (true)
+Page  241: Table 77: CFG-I2CINPROT conﬁguration defaults
+Page  241: CFG-I2COUTPROT-UBX                                   0x10720001    L        -      -            1 (true)
+Page  241: CFG-I2COUTPROT-NMEA                                  0x10720002    L        -      -            1 (true)
+Page  241: Table 78: CFG-I2COUTPROT conﬁguration defaults
+Page  241: CFG-INFMSG-UBX_I2C                                   0x20920001 X1          -      -              0x00
+Page  241: CFG-INFMSG-NMEA_I2C                                  0x20920006 X1          -      -         0x07 (ERROR |
+Page  242: CFG-MSGOUT-NMEA_ID_DTM_I2C                           0x209100a6 U1          -      -               0
+Page  242: CFG-MSGOUT-NMEA_ID_GBS_I2C                           0x209100dd U1          -      -               0
+Page  242: CFG-MSGOUT-NMEA_ID_GGA_I2C                           0x209100ba U1          -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GLL_I2C          0x209100c9 U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GNS_I2C          0x209100b5 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GRS_I2C          0x209100ce U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GSA_I2C          0x209100bf U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GST_I2C          0x209100d3 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GSV_I2C          0x209100c4 U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_RLM_I2C          0x20910400 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_RMC_I2C          0x209100ab U1         -      -               1
+Page  244: CFG-MSGOUT-NMEA_ID_VLW_I2C            0x209100e7 U1         -      -               0
+Page  244: CFG-MSGOUT-NMEA_ID_VTG_I2C            0x209100b0 U1         -      -               1
+Page  244: CFG-MSGOUT-NMEA_ID_ZDA_I2C            0x209100d8 U1         -      -               0
+Page  244: CFG-MSGOUT-PUBX_ID_POLYP_I2C          0x209100ec U1         -      -               0
+Page  244: CFG-MSGOUT-PUBX_ID_POLYS_I2C          0x209100f1 U1         -      -               0
+Page  244: CFG-MSGOUT-PUBX_ID_POLYT_I2C          0x209100f6 U1         -      -               0
+Page  244: CFG-MSGOUT-UBX_LOG_INFO_I2C           0x20910259 U1         -      -               0
+Page  244: CFG-MSGOUT-UBX_MON_COMMS_I2C          0x2091034f U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW2_I2C            0x209101b9 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW3_I2C            0x20910354 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW_I2C             0x209101b4 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_IO_I2C             0x209101a5 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_MSGPP_I2C          0x20910196 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RF_I2C             0x20910359 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RXBUF_I2C          0x209101a0 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RXR_I2C            0x20910187 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_SPAN_I2C           0x2091038b U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_MON_TXBUF_I2C              0x2091019b U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_AOPSTATUS_I2C          0x20910079 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_CLOCK_I2C              0x20910065 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_COV_I2C                0x20910083 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_DOP_I2C                0x20910038 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_EOE_I2C                0x2091015f U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_GEOFENCE_I2C           0x209100a1 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_ODO_I2C                0x2091007e U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_ORB_I2C              0x20910010 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_POSECEF_I2C          0x20910024 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_POSLLH_I2C           0x20910029 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_PVT_I2C              0x20910006 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SAT_I2C              0x20910015 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SBAS_I2C             0x2091006a U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SIG_I2C              0x20910345 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SLAS_I2C             0x20910336 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_STATUS_I2C            0x2091001a U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEBDS_I2C           0x20910051 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGAL_I2C           0x20910056 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGLO_I2C           0x2091004c U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGPS_I2C           0x20910047 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMELS_I2C            0x20910060 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEQZSS_I2C          0x20910386 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEUTC_I2C           0x2091005b U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_NAV_VELECEF_I2C          0x2091003d U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_NAV_VELNED_I2C           0x20910042 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_MEASX_I2C            0x20910204 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RAWX_I2C             0x209102a4 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RLM_I2C              0x2091025e U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RTCM_I2C             0x20910268 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_SFRBX_I2C            0x20910231 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_TIM_TM2_I2C              0x20910178 U1         -      -               0
+Page  250: CFG-MSGOUT-UBX_TIM_TP_I2C                         0x2091017d U1          -       -                0
+Page  250: CFG-MSGOUT-UBX_TIM_VRFY_I2C                       0x20910092 U1          -       -                0
+Page  254: CFG-TXREADY-INTERFACE                              0x20a20005 E1          -      -             0 (I2C)

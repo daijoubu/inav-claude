@@ -1,0 +1,456 @@
+Keyword: Ethernet
+Occurrences: 452
+================================================================================
+
+Page   64: 57         Ethernet (ETH): media access control
+Page   64: 57.1    Ethernet introduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2737
+Page   64: 57.2    Ethernet main features . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2737
+Page   64: 57.3    Ethernet pins and internal signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2741
+Page   64: 57.4    Ethernet architecture . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2743
+Page   64: 57.5    Ethernet functional description: MAC . . . . . . . . . . . . . . . . . . . . . . . . . . 2756
+Page   65: 57.6     Ethernet functional description: PHY interfaces . . . . . . . . . . . . . . . . . . 2791
+Page   65: 57.7      Ethernet low-power modes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2799
+Page   65: 57.7.1      Energy Efficient Ethernet . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2799
+Page   65: 57.8     Ethernet interrupts . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2803
+Page   65: 57.9      Ethernet programming model . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2806
+Page   65: 57.9.8      Programming guidelines for Energy Efficient Ethernet (EEE) . . . . . . 2811
+Page   66: 57.11 Ethernet registers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2841
+Page   66: 57.11.1 Ethernet registers maps . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2841
+Page   66: 57.11.2 Ethernet DMA registers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2841
+Page   66: 57.11.3 Ethernet MTL registers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2867
+Page   66: 57.11.4 Ethernet MAC and MMC registers . . . . . . . . . . . . . . . . . . . . . . . . . . . 2879
+Page   77: Table 502.   Ethernet peripheral pins . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2741
+Page   77: Table 503.   Ethernet internal input/output signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2742
+Page   78: Table 557.   Ethernet MAC register map and reset values . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2969
+Page   81: Figure 53.   Kernel clock distribution for Ethernet . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 342
+Page   95: Figure 775. Ethernet high-level block diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2743
+Page  100: Ethernet
+Page  104: Ethernet MAC
+Page  104: The Ethernet MAC uses a 32-bit bus, connected to the AHB bus matrix in the D2 domain.
+Page  128: 0x40028000 - 0x400293FF    ETHERNET MAC                Section 57.11: Ethernet registers
+Page  130: as buffers to store peripheral input/output data for Ethernet and USB,.
+Page  130: The AHB masters can read/write-access an SRAM section concurrently with the Ethernet
+Page  130: Ethernet MAC accesses the SRAM2 while the CPU accesses the SRAM1, concurrently.
+Page  153: CRC computation uses CRC-32 (Ethernet) polynomial 0x4C11DB7:
+Page  308: ETH_MII_TX_CLK            I         External TX clock provided by the Ethernet MII interface
+Page  308: ETH_MII_RX_CLK            I         External RX clock provided by the Ethernet MII interface
+Page  308: ETH_RMII_REF_CLK            I         External reference clock provided by the Ethernet RMII interface
+Page  317: peripherals, in particular for peripherals that require a specific clock such as Ethernet, USB
+Page  342: The Ethernet transmit and receive clocks shall be provided from an external Ethernet PHY.
+Page  342: Figure 53. Kernel clock distribution for Ethernet
+Page  430: Bit 17 ETH1RXEN: Ethernet Reception Clock Enable
+Page  430: 0: Ethernet Reception clock disabled (default after reset)
+Page  430: 1: Ethernet Reception clock enabled
+Page  431: Bit 16 ETH1TXEN: Ethernet Transmission Clock Enable
+Page  431: 0: Ethernet Transmission clock disabled (default after reset)
+Page  431: 1: Ethernet Transmission clock enabled
+Page  431: Bit 15 ETH1MACEN: Ethernet MAC bus interface Clock Enable
+Page  431: 0: Ethernet MAC bus interface clock disabled (default after reset)
+Page  431: 1: Ethernet MAC bus interface clock enabled
+Page  452: Bit 17 ETH1RXLPEN: Ethernet Reception Clock Enable During CSleep Mode
+Page  452: 0: Ethernet Reception clock disabled during CSleep mode
+Page  452: 1: Ethernet Reception clock enabled during CSleep mode (default after reset)
+Page  453: Bit 16 ETH1TXLPEN: Ethernet Transmission Clock Enable During CSleep Mode
+Page  453: 0: Ethernet Transmission clock disabled during CSleep mode
+Page  453: 1: Ethernet Transmission clock enabled during CSleep mode (default after reset)
+Page  453: Bit 15 ETH1MACLPEN: Ethernet MAC bus interface Clock Enable During CSleep Mode
+Page  453: 0: Ethernet MAC bus interface clock disabled during CSleep mode
+Page  453: 1: Ethernet MAC bus interface clock enabled during CSleep mode (default after reset)
+Page  526: •        Selection of the Ethernet PHY interface.
+Page  527: Bits 23:21 EPIS[2:0]: Ethernet PHY Interface Selection
+Page  527: These bits select the Ethernet PHY interface.
+Page  552: ETHERNET
+Page  553: ETHERNET
+Page  733: eth_sbd_intr_it   68           61              ETH         Ethernet global interrupt      0x0000 0134
+Page  733: Ethernet wakeup through EXTI
+Page  749: 86        ETHERNET wakeup                               Configurable           CPU only                 Yes
+Page  770: •   Uses CRC-32 (Ethernet) polynomial: 0x4C11DB7
+Page  772: The default polynomial value is the CRC-32 (Ethernet) polynomial: 0x4C11DB7.
+Page 2737: RM0433                         Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2737: 57       Ethernet (ETH): media access control
+Page 2737: 57.1     Ethernet introduction
+Page 2737: The Ethernet peripheral enables the devices to transmit and receive data over Ethernet in
+Page 2737: The Ethernet provides a configurable, flexible peripheral to meet the needs of various
+Page 2737: In addition to the default interfaces defined in the IEEE 802.3 specifications, the Ethernet
+Page 2737: •   IEEE 802.3-2008 for Ethernet MAC, Media Independent Interface (MII)
+Page 2737: •   IEEE 802.3az-2010 for Energy Efficient Ethernet (EEE)
+Page 2737: 57.2     Ethernet main features
+Page 2737: Ethernet peripheral embeds a dedicated DMA for direct memory interface, a media access
+Page 2737: Ethernet PHY
+Page 2737: –    RMII interface to communicate with an external Fast Ethernet PHY
+Page 2738: Ethernet (ETH): media access control (MAC) with DMA controller                                  RM0433
+Page 2738: •   Programmable packet length to support Standard or up to 16 Kbyte Jumbo Ethernet
+Page 2739: RM0433                         Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2739: •   Ethernet packet time-stamping as described in IEEE 1588-2002 and IEEE 1588-2008
+Page 2739: •   Standard IEEE 802.3az-2010 for Energy Efficient Ethernet in MII PHYs.
+Page 2740: Ethernet (ETH): media access control (MAC) with DMA controller                                   RM0433
+Page 2740: registers (see Section 57.11.2: Ethernet DMA registers) to control the DMA operations. The
+Page 2741: RM0433                         Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2741: 57.3     Ethernet pins and internal signals
+Page 2741: Table 502 lists the Ethernet inputs and output signals connected to package pins or balls,
+Page 2741: while Table 503 shows the internal Ethernet signals.
+Page 2741: Table 502. Ethernet peripheral pins
+Page 2742: Ethernet (ETH): media access control (MAC) with DMA controller                                        RM0433
+Page 2742: Table 502. Ethernet peripheral pins (continued)
+Page 2742: Table 503. Ethernet internal input/output signals
+Page 2742: eth_sbd_intr_it           Digital output     Main Ethernet interrupt
+Page 2743: RM0433                                          Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2743: 57.4                 Ethernet architecture
+Page 2743: The Ethernet peripheral is composed of 4 main functional modules:
+Page 2743: •    The media access control module (MAC) in charge of implementing the Ethernet
+Page 2743: Figure 775. Ethernet high-level block diagram
+Page 2743: eth_hclk                                                                                 ETHERNET MAC
+Page 2743: 2. Refer to RCC chapter "Clock distribution for Ethernet" for a detailed description of the Ethernet clock architecture.
+Page 2744: Ethernet (ETH): media access control (MAC) with DMA controller                                      RM0433
+Page 2744: transfers such as packets in Ethernet. The controller can be programmed to interrupt the
+Page 2745: RM0433                          Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2745: (TDES0[31]) after setting up the corresponding data buffer(s) with Ethernet Packet
+Page 2745: 7.   If an Ethernet packet is stored over data buffers in multiple descriptors, the DMA closes
+Page 2745: repeated until the end-of-Ethernet-packet data is transferred to the MTL.
+Page 2746: Ethernet (ETH): media access control (MAC) with DMA controller                                              RM0433
+Page 2747: RM0433                         Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2748: Ethernet (ETH): media access control (MAC) with DMA controller                                       RM0433
+Page 2749: RM0433                          Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2750: Ethernet (ETH): media access control (MAC) with DMA controller                                              RM0433
+Page 2751: RM0433                         Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2751: The application or internal DMA pushes the Ethernet packets read from the application
+Page 2751: The MAC is responsible of the Ethernet protocol processing.In Transmission mode, it
+Page 2752: Ethernet (ETH): media access control (MAC) with DMA controller                                 RM0433
+Page 2753: RM0433             Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2754: Ethernet (ETH): media access control (MAC) with DMA controller                                  RM0433
+Page 2754: 2.   When SFD is detected, the state machine starts sending the data of Ethernet packet to
+Page 2754: 4.   The Receive State Machine decodes the Length/Type field of the Ethernet packet being
+Page 2754: received Ethernet packet data to the RFC module if you have not enabled the CRC
+Page 2755: RM0433                         Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2755: Ethernet packet to the
+Page 2755: Ethernet packet to RFC.                               NO                                     NO
+Page 2755: field                       Send all received Ethernet              Drop the last 4 bytes of all
+Page 2756: Ethernet (ETH): media access control (MAC) with DMA controller                                        RM0433
+Page 2756: 57.5        Ethernet functional description: MAC
+Page 2756: The Ethernet peripheral supports the double VLAN (Virtual LAN) tagging feature in which
+Page 2756: The Ethernet peripheral supports processing of any sequence of outer and
+Page 2757: RM0433                             Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2758: Ethernet (ETH): media access control (MAC) with DMA controller                                           RM0433
+Page 2759: RM0433                         Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2760: Ethernet (ETH): media access control (MAC) with DMA controller                                       RM0433
+Page 2761: RM0433                          Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2762: Ethernet (ETH): media access control (MAC) with DMA controller                                RM0433
+Page 2763: RM0433                            Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2764: Ethernet (ETH): media access control (MAC) with DMA controller                                        RM0433
+Page 2765: RM0433                         Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2766: Ethernet (ETH): media access control (MAC) with DMA controller                                    RM0433
+Page 2766: messaging, including (but not limited to) Ethernet. This protocol enables heterogeneous
+Page 2766: The Ethernet peripheral supports the IEEE 1588-2002 (version 1) and IEEE 1588-2008
+Page 2767: RM0433                            Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2767: 2008 supports PTP transported over Ethernet. The peripheral provides programmable
+Page 2767: directly over Ethernet and sends the status
+Page 2768: Ethernet (ETH): media access control (MAC) with DMA controller                                           RM0433
+Page 2768: of the master at t1. This time must be captured for Ethernet ports at MII.
+Page 2768: leave the Ethernet port at the MII interface. This timing information must be captured and
+Page 2769: RM0433                          Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2770: Ethernet (ETH): media access control (MAC) with DMA controller                                  RM0433
+Page 2771: RM0433                         Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2772: Ethernet (ETH): media access control (MAC) with DMA controller                                    RM0433
+Page 2772: is used as a source to take snapshots (timestamps) of the Ethernet frames being
+Page 2773: RM0433                          Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2774: Ethernet (ETH): media access control (MAC) with DMA controller                                   RM0433
+Page 2775: RM0433                           Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2775: •    Enable snapshot for PTP packets transmitted directly over Ethernet or UDP-IP-
+Page 2775: Ethernet
+Page 2776: Ethernet (ETH): media access control (MAC) with DMA controller                                    RM0433
+Page 2777: RM0433                         Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2777: The one-step timestamp feature is supported only for the PTP over Ethernet packets. It is
+Page 2777: Depending on the programmed mode, the MAC generates PTP Ethernet messages periodi-
+Page 2778: Ethernet (ETH): media access control (MAC) with DMA controller                                        RM0433
+Page 2779: RM0433                        Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2779: –   DA field of the Ethernet packet header
+Page 2779: –    SA field of the Ethernet packet header
+Page 2780: Ethernet (ETH): media access control (MAC) with DMA controller                                     RM0433
+Page 2780: The header of the packet including Ethernet header, L3 header and L4 header should be
+Page 2781: RM0433                            Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2782: Ethernet (ETH): media access control (MAC) with DMA controller                                                  RM0433
+Page 2783: RM0433                             Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2784: Ethernet (ETH): media access control (MAC) with DMA controller                                       RM0433
+Page 2785: RM0433                          Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2785: Ethernet is to encapsulate TCP and UDP over IP datagrams. The MAC has a Checksum
+Page 2785: datagram when the Type field of Ethernet packet has the value 0x0800 and the Version field
+Page 2786: Ethernet (ETH): media access control (MAC) with DMA controller                                     RM0433
+Page 2787: RM0433                                Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2788: Ethernet (ETH): media access control (MAC) with DMA controller                                            RM0433
+Page 2788: packet in the received Ethernet packets are detected and processed for data integrity. The
+Page 2788: respectively, in the Type field of the received Ethernet packet. This identification is
+Page 2788: mismatch between the indicated payload type (Ethernet Type field) and the IP header
+Page 2788: Note:         The MAC does not append any payload checksum bytes to the received Ethernet packets.
+Page 2789: RM0433                                 Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2790: Ethernet (ETH): media access control (MAC) with DMA controller                                        RM0433
+Page 2790: Ethernet MAC and MMC registers.
+Page 2790: Refer to Section 57.11.4: Ethernet MAC and MMC registers.
+Page 2791: RM0433                          Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2791: 57.6     Ethernet functional description: PHY interfaces
+Page 2791: The Ethernet peripheral support several PHY interfaces. The root interface is the MII one.
+Page 2792: Ethernet (ETH): media access control (MAC) with DMA controller                                             RM0433
+Page 2793: RM0433                          Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2793: sections of the IEEE 802.3z, 1000BASE Ethernet.
+Page 2794: Ethernet (ETH): media access control (MAC) with DMA controller                                   RM0433
+Page 2795: RM0433                         Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2796: Ethernet (ETH): media access control (MAC) with DMA controller                                    RM0433
+Page 2796: between Ethernet PHYs and STM32 MCU . According to the IEEE 802.3u, an MII contains
+Page 2796: Part of the Ethernet peripheral, the RMII module is instantiated at the MAC output. This
+Page 2797: RM0433                         Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2798: Ethernet (ETH): media access control (MAC) with DMA controller                                        RM0433
+Page 2799: RM0433                          Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2799: 57.7     Ethernet low-power modes
+Page 2799: 57.7.1   Energy Efficient Ethernet
+Page 2799: Energy Efficient Ethernet (EEE) is an operating mode that enables the MAC sub-layer along
+Page 2800: Ethernet (ETH): media access control (MAC) with DMA controller                                    RM0433
+Page 2801: RM0433                         Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2802: Ethernet (ETH): media access control (MAC) with DMA controller                                     RM0433
+Page 2802: 6.   When receiving a valid remote wakeup packet, the Ethernet peripheral asserts the
+Page 2803: RM0433                          Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2803: 57.8     Ethernet interrupts
+Page 2803: The Ethernet peripheral generates a single interrupt signal (eth_sbd_intr_it). This signal can
+Page 2803: system throughput performance reasons. The Ethernet peripheral gives the flexibility to
+Page 2804: Ethernet (ETH): media access control (MAC) with DMA controller                                          RM0433
+Page 2805: RM0433                          Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2806: Ethernet (ETH): media access control (MAC) with DMA controller                                    RM0433
+Page 2806: 57.9        Ethernet programming model
+Page 2806: •    Programming Guidelines for Energy Efficient Ethernet (see Section 57.9.8)
+Page 2807: RM0433                            Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2808: Ethernet (ETH): media access control (MAC) with DMA controller                                  RM0433
+Page 2809: RM0433                          Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2810: Ethernet (ETH): media access control (MAC) with DMA controller                                     RM0433
+Page 2811: RM0433                         Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2811: 57.9.8   Programming guidelines for Energy Efficient Ethernet (EEE)
+Page 2812: Ethernet (ETH): media access control (MAC) with DMA controller                                    RM0433
+Page 2813: RM0433                         Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2814: Ethernet (ETH): media access control (MAC) with DMA controller                                     RM0433
+Page 2815: RM0433                          Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2815: In the Ethernet peripheral, the DMA transfers data based on a linked list of descriptors. The
+Page 2815: The Ethernet peripheral supports the ring structure for DMA descriptors.
+Page 2816: Ethernet (ETH): media access control (MAC) with DMA controller                                                                       RM0433
+Page 2817: RM0433                                   Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2817: The Ethernet peripheral DMA requires at least one descriptor for a transmit packet. In addi-
+Page 2818: Ethernet (ETH): media access control (MAC) with DMA controller                                                        RM0433
+Page 2818: from Ethernet Source address till the end of the TCP header. The maximum
+Page 2819: RM0433                                 Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2820: Ethernet (ETH): media access control (MAC) with DMA controller                                       RM0433
+Page 2820: the Ethernet packet with the value given in the MAC Address 0 register.
+Page 2821: RM0433                                Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2821: 14:0         FL/TPL          Ethernet Header Length + TCP /IP Header Length – Preamble Length –
+Page 2821: SFD Length + Ethernet Payload Length
+Page 2821: payload length. This length does not include Ethernet header or TCP/IP
+Page 2822: Ethernet (ETH): media access control (MAC) with DMA controller                                                     RM0433
+Page 2823: RM0433                        Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2823: less than the length of the Ethernet packet being transmitted to avoid
+Page 2824: Ethernet (ETH): media access control (MAC) with DMA controller                                           RM0433
+Page 2824: Ethernet Type field indicates an IPv4 payload.
+Page 2825: RM0433                                  Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2826: Ethernet (ETH): media access control (MAC) with DMA controller                                                             RM0433
+Page 2827: RM0433                    Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2828: Ethernet (ETH): media access control (MAC) with DMA controller                                       RM0433
+Page 2829: RM0433                              Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2829: The DMA in the Ethernet peripheral attempts to read a descriptor only if the Tail pointer is
+Page 2830: Ethernet (ETH): media access control (MAC) with DMA controller                                                 RM0433
+Page 2831: RM0433                         Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2832: Ethernet (ETH): media access control (MAC) with DMA controller                                                 RM0433
+Page 2833: RM0433                                  Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2833: This bit indicates that the PTP message is sent directly over Ethernet.
+Page 2834: Ethernet (ETH): media access control (MAC) with DMA controller                                                      RM0433
+Page 2834: – The IP datagram version is not consistent with the Ethernet Type value.
+Page 2834: – Ethernet packet does not have the expected number of IP header bytes.
+Page 2835: RM0433                    Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2836: Ethernet (ETH): media access control (MAC) with DMA controller                                                         RM0433
+Page 2837: RM0433                      Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2837: specified maximum Ethernet size of 1518, 1522, or 2000 bytes (9018 or
+Page 2838: Ethernet (ETH): media access control (MAC) with DMA controller                                            RM0433
+Page 2838: 14:0           PL      packet length also includes the two bytes appended to the Ethernet
+Page 2839: RM0433                              Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2840: Ethernet (ETH): media access control (MAC) with DMA controller                                               RM0433
+Page 2841: RM0433                                   Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2841: 57.11          Ethernet registers
+Page 2841: 57.11.1        Ethernet registers maps
+Page 2841: •        DMA registers (see Section 57.11.2: Ethernet DMA registers)
+Page 2841: •        MTL registers (see Section 57.11.3: Ethernet MTL registers)
+Page 2841: •        MAC registers including MMC register (see Section 57.11.4: Ethernet MAC and MMC
+Page 2841: 57.11.2        Ethernet DMA registers
+Page 2841: This field defines the interrupt mode of the Ethernet peripheral.
+Page 2842: Ethernet (ETH): media access control (MAC) with DMA controller                                                   RM0433
+Page 2843: RM0433                                   Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2844: Ethernet (ETH): media access control (MAC) with DMA controller                                                                                RM0433
+Page 2845: RM0433                                  Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2846: Ethernet (ETH): media access control (MAC) with DMA controller                                                RM0433
+Page 2847: RM0433                                Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2848: Ethernet (ETH): media access control (MAC) with DMA controller                                            RM0433
+Page 2849: RM0433                                Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2850: Ethernet (ETH): media access control (MAC) with DMA controller                                                   RM0433
+Page 2851: RM0433                                 Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2852: Ethernet (ETH): media access control (MAC) with DMA controller                                                RM0433
+Page 2853: RM0433                                         Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2854: Ethernet (ETH): media access control (MAC) with DMA controller                                                                         RM0433
+Page 2855: RM0433                                Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2856: Ethernet (ETH): media access control (MAC) with DMA controller                                             RM0433
+Page 2857: RM0433                                 Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2858: Ethernet (ETH): media access control (MAC) with DMA controller                                                    RM0433
+Page 2859: RM0433                               Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2860: Ethernet (ETH): media access control (MAC) with DMA controller                                                               RM0433
+Page 2861: RM0433                                 Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2862: Ethernet (ETH): media access control (MAC) with DMA controller                                                 RM0433
+Page 2863: RM0433                                  Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2864: Ethernet (ETH): media access control (MAC) with DMA controller                                                                                                                                                                          RM0433
+Page 2864: Ethernet DMA register map and reset values
+Page 2865: RM0433                           Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2866: Ethernet (ETH): media access control (MAC) with DMA controller                                      RM0433
+Page 2867: RM0433                                   Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2867: 57.11.3         Ethernet MTL registers
+Page 2868: Ethernet (ETH): media access control (MAC) with DMA controller                                                                        RM0433
+Page 2869: RM0433                                Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2870: Ethernet (ETH): media access control (MAC) with DMA controller                                                                                            RM0433
+Page 2871: RM0433                                Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2872: Ethernet (ETH): media access control (MAC) with DMA controller                                                   RM0433
+Page 2873: RM0433                                 Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2874: Ethernet (ETH): media access control (MAC) with DMA controller                                                 RM0433
+Page 2874: encapsulated payload. There are no errors (including FCS error) in the Ethernet packet
+Page 2874: When this bit is set, the Ethernet peripheral reads a packet from the Rx queue only after the
+Page 2875: RM0433                                 Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2875: This field indicates the number of packets missed by the Ethernet peripheral because the
+Page 2875: This field indicates the number of packets discarded by the Ethernet peripheral because of
+Page 2875: Receive queue overflow. This counter is incremented each time the Ethernet peripheral
+Page 2876: Ethernet (ETH): media access control (MAC) with DMA controller                                                                     RM0433
+Page 2877: Ethernet MTL register map and reset values
+Page 2877: Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2878: Ethernet (ETH): media access control (MAC) with DMA controller                                            RM0433
+Page 2879: RM0433                                     Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2879: 57.11.4   Ethernet MAC and MMC registers
+Page 2880: Ethernet (ETH): media access control (MAC) with DMA controller                                               RM0433
+Page 2881: RM0433                                Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2882: Ethernet (ETH): media access control (MAC) with DMA controller                                              RM0433
+Page 2883: RM0433                              Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2884: Ethernet (ETH): media access control (MAC) with DMA controller                                              RM0433
+Page 2885: RM0433                              Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2885: Yes (for Ethernet
+Page 2885: IPCHKSUM_EN = 1 and                                                                                          Yes (for Ethernet
+Page 2886: Ethernet (ETH): media access control (MAC) with DMA controller                                                RM0433
+Page 2887: RM0433                                     Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2888: Ethernet (ETH): media access control (MAC) with DMA controller                                                  RM0433
+Page 2889: RM0433                           Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2890: Ethernet (ETH): media access control (MAC) with DMA controller                                                          RM0433
+Page 2891: RM0433                                   Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2892: Ethernet (ETH): media access control (MAC) with DMA controller                                             RM0433
+Page 2893: RM0433                                                  Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2894: Ethernet (ETH): media access control (MAC) with DMA controller                                                RM0433
+Page 2895: RM0433                                           Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2896: Ethernet (ETH): media access control (MAC) with DMA controller                                                        RM0433
+Page 2897: RM0433                                      Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2898: Ethernet (ETH): media access control (MAC) with DMA controller                                                           RM0433
+Page 2899: RM0433                                Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2900: Ethernet (ETH): media access control (MAC) with DMA controller                                                          RM0433
+Page 2901: RM0433                                           Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2902: Ethernet (ETH): media access control (MAC) with DMA controller                                                 RM0433
+Page 2902: When the Energy Efficient Ethernet feature is enabled, this bit is set for any LPI state entry or
+Page 2903: RM0433                                           Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2903: This bit is valid only when the Enable Energy Efficient Ethernet (EEE) option is selected.
+Page 2904: Ethernet (ETH): media access control (MAC) with DMA controller                                                                RM0433
+Page 2905: RM0433                                          Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2906: Ethernet (ETH): media access control (MAC) with DMA controller                                          RM0433
+Page 2907: RM0433                                 Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2907: Ethernet peripheral updates the ETH_MACRWKPFR register current pointer value in
+Page 2908: Ethernet (ETH): media access control (MAC) with DMA controller                                                   RM0433
+Page 2909: RM0433                                            Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2910: Ethernet (ETH): media access control (MAC) with DMA controller                                               RM0433
+Page 2911: RM0433                                      Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2912: Ethernet (ETH): media access control (MAC) with DMA controller                                                                  RM0433
+Page 2913: RM0433                                      Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2913: The version register identifies the version of the Ethernet peripheral.
+Page 2914: Ethernet (ETH): media access control (MAC) with DMA controller                                                                                                 RM0433
+Page 2914: Ethernet peripheral. The software driver can use this register to dynamically enable or
+Page 2915: RM0433                                 Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2916: Ethernet (ETH): media access control (MAC) with DMA controller                                           RM0433
+Page 2917: RM0433                                                Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2917: Ethernet peripheral. The software driver can use this register to dynamically enable or
+Page 2918: Ethernet (ETH): media access control (MAC) with DMA controller                                                            RM0433
+Page 2919: RM0433                                Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2920: Ethernet (ETH): media access control (MAC) with DMA controller                                             RM0433
+Page 2921: RM0433                                  Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2922: Ethernet (ETH): media access control (MAC) with DMA controller                                                             RM0433
+Page 2923: RM0433                                 Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2924: Ethernet (ETH): media access control (MAC) with DMA controller                                                 RM0433
+Page 2925: RM0433                                    Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2926: Ethernet (ETH): media access control (MAC) with DMA controller                                                                                          RM0433
+Page 2927: RM0433                                                Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2928: Ethernet (ETH): media access control (MAC) with DMA controller                                           RM0433
+Page 2929: RM0433                                     Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2930: Ethernet (ETH): media access control (MAC) with DMA controller                                                                                      RM0433
+Page 2931: RM0433                                 Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2931: This register provides the number of successfully transmitted packets by Ethernet peripheral
+Page 2931: This register provides the number of successfully transmitted packets by Ethernet peripheral
+Page 2931: This register provides the number of good packets transmitted by Ethernet peripheral.
+Page 2932: Ethernet (ETH): media access control (MAC) with DMA controller                                                RM0433
+Page 2932: This register provides the number of packets received by Ethernet peripheral with CRC
+Page 2932: This register provides the number of packets received by Ethernet peripheral with alignment
+Page 2933: RM0433                                Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2933: This register provides the number of good unicast packets received by Ethernet peripheral.
+Page 2933: This register provides the number of microseconds Tx LPI is asserted by Ethernet
+Page 2933: This register provides the number of times Ethernet peripheral has entered Tx LPI.
+Page 2934: Ethernet (ETH): media access control (MAC) with DMA controller                                           RM0433
+Page 2934: This register provides the number of microseconds Rx LPI is sampled by Ethernet
+Page 2934: This register provides the number of times Ethernet peripheral has entered Rx LPI.
+Page 2935: RM0433                                     Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2936: Ethernet (ETH): media access control (MAC) with DMA controller                                               RM0433
+Page 2937: RM0433                                  Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2938: Ethernet (ETH): media access control (MAC) with DMA controller                                               RM0433
+Page 2939: RM0433                                 Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2940: Ethernet (ETH): media access control (MAC) with DMA controller                                                                       RM0433
+Page 2941: RM0433                                Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2942: Ethernet (ETH): media access control (MAC) with DMA controller                                             RM0433
+Page 2943: RM0433                                  Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2944: Ethernet (ETH): media access control (MAC) with DMA controller                                                RM0433
+Page 2945: RM0433                                                       Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2946: Ethernet (ETH): media access control (MAC) with DMA controller                                            RM0433
+Page 2946: to filter the PTP packets when PTP is directly sent over Ethernet.
+Page 2946: processing as indicated below, when PTP is directly sent over Ethernet.
+Page 2946: Bit 11 TSIPENA: Enable Processing of PTP over Ethernet Packets
+Page 2946: the Ethernet packets. When this bit is reset, the MAC ignores the PTP over Ethernet packets.
+Page 2947: RM0433                             Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2948: Ethernet (ETH): media access control (MAC) with DMA controller                                                               RM0433
+Page 2949: RM0433                               Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2950: Ethernet (ETH): media access control (MAC) with DMA controller                                                  RM0433
+Page 2951: RM0433                                 Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2952: Ethernet (ETH): media access control (MAC) with DMA controller                                                                                   RM0433
+Page 2953: RM0433                                 Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2954: Ethernet (ETH): media access control (MAC) with DMA controller                                                 RM0433
+Page 2955: RM0433                                    Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2956: Ethernet (ETH): media access control (MAC) with DMA controller                                              RM0433
+Page 2957: RM0433                                 Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2958: Ethernet (ETH): media access control (MAC) with DMA controller                                                RM0433
+Page 2959: RM0433                                Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2960: Ethernet (ETH): media access control (MAC) with DMA controller                                                                                                 RM0433
+Page 2961: RM0433                              Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2962: Ethernet (ETH): media access control (MAC) with DMA controller                                                                                                RM0433
+Page 2963: RM0433                             Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2964: Ethernet (ETH): media access control (MAC) with DMA controller                                                RM0433
+Page 2965: RM0433                                Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2966: Ethernet (ETH): media access control (MAC) with DMA controller                                                                              RM0433
+Page 2967: RM0433                                     Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2968: Ethernet (ETH): media access control (MAC) with DMA controller                                                                   RM0433
+Page 2969: RM0433                                              Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2969: Ethernet MAC register map and reset values
+Page 2969: Table 557. Ethernet MAC register map and reset values
+Page 2970: Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2970: Table 557. Ethernet MAC register map and reset values (continued)
+Page 2971: RM0433                                                       Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2971: Table 557. Ethernet MAC register map and reset values (continued)
+Page 2972: Ethernet (ETH): media access control (MAC) with DMA controller                                    RM0433
+Page 2972: Table 557. Ethernet MAC register map and reset values (continued)
+Page 2973: RM0433                             Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2973: Table 557. Ethernet MAC register map and reset values (continued)
+Page 2974: Ethernet (ETH): media access control (MAC) with DMA controller                                                    RM0433
+Page 2974: Table 557. Ethernet MAC register map and reset values (continued)
+Page 2975: RM0433                                      Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2975: Table 557. Ethernet MAC register map and reset values (continued)
+Page 2976: Ethernet (ETH): media access control (MAC) with DMA controller                                                      RM0433
+Page 2976: Table 557. Ethernet MAC register map and reset values (continued)
+Page 2977: RM0433                              Ethernet (ETH): media access control (MAC) with DMA controller
+Page 2977: Table 557. Ethernet MAC register map and reset values (continued)
+Page 2998: communications interfaces (USB, USART, SPI, I2C, Ethernet, CAN etc). This is
+Page 3232: Section 57: Ethernet (ETH): media access control (MAC) with
+Page 3233: Section 57: Ethernet (ETH): media access control (MAC) with DMA

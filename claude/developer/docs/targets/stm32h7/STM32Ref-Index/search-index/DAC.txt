@@ -1,0 +1,841 @@
+Keyword: DAC
+Occurrences: 837
+================================================================================
+
+Page   24: 25         Digital-to-analog converter (DAC) . . . . . . . . . . . . . . . . . . . . . . . . . . . 1020
+Page   24: 25.2    DAC main features . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1020
+Page   24: 25.3    DAC implementation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1021
+Page   25: 25.4   DAC functional description . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1022
+Page   25: 25.4.1      DAC block diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1022
+Page   25: 25.4.2      DAC pins and internal signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1023
+Page   25: 25.4.3      DAC channel enable . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1024
+Page   25: 25.4.4      DAC data format . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1024
+Page   25: 25.4.5      DAC conversion . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1025
+Page   25: 25.4.6      DAC output voltage . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1025
+Page   25: 25.4.7      DAC trigger selection . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1026
+Page   25: 25.4.11     DAC channel modes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1029
+Page   25: 25.4.12 DAC channel buffer calibration . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1033
+Page   25: 25.4.13 Dual DAC channel conversion (if available) . . . . . . . . . . . . . . . . . . . 1034
+Page   25: 25.5   DAC low-power modes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1039
+Page   25: 25.6   DAC interrupts . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1039
+Page   25: 25.7   DAC registers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1040
+Page   25: 25.7.1      DAC control register (DAC_CR) . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1040
+Page   25: 25.7.2      DAC software trigger register (DAC_SWTRGR) . . . . . . . . . . . . . . . . 1043
+Page   25: 25.7.3      DAC channel1 12-bit right-aligned data holding register
+Page   25: (DAC_DHR12R1) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1044
+Page   25: 25.7.4      DAC channel1 12-bit left aligned data holding register
+Page   25: (DAC_DHR12L1) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1044
+Page   25: 25.7.5      DAC channel1 8-bit right aligned data holding register
+Page   25: (DAC_DHR8R1) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1045
+Page   25: 25.7.6      DAC channel2 12-bit right aligned data holding register
+Page   25: (DAC_DHR12R2) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1045
+Page   25: 25.7.7      DAC channel2 12-bit left aligned data holding register
+Page   25: (DAC_DHR12L2) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1046
+Page   25: 25.7.8      DAC channel2 8-bit right-aligned data holding register
+Page   25: (DAC_DHR8R2) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1046
+Page   25: 25.7.9      Dual DAC 12-bit right-aligned data holding register
+Page   25: (DAC_DHR12RD) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1047
+Page   25: 25.7.10 Dual DAC 12-bit left aligned data holding register
+Page   25: (DAC_DHR12LD) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1047
+Page   25: 25.7.11 Dual DAC 8-bit right aligned data holding register
+Page   25: (DAC_DHR8RD) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1048
+Page   25: 25.7.12 DAC channel1 data output register (DAC_DOR1) . . . . . . . . . . . . . . . 1048
+Page   25: 25.7.13 DAC channel2 data output register (DAC_DOR2) . . . . . . . . . . . . . . . 1049
+Page   26: 25.7.14 DAC status register (DAC_SR) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1049
+Page   26: 25.7.15 DAC calibration control register (DAC_CCR) . . . . . . . . . . . . . . . . . . 1051
+Page   26: 25.7.16 DAC mode control register (DAC_MCR) . . . . . . . . . . . . . . . . . . . . . . 1051
+Page   26: 25.7.17 DAC channel 1 sample and hold sample time register (DAC_SHSR1) . . .
+Page   26: 25.7.18 DAC channel 2 sample and hold sample time register (DAC_SHSR2) . . .
+Page   26: 25.7.19 DAC sample and hold time register (DAC_SHHR) . . . . . . . . . . . . . . 1054
+Page   26: 25.7.20 DAC sample and hold refresh time register (DAC_SHRR) . . . . . . . . 1054
+Page   26: 25.7.21 DAC register map . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1056
+Page   35: 36.3.19 DAC triggers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1411
+Page   72: Table 215.   DAC implementation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1021
+Page   72: Table 216.   DAC input/output pins . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1023
+Page   72: Table 217.   DAC internal input/output signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1023
+Page   72: Table 218.   DAC trigger selection . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1026
+Page   72: Table 221.   Effect of low-power modes on DAC . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1039
+Page   72: Table 222.   DAC interrupts . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1039
+Page   72: Table 223.   DAC register map and reset values . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1056
+Page   84: Figure 201. Dual-channel DAC block diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1022
+Page   84: Figure 202. Data registers in single DAC channel mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1024
+Page   84: Figure 203. Data registers in dual DAC channel mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1025
+Page   84: Figure 205. DAC LFSR register calculation algorithm . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1028
+Page   84: Figure 206. DAC conversion (SW trigger enabled) with LFSR wave generation. . . . . . . . . . . . . . . . 1028
+Page   84: Figure 207. DAC triangle wave generation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1029
+Page   84: Figure 208. DAC conversion (SW trigger enabled) with triangle wave generation . . . . . . . . . . . . . . 1029
+Page   84: Figure 209. DAC Sample and Hold mode phase diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1032
+Page   86: Figure 331. Combining several updates on a single hrtim_dac_trgx output . . . . . . . . . . . . . . . . . . . 1412
+Page  129: 0x40007400 - 0x400077FF                   DAC1                       Section 25.7: DAC registers
+Page  241: VREF+,VREF-        Input/ External reference voltage for ADCs and DAC
+Page  243: •   VDDA external analog power supply for ADCs, DACs, OPAMPs, comparators and
+Page  243: •   VREF+ external reference voltage for ADC and DAC.
+Page  244: REF_BUF                          ADC, DAC
+Page  251: supply to be filtered and shielded from noise on the PCB, thus improving ADC and DAC
+Page  251: To achieve better accuracy low-voltage signals, the ADC and DAC also have a separate
+Page  279: •     The ADC or DAC can also consume power during Stop mode, unless they are disabled
+Page  279: the ENx bit in the DAC_CR register must both be written to 0.
+Page  414: DAC12RST
+Page  414: Bit 29 DAC12RST: DAC1 and 2 Blocks Reset
+Page  414: 0: does not reset the DAC1 and 2 blocks (default after reset)
+Page  414: 1: resets the DAC1 and 2 blocks
+Page  438: DAC12EN
+Page  438: Bit 29 DAC12EN: DAC1 and 2 peripheral clock enable
+Page  438: 0: DAC1 and 2 peripheral clock disable (default after reset)
+Page  438: 1: DAC1 and 2 peripheral clock enabled
+Page  460: DAC12LPEN
+Page  460: Bit 29 DAC12LPEN: DAC1/2 peripheral clock enable during CSleep mode
+Page  460: 0: DAC1/2 peripheral clock disabled during CSleep mode
+Page  460: 1: DAC1/2 peripheral clock enabled during CSleep mode (default after reset)
+Page  475: Res.                            Res.                     HRTIMRST                      Res.                              DAC12RST                      Res.                                 Res.                       Res.       29
+Page  477: SRAM1LPEN                           Res.                       DTCM2LPEN                            Res.                   HRTIMEN                    Res.                              DAC12EN      29
+Page  478: Res.                                   Res.                       HRTIMLPEN                      Res.                                DAC12LPEN                        Res.                                SRAM4LPEN     29
+Page  479: Res.                   HRTIMEN                    Res.                              DAC12EN                       Res.                                Res.                   SRAM1EN                        Res.         29
+Page  480: Res.                                DAC12LPEN                        Res.                                SRAM4LPEN                    SRAM1LPEN                           Res.                       DTCM2LPEN     29
+Page  512: –    For the ADC and DAC, configure the desired I/O in analog mode in the
+Page  512: GPIOx_MODER register and configure the required function in the ADC and DAC
+Page  552: DAC
+Page  553: DAC
+Page  563: dac_ch1/2_trg
+Page  563: dac_ch1/2_trg
+Page  563: dac_ch1/2_trg
+Page  563: dac_ch1/2_trg
+Page  563: dac_ch1/2_trg
+Page  563: dac_ch1/2_trg
+Page  563: D2                                                              DAC
+Page  563: dac_ch1/2_trg
+Page  563: dac_ch1/2_trg
+Page  563: dac_ch1/2_trg
+Page  563: hrtim_dac_trg1                                               S            -
+Page  563: dac_ch1/2_trg
+Page  563: hrtim_dac_trg2                                               S            -
+Page  563: dac_ch1/2_trg
+Page  563: dac_ch1/2_trg
+Page  563: dac_ch1/2_trg
+Page  569: hrtim_dac_
+Page  569: hrtim_dac_
+Page  569: hrtim_dac_                          ETH        AHB1       D2
+Page  580: D2       APB1   DAC1       dac_ch1_dma       dmamux1_req_in67
+Page  580: D2       APB1   DAC2       dac_ch2_dma       dmamux1_req_in68
+Page  673: 24             TIM3_CH2           67       dac_ch1_dma             110          TIM16_UP
+Page  673: 25             TIM3_CH3           68       dac_ch2_dma             111         TIM17_CH1
+Page  733: 61           54           TIM6_DAC                                      0x0000 0118
+Page  733: dac_unr_it                                               DAC underrun error interrupt
+Page  895: –   The internal DAC channel 1 and channel 2, connected to ADC2
+Page  897: dac_out2                                                                                                                                                  DFSDM
+Page  897: dac_out1
+Page  898: dac_out1/dac_out2                     DAC channel 1 and channel 2 inputs
+Page  902: dac_out1
+Page  902: dac_out2
+Page  912: –    DAC internal channel 1, connected to ADC2_INP/INN16
+Page 1020: Digital-to-analog converter (DAC)                                                              RM0433
+Page 1020: 25          Digital-to-analog converter (DAC)
+Page 1020: The DAC module is a 12-bit, voltage output digital-to-analog converter. The DAC can be
+Page 1020: 12-bit mode, the data could be left- or right-aligned. The DAC features two output channels,
+Page 1020: each with its own converter. In dual DAC channel mode, conversions could be done
+Page 1020: The DAC_OUTx pin can be used as general purpose input/output (GPIO) when the DAC
+Page 1020: output is disconnected from output pad and connected to on chip peripheral. The DAC
+Page 1020: calibration can be applied on each DAC output channel. The DAC output channels support
+Page 1020: 25.2        DAC main features
+Page 1020: The DAC main features are the following (see Figure 201: Dual-channel DAC block
+Page 1020: •   One DAC interface, maximum two output channels
+Page 1020: •   Dual DAC channel for independent or simultaneous conversions
+Page 1020: •   DAC output channel buffered/unbuffered modes
+Page 1020: •   Each DAC output can be disconnected from the DAC_OUTx output pin
+Page 1020: •   DAC output connection to on chip peripherals
+Page 1020: Figure 201 shows the block diagram of a DAC channel and Table 216 gives the pin
+Page 1021: RM0433                                                       Digital-to-analog converter (DAC)
+Page 1021: 25.3     DAC implementation
+Page 1021: Table 215. DAC implementation
+Page 1021: DAC features                                DAC1
+Page 1021: I/O connection                                 DAC1_OUT1 on PA4, DAC1_OUT2 on PA5
+Page 1022: Digital-to-analog converter (DAC)                                                                                RM0433
+Page 1022: 25.4        DAC functional description
+Page 1022: 25.4.1      DAC block diagram
+Page 1022: Figure 201. Dual-channel DAC block diagram
+Page 1022: dac_ch1_trg0                          OTRIM1[5:0]
+Page 1022: DAC_OUT1
+Page 1022: dac_ch1_trg15
+Page 1022: TSEL1                                   DAC                   1
+Page 1022: dac_ch1_dma
+Page 1022: & logic Channel1                                                              dac_out1
+Page 1022: dac_unr_it
+Page 1022: DAC channel 1
+Page 1022: dac_pclk
+Page 1022: dac_ch2_dma
+Page 1022: DAC_OUT2
+Page 1022: DAC
+Page 1022: dac_ch2_trg0                bits                               Sample & Hold
+Page 1022: dac_ch2_trg15                                                                                   dac_out2
+Page 1022: DAC channel 2
+Page 1022: 1. MODEx bits in the DAC_MCR control the output mode and allow switching between the Normal mode in
+Page 1022: 2. Refer to Section 25.3: DAC implementation for channel 2 availability.
+Page 1023: RM0433                                                                  Digital-to-analog converter (DAC)
+Page 1023: 25.4.2   DAC pins and internal signals
+Page 1023: The DAC includes:
+Page 1023: •      The DAC_OUTx can be disconnected from the output pin and used as an ordinary
+Page 1023: •      The dac_outx can use an internal pin connection to on-chip peripherals such as
+Page 1023: •      DAC output channel buffered or non buffered
+Page 1023: The DAC includes up to two separate output channels. Each output channel can be
+Page 1023: available). In this case, the DAC output channel can be disconnected from the DAC_OUTx
+Page 1023: The DAC output can be buffered or not. The Sample and Hold block and its associated
+Page 1023: Table 216. DAC input/output pins
+Page 1023: Input, analog reference        The higher/positive reference voltage for the DAC,
+Page 1023: DAC_OUTx         Analog output signal           DAC channelx analog output
+Page 1023: Table 217. DAC internal input/output signals
+Page 1023: dac_ch1_dma        Bidirectional DAC channel 1 DMA request
+Page 1023: dac_ch2_dma        Bidirectional DAC channel 2 DMA request
+Page 1023: dac_ch1_trg[0:15]      Inputs      DAC channel 1 trigger inputs
+Page 1023: dac_ch2_trg[0:15]      Inputs      DAC channel 2 trigger inputs
+Page 1023: dac_unr_it         Output      DAC underrun interrupt
+Page 1023: dac_pclk            Input      DAC peripheral clock
+Page 1023: dac_out1                       DAC channel 1 output for on-chip peripherals
+Page 1023: dac_out2                       DAC channel 2 output for on-chip peripherals
+Page 1024: Digital-to-analog converter (DAC)                                                                   RM0433
+Page 1024: 25.4.3      DAC channel enable
+Page 1024: Each DAC channel can be powered on by setting its corresponding ENx bit in the DAC_CR
+Page 1024: register. The DAC channel is then enabled after a tWAKEUP startup time.
+Page 1024: Note:       The ENx bit enables the analog DAC Channelx only. The DAC Channelx digital interface is
+Page 1024: 25.4.4      DAC data format
+Page 1024: •   Single DAC channel
+Page 1024: –    8-bit right alignment: the software has to load data into the DAC_DHR8Rx[7:0] bits
+Page 1024: –    12-bit left alignment: the software has to load data into the DAC_DHR12Lx [15:4]
+Page 1024: –    12-bit right alignment: the software has to load data into the DAC_DHR12Rx [11:0]
+Page 1024: Depending on the loaded DAC_DHRyyyx register, the data written by the user is shifted and
+Page 1024: Figure 202. Data registers in single DAC channel mode
+Page 1024: •   Dual DAC channels (when available)
+Page 1024: –    8-bit right alignment: data for DAC channel1 to be loaded into the DAC_DHR8RD
+Page 1024: [7:0] bits (stored into the DHR1[11:4] bits) and data for DAC channel2 to be loaded
+Page 1024: into the DAC_DHR8RD [15:8] bits (stored into the DHR2[11:4] bits)
+Page 1024: –    12-bit left alignment: data for DAC channel1 to be loaded into the DAC_DHR12LD
+Page 1024: [15:4] bits (stored into the DHR1[11:0] bits) and data for DAC channel2 to be
+Page 1024: loaded into the DAC_DHR12LD [31:20] bits (stored into the DHR2[11:0] bits)
+Page 1024: –    12-bit right alignment: data for DAC channel1 to be loaded into the
+Page 1024: DAC_DHR12RD [11:0] bits (stored into the DHR1[11:0] bits) and data for DAC
+Page 1024: channel2 to be loaded into the DAC_DHR12RD [27:16] bits (stored into the
+Page 1024: Depending on the loaded DAC_DHRyyyD register, the data written by the user is shifted
+Page 1024: mapped registers). The DHR1 and DHR2 registers are then loaded into the DAC_DOR1
+Page 1025: RM0433                                                               Digital-to-analog converter (DAC)
+Page 1025: Figure 203. Data registers in dual DAC channel mode
+Page 1025: 25.4.5   DAC conversion
+Page 1025: The DAC_DORx cannot be written directly and any data transfer to the DAC channelx must
+Page 1025: be performed by loading the DAC_DHRx register (write operation to DAC_DHR8Rx,
+Page 1025: DAC_DHR12Lx, DAC_DHR12Rx, DAC_DHR8RD, DAC_DHR12RD or DAC_DHR12LD).
+Page 1025: Data stored in the DAC_DHRx register are automatically transferred to the DAC_DORx
+Page 1025: register after one dac_pclk clock cycle, if no hardware trigger is selected (TENx bit in
+Page 1025: DAC_CR register is reset). However, when a hardware trigger is selected (TENx bit in
+Page 1025: DAC_CR register is set) and a trigger occurs, the transfer is performed three dac_pclk clock
+Page 1025: When DAC_DORx is loaded with the DAC_DHRx contents, the analog output voltage
+Page 1025: dac_pclk
+Page 1025: DOR                          0x1AC                     available on DAC_OUT pin
+Page 1025: 25.4.6   DAC output voltage
+Page 1025: The analog output voltages on each DAC channel pin are determined by the following
+Page 1025: DACoutput = V REF × --------------
+Page 1026: Digital-to-analog converter (DAC)                                                               RM0433
+Page 1026: 25.4.7      DAC trigger selection
+Page 1026: DAC trigger selection.
+Page 1026: Each time a DAC interface detects a rising edge on the selected trigger source (refer to the
+Page 1026: table below), the last data stored into the DAC_DHRx register are transferred into the
+Page 1026: DAC_DORx register. The DAC_DORx register is updated three dac_pclk cycles after the
+Page 1026: SWTRIG is reset by hardware once the DAC_DORx register has been loaded with the
+Page 1026: DAC_DHRx register contents.
+Page 1026: When software trigger is selected, the transfer from the DAC_DHRx register to the
+Page 1026: DAC_DORx register takes only one dac_pclk clock cycle.
+Page 1026: Table 218. DAC trigger selection
+Page 1026: HRTIM1_DACTRG1                       Internal signal from on-chip timers        1001
+Page 1026: HRTIM1_DACTRG2                       Internal signal from on-chip timers        1010
+Page 1027: RM0433                                                            Digital-to-analog converter (DAC)
+Page 1027: Each DAC channel has a DMA capability. Two DMA channels are used to service DAC
+Page 1027: value of the DAC_DHRx register is transferred into the DAC_DORx register when the
+Page 1027: application can manage both DAC channels in dual mode by using one DMA request and a
+Page 1027: As DAC_DHRx to DAC_DORx data transfer occurred before the DMA request, the very first
+Page 1027: data has to be written to the DAC_DHRx before the first trigger event occurs.
+Page 1027: The DAC DMA request is not queued so that if a second external trigger arrives before the
+Page 1027: is issued and the DMA channelx underrun flag DMAUDRx in the DAC_SR register is set,
+Page 1027: reporting the error condition. The DAC channelx continues to convert old data.
+Page 1027: DMA stream and re-initialize both DMA and DAC channelx to restart the transfer correctly.
+Page 1027: The software should modify the DAC trigger conversion frequency or lighten the DMA
+Page 1027: workload to avoid a new DMA underrun. Finally, the DAC conversion could be resumed by
+Page 1027: For each DAC channelx, an interrupt is also generated if its corresponding DMAUDRIEx bit
+Page 1027: in the DAC_CR register is enabled.
+Page 1027: register) is available. DAC noise generation is selected by setting WAVEx[1:0] to 01”. The
+Page 1027: preloaded value in LFSR is 0xAAA. This register is updated three dac_pclk clock cycles
+Page 1028: Digital-to-analog converter (DAC)                                                                     RM0433
+Page 1028: Figure 205. DAC LFSR register calculation algorithm
+Page 1028: the DAC_CR register, is added up to the DAC_DHRx contents without overflow and this
+Page 1028: value is then transferred into the DAC_DORx register.
+Page 1028: Figure 206. DAC conversion (SW trigger enabled) with LFSR wave generation
+Page 1028: dac_pclk
+Page 1028: Note:       The DAC trigger must be enabled for noise generation by setting the TENx bit in the
+Page 1028: DAC_CR register.
+Page 1029: RM0433                                                                         Digital-to-analog converter (DAC)
+Page 1029: DAC triangle-wave generation is selected by setting WAVEx[1:0] to 10”. The amplitude is
+Page 1029: configured through the MAMPx[3:0] bits in the DAC_CR register. An internal triangle counter
+Page 1029: is incremented three dac_pclk clock cycles after each trigger event. The value of this
+Page 1029: counter is then added to the DAC_DHRx register without overflow and the sum is
+Page 1029: transferred into the DAC_DORx register. The triangle counter is incremented as long as it is
+Page 1029: Figure 207. DAC triangle wave generation
+Page 1029: + DAC_DHRx base value
+Page 1029: DAC_DHRx base value
+Page 1029: Figure 208. DAC conversion (SW trigger enabled) with triangle wave generation
+Page 1029: dac_pclk
+Page 1029: Note:     The DAC trigger must be enabled for triangle wave generation by setting the TENx bit in the
+Page 1029: DAC_CR register.
+Page 1029: The MAMPx[3:0] bits must be configured before enabling the DAC, otherwise they cannot
+Page 1029: 25.4.11   DAC channel modes
+Page 1029: Each DAC channel can be configured in Normal mode or Sample and Hold mode. The
+Page 1030: Digital-to-analog converter (DAC)                                                               RM0433
+Page 1030: the DAC_OUTx pin interconnections.
+Page 1030: To enable the output buffer, the MODEx[2:0] bits in DAC_MCR register should be:
+Page 1030: •    000: DAC is connected to the external pin
+Page 1030: •    001: DAC is connected to external pin and to on-chip peripherals
+Page 1030: To disable the output buffer, the MODEx[2:0] bits in DAC_MCR register should be:
+Page 1030: •    010: DAC is connected to the external pin
+Page 1030: •    011: DAC is connected to on-chip peripherals
+Page 1030: In sample and Hold mode, the DAC core converts data on a triggered conversion, then,
+Page 1030: holds the converted voltage on a capacitor. When not converting, the DAC cores and buffer
+Page 1030: are completely turned off between samples and the DAC output is tri-stated, therefore
+Page 1030: In this mode, the DAC core and all corresponding logic and registers are driven by the low-
+Page 1030: speed clock (LSI) in addition to the dac_pclk clock, allowing to use the DAC channels in
+Page 1030: The sampling time is configured with the TSAMPLEx[9:0] bits in DAC_SHSRx register.
+Page 1030: During the write of the TSAMPLEx[9:0] bits; the BWSTx bit in DAC_SR register is set to
+Page 1030: allowing the software to change the value of sample phase during the DAC channel
+Page 1030: 2.   Hold phase: the DAC output channel is tri-stated, the DAC core and the buffer are
+Page 1030: THOLDx[9:0] bits in DAC_SHHR register
+Page 1030: DAC_SHRR register
+Page 1031: RM0433                                                                        Digital-to-analog converter (DAC)
+Page 1031: error accuracy requires ln(2*Nlsb) constant time of the DAC.
+Page 1032: Digital-to-analog converter (DAC)                                                                              RM0433
+Page 1032: Figure 209. DAC Sample and Hold mode phase diagram
+Page 1032: DAC
+Page 1032: To enable the output buffer, the MODEx[2:0] bits in DAC_MCR register should be:
+Page 1032: •       100: DAC is connected to the external pin
+Page 1032: •       101: DAC is connected to external pin and to on chip peripherals
+Page 1032: To disabled the output buffer, The MODEx[2:0] bits in DAC_MCR register should be:
+Page 1032: •       110: DAC is connected to external pin and to on chip peripherals
+Page 1032: •       111: DAC is connected to on chip peripherals
+Page 1032: When MODEx[2:0] bits in DAC_MCR register is equal to 111. An internal capacitor, CLint, will
+Page 1032: hold the voltage output of the DAC Core and then drive it to on-chip peripherals.
+Page 1032: All Sample and Hold phases are interruptible and any change in DAC_DHRx will trigger
+Page 1033: RM0433                                                                              Digital-to-analog converter (DAC)
+Page 1033: 25.4.12         DAC channel buffer calibration
+Page 1033: The transfer function for an N-bit digital-to-analog converter (DAC) is:
+Page 1033: scale voltage, and Vos is the offset voltage. For an ideal DAC channel, G = 1 and Vos = 0.
+Page 1033: The calibration is only valid when the DAC channelx is operating with buffer enabled
+Page 1033: The DAC buffer offset is factory trimmed. The default value of OTRIMx[4:0] bits in
+Page 1033: DAC_CCR register is the factory trimming value and it is loaded once DAC digital
+Page 1034: Digital-to-analog converter (DAC)                                                                    RM0433
+Page 1034: 1.   If the DAC channel is active, Write 0 to ENx bit in DAC_CR to disable the channel.
+Page 1034: 2.   Select a mode where the buffer is enabled, by writing to DAC_MCR register,
+Page 1034: 3.   Start the DAC channelx calibration, by setting the CENx bit in DAC_CR register to 1,
+Page 1034: c)   Check if CAL_FLAGx bit in DAC_SR is set to 1.
+Page 1034: DAC_CCR register.
+Page 1034: the CAL_FLAGx bit in DAC_SR register in order to get a correct value.This parameter is
+Page 1034: 25.4.13     Dual DAC channel conversion (if available)
+Page 1034: To efficiently use the bus bandwidth in applications that require the two DAC channels at the
+Page 1034: unique register access is then required to drive both DAC channels at the same time. For
+Page 1034: 11 possible conversion modes are possible using the two DAC channels and these dual
+Page 1034: To configure the DAC in this conversion mode, the following sequence is required:
+Page 1034: 1.   Set the two DAC channel trigger enable bits TEN1 and TEN2.
+Page 1034: 3.   Load the dual DAC channel data into the desired DHR register (DAC_DHR12RD,
+Page 1034: DAC_DHR12LD or DAC_DHR8RD).
+Page 1035: RM0433                                                            Digital-to-analog converter (DAC)
+Page 1035: When a DAC channel1 trigger arrives, the DHR1 register is transferred into DAC_DOR1
+Page 1035: (three dac_pclk clock cycles later).
+Page 1035: When a DAC channel2 trigger arrives, the DHR2 register is transferred into DAC_DOR2
+Page 1035: (three dac_pclk clock cycles later).
+Page 1035: To configure the DAC in this conversion mode, the following sequence is required:
+Page 1035: 1.   Set the two DAC channel trigger enable bits TEN1 and TEN2.
+Page 1035: 3.   Configure the two DAC channel WAVEx[1:0] bits as 01 and the same LFSR mask value
+Page 1035: 4.   Load the dual DAC channel data into the desired DHR register (DHR12RD, DHR12LD
+Page 1035: When a DAC channel1 trigger arrives, the LFSR1 counter, with the same mask, is added to
+Page 1035: the DHR1 register and the sum is transferred into DAC_DOR1 (three dac_pclk clock cycles
+Page 1035: When a DAC channel2 trigger arrives, the LFSR2 counter, with the same mask, is added to
+Page 1035: the DHR2 register and the sum is transferred into DAC_DOR2 (three dac_pclk clock cycles
+Page 1035: To configure the DAC in this conversion mode, the following sequence is required:
+Page 1035: 1.   Set the two DAC channel trigger enable bits TEN1 and TEN2.
+Page 1035: 3.   Configure the two DAC channel WAVEx[1:0] bits as 01 and set different LFSR masks
+Page 1035: 4.   Load the dual DAC channel data into the desired DHR register (DAC_DHR12RD,
+Page 1035: DAC_DHR12LD or DAC_DHR8RD).
+Page 1035: When a DAC channel1 trigger arrives, the LFSR1 counter, with the mask configured by
+Page 1035: MAMP1[3:0], is added to the DHR1 register and the sum is transferred into DAC_DOR1
+Page 1035: (three dac_pclk clock cycles later). Then the LFSR1 counter is updated.
+Page 1035: When a DAC channel2 trigger arrives, the LFSR2 counter, with the mask configured by
+Page 1035: MAMP2[3:0], is added to the DHR2 register and the sum is transferred into DAC_DOR2
+Page 1035: (three dac_pclk clock cycles later). Then the LFSR2 counter is updated.
+Page 1035: To configure the DAC in this conversion mode, the following sequence is required:
+Page 1036: Digital-to-analog converter (DAC)                                                                RM0433
+Page 1036: 1.   Set the two DAC channel trigger enable bits TEN1 and TEN2.
+Page 1036: 3.   Configure the two DAC channel WAVEx[1:0] bits as 1x and the same maximum
+Page 1036: 4.   Load the dual DAC channel data into the desired DHR register (DAC_DHR12RD,
+Page 1036: DAC_DHR12LD or DAC_DHR8RD).
+Page 1036: When a DAC channel1 trigger arrives, the DAC channel1 triangle counter, with the same
+Page 1036: DAC_DOR1 (three dac_pclk clock cycles later). The DAC channel1 triangle counter is then
+Page 1036: When a DAC channel2 trigger arrives, the DAC channel2 triangle counter, with the same
+Page 1036: DAC_DOR2 (three dac_pclk clock cycles later). The DAC channel2 triangle counter is then
+Page 1036: To configure the DAC in this conversion mode, the following sequence is required:
+Page 1036: 1.   Set the two DAC channel trigger enable bits TEN1 and TEN2.
+Page 1036: 3.   Configure the two DAC channel WAVEx[1:0] bits as 1x and set different maximum
+Page 1036: 4.   Load the dual DAC channel data into the desired DHR register (DAC_DHR12RD,
+Page 1036: DAC_DHR12LD or DAC_DHR8RD).
+Page 1036: When a DAC channel1 trigger arrives, the DAC channel1 triangle counter, with a triangle
+Page 1036: transferred into DAC_DOR1 (three dac_pclk clock cycles later). The DAC channel1 triangle
+Page 1036: When a DAC channel2 trigger arrives, the DAC channel2 triangle counter, with a triangle
+Page 1036: transferred into DAC_DOR2 (three dac_pclk clock cycles later). The DAC channel2 triangle
+Page 1036: To configure the DAC in this conversion mode, the following sequence is required:
+Page 1036: •    Load the dual DAC channel data to the desired DHR register (DAC_DHR12RD,
+Page 1036: DAC_DHR12LD or DAC_DHR8RD)
+Page 1036: In this configuration, one dac_pclk clock cycle later, the DHR1 and DHR2 registers are
+Page 1036: transferred into DAC_DOR1 and DAC_DOR2, respectively.
+Page 1037: RM0433                                                          Digital-to-analog converter (DAC)
+Page 1037: To configure the DAC in this conversion mode, the following sequence is required:
+Page 1037: •   Set the two DAC channel trigger enable bits TEN1 and TEN2
+Page 1037: •   Configure the same trigger source for both DAC channels by setting the same value in
+Page 1037: •   Load the dual DAC channel data to the desired DHR register (DAC_DHR12RD,
+Page 1037: DAC_DHR12LD or DAC_DHR8RD)
+Page 1037: When a trigger arrives, the DHR1 and DHR2 registers are transferred into DAC_DOR1 and
+Page 1037: DAC_DOR2, respectively (after three dac_pclk clock cycles).
+Page 1037: To configure the DAC in this conversion mode, the following sequence is required:
+Page 1037: •   Set the two DAC channel trigger enable bits TEN1 and TEN2
+Page 1037: •   Configure the same trigger source for both DAC channels by setting the same value in
+Page 1037: •   Configure the two DAC channel WAVEx[1:0] bits as 01 and the same LFSR mask value
+Page 1037: •   Load the dual DAC channel data to the desired DHR register (DHR12RD, DHR12LD or
+Page 1037: register and the sum is transferred into DAC_DOR1 (three dac_pclk clock cycles later). The
+Page 1037: is added to the DHR2 register and the sum is transferred into DAC_DOR2 (three dac_pclk
+Page 1037: To configure the DAC in this conversion mode, the following sequence is required:
+Page 1037: •   Set the two DAC channel trigger enable bits TEN1 and TEN2
+Page 1037: •   Configure the same trigger source for both DAC channels by setting the same value in
+Page 1037: •   Configure the two DAC channel WAVEx[1:0] bits as 01 and set different LFSR mask
+Page 1037: •   Load the dual DAC channel data into the desired DHR register (DAC_DHR12RD,
+Page 1037: DAC_DHR12LD or DAC_DHR8RD)
+Page 1037: added to the DHR1 register and the sum is transferred into DAC_DOR1 (three dac_pclk
+Page 1037: the DHR2 register and the sum is transferred into DAC_DOR2 (three dac_pclk clock cycles
+Page 1038: Digital-to-analog converter (DAC)                                                               RM0433
+Page 1038: To configure the DAC in this conversion mode, the following sequence is required:
+Page 1038: •   Set the two DAC channel trigger enable bits TEN1 and TEN2
+Page 1038: •   Configure the same trigger source for both DAC channels by setting the same value in
+Page 1038: •   Configure the two DAC channel WAVEx[1:0] bits as 1x and the same maximum
+Page 1038: •   Load the dual DAC channel data into the desired DHR register (DAC_DHR12RD,
+Page 1038: DAC_DHR12LD or DAC_DHR8RD)
+Page 1038: When a trigger arrives, the DAC channel1 triangle counter, with the same triangle
+Page 1038: amplitude, is added to the DHR1 register and the sum is transferred into DAC_DOR1 (three
+Page 1038: dac_pclk clock cycles later). The DAC channel1 triangle counter is then updated.
+Page 1038: At the same time, the DAC channel2 triangle counter, with the same triangle amplitude, is
+Page 1038: added to the DHR2 register and the sum is transferred into DAC_DOR2 (three dac_pclk
+Page 1038: clock cycles later). The DAC channel2 triangle counter is then updated.
+Page 1038: To configure the DAC in this conversion mode, the following sequence is required:
+Page 1038: •   Set the two DAC channel trigger enable bits TEN1 and TEN2
+Page 1038: •   Configure the same trigger source for both DAC channels by setting the same value in
+Page 1038: •   Configure the two DAC channel WAVEx[1:0] bits as 1x and set different maximum
+Page 1038: •   Load the dual DAC channel data into the desired DHR register (DAC_DHR12RD,
+Page 1038: DAC_DHR12LD or DAC_DHR8RD)
+Page 1038: When a trigger arrives, the DAC channel1 triangle counter, with a triangle amplitude
+Page 1038: DAC_DOR1 (three APB clock cycles later). Then the DAC channel1 triangle counter is
+Page 1038: At the same time, the DAC channel2 triangle counter, with a triangle amplitude configured
+Page 1038: by MAMP2[3:0], is added to the DHR2 register and the sum is transferred into DAC_DOR2
+Page 1038: (three dac_pclk clock cycles later). Then the DAC channel2 triangle counter is updated.
+Page 1039: RM0433                                                                Digital-to-analog converter (DAC)
+Page 1039: 25.5     DAC low-power modes
+Page 1039: Table 221. Effect of low-power modes on DAC
+Page 1039: Sleep                     No effect, DAC can be used with DMA
+Page 1039: DAC remains active with a static output value if Sample and Hold mode is
+Page 1039: The DAC peripheral is powered down and must be reinitialized after exiting
+Page 1039: 25.6     DAC interrupts
+Page 1039: Table 222. DAC interrupts
+Page 1040: Digital-to-analog converter (DAC)                                                                              RM0433
+Page 1040: 25.7           DAC registers
+Page 1040: 25.7.1         DAC control register (DAC_CR)
+Page 1040: Bit 30 CEN2: DAC Channel 2 calibration enable
+Page 1040: This bit is set and cleared by software to enable/disable DAC channel 2 calibration, it can be
+Page 1040: written only if EN2 bit is set to 0 into DAC_CR (the calibration mode can be entered/exit only
+Page 1040: when the DAC channel is disabled) Otherwise, the write operation is ignored.
+Page 1040: 0: DAC channel 2 in Normal operating mode
+Page 1040: 1: DAC channel 2 in calibration mode
+Page 1040: Note: This bit is available only on dual-channel DACs. Refer to Section 25.3: DAC
+Page 1040: Bit 29 DMAUDRIE2: DAC channel2 DMA underrun interrupt enable
+Page 1040: 0: DAC channel2 DMA underrun interrupt disabled
+Page 1040: 1: DAC channel2 DMA underrun interrupt enabled
+Page 1040: Note: This bit is available only on dual-channel DACs. Refer to Section 25.3: DAC
+Page 1040: Bit 28 DMAEN2: DAC channel2 DMA enable
+Page 1040: 0: DAC channel2 DMA mode disabled
+Page 1040: 1: DAC channel2 DMA mode enabled
+Page 1040: Note: This bit is available only on dual-channel DACs. Refer to Section 25.3: DAC
+Page 1041: RM0433                                                                       Digital-to-analog converter (DAC)
+Page 1041: Bits 27:24 MAMP2[3:0]: DAC channel2 mask/amplitude selector
+Page 1041: Note: These bits are available only on dual-channel DACs. Refer to Section 25.3: DAC
+Page 1041: Bits 23:22 WAVE2[1:0]: DAC channel2 noise/triangle wave generation enable
+Page 1041: Note: Only used if bit TEN2 = 1 (DAC channel2 trigger enabled)
+Page 1041: These bits are available only on dual-channel DACs. Refer to Section 25.3: DAC
+Page 1041: Bits 21:18 TSEL2[3:0]: DAC channel2 trigger selection
+Page 1041: These bits select the external event used to trigger DAC channel2
+Page 1041: Note: Only used if bit TEN2 = 1 (DAC channel2 trigger enabled).
+Page 1041: These bits are available only on dual-channel DACs. Refer to Section 25.3: DAC
+Page 1041: Bit 17 TEN2: DAC channel2 trigger enable
+Page 1041: This bit is set and cleared by software to enable/disable DAC channel2 trigger
+Page 1041: 0: DAC channel2 trigger disabled and data written into the DAC_DHR2 register are
+Page 1041: transferred one dac_pclk clock cycle later to the DAC_DOR2 register
+Page 1041: 1: DAC channel2 trigger enabled and data from the DAC_DHR2 register are transferred
+Page 1041: three dac_pclk clock cycles later to the DAC_DOR2 register
+Page 1041: Note: When software trigger is selected, the transfer from the DAC_DHR2 register to the
+Page 1041: DAC_DOR2 register takes only one dac_pclk clock cycle.
+Page 1041: These bits are available only on dual-channel DACs. Refer to Section 25.3: DAC
+Page 1041: Bit 16 EN2: DAC channel2 enable
+Page 1041: This bit is set and cleared by software to enable/disable DAC channel2.
+Page 1041: 0: DAC channel2 disabled
+Page 1041: 1: DAC channel2 enabled
+Page 1041: Note: These bits are available only on dual-channel DACs. Refer to Section 25.3: DAC
+Page 1042: Digital-to-analog converter (DAC)                                                                          RM0433
+Page 1042: Bit 14 CEN1: DAC Channel 1 calibration enable
+Page 1042: This bit is set and cleared by software to enable/disable DAC channel 1 calibration, it can be
+Page 1042: written only if bit EN1=0 into DAC_CR (the calibration mode can be entered/exit only when
+Page 1042: the DAC channel is disabled) Otherwise, the write operation is ignored.
+Page 1042: 0: DAC channel 1 in Normal operating mode
+Page 1042: 1: DAC channel 1 in calibration mode
+Page 1042: Bit 13 DMAUDRIE1: DAC channel1 DMA Underrun Interrupt enable
+Page 1042: 0: DAC channel1 DMA Underrun Interrupt disabled
+Page 1042: 1: DAC channel1 DMA Underrun Interrupt enabled
+Page 1042: Bit 12 DMAEN1: DAC channel1 DMA enable
+Page 1042: 0: DAC channel1 DMA mode disabled
+Page 1042: 1: DAC channel1 DMA mode enabled
+Page 1042: Bits 11:8 MAMP1[3:0]: DAC channel1 mask/amplitude selector
+Page 1042: Bits 7:6 WAVE1[1:0]: DAC channel1 noise/triangle wave generation enable
+Page 1042: Only used if bit TEN1 = 1 (DAC channel1 trigger enabled).
+Page 1043: RM0433                                                                             Digital-to-analog converter (DAC)
+Page 1043: Bits 5:2 TSEL1[3:0]: DAC channel1 trigger selection
+Page 1043: These bits select the external event used to trigger DAC channel1
+Page 1043: Note: Only used if bit TEN1 = 1 (DAC channel1 trigger enabled).
+Page 1043: Bit 1 TEN1: DAC channel1 trigger enable
+Page 1043: This bit is set and cleared by software to enable/disable DAC channel1 trigger.
+Page 1043: 0: DAC channel1 trigger disabled and data written into the DAC_DHR1 register are
+Page 1043: transferred one dac_pclk clock cycle later to the DAC_DOR1 register
+Page 1043: 1: DAC channel1 trigger enabled and data from the DAC_DHR1 register are transferred
+Page 1043: three dac_pclk clock cycles later to the DAC_DOR1 register
+Page 1043: Note: When software trigger is selected, the transfer from the DAC_DHR1 register to the
+Page 1043: DAC_DOR1 register takes only one dac_pclk clock cycle.
+Page 1043: Bit 0 EN1: DAC channel1 enable
+Page 1043: This bit is set and cleared by software to enable/disable DAC channel1.
+Page 1043: 0: DAC channel1 disabled
+Page 1043: 1: DAC channel1 enabled
+Page 1043: 25.7.2           DAC software trigger register (DAC_SWTRGR)
+Page 1043: Bit 1 SWTRIG2: DAC channel2 software trigger
+Page 1043: This bit is set by software to trigger the DAC in software trigger mode.
+Page 1043: Note: This bit is cleared by hardware (one dac_pclk clock cycle later) once the DAC_DHR2
+Page 1043: register value has been loaded into the DAC_DOR2 register.
+Page 1043: This bit is available only on dual-channel DACs. Refer to Section 25.3: DAC
+Page 1043: Bit 0 SWTRIG1: DAC channel1 software trigger
+Page 1043: This bit is set by software to trigger the DAC in software trigger mode.
+Page 1043: Note: This bit is cleared by hardware (one dac_pclk clock cycle later) once the DAC_DHR1
+Page 1043: register value has been loaded into the DAC_DOR1 register.
+Page 1044: Digital-to-analog converter (DAC)                                                                                   RM0433
+Page 1044: 25.7.3            DAC channel1 12-bit right-aligned data holding register
+Page 1044: (DAC_DHR12R1)
+Page 1044: Res.     Res.     Res.   Res.                                           DACC1DHR[11:0]
+Page 1044: Bits 11:0 DACC1DHR[11:0]: DAC channel1 12-bit right-aligned data
+Page 1044: These bits are written by software. They specify 12-bit data for DAC channel1.
+Page 1044: 25.7.4            DAC channel1 12-bit left aligned data holding register
+Page 1044: (DAC_DHR12L1)
+Page 1044: DACC1DHR[11:0]                                          Res.   Res.   Res.   Res.
+Page 1044: Bits 15:4 DACC1DHR[11:0]: DAC channel1 12-bit left-aligned data
+Page 1044: They specify 12-bit data for DAC channel1.
+Page 1045: RM0433                                                                          Digital-to-analog converter (DAC)
+Page 1045: 25.7.5           DAC channel1 8-bit right aligned data holding register
+Page 1045: (DAC_DHR8R1)
+Page 1045: Res.    Res.      Res.   Res.   Res.   Res.   Res.    Res.                           DACC1DHR[7:0]
+Page 1045: Bits 7:0 DACC1DHR[7:0]: DAC channel1 8-bit right-aligned data
+Page 1045: These bits are written by software. They specify 8-bit data for DAC channel1.
+Page 1045: 25.7.6           DAC channel2 12-bit right aligned data holding register
+Page 1045: (DAC_DHR12R2)
+Page 1045: This register is available only on dual-channel DACs. Refer to Section 25.3: DAC
+Page 1045: Res.    Res.      Res.   Res.                                       DACC2DHR[11:0]
+Page 1045: Bits 11:0 DACC2DHR[11:0]: DAC channel2 12-bit right-aligned data
+Page 1045: These bits are written by software. They specify 12-bit data for DAC channel2.
+Page 1046: Digital-to-analog converter (DAC)                                                                                 RM0433
+Page 1046: 25.7.7           DAC channel2 12-bit left aligned data holding register
+Page 1046: (DAC_DHR12L2)
+Page 1046: This register is available only on dual-channel DACs. Refer to Section 25.3: DAC
+Page 1046: DACC2DHR[11:0]                                        Res.    Res.   Res.   Res.
+Page 1046: Bits 15:4 DACC2DHR[11:0]: DAC channel2 12-bit left-aligned data
+Page 1046: These bits are written by software which specify 12-bit data for DAC channel2.
+Page 1046: 25.7.8           DAC channel2 8-bit right-aligned data holding register
+Page 1046: (DAC_DHR8R2)
+Page 1046: This register is available only on dual-channel DACs. Refer to Section 25.3: DAC
+Page 1046: Res.    Res.      Res.   Res.   Res.    Res.   Res.      Res.                        DACC2DHR[7:0]
+Page 1046: Bits 7:0 DACC2DHR[7:0]: DAC channel2 8-bit right-aligned data
+Page 1046: These bits are written by software which specifies 8-bit data for DAC channel2.
+Page 1047: RM0433                                                                           Digital-to-analog converter (DAC)
+Page 1047: 25.7.9           Dual DAC 12-bit right-aligned data holding register
+Page 1047: (DAC_DHR12RD)
+Page 1047: Res.    Res.      Res.   Res.                                        DACC2DHR[11:0]
+Page 1047: Res.    Res.      Res.   Res.                                        DACC1DHR[11:0]
+Page 1047: Bits 27:16 DACC2DHR[11:0]: DAC channel2 12-bit right-aligned data
+Page 1047: These bits are written by software which specifies 12-bit data for DAC channel2.
+Page 1047: Bits 11:0 DACC1DHR[11:0]: DAC channel1 12-bit right-aligned data
+Page 1047: These bits are written by software which specifies 12-bit data for DAC channel1.
+Page 1047: 25.7.10          Dual DAC 12-bit left aligned data holding register
+Page 1047: (DAC_DHR12LD)
+Page 1047: DACC2DHR[11:0]                                       Res.   Res.   Res.   Res.
+Page 1047: DACC1DHR[11:0]                                       Res.   Res.   Res.   Res.
+Page 1047: Bits 31:20 DACC2DHR[11:0]: DAC channel2 12-bit left-aligned data
+Page 1047: These bits are written by software which specifies 12-bit data for DAC channel2.
+Page 1047: Bits 15:4 DACC1DHR[11:0]: DAC channel1 12-bit left-aligned data
+Page 1047: These bits are written by software which specifies 12-bit data for DAC channel1.
+Page 1048: Digital-to-analog converter (DAC)                                                                                  RM0433
+Page 1048: 25.7.11         Dual DAC 8-bit right aligned data holding register
+Page 1048: (DAC_DHR8RD)
+Page 1048: DACC2DHR[7:0]                                                 DACC1DHR[7:0]
+Page 1048: Bits 15:8 DACC2DHR[7:0]: DAC channel2 8-bit right-aligned data
+Page 1048: These bits are written by software which specifies 8-bit data for DAC channel2.
+Page 1048: Bits 7:0 DACC1DHR[7:0]: DAC channel1 8-bit right-aligned data
+Page 1048: These bits are written by software which specifies 8-bit data for DAC channel1.
+Page 1048: 25.7.12         DAC channel1 data output register (DAC_DOR1)
+Page 1048: Res.   Res.      Res.   Res.                                         DACC1DOR[11:0]
+Page 1048: Bits 11:0 DACC1DOR[11:0]: DAC channel1 data output
+Page 1048: These bits are read-only, they contain data output for DAC channel1.
+Page 1049: RM0433                                                                          Digital-to-analog converter (DAC)
+Page 1049: 25.7.13         DAC channel2 data output register (DAC_DOR2)
+Page 1049: This register is available only on dual-channel DACs. Refer to Section 25.3: DAC
+Page 1049: Res.   Res.      Res.    Res.                                       DACC2DOR[11:0]
+Page 1049: Bits 11:0 DACC2DOR[11:0]: DAC channel2 data output
+Page 1049: These bits are read-only, they contain data output for DAC channel2.
+Page 1049: 25.7.14         DAC status register (DAC_SR)
+Page 1050: Digital-to-analog converter (DAC)                                                                           RM0433
+Page 1050: Bit 31 BWST2: DAC Channel 2 busy writing sample time flag
+Page 1050: software writes the register DAC_SHSR2, It is cleared by hardware when the write operation
+Page 1050: of DAC_SHSR2 is complete. (It takes about 3 LSI periods of synchronization).
+Page 1050: 0:There is no write operation of DAC_SHSR2 ongoing: DAC_SHSR2 can be written
+Page 1050: 1:There is a write operation of DAC_SHSR2 ongoing: DAC_SHSR2 cannot be written
+Page 1050: Note: This bit is available only on dual-channel DACs. Refer to Section 25.3: DAC
+Page 1050: Bit 30 CAL_FLAG2: DAC Channel 2 calibration offset status
+Page 1050: Note: This bit is available only on dual-channel DACs. Refer to Section 25.3: DAC
+Page 1050: Bit 29 DMAUDR2: DAC channel2 DMA underrun flag
+Page 1050: 0: No DMA underrun error condition occurred for DAC channel2
+Page 1050: 1: DMA underrun error condition occurred for DAC channel2 (the currently selected trigger is
+Page 1050: driving DAC channel2 conversion at a frequency higher than the DMA service capability
+Page 1050: Note: This bit is available only on dual-channel DACs. Refer to Section 25.3: DAC
+Page 1050: Bit 15 BWST1: DAC Channel 1 busy writing sample time flag
+Page 1050: software writes the register DAC_SHSR1, It is cleared by hardware when the write operation of
+Page 1050: DAC_SHSR1 is complete. (It takes about 3 LSI periods of synchronization).
+Page 1050: 0:There is no write operation of DAC_SHSR1 ongoing: DAC_SHSR1 can be written
+Page 1050: 1:There is a write operation of DAC_SHSR1 ongoing: DAC_SHSR1 cannot be written
+Page 1050: Bit 14 CAL_FLAG1: DAC Channel 1 calibration offset status
+Page 1050: Bit 13 DMAUDR1: DAC channel1 DMA underrun flag
+Page 1050: 0: No DMA underrun error condition occurred for DAC channel1
+Page 1050: 1: DMA underrun error condition occurred for DAC channel1 (the currently selected trigger is
+Page 1050: driving DAC channel1 conversion at a frequency higher than the DMA service capability rate)
+Page 1051: RM0433                                                                       Digital-to-analog converter (DAC)
+Page 1051: 25.7.15        DAC calibration control register (DAC_CCR)
+Page 1051: Bits 20:16 OTRIM2[4:0]: DAC Channel 2 offset trimming value
+Page 1051: These bits are available only on dual-channel DACs. Refer to Section 25.3: DAC
+Page 1051: Bits 4:0 OTRIM1[4:0]: DAC Channel 1 offset trimming value
+Page 1051: 25.7.16        DAC mode control register (DAC_MCR)
+Page 1052: Digital-to-analog converter (DAC)                                                                     RM0433
+Page 1052: Bits 18:16 MODE2[2:0]: DAC Channel 2 mode
+Page 1052: These bits can be written only when the DAC is disabled and not in the calibration mode
+Page 1052: (when bit EN2=0 and bit CEN2 =0 in the DAC_CR register). If EN2=1 or CEN2 =1 the write
+Page 1052: They can be set and cleared by software to select the DAC Channel 2 mode:
+Page 1052: – DAC Channel 2 in Normal mode
+Page 1052: 000: DAC Channel 2 is connected to external pin with Buffer enabled
+Page 1052: 001: DAC Channel 2 is connected to external pin and to on chip peripherals with buffer
+Page 1052: 010: DAC Channel 2 is connected to external pin with buffer disabled
+Page 1052: 011: DAC Channel 2 is connected to on chip peripherals with Buffer disabled
+Page 1052: – DAC Channel 2 in Sample and Hold mode
+Page 1052: 100: DAC Channel 2 is connected to external pin with Buffer enabled
+Page 1052: 101: DAC Channel 2 is connected to external pin and to on chip peripherals with Buffer
+Page 1052: 110: DAC Channel 2 is connected to external pin and to on chip peripherals with Buffer
+Page 1052: 111: DAC Channel 2 is connected to on chip peripherals with Buffer disabled
+Page 1052: Refer to Section 25.3: DAC implementation for the availability of DAC channel 2.
+Page 1052: Bits 2:0 MODE1[2:0]: DAC Channel 1 mode
+Page 1052: These bits can be written only when the DAC is disabled and not in the calibration mode
+Page 1052: (when bit EN1=0 and bit CEN1 =0 in the DAC_CR register). If EN1=1 or CEN1 =1 the write
+Page 1052: They can be set and cleared by software to select the DAC Channel 1 mode:
+Page 1052: – DAC Channel 1 in Normal mode
+Page 1052: 000: DAC Channel 1 is connected to external pin with Buffer enabled
+Page 1052: 001: DAC Channel 1 is connected to external pin and to on chip peripherals with Buffer
+Page 1052: 010: DAC Channel 1 is connected to external pin with Buffer disabled
+Page 1052: 011: DAC Channel 1 is connected to on chip peripherals with Buffer disabled
+Page 1052: – DAC Channel 1 in sample & hold mode
+Page 1052: 100: DAC Channel 1 is connected to external pin with Buffer enabled
+Page 1052: 101: DAC Channel 1 is connected to external pin and to on chip peripherals with Buffer
+Page 1052: 110: DAC Channel 1 is connected to external pin and to on chip peripherals with Buffer
+Page 1052: 111: DAC Channel 1 is connected to on chip peripherals with Buffer disabled
+Page 1053: RM0433                                                                        Digital-to-analog converter (DAC)
+Page 1053: 25.7.17        DAC channel 1 sample and hold sample time register (DAC_SHSR1)
+Page 1053: Bits 9:0 TSAMPLE1[9:0]: DAC Channel 1 sample Time (only valid in Sample and Hold mode)
+Page 1053: These bits can be written when the DAC channel1 is disabled or also during normal operation.
+Page 1053: in the latter case, the write can be done only when BWSTx of DAC_SCR register is low, If
+Page 1053: 25.7.18        DAC channel 2 sample and hold sample time register (DAC_SHSR2)
+Page 1053: This register is available only on dual-channel DACs. Refer to Section 25.3: DAC
+Page 1053: Bits 9:0 TSAMPLE2[9:0]: DAC Channel 2 sample Time (only valid in Sample and Hold mode)
+Page 1053: These bits can be written when the DAC channel2 is disabled or also during normal
+Page 1053: operation. in the latter case, the write can be done only when BWSTx of DAC_SR register is
+Page 1054: Digital-to-analog converter (DAC)                                                                       RM0433
+Page 1054: 25.7.19        DAC sample and hold time register (DAC_SHHR)
+Page 1054: Bits 25:16 THOLD2[9:0]: DAC Channel 2 hold time (only valid in Sample and Hold mode).
+Page 1054: These bits are available only on dual-channel DACs. Refer to Section 25.3: DAC
+Page 1054: Bits 9:0 THOLD1[9:0]: DAC Channel 1 hold Time (only valid in Sample and Hold mode)
+Page 1054: Note:          These bits can be written only when the DAC channel is disabled and in Normal operating
+Page 1054: mode (when bit ENx=0 and bit CEN2x=0 in the DAC_CR register). If ENx=1 or CENx=1 the
+Page 1054: 25.7.20        DAC sample and hold refresh time register (DAC_SHRR)
+Page 1055: RM0433                                                                  Digital-to-analog converter (DAC)
+Page 1055: Bits 23:16 TREFRESH2[7:0]: DAC Channel 2 refresh Time (only valid in Sample and Hold mode)
+Page 1055: These bits are available only on dual-channel DACs. Refer to Section 25.3: DAC
+Page 1055: Bits 7:0 TREFRESH1[7:0]: DAC Channel 1 refresh Time (only valid in Sample and Hold mode)
+Page 1055: Note:        These bits can be written only when the DAC channel is disabled and in Normal operating
+Page 1055: mode (when bit ENx=0 and bit CEN2x=0 in the DAC_CR register). If ENx=1 or CENx=1 the
+Page 1056: DAC_
+Page 1056: DAC_
+Page 1056: DAC_
+Page 1056: DAC_
+Page 1056: DAC_
+Page 1056: DAC_
+Page 1056: DAC_
+Page 1056: DAC_
+Page 1056: DAC_
+Page 1056: DAC_
+Page 1056: DAC_
+Page 1056: DAC_
+Page 1056: DAC_SR
+Page 1056: DAC_CR
+Page 1056: DAC register map
+Page 1056: Digital-to-analog converter (DAC)
+Page 1056: DACC2DHR[11:0]
+Page 1056: DACC2DHR[11:0]
+Page 1056: Table 223 summarizes the DAC registers.
+Page 1056: Table 223. DAC register map and reset values
+Page 1056: DACC2DHR[7:0]
+Page 1056: DACC1DHR[11:0]
+Page 1056: DACC2DHR[11:0]
+Page 1056: DACC1DHR[11:0]
+Page 1056: DACC1DHR[11:0]
+Page 1056: DACC2DHR[11:0]
+Page 1056: DACC1DHR[11:0]
+Page 1056: DACC2DOR[11:0]
+Page 1056: DACC1DOR[11:0]
+Page 1056: DACC1DHR[7:0]
+Page 1056: DACC2DHR[7:0]
+Page 1056: DACC1DHR[7:0]
+Page 1057: RM0433                                                                                                                                                       Digital-to-analog converter (DAC)
+Page 1057: Table 223. DAC register map and reset values (continued)
+Page 1057: DAC_CCR                                                                                           OTRIM2[4:0]                                                                                                       OTRIM1[4:0]
+Page 1057: DAC_MCR
+Page 1057: DAC_
+Page 1057: DAC_
+Page 1057: DAC_
+Page 1057: DAC_
+Page 1058: can be used as voltage reference for ADCs, DACs and also as voltage reference for
+Page 1061: –    DAC Channel1 and Channel2 outputs
+Page 1063: comp_inm1         Analog input     Inverting input source for both COMP channels: DAC ch.1
+Page 1063: comp_inm2         Analog input     Inverting input source for both COMP channels: DAC ch.2
+Page 1073: 100 = comp_inm1 (DAC channel 1 output)
+Page 1073: 101 = comp_inm2 (DAC channel 2 output)
+Page 1075: 100 = comp_inm1 (DAC channel 1 output)
+Page 1075: 101 = comp_inm2 (DAC channel 2 output)
+Page 1079: dac_out1
+Page 1079: dac_out2
+Page 1080: dac_outx
+Page 1081: dac_outx
+Page 1082: dac_outx
+Page 1083: dac_outx
+Page 1084: dac_outx
+Page 1085: dac_outx
+Page 1090: 01: dac_outx connected to OPAMPx_VINP
+Page 1093: 01: DAC connected to OPAMPx_VINP
+Page 1339: links to built-in ADC and DAC converters. Last, it features light-load management mode and
+Page 1340: –    3 triggers to DAC converters
+Page 1341: •    Triggers for the ADC and DAC converters
+Page 1342: hrtim_dac_trg[3:1]                 peripheral
+Page 1344: hrtim_dac_trg[3:1]                   DAC conversion update triggers
+Page 1411: 36.3.19   DAC triggers
+Page 1411: The HRTIMER allows to have the embedded DACs updated synchronously with the timer
+Page 1411: The update events from the master timer and the timer units can generate DAC update
+Page 1411: triggers on any of the 3 hrtim_dac_trgx outputs.
+Page 1411: Note:     Each timer has its own DAC-related control register.
+Page 1411: DACSYNC[1:0] bits of the HRTIM_MCR and HRTIM_TIMxCR registers are programmed as
+Page 1411: •      01: Update generated on hrtim_dac_trg1
+Page 1411: •      10: Update generated on hrtim_dac_trg2
+Page 1411: •      11: Update generated on hrtim_dac_trg3
+Page 1411: An output pulse of 1 fHRTIM clock periods is generated on the hrtim_dac_trgx output.
+Page 1412: When DACSYNC[1:0] bits are enabled in multiple timers, the hrtim_dac_trgx output will
+Page 1412: consist of an OR of all timers’ update events. For instance, if DACSYNC = 1 in timer A and
+Page 1412: generate a DAC update trigger on the corresponding hrtim_dac_trgx output, as shown on
+Page 1412: Figure 331. Combining several updates on a single hrtim_dac_trgx output
+Page 1412: hrtim_dac_
+Page 1412: hrtim_dac_trgx pins are connected to the DACs as follows:
+Page 1412: •       hrtim_dac_trg1: DAC1_CH1 trigger input 9 (TSEL1[2:0] = 1001 in DAC_CR of DAC1
+Page 1412: •       hrtim_dac_trg2: DAC1_CH2 trigger input 10 (TSEL1[2:0] = 1010 in DAC_CR of DAC1
+Page 1412: •       hrtim_dac_trg3: not connected
+Page 1426: BRSTDMA[1:0]    MREPU   Res.   PREEN   DACSYNC[1:0]    Res.   Res.   Res.   TECEN TDCEN TCCEN TBCEN TACEN MCEN
+Page 1426: Bits 26:25 DACSYNC[1:0] DAC Synchronization
+Page 1426: A DAC synchronization event can be enabled and generated when the master timer update occurs.
+Page 1426: These bits are defining on which output the DAC synchronization is sent (refer to Section 36.3.19:
+Page 1426: DAC triggers for connections details).
+Page 1426: 00: No DAC trigger generated
+Page 1426: 01: Trigger generated on hrtim_dac_trg1
+Page 1426: 10: Trigger generated on hrtim_dac_trg2
+Page 1426: 11: Trigger generated on hrtim_dac_trg3
+Page 1437: UPDGAT[3:0]            PREEN   DACSYNC[1:0]    MSTU   TEU    TDU     TCU      TBU    Res.                       Res.
+Page 1437: Bits 26:25 DACSYNC[1:0] DAC Synchronization
+Page 1437: A DAC synchronization event is generated when the timer update occurs. These bits are defining on
+Page 1437: which output the DAC synchronization is sent (refer to Section 36.3.19: DAC triggers for connections
+Page 1437: 00: No DAC trigger generated
+Page 1437: 01: Trigger generated on hrtim_dac_trg1
+Page 1437: 10: Trigger generated on hrtim_dac_trg2
+Page 1437: 11: Trigger generated on hrtim_dac_trg3
+Page 1505: DACSYNC[1:0]
+Page 1507: DACSYNC[1:0]
+Page 1515: ETR    Polarity selection &                    Input                                                       to DAC/ADC
+Page 1620: to DAC/ADC
+Page 1830: used to drive the digital-to-analog converter (DAC). In fact, the timers are internally
+Page 1830: connected to the DAC and are able to drive it through their trigger outputs.
+Page 1830: •   Synchronization circuit to trigger the DAC
+Page 1830: Trigger          TRGO           to DAC
+Page 2227: SDI   Tag ADDR DATA LFRONT RFRONT    DAC CENTER LSURR RSURR   LFE      DAC    DAC    CTRL
+Page 3211: Res.                                          Res.                                            Res.                                Res.                                                                                       SUPPDAC                                                                                                                            8
+Page 3217: dac1_dma and dac2_dma into dac_ch1_dma and dac_ch2_dma,
+Page 3219: 2      Section 26: Digital-to-analog converter (DAC)
+Page 3219: Updated/added internal signals in Figure 194: DAC channel block
+Page 3219: diagram. Added Section 26.3.2: DAC pins and internal signals..
+Page 3219: APB1 clock and LSI clock replaced by dac_pclk and by lsi_ck in the
+Page 3219: Replaced all occurrences of DACx_int by dac_outx (x = 1, 2).
+Page 3224: Section 26: Digital-to-analog converter (DAC)
+Page 3224: Updated VREF+ range in Table 207: DAC input/output pins
+Page 3224: Updated Section 26.3.5: DAC conversion.
+Page 3224: Section 26.3.12: DAC channel buffer calibration.
+Page 3224: Section 26.3.13: Dual DAC channel conversion (if available).
+Page 3224: Renamed DAC_M_ID into DAC_SIDR and M_ID bits into SID.
+Page 3225: Section 26: Digital-to-analog converter (DAC) (continued)
+Page 3225: Added Section 26.5: DAC interrupts
+Page 3225: Section 26.6.1: DAC x control register (DACx_CR) (x=1 to 2):
+Page 3225: – TEN2 bit: replaced DACx_DHRy by DACx_DHR2
+Page 3225: – TEN1 bit: replaced DACx_DHRy by DACx_DHR1 in.
+Page 3225: Section 26.6.16: DAC x mode control register (DACx_MCR) (x=1 to
+Page 3225: Section 26.6.19: DAC x Sample and Hold hold time register
+Page 3225: (DACx_SHHR)(x=1 to 2): added notes related to THOLDx
+Page 3225: Section 26.6.20: DAC x Sample and Hold refresh time register
+Page 3225: (DACx_SHRR)(x=1 to 2): added note related to TREFRESHx
+Page 3225: Suppressed DAC_OR register.
+Page 3230: Section 25: Digital-to-analog converter (DAC)
+Page 3230: Updated Figure 201: Dual-channel DAC block diagram.
+Page 3230: Added Section 25.3: DAC implementation.
+Page 3230: DAC status register (DAC_SR): for DAC1RDY and DAC1RDYbits,
+Page 3230: replaced DAC_CH1 and DAC_CH2 by DAC channel 1 and DAC
+Page 3235: CRYP_MISR . . . . . . . . . . . . . . . . . . . . . . . .1303       DAC_CCR . . . . . . . . . . . . . . . . . . . . . . . . . . 1051
+Page 3235: CRYP_RISR . . . . . . . . . . . . . . . . . . . . . . . . .1303     DAC_CR . . . . . . . . . . . . . . . . . . . . . . . . . . . 1040
+Page 3235: CRYP_SR . . . . . . . . . . . . . . . . . . . . . . . . . .1300     DAC_DHR12L1 . . . . . . . . . . . . . . . . . . . . . . 1044
+Page 3235: CSTF_AUTHSTAT . . . . . . . . . . . . . . . . . . . .3061           DAC_DHR12L2 . . . . . . . . . . . . . . . . . . . . . . 1046
+Page 3235: CSTF_CIDR0 . . . . . . . . . . . . . . . . . . . . . . . .3065      DAC_DHR12LD . . . . . . . . . . . . . . . . . . . . . 1047
+Page 3235: CSTF_CIDR1 . . . . . . . . . . . . . . . . . . . . . . . .3065      DAC_DHR12R1 . . . . . . . . . . . . . . . . . . . . . 1044
+Page 3235: CSTF_CIDR2 . . . . . . . . . . . . . . . . . . . . . . . .3066      DAC_DHR12R2 . . . . . . . . . . . . . . . . . . . . . 1045
+Page 3235: CSTF_CIDR3 . . . . . . . . . . . . . . . . . . . . . . . .3066      DAC_DHR12RD . . . . . . . . . . . . . . . . . . . . . 1047
+Page 3235: CSTF_CLAIMCLR . . . . . . . . . . . . . . . . . . . .3060           DAC_DHR8R1 . . . . . . . . . . . . . . . . . . . . . . 1045
+Page 3235: CSTF_CLAIMSET . . . . . . . . . . . . . . . . . . . .3059           DAC_DHR8R2 . . . . . . . . . . . . . . . . . . . . . . 1046
+Page 3235: CSTF_CTRL . . . . . . . . . . . . . . . . . . . . . . . .3058       DAC_DHR8RD . . . . . . . . . . . . . . . . . . . . . . 1048
+Page 3235: CSTF_DEVID . . . . . . . . . . . . . . . . . . . . . . . .3062      DAC_DOR1 . . . . . . . . . . . . . . . . . . . . . . . . . 1048
+Page 3235: CSTF_DEVTYPE . . . . . . . . . . . . . . . . . . . . .3062          DAC_DOR2 . . . . . . . . . . . . . . . . . . . . . . . . . 1049
+Page 3235: CSTF_LAR . . . . . . . . . . . . . . . . . . . . . . . . . .3060    DAC_MCR . . . . . . . . . . . . . . . . . . . . . . . . . . 1051
+Page 3235: CSTF_LSR . . . . . . . . . . . . . . . . . . . . . . . . . .3061    DAC_SHHR . . . . . . . . . . . . . . . . . . . . . . . . . 1054
+Page 3235: CSTF_PIDR0 . . . . . . . . . . . . . . . . . . . . . . . .3063      DAC_SHRR . . . . . . . . . . . . . . . . . . . . . . . . . 1054
+Page 3235: CSTF_PIDR1 . . . . . . . . . . . . . . . . . . . . . . . .3064      DAC_SHSR1 . . . . . . . . . . . . . . . . . . . . . . . . 1053
+Page 3235: CSTF_PIDR2 . . . . . . . . . . . . . . . . . . . . . . . .3064      DAC_SHSR2 . . . . . . . . . . . . . . . . . . . . . . . . 1053
+Page 3235: CSTF_PIDR3 . . . . . . . . . . . . . . . . . . . . . . . .3065      DAC_SR . . . . . . . . . . . . . . . . . . . . . . . . . . . 1049
+Page 3235: CSTF_PIDR4 . . . . . . . . . . . . . . . . . . . . . . . .3063      DAC_SWTRGR . . . . . . . . . . . . . . . . . . . . . . 1043

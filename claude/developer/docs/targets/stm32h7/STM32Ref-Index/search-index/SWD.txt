@@ -1,0 +1,29 @@
+Keyword: SWD
+Occurrences: 25
+================================================================================
+
+Page   96: Figure 818. SWD successful data transfer . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3005
+Page   98: microcontroller using the JTAG protocol, the SWD protocol or the bootloader while the
+Page  511: •    PA13: JTMS/SWDAT in pull-up
+Page 2998: The processor can be debugged using equipment connected to the JTAG/SWD debug
+Page 2999: JTMS/SWDIO
+Page 3000: JTMS/SWDIO                I       JTAG test mode select         IO      Serial wire data in/out   PA13
+Page 3001: JTMS/SWDIO                                                          D1 domain
+Page 3002: JTMS/SWDIO                                                           CK_CORE_D1
+Page 3003: up resistors on the JTDI, JTMS/SWDIO, and nJTRST lines, as well as a pull-down resistor
+Page 3003: JTMS/SWDIO:
+Page 3004: •      SWDIO: bi-directional serial data (100kΩ pull-up required)
+Page 3005: Figure 818. SWD successful data transfer
+Page 3005: SWDIO line               1        x      1      x      x       x       0      1        /       1        0        0        x          x          x                       x           x           x           x
+Page 3005: SWDIO                           SWDIO
+Page 3005: / – transfer of SWDIO line possession
+Page 3005: error. The line reset consists of 50 or more SWCLK cycles with SWDIO high, followed by
+Page 3005: two SWCLK cycles with SWDIO low.
+Page 3005: Note:          The SWJ-DP implements SWD protocol version 2.
+Page 3008: program the DATA field with the write data. If using SWD, the A(3:2) and R/W fields are
+Page 3009: DP_DLCR register(2). It controls the operating mode of the SWD Data Link.
+Page 3009: DLPIDR register(2). It provides the SWD protocol version.
+Page 3014: Bits 9:8 TURNROUND[1:0]: Tristate period for SWDIO
+Page 3017: JTAG/SWD           SWJ-DP                                        Cortex-M7 (AHBD port)
+Page 3018: program the DATA field with the write data. If using SWD, the A(3:2) and RnW fields
+Page 3214: JTAG/SWD or the CPU. It contains factory-programmed identification data that allow the

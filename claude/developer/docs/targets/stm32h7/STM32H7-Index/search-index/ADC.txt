@@ -1,0 +1,249 @@
+Keyword: ADC
+Occurrences: 245
+================================================================================
+
+Page    2: • 3× ADCs with 16-bit max. resolution (up to 36                      STM32H742II, STM32H742BI,
+Page    3: 3.17     Analog-to-digital converters (ADCs) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 36
+Page    5: 6.3.20     16-bit ADC characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 168
+Page    7: 7.3.20      16-bit ADC characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 276
+Page    9: Table 87.   ADC characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 168
+Page    9: Table 88.   ADC accuracy . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 170
+Page   11: Table 184.   ADC characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 276
+Page   11: Table 186.   ADC accuracy . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 282
+Page   13: Figure 40.   ADC accuracy characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 171
+Page   13: Figure 41.   Typical connection diagram when using the ADC with FT/TT pins featuring
+Page   14: Figure 92.   ADC accuracy characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 283
+Page   14: Figure 93.   Typical connection diagram when using the ADC with FT/TT pins
+Page   17: All the devices offer three ADCs, two DACs, two ultra-low power comparators, a low-power
+Page   21: 16-bit ADCs                                                                                                                                                                                                   3
+Page   23: FIFO                                                                                                                                                                  RNG                                                                                     ADC1
+Page   23: common to ADC1 & 2
+Page   23: CHROM-ART                                                                                                                                                                                                                                                                                         ADC2
+Page   23: common to ADC1 and 2                ADC3
+Page   24: FIFO                                                                                                                                                                  RNG                                                                                     ADC1
+Page   24: common to ADC1 & 2
+Page   24: CHROM-ART                                                                                                                                                                                                                                                                                         ADC2
+Page   24: common to ADC1 and 2               ADC3
+Page   27: •   VDDA = 1.62 to 3.6 V: external analog power supplies for ADC, DAC, COMP and
+Page   36: 3.17       Analog-to-digital converters (ADCs)
+Page   36: Each ADC shares up to 20 external channels, performing conversions in the Single-shot or
+Page   36: Additional logic functions embedded in the ADC interface allow:
+Page   36: The ADC can be served by the DMA controller, thus allowing to automatically transfer ADC
+Page   37: To synchronize A/D conversion and timers, the ADCs could be triggered by any of TIM1,
+Page   37: internally connected to ADC3_IN18. The conversion range is between 1.7 V and 3.6 V. It
+Page   38: •    Output connected to internal ADC
+Page   39: hardware. DFSDM features optional parallel data stream inputs from internal ADC
+Page   39: selected filter parameters with up to 24-bit final ADC resolution.
+Page   39: –    internal sources: ADC data or memory data streams (DMA)
+Page   40: Internal ADC parallel input                                    X
+Page   65: -          -       13         E5         J2            19         22         H4               PF3       I/O                        -        FMC_A3, EVENTOUT      ADC3_INP5
+Page   65: FT_                                            ADC3_INN5,
+Page   65: ha                                            ADC3_INP9
+Page   66: -          -       15         F5         K3            21         24        J4               PF5       I/O                        -        FMC_A5, EVENTOUT       ADC3_INP4
+Page   66: FT_                                             ADC3_INN4,
+Page   66: ha                                             ADC3_INP8
+Page   66: -          -       19         F6         K1            25         28        K3               PF7       I/O                        -                               ADC3_INP3
+Page   66: FT_                     UART7_RTS/UART7_DE      ADC3_INN3,
+Page   66: ha                        , SAI4_SCK_B,        ADC3_INP7
+Page   66: -          -       21         G5         L2            27         30        L4               PF9       I/O                        -                               ADC3_INP2
+Page   66: FT_                        QUADSPI_CLK,         ADC3_INN2,
+Page   66: ha                      SAI4_D3, DCMI_D11,     ADC3_INP6
+Page   67: SAI2_FS_B,            ADC123_
+Page   67: ADC123_
+Page   67: FT_                                              ADC123_
+Page   67: CDSLEEP,            ADC123_
+Page   67: SPI2_MISO/I2S2_SDI,      ADC123_
+Page   67: 17                                                                                                                                               ETH_MII_TXD2,       ADC3_INN1,
+Page   67: (6)       E2(6) 28(6) K2(6) M4(6) 34(6) 37(6)                                 R1(5)            PC2_C      ANA TT_a                   -            FMC_SDNE0,         ADC3_INP0
+Page   67: CSLEEP,           ADC12_INN12,
+Page   67: DFSDM1_DATIN1,        ADC12_INP13
+Page   67: (6)       F3(6) 29(6) K1(6) M5(6) 35(6) 38(6)                                 R2(5)            PC3_C      ANA TT_a                   -                                ADC3_INP1
+Page   68: TIM2_CH1/TIM2_ETR,    ADC1_INP16,
+Page   68: SDMMC2_CMD,        ADC12_INN1,
+Page   68: SAI2_SD_B,        ADC12_INP0
+Page   68: FT_                       TIM2_CH2, TIM5_CH2,   ADC1_INN16,
+Page   68: ha                           LPTIM3_OUT,       ADC1_INP17
+Page   68: -          -         -           -           -           -          -       T2(5)            PA1_C      ANA TT_a                    -           SAI2_MCLK_B,       ADC12_INP1
+Page   68: USART2_TX,         ADC12_INP14,
+Page   68: -          -         -        N2         F4            43         46         N2               PH2       I/O                         -                              ADC3_INP13
+Page   68: FT_                                             ADC3_INN13,
+Page   68: ha                                             ADC3_INP14
+Page   68: ADC3_INN14,
+Page   68: ADC3_INP15
+Page   68: ADC3_INN15,
+Page   68: ADC3_INP16
+Page   69: 25        K2         37         N3         R2            47         50         U2               PA3       I/O                        -        USART2_RX, LCD_B2,     ADC12_INP15
+Page   69: USART2_CK, SPI6_NSS,    ADC12_INP18,
+Page   69: TIM8_CH1N,         ADC12_INN18,
+Page   69: 29        H3         41         L4         P4            51         54         T3               PA5       I/O                        -         SPI1_SCK/I2S1_CK,     ADC12_INP19,
+Page   69: 30        J3         42         K5         P3            52         55         R3               PA6       I/O        FT_a            -        TIM8_BKIN_COMP12,      ADC12_INP3
+Page   69: ADC12_INN3,
+Page   69: 31        K3         43         J6         R3            53         56         R5               PA7       I/O        TT_a            -                              ADC12_INP7,
+Page   70: I2S1_MCK,         ADC12_INP4,
+Page   70: ADC12_INN4,
+Page   70: ADC12_INP8,
+Page   70: ADC12_INN5,
+Page   70: ADC12_INP9,
+Page   70: ADC12_INP5,
+Page   71: -          -       49         M6         R6            59         70        T7               PF11      I/O        FT_a             -           FMC_SDNRAS,         ADC1_INP2
+Page   71: FT_                                              ADC1_INN2,
+Page   71: ha                                              ADC1_INP6
+Page   71: -          -       53         G7         N6            63         74        P7               PF13      I/O                         -        I2C4_SMBA, FMC_A7,     ADC2_INP2
+Page   71: FT_                                              ADC2_INN2,
+Page   71: fha                                              ADC2_INP6
+Page  102: Typical ADC accuracy values are determined by characterization of a batch of samples from
+Page  103: REF_BUF                       ADC, DAC
+Page  106: ADC or COMP used             1.62
+Page  106: ADC, DAC, OPAMP,
+Page  109: ADC sampling time when
+Page  109: consumption for ADC
+Page  115: these I/Os in analog mode. This is notably the case of ADC input pins which should be
+Page  117: ADC1/2 registers        3.9           3.2              3.1
+Page  117: ADC1/2 kernel          0.9           0.8              0.7
+Page  118: ADC3 registers        1.8           1.7            1.7
+Page  118: ADC3 kernel          0.1           0.1            0.1
+Page  136: The failure is indicated by an out of range parameter: ADC error above a certain limit (higher
+Page  168: 6.3.20      16-bit ADC characteristics
+Page  168: Table 87. ADC characteristics(1)
+Page  168: fADC    ADC clock frequency           2 V ≤ VDDA ≤ 3.3 V                                            MHz
+Page  168: fADC = 36 MHz(2)
+Page  168: fADC = 20 MHz
+Page  168: fADC = 10 MHz
+Page  169: Table 87. ADC characteristics(1) (continued)
+Page  169: fADC = 36 MHz                       -       -       3.6      MHz
+Page  169: 16-bit resolution                   -       -       10       1/fADC
+Page  169: CADC                                                         -                          -       4        -        pF
+Page  169: tADCREG_
+Page  169: ADC LDO startup time                               -                          -       5       10        µs
+Page  169: tSTAB     ADC power-up time                      LDO already started                            1
+Page  169: the conversion                                                                                         1/fADC
+Page  169: 2. These values are obtained using the following formula: fS = fADC/ tCONV ,
+Page  169: where fADC = 36 MHz and tCONV = 1,5 cycle sampling time + tSAR sampling time.
+Page  170: Table 88. ADC accuracy(1)(2)(3)
+Page  170: 2. ADC DC accuracy values are measured after internal calibration.
+Page  170: 3. The above table gives the ADC performance in 16-bit mode.
+Page  170: 4. ADC clock frequency ≤ 36 MHz, 2 V ≤ VDDA ≤3.3 V, 1.6 V ≤ VREF ≤ VDDA, BOOSTEN (for I/O) = 1.
+Page  170: Note:       ADC accuracy vs. negative injection current: injecting a negative current on any analog
+Page  171: Section 6.3.14 does not affect the ADC accuracy.
+Page  171: Figure 40. ADC accuracy characteristics
+Page  171: n = ADC resolution
+Page  171: Figure 41. Typical connection diagram when using the ADC with FT/TT pins featuring
+Page  171: I/O                                                         Sample-and-hold ADC converter
+Page  171: RAIN(1)                                                                                                                                                            switch                                                           RADC
+Page  171: Cparasitic                                                                 Ilkg(3)                                                                                                                 CADC
+Page  171: 1. Refer to Section 6.3.20: 16-bit ADC characteristics for the values of RAIN and CADC.
+Page  171: Cparasitic value downgrades conversion accuracy. To remedy this, fADC should be reduced.
+Page  177: tS_temp              ADC sampling time when reading the temperature               9         -          -
+Page  178: 3. Measured at VDDA = 3.3 V ± 10 mV. The V30 ADC conversion result is stored in the TS_CAL1
+Page  178: tS_vbat(1)     ADC sampling time when reading VBAT input            9           -          -       µs
+Page  208: Typical ADC accuracy values are determined by characterization of a batch of samples from
+Page  209: REF_BUF                       ADC, DAC
+Page  212: ADC or COMP used         1.62      -
+Page  212: ADC, DAC, OPAMP,                                           V
+Page  216: ADC sampling time when
+Page  216: consumption for ADC
+Page  222: these I/Os in analog mode. This is notably the case of ADC input pins which should be
+Page  224: ADC12 registers        4.5            4.1        3.7      3.3
+Page  224: ADC12 kernel          1.0            0.7        0.4      0.6
+Page  225: ADC3 registers         1.7            1.5         1.2         1.2
+Page  225: ADC3 kernel           0.4            0.3         0.5         0.2
+Page  243: The failure is indicated by an out of range parameter: ADC error above a certain limit (higher
+Page  276: 7.3.20          16-bit ADC characteristics
+Page  276: Table 184. ADC characteristics(1)(2)
+Page  276: VDDA      voltage for ADC                                             -                                                         1.62              -            3.6           V
+Page  276: ADC clock
+Page  276: fADC                                           1.62 V ≤ VDDA ≤ 3.6 V                                                                                                       MHz
+Page  277: Table 184. ADC characteristics(1)(2) (continued)
+Page  277: fADC=36 MHz   SMP = 1.5     -        -      3.60
+Page  277: Resolution = 16 bits                        fADC=37 MHz   SMP = 2.5     -        -      3.35
+Page  277: Sampling rate for    Resolution = 14 bits                    fADC = 50 MHz     SMP = 2.5     -        -      5.00
+Page  277: Resolution = 12 bits                    fADC = 50 MHz     SMP = 2.5     -        -      5.50
+Page  277: Resolution = 10 bits                    fADC = 50 MHz     SMP = 1.5     -        -      7.10
+Page  277: Resolution = 8 bits                     fADC = 50 MHz     SMP = 1.5     -        -      8.30
+Page  277: fADC=32 MHz   SMP = 2.5     -        -      2.90
+Page  277: Resolution = 16 bits                        fADC=31 MHz   SMP = 2.5     -        -      2.80
+Page  277: Sampling rate for    Resolution = 14 bits                    fADC = 33 MHz     SMP = 2.5     -        -      3.30
+Page  277: Resolution = 12 bits                    fADC = 39 MHz     SMP = 2.5     -        -      4.30
+Page  277: Resolution = 10 bits                    fADC = 48 MHz     SMP = 2.5     -        -      6.00
+Page  277: Resolution = 8 bits                     fADC = 50 MHz     SMP = 2.5     -        -      7.10
+Page  277: resolution = 12 bits                    fADC = 10 MHz     SMP = 1.5     -        -      1.00
+Page  277: period                                                                                                            fADC
+Page  277: CADC           and hold                         -                               -            -         -       4        -        pF
+Page  277: tADCVREG   ADC LDO startup
+Page  277: ADC Power-up
+Page  277: tCAL          linearity                        -                               -            -       165010     -       -       1/fADC
+Page  277: -                               -            -       1280       -       -       1/fADC
+Page  278: Table 184. ADC characteristics(1)(2) (continued)
+Page  278: tLATR                                                                                                      1/fADC
+Page  278: tLATRINJ                                                                                                    1/fADC
+Page  278: tS       Sampling time                   -                          -    -        1.5       -    810.5   1/fADC
+Page  278: tCONV      time (including        Resolution = N bits                 -    -                  -      -     1/fADC
+Page  279: Table 184. ADC characteristics(1)(2) (continued)
+Page  279: ADC consumption      Resolution = 16 bits, fADC=25 MHz           -               -            -      1440      -
+Page  279: Resolution = 14 bits, fADC=30 MHz           -               -            -      1350      -
+Page  279: Differential mode    Resolution = 12 bits, fADC=40 MHz           -               -            -      990       -
+Page  279: ADC consumption             Resolution = 16 bits                 -               -            -      1080      -
+Page  279: fADC=25 MHz               Resolution = 12 bits                 -               -            -      585       -
+Page  279: (ADC)    ADC consumption             Resolution = 16 bits                 -               -            -      630       -
+Page  279: fADC=12.5 MHz              Resolution = 12 bits                 -               -            -      315       -
+Page  279: ADC consumption             Resolution = 16 bits                 -               -            -      360       -
+Page  279: fADC=6.25 MHz              Resolution = 12 bits                 -               -            -      225       -
+Page  279: ADC consumption      Resolution = 16 bits, fADC=25 MHz           -               -            -      720       -
+Page  279: BOOST=11,          Resolution = 14 bits, fADC=30 MHz           -               -            -      675       -
+Page  279: mode            Resolution = 12 bits, fADC=40 MHz           -               -            -      495       -
+Page  279: ADC consumption             Resolution = 16 bits                 -               -            -      540       -
+Page  279: fADC=25 MHz               Resolution = 12 bits                 -               -            -      292.5     -
+Page  279: ADC consumption             Resolution = 16 bits                 -               -            -      315       -
+Page  279: ADC)         on VDDA
+Page  279: fADC=12.5 MHz
+Page  279: ADC consumption             Resolution = 16 bits                 -               -            -      180       -
+Page  279: fADC=6.25 MHz
+Page  279: fADC=50 MHz                       -               -            -      400       -
+Page  279: fADC=25 MHz                       -               -            -      220       -
+Page  279: IDD     ADC consumption
+Page  279: fADC=12.5 MHz                      -               -            -      180       -
+Page  279: (ADC)         on VDD
+Page  279: fADC=6.25 MHz                      -               -            -      120       -
+Page  279: fADC=3.125 MHz                      -               -            -       80       -
+Page  279: 2. The voltage booster on ADC switches must be used for VDDA < 2.4 V (embedded I/O switches).
+Page  279: 3. These values are valid for UFBGA169 and one ADC. Refer to Getting started with the STM32H7 Series MCU 16-bit ADC
+Page  279: (AN5354) for values of other packages and multiple ADCs operation.
+Page  279: 4. Direct channels are connected to analog I/Os (PA0_C, PA1_C, PC2_C and PC3_C) to optimize ADC performance.
+Page  281: 3. Direct channels are connected to analog I/Os (PA0_C, PA1_C, PC2_C and PC3_C) to optimize ADC performance.
+Page  281: 5. Slow channels correspond to all ADC inputs except for the Direct and Fast channels.
+Page  282: Table 186. ADC accuracy(1)(2)
+Page  282: 2. ADC DC accuracy values are measured after internal calibration.
+Page  282: 3. ADC clock frequency = 25 MHz, ADC resolution = 16 bits, VDDA=VREF+=3.3 V and BOOST=11.
+Page  282: Note:          ADC accuracy vs. negative injection current: injecting a negative current on any analog
+Page  282: Section 7.3.14 does not affect the ADC accuracy.
+Page  283: Figure 92. ADC accuracy characteristics
+Page  283: n = ADC resolution
+Page  283: Figure 93. Typical connection diagram when using the ADC with FT/TT pins
+Page  283: I/O                                                         Sample-and-hold ADC converter
+Page  283: RAIN(1)                                                                                                                                                switch                                                            RADC
+Page  283: Cparasitic(2)                                                             Ilkg(3)                                                                                                           CADC
+Page  283: 1. Refer to Section 7.3.20: 16-bit ADC characteristics for the values of RAIN and CADC.
+Page  283: Cparasitic value downgrades conversion accuracy. To remedy this, fADC should be reduced.
+Page  290: tS_temp              ADC sampling time when reading the temperature             9          -          -
+Page  290: 3. Measured at VDDA = 3.3 V ± 10 mV. The V30 ADC conversion result is stored in the TS_CAL1
+Page  291: tS_vbat(1)      ADC sampling time when reading VBAT input             9           -              -             µs
+Page  350: Added ADC sampling rate values in Section 3.17: Analog-to-digital converters (ADCs).
+Page  350: Changed description of the last five fS values and updated tLATRINJin Table 87: ADC
+Page  351: Updated LSI clock frequency and ADC on cover page. Removed note related to
+Page  351: Updated ADC features on cover page and in Table 2: STM32H742xI/G and
+Page  351: Added ADC sampling rate values in Section 3.17: Analog-to-digital converters (ADCs).
+Page  351: Section 6.3.20: 16-bit ADC characteristics: updated THD conditions in Table 88: ADC
+Page  352: – Table 87: ADC characteristics: updated fS and added note related to fS formula;
+Page  353: Updated Table 184: ADC characteristics.
+Page  353: Updated Table 186: ADC accuracy.
+Page  353: number of ADC channels into Direct, Fast and Slow channels; and added number of
+Page  353: – Updated maximum sampling time (tS) value in Table 87: ADC characteristics.
+Page  353: Specified that Figure 40: ADC accuracy characteristics is an example for 12-bit
+Page  354: reference to AN5354 application note in note of Table 184: ADC characteristics.
+Page  354: Specified that Figure 40: ADC accuracy characteristics is an example for 12-bit
+Page  355: – Updated Figure 40: ADC accuracy characteristics and Figure 41: Typical connection
+Page  355: diagram when using the ADC with FT/TT pins featuring analog switch function.
+Page  355: – Updated Figure 92: ADC accuracy characteristics and Figure 93: Typical connection
+Page  355: diagram when using the ADC with FT/TT pins featuring analog switch function.
+Page  356: Updated note below Figure 41: Typical connection diagram when using the ADC with
+Page  356: when using the ADC with FT/TT pins featuring analog switch function

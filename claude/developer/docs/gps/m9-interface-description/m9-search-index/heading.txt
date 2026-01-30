@@ -1,0 +1,16 @@
+Keyword: heading
+Occurrences: 12
+================================================================================
+
+Page   70: bit 3   U:1       outLPCog              -           -            Output low-pass ﬁltered heading (COG) ﬂag
+Page   95: 68            I4        headMot               1e-5         deg         Heading of motion (2-D)
+Page   95: 76            U4        headAcc               1e-5         deg         Heading accuracy estimate
+Page  100: 24            U4        heading                1e-5        deg          Heading
+Page  142: bit 5   U:1   headVehValid    -          -            1 = heading of vehicle is valid, only set if the receiver is
+Page  143: 64                  I4       headMot               1e-5         deg        Heading of motion (2-D)
+Page  143: 72                  U4       headAcc               1e-5         deg        Heading accuracy estimate (both motion and vehicle)
+Page  143: 84                  I4       headVeh               1e-5         deg        Heading of vehicle (2-D), this is only valid when
+Page  143: heading of motion
+Page  150: heading data.
+Page  157: 24            I4        heading               1e-5         deg         Heading of motion 2-D
+Page  157: 32            U4        cAcc                  1e-5         deg         Course / Heading accuracy estimate

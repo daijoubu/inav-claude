@@ -1,0 +1,739 @@
+Keyword: USB
+Occurrences: 735
+================================================================================
+
+Page    6: 5.4.7       USB regulator . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 252
+Page   61: 56       USB on-the-go high-speed (OTG_HS) . . . . . . . . . . . . . . . . . . . . . . . . 2562
+Page   61: 56.4.2      USB OTG pin and internal signals . . . . . . . . . . . . . . . . . . . . . . . . . . . 2568
+Page   61: 56.6     USB peripheral . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2570
+Page   61: 56.7     USB host . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2574
+Page   61: 56.7.2      USB host states . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2575
+Page   61: 56.11 USB data FIFOs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2581
+Page   62: 56.14.4 OTG USB configuration register (OTG_GUSBCFG) . . . . . . . . . . . . . 2599
+Page   80: Figure 22.   USB supply configurations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 252
+Page   81: Figure 52.   Kernel clock distribution for USB (2) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 341
+Page   95: Figure 746. USB1 OTG high-speed block diagram (OTG_HS1) . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2567
+Page   95: Figure 747. USB2 OTG high-speed block diagram (OTG_HS2) . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2567
+Page   99: USBHS1 - AHB
+Page   99: USBHS2 - AHB
+Page  104: USBHS1 and USBHS2 peripherals
+Page  104: The USBHS1 and USBHS2 peripherals use 32-bit buses, connected to the AHB bus matrix
+Page  128: 0x40080000 - 0x400BFFFF     USB2 OTG_FS                Section 56.14: OTG_HS registers
+Page  128: 0x40040000 - 0x4007FFFF     USB1 OTG_HS                Section 56.14: OTG_HS registers
+Page  130: as buffers to store peripheral input/output data for Ethernet and USB,.
+Page  130: MAC or the USB OTG HS peripheral accessing another SRAM section. For example, the
+Page  132: •   USB OTG FS in Device mode (DFU) on PA11/PA12 pins
+Page  239: –    USB regulator
+Page  240: VDD50USB
+Page  240: USB Regulator
+Page  240: VDD33USB                                             pwr_pvd_wkup
+Page  241: VDD50USB                 USB regulator supply input
+Page  241: VDD33USB          Input/ USB regulator supply output
+Page  243: VDDUSB, and VCAP. It also provides regulated supplies for specific functions (voltage
+Page  243: regulator, USB regulator).
+Page  243: •   VDD50USB external power supply for USB regulator.
+Page  243: •   VDD33USB USB regulator supply output for USB interface.
+Page  243: –    When the USB regulator is enabled, VDD33USB is delivered by the internal USB
+Page  243: –    When he USB regulator is disabled, VDD33USB is delivered by an independent
+Page  244: VDD33USB
+Page  244: VDD50USB
+Page  244: VSS       USB
+Page  244: USB
+Page  252: 5.4.7      USB regulator
+Page  252: The USB transceivers are supplied from a dedicated VDD33USB supply that can be provided
+Page  252: either by the integrated USB regulator, or by an external USB supply.
+Page  252: When enabled by USBREGEN bit in PWR control register 3 (PWR_CR3), the VDD33USB is
+Page  252: provided from the USB regulator. Before using VDD33USB, check that it is available by
+Page  252: monitoring USB33RDY bit in PWR control register 3 (PWR_CR3). The VDD33USB supply
+Page  252: level detector shall be enabled through USB33DEN bit in PWR_CR3 register.
+Page  252: When the USB regulator is disabled through USBREGEN bit, VDD33USB can be provided
+Page  252: from an external supply. In this case VDD33USB and VDD50USB shall be connected together.
+Page  252: The VDD33USB supply level detector must be enabled through USB33DEN bit in PWR_CR3
+Page  252: register before using the USB transceivers.
+Page  252: For more information on the USB regulator (see Section 56: USB on-the-go high-speed
+Page  252: Figure 22. USB supply configurations
+Page  252: VDD33USB                                VDD30   VDD33USB
+Page  252: VDD50   VDD50USB                                        VDD50USB
+Page  252: USB                                            USB
+Page  252: USB regulator supply                              External USB supply
+Page  252: •   VDD33USB via USBRDY bit in PWR control register 3 (PWR_CR3).
+Page  288: USBREGEN
+Page  288: USB33RDY
+Page  288: USB33DEN
+Page  288: Bit 26 USB33RDY: USB supply ready.
+Page  288: 0: USB33 supply not ready.
+Page  288: 1: USB33 supply ready.
+Page  288: Bit 25 USBREGEN: USB regulator enable.
+Page  288: 0: USB regulator disabled.
+Page  288: 1: USB regulator enabled.
+Page  288: Bit 24 USB33DEN: VDD33USB voltage level detector enable.
+Page  288: 0: VDD33USB voltage level detector disabled.
+Page  288: 1: VDD33USB voltage level detector enabled.
+Page  293: Res.                          Res.                          Res.                                                   Res.                        USB33RDY                     Res.                         Res.                       Res.
+Page  293: Res.                          Res.                          Res.                                                   Res.                        USBREGEN                     Res.                         Res.                       Res.        25
+Page  293: Res.                          Res.                          Res.                                                   Res.                        USB33DEN                     Res.                         Res.                       Res.        24
+Page  307: USB_PHY1
+Page  308: USB_PHY1               I         USB clock input provided by the external USB PHY (OTG_HS_ULPI_CK)
+Page  317: peripherals, in particular for peripherals that require a specific clock such as Ethernet, USB
+Page  318: USB_PHY1
+Page  318: USB_PHY2
+Page  323: The HSI48 oscillator mainly aims at providing a high precision clock to the USB peripheral
+Page  323: by means of a special Clock Recovery System (CRS) circuitry, which could use the USB
+Page  335: USB_PHY1
+Page  335: USB1OTG
+Page  335: USBSEL         66                   1                                                           2                                                                                    3                                                               0
+Page  335: USB2OTG
+Page  335: USB1ULPI            -           100                                                                                                                                                                                                                        x
+Page  336: USB_PHY1
+Page  341: Figure 52 shows the clock distribution for the USB blocks. The USB1ULPI block receives its
+Page  341: The USBxOTG blocks receive the clock for USB communications which can be selected
+Page  341: among different sources thanks to the MUX controlled by USBSEL.
+Page  341: Figure 52. Kernel clock distribution for USB (2)
+Page  341: USBSEL
+Page  341: USB1OTGEN
+Page  341: USB1OTGLPEN
+Page  341: USB1OTG
+Page  341: USB2OTGEN            Logic
+Page  341: USB2OTGLPEN
+Page  341: USB2OTG
+Page  341: USB1ULPI
+Page  341: USB1ULPIEN           Logic                     (OTG_HS1)
+Page  341: USB1ULPILPEN
+Page  341: USB_PHY1                                                                              ck_ulpi
+Page  392: Res.      LPTIM1SEL[2:0] (1)     Res.   Res.    Res.        Res.   CECSEL[1:0] (1)     USBSEL[1:0] (1)   Res.    Res.    Res.    Res.
+Page  392: Bits 21:20 USBSEL[1:0]: USBOTG 1 and 2 kernel clock source selection
+Page  408: USB2OTGRST
+Page  408: USB1OTGRST
+Page  408: Bit 27 USB2OTGRST: USB2OTG (OTG_HS2) block reset
+Page  408: 0: does not reset USB2OTG block (default after reset)
+Page  408: 1: resets USB2OTG block
+Page  408: Bit 25 USB1OTGRST: USB1OTG (OTG_HS1) block reset
+Page  408: 0: does not reset USB1OTG block (default after reset)
+Page  408: 1: resets USB1OTG block
+Page  430: USB1OTGHSULPIEN
+Page  430: USB2OTGHSEN
+Page  430: USB1OTGHSEN
+Page  430: Bit 27 USB2OTGHSEN: USB2OTG (OTG_HS2) Peripheral Clocks Enable
+Page  430: 0: USB2OTG peripheral clocks disabled (default after reset)
+Page  430: 1: USB2OTG peripheral clocks enabled
+Page  430: The peripheral clocks of the USB2OTG are: the kernel clock selected by USBSEL and the
+Page  430: Bit 26 USB1OTGHSULPIEN: USB_PHY1 Clocks Enable
+Page  430: 0: USB1ULPI PHY clocks disabled (default after reset)
+Page  430: 1: USB1ULPI PHY clocks enabled
+Page  430: Bit 25 USB1OTGHSEN: USB1OTG (OTG_HS1) Peripheral Clocks Enable
+Page  430: 0: USB1OTG peripheral clocks disabled (default after reset)
+Page  430: 1: USB1OTG peripheral clocks enabled
+Page  430: The peripheral clocks of the USB1OTG are: the kernel clock selected by USBSEL and the
+Page  452: USB1OTGHSULPILPEN
+Page  452: USB2OTGHSLPEN
+Page  452: USB1OTGHSLPEN
+Page  452: Bit 27 USB2OTGHSLPEN: USB2OTG (OTG_US2) peripheral clock enable during CSleep mode
+Page  452: 0: USB2OTG peripheral clocks disabled during CSleep mode
+Page  452: 1: USB2OTG peripheral clocks enabled during CSleep mode (default after reset)
+Page  452: The peripheral clocks of the USB2OTG are: the kernel clock selected by USBSEL and the
+Page  452: Bit 26 USB1OTGHSULPILPEN: USB_PHY1 clock enable during CSleep mode
+Page  452: 0: USB_PHY1 peripheral clock disabled during CSleep mode
+Page  452: 1: USB_PHY1 peripheral clock enabled during CSleep mode (default after reset)
+Page  452: Bit 25 USB1OTGHSLPEN: USB1OTG (OTG_HS1) peripheral clock enable during CSleep mode
+Page  452: 0: USB1OTG peripheral clock disabled during CSleep mode
+Page  452: 1: USB1OTG peripheral clock enabled during CSleep mode (default after reset)
+Page  452: The peripheral clocks of the USB1OTG are: the kernel clock selected by USBSEL and the
+Page  473: USBSEL[1:0]                        SPDIFSEL[1:0]
+Page  474: USB2OTGRST                      Res.                         Res.                          Res.                                               Res.                                   Res.                                 Res.                                      Res.            27
+Page  474: USB1OTGRST                      Res.                         Res.                          Res.                                               Res.                                   Res.                                 Res.                                 SAI4BSEL[2:0]        25
+Page  476: Res.                                Res.                      Res.                     USB2OTGHSEN                      Res.                         Res.                                      Res.        27
+Page  476: Res.                                Res.                      Res.                   USB1OTGHSULPIEN                    Res.                    IWDG1RSTF                                      Res.        26
+Page  476: Res.                              HSEMEN                      Res.                     USB1OTGHSEN                      Res.                         Res.                                      Res.        25
+Page  477: Res.                       USB2OTGHSLPEN                        Res.                             Res.                      Res.                    Res.                             HDMICECEN     27
+Page  477: Res.                     USB1OTGHSULPILPEN                      Res.                             Res.                      Res.                    Res.                                  Res.     26
+Page  477: Res.                       USB1OTGHSLPEN                        Res.                             Res.                      Res.                    Res.                                  Res.     25
+Page  479: Res.                      Res.                    Res.                             HDMICECEN                      Res.                                Res.                     Res.                      USB2OTGHSEN     27
+Page  479: Res.                      Res.                    Res.                                  Res.                      Res.                                Res.                     Res.                    USB1OTGHSULPIEN   26
+Page  479: Res.                      Res.                    Res.                                  Res.                      Res.                              HSEMEN                     Res.                      USB1OTGHSEN     25
+Page  480: Res.                                  CECLPEN                        Res.                                   Res.                         Res.                       USB2OTGHSLPEN                        Res.      27
+Page  480: Res.                                     Res.                        Res.                                   Res.                         Res.                     USB1OTGHSULPILPEN                      Res.      26
+Page  480: Res.                                     Res.                        Res.                                   Res.                         Res.                       USB1OTGHSLPEN                        Res.      25
+Page  482: The CRS is ideally suited to provide a precise clock to the USB peripheral. In such case, the
+Page  482: the USB bus, which is sent by a USB host at precise 1-ms intervals.
+Page  482: –    USB2 SOF packet reception
+Page  482: –    USB1 SOF packet reception
+Page  486: not clean or when some SYNC pulse is missing (for example when one USB SOF is
+Page  486: synchronization signal frequency of 1 kHz (SOF signal from USB).
+Page  489: 00: USB2 SOF selected as SYNC signal source
+Page  489: When using USB LPM (Link Power Management) and the device is in Sleep mode, the
+Page  489: periodic USB SOF will not be generated by the host. No SYNC signal will therefore be
+Page  552: USB1
+Page  552: USB2
+Page  554: AHB1    USB1          SOF          ITR5                                  S       -
+Page  554: USB2          SOF          ITR6                                  S       -
+Page  555: D2              USB1          SOF         ITR7        TIM5       APB1   D2      S            -
+Page  555: USB2          SOF         ITR8                                  S            -
+Page  555: USB1          SOF       crs_sync2     CRS        APB1   D2      A            -
+Page  555: USB2          SOF       crs_sync3     CRS        APB1   D2      A            -
+Page  572: D2      AHB1       USB1            usb1_wkup        WKUP43                     D    CPU       -
+Page  572: D2      AHB1       USB2            usb2_wkup        WKUP44                     D    CPU       -
+Page  734: usb1_out_it      81           74       OTG_HS_EP1_OUT OTG_HS out global interrupt      0x0000 0168
+Page  734: usb1_in_it       82           75        OTG_HS_EP1_IN     OTG_HS in global interrupt   0x0000 016C
+Page  734: exti_usb1_wkup     83           76        OTG_HS_WKUP       OTG_HS wakeup interrupt      0x0000 0170
+Page  734: usb1_gbl_it      84           77            OTG_HS        OTG_HS global interrupt      0x0000 0174
+Page  735: usb2_out_it      105          98        OTG_FS_EP1_OUT OTG_FS out global interrupt         0x0000 01C8
+Page  735: usb2_in_it      106          99         OTG_FS_EP1_IN     OTG_FS in global interrupt      0x0000 01CC
+Page  735: exti_usb2_wkup    107         100         OTG_FS_WKUP       OTG_FS wakeup                   0x0000 01D0
+Page  735: usb2_gbl_it     108         101             OTG_FS        OTG_FS global interrupt         0x0000 01D4
+Page  747: 43        USB1 wakeup                           Direct           CPU only               Yes
+Page  747: 44        USB2 wakeup                           Direct           CPU only               Yes
+Page 1670: USB1
+Page 1670: USB2
+Page 1670: USB1
+Page 1670: USB2
+Page 2562: USB on-the-go high-speed (OTG_HS)                                                              RM0433
+Page 2562: 56          USB on-the-go high-speed (OTG_HS)
+Page 2562: USB                 Universal serial bus
+Page 2562: UTMI                USB 2.0 Transceiver Macrocell interface (UTMI)
+Page 2562: •     USB On-The-Go Supplement, Revision 2.0
+Page 2562: •     USB 2.0 Link Power Management Addendum Engineering Change Notice to the USB
+Page 2562: •     Errata for USB 2.0 ECN: Link Power Management (LPM) - 7/2007
+Page 2562: The USB OTG is a dual-role device (DRD) controller that supports both device and host
+Page 2562: functions and is fully compliant with the On-The-Go Supplement to the USB 2.0
+Page 2562: compliant with the USB 2.0 Specification. OTG_HS supports the speeds defined in the
+Page 2562: Table 487: OTG_HS speeds supported below.The USB OTG supports both HNP and SRP.
+Page 2563: RM0433                                                     USB on-the-go high-speed (OTG_HS)
+Page 2564: USB on-the-go high-speed (OTG_HS)                                                              RM0433
+Page 2564: •   It is USB-IF certified to the Universal Serial Bus Specification Rev 2.0
+Page 2564: –    SRP capable USB HS Peripheral (B-device)
+Page 2564: –    SRP capable USB HS/LS host (A-device)
+Page 2564: –    USB On-The-Go Full-Speed Dual Role device
+Page 2564: •   It includes power saving features such as system stop during USB suspend, switch-off
+Page 2564: •   It guarantees max USB bandwidth for up to one frame (1 ms) without system
+Page 2565: RM0433                                                      USB on-the-go high-speed (OTG_HS)
+Page 2565: any type of USB transfer.
+Page 2565: efficient usage of the USB data RAM.
+Page 2565: •   Management of a shared Rx FIFO and a Tx-OUT FIFO for efficient usage of the USB
+Page 2566: USB on-the-go high-speed (OTG_HS)                                                                 RM0433
+Page 2566: USB features                          OTG_HS1(2)          OTG_HS2(3)
+Page 2566: USB 2.0 link power management (LPM) support                             X
+Page 2567: RM0433                                                                                                                   USB on-the-go high-speed (OTG_HS)
+Page 2567: Figure 746. USB1 OTG high-speed block diagram (OTG_HS1)
+Page 2567: USB1 OTG HS core                                             ULPI_D0-7
+Page 2567: AHB master          OTG_HS)                            ULPI interface (12 pins)           (external   USB2.0 (D+/D-)
+Page 2567: Figure 747. USB2 OTG high-speed block diagram (OTG_HS2)
+Page 2567: USB2 OTG HS core
+Page 2568: USB on-the-go high-speed (OTG_HS)                                                                    RM0433
+Page 2568: 56.4.2      USB OTG pin and internal signals
+Page 2568: OTG_FS_DP              Digital input/output USB OTG D+ line
+Page 2568: OTG_FS_DM              Digital input/output USB OTG D- line
+Page 2568: OTG_FS_ID              Digital input       USB OTG ID
+Page 2568: OTG_FS_VBUS            Analog input        USB OTG VBUS
+Page 2568: OTG_FS_SOF             Digital output      USB OTG Start Of Frame (visibility)
+Page 2568: OTG_HS_DP              Digital input/output USB OTG D+ line
+Page 2568: OTG_HS_DM              Digital input/output USB OTG D- line
+Page 2568: OTG_HS_ID              Digital input       USB OTG ID
+Page 2568: OTG_HS_VBUS            Analog input        USB OTG VBUS
+Page 2568: OTG_HS_SOF             Digital output      USB OTG Start Of Frame (visibility)
+Page 2568: OTG_HS_ULPI_CK         Digital input       USB OTG ULPI clock
+Page 2568: OTG_HS_ULPI_DIR        Digital input       USB OTG ULPI data bus direction control
+Page 2568: OTG_HS_ULPI_STP        Digital output      USB OTG ULPI data stream stop
+Page 2568: OTG_HS_ULPI_NXT        Digital input       USB OTG ULPI next data stream request
+Page 2568: OTG_HS_ULPI_D[0..7]    Digital input/output USB OTG ULPI 8-bit bi-directional data bus
+Page 2568: usb_sof                Digital output      USB OTG start-of-frame event for on chip peripherals
+Page 2568: usb_wkup               Digital output      USB OTG wakeup event output
+Page 2568: usb_gbl_it             Digital output      USB OTG global interrupt
+Page 2568: usb_ep1_in_it          Digital output      USB OTG endpoint 1 in interrupt
+Page 2568: usb_ep1_out_it         Digital output      USB OTG endpoint 1 out interrupt
+Page 2568: The USB OTG receives the 48 MHz clock from the reset and clock controller (RCC). The
+Page 2568: USB clock is used for driving the 48 MHz domain at full-speed (12 Mbit/s) and must be
+Page 2568: It is informed of USB events through the single USB OTG interrupt line described in
+Page 2569: RM0433                                                        USB on-the-go high-speed (OTG_HS)
+Page 2569: The CPU submits data over the USB by writing 32-bit words to dedicated OTG locations
+Page 2569: within the USB data RAM. There is one Tx FIFO push register for each in-endpoint
+Page 2569: The CPU receives the data from the USB by reading 32-bit words from dedicated OTG
+Page 2569: configured within the 4-Kbyte USB data RAM. There is one Rx FIFO pop register for each
+Page 2569: The USB protocol layer is driven by the serial interface engine (SIE) and serialized over the
+Page 2569: USB by the transceiver module within the on-chip physical layer (PHY) or external HS PHY.
+Page 2569: and reception on the single-ended USB lines.
+Page 2569: USB Rev2.0. The dynamic trimming of the DP pull-up strength allows to achieve a
+Page 2569: monitor the VBUS supply during USB operations.
+Page 2569: To guarantee a correct operation for the USB OTG_HS peripheral, the AHB frequency
+Page 2569: The USB OTG_HS core includes an ULPI interface to connect an external HS PHY.
+Page 2569: line status is determined on plugging in the USB cable, depending on whether a MicroA or
+Page 2569: •   If the B-side of the USB cable is connected with a floating ID wire, the integrated pull-
+Page 2570: USB on-the-go high-speed (OTG_HS)                                                              RM0433
+Page 2570: ID pin of the On-the-Go specification Rev2.0, supplement to the USB2.0.
+Page 2570: •   If the A-side of the USB cable is connected with a grounded ID, the OTG_HS issues an
+Page 2570: the-Go specification Rev2.0, supplement to the USB2.0.
+Page 2570: The HNP capable bit in the Global USB configuration register (HNPCAP bit in OTG_
+Page 2570: GUSBCFG) enables the OTG_HS core to dynamically change its role from A-host to A-
+Page 2570: The SRP capable bit in the global USB configuration register (SRPCAP bit in
+Page 2570: OTG_GUSBCFG) enables the OTG_HS core to switch off the generation of VBUS for the A-
+Page 2570: 56.6        USB peripheral
+Page 2570: This section gives the functional description of the OTG_HS in the USB peripheral mode.
+Page 2570: The OTG_HS works as an USB peripheral in the following circumstances:
+Page 2570: –    OTG B-device default state if B-side of USB cable is plugged in
+Page 2570: –    If the ID line is present, functional and connected to the B-side of the USB cable,
+Page 2570: and the HNP-capable bit in the Global USB Configuration register (HNPCAP bit in
+Page 2570: OTG_GUSBCFG) is cleared.
+Page 2570: –    The force device mode bit (FDMOD) in the Section 56.14.4: OTG USB
+Page 2570: configuration register (OTG_GUSBCFG) is set to 1, forcing the OTG_HS core to
+Page 2570: work as an USB peripheral-only. In this case, the ID line is ignored even if it is
+Page 2570: present on the USB connector.
+Page 2571: RM0433                                                        USB on-the-go high-speed (OTG_HS)
+Page 2571: The SRP capable bit in the Global USB configuration register (SRPCAP bit in
+Page 2571: OTG_GUSBCFG) enables the OTG_HS to support the session request protocol (SRP). In
+Page 2571: this way, it allows the remote A-device to save power by switching off VBUS while the USB
+Page 2571: The VBUS input detects the B-session valid voltage by which the USB peripheral is allowed
+Page 2571: to enter the powered state (see USB2.0 section 9.1). The OTG_HS then automatically
+Page 2571: The VBUS input also ensures that valid VBUS levels are supplied by the host during USB
+Page 2571: No other USB operation is possible. When a reset signaling is received the reset detected
+Page 2571: interrupt (USBRST in OTG_GINTSTS) is generated. When the reset signaling is complete,
+Page 2571: though the USB cable was not really removed from the host port.
+Page 2571: host. No other USB operation is possible. When a valid SET_ADDRESS command is
+Page 2571: decoded on the USB, the application writes the corresponding number into the device
+Page 2571: USB address.
+Page 2572: USB on-the-go high-speed (OTG_HS)                                                                RM0433
+Page 2572: The OTG_HS peripheral constantly monitors the USB activity. After counting 3 ms of USB
+Page 2572: confirmed 3 ms later, if appropriate, by the suspend interrupt (USBSUSP bit in
+Page 2572: The OTG_HS core instantiates the following USB endpoints:
+Page 2573: RM0433                                                          USB on-the-go high-speed (OTG_HS)
+Page 2573: –    Program USB transfer type (isochronous, bulk, interrupt)
+Page 2573: status of an endpoint with respect to USB- and AHB-related events. The application must
+Page 2574: USB on-the-go high-speed (OTG_HS)                                                                RM0433
+Page 2574: application (AHB) and USB sides
+Page 2574: 56.7        USB host
+Page 2574: This section gives the functional description of the OTG_HS in the USB host mode. The
+Page 2574: OTG_HS works as a USB host in the following circumstances:
+Page 2574: –    OTG A-device default state when the A-side of the USB cable is plugged in
+Page 2574: –    If the ID line is present, functional and connected to the A-side of the USB cable,
+Page 2574: and the HNP-capable bit is cleared in the Global USB Configuration register
+Page 2574: (HNPCAP bit in OTG_GUSBCFG). Integrated pull-down resistors are
+Page 2574: –    The force host mode bit (FHMOD) in the OTG USB configuration register
+Page 2574: (OTG_GUSBCFG) forces the OTG_HS core to work as a USB host-only. In this
+Page 2574: case, the ID line is ignored even if present on the USB connector. Integrated pull-
+Page 2574: SRP support is available through the SRP capable bit in the global USB configuration
+Page 2574: register (SRPCAP bit in OTG_GUSBCFG). With the SRP feature enabled, the host can
+Page 2574: save power by switching off the VBUS power while the USB session is suspended.
+Page 2575: RM0433                                                        USB on-the-go high-speed (OTG_HS)
+Page 2575: 56.7.2   USB host states
+Page 2575: VBUS input ensures that valid VBUS levels are supplied by the charge pump during USB
+Page 2575: If SRP or HNP are enabled, even if USB peripherals or B-devices can be attached at any
+Page 2575: When HNP and SRP are both disabled, USB peripherals or B-device are detected as soon
+Page 2575: sending USB reset and configuration commands to the new peripheral.
+Page 2575: Before starting to drive a USB reset, the application waits for the OTG interrupt triggered by
+Page 2575: The application drives a USB reset signaling (single-ended zero) over the USB by keeping
+Page 2576: USB on-the-go high-speed (OTG_HS)                                                               RM0433
+Page 2576: Once the USB reset sequence has completed, the host port interrupt is triggered by the port
+Page 2576: The application decides to suspend the USB activity by setting the port suspend bit in the
+Page 2576: automatically driven over the USB. The application must time the resume window and then
+Page 2576: The OTG_HS core instantiates 16 host channels. Each host channel supports an USB host
+Page 2576: transfer (USB pipe). The host is not able to support more than 16 transfer requests at the
+Page 2576: –    Program the HS/FS/LS speed of target USB peripheral
+Page 2576: –    Program the address of target USB peripheral
+Page 2576: –    Program the endpoint number of target USB peripheral
+Page 2576: –    Program the USB transfer type (control, bulk, interrupt, isochronous)
+Page 2577: RM0433                                                       USB on-the-go high-speed (OTG_HS)
+Page 2577: with respect to USB- and AHB-related events. The application must read these register
+Page 2577: the application (AHB) and USB sides
+Page 2577: –    Channel has stopped due to transfer completed, USB transaction error or disable
+Page 2577: –    USB transaction error due to CRC failure, timeout, bit stuff error, false EOP
+Page 2577: and manage the USB transaction requests posted by the application. At the beginning of
+Page 2577: priority granted to the isochronous and interrupt transfer types by the USB specification.
+Page 2577: The host processes the USB transactions through request queues (one for periodic and one
+Page 2577: along with other information to perform a transaction on the USB. The order in which the
+Page 2578: USB on-the-go high-speed (OTG_HS)                                                                  RM0433
+Page 2578: requests are written to the queue determines the sequence of the transactions on the USB
+Page 2578: external audio control                  USB micro-AB connector
+Page 2579: RM0433                                                                          USB on-the-go high-speed (OTG_HS)
+Page 2579: on the USB (SOF bit in OTG_GINTSTS). The corresponding frame number can be read
+Page 2579: Mode                                        Description                                            USB compatibility
+Page 2579: Required when USB not in
+Page 2579: USB suspend exit causes the device to exit Sleep mode. Peripheral                  Available while USB is in
+Page 2579: USB suspend exit causes the device to exit Stop mode. Peripheral                   Available while USB is in
+Page 2579: Powered-down. The peripheral must be reinitialized after exiting                   Not compatible with USB
+Page 2580: USB on-the-go high-speed (OTG_HS)                                                               RM0433
+Page 2580: set to allow any USB operation
+Page 2580: Power reduction techniques are available while in the USB suspended state, when the USB
+Page 2580: gating. The dynamic power consumption due to the USB clock switching activity is cut
+Page 2580: the USB clock switching activity is cut even if the system clock is kept running by the
+Page 2580: •   USB system stop
+Page 2580: When the OTG_HS is in the USB suspended state, the application may decide to
+Page 2580: clock sources in the system. USB System Stop is activated by first setting the Stop
+Page 2580: The OTG_HS core automatically reactivates both system and USB clocks by
+Page 2580: signaling on the USB.
+Page 2580: To save dynamic power, the USB data FIFO is clocked only when accessed by the OTG_HS
+Page 2580: The USB core embeds a dynamic trimming capability of micro-SOF framing period in host
+Page 2581: RM0433                                                       USB on-the-go high-speed (OTG_HS)
+Page 2581: 56.11    USB data FIFOs
+Page 2581: The USB system features 4 Kbytes of dedicated RAM with a sophisticated FIFO control
+Page 2581: USB transmission, and into a single Rx FIFO where the data received from the USB are
+Page 2582: USB on-the-go high-speed (OTG_HS)                                                                        RM0433
+Page 2582: The single receive FIFO architecture makes it more efficient for the USB peripheral to fill in
+Page 2583: RM0433                                                           USB on-the-go high-speed (OTG_HS)
+Page 2583: USB until it is transferred to the system memory. Packets received from any remote IN
+Page 2583: The single receive FIFO architecture makes it highly efficient for the USB host to fill in the
+Page 2584: USB on-the-go high-speed (OTG_HS)                                                               RM0433
+Page 2584: transmitted over the USB. The size of the periodic (nonperiodic) Tx FIFO is configured in the
+Page 2584: of traffic over the USB frame. At the beginning of each frame, the built-in host scheduler
+Page 2584: The two transmit FIFO architecture provides the USB host with separate optimization for
+Page 2584: being transferred to the CPU, the USB can receive the subsequent packet.
+Page 2585: RM0433                                                       USB on-the-go high-speed (OTG_HS)
+Page 2585: (5 * number of control endpoints + 8) + ((largest USB packet used / 4) + 1 for status
+Page 2585: Example: The MPS is 1,024 bytes for a periodic USB packet and 512 bytes for a non-
+Page 2585: periodic USB packet. There are three OUT endpoints, three IN endpoints, one control
+Page 2585: USB.
+Page 2585: to the CPU, the USB can receive the subsequent packet.
+Page 2585: Host RxFIFO = (largest USB packet used / 4) + 1 for status information + 1 transfer
+Page 2585: packet is under transfer to the USB, the CPU can get the next packet.
+Page 2585: Non-Periodic TxFIFO = largest non-periodic USB packet used / 4
+Page 2585: Host Periodic TxFIFO = largest periodic USB packet used / 4
+Page 2585: the USB.
+Page 2586: USB on-the-go high-speed (OTG_HS)                                                              RM0433
+Page 2587: RM0433                                                                                                    USB on-the-go high-speed (OTG_HS)
+Page 2588: USB on-the-go high-speed (OTG_HS)                                                                  RM0433
+Page 2588: OTG_GUSBCFG             0x00C     Section 56.14.4: OTG USB configuration register (OTG_GUSBCFG)
+Page 2589: RM0433                                                                 USB on-the-go high-speed (OTG_HS)
+Page 2590: USB on-the-go high-speed (OTG_HS)                                                                  RM0433
+Page 2591: RM0433                                                        USB on-the-go high-speed (OTG_HS)
+Page 2592: USB on-the-go high-speed (OTG_HS)                                                                     RM0433
+Page 2593: RM0433                                                                             USB on-the-go high-speed (OTG_HS)
+Page 2594: USB on-the-go high-speed (OTG_HS)                                                                          RM0433
+Page 2594: command from the connected USB host.
+Page 2595: RM0433                                                            USB on-the-go high-speed (OTG_HS)
+Page 2595: The application sets this bit to initiate an HNP request to the connected USB host. The
+Page 2596: USB on-the-go high-speed (OTG_HS)                                                                                RM0433
+Page 2596: The application sets this bit to initiate a session request on the USB. The application can
+Page 2596: If the user uses the USB 1.1 full-speed serial transceiver interface to initiate the session
+Page 2597: RM0433                                                                  USB on-the-go high-speed (OTG_HS)
+Page 2597: application can start driving USB reset after seeing this interrupt. This bit is only valid when
+Page 2597: the HNP Capable or SRP Capable bit is set in the OTG_GUSBCFG register (HNPCAP bit or
+Page 2597: SRPCAP bit in OTG_GUSBCFG, respectively).
+Page 2597: The core sets this bit when it detects a host negotiation request on the USB.
+Page 2597: The core sets this bit on the success or failure of a USB host negotiation request. The
+Page 2598: USB on-the-go high-speed (OTG_HS)                                                                             RM0433
+Page 2598: starting any transactions on either the AHB or the USB.
+Page 2599: RM0433                                                                       USB on-the-go high-speed (OTG_HS)
+Page 2599: 56.14.4        OTG USB configuration register (OTG_GUSBCFG)
+Page 2599: or device mode. It contains USB and USB-PHY related configuration parameters. The
+Page 2599: the USB. Do not make changes to this register after the initial programming.
+Page 2600: USB on-the-go high-speed (OTG_HS)                                                                            RM0433
+Page 2601: RM0433                                                                  USB on-the-go high-speed (OTG_HS)
+Page 2601: Bits 13:10 TRDT[3:0]: USB turnaround time
+Page 2601: Higher TRDT values allow stretching the USB response time to IN tokens in order to
+Page 2601: 0: USB 2.0 external ULPI high-speed PHY.
+Page 2601: 1: USB 1.1 full-speed serial transceiver.
+Page 2602: USB on-the-go high-speed (OTG_HS)                                                                          RM0433
+Page 2602: The USB standard timeout value for full-speed operation is 16 to 18 (inclusive) bit times. The
+Page 2603: RM0433                                                                            USB on-the-go high-speed (OTG_HS)
+Page 2604: USB on-the-go high-speed (OTG_HS)                                                                           RM0433
+Page 2604: last data phase of an AHB transfer. Any transactions on the USB are terminated immediately.
+Page 2604: dynamically changes the PHY selection bits in the above listed USB configuration registers.
+Page 2605: RM0433                                                                         USB on-the-go high-speed (OTG_HS)
+Page 2605: ISOO     ENUM    USB      USB                                           NPTXF   RXF             OTG
+Page 2605: In device mode, this interrupt is asserted when a resume is detected on the USB. In host
+Page 2605: mode, this interrupt is asserted when a remote wakeup is detected on the USB.
+Page 2605: on USB.
+Page 2606: USB on-the-go high-speed (OTG_HS)                                                                           RM0433
+Page 2607: RM0433                                                                   USB on-the-go high-speed (OTG_HS)
+Page 2607: Bit 12 USBRST: USB reset
+Page 2607: The core sets this bit to indicate that a reset is detected on the USB.
+Page 2607: Bit 11 USBSUSP: USB suspend
+Page 2607: The core sets this bit to indicate that a suspend was detected on the USB. The core enters
+Page 2607: The core sets this bit to indicate that an Idle state has been detected on the USB for 3 ms.
+Page 2608: USB on-the-go high-speed (OTG_HS)                                                                         RM0433
+Page 2608: This interrupt does not necessarily mean that a NAK handshake is sent out on the USB. The
+Page 2608: transmitted on the USB. The application must write a 1 to this bit to clear the interrupt.
+Page 2608: the USB. The application can read the OTG_DSTS register to get the current frame number.
+Page 2609: RM0433                                                                     USB on-the-go high-speed (OTG_HS)
+Page 2609: EOPF   ISOOD    ENUM USBRS USBSU ESUSP                      GONA GINAK NPTXF RXFLV                   OTGIN
+Page 2610: USB on-the-go high-speed (OTG_HS)                                            RM0433
+Page 2611: RM0433                                                             USB on-the-go high-speed (OTG_HS)
+Page 2611: Bit 12 USBRST: USB reset mask
+Page 2611: Bit 11 USBSUSPM: USB suspend mask
+Page 2612: USB on-the-go high-speed (OTG_HS)                                                                                    RM0433
+Page 2612: USB. This field is supported only when isochronous OUT endpoints are supported.
+Page 2613: RM0433                                                                           USB on-the-go high-speed (OTG_HS)
+Page 2614: USB on-the-go high-speed (OTG_HS)                                                                                   RM0433
+Page 2614: USB. This field is supported only when isochronous OUT endpoints are supported.
+Page 2615: RM0433                                                                          USB on-the-go high-speed (OTG_HS)
+Page 2616: USB on-the-go high-speed (OTG_HS)                                                                                 RM0433
+Page 2617: RM0433                                                                     USB on-the-go high-speed (OTG_HS)
+Page 2618: USB on-the-go high-speed (OTG_HS)                                                                             RM0433
+Page 2619: RM0433                                                                USB on-the-go high-speed (OTG_HS)
+Page 2619: Bit 21 VBDEN: USB VBUS detection enable
+Page 2619: Enables VBUS sensing comparators to detect VBUS valid levels on the VBUS PAD for USB
+Page 2619: This bit is set by the software to enable the BCD support within the USB device. When
+Page 2619: enabled, the USB PHY is fully controlled by BCD and cannot be used for normal
+Page 2619: mode by clearing this bit to ‘0’ in order to allow the normal USB operation.
+Page 2619: 0 = USB FS transceiver disabled
+Page 2619: 1 = USB FS transceiver enabled
+Page 2620: USB on-the-go high-speed (OTG_HS)                                                                                    RM0433
+Page 2620: USB 2.0 Link Power Management Addendum Engineering Change Notice to the USB 2.0
+Page 2620: Errata for USB 2.0 ECN: Link Power Management (LPM) - 7/2007
+Page 2621: RM0433                                                                USB on-the-go high-speed (OTG_HS)
+Page 2621: This bit is set as long as a Sleep condition is present on the USB bus. The core enters the
+Page 2621: – When there is any activity on the USB linestate
+Page 2622: USB on-the-go high-speed (OTG_HS)                                                                          RM0433
+Page 2622: for which resume signaling is to be reflected by host (TL1HubDrvResume2) on the USB bus
+Page 2623: RM0433                                                           USB on-the-go high-speed (OTG_HS)
+Page 2624: USB on-the-go high-speed (OTG_HS)                                                                            RM0433
+Page 2625: RM0433                                                                           USB on-the-go high-speed (OTG_HS)
+Page 2626: USB on-the-go high-speed (OTG_HS)                                                                              RM0433
+Page 2626: value in the Frame interval register and a new SOF is transmitted on the USB.
+Page 2626: This field increments when a new SOF is transmitted on the USB, and is cleared to 0 when
+Page 2627: RM0433                                                                     USB on-the-go high-speed (OTG_HS)
+Page 2628: USB on-the-go high-speed (OTG_HS)                                                                             RM0433
+Page 2629: RM0433                                                                          USB on-the-go high-speed (OTG_HS)
+Page 2629: A single register holds USB port-related information such as USB reset, enable, suspend,
+Page 2629: Indicates the current logic level USB data lines
+Page 2630: USB on-the-go high-speed (OTG_HS)                                                                           RM0433
+Page 2630: set by the USB standard.
+Page 2630: If the core detects a USB remote wakeup sequence, as indicated by the port resume/remote
+Page 2630: 3. If the core detects a USB remote wakeup sequence, as indicated by the port
+Page 2631: RM0433                                                                      USB on-the-go high-speed (OTG_HS)
+Page 2632: USB on-the-go high-speed (OTG_HS)                                                                                    RM0433
+Page 2633: RM0433                                                                           USB on-the-go high-speed (OTG_HS)
+Page 2633: This register indicates the status of a channel with respect to USB- and AHB-related events.
+Page 2633: Indicates one of the following errors occurred on the USB.
+Page 2634: USB on-the-go high-speed (OTG_HS)                                                                            RM0433
+Page 2634: Indicates the transfer completed abnormally either because of any USB transaction error or
+Page 2635: RM0433                                                                  USB on-the-go high-speed (OTG_HS)
+Page 2636: USB on-the-go high-speed (OTG_HS)                                                                                 RM0433
+Page 2637: RM0433                                                                            USB on-the-go high-speed (OTG_HS)
+Page 2638: USB on-the-go high-speed (OTG_HS)                                                                                  RM0433
+Page 2638: only after the chirp sequence is completed, and is based on the speed of the USB host to
+Page 2639: RM0433                                                                USB on-the-go high-speed (OTG_HS)
+Page 2639: The application uses this bit to signal the USB OTG core to perform a soft disconnect. As
+Page 2639: does not receive signals on the USB. The core stays in the disconnected state until the
+Page 2639: device connect event to the USB host. When the device is reconnected, the USB host
+Page 2639: 1:The core generates a device disconnect event to the USB host.
+Page 2639: When the application sets this bit, the core initiates remote signaling to wake up the USB
+Page 2639: specified in the USB 2.0 specification, the application must clear this bit 1 ms to 15 ms after
+Page 2639: the core initiates L1 remote signaling to wake up the USB host. The application must set
+Page 2640: USB on-the-go high-speed (OTG_HS)                                                                                  RM0433
+Page 2640: disconnect (SDIS) bit must be set for the USB host to detect a device disconnect. To
+Page 2640: This register indicates the status of the core with respect to USB-related events. It must be
+Page 2640: Indicates the current logic level USB data lines.
+Page 2641: RM0433                                                                     USB on-the-go high-speed (OTG_HS)
+Page 2641: In device mode, this bit is set as long as a suspend condition is detected on the USB. The
+Page 2641: core enters the suspended state when there is no activity on the USB data lines for a period
+Page 2641: – When there is an activity on the USB data lines
+Page 2642: USB on-the-go high-speed (OTG_HS)                                                                            RM0433
+Page 2643: RM0433                                                           USB on-the-go high-speed (OTG_HS)
+Page 2644: USB on-the-go high-speed (OTG_HS)                                                                        RM0433
+Page 2645: RM0433                                                                       USB on-the-go high-speed (OTG_HS)
+Page 2646: USB on-the-go high-speed (OTG_HS)                                                                                RM0433
+Page 2646: received on the USB. This is done to avoid getting into underrun conditions. By default
+Page 2646: amount of data received on the USB before the core can start transmitting on the AHB. The
+Page 2646: can start transmitting on the USB. The threshold length has to be at least eight 32-bit words.
+Page 2647: RM0433                                                                       USB on-the-go high-speed (OTG_HS)
+Page 2648: USB on-the-go high-speed (OTG_HS)                                                                               RM0433
+Page 2649: RM0433                                                                      USB on-the-go high-speed (OTG_HS)
+Page 2650: USB on-the-go high-speed (OTG_HS)                                           RM0433
+Page 2651: RM0433                                                                    USB on-the-go high-speed (OTG_HS)
+Page 2651: USBA
+Page 2652: USB on-the-go high-speed (OTG_HS)                                                                          RM0433
+Page 2652: The application sets this bit to stall all tokens from the USB host to this endpoint. If a NAK
+Page 2653: RM0433                                                                      USB on-the-go high-speed (OTG_HS)
+Page 2653: Bit 15 USBAEP: USB active endpoint
+Page 2653: clears this bit for all endpoints (other than EP 0) after detecting a USB reset. After receiving
+Page 2653: This register indicates the status of an endpoint with respect to USB- and AHB-related
+Page 2654: USB on-the-go high-speed (OTG_HS)                                                                       RM0433
+Page 2654: This interrupt does not guarantee that a NAK handshake is sent on the USB. A STALL bit
+Page 2654: Indicates that the core has detected a timeout condition on the USB for the last IN token on
+Page 2654: USB, for this endpoint.
+Page 2655: RM0433                                                                        USB on-the-go high-speed (OTG_HS)
+Page 2655: Indicates the total number of USB packets that constitute the transfer size amount of data for
+Page 2656: USB on-the-go high-speed (OTG_HS)                                                                                  RM0433
+Page 2657: RM0433                                                                        USB on-the-go high-speed (OTG_HS)
+Page 2657: per frame on the USB. The core uses this field to calculate the data PID for isochronous IN
+Page 2657: Indicates the total number of USB packets that constitute the transfer size amount of data for
+Page 2657: USBA
+Page 2658: USB on-the-go high-speed (OTG_HS)                                                                                 RM0433
+Page 2658: Bit 15 USBAEP: USB active endpoint
+Page 2659: RM0433                                                                        USB on-the-go high-speed (OTG_HS)
+Page 2659: This register indicates the status of an endpoint with respect to USB- and AHB-related
+Page 2660: USB on-the-go high-speed (OTG_HS)                                                                        RM0433
+Page 2660: USB, for this endpoint.
+Page 2661: RM0433                                                                      USB on-the-go high-speed (OTG_HS)
+Page 2662: USB on-the-go high-speed (OTG_HS)                                                                                 RM0433
+Page 2662: USBA
+Page 2663: RM0433                                                                  USB on-the-go high-speed (OTG_HS)
+Page 2663: The application sets this bit to stall all tokens from the USB host to this endpoint. If a NAK
+Page 2664: USB on-the-go high-speed (OTG_HS)                                                                             RM0433
+Page 2664: Bit 15 USBAEP: USB active endpoint
+Page 2664: clears this bit for all endpoints (other than EP 0) after detecting a USB reset. After receiving
+Page 2665: RM0433                                                                   USB on-the-go high-speed (OTG_HS)
+Page 2665: Indicates the total number of USB packets that constitute the transfer size amount of data for
+Page 2666: USB on-the-go high-speed (OTG_HS)                                                                               RM0433
+Page 2666: and wakeup logic when the USB is suspended or the session is not valid. The application
+Page 2666: clears this bit when the USB is resumed or a new session starts.
+Page 2666: The application sets this bit to stop the PHY clock when the USB is suspended, the session
+Page 2666: is not valid, or the device is disconnected. The application clears this bit when the USB is
+Page 2667: GUSBCFG
+Page 2667: USBRST                            USBRST                           Res.                                                            Res.                             Res.                     EHEN         12
+Page 2667: USBSUSPM                           USBSUSP                          Res.                                                            Res.                             Res.                    DHNPEN
+Page 2667: The table below gives the USB OTG register map and reset values.
+Page 2667: USB on-the-go high-speed (OTG_HS)
+Page 2668: USB on-the-go high-speed (OTG_HS)                                                                                                                                                                                                                             RM0433
+Page 2669: RM0433                                                                                                                                                          USB on-the-go high-speed (OTG_HS)
+Page 2670: USB on-the-go high-speed (OTG_HS)                                                                                                                                                                                                                                RM0433
+Page 2671: USB on-the-go high-speed (OTG_HS)
+Page 2672: USB on-the-go high-speed (OTG_HS)
+Page 2673: USBAEP                                                                                          Res.                             Res.                        USBAEP                              Res.                      Res.                       Res.          15
+Page 2673: USB on-the-go high-speed (OTG_HS)
+Page 2674: USB on-the-go high-speed (OTG_HS)
+Page 2674: Res.                            USBAEP                                             USBAEP                                                                                               Res.        15
+Page 2675: STPKTRX                        USBAEP                                                       Res.                          STPKTRX                     USBAEP                                                                                 15
+Page 2675: USB on-the-go high-speed (OTG_HS)
+Page 2676: USB on-the-go high-speed (OTG_HS)                                                                                                                                                                                                                                                    RM0433
+Page 2676: USBAEP
+Page 2677: RM0433                                                          USB on-the-go high-speed (OTG_HS)
+Page 2677: 2.   Program the following fields in the OTG_GUSBCFG register:
+Page 2677: –    USB turnaround time field
+Page 2678: USB on-the-go high-speed (OTG_HS)                                                               RM0433
+Page 2678: 3.   Program the PPWR bit in OTG_HPRT to 1. This drives VBUS on the USB.
+Page 2678: –   USB reset
+Page 2678: –   USB suspend
+Page 2678: 3.   Wait for the USBRST interrupt in OTG_GINTSTS. It indicates that a reset has been
+Page 2678: detected on the USB that lasts for about 10 ms on receiving this interrupt.
+Page 2678: on the USB. On receiving this interrupt, the application must read the OTG_DSTS register
+Page 2679: RM0433                                                        USB on-the-go high-speed (OTG_HS)
+Page 2679: USB) and receive the data update (USB to AHB). The AHB master uses the programmed
+Page 2679: OTG_HS host does not interrupt the transaction that has already been started on the USB.
+Page 2680: USB on-the-go high-speed (OTG_HS)                                                                  RM0433
+Page 2680: This section explains the sequence of operation to be performed for different types of USB
+Page 2681: RM0433                                                           USB on-the-go high-speed (OTG_HS)
+Page 2682: USB on-the-go high-speed (OTG_HS)                                                                 RM0433
+Page 2683: RM0433                                                                               USB on-the-go high-speed (OTG_HS)
+Page 2683: Application                AHB                         Host                   USB               Device
+Page 2684: USB on-the-go high-speed (OTG_HS)                                                               RM0433
+Page 2685: RM0433                                                       USB on-the-go high-speed (OTG_HS)
+Page 2686: USB on-the-go high-speed (OTG_HS)                                                                    RM0433
+Page 2687: RM0433                                                                               USB on-the-go high-speed (OTG_HS)
+Page 2687: Application                 AHB                        Host                   USB               Device
+Page 2688: USB on-the-go high-speed (OTG_HS)                                                                RM0433
+Page 2689: RM0433                                                        USB on-the-go high-speed (OTG_HS)
+Page 2690: USB on-the-go high-speed (OTG_HS)                                                                                             RM0433
+Page 2690: Application                   AHB                      Host                    USB                  Device
+Page 2691: RM0433                                                 USB on-the-go high-speed (OTG_HS)
+Page 2692: USB on-the-go high-speed (OTG_HS)                                              RM0433
+Page 2693: RM0433                                                             USB on-the-go high-speed (OTG_HS)
+Page 2694: USB on-the-go high-speed (OTG_HS)                                                                RM0433
+Page 2695: RM0433                                                                                     USB on-the-go high-speed (OTG_HS)
+Page 2695: Application                  AHB                          Host                    USB               Device
+Page 2696: USB on-the-go high-speed (OTG_HS)                                                                 RM0433
+Page 2697: RM0433                                                                           USB on-the-go high-speed (OTG_HS)
+Page 2697: Application            AHB                     Host                  USB                  Device
+Page 2698: USB on-the-go high-speed (OTG_HS)                                     RM0433
+Page 2699: RM0433                                                       USB on-the-go high-speed (OTG_HS)
+Page 2700: USB on-the-go high-speed (OTG_HS)                                                                                        RM0433
+Page 2700: Application              AHB                     Host                  USB                  Device
+Page 2701: RM0433                                                        USB on-the-go high-speed (OTG_HS)
+Page 2702: USB on-the-go high-speed (OTG_HS)                                                                                                    RM0433
+Page 2702: Application          AHB                   Host               USB               Device
+Page 2703: RM0433                                                        USB on-the-go high-speed (OTG_HS)
+Page 2704: USB on-the-go high-speed (OTG_HS)                                                                                                      RM0433
+Page 2704: Application          AHB                      Host              USB                 Device
+Page 2705: RM0433                                                                               USB on-the-go high-speed (OTG_HS)
+Page 2705: Application           AHB                      Host                  USB           Device
+Page 2706: USB on-the-go high-speed (OTG_HS)                                                                                                       RM0433
+Page 2706: Application           AHB                         Host                USB           Device
+Page 2707: RM0433                                                                                     USB on-the-go high-speed (OTG_HS)
+Page 2707: Application             AHB                     Host                   USB         Device
+Page 2708: USB on-the-go high-speed (OTG_HS)                                                                                                      RM0433
+Page 2708: Application            AHB                     Host                    USB         Device
+Page 2709: RM0433                                                        USB on-the-go high-speed (OTG_HS)
+Page 2710: USB on-the-go high-speed (OTG_HS)                                                                    RM0433
+Page 2711: RM0433                                                          USB on-the-go high-speed (OTG_HS)
+Page 2711: Endpoint initialization on USB reset
+Page 2711: 5.   For USB OTG_HS in DMA mode, the OTG_DOEPDMA0 register should have a valid
+Page 2711: 3.   For USB OTG_HS in DMA mode, program the OTG_DOEPCTL0 register to enable
+Page 2712: USB on-the-go high-speed (OTG_HS)                                                                RM0433
+Page 2712: –   USB active endpoint = 1
+Page 2712: 1.   In the endpoint to be deactivated, clear the USB active endpoint bit in the
+Page 2712: which results in a timeout on the USB.
+Page 2713: RM0433                                                        USB on-the-go high-speed (OTG_HS)
+Page 2714: USB on-the-go high-speed (OTG_HS)                                                             RM0433
+Page 2715: RM0433                                                       USB on-the-go high-speed (OTG_HS)
+Page 2715: 2.   For every SETUP packet received on the USB, 3 words of data are written to the
+Page 2716: USB on-the-go high-speed (OTG_HS)                                                                RM0433
+Page 2716: Per the USB 2.0 specification, normally, during a SETUP packet error, a host does not send
+Page 2716: more than three back-to-back SETUP packets to the same endpoint. However, the USB 2.0
+Page 2717: RM0433                                                        USB on-the-go high-speed (OTG_HS)
+Page 2718: USB on-the-go high-speed (OTG_HS)                                                                  RM0433
+Page 2718: –    Number of USB packets in which this payload was received = application
+Page 2718: the USB, the data packet and its status are written to the receive FIFO. Every packet
+Page 2718: –    After sending an ACK for the packet on the USB, the core discards non-
+Page 2719: RM0433                                                      USB on-the-go high-speed (OTG_HS)
+Page 2720: USB on-the-go high-speed (OTG_HS)                                                              RM0433
+Page 2720: –    RXDPID = DATA0 (in OTG_DOEPTSIZx) and the number of USB packets in
+Page 2720: –    RXDPID = DATA1 (in OTG_DOEPTSIZx) and the number of USB packets in
+Page 2720: RXDPID = D2 (in OTG_DOEPTSIZx) and the number of USB packets in which
+Page 2720: this payload was received = 3The number of USB packets in which this payload
+Page 2721: RM0433                                                        USB on-the-go high-speed (OTG_HS)
+Page 2721: transfers remain in progress on this endpoint on the USB.
+Page 2722: USB on-the-go high-speed (OTG_HS)                                                                                            RM0433
+Page 2722: Figure 769 depicts the reception of a single Bulk OUT data packet from the USB to the AHB
+Page 2722: Host                  USB          Device                                 Application
+Page 2722: 2.     When the core receives the OUT token on the USB, it stores the packet in the Rx FIFO
+Page 2722: 4.     On receiving the PKTCNT number of USB packets, the core internally sets the NAK bit
+Page 2723: RM0433                                                         USB on-the-go high-speed (OTG_HS)
+Page 2724: USB on-the-go high-speed (OTG_HS)                                                                  RM0433
+Page 2724: calculate how much data on the endpoint were transmitted on the USB.
+Page 2725: RM0433                                                         USB on-the-go high-speed (OTG_HS)
+Page 2725: sent on the USB.
+Page 2725: –    Data transmitted on USB = (application-programmed initial packet count – core
+Page 2725: –    Data yet to be transmitted on USB = (Application-programmed initial transfer size
+Page 2725: – data transmitted on USB)
+Page 2725: core responds with a NAK handshake for non-isochronous endpoints on the USB.
+Page 2726: USB on-the-go high-speed (OTG_HS)                                                                  RM0433
+Page 2726: –    A zero data length packet would be transmitted on the USB for isochronous IN
+Page 2726: –    A NAK handshake would be transmitted on the USB for interrupt IN endpoints
+Page 2727: RM0433                                                         USB on-the-go high-speed (OTG_HS)
+Page 2727: –    A zero-length data packet is transmitted on the USB for isochronous IN endpoints
+Page 2727: –    A NAK handshake is transmitted on the USB for interrupt IN endpoints
+Page 2727: indicating all data were transmitted on the USB.
+Page 2727: indicating all data were transmitted on the USB.
+Page 2728: USB on-the-go high-speed (OTG_HS)                                                                 RM0433
+Page 2728: The core transmits a zero-length data packet on the USB in response to the
+Page 2729: RM0433                                                         USB on-the-go high-speed (OTG_HS)
+Page 2729: Choosing the value of TRDT in OTG_GUSBCFG
+Page 2729: The value in TRDT (OTG_GUSBCFG) is the time it takes for the MAC, in terms of PHY
+Page 2730: USB on-the-go high-speed (OTG_HS)                                                              RM0433
+Page 2730: value for TRDT (in OTG_GUSBCFG).
+Page 2731: RM0433                                                               USB on-the-go high-speed (OTG_HS)
+Page 2731: The application must set the SRP-capable bit in the core USB configuration register. This
+Page 2732: USB on-the-go high-speed (OTG_HS)                                                                                  RM0433
+Page 2732: 7.     When the USB is powered, the device connects, completing the SRP process.
+Page 2732: The application must set the SRP-capable bit in the core USB configuration register. This
+Page 2732: ms of bus idleness. Following this, the OTG_HS controller sets the USB suspend bit in
+Page 2732: For a USB 1.1 full-speed serial transceiver, the application must wait until VBUS
+Page 2733: RM0433                                                              USB on-the-go high-speed (OTG_HS)
+Page 2733: 7.   When the USB is powered, the OTG_HS controller connects, completing the SRP
+Page 2733: HNP switches the USB host role from the A-device to the B-device. The application must set
+Page 2733: the HNP-capable bit in the core USB configuration register to enable the OTG_HS controller
+Page 2734: USB on-the-go high-speed (OTG_HS)                                                               RM0433
+Page 2734: 3.   When the B-device observes a USB suspend, it disconnects, indicating the initial
+Page 2734: 4.   The B-device detects the connection, issues a USB reset, and enumerates the
+Page 2734: ms of bus idleness. Following this, the OTG_HS controller sets the USB suspend bit in
+Page 2734: HNP switches the USB host role from B-device to A-device. The application must set the
+Page 2734: HNP-capable bit in the core USB configuration register to enable the OTG_HS controller to
+Page 2735: RM0433                                                              USB on-the-go high-speed (OTG_HS)
+Page 2735: ms of bus idleness. Following this, the OTG_HS controller sets the USB suspend bit in
+Page 2736: USB on-the-go high-speed (OTG_HS)                                                               RM0433
+Page 2736: issues a USB reset and enumerates the A-device for data traffic.
+Page 2998: communications interfaces (USB, USART, SPI, I2C, Ethernet, CAN etc). This is
+Page 3069: high speed interface (SPI, USB etc), or even monitored by software. Note that unlike
+Page 3214: •            for use as serial numbers (for example USB string serial numbers or other end
+Page 3216: Removed lsi_ck as USBxOTG clock in Section : Peripherals
+Page 3222: Section 57: USB on-the-go high-speed (OTG_HS)
+Page 3222: Added Section 57.4.2: USB OTG pin and internal signals.
+Page 3223: Updated Section 6.4.7: USB regulator
+Page 3226: Removed USB_PHY2 in the whole section.
+Page 3226: Updated Figure 52: Kernel clock distribution for USB (2).
+Page 3226: renamed USB2OTGEN into USB2OTGHSEN, USB1ULPIEN into
+Page 3226: USB1OTGHSULPIEN, USB1OTGEN into USB1OTGHSEN.
+Page 3226: R: renamed USB2OTGLPEN into USB2OTGHSLPEN,
+Page 3226: USB1ULPILPEN into USB1OTGHSULPILPEN, USB1OTGLPEN
+Page 3226: into USB1OTGHSLPEN.
+Page 3227: 15-Jun-2018               –  Updated  D2/USB1/2 SOF connection
+Page 3232: Section 56: USB on-the-go high-speed (OTG_HS)
+Page 3242: MMC_RX_INTERRUPT_MASK . . . . . . . . . .2929                       OTG_GUSBCFG . . . . . . . . . . . . . . . . . . . . . 2599

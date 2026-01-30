@@ -1,0 +1,259 @@
+Keyword: SPI
+Occurrences: 255
+================================================================================
+
+Page    5: 3.10.17.4 Port conﬁguration for SPI port.................................................................................... 76
+Page   12: 5.9.23 CFG-SPI: Conﬁguration of the SPI interface..................................................................... 227
+Page   12: 5.9.24 CFG-SPIINPROT: Input protocol conﬁguration of the SPI interface............................. 227
+Page   12: 5.9.25 CFG-SPIOUTPROT: Output protocol conﬁguration of the SPI interface..................... 227
+Page   42: Structure         $PUBX,40,msgId,rddc,rus1,rus2,rusb,rspi,reserved*cs\r\n
+Page   42: 7          rspi                  numeric      cycles      1                output rate on SPI
+Page   51: •   Port conﬁguration for SPI port (Get/set)
+Page   57: bit 4   U:1      devSpiFlash              -           -            SPI Flash (only supported for protocol versions less
+Page   61: •    I/O port 4 is SPI.
+Page   76: 3.10.17.4 Port conﬁguration for SPI port
+Page   76: Port conﬁguration for SPI port
+Page   76: 0                   U1        portID                   -           -            Port identiﬁer number (= 4 for SPI port)
+Page   76: 4                   X4        mode                     -           -            SPI Mode Flags
+Page   77: bits 2…1    U:2       spiMode               -           -            •   00 SPI Mode 0: CPOL = 0, CPHA = 0
+Page   77: •   01 SPI Mode 1: CPOL = 0, CPHA = 1
+Page   77: •   10 SPI Mode 2: CPOL = 1, CPHA = 0
+Page   77: •   11 SPI Mode 3: CPOL = 1, CPHA = 1
+Page  159: bit 7   U:1      spics                  -           -            Wake up the receiver if there is an edge on the SPI CS
+Page  196: CFG-SPI                                Conﬁguration of the SPI interface
+Page  196: CFG-SPIINPROT                          Input protocol conﬁguration of the SPI interface
+Page  196: CFG-SPIOUTPROT                         Output protocol conﬁguration of the SPI interface
+Page  201: CFG-INFMSG-UBX_SPI                   0x20920005 X1            -          -     Information message enable ﬂags for the UBX
+Page  201: protocol on the SPI interface
+Page  201: CFG-INFMSG-NMEA_SPI                  0x2092000a X1            -          -     Information message enable ﬂags for the NMEA
+Page  201: protocol on the SPI interface
+Page  202: UBX_USB, CFG-INFMSG-UBX_SPI, CFG-INFMSG-NMEA_I2C, CFG-INFMSG-NMEA_UART1, CFG-INFMSG-NMEA_UART2,
+Page  202: CFG-INFMSG-NMEA_USB, CFG-INFMSG-NMEA_SPI
+Page  203: CFG-MSGOUT-NMEA_ID_DTM_SPI           0x209100aa U1           -        -     Output rate of the NMEA-GX-DTM message on
+Page  203: port SPI
+Page  204: CFG-MSGOUT-NMEA_ID_GBS_SPI   0x209100e1 U1       -       -       Output rate of the NMEA-GX-GBS message on
+Page  204: port SPI
+Page  204: CFG-MSGOUT-NMEA_ID_GGA_SPI   0x209100be U1       -       -       Output rate of the NMEA-GX-GGA message on
+Page  204: port SPI
+Page  204: CFG-MSGOUT-NMEA_ID_GLL_SPI   0x209100cd U1       -       -       Output rate of the NMEA-GX-GLL message on
+Page  204: port SPI
+Page  204: CFG-MSGOUT-NMEA_ID_GNS_SPI   0x209100b9 U1       -       -       Output rate of the NMEA-GX-GNS message on
+Page  204: port SPI
+Page  204: CFG-MSGOUT-NMEA_ID_GRS_SPI   0x209100d2 U1       -       -       Output rate of the NMEA-GX-GRS message on
+Page  204: port SPI
+Page  204: CFG-MSGOUT-NMEA_ID_GSA_SPI   0x209100c3 U1       -       -       Output rate of the NMEA-GX-GSA message on
+Page  204: port SPI
+Page  205: CFG-MSGOUT-NMEA_ID_GST_SPI   0x209100d7 U1       -       -       Output rate of the NMEA-GX-GST message on
+Page  205: port SPI
+Page  205: CFG-MSGOUT-NMEA_ID_GSV_SPI   0x209100c8 U1       -       -       Output rate of the NMEA-GX-GSV message on
+Page  205: port SPI
+Page  205: CFG-MSGOUT-NMEA_ID_RLM_SPI   0x20910404 U1       -       -       Output rate of the NMEA-GX-RLM message on
+Page  205: port SPI
+Page  205: CFG-MSGOUT-NMEA_ID_RMC_SPI   0x209100af U1       -       -       Output rate of the NMEA-GX-RMC message on
+Page  205: port SPI
+Page  205: CFG-MSGOUT-NMEA_ID_VLW_SPI   0x209100eb U1       -       -       Output rate of the NMEA-GX-VLW message on
+Page  205: port SPI
+Page  206: CFG-MSGOUT-NMEA_ID_VTG_SPI     0x209100b4 U1       -       -       Output rate of the NMEA-GX-VTG message on
+Page  206: port SPI
+Page  206: CFG-MSGOUT-NMEA_ID_ZDA_SPI     0x209100dc U1       -       -       Output rate of the NMEA-GX-ZDA message on
+Page  206: port SPI
+Page  206: CFG-MSGOUT-PUBX_ID_POLYP_SPI   0x209100f0 U1       -       -       Output rate of the NMEA-GX-PUBX00 message
+Page  206: on port SPI
+Page  206: CFG-MSGOUT-PUBX_ID_POLYS_SPI   0x209100f5 U1       -       -       Output rate of the NMEA-GX-PUBX03 message
+Page  206: on port SPI
+Page  206: CFG-MSGOUT-PUBX_ID_POLYT_SPI   0x209100fa U1       -       -       Output rate of the NMEA-GX-PUBX04 message
+Page  206: on port SPI
+Page  207: CFG-MSGOUT-UBX_LOG_INFO_SPI    0x2091025d U1       -       -       Output rate of the UBX-LOG-INFO message on
+Page  207: port SPI
+Page  207: SPI                                                                on port SPI
+Page  207: CFG-MSGOUT-UBX_MON_HW2_SPI     0x209101bd U1       -       -       Output rate of the UBX-MON-HW2 message on
+Page  207: port SPI
+Page  207: CFG-MSGOUT-UBX_MON_HW3_SPI     0x20910358 U1       -       -       Output rate of the UBX-MON-HW3 message on
+Page  207: port SPI
+Page  207: CFG-MSGOUT-UBX_MON_HW_SPI      0x209101b8 U1       -       -       Output rate of the UBX-MON-HW message on
+Page  207: port SPI
+Page  208: CFG-MSGOUT-UBX_MON_IO_SPI     0x209101a9 U1       -       -       Output rate of the UBX-MON-IO message on
+Page  208: port SPI
+Page  208: CFG-MSGOUT-UBX_MON_MSGPP_SPI 0x2091019a U1        -       -       Output rate of the UBX-MON-MSGPP message
+Page  208: on port SPI
+Page  208: CFG-MSGOUT-UBX_MON_RF_SPI     0x2091035d U1       -       -       Output rate of the UBX-MON-RF message on
+Page  208: port SPI
+Page  208: CFG-MSGOUT-UBX_MON_RXBUF_SPI 0x209101a4 U1        -       -       Output rate of the UBX-MON-RXBUF message
+Page  208: on port SPI
+Page  208: CFG-MSGOUT-UBX_MON_RXR_SPI    0x2091018b U1       -       -       Output rate of the UBX-MON-RXR message on
+Page  208: port SPI
+Page  209: CFG-MSGOUT-UBX_MON_SPAN_SPI   0x2091038f U1       -       -       Output rate of the UBX-MON-SPAN message on
+Page  209: port SPI
+Page  209: CFG-MSGOUT-UBX_MON_TXBUF_SPI 0x2091019f U1        -       -       Output rate of the UBX-MON-TXBUF message
+Page  209: on port SPI
+Page  209: AOPSTATUS_SPI                                                     message on port SPI
+Page  209: CFG-MSGOUT-UBX_NAV_CLOCK_SPI 0x20910069 U1        -       -       Output rate of the UBX-NAV-CLOCK message
+Page  209: on port SPI
+Page  209: CFG-MSGOUT-UBX_NAV_COV_SPI    0x20910087 U1       -       -       Output rate of the UBX-NAV-COV message on
+Page  209: port SPI
+Page  209: CFG-MSGOUT-UBX_NAV_DOP_SPI    0x2091003c U1       -       -       Output rate of the UBX-NAV-DOP message on
+Page  209: port SPI
+Page  210: CFG-MSGOUT-UBX_NAV_EOE_SPI    0x20910163 U1       -       -       Output rate of the UBX-NAV-EOE message on
+Page  210: port SPI
+Page  210: SPI                                                               message on port SPI
+Page  210: CFG-MSGOUT-UBX_NAV_ODO_SPI    0x20910082 U1       -       -       Output rate of the UBX-NAV-ODO message on
+Page  210: port SPI
+Page  210: CFG-MSGOUT-UBX_NAV_ORB_SPI    0x20910014 U1       -       -       Output rate of the UBX-NAV-ORB message on
+Page  210: port SPI
+Page  210: SPI                                                               on port SPI
+Page  211: CFG-MSGOUT-UBX_NAV_POSLLH_SPI 0x2091002d U1       -       -       Output rate of the UBX-NAV-POSLLH message
+Page  211: on port SPI
+Page  211: CFG-MSGOUT-UBX_NAV_PVT_SPI    0x2091000a U1       -       -       Output rate of the UBX-NAV-PVT message on
+Page  211: port SPI
+Page  211: CFG-MSGOUT-UBX_NAV_SAT_SPI    0x20910019 U1       -       -       Output rate of the UBX-NAV-SAT message on
+Page  211: port SPI
+Page  211: CFG-MSGOUT-UBX_NAV_SBAS_SPI   0x2091006e U1       -       -       Output rate of the UBX-NAV-SBAS message on
+Page  211: port SPI
+Page  211: CFG-MSGOUT-UBX_NAV_SIG_SPI    0x20910349 U1       -       -       Output rate of the UBX-NAV-SIG message on
+Page  211: port SPI
+Page  212: CFG-MSGOUT-UBX_NAV_SLAS_SPI   0x2091033a U1       -       -       Output rate of the UBX-NAV-SLAS message on
+Page  212: port SPI
+Page  212: CFG-MSGOUT-UBX_NAV_STATUS_SPI 0x2091001e U1       -       -       Output rate of the UBX-NAV-STATUS message
+Page  212: on port SPI
+Page  212: SPI                                                               on port SPI
+Page  212: SPI                                                               on port SPI
+Page  212: SPI                                                               on port SPI
+Page  213: SPI                                                               on port SPI
+Page  213: CFG-MSGOUT-UBX_NAV_TIMELS_SPI 0x20910064 U1       -       -       Output rate of the UBX-NAV-TIMELS message
+Page  213: on port SPI
+Page  213: SPI                                                               message on port SPI
+Page  213: SPI                                                               on port SPI
+Page  213: SPI                                                               on port SPI
+Page  214: SPI                                                               on port SPI
+Page  214: CFG-MSGOUT-UBX_RXM_MEASX_SPI 0x20910208 U1        -       -       Output rate of the UBX-RXM-MEASX message
+Page  214: on port SPI
+Page  214: CFG-MSGOUT-UBX_RXM_RAWX_SPI   0x209102a8 U1       -       -       Output rate of the UBX-RXM-RAWX message on
+Page  214: port SPI
+Page  214: CFG-MSGOUT-UBX_RXM_RLM_SPI    0x20910262 U1       -       -       Output rate of the UBX-RXM-RLM message on
+Page  214: port SPI
+Page  214: CFG-MSGOUT-UBX_RXM_RTCM_SPI   0x2091026c U1       -       -       Output rate of the UBX-RXM-RTCM message on
+Page  214: port SPI
+Page  214: CFG-MSGOUT-UBX_RXM_SFRBX_SPI 0x20910235 U1        -       -       Output rate of the UBX-RXM-SFRBX message
+Page  214: on port SPI
+Page  215: CFG-MSGOUT-UBX_TIM_TM2_SPI           0x2091017c U1            -          -     Output rate of the UBX-TIM-TM2 message on
+Page  215: port SPI
+Page  215: CFG-MSGOUT-UBX_TIM_TP_SPI            0x20910181 U1            -          -     Output rate of the UBX-TIM-TP message on
+Page  215: port SPI
+Page  215: CFG-MSGOUT-UBX_TIM_VRFY_SPI          0x20910096 U1            -          -     Output rate of the UBX-TIM-VRFY message on
+Page  215: port SPI
+Page  227: 5.9.23 CFG-SPI: Conﬁguration of the SPI interface
+Page  227: Settings needed to conﬁgure the SPI communication interface.
+Page  227: CFG-SPI-MAXFF                        0x20640001 U1            -          -     Number of bytes containing 0xFF to receive
+Page  227: CFG-SPI-CPOLARITY                    0x10640002       L       -          -     Clock polarity select: 0: Active Hight Clock,
+Page  227: CFG-SPI-CPHASE                       0x10640003       L       -          -     Clock phase select: 0: Data captured on ﬁrst
+Page  227: CFG-SPI-EXTENDEDTIMEOUT              0x10640005       L       -          -     Flag to disable timeouting the interface after
+Page  227: CFG-SPI-ENABLED                      0x10640006       L       -          -     Flag to indicate if the SPI interface should be
+Page  227: Table 46: CFG-SPI conﬁguration items
+Page  227: 5.9.24 CFG-SPIINPROT: Input protocol conﬁguration of the SPI interface
+Page  227: Input protocol enable ﬂags of the SPI interface.
+Page  227: CFG-SPIINPROT-UBX                    0x10790001       L       -          -     Flag to indicate if UBX should be an input
+Page  227: protocol on SPI
+Page  227: CFG-SPIINPROT-NMEA                   0x10790002       L       -          -     Flag to indicate if NMEA should be an input
+Page  227: protocol on SPI
+Page  227: CFG-SPIINPROT-RTCM3X                 0x10790004       L       -          -     Flag to indicate if RTCM3X should be an input
+Page  227: protocol on SPI
+Page  227: Table 47: CFG-SPIINPROT conﬁguration items
+Page  227: 5.9.25 CFG-SPIOUTPROT: Output protocol conﬁguration of the SPI interface
+Page  227: Output protocol enable ﬂags of the SPI interface.
+Page  227: CFG-SPIOUTPROT-UBX                   0x107a0001       L       -          -     Flag to indicate if UBX should be an output
+Page  227: protocol on SPI
+Page  227: CFG-SPIOUTPROT-NMEA                  0x107a0002       L       -          -     Flag to indicate if NMEA should be an output
+Page  227: protocol on SPI
+Page  227: Table 48: CFG-SPIOUTPROT conﬁguration items
+Page  231: SPI                                    1               SPI interface
+Page  235: INFMSG-UBX_SPI, CFG-INFMSG-NMEA_I2C, CFG-INFMSG-
+Page  235: NMEA_USB, CFG-INFMSG-NMEA_SPI
+Page  235: INFMSG-UBX_USB, CFG-INFMSG-UBX_SPI, CFG-INFMSG-
+Page  235: NMEA_SPI
+Page  238: UBX-CFG-PRT.extendedTxTimeout               CFG-SPI-EXTENDEDTIMEOUT
+Page  238: UBX-CFG-PRT.ﬀCnt                            CFG-SPI-MAXFF
+Page  238: UBX-CFG-PRT.inNmea                          CFG-SPIINPROT-NMEA
+Page  238: UBX-CFG-PRT.inProtoMask                     CFG-SPI-ENABLED
+Page  238: UBX-CFG-PRT.inRtcm3                         CFG-SPIINPROT-RTCM3X
+Page  238: UBX-CFG-PRT.inUbx                           CFG-SPIINPROT-UBX
+Page  238: UBX-CFG-PRT.outNmea                         CFG-SPIOUTPROT-NMEA
+Page  238: UBX-CFG-PRT.outProtoMask                    CFG-SPI-ENABLED
+Page  238: UBX-CFG-PRT.outUbx                          CFG-SPIOUTPROT-UBX
+Page  238: UBX-CFG-PRT.spiMode                         CFG-SPI-CPOLARITY, CFG-SPI-CPHASE
+Page  241: CFG-INFMSG-UBX_SPI                                   0x20920005 X1          -      -              0x00
+Page  242: CFG-INFMSG-NMEA_SPI                                  0x2092000a X1          -      -         0x07 (ERROR |
+Page  242: CFG-MSGOUT-NMEA_ID_DTM_SPI                           0x209100aa U1          -      -               0
+Page  242: CFG-MSGOUT-NMEA_ID_GBS_SPI                           0x209100e1 U1          -      -               0
+Page  242: CFG-MSGOUT-NMEA_ID_GGA_SPI                           0x209100be U1          -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GLL_SPI          0x209100cd U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GNS_SPI          0x209100b9 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GRS_SPI          0x209100d2 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GSA_SPI          0x209100c3 U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GST_SPI          0x209100d7 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GSV_SPI          0x209100c8 U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_RLM_SPI          0x20910404 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_RMC_SPI          0x209100af U1         -      -               1
+Page  244: CFG-MSGOUT-NMEA_ID_VLW_SPI            0x209100eb U1         -      -               0
+Page  244: CFG-MSGOUT-NMEA_ID_VTG_SPI            0x209100b4 U1         -      -               1
+Page  244: CFG-MSGOUT-NMEA_ID_ZDA_SPI            0x209100dc U1         -      -               0
+Page  244: CFG-MSGOUT-PUBX_ID_POLYP_SPI          0x209100f0 U1         -      -               0
+Page  244: CFG-MSGOUT-PUBX_ID_POLYS_SPI          0x209100f5 U1         -      -               0
+Page  244: CFG-MSGOUT-PUBX_ID_POLYT_SPI          0x209100fa U1         -      -               0
+Page  244: CFG-MSGOUT-UBX_LOG_INFO_SPI           0x2091025d U1         -      -               0
+Page  244: CFG-MSGOUT-UBX_MON_COMMS_SPI          0x20910353 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW2_SPI            0x209101bd U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW3_SPI            0x20910358 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW_SPI             0x209101b8 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_IO_SPI             0x209101a9 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_MSGPP_SPI          0x2091019a U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RF_SPI             0x2091035d U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RXBUF_SPI          0x209101a4 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RXR_SPI            0x2091018b U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_MON_SPAN_SPI               0x2091038f U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_MON_TXBUF_SPI              0x2091019f U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_AOPSTATUS_SPI          0x2091007d U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_CLOCK_SPI              0x20910069 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_COV_SPI                0x20910087 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_DOP_SPI                0x2091003c U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_EOE_SPI                0x20910163 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_GEOFENCE_SPI           0x209100a5 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_ODO_SPI                0x20910082 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_ORB_SPI              0x20910014 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_POSECEF_SPI          0x20910028 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_POSLLH_SPI           0x2091002d U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_PVT_SPI              0x2091000a U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SAT_SPI              0x20910019 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SBAS_SPI             0x2091006e U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SIG_SPI              0x20910349 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SLAS_SPI             0x2091033a U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_STATUS_SPI            0x2091001e U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEBDS_SPI           0x20910055 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGAL_SPI           0x2091005a U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGLO_SPI           0x20910050 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGPS_SPI           0x2091004b U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMELS_SPI            0x20910064 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEQZSS_SPI          0x2091038a U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEUTC_SPI           0x2091005f U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_NAV_VELECEF_SPI          0x20910041 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_NAV_VELNED_SPI           0x20910046 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_MEASX_SPI            0x20910208 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RAWX_SPI             0x209102a8 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RLM_SPI              0x20910262 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RTCM_SPI             0x2091026c U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_SFRBX_SPI            0x20910235 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_TIM_TM2_SPI              0x2091017c U1         -      -               0
+Page  250: CFG-MSGOUT-UBX_TIM_TP_SPI                         0x20910181 U1          -       -                0
+Page  250: CFG-MSGOUT-UBX_TIM_VRFY_SPI                       0x20910096 U1          -       -                0
+Page  253: CFG-SPI-MAXFF                                        0x20640001 U1          -      -               50
+Page  253: CFG-SPI-CPOLARITY                                    0x10640002    L        -      -            0 (false)
+Page  253: CFG-SPI-CPHASE                                       0x10640003    L        -      -            0 (false)
+Page  253: CFG-SPI-EXTENDEDTIMEOUT                              0x10640005    L        -      -            0 (false)
+Page  253: CFG-SPI-ENABLED                                      0x10640006    L        -      -            0 (false)
+Page  253: Table 94: CFG-SPI conﬁguration defaults
+Page  253: CFG-SPIINPROT-UBX                                    0x10790001    L        -      -            1 (true)
+Page  253: CFG-SPIINPROT-NMEA                                   0x10790002    L        -      -            1 (true)
+Page  253: CFG-SPIINPROT-RTCM3X                                 0x10790004    L        -      -            1 (true)
+Page  253: Table 95: CFG-SPIINPROT conﬁguration defaults
+Page  253: CFG-SPIOUTPROT-UBX                                   0x107a0001    L        -      -            1 (true)
+Page  253: CFG-SPIOUTPROT-NMEA                                  0x107a0002    L        -      -            1 (true)
+Page  253: Table 96: CFG-SPIOUTPROT conﬁguration defaults

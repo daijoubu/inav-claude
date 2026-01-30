@@ -1,0 +1,1407 @@
+Keyword: I2C
+Occurrences: 1403
+================================================================================
+
+Page 1: the available serial peripherals (such as USART, CAN, USB, I2C, I3C, SPI, FDCAN). A
+Page 17: 93.4     I2C connection timing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 498
+Page 22: Table 212.   I2C bootloader minimum timings (ms) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 499
+Page 23: Figure 3.    I2C connection . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 45
+Page 25: Figure 124. I2C connection timing description . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 498
+Page 26: –     AN4221: I2C protocol used in the STM32 bootloader
+Page 31: BL_I2C_Loop refers to the I2C bootloader execution loop.
+Page 35: X = 5: USART and I2C are used
+Page 35: X = 6: I2C is used
+Page 35: X = 7: USART, CAN, DFU, and I2C are used
+Page 35: X = 8: I2C and SPI are used
+Page 35: X = 9: USART, CAN (or FDCAN), DFU, I2C, and SPI are used
+Page 35: X = 10: USART, I2C, and DFU are used
+Page 35: X = 11: USART, I2C, and SPI are used
+Page 35: X = 13: USART, DFU, I2C, and SPI are used
+Page 35: X = 14: USART, DFU, I2C, I3C, FDCAN, and SPI are used
+Page 35: X = 15: USART, USB-DFU, I2C, and I3C are used
+Page 35: X = 18: USART, SPI, FDCAN, and I2C are used
+Page 36: I2C1                                                I2C1(V1.1)
+Page 36: I2C1                                                I2C1(V1.1)
+Page 36: STM32C051xx                       I2C1/I2C2                      0xB0    0x1FFF2FFE I2C (V2.0)
+Page 36: I2C1/I2C2                                         I2C1(V1.2)
+Page 36: I2C1/I2C2                                         I2C (V2.0)
+Page 36: I2C1                                                I2C1(V1.0)
+Page 36: I2C1                                              I2C (V1.0)
+Page 36: I2C1                                              I2C (V1.0)
+Page 36: I2C1                                              I2C (V1.0)
+Page 36: I2C1                                              I2C (V1.0)
+Page 36: I2C1                                                I2C (V1.0)
+Page 37: I2C1                                               I2C (V1.0)
+Page 37: I2C1                                               I2C (V1.0)
+Page 37: I2C1/ I2C3                                         I2C (V1.0)
+Page 37: I2C1                                               I2C (V1.0)
+Page 37: I2C1/I2C3                                          I2C (V1.0)
+Page 38: I2C1/I2C2/I2C3                                   SPI(V1.1)
+Page 38: SPI1/SPI2                                        I2C (V1.0)
+Page 38: I2C1                                             I2C (V1.0)
+Page 38: I2C1/I2C2/I2C3                                   I2C (V1.0)
+Page 38: I2C1/I2C2/I2C3                                   I2C (V1.0)
+Page 38: I2C1/I2C2/I2C3                                     I2C (V1.1)
+Page 38: STM32F410xx                 I2C1/I2C2/I2C4                 0xB1   0x1FFF76DE I2C (V1.2)
+Page 38: I2C1/I2C2/I2C3                                     I2C (V1.1)
+Page 38: I2C1/I2C2/I2C3/I2C4                              I2C (V1.2)
+Page 38: I2C1/I2C2/I2C3/I2C4                              I2C (V1.2)
+Page 38: I2C1/I2C2/I2C3                                   I2C (V1.2)
+Page 38: I2C1/I2C2/I2C3                                   I2C (V1.2)
+Page 39: I2C1/I2C2/I2C3                                   I2C (V1.2)
+Page 39: I2C1/I2C2/I2C3                                     I2C (V1.2)
+Page 39: I2C1/I2C2/I2C3                                   I2C (V1.2)
+Page 39: I2C1/I2C2/I2C3                                   I2C (V1.2)
+Page 39: STM32G07xxx/08xxx           I2C1/I2C2                      0xB4   0x1FFF6FFE I2C (V1.2)
+Page 39: I2C1\I2C2                                          I2C (V1.2)
+Page 39: I2C1/I2C2                                        I2C (V1.2)
+Page 39: I2C1/I2C2                                        I2C (V1.2)
+Page 39: I2C1/I2C2                                          I2C (V1.2)
+Page 39: I2C2/I2C3                                          I2C (V1.2)
+Page 39: I2C2/I2C3/I2C4                                   I2C (V1.2)
+Page 39: I2C2/I2C3                                        I2C (V1.2)
+Page 40: I2C2                                               I2C (V2.0)
+Page 40: I2C3/I2C4                                          I2C (V2.0)
+Page 40: I2C1/I2C3                                          I2C (V2.0)
+Page 40: I2C1/I2C2/I2C3                                     I2C (V1.2)
+Page 40: I2C1/I2C2/I2C3                                     I2C (V1.1)
+Page 40: I2C1/I2C2/I2C3                                     I2C (V1.2)
+Page 40: I2C1/I2C2/I2C3                 (RevY)             I2C (V2.0)
+Page 41: I2C1/I2C2                                        I2C (V1.2)
+Page 42: I2C1/I2C2/I2C3                                   I2C (V1.2)
+Page 42: I2C1/I2C2/I2C3                                   I2C (V1.2)
+Page 42: I2C1/I2C2/I2C3                                   I2C (V1.2)
+Page 42: I2C1/I2C2/I2C3                 0xA3   0x1FFF6FFE I2C (V1.2)
+Page 42: L4                                   I2C/I2C2/I2C3                                    I2C (V1.2)
+Page 42: I2C1/I2C2/I2C3                                   I2C (V1.2)
+Page 42: I2C1/I2C2/I2C3                                   I2C (V1.2)
+Page 42: I2C1/I2C2/I2C3                                   I2C (V1.2)
+Page 42: I2C1/I2C2/I2C3                                   I2C (V1.2)
+Page 42: STM32U031xx                 I2C1/I2C2/I2C3                 0xB0   0x1FFF37FE I2C (V1.2)
+Page 42: I2C1/I2C2/I2C3                                   I2C (V1.2)
+Page 43: I2C1/I2C2/I2C3                                   I2C (V2.0)
+Page 43: I2C1/I2C2/I2C3                                   I2C (V1.2)
+Page 43: I2C1/I2C2/I2C3                                   I2C (V1.2)
+Page 43: I2C1/I2C2/I2C3                                   I2C (V1.2)
+Page 43: I2C1/I2C2/I2C3                                   I2C (V1.2)
+Page 43: STM32WB10xx/15xx             I2C1                           0xB1   0x1FFF6FFE I2C (V1.2)
+Page 43: I2C1/I2C3                                        I2C (V1.2)
+Page 43: STM32WBA5xxx                 I2C1/I2C3                              0x0BF8FEFE I2C (V1.2)
+Page 43: I2C1/I2C3                                         I2C (V2.0)
+Page 45: To use the I2C bootloader, connect the host (controller) and the desired I2Cx interface
+Page 45: Figure 3. I2C connection
+Page 45: I2C Host
+Page 57: The I2C1 configuration is:
+Page 57: – I2C speed: up to 1 MHz
+Page 57: I2C1                  Enabled         – Target mode
+Page 57: I2C1                                                      – Analog filter ON
+Page 57: I2C1_SCL pin                          PB6 pin: clock line is used in open-drain pull-up mode
+Page 57: I2C1_SDA pin                          PB7 pin: data line is used in open-drain pull-up mode
+Page 58: Configure I2Cx
+Page 58: I2Cx address
+Page 58: BL_I2C_Loop           BL_USART_Loop
+Page 58: for I2Cx              for USARTx
+Page 59: The I2C1 configuration is:
+Page 59: – I2C speed: up to 1 MHz
+Page 59: I2C1                  Enabled        – Target mode
+Page 59: I2C1                                                     – Target 7-bit address: 0b1100011x (x = 0 for write
+Page 59: I2C1_SCL pin
+Page 59: I2C1_SDA pin
+Page 60: Configure I2Cx
+Page 60: I2Cx address
+Page 60: BL_I2C_Loop            BL_USART_Loop
+Page 60: for I2Cx               for USARTx
+Page 62: The I2C1 configuration is:
+Page 62: – I2C speed: up to 400 kHz
+Page 62: I2C1                 Enabled         – Target mode
+Page 62: I2C1                                               – Analog filter ON
+Page 62: I2C1_SCL pin                         PB6 pin: clock line is used in open-drain pull-up mode.
+Page 62: I2C1_SDA pin                         PB7 pin: data line is used in open-drain pull-up mode.
+Page 62: The I2C2 configuration is:
+Page 62: – I2C speed: up to 400 kHz
+Page 62: I2C2                 Enabled         – Target mode
+Page 62: I2C2                                               – Analog filter ON
+Page 62: I2C2_SCL pin                         PB10 pin: clock line is used in open-drain pull-up mode.
+Page 62: I2C2_SDA pin                         PB11 pin: data line is used in open-drain pull-up mode.
+Page 64: Configure I2Cx
+Page 64: I2Cx address
+Page 64: BL_SPI_Loop         BL_I2C_Loop         BL_USART_Loop
+Page 64: no                             for SPIx            for I2Cx            for USARTx
+Page 66: The I2C1 configuration is:
+Page 66: – I2C speed: up to 1 MHz
+Page 66: I2C1                 Enabled          – Target mode
+Page 66: I2C1                                                 – Analog filter ON
+Page 66: I2C1_SCL pin                          PB6 pin: clock line is used in open-drain pull-up mode.
+Page 66: I2C1_SDA pin                          PB7 pin: data line is used in open-drain pull-up mode.
+Page 67: The I2C2 configuration is:
+Page 67: – I2C speed: up to 1 MHz
+Page 67: I2C2                 Enabled         – Target mode
+Page 67: I2C2                                               – Analog filter ON
+Page 67: I2C2_SCL pin                         PB10 pin: clock line is used in open-drain pull-up mode.
+Page 67: I2C2_SDA pin                         PB11 pin: data line is used in open-drain pull-up mode.
+Page 68: I2C address                 interrupt sources
+Page 68: IWDG, SysTick)                                               Yes                                 BL_I2C_Loop
+Page 68: for I2Cx
+Page 68: Configure I2Cx                                                        Execute DFU
+Page 71: The I2C1 configuration is:
+Page 71: – I2C speed: up to 400 kHz
+Page 71: I2C1                 Enabled         – Target mode
+Page 71: I2C1                                               – Analog filter ON
+Page 71: I2C1_SCL pin                         PB6 pin: clock line is used in open-drain pull-up mode.
+Page 71: I2C1_SDA pin                         PB7 pin: data line is used in open-drain pull-up mode.
+Page 71: The I2C2 configuration is:
+Page 71: – I2C speed: up to 400 kHz
+Page 71: I2C2                 Enabled         – Target mode
+Page 71: I2C2                                               – Analog filter ON
+Page 71: I2C2_SCL pin                         PB10 pin: clock line is used in open-drain pull-up mode.
+Page 71: I2C2_SDA pin                         PB11 pin: data line is used in open-drain pull-up mode.
+Page 73: I2C address
+Page 73: Yes   sources and other        BL_I2C_Loop for
+Page 73: interfaces clocks            I2Cx
+Page 73: Configure I2Cx      No
+Page 77: The I2C1 configuration is:
+Page 77: – I2C speed: up to 400 kHz
+Page 77: I2C1                  Enabled        – Target mode
+Page 77: I2C1                                                    – Analog filter ON
+Page 77: I2C1_SCL pin                         PB6 pin: clock line is used in open-drain no pull mode.
+Page 77: I2C1_SDA pin                         PB7 pin: data line is used in open-drain no pull mode.
+Page 78: Configure I2Cx
+Page 78: I2Cx Address                          interfaces clock’s
+Page 78: BL_I2C_Loop for        BL_USART_Loop
+Page 78: I2Cx                for USARTx
+Page 81: The I2C1configuration is:
+Page 81: – I2C speed: up to 400 kHz
+Page 81: I2C1                 Enabled         – Target mode
+Page 81: I2C1                                                 – Analog filter ON
+Page 81: I2C1_SCL pin         Input/output    PB6 pin: clock line is used in open-drain no pull mode.
+Page 81: I2C1_SDA pin         Input/output    PB7 pin: data line is used in open-drain no pull mode.
+Page 83: Configure I2Cx
+Page 83: I2Cx Address
+Page 83: no                                                              BL_I2C_Loop for              USARTx
+Page 83: I2Cx
+Page 85: The I2C1 configuration is:
+Page 85: – I2C speed: up to 400 kHz
+Page 85: I2C1                 Enabled
+Page 85: I2C1
+Page 85: I2C1_SCL pin                         PB6 pin: clock line is used in open-drain mode.
+Page 85: I2C1_SDA pin                         PB7 pin: data line is used in open-drain mode.
+Page 86: USART2, and I2C1 are functional and can be used to communicate with the bootloader
+Page 86: USART2, and I2C1 are functional.
+Page 87: Configure I2Cx
+Page 87: I2Cx Address
+Page 87: bootloader using USB       BL_I2C_Loop for          BL_USART_Loop
+Page 87: interrupts                I2Cx                  for USARTx
+Page 89: The I2C1 configuration is:
+Page 89: – I2C speed: up to 400 kHz
+Page 89: I2C1                  Enabled         – Target mode
+Page 89: I2C1                                                  – Analog filter ON
+Page 89: I2C1_SCL pin                          PB6 pin: clock line is used in open-drain no pull mode.
+Page 89: I2C1_SDA pin                          PB7 pin: data line is used in open-drain no pull mode.
+Page 90: USART2, and I2C1 are functional and can be used to communicate with the bootloader
+Page 90: USART2, and I2C1 are functional.
+Page 91: Configure I2Cx
+Page 91: I2Cx Address
+Page 91: bootloader using USB       BL_I2C_Loop for           BL_USART_Loop
+Page 91: interrupts                I2Cx                   for USARTx
+Page 93: The I2C1 configuration is:
+Page 93: – I2C speed: up to 400 kHz
+Page 93: I2C1                 Enabled
+Page 93: I2C1                                                – Target 7-bit address: 0b0111011x (x = 0 for write and x = 1
+Page 93: I2C1_SCL pin                        PB6 pin: clock line is used in open-drain pull-up mode.
+Page 93: I2C1_SDA pin                        PB7 pin: data line is used in open-drain pull-up mode.
+Page 95: Configure I2Cx
+Page 95: I2Cx Address
+Page 95: no                                                              BL_I2C_Loop for             USARTx
+Page 95: I2Cx
+Page 97: The I2C1 configuration is:
+Page 97: – I2C speed: up to 400 kHz
+Page 97: I2C1                 Enabled         – Target mode
+Page 97: I2C1                                            – Analog filter ON
+Page 97: I2C1_SCL pin                         PB6 pin: clock line is used in open-drain no pull mode.
+Page 97: I2C1_SDA pin                         PB7 pin: data line is used in open-drain no pull mode.
+Page 98: Configure I2Cx
+Page 98: I2Cx Address                           interfaces clock’s
+Page 98: BL_I2C_Loop for        BL_USART_Loop
+Page 98: I2Cx                for USARTx
+Page 128: The I2C1 configuration is:
+Page 128: I2C speed: up to 400 kHz, 7-bit address, Target mode,
+Page 128: I2C1                  Enabled
+Page 128: I2C1                                                 for write and x = 1 for read)
+Page 128: I2C1_SCL pin          Input/output   PB6 pin: clock line is used in open-drain no pull mode.
+Page 128: I2C1_SDA pin          Input/output   PB7 pin: data line is used in open-drain no pull mode.
+Page 129: Configure I2Cx
+Page 129: I2C Address
+Page 129: BL_I2C_Loop for
+Page 129: I2Cx
+Page 130: The I2C1 configuration is:
+Page 130: – I2C speed: up to 400 kHz
+Page 130: I2C1                  Enabled         – Target mode
+Page 130: I2C1                                                  – Analog filter ON
+Page 130: I2C1_SCL pin                          PB6 pin: clock line is used in open-drain no pull mode.
+Page 130: I2C1_SDA pin                          PB7 pin: data line is used in open-drain no pull mode.
+Page 131: The I2C3 configuration is:
+Page 131: – I2C speed: up to 400 kHz
+Page 131: I2C3                   Enabled          – Target mode
+Page 131: I2C3                                                   – Analog filter ON
+Page 131: I2C3_SCL pin                            PA8 pin: clock line is used in open-drain no pull mode.
+Page 131: I2C3_SDA pin                            PB5 pin: data line is used in open-drain no pull mode.
+Page 131: Configure I2Cx
+Page 131: I2C Address
+Page 131: BL_I2C_Loop for
+Page 131: I2Cx
+Page 133: The I2C1 configuration is:
+Page 133: – I2C speed: up to 400 kHz
+Page 133: I2C1                  Enabled           – Target mode
+Page 133: I2C1                                                     – Analog filter ON
+Page 133: I2C1_SCL pin                            PB6 pin: clock line is used in open-drain no pull mode.
+Page 133: I2C1_SDA pin                            PB7 pin: data line is used in open-drain no pull mode.
+Page 134: Configure I2Cx
+Page 134: I2C Address
+Page 134: BL_I2C_Loop for
+Page 134: I2Cx
+Page 139: The I2C1 configuration is:
+Page 139: – I2C speed: up to 400 kHz
+Page 139: I2C1                  Enabled           – Target mode
+Page 139: I2C1                                                     – Analog filter ON
+Page 139: I2C1_SCL pin                            PB6 pin: clock line is used in open-drain no pull mode.
+Page 139: I2C1_SDA pin                            PB7 pin: data line is used in open-drain no pull mode.
+Page 140: Configure I2Cx
+Page 140: I2C Address
+Page 140: BL_I2C_Loop for
+Page 140: I2Cx
+Page 141: The I2C1 configuration is:
+Page 141: – I2C speed: up to 400 kHz
+Page 141: I2C1                 Enabled         – Target mode
+Page 141: I2C1                                                 – Analog filter ON
+Page 141: I2C1_SCL pin                         PB6 pin: clock line is used in open-drain no pull mode.
+Page 141: I2C1_SDA pin                         PB7 pin: data line is used in open-drain no pull mode.
+Page 142: The I2C3 configuration is:
+Page 142: – I2C speed: up to 400 kHz
+Page 142: I2C3                    Enabled
+Page 142: I2C3
+Page 142: I2C3_SCL pin                            PA8 pin: clock line is used in open-drain no pull mode.
+Page 142: I2C3_SDA pin                            PB5 pin: data line is used in open-drain no pull mode.
+Page 142: Configure I2Cx
+Page 142: I2Cx Address
+Page 142: Execute BL_I2C_Loop
+Page 142: for I2Cx
+Page 148: HSI enabled     phase) and when USART or SPI or I2C interfaces are
+Page 149: The I2C1 configuration is:
+Page 149: – I2C speed: up to 400 kHz
+Page 149: I2C1                 Enabled         – Target mode
+Page 149: I2C1                                                – Analog filter ON
+Page 149: I2C1_SCL pin                         PB6 pin: clock line is used in open-drain no pull mode.
+Page 149: I2C1_SDA pin                         PB7 pin: data line is used in open-drain no pull mode.
+Page 149: The I2C2 configuration is:
+Page 149: – I2C speed: up to 400 kHz
+Page 149: I2C2                 Enabled         – Target mode
+Page 149: I2C2                                                – Analog filter ON
+Page 149: I2C2_SCL pin                         PF1 pin: clock line is used in open-drain no pull mode.
+Page 149: I2C2_SDA pin                         PF0 pin: data line is used in open-drain no pull mode.
+Page 149: The I2C3 configuration is:
+Page 149: – I2C speed: up to 400 kHz
+Page 149: I2C3                 Enabled         – Target mode
+Page 149: I2C3                                                – Analog filter ON
+Page 149: I2C3_SCL pin                         PA8 pin: clock line is used in open-drain no pull mode.
+Page 149: I2C3_SDA pin                         PC9 pin: data line is used in open-drain no pull mode.
+Page 150: The system clock is derived from the embedded internal high-speed RC for USARTx, I2Cx,
+Page 151: Configure I2Cx                                        Disable all
+Page 151: I2Cx Address              BL_I2C_Loop for          bootloader using
+Page 151: Detected                     I2Cx                 USB interrupts
+Page 152: supports I2C1, I2C2, I2C3, SPI1         – For the CAN interface, the Write Unprotect command is not
+Page 153: HSI enabled     phase) and when USART or SPI or I2C interface is selected
+Page 154: The I2C1 configuration is:
+Page 154: – I2C speed: up to 400 kHz
+Page 154: I2C1                  Enabled        – Target mode
+Page 154: I2C1                                                 – Analog filter ON
+Page 154: I2C1_SCL pin                         PB6 pin: clock line is used in open-drain no pull mode.
+Page 154: I2C1_SDA pin                         PB7 pin: data line is used in open-drain no pull mode.
+Page 154: The I2C2 configuration is:
+Page 154: – I2C speed: up to 400 kHz
+Page 154: I2C2                  Enabled        – Target mode
+Page 154: I2C2                                                 – Analog filter ON
+Page 154: I2C2_SCL pin                         PB10 pin: clock line is used in open-drain no pull mode.
+Page 154: I2C2_SDA pin                         PB3 pin: data line is used in open-drain no pull mode.
+Page 154: The I2C3 configuration is:
+Page 154: – I2C speed: up to 400 kHz
+Page 154: I2C3                  Enabled        – Target mode
+Page 154: I2C3                                                 – Analog filter ON
+Page 154: I2C3_SCL pin                         PA8 pin: clock line is used in open-drain no pull mode.
+Page 154: I2C3_SDA pin                         PB4 pin: data line is used in open-drain no pull mode.
+Page 155: The system clock is derived from the embedded internal high-speed RC for USARTx, I2Cx,
+Page 156: Configure I2Cx
+Page 156: I2Cx Address                                          USB clock to 48 MHz
+Page 156: Detected                    BL_I2C_Loop for
+Page 156: no                                               I2Cx
+Page 158: HSI enabled      phase) and when USART or SPI or I2C interface is
+Page 159: The I2C1 configuration is:
+Page 159: – I2C speed: up to 400 kHz
+Page 159: I2C1                  Enabled        – Target mode
+Page 159: I2C1                                               – Analog filter ON
+Page 159: I2C1_SCL pin                         PB6 pin: clock line is used in open-drain no pull mode.
+Page 159: I2C1_SDA pin                         PB7 pin: data line is used in open-drain no pull mode.
+Page 159: The I2C2 configuration is:
+Page 159: – I2C speed: up to 400 kHz
+Page 159: I2C2                  Enabled        – Target mode
+Page 159: I2C2                                               – Analog filter ON
+Page 159: I2C2_SCL pin                         PB10 pin: clock line is used in open-drain no pull mode.
+Page 159: I2C2_SDA pin                         PB3 pin: data line is used in open-drain no pull mode.
+Page 159: The I2C3 configuration is:
+Page 159: – I2C speed: up to 400 kHz
+Page 159: I2C3                  Enabled        – Target mode
+Page 159: I2C3                                               – Analog filter ON
+Page 159: I2C3_SCL pin                         PA8 pin: clock line is used in open-drain no pull mode.
+Page 159: I2C3_SDA pin                         PB4 pin: data line is used in open-drain no pull mode.
+Page 160: The system clock is derived from the embedded internal high-speed RC for USARTx, I2Cx,
+Page 161: Configure I2Cx
+Page 161: I2Cx Address                                          USB clock to 48 MHz
+Page 161: Detected                    BL_I2C_Loop for
+Page 161: no                                              I2Cx
+Page 163: RCC                  HSI enabled configured to 60 MHz and for USART and I2C bootloader
+Page 164: The I2C1 configuration is:
+Page 164: – I2C speed: up to 400 kHz
+Page 164: I2C1                 Enabled        – Target mode
+Page 164: I2C1                                               – Analog filter ON
+Page 164: I2C1_SCL pin                        PB6 pin: clock line is used in open-drain no pull mode.
+Page 164: I2C1_SDA pin                        PB7 pin: data line is used in open-drain no pull mode.
+Page 164: The I2C2 configuration is:
+Page 164: – I2C speed: up to 400 kHz
+Page 164: I2C2                 Enabled        – Target mode
+Page 164: I2C2                                               – Analog filter ON
+Page 164: I2C2_SCL pin                        PB10 pin: clock line is used in open-drain no pull mode.
+Page 164: I2C2_SDA pin                        PB11 pin: data line is used in open-drain no pull mode.
+Page 164: The I2C4 configuration is:
+Page 164: – I2C speed: up to 400 kHz
+Page 164: I2C4                 Enabled        – Target mode
+Page 164: I2C4                                               PB15 pin: clock line is used in open-drain no pull mode for
+Page 164: I2C4_SCL pin         Input/output
+Page 164: I2C4_SDA pin         Input/output
+Page 166: Configure I2Cx
+Page 166: I2Cx Address
+Page 166: BL_SPI_Loop for     BL_I2C_Loop for      BL_USART_Loop
+Page 166: SPIx                 I2Cx              for USARTx
+Page 167: Support I2C4 and SPI1 for     bootloader resets AHB1ENR value to 0x0000 0000
+Page 168: HSI enabled    phase) and when USART or SPI or I2C interface is selected
+Page 169: The I2C1 configuration is:
+Page 169: – I2C speed: up to 400 kHz
+Page 169: I2C1                Enabled         – Target mode
+Page 169: I2C1                                            – Analog filter ON
+Page 169: I2C1_SCL pin                        PB6 pin: clock line is used in open-drain no pull mode.
+Page 169: I2C1_SDA pin                        PB7 pin: data line is used in open-drain no pull mode.
+Page 169: The I2C2 configuration is:
+Page 169: – I2C speed: up to 400 kHz
+Page 169: I2C2                Enabled         – Target mode
+Page 169: I2C2                                            – Analog filter ON
+Page 169: I2C2_SCL pin                        PB10 pin: clock line is used in open-drain no pull mode.
+Page 169: I2C2_SDA pin                        PB3 pin: data line is used in open-drain no pull mode.
+Page 169: The I2C3 configuration is:
+Page 169: – I2C speed: up to 400 kHz
+Page 169: I2C3                Enabled         – Target mode
+Page 169: I2C3                                            – Analog filter ON
+Page 169: I2C3_SCL pin                        PA8 pin: clock line is used in open-drain no pull mode.
+Page 169: I2C3_SDA pin                        PB4 pin: data line is used in open-drain no pull mode.
+Page 170: The system clock is derived from the embedded internal high-speed RC for USARTx, I2Cx
+Page 170: I2Cx, and SPIx bootloaders. This internal clock is also used for DFU (USB FS device), but
+Page 171: Configure I2Cx
+Page 171: I2Cx Address                                          USB clock to 48 MHz
+Page 171: Detected                    BL_I2C_Loop for
+Page 171: no                                             I2Cx
+Page 173: HSI enabled    configured to 60 MHz and for USART and I2C bootloader
+Page 174: The I2C1 configuration is:
+Page 174: – I2C speed: up to 400 kHz
+Page 174: I2C1                 Enabled        – Target mode
+Page 174: I2C1                                              – Analog filter ON
+Page 174: I2C1_SCL pin                        PB6 pin: clock line is used in open-drain no pull mode.
+Page 174: I2C1_SDA pin                        PB7 pin: data line is used in open-drain no pull mode.
+Page 174: The I2C2 configuration is:
+Page 174: – I2C speed: up to 400 kHz
+Page 174: I2C2                 Enabled        – Target mode
+Page 174: I2C2                                              – Analog filter ON
+Page 174: I2C2_SCL pin                        PF1 pin: clock line is used in open-drain no pull mode.
+Page 174: I2C2_SDA pin                        PF0 pin: data line is used in open-drain no pull mode.
+Page 175: The I2C3 configuration is:
+Page 175: – I2C speed: up to 400 kHz
+Page 175: I2C3                 Enabled        – Target mode
+Page 175: I2C3                                              – Analog filter ON
+Page 175: I2C3_SCL pin                        PA8 pin: clock line is used in open-drain no pull mode.
+Page 175: I2C3_SDA pin                        PB4 pin: data line is used in open-drain no pull mode.
+Page 175: The I2C4 configuration is:
+Page 175: – I2C speed: up to 1 MHz
+Page 175: I2C4                 Enabled        – Target mode
+Page 175: I2C4                                              – Analog filter ON
+Page 175: I2C4_SCL pin                        PB15 pin: clock line is used in open-drain no pull mode.
+Page 175: I2C4_SDA pin                        PB14 pin: data line is used in open-drain no pull mode.
+Page 176: I2Cx bootloaders. This internal clock is also used for CAN and DFU (USB FS device), but
+Page 177: Configure I2Cx
+Page 177: BL_SPI_Loop                    BL_I2C_Loop            BL_USART_Loop
+Page 177: for SPIx                       for I2Cx               for USARTx
+Page 177: I2Cx Address
+Page 179: HSI enabled       clock configured to 60 MHz and for USART and I2C
+Page 180: The I2C1 configuration is:
+Page 180: I2C speed: up to 400 kHz, 7-bit address, Target mode,
+Page 180: I2C1                  Enabled        Analog filter ON
+Page 180: I2C1                                                 Target 7-bit address: 0b1001011x (x = 0 for write and x =
+Page 180: I2C1_SCL pin          Input/output   PB6 pin: clock line is used in open-drain no pull mode.
+Page 180: I2C1_SDA pin          Input/output   PB7 pin: data line is used in open-drain no pull mode.
+Page 180: The I2C2 configuration is:
+Page 180: I2C speed: up to 400 kHz, 7-bit address, Target mode,
+Page 180: I2C2                  Enabled        Analog filter ON
+Page 180: I2C2                                                 Target 7-bit address: 0b1001011x (x = 0 for write and x =
+Page 180: I2C2_SCL pin          Input/output   PF1 pin: clock line is used in open-drain no pull mode.
+Page 180: I2C2_SDA pin          Input/output   PF0 pin: data line is used in open-drain no pull mode.
+Page 180: The I2C3 configuration is:
+Page 180: I2C speed: up to 400 kHz, 7-bit address, Target mode,
+Page 180: I2C3                  Enabled        Analog filter ON
+Page 180: I2C3                                                 Target 7-bit address: 0b1001011x (x = 0 for write and x =
+Page 180: I2C3_SCL pin          Input/output   PA8 pin: clock line is used in open-drain no pull mode.
+Page 180: I2C3_SDA pin          Input/output   PB4 pin: data line is used in open-drain no pull mode.
+Page 181: The I2C4 configuration is:
+Page 181: I2C speed: up to 1 MHz, 7-bit address, Target mode,
+Page 181: I2C4                  Enabled        Analog filter ON
+Page 181: I2C4                                                 Target 7-bit address: 0b1001011x (x = 0 for write and x =
+Page 181: I2C4_SCL pin          Input/output   PB15 pin: clock line is used in open-drain no pull mode.
+Page 181: I2C4_SDA pin          Input/output   PB14 pin: data line is used in open-drain no pull mode.
+Page 182: I2Cx bootloaders. This internal clock is also used for CAN and DFU (USB FS device), but
+Page 183: Configure I2Cx
+Page 183: BL_SPI_Loop                    BL_I2C_Loop          BL_USART_Loop
+Page 183: for SPIx                       for I2Cx             for USARTx
+Page 183: I2C Address
+Page 185: or I2C interfaces are selected (once CAN or
+Page 186: The I2C1 configuration is:
+Page 186: I2C speed: up to 400 kHz, 7-bit address, Slave
+Page 186: I2C1                  Enabled
+Page 186: I2C1
+Page 186: I2C1_SCL pin          Input/output
+Page 186: I2C1_SDA pin          Input/output
+Page 187: I2Cx bootloaders. This internal clock is also used for CAN and DFU (USB FS device), but
+Page 189: Configure I2Cx                         USARTx
+Page 189: BL_I2C_Loop for
+Page 189: I2Cx
+Page 189: I2C Address
+Page 191: detection phase) and when USART or SPI or I2C
+Page 192: The I2C1 configuration is:
+Page 192: I2C speed: up to 400 kHz, 7-bit address, Target
+Page 192: I2C1                  Enabled
+Page 192: I2C1                                                   0b0111000x (x = 0 for write and x = 1 for read).
+Page 192: I2C1_SCL pin          Input/output   PB6 pin: clock line is used in open-drain mode.
+Page 192: I2C1_SDA pin          Input/output   PB9 pin: data line is used in open-drain mode.
+Page 192: The I2C2 configuration is:
+Page 192: I2C speed: up to 400 kHz, 7-bit address, Target
+Page 192: I2C2                  Enabled
+Page 192: I2C2                                                   0b0111000x (x = 0 for write and x = 1 for read).
+Page 192: I2C2_SCL pin          Input/output   PF1 pin: clock line is used in open-drain mode.
+Page 192: I2C2_SDA pin          Input/output   PF0 pin: data line is used in open-drain mode.
+Page 192: The I2C3 configuration is:
+Page 192: I2C speed: up to 400 kHz, 7-bit address, Target
+Page 192: I2C3                  Enabled
+Page 192: I2C3                                                   0b0111000x (x = 0 for write and x = 1 for read).
+Page 192: I2C3_SCL pin          Input/output   PA8 pin: clock line is used in open-drain mode.
+Page 192: I2C3_SDA pin          Input/output   PC9 pin: data line is used in open-drain mode.
+Page 194: The system clock is derived from the embedded internal high-speed RC for USARTx, I2Cx
+Page 194: I2Cx, and SPIx bootloaders. This internal clock is also used for CAN and DFU (USB FS
+Page 196: Configure I2Cx
+Page 196: BL_I2C_Loop for
+Page 196: I2Cx
+Page 196: I2C Address
+Page 197: supports I2C2, I2C3, SPI1, SPI2,
+Page 197: I2C No-stretch commands (I2C           For the USB DFU interface, in Dual Bank mode, the
+Page 197: USART, CAN, I2C and SPI). The          the bootloader resets AHB1ENR value to 0x0000
+Page 198: for USART, I2C and SPI bootloader
+Page 199: The I2C1 configuration is:
+Page 199: I2C speed: up to 400 kHz, 7-bit address,
+Page 199: I2C1                  Enabled          Target mode, Analog filter ON
+Page 199: I2C1                                                        (x = 0 for write and x = 1 for read)
+Page 199: I2C1_SCL pin          Input/output
+Page 199: I2C1_SDA pin          Input/output
+Page 200: The I2C2 configuration is:
+Page 200: I2C speed: up to 400 kHz, 7-bit address,
+Page 200: I2C2                  Enabled          Target mode, Analog filter ON
+Page 200: I2C2                                                        (x = 0 for write and x = 1 for read)
+Page 200: I2C2_SCL pin          Input/output
+Page 200: I2C2_SDA pin          Input/output
+Page 200: The I2C3 configuration is:
+Page 200: I2C speed: up to 400 kHz, 7-bit address,
+Page 200: I2C3                  Enabled          Target mode, Analog filter ON
+Page 200: I2C3                                                        (x = 0 for write and x = 1 for read)
+Page 200: I2C3_SCL pin          Input/output
+Page 200: I2C3_SDA pin          Input/output
+Page 201: I2Cx bootloaders. This internal clock is also used for CAN and DFU (USB FS device), but
+Page 202: Configure I2Cx          yes
+Page 202: I2C address           yes             Disable all
+Page 202: BL_I2C_Loop for
+Page 202: I2Cx
+Page 202: yes                                         BL_I2C_Loop for
+Page 204: USART or SPI or I2C interfaces are
+Page 205: The I2C1 configuration is:
+Page 205: – I2C speed: up to 400 kHz
+Page 205: I2C1                  Enabled          – Target mode
+Page 205: I2C1                                                        – Target 7-bit address: 0b1000100x (x = 0
+Page 205: I2C1_SCL pin          Input/output
+Page 205: I2C1_SDA pin          Input/output
+Page 206: The I2C2 configuration is:
+Page 206: I2C speed: up to 400 kHz, 7-bit address,
+Page 206: I2C2                  Enabled          Target mode, Analog filter ON Target 7-bit
+Page 206: I2C2
+Page 206: I2C2_SCL pin          Input/output
+Page 206: I2C2_SDA pin          Input/output
+Page 206: The I2C3 configuration is:
+Page 206: I2C speed: up to 400 kHz, 7-bit address,
+Page 206: I2C3                  Enabled          Target mode, Analog filter ON Target 7-bit
+Page 206: I2C3
+Page 206: I2C3_SCL pin          Input/output
+Page 206: I2C3_SDA pin          Input/output
+Page 207: I2Cx bootloaders. This internal clock is also used for CAN and DFU (USB FS device), but
+Page 209: Configure I2Cx                                                                       Configure USARTx
+Page 209: BL_SPI_Loop for          BL_I2C_Loop for        BL_USART_Loop
+Page 209: SPIx                      I2Cx                for USARTx
+Page 209: I2C Address
+Page 211: 60 MHz and for USART and I2C
+Page 212: The I2C1 configuration is:
+Page 212: I2C speed: up to 400 kHz, 7-bit
+Page 212: I2C1                   Enabled              address, Target mode, Analog filter ON
+Page 212: I2C1                                                         0 for write and x = 1 for read)
+Page 212: I2C1_SCL pin           Input/output
+Page 212: I2C1_SDA pin           Input/output
+Page 213: The I2C2 configuration is:
+Page 213: I2C speed: up to 400 kHz, 7-bit
+Page 213: I2C2                   Enabled              address, Target mode, Analog filter ON
+Page 213: I2C2                                                         0 for write and x = 1 for read)
+Page 213: I2C2_SCL pin           Input/output
+Page 213: I2C2_SDA pin           Input/output
+Page 213: The I2C3 configuration is:
+Page 213: I2C speed: up to 400 kHz, 7-bit
+Page 213: I2C3                   Enabled              address, Target mode, Analog filter ON
+Page 213: I2C3                                                         0 for write and x = 1 for read)
+Page 213: I2C3_SCL pin           Input/output
+Page 213: I2C3_SDA pin           Input/output
+Page 214: I2Cx bootloaders. This internal clock is also used for CAN and DFU (USB FS device), but
+Page 217: •    V7.x supporting USART1, USART3, CAN2, I2C1, I2C2, I2C3, and DFU (USB FS
+Page 217: •    V9.x supporting USART1, USART3, CAN2, I2C1, I2C2, I2C3, SPI1, SPI2, SPI4, and
+Page 217: HSI enabled    clock configured to 60 MHz and for USART and I2C
+Page 218: The I2C1 configuration is:
+Page 218: – I2C speed: up to 400 kHz
+Page 218: I2C1                 Enabled
+Page 218: I2C1
+Page 218: I2C1_SCL pin         Input/output   PB6 pin: clock line is used in open-drain no pull mode.
+Page 218: I2C1_SDA pin         Input/output   PB9 pin: data line is used in open-drain no pull mode.
+Page 218: The I2C2 configuration is:
+Page 218: – I2C speed: up to 400 kHz
+Page 218: I2C2                 Enabled
+Page 218: I2C2
+Page 218: I2C2_SCL pin         Input/output   PF1 pin: clock line is used in open-drain no pull mode.
+Page 218: I2C2_SDA pin         Input/output   PF0 pin: data line is used in open-drain no pull mode.
+Page 219: The I2C3 configuration is:
+Page 219: – I2C speed: up to 400 kHz
+Page 219: I2C3                  Enabled
+Page 219: I2C3
+Page 219: I2C3_SCL pin          Input/output   PA8 pin: clock line is used in open-drain no pull mode.
+Page 219: I2C3_SDA pin          Input/output   PC9 pin: data line is used in open-drain no pull mode.
+Page 219: I2Cx bootloaders. This internal clock is also used for CAN and DFU (USB FS device), but
+Page 220: Configure I2Cx
+Page 220: BL_I2C_Loop               BL_USART_Loop
+Page 220: 0x7F received on                                for I2Cx                  for USARTx
+Page 220: I2C Address
+Page 221: HSI enabled      clock configured to 60 MHz and for USART, I2C and SPI
+Page 222: The I2C1 configuration is:
+Page 222: – I2C speed: up to 400 kHz
+Page 222: I2C1                 Enabled        – Target mode
+Page 222: I2C1                                                – Analog filter ON
+Page 222: I2C1_SCL pin         Input/output   PB6 pin: clock line is used in open-drain no pull mode.
+Page 222: I2C1_SDA pin         Input/output   PB9 pin: data line is used in open-drain no pull mode.
+Page 222: The I2C2 configuration is:
+Page 222: – I2C speed: up to 400 kHz
+Page 222: I2C2                 Enabled        – Target mode
+Page 222: I2C2                                                – Analog filter ON
+Page 222: I2C2_SCL pin         Input/output   PF1 pin: clock line is used in open-drain no pull mode.
+Page 222: I2C2_SDA pin         Input/output   PF0 pin: data line is used in open-drain no pull mode.
+Page 223: The I2C3 configuration is:
+Page 223: – I2C speed: up to 400 kHz
+Page 223: I2C3                 Enabled        – Target mode
+Page 223: I2C3                                                – Analog filter ON
+Page 223: I2C3_SCL pin         Input/output   PA8 pin: clock line is used in open-drain no pull mode.
+Page 223: I2C3_SDA pin         Input/output   PC9 pin: data line is used in open-drain no pull mode.
+Page 224: The system clock is derived from the embedded internal high-speed RC for USARTx, I2Cx
+Page 224: I2Cx, and SPIx bootloaders. This internal clock is also used for CAN and DFU (USB FS
+Page 225: Configure I2Cx
+Page 225: BL_SPI_Loop                   BL_I2C_Loop          BL_USART_Loop
+Page 225: for SPIx                      for I2Cx             for USARTx
+Page 225: I2C Address
+Page 227: HSI enabled configured to 60 MHz and for USART and I2C bootloader
+Page 228: The I2C1 configuration is:
+Page 228: I2C speed: up to 400 kHz, 7-bit address, Target mode, Analog
+Page 228: I2C1                 Enabled       filter ON
+Page 228: I2C1                                             Target 7-bit address: 0b1001001x (x = 0 for write and x = 1 for
+Page 228: I2C1_SCL pin         Input/output PB6 pin: clock line is used in open-drain no pull mode.
+Page 228: I2C1_SDA pin         Input/output PB9 pin: data line is used in open-drain no pull mode.
+Page 228: The I2C2 configuration is:
+Page 228: I2C speed: up to 400 kHz, 7-bit address, Target mode, Analog
+Page 228: I2C2                 Enabled       filter ON
+Page 228: I2C2                                             Target 7-bit address: 0b1001001x (x = 0 for write and x = 1 for
+Page 228: I2C2_SCL pin         Input/output PF1 pin: clock line is used in open-drain no pull mode.
+Page 228: I2C2_SDA pin         Input/output PF0 pin: data line is used in open-drain no pull mode.
+Page 228: The I2C3 configuration is:
+Page 228: I2C speed: up to 400 kHz, 7-bit address, Target mode, Analog
+Page 228: I2C3                 Enabled       filter ON
+Page 228: I2C3                                             Target 7-bit address: 0b1001001x (x = 0 for write and x = 1 for
+Page 228: I2C3_SCL pin         Input/output PA8 pin: clock line is used in open-drain no pull mode.
+Page 228: I2C3_SDA pin         Input/output PC9 pin: data line is used in open-drain no pull mode.
+Page 230: I2Cx bootloaders. This internal clock is also used for CAN and DFU (USB FS device), but
+Page 232: Configure I2Cx
+Page 232: BL_SPI_Loop                 BL_I2C_Loop          BL_USART_Loop
+Page 232: for SPIx                    for I2Cx             for USARTx
+Page 232: I2C Address
+Page 234: The I2C1 configuration is:
+Page 234: I2C speed: up to 1 MHz, 7-bit address, Target mode,
+Page 234: I2C1                  Enabled        Analog filter ON
+Page 234: I2C1                                                    (x = 0 for write and x = 1 for read)
+Page 234: I2C1_SCL pin          Input/output
+Page 234: I2C1_SDA pin          Input/output
+Page 235: The I2C2 configuration is:
+Page 235: I2C speed: up to 1 MHz, 7-bit address, Target mode,
+Page 235: I2C2                      Enabled        Analog filter ON
+Page 235: I2C2                                                       and x = 1 for read)
+Page 235: I2C2_SCL pin              Input/output
+Page 235: I2C2_SDA pin              Input/output
+Page 235: Configure I2Cx
+Page 235: I2Cx address
+Page 235: BL_I2C_Loop             autobaudrate
+Page 235: for I2Cx                USARTx
+Page 238: The I2C1 configuration is:
+Page 238: – I2C speed: up to 1 MHz
+Page 238: I2C1                  Enabled        – Target mode
+Page 238: I2C1                                                    – Target 7-bit address: 0b1010001x (x = 0 for write
+Page 238: I2C1_SCL pin          Input/output
+Page 238: I2C1_SDA pin          Input/output
+Page 238: The I2C2 configuration is:
+Page 238: – I2C speed: up to 1 MHz
+Page 238: I2C2                  Enabled        – Target mode
+Page 238: I2C2                                                    – Target 7-bit address: 0b1010001x (x = 0 for write
+Page 238: I2C2_SCL pin          Input/output
+Page 238: I2C2_SDA pin          Input/output
+Page 240: Configure I2Cx
+Page 240: I2C address                                                                                  Configure non
+Page 240: no                                                          BL_SPI_Loop               BL_I2C_Loop         BL_USART_Loop
+Page 240: for SPIx                  for I2Cx            for USARTx
+Page 241: – I2C stretches the line on the connection causing
+Page 241: Behavior: When connection to I2C is requested
+Page 241: (host sends I2C address to the bootloader), the
+Page 241: I2C HW detects the request ,but the BL SW is
+Page 241: I2C line stretching. Some HW hosts that do not
+Page 244: The I2C1 configuration is:
+Page 244: I2C speed: up to 1 MHz, 7-bit address, Target mode,
+Page 244: I2C1                  Enabled        Analog filter ON
+Page 244: I2C1                                                     (x = 0 for write and x = 1 for read)
+Page 244: I2C1_SCL pin          Input/output
+Page 244: I2C1_SDA pin          Input/output
+Page 244: The I2C2 configuration is:
+Page 244: I2C speed: up to 1 MHz, 7-bit address, Target mode,
+Page 244: I2C2                  Enabled        Analog filter ON
+Page 244: I2C2                                                     (x = 0 for write and x = 1 for read)
+Page 244: I2C2_SCL pin          Input/output
+Page 244: I2C2_SDA pin          Input/output
+Page 246: Configure I2Cx
+Page 246: interfaces clocks               BL_I2C_Loop for       BL_USART_Loop
+Page 246: I2Cx address                                                              I2Cx               for USARTx
+Page 249: The I2C1 configuration is:
+Page 249: – I2C speed: up to 1 MHz, 7-bit address, Target mode,
+Page 249: I2C1                  Enabled        Analog filter ON
+Page 249: I2C1                                               – Target 7-bit address: 0b1011101x (x = 0 for write and
+Page 249: I2C1_SCL pin          Input/output PB6 pin: clock line is used in open-drain pull-up mode.
+Page 249: I2C1_SDA pin          Input/output PB7 pin: data line is used in open-drain pull-up mode.
+Page 249: The I2C2 configuration is:
+Page 249: – I2C speed: up to 1 MHz, 7-bit address, Target mode,
+Page 249: I2C2                  Enabled        Analog filter ON
+Page 249: I2C2                                               – Target 7-bit address: 0b1011101x (x = 0 for write and
+Page 249: I2C2_SCL pin          Input/output PB10 pin: clock line is used in open-drain pull-up mode.
+Page 249: I2C2_SDA pin          Input/output PB11 pin: data line is used in open-drain pull-up mode.
+Page 251: Configure I2Cx
+Page 251: 0x7F received                          BL_SPI_Loop                 BL_I2C_Loop          BL_USART_Loop
+Page 251: on USARTx        yes                    for SPIx                    for I2Cx             for USARTx
+Page 251: I2C address
+Page 254: The I2C1 configuration is:
+Page 254: – I2C speed: up to 1 MHz
+Page 254: I2C1                  Enabled        – Target mode
+Page 254: I2C1                                                – Analog filter ON
+Page 254: I2C1_SCL pin                         PB6 pin: clock line is used in open-drain pull-up mode.
+Page 254: I2C1_SDA pin                         PB7 pin: data line is used in open-drain pull-up mode.
+Page 254: The I2C2 configuration is:
+Page 254: – I2C speed: up to 1 MHz
+Page 254: I2C2                  Enabled        – Target mode
+Page 254: I2C2                                                – Analog filter ON
+Page 254: I2C2_SCL pin                         PB10 pin: clock line is used in open-drain pull-up mode.
+Page 254: I2C2_SDA pin                         PB11 pin: data line is used in open-drain pull-up mode.
+Page 255: Configure I2Cx
+Page 255: no         I2Cx address                           sources and other
+Page 255: BL_I2C_Loop for          autobaudrate
+Page 255: I2Cx                  USARTx
+Page 258: The I2C2 configuration is:
+Page 258: – I2C speed: up to 1 MHz
+Page 258: I2C2                  Enabled        – Target mode
+Page 258: I2C2                                                – Analog filter ON
+Page 258: I2C2_SCL pin                         PC4 pin: clock line is used in open-drain pull-up mode.
+Page 258: I2C2_SDA pin                         PA8 pin: data line is used in open-drain pull-up mode.
+Page 258: The I2C3 configuration is:
+Page 258: – I2C speed: up to 1 MHz
+Page 258: I2C3                  Enabled        – Target mode
+Page 258: I2C3                                                – Analog filter ON
+Page 258: I2C3_SCL pin                         PC8 pin: clock line is used in open-drain pull-up mode.
+Page 258: I2C3_SDA pin                         PC9 pin: data line is used in open-drain pull-up mode.
+Page 260: Configure I2Cx
+Page 260: BL_SPI_Loop               BL_I2C_Loop          BL_USART_Loop
+Page 260: for SPIx                  for I2Cx             for USARTx
+Page 260: I2C address
+Page 263: The I2C2 configuration is:
+Page 263: I2C speed: up to 1 MHz, 7-bit address, Target mode,
+Page 263: I2C2                  Enabled        Analog filter ON
+Page 263: I2C2                                                 (x = 0 for write and x = 1 for read)
+Page 263: I2C2_SCL pin          Input/output
+Page 263: I2C2_SDA pin          Input/output
+Page 263: The I2C3 configuration is:
+Page 263: I2C speed: up to 1 MHz, 7-bit address, Target mode,
+Page 263: I2C3                  Enabled        Analog filter ON
+Page 263: I2C3                                                 (x = 0 for write and x = 1 for read)
+Page 263: I2C3_SCL pin          Input/output
+Page 263: I2C3_SDA pin          Input/output
+Page 263: The I2C4 configuration is:
+Page 263: I2C speed: up to 1 MHz, 7-bit address, Target mode,
+Page 263: I2C4                  Enabled        Analog filter ON
+Page 263: I2C4                                                 (x = 0 for write and x = 1 for read)
+Page 263: I2C4_SCL pin          Input/output
+Page 263: I2C4_SDA pin          Input/output
+Page 265: Configure I2Cx
+Page 265: BL_SPI_Loop               BL_I2C_Loop          BL_USART_Loop
+Page 265: for SPIx                  for I2Cx             for USARTx
+Page 265: I2C address
+Page 269: The I2C2 configuration is:
+Page 269: I2C speed: up to 1 MHz, 7-bit address, Target mode,
+Page 269: I2C2                  Enabled        Analog filter ON
+Page 269: I2C2                                                 (x = 0 for write and x = 1 for read)
+Page 269: I2C2_SCL pin          Input/output
+Page 269: I2C2_SDA pin          Input/output
+Page 269: The I2C3 configuration is:
+Page 269: I2C speed: up to 1 MHz, 7-bit address, Target mode,
+Page 269: I2C3                  Enabled        Analog filter ON
+Page 269: I2C3                                                 (x = 0 for write and x = 1 for read)
+Page 269: I2C3_SCL pin          Input/output
+Page 269: I2C3_SDA pin          Input/output
+Page 271: Configure I2Cx
+Page 271: BL_SPI_Loop               BL_I2C_Loop          BL_USART_Loop
+Page 271: for SPIx                  for I2Cx             for USARTx
+Page 271: I2C address
+Page 274: The I2C1 configuration is:
+Page 274: – I2C speed: up to 1 MHz, 7-bit address, Target
+Page 274: I2C2                  Enabled          mode, Analog filter ON
+Page 274: I2C2                                                       and x = 1 for read
+Page 274: I2C2_SCL pin          Input/output
+Page 274: I2C2_SDA pin          Input/output
+Page 276: Special commands supported (USART/I2C/SPI/FDCAN/I3C)
+Page 277: Configure USB FS                     I2C address          interrupt sources
+Page 277: Yes                            BL_I2C_Loop
+Page 277: for I2Cx
+Page 277: Configure I2Cx
+Page 280: The I2C3 configuration is:
+Page 280: – I2C speed: up to 1 MHz
+Page 280: I2C3                  Enabled        – Target mode
+Page 280: I2C3                                                     – Target 7-bit address: 0b1101110x, x = 0 for write
+Page 280: I2C3_SCL pin
+Page 280: I2C3_SDA pin
+Page 280: The I2C4 configuration is:
+Page 280: – I2C speed: up to 1 MHz
+Page 280: I2C4                  Enabled        – Target mode
+Page 280: I2C4                                                     – Target 7-bit address: 0b1101110x, x = 0 for write
+Page 280: I2C4_SCL pin
+Page 280: I2C4_SDA pin
+Page 283: Special commands supported (USART/I2C/SPI/FDCAN/I3C)
+Page 284: Configure USB FS                        I2C address          interrupt sources
+Page 284: Yes                         BL_I2C_Loop
+Page 284: for I2Cx
+Page 284: Configure I2Cx
+Page 285: – I2C/I3C not working on BL as wrong pinout applied
+Page 287: The I2C3 configuration is:
+Page 287: – I2C speed: up to 1 MHz
+Page 287: I2C3                 Enabled        – Target mode
+Page 287: I2C3                                              – Analog filter ON
+Page 287: I2C3_SCL pin         Input/output   PA8 pin: clock line is used in open-drain. pull up mode.
+Page 287: I2C3_SDA pin         Input/output   PC9 pin: data line is used in open-drain, pull up mode.
+Page 287: The I2C4 configuration is:
+Page 287: – I2C speed: up to 1 MHz
+Page 287: I2C4                 Enabled        – Target mode
+Page 287: I2C4                                              – Analog filter ON
+Page 287: I2C4_SCL pin         Input/output   PD12 pin: clock line is used in open-drain. pull up mode.
+Page 287: I2C4_SDA pin         Input/output   PD13 pin: data line is used in open-drain, pull up mode.
+Page 289: Special commands supported (USART/I2C/SPI/FDCAN/I3C)
+Page 290: Configure USB FS                     I2C address          interrupt sources
+Page 290: Yes                        BL_I2C_Loop
+Page 290: for I2Cx
+Page 290: Configure I2Cx
+Page 293: The I2C1 configuration is:
+Page 293: – I2C speed: up to 1 MHz
+Page 293: I2C1                  Enabled        – Target mode
+Page 293: I2C1                                                – Analog filter ON
+Page 293: I2C1_SCL pin                         PB6 pin: clock line is used in open-drain no pull mode.
+Page 293: I2C1_SDA pin                         PB9 pin: data line is used in open-drain no pull mode.
+Page 293: The I2C2 configuration is:
+Page 293: – I2C speed: up to 1 MHz
+Page 293: I2C2                  Enabled        – Target mode
+Page 293: I2C2                                                – Analog filter ON
+Page 293: I2C2_SCL pin                         PF1 pin: clock line is used in open-drain no pull mode.
+Page 293: I2C2_SDA pin                         PF0 pin: data line is used in open-drain no pull mode.
+Page 293: The I2C3 configuration is:
+Page 293: – I2C speed: up to 1 MHz
+Page 293: I2C3                  Enabled        – Target mode
+Page 293: I2C3                                                – Analog filter ON
+Page 293: I2C3_SCL pin                         PA8 pin: clock line is used in open-drain no pull mode.
+Page 293: I2C3_SDA pin                         PC9 pin: data line is used in open-drain no pull mode.
+Page 296: Configure I2Cx
+Page 296: BL_SPI_Loop              BL_I2C_Loop          BL_USART_Loop
+Page 296: yes                   for SPIx                 for I2Cx             for USARTx
+Page 296: I2Cx address
+Page 298: detection phase) and when USART or SPI or I2C
+Page 299: The I2C1 configuration is:
+Page 299: – I2C speed: up to 400 kHz, 7-bit address, Target
+Page 299: I2C1                  Enabled          mode, Analog filter ON
+Page 299: I2C1                                                       and x = 1 for read)
+Page 299: I2C1_SCL pin          Input/output
+Page 299: I2C1_SDA pin          Input/output   PB9 pin: data line is used in open-drain no pull mode.
+Page 299: The I2C2 configuration is:
+Page 299: – I2C speed: up to 400 kHz, 7-bit address, Target
+Page 299: I2C2                  Enabled          mode, Analog filter ON
+Page 299: I2C2                                                       and x = 1 for read)
+Page 299: I2C2_SCL pin          Input/output
+Page 299: I2C2_SDA pin          Input/output   PF0 pin: data line is used in open-drain no pull mode.
+Page 299: The I2C3 configuration is:
+Page 299: – I2C speed: up to 400 kHz, 7-bit address, Target
+Page 299: I2C3                  Enabled          mode, Analog filter ON
+Page 299: I2C3                                                       and x = 1 for read)
+Page 299: I2C3_SCL pin          Input/output
+Page 299: I2C3_SDA pin          Input/output   PC9 pin: data line is used in open-drain no pull mode.
+Page 302: Configure I2Cx
+Page 302: BL_SPI_Loop              BL_I2C_Loop          BL_USART_Loop
+Page 302: yes                   for SPIx                 for I2Cx             for USARTx
+Page 302: I2Cx address
+Page 303: – Mass erase does not work correctly on I2C (only
+Page 303: V13.3                                                    – Bank erase is not working on USART/SPI and I2C
+Page 304: – Adjust USB, I2C erase and program timings          command.
+Page 307: The I2C1 configuration is:
+Page 307: – I2C speed: up to 400 kHz, 7-bit address, Target
+Page 307: I2C1                  Enabled          mode, Analog filter ON
+Page 307: I2C1                                                 – Target 7-bit address: 0b10101111x (x = 0 for write
+Page 307: I2C1_SCL pin          Input/output   PB6 pin: clock line is used in open-drain no pull mode.
+Page 307: I2C1_SDA pin          Input/output   PB9 pin: data line is used in open-drain no pull mode.
+Page 307: The I2C2 configuration is:
+Page 307: – I2C speed: up to 400 kHz, 7-bit address, Target
+Page 307: I2C2                  Enabled          mode, Analog filter ON
+Page 307: I2C2                                                 – Target 7-bit address: 0b10101111x (x = 0 for write
+Page 307: I2C2_SCL pin          Input/output   PF1 pin: clock line is used in open-drain no pull mode.
+Page 307: I2C2_SDA pin          Input/output   PF0 pin: data line is used in open-drain no pull mode.
+Page 307: The I2C3 configuration is:
+Page 307: – I2C speed: up to 400 kHz, 7-bit address, Target
+Page 307: I2C3                  Enabled          mode, Analog filter ON
+Page 307: I2C3                                                 – Target 7-bit address: 0b10101111x (x = 0 for write
+Page 307: I2C3_SCL pin          Input/output   PA8 pin: clock line is used in open-drain no pull mode.
+Page 307: I2C3_SDA pin          Input/output   PC9 pin: data line is used in open-drain no pull mode.
+Page 311: Configure I2Cx
+Page 311: BL_SPI_Loop              BL_I2C_Loop          BL_USART_Loop
+Page 311: yes                   for SPIx                 for I2Cx             for USARTx
+Page 311: I2Cx address
+Page 314: The I2C1 configuration is:
+Page 314: – I2C speed: up to 1 MHz
+Page 314: I2C1                 Enabled        – Target mode
+Page 314: I2C1   (1)                                        – Analog filter ON
+Page 314: I2C1_SCL pin                        PB8 pin: clock line is used in open-drain pull-up mode.
+Page 314: I2C1_SDA pin                        PB7 pin: data line is used in open-drain pull-up mode.
+Page 314: The I2C2 configuration is:
+Page 314: – I2C speed: up to 1 MHz
+Page 314: I2C2                 Enabled        – Target mode
+Page 314: I2C2                                              – Analog filter ON
+Page 314: I2C2_SCL pin                        PB10 pin: clock line is used in open-drain pull-up mode.
+Page 314: I2C2_SDA pin                        PB11 pin: data line is used in open-drain pull-up mode.
+Page 314: The I2C3 configuration is:
+Page 314: – I2C speed: up to 1 MHz
+Page 314: I2C3                 Enabled        – Target mode
+Page 314: I2C3                                              – Analog filter ON
+Page 314: I2C3_SCL pin                        PA8 pin: clock line is used in open-drain pull-up mode.
+Page 314: I2C3_SDA pin                        PC9 pin: data line is used in open-drain pull-up mode.
+Page 316: 1. I2C1 and I3C1 are exclusive: only one of them can be used, depending on the option byte FLASH_OBW2SR_I2C_NI3C.
+Page 317: Special commands supported (USART/I2C/SPI/FDCAN/USB/I3C)
+Page 318: Configure USB FS                       I2C address          interrupt sources
+Page 318: Yes                         BL_I2C_Loop
+Page 318: for I2Cx
+Page 318: Configure I2Cx
+Page 330: •     V11.x supporting USART1, USART2, I2C1, I2C2, SPI1 and SPI2. This version is
+Page 335: The I2C1 configuration is:
+Page 335: – I2C speed: up to 400 kHz, 7-bit address, Target mode,
+Page 335: I2C1                 Enabled          Analog filter ON
+Page 335: I2C1
+Page 335: I2C1_SCL pin         Input/output   PB6 pin: I2C1 clock line is used in open-drain no pull mode.
+Page 335: I2C1_SDA pin         Input/output   PB7 pin: I2C1 data line is used in open-drain no pull mode.
+Page 336: The I2C2 configuration is:
+Page 336: – I2C speed: up to 400 kHz, 7-bit address, Target mode,
+Page 336: I2C2                 Enabled          Analog filter ON
+Page 336: I2C2
+Page 336: I2C2_SCL pin         Input/output   PB10 pin: I2C2 clock line is used in open-drain no pull mode.
+Page 336: I2C2_SDA pin         Input/output   PB11 pin: I2C2 data line is used in open-drain no pull mode.
+Page 338: Configure I2Cx
+Page 338: I2Cx Address
+Page 338: BL_SPI_Loop             BL_I2C_Loop         BL_USART_Loop
+Page 338: for SPIx                for I2Cx            for USARTx
+Page 355: HSI enabled         clock configured to 72 MHz and for USART, I2C, SPI and
+Page 356: The I2C1 configuration is:
+Page 356: I2C speed: up to 1 MHz, 7-bit address, Target mode,
+Page 356: I2C1                  Enabled         Analog filter ON
+Page 356: I2C1
+Page 356: I2C1_SCL pin          Input/output    PB6 pin: clock line is used in open-drain no pull mode.
+Page 356: I2C1_SDA pin          Input/output    PB7 pin: data line is used in open-drain no pull mode.
+Page 356: The I2C2 configuration is:
+Page 356: I2C speed: up to 1 MHz, 7-bit address, Target mode,
+Page 356: I2C2                  Enabled         Analog filter ON
+Page 356: I2C2
+Page 356: I2C2_SCL pin          Input/output    PB10 pin: clock line is used in open-drain no pull mode.
+Page 356: I2C2_SDA pin          Input/output    PB11 pin: data line is used in open-drain no pull mode.
+Page 356: The I2C3 configuration is:
+Page 356: I2C speed: up to 1 MHz, 7-bit address, Target mode,
+Page 356: I2C3                  Enabled         Analog filter ON
+Page 356: I2C3
+Page 356: I2C3_SCL pin          Input/output    PC0 pin: clock line is used in open-drain no pull mode.
+Page 356: I2C3_SDA pin          Input/output    PC1 pin: data line is used in open-drain no pull mode.
+Page 359: Configure I2Cx
+Page 359: BL_SPI_Loop               BL_I2C_Loop          BL_USART_Loop
+Page 359: for SPIx                  for I2Cx             for USARTx
+Page 359: I2C Address
+Page 361: HSI enabled     clock configured to 60 MHz and for USART, I2C, SPI
+Page 362: The I2C1 configuration is:
+Page 362: – I2C speed: up to 1 MHz, 7-bit address, Target mode,
+Page 362: I2C1                 Enabled           Analog filter ON
+Page 362: I2C1                                                  – Target 7-bit address: 0b1001000x (x = 0 for write and
+Page 362: I2C1_SCL pin         Input/output    PB6 pin: clock line is used in open-drain no pull mode.
+Page 362: I2C1_SDA pin         Input/output    PB7 pin: data line is used in open-drain no pull mode.
+Page 362: The I2C2 configuration is:
+Page 362: – I2C speed: up to 1 MHz, 7-bit address, Target mode,
+Page 362: I2C2                 Enabled           Analog filter ON
+Page 362: I2C2                                                  – Target 7-bit address: 0b1001000x (x = 0 for write and
+Page 362: I2C2_SCL pin         Input/output    PB10 pin: clock line is used in open-drain no pull mode.
+Page 362: I2C2_SDA pin         Input/output    PB11 pin: data line is used in open-drain no pull mode.
+Page 362: The I2C3 configuration is:
+Page 362: – I2C speed: up to 1 MHz, 7-bit address, Target mode,
+Page 362: I2C3                 Enabled           Analog filter ON
+Page 362: I2C3                                                  – Target 7-bit address: 0b1001000x (x = 0 for write and
+Page 362: I2C3_SCL pin         Input/output    PC0 pin: clock line is used in open-drain no pull mode.
+Page 362: I2C3_SDA pin         Input/output    PC1 pin: data line is used in open-drain no pull mode.
+Page 366: Configure I2Cx                         BL_SPI_Loop                  BL_I2C_Loop                BL_USART_Loop
+Page 366: for SPIx                     for I2Cx                   for USARTx
+Page 366: I2C Address                                                                  yes                   reset
+Page 368: USART/I2C/CAN
+Page 369: HSI enabled     configured to 72 MHz and for USART, I2C, SPI and USB
+Page 370: The I2C1 configuration is:
+Page 370: – I2C speed: up to 1 MHz, 7-bit address, Target mode,
+Page 370: I2C1                 Enabled           Analog filter ON
+Page 370: I2C1                                                 – Target 7-bit address: 0b1001010x (x = 0 for write and x =
+Page 370: I2C1_SCL pin         Input/output    PB6 pin: clock line is used in open-drain no pull mode.
+Page 370: I2C1_SDA pin         Input/output    PB7 pin: data line is used in open-drain no pull mode.
+Page 370: The I2C2 configuration is:
+Page 370: – I2C speed: up to 1 MHz, 7-bit address, Target mode,
+Page 370: I2C2                 Enabled           Analog filter ON
+Page 370: I2C2                                                 – Target 7-bit address: 0b1001010x (x = 0 for write and x =
+Page 370: I2C2_SCL pin         Input/output    PB10 pin: clock line is used in open-drain no pull mode.
+Page 370: I2C2_SDA pin         Input/output    PB11 pin: data line is used in open-drain no pull mode.
+Page 370: The I2C3 configuration is:
+Page 370: – I2C speed: up to 1 MHz, 7-bit address, Target mode,
+Page 370: I2C3                 Enabled           Analog filter ON
+Page 370: I2C3                                                 – Target 7-bit address: 0b1001010x (x = 0 for write and x =
+Page 370: I2C3_SCL pin         Input/output    PC0 pin: clock line is used in open-drain no pull mode.
+Page 370: I2C3_SDA pin         Input/output    PC1 pin: data line is used in open-drain no pull mode.
+Page 374: Configure I2Cx
+Page 374: BL_SPI_Loop                  BL_I2C_Loop                BL_USART_Loop
+Page 374: for SPIx                     for I2Cx                   for USARTx
+Page 374: I2C Address
+Page 375: cannot impact USART/I2C/CAN.
+Page 376: •     V10.x supporting USART, I2C and DFU (USB FS device).
+Page 376: •     V9.x supporting USART, I2C, SPI, CAN and DFU (USB FS device).
+Page 376: HSI enabled   configured to 24 MHz and for USART and I2C bootloader
+Page 377: The I2C1 configuration is:
+Page 377: – I2C speed: up to 400 kHz
+Page 377: I2C1                 Enabled        – Target mode
+Page 377: I2C1                                               – Analog filter ON
+Page 377: I2C1_SCL pin                        PB6 pin: clock line is used in open-drain no pull mode.
+Page 377: I2C1_SDA pin                        PB7 pin: data line is used in open-drain no pull mode.
+Page 377: The I2C2 configuration is:
+Page 377: – I2C speed: up to 400 kHz
+Page 377: I2C2                 Enabled        – Target mode
+Page 377: I2C2                                               – Analog filter ON
+Page 377: I2C2_SCL pin                        PB10 pin: clock line is used in open-drain no pull mode.
+Page 377: I2C2_SDA pin                        PB11 pin: data line is used in open-drain no pull mode.
+Page 378: The I2C3 configuration is:
+Page 378: – I2C speed: up to 400 kHz
+Page 378: I2C3                 Enabled        – Target mode
+Page 378: I2C3                                                  – Analog filter ON
+Page 378: I2C3_SCL pin                        PC0 pin: clock line is used in open-drain no pull mode.
+Page 378: I2C3_SDA pin                        PC1 pin: data line is used in open-drain no pull mode.
+Page 378: For USARTx and I2Cx bootloaders no external clock is required.
+Page 380: Configure all I2Cs
+Page 380: BL_I2C_Loop for
+Page 380: I2C Address                                                                       I2Cx
+Page 382: HSI enabled     configured to 72 MHz and for USART and I2C bootloader
+Page 383: The I2C1 configuration is:
+Page 383: – I2C speed: up to 400 kHz
+Page 383: I2C1                  Enabled        – Target mode
+Page 383: I2C1                                                 – Analog filter ON
+Page 383: I2C1_SCL pin                         PB6 pin: clock line is used in open-drain no pull mode.
+Page 383: I2C1_SDA pin                         PB7 pin: data line is used in open-drain no pull mode.
+Page 383: The I2C2 configuration is:
+Page 383: – I2C speed: up to 400 kHz
+Page 383: I2C2                  Enabled        – Target mode
+Page 383: I2C2                                                 – Analog filter ON
+Page 383: I2C2_SCL pin                         PB10 pin: clock line is used in open-drain no pull mode.
+Page 383: I2C2_SDA pin                         PB11 pin: data line is used in open-drain no pull mode.
+Page 383: The I2C3 configuration is:
+Page 383: – I2C speed: up to 400 kHz
+Page 383: I2C3                  Enabled        – Target mode
+Page 383: I2C3                                                 – Analog filter ON
+Page 383: I2C3_SCL pin                         PC0 pin: clock line is used in open-drain no pull mode.
+Page 383: I2C3_SDA pin                         PC1 pin: data line is used in open-drain no pull mode.
+Page 386: Configure I2Cx                         Execute BL_SPI_Loop                 Execute BL_I2C_Loop
+Page 386: for SPIx                            for I2Cx
+Page 386: I2C Address
+Page 387: USART/I2C/CAN/USB.
+Page 388: HSI enabled    configured to 72 MHz and for USART, I2C and SPI bootloader
+Page 389: The I2C1 configuration is:
+Page 389: – I2C speed: up to 1 MHz
+Page 389: I2C1                 Enabled        – Target mode
+Page 389: I2C1                                              – Analog filter ON
+Page 389: I2C1_SCL pin                        PB6 pin: clock line is used in open-drain no pull mode.
+Page 389: I2C1_SDA pin                        PB7 pin: data line is used in open-drain no pull mode.
+Page 389: The I2C2 configuration is:
+Page 389: – I2C speed: up to 1 MHz
+Page 389: I2C2                 Enabled        – Target mode
+Page 389: I2C2                                              – Analog filter ON
+Page 389: I2C2_SCL pin                        PB10 pin: clock line is used in open-drain no pull mode.
+Page 389: I2C2_SDA pin                        PB11 pin: data line is used in open-drain no pull mode.
+Page 389: The I2C3 configuration is:
+Page 389: – I2C speed: up to 1 MHz
+Page 389: I2C3                 Enabled        – Target mode
+Page 389: I2C3                                              – Analog filter ON
+Page 389: I2C3_SCL pin                        PC0 pin: clock line is used in open-drain no pull mode.
+Page 389: I2C3_SDA pin                        PC1 pin: data line is used in open-drain no pull mode.
+Page 393: Configure I2Cx
+Page 393: BL_SPI_Loop               BL_I2C_Loop               BL_USART_Loop
+Page 393: for SPIx                  for I2Cx                  for USARTx
+Page 393: I2C Address
+Page 394: USART/I2C/CAN.
+Page 395: HSI enabled    configured to 60 MHz and for USART, I2C, SPI and USB
+Page 396: The I2C1 configuration is:
+Page 396: – I2C speed: up to 1 MHz
+Page 396: I2C1                 Enabled        – Target mode
+Page 396: I2C1                                               – Analog filter ON
+Page 396: I2C1_SCL pin                        PB6 pin: clock line is used in open-drain no pull mode.
+Page 396: I2C1_SDA pin                        PB7 pin: data line is used in open-drain no pull mode.
+Page 396: The I2C2 configuration is:
+Page 396: – I2C speed: up to 1 MHz
+Page 396: I2C2                 Enabled        – Target mode
+Page 396: I2C2                                               – Analog filter ON
+Page 396: I2C2_SCL pin                        PB10 pin: clock line is used in open-drain no pull mode.
+Page 396: I2C2_SDA pin                        PB11 pin: data line is used in open-drain no pull mode.
+Page 396: The I2C3 configuration is:
+Page 396: – I2C speed: up to 1 MHz
+Page 396: I2C3                 Enabled        – Target mode
+Page 396: I2C3                                               – Analog filter ON
+Page 396: I2C3_SCL pin                        PC0 pin: clock line is used in open-drain no pull mode.
+Page 396: I2C3_SDA pin                        PC1 pin: data line is used in open-drain no pull mode.
+Page 400: Configure I2Cx
+Page 400: I2C Address                            Execute                Execute                 Execute
+Page 400: Detected                           BL_SPI_Loop            BL_I2C_Loop           BL_USART_Loop
+Page 400: for SPIx               for I2Cx              for USARTx
+Page 402: HSI enabled      configured to 60 MHz and for USART, I2C, SPI and USB
+Page 403: The I2C1 configuration is:
+Page 403: – I2C speed: up to 1 MHz
+Page 403: I2C1                 Enabled         – Target mode
+Page 403: I2C1                                               – Analog filter ON
+Page 403: I2C1_SCL pin         Input/output    PB6 pin: clock line is used in open-drain no pull mode.
+Page 403: I2C1_SDA pin         Input/output    PB7 pin: data line is used in open-drain no pull mode.
+Page 403: The I2C2 configuration is:
+Page 403: – I2C speed: up to 1 MHz
+Page 403: I2C2                 Enabled         – Target mode
+Page 403: I2C2                                               – Analog filter ON
+Page 403: I2C2_SCL pin         Input/output    PB10 pin: clock line is used in open-drain no pull mode.
+Page 403: I2C2_SDA pin         Input/output    PB11 pin: data line is used in open-drain no pull mode.
+Page 403: The I2C3 configuration is:
+Page 403: – I2C speed: up to 1 MHz
+Page 403: I2C3                 Enabled         – Target mode
+Page 403: I2C3                                               – Analog filter ON
+Page 403: I2C3_SCL pin         Input/output    PC0 pin: clock line is used in open-drain no pull mode.
+Page 403: I2C3_SDA pin         Input/output    PC1 pin: data line is used in open-drain no pull mode.
+Page 407: Configure I2Cx
+Page 407: I2C Address                            Execute                Execute                 Execute
+Page 407: Detected                           BL_SPI_Loop            BL_I2C_Loop           BL_USART_Loop
+Page 407: for SPIx               for I2Cx              for USARTx
+Page 410: The I2C1 configuration is:
+Page 410: – I2C speed: up to 1 MHz
+Page 410: I2C1               Enabled        – Target mode
+Page 410: I2C1                                           – Analog filter ON
+Page 410: I2C1_SCL pin                      PB6 pin: clock line is used in open-drain pull-up mode.
+Page 410: I2C1_SDA pin                      PB7 pin: data line is used in open-drain pull-up mode.
+Page 410: The I2C2 configuration is:
+Page 410: – I2C speed: up to 1 MHz
+Page 410: I2C2               Enabled        – Target mode
+Page 410: I2C2                                           – Analog filter ON
+Page 410: I2C2_SCL pin                      PB10 pin: clock line is used in open-drain pull-up mode.
+Page 410: I2C2_SDA pin                      PB11 pin: data line is used in open-drain pull-up mode.
+Page 410: The I2C3 configuration is:
+Page 410: – I2C speed: up to 1 MHz
+Page 410: I2C3               Enabled        – Target mode
+Page 410: I2C3                                           – Analog filter ON
+Page 410: I2C3_SCL pin                      PC0 pin: clock line is used in open-drain pull-up mode.
+Page 410: I2C3_SDA pin                      PC1 pin: data line is used in open-drain pull-up mode.
+Page 412: Special commands supported (USART/I2C/SPI/FDCAN)
+Page 413: Configure I2Cx
+Page 413: 0x7F received                          BL_SPI_Loop                  BL_I2C_Loop          BL_USART_Loop
+Page 413: on USARTx             yes               for SPIx                     for I2Cx             for USARTx
+Page 413: I2C Address
+Page 414: USART/I2C
+Page 415: The I2C1 configuration is:
+Page 415: – I2C speed: up to 1 MHz
+Page 415: I2C1                 Enabled        – Target mode
+Page 415: I2C1                                                – Analog filter ON
+Page 415: I2C1_SCL pin                        PB6 pin: clock line is used in open-drain no pull mode.
+Page 415: I2C1_SDA pin                        PB7 pin: data line is used in open-drain no pull mode.
+Page 417: Configure I2Cx
+Page 417: I2Cx Address
+Page 417: BL_SPI_Loop             BL_I2C_Loop         BL_USART_Loop
+Page 417: for SPIx                for I2Cx            for USARTx
+Page 418: – I2C Write Protect command (0x73) performs a Read
+Page 419: The I2C1 configuration is:
+Page 419: – I2C speed: up to 1 MHz
+Page 419: I2C1                 Enabled                   – Target mode
+Page 419: I2C1                                                               – Target 7-bit address: 0b1001111x (x = 0
+Page 419: I2C1_SCL pin         Input/output
+Page 419: I2C1_SDA pin         Input/output
+Page 420: The I2C3 configuration is:
+Page 420: – I2C speed: up to 1 MHz
+Page 420: I2C3                 Enabled                 – Target mode
+Page 420: I2C3                                                            – Target 7-bit address: 0b1001111x (x = 0
+Page 420: I2C3_SCL pin         Input/output
+Page 420: I2C3_SDA pin         Input/output
+Page 422: Configure I2Cx
+Page 422: I2C Address                          Execute                Execute             Execute
+Page 422: Detected                         BL_SPI_Loop            BL_I2C_Loop       BL_USART_Loop
+Page 422: for SPIx               for I2Cx          for USARTx
+Page 423: – I2C Write Protect command (0x73) performs a
+Page 424: The I2C1 configuration is:
+Page 424: – I2C speed: up to 1 MHz
+Page 424: I2C1                  Enabled        – Target mode
+Page 424: I2C1                                                 – Analog filter ON
+Page 424: I2C1_SCL pin                         PB2 pin: clock line is used in open-drain pull up mode.
+Page 424: I2C1_SDA pin                         PB1 pin: data line is used in open-drain pull up mode.
+Page 425: The I2C3 configuration is:
+Page 425: – I2C speed: up to 1 MHz
+Page 425: I2C3                  Enabled        – Target mode
+Page 425: I2C3                                                  – Analog filter ON
+Page 425: I2C3_SCL pin                         PA6 pin: clock line is used in open-drain pull up mode.
+Page 425: I2C3_SDA pin                         PA7 pin: data line is used in open-drain pull up mode.
+Page 425: Special commands supported (USART/I2C/SPI)
+Page 426: Configure I2Cx
+Page 426: I2Cx address
+Page 426: BL_SPI_Loop for      BL_I2C_Loop for      BL_USART_Loop
+Page 426: SPIx                  I2Cx              for USARTx
+Page 428: The I2C1 configuration is:
+Page 428: – I2C speed: up to 400 kHz
+Page 428: I2C1                 Enabled        – Target mode
+Page 428: I2C1                                               – Analog filter ON
+Page 428: I2C1_SCL pin                        PB2 pin: clock line is used in open-drain no pull mode.
+Page 428: I2C1_SDA pin                        PB1 pin: data line is used in open-drain no pull mode.
+Page 429: The I2C3 configuration is:
+Page 429: – I2C speed: up to 400 kHz
+Page 429: I2C3                 Enabled        – Target mode
+Page 429: I2C3                                              – Analog filter ON
+Page 429: I2C3_SCL pin                        PA6 pin: clock line is used in open-drain no pull mode.
+Page 429: I2C3_SDA pin                        PA7 pin: data line is used in open-drain no pull mode.
+Page 430: Special commands supported (USART/I2C/SPI)
+Page 431: System Init                 I2C address               interrupt sources
+Page 431: Yes                              BL_I2C_Loop for
+Page 431: I2Cx
+Page 431: Configure I2Cx                                           quartz detection
+Page 444: The I2C1 configuration is:
+Page 444: – I2C speed: up to 400 kHz
+Page 444: I2C1                 Enabled        – Target mode
+Page 444: I2C1                                               – Analog filter ON
+Page 444: I2C1_SCL pin                        PB6 pin: clock line is used in open-drain pull-up mode.
+Page 444: I2C1_SDA pin                        PB7 pin: data line is used in open-drain pull-up mode.
+Page 444: The I2C2 configuration is:
+Page 444: – I2C speed: up to 400 kHz
+Page 444: I2C2                 Enabled        – Target mode
+Page 444: I2C2                                               – Analog filter ON
+Page 444: I2C2_SCL pin                        PB10 pin: clock line is used in open-drain pull-up mode.
+Page 444: I2C2_SDA pin                        PB11 pin: data line is used in open-drain pull-up mode.
+Page 444: The I2C3 configuration is:
+Page 444: – I2C speed: up to 400 kHz
+Page 444: I2C3                 Enabled        – Target mode
+Page 444: I2C3                                               – Analog filter ON
+Page 444: I2C3_SCL pin                        PB3 pin: clock line is used in open-drain pull-up mode.
+Page 444: I2C3_SDA pin                        PB4 pin: data line is used in open-drain pull-up mode.
+Page 446: Configure I2Cx
+Page 446: I2C address                                                                             Configure
+Page 446: no                                                 BL_SPI_Loop                BL_I2C_Loop         BL_USART_Loop
+Page 446: for SPIx                   for I2Cx            for USARTx
+Page 449: The I2C1 configuration is:
+Page 449: – I2C speed: up to 400 kHz
+Page 449: I2C1                 Enabled         – Target mode
+Page 449: I2C1                                                – Analog filter ON
+Page 449: I2C1_SCL pin                         PB6 pin: clock line is used in open-drain pull-up mode.
+Page 449: I2C1_SDA pin                         PB7 pin: data line is used in open-drain pull-up mode.
+Page 449: The I2C2 configuration is:
+Page 449: – I2C speed: up to 400 kHz
+Page 449: I2C2                 Enabled         – Target mode
+Page 449: I2C2                                                – Analog filter ON
+Page 449: I2C2_SCL pin                         PB10 pin: clock line is used in open-drain pull-up mode.
+Page 449: I2C2_SDA pin                         PB11 pin: data line is used in open-drain pull-up mode.
+Page 449: The I2C3 configuration is:
+Page 449: – I2C speed: up to 400 kHz
+Page 449: I2C3                 Enabled         – Target mode
+Page 449: I2C3                                                – Analog filter ON
+Page 449: I2C3_SCL pin                         PB3 pin: clock line is used in open-drain pull-up mode.
+Page 449: I2C3_SDA pin                         PB4 pin: data line is used in open-drain pull-up mode.
+Page 451: GPIOs, IWDG, SysTick)                 I2C address          interrupt sources
+Page 451: Yes                            BL_I2C_Loop
+Page 451: for I2Cx
+Page 451: Configure I2Cx
+Page 453: The I2C1 configuration is:
+Page 453: – I2C speed: up to 400 kHz
+Page 453: I2C1                 Enabled           – Target mode
+Page 453: I2C1                                              – Analog filter ON
+Page 453: I2C1_SCL pin         Input/output      PB6 pin: clock line is used in open-drain pull-up mode.
+Page 453: I2C1_SDA pin         Input/output      PB7 pin: data line is used in open-drain pull-up mode.
+Page 454: The I2C2 configuration is:
+Page 454: – I2C speed: up to 1 MHz
+Page 454: I2C2                 Enabled           – Target mode
+Page 454: I2C2                                                – Analog filter ON
+Page 454: I2C2_SCL pin         Input/output      PB10 pin: clock line is used in open-drain pull-up mode.
+Page 454: I2C2_SDA pin         Input/output      PB11 pin: data line is used in open-drain pull-up mode.
+Page 454: The I2C3 configuration is:
+Page 454: – I2C speed: up to 1 MHz
+Page 454: I2C3                 Enabled           – Target mode
+Page 454: I2C3                                                – Analog filter ON
+Page 454: I2C3_SCL pin         Input/output      PC0 pin: clock line is used in open-drain pull-up mode.
+Page 454: I2C3_SDA pin         Input/output      PC1 pin: data line is used in open-drain pull-up mode.
+Page 457: Special commands supported (USART/I2C/SPI/FDCAN)
+Page 458: FS device                      I2C address          interrupt sources
+Page 458: Yes                        BL_I2C_Loop
+Page 458: for I2Cx
+Page 458: Configure I2Cx
+Page 460: The I2C1 configuration is:
+Page 460: – I2C speed: up to 1 MHz
+Page 460: I2C1                 Enabled            – Target mode
+Page 460: I2C1                                               – Analog filter ON
+Page 460: I2C1_SCL pin         Input/output       PB6 pin: clock line is used in open-drain pull-up mode.
+Page 460: I2C1_SDA pin         Input/output       PB7 pin: data line is used in open-drain pull-up mode.
+Page 461: The I2C2 configuration is:
+Page 461: – I2C speed: up to 1 MHz
+Page 461: I2C2              Enabled            – Target mode
+Page 461: I2C2                                               – Analog filter ON
+Page 461: I2C2_SCL pin      Input/output       PB10 pin: clock line is used in open-drain pull-up mode.
+Page 461: I2C2_SDA pin      Input/output       PB11 pin: data line is used in open-drain pull-up mode.
+Page 461: The I2C3 configuration is:
+Page 461: – I2C speed: up to 1 MHz
+Page 461: I2C3              Enabled            – Target mode
+Page 461: I2C3                                               – Analog filter ON
+Page 461: I2C3_SCL pin      Input/output       PC0 pin: clock line is used in open-drain pull-up mode.
+Page 461: I2C3_SDA pin      Input/output       PC1 pin: data line is used in open-drain pull-up mode.
+Page 463: Special commands supported (USART/I2C/SPI/FDCAN)
+Page 464: I2C address              interrupt sources
+Page 464: Yes                            BL_I2C_Loop
+Page 464: for I2Cx
+Page 464: Configure I2Cx                                           interrupt sources
+Page 467: The I2C1 configuration is:
+Page 467: – I2C speed: up to 1 MHz
+Page 467: I2C1               Enabled           – Target mode
+Page 467: I2C1                                              – Analog filter ON
+Page 467: I2C1_SCL pin       Input/output      PB6 pin: clock line is used in open-drain pull-up mode.
+Page 467: I2C1_SDA pin       Input/output      PB7 pin: data line is used in open-drain pull-up mode.
+Page 467: The I2C2 configuration is:
+Page 467: – I2C speed: up to 1 MHz
+Page 467: I2C2               Enabled           – Target mode
+Page 467: I2C2                                              – Analog filter ON
+Page 467: I2C2_SCL pin       Input/output      PB10 pin: clock line is used in open-drain pull-up mode.
+Page 467: I2C2_SDA pin       Input/output      PB11 pin: data line is used in open-drain pull-up mode.
+Page 467: The I2C3 configuration is:
+Page 467: – I2C speed: up to 1 MHz
+Page 467: I2C3               Enabled           – Target mode
+Page 467: I2C3                                              – Analog filter ON
+Page 467: I2C3_SCL pin       Input/output      PC0 pin: clock line is used in open-drain pull-up mode.
+Page 467: I2C3_SDA pin       Input/output      PC1 pin: data line is used in open-drain pull-up mode.
+Page 469: Special commands supported (USART/I2C/SPI/FDCAN)
+Page 470: I2C address              interrupt sources
+Page 470: Yes                            BL_I2C_Loop
+Page 470: for I2Cx
+Page 470: Configure I2Cx                                         interrupt sources
+Page 473: The I2C1 configuration is:
+Page 473: – I2C speed: up to 1 MHz
+Page 473: I2C1                  Enabled        – Target mode
+Page 473: I2C1                                              – Analog filter ON
+Page 473: I2C1_SCL pin          Input/output   PB6 pin: clock line is used in open-drain pull-up mode.
+Page 473: I2C1_SDA pin          Input/output   PB7 pin: data line is used in open-drain pull-up mode.
+Page 473: The I2C2 configuration is:
+Page 473: – I2C speed: up to 1 MHz
+Page 473: I2C2                  Enabled        – Target mode
+Page 473: I2C2                                              – Analog filter ON
+Page 473: I2C2_SCL pin          Input/output   PB10 pin: clock line is used in open-drain pull-up mode.
+Page 473: I2C2_SDA pin          Input/output   PB11 pin: data line is used in open-drain pull-up mode.
+Page 473: The I2C3 configuration is:
+Page 473: – I2C speed: up to 1 MHz
+Page 473: I2C3                  Enabled        – Target mode
+Page 473: I2C3                                              – Analog filter ON
+Page 473: I2C3_SCL pin          Input/output   PC0 pin: clock line is used in open-drain pull-up mode.
+Page 473: I2C3_SDA pin          Input/output   PC1 pin: data line is used in open-drain pull-up mode.
+Page 475: Special commands supported (USART/I2C/SPI/FDCAN)
+Page 476: I2C address                 interrupt sources
+Page 476: Yes                             BL_I2C_Loop
+Page 476: for I2Cx
+Page 476: Configure I2Cx                                No
+Page 478: The I2C1 configuration is:
+Page 478: – I2C speed: up to 1 MHz
+Page 478: I2C1                  Enabled        – Target mode
+Page 478: I2C1                                               – Analog filter ON
+Page 478: I2C1_SCL pin                         PB6 pin: clock line is used in open-drain pull-up mode.
+Page 478: I2C1_SDA pin                         PB7 pin: data line is used in open-drain pull-up mode.
+Page 478: The I2C2 configuration is:
+Page 478: – I2C speed: up to 1 MHz
+Page 478: I2C2                  Enabled        – Target mode
+Page 478: I2C2                                               – Analog filter ON
+Page 478: I2C2_SCL pin                         PB10 pin: clock line is used in open-drain pull-up mode.
+Page 478: I2C2_SDA pin                         PB11 pin: data line is used in open-drain pull-up mode.
+Page 478: The I2C3 configuration is:
+Page 478: – I2C speed: up to 1 MHz
+Page 478: I2C3                  Enabled        – Target mode
+Page 478: I2C3                                               – Analog filter ON
+Page 478: I2C3_SCL pin                         PC0 pin: clock line is used in open-drain pull-up mode.
+Page 478: I2C3_SDA pin                         PC1 pin: data line is used in open-drain pull-up mode.
+Page 480: Special commands supported (USART/I2C/SPI/FDCAN)
+Page 481: I2C address                 interrupt sources
+Page 481: Yes                             BL_I2C_Loop
+Page 481: for I2Cx
+Page 481: Configure I2Cx                                No
+Page 498: 93.4       I2C connection timing
+Page 498: I2C connection timing is the time that the host must wait for between sending I2C device
+Page 498: address and sending command code. This timing includes I2C line stretching duration.
+Page 498: Figure 124. I2C connection timing description
+Page 498: Duration of start + 1 byte sending through I2C (depends on communication speed)
+Page 498: b    Duration of I2C line stretching
+Page 498: Note:      For I2C communication, a timeout mechanism is implemented and must be respected to
+Page 498: execute bootloader commands correctly. This timeout is implemented between two I2C
+Page 498: period is inserted between two successive data receptions or transmissions in the same I2C
+Page 499: Table 212. I2C bootloader minimum timings (ms)
+Page 499: I2C line
+Page 499: Device                + one I2C byte                   I2C connection     I2C timeout
+Page 500: Table 212. I2C bootloader minimum timings (ms) (continued)
+Page 500: I2C line
+Page 500: Device                  + one I2C byte                   I2C connection   I2C timeout
+Page 507: 21-Feb-2019       36       Table 211: USB bootloader minimum timings (ms), Table 212: I2C bootloader minimum
+Page 507: 06-May-2019       37       timings (ms), Table 212: I2C bootloader minimum timings (ms).
+Page 507: bootloader minimum timings (ms), Table 212: I2C bootloader minimum timings (ms)
+Page 507: timings (ms), Table 211: USB bootloader minimum timings (ms), Table 212: I2C
+Page 508: (ms), Table 210: USART bootloader minimum timings (ms), Table 212: I2C
+Page 508: 05-Dec-2019       42       timings (ms), Table 211: USB bootloader minimum timings (ms), Table 212: I2C
+Page 509: USB bootloader minimum timings (ms) and Table 212: I2C bootloader minimum timings
+Page 511: Table 211: USB bootloader minimum timings (ms), Table 212: I2C bootloader
+Page 511: bootloader minimum timings (ms), Table 212: I2C bootloader minimum timings (ms)
+Page 512: bootloader minimum timings (ms), Table 212: I2C bootloader minimum timings (ms)
+Page 512: minimum timings (ms), Table 212: I2C bootloader minimum timings (ms)
+Page 515: Replaced master/slave with controller target when referring to I2C.

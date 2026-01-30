@@ -113,7 +113,7 @@ cd inav-configurator
 git push -u origin your-branch-name
 ```
 
-*(If sandbox blocks SSH: retry with `dangerouslyDisableSandbox: true`)*
+*(If sandbox blocks SSH, or you see "network" problems: retry with `dangerouslyDisableSandbox: true`)*
 
 ---
 
@@ -152,7 +152,7 @@ gh pr create --repo inavflight/inav \
 
 **For inav-configurator:** Use `inavflight/inav-configurator` repo, same base branches
 
-*(If sandbox blocks: retry with `dangerouslyDisableSandbox: true`)*
+*(If sandbox blocks network access: retry with `dangerouslyDisableSandbox: true`)*
 
 ---
 

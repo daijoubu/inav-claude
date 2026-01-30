@@ -1,0 +1,37 @@
+Keyword: external memory
+Occurrences: 33
+================================================================================
+
+Page   20: 21.7.1      External memory interface signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . 789
+Page   20: 21.8.1      External memory interface signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . 827
+Page   21: 21.9.2      SDRAM External memory interface signals . . . . . . . . . . . . . . . . . . . . . 839
+Page   70: Table 149.   NOR/PSRAM External memory address . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 783
+Page  776: •   to meet the access time requirements of the external memory devices
+Page  779: described in Section 21.7.1: External memory interface signals.
+Page  781: From the FMC point of view, the external memory is divided into fixed-size banks of
+Page  783: 1. ADDR are internal address lines that are translated to external memory.
+Page  783: The ADDR[25:0] bits contain the external memory address. Since ADDR is a byte address
+Page  783: Table 149. NOR/PSRAM External memory address
+Page  783: 1. In case of a 16-bit external memory width, the FMC will internally use ADDR[25:1] to generate the address
+Page  783: for external memory FMC_A[24:0]. In case of a 32-bit memory width, the FMC will internally use
+Page  783: Whatever the external memory width, FMC_A[0] should be connected to external memory address A[0].
+Page  784: connected to the external memory address A[0].
+Page  784: 2. The AutoPrecharge is not supported. FMC_A[10] must be connected to the external memory address
+Page  789: 21.7.1   External memory interface signals
+Page  819: This bit enables the FMC_CLK clock output to external memory devices.
+Page  821: Defines the external memory device width, valid for all type of memories.
+Page  821: These bits define the type of external memory attached to the corresponding memory bank:
+Page  827: 21.8.1   External memory interface signals
+Page  834: These bits define the external memory device width.
+Page  839: 21.9.2   SDRAM External memory interface signals
+Page  869: The FSIZE[4:0] field defines the size of external memory using the following formula:
+Page  879: This field defines the size of external memory using the following formula:
+Page 2636: This field holds the start address in the external memory from which the data for the endpoint
+Page 2655: The core decrements this field every time a packet from the external memory is written to
+Page 2656: This field holds the start address in the external memory from which the data for the
+Page 2657: The core decrements this field every time a packet from the external memory is written to the
+Page 2661: the external memory.
+Page 2662: This field holds the start address in the external memory from which the data for the
+Page 2665: the external memory.
+Page 2718: receive FIFO and writes it to external memory, one packet at a time per endpoint.
+Page 2718: 5.   At the end of every packet write on the AHB to external memory, the transfer size for

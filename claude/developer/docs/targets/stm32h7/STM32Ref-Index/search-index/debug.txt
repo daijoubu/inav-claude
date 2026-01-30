@@ -1,0 +1,717 @@
+Keyword: debug
+Occurrences: 713
+================================================================================
+
+Page   35: 36.3.23 Debug . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1419
+Page   38: 37.3.29 Debug mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1572
+Page   40: 38.3.21 Debug mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1662
+Page   41: 39.3.18 Debug mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1719
+Page   43: 40.4.22 Debug mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1782
+Page   44: 41.3.5     Debug mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1837
+Page   45: 42.4.16 Debug mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1858
+Page   46: 43.3.7      Debug mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1876
+Page   46: 44.3.8      Debug mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1882
+Page   48: 46.4.17 Debug mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1984
+Page   55: 51.5.9      Debug information register (SPDIFRX_DIR) . . . . . . . . . . . . . . . . . . . 2303
+Page   62: 56.14.8 OTG receive status debug read register (OTG_GRXSTSR) . . . . . . . 2612
+Page   62: 56.14.9 OTG receive status debug read [alternate] (OTG_GRXSTSR) . . . . . 2613
+Page   67: 59       Debug infrastructure . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2998
+Page   67: 59.2     Debug infrastructure features . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2999
+Page   67: 59.3     Debug infrastructure functional description . . . . . . . . . . . . . . . . . . . . . 2999
+Page   67: 59.3.1      Debug infrastructure block diagram . . . . . . . . . . . . . . . . . . . . . . . . . . 2999
+Page   67: 59.3.2      Debug infrastructure pins and internal signals . . . . . . . . . . . . . . . . . . 3000
+Page   67: 59.3.3      Debug infrastructure powering, clocking and reset . . . . . . . . . . . . . . 3001
+Page   67: 59.4     Debug access port functional description . . . . . . . . . . . . . . . . . . . . . . . 3003
+Page   67: 59.4.1      Serial-wire and JTAG debug port (SWJ-DP) . . . . . . . . . . . . . . . . . . . 3003
+Page   67: 59.5     Trace and debug subsystem functional description . . . . . . . . . . . . . . . 3023
+Page   67: 59.5.8      Microcontroller debug unit (DBGMCU) . . . . . . . . . . . . . . . . . . . . . . . 3131
+Page   67: 59.6     Cortex-M7 debug functional description . . . . . . . . . . . . . . . . . . . . . . . . 3138
+Page   67: 59.7     References for debug infrastructure . . . . . . . . . . . . . . . . . . . . . . . . . . . 3213
+Page   77: Table 463.   Example of filter configuration for Debug messages . . . . . . . . . . . . . . . . . . . . . . . . . . . 2449
+Page   79: Table 564.   JTAG/Serial-wire debug port pins . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3000
+Page   79: Table 572.   Debug port registers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3009
+Page   96: Figure 815. Block diagram of debug infrastructure . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2999
+Page   96: Figure 816. Power domains of debug infrastructure . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3001
+Page   96: Figure 817. Clock domains of debug infrastructure . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3002
+Page   96: Figure 820. Debug and access port connections. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3017
+Page  168: the debugger is connected to the device or not. Accesses to the other secured regions are
+Page  168: •    The Flash memory content is protected against debugger and potential malicious code
+Page  168: stored in RAM. Hence as soon as any debugger is connected or has been connected,
+Page  168: no debugger connected), all read/program/erase operations from/to the user Flash
+Page  169: •     All debugging features are disabled.
+Page  169: since the debugger and the boot from RAM and System Flash memory are disabled.
+Page  169: Apply a power-on reset if the global read protection level 2 is set while the debugger is still
+Page  169: area                 Debugger         Flash        Flash
+Page  170: full debug, no
+Page  170: full debug, intrusion
+Page  170: no debug
+Page  170: Level before       Level after                                        Debugger        Option bytes
+Page  172: •    Arm® Cortex®-M7 debug events are ignored while executing code in this area.
+Page  174: •     Arm® Cortex®-M7 debug events are ignored while executing code in this area.
+Page  177: •    The user main Flash memory when RDP level is 1 and a debugger has been detected
+Page  181: detected (boot from system Flash memory, boot from RAM, or debugger
+Page  230: the device from being accessed externally through the debug port or boot from RAM or
+Page  231: backup SRAM can be performed when the debugger is
+Page  231: – Debug access (SW or JTAG) disabled
+Page  231: PCROP/execute-        At area level (256-byte      This protection is set on sensitive code to prevent debug
+Page  234: RSS software cannot be accessed (read, write, execute and debug) when the
+Page  238: Debug access              Secure User software                 Secure access     No
+Page  310: flags in the RCC_RSR (or RCC_C1_RSR) register, the debug features, the Flash memory
+Page  311: D1 Debug
+Page  311: – Debug features, Flash memory, RTC and
+Page  311: PWR                                                             Reset of the debug block
+Page  312: D1 Debug
+Page  404: Set and reset by software to bypass oscillator in debug mode. This bit must not be written when the
+Page  511: The debug pins are in AF pull-up/pull-down after reset:
+Page  511: •    Debug function: after each device reset these pins are assigned as alternate function
+Page  511: pins immediately usable by the debugger host
+Page  538: 0xCC: Level 2 (Flash memory readout protected, full debug features, boot from SRAM
+Page  538: Other configurations: Level 1 (Flash memory readout protected, limited debug
+Page  596: This can be used as a debug feature (without interrupt), indicating that (at least) an MDMA
+Page  730: MemManage, Bus Fault, UsageFault, SVCall, DebugMonitor, PendSV, SysTick.
+Page  730: -                 4           -          DebugMonitor    Debug monitor                      0x0000 0030
+Page 1419: 36.3.23   Debug
+Page 1419: When a microcontroller enters the debug mode (Cortex®-M7 core halted), the TIMx counter
+Page 1419: by settings TxyOEN bit (requires the use of the debugger).
+Page 1419: and all the logic driving the normal output in RUN mode are not affected by debug. The
+Page 1420: Synchronization, counter reset, start and reset-start events are discarded in debug mode,
+Page 1420: signal is not reset; consequently no start event will be emitted when exiting from debug. All
+Page 1420: software set/reset. A level-sensitive event is masked during the debug but will be active
+Page 1420: again as soon as the debug will be exited. For edge-sensitive events, if the signal is
+Page 1420: debug.
+Page 1572: 37.3.29     Debug mode
+Page 1572: When the microcontroller enters debug mode (Cortex®-M7 with FPU core halted), the TIMx
+Page 1572: For more details, refer to Section 59.5.8: Microcontroller debug unit (DBGMCU).
+Page 1662: 38.3.21     Debug mode
+Page 1662: When the microcontroller enters debug mode (Cortex®-M7 with FPU core halted), the TIMx
+Page 1662: DBGMCU module. For more details, refer to Section 59.5.8: Microcontroller debug unit
+Page 1719: 39.3.18          Debug mode
+Page 1719: When the microcontroller enters debug mode (Cortex®-M7 with FPU core halted), the TIMx
+Page 1719: Microcontroller debug unit (DBGMCU).
+Page 1782: 40.4.22     Debug mode
+Page 1782: When the microcontroller enters debug mode (Cortex®-M7 with FPU core halted), the TIMx
+Page 1782: module. For more details, refer to Section 59: Debug infrastructure.
+Page 1837: 41.3.5          Debug mode
+Page 1837: When the microcontroller enters the debug mode (Cortex®-M7 with FPU core - halted), the
+Page 1837: Section 59.5.8: Microcontroller debug unit (DBGMCU).
+Page 1858: 42.4.16     Debug mode
+Page 1858: When the microcontroller enters debug mode (core halted), the LPTIM counter either
+Page 1876: 43.3.7          Debug mode
+Page 1876: When the CPU enters debug mode, WWDG1 counter either continues to work normally or
+Page 1876: stops, depending on DBGMCU_APB3LFZ1. For more details, refer to Section 59: Debug
+Page 1882: 44.3.8      Debug mode
+Page 1882: When the microcontroller enters Debug mode (core halted), the IWDG counter either
+Page 1984: 46.4.17     Debug mode
+Page 1984: When the microcontroller enters debug mode (core halted), the SMBus timeout either
+Page 2303: 51.5.9           Debug information register (SPDIFRX_DIR)
+Page 2448: Filtering for Debug messages
+Page 2448: Filtering for debug messages is done by configuring one standard/extended message ID
+Page 2448: filter element for each of the three debug messages. To enable a filter element to filter for
+Page 2448: debug messages SFEC/EFEC has to be programmed to 111. In this case fields
+Page 2448: controls the debug message handling state machine, SFID2 / EFID2[5:0] controls the
+Page 2448: location for storage of a received debug message.
+Page 2448: When a debug message is stored, neither the respective New data flag nor
+Page 2448: FDCAN_IR.DRX are set. The reception of debug messages can be monitored via
+Page 2449: Table 463. Example of filter configuration for Debug messages
+Page 2449: 0               ID debug message A              01                   11 1101
+Page 2449: 1               ID debug message B              10                    11 1110
+Page 2449: 2               ID debug message C              11                    11 1111
+Page 2488: – 111: Store into Rx buffer or as debug message, configuration of FDCAN_SFT[1:0]
+Page 2488: When filtering for Rx buffers or for debug messages this field defines the ID of a
+Page 2488: – SFEC = 111 Filter for Rx buffers or for debug messages
+Page 2488: message A, B, or C of the debug message sequence.
+Page 2488: – 01: Debug message A
+Page 2488: – 10: Debug message B
+Page 2488: – 11: Debug message C
+Page 2489: When filtering for Rx buffers or for debug messages this field defines the ID of an
+Page 2490: – SFEC = 111 Filter for Rx buffers or for debug messages
+Page 2490: message A, B, or C of the debug message sequence.
+Page 2490: – 01: Debug message A
+Page 2490: – 10: Debug message B
+Page 2490: – 11: Debug message C
+Page 2519: address). Also used to reference debug messages A, B, C.
+Page 2520: Bits 31:30 DMS[1:0]: Debug message status
+Page 2520: 00: Idle state, wait for reception of debug messages, DMA request is cleared
+Page 2520: 01: Debug message A received
+Page 2520: 10: Debug messages A, B received
+Page 2520: 11: Debug messages A, B, C received, DMA request is set
+Page 2525: a FDCAN_TXBRP bit has been set, a Tx scan (see Filtering for Debug messages) is
+Page 2589: Section 56.14.8: OTG receive status debug read register (OTG_GRXSTSR)
+Page 2589: OTG_GRXSTSR                0x01C      Section 56.14.9: OTG receive status debug read [alternate]
+Page 2603: This bit indicates that the DMA request is in progress. Used for debug.
+Page 2612: 56.14.8           OTG receive status debug read register (OTG_GRXSTSR)
+Page 2612: A read to the receive status debug read register returns the contents of the top of the
+Page 2613: 56.14.9         OTG receive status debug read [alternate] (OTG_GRXSTSR)
+Page 2613: A read to the receive status debug read register returns the contents of the top of the
+Page 2614: Similarly to OTG_GRXSTSR (receive status debug read register) where a read returns the
+Page 2615: Similarly to OTG_GRXSTSR (receive status debug read register) where a read returns the
+Page 2627: This register is used for debugging.
+Page 2738: •   Internal loopback from Tx to Rx on MII for debugging.
+Page 2802: memory. This can be done by reading the corresponding Debug register bits in the
+Page 2808: 4.   In debug mode, the values of the current host transmitter or receiver descriptor address
+Page 2808: 5.   In debug mode, the values of the current host transmit buffer address pointer and
+Page 2809: is transferred to the system memory (by reading the appropriate bits of Tx queue debug
+Page 2809: debug Register (ETH_MTLTXQDR) and RXQSTS is set to 0.
+Page 2809: the appropriate bits of Tx queue debug Register (ETH_MTLTXQDR) (TRCSTS is not
+Page 2809: debug Register (ETH_MTLTXQDR) and RXQSTS to 0 in Rx queue debug register
+Page 2810: Transmit/Receive clock is stopped. This can be checked by reading the Debug register
+Page 2844: Debug status register (ETH_DMADSR)
+Page 2844: The Debug status register gives the Receive and Transmit process status for DMA Channel
+Page 2844: for debugging purpose.
+Page 2862: DMA_Debug_Status0 register explains the Transmit Process state transitions.
+Page 2870: Tx queue debug Register (ETH_MTLTXQDR)
+Page 2870: The Queue Transmit Debug register gives the debug status of various blocks related to the
+Page 2875: Rx queue debug register (ETH_MTLRXQDR)
+Page 2875: The Queue Receive Debug register gives the debug status of various blocks related to the
+Page 2913: Debug register (ETH_MACDR)
+Page 2913: The Debug register provides the debug status of various MAC blocks.
+Page 2915: Bit 19 DBGMEMA: DMA Debug Registers Enable
+Page 2915: This bit is set to 1 when the Debug Mode Enable option is selected
+Page 2925: This bit, along with the CNTPRSTLVL bit, is useful for debugging and testing the assertion of
+Page 2998: Debug infrastructure                                                                            RM0433
+Page 2998: 59          Debug infrastructure
+Page 2998: The debug infrastructure allows software designers to debug and trace their embedded
+Page 2998: The debug features can be controlled via a JTAG/Serial-wire debug access port, using
+Page 2998: industry standard debugging tools. A trace port allows data to be captured for logging and
+Page 2998: The trace and debug system has been designed to support a variety of typical use cases:
+Page 2998: Limited trace capability is available over the single-wire debug output. This supports
+Page 2998: •   Breakpoint debugging
+Page 2998: The processor can be debugged using equipment connected to the JTAG/SWD debug
+Page 2998: a circular buffer. The trace storage can be started and stopped by a debugger
+Page 2998: can be initiated by the debugger, software, external trigger, internal event etc.
+Page 2998: •   Reading the buffer with the debugger
+Page 2998: The debugger can read the contents of the trace buffer via the debug port. This is
+Page 2998: slower than the trace port, but allows basic trace functionality on the debugger without
+Page 2999: RM0433                                                                                                        Debug infrastructure
+Page 2999: 59.2              Debug infrastructure features
+Page 2999: A comprehensive set of trace and debug features is provided to support software
+Page 2999: •    Breakpoint debugging
+Page 2999: •    JTAG debug port
+Page 2999: •    Serial-wire debug port
+Page 2999: •    Arm® CoreSight™ debug and trace components
+Page 2999: 59.3              Debug infrastructure functional description
+Page 2999: 59.3.1            Debug infrastructure block diagram
+Page 2999: The block diagram shows the logical partitioning of the debug infrastructure.
+Page 2999: Figure 815. Block diagram of debug infrastructure
+Page 2999: Debug access port                Cortex-M7 debug                  Trace & debug       Legend
+Page 2999: JTDI                     DAPBUS                                                                          (system debug bus)
+Page 3000: Debug infrastructure                                                                                              RM0433
+Page 3000: 59.3.2      Debug infrastructure pins and internal signals
+Page 3000: Table 564. JTAG/Serial-wire debug port pins
+Page 3000: JTAG debug port                       SW debug port
+Page 3000: serial wire debug interface, not when using JTAG
+Page 3001: RM0433                                                                                                         Debug infrastructure
+Page 3001: 59.3.3            Debug infrastructure powering, clocking and reset
+Page 3001: Figure 816. Power domains of debug infrastructure
+Page 3001: JTDI                     DAPBUS                                                                           (system debug bus)
+Page 3001: The debug components are distributed across the power domains D1 and D3. The D3
+Page 3001: power domain is considered to be always on when the debugger is connected. It therefore
+Page 3001: contains the SWJ-DP, so that the debugger does not lose the connection with the SoC when
+Page 3001: The D1 power domain contains the Cortex-M7 core and the associated debug and trace
+Page 3001: power domain therefore needs to be on whenever a debug access to the Cortex-M7 is
+Page 3002: Debug infrastructure                                                                                                              RM0433
+Page 3002: Figure 817. Clock domains of debug infrastructure
+Page 3002: JTDI                     DAPBUS                                                                          (system debug bus)
+Page 3002: The debugger supplies the clock for the debug port, SWTCLK, via the debug interface pin,
+Page 3002: JTAG mode, as well as to operate the state machines and internal logic of the debug port. It
+Page 3002: that the debug port returns to the idle state.
+Page 3002: All the debug clocks (except DAPCLK) can be enabled and disabled by register bits in the
+Page 3002: DBGMCU. The DAPCLK domain is enabled by the debugger using the CDBGPWRUPREQ
+Page 3003: RM0433                                                                            Debug infrastructure
+Page 3003: bit in the debug port CTRL/STAT register. The clock must be enabled before the debugger
+Page 3003: can access any of the debug features on the device. It should be disabled at power up and
+Page 3003: when the debugger is disconnected, to avoid wasting energy.
+Page 3003: The debug and trace components included in the processor (ETM ITM, DWG, FPB etc) are
+Page 3003: Debug with low-power modes
+Page 3003: all debug components in that domain are inaccessible to the debugger. To avoid this, power
+Page 3003: words, the domain behaves as if it is in power saving mode, while the debugger does not
+Page 3003: The emulation mode is programmed in the MCU Debug (DBGMCU) unit. For more
+Page 3003: Reset of debug infrastructure
+Page 3003: The debug components, except for the debug port and access ports, are reset by their
+Page 3003: respective power domain resets. The debug port (SWJ-DP) is reset by a power-on reset of
+Page 3003: 59.4     Debug access port functional description
+Page 3003: The debug access port (DAP) is a debug subsystem comprising serial-wire and JTAG
+Page 3003: debug port (SWJ-DP) and three access ports.
+Page 3003: 59.4.1   Serial-wire and JTAG debug port (SWJ-DP)
+Page 3003: connecting debugging equipment.
+Page 3003: •   a 5-pin standard JTAG debug port (JTAG-DP)
+Page 3003: •   a 2-pin (clock + data) “serial-wire” debug port (SW-DP)
+Page 3003: configured by hardware in debug alternative function mode. The SWJ-DP incorporates pull-
+Page 3003: A debugger can select the SW-DP by transmitting the following serial data sequence on
+Page 3004: Debug infrastructure                                                                                     RM0433
+Page 3004: debugging is no longer possible.
+Page 3004: Serial wire debug port
+Page 3004: The Serial wire debug protocol uses two pins:
+Page 3005: RM0433                                                                                                                                                                  Debug infrastructure
+Page 3005: For more details on the Serial Wire debug protocol, refer to the Arm® Debug Interface
+Page 3006: Debug infrastructure                                                                                                  RM0433
+Page 3006: JTAG debug port
+Page 3007: RM0433                                                                               Debug infrastructure
+Page 3007: Debug port access register
+Page 3007: Initiates the debug port and allows access to a debug port
+Page 3007: Bits 2:1 = A[3:2] = 2-bit address of a debug port register.
+Page 3008: Debug infrastructure                                                                                    RM0433
+Page 3008: 0x05BA 0477: Arm® JTAG debug port ID code
+Page 3008: The DR registers are described in more detail in the Arm® Debug Interface Architecture
+Page 3008: Debug port registers
+Page 3008: The SW-DP and JTAG-DP both access the debug port (DP) registers. These are listed in
+Page 3008: The debugger can access the DP registers as follows:
+Page 3009: RM0433                                                                                                  Debug infrastructure
+Page 3009: Table 572. Debug port registers
+Page 3009: R      DP_DPIDR register. It contains the IDCODE for the debug port.
+Page 3009: Via JTAG-DP, it is used to allow the debugger to get the final result after a
+Page 3009: Writing any other value deselects the target. Debug tools must write
+Page 3009: Debug port identification register (DP_DPIDR)
+Page 3010: Debug infrastructure                                                                                                              RM0433
+Page 3010: Bits 27:20 PARTNO[7:0]: Part number for the debug port
+Page 3010: Bit 16 MIN: Minimal debug port (MINDP) implementation
+Page 3010: Debug port abort register (DP_ABORT)
+Page 3011: RM0433                                                                                                                                                  Debug infrastructure
+Page 3011: Debug port control/status register (DP_CTRL/STAT)
+Page 3011: Bit 29 CDBGPWRUPACK: Debug domain power-up status bit
+Page 3011: This bit is read-only. It returns the status of the debug domain power-up acknowledge signal
+Page 3011: Bit 28 CDBGPWRUPREQ: Debug domain power-up/down control bit
+Page 3011: This bit controls the debug domain power-up/down request signal to the power controller.
+Page 3011: Bit 27 CDBGRSTACK: Debug domain reset status bit - not used in this device
+Page 3012: Debug infrastructure                                                                                     RM0433
+Page 3012: Bit 26 CDBGRSTREQ: Debug domain reset control bit - not used in this device
+Page 3013: RM0433                                                                                          Debug infrastructure
+Page 3013: Debug port data link control register (DP_DLCR)
+Page 3014: Debug infrastructure                                                                                                 RM0433
+Page 3014: Debug port target identification register (DP_TARGETID)
+Page 3014: Debug port data link protocol identification register (DP_DLPIDR)
+Page 3015: RM0433                                                                                            Debug infrastructure
+Page 3015: Bits 3:0 PROTSVN[3:0]: Serial Wire Debug protocol version
+Page 3015: Debug port resend register (DP_RESEND)
+Page 3015: Debug port access port select register (DP_SELECT)
+Page 3016: Debug infrastructure                                                                                          RM0433
+Page 3016: 0x0: AP0 - Cortex-M7 debug access port (AHB-AP)
+Page 3016: 0x2: AP2 - System debug access port (APB-AP)
+Page 3016: These bits select the register at address 0x4 of the debug port.
+Page 3016: Debug port read buffer register (DP_RDBUFF)
+Page 3017: RM0433                                                                                             Debug infrastructure
+Page 3017: Debug port target identification register (DP_TARGETSEL)
+Page 3017: Figure 820. Debug and access port connections
+Page 3017: System Debug Bus (APB-D)
+Page 3018: Debug infrastructure                                                                             RM0433
+Page 3018: 1.   AP0: Cortex-M7 access port (AHB-AP). Allows access to the debug and trace features
+Page 3018: 3.   AP2: System access port (APB-AP). Allows access to the debug and trace features on
+Page 3018: the system APB debug bus, that is, all components not included in the processor core.
+Page 3018: All access ports are of MEM-AP type, that is, the debug and trace component registers are
+Page 3018: mapped in the address space of the associated debug bus. The AP is seen by the debugger
+Page 3018: Table 571) or of the SW-DP Packet Request (see Table 568), depending on the debug
+Page 3018: The debugger can access the AP registers as follows:
+Page 3018: The debugger can access the memory mapped debug component registers through the
+Page 3018: For more detailed information on the MEM-AP, refer to the Arm® Debug Interface
+Page 3018: Architecture Specification [1]. The usage of MEM-AP to connect the debug port to the debug
+Page 3019: RM0433                                                                              Debug infrastructure
+Page 3019: on the debug bus to the address in TAR[31:0]
+Page 3019: on the debug bus to the address in TAR[31:4] << 4 + 0x0
+Page 3019: on the debug bus to the address in TAR[31:4] << 4 + 0x4
+Page 3019: on the debug bus to the address in TAR[31:4] << 4 + 0x8
+Page 3019: on the debug bus to the address in TAR[31:4] << 4 + 0xC
+Page 3019: Debug base address register (RO)
+Page 3020: Debug infrastructure                                                                                                 RM0433
+Page 3020: This bit determines whether the debugger can access secure memory. This field is reserved
+Page 3021: RM0433                                                                                             Debug infrastructure
+Page 3022: Debug infrastructure                                                                                         RM0433
+Page 3022: 1: Arm® debug interface v5.
+Page 3022: Bit 0 ENTRYPRESENT: Debug component present status bit
+Page 3022: This bit indicates that debug components are present on the access port bus.
+Page 3022: 0: Debug components are not present (AP1)
+Page 3022: 1: Debug components are present (AP0, AP2)
+Page 3023: RM0433                                                                            Debug infrastructure
+Page 3023: 59.5          Trace and debug subsystem functional description
+Page 3023: The trace and debug subsystem features the following CoreSight components:
+Page 3023: These components are accessible by the debugger via the system APB-AP and its
+Page 3023: associated APB-D debug bus. They are also accessible by the Cortex-M7 processor.
+Page 3023: The MCU debug unit (DBGMCU) is also accessed via the APB-D. This non-CoreSight
+Page 3023: component contains registers for configuring the behavior of the device in debug mode.
+Page 3023: tables allow a debugger to discover the topology of the CoreSight components
+Page 3023: address space, from 0xE00E0000 to 0xE00E0FFC when accessed by the debugger, and
+Page 3023: (debugger)        (system bus)     offset
+Page 3024: Debug infrastructure                                                                                 RM0433
+Page 3024: 0xE00F0000 to 0xE00F0FFC when accessed by the debugger, and from 0x5C010000 to
+Page 3024: (debugger)      (system bus)
+Page 3024: Each debug component occupies one or more 4 Kbyte blocks of address space. This block
+Page 3024: of address space is referred to as the debug register file for the component.
+Page 3025: RM0433                                                                                                            Debug infrastructure
+Page 3025: For more information on the use of the ROM table, refer to the Arm® Debug Interface
+Page 3026: Debug infrastructure                                                                                                RM0433
+Page 3027: RM0433                                                                                             Debug infrastructure
+Page 3028: Debug infrastructure                                                                                             RM0433
+Page 3029: RM0433                                                                                         Debug infrastructure
+Page 3030: Debug infrastructure
+Page 3031: RM0433                                                                                           Debug infrastructure
+Page 3031: The TSG registers are accessible over the APB-D. This allows the debugger or debug
+Page 3031: Debug APB   Timestamp generator
+Page 3032: Debug infrastructure                                                                                        RM0433
+Page 3032: Bit 1 HDBG: Halt on debug
+Page 3032: 1: Halt counter when system-wide debug state is detected - not implemented
+Page 3032: Bit 1 DBGH: Debug halt
+Page 3032: 1: Counter halted due to system-wide debug state
+Page 3033: RM0433                                                                                     Debug infrastructure
+Page 3034: Debug infrastructure                                                                                                        RM0433
+Page 3035: RM0433                                                                                             Debug infrastructure
+Page 3036: Debug infrastructure                                                                                             RM0433
+Page 3037: RM0433                                                                                         Debug infrastructure
+Page 3038: Debug infrastructure
+Page 3039: RM0433                                                                           Debug infrastructure
+Page 3039: CTM. The system-level CTI is accessible to the debugger via the system access port and
+Page 3039: The CTIs allow events from various sources to trigger debug and/or trace activity. For
+Page 3039: signal to generate a debug event
+Page 3039: ETF capture finished - allows a debug event
+Page 3040: Debug infrastructure                                                                              RM0433
+Page 3040: ETF full flag - allows a debug event to be
+Page 3040: CPU halted - indicates CPU is in debug
+Page 3041: RM0433                                                                                  Debug infrastructure
+Page 3041: 0         EDBGRQ                   Cortex-M7 CPU         CPU halt request - puts CPU in debug mode
+Page 3041: 7      DBGRESTART                  Cortex-M7 CPU         CPU restart request - CPU exits debug mode
+Page 3042: Debug infrastructure                                                                                             RM0433
+Page 3043: RM0433                                                                                       Debug infrastructure
+Page 3044: Debug infrastructure                                                                                           RM0433
+Page 3045: RM0433                                                                                         Debug infrastructure
+Page 3046: Debug infrastructure                                                                                                  RM0433
+Page 3047: RM0433                                                                                             Debug infrastructure
+Page 3048: Debug infrastructure                                                                                          RM0433
+Page 3049: RM0433                                                                                           Debug infrastructure
+Page 3050: Debug infrastructure                                                                                                RM0433
+Page 3050: Enables write access to some CTI registers by processor core (debuggers do not need to
+Page 3050: This bit always returns zero when read by an external debugger.
+Page 3050: by an external debugger.
+Page 3051: RM0433                                                                                         Debug infrastructure
+Page 3051: Bits 7:6 SNID[1:0]: Security level for secure non-invasive debug
+Page 3051: Bits 5:4 SID[1:0]: Security level for secure invasive debug
+Page 3051: Bits 3:2 NSNID[1:0]: Security level for non-secure non-invasive debug
+Page 3051: Bits 1:0 NSID[1:0]: Security level for non-secure invasive debug
+Page 3052: Debug infrastructure                                                                                                RM0433
+Page 3052: 0x4: Indicates that this component allows a debugger to control other components in a
+Page 3053: RM0433                                                                                             Debug infrastructure
+Page 3054: Debug infrastructure                                                                                             RM0433
+Page 3055: RM0433                                                                                         Debug infrastructure
+Page 3056: Debug infrastructure
+Page 3057: Debug infrastructure
+Page 3058: Debug infrastructure                                                                                                   RM0433
+Page 3059: RM0433                                                                                              Debug infrastructure
+Page 3060: Debug infrastructure                                                                                             RM0433
+Page 3061: RM0433                                                                                            Debug infrastructure
+Page 3061: The field enables write access to some CSTF registers by processor cores (debuggers do
+Page 3061: This bit always returns zero when read by an external debugger.
+Page 3061: by an external debugger.
+Page 3062: Debug infrastructure                                                                                              RM0433
+Page 3062: Bits 7:6 SNID[1:0]: Security level for secure non-invasive debug
+Page 3062: Bits 5:4 SID[1:0]: Security level for secure invasive debug
+Page 3062: Bits 3:2 NSNID[1:0]: Security level for non-secure non-invasive debug
+Page 3062: Bits 1:0 NSID[1:0]: Security level for non-secure invasive debug
+Page 3063: RM0433                                                                                             Debug infrastructure
+Page 3064: Debug infrastructure                                                                                                   RM0433
+Page 3065: RM0433                                                                                         Debug infrastructure
+Page 3066: Debug infrastructure                                                                                            RM0433
+Page 3067: Debug infrastructure
+Page 3068: Debug infrastructure                                                                                                                                                                                                             RM0433
+Page 3069: RM0433                                                                            Debug infrastructure
+Page 3069: –    via the Debug port - the debugger can read the buffer via the RRD register that is
+Page 3070: Debug infrastructure                                                                                                         RM0433
+Page 3071: RM0433                                                                                         Debug infrastructure
+Page 3072: Debug infrastructure                                                                                                 RM0433
+Page 3073: RM0433                                                                                           Debug infrastructure
+Page 3074: Debug infrastructure                                                                                           RM0433
+Page 3075: RM0433                                                                                           Debug infrastructure
+Page 3076: Debug infrastructure                                                                                            RM0433
+Page 3077: RM0433                                                                                           Debug infrastructure
+Page 3078: Debug infrastructure                                                                                             RM0433
+Page 3079: RM0433                                                                                   Debug infrastructure
+Page 3080: Debug infrastructure                                                                                                    RM0433
+Page 3081: RM0433                                                                                          Debug infrastructure
+Page 3082: Debug infrastructure                                                                                           RM0433
+Page 3082: Enables write access to some ETF registers by processor cores (debuggers do not need to
+Page 3082: This bit always returns zero when read by an external debugger.
+Page 3082: by an external debugger.
+Page 3083: RM0433                                                                                                     Debug infrastructure
+Page 3083: Bits 7:6 SNID[1:0]: Security level for secure non-invasive debug
+Page 3083: Bits 5:4 SID[1:0]: Security level for secure invasive debug
+Page 3083: Bits 3:2 NSNID[1:0]: Security level for non-secure non-invasive debug
+Page 3083: Bits 1:0 NSID[1:0]: Security level for non-secure invasive debug
+Page 3084: Debug infrastructure                                                                                               RM0433
+Page 3085: RM0433                                                                                             Debug infrastructure
+Page 3086: Debug infrastructure                                                                                                RM0433
+Page 3087: RM0433                                                                                          Debug infrastructure
+Page 3088: Debug infrastructure
+Page 3089: Debug infrastructure
+Page 3090: Debug infrastructure                                                                                                                                                                                                            RM0433
+Page 3091: RM0433                                                                                              Debug infrastructure
+Page 3092: Debug infrastructure                                                                                              RM0433
+Page 3093: RM0433                                                                                                                           Debug infrastructure
+Page 3094: Debug infrastructure                                                                                            RM0433
+Page 3095: RM0433                                                                                          Debug infrastructure
+Page 3096: Debug infrastructure                                                                                             RM0433
+Page 3097: RM0433                                                                                             Debug infrastructure
+Page 3098: Debug infrastructure                                                                                            RM0433
+Page 3099: RM0433                                                                                           Debug infrastructure
+Page 3099: Enables write access to some TPIU registers by processor cores (debuggers do not need to
+Page 3100: Debug infrastructure                                                                                                 RM0433
+Page 3100: This bit always returns zero when read by an external debugger.
+Page 3100: by an external debugger.
+Page 3100: Bits 7:6 SNID[1:0]: Security level for secure non-invasive debug
+Page 3100: Bits 5:4 SID[1:0]: Security level for secure invasive debug
+Page 3100: Bits 3:2 NSNID[1:0]: Security level for non-secure non-invasive debug
+Page 3100: Bits 1:0 NSID[1:0]: Security level for non-secure invasive debug
+Page 3101: RM0433                                                                                                 Debug infrastructure
+Page 3102: Debug infrastructure                                                                                                RM0433
+Page 3103: RM0433                                                                                             Debug infrastructure
+Page 3104: Debug infrastructure                                                                                           RM0433
+Page 3105: RM0433                                                                                          Debug infrastructure
+Page 3106: Debug infrastructure                                                                                                                                                                                                                                     RM0433
+Page 3107: Debug infrastructure
+Page 3108: Debug infrastructure                                                                                                                                                                                                  RM0433
+Page 3109: RM0433                                                                                          Debug infrastructure
+Page 3110: Debug infrastructure                                                                                           RM0433
+Page 3111: RM0433                                                                                            Debug infrastructure
+Page 3112: Debug infrastructure                                                                                                  RM0433
+Page 3112: Enables write access to some SWO registers by processor cores (debuggers do not need to
+Page 3112: This bit always returns zero when read by an external debugger.
+Page 3112: by an external debugger.
+Page 3113: RM0433                                                                                               Debug infrastructure
+Page 3113: Bits 7:6 SNID[1:0]: Security level for secure non-invasive debug
+Page 3113: Bits 5:4 SID[1:0]: Security level for secure invasive debug
+Page 3113: Bits 3:2 NSNID[1:0]: Security level for non-secure non-invasive debug
+Page 3113: Bits 1:0 NSID[1:0]: Security level for non-secure invasive debug
+Page 3114: Debug infrastructure                                                                                               RM0433
+Page 3115: RM0433                                                                                             Debug infrastructure
+Page 3116: Debug infrastructure                                                                                                   RM0433
+Page 3117: RM0433                                                                                         Debug infrastructure
+Page 3118: Debug infrastructure                                                                                                                                                                                                                        RM0433
+Page 3119: Debug infrastructure
+Page 3120: Debug infrastructure                                                                                                                                                                                                          RM0433
+Page 3121: RM0433                                                                                        Debug infrastructure
+Page 3122: Debug infrastructure                                                                                             RM0433
+Page 3123: RM0433                                                                                            Debug infrastructure
+Page 3123: Enables write access to some SWTF registers by processor cores (debuggers do not need to
+Page 3123: This bit always returns zero when read by an external debugger.
+Page 3123: by an external debugger.
+Page 3124: Debug infrastructure                                                                                              RM0433
+Page 3124: Bits 7:6 SNID[1:0]: Security level for secure non-invasive debug
+Page 3124: Bits 5:4 SID[1:0]: Security level for secure invasive debug
+Page 3124: Bits 3:2 NSNID[1:0]: Security level for non-secure non-invasive debug
+Page 3124: Bits 1:0 NSID[1:0]: Security level for non-secure invasive debug
+Page 3125: RM0433                                                                                             Debug infrastructure
+Page 3126: Debug infrastructure                                                                                                   RM0433
+Page 3127: RM0433                                                                                        Debug infrastructure
+Page 3128: Debug infrastructure                                                                                               RM0433
+Page 3129: RM0433                                                                                                                                                                                                   Debug infrastructure
+Page 3130: Debug infrastructure
+Page 3131: RM0433                                                                                        Debug infrastructure
+Page 3131: 59.5.8          Microcontroller debug unit (DBGMCU)
+Page 3131: behavior in debug mode. Specifically it allows the debugger, or debug software, to:
+Page 3131: •          maintain the clock and power to the system debug and trace components when in low
+Page 3131: when either processor core is stopped in debug mode. For timers having
+Page 3131: accessible to the debugger via the APB-D bus at base address 0xE00E1000. They are also
+Page 3132: Debug infrastructure                                                                                           RM0433
+Page 3132: Bit 22 D3DBGCKEN: D3 debug clock enable
+Page 3132: This bit allows the debug components in the D3 domain (excluding the DAPCLK domain) to
+Page 3132: 0: Disabled - D3 domain debug components are disabled and their clocks gated
+Page 3132: 1: Enabled - D3 domain debug components are clocked whenever the corresponding domain
+Page 3132: Bit 21 D1DBGCKEN: D1 debug clock enable
+Page 3132: This bit allows the debug components in the D1 domain (excluding those in the processor
+Page 3132: 0: Disabled - D1 domain debug components are disabled and their clocks gated
+Page 3132: 1: Enabled - D1 domain debug components are clocked whenever the corresponding domain
+Page 3132: Bit 8 DBGSTBY_D3: Allow debug in D3 Standby mode
+Page 3132: run during Standby mode, and the domain supply is maintained, allowing full debug
+Page 3133: RM0433                                                                                              Debug infrastructure
+Page 3133: Bit 7 DBGSTOP_D3: Allow debug in D3 Stop mode
+Page 3133: Bit 2 DBGSTBY_D1: Allow D1 domain debug in Standby mode
+Page 3133: run during Standby mode, and the domain supply is maintained, allowing full debug
+Page 3133: Bit 1 DBGSTOP_D1: Allow D1 domain debug in Stop mode
+Page 3133: mode, allowing full debug capability. On exit from Stop mode, the clock settings is set to the
+Page 3133: Bit 0 DBGSLEEP_D1: Allow D1 domain debug in Sleep mode
+Page 3133: 1: Automatic clock stop disabled - processor clock continues to run, allowing full debug
+Page 3133: 1. If CDBGPWRUPREQ in the debug port Control/Stat register is asserted, D3 will remain powered up and the
+Page 3133: 2. If CDBGPWRUPREQ in the debug port Control/Stat register is asserted, D3 will remain powered up and the
+Page 3133: Bit 6 WWDG1: WWDG1 stop in debug
+Page 3133: 0: Normal operation - WWDG1 continues to operate while the core is in debug mode
+Page 3133: 1: Stop in debug - WWDG1 is frozen while the core is in debug mode
+Page 3134: Debug infrastructure                                                                                            RM0433
+Page 3134: Bit 23 I2C3: I2C3 SMBUS timeout stop in debug
+Page 3134: 0: Normal operation - I2C3 SMBUS timeout continues to operate while the core is in debug mode
+Page 3134: 1: Stop in debug - I2C3 SMBUS timeout is frozen while Cortex-M7 is in debug mode
+Page 3134: Bit 22 I2C2: I2C2 SMBUS timeout stop in debug
+Page 3134: 0: Normal operation - I2C2 SMBUS timeout continues to operate while the core is in debug mode
+Page 3134: 1: Stop in debug - I2C2 SMBUS timeout is frozen while Cortex-M7 is in debug mode
+Page 3134: Bit 21 I2C1: I2C1 SMBUS timeout stop in debug
+Page 3134: 0: Normal operation - I2C1 SMBUS timeout continues to operate while the core is in debug mode
+Page 3134: 1: Stop in debug - I2C1 SMBUS timeout is frozen while the core is in debug mode
+Page 3134: Bit 9 LPTIM1: LPTIM1 stop in debug
+Page 3134: 0: Normal operation - LPTIM1 continues to operate while the core is in debug mode
+Page 3134: 1: Stop in debug - LPTIM1 is frozen while Cortex-M7 is in debug mode
+Page 3134: Bit 8 TIM14: TIM14 stop in debug
+Page 3134: 0: Normal operation - TIM14 continues to operate while the core is in debug mode
+Page 3134: 1: Stop in debug - TIM14 is frozen while Cortex-M7 is in debug mode
+Page 3134: Bit 7 TIM13: TIM13 stop in debug
+Page 3134: 0: Normal operation - TIM13 continues to operate while the core is in debug mode
+Page 3134: 1: Stop in debug - TIM13 is frozen while Cortex-M7 is in debug mode
+Page 3134: Bit 6 TIM12: TIM12 stop in debug
+Page 3134: 0: Normal operation - TIM12 continues to operate while the core is in debug mode
+Page 3134: 1: Stop in debug - TIM12 is frozen while Cortex-M7 is in debug mode
+Page 3134: Bit 5 TIM7: TIM7 stop in debug
+Page 3134: 0: Normal operation - TIM7 continues to operate while the core is in debug mode
+Page 3134: 1: Stop in debug - TIM7 is frozen while Cortex-M7 is in debug mode
+Page 3134: Bit 4 TIM6: TIM6 stop in debug
+Page 3134: 0: Normal operation - TIM6 continues to operate while the core is in debug mode
+Page 3134: 1: Stop in debug - TIM6 is frozen while Cortex-M7 is in debug mode
+Page 3135: RM0433                                                                                      Debug infrastructure
+Page 3135: Bit 3 TIM5: TIM5 stop in debug
+Page 3135: 0: Normal operation - TIM5 continues to operate while the core is in debug mode
+Page 3135: 1: Stop in debug - TIM5 is frozen while Cortex-M7 is in debug mode
+Page 3135: Bit 2 TIM4: TIM4 stop in debug
+Page 3135: 0: Normal operation - TIM4 continues to operate while the core is in debug mode
+Page 3135: 1: Stop in debug - TIM4 is frozen while Cortex-M7 is in debug mode
+Page 3135: Bit 1 TIM3: TIM3 stop in debug
+Page 3135: 0: Normal operation - TIM3 continues to operate while the core is in debug mode
+Page 3135: 1: Stop in debug - TIM3 is frozen while Cortex-M7 is in debug mode
+Page 3135: Bit 0 TIM2: TIM2 stop in debug
+Page 3135: 0: Normal operation - TIM2 continues to operate while the core is in debug mode
+Page 3135: 1: Stop in debug - TIM2 is frozen while Cortex-M7 is in debug mode
+Page 3135: Bit 29 HRTIM: HRTIM stop in debug
+Page 3135: 0: Normal operation - HRTIM continues to operate while the core is in debug mode
+Page 3135: 1: Stop in debug - HRTIM is frozen while Cortex-M7 is in debug mode
+Page 3135: Bit 18 TIM17: TIM17 stop in debug
+Page 3135: 0: Normal operation - TIM17 continues to operate while the core is in debug mode
+Page 3135: 1: Stop in debug - TIM17 is frozen and TIM17 outputs are disabled while Cortex-M7 is in debug
+Page 3135: Bit 17 TIM16: TIM16 stop in debug
+Page 3135: 0: Normal operation - TIM16 continues to operate while the core is in debug mode
+Page 3135: 1: Stop in debug - TIM16 is frozen and TIM16 outputs are disabled while Cortex-M7 is in debug
+Page 3135: Bit 16 TIM15: TIM15 stop in debug
+Page 3135: 0: Normal operation - TIM15 continues to operate while the core is in debug mode
+Page 3135: 1: Stop in debug - TIM15 is frozen and TIM15 outputs are disabled while Cortex-M7 is in debug
+Page 3136: Debug infrastructure                                                                                           RM0433
+Page 3136: Bit 1 TIM8: TIM8 stop in debug
+Page 3136: 0: Normal operation - TIM8 continues to operate while the core is in debug mode
+Page 3136: 1: Stop in debug - TIM8 is frozen and TIM8 outputs are disabled while Cortex-M7 is in debug mode
+Page 3136: Bit 0 TIM1: TIM1 stop in debug
+Page 3136: 0: Normal operation - TIM1 continues to operate while the core is in debug mode
+Page 3136: 1: Stop in debug - TIM1 is frozen and TIM1 outputs are disabled while Cortex-M7 is in debug mode.
+Page 3136: Bit 18 WDGLSD1: LS watchdog for D1 stop in debug
+Page 3136: 0: Normal operation - watchdog continues to count while the core is in debug mode
+Page 3136: 1: Stop in debug - watchdog is frozen while Cortex-M7 is in debug mode
+Page 3136: Bit 16 RTC: RTC stop in debug
+Page 3136: 0: Normal operation - RTC continues to operate while the core is in debug mode
+Page 3136: 1: Stop in debug - RTC is frozen while Cortex-M7 is in debug mode
+Page 3136: Bit 12 LPTIM5: LPTIM5 stop in debug
+Page 3136: 0: Normal operation - LPTIM5 continues to operate while the core is in debug mode
+Page 3136: 1: Stop in debug - LPTIM5 is frozen while Cortex-M7 is in debug mode
+Page 3136: Bit 11 LPTIM4: LPTIM4 stop in debug
+Page 3136: 0: Normal operation - LPTIM4 continues to operate while the core is in debug mode
+Page 3136: 1: Stop in debug - LPTIM4 is frozen while Cortex-M7 is in debug mode
+Page 3136: Bit 10 LPTIM3: LPTIM2 stop in debug
+Page 3136: 0: Normal operation - LPTIM2 continues to operate while the core is in debug mode
+Page 3136: 1: Stop in debug - LPTIM2 is frozen while Cortex-M7 is in debug mode
+Page 3136: Bit 9 LPTIM2: LPTIM2 stop in debug
+Page 3136: 0: Normal operation - LPTIM2 continues to operate while the core is in debug mode
+Page 3136: 1: Stop in debug - LPTIM2 is frozen while Cortex-M7 is in debug mode
+Page 3137: RM0433                                                                              Debug infrastructure
+Page 3137: Bit 7 I2C4: I2C4 SMBUS timeout stop in debug
+Page 3137: 0: Normal operation - I2C4 SMBUS timeout continues to operate while the core is in debug mode
+Page 3137: 1: Stop in debug - I2C4 SMBUS timeout is frozen while the core is in debug mode
+Page 3138: Debug infrastructure                                                                                                                                                                                                                                                                  RM0433
+Page 3138: 59.6            Cortex-M7 debug functional description
+Page 3138: These components are accessible by the debugger via the Cortex-M7 AHB-AP and its
+Page 3139: RM0433                                                                          Debug infrastructure
+Page 3139: CoreSight debug components accessible via the AHBD. These tables allow a debugger to
+Page 3139: the debugger to identify the CPU core, as well as to the remaining CoreSight
+Page 3140: Debug infrastructure                                                                                                      RM0433
+Page 3141: RM0433                                                                                            Debug infrastructure
+Page 3142: Debug infrastructure                                                                                                RM0433
+Page 3143: RM0433                                                                                             Debug infrastructure
+Page 3144: Debug infrastructure                                                                                               RM0433
+Page 3145: RM0433                                                                                                                                                                                               Debug infrastructure
+Page 3146: Debug infrastructure                                                                                                                                                                                                              RM0433
+Page 3147: RM0433                                                                                             Debug infrastructure
+Page 3148: Debug infrastructure                                                                                                   RM0433
+Page 3149: RM0433                                                                                         Debug infrastructure
+Page 3150: Debug infrastructure                                                                                                                                                                                                                        RM0433
+Page 3151: RM0433                                                                                                                                                                                  Debug infrastructure
+Page 3152: Debug infrastructure                                                                                                 RM0433
+Page 3152: •          a watchpoint debug event, on either the PC value or the accessed data address
+Page 3152: A watchpoint debug event either generates a DebugMonitor exception, or causes the
+Page 3152: processor to halt execution and enter Debug state.
+Page 3153: RM0433                                                                                Debug infrastructure
+Page 3154: Debug infrastructure                                                                                              RM0433
+Page 3155: RM0433                                                                                        Debug infrastructure
+Page 3156: Debug infrastructure                                                                                                RM0433
+Page 3157: RM0433                                                                                                   Debug infrastructure
+Page 3157: matching by comparator n. A debugger can write 0b11111 to this field and then read the
+Page 3158: Debug infrastructure                                                                                         RM0433
+Page 3159: RM0433                                                                                             Debug infrastructure
+Page 3160: Debug infrastructure                                                                                                   RM0433
+Page 3161: RM0433                                                                                         Debug infrastructure
+Page 3162: Debug infrastructure                                                                                                                                                                                                                                                                                                           RM0433
+Page 3163: Debug infrastructure
+Page 3164: Debug infrastructure                                                                                                                                                                                                                                                                RM0433
+Page 3165: RM0433                                                                                           Debug infrastructure
+Page 3166: Debug infrastructure                                                                                              RM0433
+Page 3167: RM0433                                                                                      Debug infrastructure
+Page 3167: If multi-source trace is in use, the debugger must write a non-zero value to this field. Note:
+Page 3167: If a debugger sets this bit it must also configure the DWT_CTRL register SYNCTAP field in
+Page 3168: Debug infrastructure                                                                                                RM0433
+Page 3169: RM0433                                                                                             Debug infrastructure
+Page 3170: Debug infrastructure                                                                                           RM0433
+Page 3171: RM0433                                                                                          Debug infrastructure
+Page 3172: Debug infrastructure                                                                                                                                                                                                                                                  RM0433
+Page 3173: RM0433                                                                                                                                                                                                  Debug infrastructure
+Page 3174: Debug infrastructure                                                                                                RM0433
+Page 3175: RM0433                                                                                                 Debug infrastructure
+Page 3176: Debug infrastructure                                                                                                RM0433
+Page 3177: RM0433                                                                                             Debug infrastructure
+Page 3178: Debug infrastructure                                                                                             RM0433
+Page 3179: RM0433                                                                                                                                                                                                        Debug infrastructure
+Page 3180: Debug infrastructure
+Page 3181: RM0433                                                                                        Debug infrastructure
+Page 3182: Debug infrastructure                                                                                           RM0433
+Page 3183: RM0433                                                                                         Debug infrastructure
+Page 3184: Debug infrastructure                                                                                                           RM0433
+Page 3185: RM0433                                                                                         Debug infrastructure
+Page 3186: Debug infrastructure                                                                                                      RM0433
+Page 3187: RM0433                                                                                              Debug infrastructure
+Page 3188: Debug infrastructure                                                                                            RM0433
+Page 3189: RM0433                                                                                            Debug infrastructure
+Page 3190: Debug infrastructure                                                                                             RM0433
+Page 3191: RM0433                                                                                         Debug infrastructure
+Page 3192: Debug infrastructure                                                                                            RM0433
+Page 3193: RM0433                                                                                           Debug infrastructure
+Page 3194: Debug infrastructure                                                                                                                RM0433
+Page 3195: RM0433                                                                                           Debug infrastructure
+Page 3196: Debug infrastructure                                                                                                   RM0433
+Page 3197: RM0433                                                                                          Debug infrastructure
+Page 3198: Debug infrastructure                                                                                            RM0433
+Page 3199: RM0433                                                                                         Debug infrastructure
+Page 3200: Debug infrastructure                                                                                              RM0433
+Page 3201: RM0433                                                                                           Debug infrastructure
+Page 3202: Debug infrastructure                                                                                             RM0433
+Page 3202: Enables write access to some ETM registers by processor cores (debuggers do not need to
+Page 3203: RM0433                                                                                              Debug infrastructure
+Page 3203: This bit always returns zero when read by an external debugger.
+Page 3203: by an external debugger.
+Page 3203: Bits 7:6 SNID[1:0]: Security level for secure non-invasive debug
+Page 3204: Debug infrastructure                                                                                                  RM0433
+Page 3204: Bits 5:4 SID[1:0]: Security level for secure invasive debug
+Page 3204: Bits 3:2 NSNID[1:0]: Security level for non-secure non-invasive debug
+Page 3204: Bits 1:0 NSID[1:0]: Security level for non-secure invasive debug
+Page 3205: RM0433                                                                                             Debug infrastructure
+Page 3206: Debug infrastructure                                                                                                   RM0433
+Page 3207: RM0433                                                                                        Debug infrastructure
+Page 3208: Debug infrastructure                                                                                               RM0433
+Page 3208: 0x9: Debug component with CoreSight-compatible registers
+Page 3209: The ETM registers are accessed by the debugger via the Cortex-M7 PPB, at address range
+Page 3209: Debug infrastructure
+Page 3210: Debug infrastructure                                                                                                                                                                                                                                                             RM0433
+Page 3211: Debug infrastructure
+Page 3212: Debug infrastructure
+Page 3213: RM0433                                                                                                                                                                                     Debug infrastructure
+Page 3213: 59.7           References for debug infrastructure
+Page 3213: 1.    IHI 0031C (ID080813) - Arm® Debug Interface Architecture Specification ADIv5.0 to
+Page 3222: Section 60: Debug infrastructure
+Page 3222: Updated Section 60.5.8: Microcontroller debug unit (DBGMCU).
+Page 3231: Added Section 42.4.16: Debug mode.
+Page 3231: Section 43.3.7: Debug mode.
+Page 3233: Section 59: Debug infrastructure
+Page 3233: Updated Debug port target identification register (DP_TARGETID).

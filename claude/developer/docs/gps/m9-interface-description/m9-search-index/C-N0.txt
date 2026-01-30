@@ -1,0 +1,11 @@
+Keyword: C/N0
+Occurrences: 7
+================================================================================
+
+Page   35: 7 + n·4 cno                   numeric       dBHz         44               Signal strength (C/N0, range: 0-99), null when not
+Page   43: 7 + n·6 cno                      numeric     dBHz         45                 Signal strength (C/N0, range 0-99), blank when not
+Page   66: 24          U1        cnoThreshNumS       -          -            Number of satellites required to have C/N0 above
+Page   66: 25          U1        cnoThresh           -          dBHz         C/N0 threshold for deciding whether to attempt a ﬁx
+Page   67: bit 3   U:1      minCno                 -           -            1 = apply minimum C/N0 setting
+Page  217: CFG-NAVSPG-INFIL_NCNOTHRS              0x201100aa U1             -         -     Number of satellites required to have C/N0
+Page  217: CFG-NAVSPG-INFIL_CNOTHRS               0x201100ab U1             -         -     C/N0 threshold for deciding whether to attempt

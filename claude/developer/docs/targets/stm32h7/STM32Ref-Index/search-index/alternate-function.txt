@@ -1,0 +1,124 @@
+Keyword: alternate function
+Occurrences: 120
+================================================================================
+
+Page   11: 10.3.2      I/O pin alternate function multiplexer and mapping . . . . . . . . . . . . . . . 511
+Page   11: 10.3.7      I/O alternate function input/output . . . . . . . . . . . . . . . . . . . . . . . . . . . . 513
+Page   11: 10.3.12 Alternate function configuration . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 515
+Page   11: 10.4.9      GPIO alternate function low register (GPIOx_AFRL)
+Page   12: 10.4.10 GPIO alternate function high register (GPIOx_AFRH)
+Page   39: 37.4.24 TIM1 alternate function option register 1 (TIM1_AF1) . . . . . . . . . . . . 1604
+Page   39: 37.4.25 TIM1 Alternate function register 2 (TIM1_AF2) . . . . . . . . . . . . . . . . . 1606
+Page   39: 37.4.26 TIM8 Alternate function option register 1 (TIM8_AF1) . . . . . . . . . . . . 1607
+Page   39: 37.4.27 TIM8 Alternate function option register 2 (TIM8_AF2) . . . . . . . . . . . . 1609
+Page   40: 38.4.19 TIM2 alternate function option register 1 (TIM2_AF1) . . . . . . . . . . . . 1685
+Page   40: 38.4.20 TIM3 alternate function option register 1 (TIM3_AF1) . . . . . . . . . . . . 1685
+Page   40: 38.4.21 TIM4 alternate function option register 1 (TIM4_AF1) . . . . . . . . . . . . 1686
+Page   40: 38.4.22 TIM5 alternate function option register 1 (TIM5_AF1) . . . . . . . . . . . . 1686
+Page   44: 40.6.16 TIM16 alternate function register 1 (TIM16_AF1) . . . . . . . . . . . . . . . 1824
+Page   44: 40.6.18 TIM17 alternate function register 1 (TIM17_AF1) . . . . . . . . . . . . . . . 1826
+Page   81: Figure 70.   Alternate function configuration . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 516
+Page  325: The GPIO port corresponding to each MCO pin, has to be programmed in alternate function
+Page  508: all GPIOs have a 32-bit locking register (GPIOx_LCKR) and two 32-bit alternate function
+Page  508: •    Output data from output data register (GPIOx_ODR) or peripheral (alternate function
+Page  508: •    Input data to input data register (GPIOx_IDR) or peripheral (alternate function input)
+Page  508: •    Alternate function selection registers
+Page  508: •    Alternate function push-pull with pull-up or pull-down capability
+Page  508: •    Alternate function open-drain with pull-up or pull-down capability
+Page  509: peripheral                                Alternate function input
+Page  509: peripheral                               Alternate function output
+Page  509: Alternate function input
+Page  509: peripheral                                                                     Alternate function output                                                                                             open-drain or
+Page  511: During and just after reset, the alternate functions are not active and most of the I/O ports
+Page  511: 10.3.2   I/O pin alternate function multiplexer and mapping
+Page  511: that allows only one peripheral alternate function (AF) connected to an I/O pin at a time. In
+Page  511: Each I/O pin has a multiplexer with up to sixteen alternate function inputs (AF0 to AF15) that
+Page  511: •    After reset the multiplexer selection is alternate function 0 (AF0). The I/Os are
+Page  511: configured in alternate function mode through GPIOx_MODER register.
+Page  511: •    The specific alternate function assignments for each pin are detailed in the device
+Page  511: •    Debug function: after each device reset these pins are assigned as alternate function
+Page  511: •    System function: MCOx pins have to be configured in alternate function mode.
+Page  511: •    Peripheral alternate function:
+Page  512: –    Configure the desired I/O as an alternate function in the GPIOx_MODER register.
+Page  512: Refer to the “Alternate function mapping” table in the device datasheet for the detailed
+Page  512: mapping of the alternate function I/O pins.
+Page  513: 10.3.7   I/O alternate function input/output
+Page  513: Two registers are provided to select one of the alternate function inputs/outputs available for
+Page  513: each I/O. With these registers, the user can connect an alternate function to some other pin
+Page  513: using the GPIOx_AFRL and GPIOx_AFRH alternate function registers. The application can
+Page  513: common to the alternate function input and alternate function output, a single channel is
+Page  513: selected for the alternate function input/output of a given I/O.
+Page  515: 10.3.12   Alternate function configuration
+Page  515: When the I/O port is programmed as alternate function:
+Page  515: Figure 70 shows the Alternate function configuration of the I/O port bit.
+Page  516: Figure 70. Alternate function configuration
+Page  516: To on-chip                                                  Alternate function input
+Page  516: peripheral                                                        Alternate function output
+Page  517: Alternate Function Input
+Page  517: From on-chip peripherals   Alternate Function Output
+Page  518: 10: Alternate function mode
+Page  521: Each lock bit freezes a specific configuration register (control and alternate function
+Page  522: 10.4.9          GPIO alternate function low register (GPIOx_AFRL)
+Page  523: Bits 31:0 AFR[7:0][3:0]: Alternate function selection for port x I/O pin y (y = 7 to 0)
+Page  523: These bits are written by software to configure alternate function I/Os.
+Page  523: 10.4.10          GPIO alternate function high register (GPIOx_AFRH)
+Page  523: Bits 31:0 AFR[15:8][3:0]: Alternate function selection for port x I/O pin y (y = 15 to 8)
+Page  523: These bits are written by software to configure alternate function I/Os.
+Page  839: SDRAM signal                                Description                 Alternate function
+Page 1062: The comparator outputs can be connected to the I/Os through their alternate functions.
+Page 1066: alternate function.
+Page 1066: COMP1_OUT                                 Alternate Function
+Page 1066: COMP2_OUT                                 Alternate Function
+Page 1067: connected to one of GPIOs programmable in alternate function as timer break input. See
+Page 1071: Bits 10:0 AFOP[10:0]: Selection of source for alternate function of output ports
+Page 1071: 0: COMP1_OUT is selected for the alternate function of the corresponding GPIO
+Page 1071: 1: COMP2_OUT is selected for the alternate function of the corresponding GPIO
+Page 1072: Bits 10:0 AFOP[10:0]: Selection of source for alternate function of output ports
+Page 1072: 0: COMP1_OUT is selected for the alternate function of the corresponding GPIO
+Page 1072: 1: COMP2_OUT is selected for the alternate function of the corresponding GPIO
+Page 1419: selected HRTIM I/Os have to be configured as per the alternate function mapping table in
+Page 1604: 37.4.24        TIM1 alternate function option register 1 (TIM1_AF1)
+Page 1605: This bit selects the BKIN alternate function input sensitivity. It must be programmed together
+Page 1606: This bit enables the BKIN alternate function input for the timer’s BRK input. BKIN input is
+Page 1606: 37.4.25        TIM1 Alternate function register 2 (TIM1_AF2)
+Page 1606: This bit selects the BKIN2 alternate function input sensitivity. It must be programmed
+Page 1607: This bit enables the BKIN2 alternate function input for the timer’s BRK2 input. BKIN2 input is
+Page 1607: 37.4.26         TIM8 Alternate function option register 1 (TIM8_AF1)
+Page 1608: This bit selects the BKIN alternate function input sensitivity. It must be programmed together
+Page 1609: This bit enables the BKIN alternate function input for the timer’s BRK input. BKIN input is
+Page 1609: 37.4.27        TIM8 Alternate function option register 2 (TIM8_AF2)
+Page 1610: This bit selects the BKIN2 alternate function input sensitivity. It must be programmed
+Page 1610: This bit enables the BKIN2 alternate function input for the timer’s BRK2 input. BKIN2 input is
+Page 1685: 38.4.19        TIM2 alternate function option register 1 (TIM2_AF1)
+Page 1685: 38.4.20        TIM3 alternate function option register 1 (TIM3_AF1)
+Page 1686: 38.4.21        TIM4 alternate function option register 1 (TIM4_AF1)
+Page 1686: 38.4.22        TIM5 alternate function option register 1 (TIM5_AF1)
+Page 1804: This bit selects the BKIN alternate function input sensitivity. It must be programmed together
+Page 1805: This bit enables the BKIN alternate function input for the timer’s BRK input. BKIN input is
+Page 1824: 40.6.16        TIM16 alternate function register 1 (TIM16_AF1)
+Page 1824: This bit selects the BKIN alternate function input sensitivity. It must be programmed together
+Page 1825: This bit enables the BKIN alternate function input for the timer’s BRK input. BKIN input is
+Page 1826: 40.6.18        TIM17 alternate function register 1 (TIM17_AF1)
+Page 1826: This bit selects the BKIN alternate function input sensitivity. It must be programmed together
+Page 1827: This bit enables the BKIN alternate function input for the timer’s BRK input. BKIN input is
+Page 1846: lptim_ext_trig0                     GPIO pin as LPTIM1_ETR alternate function
+Page 1847: lptim_ext_trig0                  GPIO pin as LPTIM2_ETR alternate function
+Page 1848: lptim_in1_mux0                   GPIO pin as LPTIM1_IN1 alternate function
+Page 1848: lptim_int2_mux0                   GPIO pin as LPTIM1_IN2 alternate function
+Page 1848: lptim_in1_mux0                   GPIO pin as LPTIM2_IN1 alternate function
+Page 1849: lptim_int2_mux0                     GPIO pin as LPTIM2_IN2 alternate function
+Page 1894: this case it is mandatory to configure PB2 GPIO registers as alternate function with the
+Page 2036: configured as alternate function open-drain with an external pull-up.
+Page 2099: configured as alternate function open-drain with an external pull-up.
+Page 2136: MISO pin set as alternate function open-drain (see Section 10.3.7: I/O alternate function input/output on
+Page 2139: free for other application uses (as GPIO or other alternate function).
+Page 2190: Bit 31 AFCNTR: alternate function GPIOs control
+Page 2190: outputs configured at alternate function mode by keeping them forced at state corresponding
+Page 2191: When this bit is set, the function of MISO and MOSI pins alternate functions are inverted.
+Page 2272: (alternate functions).
+Page 2332: are available as alternate function on GPIOs. This configuration is selected to connect an
+Page 2354: (alternate functions).
+Page 2741: Alternate function name (mapped on
+Page 2742: Alternate function name (mapped on
+Page 2979: The HDMI-CEC controller manages the CEC bidirectional line as an alternate function of a
+Page 2979: standard GPIO, assuming that it is configured as alternate function open drain. The 27 kΩ

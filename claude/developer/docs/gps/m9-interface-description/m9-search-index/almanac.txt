@@ -1,0 +1,66 @@
+Keyword: almanac
+Occurrences: 62
+================================================================================
+
+Page    7: 3.13.3.2 BeiDou almanac assistance......................................................................................... 104
+Page    7: 3.13.6.2 Galileo almanac assistance.......................................................................................... 110
+Page    7: 3.13.7.2 GLONASS almanac assistance................................................................................... 113
+Page    7: 3.13.8.2 GPS almanac assistance.............................................................................................. 115
+Page    8: 3.13.10.2 QZSS almanac assistance......................................................................................... 123
+Page   17: GPS-EPH) and almanacs (UBX-MGA-GPS-ALM).
+Page   51: •   BeiDou almanac assistance (Input)
+Page   52: •   Galileo almanac assistance (Input)
+Page   52: •   GLONASS almanac assistance (Input)
+Page   52: •   GPS almanac assistance (Input)
+Page   52: •   QZSS almanac assistance (Input)
+Page   81: bit 1   U:1       alm                  -            -           Almanac
+Page  104: 3.13.3.2 BeiDou almanac assistance
+Page  104: BeiDou almanac assistance
+Page  104: Comment       This message allows the delivery of BeiDou almanac assistance to a receiver.
+Page  105: 4             U1        Wna                      -           week         Almanac Week Number
+Page  105: 5             U1        toa                      2^12        s            Almanac reference time
+Page  105: 6             I2        deltaI                   2^-19       semi-        Almanac correction of orbit reference inclination at
+Page  105: 8             U4        sqrtA                    2^-11       m^0.5        Almanac square root of semi-major axis
+Page  105: 12            U4        e                        2^-21       -            Almanac eccentricity
+Page  105: 16            I4        omega                    2^-23       semi-        Almanac argument of perigee
+Page  105: 20            I4        M0                       2^-23       semi-        Almanac mean anomaly at reference time
+Page  105: 24            I4        Omega0                   2^-23       semi-        Almanac longitude of ascending node of orbit plane at
+Page  105: 28            I4        omegaDot                 2^-38       semi-        Almanac rate of right ascension
+Page  105: 32            I2        a0                       2^-20       s            Almanac satellite clock bias
+Page  105: 34            I2        a1                       2^-38       s/s          Almanac satellite clock rate
+Page  110: 3.13.6.2 Galileo almanac assistance
+Page  110: Galileo almanac assistance
+Page  110: Comment       This message allows the delivery of Galileo almanac assistance to a receiver.
+Page  110: 4             U1        ioda                    -           -            Almanac Issue of Data
+Page  110: 5             U1        almWNa                  -           week         Almanac reference week number
+Page  110: 6             U2        toa                     600         s            Almanac reference time
+Page  113: 3.13.7.2 GLONASS almanac assistance
+Page  113: GLONASS almanac assistance
+Page  113: Comment       This message allows the delivery of GLONASS almanac assistance to a receiver.
+Page  113: 4             U2        N                        -           days         Reference calender day number of almanac within the
+Page  113: 7             U1        C                        -           -            Unhealthy ﬂag at instant of almanac upload (1
+Page  114: period of almanac (from string 5)
+Page  115: 3.13.8.2 GPS almanac assistance
+Page  115: GPS almanac assistance
+Page  115: Comment       This message allows the delivery of GPS almanac assistance to a receiver.
+Page  116: 6             U1        almWNa                   -           week         Reference week number of almanac (the 8-bit WNa
+Page  116: 7             U1        toa                      2^12        s            Reference time of almanac
+Page  123: 3.13.10.2 QZSS almanac assistance
+Page  123: QZSS almanac assistance
+Page  123: Comment       This message allows the delivery of QZSS almanac assistance to a receiver.
+Page  123: 3             U1        svHealth                 -           -            Almanac SV health information
+Page  123: 4             U2        e                        2^-21       -            Almanac eccentricity
+Page  123: 6             U1        almWNa                   -           week         Reference week number of almanac (the 8-bit WNa
+Page  123: 7             U1        toa                      2^12        s            Reference time of almanac
+Page  123: 10            I2        omegaDot                 2^-38       semi-        Almanac rate of right ascension
+Page  123: 12            U4        sqrtA                    2^-11       m^0.5        Almanac square root of the semi-major axis A
+Page  123: 16            I4        omega0                   2^-23       semi-        Almanac long of asc node of orbit plane at weekly
+Page  123: 20            I4        omega                    2^-23       semi-        Almanac argument of perigee
+Page  123: 24            I4        m0                       2^-23       semi-        Almanac mean anomaly at reference time
+Page  124: 28            I2        af0                    2^-20       s            Almanac time polynomial coeﬃcient 0 (8 MSBs)
+Page  124: 30            I2        af1                    2^-38       s/s          Almanac time polynomial coeﬃcient 1
+Page  139: 12 + n·6         X1      alm            -           -            Almanac data
+Page  139: almanac data from now on:
+Page  139: •   0 = Almanac can no longer be used
+Page  144: •   2 = almanac is used
+Page  145: bit 12   U:1       almAvail              -            -           1 = almanac is available for this SV

@@ -1,0 +1,110 @@
+Keyword: reset
+Occurrences: 106
+================================================================================
+
+Page    1: – D3: reset/clock control/power management
+Page    1: Reset and power management
+Page    3: 3.7      Reset and clock controller (RCC) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31
+Page    3: 3.7.2       System reset sources . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31
+Page    5: 6.3.4      Embedded reset and power control block characteristics . . . . . . . . . . 108
+Page    6: 7.3.4      Embedded reset and power control block characteristics . . . . . . . . . . 215
+Page    8: Table 27.   Reset and power control block characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 108
+Page   10: Table 126.   Reset and power control block characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 215
+Page   23: Reset &
+Page   23: reset                                                            POR/PDR/BOR                                  NRESET
+Page   24: Reset &
+Page   24: reset                                                            POR/PDR/BOR                                  NRESET
+Page   29: The devices have an integrated power-on reset (POR)/ power-down reset (PDR) circuitry
+Page   29: coupled with a Brownout reset (BOR) circuitry:
+Page   29: •   Power-on reset (POR)
+Page   29: The devices remain in Reset mode when VDD is below this threshold,
+Page   29: •   Power-down reset (PDR)
+Page   29: The PDR supervisor monitors VDD power supply. A reset is generated when VDD drops
+Page   29: •   Brownout reset (BOR)
+Page   29: 2.7 V) can be configured through option bytes. A reset is generated when VDD drops
+Page   31: 3.7       Reset and clock controller (RCC)
+Page   31: The clock and reset controller is located in D3 domain. The RCC manages the generation of
+Page   31: resets. It provides a high flexibility in the choice of clock sources and allows to apply clock
+Page   31: 3.7.2     System reset sources
+Page   31: Power-on reset initializes all registers while system reset reinitializes the system except for
+Page   31: A system reset is generated in the following cases:
+Page   31: •    Power-on reset (pwr_por_rst)
+Page   31: •    Brownout reset
+Page   31: •    Low level on NRST pin (external reset)
+Page   31: •    Software reset
+Page   31: •    Low-power mode security reset
+Page   32: After reset, all GPIOs (except debug pins) are in Analog mode to reduce power
+Page   32: consumption (refer to GPIOs register reset values in the device reference manual).
+Page   37: When PDR_ON pin is connected to VSS (Internal Reset OFF), the VBAT functionality is no
+Page   45: to reset the device when a problem occurs, or as a free-running timer for application timeout
+Page   45: can be used as a watchdog to reset the device when a problem occurs. It is clocked from
+Page   46: when VDD power is not present. They are not reset by a system or power reset, or when the
+Page   63: and after reset is the same as the actual pin name
+Page   63: RST           Bidirectional reset pin with embedded weak pull-up resistor
+Page   63: after reset.
+Page   64: reset)
+Page   65: reset)
+Page   66: reset)
+Page   67: reset)
+Page   68: reset)
+Page   69: reset)
+Page   70: reset)
+Page   71: reset)
+Page   72: reset)
+Page   73: reset)
+Page   74: reset)
+Page   75: reset)
+Page   76: reset)
+Page   77: reset)
+Page   78: reset)
+Page   79: reset)
+Page   80: reset)
+Page   81: reset)
+Page   82: reset)
+Page   83: reset)
+Page   84: reset)
+Page   85: reset)
+Page   86: reset)
+Page   87: reset)
+Page   87: 1. When this pin/ball was previously configured as an oscillator, the oscillator function is kept during and after a reset. This is
+Page   87: valid for all resets except for power-on reset.
+Page  103: IOs                                                                 logic     Reset
+Page  106: 1. When RESET is released functionality is guaranteed down to VBOR0 min
+Page  108: 6.3.4       Embedded reset and power control block characteristics
+Page  108: Table 27. Reset and power control block characteristics
+Page  108: Reset temporization
+Page  108: Brown-out reset threshold 0        Rising edge(1)          1.62   1.67   1.71
+Page  108: VBOR1        Brown-out reset threshold 1
+Page  108: VBOR2        Brown-out reset threshold 2
+Page  108: VBOR3        Brown-out reset threshold 3
+Page  109: Table 27. Reset and power control block characteristics (continued)
+Page  114: 1. The maximum current consumption values are given for PDR OFF (internal reset OFF). When the PDR is OFF (internal
+Page  114: reset OFF), the current consumption is reduced by 1.2 µA compared to PDR ON.
+Page  134: A device reset allows normal operations to be resumed.
+Page  134: •     Unexpected reset
+Page  135: Most of the common failures (unexpected reset and program counter corruption) can be
+Page  137: of –5 µA/+0 µA range), or other functional failure (for example reset, oscillator frequency
+Page  145: reset circuit (1)
+Page  145: NRST (2)                                         Internal Reset
+Page  145: 1. The reset network protects the device against parasitic resets.
+Page  145: Table 60. Otherwise the reset is not taken into account by the device.
+Page  209: IOs                                                                 logic     Reset
+Page  213: 1. When RESET is released functionality is guaranteed down to VBOR0 min
+Page  215: 7.3.4       Embedded reset and power control block characteristics
+Page  215: Table 126. Reset and power control block characteristics
+Page  215: Reset temporization
+Page  215: Brown-out reset threshold 0        Rising edge(1)            1.62      1.67    1.71
+Page  215: VBOR1        Brown-out reset threshold 1
+Page  215: VBOR2        Brown-out reset threshold 2
+Page  215: VBOR3        Brown-out reset threshold 3
+Page  216: Table 126. Reset and power control block characteristics (continued)
+Page  240: A device reset allows normal operations to be resumed.
+Page  241: •     Unexpected reset
+Page  241: Most of the common failures (unexpected reset and program counter corruption) can be
+Page  243: of –5 µA/+0 µA range), or other functional failure (for example reset, oscillator frequency
+Page  251: reset circuit (1)
+Page  251: NRST (2)                                         Internal Reset
+Page  251: 1. The reset network protects the device against parasitic resets.
+Page  251: Table 157. Otherwise the reset is not taken into account by the device.
+Page  351: Table 9: Pin/ball definition: updated PC14 and PC15 function after reset; changed
+Page  351: Updated Note 2. in Table 27: Reset and power control block characteristics, Table 28:

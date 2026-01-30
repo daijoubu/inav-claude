@@ -1,0 +1,85 @@
+Keyword: HSI
+Occurrences: 81
+================================================================================
+
+Page    1: • Internal oscillators: 64 MHz HSI, 48 MHz
+Page    1: HSI48, 4 MHz CSI, 32 kHz LSI
+Page    9: Table 46.   HSI48 oscillator characteristics. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 128
+Page    9: Table 47.   HSI oscillator characteristics. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 129
+Page   11: Table 143.   HSI48 oscillator characteristics. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 234
+Page   11: Table 144.   HSI oscillator characteristics. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 235
+Page   23: LPTIM2_OUT                                                                                                                                                                           HSI48                                                                                                                              @VDD
+Page   23: HSI                                                                                                                                          XTAL OSC                       OSC_IN
+Page   24: LPTIM2_OUT                                                                                                                                                                          HSI48                                                                                                                              @VDD
+Page   24: HSI                                                                                                                                          XTAL OSC                       OSC_IN
+Page   31: –    64 MHz HSI clock
+Page   31: The system starts on the HSI clock. The user application can then select the clock
+Page   45: •   Internal clock source: LSE, LSI, HSI or APB clock
+Page   51: for both FDCAN1 and FDCAN2 from the HSI internal RC oscillator and the PLL, by
+Page   52: operation (12 Mbit/s) and are able to operate from the internal HSI48 oscillator. OTG-HS1
+Page  103: HSI, LSI,
+Page  103: CSI, HSI48,
+Page  123: VOS3, HSI, flash memory in normal mode                4.4         5.6
+Page  123: VOS3, HSI, flash memory in low-power
+Page  123: VOS4, HSI, flash memory in normal mode                15          20
+Page  123: VOS4, HSI, flash memory in low-power
+Page  123: VOS5, HSI, flash memory in normal mode                30          71
+Page  123: VOS5, HSI, flash memory in low-power
+Page  123: Wakeup from Stop,       VOS3, HSI, flash memory in normal mode                2.6         3.4
+Page  128: 48 MHz high-speed internal RC oscillator (HSI48)
+Page  128: Table 46. HSI48 oscillator characteristics
+Page  128: fHSI48               HSI48 frequency                          VDD=3.3 V, TJ=30 °C       47.5(1)     48       48.5(1)       MHz
+Page  128: DuCy(HSI48)(2)              Duty Cycle                                         -                   45       -             55        %
+Page  128: Accuracy of the HSI48 oscillator over     VDD=1.62 to 3.6 V,
+Page  128: ACCHSI48_REL(3)                                                                                      –4.5     -             3.5       %
+Page  128: HSI48 oscillator frequency drift with      VDD=3 to 3.6 V               -     0.025       0.05
+Page  128: ∆VDD(HSI48)(3)                                                                                                                      %
+Page  128: tsu(HSI48)(2)            HSI48 oscillator start-up time                     -                    -      2.1            3.5       µs
+Page  128: IDD(HSI48)(2)             HSI48 oscillator power consumption                 -                    -      350        400          µA
+Page  129: 64 MHz high-speed internal RC oscillator (HSI)
+Page  129: Table 47. HSI oscillator characteristics(1)
+Page  129: fHSI      HSI frequency                                 VDD=3.3 V, TJ=30 °C          63.7(2)     64     64.3(2)    MHz
+Page  129: TRIM        HSI user trimming step                      Trimming is 64, 192, 320                                      %
+Page  129: DuCy(HSI)      Duty Cycle                                               -                   45         -       55        %
+Page  129: HSI oscillator frequency drift over
+Page  129: ΔVDD (HSI)                                                   VDD=1.62 to 3.6 V           −0.12        -      0.03       %
+Page  129: HSI oscillator frequency drift over             TJ=-20 to 105 °C            −1(3)       -      1(3)       %
+Page  129: ΔTEMP (HSI)
+Page  129: tsu(HSI)     HSI oscillator start-up time                             -                    -        1.4      2         µs
+Page  129: tstab(HSI)    HSI oscillator stabilization time          at 1% of target frequency          -        4        8         µs
+Page  129: IDD(HSI)     HSI oscillator power consumption                         -                    -       300      400        µA
+Page  209: HSI, LSI,
+Page  209: CSI, HSI48,
+Page  229: VOS3, HSI, flash memory in normal mode                4.4         5.6
+Page  229: VOS3, HSI, flash memory in low-power
+Page  229: VOS4, HSI, flash memory in normal mode                15          20
+Page  229: VOS4, HSI, flash memory in low-power
+Page  229: VOS5, HSI, flash memory in normal mode                39          71
+Page  229: VOS5, HSI, flash memory in low-power
+Page  229: tWUSTOP_            Wakeup from Stop,     VOS3, HSI, flash memory in normal mode                2.6         3.4
+Page  234: 48 MHz high-speed internal RC oscillator (HSI48)
+Page  234: Table 143. HSI48 oscillator characteristics
+Page  234: fHSI48                 HSI48 frequency                                                 47.5(1)      48        48.5(1)      MHz
+Page  234: DuCy(HSI48)(2)              Duty Cycle                                         -                 45       -             55       %
+Page  234: Accuracy of the HSI48 oscillator over
+Page  234: ACCHSI48_REL(3)(4)                                                      TJ=-40 to 125 °C           –4.5      -             3.5      %
+Page  234: HSI48 oscillator frequency drift with     VDD=3 to 3.6 V              -     0.025       0.05
+Page  234: ∆VDD(HSI48)(3)                                                                                                                   %
+Page  234: tsu(HSI48)(2)             HSI48 oscillator start-up time                     -                  -      2.1            4.0      µs
+Page  234: IDD(HSI48)(2)             HSI48 oscillator power consumption                 -                  -      350            400      µA
+Page  235: 4.    ∆fHSI = ACCHSI48_REL + ∆VDD.
+Page  235: 64 MHz high-speed internal RC oscillator (HSI)
+Page  235: Table 144. HSI oscillator characteristics(1)
+Page  235: fHSI       HSI frequency                               VDD=3.3 V, TJ=30 °C         63.7(2)     64       64.3(2)      MHz
+Page  235: TRIM        HSI user trimming step                    Trimming is 64, 192, 320                                         %
+Page  235: DuCy(HSI)     Duty Cycle                                            -                   45         -         55          %
+Page  235: HSI oscillator frequency drift over
+Page  235: ΔVDD (HSI)                                                 VDD=1.62 to 3.6 V          −0.12        -        0.03         %
+Page  235: HSI oscillator frequency drift over           TJ=-20 to 105 °C           −1(3)       -        1(3)
+Page  235: ΔTEMP (HSI)                                                                                                              %
+Page  235: tsu(HSI)     HSI oscillator start-up time                          -                    -        1.4        2           µs
+Page  235: tstab(HSI)    HSI oscillator stabilization time         at 1% of target frequency        -         4         8           µs
+Page  235: IDD(HSI)     HSI oscillator power consumption                      -                    -       300        400          µA
+Page  352: Updated Table 46: HSI48 oscillator characteristics, Table 47: HSI oscillator
+Page  352: 05-Apr-2019        6     – Updated fHSI48 in Table 46: HSI48 oscillator characteristics.
+Page  352: – Updated tstab in Table 47: HSI oscillator characteristics.
