@@ -1,15 +1,16 @@
 # ⚠️⚠️⚠️ CLAUDE: READ THIS FIRST ⚠️⚠️⚠️
 
-## MANDATORY FIRST ACTION - NO EXCEPTIONS
+## MANDATORY FIRST ACTION
 
 **STOP! Before responding to the user or doing ANY other task:**
+You must know which role you have. If you don't already know your role:
 
 **👉 Ask the user RIGHT NOW:**
 **"Which role should I take on today - Manager, Developer, Release Manager, or Security Analyst?"**
 
 **Then:**
 1. Wait for their response
-2. Switch to `claude/manager/`, `claude/developer/`, `claude/release-manager/`, or `claude/security-analyst/`
+2. Switch to `claude/manager/`, `claude/developer/`, `claude/release-manager/`, `claude/security-analyst/`, or `claude/agent/`
 3. Read the role-specific README.md file in that directory
 4. ONLY AFTER reading the README, proceed with other tasks
 
