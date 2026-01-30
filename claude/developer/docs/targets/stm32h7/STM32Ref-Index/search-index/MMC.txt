@@ -1,0 +1,987 @@
+Keyword: MMC
+Occurrences: 983
+================================================================================
+
+Page   56: 54         Secure digital input/output MultiMediaCard interface (SDMMC) . . 2350
+Page   56: 54.1   SDMMC main features . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2350
+Page   56: 54.2   SDMMC bus topology . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2350
+Page   56: 54.3   SDMMC operation modes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2352
+Page   57: 54.4   SDMMC functional description . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2353
+Page   57: 54.4.1     SDMMC diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2354
+Page   57: 54.4.2     SDMMC pins and internal signals . . . . . . . . . . . . . . . . . . . . . . . . . . . 2354
+Page   57: 54.4.4     SDMMC adapter . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2357
+Page   57: 54.4.5     SDMMC AHB slave interface . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2378
+Page   57: 54.4.6     SDMMC AHB master interface . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2379
+Page   57: 54.4.8     AHB and SDMMC_CK clock relation . . . . . . . . . . . . . . . . . . . . . . . . . 2381
+Page   57: 54.8   SDMMC registers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2404
+Page   57: 54.8.1     SDMMC power control register (SDMMC_POWER) . . . . . . . . . . . . . 2404
+Page   57: 54.8.2     SDMMC clock control register (SDMMC_CLKCR) . . . . . . . . . . . . . . 2405
+Page   57: 54.8.3     SDMMC argument register (SDMMC_ARGR) . . . . . . . . . . . . . . . . . . 2407
+Page   57: 54.8.4     SDMMC command register (SDMMC_CMDR) . . . . . . . . . . . . . . . . . 2407
+Page   57: 54.8.5     SDMMC command response register (SDMMC_RESPCMDR) . . . . 2409
+Page   57: 54.8.6     SDMMC response x register (SDMMC_RESPxR) . . . . . . . . . . . . . . 2410
+Page   57: 54.8.7     SDMMC data timer register (SDMMC_DTIMER) . . . . . . . . . . . . . . . 2410
+Page   57: 54.8.8     SDMMC data length register (SDMMC_DLENR) . . . . . . . . . . . . . . . 2411
+Page   57: 54.8.9     SDMMC data control register (SDMMC_DCTRL) . . . . . . . . . . . . . . . 2412
+Page   57: 54.8.10 SDMMC data counter register (SDMMC_DCNTR) . . . . . . . . . . . . . . 2413
+Page   57: 54.8.11 SDMMC status register (SDMMC_STAR) . . . . . . . . . . . . . . . . . . . . . 2414
+Page   57: 54.8.12 SDMMC interrupt clear register (SDMMC_ICR) . . . . . . . . . . . . . . . . 2416
+Page   57: 54.8.13 SDMMC mask register (SDMMC_MASKR) . . . . . . . . . . . . . . . . . . . . 2419
+Page   57: 54.8.14 SDMMC acknowledgment timer register (SDMMC_ACKTIMER) . . . 2421
+Page   57: 54.8.15 SDMMC data FIFO register (SDMMC_FIFOR) . . . . . . . . . . . . . . . . . 2422
+Page   57: 54.8.16 SDMMC DMA control register (SDMMC_IDMACTRLR) . . . . . . . . . . 2422
+Page   58: 54.8.17 SDMMC IDMA buffer size register (SDMMC_IDMABSIZER) . . . . . . 2423
+Page   58: 54.8.18 SDMMC IDMA buffer 0 base address register
+Page   58: (SDMMC_IDMABASE0R) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2424
+Page   58: 54.8.19 SDMMC IDMA buffer 1 base address register
+Page   58: (SDMMC_IDMABASE1R) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2424
+Page   58: 54.8.20 SDMMC register map . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2425
+Page   65: 57.5.12 MAC and MMC register descriptions . . . . . . . . . . . . . . . . . . . . . . . . . 2790
+Page   66: 57.11.4 Ethernet MAC and MMC registers . . . . . . . . . . . . . . . . . . . . . . . . . . . 2879
+Page   76: Table 434.   SDMMC operation modes SD & SDIO . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2352
+Page   76: Table 435.   SDMMC operation modes e•MMC . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2353
+Page   76: Table 436.   SDMMC internal input/output signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2354
+Page   76: Table 437.   SDMMC pins. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2354
+Page   76: Table 438.   SDMMC Command and data phase selection . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2356
+Page   76: Table 452.   SDMMC connections to MDMA . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2381
+Page   76: Table 453.   AHB and SDMMC_CK clock frequency relation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2381
+Page   77: Table 457.   Response type and SDMMC_RESPxR registers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2410
+Page   77: Table 458.   SDMMC register map . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2425
+Page   81: Figure 51.   Kernel clock distribution for SDMMC, QUADSPI and FMC . . . . . . . . . . . . . . . . . . . . . . . 340
+Page   94: Figure 695. SDMMC “no response” and “no data” operations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2351
+Page   94: Figure 696. SDMMC (multiple) block read operation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2351
+Page   94: Figure 697. SDMMC (multiple) block write operation. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2351
+Page   94: Figure 698. SDMMC (sequential) stream read operation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2352
+Page   94: Figure 699. SDMMC (sequential) stream write operation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2352
+Page   94: Figure 700. SDMMC block diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2354
+Page   94: Figure 701. SDMMC Command and data phase relation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2356
+Page   94: Figure 715. Clock stop with SDMMC_CK for DS, HS, SDR12, SDR25. . . . . . . . . . . . . . . . . . . . . . . 2388
+Page   94: Figure 716. Clock stop with SDMMC_CK for DDR50, SDR50, SDR104 . . . . . . . . . . . . . . . . . . . . . . 2388
+Page   94: Figure 717. ReadWait with SDMMC_CK < 50 MHz. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2389
+Page   94: Figure 718. ReadWait with SDMMC_CK > 50 MHz. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2390
+Page   94: Figure 724. SDMMC state control . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2399
+Page   99: SDMMC2 - AHB
+Page   99: SDMMC1
+Page  100: SDMMC2
+Page  100: SDMMC1 MDMA DMA2D LTDC                   D1-to-D2 AHB bus
+Page  103: SDMMC1
+Page  103: The SDMMC1 uses a 32-bit bus, connected to the AXI bus matrix, through which it can
+Page  103: SDMMC2
+Page  103: The SDMMC2 uses a 32-bit bus, connected to the AHB bus matrix in D2 domain. Through
+Page  105: Masters:         D2 AHB                C-M7         SDMMC1             MDMA               DMA2D              LTDC
+Page  105: INI 3                                    SDMMC1                                              AHB-lite               32           1/4
+Page  127: SDMMC1
+Page  127: 0x52007000 - 0x52007FFF        SDMMC1                     Section 54.8: SDMMC registers
+Page  127: SDMMC2              (D2)
+Page  128: 0x48022400 - 0x480227FF       SDMMC2                   Section 54.8: SDMMC registers
+Page  317: OTG-FS and HS, SPI/I2S, SAI and SDMMC.
+Page  335: SDMMC1                         200
+Page  335: SDMMCSEL                              0                                   1
+Page  335: SDMMC2                          200
+Page  336: 4. With a duty cycle close to 50%, meaning that DIV[P/Q/R]x values shall be even. For SDMMCx, the duty cycle shall be
+Page  340: The FMC, QUADSPI and SDMMC1/2 can also use a clock different from the bus interface
+Page  340: Figure 51. Kernel clock distribution for SDMMC, QUADSPI and FMC
+Page  340: SDMMCSEL                                                                                      SDMMC1,2
+Page  340: SDMMC[2:1]EN
+Page  340: SDMMC[2:1]LPEN
+Page  340: pll1_q_ck           0                                                              sdmmc_ker_ck
+Page  346: •    The CPU enabled SDMMC1, SPI5 and SRAM1, AXISRAM, ITCM, DTCM1, DTCM2
+Page  347: SDMMC1                                    SPI5
+Page  388: SDMMCSEL (1)
+Page  388: Bit 16 SDMMCSEL: SDMMC kernel clock source selection
+Page  406: SDMMC1RST
+Page  406: Bit 16 SDMMC1RST: SDMMC1 and SDMMC1 delay block reset
+Page  406: 0: does not reset SDMMC1 and SDMMC1 Delay block (default after reset)
+Page  406: 1: resets SDMMC1 and SDMMC1 Delay block
+Page  410: SDMMC2RST
+Page  410: Bit 9 SDMMC2RST: SDMMC2 and SDMMC2 Delay block reset
+Page  410: 0: does not reset SDMMC2 and SDMMC2 Delay block (default after reset)
+Page  410: 1: resets SDMMC2 and SDMMC2 Delay block
+Page  428: SDMMC1EN
+Page  428: Bit 16 SDMMC1EN: SDMMC1 and SDMMC1 Delay Clock Enable
+Page  428: 0: SDMMC1 and SDMMC1 Delay clock disabled (default after reset)
+Page  428: 1: SDMMC1 and SDMMC1 Delay clock enabled
+Page  432: SDMMC2EN
+Page  432: Bit 9 SDMMC2EN: SDMMC2 and SDMMC2 delay clock enable
+Page  432: 0: SDMMC2 and SDMMC2 Delay clock disabled (default after reset)
+Page  432: 1: SDMMC2 and SDMMC2 Delay clock enabled
+Page  450: SDMMC1LPEN
+Page  450: Bit 16 SDMMC1LPEN: SDMMC1 and SDMMC1 Delay Clock Enable During CSleep Mode
+Page  450: 0: SDMMC1 and SDMMC1 Delay clock disabled during CSleep mode
+Page  450: 1: SDMMC1 and SDMMC1 Delay clock enabled during CSleep mode (default after reset)
+Page  454: SDMMC2LPEN
+Page  454: Bit 9 SDMMC2LPEN: SDMMC2 and SDMMC2 Delay Clock Enable During CSleep Mode
+Page  454: 0: SDMMC2 and SDMMC2 Delay clock disabled during CSleep mode
+Page  454: 1: SDMMC2 and SDMMC2 Delay clock enabled during CSleep mode (default after reset)
+Page  473: Res.                                                                 SDMMCSEL                                            Res.                                                                                                           Res.                                                                                                           Res.                                                                                                          DIVP1EN            16
+Page  474: Res.                    SDMMC1RST                        Res.                         BDRST                                               Res.                                   Res.                                 Res.                                                      16
+Page  475: Res.                         LPTIM2RST                      Res.                       Res.                              LPTIM1RST                     Res.                              GPIOJRST                   SDMMC2RST      9
+Page  476: Res.                                Res.                      Res.                       ETH1TXEN                    SDMMC1EN                       RMVF                                    RTCAMEN        16
+Page  476: Res.                              GPIOJEN                  SDMMC2EN                         Res.                        Res.                         Res.                                 LPTIM2AMEN        9
+Page  477: Res.                         ETH1TXLPEN                    SDMMC1LPEN                       RTCAPBEN                    TIM15EN                    Res.                             SPDIFRXEN     16
+Page  477: SDMMC2LPEN                           Res.                           Res.                         LPTIM2EN                      Res.                    Res.                              LPTIM1EN      9
+Page  478: SDMMC1EN                              RTCAPBLPEN                   TIM15LPEN                       Res.                               SPDIFRXLPEN                       Res.                                   Res.       16
+Page  479: LPTIM2EN                     Res.                    Res.                              LPTIM1EN                      Res.                              GPIOJEN                  SDMMC2EN                        Res.         9
+Page  480: Res.                               SPDIFRXLPEN                       Res.                                   Res.                         Res.       1 1 1             ETH1TXLPEN                    SDMMC1LPEN     16
+Page  480: Res.                                LPTIM1LPEN                       Res.                                GPIOJLPEN                   SDMMC2LPEN                           Res.                           Res.       9
+Page  577: sdmmc1_
+Page  577: D1     AHB3   SDMMC1                        mdma_str29                            End of data
+Page  733: sdmmc_it       56           49            SDMMC1        SDMMC global interrupt         0x0000 0104
+Page  735: sdmmc2_it       131         124             SDMMC2        SDMMC global interrupt          0x0000 0230
+Page  889: SDMMC or QUADSPI interface.
+Page 2350: Secure digital input/output MultiMediaCard interface (SDMMC)                                   RM0433
+Page 2350: (SDMMC)
+Page 2350: 54.1        SDMMC main features
+Page 2350: The SD/SDIO, embedded MultiMediaCard (e•MMC) host interface (SDMMC) provides an
+Page 2350: interface between the AHB bus and SD memory cards, SDIO cards and e•MMC devices.
+Page 2350: Association website at www.mmca.org, published by the MMCA technical committee.
+Page 2350: The SDMMC features include the following:
+Page 2350: SDMMC_CK speed limited to maximum allowed I/O speed)
+Page 2350: (SDR104 SDMMC_CK speed limited to maximum allowed I/O speed, SPI mode and
+Page 2350: (SDR104 SDMMC_CK speed limited to maximum allowed I/O speed, SPI mode and
+Page 2350: The current version of the SDMMC supports only one SD/SDIO/e•MMC card at any one
+Page 2350: time and a stack of e•MMC.
+Page 2350: 54.2        SDMMC bus topology
+Page 2350: The basic transaction on the SD/SDIO/e•MMC bus is the command/response transaction.
+Page 2350: •   e•MMC Stream mode: continuous data stream
+Page 2350: Data transfers to/from e•MMC cards are done in data blocks or streams.
+Page 2351: RM0433                                        Secure digital input/output MultiMediaCard interface (SDMMC)
+Page 2351: Figure 695. SDMMC “no response” and “no data” operations
+Page 2351: SDMMC_CMD                      CMD                                        CMD                  Response
+Page 2351: SDMMC_D
+Page 2351: Figure 696. SDMMC (multiple) block read operation
+Page 2351: SDMMC_CMD         CMD          Response                                                                 CMD           Response
+Page 2351: SDMMC_D                          Data block     CRC           Data block   CRC           Data block      CRC
+Page 2351: Note:        The Stop Transmission command is not required at the end of a e•MMC multiple block read
+Page 2351: Figure 697. SDMMC (multiple) block write operation
+Page 2351: SDMMC_CMD      CMD     Response                                                                            CMD              Response
+Page 2351: SDMMC_D                        Data block CRC
+Page 2351: Note:        The Stop Transmission command is not required at the end of an e•MMC multiple block
+Page 2351: Note:        The SDMMC will not send any data as long as the Busy signal is asserted (SDMMC_D0
+Page 2352: Secure digital input/output MultiMediaCard interface (SDMMC)                                                          RM0433
+Page 2352: Figure 698. SDMMC (sequential) stream read operation
+Page 2352: SDMMC_CMD            CMD      Response                                                        CMD         Response
+Page 2352: SDMMC_D                                                   Data stream
+Page 2352: Figure 699. SDMMC (sequential) stream write operation
+Page 2352: SDMMC_CMD            CMD     Response                                                         CMD       Response
+Page 2352: SDMMC_D                                                       Data stream                           Busy
+Page 2352: Stream data transfer operates only in a 1-bit wide bit bus configuration on SDMMC_D0 in
+Page 2352: 54.3         SDMMC operation modes
+Page 2352: Table 434. SDMMC operation modes SD & SDIO
+Page 2352: 2. DDR double data rate signaling. (data is sampled on both SDMMC_CK clock edges).
+Page 2353: RM0433                                Secure digital input/output MultiMediaCard interface (SDMMC)
+Page 2353: Table 435. SDMMC operation modes e•MMC
+Page 2353: e•MMC bus speed modes (1)(2)
+Page 2353: 2. DDR double data rate signaling. (data is sampled on both SDMMC_CK clock edges).
+Page 2353: 3. e•MMC bus speed with 8bit bus width.
+Page 2353: 54.4     SDMMC functional description
+Page 2353: The SDMMC consists of four parts:
+Page 2353: •      The AHB slave interface accesses the SDMMC adapter registers, and generates
+Page 2353: •      The SDMMC adapter block provides all functions specific to the e•MMC/SD/SD I/O
+Page 2353: delay block is NOT part of the SDMMC. A delay block is mandatory when supporting
+Page 2354: Secure digital input/output MultiMediaCard interface (SDMMC)                                                 RM0433
+Page 2354: 54.4.1      SDMMC diagram
+Page 2354: Figure 700 shows the SDMMC block diagram.
+Page 2354: Figure 700. SDMMC block diagram
+Page 2354: SDMMC                      SDMMC ADAPTER
+Page 2354: sdmmc_ker_ck                                                                      SDMMC_D0DIR
+Page 2354: Control                                 SDMMC_D123DIR
+Page 2354: AHB INTERFACE              unit                                   SDMMC_CDIR
+Page 2354: 32-bit AHB                                                                         SDMMC_CK
+Page 2354: sdmmc_io_in_ck
+Page 2354: sdmmc_hclk       Registers            Data transmit                 DLYB (Delay block)
+Page 2354: sdmmc_it                                                MUX    sdmmc_fb_ck
+Page 2354: sdmmc_dataend_trg                              path                                   SDMMC_CKIN
+Page 2354: Data receive                              SDMMC_D[7:0]
+Page 2354: Response                                 SDMMC_CMD
+Page 2354: 54.4.2      SDMMC pins and internal signals
+Page 2354: Table 436 lists the SDMMC internal input/output signals, Table 437 the SDMMC pins
+Page 2354: Table 436. SDMMC internal input/output signals
+Page 2354: sdmmc_ker_ck              Digital input     SDMMC kernel clock
+Page 2354: sdmmc_hclk              Digital input     AHB clock
+Page 2354: sdmmc_it              Digital output     SDMMC global interrupt
+Page 2354: sdmmc_dataend_trg          Digital output     SDMMC data end trigger for MDMA
+Page 2354: SD/SDIO/e•MMC card feedback clock. This signal is
+Page 2354: sdmmc_io_in_ck            Digital input     internally connected to the SDMMC_CK pin (for DS
+Page 2354: SD/SDIO/e•MMC card tuned feedback clock after
+Page 2354: sdmmc_fb_ck              Digital input     DLYB delay block (for SDR50, DDR50, SDR104,
+Page 2354: Table 437. SDMMC pins
+Page 2354: SDMMC_CK           Digital output Clock to SD/SDIO/e•MMC card
+Page 2354: Clock feedback from an external driver for SD/SDIO/e•MMC
+Page 2354: SDMMC_CKIN          Digital input
+Page 2355: RM0433                              Secure digital input/output MultiMediaCard interface (SDMMC)
+Page 2355: Table 437. SDMMC pins
+Page 2355: SDMMC_CMD                         SD/SDIO/e•MMC card bidirectional command/response signal.
+Page 2355: SD/SDIO/e•MMC card I/O direction indication for the
+Page 2355: SDMMC_CDIR       Digital output
+Page 2355: SDMMC_CMD signal.
+Page 2355: SDMMC_D[7:0]                      SD/SDIO/e•MMC card bidirectional data lines.
+Page 2355: SD/SDIO/e•MMC card I/O direction indication for the
+Page 2355: SDMMC_D0DIR      Digital output
+Page 2355: SDMMC_D0 data line.
+Page 2355: SD/SDIO/e•MMC card I/O direction indication for the data lines
+Page 2355: SDMMC_D123DIR Digital output
+Page 2355: SDMMC_D[3:1].
+Page 2355: The SDMMC_D[7:0] lines have different operating modes:
+Page 2355: •     By default, SDMMC_D0 line is used for data transfer. After initialization, the host can
+Page 2355: •     For an e•MMC, 1-bit (SDMMC_D0), 4-bit (SDMMC_D[3:0]) or 8-bit (SDMMC_D[7:0])
+Page 2355: •     For an SD or an SDIO card, 1-bit (SDMMC_D0) or 4-bit (SDMMC_D[3:0]) can be used.
+Page 2355: data flow on the data lines is indicated with I/O direction signals. The SDMMC_D0DIR signal
+Page 2355: indicates the I/O direction for the SDMMC_D0 data line, the SDMMC_D123DIR for the
+Page 2355: SDMMC_D[3:1] data lines.
+Page 2355: SDMMC_CMD only operates in push-pull mode:
+Page 2355: data flow on the SDMMC_CMD line is indicated with the I/O direction signal SDMMC_CDIR.
+Page 2355: SDMMC_CK clock to the card originates from sdmmc_ker_ck:
+Page 2355: •     When the sdmmc_ker_ck clock has 50 % duty cycle, it can be used even in bypass
+Page 2355: •     When the sdmmc_ker_ck duty cycle is not 50 %, the CLKDIV must be used to divide it
+Page 2355: •     The phase relation between the SDMMC_CMD / SDMMC_D[7:0] outputs and the
+Page 2355: SDMMC_CK can be selected through the NEGEDGE bit. The phase relation depends
+Page 2356: Secure digital input/output MultiMediaCard interface (SDMMC)                                                       RM0433
+Page 2356: Figure 701. SDMMC Command and data phase relation
+Page 2356: SDMMC_CMD
+Page 2356: SDMMC_Dn
+Page 2356: SDMMC_CK
+Page 2356: sdmmc_ker_ck
+Page 2356: Table 438. SDMMC Command and data phase selection
+Page 2356: SDMMC_CK                        Command out                                Data out
+Page 2356: 0        x      x                                            generated on sdmmc_ker_ck falling edge
+Page 2356: sdmmc_ker_ck
+Page 2356: generated on sdmmc_ker_ck falling edge succeeding the SDMMC_CK rising
+Page 2356: generated on the same sdmmc_ker_ck rising edge that generates the
+Page 2356: generated on                             SDMMC_CK falling edge.
+Page 2356: >0                         sdmmc_ker_ck        generated on sdmmc_ker_ck falling edge
+Page 2356: 0           rising edge       succeeding the SDMMC_CK rising edge.         generated on sdmmc_ker_ck
+Page 2356: 1                                   generated on the same sdmmc_ker_ck rising       falling edge succeeding a
+Page 2356: 1                           edge that generates the SDMMC_CK falling             SDMMC_CK edge.
+Page 2356: By default, the sdmmc_io_in_ck feedback clock input is selected for sampling incoming
+Page 2356: data in the SDMMC receive path. It is derived from the SDMMC_CK pin.
+Page 2356: DLYB delay block available on the device can be connected between sdmmc_io_in_ck
+Page 2356: signal (DLYB input dlyb_in_ck) and sdmmc_fb_ck clock input of SDMMC (DLYB output
+Page 2356: dlyb_out_ck). Selecting the sdmmc_fb_ck clock input in the receive path then allows using
+Page 2356: the phase-tuned sampling clock for the incoming data. This is required for SDMMC to
+Page 2356: When using an external driver (a voltage switch transceiver), the SDMMC_CKIN feedback
+Page 2356: For an SD/SDIO/e•MMC card, the clock frequency can vary between 0 and 208 MHz
+Page 2357: RM0433                            Secure digital input/output MultiMediaCard interface (SDMMC)
+Page 2357: SDMMC_D[7:0] lines with each clock cycle. The SDMMC_CMD line transfers only one bit
+Page 2357: 54.4.4   SDMMC adapter
+Page 2357: The SDMMC adapter (see Figure 700: SDMMC block diagram) is a multimedia/secure
+Page 2357: •   Delay block (DLYB), external to the SDMMC
+Page 2357: Note:    The adapter registers and FIFO use the AHB clock domain (sdmmc_hclk). The control unit,
+Page 2357: command path and data transmit path use the SDMMC adapter clock domain
+Page 2357: (sdmmc_ker_ck). The response path and data receive path use the SDMMC adapter
+Page 2357: feedback clock domain from the sdmmc_io_in_ck, or SDMMC_CKIN, or from the
+Page 2357: sdmmc_fb_ck generated by DLYB.
+Page 2357: The DLYB delay block on the device can be used in conjunction with the SDMMC adapter,
+Page 2357: to tune the phase of the sampling clock for incoming data in SDMMC receive mode. It is
+Page 2357: required for the SDMMC to support the SDR104 and HS200 operating mode and optional
+Page 2357: The adapter register block contains all system control registers, the SDMMC command and
+Page 2357: This block also generates the signals from the corresponding bit location in the SDMMC
+Page 2357: Clear register that clear the static flags in the SDMMC adapter.
+Page 2357: SDMMC_CK clock management with divider, and the I/O direction management.
+Page 2358: Secure digital input/output MultiMediaCard interface (SDMMC)                                     RM0433
+Page 2358: SDMMC_D0DIR
+Page 2358: IO         SDMMC_D123DIR
+Page 2358: management                       SDMMC_CDIR
+Page 2358: sdmmc_ker_ck        Clock
+Page 2358: SDMMC_CK
+Page 2358: The clock management subunit uses the sdmmc_ker_ck to generate the SDMMC_CK and
+Page 2358: provides the division control. It also takes care of stopping the SDMMC_CK for i.e. flow
+Page 2358: The I/O management subunit takes care of the SDMMC_Dn and SDMMC_CMD I/O
+Page 2358: SDMMC_CMD line. The Command path is clocked on the SDMMC_CK and sends
+Page 2358: commands to the card,.The Response path is clocked on the sdmmc_rx_ck and receives
+Page 2359: RM0433                             Secure digital input/output MultiMediaCard interface (SDMMC)
+Page 2359: shift        CRC                  SDMMC_CMD
+Page 2359: Command                                                    sdmmc_rx_ck
+Page 2359: SDMMC_CK
+Page 2360: Secure digital input/output MultiMediaCard interface (SDMMC)                                                           RM0433
+Page 2360: SDMMC_CMD write
+Page 2360: SDMMC_CMD write
+Page 2360: SDMMC_CMD write                                                        CRC status error
+Page 2360: the enable bit (CPSMEN) is set, the CPSM will activate the SDMMC_CK clock (when
+Page 2361: RM0433                           Secure digital input/output MultiMediaCard interface (SDMMC)
+Page 2362: Secure digital input/output MultiMediaCard interface (SDMMC)                                          RM0433
+Page 2362: –         BOOTMODE = 0 the SDMMC_CMD line is driven low and when CMDTRANS bit
+Page 2362: procedure by clearing the register bit BOOTEN, which cause the SDMMC_CMD
+Page 2362: SDMMC_CMD line is high.
+Page 2362: Note:       The CPSM remains in the Idle state for at least eight SDMMC_CK periods to meet the NCC
+Page 2362: Note:       The response timeout has a fixed value of 64 SDMMC_CK clock periods.
+Page 2362: available for e•MMC V3.31 or previous). Commands are transferred serially on the
+Page 2362: SDMMC_CMD line. All commands have a fixed length of 48 bits. The general format for a
+Page 2362: command token for SD-Memory cards, SDIO cards, and e•MMC cards is shown in Table
+Page 2362: are sent via the command line SDMMC_CMD. The response transmission always starts
+Page 2363: RM0433                              Secure digital input/output MultiMediaCard interface (SDMMC)
+Page 2363: for SD-Memory cards, SDIO cards, and e•MMC cards are shown in Table 440, Table 441
+Page 2364: Secure digital input/output MultiMediaCard interface (SDMMC)                                                                         RM0433
+Page 2364: SDMMC_CMD output is in the Hi-Z state. Data sent on SDMMC_CMD are synchronous
+Page 2364: with the SDMMC_CK according the NEGEDGE register bit see Figure 701.
+Page 2364: e•MMC stream data transfer, command
+Page 2364: e•MMC stream data transfer, command different from
+Page 2364: 0         0         0          0          0          0         1       Enter e•MMC wait interrupt (Wait-IRQ) mode.
+Page 2365: RM0433                                    Secure digital input/output MultiMediaCard interface (SDMMC)
+Page 2365: SDMMC_CK is stopped. (no impact on CPSM)
+Page 2365: The data path subunit transfers data on the SDMMC_D[7:0] lines to and from cards. The
+Page 2365: data transmit path is clocked on the SDMMC_CK and sends data to the card.The data
+Page 2365: receive path is clocked on the sdmmc_rx_ck and receives data from the card. Figure 705
+Page 2366: Secure digital input/output MultiMediaCard interface (SDMMC)                                               RM0433
+Page 2366: Odd CRC                      SDMMC_D[7:0]
+Page 2366: sdmmc_rx_ck
+Page 2366: SDMMC_CK
+Page 2366: •   If the wide bus mode is not enabled, only one bit is transferred over SDMMC_D0.
+Page 2366: SDMMC_D[3:0].
+Page 2366: SDMMC_D[7:0].
+Page 2366: Note:       The data sampling mode only applies to the SDMMC_D[7:0] lines. (not applicable to the
+Page 2366: SDMMC_CMD line.)
+Page 2367: RM0433                                 Secure digital input/output MultiMediaCard interface (SDMMC)
+Page 2367: In DDR mode, data is sampled on both edges of the SDMMC_CK according the following
+Page 2367: In DDR mode the SDMMC_CK clock division shall be >= 2.
+Page 2367: SDMMC_CK
+Page 2367: SDMMC_D3              start   odd even odd even odd even odd even     odd even odd even odd even odd even     odd even    end
+Page 2367: SDMMC_D2              start   odd even odd even odd even odd even     odd even odd even odd even odd even     odd even    end
+Page 2367: SDMMC_D1              start   odd even odd even odd even odd even     odd even odd even odd even odd even     odd even    end
+Page 2367: SDMMC_D0              start   odd even odd even odd even odd even     odd even odd even odd even odd even     odd even    end
+Page 2367: SDMMC_CK
+Page 2367: SDMMC_D0                        0                                                     1
+Page 2368: Secure digital input/output MultiMediaCard interface (SDMMC)                                                                              RM0433
+Page 2368: The DPSM operates at SDMMC_CK. The DPSM has the following states, as shown in
+Page 2368: •      Idle state: the data path is inactive, and the SDMMC_D[7:0] outputs are according the
+Page 2368: CMDTRANS bit set or by setting the DTEN bit, or by detecting Busy on SDMMC_D0
+Page 2368: When not busy, the DPSM will activate the SDMMC_CK clock (when stopped due to
+Page 2368: When busy the DPSM will keep the SDMMC_CK clock active and move to the Busy
+Page 2369: RM0433                           Secure digital input/output MultiMediaCard interface (SDMMC)
+Page 2369: Note:    DTEN shall not be used to start data transfer with SD, SDIO and e•MMC cards.
+Page 2369: for a start bit on SDMMC_D[n:0]. If the data counter is zero or data is hold, wait for the
+Page 2370: Secure digital input/output MultiMediaCard interface (SDMMC)                                       RM0433
+Page 2371: RM0433                           Secure digital input/output MultiMediaCard interface (SDMMC)
+Page 2372: Secure digital input/output MultiMediaCard interface (SDMMC)                                  RM0433
+Page 2372: - it moves to the Wait_S state when SDMMC_D0 is not low (the card is not busy).
+Page 2372: - When the card is busy SDMMC_D0 is low it will remain in the Busy state.
+Page 2372: –   When the DPSM has been started due to Busy on SDMMC_D0, waits for not busy
+Page 2373: RM0433                                     Secure digital input/output MultiMediaCard interface (SDMMC)
+Page 2373: –     when a CRC status is expected and no start bit is received withing 8 SDMMC_CK
+Page 2373: Data are transferred via the SDMMC_Dn data lines, they are stored in a FIFO.
+Page 2373: e•MMC stream               0                 (DATALENGTH)                     no          1           10
+Page 2374: Secure digital input/output MultiMediaCard interface (SDMMC)                                           RM0433
+Page 2375: RM0433                                   Secure digital input/output MultiMediaCard interface (SDMMC)
+Page 2375: No Ack in                                                      (reset the SDMMC with
+Page 2375: time                                                           the RCC.SDMMCxRST
+Page 2375: operates in the AHB clock domain (sdmmc_hclk), all signals from the subunits in the
+Page 2375: SDMMC clock domain (SDMMC_CK/sdmmc_rx_ck) are resynchronized.
+Page 2376: Secure digital input/output MultiMediaCard interface (SDMMC)                                   RM0433
+Page 2376: The end of a correctly completed SDMMC data transfer from the FIFO is indicated by the
+Page 2376: DATAEND flags driven by the data path subunit. Any incorrect (aborted) SDMMC data
+Page 2376: 2.   Set the SDMMC in transmit mode (DTDIR = 0).
+Page 2376: –   The SDMMC start sending data as long as FIFO is not empty.
+Page 2376: –   SDMMC has completely sent all data and the DPSM is disabled (DPSMACT = 0).
+Page 2377: RM0433                               Secure digital input/output MultiMediaCard interface (SDMMC)
+Page 2377: SDMMC Clear register.
+Page 2377: 2.    Set the SDMMC in receive mode (DTDIR = 1).
+Page 2377: –      SDMMC has completely received all data and the DPSM is disabled (DPSMACT =
+Page 2378: Secure digital input/output MultiMediaCard interface (SDMMC)                                            RM0433
+Page 2378: SDMMC Clear register.
+Page 2378: The CLKMUX selects the source for clock sdmmc_rx_ck to be used with the received data
+Page 2378: •    sdmmc_io_in_ck bus master main feedback clock.
+Page 2378: •    SDMMC_CKIN external bus feedback clock.
+Page 2378: •    sdmmc_fb_ck bus tuned feedback clock.
+Page 2378: The sdmmc_io_in_ck is selected when there is no external driver, with DS and HS.
+Page 2378: The SDMMC_CKIN is selected when there is an external driver with SDR12, SDR25,
+Page 2378: The sdmmc_fb_ck clock input must be selected when the DLYB block on the device is used
+Page 2378: sdmmc_io_in_ck
+Page 2378: MUX          SDMMC_CKIN
+Page 2378: sdmmc_rx_clk                                 sdmmc_fb_ck
+Page 2378: The sdmmc_rx_ck source shall be changed when the CPSM and DPSM are in the Idle
+Page 2378: 54.4.5      SDMMC AHB slave interface
+Page 2378: The AHB slave interface generates the interrupt requests, and accesses the SDMMC
+Page 2378: SDMMC FIFO
+Page 2379: RM0433                            Secure digital input/output MultiMediaCard interface (SDMMC)
+Page 2379: SDMMC interrupts
+Page 2379: 54.4.6   SDMMC AHB master interface
+Page 2379: using the SDMMC IDMA.
+Page 2379: SDMMC IDMA
+Page 2379: Direct memory access (DMA) is used to provide high-speed transfer between the SDMMC
+Page 2379: SDMMC internal DMA (IDMA) provides one channel to be used either for transmit or
+Page 2380: Secure digital input/output MultiMediaCard interface (SDMMC)                                    RM0433
+Page 2380: SDMMC transfer:
+Page 2380: •   An IDMA transfer error is detected before any SDMMC transfer error (TXUNDERR,
+Page 2380: –    The IDMATE flag is set at the same time as the SDMMC transfer error flag.
+Page 2380: •   An IDMA transfer error is detected at the end of the SDMMC transfer (HOLD, or
+Page 2380: –    The IDMATE flag is set at the end of the SDMMC transfer.
+Page 2380: –    A SDMMC transfer end interrupt is generated and a HOLD or DATAEND flag is
+Page 2381: RM0433                                    Secure digital input/output MultiMediaCard interface (SDMMC)
+Page 2381: The IDMATE will be generated on an other SDMMC transfer interrupt (TXUNDERR.
+Page 2381: The internal trigger line from the SDMMC allows passing direct request to MDMA controller
+Page 2381: sdmmc_dataend_trg output. It can trigger the clearance of the DATAEND and CMDREND
+Page 2381: flags and, eventually, a new transfer start, through MDMA direct access to the SDMMC
+Page 2381: The action to program in the MDMA according to the SDMMC requests is provided in the
+Page 2381: Table 452. SDMMC connections to MDMA
+Page 2381: sdmmc_         End of successful data
+Page 2381: 54.4.8         AHB and SDMMC_CK clock relation
+Page 2381: The AHB shall at least have 3x more bandwidth than the SDMMC bus bandwidth i.e. for
+Page 2381: SDR50 4-bit mode (50Mbyte/s) the minimum sdmmc_hclk frequency is 37.5MHz
+Page 2381: Table 453. AHB and SDMMC_CK clock frequency relation
+Page 2381: SDMMC bus         Maximum SDMMC_CK          Minimum AHB clock
+Page 2381: SDMMC bus mode
+Page 2381: e•MMC DS                8                     26                      19.5
+Page 2381: e•MMC HS                8                     52                       39
+Page 2381: e•MMC DDR52              8                     52                       78
+Page 2381: e•MMC HS200              8                     200                     150
+Page 2382: Secure digital input/output MultiMediaCard interface (SDMMC)                                                      RM0433
+Page 2382: The following features are SDMMC specific operations:
+Page 2382: •    SDIO read wait operation by SDMMC_D2 signaling
+Page 2382: ReadWait SDMMC_CK clock stop (START)                      X        1       0         1        1
+Page 2382: ReadWait SDMMC_CK clock stop (STOP)                      X        1       1         1        1
+Page 2382: ReadWait SDMMC_D2 signaling (START)                      X        0       0         1        1
+Page 2382: ReadWait SDMMC_D2 signaling (STOP)                      X        0       1         1        1
+Page 2382: (shared with SDMMC_D1 in 4-bit mode) on the SD interface. The use of the interrupt is
+Page 2382: the application must provide external pull-up resistors on all data lines (SDMMC_D[3:0]).
+Page 2382: In SD 4-bit mode the host samples the level of pin 8 (SDMMC_D1/IRQ) into the interrupt
+Page 2382: •    Synchronous interrupt, require the SDMMC_CK to be active.
+Page 2382: •    Asynchronous interrupt, can be generated when the SDMMC_CK is stopped, 4 cycles
+Page 2383: RM0433                                   Secure digital input/output MultiMediaCard interface (SDMMC)
+Page 2383: SDMMC_CK
+Page 2383: SDMMC_CMD                                                                                 S Command E
+Page 2383: SDMMC_D0        S     Last data    E            S    CRC      E
+Page 2383: SDMMC_D1        S     Last data    E            S    CRC      E
+Page 2383: SDMMC_D2
+Page 2383: SDMMC_D3
+Page 2383: •     The interrupt period resumes 2 SDMMC_CK after the completion of the data block.
+Page 2383: •     At the data block gap the interrupt period is limited to 2 SDMMC_CK cycles.
+Page 2383: Note:    DTEN shall not be used to start data transfer with SD and e•MMC cards.
+Page 2383: SDMMC_CK
+Page 2383: SDMMC_CMD               S         R
+Page 2383: SDMMC_D0                                                     S   Data   E                      S   Data   E
+Page 2383: SDMMC_D1                                                     S   Data   E                      S   Data   E
+Page 2383: SDMMC_D2
+Page 2383: SDMMC_D3
+Page 2384: Secure digital input/output MultiMediaCard interface (SDMMC)                                                                  RM0433
+Page 2384: SDMMC_CK
+Page 2384: SDMMC_CMD            S       W
+Page 2384: SDMMC_D0                                                        S   Data   E          S CRC status E           S   Data    E
+Page 2384: SDMMC_D1                                                        S   Data   E                                   S   Data    E
+Page 2384: SDMMC_D2
+Page 2384: SDMMC_D3
+Page 2384: •     The card interrupt period ends after 0 to 2 SDMMC_CK cycles after the End bit of a
+Page 2384: •     The card interrupt period resumes 2 to 4 SDMMC_CK after the completion of the last
+Page 2384: Note:          DTEN shall not be used to start data transfer with SD and e•MMC cards.
+Page 2385: RM0433                                     Secure digital input/output MultiMediaCard interface (SDMMC)
+Page 2385: SDMMC_CK
+Page 2385: sdmmc_fb_ck
+Page 2385: SDMMC_CMD              S       R
+Page 2385: SDMMC_D0                                                       S     Data     E
+Page 2385: SDMMC_D1                                                       S     Data     E
+Page 2385: SDMMC_D2
+Page 2385: SDMMC_D3
+Page 2385: SDMMC_CK
+Page 2385: sdmmc_fb_ck
+Page 2385: SDMMC_CMD          S       W
+Page 2385: SDMMC_D0                                                                  S     Data     E                   S CRC status E
+Page 2385: SDMMC_D1                                                                  S     Data     E
+Page 2385: SDMMC_D2
+Page 2385: SDMMC_D3
+Page 2385: ending with STOP_TRANSMISSION command”, the SDMMC will mask the interrupt period
+Page 2386: Secure digital input/output MultiMediaCard interface (SDMMC)                                          RM0433
+Page 2386: SDMMC data line                   Start              Interrupt            CRC-status
+Page 2386: SDMMC_D0                         0             1 or CRC-status              0
+Page 2386: SDMMC_D1                         0                    0                     X
+Page 2386: SDMMC_D2                         0              1 or ReadWait               X
+Page 2386: SDMMC_D3                         0                    1                     X
+Page 2386: multiple devices (I/O and memory) that share access to the e•MMC/SD bus. To share
+Page 2386: 1.   Determines the function currently using the SDMMC_D[3:0] line(s)
+Page 2387: RM0433                            Secure digital input/output MultiMediaCard interface (SDMMC)
+Page 2387: While receiving data from the card, the SDMMC can suspend the read operation after the
+Page 2387: While sending data to the card, the SDMMC can suspend the write operation after the write
+Page 2388: Secure digital input/output MultiMediaCard interface (SDMMC)                                                                             RM0433
+Page 2388: The DPSM will either go to the Wait_S state when SDMMC_D0 does not signal busy,
+Page 2388: 1.    Stopping the SDMMC_CK.
+Page 2388: 2.    Using ReadWait signaling on SDMMC_D2.
+Page 2388: The SDMMC can perform a ReadWait with register settings according Table 454.
+Page 2388: Depending the SDMMC operation mode (DS, HS, SDR12, SDR25) or (SDR50, SDR104,
+Page 2388: The timing for pause read operation by stopping the SDMMC_CK for DS, HS, SDR12, and
+Page 2388: SDR25, the SDMMC_CK may be stopped 2 SDMMC_CK cycles after the End bit. When
+Page 2388: Figure 715. Clock stop with SDMMC_CK for DS, HS, SDR12, SDR25
+Page 2388: SDMMC_CK
+Page 2388: SDMMC_Dn    Read data                                 Interrupt period                H                           Read data
+Page 2388: The timing for pause read operation by stopping the SDMMC_CK for SDR50, SDR104, and
+Page 2388: DDR50, the SDMMC_CK may be stopped minimum 2 SDMMC_CK cycles and maximum 5
+Page 2388: SDMMC_CK cycles, after the End bit. When ready the host resumes by restarting clock, see
+Page 2388: Figure 716. (In DDR50 mode the SDMMC_CK shall only be stopped after the falling edge,
+Page 2388: Figure 716. Clock stop with SDMMC_CK for DDR50, SDR50, SDR104
+Page 2388: SDMMC_CK
+Page 2388: SDMMC_Dn          data    End                                                                      Start   data
+Page 2389: RM0433                                Secure digital input/output MultiMediaCard interface (SDMMC)
+Page 2389: In ReadWait SDMMC_CK clock stopping, when RWSTART is set, the DSPM stops the clock
+Page 2389: As SDMMC_CK is stopped, no command can be issued to the card. During a ReadWait
+Page 2389: interval, the SDMMC can still detect SDIO interrupts on SDMMC_D1.
+Page 2389: The optional ReadWait signaling on SDMMC_D2 (RW) operation is defined only for the SD
+Page 2389: The timing for ReadWait with a SDMMC_CK less then 50MHz (DS, HS, SDR12, SDR25) is
+Page 2389: based on the interrupt period generated by the card on SDMMC_D1. The host by asserting
+Page 2389: SDMMC_D2 low during the interrupt period requests the card to enter ReadWait. To exit
+Page 2389: ReadWait the host shall raise SDMMC_D2 high during one SDMMC_CK cycles before
+Page 2389: Figure 717. ReadWait with SDMMC_CK < 50 MHz
+Page 2389: SDMMC_CK
+Page 2389: SDMMC_D1    Read data                                                      Read data
+Page 2389: SDMMC_D2    Read data                           Read wait                  Read data
+Page 2389: SDMMC_D3
+Page 2389: SDMMC_D0
+Page 2389: SDMMC_CMD                                                CMD
+Page 2389: For SDR50, SDR104 with a SDMMC_CK more than 50MHz, and DDR50, the card will treat
+Page 2389: the ReadWait request on SDMMC_D2 as an asynchronous event. The host by asserting
+Page 2389: SDMMC_D2 low after minimum 2 SDMMC_CK cycles and maximum 5 SDMMC_CK cycles,
+Page 2389: request the card to enter ReadWait. To exit ReadWait the host shall raise SDMMC_D2 high
+Page 2389: during one SDMMC_CK cycles before making it Hi-Z. The host shall raise SDMMC_D2 on
+Page 2389: the SDMMC_CK clock (see Figure 718).
+Page 2390: Secure digital input/output MultiMediaCard interface (SDMMC)                                                                  RM0433
+Page 2390: Figure 718. ReadWait with SDMMC_CK > 50 MHz
+Page 2390: SDMMC_CK
+Page 2390: SDMMC_D2      Read data End                                     Read wait                     Start
+Page 2390: SDMMC_D3
+Page 2390: SDMMC_D1      Read data End                                                                   Start
+Page 2390: SDMMC_D0                         2 CK min.
+Page 2390: In ReadWait SDMMC_D2 signaling, when RWSTART is set, the DPSM drives SDMMC_D2
+Page 2390: SDMMC_D2 will be removed when writing 1 to the RWSTOP bit. The DPSM remains in
+Page 2390: ReadWait state for two more SDMMC_CK clock cycles to drive SDMMC_D2 to 1 for one
+Page 2390: During the ReadWait signaling on SDMMC_D2 commands can be issued to the card.
+Page 2390: During the ReadWait interval, the SDMMC can detect SDIO interrupts on SDMMC_D1.
+Page 2390: SDMMC stream write
+Page 2390: SDMMC open ended             command.
+Page 2390: SDMMC block write with
+Page 2390: SDMMC stream read
+Page 2391: RM0433                               Secure digital input/output MultiMediaCard interface (SDMMC)
+Page 2391: SDMMC open ended       command.
+Page 2391: SDMMC block read with card has transmitted the last block is regarded as an illegal command.)
+Page 2392: Secure digital input/output MultiMediaCard interface (SDMMC)                                     RM0433
+Page 2392: SDMMC_CK
+Page 2392: SDMMC_CMD         CMD12          E
+Page 2392: SDMMC_D0       Stream data last byte         E
+Page 2392: Note:       The SDMMC will not receive any more data from the card when DATACOUNT = 0, even
+Page 2393: RM0433                            Secure digital input/output MultiMediaCard interface (SDMMC)
+Page 2393: Note:    The SDMMC will not receive any more data from the card when DATACOUNT = 0, even
+Page 2393: The e•MMC card may be switched between a Sleep state and a Standby state by CMD5. In
+Page 2393: The card indicates Busy, pulling down SDMMC_D0, during the transition phase. The Sleep
+Page 2393: state is reached when the card stops pulling down the SDMMC_DO line.
+Page 2393: The card indicates Busy, pulling down SDMMC_D0, during the transition phase. The
+Page 2393: Standby state is reached when the card stops pulling down the SDMMC_DO line.
+Page 2394: Secure digital input/output MultiMediaCard interface (SDMMC)                                                      RM0433
+Page 2394: SDMMC_CMD     sleep
+Page 2394: SDMMC_D0                         BUSY                                          BUSY
+Page 2394: SDMMC_CK frequency shall be set in accordance with the achievable SDMMC_CMD data
+Page 2394: CLKDIV shall be set >1, and the SETCLKRX shall select either the sdmmc_io_in_ck or
+Page 2394: SDMMC_CLKin source.
+Page 2394: (GO_IRQ_STATE). While waiting for an interrupt response the SDMMC_CK clock signal
+Page 2394: SDMMC_CMD line for a Start bit. Upon detection of a Start bit the card will abort the
+Page 2394: SDMMC_CMD bit stream. The sender whose interrupt service request response bit does
+Page 2394: not correspond to the bit on the SDMMC_CMD line stops sending. In the case of multiple
+Page 2395: RM0433                            Secure digital input/output MultiMediaCard interface (SDMMC)
+Page 2395: 1.   Set the SDMMC_CK frequency in accordance with the achievable SDMMC_CMD data
+Page 2395: sdmmc_io_in_ck.
+Page 2395: If boot acknowledgment is enabled the card send pattern 010 on SDMMC_D0 within 50ms
+Page 2395: If the SDMMC_CMD line is held low for at least 74 clock cycles after card power-up or reset,
+Page 2395: on the SDMMC_Dn line(s). The host must keep the SDMMC_CMD line low until after all
+Page 2395: boot data has been read. The host can terminate boot mode by pulling the SDMMC_CMD
+Page 2396: Secure digital input/output MultiMediaCard interface (SDMMC)                                                     RM0433
+Page 2396: SDMMC_CK
+Page 2396: SDMMC_CMD                                                                                 CMD1   RESP
+Page 2396: SDMMC_Dn                 S 010 E            S     + CRC E    S     + CRC E
+Page 2396: –    the SDMMC_CMD to be driven low. (BOOTMODE = normal boot).
+Page 2396: –    SDMMC has completely received all data and the DPSM is disabled.
+Page 2396: SDMMC_CMD line to go high. The CMDSENT flag is generated 56 cycles later to
+Page 2397: RM0433                                 Secure digital input/output MultiMediaCard interface (SDMMC)
+Page 2397: card starts to send the first boot code data on the SDMMC_Dn line(s). The master
+Page 2397: SDMMC_CK
+Page 2397: SDMMC_CMD            boot                                                  reset           CMD1   RESP
+Page 2397: SDMMC_Dn                   S 010 E        S     + CRC
+Page 2397: 1.    Move the SDMMC to power-off state, and reset the card
+Page 2397: 2.    Move the SDMMC to power-on state. This will guarantee the 74 SCDMMC_CK cycles
+Page 2398: Secure digital input/output MultiMediaCard interface (SDMMC)                                   RM0433
+Page 2398: –   SDMMC has completely received all data and the DPSM is disabled.
+Page 2398: BUSYD0 register bit and the release of busy with the BUSYD0END flag. The SDMMC_D0
+Page 2398: BUSYD0 register bit is reset to not busy when the SDMMC_D0 line release busy, at the
+Page 2398: SDMMC_CMD       CMD     R1b                 CMD     RESP
+Page 2398: SDMMC_D0                    BUSY
+Page 2399: RM0433                               Secure digital input/output MultiMediaCard interface (SDMMC)
+Page 2399: To detect the SDMMC_D0 busy signaling when sending a Command with R1b response the
+Page 2399: Following reset the SDMMC will be in the reset state. In this state the SDMMC is disabled
+Page 2399: and no command nor data can be transfered. The SDMMC_D[7:0], and SDMMC_CMD are
+Page 2399: in HiZ and the SDMMC_CK is driven low.
+Page 2399: Before moving to the power-on state the SDMMC shall be configured.
+Page 2399: In the power-on state the SDMMC_CK clock is running. First 74 SDMMC_CK cycles will be
+Page 2399: clocked after which the SDMMC is enabled and command and data can be transfered.
+Page 2399: The SDMMC states are controlled by Firmware with the PWRCTL register bits according
+Page 2399: Figure 724. SDMMC state control
+Page 2399: SDMMC disabled     Reset             SDMMC disabled                Reset   SDMMC disabled
+Page 2399: SDMMC_CK > 74 cyles
+Page 2399: SDMMC disabled
+Page 2399: SDMMC enabled
+Page 2400: Secure digital input/output MultiMediaCard interface (SDMMC)                                         RM0433
+Page 2400: 1.    Reset the SDMMC with the RCC.SDMMCxRST register bit. This will reset the SDMMC
+Page 2400: 3.    Set the SDMMC in power-cycle state. This will make that the SDMMC_D[7:0],
+Page 2400: SDMMC_CMD and SDMMC_CK are driven low, to prevent the card from being
+Page 2400: 5.    After the power ramp period set the SDMMC to the power-off state for minimum 1ms.
+Page 2400: The SDMMC_D[7:0], SDMMC_CMD and SDMMC_CK are set to drive “1”.
+Page 2400: 6.    After the 1ms delay set the SDMMC to power-on state in which the SDMMC_CK clock
+Page 2400: 7.    After 74 SDMMC_CK cycles the first command can be sent to the card.
+Page 2400: SDMMC_CK                              Driven ‘0’             Driven ‘1’
+Page 2400: SDMMC_CMD                                                                             CMD
+Page 2400: SDMMC_Dn                              Driven ‘0’
+Page 2400: SDMMC state           Reset               Power-cycle            Power-off        Power-on
+Page 2400: Power ramp up               SDMMC_CK
+Page 2400: The behavior is to stop SDMMC_CK during data transfer and freeze the SDMMC state
+Page 2400: clocked by SDMMC_CK are frozen, the AHB interfaces are still alive. The FIFO can thus be
+Page 2401: RM0433                             Secure digital input/output MultiMediaCard interface (SDMMC)
+Page 2401: Hardware flow control shall only be used when the SDMMC_Dn data is cycle-aligned with
+Page 2401: the SDMMC_CK. Whenever the sdmmc_fb_ck from the DLYB delay block is used, i.e in the
+Page 2401: SDMMC_CK
+Page 2401: sdmmc_fb_ck
+Page 2401: SDMMC_D0                  Dn Dn+1 Dn+2                  Dn+3                      Dn+4
+Page 2401: SDMMC_CK      Provide SD clock at 3.3 V                    Provide SD clock at 1.8 V
+Page 2401: SDMMC_CMD
+Page 2401: SDMMC_D[3:0]                                                                               1.8 V
+Page 2401: 1.    Before starting the Voltage Switch procedure, the SDMMC_CK frequency shall be set
+Page 2401: no longer drive the CMD and SDMMC_D[3:0] signals until completion of the
+Page 2402: Secure digital input/output MultiMediaCard interface (SDMMC)                                     RM0433
+Page 2402: voltage switch sequence. Some cycles after the response the SDMMC_CK will be
+Page 2402: 4.   The card drives CMD and SDMMC_D[3:0] to low at the next clock after the R1
+Page 2402: 5.   The host, after having received the R1 response, may monitor the SDMMC_D0 line
+Page 2402: using the BUSYD0 register bit. The SDMMC_D0 line is sampled two SDMMC_CK
+Page 2402: 1.8V, after which it instructs the SDMMC to start the timing critical section of the
+Page 2402: continue to stop the SDMMC_CK by holding it low for at least 5ms.
+Page 2402: 6.   The card after detecting SDMMC_CK low will begin switching signaling voltage to 1.8V.
+Page 2402: 7.   The host SDMMC hardware after at least 5ms will restart the SDMMC_CK.
+Page 2402: 8.   The card within 1ms from detecting SDMMC_CK transition will drive CMD and
+Page 2402: DAT[3:0] high for at least 1 SDMMC_CK cycle and then stop driving CMD and
+Page 2402: 9.   The host SDMMC hardware, 1ms after the SDMMC_CK has been restarted, the
+Page 2402: SDMMC_D0 is sampled into BUSYD0 and generate the VSWEND flag.
+Page 2402: 10. The host, on the VSWEND flag, will check SDMMC_D0 line using the BUSYD0 register
+Page 2402: The minimum 5ms time to stop the SDMMC_CK is derived from the internal ungated
+Page 2402: SDMMC_CK clock, which will have a maximum frequency of 25MHz (SD mode), as set by
+Page 2402: kHz). If a lower SDMMC_CK frequency is selected by the clock divider CLKDIV the time for
+Page 2402: the SDMMC_CK clock to be stopped will be longer.
+Page 2402: The maximum 1 ms time for the card to drive the SDMMC_Dn and SDMMC_CMD lines high
+Page 2402: is derived from the internal ungated SDMMC_CK which will have a maximum frequency of
+Page 2402: 25MHz (SD mode), as set by the clock divider CLKDIV. The SDMMC will check the lines
+Page 2402: SDMMC_CK frequency is selected by the clock divider CLKDIV the time to check the lines
+Page 2403: RM0433                            Secure digital input/output MultiMediaCard interface (SDMMC)
+Page 2403: SDMMC                    CLK.h                               CLKB
+Page 2403: SDMMC_CK
+Page 2403: SDMMC_CKIN
+Page 2403: SDMMC_CDIR
+Page 2403: SDMMC_CMD
+Page 2403: SDMMC_D0DIR
+Page 2403: SDMMC_D0
+Page 2403: SDMMC_D123DIR
+Page 2403: SDMMC_D1
+Page 2403: SDMMC_D2
+Page 2403: SDMMC_D3
+Page 2403: signals the SDMMC uses the following signals:
+Page 2403: SDMMC_CKIN feedback input clock
+Page 2403: SDMMC_CDIR I/O direction control for the CMD signal.
+Page 2403: SDMMC_D0DIR I/O direction control for the SDMMC_D0 signal.
+Page 2403: SDMMC_D123DIR I/O direction control for the SDMMC_D1, SDMMC_D2 and SDMMC_D3
+Page 2403: The polarity of the SDMMC_CDIR, SDMMC_D0DIR and SDMMC_D123DIR signals can be
+Page 2403: selected through SDMMC_POWER.DIRPOL control bit.
+Page 2404: Secure digital input/output MultiMediaCard interface (SDMMC)                                                         RM0433
+Page 2404: 54.8             SDMMC registers
+Page 2404: 54.8.1           SDMMC power control register (SDMMC_POWER)
+Page 2404: This bit can only be written when the SDMMC is in the power-off state (PWRCTRL = 00).
+Page 2404: This bit is used to stop the SDMMC_CK after the voltage switch command response:
+Page 2404: 0: SDMMC_CK clock kept unchanged after successfully received command response.
+Page 2404: 1: SDMMC_CK clock stopped after successfully received command response.
+Page 2404: Bits 1:0 PWRCTRL[1:0]: SDMMC state control bits
+Page 2404: These bits can only be written when the SDMMC is not in the power-on state
+Page 2404: These bits are used to define the functional state of the SDMMC signals:
+Page 2404: 00: After reset, Reset: the SDMMC is disabled and the clock to the Card is stopped,
+Page 2404: SDMMC_D[7:0], and SDMMC_CMD are HiZ and SDMMC_CK is driven low.
+Page 2404: When written 00, power-off: the SDMMC is disabled and the clock to the card is
+Page 2404: stopped, SDMMC_D[7:0], SDMMC_CMD and SDMMC_CK are driven high.
+Page 2404: 10: Power-cycle, the SDMMC is disabled and the clock to the card is stopped,
+Page 2404: SDMMC_D[7:0], SDMMC_CMD and SDMMC_CK are driven low.
+Page 2404: 11: Power-on: the card is clocked, The first 74 SDMMC_CK cycles the SDMMC is still
+Page 2404: disabled. After the 74 cycles the SDMMC is enabled and the SDMMC_D[7:0],
+Page 2404: SDMMC_CMD and SDMMC_CK are controlled according the SDMMC operation.
+Page 2405: RM0433                                       Secure digital input/output MultiMediaCard interface (SDMMC)
+Page 2405: 54.8.2          SDMMC clock control register (SDMMC_CLKCR)
+Page 2405: The SDMMC_CLKCR register controls the SDMMC_CK output clock, the sdmmc_rx_ck
+Page 2405: 00: sdmmc_io_in_ck selected as receive clock
+Page 2405: 01: SDMMC_CKIN feedback clock selected as receive clock
+Page 2405: 10: sdmmc_fb_ck tuned feedback clock selected as receive clock.
+Page 2405: 11: Reserved (select sdmmc_io_in_ck)
+Page 2405: change, please see SDMMC status register definition in Section 54.8.11.
+Page 2406: Secure digital input/output MultiMediaCard interface (SDMMC)                                            RM0433
+Page 2406: Bit 16 NEGEDGE: SDMMC_CK dephasing selection bit for data and command
+Page 2406: SDMMC_CK falling edge.
+Page 2406: 0: - Command and data changed on the sdmmc_ker_ck falling edge succeeding the
+Page 2406: rising edge of SDMMC_CK.
+Page 2406: - SDMMC_CK edge occurs on sdmmc_ker_ck rising edge.
+Page 2406: 1: - Command and data changed on the same sdmmc_ker_ck rising edge generating the
+Page 2406: SDMMC_CK falling edge.
+Page 2406: 0: - Command changed on the sdmmc_ker_ck falling edge succeeding the rising edge of
+Page 2406: SDMMC_CK.
+Page 2406: - Data changed on the sdmmc_ker_ck falling edge succeeding a SDMMC_CK edge.
+Page 2406: - SDMMC_CK edge occurs on sdmmc_ker_ck rising edge.
+Page 2406: 1: - Command changed on the same sdmmc_ker_ck rising edge generating the
+Page 2406: SDMMC_CK falling edge.
+Page 2406: - Data changed on the SDMMC_CK falling edge succeeding a SDMMC_CK edge.
+Page 2406: - SDMMC_CK edge occurs on sdmmc_ker_ck rising edge.
+Page 2406: 00: Default 1-bit wide bus mode: SDMMC_D0 used (Does not support DDR)
+Page 2406: 01: 4-bit wide bus mode: SDMMC_D[3:0] used
+Page 2406: 10: 8-bit wide bus mode: SDMMC_D[7:0] used
+Page 2406: For power saving, the SDMMC_CK clock output can be disabled when the bus is idle by
+Page 2406: 0: SDMMC_CK clock is always enabled
+Page 2406: 1: SDMMC_CK is only enabled when the bus is active
+Page 2406: This field defines the divide factor between the input clock (sdmmc_ker_ck) and the output
+Page 2406: clock (SDMMC_CK): SDMMC_CK frequency = sdmmc_ker_ck / [2 * CLKDIV].
+Page 2406: 0x000: SDMMC_CK frequency = sdmmc_ker_ck / 1 (Does not support DDR)
+Page 2406: 0x001: SDMMC_CK frequency = sdmmc_ker_ck / 2
+Page 2406: 0x002: SDMMC_CK frequency = sdmmc_ker_ck / 4
+Page 2406: 0x080: SDMMC_CK frequency = sdmmc_ker_ck / 256
+Page 2406: 0x3FF: SDMMC_CK frequency = sdmmc_ker_ck / 2046
+Page 2407: RM0433                                       Secure digital input/output MultiMediaCard interface (SDMMC)
+Page 2407: Note:    1      While the SD/SDIO card or e•MMC is in identification mode, the SDMMC_CK frequency
+Page 2407: 3      At least seven sdmmc_hclk clock periods are needed between two write accesses to this
+Page 2407: register. SDMMC_CK can also be stopped during the ReadWait interval for SD I/O cards: in
+Page 2407: this case the SDMMC_CLKCR register does not control SDMMC_CK.
+Page 2407: 54.8.3          SDMMC argument register (SDMMC_ARGR)
+Page 2407: The SDMMC_ARGR register contains a 32-bit command argument, which is sent to a card
+Page 2407: 54.8.4          SDMMC command register (SDMMC_CMDR)
+Page 2407: The SDMMC_CMDR register contains the command index and command type bits. The
+Page 2408: Secure digital input/output MultiMediaCard interface (SDMMC)                                              RM0433
+Page 2408: During ReadWait with SDMMC_CK stopped no command will be sent and CPSMEN is kept
+Page 2408: WAITPEND is only taken into account when DTMODE = e•MMC stream data transfer,
+Page 2409: RM0433                                        Secure digital input/output MultiMediaCard interface (SDMMC)
+Page 2409: Note:    1       At least seven sdmmc_hclk clock periods are needed between two write accesses to this
+Page 2409: 54.8.5           SDMMC command response register (SDMMC_RESPCMDR)
+Page 2409: The SDMMC_RESPCMDR register contains the command index field of the last command
+Page 2410: Secure digital input/output MultiMediaCard interface (SDMMC)                                                      RM0433
+Page 2410: 54.8.6         SDMMC response x register (SDMMC_RESPxR)
+Page 2410: The SDMMC_RESP1/2/3/4R registers contain the status of a card, which is part of the
+Page 2410: Table 457. Response type and SDMMC_RESPxR registers
+Page 2410: SDMMC_RESP1R                                Card status[31:0]                Card status [127:96]
+Page 2410: SDMMC_RESP2R                                        all 0                    Card status [95:64]
+Page 2410: SDMMC_RESP3R                                        all 0                    Card status [63:32]
+Page 2410: SDMMC_RESP4R                                        all 0                    Card status [31:0](2)
+Page 2410: 2. The SDMMC_RESP4R register LSB is always 0.
+Page 2410: 54.8.7         SDMMC data timer register (SDMMC_DTIMER)
+Page 2410: The SDMMC_DTIMER register contains the data timeout period, in card bus clock periods.
+Page 2410: A counter loads the value from the SDMMC_DTIMER register, and starts decrementing
+Page 2411: RM0433                                       Secure digital input/output MultiMediaCard interface (SDMMC)
+Page 2411: 54.8.8          SDMMC data length register (SDMMC_DLENR)
+Page 2411: The SDMMC_DLENR register contains the number of data bytes to be transferred. The
+Page 2411: size (see SDMMC_DCTRL). A data transfer must be written to the data timer register and
+Page 2411: For an SDMMC multibyte transfer the value in the data length register must be between 1
+Page 2412: Secure digital input/output MultiMediaCard interface (SDMMC)                                                       RM0433
+Page 2412: 54.8.9          SDMMC data control register (SDMMC_DCTRL)
+Page 2412: The SDMMC_DCTRL register control the data path state machine (DPSM).
+Page 2412: 0: Read Wait control using SDMMC_D2
+Page 2412: 1: Read Wait control stopping SDMMC_CK
+Page 2413: RM0433                               Secure digital input/output MultiMediaCard interface (SDMMC)
+Page 2413: 10: e•MMC Stream data transfer. (WIDBUS shall select 1-bit wide bus mode)
+Page 2413: used, i.e. shall not be used with SD or e•MMC cards.
+Page 2413: 54.8.10    SDMMC data counter register (SDMMC_DCNTR)
+Page 2413: The SDMMC_DCNTR register loads the value from the data length register (see
+Page 2413: SDMMC_DLENR) when the DPSM moves from the Idle state to the Wait_R or Wait_S state.
+Page 2414: Secure digital input/output MultiMediaCard interface (SDMMC)                                                          RM0433
+Page 2414: 54.8.11         SDMMC status register (SDMMC_STAR)
+Page 2414: The SDMMC_STAR register is a read-only register. It contains two types of flag:
+Page 2414: writing to the SDMMC interrupt Clear register (see SDMMC_ICR)
+Page 2414: The interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
+Page 2414: The interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
+Page 2414: Bit 26 CKSTOP: SDMMC_CK stopped in Voltage switch procedure
+Page 2414: The interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
+Page 2415: RM0433                              Secure digital input/output MultiMediaCard interface (SDMMC)
+Page 2415: The interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
+Page 2415: The interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
+Page 2415: The interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
+Page 2415: The interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
+Page 2415: Bit 21 BUSYD0END: end of SDMMC_D0 Busy following a CMD response detected
+Page 2415: SDMMC_ICR.
+Page 2415: 0: card SDMMC_D0 signal does NOT signal change from busy to not busy.
+Page 2415: 1: card SDMMC_D0 signal changed from busy to NOT busy.
+Page 2415: Bit 20 BUSYD0: Inverted value of SDMMC_D0 line (Busy), sampled at the end of a CMD response
+Page 2415: and a second time 2 SDMMC_CK cycles after the CMD response
+Page 2415: This bit is reset to not busy when the SDMMCD0 line changes from busy to not busy. This bit
+Page 2415: 0: card signals not busy on SDMMC_D0.
+Page 2415: 1: card signals busy on SDMMC_D0.
+Page 2415: Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
+Page 2416: Secure digital input/output MultiMediaCard interface (SDMMC)                                                RM0433
+Page 2416: writing corresponding interrupt clear bit in SDMMC_ICR.
+Page 2416: Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
+Page 2416: corresponding interrupt clear bit in SDMMC_ICR.
+Page 2416: Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
+Page 2416: Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
+Page 2416: Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
+Page 2416: Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
+Page 2416: Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
+Page 2416: Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
+Page 2416: The Command Timeout period has a fixed value of 64 SDMMC_CK clock periods.
+Page 2416: Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
+Page 2416: Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
+Page 2416: Note:          FIFO interrupt flags shall be masked in SDMMC_MASKR when using IDMA mode.
+Page 2416: 54.8.12        SDMMC interrupt clear register (SDMMC_ICR)
+Page 2416: The SDMMC_ICR register is a write-only register. Writing a bit with 1 clears the
+Page 2416: corresponding bit in the SDMMC_STAR status register.
+Page 2417: RM0433                                 Secure digital input/output MultiMediaCard interface (SDMMC)
+Page 2418: Secure digital input/output MultiMediaCard interface (SDMMC)     RM0433
+Page 2419: RM0433                                       Secure digital input/output MultiMediaCard interface (SDMMC)
+Page 2419: 54.8.13        SDMMC mask register (SDMMC_MASKR)
+Page 2420: Secure digital input/output MultiMediaCard interface (SDMMC)                                            RM0433
+Page 2420: Set and cleared by software to enable/disable the interrupt generated when SDMMC_D0
+Page 2421: RM0433                                      Secure digital input/output MultiMediaCard interface (SDMMC)
+Page 2421: 54.8.14        SDMMC acknowledgment timer register (SDMMC_ACKTIMER)
+Page 2421: The SDMMC_ACKTIMER register contains the acknowledgment timeout period, in
+Page 2421: SDMMC_CK bus clock periods.
+Page 2421: A counter loads the value from the SDMMC_ACKTIMER register, and starts decrementing
+Page 2422: Secure digital input/output MultiMediaCard interface (SDMMC)                                                   RM0433
+Page 2422: 54.8.15        SDMMC data FIFO register (SDMMC_FIFOR)
+Page 2422: When accessing SDMMC_FIFOR with half word or byte access an AHB bus fault is
+Page 2422: 54.8.16        SDMMC DMA control register (SDMMC_IDMACTRLR)
+Page 2423: RM0433                                       Secure digital input/output MultiMediaCard interface (SDMMC)
+Page 2423: 54.8.17         SDMMC IDMA buffer size register (SDMMC_IDMABSIZER)
+Page 2423: The SDMMC_IDMABSIZER register contains the buffers size when in double buffer
+Page 2424: Secure digital input/output MultiMediaCard interface (SDMMC)                                               RM0433
+Page 2424: 54.8.18        SDMMC IDMA buffer 0 base address register
+Page 2424: (SDMMC_IDMABASE0R)
+Page 2424: The SDMMC_IDMABASE0R register contains the memory buffer base address in single
+Page 2424: 54.8.19        SDMMC IDMA buffer 1 base address register
+Page 2424: (SDMMC_IDMABASE1R)
+Page 2424: The SDMMC_IDMABASE1R register contains the double buffer configuration second buffer
+Page 2425: RM0433                                                                   Secure digital input/output MultiMediaCard interface (SDMMC)
+Page 2425: 54.8.20       SDMMC register map
+Page 2425: The following table summarizes the SDMMC registers.
+Page 2425: Table 458. SDMMC register map
+Page 2425: SDMMC_
+Page 2425: SDMMC_
+Page 2425: SDMMC_
+Page 2425: SDMMC_
+Page 2425: SDMMC_
+Page 2425: SDMMC_
+Page 2425: SDMMC_
+Page 2425: SDMMC_
+Page 2425: SDMMC_
+Page 2425: SDMMC_
+Page 2425: SDMMC_
+Page 2426: SDMMC_
+Page 2426: SDMMC_
+Page 2426: SDMMC_
+Page 2426: SDMMC_
+Page 2426: SDMMC_
+Page 2426: SDMMC_
+Page 2426: SDMMC_
+Page 2426: SDMMC_
+Page 2426: SDMMC_
+Page 2426: SDMMC_
+Page 2426: Secure digital input/output MultiMediaCard interface (SDMMC)
+Page 2426: Table 458. SDMMC register map (continued)
+Page 2427: RM0433                                             Secure digital input/output MultiMediaCard interface (SDMMC)
+Page 2427: Table 458. SDMMC register map (continued)
+Page 2427: SDMMC_
+Page 2790: The counters in the MAC Management Counters (MMC) module can be viewed as an
+Page 2790: extension of the register address space of the CSR module. The MMC module maintains a
+Page 2790: Ethernet MAC and MMC registers.
+Page 2790: The MMC counters are free running. There is no separate enable for the counters to start. A
+Page 2790: particular MMC counter starts counting when corresponding packet is received or
+Page 2790: 57.5.12     MAC and MMC register descriptions
+Page 2790: Refer to Section 57.11.4: Ethernet MAC and MMC registers.
+Page 2805: •    MMC Interrupt Status
+Page 2805: –    MMC Receive Checksum Offload Interrupt Status
+Page 2805: –    MMC Transmit Interrupt Status
+Page 2805: –    MMC Receive Interrupt Status
+Page 2841: •        MAC registers including MMC register (see Section 57.11.4: Ethernet MAC and MMC
+Page 2857: MMCRXIS
+Page 2857: MMCTXIS     OR           MMCIS
+Page 2857: MMCRXIPIS                          AND
+Page 2857: MMCIE
+Page 2879: 57.11.4   Ethernet MAC and MMC registers
+Page 2901: MMCRXIS
+Page 2901: MMCTXIS
+Page 2901: MMCIS
+Page 2902: Bit 10 MMCTXIS: MMC Transmit Interrupt Status
+Page 2902: This bit is set high when an interrupt is generated in the MMC Transmit Interrupt Register.
+Page 2902: This bit is valid only when you select the Enable MAC Management Counters (MMC) option.
+Page 2902: Bit 9 MMCRXIS: MMC Receive Interrupt Status
+Page 2902: This bit is set high when an interrupt is generated in the MMC Receive Interrupt Register.
+Page 2902: This bit is valid only when you select the Enable MAC Management Counters (MMC) option.
+Page 2902: Bit 8 MMCIS: MMC Interrupt Status
+Page 2902: Counters (MMC) option.
+Page 2925: MMC control register (MMC_CONTROL)
+Page 2925: This register configures the MMC operating mode.
+Page 2925: Bit 8 UCDBC: Update MMC Counters for Dropped Broadcast Packets
+Page 2925: When set, the MAC updates all related MMC Counters for Broadcast packets that are
+Page 2925: When reset, the MMC Counters are not updated for dropped Broadcast packets.
+Page 2925: When this bit is low and the CNTPRST bit is set, all MMC counters get preset to almost-half
+Page 2925: When this bit is high and the CNTPRST bit is set, all MMC counters get preset to almost-full
+Page 2925: interrupts because of MMC counter becoming half-full or full.
+Page 2925: Bit 3 CNTFREEZ: MMC Counter Freeze
+Page 2925: When this bit is set, it freezes all MMC counters to their current value.
+Page 2925: Until this bit is reset to 0, no MMC counter is updated because of any transmitted or received
+Page 2925: packet. If any MMC counter is read with the Reset on Read bit set, then that counter is also
+Page 2926: When this bit is set, the MMC counters are reset to zero after Read (self-clearing after reset).
+Page 2926: MMC Rx interrupt register (MMC_RX_INTERRUPT)
+Page 2926: The MMC Receive Interrupt register maintains the interrupts that are generated when the
+Page 2926: ones. The MMC Receive Interrupt register is a 32 bit register. An interrupt bit is cleared
+Page 2926: when the respective MMC counter that caused the interrupt is read. The least significant
+Page 2926: Bit 27 RXLPITRCIS: MMC Receive LPI transition counter interrupt status
+Page 2926: Bit 26 RXLPIUSCIS: MMC Receive LPI microsecond counter interrupt status
+Page 2927: Bit 17 RXUCGPIS: MMC Receive Unicast Good Packet Counter Interrupt Status
+Page 2927: Bit 6 RXALGNERPIS: MMC Receive Alignment Error Packet Counter Interrupt Status
+Page 2927: Bit 5 RXCRCERPIS: MMC Receive CRC Error Packet Counter Interrupt Status
+Page 2927: MMC Tx interrupt register (MMC_TX_INTERRUPT)
+Page 2927: The MMC Transmit Interrupt register maintains the interrupts generated when transmit
+Page 2927: The MMC Transmit Interrupt register is a 32 bit register. An interrupt bit is cleared when the
+Page 2927: respective MMC counter that caused the interrupt is read.
+Page 2928: Bit 27 TXLPITRCIS: MMC Transmit LPI transition counter interrupt status
+Page 2928: Bit 26 TXLPIUSCIS: MMC Transmit LPI microsecond counter interrupt status
+Page 2928: Bit 21 TXGPKTIS: MMC Transmit Good Packet Counter Interrupt Status
+Page 2928: Bit 15 TXMCOLGPIS: MMC Transmit Multiple Collision Good Packet Counter Interrupt Status
+Page 2928: Bit 14 TXSCOLGPIS: MMC Transmit Single Collision Good Packet Counter Interrupt Status
+Page 2929: MMC Rx interrupt mask register (MMC_RX_INTERRUPT_MASK)
+Page 2929: The MMC Receive Interrupt Mask register maintains the masks for the interrupts generated
+Page 2929: Bit 27 RXLPITRCIM: MMC Receive LPI transition counter interrupt Mask
+Page 2929: Bit 26 RXLPIUSCIM: MMC Receive LPI microsecond counter interrupt Mask
+Page 2929: Bit 17 RXUCGPIM: MMC Receive Unicast Good Packet Counter Interrupt Mask
+Page 2929: Bit 6 RXALGNERPIM: MMC Receive Alignment Error Packet Counter Interrupt Mask
+Page 2929: Bit 5 RXCRCERPIM: MMC Receive CRC Error Packet Counter Interrupt Mask
+Page 2930: MMC Tx interrupt mask register (MMC_TX_INTERRUPT_MASK)
+Page 2930: The MMC Transmit Interrupt Mask register maintains the masks for the interrupts generated
+Page 2930: values. This register is 32 bit wide. This register is present only when any one of the MMC
+Page 2930: Bit 27 TXLPITRCIM: MMC Transmit LPI transition counter interrupt Mask
+Page 2930: Bit 26 TXLPIUSCIM: MMC Transmit LPI microsecond counter interrupt Mask
+Page 2930: Bit 21 TXGPKTIM: MMC Transmit Good Packet Counter Interrupt Mask
+Page 2930: Bit 15 TXMCOLGPIM: MMC Transmit Multiple Collision Good Packet Counter Interrupt Mask
+Page 2930: Bit 14 TXSCOLGPIM: MMC Transmit Single Collision Good Packet Counter Interrupt Mask
+Page 2970: Res.                                                                                                                                  RWKPFE                                        Res.                        Res.                          MMCTXIS                                                            Res.            10
+Page 2970: RLPIST                                                                                                                                 GLBLUCAST                                      Res.                        Res.                          MMCRXIS                                                            Res.            9
+Page 2970: TLPIST                                                                                                                                    Res.                                        RWT                         Res.                           MMCIS                                                             Res.            8
+Page 2972: MMC_CONTROL
+Page 2972: MMC_RX_
+Page 2972: MMC_TX_
+Page 2972: MMC_RX_
+Page 2972: MMC_TX_
+Page 3222: interface (SDMMC)
+Page 3222: Figure 694: SDMMC block diagram; added Section 55.4.2:SDMMC
+Page 3222: – Removed SDMMC_VER, SDMMC_ID, SDMMC_SID
+Page 3222: 2      – Updated SDMMC_STAR bit 12 and 13 in Table 449: SDMMC
+Page 3232: Queue 0 and 1. Changed bits 20:16 to reserved in MMC Rx
+Page 3232: interrupt mask register (MMC_RX_INTERRUPT_MASK).
+Page 3242: MMC_CONTROL . . . . . . . . . . . . . . . . . . . . .2925           OTG_GRXSTSP . . . . . . . . . . . . . . . . . . . . . 2615
+Page 3242: MMC_RX_INTERRUPT . . . . . . . . . . . . . . . .2926                OTG_GRXSTSR . . . . . . . . . . . . . . . . 2612-2613
+Page 3242: MMC_RX_INTERRUPT_MASK . . . . . . . . . .2929                       OTG_GUSBCFG . . . . . . . . . . . . . . . . . . . . . 2599
+Page 3242: MMC_TX_INTERRUPT . . . . . . . . . . . . . . . .2927                OTG_HAINT . . . . . . . . . . . . . . . . . . . . . . . . 2628
+Page 3242: MMC_TX_INTERRUPT_MASK . . . . . . . . . .2930                       OTG_HAINTMSK . . . . . . . . . . . . . . . . . . . . 2628
+Page 3244: SDMMC_ACKTIMER . . . . . . . . . . . . . . . . . .2421
+Page 3244: SDMMC_ARGR . . . . . . . . . . . . . . . . . . . . . .2407
+Page 3244: SDMMC_CLKCR . . . . . . . . . . . . . . . . . . . . .2405
+Page 3244: SDMMC_CMDR . . . . . . . . . . . . . . . . . . . . . .2407
+Page 3244: SDMMC_DCNTR . . . . . . . . . . . . . . . . . . . . .2413
+Page 3244: SDMMC_DCTRL . . . . . . . . . . . . . . . . . . . . .2412
+Page 3244: SDMMC_DLENR . . . . . . . . . . . . . . . . . . . . .2411
+Page 3244: SDMMC_DTIMER . . . . . . . . . . . . . . . . . . . .2410
+Page 3244: SDMMC_FIFOR . . . . . . . . . . . . . . . . . . . . . .2422
+Page 3244: SDMMC_ICR . . . . . . . . . . . . . . . . . . . . . . . .2416
+Page 3244: SDMMC_IDMABASE0R . . . . . . . . . . . . . . .2424
+Page 3244: SDMMC_IDMABASE1R . . . . . . . . . . . . . . .2424
+Page 3244: SDMMC_IDMABSIZER . . . . . . . . . . . . . . . .2423
+Page 3244: SDMMC_IDMACTRLR . . . . . . . . . . . . . . . . .2422
+Page 3244: SDMMC_MASKR . . . . . . . . . . . . . . . . . . . . .2419
+Page 3244: SDMMC_POWER . . . . . . . . . . . . . . . . . . . .2404
+Page 3244: SDMMC_RESPCMDR . . . . . . . . . . . . . . . . .2409
+Page 3244: SDMMC_RESPxR . . . . . . . . . . . . . . . . . . . .2410
+Page 3244: SDMMC_STAR . . . . . . . . . . . . . . . . . . . . . .2414

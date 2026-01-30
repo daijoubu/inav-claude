@@ -1,0 +1,641 @@
+Keyword: CAN
+Occurrences: 637
+================================================================================
+
+Page 1: the available serial peripherals (such as USART, CAN, USB, I2C, I3C, SPI, FDCAN). A
+Page 23: Figure 5.    CAN connection . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 46
+Page 26: –     AN3154: CAN protocol used in the STM32 bootloader
+Page 26: –     AN5405: FDCAN protocol used in the STM32 bootloader
+Page 31: BL_CAN_Loop refers to the CAN bootloader execution loop.
+Page 31: BL_FDCAN_Loop refers to the FDCAN execution loop.
+Page 34: Note:         For STM32 devices embedding bootloader using the DFU/CAN interface in which the
+Page 34: external clock source (HSE) is required for DFU/CAN operations, the detection of the HSE
+Page 35: DFU/CAN interfaces can malfunction, or not work at all.
+Page 35: 1.   Bootloader (protocol) version: version of the serial peripheral (e.g. USART, CAN,
+Page 35: X = 3: USART, CAN, and DFU are used
+Page 35: X = 7: USART, CAN, DFU, and I2C are used
+Page 35: X = 9: USART, CAN (or FDCAN), DFU, I2C, and SPI are used
+Page 35: X = 14: USART, DFU, I2C, I3C, FDCAN, and SPI are used
+Page 35: X = 16: USART, USB-DFU, FDCAN, and SPI are used
+Page 35: X = 17: USART, SPI, and FDCAN are used
+Page 35: X = 18: USART, SPI, FDCAN, and I2C are used
+Page 36: FDCAN1                                            FDCAN (V2.2)
+Page 36: STM32F105xx/107xx                 CAN2 (remapped)                 NA         NA
+Page 36: CAN (V2.0)
+Page 37: CAN2                           0x33   0x1FFF77DE CAN (V2.0)
+Page 38: CAN2                           0x31   0x1FFF77DE CAN (V2.0)
+Page 38: CAN2                                             CAN (V2.0)
+Page 38: CAN2                                             CAN (V2.0)
+Page 38: CAN2                                             CAN (V2.0)
+Page 38: USART3/CAN2                                      CAN (V2.0)
+Page 38: USART3/CAN2                                      CAN (V2.0)
+Page 38: CAN2                                             CAN (V2.0)
+Page 38: STM32F469xx/479xx           CAN2                           0x90   0x1FFF76DE CAN (V2.0)
+Page 39: CAN1                                             CAN (V2.0)
+Page 39: CAN2                                               CAN (V2.0)
+Page 39: CAN2                           0x90   0x1FF0EDBE CAN (V2.0)
+Page 39: CAN2                                             CAN (V2.0)
+Page 39: FDCAN                                            FDCAN (V1.0)
+Page 40: FDCAN1                                             FDCAN (V2.0)
+Page 40: FDCAN2                                             FDCAN (V2.0)
+Page 40: FDCAN2                                             FDCAN (V2.0)
+Page 40: FDCAN1                                             FDCAN (V1.1)
+Page 40: FDCAN1                                             FDCAN (V1.1)
+Page 40: FDCAN1                                             FDCAN (V1.1)
+Page 40: FDCAN2                                            FDCAN (V2.1)
+Page 42: STM32L43xxx/44xxx           CAN1                           0x91   0x1FFF6FFE CAN (V2.0)
+Page 42: STM32L45xxx/46xxx           CAN1                           0x92   0x1FFF6FFE CAN (V2.0)
+Page 42: CAN1                                             CAN(V2.0)
+Page 42: STM32L496xx/4A6xx           CAN1                           0x93   0x1FFF6FFE CAN (V2.0)
+Page 42: STM32L4Rxxx/STM32L4Sxxx     CAN1                           0x95   0x1FFF6FFE CAN (V2.0)
+Page 42: STM32L4P5xx/Q5xx            CAN1                           0x90   0x1FFF6FFE CAN (V2.0)
+Page 42: FDCAN1                                           FDCAN (V1.0)
+Page 43: FDCAN1                                           FDCAN (V2.2)
+Page 43: FDCAN1                                           FDCAN (V1.1)
+Page 43: FDCAN1                                           FDCAN (V1.1)
+Page 43: FDCAN1                                           FDCAN (V1.1)
+Page 43: FDCAN1                                           FDCAN (V1.1)
+Page 45: To use the CAN interface, the host must be connected to the RX and TX pins of the desired
+Page 45: CANx interface via CAN transceiver and a serial cable. A 120 Ω resistor must be added as
+Page 46: Figure 5. CAN connection
+Page 46: RX                     CAN_H                     TX
+Page 46: CAN                             CAN             STM32
+Page 46: CAN Host
+Page 46: CAN_L
+Page 46: SPI_MOSI, and CAN_RX, if present) at a known (low or high) level and keep the USB D+/D-
+Page 72: Once initialized the FDCAN configuration is:
+Page 72: – FrameFormat = FDCAN_FRAME_FD_BRS
+Page 72: FDCAN                    Enabled(2)
+Page 72: – Mode = FDCAN_MODE_NORMAL
+Page 72: FDCAN1
+Page 72: FDCAN in reception mode. Used in alternate function with
+Page 72: FDCAN_Rx pin             Input
+Page 72: FDCAN in transmission mode. Used in alternate function
+Page 72: FDCAN_Tx pin             Output
+Page 73: FDCAN frame
+Page 73: Yes   sources and other       BL_FDCAN_Loop
+Page 73: interfaces clocks        for FDCANx
+Page 73: Configure FDCANx
+Page 102: This is used only for USARTx and during CAN2, USB
+Page 102: HSI enabled          detection for CAN and DFUs (once CAN or DFU is
+Page 102: The external clock is mandatory only for DFU and CAN
+Page 102: HSE enabled          For CAN bootloader, the PLL is used only to generate
+Page 102: The CSS interrupt is enabled for the CAN and DFUs.
+Page 103: Once initialized, the CAN2 configuration is baudrate 125
+Page 103: CAN2                  Enabled            Note: CAN1 is clocked during the CAN bootloader
+Page 103: execution because CAN1 manages the communication
+Page 103: between CAN2 and SRAM.
+Page 103: CAN2
+Page 103: PB5 pin: CAN2 receives (remapped pin). Used in
+Page 103: CAN2_RX pin           Input
+Page 103: PB6 pin: CAN2 transmits (remapped pin). Used in input
+Page 103: CAN2_TX pin           Output push-pull
+Page 103: bootloader. This internal clock is used also for DFU and CAN bootloaders, but only for the
+Page 103: selection phase. An external clock (8, 14.7456, or 25 MHz) is required for DFU and CAN
+Page 104: CANx                      BL_USART_Loop
+Page 104: Configure CAN
+Page 104: BL_CAN_Loop for
+Page 104: CANx
+Page 105: – Go command updated (for all bootloaders): USART1, USART2, CAN2,
+Page 106: CAN2_Rx (PB5, remapped), OTG_FS_DM (PA11), and/or OTG_FS_DP (PA12) pin(s) are
+Page 106: The bootloader cannot be connected through CAN2 (remapped), DFU (OTG FS in Device
+Page 106: –    If CAN2 is used to connect to the bootloader, PA10, PD6, PA11, and PA12 must be
+Page 110: •    V3.x supporting USART1, USART3, CAN2, and DFU (USB FS device)
+Page 112: For the CAN interface, the Write Unprotect command is not
+Page 113: CAN or DFU is selected, the clock source is derived from
+Page 113: RCC                              The HSE clock source is used only when the CAN or the
+Page 113: The CSS interrupt is enabled for the CAN and DFUs. Any
+Page 114: Once initialized, the CAN2 configuration is: Baudrate
+Page 114: CAN2                  Enabled        Note: CAN1 is clocked during CAN2 bootloader execution
+Page 114: because CAN1 manages the communication between
+Page 114: CAN2 and SRAM.
+Page 114: CAN2
+Page 114: PB5 pin: CAN2 in reception mode. Used in alternate push-
+Page 114: CAN2_RX pin           Input
+Page 114: PB13 pin: CAN2 in transmission mode. Used in alternate
+Page 114: CAN2_TX pin           Output
+Page 114: CAN2 and
+Page 114: internal clock is also used for CAN and DFU (USB FS device), but only for the selection
+Page 114: phase. An external clock multiple of 1 MHz (between 4 and 26 MHz) is required for CAN
+Page 115: on CANx pin            yes
+Page 115: Configure CAN
+Page 115: Execute DFU                               BL_CAN_Loop for
+Page 115: bootloader using USB                               CANx
+Page 116: enhancement                      – For the CAN interface, the Write Unprotect command is
+Page 144: selected (once CAN or DFU is selected, the clock
+Page 144: RCC                                   The HSE clock source is used only when the CAN or
+Page 144: The CSS interrupt is enabled for the CAN and DFUs.
+Page 145: Once initialized, the CAN2 configuration is: Baudrate
+Page 145: CAN2                 Enabled          Note: CAN1 is clocked during CAN2 bootloader
+Page 145: execution because CAN1 manages the communication
+Page 145: between CAN2 and SRAM.
+Page 145: CAN2
+Page 145: PB5 pin: CAN2 in reception mode. Used in alternate
+Page 145: CAN2_RX pin          Input
+Page 145: PB13 pin: CAN2 in transmission mode. Used in
+Page 145: CAN2_TX pin          Output
+Page 145: CAN2 and
+Page 145: internal clock is also used for CAN and DFU (USB FS device), but only for the selection
+Page 145: phase. An external clock multiple of 1 MHz (between 4 and 26 MHz) is required for CAN
+Page 146: on CANx pin            yes
+Page 146: Configure CAN
+Page 146: Execute DFU                               BL_CAN_Loop for
+Page 146: bootloader using USB                               CANx
+Page 147: – Fix V3.0 limitations            – For the CAN interface, the Write Unprotect command is not functional.
+Page 148: selected (once CAN or DFU is selected, the clock source is
+Page 148: RCC                              The HSE clock source is used only when the CAN or the
+Page 148: The CSS interrupt is enabled for the CAN and DFUs. Any
+Page 149: Once initialized the CAN2 configuration is: Baudrate 125
+Page 149: CAN2                 Enabled         Note: CAN1 is clocked during CAN2 bootloader execution
+Page 149: because CAN1 manages the communication between
+Page 149: CAN2                                                CAN2 and SRAM.
+Page 149: PB5 pin: CAN2 in reception mode. Used in alternate push-
+Page 149: CAN2_RX pin          Input
+Page 149: PB13 pin: CAN2 in transmission mode. Used in alternate
+Page 149: CAN2_TX pin          Output
+Page 150: CAN2 and
+Page 150: and SPIx bootloaders. This internal clock is also used for CAN and DFU (USB FS device),
+Page 150: 26 MHz) is required for CAN and DFU execution after the selection phase.
+Page 151: on CANx                                                                      no           HSE detected
+Page 151: Configure CAN
+Page 151: Disable all                                        BL_CAN_Loop for
+Page 151: interrupt sources                                           CANx
+Page 152: supports I2C1, I2C2, I2C3, SPI1         – For the CAN interface, the Write Unprotect command is not
+Page 153: The CSS interrupt is enabled for the CAN and DFUs. Any
+Page 155: and SPIx bootloaders. This internal clock is also used for CAN and DFU (USB FS device),
+Page 155: 26 MHz), is required for CAN and DFU execution after the selection phase.
+Page 173: The HSE is used only when the CAN or the DFU (USB FS
+Page 173: The CSS interrupt is enabled for the CAN and DFUs. Any
+Page 174: Once initialized the CAN2 configuration is: Baudrate
+Page 174: CAN2                 Enabled        Note: CAN1 is clocked during CAN2 bootloader execution
+Page 174: because CAN1 manages the communication between CAN2
+Page 174: CAN2
+Page 174: PB5 pin: CAN2 in reception mode. Used in alternate push-
+Page 174: CAN2_RX pin          Input
+Page 174: PB13 pin: CAN2 in transmission mode. Used in alternate
+Page 174: CAN2_TX pin          Output
+Page 176: CAN2 and
+Page 176: I2Cx bootloaders. This internal clock is also used for CAN and DFU (USB FS device), but
+Page 176: required for CAN and DFU execution after the selection phase.
+Page 177: on CANx                                clock to 60MHz and                                  clock to 60MHz
+Page 177: no                                                                                     Configure CANx
+Page 177: Detected                                                                                 BL_CAN_Loop for
+Page 177: CANx
+Page 179: The HSE is used only when the CAN or the DFU (USB FS
+Page 179: The CSS interrupt is enabled for the CAN and DFUs. Any
+Page 180: Once initialized the CAN2 configuration is: Baudrate 125
+Page 180: CAN2                  Enabled        Note: CAN1 is clocked during CAN2 bootloader
+Page 180: execution because CAN1 manages the communication
+Page 180: CAN2                                                 between CAN2 and SRAM.
+Page 180: PB5 pin: CAN2 in reception mode. Used in alternate
+Page 180: CAN2_RX pin           Input
+Page 180: PB13 pin: CAN2 in transmission mode. Used in alternate
+Page 180: CAN2_TX pin           Output
+Page 182: CAN2 and
+Page 182: I2Cx bootloaders. This internal clock is also used for CAN and DFU (USB FS device), but
+Page 182: required for CAN and DFU execution after the selection phase.
+Page 183: on CANx                                   clock to 60MHz and                               clock to 60MHz
+Page 183: no                                                                                     Configure CAN
+Page 183: Detected                                                                                 BL_CAN_Loop for
+Page 183: CAN2
+Page 185: or I2C interfaces are selected (once CAN or
+Page 185: CAN or the DFU (USB FS device) interfaces
+Page 185: The CSS interrupt is enabled for the CAN and
+Page 186: Once initialized the CAN2 configuration is:
+Page 186: Note: CAN1 is clocked during CAN2
+Page 186: CAN2                  Enabled
+Page 186: bootloader execution because CAN1 manages
+Page 186: the communication between CAN2 and
+Page 186: CAN2                                                        SRAM.
+Page 186: PB5 pin: CAN2 in reception mode. Used in
+Page 186: CAN2_RX pin           Input
+Page 186: PB13 pin: CAN2 in transmission mode. Used
+Page 186: CAN2_TX pin           Output
+Page 187: CAN2 and DFUs          TIM11                 Enabled
+Page 187: I2Cx bootloaders. This internal clock is also used for CAN and DFU (USB FS device), but
+Page 187: required for CAN and DFU execution after the selection phase.
+Page 189: no             on CANx                         HSE detected           no                   Disable all
+Page 189: Detected                    USB clock to 48 MHz                         Configure CAN
+Page 189: bootloader using USB                      BL_CAN_Loop for
+Page 189: interrupts                               CAN2
+Page 190: For the CAN interface, the Write Unprotect
+Page 191: interfaces are selected (once CAN or DFU is
+Page 191: The HSE clock source is used only when the CAN or
+Page 191: The CSS interrupt is enabled for the CAN and DFUs.
+Page 192: Once initialized the CAN2 configuration is: Baudrate
+Page 192: CAN2                  Enabled        Note: CAN1 is clocked during CAN2 bootloader
+Page 192: execution because CAN1 manages the
+Page 192: communication between CAN2 and SRAM.
+Page 192: CAN2
+Page 192: PB5 pin: CAN2 in reception mode. Used in alternate
+Page 192: CAN2_RX pin           Input
+Page 192: PB13 pin: CAN2 in transmission mode. Used in
+Page 192: CAN2_TX pin           Output
+Page 193: CAN2 and DFUs     TIM11                 Enabled        Once the HSE frequency is determined, the system
+Page 194: I2Cx, and SPIx bootloaders. This internal clock is also used for CAN and DFU (USB FS
+Page 194: and 26 MHz) is required for CAN and DFU execution after the selection phase.
+Page 196: on CANx
+Page 196: Configure CAN
+Page 196: bootloader using USB                                  BL_CAN_Loop for
+Page 196: interrupts                                           CAN2
+Page 197: For the CAN interface, the Write Unprotect
+Page 197: USART, CAN, I2C and SPI). The          the bootloader resets AHB1ENR value to 0x0000
+Page 198: The HSE is used only when the CAN or the
+Page 198: The CSS interrupt is enabled for the CAN
+Page 199: Once initialized the CAN2 configuration is:
+Page 199: Note: CAN1 is clocked during CAN2
+Page 199: CAN2                  Enabled
+Page 199: bootloader execution because in CAN1
+Page 199: CAN2                                                        CAN2 and SRAM.
+Page 199: PB5 pin: CAN2 in reception mode. Used in
+Page 199: CAN2_RX pin           Input
+Page 199: PB13 pin: CAN2 in transmission mode.
+Page 199: CAN2_TX pin           Output
+Page 201: CAN2 and DFUs          TIM17                 Enabled
+Page 201: I2Cx bootloaders. This internal clock is also used for CAN and DFU (USB FS device), but
+Page 201: required for CAN and DFU execution after the selection phase.
+Page 202: on CANx                        HSE detected                no                          Disable all
+Page 202: USB cable                   USB clock to 48 MHz                                     Configure CAN
+Page 202: bootloader using USB                                   BL_CAN_Loop for
+Page 202: interrupts                                            CAN2
+Page 204: selected (once CAN or DFU is selected,
+Page 204: the CAN or the DFU (USB FS device)
+Page 204: The CSS interrupt is enabled for the CAN
+Page 205: Once initialized the CAN2 configuration is:
+Page 205: Note: CAN1 is clocked during CAN2
+Page 205: CAN2                  Enabled
+Page 205: bootloader execution because CAN1
+Page 205: CAN2                                                        CAN2 and SRAM.
+Page 205: PB05 pin: CAN2 in reception mode. Used
+Page 205: CAN2_RX pin           Input
+Page 205: PB13 pin: CAN2 in transmission mode.
+Page 205: CAN2_TX pin           Output
+Page 207: I2Cx bootloaders. This internal clock is also used for CAN and DFU (USB FS device), but
+Page 207: required for CAN and DFUs execution after the selection phase.
+Page 209: on CANx                                                                               Reconfigure
+Page 209: Configure CAN
+Page 209: BL_CAN_Loop for
+Page 209: CAN2
+Page 211: The HSE is used only when the CAN
+Page 211: CAN and DFUs. Any failure (or
+Page 212: Once initialized the CAN1
+Page 212: CAN1                   Enabled              configuration is: Baudrate 125 kbps,
+Page 212: PD0 pin: CAN1 in reception mode.
+Page 212: CAN1             CAN1_RX pin            Input                Used in alternate push-pull, pull-up
+Page 212: PD1 pin: CAN1 in transmission mode.
+Page 212: CAN1_TX pin            Output               Used in alternate push-pull, pull-up
+Page 214: CAN1 and DFUs      TIM11                   Enabled                   frequency is determined, the system
+Page 214: I2Cx bootloaders. This internal clock is also used for CAN and DFU (USB FS device), but
+Page 214: required for CAN and DFU execution after the selection phase.
+Page 217: •    V7.x supporting USART1, USART3, CAN2, I2C1, I2C2, I2C3, and DFU (USB FS
+Page 217: •    V9.x supporting USART1, USART3, CAN2, I2C1, I2C2, I2C3, SPI1, SPI2, SPI4, and
+Page 217: The HSE is used only when the CAN or the DFU (USB FS
+Page 217: The CSS interrupt is enabled for the CAN and DFUs. Any
+Page 218: Once initialized the CAN2 configuration is: Baudrate 125
+Page 218: CAN2                 Enabled        Note: CAN1 is clocked during CAN2 bootloader execution
+Page 218: because CAN1 manages the communication between
+Page 218: CAN2                                                CAN2 and SRAM.
+Page 218: PB5 pin: CAN2 in reception mode. Used in alternate push-
+Page 218: CAN2_RX pin          Input
+Page 218: PB13 pin: CAN2 in transmission mode. Used in alternate
+Page 218: CAN2_TX pin          Output
+Page 219: CAN2 and
+Page 219: I2Cx bootloaders. This internal clock is also used for CAN and DFU (USB FS device), but
+Page 219: required for CAN and DFU execution after the selection phase.
+Page 220: on CANx                                 interfaces clocks
+Page 220: Configure CAN
+Page 220: BL_CAN_Loop for
+Page 220: CAN2
+Page 221: The HSE is used only when the CAN or the DFU (USB FS
+Page 221: is enabled for the CAN and DFU
+Page 222: Once initialized the CAN2 configuration is: Baudrate 125
+Page 222: CAN2                 Enabled        Note: CAN1 is clocked during CAN2 bootloader execution
+Page 222: because CAN1 manages the communication between
+Page 222: CAN2 and SRAM.
+Page 222: CAN2
+Page 222: PB5 pin: CAN2 in reception mode. Used in alternate push-
+Page 222: CAN2_RX pin          Input
+Page 222: PB13 pin: CAN2 in transmission mode. Used in alternate
+Page 222: CAN2_TX pin          Output
+Page 224: CAN2 and
+Page 224: I2Cx, and SPIx bootloaders. This internal clock is also used for CAN and DFU (USB FS
+Page 224: and 26 MHz) is required for CAN and DFU execution after the selection phase.
+Page 225: on CANx                               clock to 60MHz and                               clock to 60MHz
+Page 225: no                                                                                 Configure CAN
+Page 225: Detected                                                                             BL_CAN_Loop for
+Page 225: CAN2
+Page 227: The HSE is used only when the CAN or the DFU (USB FS
+Page 227: The CSS interrupt is enabled for the CAN and DFUs. Any
+Page 228: Once initialized the CAN2 configuration is: Baudrate 125 kbps,
+Page 228: CAN2                 Enabled       Note: CAN1 is clocked during CAN2 bootloader execution
+Page 228: because CAN1 manages the communication between CAN2
+Page 228: CAN2
+Page 228: PB5 pin: CAN2 in reception mode. Used in alternate push-pull,
+Page 228: CAN2_RX pin          Input
+Page 228: PB13 pin: CAN2 in transmission mode. Used in alternate push-
+Page 228: CAN2_TX pin          Output
+Page 230: CAN2 and
+Page 230: I2Cx bootloaders. This internal clock is also used for CAN and DFU (USB FS device), but
+Page 230: required for CAN and DFU execution after the selection phase.
+Page 232: on CANx                                                                          Configure CAN
+Page 232: BL_CAN_Loop for
+Page 232: CANx
+Page 248: -     20 MHz derived from the PLLQ is used for FDCAN
+Page 250: Once initialized the FDCAN1 configuration is:
+Page 250: – FrameFormat = FDCAN_FRAME_FD_BRS
+Page 250: FDCAN1                   Enabled
+Page 250: – Mode = FDCAN_MODE_NORMAL
+Page 250: FDCAN
+Page 250: PD0 pin: FDCAN1 in reception mode. Used in alternate
+Page 250: FDCAN1_Rx pin            Input
+Page 250: PD1 pin: FDCAN1 in transmission mode. Used in
+Page 250: FDCAN1_Tx pin            Output
+Page 251: BL_FDCAN loop
+Page 251: Configure FDCANx
+Page 251: FDCAN frame                         Disable all interrupt       Disable all interrupt
+Page 273: -     20 MHz derived from the PLLQ is used for FDCAN
+Page 275: Once initialized the FDCAN1 configuration is:
+Page 275: – FrameFormat = FDCAN_FRAME_FD_BRS
+Page 275: FDCAN1                Enabled
+Page 275: – Mode = FDCAN_MODE_NORMAL
+Page 275: FDCAN                                                   – TransmitPause = DISABLE
+Page 275: PB5 pin: FDCAN1 in reception mode. Used in
+Page 275: FDCAN1_Rx pin         Input
+Page 275: PB15 pin: FDCAN1 in transmission mode. Used in
+Page 275: FDCAN1_Tx pin         Output
+Page 276: Special commands supported (USART/I2C/SPI/FDCAN/I3C)
+Page 277: FDCAN frame           interrupt sources
+Page 277: Yes                           BL_FDCAN_Loop
+Page 277: for FDCANx
+Page 277: FDCANx
+Page 279: -      20 MHz derived from the PLLQ is used for FDCAN
+Page 282: Once initialized the FDCAN2 configuration is:
+Page 282: – FrameFormat = FDCAN_FRAME_FD_BRS
+Page 282: FDCAN2                Enabled
+Page 282: – Mode = FDCAN_MODE_NORMAL
+Page 282: FDCAN
+Page 282: PB5 pin: FDCAN2 in reception mode. Used in
+Page 282: FDCAN2_Rx pin         Input
+Page 282: PB13 pin: FDCAN2 in transmission mode. Used in
+Page 282: FDCAN2_Tx pin         Output
+Page 283: Special commands supported (USART/I2C/SPI/FDCAN/I3C)
+Page 284: FDCAN frame           interrupt sources
+Page 284: Yes                        BL_FDCAN_Loop
+Page 284: for FDCANx
+Page 284: FDCANx
+Page 286: -      20 MHz derived from the PLLQ is used for FDCAN
+Page 288: Once initialized the FDCAN2 configuration is:
+Page 288: – FrameFormat = FDCAN_FRAME_FD_BRS
+Page 288: FDCAN2               Enabled
+Page 288: – Mode = FDCAN_MODE_NORMAL AutoRetransmission =
+Page 288: FDCAN                                              – TransmitPause = DISABLE
+Page 288: PB5 pin: FDCAN2 in reception mode. Used in alternate push-
+Page 288: FDCAN2_Rx pin        Input
+Page 288: PB13 pin: FDCAN2 in transmission mode. Used in alternate
+Page 288: FDCAN2_Tx pin        Output
+Page 289: Special commands supported (USART/I2C/SPI/FDCAN/I3C)
+Page 290: FDCAN frame           interrupt sources
+Page 290: Yes                       BL_FDCAN_Loop
+Page 290: for FDCANx
+Page 290: FDCANx
+Page 292: -      20 MHz derived from the PLLQ is used for FDCAN
+Page 295: Once initialized the FDCAN1 configuration is:
+Page 295: FrameFormat = FDCAN_FRAME_FD_BRS
+Page 295: FDCAN1                Enabled
+Page 295: Mode = FDCAN_MODE_NORMAL AutoRetransmission =
+Page 295: FDCAN (on                                          ENABLE
+Page 295: PH14 pin: FDCAN1 in reception mode. Used in alternate
+Page 295: FDCAN1_Rx pin         Input
+Page 295: PH13 pin: FDCAN1 in transmission mode. Used in alternate
+Page 295: FDCAN1_Tx pin         Output
+Page 295: Once initialized the FDCAN1 configuration is:
+Page 295: FrameFormat = FDCAN_FRAME_FD_BRS
+Page 295: FDCAN1                Enabled
+Page 295: Mode = FDCAN_MODE_NORMAL AutoRetransmission =
+Page 295: FDCAN (on                                          ENABLE
+Page 295: PD0 pin: FDCAN1 in reception mode. Used in alternate push-
+Page 295: FDCAN1_Rx pin         Input
+Page 295: PD1 pin: FDCAN1 in transmission mode. Used in alternate
+Page 295: FDCAN1_Tx pin         Output
+Page 296: BL_FDCAN loop
+Page 296: FD-CAN frame                                                                                         Configure
+Page 298: Clock used for the FDCAN is fixed to 20 MHz and is
+Page 301: Once initialized the FDCAN1 configuration is:
+Page 301: – FrameFormat = FDCAN_FRAME_FD_BRS
+Page 301: FDCAN1                Enabled
+Page 301: – Mode = FDCAN_MODE_NORMAL
+Page 301: FDCAN                                                   – TransmitPause = DISABLE
+Page 301: PH14 pin: FDCAN1 in reception mode. Used in
+Page 301: FDCAN1_Rx pin         Input
+Page 301: PH13 pin: FDCAN1 in transmission mode. Used in
+Page 301: FDCAN1_Tx pin         Output
+Page 302: BL_FDCAN loop
+Page 302: FD-CAN frame                                                                                         Configure
+Page 303: – On the FDCAN write memory, write of data with
+Page 303: – Add support of FDCAN interface                   to guarantee it is working
+Page 303: – FDCAN Get version command is giving a bad
+Page 303: FDCAN protocol version (0x11). It must be 0 x10
+Page 304: (0x91)   – Fix FDCAN version from V1.0 to V1.1             when using USART1 on PA10/PA9.
+Page 304: – Fix write issue when using FDCAN                – Root cause: both USART1 TX pins PA9 and PB14
+Page 306: Clock used for the FDCAN is fixed to 20 MHz and is
+Page 309: Once initialized the FDCAN1 configuration is:
+Page 309: FrameFormat = FDCAN_FRAME_FD_BRS
+Page 309: FDCAN1                Enabled
+Page 309: Mode = FDCAN_MODE_NORMAL
+Page 309: FDCAN on                                             AutoRetransmission = ENABLE
+Page 309: PH14 pin: FDCAN1 in reception mode. Used in
+Page 309: FDCAN1_Rx pin         Input
+Page 309: PH13 pin: FDCAN1 in transmission mode. Used in
+Page 309: FDCAN1_Tx pin         Output
+Page 310: Once initialized the FDCAN1 configuration is:
+Page 310: FrameFormat = FDCAN_FRAME_FD_BRS
+Page 310: FDCAN1               Enabled
+Page 310: Mode = FDCAN_MODE_NORMAL
+Page 310: FDCAN on                                          AutoRetransmission = ENABLE
+Page 310: PD0 pin: FDCAN1 in reception mode. Used in alternate
+Page 310: FDCAN1_Rx pin        Input
+Page 310: PD1 pin: FDCAN1 in transmission mode. Used in
+Page 310: FDCAN1_Tx pin        Output
+Page 311: BL_FDCAN loop
+Page 311: FD-CAN frame                                                                                        Configure
+Page 313: RCC                            -        20 MHz derived from the PLLQ is used for FDCAN.
+Page 316: Once initialized the FDCAN1 configuration is:
+Page 316: – FrameFormat = FDCAN_FRAME_FD_BRS
+Page 316: FDCAN2                 Enabled
+Page 316: – Mode = FDCAN_MODE_NORMAL
+Page 316: FDCAN
+Page 316: PB5 pin: FDCAN2 in reception mode. Used in alternate
+Page 316: FDCAN2_Rx pin          Input
+Page 316: PB1 pin: FDCAN2 in transmission mode. Used in alternate
+Page 316: FDCAN2_Tx pin          Output
+Page 317: Special commands supported (USART/I2C/SPI/FDCAN/USB/I3C)
+Page 318: FDCAN frame           interrupt sources
+Page 318: Yes                       BL_FDCAN_Loop
+Page 318: for FDCANx
+Page 318: FDCANx
+Page 361: RCC                                   The HSE is used only when the CAN interface is
+Page 363: Once initialized the CAN1 configuration is:
+Page 363: CAN1                 Enabled
+Page 363: PB8 pin: CAN1 in reception mode. Used in alternate
+Page 363: CAN1_RX pin          Input
+Page 363: CAN1                                                  PB9 pin: CAN1 in transmission mode. Used in alternate
+Page 363: CAN1_TX pin          Output
+Page 366: Disable other             Configure CAN
+Page 366: on CANx                yes
+Page 366: bootloader using USB         BL_CAN_Loop for
+Page 366: no                                       interrupts                  CANx
+Page 368: USART/I2C/CAN
+Page 368: reset) on system bootloader, it is possible that CAN interface does
+Page 369: HSE enabled The HSE is used only when the CAN interface is selected.
+Page 371: Once initialized the CAN1 configuration is:
+Page 371: CAN1                 Enabled
+Page 371: PB8 pin: CAN1 in reception mode. Used in alternate push-
+Page 371: CAN1_RX pin          Input
+Page 371: CAN1                                                 PB9 pin: CAN1 in transmission mode. Used in alternate
+Page 371: CAN1_TX pin          Output
+Page 374: Frame detected                                 Disable other             Configure CAN
+Page 374: on CANx                                   interfaces clocks
+Page 374: bootloader using USB         BL_CAN_Loop for
+Page 374: interrupts                  CANx
+Page 375: cannot impact USART/I2C/CAN.
+Page 376: •     V9.x supporting USART, I2C, SPI, CAN and DFU (USB FS device).
+Page 382: CAN is used.
+Page 384: Once initialized the CAN1 configuration is: Baudrate 125
+Page 384: CAN1                      Enabled
+Page 384: PB8 pin: CAN1 in reception mode. Used in alternate push-
+Page 384: CAN1               CAN1_RX pin               Input
+Page 384: PB9 pin: CAN1 in transmission mode. Used in alternate
+Page 384: CAN1_TX pin               Output
+Page 386: no                                      Configure CAN                                       to 48 MHz
+Page 386: CANx                                     BL_CAN_Loop                                  Execute DFU bootloader
+Page 386: for CANx                                    using USB interrupts
+Page 387: USART/I2C/CAN/USB.
+Page 388: RCC                              The HSE is used only when the CAN interface is selected.
+Page 390: Once initialized the CAN1 configuration is:Baudrate 125
+Page 390: CAN1                 Enabled
+Page 390: PB8 pin: CAN1 in reception mode. Used in alternate push-
+Page 390: CAN1_RX pin          Input
+Page 390: CAN1                                             PB9 pin: CAN1 in transmission mode. Used in alternate push-
+Page 390: CAN1_TX pin          Output
+Page 393: Frame detected                             Disable other            Configure CAN
+Page 393: on CANx                yes
+Page 393: bootloader using USB        BL_CAN_Loop for
+Page 393: interrupts                 CANx
+Page 394: USART/I2C/CAN.
+Page 395: RCC                              The HSE is used only when the CAN interface is selected.
+Page 397: Once initialized the CAN1 configuration is:
+Page 397: CAN1                 Enabled
+Page 397: PB8 pin: CAN1 in reception mode. Used in alternate push-
+Page 397: CAN1          CAN1_RX pin          Input
+Page 397: PB9 pin: CAN1 in transmission mode. Used in alternate
+Page 397: CAN1_TX pin          Output
+Page 400: CANx
+Page 400: no                                      interfaces clocks     Configure CAN
+Page 400: yes                   bootloader using      BL_CAN_Loop
+Page 400: USB interrupts         for CANx
+Page 402: RCC                                    The HSE is used only when the CAN interface is selected.
+Page 404: Once initialized the CAN1 configuration is:
+Page 404: CAN1                 Enabled
+Page 404: PB8 pin: CAN1 in reception mode. Used in alternate push-
+Page 404: CAN1_RX pin          Input
+Page 404: CAN1                                               PB9 pin: CAN1 in transmission mode. Used in alternate
+Page 404: CAN1_TX pin          Output
+Page 407: CANx
+Page 407: no                                      interfaces clocks     Configure CAN
+Page 407: yes                   bootloader using      BL_CAN_Loop
+Page 407: USB interrupts         for CANx
+Page 409: -     20 MHz derived from the PLLQ is used for FDCAN
+Page 411: Once initialized the FDCAN1 configuration is:
+Page 411: – FrameFormat = FDCAN_FRAME_FD_BRS
+Page 411: FDCAN1             Enabled
+Page 411: – Mode = FDCAN_MODE_NORMAL
+Page 411: FDCAN
+Page 411: PB9 pin: FDCAN1 in reception mode. Used in alternate push-
+Page 411: FDCAN1_Rx pin      Input/
+Page 411: PB8 pin: FDCAN1 in transmission mode. Used in alternate push-
+Page 411: FDCAN1_Tx pin      Output
+Page 412: Special commands supported (USART/I2C/SPI/FDCAN)
+Page 413: BL_FDCAN loop
+Page 413: FDCAN frame                          Disable all interrupt       Disable all interrupt
+Page 414: V9.0     – Add FDCAN support
+Page 414: – FDCAN erase not working as page number
+Page 414: properly when using FDCAN interface. This
+Page 414: V9.1                                        – FDCAN erase not working as page number
+Page 414: FDCAN Readout unprotect command does not
+Page 453: FDCAN
+Page 455: – FrameFormat = FDCAN_FRAME_FD_BRS
+Page 455: FDCAN1             Enabled
+Page 455: – Mode = FDCAN_MODE_NORMAL
+Page 455: FDCAN1
+Page 455: PB8 pin: FDCAN1 in reception mode. Used in alternate
+Page 455: FDCAN1_Rx pin      Input/
+Page 455: PB9 pin: FDCAN1 in transmission mode. Used in alternate
+Page 455: FDCAN1_Tx pin      Output
+Page 457: Special commands supported (USART/I2C/SPI/FDCAN)
+Page 458: FDCAN                                       Exexute
+Page 458: frame        Yes                       BL_FDCAN_Loo
+Page 458: System Init                    detected                                 p for FDCANx
+Page 458: FDCANx
+Page 459: – FDCAN: cannot erase more than 32 flash memory
+Page 459: – FDCAN: cannot erase more than 32 flash memory
+Page 460: -        20 MHz derived from the PLLQ is used for FDCAN
+Page 462: – FrameFormat = FDCAN_FRAME_FD_BRS
+Page 462: FDCAN1               Enabled
+Page 462: – Mode = FDCAN_MODE_NORMAL
+Page 462: FDCAN
+Page 462: PB8 pin: FDCAN1 in reception mode. Used in alternate
+Page 462: FDCAN1_Rx pin        Input/
+Page 462: PB9 pin: FDCAN1 in transmission mode. Used in alternate
+Page 462: FDCAN1_Tx pin        Output
+Page 463: Special commands supported (USART/I2C/SPI/FDCAN)
+Page 464: FDCAN frame               interrupt sources
+Page 464: GPIOs, IWDG,                                   Yes                           BL_FDCAN_Loop
+Page 464: SysTick)                                                                   for FDCANx
+Page 464: FDCANx
+Page 465: FDCAN Readout unprotect command does not
+Page 466: -       20 MHz derived from the PLLQ is used for FDCAN
+Page 468: – FrameFormat = FDCAN_FRAME_FD_BRS
+Page 468: FDCAN1             Enabled
+Page 468: – Mode = FDCAN_MODE_NORMAL
+Page 468: FDCAN
+Page 468: PB8 pin: FDCAN1 in reception mode. Used in alternate push-
+Page 468: FDCAN1_Rx pin      Input/
+Page 468: PB9 pin: FDCAN1 in transmission mode. Used in alternate
+Page 468: FDCAN1_Tx pin      Output
+Page 469: Special commands supported (USART/I2C/SPI/FDCAN)
+Page 470: FDCAN frame               interrupt sources
+Page 470: GPIOs, IWDG,                                 Yes                           BL_FDCAN_Loop
+Page 470: SysTick)                                                                 for FDCANx
+Page 470: FDCANx
+Page 471: – FDCAN Readout unprotect command does
+Page 471: – FDCAN Readout unprotect command does
+Page 472: -     20 MHz derived from the PLLQ is used for FDCAN
+Page 475: – FrameFormat = FDCAN_FRAME_FD_BRS
+Page 475: FDCAN1                 Enabled
+Page 475: – Mode = FDCAN_MODE_NORMAL
+Page 475: FDCAN
+Page 475: PB8 pin: FDCAN1 in reception mode. Used in alternate push-
+Page 475: FDCAN1_Rx pin          Input/
+Page 475: PB9 pin: FDCAN1 in transmission mode. Used in alternate
+Page 475: FDCAN1_Tx pin          Output
+Page 475: Special commands supported (USART/I2C/SPI/FDCAN)
+Page 476: (Clock, GPIOs,                          FDCAN Frame                  interrupt sources
+Page 476: Yes                           BL_FDCAN_Loop
+Page 476: for FDCANx
+Page 476: FDCANx                                       USB clocks                      detected?
+Page 476: FDCAN Readout unprotect command does not send
+Page 477: -      20 MHz derived from the PLLQ is used for FDCAN
+Page 480: – FrameFormat = FDCAN_FRAME_FD_BRS
+Page 480: FDCAN1                 Enabled
+Page 480: – Mode = FDCAN_MODE_NORMAL
+Page 480: FDCAN
+Page 480: PB8 pin: FDCAN1 in reception mode. Used in alternate
+Page 480: FDCAN1_Rx pin          Input/
+Page 480: PB9 pin: FDCAN1 in transmission mode. Used in alternate
+Page 480: FDCAN1_Tx pin          Output
+Page 480: Special commands supported (USART/I2C/SPI/FDCAN)
+Page 481: (Clock, GPIOs,                          FDCAN Frame                  interrupt sources
+Page 481: Yes                           BL_FDCAN_Loop
+Page 481: for FDCANx
+Page 481: FDCANx                                       USB clocks                      detected?
+Page 481: FDCAN Readout unprotect command does not send

@@ -1,0 +1,342 @@
+Keyword: HSE
+Occurrences: 338
+================================================================================
+
+Page   10: 9          Hardware semaphore (HSEM) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 494
+Page   10: 9.3    HSEM functional description . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 495
+Page   10: 9.3.1       HSEM block diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 495
+Page   10: 9.3.2       HSEM internal signals . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 495
+Page   10: 9.3.3       HSEM lock procedures . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 496
+Page   10: 9.3.4       HSEM Write/Read/ReadLock register address . . . . . . . . . . . . . . . . . . 497
+Page   10: 9.3.5       HSEM Clear procedures . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 497
+Page   10: 9.3.6       HSEM MasterID semaphore clear . . . . . . . . . . . . . . . . . . . . . . . . . . . . 498
+Page   10: 9.3.7       HSEM interrupts . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 498
+Page   10: 9.4    HSEM registers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 502
+Page   10: 9.4.1       HSEM register semaphore x (HSEM_Rx) . . . . . . . . . . . . . . . . . . . . . . 502
+Page   10: 9.4.2       HSEM read lock register semaphore x (HSEM_RLRx) . . . . . . . . . . . . 503
+Page   10: 9.4.3       HSEM interrupt enable register (HSEM_CnIER) . . . . . . . . . . . . . . . . . 504
+Page   10: 9.4.4       HSEM interrupt clear register (HSEM_CnICR) . . . . . . . . . . . . . . . . . . 504
+Page   10: 9.4.5       HSEM interrupt status register (HSEM_CnISR) . . . . . . . . . . . . . . . . . 504
+Page   11: 9.4.6       HSEM masked interrupt status register (HSEM_CnMISR) . . . . . . . . . 505
+Page   11: 9.4.7       HSEM clear register (HSEM_CR) . . . . . . . . . . . . . . . . . . . . . . . . . . . . 505
+Page   11: 9.4.8       HSEM interrupt clear register (HSEM_KEYR) . . . . . . . . . . . . . . . . . . . 506
+Page   11: 9.4.9       HSEM register map . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 507
+Page   11: 10.3.14 Using the HSE or LSE oscillator pins as GPIOs . . . . . . . . . . . . . . . . . 517
+Page   69: Table 84.    HSEM internal input/output signals. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 495
+Page   69: Table 86.    HSEM register map and reset values . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 507
+Page   80: Figure 42.   HSE/LSE clock source . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 319
+Page   81: Figure 63.   HSEM block diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 495
+Page  126: 0x58026400 - 0x580267FF         HSEM                   Section 9.4: HSEM registers
+Page  244: VBAT                        HSE, PLLs                                                      switch
+Page  282: oscillator, CSI oscillator, HSI48 and the HSE oscillator are also switched off. SRAM and
+Page  306: –    High-speed external oscillator (HSE) supporting a wide range of crystals from 4 to
+Page  307: OSC32_OUT                                                    hse_ck                X     AWU
+Page  307: TIM1,8,      rcc_ckfail_evt                           VDD                                             hse_ck
+Page  307: OSC_IN                  HSE /      hse_ck                                                                      Generation
+Page  307: hse_ck                           PLL1
+Page  307: rcc_hsecss_it
+Page  308: rcc_hsecss_it          O          HSE clock security failure interrupt
+Page  308: Event indicating that a HSE clock security failure is detected. This signal is
+Page  317: •    HSE (High-speed external oscillator) clock: 4 to 48 MHz
+Page  318: CSS                                         hse_1M_ck
+Page  318: hse_ck                   ÷ 1 to15                                                                                                                     MCO1
+Page  318: HSEON                                               hsi48_ck     4
+Page  318: tempo                 hse_ck
+Page  318: HSE                                                            MCO2SEL
+Page  318: HSIKERON              HSIDIV                          hse_ck     2             ÷ 1 to15
+Page  318: hse_ck      2
+Page  318: CRS                                                                      hse_ck    D
+Page  318: hse_ck                                 pll[3:2]_p_ck
+Page  318: hse_ck                                              VCO           DIVP1                            hse_ck
+Page  319: HSE oscillator
+Page  319: The HSE block can generate a clock from two possible sources:
+Page  319: Figure 42. HSE/LSE clock source
+Page  320: External clock source (HSE bypass)
+Page  320: selected by setting the HSEBYP and HSEON bits of the RCC Source Control Register
+Page  320: The oscillator is enabled by setting the HSEBYP bit to ‘0’ and HSEON bit to ‘1’.
+Page  320: The HSE can be used when the product requires a very accurate high-speed clock.
+Page  320: The HSERDY flag of the RCC Source Control Register (RCC_CR), indicates whether the
+Page  320: HSE oscillator is stable or not. At startup, the hse_ck clock is not released until this bit is set
+Page  320: The HSE can be switched ON and OFF through the HSEON bit. Note that the HSE cannot
+Page  320: •    The HSE is used directly (via software mux) as system clock
+Page  320: •    The HSE is selected as reference clock for PLL1, with PLL1 enabled and selected to
+Page  320: In that case the hardware does not allow programming the HSEON bit to ‘0’.
+Page  320: The HSE is automatically disabled by hardware, when the system enters Stop or Standby
+Page  320: In addition, the HSE clock can be driven to the MCO1 and MCO2 outputs and used as clock
+Page  321: •    Faster startup time than HSE (a few microseconds)
+Page  321: The HSI clock can also be used as a backup source (auxiliary clock) if the HSE fails (refer to
+Page  321: Section : CSS on HSE). The HSI can be disabled or not when the system enters Stop mode,
+Page  322: •    Faster startup time than HSE (a few microseconds)
+Page  324: CSS on HSE
+Page  324: The clock security system can be enabled by software via the HSECSSON bit. The
+Page  324: HSECSSON bit can be enabled even when the HSEON is set to ‘0’.
+Page  324: The CSS on HSE is enabled by the hardware when the HSE is enabled and ready, and
+Page  324: HSECSSON set to ‘1’.
+Page  324: The CSS on HSE is disabled when the HSE is disabled. As a result, this function does not
+Page  324: It is not possible to clear directly the HSECSSON bit by software.
+Page  324: The HSECSSON bit is cleared by hardware when a system reset occurs or when the
+Page  324: If a failure is detected on the HSE clock, the system automatically switches to the HSI in
+Page  324: order to provide a safe clock. The HSE is then automatically disabled, a clock failure event
+Page  324: rcc_hsecss_it), thus allowing the MCU to perform rescue operations. If the HSE output
+Page  324: If an HSE clock failure occurs when the CSS is enabled, the CSS generates an interrupt
+Page  324: which causes the automatic generation of an NMI. The HSECSSF flag in RCC Clock Source
+Page  324: source. The NMI routine is executed indefinitely until the HSECSSF bit is cleared. As a
+Page  324: consequence, the application has to clear the HSECSSF flag in the NMI ISR by setting the
+Page  324: HSECSSC bit in the RCC Clock Source Interrupt Clear Register (RCC_CICR).
+Page  325: or HSE) through RTCSEL bits, or take any required action to secure the application.
+Page  327: sections HSE oscillator, HSI oscillator and CSI oscillator).
+Page  328: •    An HSE failure occurs when HSE or PLL (clocked by HSE) are used as system clock.
+Page  330: •    HSE
+Page  332: •    HSE
+Page  332: HSEON and HSI48ON which are set to ‘0’.
+Page  335: hse_ck
+Page  336: hse_ck
+Page  336: 2. The per_ck clock could be hse_ck, hsi_ker_ck or csi_ker_ck according to CKPERSEL selection.
+Page  336: 5. Clock HSE divided by RTCPRE.
+Page  336: •      HSE, HSI or CSI for use-cases where the current consumption is critical
+Page  338: hse_ck            5
+Page  338: hse_ck            5
+Page  343: hse_ck            0                    FDCANLPEN
+Page  344: •        the hse_1M_ck (hse_ck divided by a programmable prescaler)
+Page  345: •   If the HSE clock is used as RTC clock, the RTC state is not guaranteed if the VDD
+Page  359: •     rcc_hsecss_it: an interrupt line dedicated to the failure detection of the HSE Clock
+Page  359: (RCC_CIER), except for the HSE CSS failure. When the HSE CSS feature is enabled, it not
+Page  359: HSERDYF         HSE ready                                      HSERDYIE                 Set HSERDYC to ‘1’
+Page  359: HSECSSF         HSE Clock security system failure              -                        Set HSECSSC to ‘1’    rcc_hsecss_it
+Page  359: 2. It is not possible to mask this interrupt when the security system feature is enabled (HSECSSON = ‘1’).
+Page  361: HSECSSON
+Page  361: HSERDY
+Page  361: HSEBYP
+Page  361: HSEON
+Page  362: Bit 19 HSECSSON: HSE Clock Security System enable
+Page  362: Set by software to enable Clock Security System on HSE.
+Page  362: When HSECSSON is set, the clock detector is enabled by hardware when the HSE is ready and
+Page  362: 0: Clock Security System on HSE OFF (Clock detector OFF) (default after reset)
+Page  362: 1: Clock Security System on HSE ON (Clock detector ON if the HSE oscillator is
+Page  362: Bit 18 HSEBYP: HSE clock bypass
+Page  362: clock must be enabled with the HSEON bit, to be used by the device.
+Page  362: The HSEBYP bit can be written only if the HSE oscillator is disabled.
+Page  362: 0: HSE oscillator not bypassed (default after reset)
+Page  362: 1: HSE oscillator bypassed with an external clock
+Page  362: Bit 17 HSERDY: HSE clock ready flag
+Page  362: Set by hardware to indicate that the HSE oscillator is stable.
+Page  362: 0: HSE clock is not ready (default after reset)
+Page  362: 1: HSE clock is ready
+Page  362: Bit 16 HSEON: HSE clock enable
+Page  362: Cleared by hardware to stop the HSE when entering Stop or Standby mode.
+Page  362: This bit cannot be cleared if the HSE is used directly (via SW mux) as system clock or if the HSE is
+Page  362: 0: HSE is OFF (default after reset)
+Page  362: 1: HSE is ON
+Page  364: failure of the HSE which is used as the system clock source.
+Page  367: 010: HSE clock selected (hse_ck)
+Page  367: 010: HSE clock selected (hse_ck)
+Page  368: Bits 13:8 RTCPRE[5:0]: HSE division factor for RTC clock
+Page  368: Set and cleared by software to divide the HSE to generate a clock for RTC.
+Page  368: 000010: HSE/2
+Page  368: 000011: HSE/3
+Page  368: 000100: HSE/4
+Page  368: 111110: HSE/62
+Page  368: 111111: HSE/63
+Page  369: The selected clock is also used as emergency clock for the Clock Security System on HSE.
+Page  369: HSECSSON bit) and the system clock is HSE (SWS=”10”) or a switch on HSE is requested
+Page  369: 010: HSE used as system clock (hse_ck)
+Page  369: –     force the selection of the HSI in case of failure of the HSE when used directly or indirectly
+Page  369: 010: HSE selected as system clock (hse_ck)
+Page  375: 10: HSE selected as PLL clock (hse_ck)
+Page  388: 10: hse_ck clock selected as per_ck clock
+Page  389: 00: hse_ck clock is selected as FDCAN kernel clock (default after reset)
+Page  390: 101: hse_ck clock is selected as kernel clock
+Page  394: 101: hse_ck clock selected as kernel peripheral clock
+Page  397: HSERDYIE
+Page  397: Bit 3 HSERDYIE: HSE ready Interrupt Enable
+Page  397: Set and reset by software to enable/disable interrupt caused by the HSE oscillator stabilization.
+Page  397: 0: HSE ready interrupt disabled (default after reset)
+Page  397: 1: HSE ready interrupt enabled
+Page  399: HSERDYF
+Page  399: HSECSSF
+Page  399: Bit 10 HSECSSF: HSE clock security system Interrupt Flag
+Page  399: Reset by software by writing HSECSSC bit.
+Page  399: Set by hardware in case of HSE clock failure.
+Page  399: 0: No clock security interrupt caused by HSE clock failure (default after reset)
+Page  399: 1: Clock security interrupt caused by HSE clock failure
+Page  400: Bit 3 HSERDYF: HSE ready Interrupt Flag
+Page  400: Reset by software by writing HSERDYC bit.
+Page  400: Set by hardware when the HSE clock becomes stable and HSERDYIE is set.
+Page  400: 0: No clock ready interrupt caused by the HSE (default after reset)
+Page  400: 1: Clock ready interrupt caused by the HSE
+Page  401: HSERDYC
+Page  401: HSECSSC
+Page  401: Bit 10 HSECSSC: HSE clock security system Interrupt Clear
+Page  401: Set by software to clear HSECSSF.
+Page  401: 0: HSECSSF no effect (default after reset)
+Page  401: 1: HSECSSF cleared
+Page  402: Bit 3 HSERDYC: HSE ready Interrupt Clear
+Page  402: Set by software to clear HSERDYF.
+Page  402: 0: HSERDYF no effect (default after reset)
+Page  402: 1: HSERDYF cleared
+Page  403: If HSE is selected as RTC clock: this clock is lost when the system is in Stop mode or in case of a
+Page  403: 11: HSE clock divided by RTCPRE value is used as RTC clock
+Page  411: HSEMRST
+Page  411: Bit 25 HSEMRST: HSEM block reset
+Page  411: 0: does not reset the HSEM block (default after reset)
+Page  411: 1: resets the HSEM block
+Page  430: USB2OTGHSEN
+Page  430: USB1OTGHSEN
+Page  430: Bit 27 USB2OTGHSEN: USB2OTG (OTG_HS2) Peripheral Clocks Enable
+Page  430: Bit 25 USB1OTGHSEN: USB1OTG (OTG_HS1) Peripheral Clocks Enable
+Page  434: HSEMEN
+Page  434: Bit 25 HSEMEN: HSEM peripheral clock enable
+Page  434: 0: HSEM peripheral clock disabled (default after reset)
+Page  434: 1: HSEM peripheral clock enabled
+Page  472: Res.                              Res.                             Res.                              Res.                                                                                       Res.                                                                      HSECSSON      19
+Page  472: Res.                              Res.                             Res.                              Res.                                                                                       Res.                                                                       HSEBYP
+Page  472: Res.                             Res.                              Res.                                                               Res.                    Res.                                                                       HSERDY       17
+Page  472: Res.                             Res.                              Res.                                                               Res.                    Res.                                                                        HSEON       16
+Page  474: Res.                        Res.                         Res.                          Res.                                             HSECSSC                                HSECSSF                                Res.                                                      10
+Page  474: Res.                        Res.                         Res.                                                                          HSERDYC                                HSERDYF                              HSERDYIE                                     Res.             3
+Page  475: Res.                            Res.                        Res.                       Res.                                  Res.                      Res.                              HSEMRST                       Res.       25
+Page  476: Res.                                Res.                      Res.                     USB2OTGHSEN                      Res.                         Res.                                      Res.        27
+Page  476: Res.                              HSEMEN                      Res.                     USB1OTGHSEN                      Res.                         Res.                                      Res.        25
+Page  479: Res.                      Res.                    Res.                             HDMICECEN                      Res.                                Res.                     Res.                      USB2OTGHSEN     27
+Page  479: Res.                      Res.                    Res.                                  Res.                      Res.                              HSEMEN                     Res.                      USB1OTGHSEN     25
+Page  494: Hardware semaphore (HSEM)                                                                  RM0433
+Page  494: 9          Hardware semaphore (HSEM)
+Page  494: running on the core. The HSEM provides a non blocking mechanism to lock semaphores in
+Page  494: The HSEM includes the following features:
+Page  495: RM0433                                                                                               Hardware semaphore (HSEM)
+Page  495: 9.3      HSEM functional description
+Page  495: 9.3.1    HSEM block diagram
+Page  495: As shown in Figure 63, the HSEM is based on three sub-blocks:
+Page  495: HSEM_R and HSEM_RLR registers
+Page  495: •             The Interrupt interface block providing control for the interrupts via the HSEM_CnISR,
+Page  495: HSEM_CnIER, HSEM_CnMISR, and HSEM_CnICR registers
+Page  495: Figure 63. HSEM block diagram
+Page  495: HSEM                Interrupt interface
+Page  495: HSEM_R0
+Page  495: HSEM_MISR
+Page  495: HSEM_ISR
+Page  495: HSEM_IER
+Page  495: HSEM_RLR0
+Page  495: 1                                            hsem_int_it
+Page  495: hsem_hclk                                                  Sem_Ints
+Page  495: HSEM_R1
+Page  495: HSEM_RLR1
+Page  495: HSEM_R31
+Page  495: HSEM_RLR31                          HSEM_ICR
+Page  495: 9.3.2    HSEM internal signals
+Page  495: Table 84. HSEM internal input/output signals
+Page  495: hsem_hclk                Digital input       AHB clock
+Page  495: hsem_int_it              Digital output       Interrupt line
+Page  496: Hardware semaphore (HSEM)                                                                          RM0433
+Page  496: 9.3.3      HSEM lock procedures
+Page  496: check if the lock has been successful, carried out from the HSEM_Rn register
+Page  497: RM0433                                                               Hardware semaphore (HSEM)
+Page  497: from the HSEM_RLRn register.
+Page  497: 9.3.4    HSEM Write/Read/ReadLock register address
+Page  497: through the HSEM_R registers.
+Page  497: HSEM_RLR registers.
+Page  497: 9.3.5    HSEM Clear procedures
+Page  497: The Clear procedure consists in a Write to the semaphore HSEM_R register
+Page  498: Hardware semaphore (HSEM)                                                                       RM0433
+Page  498: 9.3.6      HSEM MasterID semaphore clear
+Page  498: HSEM_CR register.
+Page  498: HSEM_CR register with the correct KEY value. This will clear all locked semaphores with a
+Page  498: semaphore interrupt shall be enabled in the HSEM_CnIER registers.
+Page  498: 9.3.7      HSEM interrupts
+Page  498: hsem_int_it interrupt line allows each of the 32 semaphores to generate an interrupt.
+Page  498: With the Interrupt enable (HSEM_CnIER) the semaphores affecting the interrupt line can be
+Page  498: The Interrupt clear (HSEM_CnICR) will clear the Interrupt status and Masked interrupt
+Page  498: The Interrupt status (HSEM_CnISR) mirrors the semaphore Interrupt status of the interrupt
+Page  498: The Masked interrupt status (HSEM_CnMISR) only mirrors the semaphore Interrupt status
+Page  499: RM0433                                       Hardware semaphore (HSEM)
+Page  500: Hardware semaphore (HSEM)                                                                      RM0433
+Page  500: Clear pending semaphore N interrupt status for the interrupt line hsem_intn_it in
+Page  500: HSEM_CnICR.
+Page  500: hsem_intnn_it in HSEM_CnIER.
+Page  500: disable the semaphore N interrupt for the interrupt line hsem_intn_it in HSEM_CnIER,
+Page  500: and clear pending semaphore N interrupt status for the interrupt line hsem_intn_it in
+Page  500: HSEM_CnICR.
+Page  500: Clear pending semaphore N Interrupt status for the interrupt line hsem_intn_it in
+Page  500: HSEM_CnICR.
+Page  500: Disable the semaphore interrupt for the interrupt line hsem_intn_it in
+Page  500: HSEM_CnIER.
+Page  500: The HSEM allows only authorized AHB bus master IDs to lock and unlock semaphores.
+Page  500: •   The AHB bus master 2-step lock Write access to the semaphore HSEM_Rn register is
+Page  500: •   The AHB bus master 1-step lock Read access from the semaphore HSEM_RLRn
+Page  500: –    An unauthorized AHB bus master ID read from HSEM_RLRn will return the
+Page  500: - when the semaphore has been locked before it will return the HSEM_RLRn data.
+Page  500: •   The MasterID semaphore clears Write access to the HSEM_CR register is checked
+Page  500: HSEM_CR register and clear any of the MasterID semaphores.
+Page  501: RM0433                                                            Hardware semaphore (HSEM)
+Page  502: Hardware semaphore (HSEM)                                                                                      RM0433
+Page  502: 9.4              HSEM registers
+Page  502: 9.4.1            HSEM register semaphore x (HSEM_Rx)
+Page  502: The HSEM_R0 - HSEM_R31 shall be used to perform a 2-step Write lock and Read back.
+Page  503: RM0433                                                                              Hardware semaphore (HSEM)
+Page  503: 9.4.2           HSEM read lock register semaphore x (HSEM_RLRx)
+Page  503: Accesses the same physical bits as HSEM_R0 - HSEM_R31. The HSEM_RLR0 -
+Page  503: HSEM_RLR31 shall be used to perform a 1-step Read lock. Only Read accesses with
+Page  504: Hardware semaphore (HSEM)                                                                                    RM0433
+Page  504: 9.4.3            HSEM interrupt enable register (HSEM_CnIER)
+Page  504: 9.4.4            HSEM interrupt clear register (HSEM_CnICR)
+Page  504: 9.4.5            HSEM interrupt status register (HSEM_CnISR)
+Page  505: RM0433                                                                              Hardware semaphore (HSEM)
+Page  505: Bit will be cleared by firmware writing the corresponding HSEM_CnICR bit.
+Page  505: 9.4.6          HSEM masked interrupt status register (HSEM_CnMISR)
+Page  505: Bit will be cleared by firmware writing the corresponding HSEM_CnICR bit.
+Page  505: 9.4.7          HSEM clear register (HSEM_CR)
+Page  506: Hardware semaphore (HSEM)                                                                                      RM0433
+Page  506: Key value not matching HSEM_KEYR.KEY, semaphores not effected.
+Page  506: Key value matching HSEM_KEYR.KEY, all semaphores matching the MASTERID will be
+Page  506: HSEM_CR.
+Page  506: 9.4.8            HSEM interrupt clear register (HSEM_KEYR)
+Page  507: RM0433                                                                                                                                                               Hardware semaphore (HSEM)
+Page  507: 9.4.9         HSEM register map
+Page  507: Table 86. HSEM register map and reset values
+Page  507: HSEM_R0                                                                                                                                                                                               PROCID[7:0]
+Page  507: HSEM_R1                                                                                                                                                                                               PROCID[7:0]
+Page  507: HSEM_R31                                                                                                                                                                                              PROCID[7:0]
+Page  507: HSEM_RLR0                                                                                                                                                                                                    PROCID
+Page  507: HSEM_RLR1                                                                                                                                                                                              PROCID[7:0]
+Page  507: HSEM_RLR31                                                                                                                                                                                             PROCID[7:0]
+Page  507: HSEM_C1IER                                                                                                              ISE[31:0]
+Page  507: HSEM_C1ICR                                                                                                              ISC[31:0]
+Page  507: HSEM_C1ISR                                                                                                              ISF[31:0]
+Page  507: HSEM_C1MISR                                                                                                         MISF[31:0]
+Page  507: HSEM_CR                                                         KEY
+Page  507: HSEM_KEYR                                                        KEY
+Page  517: 10.3.14   Using the HSE or LSE oscillator pins as GPIOs
+Page  517: When the HSE or LSE oscillator is switched OFF (default state after reset), the related
+Page  517: When the HSE or LSE oscillator is switched ON (by setting the HSEON or LSEON bit in the
+Page  558: RCC         HSE_1MHZ        TI1_2                                A       -
+Page  573: D3         AHB4         HSEM              hsem_int_it         WKUP77                        D      CPU
+Page  573: D3         AHB4          RCC          hse_css_rcc_wkup        WKUP87                        D      CPU             -
+Page  735: hsem1_it       132         125             HSEM0         HSEM global interrupt 1         0x0000 0234
+Page  749: 87        HSECSS interrupt                                 Direct              CPU only                No(5)
+Page 1827: 0010: HSE_1MHz
+Page 1891: Divided HSE
+Page 1893: rtc_ker_ck (RTCCLK)             Internal input   RTC clock source (LSE clock, LSI clock and HSE clock)
+Page 1895: clock, the LSI oscillator clock, and the HSE clock. For more information on the RTC clock
+Page 2227: CMD CMD    PCM   PCM     LINE1 PCM    PCM   PCM    PCM     LINE2   HSET    IO
+Page 2227: Tag ADDR                                                                HSET
+Page 2285: Section 51.5.8: Channel status register (SPDIFRX_CSR). A bit is available (CHSEL) in
+Page 2290: CHSEL              rw                 r                  r
+Page 2292: –    CHSEL = 0 (channels status will be read from sub-frame A)
+Page 2293: CHSEL
+Page 2294: Bit 11 CHSEL: Channel selection(1)
+Page 2305: CHSEL
+Page 3217: Section 10: Hardware semaphore (HSEM)
+Page 3217: Renamed pclk into hsem_hclk in the whole document.
+Page 3217: Updated COREID bit description in Section 10.4.1: HSEM register
+Page 3217: (HSEM_R0 - HSEM_R31).
+Page 3223: Section 10: Hardware semaphore (HSEM)
+Page 3226: renamed USB2OTGEN into USB2OTGHSEN, USB1ULPIEN into
+Page 3226: USB1OTGHSULPIEN, USB1OTGEN into USB1OTGHSEN.
+Page 3240: HSEM_CnICR . . . . . . . . . . . . . . . . . . . . . . . .504
+Page 3240: HSEM_CnIER . . . . . . . . . . . . . . . . . . . . . . . .504
+Page 3240: HSEM_CnISR . . . . . . . . . . . . . . . . . . . . . . . .504
+Page 3240: HSEM_CnMISR . . . . . . . . . . . . . . . . . . . . . . .505
+Page 3240: HSEM_CR . . . . . . . . . . . . . . . . . . . . . . . . . . .505
+Page 3240: HSEM_KEYR . . . . . . . . . . . . . . . . . . . . . . . . .506
+Page 3240: HSEM_RLRx . . . . . . . . . . . . . . . . . . . . . . . . .503
+Page 3240: HSEM_Rx . . . . . . . . . . . . . . . . . . . . . . . . . . .502

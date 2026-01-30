@@ -1,0 +1,440 @@
+Keyword: pin
+Occurrences: 436
+================================================================================
+
+Page    1: • CPU and domain power state monitoring pins
+Page    4: 4          Memory mapping . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 54
+Page    5: 5         Pin descriptions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 55
+Page    5: 6.1.5      Pin input voltage . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 102
+Page    5: 6.3.16     NRST pin characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 145
+Page    6: 7.1.5      Pin input voltage . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 208
+Page    6: 7.3.16     NRST pin characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 251
+Page    8: Table 7.    Flash memory and SRAM memory mapping for STM32H742xI/G . . . . . . . . . . . . . . . . . . . 54
+Page    8: Table 8.    Legend/abbreviations used in the pinout table . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 63
+Page    8: Table 9.    Pin/ball definition. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 64
+Page    9: Table 65.   NRST pin characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 145
+Page   11: Table 162.   NRST pin characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 251
+Page   13: Figure 5.    LQFP100 pinout . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 55
+Page   13: Figure 6.    TFBGA100 pinout . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 56
+Page   13: Figure 7.    LQFP144 pinout . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 57
+Page   13: Figure 9.    LQFP176 pinout . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 59
+Page   13: Figure 11.   LQFP208 pinout . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 61
+Page   13: Figure 13.   Pin loading conditions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 102
+Page   13: Figure 14.   Pin input voltage . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 102
+Page   13: Figure 23.   Recommended NRST pin protection . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 145
+Page   13: Figure 41.   Typical connection diagram when using the ADC with FT/TT pins featuring
+Page   14: Figure 66.   Pin loading conditions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 208
+Page   14: Figure 67.   Pin input voltage . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 208
+Page   14: Figure 76.   Recommended NRST pin protection . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 251
+Page   14: Figure 93.   Typical connection diagram when using the ADC with FT/TT pins
+Page   16: such as description, functional overview, pin assignment and definition, electrical
+Page   18: connecting the PDR_ON pin to VSS. Otherwise the supply voltage must stay above 1.71 V
+Page   18: pins to 240 pins/balls. The set of included peripherals changes with the device chosen.
+Page   20: Tamper pins                           4                    5                           6                                      4                    5                           6                                             4                    5                           6
+Page   20: Wakeup pins                           2                    2                           3                                      2                    2                           3                                             2                    2                           3
+Page   22: 4.   Since the LQFP100 package does not feature the PDR_ON pin (tied internally to VDD), the minimum VDD value for this package is 1.71 V.
+Page   22: 5.   VDD/VDDA can drop down to 1.62 V by using an external power supervisor (see Section 3.5.2: Power supply supervisor) and connecting PDR_ON pin to
+Page   25: meets the needs of MCU implementation, with a reduced pin count and optimized power
+Page   27: At startup, the boot memory space is selected by the BOOT pin and BOOT_ADDx option
+Page   27: pins.
+Page   29: The PDR supervisor can be enabled/disabled through PDR_ON pin.
+Page   31: •    Low level on NRST pin (external reset)
+Page   32: Each of the GPIO pins can be configured by software as output (push-pull or open-drain,
+Page   32: or as peripheral alternate function. Most of the GPIO pins are shared with digital or analog
+Page   32: After reset, all GPIOs (except debug pins) are in Analog mode to reduce power
+Page   37: voltage applied on VBAT pin (when VDD supply is not present). VBAT power is switched
+Page   37: The voltage on the VBAT pin could be provided by an external battery, a supercapacitor or
+Page   37: The VBAT pin supplies the RTC, the backup registers and the backup SRAM.
+Page   37: When PDR_ON pin is connected to VSS (Internal Reset OFF), the VBAT functionality is no
+Page   37: more available and VBAT pin should be connected to VDD.
+Page   39: and one output each. These three I/Os can be connected to the external pins, thus enabling
+Page   46: •   Three anti-tamper detection pins with programmable filter.
+Page   46: be triggered by an event on the timestamp pin, or by a tamper event, or by a switch to
+Page   46: from the VDD supply when present or from the VBAT pin.
+Page   52: features a UTMI low-pin interface (ULPI) for high-speed operation (480 Mbit/s). When using
+Page   54: Memory mapping                                                   STM32H742xI/G STM32H743xI/G
+Page   54: 4        Memory mapping
+Page   54: Refer to Table 7 for details on STM32H742xI/G flash and SRAM block memory mapping
+Page   54: Details on STM32H743xGxI/G flash and SRAM block memory mapping and boundary
+Page   54: Table 7. Flash memory and SRAM memory mapping for STM32H742xI/G
+Page   55: STM32H742xI/G STM32H743xI/G                                                                                                                                                                       Pin descriptions
+Page   55: 5             Pin descriptions
+Page   55: Figure 5. LQFP100 pinout
+Page   55: PH1-OSC_OUT 13                                                                         100-pins                                                                                            63 PC6
+Page   56: Pin descriptions                                                                        STM32H742xI/G STM32H743xI/G
+Page   56: Figure 6. TFBGA100 pinout
+Page   57: STM32H742xI/G STM32H743xI/G                                                                                                         Pin descriptions
+Page   57: Figure 7. LQFP144 pinout
+Page   57: PF6   18                                                  144-pins                                                  91   PG6
+Page   58: Pin descriptions                                                               STM32H742xI/G STM32H743xI/G
+Page   59: STM32H742xI/G STM32H743xI/G                                                                                                                                                                                                                                                     Pin descriptions
+Page   59: Figure 9. LQFP176 pinout
+Page   59: PINOUT UNDER DEVELOPMENT
+Page   59: VSS    22                                                                                                                       176-pins                                                                                                                                        111   PG7
+Page   60: Pin descriptions                                                                   STM32H742xI/G STM32H743xI/G
+Page   61: STM32H742xI/G STM32H743xI/G                                             Pin descriptions
+Page   61: Figure 11. LQFP208 pinout
+Page   61: VSS    25                                  208-pins               132   PG5
+Page   62: Pin descriptions                                                                        STM32H742xI/G STM32H743xI/G
+Page   63: STM32H742xI/G STM32H743xI/G                                                                         Pin descriptions
+Page   63: Table 8. Legend/abbreviations used in the pinout table
+Page   63: Unless otherwise specified in brackets below the pin name, the pin function during
+Page   63: Pin name
+Page   63: and after reset is the same as the actual pin name
+Page   63: S            Supply pin
+Page   63: I           Input only pin
+Page   63: Pin type
+Page   63: I/O           Input / output pin
+Page   63: B            Dedicated BOOT0 pin
+Page   63: RST           Bidirectional reset pin with embedded weak pull-up resistor
+Page   63: Pin functions
+Page   63: Table 9 and Table 10 to Table 20 show STM32H743xI/G pin/ball definition and alternate
+Page   64: Pin descriptions                                                                                                                            STM32H742xI/G STM32H743xI/G
+Page   64: Table 9. Pin/ball definition
+Page   64: Pin/ball name
+Page   64: Pin name
+Page   64: Pin type
+Page   65: STM32H742xI/G STM32H743xI/G                                                                                                                                    Pin descriptions
+Page   65: Table 9. Pin/ball definition (continued)
+Page   65: Pin/ball name
+Page   65: Pin name
+Page   65: Pin type
+Page   66: Pin descriptions                                                                                                                            STM32H742xI/G STM32H743xI/G
+Page   66: Table 9. Pin/ball definition (continued)
+Page   66: Pin/ball name
+Page   66: Pin name
+Page   66: Pin type
+Page   67: STM32H742xI/G STM32H743xI/G                                                                                                                                     Pin descriptions
+Page   67: Table 9. Pin/ball definition (continued)
+Page   67: Pin/ball name
+Page   67: Pin name
+Page   67: Pin type
+Page   68: Pin descriptions                                                                                                                              STM32H742xI/G STM32H743xI/G
+Page   68: Table 9. Pin/ball definition (continued)
+Page   68: Pin/ball name
+Page   68: Pin name
+Page   68: Pin type
+Page   69: STM32H742xI/G STM32H743xI/G                                                                                                                                     Pin descriptions
+Page   69: Table 9. Pin/ball definition (continued)
+Page   69: Pin/ball name
+Page   69: Pin name
+Page   69: Pin type
+Page   70: Pin descriptions                                                                                                                            STM32H742xI/G STM32H743xI/G
+Page   70: Table 9. Pin/ball definition (continued)
+Page   70: Pin/ball name
+Page   70: Pin name
+Page   70: Pin type
+Page   71: STM32H742xI/G STM32H743xI/G                                                                                                                                     Pin descriptions
+Page   71: Table 9. Pin/ball definition (continued)
+Page   71: Pin/ball name
+Page   71: Pin name
+Page   71: Pin type
+Page   72: Pin descriptions                                                                                                                            STM32H742xI/G STM32H743xI/G
+Page   72: Table 9. Pin/ball definition (continued)
+Page   72: Pin/ball name
+Page   72: Pin name
+Page   72: Pin type
+Page   73: STM32H742xI/G STM32H743xI/G                                                                                                                                    Pin descriptions
+Page   73: Table 9. Pin/ball definition (continued)
+Page   73: Pin/ball name
+Page   73: Pin name
+Page   73: Pin type
+Page   74: Pin descriptions                                                                                                                             STM32H742xI/G STM32H743xI/G
+Page   74: Table 9. Pin/ball definition (continued)
+Page   74: Pin/ball name
+Page   74: Pin name
+Page   74: Pin type
+Page   75: STM32H742xI/G STM32H743xI/G                                                                                                                                   Pin descriptions
+Page   75: Table 9. Pin/ball definition (continued)
+Page   75: Pin/ball name
+Page   75: Pin name
+Page   75: Pin type
+Page   76: Pin descriptions                                                                                                                             STM32H742xI/G STM32H743xI/G
+Page   76: Table 9. Pin/ball definition (continued)
+Page   76: Pin/ball name
+Page   76: Pin name
+Page   76: Pin type
+Page   77: STM32H742xI/G STM32H743xI/G                                                                                                                                     Pin descriptions
+Page   77: Table 9. Pin/ball definition (continued)
+Page   77: Pin/ball name
+Page   77: Pin name
+Page   77: Pin type
+Page   78: Pin descriptions                                                                                                                            STM32H742xI/G STM32H743xI/G
+Page   78: Table 9. Pin/ball definition (continued)
+Page   78: Pin/ball name
+Page   78: Pin name
+Page   78: Pin type
+Page   79: STM32H742xI/G STM32H743xI/G                                                                                                                                     Pin descriptions
+Page   79: Table 9. Pin/ball definition (continued)
+Page   79: Pin/ball name
+Page   79: Pin name
+Page   79: Pin type
+Page   80: Pin descriptions                                                                                                                            STM32H742xI/G STM32H743xI/G
+Page   80: Table 9. Pin/ball definition (continued)
+Page   80: Pin/ball name
+Page   80: Pin name
+Page   80: Pin type
+Page   81: STM32H742xI/G STM32H743xI/G                                                                                                                                   Pin descriptions
+Page   81: Table 9. Pin/ball definition (continued)
+Page   81: Pin/ball name
+Page   81: Pin name
+Page   81: Pin type
+Page   82: Pin descriptions                                                                                                                            STM32H742xI/G STM32H743xI/G
+Page   82: Table 9. Pin/ball definition (continued)
+Page   82: Pin/ball name
+Page   82: Pin name
+Page   82: Pin type
+Page   83: STM32H742xI/G STM32H743xI/G                                                                                                                                   Pin descriptions
+Page   83: Table 9. Pin/ball definition (continued)
+Page   83: Pin/ball name
+Page   83: Pin name
+Page   83: Pin type
+Page   84: Pin descriptions                                                                                                                            STM32H742xI/G STM32H743xI/G
+Page   84: Table 9. Pin/ball definition (continued)
+Page   84: Pin/ball name
+Page   84: Pin name
+Page   84: Pin type
+Page   85: STM32H742xI/G STM32H743xI/G                                                                                                                                    Pin descriptions
+Page   85: Table 9. Pin/ball definition (continued)
+Page   85: Pin/ball name
+Page   85: Pin name
+Page   85: Pin type
+Page   86: Pin descriptions                                                                                                                             STM32H742xI/G STM32H743xI/G
+Page   86: Table 9. Pin/ball definition (continued)
+Page   86: Pin/ball name
+Page   86: Pin name
+Page   86: Pin type
+Page   87: STM32H742xI/G STM32H743xI/G                                                                                                                                   Pin descriptions
+Page   87: Table 9. Pin/ball definition (continued)
+Page   87: Pin/ball name
+Page   87: Pin name
+Page   87: Pin type
+Page   87: 1. When this pin/ball was previously configured as an oscillator, the oscillator function is kept during and after a reset. This is
+Page   87: 5. Pxy_C and Pxy pins/balls are two separate pads (analog switch open). The analog switch is configured through a SYSCFG
+Page   87: 6. There is a direct path between Pxy_C and Pxy pins/balls, through an analog switch. Pxy alternate functions are available on
+Page   87: 7. VREF+ pin, and consequently the internal voltage reference, are not available on the TFBGA100 package. On this package,
+Page   87: this pin is double-bonded to VDDA which can be connected to an external reference. The internal voltage reference buffer is
+Page   87: 8. When it is not available on a package, the VDDLDO pin is internally tied to VDD.
+Page   87: 9. When the pin is used in USB configuration (OTG_HS_ID/OTG_HS_VBUS), the I/O is supplied by VDD33USB, otherwise it is
+Page   87: 10. When it is not available on a package, the VDD50USB pin is internally tied to VDD33USB.
+Page  102: The loading conditions used for pin parameter measurement are shown in Figure 13.
+Page  102: 6.1.5         Pin input voltage
+Page  102: The input voltage measurement on a pin of the device is described in Figure 14.
+Page  102: Figure 13. Pin loading conditions                      Figure 14. Pin input voltage
+Page  102: MCU pin                                              MCU pin
+Page  103: 1. N corresponds to the number of VDD pins available on the package.
+Page  103: below, the appropriate pins on the underside of the PCB to ensure good operation of the
+Page  104: Input voltage on FT_xxx pins                         VSS−0.3     VDD33USB, VBAT)         V
+Page  104: VIN(2)     Input voltage on TT_xx pins                          VSS-0.3             4.0             V
+Page  104: Input voltage on BOOT0 pin                             VSS               9.0             V
+Page  104: Input voltage on any other pins                      VSS-0.3             4.0             V
+Page  104: Variations between different VDDX power pins
+Page  104: |VSSx-VSS| Variations between all the different ground pins           -               50            mV
+Page  104: 1. All main power (VDD, VDDA, VDD33USB, VBAT) and ground (VSS, VSSA) pins must always be connected to
+Page  105: 3. This formula has to be applied on power supplies related to the IO structure described by the pin definition
+Page  105: IVDD        Maximum current into each VDD        power pin (source)(1)                      100
+Page  105: IVSS        Maximum current out of each VSS ground pin (sink)(1)                            100
+Page  105: Output current sunk by any I/O and control pin, except Px_C                        20
+Page  105: Output current sunk by Px_C pins                                                   1
+Page  105: Total output current sunk by sum of all I/Os and control pins(2)                140
+Page  105: ΣI(PIN)
+Page  105: Total output current sourced by sum of all I/Os and control pins(2)             140
+Page  105: Injected current on FT_xxx, TT_xx, RST and B pins except PA4,
+Page  105: IINJ(PIN)(3)(4) PA5
+Page  105: ΣIINJ(PIN)    Total injected current (sum of all I/Os and control pins)(5)                    ±25
+Page  105: 1. All main power (VDD, VDDA, VDD33USB) and ground (VSS, VSSA) pins must always be connected to the
+Page  105: 2. This current consumption must be correctly distributed over all I/Os and control pins. The total output
+Page  105: current must not be sunk/sourced between two consecutive power supply pins referring to high pin count
+Page  105: 4. A positive injection is induced by VIN>VDD while a negative injection is induced by VIN<VSS. IINJ(PIN) must
+Page  105: 5. When several inputs are submitted to a current injection, the maximum ∑IINJ(PIN) is the absolute sum of the
+Page  106: 2. This formula has to be applied on power supplies related to the IO structure described by the pin definition table.
+Page  107: the VCAP pin. CEXT is specified in Table 25. Two external capacitors can be connected to
+Page  107: VCAP pins.
+Page  110: operating voltage, ambient temperature, I/O pin loading, device software configuration,
+Page  110: operating frequencies, I/O pin switching rate, program location in memory and executed
+Page  110: •     All I/O pins are in analog input mode.
+Page  115: the pin is externally held low. The value of this current consumption can be simply computed
+Page  115: For the output pins, any internal or external pull-up or pull-down, and any external load must
+Page  115: these I/Os in analog mode. This is notably the case of ADC input pins which should be
+Page  115: Caution:       Any floating input pin can also settle to an intermediate voltage level or switch inadvertently,
+Page  115: floating pins, they must either be configured in analog mode, or forced internally to a definite
+Page  115: pins in output mode.
+Page  115: consumption. When an I/O pin switches, it uses the current from the MCU supply voltage to
+Page  115: supply the I/O pin circuitry and to charge/discharge the internal or external capacitive load
+Page  115: connected to the pin:
+Page  115: CL is the total capacitance seen by the I/O pin: C = CINT+ CEXT
+Page  116: The test pin is configured in push-pull output mode and is toggled by software at a fixed
+Page  116: •    At startup, all I/O pins are in analog input configuration.
+Page  123: •      WKUP (PC1) pin is used to wakeup from Standby, Stop and Sleep modes.
+Page  124: In bypass mode the HSE oscillator is switched off and the input pin is a standard I/O.
+Page  125: In bypass mode the LSE oscillator is switched off and the input pin is a standard I/O. The
+Page  125: VLSEH     OSC32_IN input pin high level voltage               -     0.7 VDDIOx          -        VDDIOx
+Page  125: VLSEL     OSC32_IN input pin low level voltage                -        VSS              -       0.3 VDDIOx
+Page  126: possible to the oscillator pins in order to minimize output distortion and startup stabilization
+Page  126: and CL2. The PCB and MCU pin capacitance must be included (10 pF can be used as a
+Page  126: rough estimate of the combined pin and board capacitance) when sizing CL1 and CL2.
+Page  127: possible to the oscillator pins in order to minimize output distortion and startup stabilization
+Page  134: •     Electrostatic discharge (ESD) (positive and negative) is applied to all device pins until
+Page  134: Voltage limits to be applied on any I/O pin to induce
+Page  134: VFTB        through 100 pF on VDD and VSS pins to induce a        IEC 61000-4-2                4B
+Page  134: possible to the MCU to the pins exposed to noise (connected to tracks longer than 50 mm
+Page  135: reproduced by manually forcing a low state on the NRST pin or the Oscillator pins for 1
+Page  135: standard which specifies the test board and the pin loading.
+Page  136: Electrostatic discharges (a positive then a negative pulse) are applied to the pins of each
+Page  136: sample according to each pin combination. This test conforms to the ANSI/ESDA/JEDEC
+Page  136: •    A supply overvoltage is applied to each power supply pin
+Page  136: •    A current injection is applied to each input, output and configurable I/O pin
+Page  136: As a general rule, a current injection to the I/O pins, due to external voltage below VSS or
+Page  136: above VDD (for standard, 3.3 V-capable I/O pins) should be avoided during the normal
+Page  136: current into the I/O pins programmed in floating input mode. While current is injected into
+Page  136: the I/O pin, one at a time, the device is checked for functional failures.
+Page  136: than 5 LSB TUE), out of conventional limits of induced leakage current on adjacent pins (out
+Page  138: CIO      I/O pin capacitance                                     -                      -            5          -        pF
+Page  139: In the user application, the number of I/O pins which can drive current must be limited to
+Page  140: I/O pin in FM+ mode                              IIO= 10 mA
+Page  140: Voltage characteristics, and the sum of the currents sourced or sunk by all the I/Os (I/O ports and control pins) must always
+Page  141: Voltage characteristics, and the sum of the currents sourced or sunk by all the I/Os (I/O ports and control pins) must always
+Page  145: 6.3.16    NRST pin characteristics
+Page  145: The NRST pin input driver uses CMOS technology. It is connected to a permanent pull-up
+Page  145: Table 65. NRST pin characteristics
+Page  145: Figure 23. Recommended NRST pin protection
+Page  145: 2. The user must ensure that the level on the NRST pin can go below the VIL(NRST) max level specified in
+Page  170: input pins should be avoided as this significantly reduces the accuracy of the conversion
+Page  171: being performed on another analog input. It is recommended to add a Schottky diode (pin to
+Page  171: ground) to analog pins which may potentially inject negative currents.
+Page  171: Any positive injection current within the limits specified for IINJ(PIN) and ΣIINJ(PIN) in
+Page  171: Figure 41. Typical connection diagram when using the ADC with FT/TT pins featuring
+Page  191: •     The SDA and SCL I/O pins are not “true” open-drain. When configured as open-drain,
+Page  191: the PMOS connected between the I/O pin and VDD is disabled, but still present.
+Page  208: The loading conditions used for pin parameter measurement are shown in Figure 66.
+Page  208: 7.1.5         Pin input voltage
+Page  208: The input voltage measurement on a pin of the device is described in Figure 67.
+Page  208: Figure 66. Pin loading conditions                      Figure 67. Pin input voltage
+Page  208: MCU pin                                              MCU pin
+Page  209: 1. N corresponds to the number of VDD pins available on the package.
+Page  209: below, the appropriate pins on the underside of the PCB to ensure good operation of the
+Page  210: Input voltage on FT_xxx pins                            VSS−0.3      VDD33USB, VBAT)           V
+Page  210: VIN(2)     Input voltage on TT_xx pins                             VSS-0.3              4.0               V
+Page  210: Input voltage on BOOT0 pin                                VSS                9.0               V
+Page  210: Input voltage on any other pins                         VSS-0.3              4.0               V
+Page  210: Variations between different VDDX power pins
+Page  210: |VSSx-VSS| Variations between all the different ground pins              -                50              mV
+Page  210: 1. All main power (VDD, VDDA, VDD33USB, VBAT) and ground (VSS, VSSA) pins must always be connected to
+Page  211: 3. This formula has to be applied on power supplies related to the IO structure described by the pin definition
+Page  211: IVDD          Maximum current into each VDD      power pin (source)(1)                      100
+Page  211: IVSS          Maximum current out of each VSS ground pin (sink)(1)                          100
+Page  211: Output current sunk by any I/O and control pin, except Px_C                      20
+Page  211: Output current sunk by Px_C pins                                                 1
+Page  211: Total output current sunk by sum of all I/Os and control pins(2)              140
+Page  211: ΣI(PIN)
+Page  211: Total output current sourced by sum of all I/Os and control pins(2)           140
+Page  211: Injected current on FT_xxx, TT_xx, RST and B pins except PA4,
+Page  211: IINJ(PIN)(3)(4) PA5
+Page  211: ΣIINJ(PIN)      Total injected current (sum of all I/Os and control pins)(5)                  ±25
+Page  211: 1. All main power (VDD, VDDA, VDD33USB) and ground (VSS, VSSA) pins must always be connected to the
+Page  211: 2. This current consumption must be correctly distributed over all I/Os and control pins. The total output
+Page  211: current must not be sunk/sourced between two consecutive power supply pins referring to high pin count
+Page  211: 4. A positive injection is induced by VIN>VDD while a negative injection is induced by VIN<VSS. IINJ(PIN) must
+Page  211: 5. When several inputs are submitted to a current injection, the maximum ∑IINJ(PIN) is the absolute sum of the
+Page  212: regulator on two VCAP pins       VOS1 (max frequency
+Page  213: 2. This formula has to be applied on power supplies related to the IO structure described by the pin definition table.
+Page  214: the VCAP pin. CEXT is specified in Table 124. Two external capacitors can be connected to
+Page  214: VCAP pins.
+Page  217: operating voltage, ambient temperature, I/O pin loading, device software configuration,
+Page  217: operating frequencies, I/O pin switching rate, program location in memory and executed
+Page  217: •     All I/O pins are in analog input mode.
+Page  222: the pin is externally held low. The value of this current consumption can be simply computed
+Page  222: For the output pins, any internal or external pull-up or pull-down, and any external load must
+Page  222: these I/Os in analog mode. This is notably the case of ADC input pins which should be
+Page  222: Caution:       Any floating input pin can also settle to an intermediate voltage level or switch inadvertently,
+Page  222: floating pins, they must either be configured in analog mode, or forced internally to a definite
+Page  222: pins in output mode.
+Page  223: consumption. When an I/O pin switches, it uses the current from the MCU supply voltage to
+Page  223: supply the I/O pin circuitry and to charge/discharge the internal or external capacitive load
+Page  223: connected to the pin:
+Page  223: CL is the total capacitance seen by the I/O pin: C = CINT+ CEXT
+Page  223: The test pin is configured in push-pull output mode and is toggled by software at a fixed
+Page  223: •   At startup, all I/O pins are in analog input configuration.
+Page  229: •      WKUP (PC1) pin is used to wakeup from Standby, Stop and Sleep modes.
+Page  230: In bypass mode the HSE oscillator is switched off and the input pin is a standard I/O.
+Page  231: In bypass mode the LSE oscillator is switched off and the input pin is a standard I/O. The
+Page  231: VLSEH     OSC32_IN input pin high level voltage               -     0.7 VDDIOx          -        VDDIOx
+Page  231: VLSEL     OSC32_IN input pin low level voltage                -        VSS              -       0.3 VDDIOx
+Page  232: possible to the oscillator pins in order to minimize output distortion and startup stabilization
+Page  232: and CL2. The PCB and MCU pin capacitance must be included (10 pF can be used as a
+Page  232: rough estimate of the combined pin and board capacitance) when sizing CL1 and CL2.
+Page  233: possible to the oscillator pins in order to minimize output distortion and startup stabilization
+Page  240: •     Electrostatic discharge (ESD) (positive and negative) is applied to all device pins until
+Page  240: Voltage limits to be applied on any I/O pin to induce
+Page  240: VFTB         through 100 pF on VDD and VSS pins to induce a        IEC 61000-4-2                  5A
+Page  240: possible to the MCU to the pins exposed to noise (connected to tracks longer than 50 mm
+Page  241: reproduced by manually forcing a low state on the NRST pin or the Oscillator pins for 1
+Page  241: standard which specifies the test board and the pin loading.
+Page  242: Electrostatic discharges (a positive then a negative pulse) are applied to the pins of each
+Page  242: sample according to each pin combination. This test conforms to the ANSI/ESDA/JEDEC
+Page  242: •    A supply overvoltage is applied to each power supply pin
+Page  242: •    A current injection is applied to each input, output and configurable I/O pin
+Page  243: As a general rule, a current injection to the I/O pins, due to external voltage below VSS or
+Page  243: above VDD (for standard, 3.3 V-capable I/O pins) should be avoided during the normal
+Page  243: current into the I/O pins programmed in floating input mode. While current is injected into
+Page  243: the I/O pin, one at a time, the device is checked for functional failures.
+Page  243: than 5 LSB TUE), out of conventional limits of induced leakage current on adjacent pins (out
+Page  244: CIO      I/O pin capacitance                                -                  -         5        -       pF
+Page  245: In the user application, the number of I/O pins which can drive current must be limited to
+Page  246: I/O pin in FM+ mode                              IIO= 10 mA
+Page  246: Voltage characteristics, and the sum of the currents sourced or sunk by all the I/Os (I/O ports and control pins) must always
+Page  247: Voltage characteristics, and the sum of the currents sourced or sunk by all the I/Os (I/O ports and control pins) must always
+Page  251: 7.3.16    NRST pin characteristics
+Page  251: The NRST pin input driver uses CMOS technology. It is connected to a permanent pull-up
+Page  251: Table 162. NRST pin characteristics
+Page  251: Figure 76. Recommended NRST pin protection
+Page  251: 2. The user must ensure that the level on the NRST pin can go below the VIL(NRST) max level specified in
+Page  282: input pins should be avoided as this significantly reduces the accuracy of the conversion
+Page  282: being performed on another analog input. It is recommended to add a Schottky diode (pin to
+Page  282: ground) to analog pins which may potentially inject negative currents.
+Page  282: Any positive injection current within the limits specified for IINJ(PIN) and ΣIINJ(PIN) in
+Page  283: Figure 93. Typical connection diagram when using the ADC with FT/TT pins
+Page  302: •     The SDA and SCL I/O pins are not “true” open-drain. When configured as open-drain,
+Page  302: the PMOS connected between the I/O pin and VDDIOx is disabled, but still present.
+Page  321: and microprocessors” (TN1433) available on www.st.com, for the location of pin 1 / ball A1
+Page  321: as well as the location and orientation of the marking areas versus pin 1 / ball A1.
+Page  324: 6.   Details of pin 1 identifier are optional but must be located within the zone indicated.
+Page  328: This LQFP is a 144-pin, 20 x 20 mm low-profile quad flat package.
+Page  330: 6.   Details of pin 1 identifier are optional but must be located within the zone indicated.
+Page  334: This LQFP is a 176-pin, 24 x 24 mm, 0.5 mm pitch, low profile quad flat package.
+Page  336: 6.   Details of pin 1 identifier are optional but must be located within the zone indicated.
+Page  338: This LQFP is a 208-pin, 28 x 28 mm low-profile quad flat package.
+Page  340: 6.   Details of pin 1 identifier are optional but must be located within the zone indicated.
+Page  345: •    PD max is the sum of PINT max and PI/O max (PD max = PINT max + PI/Omax),
+Page  345: •    PINT max is the product of IDD and VDD, expressed in Watts. This is the maximum chip
+Page  345: PI/O max represents the maximum power dissipation on output pins where:
+Page  348: Pin count
+Page  348: V = 100 pins/balls
+Page  348: Z = 144 pins
+Page  348: I = 176 pins/176+25 balls
+Page  348: B = 208 pins
+Page  350: Changed PC2/3 to PC2/3_C and VDD33USB to VDD in Figure 5: LQFP100 pinout.
+Page  350: Changed PC2/3 to PC2/3_C in Figure 7: LQFP144 pinout. Changed PC2/3 to PC2/3_C
+Page  350: in Figure 9: LQFP176 pinout. Changed PC2/3 to PC2/3_C in Figure 11: LQFP208
+Page  350: pinout.
+Page  350: 27-Sep-2017        2      Table 9: Pin/ball definition:
+Page  350: – TFBGA240 +25: removed duplicate occurrence of F1, F2 and P17 pin; added notes
+Page  350: related to F1, F2, G2 pin connection; added note on E1, L16, L17, M16, M17, K16,
+Page  350: – UFBGA176+25: changed G10 pin name to VSS.
+Page  350: – Added note to VREF+ pin.
+Page  351: Table 9: Pin/ball definition: updated PC14 and PC15 function after reset; changed
+Page  351: Updated PA0, PA13, PA14, PC14 and PC15 pin/ball signals in pinout/ballout
+Page  352: Removed ETH_TX_ER from Table 9: Pin/ball definition and Table 10: Port A alternate
+Page  352: Added note related to VDDLDO in Table 9: Pin/ball definition.
+Page  352: – Updated note 2 below Figure 23: Recommended NRST pin protection.
+Page  353: Updated Table 9: Pin/ball definition.
+Page  353: wakeup and tamper pins.
+Page  355: Section 5: Pin descriptions
+Page  355: and FDCAN2_TXFD_MODE functions from Table 9: Pin/ball definition and all alternate
+Page  355: Additional modifications made on Table 9: Pin/ball definition: added note to VDD50USB,
+Page  355: diagram when using the ADC with FT/TT pins featuring analog switch function.
+Page  355: diagram when using the ADC with FT/TT pins featuring analog switch function.
+Page  356: Table 9: Pin/ball definition.
+Page  356: FT/TT pins featuring analog switch function and Figure 93: Typical connection diagram
+Page  356: when using the ADC with FT/TT pins featuring analog switch function
+Page  356: Updated information on pin count in Section 9: Ordering information

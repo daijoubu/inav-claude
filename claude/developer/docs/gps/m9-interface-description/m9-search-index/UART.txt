@@ -1,0 +1,435 @@
+Keyword: UART
+Occurrences: 431
+================================================================================
+
+Page    5: 3.10.17.2 Port conﬁguration for UART ports..............................................................................73
+Page   12: 5.9.28 CFG-UART1: Conﬁguration of the UART1 interface........................................................231
+Page   12: 5.9.29 CFG-UART1INPROT: Input protocol conﬁguration of the UART1 interface................231
+Page   12: 5.9.30 CFG-UART1OUTPROT: Output protocol conﬁguration of the UART1 interface........232
+Page   12: 5.9.31 CFG-UART2: Conﬁguration of the UART2 interface........................................................232
+Page   12: 5.9.32 CFG-UART2INPROT: Input protocol conﬁguration of the UART2 interface................233
+Page   12: 5.9.33 CFG-UART2OUTPROT: Output protocol conﬁguration of the UART2 interface........233
+Page   50: •   Port conﬁguration for UART ports (Get/set)
+Page   73: 3.10.17.2 Port conﬁguration for UART ports
+Page   73: Port conﬁguration for UART ports
+Page   73: valid UART port IDs)
+Page   74: 4                  X4    mode           -       -            A bit mask describing the UART mode
+Page  159: bit 3   U:1      uartrx                 -           -            Wake up the receiver if there is an edge on the UART
+Page  167: Conﬁguration interface, for example conﬁguration item CFG-UART1INPROT-RTCM3X.
+Page  197: CFG-UART1                                        Conﬁguration of the UART1 interface
+Page  197: CFG-UART1INPROT                                  Input protocol conﬁguration of the UART1 interface
+Page  197: CFG-UART1OUTPROT                                 Output protocol conﬁguration of the UART1 interface
+Page  197: CFG-UART2                                        Conﬁguration of the UART2 interface
+Page  197: CFG-UART2INPROT                                  Input protocol conﬁguration of the UART2 interface
+Page  197: CFG-UART2OUTPROT                                 Output protocol conﬁguration of the UART2 interface
+Page  201: CFG-INFMSG-UBX_UART1                 0x20920002 X1            -          -     Information message enable ﬂags for the UBX
+Page  201: protocol on the UART1 interface
+Page  201: CFG-INFMSG-UBX_UART2                 0x20920003 X1            -          -     Information message enable ﬂags for the UBX
+Page  201: protocol on the UART2 interface
+Page  201: CFG-INFMSG-NMEA_UART1                0x20920007 X1            -          -     Information message enable ﬂags for the NMEA
+Page  201: protocol on the UART1 interface
+Page  201: CFG-INFMSG-NMEA_UART2                0x20920008 X1            -          -     Information message enable ﬂags for the NMEA
+Page  201: protocol on the UART2 interface
+Page  202: Table 16: Constants for CFG-INFMSG-UBX_I2C, CFG-INFMSG-UBX_UART1, CFG-INFMSG-UBX_UART2, CFG-INFMSG-
+Page  202: UBX_USB, CFG-INFMSG-UBX_SPI, CFG-INFMSG-NMEA_I2C, CFG-INFMSG-NMEA_UART1, CFG-INFMSG-NMEA_UART2,
+Page  203: CFG-MSGOUT-NMEA_ID_DTM_UART1 0x209100a7 U1                   -        -     Output rate of the NMEA-GX-DTM message on
+Page  203: port UART1
+Page  203: CFG-MSGOUT-NMEA_ID_DTM_UART2 0x209100a8 U1                   -        -     Output rate of the NMEA-GX-DTM message on
+Page  203: port UART2
+Page  204: CFG-MSGOUT-NMEA_ID_GBS_UART1 0x209100de U1       -       -       Output rate of the NMEA-GX-GBS message on
+Page  204: port UART1
+Page  204: CFG-MSGOUT-NMEA_ID_GBS_UART2 0x209100df U1       -       -       Output rate of the NMEA-GX-GBS message on
+Page  204: port UART2
+Page  204: CFG-MSGOUT-NMEA_ID_GGA_UART1 0x209100bb U1       -       -       Output rate of the NMEA-GX-GGA message on
+Page  204: port UART1
+Page  204: CFG-MSGOUT-NMEA_ID_GGA_UART2 0x209100bc U1       -       -       Output rate of the NMEA-GX-GGA message on
+Page  204: port UART2
+Page  204: CFG-MSGOUT-NMEA_ID_GLL_UART1 0x209100ca U1       -       -       Output rate of the NMEA-GX-GLL message on
+Page  204: port UART1
+Page  204: CFG-MSGOUT-NMEA_ID_GLL_UART2 0x209100cb U1       -       -       Output rate of the NMEA-GX-GLL message on
+Page  204: port UART2
+Page  204: CFG-MSGOUT-NMEA_ID_GNS_UART1 0x209100b6 U1       -       -       Output rate of the NMEA-GX-GNS message on
+Page  204: port UART1
+Page  204: CFG-MSGOUT-NMEA_ID_GNS_UART2 0x209100b7 U1       -       -       Output rate of the NMEA-GX-GNS message on
+Page  204: port UART2
+Page  204: CFG-MSGOUT-NMEA_ID_GRS_UART1 0x209100cf U1       -       -       Output rate of the NMEA-GX-GRS message on
+Page  204: port UART1
+Page  204: CFG-MSGOUT-NMEA_ID_GRS_UART2 0x209100d0 U1       -       -       Output rate of the NMEA-GX-GRS message on
+Page  204: port UART2
+Page  205: CFG-MSGOUT-NMEA_ID_GSA_UART1 0x209100c0 U1       -       -       Output rate of the NMEA-GX-GSA message on
+Page  205: port UART1
+Page  205: CFG-MSGOUT-NMEA_ID_GSA_UART2 0x209100c1 U1       -       -       Output rate of the NMEA-GX-GSA message on
+Page  205: port UART2
+Page  205: CFG-MSGOUT-NMEA_ID_GST_UART1 0x209100d4 U1       -       -       Output rate of the NMEA-GX-GST message on
+Page  205: port UART1
+Page  205: CFG-MSGOUT-NMEA_ID_GST_UART2 0x209100d5 U1       -       -       Output rate of the NMEA-GX-GST message on
+Page  205: port UART2
+Page  205: CFG-MSGOUT-NMEA_ID_GSV_UART1 0x209100c5 U1       -       -       Output rate of the NMEA-GX-GSV message on
+Page  205: port UART1
+Page  205: CFG-MSGOUT-NMEA_ID_GSV_UART2 0x209100c6 U1       -       -       Output rate of the NMEA-GX-GSV message on
+Page  205: port UART2
+Page  205: CFG-MSGOUT-NMEA_ID_RLM_UART1 0x20910401 U1       -       -       Output rate of the NMEA-GX-RLM message on
+Page  205: port UART1
+Page  205: CFG-MSGOUT-NMEA_ID_RLM_UART2 0x20910402 U1       -       -       Output rate of the NMEA-GX-RLM message on
+Page  205: port UART2
+Page  205: CFG-MSGOUT-NMEA_ID_RMC_UART1 0x209100ac U1       -       -       Output rate of the NMEA-GX-RMC message on
+Page  205: port UART1
+Page  205: CFG-MSGOUT-NMEA_ID_RMC_UART2 0x209100ad U1       -       -       Output rate of the NMEA-GX-RMC message on
+Page  205: port UART2
+Page  205: CFG-MSGOUT-NMEA_ID_VLW_UART1 0x209100e8 U1       -       -       Output rate of the NMEA-GX-VLW message on
+Page  205: port UART1
+Page  206: CFG-MSGOUT-NMEA_ID_VLW_UART2 0x209100e9 U1         -       -       Output rate of the NMEA-GX-VLW message on
+Page  206: port UART2
+Page  206: CFG-MSGOUT-NMEA_ID_VTG_UART1 0x209100b1 U1         -       -       Output rate of the NMEA-GX-VTG message on
+Page  206: port UART1
+Page  206: CFG-MSGOUT-NMEA_ID_VTG_UART2 0x209100b2 U1         -       -       Output rate of the NMEA-GX-VTG message on
+Page  206: port UART2
+Page  206: CFG-MSGOUT-NMEA_ID_ZDA_UART1 0x209100d9 U1         -       -       Output rate of the NMEA-GX-ZDA message on
+Page  206: port UART1
+Page  206: CFG-MSGOUT-NMEA_ID_ZDA_UART2 0x209100da U1         -       -       Output rate of the NMEA-GX-ZDA message on
+Page  206: port UART2
+Page  206: UART1                                                              on port UART1
+Page  206: UART2                                                              on port UART2
+Page  206: UART1                                                              on port UART1
+Page  206: UART2                                                              on port UART2
+Page  206: UART1                                                              on port UART1
+Page  206: UART2                                                              on port UART2
+Page  207: UART1                                                              port UART1
+Page  207: UART2                                                              port UART2
+Page  207: UART1                                                              on port UART1
+Page  207: UART2                                                              on port UART2
+Page  207: UART1                                                              port UART1
+Page  207: UART2                                                              port UART2
+Page  207: UART1                                                              port UART1
+Page  207: UART2                                                              port UART2
+Page  207: CFG-MSGOUT-UBX_MON_HW_UART1 0x209101b5 U1          -       -       Output rate of the UBX-MON-HW message on
+Page  207: port UART1
+Page  207: CFG-MSGOUT-UBX_MON_HW_UART2 0x209101b6 U1          -       -       Output rate of the UBX-MON-HW message on
+Page  207: port UART2
+Page  208: CFG-MSGOUT-UBX_MON_IO_UART1   0x209101a6 U1       -       -       Output rate of the UBX-MON-IO message on
+Page  208: port UART1
+Page  208: CFG-MSGOUT-UBX_MON_IO_UART2   0x209101a7 U1       -       -       Output rate of the UBX-MON-IO message on
+Page  208: port UART2
+Page  208: UART1                                                             on port UART1
+Page  208: UART2                                                             on port UART2
+Page  208: CFG-MSGOUT-UBX_MON_RF_UART1 0x2091035a U1         -       -       Output rate of the UBX-MON-RF message on
+Page  208: port UART1
+Page  208: CFG-MSGOUT-UBX_MON_RF_UART2 0x2091035b U1         -       -       Output rate of the UBX-MON-RF message on
+Page  208: port UART2
+Page  208: UART1                                                             on port UART1
+Page  208: UART2                                                             on port UART2
+Page  208: UART1                                                             port UART1
+Page  208: UART2                                                             port UART2
+Page  209: UART1                                                             port UART1
+Page  209: UART2                                                             port UART2
+Page  209: UART1                                                             on port UART1
+Page  209: UART2                                                             on port UART2
+Page  209: AOPSTATUS_UART1                                                   message on port UART1
+Page  209: AOPSTATUS_UART2                                                   message on port UART2
+Page  209: UART1                                                             on port UART1
+Page  209: UART2                                                             on port UART2
+Page  209: UART1                                                             port UART1
+Page  209: UART2                                                             port UART2
+Page  210: UART1                                                             port UART1
+Page  210: UART2                                                             port UART2
+Page  210: CFG-MSGOUT-UBX_NAV_EOE_UART1 0x20910160 U1        -       -       Output rate of the UBX-NAV-EOE message on
+Page  210: port UART1
+Page  210: CFG-MSGOUT-UBX_NAV_EOE_UART2 0x20910161 U1        -       -       Output rate of the UBX-NAV-EOE message on
+Page  210: port UART2
+Page  210: UART1                                                             message on port UART1
+Page  210: UART2                                                             message on port UART2
+Page  210: UART1                                                             port UART1
+Page  210: UART2                                                             port UART2
+Page  210: UART1                                                             port UART1
+Page  210: UART2                                                             port UART2
+Page  210: UART1                                                             on port UART1
+Page  211: UART2                                                             on port UART2
+Page  211: UART1                                                             on port UART1
+Page  211: UART2                                                             on port UART2
+Page  211: CFG-MSGOUT-UBX_NAV_PVT_UART1 0x20910007 U1        -       -       Output rate of the UBX-NAV-PVT message on
+Page  211: port UART1
+Page  211: CFG-MSGOUT-UBX_NAV_PVT_UART2 0x20910008 U1        -       -       Output rate of the UBX-NAV-PVT message on
+Page  211: port UART2
+Page  211: CFG-MSGOUT-UBX_NAV_SAT_UART1 0x20910016 U1        -       -       Output rate of the UBX-NAV-SAT message on
+Page  211: port UART1
+Page  211: CFG-MSGOUT-UBX_NAV_SAT_UART2 0x20910017 U1        -       -       Output rate of the UBX-NAV-SAT message on
+Page  211: port UART2
+Page  211: UART1                                                             port UART1
+Page  211: UART2                                                             port UART2
+Page  211: CFG-MSGOUT-UBX_NAV_SIG_UART1 0x20910346 U1        -       -       Output rate of the UBX-NAV-SIG message on
+Page  211: port UART1
+Page  211: CFG-MSGOUT-UBX_NAV_SIG_UART2 0x20910347 U1        -       -       Output rate of the UBX-NAV-SIG message on
+Page  211: port UART2
+Page  212: UART1                                                             port UART1
+Page  212: UART2                                                             port UART2
+Page  212: UART1                                                             on port UART1
+Page  212: UART2                                                             on port UART2
+Page  212: UART1                                                             on port UART1
+Page  212: UART2                                                             on port UART2
+Page  212: UART1                                                             on port UART1
+Page  212: UART2                                                             on port UART2
+Page  212: UART1                                                             on port UART1
+Page  212: UART2                                                             on port UART2
+Page  213: UART1                                                             on port UART1
+Page  213: UART2                                                             on port UART2
+Page  213: UART1                                                             on port UART1
+Page  213: UART2                                                             on port UART2
+Page  213: UART1                                                             message on port UART1
+Page  213: UART2                                                             message on port UART2
+Page  213: UART1                                                             on port UART1
+Page  213: UART2                                                             on port UART2
+Page  213: UART1                                                             on port UART1
+Page  213: UART2                                                             on port UART2
+Page  214: UART1                                                             on port UART1
+Page  214: UART2                                                             on port UART2
+Page  214: UART1                                                             on port UART1
+Page  214: UART2                                                             on port UART2
+Page  214: UART1                                                             port UART1
+Page  214: UART2                                                             port UART2
+Page  214: UART1                                                             port UART1
+Page  214: UART2                                                             port UART2
+Page  214: UART1                                                             port UART1
+Page  214: UART2                                                             port UART2
+Page  215: UART1                                                                          on port UART1
+Page  215: UART2                                                                          on port UART2
+Page  215: CFG-MSGOUT-UBX_TIM_TM2_UART1 0x20910179 U1                    -          -     Output rate of the UBX-TIM-TM2 message on
+Page  215: port UART1
+Page  215: CFG-MSGOUT-UBX_TIM_TM2_UART2 0x2091017a U1                    -          -     Output rate of the UBX-TIM-TM2 message on
+Page  215: port UART2
+Page  215: CFG-MSGOUT-UBX_TIM_TP_UART1          0x2091017e U1            -          -     Output rate of the UBX-TIM-TP message on
+Page  215: port UART1
+Page  215: CFG-MSGOUT-UBX_TIM_TP_UART2          0x2091017f U1            -          -     Output rate of the UBX-TIM-TP message on
+Page  215: port UART2
+Page  215: UART1                                                                          port UART1
+Page  215: UART2                                                                          port UART2
+Page  231: 5.9.28 CFG-UART1: Conﬁguration of the UART1 interface
+Page  231: Settings needed to conﬁgure the UART1 communication interface.
+Page  231: CFG-UART1-BAUDRATE                      0x40520001 U4            -          -     The baud rate that should be conﬁgured on the
+Page  231: UART1
+Page  231: CFG-UART1-STOPBITS                      0x20520002 E1            -          -     Number of stopbits that should be used on
+Page  231: UART1
+Page  231: CFG-UART1-DATABITS                      0x20520003 E1            -          -     Number of databits that should be used on
+Page  231: UART1
+Page  231: CFG-UART1-PARITY                        0x20520004 E1            -          -     Parity mode that should be used on UART1
+Page  231: CFG-UART1-ENABLED                       0x10520005       L       -          -     Flag to indicate if the UART1 should be enabled
+Page  231: Table 56: CFG-UART1 conﬁguration items
+Page  231: Table 57: Constants for CFG-UART1-STOPBITS
+Page  231: Table 58: Constants for CFG-UART1-DATABITS
+Page  231: Table 59: Constants for CFG-UART1-PARITY
+Page  231: 5.9.29 CFG-UART1INPROT: Input protocol conﬁguration of the UART1 interface
+Page  231: Input protocol enable ﬂags of the UART1 interface.
+Page  231: CFG-UART1INPROT-UBX                     0x10730001       L       -          -     Flag to indicate if UBX should be an input
+Page  231: protocol on UART1
+Page  231: CFG-UART1INPROT-NMEA                    0x10730002       L       -          -     Flag to indicate if NMEA should be an input
+Page  231: protocol on UART1
+Page  232: CFG-UART1INPROT-RTCM3X               0x10730004       L       -          -     Flag to indicate if RTCM3X should be an input
+Page  232: protocol on UART1
+Page  232: Table 60: CFG-UART1INPROT conﬁguration items
+Page  232: 5.9.30 CFG-UART1OUTPROT: Output protocol conﬁguration of the UART1
+Page  232: Output protocol enable ﬂags of the UART1 interface.
+Page  232: CFG-UART1OUTPROT-UBX                 0x10740001       L       -          -     Flag to indicate if UBX should be an output
+Page  232: protocol on UART1
+Page  232: CFG-UART1OUTPROT-NMEA                0x10740002       L       -          -     Flag to indicate if NMEA should be an output
+Page  232: protocol on UART1
+Page  232: Table 61: CFG-UART1OUTPROT conﬁguration items
+Page  232: 5.9.31 CFG-UART2: Conﬁguration of the UART2 interface
+Page  232: Settings needed to conﬁgure the UART2 communication interface.
+Page  232: CFG-UART2-BAUDRATE                   0x40530001 U4            -          -     The baud rate that should be conﬁgured on the
+Page  232: UART2
+Page  232: CFG-UART2-STOPBITS                   0x20530002 E1            -          -     Number of stopbits that should be used on
+Page  232: UART2
+Page  232: CFG-UART2-DATABITS                   0x20530003 E1            -          -     Number of databits that should be used on
+Page  232: UART2
+Page  232: CFG-UART2-PARITY                     0x20530004 E1            -          -     Parity mode that should be used on UART2
+Page  232: CFG-UART2-ENABLED                    0x10530005       L       -          -     Flag to indicate if the UART2 should be enabled
+Page  232: Table 62: CFG-UART2 conﬁguration items
+Page  232: Table 63: Constants for CFG-UART2-STOPBITS
+Page  232: Table 64: Constants for CFG-UART2-DATABITS
+Page  233: Table 65: Constants for CFG-UART2-PARITY
+Page  233: 5.9.32 CFG-UART2INPROT: Input protocol conﬁguration of the UART2 interface
+Page  233: Input protocol enable ﬂags of the UART2 interface.
+Page  233: CFG-UART2INPROT-UBX             0x10750001      L       -       -       Flag to indicate if UBX should be an input
+Page  233: protocol on UART2
+Page  233: CFG-UART2INPROT-NMEA            0x10750002      L       -       -       Flag to indicate if NMEA should be an input
+Page  233: protocol on UART2
+Page  233: CFG-UART2INPROT-RTCM3X          0x10750004      L       -       -       Flag to indicate if RTCM3X should be an input
+Page  233: protocol on UART2
+Page  233: Table 66: CFG-UART2INPROT conﬁguration items
+Page  233: 5.9.33 CFG-UART2OUTPROT: Output protocol conﬁguration of the UART2
+Page  233: Output protocol enable ﬂags of the UART2 interface.
+Page  233: CFG-UART2OUTPROT-UBX            0x10760001      L       -       -       Flag to indicate if UBX should be an output
+Page  233: protocol on UART2
+Page  233: CFG-UART2OUTPROT-NMEA           0x10760002      L       -       -       Flag to indicate if NMEA should be an output
+Page  233: protocol on UART2
+Page  233: Table 67: CFG-UART2OUTPROT conﬁguration items
+Page  235: UBX-CFG-INF.infMsgMask                     CFG-INFMSG-UBX_I2C, CFG-INFMSG-UBX_UART1, CFG-
+Page  235: INFMSG-UBX_UART2, CFG-INFMSG-UBX_USB, CFG-
+Page  235: NMEA_UART1, CFG-INFMSG-NMEA_UART2, CFG-INFMSG-
+Page  235: UBX-CFG-INF.protocolID                     CFG-INFMSG-UBX_UART1, CFG-INFMSG-UBX_UART2, CFG-
+Page  235: NMEA_I2C, CFG-INFMSG-NMEA_UART1, CFG-INFMSG-
+Page  235: NMEA_UART2, CFG-INFMSG-NMEA_USB, CFG-INFMSG-
+Page  238: UBX-CFG-PRT.baudRate                        CFG-UART1-BAUDRATE, CFG-UART2-BAUDRATE
+Page  238: UBX-CFG-PRT.charLen                         CFG-UART1-DATABITS, CFG-UART2-DATABITS
+Page  238: UBX-CFG-PRT.inNmea                          CFG-UART1INPROT-NMEA, CFG-UART2INPROT-NMEA
+Page  238: UBX-CFG-PRT.inProtoMask                     CFG-UART1-ENABLED, CFG-UART2-ENABLED
+Page  238: UBX-CFG-PRT.inRtcm3                         CFG-UART1INPROT-RTCM3X, CFG-UART2INPROT-RTCM3X
+Page  238: UBX-CFG-PRT.inUbx                           CFG-UART1INPROT-UBX, CFG-UART2INPROT-UBX
+Page  238: UBX-CFG-PRT.nStopBits                       CFG-UART1-STOPBITS, CFG-UART2-STOPBITS
+Page  238: UBX-CFG-PRT.outNmea                         CFG-UART1OUTPROT-NMEA, CFG-UART2OUTPROT-NMEA
+Page  238: UBX-CFG-PRT.outProtoMask                    CFG-UART1-ENABLED, CFG-UART2-ENABLED
+Page  238: UBX-CFG-PRT.outUbx                          CFG-UART1OUTPROT-UBX, CFG-UART2OUTPROT-UBX
+Page  238: UBX-CFG-PRT.parity                          CFG-UART1-PARITY, CFG-UART2-PARITY
+Page  241: CFG-INFMSG-UBX_UART1                                 0x20920002 X1          -      -              0x00
+Page  241: CFG-INFMSG-UBX_UART2                                 0x20920003 X1          -      -              0x00
+Page  241: CFG-INFMSG-NMEA_UART1                                0x20920007 X1          -      -         0x07 (ERROR |
+Page  242: CFG-INFMSG-NMEA_UART2                                0x20920008 X1          -      -         0x07 (ERROR |
+Page  242: CFG-MSGOUT-NMEA_ID_DTM_UART1                         0x209100a7 U1          -      -               0
+Page  242: CFG-MSGOUT-NMEA_ID_DTM_UART2                         0x209100a8 U1          -      -               0
+Page  242: CFG-MSGOUT-NMEA_ID_GBS_UART1                         0x209100de U1          -      -               0
+Page  242: CFG-MSGOUT-NMEA_ID_GBS_UART2                         0x209100df U1          -      -               0
+Page  242: CFG-MSGOUT-NMEA_ID_GGA_UART1                         0x209100bb U1          -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GGA_UART2        0x209100bc U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GLL_UART1        0x209100ca U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GLL_UART2        0x209100cb U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GNS_UART1        0x209100b6 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GNS_UART2        0x209100b7 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GRS_UART1        0x209100cf U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GRS_UART2        0x209100d0 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GSA_UART1        0x209100c0 U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GSA_UART2        0x209100c1 U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GST_UART1        0x209100d4 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GST_UART2        0x209100d5 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GSV_UART1        0x209100c5 U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GSV_UART2        0x209100c6 U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_RLM_UART1        0x20910401 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_RLM_UART2        0x20910402 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_RMC_UART1        0x209100ac U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_RMC_UART2        0x209100ad U1         -      -               1
+Page  244: CFG-MSGOUT-NMEA_ID_VLW_UART1          0x209100e8 U1         -      -               0
+Page  244: CFG-MSGOUT-NMEA_ID_VLW_UART2          0x209100e9 U1         -      -               0
+Page  244: CFG-MSGOUT-NMEA_ID_VTG_UART1          0x209100b1 U1         -      -               1
+Page  244: CFG-MSGOUT-NMEA_ID_VTG_UART2          0x209100b2 U1         -      -               1
+Page  244: CFG-MSGOUT-NMEA_ID_ZDA_UART1          0x209100d9 U1         -      -               0
+Page  244: CFG-MSGOUT-NMEA_ID_ZDA_UART2          0x209100da U1         -      -               0
+Page  244: CFG-MSGOUT-PUBX_ID_POLYP_UART1        0x209100ed U1         -      -               0
+Page  244: CFG-MSGOUT-PUBX_ID_POLYP_UART2        0x209100ee U1         -      -               0
+Page  244: CFG-MSGOUT-PUBX_ID_POLYS_UART1        0x209100f2 U1         -      -               0
+Page  244: CFG-MSGOUT-PUBX_ID_POLYS_UART2        0x209100f3 U1         -      -               0
+Page  244: CFG-MSGOUT-PUBX_ID_POLYT_UART1        0x209100f7 U1         -      -               0
+Page  244: CFG-MSGOUT-PUBX_ID_POLYT_UART2        0x209100f8 U1         -      -               0
+Page  244: CFG-MSGOUT-UBX_LOG_INFO_UART1         0x2091025a U1         -      -               0
+Page  244: CFG-MSGOUT-UBX_LOG_INFO_UART2         0x2091025b U1         -      -               0
+Page  244: CFG-MSGOUT-UBX_MON_COMMS_UART1        0x20910350 U1         -      -               0
+Page  244: CFG-MSGOUT-UBX_MON_COMMS_UART2        0x20910351 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW2_UART1          0x209101ba U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW2_UART2          0x209101bb U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW3_UART1          0x20910355 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW3_UART2          0x20910356 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW_UART1           0x209101b5 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW_UART2           0x209101b6 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_IO_UART1           0x209101a6 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_IO_UART2           0x209101a7 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_MSGPP_UART1        0x20910197 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_MSGPP_UART2        0x20910198 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RF_UART1           0x2091035a U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RF_UART2           0x2091035b U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RXBUF_UART1        0x209101a1 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RXBUF_UART2        0x209101a2 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RXR_UART1          0x20910188 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RXR_UART2          0x20910189 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_MON_SPAN_UART1             0x2091038c U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_MON_SPAN_UART2             0x2091038d U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_MON_TXBUF_UART1            0x2091019c U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_MON_TXBUF_UART2            0x2091019d U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_AOPSTATUS_UART1        0x2091007a U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_AOPSTATUS_UART2        0x2091007b U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_CLOCK_UART1            0x20910066 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_CLOCK_UART2            0x20910067 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_COV_UART1              0x20910084 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_COV_UART2              0x20910085 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_DOP_UART1              0x20910039 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_DOP_UART2              0x2091003a U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_EOE_UART1              0x20910160 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_EOE_UART2              0x20910161 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_GEOFENCE_UART1         0x209100a2 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_GEOFENCE_UART2         0x209100a3 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_ODO_UART1            0x2091007f U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_ODO_UART2            0x20910080 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_ORB_UART1            0x20910011 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_ORB_UART2            0x20910012 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_POSECEF_UART1        0x20910025 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_POSECEF_UART2        0x20910026 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_POSLLH_UART1         0x2091002a U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_POSLLH_UART2         0x2091002b U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_PVT_UART1            0x20910007 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_PVT_UART2            0x20910008 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SAT_UART1            0x20910016 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SAT_UART2            0x20910017 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SBAS_UART1           0x2091006b U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SBAS_UART2           0x2091006c U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SIG_UART1            0x20910346 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SIG_UART2            0x20910347 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SLAS_UART1           0x20910337 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_SLAS_UART2            0x20910338 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_STATUS_UART1          0x2091001b U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_STATUS_UART2          0x2091001c U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEBDS_UART1         0x20910052 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEBDS_UART2         0x20910053 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGAL_UART1         0x20910057 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGAL_UART2         0x20910058 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGLO_UART1         0x2091004d U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGLO_UART2         0x2091004e U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGPS_UART1         0x20910048 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGPS_UART2         0x20910049 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMELS_UART1          0x20910061 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMELS_UART2          0x20910062 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEQZSS_UART1        0x20910387 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEQZSS_UART2        0x20910388 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEUTC_UART1         0x2091005c U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEUTC_UART2         0x2091005d U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_NAV_VELECEF_UART1        0x2091003e U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_NAV_VELECEF_UART2        0x2091003f U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_NAV_VELNED_UART1         0x20910043 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_NAV_VELNED_UART2         0x20910044 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_MEASX_UART1          0x20910205 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_MEASX_UART2          0x20910206 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RAWX_UART1           0x209102a5 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RAWX_UART2           0x209102a6 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RLM_UART1            0x2091025f U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RLM_UART2            0x20910260 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RTCM_UART1           0x20910269 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RTCM_UART2           0x2091026a U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_SFRBX_UART1          0x20910232 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_SFRBX_UART2          0x20910233 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_TIM_TM2_UART1            0x20910179 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_TIM_TM2_UART2            0x2091017a U1         -      -               0
+Page  250: CFG-MSGOUT-UBX_TIM_TP_UART1                       0x2091017e U1          -       -                0
+Page  250: CFG-MSGOUT-UBX_TIM_TP_UART2                       0x2091017f U1          -       -                0
+Page  250: CFG-MSGOUT-UBX_TIM_VRFY_UART1                     0x20910093 U1          -       -                0
+Page  250: CFG-MSGOUT-UBX_TIM_VRFY_UART2                     0x20910094 U1          -       -                0
+Page  254: CFG-UART1-BAUDRATE                                 0x40520001 U4          -      -             38400
+Page  254: CFG-UART1-STOPBITS                                 0x20520002 E1          -      -            1 (ONE)
+Page  255: CFG-UART1-DATABITS                                 0x20520003 E1          -      -           0 (EIGHT)
+Page  255: CFG-UART1-PARITY                                   0x20520004 E1          -      -           0 (NONE)
+Page  255: CFG-UART1-ENABLED                                  0x10520005    L        -      -            1 (true)
+Page  255: Table 99: CFG-UART1 conﬁguration defaults
+Page  255: CFG-UART1INPROT-UBX                                0x10730001    L        -      -            1 (true)
+Page  255: CFG-UART1INPROT-NMEA                               0x10730002    L        -      -            1 (true)
+Page  255: CFG-UART1INPROT-RTCM3X                             0x10730004    L        -      -            1 (true)
+Page  255: Table 100: CFG-UART1INPROT conﬁguration defaults
+Page  255: CFG-UART1OUTPROT-UBX                               0x10740001    L        -      -            1 (true)
+Page  255: CFG-UART1OUTPROT-NMEA                              0x10740002    L        -      -            1 (true)
+Page  255: Table 101: CFG-UART1OUTPROT conﬁguration defaults
+Page  255: CFG-UART2-BAUDRATE                                 0x40530001 U4          -      -             38400
+Page  255: CFG-UART2-STOPBITS                                 0x20530002 E1          -      -            1 (ONE)
+Page  255: CFG-UART2-DATABITS                                 0x20530003 E1          -      -           0 (EIGHT)
+Page  255: CFG-UART2-PARITY                                   0x20530004 E1          -      -           0 (NONE)
+Page  255: CFG-UART2-ENABLED                                  0x10530005    L        -      -            1 (true)
+Page  255: Table 102: CFG-UART2 conﬁguration defaults
+Page  255: CFG-UART2INPROT-UBX                                0x10750001    L        -      -            1 (true)
+Page  255: CFG-UART2INPROT-NMEA                               0x10750002    L        -      -            1 (true)
+Page  255: CFG-UART2INPROT-RTCM3X                             0x10750004    L        -      -            1 (true)
+Page  255: Table 103: CFG-UART2INPROT conﬁguration defaults
+Page  255: CFG-UART2OUTPROT-UBX                               0x10760001    L        -      -            0 (false)
+Page  255: CFG-UART2OUTPROT-NMEA                              0x10760002    L        -      -            0 (false)
+Page  255: Table 104: CFG-UART2OUTPROT conﬁguration defaults

@@ -1,0 +1,345 @@
+#!/usr/bin/env python3
+"""
+PDF Indexer for STM32H7 Reference Manual
+
+This script provides tools to:
+1. Extract specific page ranges
+2. Search for keywords across the reference manual
+3. Build a searchable index
+4. Extract sections relevant to flight controller development
+
+Usage:
+    # Search for a term
+    ./pdf_indexer.py search "DMA"
+
+    # Extract pages to text
+    ./pdf_indexer.py extract 100 150 --output extracted/timers.txt
+
+    # Build keyword index for microcontroller-relevant terms
+    ./pdf_indexer.py build-index
+
+    # Find all occurrences of a term with context
+    ./pdf_indexer.py find "SPI" --context 2
+"""
+
+import argparse
+import subprocess
+import sys
+from pathlib import Path
+from typing import List, Tuple
+
+# PDF file location (relative to this script)
+PDF_FILE = Path(__file__).parent.parent / "STM32Ref.pdf"
+
+# Flight controller and microcontroller-relevant keywords to index
+MCU_KEYWORDS = [
+    # Core and architecture
+    "Cortex-M7",
+    "FPU",
+    "floating point",
+    "MPU",
+    "memory protection",
+    "instruction cache",
+    "data cache",
+    "ITCM",
+    "DTCM",
+    "AXI",
+    "AHB",
+    "APB",
+
+    # Memory
+    "flash memory",
+    "SRAM",
+    "backup SRAM",
+    "EEPROM",
+    "external memory",
+    "QSPI",
+    "SDRAM",
+    "memory controller",
+    "FMC",
+
+    # DMA
+    "DMA",
+    "MDMA",
+    "direct memory access",
+    "DMA channel",
+    "DMA request",
+    "DMA stream",
+
+    # Timers
+    "timer",
+    "PWM",
+    "pulse width",
+    "input capture",
+    "output compare",
+    "quadrature encoder",
+    "motor control timer",
+    "general purpose timer",
+    "watchdog",
+    "IWDG",
+    "WWDG",
+
+    # Communication peripherals
+    "SPI",
+    "I2C",
+    "UART",
+    "USART",
+    "CAN",
+    "CAN FD",
+    "USB",
+    "USB OTG",
+    "Ethernet",
+    "SDIO",
+    "MMC",
+
+    # Analog
+    "ADC",
+    "DAC",
+    "analog to digital",
+    "digital to analog",
+    "comparator",
+    "operational amplifier",
+    "voltage reference",
+    "VREF",
+
+    # Interrupts and NVIC
+    "interrupt",
+    "NVIC",
+    "interrupt priority",
+    "exception",
+    "IRQ",
+
+    # Clock and power
+    "clock",
+    "PLL",
+    "HSE",
+    "HSI",
+    "LSE",
+    "LSI",
+    "oscillator",
+    "RCC",
+    "reset",
+    "power domain",
+    "voltage scaling",
+    "low power mode",
+    "stop mode",
+    "standby mode",
+    "sleep mode",
+
+    # GPIO
+    "GPIO",
+    "pin",
+    "alternate function",
+    "pull-up",
+    "pull-down",
+    "open drain",
+    "push-pull",
+
+    # Special features
+    "EXTI",
+    "external interrupt",
+    "RTC",
+    "real-time clock",
+    "CRC",
+    "random number",
+    "RNG",
+    "true random",
+
+    # Debug
+    "debug",
+    "SWD",
+    "JTAG",
+    "trace",
+    "breakpoint",
+
+    # Flight controller specific
+    "gyroscope",
+    "accelerometer",
+    "magnetometer",
+    "barometer",
+    "sensor",
+    "IMU",
+]
+
+
+def extract_pages(start: int, end: int, output_file: str = None, layout: bool = True) -> str:
+    """Extract text from specific page range using pdftotext."""
+    if not PDF_FILE.exists():
+        print(f"Error: PDF not found at {PDF_FILE}", file=sys.stderr)
+        sys.exit(1)
+
+    cmd = ["pdftotext"]
+    if layout:
+        cmd.append("-layout")
+    cmd.extend(["-f", str(start), "-l", str(end), str(PDF_FILE)])
+
+    if output_file:
+        cmd.append(output_file)
+        subprocess.run(cmd, check=True)
+        print(f"Extracted pages {start}-{end} to {output_file}")
+        return None
+    else:
+        # Use temp file for stdout (sandbox-compatible)
+        import tempfile
+        with tempfile.NamedTemporaryFile(mode='w+', delete=False, suffix='.txt') as tmp:
+            tmp_path = tmp.name
+
+        try:
+            cmd.append(tmp_path)
+            subprocess.run(cmd, check=True)
+
+            with open(tmp_path, 'r') as f:
+                return f.read()
+        finally:
+            Path(tmp_path).unlink(missing_ok=True)
+
+
+def search_term(term: str, case_sensitive: bool = False) -> List[Tuple[int, str]]:
+    """Search for a term in the PDF and return (page_num, line) tuples."""
+    if not PDF_FILE.exists():
+        print(f"Error: PDF not found at {PDF_FILE}", file=sys.stderr)
+        sys.exit(1)
+
+    cmd = ["pdfgrep", "-n"]
+    if not case_sensitive:
+        cmd.append("-i")
+    cmd.extend([term, str(PDF_FILE)])
+
+    # Use temp file for output (sandbox-compatible)
+    import tempfile
+    with tempfile.NamedTemporaryFile(mode='w+', delete=False, suffix='.txt') as tmp:
+        tmp_path = tmp.name
+
+    try:
+        with open(tmp_path, 'w') as f:
+            result = subprocess.run(cmd, stdout=f)
+
+        matches = []
+        if result.returncode == 0:
+            with open(tmp_path, 'r') as f:
+                for line in f:
+                    line = line.strip()
+                    if ":" in line:
+                        page_str, content = line.split(":", 1)
+                        try:
+                            page_num = int(page_str)
+                            matches.append((page_num, content.strip()))
+                        except ValueError:
+                            continue
+
+        return matches
+    finally:
+        Path(tmp_path).unlink(missing_ok=True)
+
+
+def build_keyword_index(output_dir: str = "search-index"):
+    """Build search index for all microcontroller-relevant keywords."""
+    output_path = Path(__file__).parent / output_dir
+    output_path.mkdir(exist_ok=True)
+
+    print(f"Building keyword index for {len(MCU_KEYWORDS)} terms...")
+
+    for keyword in MCU_KEYWORDS:
+        safe_name = keyword.replace(" ", "-").replace("/", "-")
+        output_file = output_path / f"{safe_name}.txt"
+
+        matches = search_term(keyword, case_sensitive=False)
+
+        with open(output_file, "w") as f:
+            f.write(f"Keyword: {keyword}\n")
+            f.write(f"Occurrences: {len(matches)}\n")
+            f.write("=" * 80 + "\n\n")
+
+            for page, line in matches:
+                f.write(f"Page {page:4d}: {line}\n")
+
+        print(f"  {keyword:30s} - {len(matches):3d} occurrences -> {output_file.name}")
+
+    print(f"\nIndex built in {output_path}/")
+
+
+def find_with_context(term: str, context_lines: int = 2):
+    """Find term and show surrounding context by extracting relevant pages."""
+    matches = search_term(term, case_sensitive=False)
+
+    if not matches:
+        print(f"No matches found for '{term}'")
+        return
+
+    print(f"Found {len(matches)} occurrences of '{term}':\n")
+
+    # Group matches by page to avoid redundant extractions
+    pages_with_matches = set(page for page, _ in matches)
+
+    for page in sorted(pages_with_matches)[:5]:  # Limit to first 5 pages
+        print(f"\n{'=' * 80}")
+        print(f"PAGE {page}")
+        print('=' * 80)
+
+        # Extract single page with context
+        start_page = max(1, page - context_lines)
+        end_page = page + context_lines  # Reference manual can be 3000+ pages
+
+        text = extract_pages(start_page, end_page, output_file=None, layout=True)
+        print(text)
+
+        if len(pages_with_matches) > 5:
+            print(f"\n... (showing first 5 of {len(pages_with_matches)} pages)")
+            break
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Index and search the STM32H7 reference manual",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=__doc__
+    )
+
+    subparsers = parser.add_subparsers(dest="command", help="Command to run")
+
+    # Extract command
+    extract_parser = subparsers.add_parser("extract", help="Extract page range to text")
+    extract_parser.add_argument("start_page", type=int, help="First page to extract")
+    extract_parser.add_argument("end_page", type=int, help="Last page to extract")
+    extract_parser.add_argument("--output", "-o", help="Output file (default: stdout)")
+    extract_parser.add_argument("--no-layout", action="store_true", help="Don't preserve layout")
+
+    # Search command
+    search_parser = subparsers.add_parser("search", help="Search for a term")
+    search_parser.add_argument("term", help="Term to search for")
+    search_parser.add_argument("--case-sensitive", "-c", action="store_true")
+
+    # Find with context
+    find_parser = subparsers.add_parser("find", help="Find term with surrounding context")
+    find_parser.add_argument("term", help="Term to find")
+    find_parser.add_argument("--context", "-C", type=int, default=0,
+                            help="Number of pages of context (default: 0)")
+
+    # Build index
+    subparsers.add_parser("build-index", help="Build keyword index for microcontroller terms")
+
+    args = parser.parse_args()
+
+    if args.command == "extract":
+        result = extract_pages(args.start_page, args.end_page, args.output, layout=not args.no_layout)
+        if result:
+            print(result, end='')
+
+    elif args.command == "search":
+        matches = search_term(args.term, args.case_sensitive)
+        print(f"Found {len(matches)} occurrences:\n")
+        for page, line in matches:
+            print(f"Page {page:4d}: {line}")
+
+    elif args.command == "find":
+        find_with_context(args.term, args.context)
+
+    elif args.command == "build-index":
+        build_keyword_index()
+
+    else:
+        parser.print_help()
+
+
+if __name__ == "__main__":
+    main()

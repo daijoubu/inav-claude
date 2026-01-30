@@ -1,0 +1,109 @@
+Keyword: RCC
+Occurrences: 105
+================================================================================
+
+Page 57: RCC                   HSI enabled     The system clock frequency is 24 MHz (no PLL)
+Page 59: RCC                   HSI enabled    The system clock frequency is 24 MHz (no PLL)
+Page 61: RCC                  HSI enabled
+Page 66: RCC                                   The clock recovery system (CRS) is enabled for the DFU
+Page 70: RCC                   HSI enabled
+Page 75: RCC                   HSI enabled
+Page 77: RCC                   HSI enabled
+Page 79: RCC                   HSI enabled     PLL clocked by HSI).
+Page 80: to 0 (in HSITRIM bits on RCC_CR register)
+Page 81: RCC
+Page 84: Initial       – At bootloader startup, the HSITRIM value is set to 0 (in HSITRIM bits on RCC_CR
+Page 85: RCC                              and must have one of the following values: 24, 18, 16, 12,
+Page 88: version        RCC_CR register) instead of default value (16), as a consequence a deviation
+Page 89: RCC                   HSE enabled
+Page 92: version            RCC_CR register) instead of default value (16), as a consequence a deviation
+Page 93: RCC
+Page 96: – At bootloader startup, the HSITRIM value is set to (0) (in HSITRIM bits on RCC_CR
+Page 97: RCC                  HSI enabled
+Page 98: on RCC_CR register instead of default value (16). As a consequence,
+Page 99: RCC                  HSI enabled          The system clock frequency is 24 MHz using the PLL.
+Page 102: RCC                                        frequencies: 8 MHz, 14.7456 MHz or 25 MHz.
+Page 108: RCC                   HSI enabled
+Page 110: RCC                  HSI enabled The system clock frequency is 24 MHz.
+Page 113: RCC                              The HSE clock source is used only when the CAN or the
+Page 117: RCC                  HSE enabled       24,18,16,12,9,8,6,4,3 MHz.
+Page 121: RCC
+Page 124: RCC                  HSE enabled 16, 12, 9, 8, 6, 4, 3 MHz.
+Page 128: RCC                   HSI enabled
+Page 130: RCC                   HSI enabled
+Page 133: RCC                   HSI enabled       The system clock frequency is 8 MHz using the HSI.
+Page 135: RCC
+Page 139: RCC                   HSI enabled       The system clock frequency is 8 MHz using the HSI.
+Page 141: RCC                  HSI enabled
+Page 144: RCC                                   The HSE clock source is used only when the CAN or
+Page 148: RCC                              The HSE clock source is used only when the CAN or the
+Page 153: RCC                               The HSE clock source is used only when the DFU (USB FS
+Page 158: RCC
+Page 163: RCC                  HSI enabled configured to 60 MHz and for USART and I2C bootloader
+Page 168: RCC
+Page 173: RCC                  HSE enabled is configured to 60 MHz with HSE as clock source. The HSE
+Page 179: RCC                   HSE enabled clock configured to 60 MHz with HSE as clock source.
+Page 185: RCC                                    The HSE clock source is used only when the
+Page 191: RCC
+Page 198: RCC
+Page 204: RCC
+Page 211: RCC                    HSE enabled              clock configured to 60 MHz with HSE
+Page 217: RCC                  HSE enabled    clock configured to 60 MHz with HSE as clock source.
+Page 221: RCC                              The HSE frequency must be multiple of 1 MHz and
+Page 227: RCC                               configured to 60 MHz with HSE as clock source.
+Page 234: RCC                   HSI enabled
+Page 237: RCC                   HSI enabled
+Page 241: – RCC register RCC_ICSCR is not set to its default
+Page 241: V11.2                                       – RCC registers are not set to their default value
+Page 243: RCC                                 The external clock can be used for all bootloader
+Page 248: RCC                                 CRS is enabled for the DFU to allow USB to be clocked
+Page 253: RCC                   HSI enabled
+Page 257: RCC
+Page 262: RCC
+Page 268: RCC
+Page 273: RCC                                  CRS is enabled for the DFU to allow USB to be
+Page 279: RCC                                   CRS is enabled for the DFU to allow USB to be
+Page 286: RCC                                 CRS is enabled for the DFU to allow USB to be clocked by
+Page 292: RCC                                 CRS is enabled for the DFU to allow USB to be clocked by
+Page 298: RCC
+Page 306: RCC                               by HSI48 48 MHz
+Page 313: RCC                            -        20 MHz derived from the PLLQ is used for FDCAN.
+Page 319: The following fields cannot be modified when FMCCKP bit from RCC_CKPROT register is
+Page 319: The following fields cannot be modified when xSPICKP bit from RCC_CKPROTR register is
+Page 320: RCC                   HSI enabled
+Page 324: RCC                   HSI enabled
+Page 327: RCC                  HSI enabled
+Page 330: RCC                  HSI enabled
+Page 335: RCC                  HSI enabled
+Page 339: RCC                  HSI enabled     The system clock frequency is 16 MHz.
+Page 341: RCC                   HSI enabled         The system clock frequency is 16 MHz.
+Page 343: RCC                                     [24, 16, 12, 8, 6, 4, 3, 2] MHz.
+Page 347: RCC                                     [24, 16, 12, 8, 6, 4, 3, 2] MHz.
+Page 351: RCC                                     [24, 16, 12, 8, 6, 4, 3, 2] MHz.
+Page 355: RCC                                      USB bootloader operation.
+Page 361: RCC                                   The HSE is used only when the CAN interface is
+Page 367: RTCAPBEN bit in the RCC_APB1ENR register
+Page 367: Workaround: manually call __HAL_RCC_RTC_CLK_ENABLE() in the
+Page 369: RCC                              The system clock frequency is 60 MHz.
+Page 376: RCC                  LSE enabled
+Page 382: RCC
+Page 388: RCC                              The HSE is used only when the CAN interface is selected.
+Page 395: RCC                              The HSE is used only when the CAN interface is selected.
+Page 402: RCC                                    The HSE is used only when the CAN interface is selected.
+Page 409: RCC                                CRS is enabled for the DFU to allow USB to be clocked by HSI
+Page 415: RCC                  MSI enabled
+Page 419: RCC
+Page 424: RCC                   HSI enabled
+Page 428: RCC
+Page 432: RCC                  HSI enabled       The system clock frequency is 16 MHz using HSI
+Page 434: RCC                  HSI enabled       The system clock frequency is 16 MHz using HSI
+Page 436: RCC                  HSI enabled       The system clock frequency is 16 MHz using HSI
+Page 438: RCC                  HSI enabled       The system clock frequency is 16 MHz using HSI
+Page 440: RCC                  HSI enabled
+Page 443: RCC
+Page 448: RCC
+Page 453: RCC                           -
+Page 460: RCC                                     CRS is enabled for the DFU so that USB can be clocked by
+Page 466: RCC                                   CRS is enabled for the DFU so that USB can be clocked by
+Page 472: RCC                              When USB cable is detected, SW tries to detect if a quartz is
+Page 477: RCC                              When USB cable is detected, SW tries to detect if a quartz is

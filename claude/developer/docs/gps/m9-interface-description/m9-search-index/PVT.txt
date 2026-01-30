@@ -1,0 +1,42 @@
+Keyword: PVT
+Occurrences: 38
+================================================================================
+
+Page    9: 3.15.11 UBX-NAV-PVT (0x01 0x07)................................................................................................ 141
+Page   16: name (e.g. PVT). For example the receiver software version information message is referred to as
+Page   20: Periodic/polled              Messages that are output in regular intervals and can be polled. E.g. UBX-NAV-PVT.
+Page   38: Example           $GPVTG,77.52,T,,M,0.004,N,0.008,K,A*06\r\n
+Page   38: 0          xxVTG              string        -           $GPVTG           VTG Message ID (xx = current Talker ID, see NMEA
+Page   46: are valid. For example the UBX-NAV-PVT message has the validDate and validTime ﬁelds that
+Page   53: UBX-NAV-PVT              0x01 0x07    •   Navigation position velocity time solution (Periodic/polled)
+Page   55: bit 2   U:1       extraPvt              -            -           Store extra PVT information
+Page   93: EXTRAPVT and EXTRAODO some of the ﬁelds in this message may not be valid. This validity information is
+Page   93: indicated in this message via the ﬂags extraPvt and extraOdo.
+Page   93: bit 0   U:1       extraPvt                -           -            Extra PVT information is valid
+Page   94: Only valid if extraPvt is set.
+Page   94: Only valid if extraPvt is set.
+Page   94: Only valid if extraPvt is set.
+Page   95: Only valid if extraPvt is set.
+Page   95: Only valid if extraPvt is set.
+Page   95: Only valid if extraPvt is set.
+Page   95: Only valid if extraPvt is set.
+Page   95: Only valid if extraPvt is set.
+Page   95: Only valid if extraPvt is set.
+Page   95: Only valid if extraPvt is set.
+Page   95: Only valid if extraPvt is set.
+Page  141: 3.15.11 UBX-NAV-PVT (0x01 0x07)
+Page  141: Message             UBX-NAV-PVT
+Page  197: CFG-BATCH-EXTRAPVT                   0x1026001a      L         -      -     Include extra PVT data
+Page  198: Include additional PVT information in UBX-LOG-BATCH messages. If not selected only basic information is included.
+Page  211: CFG-MSGOUT-UBX_NAV_PVT_I2C    0x20910006 U1       -       -       Output rate of the UBX-NAV-PVT message on
+Page  211: CFG-MSGOUT-UBX_NAV_PVT_SPI    0x2091000a U1       -       -       Output rate of the UBX-NAV-PVT message on
+Page  211: CFG-MSGOUT-UBX_NAV_PVT_UART1 0x20910007 U1        -       -       Output rate of the UBX-NAV-PVT message on
+Page  211: CFG-MSGOUT-UBX_NAV_PVT_UART2 0x20910008 U1        -       -       Output rate of the UBX-NAV-PVT message on
+Page  211: CFG-MSGOUT-UBX_NAV_PVT_USB    0x20910009 U1       -       -       Output rate of the UBX-NAV-PVT message on
+Page  234: UBX-CFG-BATCH.extraPvt                                      CFG-BATCH-EXTRAPVT
+Page  240: CFG-BATCH-EXTRAPVT                                  0x1026001a    L        -      -            0 (false)
+Page  247: CFG-MSGOUT-UBX_NAV_PVT_I2C              0x20910006 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_PVT_SPI              0x2091000a U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_PVT_UART1            0x20910007 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_PVT_UART2            0x20910008 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_PVT_USB              0x20910009 U1         -      -               0

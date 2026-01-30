@@ -1,0 +1,520 @@
+Keyword: flash memory
+Occurrences: 516
+================================================================================
+
+Page    2: 2.5     Flash memory overview . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 131
+Page    2: 3          Embedded Flash memory (FLASH) . . . . . . . . . . . . . . . . . . . . . . . . . . . 133
+Page    3: 3.3.4      Flash memory architecture and usage . . . . . . . . . . . . . . . . . . . . . . . . 137
+Page    3: 3.3.12     Flash memory error protections . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 152
+Page   20: 21.6.2      NAND Flash memory address mapping . . . . . . . . . . . . . . . . . . . . . . . 783
+Page   21: in NAND Flash memory . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 832
+Page   21: 22.3.9      QUADSPI Flash memory configuration . . . . . . . . . . . . . . . . . . . . . . . . 869
+Page   68: Table 10.   Flash memory organization on STM32H750xB devices . . . . . . . . . . . . . . . . . . . . . . . . . . 138
+Page   68: Table 11.   Flash memory organization on STM32H743/753 devices . . . . . . . . . . . . . . . . . . . . . . . . 138
+Page   68: Table 21.   Effect of low-power modes on the embedded Flash memory. . . . . . . . . . . . . . . . . . . . . . 174
+Page   71: Table 158.   Non-multiplexed I/O NOR Flash memory . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 789
+Page   71: Table 159.   16-bit multiplexed I/O NOR Flash memory . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 789
+Page   71: Table 184.   8-bit NAND Flash memory . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 827
+Page   71: Table 185.   16-bit NAND Flash memory . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 828
+Page   80: Figure 5.    Embedded Flash memory organization . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 137
+Page   80: Figure 6.    Embedded Flash memory usage . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 139
+Page   80: Figure 13.   Flash memory areas and services in Standard and Secure access modes . . . . . . . . . . . 232
+Page   80: Figure 16.   Core access to Flash memory areas . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 238
+Page   98: •      IAP (in-application programming): IAP is the ability to re-program the Flash memory
+Page   98: •      ICP (in-circuit programming): ICP is the ability to program the Flash memory of a
+Page   98: •      Option bytes: product configuration bits stored in the Flash memory.
+Page   98: Embedded Flash memory (FLASH):
+Page  100: Flash memory bank 2 is not available on STM32H750xB devices.                                    D1-to-D3 AHB bus
+Page  104: for the SRAM, DTCM, ITCM and Flash memory). To operate a block with no clock upon
+Page  124: FMC NAND Flash memory                                  attribute
+Page  125: Flash memory bank 2                  Normal                 No
+Page  125: Flash memory bank 1
+Page  131: 2.5      Flash memory overview
+Page  131: The Flash memory interface manages CPU AXI accesses to the Flash memory. It
+Page  131: implements the erase and program Flash memory operations and the read and write
+Page  131: The Flash memory is organized as follows:
+Page  131: Refer to Section 3: Embedded Flash memory (FLASH) for more details.
+Page  131: Flash memory at 0x0800 0000
+Page  132: When the Flash level 2 protection is enabled, only boot from Flash memory is available. If
+Page  132: forced from Flash memory at address 0x0800 0000 .
+Page  132: during production. It is used to reprogram the Flash memory using one of the following serial
+Page  133: RM0433                                                         Embedded Flash memory (FLASH)
+Page  133: 3        Embedded Flash memory (FLASH)
+Page  133: The embedded Flash memory (FLASH) manages the accesses of any master to the
+Page  133: The embedded Flash memory manages the automatic loading of non-volatile user option
+Page  133: •   Flash memory read operations supporting multiple length (64 bits, 32bits, 16bits or one
+Page  133: •   Flash memory programming by 256 bits
+Page  133: –    Bank swapping: the address mapping of the user Flash memory of each bank can
+Page  133: •   Flash memory enhanced protections, activated by option bytes
+Page  133: –    Read protection (RDP), preventing unauthorized Flash memory dump to
+Page  134: Embedded Flash memory (FLASH)                                                                                   RM0433
+Page  134: Figure 3 shows the embedded Flash memory block diagram.
+Page  135: RM0433                                                          Embedded Flash memory (FLASH)
+Page  135: D1 domain bus clock (embedded Flash memory AXI
+Page  135: flash_it              Output      Embedded Flash memory interface interrupt request
+Page  135: The embedded Flash memory is a central resource for the whole microcontroller. It serves
+Page  135: specific way. The embedded Flash memory also proposes a set of security features to
+Page  135: The embedded Flash memory offers two 64-bit AXI slave ports for code and data accesses,
+Page  135: The embedded Flash memory microarchitecture is shown in Figure 4.
+Page  136: Embedded Flash memory (FLASH)                                                                                                                                    RM0433
+Page  136: Behind the system interfaces, the embedded Flash memory implements various command
+Page  136: The embedded Flash memory is built in such a way that only one read or write operation
+Page  137: RM0433                                                                         Embedded Flash memory (FLASH)
+Page  137: 3.3.4          Flash memory architecture and usage
+Page  137: Flash memory architecture
+Page  137: Figure 5. Embedded Flash memory organization
+Page  137: •      For STM32H750xB devices: a 128-Kbyte user Flash memory block containing one
+Page  137: •      A set of non-volatile option bytes loaded at reset by the embedded Flash memory and
+Page  137: The overall Flash memory architecture is summarized in Table 10 and Table 11.
+Page  138: Embedded Flash memory (FLASH)                                                                                    RM0433
+Page  138: Table 10. Flash memory organization on STM32H750xB devices
+Page  138: Flash memory area            Address range                      Region name                          (1)
+Page  138: Table 11. Flash memory organization on STM32H743/753 devices
+Page  138: Flash memory area            Address range                      Region name                          (1)
+Page  139: RM0433                                                                                       Embedded Flash memory (FLASH)
+Page  139: Figure 6 shows how the embedded Flash memory is used both by STMicroelectronics and
+Page  139: Figure 6. Embedded Flash memory usage
+Page  139: located in user Flash and system Flash memory:
+Page  139: –     ST libraries in system Flash memory assist the application software boot with
+Page  139: –     Application secure libraries in user Flash memory are used for secure firmware
+Page  140: Embedded Flash memory (FLASH)                                                                                RM0433
+Page  140: As shown in Figure 6, the embedded Flash memory offers a bank swapping feature that can
+Page  140: The embedded Flash memory uses read and write command queues (one per bank) in
+Page  141: RM0433                                                           Embedded Flash memory (FLASH)
+Page  141: The embedded Flash memory can perform read operations on the whole non-volatile
+Page  141: The embedded Flash memory supports read-while-write operations provided the read and
+Page  141: To increase efficiency, the embedded Flash memory implements the buffering of
+Page  141: The embedded Flash memory supports the following program and erase operations:
+Page  141: Thanks to its dual bank architecture, the embedded Flash memory can perform any of the
+Page  141: embedded Flash memory, such as write protection and global readout protection (see next
+Page  141: To increase efficiency, the embedded Flash memory implements the buffering of
+Page  141: The embedded Flash memory supports different protection mechanisms:
+Page  142: Embedded Flash memory (FLASH)                                                                   RM0433
+Page  142: Under specific conditions, the embedded Flash memory reliably loads the non-volatile
+Page  142: whole system when the embedded Flash memory becomes functional again. For more
+Page  142: The embedded Flash memory allows swapping bank 1 and bank 2 memory mapping. This
+Page  142: The embedded Flash memory supports, for each memory bank, the execution of one read
+Page  142: Note:      The embedded Flash memory can perform single error correction and double error
+Page  142: detection while read operations are being executed (see Section 3.3.12: Flash memory
+Page  142: Flash memory and no read operation to Flash memory is triggered.
+Page  143: RM0433                                                                                       Embedded Flash memory (FLASH)
+Page  143: 2.   The embedded Flash memory effectively executes the read operation from the read
+Page  143: The embedded Flash memory clock must be enabled and running before reading data from
+Page  143: To correctly read data from Flash memory, the number of wait states (LATENCY) must be
+Page  143: embedded Flash memory AXI interface clock frequency (sys_ck) and the internal voltage
+Page  143: programming delay parameter (WRHIGHFREQ), the embedded Flash memory clock
+Page  144: Embedded Flash memory (FLASH)                                                                                       RM0433
+Page  144: To increase the embedded Flash memory clock source frequency:
+Page  144: 3.    Modify the embedded Flash memory clock source and/or the AXI bus clock prescaler in
+Page  144: 4.    Check that the new embedded Flash memory clock source and/or the new AXI bus
+Page  144: To decrease the embedded Flash memory clock source frequency:
+Page  144: 1.    Modify the embedded Flash memory clock source and/or the AXI bus clock prescaler in
+Page  144: 2.    Check that the embedded Flash memory new clock source and/or the new AXI bus
+Page  145: RM0433                                                           Embedded Flash memory (FLASH)
+Page  145: The embedded Flash memory embeds an error correction mechanism. Single error
+Page  145: details, refer to Section 3.3.12: Flash memory error protections.
+Page  145: The virgin state of each non-volatile memory bitcell is 1. The embedded Flash memory
+Page  145: A program operation consists in issuing write commands. The embedded Flash memory
+Page  145: System Flash memory bank 1 cannot be written by the application software. System Flash
+Page  145: inconsistent ECC code that will be systematically reported by the embedded Flash memory,
+Page  146: Embedded Flash memory (FLASH)                                                                                                                   RM0433
+Page  146: targeted Flash memory area.
+Page  146: The embedded Flash memory checks the protection properties of the write transaction
+Page  146: Note:                       No write protection check is performed when the embedded Flash memory accepts AXI
+Page  147: RM0433                                                              Embedded Flash memory (FLASH)
+Page  147: •    WBNE1/2: this bit indicates that the embedded Flash memory is waiting for new data to
+Page  147: Before programming the user Flash memory in bank 1 (respectively bank 2), the application
+Page  148: Embedded Flash memory (FLASH)                                                                   RM0433
+Page  148: Program operation timing constraints depend of the embedded Flash memory clock
+Page  149: RM0433                                                           Embedded Flash memory (FLASH)
+Page  149: The embedded Flash memory can perform erase operations on 128-Kbyte user sectors, on
+Page  149: one user Flash memory bank or on two user Flash memory banks (i.e. mass erase). The
+Page  149: system Flash memory (bank 2 only) can also be erased, but by STMicroelectronics secure
+Page  149: Note:    System Flash memory bank 1 cannot be erased by the application software.
+Page  149: Flash memory receives simultaneously a write and an erase request for the same bank,
+Page  149: The embedded Flash memory allows the application software to perform an erase followed
+Page  150: Embedded Flash memory (FLASH)                                                                 RM0433
+Page  151: RM0433                                                         Embedded Flash memory (FLASH)
+Page  152: Embedded Flash memory (FLASH)                                                                 RM0433
+Page  152: 3.3.12     Flash memory error protections
+Page  152: The embedded Flash memory supports an error correction code (ECC) mechanism. It is
+Page  152: Flash memory.
+Page  152: Flash memory also retrieves the 10-bit ECC information, computes the ECC of the Flash
+Page  153: RM0433                                                         Embedded Flash memory (FLASH)
+Page  153: The embedded Flash memory implements a cyclic redundancy check (CRC) hardware
+Page  153: module. This module checks the integrity of a given user Flash memory area content (see
+Page  153: addresses. It can also be defined as the whole bank (user Flash memory area only).
+Page  153: 4.   Define the user Flash memory area on which the CRC has to be computed.Two
+Page  154: Embedded Flash memory (FLASH)                                                                 RM0433
+Page  154: Note:      The application should avoid running a CRC on PCROP- or secure-only user Flash memory
+Page  154: The embedded Flash memory bank 1 and bank 2 can be swapped in the memory map
+Page  154: Table 14 shows the memory map that can be accessed from the embedded Flash memory
+Page  154: Flash memory
+Page  155: RM0433                                                                              Embedded Flash memory (FLASH)
+Page  156: Embedded Flash memory (FLASH)                                                                                      RM0433
+Page  156: The embedded Flash memory bank swapping option controlled by the SWAP_BANK bit
+Page  157: RM0433                                                            Embedded Flash memory (FLASH)
+Page  157: The embedded Flash memory can be reset by a D1 domain reset (d1_rst), driven by the
+Page  157: The embedded Flash memory can be reset by a power-on reset (po_rst), driven by the reset
+Page  157: loading sequence, the device remains under reset and the embedded Flash memory is not
+Page  157: The Reset signal can have a critical impact on the embedded Flash memory:
+Page  157: •   The contents of the Flash memory are not guaranteed if a device reset occurs during a
+Page  157: Flash memory write or erase operation.
+Page  157: The embedded Flash memory uses the microcontroller system clock (sys_ck), here the AXI
+Page  157: The embedded Flash memory includes a set of non-volatile option bytes. They are loaded at
+Page  158: Embedded Flash memory (FLASH)                                                                   RM0433
+Page  158: There are multiple ways of loading the option bytes into embedded Flash memory:
+Page  158: When the device is first powered, the embedded Flash memory automatically loads all
+Page  158: reset and the embedded Flash memory cannot be accessed.
+Page  158: When the D1 power domain, which contains the embedded Flash memory, is switched
+Page  158: from DStandby mode to DRun mode, the embedded Flash memory behaves as during
+Page  158: embedded Flash memory registers, the non-volatile option bytes are programmed and
+Page  158: the embedded Flash memory automatically reloads all option bytes to update the
+Page  158: The embedded Flash memory features two sets of option byte registers:
+Page  158: When OPTSTART bit is set to 1, the embedded Flash memory checks if at least one option
+Page  158: bytes), the embedded Flash memory launches the option byte modification in its non-volatile
+Page  158: embedded Flash memory sets the OPTCHANGEERR flag to 1 in the FLASH_OPTSR_CUR
+Page  159: RM0433                                                           Embedded Flash memory (FLASH)
+Page  160: Embedded Flash memory (FLASH)                                                                    RM0433
+Page  161: RM0433                                                                                                                Embedded Flash memory (FLASH)
+Page  161: Table 16 lists all the user option bytes managed through the embedded Flash memory
+Page  162: Embedded Flash memory (FLASH)                                                                                                          RM0433
+Page  163: RM0433                                                                                      Embedded Flash memory (FLASH)
+Page  164: Embedded Flash memory (FLASH)                                                                 RM0433
+Page  165: RM0433                                                           Embedded Flash memory (FLASH)
+Page  165: •   Arm® Cortex®-M7 boot address (MSB): 0x0800 (BOOT pin low for user Flash memory)
+Page  165: and 0x1FF0 (BOOT pin high for System Flash memory)
+Page  165: Since sensitive information can be stored in the Flash memory, it is important to protect it
+Page  165: protected area, or illegal Flash memory erasing.
+Page  165: The embedded Flash memory implements the following protection mechanisms that can be
+Page  165: The embedded Flash memory uses hardware mechanisms to protect the following assets
+Page  166: Embedded Flash memory (FLASH)                                                                  RM0433
+Page  166: More specifically, write operations to embedded Flash memory control registers
+Page  166: The embedded Flash memory configuration registers protection is summarized in Table 17.
+Page  167: RM0433                                                            Embedded Flash memory (FLASH)
+Page  167: The purpose of embedded Flash memory write protection is to protect the embedded Flash
+Page  167: The embedded Flash memory write-protection user option bits can be modified without any
+Page  168: Embedded Flash memory (FLASH)                                                                              RM0433
+Page  168: The embedded Flash memory readout protection is global as it does not apply only to the
+Page  168: embedded Flash memory, but also to the other secured regions. This is done by using
+Page  168: user Flash memory are allowed (if no others protections are set). This is true whatever the
+Page  168: boot configuration (boot from user or system Flash memory, boot from RAM), and whether
+Page  168: RDP Level 1 (Flash memory content protection)
+Page  168: •    The Flash memory content is protected against debugger and potential malicious code
+Page  168: or a boot is configured in embedded RAM (intrusion), the embedded Flash memory
+Page  168: prevents any accesses to Flash memory.
+Page  168: •    When no intrusion is detected (no boot in RAM, no boot in System Flash memory and
+Page  168: •    When an intrusion is detected, no accesses to the user Flash memory can be
+Page  168: level 0, the user Flash memory and the other secured regions are mass erased, as
+Page  169: RM0433                                                                          Embedded Flash memory (FLASH)
+Page  169: •     Like level 0, all read/write/erase operations from/to the user Flash memory are allowed
+Page  169: since the debugger and the boot from RAM and System Flash memory are disabled.
+Page  169: Flash memory in RDP level 2
+Page  170: Embedded Flash memory (FLASH)                                                                                RM0433
+Page  171: RM0433                                                           Embedded Flash memory (FLASH)
+Page  171: •    The user Flash memory area of the embedded Flash memory is mass erased:
+Page  171: If a PCROP area overlaps with a secure-only area, the embedded Flash memory performs
+Page  172: Embedded Flash memory (FLASH)                                                                     RM0433
+Page  172: The embedded Flash memory allows the definition of an “executable-only” area in the user
+Page  172: area of each Flash memory bank. In this area, only instruction fetch transactions from the
+Page  172: 0x0800 0000 to address 0x0800 0FFF, both included), the embedded Flash memory must
+Page  172: The maximum area is the whole user Flash memory, configured by setting to the same
+Page  173: RM0433                                                           Embedded Flash memory (FLASH)
+Page  173: The embedded Flash memory allows the definition of a secure-only area in the user area of
+Page  173: each Flash memory bank. This area can be accessed only while the CPU executes secure
+Page  173: maximum area is the whole user Flash memory bank, configured by setting to the same
+Page  174: Embedded Flash memory (FLASH)                                                                         RM0433
+Page  174: The table below summarizes the behavior of the embedded Flash memory in the
+Page  174: microcontroller low-power modes. The embedded Flash memory belongs to the D1 domain.
+Page  174: Table 21. Effect of low-power modes on the embedded Flash memory
+Page  175: RM0433                                                                  Embedded Flash memory (FLASH)
+Page  175: Table 21. Effect of low-power modes on the embedded Flash memory (continued)
+Page  175: procedure to switch the embedded Flash memory into various power mode (run, clock
+Page  175: As explain in Table 21, if the embedded Flash memory informs the reset and clock controller
+Page  175: There are two ways to release the embedded Flash memory:
+Page  176: Embedded Flash memory (FLASH)                                                                    RM0433
+Page  176: The embedded Flash memory automatically reports when an error occurs during a read,
+Page  176: (respectively bank 2), the embedded Flash memory sets the write protection error flag
+Page  177: RM0433                                                           Embedded Flash memory (FLASH)
+Page  177: •    The system Flash memory (bank 2 only) while the device is not executing ST
+Page  177: •    The bank 1 system Flash memory
+Page  177: •    The user main Flash memory when RDP level is 1 and a debugger has been detected
+Page  177: on the device, or the CPU has not booted from user Flash memory.
+Page  177: time a Flash word write operation is processed by the embedded Flash memory.
+Page  177: embedded Flash memory sets the programming sequence error flag PGSERR1
+Page  177: last write operation has been successful by reading back the value in the Flash memory.
+Page  178: Embedded Flash memory (FLASH)                                                                     RM0433
+Page  178: bank 2) write buffer, the embedded Flash memory sets the strobe error flag STRBERR1
+Page  178: embedded Flash memory sets the inconsistency error flag INCERR1 (respectively
+Page  178: sends a new write burst request to a different Flash memory address before the
+Page  178: 2.   Stop all write requests to embedded Flash memory.
+Page  179: RM0433                                                          Embedded Flash memory (FLASH)
+Page  179: the embedded Flash memory sets the operation error flag OPERR1 (respectively OPERR2)
+Page  179: the embedded Flash memory sets the single error correction flag SNECCERR1
+Page  179: embedded Flash memory sets the double error detection flag DBECCERR1 (respectively
+Page  180: Embedded Flash memory (FLASH)                                                                   RM0433
+Page  180: non-volatile memory bank 1 (respectively bank 2), the embedded Flash memory sets the
+Page  180: embedded Flash memory sets the read secure error flag RDSERR1 (respectively
+Page  180: When the embedded Flash memory finds an error during an option change operation, it
+Page  181: RM0433                                                          Embedded Flash memory (FLASH)
+Page  181: –    accesses to user Flash memory while RDP is set to 1 and a illegal condition is
+Page  181: detected (boot from system Flash memory, boot from RAM, or debugger
+Page  181: –    fetching to secure-only user Flash memory without the correct access rights
+Page  181: The embedded Flash memory can generate a maskable interrupt to signal the following
+Page  181: only interrupt signal from the embedded Flash memory that drives the NVIC (nested
+Page  181: You can individually enable or disable embedded Flash memory interrupt sources by
+Page  181: Table 22 gives a summary of the available embedded Flash memory interrupt features. As
+Page  182: Embedded Flash memory (FLASH)                                                                                            RM0433
+Page  183: RM0433                                                         Embedded Flash memory (FLASH)
+Page  184: Embedded Flash memory (FLASH)                                                                                    RM0433
+Page  184: depending on the embedded Flash memory interface frequency. Please refer to Table 12 for
+Page  184: value depending on the embedded Flash memory interface frequency and voltage
+Page  185: RM0433                                                                                                            Embedded Flash memory (FLASH)
+Page  186: Embedded Flash memory (FLASH)                                                                            RM0433
+Page  187: RM0433                                                                   Embedded Flash memory (FLASH)
+Page  187: The embedded Flash memory resets START1 when the corresponding operation has been
+Page  187: acknowledged. The user application cannot access any embedded Flash memory register
+Page  188: Embedded Flash memory (FLASH)                                                                                 RM0433
+Page  188: The embedded Flash memory resets FW1 when the corresponding operation has been
+Page  188: acknowledged. The user application cannot access any embedded Flash memory register
+Page  188: Setting BER1 bit to 1 requests a bank erase operation on bank 1 (user Flash memory only).
+Page  188: BER1 has a higher priority than SER1: if both are set, the embedded Flash memory executes
+Page  189: RM0433                                                                Embedded Flash memory (FLASH)
+Page  189: BER1 has a higher priority than SER1: if both bits are set, the embedded Flash memory
+Page  190: Embedded Flash memory (FLASH)                                                                                                                      RM0433
+Page  191: RM0433                                                                 Embedded Flash memory (FLASH)
+Page  192: Embedded Flash memory (FLASH)                                                                           RM0433
+Page  192: WBNE1 flag is set when the embedded Flash memory is waiting for new data to complete the
+Page  192: –     the embedded Flash memory detects an error that involves data loss
+Page  193: RM0433                                                                                                                     Embedded Flash memory (FLASH)
+Page  194: Embedded Flash memory (FLASH)                                                                                                       RM0433
+Page  195: RM0433                                                                                                                 Embedded Flash memory (FLASH)
+Page  195: when the OPTLOCK bit is cleared to 0. The embedded Flash memory resets OPTSTART
+Page  195: The user application cannot modify any embedded Flash memory register until the option
+Page  196: Embedded Flash memory (FLASH)                                                                               RM0433
+Page  197: RM0433                                                                  Embedded Flash memory (FLASH)
+Page  197: embedded Flash memory is performing an option change and it is not possible to modify any
+Page  197: embedded Flash memory register.
+Page  198: Embedded Flash memory (FLASH)                                                                                                                                                                  RM0433
+Page  199: RM0433                                                                   Embedded Flash memory (FLASH)
+Page  200: Embedded Flash memory (FLASH)                                                                                                 RM0433
+Page  201: RM0433                                                                      Embedded Flash memory (FLASH)
+Page  202: Embedded Flash memory (FLASH)                                                                                  RM0433
+Page  203: RM0433                                                                      Embedded Flash memory (FLASH)
+Page  204: Embedded Flash memory (FLASH)                                                                                  RM0433
+Page  205: RM0433                                                                                            Embedded Flash memory (FLASH)
+Page  206: Embedded Flash memory (FLASH)                                                                                          RM0433
+Page  206: write accesses to embedded Flash memory registers are put on hold until the option byte
+Page  207: RM0433                                                                         Embedded Flash memory (FLASH)
+Page  208: Embedded Flash memory (FLASH)                                                                                        RM0433
+Page  208: The embedded Flash memory programs the address in this register only when no ECC error
+Page  208: The address in FAIL_ECC_ADDR1 is relative to the Flash memory area where the error
+Page  208: occurred (user Flash memory, system Flash memory).
+Page  209: RM0433                                                                                                          Embedded Flash memory (FLASH)
+Page  210: Embedded Flash memory (FLASH)                                                                          RM0433
+Page  210: Set this bit when accessing non-user sectors of the Flash memory. This bit can be
+Page  211: RM0433                                                                      Embedded Flash memory (FLASH)
+Page  211: The embedded Flash memory resets START2 when the corresponding operation has been
+Page  211: acknowledged. The user application cannot access any embedded Flash memory register
+Page  211: The embedded Flash memory resets FW2 when the corresponding operation has been
+Page  211: Setting BER2 bit to 1 requests a bank erase operation on bank 2 (user Flash memory only).
+Page  211: BER2 has a higher priority than SER2: if both are set, the embedded Flash memory executes
+Page  212: Embedded Flash memory (FLASH)                                                                           RM0433
+Page  212: BER2 has a higher priority than SER2: if both are set, the embedded Flash memory executes
+Page  213: RM0433                                                                                            Embedded Flash memory (FLASH)
+Page  214: Embedded Flash memory (FLASH)                                                                            RM0433
+Page  215: RM0433                                                                  Embedded Flash memory (FLASH)
+Page  215: WBNE2 flag is set when embedded Flash memory is waiting for new data to complete the
+Page  215: –     the embedded Flash memory detects an error that involves data loss
+Page  216: Embedded Flash memory (FLASH)                                                                                                                                                             RM0433
+Page  217: RM0433                                                                      Embedded Flash memory (FLASH)
+Page  218: Embedded Flash memory (FLASH)                                                                               RM0433
+Page  219: RM0433                                                                      Embedded Flash memory (FLASH)
+Page  220: Embedded Flash memory (FLASH)                                                                                   RM0433
+Page  221: RM0433                                                                                            Embedded Flash memory (FLASH)
+Page  221: because all write accesses to embedded Flash memory registers are put on hold until the
+Page  222: Embedded Flash memory (FLASH)                                                                                   RM0433
+Page  223: RM0433                                                                         Embedded Flash memory (FLASH)
+Page  223: The embedded Flash memory programs the address in this register only when no ECC error
+Page  224: Embedded Flash memory (FLASH)
+Page  225: RM0433                                                                                                                                                                                                  Embedded Flash memory (FLASH)
+Page  226: Embedded Flash memory (FLASH)
+Page  227: Embedded Flash memory (FLASH)
+Page  228: Embedded Flash memory (FLASH)                                                                                                                                                                                                                                     RM0433
+Page  229: Device state which allows accessing the user Flash memory, the option
+Page  229: User Flash memory    Flash memory area used to store user code and data
+Page  229: hidden for the firmware stored in the user Flash memory after the code
+Page  230: Update (SFU)          Flash memory
+Page  230: This mechanism can be set on specific Flash memory areas that must be execute-only.
+Page  230: For further details, refer to Section 3: Embedded Flash memory (FLASH).
+Page  231: – No access (read, erase and program) to Flash memory or
+Page  231: Global              user Flash memory.
+Page  231: Figure 13 gives an overview of Flash memory areas and services in Standard and Secure
+Page  232: Figure 13. Flash memory areas and services in Standard and Secure access modes
+Page  232: Flash memory.
+Page  238: Figure 16 and Table 27 summarize the access rights of the different Flash memory areas,
+Page  238: Figure 16. Core access to Flash memory areas
+Page  246: 4.   Once the oscillator is stable, the system is initialized: Flash memory and option bytes
+Page  247: •       D1 domain containing the CPU (Cortex®-M7), Flash memory and peripherals.
+Page  277: The Flash memory can enter low-power Stop mode when it is enabled through FLPS in
+Page  277: If Flash memory programming is ongoing, the DStop mode entry is delayed until the
+Page  279: If Flash memory programming is ongoing, the Stop mode entry is delayed until the memory
+Page  280: If Flash memory programming is ongoing, the DStandby mode entry is delayed until the
+Page  284: When it is set, the Flash memory enters low-power mode when D1 domain is in DStop
+Page  284: 0: Flash memory remains in normal mode when D1 domain enters DStop (quick restart
+Page  284: 1: Flash memory enters low-power mode when D1 domain enters DStop mode (low-power
+Page  310: flags in the RCC_RSR (or RCC_C1_RSR) register, the debug features, the Flash memory
+Page  311: – Debug features, Flash memory, RTC and
+Page  311: Reset of the Flash memory digital block
+Page  314: •   through the Flash memory interface by requesting a protection level change from 1 to 0
+Page  315: •    The Flash memory power recovery delay can also be skipped if the Flash memory was
+Page  315: the restart delay for the HSI, the Flash memory power recovery and the option byte
+Page  315: 2.   The Flash memory power recovery.
+Page  526: •        Getting readout protection and Flash memory bank swap informations
+Page  526: •        Management of Flash memory secured and protected sector status
+Page  526: •        Management Flash memory write protections status
+Page  538: 0xCC: Level 2 (Flash memory readout protected, full debug features, boot from SRAM
+Page  538: Other configurations: Level 1 (Flash memory readout protected, limited debug
+Page  538: This bit indicates Flash memory bank mapping.
+Page  538: 0: Flash memory bank addresses are inverted
+Page  538: 1: Flash memory banks are mapped to their original addresses
+Page  540: WRPN[i] bit indicates if the sector i of the Flash memory bank 1 is protected.
+Page  541: This bit indicates if the Flash memory secured area (Bank 2) is affected by a mass
+Page  541: This bit indicates if the Flash memory protected area (Bank 2) is affected by a mass
+Page  542: WRPN[i] bit indicates if the sector i of the Flash memory bank 2 is protected.
+Page  730: Flash memory
+Page  770: verifying the Flash memory integrity. The CRC calculation unit helps compute a signature of
+Page  776: memories, SDRAM memories, and NAND flash memory. Its main purposes are:
+Page  776: –    NOR Flash memory/OneNAND Flash memory
+Page  776: –    NAND Flash memory with ECC hardware to check up to 8 Kbytes of data
+Page  780: can be read/written from/to the Flash memory), write transactions are not allowed
+Page  781: •   Bank 1 is used to address up to 4 NOR Flash memory or PSRAM devices. This bank is
+Page  781: •   Bank 3 is used to address NAND Flash memory devices.The MPU memory attribute for
+Page  783: 21.6.2   NAND Flash memory address mapping
+Page  783: For NAND Flash memory, the common and attribute memory spaces are subdivided into
+Page  784: The application software uses the 3 sections to access the NAND Flash memory:
+Page  784: •      To send a command to NAND Flash memory, the software must write the command
+Page  784: Since the NAND Flash memory automatically increments addresses, there is no need to
+Page  787: •     NOR Flash memory
+Page  788: for wait management (for PSRAM and NOR Flash memory accessed in Burst mode).
+Page  789: NOR Flash memory, SRAM and PSRAM.
+Page  789: NOR Flash memory, non-multiplexed I/Os
+Page  789: Table 158. Non-multiplexed I/O NOR Flash memory
+Page  789: NOR Flash memory, 16-bit multiplexed I/Os
+Page  789: Table 159. 16-bit multiplexed I/O NOR Flash memory
+Page  791: transactions when the memory data bus is 16-bit wide for NOR Flash memory, PSRAM and
+Page  792: Asynchronous transactions on static memories (NOR Flash memory, PSRAM, SRAM) are
+Page  795: 3:2         MTYP            As needed, exclude 0x2 (NOR Flash memory)
+Page  798: 3:2           MTYP             As needed, exclude 0x2 (NOR Flash memory)
+Page  801: 3:2          MTYP            0x2 (NOR Flash memory)
+Page  803: 3:2         MTYP       0x02 (NOR Flash memory)
+Page  808: Muxed mode - multiplexed asynchronous access to NOR Flash memory
+Page  809: 3:2          MTYP            0x2 (NOR Flash memory)
+Page  813: •    The Flash memory asserts the NWAIT signal one data cycle before the wait state
+Page  813: •    The Flash memory asserts the NWAIT signal during the wait state
+Page  815: 6          FACCEN     Set according to memory support (NOR Flash memory)
+Page  820: This bit enables NOR Flash memory access operations.
+Page  820: 0: Corresponding NOR Flash memory access is disabled
+Page  820: 1: Corresponding NOR Flash memory access is enabled (default after reset)
+Page  824: specific Flash memory being used).
+Page  826: Figure 107), used in asynchronous SRAM, PSRAM and NOR Flash memory accesses:
+Page  827: 8-bit NAND Flash memory
+Page  827: Table 184. 8-bit NAND Flash memory
+Page  828: 16-bit NAND Flash memory
+Page  828: Table 185. 16-bit NAND Flash memory
+Page  829: The NAND Flash memory bank is managed through a set of registers:
+Page  830: Flash memory device are driven by address signals from the FMC controller. This means
+Page  830: that to send a command or an address to the NAND Flash memory, the CPU has to perform
+Page  830: prewait feature) registers according to the characteristics of the NAND Flash memory
+Page  830: (PWID bits for the data bus width of the NAND Flash memory, PWAITEN = 0 or 1 as
+Page  830: needed, see Section 21.6.2: NAND Flash memory address mapping for timing
+Page  830: LE input of the NAND Flash memory is active during the write strobe (low pulse on
+Page  830: NWE), thus the written byte is interpreted as a command by the NAND Flash memory.
+Page  831: 4.   The controller waits for the NAND Flash memory to be ready (R/NB signal high), before
+Page  832: meet the tWB timing. However, any CPU read access to NAND Flash memory has a hold
+Page  832: in NAND Flash memory
+Page  832: NAND Flash memory. It is based on the BCH8 coding algorithm and consists in calculating
+Page  832: NWE) each time the NAND Flash memory bank is active.
+Page  832: •   When accessing any other address in NAND Flash memory, the ECC logic is idle, and
+Page  832: addresses to the NAND Flash memory are not taken into account for ECC
+Page  832: Once the desired number of bytes has been read/written from/to the NAND Flash memory
+Page  833: 2.          Write data to the NAND Flash memory page. While the NAND page is written, the ECC
+Page  834: Bit 2 PBKEN: NAND Flash memory bank enable bit.
+Page  834: This bit enables the Wait feature for the NAND Flash memory bank:
+Page  837: The FMC_PATT read/write register contains the timing information for NAND Flash memory
+Page  838: from a NAND Flash memory page at the correct address (refer to Section 21.8.6:
+Page  838: Computation of the error correction code (ECC) in NAND Flash memory), the data
+Page  838: read/written from/to the NAND Flash memory are processed automatically by the ECC
+Page  859: •   status polling mode: the external Flash memory status register is periodically read and
+Page  859: •   memory-mapped mode: the external Flash memory is mapped to the microcontroller
+Page  861: Table 191 lists the QUADSPI pins, six for interfacing with a single Flash memory, or 10 to 11
+Page  861: The QUADSPI communicates with the Flash memory using commands. Each command
+Page  862: QUADSPI_CCR[7:0] register, is sent to the Flash memory, specifying the type of operation
+Page  862: In the address phase, 1-4 bytes are sent to the Flash memory to indicate the address of the
+Page  862: In the alternate-bytes phase, 1-4 bytes are sent to the Flash memory, generally to control
+Page  863: in order to allow the Flash memory the time to prepare for the data phase when higher clock
+Page  863: mode to receive data from the Flash memory.
+Page  863: In indirect write mode the data to be sent to the Flash memory must be written to the
+Page  864: sent to the Flash memory over the SO signal (whose I/O shared with IO0). Data received
+Page  864: from the Flash memory arrives via SI (whose I/O shared with IO1).
+Page  865: The Flash memory size, as specified in FSIZE[4:0] (QUADSPI_DCR[20:16]), should reflect
+Page  865: the total Flash memory capacity, which is double the size of one individual component.
+Page  866: each Flash memory gives 8 valid bits after the instruction for fetching the status register,
+Page  866: QUADSPI will receive one byte from each Flash memory. If each Flash memory gives a
+Page  866: each Flash memory always receives the same instruction and the same address. Then,
+Page  866: where bytes are sent to the Flash memory during the data phase. Data are provided by
+Page  866: the Flash memory during the data phase. Data are recovered by reading QUADSPI_DR.
+Page  866: Flash memory (as defined by FSIZE) is reached. If no bytes are to be transferred, DMODE
+Page  866: is set when the limit of the external SPI memory is reached according to the Flash memory
+Page  867: FIFO after the last byte is read from the Flash memory, regardless of the FTHRES setting.
+Page  867: bytes from the Flash memory to avoid an overrun. Note that the reading of the Flash
+Page  867: that the QUADSPI starts retrieving data from the Flash memory again. Otherwise, the FTF
+Page  868: The accesses to the Flash memory begin in the same way as in indirect read mode: if no
+Page  868: No more than 256MB can addressed even if the Flash memory capacity is larger.
+Page  869: operation active with nCS maintained low, even if no access to the Flash memory occurs for
+Page  869: 22.3.9    QUADSPI Flash memory configuration
+Page  869: characteristics of the external SPI Flash memory.
+Page  869: Number of bytes in Flash memory = 2[FSIZE+1]
+Page  869: FSIZE+1 is effectively the number of address bits required to address the Flash memory.
+Page  869: The Flash memory capacity can be up to 4GB (addressed using 32 bits) in indirect mode,
+Page  869: If the Flash memory requires more time between commands, the chip select high time
+Page  869: By default, the QUADSPI samples the data driven by the Flash memory one half of a CLK
+Page  869: cycle after the Flash memory drives the signal.
+Page  870: •   QUADSPI Flash memory configuration
+Page  870: QUADSPI Flash memory configuration
+Page  870: The parameters related to the targeted external Flash memory are configured through the
+Page  870: QUADSPI_DCR register.The user shall program the Flash memory size in the FSIZE bits,
+Page  870: the Flash memory. With FMODE = 01, indirect read mode is selected where data can be
+Page  870: read from the Flash memory.
+Page  872: In memory-mapped mode, the external Flash memory is seen as internal memory but with
+Page  873: programmed in the QUADSPI_AR (according to the Flash memory size defined by
+Page  873: •     Also in indirect mode, if the address plus the data length exceeds the Flash memory
+Page  873: Once the QUADSPI starts an operation with the Flash memory, the BUSY bit is
+Page  873: By default, nCS is high, deselecting the external Flash memory. nCS falls before an
+Page  877: Bit 7 FSEL: Flash memory selection
+Page  877: This bit selects the Flash memory to be addressed in single flash mode (when DFM =
+Page  878: Flash memory. This bit allows the data is to be sampled later in order to account for
+Page  878: operation active with nCS maintained low, even if no access to the Flash memory
+Page  878: mode after TIMEOUT[15:0] cycles of Flash memory inactivity.
+Page  879: Bits 20:16 FSIZE[4:0]: Flash memory size
+Page  879: Number of bytes in Flash memory = 2[FSIZE+1]
+Page  879: memory. The Flash memory capacity can be up to 4GB (addressed using 32 bits) in
+Page  879: remain high between commands issued to the Flash memory.
+Page  879: 0: nCS stays high for at least 1 cycle between Flash memory commands
+Page  879: 1: nCS stays high for at least 2 cycles between Flash memory commands
+Page  879: 7: nCS stays high for at least 8 cycles between Flash memory commands
+Page  880: operation with the Flash memory is finished and the FIFO is empty.
+Page  880: any data left in the FIFO after reads from the Flash memory are complete. It is cleared
+Page  882: 0xFFFF_FFFF: undefined length -- all bytes until the end of Flash memory (as defined
+Page  884: Address to be send to the external Flash memory
+Page  885: to the Flash memory during the data phase. If the FIFO is too full, a write operation is
+Page  885: received from the Flash memory. If the FIFO does not have as many bytes as requested
+Page 3214: The electronic signature is stored in the Flash memory area. It can be read using the
+Page 3214: •            for use as security keys in order to increase the security of code in Flash memory while
+Page 3214: protocols before programming the internal Flash memory
+Page 3215: Bits 15:0 F_ID(15:0): Flash memory size
+Page 3215: This bitfield indicates the size of the device Flash memory expressed in Kbytes.
+Page 3216: Section 3: Embedded Flash memory (FLASH)
+Page 3223: Section 3: Embedded Flash memory (FLASH)
+Page 3226: Major update of Section 3: Embedded Flash memory (FLASH).
+Page 3233: Updated Section 3.3.4: Flash memory architecture and usage.

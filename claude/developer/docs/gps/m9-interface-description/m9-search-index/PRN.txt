@@ -1,0 +1,98 @@
+Keyword: PRN
+Occurrences: 94
+================================================================================
+
+Page   33: satellites (33 = SBAS PRN 120, 34 = SBAS PRN 121, and so on)
+Page   82: bit 0   U:1       PRN152                -            -
+Page   82: bit 1   U:1       PRN153                -            -
+Page   82: bit 2   U:1       PRN154                -            -
+Page   82: bit 3   U:1       PRN155                -            -
+Page   82: bit 4   U:1       PRN156                -            -
+Page   82: bit 5   U:1       PRN157                -            -
+Page   82: bit 6   U:1       PRN158                -            -
+Page   82: 4                   X4        scanmode1             -            -           Which SBAS PRN numbers to search for (bitmask).
+Page   82: If all bits are set to zero, auto-scan (i.e. all valid PRNs)
+Page   82: Every bit corresponds to a PRN number.
+Page   83: bit 0   U:1       PRN120              -          -
+Page   83: bit 1   U:1       PRN121              -          -
+Page   83: bit 2   U:1       PRN122              -          -
+Page   83: bit 3   U:1       PRN123              -          -
+Page   83: bit 4   U:1       PRN124              -          -
+Page   83: bit 5   U:1       PRN125              -          -
+Page   83: bit 6   U:1       PRN126              -          -
+Page   83: bit 7   U:1       PRN127              -          -
+Page   83: bit 8   U:1       PRN128              -          -
+Page   83: bit 9   U:1       PRN129              -          -
+Page   83: bit 10     U:1       PRN130              -          -
+Page   83: bit 11     U:1       PRN131              -          -
+Page   83: bit 12     U:1       PRN132              -          -
+Page   83: bit 13     U:1       PRN133              -          -
+Page   83: bit 14     U:1       PRN134              -          -
+Page   83: bit 15     U:1       PRN135              -          -
+Page   83: bit 16     U:1       PRN136              -          -
+Page   83: bit 17     U:1       PRN137              -          -
+Page   83: bit 18     U:1       PRN138              -          -
+Page   83: bit 19     U:1       PRN139              -          -
+Page   83: bit 20     U:1       PRN140              -          -
+Page   83: bit 21     U:1       PRN141              -          -
+Page   83: bit 22     U:1       PRN142              -          -
+Page   83: bit 23     U:1       PRN143              -          -
+Page   83: bit 24     U:1       PRN144              -          -
+Page   83: bit 25     U:1       PRN145              -          -
+Page   83: bit 26     U:1       PRN146              -          -
+Page   83: bit 27     U:1       PRN147              -          -
+Page   83: bit 28     U:1       PRN148              -          -
+Page   83: bit 29     U:1       PRN149              -          -
+Page   83: bit 30     U:1       PRN150              -          -
+Page   83: bit 31     U:1       PRN151              -          -
+Page  145: 4                 U1        geo                   -            -           PRN Number of the GEO where correction and
+Page  225: CFG-SBAS-PRNSCANMASK                     0x50360006 X8            -         -     SBAS PRN search conﬁguration
+Page  225: This conﬁguration item determines which SBAS PRNs should be searched. Setting it to 0 indicates auto-scanning all
+Page  225: SBAS PRNs. For non-zero values the bits correspond to the allocated SBAS PRNs ranging from PRN120 (bit 0) to PRN158
+Page  225: (bit 38), where a bit set enables searching for the corresponding PRN.
+Page  225: ALL                         0x0000000000000000          Enable search for all SBAS PRNs
+Page  225: PRN120                      0x0000000000000001          Enable search for SBAS PRN120
+Page  225: PRN121                      0x0000000000000002          Enable search for SBAS PRN121
+Page  225: PRN122                      0x0000000000000004          Enable search for SBAS PRN122
+Page  225: PRN123                      0x0000000000000008          Enable search for SBAS PRN123
+Page  225: PRN124                      0x0000000000000010          Enable search for SBAS PRN124
+Page  225: PRN125                      0x0000000000000020          Enable search for SBAS PRN125
+Page  225: PRN126                      0x0000000000000040          Enable search for SBAS PRN126
+Page  225: PRN127                      0x0000000000000080          Enable search for SBAS PRN127
+Page  225: PRN128                      0x0000000000000100          Enable search for SBAS PRN128
+Page  225: PRN129                      0x0000000000000200          Enable search for SBAS PRN129
+Page  225: PRN130                      0x0000000000000400          Enable search for SBAS PRN130
+Page  225: PRN131                      0x0000000000000800          Enable search for SBAS PRN131
+Page  225: PRN132                      0x0000000000001000          Enable search for SBAS PRN132
+Page  225: PRN133                      0x0000000000002000          Enable search for SBAS PRN133
+Page  225: PRN134                      0x0000000000004000          Enable search for SBAS PRN134
+Page  225: PRN135                      0x0000000000008000          Enable search for SBAS PRN135
+Page  225: PRN136                      0x0000000000010000          Enable search for SBAS PRN136
+Page  225: PRN137                      0x0000000000020000          Enable search for SBAS PRN137
+Page  225: PRN138                      0x0000000000040000          Enable search for SBAS PRN138
+Page  225: PRN139                      0x0000000000080000          Enable search for SBAS PRN139
+Page  225: PRN140                      0x0000000000100000          Enable search for SBAS PRN140
+Page  225: PRN141                      0x0000000000200000          Enable search for SBAS PRN141
+Page  225: PRN142                      0x0000000000400000          Enable search for SBAS PRN142
+Page  225: PRN143                      0x0000000000800000          Enable search for SBAS PRN143
+Page  225: PRN144                      0x0000000001000000          Enable search for SBAS PRN144
+Page  225: PRN145                      0x0000000002000000          Enable search for SBAS PRN145
+Page  225: PRN146                      0x0000000004000000          Enable search for SBAS PRN146
+Page  225: PRN147                      0x0000000008000000          Enable search for SBAS PRN147
+Page  225: PRN148                      0x0000000010000000          Enable search for SBAS PRN148
+Page  225: PRN149                      0x0000000020000000          Enable search for SBAS PRN149
+Page  225: PRN150                      0x0000000040000000          Enable search for SBAS PRN150
+Page  225: PRN151                      0x0000000080000000          Enable search for SBAS PRN151
+Page  226: PRN152                  0x0000000100000000         Enable search for SBAS PRN152
+Page  226: PRN153                  0x0000000200000000         Enable search for SBAS PRN153
+Page  226: PRN154                  0x0000000400000000         Enable search for SBAS PRN154
+Page  226: PRN155                  0x0000000800000000         Enable search for SBAS PRN155
+Page  226: PRN156                  0x0000001000000000         Enable search for SBAS PRN156
+Page  226: PRN157                  0x0000002000000000         Enable search for SBAS PRN157
+Page  226: PRN158                  0x0000004000000000         Enable search for SBAS PRN158
+Page  226: Table 43: Constants for CFG-SBAS-PRNSCANMASK
+Page  239: UBX-CFG-SBAS.scanmode1                                  CFG-SBAS-PRNSCANMASK
+Page  252: CFG-SBAS-PRNSCANMASK                            0x50360006 X8          -      -     0x0000000000072b88 (ALL |
+Page  252: PRN123 | PRN127 | PRN128 |
+Page  252: PRN129 | PRN131 | PRN133 |
+Page  252: PRN136 | PRN137 | PRN138)

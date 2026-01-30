@@ -1,0 +1,838 @@
+Keyword: LSE
+Occurrences: 834
+================================================================================
+
+Page   11: 10.3.14 Using the HSE or LSE oscillator pins as GPIOs . . . . . . . . . . . . . . . . . 517
+Page   35: 36.3.6       Set/reset events priorities and narrow pulses management . . . . . . . 1365
+Page   38: 37.3.20 One-pulse mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1559
+Page   38: 37.3.21 Retriggerable one pulse mode (OPM) . . . . . . . . . . . . . . . . . . . . . . . . 1560
+Page   40: 38.3.13 One-pulse mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1649
+Page   40: 38.3.14 Retriggerable one pulse mode (OPM) . . . . . . . . . . . . . . . . . . . . . . . . 1650
+Page   41: 39.3.11 One-pulse mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1712
+Page   41: 39.3.12 Retriggerable one pulse mode (OPM) (TIM12 only) . . . . . . . . . . . . . 1714
+Page   43: 40.4.14 One-pulse mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1774
+Page   43: 40.4.15 Retriggerable one pulse mode (OPM) (TIM15 only) . . . . . . . . . . . . . 1775
+Page   63: (OTG_DVBUSPULSE) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2645
+Page   65: 57.9.9      Programming guidelines for flexible pulse-per-second (PPS) output 2812
+Page   80: Figure 42.   HSE/LSE clock source . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 319
+Page   86: Figure 295. Complementary outputs for low pulse width (SDTRx = SDTFx = 0). . . . . . . . . . . . . . . . 1362
+Page   86: Figure 296. Complementary outputs for low pulse width (SDTRx = SDTFx = 1). . . . . . . . . . . . . . . . 1362
+Page   86: Figure 297. Complementary outputs for low pulse width (SDTRx = 0, SDTFx = 1). . . . . . . . . . . . . . 1362
+Page   86: Figure 298. Complementary outputs for low pulse width (SDTRx = 1, SDTFx=0). . . . . . . . . . . . . . . 1363
+Page   87: Figure 382. 3-phase combined PWM signals with multiple trigger pulses per period . . . . . . . . . . . . 1548
+Page   87: Figure 384. Dead-time waveforms with delay greater than the negative pulse . . . . . . . . . . . . . . . . . 1549
+Page   87: Figure 385. Dead-time waveforms with delay greater than the positive pulse. . . . . . . . . . . . . . . . . . 1550
+Page   87: Figure 393. Example of one pulse mode. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1559
+Page   87: Figure 394. Retriggerable one pulse mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1561
+Page   88: Figure 438. Example of one-pulse mode. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1649
+Page   88: Figure 439. Retriggerable one pulse mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1651
+Page   89: Figure 472. Example of one pulse mode. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1713
+Page   89: Figure 473. Retriggerable one pulse mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1714
+Page   90: Figure 501. Dead-time waveforms with delay greater than the negative pulse. . . . . . . . . . . . . . . . . 1769
+Page   90: Figure 502. Dead-time waveforms with delay greater than the positive pulse. . . . . . . . . . . . . . . . . . 1769
+Page   90: Figure 505. Example of one pulse mode. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1774
+Page   90: Figure 506. Retriggerable one pulse mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1776
+Page   92: Figure 617. SS interleaving pulses between data (SSOE=1, SSOM=1,SSM=0). . . . . . . . . . . . . . . . 2141
+Page   97: a. Arm is a registered trademark of Arm Limited (or its subsidiaries) in the US and/or elsewhere.
+Page  188: bits with something else than 1, because it is likely that it will lead to permanent ECC
+Page  244: LSI, LSE, RTC,
+Page  249: •   PC14 and PC15 can be used either as GPIO or as LSE pins.
+Page  250: •   PC14 and PC15 can be used as LSE pins only.
+Page  251: RTC                LSE
+Page  277: In DStop mode domain peripherals using the LSI or LSE clock and peripherals having a
+Page  278: In Stop mode, the domain peripherals that use the LSI or LSE clock, and the peripherals
+Page  278: •   External 32.768 kHz oscillator (LSE OSC)
+Page  278: This is configured via the LSEON bit in the RCC Backup Domain Control Register
+Page  279: •     Peripherals capable of running on the LSI or LSE clock.
+Page  282: •   External 32.768 kHz oscillator (LSE OSC)
+Page  282: This is configured by the LSEON bit in the backup domain control register
+Page  296: Some peripherals generate a pulse instead of an interrupt signal. These pulses are
+Page  300: The SYNC7 block is programmed in Free-running mode. It generates a pulse on its
+Page  306: –    Low-speed external oscillator (LSE) for the 32 kHz crystals
+Page  307: VSW                                  lse_ck                                                                                                        ...
+Page  307: LSE /CSS lse_ck                                      U
+Page  307: rcc_lsecss_it                                                                                                  E                                    MCO2
+Page  308: rcc_lsecss_it          O          LSE clock security failure interrupt
+Page  310: pin to reset the connected external devices. The pulse generator guarantees a minimum
+Page  310: reset pulse duration of 20 μs for each internal reset source. In case of an external reset, the
+Page  310: reset pulse is generated while the NRST pin is asserted Low.
+Page  310: Pulse generator      OR
+Page  317: •    LSE (Low-speed external oscillator) clock: 32 kHz
+Page  318: LSEON                                                  0        0
+Page  318: OSC32_IN                                   lse_ck                     lse_ck                              rcc_rtc_ck                                                                                                                      To
+Page  318: LSE        tempo                                               1
+Page  318: lse_ck    1
+Page  318: lse_ck
+Page  319: Figure 42. HSE/LSE clock source
+Page  320: LSE oscillator
+Page  320: The LSE block can generate a clock from two possible sources:
+Page  320: External clock source (LSE bypass)
+Page  320: can have a frequency up to 1 MHz. This mode is selected by setting the LSEBYP and
+Page  320: LSEON bits of RCC Backup Domain Control Register (RCC_BDCR) to ‘1’. The external
+Page  321: External crystal/ceramic resonator (LSE crystal)
+Page  321: The LSE clock is generated from a 32.768 kHz crystal or ceramic resonator. It has the
+Page  321: The LSERDY flag of the RCC Backup Domain Control Register (RCC_BDCR) indicates
+Page  321: whether the LSE crystal is stable or not. At startup, the LSE crystal output clock signal is not
+Page  321: The LSE oscillator is switched ON and OFF using the LSEON bit. The LSE remains enabled
+Page  321: In addition, the LSE clock can be driven to the MCO1 output and used as clock source for
+Page  321: The LSE also offers a programmable driving capability (LSEDRV[1:0]) that can be used to
+Page  323: SOF signal, the LSE, or an external signal, to automatically adjust the oscillator frequency
+Page  325: CSS on LSE
+Page  325: A clock security system on the LSE oscillator can be enabled by software by programming
+Page  325: the LSECSSON bit in the RCC Backup Domain Control Register (RCC_BDCR).
+Page  325: •    or after a failure detection on LSE.
+Page  325: LSECSSON bit must be written after the LSE is enabled (LSEON bit set by software) and
+Page  325: ready (LSERDY set by hardware), and after the RTC clock has been selected through the
+Page  325: The CSS on LSE works in all modes (Run, Stop and Standby) except VBAT.
+Page  325: If an LSE failure is detected, the LSE clock is no more delivered to the RTC but the value of
+Page  325: RTCSEL, LSECSSON and LSEON bits are not changed by the hardware.
+Page  325: A wakeup is generated in Standby mode. In other modes an interrupt (rcc_lsecss_it) can
+Page  325: be sent to wake up the software. The software must then disable the LSECSSON bit, stop
+Page  325: the defective LSE (clear LSEON bit), and can change the RTC clock source (no clock or LSI
+Page  335: lse_ck
+Page  336: lse_ck
+Page  338: Note:           UARTs also need the LSE clock when high baud rates are not required.
+Page  339: lse_ck             5                                        Logic
+Page  339: lse_ck             5                   UART[5:4]EN
+Page  339: lse_ck             5                                         PKEU
+Page  343: lse_ck           2
+Page  344: lse_ck                      0                      CECLPEN
+Page  344: lse_ck               3
+Page  344: lse_ck               3
+Page  344: lse_ck               3
+Page  344: •        the lse_ck
+Page  344: If the LSE is selected as RTC clock, the RTC will work normally even if the backup or the
+Page  345: The LSE clock is in the Backup domain, whereas the other oscillators are not. As a
+Page  345: •   If LSE is selected as RTC clock, the RTC continues working even if the VDD supply is
+Page  345: •   Calibrating the HSI or CSI with the LSE
+Page  345: The primary purpose of having the LSE connected to a TIMx input capture is to be able
+Page  345: consecutive edges of the LSE signal gives a measurement of the internal clock period.
+Page  345: Taking advantage of the high precision of LSE crystals (typically a few tens of ppm) we
+Page  345: The basic concept consists in providing a relative measurement (e.g. HSI/LSE ratio):
+Page  354: no lse_ck                                                                               No clock provided to the peripheral because CPU is in CStop
+Page  354: 1         1           and no            X                              0                   0                and lse_ck or lsi_ck or hsi_ker_ck or csi_ker_ck are not
+Page  354: 1         1                             X                           (1)                    0                PERxLPEN=‘1’ and lsi_ck or lse_ck are selected.
+Page  354: lse_ck
+Page  354: selected is lsi_ck or lse_ck.
+Page  355: the kernel source clock of the peripheral is lse_ck or lsi_ck.
+Page  355: not lse_ck                                                                                           No clock provided to the peripheral, because
+Page  355: 1         X          1            and               0                         DStop            0                    0               D3 is in DStop, req_ker_perx = ‘0’, and lse_ck
+Page  356: 1         X          1                            1                                          0                    0               even if req_ker_perx = ‘0’, lse_ck or lsi_ck or
+Page  356: not lse_ck
+Page  356: lse_ck
+Page  356: lse_ck or lsi_ck are selected, while D3 is in
+Page  356: mode with PERxAMEN = ‘1’, and the kernel clock source of the peripheral is lse_ck or
+Page  357: In order for the LPTIMER to operate with lse_ck or lsi_ck when the circuit is in Stop mode,
+Page  357: the user application has to select the lsi_ck or lse_ck input via LPTIMxSEL fields, and set
+Page  359: •     rcc_lsecss_it: an interrupt line dedicated to the failure detection of the LSE Clock
+Page  359: LSERDYF         LSE ready                                      LSERDYIE                 Set LSERDYC to ‘1’
+Page  359: LSECSSF         LSE Clock security system failure              LSECSSFIE                Set LSECSSC to ‘1’    rcc_lsecss_it
+Page  359: 1. The security system feature must also be enabled (LSECSSON = ‘1’), in order to generate interrupts.
+Page  367: 001: LSE oscillator clock selected (lse_ck)
+Page  368: else it is equal to 2 x Frcc_pclkx_d2 (default after reset)
+Page  368: 4, else it is equal to 4 x Frcc_pclkx_d2
+Page  392: 011: lse_ck clock selected as kernel peripheral clock
+Page  392: 00: lse_ck clock is selected as kernel clock (default after reset)
+Page  393: 10: lse_ck clock is selected as kernel clock
+Page  393: 101: lse_ck clock is selected as kernel clock
+Page  393: 101: lse_ck clock is selected as kernel clock
+Page  395: 011: lse_ck clock selected as kernel peripheral clock
+Page  395: 011: lse_ck clock selected as kernel peripheral clock
+Page  396: 101: lse_ck clock is selected as kernel peripheral clock
+Page  397: LSERDYIE
+Page  397: LSECSSIE
+Page  397: Bit 9 LSECSSIE: LSE clock security system Interrupt Enable
+Page  397: 0: LSE CSS interrupt disabled (default after reset)
+Page  397: 1: LSE CSS interrupt enabled
+Page  398: Bit 1 LSERDYIE: LSE ready Interrupt Enable
+Page  398: Set and reset by software to enable/disable interrupt caused by the LSE oscillator stabilization.
+Page  398: 0: LSE ready interrupt disabled (default after reset)
+Page  398: 1: LSE ready interrupt enabled
+Page  399: LSERDYF
+Page  399: LSECSSF
+Page  399: Bit 9 LSECSSF: LSE clock security system Interrupt Flag
+Page  399: Reset by software by writing LSECSSC bit.
+Page  399: Set by hardware when a failure is detected on the external 32 kHz oscillator and LSECSSIE is set.
+Page  400: Bit 1 LSERDYF: LSE ready Interrupt Flag
+Page  400: Reset by software by writing LSERDYC bit.
+Page  400: Set by hardware when the LSE clock becomes stable and LSERDYIE is set.
+Page  400: 0: No clock ready interrupt caused by the LSE (default after reset)
+Page  400: 1: Clock ready interrupt caused by the LSE
+Page  401: LSERDYC
+Page  401: LSECSSC
+Page  401: Bit 9 LSECSSC: LSE clock security system Interrupt Clear
+Page  401: Set by software to clear LSECSSF.
+Page  401: 0: LSECSSF no effect (default after reset)
+Page  401: 1: LSECSSF cleared
+Page  402: Bit 1 LSERDYC: LSE ready Interrupt Clear
+Page  402: Set by software to clear LSERDYF.
+Page  402: 0: LSERDYF no effect (default after reset)
+Page  402: 1: LSERDYF cleared
+Page  403: LSECSSON
+Page  403: LSECSSD
+Page  403: LSERDY
+Page  403: LSEBYP
+Page  403: LSEON
+Page  403: Res.    Res.   Res.   Res.   Res.    RTCSEL[1:0]        Res.                          LSEDRV[1:0]
+Page  403: (except in case of failure detection on LSE). These bits must be written before LSECSSON is
+Page  403: 01: LSE clock used as RTC clock
+Page  404: Bit 6 LSECSSD: LSE clock security system failure detection
+Page  404: Bit 5 LSECSSON: LSE clock security system enable
+Page  404: LSECSSON must be enabled after LSE is enabled (LSEON enabled) and ready (LSERDY set by
+Page  404: Once enabled this bit cannot be disabled, except after a LSE failure detection (LSECSSD = ‘1’). In
+Page  404: that case the software must disable LSECSSON.
+Page  404: Bits 4:3 LSEDRV[1:0]: LSE oscillator driving capability
+Page  404: Set by software to select the driving capability of the LSE oscillator.
+Page  404: Bit 2 LSEBYP: LSE oscillator bypass
+Page  404: LSE is enabled (by LSEON) or ready (LSERDY = ‘1’)
+Page  404: 0: LSE oscillator not bypassed (default after backup domain reset)
+Page  404: 1: LSE oscillator bypassed
+Page  404: Bit 1 LSERDY: LSE oscillator ready
+Page  404: Set and reset by hardware to indicate when the LSE is stable. This bit needs 6 cycles of lse_ck
+Page  404: clock to fall down after LSEON has been set to ‘0’.
+Page  404: 0: LSE oscillator not ready (default after backup domain reset)
+Page  404: 1: LSE oscillator ready
+Page  404: Bit 0 LSEON: LSE oscillator enabled
+Page  404: 0: LSE oscillator OFF (default after backup domain reset)
+Page  404: 1: LSE oscillator ON
+Page  405: Security System on LSE or by the Low Speed Watchdog or by the RTC.
+Page  474: Res.                        Res.                         Res.                                                                           LSECSSC                                LSECSSF                              LSECSSIE                                                     9
+Page  474: Res.                        Res.                         Res.                        LSECSSD                                           PLL1RDYC                               PLL1RDYF                             PLL1RDYIE                                    Res.             6
+Page  474: ADC12RST                   JPGDECRST                        Res.                       LSECSSON                                           HSI48RDYC                              HSI48RDYF                            HSI48RDYIE                                   Res.             5
+Page  474: LSEDRV[1:0]
+Page  474: Res.                        Res.                         Res.                        LSEBYP                                             HSIRDYC                                HSIRDYF                              HSIRDYIE                                                     2
+Page  474: DMA2RST                       Res.                       LSIRDY                        LSERDY                                             LSERDYC                                LSERDYF                              LSERDYIE                              LPUART1SEL[2:0]        1
+Page  474: DMA1RST                    MDMARST                        LSION                         LSEON                                             LSIRDYC                                LSIRDYF                              LSIRDYIE
+Page  482: The synchronization signal can also be derived from the LSE oscillator output or it can be
+Page  482: –    LSE oscillator output
+Page  482: •   Possibility to generate synchronization pulses by software
+Page  483: LSE                                  SYNC divider
+Page  484: crs_sync1      Digital input   SYNC signal source selection (OTG_HS1, LSE or OTG_HS2)
+Page  484: be the signal from an external signal (SYNC), the LSE clock, the OTG HS1 SOF signal, or
+Page  486: not clean or when some SYNC pulse is missing (for example when one USB SOF is
+Page  489: 01: LSE selected as SYNC signal source
+Page  489: clock precision after waking up from Sleep mode, the LSE clock or the SYNC pin should be
+Page  491: and no SYNC was detected, meaning either that a SYNC pulse was missed or that the
+Page  491: This flag is set by hardware when the SYNC pulse arrives before the ESYNC event and the
+Page  496: •   Else retry (the semaphore has been locked by another AHB bus master or process)
+Page  497: •   Else retry (the semaphore has been locked by another AHB bus master or process)
+Page  497: •   Else Write is ignored, semaphore remains locked and no interrupts are generated (the
+Page  517: 10.3.14   Using the HSE or LSE oscillator pins as GPIOs
+Page  517: When the HSE or LSE oscillator is switched OFF (default state after reset), the related
+Page  517: When the HSE or LSE oscillator is switched ON (by setting the HSEON or LSEON bit in the
+Page  554: RCC          lse_ck      ETR3                                   A       -
+Page  555: D3      AHB4     RCC          lse_ck    crs_sync1     CRS        APB1   D2      A            -
+Page  558: RCC           lse_ck        TI1_4                                A       -
+Page  558: RCC           lse_ck        TI1_2                                A       -
+Page  570: •   The signals, i.e. the pulses generated by the peripheral. Once a peripheral has
+Page  571: D3      AHB4     RCC           CSS_LSE                                                 -
+Page  591: peripheral, the write must be set as non bufferable, in order to avoid a false new MDMA
+Page  603: DINCOS/=DSIZE, DBURST must be programmed to 000 (single transfer), else the
+Page  603: be maximum 100 (burst of 16), else the result is unpredictable.
+Page  604: SINCOS/=SSIZE, SBURST must be programmed to 000 (single transfer), else the
+Page  604: maximum 100 (burst of 16), else the result is unpredictable.
+Page  604: DINCOS size, else the result is unpredictable.
+Page  604: size, else the result is unpredictable.
+Page  656: transfer     if DIR = 1, else
+Page  656: DIR = 1,   DIR = 1,                                                                                                 DIR = 1, else
+Page  656: else       else                                                                                                BDMA_CM0/1ARx)
+Page  679: If EGE is enabled, the multiplexer channel generates a channel event, as a pulse of one
+Page  680: controller. Else, upon a new detected synchronization event, there will be a synchronization
+Page  681: completion of the usage of the related channel of the DMA controller. Else, upon a new
+Page  730: lsecss_rcc_it                                     CSS_LSE     CSS LSE
+Page  738: •    Configurable events (signals from I/Os or peripherals able to generate a pulse), they
+Page  739: •     Peripheral signals that generate a pulse are connected to an EXTI Configurable Event
+Page  741: detect Pulse
+Page  742: reset by the clocked Delay and Rising edge detect pulse generator. This guarantees that the
+Page  742: circuit is reset by the D3 domain clocked Delay and Rising edge detect pulse generator.
+Page  742: Both = 0                D3 domain clock rising edge detect pulse generator
+Page  742: At least one = 1                       CPU clock rising edge detect pulse generator
+Page  743: detect Pulse
+Page  743: detect Pulse
+Page  744: Pulse generator                                       CPU Event(x)
+Page  744: Pulse generator
+Page  745: Rising edge                             Pulse generator
+Page  745: Pulse generator                                                            Wakeups
+Page  747: RCC LSECSS(2)
+Page  749: 2. RTC Tamper, RTC timestamp and RCC LSECSS signals are OR-ed together on the same EXTI event input.
+Page  750: on the Event input a CPU event pulse is generated. There is no CPU Event pending bit.
+Page  750: Pulse generator.
+Page  750: the D3 domain wakeup signal after the Delay + Rising Edge detect Pulse
+Page  751: –    Configurable Event inputs will generate a pulse on D3 domain interrupt.
+Page  812: rising edge of the memory clock occurs in the middle of the NADV low pulse.
+Page  813: pulses to the memory, keeping the Chip Select and output enable signals valid. It does not
+Page  830: LE input of the NAND Flash memory is active during the write strobe (low pulse on
+Page  830: active during the write strobe (low pulse on NWE), thus the written bytes are
+Page  846: internal pulse is generated.
+Page  855: timer generates a refresh pulse when zero is reached. The COUNT value must be set at
+Page  855: Each time a refresh pulse is generated, this 13-bit COUNT field is reloaded into the counter.
+Page 1034: during operation to compensate the output value, else increment OTRIMx[4:0] and
+Page 1065: spurious pulses due to current spikes, as depicted in Figure 212 (the COMP channel
+Page 1065: pulse
+Page 1086: •    Setting CALSEL to 01 initializes the offset calibration for the P differential pair (low
+Page 1086: •    Resetting CALSEL to 11 initializes the offset calibration for the N differential pair (high
+Page 1086: by CALSEL and OPAHSM. The software should increment the TRIMOFFSETN bits in the
+Page 1086: OPAEN       OPAHSM         CALON          CALSEL         VOUT
+Page 1087: OPAEN     OPAHSM         CALON          CALSEL       VOUT
+Page 1087: The above calibration mode correspond to OPAHSM=0 and CALSEL=11 in the
+Page 1087: •    Normal_mode and P differential pair, CALSEL=01
+Page 1088: PGA_GAIN          CALSEL       CALON    Res.   Res.             Res.     VM_SEL       Res.       VP_SEL            OPAEN
+Page 1089: Bits 13:12 CALSEL: Calibration selection
+Page 1091: PGA_GAIN           CALSEL      CALON                            Res.     VM_SEL       Res.     VP_SEL            OPAEN
+Page 1092: Bits 13:12 CALSEL: Calibration selection
+Page 1095: 0              CALSEL                                                                                                                 CALSEL
+Page 1098: Pulses skipper                                           -
+Page 1102: Channel redirection can be used to collect audio data from PDM (pulse density modulation)
+Page 1114: The filter has the following transfer function (impulse response in H domain):
+Page 1230: only (else for write accesses an AHB bus error is generated), Warning! any write not
+Page 1235: bit will still be high). If one or both of above conditions are false, the RNG_DR
+Page 1236: high). If one or both of above conditions are false, the RNG_DR register must not be
+Page 1302: On read returns output FIFO content (pointed to by read pointer), else returns an
+Page 1314: •    AHB slave peripheral, accessible through 32-bit word accesses only (else an AHB
+Page 1327: digest registers. All these registers are accessible through 32-bit word accesses only, else
+Page 1340: and pulse width in triggered one-pulse mode
+Page 1344: f1STPW: clock source defining the length of the initial pulse in chopper mode. For
+Page 1345: triggered pulse duration.
+Page 1346: t1STPW is the length of the initial pulse in chopper mode, programmed with the STRPW[3:0]
+Page 1362: waveforms with pulsewidth below the deadtime values, for all deadtime configurations.
+Page 1362: Figure 295. Complementary outputs for low pulse width (SDTRx = SDTFx = 0)
+Page 1362: Figure 296. Complementary outputs for low pulse width (SDTRx = SDTFx = 1)
+Page 1362: Figure 297. Complementary outputs for low pulse width (SDTRx = 0, SDTFx = 1)
+Page 1363: Figure 298. Complementary outputs for low pulse width (SDTRx = 1, SDTFx=0)
+Page 1365: 36.3.6   Set/reset events priorities and narrow pulses management
+Page 1368: resolution pulse.
+Page 1368: 5. This influences the latency and the jitter present on the output pulses, as summarized in
+Page 1369: Response time                                          Jitter on output pulse
+Page 1369: 5 to 6 cycles of fHRTIM      1 cycles of fHRTIM   No jitter, pulse width maintained with
+Page 1369: (depends whether the                              1 cycle of fHRTIM clock jitter pulse width
+Page 1370: 5-6 cycles delay                           Jitter-less pulse
+Page 1370: Minimal latency                                   1 cycle pulse length jitter
+Page 1376: necessary to shut down the PWM outputs in a delayed manner, either once the active pulse
+Page 1376: In this mode, the active pulse is completed before the protection is activated. The selected
+Page 1376: external event causes the output to enter in idle mode at the end of the active pulse (defined
+Page 1376: active pulse is completed: it is mandatory to make sure that the outputs are in idle state
+Page 1376: independently from the end of the active pulse on output.
+Page 1379: Only available in push-pull mode, it allows to have balanced pulsewidth on the two outputs
+Page 1379: when one of the active pulse is shortened due to a protection. The pulsewidth, which was
+Page 1380: Pulse length
+Page 1380: EEV    Pulse length
+Page 1380: push-pull is maintained for one additional period so that the shorten pulse can be repeated:
+Page 1381: determine the sequence of shorten pulses (HRTIM_CHA1 then HRTIM_CHA2 or vice
+Page 1381: request within the same period, it will cause the output pulses to be unbalanced (1st pulse
+Page 1381: length defined by the external event or software reset, while the 2nd pulse is defined by the
+Page 1381: The minimum pulsewidth that can be handled in balanced idle mode is 4 fHRTIM clock
+Page 1381: If the capture occurs before the counter has reached this minimum value, the current pulse
+Page 1381: any case, the pulsewidths are always balanced.
+Page 1381: external event arrives while output 1 is active (delayed idle effective after output 2 pulse),
+Page 1381: Note:    The balanced idle mode must not be disabled while a pulse balancing sequence is on-
+Page 1391: When operating in burst mode, one or a few pulses are outputs followed by an idle period
+Page 1391: equal to several counting periods, typically, where no output pulses are produced, as shown
+Page 1393: start or timer A start), a pulse is sent on the HRTIM_SCOUT output when exiting the burst
+Page 1393: aligned with timing unit counting period (a pulse on the output may be interrupted,
+Page 1393: necessarily aligned with the timing unit counting period (a pulse on the output may be
+Page 1394: The pulsewidth on TIMxx OC output must be at least N fHRTIM clock cycles long to be
+Page 1396: periods, the limitations related to the narrow pulse management listed in Section 36.3.6
+Page 1401: possibility to define a specific pulsewidth at the beginning of the pulse, to be followed by a
+Page 1401: pulse following the rising edge of the reference waveform, without any added carrier.
+Page 1401: The pulsewidth of the initial pulse is defined using the STRPW[3:0] bitfield as follows:
+Page 1401: In chopper mode, the carrier frequency and the initial pulsewidth are combined with the
+Page 1401: the initial pulse to have a repetitive signal shape.
+Page 1401: waiting for the current carrier period to be completed. It can thus contain shorter pulses than
+Page 1401: Start pulsewidth                  Carrier period
+Page 1407: The synchronization pulses are generated on the HRTIM_SCOUT output pin, with
+Page 1407: SYNCOUT[0] = 0, the HRTIM_SCOUT pin has a low idle level and issues a positive pulse of
+Page 1407: high and a negative pulse is generated.
+Page 1407: Note:     The synchronization pulse is followed by an idle level of 16 fHRTIM clock cycles during which
+Page 1407: (SYNCSRC[1:0] = 00 or 10), the output pulse is generated only when the counter is starting
+Page 1408: •       11: a positive pulse on the HRTIM_SCIN input pin
+Page 1411: An output pulse of 1 fHRTIM clock periods is generated on the hrtim_dac_trgx output.
+Page 1427: 10: Positive pulse on HRTIM_SCOUT output (16x fHRTIM clock cycles)
+Page 1427: 11: Negative pulse on HRTIM_SCOUT output (16x fHRTIM clock cycles)
+Page 1428: 11: External event (input pin). A positive pulse on HRTIM_SCIN input triggers the HRTIM.
+Page 1465: Bits 10:7 STRPW[3:0]: Timerx start pulsewidth
+Page 1465: This register defines the initial pulsewidth following a rising edge on output signal.
+Page 1465: 000: 0/8 (i.e. only 1st pulse is present)
+Page 1514: It may be used for a variety of purposes, including measuring the pulse lengths of input
+Page 1514: Pulse lengths and waveform periods can be modulated from a few microseconds to several
+Page 1514: –    One-pulse mode output
+Page 1518: (TIMx_RCR) + 1. Else the update event is generated at each counter overflow.
+Page 1522: (TIMx_RCR) + 1. Else the update event is generated at each counter underflow.
+Page 1541: output a single pulse (in One Pulse mode).
+Page 1541: waveform, provided that the preload register is not enabled (OCxPE=’0’, else TIMx_CCRx
+Page 1542: Pulse Width Modulation mode allows you to generate a signal with a frequency determined
+Page 1543: OCxREF is high as long as TIMx_CNT < TIMx_CCRx else it becomes low. If the
+Page 1543: TIMx_CNT > TIMx_CCRx else it becomes high. If the compare value in TIMx_CCRx is
+Page 1546: programmable delay and phase shift between respective pulses. While the frequency is
+Page 1547: generated with a single programmable signal ANDed in the middle of the pulses. The
+Page 1548: Figure 382. 3-phase combined PWM signals with multiple trigger pulses per period
+Page 1549: corresponding pulse is not generated.
+Page 1549: Figure 384. Dead-time waveforms with delay greater than the negative pulse
+Page 1550: Figure 385. Dead-time waveforms with delay greater than the positive pulse
+Page 1559: 37.3.20   One-pulse mode
+Page 1559: One-pulse mode (OPM) is a particular case of the previous modes. It allows the counter to
+Page 1559: be started in response to a stimulus and to generate a pulse with a programmable length
+Page 1559: waveform can be done in output compare mode or PWM mode. You select One-pulse mode
+Page 1559: A pulse can be correctly generated only if the compare value is different from the counter
+Page 1559: Figure 393. Example of one pulse mode.
+Page 1559: tDELAY   tPULSE                           t
+Page 1559: For example you may want to generate a positive pulse on OC1 with a length of tPULSE and
+Page 1560: •   The tPULSE is defined by the difference between the auto-reload value and the compare
+Page 1560: You only want 1 pulse (Single mode), so you write '1 in the OPM bit in the TIMx_CR1
+Page 1560: In One-pulse mode, the edge detection on TIx input set the CEN bit which enables the
+Page 1560: 37.3.21     Retriggerable one pulse mode (OPM)
+Page 1560: pulse with a programmable length, but with the following differences with Non-retriggerable
+Page 1560: one pulse mode described in Section 37.3.20:
+Page 1560: –    The pulse starts as soon as the trigger occurs (no programmable delay)
+Page 1560: –    The pulse is extended if a new trigger occurs before the previous one is completed
+Page 1560: (the ARR register sets the pulse length). If the timer is configured in Down-counting mode,
+Page 1561: Figure 394. Retriggerable one pulse mode
+Page 1561: and generates count pulses as well as the direction signal. Depending on the sequence the
+Page 1564: The “interfacing timer” can be used in output mode to generate a pulse which changes the
+Page 1564: the interfacing timer channel must be programmed so that a positive pulse is generated
+Page 1564: after a programmed delay (in output compare or PWM mode). This pulse is sent to the
+Page 1569: This mode is used for one-pulse mode.
+Page 1571: enable or compare events. It is also possible to generate a pulse issued by internal edge
+Page 1574: Bit 3 OPM: One pulse mode
+Page 1575: 0011: Compare pulse - the trigger output sends a positive pulse when the CC1IF flag is to
+Page 1575: 1010: Compare Pulse - OC4REF rising or falling edges generate pulses on TRGO2
+Page 1575: 1011: Compare Pulse - OC6REF rising or falling edges generate pulses on TRGO2
+Page 1575: 1100: Compare Pulse - OC4REF or OC6REF rising edges generate pulses on TRGO2
+Page 1575: 1101: Compare Pulse - OC4REF rising or OC6REF falling edges generate pulses on
+Page 1575: 1110: Compare Pulse - OC5REF or OC6REF rising edges generate pulses on TRGO2
+Page 1575: 1111: Compare Pulse - OC5REF rising or OC6REF falling edges generate pulses on
+Page 1576: 011: Compare Pulse - The trigger output send a positive pulse when the CC1IF flag is to be
+Page 1579: (TS=00100). Indeed, TI1F_ED outputs 1 pulse for each transition on TI1F, whereas the
+Page 1584: the center-aligned mode is selected or if DIR=0 (upcounting), else it takes the auto-reload
+Page 1586: else inactive. In downcounting, channel 1 is inactive (OC1REF=‘0’) as long as
+Page 1586: TIMx_CNT>TIMx_CCR1 else active (OC1REF=’1’).
+Page 1586: TIMx_CNT<TIMx_CCR1 else active. In downcounting, channel 1 is active as long as
+Page 1586: TIMx_CNT>TIMx_CCR1 else inactive.
+Page 1587: pulse mode (OPM bit set in TIMx_CR1 register). Else the behavior is not guaranteed.
+Page 1595: (bit OC1PE). Else the preload value is copied in the active capture/compare 1 register when
+Page 1596: (bit OC2PE). Else the preload value is copied in the active capture/compare 2 register when
+Page 1596: (bit OC3PE). Else the preload value is copied in the active capture/compare 3 register when
+Page 1597: (bit OC4PE). Else the preload value is copied in the active capture/compare 4 register when
+Page 1603: (bit OC5PE). Else the preload value is copied in the active capture/compare 5 register when
+Page 1604: (bit OC6PE). Else the preload value is copied in the active capture/compare 6 register when
+Page 1619: They may be used for a variety of purposes, including measuring the pulse lengths of input
+Page 1619: Pulse lengths and waveform periods can be modulated from a few microseconds to several
+Page 1619: –    One-pulse mode output
+Page 1641: output a single pulse (in One-pulse mode).
+Page 1642: waveform, provided that the preload register is not enabled (OCxPE=0, else TIMx_CCRx
+Page 1642: Pulse width modulation mode allows you to generate a signal with a frequency determined
+Page 1643: high as long as TIMx_CNT <TIMx_CCRx else it becomes low. If the compare value in
+Page 1644: In PWM mode 1, the reference signal ocxref is low as long as TIMx_CNT>TIMx_CCRx else
+Page 1646: programmable delay and phase shift between respective pulses. While the frequency is
+Page 1649: 38.3.13   One-pulse mode
+Page 1649: One-pulse mode (OPM) is a particular case of the previous modes. It allows the counter to
+Page 1649: be started in response to a stimulus and to generate a pulse with a programmable length
+Page 1649: waveform can be done in output compare mode or PWM mode. You select One-pulse mode
+Page 1649: A pulse can be correctly generated only if the compare value is different from the counter
+Page 1649: Figure 438. Example of one-pulse mode.
+Page 1649: tDELAY    tPULSE                          t
+Page 1649: For example you may want to generate a positive pulse on OC1 with a length of tPULSE and
+Page 1650: •    The tPULSE is defined by the difference between the auto-reload value and the compare
+Page 1650: You only want 1 pulse (Single mode), so you write '1 in the OPM bit in the TIMx_CR1
+Page 1650: In One-pulse mode, the edge detection on TIx input set the CEN bit which enables the
+Page 1650: 38.3.14 Retriggerable one pulse mode (OPM)
+Page 1650: pulse with a programmable length, but with the following differences with Non-retriggerable
+Page 1650: one pulse mode described in Section 38.3.13:
+Page 1650: •   The pulse starts as soon as the trigger occurs (no programmable delay)
+Page 1650: •   The pulse is extended if a new trigger occurs before the previous one is completed
+Page 1650: (the ARR register sets the pulse length). If the timer is configured in Down-counting mode
+Page 1650: Note:       In retriggerable one pulse mode, the CCxIF flag is not significant.
+Page 1651: Figure 439.Retriggerable one pulse mode
+Page 1651: and generates count pulses as well as the direction signal. Depending on the sequence the
+Page 1665: Bit 3 OPM: One-pulse mode
+Page 1665: CEN is cleared automatically in one-pulse mode, when an update event occurs.
+Page 1666: 011: Compare Pulse - The trigger output send a positive pulse when the CC1IF flag is to be
+Page 1669: (TS=00100). Indeed, TI1F_ED outputs 1 pulse for each transition on TI1F, whereas the
+Page 1672: bits in the TIMx_CR1 register description) and in retriggerable one pulse mode. It is cleared
+Page 1673: the center-aligned mode is selected or if DIR=0 (upcounting), else it takes the auto-reload
+Page 1675: else inactive. In downcounting, channel 1 is inactive (OC1REF=‘0) as long as
+Page 1675: TIMx_CNT>TIMx_CCR1 else active (OC1REF=1).
+Page 1675: TIMx_CNT<TIMx_CCR1 else active. In downcounting, channel 1 is active as long as
+Page 1675: TIMx_CNT>TIMx_CCR1 else inactive.
+Page 1676: pulse mode (OPM bit set in TIMx_CR1 register). Else the behavior is not guaranteed.
+Page 1682: (bit OC1PE). Else the preload value is copied in the active capture/compare 1 register when
+Page 1682: (bit OC2PE). Else the preload value is copied in the active capture/compare 2 register when
+Page 1683: (bit OC3PE). Else the preload value is copied in the active capture/compare 3 register when
+Page 1683: register (bit OC4PE). Else the preload value is copied in the active capture/compare 4
+Page 1685: 0011: LSE
+Page 1694: They may be used for a variety of purposes, including measuring the pulse lengths of input
+Page 1694: Pulse lengths and waveform periods can be modulated from a few microseconds to several
+Page 1694: –    One-pulse mode output
+Page 1695: –        One-pulse mode output
+Page 1708: period                       pulse width             period
+Page 1709: output a single pulse (in One-pulse mode).
+Page 1709: waveform, provided that the preload register is not enabled (OCxPE=’0’, else TIMx_CCRx
+Page 1710: Pulse Width Modulation mode allows you to generate a signal with a frequency determined
+Page 1710: high as long as TIMx_CNT < TIMx_CCRx else it becomes low. If the compare value in
+Page 1711: programmable delay and phase shift between respective pulses. While the frequency is
+Page 1712: 39.3.11         One-pulse mode
+Page 1712: One-pulse mode (OPM) is a particular case of the previous modes. It allows the counter to
+Page 1712: be started in response to a stimulus and to generate a pulse with a programmable length
+Page 1712: waveform can be done in output compare mode or PWM mode. You select One-pulse mode
+Page 1712: A pulse can be correctly generated only if the compare value is different from the counter
+Page 1713: Figure 472. Example of one pulse mode.
+Page 1713: tDELAY   tPULSE                         t
+Page 1713: For example you may want to generate a positive pulse on OC1 with a length of tPULSE and
+Page 1713: •    The tPULSE is defined by the difference between the auto-reload value and the compare
+Page 1713: You only want 1 pulse (Single mode), so you write '1 in the OPM bit in the TIMx_CR1
+Page 1714: In One-pulse mode, the edge detection on TIx input set the CEN bit which enables the
+Page 1714: 39.3.12     Retriggerable one pulse mode (OPM) (TIM12 only)
+Page 1714: pulse with a programmable length, but with the following differences with non-retriggerable
+Page 1714: one pulse mode described in Section 39.3.11: One-pulse mode:
+Page 1714: •   The pulse starts as soon as the trigger occurs (no programmable delay)
+Page 1714: •   The pulse is extended if a new trigger occurs before the previous one is completed
+Page 1714: (the ARR register sets the pulse length). If the timer is configured in down-counting mode,
+Page 1714: Figure 473. Retriggerable one pulse mode
+Page 1718: This mode is used for one-pulse mode.
+Page 1720: Bit 3 OPM: One-pulse mode
+Page 1720: CEN is cleared automatically in one-pulse mode, when an update event occurs.
+Page 1721: 011: Compare Pulse - The trigger output send a positive pulse when the CC1IF flag is to be
+Page 1722: (TS=’00100’). Indeed, TI1F_ED outputs 1 pulse for each transition on TI1F, whereas
+Page 1726: 0110: PWM mode 1 - channel 1 is active as long as TIMx_CNT<TIMx_CCR1 else it is
+Page 1726: 0111: PWM mode 2 - channel 1 is inactive as long as TIMx_CNT<TIMx_CCR1 else it is
+Page 1727: Note: The PWM mode can be used without validating the preload register only in one-pulse
+Page 1727: mode (OPM bit set in the TIMx_CR1 register). Else the behavior is not guaranteed.
+Page 1731: (OC1PE bit). Else the preload value is copied into the active capture/compare 1 register
+Page 1732: (OC2PE bit). Else the preload value is copied into the active capture/compare 2 register
+Page 1735: Bit 3 OPM: One-pulse mode
+Page 1739: 0110: PWM mode 1 - Channel 1 is active as long as TIMx_CNT < TIMx_CCR1 else inactive.
+Page 1739: 0111: PWM mode 2 - Channel 1 is inactive as long as TIMx_CNT < TIMx_CCR1 else active
+Page 1739: Note: The PWM mode can be used without validating the preload register only in one pulse
+Page 1739: mode (OPM bit set in TIMx_CR1 register). Else the behavior is not guaranteed.
+Page 1743: (bit OC1PE). Else the preload value is copied in the active capture/compare 1 register when
+Page 1746: They may be used for a variety of purposes, including measuring the pulse lengths of input
+Page 1746: Pulse lengths and waveform periods can be modulated from a few microseconds to several
+Page 1746: –    One-pulse mode output
+Page 1747: –    One-pulse mode output
+Page 1752: (TIMx_RCR). Else the update event is generated at each counter overflow.
+Page 1764: output a single pulse (in One-pulse mode).
+Page 1765: waveform, provided that the preload register is not enabled (OCxPE=’0’, else TIMx_CCRx
+Page 1765: Pulse Width Modulation mode allows you to generate a signal with a frequency determined
+Page 1766: high as long as TIMx_CNT < TIMx_CCRx else it becomes low. If the compare value in
+Page 1766: programmable delay and phase shift between respective pulses. While the frequency is
+Page 1768: corresponding pulse is not generated.
+Page 1769: Figure 501. Dead-time waveforms with delay greater than the negative pulse.
+Page 1769: Figure 502. Dead-time waveforms with delay greater than the positive pulse.
+Page 1772: (taken over by the AFIO controller) else the enable output remains high.
+Page 1772: controller which forces a Hi-Z state) else the enable outputs remain or become
+Page 1772: Else, MOE remains low until you write it to ‘1’ again. In this case, it can be used for
+Page 1774: 40.4.14     One-pulse mode
+Page 1774: One-pulse mode (OPM) is a particular case of the previous modes. It allows the counter to
+Page 1774: be started in response to a stimulus and to generate a pulse with a programmable length
+Page 1774: waveform can be done in output compare mode or PWM mode. You select One-pulse mode
+Page 1774: A pulse can be correctly generated only if the compare value is different from the counter
+Page 1774: Figure 505. Example of one pulse mode.
+Page 1774: tDELAY   tPULSE                           t
+Page 1774: For example you may want to generate a positive pulse on OC1 with a length of tPULSE and
+Page 1775: •   The tPULSE is defined by the difference between the auto-reload value and the compare
+Page 1775: You only want 1 pulse, so you write ‘1’ in the OPM bit in the TIMx_CR1 register to stop the
+Page 1775: In One-pulse mode, the edge detection on TIx input set the CEN bit which enables the
+Page 1775: 40.4.15   Retriggerable one pulse mode (OPM) (TIM15 only)
+Page 1775: pulse with a programmable length, but with the following differences with Non-retriggerable
+Page 1775: one pulse mode described in Section 40.4.14:
+Page 1775: –    The pulse starts as soon as the trigger occurs (no programmable delay)
+Page 1775: –    The pulse is extended if a new trigger occurs before the previous one is completed
+Page 1775: (the ARR register sets the pulse length). If the timer is configured in Down-counting mode,
+Page 1776: Figure 506. Retriggerable one pulse mode
+Page 1780: This mode is used for one-pulse mode.
+Page 1783: Bit 3 OPM: One-pulse mode
+Page 1785: 011: Compare Pulse - The trigger output send a positive pulse when the CC1IF flag is to be
+Page 1787: (TS=’00100’). Indeed, TI1F_ED outputs 1 pulse for each transition on TI1F, whereas
+Page 1793: 0110: PWM mode 1 - Channel 1 is active as long as TIMx_CNT<TIMx_CCR1 else inactive.
+Page 1793: 0111: PWM mode 2 - Channel 1 is inactive as long as TIMx_CNT<TIMx_CCR1 else
+Page 1794: pulse mode (OPM bit set in TIMx_CR1 register). Else the behavior is not guaranteed.
+Page 1799: (bit OC1PE). Else the preload value is copied in the active capture/compare 1 register when
+Page 1800: (bit OC2PE). Else the preload value is copied in the active capture/compare 2 register when
+Page 1805: 0100: LSE
+Page 1808: Bit 3 OPM: One pulse mode
+Page 1813: 0110: PWM mode 1 - Channel 1 is active as long as TIMx_CNT<TIMx_CCR1 else inactive.
+Page 1813: 0111: PWM mode 2 - Channel 1 is inactive as long as TIMx_CNT<TIMx_CCR1 else active.
+Page 1814: pulse mode (OPM bit set in TIMx_CR1 register). Else the behavior is not guaranteed.
+Page 1819: (bit OC1PE). Else the preload value is copied in the active capture/compare 1 register when
+Page 1825: 0010: LSE
+Page 1838: Bit 3 OPM: One-pulse mode
+Page 1838: CEN is cleared automatically in one-pulse mode, when an update event occurs.
+Page 1843: no internal clock source, the LPTIM can be used as a “Pulse Counter” which can be useful
+Page 1843: –    Internal clock sources: LSE, LSI, HSI or APB clock
+Page 1843: used by Pulse Counter application)
+Page 1843: •      Configurable output: Pulse, PWM
+Page 1849: clock signal which can be chosen among APB, LSI, LSE or HSI sources through the Reset
+Page 1849: other embedded oscillator including LSE, LSI and HSI.
+Page 1849: function or Pulse counter function when all the embedded oscillators are turned off
+Page 1853: •    The One-pulse mode: the output waveform is similar to the one of the PWM mode for
+Page 1853: the first pulse, then the output is permanently reset
+Page 1853: •    The Set-once mode: the output waveform is similar to the One-pulse mode except that
+Page 1854: a One pulse waveform depending on which bit is set: CNTSTRT or SNGSTRT.
+Page 1855: counter is configured to be updated following each internal clock pulse.
+Page 1856: note that a few clock pulses of the LPTIM kernel logic will elapse before the reset is
+Page 1858: The LPTIM peripheral is active when it is clocked by LSE or LSI. LPTIM
+Page 1863: 0: the counter is incremented following each internal clock pulse
+Page 1863: 1: the counter is incremented following each valid clock pulse on the LPTIM external Input1
+Page 1864: 0: Deactivate Set-once mode, PWM / One Pulse waveform (depending on OPMODE bit)
+Page 1867: If this bit is set when a single pulse mode counting is ongoing, then the timer will not stop at the next
+Page 1867: In case of software start (TRIGEN[1:0] = ‘00’), setting this bit starts the LPTIM in single pulse mode.
+Page 1867: single pulse mode as soon as an external trigger is detected.
+Page 1891: LSE (32.768 Hz)
+Page 1892: –    RTC_CALIB: 512 Hz or 1Hz clock output (with an LSE frequency of 32.768 kHz).
+Page 1893: rtc_ker_ck (RTCCLK)             Internal input   RTC clock source (LSE clock, LSI clock and HSE clock)
+Page 1895: The RTC clock source (RTCCLK) is selected through the clock controller among the LSE
+Page 1895: factor to 256, to obtain an internal clock frequency of 1 Hz (ck_spre) with an LSE frequency
+Page 1897: When RTCCLK is LSE(32.768kHz), this allows to configure the wakeup interrupt period
+Page 1900: In addition, when it is clocked by the LSE, the RTC keeps on running under system reset if
+Page 1901: reference clock should be higher than the 32.768 kHz LSE clock. When the RTC_REFIN
+Page 1901: LSE, and RTC_REFIN is used to compensate for the imprecision of the calendar update
+Page 1901: the 1 Hz clock becomes misaligned due to the imprecision of the LSE clock, the RTC shifts
+Page 1901: the calendar is updated continuously based solely on the LSE clock. The RTC then waits for
+Page 1902: series of small adjustments (adding and/or subtracting individual RTCCLK pulses). These
+Page 1902: The smooth digital calibration is performed during a cycle of about 220 RTCCLK pulses, or
+Page 1902: •   Setting the bit CALM[0] to 1 causes exactly one pulse to be masked during the 32-
+Page 1902: Note:       CALM[8:0] (RTC_CALR) specifies the number of RTCCLK pulses to be masked during the
+Page 1902: 32-second cycle. Setting the bit CALM[0] to ‘1’ causes exactly one pulse to be masked
+Page 1902: to ‘1’ effectively inserts an extra RTCCLK pulse every 211 RTCCLK cycles, which means
+Page 1902: between 255 and 256 clock pulses (corresponding to a calibration range from 243.3 to
+Page 1907: The RTC remains active when the RTC clock source is LSE or LSI. RTC alarm,
+Page 1908: 1. Wakeup from STOP and Standby modes is possible only when the RTC clock source is LSE or LSI.
+Page 1926: 0: No RTCCLK pulses are added.
+Page 1926: 1: One RTCCLK pulse is effectively inserted every 211 pulses (frequency increased by
+Page 1926: pulses added during a 32-second window is calculated as follows: (512 * CALP) - CALM.
+Page 1926: The frequency of the calendar is reduced by masking CALM out of 220 RTCCLK pulses (32
+Page 1938: A 9th clock pulse follows the 8 clock cycles of a byte transfer, during which the receiver must
+Page 1939: suppression of spikes with a pulse width up to 50 ns in Fast-mode and Fast-mode Plus. The
+Page 1939: Pulse width of                                          Programmable length from 1 to 15 I2C peripheral
+Page 1942: Note:         At every clock pulse, after SCL falling edge detection, the I2C master or slave stretches SCL
+Page 1944: The SDA input fills the shift register. After the 8th SCL pulse (when the complete data byte is
+Page 1944: SCL pulse (before the Acknowledge pulse).
+Page 1944: ACK pulse           ACK pulse
+Page 1945: after the 9th SCL pulse (the Acknowledge pulse). Then the shift register content is shifted
+Page 1945: stretched low until I2C_TXDR is written. The stretch is done after the 9th SCL pulse.
+Page 1945: ACK pulse                           ACK pulse
+Page 1947: pulse corresponding to its transfer occurs. If not, an underrun occurs, the OVR flag is
+Page 1947: pulse (ACK pulse) of the next data byte occurs. If not an overrun occurs, the OVR flag
+Page 1948: pulses. The user can read the data from the I2C_RXDR register, and then decide to
+Page 1959: SCL pulse when an ACK is received.
+Page 1961: ELSE
+Page 1963: SCL pulse. An RXNE event generates an interrupt if the RXIE bit is set in the I2C_CR1
+Page 1965: ELSE
+Page 1981: after a multiple of 9 SCL clock pulses. A START or a STOP condition is detected when a
+Page 2007: synchronous transmission corresponding to SPI master mode (no clock pulses on start
+Page 2007: bit and stop bit, and a software option to send a clock pulse on the last data bit). In
+Page 2009: ** LBCL bit controls last data clock pulse
+Page 2010: pulses are output on the SCLK pin.
+Page 2011: ** LBCL bit controls last data clock pulse
+Page 2032: clock. No clock pulses are sent to the SCLK pin during start bit and stop bit. Depending on
+Page 2032: the state of the LBCL bit in the USART_CR2 register, clock pulses are, or are not, generated
+Page 2033: *LBCL bit controls last data pulse
+Page 2034: *LBCL bit controls last data pulse
+Page 2034: clock pulse for data transmission appears while the software has not yet loaded any value to
+Page 2035: the USART is disabled (UE=0) to ensure that the clock pulses function correctly.
+Page 2041: scheme that represents logic 0 as an infrared light pulse (see Figure 585).
+Page 2041: output from USART. The output pulse stream is transmitted to an external output driver and
+Page 2041: normal mode the transmitted pulse width is specified as 3/16 of a bit period.
+Page 2042: •   A ‘0‘ is transmitted as a high pulse and a ‘1’ is transmitted as a ‘0’. The width of the
+Page 2042: pulse is specified as 3/16th of the selected bit period in normal mode (see Figure 586).
+Page 2042: •   The SIR receive logic interprets a high state as a logic one and low pulses as logic
+Page 2042: •   The IrDA specification requires the acceptance of pulses greater than 1.41 µs. The
+Page 2042: acceptable pulse width is programmable. Glitch detection logic on the receiver end
+Page 2042: filters out pulses of width less than 2 PSC periods (PSC is the prescaler value
+Page 2042: programmed in the USART_GTPR). Pulses of width less than 1 PSC period are always
+Page 2042: accepted or rejected, those greater than 2 periods will be accepted as a pulse. The
+Page 2042: In low-power mode, the pulse width is not maintained at 3/16 of the bit period. Instead,
+Page 2042: the width of the pulse is 3 times the low-power baud rate which can be a minimum of
+Page 2042: detection the USART should discard pulses of duration shorter than 1/PSC. A valid low
+Page 2042: Note:       A pulse of width less than two and greater than one PSC period(s) may or may not be
+Page 2047: transmitted (assuming that data is to be transmitted, in other words, if TXE/TXFE=0), else
+Page 2048: be set for pulses shorter than 2 x PCLK periods.
+Page 2058: Note: During transmission, a low pulse on the TE bit (‘0’ followed by ‘1’) sends a preamble
+Page 2061: Bit 8 LBCL: Last bit clock pulse
+Page 2061: This bit is used to select whether the clock pulse associated with the last data bit transmitted (MSB)
+Page 2061: 0: The clock pulse of the last data bit is not output to the SCLK pin
+Page 2061: 1: The clock pulse of the last data bit is output to the SCLK pin
+Page 2073: In slave transmission mode, this flag is set when the first clock pulse for data transmission
+Page 2082: power consumption. Only 32.768 kHz LSE clock is required to allow UART communications
+Page 2082: sources different from the LSE clock.
+Page 2086: ** LBCL bit controls last data clock pulse
+Page 2088: ** LBCL bit controls last data clock pulse
+Page 2090: waits for a new start bit. Else, the receiver continues to sample all incoming bits normally.
+Page 2094: The maximum baud rate that can be reached when the LPUART clock source is the LSE, is
+Page 2094: sources different from the LSE clock. For example, if the LPUART clock source frequency is
+Page 2103: transmitted (assuming that data is to be transmitted, in other words, if TXE/TXFE=0), else
+Page 2104: may not be set for pulses shorter than 2 x PCLK periods.
+Page 2112: Note: During transmission, a low pulse on the TE bit (“0” followed by “1”) sends a preamble
+Page 2113: provided that the LPUART clock selection is HSI or LSE in the RCC.
+Page 2113: the clock source for the LPUART must be HSI or LSE (see RCC chapter)
+Page 2139: b)   When SP = 001, a pulse is generated as defined by the TI mode.
+Page 2139: c)   When SSOM=1, SP=000 and MIDI>1 the SS is pulsed inactive between data
+Page 2140: Additionally, bit SSOM=1 setting invokes specific mode which interleaves pulses between
+Page 2140: interleaving pulses between data (SSOE=1, SSOM=1,SSM=0).
+Page 2141: Figure 617. SS interleaving pulses between data (SSOE=1, SSOM=1,SSM=0)
+Page 2145: corresponding to the selected polarity before the SPI slave is selected by SS else following
+Page 2147: suggested to keep number of data to be extended always aligned with packet size else the
+Page 2148: the pulse here too, to synchronize the slave with the beginning of each data sequence. The
+Page 2149: of SS pulse for slave, or
+Page 2153: signal synchronizes the protocol by pulses over the LSB data bit as it is shown at the
+Page 2153: If the slave detects misplaced SS pulse during data transaction the TIFRE flag is set.
+Page 2155: A TI mode frame format error is detected when an SS pulse occurs during an ongoing
+Page 2155: is not disabled when an error occurs, the SS pulse is ignored, and the SPI waits for the next
+Page 2155: SS pulse before starting a new transfer. The data may be corrupted since the error detection
+Page 2168: As shown in Figure 632, in slave mode various pulse widths of WS can be accepted as the
+Page 2190: 1: SPI data frames are interleaved with SS non active pulses when MIDI[3:0]>1
+Page 2210: ensure that an audio frame contains an integer number of MCLK pulses per bit clock
+Page 2219: The PDM (Pulse Density Modulation) interface is provided in order to support digital
+Page 2224: FSALL            0       Pulse width is one bit clock cycle
+Page 2276: transition_pulse                                                                                spdifrx_ker_ck
+Page 2276: transition_pulse
+Page 2276: transition_pulse
+Page 2276: transition pulse, the counter value is stored and the counter is reset to start counting again.
+Page 2277: Note that when the TRCNT overflows due to a too long time interval between two pulses,
+Page 2277: pulse of preambles, and is coded as TL.
+Page 2277: •    Else an error code is generated (FERR flag is set).
+Page 2280: Wait for 4 transitions if WFA = 1, else skip this step
+Page 2280: pulses for 70 transitions
+Page 2286: correct: for example if short pulses are not grouped by pairs.
+Page 2428: fdcan1_soc                              Start of cycle pulse
+Page 2428: fdcan1_rtp            Digital output    Register time mark pulse
+Page 2428: fdcan1_tmp                              Trigger time mark pulse
+Page 2436: transmission. If the transmitter is error passive, ESI is transmitted recessive, else it is
+Page 2443: •    Store received frame in Rx buffer and generate pulse at filter event pin
+Page 2463: application program. The Host has to serve this watchdog regularly, else all CAN bus
+Page 2463: The timing events which cause a pulse at output FDCAN trigger time mark interrupt pulse
+Page 2463: m_ttcan_tmp and FDCAN register time mark interrupt pulsem_ttcan_rtp are generated in
+Page 2470: transmitter of the last reference message, else it is backup time master
+Page 2473: (synchronization deviation limit), the new value for FDCAN_TURNA.NAV takes effect. Else
+Page 2483: Range is 0 to FDCAN_SIDFC.LSS. - 1 or FDCAN_XIDFC.LSE. - 1.
+Page 2488: bit position enables generation of a pulse at the related filter event pin with the
+Page 2490: bit position enables generation of a pulse at the related filter event pin with the
+Page 2491: TMEX         – 1: Pulse at output m_ttcan_tmp with the length of one period is generated when the
+Page 2513: Res.   Res.    Res.   Res.    Res.   Res.   Res.    Res.                           LSE[7:0]
+Page 2514: Bits 23:16 LSE[7:0]: List size extended
+Page 2515: FDCAN_XIDFC[LSE] - 1.
+Page 2526: are reset immediately, else the bits remain set until the Tx scan process has completed.
+Page 2534: Enables sync pulse output .
+Page 2534: 00: No sync pulse
+Page 2534: 01: Sync pulse at start of basic cycle
+Page 2534: 10: Sync pulse at start of matrix cycle
+Page 2537: Bit 8 TTIE: Trigger time mark interrupt pulse enable
+Page 2537: time mark interrupt pulse is generated when the trigger memory element becomes active,
+Page 2537: Bit 5 RTIE: Register time mark interrupt pulse enable.
+Page 2537: mark interrupt pulse with the length of one m_ttcan_clk period is generated when time
+Page 2551: LSE[6:0]
+Page 2557: calibration to avoid false measurements in case of glitches on the bus line. The configured
+Page 2564: –    SOF pulse PAD connectivity
+Page 2564: –    SOF pulse internal connection to timer (TIMx)
+Page 2577: –    USB transaction error due to CRC failure, timeout, bit stuff error, false EOP
+Page 2578: SOF pulse output, to
+Page 2578: ITR1         SOF pulse
+Page 2578: and peripheral, as well as an SOF pulse output connectivity feature.
+Page 2579: A SOF pulse signal, is generated at any SOF starting token and with a width of 20 HCLK
+Page 2579: cycles. The SOF pulse is also internally connected to the input trigger of the timer, so that
+Page 2579: SOF pulse.
+Page 2579: from the device status register (FNSOF bit in OTG_DSTS). A SOF pulse signal with a width
+Page 2579: of 20 HCLK cycles is also generated.The SOF pulse signal is also internally connected to
+Page 2579: timer can be triggered by the SOF pulse.
+Page 2591: OTG_DVBUSPULSE        0x82C
+Page 2591: (OTG_DVBUSPULSE)
+Page 2600: This bit selects utmi_termselect to drive the data line pulse during SRP (session request
+Page 2623: – No PID/CRC5 errors in either EXT token or LPM token (else ERROR)
+Page 2623: – Valid bLinkState = 0001B (L1) received in LPM transaction (else STALL)
+Page 2623: – No data pending in transmit queue (else NYET).
+Page 2633: False EOP
+Page 2645: (OTG_DVBUSPULSE)
+Page 2672: USPULSE
+Page 2684: else if (STALL)
+Page 2684: else if (NAK or TXERR )
+Page 2684: else
+Page 2684: else if (CHH)
+Page 2684: else
+Page 2685: else if (ACK)
+Page 2685: else if (TXERR or BBERR or STALL)
+Page 2685: else if (CHH)
+Page 2685: else
+Page 2685: else if (ACK)
+Page 2686: else if (DTERR)
+Page 2691: else
+Page 2691: else
+Page 2691: else
+Page 2691: else
+Page 2691: else
+Page 2692: else
+Page 2692: else
+Page 2692: else
+Page 2692: else
+Page 2692: else
+Page 2693: else
+Page 2693: else
+Page 2698: else
+Page 2698: else
+Page 2698: else
+Page 2698: else
+Page 2698: else
+Page 2699: else
+Page 2739: •   Flexibility to control the Pulse-Per-Second (PPS) output signal (ptp_pps_o)
+Page 2771: The reference timing is accessible by an output pulse-per-second signal (see Pulse-per-
+Page 2771: Pulse-per-second output
+Page 2772: The MAC supports either a fixed or a flexible pulse-per-second signal (ptp_pps_o)
+Page 2772: •    Fixed pulse-per-second output
+Page 2772: •    Fixed pulse-per-second output
+Page 2772: interval of the pulse generated on the ptp_pps_o output.
+Page 2772: Refer to Section 57.9.9: Programming guidelines for flexible pulse-per-second (PPS) output
+Page 2772: for further details on how configuring flexible pulse output.
+Page 2773: Figure 784. The arithmetic carry that the accumulator generates is used as a pulse to
+Page 2795: 0                       1                      1110           False carrier indication
+Page 2806: •    Programming Guidelines for flexible pulse-per-second (PPS) output (see
+Page 2812: 57.9.9      Programming guidelines for flexible pulse-per-second (PPS) output
+Page 2812: Generating a single pulse on PPS
+Page 2812: To generate a single pulse on PPS:
+Page 2812: the MAC to generate a single pulse on the PPS signal output at the time programmed
+Page 2812: When the PPSCMD is executed (PPSCMD bits = 0), you can cancel the pulse generation by
+Page 2812: elapsed. You can also program the behavior of the next pulse in advance. To program the
+Page 2812: next pulse:
+Page 2812: 1.   Program the start time for the next pulse in the Target Time registers. This time should
+Page 2812: be higher than the time at which the falling edge occurs for the previous pulse.
+Page 2812: single pulse after the previous pulse is de-asserted. This instructs the MAC to generate
+Page 2813: a single pulse on the PPS signal output at the time programmed in Target Time
+Page 2813: If this command is given before the previous pulse becomes low, then the new
+Page 2813: extended pulse.
+Page 2813: Generating a pulse train on PPS
+Page 2813: To generate a pulse train on PPS:
+Page 2813: 3.   Program the interval value between the train of pulses on the PPS signal output in PPS
+Page 2813: instructs the MAC to generate a train of pulses on the PPS signal output at the start
+Page 2813: By default, the PPS pulse train is free-running unless it is stopped by issuing a ‘STOP
+Page 2813: Pulse train at time’ or ‘STOP Pulse Train immediately’ commands.
+Page 2813: the train of pulses on PPS signal output after the programmed stop time specified at
+Page 2813: The pulse train can be stopped at any time by programming 0101 in the PPSCMD field.
+Page 2813: Similarly, the Stop Pulse train command (given in Step 5) can be canceled by programming
+Page 2813: The pulse train generation can be stopped by programming PPSCMD to 0011 before the
+Page 2909: PLSEN
+Page 2910: Bit 18 PLSEN: PHY Link Status Enable
+Page 2961: PPSCTRL is 0000, and the PPS output is 1 pulse (of width clk_ptp_i) every second. For other
+Page 2963: 0001: START Single Pulse
+Page 2963: This command generates single pulse rising at the start point defined in Target Time
+Page 2963: 0010: START Pulse Train
+Page 2963: This command generates the train of pulses rising at the start point defined in the Target
+Page 2963: defined in the PPS Interval Register. By default, the PPS pulse train is free-running unless
+Page 2963: stopped by the 'Stop Pulse train at time' or 'Stop Pulse Train immediately' commands.
+Page 2963: This command cancels the START Single Pulse and START Pulse Train commands if the
+Page 2963: 0100: STOP Pulse train at time
+Page 2963: This command stops the train of pulses initiated by the START Pulse Train command
+Page 2963: 0101: STOP Pulse Train immediately
+Page 2963: This command immediately stops the train of pulses initiated by the START Pulse Train
+Page 2963: 0110: Cancel STOP Pulse train
+Page 2963: This command cancels the STOP pulse train at time command if the programmed stop time
+Page 2963: has not elapsed. The PPS pulse train becomes free-running on the successful execution of
+Page 2970: Res.                                                                                                                                                                       PLSEN                                                                                                                                     Res.                                        Res.                        Res.                            Res.                                                             Res.            18
+Page 3044: CTI application pulse register (CTI_APPPULSE)
+Page 3044: Res.   Res.      Res.   Res.   Res.    Res.   Res.    Res.   Res.   Res.   Res.   Res.          APPPULSE[3:0]
+Page 3044: Bits 3:0 APPPULSE[3:0]: Pulse channel event
+Page 3044: 0bXXX0: Generate pulse on Channel 0
+Page 3044: 0bXX1X: Generate pulse on Channel 1
+Page 3044: 0bX1XX: Generate pulse on Channel 2
+Page 3044: 0b1XXX: Generate pulse on Channel 3
+Page 3056: CTI_APPPULSE
+Page 3056: APPPULSE[3
+Page 3230: mode and Section 37.3.20: One-pulse mode.
+Page 3235: CTI_APPPULSE . . . . . . . . . . . . . . . . . . . . .3044          DBGMCU_APB3FZ1 . . . . . . . . . . . . . . . . . . 3133
+Page 3242: MDMA_CxESR . . . . . . . . . . . . . . . . . . . . . . .598         OTG_DVBUSPULSE . . . . . . . . . . . . . . . . . 2645

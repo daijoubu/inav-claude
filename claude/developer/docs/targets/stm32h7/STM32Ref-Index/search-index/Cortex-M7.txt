@@ -1,0 +1,163 @@
+Keyword: Cortex-M7
+Occurrences: 159
+================================================================================
+
+Page   67: 59.6     Cortex-M7 debug functional description . . . . . . . . . . . . . . . . . . . . . . . . 3138
+Page   67: 59.6.1      Cortex-M7 ROM tables . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3139
+Page   67: 59.6.2      Cortex-M7 data watchpoint and trace unit (DWT) . . . . . . . . . . . . . . . 3151
+Page   67: 59.6.3      Cortex-M7 instrumentation trace macrocell (ITM) . . . . . . . . . . . . . . . 3164
+Page   67: 59.6.4      Cortex-M7 breakpoint unit (FPB) . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3173
+Page   67: 59.6.5      Cortex-M7 embedded trace macrocell (ETM) . . . . . . . . . . . . . . . . . . 3181
+Page   67: 59.6.6      Cortex-M7 cross trigger interface (CTI) . . . . . . . . . . . . . . . . . . . . . . . 3213
+Page   79: Table 580.   Cortex-M7 CTI inputs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3040
+Page   79: Table 581.   Cortex-M7 CTI outputs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3041
+Page   79: Table 589.   Cortex-M7 CPU ROM table . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3139
+Page   79: Table 590.   Cortex-M7 PPB ROM table. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3139
+Page   79: Table 591.   Cortex-M7 CPU ROM table register map and reset values . . . . . . . . . . . . . . . . . . . . . . 3145
+Page   79: Table 592.   Cortex-M7 PPB ROM table register map and reset values . . . . . . . . . . . . . . . . . . . . . . 3150
+Page   79: Table 593.   Cortex-M7 DWT register map and reset values . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3162
+Page   79: Table 594.   Cortex-M7 ITM register map and reset values . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3172
+Page   79: Table 595.   Cortex-M7 FPB register map and reset values. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3179
+Page   79: Table 596.   Cortex-M7 ETM register map and reset values . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3209
+Page   96: Figure 826. Cortex-M7 CoreSight Topology . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3140
+Page   99: Cortex-M7 - AXIM
+Page   99: Cortex-M7 - AHBP
+Page   99: Cortex-M7 - ITCM
+Page   99: Cortex-M7 -DTCM
+Page  101: dedicated TCM buses directly to the Cortex-M7 core. The MDMA controller can access the
+Page  101: Cortex-M7 at CPU clock speed, with zero wait states.
+Page  101: The Cortex-M7 CPU provides AHB/TCM-bus (ITCM and DTCM buses) translation from its
+Page  103: matrix and an AHB 32-bit bus connected to the Cortex-M7 AHBS slave bus.
+Page  103: intervention. Through the system bus matrices and the Cortex-M7 AHBS slave bus, the
+Page  105: INI 2                                   Cortex-M7                                             AXI4                  64           7/32
+Page  106: make many and frequent accesses to the same slave (such as the Cortex-M7 CPU) can
+Page  106: These registers are only accessible by the Cortex-M7 CPU.
+Page  511: •    Cortex-M7 with FPU EVENTOUT is mapped on AF15
+Page  586: registers access (system access port) and a master AHB interface only for Cortex-M7 TCM
+Page  586: and one dedicated to Cortex-M7 AHBS port (only for TCM accesses).
+Page 2999: Debug access port                Cortex-M7 debug                  Trace & debug       Legend
+Page 2999: Cortex-M7              ROM                                  CTM
+Page 3001: Cortex-M7              ROM                                   CTM
+Page 3001: The D1 power domain contains the Cortex-M7 core and the associated debug and trace
+Page 3001: power domain therefore needs to be on whenever a debug access to the Cortex-M7 is
+Page 3002: Cortex-M7              ROM                                  CTM
+Page 3016: 0x0: AP0 - Cortex-M7 debug access port (AHB-AP)
+Page 3017: JTAG/SWD           SWJ-DP                                        Cortex-M7 (AHBD port)
+Page 3018: 1.   AP0: Cortex-M7 access port (AHB-AP). Allows access to the debug and trace features
+Page 3018: integrated in the Cortex-M7 processor core via an AHB-Lite bus connected to the
+Page 3021: AP0 (Cortex-M7 AHB-AP): 0xE00FE
+Page 3023: associated APB-D debug bus. They are also accessible by the Cortex-M7 processor.
+Page 3031: distributed to the Cortex-M7. To simplify the distribution over power domain boundaries, the
+Page 3031: Cortex-M7
+Page 3031: (low-frequency clock)          (Cortex-M7 clock)
+Page 3039: level and one dedicated to the Cortex-M7. The two CTIs are connected to each other via the
+Page 3039: associated APB-D. The Cortex-M7 CTI is physically integrated in the Cortex-M7 core, and is
+Page 3039: accessible via the Cortex-M7 access port and associated AHBD.
+Page 3039: AHBD        Cortex-M7 CTI
+Page 3039: Cortex-M7                  TRIGIN3
+Page 3040: Table 580. Cortex-M7 CTI inputs
+Page 3040: 0          HALTED           Cortex-M7 CPU
+Page 3040: 1    COMPMATCH0            Cortex-M7 DWT        DWT comparator 0 match
+Page 3040: 2    COMPMATCH1            Cortex-M7 DWT        DWT comparator 1 match
+Page 3040: 3    COMPMATCH2            Cortex-M7 DWT        DWT comparator 2 match
+Page 3040: 4    ETMEXTOUT0             Cortex-M7 ETM       ETM external trigger out
+Page 3040: 5    ETMEXTOUT1             Cortex-M7 ETM       ETM external trigger out
+Page 3041: Table 581. Cortex-M7 CTI outputs
+Page 3041: 0         EDBGRQ                   Cortex-M7 CPU         CPU halt request - puts CPU in debug mode
+Page 3041: 1          nIRQ1                   Cortex-M7 NVIC        Interrupt request
+Page 3041: 2          nIRQ2                   Cortex-M7 NVIC        Interrupt request
+Page 3041: 4      ETMEVENTS0                  Cortex-M7 ETM
+Page 3041: 5      ETMEVENTS1                  Cortex-M7 ETM
+Page 3041: 7      DBGRESTART                  Cortex-M7 CPU         CPU restart request - CPU exits debug mode
+Page 3058: •          S0: Cortex-M7 ETM
+Page 3058: •          S1: Cortex-M7 ITM
+Page 3108: be programmed to enable the trace bus from the Cortex-M7 ITM before trace is enabled.
+Page 3134: 1: Stop in debug - I2C3 SMBUS timeout is frozen while Cortex-M7 is in debug mode
+Page 3134: 1: Stop in debug - I2C2 SMBUS timeout is frozen while Cortex-M7 is in debug mode
+Page 3134: 1: Stop in debug - LPTIM1 is frozen while Cortex-M7 is in debug mode
+Page 3134: 1: Stop in debug - TIM14 is frozen while Cortex-M7 is in debug mode
+Page 3134: 1: Stop in debug - TIM13 is frozen while Cortex-M7 is in debug mode
+Page 3134: 1: Stop in debug - TIM12 is frozen while Cortex-M7 is in debug mode
+Page 3134: 1: Stop in debug - TIM7 is frozen while Cortex-M7 is in debug mode
+Page 3134: 1: Stop in debug - TIM6 is frozen while Cortex-M7 is in debug mode
+Page 3135: 1: Stop in debug - TIM5 is frozen while Cortex-M7 is in debug mode
+Page 3135: 1: Stop in debug - TIM4 is frozen while Cortex-M7 is in debug mode
+Page 3135: 1: Stop in debug - TIM3 is frozen while Cortex-M7 is in debug mode
+Page 3135: 1: Stop in debug - TIM2 is frozen while Cortex-M7 is in debug mode
+Page 3135: 1: Stop in debug - HRTIM is frozen while Cortex-M7 is in debug mode
+Page 3135: 1: Stop in debug - TIM17 is frozen and TIM17 outputs are disabled while Cortex-M7 is in debug
+Page 3135: 1: Stop in debug - TIM16 is frozen and TIM16 outputs are disabled while Cortex-M7 is in debug
+Page 3135: 1: Stop in debug - TIM15 is frozen and TIM15 outputs are disabled while Cortex-M7 is in debug
+Page 3136: 1: Stop in debug - TIM8 is frozen and TIM8 outputs are disabled while Cortex-M7 is in debug mode
+Page 3136: 1: Stop in debug - TIM1 is frozen and TIM1 outputs are disabled while Cortex-M7 is in debug mode.
+Page 3136: 1: Stop in debug - watchdog is frozen while Cortex-M7 is in debug mode
+Page 3136: 1: Stop in debug - RTC is frozen while Cortex-M7 is in debug mode
+Page 3136: 1: Stop in debug - LPTIM5 is frozen while Cortex-M7 is in debug mode
+Page 3136: 1: Stop in debug - LPTIM4 is frozen while Cortex-M7 is in debug mode
+Page 3136: 1: Stop in debug - LPTIM2 is frozen while Cortex-M7 is in debug mode
+Page 3136: 1: Stop in debug - LPTIM2 is frozen while Cortex-M7 is in debug mode
+Page 3138: 59.6            Cortex-M7 debug functional description
+Page 3138: The Cortex-M7 subsystem features the following CoreSight™ components:
+Page 3138: These components are accessible by the debugger via the Cortex-M7 AHB-AP and its
+Page 3139: 59.6.1   Cortex-M7 ROM tables
+Page 3139: There are two ROM tables in the Cortex-M7 sub-system:
+Page 3139: •      Cortex-M7 CPU ROM table
+Page 3139: This table is pointed to by the BASE register in the Cortex-M7 AHB-AP. It contains the
+Page 3139: base address pointers for the ETM and CTI, as well as for the Cortex-M7 CPU ROM
+Page 3139: •      Cortex-M7 PPB (private peripheral bus) ROM table
+Page 3139: This table contains pointers to the Cortex-M7 System Control Space registers allowing
+Page 3139: components in the Cortex-M7 subsystem: FPB, DWT and ITM.
+Page 3139: Table 589. Cortex-M7 CPU ROM table
+Page 3139: Cortex-M7 PPB
+Page 3139: 0xE00FE004     Cortex-M7 ETM     0xE0041000      0xFFF43000      4 Kbyte   0xFFF43003
+Page 3139: 0xE00FE008     Cortex-M7 CTI     0xE0043000      0xFFF44000      4 Kbyte   0xFFF44003
+Page 3139: The Cortex-M7 PPB ROM table occupies a 4-Kbyte, 32-bit wide chunk of APB-D address
+Page 3139: Table 590. Cortex-M7 PPB ROM table
+Page 3140: Table 590. Cortex-M7 PPB ROM table
+Page 3140: The Topology for the CoreSight™ components in the Cortex-M7 subsystem is shown in
+Page 3140: Figure 826. Cortex-M7 CoreSight Topology
+Page 3140: Cortex-M7 CPU ROM table             Cortex-M7 PPB ROM table             System control space (SCS)
+Page 3141: Cortex-M7 CPU ROM registers
+Page 3142: 0xC8: Cortex-M7 Processor ROM table
+Page 3142: 0x4: Cortex-M7 Processor ROM table
+Page 3145: Cortex-M7 CPU ROM table register map and reset values
+Page 3145: Table 591. Cortex-M7 CPU ROM table register map and reset values
+Page 3146: Table 591. Cortex-M7 CPU ROM table register map and reset values (continued)
+Page 3146: Cortex-M7 PPB ROM registers
+Page 3147: 0xC7: Cortex-M7 PPB ROM table
+Page 3147: 0x4: Cortex-M7 PPB ROM table
+Page 3150: Cortex-M7 PPB ROM table register map and reset values
+Page 3150: Table 592. Cortex-M7 PPB ROM table register map and reset values
+Page 3151: Table 592. Cortex-M7 PPB ROM table register map and reset values (continued)
+Page 3151: 59.6.2      Cortex-M7 data watchpoint and trace unit (DWT)
+Page 3152: Cortex-M7 DWT registers
+Page 3162: Cortex-M7 DWT register map and reset values
+Page 3162: The Cortex-M7 DWT registers are located at address range 0xE0001000 to 0xE0001FFC,
+Page 3162: Table 593. Cortex-M7 DWT register map and reset values
+Page 3163: Table 593. Cortex-M7 DWT register map and reset values (continued)
+Page 3164: Table 593. Cortex-M7 DWT register map and reset values (continued)
+Page 3164: 59.6.3          Cortex-M7 instrumentation trace macrocell (ITM)
+Page 3165: Cortex-M7 ITM registers
+Page 3172: Cortex-M7 ITM register map and reset values
+Page 3172: Table 594. Cortex-M7 ITM register map and reset values
+Page 3173: Table 594. Cortex-M7 ITM register map and reset values (continued)
+Page 3173: 59.6.4             Cortex-M7 breakpoint unit (FPB)
+Page 3173: detected.The Cortex-M7 FPB does not support flash patch functionality.
+Page 3173: Cortex-M7 FPB registers
+Page 3179: Cortex-M7 FPB register map and reset values
+Page 3179: The Cortex-M7 FPB registers are located at address range 0xE0002000 to 0xE0002FFC.
+Page 3179: Table 595. Cortex-M7 FPB register map and reset values
+Page 3180: Table 595. Cortex-M7 FPB register map and reset values (continued)
+Page 3181: 59.6.5          Cortex-M7 embedded trace macrocell (ETM)
+Page 3181: The Cortex-M7 ETM is a CoreSight™ component closely coupled to the CPU. The ETM
+Page 3181: generates trace packets that allow the execution of the Cortex-M7 core to be traced. In the
+Page 3181: Cortex-M7 ETM registers
+Page 3182: This field has no effect since only the Cortex-M7 uses this ETM.
+Page 3209: Cortex-M7 ETM register map and reset values
+Page 3209: Table 596. Cortex-M7 ETM register map and reset values
+Page 3209: The ETM registers are accessed by the debugger via the Cortex-M7 PPB, at address range
+Page 3210: Table 596. Cortex-M7 ETM register map and reset values (continued)
+Page 3211: Table 596. Cortex-M7 ETM register map and reset values (continued)
+Page 3212: Table 596. Cortex-M7 ETM register map and reset values (continued)
+Page 3213: Table 596. Cortex-M7 ETM register map and reset values (continued)
+Page 3213: 59.6.6         Cortex-M7 cross trigger interface (CTI)

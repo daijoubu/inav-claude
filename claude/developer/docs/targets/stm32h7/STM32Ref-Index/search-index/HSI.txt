@@ -1,0 +1,326 @@
+Keyword: HSI
+Occurrences: 322
+================================================================================
+
+Page   69: Table 54.    HSIKERON and CSIKERON behavior . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 333
+Page  244: HSI, CSI,
+Page  244: VDD                                           HSI48,                                                       Power
+Page  246: 3.   Once VCORE is correct, the system is taken out of reset and the HSI oscillator is
+Page  262: 7. When the system oscillator HSI or CSI is used, the state is controlled by HSIKERON and CSIKERON, otherwise the
+Page  267: 1.   After reset, the system starts from HSI with VOS3.
+Page  267: 5.   The next step is to reduce the system performance to HSI clock with voltage scaling
+Page  267: a)   Switch the clock to HSI.
+Page  268: RUN from HSI                    Run from PLL                  RUN from HSI        Run from PLL
+Page  268: supply level to be reached before enabling the HSI clock. Once the HSI clock is stable,
+Page  269: HSI
+Page  269: Run from PLL             Clock Stopped                       RUN from HSI            Run from PLL
+Page  269: the requested supply level to be reached before enabling the default HSI oscillator.
+Page  269: Once the HSI clock is stable, the system clock and D1 subsystem clock are enabled.
+Page  270: HSI
+Page  270: Run from PLL       Power down                          RUN from HSI                Run from PLL
+Page  271: and waits for the requested supply level to be reached before enabling the HSI clock.
+Page  271: Once the HSI clock is stable, the system clock is enabled. The system is running in D3
+Page  271: requested supply level to be reached before enabling the default HSI oscillator. Once
+Page  271: the HSI clock is stable, the system clock and the D1 subsystem clock are enabled. The
+Page  272: HSI                                     HSI
+Page  272: HSI                                     HSI
+Page  278: including a PLL and the D3 domain bus matrix clocks are stopped. When HSI or CSI is
+Page  278: selected, the system oscillator operates according to the HSIKERON and CSIKERON bits in
+Page  278: that have a kernel clock request to select HSI or CSI as source, are still able to operate.
+Page  279: •     Internal RC oscillators (HSI and CSI)
+Page  279: •     This is configured via the HSIKERON and CSIKERON bits in the RCC Clock Control
+Page  282: disabled. The complete VCORE domain is consequently powered off. The PLLs, HSI
+Page  282: oscillator, CSI oscillator, HSI48 and the HSE oscillator are also switched off. SRAM and
+Page  304: with the HSI clock. The CPU must restore the proper clock configuration during the
+Page  304: this case, the LPUART1 must use ck_hsi or ck_csi as kernel clock when the system
+Page  306: –    High-speed internal oscillator (HSI)
+Page  306: –    48 MHz RC oscillator (HSI48)
+Page  307: 15, 16, 17                                                                                             hsi_ck                                                        rcc_bus_ck
+Page  307: CRS                                      HSI48      hsi48_ck            M
+Page  307: hsi_ck U                                                                                         To peripherals
+Page  307: hsi_ck                                                                      Peripheral                         rcc_perx_bus_ck
+Page  307: HSI
+Page  315: •    The HSI restart delay may be needed if the HSI was not enabled when the NRST
+Page  315: the restart delay for the HSI, the Flash memory power recovery and the option byte
+Page  315: 2.   HSI/CSI restart delay. This step can be skipped if HSIKERON or CSIKERON bit, in
+Page  316: REG + BandGap                              HSI      FL_PWR          FL_OPTB     RUN
+Page  316: REG         (HSI)       (FL_PWR)          RUN
+Page  316: REG         HSI         FL_PWR            FL_OPTB        RUN
+Page  316: REG_VOS3     (HSI/CSI)     RUN
+Page  316: REG        REG settling time                            ePOD      Power switch delay delay     HSI/CSI   HSI or CSI Restart delay
+Page  317: •    HSI (High-speed internal oscillator) clock: ~ 8, 16, 32 or 64 MHz
+Page  317: •    HSI48 (High-speed 48 MHz internal oscillator) clock: ~48 MHz
+Page  318: ÷ 2 to 63             hsi_ck     0             MCO1PRE
+Page  318: HSEON                                               hsi48_ck     4
+Page  318: HSIKERON              HSIDIV                          hse_ck     2             ÷ 1 to15
+Page  318: HSION                                              pll1_p_ck     3
+Page  318: hsi_ck
+Page  318: HSI      tempo      ÷1,2,4,8                          csi_ck    4          hsi_ck     0
+Page  318: hsi_ker_ck                                            D
+Page  318: hsi_ck                                                                                                                                                     To CPU,
+Page  318: HSI48ON                         csi_ker_ck            csi_ck
+Page  318: HSI48                   hsi48_ck                              2
+Page  318: hsi_ker_ck
+Page  318: hsi_ck                                                                                             sys_ck
+Page  318: MHz            DIVN1          DIVQ1                        hsi_ker_ck
+Page  318: PLL2                          hsi48_ck
+Page  321: HSI oscillator
+Page  321: The HSI block provides the default clock to the product.
+Page  321: The HSI is a high-speed internal RC oscillator which can be used directly as system clock,
+Page  321: peripheral clock, or as PLL input. A predivider allows the application to select an HSI output
+Page  321: frequency of 8, 16, 32 or 64 MHz. This predivider is controlled by the HSIDIV.
+Page  321: The HSI advantages are the following:
+Page  321: The HSI frequency, even with frequency calibration, is less accurate than an external crystal
+Page  321: The HSI can be switched ON and OFF using the HSION bit. Note that the HSI cannot be
+Page  321: •    The HSI is used directly (via software mux) as system clock
+Page  321: •    The HSI is selected as reference clock for PLL1, with PLL1 enabled and selected to
+Page  321: In that case the hardware does not allow programming the HSION bit to ‘0’.
+Page  321: Note that the HSIDIV cannot be changed if the HSI is selected as reference clock for at least
+Page  321: HSIDIV with the new value. However it is possible to change the HSIDIV if the HSI is used
+Page  321: The HSIRDY flag indicates if the HSI is stable or not. At startup, the HSI output clock is not
+Page  321: The HSI clock can also be used as a backup source (auxiliary clock) if the HSE fails (refer to
+Page  321: Section : CSS on HSE). The HSI can be disabled or not when the system enters Stop mode,
+Page  321: In addition, the HSI clock can be driven to the MCO1 output and used as clock source for
+Page  322: Care must be taken when the HSI is used as kernel clock for communication peripherals,
+Page  322: Note:      The HSI can remain enabled when the system is in Stop mode (see Section 7.5.7 for
+Page  322: HSION, HSIRDY and HSIDIV bits are located in the RCC Source Control Register
+Page  322: HSI calibration
+Page  322: After a power-on reset, the factory calibration value is loaded in the HSICAL[11:0] bits.
+Page  322: oscillator frequency. The user application can trim the HSI frequency using the
+Page  322: HSITRIM[5:0] bits.
+Page  322: Note:      HSICAL[11:0] and HSITRIM[5:0] bits are located in the RCC Internal Clock Source
+Page  322: The CSI provides a clock frequency of about 4 MHz, while the HSI is able to provide a clock
+Page  323: Even if the CSI settling time is faster than the HSI, care must be taken when the CSI is used
+Page  323: HSI48 oscillator
+Page  323: The HSI48 is an RC oscillator that delivers a 48 MHz clock that can be used directly as
+Page  323: The HSI48 oscillator mainly aims at providing a high precision clock to the USB peripheral
+Page  323: The HSI48 oscillator is disabled as soon as the system enters Stop or Standby mode. When
+Page  323: achieve an accuracy of ACCHSI48 (refer to the product datasheet of the for more
+Page  323: The HSI48RDY flag indicates whether the HSI48 oscillator is stable or not. At startup, the
+Page  323: HSI48 output clock is not released until this bit is set by hardware.
+Page  323: The HSI48 can be switched ON and OFF using the HSI48ON bit.
+Page  323: The HSI48 clock can also be driven to the MCO1 multiplexer and used as clock source for
+Page  323: Note:    HSI48ON and HSI48RDY bits are located in the RCC Source Control Register (RCC_CR).
+Page  324: If a failure is detected on the HSE clock, the system automatically switches to the HSI in
+Page  327: sections HSE oscillator, HSI oscillator and CSI oscillator).
+Page  330: After a system reset, the HSI is selected as system clock and all PLLs are switched OFF.
+Page  330: •    HSI
+Page  332: •    CSI, HSI (depending on HSIKERON, and CSIKERON bits)
+Page  332: •    HSI48
+Page  332: HSEON and HSI48ON which are set to ‘0’.
+Page  332: select which oscillator (HSI and/or CSI) will be used to restart. The STOPWUCK bit selects
+Page  332: 0           →                HSI                                      HSI
+Page  332: 0                                                                    HSI
+Page  332: HSI and CSI                                HSI and/or CSI
+Page  333: There are two specific cases where the HSI or CSI can be enabled during system Stop
+Page  333: In this case the peripheral will receive the HSI or CSI according to the kernel clock
+Page  333: •    When the bits HSIKERON or CSIKERON are set:
+Page  333: In this case the HSI and CSI are kept running during Stop mode but the outputs are
+Page  333: HSIKERON and CSIKERON bits belong to RCC Source Control Register (RCC_CR).
+Page  333: Table 54. HSIKERON and CSIKERON behavior
+Page  333: HSIKERON                       HSI (CSI) state during Stop
+Page  333: HSI (CSI) Setting time
+Page  333: 0                 →                    OFF                              tsu(HSI) (tsu(CSI)) (1)
+Page  333: 1. tsu(HSI) and tsu(CSI) are the startup times of the HSI and CSI oscillators (see refer to the product datasheet
+Page  333: When the microcontroller exists system Standby mode, the HSI is selected as system and
+Page  333: Note as well that the HSI and CSI outputs provide two clock paths (see Figure 41):
+Page  333: •    one path for the system clock (hsi_ck or csi_ck)
+Page  333: •    one path for the peripheral kernel clock (hsi_ker_ck or csi_ker_ck).
+Page  333: the hsi_ker_ck or csi_ker_ck is activated.
+Page  333: CStop, then when the CPU exits from CStop, the CPU will operate with HSI or CSI when it
+Page  335: hsi_ker_ck
+Page  335: hsi48_ck
+Page  336: hsi_ker_ck
+Page  336: hsi48_ck
+Page  336: 2. The per_ck clock could be hse_ck, hsi_ker_ck or csi_ker_ck according to CKPERSEL selection.
+Page  336: •      HSE, HSI or CSI for use-cases where the current consumption is critical
+Page  337: •        HSI or CSI for low-power use-cases or when the peripheral has to quickly wake up
+Page  338: hsi_ker_ck          3
+Page  338: hsi_ker_ck            3
+Page  338: hsi_ker_ck            3
+Page  339: hsi_ker_ck              2
+Page  339: hsi_ker_ck              2
+Page  339: hsi_ker_ck             3
+Page  339: hsi_ker_ck             3
+Page  339: hsi_ker_ck             3
+Page  341: hsi48_ck            3
+Page  343: hsi_ker_ck            1
+Page  343: hsi48_ck            0                       RNGLPEN
+Page  345: •   Calibrating the HSI or CSI with the LSE
+Page  345: to accurately measure the HSI or CSI. This requires to use the HSI or CSI as system
+Page  345: The basic concept consists in providing a relative measurement (e.g. HSI/LSE ratio):
+Page  345: The HSI and CSI oscillators have dedicated user-accessible calibration bits for this
+Page  346: the HSI or CSI are used via the PLLx, the system clock can also be fine-tuned by using
+Page  346: •    Calibrating the LSI with the HSI
+Page  346: deviation. By measuring it versus the HSI clock source, it is possible to determine its
+Page  346: frequency with the precision of the HSI. The measured value can be used to have more
+Page  348: enables the HSI or CSI, and a kernel clock is provided only to the requester (in our example
+Page  354: 1         1           and no            X                              0                   0                and lse_ck or lsi_ck or hsi_ker_ck or csi_ker_ck are not
+Page  354: hsi_ker_ck                                                                              selected.
+Page  354: hsi_ker_ck or                                                                            req_ker_perx = ‘1’, and PERxEN = PERxLPEN=‘1’ and
+Page  354: csi_ker_ck                                                                              hsi_ker_ck or csi_ker_ck are selected.
+Page  354: hsi_ker_ck or                                                                            No clock provided to the peripheral because CPU is in CStop,
+Page  355: the peripheral generates a kernel clock request, and the selected clock is hsi_ker_ck
+Page  356: hsi_ker_ck
+Page  356: hsi_ker_ck or csi_ker_ck are not selected.
+Page  356: hsi_ker_ck
+Page  356: 1         X          1             or             1                                          1                    0               hsi_ker_ck or csi_ker_ck.
+Page  356: and the kernel clock source is hsi_ker_ck or csi_ker_ck.
+Page  359: HSIDRYF         HSI ready                                      HSIDRYIE                 Set HSIRDYC to ‘1’
+Page  359: Set HSI48RDYC to
+Page  359: HSI48RDYF HSI48 ready                                          HSI48RDYIE
+Page  361: HSIDIV[1:0]
+Page  361: HSIKERON
+Page  361: HSI48RDY
+Page  361: HSI48ON
+Page  361: HSIDIVF
+Page  361: HSIRDY
+Page  361: HSION
+Page  362: Bit 13 HSI48RDY: HSI48 clock ready flag
+Page  362: Set by hardware to indicate that the HSI48 oscillator is stable.
+Page  362: 0: HSI48 clock is not ready (default after reset)
+Page  362: 1: HSI48 clock is ready
+Page  362: Bit 12 HSI48ON: HSI48 clock enable
+Page  362: 0: HSI48 is OFF (default after reset)
+Page  362: 1: HSI48 is ON
+Page  363: Bit 5 HSIDIVF: HSI divider flag
+Page  363: As a write operation to HSIDIV has not an immediate effect on the frequency, this flag indicates the
+Page  363: current status of the HSI divider. HSIDIVF will go immediately to ‘0’ when HSIDIV value is changed,
+Page  363: and will be set back to ‘1’ when the output frequency matches the value programmed into HSIDIV.
+Page  363: 0: new division ratio not yet propagated to hsi(_ker)_ck (default after reset)
+Page  363: 1: hsi(_ker)_ck clock frequency reflects the new HSIDIV value
+Page  363: Bits 4:3 HSIDIV[1:0]: HSI clock divider
+Page  363: These bits allow selecting a division ratio in order to configure the wanted HSI clock frequency. The
+Page  363: HSIDIV cannot be changed if the HSI is selected as reference clock for at least one enabled PLL
+Page  363: (PLLxON bit set to ‘1’). In that case, the new HSIDIV value is ignored.
+Page  363: 00: Division by 1, hsi(_ker)_ck = 64 MHz (default after reset)
+Page  363: 01: Division by 2, hsi(_ker)_ck = 32 MHz
+Page  363: 10: Division by 4, hsi(_ker)_ck = 16 MHz
+Page  363: 11: Division by 8, hsi(_ker)_ck = 8 MHz
+Page  364: Bit 2 HSIRDY: HSI clock ready flag
+Page  364: Set by hardware to indicate that the HSI oscillator is stable.
+Page  364: 0: HSI clock is not ready (default after reset)
+Page  364: 1: HSI clock is ready
+Page  364: Bit 1 HSIKERON: High Speed Internal clock enable in Stop mode
+Page  364: Set and reset by software to force the HSI to ON, even in Stop mode, in order to be quickly
+Page  364: available as kernel clock for peripherals. This bit has no effect on the value of HSION.
+Page  364: 0: no effect on HSI (default after reset)
+Page  364: 1: HSI is forced to ON even in Stop mode
+Page  364: Bit 0 HSION: High Speed Internal clock enable
+Page  364: Set by hardware to force the HSI to ON when the product leaves Stop mode, if STOPWUCK = ‘0’ or
+Page  364: Set by hardware to force the HSI to ON when the product leaves Standby mode or in case of a
+Page  364: This bit cannot be cleared if the HSI is used directly (via SW mux) as system clock or if the HSI is
+Page  364: 0: HSI is OFF
+Page  364: 1: HSI is ON (default after reset)
+Page  365: Res.                   CSITRIM[4:0]                                 CSICAL[7:0]                       HSITRIM[5:4]
+Page  365: HSITRIM[3:0]                                                HSICAL[11:0]
+Page  365: Bits 17:12 HSITRIM[5:0]: HSI clock trimming
+Page  365: HSITRIM field is added to the engineering option bytes loaded during reset phase (flash_hsi_opt) in
+Page  365: HSICAL = HSITRIM + flash_hsi_opt.
+Page  365: Bits 11:0 HSICAL[11:0]: HSI clock calibration
+Page  365: Adjusted by software through trimming bits HSITRIM.
+Page  365: This field represents the sum of engineering option byte calibration value and HSITRIM bits value.
+Page  366: Res.      Res.    Res.   Res.   Res.   Res.                                HSI48CAL[9:0]
+Page  366: Bits 9:0 HSI48CAL[9:0]: Internal RC 48 MHz clock calibration
+Page  367: 000: HSI clock selected (hsi_ck) (default after reset)
+Page  367: 100: HSI48 clock selected (hsi48_ck)
+Page  368: 0: The HSI is selected as wake up clock from system Stop (default after reset)
+Page  369: 0: The HSI is selected as wake up clock from system Stop (default after reset)
+Page  369: 000: HSI used as system clock (hsi_ck) (default after reset)
+Page  369: –     force the selection of the HSI or CSI (depending on STOPWUCK selection) when leaving a
+Page  369: –     force the selection of the HSI in case of failure of the HSE when used directly or indirectly
+Page  369: 000: HSI selected as system clock (hsi_ck) (default after reset)
+Page  375: 00: HSI selected as PLL clock (hsi_ck) (default after reset)
+Page  388: 00: hsi_ker_ck clock selected as per_ck clock (default after reset)
+Page  389: 1: hsi_ker_ck clock is selected as SWPMI kernel clock
+Page  389: 11: hsi_ker_ck clock selected as SPDIFRX kernel clock
+Page  390: 011: hsi_ker_ck clock is selected as kernel clock
+Page  392: 11: hsi48_ck clock is selected as kernel clock
+Page  392: 10: hsi_ker_ck clock is selected as kernel clock
+Page  393: 00: hsi8_ck clock is selected as kernel clock (default after reset)
+Page  393: 011: hsi_ker_ck clock is selected as kernel clock
+Page  393: 011: hsi_ker_ck clock is selected as kernel clock
+Page  394: 011: hsi_ker_ck clock selected as kernel peripheral clock
+Page  396: 10: hsi_ker_ck clock selected as kernel peripheral clock
+Page  396: 011: hsi_ker_ck clock is selected as kernel peripheral clock
+Page  397: HSI48RDYIE
+Page  397: HSIRDYIE
+Page  397: Bit 5 HSI48RDYIE: HSI48 ready Interrupt Enable
+Page  397: Set and reset by software to enable/disable interrupt caused by the HSI48 oscillator stabilization.
+Page  397: 0: HSI48 ready interrupt disabled (default after reset)
+Page  397: 1: HSI48 ready interrupt enabled
+Page  398: Bit 2 HSIRDYIE: HSI ready Interrupt Enable
+Page  398: Set and reset by software to enable/disable interrupt caused by the HSI oscillator stabilization.
+Page  398: 0: HSI ready interrupt disabled (default after reset)
+Page  398: 1: HSI ready interrupt enabled
+Page  399: HSI48RDYF
+Page  399: HSIRDYF
+Page  399: Bit 5 HSI48RDYF: HSI48 ready Interrupt Flag
+Page  399: Reset by software by writing HSI48RDYC bit.
+Page  399: Set by hardware when the HSI48 clock becomes stable and HSI48RDYIE is set.
+Page  399: 0: No clock ready interrupt caused by the HSI48 oscillator (default after reset)
+Page  399: 1: Clock ready interrupt caused by the HSI48 oscillator
+Page  400: Bit 2 HSIRDYF: HSI ready Interrupt Flag
+Page  400: Reset by software by writing HSIRDYC bit.
+Page  400: Set by hardware when the HSI clock becomes stable and HSIRDYIE is set.
+Page  400: 0: No clock ready interrupt caused by the HSI (default after reset)
+Page  400: 1: Clock ready interrupt caused by the HSI
+Page  401: HSI48RDYC
+Page  401: HSIRDYC
+Page  401: Bit 5 HSI48RDYC: HSI48 ready Interrupt Clear
+Page  401: Set by software to clear HSI48RDYF.
+Page  401: 0: HSI48RDYF no effect (default after reset)
+Page  401: 1: HSI48RDYF cleared
+Page  402: Bit 2 HSIRDYC: HSI ready Interrupt Clear
+Page  402: Set by software to clear HSIRDYF.
+Page  402: 0: HSIRDYF no effect (default after reset)
+Page  402: 1: HSIRDYF cleared
+Page  472: Res.                             Res.                              Res.                                                                                       Res.                                                                      HSI48RDY      13
+Page  472: HSITRIM[5:0]
+Page  472: Res.                             Res.                              Res.                                                                                       Res.                                                                       HSI48ON      12
+Page  472: D3PPRE[2:0]                     D2PPRE1[2:0]                       D1PPRE[2:0]                                                                                                                                                               HSIDIVF     5
+Page  472: HSICAL[11:0]
+Page  472: HSIDIV[1:0]
+Page  472: HSI48CAL[9:0]
+Page  472: Res.                              Res.                             Res.                                                                                                                                                                                                    HSIRDY       2
+Page  472: Res.                             Res.                                                                                                SW[2:0]                                                                                            HSIKERON      1
+Page  472: Res.                             Res.                                                                                                                                                                                                    HSION
+Page  474: ADC12RST                   JPGDECRST                        Res.                       LSECSSON                                           HSI48RDYC                              HSI48RDYF                            HSI48RDYIE                                   Res.             5
+Page  474: Res.                        Res.                         Res.                        LSEBYP                                             HSIRDYC                                HSIRDYF                              HSIRDYIE                                                     2
+Page  482: fine-granularity trimmable RC oscillator HSI48. The CRS provides powerful means for
+Page  483: HSI48        hsi48_ck
+Page  483: hsi48_ck     Digital input    HSI48 oscillator clock
+Page  484: crs_trim[0:5]   Digital output HSI48 oscillator smooth trimming value
+Page  487: The selection of the FELIM value is closely coupled with the HSI48 oscillator characteristics
+Page  487: size, expressed as a number of HSI48 oscillator clock ticks. The following formula can be
+Page  487: The CRS stops operating until the Stop or Standby mode is exited and the HSI48 oscillator
+Page  488: Bits 13:8 TRIM[5:0]: HSI48 oscillator smooth trimming
+Page  488: These bits provide a user-programmable trimming value to the HSI48 oscillator. They can be
+Page  488: of the HSI48 oscillator.
+Page  489: provided to the CRS to calibrate the HSI48 oscillator on the run. To guarantee the required
+Page  657: 0xABCDABCD with a half-word data size (HSIZE = HalfWord in AHB master bus).
+Page  657: with a byte data size (HSIZE = Byte in the AHB master bus).
+Page  657: account the HSIZE data, any AHB byte or half-word transfer is changed into a 32-bit APB
+Page 1843: –    Internal clock sources: LSE, LSI, HSI or APB clock
+Page 1849: clock signal which can be chosen among APB, LSI, LSE or HSI sources through the Reset
+Page 1849: other embedded oscillator including LSE, LSI and HSI.
+Page 1981: HSI or CSI oscillator must be selected as the clock source for I2CCLK in order to allow
+Page 1981: During Stop mode, the HSI or CSI is switched off. When a START is detected, the I2C
+Page 1981: interface switches the HSI or CSI on, and stretches SCL low until HSI or CSI is woken up.
+Page 1981: HSI or CSI is then used for the address reception.
+Page 1981: If the address does not match, the HSI or CSI is switched off again and the MCU is not
+Page 1981: Note:      If the I2C clock is the system clock, or if WUPEN = 0, the HSI or CSI is not switched on after
+Page 1981: Caution:   This feature is available only when the I2C clock source is the HSI or CSI oscillator.
+Page 1984: oscillator (HSI or CSI): the address recognition is functional. The I2C address
+Page 2052: For example, if HSI is used as usart_ker_ck, and the HSI inaccuracy is of 1%, then we
+Page 2108: For example, if HSI is used as lpuart_ker_ck, and the HSI inaccuracy is of 1%, then we
+Page 2113: provided that the LPUART clock selection is HSI or LSE in the RCC.
+Page 2113: the clock source for the LPUART must be HSI or LSE (see RCC chapter)
+Page 2308: HSI for swpmi_ker_ck. If this feature is not required, swpmi_pclk can be selected, and
+Page 2323: Stop                device from Stop mode if the swpmi_ker_ck is HSI (refer to Section 52.3.1:
+Page 2324: 1. If HSI is selected for swpmi_ker_ck.
+Page 2428: for both FDCAN1 and FDCAN2 from the HSI internal RC oscillator and the PLL, by
+Page 3216: RC48 renamed HSI48.
+Page 3221: Replaced HSI16 by HSI or CSI or internal oscillator in Section
+Page 3226: Changed RC48 to HSI48 in Figure 18: Power supply overview.
+Page 3243: QUADSPI_CR . . . . . . . . . . . . . . . . . . . . . . . .876         RCC_HSICFGR . . . . . . . . . . . . . . . . . . . . . . 365

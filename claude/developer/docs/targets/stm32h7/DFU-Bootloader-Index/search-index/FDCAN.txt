@@ -1,0 +1,265 @@
+Keyword: FDCAN
+Occurrences: 261
+================================================================================
+
+Page 1: the available serial peripherals (such as USART, CAN, USB, I2C, I3C, SPI, FDCAN). A
+Page 26: –     AN5405: FDCAN protocol used in the STM32 bootloader
+Page 31: BL_FDCAN_Loop refers to the FDCAN execution loop.
+Page 35: X = 9: USART, CAN (or FDCAN), DFU, I2C, and SPI are used
+Page 35: X = 14: USART, DFU, I2C, I3C, FDCAN, and SPI are used
+Page 35: X = 16: USART, USB-DFU, FDCAN, and SPI are used
+Page 35: X = 17: USART, SPI, and FDCAN are used
+Page 35: X = 18: USART, SPI, FDCAN, and I2C are used
+Page 36: FDCAN1                                            FDCAN (V2.2)
+Page 39: FDCAN                                            FDCAN (V1.0)
+Page 40: FDCAN1                                             FDCAN (V2.0)
+Page 40: FDCAN2                                             FDCAN (V2.0)
+Page 40: FDCAN2                                             FDCAN (V2.0)
+Page 40: FDCAN1                                             FDCAN (V1.1)
+Page 40: FDCAN1                                             FDCAN (V1.1)
+Page 40: FDCAN1                                             FDCAN (V1.1)
+Page 40: FDCAN2                                            FDCAN (V2.1)
+Page 42: FDCAN1                                           FDCAN (V1.0)
+Page 43: FDCAN1                                           FDCAN (V2.2)
+Page 43: FDCAN1                                           FDCAN (V1.1)
+Page 43: FDCAN1                                           FDCAN (V1.1)
+Page 43: FDCAN1                                           FDCAN (V1.1)
+Page 43: FDCAN1                                           FDCAN (V1.1)
+Page 72: Once initialized the FDCAN configuration is:
+Page 72: – FrameFormat = FDCAN_FRAME_FD_BRS
+Page 72: FDCAN                    Enabled(2)
+Page 72: – Mode = FDCAN_MODE_NORMAL
+Page 72: FDCAN1
+Page 72: FDCAN in reception mode. Used in alternate function with
+Page 72: FDCAN_Rx pin             Input
+Page 72: FDCAN in transmission mode. Used in alternate function
+Page 72: FDCAN_Tx pin             Output
+Page 73: FDCAN frame
+Page 73: Yes   sources and other       BL_FDCAN_Loop
+Page 73: interfaces clocks        for FDCANx
+Page 73: Configure FDCANx
+Page 248: -     20 MHz derived from the PLLQ is used for FDCAN
+Page 250: Once initialized the FDCAN1 configuration is:
+Page 250: – FrameFormat = FDCAN_FRAME_FD_BRS
+Page 250: FDCAN1                   Enabled
+Page 250: – Mode = FDCAN_MODE_NORMAL
+Page 250: FDCAN
+Page 250: PD0 pin: FDCAN1 in reception mode. Used in alternate
+Page 250: FDCAN1_Rx pin            Input
+Page 250: PD1 pin: FDCAN1 in transmission mode. Used in
+Page 250: FDCAN1_Tx pin            Output
+Page 251: BL_FDCAN loop
+Page 251: Configure FDCANx
+Page 251: FDCAN frame                         Disable all interrupt       Disable all interrupt
+Page 273: -     20 MHz derived from the PLLQ is used for FDCAN
+Page 275: Once initialized the FDCAN1 configuration is:
+Page 275: – FrameFormat = FDCAN_FRAME_FD_BRS
+Page 275: FDCAN1                Enabled
+Page 275: – Mode = FDCAN_MODE_NORMAL
+Page 275: FDCAN                                                   – TransmitPause = DISABLE
+Page 275: PB5 pin: FDCAN1 in reception mode. Used in
+Page 275: FDCAN1_Rx pin         Input
+Page 275: PB15 pin: FDCAN1 in transmission mode. Used in
+Page 275: FDCAN1_Tx pin         Output
+Page 276: Special commands supported (USART/I2C/SPI/FDCAN/I3C)
+Page 277: FDCAN frame           interrupt sources
+Page 277: Yes                           BL_FDCAN_Loop
+Page 277: for FDCANx
+Page 277: FDCANx
+Page 279: -      20 MHz derived from the PLLQ is used for FDCAN
+Page 282: Once initialized the FDCAN2 configuration is:
+Page 282: – FrameFormat = FDCAN_FRAME_FD_BRS
+Page 282: FDCAN2                Enabled
+Page 282: – Mode = FDCAN_MODE_NORMAL
+Page 282: FDCAN
+Page 282: PB5 pin: FDCAN2 in reception mode. Used in
+Page 282: FDCAN2_Rx pin         Input
+Page 282: PB13 pin: FDCAN2 in transmission mode. Used in
+Page 282: FDCAN2_Tx pin         Output
+Page 283: Special commands supported (USART/I2C/SPI/FDCAN/I3C)
+Page 284: FDCAN frame           interrupt sources
+Page 284: Yes                        BL_FDCAN_Loop
+Page 284: for FDCANx
+Page 284: FDCANx
+Page 286: -      20 MHz derived from the PLLQ is used for FDCAN
+Page 288: Once initialized the FDCAN2 configuration is:
+Page 288: – FrameFormat = FDCAN_FRAME_FD_BRS
+Page 288: FDCAN2               Enabled
+Page 288: – Mode = FDCAN_MODE_NORMAL AutoRetransmission =
+Page 288: FDCAN                                              – TransmitPause = DISABLE
+Page 288: PB5 pin: FDCAN2 in reception mode. Used in alternate push-
+Page 288: FDCAN2_Rx pin        Input
+Page 288: PB13 pin: FDCAN2 in transmission mode. Used in alternate
+Page 288: FDCAN2_Tx pin        Output
+Page 289: Special commands supported (USART/I2C/SPI/FDCAN/I3C)
+Page 290: FDCAN frame           interrupt sources
+Page 290: Yes                       BL_FDCAN_Loop
+Page 290: for FDCANx
+Page 290: FDCANx
+Page 292: -      20 MHz derived from the PLLQ is used for FDCAN
+Page 295: Once initialized the FDCAN1 configuration is:
+Page 295: FrameFormat = FDCAN_FRAME_FD_BRS
+Page 295: FDCAN1                Enabled
+Page 295: Mode = FDCAN_MODE_NORMAL AutoRetransmission =
+Page 295: FDCAN (on                                          ENABLE
+Page 295: PH14 pin: FDCAN1 in reception mode. Used in alternate
+Page 295: FDCAN1_Rx pin         Input
+Page 295: PH13 pin: FDCAN1 in transmission mode. Used in alternate
+Page 295: FDCAN1_Tx pin         Output
+Page 295: Once initialized the FDCAN1 configuration is:
+Page 295: FrameFormat = FDCAN_FRAME_FD_BRS
+Page 295: FDCAN1                Enabled
+Page 295: Mode = FDCAN_MODE_NORMAL AutoRetransmission =
+Page 295: FDCAN (on                                          ENABLE
+Page 295: PD0 pin: FDCAN1 in reception mode. Used in alternate push-
+Page 295: FDCAN1_Rx pin         Input
+Page 295: PD1 pin: FDCAN1 in transmission mode. Used in alternate
+Page 295: FDCAN1_Tx pin         Output
+Page 296: BL_FDCAN loop
+Page 298: Clock used for the FDCAN is fixed to 20 MHz and is
+Page 301: Once initialized the FDCAN1 configuration is:
+Page 301: – FrameFormat = FDCAN_FRAME_FD_BRS
+Page 301: FDCAN1                Enabled
+Page 301: – Mode = FDCAN_MODE_NORMAL
+Page 301: FDCAN                                                   – TransmitPause = DISABLE
+Page 301: PH14 pin: FDCAN1 in reception mode. Used in
+Page 301: FDCAN1_Rx pin         Input
+Page 301: PH13 pin: FDCAN1 in transmission mode. Used in
+Page 301: FDCAN1_Tx pin         Output
+Page 302: BL_FDCAN loop
+Page 303: – On the FDCAN write memory, write of data with
+Page 303: – Add support of FDCAN interface                   to guarantee it is working
+Page 303: – FDCAN Get version command is giving a bad
+Page 303: FDCAN protocol version (0x11). It must be 0 x10
+Page 304: (0x91)   – Fix FDCAN version from V1.0 to V1.1             when using USART1 on PA10/PA9.
+Page 304: – Fix write issue when using FDCAN                – Root cause: both USART1 TX pins PA9 and PB14
+Page 306: Clock used for the FDCAN is fixed to 20 MHz and is
+Page 309: Once initialized the FDCAN1 configuration is:
+Page 309: FrameFormat = FDCAN_FRAME_FD_BRS
+Page 309: FDCAN1                Enabled
+Page 309: Mode = FDCAN_MODE_NORMAL
+Page 309: FDCAN on                                             AutoRetransmission = ENABLE
+Page 309: PH14 pin: FDCAN1 in reception mode. Used in
+Page 309: FDCAN1_Rx pin         Input
+Page 309: PH13 pin: FDCAN1 in transmission mode. Used in
+Page 309: FDCAN1_Tx pin         Output
+Page 310: Once initialized the FDCAN1 configuration is:
+Page 310: FrameFormat = FDCAN_FRAME_FD_BRS
+Page 310: FDCAN1               Enabled
+Page 310: Mode = FDCAN_MODE_NORMAL
+Page 310: FDCAN on                                          AutoRetransmission = ENABLE
+Page 310: PD0 pin: FDCAN1 in reception mode. Used in alternate
+Page 310: FDCAN1_Rx pin        Input
+Page 310: PD1 pin: FDCAN1 in transmission mode. Used in
+Page 310: FDCAN1_Tx pin        Output
+Page 311: BL_FDCAN loop
+Page 313: RCC                            -        20 MHz derived from the PLLQ is used for FDCAN.
+Page 316: Once initialized the FDCAN1 configuration is:
+Page 316: – FrameFormat = FDCAN_FRAME_FD_BRS
+Page 316: FDCAN2                 Enabled
+Page 316: – Mode = FDCAN_MODE_NORMAL
+Page 316: FDCAN
+Page 316: PB5 pin: FDCAN2 in reception mode. Used in alternate
+Page 316: FDCAN2_Rx pin          Input
+Page 316: PB1 pin: FDCAN2 in transmission mode. Used in alternate
+Page 316: FDCAN2_Tx pin          Output
+Page 317: Special commands supported (USART/I2C/SPI/FDCAN/USB/I3C)
+Page 318: FDCAN frame           interrupt sources
+Page 318: Yes                       BL_FDCAN_Loop
+Page 318: for FDCANx
+Page 318: FDCANx
+Page 409: -     20 MHz derived from the PLLQ is used for FDCAN
+Page 411: Once initialized the FDCAN1 configuration is:
+Page 411: – FrameFormat = FDCAN_FRAME_FD_BRS
+Page 411: FDCAN1             Enabled
+Page 411: – Mode = FDCAN_MODE_NORMAL
+Page 411: FDCAN
+Page 411: PB9 pin: FDCAN1 in reception mode. Used in alternate push-
+Page 411: FDCAN1_Rx pin      Input/
+Page 411: PB8 pin: FDCAN1 in transmission mode. Used in alternate push-
+Page 411: FDCAN1_Tx pin      Output
+Page 412: Special commands supported (USART/I2C/SPI/FDCAN)
+Page 413: BL_FDCAN loop
+Page 413: FDCAN frame                          Disable all interrupt       Disable all interrupt
+Page 414: V9.0     – Add FDCAN support
+Page 414: – FDCAN erase not working as page number
+Page 414: properly when using FDCAN interface. This
+Page 414: V9.1                                        – FDCAN erase not working as page number
+Page 414: FDCAN Readout unprotect command does not
+Page 453: FDCAN
+Page 455: – FrameFormat = FDCAN_FRAME_FD_BRS
+Page 455: FDCAN1             Enabled
+Page 455: – Mode = FDCAN_MODE_NORMAL
+Page 455: FDCAN1
+Page 455: PB8 pin: FDCAN1 in reception mode. Used in alternate
+Page 455: FDCAN1_Rx pin      Input/
+Page 455: PB9 pin: FDCAN1 in transmission mode. Used in alternate
+Page 455: FDCAN1_Tx pin      Output
+Page 457: Special commands supported (USART/I2C/SPI/FDCAN)
+Page 458: FDCAN                                       Exexute
+Page 458: frame        Yes                       BL_FDCAN_Loo
+Page 458: System Init                    detected                                 p for FDCANx
+Page 458: FDCANx
+Page 459: – FDCAN: cannot erase more than 32 flash memory
+Page 459: – FDCAN: cannot erase more than 32 flash memory
+Page 460: -        20 MHz derived from the PLLQ is used for FDCAN
+Page 462: – FrameFormat = FDCAN_FRAME_FD_BRS
+Page 462: FDCAN1               Enabled
+Page 462: – Mode = FDCAN_MODE_NORMAL
+Page 462: FDCAN
+Page 462: PB8 pin: FDCAN1 in reception mode. Used in alternate
+Page 462: FDCAN1_Rx pin        Input/
+Page 462: PB9 pin: FDCAN1 in transmission mode. Used in alternate
+Page 462: FDCAN1_Tx pin        Output
+Page 463: Special commands supported (USART/I2C/SPI/FDCAN)
+Page 464: FDCAN frame               interrupt sources
+Page 464: GPIOs, IWDG,                                   Yes                           BL_FDCAN_Loop
+Page 464: SysTick)                                                                   for FDCANx
+Page 464: FDCANx
+Page 465: FDCAN Readout unprotect command does not
+Page 466: -       20 MHz derived from the PLLQ is used for FDCAN
+Page 468: – FrameFormat = FDCAN_FRAME_FD_BRS
+Page 468: FDCAN1             Enabled
+Page 468: – Mode = FDCAN_MODE_NORMAL
+Page 468: FDCAN
+Page 468: PB8 pin: FDCAN1 in reception mode. Used in alternate push-
+Page 468: FDCAN1_Rx pin      Input/
+Page 468: PB9 pin: FDCAN1 in transmission mode. Used in alternate
+Page 468: FDCAN1_Tx pin      Output
+Page 469: Special commands supported (USART/I2C/SPI/FDCAN)
+Page 470: FDCAN frame               interrupt sources
+Page 470: GPIOs, IWDG,                                 Yes                           BL_FDCAN_Loop
+Page 470: SysTick)                                                                 for FDCANx
+Page 470: FDCANx
+Page 471: – FDCAN Readout unprotect command does
+Page 471: – FDCAN Readout unprotect command does
+Page 472: -     20 MHz derived from the PLLQ is used for FDCAN
+Page 475: – FrameFormat = FDCAN_FRAME_FD_BRS
+Page 475: FDCAN1                 Enabled
+Page 475: – Mode = FDCAN_MODE_NORMAL
+Page 475: FDCAN
+Page 475: PB8 pin: FDCAN1 in reception mode. Used in alternate push-
+Page 475: FDCAN1_Rx pin          Input/
+Page 475: PB9 pin: FDCAN1 in transmission mode. Used in alternate
+Page 475: FDCAN1_Tx pin          Output
+Page 475: Special commands supported (USART/I2C/SPI/FDCAN)
+Page 476: (Clock, GPIOs,                          FDCAN Frame                  interrupt sources
+Page 476: Yes                           BL_FDCAN_Loop
+Page 476: for FDCANx
+Page 476: FDCANx                                       USB clocks                      detected?
+Page 476: FDCAN Readout unprotect command does not send
+Page 477: -      20 MHz derived from the PLLQ is used for FDCAN
+Page 480: – FrameFormat = FDCAN_FRAME_FD_BRS
+Page 480: FDCAN1                 Enabled
+Page 480: – Mode = FDCAN_MODE_NORMAL
+Page 480: FDCAN
+Page 480: PB8 pin: FDCAN1 in reception mode. Used in alternate
+Page 480: FDCAN1_Rx pin          Input/
+Page 480: PB9 pin: FDCAN1 in transmission mode. Used in alternate
+Page 480: FDCAN1_Tx pin          Output
+Page 480: Special commands supported (USART/I2C/SPI/FDCAN)
+Page 481: (Clock, GPIOs,                          FDCAN Frame                  interrupt sources
+Page 481: Yes                           BL_FDCAN_Loop
+Page 481: for FDCANx
+Page 481: FDCANx                                       USB clocks                      detected?
+Page 481: FDCAN Readout unprotect command does not send

@@ -1,0 +1,719 @@
+Keyword: NAV
+Occurrences: 715
+================================================================================
+
+Page    5: 3.10.11 UBX-CFG-NAV5 (0x06 0x24)................................................................................................ 64
+Page    5: 3.10.11.1 Navigation engine settings.......................................................................................... 65
+Page    5: 3.10.12 UBX-CFG-NAVX5 (0x06 0x23)..............................................................................................66
+Page    5: 3.10.12.1 Navigation engine expert settings............................................................................. 66
+Page    6: 3.10.19.1 Navigation/measurement rate settings.................................................................... 79
+Page    7: 3.13.4.1 Poll the navigation database....................................................................................... 107
+Page    7: 3.13.4.2 Navigation database dump entry............................................................................... 107
+Page    8: 3.15 UBX-NAV (0x01)............................................................................................................................... 135
+Page    8: 3.15.1 UBX-NAV-AOPSTATUS (0x01 0x60)................................................................................... 135
+Page    8: 3.15.2 UBX-NAV-CLOCK (0x01 0x22)..............................................................................................135
+Page    8: 3.15.3 UBX-NAV-COV (0x01 0x36).................................................................................................. 136
+Page    8: 3.15.4 UBX-NAV-DOP (0x01 0x04).................................................................................................. 136
+Page    8: 3.15.5 UBX-NAV-EOE (0x01 0x61)...................................................................................................137
+Page    9: 3.15.6 UBX-NAV-GEOFENCE (0x01 0x39)......................................................................................137
+Page    9: 3.15.7 UBX-NAV-ODO (0x01 0x09).................................................................................................. 138
+Page    9: 3.15.8 UBX-NAV-ORB (0x01 0x34)...................................................................................................138
+Page    9: 3.15.9 UBX-NAV-POSECEF (0x01 0x01).........................................................................................140
+Page    9: 3.15.10 UBX-NAV-POSLLH (0x01 0x02).........................................................................................140
+Page    9: 3.15.11 UBX-NAV-PVT (0x01 0x07)................................................................................................ 141
+Page    9: 3.15.11.1 Navigation position velocity time solution............................................................. 141
+Page    9: 3.15.12 UBX-NAV-RESETODO (0x01 0x10)................................................................................... 143
+Page    9: 3.15.13 UBX-NAV-SAT (0x01 0x35).................................................................................................143
+Page    9: 3.15.14 UBX-NAV-SBAS (0x01 0x32)..............................................................................................145
+Page    9: 3.15.15 UBX-NAV-SIG (0x01 0x43)..................................................................................................146
+Page    9: 3.15.16 UBX-NAV-SLAS (0x01 0x42).............................................................................................. 148
+Page    9: 3.15.17 UBX-NAV-STATUS (0x01 0x03)......................................................................................... 149
+Page    9: 3.15.17.1 Receiver navigation status........................................................................................ 149
+Page    9: 3.15.18 UBX-NAV-TIMEBDS (0x01 0x24).......................................................................................150
+Page    9: 3.15.19 UBX-NAV-TIMEGAL (0x01 0x25).......................................................................................151
+Page    9: 3.15.20 UBX-NAV-TIMEGLO (0x01 0x23).......................................................................................151
+Page    9: 3.15.21 UBX-NAV-TIMEGPS (0x01 0x20).......................................................................................152
+Page    9: 3.15.22 UBX-NAV-TIMELS (0x01 0x26)..........................................................................................153
+Page    9: 3.15.23 UBX-NAV-TIMEQZSS (0x01 0x27).................................................................................... 154
+Page    9: 3.15.24 UBX-NAV-TIMEUTC (0x01 0x21).......................................................................................155
+Page    9: 3.15.25 UBX-NAV-VELECEF (0x01 0x11).......................................................................................156
+Page    9: 3.15.26 UBX-NAV-VELNED (0x01 0x12)........................................................................................ 156
+Page   10: 3.16.5.1 Broadcast navigation data subframe........................................................................ 161
+Page   12: 5.9.13 CFG-NAVSPG: Standard precision navigation conﬁguration.........................................215
+Page   12: 5.9.18 CFG-RATE: Navigation and measurement rate conﬁguration.......................................223
+Page   16: message name consists of the protocol name (e.g., UBX), the class name (e.g. NAV) and the message
+Page   17: Names of conﬁguration items are of the form CFG-GROUP-ITEM. For example, CFG-NAVSPG-
+Page   17: DYNMODEL refers to the navigation dynamic platform model the receiver uses. Constants add
+Page   17: a fourth level to the item name, such as CFG-NAVSPG-DYNMODEL-AUTOMOT for the automotive
+Page   17: can be used (e.g. "set CFG-NAVSPG-DYNMODEL to PORT for portable applications").
+Page   17: distinguished (e.g. in the UBX-NAV-SIG message). A separate sigId ﬁeld identiﬁes the signal. These
+Page   18: NavIC                   NavIC          N                    7               n/a               n/a                  6
+Page   18: NavIC         N1-N7           7:1-7           247-253
+Page   19: NavIC            N1-N7       n/a       n/a                   n/a       n/a                        1-7          1-7
+Page   20: NavIC L5 A  2                                    7             0             N/A          N/A            6             1
+Page   20: Periodic                     Messages that are output in regular intervals but cannot be polled. E.g. UBX-NAV-EOE.
+Page   20: Periodic/polled              Messages that are output in regular intervals and can be polled. E.g. UBX-NAV-PVT.
+Page   20: Get/set                      Input/output conﬁguration or command messages. E.g. UBX-CFG-NAVX5.
+Page   22: all satellites, which were considered for navigation, are
+Page   23: NavIC                           GI       NMEA 4.11+
+Page   24: NMEA-Standard-GNS                navStatus
+Page   24: NMEA-Standard-RMC                navStatus
+Page   25: navMode
+Page   25: 10   Possible values for navMode: 1 = No ﬁx, 2 = 2D ﬁx, 3 = 3D ﬁx
+Page   28: the navigation calculation (because, in such cases, integrity cannot be determined by the receiver
+Page   31: Structure         $xxGNS,time,lat,NS,lon,EW,posMode,numSV,HDOP,alt,sep,diffAge,diffStation,navStatus*c ↲
+Page   32: 13         navStatus             character   -           V                Navigational status indicator: V (Equipment is not
+Page   32: providing navigational status information, ﬁxed ﬁeld,
+Page   33: 3+n        residual           numeric       m           0.54             Range residuals for SVs used in navigation. The SV order
+Page   33: Comment           The GNSS receiver operating mode, satellites used for navigation, and DOP values.
+Page   33: •   If less than 12 SVs are used for navigation, the remaining ﬁelds are left empty. If more than 12 SVs are
+Page   33: used for navigation, only the IDs of the ﬁrst 12 are output.
+Page   33: Structure         $xxGSA,opMode,navMode{,svid},PDOP,HDOP,VDOP,systemId*cs\r\n
+Page   34: 2          navMode            digit         -           3                Navigation mode, see position ﬁx ﬂags description
+Page   36: Structure         $xxRMC,time,status,lat,NS,lon,EW,spd,cog,date,mv,mvEW,posMode,navStatus*cs\r\n
+Page   37: 13         navStatus          character   -           V                Navigational status indicator: V (Equipment is not
+Page   37: providing navigational status information, ﬁxed ﬁeld,
+Page   41: Structure         $PUBX,00,time,lat,NS,long,EW,altRef,navStat,hAcc,vAcc,SOG,COG,vVel,diffAge,HDOP,VDOP ↲
+Page   41: 8          navStat            string      -           G3               Navigation Status:
+Page   41: 18         numSvs             numeric     -           9                Number of satellites used in the navigation solution
+Page   42: •     Send rate is relative to the event a message is registered on. For example, if the rate of a navigation
+Page   42: message is set to 2, the message is sent every second navigation solution.
+Page   43: navigation
+Page   46: are valid. For example the UBX-NAV-PVT message has the validDate and validTime ﬁelds that
+Page   50: UBX-CFG-NAV5            0x06 0x24   •   Navigation engine settings (Get/set)
+Page   50: UBX-CFG-NAVX5           0x06 0x23   •   Navigation engine expert settings (Get/set)
+Page   51: UBX-CFG-RATE             0x06 0x08   •   Navigation/measurement rate settings (Get/set)
+Page   51: UBX-MGA-DBD              0x13 0x80   •   Poll the navigation database (Poll request)
+Page   52: •   Navigation database dump entry (Input/output)
+Page   52: UBX-NAV – Navigation solution messages
+Page   52: UBX-NAV-AOPSTATUS         0x01 0x60      •   AssistNow Autonomous status (Periodic/polled)
+Page   52: UBX-NAV-CLOCK             0x01 0x22      •   Clock solution (Periodic/polled)
+Page   52: UBX-NAV-COV               0x01 0x36      •   Covariance matrices (Periodic/polled)
+Page   52: UBX-NAV-DOP               0x01 0x04      •   Dilution of precision (Periodic/polled)
+Page   52: UBX-NAV-EOE               0x01 0x61      •   End of epoch (Periodic)
+Page   52: UBX-NAV-GEOFENCE          0x01 0x39      •   Geofencing status (Periodic/polled)
+Page   53: UBX-NAV-ODO              0x01 0x09    •   Odometer solution (Periodic/polled)
+Page   53: UBX-NAV-ORB              0x01 0x34    •   GNSS orbit database info (Periodic/polled)
+Page   53: UBX-NAV-POSECEF          0x01 0x01    •   Position solution in ECEF (Periodic/polled)
+Page   53: UBX-NAV-POSLLH           0x01 0x02    •   Geodetic position solution (Periodic/polled)
+Page   53: UBX-NAV-PVT              0x01 0x07    •   Navigation position velocity time solution (Periodic/polled)
+Page   53: UBX-NAV-RESETODO         0x01 0x10    •   Reset odometer (Command)
+Page   53: UBX-NAV-SAT              0x01 0x35    •   Satellite information (Periodic/polled)
+Page   53: UBX-NAV-SBAS             0x01 0x32    •   SBAS status data (Periodic/polled)
+Page   53: UBX-NAV-SIG              0x01 0x43    •   Signal information (Periodic/polled)
+Page   53: UBX-NAV-SLAS             0x01 0x42    •   QZSS L1S SLAS status data (Periodic/polled)
+Page   53: UBX-NAV-STATUS           0x01 0x03    •   Receiver navigation status (Periodic/polled)
+Page   53: UBX-NAV-TIMEBDS          0x01 0x24    •   BeiDou time solution (Periodic/polled)
+Page   53: UBX-NAV-TIMEGAL          0x01 0x25    •   Galileo time solution (Periodic/polled)
+Page   53: UBX-NAV-TIMEGLO          0x01 0x23    •   GLONASS time solution (Periodic/polled)
+Page   53: UBX-NAV-TIMEGPS          0x01 0x20    •   GPS time solution (Periodic/polled)
+Page   53: UBX-NAV-TIMELS           0x01 0x26    •   Leap second event information (Periodic/polled)
+Page   53: UBX-NAV-TIMEQZSS         0x01 0x27    •   QZSS time solution (Periodic/polled)
+Page   53: UBX-NAV-TIMEUTC          0x01 0x21    •   UTC time solution (Periodic/polled)
+Page   53: UBX-NAV-VELECEF          0x01 0x11    •   Velocity solution in ECEF (Periodic/polled)
+Page   53: UBX-NAV-VELNED           0x01 0x12    •   Velocity solution in NED frame (Periodic/polled)
+Page   53: UBX-RXM-SFRBX            0x02 0x13    •   Broadcast navigation data subframe (Output)
+Page   64: •    Send rate is relative to the event a message is registered on. For example, if the rate of a navigation
+Page   64: message is set to 2, the message is sent every second navigation solution. For conﬁguring NMEA
+Page   64: 3.10.11 UBX-CFG-NAV5 (0x06 0x24)
+Page   65: 3.10.11.1 Navigation engine settings
+Page   65: Message             UBX-CFG-NAV5
+Page   65: Navigation engine settings
+Page   66: NAV
+Page   66: • 3 = UTC as operated by the U.S. Naval
+Page   66: Laboratory, India (NPLI); derived from NavIC time
+Page   66: 3.10.12 UBX-CFG-NAVX5 (0x06 0x23)
+Page   66: 3.10.12.1 Navigation engine expert settings
+Page   66: Message     UBX-CFG-NAVX5
+Page   66: Navigation engine expert settings
+Page   67: 10                  U1       minSVs                 -           #SVs         Minimum number of satellites for navigation
+Page   67: 11                  U1       maxSVs                 -           #SVs         Maximum number of satellites for navigation
+Page   67: 12                  U1       minCNO                 -           dBHz         Minimum satellite signal level for navigation
+Page   79: 3.10.19.1 Navigation/measurement rate settings
+Page   79: Navigation/measurement rate settings
+Page   79: This message allows the user to alter the rate at which navigation solutions (and the measurements that they
+Page   79: depend on) are generated by the receiver. The calculation of the navigation solution will always be aligned to
+Page   79: (Navigation period is an integer multiple of the measurement period for protocol versions greater than 17.00).
+Page   79: •     The navRate value deﬁnes that every nth measurement triggers a navigation epoch.
+Page   79: •     When using power save mode, measurement and navigation rate can diﬀer from the values conﬁgured
+Page   80: 2                   U2          navRate                -           cycles       The ratio between the number of measurements and
+Page   80: the number of navigation solutions, e.g. 5 means
+Page   80: ﬁve measurements for every navigation solution.
+Page   80: the navRate is ﬁxed to 1 for protocol versions less than
+Page   80: •   5 = NavIC time (not supported for protocol
+Page   81: 0                   X2        navBbrMask           -            -           BBR sections to clear. The following special sets apply:
+Page   82: bit 0   U:1       range                 -            -           Use SBAS GEOs as a ranging source (for navigation)
+Page   94: 4               U4    iTOW        -          ms           GPS time of week of the navigation epoch.
+Page   94: for description of navigation epoch and iTOW.
+Page   94: 27              U1    numSV       -          -            Number of satellites used in Nav Solution
+Page   99: Batch entries are returned in chronological order, using one UBX-LOG-BATCH per navigation epoch.
+Page  101: odometer was reset by a UBX-NAV-RESETODO
+Page  102: information to the receiver as well as backing up the navigation database from the receiver to a host.
+Page  102: Acknowledgments are enabled by setting the CFG-NAVSPG-ACKAIDING item.
+Page  107: 3.13.4.1 Poll the navigation database
+Page  107: Poll the navigation database
+Page  107: Comment       Poll the whole navigation data base. The receiver will send all available data from its internal database. The
+Page  107: 3.13.4.2 Navigation database dump entry
+Page  107: Navigation database dump entry
+Page  107: Comment       Navigation database entry. The data ﬁelds are ﬁrmware-speciﬁc. Transmission of this type of message will
+Page  109: 4             U2        iodNav                   -           -            Ephemeris and clock correction Issue of Data
+Page  112: 7             I1        H                        -           -            Carrier frequency number of navigation RF signal,
+Page  113: 29            I1        H                        -           -            Carrier frequency number of navigation RF signal,
+Page  120: •   7 = NavIC time
+Page  127: unknown or feature disabled or ﬂag unavailable, 1 =
+Page  131: unknown or feature disabled or ﬂag unavailable, 1 =
+Page  135: 3.15 UBX-NAV (0x01)
+Page  135: The messages in the UBX-NAV class are used to output navigation results and data, such as
+Page  135: navigation rate.
+Page  135: 3.15.1 UBX-NAV-AOPSTATUS (0x01 0x60)
+Page  135: Message             UBX-NAV-AOPSTATUS
+Page  135: 0                   U4        iTOW                   -           ms           GPS time of week of the navigation epoch.
+Page  135: 3.15.2 UBX-NAV-CLOCK (0x01 0x22)
+Page  135: Message             UBX-NAV-CLOCK
+Page  135: 0                   U4        iTOW                   -           ms           GPS time of week of the navigation epoch. See
+Page  135: section Navigation epochs in the integration manual
+Page  136: 3.15.3 UBX-NAV-COV (0x01 0x36)
+Page  136: Message       UBX-NAV-COV
+Page  136: 0             U4         iTOW                     -           ms           GPS time of week of the navigation epoch.
+Page  136: 3.15.4 UBX-NAV-DOP (0x01 0x04)
+Page  136: Message       UBX-NAV-DOP
+Page  137: 0             U4         iTOW                 -            ms          GPS time of week of the navigation epoch.
+Page  137: 3.15.5 UBX-NAV-EOE (0x01 0x61)
+Page  137: Message       UBX-NAV-EOE
+Page  137: Comment       This message is intended to be used as a marker to collect all navigation messages of an epoch. It is output
+Page  137: after all enabled NAV class messages and after all enabled NMEA messages.
+Page  137: 0             U4         iTOW                 -            ms          GPS time of week of the navigation epoch.
+Page  137: 3.15.6 UBX-NAV-GEOFENCE (0x01 0x39)
+Page  137: Message       UBX-NAV-GEOFENCE
+Page  137: 0             U4         iTOW                 -            ms          GPS time of week of the navigation epoch.
+Page  138: 3.15.7 UBX-NAV-ODO (0x01 0x09)
+Page  138: Message       UBX-NAV-ODO
+Page  138: Comment       This message outputs the traveled distance since last reset (see UBX-NAV-RESETODO) together with an
+Page  138: 4             U4        iTOW                     -           ms           GPS time of week of the navigation epoch.
+Page  138: 3.15.8 UBX-NAV-ORB (0x01 0x34)
+Page  138: Message       UBX-NAV-ORB
+Page  139: 0                U4      iTOW           -           ms           GPS time of week of the navigation epoch.
+Page  140: 3.15.9 UBX-NAV-POSECEF (0x01 0x01)
+Page  140: Message           UBX-NAV-POSECEF
+Page  140: Comment           See important comments concerning validity of position given in section Navigation output ﬁlters in the
+Page  140: 0                 U4        iTOW                    -           ms           GPS time of week of the navigation epoch.
+Page  140: 3.15.10 UBX-NAV-POSLLH (0x01 0x02)
+Page  140: Message           UBX-NAV-POSLLH
+Page  140: Comment           See important comments concerning validity of position given in section Navigation output ﬁlters in the
+Page  140: Ellipsoid, but can be changed with the message CFG-NAVSPG-USE_USRDAT.
+Page  141: 0                   U4        iTOW                   -           ms           GPS time of week of the navigation epoch.
+Page  141: 3.15.11 UBX-NAV-PVT (0x01 0x07)
+Page  141: 3.15.11.1 Navigation position velocity time solution
+Page  141: Message             UBX-NAV-PVT
+Page  141: Navigation position velocity time solution
+Page  141: 0                   U4        iTOW                   -           ms           GPS time of week of the navigation epoch.
+Page  142: 23              U1    numSV           -          -            Number of satellites used in Nav Solution
+Page  143: 3.15.12 UBX-NAV-RESETODO (0x01 0x10)
+Page  143: Message             UBX-NAV-RESETODO
+Page  143: Comment             This message resets the traveled distance computed by the odometer (see UBX-NAV-ODO).
+Page  143: 3.15.13 UBX-NAV-SAT (0x01 0x35)
+Page  144: Message             UBX-NAV-SAT
+Page  144: 0                   U4        iTOW                  -            ms          GPS time of week of the navigation epoch.
+Page  144: is currently being used for navigation
+Page  145: 3.15.14 UBX-NAV-SBAS (0x01 0x32)
+Page  145: Message           UBX-NAV-SBAS
+Page  145: 0                 U4        iTOW                  -            ms          GPS time of week of the navigation epoch.
+Page  146: 3.15.15 UBX-NAV-SIG (0x01 0x43)
+Page  146: Message             UBX-NAV-SIG
+Page  147: 0                   U4      iTOW          -           ms           GPS time of week of the navigation epoch.
+Page  148: bit 9   U:1       authStatus            -            -            Authentication status of the navigation data used to
+Page  148: compute the satellite's position in current navigation
+Page  148: epoch. If the authentication fails, the navigation data
+Page  148: Navigation Message Authentication (OSNMA)
+Page  148: protocol for E1 I/NAV message.
+Page  148: 3.15.16 UBX-NAV-SLAS (0x01 0x42)
+Page  148: Message             UBX-NAV-SLAS
+Page  148: 0                   U4        iTOW                  -            ms           GPS time of week of the navigation epoch.
+Page  149: 3.15.17 UBX-NAV-STATUS (0x01 0x03)
+Page  149: 3.15.17.1 Receiver navigation status
+Page  149: Message             UBX-NAV-STATUS
+Page  149: Receiver navigation status
+Page  149: Comment             See important comments concerning validity of position given in section Navigation output ﬁlters in the
+Page  149: 0                   U4        iTOW                    -           ms           GPS time of week of the navigation epoch.
+Page  149: 5                   X1        flags                   -           -            Navigation Status Flags
+Page  150: applied. In case of sensor unavailability map
+Page  150: 7                 X1        flags2                 -           -            further information about navigation output
+Page  150: detector state for the current navigation epoch. As
+Page  150: 3.15.18 UBX-NAV-TIMEBDS (0x01 0x24)
+Page  150: Message           UBX-NAV-TIMEBDS
+Page  150: Comment           This message reports the precise BDS time of the most recent navigation solution including validity ﬂags and
+Page  150: 0                 U4        iTOW                   -           ms           GPS time of week of the navigation epoch.
+Page  151: 12                  I2        week                   -           -            BDS week number of the navigation epoch
+Page  151: 3.15.19 UBX-NAV-TIMEGAL (0x01 0x25)
+Page  151: Message             UBX-NAV-TIMEGAL
+Page  151: Comment             This message reports the precise Galileo time of the most recent navigation solution including validity ﬂags
+Page  151: 0                   U4        iTOW                   -           ms           GPS time of week of the navigation epoch.
+Page  151: 3.15.20 UBX-NAV-TIMEGLO (0x01 0x23)
+Page  152: Message             UBX-NAV-TIMEGLO
+Page  152: Comment             This message reports the precise GLO time of the most recent navigation solution including validity ﬂags and
+Page  152: 0                   U4        iTOW                     -           ms           GPS time of week of the navigation epoch.
+Page  152: 3.15.21 UBX-NAV-TIMEGPS (0x01 0x20)
+Page  152: Message             UBX-NAV-TIMEGPS
+Page  152: Comment             This message reports the precise GPS time of the most recent navigation solution including validity ﬂags and
+Page  152: 0                   U4        iTOW                     -           ms           GPS time of week of the navigation epoch.
+Page  153: 8                   I2        week                   -           -            GPS week number of the navigation epoch
+Page  153: 3.15.22 UBX-NAV-TIMELS (0x01 0x26)
+Page  153: Message             UBX-NAV-TIMELS
+Page  153: 0                   U4        iTOW                   -           ms           GPS time of week of the navigation epoch.
+Page  153: •   8 = NavIC
+Page  154: •   7 = NavIC
+Page  154: 3.15.23 UBX-NAV-TIMEQZSS (0x01 0x27)
+Page  154: Message             UBX-NAV-TIMEQZSS
+Page  154: Comment             This message reports the precise QZSS time of the most recent navigation solution including validity ﬂags
+Page  154: 0                   U4        iTOW                   -           ms           GPS time of week of the navigation epoch.
+Page  155: 12                  I2        qzssWno                -           -            QZSS week number of the navigation epoch
+Page  155: 3.15.24 UBX-NAV-TIMEUTC (0x01 0x21)
+Page  155: Message             UBX-NAV-TIMEUTC
+Page  155: 0                   U4        iTOW                   -           ms           GPS time of week of the navigation epoch.
+Page  156: Navigation Message Authentication (OSNMA)
+Page  156: protocol for E1 I/NAV message which means that data
+Page  156: •   3 = U.S. Naval Observatory (USNO)
+Page  156: 3.15.25 UBX-NAV-VELECEF (0x01 0x11)
+Page  156: Message           UBX-NAV-VELECEF
+Page  156: Comment           See important comments concerning validity of position given in section Navigation output ﬁlters in the
+Page  156: 0                 U4        iTOW                   -           ms           GPS time of week of the navigation epoch.
+Page  156: 3.15.26 UBX-NAV-VELNED (0x01 0x12)
+Page  156: Message           UBX-NAV-VELNED
+Page  156: Comment           See important comments concerning validity of position given in section Navigation output ﬁlters in the
+Page  157: 0             U4        iTOW                  -            ms          GPS time of week of the navigation epoch.
+Page  157: measurements variant, modulo 3600000 for the 22 LSB Galileo and Additional Navigation Satelllite Systems
+Page  161: 3.16.5.1 Broadcast navigation data subframe
+Page  161: Broadcast navigation data subframe
+Page  161: Comment             This message reports a complete subframe of broadcast navigation data decoded from a single signal. The
+Page  163: conﬁguration in CFG-NAVSPG-* conﬁguration
+Page  164: •   4 = NavIC
+Page  164: •   3 = U.S. Naval Observatory (USNO)
+Page  167: Standards for Differential GNSS (Global Navigation Satellite Systems) Service, Version 3.
+Page  169: Diﬀerential GNSS (Global Navigation Satellite Systems) Service, Version 3 available from http://
+Page  169: Comment           See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  169: Comment           See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  170: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  170: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  171: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  172: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  172: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  173: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  173: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  174: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  175: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  175: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  176: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  176: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  177: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  177: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  178: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  179: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  179: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  180: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  180: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  181: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  182: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  182: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  183: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  183: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  184: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  184: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  185: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  186: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  186: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  187: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  187: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  188: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  189: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  189: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  190: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  190: See RTCM Standard 10403.3 Recommended Standards for Diﬀerential GNSS (Global Navigation Satellite
+Page  196: CFG-NAVSPG                             Standard precision navigation conﬁguration
+Page  196: CFG-RATE                               Navigation and measurement rate conﬁguration
+Page  209: CFG-MSGOUT-UBX_NAV_           0x20910079 U1       -       -       Output rate of the UBX-NAV-AOPSTATUS
+Page  209: CFG-MSGOUT-UBX_NAV_           0x2091007d U1       -       -       Output rate of the UBX-NAV-AOPSTATUS
+Page  209: CFG-MSGOUT-UBX_NAV_           0x2091007a U1       -       -       Output rate of the UBX-NAV-AOPSTATUS
+Page  209: CFG-MSGOUT-UBX_NAV_           0x2091007b U1       -       -       Output rate of the UBX-NAV-AOPSTATUS
+Page  209: CFG-MSGOUT-UBX_NAV_           0x2091007c U1       -       -       Output rate of the UBX-NAV-AOPSTATUS
+Page  209: CFG-MSGOUT-UBX_NAV_CLOCK_I2C 0x20910065 U1        -       -       Output rate of the UBX-NAV-CLOCK message
+Page  209: CFG-MSGOUT-UBX_NAV_CLOCK_SPI 0x20910069 U1        -       -       Output rate of the UBX-NAV-CLOCK message
+Page  209: CFG-MSGOUT-UBX_NAV_CLOCK_     0x20910066 U1       -       -       Output rate of the UBX-NAV-CLOCK message
+Page  209: CFG-MSGOUT-UBX_NAV_CLOCK_     0x20910067 U1       -       -       Output rate of the UBX-NAV-CLOCK message
+Page  209: CFG-MSGOUT-UBX_NAV_CLOCK_USB 0x20910068 U1        -       -       Output rate of the UBX-NAV-CLOCK message
+Page  209: CFG-MSGOUT-UBX_NAV_COV_I2C    0x20910083 U1       -       -       Output rate of the UBX-NAV-COV message on
+Page  209: CFG-MSGOUT-UBX_NAV_COV_SPI    0x20910087 U1       -       -       Output rate of the UBX-NAV-COV message on
+Page  209: CFG-MSGOUT-UBX_NAV_COV_       0x20910084 U1       -       -       Output rate of the UBX-NAV-COV message on
+Page  209: CFG-MSGOUT-UBX_NAV_COV_       0x20910085 U1       -       -       Output rate of the UBX-NAV-COV message on
+Page  209: CFG-MSGOUT-UBX_NAV_COV_USB    0x20910086 U1       -       -       Output rate of the UBX-NAV-COV message on
+Page  209: CFG-MSGOUT-UBX_NAV_DOP_I2C    0x20910038 U1       -       -       Output rate of the UBX-NAV-DOP message on
+Page  209: CFG-MSGOUT-UBX_NAV_DOP_SPI    0x2091003c U1       -       -       Output rate of the UBX-NAV-DOP message on
+Page  210: CFG-MSGOUT-UBX_NAV_DOP_       0x20910039 U1       -       -       Output rate of the UBX-NAV-DOP message on
+Page  210: CFG-MSGOUT-UBX_NAV_DOP_       0x2091003a U1       -       -       Output rate of the UBX-NAV-DOP message on
+Page  210: CFG-MSGOUT-UBX_NAV_DOP_USB    0x2091003b U1       -       -       Output rate of the UBX-NAV-DOP message on
+Page  210: CFG-MSGOUT-UBX_NAV_EOE_I2C    0x2091015f U1       -       -       Output rate of the UBX-NAV-EOE message on
+Page  210: CFG-MSGOUT-UBX_NAV_EOE_SPI    0x20910163 U1       -       -       Output rate of the UBX-NAV-EOE message on
+Page  210: CFG-MSGOUT-UBX_NAV_EOE_UART1 0x20910160 U1        -       -       Output rate of the UBX-NAV-EOE message on
+Page  210: CFG-MSGOUT-UBX_NAV_EOE_UART2 0x20910161 U1        -       -       Output rate of the UBX-NAV-EOE message on
+Page  210: CFG-MSGOUT-UBX_NAV_EOE_USB    0x20910162 U1       -       -       Output rate of the UBX-NAV-EOE message on
+Page  210: CFG-MSGOUT-UBX_NAV_GEOFENCE_ 0x209100a1 U1        -       -       Output rate of the UBX-NAV-GEOFENCE
+Page  210: CFG-MSGOUT-UBX_NAV_GEOFENCE_ 0x209100a5 U1        -       -       Output rate of the UBX-NAV-GEOFENCE
+Page  210: CFG-MSGOUT-UBX_NAV_GEOFENCE_ 0x209100a2 U1        -       -       Output rate of the UBX-NAV-GEOFENCE
+Page  210: CFG-MSGOUT-UBX_NAV_GEOFENCE_ 0x209100a3 U1        -       -       Output rate of the UBX-NAV-GEOFENCE
+Page  210: CFG-MSGOUT-UBX_NAV_GEOFENCE_ 0x209100a4 U1        -       -       Output rate of the UBX-NAV-GEOFENCE
+Page  210: CFG-MSGOUT-UBX_NAV_ODO_I2C    0x2091007e U1       -       -       Output rate of the UBX-NAV-ODO message on
+Page  210: CFG-MSGOUT-UBX_NAV_ODO_SPI    0x20910082 U1       -       -       Output rate of the UBX-NAV-ODO message on
+Page  210: CFG-MSGOUT-UBX_NAV_ODO_       0x2091007f U1       -       -       Output rate of the UBX-NAV-ODO message on
+Page  210: CFG-MSGOUT-UBX_NAV_ODO_       0x20910080 U1       -       -       Output rate of the UBX-NAV-ODO message on
+Page  210: CFG-MSGOUT-UBX_NAV_ODO_USB    0x20910081 U1       -       -       Output rate of the UBX-NAV-ODO message on
+Page  210: CFG-MSGOUT-UBX_NAV_ORB_I2C    0x20910010 U1       -       -       Output rate of the UBX-NAV-ORB message on
+Page  210: CFG-MSGOUT-UBX_NAV_ORB_SPI    0x20910014 U1       -       -       Output rate of the UBX-NAV-ORB message on
+Page  210: CFG-MSGOUT-UBX_NAV_ORB_       0x20910011 U1       -       -       Output rate of the UBX-NAV-ORB message on
+Page  210: CFG-MSGOUT-UBX_NAV_ORB_       0x20910012 U1       -       -       Output rate of the UBX-NAV-ORB message on
+Page  210: CFG-MSGOUT-UBX_NAV_ORB_USB    0x20910013 U1       -       -       Output rate of the UBX-NAV-ORB message on
+Page  210: CFG-MSGOUT-UBX_NAV_POSECEF_   0x20910024 U1       -       -       Output rate of the UBX-NAV-POSECEF message
+Page  210: CFG-MSGOUT-UBX_NAV_POSECEF_   0x20910028 U1       -       -       Output rate of the UBX-NAV-POSECEF message
+Page  210: CFG-MSGOUT-UBX_NAV_POSECEF_   0x20910025 U1       -       -       Output rate of the UBX-NAV-POSECEF message
+Page  211: CFG-MSGOUT-UBX_NAV_POSECEF_   0x20910026 U1       -       -       Output rate of the UBX-NAV-POSECEF message
+Page  211: CFG-MSGOUT-UBX_NAV_POSECEF_   0x20910027 U1       -       -       Output rate of the UBX-NAV-POSECEF message
+Page  211: CFG-MSGOUT-UBX_NAV_POSLLH_    0x20910029 U1       -       -       Output rate of the UBX-NAV-POSLLH message
+Page  211: CFG-MSGOUT-UBX_NAV_POSLLH_SPI 0x2091002d U1       -       -       Output rate of the UBX-NAV-POSLLH message
+Page  211: CFG-MSGOUT-UBX_NAV_POSLLH_    0x2091002a U1       -       -       Output rate of the UBX-NAV-POSLLH message
+Page  211: CFG-MSGOUT-UBX_NAV_POSLLH_    0x2091002b U1       -       -       Output rate of the UBX-NAV-POSLLH message
+Page  211: CFG-MSGOUT-UBX_NAV_POSLLH_    0x2091002c U1       -       -       Output rate of the UBX-NAV-POSLLH message
+Page  211: CFG-MSGOUT-UBX_NAV_PVT_I2C    0x20910006 U1       -       -       Output rate of the UBX-NAV-PVT message on
+Page  211: CFG-MSGOUT-UBX_NAV_PVT_SPI    0x2091000a U1       -       -       Output rate of the UBX-NAV-PVT message on
+Page  211: CFG-MSGOUT-UBX_NAV_PVT_UART1 0x20910007 U1        -       -       Output rate of the UBX-NAV-PVT message on
+Page  211: CFG-MSGOUT-UBX_NAV_PVT_UART2 0x20910008 U1        -       -       Output rate of the UBX-NAV-PVT message on
+Page  211: CFG-MSGOUT-UBX_NAV_PVT_USB    0x20910009 U1       -       -       Output rate of the UBX-NAV-PVT message on
+Page  211: CFG-MSGOUT-UBX_NAV_SAT_I2C    0x20910015 U1       -       -       Output rate of the UBX-NAV-SAT message on
+Page  211: CFG-MSGOUT-UBX_NAV_SAT_SPI    0x20910019 U1       -       -       Output rate of the UBX-NAV-SAT message on
+Page  211: CFG-MSGOUT-UBX_NAV_SAT_UART1 0x20910016 U1        -       -       Output rate of the UBX-NAV-SAT message on
+Page  211: CFG-MSGOUT-UBX_NAV_SAT_UART2 0x20910017 U1        -       -       Output rate of the UBX-NAV-SAT message on
+Page  211: CFG-MSGOUT-UBX_NAV_SAT_USB    0x20910018 U1       -       -       Output rate of the UBX-NAV-SAT message on
+Page  211: CFG-MSGOUT-UBX_NAV_SBAS_I2C   0x2091006a U1       -       -       Output rate of the UBX-NAV-SBAS message on
+Page  211: CFG-MSGOUT-UBX_NAV_SBAS_SPI   0x2091006e U1       -       -       Output rate of the UBX-NAV-SBAS message on
+Page  211: CFG-MSGOUT-UBX_NAV_SBAS_      0x2091006b U1       -       -       Output rate of the UBX-NAV-SBAS message on
+Page  211: CFG-MSGOUT-UBX_NAV_SBAS_      0x2091006c U1       -       -       Output rate of the UBX-NAV-SBAS message on
+Page  211: CFG-MSGOUT-UBX_NAV_SBAS_USB   0x2091006d U1       -       -       Output rate of the UBX-NAV-SBAS message on
+Page  211: CFG-MSGOUT-UBX_NAV_SIG_I2C    0x20910345 U1       -       -       Output rate of the UBX-NAV-SIG message on
+Page  211: CFG-MSGOUT-UBX_NAV_SIG_SPI    0x20910349 U1       -       -       Output rate of the UBX-NAV-SIG message on
+Page  211: CFG-MSGOUT-UBX_NAV_SIG_UART1 0x20910346 U1        -       -       Output rate of the UBX-NAV-SIG message on
+Page  211: CFG-MSGOUT-UBX_NAV_SIG_UART2 0x20910347 U1        -       -       Output rate of the UBX-NAV-SIG message on
+Page  212: CFG-MSGOUT-UBX_NAV_SIG_USB    0x20910348 U1       -       -       Output rate of the UBX-NAV-SIG message on
+Page  212: CFG-MSGOUT-UBX_NAV_SLAS_I2C   0x20910336 U1       -       -       Output rate of the UBX-NAV-SLAS message on
+Page  212: CFG-MSGOUT-UBX_NAV_SLAS_SPI   0x2091033a U1       -       -       Output rate of the UBX-NAV-SLAS message on
+Page  212: CFG-MSGOUT-UBX_NAV_SLAS_      0x20910337 U1       -       -       Output rate of the UBX-NAV-SLAS message on
+Page  212: CFG-MSGOUT-UBX_NAV_SLAS_      0x20910338 U1       -       -       Output rate of the UBX-NAV-SLAS message on
+Page  212: CFG-MSGOUT-UBX_NAV_SLAS_USB   0x20910339 U1       -       -       Output rate of the UBX-NAV-SLAS message on
+Page  212: CFG-MSGOUT-UBX_NAV_STATUS_    0x2091001a U1       -       -       Output rate of the UBX-NAV-STATUS message
+Page  212: CFG-MSGOUT-UBX_NAV_STATUS_SPI 0x2091001e U1       -       -       Output rate of the UBX-NAV-STATUS message
+Page  212: CFG-MSGOUT-UBX_NAV_STATUS_    0x2091001b U1       -       -       Output rate of the UBX-NAV-STATUS message
+Page  212: CFG-MSGOUT-UBX_NAV_STATUS_    0x2091001c U1       -       -       Output rate of the UBX-NAV-STATUS message
+Page  212: CFG-MSGOUT-UBX_NAV_STATUS_    0x2091001d U1       -       -       Output rate of the UBX-NAV-STATUS message
+Page  212: CFG-MSGOUT-UBX_NAV_TIMEBDS_   0x20910051 U1       -       -       Output rate of the UBX-NAV-TIMEBDS message
+Page  212: CFG-MSGOUT-UBX_NAV_TIMEBDS_   0x20910055 U1       -       -       Output rate of the UBX-NAV-TIMEBDS message
+Page  212: CFG-MSGOUT-UBX_NAV_TIMEBDS_   0x20910052 U1       -       -       Output rate of the UBX-NAV-TIMEBDS message
+Page  212: CFG-MSGOUT-UBX_NAV_TIMEBDS_   0x20910053 U1       -       -       Output rate of the UBX-NAV-TIMEBDS message
+Page  212: CFG-MSGOUT-UBX_NAV_TIMEBDS_   0x20910054 U1       -       -       Output rate of the UBX-NAV-TIMEBDS message
+Page  212: CFG-MSGOUT-UBX_NAV_TIMEGAL_   0x20910056 U1       -       -       Output rate of the UBX-NAV-TIMEGAL message
+Page  212: CFG-MSGOUT-UBX_NAV_TIMEGAL_   0x2091005a U1       -       -       Output rate of the UBX-NAV-TIMEGAL message
+Page  212: CFG-MSGOUT-UBX_NAV_TIMEGAL_   0x20910057 U1       -       -       Output rate of the UBX-NAV-TIMEGAL message
+Page  212: CFG-MSGOUT-UBX_NAV_TIMEGAL_   0x20910058 U1       -       -       Output rate of the UBX-NAV-TIMEGAL message
+Page  212: CFG-MSGOUT-UBX_NAV_TIMEGAL_   0x20910059 U1       -       -       Output rate of the UBX-NAV-TIMEGAL message
+Page  212: CFG-MSGOUT-UBX_NAV_TIMEGLO_   0x2091004c U1       -       -       Output rate of the UBX-NAV-TIMEGLO message
+Page  212: CFG-MSGOUT-UBX_NAV_TIMEGLO_   0x20910050 U1       -       -       Output rate of the UBX-NAV-TIMEGLO message
+Page  212: CFG-MSGOUT-UBX_NAV_TIMEGLO_   0x2091004d U1       -       -       Output rate of the UBX-NAV-TIMEGLO message
+Page  212: CFG-MSGOUT-UBX_NAV_TIMEGLO_   0x2091004e U1       -       -       Output rate of the UBX-NAV-TIMEGLO message
+Page  212: CFG-MSGOUT-UBX_NAV_TIMEGLO_   0x2091004f U1       -       -       Output rate of the UBX-NAV-TIMEGLO message
+Page  213: CFG-MSGOUT-UBX_NAV_TIMEGPS_   0x20910047 U1       -       -       Output rate of the UBX-NAV-TIMEGPS message
+Page  213: CFG-MSGOUT-UBX_NAV_TIMEGPS_   0x2091004b U1       -       -       Output rate of the UBX-NAV-TIMEGPS message
+Page  213: CFG-MSGOUT-UBX_NAV_TIMEGPS_   0x20910048 U1       -       -       Output rate of the UBX-NAV-TIMEGPS message
+Page  213: CFG-MSGOUT-UBX_NAV_TIMEGPS_   0x20910049 U1       -       -       Output rate of the UBX-NAV-TIMEGPS message
+Page  213: CFG-MSGOUT-UBX_NAV_TIMEGPS_   0x2091004a U1       -       -       Output rate of the UBX-NAV-TIMEGPS message
+Page  213: CFG-MSGOUT-UBX_NAV_TIMELS_I2C 0x20910060 U1       -       -       Output rate of the UBX-NAV-TIMELS message
+Page  213: CFG-MSGOUT-UBX_NAV_TIMELS_SPI 0x20910064 U1       -       -       Output rate of the UBX-NAV-TIMELS message
+Page  213: CFG-MSGOUT-UBX_NAV_TIMELS_    0x20910061 U1       -       -       Output rate of the UBX-NAV-TIMELS message
+Page  213: CFG-MSGOUT-UBX_NAV_TIMELS_    0x20910062 U1       -       -       Output rate of the UBX-NAV-TIMELS message
+Page  213: CFG-MSGOUT-UBX_NAV_TIMELS_    0x20910063 U1       -       -       Output rate of the UBX-NAV-TIMELS message
+Page  213: CFG-MSGOUT-UBX_NAV_TIMEQZSS_ 0x20910386 U1        -       -       Output rate of the UBX-NAV-TIMEQZSS
+Page  213: CFG-MSGOUT-UBX_NAV_TIMEQZSS_ 0x2091038a U1        -       -       Output rate of the UBX-NAV-TIMEQZSS
+Page  213: CFG-MSGOUT-UBX_NAV_TIMEQZSS_ 0x20910387 U1        -       -       Output rate of the UBX-NAV-TIMEQZSS
+Page  213: CFG-MSGOUT-UBX_NAV_TIMEQZSS_ 0x20910388 U1        -       -       Output rate of the UBX-NAV-TIMEQZSS
+Page  213: CFG-MSGOUT-UBX_NAV_TIMEQZSS_ 0x20910389 U1        -       -       Output rate of the UBX-NAV-TIMEQZSS
+Page  213: CFG-MSGOUT-UBX_NAV_TIMEUTC_   0x2091005b U1       -       -       Output rate of the UBX-NAV-TIMEUTC message
+Page  213: CFG-MSGOUT-UBX_NAV_TIMEUTC_   0x2091005f U1       -       -       Output rate of the UBX-NAV-TIMEUTC message
+Page  213: CFG-MSGOUT-UBX_NAV_TIMEUTC_   0x2091005c U1       -       -       Output rate of the UBX-NAV-TIMEUTC message
+Page  213: CFG-MSGOUT-UBX_NAV_TIMEUTC_   0x2091005d U1       -       -       Output rate of the UBX-NAV-TIMEUTC message
+Page  213: CFG-MSGOUT-UBX_NAV_TIMEUTC_   0x2091005e U1       -       -       Output rate of the UBX-NAV-TIMEUTC message
+Page  213: CFG-MSGOUT-UBX_NAV_VELECEF_   0x2091003d U1       -       -       Output rate of the UBX-NAV-VELECEF message
+Page  213: CFG-MSGOUT-UBX_NAV_VELECEF_   0x20910041 U1       -       -       Output rate of the UBX-NAV-VELECEF message
+Page  213: CFG-MSGOUT-UBX_NAV_VELECEF_   0x2091003e U1       -       -       Output rate of the UBX-NAV-VELECEF message
+Page  213: CFG-MSGOUT-UBX_NAV_VELECEF_   0x2091003f U1       -       -       Output rate of the UBX-NAV-VELECEF message
+Page  213: CFG-MSGOUT-UBX_NAV_VELECEF_   0x20910040 U1       -       -       Output rate of the UBX-NAV-VELECEF message
+Page  213: CFG-MSGOUT-UBX_NAV_VELNED_    0x20910042 U1       -       -       Output rate of the UBX-NAV-VELNED message
+Page  214: CFG-MSGOUT-UBX_NAV_VELNED_    0x20910046 U1       -       -       Output rate of the UBX-NAV-VELNED message
+Page  214: CFG-MSGOUT-UBX_NAV_VELNED_    0x20910043 U1       -       -       Output rate of the UBX-NAV-VELNED message
+Page  214: CFG-MSGOUT-UBX_NAV_VELNED_    0x20910044 U1       -       -       Output rate of the UBX-NAV-VELNED message
+Page  214: CFG-MSGOUT-UBX_NAV_VELNED_    0x20910045 U1       -       -       Output rate of the UBX-NAV-VELNED message
+Page  215: 5.9.13 CFG-NAVSPG: Standard precision navigation conﬁguration
+Page  215: CFG-NAVSPG-FIXMODE                   0x20110011 E1            -          -     Position ﬁx mode
+Page  215: CFG-NAVSPG-INIFIX3D                  0x10110013       L       -          -     Initial ﬁx must be a 3D ﬁx
+Page  215: CFG-NAVSPG-WKNROLLOVER               0x30110017 U2            -          -     GPS week rollover number
+Page  215: CFG-NAVSPG-USE_PPP                   0x10110019       L       -          -     Use precise point positioning (PPP)
+Page  216: CFG-NAVSPG-UTCSTANDARD               0x2011001c E1             -         -     UTC standard to be used
+Page  216: CFG-NAVSPG-DYNMODEL                  0x20110021 E1             -         -     Dynamic platform model
+Page  216: CFG-NAVSPG-ACKAIDING                 0x10110025        L       -         -     Acknowledge assistance input messages
+Page  216: CFG-NAVSPG-USE_USRDAT                0x10110061        L       -         -     Use user geodetic datum parameters
+Page  216: This must be set together with all CFG-NAVSPG-USERDAT_* parameters.
+Page  216: CFG-NAVSPG-USRDAT_MAJA               0x50110062 R8             -         m     Geodetic datum semi-major axis
+Page  216: This will only be used if CFG-NAVSPG-USE_USERDAT is set. It must be set together with all other CFG-NAVSPG-
+Page  216: CFG-NAVSPG-USRDAT_FLAT               0x50110063 R8             -         -     Geodetic datum 1.0 / ﬂattening
+Page  216: This will only be used if CFG-NAVSPG-USE_USERDAT is set. It must be set together with all other CFG-NAVSPG-
+Page  216: CFG-NAVSPG-USRDAT_DX                 0x40110064 R4             -         m     Geodetic datum X axis shift at the origin
+Page  216: This will only be used if CFG-NAVSPG-USE_USERDAT is set. It must be set together with all other CFG-NAVSPG-
+Page  216: CFG-NAVSPG-USRDAT_DY                 0x40110065 R4             -         m     Geodetic datum Y axis shift at the origin
+Page  216: This will only be used if CFG-NAVSPG-USE_USERDAT is set. It must be set together with all other CFG-NAVSPG-
+Page  216: CFG-NAVSPG-USRDAT_DZ                 0x40110066 R4             -         m     Geodetic datum Z axis shift at the origin
+Page  216: This will only be used if CFG-NAVSPG-USE_USERDAT is set. It must be set together with all other CFG-NAVSPG-
+Page  216: CFG-NAVSPG-USRDAT_ROTX               0x40110067 R4             -     arcsec Geodetic datum rotation about the X axis
+Page  216: This will only be used if CFG-NAVSPG-USE_USERDAT is set. It must be set together with all other CFG-NAVSPG-
+Page  216: CFG-NAVSPG-USRDAT_ROTY               0x40110068 R4             -     arcsec Geodetic datum rotation about the Y axis ()
+Page  216: This will only be used if CFG-NAVSPG-USE_USERDAT is set. It must be set together with all other CFG-NAVSPG-
+Page  216: CFG-NAVSPG-USRDAT_ROTZ               0x40110069 R4             -     arcsec Geodetic datum rotation about the Z axis
+Page  216: This will only be used if CFG-NAVSPG-USE_USERDAT is set. It must be set together with all other CFG-NAVSPG-
+Page  216: CFG-NAVSPG-USRDAT_SCALE              0x4011006a R4             -        ppm    Geodetic datum scale factor
+Page  216: This will only be used if CFG-NAVSPG-USE_USERDAT is set. It must be set together with all other CFG-NAVSPG-
+Page  216: CFG-NAVSPG-INFIL_MINSVS              0x201100a1 U1             -         -     Minimum number of satellites for navigation
+Page  216: CFG-NAVSPG-INFIL_MAXSVS              0x201100a2 U1             -         -     Maximum number of satellites for navigation
+Page  217: CFG-NAVSPG-INFIL_MINCNO                0x201100a3 U1             -    dBHz Minimum satellite signal level for navigation
+Page  217: CFG-NAVSPG-INFIL_MINELEV               0x201100a4      I1        -        deg    Minimum elevation for a GNSS satellite to be
+Page  217: used in navigation
+Page  217: CFG-NAVSPG-INFIL_NCNOTHRS              0x201100aa U1             -         -     Number of satellites required to have C/N0
+Page  217: above CFG-NAVSPG-INFIL_CNOTHRS for a ﬁx to
+Page  217: CFG-NAVSPG-INFIL_CNOTHRS               0x201100ab U1             -         -     C/N0 threshold for deciding whether to attempt
+Page  217: CFG-NAVSPG-OUTFIL_PDOP                 0x301100b1 U2            0.1        -     Output ﬁlter position DOP mask (threshold)
+Page  217: CFG-NAVSPG-OUTFIL_TDOP                 0x301100b2 U2            0.1        -     Output ﬁlter time DOP mask (threshold)
+Page  217: CFG-NAVSPG-OUTFIL_PACC                 0x301100b3 U2             -         m     Output ﬁlter position accuracy mask (threshold)
+Page  217: CFG-NAVSPG-OUTFIL_TACC                 0x301100b4 U2             -         m     Output ﬁlter time accuracy mask (threshold)
+Page  217: CFG-NAVSPG-OUTFIL_FACC                 0x301100b5 U2          0.01        m/s    Output ﬁlter frequency accuracy mask
+Page  217: CFG-NAVSPG-CONSTR_ALT                  0x401100c1      I4     0.01         m     Fixed altitude (mean sea level) for 2D ﬁx mode
+Page  217: CFG-NAVSPG-CONSTR_ALTVAR               0x401100c2 U4        0.0001        m^2    Fixed altitude variance for 2D mode
+Page  217: CFG-NAVSPG-CONSTR_DGNSSTO              0x201100c4 U1             -         s     DGNSS timeout
+Page  217: CFG-NAVSPG-SIGATTCOMP                  0x201100d6 E1             -         -     Permanently attenuated signal compensation
+Page  217: Table 22: CFG-NAVSPG conﬁguration items
+Page  217: Table 23: Constants for CFG-NAVSPG-FIXMODE
+Page  217: USNO                                  3               UTC as operated by the U.S. Naval Observatory (USNO); derived from
+Page  217: derived from NavIC time
+Page  217: Table 24: Constants for CFG-NAVSPG-UTCSTANDARD
+Page  218: Table 25: Constants for CFG-NAVSPG-DYNMODEL
+Page  219: Table 26: Constants for CFG-NAVSPG-SIGATTCOMP
+Page  223: 5.9.18 CFG-RATE: Navigation and measurement rate conﬁguration
+Page  223: The conﬁguration items in this group allow the user to alter the rate at which navigation solutions
+Page  223: navigation solution will always be aligned to the top of a second zero (ﬁrst second of the week) of the
+Page  223: conﬁgured reference time system. The navigation period is an integer multiple of the measurement
+Page  223: CFG-RATE-NAV                        0x30210002 U2           -       -      Ratio of number of measurements to number of
+Page  223: navigation solutions
+Page  223: E.g. 5 means ﬁve measurements for every navigation solution. The minimum value is 1. The maximum value is 127.
+Page  224: NAVIC                               5               Align measurements to NavIC time
+Page  224: navigation)
+Page  230: NAVIC                                  5               NavIC time reference
+Page  230: NAVIC                                  5               NavIC time reference
+Page  235: UBX-CFG-DAT.dX                             CFG-NAVSPG-USRDAT_DX
+Page  235: UBX-CFG-DAT.dY                             CFG-NAVSPG-USRDAT_DY
+Page  235: UBX-CFG-DAT.dZ                             CFG-NAVSPG-USRDAT_DZ
+Page  235: UBX-CFG-DAT.ﬂat                            CFG-NAVSPG-USRDAT_FLAT
+Page  235: UBX-CFG-DAT.majA                           CFG-NAVSPG-USE_USRDAT, CFG-NAVSPG-USRDAT_MAJA
+Page  235: UBX-CFG-DAT.rotX                           CFG-NAVSPG-USRDAT_ROTX
+Page  235: UBX-CFG-DAT.rotY                           CFG-NAVSPG-USRDAT_ROTY
+Page  235: UBX-CFG-DAT.rotZ                           CFG-NAVSPG-USRDAT_ROTZ
+Page  235: UBX-CFG-DAT.scale                          CFG-NAVSPG-USRDAT_SCALE
+Page  236: UBX-CFG-NAV5
+Page  236: UBX-CFG-NAV5.cnoThresh                                 CFG-NAVSPG-INFIL_CNOTHRS
+Page  236: UBX-CFG-NAV5.cnoThreshNumSVs                           CFG-NAVSPG-INFIL_NCNOTHRS
+Page  236: UBX-CFG-NAV5.dgnssTimeout                              CFG-NAVSPG-CONSTR_DGNSSTO
+Page  236: UBX-CFG-NAV5.dynModel                                  CFG-NAVSPG-DYNMODEL
+Page  236: UBX-CFG-NAV5.ﬁxMode                                    CFG-NAVSPG-FIXMODE
+Page  236: UBX-CFG-NAV5.ﬁxedAlt                                   CFG-NAVSPG-CONSTR_ALT
+Page  236: UBX-CFG-NAV5.ﬁxedAltVar                                CFG-NAVSPG-CONSTR_ALTVAR
+Page  236: UBX-CFG-NAV5.minElev                                   CFG-NAVSPG-INFIL_MINELEV
+Page  236: UBX-CFG-NAV5.pAcc                                      CFG-NAVSPG-OUTFIL_PACC
+Page  236: UBX-CFG-NAV5.pDop                                      CFG-NAVSPG-OUTFIL_PDOP
+Page  236: UBX-CFG-NAV5.staticHoldMaxDist                         CFG-MOT-GNSSDIST_THRS
+Page  236: UBX-CFG-NAV5.staticHoldThresh                          CFG-MOT-GNSSSPEED_THRS
+Page  236: UBX-CFG-NAV5.tAcc                                      CFG-NAVSPG-OUTFIL_TACC, CFG-NAVSPG-OUTFIL_FACC
+Page  236: UBX-CFG-NAV5.tDop                                      CFG-NAVSPG-OUTFIL_TDOP
+Page  236: UBX-CFG-NAV5.utcStandard                               CFG-NAVSPG-UTCSTANDARD
+Page  236: UBX-CFG-NAVX5
+Page  236: UBX-CFG-NAVX5.ackAiding                                CFG-NAVSPG-ACKAIDING
+Page  236: UBX-CFG-NAVX5.aopOrbMaxErr                             CFG-ANA-ORBMAXERR
+Page  236: UBX-CFG-NAVX5.iniFix3D                                 CFG-NAVSPG-INIFIX3D
+Page  236: UBX-CFG-NAVX5.maxSVs                                   CFG-NAVSPG-INFIL_MAXSVS
+Page  236: UBX-CFG-NAVX5.minCNO                                   CFG-NAVSPG-INFIL_MINCNO
+Page  236: UBX-CFG-NAVX5.minSVs                                   CFG-NAVSPG-INFIL_MINSVS
+Page  236: UBX-CFG-NAVX5.sigAttenCompMode                         CFG-NAVSPG-SIGATTCOMP
+Page  236: UBX-CFG-NAVX5.useAOP                                   CFG-ANA-USE_ANA
+Page  236: UBX-CFG-NAVX5.usePPP                                   CFG-NAVSPG-USE_PPP
+Page  236: UBX-CFG-NAVX5.wknRollover                              CFG-NAVSPG-WKNROLLOVER
+Page  238: UBX-CFG-RATE.navRate                        CFG-RATE-NAV
+Page  246: CFG-MSGOUT-UBX_NAV_AOPSTATUS_I2C          0x20910079 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_AOPSTATUS_SPI          0x2091007d U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_AOPSTATUS_UART1        0x2091007a U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_AOPSTATUS_UART2        0x2091007b U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_AOPSTATUS_USB          0x2091007c U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_CLOCK_I2C              0x20910065 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_CLOCK_SPI              0x20910069 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_CLOCK_UART1            0x20910066 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_CLOCK_UART2            0x20910067 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_CLOCK_USB              0x20910068 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_COV_I2C                0x20910083 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_COV_SPI                0x20910087 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_COV_UART1              0x20910084 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_COV_UART2              0x20910085 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_COV_USB                0x20910086 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_DOP_I2C                0x20910038 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_DOP_SPI                0x2091003c U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_DOP_UART1              0x20910039 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_DOP_UART2              0x2091003a U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_DOP_USB                0x2091003b U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_EOE_I2C                0x2091015f U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_EOE_SPI                0x20910163 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_EOE_UART1              0x20910160 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_EOE_UART2              0x20910161 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_EOE_USB                0x20910162 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_GEOFENCE_I2C           0x209100a1 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_GEOFENCE_SPI           0x209100a5 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_GEOFENCE_UART1         0x209100a2 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_GEOFENCE_UART2         0x209100a3 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_GEOFENCE_USB           0x209100a4 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_ODO_I2C                0x2091007e U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_ODO_SPI                0x20910082 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_ODO_UART1            0x2091007f U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_ODO_UART2            0x20910080 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_ODO_USB              0x20910081 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_ORB_I2C              0x20910010 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_ORB_SPI              0x20910014 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_ORB_UART1            0x20910011 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_ORB_UART2            0x20910012 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_ORB_USB              0x20910013 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_POSECEF_I2C          0x20910024 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_POSECEF_SPI          0x20910028 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_POSECEF_UART1        0x20910025 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_POSECEF_UART2        0x20910026 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_POSECEF_USB          0x20910027 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_POSLLH_I2C           0x20910029 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_POSLLH_SPI           0x2091002d U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_POSLLH_UART1         0x2091002a U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_POSLLH_UART2         0x2091002b U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_POSLLH_USB           0x2091002c U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_PVT_I2C              0x20910006 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_PVT_SPI              0x2091000a U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_PVT_UART1            0x20910007 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_PVT_UART2            0x20910008 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_PVT_USB              0x20910009 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SAT_I2C              0x20910015 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SAT_SPI              0x20910019 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SAT_UART1            0x20910016 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SAT_UART2            0x20910017 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SAT_USB              0x20910018 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SBAS_I2C             0x2091006a U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SBAS_SPI             0x2091006e U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SBAS_UART1           0x2091006b U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SBAS_UART2           0x2091006c U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SBAS_USB             0x2091006d U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SIG_I2C              0x20910345 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SIG_SPI              0x20910349 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SIG_UART1            0x20910346 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SIG_UART2            0x20910347 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SIG_USB              0x20910348 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SLAS_I2C             0x20910336 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SLAS_SPI             0x2091033a U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SLAS_UART1           0x20910337 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_SLAS_UART2            0x20910338 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_SLAS_USB              0x20910339 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_STATUS_I2C            0x2091001a U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_STATUS_SPI            0x2091001e U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_STATUS_UART1          0x2091001b U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_STATUS_UART2          0x2091001c U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_STATUS_USB            0x2091001d U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEBDS_I2C           0x20910051 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEBDS_SPI           0x20910055 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEBDS_UART1         0x20910052 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEBDS_UART2         0x20910053 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEBDS_USB           0x20910054 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGAL_I2C           0x20910056 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGAL_SPI           0x2091005a U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGAL_UART1         0x20910057 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGAL_UART2         0x20910058 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGAL_USB           0x20910059 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGLO_I2C           0x2091004c U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGLO_SPI           0x20910050 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGLO_UART1         0x2091004d U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGLO_UART2         0x2091004e U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGLO_USB           0x2091004f U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGPS_I2C           0x20910047 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGPS_SPI           0x2091004b U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGPS_UART1         0x20910048 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGPS_UART2         0x20910049 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGPS_USB           0x2091004a U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMELS_I2C            0x20910060 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMELS_SPI            0x20910064 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMELS_UART1          0x20910061 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMELS_UART2          0x20910062 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMELS_USB            0x20910063 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEQZSS_I2C          0x20910386 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEQZSS_SPI          0x2091038a U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEQZSS_UART1        0x20910387 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEQZSS_UART2        0x20910388 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEQZSS_USB          0x20910389 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEUTC_I2C           0x2091005b U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEUTC_SPI           0x2091005f U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEUTC_UART1         0x2091005c U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEUTC_UART2         0x2091005d U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_NAV_TIMEUTC_USB          0x2091005e U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_NAV_VELECEF_I2C          0x2091003d U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_NAV_VELECEF_SPI          0x20910041 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_NAV_VELECEF_UART1        0x2091003e U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_NAV_VELECEF_UART2        0x2091003f U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_NAV_VELECEF_USB          0x20910040 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_NAV_VELNED_I2C           0x20910042 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_NAV_VELNED_SPI           0x20910046 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_NAV_VELNED_UART1         0x20910043 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_NAV_VELNED_UART2         0x20910044 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_NAV_VELNED_USB           0x20910045 U1         -      -               0
+Page  250: CFG-NAVSPG-FIXMODE                                0x20110011 E1          -       -             3 (AUTO)
+Page  250: CFG-NAVSPG-INIFIX3D                               0x10110013    L        -       -             0 (false)
+Page  250: CFG-NAVSPG-WKNROLLOVER                            0x30110017 U2          -       -              2117
+Page  250: CFG-NAVSPG-USE_PPP                                0x10110019    L        -       -             0 (false)
+Page  250: CFG-NAVSPG-UTCSTANDARD                            0x2011001c E1          -       -             0 (AUTO)
+Page  250: CFG-NAVSPG-DYNMODEL                               0x20110021 E1          -       -             0 (PORT)
+Page  250: CFG-NAVSPG-ACKAIDING                              0x10110025    L        -       -             0 (false)
+Page  250: CFG-NAVSPG-USE_USRDAT                             0x10110061    L        -       -             0 (false)
+Page  250: CFG-NAVSPG-USRDAT_MAJA                            0x50110062 R8          -       m             6378137
+Page  250: CFG-NAVSPG-USRDAT_FLAT                            0x50110063 R8          -       -      298.25722356300002502
+Page  250: CFG-NAVSPG-USRDAT_DX                              0x40110064 R4          -       m                0
+Page  250: CFG-NAVSPG-USRDAT_DY                              0x40110065 R4          -       m                0
+Page  250: CFG-NAVSPG-USRDAT_DZ                              0x40110066 R4          -       m                0
+Page  250: CFG-NAVSPG-USRDAT_ROTX                            0x40110067 R4          -     arcsec             0
+Page  250: CFG-NAVSPG-USRDAT_ROTY                            0x40110068 R4          -     arcsec             0
+Page  250: CFG-NAVSPG-USRDAT_ROTZ                            0x40110069 R4          -     arcsec             0
+Page  250: CFG-NAVSPG-USRDAT_SCALE                           0x4011006a R4          -     ppm                0
+Page  250: CFG-NAVSPG-INFIL_MINSVS                           0x201100a1 U1          -       -                3
+Page  250: CFG-NAVSPG-INFIL_MAXSVS                           0x201100a2 U1          -       -                32
+Page  250: CFG-NAVSPG-INFIL_MINCNO                           0x201100a3 U1          -     dBHz               6
+Page  250: CFG-NAVSPG-INFIL_MINELEV                          0x201100a4    I1       -      deg               5
+Page  250: CFG-NAVSPG-INFIL_NCNOTHRS                         0x201100aa U1          -       -                0
+Page  250: CFG-NAVSPG-INFIL_CNOTHRS                          0x201100ab U1          -       -                0
+Page  250: CFG-NAVSPG-OUTFIL_PDOP                            0x301100b1 U2         0.1      -               250
+Page  250: CFG-NAVSPG-OUTFIL_TDOP                            0x301100b2 U2         0.1      -               250
+Page  250: CFG-NAVSPG-OUTFIL_PACC                            0x301100b3 U2          -       m               100
+Page  250: CFG-NAVSPG-OUTFIL_TACC                            0x301100b4 U2          -       m               350
+Page  250: CFG-NAVSPG-OUTFIL_FACC                            0x301100b5 U2         0.01    m/s              150
+Page  251: CFG-NAVSPG-CONSTR_ALT                             0x401100c1    I4      0.01     m              0
+Page  251: CFG-NAVSPG-CONSTR_ALTVAR                          0x401100c2 U4        0.0001   m^2           10000
+Page  251: CFG-NAVSPG-CONSTR_DGNSSTO                         0x201100c4 U1          -       s              60
+Page  251: CFG-NAVSPG-SIGATTCOMP                             0x201100d6 E1          -       -            0 (DIS)
+Page  251: Table 84: CFG-NAVSPG conﬁguration defaults
+Page  252: CFG-RATE-NAV                                    0x30210002 U2          -      -                 1
+Page  258: R02         27-Jun-2023   jesk   - Added UBX-MGA-FLASH, UBX-NAV-AOPSTATUS, UBX-NAV-SBAS, and
+Page  258: UBX-NAV-SLAS messages
+Page  258: - Added NavIC information - Note: NavIC is not supported by SPG 4.04

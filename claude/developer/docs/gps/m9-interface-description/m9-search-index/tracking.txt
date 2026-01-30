@@ -1,0 +1,30 @@
+Keyword: tracking
+Occurrences: 26
+================================================================================
+
+Page   35: tracking
+Page   43: tracking
+Page   59: •    It is also required that at least 4 tracking channels are available to each enabled major GNSS, i.e.
+Page   59: •    The number of tracking channels in use must not exceed the number of tracking channels available in
+Page   59: hardware, and the sum of all reserved tracking channels needs to be less than or equal to the number of
+Page   59: tracking channels in use.
+Page   60: 1                   U1          numTrkChHw            -            -           Number of tracking channels available in hardware
+Page   60: Number of tracking channels to use. Must be > 0,
+Page   60: <= numTrkChHw. If 0xFF, then number of tracking
+Page   60: Number of reserved (minimum) tracking channels for
+Page   60: Maximum number of tracking channels used for this
+Page   60: and <= maximum number of tracking channels
+Page   72: •   01 cyclic tracking operation
+Page   72: 20                U2        onTime               -            s           Time to stay in Tracking state
+Page   82: 2                   U1        maxSBAS               -            -           Maximum number of SBAS prioritized tracking
+Page   94: •   3 = Tracking
+Page   94: •   4 = Power optimized tracking
+Page  142: •   3 = Tracking
+Page  142: •   4 = Power Optimized Tracking
+Page  150: •   1 = TRACKING
+Page  150: •   2 = POWER OPTIMIZED TRACKING
+Page  161: 5                   U1       chn                   -            -           The tracking channel number the message was
+Page  222: PSMOO or cyclic tracking operation, PSMCT).
+Page  222: CFG-PM-ONTIME                          0x30d00005 U2            -        s     Time to stay in Tracking state.
+Page  222: If set to 0, the receiver will only very brieﬂy enter tracking state (after acquisition) and then go back to inactive.
+Page  223: PSMCT                              2               PSM cyclic tracking operation

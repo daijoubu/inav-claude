@@ -1,0 +1,219 @@
+Keyword: comparator
+Occurrences: 215
+================================================================================
+
+Page   26: 27         Comparator (COMP) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1061
+Page   26: 27.3.4      Comparator LOCK mechanism . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1064
+Page   26: 27.3.5      Window comparator . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1064
+Page   26: 27.3.7      Comparator output blanking function . . . . . . . . . . . . . . . . . . . . . . . . . 1065
+Page   26: 27.3.8      Comparator output on GPIOs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1066
+Page   26: 27.3.9      Comparator output redirection . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1067
+Page   27: 27.7.1      Comparator status register (COMP_SR) . . . . . . . . . . . . . . . . . . . . . . 1070
+Page   27: 27.7.2      Comparator interrupt clear flag register (COMP_ICFR) . . . . . . . . . . 1070
+Page   27: 27.7.3      Comparator option register (COMP_OR) . . . . . . . . . . . . . . . . . . . . . 1071
+Page   27: 27.7.4      Comparator configuration register 1 (COMP_CFGR1) . . . . . . . . . . . 1072
+Page   27: 27.7.5      Comparator configuration register 2 (COMP_CFGR2) . . . . . . . . . . . 1074
+Page   72: Table 230.   Comparator behavior in the low-power modes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1068
+Page   84: Figure 210. Comparator functional block diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1062
+Page   84: Figure 211. Comparator hysteresis . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1065
+Page   84: Figure 212. Comparator output blanking . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1065
+Page  243: •   VDDA external analog power supply for ADCs, DACs, OPAMPs, comparators and
+Page  244: Comparator
+Page 1023: comparator, operational amplifier and ADC (if available).
+Page 1023: connected to on-chip peripherals such as comparator, operational amplifier and ADC (if
+Page 1032: 0   0      1                                   Connected to external pin and to on chip-peripherals (ex, comparators)
+Page 1032: 0   1      1                                   Connected to on chip peripherals (ex, comparators)
+Page 1033: 1      0   1       Sample and                    Connected to external pin and to on chip peripherals (ex, comparators)
+Page 1033: 1      1   0       Hold mode                     Connected to external pin and to on chip peripherals (ex, comparators)
+Page 1033: 1      1   1                                     Connected to on chip peripherals (ex, comparators)
+Page 1033: •      The buffer will act as a comparator, to sense the middle-code value 0x800 and
+Page 1061: RM0433                                                                          Comparator (COMP)
+Page 1061: 27       Comparator (COMP)
+Page 1061: The device embeds two ultra-low-power comparator channels (COMP1 and COMP2). They
+Page 1061: •   Blanking of comparator outputs
+Page 1061: •   Window comparator
+Page 1062: Comparator (COMP)                                                                                                     RM0433
+Page 1062: The block diagram of the comparators is shown in Figure 210: Comparator functional block
+Page 1062: Figure 210. Comparator functional block diagram
+Page 1062: The I/Os used as comparator inputs must be configured in analog mode in the GPIO
+Page 1062: The comparator outputs can be connected to the I/Os through their alternate functions.
+Page 1063: RM0433                                                                               Comparator (COMP)
+Page 1063: The comparator output can be routed simultaneously internally and to the I/O pins.
+Page 1063: COMP channel 1 output: see Section 27.3.8: Comparator
+Page 1063: COMP channel 2 output: see Section 27.3.8: Comparator
+Page 1064: Comparator (COMP)                                                                               RM0433
+Page 1064: independently from the APB clock. This allows the comparator to work even in Stop mode.
+Page 1064: 27.3.4      Comparator LOCK mechanism
+Page 1064: The comparators can be used for safety purposes, such as over-current or thermal
+Page 1064: protection. For applications with specific functional safety requirements, the comparator
+Page 1064: For this purpose, the comparator configuration registers can be write-protected (read-only).
+Page 1064: Upon configuring a comparator channel, its LOCK bit is set to 1. This causes the whole
+Page 1064: register set of the comparator channel, as well as the common COMP_OR register, to
+Page 1064: 27.3.5      Window comparator
+Page 1064: The purpose of the window comparator is to monitor the analog voltage and check that it is
+Page 1064: The window comparator requires both COMP channels. The monitored analog voltage is
+Page 1064: are connected to the inverting (minus) input of either comparator, respectively. The non-
+Page 1064: COMP channel 2 for other purposes. See Figure 210: Comparator functional block diagram.
+Page 1064: The comparator includes a programmable hysteresis to avoid spurious output transitions in
+Page 1065: RM0433                                                                              Comparator (COMP)
+Page 1065: Figure 211. Comparator hysteresis
+Page 1065: 27.3.7   Comparator output blanking function
+Page 1065: blanking signal gates the internal comparator output such as to clean the comp_out from
+Page 1065: Figure 212. Comparator output blanking
+Page 1066: Comparator (COMP)                                                                          RM0433
+Page 1066: 27.3.8      Comparator output on GPIOs
+Page 1066: The COMP1_OUT and COMP2_OUT outputs of the comparator channels are mapped to
+Page 1067: RM0433                                                                                           Comparator (COMP)
+Page 1067: The assignment to GPIOs for both comparator channel outputs must be done before locking
+Page 1067: the registers of either comparator channel.
+Page 1067: 27.3.9    Comparator output redirection
+Page 1067: selected GPIO can be used as timer break input logic OR-ed with the comparator output.
+Page 1068: Comparator (COMP)                                                                                         RM0433
+Page 1068: Table 230. Comparator behavior in the low-power modes
+Page 1068: No effect on the comparators.
+Page 1068: Comparator interrupts cause the device to exit the Sleep mode.
+Page 1068: No effect on the comparators.
+Page 1068: Comparator interrupts cause the device to exit the Stop mode.
+Page 1068: Note:       The comparators cannot be used to exit the device from Sleep or Stop mode when the
+Page 1068: There are two ways to use the comparator as interrupt source.
+Page 1068: The comparator outputs are internally connected to the Extended interrupt and event
+Page 1068: controller. Each comparator has its own EXTI line and can generate either interrupts or
+Page 1068: The comparators also provide an interrupt line to the NVIC of CPU. This functionality is used
+Page 1069: RM0433                                                                                   Comparator (COMP)
+Page 1069: comparator inputs. It is based on an amplifier driving a resistor bridge. The amplifier input is
+Page 1070: Comparator (COMP)                                                                                                RM0433
+Page 1070: 27.7.1          Comparator status register (COMP_SR)
+Page 1070: The COMP_SR is the comparator status register.
+Page 1070: 27.7.2          Comparator interrupt clear flag register (COMP_ICFR)
+Page 1070: The COMP_ICFR is the Comparator interrupt clear flag register.
+Page 1071: RM0433                                                                                         Comparator (COMP)
+Page 1071: 27.7.3          Comparator option register (COMP_OR)
+Page 1071: The COMP_OR is the Comparator option register.
+Page 1072: Comparator (COMP)                                                                                                          RM0433
+Page 1072: 27.7.4          Comparator configuration register 1 (COMP_CFGR1)
+Page 1073: RM0433                                                                                       Comparator (COMP)
+Page 1074: Comparator (COMP)                                                                                                         RM0433
+Page 1074: 27.7.5          Comparator configuration register 2 (COMP_CFGR2)
+Page 1075: RM0433                                                                                     Comparator (COMP)
+Page 1076: Comparator (COMP)                                                                                             RM0433
+Page 1076: Bit 4 WINMODE: Window comparator mode selection bit
+Page 1076: mode of the comparators. If set, the non-inverting input of COMP channel 2 is connected to
+Page 1077: The following table summarizes the comparator registers.
+Page 1077: Comparator (COMP)
+Page 1088: OPAMP output status flag. During the calibration mode, OPAMP is used as comparator.
+Page 1092: OPAMP output status flag. During the calibration mode, OPAMP is used as comparator.
+Page 1099: 8 watchdog comparators                                                      Right bit-shift
+Page 1117: Each input channel has its own comparator which compares the analog watchdog data
+Page 1340: –    3 comparators for analog signal conditioning
+Page 1343: Digital input either on-chip (from other built-in peripherals: comparator, ADC analog
+Page 1366: •    built-in comparators,
+Page 1366: •    digital input pins (typically connected to off-chip comparators and zero-crossing
+Page 1369: comparator or digital                            resolution down to tHRTIM
+Page 1402: signal, that can be either a digital input or an internal event (built-in comparator output).
+Page 1425: (OC). The OC feedback is usually conditioned with the built-in comparator and routed onto
+Page 1531: The ETR input comes from multiple sources: input pins (default configuration), comparator
+Page 1536: except for channels 5 and 6) and an output stage (with comparator and output control).
+Page 1537: Comparator              (from time
+Page 1550: (clock failure, parity error,...) and application fault (from input pins and built-in comparator),
+Page 1551: –    the output from a comparator, with polarity selection and optional digital filtering
+Page 1551: •    An internal source coming from a comparator output.
+Page 1556: Beside regular digital break inputs and internal break events coming from the comparators,
+Page 1556: - An internal comparator and multiple external open drain comparators outputs ORed
+Page 1562: However, comparators are normally be used to convert the encoder’s differential outputs to
+Page 1637: an output stage (with comparator and output control).
+Page 1638: Comparator              (from time
+Page 1648: For example, the OCxREF signal can be connected to the output of a comparator to be
+Page 1652: interface logic. However, comparators are normally be used to convert the encoder’s
+Page 1704: an output stage (with comparator and output control).
+Page 1705: Comparator                    (from time
+Page 1759: an output stage (with comparator and output control).
+Page 1760: Comparator                     (from time
+Page 1770: application fault (from input pins and built-in comparator), and can force the outputs to a
+Page 1771: –       the output from a comparator, with polarity selection and optional digital filtering
+Page 1849: on the chip-level to other embedded peripherals, such as embedded comparators), are
+Page 1855: counter comparator. Within this latency period, any additional write into these registers must
+Page 1946: address. As soon as OA2MSK is not equal to 0, the address comparator for OA2
+Page 2564: –    It supports OTG monitoring of VBUS levels with internal comparators
+Page 2569: •   VBUS sensing comparators with hysteresis used to detect VBUS valid, A-B session valid
+Page 2580: It switches on/off the VBUS sensing comparators associated with OTG operations
+Page 2600: comparator before being used in the VBUS state in the RX CMD. Refer to the ULPI
+Page 2600: 0: Complement Output signal is qualified with the Internal VBUS valid comparator
+Page 2600: 1: Complement Output signal is not qualified with the Internal VBUS valid comparator
+Page 2600: 0: PHY uses an internal VBUS valid comparator
+Page 2600: 1: PHY uses an external VBUS valid comparator
+Page 2619: Enables VBUS sensing comparators to detect VBUS valid levels on the VBUS PAD for USB
+Page 2619: host and device operation. If HNP and/or SRP support is enabled, VBUS comparators are
+Page 3040: 1    COMPMATCH0            Cortex-M7 DWT        DWT comparator 0 match
+Page 3040: 2    COMPMATCH1            Cortex-M7 DWT        DWT comparator 1 match
+Page 3040: 3    COMPMATCH2            Cortex-M7 DWT        DWT comparator 2 match
+Page 3151: The DWT provides four comparators that can be used as:
+Page 3151: •     data comparator (comparator 1 only)
+Page 3151: •     clock cycle counter comparator (comparator 0 only)
+Page 3152: A DWT comparator compares one of the following with the value held in its DWT_COMP
+Page 3152: •          the cycle count value, for comparator 0 only.
+Page 3152: For address matching, the comparator can use a mask, so it matches a range of addresses.
+Page 3152: On a successful match, the comparator generates one of the following:
+Page 3152: Bits 31:28 NUMCOMP[3:0]: Number of comparators implemented (read-only)
+Page 3152: 0x4: Four comparators
+Page 3156: DWT comparator register x (M7_DWT_COMPx)
+Page 3157: Bits 4:0 MASK[4:0]: Comparator mask size
+Page 3157: matching by comparator n. A debugger can write 0b11111 to this field and then read the
+Page 3157: Bit 24 MATCHED: Comparator match (read-only)
+Page 3157: Indicates if a comparator match has occurred since the register was last read.
+Page 3158: Bits 19:16 DATAVADDR1[3:0]: Comparator number of a second comparator
+Page 3158: When the DATAVMATCH and LNK1ENA bits are both 1, this field can hold the comparator
+Page 3158: number of a second comparator to use for linked address comparison.
+Page 3158: Bits 15:12 DATAVADDR0[3:0]: Comparator number of a comparator
+Page 3158: When the DATAVMATCH and LNK1ENA bits are both 1, this field can hold the comparator
+Page 3158: number of a comparator to use for linked address comparison.
+Page 3158: Bit 9 LNK1ENA: Support of a second linked comparator (read-only)
+Page 3158: Indicates whether use of a second linked comparator is supported (read-only).
+Page 3158: Bit 7 CYCMATCH: Cycle count comparison enable on comparator 0
+Page 3158: This field is reserved for other comparators.
+Page 3158: Bits 3:0 FUNCTION[3:0]: Action on comparator match
+Page 3173: The FPB allows hardware breakpoints to be set. It contains eight comparators which
+Page 3174: Bits 14:12 NUM_CODE[6:4]: Instruction address comparator number field, three MSBs
+Page 3174: This read-only field holds the three MSBs of the number of instruction address comparators
+Page 3174: Bits 11:8 NUM_LIT[3:0]: Number of literal address comparators supported (read-only).
+Page 3174: 0x0: No literal comparators supported.
+Page 3174: Bits 7:4 NUM_CODE[3:0]: Instruction address comparator number field, four LSBs
+Page 3174: This read-only field holds the four LSBs of the number of instruction address comparators
+Page 3174: 0x8: 8 instruction comparators supported
+Page 3175: FPB comparator registers (M7_FPB_COMPx)
+Page 3175: Bit 0 ENABLE: Comparator enable
+Page 3175: The comparator is only enabled if both this bit and the FPB ENABLE bit in the
+Page 3189: Bits 23:16 STOP[7:0]: Selector of single address comparators to stop trace
+Page 3189: Defines the single address comparators to stop trace with the ViewInst Start/Stop control.
+Page 3189: One bit is provided for each implemented single address comparator.
+Page 3189: Bits 7:0 START[7:0]: Selector of single address comparators to start trace
+Page 3189: Defines the single address comparators to start trace with the ViewInst Start/Stop control.
+Page 3189: One bit is provided for each implemented single address comparator.
+Page 3189: ETM ViewInst start/stop processor comparator control register
+Page 3190: Bits 19:16 STOP[3:0]: Selector of processor comparator input to stop trace
+Page 3190: Selects which processor comparator inputs are in use with ViewInst start-stop control, for the
+Page 3190: purpose of stopping trace. One bit is provided for each processor comparator input.
+Page 3190: Bits 3:0 START[3:0]: Selector of processor comparator input to start trace
+Page 3190: Selects which processor comparator inputs are in use with ViewInst start-stop control, for the
+Page 3190: purpose of starting trace. One bit is provided for each processor comparator input.
+Page 3196: Bits 31:28 NUMVMIDC[3:0]: Number of Virtual Machine ID comparators implemented
+Page 3196: Bits 27:24 NUMCIDC[3:0]: Number of Context ID comparators implemented
+Page 3196: Bits 23:20 NUMSSCC[3:0]: Number of single-shot comparator controls implemented
+Page 3196: Bits 15:12 NUMPC[3:0]: Number of processor comparator inputs implemented
+Page 3196: Bits 7:4 NUMDVC[3:0]: Number of data value comparators implemented
+Page 3196: Bits 3:0 NUMACPAIRS[3:0]: Number of address comparator pairs implemented.
+Page 3198: ETM single-shot comparator control register 0 (M7_ETM_SSCC0)
+Page 3199: Bit 24 RST: Single-shot comparator resource reset enable
+Page 3199: Enables the single-shot comparator resource to be reset when it occurs, to enable another
+Page 3199: comparator match to be detected.
+Page 3199: ETM single-shot comparator status register 0 (M7_ETM_SSCS0)
+Page 3199: This indicates whether any of the selected comparators have matched. If SSCC0.RST is set
+Page 3199: to 0, the STATUS bit must be written with 0 in order to enable single-shot comparator control.
+Page 3199: Bit 2 DV: Data value comparator support
+Page 3199: Bit 1 DA: Data address comparator support
+Page 3199: Bit 0 INST: Instruction address comparator support
+Page 3200: ETM single-shot processor comparator input control register
+Page 3200: Bits 7:0 PC[7:0]: Comparator input selector for single-shot control
+Page 3200: Selects one or more processor comparator inputs for single-shot control. One bit is provided
+Page 3200: for each processor comparator input.
+Page 3219: Section 28: Comparator (COMP)
+Page 3219: Comparator status register (COMP_SR).

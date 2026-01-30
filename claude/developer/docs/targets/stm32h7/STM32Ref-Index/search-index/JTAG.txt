@@ -1,0 +1,56 @@
+Keyword: JTAG
+Occurrences: 52
+================================================================================
+
+Page   67: 59.4.1      Serial-wire and JTAG debug port (SWJ-DP) . . . . . . . . . . . . . . . . . . . 3003
+Page   79: Table 564.   JTAG/Serial-wire debug port pins . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3000
+Page   79: Table 571.   JTAG-DP data registers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3007
+Page   96: Figure 819. JTAG TAP state machine . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3006
+Page   98: microcontroller using the JTAG protocol, the SWD protocol or the bootloader while the
+Page  169: Note:          The JTAG port is permanently disabled when level 2 is active (acting as a JTAG fuse). As a
+Page  169: 4. JTAG interface disabled while secure libraries are executed.
+Page  231: – Debug access (SW or JTAG) disabled
+Page 2998: The debug features can be controlled via a JTAG/Serial-wire debug access port, using
+Page 2998: The processor can be debugged using equipment connected to the JTAG/SWD debug
+Page 2999: •    JTAG debug port
+Page 2999: JTAG /
+Page 3000: Table 564. JTAG/Serial-wire debug port pins
+Page 3000: JTAG debug port                       SW debug port
+Page 3000: JTMS/SWDIO                I       JTAG test mode select         IO      Serial wire data in/out   PA13
+Page 3000: JTCK/SWCLK                I       JTAG test clock               I       Serial wire clock         PA14
+Page 3000: JTDI                      I       JTAG test data input          -       -                         PA15
+Page 3000: JTDO                     O        JTAG test data output         -       -                         PB3
+Page 3000: nJTRST                    I       JTAG test reset               -       -                         PB4
+Page 3000: serial wire debug interface, not when using JTAG
+Page 3001: JTAG /                                                                                    D3 domain    Legend
+Page 3002: JTAG /
+Page 3002: JTAG mode, as well as to operate the state machines and internal logic of the debug port. It
+Page 3003: The debug access port (DAP) is a debug subsystem comprising serial-wire and JTAG
+Page 3003: 59.4.1   Serial-wire and JTAG debug port (SWJ-DP)
+Page 3003: •   a 5-pin standard JTAG debug port (JTAG-DP)
+Page 3003: By default, the JTAG-DP is selected upon a system or power-on reset. The five IOs are
+Page 3003: In SW-DP mode, the unused JTAG lines JTDI, JTDO and nJTRST can be used for other
+Page 3006: JTAG debug port
+Page 3006: Figure 819. JTAG TAP state machine
+Page 3006: The JTAG-DP implements a TAP state machine (TAPSM) based on IEEE 1149.1-1990. The
+Page 3007: Table 571. JTAG-DP data registers
+Page 3008: Table 571. JTAG-DP data registers (continued)
+Page 3008: 0x05BA 0477: Arm® JTAG debug port ID code
+Page 3008: The SW-DP and JTAG-DP both access the debug port (DP) registers. These are listed in
+Page 3008: 2.   Program the A(3:2) field in the DPACC register, if using JTAG, with the register address
+Page 3009: Via JTAG-DP, it is used to allow the debugger to get the final result after a
+Page 3009: R      sequence of operations (without requesting new JTAG-DP operation).
+Page 3009: 1. Access to the AP ABORT register from the JTAG-DP is done using the ABORT instruction.
+Page 3009: 2. Only accessible via SW-DP. Register is “reserved” via JTAG-DP.
+Page 3012: This bit is reserved in JTAG-DP.
+Page 3012: This bit is Reserved in JTAG-DP.
+Page 3012: Bit 5 STICKYERR: Transaction error (read-only in SW-DP, R/W in JTAG-DP)
+Page 3012: In the JTAG-DP, this bit is reset by programming it to 1.
+Page 3013: Bit 4 STICKYCMP: Compare match (read-only in SW-DP, R/W in JTAG-DP)
+Page 3013: In the JTAG-DP, this bit is reset by programming it to it.
+Page 3013: Bit 1 STICKYORUN: Overrun (read-only in SW-DP, R/W in JTAG-DP)
+Page 3013: JTAG-DP, this bit is reset by writing a 1 to it.
+Page 3017: JTAG/SWD           SWJ-DP                                        Cortex-M7 (AHBD port)
+Page 3018: •    bits [3:2]: contents of the A(3:2) field of the APACC data register in the JTAG-DP (see
+Page 3018: 2.   Program the A(3:2) field in the APACC register, if using JTAG, with the register address
+Page 3214: JTAG/SWD or the CPU. It contains factory-programmed identification data that allow the

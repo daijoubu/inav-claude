@@ -1,0 +1,66 @@
+Keyword: SDIO
+Occurrences: 62
+================================================================================
+
+Page   76: Table 434.   SDMMC operation modes SD & SDIO . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2352
+Page   76: Table 454.   SDIO special operation control . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2382
+Page 2350: The SD/SDIO, embedded MultiMediaCard (e•MMC) host interface (SDMMC) provides an
+Page 2350: interface between the AHB bus and SD memory cards, SDIO cards and e•MMC devices.
+Page 2350: •   Full compliance with SDIO card specification version 4.0.
+Page 2350: The current version of the SDMMC supports only one SD/SDIO/e•MMC card at any one
+Page 2350: The basic transaction on the SD/SDIO/e•MMC bus is the command/response transaction.
+Page 2350: •   SDIO multibyte mode: single data block with block size range 1-512 bytes
+Page 2352: Table 434. SDMMC operation modes SD & SDIO
+Page 2352: SDIO Bus Speed modes(1)(2)
+Page 2352: 3. SDIO bus speed with 4bit bus width.
+Page 2354: SD/SDIO/e•MMC card feedback clock. This signal is
+Page 2354: SD/SDIO/e•MMC card tuned feedback clock after
+Page 2354: SDMMC_CK           Digital output Clock to SD/SDIO/e•MMC card
+Page 2354: Clock feedback from an external driver for SD/SDIO/e•MMC
+Page 2355: SDMMC_CMD                         SD/SDIO/e•MMC card bidirectional command/response signal.
+Page 2355: SD/SDIO/e•MMC card I/O direction indication for the
+Page 2355: SDMMC_D[7:0]                      SD/SDIO/e•MMC card bidirectional data lines.
+Page 2355: SD/SDIO/e•MMC card I/O direction indication for the
+Page 2355: SD/SDIO/e•MMC card I/O direction indication for the data lines
+Page 2355: •     For an SD or an SDIO card, 1-bit (SDMMC_D0) or 4-bit (SDMMC_D[3:0]) can be used.
+Page 2356: For an SD/SDIO/e•MMC card, the clock frequency can vary between 0 and 208 MHz
+Page 2361: –    When the CMDSUSPEND bit is set and the SDIO Response bit BS = 0 (response
+Page 2361: SDIO Response bit BS = 1 (response bit [39]), there will be no interrupt period
+Page 2361: –    When the CMDTRANS bit is set and the CMDSUSPEND bit is set and the SDIO
+Page 2362: command token for SD-Memory cards, SDIO cards, and e•MMC cards is shown in Table
+Page 2363: for SD-Memory cards, SDIO cards, and e•MMC cards are shown in Table 440, Table 441
+Page 2369: Note:    DTEN shall not be used to start data transfer with SD, SDIO and e•MMC cards.
+Page 2369: –    In SDIO multibyte mode, if a start bit is received before a timeout the DPSM
+Page 2370: –    In SDIO multibyte mode, when the data block size (DATALENGTH) number of
+Page 2371: bit in the data control register, the data transfer mode can be either block, SDIO
+Page 2371: –    In SDIO multibyte mode, when the data block size (DATALENGTH) number of
+Page 2373: SDIO multibyte             0                 (DATALENGTH)                     yes         1           01
+Page 2382: •    SDIO interrupts
+Page 2382: •    SDIO suspend/resume operation (write and read suspend)
+Page 2382: •    SDIO read wait operation by stopping the clock
+Page 2382: •    SDIO read wait operation by SDMMC_D2 signaling
+Page 2382: Table 454. SDIO special operation control
+Page 2382: SDIOEN
+Page 2382: value. The interrupt period begins when interrupts are enabled at the card and SDIOEN bit
+Page 2386: This function is NOT supported in SDIO version 4.00 or later.
+Page 2389: interval, the SDMMC can still detect SDIO interrupts on SDMMC_D1.
+Page 2390: clock cycle (in accordance with SDIO specification), where after the DPSM waits for a Start
+Page 2390: During the ReadWait interval, the SDMMC can detect SDIO interrupts on SDMMC_D1.
+Page 2407: Note:    1      While the SD/SDIO card or e•MMC is in identification mode, the SDMMC_CK frequency
+Page 2412: FIFO          SDIO    RW       RW     RW
+Page 2412: Bit 11 SDIOEN: SD I/O interrupt enable functions
+Page 2413: 01: SDIO multibyte data transfer.
+Page 2414: Res.   Res.        Res.                                 TIME           SDIOIT
+Page 2415: Bit 22 SDIOIT: SDIO interrupt received
+Page 2416: IDMA   IDMA          VSW            ACK    SDIO
+Page 2417: Bit 22 SDIOITC: SDIOIT flag clear bit
+Page 2417: Set by software to clear the SDIOIT flag.
+Page 2417: 0: SDIOIT not cleared
+Page 2417: 1: SDIOIT cleared
+Page 2419: IDMA                    VSW             ACK     SDIO
+Page 2419: Bit 22 SDIOITIE: SDIO mode interrupt received interrupt enable
+Page 2419: SDIO mode interrupt.
+Page 2419: 0: SDIO Mode interrupt received interrupt disabled
+Page 2419: 1: SDIO Mode interrupt received interrupt enabled
+Page 2426: Res.                                                                                                Res.                                Res.       Res.                                                          SDIOITIE                     SDIOITC                     SDIOIT                                                           Res.         22
+Page 2426: Res.                                                                                                                                    Res.       Res.                                                         DABORTIE                     DABORTC                     DABORT                                                         SDIOEN          11

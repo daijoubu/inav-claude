@@ -1,0 +1,121 @@
+Keyword: USB
+Occurrences: 117
+================================================================================
+
+Page    1: • Dedicated USB power embedding a 3.3 V
+Page    2: • 2× USB OTG interfaces (1FS, 1HS/FS) crystal-
+Page   10: Table 112.   USB OTG_FS electrical characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 202
+Page   10: Table 113.   Dynamic characteristics: USB ULPI . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 202
+Page   12: Table 211.   USB OTG_FS electrical characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 315
+Page   12: Table 212.   Dynamics characteristics: USB ULPI . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 315
+Page   17: –    A USB OTG full-speed and a USB OTG high-speed interface with full-speed
+Page   18: Dedicated supply inputs for USB (OTG_FS and OTG_HS) are available on all packages
+Page   20: USB OTG_FS                                                                                                                                                                                       Yes
+Page   20: USB
+Page   23: 4 chan. (TIM1_CH1[1:4]ETR, BKIN as AF                                                                                                                                                                                                                                                                                                                USBCR
+Page   23: COMP1&2                                                                                                                                                                                                                                                                                             Voltage                             VDDUSB33 = 3.0 to 3.6 V
+Page   24: 4 chan. (TIM1_CH1[1:4]ETR, BKIN as AF                                                                                                                                                                                                                                                                                                               USBCR
+Page   24: COMPx_INP, COMPx_INM,             COMP1&2                                                                                                                                                                                                                                                                                             Voltage                             VDDUSB33 = 3.0 to 3.6 V
+Page   27: memory through a serial interface (USART, I2C, SPI, USB-DFU). Refer to STM32
+Page   27: •   VDD33USB and VDD50USB:
+Page   27: VDD50USB can be supplied through the USB cable to generate the VDD33USB via the
+Page   27: USB internal regulator. This allows supporting a VDD supply different from 3.3 V.
+Page   27: The USB regulator can be bypassed to supply directly VDD33USB with
+Page   27: VDD33USB ≈ 3.3 V (see electrical characteristics).
+Page   28: •     When VDD is below 1 V, other power supplies (VDDA, VDD33USB, VDD50USB) must
+Page   28: 1. VDDx refers to any power supply among VDDA, VDD33USB, VDD50USB.
+Page   33: 16KB 16KB                 128 Kbyte                                                     DMA1                      DMA2                 MAC     SDMMC2 USBHS1   U
+Page   52: The devices embed two USB OTG high-speed (up to 480 Mbit/s) device/host/OTG
+Page   52: the USB OTG-HS1 in HS mode, an external PHY device connected to the ULPI is required.
+Page   52: The USB OTG HS peripherals are compliant with the USB 2.0 specification and with the
+Page   52: suspend/resume. The USB OTG controllers require a dedicated 48 MHz clock that is
+Page   52: •    USB 2.0 LPM (Link Power Management) support
+Page   52: •    Internal USB DMA
+Page   56: F       PC0       PC1     PC3_C   VDDLDO   VDD     VDD33USB   PDR_ON   VCAP   PC8    PC6
+Page   57: PF4   14                                                                                                            95   VDD33USB
+Page   58: USB      USB
+Page   59: PF3    19                                                                                                                                                                                                                                                                       114   VDD33USB
+Page   60: 33USB
+Page   61: PI13    20                                                         137   VDD33USB
+Page   62: USB
+Page   62: USB
+Page   63: _u           USB option (supplied by VDD33USB)
+Page   78: USB(10)
+Page   78: USB
+Page   87: 9. When the pin is used in USB configuration (OTG_HS_ID/OTG_HS_VBUS), the I/O is supplied by VDD33USB, otherwise it is
+Page   87: 10. When it is not available on a package, the VDD50USB pin is internally tied to VDD33USB.
+Page  103: VDD33USB                                      VDD50USB
+Page  103: VDD33USB                   VDD50USB
+Page  103: VSS        USB
+Page  103: USB
+Page  104: VDDLDO, VDDA, VDD33USB, VBAT)
+Page  104: Input voltage on FT_xxx pins                         VSS−0.3     VDD33USB, VBAT)         V
+Page  104: 1. All main power (VDD, VDDA, VDD33USB, VBAT) and ground (VSS, VSSA) pins must always be connected to
+Page  105: 1. All main power (VDD, VDDA, VDD33USB) and ground (VSS, VSSA) pins must always be connected to the
+Page  106: USB used                3.0              3.6
+Page  106: VDD33USB Standard operating voltage, USB domain
+Page  106: USB not used               0               3.6
+Page  106: −0.3        VDD33USB) +3.6V
+Page  106: 3. For operation with voltage higher than Min (VDD, VDDA, VDD33USB) +0.3V, the internal Pull-up and Pull-Down resistors must
+Page  107: VDDUSB rise time rate                            0                   ∞
+Page  107: tVDDUSB
+Page  107: VDDUSB fall time rate                           10                   ∞
+Page  117: USB1 OTG
+Page  117: USB1 OTG kernel           -            8.5              8.5
+Page  117: USB1 ULPI             0.3           0.3              0.1
+Page  117: USB2 OTG
+Page  117: USB2 OTG kernel           -            8.6              8.6
+Page  117: USB2 ULPI             16            16                16
+Page  138: 7. To sustain a voltage higher than MIN(VDD, VDDA, VDD33USB) +0.3 V, the internal pull-up and pull-down resistors must be
+Page  202: USB OTG_FS characteristics
+Page  202: The USB interface is fully compliant with the USB specification version 2.0 and is USB-IF
+Page  202: Table 112. USB OTG_FS electrical characteristics
+Page  202: USB transceiver operating
+Page  202: VDD33USB                                                  -           3.0(1)         -           3.6          V
+Page  202: Embedded USB_DP pull-up
+Page  202: Embedded USB_DP pull-up
+Page  202: 1. The USB functionality is ensured down to 2.7 V but not the full USB electrical characteristics which are
+Page  202: 2. No external termination series resistors are required on USB_DP (D+) and USB_DM (D-); the matching
+Page  202: USB OTG_HS characteristics
+Page  202: Table 113. Dynamic characteristics: USB ULPI(1)
+Page  209: VDD33USB                                      VDD50USB
+Page  209: VDD33USB                   VDD50USB
+Page  209: VSS        USB
+Page  209: USB
+Page  210: VDDLDO, VDDA, VDD33USB, VBAT)
+Page  210: Input voltage on FT_xxx pins                            VSS−0.3      VDD33USB, VBAT)           V
+Page  210: 1. All main power (VDD, VDDA, VDD33USB, VBAT) and ground (VSS, VSSA) pins must always be connected to
+Page  211: 1. All main power (VDD, VDDA, VDD33USB) and ground (VSS, VSSA) pins must always be connected to the
+Page  212: Standard operating voltage, USB       USB used                 3.0       -          3.6
+Page  212: VDD33USB
+Page  212: domain                     USB not used              0        -          3.6
+Page  212: All I/O except BOOT0                       VDD33USB)
+Page  213: 3. For operation with voltage higher than Min (VDD, VDDA, VDD33USB) +0.3V, the internal Pull-up and Pull-Down resistors must
+Page  214: VDDUSB rise time rate                           0                    ∞
+Page  214: tVDDUSB
+Page  214: VDDUSB fall time rate                           10                   ∞
+Page  224: USB1 OTG registers       23.0           21.0       19.0     17.0
+Page  224: USB1 OTG kernel         8.2            0.5        8.3      8.2
+Page  224: USB1 ULPI            0.1            0.1        0.1      0.1
+Page  224: USB2 OTG registers       21.0           19.0       17.0     15.0
+Page  224: USB2 OTG kernel         8.5            0.4        8.6      8.3
+Page  224: USB2 ULPI            23.0           19.0       20.0     19.0
+Page  245: 7. To sustain a voltage higher than MIN(VDD, VDDA, VDD33USB) +0.3 V, the internal pull-up and pull-down resistors must be
+Page  315: USB OTG_FS characteristics
+Page  315: The USB interface is fully compliant with the USB specification version 2.0 and is USB-IF
+Page  315: Table 211. USB OTG_FS electrical characteristics
+Page  315: USB transceiver operating
+Page  315: VDD33USB                                                  -              3.0(1)    -               3.6           V
+Page  315: Embedded USB_DP pull-up
+Page  315: Embedded USB_DP pull-up
+Page  315: 1. The USB functionality is ensured down to 2.7 V but not the full USB electrical characteristics which are
+Page  315: 2. No external termination series resistors are required on USB_DP (D+) and USB_DM (D-); the matching
+Page  315: USB OTG_HS characteristics
+Page  315: Table 212. Dynamics characteristics: USB ULPI(1)
+Page  350: Changed PC2/3 to PC2/3_C and VDD33USB to VDD in Figure 5: LQFP100 pinout.
+Page  351: Updated USB OTG interfaces to add crystal-less capability.
+Page  353: – Added a 1 μF capacitor between VDD33USB and ground in Figure 15: Power supply
+Page  354: – Added a 1 μF capacitor between VDD33USB and ground in Figure 68: Power supply
+Page  355: Additional modifications made on Table 9: Pin/ball definition: added note to VDD50USB,
+Page  355: – Added Section : USB OTG_FS characteristics.
+Page  356: Updated Table 113: Dynamic characteristics: USB ULPI

@@ -1,0 +1,194 @@
+Keyword: USART
+Occurrences: 190
+================================================================================
+
+Page    2: • 4× USARTs/4x UARTs (ISO7816 interface,              • 2× watchdogs (independent and window)
+Page    4: 3.31     Universal synchronous/asynchronous receiver transmitter (USART) . . . 47
+Page    8: Table 6.    USART features . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 48
+Page   12: Table 204.   USART characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 303
+Page   15: Figure 101. USART timing diagram in Master mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 303
+Page   15: Figure 102. USART timing diagram in Slave mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 304
+Page   17: –    Four USARTs, four UARTs and one LPUART
+Page   20: USART/
+Page   23: USART2
+Page   23: DFSDM1_CKOUT,                                                                                                                                                                                                                                                                                                                   USART3                             CTS, RTS as AF
+Page   23: irDA USART6                                                                                                                                             32-bit AHB BUS-MATRIX                                                         RAM                                                              TT-FDCAN1                            TX, RX
+Page   23: irDA USART1                                                                                                                                                                                                                                                                                             FDCAN2                              TX, RX
+Page   24: USART2
+Page   24: DFSDM1_CKOUT,                                                                                                                                                                                                                                                                                                                  USART3                             CTS, RTS as AF
+Page   24: irDA USART6                                                                                                                                             32-bit AHB BUS-MATRIX                                                         RAM                                                              TT-FDCAN1                            TX, RX
+Page   24: irDA USART1                                                                                                                                                                                                                                                                                             FDCAN2                              TX, RX
+Page   27: memory through a serial interface (USART, I2C, SPI, USB-DFU). Refer to STM32
+Page   47: (USART)
+Page   47: receiver transmitters (USART1, USART2, USART3 and USART6) and four universal
+Page   47: for a summary of USARTx and UARTx features.
+Page   47: USART1, USART2, USART3 and USART6 also provide Smartcard mode (ISO 7816
+Page   47: The USARTs embed a Transmit FIFO (TXFIFO) and a Receive FIFO (RXFIFO). FIFO mode
+Page   48: All USART have a clock domain independent from the CPU clock, allowing the USARTx to
+Page   48: All USART interfaces can be served by the DMA controller.
+Page   48: Table 6. USART features
+Page   48: USART modes/features(1)                USART1/2/3/6        UART4/5/7/8
+Page   48: USART data length                                               7, 8 and 9 bits
+Page   68: USART2_CTS/USART2_
+Page   68: USART2_RTS/USART2_
+Page   68: USART2_TX,         ADC12_INP14,
+Page   69: 25        K2         37         N3         R2            47         50         U2               PA3       I/O                        -        USART2_RX, LCD_B2,     ADC12_INP15
+Page   69: USART2_CK, SPI6_NSS,    ADC12_INP18,
+Page   73: USART3_TX,
+Page   73: USART3_RX,
+Page   74: USART3_CK,
+Page   74: USART3_CTS/USART3_      OTG_HS_
+Page   75: USART1_TX,
+Page   75: USART3_RTS/
+Page   75: USART3_DE,
+Page   75: USART1_RX,
+Page   75: USART3_TX,
+Page   75: 56        J9         78        K11         P14           97         109       T17              PD9       I/O        FT_h            -          USART3_RX,               -
+Page   75: 57        H9         79        K12         N15           98         110       T16             PD10       I/O        FT_h            -          USART3_CK,               -
+Page   76: USART3_CTS/USART3_
+Page   76: USART3_RTS/USART3_
+Page   78: -          -       92        G10         J14           111        134       F16              PG7       I/O        FT_h            -       USART6_CK, FMC_INT,         -
+Page   78: USART6_RTS/USART6_
+Page   78: I2S2_MCK, USART6_TX,
+Page   79: USART6_RX,
+Page   79: USART6_CK,
+Page   79: USART1_CK,
+Page   79: USART1_TX, DCMI_D0,
+Page   80: USART1_RX,
+Page   80: USART1_CTS/USART1_
+Page   80: USART1_RTS/USART1_
+Page   81: FT_                          USART3_TX,
+Page   82: USART3_RX,
+Page   82: 80        C8         113       A11         A12           141        163       C12             PC12       I/O        FT_h            -            USART3_CK,             -
+Page   82: USART2_CTS/USART2_
+Page   82: 85        D7         118        C9         D10           146        168       A12              PD4       I/O        FT_h            -       USART2_RTS/USART2_          -
+Page   82: 86        B6         119        A9         C11           147        169       A11              PD5       I/O        FT_h            -           USART2_TX,              -
+Page   83: 87        C6         122        B9         B11           150        172       B11              PD6       I/O        FT_h            -           USART2_RX,              -
+Page   83: 88        D6         123        D8         A11           151        173       C11              PD7       I/O        FT_h            -           USART2_CK,              -
+Page   83: USART6_RX,
+Page   84: USART6_RTS/USART6_
+Page   84: -          -       128        D7         A8            156        182       D9              PG13       I/O        FT_h            -       USART6_CTS/USART6_         -
+Page   84: USART6_TX,
+Page   85: USART6_CTS/USART6_
+Page   85: I2C4_SCL, USART1_TX,
+Page   86: 93        A5         137        D6         B5            165        196       C5               PB7       I/O        FT_fa            -             USART1_RX,         PVD_IN
+Page   88: USART1/                    SPI2/3/SAI1/    SPI2/3/6/                 TIM13/14/               SWPM
+Page   88: TIM15/      SPI1/2/3/4/     3/I2C4/      USART1/2/                 QUADSPI/                  TIM1/
+Page   88: USART2_
+Page   88: TIM2_ETR                                                                           USART2_                     CMD                      CRS
+Page   88: USART2_                                             ETH_M
+Page   88: OUT           CH1N                                    USART2_                    BK1_IO3         _B      ETH_RM
+Page   88: LPTIM4_                                                 USART2_      SAI2_SCK_
+Page   88: LPTIM5_                                                 USART2_                                OTG_HS_     ETH_M
+Page   88: D1                                                          SPI1_NSS/     SPI3_NSS/      USART2_
+Page   88: HRTIM_CH     TIM8_BKIN                                                USART1_                                OTG_FS_
+Page   88: HRTIM_CH     LPUART1_                    SPI2_SCK/                    USART1_
+Page   88: HRTIM_CH     LPUART1_                                                 USART1_                                             MDIOS
+Page   88: USART1_
+Page   88: D1          CTS                       /I2S2_WS                     USART1_                     RX           DM
+Page   88: LPUART1_                                                 USART1_
+Page   88: D2        LPUART1_                     I2S2_CK                     USART1_                     TX           DP
+Page   89: USART1/                       SPI2/3/SAI1/       SPI2/3/6/                   TIM13/14/                 SWPM
+Page   89: TIM15/         SPI1/2/3/4/     3/I2C4/         USART1/2/                   QUADSPI/                    TIM1/
+Page   89: USART1/                          SPI2/3/SAI1      SPI2/3/6/                   TIM13/14/                SWP
+Page   89: TIM15/        SPI1/2/3/4/5/     /3/I2C4/      USART1/2/3                   QUADSPI/                   TIM
+Page   89: TIM16_                       HRTIM_                                                         USART1_       LPUART1_      FDCAN2_       QUADSPI_    DFSD
+Page   89: TIM17_                       HRTIM_                                                         USART1_       LPUART1_                                DFSD
+Page   90: USART1/                      SPI2/3/SAI1     SPI2/3/6/                 TIM13/14/              SWP
+Page   90: TIM15/     SPI1/2/3/4/5/    /3/I2C4/     USART1/2/3                 QUADSPI/                 TIM
+Page   90: HRTIM_      LPTIM2_IN                  SPI2_SCK/       DFSDM1_        USART3_                   QUADSPI_     OTG_HS_    ETH
+Page   90: HRTIM_       LPTIM2_                                   DFSDM1_        USART3_                                OTG_HS_      TX_
+Page   90: SPI2_NSS/       DFSDM1_        USART3_                   FDCAN2_      OTG_HS_
+Page   90: USART3_
+Page   90: OUT                      I2S2_CK         CKIN1         USART3_                     TX         ULPI_D6
+Page   90: USART3_       UART4_
+Page   90: PB14     -     TIM1_CH2N                              USART1_TX                                                                              -
+Page   90: CH1          CH2N                      I2S2_SDI        DATIN2        USART3_       UART4_        D0
+Page   90: PB15           TIM1_CH3N                              USART1_RX                                        -                                     -
+Page   91: USART1/                    SPI2/3/SAI1    SPI2/3/6/                                       SWPM
+Page   91: TIM15/     SPI1/2/3/4/    /3/I2C4/     USART1/2/                                         TIM1
+Page   91: HRTIM_CH                               DFSDM1_         I2S2_                     USART6_      SDMMC1_       FMC_       SDMMC2_
+Page   91: HRTIM_CH                               DFSDM1_                                   USART6_      SDMMC1_                  SDMMC2_
+Page   91: HRTIM_CH                                                                         USART6_        RTS/       FMC_NE2/
+Page   91: HRTIM_      DFSDM1_                                  SPI3_SCK/     USART3_                   QUADSPI_
+Page   91: HRTIM_      DFSDM1_                                  SPI3_MISO/    USART3_                   QUADSPI_
+Page   91: HRTIM_                                               SPI3_MOSI/    USART3_
+Page   92: USART1/                    SPI2/3/SAI1    SPI2/3/6/                                       SWPM
+Page   92: TIM15/     SPI1/2/3/4/    /3/I2C4/     USART1/2/                                         TIM1
+Page   92: USART1/                    SPI2/3/SAI1    SPI2/3/6/                TIM13/14/              SWP
+Page   92: TIM15/      SPI1/2/3/4/    /3/I2C4/     USART1/2/                 QUADSPI/                TIM1
+Page   92: USART2_
+Page   92: CKOUT                      I2S2_CK                     USART2_
+Page   92: USART2_
+Page   92: FLT3                                                               USART2_
+Page   92: HRTIM_                                                              USART2_
+Page   92: DFSDM1_      DFSDM1_                                    USART2_     SAI4_SD_                            SDMM
+Page   92: DFSDM1_                                   DFSDM1_       USART2_                  SPDIFRX1_              SDMM
+Page   93: USART1/                    SPI2/3/SAI1    SPI2/3/6/                TIM13/14/               SWP
+Page   93: TIM15/      SPI1/2/3/4/    /3/I2C4/     USART1/2/                 QUADSPI/                 TIM1
+Page   93: DFSDM1_                                  SAI3_SCK_     USART3_                   SPDIFRX1_
+Page   93: DFSDM1_                                                USART3_
+Page   93: DFSDM1_                                                USART3_
+Page   93: USART3_
+Page   93: IN2                                                 USART3_N                   BK1_IO0
+Page   93: USART3_
+Page   93: IN1                                                 USART3_                    BK1_IO1
+Page   94: USART1/                    SPI2/3/SAI1    SPI2/3/6/                                        SWPM
+Page   94: TIM15/      SPI1/2/3/4/    /3/I2C4/     USART1/2/                                          TIM1
+Page   95: USART1/                    SPI2/3/SAI1    SPI2/3/6/                                        SWPM
+Page   95: TIM15/     SPI1/2/3/4/    /3/I2C4/     USART1/2/                                          TIM1
+Page   96: USART1/                    SPI2/3/SAI1    SPI2/3/6/                             QUADSPI/        /SW
+Page   96: TIM15/     SPI1/2/3/4/    /3/I2C4/     USART1/2/                              SDMMC2/          T
+Page   96: HRTIM_                                                 SAI1_       USART6_
+Page   96: USART6_
+Page   96: USART6_        _IN3
+Page   96: USART6_      SPDIFRX1     QUADSPI_
+Page   96: USART6_
+Page   96: EEV5                                    MISO                      USART6_        _IN2
+Page   96: USART6_
+Page   96: OUT        EEV10                                                              USART6_
+Page   97: USART1/                    SPI2/3/SAI1    SPI2/3/6/                             QUADSPI/        /SW
+Page   97: TIM15/     SPI1/2/3/4/    /3/I2C4/     USART1/2/                              SDMMC2/          T
+Page   97: LPTIM1_                                               SPI6_                     USART6_                   QUADSPI_
+Page   97: USART6_
+Page   97: USART6_
+Page   98: USART1/                    SPI2/3/SAI1    SPI2/3/6/                TIM13/14/               SWPM
+Page   98: TIM15/     SPI1/2/3/4/    /3/I2C4/     USART1/2/                 QUADSPI/                 TIM1
+Page   99: USART1/                    SPI2/3/SAI1    SPI2/3/6/                 TIM13/14/               SWPM
+Page   99: TIM15/     SPI1/2/3/4/    /3/I2C4/     USART1/2/                 QUADSPI/                  TIM1
+Page  100: USART1/                    SPI2/3/SAI1    SPI2/3/6/                                       SWPM
+Page  100: TIM15/     SPI1/2/3/4/    /3/I2C4/     USART1/2/                                         TIM1
+Page  101: USART1/                    SPI2/3/SAI1    SPI2/3/6/                                        SWPM
+Page  101: TIM15/     SPI1/2/3/4/    /3/I2C4/     USART1/2/                                          TIM1
+Page  119: USART2 registers        1.4           1.3               1
+Page  119: USART2 kernel          4.7           4.1               4
+Page  119: USART3 registers        1.4           1.3               1
+Page  119: USART3 kernel          4.2           3.8              3.5
+Page  120: USART7 registers        1.9           1.8            1.3
+Page  120: (continued)    USART7 kernel           4            3.5            3.3
+Page  120: USART8 registers        1.6           1.5            1.2
+Page  120: USART8 kernel           4            3.6            3.3
+Page  121: USART1 registers        2.7           2.6              2.5
+Page  121: USART1 kernel          0.1           0.1              0.1
+Page  121: USART6 registers        2.6           2.5              2.5
+Page  121: USART6 kernel          0.1           0.1              0.1
+Page  226: USART2 registers        1.9            1.7        1.4        1.3
+Page  226: USART2 kernel          4.3            3.9        3.6        3.2
+Page  226: USART3 registers        1.9            1.7        1.4        1.3
+Page  226: USART3 kernel          4.4            3.9        3.5        3.2
+Page  227: USART7 registers         1.8            1.8         1.6         1.4
+Page  227: USART7 kernel           4.0            3.3         3.0         2.8
+Page  227: USART8 registers         2.0            1.6         1.6         1.4
+Page  227: USART8 kernel           3.9            3.4         3.1         2.8
+Page  227: USART1 registers         3.6            2.5         2.7         2.9
+Page  227: USART1 kernel           0.1            0.1         0.1         0.1
+Page  227: USART6 registers         4.5            3.0         3.1         3.4
+Page  227: USART6 kernel           0.1            0.1         0.1         0.1
+Page  302: USART interface characteristics
+Page  302: Unless otherwise specified, the parameters given in Table 204 for USART are derived from
+Page  303: function characteristics (NSS, CK, TX, RX for USART).
+Page  303: Table 204. USART characteristics(1)
+Page  303: fCK        USART clock frequency                                        -                -                         MHz
+Page  303: Figure 101. USART timing diagram in Master mode
+Page  304: Figure 102. USART timing diagram in Slave mode
+Page  354: – Updated Figure 101: USART timing diagram in Master mode and Figure 102: USART

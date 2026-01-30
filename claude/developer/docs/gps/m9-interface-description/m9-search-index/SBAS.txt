@@ -1,0 +1,171 @@
+Keyword: SBAS
+Occurrences: 167
+================================================================================
+
+Page    6: 3.10.23 UBX-CFG-SBAS (0x06 0x16)................................................................................................ 82
+Page    6: 3.10.23.1 SBAS conﬁguration........................................................................................................82
+Page    9: 3.15.14 UBX-NAV-SBAS (0x01 0x32)..............................................................................................145
+Page    9: 3.15.14.1 SBAS status data........................................................................................................ 145
+Page   11: 4.4.21.1 SBAS MSM1.................................................................................................................... 180
+Page   11: 4.4.22.1 SBAS MSM3.................................................................................................................... 181
+Page   11: 4.4.23.1 SBAS MSM4.................................................................................................................... 181
+Page   11: 4.4.24.1 SBAS MSM5.................................................................................................................... 182
+Page   11: 4.4.25.1 SBAS MSM6.................................................................................................................... 183
+Page   11: 4.4.26.1 SBAS MSM7.................................................................................................................... 183
+Page   12: 5.9.20 CFG-SBAS: SBAS conﬁguration...........................................................................................224
+Page   15: ✓ ✓ SBAS;QZSS                     List of supported augmentation systems (see GNSS identiﬁers).
+Page   18: SBAS                    SBAS           S                    1                   1              1                   1
+Page   18: SBAS          S120-S158       1:120-158       120-158
+Page   18: SBAS          S120-S158       33-64        33-64, 152-158       33-64     33-64, 152-158      33-64     33-64, 152-158
+Page   19: SBAS L1C/A       2                              1             0               1          1                    1               1
+Page   23: GPS, SBAS                       GP       NMEA 2.3+
+Page   33: •   The SV numbers (ﬁelds 'svid') are in the range of 1 to 32 for GPS satellites, and 33 to 64 for SBAS
+Page   33: satellites (33 = SBAS PRN 120, 34 = SBAS PRN 121, and so on)
+Page   46: gnssId appears in many UBX messages and uses 0 to indicate GPS, 1 for SBAS and so on (see GNSS
+Page   51: UBX-CFG-SBAS             0x06 0x16   •   SBAS conﬁguration (Get/set)
+Page   53: UBX-NAV-SBAS             0x01 0x32    •   SBAS status data (Periodic/polled)
+Page   60: •     Conﬁguration speciﬁc to the GNSS system can be done via other messages (e.g. UBX-CFG-SBAS).
+Page   60: When gnssId is 1 (SBAS)
+Page   60: •   0x01 = SBAS L1C/A
+Page   69: bit 1   U:1     sbas           -       -            Disable reporting of SBAS satellites
+Page   82: 3.10.23 UBX-CFG-SBAS (0x06 0x16)
+Page   82: 3.10.23.1 SBAS conﬁguration
+Page   82: Message             UBX-CFG-SBAS
+Page   82: SBAS conﬁguration
+Page   82: This message conﬁgures the SBAS receiver subsystem (i.e. WAAS, EGNOS, MSAS).
+Page   82: See SBAS conﬁguration settings description in the integration manual for a detailed description of how these
+Page   82: 0                   X1        mode                  -            -           SBAS mode
+Page   82: bit 0   U:1       enabled               -            -           SBAS enabled (1) / disabled (0) - This ﬁeld is
+Page   82: SBAS operation
+Page   82: bit 1   U:1       test                  -            -           SBAS testbed: Use data anyhow (1) / Ignore data when
+Page   82: in test mode (SBAS msg 0)
+Page   82: 1                   X1        usage                 -            -           SBAS usage
+Page   82: bit 0   U:1       range                 -            -           Use SBAS GEOs as a ranging source (for navigation)
+Page   82: bit 1   U:1       diffCorr              -            -           Use SBAS diﬀerential corrections
+Page   82: bit 2   U:1       integrity             -            -           Use SBAS integrity information. If enabled, the
+Page   82: 2                   U1        maxSBAS               -            -           Maximum number of SBAS prioritized tracking
+Page   82: 4                   X4        scanmode1             -            -           Which SBAS PRN numbers to search for (bitmask).
+Page  145: bit 16   U:1       sbasCorrUsed          -            -           1 = SBAS corrections have been used for a signal in the
+Page  145: 3.15.14 UBX-NAV-SBAS (0x01 0x32)
+Page  145: 3.15.14.1 SBAS status data
+Page  145: Message           UBX-NAV-SBAS
+Page  145: SBAS status data
+Page  145: Comment           This message outputs the status of the SBAS sub system
+Page  145: 5                 U1        mode                  -            -           SBAS Mode
+Page  146: 6                   I1        sys                     -            -         SBAS System (WAAS/EGNOS/...)
+Page  146: 7                   X1        service                 -            -         SBAS Services available
+Page  146: 9                   X1        statusFlags             -            -         SBAS status ﬂags
+Page  146: bits 1…0     U:2       integrityUsed           -            -         SBAS integrity used
+Page  146: •   1 = Integrity information is not available or SBAS
+Page  147: •   1 = SBAS corrections
+Page  147: •   2 = SBAS model
+Page  153: •   3 = SBAS
+Page  154: •   3 = SBAS
+Page  168: • SBAS MSM1 (Input)
+Page  168: • SBAS MSM3 (Input)
+Page  168: • SBAS MSM4 (Input)
+Page  168: • SBAS MSM5 (Input)
+Page  168: • SBAS MSM6 (Input)
+Page  168: • SBAS MSM7 (Input)
+Page  180: 4.4.21.1 SBAS MSM1
+Page  180: SBAS MSM1
+Page  180: Comment           Compact SBAS Pseudoranges
+Page  181: 4.4.22.1 SBAS MSM3
+Page  181: SBAS MSM3
+Page  181: Comment           Compact SBAS Pseudoranges and PhaseRanges
+Page  181: 4.4.23.1 SBAS MSM4
+Page  181: SBAS MSM4
+Page  181: Comment           Full SBAS Pseudoranges and PhaseRanges plus CNR
+Page  182: 4.4.24.1 SBAS MSM5
+Page  182: SBAS MSM5
+Page  182: Comment           Full SBAS Pseudoranges, PhaseRanges, PhaseRangeRate and CNR
+Page  183: 4.4.25.1 SBAS MSM6
+Page  183: SBAS MSM6
+Page  183: Comment           Full SBAS Pseudoranges and PhaseRanges plus CNR (high resolution)
+Page  183: 4.4.26.1 SBAS MSM7
+Page  183: SBAS MSM7
+Page  183: Comment           Full SBAS pseudoranges, PhaseRanges, PhaseRangeRate and CNR (high resolution)
+Page  196: CFG-SBAS                               SBAS conﬁguration
+Page  211: CFG-MSGOUT-UBX_NAV_SBAS_I2C   0x2091006a U1       -       -       Output rate of the UBX-NAV-SBAS message on
+Page  211: CFG-MSGOUT-UBX_NAV_SBAS_SPI   0x2091006e U1       -       -       Output rate of the UBX-NAV-SBAS message on
+Page  211: CFG-MSGOUT-UBX_NAV_SBAS_      0x2091006b U1       -       -       Output rate of the UBX-NAV-SBAS message on
+Page  211: CFG-MSGOUT-UBX_NAV_SBAS_      0x2091006c U1       -       -       Output rate of the UBX-NAV-SBAS message on
+Page  211: CFG-MSGOUT-UBX_NAV_SBAS_USB   0x2091006d U1       -       -       Output rate of the UBX-NAV-SBAS message on
+Page  220: CFG-NMEA-FILT_SBAS                   0x10930012       L       -          -     Disable reporting of SBAS satellites
+Page  224: 5.9.20 CFG-SBAS: SBAS conﬁguration
+Page  224: This group conﬁgures the SBAS receiver subsystem (i.e. WAAS, EGNOS, MSAS). See SBAS
+Page  224: CFG-SBAS-USE_TESTMODE                0x10360002       L       -          -     Use SBAS data when it is in test mode (SBAS
+Page  224: CFG-SBAS-USE_RANGING                 0x10360003       L       -          -     Use SBAS GEOs as a ranging source (for
+Page  224: CFG-SBAS-USE_DIFFCORR                0x10360004       L       -          -     Use SBAS diﬀerential corrections
+Page  224: CFG-SBAS-USE_INTEGRITY               0x10360005       L       -          -     Use SBAS integrity information
+Page  225: CFG-SBAS-PRNSCANMASK                     0x50360006 X8            -         -     SBAS PRN search conﬁguration
+Page  225: This conﬁguration item determines which SBAS PRNs should be searched. Setting it to 0 indicates auto-scanning all
+Page  225: SBAS PRNs. For non-zero values the bits correspond to the allocated SBAS PRNs ranging from PRN120 (bit 0) to PRN158
+Page  225: Table 42: CFG-SBAS conﬁguration items
+Page  225: ALL                         0x0000000000000000          Enable search for all SBAS PRNs
+Page  225: PRN120                      0x0000000000000001          Enable search for SBAS PRN120
+Page  225: PRN121                      0x0000000000000002          Enable search for SBAS PRN121
+Page  225: PRN122                      0x0000000000000004          Enable search for SBAS PRN122
+Page  225: PRN123                      0x0000000000000008          Enable search for SBAS PRN123
+Page  225: PRN124                      0x0000000000000010          Enable search for SBAS PRN124
+Page  225: PRN125                      0x0000000000000020          Enable search for SBAS PRN125
+Page  225: PRN126                      0x0000000000000040          Enable search for SBAS PRN126
+Page  225: PRN127                      0x0000000000000080          Enable search for SBAS PRN127
+Page  225: PRN128                      0x0000000000000100          Enable search for SBAS PRN128
+Page  225: PRN129                      0x0000000000000200          Enable search for SBAS PRN129
+Page  225: PRN130                      0x0000000000000400          Enable search for SBAS PRN130
+Page  225: PRN131                      0x0000000000000800          Enable search for SBAS PRN131
+Page  225: PRN132                      0x0000000000001000          Enable search for SBAS PRN132
+Page  225: PRN133                      0x0000000000002000          Enable search for SBAS PRN133
+Page  225: PRN134                      0x0000000000004000          Enable search for SBAS PRN134
+Page  225: PRN135                      0x0000000000008000          Enable search for SBAS PRN135
+Page  225: PRN136                      0x0000000000010000          Enable search for SBAS PRN136
+Page  225: PRN137                      0x0000000000020000          Enable search for SBAS PRN137
+Page  225: PRN138                      0x0000000000040000          Enable search for SBAS PRN138
+Page  225: PRN139                      0x0000000000080000          Enable search for SBAS PRN139
+Page  225: PRN140                      0x0000000000100000          Enable search for SBAS PRN140
+Page  225: PRN141                      0x0000000000200000          Enable search for SBAS PRN141
+Page  225: PRN142                      0x0000000000400000          Enable search for SBAS PRN142
+Page  225: PRN143                      0x0000000000800000          Enable search for SBAS PRN143
+Page  225: PRN144                      0x0000000001000000          Enable search for SBAS PRN144
+Page  225: PRN145                      0x0000000002000000          Enable search for SBAS PRN145
+Page  225: PRN146                      0x0000000004000000          Enable search for SBAS PRN146
+Page  225: PRN147                      0x0000000008000000          Enable search for SBAS PRN147
+Page  225: PRN148                      0x0000000010000000          Enable search for SBAS PRN148
+Page  225: PRN149                      0x0000000020000000          Enable search for SBAS PRN149
+Page  225: PRN150                      0x0000000040000000          Enable search for SBAS PRN150
+Page  225: PRN151                      0x0000000080000000          Enable search for SBAS PRN151
+Page  226: PRN152                  0x0000000100000000         Enable search for SBAS PRN152
+Page  226: PRN153                  0x0000000200000000         Enable search for SBAS PRN153
+Page  226: PRN154                  0x0000000400000000         Enable search for SBAS PRN154
+Page  226: PRN155                  0x0000000800000000         Enable search for SBAS PRN155
+Page  226: PRN156                  0x0000001000000000         Enable search for SBAS PRN156
+Page  226: PRN157                  0x0000002000000000         Enable search for SBAS PRN157
+Page  226: PRN158                  0x0000004000000000         Enable search for SBAS PRN158
+Page  226: Table 43: Constants for CFG-SBAS-PRNSCANMASK
+Page  226: Conﬁguration speciﬁc to a GNSS system is available in other groups (e.g. CFG-SBAS).
+Page  226: CFG-SIGNAL-SBAS_ENA                 0x10310020      L       -       -      SBAS enable
+Page  226: CFG-SIGNAL-SBAS_L1CA_ENA            0x10310005      L       -       -      SBAS L1C/A
+Page  235: UBX-CFG-GNSS.gnssId                        CFG-SIGNAL-GPS_ENA, CFG-SIGNAL-SBAS_ENA, CFG-
+Page  237: UBX-CFG-NMEA.sbas                            CFG-NMEA-FILT_SBAS
+Page  239: UBX-CFG-SBAS
+Page  239: UBX-CFG-SBAS.diﬀCorr                                    CFG-SBAS-USE_DIFFCORR
+Page  239: UBX-CFG-SBAS.integrity                                  CFG-SBAS-USE_INTEGRITY
+Page  239: UBX-CFG-SBAS.range                                      CFG-SBAS-USE_RANGING
+Page  239: UBX-CFG-SBAS.scanmode1                                  CFG-SBAS-PRNSCANMASK
+Page  239: UBX-CFG-SBAS.test                                       CFG-SBAS-USE_TESTMODE
+Page  247: CFG-MSGOUT-UBX_NAV_SBAS_I2C             0x2091006a U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SBAS_SPI             0x2091006e U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SBAS_UART1           0x2091006b U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SBAS_UART2           0x2091006c U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SBAS_USB             0x2091006d U1         -      -               0
+Page  251: CFG-NMEA-FILT_SBAS                                0x10930012    L        -       -           0 (false)
+Page  252: CFG-SBAS-USE_TESTMODE                           0x10360002    L        -      -              0 (false)
+Page  252: CFG-SBAS-USE_RANGING                            0x10360003    L        -      -              1 (true)
+Page  252: CFG-SBAS-USE_DIFFCORR                           0x10360004    L        -      -              1 (true)
+Page  252: CFG-SBAS-USE_INTEGRITY                          0x10360005    L        -      -              0 (false)
+Page  252: CFG-SBAS-PRNSCANMASK                            0x50360006 X8          -      -     0x0000000000072b88 (ALL |
+Page  252: Table 91: CFG-SBAS conﬁguration defaults
+Page  253: CFG-SIGNAL-SBAS_ENA                                  0x10310020    L        -      -            1 (true)
+Page  253: CFG-SIGNAL-SBAS_L1CA_ENA                             0x10310005    L        -      -            1 (true)
+Page  258: R02         27-Jun-2023   jesk   - Added UBX-MGA-FLASH, UBX-NAV-AOPSTATUS, UBX-NAV-SBAS, and

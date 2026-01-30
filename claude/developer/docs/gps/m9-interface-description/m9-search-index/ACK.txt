@@ -1,0 +1,206 @@
+Keyword: ACK
+Occurrences: 202
+================================================================================
+
+Page    4: 3.3.1 UBX structure packing................................................................................................................46
+Page    4: 3.5.1 UBX acknowledgement............................................................................................................... 48
+Page    5: 3.9 UBX-ACK (0x05).................................................................................................................................... 53
+Page    5: 3.9.1 UBX-ACK-ACK (0x05 0x01)....................................................................................................... 53
+Page    5: 3.9.1.1 Message acknowledged.....................................................................................................54
+Page    5: 3.9.2 UBX-ACK-NAK (0x05 0x00)....................................................................................................... 54
+Page    5: 3.9.2.1 Message not acknowledged............................................................................................. 54
+Page    6: 3.10.21.1 Reset receiver / Clear backup data structures.........................................................80
+Page    7: 3.13.1 UBX-MGA-ACK (0x13 0x60)..................................................................................................102
+Page    7: 3.13.1.1 Multiple GNSS acknowledge message...................................................................... 102
+Page    7: 3.13.5.3 Acknowledge last FLASH-DATA or -STOP................................................................ 108
+Page   10: 3.19.1.1 Poll backup restore status............................................................................................165
+Page   10: 3.19.1.2 Create backup in ﬂash.................................................................................................. 165
+Page   10: 3.19.1.3 Clear backup in ﬂash..................................................................................................... 165
+Page   10: 3.19.1.4 Backup creation acknowledge..................................................................................... 166
+Page   10: 3.19.1.5 System restored from backup..................................................................................... 166
+Page   16: some backwards compatibility provided in UBX-CFG conﬁguration messages. Users are strongly
+Page   17: GLONASS satellites can be tracked before they have been identiﬁed. In UBX messages, the unknown
+Page   20: Output                       Messages that are output by the receiver in no particular interval and never input. E.g. UBX-ACK-
+Page   20: ACK.
+Page   22: Track ﬁltering        CFG-NMEA-OUT_FROZENCOG Enable to permit course over ground (COG) to be reported even
+Page   35: tracking
+Page   35: located and conﬁrmed. The communications may include acknowledgement of the alert to the emitting
+Page   36: •    1 = Acknowledgement service RLM
+Page   43: 2          n                     numeric     -            11                 Number of GNSS satellites tracked
+Page   43: tracking
+Page   46: 3.3.1 UBX structure packing
+Page   46: Values are placed in such an order that structure packing is not a problem. This means that two-
+Page   48: There are certain features associated with the messages being sent back and forth:
+Page   48: 3.5.1 UBX acknowledgement
+Page   48: "acknowledge" (UBX-ACK-ACK) or a "not acknowledge" (UBX-ACK-NAK) message back to the
+Page   48: Some messages from other classes also use the same acknowledgement mechanism.
+Page   50: at a speciﬁed oﬀset (in bytes) in the payload (see also UBX structure packing), is of a speciﬁc type
+Page   50: UBX-ACK – Acknowledgement and negative acknowledgement messages
+Page   50: UBX-ACK-ACK             0x05 0x01   •   Message acknowledged (Output)
+Page   50: UBX-ACK-NAK             0x05 0x00   •   Message not acknowledged (Output)
+Page   51: UBX-CFG-RST              0x06 0x04   •   Reset receiver / Clear backup data structures (Command)
+Page   51: UBX-MGA-ACK              0x13 0x60   •   Multiple GNSS acknowledge message (Output)
+Page   52: •   Acknowledge last FLASH-DATA or -STOP (Output)
+Page   53: UBX-UPD-SOS              0x09 0x14    •   Poll backup restore status (Poll request)
+Page   53: •   Create backup in ﬂash (Command)
+Page   53: •   Clear backup in ﬂash (Command)
+Page   53: •   Backup creation acknowledge (Output)
+Page   53: •   System restored from backup (Output)
+Page   53: 3.9 UBX-ACK (0x05)
+Page   53: The messages in the UBX-ACK class are used to indicate acknowledgement or rejection (i.e. negative
+Page   53: acknowledgement) of input messages, such as UBX-CFG messages.
+Page   53: 3.9.1 UBX-ACK-ACK (0x05 0x01)
+Page   54: 3.9.1.1 Message acknowledged
+Page   54: Message       UBX-ACK-ACK
+Page   54: Message acknowledged
+Page   54: Comment       Output upon processing of an input message. A UBX-ACK-ACK is sent as soon as possible but at least within
+Page   54: 0             U1        clsID                 -            -           Class ID of the Acknowledged Message
+Page   54: 1             U1        msgID                 -            -           Message ID of the Acknowledged Message
+Page   54: 3.9.2 UBX-ACK-NAK (0x05 0x00)
+Page   54: 3.9.2.1 Message not acknowledged
+Page   54: Message       UBX-ACK-NAK
+Page   54: Message not acknowledged
+Page   54: Comment       Output upon processing of an input message. A UBX-ACK-NAK is sent as soon as possible but at least within
+Page   54: 0             U1        clsID                 -            -           Class ID of the Not-Acknowledged Message
+Page   54: 1             U1        msgID                 -            -           Message ID of the Not-Acknowledged Message
+Page   54: this class sent to the receiver is either acknowledged (by a UBX-ACK-ACK message) if processed
+Page   54: successfully or rejected (with a UBX-ACK-NAK message) if processed unsuccessfully.
+Page   57: defaults the operation requested to battery-backed
+Page   57: bit 0   U:1      devBBR                   -           -            Battery-backed RAM
+Page   58: If the receiver is sent a valid new conﬁguration, it will respond with a UBX-ACK-ACK message and immediately
+Page   58: change to the new conﬁguration. Otherwise the receiver will reject the request, by issuing a UBX-ACK-NAK
+Page   58: Note that the acknowledge message does not indicate whether the PIO conﬁguration has been successfully
+Page   59: If the receiver is sent a valid new conﬁguration, it will respond with a UBX-ACK-ACK message and immediately
+Page   59: change to the new conﬁguration. Otherwise the receiver will reject the request, by issuing a UBX-ACK-NAK
+Page   59: •    It is also required that at least 4 tracking channels are available to each enabled major GNSS, i.e.
+Page   59: •    The number of tracking channels in use must not exceed the number of tracking channels available in
+Page   59: hardware, and the sum of all reserved tracking channels needs to be less than or equal to the number of
+Page   59: tracking channels in use.
+Page   60: 1                   U1          numTrkChHw            -            -           Number of tracking channels available in hardware
+Page   60: Number of tracking channels to use. Must be > 0,
+Page   60: <= numTrkChHw. If 0xFF, then number of tracking
+Page   60: Number of reserved (minimum) tracking channels for
+Page   60: Maximum number of tracking channels used for this
+Page   60: and <= maximum number of tracking channels
+Page   67: bit 10     U:1      ackAid                 -           -            1 = apply assistance acknowledgement settings
+Page   67: 17                  U1       ackAiding              -           -            1 = issue acknowledgements for assistance message
+Page   68: bit 5   U:1       trackFilt             -           -            Enable COG output even if COG is frozen
+Page   71: bit 6   U:1    extintBackup     -           -            EXTINT pin control
+Page   71: •   1 enabled, force receiver into BACKUP mode when
+Page   71: •   1 enabled, force backup in case EXTINT pin is
+Page   72: •   01 cyclic tracking operation
+Page   72: 20                U2        onTime               -            s           Time to stay in Tracking state
+Page   73: parameters may have to be changed to be able to receive future messages, including the acknowledge
+Page   79: and UBX-RXM-PMREQ for software backup.
+Page   79: •   0x42434B50 = Software backup. USB interface
+Page   80: 3.10.21.1 Reset receiver / Clear backup data structures
+Page   80: Reset receiver / Clear backup data structures
+Page   80: Comment             Do not expect this message to be acknowledged by the receiver.
+Page   80: •     Newer FW version will not acknowledge this message at all.
+Page   80: •     Older FW version will acknowledge this message but the acknowledge may not be sent completely
+Page   82: 2                   U1        maxSBAS               -            -           Maximum number of SBAS prioritized tracking
+Page   85: has an accurate time, never switch back to
+Page   85: has an accurate time, and switch back to
+Page   86: This message returns a UBX-ACK-NAK and no conﬁguration is applied:
+Page   87: This message returns a UBX-ACK-NAK, cancels any started transaction, and no conﬁguration is applied:
+Page   88: This message returns a UBX-ACK-NAK:
+Page   90: This message returns a UBX-ACK-NAK and no conﬁguration is applied:
+Page   90: This message returns a UBX-ACK-NAK, cancels any started transaction, and no conﬁguration is applied:
+Page   90: This message returns a UBX-ACK-NAK, and no conﬁguration is applied:
+Page   90: requests to apply the transaction returns a UBX-ACK-NAK. The validity of a conﬁguration is checked
+Page   94: •   3 = Tracking
+Page   94: •   4 = Power optimized tracking
+Page   95: UBX-ACK-ACK or UBX-ACK-NAK are returned to indicate success or failure.
+Page   96: UBX-ACK-ACK or UBX-ACK-NAK are returned to indicate success or failure.
+Page   96: time earlier than the base date will result in a UBX-ACK-NAK message for protocol versions less than 18.00).
+Page   96: recorded entry. (If the logging has stopped due to lack of ﬁle space, such a search will result in a UBX-ACK-
+Page   99: are transferred followed by a UBX-ACK-NAK. The
+Page  102: information to the receiver as well as backing up the navigation database from the receiver to a host.
+Page  102: 3.13.1 UBX-MGA-ACK (0x13 0x60)
+Page  102: 3.13.1.1 Multiple GNSS acknowledge message
+Page  102: Message       UBX-MGA-ACK-DATA0
+Page  102: Multiple GNSS acknowledge message
+Page  102: Comment       This message is sent by a u-blox receiver to acknowledge the receipt of an assistance message.
+Page  102: Acknowledgments are enabled by setting the CFG-NAVSPG-ACKAIDING item.
+Page  102: 0             U1         type                   -           -            Type of acknowledgment:
+Page  102: 3             U1         msgId                  -           -            UBX message ID of the acknowledged message
+Page  103: 4             U1[4]     msgPayload             -           -            The ﬁrst 4 bytes of the acknowledged message's
+Page  107: receiver will indicate the ﬁnish of the transmission with a UBX-MGA-ACK. The msgPayloadStart ﬁeld of the
+Page  107: UBX-MGA-ACK message will contain a U4 representing the number of UBX-MGA-DBD-DATA* messages sent.
+Page  107: be acknowledged by UBX-MGA-ACK messages, if acknowledgment has been enabled.
+Page  107: ☞ UBX-MGA-DBD messages are only intended to be sent back to the same receiver that generated them.
+Page  107: internal buﬀering capabilities. The receiver will ACK/NACK this message using the message alternatives
+Page  107: given below. The host shall wait for an acknowledge message before sending the next data block. See Flash-
+Page  108: that it can do any ﬁnal internal operations needed to commit the data to ﬂash as a background activity. A
+Page  108: UBX-MGA-ACK message will be sent at the end of this process. Note that there may be a delay of several
+Page  108: seconds before the UBX-MGA-ACK for this message is sent because of the time taken for this processing.
+Page  108: 3.13.5.3 Acknowledge last FLASH-DATA or -STOP
+Page  108: Message       UBX-MGA-FLASH-ACK
+Page  108: Acknowledge last FLASH-DATA or -STOP
+Page  108: Comment       This message reports an ACK/NACK to the host for the last MGA-FLASH type 1 or type 2 message message
+Page  108: 2             U1        ack                   -            -           Acknowledgment type. 0 - ACK: Message received and
+Page  108: written to ﬂash. 1 - NACK: Problem with last message,
+Page  108: acknowledging a UBX-MGA_FLASH_DATA message).
+Page  108: 2 - NACK: problem with last message, give up.
+Page  109: 4             U2        sequence                 -           -            If acknowledging a UBX-MGA-FLASH-DATA message
+Page  109: this is the Message sequence number being ack'ed. If
+Page  109: acknowledging a UBX-MGA-FLASH-STOP message it
+Page  119: usable for replay attack detection
+Page  120: usable for replay attack detection
+Page  132: Comment             The receiver ready message is sent when the receiver changes from or to backup mode.
+Page  132: bit 0   U:1       awake                  -           -            not in backup mode
+Page  142: •   3 = Tracking
+Page  142: •   4 = Power Optimized Tracking
+Page  143: UBX-ACK-ACK or UBX-ACK-NAK are returned to indicate success or failure.
+Page  144: Comment             This message displays information about SVs that are either known to be visible or currently tracked by the
+Page  146: Comment             This message displays information about signals currently tracked or searched by the receiver.
+Page  150: •   1 = TRACKING
+Page  150: •   2 = POWER OPTIMIZED TRACKING
+Page  159: bit 1   U:1      backup                 -           -            The receiver goes into backup mode for a time period
+Page  159: bit 1   U:1      backup                 -           -            The receiver goes into backup mode for a time period
+Page  159: bit 2   U:1      force                  -           -            Force receiver backup while USB is connected. USB
+Page  161: 5                   U1       chn                   -            -           The tracking channel number the message was
+Page  165: 3.19.1.1 Poll backup restore status
+Page  165: Poll backup restore status
+Page  165: Comment       Sending this (empty) message to the receiver results in the receiver returning a System restored from backup
+Page  165: 3.19.1.2 Create backup in ﬂash
+Page  165: Create backup in ﬂash
+Page  165: Comment       The host can send this message in order to save part of the battery-backed memory (BBR) in a ﬁle in the
+Page  165: ﬂash ﬁle system. The feature is designed in order to emulate the presence of the backup battery even if it is
+Page  165: 3.19.1.3 Clear backup in ﬂash
+Page  165: Clear backup in ﬂash
+Page  165: Comment       The host can send this message in order to erase the backup ﬁle present in ﬂash. It is recommended that the
+Page  166: 3.19.1.4 Backup creation acknowledge
+Page  166: Backup creation acknowledge
+Page  166: Comment       The message is sent from the device as conﬁrmation of creation of a backup ﬁle in ﬂash. The host can safely
+Page  166: 4             U1        response              -            -           •   0 = Not acknowledged
+Page  166: •   1 = Acknowledged
+Page  166: 3.19.1.5 System restored from backup
+Page  166: System restored from backup
+Page  166: Comment       The message is sent from the device to notify the host the BBR has been restored from a backup ﬁle in the
+Page  166: ﬂash ﬁle system. The host should clear the backup ﬁle after receiving this message. If the UBX-UPD-SOS
+Page  166: •   1 = Failed restoring from backup
+Page  166: •   2 = Restored from backup
+Page  166: •   3 = Not restored (no backup)
+Page  193: conﬁguration layers are read and the items within each layer are stacked up in order to create the
+Page  193: • BBR: This layer contains items stored in the battery-backed RAM. The contents in this layer are
+Page  193: preserved as long as a battery backup supply is provided during oﬀ periods. The value of any
+Page  193: The stacking of the conﬁguration items from the diﬀerent layers (sources) in order to construct the
+Page  193: for each item in the Default Layer, the receiver software goes through the layers above and stacks all
+Page  198: If the receiver is sent a valid new conﬁguration, it will respond with a UBX-ACK-ACK message and
+Page  198: issuing a UBX-ACK-NAK and continuing operation with the previous conﬁguration.
+Page  198: Note that the acknowledge message does not indicate whether the PIO conﬁguration has been
+Page  216: CFG-NAVSPG-ACKAIDING                 0x10110025        L       -         -     Acknowledge assistance input messages
+Page  222: PSMOO or cyclic tracking operation, PSMCT).
+Page  222: CFG-PM-ONTIME                          0x30d00005 U2            -        s     Time to stay in Tracking state.
+Page  222: If set to 0, the receiver will only very brieﬂy enter tracking state (after acquisition) and then go back to inactive.
+Page  223: CFG-PM-EXTINTBACKUP                 0x10d0000d      L       -       -      EXTINT pin control (Backup)
+Page  223: Enable to force receiver into BACKUP mode when selected EXTINT pin is "low".
+Page  223: Enable to force backup in case EXTINT pin is inactive for time longer than CFG-PM-EXTINTINACTIVITY.
+Page  223: PSMCT                              2               PSM cyclic tracking operation
+Page  226: reset takes some time, so wait ﬁrst for the acknowledgement from the receiver and then 0.5 seconds
+Page  236: UBX-CFG-NAVX5.ackAiding                                CFG-NAVSPG-ACKAIDING
+Page  237: UBX-CFG-NMEA.trackFilt                       CFG-NMEA-OUT_FROZENCOG
+Page  237: UBX-CFG-PM2.extintBackup                     CFG-PM-EXTINTBACKUP
+Page  250: CFG-NAVSPG-ACKAIDING                              0x10110025    L        -       -             0 (false)
+Page  252: CFG-PM-EXTINTBACKUP                             0x10d0000d    L        -      -              0 (false)

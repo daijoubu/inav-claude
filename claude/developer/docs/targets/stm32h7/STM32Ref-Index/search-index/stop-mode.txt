@@ -1,0 +1,320 @@
+Keyword: stop mode
+Occurrences: 316
+================================================================================
+
+Page    6: 5.7.6       CStop mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 276
+Page    6: 5.7.7       DStop mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 277
+Page    6: 5.7.8       Stop mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 278
+Page   48: 46.4.14 Wakeup from Stop mode on address match . . . . . . . . . . . . . . . . . . . 1981
+Page   56: 53.3.9      MDIOS in Stop mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2340
+Page   68: Table 35.   CStop mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 276
+Page   68: Table 36.   DStop mode overview. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 277
+Page   68: Table 37.   DStop mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 278
+Page   68: Table 38.   Stop mode operation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 279
+Page   68: Table 39.   Stop mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 280
+Page   80: D2 and system in Stop mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 269
+Page  131: software/hardware and reset when the device is in Standby or Stop mode.
+Page  163: –     IWDG_FZ_STOP: independent watchdog (IWDG1) counter active in Stop mode if
+Page  163: DStop mode. It is active low.
+Page  164: –    IWDG1 active in Standby and Stop modes (option byte value = 0x1)
+Page  196: Bit 17 IWDG_FZ_STOP: IWDG Stop mode freeze option status bit
+Page  196: When set the independent watchdog IWDG1 is in system Stop mode.
+Page  196: 0: Independent watchdog frozen in system Stop mode
+Page  196: 1: Independent watchdog keep running in system Stop mode.
+Page  197: 0: a reset is generated when entering DStop mode on D1 domain
+Page  197: 1: no reset generated when entering DStop mode on D1 domain.
+Page  199: Bit 17 IWDG_FZ_STOP: IWDG Stop mode freeze option configuration bit
+Page  199: 0: Independent watchdog frozen in system Stop mode
+Page  199: 1: Independent watchdog keep running in system Stop mode.
+Page  199: 0: a reset is generated when entering DStop mode on D1 domain.
+Page  199: 1: no reset generated when entering DStop mode on D1 domain.
+Page  248: •    Stop mode
+Page  248: The regulator can be kept in Main mode to allow fast exit from Stop mode, or can be set
+Page  248: lower voltage level for SVOS4 and SVOS5 scaling, the Stop mode consumption can be
+Page  249: •   In Stop mode
+Page  249: consumption in Stop mode.
+Page  259: •   For system D3 domain to operate in Stop mode, both D1 and D2 domains must be in
+Page  259: •   To obtain the best trade-off between power consumption and exit-from-Stop mode
+Page  259: latency, configure the SVOS bits to Stop mode voltage scaling.
+Page  260: The CPU subsystem operates in CStop mode and the PDDS_D1(a) bit selects
+Page  260: DStop mode.
+Page  260: The CPU subsystem operates in CStop mode and the PDDS_D1 bit selects
+Page  261: PDDS_D2(a) bit selects DStop mode,
+Page  261: subsystem operates in CStop mode and PDDS_D2 bit selects DStop mode.
+Page  261: subsystem operates in CStop mode and PDDS_D2 bit selects DStandby mode.
+Page  261: - The CPU subsystem is in CStop mode.
+Page  261: - At least one PDDS_Dn(a) bit for any domain select Stop mode.
+Page  261: - The CPU subsystem is in CStop mode
+Page  262: 3. If the CPU subsystem has an allocated peripheral in the D2 domain, it must operate in CStop mode.
+Page  263: •   Stop mode voltage scaling
+Page  263: exiting from Stop mode or Standby mode, the Run mode voltage scaling is reset to the
+Page  263: Before entering Stop mode, the software can preselect the SVOS level in PWR control
+Page  263: register 1 (PWR_CR1). The Stop mode voltage scaling for SVOS4 and SVOS5 also sets the
+Page  263: LP SVOS4                                Stop mode
+Page  264: •       In Stop mode, VCORE is defined by the SVOS voltage scaling.
+Page  264: The CPU subsystem is in CStop mode and all EXTI wakeups are inactive. The D1
+Page  264: The CPU subsystem is in CStop mode and all EXTI wakeups are inactive. The D1
+Page  265: Domain modes                      Stop mode
+Page  266: •    CPU going to CStop mode (state transitions in Run mode are marked in green and red)
+Page  266: •    The system enters or exits from Stop mode (state transitions marked in blue)
+Page  266: –     Blue transitions the system wakes up from Stop mode. The STOPF is set.
+Page  267: •    Figure 32 shows VCORE voltage scaling behavior in Stop mode.
+Page  268: Example of VCORE voltage scaling behavior in Stop mode
+Page  268: DStop mode. D2 system clock is stopped. The system still provides the high-
+Page  268: 3.   In a second step, the CPU subsystem enters CStop mode, D1 domain enters DStop
+Page  268: mode and the system enters Stop mode. The system clock is stopped and the
+Page  268: 4.   The CPU subsystem is then woken up. The system exits from Stop mode, the D1
+Page  268: domain exits from DStop mode and the CPU subsystem exits from CStop mode. The
+Page  269: D2 and system in Stop mode
+Page  269: 3.    The CPU subsystem then enters to CStop mode, D1 domain enters DStandby mode
+Page  270: DStop mode. The software shall then check the ACTVOSRDY is valid before changing
+Page  271: 3.   The CPU subsystem then enters CStop mode and the D1 domain enters DStandby
+Page  271: same time the system enters Stop mode. The system clock is stopped and the
+Page  271: exits from Stop mode. The hardware sets the voltage scaling to the default VOS3 level
+Page  271: Stop mode. The system clock is stopped and the voltage scaling is lowered to the
+Page  271: 6.   The CPU subsystem is then woken up. The system exits from Stop mode, the D1
+Page  271: domain exits from DStandby mode and the CPU subsystem exits from CStop mode.
+Page  273: allocated peripheral in the domain and enters CStop mode, or when all D2 domain
+Page  274: The CPU subsystem exits from CStop, DStop and Stop modes by enabling an EXTI interrupt
+Page  274: The system can wakeup from Stop mode by enabling an EXTI wakeup, without waking up a
+Page  276: 5.7.6      CStop mode
+Page  276: The CStop mode applies only to the CPU subsystem. In CStop mode, the CPU clock is
+Page  276: In CStop mode, the CPU subsystem peripherals that have a kernel clock request can still
+Page  276: Entering CStop mode
+Page  276: The CStop mode is entered according to Section 5.7.3: Entering low-power modes, when
+Page  276: Refer to Table 35 for details on how to enter to CStop mode.
+Page  276: Exiting from CStop mode
+Page  276: The CStop mode is exited according to Section 5.7.4: Exiting from low-power modes.
+Page  276: Refer to Table 35 for more details on how to exit from CStop mode.
+Page  276: Table 35. CStop mode
+Page  276: CStop mode                                        Description
+Page  277: 5.7.7    DStop mode
+Page  277: D1 domain and/or D2 domain enters DStop mode only when the CPU subsystem is in
+Page  277: CStop mode and has allocated peripheral in the domain (see Table 36). In DStop mode the
+Page  277: The Flash memory can enter low-power Stop mode when it is enabled through FLPS in
+Page  277: Table 36. DStop mode overview
+Page  277: In DStop mode domain peripherals using the LSI or LSE clock and peripherals having a
+Page  277: Entering DStop mode
+Page  277: The DStop mode is entered according to Section 5.7.3: Entering low-power modes, when at
+Page  277: Refer to Table 37 for details on how to enter DStop mode.
+Page  277: If Flash memory programming is ongoing, the DStop mode entry is delayed until the
+Page  277: If an access to the domain bus matrix is ongoing, the DStop mode entry is delayed until the
+Page  277: Exiting from DStop mode
+Page  277: The DStop mode is exited according to Section 5.7.4: Exiting from low-power modes.
+Page  277: Refer to Table 37 for more details on how to exit from DStop mode.
+Page  277: When exiting from DStop mode, the CPU subsystem clocks, domain(s) bus matrix clocks
+Page  277: •      When the system did not enter Stop mode, the CPU subsystem clocks, domain(s) bus
+Page  277: matrix clocks and voltage scaling values are the same as when entering DStop mode.
+Page  277: •      When the system has entered Stop mode, the CPU subsystem clocks, domain(s) bus
+Page  278: Table 37. DStop mode
+Page  278: DStop mode                                      Description
+Page  278: – The PDDS_Dn bit for the domain selects Stop mode.
+Page  278: – The domain CPU subsystem exits from CStop mode (see Table 35)
+Page  278: exits from CStop mode (see Table 35)
+Page  278: 5.7.8      Stop mode
+Page  278: The system D3 domain enters Stop mode only when the CPU subsystem is in CStop mode,
+Page  278: register (PWR_CPUCR) for any domain request Stop. In Stop mode, the system clock
+Page  278: In system D3 domain Stop mode, D1 domain and D2 domain are either in DStop and/or
+Page  278: In Stop mode, the domain peripherals that use the LSI or LSE clock, and the peripherals
+Page  278: In system Stop mode, the following features can be selected to remain active by
+Page  279: •     The ADC or DAC can also consume power during Stop mode, unless they are disabled
+Page  279: system Stop mode (see Table 38).
+Page  279: Table 38. Stop mode operation
+Page  279: Stop mode
+Page  279: Entering Stop mode
+Page  279: The Stop mode is entered according to Section 5.7.3: Entering low-power modes, when at
+Page  279: Refer to Table 39 for details on how to enter Stop mode.
+Page  279: If Flash memory programming is ongoing, the Stop mode entry is delayed until the memory
+Page  279: If an access to a bus matrix (AXI, AHB or APB) is ongoing, the Stop mode entry is delayed
+Page  279: entering stop mode.
+Page  279: To allow peripherals having a kernel clock request to operate in Stop mode, the system must
+Page  279: Exiting from Stop mode
+Page  279: The Stop mode is exited according to Section 5.7.4: Exiting from low-power modes.
+Page  279: Refer to Table 39 for more details on how to exit from Stop mode.
+Page  279: When exiting from Stop mode, the system clock, D3 domain bus matrix clocks and voltage
+Page  279: has exited from Stop mode (see Table 33).
+Page  280: Table 39. Stop mode
+Page  280: Stop mode                                       Description
+Page  280: – When the CPU is in CStop mode and there is no active EXTI Wakeup
+Page  280: I/O states in Stop mode
+Page  280: I/O pin configuration remain unchanged in Stop mode.
+Page  280: Like DStop mode, DStandby mode is based on the CPU subsystem CStop mode. However
+Page  280: CPU subsystem is in CStop mode if peripherals are allocated in the domain
+Page  280: A domain enters DStandby mode only when the CPU subsystem is in CStop mode if
+Page  280: select Stop mode, the D2 domain remains in DStandby mode. The D2 domain will only exit
+Page  281: •     When the system did not enter Stop mode, the CPU subsystem clocks, domain(s) bus
+Page  281: subsystem exits from CStop mode), the CPU shall verify that the domain has exited from
+Page  281: – The CPU subsystem exits from CStop mode (see Table 35)
+Page  281: exits from CStop mode (see Table 35)
+Page  282: The Standby mode allows achieving the lowest power consumption. Like Stop mode, it is
+Page  282: based on CPU subsystem CStop mode. However the VCORE supply regulator is powered
+Page  283: D1 and D2 domain exit from DStandby while the system is in Stop mode or is
+Page  283: – The CPU subsystem is in CStop mode, and there is no active EXTI
+Page  284: Bits 15:14 SVOS: System Stop mode voltage scaling selection
+Page  284: These bits control the VCORE voltage level in system Stop mode, to obtain the best trade-off
+Page  284: Bit 9 FLPS: Flash low-power mode in DStop mode
+Page  284: when exiting from DStop mode.
+Page  284: 1: Flash memory enters low-power mode when D1 domain enters DStop mode (low-power
+Page  285: 0: Voltage regulator in Main mode (MR) when SVOS3 is selected for Stop mode
+Page  285: 1: Voltage regulator in Low-power mode (LPR) when SVOS3 is selected for Stop mode
+Page  287: Run and Stop modes. However, its content will be lost in Standby and VBAT modes.
+Page  289: 0: System has not been in Stop mode
+Page  289: 1: System has been in Stop mode
+Page  290: 0: Keep Stop mode when D3 domain enters Deepsleep.
+Page  290: 0: Keep DStop mode when D2 domain enters Deepsleep.
+Page  290: 0: Keep DStop mode when D1 domain enters Deepsleep.
+Page  296: up the system from Stop mode:
+Page  296: except for the peripherals which are able to wake up the system from Stop mode or the
+Page  297: D3_PenClear[3:0] inputs allow switching the system D3 domain from Run to Stop mode.
+Page  298: the CPU wakes up from CStop mode (which domain is in DStandby). When the CPU is in
+Page  298: LPUART1 and go back to Stop mode when the transfer is complete.
+Page  298: 7.   Set the CPU to Stop mode.
+Page  298: domain is switched to Stop mode.
+Page  299: CPU is in CSTOP mode.
+Page  300: •   Set the device to Stop mode when the data transfer via LPUART1 is complete.
+Page  300: •   The second BDMA channel role is to switch the D3 domain to Stop mode. For that
+Page  300: dmamux2_evt7 signal is used by the EXTI to switch back the D3 domain to Stop mode.
+Page  302: empty. This interrupt is used to switch the D3 domain to Stop mode.
+Page  302: Table 46 gives the key settings concerning the handling of Stop mode for LPUART1.
+Page  303: 5.   The CPU enables the BDMA to start LPUART transmission and goes to Stop mode. As
+Page  303: 10. As a consequence, the D3 domain (i.e. the system) enters Stop mode and the system
+Page  304: 11. LPTIM4 lptim4_wkup interrupt wakes up the system. The device exits from Stop mode
+Page  304: h)    Go back to CStop mode.
+Page  304: switches from Run to Stop mode. LPUART1 must be programmed to wake up D3 domain
+Page  304: transfers to LPUART1_TDR and then switch back the D3 domain to Stop mode. This
+Page  308: exiting from system Stop mode.
+Page  313: CPU erroneously enters CStop mode
+Page  314: •   CPU accidentally enters CStop mode
+Page  314: case, whenever the CPU CStop mode entry sequence is successfully executed, a
+Page  321: Section : CSS on HSE). The HSI can be disabled or not when the system enters Stop mode,
+Page  322: Note:      The HSI can remain enabled when the system is in Stop mode (see Section 7.5.7 for
+Page  322: The CSI can be disabled or not when the system enters Stop mode (refer to Section 7.5.7:
+Page  324: work when the system is in Stop mode.
+Page  332: When the whole system enters Stop mode, all the clocks (system and kernel clocks) are
+Page  332: Exiting Stop mode
+Page  332: When the microcontroller exits system Stop mode via a wake-up event, the application can
+Page  332: oscillator when the                exits Stop mode
+Page  333: During Stop mode
+Page  333: In this case the HSI and CSI are kept running during Stop mode but the outputs are
+Page  333: When a peripheral requests the kernel clock in system Stop mode, only the path providing
+Page  333: leaving CStop mode: this mainly depends on the System state. For example If the CPU
+Page  333: left the CStop mode.
+Page  337: from Stop mode (i.e. UART, I2C...).
+Page  347: When the CPU enters CStop mode, the RCC automatically disables the bus interface and
+Page  347: The D3 domain can be kept in DRun mode while the CPU is in CStop mode and D1 and D2
+Page  347: CPU enters CStop mode (see Table 56).
+Page  347: A wakeup event will be able to exit D1, D2 and D3 domains from DStandby or DStop mode.
+Page  348: even if the CPU is in CStop mode. When a peripheral has its autonomous bit enabled, it
+Page  348: receives its peripheral clocks according to D3 domain state, if the CPU is in CStop mode:
+Page  348: •    If the D3 domain is in DStop mode, no peripheral clock is provided.
+Page  348: For example, the CPU can enter CStop mode, while the SAI4 is filling the SRAM4 with data
+Page  348: expecting messages via I2C4, the whole system can be put in Stop mode. When the I2C4
+Page  348: and the D3 domain go back to DStop mode without any CPU activation. Note that if the
+Page  349: •     The system remains in Stop mode as long as D3 is in DStop mode. This means
+Page  349: –      When the D1 domain is in DStop mode it means that its bus matrix is no longer
+Page  349: clocked, and the CPU is in CStop mode.
+Page  349: –      When the D2 domain is in DStop mode it means that its bus matrix is no longer
+Page  354: 1. For RNG block, the kernel clock is not delivered if the CPU to which it is allocated is in CStop mode, even if the clock
+Page  355: 3.   The CPU is in CStop mode, and the peripheral is allocated with PERxLPEN = ‘1’, and
+Page  355: 4.   The CPU is in CStop mode, and the peripheral is allocated with PERxLPEN = ‘1’, and
+Page  356: 3.    The CPU is in CStop mode, and the peripheral is allocated and D3 domain is in DRun
+Page  356: 4.    The CPU is in CStop mode, and the peripheral is allocated, and D3 domain is in DStop
+Page  356: 5.    The CPU is in CStop mode, and the peripheral is allocated, and D3 domain is in DStop
+Page  357: In order for the LPTIMER to operate with lse_ck or lsi_ck when the circuit is in Stop mode,
+Page  363: Bit 9 CSIKERON: CSI clock enable in Stop mode
+Page  363: Set and reset by software to force the CSI to ON, even in Stop mode, in order to be quickly
+Page  363: 1: CSI is forced to ON even in Stop mode
+Page  363: Set by hardware to force the CSI to ON when the system leaves Stop mode, if STOPWUCK = ‘1’ or
+Page  364: Bit 1 HSIKERON: High Speed Internal clock enable in Stop mode
+Page  364: Set and reset by software to force the HSI to ON, even in Stop mode, in order to be quickly
+Page  364: 1: HSI is forced to ON even in Stop mode
+Page  364: Set by hardware to force the HSI to ON when the product leaves Stop mode, if STOPWUCK = ‘0’ or
+Page  369: system Stop mode
+Page  403: If HSE is selected as RTC clock: this clock is lost when the system is in Stop mode or in case of a
+Page  423: even if the CPU is in CStop mode. When a peripheral is enabled, and has its autonomous
+Page  423: CStop mode.
+Page  545: This bit indicates if a reset is generated when D1 domain enters in DStop mode.
+Page  545: 0: A reset is generated entering D1 Stop mode
+Page  545: 1: D1 Stop mode is entered without reset generation
+Page  547: Bit 0 FZIWDGSTP: Freeze independent watchdog in Stop mode
+Page  547: This bit indicates if the independent watchdog is frozen in Stop mode.
+Page  547: 0: Independent Watchdog frozen in Stop mode
+Page  547: 1: Independent Watchdog running in Stop mode
+Page  570: from Stop mode and/or a CPU from CStop mode. Wakeup events are coming from
+Page  738: The EXTI wakeup requests allow the system to be woken up from Stop mode, and the CPU
+Page  738: to be woken up from CStop mode.
+Page  739: The peripherals able to generate wakeup events when the system is in Stop mode or the
+Page  739: CPU is in CStop mode are connected to an EXTI Configurable event input or Direct Event
+Page  749: When in Stop mode an event will always wake up the D3 domain. In system Run and Stop
+Page  871: •    Automatic polling mode parameters: match mode and stop mode (valid when
+Page  904: particularly interesting before entering STOP mode.
+Page 1020: •   Sample and Hold mode for low power operation in Stop mode
+Page 1023: •      Sample and Hold block and registers operational in Stop mode, using LSI clock source
+Page 1023: registers can run in Stop mode using the LSI clock source.
+Page 1030: deep low power modes such as Stop mode.
+Page 1061: •   Interrupt generation capability with wake up from Sleep and Stop modes (through the
+Page 1064: independently from the APB clock. This allows the comparator to work even in Stop mode.
+Page 1068: Comparator interrupts cause the device to exit the Stop mode.
+Page 1068: Note:       The comparators cannot be used to exit the device from Sleep or Stop mode when the
+Page 1096: Two power modes are supported: normal mode and stop mode.
+Page 1101: DFSDM_FLTx is put into stop mode. All register settings remain unchanged except
+Page 1101: stopping the system clock to enter in the STOP mode of the device.
+Page 1102: DFSDMSEL bit description in ). The DFSDM clock is automatically stopped in stop mode (if
+Page 1858: interrupts cause the device to exit Stop mode
+Page 1880: •     Clocked from an independent RC oscillator (can operate in Standby and Stop modes)
+Page 1882: can continue counting or not during the Stop mode and the Standby mode respectively. If
+Page 1905: register. This configuration allows to trig automatically the low-power timers in Stop mode,
+Page 1936: •     Wakeup from Stop mode on address match.
+Page 1936: Wakeup from Stop mode                                                X           X           X           X
+Page 1939: Benefits                    Available in Stop mode        vs. standard requirements
+Page 1939: Variation vs. temperature,   Wakeup from Stop mode on address match is not
+Page 1981: 46.4.14    Wakeup from Stop mode on address match
+Page 1981: This section is relevant only when Wakeup from Stop mode feature is supported. Refer to
+Page 1981: The I2C is able to wakeup the MCU from Stop mode (APB clock is off), when it is
+Page 1981: Wakeup from Stop mode is enabled by setting the WUPEN bit in the I2C_CR1 register. The
+Page 1981: wakeup from Stop mode.
+Page 1981: During Stop mode, the HSI or CSI is switched off. When a START is detected, the I2C
+Page 1981: Only an ADDR interrupt can wakeup the MCU. Therefore do not enter Stop mode when the
+Page 1981: Caution:   The digital filter is not compatible with the wakeup from Stop mode feature. If the DNF bit is
+Page 1981: wakeup from Stop mode feature.
+Page 1981: Caution:   If wakeup from Stop mode is disabled (WUPEN=0), the I2C peripheral must be disabled
+Page 1981: before entering Stop mode (PE=0).
+Page 1984: match condition causes the device to exit the Stop mode. If WUPEN=0: the I2C
+Page 1984: must be disabled before entering Stop mode
+Page 1984: 1. The ADDR match event can wake-up the device from Stop mode only if the I2C instance supports the
+Page 1984: Wakeup from Stop mode feature. Refer to I2C implementation table.
+Page 1987: Bit 18 WUPEN: Wakeup from Stop mode enable
+Page 1987: 0: Wakeup from Stop mode disable.
+Page 1987: 1: Wakeup from Stop mode enable.
+Page 1987: Note: If the Wakeup from Stop mode feature is not supported, this bit is reserved and forced
+Page 2054: USART_RDR. In Stop mode, USART_RDR is not clocked. As a result, this register will not be written and once n data are
+Page 2109: LPUART_RDR. In Stop mode, LPUART_RDR is not clocked. As a result, this register will not be written and once n data
+Page 2113: Bit 1 UESM: LPUART enable in Stop mode
+Page 2114: during Mute mode or Stop mode. The MSB of the character sent by the transmitter should be equal
+Page 2130: •    Slave's transmission and/or reception capability in Stop mode (no clock provided to the
+Page 2147: SPI is operated in Stop mode.
+Page 2149: into STOP mode. Refer to the RCC section for further information.
+Page 2308: Note:       In order to support the exit from Stop mode by a RESUME by slave, it is mandatory to select
+Page 2308: SWPMI must be disabled before entering the Stop mode.
+Page 2323: Stop                device from Stop mode if the swpmi_ker_ck is HSI (refer to Section 52.3.1:
+Page 2334: The MDIOS can operate in Stop mode, optionally waking up the STM32 if the MDIO master
+Page 2334: •   Able to operate in and wake up from Stop mode
+Page 2340: 53.3.9      MDIOS in Stop mode
+Page 2340: The MDIOS can operate in Stop mode, responding to all reads, performing all writes, and
+Page 2340: causing the STM32 to wakeup from Stop mode on MDIOS interrupts.
+Page 2341: of these interrupt sources can wake the STM32 up from Stop mode. All interrupt flags need
+Page 2579: USB suspend exit causes the device to exit Stop mode. Peripheral                   Available while USB is in
+Page 2579: 1. Within Stop mode there are different possible settings. Some restrictions may also exist, please refer to Section 5: Power
+Page 2740: •   Start and Stop modes
+Page 2978: •   Works in Stop mode for ultra-low-power applications
+Page 3133: Bit 7 DBGSTOP_D3: Allow debug in D3 Stop mode
+Page 3133: 0: Normal operation - domain clocks are disabled automatically in Stop mode(2)
+Page 3133: run during Stop mode. On exit from Stop mode, the clock settings is set to the Stop mode exit
+Page 3133: Bit 1 DBGSTOP_D1: Allow D1 domain debug in Stop mode
+Page 3133: 0: Normal operation - all clocks are disabled automatically in Stop mode
+Page 3133: mode, allowing full debug capability. On exit from Stop mode, the clock settings is set to the
+Page 3133: Stop mode exit state.
+Page 3133: DAPCLK active in Stop mode, even if DBGSTOP_D3 is reset. However the remaining D3 domain clocks will
+Page 3221: 47.4.14: Wakeup from Stop mode on address match.
+Page 3223: system in Stop mode, Figure 28: Dynamic Voltage Scaling D1, D2,
+Page 3223: Updated Section : Entering Stop mode.

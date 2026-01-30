@@ -1,0 +1,287 @@
+Keyword: USB
+Occurrences: 283
+================================================================================
+
+Page    5: 3.10.17.3 Port conﬁguration for USB port.................................................................................. 75
+Page    6: 3.10.25 UBX-CFG-USB (0x06 0x1b)................................................................................................... 85
+Page    6: 3.10.25.1 USB conﬁguration.......................................................................................................... 85
+Page   12: 5.9.34 CFG-USB: Conﬁguration of the USB interface................................................................. 233
+Page   12: 5.9.35 CFG-USBINPROT: Input protocol conﬁguration of the USB interface..........................234
+Page   12: 5.9.36 CFG-USBOUTPROT: Output protocol conﬁguration of the USB interface..................234
+Page   42: Structure         $PUBX,40,msgId,rddc,rus1,rus2,rusb,rspi,reserved*cs\r\n
+Page   42: 6          rusb                  numeric      cycles      1                output rate on USB
+Page   51: •   Port conﬁguration for USB port (Get/set)
+Page   51: UBX-CFG-USB              0x06 0x1b   •   USB conﬁguration (Get/set)
+Page   61: •    I/O port 3 is USB.
+Page   75: 3.10.17.3 Port conﬁguration for USB port
+Page   75: Port conﬁguration for USB port
+Page   75: 0                   U1        portID                   -           -            Port identiﬁer number (= 3 for USB port)
+Page   79: •   0x42434B50 = Software backup. USB interface
+Page   85: 3.10.25 UBX-CFG-USB (0x06 0x1b)
+Page   85: 3.10.25.1 USB conﬁguration
+Page   85: Message             UBX-CFG-USB
+Page   85: USB conﬁguration
+Page  159: to USB
+Page  159: to USB
+Page  159: bit 2   U:1      force                  -           -            Force receiver backup while USB is connected. USB
+Page  197: CFG-USB                                          Conﬁguration of the USB interface
+Page  197: CFG-USBINPROT                                    Input protocol conﬁguration of the USB interface
+Page  197: CFG-USBOUTPROT                                   Output protocol conﬁguration of the USB interface
+Page  201: CFG-INFMSG-UBX_USB                   0x20920004 X1            -          -     Information message enable ﬂags for the UBX
+Page  201: protocol on the USB interface
+Page  201: CFG-INFMSG-NMEA_USB                  0x20920009 X1            -          -     Information message enable ﬂags for the NMEA
+Page  201: protocol on the USB interface
+Page  202: UBX_USB, CFG-INFMSG-UBX_SPI, CFG-INFMSG-NMEA_I2C, CFG-INFMSG-NMEA_UART1, CFG-INFMSG-NMEA_UART2,
+Page  202: CFG-INFMSG-NMEA_USB, CFG-INFMSG-NMEA_SPI
+Page  203: CFG-MSGOUT-NMEA_ID_DTM_USB           0x209100a9 U1           -        -     Output rate of the NMEA-GX-DTM message on
+Page  203: port USB
+Page  204: CFG-MSGOUT-NMEA_ID_GBS_USB   0x209100e0 U1       -       -       Output rate of the NMEA-GX-GBS message on
+Page  204: port USB
+Page  204: CFG-MSGOUT-NMEA_ID_GGA_USB   0x209100bd U1       -       -       Output rate of the NMEA-GX-GGA message on
+Page  204: port USB
+Page  204: CFG-MSGOUT-NMEA_ID_GLL_USB   0x209100cc U1       -       -       Output rate of the NMEA-GX-GLL message on
+Page  204: port USB
+Page  204: CFG-MSGOUT-NMEA_ID_GNS_USB   0x209100b8 U1       -       -       Output rate of the NMEA-GX-GNS message on
+Page  204: port USB
+Page  204: CFG-MSGOUT-NMEA_ID_GRS_USB   0x209100d1 U1       -       -       Output rate of the NMEA-GX-GRS message on
+Page  204: port USB
+Page  205: CFG-MSGOUT-NMEA_ID_GSA_USB   0x209100c2 U1       -       -       Output rate of the NMEA-GX-GSA message on
+Page  205: port USB
+Page  205: CFG-MSGOUT-NMEA_ID_GST_USB   0x209100d6 U1       -       -       Output rate of the NMEA-GX-GST message on
+Page  205: port USB
+Page  205: CFG-MSGOUT-NMEA_ID_GSV_USB   0x209100c7 U1       -       -       Output rate of the NMEA-GX-GSV message on
+Page  205: port USB
+Page  205: CFG-MSGOUT-NMEA_ID_RLM_USB   0x20910403 U1       -       -       Output rate of the NMEA-GX-RLM message on
+Page  205: port USB
+Page  205: CFG-MSGOUT-NMEA_ID_RMC_USB   0x209100ae U1       -       -       Output rate of the NMEA-GX-RMC message on
+Page  205: port USB
+Page  206: CFG-MSGOUT-NMEA_ID_VLW_USB     0x209100ea U1       -       -       Output rate of the NMEA-GX-VLW message on
+Page  206: port USB
+Page  206: CFG-MSGOUT-NMEA_ID_VTG_USB     0x209100b3 U1       -       -       Output rate of the NMEA-GX-VTG message on
+Page  206: port USB
+Page  206: CFG-MSGOUT-NMEA_ID_ZDA_USB     0x209100db U1       -       -       Output rate of the NMEA-GX-ZDA message on
+Page  206: port USB
+Page  206: CFG-MSGOUT-PUBX_ID_POLYP_USB   0x209100ef U1       -       -       Output rate of the NMEA-GX-PUBX00 message
+Page  206: on port USB
+Page  206: CFG-MSGOUT-PUBX_ID_POLYS_USB   0x209100f4 U1       -       -       Output rate of the NMEA-GX-PUBX03 message
+Page  206: on port USB
+Page  207: CFG-MSGOUT-PUBX_ID_POLYT_USB   0x209100f9 U1       -       -       Output rate of the NMEA-GX-PUBX04 message
+Page  207: on port USB
+Page  207: CFG-MSGOUT-UBX_LOG_INFO_USB    0x2091025c U1       -       -       Output rate of the UBX-LOG-INFO message on
+Page  207: port USB
+Page  207: USB                                                                on port USB
+Page  207: CFG-MSGOUT-UBX_MON_HW2_USB     0x209101bc U1       -       -       Output rate of the UBX-MON-HW2 message on
+Page  207: port USB
+Page  207: CFG-MSGOUT-UBX_MON_HW3_USB     0x20910357 U1       -       -       Output rate of the UBX-MON-HW3 message on
+Page  207: port USB
+Page  207: CFG-MSGOUT-UBX_MON_HW_USB      0x209101b7 U1       -       -       Output rate of the UBX-MON-HW message on
+Page  207: port USB
+Page  208: CFG-MSGOUT-UBX_MON_IO_USB     0x209101a8 U1       -       -       Output rate of the UBX-MON-IO message on
+Page  208: port USB
+Page  208: USB                                                               on port USB
+Page  208: CFG-MSGOUT-UBX_MON_RF_USB     0x2091035c U1       -       -       Output rate of the UBX-MON-RF message on
+Page  208: port USB
+Page  208: USB                                                               on port USB
+Page  208: CFG-MSGOUT-UBX_MON_RXR_USB    0x2091018a U1       -       -       Output rate of the UBX-MON-RXR message on
+Page  208: port USB
+Page  209: CFG-MSGOUT-UBX_MON_SPAN_USB 0x2091038e U1         -       -       Output rate of the UBX-MON-SPAN message on
+Page  209: port USB
+Page  209: USB                                                               on port USB
+Page  209: AOPSTATUS_USB                                                     message on port USB
+Page  209: CFG-MSGOUT-UBX_NAV_CLOCK_USB 0x20910068 U1        -       -       Output rate of the UBX-NAV-CLOCK message
+Page  209: on port USB
+Page  209: CFG-MSGOUT-UBX_NAV_COV_USB    0x20910086 U1       -       -       Output rate of the UBX-NAV-COV message on
+Page  209: port USB
+Page  210: CFG-MSGOUT-UBX_NAV_DOP_USB    0x2091003b U1       -       -       Output rate of the UBX-NAV-DOP message on
+Page  210: port USB
+Page  210: CFG-MSGOUT-UBX_NAV_EOE_USB    0x20910162 U1       -       -       Output rate of the UBX-NAV-EOE message on
+Page  210: port USB
+Page  210: USB                                                               message on port USB
+Page  210: CFG-MSGOUT-UBX_NAV_ODO_USB    0x20910081 U1       -       -       Output rate of the UBX-NAV-ODO message on
+Page  210: port USB
+Page  210: CFG-MSGOUT-UBX_NAV_ORB_USB    0x20910013 U1       -       -       Output rate of the UBX-NAV-ORB message on
+Page  210: port USB
+Page  211: USB                                                               on port USB
+Page  211: USB                                                               on port USB
+Page  211: CFG-MSGOUT-UBX_NAV_PVT_USB    0x20910009 U1       -       -       Output rate of the UBX-NAV-PVT message on
+Page  211: port USB
+Page  211: CFG-MSGOUT-UBX_NAV_SAT_USB    0x20910018 U1       -       -       Output rate of the UBX-NAV-SAT message on
+Page  211: port USB
+Page  211: CFG-MSGOUT-UBX_NAV_SBAS_USB   0x2091006d U1       -       -       Output rate of the UBX-NAV-SBAS message on
+Page  211: port USB
+Page  212: CFG-MSGOUT-UBX_NAV_SIG_USB    0x20910348 U1       -       -       Output rate of the UBX-NAV-SIG message on
+Page  212: port USB
+Page  212: CFG-MSGOUT-UBX_NAV_SLAS_USB   0x20910339 U1       -       -       Output rate of the UBX-NAV-SLAS message on
+Page  212: port USB
+Page  212: USB                                                               on port USB
+Page  212: USB                                                               on port USB
+Page  212: USB                                                               on port USB
+Page  212: USB                                                               on port USB
+Page  213: USB                                                               on port USB
+Page  213: USB                                                               on port USB
+Page  213: USB                                                               message on port USB
+Page  213: USB                                                               on port USB
+Page  213: USB                                                               on port USB
+Page  214: USB                                                               on port USB
+Page  214: USB                                                               on port USB
+Page  214: CFG-MSGOUT-UBX_RXM_RAWX_USB 0x209102a7 U1         -       -       Output rate of the UBX-RXM-RAWX message on
+Page  214: port USB
+Page  214: CFG-MSGOUT-UBX_RXM_RLM_USB    0x20910261 U1       -       -       Output rate of the UBX-RXM-RLM message on
+Page  214: port USB
+Page  214: CFG-MSGOUT-UBX_RXM_RTCM_USB 0x2091026b U1         -       -       Output rate of the UBX-RXM-RTCM message on
+Page  214: port USB
+Page  215: CFG-MSGOUT-UBX_RXM_SFRBX_USB 0x20910234 U1                    -          -     Output rate of the UBX-RXM-SFRBX message
+Page  215: on port USB
+Page  215: CFG-MSGOUT-UBX_TIM_TM2_USB           0x2091017b U1            -          -     Output rate of the UBX-TIM-TM2 message on
+Page  215: port USB
+Page  215: CFG-MSGOUT-UBX_TIM_TP_USB            0x20910180 U1            -          -     Output rate of the UBX-TIM-TP message on
+Page  215: port USB
+Page  215: CFG-MSGOUT-UBX_TIM_VRFY_USB          0x20910095 U1            -          -     Output rate of the UBX-TIM-VRFY message on
+Page  215: port USB
+Page  233: 5.9.34 CFG-USB: Conﬁguration of the USB interface
+Page  233: Settings needed to conﬁgure the USB communication interface.
+Page  233: CFG-USB-ENABLED                 0x10650001      L       -       -       Flag to indicate if the USB interface should be
+Page  233: CFG-USB-SELFPOW                 0x10650002      L       -       -       Self-powered device
+Page  233: CFG-USB-VENDOR_ID               0x3065000a U2           -       -       Vendor ID
+Page  233: CFG-USB-PRODUCT_ID              0x3065000b U2           -       -       Vendor ID
+Page  233: CFG-USB-POWER                   0x3065000c U2           -      mA       Power consumption
+Page  233: CFG-USB-VENDOR_STR0             0x5065000d X8           -       -       Vendor string characters 0-7
+Page  233: CFG-USB-VENDOR_STR1             0x5065000e X8           -       -       Vendor string characters 8-15
+Page  233: CFG-USB-VENDOR_STR2             0x5065000f X8           -       -       Vendor string characters 16-23
+Page  233: CFG-USB-VENDOR_STR3             0x50650010 X8           -       -       Vendor string characters 24-31
+Page  233: CFG-USB-PRODUCT_STR0            0x50650011 X8           -       -       Product string characters 0-7
+Page  233: CFG-USB-PRODUCT_STR1            0x50650012 X8           -       -       Product string characters 8-15
+Page  233: CFG-USB-PRODUCT_STR2            0x50650013 X8           -       -       Product string characters 16-23
+Page  233: CFG-USB-PRODUCT_STR3            0x50650014 X8           -       -       Product string characters 24-31
+Page  233: CFG-USB-SERIAL_NO_STR0          0x50650015 X8           -       -       Serial number string characters 0-7
+Page  233: CFG-USB-SERIAL_NO_STR1          0x50650016 X8           -       -       Serial number string characters 8-15
+Page  233: CFG-USB-SERIAL_NO_STR2          0x50650017 X8           -       -       Serial number string characters 16-23
+Page  234: CFG-USB-SERIAL_NO_STR3           0x50650018 X8          -         -     Serial number string characters 24-31
+Page  234: Table 68: CFG-USB conﬁguration items
+Page  234: 5.9.35 CFG-USBINPROT: Input protocol conﬁguration of the USB interface
+Page  234: Input protocol enable ﬂags of the USB interface.
+Page  234: CFG-USBINPROT-UBX                0x10770001     L       -         -     Flag to indicate if UBX should be an input
+Page  234: protocol on USB
+Page  234: CFG-USBINPROT-NMEA               0x10770002     L       -         -     Flag to indicate if NMEA should be an input
+Page  234: protocol on USB
+Page  234: CFG-USBINPROT-RTCM3X             0x10770004     L       -         -     Flag to indicate if RTCM3X should be an input
+Page  234: protocol on USB
+Page  234: Table 69: CFG-USBINPROT conﬁguration items
+Page  234: 5.9.36 CFG-USBOUTPROT: Output protocol conﬁguration of the USB interface
+Page  234: Output protocol enable ﬂags of the USB interface.
+Page  234: CFG-USBOUTPROT-UBX               0x10780001     L       -         -     Flag to indicate if UBX should be an output
+Page  234: protocol on USB
+Page  234: CFG-USBOUTPROT-NMEA              0x10780002     L       -         -     Flag to indicate if NMEA should be an output
+Page  234: protocol on USB
+Page  234: Table 70: CFG-USBOUTPROT conﬁguration items
+Page  235: INFMSG-UBX_UART2, CFG-INFMSG-UBX_USB, CFG-
+Page  235: NMEA_USB, CFG-INFMSG-NMEA_SPI
+Page  235: INFMSG-UBX_USB, CFG-INFMSG-UBX_SPI, CFG-INFMSG-
+Page  235: NMEA_UART2, CFG-INFMSG-NMEA_USB, CFG-INFMSG-
+Page  238: UBX-CFG-PRT.inNmea                          CFG-USBINPROT-NMEA
+Page  238: UBX-CFG-PRT.inProtoMask                     CFG-USB-ENABLED
+Page  238: UBX-CFG-PRT.inRtcm3                         CFG-USBINPROT-RTCM3X
+Page  238: UBX-CFG-PRT.inUbx                           CFG-USBINPROT-UBX
+Page  238: UBX-CFG-PRT.outNmea                         CFG-USBOUTPROT-NMEA
+Page  238: UBX-CFG-PRT.outProtoMask                    CFG-USB-ENABLED
+Page  238: UBX-CFG-PRT.outUbx                          CFG-USBOUTPROT-UBX
+Page  239: UBX-CFG-USB
+Page  239: UBX-CFG-USB.powerConsumption                            CFG-USB-POWER
+Page  239: UBX-CFG-USB.powerMode                                   CFG-USB-SELFPOW
+Page  239: UBX-CFG-USB.productID                                   CFG-USB-PRODUCT_ID
+Page  239: UBX-CFG-USB.productString                               CFG-USB-PRODUCT_STR0, CFG-USB-PRODUCT_STR1,
+Page  239: CFG-USB-PRODUCT_STR2, CFG-USB-PRODUCT_STR3
+Page  239: UBX-CFG-USB.serialNumber                                CFG-USB-SERIAL_NO_STR0, CFG-USB-SERIAL_NO_STR1,
+Page  239: CFG-USB-SERIAL_NO_STR2, CFG-USB-SERIAL_NO_STR3
+Page  239: UBX-CFG-USB.vendorID                                    CFG-USB-VENDOR_ID
+Page  239: UBX-CFG-USB.vendorString                                CFG-USB-VENDOR_STR0, CFG-USB-VENDOR_STR1, CFG-
+Page  239: USB-VENDOR_STR2, CFG-USB-VENDOR_STR3
+Page  241: CFG-INFMSG-UBX_USB                                   0x20920004 X1          -      -              0x00
+Page  242: CFG-INFMSG-NMEA_USB                                  0x20920009 X1          -      -         0x07 (ERROR |
+Page  242: CFG-MSGOUT-NMEA_ID_DTM_USB                           0x209100a9 U1          -      -               0
+Page  242: CFG-MSGOUT-NMEA_ID_GBS_USB                           0x209100e0 U1          -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GGA_USB          0x209100bd U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GLL_USB          0x209100cc U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GNS_USB          0x209100b8 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GRS_USB          0x209100d1 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GSA_USB          0x209100c2 U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_GST_USB          0x209100d6 U1         -      -               0
+Page  243: CFG-MSGOUT-NMEA_ID_GSV_USB          0x209100c7 U1         -      -               1
+Page  243: CFG-MSGOUT-NMEA_ID_RLM_USB          0x20910403 U1         -      -               0
+Page  244: CFG-MSGOUT-NMEA_ID_RMC_USB            0x209100ae U1         -      -               1
+Page  244: CFG-MSGOUT-NMEA_ID_VLW_USB            0x209100ea U1         -      -               0
+Page  244: CFG-MSGOUT-NMEA_ID_VTG_USB            0x209100b3 U1         -      -               1
+Page  244: CFG-MSGOUT-NMEA_ID_ZDA_USB            0x209100db U1         -      -               0
+Page  244: CFG-MSGOUT-PUBX_ID_POLYP_USB          0x209100ef U1         -      -               0
+Page  244: CFG-MSGOUT-PUBX_ID_POLYS_USB          0x209100f4 U1         -      -               0
+Page  244: CFG-MSGOUT-PUBX_ID_POLYT_USB          0x209100f9 U1         -      -               0
+Page  244: CFG-MSGOUT-UBX_LOG_INFO_USB           0x2091025c U1         -      -               0
+Page  244: CFG-MSGOUT-UBX_MON_COMMS_USB          0x20910352 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW2_USB            0x209101bc U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW3_USB            0x20910357 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_HW_USB             0x209101b7 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_IO_USB             0x209101a8 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_MSGPP_USB          0x20910199 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RF_USB             0x2091035c U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RXBUF_USB          0x209101a3 U1         -      -               0
+Page  245: CFG-MSGOUT-UBX_MON_RXR_USB            0x2091018a U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_MON_SPAN_USB               0x2091038e U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_MON_TXBUF_USB              0x2091019e U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_AOPSTATUS_USB          0x2091007c U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_CLOCK_USB              0x20910068 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_COV_USB                0x20910086 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_DOP_USB                0x2091003b U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_EOE_USB                0x20910162 U1         -      -               0
+Page  246: CFG-MSGOUT-UBX_NAV_GEOFENCE_USB           0x209100a4 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_ODO_USB              0x20910081 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_ORB_USB              0x20910013 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_POSECEF_USB          0x20910027 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_POSLLH_USB           0x2091002c U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_PVT_USB              0x20910009 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SAT_USB              0x20910018 U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SBAS_USB             0x2091006d U1         -      -               0
+Page  247: CFG-MSGOUT-UBX_NAV_SIG_USB              0x20910348 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_SLAS_USB              0x20910339 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_STATUS_USB            0x2091001d U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEBDS_USB           0x20910054 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGAL_USB           0x20910059 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGLO_USB           0x2091004f U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEGPS_USB           0x2091004a U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMELS_USB            0x20910063 U1         -      -               0
+Page  248: CFG-MSGOUT-UBX_NAV_TIMEQZSS_USB          0x20910389 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_NAV_TIMEUTC_USB          0x2091005e U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_NAV_VELECEF_USB          0x20910040 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_NAV_VELNED_USB           0x20910045 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_MEASX_USB            0x20910207 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RAWX_USB             0x209102a7 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RLM_USB              0x20910261 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_RTCM_USB             0x2091026b U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_RXM_SFRBX_USB            0x20910234 U1         -      -               0
+Page  249: CFG-MSGOUT-UBX_TIM_TM2_USB              0x2091017b U1         -      -               0
+Page  250: CFG-MSGOUT-UBX_TIM_TP_USB                         0x20910180 U1          -       -                0
+Page  250: CFG-MSGOUT-UBX_TIM_VRFY_USB                       0x20910095 U1          -       -                0
+Page  255: CFG-USB-ENABLED                                    0x10650001    L        -      -            1 (true)
+Page  255: CFG-USB-SELFPOW                                    0x10650002    L        -      -            1 (true)
+Page  255: CFG-USB-VENDOR_ID                                  0x3065000a U2          -      -             5446
+Page  255: CFG-USB-PRODUCT_ID                                 0x3065000b U2          -      -              425
+Page  255: CFG-USB-POWER                                      0x3065000c U2          -     mA               0
+Page  255: CFG-USB-VENDOR_STR0                                0x5065000d X8          -      -      0x4120786f6c622d75
+Page  255: CFG-USB-VENDOR_STR1                                0x5065000e X8          -      -      0x2e777777202d2047
+Page  255: CFG-USB-VENDOR_STR2                                0x5065000f X8          -      -      0x632e786f6c622d75
+Page  256: CFG-USB-VENDOR_STR3                               0x50650010 X8          -      -      0x0000000000006d6f
+Page  256: CFG-USB-PRODUCT_STR0                              0x50650011 X8          -      -      0x4720786f6c622d75
+Page  256: CFG-USB-PRODUCT_STR1                              0x50650012 X8          -      -      0x656365722053534e
+Page  256: CFG-USB-PRODUCT_STR2                              0x50650013 X8          -      -      0x0000000072657669
+Page  256: CFG-USB-PRODUCT_STR3                              0x50650014 X8          -      -      0x0000000000000000
+Page  256: CFG-USB-SERIAL_NO_STR0                            0x50650015 X8          -      -      0x0000000000000000
+Page  256: CFG-USB-SERIAL_NO_STR1                            0x50650016 X8          -      -      0x0000000000000000
+Page  256: CFG-USB-SERIAL_NO_STR2                            0x50650017 X8          -      -      0x0000000000000000
+Page  256: CFG-USB-SERIAL_NO_STR3                            0x50650018 X8          -      -      0x0000000000000000
+Page  256: Table 105: CFG-USB conﬁguration defaults
+Page  256: CFG-USBINPROT-UBX                                 0x10770001    L        -      -            1 (true)
+Page  256: CFG-USBINPROT-NMEA                                0x10770002    L        -      -            1 (true)
+Page  256: CFG-USBINPROT-RTCM3X                              0x10770004    L        -      -            1 (true)
+Page  256: Table 106: CFG-USBINPROT conﬁguration defaults
+Page  256: CFG-USBOUTPROT-UBX                                0x10780001    L        -      -            1 (true)
+Page  256: CFG-USBOUTPROT-NMEA                               0x10780002    L        -      -            1 (true)
+Page  256: Table 107: CFG-USBOUTPROT conﬁguration defaults
