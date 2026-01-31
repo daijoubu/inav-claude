@@ -113,6 +113,14 @@ rules:
   # Deny Rules (Dangerous Patterns)
   # ===================================================================
 
+  - name: "Block Grep with limit parameter (wrong parameter name)"
+    tool_name_pattern: "^Grep$"
+    tool_input_patterns:
+      limit: ".*"
+    category: read
+    decision: deny
+    message: "ERROR: Grep tool does not support 'limit' parameter. Use 'head_limit' instead. The Read tool uses 'limit', but Grep uses 'head_limit'."
+
   - name: "Block git add -A"
     tool_name_pattern: "^Bash$"
     tool_input_patterns:
