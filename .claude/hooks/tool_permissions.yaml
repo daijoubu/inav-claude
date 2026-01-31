@@ -94,6 +94,34 @@ rules:
     decision: allow
     message: "/tmp access for temporary files, agents, and /tmp/claude-* temporary storage"
 
+  - name: "Warn on large Read operations (>100KB)"
+    tool_name_pattern: "^Read$"
+    tool_input_patterns:
+      file_path: ".*"
+    category: read
+    decision: allow
+    precondition_script: |
+      FILE_PATH="{file_path}"
+      # Expand ~ and resolve relative paths
+      FILE_PATH="${FILE_PATH/#\~/$HOME}"
+
+      # Get file size if it exists
+      if [ -f "$FILE_PATH" ]; then
+        SIZE=$(stat -f%z "$FILE_PATH" 2>/dev/null || stat -c%s "$FILE_PATH" 2>/dev/null || echo "0")
+        SIZE_KB=$((SIZE / 1024))
+
+        # If > 100KB (roughly 25K tokens), warn
+        if [ "$SIZE_KB" -gt 100 ]; then
+          echo "WARNING: File is ${SIZE_KB}KB which may exceed 25K token limit. Consider using offset/limit parameters (Read tool) or head_limit (Grep tool) to read portions, or use Grep to search for specific content."
+        else
+          echo "allow"
+        fi
+      else
+        # File doesn't exist, let it fail normally
+        echo "allow"
+      fi
+    message: "Read operation with file size warning"
+
   - name: "Allow read-only file operations"
     tool_name_pattern: "^(Read|Glob|Grep)$"
     category: read

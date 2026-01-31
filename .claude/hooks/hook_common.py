@@ -230,6 +230,38 @@ class RuleMatcher:
 
         for rule in rules:
             if self._matches_rule(tool_name, tool_input, rule):
+                # Check if rule has a precondition script
+                precondition_script = rule.get('precondition_script')
+
+                if precondition_script:
+                    # Evaluate precondition - it may return a decision or a warning message
+                    precondition_result = self._evaluate_tool_precondition(tool_input, precondition_script)
+
+                    if precondition_result:
+                        # Check if it's a warning message (starts with WARNING) or a decision
+                        if precondition_result.startswith('WARNING:'):
+                            # It's a warning message, use the rule's decision with the warning
+                            decision = rule.get('decision')
+                            message = precondition_result
+                            rule_name = rule.get('name', 'unnamed')
+                            category = rule.get('category', 'other')
+
+                            # If no decision specified, use category default
+                            if not decision:
+                                decision = self.config.get_default_decision(category)
+
+                            return decision, message, rule_name
+                        elif precondition_result in ['allow', 'deny', 'ask']:
+                            # It's a decision
+                            decision = precondition_result
+                            message = rule.get('message')
+                            rule_name = rule.get('name', 'unnamed')
+
+                            return decision, message, rule_name
+                    # If precondition failed/returned nothing, skip this rule and try next
+                    continue
+
+                # No precondition or precondition not used, apply rule normally
                 decision = rule.get('decision')
                 message = rule.get('message')
                 rule_name = rule.get('name', 'unnamed')
@@ -394,6 +426,55 @@ class RuleMatcher:
 
             # Validate output
             if output in ['allow', 'deny', 'ask']:
+                return output
+            else:
+                self.logger.log(f"Precondition script returned invalid value: {output}", 'warning')
+                return None
+
+        except subprocess.TimeoutExpired:
+            self.logger.log("Precondition script timed out", 'warning')
+            return None
+        except Exception as e:
+            self.logger.log(f"Precondition script error: {e}", 'error')
+            return None
+
+    def _evaluate_tool_precondition(self, tool_input: Dict[str, Any], precondition_script: str) -> Optional[str]:
+        """
+        Evaluate a precondition script for general tools.
+
+        Args:
+            tool_input: Tool input parameters
+            precondition_script: Bash script to execute
+
+        Returns:
+            "allow", "deny", "ask", a WARNING message, or None if script fails/returns invalid value
+        """
+        import subprocess
+
+        # Substitute variables in the script
+        script = precondition_script
+
+        # Replace all tool_input fields as variables
+        for key, value in tool_input.items():
+            placeholder = "{" + key + "}"
+            script = script.replace(placeholder, str(value))
+
+        try:
+            # Execute the script
+            result = subprocess.run(
+                ['bash', '-c', script],
+                capture_output=True,
+                text=True,
+                timeout=2,  # 2 second timeout for safety
+            )
+
+            output = result.stdout.strip()
+
+            # Check if it's a decision
+            if output.lower() in ['allow', 'deny', 'ask']:
+                return output.lower()
+            # Check if it's a warning message
+            elif output.startswith('WARNING:'):
                 return output
             else:
                 self.logger.log(f"Precondition script returned invalid value: {output}", 'warning')
