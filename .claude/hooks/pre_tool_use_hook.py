@@ -179,8 +179,12 @@ def handle_general_tool(tool_name: str, tool_input: Dict[str, Any], matcher: Rul
     else:  # allow
         output = HookOutputGenerator.generate_pretooluse_output(decision='allow')
         if message:
-            # For allow with a message, we can add it as additional context
-            output['additionalContext'] = message
+            # For allow with a WARNING message, add it as system_message to show to user
+            if message.startswith('WARNING:'):
+                output['systemMessage'] = message
+            else:
+                # For other messages, add as additional context
+                output['additionalContext'] = message
         return output
 
 
