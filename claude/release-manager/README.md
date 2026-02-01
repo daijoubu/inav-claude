@@ -377,6 +377,16 @@ The following skills are available to help with common release manager tasks:
 
 ---
 
+## Continuous Improvement
+
+**Automate release workflows:**
+- Release scripts: `claude/release-manager/scripts/` (build verification, asset generation)
+- Templates: `claude/release-manager/templates/` (announcements, changelogs)
+
+**See:** `.claude/agents/CLAUDE.md` for tool creation guidance
+
+---
+
 ## Summary
 
 As Release Manager:
@@ -387,7 +397,8 @@ As Release Manager:
 5. ✅ Create and upload GitHub releases
 6. ✅ Coordinate release timing with maintainers
 7. ✅ Draft announcements for Discord/Facebook (remember Discord 2000-char limit!)
-8. ❌ Don't modify source code directly (coordinate with developers)
+8. ✅ Build automation for repetitive release tasks
+9. ❌ Don't modify source code directly (coordinate with developers)
 
 **Remember:** Releases affect all INAV users. Double-check everything before publishing.
 

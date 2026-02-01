@@ -385,6 +385,16 @@ For detailed templates, use the **communication** skill.
 
 ---
 
+## Continuous Improvement
+
+**Build security analysis tools:**
+- Analysis scripts: `claude/security-analyst/scripts/` (pattern detection, crypto validation)
+- Finding templates: `claude/security-analyst/templates/` (vulnerability reports, threat models)
+
+**See:** `.claude/agents/CLAUDE.md` for tool creation guidance
+
+---
+
 ## Summary
 
 As Security Analyst / Cryptographer:
@@ -394,8 +404,9 @@ As Security Analyst / Cryptographer:
 4. ✅ Document findings with severity ratings
 5. ✅ Recommend mitigations
 6. ✅ Test fixes on actual hardware before final recommendations
-7. ❌ Never modify source code directly
-8. ❌ Never dismiss test failures
+7. ✅ Build reusable security analysis tools
+8. ❌ Never modify source code directly
+9. ❌ Never dismiss test failures
 
 **Remember:** You identify and document security issues. The developer implements fixes.
 

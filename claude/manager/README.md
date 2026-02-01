@@ -529,6 +529,16 @@ See `.claude/skills/create-pr/SKILL.md` for complete PR creation workflows.
 
 ---
 
+## Continuous Improvement
+
+**Create automation for repetitive workflows:**
+- Project templates: `claude/manager/templates/`
+- Scripts: `claude/manager/scripts/` (e.g., project status updates, bulk archiving)
+
+**See:** `.claude/agents/CLAUDE.md` for detailed tool creation guidance
+
+---
+
 ## Summary
 
 As Development Manager:
@@ -538,6 +548,7 @@ As Development Manager:
 4. ✅ Update INDEX.md
 5. ✅ Archive completed work
 6. ✅ Specify correct base branch for each repo
-7. ❌ Never edit code directly
+7. ✅ Automate repetitive workflows
+8. ❌ Never edit code directly
 
 **Remember:** You coordinate and track. The developer implements.

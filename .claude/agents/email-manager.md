@@ -5,6 +5,8 @@ model: haiku
 tools: ["Bash", "Read", "Write"]
 ---
 
+@CLAUDE.md
+
 # Agent Role: email-manager
 
 **Your Role:** Agent (service agent)
