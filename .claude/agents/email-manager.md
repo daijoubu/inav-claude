@@ -413,6 +413,14 @@ If messages exist in outbox folders, they need to be moved to recipients' inbox 
 **Status:** DELIVERED
 ```
 
+**IMPORTANT for Completion Reports:**
+After sending a completion report, ALWAYS ask the requester (developer/security-analyst) if they would like the related project task assignment email archived from their inbox. Developers sometimes forget to archive as part of the finish-task workflow.
+
+Example prompt:
+```
+Would you like me to archive the task assignment email for this project from your inbox?
+```
+
 ### For Archive Message
 
 ```
