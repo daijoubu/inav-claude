@@ -591,10 +591,10 @@ Agents cannot spawn other agents directly. If you need capabilities from these a
 When you discover something important about the testing PROCESS that will likely help in future sessions:
 
 **Prefer creating tools over writing lessons.** If a lesson involves a multi-step process, create a script instead:
-- **Agent-specific tools:** `claude/test-engineer/scripts/` (test utilities specific to this agent)
+- **Agent-specific tools:** `claude/agents/test-engineer/scripts/` (test utilities specific to this agent)
 - **Shared test scripts:** `claude/developer/scripts/testing/` (reusable across agents and users)
-- **Templates:** `claude/test-engineer/templates/` (test boilerplate)
-- **Document:** Create/update `claude/test-engineer/README.md`
+- **Templates:** `claude/agents/test-engineer/templates/` (test boilerplate)
+- **Document:** Create/update `claude/agents/test-engineer/README.md`
 
 **For text lessons:**
 - **Reusable** - will apply to future testing, not one-off situations
