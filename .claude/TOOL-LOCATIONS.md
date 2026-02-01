@@ -14,7 +14,7 @@ TEMPORARY → claude/developer/workspace/
 
 Is it specific to ONE agent or SHARED?
 
-AGENT-SPECIFIC → claude/<agent-name>/
+AGENT-SPECIFIC → claude/agents/<agent-name>/
 SHARED → Continue below
 
 What category?
@@ -35,7 +35,7 @@ OTHER → claude/developer/scripts/<category>/
 
 ### Agent-Specific Tools
 
-**Location:** `claude/<agent-name>/`
+**Location:** `claude/agents/<agent-name>/`
 
 **When to use:**
 - Tool is only useful for one specific agent
@@ -44,7 +44,7 @@ OTHER → claude/developer/scripts/<category>/
 
 **Structure:**
 ```
-claude/<agent-name>/
+claude/agents/<agent-name>/
 ├── scripts/      # Automation scripts
 ├── tools/        # Utility programs
 ├── data/         # Indexes, caches, reference data
@@ -106,7 +106,7 @@ claude/developer/scripts/
 ### Templates
 
 **Locations:**
-- `claude/<agent-name>/templates/` - Agent-specific
+- `claude/agents/<agent-name>/templates/` - Agent-specific
 - `claude/manager/templates/` - Project templates
 - `claude/release-manager/templates/` - Announcement templates
 - `claude/security-analyst/templates/` - Report templates
@@ -176,7 +176,7 @@ claude/developer/scripts/
 
 ### Agent README
 
-Create `claude/<agent-name>/README.md` for agent-specific tools:
+Create `claude/agents/<agent-name>/README.md` for agent-specific tools:
 
 ```markdown
 # <Agent Name> Tools
