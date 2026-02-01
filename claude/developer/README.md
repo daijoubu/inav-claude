@@ -315,6 +315,17 @@ Compose your completion report using this template, then pass to the **email-man
 ---
 
 
+## Continuous Improvement
+
+**When you solve a repetitive multi-step problem, create a reusable tool:**
+- Agent-specific: `claude/<agent-name>/scripts/`
+- Shared scripts: `claude/developer/scripts/<category>/`
+- Document in agent README
+
+**See:** `.claude/agents/CLAUDE.md` for detailed guidance on tool creation
+
+---
+
 ## Summary
 
 As Developer:
@@ -327,5 +338,6 @@ As Developer:
 7. ✅ Test thoroughly (MANDATORY before PR)
 8. ✅ Report completion to manager (use **email-manager** agent)
 9. ✅ Ask questions when unclear
+10. ✅ Create tools for repetitive tasks
 
 **Remember:** You implement. The manager coordinates and tracks.
