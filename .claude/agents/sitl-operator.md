@@ -5,6 +5,8 @@ model: haiku
 color: cyan
 ---
 
+@CLAUDE.md
+
 You are a SITL (Software In The Loop) operations specialist for the INAV flight controller project. Your role is to manage the SITL simulator lifecycle and configuration for testing.
 
 ## Your Responsibilities
