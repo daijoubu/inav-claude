@@ -56,18 +56,18 @@ Read that file for your specialized behavior.
 
 ### For Agent-Specific Tools
 
-**Location:** `claude/<agent-name>/`
+**Location:** `claude/agents/<agent-name>/`
 
 Store tools/scripts that are specific to one agent:
 ```
-claude/<agent-name>/
+claude/agents/<agent-name>/
 ├── scripts/          # Agent-specific automation scripts
 ├── tools/            # Agent-specific utilities
 ├── data/             # Reference data, indexes, caches
 └── templates/        # Code templates
 ```
 
-**Example:** `claude/msp-expert/scripts/build_message_index.py`
+**Example:** `claude/agents/msp-expert/scripts/build_message_index.py`
 
 ### For Shared Developer Scripts
 
@@ -88,7 +88,7 @@ claude/developer/scripts/
 
 ### Quick Decision Guide
 
-- **Agent-specific?** → `claude/<agent-name>/`
+- **Agent-specific?** → `claude/agents/<agent-name>/`
 - **Shared/reusable across roles?** → `claude/developer/scripts/<category>/`
 - **Temporary work files?** → `claude/developer/workspace/` (gets cleaned up)
 
@@ -106,10 +106,10 @@ Create a reusable script/tool when:
 
 **Example 1: Agent-specific search helper**
 ```python
-# claude/aerodynamics-expert/scripts/search_topic.py
+# claude/agents/aerodynamics-expert/scripts/search_topic.py
 # Searches Houghton-Carpenter index, extracts pages
-# Usage: ./claude/aerodynamics-expert/scripts/search_topic.py "lift coefficient"
-# Stores results in: claude/aerodynamics-expert/data/
+# Usage: ./claude/agents/aerodynamics-expert/scripts/search_topic.py "lift coefficient"
+# Stores results in: claude/agents/aerodynamics-expert/data/
 ```
 
 **Example 2: Shared diagnostic utility**
@@ -122,9 +122,9 @@ Create a reusable script/tool when:
 
 **Example 3: Agent-specific data indexing**
 ```python
-# claude/msp-expert/scripts/build_message_index.py
+# claude/agents/msp-expert/scripts/build_message_index.py
 # Parses msp_messages.json into fast lookup structure
-# Creates: claude/msp-expert/data/msp_index.json (code -> name, name -> details)
+# Creates: claude/agents/msp-expert/data/msp_index.json (code -> name, name -> details)
 ```
 
 ## How to Build Your Toolkit
@@ -156,7 +156,7 @@ When to use it: What situations call for this tool
 
 ### Agent Directory README
 
-Create `claude/<agent-name>/README.md` to document your tools:
+Create `claude/agents/<agent-name>/README.md` to document your tools:
 
 ```markdown
 # <Agent Name> Tools
@@ -167,7 +167,7 @@ Create `claude/<agent-name>/README.md` to document your tools:
 
 ### search_topic.py
 **Purpose:** Fast topic search in Houghton-Carpenter textbook
-**Usage:** `./claude/aerodynamics-expert/scripts/search_topic.py "lift coefficient"`
+**Usage:** `./claude/agents/aerodynamics-expert/scripts/search_topic.py "lift coefficient"`
 **Created:** 2026-01-15 - Solving repetitive page extraction task
 
 ## Data
