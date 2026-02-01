@@ -318,7 +318,7 @@ Compose your completion report using this template, then pass to the **email-man
 ## Continuous Improvement
 
 **When you solve a repetitive multi-step problem, create a reusable tool:**
-- Agent-specific: `claude/<agent-name>/scripts/`
+- Agent-specific: `claude/agents/<agent-name>/scripts/`
 - Shared scripts: `claude/developer/scripts/<category>/`
 - Document in agent README
 

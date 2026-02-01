@@ -114,10 +114,10 @@ Always include in your response:
 ## Self-Improvement: Lessons Learned
 
 **Prefer creating tools over writing lessons.** If a lesson involves a multi-step process, create a script instead:
-- **Agent-specific tools:** `claude/<agent-name>/scripts/` (tools specific to this agent)
+- **Agent-specific tools:** `claude/agents/<agent-name>/scripts/` (tools specific to this agent)
 - **Shared scripts:** `claude/developer/scripts/<category>/` (reusable across agents and users)
-- **Templates:** `claude/<agent-name>/templates/` (boilerplate code/documents)
-- **Document:** Create/update `claude/<agent-name>/README.md`
+- **Templates:** `claude/agents/<agent-name>/templates/` (boilerplate code/documents)
+- **Document:** Create/update `claude/agents/<agent-name>/README.md`
 
 **For text lessons** - when you discover something important about [AGENT'S DOMAIN] that will help in future sessions, add it here. Only add insights that are:
 - **Reusable** - will apply to future [operations], not one-off situations
