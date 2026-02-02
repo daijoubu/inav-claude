@@ -205,6 +205,14 @@ rules:
     category: write
     decision: allow
 
+  - name: "Allow edits to wasm_pg_runtime.c"
+    tool_name_pattern: "^(Write|Edit)$"
+    tool_input_patterns:
+      file_path: ".*wasm_pg_runtime\\.c$"
+    category: write
+    decision: allow
+    message: "WASM runtime file modification allowed - active development"
+
   # ===================================================================
   # Ask Rules (File Modifications)
   # ===================================================================
