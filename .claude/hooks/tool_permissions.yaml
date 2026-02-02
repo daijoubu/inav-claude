@@ -414,6 +414,19 @@ bash_rules:
     category: other
     decision: allow
 
+  - name: "Allow WASM SITL build scripts"
+    command_pattern: ".*(build_sitl_wasm\\.sh|copy-wasm-to-configurator\\.js)$"
+    category: other
+    decision: allow
+    message: "WASM SITL build script execution for development"
+
+  - name: "Allow WASM SITL output copy"
+    command_pattern: "^cp$"
+    argument_pattern: ".*inav/build_sitl_wasm/bin/SITL\\.(wasm|elf|wasm\\.map).*inav-configurator/resources/sitl/.*"
+    category: write
+    decision: allow
+    message: "Copy WASM SITL artifacts to configurator resources directory"
+
   - name: "Allow parameter group analysis scripts"
     command_pattern: "^bash$"
     argument_pattern: ".*\\.github/scripts/(extract-pg-sizes-nm|check-pg-struct-sizes)\\.sh.*"
