@@ -428,9 +428,9 @@ bash_rules:
     decision: allow
     message: "WASM SITL build script execution for development"
 
-  - name: "Allow WASM SITL output copy"
+  - name: "Allow WASM SITL output copy (build_SITL to resources/sitl)"
     command_pattern: "^cp$"
-    argument_pattern: ".*inav/build_sitl_wasm/bin/SITL\\.(wasm|elf|wasm\\.map).*inav-configurator/resources/sitl/.*"
+    argument_pattern: ".*(build_SITL/bin/SITL\\.(elf|wasm|wasm\\.map)|inav-configurator/resources/sitl/).*"
     category: write
     decision: allow
     message: "Copy WASM SITL artifacts to configurator resources directory"
