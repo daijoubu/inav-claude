@@ -407,6 +407,13 @@ bash_rules:
     decision: allow
     message: "Safe file operations allowed for /tmp/ and /tmp/claude-* directories"
 
+  - name: "Allow rm of ninja build cache files"
+    command_pattern: "^rm$"
+    argument_pattern: "^-f (build\\.ninja|\\./?\\.ninja_(deps|log)).*"
+    category: write
+    decision: allow
+    message: "Safe ninja build cache cleanup - build.ninja, .ninja_deps, .ninja_log"
+
   # ===================================================================
   # Dangerous Recursive Operations
   # ===================================================================
