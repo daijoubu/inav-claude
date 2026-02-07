@@ -295,6 +295,14 @@ bash_rules:
     decision: deny
     message: "STOP! IMPORTANT: Do NOT force push! That will break public history!"
 
+  # Git read operations with GIT_PAGER environment variable
+  - name: "Allow GIT_PAGER=cat git log commands"
+    command_pattern: "^(GIT_PAGER=cat\\s+)?git$"
+    argument_pattern: "^(-C\\s+\\S+\\s+)?(log|show).*"
+    category: read
+    decision: allow
+    message: "GIT_PAGER=cat prevents pager from blocking output"
+
   # Git read operations (safe)
   - name: "Allow git read operations"
     command_pattern: "^git$"
