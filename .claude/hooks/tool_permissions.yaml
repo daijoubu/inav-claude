@@ -460,6 +460,13 @@ bash_rules:
     decision: allow
     message: "WASM SITL build script execution for development"
 
+  - name: "Allow node copy-wasm-to-configurator.js"
+    command_pattern: "^node$"
+    argument_pattern: ".*copy-wasm-to-configurator\\.js.*"
+    category: other
+    decision: allow
+    message: "Node.js script to copy WASM SITL artifacts to configurator resources"
+
   - name: "Allow WASM SITL output copy (build_SITL to resources/sitl)"
     command_pattern: "^cp$"
     argument_pattern: ".*(build_SITL/bin/SITL\\.(elf|wasm|wasm\\.map)|inav-configurator/resources/sitl/).*"
