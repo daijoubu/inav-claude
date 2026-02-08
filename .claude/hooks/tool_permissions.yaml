@@ -454,6 +454,13 @@ bash_rules:
     category: other
     decision: allow
 
+  - name: "Allow fetch-next-pr.sh triage script with any arguments"
+    command_pattern: "^bash$"
+    argument_pattern: ".*/claude/developer/scripts/triage/fetch-next-pr\\.sh.*"
+    category: other
+    decision: allow
+    message: "PR triage script - fetches next unassigned PR for milestone assignment"
+
   - name: "Allow WASM SITL build scripts"
     command_pattern: ".*(build_sitl_wasm\\.sh|copy-wasm-to-configurator\\.js)$"
     category: other
