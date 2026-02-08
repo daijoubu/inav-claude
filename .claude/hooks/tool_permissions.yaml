@@ -295,6 +295,13 @@ bash_rules:
     decision: deny
     message: "STOP! IMPORTANT: Do NOT force push! That will break public history!"
 
+  - name: "Block branch creation in root inavflight/ repo"
+    command_pattern: "^git$"
+    argument_pattern: "^(-C\\s+\\S+\\s+)?((checkout\\s+-b)|(branch\\s+(?!-[a-z]*l|--list))|(switch\\s+(-c|--create))).*"
+    category: write
+    decision: deny
+    message: "Branch creation blocked in root inavflight/ repo. Branches should be created in the appropriate project repo instead: inav/, inav-configurator/, PrivacyLRS/, or mspapi2/."
+
   # Git read operations with GIT_PAGER environment variable
   # Note: The bash parser splits "GIT_PAGER=cat git log" into command="GIT_PAGER=cat" and arguments="git log ..."
   # so we need TWO rules to handle both cases
