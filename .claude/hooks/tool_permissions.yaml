@@ -281,12 +281,44 @@ bash_rules:
     decision: deny
     message: "STOP! IMPORTANT: Do NOT run 'git add -A'. Add the specific files you actually want."
 
-  - name: "Block git push to maintenance/master"
+  - name: "Allow git push to master in root inavflight/ repo only"
     command_pattern: "^git$"
-    argument_pattern: "^(-C\\s+\\S+\\s+)?push.*(maintenance|master).*"
+    argument_pattern: "^(-C\\s+\\S+\\s+)?push.*(master|main).*"
+    category: write
+    decision: allow
+    precondition_script: |
+      # Allow push to master ONLY in root inavflight/ repo, not in sub-repos
+      # The script runs in the working directory where the git command would execute
+      # Root repo path ends with /inavflight or /inavflight/
+      # Sub-repo paths contain /inav/, /inav-configurator/, /PrivacyLRS/, /mspapi2/, /inavwiki/
+
+      # Get the current working directory (pwd is executed in the cwd passed to subprocess.run)
+      ABS_CWD=$(pwd)
+
+      if [ -z "$ABS_CWD" ]; then
+        # Can't determine path, deny for safety
+        echo "deny"
+        exit 0
+      fi
+
+      # Check if we're in the root inavflight repo (no sub-repo in path)
+      # Root repo path should NOT be /path/to/inav, /path/to/inav-configurator, etc.
+      # We check if the path contains /(dirname)/ or ends with /(dirname)
+      if echo "$ABS_CWD" | grep -qE "/(inav|inav-configurator|PrivacyLRS|mspapi2|inavwiki)(/|$)"; then
+        # We're in a sub-repo, deny this push
+        echo "deny"
+      else
+        # We're in root or other safe location, allow
+        echo "allow"
+      fi
+    message: "Push to master/main allowed for root inavflight/ repo only. Use feature branches for inav/, inav-configurator/, and other sub-repos."
+
+  - name: "Block git push to maintenance/master in sub-repos"
+    command_pattern: "^git$"
+    argument_pattern: "^(-C\\s+\\S+\\s+)?push.*(maintenance|master|main).*"
     category: write
     decision: deny
-    message: "STOP! IMPORTANT: Do NOT push to a version branch (maintenance-9.x, maintenance-10.x) or to master (except for inavwiki). Use your create-pr skill with a feature branch."
+    message: "STOP! IMPORTANT: Do NOT push to a version branch (maintenance-9.x, maintenance-10.x) or to master/main in sub-repos. Use your create-pr skill with a feature branch."
 
   - name: "Block git force push"
     command_pattern: "^git$"
