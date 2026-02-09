@@ -284,6 +284,7 @@ class RuleMatcher:
 
         Args:
             command: Bash command string
+            cwd: Working directory where command would execute
 
         Returns:
             List of dicts with keys: subcommand, decision, message, rule_name, category
@@ -302,7 +303,8 @@ class RuleMatcher:
 
                     if precondition_script:
                         # Evaluate precondition - it returns a decision directly
-                        precondition_result = self._evaluate_precondition(parsed_cmd, precondition_script, cwd)
+                        # Pass the full original command so precondition can check for cd commands
+                        precondition_result = self._evaluate_precondition(parsed_cmd, precondition_script, cwd, full_command=command)
 
                         if precondition_result:
                             # Precondition returned a valid decision, use it
@@ -392,7 +394,7 @@ class RuleMatcher:
 
         return True
 
-    def _evaluate_precondition(self, parsed_cmd: ParsedCommand, precondition_script: str, cwd: Optional[str] = None) -> Optional[str]:
+    def _evaluate_precondition(self, parsed_cmd: ParsedCommand, precondition_script: str, cwd: Optional[str] = None, full_command: Optional[str] = None) -> Optional[str]:
         """
         Evaluate a bash precondition script.
 
@@ -400,6 +402,7 @@ class RuleMatcher:
             parsed_cmd: Parsed command
             precondition_script: Bash script to execute
             cwd: Working directory where the tool would execute (for path resolution)
+            full_command: The complete original command string (before parsing into subcommands)
 
         Returns:
             "allow", "deny", "ask", or None if script fails/returns invalid value
@@ -411,6 +414,9 @@ class RuleMatcher:
         script = precondition_script.replace('{COMMAND}', parsed_cmd.command)
         script = script.replace('{ARGS}', parsed_cmd.arguments)
         script = script.replace('{FULL_COMMAND}', parsed_cmd.raw)
+        # Add the original full command string (before parsing) for preconditions that need it
+        if full_command:
+            script = script.replace('{ORIGINAL_COMMAND}', full_command)
 
         try:
             # Execute the script in the same working directory as where the tool would run

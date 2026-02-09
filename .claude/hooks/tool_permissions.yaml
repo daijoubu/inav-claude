@@ -335,13 +335,26 @@ bash_rules:
     precondition_script: |
       # Allow branch creation in sub-repos (inav, inav-configurator, PrivacyLRS, mspapi2, inavwiki)
       # Block branch creation ONLY in the root inavflight/ repo
-      # The script runs in the working directory where the git command would execute
+      #
+      # The precondition_script needs to handle two cases:
+      # 1. Direct commands: git branch -b feature (check pwd)
+      # 2. Chained commands: cd /path/to/inav && git branch -b feature (check {ORIGINAL_COMMAND} for cd)
 
       ABS_CWD=$(pwd)
 
       if [ -z "$ABS_CWD" ]; then
         # Can't determine path, deny for safety
         echo "deny"
+        exit 0
+      fi
+
+      # Check if the ORIGINAL_COMMAND contains a cd to a sub-repo
+      # Pattern: cd ... /inav, /inav-configurator, /PrivacyLRS, /mspapi2, or /inavwiki
+      # This handles cases like: cd /home/.../inav && git branch -b feature
+      ORIGINAL_CMD="{ORIGINAL_COMMAND}"
+      if [ -n "$ORIGINAL_CMD" ] && echo "$ORIGINAL_CMD" | grep -qE "cd\\s+[^&|;]*/(inav|inav-configurator|PrivacyLRS|mspapi2|inavwiki)(/|$|\\s+)"; then
+        # The original command contains a cd into a sub-repo, allow branch creation
+        echo "allow"
         exit 0
       fi
 
