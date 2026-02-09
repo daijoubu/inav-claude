@@ -329,7 +329,7 @@ bash_rules:
 
   - name: "Block branch creation in root inavflight/ repo"
     command_pattern: "^git$"
-    argument_pattern: "^(-C\\s+\\S+\\s+)?((checkout\\s+-b)|(branch\\s+(?!-[a-z]*l|--list))|(switch\\s+(-c|--create))).*"
+    argument_pattern: "^(-C\\s+\\S+\\s+)?((checkout\\s+-b)|(branch\\s+(?!-[a-z]*(-|l|a|r|v|d|m|n|s|t|show|list|all|remotes|verbose|delete|merged|no-merged|show-current|track)))|(switch\\s+(-c|--create))).*"
     category: write
     decision: deny
     precondition_script: |
