@@ -332,6 +332,27 @@ bash_rules:
     argument_pattern: "^(-C\\s+\\S+\\s+)?((checkout\\s+-b)|(branch\\s+(?!-[a-z]*l|--list))|(switch\\s+(-c|--create))).*"
     category: write
     decision: deny
+    precondition_script: |
+      # Allow branch creation in sub-repos (inav, inav-configurator, PrivacyLRS, mspapi2, inavwiki)
+      # Block branch creation ONLY in the root inavflight/ repo
+      # The script runs in the working directory where the git command would execute
+
+      ABS_CWD=$(pwd)
+
+      if [ -z "$ABS_CWD" ]; then
+        # Can't determine path, deny for safety
+        echo "deny"
+        exit 0
+      fi
+
+      # Check if we're in a sub-repo (contains /inav/, /inav-configurator/, /PrivacyLRS/, /mspapi2/, or /inavwiki/)
+      if echo "$ABS_CWD" | grep -qE "/(inav|inav-configurator|PrivacyLRS|mspapi2|inavwiki)(/|$)"; then
+        # We're in a sub-repo, allow branch creation here
+        echo "allow"
+      else
+        # We're in root inavflight/ repo, deny branch creation
+        echo "deny"
+      fi
     message: "Branch creation blocked in root inavflight/ repo. Branches should be created in the appropriate project repo instead: inav/, inav-configurator/, PrivacyLRS/, or mspapi2/."
 
   # Git read operations with GIT_PAGER environment variable
