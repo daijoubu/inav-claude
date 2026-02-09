@@ -482,7 +482,7 @@ bash_rules:
     command_pattern: "^(rm|mv|cp)$"
     argument_pattern: ".*-r.*"
     category: write
-    decision: deny
+    decision: ask
     message: "Recursive file operations require manual approval"
 
   # ===================================================================
