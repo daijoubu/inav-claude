@@ -40,7 +40,7 @@ This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKE
 
 ## Active Projects
 
-*No active projects.*
+*No active projects at this time.*
 
 ---
 
@@ -48,8 +48,8 @@ This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKE
 
 All completed and cancelled projects have been archived for reference.
 
-**Total Completed:** 76 projects
-**Total Cancelled:** 4 projects
+**Total Completed:** 90 projects
+**Total Cancelled:** 5 projects
 
 **See:** [COMPLETED_PROJECTS.md](COMPLETED_PROJECTS.md) for full archive
 

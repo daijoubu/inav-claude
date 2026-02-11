@@ -2,9 +2,29 @@
 
 Completed (✅) and cancelled (❌) projects.
 
-**Total Completed:** 89 | **Total Cancelled:** 4
+**Total Completed:** 90 | **Total Cancelled:** 5
 
 > **Active projects:** See [../INDEX.md](../INDEX.md)
+
+---
+
+### ✅ hitl-test-plan-libcanard (2026-02-11)
+
+**Status:** COMPLETED
+**Type:** Investigation / Test Planning
+**Priority:** HIGH
+**Assignee:** Developer
+
+Created comprehensive HITL test plan for DroneCAN/libcanard branch with 29 test cases covering GPS, battery monitor, integration, performance, and error handling.
+
+**Deliverable:** `completed/hitl-test-plan-libcanard/HITL-TEST-PLAN.md`
+**Related PR:** [#11313](https://github.com/iNavFlight/inav/pull/11313)
+
+---
+
+### ❌ test-new-project (2026-02-11)
+
+**Cancelled:** Workflow test complete - served its purpose as a demonstration
 
 ---
 

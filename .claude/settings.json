@@ -1,5 +1,8 @@
 {
-  "apiKeyHelper": "~/.claude/anthropic_key.sh",
+  "model": "claude-opus-4-5",
+  "env": {
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "claude-opus-4-5-20251101"
+  },
   "sandbox": {
     "_excludedCommands_disabled": ["git"],
     "filesystem": {
