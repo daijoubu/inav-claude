@@ -2,9 +2,74 @@
 
 Completed (✅) and cancelled (❌) projects.
 
-**Total Completed:** 86 | **Total Cancelled:** 4
+**Total Completed:** 89 | **Total Cancelled:** 4
 
 > **Active projects:** See [../INDEX.md](../INDEX.md)
+
+---
+
+### ✅ collaborate-dronecan-pr11313
+
+**Status:** COMPLETED (2026-02-11)
+**Type:** Feature (Collaboration)
+**Priority:** MEDIUM-HIGH
+**Created:** 2026-02-11
+**Completed:** 2026-02-11
+**Assignee:** Developer
+**PR:** [#11313](https://github.com/iNavFlight/inav/pull/11313)
+**Issue:** [#11128](https://github.com/iNavFlight/inav/issues/11128)
+
+Collaborated with @daijoubu on DroneCAN/libcanard PR. Contributed CAN current sensor integration and comprehensive documentation.
+
+**Commits pushed:**
+- `f54bb4d4e` - Add DroneCAN current sensor support to battery system
+- `7fb2567f0` - Add DroneCAN documentation
+
+**Files changed:**
+- `src/main/sensors/battery_config_structs.h` - Added CURRENT_SENSOR_CAN enum
+- `src/main/sensors/battery.c` - Added CAN current sensor handler
+- `src/main/fc/settings.yaml` - Added CAN to current meter options
+- `docs/DroneCAN.md` - New comprehensive guide
+- `docs/Battery.md` - Updated sensor type table
+
+**Deferred:** Parameter get/set protocol (follow-up work)
+
+---
+
+### ✅ fix-crsf-msp-overflow-11209
+
+**Status:** COMPLETED (2026-02-11) - Already fixed upstream
+**Type:** Bug Fix (Security)
+**Priority:** HIGH
+**Created:** 2026-02-11
+**Completed:** 2026-02-11
+**Assignee:** Developer
+**Issue:** [#11209](https://github.com/iNavFlight/inav/issues/11209)
+**Upstream PR:** [#11210](https://github.com/iNavFlight/inav/pull/11210) (already merged)
+
+Integer overflow vulnerability in CRSF MSP handling. Investigation revealed the fix was already merged upstream via PR #11210. The bounds check `if (crsfFrame.frame.frameLength >= 4)` is present in maintenance-9.x at `src/main/rx/crsf.c:181`.
+
+**No code changes needed** - verified fix exists in current codebase.
+
+---
+
+### ✅ test-dronecan-libcanard
+
+**Status:** COMPLETED (2026-02-11)
+**Type:** Testing / Test Development
+**Priority:** HIGH
+**Created:** 2026-02-10
+**Completed:** 2026-02-11
+**Assignee:** Developer
+**PR:** [#11313](https://github.com/iNavFlight/inav/pull/11313)
+**Branch:** `add-libcanard`
+
+Added 44 unit tests for DroneCAN/libcanard: 14 DSDL message tests (Fix2, Fix v1, Auxiliary, NodeStatus, BatteryInfo with boundary values and enum coverage) and 30 libcanard core tests (init, memory pool, CRC-16/CCITT, float16, transfer ID, DLC conversion, single/multi-frame TX, RX processing). All 81 CI tests pass. CAN driver and SITL integration tests not feasible (hardware-dependent, DroneCAN compiled out in SITL).
+
+**Files:**
+- `src/test/unit/dronecan_messages_unittest.cc` - 14 DSDL message tests
+- `src/test/unit/canard_unittest.cc` - 30 libcanard core tests (new)
+- `src/test/unit/CMakeLists.txt` - Build config for both test targets
 
 ---
 
