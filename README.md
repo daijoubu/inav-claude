@@ -12,7 +12,7 @@ This repository provides a structured workflow for using Claude Code to develop 
 ### 1. Clone This Repository
 
 ```bash
-git clone git@github.com:sensei-hacker/inav-claude.git
+git clone git@github.com:daijoubu/inav-claude.git
 cd inav-claude
 ```
 
@@ -22,12 +22,12 @@ This workflow requires the INAV firmware, configurator, and mspapi2 repositories
 
 ```bash
 # Clone INAV firmware
-git clone git@github.com:sensei-hacker/inav_unofficial_targets.git inav
+git clone git@github.com:daijoubu/inav.git inav
 # Or use the official repo:
 # git clone https://github.com/iNavFlight/inav.git inav
 
 # Clone INAV configurator
-git clone git@github.com:sensei-hacker/inav-configurator.git inav-configurator
+git clone git@github.com:daijoubu/inav-configurator.git inav-configurator
 # Or use the official repo:
 # git clone https://github.com/iNavFlight/inav-configurator.git inav-configurator
 
@@ -91,13 +91,13 @@ See `COMMUNICATION.md` for detailed message formats and workflows.
 This workflow is designed to work with three separate repositories:
 
 ### inav/
-- **Your fork:** https://github.com/sensei-hacker/inav_unofficial_targets
+- **Your fork:** https://github.com/daijoubu/inav
 - **Official upstream:** https://github.com/iNavFlight/inav
 - **Description:** INAV flight controller firmware (C/C99, embedded systems)
 - **License:** GPL
 
 ### inav-configurator/
-- **Your fork:** https://github.com/sensei-hacker/inav-configurator
+- **Your fork:** https://github.com/daijoubu/inav-configurator
 - **Official upstream:** https://github.com/iNavFlight/inav-configurator
 - **Description:** Desktop configuration GUI (JavaScript/Electron)
 - **License:** GPL
