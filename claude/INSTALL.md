@@ -2,65 +2,52 @@
 
 Welcome! This guide will help you set up the Claude workspace for INAV development.
 
-## First-Time Setup
+## Setup
 
-### Option 1: Fresh Start (Recommended for New Users)
-
-Start with clean project and email directories, keeping only the examples as reference.
+Just run:
 
 ```bash
-./claude/install.sh fresh
+./claude/install.sh
 ```
 
-This will:
-- Clear `projects/active/`, `projects/backburner/`
-- Clear all email directories (`inbox/`, `sent/`, etc.)
-- Keep `projects/completed/` (historical reference)
-- Keep `examples/` (templates and references)
-- Create necessary directory structure
+The script automatically detects whether this is a first-time setup or a working installation:
 
-### Option 2: Continue with Existing Data
+- **First-time clone from GitHub** — Automatically clears the previous owner's projects, emails, and INDEX.md so you start clean. No arguments needed.
+- **Already set up** — Defaults to `continue` (verify directories, show capabilities). Your projects and emails are protected.
+- **Ambiguous state** — Asks you to choose `fresh` or `continue`.
 
-Keep all existing projects and emails from the previous owner (sensei-hacker).
+If you explicitly pass `fresh` on a working installation, the script lists your active projects and requires you to type `yes` to confirm.
+
+### What "fresh" clears
+
+- `projects/active/`, `projects/backburner/` directories
+- `projects/INDEX.md` (reset to empty template)
+- All email directories (`inbox/`, `sent/`, etc.)
+- Developer workspace and lock files
+
+### What is always kept
+
+- `projects/completed/` (historical reference)
+- `examples/` (templates)
+
+### Manual setup
+
+If you prefer to do it by hand:
 
 ```bash
-./claude/install.sh continue
+# Clear previous owner's projects and index
+rm -rf claude/projects/active/* claude/projects/backburner/*
+# Edit claude/projects/INDEX.md — remove entries under "## Active Projects"
+
+# Clear emails
+rm -rf claude/*/email/inbox/* claude/*/email/sent/*
+
+# Create directory structure
+mkdir -p claude/projects/{active,backburner,completed}
+mkdir -p claude/{manager,developer,release-manager,security-analyst}/email/{inbox,sent,outbox,inbox-archive}
+mkdir -p claude/developer/workspace
+mkdir -p claude/locks
 ```
-
-This will:
-- Keep all existing projects and their history
-- Keep all existing emails
-- Just verify directory structure exists
-
-### Option 3: Manual Setup
-
-If you prefer to set up manually:
-
-1. **Review existing content:**
-   ```bash
-   ls claude/projects/active/
-   ls claude/projects/completed/
-   ls claude/manager/email/inbox/
-   ```
-
-2. **Clear what you don't need:**
-   ```bash
-   # Clear active projects (keep completed for reference)
-   rm -rf claude/projects/active/*
-   rm -rf claude/projects/backburner/*
-
-   # Clear emails
-   rm -rf claude/*/email/inbox/*
-   rm -rf claude/*/email/sent/*
-   ```
-
-3. **Create directory structure:**
-   ```bash
-   mkdir -p claude/projects/{active,backburner,completed}
-   mkdir -p claude/{manager,developer,release-manager,security-analyst}/email/{inbox,sent,outbox,inbox-archive}
-   mkdir -p claude/developer/workspace
-   mkdir -p claude/locks
-   ```
 
 ## Directory Structure
 
@@ -90,20 +77,35 @@ claude/
 
 ## Next Steps
 
-1. **Choose your role:**
-   - Manager: Read `claude/manager/README.md`
-   - Developer: Read `claude/developer/README.md`
-   - Release Manager: Read `claude/release-manager/README.md`
-   - Security Analyst: Read `claude/security-analyst/README.md`
+The install script prints all available roles, skills, and agents when it finishes. You can also discover them at any time:
 
-2. **Review examples:**
-   - Project templates: `claude/examples/projects/`
-   - Email templates: `claude/examples/emails/`
+```bash
+# List roles (each has a README.md)
+ls -d claude/*/README.md
 
-3. **Start working:**
-   - Use `/start-task` skill to begin new tasks
-   - Use `/finish-task` skill to complete tasks
-   - Use `/email` skill to communicate between roles
+# List skills (invoke with /skill-name)
+ls .claude/skills/
+
+# List agents (launched automatically by Claude as needed)
+ls .claude/agents/*.md
+```
+
+### Workflow overview
+
+1. **User** tells Claude which role to take (manager or developer)
+2. **Manager** creates tasks and sends them to the developer via internal email
+3. **Developer** picks up assignments, implements changes, and reports back
+4. **Manager** reviews reports, updates tracking, and assigns the next task
+
+The **permissions-manager** agent controls which commands Claude runs automatically vs. which require user approval.
+
+Ask Claude any questions about how these roles interact or how to customize the setup.
+
+### Getting started
+
+1. **Choose your role** and read its guide (`claude/<role>/README.md`)
+2. **Review examples** in `claude/examples/` for project and email templates
+3. **Use `/start-task`** to begin your first task
 
 ## Troubleshooting
 
