@@ -40,10 +40,10 @@ This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKE
 
 ## Active Projects (2 projects)
 
-### 📋 investigate-dronecan-sitl 📝
+### 📋 investigate-dronecan-sitl ✉️
 
 **Status:** TODO | **Type:** Investigation | **Priority:** MEDIUM
-**Created:** 2026-02-12
+**Created:** 2026-02-12 | **Assignee:** Developer
 
 Investigate how to enable DroneCAN testing in SITL. Currently excluded due to libcanard platform driver limitations.
 
