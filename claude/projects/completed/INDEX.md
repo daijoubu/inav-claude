@@ -2,9 +2,27 @@
 
 Completed (✅) and cancelled (❌) projects.
 
-**Total Completed:** 93 | **Total Cancelled:** 5
+**Total Completed:** 94 | **Total Cancelled:** 5
 
 > **Active projects:** See [../INDEX.md](../INDEX.md)
+
+---
+
+### ✅ investigate-dronecan-sitl (2026-02-12)
+
+**Status:** COMPLETED
+**Type:** Investigation
+**Priority:** MEDIUM
+**Assignee:** Developer
+
+Comprehensive investigation of DroneCAN SITL testing support. Analyzed root cause of SITL exclusion, evaluated 3 solution options, and recommended hybrid approach (SocketCAN + stub fallback). Effort estimate for Phase 2: 16 hours.
+
+**Deliverables:**
+- `RESEARCH-FINDINGS.md` - Architecture analysis
+- `SOLUTION-OPTIONS.md` - Option evaluation
+- `RECOMMENDATION.md` - Implementation plan
+
+**Recommendation:** Implement SocketCAN driver with stub fallback for non-Linux platforms
 
 ---
 
