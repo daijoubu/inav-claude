@@ -3,7 +3,7 @@
 This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKED).
 
 **Last Updated:** 2026-02-12
-**Total Active:** 1 | **In Progress:** 0 | **Todo:** 1 | **Blocked:** 2 | **Backburner:** 5
+**Total Active:** 1 | **In Progress:** 0 | **Todo:** 1 | **Blocked:** 0 | **Backburner:** 5
 
 > **Completed projects:** See [completed/INDEX.md](completed/INDEX.md)
 > **Blocked projects:** See [blocked/INDEX.md](blocked/INDEX.md)
@@ -57,7 +57,7 @@ Move dsdlc_generated files out of git and generate during build via submodule.
 - **Total Active Projects:** 1
 - **Currently TODO:** 1
 - **Currently In Progress:** 0
-- **Blocked:** 2 (see [blocked/INDEX.md](blocked/INDEX.md))
+- **Blocked:** 0 (see [blocked/INDEX.md](blocked/INDEX.md))
 - **Backburner:** 5 (see [backburner/INDEX.md](backburner/INDEX.md))
 - **Completed:** 98+ (see [completed/INDEX.md](completed/INDEX.md))
 
