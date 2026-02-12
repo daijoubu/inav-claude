@@ -2,11 +2,12 @@
 
 This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKED).
 
-**Last Updated:** 2026-02-11
-**Active:** 1 | **Backburner:** 4 | **Blocked:** 2
+**Last Updated:** 2026-02-12
+**Total Active:** 1 | **In Progress:** 0 | **Todo:** 1 | **Blocked:** 2 | **Backburner:** 5
 
 > **Completed projects:** See [completed/INDEX.md](completed/INDEX.md)
-> **Blocked projects:** See `blocked/` directory
+> **Blocked projects:** See [blocked/INDEX.md](blocked/INDEX.md)
+> **Backburner projects:** See [backburner/INDEX.md](backburner/INDEX.md)
 >
 > **When completing a project:**
 > 1. Move directory from `active/` to `completed/`
@@ -30,7 +31,6 @@ This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKE
 | ⏸️ **BACKBURNER** | Paused, will resume later (internal decision) |
 | ❌ **CANCELLED** | Abandoned, not pursuing |
 
-
 | Indicator | Meaning |
 |-----------|---------|
 | ✉️ **Assigned** | Developer has been notified via email |
@@ -38,17 +38,28 @@ This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKE
 
 ---
 
-## Active Projects
+## Active Projects (1 project)
 
 ### 📋 dsdlc-submodule-generation ✉️
 
-**Status:** TODO | **Type:** Refactoring | **Priority:** MEDIUM
+**Status:** TODO | **Type:** Refactoring / Build System | **Priority:** MEDIUM
 **Created:** 2026-02-11 | **Assignee:** Developer
 
 Move dsdlc_generated files out of git and generate during build via submodule.
 
 **Directory:** `active/dsdlc-submodule-generation/`
-**PR:** [#11313](https://github.com/iNavFlight/inav/pull/11313) (Qodo issue #1)
+**PR:** [#11313](https://github.com/iNavFlight/inav/pull/11313)
+
+---
+
+## Summary
+
+- **Total Active Projects:** 1
+- **Currently TODO:** 1
+- **Currently In Progress:** 0
+- **Blocked:** 2 (see [blocked/INDEX.md](blocked/INDEX.md))
+- **Backburner:** 5 (see [backburner/INDEX.md](backburner/INDEX.md))
+- **Completed:** 98+ (see [completed/INDEX.md](completed/INDEX.md))
 
 ---
 
@@ -56,11 +67,4 @@ Move dsdlc_generated files out of git and generate during build via submodule.
 
 All completed and cancelled projects have been archived for reference.
 
-**Total Completed:** 93 projects
-**Total Cancelled:** 5 projects
-
-**See:** [COMPLETED_PROJECTS.md](COMPLETED_PROJECTS.md) for full archive
-
-**Query Tool:**
-- `python3 project_manager.py list COMPLETE` - View completed projects
-- `python3 project_manager.py list CANCELLED` - View cancelled projects
+**See:** [completed/INDEX.md](completed/INDEX.md) for full archive
