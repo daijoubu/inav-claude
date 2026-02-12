@@ -3,7 +3,7 @@
 This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKED).
 
 **Last Updated:** 2026-02-11
-**Active:** 1 | **Backburner:** 0 | **Blocked:** 0
+**Active:** 1 | **Backburner:** 4 | **Blocked:** 2
 
 > **Completed projects:** See [completed/INDEX.md](completed/INDEX.md)
 > **Blocked projects:** See `blocked/` directory
