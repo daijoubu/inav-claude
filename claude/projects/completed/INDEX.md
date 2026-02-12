@@ -2,7 +2,7 @@
 
 Completed (✅) and cancelled (❌) projects.
 
-**Total Completed:** 91 | **Total Cancelled:** 5
+**Total Completed:** 93 | **Total Cancelled:** 5
 
 > **Active projects:** See [../INDEX.md](../INDEX.md)
 
@@ -105,6 +105,44 @@ Added 44 unit tests for DroneCAN/libcanard: 14 DSDL message tests (Fix2, Fix v1,
 - `src/test/unit/dronecan_messages_unittest.cc` - 14 DSDL message tests
 - `src/test/unit/canard_unittest.cc` - 30 libcanard core tests (new)
 - `src/test/unit/CMakeLists.txt` - Build config for both test targets
+
+---
+
+### ✅ analyze-pg-version-rollover (2026-02-11)
+
+**Status:** COMPLETED
+**Type:** Investigation / Risk Analysis
+**Priority:** MEDIUM-HIGH
+**Created:** 2026-01-22
+**Completed:** 2026-01-23
+**Assignee:** Developer
+
+Analyzed parameter group version rollover behavior (v15 → v0). Confirmed safe operation: rollover triggers settings reset to defaults, same as any version mismatch. Major version upgrades require flash erase per upgrade docs, preventing real-world corruption scenarios.
+
+**Findings:** System works as intended - no code changes needed
+**Documentation:** `ANALYSIS.md`, `REVISED-CONCLUSION.md`
+**Related:** `document-parameter-group-system` project
+
+---
+
+### ❌ fix-ble-connection-issue (2026-02-11)
+
+**Cancelled:** PR #2542 exists if needed - project archived during cleanup
+**Type:** Bug Fix / Multi-Stage Investigation
+**Priority:** MEDIUM-HIGH
+**Created:** 2025-12-29
+**Cancelled:** 2026-02-11
+**Assignee:** Developer
+
+Multi-stage project tracking debug logging, root cause analysis, and fix implementation for BLE connection byte counting issue on Windows. Root cause: BLE connection class used separate listener array not wired to base class monitoring.
+
+**What was completed:**
+- Stage 1: Debug logging added to BLE connection code
+- Stage 2: Root cause identified (separate listener arrays)
+- Stage 3: Fix implemented using base class `_onReceiveListeners` array
+- **PR:** [#2542](https://github.com/iNavFlight/inav-configurator/pull/2542) (fix/ble-byte-counter branch)
+
+**Note:** Project cancelled during cleanup; fix already in PR #2542 targeting maintenance-9.x
 
 ---
 

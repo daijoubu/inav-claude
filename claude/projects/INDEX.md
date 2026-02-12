@@ -56,7 +56,7 @@ Move dsdlc_generated files out of git and generate during build via submodule.
 
 All completed and cancelled projects have been archived for reference.
 
-**Total Completed:** 90 projects
+**Total Completed:** 93 projects
 **Total Cancelled:** 5 projects
 
 **See:** [COMPLETED_PROJECTS.md](COMPLETED_PROJECTS.md) for full archive
