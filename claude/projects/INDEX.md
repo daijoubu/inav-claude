@@ -3,7 +3,7 @@
 This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKED).
 
 **Last Updated:** 2026-02-11
-**Active:** 0 | **Backburner:** 0 | **Blocked:** 0
+**Active:** 1 | **Backburner:** 0 | **Blocked:** 0
 
 > **Completed projects:** See [completed/INDEX.md](completed/INDEX.md)
 > **Blocked projects:** See `blocked/` directory
@@ -40,7 +40,15 @@ This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKE
 
 ## Active Projects
 
-*No active projects at this time.*
+### 📋 dsdlc-submodule-generation ✉️
+
+**Status:** TODO | **Type:** Refactoring | **Priority:** MEDIUM
+**Created:** 2026-02-11 | **Assignee:** Developer
+
+Move dsdlc_generated files out of git and generate during build via submodule.
+
+**Directory:** `active/dsdlc-submodule-generation/`
+**PR:** [#11313](https://github.com/iNavFlight/inav/pull/11313) (Qodo issue #1)
 
 ---
 

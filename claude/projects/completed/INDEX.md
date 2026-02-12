@@ -2,9 +2,24 @@
 
 Completed (✅) and cancelled (❌) projects.
 
-**Total Completed:** 90 | **Total Cancelled:** 5
+**Total Completed:** 91 | **Total Cancelled:** 5
 
 > **Active projects:** See [../INDEX.md](../INDEX.md)
+
+---
+
+### ✅ hitl-test-execution-dronecan (2026-02-11)
+
+**Status:** COMPLETED
+**Type:** Testing (HITL)
+**Priority:** HIGH
+**Assignee:** User + Developer
+
+Executed HITL test plan for DroneCAN/libcanard PR #11313. 13 tests passed, 16 skipped (no GPS hardware). Found and fixed 1 bug: DroneCAN current scaling was 10x too low.
+
+**Results:** `completed/hitl-test-execution-dronecan/TEST-RESULTS.md`
+**PR:** [#11313](https://github.com/iNavFlight/inav/pull/11313)
+**Fix Commit:** `204ed72c0` - Fix DroneCAN battery current scaling
 
 ---
 
