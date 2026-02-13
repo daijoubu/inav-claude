@@ -313,6 +313,13 @@ bash_rules:
       fi
     message: "Push to master/main allowed for root inavflight/ repo only. Use feature branches for inav/, inav-configurator/, and other sub-repos."
 
+  - name: "Allow git push to origin with -u flag (feature branches)"
+    command_pattern: "^git$"
+    argument_pattern: "^(-C\\s+\\S+\\s+)?push\\s+origin\\s+[^-].*-u"
+    category: write
+    decision: allow
+    message: "Push to feature/release branch on origin with -u flag allowed for tracking"
+
   - name: "Block git push to maintenance/master in sub-repos"
     command_pattern: "^git$"
     argument_pattern: "^(-C\\s+\\S+\\s+)?push.*(maintenance|master|main).*"
@@ -586,7 +593,7 @@ bash_rules:
   # These are safe commands that only read/display data
 
   - name: "Allow common read commands"
-    command_pattern: "^(grep|egrep|find|cat|ls|head|tail|less|more|wc|sort|uniq|diff|stat|file|du|df|awk|sed|cut|xargs|printf|pwd|whoami|md5sum|lsusb|sleep|ss|date|touch|ld|rg|fd|pdfgrep|jq)$"
+    command_pattern: "^(grep|egrep|find|cat|ls|head|tail|less|more|wc|sort|uniq|diff|stat|file|du|df|awk|sed|cut|xargs|printf|pwd|whoami|md5sum|lsusb|sleep|ss|date|touch|ld|rg|fd|pdfgrep|jq|readelf|objdump|nm|size|objcopy)$"
     category: read
     decision: allow
 
@@ -629,6 +636,20 @@ bash_rules:
     argument_pattern: "^(pr|issue|run|release|workflow|repo).*(list|view|diff|checks|download).*"
     category: read
     decision: allow
+
+  - name: "Allow gh pr create for version bumps and feature PRs"
+    command_pattern: "^gh$"
+    argument_pattern: "^pr\\s+create.*"
+    category: other
+    decision: allow
+    message: "Pull request creation allowed"
+
+  - name: "Allow gh pr close"
+    command_pattern: "^gh$"
+    argument_pattern: "^pr\\s+close.*"
+    category: other
+    decision: allow
+    message: "Pull request close allowed"
 
   # ===================================================================
   # GitHub API Commands (curl)
