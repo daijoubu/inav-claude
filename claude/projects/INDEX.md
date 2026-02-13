@@ -38,20 +38,7 @@ This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKE
 
 ---
 
-## Active Projects (2 projects)
-
-### 📋 dronecan-sitl-implementation 📝
-
-**Status:** TODO | **Type:** Feature / Driver Implementation | **Priority:** MEDIUM
-**Created:** 2026-02-12 | **Assignee:** Developer
-
-Implement DroneCAN support in SITL using hybrid SocketCAN (Linux) + Stub (fallback) approach.
-
-**Directory:** `active/dronecan-sitl-implementation/`
-**Phase:** 2 (Implementation, following Phase 1 investigation)
-**Effort:** 16 hours (2.1: 4h, 2.2: 8h, 2.3: 4h)
-
----
+## Active Projects (1 project)
 
 ### 📋 dsdlc-submodule-generation ✉️
 
@@ -67,13 +54,13 @@ Move dsdlc_generated files out of git and generate during build via submodule.
 
 ## Summary
 
-- **Total Active Projects:** 2
-- **Currently TODO:** 2
-- **Total Completed:** 99+ (see [completed/INDEX.md](completed/INDEX.md))
+- **Total Active Projects:** 1
+- **Currently TODO:** 1
+- **Total Completed:** 100+ (see [completed/INDEX.md](completed/INDEX.md))
 - **Currently In Progress:** 0
 - **Blocked:** 0 (see [blocked/INDEX.md](blocked/INDEX.md))
 - **Backburner:** 0 (see [backburner/INDEX.md](backburner/INDEX.md))
-- **Completed:** 98+ (see [completed/INDEX.md](completed/INDEX.md))
+- **Completed:** 99+ (see [completed/INDEX.md](completed/INDEX.md))
 
 ---
 

@@ -2,9 +2,44 @@
 
 Completed (✅) and cancelled (❌) projects.
 
-**Total Completed:** 94 | **Total Cancelled:** 5
+**Total Completed:** 95 | **Total Cancelled:** 5
 
 > **Active projects:** See [../INDEX.md](../INDEX.md)
+
+---
+
+### ✅ dronecan-sitl-implementation (2026-02-12)
+
+**Status:** COMPLETED
+**Type:** Feature / Driver Implementation
+**Priority:** MEDIUM
+**Assignee:** Developer
+**Effort:** 16 hours (12h dev + 4h testing)
+**Branch:** `feature-dronecan-sitl`
+**Commit:** `463e0e514`
+
+Complete DroneCAN SITL implementation with SocketCAN driver and comprehensive testing. Full SocketCAN implementation for Linux with stub fallback for non-Linux platforms. Enables real CAN frame transmission/reception in SITL testing without hardware.
+
+**Deliverables:**
+- Full SocketCAN driver in `canard_sitl_driver.c` (300 lines)
+- Configuration system via `DRONECAN_SITL_INTERFACE`
+- Automated test suite (`scripts/test_dronecan_sitl.sh`)
+- 6/6 tests passing successfully
+
+**Key Features:**
+- Real CAN frames on vcan0 via SocketCAN
+- Multi-node communication capability
+- Graceful fallback to stub mode
+- External tooling support (candump, cansend)
+- Comprehensive error handling
+
+**Verification:**
+- SITL builds successfully with USE_DRONECAN
+- NodeStatus messages at 1Hz on vcan0
+- Multi-node testing framework established
+- External tooling integration verified
+
+**Result:** Ready for PR to upstream (maintenance-9.x)
 
 ---
 
