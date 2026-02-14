@@ -184,6 +184,61 @@ mv claude/developer/email/inbox/<assignment>.md claude/developer/email/inbox-arc
 
 ---
 
+## Workspace Cleanup
+
+**Important:** After completing a task, you MUST clean up your temporary workspace files.
+
+### When to Clean Up
+
+Clean up workspace directories **after**:
+- Your PR is created and pushed to GitHub
+- All important findings/code are captured in project documentation
+- You've sent the completion report to the manager
+
+### How to Clean Up
+
+```bash
+# Remove the task-specific workspace directory
+rm -rf claude/developer/workspace/<task-name>/
+
+# If you created reusable scripts or reports, move them first:
+# - Reusable scripts → claude/developer/scripts/<category>/
+# - Analysis reports → claude/developer/reports/
+# - Investigation docs → claude/developer/investigations/ or preserve in project/summary.md
+```
+
+### What Stays, What Goes
+
+**DELETE (temporary files):**
+- Task notes and session tracking files
+- Temporary test files or data
+- Local debugging artifacts
+- Work-in-progress code snippets
+
+**KEEP (reusable content):**
+- Scripts that might be useful again → `claude/developer/scripts/`
+- Analysis reports → `claude/developer/reports/`
+- Investigation findings → Preserved in `claude/projects/<name>/summary.md`
+
+### Why This Matters
+
+- **Keeps workspace clean:** Easy to see what's active vs. completed
+- **Prevents confusion:** Stale files don't clutter future work
+- **Easy navigation:** Manager can see at a glance what projects are being worked on
+- **Professional:** Clean workspace = organized thinking
+
+### In the Completion Report
+
+Include a note that you cleaned up workspace files:
+```markdown
+## Workspace Cleanup
+
+- [x] Workspace directory removed: `claude/developer/workspace/<task-name>/`
+- [x] Reusable scripts moved to: `claude/developer/scripts/<category>/` (if applicable)
+```
+
+---
+
 ## Completion Reports
 
 Compose your completion report using this template, then pass to the **email-manager** agent for file creation and delivery.
@@ -337,7 +392,8 @@ As Developer:
 6. ✅ Review your code with **inav-code-review** before PR
 7. ✅ Test thoroughly (MANDATORY before PR)
 8. ✅ Report completion to manager (use **email-manager** agent)
-9. ✅ Ask questions when unclear
-10. ✅ Create tools for repetitive tasks
+9. ✅ **Clean up workspace directories** after task completion
+10. ✅ Ask questions when unclear
+11. ✅ Create tools for repetitive tasks
 
 **Remember:** You implement. The manager coordinates and tracks.

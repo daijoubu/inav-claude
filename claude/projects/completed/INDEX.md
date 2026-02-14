@@ -2,9 +2,66 @@
 
 Completed (✅) and cancelled (❌) projects.
 
-**Total Completed:** 95 | **Total Cancelled:** 5
+**Total Completed:** 97 | **Total Cancelled:** 5
 
 > **Active projects:** See [../INDEX.md](../INDEX.md)
+
+---
+
+### ✅ fix-sitl-ci-build-errors (2026-02-14)
+
+**Status:** COMPLETED
+**Type:** Bug Fix / CI
+**Priority:** HIGH
+**Created:** 2026-02-13
+**Completed:** 2026-02-14
+**Assignee:** Developer
+**Effort:** 3 hours
+
+Fixed SITL CI build failures on macOS and Windows for PR #11313 (DroneCAN SITL implementation).
+
+**Root Cause:** SocketCAN function forward declarations were unguarded, causing "unused function" compiler warnings on macOS/Windows that became errors with `-Werror` flag.
+
+**Solution:** Guard SocketCAN forward declarations with `#ifdef __linux__` while keeping socket.h include unguarded (macOS has POSIX socket support).
+
+**Result:** All SITL CI builds passing:
+- ✓ Linux SITL: 40s
+- ✓ macOS SITL: 1m18s
+- ✓ Windows SITL: 3m39s
+- ✓ Linux ARM64 SITL: 42s
+- ✓ Unit Tests: 56s
+
+**Commits:**
+- `dc287d1d3` - Revert incorrect socket.h guards
+- `0664cff54` - Guard SocketCAN forward declarations (correct fix)
+
+**PR:** [#11313](https://github.com/iNavFlight/inav/pull/11313) - Ready for maintainer merge
+
+---
+
+### ✅ pr-11313-build-fixes (2026-02-13)
+
+**Status:** COMPLETED
+**Type:** Bug Fix
+**Priority:** HIGH
+**Created:** 2026-02-13
+**Completed:** 2026-02-13
+**Assignee:** Developer
+**Effort:** 1 hour
+**PR:** [#11313](https://github.com/iNavFlight/inav/pull/11313)
+
+Fixed macOS SITL CI build failure by correcting double-promotion warnings in battery sensor code.
+
+**Root Cause:** macOS gcc treats `round(float)` as double-promotion error with -Werror flag
+**Fix Applied:** Changed `round()` to `roundf()` in `battery_sensor_dronecan.c`
+**Testing:** SITL builds cleanly on both Linux and macOS with fix applied
+
+**Result:** PR #11313 cleared for merge (pending author applying the fix)
+
+**Key Deliverables:**
+- One-line fix in `battery_sensor_dronecan.c` (lines 51-52)
+- SITL build verification on Linux platform
+- Completion report with next steps for PR author
 
 ---
 

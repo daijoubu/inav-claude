@@ -2,8 +2,8 @@
 
 This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKED).
 
-**Last Updated:** 2026-02-12
-**Total Active:** 2 | **In Progress:** 0 | **Todo:** 2 | **Blocked:** 0 | **Backburner:** 0
+**Last Updated:** 2026-02-14
+**Total Active:** 1 | **In Progress:** 0 | **Todo:** 1 | **Blocked:** 0 | **Backburner:** 0
 
 > **Completed projects:** See [completed/INDEX.md](completed/INDEX.md)
 > **Blocked projects:** See [blocked/INDEX.md](blocked/INDEX.md)
@@ -42,25 +42,25 @@ This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKE
 
 ### 📋 dsdlc-submodule-generation ✉️
 
-**Status:** TODO | **Type:** Refactoring / Build System | **Priority:** MEDIUM
-**Created:** 2026-02-11 | **Assignee:** Developer
+**Status:** TODO | **Type:** Code Cleanup & Documentation | **Priority:** MEDIUM
+**Created:** 2026-02-11 | **Assignee:** Developer | **Manager:** Implements after inventory
 
-Move dsdlc_generated files out of git and generate during build via submodule.
+Developer inventories used/unused files and documents DSDL version; Manager reorganizes to lib/main and removes unused files.
 
 **Directory:** `active/dsdlc-submodule-generation/`
-**PR:** [#11313](https://github.com/iNavFlight/inav/pull/11313)
-
----
+**Related PR:** [#11313](https://github.com/iNavFlight/inav/pull/11313)
+**Qodo Issue:** #1 (dsdlc_generated code committed)
+**Plan:** Move to lib/main/, keep only used files, document DSDL version & extension process
 
 ## Summary
 
 - **Total Active Projects:** 1
 - **Currently TODO:** 1
-- **Total Completed:** 100+ (see [completed/INDEX.md](completed/INDEX.md))
+- **Total Completed:** 102+ (see [completed/INDEX.md](completed/INDEX.md))
 - **Currently In Progress:** 0
 - **Blocked:** 0 (see [blocked/INDEX.md](blocked/INDEX.md))
 - **Backburner:** 0 (see [backburner/INDEX.md](backburner/INDEX.md))
-- **Completed:** 99+ (see [completed/INDEX.md](completed/INDEX.md))
+- **Completed:** 102+ (see [completed/INDEX.md](completed/INDEX.md))
 
 ---
 
