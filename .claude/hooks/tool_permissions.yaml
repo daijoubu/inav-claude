@@ -340,7 +340,7 @@ bash_rules:
     category: write
     decision: deny
     precondition_script: |
-      # Allow branch creation in sub-repos (inav, inav-configurator, PrivacyLRS, mspapi2, inavwiki)
+      # Allow branch creation in sub-repos (inav, inav-configurator, PrivacyLRS, mspapi2, inavwiki, OpenTX-Telemetry-Widget)
       # Block branch creation ONLY in the root inavflight/ repo
       #
       # The precondition_script needs to handle two cases:
@@ -356,24 +356,24 @@ bash_rules:
       fi
 
       # Check if the ORIGINAL_COMMAND contains a cd to a sub-repo
-      # Pattern: cd ... /inav, /inav-configurator, /PrivacyLRS, /mspapi2, or /inavwiki
+      # Pattern: cd ... /inav, /inav-configurator, /PrivacyLRS, /mspapi2, /inavwiki, or /OpenTX-Telemetry-Widget
       # This handles cases like: cd /home/.../inav && git branch -b feature
       ORIGINAL_CMD="{ORIGINAL_COMMAND}"
-      if [ -n "$ORIGINAL_CMD" ] && echo "$ORIGINAL_CMD" | grep -qE "cd\\s+[^&|;]*/(inav|inav-configurator|PrivacyLRS|mspapi2|inavwiki)(/|$|\\s+)"; then
+      if [ -n "$ORIGINAL_CMD" ] && echo "$ORIGINAL_CMD" | grep -qE "cd\\s+[^&|;]*/(inav|inav-configurator|PrivacyLRS|mspapi2|inavwiki|OpenTX-Telemetry-Widget)(/|$|\\s+)"; then
         # The original command contains a cd into a sub-repo, allow branch creation
         echo "allow"
         exit 0
       fi
 
-      # Check if we're in a sub-repo (contains /inav/, /inav-configurator/, /PrivacyLRS/, /mspapi2/, or /inavwiki/)
-      if echo "$ABS_CWD" | grep -qE "/(inav|inav-configurator|PrivacyLRS|mspapi2|inavwiki)(/|$)"; then
+      # Check if we're in a sub-repo (contains /inav/, /inav-configurator/, /PrivacyLRS/, /mspapi2/, /inavwiki/, or /OpenTX-Telemetry-Widget/)
+      if echo "$ABS_CWD" | grep -qE "/(inav|inav-configurator|PrivacyLRS|mspapi2|inavwiki|OpenTX-Telemetry-Widget)(/|$)"; then
         # We're in a sub-repo, allow branch creation here
         echo "allow"
       else
         # We're in root inavflight/ repo, deny branch creation
         echo "deny"
       fi
-    message: "Branch creation blocked in root inavflight/ repo. Branches should be created in the appropriate project repo instead: inav/, inav-configurator/, PrivacyLRS/, or mspapi2/."
+    message: "Branch creation blocked in root inavflight/ repo. Branches should be created in the appropriate project repo instead: inav/, inav-configurator/, PrivacyLRS/, mspapi2/, inavwiki/, or OpenTX-Telemetry-Widget/."
 
   # Git read operations with GIT_PAGER environment variable
   # Note: The bash parser splits "GIT_PAGER=cat git log" into command="GIT_PAGER=cat" and arguments="git log ..."
