@@ -534,6 +534,18 @@ bash_rules:
     category: other
     decision: allow
 
+  - name: "Allow view.sh command"
+    command_pattern: "^.*view\\.sh$"
+    category: other
+    decision: allow
+    message: "view.sh command allowed for viewing content"
+
+  - name: "Allow gh-issue-view.sh script with any arguments"
+    command_pattern: "^.*gh-issue-view\\.sh$"
+    category: other
+    decision: allow
+    message: "gh-issue-view.sh script - fetches and displays GitHub issue/PR details with comments"
+
   - name: "Allow fetch-next-pr.sh triage script with any arguments"
     command_pattern: "^bash$"
     argument_pattern: ".*/claude/developer/scripts/triage/fetch-next-pr\\.sh.*"
