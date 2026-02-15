@@ -3,7 +3,7 @@ name: inav-code-review
 description: "Perform comprehensive code review for INAV firmware and configurator changes. Use PROACTIVELY after code changes before PR creation. Reviews embedded C99, JavaScript, checks safety, style, performance. Returns categorized feedback by severity."
 model: sonnet
 color: yellow
-tools: ["Read", "Grep", "Glob"]
+tools: ["Read", "Grep", "Glob", "Bash"]
 ---
 
 @CLAUDE.md
