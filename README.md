@@ -22,14 +22,12 @@ This workflow requires the INAV firmware, configurator, and mspapi2 repositories
 
 ```bash
 # Clone INAV firmware
-git clone git@github.com:sensei-hacker/inav_unofficial_targets.git inav
-# Or use the official repo:
-# git clone https://github.com/iNavFlight/inav.git inav
+git clone git@github.com:YOUR-FORK/inav.git inav
+
 
 # Clone INAV configurator
 git clone git@github.com:sensei-hacker/inav-configurator.git inav-configurator
-# Or use the official repo:
-# git clone https://github.com/iNavFlight/inav-configurator.git inav-configurator
+
 
 # Clone mspapi2 (MSP protocol library for testing)
 git clone https://github.com/xznhj8129/mspapi2.git mspapi2
@@ -48,6 +46,11 @@ ln -s ../claude/third-party-repos/inav-configurator-CLAUDE.md inav-configurator/
 
 # INAV Configurator transpiler context
 ln -s ../../../claude/third-party-repos/inav-configurator-transpiler-CLAUDE.md inav-configurator/js/transpiler/CLAUDE.md
+```
+
+Symlink to your root inav-claude repo:
+``
+ln -s "$(pwd)" ~/inavflight
 ```
 
 These symlinks allow Claude Code to automatically load context when working in those directories, while keeping the actual context files version-controlled in this repository.
