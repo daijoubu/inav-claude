@@ -49,7 +49,7 @@ ln -s ../../../claude/third-party-repos/inav-configurator-transpiler-CLAUDE.md i
 ```
 
 Symlink to your root inav-claude repo:
-``
+```
 ln -s "$(pwd)" ~/inavflight
 ```
 
