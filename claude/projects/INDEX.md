@@ -2,8 +2,8 @@
 
 This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKED).
 
-**Last Updated:** 2026-01-29
-**Active:** 12 | **Backburner:** 5 | **Blocked:** 2
+**Last Updated:** 2026-02-14
+**Active:** 13 | **Backburner:** 6 | **Blocked:** 2
 
 > **Completed projects:** See [completed/INDEX.md](completed/INDEX.md)
 > **Blocked projects:** See `blocked/` directory
@@ -30,7 +30,6 @@ This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKE
 | ⏸️ **BACKBURNER** | Paused, will resume later (internal decision) |
 | ❌ **CANCELLED** | Abandoned, not pursuing |
 
-
 | Indicator | Meaning |
 |-----------|---------|
 | ✉️ **Assigned** | Developer has been notified via email |
@@ -40,43 +39,16 @@ This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKE
 
 ## Active Projects
 
-### 📋 analyze-pitch-throttle-airspeed
+### 📋 fix-blackbox-sd-lockup
 
-**Status:** TODO | **Type:** Data Analysis / Testing | **Priority:** MEDIUM
-**Created:** 2026-01-16 | **Assignee:** Developer + Test Engineer | **Assignment:** ✉️ Assigned
+**Status:** TODO | **Type:** Bug Fix / Safety Issue | **Priority:** HIGH
+**Created:** 2026-02-09 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
 
-Design scripts to analyze flight logs and understand pitch/throttle/airspeed relationships. Find stable periods (2+ seconds) and match comparable segments to empirically determine how control inputs affect airspeed from real flight data.
+FC completely locks up (no MSP, no flight control) when using a problematic SD card for blackbox logging. Audit and fix error handling so SD card failures only disable logging, never lock up the FC.
 
-**Directory:** `active/analyze-pitch-throttle-airspeed/`
-**Data:** `/home/raymorris/Downloads/LOG0005*`
-**Assignment:** `manager/email/sent/2026-01-16-2255-task-analyze-pitch-throttle-airspeed.md`
-**Note:** Collaborative task - developer must coordinate with test engineer
-
----
-
-### 📋 investigate-acc-weight-factors
-
-**Status:** TODO | **Type:** Code Analysis / Documentation | **Priority:** MEDIUM-HIGH
-**Created:** 2026-01-16 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
-
-Analyze and document acceleration weight factors in navigation position estimator. Study `acc_clip_factor`, `acc_vibration_factor`, and `accWeight` to understand physics model, verify implementation correctness, and identify potential errors in logic or math.
-
-**Directory:** `active/investigate-acc-weight-factors/`
-**Files:** `src/main/navigation/navigation_pos_estimator.c`, `navigation_pos_estimator_agl.c`
-**Assignment:** `manager/email/sent/2026-01-16-2248-task-investigate-acc-weight-factors.md`
-
----
-
-### 📋 add-ray-morris-to-authors
-
-**Status:** TODO | **Type:** Documentation | **Priority:** LOW
-**Created:** 2026-01-15 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
-
-Add "Ray Morris (Sensei)" to the inav/AUTHORS file to recognize contributions.
-
-**Directory:** `active/add-ray-morris-to-authors/`
-**Assignment:** `manager/email/sent/2026-01-15-1030-task-add-ray-morris-to-authors.md`
-**Repository:** inav (firmware)
+**Directory:** `active/fix-blackbox-sd-lockup/`
+**Assignment:** `manager/email/sent/2026-02-09-1000-task-fix-blackbox-sd-lockup.md`
+**Repository:** inav (firmware) | **Branch:** `maintenance-9.x`
 
 ---
 
@@ -89,7 +61,7 @@ AIKONF7 target firmware at 98% flash capacity (470/480 KB). Developer completed 
 
 **Pause Reason:** Awaiting information on which flash chip variants are actually shipped in AIKONF7 hardware before implementing fix.
 
-**Directory:** `active/fix-aikonf7-flash-size/`
+**Directory:** `backburner/fix-aikonf7-flash-size/`
 **Question:** `manager/email/inbox/2026-01-16-1013-question-aikonf7-flash-size-guidance.md`
 **Assignment:** `manager/email/sent/2026-01-12-1525-task-fix-aikonf7-flash-size.md`
 
@@ -144,83 +116,6 @@ Auto-detect OLED controller type (SSD1306, SH1106, SH1107, SSD1309) to eliminate
 
 ---
 
-### 🚧 remember-last-save-directory
-
-**Status:** AWAITING MERGE
-**Type:** UX Enhancement
-**Priority:** MEDIUM
-**Assignment:** ✅ Implementation Complete
-**Created:** 2025-12-29
-**Assignee:** Developer
-**PR:** [#2511](https://github.com/iNavFlight/inav-configurator/pull/2511) - Awaiting review/merge
-
-Make file save dialogs default to the last directory used, eliminating repeated navigation for users saving multiple files.
-
-**Solution:**
-- Store last save directory in persistent settings
-- Use Electron's `defaultPath` option with stored directory
-- Apply to all save operations (blackbox, diffs, config exports)
-
-**Assignment Email:** `claude/manager/sent/2025-12-29-1215-task-remember-last-save-directory.md`
-
----
-
-
-### 📋 enable-galileo-optimize-gps-rate
-
-**Status:** TODO
-**Type:** Feature / Optimization
-**Priority:** MEDIUM
-**Assignment:** ✉️ Assigned
-**Created:** 2025-12-31
-**Assignee:** Developer
-**Estimated Time:** 2-3 hours
-
-Implement top recommendations from u-blox GPS analysis: enable Galileo by default (clear win, no downsides) and optimize GPS update rate (research Jetrell's 8Hz findings).
-
-**Project Directory:** `active/enable-galileo-optimize-gps-rate/`
-**Reference Document:** `claude/developer/reports/ublox-gps-inav-vs-ardupilot.md`
-**Assignment Email:** `claude/manager/sent/2025-12-31-1530-task-enable-galileo-optimize-gps-rate.md`
-
----
-
-### 🚧 investigate-esc-spinup-after-disarm
-
-**Status:** IN PROGRESS - Investigation complete, implementation approach TBD
-**Type:** Bug Investigation / Safety Issue
-**Priority:** HIGH
-**Assignment:** ✉️ Assigned
-**Created:** 2025-12-29
-**Assignee:** Developer
-**Estimated Time:** 4-6 hours
-
-**⚠️ SAFETY CRITICAL:** Motors spin up several seconds after disarm due to EEPROM save blocking DSHOT frames, causing ESC reboot. Root cause identified; fix approach TBD.
-
-**Issue #10913:** https://github.com/iNavFlight/inav/issues/10913
-**Project Directory:** `active/investigate-esc-spinup-after-disarm/`
-**Assignment Email:** `claude/manager/sent/2025-12-29-1225-task-investigate-esc-spinup-after-disarm.md`
-
----
-
-### 🚫 implement-3d-hardware-acceleration-auto-fallback
-
-**Status:** BLOCKED
-**Type:** Feature Enhancement / Error Handling
-**Priority:** MEDIUM
-**Assignment:** ✉️ Assigned
-**Created:** 2025-12-26
-**Blocked Since:** 2026-01-10
-**Assignee:** Developer
-
-Auto-detect WebGL support and gracefully fallback to 2D alternatives when 3D hardware acceleration unavailable (VMs, remote desktop, older systems).
-
-**Blocking Issue:** Cannot reproduce rendering issues requiring fallback logic. Need user who experiences the WebGL/3D acceleration failure to provide reproduction case and test environment details.
-
-**Project Directory:** `blocked/implement-3d-hardware-acceleration-auto-fallback/`
-**Assignment Email:** `claude/manager/sent/2025-12-26-task-3d-hardware-acceleration-auto-fallback.md`
-
----
-
 ### 🚧 analyze-pitot-blockage-apa-issue
 
 **Status:** IN PROGRESS (Analysis complete, implementation pending)
@@ -257,27 +152,19 @@ Analyze the dangerous behavior of INAV 9's Fixed Wing APA (Airspeed-based PID At
 
 ---
 
-### 📋 reproduce-issue-11202-gps-fluctuation
+### 🚫 reproduce-issue-11202-gps-fluctuation
 
-**Status:** TODO
-**Type:** Bug Investigation
-**Priority:** MEDIUM-HIGH
-**Assignment:** ✉️ Assigned
-**Created:** 2025-12-26
-**Assignee:** Developer
-**Estimated Time:** 6-8 hours
-**GitHub Issue:** [#11202](https://github.com/iNavFlight/inav/issues/11202)
+**Status:** BLOCKED | **Type:** Bug Investigation | **Priority:** MEDIUM-HIGH
+**Created:** 2025-12-26 | **Blocked Since:** 2026-02-09 | **Assignee:** Developer
 
-Investigate GPS signal instability (EPH spikes, HDOP fluctuations, reduced sat count) affecting INAV 6.0-9.0. Key finding: `gps_ublox_nav_hz` setting affects stability - 10Hz problematic, 6-9Hz better.
+Investigate GPS signal instability (EPH spikes, HDOP fluctuations, reduced sat count) affecting INAV 6.0-9.0.
 
-**Approach:** Create synthetic MSP GPS data with mspapi2 to isolate root cause.
+**Blocking Issue:** Unable to reproduce with synthetic MSP GPS data and SITL. Issue appears hardware-dependent (u-blox module timing). Needs real GPS hardware testing to reproduce.
 
-**Investigation Directory:** `claude/developer/investigations/gps-fluctuation-issue-11202/`
-
-**Assignment Email:** `claude/manager/sent/2025-12-26-task-reproduce-issue-11202-gps-fluctuation.md`
+**Directory:** `blocked/reproduce-issue-11202-gps-fluctuation/`
+**Issue:** [#11202](https://github.com/iNavFlight/inav/issues/11202)
 
 ---
-
 
 ### 🚧 reproduce-issue-9912
 
@@ -324,26 +211,6 @@ Coordinate with PR authors to resolve frame 0x09 conflict between CRSF telemetry
 **Developer Analysis:** Complete (2025-12-06) - 38-test suite created, conflict identified
 
 **Location:** `active/coordinate-crsf-telemetry-pr-merge/`
-
----
-
-### 📋 sitl-wasm-phase1-configurator-poc
-
-**Status:** TODO
-**Type:** Research / POC Implementation
-**Priority:** MEDIUM
-**Assignment:** ✉️ Assigned
-**Created:** 2025-12-02
-**Assignee:** Developer
-**Estimated Time:** 15-20 hours
-
-Build minimal SITL WebAssembly POC for PWA Configurator. Scope: WebSocket MSP, EEPROM via IndexedDB, config read/write. No simulator integration.
-
-**Decision Point:** End of Week 1 - GO/STOP for Phase 3 (full implementation, 30-40h additional)
-
-**Predecessor:** `active/investigate-sitl-wasm-compilation/` (research complete, CONDITIONAL GO)
-
-**Assignment Email:** `claude/manager/sent/2025-12-02-0200-sitl-wasm-phase1-assignment.md`
 
 ---
 
@@ -567,21 +434,54 @@ Remove dual-path logic after 14-month migration period (Dec 2024 - Feb 2026).
 
 ---
 
+### 📋 fix-nexusx-imu-orientation
 
-**Note:** Completed projects are archived to `claude/archived_projects/` to keep the active project list clean.
+**Status:** TODO | **Type:** Bug Fix | **Priority:** HIGH
+**Created:** 2026-02-14 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
 
+Default IMU orientation on RadioMaster NEXUS-X is backwards (confirmed). `IMU_ICM42605_ALIGN` set to `CW180_DEG` in target.h needs correcting.
+
+**Directory:** `active/fix-nexusx-imu-orientation/`
+**Issue:** [#11325](https://github.com/iNavFlight/inav/issues/11325)
+**Repository:** inav (firmware) | **Branch:** `maintenance-9.x`
 
 ---
 
-## Completed & Cancelled Projects
+### 📋 update-telemetry-widget-800x480
 
-All completed and cancelled projects have been archived for reference.
+**Status:** TODO | **Type:** Feature Enhancement | **Priority:** MEDIUM
+**Created:** 2026-02-14 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
 
-**Total Completed:** 74 projects
-**Total Cancelled:** 4 projects
+Update INAV Lua Telemetry Widget to support the 800x480 color touchscreen on RadioMaster TX16S MK3. Currently renders with 480x272 Horus layout, wasting screen real estate.
 
-**See:** [COMPLETED_PROJECTS.md](COMPLETED_PROJECTS.md) for full archive
+**Directory:** `active/update-telemetry-widget-800x480/`
+**Assignment:** `manager/email/sent/2026-02-14-2151-task-update-telemetry-widget-800x480.md`
+**Repository:** OpenTX-Telemetry-Widget
 
-**Query Tool:**
-- `python3 project_manager.py list COMPLETE` - View completed projects
-- `python3 project_manager.py list CANCELLED` - View cancelled projects
+---
+
+### 📋 discord-qa-knowledge-base
+
+**Status:** TODO | **Type:** Tooling / AI Pipeline | **Priority:** MEDIUM
+**Created:** 2026-02-14 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
+
+Mine INAV Discord history (~20k messages) for recurring problems and canonical answers. Clustering-based approach to find questions asked multiple times in different words. High precision — abstain rather than give wrong answers. May incorporate INAV wiki content.
+
+**Directory:** `active/discord-qa-knowledge-base/`
+**Assignment:** `manager/email/sent/2026-02-14-0042-task-discord-qa-knowledge-base.md`
+**Reference:** `discord_bot/chatgpt_convo.txt`
+
+---
+
+### 🚧 configurator-ui-polish
+
+**Status:** IN PROGRESS | **Type:** UI Enhancement (Master Project) | **Priority:** MEDIUM
+**Created:** 2026-02-12 | **Assignee:** Developer | **Assignment:** ✉️ Assigned (Subproject 1)
+
+Systematic UI polish based on 97-issue audit across all configurator tabs. 9 subprojects, each with own PR. Subprojects 1-6 ready to implement; 7-9 need discussion first. Currently working on Subproject 1 (quick label/tooltip/CSS fixes).
+
+**Directory:** `active/configurator-ui-polish/`
+**Assignment:** `manager/email/sent/2026-02-12-1100-task-configurator-ui-polish-subproject-1.md`
+**Repository:** inav-configurator | **Branch:** `maintenance-9.x`
+
+---

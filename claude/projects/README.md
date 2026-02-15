@@ -15,6 +15,7 @@ Central project registry for tracking all INAV-related projects.
 projects/
 ├── INDEX.md                 # Active projects index (keep concise!)
 ├── README.md                # This file
+├── project_ops.py           # ⚠️ USE THIS for all lifecycle operations
 │
 ├── active/                  # Projects being worked on
 │   └── <project-name>/
@@ -68,6 +69,33 @@ projects/
 └──────────────────┘ │     🚧 IN     │
                      │     PROGRESS  │
                      └──────────────┘
+```
+
+## Project Lifecycle Tool — project_ops.py
+
+**⚠️ ALWAYS use `project_ops.py` for project lifecycle transitions.** Do NOT manually move directories and edit INDEX files — use the tool to keep everything in sync atomically.
+
+```bash
+# Complete a project (moves dir, removes from INDEX.md, adds to completed/INDEX.md)
+python3 claude/projects/project_ops.py complete <project-name>
+
+# Cancel a project
+python3 claude/projects/project_ops.py cancel <project-name>
+
+# Block a project (moves active/ → blocked/)
+python3 claude/projects/project_ops.py block <project-name>
+
+# Backburner a project (moves active/ → backburner/)
+python3 claude/projects/project_ops.py backburner <project-name>
+
+# Resume a blocked or backburner project (moves back to active/)
+python3 claude/projects/project_ops.py resume <project-name>
+
+# Audit for inconsistencies
+python3 claude/projects/project_ops.py audit
+
+# Audit and auto-fix simple issues
+python3 claude/projects/project_ops.py audit --fix
 ```
 
 ## Skills
@@ -203,46 +231,18 @@ One-sentence summary of what this project accomplishes.
 
 ### Completing a Project
 
-1. **Update summary.md:**
-   - Set status to ✅ COMPLETED
-   - Add PR number and completion date
+**Use `project_ops.py` — it handles all steps atomically:**
+```bash
+python3 claude/projects/project_ops.py complete <project-name>
+```
 
-2. **Move directory:**
-   ```bash
-   mv claude/projects/active/<project>/ claude/projects/completed/
-   ```
-
-3. **Update INDEX.md:**
-   - Remove the project entry
-   - Update counts
-
-4. **Update completed/INDEX.md:**
-   - Add entry at top of current year section
-   - Update total count
+This automatically: moves the directory to completed/, removes the entry from INDEX.md, adds an entry to completed/INDEX.md, and updates all counts.
 
 ### Cancelling a Project
 
-When abandoning a project (not just pausing):
-
-1. **Update summary.md:**
-   - Set status to ❌ CANCELLED
-   - Add cancellation reason and date
-
-2. **Move directory:**
-   ```bash
-   mv claude/projects/active/<project>/ claude/projects/completed/
-   ```
-
-3. **Update INDEX.md:**
-   - Remove the project entry
-   - Update counts
-
-4. **Update completed/INDEX.md:**
-   - Add entry with ❌ status:
-   ```markdown
-   ### ❌ project-name (2026-01-09)
-   **Cancelled:** <brief reason>
-   ```
+```bash
+python3 claude/projects/project_ops.py cancel <project-name>
+```
 
 **When to cancel vs backburner:**
 - **Cancel:** Requirements changed, no longer needed, blocked permanently, superseded
