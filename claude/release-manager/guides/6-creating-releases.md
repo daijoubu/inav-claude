@@ -230,13 +230,25 @@ gh release edit 9.0.0-RC3 --repo iNavFlight/inav \
 
 ### Publish Draft Release
 
-```bash
-# Publish firmware release (removes draft status)
-gh release edit 9.0.0-RC3 --repo iNavFlight/inav --draft=false
+**Publish firmware first, then verify before publishing configurator.**
 
-# Publish configurator release
+```bash
+# Step 1: Publish firmware release
+gh release edit 9.0.0-RC3 --repo iNavFlight/inav --draft=false
+```
+
+#### Step 2: Verify Configurator Sees the Firmware Release
+
+After publishing firmware, open INAV Configurator and go to the Firmware Flasher tab. Verify that the new firmware version appears in the release list. This confirms the GitHub release is properly formatted and discoverable by the configurator's firmware download logic.
+
+**This step must be done by a human** - it requires running the configurator and visually confirming the release appears.
+
+```bash
+# Step 3: Publish configurator release (only after firmware is verified in flasher)
 gh release edit 9.0.0-RC3 --repo iNavFlight/inav-configurator --draft=false
 ```
+
+**Note:** The human user must perform the final configurator publish step.
 
 ### Verify Published Releases
 
@@ -250,6 +262,7 @@ Check:
 - All assets are present
 - Release notes are correct
 - Downloads work
+- Configurator firmware flasher lists the new release
 
 ---
 

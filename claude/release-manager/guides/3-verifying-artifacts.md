@@ -156,14 +156,21 @@ Build Linux x64 SITL locally on Ubuntu 22.04 LTS (see [Phase 4: Building Locally
 
 ## Testing Artifacts Before Publishing
 
-**CRITICAL:** Always test at least one configurator build with SITL before publishing releases.
+**CRITICAL:** A human must manually test configurator builds before uploading to the GitHub release. Automated verification (DMG checks, SITL file checks, glibc checks) catches structural issues but cannot validate that the application actually works.
 
-### Why Test SITL?
+### Human Testing Required (Before Upload)
 
-- SITL binaries must match the firmware version being released
-- Ensures SITL can launch and connect properly
-- Validates that SITL update PR was merged correctly
-- Prevents releasing broken SITL functionality to users
+Before uploading configurator artifacts to the draft release, a human tester must:
+
+1. **Windows:** Extract the Win64 zip, launch the configurator, verify demo mode works and USB connection to an FC works
+2. **Linux:** Extract the linux_x64 zip, launch the configurator, verify demo mode works and USB connection to an FC works
+3. **macOS:** (if available) Open the DMG, launch the app, verify basic functionality
+
+**Minimum:** Test on at least Windows and Linux with both demo mode and a real FC via USB.
+
+This step cannot be performed by an AI agent - it requires a human with access to the operating system and hardware.
+
+### SITL Testing
 
 ### Quick SITL Test Procedure
 
@@ -251,6 +258,11 @@ Use this checklist before proceeding to Phase 6 (Creating Releases):
 - [ ] SITL starts from configurator
 - [ ] SITL connects to configurator
 - [ ] SITL version matches firmware release version
+
+### Post-Firmware-Publish Verification
+- [ ] After publishing firmware release, open Configurator Firmware Flasher tab
+- [ ] Verify the new firmware version appears in the release list
+- [ ] Only then publish the configurator release
 
 ---
 
