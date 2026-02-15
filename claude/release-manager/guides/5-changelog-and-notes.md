@@ -309,6 +309,31 @@ These sections were useful during the RC testing phase, but for the final releas
 
 ---
 
+## Patch Release Notes Pattern (x.y.1, x.y.2, etc.)
+
+**For patch releases** (e.g., 9.0.1, 9.0.2), each release carries forward the full story of the major version:
+
+**Structure:**
+1. **"Changes since x.y.0"** - What's new in this specific patch (bugs fixed, targets added)
+2. **Upgrade instructions** - Simple path from previous patch, full path from previous major
+3. **"Major Changes in x.x Since (previous major)"** - Combined section covering ALL changes in the major version series
+
+**How to construct:**
+1. Copy the x.y.0 release notes as your base
+2. Merge the "Changes in x.y.0 (since last RC)" section INTO the "Major Changes" section - producing one combined list of everything new in x.y vs the previous major version
+3. Prepend a new "Changes since x.y.0" section with the patch-specific changes
+
+**Why this format:**
+- Users upgrading from 9.0.0 → 9.0.1 see exactly what changed at the top
+- Users upgrading from 8.x → 9.0.1 get the full picture of INAV 9.x below
+- Each release is self-contained - no need to read previous release notes
+
+**Configurator compatibility note:** The configurator release notes should say "intended to be used with INAV 9 firmware" (major version only), not "INAV 9.0.1 firmware". Firmware and configurator are compatible within a major version.
+
+**Example:** See `claude/release-manager/9.0.1-firmware-release-notes.md`
+
+---
+
 ## Where to Save Release Notes
 
 Create separate files for firmware and configurator:

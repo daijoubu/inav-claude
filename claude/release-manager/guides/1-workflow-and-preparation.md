@@ -22,40 +22,45 @@ This guide covers the complete release workflow and preparation steps you need t
 ```
 1. Verify release readiness
    ├── All PRs merged to firmware repo
-   ├── Version numbers updated
+   ├── Version number updated in firmware (CMakeLists.txt)
    └── CI passing on firmware target commit
 
-2. Download firmware artifacts FIRST
+2. Configurator version bump PR
+   ├── Create PR branch with version bump (package.json)
+   ├── This PR will also receive SITL binaries in step 4
+   └── Do NOT merge yet - wait for SITL update
+
+3. Download firmware artifacts
    ├── Download firmware hex files from CI
    ├── Download SITL binaries from same CI run
    ├── Build Linux x64 SITL locally if needed (for glibc compatibility)
    └── This provides SITL binaries needed for configurator
 
-3. Update SITL in configurator
-   ├── Create PR with SITL binaries from step 2
+4. Update SITL in configurator (same PR as step 2)
+   ├── Add SITL binaries as additional commit to version bump PR
    ├── Wait for configurator CI to pass
-   └── Merge SITL update PR
+   └── Merge the combined version bump + SITL PR
 
-4. Download configurator artifacts
-   ├── Download from CI run after SITL PR merged
+5. Download configurator artifacts
+   ├── Download from CI run after combined PR merged
    ├── Verify macOS DMGs (no cross-platform contamination)
    ├── Verify Windows SITL (cygwin1.dll present)
    ├── Verify Linux SITL (glibc <= 2.35)
    └── Test SITL functionality
 
-5. Generate changelog
+6. Generate changelog
    ├── List PRs since last tag
    ├── Categorize changes
    ├── **Identify incompatible settings** (./find-incompatible-settings.sh)
    └── Format release notes
 
-6. Create tags and draft releases (ONLY after artifacts verified)
+7. Create tags and draft releases (ONLY after artifacts verified)
    ├── Create draft release for firmware (targeting verified commit)
    ├── Create tag + draft release tag for configurator (targeting verified commit)
    ├── Upload verified artifacts
    └── Add release notes
 
-7. Review and publish
+8. Review and publish
    ├── Final review of draft releases
    ├── Maintainer approval
    ├── Add tag to drafty release
