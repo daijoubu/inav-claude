@@ -2,9 +2,31 @@
 
 Completed (✅) and cancelled (❌) projects.
 
-**Total Completed:** 86 | **Total Cancelled:** 4
+**Total Completed:** 136 | **Total Cancelled:** 4
 
 > **Active projects:** See [../INDEX.md](../INDEX.md)
+
+---
+
+
+### ✅ extract-discord-cache-conversations
+
+**Status:** COMPLETED (2026-02-14)
+**Type:** Tooling / Script
+**Priority:** MEDIUM
+
+Build a script to extract conversation data from the Discord client's local cache into a readable format. Developer has prior research/context on this.
+
+---
+
+
+### ✅ fix-gps-capa-poll-500ms-stall
+
+**Status:** COMPLETED (2026-02-14)
+**Type:** Bug Fix
+**Priority:** HIGH
+
+GPS position data stops being processed for 500ms every 5 seconds. u-blox capability polling waits for ACK/NAK on MON-class messages that never ACK — always hits full timeout. Discovered by breadoven during PR #11322 testing.
 
 ---
 
@@ -2367,6 +2389,488 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 **Location:** `claude/archived_projects/fix-preload-foreach-error/`
 
 ---
+
+
+### ✅ add-ray-morris-to-authors
+
+**Status:** COMPLETED
+**Type:** Documentation
+**Priority:** LOW
+
+Add "Ray Morris (Sensei)" to the INAV AUTHORS file to recognize contributions to the project.
+
+---
+
+### ✅ analyze-decompiler-file-structure
+
+**Status:** COMPLETED
+**Type:** Research / Code Organization
+**Priority:** LOW
+
+Analyze the largest transpiler files (decompiler.js, codegen.js, parser.js, etc.) to identify files that should be split and overly long functions that should be divided.
+
+---
+
+### ✅ analyze-omnibusf4-target-split
+
+**Status:** COMPLETED
+**Type:** Research
+**Priority:** MEDIUM
+
+Analyze the OMNIBUSF4 target split configuration. Details not available.
+
+---
+
+### ✅ analyze-pitch-throttle-airspeed
+
+**Status:** COMPLETED
+**Type:** Data Analysis / Testing
+**Priority:** MEDIUM
+
+Analyze real flight log data to understand how pitch and throttle affect airspeed by identifying stable flight periods and matching comparable segments with different control inputs.
+
+---
+
+### ✅ bisect-usb-msc-h743-regression
+
+**Status:** COMPLETED
+**Type:** Bug Investigation / Git Bisect
+**Priority:** HIGH
+
+Use git bisect to find the commit that broke USB Mass Storage (MSC) mode on H743 microcontrollers between INAV versions 8.0.0 and 8.0.1 (GitHub issue #10800).
+
+---
+
+### ✅ blackbox-viewer-axis-labels
+
+**Status:** COMPLETED
+**Type:** UI Enhancement
+**Priority:** MEDIUM
+
+Enhance blackbox log viewer axis labeling with zoom-responsive grid intervals and time labels to make time scale and data magnitude more intuitive.
+
+---
+
+### ✅ create-aikonf4v3-target
+
+**Status:** COMPLETED
+**Type:** New Target / Hardware Support
+**Priority:** MEDIUM
+
+Create a proper INAV target configuration for the Aikon F405 V3 flight controller board with ICM42688P gyro, W25Q128FV flash, MAX7456 OSD, and other hardware differences from the existing AIKONF4 target.
+
+---
+
+### ✅ document-transpiler-ast-types
+
+**Status:** COMPLETED
+**Type:** Documentation / Research
+**Priority:** MEDIUM
+
+Document the types of objects and AST nodes manipulated by the transpiler code, including Acorn AST node types, operators, and internal transpiler data structures.
+
+---
+
+### ✅ enable-galileo-optimize-gps-rate
+
+**Status:** COMPLETED
+**Type:** Feature / Optimization
+**Priority:** MEDIUM
+
+Implement constellation-aware GPS update rates to optimize M10 GPS performance and enable Galileo by default on M8+ receivers, with research showing M10 hardware limitations at high update rates with multiple constellations.
+
+---
+
+### ✅ feature-max-battery-current
+
+**Status:** COMPLETED
+**Type:** Feature Enhancement
+**Priority:** MEDIUM
+
+Implement a max_battery_current setting that reduces motor output when current exceeds the configured threshold to protect batteries from excessive discharge current.
+
+---
+
+### ✅ fix-ble-connection-issue (2026-01-30)
+
+**Status:** COMPLETED (2026-01-30)
+**Type:** Bug Fix
+**Priority:** MEDIUM-HIGH
+
+Fix BLE connection issue where data received at BLE layer was not counted by serial layer due to separate listener array not wired to base class, causing MSP timeouts; includes performance optimization by removing debug logging. PR #2542.
+
+---
+
+### ✅ fix-climb-rate-deadband
+
+**Status:** COMPLETED
+**Type:** Bug Fix
+**Priority:** MEDIUM
+
+Fix issue where manual climb rate doesn't match configurator setting because the RC deadband is applied twice in the altitude hold code path in navigation_multicopter.c (GitHub issue #10660).
+
+---
+
+### ✅ fix-crsf-msp-overflow
+
+**Status:** COMPLETED
+**Type:** Bug Fix (Security)
+**Priority:** HIGH
+
+Fix integer overflow vulnerability in CRSF MSP request handling where frameLength - 4 underflows to 0xFFFFFFFF when frameLength is 3, causing massive out-of-bounds memcpy writes (GitHub issue #11209).
+
+---
+
+### ✅ fix-h743-dfu-reboot (2026-01-26)
+
+**Status:** COMPLETED (2026-01-26)
+**Type:** Bug Investigation / Fix
+**Priority:** HIGH
+
+Investigate and fix issue where CLI command `dfu` reboots H743 targets but fails to enter DFU mode in INAV 9.0.0, preventing firmware updates via DFU on H743 boards. PR #11295.
+
+---
+
+### ✅ fix-i2c-speed-warning-bug
+
+**Status:** COMPLETED
+**Type:** Bug Fix
+**Priority:** MEDIUM
+
+Fix incorrect warning message "This I2C speed is too low!" that appears in the Configurator Configuration tab even when I2C speed is set to the maximum possible value.
+
+---
+
+### ✅ fix-js-programming-decompiler-warning
+
+**Status:** COMPLETED
+**Type:** Bug Fix
+**Priority:** MEDIUM
+
+Fix incorrect "Invalid PID operand" validation warning in the JavaScript Programming decompiler when decompiling logic conditions with "Set Control Profile" operation, which is not a PID operation.
+
+---
+
+### ✅ fix-mission-control-fs-undefined (2026-01-31)
+
+**Status:** COMPLETED (2026-01-31)
+**Type:** Bug Fix
+**Priority:** MEDIUM-HIGH
+
+Fix "fs is not defined" error when saving mission files from the Mission Control tab by replacing direct Node.js fs.writeFile() with window.electronAPI.writeFile() pattern. PR #2549.
+
+---
+
+### ✅ fix-pr2533-missing-settings (2026-01-25)
+
+**Status:** COMPLETED (2026-01-25)
+**Type:** Bug Investigation
+**Priority:** MEDIUM-HIGH
+
+Investigate why altitude control PID settings (nav_mc_pos_z_i, nav_mc_pos_z_d) are missing from CLI output after applying presets from merged PR #2533 in inav-configurator.
+
+---
+
+### ✅ fix-servo-mixer-logic-condition
+
+**Status:** COMPLETED
+**Type:** Bug Fix
+**Priority:** MEDIUM-HIGH
+
+Fix servo mixer not respecting logic condition activation settings, where the mix remains active regardless of whether the logic condition is true or false (GitHub issue #11069).
+
+---
+
+### ✅ fix-servo-throttle-mix-disarm
+
+**Status:** COMPLETED
+**Type:** Bug Fix / Safety Issue
+**Priority:** HIGH
+
+Fix safety issue where disarmed servo throttle mix is set to 0, which for reversed servos or negative mixer weights maps to full throttle output instead of minimum, causing full throttle on disarm.
+
+---
+
+### ✅ fix-spi-buswritebuf
+
+**Status:** COMPLETED
+**Type:** Bug Fix
+**Priority:** MEDIUM
+
+Fix incorrect register address masking in busWriteBuf() for SPI devices where the function sets the MSB (read mode, reg | 0x80) instead of clearing it (write mode, reg & 0x7F) (GitHub issue #10674).
+
+---
+
+### ✅ fix-transpiler-examples-errors
+
+**Status:** COMPLETED
+**Type:** Bug Fix
+**Priority:** MEDIUM
+
+Fix errors in transpiler examples. Details not available.
+
+---
+
+### ✅ fix-unavlib-msp-response
+
+**Status:** COMPLETED
+**Type:** Bug Fix
+**Priority:** HIGH
+
+Fix a bug in the uNAVlib Python library where certain MSP commands (MSP_RX_CONFIG, MSP_RC) fail to return response data even though the flight controller sends valid responses.
+
+---
+
+### ✅ flight-axis-override-implementation
+
+**Status:** COMPLETED
+**Type:** Feature Implementation
+**Priority:** MEDIUM
+
+Implement full compiler support for INAV flight axis angle and rate overrides (operations 45/46) in the JavaScript Programming tab transpiler, with decompilation, IntelliSense, and test coverage.
+
+---
+
+### ✅ hide-motor-direction-fixed-wing
+
+**Status:** COMPLETED
+**Type:** UI Fix
+**Priority:** MEDIUM
+
+Conditionally hide the motor direction radio box (normal/reverse) in the configurator when the aircraft type is fixed wing, as motor direction reversal is not applicable to fixed wing setups.
+
+---
+
+### ✅ identify-transpiler-generic-handlers
+
+**Status:** COMPLETED
+**Type:** Code Analysis / Refactoring Research
+**Priority:** MEDIUM
+
+Analyze the transpiler code to identify cases where specific handling for each subtype could be simplified by handling the supertype generically, focusing on genuine simplification opportunities.
+
+---
+
+### ✅ implement-3d-hardware-acceleration-auto-fallback (2026-01-31)
+
+**Status:** COMPLETED (2026-01-31)
+**Type:** Feature Enhancement
+**Priority:** MEDIUM
+
+Implement automatic fallback when 3D hardware acceleration (WebGL) fails, detecting capability at runtime and gracefully degrading to 2D alternatives for users in VMs, remote desktop, or older systems.
+
+---
+
+### ✅ improved-motor-wizard
+
+**Status:** COMPLETED
+**Type:** Feature
+**Priority:** MEDIUM
+
+Design an improved motor wizard that uses DShot beacon/beep commands to make individual motors beep, allowing users to identify motor positions by clicking on a visual diagram instead of manual dropdown selection.
+
+---
+
+### ✅ inav-firmware-code-review
+
+**Status:** COMPLETED
+**Type:** Code Review / Static Analysis
+**Priority:** MEDIUM
+
+Systematic code review of inav/src/main/ (1,366 C files, ~171,000 LOC) using two-phase strategy: automated cppcheck static analysis followed by manual Claude review of safety-critical directories.
+
+---
+
+### ✅ investigate-acc-weight-factors
+
+**Status:** COMPLETED
+**Type:** Code Analysis / Documentation
+**Priority:** MEDIUM-HIGH
+
+Analyze and document acceleration weight factors (acc_clip_factor, acc_vibration_factor, accWeight) in INAV's navigation position estimator, verifying the physics model and mathematical correctness.
+
+---
+
+### ✅ investigate-decompiler-min-bug (2026-01-29)
+
+**Status:** COMPLETED (2026-01-29)
+**Type:** Bug Investigation & Fix
+**Priority:** MEDIUM
+
+Investigate and fix decompiler bug inserting "min" in variable names (e.g., "constmincond1" instead of "const cond1"), caused by object-as-regex bug storing entire hoisted activator entry object instead of extracting .varName property. PR #2541.
+
+---
+
+### ✅ investigate-dshot-0048-bug (2026-02-01)
+
+**Status:** COMPLETED (2026-02-01)
+**Type:** Bug Investigation
+**Priority:** MEDIUM
+
+Confirmed bug where INAV rover sends incorrect DShot value 0048 (minimum reverse) when transitioning from neutral to forward after being in reverse, caused by mixer state machine not properly handling direction transitions (GitHub issue #10648).
+
+---
+
+### ✅ investigate-dshot-beeper-arming-loop (2026-01-31)
+
+**Status:** COMPLETED (2026-01-31)
+**Type:** Bug Investigation & Fix
+**Priority:** MEDIUM-HIGH
+
+Investigate and fix circular dependency where arming failures triggered DShot beeping which then blocked arming via guard delay, creating an infinite feedback loop; fixed by masking ARMING_DISABLED_DSHOT_BEEPER when it is the only blocker. PR #11306.
+
+---
+
+### ✅ investigate-esc-spinup-after-disarm (2026-01-03)
+
+**Status:** COMPLETED (2026-01-03)
+**Type:** Bug Investigation / Safety Issue
+**Priority:** HIGH
+
+Investigation of dangerous motor spinup after disarm (GitHub issue #10913), root cause identified as EEPROM save blocking preventing DSHOT frames causing ESC reboot; implementation deferred pending non-blocking flash research.
+
+---
+
+### ✅ investigate-pr11025-telemetry-corruption
+
+**Status:** COMPLETED
+**Type:** Bug Investigation / Root Cause Analysis
+**Priority:** HIGH
+
+Investigate why PR #11025 (adding airspeed, RPM, and temperature CRSF telemetry) caused existing telemetry values to stop being received due to invalid frame emission when no payload data existed, leading to its revert via PR #11139.
+
+---
+
+### ✅ investigate-pr2477-pr2491-no-conflict
+
+**Status:** COMPLETED
+**Type:** Investigation
+**Priority:** MEDIUM
+
+Investigate potential conflicts between PR #2477 and PR #2491. Details not available.
+
+---
+
+### ✅ js-function-hoisting-tool
+
+**Status:** COMPLETED
+**Type:** Feature / Tool Development
+**Priority:** MEDIUM
+
+Build a JavaScript refactoring tool that automatically hoists (extracts) function definitions while maintaining 100% semantic equivalence, with safety analysis for edge cases like variable shadowing, TDZ violations, and closure dependencies.
+
+---
+
+### ✅ js-programming-debugging-tools (2026-01-27)
+
+**Status:** COMPLETED (2026-01-27)
+**Type:** Feature Implementation
+**Priority:** MEDIUM
+
+Add three debugging features to the JavaScript Programming tab: active LC highlighting with green/gray gutter indicators (PR #2539), code sync status via Save button state, and live global variable display (PR #2540).
+
+---
+
+### ✅ organize-developer-directory
+
+**Status:** COMPLETED
+**Type:** Repository Maintenance
+**Priority:** LOW
+
+Organize the developer directory structure. Details not available.
+
+---
+
+### ✅ redesign-configurator-nav-menu
+
+**Status:** COMPLETED
+**Type:** UX Design / Mockup
+**Priority:** MEDIUM
+
+Design three alternative UI mockups for the inav-configurator's left-side navigation menu to address the current 24+ item single vertical list being too long and clunky, with proposed groupings like collapsible accordion, tabbed categories, and hybrid sidebar.
+
+---
+
+### ✅ remember-last-save-directory
+
+**Status:** COMPLETED
+**Type:** UX Enhancement
+**Priority:** MEDIUM
+
+Implement persistent "last used directory" for all file save dialogs in inav-configurator so save dialogs default to the last directory the user used, persisting across app restarts.
+
+---
+
+### ✅ review-pr-11256-passthrough-usb
+
+**Status:** COMPLETED
+**Type:** Code Review / Architecture Analysis
+**Priority:** MEDIUM-HIGH
+
+Comprehensive review of PR #11256 which adds USB flow control, line coding mirroring, and Hayes escape sequence to passthrough mode, enabling flashing of STM32 and ESP receivers through INAV's USB passthrough (13 files, 386 additions).
+
+---
+
+### ✅ sitl-wasm-configurator
+
+**Status:** COMPLETED
+**Type:** Feature / Infrastructure
+**Priority:** MEDIUM
+
+Integrate INAV SITL simulator into the Configurator as a WebAssembly module with byte-level serial transport architecture achieving 92% code reuse, eliminating need for platform-specific SITL binaries; Phases 1-5 complete, Phase 6 configurator integration in progress.
+
+---
+
+### ✅ tidy-repo-commits (2026-01-29)
+
+**Status:** COMPLETED (2026-01-29)
+**Type:** Repository Maintenance
+**Priority:** MEDIUM
+
+Batch 619 untracked and modified files into 10 organized, feature-based commits on branch chore/organize-repo-files, properly excluding 46 personal config and backup files.
+
+---
+
+### ✅ transpiler-pid-support
+
+**Status:** COMPLETED
+**Type:** Feature Implementation
+**Priority:** MEDIUM
+
+Add PID operand support for transpiler compile/decompile with tree-based decompilation producing proper nested if/sticky blocks, value computation inlining, arithmetic simplification, and GVAR action references showing variable names. Branch: decompiler-pid.
+
+---
+
+### ✅ transpiler-simplification (2025-12-11)
+
+**Status:** COMPLETED (2025-12-11)
+**Type:** Refactoring
+**Priority:** MEDIUM
+
+Implement 6 of 8 identified transpiler simplification opportunities saving ~600+ lines of code via shared modules, lookup tables replacing switch/case boilerplate, structural analysis replacing regex parsing, and dead code removal. PR #2472.
+
+---
+
+### ✅ update-msp-library-documentation
+
+**Status:** COMPLETED
+**Type:** Documentation Update
+**Priority:** MEDIUM
+
+Update internal documentation and skills to reference mspapi2 instead of uNAVlib for MSP communication, as the library author recommends the newer mspapi2 library.
+
+---
+
+### ✅ verify-pr2536-decompiler-fix (2026-01-29)
+
+**Status:** COMPLETED (2026-01-29)
+**Type:** Testing / Investigation
+**Priority:** MEDIUM
+
+Verified that PR #2536 (fix/js-programming-decompiler-airspeed) fixes the hoisting bug in maintenance-9.x by adding robust GVAR dependency tracking that prevents hoisting when it would break execution order.
+
+---
+
 
 
 - **Total Projects:** 57
