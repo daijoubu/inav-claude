@@ -26,7 +26,7 @@ git clone git@github.com:YOUR-FORK/inav.git inav
 
 
 # Clone INAV configurator
-git clone git@github.com:sensei-hacker/inav-configurator.git inav-configurator
+git clone git@github.com:YOUR-FORK/inav-configurator.git inav-configurator
 
 
 # Clone mspapi2 (MSP protocol library for testing)
