@@ -2,9 +2,217 @@
 
 Completed (✅) and cancelled (❌) projects.
 
-**Total Completed:** 97 | **Total Cancelled:** 5
+**Total Completed:** 108 | **Total Cancelled:** 5
 
 > **Active projects:** See [../INDEX.md](../INDEX.md)
+
+---
+
+### ✅ hitl-extended-testing (2026-02-15)
+
+**Status:** COMPLETED
+**Type:** Testing
+**Priority:** LOW
+**Created:** 2026-02-14
+**Completed:** 2026-02-15
+**Assignee:** Developer
+
+Complete remaining 7 HITL tests for DroneCAN - all 7 tests passed with 0% degradation over 60-minute stability run.
+
+**Results:**
+- TEST-PERF-001: GPS 50Hz, Battery 70Hz ✓
+- TEST-PERF-002: 0% degradation over 60 min ✓
+- TEST-PERF-003: dronecanUpdate() avg <1μs ✓
+- TEST-PERF-004: Memory burst recovery ✓
+- TEST-ERR-002: Corrupted frame handling ✓
+- TEST-ERR-003: Node conflict handling ✓
+- TEST-ERR-004: Invalid data handling ✓
+
+**Directory:** `completed/hitl-extended-testing/`
+**PR:** #11313 (validation complete)
+
+---
+
+### ✅ investigate-dronecan-messages-roadmap (2026-02-15)
+
+**Status:** COMPLETED
+**Type:** Investigation
+**Priority:** MEDIUM
+**Created:** 2026-02-14
+**Completed:** 2026-02-15
+**Assignee:** Developer
+
+Survey DroneCAN message catalog and produce prioritized roadmap of additional messages INAV should support.
+
+**Finding:** INAV supports 7 DroneCAN messages; identified 3 HIGH priority items:
+- BatteryInfo SOC (1-2 hours)
+- Dynamic Node Allocation (8-12 hours)
+- ESC Status (8-12 hours)
+
+**Directory:** `completed/investigate-dronecan-messages-roadmap/`
+**Issues:** [#3](https://github.com/daijoubu/inav/issues/3), [#4](https://github.com/daijoubu/inav/issues/4), [#7](https://github.com/daijoubu/inav/issues/7)
+
+---
+
+### ✅ investigate-dronecan-nodestatus-content (2026-02-15)
+
+**Status:** COMPLETED
+**Type:** Investigation
+**Priority:** MEDIUM
+**Created:** 2026-02-14
+**Completed:** 2026-02-15
+**Assignee:** Developer
+
+Investigate what INAV status should be reported in DroneCAN NodeStatus - map INAV states to health, mode, and vendor_specific_status fields.
+
+**Finding:** Current implementation broadcasts static OK/OPERATIONAL with hardcoded vendor code (1234); no real health data. Opportunity to map INAV health states and modes to NodeStatus fields; encode vendor-specific data with GPS/battery/RSSI.
+
+**Effort estimate:** 2-4 hours
+**Recommendation:** Implement health state mapping
+
+**Directory:** `completed/investigate-dronecan-nodestatus-content/`
+**Issue:** [#6](https://github.com/daijoubu/inav/issues/6)
+
+---
+
+### ✅ investigate-can-circular-buffer (2026-02-15)
+
+**Status:** COMPLETED
+**Type:** Investigation
+**Priority:** MEDIUM
+**Created:** 2026-02-14
+**Completed:** 2026-02-15
+**Assignee:** Developer
+
+Investigate switching STM32F7 CAN driver's circular buffer to INAV's common library implementation to reduce code duplication.
+
+**Finding:** CAN driver uses custom 32-slot circular buffer (good); switching to generic library provides no benefit. Recommendation: KEEP current implementation.
+
+**Directory:** `completed/investigate-can-circular-buffer/`
+**Issue:** [#5](https://github.com/daijoubu/inav/issues/5)
+
+---
+
+### ✅ investigate-dronecan-dna (2026-02-14)
+
+**Status:** COMPLETED
+**Type:** Investigation
+**Priority:** MEDIUM
+**Created:** 2026-02-14
+**Completed:** 2026-02-14
+**Assignee:** Developer
+
+Investigated DroneCAN DNA (Dynamic Node Allocation) server implementation feasibility.
+
+**Finding:** DNA server is feasible and recommended for INAV 10.x
+**Effort estimate:** 6-10 hours
+**Recommendation:** Implement simple non-redundant allocator
+
+**Directory:** `completed/investigate-dronecan-dna/`
+
+---
+
+### ✅ investigate-dronecan-battery-soc (2026-02-14)
+
+**Status:** COMPLETED
+**Type:** Investigation
+**Priority:** MEDIUM
+**Created:** 2026-02-14
+**Completed:** 2026-02-14
+**Assignee:** Developer
+
+Investigated using DroneCAN BatteryInfo SOC fields in INAV.
+
+**Finding:** BatteryInfo has state_of_charge_pct that INAV ignores
+**Effort estimate:** 3-5 hours
+**Recommendation:** Add battery_capacity_source setting (ADC/CAN)
+
+**Directory:** `completed/investigate-dronecan-battery-soc/`
+
+---
+
+### ✅ investigate-gps-messages-eph (2026-02-14)
+
+**Status:** COMPLETED
+**Type:** Investigation
+**Priority:** MEDIUM
+**Created:** 2026-02-14
+**Completed:** 2026-02-14
+**Assignee:** Developer
+
+Investigated how INAV uses EPH and GPS accuracy data.
+
+**Finding:** DroneCAN doesn't extract EPH/EPV from covariance matrix
+**Effort estimate:** 2-3 hours
+**Recommendation:** Extract EPH = sqrt(covariance[0] + covariance[2]) * 100
+
+**Directory:** `completed/investigate-gps-messages-eph/`
+
+---
+
+### ✅ dronecan-hitl-gps-tests (2026-02-14)
+
+**Status:** COMPLETED
+**Type:** Testing
+**Priority:** HIGH
+**Created:** 2026-02-14
+**Completed:** 2026-02-14
+**Assignee:** Developer (guides user)
+
+Execute previously skipped DroneCAN GPS-related HITL tests.
+
+**Results:** 9 PASS, 0 FAIL, 0 SKIP
+**Issues Fixed:**
+- Coordinate scaling bug (Fix2 1e8 → 1e7)
+- HDOP shows zero
+- Board locks up when GPS connected
+
+**Directory:** `completed/dronecan-hitl-gps-tests/`
+**PR:** https://github.com/iNavFlight/inav/pull/11313
+
+### ✅ feature-dronecan-node-filter (2026-02-14)
+
+**Status:** COMPLETED
+**Type:** Feature
+**Priority:** MEDIUM
+**Created:** 2026-02-14
+**Completed:** 2026-02-14
+**Assignee:** Developer
+
+Add DroneCAN sensor message filtering by source Node ID/battery_id.
+
+**PR:** https://github.com/daijoubu/inav/pull/new/feature/dronecan-node-filter
+**Files:** dronecan.c, dronecan.h, settings.yaml, dronecan_messages_unittest.cc
+**Tests:** 16/16 unit tests pass
+
+---
+
+### ✅ dsdlc-submodule-generation (2026-02-14)
+
+**Status:** COMPLETED
+**Type:** Code Cleanup & Documentation
+**Priority:** MEDIUM
+**Created:** 2026-02-11
+**Completed:** 2026-02-14
+**Assignee:** Developer + Manager
+**Effort:** ~8 hours
+
+Comprehensive DSDL documentation project addressing Qodo code review issue #1 on PR #11313.
+
+**Deliverables:**
+- **DSDL-GUIDE.md** - 468-line comprehensive guide covering:
+  - Current DSDL version and dsdlc tool information
+  - File inventory (119 .c + 138 .h files, ~8,219 lines)
+  - Complete listing of all used DroneCAN/UAVCAN messages
+  - Step-by-step guide for adding new DroneCAN messages
+  - Naming conventions and code generation examples
+  - File organization and CMake configuration
+  - Troubleshooting section
+
+**Location:** `claude/projects/completed/dsdlc-submodule-generation/DSDL-GUIDE.md`
+
+**Related PR:** [#11313](https://github.com/iNavFlight/inav/pull/11313)
+**Qodo Issue:** #1 (dsdlc_generated code committed)
 
 ---
 

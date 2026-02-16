@@ -149,6 +149,17 @@
           }
         ]
       }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Task",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/robs/Projects/inav-claude/.claude/hooks/post_tool_token_logger.py"
+          }
+        ]
+      }
     ]
   }
 }
