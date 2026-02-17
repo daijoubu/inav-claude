@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INAV DMA Conflict Resolver (with AT32F435)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div id="root"></div>
+    
+    <script type="module">
+        import React from 'https://esm.sh/react@18';
+        import ReactDOM from 'https://esm.sh/react-dom@18';
+        import htm from 'https://esm.sh/htm@3';
+        import * as Resolver from './dma_resolver_optimized.js';
+
+        const html = htm.bind(React.createElement);
+        const { useState } = React;
+        
+        const DMAConflictResolver = () => {
+          const [solution, setSolution] = useState(null);
+          const [processing, setProcessing] = useState(false);
+          const [tryAlternates, setTryAlternates] = useState(true);
+          const [reserveUartDma, setReserveUartDma] = useState(false);
+          const [reserveSpiDma, setReserveSpiDma] = useState(false);
+          const [mcuType, setMcuType] = useState('AT32F435');
+          const [inputText, setInputText] = useState(`DEF_TIM(TMR3, CH4, PB1, TIM_USE_OUTPUT_AUTO, 0, 3),   // PWM 1
+DEF_TIM(TMR3, CH3, PB0, TIM_USE_OUTPUT_AUTO, 0, 8),   // PWM 2
+DEF_TIM(TMR2, CH4, PA3, TIM_USE_OUTPUT_AUTO, 0, 1),   // PWM 3
+DEF_TIM(TMR2, CH3, PA2, TIM_USE_OUTPUT_AUTO, 0, 11),  // PWM 4
+DEF_TIM(TMR2, CH1, PA15, TIM_USE_OUTPUT_AUTO, 0, 12), // PWM 5
+DEF_TIM(TMR4, CH4, PB9, TIM_USE_OUTPUT_AUTO, 0, 13),  // PWM 6
+DEF_TIM(TMR4, CH3, PB8, TIM_USE_OUTPUT_AUTO, 0, 12),  // PWM 7
+DEF_TIM(TMR4, CH2, PB7, TIM_USE_OUTPUT_AUTO, 0, 10),  // PWM 8
+DEF_TIM(TMR4, CH1, PB6, TIM_USE_OUTPUT_AUTO, 0, 0),   // PWM 9
+DEF_TIM(TMR1, CH1, PA8, TIM_USE_LED, 0, 2), // LED`);
+          const [targetH, setTargetH] = useState('');
+          const [bfTimerMap, setBfTimerMap] = useState('');
+
+          const findSolution = () => {
+            setProcessing(true);
+            setSolution(null);
+            
+            setTimeout(() => {
+              const baseTimers = Resolver.parseInput(inputText);
+              const reservedDma = targetH ? Resolver.parseTargetH(targetH, mcuType, reserveUartDma, reserveSpiDma) : [];
+              const bfMapping = bfTimerMap ? Resolver.parseBetaflightTimerMap(bfTimerMap) : [];
+              
+              console.log('Parsed timers:', baseTimers);
+              console.log('Reserve UART DMA checkbox:', reserveUartDma);
+              console.log('Reserve SPI DMA checkbox:', reserveSpiDma);
+              console.log('Reserved DMA streams:', reservedDma);
+              console.log('Reserved DMA count:', reservedDma.length);
+              console.log('Betaflight mapping:', bfMapping);
+              
+              if (baseTimers.length === 0) {
+                setSolution({ success: false, error: 'No valid DEF_TIM lines found in input' });
+                setProcessing(false);
+                return;
+              }
+
+              const dmaMap = Resolver.getDmaMap(mcuType);
+              const burstDmaMap = Resolver.getBurstDmaMap(mcuType);
+              
+              // Validate parsed timers against DMA map
+              const invalidTimers = baseTimers.filter(t => {
+                const key = `${t.tim}_${t.ch}`;
+                return !dmaMap[key];
+              });
+              
+              if (invalidTimers.length > 0) {
+                const invalidList = invalidTimers.map(t => `${t.name}: ${t.tim}_${t.ch} on ${t.pin}`).join(', ');
+                setSolution({ 
+                  success: false, 
+                  error: `Invalid timer/channel combinations for ${mcuType}: ${invalidList}` 
+                });
+                setProcessing(false);
+                return;
+              }
+              
+              const result = Resolver.findSolution(
+                baseTimers,
+                reservedDma,
+                bfMapping,
+                mcuType,
+                tryAlternates,
+                dmaMap,
+                burstDmaMap
+              );
+
+              setSolution(result);
+              setProcessing(false);
+            }, 100);
+          };
+
+          return html`
+            <div class="w-full max-w-6xl mx-auto p-6 bg-gray-50 min-h-screen">
+              <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <h1 class="text-2xl font-bold text-gray-800 mb-2">INAV DMA Conflict Resolver</h1>
+                <p class="text-gray-600 mb-4">
+                  Paste your DEF_TIM definitions and find valid DMA configurations
+                </p>
+                
+                <div class="mb-4">
+                  <label class="block text-sm font-semibold text-gray-700 mb-2">
+                    Betaflight TIMER_PIN_MAP (optional - paste from Betaflight target.h)
+                  </label>
+                  <textarea
+                    value=${bfTimerMap}
+                    onInput=${(e) => setBfTimerMap(e.target.value)}
+                    class="w-full h-32 border border-gray-300 rounded p-3 font-mono text-sm"
+                    placeholder="Paste Betaflight TIMER_PIN_MAP definition here..."
+                  />
+                  ${bfTimerMap && html`
+                    <div class="mt-2 text-sm text-green-600">
+                      ✓ Betaflight mapping loaded - will use these DMA settings
+                    </div>
+                  `}
+                </div>
+
+                <div class="mb-4">
+                  <label class="block text-sm font-semibold text-gray-700 mb-2">MCU Type</label>
+                  <select 
+                    value=${mcuType}
+                    onChange=${(e) => setMcuType(e.target.value)}
+                    class="border border-gray-300 rounded px-3 py-2 w-48"
+                  >
+                    <option value="F405">STM32F405</option>
+                    <option value="F745">STM32F745</option>
+                    <option value="H743">STM32H743</option>
+                    <option value="AT32F435">AT32F435 (DMAMUX)</option>
+                  </select>
+                  ${mcuType === 'AT32F435' && html`
+                    <div class="mt-2 p-3 bg-blue-50 border border-blue-200 rounded text-sm">
+                      <strong>AT32F435 Note:</strong> This MCU uses DMAMUX for flexible DMA routing. 
+                      Each timer channel can use any available DMA channel (DMA1_CH1-7, DMA2_CH1-7 = 14 total) with proper DMAMUX configuration.
+                      <strong> Timer burst mode (DMAR) is not supported on AT32F435.</strong>
+                    </div>
+                  `}
+                </div>
+
+                <div class="mb-4">
+                  <label class="block text-sm font-semibold text-gray-700 mb-2">
+                    Timer Definitions (paste from target.c)
+                  </label>
+                  <textarea
+                    value=${inputText}
+                    onInput=${(e) => setInputText(e.target.value)}
+                    class="w-full h-64 border border-gray-300 rounded p-3 font-mono text-sm"
+                    placeholder="Paste your DEF_TIM lines here..."
+                  />
+                </div>
+
+                <div class="mb-4">
+                  <label class="block text-sm font-semibold text-gray-700 mb-2">
+                    Target Header (optional - paste target.h to detect peripheral DMA usage)
+                  </label>
+                  <textarea
+                    value=${targetH}
+                    onInput=${(e) => setTargetH(e.target.value)}
+                    class="w-full h-32 border border-gray-300 rounded p-3 font-mono text-sm"
+                    placeholder="Paste target.h content here to detect peripheral conflicts..."
+                  />
+                  ${targetH && html`
+                    <div class="mt-2 text-sm text-green-600">
+                      ✓ Target header loaded - configure which peripherals use DMA below
+                    </div>
+                  `}
+                </div>
+
+                <div class="flex flex-col gap-3 mb-4">
+                  <label class="flex items-center gap-2 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked=${tryAlternates}
+                      onChange=${(e) => setTryAlternates(e.target.checked)}
+                      class="w-4 h-4"
+                    />
+                    <span class="text-gray-700">Try alternate timer assignments</span>
+                  </label>
+                  <label class="flex items-center gap-2 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked=${reserveSpiDma}
+                      onChange=${(e) => setReserveSpiDma(e.target.checked)}
+                      class="w-4 h-4"
+                    />
+                    <span class="text-gray-700">Reserve SPI DMA streams</span>
+                    <span class="text-xs text-gray-500">(INAV uses polling, usually not needed)</span>
+                  </label>
+                  <label class="flex items-center gap-2 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked=${reserveUartDma}
+                      onChange=${(e) => setReserveUartDma(e.target.checked)}
+                      class="w-4 h-4"
+                    />
+                    <span class="text-gray-700">Reserve UART DMA streams</span>
+                    <span class="text-xs text-gray-500">(INAV uses interrupts, usually not needed)</span>
+                  </label>
+                </div>
+
+                <button
+                  onClick=${findSolution}
+                  disabled=${processing}
+                  class="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white font-semibold py-2 px-6 rounded-lg transition-colors"
+                >
+                  ${processing ? 'Analyzing...' : 'Find Solution'}
+                </button>
+              </div>
+
+              ${solution && html`
+                <div class="bg-white rounded-lg shadow-md p-6">
+                  ${solution.success ? html`
+                    <div>
+                      <div class="flex items-center gap-2 mb-4 text-green-600">
+                        <span class="text-xl">✓</span>
+                        <h2 class="text-xl font-bold text-gray-800">
+                          Solution Found for ${mcuType}!
+                          ${solution.burstMode && html`<span class="text-orange-600 ml-2">(Burst Mode Required)</span>`}
+                          ${solution.source && html`<span class="text-blue-600 ml-2">(${solution.source})</span>`}
+                        </h2>
+                      </div>
+                      
+                      ${solution.burstMode && html`
+                        <div class="mb-4 p-4 bg-orange-50 border border-orange-300 rounded-lg">
+                          <div class="font-semibold text-orange-800 mb-2">⚠ Burst Mode Required</div>
+                          <p class="text-sm text-gray-700">
+                            No solution found using per-channel DMA. This configuration requires burst mode (DMAR) 
+                            where all channels on a timer share one DMA stream. Add this to your target.h:
+                          </p>
+                          <div class="mt-2 bg-gray-800 text-green-400 p-2 rounded font-mono text-sm">
+                            #define USE_DSHOT_DMAR
+                          </div>
+                          <div class="mt-2 text-xs text-gray-600">
+                            Timer groups: ${Array.from(solution.timerGroups.entries()).map(([tim, outputs]) => 
+                              `${tim} (${outputs.join(', ')})`
+                            ).join(', ')}
+                          </div>
+                        </div>
+                      `}
+                      
+                      <div class="bg-gray-800 text-green-400 p-4 rounded-lg mb-4 font-mono text-sm overflow-x-auto">
+                        <div class="mb-2 text-gray-400">// Copy to target.c:</div>
+                        ${solution.burstMode && html`
+                          <div class="mb-2 text-yellow-400">// Note: Requires #define USE_DSHOT_DMAR in target.h</div>
+                        `}
+                        ${mcuType === 'AT32F435' && html`
+                          <div class="mb-2 text-cyan-400">// AT32F435: DMAMUX will be configured automatically</div>
+                        `}
+                        ${solution.details.map((t, idx) => html`
+                          <div key=${idx} class="leading-relaxed">
+                            DEF_TIM(${t.tim}, ${t.ch}, ${t.pin}, TIM_USE_${t.usage}, 0, ${t.dmaFlag}),${' '}
+                            <span class="text-gray-500">// ${t.name} - ${t.dma}</span>
+                            ${t.isAlt && html`<span class="text-yellow-400"> [ALT TIMER]</span>`}
+                          </div>
+                        `)}
+                        <div class="mt-4 text-gray-400 text-xs">
+                          <div>// Debug info:</div>
+                          ${solution.details.map((t, idx) => html`
+                            <div key=${idx}>
+                              // ${t.name}: Timer=${t.tim}_${t.ch}, DMA_option=${t.dmaFlag} of ${t.options}, Stream=${t.dma}
+                            </div>
+                          `)}
+                        </div>
+                      </div>
+
+                      <div class="overflow-x-auto">
+                        <table class="w-full border-collapse text-sm">
+                          <thead>
+                            <tr class="bg-gray-100">
+                              <th class="border border-gray-300 px-3 py-2 text-left">Output</th>
+                              <th class="border border-gray-300 px-3 py-2 text-left">Timer</th>
+                              <th class="border border-gray-300 px-3 py-2 text-left">Pin</th>
+                              <th class="border border-gray-300 px-3 py-2 text-left">DMA Flag</th>
+                              <th class="border border-gray-300 px-3 py-2 text-left">DMA Assignment</th>
+                              <th class="border border-gray-300 px-3 py-2 text-left">Changed</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            ${solution.details.map((t, idx) => html`
+                              <tr key=${idx} class=${idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                                <td class="border border-gray-300 px-3 py-2 font-semibold">${t.name}</td>
+                                <td class="border border-gray-300 px-3 py-2 font-mono">${t.tim}_${t.ch}</td>
+                                <td class="border border-gray-300 px-3 py-2 font-mono">${t.pin}</td>
+                                <td class="border border-gray-300 px-3 py-2 font-mono text-blue-600 font-bold">${t.dmaFlag}</td>
+                                <td class="border border-gray-300 px-3 py-2 font-mono text-sm">${t.dma}</td>
+                                <td class="border border-gray-300 px-3 py-2 text-xs">
+                                  ${t.isAlt ? html`
+                                    <span class="text-orange-600 font-semibold">Alt Timer</span>
+                                  ` : html`
+                                    <span class="text-gray-400">Original</span>
+                                  `}
+                                </td>
+                              </tr>
+                            `)}
+                          </tbody>
+                        </table>
+                      </div>
+
+                      <div class="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                        <p class="text-sm text-gray-700">
+                          <strong>✓ No conflicts found</strong> - ${solution.burstMode ? 
+                            'Using burst mode DMA (one stream per timer)' : 
+                            mcuType === 'AT32F435' ? 
+                            'AT32F435 DMAMUX provides flexible routing - all channels are unique' :
+                            'All DMA streams are unique and no timer channels are duplicated'
+                          }.
+                          ${solution.reservedDma && solution.reservedDma.length > 0 && html`
+                            <span class="block mt-2">
+                              Reserved DMA streams from peripherals: ${solution.reservedDma.map(r => 
+                                `${r.name} (${Resolver.dmaToString(r.dma, mcuType)})`
+                              ).join(', ')}
+                            </span>
+                          `}
+                        </p>
+                      </div>
+                    </div>
+                  ` : html`
+                    <div class="flex items-center gap-2">
+                      <span class="text-red-600 text-xl">✗</span>
+                      <div class="w-full">
+                        <h2 class="text-xl font-bold text-gray-800">No Solution Found</h2>
+                        <p class="text-gray-600 mt-2">${solution.error || 'Unable to find valid configuration'}</p>
+                        <div class="mt-3 p-3 bg-red-50 border border-red-200 rounded">
+                          <p class="text-sm text-gray-700">Try enabling alternate timer assignments or check for:</p>
+                          <ul class="text-sm text-gray-700 list-disc list-inside mt-2">
+                            <li>Multiple outputs on same timer channel</li>
+                            <li>Insufficient DMA streams available</li>
+                            <li>Invalid timer/pin combinations</li>
+                            ${mcuType === 'AT32F435' && html`
+                              <li>Note: AT32F435 has very flexible DMAMUX - conflicts should be rare</li>
+                            `}
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  `}
+                </div>
+              `}
+            </div>
+          `;
+        };
+
+        ReactDOM.render(html`<${DMAConflictResolver} />`, document.getElementById('root'));
+    </script>
+</body>
+</html>
+<!--
+```
+
+## File Structure:
+```
+project/
+├── index.html                    (main HTML file)
+├── dma_maps.js                   (all timer/DMA mappings)
+└── dma_resolver_optimized.js    (optimized solver logic)
+```
+
+## To Use:
+
+1. Save all three files in the same directory
+2. Open `index.html` in a modern browser (must support ES modules)
+3. The optimized solver should find solutions **instantly** for AT32F435!
+
+The optimized version should show you something like:
+```
+Starting optimized backtracking solver...
+Solution found after exploring 15 nodes (pruned 87)
+-->
+
