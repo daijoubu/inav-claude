@@ -1,0 +1,109 @@
+# start the command batch
+batch start
+
+# resources
+
+# Timer overrides
+
+# Outputs [servo]
+
+# safehome
+
+# Fixed Wing Approach
+
+# geozone
+
+# geozone vertices
+
+# features
+feature RSSI_ADC
+feature PWM_OUTPUT_ENABLE
+feature LED_STRIP
+feature DASHBOARD
+
+# beeper
+
+# blackbox
+blackbox -NAV_ACC
+blackbox NAV_POS
+blackbox NAV_PID
+blackbox MAG
+blackbox ACC
+blackbox ATTI
+blackbox RC_DATA
+blackbox RC_COMMAND
+blackbox -GYRO_RAW
+blackbox -PEAKS_R
+blackbox -PEAKS_P
+blackbox -PEAKS_Y
+
+# LEDs
+led 0 0,0::CBE:13
+led 1 1,0::CE:2
+
+# Modes [aux]
+aux 0 0 0 1500 2100
+aux 1 13 1 900 2100
+aux 2 47 1 1500 2100
+aux 3 48 1 1500 2100
+
+# Programming: logic
+logic 1 1 -1 2 5 0 0 40 0
+logic 2 1 1 18 0 0 0 19 0
+logic 3 0 1 0 0 0 0 0 0
+logic 4 0 1 0 0 0 0 0 0
+logic 6 0 -1 12 4 1 0 0 0
+logic 7 1 -1 19 0 0 0 1 0
+logic 9 1 -1 16 5 0 0 50 0
+logic 10 1 -1 38 0 6 4 9 0
+
+
+# set mag_hardware = NONE
+set pitot_hardware = NONE
+
+# master
+set rssi_source = ADC
+set motor_pwm_protocol = DSHOT150
+set failsafe_procedure = DROP
+set applied_defaults = 1
+set airmode_type = THROTTLE_THRESHOLD
+set dshot_beeper_enabled = OFF
+
+# control_profile
+control_profile 1
+
+# mixer_profile
+mixer_profile 1
+
+set model_preview_type = 3
+set motorstop_on_low = OFF
+
+# Mixer: motor mixer
+
+mmix reset
+
+mmix 0  1.000 -1.000  1.000 -1.000
+mmix 1  1.000 -1.000 -1.000  1.000
+mmix 2  1.000  1.000  1.000  1.000
+mmix 3  1.000  1.000 -1.000 -1.000
+
+
+serial 0 1 115200 115200 0 115200
+serial 20 32769 115200 115200 0 115200
+# set log_level = DEBUG
+
+FEATURE_RSSI_ADC
+
+set receiver_type = MSP
+
+set beeper_pwm_mode = OFF
+
+set i2c_speed = 200KHZ
+
+# save configuration
+save
+
+# end the command batch
+batch end
+
+# 

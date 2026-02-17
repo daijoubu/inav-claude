@@ -1,0 +1,80 @@
+--- dma_resolver.html	2025-10-17 23:17:02.702848246 -0500
++++ at32f435_prefer_dma.html	2025-10-17 23:39:29.110975859 -0500
+@@ -296,10 +296,10 @@
+             const timers = [];
+             
+             lines.forEach((line, lineNum) => {
+-              // More flexible regex - handles various formats
+-              const match = line.match(/DEF_TIM\s*\(\s*(\w+)\s*,\s*(\w+)\s*,\s*(\w+)\s*,\s*([^,]+)\s*,\s*\d+\s*,\s*\d+\s*\)\s*,?\s*(?:\/\/\s*(.+))?/);
++              // Updated regex to capture both dmaOpt parameters
++              const match = line.match(/DEF_TIM\s*\(\s*(\w+)\s*,\s*(\w+)\s*,\s*(\w+)\s*,\s*([^,]+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)\s*,?\s*(?:\/\/\s*(.+))?/);
+               if (match) {
+-                const [, tim, ch, pin, usage, name] = match;
++                const [, tim, ch, pin, usage, dmaOpt1, dmaOpt2, name] = match;
+                 const cleanUsage = usage.trim().replace(/^TIM_USE_/, '');
+                 timers.push({
+                   name: name ? name.trim() : `Output${lineNum}`,
+@@ -308,7 +308,8 @@
+                   pin: pin.trim(),
+                   usage: cleanUsage,
+                   originalTim: tim.trim(),
+-                  originalCh: ch.trim()
++                  originalCh: ch.trim(),
++                  inputDmaFlag: parseInt(dmaOpt2) // Capture the user's DMA flag
+                 });
+               }
+             });
+@@ -474,8 +475,45 @@
+               let bestSolution = null;
+               let useBurstMode = false;
+ 
++
++
++
++              console.log('Phase 0: Checking user input configuration...');
++              
++              const inputDmaFlags = baseTimers.map(t => t.inputDmaFlag || 0);
++              const conflicts = checkConflicts(baseTimers, inputDmaFlags, dmaMap, reservedDma);
++              
++              if (conflicts.length === 0) {
++                const details = inputDmaFlags.map((opt, idx) => {
++                  const timer = baseTimers[idx];
++                  const key = `${timer.tim}_${timer.ch}`;
++                  const dmaOptions = dmaMap[key];
++                  const dma = dmaOptions ? dmaOptions[opt] : null;
++                  
++                  return {
++                    ...timer,
++                    dmaFlag: opt,
++                    dma: dma ? dmaToString(dma) : 'NONE',
++                    options: dmaOptions ? dmaOptions.length : 0
++                  };
++                });
++                
++                bestSolution = { 
++                  success: true, 
++                  details, 
++                  burstMode: false,
++                  reservedDma: reservedDma,
++                  source: 'Original Input (no changes needed)'
++                };
++                console.log('✓ Original input configuration works - no changes needed!');
++              } else {
++                console.log('Original input has conflicts:', conflicts);
++                console.log('Will search for alternative configuration...');
++              }
++
++
+               // Check if Betaflight mapping is provided
+-              if (bfMapping.length > 0) {
++              if (!bestSolution && bfMapping.length > 0) {
+                 console.log('Using Betaflight TIMER_PIN_MAP configuration...');
+                 
+                 // Apply Betaflight DMA options to matching timers
+@@ -922,4 +960,4 @@
+         ReactDOM.render(<DMAConflictResolver />, document.getElementById('root'));
+     </script>
+ </body>
+-</html>
+\ No newline at end of file
++</html>

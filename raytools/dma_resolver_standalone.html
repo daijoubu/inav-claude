@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INAV DMA Conflict Resolver</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div id="root"></div>
+    
+    <script type="text/babel">
+        const { useState } = React;
+        
+        const DMAConflictResolver = () => {
+          const [solution, setSolution] = useState(null);
+          const [processing, setProcessing] = useState(false);
+          const [tryAlternates, setTryAlternates] = useState(true);
+          const [mcuType, setMcuType] = useState('F405');
+          const [inputText, setInputText] = useState(`DEF_TIM(TIM1, CH1, PA8, TIM_USE_OUTPUT_AUTO, 0, 0), // S1
+DEF_TIM(TIM1, CH2, PA9, TIM_USE_OUTPUT_AUTO, 0, 1), // S2
+DEF_TIM(TIM2, CH3, PB10, TIM_USE_OUTPUT_AUTO, 0, 0), // S3
+DEF_TIM(TIM2, CH4, PB11, TIM_USE_OUTPUT_AUTO, 0, 1), // S4(was CH3)
+DEF_TIM(TIM4, CH2, PB7, TIM_USE_OUTPUT_AUTO, 0, 0), // S5
+DEF_TIM(TIM4, CH1, PB6, TIM_USE_OUTPUT_AUTO, 0, 0), // S6
+DEF_TIM(TIM3, CH3, PB0, TIM_USE_OUTPUT_AUTO, 0, 0), // S7
+DEF_TIM(TIM3, CH4, PB1, TIM_USE_OUTPUT_AUTO, 0, 0), // S8
+DEF_TIM(TIM8, CH4, PC9, TIM_USE_LED, 0, 0), // LED`);
+
+          // DMA mappings for different MCUs
+          const dmaMapF405 = {
+            'TIM1_CH1': [[2,6,0], [2,1,6], [2,3,6]],
+            'TIM1_CH2': [[2,6,0], [2,2,6]],
+            'TIM1_CH3': [[2,6,0], [2,6,6]],
+            'TIM1_CH4': [[2,4,6]],
+            'TIM2_CH1': [[1,5,3]],
+            'TIM2_CH2': [[1,6,3]],
+            'TIM2_CH3': [[1,1,3]],
+            'TIM2_CH4': [[1,7,3], [1,6,3]],
+            'TIM3_CH1': [[1,4,5]],
+            'TIM3_CH2': [[1,5,5]],
+            'TIM3_CH3': [[1,7,5]],
+            'TIM3_CH4': [[1,2,5]],
+            'TIM4_CH1': [[1,0,2]],
+            'TIM4_CH2': [[1,3,2]],
+            'TIM4_CH3': [[1,7,2]],
+            'TIM5_CH1': [[1,2,6]],
+            'TIM5_CH2': [[1,4,6]],
+            'TIM5_CH3': [[1,0,6]],
+            'TIM5_CH4': [[1,1,6], [1,3,6]],
+            'TIM8_CH1': [[2,2,0], [2,2,7]],
+            'TIM8_CH2': [[2,2,0], [2,3,7]],
+            'TIM8_CH3': [[2,2,0], [2,4,7]],
+            'TIM8_CH4': [[2,7,7]],
+          };
+
+          const dmaMapF7 = {
+            'TIM1_CH1': [[2,6,0], [2,1,6], [2,3,6]],
+            'TIM1_CH2': [[2,6,0], [2,2,6]],
+            'TIM1_CH3': [[2,6,0], [2,6,6]],
+            'TIM1_CH4': [[2,4,6]],
+            'TIM2_CH1': [[1,5,3]],
+            'TIM2_CH2': [[1,6,3]],
+            'TIM2_CH3': [[1,1,3]],
+            'TIM2_CH4': [[1,7,3], [1,6,3]],
+            'TIM3_CH1': [[1,4,5]],
+            'TIM3_CH2': [[1,5,5]],
+            'TIM3_CH3': [[1,7,5]],
+            'TIM3_CH4': [[1,2,5]],
+            'TIM4_CH1': [[1,0,2]],
+            'TIM4_CH2': [[1,3,2]],
+            'TIM4_CH3': [[1,7,2]],
+            'TIM5_CH1': [[1,2,6]],
+            'TIM5_CH2': [[1,4,6]],
+            'TIM5_CH3': [[1,0,6]],
+            'TIM5_CH4': [[1,1,6], [1,3,6]],
+            'TIM8_CH1': [[2,2,0], [2,2,7]],
+            'TIM8_CH2': [[2,2,0], [2,3,7]],
+            'TIM8_CH3': [[2,2,0], [2,4,7]],
+            'TIM8_CH4': [[2,7,7]],
+            'TIM12_CH1': [[1,0,6]],
+            'TIM12_CH2': [[1,7,6]],
+          };
+
+          // H7 uses DMAMUX - different architecture
+          const dmaMapH7 = {
+            'TIM1_CH1': [[1,0,0], [1,1,0], [1,2,0]],
+            'TIM1_CH2': [[1,3,0], [1,4,0]],
+            'TIM1_CH3': [[1,5,0], [1,6,0]],
+            'TIM1_CH4': [[1,7,0]],
+            'TIM2_CH1': [[1,0,0], [1,1,0]],
+            'TIM2_CH2': [[1,2,0], [1,3,0]],
+            'TIM2_CH3': [[1,4,0], [1,5,0]],
+            'TIM2_CH4': [[1,6,0], [1,7,0]],
+            'TIM3_CH1': [[1,0,0], [1,1,0]],
+            'TIM3_CH2': [[1,2,0], [1,3,0]],
+            'TIM3_CH3': [[1,4,0], [1,5,0]],
+            'TIM3_CH4': [[1,6,0], [1,7,0]],
+            'TIM4_CH1': [[1,0,0], [1,1,0]],
+            'TIM4_CH2': [[1,2,0], [1,3,0]],
+            'TIM4_CH3': [[1,4,0], [1,5,0]],
+            'TIM4_CH4': [[1,6,0], [1,7,0]],
+            'TIM5_CH1': [[1,0,0], [1,1,0]],
+            'TIM5_CH2': [[1,2,0], [1,3,0]],
+            'TIM5_CH3': [[1,4,0], [1,5,0]],
+            'TIM5_CH4': [[1,6,0], [1,7,0]],
+            'TIM8_CH1': [[2,0,0], [2,1,0]],
+            'TIM8_CH2': [[2,2,0], [2,3,0]],
+            'TIM8_CH3': [[2,4,0], [2,5,0]],
+            'TIM8_CH4': [[2,6,0], [2,7,0]],
+            'TIM12_CH1': [[1,0,0]],
+            'TIM12_CH2': [[1,1,0]],
+            'TIM15_CH1': [[1,0,0]],
+          };
+
+          const getDmaMap = () => {
+            switch(mcuType) {
+              case 'F405': return dmaMapF405;
+              case 'F745': return dmaMapF7;
+              case 'H743': return dmaMapH7;
+              default: 
+                console.warn(`Unknown MCU type: ${mcuType}, defaulting to F405`);
+                return dmaMapF405;
+            }
+          };
+
+          // Simplified pin alternates - just common ones
+          const pinAlternatesCommon = {
+            'PA8': [{ tim: 'TIM1', ch: 'CH1' }],
+            'PA9': [{ tim: 'TIM1', ch: 'CH2' }],
+            'PA10': [{ tim: 'TIM1', ch: 'CH3' }],
+            'PA11': [{ tim: 'TIM1', ch: 'CH4' }],
+            'PA0': [{ tim: 'TIM2', ch: 'CH1' }, { tim: 'TIM5', ch: 'CH1' }],
+            'PA1': [{ tim: 'TIM2', ch: 'CH2' }, { tim: 'TIM5', ch: 'CH2' }],
+            'PA2': [{ tim: 'TIM2', ch: 'CH3' }, { tim: 'TIM5', ch: 'CH3' }],
+            'PA3': [{ tim: 'TIM2', ch: 'CH4' }, { tim: 'TIM5', ch: 'CH4' }],
+            'PA5': [{ tim: 'TIM2', ch: 'CH1' }],
+            'PA6': [{ tim: 'TIM3', ch: 'CH1' }],
+            'PA7': [{ tim: 'TIM3', ch: 'CH2' }],
+            'PB0': [{ tim: 'TIM3', ch: 'CH3' }],
+            'PB1': [{ tim: 'TIM3', ch: 'CH4' }],
+            'PB4': [{ tim: 'TIM3', ch: 'CH1' }],
+            'PB5': [{ tim: 'TIM3', ch: 'CH2' }],
+            'PB6': [{ tim: 'TIM4', ch: 'CH1' }],
+            'PB7': [{ tim: 'TIM4', ch: 'CH2' }],
+            'PB8': [{ tim: 'TIM4', ch: 'CH3' }],
+            'PB9': [{ tim: 'TIM4', ch: 'CH4' }],
+            'PB10': [{ tim: 'TIM2', ch: 'CH3' }],
+            'PB11': [{ tim: 'TIM2', ch: 'CH4' }, { tim: 'TIM2', ch: 'CH3' }],
+            'PC6': [{ tim: 'TIM3', ch: 'CH1' }, { tim: 'TIM8', ch: 'CH1' }],
+            'PC7': [{ tim: 'TIM3', ch: 'CH2' }, { tim: 'TIM8', ch: 'CH2' }],
+            'PC8': [{ tim: 'TIM3', ch: 'CH3' }, { tim: 'TIM8', ch: 'CH3' }],
+            'PC9': [{ tim: 'TIM3', ch: 'CH4' }, { tim: 'TIM8', ch: 'CH4' }],
+            'PD12': [{ tim: 'TIM4', ch: 'CH1' }],
+            'PD13': [{ tim: 'TIM4', ch: 'CH2' }],
+            'PD14': [{ tim: 'TIM4', ch: 'CH3' }],
+            'PD15': [{ tim: 'TIM4', ch: 'CH4' }],
+            'PE5': [{ tim: 'TIM15', ch: 'CH1' }],
+            'PE6': [{ tim: 'TIM15', ch: 'CH2' }],
+            'PE9': [{ tim: 'TIM1', ch: 'CH1' }],
+            'PE11': [{ tim: 'TIM1', ch: 'CH2' }],
+            'PE13': [{ tim: 'TIM1', ch: 'CH3' }],
+            'PE14': [{ tim: 'TIM1', ch: 'CH4' }],
+          };
+
+          const parseInput = (text) => {
+            const lines = text.split('\n');
+            const timers = [];
+            
+            lines.forEach((line, lineNum) => {
+              // More flexible regex - handles various formats
+              const match = line.match(/DEF_TIM\s*\(\s*(\w+)\s*,\s*(\w+)\s*,\s*(\w+)\s*,\s*([^,]+)\s*,\s*\d+\s*,\s*\d+\s*\)\s*,?\s*(?:\/\/\s*(.+))?/);
+              if (match) {
+                const [, tim, ch, pin, usage, name] = match;
+                const cleanUsage = usage.trim().replace(/^TIM_USE_/, '');
+                timers.push({
+                  name: name ? name.trim() : `Output${lineNum}`,
+                  tim: tim.trim(),
+                  ch: ch.trim(),
+                  pin: pin.trim(),
+                  usage: cleanUsage,
+                  originalTim: tim.trim(),
+                  originalCh: ch.trim()
+                });
+              }
+            });
+            
+            return timers;
+          };
+
+          const dmaToString = (dma) => mcuType === 'H743' 
+            ? `DMA${dma[0]} Stream ${dma[1]}` 
+            : `DMA${dma[0]} Stream ${dma[1]}`;
+
+          const checkConflicts = (timers, dmaFlags, dmaMap) => {
+            const usedStreams = new Map();
+            const usedTimerChannels = new Map();
+            const conflicts = [];
+
+            timers.forEach((timer, idx) => {
+              const key = `${timer.tim}_${timer.ch}`;
+              
+              if (usedTimerChannels.has(key)) {
+                conflicts.push({
+                  type: 'timer_channel',
+                  timer1: usedTimerChannels.get(key),
+                  timer2: timer.name,
+                  issue: `Both use ${key} (same timer channel can't drive two pins)`
+                });
+              } else {
+                usedTimerChannels.set(key, timer.name);
+              }
+              
+              const dmaOptions = dmaMap[key];
+              
+              if (!dmaOptions) {
+                conflicts.push({
+                  type: 'missing_dma',
+                  timer: timer.name,
+                  issue: `No DMA mapping for ${key}`
+                });
+                return;
+              }
+              
+              const opt = dmaFlags[idx];
+              if (opt >= dmaOptions.length) return;
+              
+              const dma = dmaOptions[opt];
+              const streamKey = `${dma[0]}_${dma[1]}`;
+              
+              if (usedStreams.has(streamKey)) {
+                conflicts.push({
+                  type: 'dma_stream',
+                  timer1: usedStreams.get(streamKey),
+                  timer2: timer.name,
+                  stream: dmaToString(dma)
+                });
+              } else {
+                usedStreams.set(streamKey, timer.name);
+              }
+            });
+
+            return conflicts;
+          };
+
+          const findSolution = () => {
+            setProcessing(true);
+            setSolution(null);
+            
+            setTimeout(() => {
+              const baseTimers = parseInput(inputText);
+              
+              if (baseTimers.length === 0) {
+                setSolution({ success: false, error: 'No valid DEF_TIM lines found in input' });
+                setProcessing(false);
+                return;
+              }
+
+              const dmaMap = getDmaMap();
+              
+              // Validate parsed timers against DMA map
+              const invalidTimers = baseTimers.filter(t => {
+                const key = `${t.tim}_${t.ch}`;
+                return !dmaMap[key];
+              });
+              
+              if (invalidTimers.length > 0) {
+                const invalidList = invalidTimers.map(t => `${t.name}: ${t.tim}_${t.ch} on ${t.pin}`).join(', ');
+                setSolution({ 
+                  success: false, 
+                  error: `Invalid timer/channel combinations for ${mcuType}: ${invalidList}` 
+                });
+                setProcessing(false);
+                return;
+              }
+              
+              let bestSolution = null;
+
+              const generateTimerConfigs = (idx, current) => {
+                if (idx === baseTimers.length) {
+                  return [current];
+                }
+
+                const base = baseTimers[idx];
+                const alternates = pinAlternatesCommon[base.pin] || [{ tim: base.tim, ch: base.ch }];
+                const configs = [];
+
+                if (tryAlternates && alternates.length > 1) {
+                  alternates.forEach(alt => {
+                    const nextConfigs = generateTimerConfigs(idx + 1, [
+                      ...current,
+                      { 
+                        ...base, 
+                        tim: alt.tim, 
+                        ch: alt.ch, 
+                        isAlt: alt.tim !== base.originalTim || alt.ch !== base.originalCh 
+                      }
+                    ]);
+                    configs.push(...nextConfigs);
+                  });
+                } else {
+                  const primary = alternates[0] || { tim: base.tim, ch: base.ch };
+                  const nextConfigs = generateTimerConfigs(idx + 1, [
+                    ...current,
+                    { 
+                      ...base, 
+                      tim: primary.tim, 
+                      ch: primary.ch, 
+                      isAlt: primary.tim !== base.originalTim || primary.ch !== base.originalCh 
+                    }
+                  ]);
+                  configs.push(...nextConfigs);
+                }
+
+                return configs;
+              };
+
+              const timerConfigs = generateTimerConfigs(0, []);
+              console.log(`Testing ${timerConfigs.length} timer configurations for ${mcuType}...`);
+              
+              const maxConfigsToTest = 10000;
+              if (timerConfigs.length > maxConfigsToTest) {
+                timerConfigs.length = maxConfigsToTest;
+              }
+
+              for (const timerConfig of timerConfigs) {
+                const maxOptions = timerConfig.map(t => {
+                  const key = `${t.tim}_${t.ch}`;
+                  return dmaMap[key] ? dmaMap[key].length : 1;
+                });
+
+                const tryDmaFlags = (idx, current) => {
+                  if (idx === timerConfig.length) {
+                    const conflicts = checkConflicts(timerConfig, current, dmaMap);
+                    if (conflicts.length === 0) {
+                      return current;
+                    }
+                    return null;
+                  }
+
+                  for (let opt = 0; opt < maxOptions[idx]; opt++) {
+                    const result = tryDmaFlags(idx + 1, [...current, opt]);
+                    if (result) return result;
+                  }
+                  return null;
+                };
+
+                const dmaFlags = tryDmaFlags(0, []);
+                
+                if (dmaFlags) {
+                  const details = dmaFlags.map((opt, idx) => {
+                    const timer = timerConfig[idx];
+                    const key = `${timer.tim}_${timer.ch}`;
+                    const dmaOptions = dmaMap[key];
+                    const dma = dmaOptions ? dmaOptions[opt] : null;
+                    
+                    return {
+                      ...timer,
+                      dmaFlag: opt,
+                      dma: dma ? dmaToString(dma) : 'NONE',
+                      options: dmaOptions ? dmaOptions.length : 0
+                    };
+                  });
+                  
+                  bestSolution = { success: true, details };
+                  break;
+                }
+              }
+
+              if (bestSolution) {
+                setSolution(bestSolution);
+              } else {
+                setSolution({ success: false, error: 'No valid configuration found' });
+              }
+              
+              setProcessing(false);
+            }, 100);
+          };
+
+          return (
+            <div className="w-full max-w-6xl mx-auto p-6 bg-gray-50 min-h-screen">
+              <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+                <h1 className="text-2xl font-bold text-gray-800 mb-2">INAV DMA Conflict Resolver</h1>
+                <p className="text-gray-600 mb-4">
+                  Paste your DEF_TIM definitions and find valid DMA configurations
+                </p>
+                
+                <div className="mb-4">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">MCU Type</label>
+                  <select 
+                    value={mcuType} 
+                    onChange={(e) => setMcuType(e.target.value)}
+                    className="border border-gray-300 rounded px-3 py-2 w-48"
+                  >
+                    <option value="F405">STM32F405</option>
+                    <option value="F745">STM32F745</option>
+                    <option value="H743">STM32H743</option>
+                  </select>
+                </div>
+
+                <div className="mb-4">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Timer Definitions (paste from target.c)
+                  </label>
+                  <textarea
+                    rows="6"
+                    color="30"
+                    value={inputText}
+                    onChange={(e) => setInputText(e.target.value)}
+                    className="w-full h-64 border border-gray-300 rounded p-3 font-mono text-sm"
+                    placeholder="Paste your DEF_TIM lines here..."
+                  />
+                </div>
+
+                <div className="flex items-center gap-4 mb-4">
+                  <label className="flex items-center gap-2 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={tryAlternates}
+                      onChange={(e) => setTryAlternates(e.target.checked)}
+                      className="w-4 h-4"
+                    />
+                    <span className="text-gray-700">Try alternate timer assignments</span>
+                  </label>
+                </div>
+
+                <button
+                  onClick={findSolution}
+                  disabled={processing}
+                  className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white font-semibold py-2 px-6 rounded-lg transition-colors"
+                >
+                  {processing ? 'Analyzing...' : 'Find Solution'}
+                </button>
+              </div>
+
+              {solution && (
+                <div className="bg-white rounded-lg shadow-md p-6">
+                  {solution.success ? (
+                    <>
+                      <div className="flex items-center gap-2 mb-4 text-green-600">
+                        <span className="text-xl">✓</span>
+                        <h2 className="text-xl font-bold text-gray-800">Solution Found for {mcuType}!</h2>
+                      </div>
+                      
+                      <div className="bg-gray-800 text-green-400 p-4 rounded-lg mb-4 font-mono text-sm overflow-x-auto">
+                        <div className="mb-2 text-gray-400">// Copy to target.c:</div>
+                        {solution.details.map((t, idx) => (
+                          <div key={idx} className="leading-relaxed">
+                            DEF_TIM({t.tim}, {t.ch}, {t.pin}, TIM_USE_{t.usage}, 0, {t.dmaFlag}),{' '}
+                            <span className="text-gray-500">// {t.name} - {t.dma}</span>
+                            {t.isAlt && <span className="text-yellow-400"> [ALT TIMER]</span>}
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="overflow-x-auto">
+                        <table className="w-full border-collapse text-sm">
+                          <thead>
+                            <tr className="bg-gray-100">
+                              <th className="border border-gray-300 px-3 py-2 text-left">Output</th>
+                              <th className="border border-gray-300 px-3 py-2 text-left">Timer</th>
+                              <th className="border border-gray-300 px-3 py-2 text-left">Pin</th>
+                              <th className="border border-gray-300 px-3 py-2 text-left">DMA Flag</th>
+                              <th className="border border-gray-300 px-3 py-2 text-left">DMA Stream</th>
+                              <th className="border border-gray-300 px-3 py-2 text-left">Changed</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {solution.details.map((t, idx) => (
+                              <tr key={idx} className={idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                                <td className="border border-gray-300 px-3 py-2 font-semibold">{t.name}</td>
+                                <td className="border border-gray-300 px-3 py-2 font-mono">{t.tim}_{t.ch}</td>
+                                <td className="border border-gray-300 px-3 py-2 font-mono">{t.pin}</td>
+                                <td className="border border-gray-300 px-3 py-2 font-mono text-blue-600 font-bold">{t.dmaFlag}</td>
+                                <td className="border border-gray-300 px-3 py-2 font-mono text-sm">{t.dma}</td>
+                                <td className="border border-gray-300 px-3 py-2 text-xs">
+                                  {t.isAlt ? (
+                                    <span className="text-orange-600 font-semibold">Alt Timer</span>
+                                  ) : (
+                                    <span className="text-gray-400">Original</span>
+                                  )}
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+
+                      <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                        <p className="text-sm text-gray-700">
+                          <strong>✓ No conflicts found</strong> - All DMA streams are unique and no timer channels are duplicated.
+                        </p>
+                      </div>
+                    </>
+                  ) : (
+                    <div className="flex items-center gap-2">
+                      <span className="text-red-600 text-xl">✗</span>
+                      <div className="w-full">
+                        <h2 className="text-xl font-bold text-gray-800">No Solution Found</h2>
+                        <p className="text-gray-600 mt-2">{solution.error || 'Unable to find valid configuration'}</p>
+                        <div className="mt-3 p-3 bg-red-50 border border-red-200 rounded">
+                          <p className="text-sm text-gray-700">Try enabling alternate timer assignments or check for:</p>
+                          <ul className="text-sm text-gray-700 list-disc list-inside mt-2">
+                            <li>Multiple outputs on same timer channel</li>
+                            <li>Insufficient DMA streams available</li>
+                            <li>Invalid timer/pin combinations</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          );
+        };
+
+        ReactDOM.render(<DMAConflictResolver />, document.getElementById('root'));
+    </script>
+</body>
+</html>
