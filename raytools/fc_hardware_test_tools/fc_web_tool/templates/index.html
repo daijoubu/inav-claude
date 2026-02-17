@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Flight Controller Tool</title>
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            background: #1a1a1a;
+            color: #fff;
+            padding: 10px;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: #2a2a2a;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .status {
+            font-size: 14px;
+            color: #888;
+        }
+
+        .status.connected {
+            color: #4caf50;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 15px;
+            overflow-x: auto;
+        }
+
+        .tab {
+            flex: 1;
+            min-width: 80px;
+            padding: 12px;
+            background: #2a2a2a;
+            border: none;
+            color: #888;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.2s;
+        }
+
+        .tab.active {
+            background: #0066cc;
+            color: #fff;
+        }
+
+        .tab-content {
+            display: none;
+            background: #2a2a2a;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .warning {
+            background: #ff5252;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .info-box {
+            background: #333;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .info-box h3 {
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #888;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        button {
+            flex: 1;
+            min-width: 120px;
+            padding: 15px;
+            background: #0066cc;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            touch-action: manipulation;
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        button:disabled {
+            background: #444;
+            color: #888;
+            cursor: not-allowed;
+        }
+
+        button.danger {
+            background: #ff5252;
+        }
+
+        button.success {
+            background: #4caf50;
+        }
+
+        .log {
+            background: #1a1a1a;
+            padding: 10px;
+            border-radius: 8px;
+            max-height: 200px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 12px;
+            line-height: 1.4;
+        }
+
+        .log-entry {
+            margin-bottom: 5px;
+            color: #888;
+        }
+
+        .port-list {
+            margin-top: 15px;
+        }
+
+        .port-item {
+            background: #1a1a1a;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .port-info {
+            flex: 1;
+        }
+
+        .port-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .port-functions {
+            font-size: 12px;
+            color: #888;
+        }
+
+        .switch {
+            position: relative;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #444;
+            transition: 0.3s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: 0.3s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #0066cc;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        .adc-display {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .adc-value {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .adc-label {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        .adc-number {
+            font-size: 32px;
+            font-weight: bold;
+            color: #4caf50;
+        }
+
+        @media (max-width: 600px) {
+            .button-group button {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>FC Test Tool</h1>
+            <div class="status" id="status">Not connected</div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('motor')">Motors</button>
+            <button class="tab" onclick="switchTab('serial')">Serial</button>
+            <button class="tab" onclick="switchTab('adc')">ADC</button>
+            <button class="tab" onclick="switchTab('system')">System</button>
+        </div>
+
+        <!-- Motor Test Tab -->
+        <div class="tab-content active" id="motor-tab">
+            <div class="warning">
+                ⚠️ REMOVE PROPELLERS BEFORE TESTING!<br>
+                Motors will spin at various throttle levels.
+            </div>
+
+            <div class="button-group">
+                <button id="motor-start" onclick="startMotorTest()">Run Motor Test</button>
+                <button id="motor-stop" onclick="stopMotors()" class="danger" disabled>Stop Motors</button>
+            </div>
+        </div>
+
+        <!-- Serial Config Tab -->
+        <div class="tab-content" id="serial-tab">
+            <div class="info-box">
+                <h3>Tester Commands</h3>
+                <div class="button-group">
+                    <button onclick="sendTesterCommand('s')">SBUS Test</button>
+                    <button onclick="sendTesterCommand('r')">RX-Only Test</button>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button onclick="loadSerialConfig()">Refresh</button>
+                <button onclick="saveSerialConfig()" class="success">Save Config</button>
+            </div>
+
+            <div class="info-box">
+                <h3>Serial Ports (Max 2 MSP)</h3>
+                <div class="port-list" id="port-list">
+                    <p style="color: #888;">Loading ports...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ADC Tab -->
+        <div class="tab-content" id="adc-tab">
+            <div class="adc-display">
+                <div class="adc-value">
+                    <div class="adc-label">Battery Voltage</div>
+                    <div class="adc-number" id="voltage">-- V</div>
+                </div>
+                <div class="adc-value">
+                    <div class="adc-label">Current Draw</div>
+                    <div class="adc-number" id="current">-- A</div>
+                </div>
+                <div class="adc-value">
+                    <div class="adc-label">RSSI</div>
+                    <div class="adc-number" id="rssi">--</div>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button id="adc-start" onclick="startADC()">Start Monitoring</button>
+                <button id="adc-stop" onclick="stopADC()" class="danger" disabled>Stop Monitoring</button>
+            </div>
+        </div>
+
+        <!-- System Tab -->
+        <div class="tab-content" id="system-tab">
+            <div class="button-group">
+                <button onclick="reconnect()">Reconnect</button>
+                <button onclick="rebootFC()" class="danger">Reboot FC</button>
+                <button onclick="shutdownSystem()" class="danger">Shutdown Pi</button>
+            </div>
+
+            <div class="info-box">
+                <h3>System Log</h3>
+                <div class="log" id="log"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const socket = io();
+        let currentTab = 'motor';
+
+        // Socket event handlers
+        socket.on('connect', () => {
+            addLog('Connected to server');
+        });
+
+        socket.on('status', (data) => {
+            const statusEl = document.getElementById('status');
+            statusEl.textContent = data.info;
+            if (data.connected) {
+                statusEl.classList.add('connected');
+                // Auto-load serial config when FC connects
+                if (currentTab === 'serial') {
+                    loadSerialConfig();
+                }
+            } else {
+                statusEl.classList.remove('connected');
+            }
+        });
+
+        socket.on('log', (data) => {
+            addLog(data.message);
+        });
+
+        socket.on('serial_config', (data) => {
+            displayPorts(data.ports);
+        });
+
+        socket.on('msp_toggle_rejected', (data) => {
+            // Uncheck the checkbox that was rejected
+            const checkbox = document.querySelector(`input[data-port-id="${data.port_id}"]`);
+            if (checkbox) {
+                checkbox.checked = !checkbox.checked;
+            }
+        });
+
+        socket.on('motor_status', (data) => {
+            document.getElementById('motor-start').disabled = data.running;
+            document.getElementById('motor-stop').disabled = !data.running;
+        });
+
+        socket.on('adc_status', (data) => {
+            document.getElementById('adc-start').disabled = data.monitoring;
+            document.getElementById('adc-stop').disabled = !data.monitoring;
+        });
+
+        socket.on('adc_data', (data) => {
+            document.getElementById('voltage').textContent = data.voltage + ' V';
+            document.getElementById('current').textContent = data.current + ' A';
+            document.getElementById('rssi').textContent = data.rssi;
+        });
+
+        socket.on('fc_disconnected', () => {
+            addLog('⚠ Flight controller disconnected — command was not applied. Reconnect and try again.');
+        });
+
+        // UI functions
+        function switchTab(tab) {
+            // Update tab buttons
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Update tab content
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.getElementById(tab + '-tab').classList.add('active');
+
+            currentTab = tab;
+
+            // Auto-load serial config when switching to serial tab
+            if (tab === 'serial') {
+                loadSerialConfig();
+            }
+        }
+
+        function addLog(message) {
+            const logEl = document.getElementById('log');
+            const entry = document.createElement('div');
+            entry.className = 'log-entry';
+            const timestamp = new Date().toLocaleTimeString();
+            entry.textContent = `[${timestamp}] ${message}`;
+            logEl.appendChild(entry);
+            logEl.scrollTop = logEl.scrollHeight;
+        }
+
+        function displayPorts(ports) {
+            const listEl = document.getElementById('port-list');
+            listEl.innerHTML = '';
+
+            ports.forEach(port => {
+                const item = document.createElement('div');
+                item.className = 'port-item';
+                item.innerHTML = `
+                    <div class="port-info">
+                        <div class="port-name">${port.name}</div>
+                        <div class="port-functions">Functions: ${port.functions}</div>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" ${port.msp_enabled ? 'checked' : ''}
+                               data-port-id="${port.identifier}"
+                               onchange="toggleMSP(${port.identifier}, this.checked)">
+                        <span class="slider"></span>
+                    </label>
+                `;
+                listEl.appendChild(item);
+            });
+        }
+
+        // API functions
+        function reconnect() {
+            socket.emit('reconnect_fc');
+        }
+
+        function rebootFC() {
+            if (confirm('Reboot the flight controller? This will disconnect and require reconnection.')) {
+                socket.emit('reboot_fc');
+            }
+        }
+
+        function shutdownSystem() {
+            if (confirm('⚠️ SHUTDOWN THE RASPBERRY PI?\n\nThis will power off the system completely.\nYou will need to physically power it back on.')) {
+                socket.emit('shutdown_system');
+            }
+        }
+
+        function loadSerialConfig() {
+            socket.emit('load_serial_config');
+        }
+
+        function toggleMSP(portId, enabled) {
+            socket.emit('toggle_msp', { port_id: portId, enabled: enabled });
+        }
+
+        function saveSerialConfig() {
+            if (confirm('Save serial configuration and reboot?')) {
+                socket.emit('save_serial_config');
+            }
+        }
+
+        function sendTesterCommand(cmd) {
+            socket.emit('send_tester_command', { command: cmd });
+        }
+
+        function startMotorTest() {
+            if (confirm('Have you removed all propellers? Motors will spin!')) {
+                socket.emit('start_motor_test');
+            }
+        }
+
+        function stopMotors() {
+            socket.emit('stop_motors');
+        }
+
+        function startADC() {
+            socket.emit('start_adc_monitoring');
+        }
+
+        function stopADC() {
+            socket.emit('stop_adc_monitoring');
+        }
+    </script>
+</body>
+</html>
