@@ -610,6 +610,59 @@ bash_rules:
   # GitHub CLI Commands
   # ===================================================================
 
+  - name: "Block gh issue create on upstream repositories"
+    command_pattern: "^gh$"
+    argument_pattern: "^issue\\s+(create|new).*"
+    category: other
+    decision: ask
+    precondition_script: |
+      # Check if we're in an upstream repository (iNavFlight/inav, etc.)
+      # Upstream repos we want to protect:
+      # - iNavFlight/inav
+      # - iNavFlight/inav-configurator
+      # - DroneCAN/pydronecan
+      # - Any */inav* pattern not owned by current user
+
+      # Get the current repository
+      REPO=$(gh api repository --jq '.nameWithOwner' 2>/dev/null)
+      CURRENT_USER=$(gh api user --jq '.login' 2>/dev/null)
+
+      if [ -z "$REPO" ] || [ -z "$CURRENT_USER" ]; then
+        # Can't determine repo, ask to be safe
+        echo "ask"
+        exit 0
+      fi
+
+      # Extract owner from repo (format: owner/name)
+      OWNER=$(echo "$REPO" | cut -d'/' -f1)
+      REPO_NAME=$(echo "$REPO" | cut -d'/' -f2)
+
+      # Check if this is a known upstream repository
+      case "$REPO" in
+        iNavFlight/inav|iNavFlight/inav-configurator|DroneCAN/pydronecan)
+          echo "ask"
+          exit 0
+          ;;
+      esac
+
+      # Check if repo matches pattern */inav* and owner is not current user
+      if echo "$REPO_NAME" | grep -qi "inav" && [ "$OWNER" != "$CURRENT_USER" ]; then
+        echo "ask"
+        exit 0
+      fi
+
+      # Allow issue creation on user's own fork
+      echo "allow"
+    message: |
+      SAFETY CHECK: Creating issues on upstream repositories
+
+      Before creating an issue, please confirm:
+      1. Did you mean to create this issue on a fork instead of upstream?
+      2. Is this the correct repository for this issue?
+      3. Should this be reported to upstream or to a local fork?
+
+      If you're sure you want to create an issue on the upstream repository and have verified it's appropriate, confirm and I can add an override rule.
+
   - name: "Block gh pr create targeting master"
     command_pattern: "^gh$"
     argument_pattern: ".*pr\\s+create.*--base\\s+master.*"
