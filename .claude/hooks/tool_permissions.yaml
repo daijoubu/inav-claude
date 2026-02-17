@@ -514,12 +514,25 @@ bash_rules:
     category: other
     decision: allow
 
+  - name: "Allow arm-none-eabi-objdump for firmware disassembly"
+    command_pattern: "^arm-none-eabi-objdump$"
+    category: read
+    decision: allow
+    message: "ARM cross-compiler objdump tool for disassembling ELF/binary firmware files (read-only)"
+
   - name: "Allow emsdk environment setup"
     command_pattern: "^source$"
     argument_pattern: ".*emsdk(_env)?\\.sh.*"
     category: other
     decision: allow
     message: "Emscripten SDK environment setup for WASM builds"
+
+  - name: "Allow python3 search.py (read-only index search tool)"
+    command_pattern: "^python3$"
+    argument_pattern: "(^|.*/)search\\.py\\b"
+    category: read
+    decision: allow
+    message: "search.py is a read-only search tool for querying documentation indexes"
 
   - name: "Allow python3 search_indexes.py (read-only index lookup)"
     command_pattern: "^python3$"
