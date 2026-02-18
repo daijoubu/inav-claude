@@ -222,6 +222,49 @@ Copy to manager inbox:
 cp claude/developer/email/sent/<report>.md claude/manager/email/inbox/
 ```
 
+### 9. Archive Original Task Assignment
+
+**IMPORTANT:** Complete the task lifecycle by archiving the original task assignment from your inbox. This prevents stale entries and keeps your inbox clean.
+
+**Find the original assignment:**
+
+```bash
+# List inbox to find the assignment
+ls -ltr claude/developer/email/inbox/ | grep -i "<task-name>"
+
+# Example output:
+# 2026-02-17-1545-task-finalize-libcanard-dronecan.md
+```
+
+**Archive using email-manager agent (recommended):**
+
+```
+Task tool with subagent_type="email-manager"
+Prompt: "Archive the following message to inbox-archive: 2026-02-17-1545-task-finalize-libcanard-dronecan.md. Current role: developer"
+```
+
+**Or archive manually:**
+
+```bash
+mv claude/developer/email/inbox/<original-assignment>.md \
+   claude/developer/email/inbox-archive/
+```
+
+**Verify it's archived:**
+
+```bash
+ls -ltr claude/developer/email/inbox-archive/ | tail -1
+```
+
+This completes the task lifecycle:
+- ✅ Original assignment received
+- ✅ Work completed and tested
+- ✅ Code committed and pushed
+- ✅ PR created (if applicable)
+- ✅ Lock released
+- ✅ Completion report sent
+- ✅ **Original assignment archived** ← You are here
+
 ### Role Separation
 
 **Developer responsibilities:**
@@ -230,6 +273,7 @@ cp claude/developer/email/sent/<report>.md claude/manager/email/inbox/
 - Create commit and PR
 - Release the lock
 - Send completion report to manager inbox
+- **Archive original task assignment** ← NEW (prevents stale inbox entries)
 
 **Manager responsibilities (after receiving report):**
 - Verify work is complete
@@ -271,9 +315,26 @@ Co-Authored-By: Claude <noreply@anthropic.com>
 Be sure any files you created are organized properly according to claude/developer/INDEX.md
 
 
+## Completion Checklist Summary
+
+Before considering a task complete, verify:
+
+- [ ] Step 1: All changes verified
+- [ ] Step 2: Tests run and passing
+- [ ] Step 3: Changes staged
+- [ ] Step 4: Commit message written (no AI attribution)
+- [ ] Step 5: Changes pushed to remote
+- [ ] Step 6: PR created (if appropriate)
+- [ ] Step 7: Lock file released
+- [ ] Step 8: Completion report sent to manager
+- [ ] Step 9: **Original task assignment archived** ← NEW (critical for workflow)
+
+The completion is not finished until the original assignment is archived.
+
 ## Related Skills
 
 - **start-task** - Begin tasks with proper setup
 - **create-pr** - Create pull request after task completion
 - **check-builds** - Verify builds pass before finishing
 - **git-workflow** - Commit changes and manage branches
+- **email-manager** - Archive original task assignment (Step 9)

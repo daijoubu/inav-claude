@@ -2,7 +2,7 @@
 
 Projects waiting on external dependencies and cannot progress without resolution.
 
-**Last Updated:** 2026-02-12
+**Last Updated:** 2026-02-18
 **Total Blocked:** 0
 
 > **Active projects:** See [../INDEX.md](../INDEX.md)
@@ -11,6 +11,6 @@ Projects waiting on external dependencies and cannot progress without resolution
 
 ---
 
-## Status
+## Blocked Projects (0 projects)
 
-No blocked projects currently. All projects are either active, backburner, or completed.
+No projects currently blocked.

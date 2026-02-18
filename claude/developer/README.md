@@ -83,9 +83,45 @@ Use the `email-manager` agent for all email operations.
 | 12 | Check PR status and bot suggestions | **check-pr-bots** agent or **check-builds** skill | - |
 | 13 | Create completion report | **email-manager** agent | - |
 | 14 | Notify manager | **email-manager** agent | - |
-| 15 | Archive assignment | **email-manager** agent | - |
+| 15 | Archive assignment | **email-manager** agent | ⚠️ **CRITICAL** |
+| 16 | Task complete | Verify lock released & assignment archived | - |
 
 **Key principle:** Before fixing a bug, have the `test-engineer` agent write a test that reproduces it. This ensures you understand the problem and can verify when it's fixed.
+
+### ⚠️ Critical Step 15: Archive Original Assignment
+
+**This step is MANDATORY and must be completed before the task is considered done.**
+
+The original task assignment must be archived from your inbox to:
+- ✅ Keep inbox clean and organized
+- ✅ Prevent confusion about active vs. completed tasks
+- ✅ Complete the task lifecycle properly
+- ✅ Help the manager track project status
+
+**How to archive:**
+
+```bash
+# Find the original assignment
+ls -ltr claude/developer/email/inbox/ | grep -i "<task-name>"
+
+# Archive it using email-manager agent
+Task tool with subagent_type="email-manager"
+Prompt: "Archive message 2026-02-17-1545-task-finalize-libcanard-dronecan.md to inbox-archive. Current role: developer"
+```
+
+**Or manually:**
+```bash
+mv claude/developer/email/inbox/<assignment>.md \
+   claude/developer/email/inbox-archive/
+```
+
+**Complete task checklist:**
+- [ ] Code implemented and tested
+- [ ] Commit created and pushed
+- [ ] PR created (if applicable)
+- [ ] Lock file released
+- [ ] Completion report sent to manager
+- [ ] ✅ **Original assignment archived** ← DO NOT SKIP THIS
 
 ---
 

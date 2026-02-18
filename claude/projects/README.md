@@ -199,6 +199,7 @@ One-sentence summary of what this project accomplishes.
 - [ ] Tests pass
 - [ ] PR created
 - [ ] Completion report sent
+- [ ] **Original assignment archived** ⚠️ CRITICAL
 ```
 
 ### Completing a Project

@@ -2,21 +2,45 @@
 
 This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKED).
 
-**Last Updated:** 2026-02-15 | **Total Active:** 3 | **In Progress:** 0 | **Todo:** 3 | **Blocked:** 0 | **Backburner:** 1
+**Last Updated:** 2026-02-18 | **Total Active:** 5 | **In Progress:** 1 | **Todo:** 4 | **Blocked:** 0 | **Backburner:** 1
 
 ---
 
-## Active Projects (3 projects)
+## Active Projects (5 projects)
 
-### 📋 code-review-maintenance-10-vs-libcanard
+### 🚧 test-pr-11324
 
-**Status:** TODO | **Type:** Code Review | **Priority:** MEDIUM
-**Created:** 2026-02-15 | **Assignee:** Developer
+**Status:** IN PROGRESS | **Type:** Testing / Validation | **Priority:** MEDIUM
+**Created:** 2026-02-17 | **Unblocked:** 2026-02-18 | **Assigned:** 2026-02-18 | **Assignee:** Developer
 
-Comprehensive code review comparing maintenance-10.0 and add-libcanard branches. Understand libcanard integration, architecture changes, and impact on firmware. Excludes generated DSDL files.
+Comprehensive testing of PR #11324 from iNavFlight/inav repository. Validate functionality on SITL and Nexus hardware, identify issues, and provide feedback to maintainers.
 
-**Directory:** `active/code-review-maintenance-10-vs-libcanard/`
-**Estimate:** 6-8 hours
+**Directory:** `active/test-pr-11324/`
+**PR:** [iNavFlight/inav#11324](https://github.com/inavflight/inav/pull/11324)
+
+---
+
+### 📋 assess-stm32-hal-updates
+
+**Status:** TODO | **Type:** Assessment | **Priority:** MEDIUM
+**Created:** 2026-02-16 | **Assignee:** Developer
+
+Comprehensive assessment of STM32F7xx HAL updates needed and cross-platform impact analysis on STM32H7xx and STM32F4xx HAL implementations.
+
+**Directory:** `active/assess-stm32-hal-updates/`
+**Estimate:** 10-16 hours
+
+---
+
+### 📋 feature-dronecan-gps-provider-ui
+
+**Status:** TODO | **Type:** Feature / UI Enhancement | **Priority:** MEDIUM
+**Created:** 2026-02-16 | **Assignee:** Developer
+
+Add DroneCAN as a GPS provider option in INAV Configurator UI. Firmware supports DroneCAN GPS; this exposes it to users via dropdown selector.
+
+**Directory:** `active/feature-dronecan-gps-provider-ui/`
+**Estimate:** 8-12 hours
 
 ---
 
@@ -42,20 +66,10 @@ Implement DroneCAN transport statistics - request GetTransportStats from nodes t
 
 ---
 
-### 📋 dronecan-driver-docs
-
-**Status:** TODO | **Type:** Documentation | **Priority:** MEDIUM
-**Created:** 2026-02-14 | **Assignee:** Developer
-
-Document the INAV DroneCAN driver (dronecan.c, dronecan.h).
-
-**Directory:** `active/dronecan-driver-docs/`
-
----
-
 
 
 ## Summary
 
-- **Total Active:** 3 | **TODO:** 3 | **In Progress:** 0 | **Blocked:** 0
+- **Total Active:** 5 | **TODO:** 4 | **In Progress:** 1 | **Blocked:** 0
 - **Backburner:** 1 (see [backburner/INDEX.md](backburner/INDEX.md))
+- **Completed:** Now 28 projects in [completed/INDEX.md](completed/INDEX.md)

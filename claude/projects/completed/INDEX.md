@@ -1,10 +1,212 @@
 # Completed Projects Archive
 
-Completed (✅) and cancelled (❌) projects.
+Completed (✅) and cancelled (❌) projects by current author (daijoubu) for INAV firmware and DroneCAN development.
 
-**Total Completed:** 108 | **Total Cancelled:** 5
+**Total Completed (Current Author):** 28 | **Total Cancelled:** 5
+**Archived:** 100 | See [archive/](archive/)
+- Previous Author (sensei-hacker): 59 projects
+- Other Projects: 34 projects
+- Incomplete Metadata: 7 projects
 
 > **Active projects:** See [../INDEX.md](../INDEX.md)
+> **Archived organization:** See `archive/` subdirectory for all 100 archived projects
+
+---
+
+### ✅ fix-pr11-dronecan-tests (2026-02-18)
+
+**Status:** COMPLETED
+**Type:** Bug Fix / Tests
+**Priority:** MEDIUM
+**Created:** 2026-02-18
+**Completed:** 2026-02-18
+**Assignee:** Developer
+
+Fixed 2 failing unit tests in PR #11 that used values exceeding DSDL field sizes.
+
+**Root Cause:** Tests used uint8 max values (255) for fields with smaller bit widths:
+- `state_of_charge_pct`: 7-bit field (max 127), test used 255
+- `sats_used`: 6-bit field (max 63), test used 255
+
+**Fix:** Corrected test boundary values to match DSDL spec.
+
+**Commit:** `447cb3183` - "fix(tests): Correct DroneCAN unit test boundary values"
+**PR:** [#11](https://github.com/daijoubu/inav/pull/11) - MERGED
+
+**Directory:** `completed/fix-pr11-dronecan-tests/`
+
+---
+
+### ✅ feature-dronecan-graceful-disable (2026-02-16)
+
+**Status:** COMPLETED
+**Type:** Feature / Reliability Enhancement
+**Priority:** MEDIUM
+**Created:** 2026-02-16
+**Completed:** 2026-02-16
+**Assignee:** Developer
+
+Implemented graceful degradation for DroneCAN subsystem when CAN hardware initialization fails. System now safely handles hardware unavailability with automatic fallback to alternative sensors, no crashes, and clear diagnostics.
+
+**Deliverables:**
+- Initialization Status Tracking: Added `dronecanInitStatus_e` enum and `dronecanGetInitStatus()` API
+- Graceful Disable Implementation: 5 files modified (dronecan.h/c, gps_dronecan.c, battery_sensor_dronecan.c, fc_init.c)
+- Error Detection & Logging: Clear startup diagnostics showing DroneCAN operational status
+- Sensor Fallback: GPS and battery systems gracefully degrade when DroneCAN unavailable
+- Total: 76 lines added, 100% backward compatible, zero warnings
+
+**Results:**
+- Build Status: ✅ Successful (37.45% flash usage, zero errors/warnings)
+- Feature Status: CAN init failures now reliably detected and logged
+- System Stability: No crashes or undefined behavior on hardware failure
+- Code Quality: Minimal, focused changes with clear error handling
+
+**Commits:**
+- `5e8cf8e5f` - Feature: Graceful DroneCAN disable on CAN hardware init failure
+- `051110bb7` - Feature: Add DroneCAN diagnostics logging
+
+**Testing Status:** Ready for HITL testing
+
+**Directory:** `completed/feature-dronecan-graceful-disable/`
+
+---
+
+### ✅ finalize-libcanard-dronecan (2026-02-18)
+
+**Status:** COMPLETED
+**Type:** Pre-Merge Work / Documentation
+**Priority:** HIGH
+**Created:** 2026-02-17
+**Completed:** 2026-02-18
+**Assignee:** Developer
+
+Completed all 3 HIGH-priority code review recommendations for libcanard DroneCAN integration. Enhanced unit tests with error case coverage, added 7 practical configuration examples, and documented error recovery mechanisms and graceful disable behavior.
+
+**Deliverables:**
+- Enhanced Unit Tests: 23 total tests (9 new error cases) in `dronecan_messages_unittest.cc` (+260 lines)
+- Configuration Examples: 7 complete use cases in `DroneCAN.md` (+228 lines)
+- Error Recovery Docs: New section in `DroneCAN-Driver.md` (+150 lines)
+- Total: 642 lines added, 0 lines removed, 100% backward compatible
+
+**Results:**
+- Test coverage improvement: 14 → 23 tests (+64%)
+- Estimated decoder coverage: >90% for critical paths
+- Risk level: LOW (docs + tests only, no logic changes)
+- Code quality: High (no regressions, full backward compatibility)
+
+**Commits:**
+- Branch: `feature/finalize-libcanard-dronecan`
+- Base: `add-libcanard`
+- Commit: `0cc73a19b`
+
+**PR:** [#11](https://github.com/daijoubu/inav/pull/11) on daijoubu/inav
+
+**Directory:** `completed/finalize-libcanard-dronecan/`
+
+---
+
+### ✅ dronecan-driver-docs (2026-02-16)
+
+**Status:** COMPLETED
+**Type:** Documentation
+**Priority:** MEDIUM
+**Created:** 2026-02-14
+**Completed:** 2026-02-16
+**Assignee:** Developer
+
+Comprehensive documentation for INAV DroneCAN driver (dronecan.c/dronecan.h). Corrected initial inaccurate draft by performing detailed source code analysis.
+
+**Deliverable:** `inav/docs/DroneCAN-Driver.md` (684 lines, 24KB)
+- Complete API reference (dronecanInit, dronecanUpdate)
+- Handler-based architecture explanation
+- All 7 message handlers documented with code examples
+- Integration with GPS and battery systems
+- CAN hardware configuration and troubleshooting
+- Extension guide for adding new message types
+
+**Commits:**
+- maintenance-9.x: `f192cc67a`
+- add-libcanard: `db5bb1c54`
+
+**Directory:** `completed/dronecan-driver-docs/`
+
+---
+
+### ✅ hitl-tests-add-libcanard-matekh743 (2026-02-16)
+
+**Status:** COMPLETED
+**Type:** Testing
+**Priority:** HIGH
+**Created:** 2026-02-16
+**Completed:** 2026-02-16
+**Assignee:** Developer
+
+Comprehensive HITL (Hardware-In-The-Loop) tests for add-libcanard branch on MATEKH743 flight controller. Validated DroneCAN functionality, performance, and stability before merge.
+
+**Test Results:** ✅ **ALL PASSED**
+- Unit Tests: 46/46 passed (16 DroneCAN message tests + 30 libcanard core tests)
+- Firmware Build: ✅ Successful (37.43% flash usage - MATEKH743)
+- Stability Test: ✅ 60+ minutes, zero crashes/watchdogs/hardfaults
+- DroneCAN Validation: ✅ GPS, battery, ESC message handling verified
+- Performance: ✅ Within acceptable ranges (CPU <3%, memory stable)
+
+**Ready for merge to maintenance-9.x**
+
+**Directory:** `completed/hitl-tests-add-libcanard-matekh743/`
+
+---
+
+### ✅ code-review-maintenance-10-vs-libcanard (2026-02-16)
+
+**Status:** COMPLETED
+**Type:** Code Review
+**Priority:** MEDIUM
+**Created:** 2026-02-15
+**Completed:** 2026-02-16
+**Assignee:** Developer
+
+Comprehensive 6-phase code review of add-libcanard branch comparing against maintenance-10.0. Analyzed architecture, hardware drivers, sensor integration, task scheduling, and overall design quality.
+
+**Verdict:** ✅ **APPROVED FOR MERGE** (9/10 confidence)
+
+**Key Findings:**
+- Code Quality: 4.2/5 stars
+- Architecture: 9/10 (excellent layered design)
+- Real-time Safety: Excellent (non-blocking throughout)
+- CPU Load: 2-3% at normal operating load
+- Memory: 1.5 KB static allocation (minimal impact)
+
+**Recommendations:**
+- Add comprehensive unit tests for message decoders
+- Document DroneCAN configuration options
+- Plan hardware integration testing before merge
+
+**Directory:** `completed/code-review-maintenance-10-vs-libcanard/`
+**Detailed Report:** `developer/workspace/code-review-maintenance-10-vs-libcanard/session-notes.md` (1192 lines)
+
+---
+
+### ✅ investigate-msp-mavlink-dronecan-equivalents (2026-02-16)
+
+**Status:** COMPLETED
+**Type:** Investigation
+**Priority:** MEDIUM
+**Created:** 2026-02-16
+**Completed:** 2026-02-16
+**Assignee:** Developer
+
+Research MSP and Mavlink protocol field equivalents to DroneCAN NodeStatus message. Compare how INAV populates these fields versus Ardupilot implementation.
+
+**Finding:** All three protocols (DroneCAN, MSP, Mavlink) can fully represent node status with lossless bi-directional translation. INAV provides equivalent or superior coverage vs Ardupilot.
+
+**Deliverables:**
+- 37 pages of detailed analysis (4 phase reports + comprehensive comparison matrix)
+- Complete DroneCAN ↔ MSP ↔ Mavlink field mapping
+- 5 prioritized recommendations (total effort: 12-22 hours)
+- Protocol efficiency and gap analysis
+
+**Directory:** `completed/investigate-msp-mavlink-dronecan-equivalents/`
+**Completion Report:** `manager/email/inbox-archive/2026-02-16-1430-completed-...`
 
 ---
 
