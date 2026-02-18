@@ -514,11 +514,42 @@ bash_rules:
     category: other
     decision: allow
 
-  - name: "Allow arm-none-eabi-objdump for firmware disassembly"
-    command_pattern: "^arm-none-eabi-objdump$"
+  - name: "Allow python3 for any script"
+    command_pattern: "^python3$"
+    category: other
+    decision: allow
+    message: "Python3 execution for scripts"
+
+  - name: "Allow ARM cross-compiler tools (nm, objdump)"
+    command_pattern: "^(arm-none-eabi-nm|arm-none-eabi-objdump)$"
     category: read
     decision: allow
-    message: "ARM cross-compiler objdump tool for disassembling ELF/binary firmware files (read-only)"
+    message: "ARM cross-compiler tools for inspecting ELF/binary firmware files (read-only)"
+
+  - name: "Allow lsusb for USB device queries"
+    command_pattern: "^lsusb$"
+    category: read
+    decision: allow
+    message: "USB device listing tool (read-only)"
+
+  - name: "Allow pkill for openocd termination"
+    command_pattern: "^pkill$"
+    argument_pattern: ".*openocd.*"
+    category: other
+    decision: allow
+    message: "Process termination for openocd debugging server"
+
+  - name: "Allow openocd binary from pico-sdk"
+    command_pattern: "^/home/raymorris/\\.pico-sdk/openocd/0\\.12\\.0\\+dev/openocd$"
+    category: other
+    decision: allow
+    message: "OpenOCD debugger from pico-sdk installation"
+
+  - name: "Allow picotool for Pico device operations"
+    command_pattern: "^picotool$"
+    category: other
+    decision: allow
+    message: "Pico device tool for flashing and debugging"
 
   - name: "Allow emsdk environment setup"
     command_pattern: "^source$"
