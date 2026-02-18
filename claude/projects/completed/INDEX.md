@@ -13,6 +13,37 @@ Completed (✅) and cancelled (❌) projects by current author (daijoubu) for IN
 
 ---
 
+
+### ✅ fix-gps-capa-poll-500ms-stall
+
+**Status:** COMPLETED (2026-02-18)
+**Type:** Bug Fix
+**Priority:** HIGH
+
+Every 5 seconds, GPS position data stops being processed for 500ms due to a bug in the u-blox capability polling logic. This causes ~5 position fixes to go unprocessed each cycle on 10 Hz GPS modules.
+
+---
+
+
+### ✅ extract-discord-cache-conversations
+
+**Status:** COMPLETED (2026-02-18)
+**Type:** Tooling / Script
+**Priority:** MEDIUM
+
+Build a script that extracts conversation data from the Discord client's local cache.
+
+---
+
+
+### ✅ archive
+
+**Status:** COMPLETED (2026-02-18)
+
+Completed project: archive
+
+---
+
 ### ✅ fix-pr11-dronecan-tests (2026-02-18)
 
 **Status:** COMPLETED
