@@ -30,8 +30,6 @@ node_modules/
 package.json
 package-lock.json
 
-# Local tools
-raytools/
 
 # Downloads (binary firmware files)
 **/downloads/*
@@ -68,6 +66,9 @@ claude/developer/workspace/
 claude/agent/
 claude/.claude/
 
+# Installation marker (local, per-user)
+claude/.installed
+
 # Email directories (internal communication between roles)
 claude/*/email/
 
@@ -80,3 +81,9 @@ claude/*/email/
 
 # Local-only files
 claude.local.md
+
+# Sandbox/container placeholder files
+HEAD
+hooks
+objects
+refs

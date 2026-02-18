@@ -1,0 +1,14 @@
+[Unit]
+Description=Flight Controller Web Test Tool
+After=network.target
+
+[Service]
+Type=simple
+User=raymorris
+WorkingDirectory=/home/raymorris/Documents/planes/inavflight/raytools/fc_hardware_test_tools
+ExecStart=/usr/bin/python3 /home/raymorris/Documents/planes/inavflight/raytools/fc_hardware_test_tools/fc_web_tool.py
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

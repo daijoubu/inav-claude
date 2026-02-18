@@ -44,8 +44,8 @@ Use the `email-manager` agent for all email operations. See also: `claude/manage
 3. Use email-manager agent to send task assignment to developer
 4. Wait for completion report (email-manager agent to check inbox)
 5. Use email-manager agent to archive completion report
-6. Move project directory to claude/projects/completed/
-7. Update INDEX.md (remove) and completed/INDEX.md (add)
+6. Run: python3 claude/projects/project_ops.py complete <project-name>
+   (atomically moves dir, updates INDEX.md and completed/INDEX.md)
 ```
 
 ## Project Lifecycle
@@ -160,68 +160,42 @@ Prompt: "Read my inbox. Current role: manager"
 
 **After reading a completion report:**
 1. Verify work is complete (check PR status, tests, etc.)
-2. Move project directory: `mv claude/projects/active/<name> claude/projects/completed/`
-3. Remove entry from INDEX.md
-4. Add entry to completed/INDEX.md
-5. Use email-manager agent to archive report
+2. Run: `python3 claude/projects/project_ops.py complete <project-name>`
+3. Use email-manager agent to archive report
 
-### 4. Completing a Project
+### 4. Project Lifecycle Operations — USE project_ops.py
 
-**Steps:**
-```bash
-# 1. Move project directory
-mv claude/projects/active/<project-name> claude/projects/completed/
-
-# 2. Update INDEX.md - remove the project entry
-
-# 3. Update completed/INDEX.md - add entry at top
-```
-
-**Why:** INDEX.md should only contain active projects. Completed projects go to completed/INDEX.md.
-
-### 5. Blocking a Project
-
-When a project is blocked by external dependency:
+**⚠️ ALWAYS use `project_ops.py` for lifecycle transitions.** This tool atomically handles directory moves, INDEX.md removal, completed/INDEX.md addition, and count updates — preventing the drift issues that occur with manual operations.
 
 ```bash
-# Move to blocked directory
-mv claude/projects/active/<project-name> claude/projects/blocked/
+# Complete a project
+python3 claude/projects/project_ops.py complete <project-name>
+
+# Cancel a project
+python3 claude/projects/project_ops.py cancel <project-name>
+
+# Block a project (active → blocked)
+python3 claude/projects/project_ops.py block <project-name>
+
+# Backburner a project (active → backburner)
+python3 claude/projects/project_ops.py backburner <project-name>
+
+# Resume a blocked/backburner project (→ active)
+python3 claude/projects/project_ops.py resume <project-name>
+
+# Audit for inconsistencies between directories and indexes
+python3 claude/projects/project_ops.py audit
+
+# Auto-fix simple audit issues
+python3 claude/projects/project_ops.py audit --fix
 ```
 
-Update the project's INDEX.md entry:
-- Change status to 🚫 BLOCKED
-- Add "Blocked Since:" date
-- Add "Blocking Issue:" description of what's blocking progress
-
-**When to block vs backburner:**
+**When to block vs backburner vs cancel:**
 - **Blocked:** Waiting on external factor (user reproduction, hardware unavailable, upstream dependency)
 - **Backburner:** Internal decision to pause (lower priority, waiting on design decision)
-
-### 6. Cancelling a Project
-
-When a project is abandoned (not just paused):
-
-```bash
-# Move to completed (cancelled projects are archived too)
-mv claude/projects/active/<project-name> claude/projects/completed/
-```
-
-Update the project's summary.md:
-- Change status to ❌ CANCELLED
-- Add cancellation reason
-
-In completed/INDEX.md, add with ❌ status:
-```markdown
-### ❌ project-name (2026-01-09)
-**Cancelled:** <reason>
-```
-
-**When to cancel vs blocked vs backburner:**
 - **Cancel:** Requirements changed, no longer needed, permanently abandoned
-- **Blocked:** Waiting on external dependency (can resume when unblocked)
-- **Backburner:** Still valuable, just lower priority (internal decision)
 
-### 7. Updating INDEX.md
+### 5. Updating INDEX.md
 
 **Location:** `claude/projects/INDEX.md`
 
@@ -407,7 +381,7 @@ mv claude/manager/email/inbox/<report>.md claude/manager/email/inbox-archive/
 
 ### Complete a project
 ```bash
-mv claude/projects/active/<project-name> claude/projects/completed/
+python3 claude/projects/project_ops.py complete <project-name>
 ```
 
 ### Search projects
@@ -511,7 +485,8 @@ See `.claude/skills/create-pr/SKILL.md` for complete PR creation workflows.
 - **email-manager** agent - Read inbox, send messages, archive items, check outbox
 
 ## Project & Task Management
-- **projects** skill - Query and manage project status using project_manager.py
+- **project_ops.py** - ⚠️ **USE THIS** for all lifecycle operations (complete, cancel, block, backburner, resume, audit)
+- **projects** skill - Query project status using project_manager.py
 - **communication** skill - Message templates and communication guidelines
 
 ## Git & Pull Requests
