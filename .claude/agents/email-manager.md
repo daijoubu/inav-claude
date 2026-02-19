@@ -480,28 +480,21 @@ Internal documentation relevant to email management:
 
 ### Task Assignment Flow
 ```
-1. Manager creates task in manager/email/sent/
-2. Manager (or you) copies to developer/email/inbox/
+1. Manager creates task email, you put it in in manager/email/sent/
+2. You copy to developer/email/inbox/
 3. Developer reads inbox (you help with this)
 4. Developer implements and creates completion report
-5. Developer (or you) sends report to manager
+5. Developer asks you to send report to manager
 6. Manager reviews and archives
 ```
 
 ### Question/Response Flow
 ```
-1. Developer has question, creates in developer/email/sent/
-2. Developer (or you) copies to manager/email/inbox/
-3. Manager reads and creates response in manager/email/sent/
-4. Manager (or you) copies response to developer/email/inbox/
-5. Developer reads response and archives both messages
-```
-
-### Status Update Flow
-```
-1. Developer creates status update in developer/email/sent/
-2. Developer (or you) copies to manager/email/inbox/
-3. Manager reads, notes status, and archives
+1. Developer has question, asks you to send it. You create in developer/email/sent/
+2. You copy to manager/email/inbox/
+3. Manager reads with your help and and creates response which you put in manager/email/sent/
+4. You copy response to developer/email/inbox/
+5. Developer asks you for the response and asks you to archive both messages
 ```
 
 ---

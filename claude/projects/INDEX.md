@@ -39,6 +39,79 @@ This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKE
 
 ## Active Projects
 
+### 📋 rp2350-pinout-diagram
+
+**Status:** TODO | **Type:** Documentation / Visual | **Priority:** MEDIUM
+**Created:** 2026-02-19 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
+
+Take the Pico 2 board photo (`Raspberry-Pi-Pico-2-back.webp`) and add INAV function labels to each pin based on Option C from the pin assignment plan. Output a labeled PNG for use as target documentation.
+
+**Directory:** `active/rp2350-pinout-diagram/`
+**Source image:** `active/rp2350-pin-assignment-plan/Raspberry-Pi-Pico-2-back.webp`
+**Pin plan:** `active/rp2350-pin-assignment-plan/report.md` (Option C)
+
+---
+
+### 📋 rp2350-pin-assignment-plan
+
+**Status:** TODO | **Type:** Investigation / Planning | **Priority:** MEDIUM
+**Created:** 2026-02-19 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
+
+Survey existing INAV targets for common pin functions (using target-developer agent), map Pico 2 GPIO capabilities, then produce three distinct pin layout options for the RP2350_PICO target including dual-use pin documentation.
+
+**Directory:** `active/rp2350-pin-assignment-plan/`
+**Repository:** inav (firmware) — planning only, no code changes
+
+---
+
+### 📋 cherry-pick-imu-mahony-opts
+
+**Status:** TODO | **Type:** Performance / Cherry-pick | **Priority:** MEDIUM
+**Created:** 2026-02-18 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
+
+Cherry-pick `f99ea57b` ("imu: optimize imuMahonyAHRSupdate() hot path — 5 micro-opts") to a new branch off `maintenance-9.x` and PR to `inavflight/inav`. Reviewer: `breadoven`.
+
+**Directory:** `active/cherry-pick-imu-mahony-opts/`
+**Repository:** inav (firmware) | **Branch:** `maintenance-9.x`
+
+---
+
+### 📋 cherry-pick-pid-performance
+
+**Status:** TODO | **Type:** Performance / Cherry-pick | **Priority:** MEDIUM
+**Created:** 2026-02-18 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
+
+Cherry-pick two PID performance commits to a new branch off `maintenance-9.x` and open a PR: (1) add FAST_CODE to pidController callees to avoid ITCM→flash trampolines; (2) cache RC commands and pidSumLimit so they only recompute on new RX data (~50 Hz) rather than every PID loop (~1000 Hz).
+
+**Directory:** `active/cherry-pick-pid-performance/`
+**Repository:** inav (firmware) | **Branch:** `maintenance-9.x`
+
+---
+
+### 📋 cherry-pick-imu-gps3dspeed
+
+**Status:** TODO | **Type:** Bug Fix / Cherry-pick | **Priority:** MEDIUM
+**Created:** 2026-02-18 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
+
+Cherry-pick `bb02220fc3399c73d4bb2284d77add5b66576f5b` ("imu: compute GPS 3D speed only on new GPS data") to a new branch off `maintenance-9.x` and open a PR to `inavflight/inav`, requesting review from `breadoven`.
+
+**Directory:** `active/cherry-pick-imu-gps3dspeed/`
+**Repository:** inav (firmware) | **Branch:** `maintenance-9.x`
+
+---
+
+### 📋 investigate-claude-code-plugin
+
+**Status:** TODO | **Type:** Investigation / Feasibility Study | **Priority:** MEDIUM
+**Created:** 2026-02-17 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
+
+Investigate feasibility of packaging the INAV Claude Code workflow (agents, skills, roles, email system) as a Claude Code plugin. Work in a fresh clone of sensei-hacker/inav-claude — do NOT touch ~/inavflight. Deliver a feasibility verdict, component mapping, migration plan if feasible, and clear documentation of anything that can't be included.
+
+**Directory:** `active/investigate-claude-code-plugin/`
+**Repo:** https://github.com/sensei-hacker/inav-claude
+
+---
+
 ### 📋 fix-blackbox-sd-lockup
 
 **Status:** TODO | **Type:** Bug Fix / Safety Issue | **Priority:** HIGH
