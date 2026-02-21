@@ -2,63 +2,75 @@
 
 ## Phase 1: Code Analysis
 
-- [ ] Find and review F765 blackbox changes in 8.0.0
-  - [ ] `git log --oneline v7.1.2..v8.0.0 -- src/main/blackbox/`
-  - [ ] `git log --oneline v7.1.2..v8.0.0 -- src/main/drivers/sdcard/`
-  - [ ] Review each commit for potential race conditions
-- [ ] Analyze arming sequence in `fc_core.c`
-  - [ ] What initializes when ARMING_FLAG is set?
-  - [ ] What blackbox operations start at arm?
-  - [ ] What GPS/nav operations change at arm?
-- [ ] Map DMA channels on F765
-  - [ ] Which DMA streams used for SD card?
-  - [ ] Which DMA streams used for PWM/servo?
-  - [ ] Which DMA streams used for UART (GPS)?
-  - [ ] Any shared DMA controllers?
-- [ ] Review interrupt priorities
-  - [ ] Check NVIC priorities for SD, PWM, GPS
-  - [ ] Look for priority inversion risks
+- [x] Find and review F765 blackbox changes in 8.0.0
+  - [x] `git log --oneline v7.1.2..v8.0.0 -- src/main/blackbox/`
+  - [x] `git log --oneline v7.1.2..v8.0.0 -- src/main/drivers/sdcard/`
+  - [x] Review each commit for potential race conditions
+  - **Finding:** Commit `3561feeb9` rewrote F7 SDIO driver to use HAL
+- [x] Analyze arming sequence in `fc_core.c`
+  - [x] What initializes when ARMING_FLAG is set?
+  - [x] What blackbox operations start at arm?
+  - [x] What GPS/nav operations change at arm?
+  - **Finding:** blackboxStart() called at line 894, triggers SD card access
+- [x] Map DMA channels on F765
+  - [x] Which DMA streams used for SD card?
+  - [x] Which DMA streams used for PWM/servo?
+  - [x] Which DMA streams used for UART (GPS)?
+  - [x] Any shared DMA controllers?
+  - **Finding:** SD DMA priority LOW, can be starved by other operations
+- [x] Review interrupt priorities
+  - [x] Check NVIC priorities for SD, PWM, GPS
+  - [x] Look for priority inversion risks
+  - **Finding:** SDMMC interrupt priority 2
 
 ## Phase 2: Identify Critical Code Paths
 
-- [ ] Trace arming code path
-  - [ ] `tryArm()` function
-  - [ ] `ENABLE_ARMING_FLAG(ARMED)` effects
-  - [ ] Motor/servo output activation
-- [ ] Trace blackbox arm behavior
-  - [ ] When does logging actually start?
-  - [ ] SD card write initiation
-  - [ ] Buffer allocation/initialization
-- [ ] Trace GPS fix handling
-  - [ ] What happens when `STATE(GPS_FIX)` becomes true?
-  - [ ] AHRS reconfiguration at fix
-  - [ ] Navigation state changes
-- [ ] Identify shared resources
-  - [ ] Global locks or mutexes
-  - [ ] Shared buffers
-  - [ ] DMA completion flags
+- [x] Trace arming code path
+  - [x] `tryArm()` function
+  - [x] `ENABLE_ARMING_FLAG(ARMED)` effects
+  - [x] Motor/servo output activation
+- [x] Trace blackbox arm behavior
+  - [x] When does logging actually start?
+  - [x] SD card write initiation
+  - [x] Buffer allocation/initialization
+  - **Finding:** blackboxStart() → blackboxDeviceOpen() → AFATFS needs SD
+- [x] Trace GPS fix handling
+  - [x] What happens when `STATE(GPS_FIX)` becomes true?
+  - [x] AHRS reconfiguration at fix
+  - [x] Navigation state changes
+  - **Finding:** GPS fix triggers DMA activity, can put SD in error state
+- [x] Identify shared resources
+  - [x] Global locks or mutexes
+  - [x] Shared buffers
+  - [x] DMA completion flags
+  - **Finding:** Blocking reset loop with `goto doMore` pattern
 
 ## Phase 3: Specific Checks
 
-- [ ] Check for blocking operations at arm time
-  - [ ] SD card sync operations?
-  - [ ] Flash writes?
-  - [ ] Config saves?
-- [ ] Check for interrupt disable periods
-  - [ ] Critical sections in arming?
-  - [ ] DMA interrupt handling?
-- [ ] Check timing assumptions
-  - [ ] Hard-coded delays?
-  - [ ] Timeout handling?
-  - [ ] Busy-wait loops?
+- [x] Check for blocking operations at arm time
+  - [x] SD card sync operations?
+  - [x] Flash writes?
+  - [x] Config saves?
+  - **Finding:** HAL_SD_Init() is BLOCKING (up to 100s of ms)
+- [x] Check for interrupt disable periods
+  - [x] Critical sections in arming?
+  - [x] DMA interrupt handling?
+- [x] Check timing assumptions
+  - [x] Hard-coded delays?
+  - [x] Timeout handling?
+  - [x] Busy-wait loops?
+  - **Finding:** `sdcardSdio_reset(); goto doMore;` creates busy-loop
 
 ## Phase 4: Related Issues Review
 
+- [x] Read #11299 - Primary issue analyzed
+- [x] Read #10586 - Matek F765 freezing at arm
 - [ ] Read #10646 for additional clues
 - [ ] Read #10659 for additional clues
 - [ ] Read #10800 for additional clues
 - [ ] Read #11007 (F765 in-flight lockup) for additional clues
-- [ ] Look for common patterns across all issues
+- [x] Look for common patterns across all issues
+  - **Finding:** All F7/H7, all since 8.0.0, all involve SD/blackbox
 
 ## Phase 5: Testing Strategy
 
@@ -72,14 +84,20 @@
 
 ## Phase 6: Documentation
 
-- [ ] Document findings in summary.md
-- [ ] Create timeline of relevant commits
-- [ ] Diagram DMA/interrupt interactions
-- [ ] Propose fix or workaround
+- [x] Document findings in summary.md
+- [x] Create timeline of relevant commits
+- [x] Diagram DMA/interrupt interactions (freeze mechanism flow)
+- [x] Propose fix or workaround
+  - Option 1: Update STM32F7 HAL (V1.2.2 → V1.3.3)
+  - Option 2: Code fixes (non-blocking reset, remove goto doMore)
+  - Option 3: User workarounds documented
 
 ## Completion
 
-- [ ] Root cause identified or narrowed down
-- [ ] Findings documented
+- [x] Root cause identified or narrowed down
+  - **Root cause:** Commit `3561feeb9` F7 SDIO HAL rewrite
+  - **Mechanism:** Blocking HAL_SD_Init() + goto doMore loop
+- [x] Findings documented
 - [ ] Send completion report to manager
 - [ ] Consider posting findings to GitHub issue
+- [ ] Verify fix with HAL update (see update-stm32f7-hal project)

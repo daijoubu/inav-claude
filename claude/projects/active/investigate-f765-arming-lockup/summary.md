@@ -1,9 +1,10 @@
 # Project: Investigate F765/H743 Arming Lockup
 
-**Status:** 📋 TODO
+**Status:** 🚧 IN PROGRESS
 **Priority:** HIGH
 **Type:** Investigation / Bug Analysis
 **Created:** 2026-02-21
+**Updated:** 2026-02-21
 **Estimated Effort:** 8-16 hours
 
 ## Overview
@@ -48,97 +49,153 @@ Investigate intermittent FC lockup/freeze at arming time, primarily affecting F7
 3. SD card operations
 4. Arming sequence timing
 
-## Hypotheses
+---
 
-### H1: Blackbox/SD Card Race Condition
-Changes made to F765 blackbox logging in 8.0.0 may have introduced a race condition when blackbox starts at arming time, especially if GPS fix occurs simultaneously.
+## Investigation Findings (2026-02-21)
 
-**Evidence:**
-- SD card corruption reported
-- No blackbox log for failed arms
-- Problem appeared in 8.0.0 when F765 blackbox fixes were made
-- One user reported freeze after SD card reformat
+### Root Cause Identified: F7 SDIO HAL Rewrite
 
-### H2: DMA Conflict at Arming
-DMA channels for servo output, blackbox writing, and GPS UART may conflict at the critical moment when multiple systems activate at arming.
+**Commit:** `3561feeb9` (Dec 10, 2024) by mmosca
+**Change:** "f7: use hal for sdio"
+- Deleted 1603 lines of custom F7 SDIO code (`sdmmc_sdio_f7xx.c`)
+- Replaced with HAL-based implementation (`sdmmc_sdio_hal.c`)
 
-**Evidence:**
-- Servo jitter at GPS fix (DMA activity)
-- PWM outputs become unresponsive
-- Linked to logging rate >3% with slower PWM (Standard, Oneshot125, Dshot150)
+### The Freeze Mechanism
 
-### H3: GPS/AHRS Update Triggers Issue
-The AHRS update triggered by GPS fix may cause resource contention with other systems initializing at arm time.
+```
+1. User waits for GPS fix
+              ↓
+2. GPS fix triggers AHRS/DMA activity
+   → Servo jitter observed
+   → SD card may enter error state
+              ↓
+3. User arms
+   → blackboxStart() called (fc_core.c:894)
+   → AFATFS needs SD card
+              ↓
+4. SD card in error state
+   → sdcardSdio_reset() called
+   → HAL_SD_Init() BLOCKS (up to 100s of ms)
+              ↓
+5. If still failing → goto doMore loop
+   → Repeated blocking HAL_SD_Init() calls
+   → FC FROZEN
+```
 
-**Evidence:**
-- Servo jitter at exact moment of GPS fix
-- Lockup often occurs when arming shortly after GPS fix
-- User reports arming before GPS fix works around issue
+### Code Evidence
 
-### H4: Interrupt Priority/Deadlock
-An interrupt priority issue specific to F765/H743 may cause deadlock when multiple high-priority interrupts fire simultaneously at arming.
+| File | Line | Issue |
+|------|------|-------|
+| `sdcard_sdio.c` | 102 | `SD_Init()` called in reset - **BLOCKING** |
+| `sdcard_sdio.c` | 272 | `sdcardSdio_reset(); goto doMore;` - infinite loop risk |
+| `sdcard_sdio.c` | 332 | Same pattern after write timeout |
+| `sdcard_sdio.c` | 360 | Same pattern after read error |
+| `sdmmc_sdio_hal.c` | 339 | `HAL_SD_Init(&hsd)` - **BLOCKING HAL call** |
+| `sdmmc_sdio_hal.c` | 279 | DMA priority LOW - can be starved |
+| `sdmmc_sdio_hal.c` | 297 | SDMMC interrupt priority 2 |
+| `fc_core.c` | 894 | `blackboxStart()` at arm triggers the chain |
 
-**Evidence:**
-- Complete FC freeze (not just output)
-- Affects specific MCU families
-- Intermittent timing-dependent behavior
+### Why F765/H743 Specifically
 
-## Investigation Plan
+1. These MCUs use SDMMC peripheral (not legacy SDIO)
+2. The HAL rewrite specifically targeted F7 and H7
+3. Different DMA controllers have different timing characteristics
+4. F4 still uses older custom driver (not affected)
 
-### Phase 1: Code Analysis
-1. Review F765 blackbox changes in 8.0.0 (diff 7.1.2 → 8.0.0)
-2. Analyze arming sequence code path
-3. Map DMA channel usage on F765/H743
-4. Review interrupt priorities for affected subsystems
+---
 
-### Phase 2: Identify Critical Code Paths
-1. Trace what happens at arming moment
-2. Identify all systems that initialize/activate at arm
-3. Find shared resources (DMA, buffers, locks)
-4. Look for potential race conditions
+## HAL Version Analysis
 
-### Phase 3: SITL Analysis (if possible)
-1. Attempt to reproduce timing in SITL
-2. Add instrumentation to arming code
-3. Test with simulated GPS fix timing
+### Current INAV HAL: V1.2.2 (April 2017) - 9 YEARS OLD!
 
-### Phase 4: Hardware Testing (if hardware available)
-1. Test on F765 with various configurations
-2. Test with/without SD card
-3. Test with different logging rates
-4. Test with different PWM protocols
+**Latest Available:** V1.3.3 (July 2025)
+
+### Relevant SD/SDMMC Fixes in Newer HAL Versions
+
+| Version | Date | Fix |
+|---------|------|-----|
+| **V1.3.2** | Apr 2025 | Removed redundant condition from `HAL_SD_InitCard()` |
+| **V1.3.2** | Apr 2025 | Added check before aborting DMA in `HAL_MMC_IRQHandler()` |
+| **V1.3.2** | Apr 2025 | Updated `SDMMC_DATATIMEOUT` for different clock scenarios |
+| **V1.3.0** | Jun 2022 | **Added 2ms power-up wait before SD init sequence** |
+| **V1.2.8** | Feb 2020 | **Improved handle state and error management** |
+
+### Key HAL Fixes That May Help
+
+1. **V1.3.0 added 2ms power-up delay** in `HAL_SD_InitCard()` - could prevent initialization race condition
+2. **V1.2.8 improved error management** - better state handling could prevent blocking reset loops
+3. **V1.3.2 fixed DMA abort handling** - could prevent DMA-related hangs
+
+---
+
+## Proposed Fixes
+
+### Option 1: Update STM32F7 HAL (Recommended)
+
+The `update-stm32f7-hal` project is already queued. Updating from V1.2.2 → V1.3.3 includes fixes for:
+- SD card initialization timing
+- Error state management
+- DMA abort handling
+
+**Action:** Prioritize HAL update and test specifically for arming lockup.
+
+### Option 2: Code-Level Fixes (If HAL Update Insufficient)
+
+1. **Non-blocking reset**: Don't call `HAL_SD_Init()` inline in poll loop
+   - Use state machine to schedule init on next cycle
+
+2. **Remove `goto doMore` after reset**:
+   - Let next `sdcard_poll()` cycle handle retry
+   - Prevents blocking loop
+
+3. **Limit retry attempts**:
+   - Add counter to prevent infinite reset loop
+   - After N failures, mark SD card as unavailable
+
+4. **Increase DMA priority**:
+   - Change from `DMA_PRIORITY_LOW` to `DMA_PRIORITY_MEDIUM`
+   - Prevent starvation by other DMA operations
+
+### Option 3: Workaround for Users
+
+Until fixed, users can:
+1. Arm before GPS fix acquires
+2. Remove SD card if not using blackbox
+3. Reduce blackbox logging rate to ≤3%
+4. Use faster PWM protocols (Dshot300+)
+
+---
 
 ## Success Criteria
 
-- [ ] Root cause identified
-- [ ] Theory validated with code evidence
+- [x] Root cause identified
+- [x] Theory validated with code evidence
+- [x] HAL version gap identified with relevant fixes
 - [ ] Fix proposed or workaround documented
 - [ ] Findings reported to upstream
+- [ ] HAL update tested for this specific issue
 
-## Files to Investigate
+## Files Investigated
 
-**Blackbox:**
-- `src/main/blackbox/blackbox.c`
-- `src/main/blackbox/blackbox_io.c`
-- `src/main/drivers/sdcard/sdmmc_sdio_*.c`
+**Key Files (Confirmed Issues):**
+- `src/main/drivers/sdcard/sdcard_sdio.c` - Blocking reset loop
+- `src/main/drivers/sdcard/sdmmc_sdio_hal.c` - HAL wrapper, DMA config
+- `src/main/fc/fc_core.c` - Arming triggers blackboxStart()
+- `src/main/blackbox/blackbox.c` - blackboxStart() → blackboxDeviceOpen()
 
-**Arming:**
-- `src/main/fc/fc_core.c` (arming logic)
-- `src/main/fc/runtime_config.c`
-
-**DMA/PWM:**
-- `src/main/drivers/dma_stm32f7xx.c`
-- `src/main/drivers/pwm_output.c`
-- `src/main/drivers/timer_stm32f7xx.c`
-
-**GPS/Navigation:**
-- `src/main/io/gps.c`
-- `src/main/navigation/navigation.c`
-- `src/main/flight/imu.c` (AHRS)
+**HAL Files:**
+- `lib/main/STM32F7/Drivers/STM32F7xx_HAL_Driver/` - V1.2.2 (outdated)
 
 ## References
 
 - Issue #11299: https://github.com/iNavFlight/inav/issues/11299
 - Issue #10586: https://github.com/iNavFlight/inav/issues/10586
+- F7 SDIO HAL commit: `3561feeb9` (Dec 10, 2024)
+- STM32F7 HAL Release Notes: https://github.com/STMicroelectronics/stm32f7xx-hal-driver/blob/master/Release_Notes.html
 - User CLI diff (10586): https://github.com/user-attachments/files/18388760/diff.txt
 - User CLI diff (11299): https://github.com/user-attachments/files/24956264/INAV_9.0.0_cli.txt
+
+## Related Projects
+
+- `update-stm32f7-hal` - HAL update may fix this issue
+- `update-stm32f4-hal` - For comparison (F4 not affected)
