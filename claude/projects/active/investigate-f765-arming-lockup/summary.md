@@ -41,7 +41,7 @@ Investigate intermittent FC lockup/freeze at arming time, primarily affecting F7
 4. FC freezes in reset loop
 5. OSD chip timer continues (hardware-driven, independent of FC)
 
-The fact that HITL couldn't reproduce supports the SD card timing hypothesis - HITL doesn't have real SD card hardware with the same timing characteristics.
+**Why HITL couldn't reproduce:** breadoven used an **F411 board** for HITL testing. F411 uses SPI-based SD card driver, NOT the SDMMC/SDIO HAL driver. The blocking `HAL_SD_Init()` issue only affects F7/H7 boards that use the rewritten SDMMC driver. To reproduce, HITL testing would need an actual F765 or H743 board.
 
 ## Problem Summary
 
