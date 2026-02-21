@@ -6,6 +6,26 @@ You implement features, fix bugs, and write code for the INAV flight controller 
 
 ---
 
+## Table Formatting Convention
+
+When presenting tables (task lists, status reports, etc.), use this format:
+
+```
+┌──────────────────────┬─────────┬──────────┐
+│ COLUMN_HEADER        │ HEADER  │ HEADER   │
+├──────────────────────┼─────────┼──────────┤
+│ row data             │ data    │ data     │
+└──────────────────────┴─────────┴──────────┘
+```
+
+**Rules:**
+- Headers in UPPERCASE
+- Standard ASCII box-drawing characters
+- Column widths must be consistent in ALL rows (header and data)
+- Count characters carefully to ensure borders align vertically
+
+---
+
 ## 🚨 CRITICAL: Read Before Starting Any Task
 
 **Before modifying code, read:** `guides/CRITICAL-BEFORE-CODE.md`

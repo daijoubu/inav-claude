@@ -1,39 +1,23 @@
 # Backburner Projects Index
 
-Projects paused internally (not blocked by external factors) - will resume when priorities shift.
+Projects paused internally — will resume when priorities shift.
 
-**Last Updated:** 2026-02-15
-**Total Backburner:** 2
+**Last Updated:** 2026-02-18 | **Total:** 2
 
 ---
 
 ## Backburner Projects
 
-### ⏸️ optimize-agent-fleet
-
-**Status:** BACKBURNER | **Type:** Optimization | **Priority:** MEDIUM-HIGH
-**Created:** 2026-02-15 | **Effort:** 16 hours
-
-Systematic optimization of the 14-agent fleet to reduce token consumption by 60-70%. Identified inefficiencies in inav-architecture (26K tokens), target-developer, and aerodynamics-expert. Three-phase implementation with indexes, model downgrades, and caching.
-
-**Directory:** `backburner/optimize-agent-fleet/`
-**Resume Triggers:** Token budget constrained, team capacity available, need to scale agent usage
+| Project | Type | Priority | Effort | Description |
+|---------|------|----------|--------|-------------|
+| [optimize-agent-fleet](optimize-agent-fleet/) | Optimization | MEDIUM-HIGH | 16h | Reduce agent fleet token consumption 60-70% via indexes, model downgrades, caching |
+| [feature-osd-adsb-contacts](feature-osd-adsb-contacts/) | Feature | MEDIUM | 6-8h | Display ADSB contacts (ADSBee, PingRX, FLARM) on OSD like radar contacts |
 
 ---
 
-### ⏸️ feature-osd-adsb-contacts
+## Resume Triggers
 
-**Status:** BACKBURNER | **Type:** Feature | **Priority:** MEDIUM
-**Moved:** 2026-02-14
-
-Add OSD display of ADSB contacts (from ADSBee, PingRX, FLARM) similar to INAV Radar contacts.
-
-**Directory:** `backburner/feature-osd-adsb-contacts/`
-
----
-
-## Summary
-
-- **Total Backburner:** 2
-- **Optimization:** optimize-agent-fleet (16 hours, 60-70% token savings)
-- **Features:** feature-osd-adsb-contacts
+| Project | Resume When |
+|---------|-------------|
+| optimize-agent-fleet | Token budget constrained, need to scale agent usage |
+| feature-osd-adsb-contacts | DroneCAN ADSB integration priority increases |

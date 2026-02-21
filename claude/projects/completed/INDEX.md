@@ -2,7 +2,7 @@
 
 Completed (✅) and cancelled (❌) projects by current author (daijoubu) for INAV firmware and DroneCAN development.
 
-**Total Completed (Current Author):** 28 | **Total Cancelled:** 5
+**Total Completed (Current Author):** 28 | **Total Cancelled:** 6
 **Archived:** 100 | See [archive/](archive/)
 - Previous Author (sensei-hacker): 59 projects
 - Other Projects: 34 projects
@@ -10,6 +10,138 @@ Completed (✅) and cancelled (❌) projects by current author (daijoubu) for IN
 
 > **Active projects:** See [../INDEX.md](../INDEX.md)
 > **Archived organization:** See `archive/` subdirectory for all 100 archived projects
+
+---
+
+
+### ✅ test-nexus-dsm-verification
+
+**Status:** COMPLETED (2026-02-21)
+**Type:** Testing / Verification
+**Priority:** MEDIUM
+
+Verify that DSM (Spektrum satellite receiver) functionality works correctly on the NEXUS target from PR #11324. The target has a dedicated DSM port on UART1 (PA9/PA10) with 3.3V power, but defaults to CRSF on UART4.
+
+---
+
+
+### ✅ fix-msp-lockup-11348
+
+**Status:** COMPLETED (2026-02-20)
+**Type:** Bug Fix
+**Priority:** CRITICAL
+
+Implement 4 critical bug fixes for MSP/Serial communication deadlock issue that causes FC lock-ups when MSP reader disconnects while LOG_DEBUG is active. Investigation identified root cause as combination of missing error handling, infinite loops without timeouts, and improper resource cleanup.
+
+---
+
+
+### ✅ investigate-msp-lockup-11348
+
+**Status:** COMPLETED (2026-02-20)
+**Type:** Investigation
+**Priority:** HIGH
+
+Investigate a critical FC lock-up issue caused by MSP communication combined with LOG_DEBUG usage. The FC freezes completely when MSP reader is disconnected, potentially due to an infinite loop in serial/MSP code.
+
+---
+
+
+### ✅ assess-stm32-hal-updates
+
+**Status:** COMPLETED (2026-02-20)
+**Type:** Assessment/Investigation
+**Priority:** MEDIUM
+
+Conduct comprehensive assessment of STM32F7xx HAL to identify needed updates and determine cross-platform impact on STM32H7xx and STM32F4xx HAL implementations. Evaluate architectural compatibility and migration requirements.
+
+---
+
+
+### ✅ test-pr-11324
+
+**Status:** COMPLETED (2026-02-19)
+**Type:** Testing / Validation
+**Priority:** MEDIUM
+
+Comprehensive testing of PR #11324 from iNavFlight/inav repository to validate functionality, identify issues, and provide feedback to maintainers.
+
+---
+
+
+### ✅ reproduce-issue-11202-gps-fluctuation
+
+**Status:** COMPLETED (2026-02-18)
+**Type:** Bug Investigation
+**Priority:** MEDIUM-HIGH
+
+Investigate GPS signal instability (EPH spikes, HDOP fluctuations, reduced sat count) affecting INAV 6.0-9.0.
+
+---
+
+
+### ✅ update-telemetry-widget-800x480
+
+**Status:** COMPLETED (2026-02-18)
+**Type:** Feature Enhancement
+**Priority:** MEDIUM
+
+Update the INAV Lua Telemetry Widget to properly support the 800x480 color touchscreen on the RadioMaster TX16S MK3.
+
+---
+
+
+### ✅ fix-nexusx-imu-orientation
+
+**Status:** COMPLETED (2026-02-18)
+**Type:** Bug Fix
+**Priority:** HIGH
+
+The default IMU orientation on the RadioMaster NEXUS-X target is backwards. Users must manually apply YAW-180 to correct it.
+
+---
+
+
+### ✅ fix-blackbox-sd-lockup
+
+**Status:** COMPLETED (2026-02-18)
+**Type:** Bug Fix / Safety Issue
+**Priority:** HIGH
+
+FC completely locks up when using certain SD cards for blackbox logging. Blackbox failures should fail gracefully, not take down the entire FC.
+
+---
+
+
+### ✅ discord-qa-knowledge-base
+
+**Status:** COMPLETED (2026-02-18)
+**Type:** Tooling / AI Pipeline
+**Priority:** MEDIUM
+
+Build a tool that mines the INAV Discord conversation history (~20k messages) to discover recurring problems and their canonical answers.
+
+---
+
+
+### ✅ feature-oled-auto-detection
+
+**Status:** COMPLETED (2026-02-18)
+**Type:** Feature Enhancement
+**Priority:** MEDIUM
+
+Auto-detect OLED controller type (SSD1306, SH1106, SH1107, SSD1309) to eliminate manual configuration.
+
+---
+
+
+### ✅ configurator-ui-polish
+
+**Status:** COMPLETED (2026-02-18)
+**Type:** UI Enhancement
+**Priority:** MEDIUM
+
+Systematic UI polish of the INAV Configurator based on a 97-issue audit across all tabs. Organized into 9 subprojects.
 
 ---
 

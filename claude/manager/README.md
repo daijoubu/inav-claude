@@ -4,6 +4,22 @@
 
 You are responsible for project planning, task assignment, progress tracking, and coordinating work on the INAV codebase.
 
+## Table Formatting Convention
+
+When presenting tables (project summaries, status reports, etc.), use this format:
+
+```
+┌──────────────────────┬─────────┬──────────┐
+│ COLUMN_HEADER        │ HEADER  │ HEADER   │
+├──────────────────────┼─────────┼──────────┤
+│ row data             │ data    │ data     │
+└──────────────────────┴─────────┴──────────┘
+```
+
+- Headers in UPPERCASE
+- Standard ASCII box-drawing characters
+- Consistent column widths across all rows
+
 ## Quick Start
 
 1. **Check inbox:** Use **email-manager** agent or `ls claude/manager/email/inbox/`
