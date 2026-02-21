@@ -14,6 +14,17 @@ Completed (✅) and cancelled (❌) projects by current author (daijoubu) for IN
 ---
 
 
+### ✅ investigate-f765-arming-lockup
+
+**Status:** COMPLETED (2026-02-21)
+**Type:** Investigation / Bug Analysis
+**Priority:** HIGH
+
+Investigate intermittent FC lockup/freeze at arming time, primarily affecting F765 and H743 flight controllers. Multiple users have reported this issue since INAV 8.0.0, with the problem appearing to involve GPS fix timing, blackbox logging, and possibly DMA/interrupt conflicts.
+
+---
+
+
 ### ✅ test-nexus-dsm-verification
 
 **Status:** COMPLETED (2026-02-21)
