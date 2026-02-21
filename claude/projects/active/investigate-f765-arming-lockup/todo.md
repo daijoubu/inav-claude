@@ -68,7 +68,10 @@
 - [ ] Read #10646 for additional clues
 - [ ] Read #10659 for additional clues
 - [ ] Read #10800 for additional clues
-- [ ] Read #11007 (F765 in-flight lockup) for additional clues
+- [x] Read #11007 (F765 in-flight lockup)
+  - **Finding:** Lockup at trackback waypoint, blackbox log stops at freeze
+  - **Analysis:** Same root cause - SD write during nav state transition
+  - **Key:** HITL couldn't reproduce (no real SD card timing)
 - [x] Look for common patterns across all issues
   - **Finding:** All F7/H7, all since 8.0.0, all involve SD/blackbox
 

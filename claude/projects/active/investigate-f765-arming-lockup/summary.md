@@ -20,7 +20,28 @@ Investigate intermittent FC lockup/freeze at arming time, primarily affecting F7
 | #10646 | Random freeze after time | F7xx | Freeze after random duration |
 | #10659 | F7 lockup | F7xx | Related lockup |
 | #10800 | F7/H7 issue | F7/H7 | Related issue |
-| #11007 | F765 lockup in flight | F765 | In-flight freeze |
+| #11007 | F765 lockup in flight (trackback) | F765 | Freeze at trackback waypoint, log stops |
+
+### Issue #11007 Deep Dive
+
+**Scenario:** F765 locked up during failsafe trackback recovery, exactly when reaching the last trackback waypoint (50m from home).
+
+**Key Evidence:**
+- Blackbox log stopped recording at exact moment of lockup
+- OSD link quality indicator kept flashing (hardware timer, not FC code)
+- Motor shutdown, telemetry stopped, RC control not returned
+- FC didn't reboot - remained frozen
+- HITL testing could NOT reproduce (no real SD card timing)
+- `navState 38` (Trackback) in log at freeze moment
+
+**Analysis:** This appears to be the **same root cause**:
+1. Navigation state transition at trackback endpoint
+2. Blackbox writes state change to SD card
+3. SD card in error state triggers blocking `HAL_SD_Init()`
+4. FC freezes in reset loop
+5. OSD chip timer continues (hardware-driven, independent of FC)
+
+The fact that HITL couldn't reproduce supports the SD card timing hypothesis - HITL doesn't have real SD card hardware with the same timing characteristics.
 
 ## Problem Summary
 
