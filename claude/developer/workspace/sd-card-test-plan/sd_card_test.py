@@ -1351,6 +1351,15 @@ class FCConnection:
             time.sleep(1)
             ser.read(500)  # Read response
 
+            # CRITICAL: Properly exit CLI mode (matching send_cli_command() behavior)
+            # This is what INAV Configurator does to maintain FC stability
+            ser.write(b"\r")
+            time.sleep(0.2)
+            ser.read(100)  # Consume any response
+
+            # Give FC time to exit CLI mode cleanly
+            time.sleep(0.5)
+
             ser.close()
             time.sleep(1)
 
