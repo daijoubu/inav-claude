@@ -1584,8 +1584,8 @@ class FCConnection:
 
             time.sleep(1)
 
-            # Step 2: Reset via ST-Link
-            print("\n2. Resetting FC via ST-Link...")
+            # Step 2: Reset via ST-Link with proper MSC state cleanup
+            print("\n2. Resetting FC via ST-Link (clearing MSC state)...")
 
             # Find OpenOCD config if not provided
             if not openocd_config:
@@ -1601,22 +1601,35 @@ class FCConnection:
             if openocd_config and Path(openocd_config).exists():
                 print(f"   Using config: {openocd_config}")
                 try:
+                    # OpenOCD commands to properly exit MSC mode:
+                    # 1. Halt processor
+                    # 2. Clear MSC state flag in SRAM (0x2001FFF0 = 0xFFFFFFFF)
+                    # 3. Clear reset reason (persistent object)
+                    # 4. Trigger NVIC_SystemReset via AIRCR register (0xE000ED0C)
+                    # 5. Let processor resume and reboot
+                    openocd_cmds = [
+                        "openocd",
+                        "-f", openocd_config,
+                        "-c", "init",
+                        "-c", "halt",                              # Halt processor
+                        "-c", "mww 0x2001FFF0 0xFFFFFFFF",        # Clear SRAM MSC flag
+                        "-c", "mww 0x20000000 0x00000000",        # Clear reset reason in SRAM (persistent object)
+                        "-c", "mww 0xE000ED0C 0x05FA0004",        # Trigger NVIC_SystemReset via AIRCR
+                        "-c", "sleep 1000",                        # Wait for reboot
+                        "-c", "shutdown"
+                    ]
+
                     result = subprocess.run(
-                        [
-                            "openocd",
-                            "-f", openocd_config,
-                            "-c", "init",
-                            "-c", "reset hard",
-                            "-c", "sleep 3000",
-                            "-c", "shutdown"
-                        ],
+                        openocd_cmds,
                         capture_output=True,
                         timeout=10
                     )
                     if result.returncode == 0:
-                        print("   ✓ Hardware reset sent via ST-Link")
+                        print("   ✓ MSC state cleared and NVIC_SystemReset triggered via ST-Link")
                     else:
                         print("   ⚠ OpenOCD reset may have failed")
+                        if result.stderr:
+                            print(f"   Error details: {result.stderr.decode()}")
                 except Exception as e:
                     print(f"   ⚠ ST-Link reset error: {e}")
                     return False
