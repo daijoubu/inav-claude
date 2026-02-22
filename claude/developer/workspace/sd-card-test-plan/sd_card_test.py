@@ -1234,51 +1234,58 @@ class FCConnection:
             result['valid'] = False
             return result
 
-    def apply_baseline_configuration(self, config_file: str = "baseline-fc-config.txt") -> bool:
+    def apply_config_diff(self, settings_dict: dict) -> bool:
         """
-        Apply baseline configuration to FC using fc-set.
+        Apply a minimal configuration diff using cliterm -f.
 
-        Requires fc-set utility installed and baseline config file to exist.
+        This method creates a temporary diff file with only the specified
+        settings and applies it using cliterm -f (much more reliable than fc-set).
 
         Args:
-            config_file: Path to baseline configuration file
+            settings_dict: Dictionary of settings to apply, e.g.,
+                          {"blackbox_rate_denom": "2", "blackbox_rate_num": "1"}
 
         Returns:
             True if configuration applied successfully, False otherwise
         """
         import subprocess
         import os
+        import tempfile
 
-        if not os.path.exists(config_file):
-            print(f"ERROR: Baseline config file not found: {config_file}")
-            return False
+        if not settings_dict:
+            return True  # Nothing to restore
 
         try:
-            print(f"  Applying baseline configuration via fc-set...")
-            cmd = f"fc-set {self.port} {config_file}"
-            process = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            # Create temporary diff file with minimal settings
+            with tempfile.NamedTemporaryFile(mode='w', suffix='.txt', delete=False) as f:
+                diff_file = f.name
+                # Write minimal diff format
+                for key, value in settings_dict.items():
+                    f.write(f"set {key} = {value}\n")
+                f.write("save\n")
 
-            # Wait up to 120 seconds for fc-set to complete
+            print(f"  Applying configuration via cliterm -f...")
+
+            # Use cliterm -f to apply the diff file
+            # cliterm auto-detects FC and applies commands from the file
+            cmd = f"cliterm -d {self.port} -f {diff_file}"
+            process = subprocess.Popen(
+                cmd,
+                shell=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE
+            )
+
+            # Wait up to 30 seconds for cliterm to complete (much faster than fc-set)
             try:
-                stdout, stderr = process.communicate(timeout=120)
+                stdout, stderr = process.communicate(timeout=30)
             except subprocess.TimeoutExpired:
                 process.kill()
-                print("  ERROR: fc-set timed out (>120s)")
+                print("  ERROR: cliterm timed out (>30s)")
                 print("  ")
-                print("  NOTE: fc-set tool can hang when establishing CLI connection.")
-                print("  This is a known limitation of the fc-set utility, not the test suite.")
-                print("  ")
-                print("  RECOMMENDED STEPS:")
-                print("  1. Power cycle the flight controller")
-                print("  2. Or apply manually (may also timeout):")
-                print(f"     fc-set {self.port} {config_file}")
-                print("  ")
-
-                # Try to recover FC connection
                 print("  Attempting to recover FC connection...")
                 try:
                     self.disconnect()
-                    import time
                     time.sleep(2)
                     if self.connect():
                         print("  ✓ FC connection recovered")
@@ -1286,21 +1293,38 @@ class FCConnection:
                         print("  ⚠ Could not recover FC connection")
                 except:
                     pass
-
+                finally:
+                    # Clean up temp file
+                    try:
+                        os.unlink(diff_file)
+                    except:
+                        pass
                 return False
 
+            # Check result
             if process.returncode != 0:
-                print(f"  ERROR: fc-set failed with code {process.returncode}")
+                print(f"  ERROR: cliterm failed with code {process.returncode}")
+                if stderr:
+                    print(f"  Details: {stderr.decode()}")
+                try:
+                    os.unlink(diff_file)
+                except:
+                    pass
                 return False
 
-            print(f"  ✓ Configuration applied successfully")
+            print(f"  ✓ Configuration applied successfully via cliterm")
 
             # Reconnect after successful configuration change
             try:
                 self.disconnect()
-                import time
                 time.sleep(1)
                 self.connect()
+            except:
+                pass
+
+            # Clean up temp file
+            try:
+                os.unlink(diff_file)
             except:
                 pass
 
@@ -1308,6 +1332,126 @@ class FCConnection:
 
         except Exception as e:
             print(f"  ERROR: Failed to apply configuration: {e}")
+            try:
+                os.unlink(diff_file)
+            except:
+                pass
+            return False
+
+    def apply_baseline_configuration(self, config_file: str = "baseline-fc-config.txt") -> bool:
+        """
+        Apply full baseline configuration to FC using cliterm -f with diff file.
+
+        Creates a diff from the baseline config file and applies it using cliterm,
+        which is more reliable than the external fc-set tool.
+
+        Args:
+            config_file: Path to baseline configuration file
+
+        Returns:
+            True if configuration applied successfully, False otherwise
+        """
+        import os
+        import tempfile
+
+        if not os.path.exists(config_file):
+            print(f"ERROR: Baseline config file not found: {config_file}")
+            return False
+
+        try:
+            # Read baseline config file and extract just the settings
+            with open(config_file, 'r') as f:
+                lines = f.readlines()
+
+            # Create a diff file with just the commands from the baseline
+            with tempfile.NamedTemporaryFile(mode='w', suffix='.txt', delete=False) as f:
+                diff_file = f.name
+                in_batch = False
+                for line in lines:
+                    line = line.rstrip()
+                    # Skip empty lines and comments
+                    if not line or line.startswith('#'):
+                        continue
+                    # Handle batch mode markers
+                    if line == 'batch start':
+                        in_batch = True
+                        continue
+                    elif line == 'batch end':
+                        in_batch = False
+                        continue
+                    # Write all other commands (set, feature, mmix, smix, defaults, save)
+                    if in_batch or line in ['save', 'defaults noreboot']:
+                        f.write(line + '\n')
+
+            print(f"  Applying baseline configuration via cliterm -f...")
+
+            # Use cliterm -f to apply the configuration
+            cmd = f"cliterm -d {self.port} -f {diff_file}"
+            process = subprocess.Popen(
+                cmd,
+                shell=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE
+            )
+
+            # Wait up to 30 seconds (cliterm is much faster than fc-set)
+            try:
+                stdout, stderr = process.communicate(timeout=30)
+            except subprocess.TimeoutExpired:
+                process.kill()
+                print("  ERROR: cliterm timed out (>30s)")
+                print("  ")
+                print("  Attempting to recover FC connection...")
+                try:
+                    self.disconnect()
+                    time.sleep(2)
+                    if self.connect():
+                        print("  ✓ FC connection recovered")
+                    else:
+                        print("  ⚠ Could not recover FC connection")
+                except:
+                    pass
+                finally:
+                    try:
+                        os.unlink(diff_file)
+                    except:
+                        pass
+                return False
+
+            if process.returncode != 0:
+                print(f"  ERROR: cliterm failed with code {process.returncode}")
+                if stderr:
+                    print(f"  Details: {stderr.decode()}")
+                try:
+                    os.unlink(diff_file)
+                except:
+                    pass
+                return False
+
+            print(f"  ✓ Baseline configuration applied successfully")
+
+            # Reconnect after successful configuration change
+            try:
+                self.disconnect()
+                time.sleep(1)
+                self.connect()
+            except:
+                pass
+
+            # Clean up temp file
+            try:
+                os.unlink(diff_file)
+            except:
+                pass
+
+            return True
+
+        except Exception as e:
+            print(f"  ERROR: Failed to apply configuration: {e}")
+            try:
+                os.unlink(diff_file)
+            except:
+                pass
             return False
 
     # =========================================================================
@@ -2043,15 +2187,27 @@ class SDCardTestSuite:
                                           current_config['rate_denom'] != original_blackbox_config['rate_denom']):
                         original_rate = f"{original_blackbox_config['rate_num']}/{original_blackbox_config['rate_denom']}"
                         self.log(f"\n  Restoring original blackbox rate to {original_rate}...")
-                        if self.fc.set_blackbox_rate(original_rate):
-                            self.log(f"  ✓ Blackbox rate restored")
+
+                        # Create minimal diff with just the rate settings
+                        diff_settings = {
+                            'blackbox_rate_num': str(original_blackbox_config['rate_num']),
+                            'blackbox_rate_denom': str(original_blackbox_config['rate_denom'])
+                        }
+
+                        if self.fc.apply_config_diff(diff_settings):
+                            self.log(f"  ✓ Blackbox rate restored via cliterm")
                         else:
-                            self.log(f"  ⚠ Failed to restore blackbox rate")
-                            self.log(f"  Manual restoration may be needed: set blackbox_rate={original_rate}")
+                            self.log(f"  ⚠ Failed to restore blackbox rate via cliterm, trying alternative...")
+                            # Fallback to send_cli_command if cliterm fails
+                            if self.fc.set_blackbox_rate(original_rate):
+                                self.log(f"  ✓ Blackbox rate restored (via fallback)")
+                            else:
+                                self.log(f"  ⚠ Failed to restore blackbox rate")
+                                self.log(f"  Manual restoration may be needed: set blackbox_rate={original_rate}")
                 except Exception as restore_error:
                     self.log(f"\n  ⚠ WARNING: Could not restore blackbox rate")
                     self.log(f"  FC may be in unstable state. Recommend power cycle.")
-                    self.log(f"  Manual restoration: fc-set {self.fc.port} baseline-fc-config.txt")
+                    self.log(f"  Manual restoration: cliterm -d {self.fc.port} -f <config-file>")
 
             return result
 
@@ -2064,8 +2220,20 @@ class SDCardTestSuite:
                                           current_config['rate_denom'] != original_blackbox_config['rate_denom']):
                         original_rate = f"{original_blackbox_config['rate_num']}/{original_blackbox_config['rate_denom']}"
                         try:
-                            self.fc.set_blackbox_rate(original_rate)
-                            self.log(f"\n  ✓ Configuration restored (test failed but config recovered)")
+                            # Try minimal diff restoration first
+                            diff_settings = {
+                                'blackbox_rate_num': str(original_blackbox_config['rate_num']),
+                                'blackbox_rate_denom': str(original_blackbox_config['rate_denom'])
+                            }
+                            if self.fc.apply_config_diff(diff_settings):
+                                self.log(f"\n  ✓ Configuration restored (test failed but config recovered via cliterm)")
+                            else:
+                                # Fallback to set_blackbox_rate
+                                if self.fc.set_blackbox_rate(original_rate):
+                                    self.log(f"\n  ✓ Configuration restored (test failed but config recovered)")
+                                else:
+                                    self.log(f"\n  ⚠ WARNING: Could not restore configuration after test failure")
+                                    self.log(f"  FC may be in unstable state. Power cycle recommended.")
                         except:
                             self.log(f"\n  ⚠ WARNING: Could not restore configuration after test failure")
                             self.log(f"  FC may be in unstable state. Power cycle recommended.")
