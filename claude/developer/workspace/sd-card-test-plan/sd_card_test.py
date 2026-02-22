@@ -1969,6 +1969,8 @@ class SDCardTestSuite:
 
             # Only attempt rate setting if we have an override, otherwise just log current rate
             if override_rate:
+                self.log(f"\n  ⚠ WARNING: Changing blackbox rate may temporarily affect FC stability")
+                self.log(f"  The configuration will be restored after the test completes.")
                 self.set_optimal_blackbox_rate(test_num, duration_min=duration_min, override_rate=override_rate)
             else:
                 # Log current rate without attempting to change it
@@ -1993,29 +1995,40 @@ class SDCardTestSuite:
 
             # Restore original blackbox configuration if it was changed
             if original_blackbox_config:
-                current_config = self.fc.get_blackbox_config()
-                if current_config and (current_config['rate_num'] != original_blackbox_config['rate_num'] or
-                                      current_config['rate_denom'] != original_blackbox_config['rate_denom']):
-                    original_rate = f"{original_blackbox_config['rate_num']}/{original_blackbox_config['rate_denom']}"
-                    self.log(f"\n  Restoring original blackbox rate to {original_rate}...")
-                    if self.fc.set_blackbox_rate(original_rate):
-                        self.log(f"  ✓ Blackbox rate restored")
-                    else:
-                        self.log(f"  ⚠ Failed to restore blackbox rate")
+                try:
+                    current_config = self.fc.get_blackbox_config()
+                    if current_config and (current_config['rate_num'] != original_blackbox_config['rate_num'] or
+                                          current_config['rate_denom'] != original_blackbox_config['rate_denom']):
+                        original_rate = f"{original_blackbox_config['rate_num']}/{original_blackbox_config['rate_denom']}"
+                        self.log(f"\n  Restoring original blackbox rate to {original_rate}...")
+                        if self.fc.set_blackbox_rate(original_rate):
+                            self.log(f"  ✓ Blackbox rate restored")
+                        else:
+                            self.log(f"  ⚠ Failed to restore blackbox rate")
+                            self.log(f"  Manual restoration may be needed: set blackbox_rate={original_rate}")
+                except Exception as restore_error:
+                    self.log(f"\n  ⚠ WARNING: Could not restore blackbox rate")
+                    self.log(f"  FC may be in unstable state. Recommend power cycle.")
+                    self.log(f"  Manual restoration: fc-set {self.fc.port} baseline-fc-config.txt")
 
             return result
 
         except Exception as e:
             # Restore configuration even if test fails
             if original_blackbox_config:
-                current_config = self.fc.get_blackbox_config()
-                if current_config and (current_config['rate_num'] != original_blackbox_config['rate_num'] or
-                                      current_config['rate_denom'] != original_blackbox_config['rate_denom']):
-                    original_rate = f"{original_blackbox_config['rate_num']}/{original_blackbox_config['rate_denom']}"
-                    try:
-                        self.fc.set_blackbox_rate(original_rate)
-                    except:
-                        pass  # Silently fail if restoration doesn't work
+                try:
+                    current_config = self.fc.get_blackbox_config()
+                    if current_config and (current_config['rate_num'] != original_blackbox_config['rate_num'] or
+                                          current_config['rate_denom'] != original_blackbox_config['rate_denom']):
+                        original_rate = f"{original_blackbox_config['rate_num']}/{original_blackbox_config['rate_denom']}"
+                        try:
+                            self.fc.set_blackbox_rate(original_rate)
+                            self.log(f"\n  ✓ Configuration restored (test failed but config recovered)")
+                        except:
+                            self.log(f"\n  ⚠ WARNING: Could not restore configuration after test failure")
+                            self.log(f"  FC may be in unstable state. Power cycle recommended.")
+                except:
+                    pass  # Silently fail if we can't even query current config
             raise e
 
     def run_all(self, tests: list[int] = None, **test_params) -> list[TestResult]:
