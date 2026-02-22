@@ -566,9 +566,12 @@ class FCConnection:
         stress_handle['join'](timeout)
         return stress_handle['callback']()
 
-    def wait_for_arming_ready(self, timeout: float = 300.0, poll_interval: float = 0.5) -> tuple[bool, str]:
+    def wait_for_arming_ready(self, timeout: float = 300.0, poll_interval: float = 0.5, rc_rate_hz: float = 50.0) -> tuple[bool, str]:
         """
         Wait for FC to be ready for arming (all sensor checks passing).
+
+        Sends continuous RC commands while checking arming status. This establishes
+        a stable RC link which resolves "Arm switch not ready" and "Throttle not LOW" blockers.
 
         Checks arming flags and displays status. Returns when ready or timeout occurs.
         Default 5-minute timeout allows for GPS 3D fix acquisition on cold start.
@@ -581,12 +584,15 @@ class FCConnection:
         Args:
             timeout: Maximum time to wait in seconds (default: 300.0 = 5 minutes for GPS)
             poll_interval: How often to check status in seconds (default: 0.5)
+            rc_rate_hz: RC update rate in Hz (default: 50Hz, must be >5Hz for MSP RX)
 
         Returns:
             (ready: bool, status: str) - True if ready, False if timeout
         """
         start_time = time.time()
         last_status = None
+        rc_update_interval = 1.0 / rc_rate_hz
+        last_rc_update = start_time
 
         # Arming flags that block arming
         BLOCKING_FLAGS = {
@@ -597,7 +603,19 @@ class FCConnection:
             ArmingFlag.ARMING_DISABLED_ARM_SWITCH: "Arm switch not ready",
         }
 
+        # Prepare RC channels: Throttle LOW, Arm switch DISARMED
+        rc_channels = [1500] * 16
+        rc_channels[2] = 1000   # Throttle LOW
+        rc_channels[4] = 1000   # Arm switch DISARMED (LOW position)
+
         while time.time() - start_time < timeout:
+            current_time = time.time()
+
+            # Send RC commands at the specified rate (must be >5Hz for MSP RX)
+            if current_time - last_rc_update >= rc_update_interval:
+                self.send_rc_channels(rc_channels, rate_hz=rc_rate_hz)
+                last_rc_update = current_time
+
             status = self.get_arming_status()
             if not status:
                 return False, "Cannot query arming status"
