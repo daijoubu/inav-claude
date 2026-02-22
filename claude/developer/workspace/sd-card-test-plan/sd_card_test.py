@@ -1264,6 +1264,29 @@ class FCConnection:
             except subprocess.TimeoutExpired:
                 process.kill()
                 print("  ERROR: fc-set timed out (>120s)")
+                print("  ")
+                print("  NOTE: fc-set tool can hang when establishing CLI connection.")
+                print("  This is a known limitation of the fc-set utility, not the test suite.")
+                print("  ")
+                print("  RECOMMENDED STEPS:")
+                print("  1. Power cycle the flight controller")
+                print("  2. Or apply manually (may also timeout):")
+                print(f"     fc-set {self.port} {config_file}")
+                print("  ")
+
+                # Try to recover FC connection
+                print("  Attempting to recover FC connection...")
+                try:
+                    self.disconnect()
+                    import time
+                    time.sleep(2)
+                    if self.connect():
+                        print("  ✓ FC connection recovered")
+                    else:
+                        print("  ⚠ Could not recover FC connection")
+                except:
+                    pass
+
                 return False
 
             if process.returncode != 0:
@@ -1271,6 +1294,16 @@ class FCConnection:
                 return False
 
             print(f"  ✓ Configuration applied successfully")
+
+            # Reconnect after successful configuration change
+            try:
+                self.disconnect()
+                import time
+                time.sleep(1)
+                self.connect()
+            except:
+                pass
+
             return True
 
         except Exception as e:
