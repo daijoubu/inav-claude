@@ -1,7 +1,7 @@
 # Project: Update STM32F7xx HAL and CMSIS
 
 **Status:** 📋 TODO
-**Priority:** HIGH
+**Priority:** CRITICAL (fixes #11299 lockup)
 **Type:** Maintenance / Security Update
 **Created:** 2026-02-20
 **Estimated Effort:** 16-26 hours

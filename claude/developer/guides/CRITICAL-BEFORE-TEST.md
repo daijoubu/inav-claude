@@ -110,4 +110,5 @@ Use the Edit tool to append new entries. Format: `- **Brief title**: One-sentenc
 
 ### Lessons
 
+- **Verify test script correctness**: When a test repeatedly fails with the same error, verify the test script itself is correct before assuming the code under test is broken. The error may be in the test (e.g., wrong number of return values, incorrect API usage).
 <!-- Add new lessons above this line -->

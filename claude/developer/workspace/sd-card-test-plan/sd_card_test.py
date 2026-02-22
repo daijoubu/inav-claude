@@ -1958,35 +1958,65 @@ class SDCardTestSuite:
             self.log(f"Test {test_num} not implemented for automation")
             return None
 
-        # Set optimal blackbox rate before running test (unless rate is already correct)
-        # This avoids unnecessary CLI mode switching which can destabilize MSP
-        duration_min = kwargs.get("duration_min", 60)
-        override_rate = kwargs.get("override_rate", None)
+        # Save original FC configuration (to restore after test)
+        original_blackbox_config = self.fc.get_blackbox_config()
 
-        # Only attempt rate setting if we have an override, otherwise just log current rate
-        if override_rate:
-            self.set_optimal_blackbox_rate(test_num, duration_min=duration_min, override_rate=override_rate)
-        else:
-            # Log current rate without attempting to change it
-            current_config = self.fc.get_blackbox_config()
-            if current_config:
-                self.log(f"  Current blackbox rate: {current_config['rate_num']}/{current_config['rate_denom']}")
+        try:
+            # Set optimal blackbox rate before running test (unless rate is already correct)
+            # This avoids unnecessary CLI mode switching which can destabilize MSP
+            duration_min = kwargs.get("duration_min", 60)
+            override_rate = kwargs.get("override_rate", None)
+
+            # Only attempt rate setting if we have an override, otherwise just log current rate
+            if override_rate:
+                self.set_optimal_blackbox_rate(test_num, duration_min=duration_min, override_rate=override_rate)
             else:
-                self.log(f"  Cannot read blackbox rate, using current FC setting")
+                # Log current rate without attempting to change it
+                current_config = self.fc.get_blackbox_config()
+                if current_config:
+                    self.log(f"  Current blackbox rate: {current_config['rate_num']}/{current_config['rate_denom']}")
+                else:
+                    self.log(f"  Cannot read blackbox rate, using current FC setting")
 
-        # Filter kwargs to only pass parameters that the test expects
-        # Tests 3, 9, 10 use duration_min; others don't need it
-        test_kwargs = {}
-        if test_num in [3, 9, 10]:
-            # These tests accept duration_min
-            if "duration_min" in kwargs:
-                test_kwargs["duration_min"] = kwargs["duration_min"]
+            # Filter kwargs to only pass parameters that the test expects
+            # Tests 3, 9, 10 use duration_min; others don't need it
+            test_kwargs = {}
+            if test_num in [3, 9, 10]:
+                # These tests accept duration_min
+                if "duration_min" in kwargs:
+                    test_kwargs["duration_min"] = kwargs["duration_min"]
 
-        # Test 9 also accepts override_rate
-        if test_num == 9 and "override_rate" in kwargs:
-            test_kwargs["override_rate"] = kwargs["override_rate"]
+            # Note: override_rate is only used for rate setting before test, not passed to test method
 
-        return test_map[test_num](**test_kwargs)
+            # Run the test
+            result = test_map[test_num](**test_kwargs)
+
+            # Restore original blackbox configuration if it was changed
+            if original_blackbox_config:
+                current_config = self.fc.get_blackbox_config()
+                if current_config and (current_config['rate_num'] != original_blackbox_config['rate_num'] or
+                                      current_config['rate_denom'] != original_blackbox_config['rate_denom']):
+                    original_rate = f"{original_blackbox_config['rate_num']}/{original_blackbox_config['rate_denom']}"
+                    self.log(f"\n  Restoring original blackbox rate to {original_rate}...")
+                    if self.fc.set_blackbox_rate(original_rate):
+                        self.log(f"  ✓ Blackbox rate restored")
+                    else:
+                        self.log(f"  ⚠ Failed to restore blackbox rate")
+
+            return result
+
+        except Exception as e:
+            # Restore configuration even if test fails
+            if original_blackbox_config:
+                current_config = self.fc.get_blackbox_config()
+                if current_config and (current_config['rate_num'] != original_blackbox_config['rate_num'] or
+                                      current_config['rate_denom'] != original_blackbox_config['rate_denom']):
+                    original_rate = f"{original_blackbox_config['rate_num']}/{original_blackbox_config['rate_denom']}"
+                    try:
+                        self.fc.set_blackbox_rate(original_rate)
+                    except:
+                        pass  # Silently fail if restoration doesn't work
+            raise e
 
     def run_all(self, tests: list[int] = None, **test_params) -> list[TestResult]:
         """
