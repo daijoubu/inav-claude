@@ -648,6 +648,18 @@ bash_rules:
   # ===================================================================
   # These are safe commands that only read/display data
 
+  - name: "Allow pgrep command"
+    command_pattern: "^pgrep$"
+    category: read
+    decision: allow
+    message: "pgrep - list processes by name (read-only)"
+
+  - name: "Allow nc (netcat) command"
+    command_pattern: "^nc$"
+    category: other
+    decision: allow
+    message: "nc (netcat) - network utility for port testing and connections"
+
   - name: "Allow common read commands"
     command_pattern: "^(grep|egrep|find|cat|ls|head|tail|less|more|wc|sort|uniq|diff|stat|file|du|df|awk|sed|cut|xargs|printf|pwd|whoami|md5sum|lsusb|sleep|ss|date|touch|ld|rg|fd|pdfgrep|jq|readelf|objdump|nm|size|objcopy)$"
     category: read
