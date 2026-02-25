@@ -160,10 +160,10 @@ rules:
   - name: "Block Write/Edit to wrong claude paths"
     tool_name_pattern: "^(Write|Edit)$"
     tool_input_patterns:
-      file_path: ".*(inav/claude|inav-configurator/claude|inavwiki/claude|PrivacyLRS/claude).*"
+      file_path: ".*(inav/claude|inav2/claude|inav-configurator/claude|inavwiki/claude|PrivacyLRS/claude).*"
     category: write
     decision: deny
-    message: "STOP! The claude/ directory is at ~/inavflight/claude/, NOT inside inav/, inav-configurator/, inavwiki/, or PrivacyLRS/. Use the correct path: ~/inavflight/claude/"
+    message: "STOP! The claude/ directory is at ~/inavflight/claude/, NOT inside inav/, inav2/, inav-configurator/, inavwiki/, or PrivacyLRS/. Use the correct path: ~/inavflight/claude/"
 
   # ===================================================================
   # Allow Rules (Safe File Modifications)
@@ -236,10 +236,10 @@ bash_rules:
 
   - name: "Block mkdir to wrong claude paths"
     command_pattern: "^mkdir$"
-    argument_pattern: ".*(inav/claude|inav-configurator/claude|inavwiki/claude|PrivacyLRS/claude).*"
+    argument_pattern: ".*(inav/claude|inav2/claude|inav-configurator/claude|inavwiki/claude|PrivacyLRS/claude).*"
     category: write
     decision: deny
-    message: "STOP! The claude/ directory is at ~/inavflight/claude/, NOT inside inav/, inav-configurator/, inavwiki/, or PrivacyLRS/. Use the correct path when creating directories."
+    message: "STOP! The claude/ directory is at ~/inavflight/claude/, NOT inside inav/, inav2/, inav-configurator/, inavwiki/, or PrivacyLRS/. Use the correct path when creating directories."
 
   - name: "Allow mkdir for new projects in claude/projects/active"
     command_pattern: "^mkdir$"
@@ -258,10 +258,10 @@ bash_rules:
 
   - name: "Block cp/mv to wrong claude paths"
     command_pattern: "^(cp|mv)$"
-    argument_pattern: ".*(inav/claude|inav-configurator/claude|inavwiki/claude|PrivacyLRS/claude).*"
+    argument_pattern: ".*(inav/claude|inav2/claude|inav-configurator/claude|inavwiki/claude|PrivacyLRS/claude).*"
     category: write
     decision: deny
-    message: "STOP! The claude/ directory is at ~/inavflight/claude/, NOT inside inav/, inav-configurator/, inavwiki/, or PrivacyLRS/. Use the correct destination path."
+    message: "STOP! The claude/ directory is at ~/inavflight/claude/, NOT inside inav/, inav2/, inav-configurator/, inavwiki/, or PrivacyLRS/. Use the correct destination path."
 
   - name: "Allow project moves between active/completed"
     command_pattern: "^(cp|mv)$"
@@ -269,6 +269,13 @@ bash_rules:
     category: write
     decision: allow
     message: "Manager project organization - moving between active and completed directories"
+
+  - name: "Allow cp of .uf2 files to RP2350 media directory"
+    command_pattern: "^cp$"
+    argument_pattern: ".*\\.uf2.*(/media/raymorris/RP2350/).*"
+    category: write
+    decision: allow
+    message: "Copy RP2350 firmware .uf2 files to device media directory for flashing"
 
   # ===================================================================
   # Git Safety Rules (Deny before Allow)
@@ -532,6 +539,12 @@ bash_rules:
     decision: allow
     message: "USB device listing tool (read-only)"
 
+  - name: "Allow lsblk for block device information"
+    command_pattern: "^lsblk$"
+    category: read
+    decision: allow
+    message: "Block device listing tool (read-only)"
+
   - name: "Allow pkill for openocd termination"
     command_pattern: "^pkill$"
     argument_pattern: ".*openocd.*"
@@ -666,7 +679,7 @@ bash_rules:
     decision: allow
 
   - name: "Allow blackbox_decode command"
-    command_pattern: "^blackbox_decode$"
+    command_pattern: "^(blackbox_decode|.*/blackbox_decode)$"
     category: other
     decision: allow
     message: "blackbox_decode is allowed for decoding INAV/Betaflight blackbox flight logs"
