@@ -67,13 +67,13 @@ RIGHT_PINS = [
     ('UART1 TX',              'uart'),   # GP0  UART0 TX – MSP/configurator
     ('UART1 RX',              'uart'),   # GP1  UART0 RX
     ('GND',                   'power'),
-    ('UART2 TX',              'uart'),   # GP2  UART1 TX – CRSF/SBUS
-    ('UART2 RX',              'uart'),   # GP3  UART1 RX
+    ('SPI SCK',               'spi'),    # GP2  SPI0 SCK  (moved from GP6)
+    ('SPI MOSI',              'spi'),    # GP3  SPI0 TX   (moved from GP7)
     ('SPI MISO',              'spi'),    # GP4  SPI0 RX – gyro + flash bus
     ('SPI CS (Gyro)',         'spi'),    # GP5  SPI0 CSn
     ('GND',                   'power'),
-    ('SPI SCK',               'spi'),    # GP6  SPI0 SCK
-    ('SPI MOSI',              'spi'),    # GP7  SPI0 TX
+    ('UART2 TX',              'uart'),   # GP6  UART1 TX – CRSF/SBUS (F11=UART_AUX)
+    ('UART2 RX',              'uart'),   # GP7  UART1 RX
     ('UART3 TX / SERVO 3',   'servo'),  # GP8  PIO1 SM0 / PWM4A dual-use
     ('UART3 RX / SERVO 4',   'servo'),  # GP9  PIO1 SM1 / PWM4B dual-use
     ('GND',                   'power'),
