@@ -79,8 +79,10 @@ bash_rules:
 **ALWAYS start by checking the recent log entries:**
 
 ```bash
-tail -50 ~/inavflight/.claude/hooks/tool_permissions.log
+tail -10 ~/inavflight/.claude/hooks/tool_permissions.log
 ```
+
+**Why 10 lines?** Most tasks will reference what just happened. The relevant entries are typically in the **last 2-3 lines**. If you need more context, use `tail -50` or `tail -100`.
 
 This shows you:
 - What tool was called (Bash, Edit, Write, etc.)
@@ -329,5 +331,7 @@ When you discover something important about PERMISSIONS MANAGEMENT that will hel
 ### Lessons
 
 1. **Sandbox vs Tool Permissions are separate systems** (2026-01-09): The sandbox (`settings.json` → `sandbox.filesystem`) controls what bash commands can access at the OS level. Tool permissions (`tool_permissions.yaml`) control which Claude Code tool calls are allowed. If grep returns empty but the file has content, check sandbox permissions first.  Sandbox information can be found at https://github.com/anthropic-experimental/sandbox-runtime/
+
+2. **Default log workflow: tail -10** (2026-02-26): For this agent, start with `tail -10` as the default first step. Most tasks reference what just happened, with relevant entries in the last 2-3 lines. Extend to `tail -50` or `tail -100` only when more context is needed. This keeps operations fast and efficient.
 
 <!-- Add new lessons above this line -->
