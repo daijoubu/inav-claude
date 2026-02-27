@@ -268,11 +268,15 @@
 that does not require additional RP2350 platform drivers — those work above the HAL once UARTs are open.
 
 ### Follow-up: Verify UART2 pin assignment (do after motor renumbering)
-- [ ] target.h comment says "UART2 (INAV) → RP2350 uart1: GP2/3" but GP2/3 are RP2350 **uart0** pins
-      per the hardware table — uart1 TX starts at GP4. Either the comment is wrong, or the pin
-      definitions (UART2_TX_PIN PA2 / UART2_RX_PIN PA3) are wrong. Verify which hardware UART
-      peripheral serialUART2() actually opens, confirm loopback still works, and fix whichever
-      is incorrect. Must be resolved before first flight (M10).
+- [ ] **Naming convention note:** RP2350 hardware docs number UARTs from 0 (uart0, uart1).
+      INAV numbers them from 1 (UART1, UART2). So INAV UART1 = RP2350 uart0, INAV UART2 = RP2350 uart1.
+- [ ] target.h comment says "UART2 (INAV) → RP2350 uart1: GP2/3" — the mapping to RP2350 uart1 is
+      correct (INAV UART2 = second UART = uart1 in hardware), but GP2/3 are RP2350 **uart0** pins
+      per the hardware mux table (uart1 TX starts at GP4). Either serialUART2() opens uart0 on GP2/3
+      (wrong peripheral, would conflict with UART1), or it opens uart1 and the GPIO mux silently fails.
+      Verify which hardware UART peripheral serialUART2() actually opens, confirm loopback works with
+      both UART1 and UART2 active simultaneously, and fix whichever is incorrect.
+      Must be resolved before first flight (M10).
 
 ### Follow-up: Regenerate pinout diagram (do after motor renumbering)
 - [ ] Re-run `claude/projects/completed/rp2350-pin-assignment-plan/generate_pinout.py` after the
