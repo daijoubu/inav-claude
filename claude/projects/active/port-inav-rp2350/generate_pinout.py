@@ -150,7 +150,7 @@ def draw_left_label(draw, x_pad, y, label, fg, bg, font, gpio_name=None, name_fo
     draw.ellipse([x_pad - 5, y - 5, x_pad + 5, y + 5], outline=fg, width=2)
     if gpio_name and name_font:
         gw, gh = text_size(name_font, gpio_name)
-        draw.text((x_pad + 8, y - gh // 2), gpio_name, fill=GPIO_NAME_COLOR, font=name_font)
+        draw.text((x_pad + 8, y - (gh // 2) - 2), gpio_name, fill=GPIO_NAME_COLOR, font=name_font)
 
 def draw_right_label(draw, x_pad, y, label, fg, bg, font, gpio_name=None, name_font=None):
     """Single-line label to the RIGHT of the pad (left-aligned)."""
@@ -167,7 +167,7 @@ def draw_right_label(draw, x_pad, y, label, fg, bg, font, gpio_name=None, name_f
     draw.ellipse([x_pad - 5, y - 5, x_pad + 5, y + 5], outline=fg, width=2)
     if gpio_name and name_font:
         gw, gh = text_size(name_font, gpio_name)
-        draw.text((x_pad - 8 - gw, y - gh // 2), gpio_name, fill=GPIO_NAME_COLOR, font=name_font)
+        draw.text((x_pad - 8 - gw, y - (gh // 2) - 2), gpio_name, fill=GPIO_NAME_COLOR, font=name_font)
 
 # ── Main ──────────────────────────────────────────────────────────────────────
 def main():
