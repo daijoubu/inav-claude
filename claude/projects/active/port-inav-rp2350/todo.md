@@ -248,7 +248,7 @@
 - [ ] Wire up ICM42688P or MPU6500 via SPI to Pico 2
 - [ ] Gyro/accel detection and initialization working
 - [ ] Gyro sampling at target rate (4-8kHz)
-- [ ] EXTI for gyro data-ready (BF `exti_pico.c` pattern — GPIO edge IRQ)
+- [ ] Gyro INT pin: **not needed** — GP23 is internal-only on Pico 2 (SMPS PS pin, not on edge connector). Polled mode is the norm: only 10 of 226 INAV targets define a gyro EXTI pin. No EXTI driver needed for M5.
 
 ### Verification
 - [ ] CLI `status` shows gyro/accel readings
@@ -266,6 +266,20 @@
 
 **Serial driver complete.** GPS parsing and SBUS/CRSF receiver decoding are protocol-layer work
 that does not require additional RP2350 platform drivers — those work above the HAL once UARTs are open.
+
+### Follow-up: Verify UART2 pin assignment (do after motor renumbering)
+- [ ] target.h comment says "UART2 (INAV) → RP2350 uart1: GP2/3" but GP2/3 are RP2350 **uart0** pins
+      per the hardware table — uart1 TX starts at GP4. Either the comment is wrong, or the pin
+      definitions (UART2_TX_PIN PA2 / UART2_RX_PIN PA3) are wrong. Verify which hardware UART
+      peripheral serialUART2() actually opens, confirm loopback still works, and fix whichever
+      is incorrect. Must be resolved before first flight (M10).
+
+### Follow-up: Regenerate pinout diagram (do after motor renumbering)
+- [ ] Re-run `claude/projects/completed/rp2350-pin-assignment-plan/generate_pinout.py` after the
+      motor renumber + UART3 relocation to produce an updated pinout diagram. Motors shift from
+      GP8-11 → GP10-13; UART3 moves from GP12/13 → GP8/9. Output replaces
+      `claude/projects/completed/rp2350-pin-assignment-plan/rp2350-pico2-inav-pinout.png`
+      (or save a new copy in the active project directory).
 
 ### Hardware UARTs (`serial_uart_rp2350.c`)
 - [ ] UART0 + UART1 — interrupt-driven RX/TX
@@ -301,112 +315,98 @@ that does not require additional RP2350 platform drivers — those work above th
 
 ---
 
-## Milestone 7: Motor Output — DShot via PIO (25-35 hrs)
+## Milestone 7: Motor Output — DShot via PIO (25-35 hrs) — ✅ COMPLETE
 
 **Subproject:** `rp2350-m07-dshot-motors`
-**Test:** Motors spin on bench (props off!), DShot telemetry (ERPM) visible in CLI
-**Hardware:** Pico 2 + sensors + GPS + receiver + ESCs + motors
+**Completed:** 2026-02-19 | **Branch:** feature/rp2350-port
+**Hardware:** Pico 2 + oscilloscope (timing verified); ESC motor spin verified
 **BF reference:** `dshot_pico.c` (393 LOC), `dshot_bidir_pico.c` (~300 LOC), `dshot.pio`
 
-### DShot via PIO (`pwm_output_rp2350.c`)
-- [ ] PIO block 0 (`PIO_DSHOT_INDEX=0`) — 1 state machine per motor, max 4 motors
-- [ ] PIO programs:
-  - `dshot_600_program` for unidirectional (BF `dshot.pio`)
-  - `dshot_600_bidir_program` for bidirectional telemetry
-  - Programs loaded once, shared across all motor SMs
-- [ ] GPIO base handling: `pio_set_gpio_base()` for motor pins 16-47 (BF `dshot_pico.c:294-302`)
-- [ ] Synchronized output:
-  - `dshotUpdateComplete()`: Stop all SMs → load TX FIFOs → restart all simultaneously
-  - BF `dshot_pico.c` pattern ensures all motors update at exactly the same time
-- [ ] Pin pulldown when idle: `gpio_set_pulls(pin, false, true)` (BF pattern)
-- [ ] DShot600 primary protocol (DShot150/300 can be added later)
+### Implemented
+- [x] PIO block 0 — 1 SM per motor, up to 4 motors (`pwm_output_rp2350.c`)
+- [x] Pre-assembled DShot PIO program (from BF `dshot.pio`)
+- [x] GPIO base handling via `pio_set_gpio_base()` for pins 16-47
+- [x] Synchronized output via `pio_enable_sm_mask_in_sync()`
+- [x] Pin pulldown when idle
+- [x] DShot 150/300/600 protocol selection with correct clkdiv per protocol
+- [x] Motor pin assignments in `target.c` (`rp2350MotorPins[]` array)
+- [x] DShot timing verified on oscilloscope vs STM32 reference
 
-### Bidirectional DShot Telemetry
-- [ ] GCR decoding from PIO RX FIFO (BF `dshot_bidir_pico.c`)
-- [ ] `dshotDecodeTelemetry()` reads PIO FIFO, GCR decode, CRC check
-- [ ] `pwmGetMotorErpm()` returns decoded ERPM values
-
-### Motor Interface
-- [ ] Wire up INAV motor output functions:
-  - `motorDevInit()`, `pwmWriteMotor()`, `pwmWriteDshotCommand()`
-  - Motor protocol selection (DShot150/300/600)
-- [ ] Motor reordering support (BF `pwm_motor_pico.c` has `motorOutputReordering[]`)
-
-### Verification
-- [ ] Motors spin from throttle stick (props off!)
-- [ ] ERPM visible in CLI or configurator via bidirectional DShot
+### Deferred
+- [ ] Bidirectional DShot telemetry (GCR decode, ERPM) — deferred to M12 polish
 
 ---
 
-## Milestone 8: Servo PWM & ADC — Battery Monitoring (15-20 hrs)
+## Milestone 8: Servo PWM & ADC — Battery Monitoring (15-20 hrs) — ✅ COMPLETE
 
 **Subproject:** `rp2350-m08-servo-adc`
-**Test:** Servos respond to sticks; configurator shows battery voltage
-**Hardware:** Pico 2 + servos + voltage/current sensor
+**Completed:** 2026-02-20 | **Branch:** feature/rp2350-port
 **BF reference:** `pwm_servo_pico.c` (113 LOC), `adc_pico.c` (270 LOC)
 
-### Servo PWM (`pwm_servo_rp2350.c`)
-- [ ] Hardware PWM slices — 8 slices x 2 channels = 16 possible outputs
-  - NOT PIO — uses RP2350's built-in PWM peripheral
-- [ ] 50Hz servo frequency: prescaler=64, TOP count ~39063 (BF `pwm_servo_pico.c`)
-  - ~1.953 counts/us at 125MHz/64
-- [ ] `servoDevInit()`: `pwm_set_clkdiv()`, `pwm_set_wrap()`, `gpio_set_function(pin, GPIO_FUNC_PWM)`
-- [ ] `servoWrite()`: takes microseconds, clamps to PWM_SERVO_MIN..PWM_SERVO_MAX
-- [ ] Standard 1000-2000us pulse width range
+### Implemented
+- [x] Servo PWM via hardware PWM slices — `pwm_output_rp2350.c`
+  - timerHardware[] / TIM_USE_OUTPUT_AUTO — Configurator-controllable output groups
+  - 10 outputs in 5 slice groups: TIM4(GP8/9 motors), TIM5(GP10/11 motors),
+    TIM6(GP12/13 SERVO3/4 dual-use UART3), TIM7(GP14/15 SERVO5/6 dual-use UART4),
+    TIM10(GP20/21 SERVO1/2 dedicated)
+  - 50 Hz: clkdiv = sysHz/1e6 → 1 µs/tick; wrap = 19999 → 20 ms
+  - 1 µs resolution: `pwm_set_gpio_level(pin, us)` sets pulse directly in µs
+- [x] ADC driver (`adc_rp2350.c`)
+  - Round-robin DMA ring buffer: GPIO26–29 (ADC0–3), 4-slot power-of-2 buffer
+  - INAV ADC_CHN_1→GPIO26 (VBAT), ADC_CHN_2→GPIO27 (CURRENT), ADC_CHN_3→GPIO28 (RSSI)
+  - `adc_set_clkdiv(65535)` — ~10 samples/sec per channel
+  - Default channel mapping in `target.h` (`VBAT_ADC_CHANNEL`, `CURRENT_METER_ADC_CHANNEL`, `RSSI_ADC_CHANNEL`)
+  - `hardware_adc/adc.c` + `hardware_dma/dma.c` added to cmake RP2350_SRC
+- [x] FEATURE_VBAT added to DEFAULT_FEATURES in target.h
 
-### Non-DShot Motor PWM (`pwm_motor_pico.c` equivalent)
-- [ ] Same hardware PWM slices for: Oneshot125, Oneshot42, Multishot, Brushed, standard PWM
-  - BF `pwm_motor_pico.c` (216 LOC): `pulseScale`/`pulseOffset` mapping from 0-1000 range
-  - Continuous update mode for brushed/PWM protocols
-
-### ADC Driver (`adc_rp2350.c`)
-- [ ] Round-robin ADC with DMA ring buffer (BF `adc_pico.c` pattern)
-  - RP2350A: ADC on pins 26-29; RP2350B: pins 40-47
-- [ ] DMA endless mode: `-1` transfer count with `channel_config_set_ring()` for power-of-2 ring buffer
-- [ ] **Power-of-2 trick:** If 3 channels, add internal temp sensor as 4th padding channel
-  - Ring buffer must be power-of-2 for DMA ring mode (BF `adc_pico.c`)
-- [ ] Very slow sample rate: `adc_set_clkdiv(65535)` — ~10 samples/sec (fine for battery monitoring)
-- [ ] `adcGetValue()` reads latest DMA-cached value from `adcValues[]` array
+### Deferred
+- [ ] Non-DShot motor PWM (Oneshot, Brushed) — deferred to M12 polish
+  - Current targets use DShot exclusively
 
 ### Verification
-- [ ] Servos respond to stick input (test with oscilloscope or real servo)
-- [ ] Battery voltage reads correctly in configurator
+- [x] Servos respond to stick input — verified on hardware 2026-02-20
+- [x] Battery voltage reads correctly in configurator — verified on hardware 2026-02-20
 
 ---
 
-## Milestone 9: I2C Sensors — Baro + Mag (15-20 hrs)
+## Milestone 9: I2C Sensors — Baro + Mag (15-20 hrs) — ✅ COMPLETE (I2C driver confirmed working)
 
 **Subproject:** `rp2350-m09-i2c-sensors`
-**Test:** Configurator shows barometer altitude + magnetometer heading updating live
-**Hardware:** Pico 2 + IMU + BMP280/BMP388 (I2C) + QMC5883L (I2C)
+**Completed:** 2026-02-23 | **Commit:** e9632461b1 | **Branch:** feature/rp2350-port
+**Hardware:** Pico 2 + QMC5883P compass on I2C1 (GP18/GP19)
 **BF reference:** `bus_i2c_pico.c` (489 LOC)
 
-### I2C Driver (`bus_i2c_rp2350.c`)
-- [ ] **Interrupt-driven, NOT DMA** — 16-byte FIFO batching (BF `bus_i2c_pico.c`)
-- [ ] Two I2C devices: I2C0, I2C1
-  - Pin validation: I2C0 on pins where `pin % 4 == 0/1`, I2C1 where `pin % 4 == 2/3`
-- [ ] State machine: `I2C_STATE_IDLE` → `I2C_STATE_ACTIVE` → `I2C_STATE_READ_DATA`
-- [ ] Write: preload TX FIFO with register address + data bytes + STOP on last byte
-- [ ] Read: single-batch if len <= 15 (FIFO - 1 for reg address byte)
-  - Multi-batch with `I2C_IC_DATA_CMD_RESTART_BITS` for reads > 15 bytes
-  - RX_FULL interrupt for multi-batch reads
-- [ ] Interrupts: STOP_DET, TX_ABRT, TX_OVER, RX_OVER, RX_FULL
-- [ ] Direct register manipulation: `hw->data_cmd`, `hw->tar`, `hw->enable`, `hw->intr_mask`
-- [ ] **CRITICAL:** FIFO threshold `hw->rx_tl = I2C_FIFO_BUFFER_DEPTH - 2` (BF `bus_i2c_pico.c:468`)
-  - Prevents race condition between reading FIFO and new data arriving
-- [ ] Speed modes: standard 100kHz, fast 400kHz via `i2c_set_baudrate()`
-- [ ] Non-blocking API: `i2cWriteBuffer()`/`i2cReadBuffer()` start transfer, `i2cBusy()` polls completion
-- [ ] Timeout handling for stuck bus
+### I2C Driver (`bus_i2c_rp2350.c`) — ✅ COMPLETE
+- [x] Blocking implementation using Pico SDK `hardware_i2c` (same approach as STM32: `bus_i2c_hal.c` also uses blocking `HAL_I2C_Master_Transmit`/`HAL_I2C_Mem_Read` with timeout, not the `_IT` interrupt-driven variants)
+- [x] Maps I2CDEV_1 → RP2350 i2c1 on GP18 (SDA=PB2) / GP19 (SCL=PB3)
+- [x] On-chip pull-ups enabled (external 4.7kΩ resistors dominate if fitted)
+- [x] `allowRawAccess` support (reg=0xFF skips sub-address byte for raw transactions)
+- [x] Speed modes: 100/200/400/800 kHz via `i2cSetSpeed()`
+- [x] Timeout: 10ms per transaction via `i2c_write/read_timeout_us()`
+- [x] Repeated-start on reads via `nostop=true` on write phase
+- [x] DEFAULT_I2C_BUS / MAG_I2C_BUS / BARO_I2C_BUS = BUS_I2C1 defined in target.h
+
+### SPI Driver (`bus_spi_rp2350.c`) — ✅ COMPLETE (implemented alongside I2C)
+- [x] Blocking Pico SDK `hardware_spi` implementation
+- [x] GPIO-to-hardware mapping: `((sck >> 3) & 1) ? spi1 : spi0`
+- [x] MISO pull-up, fast SCK slew rate
+- [x] Speed table: 328kHz init → 1/10/20/40 MHz
+- [x] `SPI_IO_CS_CFG` added to `bus_spi.h` for RP2350
+
+### Platform refactor — ✅ COMPLETE
+- [x] New `src/main/rp2350.h` chip header (all dummy typedefs, USART/SPI/GPIO stubs)
+- [x] `platform.h` RP2350 block now `#include "rp2350.h"` — matches STM32 pattern
+- [x] `target.h` contains only board-specific content
 
 ### Sensor Integration
-- [ ] Barometer: BMP280/BMP388/DPS310 over I2C
-- [ ] Magnetometer: QMC5883L/HMC5883L/IST8310 over I2C
-  - **Note:** BF disables MAG on RP2350 (`#undef USE_MAG`), but INAV needs it for navigation
-- [ ] Sensor detection and initialization
+- [x] QMC5883P magnetometer detected and reporting MAG=OK — **confirmed on hardware 2026-02-23**
+  - `status` output: `MAG=QMC5883P`, `Sensor status: MAG=OK`
+- [ ] Barometer: no hardware connected yet; BARO=UNAVAILABLE (driver enabled, sensor absent)
 
 ### Verification
-- [ ] Configurator shows barometer altitude updating (cover sensor → altitude rises)
-- [ ] Configurator shows magnetometer heading updating (rotate board → heading changes)
+- [x] Compass auto-detected on power-up (QMC5883P on i2c1) — **hardware confirmed 2026-02-23**
+- [ ] Configurator shows magnetometer heading updating (rotate board → heading changes) — pending full test
+- [ ] Configurator shows barometer altitude updating — pending hardware
 
 ---
 
@@ -482,13 +482,12 @@ that does not require additional RP2350 platform drivers — those work above th
 - [ ] USB MSC for blackbox download (TinyUSB CDC+MSC switching)
   - BF `usb/usb_msc_pico.c` implements mass storage class
 
-### LED Strip (`light_ws2811strip_rp2350.c`)
-- [ ] WS2812 via PIO block 2 (`PIO_LEDSTRIP_INDEX=2`) + DMA
-  - 4-instruction PIO program (inline in BF `light_ws2811strip_pico.c`)
-  - DMA transfer from `led_data[]` buffer to PIO TX FIFO
-- [ ] Color formats: GRB, RGB, GRBW
-- [ ] Reset guard: 50us minimum between transfers (BF pattern)
-- [ ] DMA completion interrupt sets transfer-complete flag
+### LED Strip (`light_ws2811strip_rp2350.c`) — ✅ COMPLETE (implemented early, 2026-02-20)
+- [x] WS2812 via PIO2 (`PIO_LEDSTRIP_INDEX=2`) + DMA — GP22 (PB6)
+  - 4-instruction PIO program, T1=3/T2=3/T3=4 @ 800 kHz
+  - DMA streams GRB words to PIO TX FIFO, polled via dma_channel_is_busy()
+- [x] GRB format (WS2812 default) — verified on hardware
+- [ ] RGB, GRBW formats — not yet tested (driver supports GRBW via 32-bit autopull change)
 
 ### Beeper
 - [ ] Beeper via hardware PWM (same slices as servo/motor but different frequency)
