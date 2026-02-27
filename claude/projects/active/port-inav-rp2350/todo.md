@@ -92,9 +92,10 @@
 
 ---
 
-## Milestone 2: System Tick, GPIO & LED Blink (15-20 hrs)
+## Milestone 2: System Tick, GPIO & LED Blink (15-20 hrs) — ✅ COMPLETE
 
 **Subproject:** `rp2350-m02-gpio-led`
+**Completed:** 2026-02-17 | **Commit:** 86556344b6 | **Branch:** feature/rp2350-port
 **Test:** Flash .uf2 to Pico 2, onboard LED blinks at 1Hz
 **Hardware:** Raspberry Pi Pico 2
 **BF reference:** `system.c` (270 LOC), `io_pico.c` (198 LOC)
@@ -145,9 +146,10 @@
 
 ---
 
-## Milestone 3: USB VCP & Debug Console (15-25 hrs)
+## Milestone 3: USB VCP & Debug Console (15-25 hrs) — ✅ COMPLETE
 
 **Subproject:** `rp2350-m03-usb-vcp`
+**Completed:** 2026-02-18 | **Commit:** 74ad8cdbba | **Branch:** feature/rp2350-port
 **Test:** USB serial terminal shows INAV boot messages + debug output
 **Hardware:** Raspberry Pi Pico 2
 **BF reference:** `serial_usb_vcp_pico.c` (212 LOC), `usb/usb_cdc.c`, `usb/tusb_config.h`
@@ -176,9 +178,10 @@
 
 ---
 
-## Milestone 4: Configurator Connects (20-30 hrs)
+## Milestone 4: Configurator Connects (20-30 hrs) — ✅ COMPLETE
 
 **Subproject:** `rp2350-m04-configurator`
+**Completed:** 2026-02-19 | **Commit:** 7afd289862 | **Branch:** feature/rp2350-port
 **Test:** INAV Configurator connects, shows board name + firmware version + sensor status
 **Hardware:** Raspberry Pi Pico 2
 **BF reference:** `config_flash.c` (72 LOC)
@@ -208,12 +211,13 @@
 
 ---
 
-## Milestone 5: SPI & Gyro/Accelerometer Reading (25-35 hrs)
+## Milestone 5: SPI & Gyro/Accelerometer Reading (25-35 hrs) — 🔧 IN PROGRESS
 
 **Subproject:** `rp2350-m05-spi-gyro`
 **Test:** Live gyro/accel data in configurator when board is tilted
 **Hardware:** Pico 2 + ICM42688P or MPU6500 breakout (SPI)
 **BF reference:** `bus_spi_pico.c` (518 LOC), `dma_pico.c` (155 LOC)
+**Note:** SPI and I2C drivers added 2026-02-22 (commit e9632461b1). Hardware verification of gyro/accel reading still pending.
 
 ### SPI Driver (`bus_spi_rp2350.c`)
 - [ ] Two SPI devices (SPI0, SPI1) — RP2350B has more pin options
@@ -322,7 +326,7 @@ that does not require additional RP2350 platform drivers — those work above th
 ## Milestone 7: Motor Output — DShot via PIO (25-35 hrs) — ✅ COMPLETE
 
 **Subproject:** `rp2350-m07-dshot-motors`
-**Completed:** 2026-02-19 | **Branch:** feature/rp2350-port
+**Completed:** 2026-02-19 | **Commit:** 3753154ceb | **Branch:** feature/rp2350-port
 **Hardware:** Pico 2 + oscilloscope (timing verified); ESC motor spin verified
 **BF reference:** `dshot_pico.c` (393 LOC), `dshot_bidir_pico.c` (~300 LOC), `dshot.pio`
 
@@ -344,7 +348,7 @@ that does not require additional RP2350 platform drivers — those work above th
 ## Milestone 8: Servo PWM & ADC — Battery Monitoring (15-20 hrs) — ✅ COMPLETE
 
 **Subproject:** `rp2350-m08-servo-adc`
-**Completed:** 2026-02-20 | **Branch:** feature/rp2350-port
+**Completed:** 2026-02-20 | **Commit:** dcb4ad630f | **Branch:** feature/rp2350-port
 **BF reference:** `pwm_servo_pico.c` (113 LOC), `adc_pico.c` (270 LOC)
 
 ### Implemented
@@ -379,6 +383,7 @@ that does not require additional RP2350 platform drivers — those work above th
 **Completed:** 2026-02-23 | **Commit:** e9632461b1 | **Branch:** feature/rp2350-port
 **Hardware:** Pico 2 + QMC5883P compass on I2C1 (GP18/GP19)
 **BF reference:** `bus_i2c_pico.c` (489 LOC)
+**Note:** I2C driver added 2026-02-22 (commit e9632461b1). Hardware verification of baro/mag sensors still pending.
 
 ### I2C Driver (`bus_i2c_rp2350.c`) — ✅ COMPLETE
 - [x] Blocking implementation using Pico SDK `hardware_i2c` (same approach as STM32: `bus_i2c_hal.c` also uses blocking `HAL_I2C_Master_Transmit`/`HAL_I2C_Mem_Read` with timeout, not the `_IT` interrupt-driven variants)
@@ -473,6 +478,7 @@ that does not require additional RP2350 platform drivers — those work above th
 **Test:** Full-featured flight: OSD overlay, blackbox downloadable, LED strip, full configurator
 **Hardware:** Same as M10 + MAX7456 OSD + SPI flash + LED strip
 **BF reference:** `light_ws2811strip_pico.c` (242 LOC), `multicore.c` (134 LOC), `usb/usb_msc_pico.c`
+**Note (partial work done early):** WS2812 LED strip driver via PIO2+DMA added 2026-02-20 (commit 09a6e8d8b9). Persistent storage fully integrated 2026-02-24 (commit 135523c527).
 
 ### OSD
 - [ ] MAX7456 OSD over SPI — should "just work" once SPI driver is solid (M5)
