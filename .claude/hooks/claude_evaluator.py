@@ -15,6 +15,7 @@ import os
 import re
 import sys
 import time
+from pathlib import Path
 from typing import Dict, Any, Optional
 
 try:
@@ -28,21 +29,58 @@ from hook_common import HookLogger
 
 class ClaudeEvaluator:
     """Evaluates tool calls using Claude for safety assessment."""
-    
+
     MODEL = "claude-3-5-sonnet-20241022"
     TIMEOUT_SECONDS = 10
     MAX_RETRIES = 1
-    
+
     def __init__(self, logger: Optional[HookLogger] = None):
         """Initialize Claude evaluator with optional logger."""
         self.logger = logger
         self.client = None
         self._initialize_client()
-    
+
+    def _get_api_key(self) -> Optional[str]:
+        """Get API key from settings.local.json or environment."""
+        # Try settings.local.json first (in ~/.claude/ or current directory)
+        settings_paths = [
+            Path.home() / '.claude' / 'settings.local.json',
+            Path('.claude/settings.local.json'),
+            Path('settings.local.json'),
+        ]
+
+        for settings_path in settings_paths:
+            if settings_path.exists():
+                try:
+                    with open(settings_path) as f:
+                        settings = json.load(f)
+                        api_key = settings.get('anthropic', {}).get('api_key')
+                        if api_key and api_key != 'sk-ant-YOUR-API-KEY-HERE':
+                            self._log(f"Using API key from {settings_path}")
+                            return api_key
+                except Exception as e:
+                    self._log(f"Failed to read {settings_path}: {e}")
+
+        # Fall back to environment variable
+        api_key = os.environ.get('ANTHROPIC_API_KEY')
+        if api_key:
+            self._log("Using API key from ANTHROPIC_API_KEY environment variable")
+            return api_key
+
+        return None
+
     def _initialize_client(self) -> None:
-        """Initialize Anthropic client from environment."""
+        """Initialize Anthropic client from API key."""
+        api_key = self._get_api_key()
+
+        if not api_key:
+            self._log("WARNING: No Anthropic API key found. Configure in ~/.claude/settings.local.json")
+            self.client = None
+            return
+
         try:
-            self.client = Anthropic()
+            self.client = Anthropic(api_key=api_key)
+            self._log("✓ Anthropic client initialized successfully")
         except Exception as e:
             self._log(f"WARNING: Failed to initialize Anthropic client: {e}")
             self.client = None
