@@ -30,7 +30,7 @@ from hook_common import HookLogger
 class ClaudeEvaluator:
     """Evaluates tool calls using Claude for safety assessment."""
 
-    MODEL = "claude-3-5-sonnet-20241022"
+    MODEL = "claude-opus-4-1-20250805"
     TIMEOUT_SECONDS = 10
     MAX_RETRIES = 1
 
