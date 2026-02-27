@@ -334,4 +334,6 @@ When you discover something important about PERMISSIONS MANAGEMENT that will hel
 
 2. **Default log workflow: tail -30** (2026-02-26): For this agent, start with `tail -30` as the default first step. Most tasks reference the last 2-3 commands. Since commands vary in size (simple ~2 lines, complex piped/heredoc ~20-40 lines), 30 lines reliably captures them. Simple commands are 2-3 lines, complex piped commands can be 20-40+ lines. Extend to `tail -50` or `tail -100` only when more context is needed.
 
+3. **Claude Code message display quirk** (2026-02-26): When blocking a tool call, Claude Code does NOT display the rule's `message:` field if `decision: deny`. To ensure rejection messages reach the user, use `decision: ask` instead — the message will appear in the permission prompt. The precondition script can still return "deny" to block the action; the ask/deny decision and precondition script work together.
+
 <!-- Add new lessons above this line -->
