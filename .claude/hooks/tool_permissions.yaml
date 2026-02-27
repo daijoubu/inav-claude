@@ -382,6 +382,23 @@ bash_rules:
       fi
     message: "Branch creation blocked in root inavflight/ repo. Branches should be created in the appropriate project repo instead: inav/, inav2/, inav-configurator/, PrivacyLRS/, mspapi2/, inavwiki/, or OpenTX-Telemetry-Widget/."
 
+  - name: "Block git commit with Claude mentions"
+    command_pattern: "^git$"
+    argument_pattern: "^(-C\\s+\\S+\\s+)?commit.*"
+    category: write
+    decision: deny
+    precondition_script: |
+      # Block commits that mention Claude, Co-Authored-By, or noreply@anthropic.com
+      # The commit message may be in a heredoc or direct string
+      ORIGINAL_CMD="{ORIGINAL_COMMAND}"
+
+      if echo "$ORIGINAL_CMD" | grep -qiE "(Co-Authored|noreply@anthropic)"; then
+        echo "deny"
+      else
+        echo "allow"
+      fi
+    message: "STOP! do not mention Claude in commit messages"
+
   # Git read operations with GIT_PAGER environment variable
   # Note: The bash parser splits "GIT_PAGER=cat git log" into command="GIT_PAGER=cat" and arguments="git log ..."
   # so we need TWO rules to handle both cases
