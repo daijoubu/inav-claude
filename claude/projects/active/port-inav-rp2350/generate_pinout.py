@@ -53,8 +53,8 @@ LEFT_PINS = [
     ('RUN',                   'other'),
     ('LED Strip (WS2812)',    'led'),    # GP22 PIO2 SM0
     ('GND',                   'power'),
-    ('SERVO 2',               'servo'),  # GP21 PWM slice 10B
-    ('SERVO 1',               'servo'),  # GP20 PWM slice 10A
+    ('S6 (servo)',             'servo'),  # GP21 PWM slice 10B
+    ('S5 (servo)',             'servo'),  # GP20 PWM slice 10A
     ('I2C SCL',               'i2c'),    # GP19 I2C1
     ('I2C SDA',               'i2c'),    # GP18 I2C1
     ('GND',                   'power'),
@@ -74,16 +74,16 @@ RIGHT_PINS = [
     ('GND',                   'power'),
     ('UART2 TX',              'uart'),   # GP6  UART1 TX – CRSF/SBUS (F11=UART_AUX)
     ('UART2 RX',              'uart'),   # GP7  UART1 RX
-    ('UART3 TX / SERVO 3',   'servo'),  # GP8  PIO1 SM0 / PWM4A dual-use
-    ('UART3 RX / SERVO 4',   'servo'),  # GP9  PIO1 SM1 / PWM4B dual-use
+    ('UART3 TX / S7 (servo)', 'servo'),  # GP8  PIO1 SM0 / PWM4A dual-use
+    ('UART3 RX / S8 (servo)', 'servo'),  # GP9  PIO1 SM1 / PWM4B dual-use
     ('GND',                   'power'),
-    ('M1',                    'motor'),  # GP10 PIO0 SM0 DShot  ← BF MOTOR1
-    ('M2',                    'motor'),  # GP11 PIO0 SM1 DShot  ← BF MOTOR2
-    ('M3',                    'motor'),  # GP12 PIO0 SM2 DShot  ← BF MOTOR3
-    ('M4',                    'motor'),  # GP13 PIO0 SM3 DShot  ← BF MOTOR4
+    ('S1 (DShot)',                    'motor'),  # GP10 PIO0 SM0 DShot  ← BF MOTOR1
+    ('S2 (DShot)',                    'motor'),  # GP11 PIO0 SM1 DShot  ← BF MOTOR2
+    ('S3 (DShot)',                    'motor'),  # GP12 PIO0 SM2 DShot  ← BF MOTOR3
+    ('S4 (DShot)',                    'motor'),  # GP13 PIO0 SM3 DShot  ← BF MOTOR4
     ('GND',                   'power'),
-    ('UART4 TX / SERVO 5',   'servo'),  # GP14 PIO1 SM2 / PWM7A dual-use
-    ('UART4 RX / SERVO 6',   'servo'),  # GP15 PIO1 SM3 / PWM7B dual-use
+    ('UART4 TX / S9 (servo)', 'servo'),  # GP14 PIO1 SM2 / PWM7A dual-use
+    ('UART4 RX / S10 (servo)', 'servo'),  # GP15 PIO1 SM3 / PWM7B dual-use
 ]
 
 # ── Board geometry calibration (original 667×667 image coordinates) ───────────
