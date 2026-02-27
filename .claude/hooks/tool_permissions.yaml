@@ -392,6 +392,13 @@ bash_rules:
       # The commit message may be in a heredoc or direct string
       ORIGINAL_CMD="{ORIGINAL_COMMAND}"
 
+      # Safety check: if ORIGINAL_COMMAND is empty or not substituted, allow the commit
+      # (let default rules handle it)
+      if [ -z "$ORIGINAL_CMD" ]; then
+        echo "allow"
+        exit 0
+      fi
+
       if echo "$ORIGINAL_CMD" | grep -qiE "(Co-Authored|noreply@anthropic)"; then
         echo "deny"
       else
