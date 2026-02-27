@@ -86,6 +86,24 @@ RIGHT_PINS = [
     ('UART4 RX / S10 (servo)', 'servo'),  # GP15 PIO1 SM3 / PWM7B dual-use
 ]
 
+# ── Hardware GPIO names for each pin position (matches Pico 2 pinout) ─────────
+# Used to label each pad with its GPIO number so the reader can verify alignment.
+RIGHT_GPIO_NAMES = [
+    'GP0',  'GP1',  'GND',
+    'GP2',  'GP3',  'GP4',  'GP5',  'GND',
+    'GP6',  'GP7',  'GP8',  'GP9',  'GND',
+    'GP10', 'GP11', 'GP12', 'GP13', 'GND',
+    'GP14', 'GP15',
+]
+
+LEFT_GPIO_NAMES = [
+    'VBUS', 'VSYS', 'GND', '3V3_EN', '3V3', 'ADC_REF',
+    'GP28', 'AGND', 'GP27', 'GP26', 'RUN', 'GP22', 'GND',
+    'GP21', 'GP20', 'GP19', 'GP18', 'GND', 'GP17', 'GP16',
+]
+
+GPIO_NAME_COLOR = '#444444'
+
 # ── Board geometry calibration (original 667×667 image coordinates) ───────────
 X_LEFT_PAD  = 97    # x of left-column pad centres
 X_RIGHT_PAD = 570   # x of right-column pad centres
@@ -117,7 +135,7 @@ def text_size(font, text):
 VPAD = 7   # vertical padding inside each label box
 HPAD = 6   # horizontal padding inside each label box
 
-def draw_left_label(draw, x_pad, y, label, fg, bg, font):
+def draw_left_label(draw, x_pad, y, label, fg, bg, font, gpio_name=None, name_font=None):
     """Single-line label to the LEFT of the pad (right-aligned)."""
     tw, th = text_size(font, label)
     line_end  = x_pad - 6
@@ -130,8 +148,11 @@ def draw_left_label(draw, x_pad, y, label, fg, bg, font):
     draw.text((box_right - tw - HPAD, y - th // 2), label, fill=fg, font=font)
     draw.line([(box_right + 2, y), (line_end, y)], fill=fg, width=2)
     draw.ellipse([x_pad - 5, y - 5, x_pad + 5, y + 5], outline=fg, width=2)
+    if gpio_name and name_font:
+        gw, gh = text_size(name_font, gpio_name)
+        draw.text((x_pad + 8, y - gh // 2), gpio_name, fill=GPIO_NAME_COLOR, font=name_font)
 
-def draw_right_label(draw, x_pad, y, label, fg, bg, font):
+def draw_right_label(draw, x_pad, y, label, fg, bg, font, gpio_name=None, name_font=None):
     """Single-line label to the RIGHT of the pad (left-aligned)."""
     tw, th = text_size(font, label)
     line_start = x_pad + 6
@@ -144,6 +165,9 @@ def draw_right_label(draw, x_pad, y, label, fg, bg, font):
     draw.text((box_left + HPAD, y - th // 2), label, fill=fg, font=font)
     draw.line([(line_start, y), (box_left - 1, y)], fill=fg, width=2)
     draw.ellipse([x_pad - 5, y - 5, x_pad + 5, y + 5], outline=fg, width=2)
+    if gpio_name and name_font:
+        gw, gh = text_size(name_font, gpio_name)
+        draw.text((x_pad - 8 - gw, y - gh // 2), gpio_name, fill=GPIO_NAME_COLOR, font=name_font)
 
 # ── Main ──────────────────────────────────────────────────────────────────────
 def main():
@@ -159,7 +183,8 @@ def main():
 
     main_font  = load_font(13)
     title_font = load_font(17)
-    gp_font    = load_font(10)   # kept for legend only
+    gp_font    = load_font(10)   # legend and GPIO pad name labels
+    name_font  = load_font(11)   # GPIO name labels beside pads
 
     spacing = (Y_LAST - Y_FIRST) / (N_PINS - 1)
 
@@ -170,10 +195,12 @@ def main():
     xr = X_RIGHT_PAD + EXTEND
 
     for i, (label, grp) in enumerate(LEFT_PINS):
-        draw_left_label(draw, xl, pin_y(i), label, FG[grp], BG[grp], main_font)
+        draw_left_label(draw, xl, pin_y(i), label, FG[grp], BG[grp], main_font,
+                        LEFT_GPIO_NAMES[i], name_font)
 
     for i, (label, grp) in enumerate(RIGHT_PINS):
-        draw_right_label(draw, xr, pin_y(i), label, FG[grp], BG[grp], main_font)
+        draw_right_label(draw, xr, pin_y(i), label, FG[grp], BG[grp], main_font,
+                         RIGHT_GPIO_NAMES[i], name_font)
 
     # Title
     title = 'Raspberry Pi Pico 2 (RP2350)  —  INAV Option C Pin Assignment'
