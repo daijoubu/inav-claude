@@ -1,0 +1,113 @@
+Keyword: TIM1
+Occurrences: 109
+================================================================================
+
+Page   20: TIM12              16b    2 channels as AF
+Page   20: 4 compl. channels (TIM1_CH1[1:4]N,
+Page   20: 4 channels (TIM1_CH1[1:4]ETR,          TIM1 / PWM          16b                                                                                                                                                              TIM13              16b    1 channel as AF
+Page   20: 4 compl. channels (TIM1_CH1[1:4]N,                                                                                                                                                                                              TIM14              16b    1 channel as AF
+Page   20: 4 channels (TIM1_CH1[1:4]ETR,          TIM8 / PWM          16b
+Page   20: TIM10
+Page   20: TIM11                                                                                WWDG
+Page   32: Advanced TIM1,
+Page   33: purpose   TIM10                          Any integer
+Page   33: TIM11                          and 65536
+Page   33: TIM12      16-bit        Up    between 1        No         2         No          42      84
+Page   33: TIM13                          Any integer
+Page   33: TIM14                          and 65536
+Page   33: Advanced-control timers (TIM1, TIM8)
+Page   33: The advanced-control timers (TIM1, TIM8) can be seen as three-phase PWM generators
+Page   33: TIM1 and TIM8 support independent DMA request generation.
+Page   34: other general-purpose timers and the advanced-control timers TIM1 and TIM8 via the
+Page   34: •   TIM9, TIM10, TIM11, TIM12, TIM13, and TIM14
+Page   34: TIM10, TIM11, TIM13, and TIM14 feature one independent channel, whereas TIM9
+Page   34: and TIM12 have two independent channels for input capture/output compare, PWM or
+Page   40: To synchronize A/D conversion and timers, the ADCs could be triggered by any of TIM1,
+Page   49: TIM10_CH1 /
+Page   49: (5)     TIM11_CH1/FSMC_NREG/
+Page   49: TIM13_CH1 /
+Page   49: (5)     TIM14_CH1 / FSMC_CD/
+Page   51: (5)      TIM8_BKIN/TIM13_CH1 /
+Page   51: / TIM1_BKIN/ EVENTOUT
+Page   51: TIM14_CH1/TIM3_CH2/
+Page   51: TIM1_CH1N /
+Page   51: TIM1_CH2N/ EVENTOUT
+Page   51: TIM1_CH3N/ EVENTOUT
+Page   52: FSMC_D4/TIM1_ETR/
+Page   52: FSMC_D5/ TIM1_CH1N/
+Page   52: FSMC_D6/TIM1_CH1/
+Page   52: FSMC_D7/TIM1_CH2N/
+Page   52: FSMC_D8/TIM1_CH2/
+Page   52: FSMC_D9/TIM1_CH3N/
+Page   52: FSMC_D10/TIM1_CH3/
+Page   52: FSMC_D11/TIM1_CH4/
+Page   52: FSMC_D12/TIM1_BKIN/
+Page   53: I2C2_SMBA / TIM12_CH1 /
+Page   53: I2C3_SMBA / TIM12_CH2/
+Page   54: USART3_CK/ TIM1_BKIN /
+Page   54: TIM1_CH1N /CAN2_TX /
+Page   54: SPI2_MISO/ TIM1_CH2N /
+Page   54: TIM12_CH1 /
+Page   54: TIM1_CH3N / TIM8_CH3N
+Page   54: / TIM12_CH2 /
+Page   56: TIM1_CH1/ I2C3_SCL/
+Page   56: USART1_TX/ TIM1_CH2 /
+Page   56: USART1_RX/ TIM1_CH3/
+Page   56: 44       C1         70 103 C15 122                               PA11          I/O         FT                 -           / TIM1_CH4 /             -
+Page   56: 45       C2         71 104 B15 123                               PA12          I/O         FT                 -      TIM1_ETR/ OTG_FS_DP/          -
+Page   59: TIM10_CH1 / DCMI_D6 /
+Page   59: TIM4_CH4/ TIM11_CH1/
+Page   63: SYS       TIM1/2     TIM3/4/5                I2C1/2/3   I2S2/I2S2e                                          TIM12/13/                       ET
+Page   63: PA6      -      TIM1_BKIN   TIM3_CH1    TIM8_BKIN      -       SPI1_MISO         -             -           -       TIM13_CH1        -                -
+Page   63: PA7      -      TIM1_CH1N   TIM3_CH2    TIM8_CH1N      -       SPI1_MOSI         -             -           -       TIM14_CH1        -            ETH_
+Page   63: PA8    MCO1     TIM1_CH1        -           -       I2C3_SCL       -             -        USART1_CK        -           -       OTG_FS_SOF            -
+Page   63: PA9      -      TIM1_CH2        -           -                      -             -         USART1_TX       -           -            -                -
+Page   63: PA10     -      TIM1_CH3        -           -          -           -             -        USART1_RX        -           -        OTG_FS_ID            -
+Page   63: PA11     -      TIM1_CH4        -           -          -           -             -        USART1_CTS       -       CAN1_RX      OTG_FS_DM            -
+Page   63: PA12     -      TIM1_ETR        -           -          -           -             -        USART1_RTS       -       CAN1_TX      OTG_FS_DP            -
+Page   64: SYS      TIM1/2     TIM3/4/5               I2C1/2/3   I2S2/I2S2e                                          TIM12/13/                       ET
+Page   64: PB0      -      TIM1_CH2N   TIM3_CH3   TIM8_CH2N      -           -             -             -           -           -                      ETH _MI
+Page   64: PB1      -      TIM1_CH3N   TIM3_CH4   TIM8_CH3N                  -             -             -           -           -                      ETH _MI
+Page   64: PB8      -          -       TIM4_CH3   TIM10_CH1   I2C1_SCL       -             -             -           -       CAN1_RX          -         ETH _MI
+Page   64: PB9      -          -       TIM4_CH4   TIM11_CH1   I2C1_SDA                     -             -           -       CAN1_TX          -                -
+Page   64: PB12     -      TIM1_BKIN      -           -                                    -        USART3_CK        -       CAN2_RX
+Page   64: PB13     -      TIM1_CH1N      -           -          -                         -        USART3_CTS       -       CAN2_TX
+Page   64: PB14     -      TIM1_CH2N      -       TIM8_CH2N      -       SPI2_MISO    I2S2ext_SD    USART3_RTS       -       TIM12_CH1        -                -
+Page   64: PB15            TIM1_CH3N      -       TIM8_CH3N      -                         -             -           -       TIM12_CH2        -                -
+Page   65: SYS    TIM1/2   TIM3/4/5               I2C1/2/3   I2S2/I2S2e                                           TIM12/13/                       ET
+Page   66: SYS   TIM1/2   TIM3/4/5               I2C1/2/3   I2S2/I2S2e                                          TIM12/13/             ET
+Page   67: SYS       TIM1/2     TIM3/4/5               I2C1/2/3   I2S2/I2S2e                                          TIM12/13/                 ET
+Page   67: PE7       -      TIM1_ETR       -           -          -           -             -             -           -           -          -            -
+Page   67: PE8       -      TIM1_CH1N      -           -          -           -             -             -           -           -          -            -
+Page   67: PE9       -      TIM1_CH1       -           -          -           -             -             -           -           -          -            -
+Page   67: PE10      -      TIM1_CH2N      -           -          -           -             -             -           -           -          -            -
+Page   67: PE11      -      TIM1_CH2       -           -          -           -             -             -           -           -          -            -
+Page   67: PE12      -      TIM1_CH3N      -           -          -           -             -             -           -           -          -            -
+Page   67: PE13      -      TIM1_CH3       -           -          -           -             -             -           -           -          -            -
+Page   67: PE14      -      TIM1_CH4       -           -          -           -             -             -           -           -          -            -
+Page   67: PE15      -      TIM1_BKIN      -           -          -           -             -             -           -           -          -            -
+Page   68: SYS   TIM1/2   TIM3/4/5               I2C1/2/3   I2S2/I2S2e                                          TIM12/13/             ET
+Page   68: PF6     -      -         -       TIM10_CH1      -           -             -             -           -           -          -       -
+Page   68: PF7     -      -         -       TIM11_CH1      -           -             -             -           -           -          -       -
+Page   68: PF8     -      -         -           -          -           -             -             -           -       TIM13_CH1      -       -
+Page   68: PF9     -      -         -           -          -           -             -             -           -       TIM14_CH1      -       -
+Page   69: SYS   TIM1/2   TIM3/4/5               I2C1/2/3   I2S2/I2S2e                                           TIM12/13/                  ET
+Page   70: SYS   TIM1/2   TIM3/4/5               I2C1/2/3   I2S2/I2S2e                                          TIM12/13/                      ET
+Page   70: PH6     -      -         -           -                      -             -             -           -       TIM12_CH1        -         ETH _MI
+Page   70: PH9     -      -         -           -                      -             -             -           -       TIM12_CH2        -               -
+Page   71: SYS   TIM1/2   TIM3/4/5               I2C1/2/3   I2S2/I2S2e                                          TIM12/13/                       ET
+Page   75: 0x4001 4800 - 0x4001 4BFF   TIM11
+Page   75: 0x4001 4400 - 0x4001 47FF   TIM10
+Page   75: 0x4001 0000 - 0x4001 03FF   TIM1
+Page   76: 0x4000 2000 - 0x4000 23FF   TIM14
+Page   76: 0x4000 1C00 - 0x4000 1FFF   TIM13
+Page   76: 0x4000 1800 - 0x4000 1BFF   TIM12
+Page   98: TIM12               6.62                   6.83
+Page   98: TIM13               5.05                   5.47
+Page   98: TIM14               5.26                   5.61
+Page   99: TIM1                     16.79                   15.51
+Page   99: TIM10                      4.89                    4.82
+Page   99: TIM11                      5.19                    4.82
+Page  121: 1. TIMx is used as a general term to refer to the TIM2, TIM3, TIM4, TIM5, TIM6, TIM7, and TIM12 timers.
+Page  122: 1. TIMx is used as a general term to refer to the TIM1, TIM8, TIM9, TIM10, and TIM11 timers.
+Page  192: function TIM15_CH1_ETR renamed TIM5_CH1; updated PA4 and PA5

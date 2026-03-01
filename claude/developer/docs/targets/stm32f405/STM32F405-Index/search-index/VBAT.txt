@@ -1,0 +1,57 @@
+Keyword: VBAT
+Occurrences: 53
+================================================================================
+
+Page    1: – VBAT supply for RTC, 20×32-bit backup                      • Advanced connectivity
+Page    3: 3.0.20      VBAT operation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 32
+Page    5: 6.3.23      VBAT monitoring characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 140
+Page    7: Table 25.   Typical and maximum current consumptions in VBAT mode. . . . . . . . . . . . . . . . . . . . . . . . 92
+Page    8: Table 71.   VBAT monitoring characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 140
+Page   10: Figure 28.   Typical VBAT current consumption (LSE and RTC ON/backup RAM OFF) . . . . . . . . . . . . 92
+Page   10: Figure 29.   Typical VBAT current consumption (LSE and RTC ON/backup RAM ON) . . . . . . . . . . . . . 93
+Page   20: GPIO PORT F                                                                                                                                                                 PWR                           VBAT = 1.65 to 3.6 V
+Page   20: @VBAT
+Page   22: unwanted write accesses, and is retained in Standby or VBAT mode.
+Page   25: •   VBAT = 1.65 to 3.6 V: power supply for RTC, external clock 32 kHz oscillator and
+Page   26: •    VBAT functionality is no more available and VBAT pin should be connected to VDD
+Page   31: which need to be retained in VBAT and standby mode. This memory area is disabled by
+Page   31: powered either from the VDD supply when present or from the VBAT pin.
+Page   32: 3.0.20     VBAT operation
+Page   32: The VBAT pin allows to power the device VBAT domain from an external battery, an external
+Page   32: VBAT operation is activated when VDD is not present.
+Page   32: The VBAT pin supplies the RTC, the backup registers and the backup SRAM.
+Page   32: Note:      When the microcontroller is supplied from VBAT, external interrupts and RTC alarm/events
+Page   32: do not exit it from VBAT operation.
+Page   32: When PDR_ON pin is not connected to VDD (internal reset OFF), the VBAT functionality is no
+Page   32: more available and VBAT pin should be connected to VDD.
+Page   42: VBAT     1                                               48   VDD
+Page   43: VBAT     6                                            70   PA 11
+Page   44: VBAT     6                                                                   103   PA11
+Page   45: VBAT   6                                                                            127   VDD
+Page   46: C     VBAT    PI7    PI6      PI5     VDD   PDR_ON   VDD    VDD    VDD     PG9     PD5    PD1     PI3     PI2      PA11
+Page   47: A        VBAT    PC13     PDR_ON   BOOT0   PB4    PD7      PD4     PC12   PA14     VDD
+Page   48: 1       A10        6           6       C1           6            VBAT           S               -            -                 -                 -
+Page   78: VBAT
+Page   78: VBAT =                                 Power                         (OSC32K,RTC,
+Page   79: IDD_VBAT
+Page   79: VBAT
+Page   80: VBAT       Backup operating voltage                                  -                       1.65         -          3.6       V
+Page   85: 2. The reset temporization is measured from the power-on (POR reset or wakeup from VBAT) to the instant
+Page   92: Table 25. Typical and maximum current consumptions in VBAT mode
+Page   92: VBAT                 VBAT
+Page   92: VBAT=
+Page   92: =                    =            VBAT = 3.6 V
+Page   92: Figure 28. Typical VBAT current consumption (LSE and RTC ON/backup RAM OFF)
+Page   92: IVBAT in (μA)
+Page   93: Figure 29. Typical VBAT current consumption (LSE and RTC ON/backup RAM ON)
+Page   93: IVBAT in (μA)
+Page  114: 2. On VBAT pin, VESD(HBM) is limited to 1000 V.
+Page  140: 6.3.23             VBAT monitoring characteristics
+Page  140: Table 71. VBAT monitoring characteristics
+Page  140: R            Resistor bridge for VBAT                                             -            50              -          KΩ
+Page  140: Q            Ratio on VBAT measurement                                            -            2               -           -
+Page  140: ADC sampling time when reading the VBAT
+Page  140: TS_vbat(2)(2)                                                                         5              -               -           µs
+Page  193: in VBAT mode, and Table 29: Switching output I/O current
+Page  197: VBAT mode
+Page  199: Updated Section 3.0.20: VBAT operation.

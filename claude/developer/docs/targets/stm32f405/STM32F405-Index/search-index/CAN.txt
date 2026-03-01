@@ -1,0 +1,166 @@
+Keyword: CAN
+Occurrences: 162
+================================================================================
+
+Page    1: • Low-power operation                                            – 2 × CAN interfaces (2.0B Active)
+Page    4: 3.0.29     Controller area network (bxCAN) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 38
+Page    5: 6.3.20      CAN (controller area network) interface . . . . . . . . . . . . . . . . . . . . . . . 134
+Page   14: can be clocked via a dedicated internal audio PLL or via an external clock to allow
+Page   14: •   Two CANs
+Page   14: range from a 1.8 to 3.6 V power supply. The supply voltage can drop to 1.7 V when the
+Page   14: •   Printers, and scanners
+Page   16: CAN                                                                                      2
+Page   16: 1. For the LQFP100 and WLCSP90 packages, only FSMC Bank1 or Bank2 are available. Bank1 can only support a multiplexed NOR/P
+Page   16: Select. Bank2 can only support a 16- or 8-bit NAND flash memory using the NCE2 Chip Select. The interrupt line cannot be used sin
+Page   20: to the ADC1 & 2                                                                                                                                                                                              bxCAN1                    TX, RX
+Page   20: ADC3                                                                                                                                                                            bxCAN2                    TX, RX
+Page   21: task. This memory area is organized into up to 8 protected areas that can in turn be divided
+Page   21: MPU, the RTOS can detect it and take action. In an RTOS environment, the kernel can
+Page   21: The MPU is optional and can be bypassed for applications that do not need it.
+Page   23: The DMA can be used with the main peripherals:
+Page   24: The FSMC can be configured to interface seamlessly with most graphic LCD controllers. It
+Page   24: interrupt/event requests. Each line can be independently configured to select the trigger
+Page   24: event (rising edge, falling edge, both) and can be masked independently. A pending register
+Page   24: maintains the status of the interrupt requests. The EXTI can detect an external line with a
+Page   24: pulse width shorter than the Internal APB2 clock period. Up to 140 GPIOs can be connected
+Page   24: temperature range. The application can then select as system clock either the RC oscillator
+Page   24: or an external 4-26 MHz clock source. This clock can be monitored for failure. If a failure is
+Page   25: performance. In this case, the I2S master clock can generate all standard sampling
+Page   25: using USART1 (PA9/PA10), USART3 (PC10/PC11 or PB10/PB11), CAN2 (PB5/PB13), USB
+Page   26: the VDD/VDDA power supply and compares it to the VPVD threshold. An interrupt can be
+Page   26: higher than the VPVD threshold. The interrupt service routine can then generate a warning
+Page   26: 1.8 V (see Figure 7). This supply voltage can drop to 1.7 V when the device operates in the
+Page   28: •   PA0 cannot be used as a GPIO pin since it allows to reset a part of the V12 logic power
+Page   28: •   As long as PA0 is kept low, the debug mode cannot be used under power-on reset. As
+Page   31: has a typical frequency of 32 kHz. The RTC can be calibrated using an external 512 Hz
+Page   31: Two alarm registers are used to generate an alarm at a specific time and calendar fields can
+Page   31: The 4-Kbyte backup SRAM is an EEPROM-like memory area. It can be used to store data
+Page   31: default to minimize power consumption (see Section 3.0.19: Low-power modes). It can be
+Page   31: In Sleep mode, only the CPU is stopped. All peripherals continue to operate and can
+Page   31: and the HSE crystal oscillators are disabled. The voltage regulator can also be put
+Page   31: The device can be woken up from the Stop mode by any of the EXTI line (the EXTI line
+Page   31: source can be one of the 16 external lines, the PVD output, the RTC alarm / wakeup /
+Page   32: All timer counters can be frozen in debug mode.
+Page   33: The advanced-control timers (TIM1, TIM8) can be seen as three-phase PWM generators
+Page   33: inserted dead times. They can also be considered as complete general-purpose timers.
+Page   33: Their 4 independent channels can be used for:
+Page   33: The advanced-control timer can work together with the TIMx timers via the Timer Link
+Page   34: The TIM2, TIM3, TIM4, TIM5 general-purpose timers can work together, or with the
+Page   34: Any of these general-purpose timers can be used to generate PWM outputs.
+Page   34: one-pulse mode output. They can be synchronized with the TIM2, TIM3, TIM4, TIM5
+Page   34: full-featured general-purpose timers. They can also be used as simple time bases.
+Page   34: These timers are mainly used for DAC trigger and waveform generation. They can also be
+Page   34: main clock, it can operate in Stop and Standby modes. It can be used either as a watchdog
+Page   34: The window watchdog is based on a 7-bit downcounter that can be set as free-running. It
+Page   34: can be used as a watchdog to reset the device when a problem occurs. It is clocked from
+Page   34: the main clock. It has an early warning interrupt capability and the counter can be frozen in
+Page   35: Up to three I²C bus interfaces can operate in multimaster and slave modes. They can
+Page   35: They can be served by DMA and they support SMBus 2.0/PMBus.
+Page   35: capability. All interfaces can be served by the DMA controller.
+Page   36: simplex communication modes. SPI1 can communicate at up to 42 Mbits/s, SPI2 and SPI3
+Page   36: can communicate at up to 21 Mbit/s. The 3-bit prescaler gives 8 master mode frequencies
+Page   36: supports basic SD Card/MMC modes. All SPIs can be served by the DMA controller.
+Page   36: The SPI interface can be configured to operate in TI mode for communications in master
+Page   36: Two standard I2S interfaces (multiplexed with SPI2 and SPI3) are available. They can be
+Page   36: can be configured to operate with a 16-/32-bit resolution as an input or output channel.
+Page   36: the I2S interfaces is/are configured in master mode, the master clock can be output to the
+Page   36: All I2Sx can be served by the DMA controller.
+Page   37: The PLLI2S configuration can be modified to manage an I2S sample rate change without
+Page   37: The audio PLL can be programmed with very low error to obtain sampling rates ranging
+Page   37: In addition to the audio PLL, a master clock input pin can be used to synchronize the I2S
+Page   37: port using 17 signals for MII or 9 signals for RMII, and can be clocked using the 25 MHz
+Page   38: 3.0.29     Controller area network (bxCAN)
+Page   38: The two CANs are compliant with the 2.0A and B (active) specifications with a bitrate up to 1
+Page   38: Mbit/s. They can receive and transmit standard frames with 11-bit identifiers as well as
+Page   38: extended frames with 29-bit identifiers. Each CAN has three transmit mailboxes, two receive
+Page   38: FIFOS with 3 stages and 28 shared scalable filter banks (all of them can be used even if one
+Page   38: CAN is used). 256 bytes of SRAM are allocated for each CAN.
+Page   39: connected to the microcontroller ULPI port through 12 signals. It can be clocked using
+Page   39: STM32F407xx products embed a camera interface that can connect with camera modules
+Page   39: camera interface can sustain a data transfer rate up to 54 Mbyte/s at 54 MHz. It features:
+Page   39: •    Parallel data communication can be 8-, 10-, 12- or 14-bit
+Page   39: Each of the GPIO pins can be configured by software as output (push-pull or open-drain,
+Page   40: The I/O configuration can be locked if needed by following a specific sequence in order to
+Page   40: external channels, performing conversions in the single-shot or scan mode. In scan mode,
+Page   40: The ADC can be served by the DMA controller. An analog watchdog feature allows very
+Page   40: The two 12-bit buffered DAC channels can be used to convert two digital signals into two
+Page   41: any other high-speed channel. Real-time instruction and data flow activity can be recorded
+Page   48: -         -         -          -       D3         11             PI9          I/O         FT                 -      CAN1_RX / EVENTOUT           -
+Page   54: CAN2_RX /
+Page   54: TIM1_CH1N /CAN2_TX /
+Page   56: USART1_CTS / CAN1_RX
+Page   56: USART1_RTS / CAN1_TX/
+Page   56: TIM8_CH1N / CAN1_TX/
+Page   57: FSMC_D2/CAN1_RX/
+Page   57: FSMC_D3 / CAN1_TX/
+Page   59: I2C1_SMBA/ CAN2_RX /
+Page   59: CAN2_TX /
+Page   59: I2C1_SCL/ CAN1_RX/
+Page   59: I2C1_SDA / CAN1_TX/
+Page   63: Port                                                                SPI1/SPI2/                                           CAN1/2
+Page   63: PA11     -      TIM1_CH4        -           -          -           -             -        USART1_CTS       -       CAN1_RX      OTG_FS_DM            -
+Page   63: PA12     -      TIM1_ETR        -           -          -           -             -        USART1_RTS       -       CAN1_TX      OTG_FS_DP            -
+Page   64: Port                                                               SPI1/SPI2/                                           CAN1/2
+Page   64: PB5      -          -       TIM3_CH2                          SPI1_MOSI                       -           -       CAN2_RX                    ETH _PP
+Page   64: PB6      -          -       TIM4_CH1               I2C1_SCL       -             -         USART1_TX       -       CAN2_TX          -                -
+Page   64: PB8      -          -       TIM4_CH3   TIM10_CH1   I2C1_SCL       -             -             -           -       CAN1_RX          -         ETH _MI
+Page   64: PB9      -          -       TIM4_CH4   TIM11_CH1   I2C1_SDA                     -             -           -       CAN1_TX          -                -
+Page   64: PB12     -      TIM1_BKIN      -           -                                    -        USART3_CK        -       CAN2_RX
+Page   64: PB13     -      TIM1_CH1N      -           -          -                         -        USART3_CTS       -       CAN2_TX
+Page   65: Port                                                          SPI1/SPI2/                                            CAN1/2
+Page   66: Port                                                         SPI1/SPI2/                                           CAN1/2
+Page   66: PD0     -      -         -           -          -           -             -             -           -       CAN1_RX        -       -
+Page   66: PD1     -      -         -           -          -           -             -             -           -       CAN1_TX        -       -
+Page   67: Port                                                                SPI1/SPI2/                                           CAN1/2
+Page   68: Port                                                         SPI1/SPI2/                                           CAN1/2
+Page   69: Port                                                         SPI1/SPI2/                                            CAN1/2
+Page   70: Port                                                        SPI1/SPI2/                                           CAN1/2
+Page   70: PH13    -      -         -       TIM8_CH1N      -           -             -             -           -       CAN1_TX          -               -
+Page   71: Port                                                          SPI1/SPI2/                                           CAN1/2
+Page   71: PI9    -      -         -           -          -           -             -             -           -       CAN1_RX          -                -
+Page   76: 0x4000 6800 - 0x4000 6BFF   CAN2
+Page   76: 0x4000 6400 - 0x4000 67FF   CAN1
+Page   81: VDDA can be tolerated during power-up and power-down operation.
+Page   81: 8. In low-power dissipation state, TA can be extended to this range as long as TJ does not exceed TJmax.
+Page   82: 5. The voltage range for OTG USB FS can drop down to 2.7 V. However it is degraded between 2.7 and 3 V.
+Page   94: pin is externally held to the opposite level. The value of this current consumption can be
+Page   94: required by the application, this supply current consumption can be avoided by configuring
+Page   94: Caution:    Any floating input pin can also settle to an intermediate voltage level or switch inadvertently,
+Page   94: digital value. This can be done either by using pull-up/down resistors or by configuring the
+Page   98: CAN1               5.12                   5.56
+Page   98: CAN2               4.81                   5.28
+Page  102: The high-speed external (HSE) clock can be supplied with a 4 to 26 MHz crystal/ceramic
+Page  102: a standard crystal resonator and can vary significantly with the crystal manufacturer
+Page  102: can be used as a rough estimate of the combined pin and board capacitance) when sizing
+Page  103: The low-speed external (LSE) clock can be supplied with a 32.768 kHz crystal/ceramic
+Page  103: measured for a standard crystal resonator and it can vary significantly with the crystal manufacturer
+Page  106: Bit Time CAN jitter                                                       -        330            -
+Page  112: Most of the common failures (unexpected reset and program counter corruption) can be
+Page  112: To complete these trials, ESD stress can be applied directly on the device, over the range of
+Page  112: specification values. When unexpected behavior is detected, the software can be hardened
+Page  117: The GPIOs (general purpose input/outputs) can sink or source up to ±8 mA, and sink or
+Page  117: source up to ±20 mA (with a relaxed VOL/VOH) except PC13, PC14 and PC15 which can
+Page  117: In the user application, the number of I/O pins which can drive current must be limited to
+Page  117: consumption of the MCU sourced on VDD, cannot exceed the absolute maximum rating
+Page  117: consumption of the MCU sunk on VSS cannot exceed the absolute maximum rating
+Page  120: 2. The user must ensure that the level on the NRST pin can go below the VIL(NRST) max level specified in
+Page  134: 6.3.20        CAN (controller area network) interface
+Page  134: function characteristics (CANTX and CANRX).
+Page  136: input pins should be avoided as this significantly reduces the accuracy of the conversion
+Page  140: 2. Shortest sampling time can be determined in the application by multiple iterations.
+Page  140: 1. Shortest sampling time can be determined in the application by multiple iterations.
+Page  143: 1. The DAC integrates an output buffer that can be used to reduce the output impedance and to drive external
+Page  143: loads directly without the use of an external operational amplifier. The buffer can be bypassed by
+Page  170: Dambar cannot be located on the lower radius or the foot. Minimum space between
+Page  173: The dambar cannot be located on the lower radius or the foot. The minimum space
+Page  176: The dambar cannot be located on the lower radius or the foot. The minimum space
+Page  182: The dambar cannot be located on the lower radius or the foot. The minimum space
+Page  186: 2. The same application can be developed using the OTG HS in FS mode to achieve enhanced performance
+Page  186: switch can be used if 5 V are available on the application board.
+Page  186: 2. The same application can be developed using the OTG HS in FS mode to achieve enhanced performance
+Page  187: switch can be used if 5 V are available on the application board.
+Page  187: 4. The same application can be developed using the OTG HS in FS mode to achieve enhanced performance
+Page  191: herein. However, no level of security certification and/or built-in security measures can
+Page  191: information. As the status and/or level of security certification for an ST product can
+Page  191: •   While robust security testing may be done, no level of certification can absolutely
+Page  192: Modified I/Os used to reprogram the Flash memory for CAN2 and USB

@@ -1,0 +1,144 @@
+Keyword: I2S
+Occurrences: 140
+================================================================================
+
+Page    1: accuracy)                                                      full-duplex I2S to achieve audio class
+Page    3: 3.0.25      Inter-integrated sound (I2S) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 36
+Page    3: 3.0.26      Audio PLL (PLLI2S) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 37
+Page    7: Table 37.   PLLI2S (audio PLL) characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 106
+Page    8: Table 56.   I2S dynamic characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 127
+Page   11: Figure 42.   I2S slave timing diagram (Philips protocol) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 128
+Page   11: Figure 43.   I2S master timing diagram (Philips protocol)(1). . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 128
+Page   14: •   Three SPIs, two I2Ss full duplex. To achieve audio class accuracy, the I2S peripherals
+Page   16: SPI / I2S                                                                      3/2 (full duplex)(2)
+Page   16: 2. The SPI2 and SPI3 interfaces give the flexibility to work in an exclusive way in either the SPI mode or the I2S audio mode.
+Page   20: CTS, RTS as AF                                                                                                                                                                                            SP2/I2S2                      NSS/WS, MCK as AF
+Page   20: SP3/I2S3                      NSS/WS, MCK as AF
+Page   23: •      SPI and I2S
+Page   25: The devices embed a dedicated PLL (PLLI2S) which allows to achieve audio class
+Page   25: performance. In this case, the I2S master clock can generate all standard sampling
+Page   36: 3.0.25     Inter-integrated sound (I2S)
+Page   36: Two standard I2S interfaces (multiplexed with SPI2 and SPI3) are available. They can be
+Page   36: the I2S interfaces is/are configured in master mode, the master clock can be output to the
+Page   36: All I2Sx can be served by the DMA controller.
+Page   37: 3.0.26   Audio PLL (PLLI2S)
+Page   37: The devices feature an additional dedicated PLL for audio I2S application. It allows to
+Page   37: achieve error-free I2S sampling clock accuracy without compromising on the CPU
+Page   37: The PLLI2S configuration can be modified to manage an I2S sample rate change without
+Page   37: In addition to the audio PLL, a master clock input pin can be used to synchronize the I2S
+Page   49: /I2S2ext_SD/ EVENTOUT
+Page   50: SPI2_MOSI / I2S2_SD /
+Page   51: OTG_HS_SOF/ I2S3_WS/
+Page   53: SPI2_SCK / I2S2_CK /
+Page   54: SPI2_NSS / I2S2_WS /
+Page   54: SPI2_SCK / I2S2_CK /
+Page   54: TIM8_CH2N/I2S2ext_SD/
+Page   54: SPI2_MOSI / I2S2_SD/
+Page   55: I2S2_MCK /
+Page   55: I2S3_MCK /
+Page   56: I2S_CKIN/ MCO2 /
+Page   56: -       C3          -          -       E14 131                   PI0          I/O         FT                 -        I2S2_WS / DCMI_D13/         -
+Page   56: SPI2_SCK / I2S2_CK /
+Page   57: -         -         -          -       C14 133                   PI2          I/O         FT                 -      DCMI_D9 / I2S2ext_SD/            -
+Page   57: -         -         -          -       C13 134                   PI3          I/O         FT                 -       I2S2_SD / DCMI_D10/             -
+Page   57: 50       B3         77 110 A13 138                                             I/O         FT                 -      I2S3_WS/TIM2_CH1_ETR             -
+Page   57: SPI3_SCK / I2S3_CK/
+Page   57: I2S3ext_SD/ EVENTOUT
+Page   57: /I2S3_SD / USART3_CK/
+Page   59: SPI3_SCK / I2S3_CK /
+Page   59: (NJTRST)                                              I2S3ext_SD/ EVENTOUT
+Page   59: DCMI_D10 / I2S3_SD/
+Page   59: SPI2_NSS/ I2S2_WS /
+Page   63: TIM8/9/10                           SPI3/I2Sext   USART1/2/3/   UART4/5/                OTG_FS/
+Page   63: SYS       TIM1/2     TIM3/4/5                I2C1/2/3   I2S2/I2S2e                                          TIM12/13/                       ET
+Page   63: /11                                 /I2S3        I2S3ext     USART6                  OTG_HS
+Page   63: I2S3_WS
+Page   63: TIM 2_ETR                                                     I2S3_WS
+Page   64: TIM8/9/10                           SPI3/I2Sext   USART1/2/3/   UART4/5/                OTG_FS/
+Page   64: SYS      TIM1/2     TIM3/4/5               I2C1/2/3   I2S2/I2S2e                                          TIM12/13/                       ET
+Page   64: /11                                 /I2S3        I2S3ext     USART6                  OTG_HS
+Page   64: I2S3_CK
+Page   64: PB4    NJTRST       -       TIM3_CH1                  -       SPI1_MISO     SPI3_MISO     I2S3ext_SD      -           -            -                -
+Page   64: A                     I2S3_SD                                               D7
+Page   64: I2S2_WS
+Page   64: I2S2_CK                                                             D3
+Page   64: SMBA      I2S2_WS                                                              D5        ETH _RM
+Page   64: I2S2_CK                                                             D6        ETH _RM
+Page   64: PB14     -      TIM1_CH2N      -       TIM8_CH2N      -       SPI2_MISO    I2S2ext_SD    USART3_RTS       -       TIM12_CH1        -                -
+Page   64: REFIN                                                   I2S2_SD
+Page   65: TIM8/9/10                           SPI3/I2Sext   USART1/2/3/   UART4/5/                 OTG_FS/
+Page   65: SYS    TIM1/2   TIM3/4/5               I2C1/2/3   I2S2/I2S2e                                           TIM12/13/                       ET
+Page   65: /11                                 /I2S3        I2S3ext     USART6                   OTG_HS
+Page   65: PC2     -       -         -           -          -       SPI2_MISO    I2S2ext_SD         -            -           -                      ETH _MI
+Page   65: I2S2_SD                                                             NXT         _MII_TX
+Page   65: PC6     -       -      TIM3_CH1   TIM8_CH1               I2S2_MCK                        -        USART6_TX       -            -                -
+Page   65: Port C   PC7     -       -      TIM3_CH2   TIM8_CH2       -           -         I2S3_MCK          -        USART6_RX       -            -                -
+Page   65: PC9    MCO2     -      TIM3_CH4   TIM8_CH4    I2C3_SDA    I2S_CKIN         -             -            -           -            -                -
+Page   65: I2S3_CK
+Page   65: PC11    -       -         -           -          -       I2S3ext_SD   SPI3_MISO/    USART3_RX     UART4_RX        -            -                -
+Page   65: I2S3_SD
+Page   66: TIM8/9/10                           SPI3/I2Sext   USART1/2/3/   UART4/5/               OTG_FS/
+Page   66: SYS   TIM1/2   TIM3/4/5               I2C1/2/3   I2S2/I2S2e                                          TIM12/13/             ET
+Page   66: /11                                 /I2S3        I2S3ext     USART6                 OTG_HS
+Page   67: TIM8/9/10                           SPI3/I2Sext   USART1/2/3/   UART4/5/               OTG_FS/
+Page   67: SYS       TIM1/2     TIM3/4/5               I2C1/2/3   I2S2/I2S2e                                          TIM12/13/                 ET
+Page   67: /11                                 /I2S3        I2S3ext     USART6                 OTG_HS
+Page   68: TIM8/9/10                           SPI3/I2Sext   USART1/2/3/   UART4/5/               OTG_FS/
+Page   68: SYS   TIM1/2   TIM3/4/5               I2C1/2/3   I2S2/I2S2e                                          TIM12/13/             ET
+Page   68: /11                                 /I2S3        I2S3ext     USART6                 OTG_HS
+Page   69: TIM8/9/10                           SPI3/I2Sext   USART1/2/3/   UART4/5/                OTG_FS/
+Page   69: SYS   TIM1/2   TIM3/4/5               I2C1/2/3   I2S2/I2S2e                                           TIM12/13/                  ET
+Page   69: /11                                 /I2S3        I2S3ext     USART6                  OTG_HS
+Page   70: TIM8/9/10                           SPI3/I2Sext   USART1/2/3/   UART4/5/                OTG_FS/
+Page   70: SYS   TIM1/2   TIM3/4/5               I2C1/2/3   I2S2/I2S2e                                          TIM12/13/                      ET
+Page   70: /11                                 /I2S3        I2S3ext     USART6                  OTG_HS
+Page   71: TIM8/9/10                           SPI3/I2Sext   USART1/2/3/   UART4/5/                OTG_FS/
+Page   71: SYS   TIM1/2   TIM3/4/5               I2C1/2/3   I2S2/I2S2e                                          TIM12/13/                       ET
+Page   71: /11                                 /I2S3        I2S3ext     USART6                  OTG_HS
+Page   71: I2S2_WS
+Page   71: I2S2_CK
+Page   71: PI2    -      -         -       TIM8_CH4       -       SPI2_MISO    I2S2ext_SD         -           -           -            -                -
+Page   71: I2S2_SD
+Page   76: 0x4000 4000 - 0x4000 43FF   I2S3ext
+Page   76: APB1         0x4000 3C00 - 0x4000 3FFF   SPI3 / I2S3
+Page   76: 0x4000 3800 - 0x4000 3BFF   SPI2 / I2S2
+Page   76: 0x4000 3400 - 0x4000 37FF   I2S2ext
+Page   98: I2S2                2.43                   2.22
+Page   98: I2S3                2.26                   2.22
+Page   99: 3. To enable an I2S peripheral, first set the I2SMOD bit and then the I2SE bit in the SPI_I2SCFGR register.
+Page  106: between PLL and PLLI2S.
+Page  106: Table 37. PLLI2S (audio PLL) characteristics
+Page  106: fPLLI2S_IN        PLLI2S input clock(1)                  -                                 0.95(2)         1      2.10       MHz
+Page  106: fPLLI2S_OUT       PLLI2S multiplier output clock         -                                      -          -       216       MHz
+Page  106: fVCO_OUT          PLLI2S VCO output                      -                                   100           -       432       MHz
+Page  106: tLOCK             PLLI2S lock time                                                                                               µs
+Page  106: Master I2S clock jitter
+Page  106: WS I2S clock jitter                                                           -      400          -            ps
+Page  107: Table 37. PLLI2S (audio PLL) characteristics (continued)
+Page  107: PLLI2S power consumption on           VCO freq = 100 MHz                   0.15                 0.40
+Page  107: IDD(PLLI2S)(4)                                                                                              -              mA
+Page  107: PLLI2S power consumption on           VCO freq = 100 MHz                  0.30                  0.40
+Page  107: IDDA(PLLI2S)(4)                                                                                             -              mA
+Page  127: I2S interface characteristics
+Page  127: Unless otherwise specified, the parameters given in Table 56 for the i2S interface are
+Page  127: Table 56. I2S dynamic characteristics(1)
+Page  127: fMCK          I2S main clock output               -                                                256 x FS(2)    MHz
+Page  127: fCK           I2S clock frequency                                                                                 MHz
+Page  127: DCK           I2S clock frequency duty cycle Slave receiver                                 30         70          %
+Page  127: Note:           Refer to the I2S section of RM0090 reference manual for more details on the sampling
+Page  127: of I2SDIV / (2 x I2SDIV + ODD) and a maximum value of (I2SDIV + ODD) / (2 x I2SDIV +
+Page  128: Figure 42. I2S slave timing diagram (Philips protocol)
+Page  128: Figure 43. I2S master timing diagram (Philips protocol)(1)
+Page  193: Main PLL characteristics. Updated maximum PLLI2S input clock
+Page  193: frequency and removed related note in Table 39: PLLI2S (audio PLL)
+Page  193: Updated Table 58: I2S dynamic characteristics
+Page  195: Added SDIO, added notes related to FSMC and SPI/I2S in Table 3:
+Page  195: Removed I2S2_WS on PB6/AF5 in Table 10: Alternate function
+Page  195: modified I2S3ext_SD on PC11 in Table 10: Alternate function
+Page  197: integrated sound (I2S).
+Page  197: Updated Table 39: PLLI2S (audio PLL) characteristics
+Page  197: Updated Table 58: I2S dynamic characteristics
+Page  198: Replaced respectively “I2S3S_WS" by "I2S3_WS”, “I2S3S_CK” by
+Page  198: “I2S3_CK” and “FSMC_BLN1” by “FSMC_NBL1” in Table 10: Alternate
+Page  199: Updated Section : I2S interface characteristics included Table 58.
+Page  202: Table 38: Main PLL characteristics and Table 39: PLLI2S (audio PLL)

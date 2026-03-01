@@ -1,0 +1,592 @@
+                                                                                                                                                                                                                                 STM32F405xx, STM32F407xx
+                                                                                          Table 9. Alternate function mapping
+                                 AF0       AF1         AF2         AF3         AF4         AF5          AF6           AF7          AF8        AF9          AF10            AF11           AF12        AF13
+
+                    Port                                                                SPI1/SPI2/                                           CAN1/2                                                            AF14    AF15
+                                                                 TIM8/9/10                           SPI3/I2Sext   USART1/2/3/   UART4/5/                OTG_FS/                        FSMC/SDIO
+                                SYS       TIM1/2     TIM3/4/5                I2C1/2/3   I2S2/I2S2e                                          TIM12/13/                       ETH                       DCMI
+                                                                    /11                                 /I2S3        I2S3ext     USART6                  OTG_HS                          /OTG_FS
+                                                                                            xt                                                 14
+
+                                         TIM2_CH1_
+                         PA0      -                  TIM 5_CH1   TIM8_ETR       -           -             -        USART2_CTS    UART4_TX       -            -          ETH_MII_CRS         -           -       -     EVENTOUT
+                                            ETR
+
+                                                                                                                                                                          ETH_MII
+                                                                                                                                                                          _RX_CLK
+                         PA1      -      TIM2_CH2    TIM5_CH2        -          -           -             -        USART2_RTS    UART4_RX       -            -                              -           -       -     EVENTOUT
+                                                                                                                                                                       ETH_RMII__REF
+                                                                                                                                                                            _CLK
+
+                         PA2      -      TIM2_CH3    TIM5_CH3    TIM9_CH1       -           -             -         USART2_TX       -           -            -           ETH_MDIO           -           -       -     EVENTOUT
+
+                                                                                                                                                        OTG_HS_ULPI_
+                         PA3      -      TIM2_CH4    TIM5_CH4    TIM9_CH2       -           -             -        USART2_RX        -           -                       ETH _MII_COL        -           -       -     EVENTOUT
+                                                                                                                                                             D0
+
+                                                                                                      SPI3_NSS                                                                                       DCMI_
+                         PA4      -          -           -           -          -       SPI1_NSS                   USART2_CK        -           -            -               -          OTG_HS_SOF              -     EVENTOUT
+                                                                                                      I2S3_WS                                                                                        HSYNC
+
+                                         TIM2_CH1_                                                                                                      OTG_HS_ULPI_
+                         PA5      -                      -       TIM8_CH1N      -       SPI1_SCK          -             -           -           -                            -              -           -       -     EVENTOUT
+                                            ETR                                                                                                             CK
+
+                                                                                                                                                                                                     DCMI_
+DS8626 Rev 11
+
+
+
+
+                         PA6      -      TIM1_BKIN   TIM3_CH1    TIM8_BKIN      -       SPI1_MISO         -             -           -       TIM13_CH1        -               -              -                   -     EVENTOUT
+                                                                                                                                                                                                     PIXCLK
+
+                Port A                                                                                                                                                 ETH_MII _RX_DV
+                         PA7      -      TIM1_CH1N   TIM3_CH2    TIM8_CH1N      -       SPI1_MOSI         -             -           -       TIM14_CH1        -            ETH_RMII          -           -       -     EVENTOUT
+                                                                                                                                                                          _CRS_DV
+
+                         PA8    MCO1     TIM1_CH1        -           -       I2C3_SCL       -             -        USART1_CK        -           -       OTG_FS_SOF           -              -           -       -     EVENTOUT
+
+                                                                              I2C3_
+                         PA9      -      TIM1_CH2        -           -                      -             -         USART1_TX       -           -            -               -              -        DCMI_D0    -     EVENTOUT
+                                                                              SMBA
+
+                         PA10     -      TIM1_CH3        -           -          -           -             -        USART1_RX        -           -        OTG_FS_ID           -              -        DCMI_D1    -     EVENTOUT
+
+                         PA11     -      TIM1_CH4        -           -          -           -             -        USART1_CTS       -       CAN1_RX      OTG_FS_DM           -              -           -       -     EVENTOUT
+
+                         PA12     -      TIM1_ETR        -           -          -           -             -        USART1_RTS       -       CAN1_TX      OTG_FS_DP           -              -           -       -     EVENTOUT
+
+                                JTMS-
+                         PA13                -           -           -          -           -             -             -           -           -            -               -              -           -       -     EVENTOUT
+                                SWDIO
+
+
+
+
+                                                                                                                                                                                                                                 Pinouts and pin description
+                                 JTCK-
+                         PA14                -           -           -          -           -             -             -           -           -            -               -              -           -       -     EVENTOUT
+                                SWCLK
+
+                                         TIM 2_CH1                                                    SPI3_NSS/
+                         PA15    JTDI                    -           -          -       SPI1_NSS                        -           -           -            -               -              -           -       -     EVENTOUT
+                                         TIM 2_ETR                                                     I2S3_WS
+63/205
+                                                                               Table 9. Alternate function mapping (continued)
+64/205
+
+
+
+
+                                                                                                                                                                                                                                 Pinouts and pin description
+                                 AF0       AF1         AF2        AF3         AF4         AF5          AF6           AF7          AF8        AF9          AF10            AF11           AF12        AF13
+
+                    Port                                                               SPI1/SPI2/                                           CAN1/2                                                             AF14    AF15
+                                                                TIM8/9/10                           SPI3/I2Sext   USART1/2/3/   UART4/5/                OTG_FS/                        FSMC/SDIO
+                                 SYS      TIM1/2     TIM3/4/5               I2C1/2/3   I2S2/I2S2e                                          TIM12/13/                      ETH                        DCMI
+                                                                   /11                                 /I2S3        I2S3ext     USART6                  OTG_HS                          /OTG_FS
+                                                                                           xt                                                 14
+
+                                                                                                                                                       OTG_HS_ULPI_
+                         PB0      -      TIM1_CH2N   TIM3_CH3   TIM8_CH2N      -           -             -             -           -           -                      ETH _MII_RXD2        -           -        -     EVENTOUT
+                                                                                                                                                            D1
+
+                                                                                                                                                       OTG_HS_ULPI_
+                         PB1      -      TIM1_CH3N   TIM3_CH4   TIM8_CH3N                  -             -             -           -           -                      ETH _MII_RXD3        -           -        -     EVENTOUT
+                                                                                                                                                            D2
+
+                         PB2      -          -          -           -          -           -             -             -           -           -            -               -              -           -        -     EVENTOUT
+
+                                 JTDO/
+                                                                                                     SPI3_SCK
+                         PB3    TRACES   TIM2_CH2       -           -          -       SPI1_SCK                        -           -           -            -               -              -           -        -     EVENTOUT
+                                                                                                      I2S3_CK
+                                  WO
+
+                         PB4    NJTRST       -       TIM3_CH1                  -       SPI1_MISO     SPI3_MISO     I2S3ext_SD      -           -            -               -              -           -        -     EVENTOUT
+
+                                                                            I2C1_SMB                 SPI3_MOSI                                         OTG_HS_ULPI_
+                         PB5      -          -       TIM3_CH2                          SPI1_MOSI                       -           -       CAN2_RX                    ETH _PPS_OUT         -       DCMI_D10     -     EVENTOUT
+                                                                                A                     I2S3_SD                                               D7
+
+                         PB6      -          -       TIM4_CH1               I2C1_SCL       -             -         USART1_TX       -       CAN2_TX          -               -              -        DCMI_D5     -     EVENTOUT
+
+                                                                                                                                                                                                   DCMI_VSYN
+                         PB7      -          -       TIM4_CH2               I2C1_SDA       -             -        USART1_RX        -           -            -               -           FSMC_NL                 -     EVENTOUT
+                                                                                                                                                                                                       C
+DS8626 Rev 11
+
+
+
+
+                Port B
+                         PB8      -          -       TIM4_CH3   TIM10_CH1   I2C1_SCL       -             -             -           -       CAN1_RX          -         ETH _MII_TXD3     SDIO_D4     DCMI_D6     -     EVENTOUT
+
+                                                                                       SPI2_NSS
+                         PB9      -          -       TIM4_CH4   TIM11_CH1   I2C1_SDA                     -             -           -       CAN1_TX          -               -           SDIO_D5     DCMI_D7     -     EVENTOUT
+                                                                                       I2S2_WS
+
+                                                                                       SPI2_SCK                                                        OTG_HS_ULPI_
+                         PB10     -      TIM2_CH3       -           -       I2C2_SCL                     -         USART3_TX       -           -                      ETH_ MII_RX_ER       -           -        -     EVENTOUT
+                                                                                        I2S2_CK                                                             D3
+
+                                                                                                                                                                      ETH _MII_TX_EN
+                                                                                                                                                       OTG_HS_ULPI_
+                         PB11     -      TIM2_CH4       -           -       I2C2_SDA       -             -        USART3_RX        -           -                           ETH             -           -        -     EVENTOUT
+                                                                                                                                                            D4
+                                                                                                                                                                       _RMII_TX_EN
+
+                                                                             I2C2_     SPI2_NSS                                                        OTG_HS_ULPI_    ETH _MII_TXD0
+                         PB12     -      TIM1_BKIN      -           -                                    -        USART3_CK        -       CAN2_RX                                     OTG_HS_ID       -        -     EVENTOUT
+                                                                             SMBA      I2S2_WS                                                              D5        ETH _RMII_TXD0
+
+                                                                                       SPI2_SCK                                                        OTG_HS_ULPI_    ETH _MII_TXD1
+                         PB13     -      TIM1_CH1N      -           -          -                         -        USART3_CTS       -       CAN2_TX                                         -           -        -     EVENTOUT
+                                                                                        I2S2_CK                                                             D6        ETH _RMII_TXD1
+
+                         PB14     -      TIM1_CH2N      -       TIM8_CH2N      -       SPI2_MISO    I2S2ext_SD    USART3_RTS       -       TIM12_CH1        -               -          OTG_HS_DM       -        -     EVENTOUT
+
+
+
+
+                                                                                                                                                                                                                                 STM32F405xx, STM32F407xx
+                                RTC_                                                   SPI2_MOSI
+                         PB15            TIM1_CH3N      -       TIM8_CH3N      -                         -             -           -       TIM12_CH2        -               -          OTG_HS_DP       -        -     EVENTOUT
+                                REFIN                                                   I2S2_SD
+                                                                          Table 9. Alternate function mapping (continued)
+
+
+
+
+                                                                                                                                                                                                                           STM32F405xx, STM32F407xx
+                                AF0     AF1       AF2        AF3         AF4         AF5          AF6           AF7          AF8         AF9          AF10            AF11           AF12       AF13
+
+                    Port                                                          SPI1/SPI2/                                            CAN1/2                                                           AF14    AF15
+                                                           TIM8/9/10                           SPI3/I2Sext   USART1/2/3/   UART4/5/                 OTG_FS/                        FSMC/SDIO
+                                SYS    TIM1/2   TIM3/4/5               I2C1/2/3   I2S2/I2S2e                                           TIM12/13/                      ETH                       DCMI
+                                                              /11                                 /I2S3        I2S3ext     USART6                   OTG_HS                          /OTG_FS
+                                                                                      xt                                                  14
+
+                                                                                                                                                   OTG_HS_ULPI_
+                         PC0     -       -         -           -          -           -             -             -            -           -                            -              -          -       -     EVENTOUT
+                                                                                                                                                       STP
+
+                         PC1     -       -         -           -          -           -             -             -            -           -            -           ETH_MDC            -          -       -     EVENTOUT
+
+                                                                                                                                                   OTG_HS_ULPI_
+                         PC2     -       -         -           -          -       SPI2_MISO    I2S2ext_SD         -            -           -                      ETH _MII_TXD2        -          -       -     EVENTOUT
+                                                                                                                                                       DIR
+
+                                                                                  SPI2_MOSI                                                        OTG_HS_ULPI_        ETH
+                         PC3     -       -         -           -          -                         -             -            -           -                                           -          -       -     EVENTOUT
+                                                                                   I2S2_SD                                                             NXT         _MII_TX_CLK
+
+                                                                                                                                                                   ETH_MII_RXD0
+                         PC4     -       -         -           -          -           -             -             -            -           -            -                              -          -       -     EVENTOUT
+                                                                                                                                                                  ETH_RMII_RXD0
+
+                                                                                                                                                                   ETH _MII_RXD1
+                         PC5     -       -         -           -          -           -             -             -            -           -            -                              -          -       -     EVENTOUT
+                                                                                                                                                                  ETH _RMII_RXD1
+
+                         PC6     -       -      TIM3_CH1   TIM8_CH1               I2S2_MCK                        -        USART6_TX       -            -               -           SDIO_D6    DCMI_D0    -     EVENTOUT
+
+                Port C   PC7     -       -      TIM3_CH2   TIM8_CH2       -           -         I2S3_MCK          -        USART6_RX       -            -               -           SDIO_D7    DCMI_D1    -     EVENTOUT
+DS8626 Rev 11
+
+
+
+
+                         PC8     -       -      TIM3_CH3   TIM8_CH3       -           -             -             -        USART6_CK       -            -               -           SDIO_D0    DCMI_D2    -     EVENTOUT
+
+                         PC9    MCO2     -      TIM3_CH4   TIM8_CH4    I2C3_SDA    I2S_CKIN         -             -            -           -            -               -           SDIO_D1    DCMI_D3    -     EVENTOUT
+
+                                                                                                SPI3_SCK/
+                         PC10    -       -         -           -          -           -                      USART3_TX/    UART4_TX        -            -               -           SDIO_D2    DCMI_D8    -     EVENTOUT
+                                                                                                 I2S3_CK
+
+                         PC11    -       -         -           -          -       I2S3ext_SD   SPI3_MISO/    USART3_RX     UART4_RX        -            -               -           SDIO_D3    DCMI_D4    -     EVENTOUT
+
+                                                                                                SPI3_MOSI
+                         PC12    -       -         -           -          -           -                      USART3_CK     UART5_TX        -            -               -           SDIO_CK    DCMI_D9    -     EVENTOUT
+                                                                                                 I2S3_SD
+
+                         PC13    -       -         -           -          -           -             -             -            -           -            -               -              -          -       -        -
+
+                         PC14    -       -         -           -          -           -             -             -            -           -            -               -              -          -       -        -
+
+                         PC15    -       -         -           -          -           -             -             -            -           -            -               -              -          -       -        -
+
+
+
+
+                                                                                                                                                                                                                           Pinouts and pin description
+65/205
+                                                                         Table 9. Alternate function mapping (continued)
+66/205
+
+
+
+
+                                                                                                                                                                                                            Pinouts and pin description
+                                AF0    AF1       AF2        AF3         AF4         AF5          AF6           AF7          AF8        AF9        AF10     AF11     AF12        AF13
+
+                    Port                                                         SPI1/SPI2/                                           CAN1/2                                              AF14    AF15
+                                                          TIM8/9/10                           SPI3/I2Sext   USART1/2/3/   UART4/5/               OTG_FS/          FSMC/SDIO
+                                SYS   TIM1/2   TIM3/4/5               I2C1/2/3   I2S2/I2S2e                                          TIM12/13/             ETH                  DCMI
+                                                             /11                                 /I2S3        I2S3ext     USART6                 OTG_HS            /OTG_FS
+                                                                                     xt                                                 14
+
+                         PD0     -      -         -           -          -           -             -             -           -       CAN1_RX        -       -      FSMC_D2        -        -     EVENTOUT
+
+                         PD1     -      -         -           -          -           -             -             -           -       CAN1_TX        -       -      FSMC_D3        -        -     EVENTOUT
+
+                         PD2     -      -      TIM3_ETR       -          -           -             -             -        UART5_RX       -          -       -     SDIO_CMD     DCMI_D11    -     EVENTOUT
+
+                         PD3     -      -         -           -          -           -             -        USART2_CTS       -           -          -       -     FSMC_CLK        -        -     EVENTOUT
+
+                         PD4     -      -         -           -          -           -             -        USART2_RTS       -           -          -       -     FSMC_NOE        -        -     EVENTOUT
+
+                         PD5     -      -         -           -          -           -             -         USART2_TX       -           -          -       -     FSMC_NWE        -        -     EVENTOUT
+
+                         PD6     -      -         -           -          -           -             -        USART2_RX        -           -          -       -     FSMC_NWAIT      -        -     EVENTOUT
+
+                                                                                                                                                                  FSMC_NE1/
+                         PD7     -      -         -           -          -           -             -        USART2_CK        -           -          -       -                     -        -     EVENTOUT
+                                                                                                                                                                  FSMC_NCE2
+                Port D
+                         PD8     -      -         -           -          -           -             -         USART3_TX       -           -          -       -      FSMC_D13       -        -     EVENTOUT
+
+                         PD9     -      -         -           -          -           -             -        USART3_RX        -           -          -       -      FSMC_D14       -        -     EVENTOUT
+DS8626 Rev 11
+
+
+
+
+                         PD10    -      -         -           -          -           -             -        USART3_CK        -           -          -       -      FSMC_D15       -        -     EVENTOUT
+
+                         PD11    -      -         -           -          -           -             -        USART3_CTS       -           -          -       -      FSMC_A16       -        -     EVENTOUT
+
+                         PD12    -      -      TIM4_CH1       -          -           -             -        USART3_RTS       -           -          -       -      FSMC_A17       -        -     EVENTOUT
+
+                         PD13    -      -      TIM4_CH2       -          -           -             -             -           -           -          -       -      FSMC_A18       -        -     EVENTOUT
+
+                         PD14    -      -      TIM4_CH3       -          -           -             -             -           -           -          -       -      FSMC_D0        -        -     EVENTOUT
+
+                         PD15    -      -      TIM4_CH4       -          -           -             -             -           -           -          -       -      FSMC_D1        -        -     EVENTOUT
+
+
+
+
+                                                                                                                                                                                                            STM32F405xx, STM32F407xx
+                                                                                Table 9. Alternate function mapping (continued)
+
+
+
+
+                                                                                                                                                                                                                          STM32F405xx, STM32F407xx
+                                 AF0        AF1         AF2        AF3         AF4         AF5          AF6           AF7          AF8        AF9        AF10        AF11           AF12       AF13
+
+                    Port                                                                SPI1/SPI2/                                           CAN1/2                                                     AF14    AF15
+                                                                 TIM8/9/10                           SPI3/I2Sext   USART1/2/3/   UART4/5/               OTG_FS/                   FSMC/SDIO
+                                 SYS       TIM1/2     TIM3/4/5               I2C1/2/3   I2S2/I2S2e                                          TIM12/13/                 ETH                      DCMI
+                                                                    /11                                 /I2S3        I2S3ext     USART6                 OTG_HS                     /OTG_FS
+                                                                                            xt                                                 14
+
+                         PE0       -          -       TIM4_ETR       -          -           -             -             -           -           -          -            -         FSMC_NBL0   DCMI_D2    -     EVENTOUT
+
+                         PE1       -          -          -           -          -           -             -             -           -           -          -            -         FSMC_NBL1   DCMI_D3    -     EVENTOUT
+
+                                TRACECL
+                         PE2                  -          -           -          -           -             -             -           -           -          -      ETH _MII_TXD3    FSMC_A23      -       -     EVENTOUT
+                                   K
+
+                         PE3    TRACED0       -          -           -          -           -             -             -           -           -          -            -          FSMC_A19      -       -     EVENTOUT
+
+                         PE4    TRACED1       -          -           -          -           -             -             -           -           -          -            -          FSMC_A20   DCMI_D4    -     EVENTOUT
+
+                         PE5    TRACED2       -          -       TIM9_CH1       -           -             -             -           -           -          -            -          FSMC_A21   DCMI_D6    -     EVENTOUT
+
+                         PE6    TRACED3       -          -       TIM9_CH2       -           -             -             -           -           -          -            -          FSMC_A22   DCMI_D7    -     EVENTOUT
+
+                         PE7       -      TIM1_ETR       -           -          -           -             -             -           -           -          -            -          FSMC_D4       -       -     EVENTOUT
+                Port E
+                         PE8       -      TIM1_CH1N      -           -          -           -             -             -           -           -          -            -          FSMC_D5       -       -     EVENTOUT
+
+                         PE9       -      TIM1_CH1       -           -          -           -             -             -           -           -          -            -          FSMC_D6       -       -     EVENTOUT
+DS8626 Rev 11
+
+
+
+
+                         PE10      -      TIM1_CH2N      -           -          -           -             -             -           -           -          -            -          FSMC_D7       -       -     EVENTOUT
+
+                         PE11      -      TIM1_CH2       -           -          -           -             -             -           -           -          -            -          FSMC_D8       -       -     EVENTOUT
+
+                         PE12      -      TIM1_CH3N      -           -          -           -             -             -           -           -          -            -          FSMC_D9       -       -     EVENTOUT
+
+                         PE13      -      TIM1_CH3       -           -          -           -             -             -           -           -          -            -         FSMC_D10       -       -     EVENTOUT
+
+                         PE14      -      TIM1_CH4       -           -          -           -             -             -           -           -          -            -          FSMC_D11      -       -     EVENTOUT
+
+                         PE15      -      TIM1_BKIN      -           -          -           -             -             -           -           -          -            -         FSMC_D12       -       -     EVENTOUT
+
+
+
+
+                                                                                                                                                                                                                          Pinouts and pin description
+67/205
+                                                                         Table 9. Alternate function mapping (continued)
+68/205
+
+
+
+
+                                                                                                                                                                                                            Pinouts and pin description
+                                AF0    AF1       AF2        AF3         AF4         AF5          AF6           AF7          AF8        AF9        AF10     AF11     AF12        AF13
+
+                    Port                                                         SPI1/SPI2/                                           CAN1/2                                              AF14    AF15
+                                                          TIM8/9/10                           SPI3/I2Sext   USART1/2/3/   UART4/5/               OTG_FS/          FSMC/SDIO
+                                SYS   TIM1/2   TIM3/4/5               I2C1/2/3   I2S2/I2S2e                                          TIM12/13/             ETH                  DCMI
+                                                             /11                                 /I2S3        I2S3ext     USART6                 OTG_HS            /OTG_FS
+                                                                                     xt                                                 14
+
+                         PF0     -      -         -           -       I2C2_SDA       -             -             -           -           -          -       -      FSMC_A0        -        -     EVENTOUT
+
+                         PF1     -      -         -           -       I2C2_SCL       -             -             -           -           -          -       -      FSMC_A1        -        -     EVENTOUT
+
+                                                                       I2C2_
+                         PF2     -      -         -           -                      -             -             -           -           -          -       -      FSMC_A2        -        -     EVENTOUT
+                                                                       SMBA
+
+                         PF3     -      -         -           -          -           -             -             -           -           -          -       -      FSMC_A3        -        -     EVENTOUT
+
+                         PF4     -      -         -           -          -           -             -             -           -           -          -       -      FSMC_A4        -        -     EVENTOUT
+
+                         PF5     -      -         -           -          -           -             -             -           -           -          -       -      FSMC_A5        -        -     EVENTOUT
+
+                         PF6     -      -         -       TIM10_CH1      -           -             -             -           -           -          -       -     FSMC_NIORD      -        -     EVENTOUT
+
+                         PF7     -      -         -       TIM11_CH1      -           -             -             -           -           -          -       -     FSMC_NREG       -        -     EVENTOUT
+                Port F
+                                                                                                                                                                    FSMC_
+                         PF8     -      -         -           -          -           -             -             -           -       TIM13_CH1      -       -                     -        -     EVENTOUT
+                                                                                                                                                                    NIOWR
+
+                         PF9     -      -         -           -          -           -             -             -           -       TIM14_CH1      -       -      FSMC_CD        -        -     EVENTOUT
+DS8626 Rev 11
+
+
+
+
+                         PF10    -      -         -           -          -           -             -             -           -           -          -       -     FSMC_INTR       -        -     EVENTOUT
+
+                         PF11    -      -         -           -          -           -             -             -           -           -          -       -                  DCMI_D12    -     EVENTOUT
+
+                         PF12    -      -         -           -          -           -             -             -           -           -          -       -      FSMC_A6        -        -     EVENTOUT
+
+                         PF13    -      -         -           -          -           -             -             -           -           -          -       -      FSMC_A7        -        -     EVENTOUT
+
+                         PF14    -      -         -           -          -           -             -             -           -           -          -       -      FSMC_A8        -        -     EVENTOUT
+
+                         PF15    -      -         -           -          -           -             -             -           -           -          -       -      FSMC_A9        -        -     EVENTOUT
+
+
+
+
+                                                                                                                                                                                                            STM32F405xx, STM32F407xx
+                                                                         Table 9. Alternate function mapping (continued)
+
+
+
+
+                                                                                                                                                                                                                       STM32F405xx, STM32F407xx
+                                AF0    AF1       AF2        AF3         AF4         AF5          AF6           AF7          AF8         AF9        AF10         AF11           AF12        AF13
+
+                    Port                                                         SPI1/SPI2/                                            CAN1/2                                                        AF14    AF15
+                                                          TIM8/9/10                           SPI3/I2Sext   USART1/2/3/   UART4/5/                OTG_FS/                    FSMC/SDIO
+                                SYS   TIM1/2   TIM3/4/5               I2C1/2/3   I2S2/I2S2e                                           TIM12/13/                 ETH                        DCMI
+                                                             /11                                 /I2S3        I2S3ext     USART6                  OTG_HS                      /OTG_FS
+                                                                                     xt                                                  14
+
+                         PG0     -      -         -           -          -           -             -             -            -           -          -            -           FSMC_A10       -        -     EVENTOUT
+
+                         PG1     -      -         -           -          -           -             -             -            -           -          -            -           FSMC_A11       -        -     EVENTOUT
+
+                         PG2     -      -         -           -          -           -             -             -            -           -          -            -           FSMC_A12       -        -     EVENTOUT
+
+                         PG3     -      -         -           -          -           -             -             -            -           -          -            -           FSMC_A13       -        -     EVENTOUT
+
+                         PG4     -      -         -           -          -           -             -             -            -           -          -            -           FSMC_A14       -        -     EVENTOUT
+
+                         PG5     -      -         -           -          -           -             -             -            -           -          -            -           FSMC_A15       -        -     EVENTOUT
+
+                         PG6     -      -         -           -          -           -             -             -            -           -          -            -          FSMC_INT2       -        -     EVENTOUT
+
+                         PG7     -      -         -           -          -           -             -             -        USART6_CK       -          -            -          FSMC_INT3       -        -     EVENTOUT
+
+                                                                                                                           USART6_
+                         PG8     -      -         -           -          -           -             -             -                        -          -      ETH _PPS_OUT         -           -        -     EVENTOUT
+                                                                                                                             RTS
+
+                                                                                                                                                                             FSMC_NE2/
+                Port G   PG9     -      -         -           -          -           -             -             -        USART6_RX       -          -            -                          -        -     EVENTOUT
+                                                                                                                                                                             FSMC_NCE3
+DS8626 Rev 11
+
+
+
+
+                                                                                                                                                                               FSMC_
+                         PG10    -      -         -           -          -           -             -             -            -           -          -            -           NCE4_1/        -        -     EVENTOUT
+                                                                                                                                                                             FSMC_NE3
+
+                                                                                                                                                            ETH _MII_TX_EN
+                                                                                                                                                                             FSMC_NCE4_
+                         PG11    -      -         -           -          -           -             -             -            -           -          -        ETH _RMII_                     -        -     EVENTOUT
+                                                                                                                                                                                 2
+                                                                                                                                                                TX_EN
+
+                                                                                                                           USART6_
+                         PG12    -      -         -           -          -           -             -             -                        -          -            -          FSMC_NE4        -        -     EVENTOUT
+                                                                                                                             RTS
+
+                                                                                                                                                             ETH _MII_TXD0
+                         PG13    -      -         -           -          -           -             -             -        UART6_CTS       -          -                        FSMC_A24       -        -     EVENTOUT
+                                                                                                                                                            ETH _RMII_TXD0
+
+                                                                                                                                                             ETH _MII_TXD1
+                         PG14    -      -         -           -          -           -             -             -        USART6_TX       -          -                        FSMC_A25       -        -     EVENTOUT
+                                                                                                                                                            ETH _RMII_TXD1
+
+                                                                                                                           USART6_
+                         PG15    -      -         -           -          -           -             -             -                        -          -            -              -        DCMI_D13    -     EVENTOUT
+                                                                                                                             CTS
+
+
+
+
+                                                                                                                                                                                                                       Pinouts and pin description
+69/205
+                                                                         Table 9. Alternate function mapping (continued)
+70/205
+
+
+
+
+                                                                                                                                                                                                                         Pinouts and pin description
+                                AF0    AF1       AF2        AF3         AF4         AF5          AF6           AF7          AF8        AF9          AF10           AF11           AF12       AF13
+
+                     Port                                                        SPI1/SPI2/                                           CAN1/2                                                           AF14    AF15
+                                                          TIM8/9/10                           SPI3/I2Sext   USART1/2/3/   UART4/5/                OTG_FS/                       FSMC/SDIO
+                                SYS   TIM1/2   TIM3/4/5               I2C1/2/3   I2S2/I2S2e                                          TIM12/13/                      ETH                      DCMI
+                                                             /11                                 /I2S3        I2S3ext     USART6                  OTG_HS                         /OTG_FS
+                                                                                     xt                                                 14
+
+                         PH0     -      -         -           -          -           -             -             -           -           -            -               -             -          -        -     EVENTOUT
+
+                         PH1     -      -         -           -          -           -             -             -           -           -            -               -             -          -        -     EVENTOUT
+
+                         PH2     -      -         -           -          -           -             -             -           -           -            -         ETH _MII_CRS        -          -        -     EVENTOUT
+
+                         PH3     -      -         -           -          -           -             -             -           -           -            -         ETH _MII_COL        -          -        -     EVENTOUT
+
+                                                                                                                                                 OTG_HS_ULPI_
+                         PH4     -      -         -           -       I2C2_SCL       -             -             -           -           -                            -             -          -        -     EVENTOUT
+                                                                                                                                                     NXT
+
+                         PH5     -      -         -           -       I2C2_SDA       -             -             -           -           -            -               -             -          -        -     EVENTOUT
+
+                                                                       I2C2_
+                         PH6     -      -         -           -                      -             -             -           -       TIM12_CH1        -         ETH _MII_RXD2       -          -        -     EVENTOUT
+                                                                       SMBA
+
+                         PH7     -      -         -           -       I2C3_SCL       -             -             -           -           -            -         ETH _MII_RXD3       -          -        -     EVENTOUT
+                Port H
+                                                                                                                                                                                             DCMI_
+                         PH8     -      -         -           -       I2C3_SDA       -             -             -           -           -            -               -             -                   -     EVENTOUT
+                                                                                                                                                                                             HSYNC
+DS8626 Rev 11
+
+
+
+
+                                                                       I2C3_
+                         PH9     -      -         -           -                      -             -             -           -       TIM12_CH2        -               -             -       DCMI_D0     -     EVENTOUT
+                                                                       SMBA
+
+                         PH10    -      -      TIM5_CH1       -          -           -             -             -           -           -            -               -             -       DCMI_D1     -     EVENTOUT
+
+                         PH11    -      -      TIM5_CH2       -          -           -             -             -           -           -            -               -             -       DCMI_D2     -     EVENTOUT
+
+                         PH12    -      -      TIM5_CH3       -          -           -             -             -           -           -            -               -             -       DCMI_D3     -     EVENTOUT
+
+                         PH13    -      -         -       TIM8_CH1N      -           -             -             -           -       CAN1_TX          -               -             -          -        -     EVENTOUT
+
+                         PH14    -      -         -       TIM8_CH2N      -           -             -             -           -           -            -               -             -       DCMI_D4     -     EVENTOUT
+
+                         PH15    -      -         -       TIM8_CH3N      -           -             -             -           -           -            -               -             -       DCMI_D11    -     EVENTOUT
+
+
+
+
+                                                                                                                                                                                                                         STM32F405xx, STM32F407xx
+                                                                           Table 9. Alternate function mapping (continued)
+
+
+
+
+                                                                                                                                                                                                                            STM32F405xx, STM32F407xx
+                                  AF0    AF1       AF2        AF3         AF4         AF5          AF6           AF7          AF8        AF9          AF10            AF11           AF12       AF13
+
+                     Port                                                          SPI1/SPI2/                                           CAN1/2                                                            AF14    AF15
+                                                            TIM8/9/10                           SPI3/I2Sext   USART1/2/3/   UART4/5/                OTG_FS/                        FSMC/SDIO
+                                  SYS   TIM1/2   TIM3/4/5               I2C1/2/3   I2S2/I2S2e                                          TIM12/13/                      ETH                       DCMI
+                                                               /11                                 /I2S3        I2S3ext     USART6                  OTG_HS                          /OTG_FS
+                                                                                       xt                                                 14
+
+                                                                                   SPI2_NSS
+                            PI0    -      -      TIM5_CH4       -          -                         -             -           -           -            -               -              -       DCMI_D13    -     EVENTOUT
+                                                                                   I2S2_WS
+
+                                                                                   SPI2_SCK
+                            PI1    -      -         -           -          -                         -             -           -           -            -               -              -       DCMI_D8     -     EVENTOUT
+                                                                                    I2S2_CK
+
+                            PI2    -      -         -       TIM8_CH4       -       SPI2_MISO    I2S2ext_SD         -           -           -            -               -              -       DCMI_D9     -     EVENTOUT
+
+                                                                                   SPI2_MOSI
+                            PI3    -      -         -       TIM8_ETR       -                         -             -           -           -            -               -              -       DCMI_D10    -     EVENTOUT
+                                                                                    I2S2_SD
+
+                            PI4    -      -         -       TIM8_BKIN      -           -             -             -           -           -            -               -              -       DCMI_D5     -     EVENTOUT
+
+                                                                                                                                                                                                DCMI_
+                Port I      PI5    -      -         -       TIM8_CH1       -           -             -             -           -           -            -               -              -                   -     EVENTOUT
+                                                                                                                                                                                                VSYNC
+
+                            PI6    -      -         -       TIM8_CH2       -           -             -             -           -           -            -               -              -       DCMI_D6     -     EVENTOUT
+
+                            PI7    -      -         -       TIM8_CH3       -           -             -             -           -           -            -               -              -       DCMI_D7     -     EVENTOUT
+
+                            PI8    -      -         -           -          -           -             -             -           -           -            -               -              -          -        -        -
+DS8626 Rev 11
+
+
+
+
+                            PI9    -      -         -           -          -           -             -             -           -       CAN1_RX          -               -              -          -        -     EVENTOUT
+
+                         PI10      -      -         -           -          -           -             -             -           -           -            -         ETH _MII_RX_ER       -          -        -     EVENTOUT
+
+                                                                                                                                                   OTG_HS_ULPI_
+                         PI11      -      -         -           -          -           -             -             -           -           -                            -              -          -        -     EVENTOUT
+                                                                                                                                                       DIR
+
+
+
+
+                                                                                                                                                                                                                            Pinouts and pin description
+71/205
+

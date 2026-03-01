@@ -1,0 +1,141 @@
+Keyword: SPI
+Occurrences: 137
+================================================================================
+
+Page    1: – Internal 16 MHz factory-trimmed RC (1%                       – Up to 3 SPIs (42 Mbits/s), 2 with muxed
+Page    3: 3.0.24      Serial peripheral interface (SPI) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 36
+Page    8: Table 55.   SPI dynamic characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 123
+Page   10: Figure 39.   SPI timing diagram - slave mode and CPHA = 0 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 125
+Page   11: Figure 40.   SPI timing diagram - slave mode and CPHA = 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 125
+Page   11: Figure 41.   SPI timing diagram - master mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 126
+Page   14: •   Three SPIs, two I2Ss full duplex. To achieve audio class accuracy, the I2S peripherals
+Page   16: SPI / I2S                                                                      3/2 (full duplex)(2)
+Page   16: 2. The SPI2 and SPI3 interfaces give the flexibility to work in an exclusive way in either the SPI mode or the I2S audio mode.
+Page   20: SCK, NSS as AF                       SPI1
+Page   23: •      SPI and I2S
+Page   35: and RTS signals, Smart Card mode (ISO 7816 compliant) and SPI-like communication
+Page   36: USART Standard                  SPI              Smartcard     in Mbit/s     in Mbit/s       APB
+Page   36: 3.0.24     Serial peripheral interface (SPI)
+Page   36: The STM32F40xxx feature up to three SPIs in slave and master modes in full-duplex and
+Page   36: simplex communication modes. SPI1 can communicate at up to 42 Mbits/s, SPI2 and SPI3
+Page   36: supports basic SD Card/MMC modes. All SPIs can be served by the DMA controller.
+Page   36: The SPI interface can be configured to operate in TI mode for communications in master
+Page   36: Two standard I2S interfaces (multiplexed with SPI2 and SPI3) are available. They can be
+Page   49: SPI2_MISO /
+Page   50: SPI2_MOSI / I2S2_SD /
+Page   51: SPI1_NSS / SPI3_NSS /
+Page   51: SPI1_SCK/
+Page   51: SPI1_MISO /
+Page   51: SPI1_MOSI/ TIM8_CH1N /
+Page   53: SPI2_SCK / I2S2_CK /
+Page   54: SPI2_NSS / I2S2_WS /
+Page   54: SPI2_SCK / I2S2_CK /
+Page   54: SPI2_MISO/ TIM1_CH2N /
+Page   54: SPI2_MOSI / I2S2_SD/
+Page   56: TIM5_CH4 / SPI2_NSS /
+Page   56: SPI2_SCK / I2S2_CK /
+Page   57: TIM8_CH4 /SPI2_MISO /
+Page   57: TIM8_ETR / SPI2_MOSI /
+Page   57: JTDI/ SPI3_NSS/
+Page   57: (JTDI)                                               / SPI1_NSS / EVENTOUT
+Page   57: SPI3_SCK / I2S3_CK/
+Page   57: UART4_RX/ SPI3_MISO /
+Page   57: DCMI_D9 / SPI3_MOSI
+Page   59: SPI3_SCK / I2S3_CK /
+Page   59: TIM2_CH2 / SPI1_SCK/
+Page   59: NJTRST/ SPI3_MISO /
+Page   59: 56       A6         90 134              A9         162                         I/O         FT                 -      TIM3_CH1 / SPI1_MISO /            -
+Page   59: / SPI1_MOSI/ SPI3_MOSI /
+Page   59: SPI2_NSS/ I2S2_WS /
+Page   63: Port                                                                SPI1/SPI2/                                           CAN1/2
+Page   63: TIM8/9/10                           SPI3/I2Sext   USART1/2/3/   UART4/5/                OTG_FS/
+Page   63: SPI3_NSS
+Page   63: PA4      -          -           -           -          -       SPI1_NSS                   USART2_CK        -           -            -                -
+Page   63: PA5      -                      -       TIM8_CH1N      -       SPI1_SCK          -             -           -           -                             -
+Page   63: PA6      -      TIM1_BKIN   TIM3_CH1    TIM8_BKIN      -       SPI1_MISO         -             -           -       TIM13_CH1        -                -
+Page   63: PA7      -      TIM1_CH1N   TIM3_CH2    TIM8_CH1N      -       SPI1_MOSI         -             -           -       TIM14_CH1        -            ETH_
+Page   63: TIM 2_CH1                                                    SPI3_NSS/
+Page   63: PA15    JTDI                    -           -          -       SPI1_NSS                        -           -           -            -                -
+Page   64: Port                                                               SPI1/SPI2/                                           CAN1/2
+Page   64: TIM8/9/10                           SPI3/I2Sext   USART1/2/3/   UART4/5/                OTG_FS/
+Page   64: SPI3_SCK
+Page   64: PB3    TRACES   TIM2_CH2       -           -          -       SPI1_SCK                        -           -           -            -                -
+Page   64: PB4    NJTRST       -       TIM3_CH1                  -       SPI1_MISO     SPI3_MISO     I2S3ext_SD      -           -            -                -
+Page   64: I2C1_SMB                 SPI3_MOSI                                         OTG_HS_ULPI_
+Page   64: PB5      -          -       TIM3_CH2                          SPI1_MOSI                       -           -       CAN2_RX                    ETH _PP
+Page   64: SPI2_NSS
+Page   64: SPI2_SCK                                                        OTG_HS_ULPI_
+Page   64: I2C2_     SPI2_NSS                                                        OTG_HS_ULPI_    ETH _MI
+Page   64: SPI2_SCK                                                        OTG_HS_ULPI_    ETH _MI
+Page   64: PB14     -      TIM1_CH2N      -       TIM8_CH2N      -       SPI2_MISO    I2S2ext_SD    USART3_RTS       -       TIM12_CH1        -                -
+Page   64: RTC_                                                   SPI2_MOSI
+Page   65: Port                                                          SPI1/SPI2/                                            CAN1/2
+Page   65: TIM8/9/10                           SPI3/I2Sext   USART1/2/3/   UART4/5/                 OTG_FS/
+Page   65: PC2     -       -         -           -          -       SPI2_MISO    I2S2ext_SD         -            -           -                      ETH _MI
+Page   65: SPI2_MOSI                                                        OTG_HS_ULPI_        ET
+Page   65: SPI3_SCK/
+Page   65: PC11    -       -         -           -          -       I2S3ext_SD   SPI3_MISO/    USART3_RX     UART4_RX        -            -                -
+Page   65: SPI3_MOSI
+Page   66: Port                                                         SPI1/SPI2/                                           CAN1/2
+Page   66: TIM8/9/10                           SPI3/I2Sext   USART1/2/3/   UART4/5/               OTG_FS/
+Page   67: Port                                                                SPI1/SPI2/                                           CAN1/2
+Page   67: TIM8/9/10                           SPI3/I2Sext   USART1/2/3/   UART4/5/               OTG_FS/
+Page   68: Port                                                         SPI1/SPI2/                                           CAN1/2
+Page   68: TIM8/9/10                           SPI3/I2Sext   USART1/2/3/   UART4/5/               OTG_FS/
+Page   69: Port                                                         SPI1/SPI2/                                            CAN1/2
+Page   69: TIM8/9/10                           SPI3/I2Sext   USART1/2/3/   UART4/5/                OTG_FS/
+Page   70: Port                                                        SPI1/SPI2/                                           CAN1/2
+Page   70: TIM8/9/10                           SPI3/I2Sext   USART1/2/3/   UART4/5/                OTG_FS/
+Page   71: Port                                                          SPI1/SPI2/                                           CAN1/2
+Page   71: TIM8/9/10                           SPI3/I2Sext   USART1/2/3/   UART4/5/                OTG_FS/
+Page   71: SPI2_NSS
+Page   71: SPI2_SCK
+Page   71: PI2    -      -         -       TIM8_CH4       -       SPI2_MISO    I2S2ext_SD         -           -           -            -                -
+Page   71: SPI2_MOSI
+Page   75: 0x4001 3000 - 0x4001 33FF   SPI1
+Page   76: APB1         0x4000 3C00 - 0x4000 3FFF   SPI3 / I2S3
+Page   76: 0x4000 3800 - 0x4000 3BFF   SPI2 / I2S2
+Page   98: SPI2               2.43                   2.22
+Page   98: SPI3               2.43                   2.22
+Page   99: SPI1                      1.32                    1.39
+Page   99: 3. To enable an I2S peripheral, first set the I2SMOD bit and then the I2SE bit in the SPI_I2SCFGR register.
+Page  122: Maximum pulse width of spikes
+Page  122: 2. Spikes with widths below tAF(min) are filtered.
+Page  122: 3. Spikes with widths above tAF(max) are not filtered
+Page  123: SPI interface characteristics
+Page  123: Unless otherwise specified, the parameters given in Table 55 for SPI are derived from tests
+Page  123: Table 55. SPI dynamic characteristics(1)
+Page  123: Master mode, SPI1,
+Page  123: Slave mode, SPI1,
+Page  123: SPI clock frequency                                                                        MHz
+Page  123: Master mode, SPI1/2/3,
+Page  123: Slave mode, SPI1/2/3,
+Page  123: Duty cycle of SPI clock
+Page  124: Table 55. SPI dynamic characteristics(1) (continued)
+Page  124: Master mode, SPI presc = 2,
+Page  124: Master mode, SPI presc = 2,
+Page  124: tsu(NSS)       NSS setup time                   Slave mode, SPI presc = 2               4 x TPCLK
+Page  124: th(NSS)        NSS hold time                    Slave mode, SPI presc = 2               2 x TPCLK
+Page  124: ta(SO)(2)      Data output access time          Slave mode, SPI presc = 2                   0           -     4 x TPCLK
+Page  124: Slave mode, SPI1,
+Page  124: Slave mode, SPI1/2/3                                                         ns
+Page  124: SPI1, 2.7V < VDD < 3.6V
+Page  124: SPI2/3, 2.7V < VDD < 3.6V
+Page  124: SPI1, 1.7V < VDD < 3.6V
+Page  124: SPI2/3, 1.7V < VDD < 3.6V
+Page  124: SPI1, 2.7V < VDD < 3.6V
+Page  124: SPI1/2/3, 1.7V < VDD < 3.6V
+Page  125: Figure 39. SPI timing diagram - slave mode and CPHA = 0
+Page  125: Figure 40. SPI timing diagram - slave mode and CPHA = 1
+Page  126: Figure 41. SPI timing diagram - master mode
+Page  195: Added SDIO, added notes related to FSMC and SPI/I2S in Table 3:
+Page  197: Updated SPI throughput on front page and Section 3.0.24: Serial
+Page  197: peripheral interface (SPI)
+Page  197: Updated Table 57: SPI dynamic characteristics
+Page  199: Updated Section : SPI interface characteristics included Table 57.
+Page  202: Updated Figure 39: SPI timing diagram - slave mode and CPHA = 0.
+Page  202: Updated th(NSS) in Figure 39: SPI timing diagram - slave mode and
+Page  202: CPHA = 0 and Figure 40: SPI timing diagram - slave mode and CPHA
+Page  204: 08-Nov-2024     10       – Figure 39: SPI timing diagram - slave mode and CPHA = 0,
+Page  204: Figure 40: SPI timing diagram - slave mode and CPHA = 1, and
+Page  204: Figure 41: SPI timing diagram - master mode

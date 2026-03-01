@@ -1,0 +1,96 @@
+Keyword: USB
+Occurrences: 92
+================================================================================
+
+Page    1: Arm® Cortex®-M4 32b MCU+FPU, 210DMIPS, up to 1MB flash/192+4KB RAM, USB
+Page    1: registers + optional 4 KB backup SRAM                        – USB 2.0 full-speed device/host/OTG
+Page    1: channels and 7.2 MSPS in triple interleaved                    – USB 2.0 high-speed/full-speed
+Page    5: A.1     USB OTG full speed (FS) interface solutions . . . . . . . . . . . . . . . . . . . . . 186
+Page    5: A.2     USB OTG high speed (HS) interface solutions . . . . . . . . . . . . . . . . . . . . 188
+Page    8: Table 57.   USB OTG FS startup time . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 129
+Page    8: Table 58.   USB OTG FS DC electrical characteristics. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 129
+Page    8: Table 59.   USB OTG FS electrical characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 130
+Page    8: Table 60.   USB HS DC electrical characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 130
+Page    8: Table 61.   USB HS clock timing parameters . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 130
+Page   11: Figure 44.   USB OTG FS timings: definition of data signal rise and fall time . . . . . . . . . . . . . . . . . . . 130
+Page   11: Figure 85.   USB controller configured as peripheral-only and used
+Page   12: Figure 86.   USB controller configured as host-only and used in full speed mode. . . . . . . . . . . . . . . . 186
+Page   12: Figure 87.   USB controller configured in dual mode and used in full speed mode . . . . . . . . . . . . . . . 187
+Page   12: Figure 88.   USB controller configured as peripheral, host, or dual-mode
+Page   14: •   A USB OTG full speed and a USB OTG high speed with full-speed capability (with the
+Page   16: USB
+Page   16: USB
+Page   20: USB
+Page   20: ID, VBUS, SOF                                                                                                                                                                                               USB
+Page   22: The 32-bit multi-AHB bus matrix interconnects all the masters (CPU, DMAs, Ethernet, USB
+Page   23: 64-Kbyte               ARM                 GP                     GP             MAC           USB OTG
+Page   23: USB_HS_M
+Page   25: using USART1 (PA9/PA10), USART3 (PC10/PC11 or PB10/PB11), CAN2 (PB5/PB13), USB
+Page   31: tamper / time stamp events, the USB OTG FS/HS wakeup or the Ethernet wakeup).
+Page   37: performance, while using USB peripherals.
+Page   37: disabling the main PLL (PLL) used for CPU, USB and Ethernet interfaces.
+Page   38: The STM32F405xx and STM32F407xx embed an USB OTG full-speed device/host/OTG
+Page   38: peripheral with integrated transceivers. The USB OTG FS peripheral is compliant with the
+Page   38: USB 2.0 specification and with the OTG 1.0 specification. It has software-configurable
+Page   38: endpoint setting and supports suspend/resume. The USB OTG full-speed controller
+Page   39: The STM32F405xx and STM32F407xx devices embed a USB OTG high-speed (up to
+Page   39: 480 Mb/s) device/host/OTG peripheral. The USB OTG HS supports both full-speed and
+Page   39: the USB OTG HS in HS mode, an external PHY device connected to the ULPI is required.
+Page   39: The USB OTG HS peripheral is compliant with the USB 2.0 specification and with the OTG
+Page   39: suspend/resume. The USB OTG full-speed controller requires a dedicated 48 MHz clock
+Page   39: •    Internal USB DMA
+Page   41: analyser (TPA) device. The TPA is connected to a host computer using USB, Ethernet, or
+Page   73: 0x5000 0000 - 0x5003 FFFF    USB OTG FS
+Page   74: 0x4004 0000 - 0x4007 FFFF   USB OTG HS
+Page   82: 5. The voltage range for OTG USB FS can drop down to 2.7 V. However it is degraded between 2.7 and 3 V.
+Page  129: USB OTG FS characteristics
+Page  129: This interface is present in both the USB OTG HS and USB OTG FS controllers.
+Page  129: Table 57. USB OTG FS startup time
+Page  129: tSTARTUP(1)               USB OTG FS transceiver startup time                    1                  µs
+Page  129: Table 58. USB OTG FS DC electrical characteristics
+Page  129: USB OTG FS operating
+Page  129: I(USB_FS_DP/DM,
+Page  129: Input                                                USB_HS_DP/DM)
+Page  129: (USB_FS_DP/DM,                                                17     21     24
+Page  129: USB_HS_DP/DM)
+Page  129: PA12, PB15 (USB_FS_DP,
+Page  129: USB_HS_DP)
+Page  129: 2. The STM32F405xx and STM32F407xx USB OTG FS functionality is ensured down to 2.7 V but not the full
+Page  129: USB OTG FS electrical characteristics which are degraded in the 2.7-to-3.0 V VDD voltage range.
+Page  129: 4. RL is the load connected on the USB OTG FS drivers
+Page  130: Figure 44. USB OTG FS timings: definition of data signal rise and fall time
+Page  130: Table 59. USB OTG FS electrical characteristics(1)
+Page  130: 2. Measured from 10% to 90% of the data signal. For more detailed informations, please refer to USB
+Page  130: USB HS characteristics
+Page  130: Table 60. USB HS DC electrical characteristics
+Page  130: Input level          VDD        USB OTG HS operating voltage                     2.7              3.6        V
+Page  130: Table 61. USB HS clock timing parameters(1)
+Page  130: USB HS interface
+Page  131: Table 61. USB HS clock timing parameters(1)
+Page  186: A.1        USB OTG full speed (FS) interface solutions
+Page  186: Figure 85. USB controller configured as peripheral-only and used
+Page  186: USB Std-B connector
+Page  186: Figure 86. USB controller configured as host-only and used in full speed mode
+Page  186: USB Std-A connector
+Page  187: Figure 87. USB controller configured in dual mode and used in full speed mode
+Page  187: USBmicro-AB connector
+Page  188: A.2        USB OTG high speed (HS) interface solutions
+Page  188: Figure 88. USB controller configured as peripheral, host, or dual-mode
+Page  188: USB HS                          DM
+Page  188: ID(2)      USB
+Page  188: STM32F40xxx with a 24 or 26 MHz crystal when using USB HS. The above figure only shows an example
+Page  192: Updated number of USB OTG HS and FS in Table 3: STM32F405xx
+Page  192: Modified I/Os used to reprogram the Flash memory for CAN2 and USB
+Page  193: Removed USB-IF certification in Section : USB OTG FS
+Page  194: Updated Table 63: USB HS clock timing parameters
+Page  194: 2      Appendix A.1: USB OTG full speed (FS) interface solutions: modified
+Page  194: (continued) Figure 93: USB controller configured as peripheral-only and used in
+Page  194: Full speed mode added Note 2, updated Figure 94: USB controller
+Page  194: 2, changed Figure 95: USB controller configured in dual mode and
+Page  194: Appendix A.2: USB OTG high speed (HS) interface solutions: removed
+Page  194: figures USB OTG HS device-only connection in FS mode and USB
+Page  194: USB controller configured as peripheral, host, or dual-mode and used
+Page  195: Starting from Silicon revision Z, USB OTG full-speed interface is now
+Page  197: Removed PA9/PB13 connection to VBUS in Figure 93: USB controller
+Page  197: 94: USB controller configured as host-only and used in full speed
+Page  203: updated Arm wordmark in the whole document. Removed USB
