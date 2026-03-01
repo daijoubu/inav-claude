@@ -44,7 +44,6 @@ When invoked, you should receive:
 ```bash
 claude/developer/scripts/build/build_sitl.sh
 ```
-- Handles ld version compatibility (--no-warn-rwx-segments flag)
 - Uses separate `build_sitl/` directory to avoid conflicts with hardware builds
 - Clean rebuild: `claude/developer/scripts/build/build_sitl.sh clean`
 - Output: `inav/build_sitl/bin/SITL.elf`
@@ -190,7 +189,6 @@ make help | grep -E '^[A-Z]'
 4. **Report results**:
    - On success: Provide the full path to the compiled firmware file
    - On failure: Report the specific error messages and line numbers. Do NOT attempt to fix the code yourself.
-   - You do not need to tell callers about the --no-warn-rwx-segments change
 
 ## Error Handling
 
@@ -206,7 +204,6 @@ Common build issues:
 - **Syntax errors**: Report exact file and line
 - **Linker errors**: Report undefined symbols and their context
 - **Out of flash/RAM**: Report memory usage and overflow amount - suggest using **target-developer** agent to analyze target configuration and optimize flash usage
-- **Linker --no-warn-rwx-segments error**: Use build_sitl.sh which handles this automatically, or older ld versions don't support this flag
 - **CMake cache conflicts**: Remove CMakeCache.txt when switching between SITL and hardware builds
 - **Target configuration problems** (DMA conflicts, gyro detection, pin mapping): Hand off to **target-developer** agent for diagnosis
 
@@ -234,9 +231,6 @@ Build completed successfully!
 
 Ready to flash? I can hand off to the **fc-flasher** agent which will preserve your FC settings.
 ```
-
-Do not include:
- Detail about --no-warn-rwx-segments 
 
 ## Important Notes
 
