@@ -165,9 +165,26 @@
             margin-top: 15px;
         }
 
+        .port-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 15px;
+            color: #666;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .port-header .port-msp-label {
+            min-width: 80px;
+            text-align: center;
+        }
+
         .port-item {
             background: #1a1a1a;
-            padding: 15px;
+            padding: 12px 15px;
             border-radius: 8px;
             margin-bottom: 10px;
             display: flex;
@@ -181,12 +198,25 @@
 
         .port-name {
             font-weight: bold;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
         }
 
         .port-functions {
             font-size: 12px;
             color: #888;
+        }
+
+        .port-msp-toggle {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            min-width: 80px;
+        }
+
+        .port-msp-toggle-label {
+            font-size: 11px;
+            color: #666;
         }
 
         .switch {
@@ -259,6 +289,66 @@
             color: #4caf50;
         }
 
+        .output-item {
+            background: #1a1a1a;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .output-info {
+            flex: 1;
+        }
+
+        .output-num {
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 3px;
+        }
+
+        .output-label {
+            font-size: 12px;
+        }
+
+        .output-override {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 4px;
+        }
+
+        .output-override-label {
+            font-size: 11px;
+            color: #666;
+        }
+
+        .output-btn-group {
+            display: flex;
+            gap: 4px;
+        }
+
+        .output-btn {
+            flex: none;
+            min-width: auto;
+            padding: 8px 12px;
+            font-size: 13px;
+            background: #333;
+            color: #888;
+            border-radius: 6px;
+        }
+
+        .output-btn.active {
+            background: #0066cc;
+            color: #fff;
+        }
+
+        .output-btn.active.servo {
+            background: #4caf50;
+        }
+
         @media (max-width: 600px) {
             .button-group button {
                 min-width: 100%;
@@ -276,6 +366,7 @@
         <div class="tabs">
             <button class="tab active" onclick="switchTab('motor')">Motors</button>
             <button class="tab" onclick="switchTab('serial')">Serial</button>
+            <button class="tab" onclick="switchTab('outputs')">Outputs</button>
             <button class="tab" onclick="switchTab('adc')">ADC</button>
             <button class="tab" onclick="switchTab('system')">System</button>
         </div>
@@ -297,9 +388,11 @@
         <div class="tab-content" id="serial-tab">
             <div class="info-box">
                 <h3>Tester Commands</h3>
+                <div class="status" id="tester-status" style="margin-bottom:10px;">Tester: not connected</div>
                 <div class="button-group">
                     <button onclick="sendTesterCommand('s')">SBUS Test</button>
                     <button onclick="sendTesterCommand('r')">RX-Only Test</button>
+                    <button onclick="reconnectTester()" style="background:#555;">Reconnect Tester</button>
                 </div>
             </div>
 
@@ -309,9 +402,38 @@
             </div>
 
             <div class="info-box">
-                <h3>Serial Ports (Max 2 MSP)</h3>
+                <h3>Serial Ports — MSP toggle (Max 2)</h3>
                 <div class="port-list" id="port-list">
                     <p style="color: #888;">Loading ports...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Outputs Tab -->
+        <div class="tab-content" id="outputs-tab">
+            <div class="info-box">
+                <h3>PWM Output Assignments</h3>
+                <div id="outputs-summary" style="color:#888;font-size:13px;margin-top:6px;"></div>
+            </div>
+
+            <div class="button-group">
+                <button onclick="loadOutputs()">Refresh</button>
+                <button onclick="configureTestMixer()" style="background:#7b5ea7;">Set Test Mixer</button>
+                <button onclick="saveOutputs()" class="success">Save &amp; Reboot</button>
+            </div>
+
+            <div class="info-box">
+                <p style="color:#666;font-size:12px;margin-bottom:10px;">
+                    <strong>Override</strong> forces motor or servo regardless of mixer preset —
+                    use Auto to let the firmware decide.<br>
+                    <strong>Set Test Mixer</strong> writes motor entries (throttle=roll=pitch=yaw=1)
+                    and servo entries (INPUT_MAX, rates 15%→25%→35%…) so each servo sits at a
+                    different position for visual verification.<br>
+                    <strong>Save &amp; Reboot</strong> persists all pending changes (timer overrides
+                    + mixer entries) to EEPROM.
+                </p>
+                <div id="outputs-list">
+                    <p style="color:#888;">Loading outputs...</p>
                 </div>
             </div>
         </div>
@@ -368,9 +490,10 @@
             statusEl.textContent = data.info;
             if (data.connected) {
                 statusEl.classList.add('connected');
-                // Auto-load serial config when FC connects
                 if (currentTab === 'serial') {
                     loadSerialConfig();
+                } else if (currentTab === 'outputs') {
+                    loadOutputs();
                 }
             } else {
                 statusEl.classList.remove('connected');
@@ -413,6 +536,25 @@
             addLog('⚠ Flight controller disconnected — command was not applied. Reconnect and try again.');
         });
 
+        socket.on('outputs_data', (data) => {
+            displayOutputs(data);
+        });
+
+        socket.on('test_mixer_done', (data) => {
+            addLog(`Test mixer applied: ${data.motors} motor(s), ${data.servos} servo(s)`);
+        });
+
+        socket.on('tester_status', (data) => {
+            const el = document.getElementById('tester-status');
+            if (data.connected) {
+                el.textContent = `Tester: connected (${data.port})`;
+                el.classList.add('connected');
+            } else {
+                el.textContent = 'Tester: not connected';
+                el.classList.remove('connected');
+            }
+        });
+
         // UI functions
         function switchTab(tab) {
             // Update tab buttons
@@ -425,9 +567,10 @@
 
             currentTab = tab;
 
-            // Auto-load serial config when switching to serial tab
             if (tab === 'serial') {
                 loadSerialConfig();
+            } else if (tab === 'outputs') {
+                loadOutputs();
             }
         }
 
@@ -451,14 +594,17 @@
                 item.innerHTML = `
                     <div class="port-info">
                         <div class="port-name">${port.name}</div>
-                        <div class="port-functions">Functions: ${port.functions}</div>
+                        <div class="port-functions">${port.functions !== 'None' ? port.functions : 'No other functions'}</div>
                     </div>
-                    <label class="switch">
-                        <input type="checkbox" ${port.msp_enabled ? 'checked' : ''}
-                               data-port-id="${port.identifier}"
-                               onchange="toggleMSP(${port.identifier}, this.checked)">
-                        <span class="slider"></span>
-                    </label>
+                    <div class="port-msp-toggle">
+                        <span class="port-msp-toggle-label">MSP</span>
+                        <label class="switch">
+                            <input type="checkbox" ${port.msp_enabled ? 'checked' : ''}
+                                   data-port-id="${port.identifier}"
+                                   onchange="toggleMSP(${port.identifier}, this.checked)">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
                 `;
                 listEl.appendChild(item);
             });
@@ -497,6 +643,83 @@
 
         function sendTesterCommand(cmd) {
             socket.emit('send_tester_command', { command: cmd });
+        }
+
+        function reconnectTester() {
+            socket.emit('reconnect_tester');
+        }
+
+        function loadOutputs() {
+            socket.emit('load_outputs');
+        }
+
+        function configureTestMixer() {
+            if (confirm(
+                'Write test mixer entries?\n\n' +
+                '• Motors: throttle=roll=pitch=yaw=1\n' +
+                '• Servos: INPUT_MAX at 15%, 25%, 35%…\n\n' +
+                'You will still need to Save & Reboot to apply to EEPROM.'
+            )) {
+                socket.emit('configure_test_mixer');
+            }
+        }
+
+        function saveOutputs() {
+            if (confirm('Save output configuration to EEPROM and reboot the FC?')) {
+                socket.emit('save_outputs');
+            }
+        }
+
+        function setOutputMode(timerId, mode, clickedBtn) {
+            socket.emit('set_output_mode', { timer_id: timerId, mode: mode });
+            // Update button highlight immediately for responsiveness
+            const group = clickedBtn.closest('.output-btn-group');
+            group.querySelectorAll('.output-btn').forEach(b => b.classList.remove('active', 'servo'));
+            clickedBtn.classList.add('active');
+            if (mode === 2) clickedBtn.classList.add('servo');
+        }
+
+        function displayOutputs(data) {
+            const listEl = document.getElementById('outputs-list');
+            listEl.innerHTML = '';
+
+            const summaryEl = document.getElementById('outputs-summary');
+            summaryEl.textContent = `${data.motorCount} motor(s), ${data.servoCount} servo(s) in current mixer`;
+
+            if (!data.outputs || data.outputs.length === 0) {
+                listEl.innerHTML = '<p style="color:#888;">No outputs found. Is FC connected?</p>';
+                return;
+            }
+
+            const modeLabels = ['Auto', 'Motor', 'Servo', 'LED'];
+
+            data.outputs.forEach((out) => {
+                let typeColor = '#666';
+                if (out.isMotor) typeColor = '#5b9bd5';
+                else if (out.isServo) typeColor = '#4caf50';
+                else if (out.isLED) typeColor = '#ff9800';
+
+                const item = document.createElement('div');
+                item.className = 'output-item';
+                item.innerHTML = `
+                    <div class="output-info">
+                        <div class="output-num">OUT ${out.index + 1}</div>
+                        <div class="output-label" style="color:${typeColor}">${out.label}</div>
+                    </div>
+                    <div class="output-override">
+                        <div class="output-override-label">Override</div>
+                        <div class="output-btn-group">
+                            <button class="output-btn ${out.overrideMode === 0 ? 'active' : ''}"
+                                    onclick="setOutputMode(${out.timerId}, 0, this)">Auto</button>
+                            <button class="output-btn ${out.overrideMode === 1 ? 'active' : ''}"
+                                    onclick="setOutputMode(${out.timerId}, 1, this)">Motor</button>
+                            <button class="output-btn ${out.overrideMode === 2 ? 'active servo' : ''}"
+                                    onclick="setOutputMode(${out.timerId}, 2, this)">Servo</button>
+                        </div>
+                    </div>
+                `;
+                listEl.appendChild(item);
+            });
         }
 
         function startMotorTest() {

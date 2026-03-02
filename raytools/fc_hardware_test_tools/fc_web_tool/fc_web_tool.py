@@ -43,6 +43,13 @@ class MSPCodes:
     MSPV2_INAV_ANALOG = 0x2002
     MSP2_CF_SERIAL_CONFIG = 0x1009
     MSP2_SET_CF_SERIAL_CONFIG = 0x100A
+    MSP2_INAV_TIMER_OUTPUT_MODE = 0x200E
+    MSP2_INAV_SET_TIMER_OUTPUT_MODE = 0x200F
+    MSP2_COMMON_SET_MOTOR_MIXER = 0x1006
+    MSP2_INAV_SERVO_MIXER = 0x2020
+    MSP2_INAV_SET_SERVO_MIXER = 0x2021
+
+INPUT_MAX = 29  # inputSource_e: constant full-scale input, always outputs +1.0
 
 
 class MSPBase(ABC):
@@ -346,6 +353,88 @@ class FlightController:
 
         return motor_count, servo_count
 
+    def get_output_mapping(self) -> List[Dict]:
+        """Get physical PWM output mapping via MSPV2_INAV_OUTPUT_MAPPING_EXT2.
+        Returns one entry per non-input timer output (6 bytes each):
+          timerId (uint8) | usageFlags (uint32 LE) | specialLabels (uint8)
+        timerId == timer2id() == index into timerDefinitions[], same key used by SET_TIMER_OUTPUT_MODE.
+        """
+        response = self._send_command(MSPCodes.MSPV2_INAV_OUTPUT_MAPPING_EXT2)
+        outputs = []
+        if response:
+            for i in range(len(response) // 6):
+                offset = i * 6
+                timer_id, usage_flags, special_labels = struct.unpack_from('<BIB', response, offset)
+                outputs.append({
+                    'index': i,
+                    'timerId': timer_id,
+                    'usageFlags': usage_flags,
+                    'specialLabels': special_labels,
+                    'isMotor': bool(usage_flags & (1 << 2)),   # TIM_USE_MOTOR
+                    'isServo': bool(usage_flags & (1 << 3)),   # TIM_USE_SERVO
+                    'isLED':   bool(usage_flags & (1 << 24)),  # TIM_USE_LED
+                })
+        return outputs
+
+    def get_timer_output_modes(self) -> Dict[int, int]:
+        """Get timer output mode overrides: {timerId: mode}.
+        Mode: 0=AUTO, 1=MOTORS, 2=SERVOS, 3=LED.
+        """
+        response = self._send_command(MSPCodes.MSP2_INAV_TIMER_OUTPUT_MODE)
+        modes = {}
+        if response:
+            for i in range(0, len(response) - 1, 2):
+                timer_id = response[i]
+                mode = response[i + 1]
+                modes[timer_id] = mode
+        return modes
+
+    def set_timer_output_mode(self, timer_id: int, mode: int):
+        """Set output mode override for one timer (0=AUTO, 1=MOTORS, 2=SERVOS, 3=LED)."""
+        data = struct.pack('<BB', timer_id, mode)
+        self._send_command(MSPCodes.MSP2_INAV_SET_TIMER_OUTPUT_MODE, data)
+
+    def get_servo_mixer_rules(self) -> List[Dict]:
+        """Get servo mixer rules via MSP2_INAV_SERVO_MIXER (0x2020).
+        6 bytes per rule: target(u8), input(u8), rate(s16LE), speed(u8), conditionId(s8).
+        """
+        response = self._send_command(MSPCodes.MSP2_INAV_SERVO_MIXER)
+        rules = []
+        if response:
+            for i in range(len(response) // 6):
+                offset = i * 6
+                target, input_src, rate, speed, cond_id = struct.unpack_from('<BBhBb', response, offset)
+                rules.append({
+                    'index': i,
+                    'target': target,
+                    'input': input_src,
+                    'rate': rate,
+                    'speed': speed,
+                    'conditionId': cond_id,
+                })
+        return rules
+
+    def set_servo_mixer_rule(self, rule_index: int, target: int, input_src: int,
+                             rate: int, speed: int = 0, condition_id: int = -1):
+        """Set one servo mixer rule via MSP2_INAV_SET_SERVO_MIXER (0x2021).
+        rate: -1000..+1000 (sign=direction, magnitude=percent×10, so -150 = 15% toward min).
+        input_src: INPUT_MAX=29 gives constant full-scale (+1.0) input.
+        """
+        data = struct.pack('<BBBhBb', rule_index, target, input_src, rate, speed, condition_id)
+        self._send_command(MSPCodes.MSP2_INAV_SET_SERVO_MIXER, data)
+
+    def set_motor_mixer_entry(self, motor_index: int,
+                              throttle: float, roll: float, pitch: float, yaw: float):
+        """Set one motor mixer entry via MSP2_COMMON_SET_MOTOR_MIXER (0x1006).
+        Wire encoding: wire = int((float + 2.0) * 1000), so 1.0 → 3000, 0.0 → 2000.
+        """
+        def to_wire(f: float) -> int:
+            return int(max(0, min(4000, (f + 2.0) * 1000)))
+
+        data = struct.pack('<BHHHH', motor_index,
+                           to_wire(throttle), to_wire(roll), to_wire(pitch), to_wire(yaw))
+        self._send_command(MSPCodes.MSP2_COMMON_SET_MOTOR_MIXER, data)
+
     def enable_pwm_output(self):
         """Enable PWM output feature"""
         response = self._send_command(MSPCodes.MSP_FEATURE)
@@ -382,7 +471,9 @@ fc_manager = {
     'motors_running': False,
     'adc_monitoring': False,
     'port_data': [],
-    'port_original_functions': []
+    'port_original_functions': [],
+    'tester_serial': None,
+    'tester_port': None,
 }
 
 
@@ -396,14 +487,20 @@ def index():
 def handle_connect():
     """Handle client connection"""
     emit('log', {'message': 'Connected to server'})
-    # Auto-connect on client connect
     auto_connect()
+    auto_connect_tester()
 
 
 @socketio.on('reconnect_fc')
 def handle_reconnect():
     """Handle reconnection request"""
     auto_connect()
+
+
+@socketio.on('reconnect_tester')
+def handle_reconnect_tester():
+    """Handle tester reconnection request"""
+    auto_connect_tester()
 
 
 @socketio.on('reboot_fc')
@@ -466,25 +563,23 @@ def handle_shutdown():
 
 @socketio.on('send_tester_command')
 def handle_tester_command(data):
-    """Send a raw command character to the tester Arduino"""
+    """Send a raw command character to the tester Arduino via /dev/ttyUSB*"""
     cmd = data.get('command', '')
     if cmd not in ('r', 's'):
         emit('log', {'message': f'Unknown tester command: {cmd}'})
         return
 
-    if not fc_manager['fc']:
-        emit('log', {'message': 'No serial connection'})
+    if not fc_manager['tester_serial']:
+        emit('log', {'message': 'No tester device connected (/dev/ttyUSB*)'})
         return
 
     try:
         label = 'SBUS' if cmd == 's' else 'RX-Only'
         emit('log', {'message': f'Sending {label} test command...'})
-        for i in range(3):
-            fc_manager['fc'].serial.write(cmd.encode())
-            fc_manager['fc'].serial.write('\n'.encode())
-            fc_manager['fc'].serial.flush()
-            time.sleep(0.2)
-
+        for _ in range(2):
+            fc_manager['tester_serial'].write(f'{cmd}\n'.encode('utf-8'))
+            fc_manager['tester_serial'].flush()
+            time.sleep(0.5)
         emit('log', {'message': f'{label} test command sent'})
     except Exception as e:
         emit('log', {'message': f'Error sending tester command: {e}'})
@@ -769,6 +864,179 @@ def auto_connect():
 
     socketio.emit('log', {'message': 'No flight controller found'})
     socketio.emit('status', {'connected': False, 'info': 'No FC found'})
+
+
+@socketio.on('configure_test_mixer')
+def handle_configure_test_mixer():
+    """Write test motor/servo mixer entries based on current output assignments.
+
+    Motors: throttle=roll=pitch=yaw=1.0 (equal weight on all axes).
+    Servos: INPUT_MAX with rates -150, -250, -350, ... (servo 0=15%, 1=25%, 2=35%, ...)
+            so each servo sits at a progressively different position for visual inspection.
+    """
+    if not fc_manager['fc']:
+        emit('log', {'message': 'No flight controller connected'})
+        return
+
+    try:
+        outputs = fc_manager['fc'].get_output_mapping()
+        modes = fc_manager['fc'].get_timer_output_modes()
+
+        motor_idx = 0
+        servo_idx = 0
+        servo_rule_idx = 0
+
+        for out in outputs:
+            override = modes.get(out['timerId'], 0)
+            # Explicit override takes priority; AUTO falls back to usageFlags
+            if override == 1:
+                is_motor, is_servo = True, False
+            elif override == 2:
+                is_motor, is_servo = False, True
+            else:
+                is_motor = out['isMotor']
+                is_servo = out['isServo']
+
+            if is_motor:
+                fc_manager['fc'].set_motor_mixer_entry(motor_idx, 1.0, 1.0, 1.0, 1.0)
+                emit('log', {'message': f'Motor {motor_idx + 1}: throttle=1 roll=1 pitch=1 yaw=1'})
+                motor_idx += 1
+            elif is_servo:
+                # Each servo gets 10% more deflection: -150(15%), -250(25%), -350(35%)…
+                rate = -(150 + servo_idx * 100)
+                rate_pct = abs(rate) // 10
+                fc_manager['fc'].set_servo_mixer_rule(
+                    servo_rule_idx, servo_idx, INPUT_MAX, rate, speed=0, condition_id=-1)
+                emit('log', {'message': f'Servo {servo_idx + 1}: INPUT_MAX rate={rate} ({rate_pct}%)'})
+                servo_idx += 1
+                servo_rule_idx += 1
+
+        emit('log', {'message': f'Test mixer done: {motor_idx} motor(s), {servo_idx} servo(s). '
+                                 f'Save & Reboot to apply.'})
+        emit('test_mixer_done', {'motors': motor_idx, 'servos': servo_idx})
+    except Exception as e:
+        emit('log', {'message': f'Error configuring test mixer: {e}'})
+
+
+@socketio.on('load_outputs')
+def handle_load_outputs():
+    """Load physical PWM output mapping and current mode overrides"""
+    if not fc_manager['fc']:
+        emit('log', {'message': 'No flight controller connected'})
+        return
+
+    try:
+        outputs = fc_manager['fc'].get_output_mapping()
+        modes = fc_manager['fc'].get_timer_output_modes()
+        motor_count, servo_count = fc_manager['fc'].get_motor_config()
+
+        motor_num = 1
+        servo_num = 1
+        output_list = []
+        for out in outputs:
+            override_mode = modes.get(out['timerId'], 0)
+
+            if out['isLED'] or out['specialLabels'] == 1:
+                label = 'LED Strip'
+            elif out['isMotor']:
+                label = f'Motor {motor_num}'
+                motor_num += 1
+            elif out['isServo']:
+                label = f'Servo {servo_num}'
+                servo_num += 1
+            else:
+                label = 'Unassigned'
+
+            output_list.append({
+                'index': out['index'],
+                'timerId': out['timerId'],
+                'label': label,
+                'isMotor': out['isMotor'],
+                'isServo': out['isServo'],
+                'isLED': out['isLED'],
+                'overrideMode': override_mode,
+            })
+
+        emit('outputs_data', {
+            'outputs': output_list,
+            'motorCount': motor_count,
+            'servoCount': servo_count,
+        })
+        emit('log', {'message': f'Loaded {len(outputs)} outputs ({motor_count} motors, {servo_count} servos)'})
+    except Exception as e:
+        emit('log', {'message': f'Failed to load outputs: {e}'})
+
+
+@socketio.on('set_output_mode')
+def handle_set_output_mode(data):
+    """Set output mode override for one timer"""
+    timer_id = data.get('timer_id')
+    mode = data.get('mode')
+
+    if not fc_manager['fc']:
+        emit('log', {'message': 'No flight controller connected'})
+        return
+
+    mode_names = {0: 'Auto', 1: 'Motor', 2: 'Servo', 3: 'LED'}
+
+    def _do_set():
+        fc_manager['fc'].set_timer_output_mode(timer_id, mode)
+
+    if not _reconnect_and_retry(_do_set):
+        return
+
+    emit('log', {'message': f'Timer {timer_id} → {mode_names.get(mode, mode)}'})
+
+
+@socketio.on('save_outputs')
+def handle_save_outputs():
+    """Save output config to EEPROM and reboot"""
+    if not fc_manager['fc']:
+        emit('log', {'message': 'No flight controller connected'})
+        return
+
+    def _do_save():
+        fc_manager['fc'].save_to_eeprom()
+
+    if not _reconnect_and_retry(_do_save):
+        return
+
+    emit('log', {'message': 'Output configuration saved to EEPROM'})
+    handle_reboot()
+
+
+def auto_connect_tester():
+    """Auto-connect to diagnostic tester device on /dev/ttyUSB*"""
+    if fc_manager['tester_serial']:
+        try:
+            fc_manager['tester_serial'].close()
+        except Exception:
+            pass
+        fc_manager['tester_serial'] = None
+        fc_manager['tester_port'] = None
+
+    ports = sorted(glob.glob('/dev/ttyUSB*'))
+    if not ports:
+        socketio.emit('log', {'message': 'No /dev/ttyUSB* tester found'})
+        socketio.emit('tester_status', {'connected': False})
+        return
+
+    for port in ports:
+        try:
+            ser = serial.Serial(port, baudrate=115200, timeout=3)
+            data = ser.read(64)
+            if data and b'Command' in data:
+                fc_manager['tester_serial'] = ser
+                fc_manager['tester_port'] = port
+                socketio.emit('log', {'message': f'Tester connected on {port}'})
+                socketio.emit('tester_status', {'connected': True, 'port': port})
+                return
+            ser.close()
+        except Exception as e:
+            socketio.emit('log', {'message': f'Tester error on {port}: {e}'})
+
+    socketio.emit('log', {'message': 'No tester device found on /dev/ttyUSB*'})
+    socketio.emit('tester_status', {'connected': False})
 
 
 def disconnect_fc():
