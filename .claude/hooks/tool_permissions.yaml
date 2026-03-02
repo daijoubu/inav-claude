@@ -366,21 +366,21 @@ bash_rules:
       # Pattern: cd ... /inav, /inav2, /inav-configurator, /PrivacyLRS, /mspapi2, /inavwiki, or /OpenTX-Telemetry-Widget
       # This handles cases like: cd /home/.../inav && git branch -b feature
       ORIGINAL_CMD="{ORIGINAL_COMMAND}"
-      if [ -n "$ORIGINAL_CMD" ] && echo "$ORIGINAL_CMD" | grep -qE "cd\\s+[^&|;]*/(inav2|inav|inav-configurator|PrivacyLRS|mspapi2|inavwiki|OpenTX-Telemetry-Widget)(/|$|\\s+)"; then
+      if [ -n "$ORIGINAL_CMD" ] && echo "$ORIGINAL_CMD" | grep -qE "cd\\s+[^&|;]*/(inav2|inav|inav-configurator|PrivacyLRS|mspapi2|inavwiki|OpenTX-Telemetry-Widget|blackbox-tools)(/|$|\\s+)"; then
         # The original command contains a cd into a sub-repo, allow branch creation
         echo "allow"
         exit 0
       fi
 
-      # Check if we're in a sub-repo (contains /inav2/, /inav/, /inav-configurator/, /PrivacyLRS/, /mspapi2/, /inavwiki/, or /OpenTX-Telemetry-Widget/)
-      if echo "$ABS_CWD" | grep -qE "/(inav2|inav|inav-configurator|PrivacyLRS|mspapi2|inavwiki|OpenTX-Telemetry-Widget)(/|$)"; then
+      # Check if we're in a sub-repo (contains /inav2/, /inav/, /inav-configurator/, /PrivacyLRS/, /mspapi2/, /inavwiki/, /OpenTX-Telemetry-Widget/, or /blackbox-tools/)
+      if echo "$ABS_CWD" | grep -qE "/(inav2|inav|inav-configurator|PrivacyLRS|mspapi2|inavwiki|OpenTX-Telemetry-Widget|blackbox-tools)(/|$)"; then
         # We're in a sub-repo, allow branch creation here
         echo "allow"
       else
         # We're in root inavflight/ repo, deny branch creation
         echo "deny"
       fi
-    message: "Branch creation blocked in root inavflight/ repo. Branches should be created in the appropriate project repo instead: inav/, inav2/, inav-configurator/, PrivacyLRS/, mspapi2/, inavwiki/, or OpenTX-Telemetry-Widget/."
+    message: "Branch creation blocked in root inavflight/ repo. Branches should be created in the appropriate project repo instead: inav/, inav2/, inav-configurator/, PrivacyLRS/, mspapi2/, inavwiki/, OpenTX-Telemetry-Widget/, or blackbox-tools/."
 
   - name: "Block git commit with Claude mentions"
     command_pattern: "^git$"
@@ -719,8 +719,26 @@ bash_rules:
     decision: allow
 
   # ===================================================================
+  # Shell Variable Assignments
+  # ===================================================================
+
+  - name: "Allow simple shell variable assignments (PR=..., VAR=..., etc.)"
+    command_pattern: "^[A-Z_][A-Z0-9_]*=.*"
+    argument_pattern: "^(gh|git|curl|node|npm)\\s+.*"
+    category: read
+    decision: allow
+    message: "Shell variable assignment before safe read/utility commands"
+
+  # ===================================================================
   # GitHub CLI Commands
   # ===================================================================
+
+  - name: "Block gh pr review"
+    command_pattern: "^gh$"
+    argument_pattern: "^pr\\s+review.*"
+    category: other
+    decision: deny
+    message: "STOP! The 'gh pr review' command is not allowed. Pull request reviews must be done through the GitHub web interface."
 
   - name: "Block gh pr create targeting master"
     command_pattern: "^gh$"
