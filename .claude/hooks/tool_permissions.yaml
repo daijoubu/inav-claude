@@ -722,7 +722,13 @@ bash_rules:
   # Shell Variable Assignments
   # ===================================================================
 
-  - name: "Allow simple shell variable assignments (PR=..., VAR=..., etc.)"
+  - name: "Allow PR variable assignments"
+    command_pattern: "^PR=.*"
+    category: read
+    decision: allow
+    message: "Shell variable assignment for PR number"
+
+  - name: "Allow simple shell variable assignments (VAR=..., etc.)"
     command_pattern: "^[A-Z_][A-Z0-9_]*=.*"
     argument_pattern: "^(gh|git|curl|node|npm)\\s+.*"
     category: read
