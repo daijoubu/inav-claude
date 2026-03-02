@@ -1,0 +1,112 @@
+Keyword: DSI
+Occurrences: 108
+================================================================================
+
+Page    1: 512+16+4 KB RAM, USB OTG HS/FS, 28 comm. int., LCD, DSI
+Page    1: – MIPI® DSI host controller supporting up to                   – SWD and JTAG interfaces
+Page    4: 3.47   DSI Host (DSIHOST) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 53
+Page    8: Table 53.   DSI-PLL characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 148
+Page    8: Table 54.   DSI regulator characteristics. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 149
+Page   17: MIPI-DSI Host                                                 No                                   Yes                     No       Yes          No
+Page   18: 4. DSI host interface is only available on STM32F769x sales types.
+Page   20: ps                                                                      DSI HOST                                                                                                          bxCAN2
+Page   20: DSI PHY                                    DAC2                                                                    SPDIFRX                            SPDIFRX[3:0] as AF
+Page   20: DSI_DOP/N, DSI_D1P/N
+Page   20: DSI_VCAP, DSI_CKP/N                                                                                  DAC1      DAC2
+Page   20: DSI_VDD12, DSI_VSS, DSI_TE as AF                                                                     as AF     as AF
+Page   30: The DSI (Display Serial Interface) sub-system uses several power supply pins which are
+Page   30: •      VDDDSI is an independent DSI power supply dedicated for DSI Regulator and
+Page   30: •      The VCAPDSI pin is the output of DSI Regulator (1.2V) which must be connected
+Page   30: externally to VDD12DSI.
+Page   30: •      The VDD12DSI pin is used to supply the MIPI D-PHY, and to supply the clock and data
+Page   30: lanes pins. An external capacitor of 2.2 uF must be connected on the VDD12DSI pin.
+Page   30: •      The VSSDSI pin is an isolated supply ground used for DSI sub-system.
+Page   30: •      If the DSI functionality is not used at all, then:
+Page   30: –       The VDDDSI pin must be connected to global VDD.
+Page   30: –       The VCAPDSI pin must be connected externally to VDD12DSI but the external
+Page   30: –       The VSSDSI pin must be grounded.
+Page   53: 3.47     DSI Host (DSIHOST)
+Page   53: The DSI Host is a dedicated peripheral for interfacing with MIPI® DSI compliant displays. It
+Page   53: The DSI Host main features:
+Page   54: •   Maximum resolution is limited by available DSI physical link bandwidth:
+Page   58: LQFP176 without DSI           111
+Page   59: LQFP176 with DSI               111
+Page   59: PF6    24                                                                     109   VSSDSI
+Page   59: PF7    25                                                                     108   DSI_D1N
+Page   59: PF8    26                                                                     107   DSI_D1P
+Page   59: PF9    27                                                                     106   VDD12DSI
+Page   59: PF10     28                                                                     105   DSI_CKN
+Page   59: PH0    29                                                                     104   DSI_CKP
+Page   59: PH1    30                                                                     103   VSSDSI
+Page   59: NRST      31                                                                     102   DSI_D0N
+Page   59: PC0    32                                                                     101   DSI_D0P
+Page   59: PC1    33                                                                     100   VCAPDSI
+Page   59: PC2    34                                                                      99   VDDDSI
+Page   61: H    DSI_D1P   DSI_D1N      DSI_CKN    DSI_CKP   VSSDSI   VCAPDSI             PB12      PG2     PI10      PF3     PF4       PF5
+Page   61: J    DSI_D0P    DSI_D0N VDD12DSI        PD12      PB13     PE10     PB2       PB1       VSS      PA2      PA1     VDD       VSS
+Page   61: VDDDSI                  PD11                 PB10              PF12                                          PH0-      PH1-
+Page   63: VDD     26                                LQFP208 with DSI                   131    PG4
+Page   63: PF8    29                                                                   128    VSSDSI
+Page   63: PF9    30                                                                   127    DSI_D1N
+Page   63: PF10    31                                                                   126    DSI_D1P
+Page   63: PH0    32                                                                   125    VDD12DSI
+Page   63: PH1    33                                                                   124    DSI_CKN
+Page   63: NRST     34                                                                   123    DSI_CKP
+Page   63: PC0    35                                                                   122    VSSDSI
+Page   63: PC1    36                                                                   121    DSI_D0N
+Page   63: PC2    37                                                                   120    DSI_D0P
+Page   63: PC3    38                                                                   119    VCAPDSI
+Page   63: VDD     39                                                                   118    VDDDSI
+Page   65: F   PC15    VSS   PI11   VDD     VDD    VSS    VSS    VSS    VSS    VSS    VDD     DSI_    DSI_   PC9    PA8
+Page   65: G    PH0     PF2   PI13   PI15    VDD    VSS                         VSS VDDUSB VSSDSI VDD12 PC8          PC7
+Page   65: DSI
+Page   65: H   PH1     PF3   PI14   PH4     VDD    VSS                         VSS    VDDDSI DSI_     DSI_   PG8    PC6
+Page   65: J                                                                                  DSI_    DSI_
+Page   65: K    PF7    PF6   PF5    PH2     VDD    VSS    VSS    VSS    VSS    VSS    VDD VCAPDSI PD15       PB13   PD10
+Page   72: -          -         -          -         -       67        P7          NC             -       67        P7         PJ2                              I/O        FT               -      DSI_TE, LCD_R3, EVENTOUT       -
+Page   74: X_EN, DSI_TE, LCD_G5,
+Page   76: -          -         -          -         -         -          -         K1          99        118       H11        VDDDSI                             S             -             -                -                  -
+Page   76: -          -         -          -         -         -          -         H6          100       119       K12        VCAPDSI                            S             -             -                -                  -
+Page   76: -          -         -          -         -         -          -          J3           -         -       G13        VDD12DSI                           S             -             -                -                  -
+Page   76: -          -         -          -         -         -          -          J1         101 120             J12        DSI_D0P                            I/O           -             -                -                  -
+Page   76: -          -         -          -         -         -          -          J2         102 121             J13        DSI_D0N                            I/O           -             -                -                  -
+Page   76: -          -         -          -         -         -          -         H5          103 122             G12        VSSDSI                             S             -             -                -                  -
+Page   76: -          -         -          -         -         -          -         H4          104 123             H12        DSI_CKP                            I/O           -             -                -                  -
+Page   77: -          -         -          -         -         -          -         H3          105 124             H13        DSI_CKN                            I/O           -             -                 -                  -
+Page   77: -          -         -          -         -         -          -            -        106 125                -       VDD12DSI                           S             -             -                 -                  -
+Page   77: -          -         -          -         -         -          -         H1          107 126             F12        DSI_D1P                            I/O           -             -                 -                  -
+Page   77: -          -         -          -         -         -          -         H2          108 127             F13        DSI_D1N                            I/O           -             -                 -                  -
+Page   77: -          -         -          -         -         -          -            -        109 128                -       VSSDSI                             S             -             -                 -                  -
+Page  105: VDDDSI
+Page  105: DSI
+Page  105: VCAPDSI
+Page  105: VDD12DSI
+Page  105: DSI
+Page  105: VSSDSI
+Page  107: VDD, VBAT, VDDUSB, VDDDSI (1) and VDDSDMMC)(2)
+Page  108: 2. All main power (VDD, VDDA, VDDSDMMC, VDDUSB, VDDDSI) and ground (VSS, VSSA) pins must always be connected to the
+Page  109: VDDDSI      DSI system operating                               -                       1.7      -     3.6
+Page  132: DSI                   8.5                 8.4                 8.1
+Page  148: Table 53. DSI-PLL characteristics(1)
+Page  149: Table 53. DSI-PLL characteristics(1) (continued)
+Page  149: Table 54. DSI regulator characteristics(1)
+Page  149: VDD12DSI     1.2 V internal voltage on VDD12DSI                                 -               1.15    1.20   1.30      V
+Page  149: CEXT       External capacitor on VCAPDSI                                     -               1.1      2.2   3.3      μF
+Page  149: IDDDSIREG Regulator power consumption                                           -               100      120   125      µA
+Page  149: DSI system (regulator, PLL and                      (Reg. ON + PLL OFF)
+Page  149: IDDDSI                                                                                                                µA
+Page  149: D-PHY) current consumption on VDDDSI                     Stop State
+Page  149: DSI system current consumption on                   (Reg. ON + PLL OFF)
+Page  149: IDDDSILP                                                                                                               mA
+Page  149: VDDDSI in LP mode communication(2)                  20 MHz escape clock
+Page  149: DSI system (regulator, PLL and                                                         -   11.4   12.5
+Page  149: D-PHY) current consumption on VDDDSI
+Page  149: IDDDSIHS                                                         (Reg. ON + PLL ON)                                    mA
+Page  149: DSI system (regulator, PLL and
+Page  149: D-PHY) current consumption on VDDDSI                                                   -   21.4   23.3
+Page  149: IINRUSH      Inrush current on VDDDSI                       External capacitor load at start       -    60    200      mA
+Page  156: Injected current on BOOT0, DSI_D0P, DSI_D0N, DSI_D1P,
+Page  156: DSI_D1N, DSI_CKP, DSI_CKN pin
+Page  247: LCD-TFT and DSI host, WLCSP with internal regulator OFF
+Page  247: Ethernet, LCD-TFT and DSI host.
+Page  252: Updated Section 3.47: DSI Host (DSIHOST) video mode interface

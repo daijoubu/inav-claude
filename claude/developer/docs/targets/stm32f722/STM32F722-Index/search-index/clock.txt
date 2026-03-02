@@ -1,0 +1,163 @@
+Keyword: clock
+Occurrences: 159
+================================================================================
+
+Page    1: • Clock, reset and supply management                           • Up to 140 I/O ports with interrupt capability
+Page    1: clock
+Page    3: 3.12     Clocks and startup . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+Page    3: 3.17     Real-time clock (RTC), backup SRAM and backup registers . . . . . . . . . . 35
+Page    5: 6.3.9      External clock source characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . 126
+Page    5: 6.3.10     Internal clock source characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . 130
+Page    5: 6.3.12     PLL spread spectrum clock generation (SSCG) characteristics . . . . . 135
+Page    7: Table 38.   High-speed external user clock characteristics. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 126
+Page    7: Table 39.   Low-speed external user clock characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 127
+Page    8: Table 88.   USB HS clock timing parameters . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 170
+Page   10: Figure 37.   High-speed external clock source AC timing diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . 127
+Page   10: Figure 38.   Low-speed external clock source AC timing diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . 128
+Page   11: Figure 43.   PLL output clock waveforms in center spread mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . 136
+Page   11: Figure 44.   PLL output clock waveforms in down spread mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 136
+Page   14: peripherals can be clocked via a dedicated internal audio PLL or via an external clock
+Page   14: OTG_HS) and the SDMMC2 (clock, command and 4-bit data) are available on all the
+Page   16: 5. The SDMMC2 supports a dedicated power rail for clock, command and data 0..4 lines, feature available starting from 144
+Page   21: 1. The timers connected to APB2 are clocked from TIMxCLK up to 216 MHz, while the timers connected to APB1 are clocked
+Page   23: accessed at CPU clock speed with 0 wait states.
+Page   26: pulse width shorter than the Internal APB2 clock period. Up to 140 GPIOs in the
+Page   27: 3.12     Clocks and startup
+Page   27: On reset the 16 MHz internal HSI RC oscillator is selected as the default CPU clock.
+Page   27: can then select as system clock either the RC oscillator or an external 4-26 MHz clock
+Page   27: source. This clock can be monitored for failure. If a failure is detected, the system
+Page   27: generated (if enabled). This clock source is input to a PLL thus allowing to increase the
+Page   27: frequency up to 216 MHz. Similarly, a full interrupt management of the PLL clock entry is
+Page   27: performance to be achieved. In this case, the I2S and SAI master clock can generate all
+Page   27: The PLL1 has as input HSE clock.
+Page   27: •   VBAT = 1.65 to 3.6 V: power supply for RTC, external clock 32 kHz oscillator and
+Page   27: supply (1.8 to 3.6 V) for the SDMMC2 pins (clock, command, and 4-bit data).
+Page   35: 3.17     Real-time clock (RTC), backup SRAM and backup registers
+Page   35: •    On-the-fly correction from 1 to 32767 RTC clock pulses. This can be used to
+Page   35: synchronize it with a master clock.
+Page   35: •    Reference clock detection: a more precise second source clock (50 or 60 Hz) can be
+Page   35: The RTC clock sources can be:
+Page   35: •    the high-speed external clock (HSE) divided by 32
+Page   35: The RTC is functional in VBAT mode and in all low-power modes when it is clocked by the
+Page   35: LSE. When clocked by the LSI, the RTC is not functional in VBAT mode, but is functional in
+Page   36: SRAM and registers. All clocks in the 1.2 V domain are stopped, the PLL, the HSI RC
+Page   37: type             resolution type    factor                                    clock    clock
+Page   38: type                resolution type    factor                                        clock    clock
+Page   38: 1. The maximum timer clock is either 108 or 216 MHz, depending on TIMPRE bit configuration in the RCC_DCKCFGR
+Page   39: The low-power timer has an independent clock and is running also in Stop mode if it is
+Page   39: clocked by LSE, LSI or an external clock. It is able to wakeup the devices from Stop mode.
+Page   39: •   selectable clock source:
+Page   40: •   internal clock source: LSE, LSI, HSI, or APB clock
+Page   40: •   external clock source over LPTIM input (working even with no internal clock source
+Page   40: clocked from an independent 32 kHz internal RC and as it operates independently from the
+Page   40: main clock, it can operate in Stop and Standby modes. It can be used either as a watchdog
+Page   40: can be used as a watchdog to reset the device when a problem occurs. It is clocked from
+Page   40: the main clock. It has an early warning interrupt capability and the counter can be frozen in
+Page   40: •   programmable clock source
+Page   40: –      Optional clock stretching
+Page   41: •    Independent clock: a choice of independent clock sources allowing the I2C
+Page   41: Independent clock                                                  X         X        X
+Page   41: clock tolerance
+Page   41: •    Dual clock domain allowing convenient baud rate programming independent from the
+Page   41: USART clock source is system clock frequency (max is 216 MHz) and oversampling
+Page   42: •    Synchronous mode and clock output for synchronous communications
+Page   42: Dual clock domain                                                 X                      X
+Page   43: I2S interfaces is/are configured in master mode, the master clock can be output to the
+Page   43: In master mode, the master clock can be output to the external DAC/CODEC at 256 times of
+Page   43: the achievement of an error-free I2S sampling clock accuracy without compromising on the
+Page   43: In addition to the audio PLL, a master clock input pin can be used to synchronize the
+Page   44: suspend/resume. The USB OTG controller requires a dedicated 48 MHz clock that is
+Page   45: suspend/resume. The USB OTG controller requires a dedicated 48 MHz clock that is
+Page   45: signals. It can be clocked using the 60 MHz output.
+Page  101: fHCLK    Internal AHB clock frequency                                    drive                 -    180
+Page  101: fPCLK1   Internal APB1 clock frequency
+Page  101: fPCLK2   Internal APB2 clock frequency
+Page  107: system clock is stalled during the internal voltage set-up.
+Page  108: •     The system clock is HCLK, fPCLK1 = fHCLK/4, and fPCLK2 = fHCLK/2.
+Page  108: •     External clock frequency is 25 MHz and PLL is ON when fHCLK is higher than 25 MHz.
+Page  121: •      HCLK is the system clock. fPCLK1 = fHCLK/4, and fPCLK2 = fHCLK/2.
+Page  121: –     with all peripherals clocked off
+Page  121: –     with only one peripheral clocked on
+Page  125: tWUSLEEP(2)                                                 -                        13          13     clock
+Page  126: 6.3.9           External clock source characteristics
+Page  126: High-speed external user clock generated from an external source
+Page  126: external clock signal has to respect the Table 61: I/O static characteristics. However, the
+Page  126: recommended clock input waveform is shown in Figure 37.
+Page  126: external clock source, and under ambient temperature and supply voltage conditions
+Page  126: Table 38. High-speed external user clock characteristics
+Page  126: fHSE_ext     External user clock source frequency(1)                                     1            -      50      MHz
+Page  127: Low-speed external user clock generated from an external source
+Page  127: external clock signal has to respect the Table 61: I/O static characteristics. However, the
+Page  127: recommended clock input waveform is shown in Figure 38.
+Page  127: external clock source, and under ambient temperature and supply voltage conditions
+Page  127: Table 39. Low-speed external user clock characteristics
+Page  127: User External clock source
+Page  127: Figure 37. High-speed external clock source AC timing diagram
+Page  127: clock source                OSC_IN
+Page  128: Figure 38. Low-speed external clock source AC timing diagram
+Page  128: clock source
+Page  128: High-speed external clock generated from a crystal/ceramic resonator
+Page  128: The high-speed external (HSE) clock can be supplied with a 4 to 26 MHz crystal/ceramic
+Page  129: Low-speed external clock generated from a crystal/ceramic resonator
+Page  129: The low-speed external (LSE) clock can be supplied with a 32.768 kHz crystal/ceramic
+Page  130: 6.3.10      Internal clock source characteristics
+Page  132: fPLL_IN      PLL input clock(1)                                                       -               0.95(2)    1           2.10
+Page  132: fPLL_OUT     PLL multiplier output clock                                              -                 24       -           216
+Page  132: fPLL48_OUT   48 MHz PLL multiplier output clock                                       -                  -      48           75
+Page  133: System clock          peak
+Page  133: Main clock output (MCO) for RMII          Cycle to cycle at 50 MHz
+Page  133: Main clock output (MCO) for MII           Cycle to cycle at 25 MHz
+Page  133: 1. Take care of using the appropriate division factor M to obtain the specified PLL input clock values. The M factor is shared
+Page  133: fPLLI2S_IN        PLLI2S input clock(1)                                      -                     0.95(2)         1       2.10
+Page  133: fPLLI2SQ_OUT      PLLI2S multiplier output clock for SAI                     -                        -            -       216
+Page  133: fPLLI2SR_OUT      PLLI2S multiplier output clock for I2S                     -                        -            -       216
+Page  133: Master I2S clock jitter
+Page  133: WS I2S clock jitter                                                                 -           400         -      ps
+Page  134: 1. Take care of using the appropriate division factor M to have the specified PLL input clock values.
+Page  134: fPLLSAI_IN        PLLSAI input clock(1)                                  -                 0.95(2)        1         2.10
+Page  134: PLLSAI multiplier output clock
+Page  134: PLLSAI multiplier output clock
+Page  134: Master SAI clock jitter
+Page  134: FS clock jitter                                                             -          400         -      ps
+Page  134: 1. Take care of using the appropriate division factor M to have the specified PLL input clock values.
+Page  135: 6.3.12        PLL spread spectrum clock generation (SSCG) characteristics
+Page  135: The spread spectrum clock generation (SSCG) feature is used to reduce electromagnetic
+Page  136: Figure 43 and Figure 44 show the main PLL output clock waveforms in center spread and
+Page  136: Figure 43. PLL output clock waveforms in center spread mode
+Page  136: Figure 44. PLL output clock waveforms in down spread mode
+Page  136: fPLL1_IN     PLL1 input clock                              -              12, 12.5, 16, 24, 25
+Page  136: fPLL1_OUT     PLL1 output clock(2)                          -               -      60           -     MHz
+Page  137: fPLL2_IN    PLL2 input clock                             -            -         60      -
+Page  137: fPLL2_OUT     PLL2 output clock(2)                         -            -         480     -      MHz
+Page  141: all peripheral clocks enabled, clock dithering
+Page  150: function characteristics (output compare, input capture, external clock, PWM output).
+Page  150: Timer external clock
+Page  150: fADC   ADC clock frequency
+Page  161: SPI clock frequency                    SPI1,4,5                    -          -        54      MHz
+Page  164: fMCK      I2S Main clock output                                   -                  256 x 8K   256xFs(2)   MHz
+Page  164: fCK       I2S clock frequency                                                                               MHz
+Page  164: DCK       I2S clock frequency duty cycle    Slave receiver                             30          70        %
+Page  164: parameters might be slightly impacted by the source clock precision. DCK depends mainly
+Page  166: fMCKL       SAI main clock output                           -                     256x8K    256xFs
+Page  166: FCK        SAI clock frequency(2)
+Page  166: 2. APB clock frequency must be at least twice SAI clock frequency.
+Page  170: Table 88. USB HS clock timing parameters(1)
+Page  170: tSTART_DEV          Clock startup time after the     Peripheral              -      -           5.6
+Page  170: of the input clock
+Page  170: Clock
+Page  172: In all timing tables, the THCLK is the HCLK clock period
+Page  179: In all timing tables, the THCLK is the HCLK clock period.
+Page  186: In all timing tables, the THCLK is the HCLK clock period.
+Page  189: In all timing tables, the THCLK is the HCLK clock period.
+Page  192: Quad-SPI clock                  CL=20 pF
+Page  193: tw(CKH)     Quad-SPI clock high                               t(CK)/2 - 0.5       -          t(CK)/2 + 0.5
+Page  193: Fck1/t(CK) Quad-SPI clock frequency                                       -              -              80    MHz
+Page  193: Quad-SPI clock high and                                    0.5                         0.5
+Page  194: Clock
+Page  194: Clock
+Page  195: fPP       Clock frequency in data transfer mode          -          0           -         50      MHz
+Page  195: tW(CKL)    Clock low time                            fpp =50 MHz      9         10          -
+Page  195: tW(CKH)     Clock high time                           fpp =50 MHz     9          10          -
+Page  196: fPP       Clock frequency in data transfer mode        -         0          -        50      MHz
+Page  196: tW(CKL)     Clock low time                          fpp =50 MHz   9.5       10.5        -
+Page  196: tW(CKH)     Clock high time                         fpp =50 MHz   8.5        9.5        -

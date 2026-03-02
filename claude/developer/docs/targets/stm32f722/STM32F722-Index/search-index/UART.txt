@@ -1,0 +1,85 @@
+Keyword: UART
+Occurrences: 81
+================================================================================
+
+Page    1: – Internal 16 MHz factory-trimmed RC (1%                       – Up to 4 USARTs/4 UARTs (27 Mbit/s,
+Page   14: •   Four USARTs plus four UARTs
+Page   15: USART/UART                 4/2                                        4/4
+Page   21: MOSI, MISO,                                                                                                                                                                                                         UART4                             RX, TX as AF
+Page   21: LPTIM1                                                            UART5                             RX, TX as AF
+Page   21: SCK, NSS as AF                                                                                                                                                                                                      UART7
+Page   21: MOSI, MISO,                         SPI5                                                                                                                                                                            UART8                             RX, TX as AF
+Page   35: •    Digital calibration circuit with 0.95 ppm resolution, to compensate for quartz crystal
+Page   42: Features(1)                      USART1/2/3/6          UART4/5/7/8
+Page   61: UART4_RX, CA
+Page   62: -        -       20        L3         26             -          -         L3         G3         20        26             PF8          I/O        FT                -       UART7_RT
+Page   62: -        -       21        L2         27             -          -         L2         G2         21        27             PF9          I/O        FT                -       UART7_CT
+Page   64: UART4_TX
+Page   72: 39       65        98        G14 117                 65        D2           G14        F11        98        117            PC8          I/O        FT                -       UART5_RTS
+Page   72: UART5_CTS, Q
+Page   74: 51       78        111       B14 139                 78        A3           B14        B11        111       139           PC10          I/O        FT                -     UART4_TX, QU
+Page   74: 52       79        112       B13 140                 79        C5           B13        B10        112       140           PC11          I/O        FT                -     UART4_RX, QU
+Page   74: 54       83        116 D12 144                       83        E5           D12        E9         116       144            PD2          I/O        FT                -       UART5_RX,
+Page   77: -      97        141       A4         169          97        E7           A4         A5         141       169            PE0          I/O        FT                -       UART8_Rx,
+Page   84: SYS     TIM1/2    TIM3/4/5                                          SPI3/I2S3/               /UART4/5/7/8/   /QUADSPI/
+Page   84: SPI4/5                 UART5
+Page   84: UART4                                    OTG2_HS
+Page   84: PA0    -       /TIM2_ TIM5_CH1      TIM8_ETR           -           -          -                     UART4_ TX           -
+Page   84: PA1    -     TIM2_CH2 TIM5_CH2           -             -           -          -                     UART4_RX
+Page   85: SYS       TIM1/2    TIM3/4/5                                          SPI3/I2S3/               /UART4/5/7/8/   /QUADSPI/
+Page   85: SPI4/5                 UART5
+Page   85: UART4                                    OTG2_HS
+Page   85: PA15    JTDI       /TIM2_      -             -             -                                  -        UART4_RTS            -
+Page   85: TIM3_CH3   TIM8_CH2N           -           -          -           -        UART4_CTS            -
+Page   86: SYS       TIM1/2    TIM3/4/5                                          SPI3/I2S3/               /UART4/5/7/8/   /QUADSPI/
+Page   86: SPI4/5                 UART5
+Page   86: UART4                                    OTG2_HS
+Page   87: SYS      TIM1/2   TIM3/4/5                                          SPI3/I2S3/               /UART4/5/7/8/   /QUADSPI/
+Page   87: SPI4/5                 UART5
+Page   87: UART4                                    OTG2_HS
+Page   87: PC8   TRACED1     -      TIM3_CH3    TIM8_CH3           -           -          -      UART5_RTS     USART6_CK            -
+Page   87: PC9    MCO2       -      TIM3_CH4    TIM8_CH4       I2C3_SDA    I2S_CKIN       -      UART5_CTS           -
+Page   87: PC10      -        -         -             -             -           -                 USART3_TX      UART4_TX
+Page   87: PC11      -        -         -             -             -           -                 USART3_RX      UART4_RX
+Page   87: PC12   TRACED3     -         -             -             -           -        MOSI/    USART3_CK      UART5_TX            -
+Page   88: SYS      TIM1/2   TIM3/4/5                                          SPI3/I2S3/               /UART4/5/7/8/   /QUADSPI/
+Page   88: SPI4/5                 UART5
+Page   88: UART4                                    OTG2_HS
+Page   88: PD2   TRACED2     -      TIM3_ETR         -             -           -          -           -         UART5_RX            -
+Page   88: PD14      -        -      TIM4_CH3         -             -           -          -           -        UART8_CTS            -
+Page   88: PD15      -        -      TIM4_CH4         -             -           -          -           -        UART8_RTS            -
+Page   89: SYS       TIM1/2    TIM3/4/5                                          SPI3/I2S3/               /UART4/5/7/8/   /QUADSPI/
+Page   89: SPI4/5                 UART5
+Page   89: UART4                                    OTG2_HS
+Page   89: PE0      -         -       TIM4_ETR LPTIM1_ETR            -           -          -           -         UART8_Rx            -
+Page   89: PE1      -         -          -       LPTIM1_IN2          -           -          -           -         UART8_Tx            -
+Page   89: PE7      -      TIM1_ETR      -             -             -           -          -           -         UART7_Rx            -
+Page   89: PE8      -                    -             -             -           -          -           -         UART7_Tx            -
+Page   89: PE9      -      TIM1_CH1      -             -             -           -          -           -        UART7_RTS            -
+Page   89: PE10      -                    -             -             -           -          -           -        UART7_CTS            -
+Page   90: SYS   TIM1/2   TIM3/4/5                                          SPI3/I2S3/               /UART4/5/7/8/   /QUADSPI/
+Page   90: SPI4/5                 UART5
+Page   90: UART4                                    OTG2_HS
+Page   90: PF6    -      -         -       TIM10_CH1           -       SPI5_NSS                   -         UART7_Rx
+Page   90: PF7    -      -         -       TIM11_CH1           -       SPI5_SCK                   -         UART7_Tx
+Page   90: PF8    -      -         -             -             -                                  -        UART7_RTS       TIM13_CH1
+Page   90: PF9    -      -         -             -             -                                  -        UART7_CTS       TIM14_CH1
+Page   91: SYS      TIM1/2   TIM3/4/5                                          SPI3/I2S3/               /UART4/5/7/8/   /QUADSPI/
+Page   91: SPI4/5                 UART5
+Page   91: UART4                                    OTG2_HS
+Page   92: SYS      TIM1/2   TIM3/4/5                                          SPI3/I2S3/               /UART4/5/7/8/   /QUADSPI/
+Page   92: SPI4/5                 UART5
+Page   92: UART4                                    OTG2_HS
+Page   92: PH13      -        -         -       TIM8_CH1N           -           -          -           -         UART4_TX        CAN1_TX
+Page   93: SYS   TIM1/2   TIM3/4/5                                          SPI3/I2S3/               /UART4/5/7/8/   /QUADSPI/
+Page   93: SPI4/5                 UART5
+Page   93: UART4                                    OTG2_HS
+Page   93: PH14     -      -         -       TIM8_CH2N           -           -          -           -         UART4_RX       CAN1_RX
+Page   93: PI9     -      -         -             -             -           -          -           -         UART4_RX       CAN1_RX
+Page   94: SYS   TIM1/2   TIM3/4/5                                          SPI3/I2S3/               /UART4/5/7/8/   /QUADSPI/
+Page   94: SPI4/5                 UART5
+Page   94: UART4                                    OTG2_HS
+Page  123: UART4                11.7             10.7          9.2
+Page  123: UART5                11.7             10.2          8.9
+Page  123: UART7                13.3              12           10.3
+Page  123: UART8                12.6             11.6          9.7

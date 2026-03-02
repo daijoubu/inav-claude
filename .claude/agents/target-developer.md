@@ -82,7 +82,11 @@ Callers must provide one or more of:
 - `claude/developer/docs/targets/troubleshooting-guide.md` - Systematic debugging
 - `claude/developer/docs/targets/examples.md` - Real fixes from git history
 - `claude/developer/docs/targets/timer-dma-conflicts.md` - DMA resolution
-- `claude/developer/docs/targets/stm32h7/STM32H7-Index` - Fully indexed version of the (large) h7 datasheet, with tools for searching it
+- `claude/developer/docs/targets/stm32h7/` - STM32H7 datasheet index + search tool. Read CLAUDE.md for usage.
+- `claude/developer/docs/targets/stm32f405/` - STM32F405 datasheet index + AF table. Read CLAUDE.md for usage.
+- `claude/developer/docs/targets/stm32f722/` - STM32F722 datasheet index + AF table. Read CLAUDE.md for usage.
+- `claude/developer/docs/targets/stm32f745/` - STM32F745 datasheet index + AF table. Read CLAUDE.md for usage.
+- `claude/developer/docs/targets/stm32f765/` - STM32F765 datasheet index + AF table. Read CLAUDE.md for usage.
 
 ### Tools
 - `raytools/dma_resolver/dma_resolver.html` - DMA conflict resolver
@@ -205,6 +209,7 @@ When you discover better ways to diagnose or fix target issues, patterns in git 
 
 ### Lessons
 
+- **PINIO debugging - high-Z multimeter misleads**: A high-impedance multimeter on an output pin causes voltage to fall very slowly, making a toggling pin appear stuck HIGH. Use a low-impedance load or oscilloscope for reliable readings, or account for slow discharge when interpreting multimeter results.
 <!-- Add new lessons above this line -->
 - **Initial creation**: Agent focuses on configuration analysis, delegates builds to inav-builder
 - **Git history is gold**: Most target issues have been solved before, search thoroughly

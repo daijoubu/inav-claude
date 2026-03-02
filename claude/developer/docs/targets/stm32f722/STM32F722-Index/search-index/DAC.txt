@@ -1,0 +1,64 @@
+Keyword: DAC
+Occurrences: 60
+================================================================================
+
+Page    4: 3.35     Digital-to-analog converter (DAC) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 46
+Page    5: 6.3.28     DAC electrical characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 157
+Page    8: Table 78.   DAC characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 157
+Page   11: Figure 52.   12-bit buffered /non-buffered DAC . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 159
+Page   14: All the devices offer three 12-bit ADCs, two DACs, a low-power RTC, thirteen general-
+Page   16: 12-bit DAC                                                                            Yes
+Page   21: 8 analog inputs common                  ADC2                                                                                                               DAC1
+Page   21: ADC3                                                                                                               DAC2
+Page   21: DAC1     DAC2
+Page   25: •   DAC
+Page   27: •   VSSA, VDDA = 1.7 to 3.6 V: external analog power supplies for ADC, DAC, reset blocks,
+Page   39: These timers are mainly used for the DAC trigger and waveform generation. They can also
+Page   43: external DAC/CODEC at 256 times the sampling frequency.
+Page   43: In master mode, the master clock can be output to the external DAC/CODEC at 256 times of
+Page   46: 3.35       Digital-to-analog converter (DAC)
+Page   46: The two 12-bit buffered DAC channels can be used to convert two digital signals into two
+Page   46: •    Two DAC converters: one for each output channel
+Page   46: •    Dual DAC channel independent or simultaneous conversions
+Page   46: Eight DAC trigger inputs are used in the device. The DAC channels are triggered through
+Page  109: 2. When analog peripheral blocks such as ADCs, DACs, HSE, LSE, HSI, or LSI are ON, an additional power consumption
+Page  109: 2. When analog peripheral blocks such as ADCs, DACs, HSE, LSE, HSI, or LSI are ON, an additional power consumption
+Page  110: 2. When analog peripheral blocks such as ADCs, DACs, HSE, LSE, HSI, or LSI are ON, an additional power consumption
+Page  111: 2. When analog peripheral blocks such as ADCs, DACs, HSE, LSE, HSI, or LSI are ON, an additional power consumption
+Page  112: 2. When analog peripheral blocks such as ADCs, DACs, HSE, LSE, HSI, or LSI are ON, an additional power consumption
+Page  113: 2. When analog peripheral blocks such as ADCs, DACs, HSE, LSE, HSI, or LSI are ON, an additional power consumption
+Page  114: 2. When analog peripheral blocks such as ADCs, DACs, HSE, LSE, HSI, or LSI are ON, an additional power consumption
+Page  123: DAC                  6.1             5.1           4.4
+Page  124: 4. When the DAC is ON and EN1/2 bits are set in DAC_CR register, add an additional power consumption of
+Page  124: 0.75 mA per DAC channel for the analog part.
+Page  157: 6.3.28          DAC electrical characteristics
+Page  157: Table 78. DAC characteristics
+Page  157: RO(2)                                           -        -       15       kΩ resistive load between DAC_OUT and
+Page  157: Maximum capacitive load at DAC_OUT
+Page  157: DAC_OUT Lower DAC_OUT voltage                                                      It gives the maximum output excursion of
+Page  157: 0.2       -        -       V     the DAC.
+Page  157: DAC_OUT Higher DAC_OUT voltage                                   VDDA −
+Page  157: DAC_OUT Lower DAC_OUT voltage
+Page  157: DAC_OUT Higher DAC_OUT voltage                                   VREF+ −           the DAC.
+Page  158: Table 78. DAC characteristics (continued)
+Page  158: DAC DC VREF current                                            consumption on the inputs
+Page  158: DAC DC VDDA current                                            inputs
+Page  158: Differential non linearity         -       -    ±0.5    LSB Given for the DAC in 10-bit configuration.
+Page  158: -       -     ±2     LSB Given for the DAC in 12-bit configuration.
+Page  158: Integral non linearity             -       -     ±1     LSB Given for the DAC in 10-bit configuration.
+Page  158: and the value at Code i on a       -       -     ±4     LSB Given for the DAC in 12-bit configuration.
+Page  158: -       -    ±10     mV Given for the DAC in 12-bit configuration
+Page  158: (difference between                                            Given for the DAC in 10-bit at
+Page  158: Given for the DAC in 12-bit at
+Page  158: Gain error                         -       -    ±0.5     %     Given for the DAC in 12-bit configuration
+Page  158: DAC_OUT reaches final
+Page  158: Update      DAC_OUT change when                                            CLOAD ≤ 50 pF,
+Page  159: Table 78. DAC characteristics (continued)
+Page  159: DAC Control register)                                                     possible ones.
+Page  159: 3. The quiescent mode corresponds to a state where the DAC maintains a stable output level to ensure that no dynamic
+Page  159: Figure 52. 12-bit buffered /non-buffered DAC
+Page  159: Buffered/Non-buffered DAC
+Page  159: 12-bit                                   DAC_OUTx
+Page  159: 1. The DAC integrates an output buffer that can be used to reduce the output impedance and to drive external
+Page  159: configuring the BOFFx bit in the DAC_CR register.
+Page  224: Updated Table 78: DAC characteristics RLOAD feature.

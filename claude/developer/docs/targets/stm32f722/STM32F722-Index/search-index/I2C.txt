@@ -1,0 +1,83 @@
+Keyword: I2C
+Occurrences: 79
+================================================================================
+
+Page    1: – 4-to-26 MHz crystal oscillator                               – Up to 3× I2C interfaces (SMBus/PMBus)
+Page    4: 3.21     Inter-integrated circuit interface (I2C) . . . . . . . . . . . . . . . . . . . . . . . . . . . . 40
+Page    7: Table 7.    I2C implementation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 41
+Page    8: Table 79.   Minimum I2CCLK frequency in all I2C modes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 160
+Page    8: Table 80.   I2C analog filter characteristics. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 160
+Page   14: •   Up to three I2Cs
+Page   15: I2C                                                       3
+Page   21: I2C1/SMBUS                                  SCL, SDA, SMBAL as AF
+Page   21: ULPI:CK, D[7:0], DIR, STP, NXT                                (2)                                                                                                                                                         I2C2/SMBUS                                    SCL, SDA, SMBAL as AF
+Page   21: I2C3/SMBUS                                  SCL, SDA, SMBAL as AF
+Page   25: •   I2C
+Page   40: 3.21       Inter-integrated circuit interface (I2C)
+Page   40: The devices embed three I2Cs. Refer to Table 7: I2C implementation for the features
+Page   40: The I2C bus interface handles communications between the microcontroller and the serial
+Page   40: I2C bus. It controls all I2C bus-specific sequencing, protocol, arbitration and timing.
+Page   40: The I2C peripheral supports:
+Page   40: •   I2C-bus specification and user manual rev. 5 compatibility:
+Page   41: •    Independent clock: a choice of independent clock sources allowing the I2C
+Page   41: Table 7. I2C implementation
+Page   41: I2C features(1)                         I2C1       I2C2    I2C3
+Page   59: FTf                                 5V tolerant I/O, I2C Fm+ option.
+Page   61: -        -       10        E2         16             -          -         E2         C3         10        16             PF0          I/O        FTf               -     I2C2_SDA, FM
+Page   61: -        -       11        H3         17             -          -         H3         C4         11        17             PF1          I/O        FTf               -     I2C2_SCL, FMC
+Page   61: I2C2_SMB
+Page   64: (4)     I2C2_SCL, OT
+Page   64: I2C2_SDA
+Page   68: I2C2_SMB
+Page   68: I2C3_SCL
+Page   68: -        -         -       M12        85             -          -         M12           -         -       85             PH8          I/O        FTf               -     I2C3_SDA, FMC
+Page   68: I2C3_SMBA
+Page   72: I2C3_SDA
+Page   72: 41       67        100       F15        119          67        D3           F15        E12        100       119            PA8          I/O        FTf               -       I2C3_SCL,
+Page   77: I2C1_SCL
+Page   77: I2C1_SDA, SP
+Page   84: TIM8/9/10/11/   I2C1/2/3/   SPI2/I2S2/             PI3/I2S3/
+Page   84: PA8   MCO1   TIM1_CH1      -       TIM8_BKIN2      I2C3_SCL        -          -     USART1_CK            -              -
+Page   84: I2C3_SMB    SPI2_SCK
+Page   85: TIM8/9/10/11/   I2C1/2/3/   SPI2/I2S2/             PI3/I2S3/
+Page   85: I2C1_
+Page   85: PB6      -         -       TIM4_CH1         -         I2C1_SCL        -          -     USART1_TX            -              -
+Page   85: PB7      -         -       TIM4_CH2         -         I2C1_SDA        -          -     USART1_RX            -              -
+Page   85: PB8      -         -       TIM4_CH3   TIM10_CH1       I2C1_SCL        -          -           -              -         CAN1_RX
+Page   86: TIM8/9/10/11/   I2C1/2/3/   SPI2/I2S2/             PI3/I2S3/
+Page   86: PB9      -         -       TIM4_CH4   TIM11_CH1       I2C1_SDA                   -           -              -          CAN1_TX
+Page   86: PB10      -      TIM2_CH3      -             -         I2C2_SCL                   -      USART3_TX           -              -
+Page   86: PB11      -      TIM2_CH4      -             -         I2C2_SDA        -          -      USART3_RX           -              -
+Page   86: TIM1_                                 I2C2_      SPI2_NSS
+Page   87: TIM8/9/10/11/   I2C1/2/3/   SPI2/I2S2/             PI3/I2S3/
+Page   87: PC9    MCO2       -      TIM3_CH4    TIM8_CH4       I2C3_SDA    I2S_CKIN       -      UART5_CTS           -
+Page   88: TIM8/9/10/11/   I2C1/2/3/   SPI2/I2S2/             PI3/I2S3/
+Page   89: TIM8/9/10/11/   I2C1/2/3/   SPI2/I2S2/             PI3/I2S3/
+Page   90: TIM8/9/10/11/   I2C1/2/3/   SPI2/I2S2/             PI3/I2S3/
+Page   90: PF0    -      -         -             -         I2C2_SDA        -          -           -              -              -
+Page   90: PF1    -      -         -             -         I2C2_SCL        -          -           -              -              -
+Page   90: I2C2_
+Page   91: TIM8/9/10/11/   I2C1/2/3/   SPI2/I2S2/             PI3/I2S3/
+Page   92: TIM8/9/10/11/   I2C1/2/3/   SPI2/I2S2/             PI3/I2S3/
+Page   92: PH4      -        -         -             -         I2C2_SCL        -          -           -              -              -
+Page   92: PH5      -        -         -             -         I2C2_SDA    SPI5_NSS       -           -              -              -
+Page   92: I2C2_
+Page   92: PH7      -        -         -             -         I2C3_SCL                   -           -              -              -
+Page   92: PH8      -        -         -             -         I2C3_SDA        -          -           -              -              -
+Page   92: I2C3_SMB
+Page   93: TIM8/9/10/11/   I2C1/2/3/   SPI2/I2S2/             PI3/I2S3/
+Page   94: TIM8/9/10/11/   I2C1/2/3/   SPI2/I2S2/             PI3/I2S3/
+Page  123: I2C1               10.6             9.6           8.3
+Page  123: I2C2               10.6             9.6           8.3
+Page  123: I2C3               10.7             9.8           8.3
+Page  159: I2C interface characteristics
+Page  159: The I2C interface meets the timings requirements of the I2C-bus specification and user
+Page  159: The I2C timings requirements are guaranteed by design when the I2C peripheral is properly
+Page  159: configured (refer to RM0431 reference manual) and when the I2CCLK frequency is greater
+Page  160: Table 79. Minimum I2CCLK frequency in all I2C modes
+Page  160: I2CCLK                                                        9
+Page  160: f(I2CCLK)                                                DNF=1                         MHz
+Page  160: Where Rp is the I2C lines pull-up. Refer to Section 6.3.20: I/O port characteristics for the
+Page  160: I2C I/Os characteristics.
+Page  160: All I2C SDA and SCL I/Os embed an analog filter. Refer to the table below for the analog
+Page  160: Table 80. I2C analog filter characteristics(1)

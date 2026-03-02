@@ -1,0 +1,268 @@
+Keyword: SPI
+Occurrences: 264
+================================================================================
+
+Page    1: critical real-time routines) + 4 Kbytes of                 – Up to 6 SPIs (up to 50 Mbit/s), 3x with
+Page    1: • Dual mode Quad-SPI                                             – SPDIFRX interface
+Page    2: 3.9      Quad-SPI memory interface (QUADSPI) . . . . . . . . . . . . . . . . . . . . . . . . . 23
+Page    3: 3.25    Serial peripheral interface (SPI)/inter-integrated sound interfaces (I2S) . 40
+Page    5: 6.3.28      Quad-SPI interface characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . 214
+Page    7: Table 77.   SPI dynamic characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 180
+Page    8: Table 107.   Quad-SPI characteristics in SDR mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 214
+Page    8: Table 108.   Quad-SPI characteristics in DDR mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 215
+Page   10: Figure 46.   SPI timing diagram - slave mode and CPHA = 0 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 181
+Page   10: Figure 47.   SPI timing diagram - slave mode and CPHA = 1 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 182
+Page   10: Figure 48.   SPI timing diagram - master mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 182
+Page   10: Figure 72.   Quad-SPI timing diagram - SDR mode. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 216
+Page   10: Figure 73.   Quad-SPI timing diagram - DDR mode . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 216
+Page   13: •   Six SPIs, three I2Ss in duplex mode. To achieve the audio class accuracy, the I2S
+Page   13: interface, a Quad-SPI flash memory interface, a camera interface for CMOS sensors.
+Page   15: SPI / I2S              4/3 (simplex)(2)                                                                               6/3 (simplex)(2)
+Page   16: 2.   The SPI1, SPI2 and SPI3 interfaces give the flexibility to work in an exclusive way in either the SPI mode or the I2S audio mode.
+Page   18: FIFO                                                                                                    Quad-SPI                                                                                                                      CLK, CS,D[3:0]
+Page   18: SPI1/I2S1                                                                                                                    TIM6                16b                                                                                                         MOSI/SD, SCK/CK
+Page   18: NSS/WS, MCK as AF                                                                                                                                                                                                                                              SPI2/I2S2
+Page   18: SPI4                                                                                                                                                                                                                                                         MOSI/SD, SCK/CK
+Page   18: SCK, NSS as AF                                                                                                                                                          TIM7                16b                                                                SPI3/I2S3
+Page   18: SPI5
+Page   18: SPI6                                                                                                                                                                                                         I2C2/SMBUS                                      SCL, SDA, SMBA as AF
+Page   20: FMC, Quad-SPI, AHB and APB peripherals) and ensures a seamless and an
+Page   21: Quad-SPI
+Page   22: •   SPI and I2S
+Page   22: •   Quad-SPI
+Page   23: 3.9      Quad-SPI memory interface (QUADSPI)
+Page   23: All devices embed a Quad-SPI memory interface, which is a specialized communication
+Page   23: interface targetting Single, Dual or Quad-SPI flash memories. It can work in:
+Page   40: 3.25       Serial peripheral interface (SPI)/inter-integrated sound
+Page   40: The devices feature up to six SPIs in slave and master modes in full-duplex and simplex
+Page   40: communication modes. SPI1, SPI4, SPI5, and SPI6 can communicate at up to 54 Mbits/s,
+Page   40: SPI2 and SPI3 can communicate at up to 27 Mbit/s. The 3-bit prescaler gives 8 master
+Page   40: mode frequencies and the frame is configurable from 4 to 16 bits. The SPI interfaces
+Page   40: support NSS pulse mode, TI mode and Hardware CRC calculation. All SPIs can be served
+Page   40: Three standard I2S interfaces (multiplexed with SPI1, SPI2 and SPI3) are available. They
+Page   55: TRACECLK, SPI4_SCK,
+Page   55: 1         A3         D8            1       A2               1         1       A3           PE2        I/O FT                      -        QUADSPI_BK1_IO2,            -
+Page   55: TRACED1, SPI4_NSS,
+Page   56: SPI4_MISO,
+Page   56: TIM9_CH2, SPI4_MOSI,
+Page   57: TIM10_CH1, SPI5_NSS,
+Page   57: QUADSPI_BK1_IO3,
+Page   57: TIM11_CH1, SPI5_SCK,
+Page   57: QUADSPI_BK1_IO2,
+Page   58: SPI5_MISO,
+Page   58: QUADSPI_BK1_IO0,
+Page   58: SPI5_MOSI, SAI1_FS_B,
+Page   58: QUADSPI_BK1_IO1,
+Page   58: (4)      SPI2_MOSI/I2S2_SD,         1,
+Page   58: SPI2_MISO,
+Page   59: SPI2_MOSI/I2S2_SD,
+Page   59: (4)   QUADSPI_BK1_IO3,
+Page   59: QUADSPI_BK2_IO0,
+Page   60: QUADSPI_BK2_IO1,
+Page   60: I2C2_SDA, SPI5_NSS,
+Page   60: SPI1_NSS/I2S1_WS,
+Page   60: SPI3_NSS/I2S3_WS,
+Page   60: 29        H3         M9          41        P4         51        54        P4           PA5        I/O                                 SPI1_SCK/I2S1_CK,
+Page   60: TIM8_BKIN, SPI1_MISO,
+Page   61: SPI1_MOSI/I2S1_SD,
+Page   61: SPI3_MOSI/I2S3_SD,
+Page   61: QUADSPI_CLK,
+Page   62: SPI5_MOSI, SAI2_SD_B,
+Page   62: 37        H5          L5         58        R8         68        79        R8           PE7        I/O FT                     -        QUADSPI_BK2_IO0,           -
+Page   62: 38        J5         M5          59        P8         69        80        N9           PE8        I/O FT                     -         QUADSPI_BK2_IO1,          -
+Page   62: 39        K5         N5          60        P9         70        81        P9           PE9        I/O FT                     -         QUADSPI_BK2_IO2,          -
+Page   62: QUADSPI_BK2_IO3,
+Page   63: TIM1_CH2, SPI4_NSS,
+Page   63: TIM1_CH3N, SPI4_SCK,
+Page   63: TIM1_CH3, SPI4_MISO,
+Page   63: TIM1_CH4, SPI4_MOSI,
+Page   63: SPI2_SCK/I2S2_CK,
+Page   63: I2C2_SMBA, SPI5_SCK,
+Page   64: I2C3_SCL, SPI5_MISO,
+Page   64: SPI2_NSS/I2S2_WS,
+Page   64: SPI2_SCK/I2S2_CK,
+Page   65: SPI2_MISO,
+Page   65: 54        G10         J3         76        R15        95        107 R15                PB15       I/O FT                     -        SPI2_MOSI/I2S2_SD,         -
+Page   65: QUADSPI_BK1_IO0,
+Page   65: 59        K10        H6          81        N13 100 112 M10                             PD12       I/O FT                     -         QUADSPI_BK1_IO1,          -
+Page   65: 60        J10        H5          82        M15 101 113 M11                             PD13       I/O FT                     -         QUADSPI_BK1_IO3,          -
+Page   67: SPI6_NSS,
+Page   67: QUADSPI_BK1_IO0,
+Page   67: SPI2_SCK/I2S2_CK,     OTG_FS_VB
+Page   68: SPI2_NSS/I2S2_WS,
+Page   68: SPI2_SCK/I2S2_CK,
+Page   69: TIM8_CH4, SPI2_MISO,
+Page   69: SPI2_MOSI/I2S2_SD,
+Page   69: 77        A8         C2          110 A13 138 160 A13                                         I/O FT                          -         SPI1_NSS/I2S1_WS,        -
+Page   69: SPI3_NSS/I2S3_WS,
+Page   69: SPI3_SCK/I2S3_CK,
+Page   69: QUADSPI_BK1_IO1,
+Page   69: SPI3_MISO,
+Page   69: QUADSPI_BK2_NCS,
+Page   69: SPI3_MOSI/I2S3_SD,
+Page   70: SPI2_SCK/I2S2_CK,
+Page   70: SPI3_MOSI/I2S3_SD,
+Page   71: QUADSPI_BK2_IO2,
+Page   71: SPI6_MISO,
+Page   71: SPI6_SCK,
+Page   71: SPI6_MOSI,
+Page   71: -          -       F6          129       A7         157 183             A4           PG14       I/O FT                     -         QUADSPI_BK2_IO3,          -
+Page   72: 89        A7         B7          133 A10 161 192 A10 O/TRAC I/O FT                                                           -        SPI1_SCK/I2S1_CK,          -
+Page   72: ESWO)                                                                           SPI3_SCK/I2S3_CK,
+Page   72: PB4(NJT                                         SPI1_MISO, SPI3_MISO,
+Page   72: RST)                                            SPI2_NSS/I2S2_WS,
+Page   72: SPI1_MOSI/I2S1_SD,
+Page   72: SPI3_MOSI/I2S3_SD,
+Page   72: QUADSPI_BK1_NCS,
+Page   73: SPI2_NSS/I2S2_WS,
+Page   78: Port                                                                                SPI2/3/U           CAN1/2/T SAI2/QU
+Page   78: I2C1/2/3/   SPI1/2/3/   SPI3/   SART1/2/           IM12/13/ ADSPI/O  ET
+Page   78: SPDIFRX            SPI/LCD OTG1_FS
+Page   78: SPI1_NS SPI3_NS
+Page   78: TIM2_C                                      SPI1_SC
+Page   78: TIM1_B    TIM3_C    TIM8_BKI                SPI1_MI                                TIM13_C
+Page   78: SPI1_M
+Page   78: SPI2_SC
+Page   79: Port                                                                                   SPI2/3/U           CAN1/2/T SAI2/QU
+Page   79: I2C1/2/3/   SPI1/2/3/    SPI3/    SART1/2/           IM12/13/ ADSPI/O  ET
+Page   79: SPDIFRX            SPI/LCD OTG1_FS
+Page   79: TIM2_C                                       SPI1_NS SPI3_NS
+Page   79: SPI3_MO
+Page   79: JTDO/T                                                SPI1_SC SPI3_SC
+Page   79: SPI2_NS
+Page   79: TIM3_C                            SPI1_MI     SPI3_MI
+Page   79: SPI1_M SPI3_M
+Page   79: QUADSPI
+Page   80: Port                                                                               SPI2/3/U           CAN1/2/T SAI2/QU
+Page   80: I2C1/2/3/   SPI1/2/3/   SPI3/   SART1/2/           IM12/13/ ADSPI/O  ET
+Page   80: SPDIFRX            SPI/LCD OTG1_FS
+Page   80: SPI2_NS
+Page   80: SPI2_SC
+Page   80: SPI2_NS
+Page   80: SPI2_SC
+Page   80: TIM1_C              TIM8_CH                 SPI2_MI             USART3             TIM12_C
+Page   80: SPI2_M
+Page   80: SPI2_M
+Page   80: SPI2_MI                                          OTG_HS_ ETH_
+Page   80: SPI2_M                                           OTG_HS_
+Page   81: Port                                                                                  SPI2/3/U           CAN1/2/T SAI2/QU
+Page   81: I2C1/2/3/   SPI1/2/3/    SPI3/     SART1/2/           IM12/13/ ADSPI/O  ET
+Page   81: SPDIFRX            SPI/LCD OTG1_FS
+Page   81: SPI3_SC                     QUADSP
+Page   81: SPI3_MI    USART3   UART4_
+Page   81: SPI3_M
+Page   82: Port                                                                               SPI2/3/U           CAN1/2/T SAI2/QU
+Page   82: I2C1/2/3/   SPI1/2/3/   SPI3/   SART1/2/           IM12/13/ ADSPI/O  ET
+Page   82: SPDIFRX            SPI/LCD OTG1_FS
+Page   82: SPI2_SC
+Page   82: SPI3_M
+Page   83: Port                                                                                  SPI2/3/U           CAN1/2/T SAI2/QU
+Page   83: I2C1/2/3/   SPI1/2/3/    SPI3/    SART1/2/           IM12/13/ ADSPI/O  ET
+Page   83: SPDIFRX            SPI/LCD OTG1_FS
+Page   83: TRACE                                                SPI4_SC     SAI1_M                                            ETH_
+Page   83: TRACE                                                SPI4_NS SAI1_FS
+Page   83: TRACE                        TIM9_CH                 SPI4_MI     SAI1_SC
+Page   83: TRACE   TIM1_B               TIM9_CH                 SPI4_M      SAI1_SD                                SAI2_MC
+Page   83: TIM1_ET                                                                     UART7_              QUADSPI
+Page   83: TIM1_C                                                                     UART7_T              QUADSPI
+Page   83: TIM1_C                                                                      UART7_              QUADSPI
+Page   83: TIM1_C                                                                      UART7_              QUADSPI
+Page   83: TIM1_C                                       SPI4_NS                                            SAI2_SD_
+Page   83: TIM1_C                                       SPI4_SC                                            SAI2_SC
+Page   83: TIM1_C                                       SPI4_MI                                            SAI2_FS_
+Page   84: Port                                                                                 SPI2/3/U           CAN1/2/T SAI2/QU
+Page   84: I2C1/2/3/   SPI1/2/3/    SPI3/    SART1/2/           IM12/13/ ADSPI/O  ET
+Page   84: SPDIFRX            SPI/LCD OTG1_FS
+Page   84: TIM1_C                                      SPI4_M                                             SAI2_MC
+Page   84: TIM10_C                 SPI5_NS SAI1_SD                UART7_
+Page   84: TIM11_CH                 SPI5_SC     SAI1_M            UART7_T
+Page   84: SPI5_MI     SAI1_SC            UART7_   TIM13_C    QUADSPI
+Page   84: SPI5_M      SAI1_FS            UART7_   TIM14_C    QUADSPI
+Page   84: SPI5_M                                             SAI2_SD_
+Page   85: Port                                                                             SPI2/3/U           CAN1/2/T SAI2/QU
+Page   85: I2C1/2/3/   SPI1/2/3/   SPI3/   SART1/2/           IM12/13/ ADSPI/O  ET
+Page   85: SPDIFRX            SPI/LCD OTG1_FS
+Page   85: SPI6_NS             SPDIFRX   USART6                       ETH_
+Page   86: Port                                                                               SPI2/3/U           CAN1/2/T SAI2/QU
+Page   86: I2C1/2/3/   SPI1/2/3/   SPI3/   SART1/2/           IM12/13/ ADSPI/O  ET
+Page   86: SPDIFRX            SPI/LCD OTG1_FS
+Page   86: LPTIM1_I                SPI6_MI             SPDIFRX   USART6
+Page   86: TRACE                       LPTIM1_                 SPI6_SC                       USART6                        TXD0
+Page   86: TRACE                      LPTIM1_E                 SPI6_M                        USART6                        TXD1
+Page   86: I2C2_SD     SPI5_NS
+Page   86: I2C2_SM     SPI5_SC                                TIM12_C              ETH_
+Page   86: I2C3_SC     SPI5_MI                                                     ETH_
+Page   87: Port                                                                               SPI2/3/U           CAN1/2/T SAI2/QU
+Page   87: I2C1/2/3/   SPI1/2/3/   SPI3/   SART1/2/           IM12/13/ ADSPI/O  ET
+Page   87: SPDIFRX            SPI/LCD OTG1_FS
+Page   87: SPI2_NS
+Page   87: SPI2_SC
+Page   87: TIM8_CH                 SPI2_MI
+Page   87: Port I                                                              SPI2_M
+Page   88: Port                                                                               SPI2/3/U           CAN1/2/T SAI2/QU
+Page   88: I2C1/2/3/   SPI1/2/3/   SPI3/   SART1/2/           IM12/13/ ADSPI/O  ET
+Page   88: SPDIFRX            SPI/LCD OTG1_FS
+Page   89: Port                                                                               SPI2/3/U           CAN1/2/T SAI2/QU
+Page   89: I2C1/2/3/   SPI1/2/3/   SPI3/   SART1/2/           IM12/13/ ADSPI/O  ET
+Page   89: SPDIFRX            SPI/LCD OTG1_FS
+Page   90: Port                                                                            SPI2/3/U           CAN1/2/T SAI2/QU
+Page   90: I2C1/2/3/   SPI1/2/3/   SPI3/   SART1/2/           IM12/13/ ADSPI/O  ET
+Page   90: SPDIFRX            SPI/LCD OTG1_FS
+Page   91: Quad SPI and                                                                   Reserved         0x4001 6C00 - 0x4001 FFFF
+Page   94: 0x4001 5400 - 0x4001 57FF   SPI6
+Page   94: 0x4001 5000 - 0x4001 53FF   SPI5
+Page   94: 0x4001 5400 - 0x4001 57FF   SPI6
+Page   94: 0x4001 5000 - 0x4001 53FF   SPI5
+Page   94: 0x4001 3400 - 0x4001 37FF   SPI4
+Page   94: 0x4001 3000 - 0x4001 33FF   SPI1
+Page   95: 0x4000 3C00 - 0x4000 3FFF   SPI3 / I2S3
+Page   95: 0x4000 3800 - 0x4000 3BFF   SPI2 / I2S2
+Page   96: 0xA000 1000 - 0xA000 1FFF   Quad-SPI control register
+Page   96: 0x9000 0000 - 0x9FFF FFFF   Quad-SPI
+Page   98: 0x4001 5400 - 0x4001 57FF   SPI6
+Page   98: 0x4001 5000 - 0x4001 53FF   SPI5
+Page   98: 0x4001 3400 - 0x4001 37FF   SPI4
+Page   98: 0x4001 3000 - 0x4001 33FF   SPI1/I2S1
+Page   99: 0x4000 3C00 - 0x4000 3FFF   SPI3 / I2S3
+Page   99: 0x4000 3800 - 0x4000 3BFF   SPI2 / I2S2
+Page  124: 216 MHz)         QSPI              23.2             21.8              18.5
+Page  125: SPI2/I2S2                3              2.9           2.8
+Page  125: SPI3/I2S3(3)            3.2             2.9           2.8
+Page  126: SPI1/I2S1(3)               3.1                  3                  2.5
+Page  126: (up to            SPI4                   3.1                  3                  2.5             µA/MHz
+Page  126: SPI5                    3                  2.8                 2.2
+Page  126: SPI6                    3                  2.8                 2.2
+Page  126: 3. To enable an I2S peripheral, first set the I2SMOD bit and then the I2SE bit in the SPI_I2SCFGR register.
+Page  161: Maximum pulse width of spikes
+Page  161: 2. Spikes with widths below tAF(min) are filtered.
+Page  161: 3. Spikes with widths above tAF(max) are not filtered
+Page  162: SPI interface characteristics
+Page  162: Unless otherwise specified, the parameters given in Table 77 for the SPI interface are
+Page  162: function characteristics (NSS, SCK, MOSI, MISO for SPI).
+Page  162: Table 77. SPI dynamic characteristics(1)
+Page  162: SPI1,4,5,6                                   54(2)
+Page  162: SPI1,4,5,6                                    27
+Page  162: SPI1,4,5,6                                     54
+Page  162: SPI clock frequency                 SPI1,4,5,6                   -        -       54      MHz
+Page  162: SPI1,4,5,6                                    50(3)
+Page  162: SPI1,4,5,6                                    38(3)
+Page  162: SPI2,3                                       27
+Page  162: tsu(NSS)        NSS setup time           Slave mode, SPI presc = 2         4*Tpclk     -        -
+Page  162: th(NSS)         NSS hold time            Slave mode, SPI presc = 2         2*Tpclk     -        -
+Page  163: Table 77. SPI dynamic characteristics(1) (continued)
+Page  163: 2. Excepting SPI1 with SCK IO pin mapped on PA5. In this configuration, Maximum achievable frequency is 40MHz.
+Page  163: Figure 46. SPI timing diagram - slave mode and CPHA = 0
+Page  164: Figure 47. SPI timing diagram - slave mode and CPHA = 1
+Page  164: Figure 48. SPI timing diagram - master mode
+Page  196: 6.3.28      Quad-SPI interface characteristics
+Page  196: Unless otherwise specified, the parameters given in Table 107 and Table 108 for Quad-SPI
+Page  196: Table 107. Quad-SPI characteristics in SDR mode(1)
+Page  196: Quad-SPI clock               CL=20 pF
+Page  197: Table 107. Quad-SPI characteristics (continued)in SDR mode(1) (continued)
+Page  197: tw(CKH)      Quad-SPI clock high and                          t(CK)/2 -1      -       t(CK)/2
+Page  197: Table 108. Quad-SPI characteristics in DDR mode(1)
+Page  197: Fck1/t(CK) Quad-SPI clock frequency                                -           -          80       MHz
+Page  197: Quad-SPI clock high and                              -1
+Page  198: Figure 72. Quad-SPI timing diagram - SDR mode
+Page  198: Figure 73. Quad-SPI timing diagram - DDR mode
+Page  228: Updated Section 3.9: Quad-SPI memory interface (QUADSPI)

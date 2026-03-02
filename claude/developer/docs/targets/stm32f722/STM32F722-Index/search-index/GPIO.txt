@@ -1,0 +1,41 @@
+Keyword: GPIO
+Occurrences: 37
+================================================================================
+
+Page    4: 3.32     General-purpose input/outputs (GPIOs) . . . . . . . . . . . . . . . . . . . . . . . . . . 45
+Page   16: GPIOs                                                 50
+Page   21: PA[15:0]                   GPIO PORT A
+Page   21: GPIO PORT B
+Page   21: GPIO PORT C
+Page   21: PD[15:0]                    GPIO PORT D                                                                                                                                                                                4- 16MHz                 OSC_OUT
+Page   21: GPIO PORT E                                                                                                          Reset
+Page   21: GPIO PORT F                                                                                                                                                              Standby                                    VBAT = 1.8 to 3.6 V
+Page   21: GPIO PORT G
+Page   21: PH[15:0]                   GPIO PORT H
+Page   21: PI[11:0]                   GPIO PORT I                                                                                                                                                                           AWU                           RTC_TAMPx
+Page   26: pulse width shorter than the Internal APB2 clock period. Up to 140 GPIOs in the
+Page   26: STM32F722xx devices (138 GPIOs in the STM32F723xx devices) can be connected to the
+Page   28: All associated GPIOs powered by VDDSDMMC are operating between
+Page   28: - If the USB (USB OTG_HS/OTG_FS) is used, the associated GPIOs powered
+Page   28: If only one USB transceiver is used in the application, the GPIOs associated to the
+Page   28: - If the USB (USB OTG_HS/OTG_FS) is not used, the associated GPIOs powered
+Page   29: OTG PHY HS and associated GPIOs.The VDDPHYHS follows the same rules provided
+Page   33: •   PA0 cannot be used as a GPIO pin since it is used to reset a part of the V12 logic power
+Page   45: 3.32     General-purpose input/outputs (GPIOs)
+Page   45: Each of the GPIO pins can be configured by software as output (push-pull or open-drain,
+Page   45: or as peripheral alternate function. Most of the GPIO pins are shared with digital or analog
+Page   45: alternate functions. All GPIOs are high-current-capable and have speed selection to better
+Page   47: can be reused as GPIO with alternate function): JTAG TMS and TCK pins are shared with
+Page   59: Functions selected through GPIOx_AFR registers
+Page  122: GPIOA              3.6               3.4                2.9
+Page  122: GPIOB              3.7               3.6                3.1
+Page  122: GPIOC              3.7               3.4                3.0
+Page  122: GPIOD              3.7               3.6                3.0
+Page  122: GPIOE              3.6               3.4                2.9
+Page  122: GPIOF              3.5               3.4                2.9
+Page  122: AHB1           GPIOG              3.5               3.3                2.8
+Page  122: 216 MHz)         GPIOH              3.5               3.4                2.9
+Page  122: GPIOI              3.5               3.3                2.9
+Page  145: The GPIOs (general purpose input/outputs) can sink or source up to ±8 mA, and sink or
+Page  145: can sink or source up to ±3 mA. When using the PC13 to PC15 and PI8 GPIOs in output
+Page  148: manual for a description of the GPIOx_SPEEDR GPIO port output speed register.

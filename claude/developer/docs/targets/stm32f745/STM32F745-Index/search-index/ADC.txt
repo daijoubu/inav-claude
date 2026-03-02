@@ -1,0 +1,145 @@
+Keyword: ADC
+Occurrences: 141
+================================================================================
+
+Page    1: RAM, USB OTG HS/FS, ethernet, 18 TIMs, 3 ADCs, 25 com itf, cam & LCD
+Page    1: • 3×12-bit, 2.4 MSPS ADC: up to 24 channels                                   Table 1. Device summary
+Page    3: 3.39    Analog-to-digital converters (ADCs) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 45
+Page    4: 6.3.21     12-bit ADC characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 169
+Page    7: Table 63.   ADC characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 169
+Page    7: Table 64.   ADC static accuracy at fADC = 18 MHz . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 171
+Page    7: Table 65.   ADC static accuracy at fADC = 30 MHz . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 171
+Page    7: Table 66.   ADC static accuracy at fADC = 36 MHz . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 172
+Page    7: Table 67.   ADC dynamic accuracy at fADC = 18 MHz - limited test conditions . . . . . . . . . . . . . . . . . 172
+Page    7: Table 68.   ADC dynamic accuracy at fADC = 36 MHz - limited test conditions . . . . . . . . . . . . . . . . . 172
+Page    9: Figure 41.   ADC accuracy characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 173
+Page   10: Figure 42.   Typical connection diagram using the ADC . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 173
+Page   13: All the devices offer three 12-bit ADCs, two DACs, a low-power RTC, thirteen general-
+Page   16: 12-bit ADC                                                                                                           3
+Page   18: VDDREF_ADC
+Page   18: ADC1
+Page   18: to the 3 ADCs
+Page   18: 8 analog inputs common                 ADC2                                                                                                                                                                                                                       SPDIFRX                                  SPDIFRX[3:0] as AF
+Page   18: to the ADC1 & 2                                      IF
+Page   18: ADC3                                                                                                                                                                                                                        HDMI-CEC                                HDMI_CEC as AF
+Page   18: 8 analog inputs for ADC3                                                                                                                                      as AF                 as AF
+Page   22: •   ADC
+Page   25: •   VSSA, VDDA = 1.7 to 3.6 V: external analog power supplies for ADC, DAC, reset blocks,
+Page   45: 3.39     Analog-to-digital converters (ADCs)
+Page   45: Three 12-bit analog-to-digital converters are embedded and each ADC shares up to 16
+Page   45: Additional logic functions embedded in the ADC interface allow:
+Page   45: The ADC can be served by the DMA controller. An analog watchdog feature allows very
+Page   45: To synchronize A/D conversion and timers, the ADCs could be triggered by any of TIM1,
+Page   45: connected to the same input channel as VBAT, ADC1_IN18, which is used to convert the
+Page   55: TTa                                              3.3 V tolerant I/O directly connected to ADC
+Page   57: -          -       G11         13        J2         19        22        H2           PF3        I/O FT                     -        FMC_A3, EVENTOUT      ADC3_IN9
+Page   57: -          -       F9          14        J3         20        23        J2           PF4        I/O FT                     -        FMC_A4, EVENTOUT      ADC3_IN14
+Page   57: -          -       F8          15        K3         21        24        K3           PF5        I/O FT                     -        FMC_A5, EVENTOUT      ADC3_IN15
+Page   57: -          -       G10         18        K2         24        27        K2           PF6        I/O FT                     -                              ADC3_IN4
+Page   57: -          -       F7          19        K1         25        28        K1           PF7        I/O FT                     -            UART7_Tx,         ADC3_IN5
+Page   58: -          -       H11         20        L3         26        29        L3           PF8        I/O FT                     -                                ADC3_IN6
+Page   58: -          -       G8          21        L2         27        30        L2           PF9        I/O FT                     -            TIM14_CH1,          ADC3_IN7
+Page   58: -          -       G9          22        L1         28        31        L1           PF10       I/O FT                     -                                ADC3_IN8
+Page   58: (4)      OTG_HS_ULPI_STP,       ADC123_IN1
+Page   58: TRACED0,          ADC123_IN1
+Page   58: ADC123_IN1
+Page   59: ADC123_IN1
+Page   59: USART2_CTS,      ADC123_IN0,
+Page   59: 23        H2         K8          35        N2         41        44        N2           PA1        I/O FT                                                    ADC123_IN1
+Page   59: ADC123_IN2,
+Page   60: 25        K2         M11         37        R2         47        50        R2           PA3        I/O FT (4)   OTG_HS_ULPI_D0,                              ADC123_IN3
+Page   60: TT (4)                                         ADC12_IN4,
+Page   60: TT (4)                                         ADC12_IN5,
+Page   60: 30        J3         N10         42        P3         52        55        P3           PA6        I/O FT (4)      TIM13_CH1,                                ADC12_IN6
+Page   61: 31        K3          L8         43        R3         53        56        R3           PA7        I/O FT (4)                                                 ADC12_IN7
+Page   61: 32        G4         M8          44        N5         54        57        N5           PC4        I/O FT (4) ETH_MII_RXD0/ETH_RM ADC12_IN14
+Page   61: 33        H4         N9          45        P5         55        58        P5           PC5        I/O FT                                                  ADC12_IN15
+Page   61: 34        J4         N8          46        R5         56        61        R5           PB0        I/O FT                                                     ADC12_IN8
+Page   61: 35        K4         K7          47        R4         57        62        R4           PB1        I/O FT (4)   OTG_HS_ULPI_D2,                               ADC12_IN9
+Page   94: 0x4001 2000 - 0x4001 23FF   ADC1 - ADC2 - ADC3
+Page   98: 0x4001 2000 - 0x4001 23FF   ADC1 - ADC2 - ADC3
+Page  100: Typical ADC accuracy values are determined by characterization of a batch of samples from
+Page  101: 100 nF                            VREF-           ADC                            RCs, PLL,
+Page  104: VDDA(4)   (ADC limited to 1.2 M samples)
+Page  104: (ADC limited to 2.4 M samples)                                                                    V
+Page  105: 4. When the ADC is used, refer to Table 63: ADC characteristics.
+Page  106: power supply       ADC operation       frequency with                                    I/O operation          memory
+Page  111: 2. When analog peripheral blocks such as ADCs, DACs, HSE, LSE, HSI, or LSI are ON, an additional power consumption
+Page  111: 3. When the ADC is ON (ADON bit set in the ADC_CR2 register), add an additional power consumption of 1.73 mA per ADC
+Page  111: 2. When analog peripheral blocks such as ADCs, DACs, HSE, LSE, HSI, or LSI are ON, an additional power consumption
+Page  111: 3. When the ADC is ON (ADON bit set in the ADC_CR2 register), add an additional power consumption of 1.73 mA per ADC
+Page  112: 2. When analog peripheral blocks such as ADCs, DACs, HSE, LSE, HSI, or LSI are ON, an additional power consumption
+Page  112: 3. When the ADC is ON (ADON bit set in the ADC_CR2 register), add an additional power consumption of 1.73 mA per ADC
+Page  113: 2. When analog peripheral blocks such as ADCs, DACs, HSE, LSE, HSI, or LSI are ON, an additional power consumption
+Page  113: 3. When the ADC is ON (ADON bit set in the ADC_CR2 register), add an additional power consumption of 1.73 mA per ADC
+Page  114: 2. When analog peripheral blocks such as ADCs, DACs, HSE, LSE, HSI, or LSI are ON, an additional power consumption
+Page  114: 3. When the ADC is ON (ADON bit set in the ADC_CR2 register), add an additional power consumption of 1.73 mA per ADC
+Page  115: 2. When analog peripheral blocks such as ADCs, DACs, HSE, LSE, HSI, or LSI are ON, an additional power consumption
+Page  116: 2. When analog peripheral blocks such as ADCs, DACs, HSE, LSE, HSI, or LSI are ON, an additional power consumption
+Page  121: these I/Os in analog mode. This is notably the case of ADC input pins which should be
+Page  126: ADC1(5)                  4.5                 4.4                 3.5
+Page  126: ADC2                     4.5                 4.4                 3.5
+Page  126: ADC3                     4.5                 4.4                 3.3
+Page  126: 5. When the ADC is ON (ADON bit set in the ADC_CR2 register), add an additional power consumption of
+Page  126: 1.73 mA per ADC for the analog part.
+Page  143: The failure is indicated by an out of range parameter: ADC error above a certain limit (>5
+Page  151: 6.3.21      12-bit ADC characteristics
+Page  151: Table 63. ADC characteristics
+Page  152: Table 63. ADC characteristics (continued)
+Page  152: fADC      ADC clock frequency
+Page  152: fADC = 30 MHz,
+Page  152: -                     -           -        17      1/fADC
+Page  152: RADC(2)(4) Sampling switch resistance                         -                     -           -            6    kΩ
+Page  152: CADC(2)                                                      -                     -           4            7    pF
+Page  152: Injection trigger conversion              fADC = 30 MHz                -           -      0.100      µs
+Page  152: latency                                                                -           -       3(5)     1/fADC
+Page  152: Regular trigger conversion                fADC = 30 MHz                -           -      0.067      µs
+Page  152: latency                                                                -           -       2(5)     1/fADC
+Page  152: fADC = 30 MHz             0.100          -        16       µs
+Page  152: -                    3            -       480      1/fADC
+Page  152: fADC = 30 MHz
+Page  152: fADC = 30 MHz
+Page  152: Total conversion time (including          fADC = 30 MHz
+Page  152: fADC = 30 MHz
+Page  152: 1/fADC
+Page  152: Single ADC
+Page  152: Interleave Dual ADC             -           -       3.75     Msps
+Page  152: fS(2)     (fADC = 30 MHz, and
+Page  152: tS = 3 ADC cycles)
+Page  152: Interleave Triple ADC           -           -            6   Msps
+Page  153: Table 63. ADC characteristics (continued)
+Page  153: ADC VREF DC current
+Page  153: ADC VDDA DC current
+Page  153: 4. RADC maximum value is given for VDD=1.7 V, and minimum value for VDD=3.3 V.
+Page  153: R AIN = ---------------------------------------------------------------- – R ADC
+Page  153: f ADC × C ADC × ln ( 2                                         )
+Page  153: sampling periods defined in the ADC_SMPR1 register.
+Page  153: Table 64. ADC static accuracy at fADC = 18 MHz
+Page  153: fADC =18 MHz
+Page  153: Table 65. ADC static accuracy at fADC = 30 MHz
+Page  153: fADC = 30 MHz,
+Page  154: Table 66. ADC static accuracy at fADC = 36 MHz
+Page  154: fADC =36 MHz,
+Page  154: Table 67. ADC dynamic accuracy at fADC = 18 MHz - limited test conditions(1)
+Page  154: fADC =18 MHz
+Page  154: Table 68. ADC dynamic accuracy at fADC = 36 MHz - limited test conditions(1)
+Page  154: fADC =36 MHz
+Page  154: Note:          ADC accuracy vs. negative injection current: injecting a negative current on any analog
+Page  154: Section 6.3.17 does not affect the ADC accuracy.
+Page  155: Figure 41. ADC accuracy characteristics
+Page  155: n = ADC resolution
+Page  155: Figure 42. Typical connection diagram using the ADC
+Page  155: I/O                                                          Sample-and-hold ADC converter
+Page  155: RAIN(1)                                                                                                                                                      switch                                                           RADC
+Page  155: Cparasitic                                                                   Ilkg(3)                                                                                                            CADC
+Page  155: 1. Refer to Table 63 for the values of RAIN, RADC and CADC.
+Page  155: fADC should be reduced.
+Page  157: TS_temp(2)          ADC sampling time when reading the temperature (1 °C accuracy)           10          -           -      µs
+Page  157: TS_CAL1             TS ADC raw data acquired at temperature of 30 °C, VDDA= 3.3 V           0x1FF0 F44C - 0x1FF0 F44D
+Page  157: TS_CAL2             TS ADC raw data acquired at temperature of 110 °C, VDDA= 3.3 V          0x1FF0 F44E - 0x1FF0 F44F
+Page  157: ADC sampling time when reading the VBAT
+Page  157: ADC sampling time when reading the
+Page  226: power          ADC              access         memory access
+Page  228: Updated Table 64: ADC characteristics adding VREF- negative voltage
+Page  229: – Figure 41: ADC accuracy characteristics
+Page  229: – Figure 42: Typical connection diagram using the ADC

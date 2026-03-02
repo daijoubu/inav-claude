@@ -1,0 +1,153 @@
+Keyword: AXI
+Occurrences: 149
+================================================================================
+
+Page    2: 3.6      AXI-AHB bus matrix . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+Page    4: 6.1.1      Minimum and maximum values . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 118
+Page    4: 6.2     Absolute maximum ratings . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 120
+Page    4: 6.3.15     Absolute maximum ratings (electrical sensitivity) . . . . . . . . . . . . . . . . 160
+Page    6: Table 25.   Typical and maximum current consumption in Run mode, code with data processing
+Page    6: Table 26.   Typical and maximum current consumption in Run mode, code with data processing
+Page    6: or SRAM on AXI (L1-cache ON), regulator ON . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 129
+Page    6: Table 27.   Typical and maximum current consumption in Run mode, code with data processing
+Page    6: running from flash memory or SRAM on AXI (L1-cache disabled), regulator ON . . . . . . 130
+Page    6: Table 28.   Typical and maximum current consumption in Run mode, code with data processing
+Page    6: Table 29.   Typical and maximum current consumption in Run mode, code with data processing
+Page    6: or SRAM on AXI (L1-cache ON), regulator OFF. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 132
+Page    6: Table 30.   Typical and maximum current consumption in Sleep mode, regulator ON. . . . . . . . . . . . 133
+Page    6: Table 31.   Typical and maximum current consumption in Sleep mode, regulator OFF . . . . . . . . . . . 133
+Page    6: Table 32.   Typical and maximum current consumptions in Stop mode . . . . . . . . . . . . . . . . . . . . . . . 134
+Page    6: Table 33.   Typical and maximum current consumptions in Standby mode . . . . . . . . . . . . . . . . . . . . 135
+Page    6: Table 34.   Typical and maximum current consumptions in VBAT mode. . . . . . . . . . . . . . . . . . . . . . . 136
+Page    7: Table 54.   ESD absolute maximum ratings . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 161
+Page    9: Figure 3.    STM32F745xx and STM32F746xx AXI-AHB bus matrix architecture . . . . . . . . . . . . . . . 21
+Page   13: buses, a 32-bit multi-AHB bus matrix and a multi layer AXI interconnect supporting internal
+Page   16: Maximum CPU frequency                                                                                           216 MHz(3)
+Page   16: 3. 216 MHz maximum frequency for -40°C to + 85°C ambient temperature range (200 MHz maximum frequency for -40°C to + 105°C
+Page   18: AHB2AXI
+Page   18: AXIM
+Page   19: –    64-bit AXI4 interface
+Page   19: •   Harvard instruction and data caches and AXI master (AXIM) interface.
+Page   20: 3.6        AXI-AHB bus matrix
+Page   20: •    An AXI to multi AHB bridge converting AXI4 protocol to AHB-Lite protocol:
+Page   20: –     3x AXI to 32-bit AHB bridges connected to AHB bus matrix
+Page   20: –     1x AXI to 64-bit AHB bridge connected to the embedded flash
+Page   21: Figure 3. STM32F745xx and STM32F746xx AXI-AHB bus matrix architecture
+Page   21: AXIM
+Page   21: AXI to
+Page   21: support burst transfer and are designed to provide the maximum peripheral bandwidth
+Page   22: •   The Maximum FMC_CLK/FMC_SDCLK frequency for synchronous accesses is
+Page   24: (APB2) and the low-speed APB (APB1) domains. The maximum frequency of the two AHB
+Page   24: buses is 216 MHz while the maximum frequency of the high-speed APB domains is
+Page   24: 108 MHz. The maximum allowed frequency of the low-speed APB domain is 54 MHz.
+Page   25: •   All flash address space mapped on ITCM or AXIM interface
+Page   25: •   All RAM address space: ITCM, DTCM RAMs and SRAMs mapped on AXIM interface
+Page   28: best compromise between the maximum frequency and dynamic power
+Page   29: be aligned with the targeted maximum frequency.The two 2.2 µF ceramic capacitors should
+Page   30: Note:      The minimum value of V12 depends on the maximum frequency targeted in the application.
+Page   35: 1. The maximum timer clock is either 108 or 216 MHz depending on TIMPRE bit configuration in the RCC_DCKCFGR
+Page   41: •   Maximum symbol rate: 12.288 MHz
+Page   45: Fast I/O handling allowing maximum I/O toggling up to 108 MHz.
+Page   74: - The speed should not exceed 2 MHz with a maximum load of 30 pF.
+Page   91: Flash memory on AXIM interface 0x0800 0000 - 0x080F FFFF
+Page  100: 6.1.1         Minimum and maximum values
+Page  100: Unless otherwise specified the minimum and maximum values are guaranteed in the worst
+Page  100: characterization, the minimum and maximum values refer to sample tests and represent the
+Page  102: 6.2         Absolute maximum ratings
+Page  102: Stresses above the absolute maximum ratings listed in Table 15: Voltage characteristics,
+Page  102: the device at these conditions is not implied. Exposure to maximum rating conditions for
+Page  102: Absolute maximum
+Page  102: 2. VIN maximum value must always be respected. Refer to Table 16 for the values of the maximum allowed
+Page  103: IVDD          Maximum current into each VDD_x power line (source)(1)                                     100
+Page  103: IVSS          Maximum current out of each VSS_x ground line (sink)                                      − 100
+Page  103: 3. Positive injection is not possible on these I/Os and does not occur for input voltages lower than the specified maximum
+Page  103: exceeded. Refer to Table 15: Voltage characteristics for the values of the maximum allowed input voltage.
+Page  103: 5. When several inputs are submitted to a current injection, the maximum ΣIINJ(PIN) is the absolute sum of the positive and
+Page  103: TJ            Maximum junction temperature                                     125
+Page  105: Ambient temperature for 6 suffix Maximum power dissipation                          − 40      -      85
+Page  105: Ambient temperature for 7 suffix Maximum power dissipation                          − 40      -      105
+Page  105: 2. 216 MHz maximum frequency for 6 suffix version (200 MHz maximum frequency for 7 suffix version).
+Page  106: 6. It is recommended to power VDD and VDDA from the same source. A maximum difference of 300 mV between VDD and
+Page  106: Maximum flash
+Page  106: Maximum HCLK
+Page  106: 2. Thanks to the ART accelerator on ITCM interface and L1-cache on AXI interface, the number of wait states given here
+Page  110: Typical and maximum current consumption
+Page  110: •     The maximum values are obtained for 1.7 V ≤ VDD ≤ 3.6 V voltage range and a
+Page  110: maximum ambient temperature (TA) unless otherwise specified.
+Page  110: •     For the voltage range 1.7 V ≤ VDD ≤ 3.6 V, the maximum frequency is 180 MHz.
+Page  110: Table 25. Typical and maximum current consumption in Run mode, code with data processing
+Page  111: Table 26. Typical and maximum current consumption in Run mode, code with data processing
+Page  111: or SRAM on AXI (L1-cache ON), regulator ON
+Page  112: Table 27. Typical and maximum current consumption in Run mode, code with data processing
+Page  112: running from flash memory or SRAM on AXI (L1-cache disabled), regulator ON
+Page  113: Table 28. Typical and maximum current consumption in Run mode, code with data processing
+Page  114: Table 29. Typical and maximum current consumption in Run mode, code with data processing
+Page  114: or SRAM on AXI (L1-cache ON), regulator OFF
+Page  115: Table 30. Typical and maximum current consumption in Sleep mode, regulator ON
+Page  115: Table 31. Typical and maximum current consumption in Sleep mode, regulator OFF
+Page  116: Table 32. Typical and maximum current consumptions in Stop mode
+Page  117: Table 33. Typical and maximum current consumptions in Standby mode
+Page  118: Table 34. Typical and maximum current consumptions in VBAT mode
+Page  130: Gm_crit_max Maximum critical crystal gm                       Startup                -       -        1     mA/V
+Page  130: 2. This parameter depends on the crystal used in the application. The minimum and maximum values must
+Page  132: Gm_crit_max Maximum critical crystal gm                                                                   µA/V
+Page  140: 2. The maximum programming time is measured after 100K erase operations.
+Page  140: 2. The maximum programming time is measured after 100K erase operations.
+Page  142: 6.3.15         Absolute maximum ratings (electrical sensitivity)
+Page  143: Table 54. ESD absolute maximum ratings
+Page  143: Maximum
+Page  145: 4. Leakage could be higher than the maximum value, if negative current is injected on adjacent pins, Refer to Table 56: I/O
+Page  145: higher than the maximum value, if negative current is injected on adjacent pins.Refer to Table 56: I/O current injection
+Page  146: mode, the speed should not exceed 2 MHz with a maximum load of 30 pF.
+Page  146: respect the absolute maximum rating specified in Section 6.2. In particular:
+Page  146: •     The sum of the currents sourced by all the I/Os on VDD, plus the maximum Run
+Page  146: consumption of the MCU sourced on VDD, cannot exceed the absolute maximum rating
+Page  146: •     The sum of the currents sunk by all the I/Os on VSS plus the maximum Run
+Page  146: consumption of the MCU sunk on VSS cannot exceed the absolute maximum rating
+Page  147: 1. The IIO current sunk by the device must always respect the absolute maximum rating specified in Table 16.
+Page  147: 3. The IIO current sourced by the device must always respect the absolute maximum rating specified in
+Page  148: fmax(IO)out   Maximum frequency(3)            CL = 10 pF, VDD ≥ 2.7 V       -     -      8      MHz
+Page  148: fmax(IO)out   Maximum frequency(3)                                                              MHz
+Page  148: fmax(IO)out   Maximum frequency(3)            CL = 40 pF, VDD ≥ 1.7 V       -     -     25      MHz
+Page  149: fmax(IO)out   Maximum frequency(3)                                                                         MHz
+Page  149: 3. The maximum frequency is defined in Figure 39.
+Page  149: 4. For maximum frequencies above 50 MHz and VDD > 2.4 V, the compensation cell should be used.
+Page  149: Maximum frequency is achieved with a duty cycle at (45 - 55%) when loaded by the
+Page  151: Maximum possible count                                                 65536 ×
+Page  151: 3. The maximum timer frequency on APB1 or APB2 is up to 216 MHz, by setting the TIMPRE bit in the
+Page  153: 4. RADC maximum value is given for VDD=1.7 V, and minimum value for VDD=3.3 V.
+Page  153: The formula above (Equation 1) is used to determine the maximum external impedance
+Page  155: ET = total unadjusted error: maximum deviation
+Page  155: 7                                                                                                                                                              (1)                                             EO = offset error: maximum deviation between the first
+Page  155: 4                                                                                                                                                                                                              ED = differential linearity error: maximum deviation
+Page  155: 2                                                                                                                                                                                                              EL = integral linearity error: maximum deviation between
+Page  155: 5. ET = Total Unadjusted Error: maximum deviation between the actual and the ideal transfer curves.
+Page  155: ED = Differential Linearity Error: maximum deviation between actual steps and the ideal one.
+Page  155: EL = Integral Linearity Error: maximum deviation between any actual transition and the end point
+Page  158: Maximum capacitive load at DAC_OUT
+Page  158: DAC_OUT Lower DAC_OUT voltage                                                       It gives the maximum output excursion of
+Page  158: min(2) with buffer OFF                                                            It gives the maximum output excursion of
+Page  161: maximum load Cload supported in Fm+, which is given by these formulas:
+Page  161: Maximum pulse width of spikes
+Page  163: 2. Excepting SPI1 with SCK IO pin mapped on PA5. In this configuration, Maximum achievable frequency is 40MHz.
+Page  163: 3. Maximum Frequency of Slave Transmitter is determined by sum of Tv(SO) and Tsu(MI) intervals which has to fit into SCK
+Page  165: 2. The maximum value of 256xFs is 45 MHz (APB1 maximum frequency).
+Page  165: (I2SDIV/(2*I2SDIV+ODD) and a maximum value of (I2SDIV+ODD)/(2*I2SDIV+ODD). FS
+Page  165: maximum value is supported for each mode/condition.
+Page  167: 2. 256xFs maximum corresponds to 45 MHz (APB2 xaximum frequency)
+Page  182: –     For 2.7 V≤VDD≤3.6 V, maximum FMC_CLK = 108 MHz at CL=20 pF or 90 MHz at
+Page  182: –     For 1.71 V≤VDD<2.7 V, maximum FMC_CLK = 70 MHz at CL=10 pF (on FMC_CLK).
+Page  193: –     For 3.0 V≤VDD≤3.6 V, maximum FMC_SDCLK= 100 MHz at CL=20 pF (on
+Page  193: –     For 2.7 V≤VDD≤3.6 V, maximum FMC_SDCLK = 90 MHz at CL=30 pF (on
+Page  193: –     For 1.71 V≤VDD<1.9 V, maximum FMC_SDCLK = 70 MHz at CL=10 pF (on
+Page  210: 3. Dimension is measured at the maximum bump diameter parallel to primary datum Z.
+Page  224: The maximum chip-junction temperature, TJ max, in degrees Celsius, may be calculated
+Page  224: •     TA max is the maximum ambient temperature in ° C,
+Page  224: •     PINT max is the product of IDD and VDD, expressed in Watts. This is the maximum chip
+Page  224: PI/O max represents the maximum power dissipation on output pins where:
+Page  226: Maximum
+Page  226: Operating                       memory          Maximum Flash
+Page  226: 2. Thanks to the ART accelerator on ITCM interface and L1-cache on AXI interface, the number of wait states
+Page  228: Updated Table 55: ESD absolute maximum ratings adding packages.
+Page  228: Updated note of Table 34: Typical and maximum current consumptions
+Page  229: – Updated Table 55: ESD absolute maximum ratings.

@@ -1,0 +1,189 @@
+Keyword: I2S
+Occurrences: 185
+================================================================================
+
+Page    2: muxed simplex I2S for audio                      – 10/100 Ethernet MAC with dedicated DMA:
+Page    4: 3.26   Serial peripheral interface (SPI)/inter- integrated sound interfaces (I2S) . 44
+Page    4: 3.29   Audio PLL (PLLI2S) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 45
+Page    8: Table 48.   PLLI2S characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 142
+Page    9: Table 87.    I2S dynamic characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 178
+Page   12: Figure 49.   I2S slave timing diagram (Philips protocol)(1) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 179
+Page   12: Figure 50.   I2S master timing diagram (Philips protocol)(1) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 179
+Page   15: •   Six SPIs, three I2Ss in half-duplex mode. To achieve audio class accuracy, the I2S
+Page   17: SPI / I2S           4/3 (simplex)(2)             6/3 (simplex)(2)                                                        6/3 (sim
+Page   18: 2.   The SPI1, SPI2 and SPI3 interfaces give the flexibility to work in an exclusive way in either the SPI mode or the I2S audio mode. SPI5 is not available
+Page   20: SPI1/I2S1
+Page   20: SCK, NSS as AF                                                                                                                                       TIM6        16b                                                         SPI2/I2S2
+Page   20: SCK, NSS as AF                                                                                                                                      TIM7        16b                                                         SPI3/I2S3
+Page   24: •   SPI and I2S
+Page   28: The devices embed two dedicated PLL (PLLI2S and PLLSAI) which allow to achieve audio
+Page   28: class performance. In this case, the I2S and SAI master clock can generate all standard
+Page   44: interfaces (I2S)
+Page   44: Three standard I2S interfaces (multiplexed with SPI1, SPI2 and SPI3) are available. They
+Page   44: I2S interfaces is/are configured in master mode, the master clock can be output to the
+Page   44: All I2Sx can be served by the DMA controller.
+Page   44: block: I2S standards, LSB or MSB-justified, PCM/DSP, TDM, AC’97 and SPDIF output,
+Page   45: 3.29     Audio PLL (PLLI2S)
+Page   45: The devices feature an additional dedicated PLL for audio I2S and SAI applications. It allows
+Page   45: to achieve error-free I2S sampling clock accuracy without compromising on the CPU
+Page   45: The PLLI2S configuration can be modified to manage an I2S/SAI sample rate change
+Page   45: I2S/SAI flow with an external PLL (or Codec output).
+Page   45: PLLI2S is programmed to achieve another audio sampling frequency (49.152 MHz or
+Page   69: SPI2_MOSI/I2S2_SD,     ADC2_IN11,
+Page   69: SPI2_MOSI/I2S2_SD,      ADC1_IN13,
+Page   70: SPI1_NSS/I2S1_WS,
+Page   70: SPI3_NSS/I2S3_WS,       ADC1_IN4,
+Page   71: SPI1_SCK/I2S1_CK,
+Page   71: SPI1_MOSI/I2S1_SD,
+Page   71: DFSDM1_CKIN2, I2S1_MCK,
+Page   72: SPI3_MOSI/I2S3_SD,
+Page   73: SPI2_SCK/I2S2_CK,
+Page   75: SPI2_NSS/I2S2_WS,
+Page   75: SPI2_SCK/I2S2_CK,
+Page   75: SPI2_MOSI/I2S2_SD,
+Page   77: I2S2_MCK, DFSDM1_CKIN3,
+Page   78: I2S3_MCK, DFSDM1_DATIN3,
+Page   78: I2C3_SDA, I2S_CKIN,
+Page   78: SPI2_SCK/I2S2_CK,       OTG_FS_VB
+Page   78: SPI2_NSS/I2S2_WS,
+Page   78: SPI2_SCK/I2S2_CK,
+Page   79: SPI2_NSS/I2S2_WS,
+Page   79: SPI2_SCK/I2S2_CK,
+Page   79: SPI2_MOSI/I2S2_SD,
+Page   80: SPI1_NSS/I2S1_WS,
+Page   80: A8         77        110       A13        138       160       A13          F8          138 160             A13                                           I/O        FT               -         SPI3_NSS/I2S3_WS,           -
+Page   80: SPI3_SCK/I2S3_CK,
+Page   80: SPI3_MOSI/I2S3_SD,
+Page   80: SPI2_SCK/I2S2_CK,
+Page   81: SPI3_MOSI/I2S3_SD,
+Page   81: SPI1_MOSI/I2S1_SD,
+Page   81: SPI1_NSS/I2S1_WS, LCD_G3,
+Page   81: SPI1_SCK/I2S1_CK,
+Page   82: SPI1_SCK/I2S1_CK,
+Page   82: A7         89        133       A10        161       192       A10          E8          161 192             A10                I/O                                   FT               -         SPI3_SCK/I2S3_CK,           -
+Page   82: PB4(NJTR                                                                  SPI2_NSS/I2S2_WS,
+Page   83: SPI1_MOSI/I2S1_SD,
+Page   83: SPI3_MOSI/I2S3_SD,
+Page   83: SPI2_NSS/I2S2_WS,
+Page   89: SPI2/I2S                    SAI2/QU
+Page   89: SPI2/I2S            SPI6/SAI
+Page   89: SPI1/I2S            2/SPI3/I2          CAN1/2/T ADSPI/S
+Page   89: 1/2                            1/CEC     I2S3/SPI            2/3/UART           SPI/FMC/ TG2_HS/  C2/
+Page   89: PA4    -        -         -         -            -       S/I2S1_ S/I2S3_                         -          -
+Page   89: PA5    -     H1/TIM2      -                      -       K/I2S1_     -        -                  -
+Page   89: PA7    -                                         -       OSI/I2S1    -        -                             -
+Page   89: PA9    -                  -         -                    K/I2S2_     -                 -         -          -
+Page   90: SPI2/I2S                    SAI2/QU
+Page   90: SPI2/I2S            SPI6/SAI
+Page   90: SPI1/I2S            2/SPI3/I2          CAN1/2/T ADSPI/S
+Page   90: 1/2                            1/CEC     I2S3/SPI            2/3/UART           SPI/FMC/ TG2_HS/  C2/
+Page   90: PA11       -                   -         -            -       S/I2S2_                           -
+Page   90: PA12       -                   -         -            -       K/I2S2_
+Page   90: PA15      JTDI    H1/TIM2      -         -                    S/I2S1_ S/I2S3_                            -         -      CAN
+Page   90: SI/I2S3_      -       I_CLK    CKIN1
+Page   90: PB3   RACES                 -         -            -       K/I2S1_ K/I2S3_        -                   -
+Page   90: PB4   NJTRST      -                   -            -                           S/I2S2_                -                CAN
+Page   90: PB5     -                             -                    OSI/I2S1 OSI/I2S3      -
+Page   91: SPI2/I2S                    SAI2/QU
+Page   91: SPI2/I2S            SPI6/SAI
+Page   91: SPI1/I2S            2/SPI3/I2          CAN1/2/T ADSPI/S
+Page   91: 1/2                            1/CEC     I2S3/SPI            2/3/UART           SPI/FMC/ TG2_HS/  C2/
+Page   91: TIM4_C                I2C1_SD               DFSDM1    USART1                                I2S4
+Page   91: PB9     -                                                  S/I2S2_                         -
+Page   91: PB10       -                   -         -                    K/I2S2_                         -
+Page   91: PB12       -                   -         -                    S/I2S2_
+Page   91: PB13       -                   -         -            -       K/I2S2_
+Page   91: PB15                           -                          OSI/I2S2                  -
+Page   92: SPI2/I2S                    SAI2/QU
+Page   92: SPI2/I2S            SPI6/SAI
+Page   92: SPI1/I2S            2/SPI3/I2          CAN1/2/T ADSPI/S
+Page   92: 1/2                            1/CEC     I2S3/SPI            2/3/UART           SPI/FMC/ TG2_HS/  C2/
+Page   92: PC1               -         -                      -       OSI/I2S2                -         -         -
+Page   92: PC3     -         -         -                      -       OSI/I2S2      -         -         -         -       ULPI_NX
+Page   92: DFSDM1_                  I2S1_M                         SPDIF_R                        RXD
+Page   92: TIM3_C    TIM8_CH                 I2S2_M               DFSDM1    USART6    FMC_NW     SDMMC2
+Page   92: TIM3_C     TIM8_                             I2S3_M              USART6    FMC_NE     SDMMC2
+Page   92: TIM3_C     TIM8_      I2C3_SD     I2S_CKI              UART5_
+Page   92: PC10       -         -         -                      -          -       K/I2S3_                     I_BK1_IO        -
+Page   93: SPI2/I2S                    SAI2/QU
+Page   93: SPI2/I2S            SPI6/SAI
+Page   93: SPI1/I2S            2/SPI3/I2          CAN1/2/T ADSPI/S
+Page   93: 1/2                            1/CEC     I2S3/SPI            2/3/UART           SPI/FMC/ TG2_HS/  C2/
+Page   93: PC12                 -         -         -            -          -    OSI/I2S3                         -         -
+Page   93: PD3     -         -         -                      -       K/I2S2_ _DATAIN                -         -         -
+Page   93: PD6     -         -         -                      -       OSI/I2S3                       -         -
+Page   93: PD7     -         -         -                      -       OSI/I2S1                                 -         -
+Page   94: SPI2/I2S                    SAI2/QU
+Page   94: SPI2/I2S            SPI6/SAI
+Page   94: SPI1/I2S            2/SPI3/I2          CAN1/2/T ADSPI/S
+Page   94: 1/2                            1/CEC     I2S3/SPI            2/3/UART           SPI/FMC/ TG2_HS/  C2/
+Page   95: SPI2/I2S                    SAI2/QU
+Page   95: SPI2/I2S            SPI6/SAI
+Page   95: SPI1/I2S            2/SPI3/I2          CAN1/2/T ADSPI/S
+Page   95: 1/2                            1/CEC     I2S3/SPI            2/3/UART           SPI/FMC/ TG2_HS/  C2/
+Page   96: SPI2/I2S                    SAI2/QU
+Page   96: SPI2/I2S            SPI6/SAI
+Page   96: SPI1/I2S            2/SPI3/I2          CAN1/2/T ADSPI/S
+Page   96: 1/2                            1/CEC     I2S3/SPI            2/3/UART           SPI/FMC/ TG2_HS/  C2/
+Page   97: SPI2/I2S                    SAI2/QU
+Page   97: SPI2/I2S            SPI6/SAI
+Page   97: SPI1/I2S            2/SPI3/I2          CAN1/2/T ADSPI/S
+Page   97: 1/2                            1/CEC     I2S3/SPI            2/3/UART           SPI/FMC/ TG2_HS/  C2/
+Page   98: SPI2/I2S                    SAI2/QU
+Page   98: SPI2/I2S            SPI6/SAI
+Page   98: SPI1/I2S            2/SPI3/I2          CAN1/2/T ADSPI/S
+Page   98: 1/2                            1/CEC     I2S3/SPI            2/3/UART           SPI/FMC/ TG2_HS/  C2/
+Page   98: PG10       -         -         -         -            -       S/I2S1_     -        -        -      LCD_G3
+Page   98: PG11       -         -         -         -            -       K/I2S1_     -                 -         -
+Page   99: SPI2/I2S                    SAI2/QU
+Page   99: SPI2/I2S            SPI6/SAI
+Page   99: SPI1/I2S            2/SPI3/I2          CAN1/2/T ADSPI/S
+Page   99: 1/2                            1/CEC     I2S3/SPI            2/3/UART           SPI/FMC/ TG2_HS/  C2/
+Page  100: SPI2/I2S                    SAI2/QU
+Page  100: SPI2/I2S            SPI6/SAI
+Page  100: SPI1/I2S            2/SPI3/I2          CAN1/2/T ADSPI/S
+Page  100: 1/2                            1/CEC     I2S3/SPI            2/3/UART           SPI/FMC/ TG2_HS/  C2/
+Page  100: PI0     -       -                   -            -       S/I2S2_     -        -        -         -         -
+Page  100: PI1     -       -         -                      -       K/I2S2_     -        -        -         -         -
+Page  100: PI3     -       -         -                      -       OSI/I2S2    -        -        -         -         -
+Page  101: SPI2/I2S                    SAI2/QU
+Page  101: SPI2/I2S            SPI6/SAI
+Page  101: SPI1/I2S            2/SPI3/I2          CAN1/2/T ADSPI/S
+Page  101: 1/2                            1/CEC     I2S3/SPI            2/3/UART           SPI/FMC/ TG2_HS/  C2/
+Page  102: SPI2/I2S                    SAI2/QU
+Page  102: SPI2/I2S            SPI6/SAI
+Page  102: SPI1/I2S            2/SPI3/I2          CAN1/2/T ADSPI/S
+Page  102: 1/2                            1/CEC     I2S3/SPI            2/3/UART           SPI/FMC/ TG2_HS/  C2/
+Page  131: SPI2/I2S2               3.0             2.9           1.4
+Page  131: SPI3/I2S3(3)            3.0             3.3           1.4
+Page  132: SPI1/I2S1                  3.9                 3.6                 3.1
+Page  132: 3. To enable an I2S peripheral, first set the I2SMOD bit and then the I2SE bit in the SPI_I2SCFGR register.
+Page  141: between PLL and PLLI2S.
+Page  142: Table 48. PLLI2S characteristics
+Page  142: fPLLI2S_IN        PLLI2S input clock(1)                                 -                  0.95(2)       1     2.10
+Page  142: PLLI2S multiplier output clock for
+Page  142: fPLLI2SP_OUT                                                            -                     -          -     216
+Page  142: PLLI2S multiplier output clock for
+Page  142: fPLLI2SQ_OUT                                                            -                     -          -     216    MHz
+Page  142: PLLI2S multiplier output clock for
+Page  142: fPLLI2SR_OUT                                                            -                     -          -     216
+Page  142: I2S
+Page  142: fVCO_OUT          PLLI2S VCO output                                     -                    100         -     432
+Page  142: tLOCK             PLLI2S lock time                                                                                    µs
+Page  142: Master I2S clock jitter
+Page  142: WS I2S clock jitter                                                         -         400     -     ps
+Page  142: PLLI2S power consumption on            VCO freq = 192 MHz                 0.15               0.40
+Page  142: IDD(PLLI2S)(4)                                                                                           -            mA
+Page  142: PLLI2S power consumption on            VCO freq = 192 MHz                 0.30               0.40
+Page  142: IDDA(PLLI2S)(4)                                                                                          -            mA
+Page  178: I2S interface characteristics
+Page  178: Unless otherwise specified, the parameters given in Table 87 for the I2S interface are
+Page  178: Table 87. I2S dynamic characteristics(1)
+Page  178: fMCK            I2S Main clock output                        -                      256x8K   256xFs(2)   MHz
+Page  178: fCK             I2S clock frequency                                                                     MHz
+Page  178: DCK       I2S clock frequency duty cycle Slave receiver                              30        70        %
+Page  178: Note:          Refer to RM0410 reference manual I2S section for more details about the sampling
+Page  178: of (I2SDIV/(2*I2SDIV+ODD) and a maximum value of (I2SDIV+ODD)/(2*I2SDIV+ODD). FS
+Page  179: Figure 49. I2S slave timing diagram (Philips protocol)(1)
+Page  179: Figure 50. I2S master timing diagram (Philips protocol)(1)
+Page  254: interfaces (I2S) (SPI2 and SPI3 values).

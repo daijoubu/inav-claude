@@ -1,0 +1,63 @@
+Keyword: DMA
+Occurrences: 59
+================================================================================
+
+Page    1: Accelerator™) and L1-cache: 4-Kbyte data                     • General-purpose DMA: 16-stream DMA
+Page    1: enhanced graphic content creation (DMA2D)                          controller with on-chip PHY
+Page    1: – POR, PDR, PVD and BOR                                            DMA, on-chip full-speed PHY and ULPI
+Page    1: – Dedicated USB power                                          – 10/100 Ethernet MAC with dedicated DMA:
+Page    2: 3.7      DMA controller (DMA) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+Page    2: 3.11     Chrom-ART Accelerator™ (DMA2D) . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+Page    3: 3.31    Ethernet MAC interface with dedicated DMA and IEEE 1588 support . . . 42
+Page   15: (DMA2D)
+Page   18: Ethernet MAC                          DMA/
+Page   18: USB                       DMA/                                                                                                                                                                                                                                NBL[3:0], SDCLKE[1:0], SDNE[1:0],
+Page   18: DMA2
+Page   18: DMA1                    FIFO                                                                                                                                                                            VDD
+Page   18: (DMA2D)                                                                                                                                                                RC    HS                               reset            supervision                             WKUP[4:0]
+Page   18: 168 AF                   EXT IT. WKUP                                                                                    DMA2                                                     DMA1                                                                 TIM4               16b                 4 channels, ETR as AF
+Page   20: The Data TCM RAM is accessible by the GP-DMAs and peripherals DMAs through specific
+Page   20: –     The 32-bit multi-AHB bus matrix interconnects all the masters (CPU, DMAs,
+Page   20: Ethernet, USB HS, LCD-TFT, and DMA2D) and the slaves (flash memory, RAM,
+Page   21: ARM Cortex-M7                           DMA1                 DMA2 Ethernet   HS                                        (DMA2D)
+Page   21: DMA_MEM2
+Page   21: DMA_P2
+Page   21: DMA_MEM1
+Page   21: DMA2D
+Page   21: DMA_PI
+Page   21: 3.7                   DMA controller (DMA)
+Page   21: The devices feature two general-purpose dual-port DMAs (DMA1 and DMA2) with 8
+Page   21: The two DMA controllers support circular buffer management, so that no specific code is
+Page   21: needed when the controller reaches the end of the buffer. The two DMA controllers also
+Page   22: Each stream is connected to dedicated hardware DMA requests, with support for software
+Page   22: The DMA can be used with the main peripherals:
+Page   23: 3.11     Chrom-ART Accelerator™ (DMA2D)
+Page   23: The Chrom-Art Accelerator™ (DMA2D) is a graphic accelerator which offers advanced bit
+Page   23: DMAs.
+Page   35: DMA      Capture/        Complem
+Page   36: TIM1 and TIM8 support independent DMA request generation.
+Page   36: TIM2, TIM3, TIM4, TIM5 all have independent DMA request generation. They are
+Page   37: TIM6 and TIM7 support independent DMA request generation.
+Page   38: •    1-byte buffer with DMA capability
+Page   39: Continuous communication using DMA                               X                      X
+Page   40: by the DMA controller.
+Page   40: All I2Sx can be served by the DMA controller.
+Page   41: SAI1 and SAI2 can be served by the DMA controller
+Page   41: •   Communication using DMA for audio samples
+Page   41: •   Communication using DMA for control and user channel information
+Page   42: The SDMMC can be served by the DMA controller
+Page   42: 3.31       Ethernet MAC interface with dedicated DMA and IEEE 1588
+Page   42: •    Dedicated DMA controller allowing high-speed transfers between the dedicated SRAM
+Page   44: •   Internal USB DMA
+Page   45: The ADC can be served by the DMA controller. An analog watchdog feature allows very
+Page   46: •    DMA capability for each channel
+Page   46: the timer update outputs that are also connected to different DMA streams.
+Page   93: 0x4002 B000 - 0x4002 BBFF   DMA2D
+Page   93: 0x4002 6400 - 0x4002 67FF   DMA2
+Page   93: 0x4002 6000 - 0x4002 63FF   DMA1
+Page   97: 0x4002 B000 - 0x4002 BBFF   Chrom-ART (DMA2D)
+Page   97: 0x4002 6400 - 0x4002 67FF   DMA2
+Page   97: 0x4002 6000 - 0x4002 63FF   DMA1
+Page  124: DMA1           2.7 x N + 5.1    2.6 x N + 4.7      2.2 x N + 4
+Page  124: DMA2           2.2 x N + 4.9    2.6 x N + 4.4     2.2 x N + 4.1
+Page  124: DMA2D               87.1             82.5              69.6

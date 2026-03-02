@@ -1,0 +1,73 @@
+Keyword: VREF
+Occurrences: 69
+================================================================================
+
+Page   11: Figure 50.   Power supply and reference decoupling (VREF+ not connected to VDDA). . . . . . . . . . . . . 155
+Page   11: Figure 51.   Power supply and reference decoupling (VREF+ connected to VDDA). . . . . . . . . . . . . . . . 155
+Page   17: VREF+   21
+Page   17: VREF+   20
+Page   46: •    Input voltage reference VREF+
+Page   49: VREF+     20                                                  56    PD9
+Page   50: VREF+    20                                                56   PB14
+Page   51: J        PB14      PB12    VCAP_1   PE13      PE7    PC5   VDD     PA1   VREF+   PC2
+Page   52: VREF+   32                                                                 77   PD8
+Page   53: VREF+    32                                                                     77   PB14
+Page   54: K        VREF-      PA1    PA5      PC5        PF13       PG0    PE9     PE13    PD9       PD13      PD14    PD15
+Page   54: L        VREF+      PA2    PA6      PB0        PF12      PF15    PE8     PE14    PD8       PD12      PB14    PB15
+Page   55: VREF+     38                                                                      95   PB15
+Page   56: VREF+     38                                                                   95   VDD12OTGHS
+Page   57: N    VREF-   PA1   PA0      PA4     PC4    PF13   PG0    VDD     VDD    VDD      PE13   PH7    PD12    PD11   PD10
+Page   57: P    VREF+   PA2   PA6      PA5     PC5    PF12   PF15   PE8     PE9    PE11     PE14   PB12   PB13    PD9    PD8
+Page   58: N   VREF-   PA1   PA0      PA4     PC4    PF13   PG0    VDD     VDD    VDD      PE13   PH7    PD12    PD11   PD10
+Page   58: P   VREF+   PA2   PA6      PA5     PC5    PF12   PF15   PE8     PE9    PE11     PE14   PB12   PB13    PD9    PD8
+Page   63: -        -         -       N1           -            -          -         N1         K1           -         -           VREF-           S             -            -
+Page   63: 13       20        32        P1         38           20        J9           P1         L1         32        38           VREF+            S             -            -
+Page   97: VREF
+Page   97: VREF+
+Page   97: 100 nF                            VREF-         ADC                           RCs, PLL,
+Page   98: VREF
+Page   98: VREF+
+Page   98: 100 nF                            VREF-          ADC                            RCs, PLL,
+Page  100: 3. Include VREF- pin.
+Page  103: 5. If VREF+ pin is present, it must respect the following condition: VDDA - VREF+ < 1.2 V.
+Page  150: VDDA −VREF+ < 1.2 V
+Page  150: VREF+   Positive reference voltage                                                 1.7(1)           -              VDDA         V
+Page  150: VREF-   Negative reference voltage                      -                            -             0                -           V
+Page  151: VAIN       Conversion voltage range(3)                      -             (VSSA or VREF-        -      VREF+     V
+Page  152: ADC VREF DC current
+Page  152: IVREF+(2)    consumption in conversion                                   -                                     -                   300      500       µA
+Page  152: 3. VREF+ is internally connected to VDDA and VREF- is internally connected to VSSA.
+Page  152: EG      Gain error                                   VREF = 1.7 to 3.6 V                             ±1               ±3
+Page  152: ED      Differential linearity error                VDDA −VREF < 1.2 V                               ±1               ±2
+Page  152: VREF = 1.7 to 3.6 V,
+Page  152: VDDA −VREF < 1.2 V
+Page  153: VREF = 1.7 to 3.6 V
+Page  153: ED       Differential linearity error            VDDA −VREF < 1.2 V           ±2          ±3
+Page  153: SINAD         Signal-to-noise and distortion ratio            VDDA = VREF+= 1.7 V        64        64.2         -
+Page  153: SINAD         Signal-to noise and distortion ratio            VDDA = VREF+ = 3.3 V      66         67           -
+Page  155: depending on whether VREF+ is connected to VDDA or not. The 10 nF capacitors should be
+Page  155: Figure 50. Power supply and reference decoupling (VREF+ not connected to VDDA)
+Page  155: VREF+ (1)
+Page  155: VSSA/VREF+
+Page  155: 1. VREF+ input is available on all the packages except LQFP64, whereas the VREF– is available only on
+Page  155: UFBGA176 and UFBGA144. When VREF- is not available, it is internally connected to VSSA.
+Page  155: Figure 51. Power supply and reference decoupling (VREF+ connected to VDDA)
+Page  155: VREF+/VDDA (1)
+Page  155: VREF-/VSSA (1)
+Page  155: 1. VREF+ input is available on all the packages except LQFP64, whereas the VREF– is available only on
+Page  155: UFBGA176 and UFBGA144. When VREF- is not available, it is internally connected to VSSA.
+Page  156: VREFINT            Internal reference voltage                   –40 °C < TA < +105 °C         1.18        1.21        1.24     V
+Page  156: TS_vrefint(1)                                                                -                 10           -           -      µs
+Page  157: VREFIN_CAL      Raw data acquired at temperature of 30 °C VDDA = 3.3 V                   0x1FF0 7A2A - 0x1FF0 7A2B
+Page  157: VREF+       Reference supply voltage         1.7(1)      -      3.6       V     VREF+ ≤VDDA
+Page  157: (0x0E0) to (0xF1C) at VREF+ = 3.6 V and
+Page  157: -        -                V     (0x1C7) to (0xE38) at VREF+ = 1.7 V
+Page  157: DAC_OUT Higher DAC_OUT voltage                                   VREF+ −           the DAC.
+Page  158: -      170   240            VREF+ = 3.6 V in terms of DC
+Page  158: DAC DC VREF current                                            consumption on the inputs
+Page  158: IVREF+(4)   consumption in quiescent                                µA
+Page  158: -      50     75            VREF+ = 3.6 V in terms of DC
+Page  158: mode(3)                            -      475   625     µA     VREF+ = 3.6 V in terms of DC
+Page  158: Offset(4)   measured value at Code                                         VREF+ = 3.6 V
+Page  158: VREF+/2)                           -       -    ±12     LSB
+Page  158: VREF+ = 3.6 V

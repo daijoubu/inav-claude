@@ -1,0 +1,124 @@
+Keyword: UART
+Occurrences: 120
+================================================================================
+
+Page    2: – Up to four USARTs/4 UARTs (12.5 Mbit/s,             controller with on-chip PHY
+Page   15: •   Four USARTs plus four UARTs.
+Page   17: USART/UART                                                                                     4/4
+Page   20: RX, TX, SCK,     smcard                                                                                                                                                                                                   UART4                              RX, TX as AF
+Page   20: UART5
+Page   20: SCK, NSS as AF                                                                                                                                                                                                              UART7                              RX, TX as AF
+Page   20: SCK, NSS as AF                                                                                                                                                                                                               UART8                              RX, TX as AF
+Page   36: •    Digital calibration circuit with 0.95 ppm resolution, to compensate for quartz crystal
+Page   43: features(1)                         USART1/2/3/6          UART4/5/7/8
+Page   44: features(1)                   USART1/2/3/6      UART4/5/7/8
+Page   67: UART4_RX, CAN1_RX,
+Page   68: SAI1_SD_B, UART7_RX,
+Page   68: SAI1_MCLK_B, UART7_TX,
+Page   68: UART7_RTS, TIM13_CH1,
+Page   68: UART7_CTS, TIM14_CH1,
+Page   69: G2         22         34       N3         40        43        N3         M13           40        43        N3                                            I/O        FT                       USART2_CTS, UART4_TX,
+Page   70: USART2_RTS, UART4_RX,
+Page   71: J4        34         46       R5         56        61        R5         P10           56        61        R5         PB0                              I/O        FT               -         UART4_CTS, LCD_R3,
+Page   72: UART7_RX,
+Page   72: UART7_TX,
+Page   73: UART7_RTS,
+Page   73: G6         40         63       R9         73        84        R9            J6         73        84        R9         PE10                             I/O        FT               -            UART7_CTS,               -
+Page   75: USART3_CK, UART5_RX,
+Page   75: J8        52         74       P13        93        105       K14           J5         86        105       K14        PB13                             I/O        FT               -       USART3_CTS, UART5_TX,
+Page   75: USART3_RTS, UART4_RTS,
+Page   75: UART4_CTS, TIM12_CH2,
+Page   76: TIM4_CH3, UART8_CTS,
+Page   76: TIM4_CH4, UART8_RTS,
+Page   78: TIM8_CH3, UART5_RTS,
+Page   78: UART5_CTS,
+Page   78: CAN3_RX, UART7_RX,
+Page   78: C10         70        103 C15              122       145       C15          E3          126 145             C15        PA11                             I/O        FT               -       UART4_RX, USART1_CTS,          -
+Page   78: UART4_TX, USART1_RTS,
+Page   79: TIM8_CH1N, UART4_TX,
+Page   79: TIM8_CH2N, UART4_RX,
+Page   80: SPI6_NSS, UART4_RTS,
+Page   80: CAN3_TX, UART7_TX,
+Page   80: USART3_TX, UART4_TX,
+Page   80: UART4_RX,
+Page   80: C8         80        113       A12        141       163       A12          D4          141 163             A12          PC12                             I/O        FT               -       USART3_CK, UART5_TX,          -
+Page   80: UART4_RX, CAN1_RX,
+Page   80: DFSDM1_CKIN7, UART4_TX,
+Page   80: B7         83        116       D12        144       166       D12          D6          144 166             D12          PD2                              I/O        FT               -      UART5_RX, SDMMC1_CMD,          -
+Page   82: CAN3_RX, UART7_RX,
+Page   82: CAN3_TX, UART7_TX,
+Page   83: UART5_RX, TIM3_CH2,
+Page   83: UART5_TX, TIM4_CH1,
+Page   83: DFSDM1_CKIN7, UART5_RX,
+Page   83: DFSDM1_DATIN7, UART5_TX,
+Page   83: UART8_RX, SAI2_MCLK_A,
+Page   83: LPTIM1_IN2, UART8_TX,
+Page   89: 11/LPTIM                           S3/SAI1/            6/UART4/
+Page   89: 1/2                            1/CEC     I2S3/SPI            2/3/UART           SPI/FMC/ TG2_HS/  C2/
+Page   89: TIM5_C    TIM8_ET                                   USART2   UART4_               SAI2_SD_ ETH
+Page   89: TIM2_C    TIM5_C                                              USART2   UART4_               SAI2_MC
+Page   90: 11/LPTIM                           S3/SAI1/            6/UART4/
+Page   90: 1/2                            1/CEC     I2S3/SPI            2/3/UART           SPI/FMC/ TG2_HS/  C2/
+Page   90: TIM1_C                                                UART4_    USART1               CAN1_R   OTG_FS_
+Page   90: TIM1_ET                                               UART4_    USART1     SAI2_FS   CAN1_T   OTG_FS_
+Page   90: HDMI-                          SPI6_NS    UART4_
+Page   90: TIM1_C    TIM3_C    TIM8_CH                           DFSDM1               UART4_             OTG_HS_ ETH
+Page   90: UART5_    TIM3_C                I2C1_SM                                    SPI6_MO   CAN2_R   OTG_HS_ ETH
+Page   90: UART5_    TIM4_C     HDMI-      I2C1_SC               DFSDM1    USART1               CAN2_T             I2C4
+Page   91: 11/LPTIM                           S3/SAI1/            6/UART4/
+Page   91: 1/2                            1/CEC     I2S3/SPI            2/3/UART           SPI/FMC/ TG2_HS/  C2/
+Page   91: I2C4_SC   TIM4_C    TIM10_C     I2C1_SC               DFSDM1    UART5_             CAN1_R    SDMMC2   ETH
+Page   91: I2C4_SD   TIM4_C   TIM11_CH     I2C1_SD             DFSDM1 UART5_T                 CAN1_T    SDMMC2   I2C4
+Page   91: TIM1_B                          I2C2_SM             DFSDM1      USART3   UART5_    CAN2_R    OTG_HS_ TXD
+Page   91: TIM1_C                                              DFSDM1      USART3   UART5_T   CAN2_T    OTG_HS_ TXD
+Page   91: TIM1_C              TIM8_CH     USART1_     SPI2_MI   DFSDM1    USART3   UART4_    TIM12_C   SDMMC2
+Page   91: RTC_RE   TIM1_C              TIM8_CH     USART1_          DFSDM1                  UART4_    TIM12_C   SDMMC2
+Page   92: 11/LPTIM                           S3/SAI1/            6/UART4/
+Page   92: 1/2                            1/CEC     I2S3/SPI            2/3/UART           SPI/FMC/ TG2_HS/  C2/
+Page   92: TRACED             TIM3_C     TIM8_                                       UART5_    USART6
+Page   92: TIM3_C     TIM8_      I2C3_SD     I2S_CKI              UART5_
+Page   92: DFSDM1_                                       USART3    UART4_T
+Page   93: 11/LPTIM                           S3/SAI1/            6/UART4/
+Page   93: 1/2                            1/CEC     I2S3/SPI            2/3/UART           SPI/FMC/ TG2_HS/  C2/
+Page   93: DFSDM1_                          SPI3_MI   USART3   UART4_
+Page   93: TRACED                                                                  USART3   UART5_T
+Page   93: DFSDM1_                                             UART4_    CAN1_R
+Page   93: DFSDM1_                         DFSDM1              UART4_T   CAN1_T
+Page   93: TRACED             TIM3_ET                                                       UART5_
+Page   94: 11/LPTIM                           S3/SAI1/            6/UART4/
+Page   94: 1/2                            1/CEC     I2S3/SPI            2/3/UART           SPI/FMC/ TG2_HS/  C2/
+Page   94: TIM4_C                                                         UART8_
+Page   94: TIM4_C                                                         UART8_
+Page   94: TIM4_ET LPTIM1_E                                               UART8_               SAI2_MC
+Page   94: LPTIM1_I                                             UART8_T
+Page   95: 11/LPTIM                           S3/SAI1/            6/UART4/
+Page   95: 1/2                            1/CEC     I2S3/SPI            2/3/UART           SPI/FMC/ TG2_HS/  C2/
+Page   95: TIM1_ET                                                                UART7_             QUADSPI
+Page   95: TIM1_C                                                DFSDM1           UART7_T            QUADSPI
+Page   95: TIM1_C                                                DFSDM1           UART7_             QUADSPI
+Page   95: TIM1_C                                                                 UART7_             QUADSPI
+Page   96: 11/LPTIM                           S3/SAI1/            6/UART4/
+Page   96: 1/2                            1/CEC     I2S3/SPI            2/3/UART           SPI/FMC/ TG2_HS/  C2/
+Page   96: TIM10_C                 SPI5_NS SAI1_SD            UART7_
+Page   96: TIM11_CH                 SPI5_SC   SAI1_M           UART7_T
+Page   96: SPI5_MI   SAI1_SC          UART7_    TIM13_C   QUADSPI
+Page   96: SPI5_M    SAI1_FS          UART7_    TIM14_C   QUADSPI
+Page   97: 11/LPTIM                           S3/SAI1/            6/UART4/
+Page   97: 1/2                            1/CEC     I2S3/SPI            2/3/UART           SPI/FMC/ TG2_HS/  C2/
+Page   98: 11/LPTIM                           S3/SAI1/            6/UART4/
+Page   98: 1/2                            1/CEC     I2S3/SPI            2/3/UART           SPI/FMC/ TG2_HS/  C2/
+Page   99: 11/LPTIM                           S3/SAI1/            6/UART4/
+Page   99: 1/2                            1/CEC     I2S3/SPI            2/3/UART           SPI/FMC/ TG2_HS/  C2/
+Page   99: TIM8_CH                                            UART4_T   CAN1_T
+Page  100: 11/LPTIM                           S3/SAI1/            6/UART4/
+Page  100: 1/2                            1/CEC     I2S3/SPI            2/3/UART           SPI/FMC/ TG2_HS/  C2/
+Page  100: TIM8_CH                                            UART4_    CAN1_R
+Page  100: UART4_    CAN1_R
+Page  101: 11/LPTIM                           S3/SAI1/            6/UART4/
+Page  101: 1/2                            1/CEC     I2S3/SPI            2/3/UART           SPI/FMC/ TG2_HS/  C2/
+Page  102: 11/LPTIM                           S3/SAI1/            6/UART4/
+Page  102: 1/2                            1/CEC     I2S3/SPI            2/3/UART           SPI/FMC/ TG2_HS/  C2/
+Page  131: UART4                10.7             10.9          8.1
+Page  131: UART5                10.7             10.7          8.1
+Page  131: UART7                10.4             10.4          7.8
+Page  131: UART8                11.1             11.3          8.3

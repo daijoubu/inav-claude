@@ -1,0 +1,115 @@
+Keyword: reset
+Occurrences: 111
+================================================================================
+
+Page    1: • Clock, reset and supply management                           • Up to 140 I/O ports with interrupt capability
+Page    3: 3.15.1      Internal reset ON . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 30
+Page    3: 3.15.2      Internal reset OFF . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 30
+Page    3: 3.16.3      Regulator ON/OFF and internal reset ON/OFF availability . . . . . . . . . . 35
+Page    5: 6.3.5      Reset and power control block characteristics . . . . . . . . . . . . . . . . . . 106
+Page    6: Appendix A Recommendations when using internal reset OFF . . . . . . . . . . . 222
+Page    7: Table 4.    Regulator ON/OFF and internal reset ON/OFF availability. . . . . . . . . . . . . . . . . . . . . . . . . 35
+Page    7: Table 22.    Reset and power control block characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 106
+Page   10: Figure 10.   Power supply supervisor interconnection with internal reset OFF . . . . . . . . . . . . . . . . . . . 30
+Page   10: Figure 11.   PDR_ON control with internal reset OFF . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31
+Page   10: - power-down reset risen after VCAP_1/VCAP_2 stabilization . . . . . . . . . . . . . . . . . . . . . . . . 34
+Page   10: - power-down reset risen before VCAP_1/VCAP_2 stabilization . . . . . . . . . . . . . . . . . . . . . . 34
+Page   16: 8. VDD/VDDA minimum value of 1.7 V is obtained when the internal reset is OFF (refer to Section 3.15.2: Internal reset OFF).
+Page   21: reset               SUPERVISION
+Page   21: PVD                      NRESET
+Page   21: GPIO PORT E                                                                                                          Reset
+Page   27: On reset the 16 MHz internal HSI RC oscillator is selected as the default CPU clock.
+Page   27: •   VSSA, VDDA = 1.7 to 3.6 V: external analog power supplies for ADC, DAC, reset blocks,
+Page   27: Note:    The VDD/VDDA minimum value of 1.7 V is obtained when the internal reset is OFF (refer to
+Page   27: Section 3.15.2: Internal reset OFF). Refer to Table 3: Voltage regulator configuration mode
+Page   30: 3.15.1     Internal reset ON
+Page   30: The device has an integrated power-on reset (POR)/power-down reset (PDR) circuitry
+Page   30: coupled with a brownout reset (BOR) circuitry. At power-on, POR/PDR is always active, and
+Page   30: option bytes. The device remains in reset mode when VDD is below a specified threshold,
+Page   30: VPOR/PDR or VBOR, without the need for an external reset circuit.
+Page   30: 3.15.2     Internal reset OFF
+Page   30: reset mode as long as VDD is below a specified threshold. PDR_ON must be connected
+Page   30: Figure 10. Power supply supervisor interconnection with internal reset OFF
+Page   30: Ext. reset controller active when
+Page   30: Application reset
+Page   30: The VDD specified threshold, below which the device must be maintained under reset,
+Page   31: When the internal reset is OFF, the following integrated features are no more supported:
+Page   31: All packages, except the LQFP100, disables the internal reset through the PDR_ON signal
+Page   31: Figure 11. PDR_ON control with internal reset OFF
+Page   31: Reset by other source than
+Page   33: can be used for this purpose, and act as power-on reset on V12 power domain.
+Page   33: •   PA0 cannot be used as a GPIO pin since it is used to reset a part of the V12 logic power
+Page   33: domain which is not reset by the NRST pin.
+Page   33: •   As long as PA0 is kept low, the debug mode cannot be used under power-on reset.
+Page   33: connection under reset or pre-reset is required.
+Page   33: supply supervisor        Application reset
+Page   33: Ext. reset controller active signal (optional)
+Page   33: a reset must be asserted on PA0 pin.
+Page   34: - power-down reset risen after VCAP_1/VCAP_2 stabilization
+Page   34: 1. This figure is valid whatever the internal reset mode (ON or OFF).
+Page   34: - power-down reset risen before VCAP_1/VCAP_2 stabilization
+Page   34: 1. This figure is valid whatever the internal reset mode (ON or OFF).
+Page   35: 3.16.3   Regulator ON/OFF and internal reset ON/OFF availability
+Page   35: Table 4. Regulator ON/OFF and internal reset ON/OFF availability
+Page   35: Package       Regulator ON      Regulator OFF      Internal reset ON   Internal reset OFF
+Page   35: when VDD power is not present. They are not reset by a system or power reset, or when
+Page   36: The device exits Standby mode when an external reset (NRST pin), an IWDG reset,
+Page   37: When the PDR_ON pin is connected to VSS (internal reset OFF), the VBAT functionality is no
+Page   40: to reset the device when a problem occurs, or as a free-running timer for application timeout
+Page   40: can be used as a watchdog to reset the device when a problem occurs. It is clocked from
+Page   59: reset is the same as the actual pin name
+Page   59: RST                         Bidirectional reset pin with weak pull-up resistor
+Page   59: Notes        Unless otherwise specified by a note, all I/Os are set as floating inputs during and after reset
+Page   60: reset)(1)
+Page   61: LQFP64                                                                                                                    reset)(1)
+Page   62: LQFP64                                                                                                                    reset)(1)
+Page   63: LQFP64                                                                                                                    reset)(1)
+Page   64: LQFP64                                                                                                                    reset)(1)
+Page   65: LQFP64                                                                                                                    reset)(1)
+Page   66: LQFP64                                                                                                                    reset)(1)
+Page   67: LQFP64                                                                                                                    reset)(1)
+Page   68: LQFP64                                                                                                                    reset)(1)
+Page   69: LQFP64                                                                                                                    reset)(1)
+Page   70: LQFP64                                                                                                                    reset)(1)
+Page   71: LQFP64                                                                                                                    reset)(1)
+Page   72: LQFP64                                                                                                                    reset)(1)
+Page   73: LQFP64                                                                                                                    reset)(1)
+Page   74: LQFP64                                                                                                                    reset)(1)
+Page   75: LQFP64                                                                                                                    reset)(1)
+Page   76: LQFP64                                                                                                                    reset)(1)
+Page   77: LQFP64                                                                                                                    reset)(1)
+Page   78: LQFP64                                                                                                                    reset)(1)
+Page   79: LQFP64                                                                                                                    reset)(1)
+Page   80: LQFP64                                                                                                                     reset)(1)
+Page   80: 3. Main function after the first backup domain power-up. Later on, it depends on the contents of the RTC registers even after reset (beca
+Page   80: main reset).
+Page   80: 5. If the device is in regulator OFF/internal reset ON mode (BYPASS_REG pin is set to VDD), then PA0 is used as an internal reset (ac
+Page   97: Reset
+Page   98: 3 Kohm +/-1%          Reset
+Page  103: Internal reset OFF).
+Page  104: Internal reset OFF).
+Page  105: 1. To reset the internal logic at power-down, a reset must be applied on pin PA0 when VDD reaches
+Page  106: 6.3.5       Reset and power control block characteristics
+Page  106: Table 22. Reset and power control block characteristics
+Page  106: reset threshold            Rising edge                      1.64   1.72   1.80    V
+Page  106: (1)(2)         POR reset temporization                   -                 0.5    1.5    3.0    ms
+Page  107: Table 22. Reset and power control block characteristics (continued)
+Page  107: 2. The reset temporization is measured from the power-on (POR reset or wakeup from VBAT) to the instant
+Page  115: 1. PDR is OFF for VDD=1.7V. When the PDR is OFF (internal reset OFF), the typical current consumption is reduced by
+Page  140: A device reset allows normal operations to be resumed.
+Page  141: •    Unexpected reset
+Page  141: Most of the common failures (unexpected reset and program counter corruption) can be
+Page  142: (out of –5 µA/+0 µA range), or other functional failure (for example reset, oscillator
+Page  149: TNRST_OUT         Generated reset pulse duration                 Internal Reset source            20        -         -        µs
+Page  149: reset circuit (1)
+Page  149: NRST (2)                                     Internal Reset
+Page  149: 1. The reset network protects the device against parasitic resets. 0.1 uF capacitor must be placed as close as
+Page  149: Table 61. Otherwise the reset is not taken into account by the device.
+Page  152: Internal reset OFF).
+Page  159: Internal reset OFF).
+Page  222: Recommendations when using internal reset OFF                                       STM32F722xx STM32F723xx
+Page  222: Appendix A                Recommendations when using internal reset
+Page  222: When the internal reset is OFF, the following integrated features are no longer supported:
+Page  222: •      The integrated power-on reset (POR) / power-down reset (PDR) circuitry is disabled.
+Page  222: •      The brownout reset (BOR) circuitry must be disabled.
+Page  222: (refer to Section 3.15.1: Internal reset ON).

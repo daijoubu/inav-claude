@@ -1,0 +1,66 @@
+Keyword: GPIO
+Occurrences: 62
+================================================================================
+
+Page    3: 3.38    General-purpose input/outputs (GPIOs) . . . . . . . . . . . . . . . . . . . . . . . . . . 45
+Page   16: GPIOs                                           82                                114                              140
+Page   18: PA[15:0]                 GPIO PORT A                                                                                                                                                                                                                                                           VDDA, VSSA
+Page   18: PB[15:0]                 GPIO PORT B                                                                                                                                                                                                                           PVD
+Page   18: GPIO PORT C
+Page   18: GPIO PORT D
+Page   18: GPIO PORT E                                                                                                                                   clock
+Page   18: PF[15:0]                 GPIO PORT F                                                                                                                                                                                                                                                         VBAT = 1.65 to 3.6 V
+Page   18: GPIO PORT G
+Page   18: PH[15:0]                 GPIO PORT H
+Page   18: GPIO PORT I                                                                                                                                                                                                                                                          RTC_AF1
+Page   18: GPIO PORT J
+Page   18: PK[7:0]                GPIO PORT K                                                                                                                                                                                                                  TIM2               32b                 4 channels, ETR as AF
+Page   24: pulse width shorter than the Internal APB2 clock period. Up to 168 GPIOs can be connected
+Page   25: - If USB (USB OTG_HS/OTG_FS) is used, the associated GPIOs powered by
+Page   25: only one USB transceiver is used in the application, the GPIOs associated to the
+Page   25: - If USB (USB OTG_HS/OTG_FS) is not used, the associated GPIOs powered by
+Page   30: •   PA0 cannot be used as a GPIO pin since it allows to reset a part of the V12 logic power
+Page   45: 3.38     General-purpose input/outputs (GPIOs)
+Page   45: Each of the GPIO pins can be configured by software as output (push-pull or open-drain,
+Page   45: or as peripheral alternate function. Most of the GPIO pins are shared with digital or analog
+Page   45: alternate functions. All GPIOs are high-current-capable and have speed selection to better
+Page   46: be re-use as GPIO with alternate function): the JTAG TMS and TCK pins are shared with
+Page   55: Functions selected through GPIOx_AFR registers
+Page   74: (3 mA), the use of GPIOs PC13 to PC15 and PI8 in output mode is limited:
+Page   93: 0x4002 2800 - 0x4002 2BFF   GPIOK
+Page   93: 0x4002 2400 - 0x4002 27FF   GPIOJ
+Page   93: 0x4002 2000 - 0x4002 23FF   GPIOI
+Page   93: 0x4002 1C00 - 0x4002 1FFF   GPIOH
+Page   93: 0x4002 1800 - 0x4002 1BFF   GPIOG
+Page   93: 0x4002 1400 - 0x4002 17FF   GPIOF
+Page   93: 0x4002 1000 - 0x4002 13FF   GPIOE
+Page   93: 0X4002 0C00 - 0x4002 0FFF   GPIOD
+Page   93: 0x4002 0800 - 0x4002 0BFF   GPIOC
+Page   93: 0x4002 0400 - 0x4002 07FF   GPIOB
+Page   93: 0x4002 0000 - 0x4002 03FF   GPIOA
+Page   97: 0x4002 2800 - 0x4002 2BFF   GPIOK
+Page   97: 0x4002 2400 - 0x4002 27FF   GPIOJ
+Page   97: 0x4002 2000 - 0x4002 23FF   GPIOI
+Page   97: 0x4002 1C00 - 0x4002 1FFF   GPIOH
+Page   97: 0x4002 1800 - 0x4002 1BFF   GPIOG
+Page   97: 0x4002 1400 - 0x4002 17FF   GPIOF
+Page   97: 0x4002 1000 - 0x4002 13FF   GPIOE
+Page   97: 0X4002 0C00 - 0x4002 0FFF   GPIOD
+Page   97: 0x4002 0800 - 0x4002 0BFF   GPIOC
+Page   97: 0x4002 0400 - 0x4002 07FF   GPIOB
+Page   97: 0x4002 0000 - 0x4002 03FF   GPIOA
+Page  124: GPIOA              2.2              2.1               1.9
+Page  124: GPIOB              2.1              1.8               1.7
+Page  124: GPIOC              2.3              2.0               1.9
+Page  124: GPIOD              2.2              1.9               1.8
+Page  124: GPIOE              2.2              1.9               1.8
+Page  124: GPIOF              2.2              1.9               1.8
+Page  124: GPIOG              2.1              1.8               1.7
+Page  124: GPIOH              2.0              1.7               1.7
+Page  124: GPIOI              2.3              2.0               1.7
+Page  124: GPIOJ              2.2              1.9               1.7
+Page  124: (up to         GPIOK              2.0              1.7               1.7         µA/MHz
+Page  144: Note:          For information on GPIO configuration, refer to the application note AN4899 “STM32 GPIO
+Page  146: The GPIOs (general purpose input/outputs) can sink or source up to ±8 mA, and sink or
+Page  146: can sink or source up to ±3mA. When using the PC13 to PC15 and PI8 GPIOs in output
+Page  149: manual for a description of the GPIOx_SPEEDR GPIO port output speed register.
