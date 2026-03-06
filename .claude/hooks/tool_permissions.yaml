@@ -86,6 +86,11 @@ rules:
     category: other
     decision: allow
 
+  - name: "Allow ToolSearch for discovering tools and skills"
+    tool_name_pattern: "^ToolSearch$"
+    category: read
+    decision: allow
+
   - name: "Allow Write/Edit to /tmp for agents and temporary claude-* files"
     tool_name_pattern: "^(Write|Edit)$"
     tool_input_patterns:
