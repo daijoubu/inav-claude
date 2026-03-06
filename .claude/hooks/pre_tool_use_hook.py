@@ -67,9 +67,11 @@ def handle_bash_tool(command: str, matcher: RuleMatcher, logger: HookLogger, cwd
         denied = denied_results[0]
         logger.log_output('deny', denied['message'], denied['rule_name'])
 
+        denial_message = denied['message'] or f"Command '{denied['subcommand']}' is not allowed"
         return HookOutputGenerator.generate_pretooluse_output(
             decision='deny',
-            reason=denied['message'] or f"Command '{denied['subcommand']}' is not allowed"
+            reason=denial_message,
+            system_message=f"DENIAL: {denial_message}"
         )
 
     # Check if any subcommand requires asking
@@ -183,9 +185,11 @@ def handle_general_tool(tool_name: str, tool_input: Dict[str, Any], matcher: Rul
         logger.log_output(decision, message, rule_name)
 
     if decision == 'deny':
+        denial_message = message or f"Tool '{tool_name}' is not allowed"
         return HookOutputGenerator.generate_pretooluse_output(
             decision='deny',
-            reason=message or f"Tool '{tool_name}' is not allowed"
+            reason=denial_message,
+            system_message=f"DENIAL: {denial_message}"
         )
     elif decision == 'ask':
         # Use Claude to evaluate if this tool use is clearly safe
