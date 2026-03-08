@@ -12,10 +12,15 @@ import struct
 import time
 import glob
 import subprocess
+import sys
+import os
 from typing import List, Optional, Tuple, Dict
 from abc import ABC, abstractmethod
 import threading
 import logging
+
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+from elrs_detect import detect_elrs
 
 # Suppress Flask development server warnings
 log = logging.getLogger('werkzeug')
@@ -474,6 +479,8 @@ fc_manager = {
     'port_original_functions': [],
     'tester_serial': None,
     'tester_port': None,
+    'elrs_testing': False,
+    'elrs_in_passthrough': False,
 }
 
 
@@ -831,6 +838,57 @@ def handle_stop_adc():
     emit('log', {'message': 'ADC monitoring stopped'})
 
 
+@socketio.on('test_elrs_rx')
+def handle_test_elrs_rx():
+    """Run ELRS receiver detection via CLI serial passthrough."""
+    if fc_manager['elrs_testing']:
+        emit('log', {'message': 'ELRS test already running'})
+        return
+
+    if fc_manager['elrs_in_passthrough']:
+        emit('log', {'message': 'FC is in passthrough mode — power-cycle FC to restore'})
+        return
+
+    if not fc_manager['fc']:
+        emit('log', {'message': 'No flight controller connected'})
+        return
+
+    port = fc_manager['port']
+
+    # Release MSP connection — passthrough needs exclusive port access
+    disconnect_fc()
+    socketio.emit('status', {'connected': False, 'info': 'FC in ELRS test mode'})
+
+    fc_manager['elrs_testing'] = True
+    socketio.emit('elrs_status', {'testing': True, 'in_passthrough': False})
+    socketio.start_background_task(_elrs_test_thread, port)
+
+
+def _elrs_test_thread(port):
+    """Background worker for ELRS receiver detection."""
+    def log(msg):
+        socketio.emit('log', {'message': msg})
+
+    try:
+        result = detect_elrs(port, allow_bootloader=False, log_fn=log)
+    except Exception as e:
+        result = {
+            'found': False, 'stage': 0,
+            'rx_pin': False, 'tx_pin': False,
+            'name': None, 'fw_version': None, 'target': None,
+            'error': str(e),
+        }
+
+    fc_manager['elrs_testing'] = False
+    fc_manager['elrs_in_passthrough'] = (result['error'] is None)
+
+    socketio.emit('elrs_result', result)
+    socketio.emit('elrs_status', {
+        'testing': False,
+        'in_passthrough': fc_manager['elrs_in_passthrough'],
+    })
+
+
 def auto_connect():
     """Auto-connect to flight controller"""
     disconnect_fc()
@@ -854,6 +912,8 @@ def auto_connect():
                 version = info.get('fc_version', 'Unknown')
 
                 info_text = f"{variant} v{version} on {port}"
+                fc_manager['elrs_in_passthrough'] = False
+                socketio.emit('elrs_status', {'testing': False, 'in_passthrough': False})
                 socketio.emit('status', {'connected': True, 'info': info_text})
                 socketio.emit('log', {'message': f'Connected to {variant} v{version}'})
                 return
