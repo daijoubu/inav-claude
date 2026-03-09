@@ -1,0 +1,48 @@
+# =============================================================================
+# Claude Code Tool Permissions Configuration
+# =============================================================================
+#
+# This file controls which tool calls Claude Code can execute automatically,
+# which require user approval, and which are blocked entirely.
+#
+# Location: .claude/hooks/tool_permissions.yaml
+#
+# =============================================================================
+# IMPORTANT: RULE ORDERING MATTERS!
+# =============================================================================
+# Rules are processed IN ORDER, and the FIRST MATCHING RULE WINS.
+# Order: DENY rules first → Specific ALLOW rules → General ALLOW → ASK rules last
+#
+# =============================================================================
+# CATEGORIES
+# =============================================================================
+# read: Only reads data | write: Modifies data | other: Everything else
+#
+# =============================================================================
+# LOGGING CONFIGURATION
+# =============================================================================
+
+logging:
+  enabled: true
+  log_file: "~/inavflight/.claude/hooks/tool_permissions.log"  # Project-local log file
+  log_inputs: true     # Log incoming hook JSON
+  log_outputs: true    # Log hook decisions
+  max_log_size_kb: 64  # Rotate log when it exceeds this size (in KB)
+
+
+# =============================================================================
+# DEFAULT PERMISSIONS BY CATEGORY
+# =============================================================================
+# These apply when no specific rule matches.
+# Options: "allow", "deny", "ask"
+
+defaults:
+  read: allow      # Tools/commands that only read data (Read, Glob, Grep, git status, etc.)
+  write: ask       # Tools/commands that modify data (Write, Edit, git commit, etc.)
+  other: ask       # Everything else
+
+# =============================================================================
+# GENERAL TOOL RULES (Non-Bash Tools)
+# =============================================================================
+# Rules for Claude Code tools (Read, Write, Edit, etc.). First match wins.
+
