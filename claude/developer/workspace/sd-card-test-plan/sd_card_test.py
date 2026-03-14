@@ -48,6 +48,7 @@ import shutil
 import struct
 import subprocess
 import sys
+import threading
 import time
 from dataclasses import dataclass, field
 from datetime import datetime
@@ -754,9 +755,94 @@ class FCConnection:
             time.sleep(poll_interval)
         return False
 
+    def reset_fc_state(self, timeout: float = 5.0) -> bool:
+        """
+        Reset FC to a clean state for test independence.
+
+        Ensures:
+        1. FC is disarmed
+        2. FAILSAFE is cleared
+        3. RC link is established
+
+        This should be called at the start of each test that requires arming
+        to ensure tests are independent of previous test results.
+
+        Args:
+            timeout: How long to spend clearing state (seconds)
+
+        Returns:
+            True if FC is in clean state, False if still blocked
+        """
+        start_time = time.time()
+
+        status = self.get_arming_status()
+        if not status:
+            return False
+
+        was_armed = status.is_armed
+        had_failsafe = bool(status.arming_flags & ArmingFlag.ARMING_DISABLED_FAILSAFE)
+
+        if was_armed or had_failsafe:
+            if was_armed:
+                self.disarm(timeout=2.0)
+
+            rc_channels = [1500] * 16
+            rc_channels[2] = 1000
+            rc_channels[4] = 1000
+
+            while time.time() - start_time < timeout:
+                self.send_rc_channels(rc_channels)
+                time.sleep(0.02)
+
+                status = self.get_arming_status()
+                if status:
+                    still_fs = bool(status.arming_flags & ArmingFlag.ARMING_DISABLED_FAILSAFE)
+                    if not still_fs:
+                        return True
+
+            return False
+
+        return True
+
     # =========================================================================
     # USB Mass Storage Operations
     # =========================================================================
+
+    def _wait_for_msc_block_device(self, timeout: float = 30.0) -> bool:
+        """
+        Wait for USB MSC block device to appear in /dev/.
+
+        The block device (/dev/sdb, /dev/sdb1) appears first when FC boots into
+        MSC mode, before auto-mount happens. This is a more reliable indicator
+        than waiting for a mount point.
+
+        Args:
+            timeout: How long to wait for device to appear (seconds)
+
+        Returns:
+            True if block device found, False if timeout
+        """
+        import os
+        start_time = time.time()
+        checks = 0
+
+        while time.time() - start_time < timeout:
+            elapsed = time.time() - start_time
+            # Check for /dev/sdb or /dev/sdb1 (typical MSC device paths)
+            for device in ['/dev/sdb', '/dev/sdb1', '/dev/sdc', '/dev/sdc1']:
+                if os.path.exists(device):
+                    print(f"  ✓ Found MSC block device: {device} (after {elapsed:.1f}s)")
+                    return True
+
+            # Debug output every few checks
+            checks += 1
+            if checks % 10 == 0:
+                print(f"  (still waiting... {elapsed:.1f}s/{timeout}s)")
+
+            time.sleep(0.2)  # Check frequently (5 times per second)
+
+        print(f"  ✗ Block device not found after {timeout}s")
+        return False
 
     def find_msc_mount_point(self) -> Optional[Path]:
         """
@@ -780,9 +866,10 @@ class FCConnection:
         """Find USB MSC mount point on Linux"""
         # Look for recently mounted removable media
         possible_paths = [
-            Path("/mnt"),
-            Path("/media"),
-            Path(os.path.expanduser("~")),
+            Path("/run/media"),  # Auto-mount location (modern Linux)
+            Path("/media"),      # Traditional media mount
+            Path("/mnt"),        # Manual mount location
+            Path(os.path.expanduser("~")),  # Home directory
         ]
 
         try:
@@ -1497,46 +1584,171 @@ class FCConnection:
 
             # Close MSP connection to free serial port
             self.disconnect()
-            time.sleep(0.5)
+            time.sleep(1)  # Wait for MSP connection to fully close
 
             # Open serial port directly for CLI access
+            print("  [DEBUG] Opening serial port for CLI...")
             ser = pyserial.Serial(self.port, self.baudrate, timeout=1)
             time.sleep(0.5)
 
+            # Clear buffers
+            ser.reset_input_buffer()
+            ser.reset_output_buffer()
+            for _ in range(5):
+                try:
+                    ser.read(1000)
+                except:
+                    pass
+                time.sleep(0.05)
+            ser.reset_input_buffer()
+            ser.reset_output_buffer()
+            time.sleep(0.3)
+
             # Enter CLI mode
+            print("  [DEBUG] Sending '#' to enter CLI mode...")
             ser.write(b"#")
-            time.sleep(0.2)
-            ser.read(100)  # Read response
+
+            # Wait for CLI prompt to appear
+            print("  [DEBUG] Waiting for CLI prompt...")
+            cli_ready = False
+            start_time = time.time()
+            while time.time() - start_time < 5:  # 5 second timeout
+                try:
+                    response = ser.read(200)
+                    if response:
+                        print(f"  [DEBUG] Received: {response[:60]}")
+                        # Check if we got the CLI prompt
+                        if b'# ' in response or response.endswith(b'#'):
+                            print(f"  [DEBUG] ✓ CLI prompt detected")
+                            cli_ready = True
+                            break
+                except Exception as e:
+                    print(f"  [DEBUG] Read error: {e}")
+                time.sleep(0.1)
+
+            if not cli_ready:
+                print("  [DEBUG] ✗ CLI prompt not detected")
 
             # Send msc command
+            print("  [DEBUG] Sending 'msc' command...")
             ser.write(b"msc\r")
-            time.sleep(1)
-            ser.read(500)  # Read response
+            time.sleep(0.5)  # Shorter wait to match direct test timing
 
-            # CRITICAL: Properly exit CLI mode (matching send_cli_command() behavior)
-            # This is what INAV Configurator does to maintain FC stability
-            ser.write(b"\r")
-            time.sleep(0.2)
-            ser.read(100)  # Consume any response
+            # Try to read response
+            try:
+                response = ser.read(500)
+                if response:
+                    print(f"  [DEBUG] MSC response: {response[:100]}")
+                    # Check if device is rebooting
+                    if b'restarting' in response.lower() or b'rebooting' in response.lower():
+                        print(f"  [DEBUG] ✓ FC acknowledging reboot to MSC mode")
+            except Exception as e:
+                print(f"  [DEBUG] Read error during MSC response: {type(e).__name__}")
 
-            # Give FC time to exit CLI mode cleanly
-            time.sleep(0.5)
+            # Close serial port
+            try:
+                ser.close()
+            except:
+                pass
 
-            ser.close()
-            time.sleep(1)
+            time.sleep(2)  # Give FC time to reboot and enumerate
 
-            # Wait for FC to reboot and appear as USB device
-            start_time = time.time()
-            while time.time() - start_time < timeout:
-                # Try to find the mount point
-                mount_point = self.find_msc_mount_point()
-                if mount_point:
-                    return True
+            # STEP 1: Wait for block device to appear (/dev/sdb or /dev/sdb1)
+            # This is more reliable than waiting for mount point, as it happens first
+            print("\n  [MSC] Waiting for USB block device to appear...")
+            if not self._wait_for_msc_block_device(timeout=timeout):
+                print("  ✗ USB block device did not appear")
+                return False
+
+            print("  ✓ Block device detected")
+
+            # STEP 2: Manually mount the device (auto-mount may not be available)
+            print("  [MSC] Mounting USB MSC device...")
+
+            # Wait for udev/udisks to recognize the device (not just the kernel)
+            # Trigger udev to rescan devices
+            try:
+                subprocess.run(["udevadm", "trigger"], capture_output=True, timeout=5)
+            except:
+                pass
+
+            # This can take 5-10 seconds after the kernel detects the device
+            print("  Waiting for udisks to detect device (this may take up to 10 seconds)...")
+            for i in range(10):
                 time.sleep(1)
+                # Try to mount immediately to see if it's ready
+                try:
+                    result = subprocess.run(
+                        ["udisksctl", "mount", "-b", "/dev/sdb1"],
+                        capture_output=True,
+                        text=True,
+                        timeout=15  # Increased from 5s
+                    )
+                    if result.returncode == 0:
+                        # Mount succeeded!
+                        print(f"  ✓ Mount command succeeded")
+                        time.sleep(0.5)
+                        mount_point = self.find_msc_mount_point()
+                        if mount_point:
+                            print(f"    Mount point: {mount_point}")
+                        # Mount succeeded, return True regardless of whether we found the mount point
+                        return True
+                    # Not ready yet, continue waiting
+                except subprocess.TimeoutExpired:
+                    # udisksctl is slow but might still work
+                    if i < 9:
+                        print(f"    Waiting... ({i+1}/10, udisksctl timeout)")
+                    continue
+                except Exception as e:
+                    print(f"  [DEBUG] Mount attempt error: {e}")
 
+                if i < 9:
+                    print(f"    Waiting... ({i+1}/10)")
+
+            # If mount didn't work with the loop above, fall through to the device loop
+            print("  Direct mount attempts failed, trying device enumeration...")
+
+            # Try to mount /dev/sdb1 (partition), then /dev/sdb (whole device) as fallback
+            mount_devices = ["/dev/sdb1", "/dev/sdb"]
+
+            for device in mount_devices:
+                # Check if device exists before trying to mount
+                if not os.path.exists(device):
+                    print(f"  ℹ {device} does not exist, skipping...")
+                    continue
+
+                try:
+                    print(f"  [DEBUG] Attempting to mount {device}...")
+                    result = subprocess.run(
+                        ["udisksctl", "mount", "-b", device],
+                        capture_output=True,
+                        text=True,
+                        timeout=10
+                    )
+                    if result.returncode == 0:
+                        print(f"  [DEBUG] {device} mount command succeeded")
+                        time.sleep(1)  # Give mount time to complete
+                        mount_point = self.find_msc_mount_point()
+                        if mount_point:
+                            print(f"  ✓ Mounted at {mount_point}")
+                            return True
+                        else:
+                            print(f"  [DEBUG] Mount succeeded but mount point not found, trying next device...")
+                    else:
+                        print(f"  [DEBUG] {device} mount failed: {result.stderr[:100]}")
+                        # Continue to next device
+                except Exception as e:
+                    print(f"  [DEBUG] {device} exception: {e}")
+                    continue
+
+            # If we get here, all mount attempts failed
+            print("  ✗ Mount failed: Could not mount any device")
             return False
 
         except Exception as e:
+            print(f"  DEBUG: MSC enable exception: {e}")
+            import traceback
+            print(traceback.format_exc())
             return False
 
     def exit_msc_mode_and_reenumerate(self, openocd_config: str = None) -> bool:
@@ -1603,8 +1815,8 @@ class FCConnection:
                 try:
                     # OpenOCD commands to properly exit MSC mode:
                     # 1. Halt processor
-                    # 2. Clear MSC state flag in SRAM (0x2001FFF0 = 0xFFFFFFFF)
-                    # 3. Clear reset reason (persistent object)
+                    # 2. Clear MSC SRAM flag (0x2001FFF0 = 0xFFFFFFFF) - prevents bootloader re-entry
+                    # 3. Clear reset reason in RTC BKP1 (0x40002854 = 0) - prevents firmware MSC re-entry
                     # 4. Trigger NVIC_SystemReset via AIRCR register (0xE000ED0C)
                     # 5. Let processor resume and reboot
                     openocd_cmds = [
@@ -1612,8 +1824,8 @@ class FCConnection:
                         "-f", openocd_config,
                         "-c", "init",
                         "-c", "halt",                              # Halt processor
-                        "-c", "mww 0x2001FFF0 0xFFFFFFFF",        # Clear SRAM MSC flag
-                        "-c", "mww 0x20000000 0x00000000",        # Clear reset reason in SRAM (persistent object)
+                        "-c", "mww 0x2001FFF0 0xFFFFFFFF",        # Clear SRAM MSC flag (bootloader check)
+                        "-c", "mww 0x40002854 0x00000000",        # Clear RTC_BKP1 (RESET_NONE) - prevents MSC re-entry
                         "-c", "mww 0xE000ED0C 0x05FA0004",        # Trigger NVIC_SystemReset via AIRCR
                         "-c", "sleep 1000",                        # Wait for reboot
                         "-c", "shutdown"
@@ -1947,6 +2159,28 @@ class SDCardTestSuite:
         if self.verbose:
             print(message)
 
+    def _send_rc_continuously(self, stop_event: threading.Event, rate_hz: float = 50.0):
+        """
+        Background thread that sends RC commands continuously.
+        
+        Used during endurance tests to maintain RC link so arming works.
+        
+        Args:
+            stop_event: Event to signal thread to stop
+            rate_hz: RC command rate in Hz
+        """
+        rc_interval = 1.0 / rate_hz
+        rc_channels = [1500] * 16
+        rc_channels[2] = 1000  # Throttle LOW
+        rc_channels[4] = 1000  # Arm channel LOW
+        
+        while not stop_event.is_set():
+            try:
+                self.fc.send_rc_channels(rc_channels)
+            except Exception:
+                pass
+            time.sleep(rc_interval)
+
     # -------------------------------------------------------------------------
     # Pre-Test Validation
     # -------------------------------------------------------------------------
@@ -2202,8 +2436,21 @@ class SDCardTestSuite:
             test_kwargs = {}
             if test_num in [3, 9, 10]:
                 # These tests accept duration_min
-                if "duration_min" in kwargs:
-                    test_kwargs["duration_min"] = kwargs["duration_min"]
+                # Handle --quick flag for shorter tests
+                quick = kwargs.get("quick", False)
+                duration_min = kwargs.get("duration_min")
+                
+                if quick:
+                    if test_num == 3:
+                        test_kwargs["duration_min"] = 2  # 2 min for Test 3 in quick mode
+                    elif test_num == 9:
+                        test_kwargs["duration_min"] = 5  # 5 min for Test 9 in quick mode
+                    else:
+                        test_kwargs["duration_min"] = 5  # 5 min for Test 10 in quick mode
+                elif duration_min is not None:
+                    # Only override if explicitly set via CLI
+                    test_kwargs["duration_min"] = duration_min
+                # else: use test function defaults (5, 60, 10)
 
             # Note: override_rate is only used for rate setting before test, not passed to test method
 
@@ -2423,6 +2670,162 @@ class SDCardTestSuite:
         return result
 
     # -------------------------------------------------------------------------
+    # MSC Workflow: Enter -> Mount -> Download -> Verify -> Exit
+    # -------------------------------------------------------------------------
+
+    def msc_download_and_verify_logs(self, output_dir: Path = None) -> LogVerificationResult:
+        """
+        Complete MSC workflow: Enable MSC mode, mount device, download logs,
+        verify them, then cleanly exit MSC mode.
+
+        This is the primary function for automated log download and verification.
+        Handles all steps from enabling MSC to returning to normal CDC operation.
+
+        Args:
+            output_dir: Directory to save downloaded logs (optional)
+
+        Returns:
+            LogVerificationResult with comprehensive verification details
+        """
+        result = LogVerificationResult(passed=False)
+
+        self.log("\n" + "="*70)
+        self.log("MSC WORKFLOW: ENABLE -> MOUNT -> DOWNLOAD -> VERIFY -> EXIT")
+        self.log("="*70)
+
+        try:
+            # Step 1: Enable MSC mode
+            self.log("\n[1/5] Enabling MSC mode...")
+            if not self.fc.enable_msc_mode(timeout=60.0):
+                self.log("  ❌ Failed to enable MSC mode")
+                return result
+
+            self.log("  ✓ MSC mode enabled, waiting for mount...")
+            time.sleep(2)
+
+            # Step 2: Find and verify mount point
+            self.log("\n[2/5] Locating SD card mount point...")
+            mount_point = self.fc.find_msc_mount_point()
+            if not mount_point:
+                self.log("  ❌ Could not find MSC mount point")
+                self.log("  Attempting to manually mount /dev/sdb1...")
+
+                # Try to mount manually using system command
+                try:
+                    import subprocess
+                    result_mount = subprocess.run(
+                        ["udisksctl", "mount", "-b", "/dev/sdb1"],
+                        capture_output=True,
+                        text=True,
+                        timeout=10
+                    )
+                    if result_mount.returncode == 0:
+                        # Extract mount point from output
+                        for line in result_mount.stdout.split('\n'):
+                            if 'Mounted' in line:
+                                # Format: "Mounted /dev/sdb1 at /run/media/user/XXXX"
+                                parts = line.split(' at ')
+                                if len(parts) == 2:
+                                    mount_point = Path(parts[1].strip())
+                                    self.log(f"  ✓ Manually mounted at: {mount_point}")
+                                    break
+                    else:
+                        self.log(f"  ⚠ Mount failed: {result_mount.stderr}")
+                except Exception as e:
+                    self.log(f"  ⚠ Manual mount error: {e}")
+
+            if not mount_point or not mount_point.exists():
+                self.log("  ❌ No valid mount point found")
+                return result
+
+            self.log(f"  ✓ SD card mounted at: {mount_point}")
+
+            # Step 3: Download log files
+            self.log("\n[3/5] Downloading log files from MSC...")
+            logs = self.fc.download_logs_from_msc(output_dir=output_dir)
+
+            if not logs:
+                self.log("  ❌ No logs found or download failed")
+                return result
+
+            self.log(f"  ✓ Downloaded {len(logs)} log file(s)")
+            for path, data in logs:
+                self.log(f"    - {path.name}: {len(data):,} bytes")
+
+            # Step 4: Verify log files
+            self.log("\n[4/5] Verifying blackbox log files...")
+            all_passed = True
+            total_frames = 0
+            total_i_frames = 0
+            total_p_frames = 0
+
+            for path, log_data in logs:
+                self.log(f"\n  Verifying {path.name}...")
+                log_result = self.fc.verify_blackbox_log(log_data)
+
+                if log_result.passed:
+                    self.log(f"    ✓ VALID")
+                    self.log(f"      Frames: {log_result.frame_count:,} (I: {log_result.i_frame_count}, P: {log_result.p_frame_count})")
+                    total_frames += log_result.frame_count
+                    total_i_frames += log_result.i_frame_count
+                    total_p_frames += log_result.p_frame_count
+                else:
+                    self.log(f"    ❌ FAILED")
+                    if log_result.errors:
+                        for error in log_result.errors:
+                            self.log(f"       Error: {error}")
+                    all_passed = False
+
+            result.passed = all_passed
+            result.frame_count = total_frames
+            result.i_frame_count = total_i_frames
+            result.p_frame_count = total_p_frames
+            result.logs_found = len(logs)
+            result.download_method = "USB_MSC"
+
+            # Step 5: Exit MSC mode and restore CDC
+            self.log("\n[5/5] Exiting MSC mode and restoring CDC operation...")
+
+            # First unmount the SD card
+            try:
+                import subprocess
+                subprocess.run(
+                    ["udisksctl", "unmount", "-b", "/dev/sdb1"],
+                    capture_output=True,
+                    timeout=10
+                )
+                self.log("  ✓ SD card unmounted")
+            except Exception as e:
+                self.log(f"  ⚠ Unmount error (continuing): {e}")
+
+            # Exit MSC mode via ST-Link
+            if self.fc.exit_msc_mode_and_reenumerate():
+                self.log("  ✓ MSC mode exited successfully")
+                self.log("  ✓ CDC operation restored")
+            else:
+                self.log("  ❌ Failed to exit MSC mode cleanly")
+                self.log("  ⚠ FC may require manual USB reconnect")
+                result.passed = False
+
+        except Exception as e:
+            self.log(f"\n  ❌ Workflow error: {e}")
+            import traceback
+            self.log(traceback.format_exc())
+            result.passed = False
+
+        # Final summary
+        self.log("\n" + "="*70)
+        if result.passed:
+            self.log("✅ MSC WORKFLOW COMPLETED SUCCESSFULLY")
+            self.log(f"   Logs verified: {result.logs_found}")
+            self.log(f"   Total frames: {result.frame_count:,}")
+        else:
+            self.log("❌ MSC WORKFLOW FAILED")
+        self.log("="*70)
+
+        return result
+
+    # -------------------------------------------------------------------------
     # Servo Stress Testing Helper
     # -------------------------------------------------------------------------
 
@@ -2612,6 +3015,10 @@ class SDCardTestSuite:
 
         self.log(f"  Free space before: {details['free_space_before_mb']:.1f} MB")
 
+        # Reset FC state to ensure test independence
+        self.log("  Resetting FC state for test independence...")
+        self.fc.reset_fc_state(timeout=5.0)
+
         # Wait for FC to be ready for arming (sensor checks passing)
         self.log("  Checking sensor status and waiting for arming readiness...")
         self.log("  (Waiting up to 5 minutes for GPS 3D fix if needed...)")
@@ -2735,6 +3142,10 @@ class SDCardTestSuite:
         details = {"duration_min": duration_min}
         errors_detected = 0
 
+        # Reset FC state to ensure test independence
+        self.log("  Resetting FC state for test independence...")
+        self.fc.reset_fc_state(timeout=5.0)
+
         # Wait for arming ready before starting
         self.log(f"  Checking sensor status before arming...")
         ready, status_msg = self.fc.wait_for_arming_ready(timeout=300.0)
@@ -2846,6 +3257,10 @@ class SDCardTestSuite:
         details = {"target_cycles": cycles}
         successful_cycles = 0
 
+        # Reset FC state to ensure test independence
+        self.log("  Resetting FC state for test independence...")
+        self.fc.reset_fc_state(timeout=5.0)
+
         # Check sensors once before starting
         self.log(f"  Checking sensor status...")
         ready, status_msg = self.fc.wait_for_arming_ready(timeout=300.0)
@@ -2919,6 +3334,10 @@ class SDCardTestSuite:
         details = {"target_attempts": attempts}
         successful_arms = 0
         lockups_detected = 0
+
+        # Reset FC state to ensure test independence
+        self.log("  Resetting FC state for test independence...")
+        self.fc.reset_fc_state(timeout=5.0)
 
         for i in range(attempts):
             self.log(f"\n  Attempt {i+1}/{attempts}:")
@@ -3011,6 +3430,15 @@ class SDCardTestSuite:
         self.log("\n" + "="*60)
         self.log(f"TEST 9: Extended Endurance Test ({duration_min} min)")
         self.log("="*60)
+        
+        # Warn about long duration
+        if duration_min >= 30:
+            self.log("")
+            self.log("  ⚠️  WARNING: This test runs for %d minutes (%.1f hours)" % (duration_min, duration_min / 60.0))
+            self.log("  If running from CLI, ensure sufficient timeout or run in background.")
+            self.log("  Example: timeout %d python sd_card_test.py ..." % (duration_min * 60 + 300))
+            self.log("")
+        
         self.log("  Continuous logging with periodic arm/disarm cycles.")
         self.log("  Monitors SD card stability and performance over time.")
         self.log("")
@@ -3044,6 +3472,8 @@ class SDCardTestSuite:
             )
 
         self.log(f"  Initial free space: {last_free_space/1024:.1f} MB")
+        self.log(f"  Resetting FC state for test independence...")
+        self.fc.reset_fc_state(timeout=5.0)
         self.log(f"  Checking sensor status before arming cycles...")
 
         # Wait for FC to be ready for arming before starting test
@@ -3054,6 +3484,9 @@ class SDCardTestSuite:
         else:
             self.log(f"  ✓ FC ready for arming")
 
+        # Note: We don't use a background RC sender - we rely on wait_for_arming_ready()
+        # which sends RC commands at 50Hz to maintain the link
+        
         self.log(f"  Running for {duration_min} minutes...")
         self.log("")
 
@@ -3097,33 +3530,70 @@ class SDCardTestSuite:
             self.log(f"")
 
         check_interval = 10  # Check every 10 seconds
-        arm_interval = 30    # Try to arm every 30 seconds
-        last_arm_attempt = time.time()
         min_free_mb = 100    # Stop test if free space drops below this
-
+        
+        # Start background RC sender to maintain link during endurance test
+        # This is needed for arming to work
+        rc_stop_event = threading.Event()
+        rc_thread = threading.Thread(target=self._send_rc_continuously, 
+                                      args=(rc_stop_event, 50.0), 
+                                      daemon=True)
+        rc_thread.start()
+        
+        self.log("DEBUG: Starting endurance loop at " + str(time.time()))
+        
+        # For 80%+ armed time: arm at start, stay armed, brief disarms only to clear lockout
+        disarm_interval = 120  # Brief disarm every 2 minutes to clear lockout
+        last_disarm = 0
+        is_armed = False
+        
+        # Initial arm at start of test
+        self.log(f"  [0.0m] Performing initial arm...")
+        sd_before = self.fc.get_sd_card_status()
+        if sd_before and sd_before.is_ready:
+            if self.fc.arm(timeout=5.0):
+                arm_cycles += 1
+                is_armed = True
+                self.log(f"    ✓ Armed")
+            else:
+                self.log(f"    ⚠ Failed to arm")
+        else:
+            self.log(f"    ⚠ SD card not ready before arm")
+        
         while time.time() - start_time < duration_sec:
             elapsed = time.time() - start_time
             elapsed_min = elapsed / 60
 
-            # Attempt arm/disarm cycle
-            if time.time() - last_arm_attempt >= arm_interval:
-                last_arm_attempt = time.time()
-
-                # Try to arm
-                try:
-                    if self.fc.arm(timeout=2.0):
+            # Brief disarm every 2 minutes to clear lockout, then re-arm immediately
+            # This keeps armed time >80%
+            if elapsed - last_disarm >= disarm_interval:
+                last_disarm = elapsed
+                
+                if is_armed:
+                    # Brief disarm
+                    self.log(f"  [{elapsed_min:.1f}m] Brief disarm (lockout reset)...")
+                    if self.fc.disarm(timeout=5.0):
+                        disarm_cycles += 1
+                        is_armed = False
+                        self.log(f"    ✓ Disarmed")
+                    time.sleep(0.5)  # Brief pause
+                    
+                    # Re-arm immediately
+                    if self.fc.arm(timeout=5.0):
                         arm_cycles += 1
-
-                        # Move servos while armed for stress testing (1 second duration)
-                        servo_result = self.fc.move_servos(duration=1.0, pattern='sweep', rate_hz=12.0)
-                        time.sleep(1)  # Additional 1 second stay armed after servo stress
-
-                        # Disarm
-                        if self.fc.disarm(timeout=2.0):
-                            disarm_cycles += 1
-                except Exception as e:
-                    pass  # Silently continue if arming fails
-
+                        is_armed = True
+                        self.log(f"    ✓ Re-armed")
+                    else:
+                        self.log(f"    ⚠ Failed to re-arm")
+                else:
+                    # Not armed, try to arm
+                    if self.fc.arm(timeout=5.0):
+                        arm_cycles += 1
+                        is_armed = True
+                        self.log(f"    ✓ Armed")
+                    else:
+                        self.log(f"    ⚠ Failed to arm")
+            
             # Query SD card status
             try:
                 sd_status = self.fc.get_sd_card_status()
@@ -3169,6 +3639,17 @@ class SDCardTestSuite:
                         self.log(f"  [{elapsed_min:.1f}m] Free: {free_mb:.1f}MB, Cycles: {arm_cycles}/{disarm_cycles}")
 
             time.sleep(check_interval)
+
+        # Stop background RC thread
+        rc_stop_event.set()
+        rc_thread.join(timeout=2.0)
+
+        # Ensure FC is disarmed at end of test for safety
+        if is_armed:
+            self.log(f"  Disarming FC at end of test...")
+            if self.fc.disarm(timeout=5.0):
+                disarm_cycles += 1
+                self.log(f"    ✓ Disarmed")
 
         # Calculate statistics
         details["arm_cycles"] = arm_cycles
@@ -3219,12 +3700,22 @@ class SDCardTestSuite:
     # -------------------------------------------------------------------------
 
     def test_10_dma_contention(self, duration_min: int = 10) -> TestResult:
-        """Test 10: DMA Contention Stress Test with real GPS"""
+        """Test 10: DMA Contention Stress Test with real GPS
+
+        Tests SD card operations under heavy DMA load with:
+        - Active blackbox logging (requires arming)
+        - GPS DMA activity
+        - Servo stress (RC commands)
+
+        This matches the test plan requirement: "Start blackbox logging" before
+        monitoring for DMA contention issues.
+        """
         self.log("\n" + "="*60)
         self.log(f"TEST 10: DMA Contention Stress Test ({duration_min} min)")
         self.log("="*60)
         self.log("  Monitors SD card and GPS under simultaneous DMA load.")
         self.log("  Requires: GPS module connected with active fix.")
+        self.log("  WARNING: This test arms the FC to start blackbox logging.")
 
         start_time = time.time()
         duration_sec = duration_min * 60
@@ -3235,7 +3726,12 @@ class SDCardTestSuite:
         msp_timeouts = 0
         checks = 0
 
-        check_interval = 5  # Check every 5 seconds for more granularity
+        check_interval = 5
+
+        # Reset FC state for test independence
+        self.log("  Resetting FC state for test independence...")
+        if not self.fc.reset_fc_state(timeout=5.0):
+            self.log("  WARNING: Could not fully reset FC state")
 
         # Verify GPS is working
         gps = self.fc.get_gps_status()
@@ -3246,6 +3742,36 @@ class SDCardTestSuite:
             self.log(f"  GPS: {gps.num_sat} satellites, HDOP {gps.hdop}")
             details["gps_fix_at_start"] = True
             details["initial_satellites"] = gps.num_sat
+
+        # Wait for arming ready
+        self.log("  Waiting for FC to be ready for arming...")
+        ready, status_msg = self.fc.wait_for_arming_ready(timeout=60.0)
+        if not ready:
+            self.log(f"  ERROR: FC not ready to arm: {status_msg}")
+            return TestResult(
+                test_num=10,
+                test_name="DMA Contention Stress Test",
+                passed=False,
+                duration_sec=time.time() - start_time,
+                error=f"Cannot arm: {status_msg}",
+                details=details
+            )
+
+        # Arm the FC to start blackbox logging
+        self.log("  Arming FC to start blackbox logging...")
+        if not self.fc.arm(timeout=5.0):
+            self.log("  ERROR: Failed to arm FC")
+            return TestResult(
+                test_num=10,
+                test_name="DMA Contention Stress Test",
+                passed=False,
+                duration_sec=time.time() - start_time,
+                error="Failed to arm FC",
+                details=details
+            )
+
+        self.log("  ✓ FC armed, blackbox logging started")
+        details["armed_successfully"] = True
 
         self.log(f"  Running for {duration_min} minutes...")
         self.log(f"  Starting servo stress (sweep pattern) for DMA contention...")
@@ -3310,6 +3836,13 @@ class SDCardTestSuite:
                 "updates_sent": servo_result.get('updates_sent', 0),
                 "errors": servo_result.get('errors', 0)
             }
+
+        # Disarm FC to stop blackbox logging
+        self.log("  Disarming FC...")
+        if self.fc.disarm(timeout=3.0):
+            self.log("  ✓ FC disarmed")
+        else:
+            self.log("  WARNING: Failed to disarm FC")
 
         details["checks_performed"] = checks
         details["sd_errors"] = sd_errors
@@ -3536,7 +4069,8 @@ Examples:
     parser.add_argument("--elf", type=str, help="Path to firmware ELF file (for Test 11)")
     parser.add_argument("--verify-logs", action="store_true", help="Download and verify blackbox logs after tests")
     parser.add_argument("--save-logs", type=str, help="Save downloaded logs to this directory")
-    parser.add_argument("--duration-min", type=int, default=60, help="Test duration in minutes (default: 60, used by Test 9)")
+    parser.add_argument("--duration-min", type=int, default=None, help="Test duration in minutes (default: Test 3=5min, Test 9=60min, Test 10=10min)")
+    parser.add_argument("--quick", action="store_true", help="Run quick tests (2 min for Test 3, 5 min for Test 9)")
     parser.add_argument("--test9-blackbox-rate", type=str, help="Override blackbox rate for Test 9 (e.g., 1/8)")
     parser.add_argument("--restore-config", action="store_true", help="Restore baseline FC configuration and exit")
     parser.add_argument("--config-file", type=str, default="baseline-fc-config.txt", help="Baseline configuration file (default: baseline-fc-config.txt)")
@@ -3632,6 +4166,7 @@ Examples:
         # Run tests with optional test-specific parameters
         test_params = {
             "duration_min": args.duration_min,
+            "quick": args.quick,
         }
         if args.test9_blackbox_rate:
             test_params["override_rate"] = args.test9_blackbox_rate
