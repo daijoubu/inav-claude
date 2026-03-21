@@ -478,12 +478,28 @@ bash_rules:
     decision: deny
     message: "STOP! The 'gh pr review' command is not allowed. Pull request reviews must be done through the GitHub web interface."
 
+  - name: "Allow gh pr create to master in iNavFlight.github.io"
+    command_pattern: "^gh$"
+    argument_pattern: ".*pr\\s+create.*--base\\s+master.*"
+    category: other
+    decision: allow
+    precondition_script: |
+      # Allow PRs to master for iNavFlight.github.io (documentation site)
+      # Block PRs to master for firmware repos
+      ABS_CWD=$(pwd)
+      if echo "$ABS_CWD" | grep -q "iNavFlight\.github\.io"; then
+        echo "allow"
+      else
+        echo "deny"
+      fi
+    message: "Pull request to master allowed for iNavFlight.github.io documentation site"
+
   - name: "Block gh pr create targeting master"
     command_pattern: "^gh$"
     argument_pattern: ".*pr\\s+create.*--base\\s+master.*"
     category: other
     decision: deny
-    message: "pull requests should never target master. Read CRITICAL-BEFORE-PR.md"
+    message: "pull requests should never target master in firmware repos. Read CRITICAL-BEFORE-PR.md. (Allowed only for iNavFlight.github.io documentation site)"
 
   - name: "Allow gh api for repository queries"
     command_pattern: "^gh$"
