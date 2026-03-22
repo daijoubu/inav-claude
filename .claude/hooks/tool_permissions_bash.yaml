@@ -533,6 +533,57 @@ bash_rules:
     decision: allow
     message: "Shell variable assignment before safe read/utility commands"
 
+  - name: "Allow markdown2mdx conversion setup variables (temporary, expires 2026-03-23 18:30 UTC)"
+    command_pattern: "^(TMPDIR|DOCS|CONV|OUT|declare)=.*"
+    category: other
+    decision: allow
+    precondition_script: |
+      # Time-limited: Allow markdown2mdx setup variables for 48 hours
+      # Variables: TMPDIR=, DOCS=, CONV=, OUT=, declare -A
+      DEADLINE="2026-03-23 18:30:00"
+      CURRENT_TIME=$(date -u "+%Y-%m-%d %H:%M:%S" 2>/dev/null || echo "2026-03-21 19:00:00")
+
+      if [ "$CURRENT_TIME" = "2026-03-21 19:00:00" ] || [ "$CURRENT_TIME" \< "$DEADLINE" ]; then
+        echo "allow"
+      else
+        echo "deny"
+      fi
+    message: "Temporary access to markdown2mdx conversion setup expires 2026-03-23 18:30 UTC"
+
+  - name: "Allow mkdir -p for markdown2mdx output directories (temporary, expires 2026-03-23 18:30 UTC)"
+    command_pattern: "^mkdir$"
+    argument_pattern: ".*\\$OUT.*"
+    category: write
+    decision: allow
+    precondition_script: |
+      # Time-limited: Allow mkdir with $OUT variable for 48 hours
+      DEADLINE="2026-03-23 18:30:00"
+      CURRENT_TIME=$(date -u "+%Y-%m-%d %H:%M:%S" 2>/dev/null || echo "2026-03-21 19:00:00")
+
+      if [ "$CURRENT_TIME" = "2026-03-21 19:00:00" ] || [ "$CURRENT_TIME" \< "$DEADLINE" ]; then
+        echo "allow"
+      else
+        echo "deny"
+      fi
+    message: "Temporary access to create markdown2mdx output directories expires 2026-03-23 18:30 UTC"
+
+  - name: "Allow diff for markdown2mdx audit/comparison (temporary, expires 2026-03-23 18:30 UTC)"
+    command_pattern: "^diff$"
+    argument_pattern: ".*(markdown2mdx|audit-out|\\$DOCS|\\$OUT).*"
+    category: read
+    decision: allow
+    precondition_script: |
+      # Time-limited: Allow diff commands for markdown2mdx work for 48 hours
+      DEADLINE="2026-03-23 18:30:00"
+      CURRENT_TIME=$(date -u "+%Y-%m-%d %H:%M:%S" 2>/dev/null || echo "2026-03-21 19:00:00")
+
+      if [ "$CURRENT_TIME" = "2026-03-21 19:00:00" ] || [ "$CURRENT_TIME" \< "$DEADLINE" ]; then
+        echo "allow"
+      else
+        echo "deny"
+      fi
+    message: "Temporary access to diff markdown2mdx audit files expires 2026-03-23 18:30 UTC"
+
   # ===================================================================
   # GitHub CLI Commands
   # ===================================================================
