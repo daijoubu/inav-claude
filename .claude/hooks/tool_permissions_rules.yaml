@@ -175,6 +175,27 @@ rules:
     decision: allow
     message: "WASM runtime file modification allowed - active development"
 
+  - name: "Allow edits to markdown2mdx/ (temporary, expires 2026-03-23 18:30 UTC)"
+    tool_name_pattern: "^(Write|Edit)$"
+    tool_input_patterns:
+      file_path: ".*markdown2mdx/.*"
+    category: write
+    decision: allow
+    precondition_script: |
+      # Time-limited rule: Allow edits to markdown2mdx/ for 48 hours
+      # Deadline: 2026-03-23 18:30:00 UTC
+      # Started: 2026-03-21 18:30:00 UTC
+
+      DEADLINE="2026-03-23 18:30:00"
+      CURRENT_TIME=$(date -u "+%Y-%m-%d %H:%M:%S" 2>/dev/null || date "+%Y-%m-%d %H:%M:%S")
+
+      if [[ "$CURRENT_TIME" < "$DEADLINE" ]]; then
+        echo "allow"
+      else
+        echo "deny"
+      fi
+    message: "Temporary access to markdown2mdx/ expires 2026-03-23 18:30 UTC"
+
   # ===================================================================
   # Ask Rules (File Modifications)
   # ===================================================================
