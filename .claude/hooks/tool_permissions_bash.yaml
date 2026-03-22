@@ -393,6 +393,26 @@ bash_rules:
     decision: allow
     message: "Node.js script to copy WASM SITL artifacts to configurator resources"
 
+  - name: "Allow node execution in markdown2mdx/ (temporary, expires 2026-03-23 18:30 UTC)"
+    command_pattern: "^node$"
+    argument_pattern: ".*markdown2mdx/.*"
+    category: other
+    decision: allow
+    precondition_script: |
+      # Time-limited rule: Allow node execution in markdown2mdx/ for 48 hours
+      # Deadline: 2026-03-23 18:30:00 UTC
+      # Started: 2026-03-21 18:30:00 UTC
+
+      DEADLINE="2026-03-23 18:30:00"
+      CURRENT_TIME=$(date -u "+%Y-%m-%d %H:%M:%S" 2>/dev/null || date "+%Y-%m-%d %H:%M:%S")
+
+      if [[ "$CURRENT_TIME" < "$DEADLINE" ]]; then
+        echo "allow"
+      else
+        echo "deny"
+      fi
+    message: "Temporary access to run node in markdown2mdx/ expires 2026-03-23 18:30 UTC"
+
   - name: "Allow WASM SITL output copy (build_SITL to resources/sitl)"
     command_pattern: "^cp$"
     argument_pattern: ".*(build_SITL/bin/SITL\\.(elf|wasm|wasm\\.map)|inav-configurator/resources/sitl/).*"
