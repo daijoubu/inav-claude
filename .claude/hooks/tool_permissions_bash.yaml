@@ -393,13 +393,33 @@ bash_rules:
     decision: allow
     message: "Node.js script to copy WASM SITL artifacts to configurator resources"
 
+  - name: "Allow node full_file/cli.js in markdown2mdx/ (temporary, expires 2026-03-23 18:30 UTC)"
+    command_pattern: "^node$"
+    argument_pattern: ".*full_file/cli\\.js.*"
+    category: other
+    decision: allow
+    precondition_script: |
+      # Time-limited rule: Allow node full_file/cli.js execution for 48 hours
+      # Deadline: 2026-03-23 18:30:00 UTC
+      # Started: 2026-03-21 18:30:00 UTC
+
+      DEADLINE="2026-03-23 18:30:00"
+      CURRENT_TIME=$(date -u "+%Y-%m-%d %H:%M:%S" 2>/dev/null || date "+%Y-%m-%d %H:%M:%S")
+
+      if [[ "$CURRENT_TIME" < "$DEADLINE" ]]; then
+        echo "allow"
+      else
+        echo "deny"
+      fi
+    message: "Temporary access to run node full_file/cli.js expires 2026-03-23 18:30 UTC"
+
   - name: "Allow node execution after cd to markdown2mdx/ (temporary, expires 2026-03-23 18:30 UTC)"
     command_pattern: "^node$"
     category: other
     decision: allow
     precondition_script: |
       # Time-limited rule: Allow node execution after cd to markdown2mdx/ for 48 hours
-      # This handles: cd .../markdown2mdx && node full_file/cli.js ...
+      # This handles: cd .../markdown2mdx && node script.js ...
       # Deadline: 2026-03-23 18:30:00 UTC
       # Started: 2026-03-21 18:30:00 UTC
 
@@ -409,15 +429,19 @@ bash_rules:
       # Check if deadline has passed
       if [[ "$CURRENT_TIME" >= "$DEADLINE" ]]; then
         echo "deny"
-        exit 0
-      fi
-
-      # Check if ORIGINAL_COMMAND contains a cd into markdown2mdx
-      ORIGINAL_CMD="{ORIGINAL_COMMAND}"
-      if [ -n "$ORIGINAL_CMD" ] && echo "$ORIGINAL_CMD" | grep -qE "cd\\s+[^&|;]*/markdown2mdx(/|$|\\s+)"; then
-        echo "allow"
       else
-        echo "deny"
+        # Check current directory or ORIGINAL_COMMAND for markdown2mdx
+        CWD=$(pwd)
+        if echo "$CWD" | grep -q "markdown2mdx"; then
+          echo "allow"
+        else
+          ORIG="{ORIGINAL_COMMAND}"
+          if echo "$ORIG" | grep -q "markdown2mdx"; then
+            echo "allow"
+          else
+            echo "deny"
+          fi
+        fi
       fi
     message: "Temporary access to run node after cd to markdown2mdx/ expires 2026-03-23 18:30 UTC"
 
