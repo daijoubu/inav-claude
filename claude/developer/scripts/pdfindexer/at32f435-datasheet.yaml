@@ -7,150 +7,212 @@ index_dir: AT32F435-Datasheet-Index/search-index
 keywords:
   # Core and architecture
   - Cortex-M4
-  - processor core
   - FPU
   - floating point
+  - DSP
+  - MPU
+  - memory protection
   - instruction cache
   - data cache
-  - SRAM
-  - flash memory
-  - DTCM
-  - ITCM
+  - AHB
+  - APB
 
   # Memory
-  - flash
-  - EEPROM
-  - backup SRAM
+  - flash memory
+  - SRAM
   - memory map
   - OTP
-  - on-chip memory
+  - sLib
+  - XMC
 
   # DMA
   - DMA
+  - DMAMUX
   - direct memory access
   - DMA channel
   - DMA request
-  - DMA controller
-  - FIFO
-  - memory-to-memory
+  - EDMA
+  - enhanced DMA
 
-  # Timers
+  # Timers — AT32 uses "TMR" not "TIM"
   - timer
+  - TMR
   - PWM
   - pulse width
   - input capture
   - output compare
   - quadrature encoder
   - motor control
-  - general purpose timer
   - advanced timer
+  - general purpose timer
   - basic timer
-  - watchdog
   - IWDG
-  - WWDG
-  - TIM1
-  - TIM2
-  - TIM3
-  - TIM4
-  - TIM5
-  - TIM6
-  - TIM7
-  - TIM8
-  - TIM9
-  - TIM10
-  - TIM11
+  - WWDT
+  - watchdog
+  - SysTick
+  - TMR1
+  - TMR2
+  - TMR3
+  - TMR4
+  - TMR5
+  - TMR6
+  - TMR7
+  - TMR8
+  - TMR9
+  - TMR10
+  - TMR11
+  - TMR12
+  - TMR13
+  - TMR14
+  - TMR20
 
   # Communication peripherals
   - SPI
+  - SPI1
+  - SPI2
+  - SPI3
+  - SPI4
   - I2C
+  - I2C1
+  - I2C2
+  - I2C3
   - UART
   - USART
+  - USART1
+  - USART2
+  - USART3
+  - UART4
+  - UART5
+  - USART6
+  - UART7
+  - UART8
   - USB
-  - USB OTG
-  - OTG_FS
+  - OTGFS
+  - OTG full speed
   - I2S
   - CAN
+  - SDIO
+  - QSPI
+  - infrared
+  - IRTMR
+  - LIN
+  - RS485
+  - SmartCard
+  - IrDA
+
+  # Ethernet
+  - EMAC
+  - Ethernet
+  - MII
+  - RMII
+  - IEEE1588
 
   # Analog
   - ADC
+  - ADC1
+  - ADC2
+  - ADC3
   - analog to digital
   - temperature sensor
   - VREF
+  - VINTRV
   - voltage reference
+  - VBAT
+  - DAC
+  - digital to analog
   - comparator
 
-  # Interrupts and NVIC
-  - interrupt
-  - NVIC
-  - IRQ
-  - EXTI
-  - external interrupt
-  - nested vectored
-
-  # Clock and power
-  - clock
-  - PLL
-  - HSE
-  - HSI
-  - LSE
-  - LSI
-  - oscillator
-  - RCC
-  - reset
-  - low power
-  - stop mode
-  - standby mode
-  - sleep mode
-  - power supply
-  - VBAT
-
-  # GPIO and alternate functions
+  # GPIO and alternate functions — AT32 uses IOMUX
   - GPIO
+  - IOMUX
   - alternate function
-  - AF0
-  - AF1
-  - AF2
-  - AF3
-  - AF4
-  - AF5
-  - AF6
-  - AF7
-  - AF8
-  - AF9
-  - AF10
-  - AF11
-  - AF12
-  - AF13
-  - AF14
-  - AF15
+  - GPIO_MUX
+  - MUX0
+  - MUX1
+  - MUX2
+  - MUX3
+  - MUX4
+  - MUX5
+  - MUX6
+  - MUX7
+  - MUX8
+  - MUX9
   - pull-up
   - pull-down
   - open drain
   - push-pull
+  - 5V tolerant
+  - pin definition
   - pin configuration
 
-  # Pinouts
+  # Interrupts and NVIC
+  - interrupt
+  - NVIC
+  - EXINT
+  - external interrupt
+  - nested vectored
+  - IRQ
+
+  # Clock and power
+  - clock
+  - PLL
+  - HEXT
+  - HICK
+  - LEXT
+  - LICK
+  - oscillator
+  - CRM
+  - reset
+  - ACC
+  - automatic clock calibration
+  - low power
+  - sleep mode
+  - deepsleep mode
+  - standby mode
+  - power supply
+  - POR
+  - LVR
+  - PVM
+  - power on reset
+  - low voltage reset
+
+  # Boot and DFU
+  - boot mode
+  - BOOT0
+  - BOOT1
+  - bootloader
+  - DFU
+  - system memory
+
+  # Packages and pinout (for schematic work)
+  - LQFP144
   - LQFP100
-  - BGA100
-  - pin definition
+  - LQFP64
+  - LQFP48
+  - QFN48
   - package information
+  - pin definition
+
+  # RTC
+  - ERTC
+  - real-time clock
+  - backup register
+  - WKUP
 
   # Special features
-  - RTC
-  - real-time clock
   - CRC
   - RNG
   - random number
-  - true random number
-  - crypto
+  - DVP
+  - digital video
+  - UID
+  - unique identifier
 
   # Debug
   - SWD
   - JTAG
   - trace
   - debug
-  - SEGGER
-  - JLINK
 
   # Flight controller specific
   - gyroscope
@@ -161,3 +223,6 @@ keywords:
   - motor
   - ESC
   - servo
+  - battery
+  - current sense
+  - voltage divider
