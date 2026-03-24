@@ -1,0 +1,163 @@
+# Config for AT32F435 datasheet indexing
+# Usage: ./pdfindexer.py --config at32f435-datasheet.yaml build-index
+
+pdf_file: ../../docs/targets/at32f435/datasheets_application_notes/AT32F437VGT7-datasheet.pdf
+index_dir: AT32F435-Datasheet-Index/search-index
+
+keywords:
+  # Core and architecture
+  - Cortex-M4
+  - processor core
+  - FPU
+  - floating point
+  - instruction cache
+  - data cache
+  - SRAM
+  - flash memory
+  - DTCM
+  - ITCM
+
+  # Memory
+  - flash
+  - EEPROM
+  - backup SRAM
+  - memory map
+  - OTP
+  - on-chip memory
+
+  # DMA
+  - DMA
+  - direct memory access
+  - DMA channel
+  - DMA request
+  - DMA controller
+  - FIFO
+  - memory-to-memory
+
+  # Timers
+  - timer
+  - PWM
+  - pulse width
+  - input capture
+  - output compare
+  - quadrature encoder
+  - motor control
+  - general purpose timer
+  - advanced timer
+  - basic timer
+  - watchdog
+  - IWDG
+  - WWDG
+  - TIM1
+  - TIM2
+  - TIM3
+  - TIM4
+  - TIM5
+  - TIM6
+  - TIM7
+  - TIM8
+  - TIM9
+  - TIM10
+  - TIM11
+
+  # Communication peripherals
+  - SPI
+  - I2C
+  - UART
+  - USART
+  - USB
+  - USB OTG
+  - OTG_FS
+  - I2S
+  - CAN
+
+  # Analog
+  - ADC
+  - analog to digital
+  - temperature sensor
+  - VREF
+  - voltage reference
+  - comparator
+
+  # Interrupts and NVIC
+  - interrupt
+  - NVIC
+  - IRQ
+  - EXTI
+  - external interrupt
+  - nested vectored
+
+  # Clock and power
+  - clock
+  - PLL
+  - HSE
+  - HSI
+  - LSE
+  - LSI
+  - oscillator
+  - RCC
+  - reset
+  - low power
+  - stop mode
+  - standby mode
+  - sleep mode
+  - power supply
+  - VBAT
+
+  # GPIO and alternate functions
+  - GPIO
+  - alternate function
+  - AF0
+  - AF1
+  - AF2
+  - AF3
+  - AF4
+  - AF5
+  - AF6
+  - AF7
+  - AF8
+  - AF9
+  - AF10
+  - AF11
+  - AF12
+  - AF13
+  - AF14
+  - AF15
+  - pull-up
+  - pull-down
+  - open drain
+  - push-pull
+  - pin configuration
+
+  # Pinouts
+  - LQFP100
+  - BGA100
+  - pin definition
+  - package information
+
+  # Special features
+  - RTC
+  - real-time clock
+  - CRC
+  - RNG
+  - random number
+  - true random number
+  - crypto
+
+  # Debug
+  - SWD
+  - JTAG
+  - trace
+  - debug
+  - SEGGER
+  - JLINK
+
+  # Flight controller specific
+  - gyroscope
+  - accelerometer
+  - barometer
+  - sensor
+  - IMU
+  - motor
+  - ESC
+  - servo

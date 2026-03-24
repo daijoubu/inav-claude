@@ -1,0 +1,103 @@
+# Config for AT32F435 ADC Application Note indexing
+# Usage: ./pdfindexer.py --config at32f435-adc.yaml build-index
+
+pdf_file: ../../docs/targets/at32f435/datasheets_application_notes/AN0093_AT32F435_437_ADC_Application_Note_EN_V2.0.1.pdf
+index_dir: AT32F435-ADC-Index/search-index
+
+keywords:
+  # ADC core
+  - ADC
+  - analog to digital
+  - analog to digital converter
+  - ADC controller
+  - ADC channel
+  - ADC conversion
+  - ADC resolution
+  - ADC clock
+
+  # ADC modes and features
+  - single conversion
+  - continuous conversion
+  - scan mode
+  - regular conversion
+  - injected conversion
+  - differential measurement
+  - single-ended measurement
+  - software trigger
+  - external trigger
+  - timer trigger
+
+  # ADC configuration
+  - ADC1
+  - ADC2
+  - ADC3
+  - ADC resolution
+  - data alignment
+  - left align
+  - right align
+  - channel selection
+  - sampling time
+  - conversion time
+  - conversion rate
+  - DMA mode
+  - interrupt mode
+  - polling mode
+
+  # ADC channels
+  - temperature sensor
+  - VREF
+  - voltage reference
+  - VDDA
+  - internal reference
+  - external channel
+  - GPIO pin
+  - analog input
+  - input impedance
+
+  # ADC calibration
+  - calibration
+  - offset calibration
+  - gain calibration
+  - automatic calibration
+  - pre-calibration
+  - post-calibration
+
+  # ADC performance
+  - accuracy
+  - linearity
+  - integral non-linearity
+  - differential non-linearity
+  - signal-to-noise ratio
+  - spurious-free dynamic range
+  - total harmonic distortion
+  - effective number of bits
+
+  # ADC operation
+  - initialization
+  - enable
+  - disable
+  - start conversion
+  - stop conversion
+  - conversion complete
+  - EOC
+  - end of conversion
+  - JEOC
+
+  # DMA integration
+  - DMA
+  - DMA mode
+  - DMA request
+  - DMA channel
+  - memory buffer
+  - data transfer
+  - continuous DMA
+
+  # Examples
+  - example code
+  - example project
+  - sample code
+  - application example
+  - implementation guide
+  - best practices
+  - measurement application
+  - sensor interface
