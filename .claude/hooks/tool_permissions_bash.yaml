@@ -203,6 +203,13 @@ bash_rules:
     category: write
     decision: allow
 
+  - name: "Allow git merge --abort (safe cleanup)"
+    command_pattern: "^git$"
+    argument_pattern: "^(-C\\s+\\S+\\s+)?merge\\s+--abort.*"
+    category: write
+    decision: allow
+    message: "Git merge abort - clean exit from merge without committing"
+
   - name: "Git commit reminder"
     command_pattern: "^git$"
     argument_pattern: "^(-C\\s+\\S+\\s+)?commit.*"
