@@ -51,6 +51,13 @@ bash_rules:
   # Git Safety Rules (Deny before Allow)
   # ===================================================================
 
+  - name: "Allow git add with specific files or paths (not -A)"
+    command_pattern: "^git$"
+    argument_pattern: "^(-C\\s+\\S+\\s+)?add\\s+(?!-A\\b).*"
+    category: write
+    decision: allow
+    message: "Git add with specific files allowed (use this, not git add -A)"
+
   - name: "Block git add -A"
     command_pattern: "^git$"
     argument_pattern: "^(-C\\s+\\S+\\s+)?add -A"
@@ -209,6 +216,13 @@ bash_rules:
     category: write
     decision: allow
     message: "Git merge abort - clean exit from merge without committing"
+
+  - name: "Allow git merge with --no-commit and --no-ff (test merges)"
+    command_pattern: "^git$"
+    argument_pattern: "^(-C\\s+\\S+\\s+)?merge\\s+(--no-commit|--no-ff|--no-edit).*"
+    category: write
+    decision: allow
+    message: "Git merge with safety flags (--no-commit, --no-ff, --no-edit) allowed for testing merges"
 
   - name: "Git commit reminder"
     command_pattern: "^git$"
@@ -386,6 +400,12 @@ bash_rules:
     category: other
     decision: allow
     message: "PR triage and parameter analysis scripts"
+
+  - name: "Allow shell script execution (.sh files)"
+    command_pattern: "^\\./(.*\\.sh|make-versioned-docs).*"
+    category: other
+    decision: allow
+    message: "Shell script execution in current/project directories"
 
   - name: "Allow WASM SITL build scripts"
     command_pattern: ".*(build_sitl_wasm\\.sh|copy-wasm-to-configurator\\.js)$"
