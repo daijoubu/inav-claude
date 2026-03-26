@@ -457,7 +457,7 @@ bash_rules:
     message: "nc (netcat) - network utility for port testing and connections"
 
   - name: "Allow common read commands"
-    command_pattern: "^(grep|egrep|find|cat|ls|head|tail|less|more|wc|sort|uniq|diff|stat|file|du|df|awk|sed|cut|xargs|printf|pwd|whoami|md5sum|lsusb|sleep|ss|date|touch|ld|rg|fd|pdfgrep|jq|readelf|objdump|nm|size|objcopy)$"
+    command_pattern: "^(grep|egrep|find|cat|ls|head|tail|less|more|wc|sort|uniq|diff|stat|file|du|df|awk|sed|cut|xargs|printf|pwd|whoami|md5sum|lsusb|sleep|ss|date|touch|ld|rg|fd|pdfgrep|jq|readelf|objdump|nm|size|objcopy|mktemp)$"
     category: read
     decision: allow
 
