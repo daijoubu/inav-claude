@@ -396,7 +396,7 @@ bash_rules:
 
   - name: "Allow PR triage and analysis scripts"
     command_pattern: "^bash$"
-    argument_pattern: ".*(claude/developer/scripts/triage/(fetch-next-pr|update-pr|pr-scorecard|pr-scorecard-record)|\\.github/scripts/(extract-pg-sizes-nm|check-pg-struct-sizes))\\.sh.*"
+    argument_pattern: ".*(claude/developer/scripts/triage/(fetch-next-pr|update-pr|pr-scorecard|pr-scorecard-record|scorecard-triage)|\\.github/scripts/(extract-pg-sizes-nm|check-pg-struct-sizes))\\.sh.*"
     category: other
     decision: allow
     message: "PR triage and parameter analysis scripts (includes PR scoring, fetching, and analysis)"
