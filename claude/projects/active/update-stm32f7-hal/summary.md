@@ -1,10 +1,12 @@
 # Project: Update STM32F7xx HAL and CMSIS
 
-**Status:** 📋 TODO
+**Status:** 🚫 BLOCKED - DroneCAN HAL Compatibility
 **Priority:** CRITICAL (fixes #11299 lockup)
 **Type:** Maintenance / Security Update
 **Created:** 2026-02-20
-**Estimated Effort:** 16-26 hours
+**Started:** 2026-02-22
+**Blocked:** 2026-04-15 (DroneCAN driver API incompatibility with HAL v1.3.3)
+**Estimated Effort:** 16-26 hours (HAL update complete; +4-6 hours for DroneCAN driver fix)
 
 ## Overview
 
@@ -21,7 +23,9 @@ Current HAL version is nearly 9 years old, missing critical fixes:
 
 ## Solution
 
-Drop-in replacement of HAL and CMSIS libraries from STM32CubeF7 package. No code changes required (API verified compatible).
+Drop-in replacement of HAL and CMSIS libraries from STM32CubeF7 package (v1.3.3 / v1.17.4). 
+
+**Note:** DroneCAN driver requires API updates for HAL v1.3.3 compatibility (separate task).
 
 ## Implementation
 
@@ -60,7 +64,8 @@ Drop-in replacement of HAL and CMSIS libraries from STM32CubeF7 package. No code
 - **Assessment:** `completed/assess-stm32-hal-updates/`
 - **Source:** STM32CubeF7 (https://github.com/STMicroelectronics/STM32CubeF7)
 - **Assignment:** `manager/email/sent/2026-02-20-0743-task-update-stm32f7-hal.md`
-- **Branch:** From maintenance-9.x
+- **Branch:** `feature/stm32f7-hal-v1.3.3-update` (pushed to GitHub)
+- **Blocking Issue:** DroneCAN API incompatibility with HAL v1.3.3 (see DRONECAN_COMPATIBILITY.md)
 
 ## Directory
 
