@@ -142,9 +142,31 @@ git branch --show-current
 git status --porcelain
 ```
 
+### 8. Write a Failing Test First (test-engineer agent)
+
+**Before writing any implementation code**, have the test-engineer agent write
+a test that reproduces the issue and currently fails:
+
+```
+Agent: test-engineer
+Prompt: "Write a test that reproduces this issue: [paste issue description from
+         the task assignment]. The test should FAIL now and PASS after the fix."
+```
+
+**Why first:** A failing test proves you've reproduced the actual bug — not just
+a related symptom. A passing test after the fix proves you solved it.
+
+**If the user explicitly asks to skip this step**, you may proceed — they are
+the boss. But note it in your workspace notes and completion report.
+
+For pure new features with no failing behavior to reproduce, ask the
+test-engineer to write acceptance tests instead (tests that define what
+"done" looks like before you build it).
+
 ## Now Begin Work
 
-Only after completing ALL steps above should you begin implementing the task.
+Only after completing ALL steps above (including the failing test) should you
+begin implementing the task.
 
 ## Example: Starting a Configurator Task
 

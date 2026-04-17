@@ -234,6 +234,20 @@ CURRENT=$(cat "$COUNTER_FILE" 2>/dev/null | tr -d '[:space:]')
 echo $((CURRENT + 1)) > "$COUNTER_FILE"
 ```
 
+### 10. Close or Compact This Session
+
+**Developer sessions are designed for one task at a time.** Now that this task
+is complete, tell the user:
+
+> "This task is complete. Developer sessions work best with one task per session
+> to keep context focused. I recommend closing this session and opening a fresh
+> one for the next task. If you'd like to continue here, run `/compact` first
+> to compress the context."
+
+Do not automatically start the next task. Wait for the user to decide.
+
+---
+
 ### Role Separation
 
 **Developer responsibilities:**

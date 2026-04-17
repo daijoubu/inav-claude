@@ -39,7 +39,7 @@ Use the `email-manager` agent for all email operations. See also: `claude/manage
 ### Workflow
 
 ```
-1. User requests feature/fix
+1. User requests feature/fix  ← capture the PROBLEM here (see below)
 2. Create project in claude/projects/active/<name>/
 3. Use email-manager agent to send task assignment to developer
 4. Wait for completion report (email-manager agent to check inbox)
@@ -47,6 +47,24 @@ Use the `email-manager` agent for all email operations. See also: `claude/manage
 6. Run: python3 claude/projects/project_ops.py complete <project-name>
    (atomically moves dir, updates INDEX.md and completed/INDEX.md)
 ```
+
+#### Step 1: Capture the Problem, Not Just the Solution
+
+Before creating a project, make sure you understand the underlying problem.
+
+- **If the user describes a problem** ("GPS position jumps when signal is weak"):
+  Great — use that as the project's Problem statement directly.
+
+- **If the user describes only a solution** ("add a GPS timeout parameter"):
+  Ask before creating the project:
+
+  > "I'll create a project to implement [solution]. For best results, could you
+  > tell me what problem this is intended to solve?"
+
+  The user may also describe a proposed solution — that's fine, include it.
+  The user may decline to answer the problem question — that's fine too, proceed with what you have.
+  But a captured problem statement leads to better test coverage and avoids
+  fixing the wrong thing cleanly.
 
 ## Project Lifecycle
 
