@@ -14,6 +14,14 @@ You must know which role you have. If you don't already know your role:
 3. Read the role-specific README.md file in that directory
 4. ONLY AFTER reading the README, proceed with other tasks
 
+**Session naming - MANDATORY after role is confirmed:**
+Once you know both the role and the current task or project, immediately run `/rename` to name this session.
+Format: `role: task-name` (e.g. `developer: fix-gps-hwversion` or `manager: port-inav-rp2350`)
+- Use the role in lowercase
+- Use the project/task directory name or a short slug if no directory name exists yet
+- If no specific task is known yet, use just the role (e.g. `developer`)
+- Re-run `/rename` if the task changes mid-session
+
 ---
 
 # CLAUDE.md
