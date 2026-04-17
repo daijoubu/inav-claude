@@ -454,6 +454,9 @@
                     <div class="adc-label">RSSI</div>
                     <div class="adc-number" id="rssi">--</div>
                 </div>
+                <div class="adc-value" id="current-check-box" style="display:none;">
+                    <div class="adc-number" id="current-check" style="font-size:18px;"></div>
+                </div>
             </div>
 
             <div class="button-group">
@@ -563,6 +566,16 @@
             document.getElementById('voltage').textContent = data.voltage + ' V';
             document.getElementById('current').textContent = data.current + ' A';
             document.getElementById('rssi').textContent = data.rssi;
+
+            const checkBox = document.getElementById('current-check-box');
+            const checkEl = document.getElementById('current-check');
+            if (data.current_check) {
+                checkEl.textContent = data.current_check;
+                checkEl.style.color = '#ff5252';
+                checkBox.style.display = '';
+            } else {
+                checkBox.style.display = 'none';
+            }
         });
 
         socket.on('fc_disconnected', () => {
@@ -702,9 +715,9 @@
         }
 
         function rebootFC() {
-            if (confirm('Reboot the flight controller? This will disconnect and require reconnection.')) {
+            // if (confirm('Reboot the flight controller? This will disconnect and require reconnection.')) {
                 socket.emit('reboot_fc');
-            }
+            // }
         }
 
         function shutdownSystem() {

@@ -53,6 +53,7 @@ class MSPCodes:
     MSP2_COMMON_SET_MOTOR_MIXER = 0x1006
     MSP2_INAV_SERVO_MIXER = 0x2020
     MSP2_INAV_SET_SERVO_MIXER = 0x2021
+    MSP_CURRENT_METER_CONFIG = 40
 
 INPUT_MAX = 29  # inputSource_e: constant full-scale input, always outputs +1.0
 
@@ -319,6 +320,18 @@ class FlightController:
             data.append(port['peripheral_baudrate'])
 
         self._send_command(MSPCodes.MSP2_SET_CF_SERIAL_CONFIG, bytes(data))
+
+    def get_current_meter_config(self) -> dict:
+        """Get current meter configuration (scale, offset, type, capacity)"""
+        response = self._send_command(MSPCodes.MSP_CURRENT_METER_CONFIG)
+        config = {}
+        if response and len(response) >= 7:
+            scale, offset, sensor_type, capacity = struct.unpack_from('<hhBH', response)
+            config['scale'] = scale
+            config['offset'] = offset
+            config['sensor_type'] = sensor_type
+            config['capacity'] = capacity
+        return config
 
     def get_analog_data(self) -> dict:
         """Get analog sensor data (RSSI, voltage, current)"""
@@ -808,6 +821,16 @@ def handle_start_adc():
 
 def adc_monitoring_thread():
     """ADC monitoring worker"""
+    LOAD_RESISTANCE = 1.11  # ohms
+    current_scale = None
+
+    # Fetch current meter scale once at start
+    try:
+        meter_cfg = fc_manager['fc'].get_current_meter_config()
+        current_scale = meter_cfg.get('scale')
+    except Exception:
+        pass
+
     while fc_manager['adc_monitoring'] and fc_manager['fc']:
         try:
             data = fc_manager['fc'].get_analog_data()
@@ -816,10 +839,25 @@ def adc_monitoring_thread():
             current = data.get('current', 0)
             rssi = data.get('rssi', 0)
 
+            current_check = None
+            if voltage > 0.5 and current > 0.1:
+                expected_current = voltage / LOAD_RESISTANCE
+                pct_error = (current - expected_current) / expected_current * 100
+                # if abs(pct_error) > 10:
+                direction = 'high' if pct_error > 0 else 'low'
+                msg = (f'Current {current:.1f}A is {abs(pct_error):.0f}% '
+                       f'too {direction} for voltage {voltage:.1f}V')
+                if current_scale is not None:
+                    correction = current / expected_current
+                    suggested_scale = int(round(current_scale * correction))
+                    msg += f' (scale: {current_scale} -> {suggested_scale})'
+                current_check = msg
+
             socketio.emit('adc_data', {
                 'voltage': f'{voltage:.2f}',
                 'current': f'{current:.2f}',
-                'rssi': rssi
+                'rssi': rssi,
+                'current_check': current_check,
             })
 
             time.sleep(0.2)
@@ -962,8 +1000,8 @@ def handle_configure_test_mixer():
                 emit('log', {'message': f'Motor {motor_idx + 1}: throttle=1 roll=1 pitch=1 yaw=1'})
                 motor_idx += 1
             elif is_servo:
-                # Each servo gets 10% more deflection: -150(15%), -250(25%), -350(35%)…
-                rate = -(150 + servo_idx * 100)
+                # Each servo gets 20% more deflection: -70(15%), -50(25%), -25(35%)…
+                rate = -(-70 + servo_idx * 20)
                 rate_pct = abs(rate) // 10
                 fc_manager['fc'].set_servo_mixer_rule(
                     servo_rule_idx, servo_idx, INPUT_MAX, rate, speed=0, condition_id=-1)
