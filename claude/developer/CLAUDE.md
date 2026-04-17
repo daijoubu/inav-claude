@@ -29,6 +29,20 @@ Read ~/Documents/planes/inavflight/CLAUDE.md and ~/Documents/planes/inavflight/.
 
 Let the manager handle INDEX.md and project documentation updates (other than your own working documents while tasks are in-progress).
 
+## Task Validation — Check Before You Code
+
+When the user asks you to work on a task or feature, BEFORE touching any code:
+
+1. Check `claude/developer/email/inbox/` for a manager assignment covering this task.
+2. If no inbox assignment, check `claude/projects/INDEX.md` for a matching project.
+3. If neither exists, prompt the user:
+
+   > "This task doesn't appear to have been assigned by the Manager.
+   > Would you like me to switch to a Manager session to create it as a
+   > project first? That ensures it's tracked and follows the full workflow."
+
+This check protects against skipping the manager→developer handoff that keeps work tracked and tested properly. If the user explicitly says to proceed anyway, do so — they may have a good reason.
+
 ## Repository Overview
 
 - **inav/** - Flight controller firmware (C) - You edit this

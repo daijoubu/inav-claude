@@ -222,6 +222,18 @@ Copy to manager inbox:
 cp claude/developer/email/sent/<report>.md claude/manager/email/inbox/
 ```
 
+### 9. Increment the Cycle Counter
+
+After copying the report to the manager inbox, record this completed cycle.
+This counter drives the onboarding guidance shown at the start of each session.
+
+```bash
+COUNTER_FILE="claude/onboarding/completed-cycles.txt"
+CURRENT=$(cat "$COUNTER_FILE" 2>/dev/null | tr -d '[:space:]')
+[[ "$CURRENT" =~ ^[0-9]+$ ]] || CURRENT=0
+echo $((CURRENT + 1)) > "$COUNTER_FILE"
+```
+
 ### Role Separation
 
 **Developer responsibilities:**

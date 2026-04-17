@@ -1,4 +1,8 @@
 {
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
   "sandbox": {
     "_excludedCommands_disabled": ["git"],
     "filesystem": {
@@ -142,6 +146,16 @@
           {
             "type": "command",
             "command": "/home/user/Documents/planes/inavflight/.claude/hooks/permission_request_hook.py"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/user/Documents/planes/inavflight/.claude/hooks/stop-hook.sh"
           }
         ]
       }
