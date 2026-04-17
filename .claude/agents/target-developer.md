@@ -202,6 +202,7 @@ Structure responses like this:
 5. **DMA resolver is key** - Direct users to the tool for timer conflicts
 6. **Flash optimization is iterative** - May need multiple rounds
 7. **Reference actual docs** - Point to specific files and line numbers
+8. When reviewing a target, warn if config.c contains "beeperConfigMutable()->pwmMode = true;"
 
 ## Self-Improvement: Lessons Learned
 
@@ -210,6 +211,16 @@ When you discover better ways to diagnose or fix target issues, patterns in git 
 ### Lessons
 
 - **PINIO debugging - high-Z multimeter misleads**: A high-impedance multimeter on an output pin causes voltage to fall very slowly, making a toggling pin appear stuck HIGH. Use a low-impedance load or oscilloscope for reliable readings, or account for slow discharge when interpreting multimeter results.
+- **TARGET_BOARD_IDENTIFIER must be exactly 4 characters and unique**: Check all targets with `grep -r TARGET_BOARD_IDENTIFIER src/main/target` - collisions cause silent mis-identification of boards at runtime. "H743" was shared between MATEKH743 and BLUEBERRYH743 for example.
+- **BUSDEV_REGISTER_SPI_TAG variable name must match DEVHW type**: If the device hardware is DEVHW_ICM42605, do not name the variable busdev_icm42688; variable names are for developer clarity and a mismatch creates confusion. In INAV, DEVHW_ICM42605 is the correct identifier for both ICM42605 and ICM42688P chips because the driver detects the WHO_AM_I register and handles both.
+- **BUSDEV_REGISTER_SPI_TAG IMU naming consistency**: The variable name, DEVHW type, and ALIGN macro must be internally consistent. Using MPU6000_SPI_BUS/MPU6000_CS_PIN macros pointing to SPI1 is acceptable if those macros actually resolve to the correct bus/pin, but using IMU_MPU6000_ALIGN (which is board-defined as a specific orientation) for an ICM42688 entry on the same SPI bus as the MPU6000 is correct only if the chips share identical physical orientation.
+- **SERIAL_PORT_COUNT must match declared ports exactly**: Count VCP (1) + each USE_UARTx (1 each) + USE_SOFTSERIALx (1 each). Do not include UARTs that exist on the MCU but are not declared with USE_UARTx in target.h.
+- **BEEPER_PWM_FREQUENCY requires a DEF_TIM entry**: If there is no DEF_TIM with TIM_USE_BEEPER for the beeper pin, remove BEEPER_PWM_FREQUENCY from target.h rather than adding a spurious timer entry.
+- **SoftSerial is unnecessary on targets with 6+ hardware UARTs**: H7 and F7 MCUs have enough hardware UARTs; SoftSerial on an already-used UART TX pin (like TX6) provides no value and wastes flash. F405 targets might have a softserial for inverted smartport telemetry
+- **INAV has no bidirectional DSHOT — USE_RPM_FILTER works via ESC_SENSOR over UART**: When reviewing a target with USE_RPM_FILTER, check for a UART configured as ESC_SENSOR telemetry, not for motor timer topology. Motor timer grouping (2+2 split vs all-on-one) has zero impact on RPM filter capability. Reference: `src/main/flight/rpm_filter.c` line 191, `src/main/sensors/esc_sensor.c`.
+- **AT32 UART driver requires TX pin defined even for RX-only ports**: Define `UART7_TX_PIN NONE` (not just omitting it) when a UART is used receive-only. `DEFIO_TAG__NONE` is 0 in io_def.h and is valid. Omitting the define causes a compile error: `'DEFIO_TAG__UART7_TX_PIN' undeclared`.
+- **Legacy USE_IMU_xxx driver path does NOT use GYRO_1_EXTI_PIN**: Only targets using `BUSDEV_REGISTER_SPI_TAG` in target.c pass an EXTI pin. For targets using `USE_IMU_BMI270` / `BMI270_SPI_BUS` / `BMI270_CS_PIN` style defines, the gyro interrupt pin is unused by firmware — gyro is polled. Do not add `USE_GYRO_EXTI` or `GYRO_1_EXTI_PIN` to these targets.
+- **DMA resolver library is usable directly via Node.js scripts**: `raytools/dma_resolver/` is an ES module library. To run analysis scripts: add `{"type":"module"}` as `package.json` in that directory, then `node analyze_target.mjs`. Use `dmaMapAT32F435` directly from `dma_maps.js` rather than `findSolution()` for simple per-target analysis. AT32F435 with DMAMUX: every timer channel lists all 14 channels as valid — conflict analysis reduces to counting total DMA users vs 14 available.
 <!-- Add new lessons above this line -->
 - **Initial creation**: Agent focuses on configuration analysis, delegates builds to inav-builder
 - **Git history is gold**: Most target issues have been solved before, search thoroughly
