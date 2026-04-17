@@ -9,7 +9,7 @@ msg = """\
 WELCOME TO THE INAV CLAUDE FRAMEWORK — FIRST TIME SETUP
 
 This system uses separate Claude sessions for each role, keeping each
-session's context focused. Roles: Manager, Developer, Release Manager.
+session's context focused. The main roles are Manager and Developer.
 
 ═══════════════════════════════════════════════════════════════
 HOW IT WORKS (read this once — it will make sense quickly)
@@ -20,9 +20,9 @@ HOW IT WORKS (read this once — it will make sense quickly)
   Plan what to build         →    Check inbox for assignment
   Create project docs             Run /start-task (branch + lock)
   Send task to dev inbox          Have test-engineer write a failing test
-  End this session                Implement the fix
+                                  Implement the fix
                                   Build with inav-builder agent
-  [New Manager session]      ←    Run /finish-task (commit, PR, report)
+  [Manager session]      ←    Run /finish-task (commit, PR, report)
   Review completion report
   Archive & close project
 
@@ -33,14 +33,16 @@ the same Claude session.
 YOUR FIRST SESSION — START AS MANAGER
 ═══════════════════════════════════════════════════════════════
 
-Say "manager" now. As Manager you will:
+Type "manager" now to make this a manager session. As Manager you will:
 
   1. Describe what you want built or fixed
-  2. Claude creates a project in claude/projects/active/<name>/
+
+  2. Claude creates a project (in claude/projects/active/<name>/)
      with summary.md (what/why/approach) and todo.md (task list)
-  3. Claude uses the email-manager agent to send a task assignment
-     to claude/developer/email/inbox/
-  4. End this session when the assignment is sent
+
+  3. Claude uses the email-manager agent to send a task assignment to the developer
+
+  4. You can end this session when the assignment is sent (or use it to create other projects)
 
 ═══════════════════════════════════════════════════════════════
 THEN START A NEW SESSION AS DEVELOPER
@@ -50,9 +52,9 @@ Open a new Claude Code session and say "developer". Claude will:
 
   1. Check inbox with email-manager agent (finds the assignment)
   2. Run /start-task to set up branch and acquire lock
-  3. Have test-engineer agent write a FAILING test first (mandatory)
+  3. Have test-engineer agent write a FAILING test first
   4. Implement the fix
-  5. Build with inav-builder agent (never cmake/make/npm directly)
+  5. Build with inav-builder agent
   6. Verify the test passes
   7. Run /finish-task to commit, create PR, and report back
 
@@ -60,12 +62,10 @@ Open a new Claude Code session and say "developer". Claude will:
 KEY RULES (violations cause pain later)
 ═══════════════════════════════════════════════════════════════
 
-  ✓  Check lock files BEFORE touching any code
   ✓  inav-builder agent for ALL firmware/configurator builds
   ✓  inav-architecture agent to FIND code before searching
   ✓  test-engineer agent writes tests BEFORE you fix bugs
   ✓  Manager assigns; Developer implements — never swap
-  ✗  Never run cmake, make, or npm build directly
 
 ═══════════════════════════════════════════════════════════════
 
