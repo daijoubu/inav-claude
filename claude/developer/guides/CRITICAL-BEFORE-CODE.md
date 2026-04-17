@@ -120,6 +120,10 @@ See `guides/debugging-guide.md` for detailed usage instructions.
 
 ---
 
+## 7. When committing code
+1. *Do NOT mention Claude in commit messages* - Do NOT put "Co-Authored-By: Claude Sonnet 4.6" or similar in a commit message
+2. *Read claude/developer/guides/CRITICAL-BEFORE-COMMIT.md*
+
 ## Self-Improvement: Lessons Learned
 
 When you discover something important about PRE-CODING SETUP that will likely help in future sessions, add it to this section. Only add insights that are:

@@ -83,7 +83,7 @@ Use the `email-manager` agent for all email operations.
 | 12 | Check PR status and bot suggestions | **check-pr-bots** agent or **check-builds** skill | - |
 | 13 | Create completion report | **email-manager** agent | - |
 | 14 | Notify manager | **email-manager** agent | - |
-| 15 | Archive assignment | **email-manager** agent | - |
+| 15 | Archive assignment | **email-manager** agent and skill /finish-task | - |
 
 **Key principle:** Before fixing a bug, have the `test-engineer` agent write a test that reproduces it. This ensures you understand the problem and can verify when it's fixed.
 
