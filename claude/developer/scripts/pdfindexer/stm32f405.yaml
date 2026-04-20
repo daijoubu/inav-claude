@@ -1,0 +1,147 @@
+# Config for STM32F405 datasheet indexing
+# Usage: ./pdfindexer.py --config stm32f405.yaml build-index
+
+pdf_file: ../../docs/targets/stm32f405-datasheet.pdf
+index_dir: ../../docs/targets/stm32f405/STM32F405-Index/search-index
+
+keywords:
+  # Core and architecture
+  - Cortex-M4
+  - FPU
+  - floating point
+  - MPU
+  - memory protection
+  - AHB
+  - APB
+  - ART Accelerator
+
+  # Memory
+  - flash memory
+  - SRAM
+  - CCM
+  - backup SRAM
+  - OTP
+  - FMC
+  - FSMC
+
+  # DMA
+  - DMA
+  - direct memory access
+  - DMA channel
+  - DMA request
+  - DMA stream
+  - FIFO
+
+  # Timers
+  - timer
+  - PWM
+  - pulse width
+  - input capture
+  - output compare
+  - quadrature encoder
+  - motor control
+  - general purpose timer
+  - watchdog
+  - IWDG
+  - WWDG
+  - TIM1
+  - TIM2
+  - TIM3
+  - TIM4
+  - TIM5
+  - TIM8
+
+  # Communication peripherals
+  - SPI
+  - I2C
+  - UART
+  - USART
+  - CAN
+  - USB
+  - USB OTG
+  - OTG_FS
+  - OTG_HS
+  - SDIO
+  - I2S
+
+  # Analog
+  - ADC
+  - DAC
+  - analog to digital
+  - digital to analog
+  - temperature sensor
+  - VREF
+
+  # Interrupts and NVIC
+  - interrupt
+  - NVIC
+  - IRQ
+  - EXTI
+  - external interrupt
+
+  # Clock and power
+  - clock
+  - PLL
+  - HSE
+  - HSI
+  - LSE
+  - LSI
+  - oscillator
+  - RCC
+  - reset
+  - low power
+  - stop mode
+  - standby mode
+  - sleep mode
+  - VBAT
+
+  # GPIO and alternate functions
+  - GPIO
+  - alternate function
+  - AF0
+  - AF1
+  - AF2
+  - AF3
+  - AF4
+  - AF5
+  - AF6
+  - AF7
+  - pull-up
+  - pull-down
+  - open drain
+  - push-pull
+
+  # Pinouts
+  - LQFP64
+  - LQFP100
+  - LQFP144
+  - LQFP176
+  - UFBGA
+  - WLCSP
+  - pin definition
+
+  # Special features
+  - RTC
+  - real-time clock
+  - CRC
+  - RNG
+  - random number
+  - Ethernet
+  - DCMI
+  - camera
+
+  # Debug
+  - SWD
+  - JTAG
+  - trace
+  - debug
+
+  # Flight controller specific
+  - gyroscope
+  - accelerometer
+  - barometer
+  - sensor
+  - IMU
+  - motor
+  - ESC
+  - servo

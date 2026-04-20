@@ -1,0 +1,80 @@
+Keyword: VREF
+Occurrences: 76
+================================================================================
+
+Page   10: Figure 43.   Power supply and reference decoupling (VREF+ not connected to VDDA). . . . . . . . . . . . . 174
+Page   10: Figure 44.   Power supply and reference decoupling (VREF+ connected to VDDA). . . . . . . . . . . . . . . . 174
+Page   17: VREF+   21
+Page   17: VREF+   20
+Page   46: •    input voltage reference VREF+
+Page   47: VREF+     20                                                  56    PD9
+Page   49: L      VDD    PD8      PE15   PE12   PE7    PF14   PB2    PA7     PA2    VDDA   VREF+
+Page   51: VREF+     38                                                                       95   PB15
+Page   52: VREF+    41                                                                116   PD14
+Page   53: N    VREF-   PA1   PA0      PA4     PC4    PF13   PG0    VDD    VDD    VDD      PE13   PH7    PD12    PD11   PD10
+Page   53: P    VREF+   PA2   PA6      PA5     PC5    PF12   PF15   PE8    PE9    PE11     PE14   PB12   PB13    PD9    PD8
+Page   54: N    VREF-   PA1   PA0    PA4    PC4    PF13   PG0    PJ3    PE8    PD11     PG5   PG4     PH7    PH9    PH11
+Page   54: P    VREF+   PA2   PA6    PA5    PC5    PF14   PJ2    PF11   PE9    PE11    PE14   PB10    PH6    PH8    PH10
+Page   59: -          -          -          -       N1           -         -       N1          VREF-        S             -           -                 -                -
+Page   59: 20           -       L11         32        P1         38        41        P1          VREF+        S             -           -                 -                -
+Page  101: VREF
+Page  101: VREF+
+Page  101: 100 nF                            VREF-           ADC                            RCs, PLL,
+Page  102: 3. Include VREF- pin.
+Page  105: 5. If VREF+ pin is present, it must respect the following condition: VDDA-VREF+ < 1.2 V.
+Page  151: VDDA −VREF+ < 1.2 V
+Page  151: VREF+    Positive reference voltage                                            1.7(1)          -              VDDA         V
+Page  151: VREF-   Negative reference voltage                      -                       -            0                -           V
+Page  152: VAIN      Conversion voltage range(3)                      -              (VSSA or VREF-     -      VREF+       V
+Page  153: ADC VREF DC current
+Page  153: IVREF+(2)    consumption in conversion                                   -                                     -                   300      500        µA
+Page  153: 3. VREF+ is internally connected to VDDA and VREF- is internally connected to VSSA.
+Page  153: EG      Gain error                                   VREF = 1.7 to 3.6 V                             ±1               ±3
+Page  153: ED      Differential linearity error                VDDA −VREF < 1.2 V                               ±1               ±2
+Page  153: VREF = 1.7 to 3.6 V,
+Page  153: VDDA −VREF < 1.2 V
+Page  154: VREF = 1.7 to 3.6 V
+Page  154: ED       Differential linearity error            VDDA −VREF < 1.2 V             ±2           ±3
+Page  154: SINAD         Signal-to-noise and distortion ratio             VDDA = VREF+= 1.7 V         64         64.2         -
+Page  154: SINAD         Signal-to noise and distortion ratio            VDDA = VREF+ = 3.3 V         66         67           -
+Page  155: VREF+                             VDDA
+Page  155: 0                                                                                                                                                                                                       VREF+ (VDDA)
+Page  155: (1/2n)*VREF+
+Page  155: (2/2n)*VREF+
+Page  155: (3/2n)*VREF+
+Page  155: (4/2n)*VREF+
+Page  155: (5/2n)*VREF+
+Page  155: (6/2n)*VREF+
+Page  155: (7/2n)*VREF+
+Page  155: (2n-3/2n)*VREF+
+Page  155: (2n-2/2n)*VREF+
+Page  155: (2n-1/2n)*VREF+
+Page  155: (2n/2n)*VREF+
+Page  155: VDDA(4)         VREF+(4)
+Page  156: depending on whether VREF+ is connected to VDDA or not. The 10 nF capacitors should be
+Page  156: Figure 43. Power supply and reference decoupling (VREF+ not connected to VDDA)
+Page  156: VREF+ (1)
+Page  156: VSSA/VREF-
+Page  156: 1. VREF+ input is available on all the packages except TFBGA100 whereas the VREF– is available only on
+Page  156: UFBGA176 and TFBGA216. When VREF- is not available, it is internally connected to VDDA and VSSA.
+Page  156: Figure 44. Power supply and reference decoupling (VREF+ connected to VDDA)
+Page  156: VREF+/VDDA (1)
+Page  156: VREF-/VSSA (1)
+Page  156: 1. VREF+ input is available on all the packages except TFBGA100, whereas the VREF– is available only on
+Page  156: UFBGA176 and TFBGA216. When VREF- is not available, it is internally connected to VDDA and VSSA.
+Page  157: VREFINT            Internal reference voltage                   –40 °C < TA < +105 °C       1.18        1.21        1.24     V
+Page  157: TS_vrefint(1)                                                                -               10           -           -       µs
+Page  158: VREFIN_CAL      Raw data acquired at temperature of 30 °C VDDA = 3.3 V                    0x1FF0 F44A - 0x1FF0 F44B
+Page  158: VREF+      Reference supply voltage           1.7(1)      -      3.6       V     VREF+ ≤VDDA
+Page  158: (0x0E0) to (0xF1C) at VREF+ = 3.6 V and
+Page  158: -         -                V     (0x1C7) to (0xE38) at VREF+ = 1.7 V
+Page  158: DAC_OUT Higher DAC_OUT voltage                                    VREF+ −           the DAC.
+Page  158: -        170    240              VREF+ = 3.6 V in terms of DC
+Page  158: DAC DC VREF current                                                   consumption on the inputs
+Page  158: IVREF+(4)    consumption in quiescent                                       µA
+Page  158: -        50      75              VREF+ = 3.6 V in terms of DC
+Page  159: mode(3)                              -      475      625      µA     VREF+ = 3.6 V in terms of DC
+Page  159: (difference between                                                  Given for the DAC in 10-bit at VREF+ =
+Page  159: Given for the DAC in 12-bit at VREF+ =
+Page  159: VREF+/2)                             -        -      ±12      LSB
+Page  228: Updated Table 64: ADC characteristics adding VREF- negative voltage

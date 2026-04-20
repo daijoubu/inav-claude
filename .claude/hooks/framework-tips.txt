@@ -1,0 +1,25 @@
+# Framework tips — one per line. Blank lines and lines starting with # are ignored.
+# Shown to the user every ~7 turns via the Stop hook.
+
+Tip: This framework includes specialized agents — email-manager, inav-builder, test-engineer, inav-architecture, target-developer, msp-expert, sitl-operator, fc-flasher, inav-code-review, aerodynamics-expert, and more. Each keeps a task's context focused.
+Tip: Never run cmake, make, or npm build directly. Use the inav-builder agent instead — it handles cmake reconfiguration, clean builds, and edge cases automatically.
+Tip: The test-engineer agent should write a FAILING test BEFORE you implement a fix. This confirms you understand the bug and can verify when it's truly resolved.
+Tip: Use the inav-architecture agent to locate firmware code before using grep. It narrows scope and returns file paths with architectural context — much faster than a raw search.
+Tip: Run /start-task at the beginning of every developer session. It checks the lock file, creates a branch from the right base, and acquires the lock — preventing clobbered work.
+Tip: Run /finish-task when done — it commits, creates the PR, sends a completion report to the manager, releases the lock, and increments the onboarding cycle counter.
+Tip: The email-manager agent handles all inbox/outbox operations. Never manually browse or copy email files — the agent tracks sent copies and archives correctly.
+Tip: Manager creates projects in claude/projects/active/ and assigns them via the inbox. Developer implements from the inbox. These roles should never be mixed in the same session.
+Tip: The settings-lookup agent knows every valid INAV CLI setting, its default value, min/max, and description — without loading the 4,500-line settings.yaml yourself.
+Tip: The msp-expert agent has the full MSP protocol reference. Use it whenever adding or changing MSP messages — it returns packet formats and code examples.
+Tip: The inav-code-review agent should review your changes BEFORE you create a PR. It checks C99 style, safety, and performance issues and returns categorized findings by severity.
+Tip: The aerodynamics-expert agent answers fixed-wing flight questions (lift, drag, stall, Reynolds number) with citations from Houghton & Carpenter — useful when tuning fixed-wing behavior.
+Tip: The sitl-operator agent manages SITL lifecycle (start, stop, restart). Use it instead of launching the SITL binary manually — it handles connection info and process cleanup.
+Tip: The target-developer agent specializes in target.h files, timer/DMA conflicts, pin mapping, and flash overflow — use it whenever a board-specific problem comes up.
+Tip: Use /check-builds to see CI status on a PR without leaving the session. It fetches GitHub Actions results and bot comments in one shot.
+Tip: The fc-flasher agent handles DFU firmware flashing with settings preservation. Never run dfu-util directly — the agent handles the edge cases.
+Tip: The create-agent skill can scaffold a new specialized agent from a template. If you find yourself doing the same multi-step lookup repeatedly, consider building an agent for it.
+Tip: Skills available with /: start-task, finish-task, git-workflow, create-pr, check-builds, build-inav-target, build-sitl, mwptools, wiki-search, pr-scorecard, issue-triage, and more. Type /help to list them.
+Tip: /build-inav-target builds firmware for a specific flight controller (e.g. MATEKF405). /build-sitl builds the software simulator for testing without hardware.
+Tip: /mwptools gives you CLI terminal access to a connected flight controller — useful for reading/writing settings and downloading blackbox logs.
+Tip: /wiki-search searches the INAV wiki for implementation guidance before you write code — saves time reverse-engineering behavior that's already documented.
+Tip: /git-workflow handles branch management safely — always creates branches from the right base (upstream/maintenance-9.x) to avoid picking up unrelated commits.

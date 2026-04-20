@@ -1,0 +1,85 @@
+Keyword: SDMMC
+Occurrences: 81
+================================================================================
+
+Page    2: – 3 × CANs (2.0B Active) and 2x SDMMCs            • 8- to 14-bit camera interface, up to 54 Mbyte/s
+Page    4: 3.31   SD/SDIO/MMC card host interface (SDMMC) . . . . . . . . . . . . . . . . . . . . . 46
+Page    6: 6.3.36      SD/SDIO MMC card host interface (SDMMC) characteristics . . . . . . . 218
+Page   15: •   Two SDMMC host interfaces.
+Page   15: Advanced peripherals include two SDMMC interfaces, a flexible memory control (FMC)
+Page   15: inputs for USB (OTG_FS and OTG_HS) and SDMMC2 (clock, command and 4-bit data) are
+Page   17: SDMMC1                                                                                         Yes
+Page   17: SDMMC2                                                                                        Yes(3)
+Page   18: 3. SDMMC2 supports a dedicated power rail for clock, command and data 0..4 lines, feature available starting from 144 pin package.
+Page   20: SDMMC1
+Page   20: D[7:0]           SDMMC2                                                                                                       AHB/APB2        AHB/APB1                                                               TIM5         32b                 4 channels
+Page   24: •   SDMMC
+Page   28: •   VDDSDMMC can be connected either to VDD or an external independent power supply
+Page   28: (1.8 to 3.6V) for SDMMC2 pins (clock, command, and 4-bit data). For example, when
+Page   28: VDDSDMMC.When the VDDSDMMC is connected to a separated power supply, it is
+Page   28: to disappear. The following conditions VDDSDMMC must be respected:
+Page   28: –      During the power-on phase (VDD < VDD_MIN), VDDSDMMC should be always lower
+Page   28: –      During the power-down phase (VDD < VDD_MIN), VDDSDMMC should be always
+Page   28: –      The VDDSDMMC rising and falling time rate specifications must be respected
+Page   28: –      In operating mode phase, VDDSDMMC could be lower or higher than VDD:
+Page   28: All associated GPIOs powered by VDDSDMMC are operating between
+Page   28: VDDSDMMC_MIN and VDDSDMMC_MAX.
+Page   46: 3.31       SD/SDIO/MMC card host interface (SDMMC)
+Page   46: SDMMC host interfaces are available, that support the MultiMediaCard System
+Page   46: The SDMMC Card Specification Version 2.0 is also supported with two different databus
+Page   46: The current version supports only one SD/SDMMC/MMC4.2 card at any one time and a
+Page   46: The SDMMC can be served by the DMA controller
+Page   57: VDDSDMMC
+Page   58: VDDSDMMC
+Page   59: VDDSDMMC
+Page   60: SDMMC
+Page   62: VDDSDMMC
+Page   63: VDDSDMMC
+Page   64: ON                          SDMMC
+Page   65: BOOT0 VDD            SDMMC VDD VCAP2       PH13    PH14   PI0    PA9
+Page   75: TIM12_CH1, SDMMC2_D0,
+Page   75: SDMMC2_D1, OTG_HS_DP,
+Page   77: SDMMC2_D6, SDMMC1_D6,
+Page   78: SDMMC2_D7, SDMMC1_D7,
+Page   78: SDMMC1_D0, DCMI_D2,
+Page   78: SDMMC1_D1, DCMI_D3,
+Page   80: SDMMC1_D2, DCMI_D8,
+Page   80: SDMMC1_D3, DCMI_D4,
+Page   80: SDMMC1_CK, DCMI_D9,
+Page   80: B7         83        116       D12        144       166       D12          D6          144 166             D12          PD2                              I/O        FT               -      UART5_RX, SDMMC1_CMD,          -
+Page   81: SDMMC2_CK, FMC_NWAIT,
+Page   81: SDMMC2_CMD, FMC_NE1,
+Page   81: SAI2_FS_B, SDMMC2_D0,
+Page   81: SAI2_SD_B, SDMMC2_D1,
+Page   81: SPDIF_RX0, SDMMC2_D2,
+Page   82: -          -       127       B8         155       181       C7           D7          155 181             C7          PG12                              I/O        FT               -        LCD_B4, SDMMC2_D3,           -
+Page   82: SPI6_SCK, SDMMC2_D2,
+Page   82: ST)                                                                  SPI6_MISO, SDMMC2_D3,
+Page   83: B4         95        139       A5         167       198       A7           E9          167 198             A7          PB8                              I/O        FT               -        CAN1_RX, SDMMC2_D4,          -
+Page   83: ETH_MII_TXD3, SDMMC1_D4,
+Page   83: CAN1_TX, SDMMC2_D5,
+Page   83: I2C4_SMBA, SDMMC1_D5,
+Page   90: TIM2_C                                                                     SPI6_SC            SDMMC2    CAN
+Page   90: TIM3_C                            SPI1_MI   SPI3_MI              SPI6_MI            SDMMC2
+Page   91: I2C4_SC   TIM4_C    TIM10_C     I2C1_SC               DFSDM1    UART5_             CAN1_R    SDMMC2   ETH
+Page   91: I2C4_SD   TIM4_C   TIM11_CH     I2C1_SD             DFSDM1 UART5_T                 CAN1_T    SDMMC2   I2C4
+Page   91: TIM1_C              TIM8_CH     USART1_     SPI2_MI   DFSDM1    USART3   UART4_    TIM12_C   SDMMC2
+Page   91: RTC_RE   TIM1_C              TIM8_CH     USART1_          DFSDM1                  UART4_    TIM12_C   SDMMC2
+Page   92: TIM3_C    TIM8_CH                 I2S2_M               DFSDM1    USART6    FMC_NW     SDMMC2
+Page   92: TIM3_C     TIM8_                             I2S3_M              USART6    FMC_NE     SDMMC2
+Page   98: SPDIF_R                       SDMMC2     TX_
+Page  105: VDDSDMMC
+Page  106: DDSDMMC
+Page  106: DDSDMMC
+Page  107: VDD, VBAT, VDDUSB, VDDDSI (1) and VDDSDMMC)(2)
+Page  108: 2. All main power (VDD, VDDA, VDDSDMMC, VDDUSB, VDDDSI) and ground (VSS, VSSA) pins must always be connected to the
+Page  108: Σ IVDDSDMMC Total current into VDDSDMMC power line (source)                                                         60
+Page  108: IVDDSDMMC       Maximum current into VDDSDMMC power line (source): PG[12:9], PD[7:6]                              100
+Page  108: Total output current sunk by sum of all SDMMC I/Os                                                120
+Page  109: SDMMC2 supply voltage (supply
+Page  109: VDDSDMMC voltage for PG[12:9] and PD6           It can be different from VDD     -       1.7      -     3.6
+Page  132: SDMMC1                    8.4                 8.3                 6.9
+Page  132: SDMMC2                    8.2                 8.2                 6.4
+Page  218: 6.3.36      SD/SDIO MMC card host interface (SDMMC) characteristics
+Page  219: -        SDMMC_CK/fPCLK2 frequency ratio             -         -       -         8/3       -
+Page  219: -        SDMMC_CK/fPCLK2 frequency ratio             -         -       -         8/3       -

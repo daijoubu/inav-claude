@@ -1,0 +1,156 @@
+Keyword: IMU
+Occurrences: 152
+================================================================================
+
+Page    4: 6.1.1      Minimum and maximum values . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 96
+Page    5: 6.2   Absolute maximum ratings . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 99
+Page    5: 6.3.18     Absolute maximum ratings (electrical sensitivity) . . . . . . . . . . . . . . . . 141
+Page    7: Table 24.   Typical and maximum current consumption in Run mode, code with data processing
+Page    7: Table 25.   Typical and maximum current consumption in Run mode, code with data processing
+Page    7: Table 26.   Typical and maximum current consumption in Run mode, code with data processing
+Page    7: Table 27.   Typical and maximum current consumption in Run mode, code with data processing
+Page    7: Table 28.   Typical and maximum current consumption in Run mode, code with data processing
+Page    7: Table 29.   Typical and maximum current consumption in Sleep mode, regulator ON. . . . . . . . . . . . 113
+Page    7: Table 30.   Typical and maximum current consumption in Sleep mode, regulator OFF . . . . . . . . . . . 113
+Page    7: Table 31.   Typical and maximum current consumptions in Stop mode . . . . . . . . . . . . . . . . . . . . . . . 114
+Page    7: Table 32.   Typical and maximum current consumptions in Standby mode . . . . . . . . . . . . . . . . . . . . 115
+Page    7: Table 33.   Typical and maximum current consumptions in VBAT mode. . . . . . . . . . . . . . . . . . . . . . . 116
+Page    8: Table 58.   ESD absolute maximum ratings . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 142
+Page    8: Table 79.   Minimum I2CCLK frequency in all I2C modes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 160
+Page   16: Maximum CPU frequency                                                             216 MHz(7)
+Page   16: 7. 216 MHz maximum frequency for - 40°C to + 85°C ambient temperature range (200 MHz maximum frequency for - 40°C to
+Page   16: 8. VDD/VDDA minimum value of 1.7 V is obtained when the internal reset is OFF (refer to Section 3.15.2: Internal reset OFF).
+Page   24: high-speed peripherals work simultaneously.
+Page   25: support burst transfer and are designed to provide the maximum peripheral bandwidth
+Page   26: •   HCLK/2 maximum FMC_CLK/FMC_SDCLK frequency for synchronous accesses
+Page   26: This hardware block provides flexible interrupt management features with a minimum
+Page   27: (APB2), and the low-speed APB (APB1) domains. The maximum frequency of the two AHB
+Page   27: buses is 216 MHz, while the maximum frequency of the high-speed APB domains is
+Page   27: 108 MHz. The maximum allowed frequency of the low-speed APB domain is 54 MHz.
+Page   27: Note:    The VDD/VDDA minimum value of 1.7 V is obtained when the internal reset is OFF (refer to
+Page   32: best compromise between maximum frequency and dynamic power consumption.
+Page   32: be aligned with the targeted maximum frequency.The two 2.2 µF ceramic capacitors must
+Page   33: •   If the time for VCAP_1 and VCAP_2 to reach V12 minimum value is faster than the time
+Page   33: VCAP_1 and VCAP_2 reach V12 minimum value and until VDD reaches 1.7 V
+Page   33: •   Otherwise, if the time for VCAP_1 and VCAP_2 to reach V12 minimum value is slower
+Page   33: •   If VCAP_1 and VCAP_2 go below V12 minimum value, and VDD is higher than 1.7 V, then
+Page   33: Note:    The minimum value of V12 depends on the maximum frequency targeted in the application.
+Page   38: 1. The maximum timer clock is either 108 or 216 MHz, depending on TIMPRE bit configuration in the RCC_DCKCFGR
+Page   43: and the audio application requires both sampling frequencies simultaneously.
+Page   45: A fast I/O handling allows a maximum I/O toggling up to 108 MHz.
+Page   46: •    Simultaneous sample and hold
+Page   46: •    Dual DAC channel independent or simultaneous conversions
+Page   80: - The speed should not exceed 2 MHz with a maximum load of 30 pF.
+Page   96: 6.1.1          Minimum and maximum values
+Page   96: Unless otherwise specified the minimum and maximum values are guaranteed in the worst
+Page   96: Data based on characterization results, design simulation and/or technology characteristics
+Page   96: are indicated in the table footnotes. Based on characterization, the minimum and maximum
+Page   99: 6.2        Absolute maximum ratings
+Page   99: Stresses above the absolute maximum ratings listed in Table 13: Voltage characteristics,
+Page   99: the device at these conditions is not implied. Exposure to maximum rating conditions for
+Page  100: Absolute maximum
+Page  100: 2. VIN maximum value must always be respected. Refer to Table 14 for the values of the maximum allowed
+Page  100: IVDD            Maximum current into each VDD_x      power line (source)(1)                              100
+Page  100: IVDDSDMMC           Maximum current into VDDSDMMC power line (source): PG[12:9], PD[7:6]                     100
+Page  100: IVSS            Maximum current out of each VSS_x ground line (sink)(1)                                 − 100
+Page  100: 3. Positive injection is not possible on these I/Os and does not occur for input voltages lower than the specified maximum
+Page  100: exceeded. Refer to Table 13: Voltage characteristics for the values of the maximum allowed input voltage.
+Page  100: 5. When several inputs are submitted to a current injection, the maximum ΣIINJ(PIN) is the absolute sum of the positive and
+Page  101: TJ          Maximum junction temperature                               125
+Page  103: Ambient temperature for 6 suffix         Maximum power dissipation                   − 40        -        85
+Page  103: Ambient temperature for 7 suffix         Maximum power dissipation                   − 40        -       105
+Page  103: 2. 216 MHz maximum frequency for 6 suffix version (200 MHz maximum frequency for 7 suffix version).
+Page  103: 3. VDD/VDDA minimum value of 1.7 V is obtained with the use of an external power supply supervisor (refer to Section 3.15.2:
+Page  103: 6. It is recommended to power VDD and VDDA from the same source. A maximum difference of 300 mV between VDD and VDDA
+Page  103: Maximum Flash
+Page  103: Maximum HCLK
+Page  104: Maximum Flash
+Page  104: Maximum HCLK
+Page  104: 3. VDD/VDDA minimum value of 1.7 V is obtained with the use of an external power supply supervisor (refer to Section 3.15.2:
+Page  108: Typical and maximum current consumption
+Page  108: •     The maximum values are obtained for 1.7 V ≤ VDD ≤ 3.6 V voltage range and a
+Page  108: maximum ambient temperature (TA) unless otherwise specified.
+Page  108: •     For the voltage range 1.7 V ≤ VDD ≤ 3.6 V, the maximum frequency is 180 MHz.
+Page  108: Table 24. Typical and maximum current consumption in Run mode, code with data processing
+Page  109: Table 25. Typical and maximum current consumption in Run mode, code with data processing
+Page  110: Table 26. Typical and maximum current consumption in Run mode, code with data processing
+Page  111: Table 27. Typical and maximum current consumption in Run mode, code with data processing
+Page  112: Table 28. Typical and maximum current consumption in Run mode, code with data processing
+Page  113: Table 29. Typical and maximum current consumption in Sleep mode, regulator ON
+Page  113: Table 30. Typical and maximum current consumption in Sleep mode, regulator OFF
+Page  114: Table 31. Typical and maximum current consumptions in Stop mode
+Page  115: Table 32. Typical and maximum current consumptions in Standby mode
+Page  116: Table 33. Typical and maximum current consumptions in VBAT mode
+Page  128: Gm_crit_max Maximum critical crystal gm                       Startup                -       -        1      mA/V
+Page  128: 2. This parameter depends on the crystal used in the application. The minimum and maximum values must
+Page  130: Gm_crit_max Maximum critical crystal gm                                                                         µA/V
+Page  139: 2. The maximum programming time is measured after 10 K erase operations.
+Page  139: Minimum current sunk on
+Page  139: 2. The maximum programming time is measured after 10 K erase operations.
+Page  141: 6.3.18     Absolute maximum ratings (electrical sensitivity)
+Page  142: Table 58. ESD absolute maximum ratings
+Page  142: Maximum
+Page  144: 3. With a minimum of 200 mV.
+Page  144: 4. Leakage could be higher than the maximum value, if negative current is injected on adjacent pins, Refer to Table 60: I/O
+Page  144: higher than the maximum value, if negative current is injected on adjacent pins.Refer to Table 60: I/O current injection
+Page  144: resistance is minimum (~10% order).
+Page  144: series resistance is minimum (~10% order).
+Page  145: Te                           imu
+Page  145: simul
+Page  145: mode, the speed must not exceed 2 MHz with a maximum load of 30 pF.
+Page  145: respect the absolute maximum rating specified in Section 6.2. In particular:
+Page  145: •   The sum of the currents sourced by all the I/Os on VDD, plus the maximum Run
+Page  145: consumption of the MCU sourced on VDD, cannot exceed the absolute maximum rating
+Page  145: •   The sum of the currents sunk by all the I/Os on VSS plus the maximum Run
+Page  145: consumption of the MCU sunk on VSS cannot exceed the absolute maximum rating
+Page  146: 1. The IIO current sunk by the device must always respect the absolute maximum rating specified in Table 14.
+Page  146: 3. The IIO current sourced by the device must always respect the absolute maximum rating specified in
+Page  147: fmax(IO)out   Maximum frequency(3)            CL = 10 pF, VDD ≥ 2.7 V        -      -     8        MHz
+Page  147: fmax(IO)out   Maximum frequency(3)                                                                 MHz
+Page  147: fmax(IO)out   Maximum frequency(3)            CL = 40 pF, VDD ≥ 1.7 V        -      -     25       MHz
+Page  148: fmax(IO)out   Maximum frequency(3)                                                                            MHz
+Page  148: 3. The maximum frequency is defined in Figure 46.
+Page  148: 4. For maximum frequencies above 50 MHz and VDD > 2.4 V, the compensation cell should be used.
+Page  148: Maximum frequency is achieved if (tr + tf   7DQGLIWKHGXW\F\FOHLV  
+Page  149: resistance must be minimum (~10% order).
+Page  150: Maximum possible count                                                       65536 ×
+Page  150: 3. The maximum timer frequency on APB1 or APB2 is up to 216 MHz, by setting the TIMPRE bit in the
+Page  152: 1. VDDA minimum value of 1.7 V is obtained with the use of an external power supply supervisor (refer to Section 3.15.2:
+Page  152: 4. RADC maximum value is given for VDD = 1.7 V, and minimum value for VDD = 3.3 V.
+Page  152: The formula above (Equation 1) is used to determine the maximum external impedance
+Page  154: 5. ET = Total Unadjusted Error: maximum deviation between the actual and the ideal transfer curves.
+Page  154: ED = Differential Linearity Error: maximum deviation between actual steps and the ideal one.
+Page  154: EL = Integral Linearity Error: maximum deviation between any actual transition and the end point
+Page  157: When the buffer is OFF, the Minimum
+Page  157: Maximum capacitive load at DAC_OUT
+Page  157: DAC_OUT Lower DAC_OUT voltage                                                      It gives the maximum output excursion of
+Page  157: min(2) with buffer OFF                                                           It gives the maximum output excursion of
+Page  159: 1. VDDA minimum value of 1.7 V is obtained with the use of an external power supply supervisor (refer to Section 3.15.2:
+Page  159: than the minimum shown in the table below:
+Page  160: Table 79. Minimum I2CCLK frequency in all I2C modes
+Page  160: maximum load Cload supported in Fm+, which is given by these formulas:
+Page  160: Maximum pulse width of spikes that
+Page  162: 2. Excepting SPI1 with SCK IO=PA5. In this configuration, the maximum achievable frequency is 40 MHz.
+Page  162: 3. Maximum frequency of the slave transmitter is determined by sum of Tv(SO) and Tsu(MI) intervals which has to fit into SCK
+Page  164: 2. 256xFs maximum is 49.152 MHz (APB1 Maximum frequency).
+Page  164: on the value of ODD bit. The digital contribution leads to a minimum value of
+Page  164: (I2SDIV/(2*I2SDIV+ODD) and a maximum value of (I2SDIV+ODD)/(2*I2SDIV+ODD). FS
+Page  164: maximum value is supported for each mode/condition.
+Page  179: –     For 2.7 V≤VDD≤3.6 V, maximum FMC_CLK = 108 MHz at CL=20 pF or 90 MHz at
+Page  179: –     For 1.71 V≤VDD<2.7 V, maximum FMC_CLK = 70 MHz at CL=10 pF (on FMC_CLK).
+Page  189: –     For 3.0 V≤VDD≤3.6 V, maximum FMC_SDCLK= 100 MHz at CL=20 pF
+Page  189: –     For 2.7 V≤VDD≤3.6 V, maximum FMC_SDCLK = 90 MHz at CL=30 pF
+Page  189: –     For 1.71 V≤VDD<1.9 V, maximum FMC_SDCLK = 70 MHz at CL=10 pF
+Page  207: width to exceed the maximum “b” dimension by more than 0.08 mm. Dambar cannot be located on the
+Page  207: lower radius or the foot. Minimum space between protrusion and an adjacent lead is 0.07 mm for 0.4 mm
+Page  207: “0.25 mm” per side. D1 and E1 are Maximum plastic body size dimensions including mold mismatch.
+Page  216: 2. Dimension is measured at the maximum bump diameter parallel to primary datum Z.
+Page  220: The maximum chip-junction temperature, TJ max, in degrees Celsius, may be calculated
+Page  220: •     TA max is the maximum ambient temperature in ° C,
+Page  220: •     PINT max is the product of IDD and VDD, expressed in Watts. This is the maximum chip
+Page  220: PI/O max represents the maximum power dissipation on output pins where:
+Page  222: Maximum
+Page  222: Operating                       memory          Maximum Flash
+Page  222: 3. VDD/VDDA minimum value of 1.7 V, with the use of an external power supply supervisor
+Page  224: Updated cover with the maximum SPI speed at 54 Mbit/s.
+Page  224: Updated Table 53: Flash memory programming maximum programming voltage

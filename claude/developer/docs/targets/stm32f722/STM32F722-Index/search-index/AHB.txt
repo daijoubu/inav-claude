@@ -1,0 +1,47 @@
+Keyword: AHB
+Occurrences: 43
+================================================================================
+
+Page    3: 3.6      AXI-AHB bus matrix . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+Page   10: Figure 7.    STM32F722xx and STM32F723xx AXI-AHB bus matrix architecture(1) . . . . . . . . . . . . . . 24
+Page   14: buses, two AHB buses, a 32-bit multi-AHB bus matrix and a multi layer AXI interconnect
+Page   21: AHB2AXI
+Page   21: AHBP
+Page   21: AHBS
+Page   21: AHB bus-matrix
+Page   21: USB HS                                                                                                                   AHB2 216 MHz                                                                                      D[31:0], NOEN, NWEN,
+Page   21: AHB BUS-MATRIX
+Page   21: PLL       LDO                                                                                         AHB1 216 MHz                                             POR
+Page   21: PG[15:0]                                                                                                                                        AHB1PCLK                                                              @VSW
+Page   21: AHB2PCLK
+Page   21: 4 chan. (TIM1_CH1[1:4]ETR, BKIN as AF                  TIM1 / PWM        16b                                                                                                AHB/
+Page   21: AHB/APB2                                                                      TIM5          32b                4 channels
+Page   22: •   dedicated low-latency AHB-Lite peripheral (AHBP) interface
+Page   23: –    SRAM1 on AHB bus Matrix: 176 Kbytes
+Page   23: –    SRAM2 on AHB bus Matrix: 16 Kbytes
+Page   23: specific AHB slave of the CPU.The instruction TCM RAM is reserved only for CPU. It is
+Page   24: 3.6                  AXI-AHB bus matrix
+Page   24: •      an AXI-to-multi-AHB bridge converting AXI4 protocol to AHB-Lite protocol:
+Page   24: –          3x AXI-to-32-bit-AHB bridges connected to AHB bus matrix
+Page   24: –          1x AXI-to-64-bit-AHB bridge connected to the embedded Flash memory
+Page   24: •      a multi-AHB bus matrix
+Page   24: –          The 32-bit multi-AHB bus matrix interconnects all the masters (CPU, DMAs,
+Page   24: USB HS) and the slaves (Flash memory, RAM, FMC, QUADSPI, AHB and APB
+Page   24: Figure 7. STM32F722xx and STM32F723xx AXI-AHB bus matrix architecture(1)
+Page   24: AHBS
+Page   24: AHBP
+Page   24: multi-AHB
+Page   24: 64-bit AHB              512KB
+Page   24: AHB
+Page   24: AHB
+Page   25: memory-to-peripheral transfers. They feature dedicated FIFOs for APB/AHB peripherals,
+Page   25: (AHB/APB).
+Page   27: Several prescalers allow the configuration of the two AHB buses, the high-speed APB
+Page   27: (APB2), and the low-speed APB (APB1) domains. The maximum frequency of the two AHB
+Page  101: fHCLK    Internal AHB clock frequency                                    drive                 -    180
+Page  122: AHB1           GPIOG              3.5               3.3                2.8
+Page  122: AHB2
+Page  122: AHB3
+Page  150: AHB/APBx prescaler=1
+Page  150: AHB/APBx
+Page  192: are derived from tests performed under the ambient temperature, fAHB frequency and VDD

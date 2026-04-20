@@ -1,0 +1,60 @@
+Keyword: VBAT
+Occurrences: 56
+================================================================================
+
+Page    1: – SRAM: 512 Kbytes (including 128 Kbytes                       – VBAT supply for RTC, 32×32 bit backup
+Page    3: 3.22     VBAT operation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 38
+Page    6: 6.3.26      VBAT monitoring characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 170
+Page    8: Table 37.   Typical and maximum current consumptions in VBAT mode. . . . . . . . . . . . . . . . . . . . . . . 126
+Page    9: Table 80.    VBAT monitoring characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 170
+Page   20: Standby                                     VBAT = 1.8 to 3.6 V
+Page   22: unwanted write accesses, and is retained in Standby or VBAT mode.
+Page   28: •   VBAT = 1.65 to 3.6 V: power supply for RTC, external clock 32 kHz oscillator and
+Page   31: •   VBAT functionality is no more available and VBAT pin should be connected to VDD.
+Page   36: VBAT mode.
+Page   36: from the VDD supply when present or from the VBAT pin.
+Page   37: The RTC is functional in VBAT mode and in all low-power modes when it is clocked by the
+Page   37: LSE. When clocked by the LSI, the RTC is not functional in VBAT mode, but is functional in
+Page   38: 3.22       VBAT operation
+Page   38: The VBAT pin allows to power the device VBAT domain from an external battery, an external
+Page   38: VBAT operation is activated when VDD is not present.
+Page   38: The VBAT pin supplies the RTC, the backup registers and the backup SRAM.
+Page   38: Note:      When the microcontroller is supplied from VBAT, external interrupts and RTC alarm/events
+Page   38: do not exit it from VBAT operation.
+Page   38: When the PDR_ON pin is connected to VSS (Internal Reset OFF), the VBAT functionality is
+Page   38: no more available and the VBAT pin should be connected to VDD.
+Page   52: connected to the same input channel as VBAT, ADC1_IN18, which is used to convert the
+Page   52: sensor output voltage into a digital value. When the temperature sensor and VBAT
+Page   52: conversion are enabled at the same time, only VBAT conversion is performed.
+Page   55: VBAT     6                                                   70    PA11
+Page   56: B        PC15   VBAT    PE3     PB8      PB6     PD5     PD2      PC11   PC10   PA12
+Page   57: VBAT    6                                                                    103   PA11
+Page   58: VBAT     6                                                                     127   VDD
+Page   59: VBAT     6                                                                      127   PA12
+Page   60: C    VBAT                                                        VDD     PG9     PD5    PD1     PI3     PI2   PA11
+Page   61: C    VCAP_2      VSS          PI2       PC11      PD5      PG9      PG13      PB7       PE0    PDR_ON     PI6     PE4       VBAT
+Page   62: VBAT      6                                                                 151   PH13
+Page   63: VBAT      6                                                                   151    PH13
+Page   64: C   VBAT    PI8   PI4    PK7     PK6     PK5   PG12   PG10   PJ14   PD5     PD3    PD1    PI3    PI2    PA11
+Page   65: C   VBAT    PI8   PI4    PK7     PK6     PK5   PG12   PG10   PJ14   PD5     PD3    PD1     PI3    PI2    PA11
+Page   67: B2          6         6        C1          6         6        C1         C13            6         6        C1          VBAT                              S             -             -                 -                   -
+Page  105: VBAT
+Page  105: VBAT =                                      Power switch                          (OSC32K,RTC,
+Page  106: VBAT =
+Page  107: IDD_VBAT
+Page  107: VBAT
+Page  107: VDD, VBAT, VDDUSB, VDDDSI (1) and VDDSDMMC)(2)
+Page  109: VBAT       Backup operating voltage                           -                      1.65      -     3.6
+Page  114: 2. The reset temporization is measured from the power-on (POR reset or wakeup from VBAT) to the instant
+Page  126: Table 37. Typical and maximum current consumptions in VBAT mode
+Page  126: VBAT = VBAT= VBAT=
+Page  126: VBAT = 3.6 V
+Page  126: IDD_VBAT                                                                                                            µA
+Page  126: in VBAT mode mode
+Page  170: 6.3.26            VBAT monitoring characteristics
+Page  170: Table 80. VBAT monitoring characteristics
+Page  170: R              Resistor bridge for VBAT                                         -          50            -           KΩ
+Page  170: Q               Ratio on VBAT measurement                                        -          4             -           -
+Page  170: ADC sampling time when reading the VBAT
+Page  170: TS_vbat(2)(2)                                                                          5          -             -           µs
+Page  249: •      VBAT functionality is no more available and VBAT pin should be connected to VDD

@@ -1,0 +1,133 @@
+Keyword: USART
+Occurrences: 129
+================================================================================
+
+Page    1: – Up to 4 USARTs/2 UARTs (10.5 Mbit/s, ISO
+Page    3: 3.0.23      Universal synchronous/asynchronous receiver transmitters (USART) . 35
+Page    7: Table 5.    USART feature comparison . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 36
+Page   14: •   Four USARTs plus two UARTs
+Page   16: USART/
+Page   20: USART2        irDA        CTS, RTS as AF
+Page   20: USART3        irDA        CTS, RTS as AF
+Page   20: irDA      USART1                                                                                                                                                                                                  MOSI/SD, MISO/SD_ext, SCK/CK
+Page   20: USART6                                                                                    TIM6                     16b                                                                                  MOSI/SD, MISO/SD_ext, SCK/CK
+Page   23: •      USART
+Page   25: using USART1 (PA9/PA10), USART3 (PC10/PC11 or PB10/PB11), CAN2 (PB5/PB13), USB
+Page   35: 3.0.23   Universal synchronous/asynchronous receiver transmitters (USART)
+Page   35: receiver transmitters (USART1, USART2, USART3 and USART6) and two universal
+Page   35: have LIN Master/Slave capability. The USART1 and USART6 interfaces are able to
+Page   35: USART1, USART2, USART3 and USART6 also provide hardware management of the CTS
+Page   36: Table 5. USART feature comparison
+Page   36: USART Standard                  SPI              Smartcard     in Mbit/s     in Mbit/s       APB
+Page   36: USART1      X         X      X       X      X         X           5.25            10.5         (max.
+Page   36: USART2      X         X      X       X      X         X           2.62            5.25         (max.
+Page   36: USART3      X         X      X       X      X         X           2.62            5.25         (max.
+Page   36: USART6      X         X      X       X      X         X           5.25            10.5         (max.
+Page   50: USART2_CTS/
+Page   50: USART2_RTS /
+Page   50: USART2_TX/TIM5_CH3 /
+Page   50: USART2_RX/TIM5_CH4 /
+Page   51: USART2_CK /
+Page   53: I2C2_SCL/ USART3_TX /
+Page   53: I2C2_SDA/USART3_RX/
+Page   54: USART3_CK/ TIM1_BKIN /
+Page   54: USART3_CTS/
+Page   54: USART3_RTS /
+Page   54: FSMC_D13 / USART3_TX/
+Page   54: FSMC_D14 / USART3_RX/
+Page   54: FSMC_D15 / USART3_CK/
+Page   54: -       G1         58        80        N14        99            PD11          I/O         FT                 -      FSMC_A16/USART3_CTS/          -
+Page   54: USART3_RTS/
+Page   55: FSMC_INT3 /USART6_CK/
+Page   55: USART6_RTS /
+Page   55: 37       F3         63        96        H15 115                   PC6          I/O         FT                 -          USART6_TX /                  -
+Page   55: 38       E1         64        97        G15 116                   PC7          I/O         FT                 -          USART6_RX /                  -
+Page   55: 39       E2         65        98        G14 117                   PC8          I/O         FT                 -      /TIM3_CH3/ USART6_CK /           -
+Page   56: MCO1 / USART1_CK/
+Page   56: USART1_TX/ TIM1_CH2 /
+Page   56: USART1_RX/ TIM1_CH3/
+Page   56: USART1_CTS / CAN1_RX
+Page   56: USART1_RTS / CAN1_TX/
+Page   57: DCMI_D8 / USART3_TX/
+Page   57: DCMI_D4/USART3_RX /
+Page   57: /I2S3_SD / USART3_CK/
+Page   57: -         -        84 117 D11 145                                PD3          I/O         FT                 -          USART2_CTS/                  -
+Page   58: -       A4         85 118 D10 146                                PD4          I/O         FT                 -          USART2_RTS/             -
+Page   58: FSMC_NWE/USART2_TX/
+Page   58: USART2_RX/ EVENTOUT
+Page   58: USART2_CK/FSMC_NE1/
+Page   58: USART6_RX /
+Page   58: -         -         -        127       B8         155           PG12          I/O         FT                 -          USART6_RTS/             -
+Page   58: USART6_CTS
+Page   58: FSMC_A25 / USART6_TX
+Page   58: USART6_CTS /
+Page   59: DCMI_D5/USART1_TX/
+Page   59: USART1_RX/ TIM4_CH2/
+Page   63: TIM8/9/10                           SPI3/I2Sext   USART1/2/3/   UART4/5/                OTG_FS/
+Page   63: /11                                 /I2S3        I2S3ext     USART6                  OTG_HS
+Page   63: PA0      -                  TIM 5_CH1   TIM8_ETR       -           -             -        USART2_CTS    UART4_TX       -            -          ETH_MI
+Page   63: PA1      -      TIM2_CH2    TIM5_CH2        -          -           -             -        USART2_RTS    UART4_RX       -            -
+Page   63: PA2      -      TIM2_CH3    TIM5_CH3    TIM9_CH1       -           -             -         USART2_TX       -           -            -           ETH_M
+Page   63: PA3      -      TIM2_CH4    TIM5_CH4    TIM9_CH2       -           -             -        USART2_RX        -           -                       ETH _M
+Page   63: PA4      -          -           -           -          -       SPI1_NSS                   USART2_CK        -           -            -                -
+Page   63: PA8    MCO1     TIM1_CH1        -           -       I2C3_SCL       -             -        USART1_CK        -           -       OTG_FS_SOF            -
+Page   63: PA9      -      TIM1_CH2        -           -                      -             -         USART1_TX       -           -            -                -
+Page   63: PA10     -      TIM1_CH3        -           -          -           -             -        USART1_RX        -           -        OTG_FS_ID            -
+Page   63: PA11     -      TIM1_CH4        -           -          -           -             -        USART1_CTS       -       CAN1_RX      OTG_FS_DM            -
+Page   63: PA12     -      TIM1_ETR        -           -          -           -             -        USART1_RTS       -       CAN1_TX      OTG_FS_DP            -
+Page   64: TIM8/9/10                           SPI3/I2Sext   USART1/2/3/   UART4/5/                OTG_FS/
+Page   64: /11                                 /I2S3        I2S3ext     USART6                  OTG_HS
+Page   64: PB6      -          -       TIM4_CH1               I2C1_SCL       -             -         USART1_TX       -       CAN2_TX          -                -
+Page   64: PB7      -          -       TIM4_CH2               I2C1_SDA       -             -        USART1_RX        -           -            -                -
+Page   64: PB10     -      TIM2_CH3       -           -       I2C2_SCL                     -         USART3_TX       -           -                      ETH_ MII
+Page   64: PB11     -      TIM2_CH4       -           -       I2C2_SDA       -             -        USART3_RX        -           -                           ET
+Page   64: PB12     -      TIM1_BKIN      -           -                                    -        USART3_CK        -       CAN2_RX
+Page   64: PB13     -      TIM1_CH1N      -           -          -                         -        USART3_CTS       -       CAN2_TX
+Page   64: PB14     -      TIM1_CH2N      -       TIM8_CH2N      -       SPI2_MISO    I2S2ext_SD    USART3_RTS       -       TIM12_CH1        -                -
+Page   65: TIM8/9/10                           SPI3/I2Sext   USART1/2/3/   UART4/5/                 OTG_FS/
+Page   65: /11                                 /I2S3        I2S3ext     USART6                   OTG_HS
+Page   65: PC6     -       -      TIM3_CH1   TIM8_CH1               I2S2_MCK                        -        USART6_TX       -            -                -
+Page   65: Port C   PC7     -       -      TIM3_CH2   TIM8_CH2       -           -         I2S3_MCK          -        USART6_RX       -            -                -
+Page   65: PC8     -       -      TIM3_CH3   TIM8_CH3       -           -             -             -        USART6_CK       -            -                -
+Page   65: PC10    -       -         -           -          -           -                      USART3_TX/    UART4_TX        -            -                -
+Page   65: PC11    -       -         -           -          -       I2S3ext_SD   SPI3_MISO/    USART3_RX     UART4_RX        -            -                -
+Page   65: PC12    -       -         -           -          -           -                      USART3_CK     UART5_TX        -            -                -
+Page   66: TIM8/9/10                           SPI3/I2Sext   USART1/2/3/   UART4/5/               OTG_FS/
+Page   66: /11                                 /I2S3        I2S3ext     USART6                 OTG_HS
+Page   66: PD3     -      -         -           -          -           -             -        USART2_CTS       -           -          -       -
+Page   66: PD4     -      -         -           -          -           -             -        USART2_RTS       -           -          -       -
+Page   66: PD5     -      -         -           -          -           -             -         USART2_TX       -           -          -       -
+Page   66: PD6     -      -         -           -          -           -             -        USART2_RX        -           -          -       -
+Page   66: PD7     -      -         -           -          -           -             -        USART2_CK        -           -          -       -
+Page   66: PD8     -      -         -           -          -           -             -         USART3_TX       -           -          -       -
+Page   66: PD9     -      -         -           -          -           -             -        USART3_RX        -           -          -       -
+Page   66: PD10    -      -         -           -          -           -             -        USART3_CK        -           -          -       -
+Page   66: PD11    -      -         -           -          -           -             -        USART3_CTS       -           -          -       -
+Page   66: PD12    -      -      TIM4_CH1       -          -           -             -        USART3_RTS       -           -          -       -
+Page   67: TIM8/9/10                           SPI3/I2Sext   USART1/2/3/   UART4/5/               OTG_FS/
+Page   67: /11                                 /I2S3        I2S3ext     USART6                 OTG_HS
+Page   68: TIM8/9/10                           SPI3/I2Sext   USART1/2/3/   UART4/5/               OTG_FS/
+Page   68: /11                                 /I2S3        I2S3ext     USART6                 OTG_HS
+Page   69: TIM8/9/10                           SPI3/I2Sext   USART1/2/3/   UART4/5/                OTG_FS/
+Page   69: /11                                 /I2S3        I2S3ext     USART6                  OTG_HS
+Page   69: PG7     -      -         -           -          -           -             -             -        USART6_CK       -          -             -
+Page   69: USART6_
+Page   69: Port G   PG9     -      -         -           -          -           -             -             -        USART6_RX       -          -             -
+Page   69: USART6_
+Page   69: PG14    -      -         -           -          -           -             -             -        USART6_TX       -          -
+Page   69: USART6_
+Page   70: TIM8/9/10                           SPI3/I2Sext   USART1/2/3/   UART4/5/                OTG_FS/
+Page   70: /11                                 /I2S3        I2S3ext     USART6                  OTG_HS
+Page   71: TIM8/9/10                           SPI3/I2Sext   USART1/2/3/   UART4/5/                OTG_FS/
+Page   71: /11                                 /I2S3        I2S3ext     USART6                  OTG_HS
+Page   75: 0x4001 1400 - 0x4001 17FF   USART6
+Page   75: 0x4001 1000 - 0x4001 13FF   USART1
+Page   76: 0x4000 4800 - 0x4000 4BFF   USART3
+Page   76: 0x4000 4400 - 0x4000 47FF   USART2
+Page   98: USART2              2.69                   2.78
+Page   98: USART3              2.74                   2.78
+Page   99: USART1                      3.51                    3.72
+Page   99: USART6                      3.55                    3.75
+Page  192: Renamed USART4 and USART5 into UART4 and UART5,
+Page  192: Renamed USART4/5 to UART4/5 and added LIN and IrDA feature for
+Page  192: UART4 and UART5 in Table 6: USART feature comparison.

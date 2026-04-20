@@ -1,0 +1,195 @@
+Keyword: LCD
+Occurrences: 191
+================================================================================
+
+Page    1: 512+16+4 KB RAM, USB OTG HS/FS, 28 comm. int., LCD, DSI
+Page    1: – LCD-TFT controller supporting up to XGA
+Page    3: 3.10     LCD-TFT controller . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+Page    4: 3.30   Audio and LCD PLL (PLLSAI) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 45
+Page    6: 6.3.33      LCD-TFT controller (LTDC) characteristics . . . . . . . . . . . . . . . . . . . . . 213
+Page   12: Figure 76.   LCD-TFT horizontal timing diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 214
+Page   12: Figure 77.   LCD-TFT vertical timing diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 214
+Page   15: •   LCD-TFT display controller.
+Page   17: LCD-TFT                                No            Yes             No                    Yes                             No       Yes          No
+Page   20: LCD_R[7:0], LCD_G[7:0], LCD_B[7:0],                                                                                                                                                                                                                  POR/PDR
+Page   20: LCD-TFT                           FIFO                                                                                                                                         Int
+Page   20: LCD_HSYNC, LCD_VSYNC, LCD_DE,                                                                                                                                                                                                                          BOR                            VDDA, VSSA
+Page   20: LCD_CLK                                                                                                                                                                                                                         PVD                         NRESET
+Page   23: Ethernet, USB HS, LCD-TFT, and DMA2D) and the slaves (flash memory, RAM,
+Page   23: GP                   GP   MAC     USB OTG LCD-TFT                            Chrom-ART
+Page   23: LCD-TFT_M
+Page   25: LCD parallel interface
+Page   25: The FMC can be configured to interface seamlessly with most graphic LCD controllers. It
+Page   25: specific LCD interfaces. This LCD parallel interface capability makes it easy to build cost-
+Page   25: effective graphic applications using LCD modules with embedded controllers or high
+Page   26: 3.10       LCD-TFT controller
+Page   26: The LCD-TFT display controller provides a 24-bit parallel digital RGB (Red, Green, Blue)
+Page   26: and delivers all signals to interface directly to a broad range of LCD and TFT panels up to
+Page   45: 3.30     Audio and LCD PLL (PLLSAI)
+Page   45: An additional PLL dedicated to audio and LCD-TFT is used for SAI1 peripheral in case the
+Page   45: The PLLSAI is also used to generate the LCD-TFT clock.
+Page   67: DCMI_D4, LCD_B0,
+Page   67: DCMI_D6, LCD_G0,
+Page   67: LCD_G1, EVENTOUT
+Page   67: -          -         -       D3         11        11        E4         G10           11        11        E4            PI9                             I/O        FT               -        FMC_D30, LCD_VSYNC,          -
+Page   67: LCD_HSYNC, EVENTOUT
+Page   67: LCD_G6, OTG_HS_ULPI_DIR,
+Page   68: -          -         -          -         -       19        E3          NC             -       19        E3          PI12                             I/O        FT               -      LCD_HSYNC, EVENTOUT          -
+Page   68: -          -         -          -         -       20        G3          NC             -       20        G3          PI13                             I/O        FT               -      LCD_VSYNC, EVENTOUT          -
+Page   68: -          -         -          -         -       21        H3          NC             -       21        H3          PI14                             I/O        FT               -       LCD_CLK, EVENTOUT           -
+Page   68: LCD_DE, EVENTOUT
+Page   69: FMC_SDNWE, LCD_R5,
+Page   70: REF_CLK, LCD_R2,
+Page   70: MDIOS_MDIO, LCD_R1,
+Page   70: FMC_SDCKE0, LCD_R0,
+Page   70: LCD_R1, EVENTOUT
+Page   70: I2C2_SCL, LCD_G5,
+Page   70: -          -         -       H4         45        48        H4         N12           45        48        H4          PH4                               I/O        FT               -      OTG_HS_ULPI_NXT, LCD_G4,       -
+Page   70: K2         25         37       R2         47        50        R2         M10           47        50        R2           PA3                              I/O        FT               -      LCD_B2, OTG_HS_ULPI_D0,    ADC2_IN3,
+Page   70: ETH_MII_COL, LCD_B5,     ADC3_IN3
+Page   70: LCD_VSYNC, EVENTOUT
+Page   71: OTG_HS_ULPI_CK, LCD_R4,
+Page   71: LCD_G2, EVENTOUT
+Page   71: J4        34         46       R5         56        61        R5         P10           56        61        R5         PB0                              I/O        FT               -         UART4_CTS, LCD_R3,
+Page   71: ETH_MII_RXD2, LCD_G1,
+Page   71: DFSDM1_DATIN1, LCD_R6,    ADC1_IN9,
+Page   71: ETH_MII_RXD3, LCD_G0,
+Page   72: LCD_G2, LCD_R0,
+Page   72: LCD_R7, LCD_R1,
+Page   72: -          -         -          -         -       66        R7          NC             -       66        R7         PJ1                              I/O        FT               -         LCD_R2, EVENTOUT            -
+Page   72: -          -         -          -         -       67        P7          NC             -       67        P7         PJ2                              I/O        FT               -      DSI_TE, LCD_R3, EVENTOUT       -
+Page   72: -          -         -          -         -       68        N8          NC             -       68        N8         PJ3                              I/O        FT               -         LCD_R4, EVENTOUT            -
+Page   72: -          -         -          -         -       69        M9          NC             -       69        M9         PJ4                              I/O        FT               -         LCD_R5, EVENTOUT            -
+Page   73: FMC_D8, LCD_G3,
+Page   73: LCD_B4, EVENTOUT
+Page   73: FMC_D10, LCD_DE,
+Page   73: LCD_CLK, EVENTOUT
+Page   73: LCD_R7, EVENTOUT
+Page   73: ETH_MII_RX_ER, LCD_G4,
+Page   74: X_EN, DSI_TE, LCD_G5,
+Page   74: -          -         -          -         -       95        M14         NC             -       95        M14         PJ5                              I/O        FT               -         LCD_R6, EVENTOUT            -
+Page   74: -          -         -       M12        85        98        P14         M5             -       98        P14         PH8                              I/O        FT               -        DCMI_HSYNC, LCD_R2,          -
+Page   74: LCD_R3, EVENTOUT
+Page   74: LCD_R4, EVENTOUT
+Page   74: LCD_R5, EVENTOUT
+Page   74: LCD_R6, EVENTOUT
+Page   75: LCD_B3, EVENTOUT
+Page   76: -          -         -          -         -       118       K12             -          -         -          -         PJ6                              I/O        FT               -       LCD_R7, EVENTOUT            -
+Page   76: -          -         -          -         -       119       J12             -          -         -          -         PJ7                              I/O        FT               -       LCD_G0, EVENTOUT            -
+Page   76: -          -         -          -         -       120       H12             -          -         -          -         PJ8                              I/O        FT               -       LCD_G1, EVENTOUT            -
+Page   76: -          -         -          -         -       121       J13             -          -         -          -         PJ9                              I/O        FT               -       LCD_G2, EVENTOUT            -
+Page   76: -          -         -          -         -       122       H13             -          -         -          -         PJ10                             I/O        FT               -       LCD_G3, EVENTOUT            -
+Page   76: -          -         -          -         -       123       G12             -          -         -          -         PJ11                             I/O        FT               -       LCD_G4, EVENTOUT            -
+Page   77: -          -         -          -         -       126       G13             -          -         -          -         PK0                              I/O        FT               -         LCD_G5, EVENTOUT           -
+Page   77: -          -         -          -         -       127       F12             -          -         -          -         PK1                              I/O        FT               -         LCD_G6, EVENTOUT           -
+Page   77: -          -         -          -         -       128       F13             -          -         -          -         PK2                              I/O        FT               -         LCD_G7, EVENTOUT           -
+Page   77: LCD_R7, EVENTOUT
+Page   77: LCD_CLK, EVENTOUT
+Page   77: LCD_G7, EVENTOUT
+Page   77: DCMI_D0, LCD_HSYNC,
+Page   78: DCMI_D1, LCD_G6,
+Page   78: QUADSPI_BK1_IO0, LCD_G3,
+Page   78: LCD_B2, EVENTOUT
+Page   78: LCD_B3, LCD_R6,
+Page   78: LCD_R5, EVENTOUT
+Page   78: LCD_B4, OTG_FS_ID,
+Page   78: LCD_B1, EVENTOUT
+Page   78: LCD_R4, EVENTOUT
+Page   78: OTG_FS_DP, LCD_R5,
+Page   79: LCD_G2, EVENTOUT
+Page   79: DCMI_D4, LCD_G3,
+Page   79: -          -         -       D13        130       153       D13          E5            -       153       D13         PH15                              I/O        FT               -        DCMI_D11, LCD_G4,         -
+Page   79: LCD_G5, EVENTOUT
+Page   79: LCD_G6, EVENTOUT
+Page   79: LCD_G7, EVENTOUT
+Page   80: LCD_R2, EVENTOUT
+Page   80: DCMI_D5, LCD_G7,
+Page   81: DCMI_D10, LCD_B2,
+Page   81: LCD_G3, LCD_B0,
+Page   81: LCD_G4, LCD_B1,
+Page   81: -          -         -          -         -       176       C9          NC             -       176       C9          PJ14                             I/O        FT               -         LCD_B2, EVENTOUT             -
+Page   81: -          -         -          -         -       177       D10             -          -       177       D10         PJ15                             I/O        FT               -         LCD_B3, EVENTOUT             -
+Page   81: SPI1_NSS/I2S1_WS, LCD_G3,
+Page   81: LCD_B2, EVENTOUT
+Page   81: X_EN, DCMI_D3, LCD_B3,
+Page   82: -          -       127       B8         155       181       C7           D7          155 181             C7          PG12                              I/O        FT               -        LCD_B4, SDMMC2_D3,           -
+Page   82: FMC_NE4, LCD_B1,
+Page   82: D0, FMC_A24, LCD_R0,
+Page   82: D1, FMC_A25, LCD_B0,
+Page   82: -          -         -          -         -       186       D8          NC             -       186       D8           PK3                              I/O        FT               -         LCD_B4, EVENTOUT            -
+Page   82: -          -         -          -         -       187       D7          NC             -       187       D7           PK4                              I/O        FT               -         LCD_B5, EVENTOUT            -
+Page   82: -          -         -          -         -       188       C6          NC             -       188       C6           PK5                              I/O        FT               -         LCD_B6, EVENTOUT            -
+Page   82: -          -         -          -         -       189       C5          NC             -       189       C5           PK6                              I/O        FT               -         LCD_B7, EVENTOUT            -
+Page   82: -          -         -          -         -       190       C4          NC             -       190       C4           PK7                              I/O        FT               -         LCD_DE, EVENTOUT            -
+Page   83: LCD_G7, EVENTOUT
+Page   83: DCMI_D6, LCD_B6,
+Page   83: DCMI_D7, LCD_B7,
+Page   84: LCD_B4, EVENTOUT
+Page   84: LCD_B5, EVENTOUT
+Page   84: -          -         -       C3         175       207       D6         C11           175 207             D6           PI6                             I/O        FT               -      FMC_D28, DCMI_D6, LCD_B6,       -
+Page   84: -          -         -       C2         176       208       D4         B12           176 208             D4           PI7                             I/O        FT               -      FMC_D29, DCMI_D7, LCD_B7,       -
+Page   89: 4/5/6             5/DFSDM              LCD    OTG1_FS
+Page   89: 1/SPDIF                      /LCD
+Page   89: PA3    -                                         -          -        -                 -      LCD_B2
+Page   89: PA10      -                  -         -            -          -        -                 -      LCD_B4
+Page   90: 4/5/6             5/DFSDM              LCD    OTG1_FS
+Page   90: 1/SPDIF                      /LCD
+Page   90: PB0     -                                          -          -                   -                 LCD_R3
+Page   90: PB1     -                                          -          -                   -          -      LCD_R6
+Page   91: 4/5/6             5/DFSDM              LCD    OTG1_FS
+Page   91: 1/SPDIF                      /LCD
+Page   92: 4/5/6             5/DFSDM              LCD    OTG1_FS
+Page   92: 1/SPDIF                      /LCD
+Page   92: PC9   MCO2        -                                                      -                   -      I_BK1_IO   LCD_G3
+Page   93: 4/5/6             5/DFSDM              LCD    OTG1_FS
+Page   93: 1/SPDIF                      /LCD
+Page   94: 4/5/6             5/DFSDM              LCD    OTG1_FS
+Page   94: 1/SPDIF                      /LCD
+Page   95: 4/5/6             5/DFSDM              LCD    OTG1_FS
+Page   95: 1/SPDIF                      /LCD
+Page   96: 4/5/6             5/DFSDM              LCD    OTG1_FS
+Page   96: 1/SPDIF                      /LCD
+Page   97: 4/5/6             5/DFSDM              LCD    OTG1_FS
+Page   97: 1/SPDIF                      /LCD
+Page   98: 4/5/6             5/DFSDM              LCD    OTG1_FS
+Page   98: 1/SPDIF                      /LCD
+Page   98: PG10       -         -         -         -            -       S/I2S1_     -        -        -      LCD_G3
+Page   98: PG12       -         -         -                      -                   -                        LCD_B4        -
+Page   99: 4/5/6             5/DFSDM              LCD    OTG1_FS
+Page   99: 1/SPDIF                      /LCD
+Page   99: PH4    -       -         -         -                       -        -        -        -      LCD_G5     ULPI_NX
+Page  100: 4/5/6             5/DFSDM              LCD    OTG1_FS
+Page  100: 1/SPDIF                      /LCD
+Page  100: PI11    -       -         -         -            -          -        -        -        -      LCD_G6
+Page  101: 4/5/6             5/DFSDM              LCD    OTG1_FS
+Page  101: 1/SPDIF                      /LCD
+Page  101: PI15    -       -         -         -            -          -        -        -        -      LCD_G2       -
+Page  101: PJ0     -       -         -         -            -          -        -        -        -      LCD_R7       -
+Page  102: 4/5/6             5/DFSDM              LCD    OTG1_FS
+Page  102: 1/SPDIF                      /LCD
+Page  102: PJ12       -       -         -         -            -          -        -        -        -      LCD_G3       -
+Page  102: Port J   PJ13       -       -         -         -            -          -        -        -        -      LCD_G4       -
+Page  142: for LCD-TFT
+Page  146: VILCD        Logic 0 contention threshold              -          -     -       200
+Page  213: 6.3.33   LCD-TFT controller (LTDC) characteristics
+Page  213: Unless otherwise specified, the parameters given in Table 122 for LCD-TFT are derived
+Page  213: •    LCD_CLK polarity: high
+Page  213: •    LCD_DE polarity: low
+Page  213: •    LCD_VSYNC and LCD_HSYNC polarity: high
+Page  214: Figure 76. LCD-TFT horizontal timing diagram
+Page  214: LCD_CLK
+Page  214: LCD_VSYNC
+Page  214: LCD_HSYNC
+Page  214: LCD_DE
+Page  214: LCD_R[0:7]
+Page  214: LCD_G[0:7]                            Pixel Pixel                           Pixel
+Page  214: LCD_B[0:7]
+Page  214: Figure 77. LCD-TFT vertical timing diagram
+Page  214: LCD_CLK
+Page  214: LCD_VSYNC
+Page  214: LCD_R[0:7]
+Page  214: LCD_G[0:7]                                           M lines data
+Page  214: LCD_B[0:7]
+Page  247: Ethernet, LCD-TFT
+Page  247: LCD-TFT and DSI host, WLCSP with internal regulator OFF
+Page  247: Ethernet, LCD-TFT and DSI host.

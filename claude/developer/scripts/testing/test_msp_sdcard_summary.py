@@ -38,10 +38,17 @@ def test_sdcard_summary():
         print("Test 1: Single MSP_SDCARD_SUMMARY request")
         start = time.time()
         try:
+<<<<<<< HEAD
             code, payload = msp.request(MSP_SDCARD_SUMMARY, b"", timeout=1.5)
             elapsed = time.time() - start
             print(f"  ✓ Response received in {elapsed*1000:.1f}ms")
             print(f"  Response: code={code}, payload_len={len(payload)}")
+=======
+            code, payload, ver = msp.request(MSP_SDCARD_SUMMARY, b"", timeout=1.5)
+            elapsed = time.time() - start
+            print(f"  ✓ Response received in {elapsed*1000:.1f}ms")
+            print(f"  Response: code={code}, payload_len={len(payload)}, version={ver}")
+>>>>>>> upstream/master
         except Exception as e:
             elapsed = time.time() - start
             print(f"  ✗ FAILED after {elapsed*1000:.1f}ms: {e}")
@@ -51,7 +58,11 @@ def test_sdcard_summary():
         for i in range(5):
             start = time.time()
             try:
+<<<<<<< HEAD
                 code, payload = msp.request(MSP_SDCARD_SUMMARY, b"", timeout=1.5)
+=======
+                code, payload, ver = msp.request(MSP_SDCARD_SUMMARY, b"", timeout=1.5)
+>>>>>>> upstream/master
                 elapsed = time.time() - start
                 print(f"  Request {i+1}: OK in {elapsed*1000:.1f}ms (payload_len={len(payload)})")
             except Exception as e:
@@ -72,7 +83,11 @@ def test_sdcard_summary():
         for name, cmd_code in commands:
             start = time.time()
             try:
+<<<<<<< HEAD
                 code, payload = msp.request(cmd_code, b"", timeout=1.5)
+=======
+                code, payload, ver = msp.request(cmd_code, b"", timeout=1.5)
+>>>>>>> upstream/master
                 elapsed = time.time() - start
                 print(f"  {name} ({cmd_code}): OK in {elapsed*1000:.1f}ms (payload_len={len(payload)})")
             except Exception as e:

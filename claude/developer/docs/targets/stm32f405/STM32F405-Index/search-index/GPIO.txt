@@ -1,0 +1,52 @@
+Keyword: GPIO
+Occurrences: 48
+================================================================================
+
+Page    4: 3.0.34     General-purpose input/outputs (GPIOs) . . . . . . . . . . . . . . . . . . . . . . . . 39
+Page   16: GPIOs                             51                  72                 82                 114                    72              82
+Page   20: GPIO PORT A                                                                                                                                                                      supervision
+Page   20: GPIO PORT B                                                                                                                  P L L1&2                                                                      NRST
+Page   20: PC[15:0]             GPIO PORT C
+Page   20: PD[15:0]             GPIO PORT D                                                                                                                                                                          XTAL OSC              OSC_IN
+Page   20: GPIO PORT E
+Page   20: GPIO PORT F                                                                                                                                                                 PWR                           VBAT = 1.65 to 3.6 V
+Page   20: GPIO PORT G
+Page   20: GPIO PORT H
+Page   20: GPIO PORT I                                                                                                                                                                         AWU
+Page   24: pulse width shorter than the Internal APB2 clock period. Up to 140 GPIOs can be connected
+Page   28: •   PA0 cannot be used as a GPIO pin since it allows to reset a part of the V12 logic power
+Page   39: 3.0.34   General-purpose input/outputs (GPIOs)
+Page   39: Each of the GPIO pins can be configured by software as output (push-pull or open-drain,
+Page   40: or as peripheral alternate function. Most of the GPIO pins are shared with digital or analog
+Page   40: alternate functions. All GPIOs are high-current-capable and have speed selection to better
+Page   41: be re-use as GPIO with alternate function): the JTAG TMS and TCK pins are shared with
+Page   47: Functions selected through GPIOx_AFR registers
+Page   60: (3 mA), the use of GPIOs PC13 to PC15 and PI8 in output mode is limited:
+Page   74: 0x4002 2000 - 0x4002 23FF   GPIOI
+Page   74: 0x4002 1C00 - 0x4002 1FFF   GPIOH
+Page   74: 0x4002 1800 - 0x4002 1BFF   GPIOG
+Page   74: 0x4002 1400 - 0x4002 17FF   GPIOF
+Page   74: 0x4002 1000 - 0x4002 13FF   GPIOE
+Page   74: 0x4002 0C00 - 0x4002 0FFF   GPIOD
+Page   74: 0x4002 0800 - 0x4002 0BFF   GPIOC
+Page   74: 0x4002 0400 - 0x4002 07FF   GPIOB
+Page   74: 0x4002 0000 - 0x4002 03FF   GPIOA
+Page   78: GPIOs
+Page   97: GPIOA                2.70                   2.40
+Page   97: GPIOB                2.50                   2.22
+Page   97: GPIOC                2.54                   2.28
+Page   97: GPIOD                2.55                   2.28
+Page   97: GPIOE                2.68                   2.40
+Page   97: GPIOF                2.53                   2.28
+Page   97: GPIOG                2.51                   2.22
+Page   97: GPIOH                2.51                   2.22
+Page   97: AHB1                  GPIOI                2.50                   2.22      µA/MHz
+Page  115: Note:             For information on GPIO configuration, refer to application note AN4899 “STM32 GPIO
+Page  117: The GPIOs (general purpose input/outputs) can sink or source up to ±8 mA, and sink or
+Page  117: sink or source up to ±3mA. When using the PC13 to PC15 GPIOs in output mode, the speed
+Page  117: amount of current (3 mA), the use of GPIOs PC13 to PC15 and PI8 in output mode is limited: the speed
+Page  119: the GPIOx_SPEEDR GPIO port output speed register.
+Page  186: GPIO                      Current limiter         5 V Pwr
+Page  186: GPIO+IRQ
+Page  187: GPIO
+Page  187: GPIO+IRQ

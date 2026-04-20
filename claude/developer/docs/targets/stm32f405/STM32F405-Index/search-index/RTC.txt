@@ -1,0 +1,62 @@
+Keyword: RTC
+Occurrences: 58
+================================================================================
+
+Page    1: – 32 kHz oscillator for RTC with calibration                      accuracy via internal audio PLL or external
+Page    1: – VBAT supply for RTC, 20×32-bit backup                      • Advanced connectivity
+Page    2: 54 Mbytes/s                                        • RTC: subsecond accuracy, hardware calendar
+Page    3: 3.0.18      Real-time clock (RTC), backup SRAM and backup registers . . . . . . . . 30
+Page    5: 6.3.29      RTC characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 163
+Page    8: Table 89.   RTC characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 163
+Page   10: Figure 28.   Typical VBAT current consumption (LSE and RTC ON/backup RAM OFF) . . . . . . . . . . . . 92
+Page   10: Figure 29.   Typical VBAT current consumption (LSE and RTC ON/backup RAM ON) . . . . . . . . . . . . . 93
+Page   14: All devices offer three 12-bit ADCs, two DACs, a low-power RTC, 12 general-purpose 16-bit
+Page   15: RTC                                                                 Yes
+Page   20: RTC
+Page   20: RTC_AF1
+Page   20: Backup register            RTC_AF1
+Page   25: •   VBAT = 1.65 to 3.6 V: power supply for RTC, external clock 32 kHz oscillator and
+Page   30: 3.0.18     Real-time clock (RTC), backup SRAM and backup registers
+Page   30: •       The real-time clock (RTC)
+Page   30: The real-time clock (RTC) is an independent BCD timer/counter. Dedicated registers contain
+Page   30: performed automatically. The RTC provides a programmable alarm and programmable
+Page   31: has a typical frequency of 32 kHz. The RTC can be calibrated using an external 512 Hz
+Page   31: Like backup SRAM, the RTC and backup registers are supplied through a switch that is
+Page   31: source can be one of the 16 external lines, the PVD output, the RTC alarm / wakeup /
+Page   32: a rising edge on the WKUP pin, or an RTC alarm / wakeup / tamper /time stamp event
+Page   32: The VBAT pin supplies the RTC, the backup registers and the backup SRAM.
+Page   32: Note:      When the microcontroller is supplied from VBAT, external interrupts and RTC alarm/events
+Page   36: USART Standard                  SPI              Smartcard     in Mbit/s     in Mbit/s       APB
+Page   48: (3)(                            RTC_TAMP1,
+Page   48: -         -         -          -       D2           7            PI8          I/O         FT                 4)                -            RTC_TAMP2,
+Page   48: RTC_TS
+Page   48: (3)                              RTC_OUT,
+Page   48: 2       A9         7           7       D1           8           PC13          I/O         FT                (4)                -            RTC_TAMP1,
+Page   48: RTC_TS
+Page   54: 36       H1         54        76        R15        95            PB15          I/O         FT                 -                                RTC_REFIN
+Page   60: 4. Main function after the first backup domain power-up. Later on, it depends on the contents of the RTC registers even after
+Page   60: reset (because these registers are not reset by the main reset). For details on how to manage these I/Os, refer to the RTC
+Page   64: RTC_                                                   SPI2_MOSI
+Page   76: 0x4000 2800 - 0x4000 2BFF   RTC & BKP Registers
+Page   78: VBAT =                                 Power                         (OSC32K,RTC,
+Page   91: speed oscillator and RTC ON
+Page   91: Supply current speed oscillator and RTC ON             2.4       2.7        3.3       16              32
+Page   91: mode           Backup SRAM ON, RTC
+Page   91: Backup SRAM OFF, RTC
+Page   92: oscillator and RTC ON
+Page   92: supply                            oscillator and RTC ON
+Page   92: current                           Backup SRAM ON, RTC OFF      0.79      0.81       0.86          5              10
+Page   92: Backup SRAM OFF, RTC OFF     0.10       0.10      0.10          2               4
+Page   92: Figure 28. Typical VBAT current consumption (LSE and RTC ON/backup RAM OFF)
+Page   93: Figure 29. Typical VBAT current consumption (LSE and RTC ON/backup RAM ON)
+Page  163: 6.3.29          RTC characteristics
+Page  163: Table 89. RTC characteristics
+Page  163: -       fPCLK1/RTCCLK frequency ratio                                            4           -
+Page  163: from/to an RTC register
+Page  198: – For pin PC13, replaced “RTC_AF1” by “RTC_OUT, RTC_TAMP1,
+Page  198: RTC_TS”
+Page  198: – for pin PI8, replaced “RTC_AF2” by “RTC_TAMP1, RTC_TAMP2,
+Page  198: RTC_TS”.
+Page  198: – for pin PB15, added RTC_REFIN in Alternate functions column.
+Page  198: PB15, replaced “RTC_50Hz” by “RTC_REFIN”.
+Page  204: – Section 3.0.18: Real-time clock (RTC), backup SRAM and backup

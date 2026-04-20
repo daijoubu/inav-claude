@@ -1,0 +1,76 @@
+Keyword: VBAT
+Occurrences: 72
+================================================================================
+
+Page    1: and DSP instructions.                                           – VBAT supply for RTC, 32×32 bit backup
+Page    3: 3.19     VBAT operation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 37
+Page    5: 6.3.26     VBAT monitoring characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 156
+Page    7: Table 33.   Typical and maximum current consumptions in VBAT mode. . . . . . . . . . . . . . . . . . . . . . . 116
+Page    8: Table 75.   VBAT monitoring characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 156
+Page   10: Figure 32.   Typical VBAT current consumption (RTC ON/BKP SRAM OFF and
+Page   10: Figure 33.   Typical VBAT current consumption (RTC ON/BKP SRAM OFF and
+Page   10: Figure 34.   Typical VBAT current consumption (RTC ON/BKP SRAM OFF and
+Page   10: Figure 35.   Typical VBAT current consumption (RTC ON/BKP SRAM OFF and
+Page   10: Figure 36.   Typical VBAT current consumption (RTC ON/BKP SRAM OFF and
+Page   21: GPIO PORT F                                                                                                                                                              Standby                                    VBAT = 1.8 to 3.6 V
+Page   23: unwanted write accesses, and is retained in Standby or VBAT mode.
+Page   27: •   VBAT = 1.65 to 3.6 V: power supply for RTC, external clock 32 kHz oscillator and
+Page   31: •   VBAT functionality is no more available, and VBAT pin must be connected to VDD.
+Page   35: to VBAT mode.
+Page   35: from the VDD supply when present or from the VBAT pin.
+Page   35: The RTC is functional in VBAT mode and in all low-power modes when it is clocked by the
+Page   35: LSE. When clocked by the LSI, the RTC is not functional in VBAT mode, but is functional in
+Page   37: 3.19        VBAT operation
+Page   37: The VBAT pin is used to power the device VBAT domain from an external battery, an external
+Page   37: The VBAT operation is activated when VDD is not present.
+Page   37: The VBAT pin supplies the RTC, the backup registers, and the backup SRAM.
+Page   37: Note:       When the microcontroller is supplied from VBAT, external interrupts and RTC alarm/events
+Page   37: do not exit it from VBAT operation.
+Page   37: When the PDR_ON pin is connected to VSS (internal reset OFF), the VBAT functionality is no
+Page   37: more available, and the VBAT pin must be connected to VDD.
+Page   46: connected to the same input channel as VBAT, ADC1_IN18, which is used to convert the
+Page   46: sensor output voltage into a digital value. When the temperature sensor and VBAT
+Page   46: conversion are enabled at the same time, only VBAT conversion is performed.
+Page   48: VBAT           1                                               48   VDD
+Page   49: VBAT     6                                                   70    PA11
+Page   50: VBAT    6                                                 70   PA11
+Page   51: C        PA11      PA10     PA9     PA14      PC11   PD3   PB5     PB8    PE2    VBAT
+Page   52: VBAT    6                                                                 103   PA11
+Page   53: VBAT     6                                                                     103   PA11
+Page   54: VBAT   PF0      PF1         PB8       PB6    PG14    PG11    PD4       PC12     VDDUSB   PA11
+Page   55: VBAT     6                                                                      127   VDD
+Page   56: VBAT     6                                                                   127   VDD
+Page   57: C     VBAT                                                       VDD     PG9     PD5    PD1     PI3     PI2   PA11
+Page   58: C    VBAT                                                       VDD     PG9     PD5    PD1     PI3     PI2   PA11
+Page   60: 1         6         6       C1           6            6       C10          C1         C2           6         6           VBAT            S             -            -
+Page   97: VBAT
+Page   97: VBAT =                               Power switch                          (OSC32K,RTC,
+Page   98: VBAT
+Page   98: VBAT =                                 Power switch                          (OSC32K,RTC,
+Page   99: IDD_VBAT
+Page   99: VBAT
+Page   99: VBAT, VDDUSB, VDDPHYHS and VDDSDMMC) (1)
+Page  102: VBAT       Backup operating voltage                           -                       1.65         -      3.6
+Page  107: 2. The reset temporization is measured from the power-on (POR reset or wakeup from VBAT) to the instant
+Page  116: Table 33. Typical and maximum current consumptions in VBAT mode
+Page  116: VBAT = VBAT= VBAT=
+Page  116: VBAT = 3.6 V
+Page  116: IDD_VBAT                                                                                                            µA
+Page  116: in VBAT mode mode
+Page  117: Figure 32. Typical VBAT current consumption (RTC ON/BKP SRAM OFF and
+Page  117: IDD_VBAT (uA)
+Page  117: Figure 33. Typical VBAT current consumption (RTC ON/BKP SRAM OFF and
+Page  117: IDD_VBAT (uA)
+Page  118: Figure 34. Typical VBAT current consumption (RTC ON/BKP SRAM OFF and
+Page  118: IDD_VBAT (uA)
+Page  118: Figure 35. Typical VBAT current consumption (RTC ON/BKP SRAM OFF and
+Page  118: IDD_VBAT (uA)
+Page  119: Figure 36. Typical VBAT current consumption (RTC ON/BKP SRAM OFF and
+Page  119: IDD_VBAT (uA)
+Page  156: 6.3.26            VBAT monitoring characteristics
+Page  156: Table 75. VBAT monitoring characteristics
+Page  156: R              Resistor bridge for VBAT                                         -            50            -           KΩ
+Page  156: Q               Ratio on VBAT measurement                                        -            4             -           -
+Page  156: ADC sampling time when reading the VBAT
+Page  156: TS_vbat(2)(2)                                                                          5            -             -           µs
+Page  222: •      VBAT functionality is no more available and VBAT pin should be connected to VDD.

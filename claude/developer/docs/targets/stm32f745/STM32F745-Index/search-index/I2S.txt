@@ -1,0 +1,131 @@
+Keyword: I2S
+Occurrences: 127
+================================================================================
+
+Page    1: backup SRAM (available in the lowest                           muxed simplex I2S for audio class
+Page    3: 3.25    Serial peripheral interface (SPI)/inter-integrated sound interfaces (I2S) . 40
+Page    3: 3.28    Audio PLL (PLLI2S) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 41
+Page    7: Table 45.   PLLI2S characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 153
+Page    7: Table 78.   I2S dynamic characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 183
+Page   10: Figure 49.   I2S target timing diagram (Philips protocol)(1) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 184
+Page   10: Figure 50.   I2S controller timing diagram (Philips protocol)(1) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 184
+Page   13: •   Six SPIs, three I2Ss in duplex mode. To achieve the audio class accuracy, the I2S
+Page   15: SPI / I2S              4/3 (simplex)(2)                                                                               6/3 (simplex)(2)
+Page   16: 2.   The SPI1, SPI2 and SPI3 interfaces give the flexibility to work in an exclusive way in either the SPI mode or the I2S audio mode.
+Page   18: SPI1/I2S1                                                                                                                    TIM6                16b                                                                                                         MOSI/SD, SCK/CK
+Page   18: NSS/WS, MCK as AF                                                                                                                                                                                                                                              SPI2/I2S2
+Page   18: SCK, NSS as AF                                                                                                                                                          TIM7                16b                                                                SPI3/I2S3
+Page   22: •   SPI and I2S
+Page   24: The devices embed two dedicated PLL (PLLI2S and PLLSAI) which allow to achieve audio
+Page   24: class performance. In this case, the I2S and SAI master clock can generate all standard
+Page   40: interfaces (I2S)
+Page   40: Three standard I2S interfaces (multiplexed with SPI1, SPI2 and SPI3) are available. They
+Page   40: I2S interfaces is/are configured in master mode, the master clock can be output to the
+Page   40: All I2Sx can be served by the DMA controller.
+Page   40: block: I2S standards, LSB or MSB-justified, PCM/DSP, TDM, AC’97 and SPDIF output,
+Page   41: 3.28     Audio PLL (PLLI2S)
+Page   41: The devices feature an additional dedicated PLL for audio I2S and SAI applications. It allows
+Page   41: to achieve error-free I2S sampling clock accuracy without compromising on the CPU
+Page   41: The PLLI2S configuration can be modified to manage an I2S/SAI sample rate change
+Page   41: I2S/SAI flow with an external PLL (or Codec output).
+Page   42: PLLI2S is programmed to achieve another audio sampling frequency (49.152 MHz or
+Page   58: (4)      SPI2_MOSI/I2S2_SD,         1,
+Page   59: SPI2_MOSI/I2S2_SD,
+Page   60: SPI1_NSS/I2S1_WS,
+Page   60: SPI3_NSS/I2S3_WS,
+Page   60: 29        H3         M9          41        P4         51        54        P4           PA5        I/O                                 SPI1_SCK/I2S1_CK,
+Page   61: SPI1_MOSI/I2S1_SD,
+Page   61: I2S1_MCK,
+Page   61: SPI3_MOSI/I2S3_SD,
+Page   63: SPI2_SCK/I2S2_CK,
+Page   64: SPI2_NSS/I2S2_WS,
+Page   64: SPI2_SCK/I2S2_CK,
+Page   65: 54        G10         J3         76        R15        95        107 R15                PB15       I/O FT                     -        SPI2_MOSI/I2S2_SD,         -
+Page   67: I2S2_MCK, USART6_TX,
+Page   67: I2S3_MCK, USART6_RX,
+Page   67: I2S_CKIN, UART5_CTS,
+Page   67: SPI2_SCK/I2S2_CK,     OTG_FS_VB
+Page   68: SPI2_NSS/I2S2_WS,
+Page   68: SPI2_SCK/I2S2_CK,
+Page   69: SPI2_MOSI/I2S2_SD,
+Page   69: 77        A8         C2          110 A13 138 160 A13                                         I/O FT                          -         SPI1_NSS/I2S1_WS,        -
+Page   69: SPI3_NSS/I2S3_WS,
+Page   69: SPI3_SCK/I2S3_CK,
+Page   69: SPI3_MOSI/I2S3_SD,
+Page   70: SPI2_SCK/I2S2_CK,
+Page   70: SPI3_MOSI/I2S3_SD,
+Page   72: 89        A7         B7          133 A10 161 192 A10 O/TRAC I/O FT                                                           -        SPI1_SCK/I2S1_CK,          -
+Page   72: ESWO)                                                                           SPI3_SCK/I2S3_CK,
+Page   72: RST)                                            SPI2_NSS/I2S2_WS,
+Page   72: SPI1_MOSI/I2S1_SD,
+Page   72: SPI3_MOSI/I2S3_SD,
+Page   73: SPI2_NSS/I2S2_WS,
+Page   78: PA4    -        -         -          -           -       S/I2S1_ S/I2S3_                 -         -          -         -
+Page   78: PA5    -     H1/TIM2      -                      -       K/I2S1_       -        -        -         -                    -
+Page   78: PA7    -                                         -       OSI/I2S1      -        -        -                    -
+Page   78: PA9    -                  -          -                   K/I2S2_       -                 -         -          -         -
+Page   79: PA15    JTDI    H1/TIM2       -         -                    S/I2S1_ S/I2S3_          -                   -         -        -
+Page   79: PB2      -         -          -         -            -           -                 SI/I2S3_                         -        -
+Page   79: PB3    RACES                  -         -            -       K/I2S1_ K/I2S3_          -          -        -         -        -
+Page   79: Port B   PB4    NJTRST      -                    -            -                             S/I2S2_       -        -         -        -
+Page   79: PB5      -         -                    -                    OSI/I2S1 OSI/I2S3        -          -
+Page   80: PB9      -       -                                         S/I2S2_       -        -        -                   -        -
+Page   80: PB10     -                  -         -                    K/I2S2_       -                 -         -
+Page   80: PB12     -                  -         -                    S/I2S2_       -                 -
+Page   80: PB13     -                  -         -            -       K/I2S2_       -                 -
+Page   80: PB15                        -                      -       OSI/I2S2      -        -        -                   -        -
+Page   80: PC1              -          -         -            -       OSI/I2S2               -        -         -         -
+Page   80: PC3      -       -          -         -            -       OSI/I2S2      -        -        -         -      ULPI_NX
+Page   81: I2S1_M                          SPDIFRX                     RXD0
+Page   81: TIM3_C    TIM8_CH                 I2S2_M                          USART6
+Page   81: TIM3_C     TIM8_                              I2S3_M              USART6
+Page   81: TIM3_C     TIM8_      I2C3_SD     I2S_CKI                UART5_
+Page   81: PC10     -       -          -         -            -           -       K/I2S3_                     I_BK1_IO      -       -
+Page   81: PC12             -          -         -            -           -       OSI/I2S3                         -        -       -
+Page   82: PD3      -       -          -         -            -       K/I2S2_       -                 -         -          -       -
+Page   82: PD6      -       -          -         -            -       OSI/I2S3                        -         -          -       -
+Page   87: PI0    -      -                    -            -       S/I2S2_       -        -       -        -         -        -
+Page   87: PI1    -      -          -                      -       K/I2S2_       -        -       -        -         -        -
+Page   87: PI3    -      -          -                      -       OSI/I2S2      -        -       -        -         -        -
+Page   95: 0x4000 4000 - 0x4000 43FF   I2S3ext
+Page   95: 0x4000 3C00 - 0x4000 3FFF   SPI3 / I2S3
+Page   95: 0x4000 3800 - 0x4000 3BFF   SPI2 / I2S2
+Page   95: 0x4000 3400 - 0x4000 37FF   I2S2ext
+Page   98: 0x4001 3000 - 0x4001 33FF   SPI1/I2S1
+Page   99: 0x4000 3C00 - 0x4000 3FFF   SPI3 / I2S3
+Page   99: 0x4000 3800 - 0x4000 3BFF   SPI2 / I2S2
+Page  125: SPI2/I2S2                3              2.9           2.8
+Page  125: SPI3/I2S3(3)            3.2             2.9           2.8
+Page  126: SPI1/I2S1(3)               3.1                  3                  2.5
+Page  126: 3. To enable an I2S peripheral, first set the I2SMOD bit and then the I2SE bit in the SPI_I2SCFGR register.
+Page  135: between PLL and PLLI2S.
+Page  135: Table 45. PLLI2S characteristics
+Page  135: fPLLI2S_IN        PLLI2S input clock(1)                                  -                 0.95(2)           1    2.10
+Page  135: PLLI2S multiplier output clock for
+Page  135: fPLLI2SP_OUT                                                             -                      -            -    216
+Page  135: PLLI2S multiplier output clock for
+Page  135: fPLLI2SQ_OUT                                                             -                      -            -    216       MHz
+Page  135: PLLI2S multiplier output clock for
+Page  135: fPLLI2SR_OUT                                                             -                      -            -    216
+Page  135: I2S
+Page  135: fVCO_OUT          PLLI2S VCO output                                      -                  100              -    432
+Page  135: tLOCK             PLLI2S lock time                                                                                               µs
+Page  136: Table 45. PLLI2S characteristics (continued)
+Page  136: Master I2S clock jitter
+Page  136: WS I2S clock jitter                                                         -         400     -     ps
+Page  136: PLLI2S power consumption on            VCO freq = 100 MHz                 0.15               0.40
+Page  136: IDD(PLLI2S)(4)                                                                                           -            mA
+Page  136: PLLI2S power consumption on            VCO freq = 100 MHz                 0.30               0.40
+Page  136: IDDA(PLLI2S)(4)                                                                                          -            mA
+Page  164: I2S interface characteristics
+Page  164: Unless otherwise specified, the parameters given in Table 78 for the I2S interface are
+Page  165: Table 78. I2S dynamic characteristics(1)
+Page  165: fMCK           I2S Main clock output                             -                  256x8K   256xFs          MHz
+Page  165: fCK             I2S clock frequency                                                                          MHz
+Page  165: DCK       I2S clock frequency duty cycle Slave receiver                              30         70             %
+Page  165: 3. Measurement done with respect to I2S_CK rising edge.
+Page  165: Note:          Refer to RM0385 reference manual I2S section for more details on the sampling frequency
+Page  165: (I2SDIV/(2*I2SDIV+ODD) and a maximum value of (I2SDIV+ODD)/(2*I2SDIV+ODD). FS
+Page  166: Figure 49. I2S target timing diagram (Philips protocol)(1)
+Page  166: Figure 50. I2S controller timing diagram (Philips protocol)(1)
+Page  228: Updated Table 45: Main PLL characteristics, Table 46: PLLI2S

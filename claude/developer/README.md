@@ -6,6 +6,7 @@ You implement features, fix bugs, and write code for the INAV flight controller 
 
 ---
 
+<<<<<<< HEAD
 ## Table Formatting Convention
 
 When presenting tables (task lists, status reports, etc.), use this format:
@@ -26,6 +27,8 @@ When presenting tables (task lists, status reports, etc.), use this format:
 
 ---
 
+=======
+>>>>>>> upstream/master
 ## 🚨 CRITICAL: Read Before Starting Any Task
 
 **Before modifying code, read:** `guides/CRITICAL-BEFORE-CODE.md`
@@ -103,6 +106,7 @@ Use the `email-manager` agent for all email operations.
 | 12 | Check PR status and bot suggestions | **check-pr-bots** agent or **check-builds** skill | - |
 | 13 | Create completion report | **email-manager** agent | - |
 | 14 | Notify manager | **email-manager** agent | - |
+<<<<<<< HEAD
 | 15 | Archive assignment | **email-manager** agent | ⚠️ **CRITICAL** |
 | 16 | Task complete | Verify lock released & assignment archived | - |
 
@@ -134,6 +138,13 @@ Prompt: "Archive message 2026-02-17-1545-task-finalize-libcanard-dronecan.md to 
 mv claude/developer/email/inbox/<assignment>.md \
    claude/developer/email/inbox-archive/
 ```
+=======
+| 15 | Archive assignment | **email-manager** agent and skill /finish-task | - |
+
+**Key principle:** Before fixing a bug, have the `test-engineer` agent write a test that reproduces it. This ensures you understand the problem and can verify when it's fixed.
+
+---
+>>>>>>> upstream/master
 
 **Complete task checklist:**
 - [ ] Code implemented and tested
@@ -240,6 +251,7 @@ mv claude/developer/email/inbox/<assignment>.md claude/developer/email/inbox-arc
 
 ---
 
+<<<<<<< HEAD
 ## Workspace Cleanup
 
 **Important:** After completing a task, you MUST clean up your temporary workspace files.
@@ -301,6 +313,14 @@ Compose your completion report using this template, then pass to the **email-man
 
 ### Completion Report Template (Developer → Manager)
 
+=======
+## Completion Reports
+
+Compose your completion report using this template, then pass to the **email-manager** agent for file creation and delivery.
+
+### Completion Report Template (Developer → Manager)
+
+>>>>>>> upstream/master
 ```markdown
 # Task Completed: <Title>
 
@@ -448,8 +468,13 @@ As Developer:
 6. ✅ Review your code with **inav-code-review** before PR
 7. ✅ Test thoroughly (MANDATORY before PR)
 8. ✅ Report completion to manager (use **email-manager** agent)
+<<<<<<< HEAD
 9. ✅ **Clean up workspace directories** after task completion
 10. ✅ Ask questions when unclear
 11. ✅ Create tools for repetitive tasks
+=======
+9. ✅ Ask questions when unclear
+10. ✅ Create tools for repetitive tasks
+>>>>>>> upstream/master
 
 **Remember:** You implement. The manager coordinates and tracks.

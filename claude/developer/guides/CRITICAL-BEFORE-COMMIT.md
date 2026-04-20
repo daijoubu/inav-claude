@@ -26,6 +26,10 @@ GIT_EDITOR="gedit" git commit --edit -m "Your commit message"
 - End with "Generated with https://claude.com/claude-code"
 - Mention Claude or AI assistance in commit messages
 - Use generic messages like "fix bug" or "update code"
+<<<<<<< HEAD
+=======
+- Do NOT mention Claude in commit messages. - Do NOT put "Co-Authored-By: Claude Sonnet 4.6" or similar in a commit message
+>>>>>>> upstream/master
 
 **✅ ALWAYS:**
 - Focus on WHY, not just WHAT

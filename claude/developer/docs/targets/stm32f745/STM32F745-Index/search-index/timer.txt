@@ -1,0 +1,69 @@
+Keyword: timer
+Occurrences: 65
+================================================================================
+
+Page    1: • Up to 18 timers: up to thirteen 16-bit (1x low-
+Page    1: power 16-bit timer available in Stop mode) and                STM32F745xx
+Page    1: two 32-bit timers, each with up to 4
+Page    1: (incremental) encoder input. All 15 timers                                    STM32F746BE, STM32F746BG, STM32F746IE,
+Page    1: timer                                                                         STM32F746VE, STM32F746VG, STM32F746ZE,
+Page    3: 3.22    Timers and watchdogs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34
+Page    3: 3.22.1     Advanced-control timers (TIM1, TIM8) . . . . . . . . . . . . . . . . . . . . . . . . . 36
+Page    3: 3.22.2     General-purpose timers (TIMx) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 36
+Page    3: 3.22.3     Basic timers TIM6 and TIM7 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 37
+Page    3: 3.22.4     Low-power timer (LPTIM1) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 37
+Page    3: 3.22.7     SysTick timer . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 37
+Page    4: 6.3.19     TIM timer characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 169
+Page    6: Table 6.    Timer feature comparison . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 35
+Page   13: purpose 16-bit timers including two PWM timers for motor control and one low-power timer
+Page   13: available in Stop mode, two general-purpose 32-bit timers, a true random number generator
+Page   15: Timers             control
+Page   18: 1. The timers connected to APB2 are clocked from TIMxCLK up to 216 MHz, while the timers connected to APB1 are clocked
+Page   22: •   General-purpose, basic and advanced-control timers TIMx
+Page   32: The RTC is an independent BCD timer/counter. It supports the following features:
+Page   32: •   17-bit auto-reload wake-up timer (WUT) for periodic events with programmable
+Page   33: All RTC events (Alarm, Wake-Up Timer, Timestamp or Tamper) can generate an interrupt
+Page   34: 3.22       Timers and watchdogs
+Page   34: The devices include two advanced-control timers, eight general-purpose timers, two basic
+Page   34: timers and two watchdog timers.
+Page   34: All timer counters can be frozen in debug mode.
+Page   34: Table 6 compares the features of the advanced-control, general-purpose and basic timers.
+Page   35: Table 6. Timer feature comparison
+Page   35: Timer                Counter Counter Prescaler                                                  interfac timer
+Page   35: Timer                                         request   compare          entary
+Page   35: 1. The maximum timer clock is either 108 or 216 MHz depending on TIMPRE bit configuration in the RCC_DCKCFGR
+Page   36: 3.22.1     Advanced-control timers (TIM1, TIM8)
+Page   36: The advanced-control timers (TIM1, TIM8) can be seen as three-phase PWM generators
+Page   36: inserted dead times. They can also be considered as complete general-purpose timers.
+Page   36: If configured as standard 16-bit timers, they have the same features as the general-purpose
+Page   36: TIMx timers. If configured as 16-bit PWM generators, they have full modulation capability (0-
+Page   36: The advanced-control timer can work together with the TIMx timers via the Timer Link
+Page   36: 3.22.2     General-purpose timers (TIMx)
+Page   36: There are ten synchronizable general-purpose timers embedded in the STM32F74xxx
+Page   36: The STM32F74xxx include 4 full-featured general-purpose timers: TIM2, TIM5, TIM3,
+Page   36: and TIM4.The TIM2 and TIM5 timers are based on a 32-bit auto-reload
+Page   36: up/downcounter and a 16-bit prescaler. The TIM3 and TIM4 timers are based on a 16-
+Page   36: The TIM2, TIM3, TIM4, TIM5 general-purpose timers can work together, or with the
+Page   36: other general-purpose timers and the advanced-control timers TIM1 and TIM8 via the
+Page   36: Timer Link feature for synchronization or event chaining.
+Page   36: Any of these general-purpose timers can be used to generate PWM outputs.
+Page   36: These timers are based on a 16-bit auto-reload upcounter and a 16-bit prescaler.
+Page   36: full-featured general-purpose timers. They can also be used as simple time bases.
+Page   37: 3.22.3   Basic timers TIM6 and TIM7
+Page   37: These timers are mainly used for DAC trigger and waveform generation. They can also be
+Page   37: 3.22.4   Low-power timer (LPTIM1)
+Page   37: The low-power timer has an independent clock and is running also in Stop mode if it is
+Page   37: This low-power timer supports the following features:
+Page   37: to reset the device when a problem occurs, or as a free-running timer for application timeout
+Page   37: 3.22.7   SysTick timer
+Page   37: This timer is dedicated to real-time operating systems, but could also be used as a standard
+Page   45: To synchronize A/D conversion and timers, the ADCs could be triggered by any of TIM1,
+Page   45: TIM2, TIM3, TIM4, TIM5, or TIM8 timer.
+Page   46: the timer update outputs that are also connected to different DMA streams.
+Page  151: 6.3.19      TIM timer characteristics
+Page  151: tres(TIM)    Timer resolution time
+Page  151: Timer external clock
+Page  151: ResTIM       Timer resolution                                             -           16/32             bit
+Page  151: 1. TIMx is used as a general term to refer to the TIM1 to TIM12 timers.
+Page  151: 3. The maximum timer frequency on APB1 or APB2 is up to 216 MHz, by setting the TIMPRE bit in the
+Page  228: Updated Section 3.22.2: General-purpose timers (TIMx) and

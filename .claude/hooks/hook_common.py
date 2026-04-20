@@ -33,25 +33,79 @@ class HookConfig:
         self.bash_parser = BashCommandParser()
 
     def _load_config(self, config_path: Optional[str]) -> Dict[str, Any]:
-        """Load configuration from YAML file."""
-        # Search order for config file
+        """Load configuration from YAML files (split or monolithic)."""
+        hook_dir = os.path.dirname(os.path.abspath(__file__))
+
+        # Try to load split files first (new structure)
+        split_files = [
+            ("tool_permissions_defaults.yaml", "defaults"),
+            ("tool_permissions_rules.yaml", "rules"),
+            ("tool_permissions_bash.yaml", "bash_rules"),
+        ]
+
+        # Search order for split files
+        search_dirs = [
+            hook_dir,  # Absolute path to hook directory
+            os.path.expanduser("~/.claude/hooks"),
+            os.path.expanduser("~/.config/claude"),
+            "./.claude/hooks",
+            "../../.claude/hooks",
+        ]
+
+        merged_config = None
+
+        # Try each search directory for the split files
+        for search_dir in search_dirs:
+            split_found = []
+            for filename, _ in split_files:
+                filepath = os.path.join(search_dir, filename)
+                if os.path.exists(filepath):
+                    split_found.append(filepath)
+
+            # If we found all three split files in this directory, load and merge them
+            if len(split_found) == 3:
+                merged_config = {
+                    'defaults': {},
+                    'rules': [],
+                    'bash_rules': [],
+                    'logging': {}
+                }
+
+                try:
+                    for filename, section_name in split_files:
+                        filepath = os.path.join(search_dir, filename)
+                        with open(filepath, 'r') as f:
+                            file_data = yaml.safe_load(f) or {}
+
+                            # Merge the data
+                            if section_name == "defaults":
+                                merged_config['logging'] = file_data.get('logging', {})
+                                merged_config['defaults'] = file_data.get('defaults', {})
+                            elif section_name == "rules":
+                                merged_config['rules'] = file_data.get('rules', [])
+                            elif section_name == "bash_rules":
+                                merged_config['bash_rules'] = file_data.get('bash_rules', [])
+
+                    return merged_config
+                except Exception:
+                    # If there's an error loading split files, fall through to monolithic
+                    merged_config = None
+
+        # Fallback: Try to load monolithic tool_permissions.yaml
         search_paths = []
 
         if config_path:
             search_paths.append(config_path)
 
-        # Default locations
-        # Start with absolute path to project config
-        hook_dir = os.path.dirname(os.path.abspath(__file__))
         project_config = os.path.join(hook_dir, "tool_permissions.yaml")
 
         search_paths.extend([
-            project_config,  # Absolute path to project config (always checked first)
+            project_config,  # Absolute path to project config
             os.path.expanduser("~/.claude/hooks/tool_permissions.yaml"),
             os.path.expanduser("~/.config/claude/tool_permissions.yaml"),
-            "./tool_permissions.yaml",  # Same directory as the hook script
-            "./.claude/hooks/tool_permissions.yaml",  # From project root
-            "../../.claude/hooks/tool_permissions.yaml",  # From hooks directory
+            "./tool_permissions.yaml",
+            "./.claude/hooks/tool_permissions.yaml",
+            "../../.claude/hooks/tool_permissions.yaml",
         ])
 
         for path in search_paths:
@@ -60,7 +114,7 @@ class HookConfig:
                 with open(expanded_path, 'r') as f:
                     return yaml.safe_load(f) or {}
 
-        # Return default config if no file found
+        # Return default config if no files found
         return {
             'defaults': {
                 'read': 'allow',

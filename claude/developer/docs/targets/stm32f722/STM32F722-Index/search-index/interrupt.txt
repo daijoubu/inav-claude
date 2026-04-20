@@ -1,0 +1,35 @@
+Keyword: interrupt
+Occurrences: 31
+================================================================================
+
+Page    1: • Clock, reset and supply management                           • Up to 140 I/O ports with interrupt capability
+Page    3: 3.10     Nested vectored interrupt controller (NVIC) . . . . . . . . . . . . . . . . . . . . . . . 26
+Page    3: 3.11     External interrupt/event controller (EXTI) . . . . . . . . . . . . . . . . . . . . . . . . . 26
+Page   22: delivering outstanding computational performance and low interrupt latency.
+Page   26: 3.10       Nested vectored interrupt controller (NVIC)
+Page   26: The devices embed a nested vectored interrupt controller able to manage 16 priority levels,
+Page   26: and handle up to 110 maskable interrupt channels, plus the 16 interrupt lines of the
+Page   26: •   Closely coupled NVIC gives low-latency interrupt processing
+Page   26: •   Interrupt entry vector table address passed directly to the core
+Page   26: •   Allows early processing of interrupts
+Page   26: •   Processing of late arriving, higher-priority interrupts
+Page   26: •   Interrupt entry restored on interrupt exit with no instruction overhead
+Page   26: This hardware block provides flexible interrupt management features with a minimum
+Page   26: interrupt latency.
+Page   26: 3.11       External interrupt/event controller (EXTI)
+Page   26: The external interrupt/event controller consists of 24 edge-detector lines used to generate
+Page   26: interrupt/event requests. Each line can be independently configured to select the trigger
+Page   26: maintains the status of the interrupt requests. The EXTI can detect an external line with a
+Page   26: 16 external interrupt lines.
+Page   27: automatically switches back to the internal RC oscillator and a software interrupt is
+Page   27: frequency up to 216 MHz. Similarly, a full interrupt management of the PLL clock entry is
+Page   30: the VDD/VDDA power supply, and compares it to the VPVD threshold. An interrupt can be
+Page   30: higher than the VPVD threshold. The interrupt service routine can then generate a warning
+Page   36: All the RTC events (alarm, wakeup timer, timestamp, or tamper) can generate an interrupt,
+Page   36: wake up the CPU when an interrupt/event occurs.
+Page   36: asynchronous interrupt).
+Page   37: Note:       When the microcontroller is supplied from VBAT, external interrupts and RTC alarm/events
+Page   40: the main clock. It has an early warning interrupt capability and the counter can be frozen in
+Page   40: •   maskable system interrupt generation when the counter reaches 0
+Page   42: Receiver timeout interrupt                                        X                      X
+Page   46: interrupt is generated when the converted voltage is outside the programmed thresholds.

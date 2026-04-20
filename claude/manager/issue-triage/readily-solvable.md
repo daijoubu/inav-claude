@@ -14,6 +14,7 @@ Issues with clear problems, known solutions, and reasonable effort to fix.
 
 ## Issues
 
+<<<<<<< HEAD
 ### ~~#11209 - Integer overflow in CRSF MSP handling~~ FIXED
 
 **Status:** CLOSED - Fixed via PR #11210 (merged)
@@ -22,6 +23,31 @@ Issues with clear problems, known solutions, and reasonable effort to fix.
 ~~Security issue (OOB write) in CRSF MSP handling.~~
 
 **Resolution:** Already fixed in maintenance-9.x. Bounds check added at `src/main/rx/crsf.c:181`.
+=======
+### #11209 - Integer overflow in CRSF MSP handling
+
+**Created:** 2025-12-26
+**Labels:** (none)
+**URL:** https://github.com/iNavFlight/inav/issues/11209
+
+**Problem:**
+In `crsfDataReceive()`, when handling `CRSF_FRAMETYPE_MSP_REQ` or `CRSF_FRAMETYPE_MSP_WRITE`, if `frameLength` is 3, the subtraction `frameLength - 4` overflows (becomes -1/0xffffffff). This is passed to `bufferCrsfMspFrame()` which does a `memcpy` with this massive length, causing OOB writes.
+
+**Proposed Solution:**
+Add bounds check before the subtraction:
+```c
+if (crsfFrame.frame.frameLength < 4) {
+    break;  // Discard malformed frame
+}
+```
+
+**Files Affected:**
+- `src/main/rx/crsf.c` - `crsfDataReceive()` function
+
+**Notes:**
+Security issue (OOB write). Reporter provided exact code location and suggested fix.
+Clear one-line fix with no risk of regression.
+>>>>>>> upstream/master
 
 ---
 

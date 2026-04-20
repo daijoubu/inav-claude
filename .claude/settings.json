@@ -3,6 +3,10 @@
   "env": {
     "ANTHROPIC_DEFAULT_OPUS_MODEL": "claude-opus-4-5-20251101"
   },
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
   "sandbox": {
     "_excludedCommands_disabled": ["git"],
     "filesystem": {
@@ -123,7 +127,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/user/Documents/planes/inavflight/.claude/hooks/session-start.sh"
+            "command": "/home/robs/Projects/inav-claude/.claude/hooks/session-start.sh"
           }
         ]
       }
@@ -134,7 +138,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/user/Documents/planes/inavflight/.claude/hooks/pre_tool_use_hook.py"
+            "command": "/home/robs/Projects/inav-claude/.claude/hooks/pre_tool_use_hook.py"
           }
         ]
       }
@@ -145,7 +149,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/user/Documents/planes/inavflight/.claude/hooks/permission_request_hook.py"
+            "command": "/home/robs/Projects/inav-claude/.claude/hooks/permission_request_hook.py"
           }
         ]
       }
@@ -157,6 +161,16 @@
           {
             "type": "command",
             "command": "/home/robs/Projects/inav-claude/.claude/hooks/post_tool_token_logger.py"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/robs/Projects/inav-claude/.claude/hooks/stop-hook.sh"
           }
         ]
       }

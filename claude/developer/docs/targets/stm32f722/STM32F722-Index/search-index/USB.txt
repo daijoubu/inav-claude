@@ -1,0 +1,157 @@
+Keyword: USB
+Occurrences: 153
+================================================================================
+
+Page    1: 256+16+4KB RAM, USB OTG HS/FS, 18 TIMs, 3 ADCs, 21 com IF
+Page    1: – Dedicated USB power                                        • Up to 21 communication interfaces
+Page    2: – USB 2.0 full-speed device/host/OTG      • 96-bit unique ID
+Page    2: – USB 2.0 high-speed/full-speed
+Page    5: 6.3.13     USB OTG HS PHY PLLs characteristics (on STM32F723xx devices) 136
+Page    5: 6.3.14     USB OTG HS PHY regulator characteristics
+Page    5: 6.3.15     USB HS PHY external resistor characteristics
+Page    7: Table 36.   USB OTG HS and USB OTG PHY HS current consumption . . . . . . . . . . . . . . . . . . . . . . 125
+Page    8: Table 48.   USB OTG HS PLL1 characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 136
+Page    8: Table 49.   USB OTG HS PLL2 characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 137
+Page    8: Table 50.   USB OTG HS PHY regulator characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 137
+Page    8: Table 51.   USB HS PHY external resistor characteristics (on STM32F723xx devices). . . . . . . . . . . 138
+Page    8: Table 84.   USB OTG full speed startup time . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 168
+Page    8: Table 85.   USB OTG full speed DC electrical characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 168
+Page    8: Table 86.   USB OTG full speed electrical characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 169
+Page    8: Table 87.   USB HS DC electrical characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 169
+Page    8: Table 88.   USB HS clock timing parameters . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 170
+Page    8: Table 89.   Dynamic characteristics: USB ULPI . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 171
+Page    8: Table 90.   USB OTG high speed DC electrical characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 171
+Page    8: Table 91.   USB OTG high speed electrical characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 171
+Page    8: Table 92.   USB FS PHY BCD electrical characteristics. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 172
+Page   10: Figure 8.    VDDUSB connected to VDD power supply . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+Page   10: Figure 9.    VDDUSB connected to external power supply . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+Page   11: Figure 60.   USB OTG full speed timings: definition of data signal rise and fall time . . . . . . . . . . . . . . 169
+Page   14: •   An USB OTG full-speed and a USB OTG high-speed with full-speed capability (with the
+Page   14: range from a 1.7 to 3.6 V power supply. Dedicated supply inputs for the USB (OTG_FS and
+Page   15: USB OTG FS                                                Yes
+Page   15: USB OTG HS(4)                                             Yes
+Page   15: Communication     USB OTG PHY
+Page   15: (USBPHYC)
+Page   16: 4. USB OTG HS with the ULPI on the STM32F722xx devices and with integrated HS PHY on the STM32F723xx devices.
+Page   21: SRAM1 176KB                                                       USB                           DM
+Page   21: USB HS                                                                                                                   AHB2 216 MHz                                                                                      D[31:0], NOEN, NWEN,
+Page   21: USB OTG HS
+Page   21: VOLT. REG                       VDDUSB33 = 3.0 to 3.6 V
+Page   24: USB HS) and the slaves (Flash memory, RAM, FMC, QUADSPI, AHB and APB
+Page   24: GP                  GP               USB OTG
+Page   24: USB_HS_M
+Page   27: generation of 480 Mbps in the USB OTG High Speed mode.
+Page   28: •   The VDDUSB can be connected either to VDD or to an external independent power
+Page   28: supply (3.0 to 3.6 V) for USB transceivers (refer to Figure 8 and Figure 9).
+Page   28: can be connected to the VDDUSB. When the VDDUSB is connected to a separated power
+Page   28: provided, and the first to disappear. The following conditions VDDUSB must be
+Page   28: –      During the power-on phase (VDD < VDD_MIN), VDDUSB must be always lower
+Page   28: –      During the power-down phase (VDD < VDD_MIN), VDDUSB must be always lower
+Page   28: –      The VDDUSB rising and falling time rate specifications must be respected.
+Page   28: –      In the operating mode phase, VDDUSB can be lower or higher than VDD:
+Page   28: - If the USB (USB OTG_HS/OTG_FS) is used, the associated GPIOs powered
+Page   28: by VDDUSB are operating between VDDUSB_MIN and VDDUSB_MAX.
+Page   28: - The VDDUSB supplies both USB transceiver (USB OTG_HS and USB OTG_FS).
+Page   28: If only one USB transceiver is used in the application, the GPIOs associated to the
+Page   28: other USB transceiver are still supplied by VDDUSB.
+Page   28: - If the USB (USB OTG_HS/OTG_FS) is not used, the associated GPIOs powered
+Page   28: by VDDUSB are operating between VDD_MIN and VDD_MAX.
+Page   29: Figure 8. VDDUSB connected to VDD power supply
+Page   29: VDD= VDDA = VDDUSB
+Page   29: Figure 9. VDDUSB connected to external power supply
+Page   29: VDDUSB_MAX
+Page   29: USB functional area
+Page   29: VDDUSB
+Page   29: VDDUSB_MIN
+Page   29: USB non                                                   USB non
+Page   29: On the STM32F7x3xx devices, the USB OTG HS subsystem uses one or two additional
+Page   29: •      On the LQFP100 only, a second power pin VDDPHYHS is used to supply the USB
+Page   29: for the VDDUSB power pin.
+Page   36: wakeup, tamper, time stamp events, the USB OTG FS/HS wake up, and the LPTIM1
+Page   43: CPU performance, while using USB peripherals.
+Page   43: without disabling the main PLL (PLL) used for CPU and USB interfaces.
+Page   44: The devices embed an USB OTG full-speed device/host/OTG peripheral with integrated
+Page   44: transceivers. The USB OTG FS peripheral is compliant with the USB 2.0 specification and
+Page   44: suspend/resume. The USB OTG controller requires a dedicated 48 MHz clock that is
+Page   44: •   USB 2.0 LPM (Link Power Management) support
+Page   44: The devices embed an USB OTG high-speed (up to 480 Mbit/s) device/host/OTG
+Page   44: peripheral. The USB OTG HS supports both full-speed and high-speed operations. It
+Page   44: operation (480 Mbit/s). When using the USB OTG HS in HS mode, an external PHY device
+Page   45: The USB OTG HS peripheral is compliant with the USB 2.0 specification and with the OTG
+Page   45: suspend/resume. The USB OTG controller requires a dedicated 48 MHz clock that is
+Page   45: •    USB 2.0 LPM (Link Power Management) support
+Page   45: •    Internal USB DMA
+Page   45: (USBPHYC) only on STM32F723xx devices.
+Page   45: The USB HS PHY controller:
+Page   45: •    Controls and monitors the USB PHY LDO.
+Page   47: using the USB or any other high-speed channel. The real-time instruction and data flow
+Page   51: USB
+Page   52: PF4   14                                                                 95   VDDUSB
+Page   53: PF4    14                                                                     95   VDDUSB
+Page   54: VBAT   PF0      PF1         PB8       PB6    PG14    PG11    PD4       PC12     VDDUSB   PA11
+Page   55: PF3    19                                                                     114   VDDUSB
+Page   56: PF3    19                                                                  114   VDDUSB
+Page   57: H            PF2   PF1      PH4            VSS    VSS    VSS     VSS     VSS            VSS    VDDUSB PG8     PC6
+Page   58: H           PF2   PF1      PH4            VSS    VSS    VSS     VSS     VSS            VSS    VDDUSB PG8     PC6
+Page   69: -        -         -          -         -          53        G2           J15        H11        75        94        OTG_HS_REXT          -            -            -          USB HS
+Page   71: -        -       95        H13        114            -       K1           H13 C11               95        114         VDDUSB            S             -            -
+Page   97: VDDUSB
+Page   97: VDDUSB
+Page   98: VDDUSB
+Page   98: VDDUSB
+Page   98: 1. In all the packages (except LQFP100), the VDDUSB allows supplying the PHY FS in PA11/PA12 and the
+Page   99: VBAT, VDDUSB, VDDPHYHS and VDDSDMMC) (1)
+Page  100: 1. All main power (VDD, VDDA, VDDSDMMC, VDDPHYHS, VDDUSB) and ground (VSS, VSSA) pins must always be
+Page  100: Σ IVDDUSB          Total current into VDDUSB power line (source)                                             25
+Page  100: ΣIIO            Total output current sunk by sum of all USB I/Os                                          25
+Page  102: USB supply voltage (supply      USB not used                                1.7        3.3     3.6
+Page  102: VDDUSB      voltage for PA11,PA12, PB14 and
+Page  102: PB15 pins)                      USB used                                    3.0         -      3.6     V
+Page  102: USB PHY HS supply voltage in  USB PHY HS not used                               1.7        3.3     3.6
+Page  102: voltage for PB14 and PB15)    USB PHY HS used                                   3.0         -      3.6
+Page  104: 4. The voltage range for USB full speed PHYs can drop down to 2.7 V. However the electrical characteristics of D- and D+
+Page  122: (up to    USB_OTG_FS              28.7              27.9               23.5         µA/MHz
+Page  124: USB PHY HS
+Page  125: USB OTG HS and USB OTG HS PHY current consumption (on STM32F723xx
+Page  125: –    USB is configured but no transfer is done.
+Page  125: –    USB is configured and there is a transmission on going.
+Page  125: •     Ambient operating temperature is 25 °C, VDD = VDDUSB = 3.3 V.
+Page  125: Table 36. USB OTG HS and USB OTG PHY HS current consumption
+Page  125: USB OTG HS and USB OTG HS PHY
+Page  128: be respected to comply with USB standard specifications.
+Page  136: 6.3.13      USB OTG HS PHY PLLs characteristics (on STM32F723xx devices)
+Page  136: Table 48. USB OTG HS PLL1 characteristics(1)
+Page  137: Table 49. USB OTG HS PLL2 characteristics(1)
+Page  137: 6.3.14   USB OTG HS PHY regulator characteristics
+Page  137: Table 50. USB OTG HS PHY regulator characteristics(1)
+Page  138: 6.3.15      USB HS PHY external resistor characteristics
+Page  138: Table 51. USB HS PHY external resistor characteristics (on STM32F723xx devices)
+Page  138: (to GND) from OTG_HS_REXT                USB HS PHY
+Page  168: USB OTG full speed (FS) characteristics
+Page  168: This interface is present in both the USB OTG HS and USB OTG FS controllers.
+Page  168: Table 84. USB OTG full speed startup time
+Page  168: tSTARTUP(1)            USB OTG full speed transceiver startup time                 1                  µs
+Page  168: Table 85. USB OTG full speed DC electrical characteristics
+Page  168: USB OTG full speed
+Page  168: VDDUSB transceiver operating                             -               3.0(2)     -      3.6      V
+Page  168: I(USB_FS_DP/DM,
+Page  168: USB_HS_DP/DM)
+Page  168: (USB_FS_DP/DM)
+Page  168: PA12 (USB_FS_DP)                    VIN = VSS, during idle      0.9      1.25 1.575
+Page  168: 2. The USB OTG full speed transceiver functionality is ensured down to 2.7 V but not the full USB full speed
+Page  168: electrical characteristics which are degraded in the 2.7-to-3.0 V VDDUSB voltage range.
+Page  168: 4. RL is the load connected on the USB OTG full speed drivers.
+Page  169: Figure 60. USB OTG full speed timings: definition of data signal rise and fall time
+Page  169: Table 86. USB OTG full speed electrical characteristics(1)
+Page  169: 2. Measured from 10% to 90% of the data signal. For more detailed informations, refer to USB Specification -
+Page  169: USB high speed (HS) characteristics (through ULPI in STM32F722xx devices)
+Page  169: Table 87. USB HS DC electrical characteristics
+Page  169: Input level          VDD        USB OTG HS operating voltage                   1.7           3.6           V
+Page  170: Table 88. USB HS clock timing parameters(1)
+Page  170: USB HS interface
+Page  171: Table 89. Dynamic characteristics: USB ULPI(1)
+Page  171: USB high speed (HS) characteristics (embedded PHY High speed on
+Page  171: Table 90. USB OTG high speed DC electrical characteristics
+Page  171: Table 91. USB OTG high speed electrical characteristics
+Page  172: Table 92. USB FS PHY BCD electrical characteristics
+Page  172: IDDUSB                                                                                               µA

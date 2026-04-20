@@ -1,0 +1,115 @@
+Keyword: SAI
+Occurrences: 111
+================================================================================
+
+Page    1: – 2 x SAIs (serial audio interface)
+Page    4: 3.24     Serial audio interface (SAI) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 43
+Page    4: 3.26     Audio PLL (PLLSAI) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 43
+Page    8: Table 46.   PLLISAI characteristics. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 134
+Page    8: Table 83.   SAI characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 166
+Page   11: Figure 58.   SAI master timing waveforms . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 167
+Page   11: Figure 59.   SAI slave timing waveforms . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 167
+Page   14: •   Two SAI serial audio interfaces
+Page   15: SAI                                                       2
+Page   21: SD, SCK, FS, MCLK as AF                      SAI1                                                                                                                                                                                                              NSS as AF
+Page   21: SD, SCK, FS, MCLK as AF                      SAI2                                                                                                                                                                                                              NSS as AF
+Page   25: •   SAI
+Page   27: The devices embed two dedicated PLLs (PLLI2S and PLLSAI) which allow audio class
+Page   27: performance to be achieved. In this case, the I2S and SAI master clock can generate all
+Page   43: 3.24     Serial audio interface (SAI)
+Page   43: SAI1 and SAI2 can be served by the DMA controller.
+Page   43: The devices feature an additional dedicated PLL for audio I2S and SAI applications. It allows
+Page   43: The PLLI2S configuration can be modified to manage an I2S/SAI sample rate change
+Page   43: I2S/SAI flow with an external PLL (or codec output).
+Page   43: 3.26     Audio PLL (PLLSAI)
+Page   43: An additional PLL dedicated to audio is used for the SAI1 peripheral in case the PLLI2S is
+Page   60: SAI1_
+Page   60: TRACED0, SAI1
+Page   60: -        3         3       B1           3            3       D9           B1         B2           3         3            PE4          I/O        FT                -         SAI1_FS_
+Page   60: SAI1_SD_A
+Page   62: -        -       18        K2         24             -          -         K2         F3         18        24             PF6          I/O        FT                -        SAI1_SD_B
+Page   62: -        -       19        K1         25             -          -         K1         F2         19        25             PF7          I/O        FT                -       SAI1_MCLK
+Page   63: (4)     SAI2_FS_B, OT
+Page   63: SAI1_SD_A
+Page   64: SAI2_MCK_
+Page   64: -        -         -       F4         43             -          -         F4            -         -       43             PH2          I/O        FT                -       SAI2_SCK_B
+Page   64: -        -         -       G4         44             -          -         G4            -         -       44             PH3          I/O        FT                -       SAI2_MCK_B
+Page   66: SAI1_SD_A, SP
+Page   67: SAI2_SD_B, FM
+Page   67: -      42        65        R10        75           42        H4           R10        J8         65        75            PE12          I/O        FT                -         SAI2_SCK
+Page   67: -      43        66        N11        76           43        J4           N11        K8         66        76            PE13          I/O        FT                -         SAI2_FS_
+Page   67: -      44        67        P11        77           44        K4           P11        L8         67        77            PE14          I/O        FT                -        SAI2_MCK_
+Page   70: SAI2_SCK_
+Page   72: 45       71        104 B15 123                       71        B2           B15        B12        104       123           PA12          I/O        FT                -          SAI2_FS_
+Page   75: -        -       124 C10 152                         -          -         C10        E8         124       152            PG9          I/O        FT                -        SAI2_FS_B
+Page   75: SAI2_SD_B
+Page   84: SPI3/I2S3/               SAI2/USART6     TIM12/13/14
+Page   84: SAI1/                    OTG1_FS          FMC/
+Page   84: PA2    -     TIM2_CH3 TIM5_CH3      TIM9_CH1           -           -          -     USART2_TX      SAI2_SCK_B           -
+Page   85: SPI3/I2S3/               SAI2/USART6     TIM12/13/14
+Page   85: SAI1/                    OTG1_FS          FMC/
+Page   85: PA12      -      TIM1_ETR      -             -             -           -          -                     SAI2_FS_B       CAN1_TX
+Page   85: SAI1_     SPI3_MOSI                     QUADSPI_
+Page   86: SPI3/I2S3/               SAI2/USART6     TIM12/13/14
+Page   86: SAI1/                    OTG1_FS          FMC/
+Page   86: PC0      -         -          -             -             -           -          -           -         SAI2_FS_B           -
+Page   86: SAI1_SD_
+Page   87: SPI3/I2S3/               SAI2/USART6     TIM12/13/14
+Page   87: SAI1/                    OTG1_FS          FMC/
+Page   88: SPI3/I2S3/               SAI2/USART6     TIM12/13/14
+Page   88: SAI1/                    OTG1_FS          FMC/
+Page   88: SAI1_SD_
+Page   89: SPI3/I2S3/               SAI2/USART6     TIM12/13/14
+Page   89: SAI1/                    OTG1_FS          FMC/
+Page   89: TRACECL                                                                 SAI1_                                   QUADSPI_
+Page   89: SAI1_
+Page   89: SAI1_
+Page   89: SPI4_      SAI1_
+Page   89: TIM1_                                             SPI4_      SAI1_
+Page   90: SPI3/I2S3/               SAI2/USART6     TIM12/13/14
+Page   90: SAI1/                    OTG1_FS          FMC/
+Page   90: SAI1_SD                                  QUADSPI_
+Page   90: SAI1_MCL                                 QUADSPI_
+Page   90: SPI5_     SAI1_SCK
+Page   90: SPI5_     SAI1_FS
+Page   91: SPI3/I2S3/               SAI2/USART6     TIM12/13/14
+Page   91: SAI1/                    OTG1_FS          FMC/
+Page   92: SPI3/I2S3/               SAI2/USART6     TIM12/13/14
+Page   92: SAI1/                    OTG1_FS          FMC/
+Page   93: SPI3/I2S3/               SAI2/USART6     TIM12/13/14
+Page   93: SAI1/                    OTG1_FS          FMC/
+Page   94: SPI3/I2S3/               SAI2/USART6     TIM12/13/14
+Page   94: SAI1/                    OTG1_FS          FMC/
+Page  124: SAI1                   5.6                 4.9                 4.2
+Page  124: SAI2                   5.4                 4.7                  4
+Page  133: fPLLI2SQ_OUT      PLLI2S multiplier output clock for SAI                     -                        -            -       216
+Page  134: Table 46. PLLISAI characteristics
+Page  134: fPLLSAI_IN        PLLSAI input clock(1)                                  -                 0.95(2)        1         2.10
+Page  134: PLLSAI multiplier output clock
+Page  134: fPLLSAIP_OUT                                                             -                    -           48        75
+Page  134: PLLSAI multiplier output clock
+Page  134: fPLLSAIQ_OUT                                                             -                    -           -         216
+Page  134: for SAI
+Page  134: fVCO_OUT          PLLSAI VCO output                                     -                    100          -         432
+Page  134: tLOCK             PLLSAI lock time                                                                                          µs
+Page  134: Master SAI clock jitter
+Page  134: PLLSAI power consumption on            VCO freq = 100 MHz                 0.15                    0.40
+Page  134: IDD(PLLSAI)(4)                                                                                            -                 mA
+Page  134: PLLSAI power consumption on            VCO freq = 100 MHz                 0.30                    0.40
+Page  134: IDDA(PLLSAI)(4)                                                                                           -                 mA
+Page  166: SAI characteristics
+Page  166: Unless otherwise specified, the parameters given in Table 83 for SAI are derived from tests
+Page  166: Table 83. SAI characteristics(1)
+Page  166: fMCKL       SAI main clock output                           -                     256x8K    256xFs
+Page  166: FCK        SAI clock frequency(2)
+Page  166: 2. APB clock frequency must be at least twice SAI clock frequency.
+Page  167: Figure 58. SAI master timing waveforms
+Page  167: SAI_SCK_X
+Page  167: SAI_FS_X
+Page  167: SAI_SD_X
+Page  167: SAI_SD_X                                           Slot n
+Page  167: Figure 59. SAI slave timing waveforms
+Page  167: SAI_SCK_X
+Page  167: SAI_FS_X
+Page  167: SAI_SD_X
+Page  167: SAI_SD_X                                          Slot n

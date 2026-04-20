@@ -1,0 +1,412 @@
+Keyword: FMC
+Occurrences: 408
+================================================================================
+
+Page    2: 3.8      Flexible memory controller (FMC) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+Page    5: 6.3.27      FMC characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 193
+Page    6: Table 11.   FMC pin definition . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 75
+Page   13: Advanced peripherals include an SDMMC interface, a flexible memory control (FMC)
+Page   15: FMC memory controller                                                                                              Yes(1)
+Page   16: 1.   For the LQFP100 package, only FMC Bank1 is available. Bank1 can only support a multiplexed NOR/PSRAM memory using the NE1 Chip Select.
+Page   18: External memory controller (FMC)
+Page   20: FMC, Quad-SPI, AHB and APB peripherals) and ensures a seamless and an
+Page   21: FMC external     APB2
+Page   22: 3.8        Flexible memory controller (FMC)
+Page   22: The Flexible memory controller (FMC) includes three memory controllers:
+Page   22: The main features of the FMC controller are the following:
+Page   22: •   The Maximum FMC_CLK/FMC_SDCLK frequency for synchronous accesses is
+Page   22: The FMC can be configured to interface seamlessly with most graphic LCD controllers. It
+Page   55: FMC_A23, EVENTOUT
+Page   55: FMC_A19, EVENTOUT
+Page   55: SAI1_FS_A, FMC_A20,
+Page   56: 4       D3         D9            4       B2           4         4       B1           PE5        I/O FT                     -       SAI1_SCK_A, FMC_A21,         -
+Page   56: SAI2_MCK_B, FMC_A22,
+Page   56: CAN1_RX, FMC_D30,
+Page   56: -          -          -          -       E3         12        12        D5           PI10       I/O FT                     -       FMC_D31, LCD_HSYNC,          -
+Page   57: I2C2_SDA, FMC_A0,
+Page   57: I2C2_SCL, FMC_A1,
+Page   57: I2C2_SMBA, FMC_A2,
+Page   57: -          -       G11         13        J2         19        22        H2           PF3        I/O FT                     -        FMC_A3, EVENTOUT      ADC3_IN9
+Page   57: -          -       F9          14        J3         20        23        J2           PF4        I/O FT                     -        FMC_A4, EVENTOUT      ADC3_IN14
+Page   57: -          -       F8          15        K3         21        24        K3           PF5        I/O FT                     -        FMC_A5, EVENTOUT      ADC3_IN15
+Page   58: FMC_SDNWE, LCD_R5,          0
+Page   58: FMC_SDNE0,
+Page   59: FMC_SDCKE0,
+Page   59: FMC_SDCKE0, LCD_R0,
+Page   60: FMC_SDNE0, LCD_R1,
+Page   60: -          -          -          -       J4         46        49        J3           PH5        I/O FT                     -          FMC_SDNWE,              -
+Page   61: FMC_SDNWE,
+Page   61: II_RXD0, FMC_SDNE0,
+Page   61: II_RXD1, FMC_SDCKE0,
+Page   62: -          -       M7          49        R6         59        70        P8           PF11       I/O FT                     -           FMC_SDNRAS,             -
+Page   62: -          -       N7          50        P6         60        71        M6           PF12       I/O FT                     -        FMC_A6, EVENTOUT           -
+Page   62: I2C4_SMBA, FMC_A7,
+Page   62: I2C4_SCL, FMC_A8,
+Page   62: I2C4_SDA, FMC_A9,
+Page   62: -          -       N6          56        N7         66        77        N7           PG0        I/O FT                     -       FMC_A10, EVENTOUT           -
+Page   62: -          -       K5          57        M7         67        78        M7           PG1        I/O FT                     -       FMC_A11, EVENTOUT           -
+Page   62: FMC_D4, EVENTOUT
+Page   62: FMC_D5, EVENTOUT
+Page   62: FMC_D6, EVENTOUT
+Page   62: FMC_D7, EVENTOUT
+Page   63: 41        H6         K4          64        P10        74        85        P10          PE11       I/O FT                     -       SAI2_SD_B, FMC_D8,          -
+Page   63: 42        J6          L4         65        R10        75        86        R10          PE12       I/O FT                     -       SAI2_SCK_B, FMC_D9,         -
+Page   63: 43        K6         N4          66        N11        76        87        R12          PE13       I/O FT                     -       SAI2_FS_B, FMC_D10,         -
+Page   63: 44        G7         M4          67        P11        77        88        P11          PE14       I/O FT                     -       SAI2_MCK_B, FMC_D11,        -
+Page   63: TIM1_BKIN, FMC_D12,
+Page   63: FMC_SDNE1, DCMI_D8,
+Page   64: FMC_SDCKE1,
+Page   64: I2C3_SDA, FMC_D16,
+Page   64: TIM12_CH2, FMC_D17,
+Page   64: -          -          -          -       L13        87        100 P15                PH10       I/O FT                     -        FMC_D18, DCMI_D1,          -
+Page   64: -          -          -          -       L12        88        101 N15                PH11       I/O FT                     -        FMC_D19, DCMI_D2,          -
+Page   64: -          -          -          -       K12        89        102 M15                PH12       I/O FT                     -        FMC_D20, DCMI_D3,          -
+Page   65: FMC_D13, EVENTOUT
+Page   65: USART3_RX, FMC_D14,
+Page   65: USART3_CK, FMC_D15,
+Page   65: FMC_A16/FMC_CLE,
+Page   65: FMC_A17/FMC_ALE,
+Page   65: SAI2_SCK_A, FMC_A18,
+Page   66: FMC_D0, EVENTOUT
+Page   66: FMC_D1, EVENTOUT
+Page   66: -          -        J1         87        L15 106 129 M13                             PG2        I/O FT                     -       FMC_A12, EVENTOUT           -
+Page   66: -          -       G3          88        K15 107 130 M12                             PG3        I/O FT                     -       FMC_A13, EVENTOUT           -
+Page   66: FMC_A14/FMC_BA0,
+Page   66: FMC_A15/FMC_BA1,
+Page   66: USART6_CK, FMC_INT,
+Page   67: FMC_SDCLK,
+Page   68: -          -          -          -       E12 128 151 E12                             PH13       I/O FT                     -         FMC_D21, LCD_G2,          -
+Page   68: TIM8_CH2N, FMC_D22,
+Page   68: TIM8_CH3N, FMC_D23,
+Page   68: FMC_D24, DCMI_D13,
+Page   68: FMC_D25, DCMI_D8,
+Page   69: -          -          -          -       C14 133 156 C14                              PI2       I/O FT                     -        FMC_D26, DCMI_D9,         -
+Page   69: FMC_D27, DCMI_D10,
+Page   70: CAN1_RX, FMC_D2,
+Page   70: CAN1_TX, FMC_D3,
+Page   70: FMC_CLK, DCMI_D5,
+Page   70: FMC_NOE, EVENTOUT
+Page   70: USART2_TX, FMC_NWE,
+Page   70: FMC_NWAIT, DCMI_D10,
+Page   70: FMC_NE1, EVENTOUT
+Page   71: FMC_NE2/FMC_NCE,
+Page   71: -          -       C6          125 B10 153 179                          C8           PG10       I/O FT                     -        FMC_NE3, DCMI_D2,          -
+Page   71: FMC_NE4, LCD_B1,
+Page   71: II_TXD0, FMC_A24,
+Page   71: II_TXD1, FMC_A25,
+Page   72: -          -       A7          132       B7         160 191             B7           PG15       I/O FT                     -          FMC_SDNCAS,              -
+Page   72: FMC_SDCKE1,
+Page   72: FMC_SDNE1, DCMI_D5,
+Page   72: USART1_RX, FMC_NL,
+Page   73: FMC_NBL0, DCMI_D2,
+Page   73: 98        C4         A10 142               A3         170 201             A5           PE1        I/O FT                     -        FMC_NBL1, DCMI_D3,         -
+Page   73: FMC_NBL2, DCMI_D5,
+Page   73: -          -          -          -       C4         174 206             D3            PI5       I/O FT                     -            FMC_NBL3,              -
+Page   74: -          -          -          -       C3         175 207             D6            PI6       I/O FT                     -        FMC_D28, DCMI_D6,         -
+Page   74: -          -          -          -       C2         176 208             D4            PI7       I/O FT                     -        FMC_D29, DCMI_D7,         -
+Page   75: Table 11. FMC pin definition
+Page   76: Table 11. FMC pin definition (continued)
+Page   77: Table 11. FMC pin definition (continued)
+Page   91: FMC
+Page   91: FMC
+Page   91: FMC bank 3                                                                                     0x4001 6BFF
+Page   91: FMC bank 1 to
+Page   92: 0xD000 0000 - 0xDFFF FFFF   FMC bank 6
+Page   92: 0xC000 0000 - 0xCFFF FFFF   FMC bank 5
+Page   92: 0xA000 0000- 0xA000 0FFF    FMC control register
+Page   92: 0x9000 0000 - 0x9FFF FFFF   FMC bank 4
+Page   92: 0x8000 0000 - 0x8FFF FFFF   FMC bank 3
+Page   92: 0x7000 0000 - 0x7FFF FFFF   FMC bank 2
+Page   92: 0x6000 0000 - 0x6FFF FFFF   FMC bank 1
+Page   96: 0xD000 0000 - 0xDFFF FFFF   FMC bank 6
+Page   96: 0xC000 0000 - 0xCFFF FFFF   FMC bank 5
+Page   96: AHB3          0xA000 0000- 0xA000 0FFF    FMC control register
+Page   96: 0x8000 0000 - 0x8FFF FFFF   FMC bank 3
+Page   96: 0x7000 0000 - 0x7FFF FFFF   FMC bank 2
+Page   96: 0x6000 0000 - 0x6FFF FFFF   FMC bank 1
+Page  124: FMC               18.9             17.7              15.2
+Page  165: fMCK           I2S Main clock output                             -                  256x8K   256xFs          MHz
+Page  165: fMCK, fCK, and DCK values reflect only the digital peripheral behavior. The values of these
+Page  167: fMCKL           SAI Main clock output                         -                  256 x 8K    256xFs(2)    MHz
+Page  175: 6.3.27   FMC characteristics
+Page  175: Unless otherwise specified, the parameters given in Table 89 to Table 102 for the FMC
+Page  175: with the following FMC configuration:
+Page  176: FMC_NE
+Page  176: FMC_NOE
+Page  176: FMC_NWE
+Page  176: FMC_A[25:0]                                Address
+Page  176: FMC_NBL[1:0]
+Page  176: FMC_D[15:0]                                                      Data
+Page  176: FMC_NADV (1)
+Page  176: FMC_NWAIT
+Page  176: 1. Mode 2/B, C and D only. In Mode 1, FMC_NADV is not used.
+Page  177: tw(NE)        FMC_NE low time                         2THCLK− 0.5        2 THCLK+1.5
+Page  177: tv(NOE_NE)      FMC_NEx low to FMC_NOE low                     0                1
+Page  177: tw(NOE)        FMC_NOE low time                            2THCLK− 1       2THCLK+ 1
+Page  177: th(NE_NOE)      FMC_NOE high to FMC_NE high hold time           0                -
+Page  177: tv(A_NE)       FMC_NEx low to FMC_A valid                      -               0.5
+Page  177: th(A_NOE)       Address hold time after FMC_NOE high           0                 -
+Page  177: tv(BL_NE)      FMC_NEx low to FMC_BL valid                     -               0.5
+Page  177: th(BL_NOE)      FMC_BL hold time after FMC_NOE high             0                -
+Page  177: tsu(Data_NE)     Data to FMC_NEx high setup time             THCLK - 2            -
+Page  177: tsu(Data_NOE)     Data to FMC_NOEx high setup time            THCLK -2             -
+Page  177: th(Data_NOE)     Data hold time after FMC_NOE high              0                 -
+Page  177: th(Data_NE)     Data hold time after FMC_NEx high              0                 -
+Page  177: tv(NADV_NE)      FMC_NEx low to FMC_NADV low                     -               0
+Page  177: tw(NADV)       FMC_NADV low time                               -            THCLK +1
+Page  177: tw(NE)        FMC_NE low time                              7THCLK −1       7THCLK
+Page  177: tw(NOE)       FMC_NWE low time                             5THCLK −1      5THCLK +1
+Page  177: tw(NWAIT)      FMC_NWAIT low time                           THCLK −0.5
+Page  177: tsu(NWAIT_NE)     FMC_NWAIT valid before FMC_NEx high         5THCLK +1.5         -
+Page  177: th(NE_NWAIT)     FMC_NEx hold time after FMC_NWAIT invalid    4THCLK+1           -
+Page  178: FMC_NEx
+Page  178: FMC_NOE
+Page  178: FMC_NWE
+Page  178: FMC_A[25:0]                                Address
+Page  178: FMC_NBL[1:0]                                    NBL
+Page  178: FMC_D[15:0]                                               Data
+Page  178: FMC_NADV (1)
+Page  178: FMC_NWAIT
+Page  178: 1. Mode 2/B, C and D only. In Mode 1, FMC_NADV is not used.
+Page  178: tw(NE)       FMC_NE low time                                       3THCLK−0.5    3THCLK+1.5
+Page  178: tv(NWE_NE)     FMC_NEx low to FMC_NWE low                            THCLK−0.5       THCLK+ 1
+Page  178: tw(NWE)       FMC_NWE low time                                      THCLK−0.5       THCLK+ 1
+Page  178: th(NE_NWE)     FMC_NWE high to FMC_NE high hold time                 THCLK −0.5          -
+Page  178: tv(A_NE)      FMC_NEx low to FMC_A valid                                   -           0
+Page  178: th(A_NWE)      Address hold time after FMC_NWE high                  THCLK−0.5           -
+Page  178: tv(BL_NE)     FMC_NEx low to FMC_BL valid                                  -           0
+Page  178: th(BL_NWE)     FMC_BL hold time after FMC_NWE high                   THCLK−0.5           -
+Page  178: tv(Data_NE)    Data to FMC_NEx low to Data valid                            -        THCLK+ 3
+Page  178: th(Data_NWE)    Data hold time after FMC_NWE high                     THCLK+0.5           -
+Page  178: tv(NADV_NE)     FMC_NEx low to FMC_NADV low                                  -           0
+Page  178: tw(NADV)      FMC_NADV low time                                            -       THCLK+ 0.5
+Page  179: tw(NE)        FMC_NE low time                                    8THCLK−0.5        8THCLK+1.5
+Page  179: tw(NWE)        FMC_NWE low time                                   6THCLK−0.5        6THCLK+1
+Page  179: tsu(NWAIT_NE)     FMC_NWAIT valid before FMC_NEx high                6THCLK−1              -
+Page  179: FMC_NEx hold time after FMC_NWAIT
+Page  179: FMC_ NE
+Page  179: FMC_NOE
+Page  179: FMC_NWE
+Page  179: FMC_ A[25:16]                                Address
+Page  179: FMC_ NBL[1:0]                                    NBL
+Page  179: FMC_ AD[15:0]                     Address                   Data
+Page  179: FMC_NADV
+Page  179: FMC_NWAIT
+Page  180: tw(NE)        FMC_NE low time                          3THCLK−0.5   3THCLK+1.5
+Page  180: tv(NOE_NE)      FMC_NEx low to FMC_NOE low                2THCLK−1    2THCLK+0.5
+Page  180: ttw(NOE)       FMC_NOE low time                          THCLK−0.5   THCLK+0.5
+Page  180: th(NE_NOE)      FMC_NOE high to FMC_NE high hold time         0           -
+Page  180: tv(A_NE)       FMC_NEx low to FMC_A valid                    -          0.5
+Page  180: tv(NADV_NE)      FMC_NEx low to FMC_NADV low                   0          0.5
+Page  180: tw(NADV)       FMC_NADV low time                         THCLK−0.5   THCLK+1.5
+Page  180: FMC_AD(address) valid hold time after
+Page  180: FMC_NADV high)
+Page  180: th(A_NOE)       Address hold time after FMC_NOE high      THCLK−0.5       -
+Page  180: th(BL_NOE)      FMC_BL time after FMC_NOE high                0           -
+Page  180: tv(BL_NE)      FMC_NEx low to FMC_BL valid                   -          0.5
+Page  180: tsu(Data_NE)     Data to FMC_NEx high setup time           THCLK−2         -
+Page  180: tsu(Data_NOE)    Data to FMC_NOE high setup time           THCLK−2         -
+Page  180: th(Data_NE)     Data hold time after FMC_NEx high             0           -
+Page  180: th(Data_NOE)     Data hold time after FMC_NOE high             0           -
+Page  180: tw(NE)        FMC_NE low time                          8THCLK−1     8THCLK+2
+Page  180: tw(NOE)       FMC_NWE low time                         5THCLK−1     5THCLK +1     ns
+Page  180: tsu(NWAIT_NE)     FMC_NWAIT valid before FMC_NEx high     5THCLK +1.5       -
+Page  180: FMC_NEx hold time after FMC_NWAIT
+Page  181: FMC_ NEx
+Page  181: FMC_NOE
+Page  181: FMC_NWE
+Page  181: FMC_ A[25:16]                              Address
+Page  181: FMC_ NBL[1:0]                                  NBL
+Page  181: FMC_ AD[15:0]                 Address                     Data
+Page  181: FMC_NADV
+Page  181: FMC_NWAIT
+Page  181: tw(NE)         FMC_NE low time                                    4THCLK−0.5        4THCLK+1.5
+Page  181: tv(NWE_NE)       FMC_NEx low to FMC_NWE low                           THCLK−1         THCLK+0.5
+Page  181: tw(NWE)         FMC_NWE low time                                   2THCLK−0.5        2THCLK+0.5
+Page  181: th(NE_NWE)       FMC_NWE high to FMC_NE high hold time                    THCLK            -
+Page  181: tv(A_NE)        FMC_NEx low to FMC_A valid                                 -              0
+Page  181: tv(NADV_NE)      FMC_NEx low to FMC_NADV low                               0              0.5
+Page  181: tw(NADV)        FMC_NADV low time                                   THCLK−0.5        THCLK+ 1.5
+Page  181: FMC_AD(adress) valid hold time after
+Page  181: FMC_NADV high)
+Page  181: th(A_NWE)        Address hold time after FMC_NWE high                     THCLK            -
+Page  181: th(BL_NWE)       FMC_BL hold time after FMC_NWE high                  THCLK−2              -
+Page  181: tv(BL_NE)       FMC_NEx low to FMC_BL valid                                -              0
+Page  181: tv(Data_NADV)     FMC_NADV high to Data valid                                -          THCLK +2
+Page  181: th(Data_NWE)      Data hold time after FMC_NWE high                   THCLK +0.5            -
+Page  182: tw(NE)       FMC_NE low time                           9THCLK     9THCLK+1.5
+Page  182: tw(NWE)       FMC_NWE low time                        7THCLK–0.5   7THCLK+0.5    ns
+Page  182: tsu(NWAIT_NE)   FMC_NWAIT valid before FMC_NEx high     6THCLK+2         -
+Page  182: FMC_NEx hold time after FMC_NWAIT
+Page  182: obtained with the following FMC configuration:
+Page  182: •     BurstAccessMode = FMC_BurstAccessMode_Enable;
+Page  182: •     MemoryType = FMC_MemoryType_CRAM;
+Page  182: •     WriteBurst = FMC_WriteBurst_Enable;
+Page  182: •     CL = 30 pF on data and address lines. CL = 10 pF on FMC_CLK unless otherwise
+Page  182: –     For 2.7 V≤VDD≤3.6 V, maximum FMC_CLK = 108 MHz at CL=20 pF or 90 MHz at
+Page  182: CL=30 pF (on FMC_CLK).
+Page  182: –     For 1.71 V≤VDD<2.7 V, maximum FMC_CLK = 70 MHz at CL=10 pF (on FMC_CLK).
+Page  183: FMC_CLK
+Page  183: FMC_NEx
+Page  183: FMC_NADV
+Page  183: FMC_A[25:16]
+Page  183: FMC_NOE
+Page  183: FMC_AD[15:0]                  AD[15:0]                    D1              D2
+Page  183: FMC_NWAIT
+Page  183: FMC_NWAIT
+Page  184: tw(CLK)        FMC_CLK period                                 2THCLK−0.5    -
+Page  184: td(CLKL-NExL)     FMC_CLK low to FMC_NEx low (x=0..2)                -         2
+Page  184: td(CLKH_NExH)      FMC_CLK high to FMC_NEx high (x= 0…2)          THCLK+0.5     -
+Page  184: td(CLKL-NADVL)     FMC_CLK low to FMC_NADV low                        -        1.5
+Page  184: td(CLKL-NADVH)     FMC_CLK low to FMC_NADV high                       0         -
+Page  184: td(CLKL-AV)      FMC_CLK low to FMC_Ax valid (x=16…25)              -         2
+Page  184: td(CLKH-AIV)     FMC_CLK high to FMC_Ax invalid (x=16…25)         THCLK       -
+Page  184: td(CLKL-NOEL)     FMC_CLK low to FMC_NOE low                         -         2
+Page  184: td(CLKH-NOEH)      FMC_CLK high to FMC_NOE high                   THCLK−0.5     -
+Page  184: td(CLKL-ADV)      FMC_CLK low to FMC_AD[15:0] valid                  -         3
+Page  184: td(CLKL-ADIV)     FMC_CLK low to FMC_AD[15:0] invalid                0         -
+Page  184: FMC_A/D[15:0] valid data before FMC_CLK
+Page  184: th(CLKH-ADV)      FMC_A/D[15:0] valid data after FMC_CLK high        1         -
+Page  184: tsu(NWAIT-CLKH)    FMC_NWAIT valid before FMC_CLK high                2         -
+Page  184: th(CLKH-NWAIT)     FMC_NWAIT valid after FMC_CLK high                3.5        -
+Page  185: FMC_CLK
+Page  185: FMC_NEx
+Page  185: FMC_NADV
+Page  185: FMC_A[25:16]
+Page  185: FMC_NWE
+Page  185: FMC_AD[15:0]                  AD[15:0]                          D1             D2
+Page  185: FMC_NWAIT
+Page  185: FMC_NBL
+Page  186: tw(CLK)       FMC_CLK period                                 2THCLK−0.5    -
+Page  186: td(CLKL-NExL)    FMC_CLK low to FMC_NEx low (x=0..2)                -        1.5
+Page  186: td(CLKH-NExH)    FMC_CLK high to FMC_NEx high (x= 0…2)          THCLK+0.5     -
+Page  186: td(CLKL-NADVL) FMC_CLK low to FMC_NADV low                           -        1.5
+Page  186: td(CLKL-NADVH) FMC_CLK low to FMC_NADV high                          0         -
+Page  186: td(CLKL-AV)     FMC_CLK low to FMC_Ax valid (x=16…25)              -         2
+Page  186: td(CLKH-AIV)     FMC_CLK high to FMC_Ax invalid (x=16…25)         THCLK       -
+Page  186: td(CLKL-NWEL)    FMC_CLK low to FMC_NWE low                         -        1.5
+Page  186: t(CLKH-NWEH)     FMC_CLK high to FMC_NWE high                   THCLK−0.5     -
+Page  186: td(CLKL-ADV)     FMC_CLK low to FMC_AD[15:0] valid                  -         3
+Page  186: td(CLKL-ADIV)    FMC_CLK low to FMC_AD[15:0] invalid                0         -
+Page  186: td(CLKL-DATA)    FMC_A/D[15:0] valid data after FMC_CLK low         -        3.5
+Page  186: td(CLKL-NBLL)    FMC_CLK low to FMC_NBL low                         1         -
+Page  186: td(CLKH-NBLH)    FMC_CLK high to FMC_NBL high                   THCLK+0.5     -
+Page  186: tsu(NWAIT-CLKH) FMC_NWAIT valid before FMC_CLK high                  2         -
+Page  186: th(CLKH-NWAIT) FMC_NWAIT valid after FMC_CLK high                   3.5        -
+Page  187: FMC_CLK
+Page  187: FMC_NEx
+Page  187: FMC_NADV
+Page  187: FMC_A[25:0]
+Page  187: FMC_NOE
+Page  187: FMC_D[15:0]                                                 D1                       D2
+Page  187: FMC_NWAIT
+Page  187: FMC_NWAIT
+Page  187: tw(CLK)      FMC_CLK period                                          2THCLK−1               -
+Page  187: t(CLKL-NExL)    FMC_CLK low to FMC_NEx low (x=0..2)                             -             2.5
+Page  187: td(CLKH-NExH)   FMC_CLK high to FMC_NEx high (x= 0…2)                   THCLK+0.5              -
+Page  187: td(CLKL-NADVL) FMC_CLK low to FMC_NADV low                                       -              0
+Page  187: td(CLKL-NADVH) FMC_CLK low to FMC_NADV high                                  0                  -
+Page  187: td(CLKL-AV)    FMC_CLK low to FMC_Ax valid (x=16…25)                           -             2.5
+Page  187: td(CLKH-AIV)   FMC_CLK high to FMC_Ax invalid (x=16…25)                  THCLK                -         ns
+Page  187: td(CLKL-NOEL)   FMC_CLK low to FMC_NOE low                                      -              2
+Page  187: td(CLKH-NOEH) FMC_CLK high to FMC_NOE high                               THCLK+0.5              -
+Page  187: tsu(DV-CLKH)    FMC_D[15:0] valid data before FMC_CLK high                 1.5                 -
+Page  187: th(CLKH-DV)    FMC_D[15:0] valid data after FMC_CLK high                   1                  -
+Page  187: t(NWAIT-CLKH)   FMC_NWAIT valid before FMC_CLK high                         2                  -
+Page  187: th(CLKH-NWAIT) FMC_NWAIT valid after FMC_CLK high                           3.5                 -
+Page  188: FMC_CLK
+Page  188: FMC_NEx
+Page  188: FMC_NADV
+Page  188: FMC_A[25:0]
+Page  188: FMC_NWE
+Page  188: FMC_D[15:0]                                                   D1          D2
+Page  188: FMC_NWAIT
+Page  188: FMC_NBL
+Page  189: t(CLK)       FMC_CLK period                             2THCLK−1       -
+Page  189: td(CLKL-NExL)    FMC_CLK low to FMC_NEx low (x=0..2)            -        2.5
+Page  189: t(CLKH-NExH)     FMC_CLK high to FMC_NEx high (x= 0…2)      THCLK+0.5      -
+Page  189: td(CLKL-NADVL) FMC_CLK low to FMC_NADV low                      -        1.5
+Page  189: td(CLKL-NADVH) FMC_CLK low to FMC_NADV high                    0           -
+Page  189: td(CLKL-AV)     FMC_CLK low to FMC_Ax valid (x=16…25)          -        2.5
+Page  189: td(CLKH-AIV)    FMC_CLK high to FMC_Ax invalid (x=16…25)      0           -
+Page  189: td(CLKL-NWEL)    FMC_CLK low to FMC_NWE low                     -        1.5
+Page  189: td(CLKH-NWEH) FMC_CLK high to FMC_NWE high                  THCLK+1        -
+Page  189: td(CLKL-Data)   FMC_D[15:0] valid data after FMC_CLK low       -         3
+Page  189: td(CLKL-NBLL)    FMC_CLK low to FMC_NBL low                    1.5        -
+Page  189: td(CLKH-NBLH)    FMC_CLK high to FMC_NBL high               THCLK+0.5      -
+Page  189: tsu(NWAIT-CLKH) FMC_NWAIT valid before FMC_CLK high               2          -
+Page  189: th(CLKH-NWAIT) FMC_NWAIT valid after FMC_CLK high              3.5        -
+Page  189: with the following FMC configuration:
+Page  189: •       COM.FMC_SetupTime = 0x01;
+Page  189: •       COM.FMC_WaitSetupTime = 0x03;
+Page  189: •       COM.FMC_HoldSetupTime = 0x02;
+Page  189: •       COM.FMC_HiZSetupTime = 0x01;
+Page  189: •       ATT.FMC_SetupTime = 0x01;
+Page  189: •       ATT.FMC_WaitSetupTime = 0x03;
+Page  189: •       ATT.FMC_HoldSetupTime = 0x02;
+Page  189: •       ATT.FMC_HiZSetupTime = 0x01;
+Page  189: •       Bank = FMC_Bank_NAND;
+Page  189: •       MemoryDataWidth = FMC_MemoryDataWidth_16b;
+Page  189: •       ECC = FMC_ECC_Enable;
+Page  189: •       ECCPageSize = FMC_ECCPageSize_512Bytes;
+Page  190: FMC_NCEx
+Page  190: ALE (FMC_A17)
+Page  190: CLE (FMC_A16)
+Page  190: FMC_NWE
+Page  190: FMC_NOE (NRE)
+Page  190: FMC_D[15:0]
+Page  190: FMC_NCEx
+Page  190: ALE (FMC_A17)
+Page  190: CLE (FMC_A16)
+Page  190: FMC_NWE
+Page  190: FMC_NOE (NRE)
+Page  190: FMC_D[15:0]
+Page  191: FMC_NCEx
+Page  191: ALE (FMC_A17)
+Page  191: CLE (FMC_A16)
+Page  191: FMC_NWE
+Page  191: FMC_NOE
+Page  191: FMC_D[15:0]
+Page  191: FMC_NCEx
+Page  191: ALE (FMC_A17)
+Page  191: CLE (FMC_A16)
+Page  191: FMC_NWE
+Page  191: FMC_N OE
+Page  191: FMC_D[15:0]
+Page  191: tw(N0E)      FMC_NOE low width                                 4THCLK−0.5       4THCLK
+Page  191: tsu(D-NOE)     FMC_D[15-0] valid data before FMC_NOE high           13                -
+Page  191: th(NOE-D)     FMC_D[15-0] valid data after FMC_NOE high             3                -           ns
+Page  191: td(ALE-NOE)    FMC_ALE valid before FMC_NOE low                      -         3THCLK−0.5
+Page  191: th(NOE-ALE)    FMC_NWE high to FMC_ALE invalid                   3THCLK−2             -
+Page  192: tw(NWE)        FMC_NWE low width                       4THCLK−0.5    4THCLK
+Page  192: tv(NWE-D)       FMC_NWE low to FMC_D[15-0] valid            0            -
+Page  192: th(NWE-D)       FMC_NWE high to FMC_D[15-0] invalid     3THCLK−1         -
+Page  192: td(D-NWE)       FMC_D[15-0] valid before FMC_NWE high   5THCLK−3         -
+Page  192: td(ALE-NWE)      FMC_ALE valid before FMC_NWE low            -        3THCLK−0.5
+Page  192: th(NWE-ALE)      FMC_NWE high to FMC_ALE invalid         3THCLK−2         -
+Page  193: •    CL = 30 pF on data and address lines. CL = 10 pF on FMC_SDCLK unless otherwise
+Page  193: –     For 3.0 V≤VDD≤3.6 V, maximum FMC_SDCLK= 100 MHz at CL=20 pF (on
+Page  193: FMC_SDCLK).
+Page  193: –     For 2.7 V≤VDD≤3.6 V, maximum FMC_SDCLK = 90 MHz at CL=30 pF (on
+Page  193: FMC_SDCLK).
+Page  193: –     For 1.71 V≤VDD<1.9 V, maximum FMC_SDCLK = 70 MHz at CL=10 pF (on
+Page  193: FMC_SDCLK).
+Page  193: FMC_SDCLK
+Page  193: FMC_A[12:0]         Row n      Col1      Col2      Coli      Coln
+Page  193: FMC_SDNE[1:0]
+Page  193: FMC_SDNRAS
+Page  193: FMC_SDNCAS
+Page  193: FMC_SDNWE
+Page  193: FMC_D[31:0]                           Data1     Data2     Datai     Datan
+Page  194: tw(SDCLK)               FMC_SDCLK period           2THCLK−0.5        2THCLK+0.5
+Page  194: tW(SDCLK)                 FMC_SDCLK period         2THCLK−0.5       2THCLK+0.5
+Page  195: FMC_SDCLK
+Page  195: FMC_A[12:0]              Row n      Col1        Col2    Coli        Coln
+Page  195: FMC_SDNE[1:0]
+Page  195: FMC_SDNRAS
+Page  195: FMC_SDNCAS
+Page  195: FMC_SDNWE
+Page  195: FMC_D[31:0]                         Data1      Data2    Datai      Datan
+Page  195: FMC_NBL[3:0]
+Page  195: tw(SDCLK)               FMC_SDCLK period                 2THCLK−0.5          2THCLK+0.5
+Page  196: tw(SDCLK)               FMC_SDCLK period               2THCLK−0.5     2THCLK+0.5

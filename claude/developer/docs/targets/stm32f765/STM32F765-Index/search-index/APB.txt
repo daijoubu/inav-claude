@@ -1,0 +1,39 @@
+Keyword: APB
+Occurrences: 35
+================================================================================
+
+Page   15: connected to two APB buses, two AHB buses, a 32-bit multi-AHB bus matrix, and a multi
+Page   20: APBP1CLK
+Page   20: APBP2CLK
+Page   20: D[7:0]           SDMMC2                                                                                                       AHB/APB2        AHB/APB1                                                               TIM5         32b                 4 channels
+Page   20: APB2 108 MHz (max)
+Page   20: APB1 54 MHz
+Page   20: 1. The timers connected to APB2 are clocked from TIMxCLK up to 216 MHz, while the timers connected to APB1 are clocked
+Page   23: FMC, Quad-SPI, AHB and APB peripherals) and ensures a seamless and efficient
+Page   23: AHB             APB1
+Page   23: FMC external      APB2
+Page   24: memory-to-peripheral transfers. They feature dedicated FIFOs for APB/AHB peripherals,
+Page   24: (AHB/APB).
+Page   27: pulse width shorter than the Internal APB2 clock period. Up to 168 GPIOs can be connected
+Page   27: Several prescalers allow the configuration of the two AHB buses, the high-speed APB
+Page   27: (APB2) and the low-speed APB (APB1) domains. The maximum frequency of the two AHB
+Page   27: buses is 216 MHz while the maximum frequency of the high-speed APB domains is
+Page   27: 108 MHz. The maximum allowed frequency of the low-speed APB domain is 54 MHz.
+Page   41: •   Internal clock source: LSE, LSI, HSI or APB clock
+Page   53: includes a dedicated video interface internally connected to the LTDC and a generic APB
+Page   53: •   APB slave interface:
+Page   53: –    Transmission of all Command mode packets through the APB interface
+Page   53: –    AMBA APB for control and optional support for Generic and DCS commands
+Page   54: –      APB Slave
+Page  109: fPCLK1      Internal APB1 clock frequency
+Page  109: fPCLK2      Internal APB2 clock frequency
+Page  131: APB1           USART2               12.6             12.7          9.2
+Page  132: APB2
+Page  163: AHB/APBx prescaler=1
+Page  163: AHB/APBx
+Page  163: 3. The maximum timer frequency on APB1 or APB2 is up to 216 MHz, by setting the TIMPRE bit in the
+Page  163: RCC_DCKCFGR register, if APBx prescaler is 1 or 2 or 4, then TIMxCLK = HCLK, otherwise TIMxCLK =
+Page  178: 2. The maximum value of 256xFs is 49.152 MHz (APB1 maximum frequency).
+Page  183: 2. APB clock frequency must be at least twice SAI clock frequency.
+Page  190: The MDIO controller is mapped on APB2 domain. The frequency of the APB bus should at
+Page  253: STM32F769xx AXI-AHB bus matrix architecture(1) APB2 connection.

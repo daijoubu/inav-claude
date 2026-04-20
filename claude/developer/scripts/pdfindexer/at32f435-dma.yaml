@@ -1,0 +1,107 @@
+# Config for AT32F435 DMA Application Note indexing
+# Usage: ./pdfindexer.py --config at32f435-dma.yaml build-index
+
+pdf_file: ../../docs/targets/at32f435/datasheets_application_notes/AN0103_AT32F435_437_DMA_Application_Note_EN_V2.0.1.pdf
+index_dir: AT32F435-DMA-Index/search-index
+
+keywords:
+  # DMA core
+  - DMA
+  - direct memory access
+  - DMA controller
+  - DMA channel
+  - DMA request
+  - DMA trigger
+  - DMA descriptor
+  - DMA chain
+  - circular mode
+  - normal mode
+  - FIFO
+  - memory-to-memory
+  - memory-to-peripheral
+  - peripheral-to-memory
+
+  # DMA configuration
+  - DMA priority
+  - transfer mode
+  - data width
+  - burst mode
+  - increment mode
+  - address mode
+  - increment address
+  - fixed address
+  - half transfer interrupt
+  - transfer complete interrupt
+  - DMA interrupt
+  - channel interrupt
+
+  # DMA channels and peripherals
+  - DMA1
+  - DMA2
+  - SPI1
+  - SPI2
+  - SPI3
+  - UART1
+  - UART2
+  - UART3
+  - UART4
+  - UART5
+  - USART1
+  - USART2
+  - USART3
+  - I2C1
+  - I2C2
+  - I2C3
+  - timer
+  - TIM1
+  - TIM2
+  - TIM3
+  - TIM4
+  - TIM5
+  - ADC
+  - ADC1
+  - ADC2
+  - DAC
+
+  # DMA flow control
+  - flow control
+  - arbitration
+  - round-robin
+  - priority-based
+  - fixed priority
+
+  # DMA operations
+  - initialization
+  - enable
+  - disable
+  - reset
+  - deinitialize
+  - start transfer
+  - polling
+  - interrupt driven
+  - callback
+
+  # Advanced features
+  - linked list
+  - descriptor table
+  - request remapping
+  - peripheral request
+  - software request
+  - external request
+  - synchronization
+  - event trigger
+
+  # Performance
+  - burst transfer
+  - performance improvement
+  - throughput
+  - latency
+  - efficiency
+  - optimization
+
+  # Examples
+  - example code
+  - example project
+  - sample code
+  - application example
+  - implementation guide

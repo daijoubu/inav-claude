@@ -5,6 +5,7 @@
 * [ ] Gyro working
 * [ ] Accel working
 * [ ] Baro working
+* [ ] Blackbox
 * [ ] UART1
 * [ ] UART2
 * [ ] UART3
@@ -22,9 +23,18 @@
 * [ ] Video Out working
 * [ ] OSD working
 * [ ] LEDs working
-* [ ] Blackbox
 * [ ] PINIO1
 * [ ] PINIO2
 
-http://43.165.183.41:51805/?token=4c15332ed2b2e41489938a87e2c719cf6b17e85904fd99b27662d2ab14e7076a
 
+# fc_web_tool TODO
+# DONE: UART MSP selection labels and SBUS/RX-Only tester serial fix
+# DONE: Outputs tab — reads MSPV2_INAV_OUTPUT_MAPPING_EXT2 (0x210D) for physical output count
+#       and current motor/servo/LED state, MSP2_INAV_TIMER_OUTPUT_MODE (0x200E) for overrides,
+#       writes MSP2_INAV_SET_TIMER_OUTPUT_MODE (0x200F) per output.
+#
+# FUTURE:
+# - Consider adding more detail to the Outputs tab: show which hardware timer group each
+#   output belongs to (outputs sharing a timer must share the same override mode).
+# - Could add a mixer preset selector (MSP2_INAV_MIXER / MSP2_INAV_SET_MIXER) similar to
+#   the Mixer tab in the INAV Configurator.

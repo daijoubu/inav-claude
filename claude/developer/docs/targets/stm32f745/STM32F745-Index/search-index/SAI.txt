@@ -1,0 +1,174 @@
+Keyword: SAI
+Occurrences: 170
+================================================================================
+
+Page    1: to 32-bit data bus: SRAM, PSRAM,                           – 2 x SAIs (serial audio interface)
+Page    3: 3.26    Serial audio interface (SAI) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 40
+Page    3: 3.29    Audio and LCD PLL(PLLSAI) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 42
+Page    7: Table 46.   PLLISAI characteristics. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 154
+Page    7: Table 79.   SAI characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 185
+Page   10: Figure 51.   SAI master timing waveforms . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 186
+Page   10: Figure 52.   SAI slave timing waveforms . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 186
+Page   13: •   Two SAI serial audio interfaces
+Page   15: SAI                                                                                                 2
+Page   18: SD, SCK, FS, MCLK as AF                       SAI1                                                                                                                                                                                                         I2C3/SMBUS                                      SCL, SDA, SMBA as AF
+Page   18: SD, SCK, FS, MCLK as AF                       SAI2                                                                                                                                                                                                         I2C4/SMBUS
+Page   22: •   SAI
+Page   24: The devices embed two dedicated PLL (PLLI2S and PLLSAI) which allow to achieve audio
+Page   24: class performance. In this case, the I2S and SAI master clock can generate all standard
+Page   40: 3.26       Serial audio interface (SAI)
+Page   41: SAI1 and SAI2 can be served by the DMA controller
+Page   41: The devices feature an additional dedicated PLL for audio I2S and SAI applications. It allows
+Page   41: The PLLI2S configuration can be modified to manage an I2S/SAI sample rate change
+Page   41: I2S/SAI flow with an external PLL (or Codec output).
+Page   42: 3.29       Audio and LCD PLL(PLLSAI)
+Page   42: An additional PLL dedicated to audio and LCD-TFT is used for SAI1 peripheral in case the
+Page   42: The PLLSAI is also used to generate the LCD-TFT clock.
+Page   55: SAI1_MCLK_A,
+Page   55: TRACED0, SAI1_SD_B,
+Page   55: SAI1_FS_A, FMC_A20,
+Page   56: 4       D3         D9            4       B2           4         4       B1           PE5        I/O FT                     -       SAI1_SCK_A, FMC_A21,         -
+Page   56: SAI1_SD_A,
+Page   56: SAI2_MCK_B, FMC_A22,
+Page   57: SAI1_SD_B, UART7_Rx,
+Page   57: SAI1_MCLK_B,
+Page   58: SAI1_SCK_B,
+Page   58: SPI5_MOSI, SAI1_FS_B,
+Page   58: SAI2_FS_B,
+Page   58: SAI1_SD_A, ETH_MDC,     RTC_TAMP3,
+Page   59: UART4_TX, SAI2_SD_B,  WKUP1(4)
+Page   59: SAI2_MCK_B,
+Page   59: 24        J2          L9         36        P2         42        45        P2           PA2        I/O FT (4)      SAI2_SCK_B,
+Page   59: SAI2_SCK_B,
+Page   60: SAI2_MCK_B,
+Page   61: SAI1_SD_A,
+Page   62: SPI5_MOSI, SAI2_SD_B,
+Page   63: 41        H6         K4          64        P10        74        85        P10          PE11       I/O FT                     -       SAI2_SD_B, FMC_D8,          -
+Page   63: 42        J6          L4         65        R10        75        86        R10          PE12       I/O FT                     -       SAI2_SCK_B, FMC_D9,         -
+Page   63: 43        K6         N4          66        N11        76        87        R12          PE13       I/O FT                     -       SAI2_FS_B, FMC_D10,         -
+Page   63: 44        G7         M4          67        P11        77        88        P11          PE14       I/O FT                     -       SAI2_MCK_B, FMC_D11,        -
+Page   65: SAI2_SD_A,
+Page   65: SAI2_FS_A,
+Page   65: SAI2_SCK_A, FMC_A18,
+Page   68: 71        B10        E1          104 B15 123 146 B15                                   PA12       I/O FT                     -       SAI2_FS_B, CAN1_TX,         -
+Page   70: SAI1_SD_A,
+Page   71: -          -       E5          124 C10 152 178                          D9           PG9        I/O FT                     -            SAI2_FS_B,             -
+Page   71: LCD_G3, SAI2_SD_B,
+Page   73: SAI2_MCK_A,
+Page   73: SAI2_MCK_A,
+Page   73: SAI2_SCK_A,
+Page   74: TIM8_CH2, SAI2_SD_A,
+Page   74: TIM8_CH3, SAI2_FS_A,
+Page   78: SAI2/US
+Page   78: Port                                                                                SPI2/3/U           CAN1/2/T SAI2/QU
+Page   78: 4/CEC       4/5/6      SAI1    3/UART5/           14/QUAD TG2_HS/ OTG1
+Page   78: TIM5_C     TIM8_ET                                    USART2   UART4_               SAI2_SD_ ETH_
+Page   78: TIM2_C    TIM5_C                                                USART2   UART4_               SAI2_MC
+Page   78: TIM2_C    TIM5_C     TIM9_CH                                    USART2   SAI2_SC                        ETH_
+Page   79: SAI2/US
+Page   79: Port                                                                                   SPI2/3/U           CAN1/2/T SAI2/QU
+Page   79: 4/CEC       4/5/6       SAI1     3/UART5/           14/QUAD TG2_HS/ OTG1
+Page   79: TIM1_ET                                                            USART1     SAI2_FS   CAN1_T   OTG_FS_
+Page   79: SAI1_SD                        QUADSP
+Page   80: SAI2/US
+Page   80: Port                                                                               SPI2/3/U           CAN1/2/T SAI2/QU
+Page   80: 4/CEC       4/5/6      SAI1    3/UART5/           14/QUAD TG2_HS/ OTG1
+Page   80: SAI2_FS
+Page   80: TRACE                                                        SAI1_SD                                           ETH_
+Page   81: SAI2/US
+Page   81: Port                                                                                  SPI2/3/U           CAN1/2/T SAI2/QU
+Page   81: 4/CEC       4/5/6       SAI1      3/UART5/           14/QUAD TG2_HS/ OTG1
+Page   82: SAI2/US
+Page   82: Port                                                                               SPI2/3/U           CAN1/2/T SAI2/QU
+Page   82: 4/CEC       4/5/6      SAI1    3/UART5/           14/QUAD TG2_HS/ OTG1
+Page   82: SAI1_SD    USART2
+Page   82: I2C4_SM                         USART3                      SAI2_SD_
+Page   82: TIM4_C    LPTIM1_I    I2C4_SC                         USART3                      SAI2_FS_
+Page   82: TIM4_C    LPTIM1_     I2C4_SD                                                       SAI2_SC
+Page   83: SAI2/US
+Page   83: Port                                                                                  SPI2/3/U           CAN1/2/T SAI2/QU
+Page   83: 4/CEC       4/5/6       SAI1     3/UART5/           14/QUAD TG2_HS/ OTG1
+Page   83: TIM4_ET LPTIM1_E                                                 UART8_              SAI2_MC
+Page   83: TRACE                                                SPI4_SC     SAI1_M                                            ETH_
+Page   83: TRACE                                                            SAI1_SD
+Page   83: TRACE                                                SPI4_NS SAI1_FS
+Page   83: TRACE                        TIM9_CH                 SPI4_MI     SAI1_SC
+Page   83: TRACE   TIM1_B               TIM9_CH                 SPI4_M      SAI1_SD                                SAI2_MC
+Page   83: TIM1_C                                       SPI4_NS                                            SAI2_SD_
+Page   83: TIM1_C                                       SPI4_SC                                            SAI2_SC
+Page   83: TIM1_C                                       SPI4_MI                                            SAI2_FS_
+Page   84: SAI2/US
+Page   84: Port                                                                                 SPI2/3/U           CAN1/2/T SAI2/QU
+Page   84: 4/CEC       4/5/6       SAI1     3/UART5/           14/QUAD TG2_HS/ OTG1
+Page   84: TIM1_C                                      SPI4_M                                             SAI2_MC
+Page   84: TIM10_C                 SPI5_NS SAI1_SD                UART7_
+Page   84: TIM11_CH                 SPI5_SC     SAI1_M            UART7_T
+Page   84: SPI5_MI     SAI1_SC            UART7_   TIM13_C    QUADSPI
+Page   84: SPI5_M      SAI1_FS            UART7_   TIM14_C    QUADSPI
+Page   84: SPI5_M                                             SAI2_SD_
+Page   85: SAI2/US
+Page   85: Port                                                                             SPI2/3/U           CAN1/2/T SAI2/QU
+Page   85: 4/CEC       4/5/6      SAI1    3/UART5/           14/QUAD TG2_HS/ OTG1
+Page   85: SPDIFRX   USART6            SAI2_FS_
+Page   85: SAI2_SD_
+Page   86: SAI2/US
+Page   86: Port                                                                               SPI2/3/U           CAN1/2/T SAI2/QU
+Page   86: 4/CEC       4/5/6      SAI1    3/UART5/           14/QUAD TG2_HS/ OTG1
+Page   86: LPTIM1_I                                                                  SAI2_SC   ETH_
+Page   86: SAI2_MC   ETH_
+Page   87: SAI2/US
+Page   87: Port                                                                               SPI2/3/U           CAN1/2/T SAI2/QU
+Page   87: 4/CEC       4/5/6      SAI1    3/UART5/           14/QUAD TG2_HS/ OTG1
+Page   87: TIM8_BKI                                                                SAI2_MC
+Page   87: TIM8_CH                                                                SAI2_SC
+Page   87: TIM8_CH                                                                SAI2_SD_
+Page   88: SAI2/US
+Page   88: Port                                                                               SPI2/3/U           CAN1/2/T SAI2/QU
+Page   88: 4/CEC       4/5/6      SAI1    3/UART5/           14/QUAD TG2_HS/ OTG1
+Page   88: TIM8_CH                                                               SAI2_FS_
+Page   89: SAI2/US
+Page   89: Port                                                                               SPI2/3/U           CAN1/2/T SAI2/QU
+Page   89: 4/CEC       4/5/6      SAI1    3/UART5/           14/QUAD TG2_HS/ OTG1
+Page   90: SAI2/US
+Page   90: Port                                                                            SPI2/3/U           CAN1/2/T SAI2/QU
+Page   90: 4/CEC       4/5/6      SAI1    3/UART5/           14/QUAD TG2_HS/ OTG1
+Page   94: 0x4001 5800 - 0x4001 5BFF   SAI1
+Page   98: 0x4001 5C00 - 0x4001 5FFF   SAI2
+Page   98: 0x4001 5800 - 0x4001 5BFF   SAI1
+Page  126: SAI1                   3.4                 3.3                 2.6
+Page  126: SAI2                   3.3                 3.2                 2.5
+Page  135: SAI
+Page  136: Table 46. PLLISAI characteristics
+Page  136: fPLLSAI_IN        PLLSAI input clock(1)                                 -                  0.95(2)       1     2.10
+Page  136: PLLSAI multiplier output clock
+Page  136: fPLLSAIP_OUT                                                            -                     -         48     75
+Page  136: PLLSAI multiplier output clock
+Page  136: fPLLSAIQ_OUT                                                            -                     -          -     216    MHz
+Page  136: for SAI
+Page  136: PLLSAI multiplier output clock
+Page  136: fPLLSAIR_OUT                                                            -                     -          -     216
+Page  136: fVCO_OUT          PLLSAI VCO output                                     -                    100         -     432
+Page  136: tLOCK             PLLSAI lock time                                                                                    µs
+Page  137: Table 46. PLLISAI characteristics (continued)
+Page  137: Master SAI clock jitter
+Page  137: PLLSAI power consumption on            VCO freq = 100 MHz                   0.15                   0.40
+Page  137: IDD(PLLSAI)(4)                                                                                                -                mA
+Page  137: PLLSAI power consumption on            VCO freq = 100 MHz                   0.30                   0.40
+Page  137: IDDA(PLLSAI)(4)                                                                                               -                mA
+Page  167: SAI characteristics
+Page  167: Unless otherwise specified, the parameters given in Table 79 for SAI are derived from tests
+Page  167: Table 79. SAI characteristics(1)
+Page  167: fMCKL           SAI Main clock output                         -                  256 x 8K    256xFs(2)    MHz
+Page  167: FSCK            SAI clock frequency                                                                      MHz
+Page  167: SAI clock frequency duty
+Page  168: Figure 51. SAI master timing waveforms
+Page  168: SAI_SCK_X
+Page  168: SAI_FS_X
+Page  168: SAI_SD_X
+Page  168: SAI_SD_X                                           Slot n
+Page  168: Figure 52. SAI slave timing waveforms
+Page  168: SAI_SCK_X
+Page  168: SAI_FS_X
+Page  168: SAI_SD_X
+Page  168: SAI_SD_X                                           Slot n
+Page  228: characteristics and Table 47: PLLISAI characteristics fVCO_OUT

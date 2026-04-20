@@ -1,0 +1,176 @@
+Keyword: DFSDM
+Occurrences: 172
+================================================================================
+
+Page    1: (DFSDM), 8 channels / 4 filters
+Page    4: 3.42   Digital filter for Sigma-Delta Modulators (DFSDM) . . . . . . . . . . . . . . . . . . 50
+Page    6: 6.3.34      Digital filter for Sigma-Delta Modulators (DFSDM) characteristics . . . 215
+Page    6: 6.3.35      DFSDM timing diagrams . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 217
+Page    7: Table 9.    DFSDM implementation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 51
+Page    9: Table 123.   DFSDM measured timing 1.71-3.6V . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 215
+Page   18: DFSDM1                                                                                                            Yes (4 filters)
+Page   20: DFSDM                                                                                                                                                                                                                          SCL, SDA, SMBAL as AF
+Page   24: •   DFSDM1
+Page   50: 3.42       Digital filter for Sigma-Delta Modulators (DFSDM)
+Page   50: The devices embed one DFSDM with 4 digital filters modules and 8 external input serial
+Page   50: channels (transceivers) or alternately 8 internal parallel inputs support. The DFSDM
+Page   50: modulators inputs). The DFSDM can also interface PDM (Pulse Density Modulation)
+Page   50: microphones and perform PDM to PCM conversion and filtering in hardware. The DFSDM
+Page   50: DMA/CPU transfers into DFSDM). The DFSDM transceivers support several serial interface
+Page   50: formats (to support various Σ∆ modulators). The DFSDM digital filter modules perform
+Page   50: The DFSDM peripheral supports:
+Page   50: –      Start-of-conversion synchronously with first digital filter module (DFSDM0)
+Page   51: Table 9. DFSDM implementation
+Page   51: DFSDM features                                   DFSDM1
+Page   51: Number of filters: x (DFSDM_FLTx)                                                4
+Page   51: Number of input transceivers/channels: y (DFSDM_CHy)                             8
+Page   67: C3          3         3        B1          3         3        A1         C12            3         3        A1           PE4                              I/O        FT               -      DFSDM1_DATIN3, FMC_A20,        -
+Page   67: D3          4         4        B2          4         4        B1         D12            4         4        B1           PE5                              I/O        FT               -      DFSDM1_CKIN3, FMC_A21,         -
+Page   69: DFSDM1_CKIN0,
+Page   69: DFSDM1_DATIN4,
+Page   69: TRACED0, DFSDM1_DATIN0,    ADC1_IN11,
+Page   69: F2         16         27       M3         33        36        M3          L13          33        36        M3           PC1                              I/O        FT               -      SAI1_SD_A, DFSDM1_CKIN4,   ADC3_IN11,
+Page   69: DFSDM1_CKIN1, SPI2_MISO,
+Page   69: DFSDM1_CKOUT,          ADC1_IN12,
+Page   69: DFSDM1_DATIN1,
+Page   71: DFSDM1_CKIN2, I2S1_MCK,
+Page   71: DFSDM1_DATIN2,
+Page   71: DFSDM1_CKOUT,
+Page   71: DFSDM1_DATIN1, LCD_R6,    ADC1_IN9,
+Page   72: DFSDM1_CKIN1, EVENTOUT
+Page   72: -          -        53       N6         63        74        N6           L8          63        74        N6         PF13                             I/O        FT               -      DFSDM1_DATIN6, FMC_A7,         -
+Page   72: I2C4_SCL, DFSDM1_CKIN6,
+Page   72: TIM1_ETR, DFSDM1_DATIN2,
+Page   72: TIM1_CH1N, DFSDM1_CKIN2,
+Page   73: TIM1_CH1, DFSDM1_CKOUT,
+Page   73: DFSDM1_DATIN4,
+Page   73: DFSDM1_CKIN4, SAI2_SD_B,
+Page   73: DFSDM1_DATIN5,
+Page   73: DFSDM1_CKIN5, SAI2_FS_B,
+Page   73: DFSDM1_DATIN7,
+Page   74: DFSDM1_CKIN7,
+Page   75: DFSDM1_DATIN1,
+Page   75: DFSDM1_CKIN1,
+Page   75: DFSDM1_DATIN2,
+Page   75: G10        54         76       R15        95        107       R15          N2          88        107       R15        PB15                             I/O        FT               -           DFSDM1_CKIN2,             -
+Page   75: DFSDM1_CKIN3,
+Page   75: DFSDM1_DATIN3,
+Page   75: DFSDM1_CKOUT,
+Page   77: I2S2_MCK, DFSDM1_CKIN3,
+Page   78: I2S3_MCK, DFSDM1_DATIN3,
+Page   80: DFSDM1_CKIN5,
+Page   80: DFSDM1_DATIN5,
+Page   80: DFSDM1_CKIN6,
+Page   80: DFSDM1_DATIN7,
+Page   80: DFSDM1_DATIN6,
+Page   80: DFSDM1_CKIN7, UART4_TX,
+Page   80: DFSDM1_CKOUT,
+Page   80: DFSDM1_DATIN0,
+Page   80: DFSDM1_CKIN0,
+Page   81: DFSDM1_CKIN4,
+Page   81: C6         87        122       B11        150       172       B11          E6          150 172             B11         PD6                              I/O        FT               -          DFSDM1_DATIN1,              -
+Page   81: DFSDM1_DATIN4,
+Page   81: DFSDM1_CKIN1,
+Page   83: DFSDM1_DATIN5,
+Page   83: DFSDM1_CKIN5,
+Page   83: DFSDM1_CKIN7, UART5_RX,
+Page   83: DFSDM1_DATIN7, UART5_TX,
+Page   89: 1/DFSDM                            I2C4/UA             5/7/8/OT
+Page   89: 4/5/6             5/DFSDM              LCD    OTG1_FS
+Page   90: 1/DFSDM                            I2C4/UA             5/7/8/OT
+Page   90: 4/5/6             5/DFSDM              LCD    OTG1_FS
+Page   90: TIM1_C    TIM3_C    TIM8_CH                           DFSDM1               UART4_             OTG_HS_ ETH
+Page   90: TIM1_C    TIM3_C    TIM8_CH                           DFSDM1                                  OTG_HS_ ETH
+Page   90: SAI1_SD                        QUADSP   DFSDM1_
+Page   90: UART5_    TIM4_C     HDMI-      I2C1_SC               DFSDM1    USART1               CAN2_T             I2C4
+Page   91: 1/DFSDM                            I2C4/UA             5/7/8/OT
+Page   91: 4/5/6             5/DFSDM              LCD    OTG1_FS
+Page   91: TIM4_C                I2C1_SD               DFSDM1    USART1                                I2S4
+Page   91: I2C4_SC   TIM4_C    TIM10_C     I2C1_SC               DFSDM1    UART5_             CAN1_R    SDMMC2   ETH
+Page   91: I2C4_SD   TIM4_C   TIM11_CH     I2C1_SD             DFSDM1 UART5_T                 CAN1_T    SDMMC2   I2C4
+Page   91: TIM2_C                          I2C2_SC             DFSDM1      USART3             QUADSP    OTG_HS_ ETH
+Page   91: TIM2_C                          I2C2_SD               DFSDM1    USART3                       OTG_HS_ TX_
+Page   91: TIM1_B                          I2C2_SM             DFSDM1      USART3   UART5_    CAN2_R    OTG_HS_ TXD
+Page   91: TIM1_C                                              DFSDM1      USART3   UART5_T   CAN2_T    OTG_HS_ TXD
+Page   91: TIM1_C              TIM8_CH     USART1_     SPI2_MI   DFSDM1    USART3   UART4_    TIM12_C   SDMMC2
+Page   91: RTC_RE   TIM1_C              TIM8_CH     USART1_          DFSDM1                  UART4_    TIM12_C   SDMMC2
+Page   92: 1/DFSDM                            I2C4/UA             5/7/8/OT
+Page   92: 4/5/6             5/DFSDM              LCD    OTG1_FS
+Page   92: DFSDM1_                             DFSDM1              SAI2_FS
+Page   92: TRACED                      DFSDM1_                           SAI1_SD                                    DFSDM1_   ETH
+Page   92: DFSDM1_                  SPI2_MI    DFSDM1                                   OTG_HS_ ETH
+Page   92: DFSDM1_                                                                              ETH
+Page   92: DFSDM1_                  I2S1_M                         SPDIF_R                        RXD
+Page   92: Port C                                        DFSDM1_                                                 SPDIF_R                        RXD
+Page   92: TIM3_C    TIM8_CH                 I2S2_M               DFSDM1    USART6    FMC_NW     SDMMC2
+Page   92: DFSDM1
+Page   92: DFSDM1_                                       USART3    UART4_T
+Page   93: 1/DFSDM                            I2C4/UA             5/7/8/OT
+Page   93: 4/5/6             5/DFSDM              LCD    OTG1_FS
+Page   93: DFSDM1_                          SPI3_MI   USART3   UART4_
+Page   93: DFSDM1
+Page   93: DFSDM1_                                             UART4_    CAN1_R
+Page   93: DFSDM1_                         DFSDM1              UART4_T   CAN1_T
+Page   93: SPI2_SC DFSDM1
+Page   93: DFSDM1_                                    USART2
+Page   93: DFSDM1     USART2
+Page   93: DFSDM1_                          SAI1_SD   USART2                       DFSDM1_   SDM
+Page   93: DFSDM1_                          DFSDM1    USART2   SPDIF_R                       SDM
+Page   94: 1/DFSDM                            I2C4/UA             5/7/8/OT
+Page   94: 4/5/6             5/DFSDM              LCD    OTG1_FS
+Page   94: DFSDM1_                                      USART3   SPDIF_R
+Page   94: DFSDM1_                                      USART3
+Page   94: DFSDM1_                                      USART3
+Page   95: 1/DFSDM                            I2C4/UA             5/7/8/OT
+Page   95: 4/5/6             5/DFSDM              LCD    OTG1_FS
+Page   95: TRACED                                               SPI4_NS SAI1_FS                               DFSDM1_
+Page   95: TRACED                       TIM9_CH                 SPI4_MI   SAI1_SC                             DFSDM1_
+Page   95: DFSDM1
+Page   95: TIM1_C                                                DFSDM1           UART7_T            QUADSPI
+Page   95: TIM1_C                                                DFSDM1           UART7_             QUADSPI
+Page   95: DFSDM1
+Page   95: TIM1_C                                      SPI4_NS DFSDM1                                SAI2_SD_
+Page   95: DFSDM1
+Page   95: TIM1_C                                      SPI4_MI   DFSDM1                              SAI2_FS_
+Page   96: 1/DFSDM                            I2C4/UA             5/7/8/OT
+Page   96: 4/5/6             5/DFSDM              LCD    OTG1_FS
+Page   97: 1/DFSDM                            I2C4/UA             5/7/8/OT
+Page   97: 4/5/6             5/DFSDM              LCD    OTG1_FS
+Page   97: DFSDM1
+Page   97: I2C4_SC             DFSDM1
+Page   98: 1/DFSDM                            I2C4/UA             5/7/8/OT
+Page   98: 4/5/6             5/DFSDM              LCD    OTG1_FS
+Page   99: 1/DFSDM                            I2C4/UA             5/7/8/OT
+Page   99: 4/5/6             5/DFSDM              LCD    OTG1_FS
+Page  100: 1/DFSDM                            I2C4/UA             5/7/8/OT
+Page  100: 4/5/6             5/DFSDM              LCD    OTG1_FS
+Page  101: 1/DFSDM                            I2C4/UA             5/7/8/OT
+Page  101: 4/5/6             5/DFSDM              LCD    OTG1_FS
+Page  102: 1/DFSDM                            I2C4/UA             5/7/8/OT
+Page  102: 4/5/6             5/DFSDM              LCD    OTG1_FS
+Page  132: DFSDM1                  10.9                10.7                 9.0
+Page  215: 6.3.34        Digital filter for Sigma-Delta Modulators (DFSDM) characteristics
+Page  215: Unless otherwise specified, the parameters given in Table 123 for DFSDM are derived from
+Page  215: function characteristics (DFSDM1_CKINx, DFSDM1_DATINx, DFSDM1_CKOUT for
+Page  215: DFSDM1).
+Page  215: Table 123. DFSDM measured timing 1.71-3.6V
+Page  215: fDFSDMCL
+Page  215: DFSDM clock              1.71 < VDD < 3.6 V                    -         -       fSYSCLK
+Page  215: External clock mode (SPICKSEL[1:0]=0),          -         -     (fDFSDMCLK/
+Page  215: External clock mode (SPICKSEL[1:0]=0),          -         -     (fDFSDMCLK/
+Page  215: Internal clock mode (SPICKSEL[1:0]≠0),          -         -     (fDFSDMCLK/    z
+Page  215: Internal clock mode (SPICKSEL[1:0]≠0),          -         -     (fDFSDMCLK/
+Page  216: Table 123. DFSDM measured timing 1.71-3.6V (continued)
+Page  216: (SPICKSEL[1:0]≠0),                     TDFSDMCLK             TDFSDMCLK
+Page  217: 6.3.35                                     DFSDM timing diagrams
+Page  217: DFSDM_CKINy
+Page  217: DFSDM_DATINy
+Page  217: DFSDM_CKOUT
+Page  217: DFSDM_DATINy
+Page  217: DFSDM_DATINy
+Page  251: DFSDM replaced by DFSDM1 in:
+Page  251: –Section 6.3.34: Digital filter for Sigma-Delta Modulators (DFSDM)
+Page  251: STM32F769xx features and peripheral counts adding DFSDM1 features.
+Page  251: Updated Table 39: Peripheral current consumption adding DFSDM1
+Page  252: Added Table 9: DFSDM implementation.
+Page  254: Section Table 123.: DFSDM measured timing 1.71-3.6V (DuCyCKOUT).

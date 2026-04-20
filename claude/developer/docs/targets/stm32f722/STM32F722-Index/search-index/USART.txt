@@ -1,0 +1,110 @@
+Keyword: USART
+Occurrences: 106
+================================================================================
+
+Page    1: – Internal 16 MHz factory-trimmed RC (1%                       – Up to 4 USARTs/4 UARTs (27 Mbit/s,
+Page    4: 3.22     Universal synchronous/asynchronous receiver transmitters (USART) . . 41
+Page    7: Table 8.    USART implementation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 42
+Page   14: •   Four USARTs plus four UARTs
+Page   15: USART/UART                 4/2                                        4/4
+Page   21: RX, TX, SCK,           smcard USART1                                                                                                                                                                                           smcard                RX, TX, SCK
+Page   21: CTS, RTS as AF                                                                                                                                                                                                       USART2      irDA                  CTS, RTS as AF
+Page   21: CTS, RTS as AF                  USART6                                                                                                                                                                               USART3
+Page   25: •   USART
+Page   41: (USART)
+Page   41: The devices embed USARTs. Refer to Table 8: USART implementation for the features
+Page   41: The universal synchronous asynchronous receiver transmitter (USART) offers a flexible
+Page   41: The USART peripheral supports:
+Page   41: USART clock source is system clock frequency (max is 216 MHz) and oversampling
+Page   42: Table 8. USART implementation
+Page   42: Features(1)                      USART1/2/3/6          UART4/5/7/8
+Page   64: USART2_RT
+Page   64: 16       24        36        P2         42           24        H8           P2         L2         36        42             PA2          I/O        FT                -        USART2_TX
+Page   65: USART2_RX, O
+Page   65: USART2_CK
+Page   68: 29       47        70        R13        80           47        H3           R13 M10               70        80            PB11          I/O        FTf                     USART3_RX, O
+Page   69: USART3_CK, O
+Page   70: USART3_T
+Page   70: USART3_R
+Page   70: USART3_C
+Page   71: USART6_C
+Page   71: USART6_RT
+Page   71: 37       63        96        H15        115          63        E1           H15 G12               96        115            PC6          I/O        FT                -        USART6_TX
+Page   71: 38       64        97        G15 116                 64        D4           G15 F12               97        116            PC7          I/O        FT                -        USART6_RX
+Page   74: 53       80        113       A12 141                 80        D5           A12 C10               113       141           PC12          I/O        FT                -       USART3_C
+Page   74: -      84        117       D11        145          84        C6           D11        D9         117       145            PD3          I/O        FT                -        USART2_C
+Page   74: USART2_RT
+Page   74: USART2_T
+Page   75: -      87        122       B11        150          87        D6           B11        A8         122       150            PD6          I/O        FT                -       USART2_RX
+Page   75: USART2_CK
+Page   75: USART6_RX, Q
+Page   75: -        -       128       A8         156            -          -         A8         D7         128       156           PG13          I/O        FT                -        USART6_C
+Page   76: -        -       129       A7         157            -          -         A7         C7         129       157           PG14          I/O        FT                -     USART6_TX, Q
+Page   76: USART6_CTS
+Page   77: 59       93        137       B5         165          93        B8           B5         D6         137       165            PB7          I/O        FTf               -        USART1_
+Page   84: SPI3/I2S3/               SAI2/USART6     TIM12/13/14
+Page   84: LPTIM1        USART1      SPI3/I2S3/            USART1/2/3/
+Page   84: USART2_
+Page   84: USART2_                      QUADSPI_
+Page   84: PA2    -     TIM2_CH3 TIM5_CH3      TIM9_CH1           -           -          -     USART2_TX      SAI2_SCK_B           -
+Page   84: PA3    -     TIM2_CH4 TIM5_CH4      TIM9_CH2           -           -          -     USART2_RX            -              -
+Page   84: PA4    -        -          -             -             -                         USART2_CK               -              -
+Page   84: PA8   MCO1   TIM1_CH1      -       TIM8_BKIN2      I2C3_SCL        -          -     USART1_CK            -              -
+Page   84: PA9    -     TIM1_CH2      -             -                                    -     USART1_TX            -              -
+Page   84: PA10    -     TIM1_CH3      -             -             -           -          -     USART1_RX            -              -
+Page   84: USART1_
+Page   85: SPI3/I2S3/               SAI2/USART6     TIM12/13/14
+Page   85: LPTIM1        USART1      SPI3/I2S3/            USART1/2/3/
+Page   85: USART1_
+Page   85: PB6      -         -       TIM4_CH1         -         I2C1_SCL        -          -     USART1_TX            -              -
+Page   85: PB7      -         -       TIM4_CH2         -         I2C1_SDA        -          -     USART1_RX            -              -
+Page   86: SPI3/I2S3/               SAI2/USART6     TIM12/13/14
+Page   86: LPTIM1        USART1      SPI3/I2S3/            USART1/2/3/
+Page   86: PB10      -      TIM2_CH3      -             -         I2C2_SCL                   -      USART3_TX           -              -
+Page   86: PB11      -      TIM2_CH4      -             -         I2C2_SDA        -          -      USART3_RX           -              -
+Page   86: PB12      -                    -             -                                    -      USART3_CK           -              -
+Page   86: TIM1_                                            SPI2_SCK              USART3_CT
+Page   86: TIM1_                                             SPI2_                USART3_RT
+Page   87: SPI3/I2S3/               SAI2/USART6     TIM12/13/14
+Page   87: LPTIM1        USART1      SPI3/I2S3/            USART1/2/3/
+Page   87: PC6      -        -      TIM3_CH1    TIM8_CH1           -       I2S2_MCK       -           -        USART6_TX            -
+Page   87: PC7      -        -      TIM3_CH2    TIM8_CH2           -           -      I2S3_MCK        -        USART6_RX            -
+Page   87: PC8   TRACED1     -      TIM3_CH3    TIM8_CH3           -           -          -      UART5_RTS     USART6_CK            -
+Page   87: PC10      -        -         -             -             -           -                 USART3_TX      UART4_TX
+Page   87: PC11      -        -         -             -             -           -                 USART3_RX      UART4_RX
+Page   87: PC12   TRACED3     -         -             -             -           -        MOSI/    USART3_CK      UART5_TX            -
+Page   88: SPI3/I2S3/               SAI2/USART6     TIM12/13/14
+Page   88: LPTIM1        USART1      SPI3/I2S3/            USART1/2/3/
+Page   88: SPI2_SCK               USART2_
+Page   88: USART2_
+Page   88: PD5      -        -         -             -             -           -          -      USART2_TX           -              -
+Page   88: PD6      -        -         -             -             -         MOSI/               USART2_RX           -              -
+Page   88: PD7      -        -         -             -             -           -          -      USART2_CK           -              -
+Page   88: PD8      -        -         -             -             -           -          -      USART3_TX           -              -
+Page   88: PD9      -        -         -             -             -           -          -      USART3_RX           -              -
+Page   88: PD10      -        -         -             -             -           -          -      USART3_CK           -              -
+Page   88: USART3_                      QUADSPI_
+Page   88: USART3_                      QUADSPI_
+Page   89: SPI3/I2S3/               SAI2/USART6     TIM12/13/14
+Page   89: LPTIM1        USART1      SPI3/I2S3/            USART1/2/3/
+Page   90: SPI3/I2S3/               SAI2/USART6     TIM12/13/14
+Page   90: LPTIM1        USART1      SPI3/I2S3/            USART1/2/3/
+Page   91: SPI3/I2S3/               SAI2/USART6     TIM12/13/14
+Page   91: LPTIM1        USART1      SPI3/I2S3/            USART1/2/3/
+Page   91: PG7      -        -         -             -             -           -          -           -        USART6_CK            -
+Page   91: PG8      -        -         -             -             -           -          -           -        USART6_RTS           -
+Page   91: PG9      -        -         -             -             -           -          -           -        USART6_RX
+Page   91: PG12      -        -         -       LPTIM1_IN1          -           -          -           -        USART6_RTS           -
+Page   91: PG13   TRACED0     -         -                           -           -          -           -        USART6_CTS           -
+Page   92: SPI3/I2S3/               SAI2/USART6     TIM12/13/14
+Page   92: LPTIM1        USART1      SPI3/I2S3/            USART1/2/3/
+Page   92: PG14   TRACED1     -         -       LPTIM1_ETR          -           -          -           -        USART6_TX
+Page   92: PG15      -        -         -             -             -           -          -           -        USART6_CTS           -
+Page   93: SPI3/I2S3/               SAI2/USART6     TIM12/13/14
+Page   93: LPTIM1        USART1      SPI3/I2S3/            USART1/2/3/
+Page   94: SPI3/I2S3/               SAI2/USART6     TIM12/13/14
+Page   94: LPTIM1        USART1      SPI3/I2S3/            USART1/2/3/
+Page  123: USART2               13.3              12           10.6
+Page  123: USART3               12.8              12           10.3
+Page  124: USART1                  12.4                11.6                  10
+Page  124: USART6                  12.3                11.7                  10

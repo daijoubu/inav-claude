@@ -1,0 +1,145 @@
+Keyword: TIM1
+Occurrences: 141
+================================================================================
+
+Page    3: 3.22.1     Advanced-control timers (TIM1, TIM8) . . . . . . . . . . . . . . . . . . . . . . . . . 36
+Page    3: 3.22.4     Low-power timer (LPTIM1) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 37
+Page   18: 4 compl. chan. (TIM1_CH1[1:4]N),                                                                                                                                                                                                                                           TIM12               16b                 2 channels as AF
+Page   18: 4 chan. (TIM1_CH1[1:4]ETR,                  TIM1 / PWM         16b
+Page   18: BKIN as AF                                                                                                                                                                                                                                           TIM13               16b                 1 channel as AF
+Page   18: 4 chan. (TIM8_CH1[1:4], ETR,                                                                                                                                                                                                                                            TIM14               16b                 1 channel as AF
+Page   18: 1 channel as AF                       TIM10         16b                                                                                                        WWDG
+Page   18: TIM11        16b
+Page   18: USART1                                                                                                                    LPTIM1                                                                                      UART5                                    RX, TX as AF
+Page   33: and LPTIM1 asynchronous interrupt).
+Page   35: Advance     TIM1,                           integer
+Page   35: TIM10,                             integer
+Page   35: TIM11                            between 1
+Page   35: TIM12      16-bit        Up                       No            2          No           54        108/216
+Page   35: TIM13,                             integer
+Page   35: TIM14                            between 1
+Page   36: 3.22.1     Advanced-control timers (TIM1, TIM8)
+Page   36: The advanced-control timers (TIM1, TIM8) can be seen as three-phase PWM generators
+Page   36: TIM1 and TIM8 support independent DMA request generation.
+Page   36: other general-purpose timers and the advanced-control timers TIM1 and TIM8 via the
+Page   36: •   TIM9, TIM10, TIM11, TIM12, TIM13, and TIM14
+Page   36: TIM10, TIM11, TIM13, and TIM14 feature one independent channel, whereas TIM9
+Page   36: and TIM12 have two independent channels for input capture/output compare, PWM or
+Page   37: 3.22.4   Low-power timer (LPTIM1)
+Page   45: To synchronize A/D conversion and timers, the ADCs could be triggered by any of TIM1,
+Page   56: TRACED3, TIM1_BKIN2,
+Page   57: TIM10_CH1, SPI5_NSS,
+Page   57: TIM11_CH1, SPI5_SCK,
+Page   58: TIM13_CH1,
+Page   58: -          -       G8          21        L2         27        30        L2           PF9        I/O FT                     -            TIM14_CH1,          ADC3_IN7
+Page   59: LPTIM1_IN2,
+Page   60: TIM1_BKIN, TIM3_CH1,
+Page   60: 30        J3         N10         42        P3         52        55        P3           PA6        I/O FT (4)      TIM13_CH1,                                ADC12_IN6
+Page   61: TIM1_CH1N, TIM3_CH2,
+Page   61: TIM14_CH1,
+Page   61: TIM1_CH2N, TIM3_CH3,
+Page   61: TIM1_CH3N, TIM3_CH4,
+Page   62: TIM1_ETR, UART7_Rx,
+Page   62: TIM1_CH1N, UART7_Tx,
+Page   62: TIM1_CH1, UART7_RTS,
+Page   62: TIM1_CH2N,
+Page   63: TIM1_CH2, SPI4_NSS,
+Page   63: TIM1_CH3N, SPI4_SCK,
+Page   63: TIM1_CH3, SPI4_MISO,
+Page   63: TIM1_CH4, SPI4_MOSI,
+Page   63: TIM1_BKIN, FMC_D12,
+Page   63: TIM12_CH1,
+Page   64: TIM12_CH2, FMC_D17,
+Page   64: TIM1_BKIN, I2C2_SMBA,
+Page   64: TIM1_CH1N,
+Page   65: TIM1_CH2N,
+Page   65: TIM12_CH1,
+Page   65: TIM1_CH3N,
+Page   65: TIM12_CH2,
+Page   65: TIM4_CH1, LPTIM1_IN1,
+Page   65: LPTIM1_OUT, I2C4_SDA,
+Page   67: MCO1, TIM1_CH1,
+Page   67: TIM1_CH2, I2C3_SMBA,
+Page   68: TIM1_CH3, USART1_RX,
+Page   68: TIM1_CH4,
+Page   68: TIM1_ETR,
+Page   71: LPTIM1_IN1,
+Page   71: TRACED0, LPTIM1_OUT,
+Page   71: TRACED1, LPTIM1_ETR,
+Page   73: TIM4_CH3, TIM10_CH1,
+Page   73: TIM4_CH4, TIM11_CH1,
+Page   73: LPTIM1_ETR,
+Page   73: LPTIM1_IN2, UART8_Tx,
+Page   78: SYS    TIM1/2    TIM3/4/5 11/LPTIM                                              RT4/5/7/8
+Page   78: TIM1_B    TIM3_C    TIM8_BKI                SPI1_MI                                TIM13_C
+Page   78: TIM1_C    TIM3_C    TIM8_CH                                                        TIM14_C              RX_D
+Page   78: TIM1_C              TIM8_BKI    I2C3_SC                         USART1                        OTG_FS_
+Page   78: TIM1_C                          I2C3_SM                         USART1
+Page   78: TIM1_C                                                          USART1                        OTG_FS_
+Page   78: TIM1_C                                                          USART1             CAN1_R     OTG_FS_
+Page   79: SYS     TIM1/2     TIM3/4/5 11/LPTIM                                                RT4/5/7/8
+Page   79: TIM1_ET                                                            USART1     SAI2_FS   CAN1_T   OTG_FS_
+Page   79: TIM1_C     TIM3_C    TIM8_CH                                                  UART4_             OTG_HS_ ETH_
+Page   79: TIM1_C     TIM3_C    TIM8_CH                                                                     OTG_HS_ ETH_
+Page   79: TIM4_C    TIM10_C     I2C1_SC                                                CAN1_R             ETH_
+Page   80: SYS    TIM1/2    TIM3/4/5 11/LPTIM                                              RT4/5/7/8
+Page   80: TIM4_C   TIM11_CH     I2C1_SD                                            CAN1_T
+Page   80: Port B                  TIM1_B                          I2C2_SM                         USART3             CAN2_R    OTG_HS_ TXD0
+Page   80: TIM1_C                                                          USART3             CAN2_T    OTG_HS_ TXD1
+Page   80: TIM1_C              TIM8_CH                 SPI2_MI             USART3             TIM12_C
+Page   80: RTC_R   TIM1_C              TIM8_CH                                                        TIM12_C
+Page   81: SYS    TIM1/2    TIM3/4/5 11/LPTIM                                                 RT4/5/7/8
+Page   82: SYS    TIM1/2    TIM3/4/5 11/LPTIM                                              RT4/5/7/8
+Page   82: TIM4_C    LPTIM1_I    I2C4_SC                         USART3                      SAI2_FS_
+Page   82: TIM4_C    LPTIM1_     I2C4_SD                                                       SAI2_SC
+Page   83: SYS    TIM1/2     TIM3/4/5 11/LPTIM                                                RT4/5/7/8
+Page   83: TIM4_ET LPTIM1_E                                                 UART8_              SAI2_MC
+Page   83: LPTIM1_I                                              UART8_T
+Page   83: TRACE   TIM1_B               TIM9_CH                 SPI4_M      SAI1_SD                                SAI2_MC
+Page   83: TIM1_ET                                                                     UART7_              QUADSPI
+Page   83: TIM1_C                                                                     UART7_T              QUADSPI
+Page   83: TIM1_C                                                                      UART7_              QUADSPI
+Page   83: TIM1_C                                                                      UART7_              QUADSPI
+Page   83: TIM1_C                                       SPI4_NS                                            SAI2_SD_
+Page   83: TIM1_C                                       SPI4_SC                                            SAI2_SC
+Page   83: TIM1_C                                       SPI4_MI                                            SAI2_FS_
+Page   84: SYS   TIM1/2    TIM3/4/5 11/LPTIM                                                RT4/5/7/8
+Page   84: TIM1_C                                      SPI4_M                                             SAI2_MC
+Page   84: TIM1_B
+Page   84: TIM10_C                 SPI5_NS SAI1_SD                UART7_
+Page   84: TIM11_CH                 SPI5_SC     SAI1_M            UART7_T
+Page   84: SPI5_MI     SAI1_SC            UART7_   TIM13_C    QUADSPI
+Page   84: SPI5_M      SAI1_FS            UART7_   TIM14_C    QUADSPI
+Page   85: SYS   TIM1/2    TIM3/4/5 11/LPTIM                                              RT4/5/7/8
+Page   86: SYS    TIM1/2    TIM3/4/5 11/LPTIM                                              RT4/5/7/8
+Page   86: LPTIM1_I                SPI6_MI             SPDIFRX   USART6
+Page   86: TRACE                       LPTIM1_                 SPI6_SC                       USART6                        TXD0
+Page   86: TRACE                      LPTIM1_E                 SPI6_M                        USART6                        TXD1
+Page   86: LPTIM1_I                                                                  SAI2_SC   ETH_
+Page   86: I2C2_SM     SPI5_SC                                TIM12_C              ETH_
+Page   87: SYS   TIM1/2    TIM3/4/5 11/LPTIM                                              RT4/5/7/8
+Page   87: I2C3_SM                                          TIM12_C
+Page   88: SYS   TIM1/2    TIM3/4/5 11/LPTIM                                              RT4/5/7/8
+Page   89: SYS   TIM1/2    TIM3/4/5 11/LPTIM                                              RT4/5/7/8
+Page   90: SYS   TIM1/2    TIM3/4/5 11/LPTIM                                              RT4/5/7/8
+Page   94: 0x4001 4800 - 0x4001 4BFF   TIM11
+Page   94: 0x4001 4400 - 0x4001 47FF   TIM10
+Page   94: 0x4001 0000 - 0x4001 03FF   TIM1
+Page   95: 0x4000 2000 - 0x4000 23FF   TIM14
+Page   95: 0x4000 1C00 - 0x4000 1FFF   TIM13
+Page   95: 0x4000 1800 - 0x4000 1BFF   TIM12
+Page   98: 0x4001 4800 - 0x4001 4BFF   TIM11
+Page   98: 0x4001 4400 - 0x4001 47FF   TIM10
+Page   98: 0x4001 0000 - 0x4001 03FF   TIM1
+Page   99: 0x4000 2400 - 0x4000 27FF   LPTIM1
+Page   99: 0x4000 2000 - 0x4000 23FF   TIM14
+Page   99: 0x4000 1C00 - 0x4000 1FFF   TIM13
+Page   99: 0x4000 1800 - 0x4000 1BFF   TIM12
+Page  125: TIM12               12.4             11.3          10.3
+Page  125: TIM13                 6              5.3            5
+Page  125: TIM14                 6              5.3            5
+Page  125: LPTIM1                9.4             8.7           8.1
+Page  126: TIM1                  25.2                23.9                 20.4
+Page  126: TIM10                   5.6                 5.2                 4.3
+Page  126: TIM11                   5.4                 5.2                 4.3
+Page  151: 1. TIMx is used as a general term to refer to the TIM1 to TIM12 timers.

@@ -1,0 +1,122 @@
+Keyword: USB
+Occurrences: 118
+================================================================================
+
+Page    1: 512+16+4 KB RAM, USB OTG HS/FS, 28 comm. int., LCD, DSI
+Page    1: – Dedicated USB power
+Page    2: – Up to four I2C interfaces (SMBus/PMBus)           – USB 2.0 full-speed device/host/OTG
+Page    2: ISO7816 interface, LIN, IrDA, modem              – USB 2.0 high-speed/full-speed
+Page    9: Table 91.    USB OTG full speed startup time . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 184
+Page    9: Table 92.    USB OTG full speed DC electrical characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 184
+Page    9: Table 93.    USB OTG full speed electrical characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 185
+Page    9: Table 94.    USB HS DC electrical characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 186
+Page    9: Table 95.    USB HS clock timing parameters . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 186
+Page    9: Table 96.    Dynamic characteristics: USB ULPI . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 187
+Page   11: Figure 4.    VDDUSB connected to VDD power supply . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+Page   11: Figure 5.    VDDUSB connected to external power supply . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 30
+Page   12: Figure 55.   USB OTG full speed timings: definition of data signal rise and fall time . . . . . . . . . . . . . . 185
+Page   15: •   An USB OTG full-speed and a USB OTG high-speed with full-speed capability (with the
+Page   15: inputs for USB (OTG_FS and OTG_HS) and SDMMC2 (clock, command and 4-bit data) are
+Page   17: USB OTG FS                                                                                     Yes
+Page   17: Communication       USB OTG HS                                                                                     Yes
+Page   20: USB                            DM
+Page   20: USB                          DMA/                                                                                                                                                                                              D[31:0], NOEN, NWEN,
+Page   20: RC LS                                                                                 VDDUSB33 = 3.0 to 3.6 V
+Page   23: Ethernet, USB HS, LCD-TFT, and DMA2D) and the slaves (flash memory, RAM,
+Page   23: GP                   GP   MAC     USB OTG LCD-TFT                            Chrom-ART
+Page   23: USB_HS_M
+Page   28: •   VDDUSB can be connected either to VDD or an external independent power supply (3.0
+Page   28: to 3.6V) for USB transceivers (refer to Figure 4 and Figure 5). For example, when the
+Page   28: VDDUSB. When the VDDUSB is connected to a separated power supply, it is independent
+Page   29: disappear. The following conditions VDDUSB must be respected:
+Page   29: –      During the power-on phase (VDD < VDD_MIN), VDDUSB should be always lower
+Page   29: –      During the power-down phase (VDD < VDD_MIN), VDDUSB should be always lower
+Page   29: –      The VDDUSB rising and falling time rate specifications must be respected
+Page   29: –      In operating mode phase, VDDUSB could be lower or higher than VDD:
+Page   29: - If USB (USB OTG_HS/OTG_FS) is used, the associated GPIOs powered by
+Page   29: VDDUSB are operating between VDDUSB_MIN and VDDUSB_MAX.
+Page   29: - The VDDUSB supply both USB transceiver (USB OTG_HS and USB OTG_FS). If
+Page   29: only one USB transceiver is used in the application, the GPIOs associated to the
+Page   29: other USB transceiver are still supplied by VDDUSB.
+Page   29: - If USB (USB OTG_HS/OTG_FS) is not used, the associated GPIOs powered by
+Page   29: VDDUSB are operating between VDD_MIN and VDD_MAX.
+Page   29: Figure 4. VDDUSB connected to VDD power supply
+Page   29: VDD= VDDA = VDDUSB
+Page   30: Figure 5. VDDUSB connected to external power supply
+Page   30: VDDUSB_MAX
+Page   30: USB functional area
+Page   30: VDDUSB
+Page   30: VDDUSB_MIN
+Page   30: USB non                                                  USB non
+Page   37: tamper / time stamp events, the USB OTG FS/HS wakeup or the Ethernet wakeup and
+Page   45: performance, while using USB peripherals.
+Page   45: without disabling the main PLL (PLL) used for CPU, USB and Ethernet interfaces.
+Page   47: The devices embed an USB OTG full-speed device/host/OTG peripheral with integrated
+Page   47: transceivers. The USB OTG FS peripheral is compliant with the USB 2.0 specification and
+Page   47: suspend/resume. The USB OTG controller requires a dedicated 48 MHz clock that is
+Page   47: •   USB 2.0 LPM (Link Power Management) support
+Page   47: The devices embed a USB OTG high-speed (up to 480 Mbit/s) device/host/OTG peripheral.
+Page   47: The USB OTG HS supports both full-speed and high-speed operations. It integrates the
+Page   47: (ULPI) for high-speed operation (480 Mbit/s). When using the USB OTG HS in HS mode, an
+Page   47: The USB OTG HS peripheral is compliant with the USB 2.0 specification and with the OTG
+Page   47: suspend/resume. The USB OTG controller requires a dedicated 48 MHz clock that is
+Page   48: •   USB 2.0 LPM (Link Power Management) support
+Page   48: •   Internal USB DMA
+Page   52: analyzer (TPA) device. The TPA is connected to a host computer using USB, Ethernet, or
+Page   56: PC0     PC1    PC3     VDD     VDD     VDDUSB PDR_ON VCAP_1     PC8    PC6
+Page   57: PF4   14                                                                    95   VDDUSB
+Page   58: PF3    19                                                                    114   VDDUSB
+Page   59: VDD     15                                                                     118   VDDUSB
+Page   60: H           PF2   PF1      PH4            VSS     VSS    VSS     VSS     VSS            VSS    VDDUSB PG8     PC6
+Page   61: F     VSS      VDDUSB         PC7        PA9      PA10     PH13     PH14   PA15(JTDI)   PG15    PE3       PI11    VDD       VSS
+Page   62: PI13   20                                                                 137   VDDUSB
+Page   63: PI13   20                                                                   137    VDDUSB
+Page   64: G   PH0     PF2   PI13   PI15    VDD    VSS                         VSS    VDDUSB PJ11    PK0    PC8    PC7
+Page   65: G    PH0     PF2   PI13   PI15    VDD    VSS                         VSS VDDUSB VSSDSI VDD12 PC8          PC7
+Page   77: F6           -        95       H13        114       137       G11          F2          118       137       G11        VDDUSB                             S             -             -                 -                  -
+Page  105: VDDUSB
+Page  105: VDDUSB
+Page  106: V DDUSB
+Page  106: VDDUSB
+Page  107: VDD, VBAT, VDDUSB, VDDDSI (1) and VDDSDMMC)(2)
+Page  107: VDDUSB) +3.6, 5.5 V)(4)(5)
+Page  108: 2. All main power (VDD, VDDA, VDDSDMMC, VDDUSB, VDDDSI) and ground (VSS, VSSA) pins must always be connected to the
+Page  108: Σ IVDDUSB      Total current into VDDUSB power line (source)                                                      25
+Page  108: Total output current sunk by sum of all USB I/Os                                                   25
+Page  108: Total output current sourced by sum of all I/Os and control pins except USB I/Os(2)               −120
+Page  109: USB supply voltage (supply       USB not used                              1.7     3.3    3.6
+Page  109: VDDUSB       voltage for PA11,PA12, PB14                                                                        V
+Page  109: and PB15 pins)                   USB used                                  3.0      -     3.6
+Page  111: 4. The voltage range for USB full speed PHYs can drop down to 2.7 V. However the electrical characteristics of D- and D+
+Page  130: 216 MHz)    USB_OTG_FS              32.4              31.9             26.7
+Page  136: be respected to comply with USB standard specifications.
+Page  184: USB OTG full speed (FS) characteristics
+Page  184: This interface is present in both the USB OTG HS and USB OTG FS controllers.
+Page  184: Table 91. USB OTG full speed startup time
+Page  184: tSTARTUP(1)          USB OTG full speed transceiver startup time                 1                        µs
+Page  184: Table 92. USB OTG full speed DC electrical characteristics
+Page  184: USB OTG full speed
+Page  184: VDDUSB transceiver operating                            -                3.0(2)     -       3.6        V
+Page  184: I(USB_FS_DP/DM,
+Page  184: USB_HS_DP/DM)
+Page  185: Table 92. USB OTG full speed DC electrical characteristics (continued)
+Page  185: (USB_FS_DP/DM,                                              17      21     24
+Page  185: USB_HS_DP/DM)
+Page  185: PA12, PB15 (USB_FS_DP,
+Page  185: USB_HS_DP)
+Page  185: 2. The USB OTG full speed transceiver functionality is ensured down to 2.7 V but not the full USB full speed
+Page  185: electrical characteristics which are degraded in the 2.7-to-3.0 V VDDUSB voltage range.
+Page  185: 4. RL is the load connected on the USB OTG full speed drivers.
+Page  185: Figure 55. USB OTG full speed timings: definition of data signal rise and fall time
+Page  185: Table 93. USB OTG full speed electrical characteristics(1)
+Page  186: 2. Measured from 10% to 90% of the data signal. For more detailed informations, please refer to USB
+Page  186: USB high speed (HS) characteristics
+Page  186: Table 94. USB HS DC electrical characteristics
+Page  186: Input level       VDD      USB OTG HS operating voltage                      1.7          3.6          V
+Page  186: Table 95. USB HS clock timing parameters(1)
+Page  186: USB HS interface
+Page  187: Table 96. Dynamic characteristics: USB ULPI(1)
+Page  247: 765= STM32F765xx, USB OTG FS/HS, camera interface, Ethernet
+Page  247: 767= STM32F767xx, USB OTG FS/HS, camera interface,
+Page  247: 768 = STM32F768Ax, USB OTG FS/HS, camera interface,
+Page  247: 769= STM32F769xx, USB OTG FS/HS, camera interface,

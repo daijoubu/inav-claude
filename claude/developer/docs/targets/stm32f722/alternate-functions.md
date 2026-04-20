@@ -1,0 +1,218 @@
+# STM32F722/F723 Alternate Function Mapping (Table 12)
+
+Source: STM32F722xx/STM32F723xx Datasheet DS11853, pages 84–94
+
+## AF Group Reference
+
+| AF# | Peripheral Group |
+|-----|------------------|
+| AF 0 | SYS |
+| AF 1 | TIM1/2 |
+| AF 2 | TIM3/4/5 |
+| AF 3 | TIM8/9/10/11/LPTIM1 |
+| AF 4 | I2C1/2/3/USART1 |
+| AF 5 | SPI1/2/3/4/5/I2S |
+| AF 6 | SPI2/3/SAI1/UART4 |
+| AF 7 | SPI2/3/USART1/2/3/UART5 |
+| AF 8 | SAI2/USART6/UART4/5/7/8/OTG1_FS |
+| AF 9 | CAN1/TIM12/13/14/QUADSPI/FMC/OTG2_HS |
+| AF10 | SAI2/QUADSPI/SDMMC2/OTG2_HS/OTG1_FS |
+| AF11 | SDMMC2 |
+| AF12 | UART7/FMC/SDMMC1/OTG2_FS |
+| AF13 | - |
+| AF14 | - |
+| AF15 | EVENTOUT |
+
+---
+
+## Pin Alternate Functions
+
+
+### Port A
+
+| Pin | AF0 | AF1 | AF2 | AF3 | AF4 | AF5 | AF6 | AF7 | AF8 | AF9 | AF10 | AF11 | AF12 | AF13 | AF14 | AF15 |
+|-----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|
+| **PA0** | - | TIM2_CH1/TIM2_ETR | TIM5_CH1 | TIM8_ETR | - | - | - | USART2_CTS | UART4_TX | - | SAI2_SD_B | - | - | - | - | EVENTOUT |
+| **PA1** | - | TIM2_CH2 | TIM5_CH2 | - | - | - | - | USART2_RTS | UART4_RX | QUADSPI_BK1_IO3 | SAI2_MCK_B | - | - | - | - | EVENTOUT |
+| **PA2** | - | TIM2_CH3 | TIM5_CH3 | TIM9_CH1 | - | - | - | USART2_TX | SAI2_SCK_B | - | - | - | - | - | - | EVENTOUT |
+| **PA3** | - | TIM2_CH4 | TIM5_CH4 | TIM9_CH2 | - | - | - | USART2_RX | - | - | OTG_HS_ULPI_D0 | - | - | - | - | EVENTOUT |
+| **PA4** | - | - | - | - | - | SPI1_NSS/I2S1_WS | SPI3_NSS/I2S3_WS | USART2_CK | - | - | - | - | OTG_HS_SOF | - | - | EVENTOUT |
+| **PA5** | - | TIM2_CH1/TIM2_ETR | - | TIM8_CH1N | - | SPI1_SCK/I2S1_CK | - | - | - | - | OTG_HS_ULPI_CK | - | - | - | - | EVENTOUT |
+| **PA6** | - | TIM1_BKIN | TIM3_CH1 | TIM8_BKIN | - | SPI1_MISO | - | - | - | TIM13_CH1 | - | - | - | - | - | EVENTOUT |
+| **PA7** | - | TIM1_CH1N | TIM3_CH2 | TIM8_CH1N | - | SPI1_MO/SI/I2S1_S/D | - | - | - | TIM14_CH1 | - | - | FMC_SDN/WE | - | - | EVENTOUT |
+| **PA8** | MCO1 | TIM1_CH1 | - | TIM8_BKIN2 | I2C3_SCL | - | - | USART1_CK | - | - | OTG_FS_SOF | - | - | - | - | EVENTOUT |
+| **PA9** | - | TIM1_CH2 | - | - | I2C3_SMB/A | SPI2_SCK/I2S2_CK | - | USART1_TX | - | - | - | - | - | - | - | EVENTOUT |
+| **PA10** | - | TIM1_CH3 | - | - | - | - | - | USART1_RX | - | - | OTG_FS_ID | - | - | - | - | EVENTOUT |
+| **PA11** | - | TIM1_CH4 | - | - | - | - | - | USART1_CTS | - | CAN1_RX | OTG_FS_DM | - | - | - | - | EVENTOUT |
+| **PA12** | - | TIM1_ETR | - | - | - | - | - | USART1_RTS | SAI2_FS_B | CAN1_TX | OTG_FS_DP | - | - | - | - | EVENTOUT |
+| **PA13** | JTMS-SWDIO | - | - | - | - | - | - | - | - | - | - | - | - | - | - | EVENTOUT |
+| **PA14** | JTCK-SWCLK | - | - | - | - | - | - | - | - | - | - | - | - | - | - | EVENTOUT |
+| **PA15** | JTDI | TIM2_CH1/TIM2_ETR | - | - | - | SPI1_NSS/I2S1_WS | SPI3_NSS/I2S3_WS | - | UART4_RTS | - | - | - | - | - | - | EVENTOUT |
+
+### Port B
+
+| Pin | AF0 | AF1 | AF2 | AF3 | AF4 | AF5 | AF6 | AF7 | AF8 | AF9 | AF10 | AF11 | AF12 | AF13 | AF14 | AF15 |
+|-----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|
+| **PB0** | - | TIM1_CH2N | TIM3_CH3 | TIM8_CH2N | - | - | - | - | UART4_CTS | - | OTG_HS_ULPI_D1 | - | - | - | - | EVENTOUT |
+| **PB1** | - | TIM1_CH3N | TIM3_CH4 | TIM8_CH3N | - | - | - | - | - | - | OTG_HS_ULPI_D2 | - | - | - | - | EVENTOUT |
+| **PB2** | - | - | - | - | - | - | SAI1_SD_A | SPI3_MOSI/I2S3_SD | - | QUADSPI_CLK | - | - | - | - | - | EVENTOUT |
+| **PB3** | JTDO/TR/ACESWO | TIM2_CH2 | - | - | - | SPI1_SCK/I2S1_CK | SPI3_SCK/I2S3_CK | - | - | - | SDMMC2_D2 | - | - | - | - | EVENTOUT |
+| **PB4** | NJTRST | - | TIM3_CH1 | - | - | SPI1_MISO | SPI3_MISO | SPI2_NSS/I2S2_WS | - | - | SDMMC2_D3 | - | - | - | - | EVENTOUT |
+| **PB5** | - | - | TIM3_CH2 | - | I2C1_SMBA | SPI1_MOSI/I2S1_SD | SPI3_MOSI/I2S3_SD | - | - | - | OTG_HS_ULPI_D7 | - | FMC_SDCKE1 | - | - | EVENTOUT |
+| **PB6** | - | - | TIM4_CH1 | - | I2C1_SCL | - | - | USART1_TX | - | - | QUADSPI_BK1_NCS | - | FMC_SDNE1 | - | - | EVENTOUT |
+| **PB7** | - | - | TIM4_CH2 | - | I2C1_SDA | - | - | USART1_RX | - | - | - | - | FMC_NL | - | - | EVENTOUT |
+| **PB8** | - | - | TIM4_CH3 | TIM10_CH1 | I2C1_SCL | - | - | - | - | CAN1_RX | SDMMC2_D4 | - | SDMMC1_D4 | - | - | EVENTOUT |
+| **PB9** | - | - | TIM4_CH4 | TIM11_CH1 | I2C1_SDA | SPI2_NSS/I2S2_WS | - | - | - | CAN1_TX | SDMMC2_D5 | - | SDMMC1_D5 | - | - | EVENTOUT |
+| **PB10** | - | TIM2_CH3 | - | - | I2C2_SCL | SPI2_SCK/I2S2_CK | - | USART3_TX | - | - | OTG_HS_ULPI_D3 | - | - | - | - | EVENTOUT |
+| **PB11** | - | TIM2_CH4 | - | - | I2C2_SDA | - | - | USART3_RX | - | - | OTG_HS_ULPI_D4 | - | - | - | - | EVENTOUT |
+| **PB12** | - | TIM1_BKIN | - | - | I2C2_SMBA | SPI2_NSS/I2S2_WS | - | USART3_CK | - | - | OTG_HS_ULPI_D5 | - | OTG_HS_ID | - | - | EVENTOUT |
+| **PB13** | - | TIM1_CH1N | - | - | - | SPI2_SCK/I2S2_CK | - | USART3_CT/S | - | - | OTG_HS_ULPI_D6 | - | - | - | - | EVENTOUT |
+| **PB14** | - | TIM1_CH2N | - | TIM8_CH2N | - | SPI2_MISO | - | USART3_RT/S | - | TIM12_CH1 | SDMMC2_D0 | - | OTG_HS_DM | - | - | EVENTOUT |
+| **PB15** | RTC_REFIN | TIM1_CH3N | - | TIM8_CH3N | - | SPI2_MOSI/I2S2_SD | - | - | - | TIM12_CH2 | SDMMC2_D1 | - | OTG_HS_DP | - | - | EVENTOUT |
+
+### Port C
+
+| Pin | AF0 | AF1 | AF2 | AF3 | AF4 | AF5 | AF6 | AF7 | AF8 | AF9 | AF10 | AF11 | AF12 | AF13 | AF14 | AF15 |
+|-----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|
+| **PC0** | - | - | - | - | - | - | - | - | SAI2_FS_B | - | OTG_HS_ULPI_STP | - | FMC_SDNWE | - | - | EVENTOUT |
+| **PC1** | TRACED0 | - | - | - | - | SPI2_MOSI/I2S2_SD | SAI1_SD_A | - | - | - | - | - | - | - | - | EVENTOUT |
+| **PC2** | - | - | - | - | - | SPI2_MISO | - | - | - | - | OTG_HS_UL/PI_DIR | - | FMC_SDNE0 | - | - | EVENTOUT |
+| **PC3** | - | - | - | - | - | SPI2_MOSI/I2S2_SD | - | - | - | - | OTG_HS_UL/PI_NXT | - | FMC_SDCKE0 | - | - | EVENTOUT |
+| **PC4** | - | - | - | - | - | I2S1_MCK | - | - | - | - | - | - | FMC_S/DNE0 | - | - | EVENTOUT |
+| **PC5** | - | - | - | - | - | - | - | - | - | - | - | - | FMC_SDCKE0 | - | - | EVENTOUT |
+| **PC6** | - | - | TIM3_CH1 | TIM8_CH1 | - | I2S2_MCK | - | - | USART6_TX | - | SDMMC2_D6 | - | SDMMC1_D6 | - | - | EVENTOUT |
+| **PC7** | - | - | TIM3_CH2 | TIM8_CH2 | - | - | I2S3_MCK | - | USART6_RX | - | SDMMC2_D7 | - | SDMMC1_D7 | - | - | EVENTOUT |
+| **PC8** | TRACED1 | - | TIM3_CH3 | TIM8_CH3 | - | - | - | UART5_RTS | USART6_CK | - | - | - | SDMMC1_D0 | - | - | EVENTOUT |
+| **PC9** | MCO2 | - | TIM3_CH4 | TIM8_CH4 | I2C3_SDA | I2S_CKIN | - | UART5_CTS | - | QUADSPI_BK1_IO0 | - | - | SDMMC1_D1 | - | - | EVENTOUT |
+| **PC10** | - | - | - | - | - | - | SPI3_SCK/I2S3_CK | USART3_TX | UART4_TX | QUADSPI_BK1_IO1 | - | - | SDMMC1_D2 | - | - | EVENTOUT |
+| **PC11** | - | - | - | - | - | - | SPI3_MISO | USART3_RX | UART4_RX | QUADSPI_BK2_NCS | - | - | SDMMC1_D3 | - | - | EVENTOUT |
+| **PC12** | TRACED3 | - | - | - | - | - | SPI3_MOSI/I2S3_SD | USART3_CK | UART5_TX | - | - | - | SDMMC1_CK | - | - | EVENTOUT |
+| **PC13** | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | EVENTOUT |
+| **PC14** | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | EVENTOUT |
+| **PC15** | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | EVENTOUT |
+
+### Port D
+
+| Pin | AF0 | AF1 | AF2 | AF3 | AF4 | AF5 | AF6 | AF7 | AF8 | AF9 | AF10 | AF11 | AF12 | AF13 | AF14 | AF15 |
+|-----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|
+| **PD0** | - | - | - | - | - | - | - | - | - | CAN1_RX | - | - | FMC_D2 | - | - | EVENTOUT |
+| **PD1** | - | - | - | - | - | - | - | - | - | CAN1_TX | - | - | FMC_D3 | - | - | EVENTOUT |
+| **PD2** | TRACED2 | - | TIM3_ETR | - | - | - | - | - | UART5_RX | - | - | - | SDMMC1_CMD | - | - | EVENTOUT |
+| **PD3** | - | - | - | - | - | SPI2_SCK/I2S2_CK | - | USART2_CTS | - | - | - | - | FMC_CLK | - | - | EVENTOUT |
+| **PD4** | - | - | - | - | - | - | - | USART2_RTS | - | - | - | - | FMC_NOE | - | - | EVENTOUT |
+| **PD5** | - | - | - | - | - | - | - | USART2_TX | - | - | - | - | FMC_NWE | - | - | EVENTOUT |
+| **PD6** | - | - | - | - | - | SPI3_MOSI/I2S3_SD | SAI1_SD_A | USART2_RX | - | - | - | SDMMC2_CK | FMC_NWAIT | - | - | EVENTOUT |
+| **PD7** | - | - | - | - | - | - | - | USART2_CK | - | - | - | SDMMC2_CMD | FMC_NE1 | - | - | EVENTOUT |
+| **PD8** | - | - | - | - | - | - | - | USART3_TX | - | - | - | - | FMC_D13 | - | - | EVENTOUT |
+| **PD9** | - | - | - | - | - | - | - | USART3_RX | - | - | - | - | FMC_D14 | - | - | EVENTOUT |
+| **PD10** | - | - | - | - | - | - | - | USART3_CK | - | - | - | - | FMC_D15 | - | - | EVENTOUT |
+| **PD11** | - | - | - | - | - | - | - | USART3_CTS | - | QUADSPI_BK1_IO0 | SAI2_SD_A | - | FMC_A16/FMC_CLE | - | - | EVENTOUT |
+| **PD12** | - | - | TIM4_CH1 | LPTIM1_IN1 | - | - | - | USART3_RTS | - | QUADSPI_BK1_IO1 | SAI2_FS_A | - | FMC_A17/FMC_ALE | - | - | EVENTOUT |
+| **PD13** | - | - | TIM4_CH2 | LPTIM1_OUT | - | - | - | - | - | QUADSPI_BK1_IO3 | SAI2_SCK_A | - | FMC_A18 | - | - | EVENTOUT |
+| **PD14** | - | - | TIM4_CH3 | - | - | - | - | - | UART8_CTS | - | - | - | FMC_D0 | - | - | EVENTOUT |
+| **PD15** | - | - | TIM4_CH4 | - | - | - | - | - | UART8_RTS | - | - | - | FMC_D1 | - | - | EVENTOUT |
+
+### Port E
+
+| Pin | AF0 | AF1 | AF2 | AF3 | AF4 | AF5 | AF6 | AF7 | AF8 | AF9 | AF10 | AF11 | AF12 | AF13 | AF14 | AF15 |
+|-----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|
+| **PE0** | - | - | TIM4_ETR | LPTIM1_ETR | - | - | - | - | UART8_Rx | - | SAI2_MCK_A | - | FMC_NBL0 | - | - | EVENTOUT |
+| **PE1** | - | - | - | LPTIM1_IN2 | - | - | - | - | UART8_Tx | - | - | - | FMC_N/BL1 | - | - | EVENTOUT |
+| **PE2** | TRACECL/K | - | - | - | - | SPI4_SCK | SAI1_MCLK_A | - | - | QUADSPI_BK1_IO2 | - | - | FMC_A23 | - | - | EVENTOUT |
+| **PE3** | TRACED0 | - | - | - | - | - | SAI1_SD_B | - | - | - | - | - | FMC_A19 | - | - | EVENTOUT |
+| **PE4** | TRACED1 | - | - | - | - | SPI4_NSS | SAI1_FS_A | - | - | - | - | - | FMC_A20 | - | - | EVENTOUT |
+| **PE5** | TRACED2 | - | - | TIM9_CH1 | - | SPI4_MISO | SAI1_SCK_A | - | - | - | - | - | FMC_A21 | - | - | EVENTOUT |
+| **PE6** | TRACED3 | TIM1_BKIN2 | - | TIM9_CH2 | - | SPI4_MOSI | SAI1_SD_A | - | - | - | SAI2_MCK_B | - | FMC_A22 | - | - | EVENTOUT |
+| **PE7** | - | TIM1_ETR | - | - | - | - | - | - | UART7_Rx | - | QUADSPI_BK2_IO0 | - | FMC_D4 | - | - | EVENTOUT |
+| **PE8** | - | TIM1_CH1N | - | - | - | - | - | - | UART7_Tx | - | QUADSPI_BK2_IO1 | - | FMC_D5 | - | - | EVENTOUT |
+| **PE9** | - | TIM1_CH1 | - | - | - | - | - | - | UART7_RTS | - | QUADSPI_BK2_IO2 | - | FMC_D6 | - | - | EVENTOUT |
+| **PE10** | - | TIM1_CH2N | - | - | - | - | - | - | UART7_CTS | - | QUADSPI_BK2_IO3 | - | FMC_D7 | - | - | EVENTOUT |
+| **PE11** | - | TIM1_CH2 | - | - | - | SPI4_NSS | - | - | - | - | SAI2_SD_B | - | FMC_D8 | - | - | EVENTOUT |
+| **PE12** | - | TIM1_CH3N | - | - | - | SPI4_SCK | - | - | - | - | SAI2_SCK_B | - | FMC_D9 | - | - | EVENTOUT |
+| **PE13** | - | TIM1_CH3 | - | - | - | SPI4_MISO | - | - | - | - | SAI2_FS_B | - | FMC_D10 | - | - | EVENTOUT |
+| **PE14** | - | TIM1_CH4 | - | - | - | SPI4_MOSI | - | - | - | - | SAI2_MCK_B | - | FMC_D11 | - | - | EVENTOUT |
+| **PE15** | - | TIM1_BKIN | - | - | - | - | - | - | - | - | - | - | FMC_D12 | - | - | EVENTOUT |
+
+### Port F
+
+| Pin | AF0 | AF1 | AF2 | AF3 | AF4 | AF5 | AF6 | AF7 | AF8 | AF9 | AF10 | AF11 | AF12 | AF13 | AF14 | AF15 |
+|-----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|
+| **PF0** | - | - | - | - | I2C2_SDA | - | - | - | - | - | - | - | FMC_A0 | - | - | EVENTOUT |
+| **PF1** | - | - | - | - | I2C2_SCL | - | - | - | - | - | - | - | FMC_A1 | - | - | EVENTOUT |
+| **PF2** | - | - | - | - | I2C2_SMBA | - | - | - | - | - | - | - | FMC_A2 | - | - | EVENTOUT |
+| **PF3** | - | - | - | - | - | - | - | - | - | - | - | - | FMC_A3 | - | - | EVENTOUT |
+| **PF4** | - | - | - | - | - | - | - | - | - | - | - | - | FMC_A4 | - | - | EVENTOUT |
+| **PF5** | - | - | - | - | - | - | - | - | - | - | - | - | FMC_A5 | - | - | EVENTOUT |
+| **PF6** | - | - | - | TIM10_CH1 | - | SPI5_NSS | SAI1_SD_B | - | UART7_Rx | QUADSPI_BK1_IO3 | - | - | - | - | - | EVENTOUT |
+| **PF7** | - | - | - | TIM11_CH1 | - | SPI5_SCK | SAI1_MCL/K_B | - | UART7_Tx | QUADSPI_BK1_IO2 | - | - | - | - | - | EVENTOUT |
+| **PF8** | - | - | - | - | - | SPI5_MISO | SAI1_SCK_B | - | UART7_RTS | TIM13_CH1 | QUADSPI_BK1_IO0 | - | - | - | - | EVENTOUT |
+| **PF9** | - | - | - | - | - | SPI5_MOSI | SAI1_FS_B | - | UART7_CTS | TIM14_CH1 | QUADSPI_BK1_IO1 | - | - | - | - | EVENTOUT |
+| **PF10** | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | EVENTOUT |
+| **PF11** | - | - | - | - | - | SPI5_MOSI | - | - | - | - | SAI2_SD_B | - | FMC_SDNRAS | - | - | EVENTOUT |
+| **PF12** | - | - | - | - | - | - | - | - | - | - | - | - | FMC_A6 | - | - | EVENTOUT |
+| **PF13** | - | - | - | - | - | - | - | - | - | - | - | - | FMC_A7 | - | - | EVENTOUT |
+| **PF14** | - | - | - | - | - | - | - | - | - | - | - | - | FMC_A8 | - | - | EVENTOUT |
+| **PF15** | - | - | - | - | - | - | - | - | - | - | - | - | FMC_A9 | - | - | EVENTOUT |
+
+### Port G
+
+| Pin | AF0 | AF1 | AF2 | AF3 | AF4 | AF5 | AF6 | AF7 | AF8 | AF9 | AF10 | AF11 | AF12 | AF13 | AF14 | AF15 |
+|-----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|
+| **PG0** | - | - | - | - | - | - | - | - | - | - | - | - | FMC_A10 | - | - | EVENTOUT |
+| **PG1** | - | - | - | - | - | - | - | - | - | - | - | - | FMC_A11 | - | - | EVENTOUT |
+| **PG2** | - | - | - | - | - | - | - | - | - | - | - | - | FMC_A12 | - | - | EVENTOUT |
+| **PG3** | - | - | - | - | - | - | - | - | - | - | - | - | FMC_A13 | - | - | EVENTOUT |
+| **PG4** | - | - | - | - | - | - | - | - | - | - | - | - | FMC_A14/FMC_BA0 | - | - | EVENTOUT |
+| **PG5** | - | - | - | - | - | - | - | - | - | - | - | - | FMC_A15/FMC_BA1 | - | - | EVENTOUT |
+| **PG6** | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | EVENTOUT |
+| **PG7** | - | - | - | - | - | - | - | - | USART6_CK | - | - | - | FMC_INT | - | - | EVENTOUT |
+| **PG8** | - | - | - | - | - | - | - | - | USART6_RTS | - | - | - | FMC_SDCLK | - | - | EVENTOUT |
+| **PG9** | - | - | - | - | - | - | - | - | USART6_RX | QUADSPI_BK2_IO2 | SAI2_FS_B | SDMMC2_D0 | FMC_NE2/FMC_NCE | - | - | EVENTOUT |
+| **PG10** | - | - | - | - | - | - | - | - | - | - | SAI2_SD_B | SDMMC2_D1 | FMC_NE3 | - | - | EVENTOUT |
+| **PG11** | - | - | - | - | - | - | - | - | - | - | SDMMC2_D2 | - | - | - | - | EVENTOUT |
+| **PG12** | - | - | - | LPTIM1_IN1 | - | - | - | - | USART6_RTS | - | - | SDMMC2_D3 | FMC_NE4 | - | - | EVENTOUT |
+| **PG13** | TRACED0 | - | - | LPTIM1_OUT | - | - | - | - | USART6_CTS | - | - | - | FMC_A24 | - | - | EVENTOUT |
+| **PG14** | TRACED1 | - | - | LPTIM1_ETR | - | - | - | - | USART6_TX | QUADSPI_BK2_IO3 | - | - | FMC_A25 | - | - | EVENTOUT |
+| **PG15** | - | - | - | - | - | - | - | - | USART6_CTS | - | - | - | FMC_SDNCAS | - | - | EVENTOUT |
+
+### Port H
+
+| Pin | AF0 | AF1 | AF2 | AF3 | AF4 | AF5 | AF6 | AF7 | AF8 | AF9 | AF10 | AF11 | AF12 | AF13 | AF14 | AF15 |
+|-----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|
+| **PH0** | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | EVENTOUT |
+| **PH1** | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | EVENTOUT |
+| **PH2** | - | - | - | LPTIM1_IN2 | - | - | - | - | - | QUADSPI_BK2_IO0 | SAI2_SCK_B | - | FMC_SDCKE0 | - | - | EVENTOUT |
+| **PH3** | - | - | - | - | - | - | - | - | - | QUADSPI_BK2_IO1 | SAI2_MCK_B | - | FMC_SDNE0 | - | - | EVENTOUT |
+| **PH4** | - | - | - | - | I2C2_SCL | - | - | - | - | - | OTG_HS_ULPI_NXT | - | - | - | - | EVENTOUT |
+| **PH5** | - | - | - | - | I2C2_SDA | SPI5_NSS | - | - | - | - | - | - | FMC_SDNWE | - | - | EVENTOUT |
+| **PH6** | - | - | - | - | I2C2_SMBA | SPI5_SCK | - | - | - | TIM12_CH1 | - | - | FMC_SDNE1 | - | - | EVENTOUT |
+| **PH7** | - | - | - | - | I2C3_SCL | SPI5_MISO | - | - | - | - | - | - | FMC_SDCKE1 | - | - | EVENTOUT |
+| **PH8** | - | - | - | - | I2C3_SDA | - | - | - | - | - | - | - | FMC_D16 | - | - | EVENTOUT |
+| **PH9** | - | - | - | - | I2C3_SMB/A | - | - | - | - | TIM12_CH2 | - | - | FMC_D17 | - | - | EVENTOUT |
+| **PH10** | - | - | TIM5_CH1 | - | - | - | - | - | - | - | - | - | FMC_D18 | - | - | EVENTOUT |
+| **PH11** | - | - | TIM5_CH2 | - | - | - | - | - | - | - | - | - | FMC_D19 | - | - | EVENTOUT |
+| **PH12** | - | - | TIM5_CH3 | - | - | - | - | - | - | - | - | - | FMC_D20 | - | - | EVENTOUT |
+| **PH13** | - | - | - | TIM8_CH1N | - | - | - | - | UART4_TX | CAN1_TX | - | - | FMC_D21 | - | - | EVENTOUT |
+| **PH14** | - | - | - | TIM8_CH2N | - | - | - | - | UART4_RX | CAN1_RX | - | - | FMC_D22 | - | - | EVENTOUT |
+| **PH15** | - | - | - | TIM8_CH3N | - | - | - | - | - | - | - | - | FMC_D23 | - | - | EVENTOUT |
+
+### Port I
+
+| Pin | AF0 | AF1 | AF2 | AF3 | AF4 | AF5 | AF6 | AF7 | AF8 | AF9 | AF10 | AF11 | AF12 | AF13 | AF14 | AF15 |
+|-----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|
+| **PI0** | - | - | TIM5_CH4 | - | - | SPI2_NSS/I2S2_WS | - | - | - | - | - | - | FMC_D24 | - | - | EVENTOUT |
+| **PI1** | - | - | - | TIM8_BKIN2 | - | SPI2_SCK/I2S2_CK | - | - | - | - | - | - | FMC_D25 | - | - | EVENTOUT |
+| **PI2** | - | - | - | TIM8_CH4 | - | SPI2_MIS/O | - | - | - | - | - | - | FMC_D26 | - | - | EVENTOUT |
+| **PI3** | - | - | - | TIM8_ETR | - | SPI2_MO/SI/I2S2_S/D | - | - | - | - | - | - | FMC_D27 | - | - | EVENTOUT |
+| **PI4** | - | - | - | TIM8_BKIN | - | - | - | - | - | - | SAI2_MCK_A | - | FMC_NBL/2 | - | - | EVENTOUT |
+| **PI5** | - | - | - | TIM8_CH1 | - | - | - | - | - | - | SAI2_SCK_A | - | FMC_NBL/3 | - | - | EVENTOUT |
+| **PI6** | - | - | - | TIM8_CH2 | - | - | - | - | - | - | SAI2_SD_A | - | FMC_D28 | - | - | EVENTOUT |
+| **PI7** | - | - | - | TIM8_CH3 | - | - | - | - | - | - | SAI2_FS_A | - | FMC_D29 | - | - | EVENTOUT |
+| **PI8** | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | EVENTOUT |
+| **PI9** | - | - | - | - | - | - | - | - | UART4_RX | CAN1_RX | - | - | FMC_D30 | - | - | EVENTOUT |
+| **PI10** | - | - | - | - | - | - | - | - | - | - | - | - | FMC_D31 | - | - | EVENTOUT |
+| **PI11** | - | - | - | - | - | - | - | - | - | - | OTG_HS_UL/PI_DIR | - | - | - | - | EVENTOUT |
+| **PI12** | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | EVENTOUT |
+| **PI13** | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | EVENTOUT |
+| **PI14** | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | EVENTOUT |
+| **PI15** | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | EVENTOUT |

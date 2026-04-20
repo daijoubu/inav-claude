@@ -1,0 +1,75 @@
+Keyword: RTC
+Occurrences: 71
+================================================================================
+
+Page    1: – 32 kHz oscillator for RTC with calibration                 • True random number generator
+Page    1: • Low-power                                                    • RTC: subsecond accuracy, hardware calendar
+Page    1: – VBAT supply for RTC, 32×32-bit backup
+Page    2: 3.19     Real-time clock (RTC), backup SRAM and backup registers . . . . . . . . . . 32
+Page    4: 6.3.20     RTC characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 169
+Page    7: Table 62.   RTC characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 169
+Page    9: Figure 25.   Typical VBAT current consumption (RTC ON/BKP SRAM OFF and
+Page    9: Figure 26.   Typical VBAT current consumption (RTC ON/BKP SRAM OFF and
+Page    9: Figure 27.   Typical VBAT current consumption (RTC ON/BKP SRAM OFF and
+Page    9: Figure 28.   Typical VBAT current consumption (RTC ON/BKP SRAM OFF and
+Page    9: Figure 29.   Typical VBAT current consumption (RTC ON/BKP SRAM OFF and
+Page   13: All the devices offer three 12-bit ADCs, two DACs, a low-power RTC, thirteen general-
+Page   18: RTC                               RTC_AF1
+Page   18: GPIO PORT I                                                                                                                                                                                                                                                          RTC_AF1
+Page   18: RTC_50HZ
+Page   25: •   VBAT = 1.65 to 3.6 V: power supply for RTC, external clock 32 kHz oscillator and
+Page   32: 3.19       Real-time clock (RTC), backup SRAM and backup registers
+Page   32: The RTC is an independent BCD timer/counter. It supports the following features:
+Page   32: •   On-the-fly correction from 1 to 32767 RTC clock pulses. This can be used to
+Page   32: The RTC and the 32 backup registers are supplied through a switch that takes power either
+Page   32: The RTC clock sources can be:
+Page   33: The RTC is functional in VBAT mode and in all low-power modes when it is clocked by the
+Page   33: LSE. When clocked by the LSI, the RTC is not functional in VBAT mode, but is functional in
+Page   33: All RTC events (Alarm, Wake-Up Timer, Timestamp or Tamper) can generate an interrupt
+Page   33: source can be one of the 16 external lines, the PVD output, the RTC alarm / wake-up /
+Page   33: or an RTC alarm / wake-up / tamper /time stamp event occurs.
+Page   34: The VBAT pin supplies the RTC, the backup registers and the backup SRAM.
+Page   34: Note:      When the microcontroller is supplied from VBAT, external interrupts and RTC alarm/events
+Page   39: •    Smartcard mode ( T=0 and T=1 asynchronous protocols for Smartcards as defined in
+Page   40: Smartcard mode                                                 X                 -
+Page   56: (2)                             RTC_TAMP2/
+Page   56: -          -          -          -       D2           7         7       C2            PI8       I/O FT (3)                              EVENTOUT           RTC_TS,WK
+Page   56: RTC_TAMP1/
+Page   56: RTC_TS/RTC
+Page   58: SAI1_SD_A, ETH_MDC,     RTC_TAMP3,
+Page   65: RTC_REFIN,
+Page   74: 3. Main function after the first backup domain power-up. Later on, it depends on the contents of the RTC registers even after
+Page   74: reset (because these registers are not reset by the main reset). For details on how to manage these I/Os, refer to the RTC
+Page   80: RTC_R   TIM1_C              TIM8_CH                                                        TIM12_C
+Page   95: 0x4000 2800 - 0x4000 2BFF   RTC & BKP Registers
+Page   99: 0x4000 2800 - 0x4000 2BFF   RTC & BKP Registers
+Page  101: VBAT =                                  Power switch                        (OSC32K,RTC,
+Page  117: Backup SRAM OFF, RTC and
+Page  117: Backup SRAM ON, RTC and
+Page  117: Backup SRAM OFF, RTC ON
+Page  117: Backup SRAM OFF, RTC ON
+Page  117: Backup SRAM OFF, RTC ON
+Page  117: mode           Backup SRAM OFF, RTC ON
+Page  117: Backup SRAM ON, RTC ON
+Page  117: Backup SRAM ON, RTC ON
+Page  117: Backup SRAM ON, RTC ON
+Page  117: Backup SRAM ON, RTC ON
+Page  118: Backup SRAM OFF, RTC and
+Page  118: Backup SRAM ON, RTC and
+Page  118: Backup SRAM OFF, RTC ON
+Page  118: Backup SRAM OFF, RTC ON
+Page  118: Backup SRAM OFF, RTC ON
+Page  118: Backup SRAM OFF, RTC ON
+Page  118: Backup SRAM ON, RTC ON and
+Page  118: Backup SRAM ON, RTC ON and
+Page  118: Backup SRAM ON, RTC ON and
+Page  118: Backup SRAM ON, RTC ON and
+Page  119: Figure 25. Typical VBAT current consumption (RTC ON/BKP SRAM OFF and
+Page  119: Figure 26. Typical VBAT current consumption (RTC ON/BKP SRAM OFF and
+Page  120: Figure 27. Typical VBAT current consumption (RTC ON/BKP SRAM OFF and
+Page  120: Figure 28. Typical VBAT current consumption (RTC ON/BKP SRAM OFF and
+Page  121: Figure 29. Typical VBAT current consumption (RTC ON/BKP SRAM OFF and
+Page  151: 6.3.20      RTC characteristics
+Page  151: Table 62. RTC characteristics
+Page  151: -        fPCLK1/RTCCLK frequency ratio                                              4                -
+Page  151: from/to an RTC register

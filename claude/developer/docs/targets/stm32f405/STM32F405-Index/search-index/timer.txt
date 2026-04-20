@@ -1,0 +1,61 @@
+Keyword: timer
+Occurrences: 57
+================================================================================
+
+Page    1: • Up to 17 timers: up to twelve 16-bit and two 32-
+Page    1: • Memories                                                       bit timers up to 168 MHz, each with up to 4
+Page    3: 3.0.21      Timers and watchdogs . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 32
+Page    5: 6.3.18      TIM timer characteristics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 120
+Page    7: Table 4.    Timer feature comparison . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 32
+Page   14: timers including two PWM timers for motor control, two general-purpose 32-bit timers. a true
+Page   15: Timers     Basic                                                                2
+Page   23: •      General-purpose, basic and advanced-control timers TIMx
+Page   30: The real-time clock (RTC) is an independent BCD timer/counter. Dedicated registers contain
+Page   32: 3.0.21     Timers and watchdogs
+Page   32: The STM32F405xx and STM32F407xx devices include two advanced-control timers, eight
+Page   32: general-purpose timers, two basic timers and two watchdog timers.
+Page   32: All timer counters can be frozen in debug mode.
+Page   32: Table 4 compares the features of the advanced-control, general-purpose and basic timers.
+Page   32: Table 4. Timer feature comparison
+Page   32: Timer          Counter Counter       Prescaler                       Complemen- interface timer
+Page   32: Timer                                     request   compare
+Page   33: Table 4. Timer feature comparison (continued)
+Page   33: Timer           Counter Counter         Prescaler                         Complemen- interface timer
+Page   33: Timer                                         request   compare
+Page   33: Advanced-control timers (TIM1, TIM8)
+Page   33: The advanced-control timers (TIM1, TIM8) can be seen as three-phase PWM generators
+Page   33: inserted dead times. They can also be considered as complete general-purpose timers.
+Page   33: If configured as standard 16-bit timers, they have the same features as the general-purpose
+Page   33: TIMx timers. If configured as 16-bit PWM generators, they have full modulation capability (0-
+Page   33: The advanced-control timer can work together with the TIMx timers via the Timer Link
+Page   34: General-purpose timers (TIMx)
+Page   34: There are ten synchronizable general-purpose timers embedded in the STM32F40xxx
+Page   34: The STM32F40xxx include 4 full-featured general-purpose timers: TIM2, TIM5, TIM3,
+Page   34: and TIM4.The TIM2 and TIM5 timers are based on a 32-bit auto-reload
+Page   34: up/downcounter and a 16-bit prescaler. The TIM3 and TIM4 timers are based on a 16-
+Page   34: The TIM2, TIM3, TIM4, TIM5 general-purpose timers can work together, or with the
+Page   34: other general-purpose timers and the advanced-control timers TIM1 and TIM8 via the
+Page   34: Timer Link feature for synchronization or event chaining.
+Page   34: Any of these general-purpose timers can be used to generate PWM outputs.
+Page   34: These timers are based on a 16-bit auto-reload upcounter and a 16-bit prescaler.
+Page   34: full-featured general-purpose timers. They can also be used as simple time bases.
+Page   34: Basic timers TIM6 and TIM7
+Page   34: These timers are mainly used for DAC trigger and waveform generation. They can also be
+Page   34: to reset the device when a problem occurs, or as a free-running timer for application timeout
+Page   35: SysTick timer
+Page   35: This timer is dedicated to real-time operating systems, but could also be used as a standard
+Page   40: To synchronize A/D conversion and timers, the ADCs could be triggered by any of TIM1,
+Page   40: TIM2, TIM3, TIM4, TIM5, or TIM8 timer.
+Page   41: the timer update outputs that are also connected to different DMA streams.
+Page  120: 6.3.18      TIM timer characteristics
+Page  121: tres(TIM)    Timer resolution time         84 MHz
+Page  121: Timer external clock                                    0         fTIMxCLK/2         MHz
+Page  121: ResTIM      Timer resolution                                         -           16/32                bit
+Page  121: 1. TIMx is used as a general term to refer to the TIM2, TIM3, TIM4, TIM5, TIM6, TIM7, and TIM12 timers.
+Page  122: tres(TIM)   Timer resolution time          168 MHz
+Page  122: Timer external clock                                     0         fTIMxCLK/2     MHz
+Page  122: ResTIM     Timer resolution               fTIMxCLK =                -              16           bit
+Page  122: 1. TIMx is used as a general term to refer to the TIM1, TIM8, TIM9, TIM10, and TIM11 timers.
+Page  189: Timer                               MII_RX_ER
+Page  189: Timer                                MDIO
+Page  190: Timer                                  MDIO
