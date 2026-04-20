@@ -1,32 +1,32 @@
 # Active Projects Index
 
-**Last Updated:** 2026-02-21
+**Last Updated:** 2026-04-14
 
 | Status | Count |
 |--------|------:|
-| In Progress | 0 |
-| TODO | 6 |
+| In Progress | 1 |
+| TODO | 7 |
 | Backburner | 2 |
-| **Total Active** | **6** |
+| **Total Active** | **7** |
 
 ---
 
-## In Progress (0)
+## In Progress (1)
 
-No projects currently in progress.
+| Project | Type | Priority | Estimate | Description |
+|---------|------|----------|----------|-------------|
+| [update-stm32f7-hal](active/update-stm32f7-hal/) | Maintenance | **CRITICAL** | 16-26h | Update F7xx HAL V1.2.2→V1.3.3 - Baseline testing, FC lockup debugging |
 
 ---
 
 ## TODO (6)
-
-| Project | Type | Priority | Estimate | Description |
-|---------|------|----------|----------|-------------|
-| [update-stm32f7-hal](active/update-stm32f7-hal/) | Maintenance | **CRITICAL** | 16-26h | Update F7xx HAL V1.2.2→V1.3.3 - **fixes #11299 lockup** |
+| [feature-hitl-sdcard-test-suite](active/feature-hitl-sdcard-test-suite/) | Testing | **HIGH** | 16-24h | Develop Tests 7-11 + GDB integration for HAL baseline |
 | [update-stm32f4-hal](active/update-stm32f4-hal/) | Maintenance | HIGH | 16-26h | Update F4xx HAL V1.7.1→V1.8.5 and CMSIS |
 | [verify-stm32h7-hal](active/verify-stm32h7-hal/) | Verification | MEDIUM | 4-8h | Verify H7xx HAL version, update if needed |
 | [feature-dronecan-gps-provider-ui](active/feature-dronecan-gps-provider-ui/) | Feature | MEDIUM | 8-12h | Add DroneCAN as GPS provider option in Configurator |
 | [feature-canbus-errors-blackbox](active/feature-canbus-errors-blackbox/) | Feature | MEDIUM | — | CAN bus error tracking in Blackbox logs |
 | [feature-dronecan-node-stats](active/feature-dronecan-node-stats/) | Feature | MEDIUM | — | DroneCAN transport statistics monitoring |
+| [investigate-dronecan-reboot-gps](active/investigate-dronecan-reboot-gps/) | Bug Fix/Testing | MEDIUM-HIGH | 4-8h | Investigate DroneCAN GPS stop on FC soft reboot |
 
 ---
 

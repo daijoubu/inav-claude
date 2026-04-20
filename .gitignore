@@ -71,10 +71,23 @@ claude/.installed
 
 # Email directories (internal communication between roles)
 claude/*/email/
+claude/*/inbox/
+claude/*/inbox-archive/
 
 # IDE and editor configs
 .idea/
 .vscode/
+.opencode/
+
+# STM32 vendor SDKs and archives (download separately)
+STM32Cube*/
+stm32cube*/
+stm32f*_hal_driver/
+cmsis_device_*/
+*.zip
+
+# Local telemetry/session identifiers
+claude/telemetry-id
 
 # Keep downloads directory structure
 !**/downloads/.gitkeep
