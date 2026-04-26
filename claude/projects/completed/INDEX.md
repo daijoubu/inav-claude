@@ -15,6 +15,28 @@ Completed (✅) and cancelled (❌) projects by current author (daijoubu) for IN
 ---
 
 
+### ✅ test-stm32f7-hal-v1.3.3-update
+
+**Status:** COMPLETED (2026-04-25)
+**Type:** Testing / Validation
+**Priority:** HIGH
+
+Hardware validation of the HAL v1.2.2 → v1.3.3 upgrade on MATEKF765SE. All code complete; test DroneCAN battery monitor, CAN error recovery, and SD card baseline before opening PR.
+
+---
+
+
+### ✅ fix-stm32f7-hal-redefinition-warnings
+
+**Status:** COMPLETED (2026-04-20)
+**Type:** Bug Fix
+**Priority:** HIGH
+
+Fix two macro redefinition warnings (`__FPU_PRESENT`, `ART_ACCLERATOR_ENABLE`) exposed by the HAL v1.2.2 → v1.3.3 update that repeat across all 528 STM32F7 compilation units.
+
+---
+
+
 ### ✅ investigate-f765-arming-lockup
 
 **Status:** COMPLETED (2026-02-21)
@@ -168,7 +190,7 @@ Every 5 seconds, GPS position data stops being processed for 500ms due to a bug 
 =======
 Completed (✅) and cancelled (❌) projects.
 
-**Total Completed:** 136 | **Total Cancelled:** 4
+**Total Completed:** 180 | **Total Cancelled:** 6
 
 > **Active projects:** See [../INDEX.md](../INDEX.md)
 >>>>>>> upstream/master
@@ -196,14 +218,6 @@ Build a script to extract conversation data from the Discord client's local cach
 
 
 <<<<<<< HEAD
-### ✅ archive
-
-**Status:** COMPLETED (2026-02-18)
-
-Completed project: archive
-
----
-
 ### ✅ fix-pr11-dronecan-tests (2026-02-18)
 
 **Status:** COMPLETED
@@ -819,23 +833,6 @@ Added 44 unit tests for DroneCAN/libcanard: 14 DSDL message tests (Fix2, Fix v1,
 
 ---
 
-### ✅ analyze-pg-version-rollover (2026-02-11)
-
-**Status:** COMPLETED
-**Type:** Investigation / Risk Analysis
-**Priority:** MEDIUM-HIGH
-**Created:** 2026-01-22
-**Completed:** 2026-01-23
-**Assignee:** Developer
-
-Analyzed parameter group version rollover behavior (v15 → v0). Confirmed safe operation: rollover triggers settings reset to defaults, same as any version mismatch. Major version upgrades require flash erase per upgrade docs, preventing real-world corruption scenarios.
-
-**Findings:** System works as intended - no code changes needed
-**Documentation:** `ANALYSIS.md`, `REVISED-CONCLUSION.md`
-**Related:** `document-parameter-group-system` project
-
----
-
 ### ❌ fix-ble-connection-issue (2026-02-11)
 
 **Cancelled:** PR #2542 exists if needed - project archived during cleanup
@@ -855,17 +852,6 @@ Multi-stage project tracking debug logging, root cause analysis, and fix impleme
 
 **Note:** Project cancelled during cleanup; fix already in PR #2542 targeting maintenance-9.x
 =======
-### ✅ fix-gps-capa-poll-500ms-stall
-
-**Status:** COMPLETED (2026-02-14)
-**Type:** Bug Fix
-**Priority:** HIGH
-
-GPS position data stops being processed for 500ms every 5 seconds. u-blox capability polling waits for ACK/NAK on MON-class messages that never ACK — always hits full timeout. Discovered by breadoven during PR #11322 testing.
->>>>>>> upstream/master
-
----
-
 ### ✅ fix-magnetometer-gui-control-undefined
 
 **Status:** COMPLETED (2026-01-29)
@@ -1152,128 +1138,6 @@ extract-method preview <file> --lines X-Y --name functionName
 
 ---
 
-### ✅ document-gps-test-tools
-
-**Status:** COMPLETED (2026-01-02)
-**Type:** Documentation
-**Priority:** MEDIUM
-**Created:** 2025-12-27
-**Completed:** 2026-01-02
-**Assignee:** Developer
-
-Created comprehensive documentation and reorganized GPS testing tools. Transformed 44 scripts in flat gps/ directory into organized, purpose-specific structure: gps/ (20 GPS-specific), blackbox/ (17 blackbox), sitl/ (7 SITL).
-
-**Deliverables:**
-- 7 new READMEs (all <150 lines)
-- Separated GPS, blackbox, and SITL tools
-- Detailed test_motion_simulator.sh workflow documentation
-- Script reference tables
-
-**Commit:** `606058a`
-
-**Assignment Email:** `claude/manager/sent/2025-12-27-task-document-gps-test-tools.md`
-
----
-
-### ✅ implement-issue-9912-fix
-
-**Status:** COMPLETED (2025-12-28)
-**Type:** Bug Fix
-**Priority:** MEDIUM-HIGH
-**Created:** 2025-12-28
-**Completed:** 2025-12-28
-**Assignee:** Developer
-**PR:** https://github.com/iNavFlight/inav/pull/11215
-**Issue:** https://github.com/iNavFlight/inav/issues/9912
-
-Implemented I-term stability check to prevent servo autotrim from applying trim adjustments during maneuver transitions. Added configurable `servo_autotrim_iterm_rate_limit` parameter.
-
-**Assignment Email:** `claude/manager/sent/2025-12-28-1105-task-implement-issue-9912-fix.md`
-
----
-
-### ✅ fix-macos-dmg-windows-binaries
-
-**Status:** COMPLETED (2025-12-28)
-**Type:** Bug Fix
-**Priority:** MEDIUM
-**Created:** 2025-12-28
-**Completed:** 2025-12-28
-**Assignee:** Developer
-**PR:** https://github.com/iNavFlight/inav-configurator/pull/2508
-
-Fixed postPackage hook in forge.config.js to properly remove non-native SITL binaries from macOS DMG packages. Root cause: hook was using incorrect path for macOS app bundles.
-
-**Assignment Email:** `claude/manager/sent/2025-12-28-1050-task-fix-mac-dmg-windows-binaries.md`
-
----
-
-### ✅ analyze-pitot-blockage-apa-issue
-
-**Status:** COMPLETED (2025-12-28)
-**Type:** Bug Analysis / Safety Issue
-**Priority:** MEDIUM-HIGH
-**Created:** 2025-12-28
-**Completed:** 2025-12-28
-**Assignee:** Developer
-**Issue:** https://github.com/iNavFlight/inav/issues/11208
-
-Comprehensive analysis of INAV 9's Fixed Wing APA pitot blockage safety issue. Identified four distinct issues requiring separate solutions: pitot sensor validation, I-term scaling, cruise speed reference, asymmetric limits. 11,800+ word analysis report with mathematical proof.
-
-**Report:** `claude/developer/reports/issue-11208-pitot-blockage-apa-analysis.md`
-
-**Assignment Email:** `claude/manager/sent/2025-12-28-1230-task-analyze-pitot-blockage-apa-issue.md`
-
----
-
-### ✅ fix-blueberry-deftim-config
-
-**Status:** COMPLETED (2025-12-23)
-**Type:** Bug Fix / Performance
-**Priority:** MEDIUM-HIGH
-**Created:** 2025-12-23
-**Completed:** 2025-12-23
-**Assignee:** Developer
-**PR:** https://github.com/iNavFlight/inav/pull/11199
-
-Disabled dynamic notch filter by default for BLUEBERRYF435WING (performance-constrained wing board). DMA configuration analyzed and confirmed correct for AT32F43x DMAMUX architecture.
-
-**Assignment Email:** `claude/manager/sent/2025-12-23-0033-task-fix-blueberry-deftim-config.md`
-
----
-
-### ✅ refactor-omnibusf4-targets
-
-**Status:** COMPLETED (2025-12-21)
-**Type:** Refactoring
-**Priority:** MEDIUM
-**Created:** 2025-12-21
-**Completed:** 2025-12-21
-**Assignee:** Developer
-**PR:** https://github.com/iNavFlight/inav/pull/11196
-
-Split OMNIBUSF4 from 3 directories into 4 for better organization: DYSF4/ (2 targets), OMNIBUSF4/ (1 target), OMNIBUSF4PRO/ (3 targets), OMNIBUSF4V3_SS/ (3 targets). All 9 targets verified with preprocessor comparison.
-
-**Assignment Email:** `claude/manager/sent/2025-12-21-1622-task-analyze-omnibusf4-target-split.md`
-
----
-
-### ✅ mspapi2-documentation
-
-**Status:** COMPLETED (2025-12-22)
-**Type:** Documentation
-**Priority:** MEDIUM
-**Created:** 2025-12-22
-**Completed:** 2025-12-22
-**Assignee:** Developer
-**PR:** https://github.com/xznhj8129/mspapi2/pull/1
-
-Created comprehensive user-focused documentation for mspapi2 library: 13 files, 2,281 lines including getting started guide, flight computer guide, field discovery, and server setup.
-
-**Assignment Email:** `claude/manager/sent/2025-12-18-0115-task-update-msp-library-documentation.md`
-
----
-
 ### ✅ add-ble-debug-logging
 
 **Status:** COMPLETED (2025-12-31)
@@ -1302,42 +1166,6 @@ Added comprehensive debug logging to BLE connection code to diagnose Windows iss
 Added prominent download links to README and wiki home page for easier access to configurator and firmware releases.
 
 **Assignment Email:** `claude/manager/sent/2025-12-29-1200-task-easy-configurator-download-links.md`
-
----
-
-### ✅ analyze-pr2482-qodo-comments
-
-**Status:** COMPLETED (2025-12-31)
-**Type:** Code Quality Analysis
-**Priority:** MEDIUM-LOW
-**Created:** 2025-12-21
-**Completed:** 2025-12-31
-**Assignee:** Developer
-
-Analyzed qodo bot comments on PR #2482. Found PR #2504 addresses 2 issues, 3 remaining issues documented, 1 already fixed.
-
-**Report:** `claude/developer/reports/pr2482-qodo-analysis.md`
-
-**Assignment Email:** `claude/manager/sent/2025-12-21-1643-task-analyze-pr2482-qodo-comments.md`
-
-**Location:** `analyze-pr2482-qodo-comments/`
-
----
-
-### ✅ privacylrs-implement-chacha20-upgrade
-
-**Status:** COMPLETED (2025-12-18)
-**Type:** Security Enhancement / Implementation
-**Priority:** MEDIUM-HIGH
-**Created:** 2025-12-02
-**Completed:** 2025-12-18
-**Assignee:** Developer
-
-Upgraded PrivacyLRS encryption from ChaCha12 to ChaCha20 (RFC 8439 standard). Two-line change with <0.2% CPU impact.
-
-**Assignment Email:** `claude/manager/sent/2025-12-02-0240-chacha20-upgrade-assignment.md`
-
-**Location:** `privacylrs-implement-chacha20-upgrade/`
 
 ---
 
@@ -1695,146 +1523,6 @@ Implemented secure logging mechanism preventing cryptographic keys from being lo
 
 ---
 
-### ✅ privacylrs-fix-finding5-chacha-benchmark
-
-**Status:** COMPLETE
-**Type:** Security Enhancement / Performance Analysis
-**Priority:** MEDIUM
-**Assignment:** ✉️ Assigned
-**Created:** 2025-11-30
-**Completed:** 2025-12-05 17:30
-**Assignee:** Security Analyst & Developer (collaborative)
-**Completion Emails:**
-- `claude/manager/inbox-archive/2025-12-05-1730-finding5-chacha20-complete.md` (Security Analyst)
-- `claude/manager/inbox-archive/2025-12-05-1700-BENCHMARK-COMPLETE-chacha20-approved.md` (Developer)
-- `claude/manager/inbox-archive/2025-12-05-1620-COMPLETE-ROOT-CAUSE-ANALYSIS.md` (Security Analyst)
-
-**✅ MEDIUM Priority Security Enhancement COMPLETE - ChaCha20 Deployed to Production** 🎉
-
-Successfully upgraded PrivacyLRS encryption from ChaCha12 to ChaCha20 (RFC 8439 standard).
-
-**Challenge:** ESP32 benchmark crashed repeatedly (null pointer exception, boot loop)
-**Root Cause:** Unified build compiled both TX and RX code; `-DRUN_CHACHA_BENCHMARK` flag activated RX benchmark code conflicting with TX builds
-**Solution:** Used different flag name for TX benchmarks, resolved build conflict
-
-**Collaborative Investigation:** 3+ hours of systematic debugging
-- Security Analyst & Developer worked together via 19+ emails
-- Systematic bisect approach to isolate crash
-- Root cause identified: unified build symbol conflict
-
-**Performance Results (ESP32 @ 240 MHz, 250 Hz):**
-- ChaCha12: 2.89 µs per packet (0.07% CPU)
-- ChaCha20: 3.52 µs per packet (0.09% CPU)
-- **Impact:** Additional 0.02% CPU - NEGLIGIBLE
-
-**Implementation:**
-- 3 files modified: `rx_main.cpp`, `tx_main.cpp`, `test_encryption.cpp`
-- Changed `ChaCha cipher(12)` → `ChaCha cipher(20)`
-- Commit: `6d28692e`
-- **Deployed to secure_01 branch** (production)
-
-**Testing:**
-- ✅ 22 tests PASSED
-- ❌ 2 tests FAILED (expected - demonstrate Finding #1 vulnerability)
-- All encryption tests validated
-
-**Security Benefits:**
-- ✅ RFC 8439 standards compliance
-- ✅ 67% more rounds (12 → 20) - stronger security margin
-- ✅ Industry best practice (TLS 1.3, WireGuard, OpenSSH)
-- ✅ Better cryptanalysis resistance
-
-**Time:** 1.25h analysis + 3h debugging + 0.25h implementation = 4.5h actual vs 4-6h estimated
-
-**Outcome:** PrivacyLRS encryption is now RFC 8439 compliant with negligible performance impact!
-
-**Location:** `privacylrs-fix-finding5-chacha-benchmark/`
-
----
-
-### ✅ fix-transpiler-duplicate-conditions
-
-**Status:** COMPLETE
-**Type:** Bug Fix / Code Quality
-**Priority:** HIGH
-**Assignment:** ✉️ Assigned
-**Created:** 2025-12-03
-**Completed:** 2025-12-03
-**Assignee:** Developer
-**Completion Email:** `claude/manager/inbox-archive/2025-12-03-task-completed-fix-transpiler-duplicate-conditions.md`
-**Branch:** `fix-transpiler-not-operator-precedence`
-**Commit:** `d983fbd7`
-**PR:** https://github.com/iNavFlight/inav-configurator/pull/2456
-
-Fixed bug in JavaScript Programming transpiler where synthesized operators (`>=`, `<=`, `!=`) generated duplicate logic conditions instead of reusing existing inverse comparisons.
-
-**Problem:**
-- User code: `if (gpsSats < 6) {...}` and `if (gpsSats >= 6) {...}`
-- Expected: 2 conditions (reuse first for second)
-- Actual: 4 conditions (duplicate `gpsSats < 6` created)
-- Wasted 2 of 64 available FC logic condition slots
-
-**Root Cause:** Condition cache had separate namespaces for direct operations vs synthesized operations
-
-**Solution:** Check cache for existing inverse comparisons before generating new ones
-
-**Changes:**
-- Modified `condition_generator.js` (17 insertions, 2 deletions)
-- Added 2 comprehensive test files (257 lines total)
-- All 6 test cases pass
-
-**Impact:**
-- Saves 1-2 slots per complementary condition pair
-- Common user pattern - high frequency benefit
-- Low risk - only affects optimization, not logic behavior
-
-**Time:** 45 minutes actual vs 1-2h estimated - 50-60% under budget!
-
-**Location:** `claude/archived_projects/fix-transpiler-duplicate-conditions/`
-
----
-
-### ✅ speedybeef7v3-timer-optimization
-
-**Status:** COMPLETE (Analysis - No Changes Needed)
-**Type:** Research / Hardware Analysis
-**Priority:** MEDIUM
-**Assignment:** ✉️ Assigned
-**Created:** 2025-12-04
-**Completed:** 2025-12-04 23:10
-**Assignee:** Developer
-**Completion Email:** `claude/manager/inbox-archive/2025-12-04-2310-status-speedybeef7v3-timer-analysis.md`
-**PR Status:** No PR needed (analysis only, no code changes)
-
-Analyzed SPEEDYBEEF7V3 timer assignments to optimize for 4 motors + 4 servos configuration.
-
-**Goal:** At least 2 of S5-S8 should use timers NOT shared with S1-S4, while ALL outputs support DSHOT/motors
-
-**Conclusion:** **Goal is physically impossible** with current hardware pin assignments
-
-**Analysis Results:**
-- Reviewed STM32F745 datasheet for all S1-S8 pin alternate functions
-- S1-S6 have ZERO timer alternatives (locked to specific timers)
-- S7-S8 have alternatives (TIM1/TIM8 complementary outputs) BUT:
-  - Complementary outputs (CHxN) have NO DMA support
-  - Cannot support DSHOT (motors require DMA)
-  - Would become servo-only outputs
-
-**Current Configuration (OPTIMAL):**
-- TIM2: S1, S2
-- TIM3: S3, S6, S7, S8 (shared but all support DSHOT)
-- TIM4: S4, S5
-- ✅ All 8 outputs support DSHOT/motors
-- ⚠️ Timer sharing exists (unavoidable with this hardware)
-
-**Recommendation:** Keep current configuration - no code changes needed
-
-**Time:** ~4 hours (comprehensive analysis)
-
-**Location:** `claude/archived_projects/speedybeef7v3-timer-optimization/`
-
----
-
 ### ✅ debug-esp32-chacha-crash
 
 **Status:** COMPLETE
@@ -1867,98 +1555,6 @@ Investigated and resolved ESP32 crash occurring during ChaCha20 benchmark testin
 **Note:** Excellent example of Developer/Security Analyst collaboration working perfectly
 
 **Location:** `claude/archived_projects/debug-esp32-chacha-crash/`
-
----
-
-### ✅ crsf-telemetry-test-suite
-
-**Status:** COMPLETE
-**Type:** Testing / Quality Assurance
-**Priority:** HIGH
-**Assignment:** ✉️ Assigned
-**Created:** 2025-12-06
-**Completed:** 2025-12-06 15:00
-**Assignee:** Developer
-**Completion Email:** `claude/manager/inbox-archive/2025-12-06-1500-completed-crsf-telemetry-tests.md`
-**Related PRs:** INAV #11025 (RPM/Temperature/Airspeed), INAV #11100 (Baro/Vario/Legacy mode)
-
-Created comprehensive unit test suite for CRSF telemetry enhancements in INAV PRs #11025 and #11100.
-
-**Deliverables:**
-- 650+ lines of test code (`telemetry_crsf_unittest.cc`)
-- 38 test cases covering all new frame types
-- Mock sensor implementations (battery, baro, pitot, ESC, temperature)
-- Full documentation (`crsf-telemetry-test-plan.md`)
-- CMakeLists.txt integration
-
-**Test Coverage:**
-1. **Frame Types:** 0x09 (Baro/Vario), 0x0A (Airspeed), 0x0C (RPM), 0x0D (Temperature)
-2. **Synchronization:** Missing sensor handling (7 tests)
-3. **Adjacent Frame Integrity:** Clean frame boundaries (3 tests)
-4. **Edge Cases:** Dynamic sensor changes, legacy mode toggle (3 tests)
-5. **Performance:** 100Hz rate, 20 temperature sensors (2 tests)
-
-**🚨 Critical Finding:**
-- **Airspeed frame duplication detected!**
-- Both PR #11025 and PR #11100 implement frame type 0x0A
-- Coordination needed to avoid merge conflict
-
-**Test Status:**
-- ✅ Tests written and documented
-- ⚠️ Tests currently fail (expected - PRs not merged yet)
-- 📋 Ready to validate implementations when PRs merge
-
-**Value:**
-- Catches issues before merge (found airspeed duplication)
-- Validates protocol integrity and synchronization
-- Provides regression testing for future changes
-- 38 comprehensive test cases for maintainability
-
-**Time:** ~6-8 hours (comprehensive test development)
-
-**Location:** `crsf-telemetry-test-suite/`
-
----
-
-### ✅ investigate-flash-spi-nor-alias
-
-**Status:** COMPLETE
-**Type:** Research / Investigation
-**Priority:** MEDIUM
-**Assignment:** ✉️ Assigned
-**Created:** 2025-11-26
-**Completed:** 2025-12-06 14:00
-**Assignee:** Developer
-**Assignment Email:** `claude/manager/sent/2025-12-06-1230-task-flash-spi-nor-alias-investigation.md`
-**Completion Email:** `claude/manager/inbox-archive/2025-12-06-1400-completed-flash-spi-nor-alias-investigation.md`
-**Branch:** `add-flash-spi-nor-alias`
-**Commit:** `6c2149702f`
-
-Investigated Flash SPI NOR alias work and JEDEC ID support requirements.
-
-**Finding:** W25Q128 is already fully supported with 2 JEDEC ID variants
-- `0xEF4018` - W25Q128
-- `0xEF7018` - W25Q128_DTR
-
-**JEDEC ID Coverage:** Driver supports 22 different flash chips from multiple manufacturers:
-- Macronix (3 chips)
-- Micron (3 chips)
-- Winbond W25Q (8 chips)
-- Winbond W25X (1 chip)
-- Cypress/Spansion (3 chips)
-- Other brands (4 chips)
-
-**Recommendation:** PR with alias only - no JEDEC ID additions needed
-
-**Why:** The `USE_FLASH_SPI_NOR` alias provides better naming (M25P16 driver supports many more chips than name suggests)
-
-**Note:** Original concern was about PY25Q128 (Puya chip), which is a separate task
-
-**Time:** <1 hour
-
-**PR Status:** Ready to submit (alias improves code clarity, no functional changes)
-
-**Location:** `claude/archived_projects/investigate-flash-spi-nor-alias/`
 
 ---
 
@@ -2229,117 +1825,6 @@ Fixed decompiler generating `// Condition can be read by logicCondition[N]` comm
 
 ---
 
-### ✅ create-inav-claude-repo
-
-**Status:** COMPLETED
-**Type:** Repository Setup / Documentation
-**Priority:** Medium
-**Assignment:** ✉️ Assigned
-**Created:** 2025-11-30
-**Completed:** 2025-11-30
-**Assignee:** Developer
-**Assignment Email:** `claude/manager/sent/2025-11-30-0300-task-create-inav-claude-repo.md`
-**Completion Report:** `claude/manager/inbox-archive/2025-11-30-1045-completed-create-inav-claude-repo.md`
-**Repository:** https://github.com/sensei-hacker/inav-claude
-
-Created public repository `inav-claude` under github.com/sensei-hacker with Claude workflow infrastructure files (skills, role guides, project templates, test tools). Path sanitization and security review completed. 152 files published.
-
-**Location:** N/A (repository creation task)
-
----
-
-### ✅ investigate-w25q128-support
-
-**Status:** COMPLETED
-**Type:** Research / Investigation
-**Priority:** Low
-**Assignment:** Ad-hoc (not tracked)
-**Created:** 2025-11-30
-**Completed:** 2025-11-30
-**Assignee:** Developer
-**Completion Report:** `claude/manager/inbox-archive/2025-11-30-1430-completed-investigate-w25q128-support.md`
-
-Investigated W25Q128 SPI NOR flash chip support in INAV firmware. Confirmed W25Q128 is fully supported in both 8.0.1 and master branches with two JEDEC ID variants (0xEF4018, 0xEF7018). Driver supports 18 different flash chips up to 32MB. Confirmed working on SKYSTARS V2 target.
-
-**Location:** N/A (investigation task, no code changes)
-
----
-
-### ✅ transpiler-clean-copy
-
-**Status:** COMPLETED
-**Type:** Feature / PR Submission
-**Priority:** High
-**Assignment:** ✉️ Assigned
-**Created:** 2025-11-28
-**Completed:** 2025-11-28
-**Assignee:** Developer
-**PR:** [#2439](https://github.com/iNavFlight/inav-configurator/pull/2439)
-**PR Status:** Open - awaiting upstream review
-**Branch:** transpiler_clean_copy
-
-JavaScript Programming transpiler feature - clean branch created from master with all transpiler code. PR submitted, bot suggestions reviewed and fixed.
-
-**Location:** `claude/archived_projects/transpiler-clean-copy/`
-
----
-
-### ✅ docs-javascript-programming
-
-**Status:** COMPLETED
-**Type:** Documentation
-**Priority:** Medium
-**Assignment:** ✉️ Assigned
-**Created:** 2025-11-28
-**Completed:** 2025-11-28
-**Assignee:** Developer
-**Branch:** docs_javascript_programming (inav repo)
-**PR:** [#11143](https://github.com/iNavFlight/inav/pull/11143)
-**Completion Report:** `claude/manager/inbox-archive/2025-11-28-2345-report-pr11143-bot-review-updated.md`
-
-JavaScript programming documentation PR submitted. Bot suggestions reviewed - one fix applied (commit aa662ecad).
-
-**Location:** `claude/archived_projects/docs-javascript-programming/`
-
----
-
-### ✅ review-pr2439-bot-suggestions
-
-**Status:** COMPLETED
-**Type:** Code Review / Bug Fix
-**Priority:** Medium
-**Assignment:** ✉️ Assigned
-**Created:** 2025-11-28
-**Completed:** 2025-11-28
-**Assignee:** Developer
-**Assignment Email:** `claude/manager/sent/2025-11-28-1940-task-review-pr-2439-suggestions.md`
-**Completion Report:** `claude/manager/inbox-archive/2025-11-28-2330-completed-pr2439-bot-suggestions-review.md`
-**PR:** [#2439](https://github.com/iNavFlight/inav-configurator/pull/2439)
-
-Reviewed all 11 bot suggestions. Fixed nested if handling, added missing operators to optimizer. Removed ~350 lines of dead code. All 92 tests pass.
-
-**Location:** `claude/archived_projects/review-pr2439-bot-suggestions/`
-
----
-
-### ✅ consolidate-role-directories
-
-**Status:** COMPLETED
-**Type:** Cleanup / Organization
-**Priority:** High
-**Assignment:** ✉️ Assigned
-**Created:** 2025-11-28
-**Completed:** 2025-11-28
-**Assignee:** Developer
-**Assignment Email:** `claude/manager/sent/2025-11-28-1950-task-consolidate-role-directories.md`
-**Completion Report:** `claude/manager/inbox-archive/2025-11-28-2325-completed-consolidate-role-directories.md`
-
-Merged root-level claude-developer/, claude-manager/, claude-release-manager/ directories into claude/ subdirectories. Duplicates removed.
-
-**Location:** N/A (workspace cleanup)
-
----
-
 ### ✅ investigate-pr2434-build-failures
 
 **Status:** COMPLETED
@@ -2423,176 +1908,6 @@ Enabled arming of INAV SITL via MSP protocol for automated testing.
 **Documentation:** `.claude/skills/sitl-arm.md`
 
 **Location:** `claude/archived_projects/sitl-msp-arming/`
-
----
-
-### ✅ github-issues-review
-
-**Status:** COMPLETED
-**Type:** Research / Triage
-**Priority:** Medium
-**Assignment:** ✉️ Assigned
-**Created:** 2025-11-26
-**Completed:** 2025-11-26
-**Assignee:** Developer
-**Assignment Email:** `claude/manager/sent/2025-11-26-1015-task-review-github-issues.md`
-**Completion Report:** `claude/manager/inbox/2025-11-26-1130-report-github-issues-review.md`
-**PR Status:** No PR needed (research task)
-
-Review last 25 open issues on both INAV GitHub repositories (configurator and firmware) and identify actionable bugs we can fix.
-
-**Deliverable:** Summary report with prioritized list of recommended issues to fix.
-
-**Result:** Identified 6 actionable issues + 2 hardware support requests. Issue #11049 assigned as first task from this review.
-
-**Time:** ~1-2 hours
-
----
-
-
-### ✅ fix-decompiler-chained-conditions
-
-**Status:** COMPLETED
-**Type:** Bug Fix
-**Priority:** High
-**Created:** 2025-11-28
-**Completed:** 2025-11-28
-**Assignee:** Developer
-**Assignment Email:** `claude/manager/sent/2025-11-28-1930-task-fix-decompiler-lower-than-error.md`
-**Completion Report:** `claude/manager/inbox-archive/2025-11-28-2230-completed-decompiler-chained-conditions-fix.md`
-**Branch:** transpiler_clean_copy
-**Commit:** 42d1febd
-**PR Status:** On feature branch (PR #2439)
-
-Fixed "Unknown operation 3 (Lower Than) in action" error and chained condition handling in decompiler.
-
-**Issues Fixed:**
-- `isActionOperation()` was incomplete - added all action operations
-- Activator chains only collected direct children, not grandchildren
-- Chained conditions without actions produced no output
-
-**Time:** ~2 hours
-
-**Location:** `claude/archived_projects/fix-decompiler-chained-conditions/`
-
----
-
-### ✅ copy-transpiler-to-new-branch
-
-**Status:** COMPLETED
-**Type:** Git Operations / PR Submission
-**Priority:** Medium
-**Created:** 2025-11-28
-**Completed:** 2025-11-28
-**Assignee:** Developer
-**Assignment Email:** `claude/manager/sent/2025-11-28-1910-task-copy-transpiler-to-new-branch.md`
-**Completion Report:** `claude/manager/inbox-archive/2025-11-28-2030-completed-copy-transpiler-to-new-branch.md`
-**Branch:** transpiler_clean_copy
-**PR:** [#2439](https://github.com/iNavFlight/inav-configurator/pull/2439)
-**PR Status:** Open - submitted, awaiting review
-
-Created clean branch from master with transpiler code and submitted PR.
-
-**Time:** ~1 hour
-
-**Location:** `claude/archived_projects/copy-transpiler-to-new-branch/`
-
----
-
-### ✅ move-js-docs-to-new-branch
-
-**Status:** COMPLETED
-**Type:** Documentation / Git Operations
-**Priority:** Medium
-**Created:** 2025-11-28
-**Completed:** 2025-11-28
-**Assignee:** Developer
-**Assignment Email:** `claude/manager/sent/2025-11-28-1920-task-move-js-docs-to-new-branch.md`
-**Completion Report:** `claude/manager/inbox-archive/2025-11-28-2036-completed-move-js-docs-to-new-branch.md`
-**Branch:** docs_javascript_programming (inav repo)
-**Commit:** cefce84c3
-**PR Status:** Ready for PR submission
-
-Created dedicated branch for JavaScript programming documentation with flattened structure.
-
-**Time:** ~30 minutes
-
-**Location:** `claude/archived_projects/move-js-docs-to-new-branch/`
-
----
-
-### ✅ reboot-to-dfu-feature
-
-**Status:** COMPLETED
-**Type:** Feature / Bug Fix
-**Priority:** Medium
-**Created:** 2025-11-28
-**Completed:** 2025-11-28
-**Assignee:** Developer
-**Completion Report:** `claude/manager/inbox-archive/2025-11-28-1923-completed-reboot-to-dfu.md`
-**Branch:** reboot_to_dfu
-**PR Status:** Ready for PR submission
-
-DFU reboot feature with IPC listener memory leak fix. Replaces "R" command with "# dfu" for reliable DFU entry.
-
-**Changes:**
-- 6 commits on reboot_to_dfu branch
-- Fixed IPC listener memory leak causing CRC errors
-- Added upfront DFU device check
-
-**Time:** ~3-4 hours
-
-**Location:** `claude/archived_projects/reboot-to-dfu-feature/`
-
----
-
-### ✅ fix-preload-foreach-error-v2
-
-**Status:** COMPLETED
-**Type:** Bug Fix
-**Priority:** High
-**Created:** 2025-11-28
-**Completed:** 2025-11-28
-**Assignee:** Developer
-**Completion Report:** `claude/manager/inbox-archive/2025-11-28-1845-completed-fix-preload-foreach-error.md`
-**PR Status:** Local changes, ready for review
-
-Fixed IPC listener memory leak that caused forEach errors when connection objects were garbage collected.
-
-**Root Cause:** IPC listeners accumulated without cleanup; stale callbacks fired on destroyed objects.
-
-**Fix:** Added off* methods to preload.js and removeIpcListeners() to connection classes.
-
-**Time:** ~2 hours
-
-**Location:** `claude/archived_projects/fix-preload-foreach-error-v2/`
-
----
-
-### ✅ pmw3901-opflow-sensor
-
-**Status:** COMPLETED
-**Type:** Feature / Driver Implementation
-**Priority:** Medium
-**Created:** 2025-11-26
-**Completed:** 2025-11-26
-**Assignee:** Developer
-**Completion Report:** `claude/manager/inbox-archive/2025-11-26-1046-completed-pmw3901-opflow-sensor.md`
-**Branch:** add-pmw3901-opflow-sensor
-**Commit:** 0274083f0
-**PR Status:** Awaiting decision on upstream submission
-
-Implemented native PMW3901 optical flow sensor support over SPI in INAV firmware.
-
-**Files Added:**
-- `src/main/drivers/opflow/opflow_pmw3901.c`
-- `src/main/drivers/opflow/opflow_pmw3901.h`
-
-**Note:** No hardware testing performed (no PMW3901 available).
-
-**Time:** ~4 hours
-
-**Location:** `claude/archived_projects/pmw3901-opflow-sensor/`
 
 ---
 
@@ -3247,16 +2562,6 @@ Analyze the largest transpiler files (decompiler.js, codegen.js, parser.js, etc.
 
 ---
 
-### ✅ analyze-omnibusf4-target-split
-
-**Status:** COMPLETED
-**Type:** Research
-**Priority:** MEDIUM
-
-Analyze the OMNIBUSF4 target split configuration. Details not available.
-
----
-
 ### ✅ analyze-pitch-throttle-airspeed
 
 **Status:** COMPLETED
@@ -3324,16 +2629,6 @@ Implement constellation-aware GPS update rates to optimize M10 GPS performance a
 **Priority:** MEDIUM
 
 Implement a max_battery_current setting that reduces motor output when current exceeds the configured threshold to protect batteries from excessive discharge current.
-
----
-
-### ✅ fix-ble-connection-issue (2026-01-30)
-
-**Status:** COMPLETED (2026-01-30)
-**Type:** Bug Fix
-**Priority:** MEDIUM-HIGH
-
-Fix BLE connection issue where data received at BLE layer was not counted by serial layer due to separate listener array not wired to base class, causing MSP timeouts; includes performance optimization by removing debug logging. PR #2542.
 
 ---
 
@@ -3434,16 +2729,6 @@ Fix safety issue where disarmed servo throttle mix is set to 0, which for revers
 **Priority:** MEDIUM
 
 Fix incorrect register address masking in busWriteBuf() for SPI devices where the function sets the MSB (read mode, reg | 0x80) instead of clearing it (write mode, reg & 0x7F) (GitHub issue #10674).
-
----
-
-### ✅ fix-transpiler-examples-errors
-
-**Status:** COMPLETED
-**Type:** Bug Fix
-**Priority:** MEDIUM
-
-Fix errors in transpiler examples. Details not available.
 
 ---
 
@@ -3577,16 +2862,6 @@ Investigate why PR #11025 (adding airspeed, RPM, and temperature CRSF telemetry)
 
 ---
 
-### ✅ investigate-pr2477-pr2491-no-conflict
-
-**Status:** COMPLETED
-**Type:** Investigation
-**Priority:** MEDIUM
-
-Investigate potential conflicts between PR #2477 and PR #2491. Details not available.
-
----
-
 ### ✅ js-function-hoisting-tool
 
 **Status:** COMPLETED
@@ -3604,16 +2879,6 @@ Build a JavaScript refactoring tool that automatically hoists (extracts) functio
 **Priority:** MEDIUM
 
 Add three debugging features to the JavaScript Programming tab: active LC highlighting with green/gray gutter indicators (PR #2539), code sync status via Save button state, and live global variable display (PR #2540).
-
----
-
-### ✅ organize-developer-directory
-
-**Status:** COMPLETED
-**Type:** Repository Maintenance
-**Priority:** LOW
-
-Organize the developer directory structure. Details not available.
 
 ---
 

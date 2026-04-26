@@ -2,8 +2,8 @@
 
 This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKED).
 
-**Last Updated:** 2026-02-14
-**Active:** 13 | **Backburner:** 6 | **Blocked:** 2
+**Last Updated:** 2026-04-25
+**Active:** 10 | **Backburner:** 2 | **Blocked:** 0
 
 > **Completed projects:** See [completed/INDEX.md](completed/INDEX.md)
 > **Blocked projects:** See `blocked/` directory
@@ -39,522 +39,148 @@ This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKE
 
 ## Active Projects
 
-### 📋 rp2350-pinout-diagram
+### 📋 feature-dronecan-msp-messages
 
-**Status:** TODO | **Type:** Documentation / Visual | **Priority:** MEDIUM
-**Created:** 2026-02-19 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
+**Status:** TODO | **Type:** Feature | **Priority:** MEDIUM-HIGH
+**Created:** 2026-04-25 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
 
-Take the Pico 2 board photo (`Raspberry-Pi-Pico-2-back.webp`) and add INAV function labels to each pin based on Option C from the pin assignment plan. Output a labeled PNG for use as target documentation.
+Add MSP2 commands to expose DroneCAN node status and identity data. Requires adding a persistent node table in dronecan.c, then `MSP2_INAV_DRONECAN_NODES` (0x2042) and `MSP2_INAV_DRONECAN_NODE_INFO` (0x2043). Prerequisite for the configurator tab.
 
-**Directory:** `active/rp2350-pinout-diagram/`
-**Source image:** `active/rp2350-pin-assignment-plan/Raspberry-Pi-Pico-2-back.webp`
-**Pin plan:** `active/rp2350-pin-assignment-plan/report.md` (Option C)
-
----
-
-### 📋 rp2350-pin-assignment-plan
-
-**Status:** TODO | **Type:** Investigation / Planning | **Priority:** MEDIUM
-**Created:** 2026-02-19 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
-
-Survey existing INAV targets for common pin functions (using target-developer agent), map Pico 2 GPIO capabilities, then produce three distinct pin layout options for the RP2350_PICO target including dual-use pin documentation.
-
-**Directory:** `active/rp2350-pin-assignment-plan/`
-**Repository:** inav (firmware) — planning only, no code changes
+**Directory:** `active/feature-dronecan-msp-messages/`
+**Assignment:** `manager/email/sent/2026-04-25-1200-task-feature-dronecan-msp-messages.md`
+**Repository:** inav (firmware) | **Branch:** `maintenance-10.x`
 
 ---
 
-### 📋 cherry-pick-imu-mahony-opts
+### 📋 feature-dronecan-configurator-tab
 
-**Status:** TODO | **Type:** Performance / Cherry-pick | **Priority:** MEDIUM
-**Created:** 2026-02-18 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
+**Status:** TODO | **Type:** Feature | **Priority:** MEDIUM-HIGH
+**Created:** 2026-04-25 | **Assignee:** Developer | **Assignment:** 📝 Planned
+**Blocked until:** `feature-dronecan-msp-messages` complete
 
-Cherry-pick `f99ea57b` ("imu: optimize imuMahonyAHRSupdate() hot path — 5 micro-opts") to a new branch off `maintenance-9.x` and PR to `inavflight/inav`. Reviewer: `breadoven`.
+Add a DroneCAN tab to inav-configurator showing detected nodes, health status, mode, uptime, and sensor data. Colour-coded health indicators, 2-second auto-refresh.
 
-**Directory:** `active/cherry-pick-imu-mahony-opts/`
-**Repository:** inav (firmware) | **Branch:** `maintenance-9.x`
-
----
-
-### 📋 cherry-pick-pid-performance
-
-**Status:** TODO | **Type:** Performance / Cherry-pick | **Priority:** MEDIUM
-**Created:** 2026-02-18 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
-
-Cherry-pick two PID performance commits to a new branch off `maintenance-9.x` and open a PR: (1) add FAST_CODE to pidController callees to avoid ITCM→flash trampolines; (2) cache RC commands and pidSumLimit so they only recompute on new RX data (~50 Hz) rather than every PID loop (~1000 Hz).
-
-**Directory:** `active/cherry-pick-pid-performance/`
-**Repository:** inav (firmware) | **Branch:** `maintenance-9.x`
+**Directory:** `active/feature-dronecan-configurator-tab/`
+**Repository:** inav-configurator | **Branch:** `maintenance-10.x`
 
 ---
 
-### 📋 cherry-pick-imu-gps3dspeed
+### 📋 feature-canbus-errors-blackbox
 
-**Status:** TODO | **Type:** Bug Fix / Cherry-pick | **Priority:** MEDIUM
-**Created:** 2026-02-18 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
+**Status:** TODO | **Type:** Feature | **Priority:** MEDIUM
+**Created:** 2026-02-14 | **Assignee:** Developer | **Assignment:** 📝 Planned
 
-Cherry-pick `bb02220fc3399c73d4bb2284d77add5b66576f5b` ("imu: compute GPS 3D speed only on new GPS data") to a new branch off `maintenance-9.x` and open a PR to `inavflight/inav`, requesting review from `breadoven`.
+Add CAN bus Tx/Rx error counts and controller state transitions (ERROR_ACTIVE, ERROR_PASSIVE, BUS_OFF) to Blackbox logs. Makes intermittent CAN bus problems diagnosable from flight logs.
 
-**Directory:** `active/cherry-pick-imu-gps3dspeed/`
-**Repository:** inav (firmware) | **Branch:** `maintenance-9.x`
-
----
-
-### 📋 investigate-claude-code-plugin
-
-**Status:** TODO | **Type:** Investigation / Feasibility Study | **Priority:** MEDIUM
-**Created:** 2026-02-17 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
-
-Investigate feasibility of packaging the INAV Claude Code workflow (agents, skills, roles, email system) as a Claude Code plugin. Work in a fresh clone of sensei-hacker/inav-claude — do NOT touch ~/inavflight. Deliver a feasibility verdict, component mapping, migration plan if feasible, and clear documentation of anything that can't be included.
-
-**Directory:** `active/investigate-claude-code-plugin/`
-**Repo:** https://github.com/sensei-hacker/inav-claude
+**Directory:** `active/feature-canbus-errors-blackbox/`
+**Repository:** inav (firmware) | **Branch:** `maintenance-10.x`
 
 ---
 
-### 📋 fix-blackbox-sd-lockup
+### 📋 investigate-can-restart-no-comms
 
-**Status:** TODO | **Type:** Bug Fix / Safety Issue | **Priority:** HIGH
-**Created:** 2026-02-09 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
+**Status:** TODO | **Type:** Bug Investigation | **Priority:** MEDIUM-HIGH
+**Created:** 2026-04-20 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
 
-FC completely locks up (no MSP, no flight control) when using a problematic SD card for blackbox logging. Audit and fix error handling so SD card failures only disable logging, never lock up the FC.
+Investigate why CAN peripherals stop communicating after INAV is restarted without power-cycling the whole network. When FC reboots without power-cycling DroneCAN devices, comms don't resume.
 
-**Directory:** `active/fix-blackbox-sd-lockup/`
-**Assignment:** `manager/email/sent/2026-02-09-1000-task-fix-blackbox-sd-lockup.md`
-**Repository:** inav (firmware) | **Branch:** `maintenance-9.x`
-
----
-
-### ⏸️ fix-aikonf7-flash-size
-
-**Status:** BACKBURNER | **Type:** Bug Fix / Target Configuration | **Priority:** HIGH
-**Created:** 2026-01-12 | **Paused:** 2026-01-16 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
-
-AIKONF7 target firmware at 98% flash capacity (470/480 KB). Developer completed investigation and proposed 3 solutions (remove 2/3/all obsolete flash chip drivers). Project paused pending decision on which flash chips are actually used in production.
-
-**Pause Reason:** Awaiting information on which flash chip variants are actually shipped in AIKONF7 hardware before implementing fix.
-
-**Directory:** `backburner/fix-aikonf7-flash-size/`
-**Question:** `manager/email/inbox/2026-01-16-1013-question-aikonf7-flash-size-guidance.md`
-**Assignment:** `manager/email/sent/2026-01-12-1525-task-fix-aikonf7-flash-size.md`
+**Directory:** `active/investigate-can-restart-no-comms/`
+**Assignment:** `manager/email/sent/2026-04-20-2100-task-investigate-can-restart-no-comms.md`
+**Branch:** New branch off `maintenance-10.x` → PR targets `maintenance-10.x`
 
 ---
 
-### 📋 resolve-vtx-powerlevels-conflict
+### 📋 investigate-dronecan-reboot-gps
 
-**Status:** TODO | **Type:** Code Review / Technical Analysis | **Priority:** MEDIUM-HIGH
-**Created:** 2026-01-15 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
+**Status:** TODO | **Type:** Bug Fix / Testing | **Priority:** MEDIUM-HIGH
+**Created:** 2026-04-14 | **Assignment:** 📝 Planned
 
-Analyze merge conflict in bkleiner's PR #2202 (VTX power level from FC) and propose elegant solution to handle MSP VTX power level 0 without over-complicating the code.
+DroneCAN GPS stops updating after soft FC reboot (software reset without power cycle). Full power cycle restores operation. Likely same root cause as investigate-can-restart-no-comms.
 
-**Directory:** `active/resolve-vtx-powerlevels-conflict/`
-**Assignment:** `manager/email/sent/2026-01-15-2210-task-resolve-vtx-powerlevels-conflict.md`
-**PRs:** [#2202](https://github.com/iNavFlight/inav-configurator/pull/2202) (bkleiner), [#2486](https://github.com/iNavFlight/inav-configurator/pull/2486) (replacement)
-**Repository:** inav-configurator
+**Directory:** `active/investigate-dronecan-reboot-gps/`
+**Repository:** inav (firmware) | **Branch:** `maintenance-10.x`
 
 ---
 
-### 🚫 esc-passthrough-bluejay-am32
+### 📋 feature-dronecan-node-stats
 
-**Status:** BLOCKED | **Type:** Bug Fix / Feature Parity | **Priority:** HIGH
-**Created:** 2026-01-09 | **Assignee:** Developer
-**Blocked Since:** 2026-01-10
+**Status:** TODO | **Type:** Feature | **Priority:** MEDIUM
+**Created:** 2026-02-14 | **Assignment:** 📝 Planned
 
-ESC passthrough (4-way interface) works with Bluejay/AM32 in Betaflight but fails in INAV. Port fixes from Betaflight PRs #13287 (timeout handling) and #14214 (motor IO access).
+Poll DroneCAN nodes for transport statistics (tx/rx transfer counts, error rates) via uavcan.protocol.GetTransportStats. Exposes per-node stats via CLI. Complements feature-canbus-errors-blackbox.
 
-**Blocking Issue:** Cannot reproduce the reported issue with current test setup. Need user with actual Bluejay/AM32 ESCs to verify behavior and provide reproduction steps.
-
-**Directory:** `blocked/esc-passthrough-bluejay-am32/`
-**Assignment:** ✉️ Assigned - `manager/email/sent/2026-01-09-1900-task-esc-passthrough-bluejay-am32.md`
+**Directory:** `active/feature-dronecan-node-stats/`
+**Repository:** inav (firmware) | **Branch:** `maintenance-10.x`
 
 ---
 
-### 🚧 feature-oled-auto-detection
+### 📋 feature-dronecan-gps-provider-ui
 
-**Status:** IN PROGRESS
-**Type:** Feature Enhancement
-**Priority:** MEDIUM
-**Assignment:** 📝 Started by Developer
-**Created:** 2025-12-23
-**Assignee:** Developer
-**Estimated Time:** 4-6 hours
+**Status:** TODO | **Type:** Feature / UI Enhancement | **Priority:** MEDIUM
+**Created:** 2026-02-16 | **Assignment:** 📝 Planned
 
-Auto-detect OLED controller type (SSD1306, SH1106, SH1107, SSD1309) to eliminate manual configuration.
+Expose DroneCAN as a selectable GPS provider (value 6) in the configurator GPS tab dropdown. Firmware already supports it; this makes it user-accessible without manual CLI editing.
 
-**Progress:** Detection algorithm implemented and compiling. Still needs: display width handling for different controllers, hardware testing.
-
-**File:** `inav/src/main/drivers/display_ug2864hsweg01.c`
-
-**Project Request:** `claude/manager/inbox/2025-12-22-2249-project-request-oled-detection.md`
+**Directory:** `active/feature-dronecan-gps-provider-ui/`
+**Repository:** inav-configurator | **Branch:** `maintenance-10.x`
 
 ---
 
-### 🚧 analyze-pitot-blockage-apa-issue
+### 🚧 feature-hitl-sdcard-test-suite
 
-**Status:** IN PROGRESS (Analysis complete, implementation pending)
-**Type:** Bug Analysis / Safety Issue
-**Priority:** MEDIUM-HIGH
-**Assignment:** ✅ Analysis Complete
-**Created:** 2025-12-28
-**Assignee:** Developer
-**Actual Time:** ~8 hours (analysis phase)
-**GitHub Issue:** [#11208](https://github.com/iNavFlight/inav/issues/11208)
+**Status:** IN PROGRESS (development complete, awaiting hardware execution) | **Type:** Testing | **Priority:** HIGH
+**Created:** 2026-03-11 | **Assignment:** 📝 Planned
 
-Analyze the dangerous behavior of INAV 9's Fixed Wing APA (Airspeed-based PID Attenuation) when pitot tube fails or becomes blocked, and propose specific code changes.
+HITL SD card fault injection test suite (Tests 7-11): transient failures, bit errors, DMA recovery, extended endurance with GDB monitoring. Establishes baseline before HAL upgrade validation.
 
-**Analysis Completion Summary:**
-- ✅ Comprehensive 11,800+ word analysis report completed
-- ✅ Identified four distinct issues requiring separate solutions
-- ✅ Mathematical analysis with Python visualization
-- ✅ Specific code changes proposed with line numbers
-- ✅ Implementation effort estimated: 10-12 hours total
-
-**Key Findings:**
-1. Pitot sensor validation needed (GPS-based sanity checks) - 8-12 hours
-2. I-term scaling should be removed (control theory issue) - 15 minutes
-3. Cruise speed reference - keep as-is (no change)
-4. Symmetric limits [0.67, 1.5] instead of [0.3, 2.0] - 15 minutes
-
-**Next Steps:** Implementation of recommended fixes
-
-**Deliverable:** `claude/developer/reports/issue-11208-pitot-blockage-apa-analysis.md`
-
-**Location:** `active/analyze-pitot-blockage-apa-issue/`
-
-**Assignment Email:** `claude/manager/sent/2025-12-28-1230-task-analyze-pitot-blockage-apa-issue.md`
+**Directory:** `active/feature-hitl-sdcard-test-suite/`
+**Repository:** inav (firmware)
 
 ---
 
-### 🚫 reproduce-issue-11202-gps-fluctuation
+### 📋 update-stm32f4-hal
 
-**Status:** BLOCKED | **Type:** Bug Investigation | **Priority:** MEDIUM-HIGH
-**Created:** 2025-12-26 | **Blocked Since:** 2026-02-09 | **Assignee:** Developer
+**Status:** TODO | **Type:** Maintenance | **Priority:** HIGH
+**Created:** 2026-02-20 | **Assignment:** 📝 Planned
 
-Investigate GPS signal instability (EPH spikes, HDOP fluctuations, reduced sat count) affecting INAV 6.0-9.0.
+Update STM32F4xx HAL from V1.7.1 (2017) to V1.8.5 (2025). Includes SD card reliability, I2C stall workaround, UART DMA race condition, and USB fixes. Same class of work as completed F7 HAL update.
 
-**Blocking Issue:** Unable to reproduce with synthetic MSP GPS data and SITL. Issue appears hardware-dependent (u-blox module timing). Needs real GPS hardware testing to reproduce.
-
-**Directory:** `blocked/reproduce-issue-11202-gps-fluctuation/`
-**Issue:** [#11202](https://github.com/iNavFlight/inav/issues/11202)
+**Directory:** `active/update-stm32f4-hal/`
+**Repository:** inav (firmware) | **Branch:** `maintenance-10.x`
 
 ---
 
-### 🚧 reproduce-issue-9912
+### 📋 verify-stm32h7-hal
 
-**Status:** IN PROGRESS (Theory Identified, Needs Verification)
-**Type:** Testing / Bug Reproduction / Root Cause Analysis
-**Priority:** MEDIUM
-**Assignment:** ✉️ Assigned
-**Created:** 2025-12-23
-**Assignee:** Developer
-**Estimated Time:** 3-5 hours + verification time
+**Status:** TODO | **Type:** Verification / Maintenance | **Priority:** MEDIUM
+**Created:** 2026-02-20 | **Assignment:** 📝 Planned
 
-Continuous auto trim active during maneuvers. Theory: missing I-term stability check in `servos.c:644` allows transient I-term to be captured as trim. Needs SITL reproduction or pilot testing to verify.
+Verify STM32H7xx HAL version and update if significantly behind latest (V1.11.5). H7 may already be more current than F4/F7 but version needs confirming.
 
-**GitHub Issue:** [#9912](https://github.com/iNavFlight/inav/issues/9912)
-**Project Directory:** `active/reproduce-issue-9912/`
-**Analysis Report:** `claude/developer/reports/issue-9912-autotrim-analysis.md`
-**Assignment Email:** `claude/manager/sent/2025-12-23-0029-task-reproduce-issue-9912.md`
+**Directory:** `active/verify-stm32h7-hal/`
+**Repository:** inav (firmware) | **Branch:** `maintenance-10.x`
 
 ---
 
-### 📋 coordinate-crsf-telemetry-pr-merge
+### ⏸️ feature-osd-adsb-contacts
 
-**Status:** TODO
-**Type:** Coordination / PR Management
-**Priority:** MEDIUM-HIGH
-**Assignment:** 📝 Planned
-**Created:** 2025-12-07
-**Estimated Time:** 2-4 hours
+**Status:** BACKBURNER | **Type:** Feature | **Priority:** MEDIUM
+**Created:** 2026-02-14 | **Assignment:** 📝 Planned
 
-Coordinate with PR authors to resolve frame 0x09 conflict between CRSF telemetry PRs #11025 and #11100.
+Display ADS-B contacts on INAV OSD, mirroring INAV Radar contact display. Uses DroneCAN ADSBVehicle messages from external receivers (ADSBee, PingRX, FLARM).
 
-**Problem:**
-- Both PRs implement frame type 0x09 differently
-- PR #11025: Simple barometer altitude (2 bytes)
-- PR #11100: Combined baro + vario (3 bytes, more complete)
-- Other features are complementary (Airspeed, RPM, Temp in #11025; Legacy mode in #11100)
-
-**Solution:**
-- Contact PR authors about conflict
-- Recommend merge strategy: PR #11100 first (more complete baro), then #11025 (remove frame 0x09)
-- Prepare test suite for validation
-- Document merge approach
-
-**Developer Analysis:** Complete (2025-12-06) - 38-test suite created, conflict identified
-
-**Location:** `active/coordinate-crsf-telemetry-pr-merge/`
+**Directory:** `backburner/feature-osd-adsb-contacts/`
+**Repository:** inav (firmware) | **Branch:** `maintenance-10.x`
 
 ---
 
-### 📋 privacylrs-fix-finding1-stream-cipher-desync
+### ⏸️ optimize-agent-fleet
 
-**Status:** TODO → **Being addressed by privacylrs-complete-tests-and-fix-finding1**
-**Type:** Security Fix / Bug Fix
-**Priority:** CRITICAL
-**Assignment:** 📝 Planned → **✉️ Assigned (via combined project)**
-**Created:** 2025-11-30
-**Assignee:** Security Analyst
+**Status:** BACKBURNER | **Type:** Optimization / Infrastructure | **Priority:** MEDIUM-HIGH
+**Created:** 2026-02-15 | **Assignment:** 📝 Planned
 
-**Note:** This standalone task is being addressed as Phase 2 of the combined project `privacylrs-complete-tests-and-fix-finding1`. See that project for current status and details.
+Reduce Claude agent fleet token consumption by 60-70%. Three agents (inav-architecture, target-developer, aerodynamics-expert) consuming 20,000+ tokens/call. Targets caching, indexing, and model selection improvements.
 
-**Reference:** Security Finding 1 (CRITICAL)
-**Stakeholder Decision:** "Option 2, use the existing LQ counter"
-
-**Location:** `active/privacylrs-fix-finding1-stream-cipher-desync/`
-
----
-
-### 📋 privacylrs-fix-finding7-forward-secrecy
-
-**Status:** TODO
-**Type:** Security Enhancement / Cryptographic Protocol
-**Priority:** MEDIUM
-**Assignment:** 📝 Planned
-**Created:** 2025-11-30
-**Assignee:** Security Analyst (or Developer)
-
-Implement ephemeral Diffie-Hellman key exchange using Curve25519 to provide forward secrecy, preventing master key compromise from exposing past communications.
-
-**Key Tasks:**
-- Design ECDH key exchange protocol integration
-- Integrate Curve25519 library
-- Implement key exchange handshake on TX and RX
-- Derive session keys from ECDH shared secret + master key
-
-**Reference:** Security Finding 7 (MEDIUM)
-**Stakeholder Decision:** "Diffie-Hellman" (Curve25519)
-
-**Location:** `active/privacylrs-fix-finding7-forward-secrecy/`
-
----
-
-### 📋 privacylrs-fix-finding8-entropy-sources
-
-**Status:** TODO
-**Type:** Security Enhancement
-**Priority:** MEDIUM
-**Assignment:** 📝 Planned
-**Created:** 2025-11-30
-**Assignee:** Security Analyst (or Developer)
-
-Implement robust entropy gathering that XORs multiple entropy sources (hardware RNG, timer jitter, ADC noise, RSSI) with dynamic detection and graceful fallback.
-
-**Key Tasks:**
-- Implement hardware capability detection
-- Create wrappers for multiple entropy sources
-- Implement XOR-based entropy mixing
-- Test on multiple platforms with graceful fallback
-
-**Reference:** Security Finding 8 (MEDIUM)
-**Stakeholder Decision:** "Option 1 and 3. xor all available sources... use what is available, dynamically"
-
-**Location:** `active/privacylrs-fix-finding8-entropy-sources/`
-
----
-
-### ⏸️ settings-simplification
-
-**Status:** BACKBURNER
-**Type:** Feature / UX Improvement
-**Priority:** MEDIUM
-**Created:** 2026-01-07
-**Estimated Effort:** 7-8 weeks (phased)
-
-Reduce INAV configuration complexity by ~70% through automatic determination and consolidation of flight settings.
-
-**Analysis Findings:**
-- 19 auto-determinable settings (learn from flight data, constants)
-- 47 settings → 12-14 consolidated primary settings
-- ~48 unique settings can be eliminated or simplified
-
-**Implementation Phases:**
-1. Quick wins (~3 days): Battery chemistry presets, auto-link airspeed
-2. Learning features (~3 weeks): Adaptive hover/cruise throttle
-3. Profile systems (~2 weeks): Landing descent, throttle range
-4. Advanced consolidations (~2 weeks)
-
-**Value:** 70% reduction in configuration complexity, better new user experience.
-
-**Analysis Documentation:** `claude/developer/investigations/inav-flight-settings/`
-
----
-
-### ⏸️ feature-add-function-syntax-support
-
-**Status:** BACKBURNER
-**Type:** Feature Enhancement
-**Priority:** Medium-High
-**Assignment:** 📝 Planned (not yet assigned)
-**Created:** 2025-11-24
-
-Add transpiler support for traditional JavaScript function syntax: `function() {}` and `function name() {}`.
-
-**Problem:**
-Transpiler currently only supports arrow function syntax `() => {}`. Users familiar with traditional JavaScript can't use `function() {}` syntax.
-
-**Solution:**
-Extend parser, analyzer, and codegen to recognize and transpile traditional function syntax.
-
-**Scope:**
-- Anonymous functions: `on.always(function() { ... })`
-- Named function declarations: `function checkYaw() { return flight.yaw > 1800; }`
-- Function references: `edge(checkYaw, ...)`
-- Function expressions: `const fn = function() { ... }`
-
-**Estimated Time:** ~6-8 hours
-
-**Why Backburner:**
-- Wait for ESM refactor to complete
-- Not critical (arrow functions work)
-- Medium-high priority but after refactor
-
-**Location:** `backburner/feature-add-function-syntax-support/`
-
----
-
-### ⏸️ verify-gps-fix-refactor
-
-**Status:** BACKBURNER
-**Type:** Code Review / Refactoring
-**Priority:** Medium
-**Assignment:** ✉️ Assigned
-**Created:** 2025-11-29
-**Assignee:** Developer
-**Assignment Email:** `claude/manager/sent/2025-11-29-1030-task-verify-gps-fix-refactor.md`
-**Related PR:** [#11144](https://github.com/iNavFlight/inav/pull/11144) (MERGED)
-**Related Issue:** [#11049](https://github.com/iNavFlight/inav/issues/11049)
-
-Verify the GPS recovery fix is complete and correct, answer reviewer's questions about why positions go to zero (not freeze), and refactor for code clarity/obviousness.
-
-**Why Backburner:**
-- PR already merged, awaiting user feedback
-- Need more information from users before proceeding
-- Code review/clarity work can wait for user reports
-
-**Location:** `backburner/verify-gps-fix-refactor/`
-
----
-
-### ⏸️ feature-auto-alignment-tool
-
-**Status:** BACKBURNER
-**Type:** Feature Enhancement
-**Priority:** Medium
-**Assignment:** ✉️ Assigned
-**Created:** 2025-12-12
-**Assignee:** Developer
-**PR:** [#2158](https://github.com/iNavFlight/inav-configurator/pull/2158) (OPEN, "Don't merge")
-
-Wizard-style tool that automatically detects and sets FC and compass alignment by having the user point north and lift the nose.
-
-**Current State:**
-- Basic implementation complete (Aug 2024)
-- Video demo in PR
-- Needs review/polish before merge
-
-**Why Backburner:**
-- Functional but needs polish
-- Lower priority than bug fixes
-
-**Location:** `backburner/feature-auto-alignment-tool/`
-
----
-
-### ⏸️ remove-transpiler-backward-compatibility
-
-**Status:** BACKBURNER
-**Type:** Refactoring
-**Priority:** LOW
-**Assignment:** 📝 Planned (not yet assigned)
-**Created:** 2025-12-28
-**Scheduled For:** February 2026
-
-Remove backward compatibility support from transpiler namespace refactoring, requiring users to use the fully namespaced `inav.` syntax.
-
-**Background:**
-Transpiler currently supports dual syntax for backward compatibility:
-- New: `inav.gvar[0]`, `inav.rc[5]`, `inav.events.edge()`
-- Old: `gvar[0]`, `rc[5]`, `edge()`
-
-**Goal:**
-Remove dual-path logic after 14-month migration period (Dec 2024 - Feb 2026).
-
-**Scope:**
-- Remove backward compatibility from parser.js
-- Remove backward compatibility from codegen.js
-- Remove backward compatibility from analyzer.js
-- Remove backward compatibility from action_generator.js
-- Update examples to use new syntax only
-
-**Benefits:**
-- Simpler codebase
-- Clearer API (one way instead of two)
-- Better maintainability
-- Easier for new contributors
-
-**Why Backburner:**
-- Scheduled for February 2026
-- Gives users 14 months migration time
-- Decompiler already outputs new syntax only
-- Not urgent, but planned
-
-**Estimated Time:** 4-6 hours
-
-**Location:** `backburner/remove-transpiler-backward-compatibility/`
-
-**Related:** Developer request in `claude/manager/inbox-archive/2025-12-20-1903-project-request-remove-transpiler-backward-compatibility.md`
-
----
-
-### 📋 fix-nexusx-imu-orientation
-
-**Status:** TODO | **Type:** Bug Fix | **Priority:** HIGH
-**Created:** 2026-02-14 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
-
-Default IMU orientation on RadioMaster NEXUS-X is backwards (confirmed). `IMU_ICM42605_ALIGN` set to `CW180_DEG` in target.h needs correcting.
-
-**Directory:** `active/fix-nexusx-imu-orientation/`
-**Issue:** [#11325](https://github.com/iNavFlight/inav/issues/11325)
-**Repository:** inav (firmware) | **Branch:** `maintenance-9.x`
-
----
-
-### 📋 update-telemetry-widget-800x480
-
-**Status:** TODO | **Type:** Feature Enhancement | **Priority:** MEDIUM
-**Created:** 2026-02-14 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
-
-Update INAV Lua Telemetry Widget to support the 800x480 color touchscreen on RadioMaster TX16S MK3. Currently renders with 480x272 Horus layout, wasting screen real estate.
-
-**Directory:** `active/update-telemetry-widget-800x480/`
-**Assignment:** `manager/email/sent/2026-02-14-2151-task-update-telemetry-widget-800x480.md`
-**Repository:** OpenTX-Telemetry-Widget
-
----
-
-### 📋 discord-qa-knowledge-base
-
-**Status:** TODO | **Type:** Tooling / AI Pipeline | **Priority:** MEDIUM
-**Created:** 2026-02-14 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
-
-Mine INAV Discord history (~20k messages) for recurring problems and canonical answers. Clustering-based approach to find questions asked multiple times in different words. High precision — abstain rather than give wrong answers. May incorporate INAV wiki content.
-
-**Directory:** `active/discord-qa-knowledge-base/`
-**Assignment:** `manager/email/sent/2026-02-14-0042-task-discord-qa-knowledge-base.md`
-**Reference:** `discord_bot/chatgpt_convo.txt`
-
----
-
-### 🚧 configurator-ui-polish
-
-**Status:** IN PROGRESS | **Type:** UI Enhancement (Master Project) | **Priority:** MEDIUM
-**Created:** 2026-02-12 | **Assignee:** Developer | **Assignment:** ✉️ Assigned (Subproject 1)
-
-Systematic UI polish based on 97-issue audit across all configurator tabs. 9 subprojects, each with own PR. Subprojects 1-6 ready to implement; 7-9 need discussion first. Currently working on Subproject 1 (quick label/tooltip/CSS fixes).
-
-**Directory:** `active/configurator-ui-polish/`
-**Assignment:** `manager/email/sent/2026-02-12-1100-task-configurator-ui-polish-subproject-1.md`
-**Repository:** inav-configurator | **Branch:** `maintenance-9.x`
+**Directory:** `backburner/optimize-agent-fleet/`
 
 ---
