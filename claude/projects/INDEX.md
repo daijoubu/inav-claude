@@ -118,6 +118,7 @@ Poll DroneCAN nodes for transport statistics (tx/rx transfer counts, error rates
 
 **Status:** TODO | **Type:** Feature / UI Enhancement | **Priority:** MEDIUM
 **Created:** 2026-02-16 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
+**Blocked until:** `feature-dronecan-configurator-tab` complete
 
 Expose DroneCAN as a selectable GPS provider (value 6) in the configurator GPS tab dropdown. Firmware already supports it; this makes it user-accessible without manual CLI editing.
 
