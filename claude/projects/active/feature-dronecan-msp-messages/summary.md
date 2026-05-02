@@ -1,10 +1,11 @@
 # Project: Add DroneCAN MSP Messages
 
-**Status:** 📋 TODO
+**Status:** 🚧 IN PROGRESS
 **Priority:** MEDIUM-HIGH
 **Type:** Feature
 **Created:** 2026-04-25
 **Estimated Effort:** 3-4 hours
+**PR:** [#11527](https://github.com/inavflight/inav/pull/11527) — OPEN
 
 ## Overview
 
@@ -68,13 +69,22 @@ In `src/main/fc/fc_msp.c`, add handlers following the ESC_TELEM pattern.
 
 ## Success Criteria
 
-- [ ] `dronecanNodeInfo_t` struct defined and node table maintained in dronecan.c
-- [ ] `handle_NodeStatus()` populates node table on each broadcast
-- [ ] `MSP2_INAV_DRONECAN_NODES` returns correct node list (verified with msp tool)
-- [ ] `MSP2_INAV_DRONECAN_NODE_INFO` returns correct per-node detail
-- [ ] Builds cleanly for MATEKF765SE with zero errors/warnings
-- [ ] Hardware tested: DroneCAN battery monitor node visible in MSP response
-- [ ] PR opened against `maintenance-10.x`
+- [x] `dronecanNodeInfo_t` struct defined and node table maintained in dronecan.c
+- [x] `handle_NodeStatus()` populates node table on each broadcast
+- [x] `MSP2_INAV_DRONECAN_NODES` returns correct node list (verified with msp tool)
+- [x] `MSP2_INAV_DRONECAN_NODE_INFO` returns correct per-node detail
+- [x] Builds cleanly for MATEKF765SE with zero errors/warnings
+- [x] Hardware tested: DroneCAN battery monitor node visible in MSP response
+- [x] PR opened against `maintenance-10.x`
+
+## Development Status (2026-05-01)
+
+All implementation complete. Qodo review issues addressed in commit `fbe77e7a4`:
+- Buffer overflow fixed: per-node record reduced to 7 bytes (nodeID, health, mode, last_seen_ms); worst-case 225 bytes well within 512-byte MSP buffer
+- Return convention fixed: `MSP2_INAV_DRONECAN_NODE_INFO` now correctly uses `*ret` out-parameter pattern
+- Additional: `printf` → `LOG_DEBUG`, `msp_messages.json` updated, docs updated
+
+Hardware-verified on MATEKF765SE with live DroneCAN node (ID 73). PR awaiting upstream review/merge.
 
 ## Related
 

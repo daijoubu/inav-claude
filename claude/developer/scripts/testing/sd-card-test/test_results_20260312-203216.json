@@ -1,0 +1,257 @@
+{
+  "test_suite": "Unified HITL SD Card Test Suite",
+  "hal_version": "1.2.2",
+  "timestamp": "2026-03-12T20:32:38.255643",
+  "results": [
+    {
+      "test_num": 7,
+      "test_name": "Transient Failure Recovery",
+      "passed": false,
+      "duration_sec": 1.500586748123169,
+      "msp_result": null,
+      "gdb_state_before": {
+        "timestamp": "2026-03-12T20:32:17.070817"
+      },
+      "gdb_state_after": {
+        "timestamp": "2026-03-12T20:32:18.571246"
+      },
+      "fault_injected": null,
+      "recovery_time_ms": 0.0,
+      "details": {
+        "injected_count": 4,
+        "injection_success": false,
+        "initial_errors": 0,
+        "final_errors": 0,
+        "recovery_detected": false
+      },
+      "error": null
+    },
+    {
+      "test_num": 7,
+      "test_name": "Transient Failure Recovery",
+      "passed": false,
+      "duration_sec": 1.500586748123169,
+      "msp_result": null,
+      "gdb_state_before": {
+        "timestamp": "2026-03-12T20:32:17.070817"
+      },
+      "gdb_state_after": {
+        "timestamp": "2026-03-12T20:32:18.571246"
+      },
+      "fault_injected": null,
+      "recovery_time_ms": 0.0,
+      "details": {
+        "injected_count": 4,
+        "injection_success": false,
+        "initial_errors": 0,
+        "final_errors": 0,
+        "recovery_detected": false
+      },
+      "error": null
+    },
+    {
+      "test_num": 8,
+      "test_name": "Concurrent Logging Bit Errors",
+      "passed": false,
+      "duration_sec": 1.7302634716033936,
+      "msp_result": null,
+      "gdb_state_before": {
+        "timestamp": "2026-03-12T20:32:18.571428"
+      },
+      "gdb_state_after": {
+        "timestamp": "2026-03-12T20:32:20.301539"
+      },
+      "fault_injected": null,
+      "recovery_time_ms": 0.0,
+      "details": {
+        "fs_error_after": 0,
+        "error_handled": true
+      },
+      "error": null
+    },
+    {
+      "test_num": 8,
+      "test_name": "Concurrent Logging Bit Errors",
+      "passed": false,
+      "duration_sec": 1.7302634716033936,
+      "msp_result": null,
+      "gdb_state_before": {
+        "timestamp": "2026-03-12T20:32:18.571428"
+      },
+      "gdb_state_after": {
+        "timestamp": "2026-03-12T20:32:20.301539"
+      },
+      "fault_injected": null,
+      "recovery_time_ms": 0.0,
+      "details": {
+        "fs_error_after": 0,
+        "error_handled": true
+      },
+      "error": null
+    },
+    {
+      "test_num": 9,
+      "test_name": "Extended Endurance Faults",
+      "passed": true,
+      "duration_sec": 8.783149242401123,
+      "msp_result": null,
+      "gdb_state_before": {
+        "timestamp": "2026-03-12T20:32:20.301712"
+      },
+      "gdb_state_after": {
+        "timestamp": "2026-03-12T20:32:29.084766"
+      },
+      "fault_injected": null,
+      "recovery_time_ms": 0.0,
+      "details": {
+        "fault_sequence": [
+          {
+            "fault": "dma",
+            "success": false,
+            "message": "Failed to inject DMA error (output: GNU gdb (GDB) 17.1\nCopyright (C) 2025 Free Software Foundation, Inc.\nLicense GPLv3+: GNU GPL version)"
+          },
+          {
+            "fault": "crc",
+            "success": false,
+            "message": "Failed to inject CRC error (output: GNU gdb (GDB) 17.1\nCopyright (C) 2025 Free Software Foundation, Inc.\nLicense GPLv3+: GNU GPL version)"
+          },
+          {
+            "fault": "reset",
+            "success": false,
+            "message": "Symbols not loaded"
+          },
+          {
+            "fault": "failures",
+            "success": false,
+            "message": "Symbols not loaded"
+          }
+        ],
+        "final_state": null
+      },
+      "error": null
+    },
+    {
+      "test_num": 9,
+      "test_name": "Extended Endurance Faults",
+      "passed": true,
+      "duration_sec": 8.783149242401123,
+      "msp_result": null,
+      "gdb_state_before": {
+        "timestamp": "2026-03-12T20:32:20.301712"
+      },
+      "gdb_state_after": {
+        "timestamp": "2026-03-12T20:32:29.084766"
+      },
+      "fault_injected": null,
+      "recovery_time_ms": 0.0,
+      "details": {
+        "fault_sequence": [
+          {
+            "fault": "dma",
+            "success": false,
+            "message": "Failed to inject DMA error (output: GNU gdb (GDB) 17.1\nCopyright (C) 2025 Free Software Foundation, Inc.\nLicense GPLv3+: GNU GPL version)"
+          },
+          {
+            "fault": "crc",
+            "success": false,
+            "message": "Failed to inject CRC error (output: GNU gdb (GDB) 17.1\nCopyright (C) 2025 Free Software Foundation, Inc.\nLicense GPLv3+: GNU GPL version)"
+          },
+          {
+            "fault": "reset",
+            "success": false,
+            "message": "Symbols not loaded"
+          },
+          {
+            "fault": "failures",
+            "success": false,
+            "message": "Symbols not loaded"
+          }
+        ],
+        "final_state": null
+      },
+      "error": null
+    },
+    {
+      "test_num": 10,
+      "test_name": "DMA Recovery Sequences",
+      "passed": false,
+      "duration_sec": 6.1697471141815186,
+      "msp_result": null,
+      "gdb_state_before": {
+        "timestamp": "2026-03-12T20:32:29.084872"
+      },
+      "gdb_state_after": {
+        "timestamp": "2026-03-12T20:32:35.254454"
+      },
+      "fault_injected": null,
+      "recovery_time_ms": 0.0,
+      "details": {
+        "inject_duration_ms": 156.5406322479248,
+        "recovery_time_ms": 5012.641668319702,
+        "recovered": false
+      },
+      "error": null
+    },
+    {
+      "test_num": 10,
+      "test_name": "DMA Recovery Sequences",
+      "passed": false,
+      "duration_sec": 6.1697471141815186,
+      "msp_result": null,
+      "gdb_state_before": {
+        "timestamp": "2026-03-12T20:32:29.084872"
+      },
+      "gdb_state_after": {
+        "timestamp": "2026-03-12T20:32:35.254454"
+      },
+      "fault_injected": null,
+      "recovery_time_ms": 0.0,
+      "details": {
+        "inject_duration_ms": 156.5406322479248,
+        "recovery_time_ms": 5012.641668319702,
+        "recovered": false
+      },
+      "error": null
+    },
+    {
+      "test_num": 11,
+      "test_name": "Performance Degradation",
+      "passed": true,
+      "duration_sec": 3.000913143157959,
+      "msp_result": null,
+      "gdb_state_before": {
+        "timestamp": "2026-03-12T20:32:35.254641"
+      },
+      "gdb_state_after": {
+        "timestamp": "2026-03-12T20:32:38.255412"
+      },
+      "fault_injected": null,
+      "recovery_time_ms": 0.0,
+      "details": {
+        "failure_count_delta": 0,
+        "state_under_fault": null
+      },
+      "error": null
+    },
+    {
+      "test_num": 11,
+      "test_name": "Performance Degradation",
+      "passed": true,
+      "duration_sec": 3.000913143157959,
+      "msp_result": null,
+      "gdb_state_before": {
+        "timestamp": "2026-03-12T20:32:35.254641"
+      },
+      "gdb_state_after": {
+        "timestamp": "2026-03-12T20:32:38.255412"
+      },
+      "fault_injected": null,
+      "recovery_time_ms": 0.0,
+      "details": {
+        "failure_count_delta": 0,
+        "state_under_fault": null
+      },
+      "error": null
+    }
+  ]
+}

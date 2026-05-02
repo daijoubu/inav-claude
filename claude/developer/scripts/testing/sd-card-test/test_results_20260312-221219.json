@@ -1,0 +1,477 @@
+{
+  "test_suite": "Unified HITL SD Card Test Suite",
+  "hal_version": "1.2.2",
+  "timestamp": "2026-03-12T22:13:01.369589",
+  "results": [
+    {
+      "test_num": 7,
+      "test_name": "Transient Failure Recovery",
+      "passed": true,
+      "duration_sec": 4.628463983535767,
+      "msp_result": null,
+      "gdb_state_before": {
+        "timestamp": "2026-03-12T22:12:20.461167",
+        "sdcard": {
+          "state": 1,
+          "state_name": "RESET",
+          "consecutive_errors": 7
+        },
+        "afatfs": {
+          "filesystem_state": 0,
+          "filesystem_state_name": "UNKNOWN",
+          "last_error": 0,
+          "last_error_name": "NONE"
+        }
+      },
+      "gdb_state_after": {
+        "timestamp": "2026-03-12T22:12:24.328903",
+        "sdcard": {
+          "state": 1,
+          "state_name": "RESET",
+          "consecutive_errors": 4
+        },
+        "afatfs": {
+          "filesystem_state": 0,
+          "filesystem_state_name": "UNKNOWN",
+          "last_error": 0,
+          "last_error_name": "NONE"
+        }
+      },
+      "fault_injected": null,
+      "recovery_time_ms": 0.0,
+      "details": {
+        "injected_count": 4,
+        "injection_success": true,
+        "initial_errors": 7,
+        "final_errors": 4,
+        "recovery_detected": true
+      },
+      "error": null
+    },
+    {
+      "test_num": 7,
+      "test_name": "Transient Failure Recovery",
+      "passed": true,
+      "duration_sec": 4.628463983535767,
+      "msp_result": null,
+      "gdb_state_before": {
+        "timestamp": "2026-03-12T22:12:20.461167",
+        "sdcard": {
+          "state": 1,
+          "state_name": "RESET",
+          "consecutive_errors": 7
+        },
+        "afatfs": {
+          "filesystem_state": 0,
+          "filesystem_state_name": "UNKNOWN",
+          "last_error": 0,
+          "last_error_name": "NONE"
+        }
+      },
+      "gdb_state_after": {
+        "timestamp": "2026-03-12T22:12:24.328903",
+        "sdcard": {
+          "state": 1,
+          "state_name": "RESET",
+          "consecutive_errors": 4
+        },
+        "afatfs": {
+          "filesystem_state": 0,
+          "filesystem_state_name": "UNKNOWN",
+          "last_error": 0,
+          "last_error_name": "NONE"
+        }
+      },
+      "fault_injected": null,
+      "recovery_time_ms": 0.0,
+      "details": {
+        "injected_count": 4,
+        "injection_success": true,
+        "initial_errors": 7,
+        "final_errors": 4,
+        "recovery_detected": true
+      },
+      "error": null
+    },
+    {
+      "test_num": 8,
+      "test_name": "Concurrent Logging Bit Errors",
+      "passed": true,
+      "duration_sec": 4.667042255401611,
+      "msp_result": null,
+      "gdb_state_before": {
+        "timestamp": "2026-03-12T22:12:25.089641",
+        "sdcard": {
+          "state": 1,
+          "state_name": "RESET",
+          "consecutive_errors": 4
+        },
+        "afatfs": {
+          "filesystem_state": 0,
+          "filesystem_state_name": "UNKNOWN",
+          "last_error": 0,
+          "last_error_name": "NONE"
+        }
+      },
+      "gdb_state_after": {
+        "timestamp": "2026-03-12T22:12:28.994692",
+        "sdcard": {
+          "state": 1,
+          "state_name": "RESET",
+          "consecutive_errors": 4
+        },
+        "afatfs": {
+          "filesystem_state": 0,
+          "filesystem_state_name": "UNKNOWN",
+          "last_error": 0,
+          "last_error_name": "NONE"
+        }
+      },
+      "fault_injected": null,
+      "recovery_time_ms": 0.0,
+      "details": {
+        "fs_error_after": 0,
+        "error_handled": true
+      },
+      "error": null
+    },
+    {
+      "test_num": 8,
+      "test_name": "Concurrent Logging Bit Errors",
+      "passed": true,
+      "duration_sec": 4.667042255401611,
+      "msp_result": null,
+      "gdb_state_before": {
+        "timestamp": "2026-03-12T22:12:25.089641",
+        "sdcard": {
+          "state": 1,
+          "state_name": "RESET",
+          "consecutive_errors": 4
+        },
+        "afatfs": {
+          "filesystem_state": 0,
+          "filesystem_state_name": "UNKNOWN",
+          "last_error": 0,
+          "last_error_name": "NONE"
+        }
+      },
+      "gdb_state_after": {
+        "timestamp": "2026-03-12T22:12:28.994692",
+        "sdcard": {
+          "state": 1,
+          "state_name": "RESET",
+          "consecutive_errors": 4
+        },
+        "afatfs": {
+          "filesystem_state": 0,
+          "filesystem_state_name": "UNKNOWN",
+          "last_error": 0,
+          "last_error_name": "NONE"
+        }
+      },
+      "fault_injected": null,
+      "recovery_time_ms": 0.0,
+      "details": {
+        "fs_error_after": 0,
+        "error_handled": true
+      },
+      "error": null
+    },
+    {
+      "test_num": 9,
+      "test_name": "Extended Endurance Faults",
+      "passed": true,
+      "duration_sec": 15.219683647155762,
+      "msp_result": null,
+      "gdb_state_before": {
+        "timestamp": "2026-03-12T22:12:29.756694",
+        "sdcard": {
+          "state": 1,
+          "state_name": "RESET",
+          "consecutive_errors": 4
+        },
+        "afatfs": {
+          "filesystem_state": 0,
+          "filesystem_state_name": "UNKNOWN",
+          "last_error": 0,
+          "last_error_name": "NONE"
+        }
+      },
+      "gdb_state_after": {
+        "timestamp": "2026-03-12T22:12:44.231795",
+        "sdcard": {
+          "state": 1,
+          "state_name": "RESET",
+          "consecutive_errors": 6
+        },
+        "afatfs": {
+          "filesystem_state": 0,
+          "filesystem_state_name": "UNKNOWN",
+          "last_error": 0,
+          "last_error_name": "NONE"
+        }
+      },
+      "fault_injected": null,
+      "recovery_time_ms": 0.0,
+      "details": {
+        "fault_sequence": [
+          {
+            "fault": "dma",
+            "success": true,
+            "message": "DMA TEIF3 flag set on Stream 3"
+          },
+          {
+            "fault": "crc",
+            "success": true,
+            "message": "SDMMC DCRCFAIL flag set"
+          },
+          {
+            "fault": "reset",
+            "success": true,
+            "message": "SD card state forced to RESET"
+          },
+          {
+            "fault": "failures",
+            "success": true,
+            "message": "Consecutive failure count set to 6"
+          }
+        ],
+        "final_state": "RESET"
+      },
+      "error": null
+    },
+    {
+      "test_num": 9,
+      "test_name": "Extended Endurance Faults",
+      "passed": true,
+      "duration_sec": 15.219683647155762,
+      "msp_result": null,
+      "gdb_state_before": {
+        "timestamp": "2026-03-12T22:12:29.756694",
+        "sdcard": {
+          "state": 1,
+          "state_name": "RESET",
+          "consecutive_errors": 4
+        },
+        "afatfs": {
+          "filesystem_state": 0,
+          "filesystem_state_name": "UNKNOWN",
+          "last_error": 0,
+          "last_error_name": "NONE"
+        }
+      },
+      "gdb_state_after": {
+        "timestamp": "2026-03-12T22:12:44.231795",
+        "sdcard": {
+          "state": 1,
+          "state_name": "RESET",
+          "consecutive_errors": 6
+        },
+        "afatfs": {
+          "filesystem_state": 0,
+          "filesystem_state_name": "UNKNOWN",
+          "last_error": 0,
+          "last_error_name": "NONE"
+        }
+      },
+      "fault_injected": null,
+      "recovery_time_ms": 0.0,
+      "details": {
+        "fault_sequence": [
+          {
+            "fault": "dma",
+            "success": true,
+            "message": "DMA TEIF3 flag set on Stream 3"
+          },
+          {
+            "fault": "crc",
+            "success": true,
+            "message": "SDMMC DCRCFAIL flag set"
+          },
+          {
+            "fault": "reset",
+            "success": true,
+            "message": "SD card state forced to RESET"
+          },
+          {
+            "fault": "failures",
+            "success": true,
+            "message": "Consecutive failure count set to 6"
+          }
+        ],
+        "final_state": "RESET"
+      },
+      "error": null
+    },
+    {
+      "test_num": 10,
+      "test_name": "DMA Recovery Sequences",
+      "passed": false,
+      "duration_sec": 9.308571577072144,
+      "msp_result": null,
+      "gdb_state_before": {
+        "timestamp": "2026-03-12T22:12:44.976386",
+        "sdcard": {
+          "state": 1,
+          "state_name": "RESET",
+          "consecutive_errors": 6
+        },
+        "afatfs": {
+          "filesystem_state": 0,
+          "filesystem_state_name": "UNKNOWN",
+          "last_error": 0,
+          "last_error_name": "NONE"
+        }
+      },
+      "gdb_state_after": {
+        "timestamp": "2026-03-12T22:12:53.523465",
+        "sdcard": {
+          "state": 1,
+          "state_name": "RESET",
+          "consecutive_errors": 6
+        },
+        "afatfs": {
+          "filesystem_state": 0,
+          "filesystem_state_name": "UNKNOWN",
+          "last_error": 0,
+          "last_error_name": "NONE"
+        }
+      },
+      "fault_injected": null,
+      "recovery_time_ms": 0.0,
+      "details": {
+        "inject_duration_ms": 168.02525520324707,
+        "recovery_time_ms": 5153.159379959106,
+        "recovered": false
+      },
+      "error": null
+    },
+    {
+      "test_num": 10,
+      "test_name": "DMA Recovery Sequences",
+      "passed": false,
+      "duration_sec": 9.308571577072144,
+      "msp_result": null,
+      "gdb_state_before": {
+        "timestamp": "2026-03-12T22:12:44.976386",
+        "sdcard": {
+          "state": 1,
+          "state_name": "RESET",
+          "consecutive_errors": 6
+        },
+        "afatfs": {
+          "filesystem_state": 0,
+          "filesystem_state_name": "UNKNOWN",
+          "last_error": 0,
+          "last_error_name": "NONE"
+        }
+      },
+      "gdb_state_after": {
+        "timestamp": "2026-03-12T22:12:53.523465",
+        "sdcard": {
+          "state": 1,
+          "state_name": "RESET",
+          "consecutive_errors": 6
+        },
+        "afatfs": {
+          "filesystem_state": 0,
+          "filesystem_state_name": "UNKNOWN",
+          "last_error": 0,
+          "last_error_name": "NONE"
+        }
+      },
+      "fault_injected": null,
+      "recovery_time_ms": 0.0,
+      "details": {
+        "inject_duration_ms": 168.02525520324707,
+        "recovery_time_ms": 5153.159379959106,
+        "recovered": false
+      },
+      "error": null
+    },
+    {
+      "test_num": 11,
+      "test_name": "Performance Degradation",
+      "passed": true,
+      "duration_sec": 7.084584474563599,
+      "msp_result": null,
+      "gdb_state_before": {
+        "timestamp": "2026-03-12T22:12:54.284966",
+        "sdcard": {
+          "state": 1,
+          "state_name": "RESET",
+          "consecutive_errors": 6
+        },
+        "afatfs": {
+          "filesystem_state": 0,
+          "filesystem_state_name": "UNKNOWN",
+          "last_error": 0,
+          "last_error_name": "NONE"
+        }
+      },
+      "gdb_state_after": {
+        "timestamp": "2026-03-12T22:13:00.632031",
+        "sdcard": {
+          "state": 1,
+          "state_name": "RESET",
+          "consecutive_errors": 7
+        },
+        "afatfs": {
+          "filesystem_state": 0,
+          "filesystem_state_name": "UNKNOWN",
+          "last_error": 0,
+          "last_error_name": "NONE"
+        }
+      },
+      "fault_injected": null,
+      "recovery_time_ms": 0.0,
+      "details": {
+        "failure_count_delta": 0,
+        "state_under_fault": "RESET"
+      },
+      "error": null
+    },
+    {
+      "test_num": 11,
+      "test_name": "Performance Degradation",
+      "passed": true,
+      "duration_sec": 7.084584474563599,
+      "msp_result": null,
+      "gdb_state_before": {
+        "timestamp": "2026-03-12T22:12:54.284966",
+        "sdcard": {
+          "state": 1,
+          "state_name": "RESET",
+          "consecutive_errors": 6
+        },
+        "afatfs": {
+          "filesystem_state": 0,
+          "filesystem_state_name": "UNKNOWN",
+          "last_error": 0,
+          "last_error_name": "NONE"
+        }
+      },
+      "gdb_state_after": {
+        "timestamp": "2026-03-12T22:13:00.632031",
+        "sdcard": {
+          "state": 1,
+          "state_name": "RESET",
+          "consecutive_errors": 7
+        },
+        "afatfs": {
+          "filesystem_state": 0,
+          "filesystem_state_name": "UNKNOWN",
+          "last_error": 0,
+          "last_error_name": "NONE"
+        }
+      },
+      "fault_injected": null,
+      "recovery_time_ms": 0.0,
+      "details": {
+        "failure_count_delta": 0,
+        "state_under_fault": "RESET"
+      },
+      "error": null
+    }
+  ]
+}

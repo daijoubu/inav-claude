@@ -1,0 +1,71 @@
+{
+  "timestamp": "2026-02-22T07:15:12.070944",
+  "hal_version": "1.2.2",
+  "results": [
+    {
+      "test_num": 1,
+      "test_name": "SD Card Detection",
+      "passed": true,
+      "duration_sec": 0.10064363479614258,
+      "details": {
+        "supported": true,
+        "state": "READY",
+        "fs_error": 0,
+        "free_space_mb": 4092.03125,
+        "total_space_mb": 15193.5
+      },
+      "error": null
+    },
+    {
+      "test_num": 2,
+      "test_name": "Write Speed Measurement",
+      "passed": true,
+      "duration_sec": 63.20061373710632,
+      "details": {
+        "free_space_before_mb": 4092.03125,
+        "blackbox_device": "SDCARD",
+        "free_space_after_mb": 4092.03125,
+        "bytes_written": 0,
+        "write_speed_kbps": 0.0
+      },
+      "error": null
+    },
+    {
+      "test_num": 3,
+      "test_name": "Continuous Logging",
+      "passed": true,
+      "duration_sec": 300.74289178848267,
+      "details": {
+        "duration_min": 5,
+        "checks_performed": 10,
+        "errors_detected": 0
+      },
+      "error": null
+    },
+    {
+      "test_num": 2,
+      "test_name": "Write Speed Measurement",
+      "passed": true,
+      "duration_sec": 63.15897250175476,
+      "details": {
+        "free_space_before_mb": 4092.03125,
+        "blackbox_device": "SDCARD",
+        "free_space_after_mb": 4092.03125,
+        "bytes_written": 0,
+        "write_speed_kbps": 0.0
+      },
+      "error": null
+    },
+    {
+      "test_num": 6,
+      "test_name": "Rapid Arm/Disarm Cycles",
+      "passed": true,
+      "duration_sec": 64.66151571273804,
+      "details": {
+        "target_cycles": 20,
+        "successful_cycles": 20
+      },
+      "error": null
+    }
+  ]
+}

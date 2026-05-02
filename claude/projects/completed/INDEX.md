@@ -3,7 +3,7 @@
 <<<<<<< HEAD
 Completed (✅) and cancelled (❌) projects by current author (daijoubu) for INAV firmware and DroneCAN development.
 
-**Total Completed (Current Author):** 28 | **Total Cancelled:** 6
+**Total Completed (Current Author):** 28 | **Total Cancelled:** 7
 **Archived:** 100 | See [archive/](archive/)
 - Previous Author (sensei-hacker): 59 projects
 - Other Projects: 34 projects
@@ -11,6 +11,46 @@ Completed (✅) and cancelled (❌) projects by current author (daijoubu) for IN
 
 > **Active projects:** See [../INDEX.md](../INDEX.md)
 > **Archived organization:** See `archive/` subdirectory for all 100 archived projects
+
+---
+
+
+### ✅ investigate-itcm-dronecan-isr
+
+**Status:** COMPLETED (2026-05-02)
+**Type:** Investigation
+**Priority:** MEDIUM-HIGH
+
+Audit ITCM_RAM usage on STM32F7 (88.67% full on MATEKF765SE) and evaluate whether DroneCAN TX/RX ISR handlers can fit in remaining ~1.8 KB headroom. Produces a PROCEED / RELOCATE / REDESIGN recommendation for `feature-stm32f7-can-tx-isr`.
+
+---
+
+
+### ✅ fix-bootloader-targets-no-storage
+
+**Status:** COMPLETED (2026-04-29)
+**Type:** Bug Fix / Investigation
+**Priority:** MEDIUM
+
+Five targets (ANYFC, CLRACINGF4AIR, FF_F35_LIGHTNING, FLYINGRCF4WINGMINI, AIRBOTF7) have `BOOTLOADER` set but no storage backend, silently producing non-functional `_bl` binaries. Discovered during update-stm32f4-hal investigation.
+
+---
+
+
+### ✅ feature-hitl-sdcard-test-suite
+
+**Status:** COMPLETED (2026-04-26)
+**Type:** Testing
+**Priority:** HIGH
+
+HITL SD card fault injection test suite (Tests 7-11): transient failures, bit errors, DMA recovery, extended endurance with GDB monitoring. Establishes baseline before HAL upgrade validation.
+
+---
+
+
+### ❌ update-stm32f4-hal (2026-04-26)
+
+**Cancelled:** Cancelled
 
 ---
 
@@ -190,7 +230,7 @@ Every 5 seconds, GPS position data stops being processed for 500ms due to a bug 
 =======
 Completed (✅) and cancelled (❌) projects.
 
-**Total Completed:** 180 | **Total Cancelled:** 6
+**Total Completed:** 148 | **Total Cancelled:** 7
 
 > **Active projects:** See [../INDEX.md](../INDEX.md)
 >>>>>>> upstream/master

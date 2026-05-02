@@ -2,8 +2,8 @@
 
 This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKED).
 
-**Last Updated:** 2026-04-25
-**Active:** 10 | **Backburner:** 2 | **Blocked:** 0
+**Last Updated:** 2026-05-02
+**Active:** 9 | **Backburner:** 3 | **Blocked:** 0
 
 > **Completed projects:** See [completed/INDEX.md](completed/INDEX.md)
 > **Blocked projects:** See `blocked/` directory
@@ -39,15 +39,15 @@ This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKE
 
 ## Active Projects
 
-### 📋 feature-dronecan-msp-messages
+### 🚧 feature-dronecan-msp-messages
 
-**Status:** TODO | **Type:** Feature | **Priority:** MEDIUM-HIGH
+**Status:** IN PROGRESS | **Type:** Feature | **Priority:** MEDIUM-HIGH
 **Created:** 2026-04-25 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
 
-Add MSP2 commands to expose DroneCAN node status and identity data. Requires adding a persistent node table in dronecan.c, then `MSP2_INAV_DRONECAN_NODES` (0x2042) and `MSP2_INAV_DRONECAN_NODE_INFO` (0x2043). Prerequisite for the configurator tab.
+Add MSP2 commands to expose DroneCAN node status and identity data. Node table, `MSP2_INAV_DRONECAN_NODES` (0x2042) and `MSP2_INAV_DRONECAN_NODE_INFO` (0x2043) implemented. PR open, awaiting review/merge.
 
 **Directory:** `active/feature-dronecan-msp-messages/`
-**Assignment:** `manager/email/sent/2026-04-25-1200-task-feature-dronecan-msp-messages.md`
+**PR:** [#11527](https://github.com/inavflight/inav/pull/11527) — OPEN
 **Repository:** inav (firmware) | **Branch:** `maintenance-10.x`
 
 ---
@@ -93,7 +93,7 @@ Investigate why CAN peripherals stop communicating after INAV is restarted witho
 ### 📋 investigate-dronecan-reboot-gps
 
 **Status:** TODO | **Type:** Bug Fix / Testing | **Priority:** MEDIUM-HIGH
-**Created:** 2026-04-14 | **Assignment:** 📝 Planned
+**Created:** 2026-04-14 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
 
 DroneCAN GPS stops updating after soft FC reboot (software reset without power cycle). Full power cycle restores operation. Likely same root cause as investigate-can-restart-no-comms.
 
@@ -117,7 +117,7 @@ Poll DroneCAN nodes for transport statistics (tx/rx transfer counts, error rates
 ### 📋 feature-dronecan-gps-provider-ui
 
 **Status:** TODO | **Type:** Feature / UI Enhancement | **Priority:** MEDIUM
-**Created:** 2026-02-16 | **Assignment:** 📝 Planned
+**Created:** 2026-02-16 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
 
 Expose DroneCAN as a selectable GPS provider (value 6) in the configurator GPS tab dropdown. Firmware already supports it; this makes it user-accessible without manual CLI editing.
 
@@ -126,38 +126,39 @@ Expose DroneCAN as a selectable GPS provider (value 6) in the configurator GPS t
 
 ---
 
-### 🚧 feature-hitl-sdcard-test-suite
-
-**Status:** IN PROGRESS (development complete, awaiting hardware execution) | **Type:** Testing | **Priority:** HIGH
-**Created:** 2026-03-11 | **Assignment:** 📝 Planned
-
-HITL SD card fault injection test suite (Tests 7-11): transient failures, bit errors, DMA recovery, extended endurance with GDB monitoring. Establishes baseline before HAL upgrade validation.
-
-**Directory:** `active/feature-hitl-sdcard-test-suite/`
-**Repository:** inav (firmware)
-
----
-
-### 📋 update-stm32f4-hal
-
-**Status:** TODO | **Type:** Maintenance | **Priority:** HIGH
-**Created:** 2026-02-20 | **Assignment:** 📝 Planned
-
-Update STM32F4xx HAL from V1.7.1 (2017) to V1.8.5 (2025). Includes SD card reliability, I2C stall workaround, UART DMA race condition, and USB fixes. Same class of work as completed F7 HAL update.
-
-**Directory:** `active/update-stm32f4-hal/`
-**Repository:** inav (firmware) | **Branch:** `maintenance-10.x`
-
----
-
 ### 📋 verify-stm32h7-hal
 
 **Status:** TODO | **Type:** Verification / Maintenance | **Priority:** MEDIUM
-**Created:** 2026-02-20 | **Assignment:** 📝 Planned
+**Created:** 2026-02-20 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
 
 Verify STM32H7xx HAL version and update if significantly behind latest (V1.11.5). H7 may already be more current than F4/F7 but version needs confirming.
 
 **Directory:** `active/verify-stm32h7-hal/`
+**Repository:** inav (firmware) | **Branch:** `maintenance-10.x`
+
+---
+
+### 📋 feature-stm32f7-can-tx-isr
+
+**Status:** TODO | **Type:** Feature / Bug Fix | **Priority:** MEDIUM-HIGH
+**Created:** 2026-04-26 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
+
+Migrate STM32F7 CAN TX from polling/blocking to ISR-driven transmission. Fixes TX stalls, latency spikes, and suspected out-of-order multi-frame packet delivery.
+
+**Directory:** `active/feature-stm32f7-can-tx-isr/`
+**Assignment:** `manager/email/sent/2026-04-26-1600-task-feature-stm32f7-can-tx-isr.md`
+**Repository:** inav (firmware) | **Branch:** `maintenance-10.x`
+
+---
+
+### ⏸️ cleanup-itcm-non-dronecan
+**Status:** BACKBURNER| **Type:** Maintenance | **Priority:** LOW
+**Created:** 2026-05-02 | **Assignee:** Developer | **Assignment:** 📝 Planned
+**Note:** Needs user discussion on test plan before assigning
+
+Remove `taskSendSbus2Telemetry`, `calculateThrottleStatus`, and `applySensorAlignment` from ITCM — identified as speculative placements with no genuine latency requirement during the ITCM investigation.
+
+**Directory:** `backburner/cleanup-itcm-non-dronecan/`
 **Repository:** inav (firmware) | **Branch:** `maintenance-10.x`
 
 ---

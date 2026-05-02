@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-02-22T09:12:44.832863",
+  "hal_version": "1.2.2",
+  "results": [
+    {
+      "test_num": 1,
+      "test_name": "SD Card Detection",
+      "passed": true,
+      "duration_sec": 0.10020089149475098,
+      "details": {
+        "supported": true,
+        "state": "READY",
+        "fs_error": 0,
+        "free_space_mb": 4048.03125,
+        "total_space_mb": 15193.5
+      },
+      "error": null
+    },
+    {
+      "test_num": 2,
+      "test_name": "Write Speed Measurement",
+      "passed": false,
+      "duration_sec": 69.59721755981445,
+      "details": {
+        "free_space_before_mb": 4048.03125,
+        "blackbox_device": "SDCARD",
+        "blackbox_rate": "1/2",
+        "free_space_before_kb": 4145184,
+        "free_space_after_kb": 4145184,
+        "free_space_after_mb": 4048.03125,
+        "kb_written": 0,
+        "bytes_written": 0,
+        "write_speed_kbps": 0.0,
+        "duration_sec": 60
+      },
+      "error": null
+    },
+    {
+      "test_num": 3,
+      "test_name": "Continuous Logging",
+      "passed": true,
+      "duration_sec": 300.7106544971466,
+      "details": {
+        "duration_min": 5,
+        "checks_performed": 10,
+        "errors_detected": 0
+      },
+      "error": null
+    },
+    {
+      "test_num": 2,
+      "test_name": "Write Speed Measurement",
+      "passed": false,
+      "duration_sec": 65.13916611671448,
+      "details": {
+        "free_space_before_mb": 4048.03125,
+        "blackbox_device": "SDCARD",
+        "blackbox_rate": "1/2",
+        "free_space_before_kb": 4145184,
+        "free_space_after_kb": 4141088,
+        "free_space_after_mb": 4044.03125,
+        "kb_written": 4096,
+        "bytes_written": 4194304,
+        "write_speed_kbps": 68.26666666666667,
+        "duration_sec": 60
+      },
+      "error": null
+    },
+    {
+      "test_num": 6,
+      "test_name": "Rapid Arm/Disarm Cycles",
+      "passed": true,
+      "duration_sec": 64.86483526229858,
+      "details": {
+        "target_cycles": 20,
+        "successful_cycles": 20
+      },
+      "error": null
+    }
+  ],
+  "sd_card_validation": {
+    "supported": true,
+    "state": "READY",
+    "fs_error": 0,
+    "free_space_mb": 4048.03125,
+    "total_space_mb": 15193.5,
+    "validation_timestamp": "2026-02-22T09:03:48.318501"
+  },
+  "log_verification": {
+    "passed": false,
+    "logs_found": 0,
+    "total_size_mb": 0.0,
+    "first_log_path": null,
+    "download_method": "unknown",
+    "frame_count": 0,
+    "i_frame_count": 0,
+    "p_frame_count": 0,
+    "header_fields": {},
+    "errors": [
+      "No logs found - USB MSC, MSC mode enable, and MSP SPIFLASH all failed"
+    ],
+    "warnings": []
+  }
+}

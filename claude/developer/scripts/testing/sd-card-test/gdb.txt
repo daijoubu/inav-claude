@@ -1,0 +1,74 @@
+0x0802a4be in cliTasks (cmdline=<optimized out>) at /home/robs/Projects/inav-claude/inav/src/main/fc/cli.c:4309
+4309	            cliPrintLinef("%2d - %12s  %6d   %5d   %5d %4d.%1d%% %4d.%1d%%  %8d",
+/home/robs/Projects/inav-claude/claude/developer/workspace/sd-card-test-plan/gdb_timing.gdb:13: Error in sourced command file:
+No symbol "timeout" in current context.
+[Inferior 1 (Remote target) detached]
+0x0802a4be in cliTasks (cmdline=<optimized out>) at /home/robs/Projects/inav-claude/inav/src/main/fc/cli.c:4309
+4309	            cliPrintLinef("%2d - %12s  %6d   %5d   %5d %4d.%1d%% %4d.%1d%%  %8d",
+"Connected to target. Setting breakpoints...
+"Function "HAL_SD_Init" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+Function "HAL_SD_InitCard" not defined.
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+[Inferior 1 (Remote target) detached]
+0x0802a4be in cliTasks (cmdline=<optimized out>) at /home/robs/Projects/inav-claude/inav/src/main/fc/cli.c:4309
+4309	            cliPrintLinef("%2d - %12s  %6d   %5d   %5d %4d.%1d%% %4d.%1d%%  %8d",
+"Connected to target. Setting breakpoints...
+"[Inferior 1 (Remote target) detached]
+0x0802a4be in cliTasks (cmdline=<optimized out>) at /home/robs/Projects/inav-claude/inav/src/main/fc/cli.c:4309
+4309	            cliPrintLinef("%2d - %12s  %6d   %5d   %5d %4d.%1d%% %4d.%1d%%  %8d",
+"Connected. Setting breakpoints by address...
+"[Inferior 1 (Remote target) detached]
+0x08079422 in updateAltitudeVelocityController_MC (deltaMicros=1042671233) at /home/robs/Projects/inav-claude/inav/src/main/navigation/navigation_multicopter.c:79
+warning: Source file is more recent than executable.
+79	static void updateAltitudeVelocityController_MC(timeDelta_t deltaMicros)
+"Connected to target. Setting breakpoints...
+"Breakpoint 1 at 0x8018344: file /home/robs/Projects/inav-claude/inav/src/main/drivers/dma_stm32f7xx.c, line 74.
+Note: automatically using hardware breakpoints for read-only addresses.
+Breakpoint 2 at 0x8018434: file /home/robs/Projects/inav-claude/inav/src/main/drivers/sdcard/sdcard_sdio.c, line 252.
+Function "blackboxStart" not defined in "blackbox.c".
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+"Breakpoints set. Continuing execution...
+"Cannot execute this command while the target is running.
+Use the "interrupt" command to stop the target
+and then try again.
+0x08021154 in HAL_ADC_Start_DMA (Length=<optimized out>, pData=<optimized out>, hadc=<optimized out>) at /home/robs/Projects/inav-claude/inav/lib/main/STM32F7/Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_adc.c:1015
+1015	  __IO uint32_t counter = 0;
+"Connected to target. Setting breakpoints...
+"Breakpoint 1 at 0x8018344: file /home/robs/Projects/inav-claude/inav/src/main/drivers/dma_stm32f7xx.c, line 74.
+Note: automatically using hardware breakpoints for read-only addresses.
+Breakpoint 2 at 0x8018434: file /home/robs/Projects/inav-claude/inav/src/main/drivers/sdcard/sdcard_sdio.c, line 252.
+Function "blackboxStart" not defined in "blackbox.c".
+Make breakpoint pending on future shared library load? (y or [n]) [answered N; input not from terminal]
+"Breakpoints set. Continuing execution...
+"Cannot execute this command while the target is running.
+Use the "interrupt" command to stop the target
+and then try again.
+0x08050cb8 in logicConditionGetValue (conditionId=<optimized out>) at /home/robs/Projects/inav-claude/inav/src/main/programming/logic_condition.c:1100
+1100	        return logicConditionStates[conditionId].value;
+SD Timing Monitor loaded.
+Commands: sd_timing_start, sd_timing_stop, sd_timing_report
+SD Timing Monitor: Starting...
+Function "HAL_SD_Init" not defined.
+Breakpoint 1 (HAL_SD_Init) pending.
+  Breakpoint set: HAL_SD_Init
+Function "HAL_SD_InitCard" not defined.
+Breakpoint 2 (HAL_SD_InitCard) pending.
+  Breakpoint set: HAL_SD_InitCard
+Breakpoint 3 at 0x8015624: file /home/robs/Projects/inav-claude/inav/src/main/drivers/sdcard/sdmmc_sdio_hal.c, line 321.
+Note: automatically using hardware breakpoints for read-only addresses.
+  Breakpoint set: SD_Init
+Breakpoint 4 at 0x8018300: sdcardSdio_reset. (2 locations)
+  Breakpoint set: sdcardSdio_reset
+Breakpoint 5 at 0x8018434: sdcardSdio_poll. (2 locations)
+  Breakpoint set: sdcardSdio_poll
+Function "blackboxStart" not defined.
+Breakpoint 6 (blackboxStart) pending.
+  Breakpoint set: blackboxStart
+SD Timing Monitor: 6 breakpoints set
+Use 'sd_timing_report' to see results
+Use 'sd_timing_stop' to stop monitoring
+"GDB connected. Breakpoints ready.
+"Cannot execute this command while the target is running.
+Use the "interrupt" command to stop the target
+and then try again.

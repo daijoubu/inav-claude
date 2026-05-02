@@ -1,0 +1,180 @@
+# mwptools / fc-cli dump at 2026-02-22T10:51:54-0800
+# fc-cli is a toolset # (fc-set, fc-get) to manage
+# iNav / βF CLI diff backup and restore
+# <https://codeberg.org/stronnag/mwptools>
+
+# diff all
+
+# version
+# INAV/MATEKF765SE 9.0.1 Feb 21 2026 / 19:42:17 (77c677d0) 
+# GCC-13.2.1 20231009
+
+# start the command batch
+batch start
+
+# reset configuration to default settings
+defaults noreboot
+
+# resources
+
+# Timer overrides
+
+# Outputs [servo]
+
+# safehome
+
+# Fixed Wing Approach
+
+# geozone
+
+# geozone vertices
+
+# features
+feature GPS
+feature PWM_OUTPUT_ENABLE
+
+# beeper
+
+# blackbox
+blackbox -NAV_ACC
+blackbox NAV_POS
+blackbox NAV_PID
+blackbox MAG
+blackbox ACC
+blackbox ATTI
+blackbox RC_DATA
+blackbox RC_COMMAND
+blackbox MOTORS
+blackbox GYRO_RAW
+blackbox -PEAKS_R
+blackbox -PEAKS_P
+blackbox -PEAKS_Y
+blackbox SERVOS
+
+# Receiver: Channel map
+
+# Ports
+serial 20 32769 115200 115200 0 115200
+serial 1 2 115200 115200 0 115200
+serial 5 0 115200 115200 0 115200
+
+# LEDs
+
+# LED color
+
+# LED mode_color
+
+# Modes [aux]
+aux 0 0 0 1500 2100
+
+# Adjustments [adjrange]
+
+# Receiver rxrange
+
+# temp_sensor
+
+# Mission Control Waypoints [wp]
+#wp 0 invalid
+
+# OSD [osd_layout]
+
+# Programming: logic
+
+# Programming: global variables
+
+# Programming: PID controllers
+
+# OSD: custom elements
+
+# master
+set gyro_zero_y = -11
+set gyro_zero_z = 5
+set ins_gravity_cmss =  987.469
+set acc_hardware = ICM42605
+set acczero_x = -4
+set acczero_y = 5
+set acczero_z = 33
+set accgain_x = 4093
+set accgain_y = 4099
+set accgain_z = 4099
+set align_mag = CW270FLIP
+set mag_hardware = HMC5883
+set magzero_x = 163
+set magzero_y = -95
+set magzero_z = -128
+set maggain_x = 1099
+set maggain_y = 649
+set maggain_z = 873
+set baro_hardware = SPL06
+set receiver_type = MSP
+set serialrx_provider = SPEK1024
+set blackbox_rate_denom = 2
+set motor_pwm_protocol = DSHOT300
+set applied_defaults = 1
+set gps_sbas_mode = AUTO
+set gps_ublox_use_galileo = ON
+set log_level = DEBUG
+
+# control_profile
+control_profile 1
+
+
+# control_profile
+control_profile 2
+
+
+# control_profile
+control_profile 3
+
+
+# mixer_profile
+mixer_profile 1
+
+set model_preview_type = 3
+
+# Mixer: motor mixer
+
+mmix reset
+
+mmix 0  1.000 -1.000  1.000 -1.000
+mmix 1  1.000 -1.000 -1.000  1.000
+mmix 2  1.000  1.000  1.000  1.000
+mmix 3  1.000  1.000 -1.000 -1.000
+
+# Mixer: servo mixer
+smix reset
+
+smix 0 1 9 100 0 -1
+smix 1 2 10 100 0 -1
+smix 2 3 11 100 0 -1
+smix 3 4 15 100 0 -1
+
+# mixer_profile
+mixer_profile 2
+
+
+# Mixer: motor mixer
+
+# Mixer: servo mixer
+
+# battery_profile
+battery_profile 1
+
+
+# battery_profile
+battery_profile 2
+
+
+# battery_profile
+battery_profile 3
+
+
+# restore original profile selection
+control_profile 2
+mixer_profile 1
+battery_profile 2
+
+# save configuration
+save
+
+# 
