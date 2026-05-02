@@ -2,6 +2,8 @@
 
 **STOP! Complete this checklist before running `gh pr create` or `/create-pr`:**
 
+**Use the TodoWrite tool to track each step as you complete it.**
+
 ---
 
 ## Prerequisites

@@ -2,6 +2,8 @@
 
 **STOP! Complete this checklist before making ANY code changes:**
 
+**Use the TodoWrite tool to track each step as you complete it.**
+
 ## 1. Check Lock Files
 
 ```bash
