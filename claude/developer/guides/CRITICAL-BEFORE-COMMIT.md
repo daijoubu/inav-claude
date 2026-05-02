@@ -2,6 +2,8 @@
 
 **Complete this checklist before running `git commit`:**
 
+**Use the TodoWrite tool to track each step as you complete it.**
+
 ## Git Best Practices
 
 ### 1. NEVER Use `git add -A`

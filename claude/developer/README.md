@@ -460,6 +460,7 @@ Compose your completion report using this template, then pass to the **email-man
 ## Summary
 
 As Developer:
+**Use the TodoWrite tool to track each of these steps.**
 1. ✅ Check developer/email/inbox/ for assignments (use **email-manager** agent)
 2. ✅ Read critical checklists before each operation
 3. ✅ Write a test that reproduces the issue (for bugs)

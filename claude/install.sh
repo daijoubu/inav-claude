@@ -290,4 +290,8 @@ case "$MODE" in
 esac
 
 echo ""
+echo "Optional: vector memory system (passive context injection between sessions)"
+echo "  pip install chromadb"
+echo "  (Without it, the stop hook runs but memory injection is silently skipped)"
+echo ""
 echo "For help, see INSTALL.md"

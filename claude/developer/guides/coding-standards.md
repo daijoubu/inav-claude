@@ -129,6 +129,7 @@ INAV supports F4, F7, H7, and AT32 microcontrollers. When working with target-sp
 ### Configuration Changes
 
 When modifying settings:
+**Use the TodoWrite tool to track these steps.**
 1. Update `fc/settings.yaml` (not direct C code)
 2. Rebuild to regenerate C code from YAML
 3. Settings are automatically persisted to EEPROM via PG system
