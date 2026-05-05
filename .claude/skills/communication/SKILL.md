@@ -33,8 +33,7 @@ cat claude/COMMUNICATION.md
 ### Message Flow
 
 **To send a message:**
-1. Create file in `claude/{your-role}/sent/`
-2. Copy to `claude/{recipient-role}/inbox/`
+Decide which role you wish to send to. Draft the email either as just a stgring or in a file. Ask the email-manager agent to deliver it to the recipient.
 
 **File naming:** `YYYY-MM-DD-HHMM-{type}-{description}.md`
 
@@ -67,7 +66,7 @@ cat claude/COMMUNICATION.md
 
 ## Folder Structure
 
-Each role has:
+Your role has:
 - `inbox/` - Incoming messages
 - `inbox-archive/` - Processed messages
 - `sent/` - Sent message copies

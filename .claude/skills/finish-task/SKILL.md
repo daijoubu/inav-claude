@@ -164,7 +164,7 @@ rm claude/locks/inav-configurator.lock
 
 ### 8. Send Completion Report
 
-Create a comprehensive completion report in `claude/developer/email/sent/`. The manager will use this to update `claude/projects/<project-name>/`.
+Create a comprehensive completion report and ask the email-manager to deliver it to the Manager. `. The manager will use this to update `claude/projects/<project-name>/`.
 
 **Filename:** `YYYY-MM-DD-HHMM-completed-<task-name>.md`
 
@@ -212,15 +212,6 @@ Create a comprehensive completion report in `claude/developer/email/sent/`. The 
 ## Lock Released
 
 Released <repo>.lock
-
----
-**Developer**
-```
-
-Copy to manager inbox:
-```bash
-cp claude/developer/email/sent/<report>.md claude/manager/email/inbox/
-```
 
 ### 9. Increment the Cycle Counter
 
