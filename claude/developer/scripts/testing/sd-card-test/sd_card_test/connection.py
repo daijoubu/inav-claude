@@ -5,6 +5,7 @@ Low-level MSP protocol communication with flight controller.
 """
 import os
 import subprocess
+import threading
 import time
 from datetime import datetime
 from pathlib import Path
@@ -41,6 +42,7 @@ class MSPConnection:
         self.elf_path = elf_path
         self._consecutive_timeouts = 0
         self._max_consecutive_timeouts = 3
+        self._serial_lock = threading.Lock()
     
     @property
     def is_connected(self) -> bool:
@@ -237,7 +239,8 @@ quit
         if not self.conn:
             return None
         try:
-            _, payload = self.conn.request(code, data, timeout=timeout)
+            with self._serial_lock:
+                _, payload = self.conn.request(code, data, timeout=timeout)
             self._consecutive_timeouts = 0
             return payload
         except Exception as e:
@@ -340,7 +343,8 @@ quit
         payload = MSPBuilder.set_raw_rc(channels[:16])
         
         try:
-            self.conn.send(MSPCode.SET_RAW_RC, payload)
+            with self._serial_lock:
+                self.conn.send(MSPCode.SET_RAW_RC, payload)
             return True
         except Exception as e:
             print(f"Error sending RC channels: {e}")

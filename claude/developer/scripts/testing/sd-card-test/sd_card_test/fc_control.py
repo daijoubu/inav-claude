@@ -25,132 +25,142 @@ class FCControl(MSPConnection):
         data = MSPBuilder.set_arming_disabled(disabled, runaway_takeoff)
         response = self.send_receive(MSPCode.SET_ARMING_DISABLED, data)
         return response is not None
-    
+
+    def _start_rc_thread(self, channels: List[int], rate_hz: float = 50.0) -> dict:
+        """Start a background thread that sends RC at rate_hz. Returns a handle."""
+        current = channels[:]
+        lock = threading.Lock()
+        stop = threading.Event()
+
+        def _loop():
+            interval = 1.0 / rate_hz
+            while not stop.is_set():
+                with lock:
+                    ch = current[:]
+                self.send_rc_channels(ch)
+                time.sleep(interval)
+
+        t = threading.Thread(target=_loop, daemon=True)
+        t.start()
+
+        def update(new_channels):
+            with lock:
+                current[:] = new_channels
+
+        return {'thread': t, 'stop': stop, 'update': update}
+
     def wait_for_arming_ready(self, timeout: float = 300.0, poll_interval: float = 0.5,
                                rc_rate_hz: float = 50.0) -> Tuple[bool, str]:
-        start_time = time.time()
-        last_status = None
-        rc_interval = 1.0 / rc_rate_hz
-        last_rc = start_time
-        
         BLOCKING_FLAGS = {
             ArmingFlag.ARMING_DISABLED_NOT_LEVEL: "Not level",
             ArmingFlag.ARMING_DISABLED_FAILSAFE: "Failsafe active",
             ArmingFlag.ARMING_DISABLED_THROTTLE: "Throttle not LOW",
             ArmingFlag.ARMING_DISABLED_NO_PREARM: "PreArm checks failed",
             ArmingFlag.ARMING_DISABLED_ARM_SWITCH: "Arm switch not ready (needs LOW)",
+            ArmingFlag.ARMING_DISABLED_DSHOT_BEEPER: "DShot beeper guard (waiting)",
         }
-        
+
         rc_channels = [1500] * 16
         rc_channels[2] = 1000
         rc_channels[4] = 1000
-        
-        blockers = []
-        consecutive_errors = 0
-        max_consecutive_errors = 3
-        
-        print("  Sending RC commands to establish link...")
-        for _ in range(100):
-            self.send_rc_channels(rc_channels)
-            time.sleep(0.02)
-        
-        while time.time() - start_time < timeout:
-            now = time.time()
-            
-            if now - last_rc >= rc_interval:
-                self.send_rc_channels(rc_channels)
-                last_rc = now
-            
-            try:
-                status = self.get_arming_status()
-                consecutive_errors = 0
-            except Exception:
-                consecutive_errors += 1
-                if consecutive_errors >= max_consecutive_errors:
-                    return False, "Too many MSP errors"
-                time.sleep(1)
-                continue
-            
-            if not status:
-                consecutive_errors += 1
-                if consecutive_errors >= max_consecutive_errors:
-                    return False, "Cannot query arming status"
-                time.sleep(poll_interval)
-                continue
-            
-            if status.arming_flags & ArmingFlag.ARMED:
-                return False, "Already armed"
-            
+
+        rc = self._start_rc_thread(rc_channels, rate_hz=rc_rate_hz)
+        try:
+            start_time = time.time()
+            last_status = None
             blockers = []
-            for flag, reason in BLOCKING_FLAGS.items():
-                if status.arming_flags & flag:
-                    blockers.append(reason)
-            
-            status_str = "Waiting: " + ", ".join(blockers) if blockers else "Ready to arm"
-            
-            if status_str != last_status:
-                print(f"  {status_str}")
-                last_status = status_str
-            
-            if not blockers:
-                return True, "Ready to arm"
-            
-            time.sleep(poll_interval)
-        
-        return False, f"Timeout: {', '.join(blockers) if blockers else 'unknown'}"
-    
+            consecutive_errors = 0
+
+            while time.time() - start_time < timeout:
+                time.sleep(poll_interval)
+                try:
+                    status = self.get_arming_status()
+                    consecutive_errors = 0
+                except Exception:
+                    consecutive_errors += 1
+                    if consecutive_errors >= 3:
+                        return False, "Too many MSP errors"
+                    continue
+
+                if not status:
+                    consecutive_errors += 1
+                    if consecutive_errors >= 3:
+                        return False, "Cannot query arming status"
+                    continue
+
+                if status.arming_flags & ArmingFlag.ARMED:
+                    return False, "Already armed"
+
+                blockers = [reason for flag, reason in BLOCKING_FLAGS.items()
+                            if status.arming_flags & flag]
+
+                status_str = "Waiting: " + ", ".join(blockers) if blockers else "Ready to arm"
+                if status_str != last_status:
+                    print(f"  {status_str}")
+                    last_status = status_str
+
+                if not blockers:
+                    return True, "Ready to arm"
+
+            return False, f"Timeout: {', '.join(blockers) if blockers else 'unknown'}"
+        finally:
+            rc['stop'].set()
+
     def arm(self, timeout: float = 5.0, arm_channel: int = 4) -> bool:
         status = self.get_arming_status()
         if status and status.is_armed:
             return True
-        
+
         self.set_arming_disabled(True)
         time.sleep(0.1)
         self.set_arming_disabled(False)
-        
+
         channels = [1500] * 16
         channels[2] = 1000
         channels[arm_channel] = 1000
-        
-        print("  Establishing RC link (arm LOW)...")
-        start = time.time()
-        arm_low_settle = 0.75  # min time at LOW after set_arming_disabled toggle
-        arm_switch_cleared = False
 
-        while time.time() - start < 10.0:
-            self.send_rc_channels(channels)
-            time.sleep(0.02)
+        rc = self._start_rc_thread(channels)
+        try:
+            print("  Establishing RC link (arm LOW)...")
+            start = time.time()
+            arm_switch_cleared = False
+
+            while time.time() - start < 10.0:
+                time.sleep(0.05)
+                status = self.get_arming_status()
+                if not status:
+                    continue
+                if not (status.arming_flags & ArmingFlag.ARMING_DISABLED_ARM_SWITCH):
+                    if not arm_switch_cleared:
+                        print("  ✓ Ready to arm (ARM_SWITCH cleared)")
+                        arm_switch_cleared = True
+                if arm_switch_cleared and (time.time() - start) >= 0.75:
+                    break
+            else:
+                print("  ⚠ Timeout waiting for ARM_SWITCH to clear")
+
+            print(f"  Sending ARM command (CH{arm_channel+1} HIGH)...")
+            channels[arm_channel] = 2000
+            rc['update'](channels)
+
+            start = time.time()
+            while time.time() - start < timeout:
+                time.sleep(0.05)
+                status = self.get_arming_status()
+                if status and status.is_armed:
+                    print("  ARMED!")
+                    return True
 
             status = self.get_arming_status()
-            if not status:
-                continue
-
-            arm_switch_block = status.arming_flags & ArmingFlag.ARMING_DISABLED_ARM_SWITCH
-
-            if not arm_switch_block and not arm_switch_cleared:
-                print("  ✓ Ready to arm (ARM_SWITCH cleared)")
-                arm_switch_cleared = True
-
-            if arm_switch_cleared and (time.time() - start) >= arm_low_settle:
-                break
-        else:
-            print("  ⚠ Timeout waiting for ARM_SWITCH to clear")
-        
-        print(f"  Sending ARM command (CH{arm_channel+1} HIGH)...")
-        channels[arm_channel] = 2000
-        
-        start = time.time()
-        while time.time() - start < timeout:
-            self.send_rc_channels(channels)
-            time.sleep(0.02)
-            
-            status = self.get_arming_status()
-            if status and status.is_armed:
-                print("  ARMED!")
-                return True
-        
-        print("  Failed to arm within timeout")
-        return False
+            if status:
+                active = [f.name for f in ArmingFlag
+                          if (status.arming_flags & f) and f not in (ArmingFlag.ARMED, ArmingFlag.WAS_EVER_ARMED)]
+                print(f"  Failed to arm within timeout — flags: {', '.join(active) if active else 'none'} (raw=0x{status.arming_flags:08X})")
+            else:
+                print("  Failed to arm within timeout — could not query flags")
+            return False
+        finally:
+            rc['stop'].set()
     
     def disarm(self, timeout: float = 3.0, arm_channel: int = 4) -> bool:
         channels = [1500] * 16
@@ -242,11 +252,12 @@ class FCControl(MSPConnection):
         return result
     
     def start_servo_stress_background(self, duration: float, pattern: str = 'sweep',
-                                       rate_hz: float = 10.0) -> dict:
+                                       rate_hz: float = 10.0,
+                                       servo_channels: Optional[List[int]] = None) -> dict:
         result_holder = {'result': None}
-        
+
         def stress_thread():
-            result_holder['result'] = self.move_servos(duration, pattern, rate_hz)
+            result_holder['result'] = self.move_servos(duration, pattern, rate_hz, servo_channels)
         
         thread = threading.Thread(target=stress_thread, daemon=False)
         thread.start()

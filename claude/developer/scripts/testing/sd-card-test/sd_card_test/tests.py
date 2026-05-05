@@ -190,8 +190,9 @@ class Test6ArmDisarmCycles(TestBase):
                     self.log(f"    Failed to arm: {armed.error}")
                     continue
                 
-                # Run short servo stress
-                stress = self.fc.start_servo_stress_background(2.0, pattern='sweep')
+                # Run short servo stress including motor channels (roll/pitch/throttle/yaw)
+                stress = self.fc.start_servo_stress_background(2.0, pattern='sweep',
+                                                               servo_channels=[0, 1, 2, 3])
                 self.fc.wait_for_servo_stress(stress)
                 successful += 1
                 self.log(f"    ✓ Cycle {i+1} complete")

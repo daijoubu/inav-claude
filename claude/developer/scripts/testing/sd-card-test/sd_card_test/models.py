@@ -34,6 +34,7 @@ class ArmingFlag(IntEnum):
     ARMING_DISABLED_THROTTLE = 1 << 19
     ARMING_DISABLED_ARM_SWITCH = 1 << 14
     ARMING_DISABLED_NO_PREARM = 1 << 28
+    ARMING_DISABLED_DSHOT_BEEPER = 1 << 29
 
 
 @dataclass
