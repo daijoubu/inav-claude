@@ -215,7 +215,7 @@ Released <repo>.lock
 
 ### 9. Increment the Cycle Counter
 
-After copying the report to the manager inbox, record this completed cycle.
+After copying the report to the manager inbox, only if claude/onboarding/completed-cycles.txt reads less than 5, increment the counter.
 This counter drives the onboarding guidance shown at the start of each session.
 
 ```bash
