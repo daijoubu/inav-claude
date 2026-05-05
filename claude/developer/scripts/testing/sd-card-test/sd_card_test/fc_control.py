@@ -105,7 +105,6 @@ class FCControl(MSPConnection):
             return False, f"Timeout: {', '.join(blockers) if blockers else 'unknown'}"
         finally:
             rc['stop'].set()
-            rc['thread'].join(timeout=2.0)
 
     def arm(self, timeout: float = 5.0, arm_channel: int = 4) -> bool:
         status = self.get_arming_status()
