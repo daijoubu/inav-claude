@@ -112,8 +112,13 @@ Use the Edit tool to append new entries. Format: `- **Brief title**: One-sentenc
 
 ### Lessons
 
-<<<<<<< HEAD
+- **INAV debug mode enum offset**: debug.h enum values start at NONE=0; RATE_DYNAMICS=18 (not 17 as often assumed) because AUTOTUNE=17 precedes it - always count from the enum definition, not from memory.
+- **SITL arming requires sensors-calibrated state**: After a fresh SITL reboot, sensors take ~5s to calibrate even with HITL; tests that arm immediately after HITL enable may fail with ARM_SWITCH; use sitl_arm_test.py first to establish a known-good armed state.
+- **SITL failsafe persists across test runs**: Each test run that arms then stops RC leaves SITL in failsafe (ARMING_DISABLED_FAILSAFE_SYSTEM); subsequent arming attempts fail until SITL reboots or failsafe clears; reboot SITL between test runs.
+- **MSP_RC returns axis-reordered channels not raw frame order**: With AETR rcmap [0,1,3,2], MSP_RC[2]=THROTTLE value means the physical input at raw[rcmap[THROTTLE=3]]=raw[2]; send RC frames in physical AETR order [ROLL,PITCH,THROTTLE,YAW,AUX1] not logical axis order.
+- **SITL MSP_REBOOT does execvp restart (same PID)**: In SITL, MSP_REBOOT calls execvp() which replaces the process image but keeps the same PID; in-memory runtime state (ARMED, HITL) should reset but state from the closed EEPROM file persists; for guaranteed clean state use OS-level pkill+relaunch.
+- **ARMING_DISABLED_RC_LINK only updated when DISARMED**: updateArmingStatus() skips all flag checks (including RC_LINK) when ARMED; to observe RC link loss via ARMING_DISABLED_RC_LINK in arming flags, the FC must be NOT ARMED.
+- **Receiver type change needs reboot**: Setting receiver_type=MSP via MSP_SET_RX_CONFIG + EEPROM_WRITE takes effect on the NEXT boot; tests that arm immediately after changing receiver_type will fail with RC_LINK disabled; pre-configure EEPROM before the restart that the test will use.
+- **SITL arm sequence needs 2s pre-arm with AUX1 LOW**: sitl_arm_test.py's proven pattern: send AUX1 LOW for 2 seconds (not 0.6s) while refreshing HITL every 0.1s; this clears ARM_SWITCH flag and SENSORS_CALIBRATING before raising AUX1 to arm.
 - **Verify test script correctness**: When a test repeatedly fails with the same error, verify the test script itself is correct before assuming the code under test is broken. The error may be in the test (e.g., wrong number of return values, incorrect API usage).
-=======
->>>>>>> upstream/master
 <!-- Add new lessons above this line -->
