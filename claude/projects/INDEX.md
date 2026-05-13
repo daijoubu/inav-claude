@@ -139,16 +139,15 @@ Verify STM32H7xx HAL version and update if significantly behind latest (V1.11.5)
 
 ---
 
-### 📋 feature-stm32f7-can-tx-isr
+### 🚧 feature-stm32f7-can-tx-isr
 
-**Status:** TODO | **Type:** Feature / Bug Fix | **Priority:** MEDIUM-HIGH
+**Status:** IN PROGRESS | **Type:** Feature / Bug Fix | **Priority:** MEDIUM-HIGH
 **Created:** 2026-04-26 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
 
-Migrate STM32F7 CAN TX from polling/blocking to ISR-driven transmission. Fixes TX stalls, latency spikes, and suspected out-of-order multi-frame packet delivery.
+Migrate STM32F7 CAN TX from polling/blocking to ISR-driven transmission. Phase 0 (LOG_DEBUG cleanup) and Phase 2 (ISR implementation) committed on `feature/stm32f7-can-tx-isr`. In Phase 3 hardware validation — odd behaviour observed under long-running tests; debug approach TBD (MSP node status messages or serial CAN peripheral diagnostics).
 
 **Directory:** `active/feature-stm32f7-can-tx-isr/`
-**Assignment:** `manager/email/sent/2026-04-26-1600-task-feature-stm32f7-can-tx-isr.md`
-**Repository:** inav (firmware) | **Branch:** `maintenance-10.x`
+**Branch:** `feature/stm32f7-can-tx-isr` | **Repository:** inav (firmware) | **PR target:** `maintenance-10.x`
 
 ---
 

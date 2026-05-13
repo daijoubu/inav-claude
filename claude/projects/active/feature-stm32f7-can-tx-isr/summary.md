@@ -1,6 +1,6 @@
 # Project: STM32F7 CAN TX ISR Migration
 
-**Status:** 📋 TODO
+**Status:** 🚧 IN PROGRESS
 **Priority:** MEDIUM-HIGH
 **Type:** Feature / Bug Fix
 **Created:** 2026-04-26
