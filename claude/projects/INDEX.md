@@ -2,8 +2,8 @@
 
 This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKED).
 
-**Last Updated:** 2026-05-02
-**Active:** 10 | **Backburner:** 3 | **Blocked:** 0
+**Last Updated:** 2026-05-13
+**Active:** 9 | **Backburner:** 3 | **Blocked:** 0
 
 > **Completed projects:** See [completed/INDEX.md](completed/INDEX.md)
 > **Blocked projects:** See `blocked/` directory
@@ -38,19 +38,6 @@ This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKE
 ---
 
 ## Active Projects
-
-### 🚧 test-pr-11390-dshot-dma
-
-**Status:** IN PROGRESS | **Type:** Testing | **Priority:** MEDIUM-HIGH
-**Created:** 2026-05-02 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
-
-Before/after bench test of PR #11390 (F7/H7 DShot DMA EN bit fix). At least 1 DShot motor per timer on MATEKF765SE. Results to be posted as PR comment.
-
-**Directory:** `active/test-pr-11390-dshot-dma/`
-**PR:** [#11390](https://github.com/iNavFlight/inav/pull/11390) — OPEN
-**Repository:** inav (firmware) | **Hardware:** MATEKF765SE
-
----
 
 ### 🚧 feature-dronecan-msp-messages
 

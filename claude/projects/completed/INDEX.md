@@ -15,6 +15,17 @@ Completed (✅) and cancelled (❌) projects by current author (daijoubu) for IN
 ---
 
 
+### ✅ test-pr-11390-dshot-dma
+
+**Status:** COMPLETED (2026-05-13)
+**Type:** Testing
+**Priority:** MEDIUM-HIGH
+
+Before/after bench test of PR #11390 (F7/H7 DShot DMA EN bit fix). At least 1 DShot motor per timer on MATEKF765SE. Results to be posted as PR comment.
+
+---
+
+
 ### ✅ investigate-itcm-dronecan-isr
 
 **Status:** COMPLETED (2026-05-02)
@@ -230,7 +241,7 @@ Every 5 seconds, GPS position data stops being processed for 500ms due to a bug 
 =======
 Completed (✅) and cancelled (❌) projects.
 
-**Total Completed:** 148 | **Total Cancelled:** 7
+**Total Completed:** 149 | **Total Cancelled:** 7
 
 > **Active projects:** See [../INDEX.md](../INDEX.md)
 >>>>>>> upstream/master
