@@ -2,9 +2,577 @@
 
 Completed (✅) and cancelled (❌) projects.
 
-**Total Completed:** 136 | **Total Cancelled:** 4
+**Total Completed:** 187 | **Total Cancelled:** 5
 
 > **Active projects:** See [../INDEX.md](../INDEX.md)
+
+---
+
+
+### ✅ fix-gps-hwversion-field-size
+
+**Status:** COMPLETED (2026-05-02)
+**Type:** Bug Fix / Protocol Correction
+**Priority:** MEDIUM-HIGH
+
+Both original PRs merged to maintenance-9.x but with `uint32_t` / 4-byte MSP. Follow-up PRs needed to correct to `uint8_t` (1 byte) with compact values 5/9/10. Feature tested by Jetrell (M9+M10). Pre-release so MSP break is acceptable.
+
+---
+
+
+### ✅ optimize-firmware-code-size
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Optimization / Refactoring
+**Priority:** MEDIUM
+
+Audit INAV firmware for code that can be restructured to consume less flash with no behavioral change. Map file analysis, then target bloat patterns.
+
+---
+
+
+### ✅ fix-blackbox-sd-lockup
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Bug Fix / Safety Issue
+**Priority:** HIGH
+
+FC completely locks up when using a problematic SD card. Audit and fix error handling so SD failures only disable logging, never lock up the FC.
+
+---
+
+
+### ❌ github-action-pg-version-check (2026-03-07)
+
+**Cancelled:** Cancelled
+
+---
+
+
+### ✅ investigate-mc-fw-split-flash-savings
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Investigation / Analysis
+**Priority:** MEDIUM
+
+Estimate flash savings if INAV were split into MC-only and FW/rover-only builds. Map file + symbol attribution, 80%-confidence range — no actual build split needed.
+
+---
+
+
+### ✅ document-parameter-group-system
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Documentation
+**Priority:** MEDIUM-HIGH
+
+Document INAV's parameter group (PG) system: registration, versioning, storage, and `__pg_registry_*` linker sections. Prerequisite for `github-action-pg-version-check`.
+
+---
+
+
+### ✅ add-target-sdmodelh7v2
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Target Port
+**Priority:** MEDIUM
+
+Create INAV target for SDMODEL SDH7 V2 FC (STM32H743, MPU6000, BMP280, IST8310). Hardware definitions available from Betaflight and ArduPilot.
+
+---
+
+
+### ✅ improve-ble-device-chooser
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** UI/UX Improvement
+**Priority:** MEDIUM
+
+Improve BLE device selection in configurator: filter/search, stable list (stops jumping while scrolling), better FC identification.
+
+---
+
+
+### ✅ analyze-pg-version-rollover
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Investigation / Risk Analysis
+**Priority:** MEDIUM-HIGH
+
+Analyze what happens when parameter group version numbers roll over from 15 to 0. PG versions are stored in a 4-bit field, and some parameter groups like `osdConfig_t` are approaching version 15.
+
+---
+
+
+### ✅ test-pr10540-hdzero-special-case
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** PR Evaluation / Build Test
+**Priority:** MEDIUM
+
+Test compile firmware PR #10540 (remove legacy HDZero OSD resolution auto-detection) and assess whether subsequent changes to `displayport_msp_osd.c` on `maintenance-9.x` create conflicts or affect the PR's applicability.
+
+---
+
+
+### ✅ sync-js-programming-framework
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Audit / Maintenance
+**Priority:** MEDIUM-HIGH
+
+Audit recent firmware changes to logic conditions and the INAV programming framework (last 60 days git history + last 90 days open PRs), then produce a careful list of what needs to be updated in the JavaScript programming framework in inav-configurator to stay in sync.
+
+---
+
+
+### ✅ rp2350-refactor-code-organization
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Refactoring / Code Organization
+**Priority:** HIGH
+
+Refactor RP2350 code to follow INAV's established pattern: processor-specific code in `drivers/`, board-specific pin definitions in `target/`. This enables multiple RP2350-based targets to share common processor code.
+
+---
+
+
+### ✅ rp2350-pinout-diagram
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Documentation / Visual
+**Priority:** MEDIUM
+
+Produce a labeled version of the Raspberry Pi Pico 2 board photo with INAV function annotations added to each pin, based on Option C from the pin assignment plan.
+
+---
+
+
+### ✅ rp2350-pin-assignment-plan
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Investigation / Planning
+**Priority:** MEDIUM
+
+Research what pins typical INAV targets expose, then plan three different pin assignment options for the RP2350_PICO target — taking full advantage of the Pico 2's flexible GPIO multiplexing. No code changes; deliverable is a documented pin plan.
+
+---
+
+
+### ✅ review-pr2573-bulgarian-translation
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Code Review / Content Review
+**Priority:** MEDIUM-HIGH
+
+Review PR #2573 which adds Bulgarian language support to INAV Configurator. Check translation
+
+---
+
+
+### ✅ review-pr11241-breadoven-assessment
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Code Review / Testing
+**Priority:** MEDIUM-HIGH
+
+Read breadoven's review comment on PR #11241, carefully compare it against the proposed code changes, form an independent technical opinion on whether the assessment is correct, then validate via SITL or HITL testing.
+
+---
+
+
+### ✅ review-pr11147-architecture
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Code Review / Architecture Analysis
+**Priority:** MEDIUM
+
+Use the `inav-code-review` and `msp-expert` agents to perform a high-level architectural review of INAV PR #11147, identifying any design concerns, protocol issues, or structural problems.
+
+---
+
+
+### ✅ reproduce-issue-11202-gps-fluctuation
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Bug Investigation
+**Priority:** MEDIUM-HIGH
+
+Investigate GPS signal instability (EPH spikes, HDOP fluctuations, reduced sat count) affecting INAV 6.0-9.0.
+
+---
+
+
+### ✅ privacylrs-fix-finding8-entropy-sources
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Security Enhancement
+**Priority:** MEDIUM
+
+Implement robust entropy gathering that XORs multiple entropy sources (hardware RNG, timer jitter, ADC noise, RSSI) with dynamic detection and graceful fallback for platform compatibility.
+
+---
+
+
+### ✅ privacylrs-fix-finding7-forward-secrecy
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Security Enhancement / Cryptographic Protocol
+**Priority:** MEDIUM
+
+Implement ephemeral Diffie-Hellman key exchange using Curve25519 to provide forward secrecy, preventing compromise of master key from exposing past communications.
+
+---
+
+
+### ✅ privacylrs-fix-finding1-stream-cipher-desync
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Security Fix / Bug Fix
+**Priority:** CRITICAL
+
+Fix the stream cipher synchronization vulnerability that causes system crashes within 1.5-4 seconds of packet loss. Implement LQ (Link Quality) counter-based synchronization mechanism.
+
+---
+
+
+### ✅ organize-inav-configurator-untracked
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Housekeeping / Code Organization
+**Priority:** MEDIUM
+
+`inav-configurator/` has ~55 untracked files and directories spanning tests, scripts, videos,
+
+---
+
+
+### ✅ investigate-rover-yaw-navigation
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Investigation / Feasibility Analysis
+**Priority:** MEDIUM
+
+Determine whether the ROVER vehicle type currently supports navigation using YAW control
+
+---
+
+
+### ✅ investigate-motor-spin-arrows-mixer-outputs
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Bug Investigation / Code Review
+**Priority:** MEDIUM-HIGH
+
+Investigate how motor spin direction arrows are determined and displayed on two separate configurator pages — `mixer.html` and the Outputs tab — and respond to Jetrell's comments on GitHub with findings.
+
+---
+
+
+### ✅ investigate-f765-lockup-on-arming
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Bug Investigation / Safety Issue
+**Priority:** HIGH
+
+Reports have come in of STM32F765-based targets locking up (no longer responding correctly)
+
+---
+
+
+### ✅ investigate-f722-flash-headroom
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Investigation / Build Optimization
+**Priority:** HIGH
+
+F722 targets (STM32F722xE, 512KB flash, compiled with `-Os`) are at the flash limit. The ZEEZF7 target failed CI builds when a PR added even modest code. Investigate whether ZEEZF7 is anomalously large or typical for F722, and identify three little-used/outdated features that can be macro-gated out of F722 targets to create headroom.
+
+---
+
+
+### ✅ investigate-claude-code-plugin
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Investigation / Feasibility Study
+**Priority:** MEDIUM
+
+Investigate whether the INAV Claude Code workflow (agents, skills, email system, role system, hooks, etc.) can be packaged as a Claude Code plugin, making it easier to install and share. Work is done in a fresh clone of the upstream repo — do NOT modify files in `~/inavflight`.
+
+---
+
+
+### ✅ investigate-bidirectional-dshot
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Investigation / Feasibility Analysis
+**Priority:** MEDIUM-HIGH
+
+Analyze Betaflight's bidirectional DShot implementation, assess whether it can be ported to INAV given INAV's existing DMA usage patterns, and produce a detailed implementation plan if feasible.
+
+---
+
+
+### ✅ investigate-bidir-dshot-simultaneous-rx
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Investigation
+**Priority:** MEDIUM
+
+Determine whether reading GCR telemetry responses from up to four motors simultaneously (rather than per-channel sequentially) is feasible, and whether such an approach would allow DMAR burst mode to be retained alongside bidirectional DShot.
+
+---
+
+
+### ✅ fix-sitl-cmake-rwx-linker-flag
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Bug Fix / Build System
+**Priority:** MEDIUM
+
+Replace the fragile GCC version check for `--no-warn-rwx-segments` in `cmake/sitl.cmake` with a proper `CheckLinkerFlag` probe that works across all compilers and linkers.
+
+---
+
+
+### ✅ fix-rp2350-serial-stability
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Bug Fix / Platform
+**Priority:** MEDIUM
+
+The configurator consistently drops the MSP connection to RP2350_PICO after ~2 seconds —
+
+---
+
+
+### ✅ fix-pr10048-merge-conflicts
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Bug Fix / Security / PR Maintenance
+**Priority:** HIGH
+
+Resolve merge conflicts in PR #10048 ([FIX] possible stack smashing) — a security fix for buffer overflow in OSD message functions.
+
+---
+
+
+### ✅ fix-pr10038-merge-conflicts
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Bug Fix / PR Maintenance
+**Priority:** MEDIUM
+
+Resolve merge conflicts in PR #10038 (OSD 2D map enhancements: configurable margins and reference line) to get it ready for review and merge.
+
+---
+
+
+### ✅ fix-nexusx-imu-orientation
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Bug Fix
+**Priority:** HIGH
+
+The default IMU orientation on the RadioMaster NEXUS-X target is backwards. Users must manually apply YAW-180 to correct it. The alignment constant in `target.h` needs to be fixed.
+
+---
+
+
+### ✅ fix-mixer-preview-reversed-on-load
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Bug Fix
+**Priority:** MEDIUM
+
+On the Mixer tab, the mixer preset preview image has two variants: normal (props-in) and
+
+---
+
+
+### ✅ fix-led-strip-excessive-messages
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Bug Fix / Performance
+**Priority:** MEDIUM-HIGH
+
+Fix the LED strip tab in INAV Configurator to avoid sending messages for unconfigured LEDs, reducing ~128-256 messages down to only the LEDs actually in use.
+
+---
+
+
+### ✅ fix-geprc-taker-h743-imu-devhw
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Bug Fix / Target Configuration
+**Priority:** HIGH
+
+Fix incorrect device hardware constant on the ICM42688 IMU1 bus device registration in two GEPRC targets: GEPRC_TAKER_H743 and GEPRCF745_BT_HD.
+
+---
+
+
+### ✅ feature-pr-build-server
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Feature / Developer Tooling
+**Priority:** MEDIUM
+
+A self-hosted web server that lets INAV community members compile and download firmware from any open pull request for the flight controller target they own — without needing a local toolchain.
+
+---
+
+
+### ✅ feature-frskyf405-target
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Feature / New Target
+**Priority:** MEDIUM
+
+Create a new INAV firmware target directory for the FRSKYF405 flight controller using supplied source files and board PDF documentation, following the standard 15-step target creation process. Build the target and open a PR.
+
+---
+
+
+### ✅ feature-crsf-incoming-telemetry-radiomaster
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Feature Enhancement
+**Priority:** MEDIUM
+
+Implement support for receiving incoming CRSF telemetry frames from RadioMaster transmitter-side sensors (e.g., external temperature, GPS, battery sensors connected to the TX) and making that data available in INAV.
+
+---
+
+
+### ✅ evaluate-pr11196-bot-comments
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Code Review / PR Maintenance
+**Priority:** MEDIUM
+
+Retrieve all automated bot comments on INAV PR #11196 using the `check-pr-bots` agent and evaluate whether each suggestion is valid and should be acted upon.
+
+---
+
+
+### ✅ evaluate-pr11168-bot-comments
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Code Review / PR Maintenance
+**Priority:** MEDIUM
+
+Retrieve all bot comments on INAV PR #11168 using the `check-pr-bots` agent and evaluate whether each suggestion is valid and should be acted upon.
+
+---
+
+
+### ✅ docs-nexusx-move-readme-to-boards
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Documentation / Housekeeping
+**Priority:** LOW
+
+Move the Nexus XR target's README.md from the target source directory into an appropriately named file under `docs/boards/` in the INAV firmware repository. Leave a short reference file in the original location pointing to the new location.
+
+---
+
+
+### ✅ discord-qa-knowledge-base
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Tooling / AI Pipeline
+**Priority:** MEDIUM
+
+Build a tool that mines the INAV Discord conversation history (~20k messages) to discover **recurring problems** and their canonical answers. The goal is not simple Q&A extraction — it's recurring institutional knowledge mining. Problems that multiple people have encountered (expressed in different words) are the highest-value targets, because they will likely come up again.
+
+---
+
+
+### ✅ deprecate-msp-status-debug-blackbox
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Documentation / PR Enhancement
+**Priority:** MEDIUM
+
+PR #11315 adds `replaced_by` fields to 14 legacy MSP commands. Reviewer Stronnag suggested
+
+---
+
+
+### ✅ cleanup-inav-untracked-files
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Housekeeping
+**Priority:** MEDIUM
+
+The `inav/` directory has accumulated untracked files from various past investigations,
+
+---
+
+
+### ✅ cherry-pick-pid-performance
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Performance / Cherry-pick
+**Priority:** MEDIUM
+
+Cherry-pick two performance improvement commits to a new branch off `maintenance-9.x` and open a PR to `inavflight/inav`.
+
+---
+
+
+### ✅ cherry-pick-imu-mahony-opts
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Performance / Cherry-pick
+**Priority:** MEDIUM
+
+Cherry-pick commit `f99ea57b58` to a new branch off `maintenance-9.x` and open a PR to `inavflight/inav`. Request review from `breadoven`.
+
+---
+
+
+### ✅ cherry-pick-imu-gps3dspeed
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Bug Fix / Cherry-pick
+**Priority:** MEDIUM
+
+Cherry-pick commit `bb02220fc3399c73d4bb2284d77add5b66576f5b` from the current branch to a new branch off `maintenance-9.x`, and open a PR targeting upstream `inavflight/inav` `maintenance-9.x`. Request review from `breadoven`.
+
+---
+
+
+### ✅ build-matekf765-bisect-wilco
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Bug Reproduction / Build
+**Priority:** MEDIUM
+
+Compile a MatekF765 firmware build from a commit halfway between releases 7.1.2 and 8.0.1 to help Wilco bisect and reproduce the regression described in issue #10586. Testing will be done with a wingless plane sitting in a window (bench test).
+
+---
+
+
+### ✅ audit-pg-version-history
+
+**Status:** COMPLETED (2026-03-07)
+**Type:** Investigation / Audit
+**Priority:** MEDIUM
+
+Audit all INAV Parameter Group (PG) struct changes across major and minor stable releases to determine whether PG version numbers were properly incremented each time new fields were added.
+
+---
+
+
+### ✅ optimize-pg-flash-footprint
+
+**Status:** COMPLETED (2026-03-05)
+**Type:** Optimization / Investigation
+**Priority:** MEDIUM
+
+Measure flash consumed by INAV parameter groups on an F722 target, then reduce it by reordering struct fields for better alignment. Use `inav-architecture` agent to locate PG definitions.
 
 ---
 
