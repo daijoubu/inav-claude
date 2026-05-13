@@ -1,0 +1,57 @@
+Keyword: timer
+Occurrences: 53
+================================================================================
+
+Page    1: sLib, 2 QSPI, SDRAM, 2 OTGFS, EMAC, DVP, 18 timers,
+Page    1: − sLib: configurable part of main Flash set as           Up to 18 timers (TMR)
+Page    1: secured, non-readable                                   − Up to 13 x 16-bit + 2 x 32-bit timers, each
+Page    1: up to maximum 512 Kbytes                                − 2 x watchdog timers (general WDT and
+Page    1: bit data bus. Supports CF card, SRAM,                   − SysTick timer: a 24-bit downcounter
+Page    3: 2.9     Timers (TMR) ......................................................................................................... 21
+Page    3: 2.9.1     Advanced timers (TMR1, TMR8, and TMR20) .......................................................... 22
+Page    3: 2.9.2     General-purpose timers (TMR2~5 and TMR9~14) ....................................................22
+Page    3: 2.9.3     Basic timers (TMR6 and TMR7).................................................................................23
+Page    3: 2.9.4     SysTick timer ..............................................................................................................23
+Page    5: 5.3.14 TMR timer characteristics .......................................................................................... 89
+Page    6: Table 6. Timer feature comparison .................................................................................................... 21
+Page   11: The AT32F435/437 offers three 12-bit ADCs, two 12-bit DACs, 13 general-purpose 16-bit timers
+Page   11: (three PWM advanced timers for motor control included), two general-purpose 32-bit timers, and
+Page   12: Timers
+Page   14: Timers
+Page   21: general-purpose, and basic timers TMRx, DAC, SDIO, ADC, DVP and QSPI.
+Page   21: 2.9         Timers (TMR)
+Page   21: The AT32F435/437 devices include up to 3 advanced timers, up to 10 general-purpose timers, 2
+Page   21: basic timers and a SysTick timer.
+Page   21: The table below compares the features of the advanced, general-purpose, and basic timers.
+Page   21: Table 6. Timer feature comparison
+Page   21: Type     Timer
+Page   22: 2.9.1       Advanced timers (TMR1, TMR8, and TMR20)
+Page   22: The three advanced timers (TMR1, TMR8, and TMR20) can each be seen a three-phase PWM
+Page   22: dead-times. Each of these timers can also be seen as a complete general-purpose timer. The 4
+Page   22: If configured as a standard 16-bit timer, it has the same features as the TMRx timer. If configured
+Page   22: In debug mode, the advanced timer counter can be frozen and the PWM outputs disabled to turn
+Page   22: architecture. The advanced timer can therefore work together with the TMR timers via the link
+Page   22: 2.9.2       General-purpose timers (TMR2~5 and TMR9~14)
+Page   22: There are 10 synchronizable general-purpose timers embedded in the AT32F435/437.
+Page   22: The AT32F435/437 has 4 full- featured general-purpose timers: TMR2, TMR3, TMR4, and
+Page   22: TMR5. The TMR2 and TMR5 timers are based on a 32-bit auto-reload up/down counter and a
+Page   22: 16-bit prescaler. The TMR3 and TMR4 timers are based on a 16- bit auto-reload up/down
+Page   22: These general-purpose timers can work together, or with the other general-purpose timers and
+Page   22: the advanced timers via the link feature for synchronization or event chaining. In debug mode,
+Page   22: their counter can be frozen. Any of these general-purpose timers can be used to generate
+Page   22: PWM outputs. Each timer has individual DMA request.
+Page   22: These timers are capable of handling incremental quadrature encoder signals and the digital
+Page   22: purpose timers. They can also be used as simple time bases.
+Page   23: These timers are based on a 16-bit auto-reload upcounter, a 16-bit prescaler, and one
+Page   23: purpose timers. They can also be used as simple time bases.
+Page   23: 2.9.3       Basic timers (TMR6 and TMR7)
+Page   23: These two timers are mainly used for DAC trigger generation. Each of them can also be used as a
+Page   23: 2.9.4       SysTick timer
+Page   23: This timer is dedicated to real-time operating systems, but could also be used as a standard down
+Page   23: or as a free running timer for application timeout management. It is self-enabling or not configurable
+Page   24: The enhanced real-time clock (ERTC) is an independent BCD timer/counter. It supports the
+Page   26: be obtained by programming two timer output compare channels.
+Page   29: timer update outputs that are also connected to different DMA channels.
+Page   89: 5.3.14 TMR timer characteristics
+Page   89: tres(TMR)           Timer resolution time
+Page   89: Timer external clock frequency on

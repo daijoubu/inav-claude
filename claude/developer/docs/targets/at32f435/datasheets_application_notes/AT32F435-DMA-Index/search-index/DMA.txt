@@ -1,0 +1,253 @@
+Keyword: DMA
+Occurrences: 249
+================================================================================
+
+Page    1: AT32F435/437 DMA User Guide
+Page    1: AT32F435/437 DMA User Guide
+Page    1: The AT32F435/437 series MCUs are designed with two DMA controllers (DMA1 and DMA2); each
+Page    1: This application note mainly introduces main features and application cases of DMA controller.
+Page    2: AT32F435/437 DMA User Guide
+Page    2: 1           DMA controller ....................................................................................................... 6
+Page    2: 2           DMA multiplexer (DMAMUX) ................................................................................. 7
+Page    2: 3           DMA functions ........................................................................................................ 9
+Page    2: 3.2     DMAMUX configuration ............................................................................................ 9
+Page    2: 4           DMA configuration ................................................................................................11
+Page    2: 6           Example 2: TMR generates a DMA request for data transfer from SRAM to
+Page    2: 7           Example 3: DMA request generator generates DMA requests ........................ 18
+Page    3: AT32F435/437 DMA User Guide
+Page    3: 8           Example 4: DMA data transfer after reception of DMA request synchronized
+Page    4: AT32F435/437 DMA User Guide
+Page    4: Table 1. Flexible DMA1/DMA2 request mapping................................................................................. 7
+Page    5: AT32F435/437 DMA User Guide
+Page    5: Figure 1. DMA controller block diagram .............................................................................................. 6
+Page    6: AT32F435/437 DMA User Guide
+Page    6: 1           DMA controller
+Page    6: Direct memory access (DMA) controller is designed for 32-bit MCU applications with the aim of
+Page    6: enhancing system performance and reducing the generation of interrupts. One DMA controller
+Page    6: Figure 1. DMA controller block diagram
+Page    6: DMA1
+Page    6: ADC1       TMR2                               DMA request                      ch3
+Page    6: ADC3       TMR4   DMA
+Page    6: request                     DMA ack
+Page    6: I2C1       USART1           DMAMUX
+Page    6: DMA2
+Page    6: SDIO1      UART4 DMA ack
+Page    6: DMA request                      ch1    AHB
+Page    6: SPI3       UART8                              DMA ack
+Page    7: AT32F435/437 DMA User Guide
+Page    7: 2           DMA multiplexer (DMAMUX)
+Page    7: DMAMUX is required for peripheral DMA request mapping on a data stream channel. It designs a
+Page    7: and enable DMAMUX. The use of DMAMUX makes DMA more flexible, and users can assign the
+Page    7: even channels as needed, not considering that a DMA request is only used for one or more
+Page    7: Table 1. Flexible DMA1/DMA2 request mapping
+Page    7: DMAMUX                       DMAMUX                           DMAMUX                     DMAMUX
+Page    7: 1      DMA_MUXREQG1           33         UART5_TX            65      TMR3_OVERFLOW      97       reserved
+Page    7: 2      DMA_MUXREQG2           34          reserved           66        TMR3_TRIG        98       reserved
+Page    7: 3      DMA_MUXREQG3           35          reserved           67         TMR4_CH1        99       reserved
+Page    7: 4      DMA_MUXREQG4           36           ADC2              68         TMR4_CH2       100       reserved
+Page    8: AT32F435/437 DMA User Guide
+Page    8: DMAMUX                     DMAMUX                       DMAMUX                   DMAMUX
+Page    8: Note: The “DMAMUX request” is the ID, and “source” is the DMA request.
+Page    9: AT32F435/437 DMA User Guide
+Page    9: 3           DMA functions
+Page    9: DMA controller channels support data transfer width in byte/half-word/word. The transfer widths of
+Page    9: the DMA_CxCTRL register. When PWIDTH is not equal to MWIDTH, it can be aligned according to
+Page    9: 3.2         DMAMUX configuration
+Page    9: In M2P and P2M modes, the DMAMUX must be configured properly so that the DMA controller can
+Page    9: respond to peripheral DMA request. The DMAMUX is used to multiplex channels for peripheral DMA
+Page    9: request, that is, any peripheral DMA request can be mapped on any channel of DMA1/DMA2, which
+Page    9: Call the following two dedicated functions to configure DMAMUX.
+Page    9: /* Enable DMAMUX function */
+Page    9: void dmamux_enable(dma_type *dma_x, confirm_state new_state);
+Page   10: AT32F435/437 DMA User Guide
+Page   10: /* Configure DMAMUX channel */
+Page   10: void dmamux_init(dmamux_channel_type *dmamux_channelx, dmamux_requst_id_sel_type dmamux_req_sel);
+Page   10: When the DMAMUX is enabled and configured, users can configure the DMA request generator
+Page   10: as DMA request source, without the needs of any traditional peripherals (such as TIMER, SPI, etc.)
+Page   10: to generate DMA requests.
+Page   10: Call the following dedicated functions to configure the DMA request generator module.
+Page   10: dmamux_generator_default_para_init(&dmamux_gen_init_struct);
+Page   10: dmamux_gen_init_struct.gen_polarity = DMAMUX_GEN_POLARITY_RISING;
+Page   10: dmamux_gen_init_struct.gen_request_number = 4;
+Page   10: dmamux_gen_init_struct.gen_signal_sel = DMAMUX_GEN_ID_EXINT0;
+Page   10: dmamux_gen_init_struct.gen_enable = TRUE;
+Page   10: dmamux_generator_config(DMA2MUX_GENERATOR1, &dmamux_gen_init_struct);
+Page   10: When the DMAMUX is enabled and configured, users can configure the DMA request
+Page   10: synchronization module that consists of seven synchronization channels. With the DMA
+Page   10: synchronization enabled, when a peripheral generates a DMA request, the DMA does not
+Page   10: signal is received, DMA transfers data according to the configuration. The synchronized signal can
+Page   10: Call the following dedicated functions to configure DMA synchronization module.
+Page   10: dmamux_sync_default_para_init(&dmamux_sync_init_struct);
+Page   10: dmamux_sync_init_struct.sync_request_number = 4;
+Page   10: dmamux_sync_init_struct.sync_signal_sel = DMAMUX_SYNC_ID_EXINT0;
+Page   10: dmamux_sync_init_struct.sync_polarity = DMAMUX_SYNC_POLARITY_RISING;
+Page   10: dmamux_sync_init_struct.sync_event_enable = FALSE;
+Page   10: dmamux_sync_init_struct.sync_enable = TRUE;
+Page   10: dmamux_sync_config(DMA2MUX_CHANNEL4, &dmamux_sync_init_struct);
+Page   11: AT32F435/437 DMA User Guide
+Page   11: 4           DMA configuration
+Page   11: This section mainly introduces EDMA configuration functions and process.
+Page   11: void dma_reset(dma_channel_type *dmax_channely);
+Page   11: /* initialize DMA structure parameters */
+Page   11: void dma_default_para_init(dma_init_type *dma_init_struct);
+Page   11: void dma_init(dma_channel_type *dmax_channely, dma_init_type *dma_init_struct);
+Page   11: void dma_channel_enable(dma_channel_type *dmax_channely, confirm_state new_state);
+Page   11: /* enable DMAMUX */
+Page   11: void dmamux_enable(dma_type *dma_x, confirm_state new_state);
+Page   11: /* write DMA request ID */
+Page   11: void dmamux_init(dmamux_channel_type *dmamux_channelx, dmamux_requst_id_sel_type dmamux_req_sel);
+Page   12: AT32F435/437 DMA User Guide
+Page   12:    Enable DMAMUX by setting the TBL_SEL bit in the MUXSEL register
+Page   12: In non-M2M mode, the DMAMUX must be enabled to start a data stream in response to DMA
+Page   12:    Write peripheral DMA request ID by setting the REQSEL bit in the MUXCxCTRL register
+Page   12: In non-M2M mode, write the peripheral DMA request ID to start a data stream in response to
+Page   12: DMA requests from peripherals.
+Page   12:    Enable DMA clock;
+Page   12:    Call the DMAMUX enable function and ID write function to configure DMAMUX;
+Page   13: AT32F435/437 DMA User Guide
+Page   13: Use DMA controller to transfer data from FLASH to SRAM.
+Page   13: project\at_start_f4xx\examples\dma\flash_to_sram
+Page   13:      Enable DMA peripheral clock
+Page   13:      Configure DMA channels
+Page   13: /* enable DMA1 clock */
+Page   13: crm_periph_clock_enable(CRM_DMA1_PERIPH_CLOCK, TRUE);
+Page   13: /* initialize dma1 channel */
+Page   13: dma_reset(DMA1_CHANNEL1);
+Page   13: dma_init_struct.buffer_size = BUFFER_SIZE;
+Page   13: dma_init_struct.direction = DMA_DIR_MEMORY_TO_MEMORY;
+Page   13: dma_init_struct.memory_base_addr = (uint32_t)dst_buffer;
+Page   13: dma_init_struct.memory_data_width = DMA_MEMORY_DATA_WIDTH_WORD;
+Page   13: dma_init_struct.memory_inc_enable = TRUE;
+Page   13: dma_init_struct.peripheral_base_addr = (uint32_t)src_const_buffer;
+Page   13: dma_init_struct.peripheral_data_width = DMA_PERIPHERAL_DATA_WIDTH_WORD;
+Page   13: dma_init_struct.peripheral_inc_enable = TRUE;
+Page   13: dma_init_struct.priority = DMA_PRIORITY_MEDIUM;
+Page   13: dma_init_struct.loop_mode_enable = FALSE;
+Page   14: AT32F435/437 DMA User Guide
+Page   14: dma_init(DMA1_CHANNEL1, &dma_init_struct);
+Page   14: dma_interrupt_enable(DMA1_CHANNEL1, DMA_FDT_INT, TRUE);
+Page   14: /* dma1 channel1 interrupt nvic init */
+Page   14: nvic_irq_enable(DMA1_Channel1_IRQn, 1, 0);
+Page   14: dma_channel_enable(DMA1_CHANNEL1, TRUE);
+Page   15: AT32F435/437 DMA User Guide
+Page   15: 6           Example 2: TMR generates a DMA request for data
+Page   15: TMR generates a DMA request for data transfer from SRAM to GPIOC. Users can use a logic
+Page   15: project\at_start_f4xx\examples\dma\dmamux_data_to_gpio
+Page   15:      Enable DMA/TMR2/GPIOC clocks
+Page   15:      Configure DMA channels
+Page   15:      Configure TMR2 overflow DMA request
+Page   15:      Enable DMAMUX
+Page   15:      Enable DMA channels
+Page   15:      Enable TMR2 overflow interrupt to generate a DMA request
+Page   15: /* enable dma2/gpioc/tmr2 clocks */
+Page   15: crm_periph_clock_enable(CRM_DMA2_PERIPH_CLOCK, TRUE);
+Page   16: AT32F435/437 DMA User Guide
+Page   16: /* enable TMR2 overflow DMA request */
+Page   16: tmr_dma_request_enable(TMR2, TMR_OVERFLOW_DMA_REQUEST, TRUE);
+Page   16: /* initialize dma2 channel1 */
+Page   16: dma_reset(DMA2_CHANNEL1);
+Page   16: dma_init_struct.buffer_size = BUFFER_SIZE;
+Page   16: dma_init_struct.direction = DMA_DIR_MEMORY_TO_PERIPHERAL;
+Page   16: dma_init_struct.memory_base_addr = (uint32_t)src_buffer;
+Page   16: dma_init_struct.memory_data_width = DMA_MEMORY_DATA_WIDTH_HALFWORD;
+Page   16: dma_init_struct.memory_inc_enable = TRUE;
+Page   16: dma_init_struct.peripheral_base_addr = (uint32_t)&GPIOC->odt;
+Page   16: dma_init_struct.peripheral_data_width = DMA_PERIPHERAL_DATA_WIDTH_HALFWORD;
+Page   16: dma_init_struct.peripheral_inc_enable = FALSE;
+Page   16: dma_init_struct.priority = DMA_PRIORITY_MEDIUM;
+Page   16: dma_init_struct.loop_mode_enable = FALSE;
+Page   16: dma_init(DMA2_CHANNEL1, &dma_init_struct);
+Page   16: dma_interrupt_enable(DMA2_CHANNEL1, DMA_FDT_INT, TRUE);
+Page   16: /* dma2 channel1 interrupt nvic init */
+Page   16: nvic_irq_enable(DMA2_Channel1_IRQn, 1, 0);
+Page   16: /* enable TMR2 DMAMUX */
+Page   16: dmamux_enable(DMA2, TRUE);
+Page   16: dmamux_init(DMA2MUX_CHANNEL1, DMAMUX_DMAREQ_ID_TMR2_OVERFLOW);
+Page   16: /* enable dma channel */
+Page   16: dma_channel_enable(DMA2_CHANNEL1, TRUE);
+Page   17: AT32F435/437 DMA User Guide
+Page   18: AT32F435/437 DMA User Guide
+Page   18: 7           Example 3: DMA request generator generates DMA
+Page   18: Press the on-board button, and then DMAMUX generates a DMA request to transfer data from
+Page   18: project\at_start_f4xx\examples\dma\dmamux_genertor_exint
+Page   18:      Enable DMA peripheral clocks
+Page   18:      Configure DMA channels and DMAMUX request generator module
+Page   18:      Enable DMA channels
+Page   18: /* enable dma2/gpioa clock */
+Page   18: crm_periph_clock_enable(CRM_DMA2_PERIPH_CLOCK, TRUE);
+Page   19: AT32F435/437 DMA User Guide
+Page   19: /* dma2 channel4 configuration */
+Page   19: dma_reset(DMA2_CHANNEL4);
+Page   19: dma_init_struct.buffer_size = BUFFER_SIZE;
+Page   19: dma_init_struct.direction = DMA_DIR_PERIPHERAL_TO_MEMORY;
+Page   19: dma_init_struct.memory_base_addr = (uint32_t)dst_buffer;
+Page   19: dma_init_struct.memory_data_width = DMA_MEMORY_DATA_WIDTH_HALFWORD;
+Page   19: dma_init_struct.memory_inc_enable = TRUE;
+Page   19: dma_init_struct.peripheral_base_addr = (uint32_t)src_buffer;
+Page   19: dma_init_struct.peripheral_data_width = DMA_PERIPHERAL_DATA_WIDTH_HALFWORD;
+Page   19: dma_init_struct.peripheral_inc_enable = TRUE;
+Page   19: dma_init_struct.priority = DMA_PRIORITY_MEDIUM;
+Page   19: dma_init_struct.loop_mode_enable = FALSE;
+Page   19: dma_init(DMA2_CHANNEL4, &dma_init_struct);
+Page   19: dmamux_generator_default_para_init(&dmamux_gen_init_struct);
+Page   19: dmamux_gen_init_struct.gen_polarity = DMAMUX_GEN_POLARITY_RISING;
+Page   19: dmamux_gen_init_struct.gen_request_number = 4;
+Page   19: dmamux_gen_init_struct.gen_signal_sel = DMAMUX_GEN_ID_EXINT0;
+Page   19: dmamux_gen_init_struct.gen_enable = TRUE;
+Page   19: dmamux_generator_config(DMA2MUX_GENERATOR1, &dmamux_gen_init_struct);
+Page   19: dma_interrupt_enable(DMA2_CHANNEL4, DMA_FDT_INT, TRUE);
+Page   19: /* dma2 channel4 interrupt nvic init */
+Page   19: nvic_irq_enable(DMA2_Channel4_IRQn, 1, 0);
+Page   19: /* dmamux function enable */
+Page   19: dmamux_enable(DMA2, TRUE);
+Page   19: dmamux_init(DMA2MUX_CHANNEL4, DMAMUX_DMAREQ_ID_REQ_G1);
+Page   20: AT32F435/437 DMA User Guide
+Page   20: /* enable dma channe4 */
+Page   20: dma_channel_enable(DMA2_CHANNEL4, TRUE);
+Page   20: Each time the on-board USER button is pressed, DMA sends 4 data to the dst_buffer array, and
+Page   20: DMA transfer completed interrupt occurs when 16 data are sent.
+Page   21: AT32F435/437 DMA User Guide
+Page   21: 8           Example 4: DMA data transfer after reception of DMA
+Page   21: When a DMA request is generated by TMR, the data can be transferred from source address to
+Page   21: project\at_start_f4xx\examples\dma\ dmamux_synchronization_exint
+Page   21:       Enable DMA peripheral clocks
+Page   21:       Configure DMA channels and DMAMUX synchronization module
+Page   21:       Enable DMA channels
+Page   21: /* enable dma2/gpioa clock */
+Page   21: crm_periph_clock_enable(CRM_DMA2_PERIPH_CLOCK, TRUE);
+Page   22: AT32F435/437 DMA User Guide
+Page   22: /* dma2 channel4 configuration */
+Page   22: dma_reset(DMA2_CHANNEL4);
+Page   22: dma_init_struct.buffer_size = BUFFER_SIZE;
+Page   22: dma_init_struct.direction = DMA_DIR_PERIPHERAL_TO_MEMORY;
+Page   22: dma_init_struct.memory_base_addr = (uint32_t)dst_buffer;
+Page   22: dma_init_struct.memory_data_width = DMA_MEMORY_DATA_WIDTH_HALFWORD;
+Page   22: dma_init_struct.memory_inc_enable = TRUE;
+Page   22: dma_init_struct.peripheral_base_addr = (uint32_t)src_buffer;
+Page   22: dma_init_struct.peripheral_data_width = DMA_PERIPHERAL_DATA_WIDTH_HALFWORD;
+Page   22: dma_init_struct.peripheral_inc_enable = TRUE;
+Page   22: dma_init_struct.priority = DMA_PRIORITY_MEDIUM;
+Page   22: dma_init_struct.loop_mode_enable = FALSE;
+Page   22: dma_init(DMA2_CHANNEL4, &dma_init_struct);
+Page   22: dmamux_sync_default_para_init(&dmamux_sync_init_struct);
+Page   22: dmamux_sync_init_struct.sync_request_number = 4;
+Page   22: dmamux_sync_init_struct.sync_signal_sel = DMAMUX_SYNC_ID_EXINT0;
+Page   22: dmamux_sync_init_struct.sync_polarity = DMAMUX_SYNC_POLARITY_RISING;
+Page   22: dmamux_sync_init_struct.sync_event_enable = FALSE;
+Page   22: dmamux_sync_init_struct.sync_enable = TRUE;
+Page   22: dmamux_sync_config(DMA2MUX_CHANNEL4, &dmamux_sync_init_struct);
+Page   22: dma_interrupt_enable(DMA2_CHANNEL4, DMA_FDT_INT, TRUE);
+Page   22: /* dma2 channel4 interrupt nvic init */
+Page   22: nvic_irq_enable(DMA2_Channel4_IRQn, 1, 0);
+Page   22: /* dmamux function enable */
+Page   23: AT32F435/437 DMA User Guide
+Page   23: dmamux_enable(DMA2, TRUE);
+Page   23: dmamux_init(DMA2MUX_CHANNEL4, DMAMUX_DMAREQ_ID_TMR1_OVERFLOW);
+Page   23: /* enable dma channe4 */
+Page   23: dma_channel_enable(DMA2_CHANNEL4, TRUE);
+Page   23: tmr_dma_request_enable(TMR1, TMR_OVERFLOW_DMA_REQUEST, TRUE);
+Page   23: When TMR generate an overflow event and a DMA request, the DMA request will not be
+Page   23: responded. Each time the on-board USER button is pressed, four TMR DMA requests are
+Page   23: synchronized and then DMA sends data to the dst_buffer array. The DMA transfer completed
+Page   24: AT32F435/437 DMA User Guide
+Page   25: AT32F435/437 DMA User Guide

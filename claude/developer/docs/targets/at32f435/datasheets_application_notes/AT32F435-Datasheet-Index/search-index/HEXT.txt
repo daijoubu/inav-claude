@@ -1,0 +1,61 @@
+Keyword: HEXT
+Occurrences: 57
+================================================================================
+
+Page    1: − 4 to 25 MHz crystal (HEXT)
+Page    6: Table 28. HEXT 4 ~ 25 MHz crystal characteristics(1)(2) .................................................................... 61
+Page    6: Table 29. HEXT external source characteristics................................................................................ 62
+Page    9: Figure 14. HEXT typical application with an 8 MHz crystal ............................................................... 61
+Page    9: Figure 15. HEXT external source AC timing diagram........................................................................ 62
+Page   16: HEXT 4~25 MHz
+Page   19: clock, and the HEXT crystal. The voltage regulator can also be put in normal or low-power
+Page   19: HICK clock and the HEXT crystal are also switched off. After entering Standby mode, SRAM
+Page   20: CPU clock after any reset. An external 4 to 25 MHz clock (HEXT) can be selected, in which case it
+Page   20: is monitored for failure. If a failure is detected, HEXT will be switched off and the system
+Page   20: system take the same action once HEXT fails when it is used as the source of PLL.
+Page   35: PH0 / HEXT_IN
+Page   35: 5          5       12        23                                 I/O TC                                   I2C1_SDA                               HEXT_IN
+Page   35: PH1 / HEXT_OUT
+Page   35: 6          6       13        24                                 I/O TC                                   I2C1_SCL                             HEXT_OUT
+Page   53: (HEXT)              48 MHz      1.0      34.4            33.2            9.86
+Page   54: (HEXT)              48 MHz      1.0      31.5            30.4            6.84
+Page   55: crystal (HEXT)(1), all                                                        mA
+Page   55: crystal (HEXT)(1), all    108 MHz         1.0       82.0          92.1
+Page   55: crystal (HEXT)(1), all                                                        mA
+Page   56: crystal (HEXT)(1), all                                                        mA
+Page   56: crystal (HEXT)(1), all    108 MHz         1.0       75.4          84.8
+Page   56: crystal (HEXT)(1), all                                                        mA
+Page   57: Supply current in   HICK and HEXT OFF (no WDT)
+Page   57: HICK and HEXT OFF (no WDT)
+Page   61: The high-speed external (HEXT) clock can be supplied with a 4 to 25 MHz crystal/ceramic
+Page   61: Table 28. HEXT 4 ~ 25 MHz crystal characteristics(1)(2)
+Page   61: fHEXT_IN         Oscillator frequency                   -                     4                8   25         MHz
+Page   61: tSU(HEXT)         Startup time           VDD is stabilized                     -                2    -          ms
+Page   61: (3) tSU(HEXT) is the startup time measured from the moment HEXT is enabled (by software) to a stabilized 8 MHz
+Page   61: Figure 14. HEXT typical application with an 8 MHz crystal
+Page   61: HEXT_IN                                 fHEXT
+Page   61: HEXT_OUT
+Page   62: Table 29. HEXT external source characteristics
+Page   62: fHEXT_ext    User external clock source frequency(1)                                    1          8      25       MHz
+Page   62: VHEXTH       HEXT_IN input pin high level voltage                                    0.7VDD         -     VDD
+Page   62: VHEXTL      HEXT_IN input pin low level voltage                                       VSS          -    0.3VDD
+Page   62: tw(HEXT)                                                                -
+Page   62: HEXT_IN high or low time(1)                                                5           -      -
+Page   62: tw(HEXT)
+Page   62: tr(HEXT)
+Page   62: HEXT_IN rise or fall time(1)                                               -           -     20
+Page   62: tf(HEXT)
+Page   62: Cin(HEXT)    HEXT_IN input capacitance(1)                               -               -          5       -           pF
+Page   62: Duty(HEXT) Duty cycle                                                    -              45           -     55           %
+Page   62: IL       HEXT_IN input leakage current                     VSS ≤ VIN ≤ VDD          -           -     ±1           μA
+Page   62: Figure 15. HEXT external source AC timing diagram
+Page   62: VHEXTH
+Page   62: HEXTL
+Page   62: tr(HEXT)                          tf(HEXT)                     tW(HEXT)                  tW(HEXT)t
+Page   62: THEXT
+Page   62: External            fHEXT_ext                                                IL
+Page   62: clock source                             HEXT_IN
+Page  101: If HEXT is enabled while ADC uses any input channel of ADC3_IN4~8 and ADC123_IN10~13,
+Page  101: HEXT emitting to ADC input signals nearby.
+Page  101:           Use different PCB layers to route ADC_IN signal apart from HEXT path
+Page  101:           Do not route ADC_IN signals and HEXT path parallel

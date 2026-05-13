@@ -1,0 +1,92 @@
+Keyword: USART
+Occurrences: 88
+================================================================================
+
+Page    1: with 8080/6800 modes                                      − Up to 4 x USARTs + 4 x UARTs, support
+Page    4: 2.13.2 Universal synchronous / asynchronous receiver transmitters (USART) ...................25
+Page    6: Table 7. USART/UART feature comparison ...................................................................................... 25
+Page   11: I2Cs, four SPIs (all multiplexed as I2Ss), two SDIOs, four USARTs plus four UARTs, one infrared
+Page   12: USART + UART              3 + 4(6)                 3 + 4(6)                  4+4                    4+4                     4+4
+Page   13: (6) For LQFP48 and QFN48 packages, UART8 is not available and USART6 is used as UART for no CK pinout.
+Page   14: USART + UART                    4+4                                    4+4                               4+4
+Page   16: SPI3/I2S3                                                                                                                                                USART1/6
+Page   16: USART2/3                                                  ERTC                                                                                          TMR9/10/11
+Page   19: USART1, USART2, USART3, OTGFS1, or OTGFS2. Table 5 provides the supporting interfaces of
+Page   20: PA9: USART1_TX
+Page   20: USART1                             All part numbers
+Page   20: PA10: USART1_RX
+Page   20: AT32F435ZxT7, AT32F435VxT7                     PD5: USART2_TX
+Page   20: AT32F437ZxT7, AT32F437VxT7                     PD6: USART2_RX
+Page   20: USART2
+Page   20: PA2: USART2_TX
+Page   20: PA3: USART2_RX
+Page   20: AT32F435ZxT7, AT32F435VxT7, AT32F435RxT7              PC10: USART3_TX
+Page   20: AT32F437ZxT7, AT32F437VxT7, AT32F437RxT7              PC11: USART3_RX
+Page   20: USART3
+Page   20: PB10: USART3_TX
+Page   20: PB11: USART3_RX
+Page   21: The DMA/EDMA can be used with the main peripherals: SPI and I2S, I2C, USART, advanced,
+Page   25: (USART)
+Page   25: (USART1, USART2, USART3, and USART6) and four universal asynchronous receiver
+Page   25: USART1, USART2, USART3, and USART6 provide hardware management of the CTS and RTS
+Page   25: Table 7. USART/UART feature comparison
+Page   25: USART/UART name                USART1 USART2 USART3         UART4   UART5   USART6    UART7    UART8
+Page   26: internal connection between TMR10, USART1, or USART2 with TMR11. TMR11 is used to provide
+Page   26: the carrier frequency, and TMR10, USART1, or USART2 provides the main signal to be sent. The
+Page   35: I2C2_SCL / USART2_CTS / UART4_TX /                               ERTC_AF2 / WKUP1
+Page   35: 11         15       24        35                PA1              I/O Fta                      USART2_RTS_DE / UART4_RX /                      ADC123_IN1(6)
+Page   35: 12         16       25        36                PA2              I/O Fta                       USART2_TX / SDIO2_CK /                          ADC123_IN2
+Page   35: I2S2_MCK / USART2_RX / QSPI2_IO3 /
+Page   35: 14         20       29        40                PA4              I/O Fta      USART2_CK / USART6_TX /       ADC12_IN4 / DAC1_OUT
+Page   35: USART6_RX / QSPI2_IO2 /
+Page   36: 16         22       31        42                PA6              I/O Fta                      USART3_CTS / TMR13_CH1 /                     ADC12_IN6
+Page   36: USART3_TX / QSPI1_IO2 /
+Page   36: USART3_RX / QSPI1_IO3 /
+Page   36: 18         26       35        46                PB0              I/O Fta                    USART2_RX / SPI3_MOSI / I2S3_SD /              ADC12_IN8
+Page   36: USART3_CK / QSPI2_IO0 / QSPI1_IO0 /
+Page   36: 19         27       36        47                PB1              I/O Fta                          USART3_RTS_DE /                          ADC12_IN9
+Page   37: I2S2_CK / I2S3_MCK / USART3_TX /
+Page   37: 22         30       48        70                PB11             I/O       FT               I2C2_SDA / USART3_RX / QSPI1_IO0 /                    -
+Page   37: USART3_CK / CAN2_RX /
+Page   37: I2C3_SCL / USART3_CTS / CAN2_TX /
+Page   37: USART3_RTS_DE / TMR12_CH1 /
+Page   37: USART3_TX / EMAC_MII_RX_DV /
+Page   37: USART3_RX / EMAC_MII_RXD0 /
+Page   38: -         -       57        79                PD10             I/O       FT                USART3_CK / EMAC_MII_RXD1 /                         -
+Page   38: I2C2_SMBA / USART3_CTS /
+Page   38: USART3_RTS_DE / QSPI1 _IO1 /
+Page   38: -         -        -        92                PG7              I/O       FT               USART6_CK / XMC_INT3 / DVP_D13                       -
+Page   38: QSPI2_CS / USART6_RTS_DE /
+Page   38: -        37       63        96                PC6              I/O       FT              I2S2_MCK / USART6_TX / XMC_A0 /                       -
+Page   38: USART6_RX / XMC_A1 / SDIO1_D7 /
+Page   38: UART8_TX / USART6_CK / QSPI1_IO2 /
+Page   38: 29         41       67        100               PA8              I/O       FT                  USART1_CK / USART2_TX /                           -
+Page   39: USART1_TX / I2C1_SCL /
+Page   39: 31         43       69        102               PA10             I/O       FT              I2S4_MCK / USART1_RX / I2C1_SDA /                      -
+Page   39: 32         44       70        103               PA11             I/O TC                         SPI4_MISO / USART1_CTS /                          -
+Page   39: USART6_TX / CAN1_RX /
+Page   39: 33         45       71        104               PA12             I/O TC                      USART1_RTS_DE / USART6_RX /                          -
+Page   39: (JTCK / SWCLK)                                    SPI3_MOSI / I2S3_SD / USART2_TX
+Page   39: (JTDI)                                           USART1_TX / USART2_RX /
+Page   39: -        51       78        111               PC10             I/O       FT                   USART3_TX / UART4_TX /                            -
+Page   39: USART3_RX / UART4_RX /
+Page   39: USART3_CK / UART5_TX /
+Page   39: TMR3_EXT / USART3_RTS_DE /
+Page   39: SPI2_MISO / USART2_CTS /
+Page   40: USART2_RTS_DE / XMC_A9 / XMC_NOE
+Page   40: -         -       86        119               PD5              I/O       FT               USART2_TX / XMC_A10 / XMC_NWE                       -
+Page   40: SPI3_MOSI / I2S3_SD / USART2_RX /
+Page   40: USART2_CK /
+Page   40: USART6_RX / QSPI1_IO2 /
+Page   40: USART6_RTS_DE / CAN2_TX / XMC_NE4
+Page   40: USART6_CTS /
+Page   40: USART6_TX / QSPI1_IO3 /
+Page   40: USART6_CTS / XMC_SDNCAS /
+Page   40: USART1_RX / UART7_RX /
+Page   40: USART1_CK / UART5_RX /
+Page   40: 42         58       92        136               PB6              I/O       FT                    USART1_TX / UART5_TX /                         -
+Page   41: USART1_RX / QSPI2_IO1 /
+Page   60: USART2         3.14            2.87              2.62          2.38
+Page   60: USART3         3.09            2.83              2.58          2.35
+Page   60: USART1         3.24            2.97              2.71          2.47
+Page   60: USART6         3.44            3.15              2.87          2.62

@@ -1,0 +1,180 @@
+Keyword: SPI
+Occurrences: 176
+================================================================================
+
+Page    1: sLib, 2 QSPI, SDRAM, 2 OTGFS, EMAC, DVP, 18 timers,
+Page    1: − Up to 2 x QSPI, used to connect external                calendar; supports calibration
+Page    1: SPI Flash memory or SPI RAM expansion,                 Up to 23 communication interfaces
+Page    1: (LVR), and power voltage monitoring (PVM)               − Up to 4 x SPIs (36 Mbit/s), all with I2S
+Page    3: 2.2.5     Quad serial peripheral interface (QSPI) .....................................................................17
+Page    3: 2.13.1 Serial peripheral interface (SPI) / Inter-integrated sound interface (I2S) ...................24
+Page    5: 5.3.15 SPI / I2S characteristics .............................................................................................. 89
+Page    5: 5.3.16 QSPI characteristics ...................................................................................................93
+Page    7: Table 54. SPI characteristics ............................................................................................................. 89
+Page   10: Figure 40. SPI timing diagram - slave mode and CPHA = 0 ............................................................. 90
+Page   10: Figure 41. SPI timing diagram - slave mode and CPHA = 1 ............................................................. 90
+Page   10: Figure 42. SPI timing diagram - master mode................................................................................... 90
+Page   10: Figure 45. QSPI timing diagram ........................................................................................................ 93
+Page   11: (SDRAM interfaced included) and two quad-SPI interfaces (QSPI).
+Page   11: I2Cs, four SPIs (all multiplexed as I2Ss), two SDIOs, four USARTs plus four UARTs, one infrared
+Page   12: QSPI                     2                        2                        2                      2                       2
+Page   12: SPI/I2S        4/4 (2 full-duplex)      4/4 (2 full-duplex)       4/4 (2 full-duplex)    4/4 (2 full-duplex)     4/4 (2 full-duplex)
+Page   14: QSPI                           2                                      2                                 2
+Page   14: SPI/I2S              4/4 (2 full-duplex)                    4/4 (2 full-duplex)               4/4 (2 full-duplex)
+Page   16: OTGFS1/2                                                                                                                             QSPI1/2
+Page   16: TMR12/13/14                                                WDT                                                                                            SPI1/I2S1
+Page   16: SPI2/I2S2                                                  LICK
+Page   16: SPI4/I2S4
+Page   16: SPI3/I2S3                                                                                                                                                USART1/6
+Page   17: 2.2.5       Quad serial peripheral interface (QSPI)
+Page   17: The AT32F435/437 embed two quad serial peripheral interface (QSPI). This is a dedicated
+Page   17: communication interface which connects single, dual, or quad data lines of SPI flash memory or
+Page   17: SPI RAM. It can work in indirect mode (fully accessed by control registers), status polling mode, or
+Page   18: memory mapping mode with up to 256 Mbytes mapping of the external SPI flash or RAM. QSPI can
+Page   21: The DMA/EDMA can be used with the main peripherals: SPI and I2S, I2C, USART, advanced,
+Page   21: general-purpose, and basic timers TMRx, DAC, SDIO, ADC, DVP and QSPI.
+Page   24: 2.13.1 Serial peripheral interface (SPI) / Inter-integrated sound interface
+Page   24: There are up to four SPIs able to communicate at up to 36 Mbits/s in slave and master modes in
+Page   24: generation/verification supports basic SD card/MMC/SDHC modes. All SPIs can be served by the
+Page   24: Four standard I2S interfaces (multiplexed with SPI) are available, which can be operated in master
+Page   25: signals. They also provide Smart Card mode (ISO 7816 compliant) and SPI-like communication
+Page   34: TMR3_EXT / SPI4_SCK / I2S4_CK /
+Page   34: QSPI1_IO2 / XMC_SDNCAS /
+Page   34: -         -        3         3                 PE4              I/O       FT              SPI4_CS / I2S4_WS / TMR20_CH1C /                      -
+Page   34: -         -        4         4                 PE5              I/O       FT                  SPI4_MISO / TMR20_CH2C /                          -
+Page   34: -         -        5         5                 PE6              I/O       FT              SPI4_MOSI / I2S4_SD / TMR20_CH3C /                    -
+Page   34: UART7_RX / QSPI1_IO3 / XMC_NIORD
+Page   34: UART7_TX / QSPI1_IO2 / XMC_NREG
+Page   34: -         -         -        20                PF8              I/O FTa TMR13_CH1 / QSPI1_IO0 / XMC_NIOWR                                   ADC3_IN6
+Page   34: QSPI1_IO1 / XMC_CD
+Page   34: QSPI1_SCK / XMC_INTR / DVP_D11
+Page   35: I2C3_SDA / SPI3_MOSI / I2S3_SD /
+Page   35: -         9       16        27                PC1              I/O FTa                    SPI2_MOSI / I2S2_SD / UART7_RX                   ADC123_IN11(6)
+Page   35: SPI2_MISO / I2S2_SDEXT / UART8_TX /
+Page   35: SPI2_MOSI / I2S2_SD /
+Page   35: UART8_RX / QSPI2_IO1 /
+Page   35: I2C2_SDA / SPI4_MOSI / I2S4_SD /
+Page   35: QSPI1_IO3 / EMAC_MII_RX_CLK /
+Page   35: I2S2_MCK / USART2_RX / QSPI2_IO3 /
+Page   35: SPI1_CS / I2S1_WS /
+Page   35: SPI3_CS / I2S3_WS /
+Page   35: SPI1_SCK / I2S1_CK /
+Page   35: USART6_RX / QSPI2_IO2 /
+Page   36: SPI1_MISO / I2S2_MCK /
+Page   36: QSPI1_IO0 / SDIO2_D2 / SDIO1_CMD /
+Page   36: TMR8_CH1C / SPI1_MOSI / I2S1_SD /
+Page   36: TMR14_CH1 / QSPI1_IO1 /
+Page   36: USART3_TX / QSPI1_IO2 /
+Page   36: USART3_RX / QSPI1_IO3 /
+Page   36: 18         26       35        46                PB0              I/O Fta                    USART2_RX / SPI3_MOSI / I2S3_SD /              ADC12_IN8
+Page   36: USART3_CK / QSPI2_IO0 / QSPI1_IO0 /
+Page   36: TMR8_CH3C / SPI2_SCK / I2S2_CK /
+Page   36: QSPI1_SCK / QSPI2_SCK /
+Page   36: 20         28       37        48                                 I/O       FT               I2C3_SMBA / SPI3_MOSI / I2S3_SD /                   -
+Page   36: QSPI1_SCK / SDIO1_CK
+Page   36: TMR20_CH1C / SPI1_MISO /
+Page   36: TMR20_CH2C / SPI1_MOSI / I2S1_SD /
+Page   36: QSPI2_IO0 / XMC_D4
+Page   36: QSPI2_IO1 / XMC_D5
+Page   37: QSPI2_IO2 / XMC_D6
+Page   37: QSPI2_IO3 / XMC_D7
+Page   37: TMR1_CH2 / SPI4_CS / I2S4_WS /
+Page   37: TMR1_CH3C / SPI1_CS / I2S1_WS /
+Page   37: SPI4_SCK / I2S4_CK / XMC_D9
+Page   37: TMR1_CH3 / SPI1_SCK / I2S1_CK /
+Page   37: SPI4_MISO / XMC_D10
+Page   37: TMR1_CH4 / SPI1_MISO /
+Page   37: SPI4_MOSI / I2S4_SD / XMC_D11
+Page   37: TMR1_BRK / SPI1_MOSI / I2S1_SD /
+Page   37: TMR2_CH3 / I2C2_SCL / SPI2_SCK /
+Page   37: 21         29       47        69                PB10             I/O FTf                         QSPI1_CS / QSPI1_IO1 /                           -
+Page   37: 22         30       48        70                PB11             I/O       FT               I2C2_SDA / USART3_RX / QSPI1_IO0 /                    -
+Page   37: UART4_TX / QSPI1_IO1
+Page   37: I2C2_SMBA / SPI2_CS / I2S2_WS /
+Page   37: SPI4_CS / I2S4_WS /
+Page   37: 25         33       51        73                PB12             I/O       FT                     SPI3_SCK / I2S3_CK /                            -
+Page   37: SPI2_SCK / I2S2_CK /
+Page   37: SPI4_SCK / I2S4_CK /
+Page   37: SPI2_MISO / I2S2_SDEXT /
+Page   37: SPI2_MOSI / I2S2_SD / TMR12_CH2 /
+Page   38: QSPI1 _IO0 /
+Page   38: USART3_RTS_DE / QSPI1 _IO1 /
+Page   38: -         -       60        82                PD13             I/O FTf                           UART8_TX / QSPI1_IO3 /                        -
+Page   38: -         -        -        91                PG6              I/O       FT                QSPI1_CS / XMC_INT2 / DVP_D12                       -
+Page   38: QSPI2_CS / USART6_RTS_DE /
+Page   38: SPI2_SCK / I2S2_CK / I2S3_MCK /
+Page   38: UART8_TX / USART6_CK / QSPI1_IO2 /
+Page   38: QSPI1_IO0 / XMC_A3 / OTGFS2_OE /
+Page   39: SPI2_SCK / I2S2_CK /
+Page   39: TMR1_CH3 / SPI2_MOSI / I2S2_SD /
+Page   39: SPI2_CS / I2S2_WS /
+Page   39: 32         44       70        103               PA11             I/O TC                         SPI4_MISO / USART1_CTS /                          -
+Page   39: TMR1_EXT / I2C2_SDA / SPI2_MISO /
+Page   39: (JTMS / SWDIO)                                         SPI3_MISO / OTGFS1_OE
+Page   39: UART4_RX / QSPI1_IO0
+Page   39: (JTCK / SWCLK)                                    SPI3_MOSI / I2S3_SD / USART2_TX
+Page   39: SPI1_CS / I2S1_WS /
+Page   39: PA15                                                SPI3_CS / I2S3_WS /
+Page   39: QSPI2 _IO1 / QSPI1_IO2 /
+Page   39: TMR5_CH2 / SPI3_SCK / I2S3_CK /
+Page   39: QSPI1 _IO1 / SDIO1_D2 / DVP_D8
+Page   39: TMR5_CH3 / I2S3_SDEXT / SPI3_MISO /
+Page   39: QSPI1_CS / SDIO1_D3 /
+Page   39: SPI3_MOSI / I2S3_SD /
+Page   39: SPI4_MISO/ SPI3_MOSI / I2S3_SD /
+Page   39: -         -       81        114               PD0              I/O       FT                 SPI2_CS / I2S2_WS / CAN1_RX /                       -
+Page   39: SPI2_SCK / I2S2_CK /
+Page   39: -         -       82        115               PD1              I/O       FT                 SPI2_CS / I2S2_WS / CAN1_TX /                       -
+Page   39: SPI2_SCK / I2S2_CK /
+Page   39: SPI2_MISO / USART2_CTS /
+Page   39: QSPI1_SCK / XMC_A8 / XMC_CLK /
+Page   40: SPI2_MOSI / I2S2_SD /
+Page   40: SPI3_MOSI / I2S3_SD / USART2_RX /
+Page   40: USART6_RX / QSPI1_IO2 /
+Page   40: QSPI2_IO2 /
+Page   40: QSPI2_IO3 / SPI4_SCK / I2S4_CK /
+Page   40: QSPI2_IO1 / SPI4_MISO /
+Page   40: QSPI2_SCK / SPI4_MOSI / I2S4_SD /
+Page   40: QSPI2_ IO0 / SPI4_CS / I2S4_WS /
+Page   40: USART6_TX / QSPI1_IO3 /
+Page   40: SPI1_SCK / I2S1_CK /
+Page   40: 39         55       89        133                                I/O FTf                          SPI3_SCK / I2S3_CK /                          -
+Page   40: QSPI1_IO3 / DVP_D4 / SWO
+Page   40: 40         56       90        134                                I/O       FT              SPI1_MISO / SPI3_MISO / I2S3_SDEXT /                 -
+Page   40: SPI1_MOSI / I2S1_SD /
+Page   40: SPI3_MOSI / I2S3_SD /
+Page   40: I2S1_MCK / SPI4_CS / I2S4_WS /
+Page   40: CAN2_TX / QSPI1_CS /
+Page   41: I2C1_SDA / SPI4_SCK / I2S4_CK /
+Page   41: USART1_RX / QSPI2_IO1 /
+Page   41: 45         61       95        139               PB8              I/O       FT               I2C1_SCL / SPI4_MISO / UART5_RX /                    -
+Page   41: CAN1_RX / QSPI2_CS /
+Page   41: I2C1_SDA / SPI2_CS/I2S2_WS /
+Page   41: SPI4_MOSI / I2S4_SD / I2C2_SDA /
+Page   41: UART5_TX / CAN1_TX / QSPI1_CS /
+Page   45: Reserved                              QSPI2(1)
+Page   45: QSPI register      0xA000_2FFF
+Page   45: 0x2001_0000                                                   QSPI1
+Page   59: QSPI1        49.85           45.54             41.53         37.69
+Page   59: QSPI2        50.05           45.66             41.59         37.72
+Page   60: SPI2/I2S2     10.21            9.34              8.52          7.73
+Page   60: SPI3/I2S3      7.80            7.16              6.53          5.95
+Page   60: APB2      SPI1/I2S1      5.70            5.22              4.77          4.33
+Page   60: SPI4/I2S4      3.67            3.36              3.07          2.80
+Page   89: 5.3.15 SPI / I2S characteristics
+Page   89: The parameters are listed in Table 54 for SPI and in Table 55 for I2S.
+Page   89: Table 54. SPI characteristics
+Page   89: SPI clock frequency(2)(3)     Slave receive mode                    -             36         MHz
+Page   89: (2) The maximum SPI clock frequency should not exceed fPCLK/2.
+Page   89: (3) The maximum SPI clock frequency is highly related with devices and the PCB layout. For more details about the
+Page   90: Figure 40. SPI timing diagram - slave mode and CPHA = 0
+Page   90: Figure 41. SPI timing diagram - slave mode and CPHA = 1
+Page   90: Figure 42. SPI timing diagram - master mode
+Page   93: 5.3.16 QSPI characteristics
+Page   93: Table 57. QSPI characteristics
+Page   93: QSPI clock frequency                             -                               -                 -              96           MHz
+Page   93: tw(CKH)      QSPI clock high and low                                                (t(CK) / 2) - 2             -            t(CK) / 2      ns
+Page   93: Figure 45. QSPI timing diagram
+Page   93: QSPI_SCK
+Page   93: QSPI_IO                                                                                                                D2
+Page   93: QSPI_IO

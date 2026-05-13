@@ -1,0 +1,103 @@
+Keyword: enable
+Occurrences: 99
+================================================================================
+
+Page    7: and enable DMAMUX. The use of DMAMUX makes DMA more flexible, and users can assign the
+Page    9: /* Enable DMAMUX function */
+Page    9: void dmamux_enable(dma_type *dma_x, confirm_state new_state);
+Page   10: When the DMAMUX is enabled and configured, users can configure the DMA request generator
+Page   10: dmamux_gen_init_struct.gen_enable = TRUE;
+Page   10: When the DMAMUX is enabled and configured, users can configure the DMA request
+Page   10: synchronization enabled, when a peripheral generates a DMA request, the DMA does not
+Page   10: dmamux_sync_init_struct.sync_event_enable = FALSE;
+Page   10: dmamux_sync_init_struct.sync_enable = TRUE;
+Page   11: /* enable channels */
+Page   11: void dma_channel_enable(dma_channel_type *dmax_channely, confirm_state new_state);
+Page   11: /* enable DMAMUX */
+Page   11: void dmamux_enable(dma_type *dma_x, confirm_state new_state);
+Page   12:    Enable DMAMUX by setting the TBL_SEL bit in the MUXSEL register
+Page   12: In non-M2M mode, the DMAMUX must be enabled to start a data stream in response to DMA
+Page   12:    Enable data stream by setting the CHEN bit in the CxCTRL register
+Page   12:    Enable DMA clock;
+Page   12:    Call the DMAMUX enable function and ID write function to configure DMAMUX;
+Page   12:    Call the channel enable function to enable channels.
+Page   13:      Enable DMA peripheral clock
+Page   13:      Enable transfer completed interrupt
+Page   13:      Enable channels
+Page   13: /* enable DMA1 clock */
+Page   13: crm_periph_clock_enable(CRM_DMA1_PERIPH_CLOCK, TRUE);
+Page   13: dma_init_struct.memory_inc_enable = TRUE;
+Page   13: dma_init_struct.peripheral_inc_enable = TRUE;
+Page   13: dma_init_struct.loop_mode_enable = FALSE;
+Page   14: /* enable transfer completed interrupt */
+Page   14: dma_interrupt_enable(DMA1_CHANNEL1, DMA_FDT_INT, TRUE);
+Page   14: nvic_irq_enable(DMA1_Channel1_IRQn, 1, 0);
+Page   14: dma_channel_enable(DMA1_CHANNEL1, TRUE);
+Page   15:      Enable DMA/TMR2/GPIOC clocks
+Page   15:      Enable transfer completed interrupt
+Page   15:      Enable DMAMUX
+Page   15:      Enable DMA channels
+Page   15:      Enable TMR2 overflow interrupt to generate a DMA request
+Page   15: /* enable dma2/gpioc/tmr2 clocks */
+Page   15: crm_periph_clock_enable(CRM_DMA2_PERIPH_CLOCK, TRUE);
+Page   15: crm_periph_clock_enable(CRM_GPIOC_PERIPH_CLOCK, TRUE);
+Page   15: crm_periph_clock_enable(CRM_TMR2_PERIPH_CLOCK, TRUE);
+Page   16: /* enable TMR2 */
+Page   16: /* enable TMR2 overflow DMA request */
+Page   16: tmr_dma_request_enable(TMR2, TMR_OVERFLOW_DMA_REQUEST, TRUE);
+Page   16: dma_init_struct.memory_inc_enable = TRUE;
+Page   16: dma_init_struct.peripheral_inc_enable = FALSE;
+Page   16: dma_init_struct.loop_mode_enable = FALSE;
+Page   16: /* enable transfer completed interrupt */
+Page   16: dma_interrupt_enable(DMA2_CHANNEL1, DMA_FDT_INT, TRUE);
+Page   16: nvic_irq_enable(DMA2_Channel1_IRQn, 1, 0);
+Page   16: /* enable TMR2 DMAMUX */
+Page   16: dmamux_enable(DMA2, TRUE);
+Page   16: /* enable dma channel */
+Page   16: dma_channel_enable(DMA2_CHANNEL1, TRUE);
+Page   16: /* enable tmr2 */
+Page   16: tmr_counter_enable(TMR2, TRUE);
+Page   18:      Enable DMA peripheral clocks
+Page   18:      Enable transfer completed interrupt
+Page   18:      Enable DMA channels
+Page   18: /* enable dma2/gpioa clock */
+Page   18: crm_periph_clock_enable(CRM_DMA2_PERIPH_CLOCK, TRUE);
+Page   18: crm_periph_clock_enable(CRM_GPIOA_PERIPH_CLOCK, TRUE);
+Page   19: exint_init_struct.line_enable = TRUE;
+Page   19: nvic_irq_enable(EXINT0_IRQn, 1, 0);
+Page   19: dma_init_struct.memory_inc_enable = TRUE;
+Page   19: dma_init_struct.peripheral_inc_enable = TRUE;
+Page   19: dma_init_struct.loop_mode_enable = FALSE;
+Page   19: dmamux_gen_init_struct.gen_enable = TRUE;
+Page   19: /* enable transfer full data interrupt */
+Page   19: dma_interrupt_enable(DMA2_CHANNEL4, DMA_FDT_INT, TRUE);
+Page   19: nvic_irq_enable(DMA2_Channel4_IRQn, 1, 0);
+Page   19: /* dmamux function enable */
+Page   19: dmamux_enable(DMA2, TRUE);
+Page   20: /* enable dma channe4 */
+Page   20: dma_channel_enable(DMA2_CHANNEL4, TRUE);
+Page   21:       Enable DMA peripheral clocks
+Page   21:       Enable transfer completed interrupt
+Page   21:       Enable DMA channels
+Page   21: /* enable dma2/gpioa clock */
+Page   21: crm_periph_clock_enable(CRM_DMA2_PERIPH_CLOCK, TRUE);
+Page   21: crm_periph_clock_enable(CRM_GPIOA_PERIPH_CLOCK, TRUE);
+Page   21: crm_periph_clock_enable(CRM_TMR1_PERIPH_CLOCK, TRUE);
+Page   22: exint_init_struct.line_enable = TRUE;
+Page   22: nvic_irq_enable(EXINT0_IRQn, 1, 0);
+Page   22: dma_init_struct.memory_inc_enable = TRUE;
+Page   22: dma_init_struct.peripheral_inc_enable = TRUE;
+Page   22: dma_init_struct.loop_mode_enable = FALSE;
+Page   22: dmamux_sync_init_struct.sync_event_enable = FALSE;
+Page   22: dmamux_sync_init_struct.sync_enable = TRUE;
+Page   22: /* enable transfer full data interrupt */
+Page   22: dma_interrupt_enable(DMA2_CHANNEL4, DMA_FDT_INT, TRUE);
+Page   22: nvic_irq_enable(DMA2_Channel4_IRQn, 1, 0);
+Page   22: /* dmamux function enable */
+Page   23: dmamux_enable(DMA2, TRUE);
+Page   23: /* enable dma channe4 */
+Page   23: dma_channel_enable(DMA2_CHANNEL4, TRUE);
+Page   23: /* enable tmr1 overflow edam request */
+Page   23: tmr_dma_request_enable(TMR1, TMR_OVERFLOW_DMA_REQUEST, TRUE);
+Page   23: /* enable tmr1 */
+Page   23: tmr_counter_enable(TMR1, TRUE);

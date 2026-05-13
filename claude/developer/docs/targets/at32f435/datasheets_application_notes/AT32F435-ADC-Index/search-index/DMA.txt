@@ -1,0 +1,493 @@
+Keyword: DMA
+Occurrences: 489
+================================================================================
+
+Page    3: 7           Application: ADC DMA mode 1 ........................................................................... 52
+Page    4: 8           Application: ADC DMA mode 2 ........................................................................... 60
+Page    4: 9           Application: ADC DMA mode 3 ........................................................................... 67
+Page    4: 10          Application: ADC DMA mode 4 ........................................................................... 74
+Page    4: 11          Application: ADC DMA mode 5 ........................................................................... 81
+Page    6: Table 4. Master/slave DMA mode ...................................................................................................... 24
+Page    7: Figure 11. Correlation between DMA mode and ADC mode ............................................................. 25
+Page    7: Figure 17. Regular shift mode and DMA mode 2 .............................................................................. 29
+Page    7: Figure 21. ADC DMA mode 1 test result............................................................................................ 59
+Page    7: Figure 22. ADC DMA mode 2 test result............................................................................................ 66
+Page    7: Figure 23. ADC DMA mode 3 test result............................................................................................ 73
+Page    7: Figure 24. ADC DMA mode 4 test result............................................................................................ 80
+Page    7: Figure 25. ADC DMA mode 5 test result............................................................................................ 88
+Page    8:    Read the converted data by using DMA or CPU
+Page   11: Storing the calibration value does not set the OCCE flag nor generate an interrupt or DMA request;
+Page   22: to the case of DMA transfer enable or EOCSFEN =1. This bit is set when the previous
+Page   23: Note: DMA reading converted data clears the OCCE flag simultaneously. Therefore, the OCCE flag
+Page   23: should be disabled when using DMA.
+Page   24: The preempted channel does not support DMA capacities; therefore, in all combined modes, the
+Page   24:    Ordinary channel data read access by DMA (in non-combined mode)
+Page   24: Set the OCDMAEN and OCDRCEN bits to generate a DMA request each time the ADC_ODT
+Page   24: register is updated. The converted data is read by DMA each time the DMA request is received.
+Page   24:    Ordinary channel data read access by DMA (in combined mode)
+Page   24: MSDMASEL bit of the ADC_CCTRL register can be used to select from five DMA transfer modes.
+Page   24: As long as the MSDMASEL bit is set (≠0), the ADC1 DMA channel is used to generate a DMA
+Page   24: Table 4. Master/slave DMA mode
+Page   24: MSDMASEL                    DMA request      ADC_CODT[31:0]
+Page   25: MSDMASEL                       DMA request      ADC_CODT[31:0]
+Page   25: Figure 11. Correlation between DMA mode and ADC mode
+Page   25: DMA reading the ordinary channel data (in non-combined mode) is implemented by an independent
+Page   25: /* config dma mode,it's not useful when common dma mode is use */
+Page   25: adc_dma_mode_enable(ADC1, TRUE);
+Page   25: /* config dma request repeat,it's not useful when common dma mode is use */
+Page   25: adc_dma_request_repeat_enable(ADC1, FALSE);
+Page   26: dmamux_enable(DMA1, TRUE);
+Page   26: dmamux_init(DMA1MUX_CHANNEL1, DMAMUX_DMAREQ_ID_ADC1);
+Page   26: DMA reading the ordinary channel data (in combined mode) is implemented by an independent
+Page   26: /* config common dma mode,it's useful for ordinary group in combine mode */
+Page   26: adc_common_struct.common_dma_mode = ADC_COMMON_DMAMODE_3;
+Page   26: /* config common dma request repeat */
+Page   26: adc_common_struct.common_dma_request_repeat_state = FALSE;
+Page   26: dmamux_enable(DMA1, TRUE);
+Page   26: dmamux_init(DMA1MUX_CHANNEL1, DMAMUX_DMAREQ_ID_ADC1);
+Page   26: In combined mode, select a DMA mode appropriately.
+Page   29: Figure 17. Regular shift mode and DMA mode 2
+Page   29: In combined mode, select a DMA mode appropriately.
+Page   29: the master/slave mode together with DMA1 or DMA2
+Page   30:    DMA configuration enable
+Page   30: The converted data of ADC ordinary group of channels can be transferred by DMA. If DMA
+Page   30: transfer is required, initialize the DMA in advance (refer to the configuration of DMA).
+Page   30: It includes configuration of the master/slave mode, ADC division, master/slave DMA mode,
+Page   30: DMA request continuation enable, shift length, internal temperature sensor/Vintrv and Vbat.
+Page   30:    Master/slave DMA mode
+Page   30: It is selected from five modes according to the master/slave mode. The DMA mode should
+Page   30:    DMA request continuation enable
+Page   30: It is used to set whether a DMA request is generated at the end of ordinary conversion
+Page   30: after the completion of the programmed number of DMA transfers.
+Page   31: It includes the configuration of CPU or DMA transfer mode. It is disabled in the master/slave
+Page   32: The preempted channel does not have DMA capacities; therefore, the preempted channel data
+Page   33:    Ordinary channel data read access by DMA (single buffer mode)
+Page   33: The ordinary channel data supports DMA capabilities. It is recommended to read the converted
+Page   33: data by DMA directly as follows:
+Page   33: 1)   Initialize and enable DMA;
+Page   33: 2)   Enable ADC DMA mode;
+Page   33: 3)   Get the DMA buffer data through the DMA data transfer complete interrupt function;
+Page   33:    Ordinary channel data read access by DMA (dual buffer mode)
+Page   33: The AT32F435 series MCU EDMA support dual buffer mode.
+Page   33: 1)   Initialize EDMA dual buffer mode and enable the EDMA;
+Page   33: 2)   Enable the ADC DMA mode and enable the DMA request for ordinary continuous mode;
+Page   33: 3)   Get the EDMA buffer data through the EDMA transfer complete interrupt function;
+Page   34:      Configure the DMA for ordinary channel data transfer
+Page   35:     DMA configuration function code
+Page   35: static void dma_config(void)
+Page   35: dma_init_type dma_init_struct;
+Page   35: crm_periph_clock_enable(CRM_DMA1_PERIPH_CLOCK, TRUE);
+Page   35: nvic_irq_enable(DMA1_Channel1_IRQn, 0, 0);
+Page   35: dma_reset(DMA1_CHANNEL1);
+Page   35: dma_default_para_init(&dma_init_struct);
+Page   35: dma_init_struct.buffer_size = 15;
+Page   35: dma_init_struct.direction = DMA_DIR_PERIPHERAL_TO_MEMORY;
+Page   35: dma_init_struct.memory_base_addr = (uint32_t)adc1_ordinary_valuetab;
+Page   35: dma_init_struct.memory_data_width = DMA_MEMORY_DATA_WIDTH_HALFWORD;
+Page   35: dma_init_struct.memory_inc_enable = TRUE;
+Page   35: dma_init_struct.peripheral_base_addr = (uint32_t)&(ADC1->odt);
+Page   35: dma_init_struct.peripheral_data_width = DMA_PERIPHERAL_DATA_WIDTH_HALFWORD;
+Page   35: dma_init_struct.peripheral_inc_enable = FALSE;
+Page   35: dma_init_struct.priority = DMA_PRIORITY_HIGH;
+Page   35: dma_init_struct.loop_mode_enable = FALSE;
+Page   35: dma_init(DMA1_CHANNEL1, &dma_init_struct);
+Page   35: dmamux_enable(DMA1, TRUE);
+Page   35: dmamux_init(DMA1MUX_CHANNEL1, DMAMUX_DMAREQ_ID_ADC1);
+Page   35: /* enable dma transfer complete interrupt */
+Page   35: dma_interrupt_enable(DMA1_CHANNEL1, DMA_FDT_INT, TRUE);
+Page   35: dma_channel_enable(DMA1_CHANNEL1, TRUE);
+Page   35: /* config common dma mode,it's not useful in independent mode */
+Page   35: adc_common_struct.common_dma_mode = ADC_COMMON_DMAMODE_DISABLE;
+Page   36: /* config common dma request repeat */
+Page   36: adc_common_struct.common_dma_request_repeat_state = FALSE;
+Page   36: /* config dma mode,it's not useful when common dma mode is use */
+Page   36: adc_dma_mode_enable(ADC1, TRUE);
+Page   36: /* config dma request repeat,it's not useful when common dma mode is use */
+Page   36: adc_dma_request_repeat_enable(ADC1, FALSE);
+Page   37: void DMA1_Channel1_IRQHandler(void)
+Page   37: if(dma_flag_get(DMA1_FDT1_FLAG) != RESET)
+Page   37: dma_flag_clear(DMA1_FDT1_FLAG);
+Page   37: dma1_trans_complete_flag = 1;
+Page   38: dma_config();
+Page   39: if((dma_trans_complete_flag == 0) || (adc1_overflow_flag != 0))
+Page   39: printf("dma_trans_complete_flag = %d\r\n",dma_trans_complete_flag);
+Page   41:      Configure the DMA for ordinary channel data transfer
+Page   41:      DMA configuration function code
+Page   41: static void dma_config(void)
+Page   41: dma_init_type dma_init_struct;
+Page   41: crm_periph_clock_enable(CRM_DMA1_PERIPH_CLOCK, TRUE);
+Page   42: nvic_irq_enable(DMA1_Channel1_IRQn, 0, 0);
+Page   42: dma_reset(DMA1_CHANNEL1);
+Page   42: dma_default_para_init(&dma_init_struct);
+Page   42: dma_init_struct.buffer_size = 3;
+Page   42: dma_init_struct.direction = DMA_DIR_PERIPHERAL_TO_MEMORY;
+Page   42: dma_init_struct.memory_base_addr = (uint32_t)adc1_ordinary_valuetab;
+Page   42: dma_init_struct.memory_data_width = DMA_MEMORY_DATA_WIDTH_HALFWORD;
+Page   42: dma_init_struct.memory_inc_enable = TRUE;
+Page   42: dma_init_struct.peripheral_base_addr = (uint32_t)&(ADC1->odt);
+Page   42: dma_init_struct.peripheral_data_width = DMA_PERIPHERAL_DATA_WIDTH_HALFWORD;
+Page   42: dma_init_struct.peripheral_inc_enable = FALSE;
+Page   42: dma_init_struct.priority = DMA_PRIORITY_HIGH;
+Page   42: dma_init_struct.loop_mode_enable = TRUE;
+Page   42: dma_init(DMA1_CHANNEL1, &dma_init_struct);
+Page   42: dmamux_enable(DMA1, TRUE);
+Page   42: dmamux_init(DMA1MUX_CHANNEL1, DMAMUX_DMAREQ_ID_ADC1);
+Page   42: /* enable dma transfer complete interrupt */
+Page   42: dma_interrupt_enable(DMA1_CHANNEL1, DMA_FDT_INT, FALSE);
+Page   42: dma_channel_enable(DMA1_CHANNEL1, TRUE);
+Page   42: /* config common dma mode,it's not useful in independent mode */
+Page   42: adc_common_struct.common_dma_mode = ADC_COMMON_DMAMODE_DISABLE;
+Page   42: /* config common dma request repeat */
+Page   42: adc_common_struct.common_dma_request_repeat_state = FALSE;
+Page   43: /* config dma mode,it's not useful when common dma mode is use */
+Page   43: adc_dma_mode_enable(ADC1, TRUE);
+Page   43: /* config dma request repeat,it's not useful when common dma mode is use */
+Page   43: adc_dma_request_repeat_enable(ADC1, TRUE);
+Page   44: dma_config();
+Page   46: The EDMA supports dual buffer mode to improve the data conversion efficiency.
+Page   46: This example introduces how to configure and use ADC fast conversion in the EDMA dual buffer
+Page   46: project\at_start_f4xx\examples\ adc\edma_double_buffer
+Page   46:      Configure the DMA for ordinary channel data transfer
+Page   46:      DMA configuration function code
+Page   46: static void edma_config(void)
+Page   46: edma_init_type edma_init_struct;
+Page   46: crm_periph_clock_enable(CRM_EDMA_PERIPH_CLOCK, TRUE);
+Page   47: nvic_irq_enable(EDMA_Stream1_IRQn, 0, 0);
+Page   47: edma_reset(EDMA_STREAM1);
+Page   47: edma_default_para_init(&edma_init_struct);
+Page   47: edma_init_struct.buffer_size = 3;
+Page   47: edma_init_struct.direction = EDMA_DIR_PERIPHERAL_TO_MEMORY;
+Page   47: edma_init_struct.memory0_base_addr = (uint32_t)adc1_ordinary_valuetab;
+Page   47: edma_init_struct.memory_burst_mode = EDMA_MEMORY_SINGLE;
+Page   47: edma_init_struct.memory_data_width = EDMA_MEMORY_DATA_WIDTH_HALFWORD;
+Page   47: edma_init_struct.memory_inc_enable = TRUE;
+Page   47: edma_init_struct.peripheral_base_addr = (uint32_t)&(ADC1->odt);
+Page   47: edma_init_struct.peripheral_burst_mode = EDMA_PERIPHERAL_SINGLE;
+Page   47: edma_init_struct.peripheral_data_width = EDMA_PERIPHERAL_DATA_WIDTH_HALFWORD;
+Page   47: edma_init_struct.peripheral_inc_enable = FALSE;
+Page   47: edma_init_struct.priority = EDMA_PRIORITY_VERY_HIGH;
+Page   47: edma_init_struct.loop_mode_enable = FALSE;
+Page   47: edma_init_struct.fifo_threshold = EDMA_FIFO_THRESHOLD_1QUARTER;
+Page   47: edma_init_struct.fifo_mode_enable = FALSE;
+Page   47: edma_init(EDMA_STREAM1, &edma_init_struct);
+Page   47: /* edmamux init and enable */
+Page   47: edmamux_enable(TRUE);
+Page   47: edmamux_init(EDMAMUX_CHANNEL1, EDMAMUX_DMAREQ_ID_ADC1);
+Page   47: edma_double_buffer_mode_init(EDMA_STREAM1, (uint32_t)double_adc1_ordinary_valuetab,
+Page   47: EDMA_MEMORY_0);
+Page   47: edma_double_buffer_mode_enable(EDMA_STREAM1, TRUE);
+Page   47: /* enable edma full data transfer interrupt */
+Page   47: edma_interrupt_enable(EDMA_STREAM1, EDMA_FDT_INT, TRUE);
+Page   47: edma_stream_enable(EDMA_STREAM1, TRUE);
+Page   48: /* config common dma mode,it's not useful in independent mode */
+Page   48: adc_common_struct.common_dma_mode = ADC_COMMON_DMAMODE_DISABLE;
+Page   48: /* config common dma request repeat */
+Page   48: adc_common_struct.common_dma_request_repeat_state = FALSE;
+Page   48: /* config dma mode,it's not useful when common dma mode is use */
+Page   48: adc_dma_mode_enable(ADC1, TRUE);
+Page   48: /* config dma request repeat,it's not useful when common dma mode is use */
+Page   48: adc_dma_request_repeat_enable(ADC1, TRUE);
+Page   49: void EDMA_Stream1_IRQHandler(void)
+Page   49: if(edma_flag_get(EDMA_FDT1_FLAG) != RESET)
+Page   49: if(edma_memory_target_get(EDMA_STREAM1))
+Page   49: edma_flag_clear(EDMA_FDT1_FLAG);
+Page   49: edma_trans_complete_flag = 1;
+Page   50: edma_config();
+Page   50: printf("edma_double_buffer \r\n");
+Page   50: while(edma_trans_complete_flag == 0);
+Page   50: edma_trans_complete_flag = 0;
+Page   51: stored into two buffers of EDMA.
+Page   52: 7           Application: ADC DMA mode 1
+Page   52: The converted data of ordinary channels in ADC master/slave mode requires DMA transfer. The
+Page   52: DMA supports multiple modes, each with different data transfer rules.
+Page   52: Using an inapplicable DMA mode for converted data transfer may cause data overflow due to delay
+Page   52: in transmission. Therefore, the ADC master/slave mode and DMA mode should work together
+Page   52: DMA mode 1 is applicable to:
+Page   52: This example selects “DMA mode 1 + ordinary simultaneous mode (dual slave)”.
+Page   52: project\at_start_f4xx\examples\ adc\combine_mode_ordinary_smlt_twoslave_dma1
+Page   52:      Configure the DMA for ordinary channel data transfer
+Page   54:     DMA configuration function code
+Page   54: static void dma_config(void)
+Page   54: dma_init_type dma_init_struct;
+Page   54: crm_periph_clock_enable(CRM_DMA1_PERIPH_CLOCK, TRUE);
+Page   54: nvic_irq_enable(DMA1_Channel1_IRQn, 0, 0);
+Page   54: dma_reset(DMA1_CHANNEL1);
+Page   54: dma_default_para_init(&dma_init_struct);
+Page   54: dma_init_struct.buffer_size = 27;
+Page   54: dma_init_struct.direction = DMA_DIR_PERIPHERAL_TO_MEMORY;
+Page   54: dma_init_struct.memory_base_addr = (uint32_t)adccom_ordinary_valuetab;
+Page   54: dma_init_struct.memory_data_width = DMA_MEMORY_DATA_WIDTH_HALFWORD;
+Page   54: dma_init_struct.memory_inc_enable = TRUE;
+Page   54: dma_init_struct.peripheral_base_addr = (uint32_t)&(ADCCOM->codt);
+Page   54: dma_init_struct.peripheral_data_width = DMA_PERIPHERAL_DATA_WIDTH_HALFWORD;
+Page   54: dma_init_struct.peripheral_inc_enable = FALSE;
+Page   54: dma_init_struct.priority = DMA_PRIORITY_HIGH;
+Page   54: dma_init_struct.loop_mode_enable = FALSE;
+Page   54: dma_init(DMA1_CHANNEL1, &dma_init_struct);
+Page   54: dmamux_enable(DMA1, TRUE);
+Page   54: dmamux_init(DMA1MUX_CHANNEL1, DMAMUX_DMAREQ_ID_ADC1);
+Page   54: /* enable dma transfer complete interrupt */
+Page   54: dma_interrupt_enable(DMA1_CHANNEL1, DMA_FDT_INT, TRUE);
+Page   54: dma_channel_enable(DMA1_CHANNEL1, TRUE);
+Page   55: /* config common dma mode,it's useful for ordinary group in combine mode */
+Page   55: adc_common_struct.common_dma_mode = ADC_COMMON_DMAMODE_1;
+Page   55: /* config common dma request repeat */
+Page   55: adc_common_struct.common_dma_request_repeat_state = FALSE;
+Page   55: /* config dma mode,it's not useful when common dma mode is use */
+Page   55: adc_dma_mode_enable(ADC1, FALSE);
+Page   55: /* config dma request repeat,it's not useful when common dma mode is use */
+Page   55: adc_dma_request_repeat_enable(ADC1, FALSE);
+Page   56: adc_dma_mode_enable(ADC2, FALSE);
+Page   56: adc_dma_request_repeat_enable(ADC2, FALSE);
+Page   56: adc_dma_mode_enable(ADC3, FALSE);
+Page   56: adc_dma_request_repeat_enable(ADC3, FALSE);
+Page   57: void DMA1_Channel1_IRQHandler(void)
+Page   57: if(dma_flag_get(DMA1_FDT1_FLAG) != RESET)
+Page   57: dma_flag_clear(DMA1_FDT1_FLAG);
+Page   57: dma1_trans_complete_flag = 1;
+Page   58: dma_config();
+Page   58: printf("combine_mode_ordinary_smlt_twoslave_dma1 \r\n");
+Page   58: while(dma1_trans_complete_flag == 0);
+Page   59: Figure 21. ADC DMA mode 1 test result
+Page   60: 8           Application: ADC DMA mode 2
+Page   60: The converted data of ordinary channels in ADC master/slave mode requires DMA transfer. The
+Page   60: DMA supports multiple modes, each with different data transfer rules.
+Page   60: Using an inapplicable DMA mode for converted data transfer may cause data overflow due to delay
+Page   60: in transmission. Therefore, the ADC master/slave mode and DMA mode should work together
+Page   60: DMA mode 2 is applicable to:
+Page   60: This example selects “DMA mode 2 + ordinary simultaneous mode (single slave)”.
+Page   60: project\at_start_f4xx\examples\ adc\combine_mode_ordinary_smlt_oneslave_dma2
+Page   60:      Configure the DMA for ordinary channel data transfer
+Page   61:     DMA configuration function code
+Page   61: static void dma_config(void)
+Page   61: dma_init_type dma_init_struct;
+Page   61: crm_periph_clock_enable(CRM_DMA1_PERIPH_CLOCK, TRUE);
+Page   61: nvic_irq_enable(DMA1_Channel1_IRQn, 0, 0);
+Page   61: dma_reset(DMA1_CHANNEL1);
+Page   61: dma_default_para_init(&dma_init_struct);
+Page   61: dma_init_struct.buffer_size = 15;
+Page   61: dma_init_struct.direction = DMA_DIR_PERIPHERAL_TO_MEMORY;
+Page   61: dma_init_struct.memory_base_addr = (uint32_t)adccom_ordinary_valuetab;
+Page   61: dma_init_struct.memory_data_width = DMA_MEMORY_DATA_WIDTH_WORD;
+Page   61: dma_init_struct.memory_inc_enable = TRUE;
+Page   61: dma_init_struct.peripheral_base_addr = (uint32_t)&(ADCCOM->codt);
+Page   61: dma_init_struct.peripheral_data_width = DMA_PERIPHERAL_DATA_WIDTH_WORD;
+Page   61: dma_init_struct.peripheral_inc_enable = FALSE;
+Page   61: dma_init_struct.priority = DMA_PRIORITY_HIGH;
+Page   61: dma_init_struct.loop_mode_enable = FALSE;
+Page   61: dma_init(DMA1_CHANNEL1, &dma_init_struct);
+Page   61: dmamux_enable(DMA1, TRUE);
+Page   61: dmamux_init(DMA1MUX_CHANNEL1, DMAMUX_DMAREQ_ID_ADC1);
+Page   61: /* enable dma transfer complete interrupt */
+Page   61: dma_interrupt_enable(DMA1_CHANNEL1, DMA_FDT_INT, TRUE);
+Page   61: dma_channel_enable(DMA1_CHANNEL1, TRUE);
+Page   62: /* config common dma mode,it's useful for ordinary group in combine mode */
+Page   62: adc_common_struct.common_dma_mode = ADC_COMMON_DMAMODE_2;
+Page   62: /* config common dma request repeat */
+Page   62: adc_common_struct.common_dma_request_repeat_state = FALSE;
+Page   62: /* config dma mode,it's not useful when common dma mode is use */
+Page   62: adc_dma_mode_enable(ADC1, FALSE);
+Page   62: /* config dma request repeat,it's not useful when common dma mode is use */
+Page   62: adc_dma_request_repeat_enable(ADC1, FALSE);
+Page   63: adc_dma_mode_enable(ADC2, FALSE);
+Page   63: adc_dma_request_repeat_enable(ADC2, FALSE);
+Page   63: void DMA1_Channel1_IRQHandler(void)
+Page   63: if(dma_flag_get(DMA1_FDT1_FLAG) != RESET)
+Page   63: dma_flag_clear(DMA1_FDT1_FLAG);
+Page   63: dma1_trans_complete_flag = 1;
+Page   64: dma_config();
+Page   64: printf("combine_mode_ordinary_smlt_oneslave_dma2 \r\n");
+Page   64: if((dma1_trans_complete_flag == 0) || (adc1_overflow_flag != 0) || (adc2_overflow_flag != 0))
+Page   64: printf("dma1_trans_complete_flag = %d\r\n",dma1_trans_complete_flag);
+Page   66: Figure 22. ADC DMA mode 2 test result
+Page   67: 9           Application: ADC DMA mode 3
+Page   67: The converted data of ordinary channels in ADC master/slave mode requires DMA transfer. The
+Page   67: DMA supports multiple modes, each with different data transfer rules.
+Page   67: Using an inapplicable DMA mode for converted data transfer may cause data overflow due to delay
+Page   67: in transmission. Therefore, the ADC master/slave mode and DMA mode should work together
+Page   67: DMA mode 3 is applicable to:
+Page   67: This example selects “DMA mode 3 + 8-bit resolution ordinary simultaneous mode (dual slave)”.
+Page   67: project\at_start_f4xx\examples\ adc\combine_mode_ordinary_shift_twoslave_dma3
+Page   67:      Configure the DMA for ordinary channel data transfer
+Page   68:     DMA configuration function code
+Page   68: static void dma_config(void)
+Page   68: dma_init_type dma_init_struct;
+Page   68: crm_periph_clock_enable(CRM_DMA1_PERIPH_CLOCK, TRUE);
+Page   68: nvic_irq_enable(DMA1_Channel1_IRQn, 0, 0);
+Page   68: dma_reset(DMA1_CHANNEL1);
+Page   68: dma_default_para_init(&dma_init_struct);
+Page   68: dma_init_struct.buffer_size = 6;
+Page   68: dma_init_struct.direction = DMA_DIR_PERIPHERAL_TO_MEMORY;
+Page   68: dma_init_struct.memory_base_addr = (uint32_t)adccom_ordinary_valuetab;
+Page   68: dma_init_struct.memory_data_width = DMA_MEMORY_DATA_WIDTH_HALFWORD;
+Page   68: dma_init_struct.memory_inc_enable = TRUE;
+Page   68: dma_init_struct.peripheral_base_addr = (uint32_t)&(ADCCOM->codt);
+Page   68: dma_init_struct.peripheral_data_width = DMA_PERIPHERAL_DATA_WIDTH_HALFWORD;
+Page   68: dma_init_struct.peripheral_inc_enable = FALSE;
+Page   68: dma_init_struct.priority = DMA_PRIORITY_HIGH;
+Page   68: dma_init_struct.loop_mode_enable = FALSE;
+Page   68: dma_init(DMA1_CHANNEL1, &dma_init_struct);
+Page   68: dmamux_enable(DMA1, TRUE);
+Page   69: dmamux_init(DMA1MUX_CHANNEL1, DMAMUX_DMAREQ_ID_ADC1);
+Page   69: /* enable dma transfer complete interrupt */
+Page   69: dma_interrupt_enable(DMA1_CHANNEL1, DMA_FDT_INT, TRUE);
+Page   69: dma_channel_enable(DMA1_CHANNEL1, TRUE);
+Page   69: /* config common dma mode,it's useful for ordinary group in combine mode */
+Page   69: adc_common_struct.common_dma_mode = ADC_COMMON_DMAMODE_3;
+Page   69: /* config common dma request repeat */
+Page   69: adc_common_struct.common_dma_request_repeat_state = FALSE;
+Page   70: /* config dma mode,it's not useful when common dma mode is use */
+Page   70: adc_dma_mode_enable(ADC1, FALSE);
+Page   70: /* config dma request repeat,it's not useful when common dma mode is use */
+Page   70: adc_dma_request_repeat_enable(ADC1, FALSE);
+Page   70: adc_dma_mode_enable(ADC2, FALSE);
+Page   70: adc_dma_request_repeat_enable(ADC2, FALSE);
+Page   70: adc_dma_mode_enable(ADC3, FALSE);
+Page   70: adc_dma_request_repeat_enable(ADC3, FALSE);
+Page   71: void DMA1_Channel1_IRQHandler(void)
+Page   71: if(dma_flag_get(DMA1_FDT1_FLAG) != RESET)
+Page   71: dma_flag_clear(DMA1_FDT1_FLAG);
+Page   71: dma1_trans_complete_flag = 1;
+Page   72: dma_config();
+Page   72: printf("combine_mode_ordinary_shift_twoslave_dma3 \r\n");
+Page   72: while(dma1_trans_complete_flag == 0);
+Page   73: Figure 23. ADC DMA mode 3 test result
+Page   74: 10          Application: ADC DMA mode 4
+Page   74: The converted data of ordinary channels in ADC master/slave mode requires DMA transfer. The
+Page   74: DMA supports multiple modes, each with different data transfer rules.
+Page   74: Using an inapplicable DMA mode for converted data transfer may cause data overflow due to delay
+Page   74: in transmission. Therefore, the ADC master/slave mode and DMA mode should work together
+Page   74: DMA mode 4 is applicable to:
+Page   74: This example selects “DMA mode 4 + 8-bit resolution ordinary shift mode (dual slave)”.
+Page   74: project\at_start_f4xx\examples\ adc\combine_mode_ordinary_shift_twoslave_dma4
+Page   74:      Configure the DMA for ordinary channel data transfer
+Page   75:         DMA configuration function code
+Page   75: static void dma_config(void)
+Page   75: dma_init_type dma_init_struct;
+Page   75: crm_periph_clock_enable(CRM_DMA1_PERIPH_CLOCK, TRUE);
+Page   75: nvic_irq_enable(DMA1_Channel1_IRQn, 0, 0);
+Page   75: dma_reset(DMA1_CHANNEL1);
+Page   75: dma_default_para_init(&dma_init_struct);
+Page   75: dma_init_struct.buffer_size = 5;
+Page   75: dma_init_struct.direction = DMA_DIR_PERIPHERAL_TO_MEMORY;
+Page   75: dma_init_struct.memory_base_addr = (uint32_t)adccom_ordinary_valuetab;
+Page   75: dma_init_struct.memory_data_width = DMA_MEMORY_DATA_WIDTH_WORD;
+Page   75: dma_init_struct.memory_inc_enable = TRUE;
+Page   75: dma_init_struct.peripheral_base_addr = (uint32_t)&(ADCCOM->codt);
+Page   75: dma_init_struct.peripheral_data_width = DMA_PERIPHERAL_DATA_WIDTH_WORD;
+Page   75: dma_init_struct.peripheral_inc_enable = FALSE;
+Page   75: dma_init_struct.priority = DMA_PRIORITY_HIGH;
+Page   75: dma_init_struct.loop_mode_enable = FALSE;
+Page   75: dma_init(DMA1_CHANNEL1, &dma_init_struct);
+Page   76: dmamux_enable(DMA1, TRUE);
+Page   76: dmamux_init(DMA1MUX_CHANNEL1, DMAMUX_DMAREQ_ID_ADC1);
+Page   76: /* enable dma transfer complete interrupt */
+Page   76: dma_interrupt_enable(DMA1_CHANNEL1, DMA_FDT_INT, TRUE);
+Page   76: dma_channel_enable(DMA1_CHANNEL1, TRUE);
+Page   76: /* config common dma mode,it's useful for ordinary group in combine mode */
+Page   76: adc_common_struct.common_dma_mode = ADC_COMMON_DMAMODE_4;
+Page   76: /* config common dma request repeat */
+Page   76: adc_common_struct.common_dma_request_repeat_state = FALSE;
+Page   77: /* config dma mode,it's not useful when common dma mode is use */
+Page   77: adc_dma_mode_enable(ADC1, FALSE);
+Page   77: /* config dma request repeat,it's not useful when common dma mode is use */
+Page   77: adc_dma_request_repeat_enable(ADC1, FALSE);
+Page   77: adc_dma_mode_enable(ADC2, FALSE);
+Page   77: adc_dma_request_repeat_enable(ADC2, FALSE);
+Page   77: adc_dma_mode_enable(ADC3, FALSE);
+Page   77: adc_dma_request_repeat_enable(ADC3, FALSE);
+Page   78: void DMA1_Channel1_IRQHandler(void)
+Page   78: if(dma_flag_get(DMA1_FDT1_FLAG) != RESET)
+Page   78: dma_flag_clear(DMA1_FDT1_FLAG);
+Page   78: dma1_trans_complete_flag = 1;
+Page   79: dma_config();
+Page   79: printf("combine_mode_ordinary_shift_twoslave_dma4 \r\n");
+Page   79: while(dma1_trans_complete_flag == 0);
+Page   80: Figure 24. ADC DMA mode 4 test result
+Page   81: 11          Application: ADC DMA mode 5
+Page   81: The converted data of ordinary channels in ADC master/slave mode requires DMA transfer. The
+Page   81: DMA supports multiple modes, each with different data transfer rules.
+Page   81: Using an inapplicable DMA mode for converted data transfer may cause data overflow due to delay
+Page   81: in transmission. Therefore, the ADC master/slave mode and DMA mode should work together
+Page   81: DMA mode 5 is applicable to:
+Page   81: This example selects “DMA mode 5 + ordinary simultaneous mode (dual slave)”.
+Page   81: project\at_start_f4xx\examples\ adc\ combine_mode_ordinary_smlt_twoslave_dma5
+Page   81:      Configure the DMA for ordinary channel data transfer
+Page   83:     DMA configuration function code
+Page   83: static void dma_config(void)
+Page   83: dma_init_type dma_init_struct;
+Page   83: crm_periph_clock_enable(CRM_DMA1_PERIPH_CLOCK, TRUE);
+Page   83: nvic_irq_enable(DMA1_Channel1_IRQn, 0, 0);
+Page   83: dma_reset(DMA1_CHANNEL1);
+Page   83: dma_default_para_init(&dma_init_struct);
+Page   83: dma_init_struct.buffer_size = 18;
+Page   83: dma_init_struct.direction = DMA_DIR_PERIPHERAL_TO_MEMORY;
+Page   83: dma_init_struct.memory_base_addr = (uint32_t)adccom_ordinary_valuetab;
+Page   83: dma_init_struct.memory_data_width = DMA_MEMORY_DATA_WIDTH_WORD;
+Page   83: dma_init_struct.memory_inc_enable = TRUE;
+Page   83: dma_init_struct.peripheral_base_addr = (uint32_t)&(ADCCOM->codt);
+Page   83: dma_init_struct.peripheral_data_width = DMA_PERIPHERAL_DATA_WIDTH_WORD;
+Page   83: dma_init_struct.peripheral_inc_enable = FALSE;
+Page   83: dma_init_struct.priority = DMA_PRIORITY_HIGH;
+Page   83: dma_init_struct.loop_mode_enable = FALSE;
+Page   83: dma_init(DMA1_CHANNEL1, &dma_init_struct);
+Page   83: dmamux_enable(DMA1, TRUE);
+Page   83: dmamux_init(DMA1MUX_CHANNEL1, DMAMUX_DMAREQ_ID_ADC1);
+Page   83: /* enable dma transfer complete interrupt */
+Page   83: dma_interrupt_enable(DMA1_CHANNEL1, DMA_FDT_INT, TRUE);
+Page   83: dma_channel_enable(DMA1_CHANNEL1, TRUE);
+Page   84: /* config common dma mode,it's useful for ordinary group in combine mode */
+Page   84: adc_common_struct.common_dma_mode = ADC_COMMON_DMAMODE_5;
+Page   84: /* config common dma request repeat */
+Page   84: adc_common_struct.common_dma_request_repeat_state = FALSE;
+Page   84: /* config dma mode,it's not useful when common dma mode is use */
+Page   84: adc_dma_mode_enable(ADC1, FALSE);
+Page   84: /* config dma request repeat,it's not useful when common dma mode is use */
+Page   84: adc_dma_request_repeat_enable(ADC1, FALSE);
+Page   85: adc_dma_mode_enable(ADC2, FALSE);
+Page   85: adc_dma_request_repeat_enable(ADC2, FALSE);
+Page   85: adc_dma_mode_enable(ADC3, FALSE);
+Page   85: adc_dma_request_repeat_enable(ADC3, FALSE);
+Page   85: void DMA1_Channel1_IRQHandler(void)
+Page   86: if(dma_flag_get(DMA1_FDT1_FLAG) != RESET)
+Page   86: dma_flag_clear(DMA1_FDT1_FLAG);
+Page   86: dma1_trans_complete_flag = 1;
+Page   86: dma_config();
+Page   87: printf("combine_mode_ordinary_smlt_twoslave_dma5 \r\n");
+Page   87: while(dma1_trans_complete_flag == 0);
+Page   88: Figure 25. ADC DMA mode 5 test result
+Page   89:      Configure the DMA for ordinary channel data transfer
+Page   89:      DMA configuration function code
+Page   89: static void dma_config(void)
+Page   89: dma_init_type dma_init_struct;
+Page   89: crm_periph_clock_enable(CRM_DMA1_PERIPH_CLOCK, TRUE);
+Page   89: nvic_irq_enable(DMA1_Channel1_IRQn, 0, 0);
+Page   89: dma_reset(DMA1_CHANNEL1);
+Page   89: dma_default_para_init(&dma_init_struct);
+Page   89: dma_init_struct.buffer_size = 1;
+Page   89: dma_init_struct.direction = DMA_DIR_PERIPHERAL_TO_MEMORY;
+Page   89: dma_init_struct.memory_base_addr = (uint32_t)&adc1_ordinary_value;
+Page   89: dma_init_struct.memory_data_width = DMA_MEMORY_DATA_WIDTH_HALFWORD;
+Page   89: dma_init_struct.memory_inc_enable = FALSE;
+Page   89: dma_init_struct.peripheral_base_addr = (uint32_t)&(ADC1->odt);
+Page   89: dma_init_struct.peripheral_data_width = DMA_PERIPHERAL_DATA_WIDTH_HALFWORD;
+Page   90: dma_init_struct.peripheral_inc_enable = FALSE;
+Page   90: dma_init_struct.priority = DMA_PRIORITY_HIGH;
+Page   90: dma_init_struct.loop_mode_enable = TRUE;
+Page   90: dma_init(DMA1_CHANNEL1, &dma_init_struct);
+Page   90: dmamux_enable(DMA1, TRUE);
+Page   90: dmamux_init(DMA1MUX_CHANNEL1, DMAMUX_DMAREQ_ID_ADC1);
+Page   90: /* disable dma transfer complete interrupt */
+Page   90: dma_interrupt_enable(DMA1_CHANNEL1, DMA_FDT_INT, FALSE);
+Page   90: dma_channel_enable(DMA1_CHANNEL1, TRUE);
+Page   90: /* config common dma mode,it's not useful in independent mode */
+Page   90: adc_common_struct.common_dma_mode = ADC_COMMON_DMAMODE_DISABLE;
+Page   90: /* config common dma request repeat */
+Page   90: adc_common_struct.common_dma_request_repeat_state = FALSE;
+Page   91: /* config dma mode,it's not useful when common dma mode is use */
+Page   91: adc_dma_mode_enable(ADC1, TRUE);
+Page   91: /* config dma request repeat,it's not useful when common dma mode is use */
+Page   91: adc_dma_request_repeat_enable(ADC1, TRUE);
+Page   92: dma_config();
+Page   92: while(dma_flag_get(DMA1_FDT1_FLAG) == RESET);
+Page   92: dma_flag_clear(DMA1_FDT1_FLAG);

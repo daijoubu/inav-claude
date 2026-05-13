@@ -1,0 +1,16 @@
+Keyword: ADC conversion
+Occurrences: 12
+================================================================================
+
+Page   11:     Complete the above procedures, and then trigger ADC conversion.
+Page   14: The ADC conversions are divided into two groups: ordinary channels and preempted channels.
+Page   15: ADC conversion can be triggered by software write operation to the OCSWTRG and PCSWTRG bits
+Page   18: The ADABRT bit in the ADC_CTRL2 register can be used to stop ADC conversions. At the end of
+Page   19: The ADC conversion abort command is valid for both ordinary and preempted channel conversions.
+Page   19: The ADC conversion abort has similar functions to ADC re-power, but it does not power off ADC,
+Page   19: After the ADC conversion abort command is executed, wait for the ADABRT bit to be cleared by
+Page   22: It indicates the ADC conversion data overflow. It is cleared by software and can generate an
+Page   29: To enable several ADC conversions with low resolution simultaneously, it is recommended to use
+Page   51: Print out the test result in the serial port assistant. As shown below, the ADC conversion data is
+Page   89: external circuits, resulting in distortion of ADC conversion results. The following solution is
+Page   89: converted data of ADC1_IN17, and then calculate the ADC conversion channel data according to

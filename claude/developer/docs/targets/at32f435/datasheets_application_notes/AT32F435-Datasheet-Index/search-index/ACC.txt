@@ -1,0 +1,58 @@
+Keyword: ACC
+Occurrences: 54
+================================================================================
+
+Page    1: memories                                                alarms, subsecond accuracy, and hardware
+Page    1: automatic clock calibration (ACC)                         dedicated DMA and buffer (4 Kbytes):
+Page    3: 2.8     Direct Memory Access Controller (DMA) ................................................................ 21
+Page    6: Table 16. Operating voltage and ambient temperature of accessing ERTC registers ...................... 49
+Page    7: Table 66. ADC accuracy (1) ............................................................................................................... 100
+Page    9: Figure 18. HICK clock frequency accuracy vs. temperature ............................................................. 65
+Page   10: Figure 32. PC Card/CompactFlash controller waveforms for common memory read access .......... 84
+Page   10: Figure 33. PC Card/CompactFlash controller waveforms for common memory write access ......... 84
+Page   10: Figure 34. PC Card/CompactFlash controller waveforms for attribute memory read access .......... 85
+Page   10: Figure 35. PC Card/CompactFlash controller waveforms for attribute memory write access .......... 85
+Page   10: Figure 36. PC Card/CompactFlash controller waveforms for I/O space read access ...................... 86
+Page   10: Figure 37. PC Card/CompactFlash controller waveforms for I/O space write access ...................... 86
+Page   10: Figure 53. ADC accuracy characteristics ........................................................................................ 101
+Page   16: DAC                                                                                                                                                       ACC
+Page   17: The memory protection unit (MPU) is used to manage the CPU accesses to memory to prevent one
+Page   17: task to accidentally corrupt the memory or resources used by any other active task. This memory
+Page   17: 384 Kbytes of embedded SRAM by default and configurable maximum 512 Kbytes, accessed
+Page   17: SPI RAM. It can work in indirect mode (fully accessed by control registers), status polling mode, or
+Page   18: be accessed by bytes, half-words, or words, supporting execution-in-place (XIP) operation and fully
+Page   20: The AT32F435/437 embeds an automatic clock calibration (ACC) block, which calibrates the
+Page   20: internal 48 MHz HICK clock, assuring the most precise accuracy of the HICK in the full range of the
+Page   21: 2.8         Direct Memory Access Controller (DMA)
+Page   24:    To compensate quartz crystal inaccuracy, ERTC can be calibrated via a 512 Hz external
+Page   26:    In accordance with the USB 2.0 Specification, the supported transfer speeds are:
+Page   27: The AT32F437 devices provide an IEEE-802.3-2002-compliant media access controller (MAC) for
+Page   28: temperatures. If accurate temperature readings are needed, an external temperature sensor part
+Page   48: Electrostatic discharges are applied to the pins of each sample according to each pin combination.
+Page   49: Table 16. Operating voltage and ambient temperature of accessing ERTC registers
+Page   49: ERTC not accessed
+Page   49: ERTC accessed
+Page   49: Note: When LDO = 1.3V and VDD < 3.0 V, ERTC registers are prohibited to be accessed. If ERTC registers is still
+Page   49: required to be accessed under VDD < 3.0 V, software should lower LDO voltage to 1.2 V or below with taking
+Page   60: ACC          1.12            1.02              0.93          0.86
+Page   61: manufacturer for more details on the resonator characteristics (frequency, package, accuracy).
+Page   63: details on the resonator characteristics (frequency, package, accuracy).
+Page   65: ACC-trimmed                                    -           -    0.25(1)
+Page   65: Accuracy of the HICK
+Page   65: ACCHICK                                                      TA = -40 ~ 105 °C         -2.5         -     2.5        %
+Page   65: Figure 18. HICK clock frequency accuracy vs. temperature
+Page   68: take into account the strict CMOS-technology or TTL parameters.
+Page   75:    BurstAccessMode = XMC_BurstAccessMode_Enable;
+Page   84: Figure 32. PC Card/CompactFlash controller waveforms for common memory read access
+Page   84: (1) XMC_NCE4_2 remains high (inactive during 8-bit access).
+Page   84: Figure 33. PC Card/CompactFlash controller waveforms for common memory write access
+Page   85: Figure 34. PC Card/CompactFlash controller waveforms for attribute memory read access
+Page   85: Figure 35. PC Card/CompactFlash controller waveforms for attribute memory write access
+Page   86: Figure 36. PC Card/CompactFlash controller waveforms for I/O space read access
+Page   86: Figure 37. PC Card/CompactFlash controller waveforms for I/O space write access
+Page   89: ta(SO)(1)(4)          Data output access time       Slave mode, fPCLK = 20 MHz            0            3tPCLK       ns
+Page  100: Table 66. ADC accuracy (1)
+Page  100: (1) ADC DC accuracy values are measured after internal calibration.
+Page  101: Figure 53. ADC accuracy characteristics
+Page  101: capacitance (roughly 7 pF). A high C parasitic value will downgrade conversion accuracy. To remedy this, f ADC
+Page  103: suited to applications that detect temperature variations instead of absolute temperatures. If accurate

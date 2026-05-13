@@ -1,0 +1,329 @@
+Keyword: enable
+Occurrences: 325
+================================================================================
+
+Page    9: ADC clocks include a digital clock and an analog clock, which can be enabled by setting the
+Page    9: ADC clock enable is implemented by an independent function, and the code is as follows:
+Page    9: crm_periph_clock_enable(CRM_ADCx_PERIPH_CLOCK, TRUE);
+Page    9: After the ADC clock is enabled, the software can start to configure the ADC.
+Page    9: 3) ADC1, ADC2 and ADC3 have an independent clock enable bit respectively, while the ADC
+Page    9: common structure does not have an independent clock enable bit, so that it is enabled automatically
+Page    9: when any other ADCx clock is enabled.
+Page   10:     Select 12-bit and enable ADC;
+Page   11: /* adc enable */
+Page   11: adc_enable(ADC1, TRUE);
+Page   11: /* adc enable */
+Page   11: adc_enable(ADC1, TRUE);
+Page   12: The ADC supports sequence mode. When the sequence mode is enabled, a single trigger event
+Page   12: enables the conversion of a group of channels in order
+Page   12: single trigger event will enable the conversion of all the channels in the sub-group. Each trigger
+Page   13: only one channel. A single one trigger event will enable the conversion of all the channels in the
+Page   14: /* enable the partitioned mode on ordinary channel */
+Page   14: adc_ordinary_part_mode_enable(ADC1, TRUE);
+Page   14: /* enable the partitioned mode on preempt channel */
+Page   14: adc_preempt_part_mode_enable(ADC1, TRUE);
+Page   14: adc_preempt_auto_mode_enable(ADC1, TRUE);
+Page   16: Once the ADC is ready, the software can execute “adc_ordinary_software_trigger_enable(ADC1,
+Page   16: TRUE);/ adc_preempt_software_trigger_enable (ADC1, TRUE);” to trigger ordinary/preempted
+Page   20: The ordinary oversampling trigger mode can be enabled by setting the OOSTREN bit.
+Page   20:      OOSTREN=1: Enabled; each oversampling conversion needs a trigger.
+Page   21: The oversampling ratio, oversampling shift and oversampling enable are implemented by
+Page   21: /* enable ordinary oversampling */
+Page   21: adc_ordinary_oversample_enable(ADC1, TRUE);
+Page   21: /* enable preempt oversampling */
+Page   21: adc_preempt_oversample_enable(ADC1, TRUE);
+Page   21: adc_ordinary_oversample_trig_enable(ADC1, FALSE);
+Page   22: The VMSGEN bit is used to enable voltage monitoring on either a single channel or all the
+Page   22: adc_voltage_monitor_enable(ADC1, ADC_VMONITOR_SINGLE_ORDINARY_PREEMPT);
+Page   22: adc_voltage_monitor_enable(ADC1, ADC_VMONITOR_ALL_ORDINARY_PREEMPT);
+Page   22: There is no independent bit to enable overflow detection. The overflow detection is applicable
+Page   22: to the case of DMA transfer enable or EOCSFEN =1. This bit is set when the previous
+Page   23: The interrupt enable is implemented by an independent function, and the code is as follows:
+Page   23: /* enable adc overflow interrupt */
+Page   23: adc_interrupt_enable(ADC1, ADC_OCCO_INT, TRUE);
+Page   25: adc_dma_mode_enable(ADC1, TRUE);
+Page   25: adc_dma_request_repeat_enable(ADC1, FALSE);
+Page   26: dmamux_enable(DMA1, TRUE);
+Page   26: dmamux_enable(DMA1, TRUE);
+Page   26: If Master/Slave mode is enabled, the master is triggered to work with the slave to do the channel
+Page   27: enabled, the master is triggered so that both the master and the slave convert the corresponding
+Page   28: enabled, the preempted channels of the master can be triggered continuously so that the
+Page   29: To enable several ADC conversions with low resolution simultaneously, it is recommended to use
+Page   30: Note: It is the configuration of trigger source; the trigger source can be enabled after ADC
+Page   30:    DMA configuration enable
+Page   30:    Enable ADC digital clock
+Page   30: Enable the ADC digital clock to configure relevant functions.
+Page   30: DMA request continuation enable, shift length, internal temperature sensor/Vintrv and Vbat.
+Page   30:    DMA request continuation enable
+Page   30: Enable the internal temperature sensor and internal reference voltage, and connect to the
+Page   30: Enable the battery voltage; then it is divided by 4 before being connected to the ADC1
+Page   30: as the VBATEN is set. Thus, it is recommended to enable VBAT only during the sampling
+Page   31: It is enabled when multiple channels are configured, regardless of ordinary or preempted
+Page   31: If periodic triggers for conversion is not required, enable the repetition mode to allow the
+Page   32: partition mode enable, and preempted channel partition mode enable.
+Page   32: It is used to enable the preempted group automatic conversion after the end of ordinary
+Page   32: enable, ordinary oversampling restart mode selection, and ordinary/preempted
+Page   32: oversampling enable.
+Page   32: Enable the corresponding interrupt, including one or more of the OCCO interrupt, OCCE
+Page   32: Enable and power on the ADC, and wait until the ADC RDY flag is set.
+Page   32: 1)   Enable PCCE interrupt;
+Page   33: 2)   Enable OCCE interrupt;
+Page   33: 1)   Initialize and enable DMA;
+Page   33: 2)   Enable ADC DMA mode;
+Page   33: 1)   Initialize EDMA dual buffer mode and enable the EDMA;
+Page   33: 2)   Enable the ADC DMA mode and enable the DMA request for ordinary continuous mode;
+Page   34: crm_periph_clock_enable(CRM_GPIOA_PERIPH_CLOCK, TRUE);
+Page   34: crm_periph_clock_enable(CRM_GPIOB_PERIPH_CLOCK, TRUE);
+Page   35: crm_periph_clock_enable(CRM_DMA1_PERIPH_CLOCK, TRUE);
+Page   35: nvic_irq_enable(DMA1_Channel1_IRQn, 0, 0);
+Page   35: dma_init_struct.memory_inc_enable = TRUE;
+Page   35: dma_init_struct.peripheral_inc_enable = FALSE;
+Page   35: dma_init_struct.loop_mode_enable = FALSE;
+Page   35: dmamux_enable(DMA1, TRUE);
+Page   35: /* enable dma transfer complete interrupt */
+Page   35: dma_interrupt_enable(DMA1_CHANNEL1, DMA_FDT_INT, TRUE);
+Page   35: dma_channel_enable(DMA1_CHANNEL1, TRUE);
+Page   35: crm_periph_clock_enable(CRM_ADC1_PERIPH_CLOCK, TRUE);
+Page   35: nvic_irq_enable(ADC1_2_3_IRQn, 0, 0);
+Page   36: adc_dma_mode_enable(ADC1, TRUE);
+Page   36: adc_dma_request_repeat_enable(ADC1, FALSE);
+Page   37: adc_preempt_auto_mode_enable(ADC1, FALSE);
+Page   37: /* enable adc overflow interrupt */
+Page   37: adc_interrupt_enable(ADC1, ADC_OCCO_INT, TRUE);
+Page   37: /* enable adc preempt channels conversion end interrupt */
+Page   37: adc_interrupt_enable(ADC1, ADC_PCCE_INT, TRUE);
+Page   37: adc_ordinary_oversample_trig_enable(ADC1, FALSE);
+Page   37: /* enable ordinary oversampling */
+Page   37: adc_ordinary_oversample_enable(ADC1, TRUE);
+Page   37: /* enable preempt oversampling */
+Page   37: adc_preempt_oversample_enable(ADC1, TRUE);
+Page   37: /* adc enable */
+Page   37: adc_enable(ADC1, TRUE);
+Page   39: adc_ordinary_software_trigger_enable(ADC1, TRUE);
+Page   39: adc_preempt_software_trigger_enable(ADC1, TRUE);
+Page   41: crm_periph_clock_enable(CRM_GPIOA_PERIPH_CLOCK, TRUE);
+Page   41: crm_periph_clock_enable(CRM_DMA1_PERIPH_CLOCK, TRUE);
+Page   42: nvic_irq_enable(DMA1_Channel1_IRQn, 0, 0);
+Page   42: dma_init_struct.memory_inc_enable = TRUE;
+Page   42: dma_init_struct.peripheral_inc_enable = FALSE;
+Page   42: dma_init_struct.loop_mode_enable = TRUE;
+Page   42: dmamux_enable(DMA1, TRUE);
+Page   42: /* enable dma transfer complete interrupt */
+Page   42: dma_interrupt_enable(DMA1_CHANNEL1, DMA_FDT_INT, FALSE);
+Page   42: dma_channel_enable(DMA1_CHANNEL1, TRUE);
+Page   42: crm_periph_clock_enable(CRM_ADC1_PERIPH_CLOCK, TRUE);
+Page   42: nvic_irq_enable(ADC1_2_3_IRQn, 0, 0);
+Page   43: adc_dma_mode_enable(ADC1, TRUE);
+Page   43: adc_dma_request_repeat_enable(ADC1, TRUE);
+Page   43: adc_voltage_monitor_enable(ADC1, ADC_VMONITOR_SINGLE_ORDINARY);
+Page   43: /* enable adc overflow interrupt */
+Page   43: adc_interrupt_enable(ADC1, ADC_OCCO_INT, TRUE);
+Page   43: /* enable voltage monitoring out of range interrupt */
+Page   43: adc_interrupt_enable(ADC1, ADC_VMOR_INT, TRUE);
+Page   43: /* adc enable */
+Page   43: adc_enable(ADC1, TRUE);
+Page   45: adc_ordinary_software_trigger_enable(ADC1, TRUE);
+Page   46: crm_periph_clock_enable(CRM_GPIOA_PERIPH_CLOCK, TRUE);
+Page   46: crm_periph_clock_enable(CRM_EDMA_PERIPH_CLOCK, TRUE);
+Page   47: nvic_irq_enable(EDMA_Stream1_IRQn, 0, 0);
+Page   47: edma_init_struct.memory_inc_enable = TRUE;
+Page   47: edma_init_struct.peripheral_inc_enable = FALSE;
+Page   47: edma_init_struct.loop_mode_enable = FALSE;
+Page   47: edma_init_struct.fifo_mode_enable = FALSE;
+Page   47: /* edmamux init and enable */
+Page   47: edmamux_enable(TRUE);
+Page   47: /* enable the double memory mode */
+Page   47: edma_double_buffer_mode_enable(EDMA_STREAM1, TRUE);
+Page   47: /* enable edma full data transfer interrupt */
+Page   47: edma_interrupt_enable(EDMA_STREAM1, EDMA_FDT_INT, TRUE);
+Page   47: edma_stream_enable(EDMA_STREAM1, TRUE);
+Page   47: crm_periph_clock_enable(CRM_ADC1_PERIPH_CLOCK, TRUE);
+Page   47: nvic_irq_enable(ADC1_2_3_IRQn, 0, 0);
+Page   48: adc_dma_mode_enable(ADC1, TRUE);
+Page   48: adc_dma_request_repeat_enable(ADC1, TRUE);
+Page   49: /* enable adc overflow interrupt */
+Page   49: adc_interrupt_enable(ADC1, ADC_OCCO_INT, TRUE);
+Page   49: /* adc enable */
+Page   49: adc_enable(ADC1, TRUE);
+Page   50: adc_ordinary_software_trigger_enable(ADC1, TRUE);
+Page   52: crm_periph_clock_enable(CRM_GPIOA_PERIPH_CLOCK, TRUE);
+Page   52: crm_periph_clock_enable(CRM_GPIOB_PERIPH_CLOCK, TRUE);
+Page   52: crm_periph_clock_enable(CRM_GPIOC_PERIPH_CLOCK, TRUE);
+Page   53: crm_periph_clock_enable(CRM_GPIOA_PERIPH_CLOCK, TRUE);
+Page   53: crm_periph_clock_enable(CRM_TMR1_PERIPH_CLOCK, TRUE);
+Page   54: tmr_trgout2_enable(TMR1, TRUE);
+Page   54: tmr_channel_enable(TMR1, TMR_SELECT_CHANNEL_4, TRUE);
+Page   54: tmr_output_enable(TMR1, TRUE);
+Page   54: crm_periph_clock_enable(CRM_DMA1_PERIPH_CLOCK, TRUE);
+Page   54: nvic_irq_enable(DMA1_Channel1_IRQn, 0, 0);
+Page   54: dma_init_struct.memory_inc_enable = TRUE;
+Page   54: dma_init_struct.peripheral_inc_enable = FALSE;
+Page   54: dma_init_struct.loop_mode_enable = FALSE;
+Page   54: dmamux_enable(DMA1, TRUE);
+Page   54: /* enable dma transfer complete interrupt */
+Page   54: dma_interrupt_enable(DMA1_CHANNEL1, DMA_FDT_INT, TRUE);
+Page   54: dma_channel_enable(DMA1_CHANNEL1, TRUE);
+Page   54: crm_periph_clock_enable(CRM_ADC1_PERIPH_CLOCK, TRUE);
+Page   54: crm_periph_clock_enable(CRM_ADC2_PERIPH_CLOCK, TRUE);
+Page   54: crm_periph_clock_enable(CRM_ADC3_PERIPH_CLOCK, TRUE);
+Page   54: nvic_irq_enable(ADC1_2_3_IRQn, 0, 0);
+Page   55: adc_dma_mode_enable(ADC1, FALSE);
+Page   55: adc_dma_request_repeat_enable(ADC1, FALSE);
+Page   55: /* enable adc overflow interrupt */
+Page   56: adc_interrupt_enable(ADC1, ADC_OCCO_INT, TRUE);
+Page   56: adc_dma_mode_enable(ADC2, FALSE);
+Page   56: adc_dma_request_repeat_enable(ADC2, FALSE);
+Page   56: adc_interrupt_enable(ADC2, ADC_OCCO_INT, TRUE);
+Page   56: adc_dma_mode_enable(ADC3, FALSE);
+Page   56: adc_dma_request_repeat_enable(ADC3, FALSE);
+Page   56: adc_interrupt_enable(ADC3, ADC_OCCO_INT, TRUE);
+Page   56: /* adc enable */
+Page   56: adc_enable(ADC1, TRUE);
+Page   56: adc_enable(ADC2, TRUE);
+Page   56: adc_enable(ADC3, TRUE);
+Page   58: tmr_counter_enable(TMR1, TRUE);
+Page   58: tmr_counter_enable(TMR1, FALSE);
+Page   60: crm_periph_clock_enable(CRM_GPIOA_PERIPH_CLOCK, TRUE);
+Page   60: crm_periph_clock_enable(CRM_GPIOB_PERIPH_CLOCK, TRUE);
+Page   61: crm_periph_clock_enable(CRM_DMA1_PERIPH_CLOCK, TRUE);
+Page   61: nvic_irq_enable(DMA1_Channel1_IRQn, 0, 0);
+Page   61: dma_init_struct.memory_inc_enable = TRUE;
+Page   61: dma_init_struct.peripheral_inc_enable = FALSE;
+Page   61: dma_init_struct.loop_mode_enable = FALSE;
+Page   61: dmamux_enable(DMA1, TRUE);
+Page   61: /* enable dma transfer complete interrupt */
+Page   61: dma_interrupt_enable(DMA1_CHANNEL1, DMA_FDT_INT, TRUE);
+Page   61: dma_channel_enable(DMA1_CHANNEL1, TRUE);
+Page   61: crm_periph_clock_enable(CRM_ADC1_PERIPH_CLOCK, TRUE);
+Page   61: crm_periph_clock_enable(CRM_ADC2_PERIPH_CLOCK, TRUE);
+Page   61: nvic_irq_enable(ADC1_2_3_IRQn, 0, 0);
+Page   62: adc_dma_mode_enable(ADC1, FALSE);
+Page   62: adc_dma_request_repeat_enable(ADC1, FALSE);
+Page   63: /* enable adc overflow interrupt */
+Page   63: adc_interrupt_enable(ADC1, ADC_OCCO_INT, TRUE);
+Page   63: adc_dma_mode_enable(ADC2, FALSE);
+Page   63: adc_dma_request_repeat_enable(ADC2, FALSE);
+Page   63: adc_interrupt_enable(ADC2, ADC_OCCO_INT, TRUE);
+Page   63: /* adc enable */
+Page   63: adc_enable(ADC1, TRUE);
+Page   63: adc_enable(ADC2, TRUE);
+Page   64: adc_ordinary_software_trigger_enable(ADC1, TRUE);
+Page   67: crm_periph_clock_enable(CRM_GPIOA_PERIPH_CLOCK, TRUE);
+Page   67: crm_periph_clock_enable(CRM_GPIOB_PERIPH_CLOCK, TRUE);
+Page   67: crm_periph_clock_enable(CRM_GPIOC_PERIPH_CLOCK, TRUE);
+Page   68: crm_periph_clock_enable(CRM_TMR1_PERIPH_CLOCK, TRUE);
+Page   68: crm_periph_clock_enable(CRM_DMA1_PERIPH_CLOCK, TRUE);
+Page   68: nvic_irq_enable(DMA1_Channel1_IRQn, 0, 0);
+Page   68: dma_init_struct.memory_inc_enable = TRUE;
+Page   68: dma_init_struct.peripheral_inc_enable = FALSE;
+Page   68: dma_init_struct.loop_mode_enable = FALSE;
+Page   68: dmamux_enable(DMA1, TRUE);
+Page   69: /* enable dma transfer complete interrupt */
+Page   69: dma_interrupt_enable(DMA1_CHANNEL1, DMA_FDT_INT, TRUE);
+Page   69: dma_channel_enable(DMA1_CHANNEL1, TRUE);
+Page   69: crm_periph_clock_enable(CRM_ADC1_PERIPH_CLOCK, TRUE);
+Page   69: crm_periph_clock_enable(CRM_ADC2_PERIPH_CLOCK, TRUE);
+Page   69: crm_periph_clock_enable(CRM_ADC3_PERIPH_CLOCK, TRUE);
+Page   69: nvic_irq_enable(ADC1_2_3_IRQn, 0, 0);
+Page   70: adc_dma_mode_enable(ADC1, FALSE);
+Page   70: adc_dma_request_repeat_enable(ADC1, FALSE);
+Page   70: /* enable adc overflow interrupt */
+Page   70: adc_interrupt_enable(ADC1, ADC_OCCO_INT, TRUE);
+Page   70: adc_dma_mode_enable(ADC2, FALSE);
+Page   70: adc_dma_request_repeat_enable(ADC2, FALSE);
+Page   70: adc_interrupt_enable(ADC2, ADC_OCCO_INT, TRUE);
+Page   70: adc_dma_mode_enable(ADC3, FALSE);
+Page   70: adc_dma_request_repeat_enable(ADC3, FALSE);
+Page   70: adc_interrupt_enable(ADC3, ADC_OCCO_INT, TRUE);
+Page   70: /* adc enable */
+Page   70: adc_enable(ADC1, TRUE);
+Page   70: adc_enable(ADC2, TRUE);
+Page   70: adc_enable(ADC3, TRUE);
+Page   72: tmr_counter_enable(TMR1, TRUE);
+Page   72: tmr_counter_enable(TMR1, FALSE);
+Page   74: crm_periph_clock_enable(CRM_GPIOA_PERIPH_CLOCK, TRUE);
+Page   74: crm_periph_clock_enable(CRM_GPIOB_PERIPH_CLOCK, TRUE);
+Page   74: crm_periph_clock_enable(CRM_GPIOC_PERIPH_CLOCK, TRUE);
+Page   75: crm_periph_clock_enable(CRM_TMR1_PERIPH_CLOCK, TRUE);
+Page   75: crm_periph_clock_enable(CRM_DMA1_PERIPH_CLOCK, TRUE);
+Page   75: nvic_irq_enable(DMA1_Channel1_IRQn, 0, 0);
+Page   75: dma_init_struct.memory_inc_enable = TRUE;
+Page   75: dma_init_struct.peripheral_inc_enable = FALSE;
+Page   75: dma_init_struct.loop_mode_enable = FALSE;
+Page   76: dmamux_enable(DMA1, TRUE);
+Page   76: /* enable dma transfer complete interrupt */
+Page   76: dma_interrupt_enable(DMA1_CHANNEL1, DMA_FDT_INT, TRUE);
+Page   76: dma_channel_enable(DMA1_CHANNEL1, TRUE);
+Page   76: crm_periph_clock_enable(CRM_ADC1_PERIPH_CLOCK, TRUE);
+Page   76: crm_periph_clock_enable(CRM_ADC2_PERIPH_CLOCK, TRUE);
+Page   76: crm_periph_clock_enable(CRM_ADC3_PERIPH_CLOCK, TRUE);
+Page   76: nvic_irq_enable(ADC1_2_3_IRQn, 0, 0);
+Page   77: adc_dma_mode_enable(ADC1, FALSE);
+Page   77: adc_dma_request_repeat_enable(ADC1, FALSE);
+Page   77: /* enable adc overflow interrupt */
+Page   77: adc_interrupt_enable(ADC1, ADC_OCCO_INT, TRUE);
+Page   77: adc_dma_mode_enable(ADC2, FALSE);
+Page   77: adc_dma_request_repeat_enable(ADC2, FALSE);
+Page   77: adc_interrupt_enable(ADC2, ADC_OCCO_INT, TRUE);
+Page   77: adc_dma_mode_enable(ADC3, FALSE);
+Page   77: adc_dma_request_repeat_enable(ADC3, FALSE);
+Page   77: adc_interrupt_enable(ADC3, ADC_OCCO_INT, TRUE);
+Page   77: /* adc enable */
+Page   77: adc_enable(ADC1, TRUE);
+Page   77: adc_enable(ADC2, TRUE);
+Page   77: adc_enable(ADC3, TRUE);
+Page   79: tmr_counter_enable(TMR1, TRUE);
+Page   79: tmr_counter_enable(TMR1, FALSE);
+Page   81: crm_periph_clock_enable(CRM_GPIOA_PERIPH_CLOCK, TRUE);
+Page   81: crm_periph_clock_enable(CRM_GPIOB_PERIPH_CLOCK, TRUE);
+Page   81: crm_periph_clock_enable(CRM_GPIOC_PERIPH_CLOCK, TRUE);
+Page   82: crm_periph_clock_enable(CRM_GPIOA_PERIPH_CLOCK, TRUE);
+Page   82: crm_periph_clock_enable(CRM_TMR1_PERIPH_CLOCK, TRUE);
+Page   82: tmr_channel_enable(TMR1, TMR_SELECT_CHANNEL_1, TRUE);
+Page   83: tmr_output_enable(TMR1, TRUE);
+Page   83: crm_periph_clock_enable(CRM_DMA1_PERIPH_CLOCK, TRUE);
+Page   83: nvic_irq_enable(DMA1_Channel1_IRQn, 0, 0);
+Page   83: dma_init_struct.memory_inc_enable = TRUE;
+Page   83: dma_init_struct.peripheral_inc_enable = FALSE;
+Page   83: dma_init_struct.loop_mode_enable = FALSE;
+Page   83: dmamux_enable(DMA1, TRUE);
+Page   83: /* enable dma transfer complete interrupt */
+Page   83: dma_interrupt_enable(DMA1_CHANNEL1, DMA_FDT_INT, TRUE);
+Page   83: dma_channel_enable(DMA1_CHANNEL1, TRUE);
+Page   83: crm_periph_clock_enable(CRM_ADC1_PERIPH_CLOCK, TRUE);
+Page   83: crm_periph_clock_enable(CRM_ADC2_PERIPH_CLOCK, TRUE);
+Page   83: crm_periph_clock_enable(CRM_ADC3_PERIPH_CLOCK, TRUE);
+Page   83: nvic_irq_enable(ADC1_2_3_IRQn, 0, 0);
+Page   84: adc_dma_mode_enable(ADC1, FALSE);
+Page   84: adc_dma_request_repeat_enable(ADC1, FALSE);
+Page   84: /* enable adc overflow interrupt */
+Page   84: adc_interrupt_enable(ADC1, ADC_OCCO_INT, TRUE);
+Page   85: adc_dma_mode_enable(ADC2, FALSE);
+Page   85: adc_dma_request_repeat_enable(ADC2, FALSE);
+Page   85: adc_interrupt_enable(ADC2, ADC_OCCO_INT, TRUE);
+Page   85: adc_dma_mode_enable(ADC3, FALSE);
+Page   85: adc_dma_request_repeat_enable(ADC3, FALSE);
+Page   85: adc_interrupt_enable(ADC3, ADC_OCCO_INT, TRUE);
+Page   85: /* adc enable */
+Page   85: adc_enable(ADC1, TRUE);
+Page   85: adc_enable(ADC2, TRUE);
+Page   85: adc_enable(ADC3, TRUE);
+Page   87: tmr_counter_enable(TMR1, TRUE);
+Page   87: tmr_counter_enable(TMR1, FALSE);
+Page   89: crm_periph_clock_enable(CRM_DMA1_PERIPH_CLOCK, TRUE);
+Page   89: nvic_irq_enable(DMA1_Channel1_IRQn, 0, 0);
+Page   89: dma_init_struct.memory_inc_enable = FALSE;
+Page   90: dma_init_struct.peripheral_inc_enable = FALSE;
+Page   90: dma_init_struct.loop_mode_enable = TRUE;
+Page   90: dmamux_enable(DMA1, TRUE);
+Page   90: dma_interrupt_enable(DMA1_CHANNEL1, DMA_FDT_INT, FALSE);
+Page   90: dma_channel_enable(DMA1_CHANNEL1, TRUE);
+Page   90: crm_periph_clock_enable(CRM_ADC1_PERIPH_CLOCK, TRUE);
+Page   90: nvic_irq_enable(ADC1_2_3_IRQn, 0, 0);
+Page   91: adc_dma_mode_enable(ADC1, TRUE);
+Page   91: adc_dma_request_repeat_enable(ADC1, TRUE);
+Page   91: /* enable adc overflow interrupt */
+Page   91: adc_interrupt_enable(ADC1, ADC_OCCO_INT, TRUE);
+Page   91: /* adc enable */
+Page   91: adc_enable(ADC1, TRUE);
+Page   92: adc_ordinary_software_trigger_enable(ADC1, TRUE);

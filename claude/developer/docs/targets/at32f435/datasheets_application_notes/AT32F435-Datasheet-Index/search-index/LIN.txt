@@ -1,0 +1,83 @@
+Keyword: LIN
+Occurrences: 79
+================================================================================
+
+Page    1:  Power control (PWC)                                         ISO7816 interface, LIN, IrDA capability,
+Page    1: sampling up to equivalent 16-bit resolution               interfaces
+Page   10: Figure 55. Power supply and reference decoupling (VREF+ not connected to VDDA) ....................... 102
+Page   10: Figure 56. Power supply and reference decoupling (VREF+ connected to VDDA) ............................. 102
+Page   10: Figure 58. LQFP144 – 20 x 20 mm 144 pin low-profile quad flat package outline ......................... 105
+Page   10: Figure 59. LQFP100 – 14 x 14 mm 100 pin low-profile quad flat package outline ......................... 107
+Page   10: Figure 60. LQFP64 – 10 x 10 mm 64 pin low-profile quad flat package outline ............................. 109
+Page   10: Figure 61. LQFP48 – 7 x 7 mm 48 pin low-profile quad flat package outline ..................................111
+Page   10: Figure 62. QFN48 – 6 x 6 mm 48 pin quad flat no-leads package outline ...................................... 113
+Page   13: Flash memory, and the SDRAM. The interrupt line cannot be used since Port G is not available in this package.
+Page   15: Flash memory, and the SDRAM. The interrupt line cannot be used since Port G is not available in this package.
+Page   17: communication interface which connects single, dual, or quad data lines of SPI flash memory or
+Page   17: SPI RAM. It can work in indirect mode (fully accessed by control registers), status polling mode, or
+Page   18: levels and handle maskable interrupt channels plus the 16 interrupt lines of the Cortex®-M4 with
+Page   18: lines used to generate interrupt requests. Each line can be independently configured to select the
+Page   18: trigger event (rising edge, falling edge, both) and can be masked independently. A pending register
+Page   18: maintains the status of the interrupt requests. The external interrupt lines connects up to 16 GPIOs.
+Page   19: and registers. All clocks in the LDO power domain are stopped, disabling the PLL, the HICK
+Page   19: The device can be woken up from Deepsleep mode by any of the EXINT line. The EXINT line
+Page   19: source can be one of the 16 external lines, the PVM output, an ERTC
+Page   22: architecture. The advanced timer can therefore work together with the TMR timers via the link
+Page   22: the advanced timers via the link feature for synchronization or event chaining. In debug mode,
+Page   22: These timers are capable of handling incremental quadrature encoder signals and the digital
+Page   23: or as a free running timer for application timeout management. It is self-enabling or not configurable
+Page   24: be configured to operate with 16/24/32 bit resolution, as input or output channels. Audio sampling
+Page   24: master clock can be output to the external DAC/CODEC at 256 times the sampling frequency. All
+Page   25: multiprocessor communication mode, single-wire half-duplex communication mode, and have LIN
+Page   25: LIN mode                  Yes       Yes         Yes    Yes     Yes       Yes      Yes      Yes
+Page   27:    Dedicated DMA controller enabling high-speed transfers between the dedicated buffer and the
+Page   27:    Supports hardware PTP (precision time protocol) in line with IEEE 1588 with the timestamp
+Page   28:    Individual sampling time setting for each channel.
+Page   28:    2 to 256 times over-sampling, equivalent maximum 16-bit resolution.
+Page   28: The temperature sensor generates a voltage VTS that varies linearly with temperature. The
+Page   28: The offset of this line varies from chip to chip due to process variation. The internal temperature
+Page   44: (1) The address, block address, data and clock lines of SDRAM are suggested to use these two set of pin
+Page   46: All typical curves are provided only as design guidelines and are not tested.
+Page   47: IVDD      Total current into VDD/VDDA power lines (source)                    250
+Page   47: IVSS      Total current out of VSS ground lines (sink)                        250
+Page   50: PVMSEL[2:0] = 001 (falling edge) (1)    2.09      2.18     2.27      V
+Page   50: PVMSEL[2:0] = 010 (falling edge) (2)    2.18      2.28     2.38     V
+Page   50: PVMSEL[2:0] = 011 (falling edge) (2)    2.28      2.38     2.48     V
+Page   50: level selection                  PVMSEL[2:0] = 100 (falling edge) (2)    2.37      2.48     2.59      V
+Page   50: PVMSEL[2:0] = 101 (falling edge) (2)    2.47      2.58     2.69     V
+Page   50: PVMSEL[2:0] = 110 (falling edge) (2)    2.56      2.68      2.8     V
+Page   50: PVMSEL[2:0] = 111 (falling edge)        2.66      2.78      2.9      V
+Page   52:    Prefetch in ON. (Reminder: This bit must be set before clock setting and bus prescaling).
+Page   67: through a coupling/decoupling network, until a functional disturbance occurs. This test is
+Page   67: applied through coupling/decoupling              = 288 MHz, LDO = 1.3 V, NZW_BST = 0,
+Page   95: data lines
+Page   98: DVP_PCLK polarity: falling edge; DVP_HSYNC and DVP_VSYNC polarity: high level.
+Page   99: fS(2)      Sampling rate                                                                                       MSPS
+Page   99: tS(2)      Sampling time
+Page   99: tCONV(2)                                                                         15 ~ 653(tS for sampling +
+Page   99: sampling time)
+Page  100: ED        Differential linearity error                                                  ±1         +1.5/-1
+Page  100: EL     Integral linearity error                                                     ±1.5          ±3
+Page  100: ED        Differential linearity error                                                  ±1         +2/-1
+Page  100: EL     Integral linearity error                                                     ±1.5         ±3.5
+Page  101: (3) End point correlation line.
+Page  101: EL = Maximum deviation between any actual transition and the end point correlation line.
+Page  101: General PCB design guidelines
+Page  101: Power supply decoupling should be performed as shown in Figure 55 or Figure 56, depending
+Page  101: following PCB layout guide line below benefits to isolate the high frequency interference from
+Page  102: Figure 55. Power supply and reference decoupling (VREF+ not connected to VDDA)
+Page  102: Figure 56. Power supply and reference decoupling (VREF+ connected to VDDA)
+Page  102: ADC sampling time when reading the
+Page  102: VTS linearity with                 TA = -40 ~ +85 °C              -             ±1           ±2
+Page  102: ADC sampling time when
+Page  103: (2) The temperature sensor output voltage changes linearly with temperature. The offset of this line varies from chip
+Page  103: ADC sampling time when reading the voltage of
+Page  104: DNL(2)       Differential non linearity                             -          -     ±0.4    ±0.8      LSB
+Page  104: Integral non linearity (difference between
+Page  104: INL(2)      measured value and a line drawn between                -          -     ±1       ±3       LSB
+Page  104: tSETTLING     Settling time                                    CLOAD ≤ 50 pF    -      1       4         μs
+Page  105: Figure 58. LQFP144 – 20 x 20 mm 144 pin low-profile quad flat package outline
+Page  107: Figure 59. LQFP100 – 14 x 14 mm 100 pin low-profile quad flat package outline
+Page  109: Figure 60. LQFP64 – 10 x 10 mm 64 pin low-profile quad flat package outline
+Page  111: Figure 61. LQFP48 – 7 x 7 mm 48 pin low-profile quad flat package outline
+Page  113: Figure 62. QFN48 – 6 x 6 mm 48 pin quad flat no-leads package outline
