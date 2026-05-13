@@ -1,0 +1,175 @@
+Keyword: TMR
+Occurrences: 171
+================================================================================
+
+Page    1: − sLib: configurable part of main Flash set as           Up to 18 timers (TMR)
+Page    1: − Infrared transmitter (IRTMR)
+Page    3: 2.9     Timers (TMR) ......................................................................................................... 21
+Page    3: 2.9.1     Advanced timers (TMR1, TMR8, and TMR20) .......................................................... 22
+Page    3: 2.9.2     General-purpose timers (TMR2~5 and TMR9~14) ....................................................22
+Page    3: 2.9.3     Basic timers (TMR6 and TMR7).................................................................................23
+Page    4: 2.13.7 Infrared transmitter (IRTMR) ...................................................................................... 26
+Page    5: 5.3.14 TMR timer characteristics .......................................................................................... 89
+Page    7: Table 53. TMR characteristics ........................................................................................................... 89
+Page   12: IRTMR                    1                        1                        1                      1                       1
+Page   14: IRTMR                        1                                      1                                 1
+Page   16: TMR2/5                                                                                                                                                SCFG/EXINT
+Page   16: TMR3/4                                                   PWC                                                                                           TMR1/8/20
+Page   16: TMR12/13/14                                                WDT                                                                                            SPI1/I2S1
+Page   16: USART2/3                                                  ERTC                                                                                          TMR9/10/11
+Page   16: TMR6/7
+Page   21: general-purpose, and basic timers TMRx, DAC, SDIO, ADC, DVP and QSPI.
+Page   21: 2.9         Timers (TMR)
+Page   21: TMR1                             Any integer
+Page   21: Advanced   TMR8      16-bit                 between 1        Yes            4              3
+Page   21: TMR20                            and 65536
+Page   21: TMR2                 Up, down,
+Page   21: TMR5                 up/down
+Page   21: TMR3                 Up, down,
+Page   21: TMR4                 up/down
+Page   21: purpose   TMR9
+Page   21: TMR12
+Page   21: TMR10
+Page   21: TMR11
+Page   21: TMR13
+Page   21: TMR14
+Page   21: TMR6
+Page   21: TMR7
+Page   22: 2.9.1       Advanced timers (TMR1, TMR8, and TMR20)
+Page   22: The three advanced timers (TMR1, TMR8, and TMR20) can each be seen a three-phase PWM
+Page   22: If configured as a standard 16-bit timer, it has the same features as the TMRx timer. If configured
+Page   22: Many features are shared with those of the general-purpose TMR which have the same
+Page   22: architecture. The advanced timer can therefore work together with the TMR timers via the link
+Page   22: 2.9.2       General-purpose timers (TMR2~5 and TMR9~14)
+Page   22:    TMR2, TMR3, TMR4 and TMR5
+Page   22: The AT32F435/437 has 4 full- featured general-purpose timers: TMR2, TMR3, TMR4, and
+Page   22: TMR5. The TMR2 and TMR5 timers are based on a 32-bit auto-reload up/down counter and a
+Page   22: 16-bit prescaler. The TMR3 and TMR4 timers are based on a 16- bit auto-reload up/down
+Page   22:    TMR9 and TMR12
+Page   22: TMR9 and TMR12 are based on a 16-bit auto-reload upcounter, a 16-bit prescaler, and two
+Page   22: They can be synchronized with the TMR2, TMR3, TMR4, and TMR5 full-featured general-
+Page   23:    TMR10, TMR11, TMR13 and TMR14
+Page   23: They can be synchronized with the TMR2, TMR3, TMR4, and TMR5 full-featured general-
+Page   23: 2.9.3       Basic timers (TMR6 and TMR7)
+Page   26: 2.13.7 Infrared transmitter (IRTMR)
+Page   26: internal connection between TMR10, USART1, or USART2 with TMR11. TMR11 is used to provide
+Page   26: the carrier frequency, and TMR10, USART1, or USART2 provides the main signal to be sent. The
+Page   26: To generate infrared remote control signals, TMR10 channel 1 and TMR11 channel 1 must be
+Page   27: comparator connected to the TMR2 trigger input
+Page   34: TMR3_EXT / SPI4_SCK / I2S4_CK /
+Page   34: TMR20_CH1 /
+Page   34: TMR3_CH1 / TMR20_CH2 /
+Page   34: CLKOUT1 / TMR3_CH2 /
+Page   34: -         -        3         3                 PE4              I/O       FT              SPI4_CS / I2S4_WS / TMR20_CH1C /                      -
+Page   34: TMR3_CH3 / TMR9_CH1 /
+Page   34: -         -        4         4                 PE5              I/O       FT                  SPI4_MISO / TMR20_CH2C /                          -
+Page   34: TMR3_CH4 / TMR9_CH2 /
+Page   34: -         -        5         5                 PE6              I/O       FT              SPI4_MOSI / I2S4_SD / TMR20_CH3C /                    -
+Page   34: -         -         -        12                PF2              I/O       FT               TMR20_CH3 / I2C2_SMBA / XMC_A2
+Page   34: -         -         -        13                PF3              I/O FTa                           TMR20_CH4 / XMC_A3                        ADC3_IN9
+Page   34: -         -         -        14                PF4              I/O FTa                           TMR20_CH1C / XMC_A4                      ADC3_IN14
+Page   34: -         -         -        15                PF5              I/O FTa                           TMR20_CH2C / XMC_A5                      ADC3_IN15
+Page   34: TMR10_CH1 / TMR20_CH4 /
+Page   34: TMR11_CH1 / TMR20_BRK /
+Page   34: -         -         -        20                PF8              I/O FTa TMR13_CH1 / QSPI1_IO0 / XMC_NIOWR                                   ADC3_IN6
+Page   34: TMR14_CH1 / TMR20_BRK /
+Page   34: TMR1_EXT / TMR5_CH4 /
+Page   35: TMR20_CH2 /
+Page   35: TMR2_CH1 / TMR2_EXT /
+Page   35: TMR5_CH1 / TMR8_EXT /                                        ADC123_IN0(6) /
+Page   35: TMR2_CH2 / TMR5_CH2 /
+Page   35: TMR2_CH3 / TMR5_CH3 / TMR9_CH1 /
+Page   35: TMR2_CH4 / TMR5_CH4 / TMR9_CH2 /
+Page   35: TMR2_CH1 / TMR2_EXT / TMR8_CH1C /
+Page   36: TMR1_BRK / TMR3_CH1 / TMR8_BRK /
+Page   36: 16         22       31        42                PA6              I/O Fta                      USART3_CTS / TMR13_CH1 /                     ADC12_IN6
+Page   36: TMR1_CH1C / TMR3_CH2 /
+Page   36: TMR8_CH1C / SPI1_MOSI / I2S1_SD /
+Page   36: TMR14_CH1 / QSPI1_IO1 /
+Page   36: TMR9_CH1 / I2S1_MCK /
+Page   36: TMR9_CH2 / I2C1_SMBA /
+Page   36: TMR1_CH2C / TMR3_CH3 /
+Page   36: TMR8_CH2C / I2S1_MCK /
+Page   36: TMR1_CH3C / TMR3_CH4 /
+Page   36: TMR8_CH3C / SPI2_SCK / I2S2_CK /
+Page   36: TMR2_CH4 / TMR20_CH1 /
+Page   36: TMR20_EXT / TMR8_EXT /
+Page   36: -         -        -        50                PF12             I/O       FT               TMR20_CH1 / TMR8_BRK / XMC_A6                       -
+Page   36: -         -        -        53                PF13             I/O       FT               TMR20_CH2 / I2C3_SMBA / XMC_A7                      -
+Page   36: -         -        -        54                PF14             I/O FTf                     TMR20_CH3 / I2C3_SCL / XMC_A8                      -
+Page   36: -         -        -        55                PF15             I/O FTf                     TMR20_CH4 / I2C3_SDA / XMC_A9                      -
+Page   36: TMR20_CH1C / SPI1_MISO /
+Page   36: TMR20_CH2C / SPI1_MOSI / I2S1_SD /
+Page   36: TMR1_EXT / UART7_RX /
+Page   36: TMR1_CH1C / UART4_TX / UART7_TX /
+Page   37: TMR1_CH1 / UART4_RX /
+Page   37: TMR1_CH2C / UART5_TX /
+Page   37: TMR1_CH2 / SPI4_CS / I2S4_WS /
+Page   37: TMR1_CH3C / SPI1_CS / I2S1_WS /
+Page   37: TMR1_CH3 / SPI1_SCK / I2S1_CK /
+Page   37: TMR1_CH4 / SPI1_MISO /
+Page   37: TMR1_BRK / SPI1_MOSI / I2S1_SD /
+Page   37: TMR2_CH3 / I2C2_SCL / SPI2_SCK /
+Page   37: TMR2_CH4 / TMR5_CH4 /
+Page   37: TMR5_CH2 / I2C2_SDA /
+Page   37: TMR1_BRK / TMR5_CH1 /
+Page   37: TMR1_CH1C / I2C3_SMBA /
+Page   37: TMR1_CH2C / TMR8_CH2C / I2C3_SDA /
+Page   37: USART3_RTS_DE / TMR12_CH1 /
+Page   37: TMR1_CH3C / TMR8_CH3C / I2C3_SCL /
+Page   37: SPI2_MOSI / I2S2_SD / TMR12_CH2 /
+Page   38: TMR4_CH1 / I2C2_SCL /
+Page   38: TMR4_CH2 / I2C2_SDA /
+Page   38: TMR4_CH3 / I2C3_SCL /
+Page   38: -         -       62        86                PD15             I/O FTf                     TMR4_CH4 / I2C3_SDA / XMC_D1                        -
+Page   38: -         -        -        87                PG2              I/O       FT                   TMR20_CH3C / XMC_A12                             -
+Page   38: -         -        -        88                PG3              I/O       FT                      TMR20_BRK / XMC_A13                           -
+Page   38: -         -        -        90                PG5              I/O       FT              TMR20_EXT / XMC_A15 / XMC_SDBA1                       -
+Page   38: TMR3_CH1 / TMR8_CH1 / I2C1_SCL /
+Page   38: TMR3_CH2 / TMR8_CH2 / I2C1_SDA /
+Page   38: TMR3_CH3 / TMR8_CH3 /
+Page   38: I2S4_MCK / TMR20_CH3 /
+Page   38: CLKOUT2 / TMR3_CH4 / TMR8_CH4 /
+Page   38: CLKOUT1 / TMR1_CH1 / I2C3_SCL /
+Page   39: TMR1_CH2 / I2C3_SMBA /
+Page   39: TMR1_CH3 / SPI2_MOSI / I2S2_SD /
+Page   39: TMR1_CH4 / I2C2_SCL /
+Page   39: TMR1_EXT / I2C2_SDA / SPI2_MISO /
+Page   39: TMR5_CH1 / I2C2_SCL /
+Page   39: JTDI / TMR2_CH1 / TMR2_EXT /
+Page   39: TMR5_CH2 / SPI3_SCK / I2S3_CK /
+Page   39: TMR5_CH3 / I2S3_SDEXT / SPI3_MISO /
+Page   39: TMR11_CH1 / I2C2_SDA /
+Page   39: TMR3_EXT / USART3_RTS_DE /
+Page   40: JTDO / TMR2_CH2 / I2C2_SDA /
+Page   40: JNTRST / TMR3_CH1 / I2C3_SDA /
+Page   40: TMR3_CH2 / I2C1_SMBA /
+Page   40: TMR4_CH1 / I2C1_SCL /
+Page   41: TMR4_CH2 / TMR8_BRK /
+Page   41: TMR2_CH1 / TMR2_EXT /
+Page   41: TMR4_CH3 / TMR10_CH1 /
+Page   41: IR_OUT / TMR2_CH2 /
+Page   41: TMR4_CH4 / TMR11_CH1 /
+Page   41: TMR4_EXT / TMR20_EXT / UART8_RX /
+Page   41: TMR1_CH2C / TMR20_CH4 / UART8_TX /
+Page   59: TMR2        12.43           11.33            10.32          9.37
+Page   59: TMR3        9.11            8.30              7.57          6.86
+Page   59: TMR4        9.29            8.47              7.71          7.00
+Page   59: TMR5        12.17           11.12            10.13          9.20
+Page   59: TMR6        1.71            1.58              1.44          1.31
+Page   59: TMR7        1.59            1.47              1.34          1.22
+Page   59: TMR12        5.54            5.07              4.63          4.22
+Page   59: TMR13        3.59            3.31              3.01          2.74
+Page   59: TMR14        3.71            3.42              3.12          2.85
+Page   60: TMR1         13.26           12.11             11.04         10.02
+Page   60: TMR8         13.44           12.28             11.21         10.17
+Page   60: TMR9         5.89            5.40              4.93          4.48
+Page   60: TMR10         3.72            3.41              3.12          2.84
+Page   60: TMR11         3.97            3.63              3.31          3.02
+Page   60: TMR20        12.88            11.74            10.69          9.70
+Page   89: 5.3.14 TMR timer characteristics
+Page   89: Table 53. TMR characteristics
+Page   89: -               1             -             tTMRxCLK
+Page   89: tres(TMR)           Timer resolution time
+Page   89: fTMRxCLK = 288 MHz        3.47             -               ns
+Page   89: fEXT                                                               -               0      fTMRxCLK/2            MHz

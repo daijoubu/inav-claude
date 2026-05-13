@@ -1,0 +1,74 @@
+Keyword: GPIO
+Occurrences: 70
+================================================================================
+
+Page    1: − DSP instructions                                       Up to 116 fast GPIOs
+Page    3: 2.7     General-purpose inputs / outputs (GPIO) ............................................................... 20
+Page    5: 5.3.11 GPIO port characteristics ........................................................................................... 68
+Page    7: Table 37. GPIO characteristics .......................................................................................................... 68
+Page   11: Flash memory and configurable maximum 512 Kbytes of SRAM), enhanced GPIOs and
+Page   12: GPIO                     39                       39                       53                     84                      116
+Page   14: GPIO                           53                                     84                               116
+Page   16: GPIO
+Page   18: maintains the status of the interrupt requests. The external interrupt lines connects up to 16 GPIOs.
+Page   18:    VDD = 2.6 ~ 3.6 V: used as an external power supply for GPIOs and the internal block such as
+Page   20: 2.7         General-purpose inputs / outputs (GPIO)
+Page   20: Each of the GPIO pins can be configured by software as output (push-pull or open-drain with or
+Page   20: function. Most of the GPIO pins are shared with digital or analog multiple functions. All GPIOs are
+Page   20: The GPIO’s configuration can be locked, if needed, in order to avoid false writing to the GPIO’s
+Page   25: GPIOs provide ultra-high sink current 20 mA.
+Page   28: − Hardware (internal or GPIO input events) with polarity configurability.
+Page   34: reset is the same as the actual pin name. Unless notes presented, all GPIOs are set as input
+Page   34: floating during reset and after reset. Pin multi-functions are selected through GPIOx_MUXx
+Page   34: GPIO level(2)
+Page   35: GPIO level(2)
+Page   36: GPIO level(2)
+Page   37: GPIO level(2)
+Page   38: GPIO level(2)
+Page   39: GPIO level(2)
+Page   40: GPIO level(2)
+Page   41: GPIO level(2)
+Page   41: (2) TC = standard 3.3 V GPIO, FT = general 5 V-tolerant GPIO, FTa = 5 V-tolerant GPIO with analog functionalities, FTf = 5 V-
+Page   41: tolerant GPIO with 20 mA sink current capability, R = bidirectional reset pin with embedded weak pull-up resistor, B =
+Page   41: (3) Function availability depends on the chosen device. Every GPIO can function as EVENTOUT.
+Page   41: mA), the use of these three GPIOs as output mode is limited not to be used as a current source (e.g. to drive an LED).
+Page   41: GPIOs, refer to the battery powered domain and register description sections in the AT32F435/437 reference manual.
+Page   46: GPIO
+Page   47: Input voltage on FT and FTf GPIO
+Page   47: Input voltage on FTa GPIO (set as input floating,    VSS-0.3        6.0          V
+Page   47: Input voltage on TC GPIO
+Page   47: Input voltage on FTa GPIO (set as analog mode)
+Page   47: Output current sunk by any GPIO and control pin                     25
+Page   47: Output current source by any GPIOs and control pin                  -25
+Page   48:     A current injection is applied to each input, output and configurable GPIO pin.
+Page   52: voltage, ambient temperature, GPIO pin loading, device software configuration, operating
+Page   52: frequencies, GPIO pin switching rate, and executed binary code. The current consumption is
+Page   52:    All GPIO pins are in analog mode.
+Page   59:    All GPIO pins are in analog mode.
+Page   59: GPIOA        2.68            2.46              2.24          2.04
+Page   59: GPIOB        2.66            2.44              2.21          2.02
+Page   59: GPIOC        2.65            2.42              2.22          2.02
+Page   59: GPIOD        2.58            2.38              2.17          1.98
+Page   59: GPIOE        2.67            2.46              2.23          2.04
+Page   59: GPIOF        2.58            2.37              2.16          1.97
+Page   59: GPIOG        2.64            2.42              2.20          2.02
+Page   59: GPIOH        2.59            2.39              2.18          1.99
+Page   68: 5.3.11 GPIO port characteristics
+Page   68: All GPIOs are CMOS and TTL compliant.
+Page   68: Table 37. GPIO characteristics
+Page   68: VIL    GPIO input low level voltage                    -             –0.3        -                         V
+Page   68: TC GPIO input high level voltage                -
+Page   68: FTa GPIO input high level voltage Analog mode
+Page   68: FT and FTf GPIO input high level
+Page   68: FTa GPIO input high level voltage pull-up, or input pull-
+Page   68: TC GPIOs
+Page   68: GPIO
+Page   68: CIO    GPIO pin capacitance                            -               -        9             -           pF
+Page   68: All GPIOs are CMOS and TTL compliant (no software configuration required). Their characteristics
+Page   68: In the user application, the number of GPIO pins which can drive current must be controlled to
+Page   68:      The sum of the currents sourced by all GPIOs on VDD, plus the maximum Run consumption of
+Page   68:      The sum of the currents sunk by all GPIOs on VSS, plus the maximum Run consumption of the
+Page   69: All GPIOs are CMOS and TTL compliant.
+Page   69: (2) When GPIO ultra high sinking strength is enabled, its VOH is the same as that of maximum sourcing strength.
+Page   93: GPIO pins SDA and SCL have limitation as follows: they are not “true” open-drain. When
+Page   93: configured as open-drain, the PMOS connected between the GPIO pin and VDD is disabled, but is

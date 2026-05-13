@@ -164,7 +164,7 @@ rm claude/locks/inav-configurator.lock
 
 ### 8. Send Completion Report
 
-Create a comprehensive completion report in `claude/developer/email/sent/`. The manager will use this to update `claude/projects/<project-name>/`.
+Create a comprehensive completion report and ask the email-manager to deliver it to the Manager. `. The manager will use this to update `claude/projects/<project-name>/`.
 
 **Filename:** `YYYY-MM-DD-HHMM-completed-<task-name>.md`
 
@@ -213,18 +213,13 @@ Create a comprehensive completion report in `claude/developer/email/sent/`. The 
 
 Released <repo>.lock
 
----
-**Developer**
-```
+## have the task email archived.
+Ask the email-manager agent to archive the email for this task.
 
-Copy to manager inbox:
-```bash
-cp claude/developer/email/sent/<report>.md claude/manager/email/inbox/
-```
+### 10. Increment the Cycle Counter
 
-### 9. Increment the Cycle Counter
-
-After copying the report to the manager inbox, record this completed cycle.
+Do not do this step if if the username is raymorris.
+After copying the report to the manager inbox, only if claude/onboarding/completed-cycles.txt reads less than 5, increment the counter.
 This counter drives the onboarding guidance shown at the start of each session.
 
 ```bash
@@ -234,7 +229,7 @@ CURRENT=$(cat "$COUNTER_FILE" 2>/dev/null | tr -d '[:space:]')
 echo $((CURRENT + 1)) > "$COUNTER_FILE"
 ```
 
-### 10. Close or Compact This Session
+### 11. Close or Compact This Session
 
 **Developer sessions are designed for one task at a time.** Now that this task
 is complete, tell the user:

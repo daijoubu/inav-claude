@@ -118,7 +118,7 @@ cd inav
 **For configurator changes:**
 ```bash
 cd inav-configurator
-NODE_ENV=development npm start
+ENABLE_REMOTE_DEBUGGING=1 NODE_ENV=development npm start --remote-debugging-port=9222
 ```
 
 ### 6. Review Checklist
@@ -211,7 +211,7 @@ gh pr checks 2433
 
 # 5. Test locally
 cd inav-configurator
-NODE_ENV=development npm start
+ENABLE_REMOTE_DEBUGGING=1 NODE_ENV=development npm start --remote-debugging-port=9222
 
 # 6. Leave review
 gh pr review 2433 --approve -b "Reviewed bot suggestions. Accepted valid ones, documented rejected ones. Code looks good!"

@@ -1,0 +1,468 @@
+Keyword: XMC
+Occurrences: 464
+================================================================================
+
+Page    1: − External memory controller (XMC) with 16-
+Page    1:  XMC as LCD parallel interface, compatible                   SMBus/PMBus
+Page    3: 2.2.4     External memory controller (XMC) .............................................................................17
+Page    5: 5.3.13 XMC (SDRAM included) characteristics ....................................................................70
+Page    6: Table 9. XMC pin definition ................................................................................................................ 42
+Page   11: AT32F435/437 includes high-level memory extension: one external memory controller (XMC)
+Page   12: XMC                      -                        -                       1(3)                  1(4)(5)                   1
+Page   13: (3) For LQFP64 package, XMC only supports the LCD panel with 8-bit mode.
+Page   13: (4) For the LQFP100 package, XMC supports to directly connect a multiplexed NOR/PSRAM memory, a 16- or 8-bit NAND
+Page   13: (5) For the LQFP100 package, XMC supports a non-multiplexed NOR/PSRAM memory via the external latch circuit. Please
+Page   14: XMC                           1(3)                                  1(4)(5)                             1
+Page   15: (3) For LQFP64 package, XMC only supports the LCD panel with 8-bit mode.
+Page   15: (4) For the LQFP100 package, XMC supports to directly connect a multiplexed NOR/PSRAM memory, a 16- or 8-bit NAND
+Page   15: (5) For the LQFP100 package, XMC supports a non-multiplexed NOR/PSRAM memory via the external latch circuit. Please
+Page   16: SWD/JTAG                                                                                                                                              XMC            HICK 48 MHz
+Page   17: 2.2.4       External memory controller (XMC)
+Page   17: The XMC is embedded in the AT32F435/437. It has four Chip Select outputs supporting the
+Page   17: The XMC can be configured to interface with most graphic LCD controllers. It supports the Intel
+Page   34: QSPI1_IO2 / XMC_SDNCAS /
+Page   34: EMAC_MII_TXD3 / XMC_A23
+Page   34: XMC_A19 / DVP_D9
+Page   34: XMC_A20 / DVP_D4
+Page   34: XMC_A21 / DVP_D6
+Page   34: XMC_SDNRAS / XMC_A22 / DVP_D7
+Page   34: -         -         -        10                PF0              I/O       FT                       I2C2_SDA / XMC_A0
+Page   34: -         -         -        11                PF1              I/O       FT                       I2C2_SCL / XMC_A1
+Page   34: -         -         -        12                PF2              I/O       FT               TMR20_CH3 / I2C2_SMBA / XMC_A2
+Page   34: -         -         -        13                PF3              I/O FTa                           TMR20_CH4 / XMC_A3                        ADC3_IN9
+Page   34: -         -         -        14                PF4              I/O FTa                           TMR20_CH1C / XMC_A4                      ADC3_IN14
+Page   34: -         -         -        15                PF5              I/O FTa                           TMR20_CH2C / XMC_A5                      ADC3_IN15
+Page   34: UART7_RX / QSPI1_IO3 / XMC_NIORD
+Page   34: UART7_TX / QSPI1_IO2 / XMC_NREG
+Page   34: -         -         -        20                PF8              I/O FTa TMR13_CH1 / QSPI1_IO0 / XMC_NIOWR                                   ADC3_IN6
+Page   34: QSPI1_IO1 / XMC_CD
+Page   34: QSPI1_SCK / XMC_INTR / DVP_D11
+Page   35: SDIO2_D0 / XMC_SDNWE
+Page   35: XMC_SDCS0 / XMC_NWE
+Page   35: XMC_SDCKE0 / XMC_A0
+Page   35: EMAC_MDIO / XMC_D4
+Page   35: XMC_D5
+Page   35: DVP_HSYNC / XMC_D6
+Page   35: SDIO2_D5 / SDIO2_D1 / XMC_D7
+Page   36: XMC_SDNWE / SDIO2_D3 / SDIO2_D7
+Page   36: XMC_SDCS0 / SDIO2_CK / XMC_NE4
+Page   36: XMC_SDCKE0 / SDIO2_CMD /
+Page   36: XMC_NOE
+Page   36: XMC_SDNRAS / DVP_D12
+Page   36: -         -        -        50                PF12             I/O       FT               TMR20_CH1 / TMR8_BRK / XMC_A6                       -
+Page   36: -         -        -        53                PF13             I/O       FT               TMR20_CH2 / I2C3_SMBA / XMC_A7                      -
+Page   36: -         -        -        54                PF14             I/O FTf                     TMR20_CH3 / I2C3_SCL / XMC_A8                      -
+Page   36: -         -        -        55                PF15             I/O FTf                     TMR20_CH4 / I2C3_SDA / XMC_A9                      -
+Page   36: CAN1_RX / XMC_A10
+Page   36: CAN1_TX / XMC_A11
+Page   36: QSPI2_IO0 / XMC_D4
+Page   36: QSPI2_IO1 / XMC_D5
+Page   37: QSPI2_IO2 / XMC_D6
+Page   37: QSPI2_IO3 / XMC_D7
+Page   37: UART5_RX / XMC_D8
+Page   37: SPI4_SCK / I2S4_CK / XMC_D9
+Page   37: SPI4_MISO / XMC_D10
+Page   37: SPI4_MOSI / I2S4_SD / XMC_D11
+Page   37: XMC_D12
+Page   37: XMC_NOE
+Page   37: OTGFS2_ID / XMC_D13
+Page   37: OTGFS2_D- / SDIO1_D6 / XMC_D0
+Page   37: EMAC_RMII_CRS_DV / XMC_D13
+Page   37: MAC_RMII_RXD0 / XMC_D14
+Page   38: EMAC_RMII_RXD1 / XMC_D15
+Page   38: XMC_A14 / XMC_SDBA0 /
+Page   38: EMAC_MII_RXD2 / XMC_A16_CLE
+Page   38: XMC_A15 / XMC_SDBA1 /
+Page   38: EMAC_MII_RXD3 / XMC_A17_ALE
+Page   38: XMC_SDCLK / XMC_A18
+Page   38: UART8_RX / XMC_D0
+Page   38: -         -       62        86                PD15             I/O FTf                     TMR4_CH4 / I2C3_SDA / XMC_D1                        -
+Page   38: -         -        -        87                PG2              I/O       FT                   TMR20_CH3C / XMC_A12                             -
+Page   38: -         -        -        88                PG3              I/O       FT                      TMR20_BRK / XMC_A13                           -
+Page   38: -         -        -        89                PG4              I/O       FT                      XMC_A14 / XMC_SDBA0                           -
+Page   38: -         -        -        90                PG5              I/O       FT              TMR20_EXT / XMC_A15 / XMC_SDBA1                       -
+Page   38: -         -        -        91                PG6              I/O       FT                QSPI1_CS / XMC_INT2 / DVP_D12                       -
+Page   38: -         -        -        92                PG7              I/O       FT               USART6_CK / XMC_INT3 / DVP_D13                       -
+Page   38: EMAC_PPS_OUT / XMC_SDCLK
+Page   38: -        37       63        96                PC6              I/O       FT              I2S2_MCK / USART6_TX / XMC_A0 /                       -
+Page   38: SDIO1_D6 / DVP_D0 / XMC_D1
+Page   38: USART6_RX / XMC_A1 / SDIO1_D7 /
+Page   38: XMC_A2 / SDIO1_D0 / DVP_D2
+Page   38: QSPI1_IO0 / XMC_A3 / OTGFS2_OE /
+Page   38: OTGFS1_SOF / SDIO1_D1 / XMC_A4
+Page   39: XMC_NE2 / XMC_NCE3
+Page   39: DVP_D4 / XMC_D2
+Page   39: SDIO1_CK / DVP_D9 / XMC_D3
+Page   39: XMC_A5 / XMC_D2
+Page   39: XMC_A6 / XMC_D3
+Page   39: -        54       83        116               PD2              I/O       FT                    UART5_RX / XMC_A7 /                              -
+Page   39: SDIO1_CMD / DVP_D11 / XMC_NWE
+Page   39: QSPI1_SCK / XMC_A8 / XMC_CLK /
+Page   40: USART2_RTS_DE / XMC_A9 / XMC_NOE
+Page   40: -         -       86        119               PD5              I/O       FT               USART2_TX / XMC_A10 / XMC_NWE                       -
+Page   40: XMC_A11 / XMC_NWAIT / DVP_D10
+Page   40: XMC_A12 / XMC_NE1 / XMC_NCE2
+Page   40: XMC_NE2 / XMC_NCE3 / DVP_VSYNC
+Page   40: XMC_NE3 / XMC_NCE4_1 / DVP_D2
+Page   40: XMC_NCE4_2 / DVP_D3
+Page   40: USART6_RTS_DE / CAN2_TX / XMC_NE4
+Page   40: XMC_A24
+Page   40: XMC_A25
+Page   40: USART6_CTS / XMC_SDNCAS /
+Page   40: XMC_SDCKE1 / DVP_D10 / SDIO1_D3
+Page   40: XMC_SDCS1 / DVP_D5 / SDIO1_D0
+Page   41: XMC_NADV / DVP_VSYNC / SDIO1_D0
+Page   41: XMC_LB / XMC_SDDQML / DVP_D2
+Page   41: XMC_UB / XMC_SDDQMH / DVP_D3
+Page   42: Table 9. XMC pin definition
+Page   42: XMC
+Page   43: XMC
+Page   44: XMC
+Page   45: XMC (SDRAM)(1)
+Page   45: XMC (PC card)
+Page   45: 0x21FF_FFFF            Reserved                            XMC register
+Page   45: 0x1FFF_FFFF                                               XMC (NAND)(1)
+Page   45: 0x1FFF_C000                                               XMC (PSRAM /        0x6FFF_FFFF
+Page   59: XMC         43.05           39.29             35.81         32.47
+Page   70: 5.3.13 XMC (SDRAM included) characteristics
+Page   70: The results given in these tables are obtained with the following XMC configuration:
+Page   71: tw(NE)             XMC_NE low time                                             5tHCLK - 1.5              5tHCLK + 2                ns
+Page   71: tv(NOE_NE)         XMC_NE low to XMC_NOE low                                        0.5                      1.5                   ns
+Page   71: tw(NOE)            XMC_NOE low time                                            5tHCLK - 1.5              5tHCLK + 1.5              ns
+Page   71: th(NE_NOE)         XMC_NOE high to XMC_NE high hold time                            -1.5                      -                    ns
+Page   71: tv(A_NE)           XMC_NE low to XMC_A valid time                                     -                       7                    ns
+Page   71: th(A_NOE)          Address hold time after XMC_NOE high                             2.5                       -                    ns
+Page   71: tv(UBLB_NE)        XMC_UB/LB hold time after XMC_NOE high                             -                       0                    ns
+Page   71: th(UBLB_NOE)       XMC_NE low to XMC_UB/LB valid                                    2.5                       -                    ns
+Page   71: tsu(Data_NE)       Data to XMC_NE high setup time                              2tHCLK + 25                    -                    ns
+Page   71: tsu(Data_NOE)      Data to XMC_NOE high setup time                             2tHCLK + 25                    -                    ns
+Page   71: th(Data_NOE)       Data hold time after XMC_NE high                                   0                       -                    ns
+Page   71: th(Data_NE)        Data hold time after XMC_NOE high                                  0                       -                    ns
+Page   71: tv(NADV_NE)        XMC_NE low to XMC_NADV low                                         -                       5                    ns
+Page   71: tw(NADV)           XMC_NADV low time                                                  -                  tHCLK + 1.5               ns
+Page   71: XMC_NE
+Page   71: XMC_NOE
+Page   71: XMC_NWE
+Page   71: XMC_A[25:0]
+Page   71: XMC_UB/LB
+Page   71: XMC_D[15:0]                                                                Data
+Page   71: XMC_NADV(1)
+Page   71: (1) Only available in mode 2/B, C, and D. XMC_NADV is not used in mode 1.
+Page   72: tw(NE)            XMC_NE low time                                               3tHCLK - 1           3tHCLK + 2            ns
+Page   72: tv(NWE_NE)        XMC_NE low to XMC_NWE low                                    tHCLK - 0.5           tHCLK + 1.5           ns
+Page   72: tw(NWE)           XMC_NWE low time                                             tHCLK - 0.5           tHCLK + 1.5           ns
+Page   72: th(NE_NWE)        XMC_NWE high to XMC_NE high hold time                               tHCLK               -                ns
+Page   72: tv(A_NE)          XMC_NE low to XMC_A valid time                                        -               7.5                ns
+Page   72: th(A_NWE)         Address hold time after XMC_NWE high                          tHCLK + 2                 -                ns
+Page   72: tv(UBLB_NE)       XMC_NE low to XMC_UB/LB valid time                                    -               1.5                ns
+Page   72: th(UBLB_NWE)      XMC_UB/LB hold time after XMC_NWE high                       tHCLK - 0.5                -                ns
+Page   72: tv(Data_NE)       XMC_NE low to daa valid time                                          -             tHCLK + 7            ns
+Page   72: th(Data_NWE)      Data hold time after XMC_NWE high                             tHCLK + 3                 -                ns
+Page   72: tv(NADV_NE)       XMC_NE low to XMC_NADV low                                            -               5.5                ns
+Page   72: tw(NADV)          XMC_NADV low time                                                     -            tHCLK + 1.5           ns
+Page   72: XMC_NE
+Page   72: XMC_NOE
+Page   72: XMC_NWE
+Page   72: XMC_A[25:0]                                            Address
+Page   72: XMC_UB/LB                                               UB/LB
+Page   72: XMC_D[15:0]                                                                  Data
+Page   72: XMC_NADV(1)
+Page   72: (1) Only available in mode 2/B, C, and D. XMC_NADV is not used in mode 1.
+Page   73: tw(NE)             XMC_NE low time                                                 7tHCLK - 2                   7tHCLK + 2                ns
+Page   73: tv(NOE_NE)         XMC_NE low to XMC_NOE low valid time                           3tHCLK - 0.5                  3tHCLK + 1.5              ns
+Page   73: tw(NOE)            XMC_NOE low time                                                4tHCLK - 1                   4tHCLK + 2                ns
+Page   73: th(NE_NOE)         XMC_NOE high to XMC_NE high hold time                                   -1                        -                    ns
+Page   73: tv(A_NE)           XMC_NE low to XMC_A valid time                                          -                         0                    ns
+Page   73: tv(NADV_NE)        XMC_NE low to XMC_NADV low valid time                                   3                         5                    ns
+Page   73: tw(NADV)           XMC_NADV low time                                               tHCLK - 1.5                  tHCLK + 1.5               ns
+Page   73: th(AD_NADV)        XMC_AD (address) valid hold time after XMC_NADV                  tHCLK + 3                        -                    ns
+Page   73: th(A_NOE)          Address hold time after XMC_NOE high                             tHCLK + 3                        -                    ns
+Page   73: th(UBLB_NOE)       XMC_UB/LB hold time after XMC_NOE high                                  0                         -                    ns
+Page   73: tv(UBLB_NE)        XMC_NE low to XMC_UB/LB valid                                           -                         0                    ns
+Page   73: tsu(Data_NE)       Data to XMC_NE high setup time                                 2tHCLK + 24                        -                    ns
+Page   73: tsu(Data_NOE)      Data to XMC_NOE high setup time                                2tHCLK + 25                        -                    ns
+Page   73: th(Data_NE)        Data hold time after XMC_NE high                                        0                         -                    ns
+Page   73: th(Data_NOE)       Data hold time after XMC_NOE high                                       0                         -                    ns
+Page   73: XMC_NE
+Page   73: XMC_NOE
+Page   73: XMC_NWE
+Page   73: XMC_A[25:16]                                            Address
+Page   73: XMC_UB/LB                                                 UB/LB
+Page   73: XMC_AD[15:0]                            Address                                 Data
+Page   73: XMC_NADV
+Page   74: tw(NE)            XMC_NE low time                                                 5tHCLK - 1           5tHCLK + 2                ns
+Page   74: tv(NWE_NE)        XMC_NE low to XMC_NWE low valid time                             2tHCLK              2tHCLK + 1                ns
+Page   74: tw(NWE)           XMC_NWE low time                                                2tHCLK - 1           2tHCLK + 2                ns
+Page   74: th(NE_NWE)        XMC_NWE high to XMC_NE high hold time                           tHCLK - 1                 -                    ns
+Page   74: tv(A_NE)          XMC_NE low to XMC_A valid time                                       -                   7                     ns
+Page   74: tv(NADV_NE)       XMC_NE low to XMC_NADV low valid time                                3                   5                     ns
+Page   74: tw(NADV)          XMC_NADV low time                                               tHCLK - 1             tHCLK + 1                ns
+Page   74: th(AD_NADV)       XMC_AD (address) hold time after XMC_NADV high                  tHCLK - 3                 -                    ns
+Page   74: th(A_NWE)         Address hold time after XMC_NWE high                           4tHCLK + 2.5               -                    ns
+Page   74: th(UBLB_NWE)      XMC_UB/LB hold time after XMC_NWE high                         tHCLK - 1.5                -                    ns
+Page   74: tv(UBLB_NE)       XMC_NE low to XMC_UB/LB valid time                                   -                  1.6                    ns
+Page   74: tv(Data_NADV)     XMC_NADV high to data valid time                                     -               tHCLK + 1.5               ns
+Page   74: th(Data_NWE)      Data hold time after XMC_NWE high                               tHCLK - 5                 -                    ns
+Page   74: XMC_NE
+Page   74: XMC_NOE
+Page   74: XMC_NWE
+Page   74: XMC_A[25:16]                                           Address
+Page   74: XMC_UB_LB                                                UBLB
+Page   74: XMC_AD[15:0]                          Address                                Data
+Page   74: XMC_NADV
+Page   75: The results given in these tables are obtained with the following XMC configuration:
+Page   75:    BurstAccessMode = XMC_BurstAccessMode_Enable;
+Page   75:    MemoryType = XMC_MemoryType_CRAM;
+Page   75:    WriteBurst = XMC_WriteBurst_Enable;
+Page   75:    CLKPrescale = 1; (Note: CLKPrescale is CLKPSC bit in XMC_BK1TMGx register. Refer to the
+Page   75: in XMC_BK1TMGx register. Refer to the AT32F435/437 reference manual.)
+Page   76: tw(CLK)              XMC_CLK period                                                                            20                             -             ns
+Page   76: td(CLKL-NEL)         XMC_CLK low to XMC_NE low                                                                  -                           1.5             ns
+Page   76: td(CLKL-NEH)         XMC_CLK low to XMC_NE high                                                           tHCLK + 2                           -             ns
+Page   76: td(CLKL-NADVL)       XMC_CLK low to XMC_NADV low                                                                -                             4             ns
+Page   76: td(CLKL-NADVH)       XMC_CLK low to XMC_NADV high                                                               5                             -             ns
+Page   76: td(CLKL-AV)          XMC_CLK low to XMC_A valid                                                                 -                             0             ns
+Page   76: td(CLKL-AIV)         XMC_CLK low to XMC_A invalid                                                         tHCLK + 4                           -             ns
+Page   76: td(CLKH-NOEL)        XMC_CLK high to XMC_NOE low                                                                -                   tHCLK + 1.5             ns
+Page   76: td(CLKL-NOEH)        XMC_CLK low to XMC_NOE high                                                         tHCLK + 1.5                          -             ns
+Page   76: tsu(DV-CLKH)         XMC_D valid data before XMC_CLK high                                                     6.5                             -             ns
+Page   76: th(CLKH-DV)          XMC_D valid data after XMC_CLK high                                                        7                             -             ns
+Page   76: tsu(NWAITV-CLKH)     XMC_NWAIT valid before XMC_CLK high                                                        7                             -             ns
+Page   76: th(CLKH-NWAITV)      XMC_NWAIT valid after XMC_CLK high                                                         2                             -             ns
+Page   76: XMC_CLK
+Page   76: XMC_NE
+Page   76: XMC_NADV
+Page   76: XMC_A[25:0]
+Page   76: XMC_NOE
+Page   76: XMC_D[15:0]                                                                        D1                                   D2               D3
+Page   76: XMC_NWAIT
+Page   76: XMC_NWAIT
+Page   77: tw(CLK)               XMC_CLK period                                                      20                           -              ns
+Page   77: td(CLKL-NEL)          XMC_CLK low to XMC_NE low                                            -                           2              ns
+Page   77: td(CLKL-NEH)          XMC_CLK low to XMC_NE high                                      tHCLK + 2                        -              ns
+Page   77: td(CLKL-NADVL)        XMC_CLK low to XMC_NADV low                                          -                           4              ns
+Page   77: td(CLKL-NADVH)        XMC_CLK low to XMC_NADV high                                        5                            -              ns
+Page   77: td(CLKL-AV)           XMC_CLK low to XMC_A valid                                           -                           0              ns
+Page   77: td(CLKL-AIV)          XMC_CLK low to XMC_A invalid                                    tHCLK + 2                        -              ns
+Page   77: td(CLKL-NWEL)         XMC_CLK low to XMC_NWE low                                           -                           1              ns
+Page   77: td(CLKL-NWEH)         XMC_CLK low to XMC_NWE high                                     tHCLK + 1                        -              ns
+Page   77: td(CLKL-Data)         XMC_D after XMC_CLK low                                              -                           6              ns
+Page   77: td(CLKL-UBLBH)        XMC_CLK low to XMC_UB/LB high                                   tHCLK + 1.5                      -              ns
+Page   77: tsu(NWAITV-CLKH)      XMC_NWAIT valid before XMC_CLK high                                 7                            -              ns
+Page   77: th(CLKH-NWAITV)       XMC_NWAIT valid after XMC_CLK high                                  2                            -              ns
+Page   77: XMC_CLK
+Page   77: XMC_NE
+Page   77: XMC_NADV
+Page   77: XMC_A[25:0]
+Page   77: XMC_NWE
+Page   77: XMC_D[15:0]                                                                   D1                     D2
+Page   77: XMC_NWAIT
+Page   77: XMC_UB/LB
+Page   78: tw(CLK)               XMC_CLK period                                                                             20                            -               ns
+Page   78: td(CLKL-NEL)          XMC_CLK low to XMC_NE low                                                                   -                           1.5              ns
+Page   78: td(CLKL-NEH)          XMC_CLK low to XMC_NE high                                                            tHCLK + 2                          -               ns
+Page   78: td(CLKL-NADVL)        XMC_CLK low to XMC_NADV low                                                                 -                            4               ns
+Page   78: td(CLKL-NADVH)        XMC_CLK low to XMC_NADV high                                                                5                            -               ns
+Page   78: td(CLKL-AV)           XMC_CLK low to XMC_A valid                                                                  -                            0               ns
+Page   78: td(CLKL-AIV)          XMC_CLK low to XMC_A invalid                                                          tHCLK + 2                          -               ns
+Page   78: td(CLKH-NOEL)         XMC_CLK high to XMC_NOE low                                                                                      tHCLK + 1               ns
+Page   78: td(CLKL-NOEH)         XMC_CLK low to XMC_NOE high                                                          tHCLK + 0.5                         -               ns
+Page   78: td(CLKL-ADV)          XMC_CLK low to XMC_AD valid                                                                 -                           12               ns
+Page   78: td(CLKL-ADIV)         XMC_CLK low to XMC_AD invalid                                                               0                            -               ns
+Page   78: tsu(ADV-CLKH)         XMC_AD valid data before XMC_CLK high                                                       6                            -               ns
+Page   78: th(CLKH-ADV)          XMC_AD valid data after XMC_CLK high                                                  tHCLK - 10                         -               ns
+Page   78: tsu(NWAITV-CLKH)      XMC_NWAIT valid before XMC_CLK high                                                         8                            -               ns
+Page   78: th(CLKH-NWAITV)       XMC_NWAIT valid after XMC_CLK high                                                          6                            -               ns
+Page   78: XMC_CLK
+Page   78: XMC_NE
+Page   78: XMC_NADV
+Page   78: XMC_A[25:16]
+Page   78: XMC_NOE
+Page   78: XMC_AD[15:0]                           Address[15:0]                                   D1                                   D2               D3
+Page   78: XMC_NWAIT
+Page   78: XMC_NWAIT
+Page   79: tw(CLK)              XMC_CLK period                                                         20                  -              ns
+Page   79: td(CLKL-NEL)         XMC_CLK low to XMC_NE low                                                -                 2              ns
+Page   79: td(CLKL-NEH)         XMC_CLK low to XMC_NE high                                          tHCLK + 2              -              ns
+Page   79: td(CLKL-NADVL)       XMC_CLK low to XMC_NADV low                                              -                 4              ns
+Page   79: td(CLKL-NADVH)       XMC_CLK low to XMC_NADV high                                            5                  -              ns
+Page   79: td(CLKL-AV)          XMC_CLK low to XMC_A valid                                               -                 0              ns
+Page   79: td(CLKL-AIV)         XMC_CLK low to XMC_A invalid                                        tHCLK + 2              -              ns
+Page   79: td(CLKL-NWEL)        XMC_CLK low to XMC_NWE low                                               -                 1              ns
+Page   79: td(CLKL-NWEH)        XMC_CLK low to XMC_NWE high                                         tHCLK + 1              -              ns
+Page   79: td(CLKL-ADV)         XMC_CLK low to XMC_AD valid                                              -                12              ns
+Page   79: td(CLKL-ADIV)        XMC_CLK low to XMC_AD invalid                                           3                  -              ns
+Page   79: td(CLKL-Data)        XMC_AD after XMC_CLK low                                                 -                 6              ns
+Page   79: td(CLKL-UBLBH)       XMC_CLK low to XMC_UB/LB high                                       tHCLK + 1              -              ns
+Page   79: tsu(NWAITV-CLKH)     XMC_NWAIT valid before XMC_CLK high                                     7                  -              ns
+Page   79: th(CLKH-NWAITV)      XMC_NWAIT valid after XMC_CLK high                                      2                  -              ns
+Page   79: XMC_CLK
+Page   79: XMC_NE
+Page   79: XMC_NADV
+Page   79: XMC_A[25:16]
+Page   79: XMC_NWE
+Page   79: XMC_AD[15:0]                           Address[15:0]                             D1                 D2
+Page   79: XMC_NWAIT
+Page   79: XMC_UB/LB
+Page   80: The results given in the table below are obtained with the following XMC configuration:
+Page   80:     COM.XMC_SetupTime = 0x01; (Note: STP in XMC_BKxTMGMEM)
+Page   80:     COM.XMC_WaitSetupTime = 0x03; (Note: OP in XMC_BKxTMGMEM)
+Page   80:     COM.XMC_HoldSetupTime = 0x02; (Note: HLD in XMC_BKxTMGMEM)
+Page   80:     COM.XMC_HiZSetupTime = 0x01; (Note: WRSTP in XMC_BKxTMGMEM)
+Page   80:     ATT.XMC_SetupTime = 0x01; (Note: STP in XMC_BKxTMGATT)
+Page   80:     ATT.XMC_WaitSetupTime = 0x03; (Note: OP in XMC_BKxTMGATT)
+Page   80:     ATT.XMC_HoldSetupTime = 0x02; (Note: HLD in XMC_BKxTMGATT)
+Page   80:     ATT.XMC_HiZSetupTime = 0x01; (Note: WRSTP in XMC_BKxTMGATT)
+Page   80:     Bank = XMC_Bank_NAND;
+Page   80:     MemoryDataWidth = XMC_MemoryDataWidth_16b; (Note: Memory data width = 16 bits)
+Page   80:     ECC = XMC_ECC_Enable; (Note: enable ECC calculation)
+Page   80:     ECCPageSize = XMC_ECCPageSize_512Bytes; (Note: ECC page size = 512 Bytes)
+Page   80:     DLYCRSetupTime = 0; (Note: DLYCR in XMC_BKxCTRL)
+Page   80:     DLYARSetupTime = 0; (Note: DLYAR in XMC_BKxCTRL)
+Page   80: tw(NOE)       XMC_NOE low time                                  4THCLK - 1.5   4THCLK + 1.5     ns
+Page   80: tsu(D-NOE)    XMC_D valid data before XMC_NOE high                  25              -           ns
+Page   80: th(NOE-D)     XMC_D valid data after XMC_NOE high                   14              -           ns
+Page   80: td(ALE-NOE)   XMC_ALE valid before XMC_NOE low                       -         3THCLK + 2       ns
+Page   80: th(NOE-ALE)   XMC_NOE high to XMC_ALE invalid                   3THCLK + 4.5        -           ns
+Page   80: tw(NWE)       XMC_NWE low time                                   4THCLK - 1    4THCLK + 2.5     ns
+Page   80: tv(NWE-D)     XMC_NWE low to XMC_D valid                             -              0           ns
+Page   80: th(NWE-D)     XMC_NWE high to XMC_D invalid                     10THCLK + 4         -           ns
+Page   80: td(D-NWE)     XMC_D valid before XMC_NWE high                   6THCLK + 12         -           ns
+Page   80: td(ALE-NWE)   XMC_ALE valid before XMC_NWE low                       -         3THCLK + 1.5     ns
+Page   80: th(NWE-ALE)   XMC_NWE high to XMC_ALE invalid                   3THCLK + 4.5        -           ns
+Page   81: XMC_NCEx     Low
+Page   81: ALE(XMC_A17)
+Page   81: CLE(XMC_A16)
+Page   81: XMC_NWE
+Page   81: XMC_NOE(NRE)
+Page   81: XMC_D[15:0]
+Page   81: XMC_NCEx     Low
+Page   81: ALE(XMC_A17
+Page   81: CLE(XMC_A16
+Page   81: XMC_NWE
+Page   81: XMC_NOE
+Page   81: XMC_D[15:0]
+Page   81: XMC_NCEx     Low
+Page   81: ALE(XMC_A17
+Page   81: CLE(XMC_A16
+Page   81: XMC_NWE
+Page   81: XMC_NOE
+Page   81: XMC_D[15:0]
+Page   82: XMC_NCEx      Low
+Page   82: ALE(XMC_A17
+Page   82: CLE(XMC_A16
+Page   82: XMC_NWE
+Page   82: XMC_NOE
+Page   82: XMC_D[15:0]
+Page   82: The results given in the table below are obtained with the following XMC configuration:
+Page   82:    COM.XMC_SetupTime = 0x04; (Note: STP in XMC_BKxTMGMEM, x = 2…4)
+Page   82:    COM.XMC_WaitSetupTime = 0x07; (Note: OP in XMC_BKxTMGMEM, x = 2…4)
+Page   82:    COM.XMC_HoldSetupTime = 0x04; (Note: HLD in XMC_BKxTMGMEM, x = 2…4)
+Page   82:    COM.XMC_HiZSetupTime = 0x00; (Note: WRSTP in XMC_BKxTMGMEM, x = 2…4)
+Page   82:    ATT.XMC_SetupTime = 0x04; (Note: STP in XMC_BKxTMGATT, x = 2…4)
+Page   82:    ATT.XMC_WaitSetupTime = 0x07; (Note: OP in XMC_BKxTMGATT, x = 2…4)
+Page   82:    ATT.XMC_HoldSetupTime = 0x04; (Note: HLD in XMC_BKxTMGATT, x = 2…4)
+Page   82:    ATT.XMC_HiZSetupTime = 0x00; (Note: WRSTP in XMC_BKxTMGATT, x = 2…4)
+Page   82:    IO.XMC_SetupTime = 0x04; (Note: STP in XMC_BKxTMGIO, x = 4)
+Page   82:    IO.XMC_WaitSetupTime = 0x07; (Note: OP in XMC_BKxTMGIO, x = 4)
+Page   82:    IO.XMC_HoldSetupTime = 0x04; (Note: HLD in XMC_BKxTMGIO, x = 4)
+Page   82:    IO.XMC_HiZSetupTime = 0x00; (Note: WRSTP in XMC_BKxTMGIO, x = 4)
+Page   82:    DLYCRSetupTime = 0; (Note: DLYCR in XMC_BKxCTRL)
+Page   82:    DLYARSetupTime = 0; (Note: DLYAR in XMC_BKxCTRL)
+Page   82: (XMC_BKXTMGMEMx, XMC_BKxTMGATT, XMC_BKxTMGIO, and XMC_BKxCTRL).
+Page   83: tv(NCEx-A)       XMC_NCEx low to XMC_Ax valid                          -             0          ns
+Page   83: th(NCEx-AI)      XMC_NCEx high to XMC_Ax invalid                       0             -          ns
+Page   83: td(NREG-NCEx)    XMC_NCEx low to XMC_NREG valid                        -             2          ns
+Page   83: th(NCEx-NREG)    XMC_NCEx high to XMC_NREG invalid                 tHCLK + 4         -          ns
+Page   83: td(NCEx-NWE)     XMC_NCEx low to XMC_NWE low                           -         5tHCLK + 1     ns
+Page   83: td(NCEx-NOE)     XMC_NCEx low to XMC_NOE low                           -         5tHCLK + 1     ns
+Page   83: tw(NOE)          XMC_NOE low width                                8tHCLK - 0.5   8tHCLK + 1     ns
+Page   83: td(NOE-NCEx)     XMC_NOE high to XMC_NCEx high                   5tHCLK – 0.5        -          ns
+Page   83: tsu(D-NOE)       XMC_Dx valid data before XMC_NOE high                32             -          ns
+Page   83: th(NOE-D)        XMC_Dx valid data after XMC_NOE high                tHCLK           -          ns
+Page   83: tw(NWE)          XMC_NWE low width                                 8tHCLK - 1    8tHCLK + 4     ns
+Page   83: td(NWE-NCEx)     XMC_NWE high to XMC_NCEx high                   5tHCLK + 1.5        -          ns
+Page   83: td(NCEx-NWE)     XMC_NCEx low to XMC_NWE low                           -         5tHCLK + 1     ns
+Page   83: tv(NWE-D)        XMC_NWE low to XMC_Dx valid                           -             0          ns
+Page   83: th(NWE-D)        XMC_NWE high to XMC_Dx invalid                     11tHCLK          -          ns
+Page   83: td(D-NWE)        XMC_Dx valid before XMC_NWE high                13tHCLK + 2.5       -          ns
+Page   83: tw(NIOWR)        XMC_NIOWR low width                                8tHCLK           -          ns
+Page   83: tv(NIOWR-D)      XMC_NIOWR low to XMC_Dx valid                         -         5tHCLK - 4     ns
+Page   83: th(NIOWR-D)      XMC_NIOWR high to XMC_Dx invalid                   11tHCLK          -          ns
+Page   83: td(NCEx-NIOWR)   XMC_NCEx low to XMC_NIOWR valid                                                ns
+Page   83: th(NCEx-NIOWR)   XMC_NCEx high to XMC_NIOWR invalid                5tHCLK - 7        -          ns
+Page   83: td(NIORD-NCEx)   XMC_NCEx low to XMC_NIORD valid                       -         5tHCLK + 1     ns
+Page   83: th(NCEx-NIORD)   XMC_NCEx high to XMC_NIORD invalid              5tHCLK – 0.5        -          ns
+Page   83: tw(NIORD)        XMC_NIORD low width                                8tHCLK           -          ns
+Page   83: tsu(D-NIORD)     XMC_Dx valid before XMC_NIORD high                   28             -          ns
+Page   83: td(NIORD-D)      XMC_Dx valid after XMC_NIORD high                     3             -          ns
+Page   84: XMC_NCE4_2 (1)
+Page   84: XMC_NCE4_1
+Page   84: XMC_A[10:0]
+Page   84: XMC_NREG
+Page   84: XMC_NIOWR
+Page   84: XMC_NIORD
+Page   84: XMC_NWE
+Page   84: XMC_NOE
+Page   84: XMC_D[15:0]
+Page   84: (1) XMC_NCE4_2 remains high (inactive during 8-bit access).
+Page   84: XMC_NCE4_1
+Page   84: XMC_NCE4_2
+Page   84: XMC_A[10:0]
+Page   84: XMC_NREG
+Page   84: XMC_NIOWR
+Page   84: XMC_NIORD
+Page   84: XMC_NWE
+Page   84: XMC_NOE
+Page   84: XMC_D[15:0]
+Page   85: XMC_NCE4_1
+Page   85: XMC_NCE4_2
+Page   85: XMC_A[10:0]
+Page   85: XMC_NIOWR
+Page   85: XMC_NIORD
+Page   85: XMC_NREG
+Page   85: XMC_NWE
+Page   85: XMC_NOE
+Page   85: XMC_D[15:0]
+Page   85: XMC_NCE4_1
+Page   85: XMC_NCE4_2
+Page   85: XMC_A[10:0]
+Page   85: XMC_NIOWR
+Page   85: XMC_NIORD
+Page   85: XMC_NREG
+Page   85: XMC_NWE
+Page   85: XMC_NOE
+Page   85: XMC_D[7:0] (1)
+Page   86: XMC_NCE4_1
+Page   86: XMC_NCE4_2
+Page   86: XMC_A[10:0]
+Page   86: XMC_NREG
+Page   86: XMC_NWE
+Page   86: XMC_NOE
+Page   86: XMC_NIOWR
+Page   86: XMC_NIORD
+Page   86: XMC_D[15:0]
+Page   86: XMC_NCE4_1
+Page   86: XMC_NCE4_2
+Page   86: XMC_A[10:0]
+Page   86: XMC_NREG
+Page   86: XMC_NWE
+Page   86: XMC_NOE
+Page   86: XMC_NIORD
+Page   86: XMC_NIOWR
+Page   86: XMC_D[15:0]
+Page   87: XMC_SDCLK
+Page   87: XMC_A[12:0]                        Row n               Col1             Col2               Coln
+Page   87: XMC_SDCS
+Page   87: XMC_SDNRAS
+Page   87: XMC_SDNCAS
+Page   87: XMC_SDNWE
+Page   87: XMC_D[15:0]                                                         Data1             Data2              Datan
+Page   88: XMC_SDCLK
+Page   88: XMC_A[12:0]                          Row n               Col1             Col2                 Coln
+Page   88: XMC_SDCS
+Page   88: XMC_SDNRAS
+Page   88: XMC_SDNCAS
+Page   88: XMC_SDNWE
+Page   88: XMC_D[15:0]                                              Data1           Data2               Datan
+Page   88: XMC_DQM

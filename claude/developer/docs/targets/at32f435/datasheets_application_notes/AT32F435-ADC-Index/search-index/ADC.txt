@@ -1,0 +1,1201 @@
+Keyword: ADC
+Occurrences: 1197
+================================================================================
+
+Page    1: AT32F435/437 ADC Application Note
+Page    1: AT32F435/437 ADC Application Note
+Page    1: The AT32 MCU ADC is peripheral that converts an analog input signal into a digital signal. Its
+Page    1: application note mainly introduces ADC main features and examples of ADC application.
+Page    2: AT32F435/437 ADC Application Note
+Page    2: 1           ADC introduction ................................................................................................... 8
+Page    2: 2           ADC function overview ......................................................................................... 9
+Page    3: AT32F435/437 ADC Application Note
+Page    3: 3           ADC configuration ............................................................................................... 30
+Page    3: 3.1      ADC configuration procedure ................................................................................. 30
+Page    3: 4           Application: ADC oversampling ......................................................................... 34
+Page    3: 5           Application: ADC voltage monitoring ................................................................ 41
+Page    3: 6           Application: ADC dual buffer mode ................................................................... 46
+Page    3: 7           Application: ADC DMA mode 1 ........................................................................... 52
+Page    4: AT32F435/437 ADC Application Note
+Page    4: 8           Application: ADC DMA mode 2 ........................................................................... 60
+Page    4: 9           Application: ADC DMA mode 3 ........................................................................... 67
+Page    4: 10          Application: ADC DMA mode 4 ........................................................................... 74
+Page    4: 11          Application: ADC DMA mode 5 ........................................................................... 81
+Page    5: AT32F435/437 ADC Application Note
+Page    6: AT32F435/437 ADC Application Note
+Page    7: AT32F435/437 ADC Application Note
+Page    7: Figure 1. ADC1 block diagram ............................................................................................................. 8
+Page    7: Figure 11. Correlation between DMA mode and ADC mode ............................................................. 25
+Page    7: Figure 18. ADC oversampling test result ........................................................................................... 40
+Page    7: Figure 19. ADC voltage monitoring test result ................................................................................... 45
+Page    7: Figure 21. ADC DMA mode 1 test result............................................................................................ 59
+Page    7: Figure 22. ADC DMA mode 2 test result............................................................................................ 66
+Page    7: Figure 23. ADC DMA mode 3 test result............................................................................................ 73
+Page    7: Figure 24. ADC DMA mode 4 test result............................................................................................ 80
+Page    7: Figure 25. ADC DMA mode 5 test result............................................................................................ 88
+Page    7: Figure 26. ADC Vref voltage detection test result ............................................................................. 93
+Page    8: AT32F435/437 ADC Application Note
+Page    8: 1           ADC introduction
+Page    8: The ADC has the following main features:
+Page    8:    End of conversion by software when the ADC is not powered off
+Page    8:    Interrupt and status events: multiple flags of ADC status and some of which has interrupt
+Page    8: Figure 1. ADC1 block diagram
+Page    9: AT32F435/437 ADC Application Note
+Page    9: 2           ADC function overview
+Page    9: ADC clocks include a digital clock and an analog clock, which can be enabled by setting the
+Page    9: ADCxEN bit in the CRM_APB2EN register.
+Page    9:      Analog clock, which is the ADCCLK derived from ADC frequency division and used for the
+Page    9: ADC clock enable is implemented by an independent function, and the code is as follows:
+Page    9: crm_periph_clock_enable(CRM_ADCx_PERIPH_CLOCK, TRUE);
+Page    9: After the ADC clock is enabled, the software can start to configure the ADC.
+Page    9: ADC prescaler configuration is implemented by the ADC common structure, and the code is as
+Page    9: adc_common_struct.div = ADC_HCLK_DIV_4;
+Page    9: adc_common_config(&adc_common_struct);
+Page    9: It is used for the configuration of ADC analog clock (i.e., the ADCCLK derived from divided HCLK,
+Page    9: ADCCLK=HCLK/ div).
+Page    9: 1)    The ADCCLK is derived from divided HCLK, and it must be less than 80 MHz.
+Page    9: 2)    The ADCCLK frequency must be lower than PCLK2.
+Page    9: 3) ADC1, ADC2 and ADC3 have an independent clock enable bit respectively, while the ADC
+Page    9: when any other ADCx clock is enabled.
+Page    9: 4) The ADC analog module is powered by setting the ADCEN bit in the ADC_CTRL2 register, and
+Page    9: it is not affected by the ADC clock status. Typically, if the ADCEN bit is not cleared when the system
+Page    9: enters Deepsleep mode, the ADC analog module still consume power.
+Page    9: 5) There is a waiting period for ADC power-on, and the subsequent trigger operation is performed
+Page    9: The ADC supports 12-bit, 10-bit, 8-bit and 6-bit configuration resolution.
+Page    9: The ADC sampling time can be selected as 2.5, 6.5, 12.5, 24.5, 47.5, 92.5, 247.5 and 640.5 cycles.
+Page    9: The ADC can read channel data through sampling and conversion.
+Page   10: AT32F435/437 ADC Application Note
+Page   10: charge the ADC internal sampling capacitor by external power for the specified sampling period.
+Page   10: The conversion starts automatically after completion of sampling. The ADC uses successive
+Page   10: A single one conversion time (ADCCLK period) = sampling time + resolution bits +0.5
+Page   10: 6.5+10 + 0.5 = 17 ADCCLK periods.
+Page   10: ADC resolution configuration is implemented by an independent function, and the code is as
+Page   10: adc_resolution_set(ADC1,ADC_RESOLUTION_6B);
+Page   10: Note: The ADC self-calibration is only supported in 12-bit resolution, and resolution switching can be
+Page   10: ADC sampling period is implemented by an independent function, and the code is as follows:
+Page   10: adc_ordinary_channel_set(ADC1, ADC_CHANNEL_4, 1, ADC_SAMPLETIME_12_5);
+Page   10: adc_preempt_channel_set(ADC1, ADC_CHANNEL_7, 1, ADC_SAMPLETIME_47_5);
+Page   10: The ADC has self-calibration function. The self-calibration command is executed by software to
+Page   10: calculate a calibration value, and then the value is sent back to the ADC automatically without
+Page   10: software intervention to compensate the ADC deviation to guarantee accurate converted data.
+Page   10: automatically. The calculated calibration value is stored in the ADC->CALVAL register.
+Page   10:     Manually set the calibration value by software, and this value is stored in the ADC->CALVAL
+Page   10:     Select 12-bit and enable ADC;
+Page   11: AT32F435/437 ADC Application Note
+Page   11:     Wait until the ADC RDY flag is set;
+Page   11:     Complete the above procedures, and then trigger ADC conversion.
+Page   11: adc_resolution_set(ADC1,ADC_RESOLUTION_12B);
+Page   11: /* adc enable */
+Page   11: adc_enable(ADC1, TRUE);
+Page   11: while(adc_flag_get(ADC1, ADC_RDY_FLAG) == RESET);
+Page   11: /* adc calibration */
+Page   11: adc_calibration_init(ADC1);
+Page   11: while(adc_calibration_init_status_get(ADC1));
+Page   11: adc_calibration_start(ADC1);
+Page   11: while(adc_calibration_status_get(ADC1));
+Page   11: adc_resolution_set(ADC1,ADC_RESOLUTION_6B);
+Page   11: while(adc_flag_get(ADC1, ADC_RDY_FLAG) == RESET);
+Page   11: adc_resolution_set(ADC1,ADC_RESOLUTION_12B);
+Page   11: /* adc enable */
+Page   11: adc_enable(ADC1, TRUE);
+Page   11: while(adc_flag_get(ADC1, ADC_RDY_FLAG) == RESET);
+Page   11: /* adc calibration */
+Page   11: adc_calibration_value_set(ADC1, 0x3F);
+Page   11: adc_resolution_set(ADC1,ADC_RESOLUTION_6B);
+Page   11: while(adc_flag_get(ADC1, ADC_RDY_FLAG) == RESET);
+Page   11: The ADC self-calibration is only supported in 12-bit resolution, and resolution switching can be
+Page   12: AT32F435/437 ADC Application Note
+Page   12: The ADC supports sequence mode. When the sequence mode is enabled, a single trigger event
+Page   12: The ADC_OSQx register is used to define the sequence of ordinary channels, and ordinary
+Page   12: channels start converting from the QSN1. The ADC_PSQ register is used to define the sequence of
+Page   12: ADC_PSQ[21:0] = 10 00110 00101 00100 00011, and the scan conversion follows the sequence of
+Page   12: The ADC supports repetition mode. In this mode, when a trigger signal is detected, the ordinary
+Page   12: The ADC supports partition mode.
+Page   13: AT32F435/437 ADC Application Note
+Page   13: The ADC supports automatic preempted group conversion mode. In this mode, once the ordinary
+Page   13: The ADC sequence mode and repetition mode are configured by the ADC base structure, and the
+Page   13: adc_base_struct.sequence_mode = TRUE;
+Page   13: adc_base_struct.repeat_mode = TRUE;
+Page   13: adc_base_config(ADC1, &adc_base_struct);
+Page   14: AT32F435/437 ADC Application Note
+Page   14: The ADC partition mode is configured by an independent function, and the code is as follows:
+Page   14: adc_ordinary_part_count_set(ADC1, 1);
+Page   14: adc_ordinary_part_mode_enable(ADC1, TRUE);
+Page   14: adc_preempt_part_mode_enable(ADC1, TRUE);
+Page   14: adc_preempt_auto_mode_enable(ADC1, TRUE);
+Page   14: The ADC conversions are divided into two groups: ordinary channels and preempted channels.
+Page   15: AT32F435/437 ADC Application Note
+Page   15: adc_base_struct.ordinary_channel_length = 3;
+Page   15: adc_base_config(ADC1, &adc_base_struct);
+Page   15: adc_ordinary_channel_set(ADC1, ADC_CHANNEL_4, 1, ADC_SAMPLETIME_47_5);
+Page   15: adc_ordinary_channel_set(ADC1, ADC_CHANNEL_5, 2, ADC_SAMPLETIME_47_5);
+Page   15: adc_ordinary_channel_set(ADC1, ADC_CHANNEL_6, 3, ADC_SAMPLETIME_47_5);
+Page   15: adc_preempt_channel_length_set(ADC1, 3);
+Page   15: adc_preempt_channel_set(ADC1, ADC_CHANNEL_7, 1, ADC_SAMPLETIME_47_5);
+Page   15: adc_preempt_channel_set(ADC1, ADC_CHANNEL_8, 2, ADC_SAMPLETIME_47_5);
+Page   15: adc_preempt_channel_set(ADC1, ADC_CHANNEL_9, 3, ADC_SAMPLETIME_47_5);
+Page   15: ADC conversion can be triggered by software write operation to the OCSWTRG and PCSWTRG bits
+Page   15: of the ADC_CTRL2 register, or by an external event. The external events include timer and pin triggers,
+Page   16: AT32F435/437 ADC Application Note
+Page   16: adc_ordinary_conversion_trigger_set(ADC1, ADC_ORDINARY_TRIG_TMR1CH1,
+Page   16: ADC_ORDINARY_TRIG_EDGE_NONE);
+Page   16: adc_preempt_conversion_trigger_set(ADC1, ADC_PREEMPT_TRIG_TMR1CH4,
+Page   16: ADC_PREEMPT_TRIG_EDGE_NONE);
+Page   16: Once the ADC is ready, the software can execute “adc_ordinary_software_trigger_enable(ADC1,
+Page   16: TRUE);/ adc_preempt_software_trigger_enable (ADC1, TRUE);” to trigger ordinary/preempted
+Page   16: adc_ordinary_conversion_trigger_set(ADC1, ADC_ORDINARY_TRIG_TMR1CH1,
+Page   17: AT32F435/437 ADC Application Note
+Page   17: ADC_ORDINARY_TRIG_EDGE_RISING);
+Page   17: adc_preempt_conversion_trigger_set(ADC1, ADC_PREEMPT_TRIG_TMR3CH4,
+Page   17: ADC_PREEMPT_TRIG_EDGE_RISING);
+Page   17: Once the ADC is ready, the TMR1CH1 rising edge triggers ordinary channel conversion, and the
+Page   17: In the master/slave mode (several ADCs), the corresponding trigger polarity must be configured as
+Page   17: ADC has dedicated data registers. At the end of the conversion of the ordinary group, the converted
+Page   17: value is stored in the ADC_ODT register. Once the preempted group conversion ends, the
+Page   17: converted data of the preempted group is stored in the ADC_PDTx register. Data management
+Page   17: The converted data of the preempted group is decreased by the offset written in the ADC_PCDTOx
+Page   18: AT32F435/437 ADC Application Note
+Page   18: The data alignment is implemented by the ADC base structure, and the code is as follows:
+Page   18: adc_base_struct.data_align = ADC_RIGHT_ALIGNMENT;
+Page   18: adc_base_config(ADC1, &adc_base_struct);
+Page   18: adc_preempt_offset_value_set(ADC1, ADC_PREEMPT_CHANNEL_1, 0x000);
+Page   18: adc_preempt_offset_value_set(ADC1, ADC_PREEMPT_CHANNEL_2, 0x111);
+Page   18: adc_preempt_offset_value_set(ADC1, ADC_PREEMPT_CHANNEL_3, 0x202);
+Page   18: adc_preempt_offset_value_set(ADC1, ADC_PREEMPT_CHANNEL_4, 0x123);
+Page   18: The ADABRT bit in the ADC_CTRL2 register can be used to stop ADC conversions. At the end of
+Page   18: configure a new channel sequence, and the ADC starts conversions from the beginning based on
+Page   19: AT32F435/437 ADC Application Note
+Page   19: adc_conversion_stop(ADC1);
+Page   19: while(adc_conversion_stop_status_get(ADC1));
+Page   19: The ADC conversion abort command is valid for both ordinary and preempted channel conversions.
+Page   19: The ADC conversion abort has similar functions to ADC re-power, but it does not power off ADC,
+Page   19: therefore the ADC wakeup time is not required.
+Page   19: After the ADC conversion abort command is executed, wait for the ADABRT bit to be cleared by
+Page   19: The ADC has oversampling function. A single oversampling converted data can be done through
+Page   19:     Oversampling ratio is selected through the OSRSEL bit in the ADC_OVSP register. This bit is
+Page   19:     Oversampling shift is selected through the OSSSEL bit in the ADC_OVSP register, which is
+Page   20: AT32F435/437 ADC Application Note
+Page   21: AT32F435/437 ADC Application Note
+Page   21: adc_oversample_ratio_shift_set(ADC1, ADC_OVERSAMPLE_RATIO_8, ADC_OVERSAMPLE_SHIFT_3);
+Page   21: adc_ordinary_oversample_enable(ADC1, TRUE);
+Page   21: adc_preempt_oversample_enable(ADC1, TRUE);
+Page   21: adc_ordinary_oversample_restart_set(ADC1, ADC_OVERSAMPLE_CONTINUE);
+Page   21: adc_ordinary_oversample_trig_enable(ADC1, FALSE);
+Page   22: AT32F435/437 ADC Application Note
+Page   22: The ADC has monitoring function for the correlation between input voltage and threshold.
+Page   22: The VMOR bit will be set if the converted result is beyond the high threshold (ADC_VMHB[11:0]) or
+Page   22: less than the low threshold (ADC_VMLB[11:0]).
+Page   22: adc_voltage_monitor_threshold_value_set(ADC1, 0x100, 0x000);
+Page   22: adc_voltage_monitor_single_channel_select(ADC1, ADC_CHANNEL_5);
+Page   22: adc_voltage_monitor_enable(ADC1, ADC_VMONITOR_SINGLE_ORDINARY_PREEMPT);
+Page   22: adc_voltage_monitor_threshold_value_set(ADC1, 0x100, 0x000);
+Page   22: adc_voltage_monitor_enable(ADC1, ADC_VMONITOR_ALL_ORDINARY_PREEMPT);
+Page   22: bit registers (ADC_VMHB[15:0] and ADC_VMLB[15:0]) and the oversampled data.
+Page   22: ADC has multiple interrupts and status flags, which should be considered for program design.
+Page   22:     ADC ready to conversion flag (RDY)
+Page   22: It indicates the ADC status. It can be read only and cannot be cleared by software nor generate
+Page   22: It is set by hardware when the ADC is powered. It is possible to perform calibration and trigger
+Page   22: It indicates the ADC conversion data overflow. It is cleared by software and can generate an
+Page   23: AT32F435/437 ADC Application Note
+Page   23: without the need of ADC reset.
+Page   23: each ADC and then trigger conversion.
+Page   23: ADC_ODT register, and it can generate an interrupt.
+Page   23: This flag is set when the ADC channel converted data is beyond the programmed threshold,
+Page   23: /* enable adc overflow interrupt */
+Page   23: adc_interrupt_enable(ADC1, ADC_OCCO_INT, TRUE);
+Page   23: if(adc_flag_get(ADC1, ADC_VMOR_FLAG) != RESET)
+Page   23: adc_flag_clear(ADC1, ADC_PCCS_FLAG);
+Page   23: The three ADCs of AT32F435 MCU share one interrupt vector.
+Page   23: The ADC_CSTS register contains the ADC status flag mapping that is read-only and cannot be
+Page   24: AT32F435/437 ADC Application Note
+Page   24: The ADC has multiple methods to read the converted data according to the channel type and
+Page   24: preempted channel data is obtained by CPU reading the ADC_PDTx register.
+Page   24: It is applicable in non-combined mode. Set the EOCSFEN bit in the ADC_CTRL2 register by
+Page   24: software to set the OCCE flag every time the ADC_ODT register is updated. The converted data is
+Page   24: In non-combined mode, the ordinary channel data is stored in an independent ADC data register.
+Page   24: Set the OCDMAEN and OCDRCEN bits to generate a DMA request each time the ADC_ODT
+Page   24: In combined mode, the ordinary channel data is stored in the ADC_CODT register. The
+Page   24: MSDMASEL bit of the ADC_CCTRL register can be used to select from five DMA transfer modes.
+Page   24: As long as the MSDMASEL bit is set (≠0), the ADC1 DMA channel is used to generate a DMA
+Page   24: MSDMASEL                    DMA request      ADC_CODT[31:0]
+Page   24: 001                         1st          16 bit 0, ADC1_ODT[15:0]
+Page   24: Single slave       2nd          16 bit 0, ADC2_ODT [15:0]
+Page   24: 3rd          16 bit 0, ADC1_ODT [15:0]
+Page   24: 1st          16 bit 0, ADC1_ODT[15:0]
+Page   24: 2nd          16 bit 0, ADC2_ODT [15:0]
+Page   24: 3rd          16 bit 0, ADC3_ODT[15:0]
+Page   24: 4th          16 bit 0, ADC1_ODT [15:0]
+Page   24: 010                         1            ADC2_ODT[15:0], ADC1_ODT[15:0]
+Page   24: 2nd          ADC2_ODT[15:0], ADC1_ODT[15:0]
+Page   24: 1st          ADC2_ODT[15:0], ADC1_ODT[15:0]
+Page   24: 2nd          ADC1_ODT[15:0], ADC3_ODT[15:0]
+Page   24: 3rd          ADC3_ODT[15:0], ADC2_ODT[15:0]
+Page   24: 4th          ADC2_ODT[15:0], ADC1_ODT[15:0]
+Page   24: 011                         1st          16 bit 0, ADC2_ODT[7:0], ADC1_ODT[7:0]
+Page   24: 2nd          16 bit 0, ADC2_ODT[7:0], ADC1_ODT[7:0]
+Page   24: 1st          16 bit 0, ADC2_ODT[7:0], ADC1_ODT[7:0]
+Page   24: 2nd          16 bit 0, ADC1_ODT[7:0], ADC3_ODT[7:0]
+Page   24: 3rd          16 bit 0, ADC3_ODT[7:0], ADC2_ODT[7:0]
+Page   24: 4th          16 bit 0, ADC2_ODT[7:0], ADC1_ODT[7:0]
+Page   25: AT32F435/437 ADC Application Note
+Page   25: MSDMASEL                       DMA request      ADC_CODT[31:0]
+Page   25: 100                               1st        8 bit 0, ADC3_ODT[7:0], ADC2_ODT[7:0], ADC1_ODT[7:0]
+Page   25: 2nd        8 bit 0, ADC3_ODT[7:0], ADC2_ODT[7:0], ADC1_ODT[7:0]
+Page   25: 101                               1st        ADC2_ODT[15:0], ADC1_ODT[15:0]
+Page   25: Dual slave           2nd        16 bit 0, ADC3_ODT[15:0]
+Page   25: 3rd        ADC2_ODT[15:0], ADC1_ODT[15:0]
+Page   25: Figure 11. Correlation between DMA mode and ADC mode
+Page   25: if(adc_flag_get(ADC1, ADC_PCCE_FLAG) != RESET)
+Page   25: adc_flag_clear(ADC1, ADC_PCCE_FLAG);
+Page   25: adc1_preempt_valuetab[preempt_conversion_count][0] = adc_preempt_conversion_data_get(ADC1,
+Page   25: ADC_PREEMPT_CHANNEL_1);
+Page   25: adc1_preempt_valuetab[preempt_conversion_count][1] = adc_preempt_conversion_data_get(ADC1,
+Page   25: ADC_PREEMPT_CHANNEL_2);
+Page   25: adc1_preempt_valuetab[preempt_conversion_count][2] = adc_preempt_conversion_data_get(ADC1,
+Page   25: ADC_PREEMPT_CHANNEL_3);
+Page   25: while(adc_flag_get(ADC1, ADC_OCCE_FLAG) == RESET);
+Page   25: *(p_adc1_ordinary++) = adc_ordinary_conversion_data_get(ADC1);
+Page   25: adc_dma_mode_enable(ADC1, TRUE);
+Page   25: adc_dma_request_repeat_enable(ADC1, FALSE);
+Page   26: AT32F435/437 ADC Application Note
+Page   26: dmamux_init(DMA1MUX_CHANNEL1, DMAMUX_DMAREQ_ID_ADC1);
+Page   26: adc_common_struct.common_dma_mode = ADC_COMMON_DMAMODE_3;
+Page   26: adc_common_struct.common_dma_request_repeat_state = FALSE;
+Page   26: adc_common_config(&adc_common_struct);
+Page   26: dmamux_init(DMA1MUX_CHANNEL1, DMAMUX_DMAREQ_ID_ADC1);
+Page   26: Since three ADCs share one interrupt vector, the interrupt service function should be simple so that
+Page   26: conversion. The ADC_ODT register is used as a single interface obtaining the ordinary channel
+Page   26: converted data of master/salve ADC.
+Page   26: In a single master/slave mode, ADC1 acts as a master while ADC2 as a slave, and ADC3 behaves
+Page   26: independently. In dual master/slave mode, ADC1 acts as a master, while both ADC2 and ADC3 act
+Page   27: AT32F435/437 ADC Application Note
+Page   28: AT32F435/437 ADC Application Note
+Page   28: The same channel is not allowed to be sampled by several ADCs simultaneously. Do not put the
+Page   28: same channel in the same sequence location of different ADCs.
+Page   28: master/slave ADCs convert the preempted channels alternately.
+Page   28: After a master trigger occurs, the conversion interval between ADCs is based on the programmed
+Page   28: The shift length is set by the ASISEL bit in the ADC_CCTRL register.
+Page   28: In this mode, the sampling interval between ADCs is configured to at least 2.5 ADCCLK cycles by
+Page   28: Because of this feature, it is possible to put the same channel in the same ADC location without
+Page   29: AT32F435/437 ADC Application Note
+Page   29: The master/slave mode configuration is implemented by the ADC common structure, and the code
+Page   29: adc_common_struct.combine_mode = ADC_ORDINARY_SHIFT_ONLY_TWOSLAVE_MODE;
+Page   29: adc_common_config(&adc_common_struct);
+Page   29: To enable several ADC conversions with low resolution simultaneously, it is recommended to use
+Page   30: AT32F435/437 ADC Application Note
+Page   30: 3           ADC configuration
+Page   30: This section introduces how to configure ADC and get the relevant data.
+Page   30: 3.1         ADC configuration procedure
+Page   30: Generally, the ADC configuration includes:
+Page   30: Note: It is the configuration of trigger source; the trigger source can be enabled after ADC
+Page   30: The converted data of ADC ordinary group of channels can be transferred by DMA. If DMA
+Page   30:    Enable ADC digital clock
+Page   30: Enable the ADC digital clock to configure relevant functions.
+Page   30:    ADC common structure configuration
+Page   30: It includes configuration of the master/slave mode, ADC division, master/slave DMA mode,
+Page   30:    ADC division
+Page   30: Set the ADC analog module clock. It is clocked by a divided HICK, with configurable
+Page   30: It is used to set the adjacent ADC sampling interval in ordinary shift mode (configurable 5-
+Page   30: 20 ADCCLK cycles).
+Page   30: ADC1 CH16 and CH17 respectively.
+Page   30: Enable the battery voltage; then it is divided by 4 before being connected to the ADC1
+Page   30: Note: When the ADC is used for sampling VBAT voltage, the VBAT keeps consuming as long
+Page   31: AT32F435/437 ADC Application Note
+Page   31:    ADC base structure configuration
+Page   32: AT32F435/437 ADC Application Note
+Page   32:    ADC power-on
+Page   32: Enable and power on the ADC, and wait until the ADC RDY flag is set.
+Page   32:    ADC calibration
+Page   32: To guarantee accurate converted data, the ADC requires calibration after power-on, which
+Page   32:    ADC resolution adjustment
+Page   32: Adjust the resolution after completion of ADC calibration, and wait until the ADC RDY flag is
+Page   32: Perform the above procedures to complete ADC initialization; then, trigger conversions by
+Page   32: The ADC supports multiple methods to read the converted data, including:
+Page   32: 1)   Set the EOCSFEN bit in the ADC_CTRL2 register by software, allowing the OCCE flag to
+Page   33: AT32F435/437 ADC Application Note
+Page   33: 2)   Enable ADC DMA mode;
+Page   33: 2)   Enable the ADC DMA mode and enable the DMA request for ordinary continuous mode;
+Page   34: AT32F435/437 ADC Application Note
+Page   34: 4           Application: ADC oversampling
+Page   34: The ADC supports oversampling to guarantee the accuracy of converted data.
+Page   34: project\at_start_f4xx\examples\adc\ordinary_preempt_oversampling
+Page   34:      Configure the GPIO for ADC
+Page   34:      Complete ADC relevant configurations
+Page   34: /* config adc pin as analog input mode */
+Page   35: AT32F435/437 ADC Application Note
+Page   35: dma_init_struct.memory_base_addr = (uint32_t)adc1_ordinary_valuetab;
+Page   35: dma_init_struct.peripheral_base_addr = (uint32_t)&(ADC1->odt);
+Page   35: dmamux_init(DMA1MUX_CHANNEL1, DMAMUX_DMAREQ_ID_ADC1);
+Page   35:     ADC configuration function code
+Page   35: static void adc_config(void)
+Page   35: adc_common_config_type adc_common_struct;
+Page   35: adc_base_config_type adc_base_struct;
+Page   35: crm_periph_clock_enable(CRM_ADC1_PERIPH_CLOCK, TRUE);
+Page   35: nvic_irq_enable(ADC1_2_3_IRQn, 0, 0);
+Page   35: adc_common_default_para_init(&adc_common_struct);
+Page   35: adc_common_struct.combine_mode = ADC_INDEPENDENT_MODE;
+Page   35: /* config division,adcclk is division by hclk */
+Page   35: adc_common_struct.div = ADC_HCLK_DIV_4;
+Page   35: adc_common_struct.common_dma_mode = ADC_COMMON_DMAMODE_DISABLE;
+Page   36: AT32F435/437 ADC Application Note
+Page   36: adc_common_struct.common_dma_request_repeat_state = FALSE;
+Page   36: /* config adjacent adc sampling interval,it's useful for ordinary shifting mode */
+Page   36: adc_common_struct.sampling_interval = ADC_SAMPLING_INTERVAL_5CYCLES;
+Page   36: adc_common_struct.tempervintrv_state = FALSE;
+Page   36: adc_common_struct.vbat_state = FALSE;
+Page   36: adc_common_config(&adc_common_struct);
+Page   36: adc_base_default_para_init(&adc_base_struct);
+Page   36: adc_base_struct.sequence_mode = TRUE;
+Page   36: adc_base_struct.repeat_mode = FALSE;
+Page   36: adc_base_struct.data_align = ADC_RIGHT_ALIGNMENT;
+Page   36: adc_base_struct.ordinary_channel_length = 3;
+Page   36: adc_base_config(ADC1, &adc_base_struct);
+Page   36: adc_resolution_set(ADC1, ADC_RESOLUTION_12B);
+Page   36: adc_ordinary_channel_set(ADC1, ADC_CHANNEL_4, 1, ADC_SAMPLETIME_6_5);
+Page   36: adc_ordinary_channel_set(ADC1, ADC_CHANNEL_5, 2, ADC_SAMPLETIME_6_5);
+Page   36: adc_ordinary_channel_set(ADC1, ADC_CHANNEL_6, 3, ADC_SAMPLETIME_6_5);
+Page   36: adc_ordinary_conversion_trigger_set(ADC1, ADC_ORDINARY_TRIG_TMR1CH1,
+Page   36: ADC_ORDINARY_TRIG_EDGE_NONE);
+Page   36: adc_dma_mode_enable(ADC1, TRUE);
+Page   36: adc_dma_request_repeat_enable(ADC1, FALSE);
+Page   36: adc_preempt_channel_length_set(ADC1, 3);
+Page   36: adc_preempt_channel_set(ADC1, ADC_CHANNEL_7, 1, ADC_SAMPLETIME_6_5);
+Page   36: adc_preempt_channel_set(ADC1, ADC_CHANNEL_8, 2, ADC_SAMPLETIME_6_5);
+Page   36: adc_preempt_channel_set(ADC1, ADC_CHANNEL_9, 3, ADC_SAMPLETIME_6_5);
+Page   36: adc_preempt_conversion_trigger_set(ADC1, ADC_PREEMPT_TRIG_TMR1CH4,
+Page   37: AT32F435/437 ADC Application Note
+Page   37: ADC_PREEMPT_TRIG_EDGE_NONE);
+Page   37: adc_preempt_auto_mode_enable(ADC1, FALSE);
+Page   37: /* enable adc overflow interrupt */
+Page   37: adc_interrupt_enable(ADC1, ADC_OCCO_INT, TRUE);
+Page   37: /* enable adc preempt channels conversion end interrupt */
+Page   37: adc_interrupt_enable(ADC1, ADC_PCCE_INT, TRUE);
+Page   37: adc_oversample_ratio_shift_set(ADC1, ADC_OVERSAMPLE_RATIO_8,
+Page   37: ADC_OVERSAMPLE_SHIFT_3);
+Page   37: adc_ordinary_oversample_trig_enable(ADC1, FALSE);
+Page   37: adc_ordinary_oversample_restart_set(ADC1, ADC_OVERSAMPLE_CONTINUE);
+Page   37: adc_ordinary_oversample_enable(ADC1, TRUE);
+Page   37: adc_preempt_oversample_enable(ADC1, TRUE);
+Page   37: /* adc enable */
+Page   37: adc_enable(ADC1, TRUE);
+Page   37: while(adc_flag_get(ADC1, ADC_RDY_FLAG) == RESET);
+Page   37: /* adc calibration */
+Page   37: adc_calibration_init(ADC1);
+Page   37: while(adc_calibration_init_status_get(ADC1));
+Page   37: adc_calibration_start(ADC1);
+Page   37: while(adc_calibration_status_get(ADC1));
+Page   38: AT32F435/437 ADC Application Note
+Page   38: /* Get the ADC overflow status and converted data of preempted channel */
+Page   38: void ADC1_2_3_IRQHandler(void)
+Page   38: if(adc_flag_get(ADC1, ADC_OCCO_FLAG) != RESET)
+Page   38: adc_flag_clear(ADC1, ADC_OCCO_FLAG);
+Page   38: adc1_overflow_flag++;
+Page   38: if(adc_flag_get(ADC1, ADC_PCCE_FLAG) != RESET)
+Page   38: adc_flag_clear(ADC1, ADC_PCCE_FLAG);
+Page   38: adc1_preempt_valuetab[preempt_conversion_count][0] = adc_preempt_conversion_data_get(ADC1,
+Page   38: ADC_PREEMPT_CHANNEL_1);
+Page   38: adc1_preempt_valuetab[preempt_conversion_count][1] = adc_preempt_conversion_data_get(ADC1,
+Page   38: ADC_PREEMPT_CHANNEL_2);
+Page   38: adc1_preempt_valuetab[preempt_conversion_count][2] = adc_preempt_conversion_data_get(ADC1,
+Page   38: ADC_PREEMPT_CHANNEL_3);
+Page   38: adc_config();
+Page   38: /* adc1 software trigger start conversion */
+Page   39: AT32F435/437 ADC Application Note
+Page   39: adc_ordinary_software_trigger_enable(ADC1, TRUE);
+Page   39: adc_preempt_software_trigger_enable(ADC1, TRUE);
+Page   39: if((dma_trans_complete_flag == 0) || (adc1_overflow_flag != 0))
+Page   39: printf("adc1_overflow_flag = %d\r\n",adc1_overflow_flag);
+Page   39: printf("adc1_ordinary_valuetab[%d][0] = 0x%x\r\n", index, adc1_ordinary_valuetab[index][0]);
+Page   39: printf("adc1_ordinary_valuetab[%d][1] = 0x%x\r\n", index, adc1_ordinary_valuetab[index][1]);
+Page   39: printf("adc1_ordinary_valuetab[%d][2] = 0x%x\r\n", index, adc1_ordinary_valuetab[index][2]);
+Page   39: printf("adc1_preempt_valuetab[%d][0] = 0x%x\r\n", index, adc1_preempt_valuetab[index][0]);
+Page   39: printf("adc1_preempt_valuetab[%d][1] = 0x%x\r\n", index, adc1_preempt_valuetab[index][1]);
+Page   39: printf("adc1_preempt_valuetab[%d][2] = 0x%x\r\n", index, adc1_preempt_valuetab[index][2]);
+Page   40: AT32F435/437 ADC Application Note
+Page   40: Figure 18. ADC oversampling test result
+Page   41: AT32F435/437 ADC Application Note
+Page   41: 5           Application: ADC voltage monitoring
+Page   41: The ADC supports voltage monitoring.
+Page   41: project\at_start_f4xx\examples\ adc\voltage_monitoring
+Page   41:      Configure the GPIO for ADC
+Page   41:      Complete configurations relevant to ADC and voltage monitoring
+Page   41: /* config adc pin as analog input mode */
+Page   42: AT32F435/437 ADC Application Note
+Page   42: dma_init_struct.memory_base_addr = (uint32_t)adc1_ordinary_valuetab;
+Page   42: dma_init_struct.peripheral_base_addr = (uint32_t)&(ADC1->odt);
+Page   42: dmamux_init(DMA1MUX_CHANNEL1, DMAMUX_DMAREQ_ID_ADC1);
+Page   42:     ADC configuration function code
+Page   42: static void adc_config(void)
+Page   42: adc_common_config_type adc_common_struct;
+Page   42: adc_base_config_type adc_base_struct;
+Page   42: crm_periph_clock_enable(CRM_ADC1_PERIPH_CLOCK, TRUE);
+Page   42: nvic_irq_enable(ADC1_2_3_IRQn, 0, 0);
+Page   42: adc_common_default_para_init(&adc_common_struct);
+Page   42: adc_common_struct.combine_mode = ADC_INDEPENDENT_MODE;
+Page   42: /* config division,adcclk is division by hclk */
+Page   42: adc_common_struct.div = ADC_HCLK_DIV_4;
+Page   42: adc_common_struct.common_dma_mode = ADC_COMMON_DMAMODE_DISABLE;
+Page   42: adc_common_struct.common_dma_request_repeat_state = FALSE;
+Page   42: /* config adjacent adc sampling interval,it's useful for ordinary shifting mode */
+Page   43: AT32F435/437 ADC Application Note
+Page   43: adc_common_struct.sampling_interval = ADC_SAMPLING_INTERVAL_5CYCLES;
+Page   43: adc_common_struct.tempervintrv_state = FALSE;
+Page   43: adc_common_struct.vbat_state = FALSE;
+Page   43: adc_common_config(&adc_common_struct);
+Page   43: adc_base_default_para_init(&adc_base_struct);
+Page   43: adc_base_struct.sequence_mode = TRUE;
+Page   43: adc_base_struct.repeat_mode = FALSE;
+Page   43: adc_base_struct.data_align = ADC_RIGHT_ALIGNMENT;
+Page   43: adc_base_struct.ordinary_channel_length = 3;
+Page   43: adc_base_config(ADC1, &adc_base_struct);
+Page   43: adc_resolution_set(ADC1, ADC_RESOLUTION_12B);
+Page   43: adc_ordinary_channel_set(ADC1, ADC_CHANNEL_4, 1, ADC_SAMPLETIME_47_5);
+Page   43: adc_ordinary_channel_set(ADC1, ADC_CHANNEL_5, 2, ADC_SAMPLETIME_47_5);
+Page   43: adc_ordinary_channel_set(ADC1, ADC_CHANNEL_6, 3, ADC_SAMPLETIME_47_5);
+Page   43: adc_ordinary_conversion_trigger_set(ADC1, ADC_ORDINARY_TRIG_TMR1CH1,
+Page   43: ADC_ORDINARY_TRIG_EDGE_NONE);
+Page   43: adc_dma_mode_enable(ADC1, TRUE);
+Page   43: adc_dma_request_repeat_enable(ADC1, TRUE);
+Page   43: adc_voltage_monitor_threshold_value_set(ADC1, 0x100, 0x000);
+Page   43: adc_voltage_monitor_single_channel_select(ADC1, ADC_CHANNEL_5);
+Page   43: adc_voltage_monitor_enable(ADC1, ADC_VMONITOR_SINGLE_ORDINARY);
+Page   43: /* enable adc overflow interrupt */
+Page   43: adc_interrupt_enable(ADC1, ADC_OCCO_INT, TRUE);
+Page   43: adc_interrupt_enable(ADC1, ADC_VMOR_INT, TRUE);
+Page   43: /* adc enable */
+Page   43: adc_enable(ADC1, TRUE);
+Page   44: AT32F435/437 ADC Application Note
+Page   44: while(adc_flag_get(ADC1, ADC_RDY_FLAG) == RESET);
+Page   44: /* adc calibration */
+Page   44: adc_calibration_init(ADC1);
+Page   44: while(adc_calibration_init_status_get(ADC1));
+Page   44: adc_calibration_start(ADC1);
+Page   44: while(adc_calibration_status_get(ADC1));
+Page   44: void ADC1_2_3_IRQHandler(void)
+Page   44: if(adc_flag_get(ADC1, ADC_OCCO_FLAG) != RESET)
+Page   44: adc_flag_clear(ADC1, ADC_OCCO_FLAG);
+Page   44: adc1_overflow_flag++;
+Page   44: if(adc_flag_get(ADC1, ADC_VMOR_FLAG) != RESET)
+Page   44: adc_flag_clear(ADC1, ADC_VMOR_FLAG);
+Page   44: adc_config();
+Page   45: AT32F435/437 ADC Application Note
+Page   45: if((adc1_overflow_flag != 0) || (vmor_flag_index != 0))
+Page   45: printf("adc1_overflow_flag = %d\r\n",adc1_overflow_flag);
+Page   45: printf("out of range:adc1_channel_5 value is = 0x%x!\r\n", adc1_ordinary_valuetab[1]);
+Page   45: adc_ordinary_software_trigger_enable(ADC1, TRUE);
+Page   45: Figure 19. ADC voltage monitoring test result
+Page   46: AT32F435/437 ADC Application Note
+Page   46: 6           Application: ADC dual buffer mode
+Page   46: This example introduces how to configure and use ADC fast conversion in the EDMA dual buffer
+Page   46: project\at_start_f4xx\examples\ adc\edma_double_buffer
+Page   46:      Configure the GPIO for ADC
+Page   46:      Complete ADC relevant configurations
+Page   46: /* config adc pin as analog input mode */
+Page   47: AT32F435/437 ADC Application Note
+Page   47: edma_init_struct.memory0_base_addr = (uint32_t)adc1_ordinary_valuetab;
+Page   47: edma_init_struct.peripheral_base_addr = (uint32_t)&(ADC1->odt);
+Page   47: edmamux_init(EDMAMUX_CHANNEL1, EDMAMUX_DMAREQ_ID_ADC1);
+Page   47: edma_double_buffer_mode_init(EDMA_STREAM1, (uint32_t)double_adc1_ordinary_valuetab,
+Page   47:     ADC configuration function code
+Page   47: static void adc_config(void)
+Page   47: adc_common_config_type adc_common_struct;
+Page   47: adc_base_config_type adc_base_struct;
+Page   47: crm_periph_clock_enable(CRM_ADC1_PERIPH_CLOCK, TRUE);
+Page   47: nvic_irq_enable(ADC1_2_3_IRQn, 0, 0);
+Page   47: adc_common_default_para_init(&adc_common_struct);
+Page   48: AT32F435/437 ADC Application Note
+Page   48: adc_common_struct.combine_mode = ADC_INDEPENDENT_MODE;
+Page   48: /* config division,adcclk is division by hclk */
+Page   48: adc_common_struct.div = ADC_HCLK_DIV_17;
+Page   48: adc_common_struct.common_dma_mode = ADC_COMMON_DMAMODE_DISABLE;
+Page   48: adc_common_struct.common_dma_request_repeat_state = FALSE;
+Page   48: /* config adjacent adc sampling interval,it's useful for ordinary shifting mode */
+Page   48: adc_common_struct.sampling_interval = ADC_SAMPLING_INTERVAL_5CYCLES;
+Page   48: adc_common_struct.tempervintrv_state = FALSE;
+Page   48: adc_common_struct.vbat_state = FALSE;
+Page   48: adc_common_config(&adc_common_struct);
+Page   48: adc_base_default_para_init(&adc_base_struct);
+Page   48: adc_base_struct.sequence_mode = TRUE;
+Page   48: adc_base_struct.repeat_mode = FALSE;
+Page   48: adc_base_struct.data_align = ADC_RIGHT_ALIGNMENT;
+Page   48: adc_base_struct.ordinary_channel_length = 3;
+Page   48: adc_base_config(ADC1, &adc_base_struct);
+Page   48: adc_resolution_set(ADC1, ADC_RESOLUTION_12B);
+Page   48: adc_ordinary_channel_set(ADC1, ADC_CHANNEL_4, 1, ADC_SAMPLETIME_640_5);
+Page   48: adc_ordinary_channel_set(ADC1, ADC_CHANNEL_5, 2, ADC_SAMPLETIME_640_5);
+Page   48: adc_ordinary_channel_set(ADC1, ADC_CHANNEL_6, 3, ADC_SAMPLETIME_640_5);
+Page   48: adc_ordinary_conversion_trigger_set(ADC1, ADC_ORDINARY_TRIG_TMR1CH1,
+Page   48: ADC_ORDINARY_TRIG_EDGE_NONE);
+Page   48: adc_dma_mode_enable(ADC1, TRUE);
+Page   48: adc_dma_request_repeat_enable(ADC1, TRUE);
+Page   49: AT32F435/437 ADC Application Note
+Page   49: /* enable adc overflow interrupt */
+Page   49: adc_interrupt_enable(ADC1, ADC_OCCO_INT, TRUE);
+Page   49: /* adc enable */
+Page   49: adc_enable(ADC1, TRUE);
+Page   49: while(adc_flag_get(ADC1, ADC_RDY_FLAG) == RESET);
+Page   49: /* adc calibration */
+Page   49: adc_calibration_init(ADC1);
+Page   49: while(adc_calibration_init_status_get(ADC1));
+Page   49: adc_calibration_start(ADC1);
+Page   49: while(adc_calibration_status_get(ADC1));
+Page   49: /* Get ADC overflow flag */
+Page   49: void ADC1_2_3_IRQHandler(void)
+Page   49: if(adc_flag_get(ADC1, ADC_OCCO_FLAG) != RESET)
+Page   49: adc_flag_clear(ADC1, ADC_OCCO_FLAG);
+Page   49: adc1_overflow_flag++;
+Page   50: AT32F435/437 ADC Application Note
+Page   50: adc_config();
+Page   50: adc_ordinary_software_trigger_enable(ADC1, TRUE);
+Page   50: if(adc1_overflow_flag != 0)
+Page   50: printf("adc1_overflow_flag = %d\r\n",adc1_overflow_flag);
+Page   50: printf("double_adc1_ordinary_valuetab[0] = 0x%x\r\n", double_adc1_ordinary_valuetab[0]);
+Page   50: printf("double_adc1_ordinary_valuetab[1] = 0x%x\r\n", double_adc1_ordinary_valuetab[1]);
+Page   50: printf("double_adc1_ordinary_valuetab[2] = 0x%x\r\n", double_adc1_ordinary_valuetab[2]);
+Page   50: printf("adc1_ordinary_valuetab[0] = 0x%x\r\n", adc1_ordinary_valuetab[0]);
+Page   50: printf("adc1_ordinary_valuetab[1] = 0x%x\r\n", adc1_ordinary_valuetab[1]);
+Page   50: printf("adc1_ordinary_valuetab[2] = 0x%x\r\n", adc1_ordinary_valuetab[2]);
+Page   51: AT32F435/437 ADC Application Note
+Page   51: Print out the test result in the serial port assistant. As shown below, the ADC conversion data is
+Page   52: AT32F435/437 ADC Application Note
+Page   52: 7           Application: ADC DMA mode 1
+Page   52: The converted data of ordinary channels in ADC master/slave mode requires DMA transfer. The
+Page   52: in transmission. Therefore, the ADC master/slave mode and DMA mode should work together
+Page   52: project\at_start_f4xx\examples\ adc\combine_mode_ordinary_smlt_twoslave_dma1
+Page   52:      Configure the GPIO for ADC
+Page   52:      Complete ADC relevant configurations
+Page   52: /* config adc pin as analog input mode */
+Page   53: AT32F435/437 ADC Application Note
+Page   54: AT32F435/437 ADC Application Note
+Page   54: dma_init_struct.memory_base_addr = (uint32_t)adccom_ordinary_valuetab;
+Page   54: dma_init_struct.peripheral_base_addr = (uint32_t)&(ADCCOM->codt);
+Page   54: dmamux_init(DMA1MUX_CHANNEL1, DMAMUX_DMAREQ_ID_ADC1);
+Page   54:     ADC configuration function code
+Page   54: static void adc_config(void)
+Page   54: adc_common_config_type adc_common_struct;
+Page   54: adc_base_config_type adc_base_struct;
+Page   54: crm_periph_clock_enable(CRM_ADC1_PERIPH_CLOCK, TRUE);
+Page   54: crm_periph_clock_enable(CRM_ADC2_PERIPH_CLOCK, TRUE);
+Page   54: crm_periph_clock_enable(CRM_ADC3_PERIPH_CLOCK, TRUE);
+Page   54: nvic_irq_enable(ADC1_2_3_IRQn, 0, 0);
+Page   54: adc_common_default_para_init(&adc_common_struct);
+Page   55: AT32F435/437 ADC Application Note
+Page   55: adc_common_struct.combine_mode = ADC_ORDINARY_SMLT_ONLY_TWOSLAVE_MODE;
+Page   55: /* config division,adcclk is division by hclk */
+Page   55: adc_common_struct.div = ADC_HCLK_DIV_4;
+Page   55: adc_common_struct.common_dma_mode = ADC_COMMON_DMAMODE_1;
+Page   55: adc_common_struct.common_dma_request_repeat_state = FALSE;
+Page   55: /* config adjacent adc sampling interval,it's useful for ordinary shifting mode */
+Page   55: adc_common_struct.sampling_interval = ADC_SAMPLING_INTERVAL_5CYCLES;
+Page   55: adc_common_struct.tempervintrv_state = FALSE;
+Page   55: adc_common_struct.vbat_state = FALSE;
+Page   55: adc_common_config(&adc_common_struct);
+Page   55: adc_base_default_para_init(&adc_base_struct);
+Page   55: adc_base_struct.sequence_mode = TRUE;
+Page   55: adc_base_struct.repeat_mode = FALSE;
+Page   55: adc_base_struct.data_align = ADC_RIGHT_ALIGNMENT;
+Page   55: adc_base_struct.ordinary_channel_length = 3;
+Page   55: adc_base_config(ADC1, &adc_base_struct);
+Page   55: adc_resolution_set(ADC1, ADC_RESOLUTION_12B);
+Page   55: adc_ordinary_channel_set(ADC1, ADC_CHANNEL_4, 1, ADC_SAMPLETIME_47_5);
+Page   55: adc_ordinary_channel_set(ADC1, ADC_CHANNEL_5, 2, ADC_SAMPLETIME_47_5);
+Page   55: adc_ordinary_channel_set(ADC1, ADC_CHANNEL_6, 3, ADC_SAMPLETIME_47_5);
+Page   55: adc_ordinary_conversion_trigger_set(ADC1, ADC_ORDINARY_TRIG_TMR1TRGOUT2,
+Page   55: ADC_ORDINARY_TRIG_EDGE_RISING);
+Page   55: adc_dma_mode_enable(ADC1, FALSE);
+Page   55: adc_dma_request_repeat_enable(ADC1, FALSE);
+Page   55: /* enable adc overflow interrupt */
+Page   56: AT32F435/437 ADC Application Note
+Page   56: adc_interrupt_enable(ADC1, ADC_OCCO_INT, TRUE);
+Page   56: adc_base_config(ADC2, &adc_base_struct);
+Page   56: adc_resolution_set(ADC2, ADC_RESOLUTION_12B);
+Page   56: adc_ordinary_channel_set(ADC2, ADC_CHANNEL_7, 1, ADC_SAMPLETIME_47_5);
+Page   56: adc_ordinary_channel_set(ADC2, ADC_CHANNEL_8, 2, ADC_SAMPLETIME_47_5);
+Page   56: adc_ordinary_channel_set(ADC2, ADC_CHANNEL_9, 3, ADC_SAMPLETIME_47_5);
+Page   56: adc_ordinary_conversion_trigger_set(ADC2, ADC_ORDINARY_TRIG_TMR1TRGOUT2,
+Page   56: ADC_ORDINARY_TRIG_EDGE_NONE);
+Page   56: adc_dma_mode_enable(ADC2, FALSE);
+Page   56: adc_dma_request_repeat_enable(ADC2, FALSE);
+Page   56: adc_interrupt_enable(ADC2, ADC_OCCO_INT, TRUE);
+Page   56: adc_base_config(ADC3, &adc_base_struct);
+Page   56: adc_resolution_set(ADC3, ADC_RESOLUTION_12B);
+Page   56: adc_ordinary_channel_set(ADC3, ADC_CHANNEL_10, 1, ADC_SAMPLETIME_47_5);
+Page   56: adc_ordinary_channel_set(ADC3, ADC_CHANNEL_12, 2, ADC_SAMPLETIME_47_5);
+Page   56: adc_ordinary_channel_set(ADC3, ADC_CHANNEL_13, 3, ADC_SAMPLETIME_47_5);
+Page   56: adc_ordinary_conversion_trigger_set(ADC3, ADC_ORDINARY_TRIG_TMR1TRGOUT2,
+Page   56: ADC_ORDINARY_TRIG_EDGE_NONE);
+Page   56: adc_dma_mode_enable(ADC3, FALSE);
+Page   56: adc_dma_request_repeat_enable(ADC3, FALSE);
+Page   56: adc_interrupt_enable(ADC3, ADC_OCCO_INT, TRUE);
+Page   56: /* adc enable */
+Page   56: adc_enable(ADC1, TRUE);
+Page   56: adc_enable(ADC2, TRUE);
+Page   56: adc_enable(ADC3, TRUE);
+Page   56: while(adc_flag_get(ADC1, ADC_RDY_FLAG) == RESET);
+Page   56: while(adc_flag_get(ADC2, ADC_RDY_FLAG) == RESET);
+Page   56: while(adc_flag_get(ADC3, ADC_RDY_FLAG) == RESET);
+Page   56: /* adc calibration */
+Page   56: adc_calibration_init(ADC1);
+Page   56: while(adc_calibration_init_status_get(ADC1));
+Page   56: adc_calibration_start(ADC1);
+Page   56: while(adc_calibration_status_get(ADC1));
+Page   56: adc_calibration_init(ADC2);
+Page   56: while(adc_calibration_init_status_get(ADC2));
+Page   56: adc_calibration_start(ADC2);
+Page   56: while(adc_calibration_status_get(ADC2));
+Page   56: adc_calibration_init(ADC3);
+Page   56: while(adc_calibration_init_status_get(ADC3));
+Page   56: adc_calibration_start(ADC3);
+Page   56: while(adc_calibration_status_get(ADC3));
+Page   57: AT32F435/437 ADC Application Note
+Page   57: /* Get the overflow flag of each ADC */
+Page   57: void ADC1_2_3_IRQHandler(void)
+Page   57: if(adc_flag_get(ADC1, ADC_OCCO_FLAG) != RESET)
+Page   57: adc_flag_clear(ADC1, ADC_OCCO_FLAG);
+Page   57: adc1_overflow_flag++;
+Page   57: if(adc_flag_get(ADC2, ADC_OCCO_FLAG) != RESET)
+Page   57: adc_flag_clear(ADC2, ADC_OCCO_FLAG);
+Page   57: adc2_overflow_flag++;
+Page   57: if(adc_flag_get(ADC3, ADC_OCCO_FLAG) != RESET)
+Page   57: adc_flag_clear(ADC3, ADC_OCCO_FLAG);
+Page   57: adc3_overflow_flag++;
+Page   58: AT32F435/437 ADC Application Note
+Page   58: adc_config();
+Page   58: if((adc1_overflow_flag != 0) || (adc2_overflow_flag != 0) || (adc3_overflow_flag != 0))
+Page   58: printf("adc1_overflow_flag = %d\r\n",adc1_overflow_flag);
+Page   58: printf("adc2_overflow_flag = %d\r\n",adc2_overflow_flag);
+Page   58: printf("adc3_overflow_flag = %d\r\n",adc3_overflow_flag);
+Page   58: printf("adccom_ordinary_valuetab[%d][%d][0] = 0x%x\r\n",index1, index2,
+Page   58: adccom_ordinary_valuetab[index1][index2][0]);
+Page   58: printf("adccom_ordinary_valuetab[%d][%d][1] = 0x%x\r\n",index1, index2,
+Page   58: adccom_ordinary_valuetab[index1][index2][1]);
+Page   58: printf("adccom_ordinary_valuetab[%d][%d][2] = 0x%x\r\n",index1, index2,
+Page   58: adccom_ordinary_valuetab[index1][index2][2]);
+Page   59: AT32F435/437 ADC Application Note
+Page   59: ADC1 1st conversion in sequence
+Page   59: ADC2 1st conversion in sequence
+Page   59: ADC3 1st conversion in sequence
+Page   59: ADC1 2nd conversion in sequence
+Page   59: ADC2 2nd conversion in sequence
+Page   59: ADC3 2nd conversion in sequence
+Page   59: ADC1 3rd conversion in sequence
+Page   59: ADC2 3rd conversion in sequence
+Page   59: ADC33rd conversion in sequence
+Page   59: ADC1 1st conversion in sequence
+Page   59: Figure 21. ADC DMA mode 1 test result
+Page   60: AT32F435/437 ADC Application Note
+Page   60: 8           Application: ADC DMA mode 2
+Page   60: The converted data of ordinary channels in ADC master/slave mode requires DMA transfer. The
+Page   60: in transmission. Therefore, the ADC master/slave mode and DMA mode should work together
+Page   60: project\at_start_f4xx\examples\ adc\combine_mode_ordinary_smlt_oneslave_dma2
+Page   60:      Configure the GPIO for ADC
+Page   60:      Complete the ADC relevant configurations
+Page   60: /* config adc pin as analog input mode */
+Page   61: AT32F435/437 ADC Application Note
+Page   61: dma_init_struct.memory_base_addr = (uint32_t)adccom_ordinary_valuetab;
+Page   61: dma_init_struct.peripheral_base_addr = (uint32_t)&(ADCCOM->codt);
+Page   61: dmamux_init(DMA1MUX_CHANNEL1, DMAMUX_DMAREQ_ID_ADC1);
+Page   61:     ADC configuration function code
+Page   61: static void adc_config(void)
+Page   61: adc_common_config_type adc_common_struct;
+Page   61: adc_base_config_type adc_base_struct;
+Page   61: crm_periph_clock_enable(CRM_ADC1_PERIPH_CLOCK, TRUE);
+Page   61: crm_periph_clock_enable(CRM_ADC2_PERIPH_CLOCK, TRUE);
+Page   61: nvic_irq_enable(ADC1_2_3_IRQn, 0, 0);
+Page   61: adc_common_default_para_init(&adc_common_struct);
+Page   62: AT32F435/437 ADC Application Note
+Page   62: adc_common_struct.combine_mode = ADC_ORDINARY_SMLT_ONLY_ONESLAVE_MODE;
+Page   62: /* config division,adcclk is division by hclk */
+Page   62: adc_common_struct.div = ADC_HCLK_DIV_4;
+Page   62: adc_common_struct.common_dma_mode = ADC_COMMON_DMAMODE_2;
+Page   62: adc_common_struct.common_dma_request_repeat_state = FALSE;
+Page   62: /* config adjacent adc sampling interval,it's useful for ordinary shifting mode */
+Page   62: adc_common_struct.sampling_interval = ADC_SAMPLING_INTERVAL_5CYCLES;
+Page   62: adc_common_struct.tempervintrv_state = FALSE;
+Page   62: adc_common_struct.vbat_state = FALSE;
+Page   62: adc_common_config(&adc_common_struct);
+Page   62: adc_base_default_para_init(&adc_base_struct);
+Page   62: adc_base_struct.sequence_mode = TRUE;
+Page   62: adc_base_struct.repeat_mode = FALSE;
+Page   62: adc_base_struct.data_align = ADC_RIGHT_ALIGNMENT;
+Page   62: adc_base_struct.ordinary_channel_length = 3;
+Page   62: adc_base_config(ADC1, &adc_base_struct);
+Page   62: adc_resolution_set(ADC1, ADC_RESOLUTION_12B);
+Page   62: adc_ordinary_channel_set(ADC1, ADC_CHANNEL_4, 1, ADC_SAMPLETIME_640_5);
+Page   62: adc_ordinary_channel_set(ADC1, ADC_CHANNEL_5, 2, ADC_SAMPLETIME_640_5);
+Page   62: adc_ordinary_channel_set(ADC1, ADC_CHANNEL_6, 3, ADC_SAMPLETIME_640_5);
+Page   62: adc_ordinary_conversion_trigger_set(ADC1, ADC_ORDINARY_TRIG_TMR1CH1,
+Page   62: ADC_ORDINARY_TRIG_EDGE_NONE);
+Page   62: adc_dma_mode_enable(ADC1, FALSE);
+Page   62: adc_dma_request_repeat_enable(ADC1, FALSE);
+Page   63: AT32F435/437 ADC Application Note
+Page   63: /* enable adc overflow interrupt */
+Page   63: adc_interrupt_enable(ADC1, ADC_OCCO_INT, TRUE);
+Page   63: adc_base_config(ADC2, &adc_base_struct);
+Page   63: adc_resolution_set(ADC2, ADC_RESOLUTION_12B);
+Page   63: adc_ordinary_channel_set(ADC2, ADC_CHANNEL_7, 1, ADC_SAMPLETIME_640_5);
+Page   63: adc_ordinary_channel_set(ADC2, ADC_CHANNEL_8, 2, ADC_SAMPLETIME_640_5);
+Page   63: adc_ordinary_channel_set(ADC2, ADC_CHANNEL_9, 3, ADC_SAMPLETIME_640_5);
+Page   63: adc_ordinary_conversion_trigger_set(ADC2, ADC_ORDINARY_TRIG_TMR1CH1,
+Page   63: ADC_ORDINARY_TRIG_EDGE_NONE);
+Page   63: adc_dma_mode_enable(ADC2, FALSE);
+Page   63: adc_dma_request_repeat_enable(ADC2, FALSE);
+Page   63: adc_interrupt_enable(ADC2, ADC_OCCO_INT, TRUE);
+Page   63: /* adc enable */
+Page   63: adc_enable(ADC1, TRUE);
+Page   63: adc_enable(ADC2, TRUE);
+Page   63: while(adc_flag_get(ADC1, ADC_RDY_FLAG) == RESET);
+Page   63: while(adc_flag_get(ADC2, ADC_RDY_FLAG) == RESET);
+Page   63: /* adc calibration */
+Page   63: adc_calibration_init(ADC1);
+Page   63: while(adc_calibration_init_status_get(ADC1));
+Page   63: adc_calibration_start(ADC1);
+Page   63: while(adc_calibration_status_get(ADC1));
+Page   63: adc_calibration_init(ADC2);
+Page   63: while(adc_calibration_init_status_get(ADC2));
+Page   63: adc_calibration_start(ADC2);
+Page   63: while(adc_calibration_status_get(ADC2));
+Page   63: /* Get the overflow flag of each ADC */
+Page   63: void ADC1_2_3_IRQHandler(void)
+Page   63: if(adc_flag_get(ADC1, ADC_OCCO_FLAG) != RESET)
+Page   63: adc_flag_clear(ADC1, ADC_OCCO_FLAG);
+Page   64: AT32F435/437 ADC Application Note
+Page   64: adc1_overflow_flag++;
+Page   64: if(adc_flag_get(ADC2, ADC_OCCO_FLAG) != RESET)
+Page   64: adc_flag_clear(ADC2, ADC_OCCO_FLAG);
+Page   64: adc2_overflow_flag++;
+Page   64: adc_config();
+Page   64: /* adc1 software trigger start conversion */
+Page   64: adc_ordinary_software_trigger_enable(ADC1, TRUE);
+Page   64: if((dma1_trans_complete_flag == 0) || (adc1_overflow_flag != 0) || (adc2_overflow_flag != 0))
+Page   64: printf("adc1_overflow_flag = %d\r\n",adc1_overflow_flag);
+Page   64: printf("adc2_overflow_flag = %d\r\n",adc2_overflow_flag);
+Page   65: AT32F435/437 ADC Application Note
+Page   65: printf("adc1_ordinary_channel4[%d] = 0x%x\r\n",index, adccom_ordinary_valuetab[index][0] &
+Page   65: printf("adc1_ordinary_channel5[%d] = 0x%x\r\n",index, adccom_ordinary_valuetab[index][1] &
+Page   65: printf("adc1_ordinary_channel6[%d] = 0x%x\r\n",index, adccom_ordinary_valuetab[index][2] &
+Page   65: printf("adc2_ordinary_channel7[%d] = 0x%x\r\n",index, (adccom_ordinary_valuetab[index][0] >> 16)
+Page   65: printf("adc2_ordinary_channel8[%d] = 0x%x\r\n",index, (adccom_ordinary_valuetab[index][1] >> 16)
+Page   65: printf("adc2_ordinary_channel9[%d] = 0x%x\r\n",index, (adccom_ordinary_valuetab[index][2] >> 16)
+Page   65: (ADC2 1st conversion in sequence <<16) | ADC1 1st conversion in sequence
+Page   65: (ADC2 2nd conversion in sequence <<16) | ADC1 2nd conversion in sequence
+Page   65: (ADC2 3rd conversion in sequence <<16) | ADC1 3rd conversion in sequence
+Page   65: (ADC2 1st conversion in sequence <<16) | ADC1 1st conversion in sequence
+Page   66: AT32F435/437 ADC Application Note
+Page   66: Figure 22. ADC DMA mode 2 test result
+Page   67: AT32F435/437 ADC Application Note
+Page   67: 9           Application: ADC DMA mode 3
+Page   67: The converted data of ordinary channels in ADC master/slave mode requires DMA transfer. The
+Page   67: in transmission. Therefore, the ADC master/slave mode and DMA mode should work together
+Page   67: project\at_start_f4xx\examples\ adc\combine_mode_ordinary_shift_twoslave_dma3
+Page   67:      Configure the GPIO for ADC
+Page   67:      Complete ADC relevant configurations
+Page   67: /* config adc pin as analog input mode */
+Page   68: AT32F435/437 ADC Application Note
+Page   68: dma_init_struct.memory_base_addr = (uint32_t)adccom_ordinary_valuetab;
+Page   68: dma_init_struct.peripheral_base_addr = (uint32_t)&(ADCCOM->codt);
+Page   69: AT32F435/437 ADC Application Note
+Page   69: dmamux_init(DMA1MUX_CHANNEL1, DMAMUX_DMAREQ_ID_ADC1);
+Page   69:     ADC configuration function code
+Page   69: static void adc_config(void)
+Page   69: adc_common_config_type adc_common_struct;
+Page   69: adc_base_config_type adc_base_struct;
+Page   69: crm_periph_clock_enable(CRM_ADC1_PERIPH_CLOCK, TRUE);
+Page   69: crm_periph_clock_enable(CRM_ADC2_PERIPH_CLOCK, TRUE);
+Page   69: crm_periph_clock_enable(CRM_ADC3_PERIPH_CLOCK, TRUE);
+Page   69: nvic_irq_enable(ADC1_2_3_IRQn, 0, 0);
+Page   69: adc_common_default_para_init(&adc_common_struct);
+Page   69: adc_common_struct.combine_mode = ADC_ORDINARY_SHIFT_ONLY_TWOSLAVE_MODE;
+Page   69: /* config division,adcclk is division by hclk */
+Page   69: adc_common_struct.div = ADC_HCLK_DIV_4;
+Page   69: adc_common_struct.common_dma_mode = ADC_COMMON_DMAMODE_3;
+Page   69: adc_common_struct.common_dma_request_repeat_state = FALSE;
+Page   69: /* config adjacent adc sampling interval,it's useful for ordinary shifting mode */
+Page   69: adc_common_struct.sampling_interval = ADC_SAMPLING_INTERVAL_20CYCLES;
+Page   69: adc_common_struct.tempervintrv_state = FALSE;
+Page   69: adc_common_struct.vbat_state = FALSE;
+Page   69: adc_common_config(&adc_common_struct);
+Page   69: adc_base_default_para_init(&adc_base_struct);
+Page   69: adc_base_struct.sequence_mode = FALSE;
+Page   69: adc_base_struct.repeat_mode = FALSE;
+Page   69: adc_base_struct.data_align = ADC_RIGHT_ALIGNMENT;
+Page   69: adc_base_struct.ordinary_channel_length = 1;
+Page   70: AT32F435/437 ADC Application Note
+Page   70: adc_base_config(ADC1, &adc_base_struct);
+Page   70: adc_resolution_set(ADC1, ADC_RESOLUTION_12B);
+Page   70: adc_ordinary_channel_set(ADC1, ADC_CHANNEL_4, 1, ADC_SAMPLETIME_2_5);
+Page   70: adc_ordinary_conversion_trigger_set(ADC1, ADC_ORDINARY_TRIG_TMR1TRGOUT,
+Page   70: ADC_ORDINARY_TRIG_EDGE_RISING);
+Page   70: adc_dma_mode_enable(ADC1, FALSE);
+Page   70: adc_dma_request_repeat_enable(ADC1, FALSE);
+Page   70: /* enable adc overflow interrupt */
+Page   70: adc_interrupt_enable(ADC1, ADC_OCCO_INT, TRUE);
+Page   70: adc_base_config(ADC2, &adc_base_struct);
+Page   70: adc_resolution_set(ADC2, ADC_RESOLUTION_12B);
+Page   70: adc_ordinary_channel_set(ADC2, ADC_CHANNEL_7, 1, ADC_SAMPLETIME_2_5);
+Page   70: adc_ordinary_conversion_trigger_set(ADC2, ADC_ORDINARY_TRIG_TMR1TRGOUT,
+Page   70: ADC_ORDINARY_TRIG_EDGE_NONE);
+Page   70: adc_dma_mode_enable(ADC2, FALSE);
+Page   70: adc_dma_request_repeat_enable(ADC2, FALSE);
+Page   70: adc_interrupt_enable(ADC2, ADC_OCCO_INT, TRUE);
+Page   70: adc_base_config(ADC3, &adc_base_struct);
+Page   70: adc_resolution_set(ADC3, ADC_RESOLUTION_12B);
+Page   70: adc_ordinary_channel_set(ADC3, ADC_CHANNEL_10, 1, ADC_SAMPLETIME_2_5);
+Page   70: adc_ordinary_conversion_trigger_set(ADC3, ADC_ORDINARY_TRIG_TMR1TRGOUT,
+Page   70: ADC_ORDINARY_TRIG_EDGE_NONE);
+Page   70: adc_dma_mode_enable(ADC3, FALSE);
+Page   70: adc_dma_request_repeat_enable(ADC3, FALSE);
+Page   70: adc_interrupt_enable(ADC3, ADC_OCCO_INT, TRUE);
+Page   70: /* adc enable */
+Page   70: adc_enable(ADC1, TRUE);
+Page   70: adc_enable(ADC2, TRUE);
+Page   70: adc_enable(ADC3, TRUE);
+Page   70: while(adc_flag_get(ADC1, ADC_RDY_FLAG) == RESET);
+Page   70: while(adc_flag_get(ADC2, ADC_RDY_FLAG) == RESET);
+Page   70: while(adc_flag_get(ADC3, ADC_RDY_FLAG) == RESET);
+Page   71: AT32F435/437 ADC Application Note
+Page   71: /* adc calibration */
+Page   71: adc_calibration_init(ADC1);
+Page   71: while(adc_calibration_init_status_get(ADC1));
+Page   71: adc_calibration_start(ADC1);
+Page   71: while(adc_calibration_status_get(ADC1));
+Page   71: adc_calibration_init(ADC2);
+Page   71: while(adc_calibration_init_status_get(ADC2));
+Page   71: adc_calibration_start(ADC2);
+Page   71: while(adc_calibration_status_get(ADC2));
+Page   71: adc_calibration_init(ADC3);
+Page   71: while(adc_calibration_init_status_get(ADC3));
+Page   71: adc_calibration_start(ADC3);
+Page   71: while(adc_calibration_status_get(ADC3));
+Page   71: adc_resolution_set(ADC1,ADC_RESOLUTION_8B);
+Page   71: adc_resolution_set(ADC2,ADC_RESOLUTION_8B);
+Page   71: adc_resolution_set(ADC3,ADC_RESOLUTION_8B);
+Page   71: while(adc_flag_get(ADC1, ADC_RDY_FLAG) == RESET);
+Page   71: while(adc_flag_get(ADC2, ADC_RDY_FLAG) == RESET);
+Page   71: while(adc_flag_get(ADC3, ADC_RDY_FLAG) == RESET);
+Page   71: /* Get the overflow flag of each ADC */
+Page   71: void ADC1_2_3_IRQHandler(void)
+Page   71: if(adc_flag_get(ADC1, ADC_OCCO_FLAG) != RESET)
+Page   71: adc_flag_clear(ADC1, ADC_OCCO_FLAG);
+Page   71: adc1_overflow_flag++;
+Page   71: if(adc_flag_get(ADC2, ADC_OCCO_FLAG) != RESET)
+Page   71: adc_flag_clear(ADC2, ADC_OCCO_FLAG);
+Page   71: adc2_overflow_flag++;
+Page   71: if(adc_flag_get(ADC3, ADC_OCCO_FLAG) != RESET)
+Page   72: AT32F435/437 ADC Application Note
+Page   72: adc_flag_clear(ADC3, ADC_OCCO_FLAG);
+Page   72: adc3_overflow_flag++;
+Page   72: adc_config();
+Page   72: if((adc1_overflow_flag != 0) || (adc2_overflow_flag != 0) || (adc3_overflow_flag != 0))
+Page   72: printf("adc1_overflow_flag = %d\r\n",adc1_overflow_flag);
+Page   72: printf("adc2_overflow_flag = %d\r\n",adc2_overflow_flag);
+Page   72: printf("adc3_overflow_flag = %d\r\n",adc3_overflow_flag);
+Page   72: printf("adccom_ordinary_valuetab[%d] = 0x%x\r\n",index, adccom_ordinary_valuetab[index]);
+Page   73: AT32F435/437 ADC Application Note
+Page   73: (ADC2 conversion <<8) | ADC1 conversion
+Page   73: (ADC1 conversion <<8) | ADC3 conversion
+Page   73: (ADC3 conversion <<8) | ADC2 conversion
+Page   73: (ADC2 conversion <<8) | ADC1 conversion
+Page   73: Figure 23. ADC DMA mode 3 test result
+Page   74: AT32F435/437 ADC Application Note
+Page   74: 10          Application: ADC DMA mode 4
+Page   74: The converted data of ordinary channels in ADC master/slave mode requires DMA transfer. The
+Page   74: in transmission. Therefore, the ADC master/slave mode and DMA mode should work together
+Page   74: project\at_start_f4xx\examples\ adc\combine_mode_ordinary_shift_twoslave_dma4
+Page   74:      Configure the GPIO for ADC
+Page   74:      Complete ADC relevant configurations
+Page   74: /* config adc pin as analog input mode */
+Page   75: AT32F435/437 ADC Application Note
+Page   75: dma_init_struct.memory_base_addr = (uint32_t)adccom_ordinary_valuetab;
+Page   75: dma_init_struct.peripheral_base_addr = (uint32_t)&(ADCCOM->codt);
+Page   76: AT32F435/437 ADC Application Note
+Page   76: dmamux_init(DMA1MUX_CHANNEL1, DMAMUX_DMAREQ_ID_ADC1);
+Page   76:     ADC configuration function code
+Page   76: static void adc_config(void)
+Page   76: adc_common_config_type adc_common_struct;
+Page   76: adc_base_config_type adc_base_struct;
+Page   76: crm_periph_clock_enable(CRM_ADC1_PERIPH_CLOCK, TRUE);
+Page   76: crm_periph_clock_enable(CRM_ADC2_PERIPH_CLOCK, TRUE);
+Page   76: crm_periph_clock_enable(CRM_ADC3_PERIPH_CLOCK, TRUE);
+Page   76: nvic_irq_enable(ADC1_2_3_IRQn, 0, 0);
+Page   76: adc_common_default_para_init(&adc_common_struct);
+Page   76: adc_common_struct.combine_mode = ADC_ORDINARY_SHIFT_ONLY_TWOSLAVE_MODE;
+Page   76: /* config division,adcclk is division by hclk */
+Page   76: adc_common_struct.div = ADC_HCLK_DIV_4;
+Page   76: adc_common_struct.common_dma_mode = ADC_COMMON_DMAMODE_4;
+Page   76: adc_common_struct.common_dma_request_repeat_state = FALSE;
+Page   76: /* config adjacent adc sampling interval,it's useful for ordinary shifting mode */
+Page   76: adc_common_struct.sampling_interval = ADC_SAMPLING_INTERVAL_20CYCLES;
+Page   76: adc_common_struct.tempervintrv_state = FALSE;
+Page   76: adc_common_struct.vbat_state = FALSE;
+Page   76: adc_common_config(&adc_common_struct);
+Page   76: adc_base_default_para_init(&adc_base_struct);
+Page   76: adc_base_struct.sequence_mode = FALSE;
+Page   76: adc_base_struct.repeat_mode = FALSE;
+Page   76: adc_base_struct.data_align = ADC_RIGHT_ALIGNMENT;
+Page   77: AT32F435/437 ADC Application Note
+Page   77: adc_base_struct.ordinary_channel_length = 1;
+Page   77: adc_base_config(ADC1, &adc_base_struct);
+Page   77: adc_resolution_set(ADC1, ADC_RESOLUTION_12B);
+Page   77: adc_ordinary_channel_set(ADC1, ADC_CHANNEL_4, 1, ADC_SAMPLETIME_2_5);
+Page   77: adc_ordinary_conversion_trigger_set(ADC1, ADC_ORDINARY_TRIG_TMR1TRGOUT,
+Page   77: ADC_ORDINARY_TRIG_EDGE_RISING);
+Page   77: adc_dma_mode_enable(ADC1, FALSE);
+Page   77: adc_dma_request_repeat_enable(ADC1, FALSE);
+Page   77: /* enable adc overflow interrupt */
+Page   77: adc_interrupt_enable(ADC1, ADC_OCCO_INT, TRUE);
+Page   77: adc_base_config(ADC2, &adc_base_struct);
+Page   77: adc_resolution_set(ADC2, ADC_RESOLUTION_12B);
+Page   77: adc_ordinary_channel_set(ADC2, ADC_CHANNEL_7, 1, ADC_SAMPLETIME_2_5);
+Page   77: adc_ordinary_conversion_trigger_set(ADC2, ADC_ORDINARY_TRIG_TMR1TRGOUT,
+Page   77: ADC_ORDINARY_TRIG_EDGE_NONE);
+Page   77: adc_dma_mode_enable(ADC2, FALSE);
+Page   77: adc_dma_request_repeat_enable(ADC2, FALSE);
+Page   77: adc_interrupt_enable(ADC2, ADC_OCCO_INT, TRUE);
+Page   77: adc_base_config(ADC3, &adc_base_struct);
+Page   77: adc_resolution_set(ADC3, ADC_RESOLUTION_12B);
+Page   77: adc_ordinary_channel_set(ADC3, ADC_CHANNEL_10, 1, ADC_SAMPLETIME_2_5);
+Page   77: adc_ordinary_conversion_trigger_set(ADC3, ADC_ORDINARY_TRIG_TMR1TRGOUT,
+Page   77: ADC_ORDINARY_TRIG_EDGE_NONE);
+Page   77: adc_dma_mode_enable(ADC3, FALSE);
+Page   77: adc_dma_request_repeat_enable(ADC3, FALSE);
+Page   77: adc_interrupt_enable(ADC3, ADC_OCCO_INT, TRUE);
+Page   77: /* adc enable */
+Page   77: adc_enable(ADC1, TRUE);
+Page   77: adc_enable(ADC2, TRUE);
+Page   77: adc_enable(ADC3, TRUE);
+Page   77: while(adc_flag_get(ADC1, ADC_RDY_FLAG) == RESET);
+Page   77: while(adc_flag_get(ADC2, ADC_RDY_FLAG) == RESET);
+Page   77: while(adc_flag_get(ADC3, ADC_RDY_FLAG) == RESET);
+Page   78: AT32F435/437 ADC Application Note
+Page   78: /* adc calibration */
+Page   78: adc_calibration_init(ADC1);
+Page   78: while(adc_calibration_init_status_get(ADC1));
+Page   78: adc_calibration_start(ADC1);
+Page   78: while(adc_calibration_status_get(ADC1));
+Page   78: adc_calibration_init(ADC2);
+Page   78: while(adc_calibration_init_status_get(ADC2));
+Page   78: adc_calibration_start(ADC2);
+Page   78: while(adc_calibration_status_get(ADC2));
+Page   78: adc_calibration_init(ADC3);
+Page   78: while(adc_calibration_init_status_get(ADC3));
+Page   78: adc_calibration_start(ADC3);
+Page   78: while(adc_calibration_status_get(ADC3));
+Page   78: adc_resolution_set(ADC1,ADC_RESOLUTION_8B);
+Page   78: adc_resolution_set(ADC2,ADC_RESOLUTION_8B);
+Page   78: adc_resolution_set(ADC3,ADC_RESOLUTION_8B);
+Page   78: while(adc_flag_get(ADC1, ADC_RDY_FLAG) == RESET);
+Page   78: while(adc_flag_get(ADC2, ADC_RDY_FLAG) == RESET);
+Page   78: while(adc_flag_get(ADC3, ADC_RDY_FLAG) == RESET);
+Page   78: /* Get the overflow flag of each ADC */
+Page   78: void ADC1_2_3_IRQHandler(void)
+Page   78: if(adc_flag_get(ADC1, ADC_OCCO_FLAG) != RESET)
+Page   78: adc_flag_clear(ADC1, ADC_OCCO_FLAG);
+Page   78: adc1_overflow_flag++;
+Page   78: if(adc_flag_get(ADC2, ADC_OCCO_FLAG) != RESET)
+Page   78: adc_flag_clear(ADC2, ADC_OCCO_FLAG);
+Page   78: adc2_overflow_flag++;
+Page   78: if(adc_flag_get(ADC3, ADC_OCCO_FLAG) != RESET)
+Page   79: AT32F435/437 ADC Application Note
+Page   79: adc_flag_clear(ADC3, ADC_OCCO_FLAG);
+Page   79: adc3_overflow_flag++;
+Page   79: adc_config();
+Page   79: if((adc1_overflow_flag != 0) || (adc2_overflow_flag != 0) || (adc3_overflow_flag != 0))
+Page   79: printf("adc1_overflow_flag = %d\r\n",adc1_overflow_flag);
+Page   79: printf("adc2_overflow_flag = %d\r\n",adc2_overflow_flag);
+Page   79: printf("adc3_overflow_flag = %d\r\n",adc3_overflow_flag);
+Page   79: printf("adccom_ordinary_valuetab[%d] = 0x%x\r\n",index, adccom_ordinary_valuetab[index]);
+Page   80: AT32F435/437 ADC Application Note
+Page   80: (ADC3 conversion <<16) | (ADC2 conversion <<8) | ADC1 conversion
+Page   80: (ADC3 conversion <<16) | (ADC2 conversion <<8) | ADC1 conversion
+Page   80: Figure 24. ADC DMA mode 4 test result
+Page   81: AT32F435/437 ADC Application Note
+Page   81: 11          Application: ADC DMA mode 5
+Page   81: The converted data of ordinary channels in ADC master/slave mode requires DMA transfer. The
+Page   81: in transmission. Therefore, the ADC master/slave mode and DMA mode should work together
+Page   81: project\at_start_f4xx\examples\ adc\ combine_mode_ordinary_smlt_twoslave_dma5
+Page   81:      Configure the GPIO for ADC
+Page   81:      Complete ADC relevant configurations
+Page   81: /* config adc pin as analog input mode */
+Page   82: AT32F435/437 ADC Application Note
+Page   83: AT32F435/437 ADC Application Note
+Page   83: dma_init_struct.memory_base_addr = (uint32_t)adccom_ordinary_valuetab;
+Page   83: dma_init_struct.peripheral_base_addr = (uint32_t)&(ADCCOM->codt);
+Page   83: dmamux_init(DMA1MUX_CHANNEL1, DMAMUX_DMAREQ_ID_ADC1);
+Page   83:     ADC configuration function code
+Page   83: static void adc_config(void)
+Page   83: adc_common_config_type adc_common_struct;
+Page   83: adc_base_config_type adc_base_struct;
+Page   83: crm_periph_clock_enable(CRM_ADC1_PERIPH_CLOCK, TRUE);
+Page   83: crm_periph_clock_enable(CRM_ADC2_PERIPH_CLOCK, TRUE);
+Page   83: crm_periph_clock_enable(CRM_ADC3_PERIPH_CLOCK, TRUE);
+Page   83: nvic_irq_enable(ADC1_2_3_IRQn, 0, 0);
+Page   83: adc_common_default_para_init(&adc_common_struct);
+Page   83: adc_common_struct.combine_mode = ADC_ORDINARY_SMLT_ONLY_TWOSLAVE_MODE;
+Page   84: AT32F435/437 ADC Application Note
+Page   84: /* config division,adcclk is division by hclk */
+Page   84: adc_common_struct.div = ADC_HCLK_DIV_4;
+Page   84: adc_common_struct.common_dma_mode = ADC_COMMON_DMAMODE_5;
+Page   84: adc_common_struct.common_dma_request_repeat_state = FALSE;
+Page   84: /* config adjacent adc sampling interval,it's useful for ordinary shifting mode */
+Page   84: adc_common_struct.sampling_interval = ADC_SAMPLING_INTERVAL_5CYCLES;
+Page   84: adc_common_struct.tempervintrv_state = FALSE;
+Page   84: adc_common_struct.vbat_state = FALSE;
+Page   84: adc_common_config(&adc_common_struct);
+Page   84: adc_base_default_para_init(&adc_base_struct);
+Page   84: adc_base_struct.sequence_mode = TRUE;
+Page   84: adc_base_struct.repeat_mode = FALSE;
+Page   84: adc_base_struct.data_align = ADC_RIGHT_ALIGNMENT;
+Page   84: adc_base_struct.ordinary_channel_length = 3;
+Page   84: adc_base_config(ADC1, &adc_base_struct);
+Page   84: adc_resolution_set(ADC1, ADC_RESOLUTION_12B);
+Page   84: adc_ordinary_channel_set(ADC1, ADC_CHANNEL_4, 1, ADC_SAMPLETIME_47_5);
+Page   84: adc_ordinary_channel_set(ADC1, ADC_CHANNEL_5, 2, ADC_SAMPLETIME_47_5);
+Page   84: adc_ordinary_channel_set(ADC1, ADC_CHANNEL_6, 3, ADC_SAMPLETIME_47_5);
+Page   84: adc_ordinary_conversion_trigger_set(ADC1, ADC_ORDINARY_TRIG_TMR1CH1,
+Page   84: ADC_ORDINARY_TRIG_EDGE_RISING);
+Page   84: adc_dma_mode_enable(ADC1, FALSE);
+Page   84: adc_dma_request_repeat_enable(ADC1, FALSE);
+Page   84: /* enable adc overflow interrupt */
+Page   84: adc_interrupt_enable(ADC1, ADC_OCCO_INT, TRUE);
+Page   85: AT32F435/437 ADC Application Note
+Page   85: adc_base_config(ADC2, &adc_base_struct);
+Page   85: adc_resolution_set(ADC2, ADC_RESOLUTION_12B);
+Page   85: adc_ordinary_channel_set(ADC2, ADC_CHANNEL_7, 1, ADC_SAMPLETIME_47_5);
+Page   85: adc_ordinary_channel_set(ADC2, ADC_CHANNEL_8, 2, ADC_SAMPLETIME_47_5);
+Page   85: adc_ordinary_channel_set(ADC2, ADC_CHANNEL_9, 3, ADC_SAMPLETIME_47_5);
+Page   85: adc_ordinary_conversion_trigger_set(ADC2, ADC_ORDINARY_TRIG_TMR1CH1,
+Page   85: ADC_ORDINARY_TRIG_EDGE_NONE);
+Page   85: adc_dma_mode_enable(ADC2, FALSE);
+Page   85: adc_dma_request_repeat_enable(ADC2, FALSE);
+Page   85: adc_interrupt_enable(ADC2, ADC_OCCO_INT, TRUE);
+Page   85: adc_base_config(ADC3, &adc_base_struct);
+Page   85: adc_resolution_set(ADC3, ADC_RESOLUTION_12B);
+Page   85: adc_ordinary_channel_set(ADC3, ADC_CHANNEL_10, 1, ADC_SAMPLETIME_47_5);
+Page   85: adc_ordinary_channel_set(ADC3, ADC_CHANNEL_12, 2, ADC_SAMPLETIME_47_5);
+Page   85: adc_ordinary_channel_set(ADC3, ADC_CHANNEL_13, 3, ADC_SAMPLETIME_47_5);
+Page   85: adc_ordinary_conversion_trigger_set(ADC3, ADC_ORDINARY_TRIG_TMR1CH1,
+Page   85: ADC_ORDINARY_TRIG_EDGE_NONE);
+Page   85: adc_dma_mode_enable(ADC3, FALSE);
+Page   85: adc_dma_request_repeat_enable(ADC3, FALSE);
+Page   85: adc_interrupt_enable(ADC3, ADC_OCCO_INT, TRUE);
+Page   85: /* adc enable */
+Page   85: adc_enable(ADC1, TRUE);
+Page   85: adc_enable(ADC2, TRUE);
+Page   85: adc_enable(ADC3, TRUE);
+Page   85: while(adc_flag_get(ADC1, ADC_RDY_FLAG) == RESET);
+Page   85: while(adc_flag_get(ADC2, ADC_RDY_FLAG) == RESET);
+Page   85: while(adc_flag_get(ADC3, ADC_RDY_FLAG) == RESET);
+Page   85: /* adc calibration */
+Page   85: adc_calibration_init(ADC1);
+Page   85: while(adc_calibration_init_status_get(ADC1));
+Page   85: adc_calibration_start(ADC1);
+Page   85: while(adc_calibration_status_get(ADC1));
+Page   85: adc_calibration_init(ADC2);
+Page   85: while(adc_calibration_init_status_get(ADC2));
+Page   85: adc_calibration_start(ADC2);
+Page   85: while(adc_calibration_status_get(ADC2));
+Page   85: adc_calibration_init(ADC3);
+Page   85: while(adc_calibration_init_status_get(ADC3));
+Page   85: adc_calibration_start(ADC3);
+Page   85: while(adc_calibration_status_get(ADC3));}
+Page   86: AT32F435/437 ADC Application Note
+Page   86: /* Get the overflow flag of each ADC */
+Page   86: void ADC1_2_3_IRQHandler(void)
+Page   86: if(adc_flag_get(ADC1, ADC_OCCO_FLAG) != RESET)
+Page   86: adc_flag_clear(ADC1, ADC_OCCO_FLAG);
+Page   86: adc1_overflow_flag++;
+Page   86: if(adc_flag_get(ADC2, ADC_OCCO_FLAG) != RESET)
+Page   86: adc_flag_clear(ADC2, ADC_OCCO_FLAG);
+Page   86: adc2_overflow_flag++;
+Page   86: if(adc_flag_get(ADC3, ADC_OCCO_FLAG) != RESET)
+Page   86: adc_flag_clear(ADC3, ADC_OCCO_FLAG);
+Page   86: adc3_overflow_flag++;
+Page   86: adc_config();
+Page   87: AT32F435/437 ADC Application Note
+Page   87: if((adc1_overflow_flag != 0) || (adc2_overflow_flag != 0) || (adc3_overflow_flag != 0))
+Page   87: printf("adc1_overflow_flag = %d\r\n",adc1_overflow_flag);
+Page   87: printf("adc2_overflow_flag = %d\r\n",adc2_overflow_flag);
+Page   87: printf("adc3_overflow_flag = %d\r\n",adc3_overflow_flag);
+Page   87: printf("adccom_ordinary_valuetab[%d][%d][0] = 0x%x\r\n",index1, index2,
+Page   87: adccom_ordinary_valuetab[index1][index2][0]);
+Page   87: printf("adccom_ordinary_valuetab[%d][%d][1] = 0x%x\r\n",index1, index2,
+Page   87: adccom_ordinary_valuetab[index1][index2][1]);
+Page   87: (ADC2 1st conversion in sequence <<16) | ADC1 1st conversion in sequence
+Page   87: ADC3 1st conversion in sequence;
+Page   87: (ADC2 2nd conversion in sequence <<16) | ADC1 2nd conversion in sequence
+Page   87: ADC3 2nd conversion in sequence;
+Page   88: AT32F435/437 ADC Application Note
+Page   88: (ADC2 3rd conversion in sequence <<16) | ADC1 3rd conversion in sequence
+Page   88: ADC3 3rd conversion in sequence
+Page   88: (ADC2 1st conversion in sequence <<16) | ADC1 1st conversion in sequence
+Page   88: Figure 25. ADC DMA mode 5 test result
+Page   89: AT32F435/437 ADC Application Note
+Page   89: In actual applications, the ADC analog reference voltage may fluctuate due to factors such as
+Page   89: external circuits, resulting in distortion of ADC conversion results. The following solution is
+Page   89: The ADC1_IN17 is connected to MCU internal reference voltage (1.2 V output from LDO);
+Page   89: converted data of ADC1_IN17, and then calculate the ADC conversion channel data according to
+Page   89: to the converted data of ADC1_IN17.
+Page   89: project\at_start_f4xx\examples\ adc\current_vref_value_check
+Page   89:      Configure the GPIO for ADC
+Page   89:      Complete ADC relevant configurations
+Page   89: dma_init_struct.memory_base_addr = (uint32_t)&adc1_ordinary_value;
+Page   89: dma_init_struct.peripheral_base_addr = (uint32_t)&(ADC1->odt);
+Page   90: AT32F435/437 ADC Application Note
+Page   90: dmamux_init(DMA1MUX_CHANNEL1, DMAMUX_DMAREQ_ID_ADC1);
+Page   90:     ADC configuration function code
+Page   90: static void adc_config(void)
+Page   90: adc_common_config_type adc_common_struct;
+Page   90: adc_base_config_type adc_base_struct;
+Page   90: crm_periph_clock_enable(CRM_ADC1_PERIPH_CLOCK, TRUE);
+Page   90: nvic_irq_enable(ADC1_2_3_IRQn, 0, 0);
+Page   90: adc_common_default_para_init(&adc_common_struct);
+Page   90: adc_common_struct.combine_mode = ADC_INDEPENDENT_MODE;
+Page   90: /* config division,adcclk is division by hclk */
+Page   90: adc_common_struct.div = ADC_HCLK_DIV_4;
+Page   90: adc_common_struct.common_dma_mode = ADC_COMMON_DMAMODE_DISABLE;
+Page   90: adc_common_struct.common_dma_request_repeat_state = FALSE;
+Page   90: /* config adjacent adc sampling interval,it's useful for ordinary shifting mode */
+Page   90: adc_common_struct.sampling_interval = ADC_SAMPLING_INTERVAL_5CYCLES;
+Page   90: adc_common_struct.tempervintrv_state = TRUE;
+Page   90: adc_common_struct.vbat_state = FALSE;
+Page   90: adc_common_config(&adc_common_struct);
+Page   90: adc_base_default_para_init(&adc_base_struct);
+Page   91: AT32F435/437 ADC Application Note
+Page   91: adc_base_struct.sequence_mode = FALSE;
+Page   91: adc_base_struct.repeat_mode = FALSE;
+Page   91: adc_base_struct.data_align = ADC_RIGHT_ALIGNMENT;
+Page   91: adc_base_struct.ordinary_channel_length = 1;
+Page   91: adc_base_config(ADC1, &adc_base_struct);
+Page   91: adc_resolution_set(ADC1, ADC_RESOLUTION_12B);
+Page   91: adc_ordinary_channel_set(ADC1, ADC_CHANNEL_17, 1, ADC_SAMPLETIME_92_5);
+Page   91: adc_ordinary_conversion_trigger_set(ADC1, ADC_ORDINARY_TRIG_TMR1CH1,
+Page   91: ADC_ORDINARY_TRIG_EDGE_NONE);
+Page   91: adc_dma_mode_enable(ADC1, TRUE);
+Page   91: adc_dma_request_repeat_enable(ADC1, TRUE);
+Page   91: /* enable adc overflow interrupt */
+Page   91: adc_interrupt_enable(ADC1, ADC_OCCO_INT, TRUE);
+Page   91: /* adc enable */
+Page   91: adc_enable(ADC1, TRUE);
+Page   91: while(adc_flag_get(ADC1, ADC_RDY_FLAG) == RESET);
+Page   91: /* adc calibration */
+Page   91: adc_calibration_init(ADC1);
+Page   91: while(adc_calibration_init_status_get(ADC1));
+Page   91: adc_calibration_start(ADC1);
+Page   91: while(adc_calibration_status_get(ADC1));
+Page   91: void ADC1_2_3_IRQHandler(void)
+Page   91: if(adc_flag_get(ADC1, ADC_OCCO_FLAG) != RESET)
+Page   91: adc_flag_clear(ADC1, ADC_OCCO_FLAG);
+Page   91: adc1_overflow_flag++;
+Page   92: AT32F435/437 ADC Application Note
+Page   92: adc_config();
+Page   92: printf("adc1_vref_check \r\n");
+Page   92: /* adc1 software trigger start conversion */
+Page   92: adc_ordinary_software_trigger_enable(ADC1, TRUE);
+Page   92: printf("vref_value = %f V\r\n", ((double)1.2 * 4095) / adc1_ordinary_value);
+Page   92: if(adc1_overflow_flag != 0)
+Page   92: printf("adc1_overflow_flag = %d\r\n",adc1_overflow_flag);
+Page   93: AT32F435/437 ADC Application Note
+Page   93: Figure 26. ADC Vref voltage detection test result
+Page   94: AT32F435/437 ADC Application Note
+Page   95: AT32F435/437 ADC Application Note

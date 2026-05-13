@@ -1,0 +1,46 @@
+Keyword: DMA2
+Occurrences: 42
+================================================================================
+
+Page    1: The AT32F435/437 series MCUs are designed with two DMA controllers (DMA1 and DMA2); each
+Page    4: Table 1. Flexible DMA1/DMA2 request mapping................................................................................. 7
+Page    6: DMA2
+Page    7: Table 1. Flexible DMA1/DMA2 request mapping
+Page    9: request, that is, any peripheral DMA request can be mapped on any channel of DMA1/DMA2, which
+Page   10: dmamux_generator_config(DMA2MUX_GENERATOR1, &dmamux_gen_init_struct);
+Page   10: dmamux_sync_config(DMA2MUX_CHANNEL4, &dmamux_sync_init_struct);
+Page   15: /* enable dma2/gpioc/tmr2 clocks */
+Page   15: crm_periph_clock_enable(CRM_DMA2_PERIPH_CLOCK, TRUE);
+Page   16: /* initialize dma2 channel1 */
+Page   16: dma_reset(DMA2_CHANNEL1);
+Page   16: dma_init(DMA2_CHANNEL1, &dma_init_struct);
+Page   16: dma_interrupt_enable(DMA2_CHANNEL1, DMA_FDT_INT, TRUE);
+Page   16: /* dma2 channel1 interrupt nvic init */
+Page   16: nvic_irq_enable(DMA2_Channel1_IRQn, 1, 0);
+Page   16: dmamux_enable(DMA2, TRUE);
+Page   16: dmamux_init(DMA2MUX_CHANNEL1, DMAMUX_DMAREQ_ID_TMR2_OVERFLOW);
+Page   16: dma_channel_enable(DMA2_CHANNEL1, TRUE);
+Page   18: /* enable dma2/gpioa clock */
+Page   18: crm_periph_clock_enable(CRM_DMA2_PERIPH_CLOCK, TRUE);
+Page   19: /* dma2 channel4 configuration */
+Page   19: dma_reset(DMA2_CHANNEL4);
+Page   19: dma_init(DMA2_CHANNEL4, &dma_init_struct);
+Page   19: dmamux_generator_config(DMA2MUX_GENERATOR1, &dmamux_gen_init_struct);
+Page   19: dma_interrupt_enable(DMA2_CHANNEL4, DMA_FDT_INT, TRUE);
+Page   19: /* dma2 channel4 interrupt nvic init */
+Page   19: nvic_irq_enable(DMA2_Channel4_IRQn, 1, 0);
+Page   19: dmamux_enable(DMA2, TRUE);
+Page   19: dmamux_init(DMA2MUX_CHANNEL4, DMAMUX_DMAREQ_ID_REQ_G1);
+Page   20: dma_channel_enable(DMA2_CHANNEL4, TRUE);
+Page   21: /* enable dma2/gpioa clock */
+Page   21: crm_periph_clock_enable(CRM_DMA2_PERIPH_CLOCK, TRUE);
+Page   22: /* dma2 channel4 configuration */
+Page   22: dma_reset(DMA2_CHANNEL4);
+Page   22: dma_init(DMA2_CHANNEL4, &dma_init_struct);
+Page   22: dmamux_sync_config(DMA2MUX_CHANNEL4, &dmamux_sync_init_struct);
+Page   22: dma_interrupt_enable(DMA2_CHANNEL4, DMA_FDT_INT, TRUE);
+Page   22: /* dma2 channel4 interrupt nvic init */
+Page   22: nvic_irq_enable(DMA2_Channel4_IRQn, 1, 0);
+Page   23: dmamux_enable(DMA2, TRUE);
+Page   23: dmamux_init(DMA2MUX_CHANNEL4, DMAMUX_DMAREQ_ID_TMR1_OVERFLOW);
+Page   23: dma_channel_enable(DMA2_CHANNEL4, TRUE);

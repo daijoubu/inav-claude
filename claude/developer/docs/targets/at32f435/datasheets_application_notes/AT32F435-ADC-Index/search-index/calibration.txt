@@ -1,0 +1,122 @@
+Keyword: calibration
+Occurrences: 118
+================================================================================
+
+Page    2: 2.3     Self-calibration ........................................................................................................ 10
+Page    8:    Self-calibration for data alignment
+Page   10: Note: The ADC self-calibration is only supported in 12-bit resolution, and resolution switching can be
+Page   10: performed after completion of calibration.
+Page   10: 2.3         Self-calibration
+Page   10: The ADC has self-calibration function. The self-calibration command is executed by software to
+Page   10: calculate a calibration value, and then the value is sent back to the ADC automatically without
+Page   10: The calibration value can be obtained by the following means:
+Page   10:     Software sends self-calibration command and then the hardware perform calculation
+Page   10: automatically. The calculated calibration value is stored in the ADC->CALVAL register.
+Page   10:     Manually set the calibration value by software, and this value is stored in the ADC->CALVAL
+Page   10: Self-calibration process:
+Page   11:     Execute calibration initialization command and wait until the completion of initialization;
+Page   11:     Execute calibration command and wait until the completion of calibration;
+Page   11: The complete calibration and resolution configuration is implemented by combined commands,
+Page   11: The code to implement self-calibration is as follows:
+Page   11: /* adc calibration */
+Page   11: adc_calibration_init(ADC1);
+Page   11: while(adc_calibration_init_status_get(ADC1));
+Page   11: adc_calibration_start(ADC1);
+Page   11: while(adc_calibration_status_get(ADC1));
+Page   11: /*set resolution to 6bit.this because calibration must perform at 12 bit resolution */
+Page   11: The code to implement self-calibration based on empirical value is as follows:
+Page   11: /* adc calibration */
+Page   11: adc_calibration_value_set(ADC1, 0x3F);
+Page   11: /*set resolution to 6bit.this because calibration must perform at 12 bit resolution */
+Page   11: Storing the calibration value does not set the OCCE flag nor generate an interrupt or DMA request;
+Page   11: The ADC self-calibration is only supported in 12-bit resolution, and resolution switching can be
+Page   11: performed after completion of calibration.
+Page   22: It is set by hardware when the ADC is powered. It is possible to perform calibration and trigger
+Page   32:    ADC calibration
+Page   32: To guarantee accurate converted data, the ADC requires calibration after power-on, which
+Page   32: A/D initialization calibration and wait for completion of initialization calibration, A/D
+Page   32: calibration and wait for completion of calibration.
+Page   32: Adjust the resolution after completion of ADC calibration, and wait until the ADC RDY flag is
+Page   37: /* adc calibration */
+Page   37: adc_calibration_init(ADC1);
+Page   37: while(adc_calibration_init_status_get(ADC1));
+Page   37: adc_calibration_start(ADC1);
+Page   37: while(adc_calibration_status_get(ADC1));
+Page   44: /* adc calibration */
+Page   44: adc_calibration_init(ADC1);
+Page   44: while(adc_calibration_init_status_get(ADC1));
+Page   44: adc_calibration_start(ADC1);
+Page   44: while(adc_calibration_status_get(ADC1));
+Page   49: /* adc calibration */
+Page   49: adc_calibration_init(ADC1);
+Page   49: while(adc_calibration_init_status_get(ADC1));
+Page   49: adc_calibration_start(ADC1);
+Page   49: while(adc_calibration_status_get(ADC1));
+Page   56: /* adc calibration */
+Page   56: adc_calibration_init(ADC1);
+Page   56: while(adc_calibration_init_status_get(ADC1));
+Page   56: adc_calibration_start(ADC1);
+Page   56: while(adc_calibration_status_get(ADC1));
+Page   56: adc_calibration_init(ADC2);
+Page   56: while(adc_calibration_init_status_get(ADC2));
+Page   56: adc_calibration_start(ADC2);
+Page   56: while(adc_calibration_status_get(ADC2));
+Page   56: adc_calibration_init(ADC3);
+Page   56: while(adc_calibration_init_status_get(ADC3));
+Page   56: adc_calibration_start(ADC3);
+Page   56: while(adc_calibration_status_get(ADC3));
+Page   63: /* adc calibration */
+Page   63: adc_calibration_init(ADC1);
+Page   63: while(adc_calibration_init_status_get(ADC1));
+Page   63: adc_calibration_start(ADC1);
+Page   63: while(adc_calibration_status_get(ADC1));
+Page   63: adc_calibration_init(ADC2);
+Page   63: while(adc_calibration_init_status_get(ADC2));
+Page   63: adc_calibration_start(ADC2);
+Page   63: while(adc_calibration_status_get(ADC2));
+Page   71: /* adc calibration */
+Page   71: adc_calibration_init(ADC1);
+Page   71: while(adc_calibration_init_status_get(ADC1));
+Page   71: adc_calibration_start(ADC1);
+Page   71: while(adc_calibration_status_get(ADC1));
+Page   71: adc_calibration_init(ADC2);
+Page   71: while(adc_calibration_init_status_get(ADC2));
+Page   71: adc_calibration_start(ADC2);
+Page   71: while(adc_calibration_status_get(ADC2));
+Page   71: adc_calibration_init(ADC3);
+Page   71: while(adc_calibration_init_status_get(ADC3));
+Page   71: adc_calibration_start(ADC3);
+Page   71: while(adc_calibration_status_get(ADC3));
+Page   71: /*set resolution to 8bit.this because calibration must perform at 12 bit resolution */
+Page   78: /* adc calibration */
+Page   78: adc_calibration_init(ADC1);
+Page   78: while(adc_calibration_init_status_get(ADC1));
+Page   78: adc_calibration_start(ADC1);
+Page   78: while(adc_calibration_status_get(ADC1));
+Page   78: adc_calibration_init(ADC2);
+Page   78: while(adc_calibration_init_status_get(ADC2));
+Page   78: adc_calibration_start(ADC2);
+Page   78: while(adc_calibration_status_get(ADC2));
+Page   78: adc_calibration_init(ADC3);
+Page   78: while(adc_calibration_init_status_get(ADC3));
+Page   78: adc_calibration_start(ADC3);
+Page   78: while(adc_calibration_status_get(ADC3));
+Page   78: /*set resolution to 8bit.this because calibration must perform at 12 bit resolution */
+Page   85: /* adc calibration */
+Page   85: adc_calibration_init(ADC1);
+Page   85: while(adc_calibration_init_status_get(ADC1));
+Page   85: adc_calibration_start(ADC1);
+Page   85: while(adc_calibration_status_get(ADC1));
+Page   85: adc_calibration_init(ADC2);
+Page   85: while(adc_calibration_init_status_get(ADC2));
+Page   85: adc_calibration_start(ADC2);
+Page   85: while(adc_calibration_status_get(ADC2));
+Page   85: adc_calibration_init(ADC3);
+Page   85: while(adc_calibration_init_status_get(ADC3));
+Page   85: adc_calibration_start(ADC3);
+Page   85: while(adc_calibration_status_get(ADC3));}
+Page   91: /* adc calibration */
+Page   91: adc_calibration_init(ADC1);
+Page   91: while(adc_calibration_init_status_get(ADC1));
+Page   91: adc_calibration_start(ADC1);
+Page   91: while(adc_calibration_status_get(ADC1));

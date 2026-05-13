@@ -1,0 +1,29 @@
+Keyword: PVM
+Occurrences: 25
+================================================================================
+
+Page    1: (LVR), and power voltage monitoring (PVM)               − Up to 4 x SPIs (36 Mbit/s), all with I2S
+Page    3: 2.4.2     Reset and power voltage monitoring (POR / LVR / PVM) .........................................18
+Page   16: SRAM                                                                                    SRAM                                                           PVM
+Page   18: 2.4.2       Reset and power voltage monitoring (POR / LVR / PVM)
+Page   18: The device embeds a power voltage monitor (PVM) that monitors the VDD power supply and
+Page   18: compares it to the VPVM threshold. An interrupt can be generated when VDD drops below the VPVM
+Page   18: threshold and/or when VDD rises above the VPVM threshold. The PVM is enabled by software.
+Page   19: source can be one of the 16 external lines, the PVM output, an ERTC
+Page   50: PVMSEL[2:0] = 001 (rising edge) (1)     2.19      2.28     2.37     V
+Page   50: PVMSEL[2:0] = 001 (falling edge) (1)    2.09      2.18     2.27      V
+Page   50: PVMSEL[2:0] = 010 (rising edge) (2)     2.28      2.38     2.48     V
+Page   50: PVMSEL[2:0] = 010 (falling edge) (2)    2.18      2.28     2.38     V
+Page   50: PVMSEL[2:0] = 011 (rising edge) (2)     2.38      2.48     2.58      V
+Page   50: PVMSEL[2:0] = 011 (falling edge) (2)    2.28      2.38     2.48     V
+Page   50: Power voltage monitoring         PVMSEL[2:0] = 100 (rising edge) (2)     2.47      2.58     2.69     V
+Page   50: VPVM
+Page   50: level selection                  PVMSEL[2:0] = 100 (falling edge) (2)    2.37      2.48     2.59      V
+Page   50: PVMSEL[2:0] = 101 (rising edge) (2)     2.57      2.68     2.79     V
+Page   50: PVMSEL[2:0] = 101 (falling edge) (2)    2.47      2.58     2.69     V
+Page   50: PVMSEL[2:0] = 110 (rising edge) (2)     2.66      2.78      2.9      V
+Page   50: PVMSEL[2:0] = 110 (falling edge) (2)    2.56      2.68      2.8     V
+Page   50: PVMSEL[2:0] = 111 (rising edge)         2.76      2.88      3       V
+Page   50: PVMSEL[2:0] = 111 (falling edge)        2.66      2.78      2.9      V
+Page   50: VHYS_P(2)    PVM hysteresis                                     -                       -          100     -     mV
+Page   50: (1) PVMSEL[2:0] = 001 may be not available for its voltage detector level may be lower than VPOR.

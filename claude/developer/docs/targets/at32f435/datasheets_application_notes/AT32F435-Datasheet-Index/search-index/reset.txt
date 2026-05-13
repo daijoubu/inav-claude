@@ -1,0 +1,45 @@
+Keyword: reset
+Occurrences: 41
+================================================================================
+
+Page    1: − Power on reset (POR), low voltage reset
+Page    1:  Clock and reset management (CRM)
+Page    3: 2.4.2     Reset and power voltage monitoring (POR / LVR / PVM) .........................................18
+Page    4: 5.3.3     Embedded reset and power control block characteristics .........................................50
+Page    6: Table 18. Embedded reset and power management block characteristics....................................... 50
+Page    9: Figure 9. Power on reset and low voltage reset waveform ............................................................... 51
+Page   18: 2.4.2       Reset and power voltage monitoring (POR / LVR / PVM)
+Page   18: The device has an integrated power-on reset (POR)/low voltage reset (PDR) circuitry. It is always
+Page   18: active, and allows proper operation starting from/down to 2.6 V. The device remains in reset mode
+Page   18: when VDD goes below a specified threshold (VLVR) without the need for an external reset circuit.
+Page   18: This LDO operates always in its normal mode after reset.
+Page   19: The device exits Standby mode when an external reset (NRST pin), a WDT reset, a rising
+Page   20: CPU clock after any reset. An external 4 to 25 MHz clock (HEXT) can be selected, in which case it
+Page   23: and Standby modes. It can be used either as a watchdog to reset the device when an error occurs,
+Page   23: as a watchdog to reset the device when an error occurs. It is clocked by the main clock. It has an
+Page   24: data. Battery powered registers are not reset by a system, or when the device wakes up from the
+Page   34: the related packages. Unless descriptions in () under pin name, the function during reset and after
+Page   34: reset is the same as the actual pin name. Unless notes presented, all GPIOs are set as input
+Page   34: floating during reset and after reset. Pin multi-functions are selected through GPIOx_MUXx
+Page   34: (function after reset)
+Page   35: (function after reset)
+Page   35: 7          7       14        25               NRST              I/O        R                      Device reset input / internal reset output (active low)
+Page   36: (function after reset)
+Page   37: (function after reset)
+Page   38: (function after reset)
+Page   39: (function after reset)
+Page   40: (function after reset)
+Page   41: (function after reset)
+Page   41: tolerant GPIO with 20 mA sink current capability, R = bidirectional reset pin with embedded weak pull-up resistor, B =
+Page   41: registers even after reset (because these registers are not reset by the main reset). For details on how to manage these
+Page   50: 5.3.3       Embedded reset and power control block characteristics
+Page   50: Table 18. Embedded reset and power management block characteristics
+Page   50: VPOR(2)      Power on reset threshold                           -                     2.02         2.2   2.45      V
+Page   50: Low voltage reset                                  -
+Page   50: Reset temporization: CPU         ZW = 128 Kbytes                           -           10     -
+Page   51: Figure 9. Power on reset and low voltage reset waveform
+Page   51: Reset
+Page   70: reset circuit
+Page   70: NRST                PU                                    Internal Reset
+Page   70: (1) The reset network protects the device against parasitic resets.
+Page   70: 40. Otherwise the reset will not be performed by the device.

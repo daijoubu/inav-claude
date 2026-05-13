@@ -1,0 +1,18 @@
+Keyword: DMA1
+Occurrences: 14
+================================================================================
+
+Page    1: The AT32F435/437 series MCUs are designed with two DMA controllers (DMA1 and DMA2); each
+Page    4: Table 1. Flexible DMA1/DMA2 request mapping................................................................................. 7
+Page    6: DMA1
+Page    7: Table 1. Flexible DMA1/DMA2 request mapping
+Page    9: request, that is, any peripheral DMA request can be mapped on any channel of DMA1/DMA2, which
+Page   13: /* enable DMA1 clock */
+Page   13: crm_periph_clock_enable(CRM_DMA1_PERIPH_CLOCK, TRUE);
+Page   13: /* initialize dma1 channel */
+Page   13: dma_reset(DMA1_CHANNEL1);
+Page   14: dma_init(DMA1_CHANNEL1, &dma_init_struct);
+Page   14: dma_interrupt_enable(DMA1_CHANNEL1, DMA_FDT_INT, TRUE);
+Page   14: /* dma1 channel1 interrupt nvic init */
+Page   14: nvic_irq_enable(DMA1_Channel1_IRQn, 1, 0);
+Page   14: dma_channel_enable(DMA1_CHANNEL1, TRUE);

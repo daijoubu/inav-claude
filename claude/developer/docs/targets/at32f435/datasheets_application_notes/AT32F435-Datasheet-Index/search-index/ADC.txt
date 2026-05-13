@@ -1,0 +1,97 @@
+Keyword: ADC
+Occurrences: 93
+================================================================================
+
+Page    1: 3 ADCs, 23 communication interfaces
+Page    4: 2.16 Analog-to-digital converter (ADC) ........................................................................... 28
+Page    5: 5.3.22 12-bit ADC characteristics .......................................................................................... 99
+Page    7: Table 64. ADC characteristics ............................................................................................................ 99
+Page    7: Table 65. RAIN max for fADC = 80 MHz .............................................................................................. 100
+Page    7: Table 66. ADC accuracy (1) ............................................................................................................... 100
+Page   10: Figure 53. ADC accuracy characteristics ........................................................................................ 101
+Page   10: Figure 54. Typical connection diagram using the ADC ................................................................... 101
+Page   11: The AT32F435/437 offers three 12-bit ADCs, two 12-bit DACs, 13 general-purpose 16-bit timers
+Page   12: 12-bit ADC                                                                  3
+Page   14: 12-bit ADC                                                             3
+Page   16: UART7/8                                                                                                                                                 ADCIF1            ADC1
+Page   16: I2C1/2/3                                                                                                                                               ADCIF2            ADC2
+Page   16: CAN1/2                                                                                                                                                 ADCIF3            ADC3
+Page   18:    VDDA = 2.6 ~ 3.6 V: used as an external analog power supply for ADC and DAC. VDDA and VSSA
+Page   21: general-purpose, and basic timers TMRx, DAC, SDIO, ADC, DVP and QSPI.
+Page   28: 2.16        Analog-to-digital converter (ADC)
+Page   28: Three 12-bit analog-to-digital converters (ADC) are embedded into AT32F435/437 devices and
+Page   28:    All ADCs can be served by the DMA controller.
+Page   28: temperature sensor is internally connected to the ADC1_IN16 input channel which is used to
+Page   28: The internal reference voltage (VINTRV) provides a stable voltage source for ADC. The VINTRV is
+Page   28: internally connected to the ADC1_IN17 input channel.
+Page   28: This embedded hardware uses internal ADC1_IN18 channel to measure VBAT voltage. As the VBAT
+Page   28: voltage may be higher than VREF+ or VDDA to be outside the ADC input range, the VBAT is internally
+Page   34: -         -         -        13                PF3              I/O FTa                           TMR20_CH4 / XMC_A3                        ADC3_IN9
+Page   34: -         -         -        14                PF4              I/O FTa                           TMR20_CH1C / XMC_A4                      ADC3_IN14
+Page   34: -         -         -        15                PF5              I/O FTa                           TMR20_CH2C / XMC_A5                      ADC3_IN15
+Page   34: -         -         -        18                PF6              I/O FTa                                                                     ADC3_IN4
+Page   34: -         -         -        19                PF7              I/O FTa                                                                     ADC3_IN5
+Page   34: -         -         -        20                PF8              I/O FTa TMR13_CH1 / QSPI1_IO0 / XMC_NIOWR                                   ADC3_IN6
+Page   34: -         -         -        21                PF9              I/O FTa                                                                     ADC3_IN7
+Page   34: -         -         -        22                PF10             I/O FTa                                                                     ADC3_IN8
+Page   35: -         8       15        26                PC0              I/O FTa                                                                     ADC123_IN10(6)
+Page   35: -         9       16        27                PC1              I/O FTa                    SPI2_MOSI / I2S2_SD / UART7_RX                   ADC123_IN11(6)
+Page   35: -        10       17        28                PC2              I/O FTa                                                                     ADC123_IN12(6)
+Page   35: -        11       18        29                PC3              I/O FTa                                                                     ADC123_IN13(6)
+Page   35: TMR5_CH1 / TMR8_EXT /                                        ADC123_IN0(6) /
+Page   35: 11         15       24        35                PA1              I/O Fta                      USART2_RTS_DE / UART4_RX /                      ADC123_IN1(6)
+Page   35: 12         16       25        36                PA2              I/O Fta                       USART2_TX / SDIO2_CK /                          ADC123_IN2
+Page   35: 13         17       26        37                PA3              I/O Fta                                                                       ADC123_IN3
+Page   35: 14         20       29        40                PA4              I/O Fta      USART2_CK / USART6_TX /       ADC12_IN4 / DAC1_OUT
+Page   35: 15         21       30        41                PA5              I/O Fta                                   ADC12_IN5 / DAC2_OUT
+Page   36: 16         22       31        42                PA6              I/O Fta                      USART3_CTS / TMR13_CH1 /                     ADC12_IN6
+Page   36: 17         23       32        43                PA7              I/O Fta                                                                   ADC12_IN7
+Page   36: -        24       33        44                PC4              I/O Fta                           EMAC_MII_RXD0 /                        ADC12_IN14
+Page   36: -        25       34        45                PC5              I/O Fta                                                                  ADC12_IN15
+Page   36: 18         26       35        46                PB0              I/O Fta                    USART2_RX / SPI3_MOSI / I2S3_SD /              ADC12_IN8
+Page   36: 19         27       36        47                PB1              I/O Fta                          USART3_RTS_DE /                          ADC12_IN9
+Page   41: (6) PA0, PA1, PC0, PC1, PC2, and PC3 are ADC fast channels; others are slow channels.
+Page   46: 100 nF                                             ADC/
+Page   52: − fHCLK > 144 MHz, fPCLK1 = fHCLK/2, fPCLK2 = fHCLK/2, fADCCLK = fPCLK2/2;
+Page   52: − fHCLK ≤ 144 MHz, fPCLK1 = fHCLK, fPCLK2 = fHCLK, fADCCLK = fPCLK2/2.
+Page   60: ADC1         15.11           13.80             12.56         11.40
+Page   60: ADC2         15.02           13.70             12.49         11.34
+Page   60: ADC3         14.95           13.65             12.44         11.30
+Page   99: 5.3.22 12-bit ADC characteristics
+Page   99: Table 64. ADC characteristics
+Page   99: fADC       ADC clock frequency                                                                                  MHz
+Page   99: fADC = 80 MHz                    -           -         1.65    MHz
+Page   99: -                -           -         17      1/fADC
+Page   99: CADC(2)                                                            -                -          10          -       pF
+Page   99: fADC = 80 MHz                              2.56                 μs
+Page   99: -                          205                 1/fADC
+Page   99: Injection   trigger    conversion fADC = 80 MHz                        -           -         107      ns
+Page   99: latency                                               -                -           -         3(4)    1/fADC
+Page   99: Regular trigger conversion            fADC = 80 MHz                    -           -         71.4     μs
+Page   99: latency                                               -                -           -         2(4)    1/fADC
+Page   99: fADC = 80 MHz                  0.031         -        8.006     μs
+Page   99: -               2.5          -        640.5    1/fADC
+Page   99: tSTAB(2)    Power-up time                                         -                          150                 1/fADC
+Page   99: fADC = 80 MHz, 12-bit
+Page   99: 12-bit resolution                 12.5 for successive          1/fADC
+Page  100: Table 65. RAIN max for fADC = 80 MHz
+Page  100: Table 66. ADC accuracy (1)
+Page  100: fADC = 80 MHz, RAIN < 20 kΩ,
+Page  100: Measurements made after ADC calibration
+Page  100: fADC = 15 ~ 80 MHz, RAIN < 20 kΩ,
+Page  100: Measurements made after ADC calibration
+Page  100: (1) ADC DC accuracy values are measured after internal calibration.
+Page  101: Figure 53. ADC accuracy characteristics
+Page  101: Figure 54. Typical connection diagram using the ADC
+Page  101: Sample and hold ADC
+Page  101: R (1)                    ADCx_INx                                               R ADC
+Page  101: 0.6V                                  C ADC(1)
+Page  101: (1) Refer to Table 64 for the values of RAIN and CADC.
+Page  101: capacitance (roughly 7 pF). A high C parasitic value will downgrade conversion accuracy. To remedy this, f ADC
+Page  101: If HEXT is enabled while ADC uses any input channel of ADC3_IN4~8 and ADC123_IN10~13,
+Page  101: HEXT emitting to ADC input signals nearby.
+Page  101:           Use different PCB layers to route ADC_IN signal apart from HEXT path
+Page  101:           Do not route ADC_IN signals and HEXT path parallel
+Page  102: ADC sampling time when reading the
+Page  102: ADC sampling time when
+Page  103: ADC sampling time when reading the voltage of

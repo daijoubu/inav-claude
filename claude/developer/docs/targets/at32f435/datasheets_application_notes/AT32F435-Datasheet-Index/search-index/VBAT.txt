@@ -1,0 +1,42 @@
+Keyword: VBAT
+Occurrences: 38
+================================================================================
+
+Page    1:  Core: ARM® 32-bit Cortex®-M4 CPU with                         (VBAT/4)
+Page    1: − VBAT supply for LEXT, ERTC, and twenty
+Page    1: reference voltage (VINTRV), VBAT monitor
+Page    4: 2.16.3 VBAT monitor (VBAT/4) ..................................................................................................28
+Page    5: 5.3.25 VBAT voltage monitor characteristics ........................................................................103
+Page    6: Table 26. Typical and maximum current consumptions on VBAT ....................................................... 58
+Page    7: Table 69. VBAT monitor characteristics ............................................................................................. 103
+Page    9: Figure 13. Typical current consumption on VBAT with LEXT and ERTC ON vs. temperature at
+Page    9: different VBAT ................................................................................................................................. 58
+Page   16: @VBAT
+Page   18:    VBAT = 1.62 ~ 3.6 V: VBAT pin can supply VBAT domain from the external battery or super
+Page   18: capacity, or from VDD without the external battery or super capacity. VBAT (through power
+Page   24: power supply, or VBAT is used as supply source.
+Page   28: voltage (VINTRV), and VBAT monitor (VBAT/4).
+Page   28: 2.16.3 VBAT monitor (VBAT/4)
+Page   28: This embedded hardware uses internal ADC1_IN18 channel to measure VBAT voltage. As the VBAT
+Page   28: voltage may be higher than VREF+ or VDDA to be outside the ADC input range, the VBAT is internally
+Page   28: connected to a divided-by-4 bridge. The converted value is 1/4 of the VBAT voltage.
+Page   30: VBAT      6                                                     103   PA11
+Page   31: VBAT     6                                           70   PA11
+Page   32: VBAT    1                                     48   VDD
+Page   33: VBAT    1                        36   VDD
+Page   33: VBAT    1                        36   VDD
+Page   34: 1          1        6         6                 VBAT             S            -                                  Battery power supply
+Page   46: VBAT
+Page   49: VBAT       Battery power voltage                                -                  1.62         3.6      V
+Page   58: Table 26. Typical and maximum current consumptions on VBAT
+Page   58: symbol      Parameter             Conditions            VBAT =   VBAT =   VBAT =   TA =    TA =      TA =     Unit
+Page   58: IDD_VBAT                                                1.04     1.49     1.89     2.19    2.59      3.10      μA
+Page   58: of VBAT        VDD < VLVR
+Page   58: Figure 13. Typical current consumption on VBAT with LEXT and ERTC ON vs. temperature
+Page   58: at different VBAT
+Page  103: 5.3.25 VBAT voltage monitor characteristics
+Page  103: Table 69. VBAT monitor characteristics
+Page  103: RVBATM(1)     String resistor value of the VBAT monitor                -           45            -         kΩ
+Page  103: Q         Dividing factor of the VBAT monitor                      -            4            -          -
+Page  103: TS_VBATM(2)                                                             5            -            -          μs
+Page  103: the VBAT monitor

@@ -17,7 +17,7 @@ Launch the INAV Configurator desktop application in development mode for testing
 
 ```bash
 cd inav-configurator
-NODE_ENV=development npm start
+ENABLE_REMOTE_DEBUGGING=1 NODE_ENV=development npm start --remote-debugging-port=9222
 ```
 
 This launches the Electron app in development mode with hot-reload enabled.
@@ -28,7 +28,7 @@ If you need to continue working while the configurator runs:
 
 ```bash
 cd inav-configurator
-NODE_ENV=development npm start &
+ENABLE_REMOTE_DEBUGGING=1 NODE_ENV=development npm start --remote-debugging-port=9222 &
 ```
 
 Or use the Bash tool with `run_in_background: true` parameter.
@@ -45,15 +45,15 @@ The `NODE_ENV=development` environment variable:
 
 | Problem | Solution |
 |---------|----------|
-| `npm start` fails | Run `npm install` first to ensure dependencies are installed |
-| Missing NODE_ENV warning | Always use `NODE_ENV=development npm start` |
+| `npm start` fails | New installations: Run `npm install` first to ensure dependencies are installed |
+| Missing NODE_ENV warning | Always use `ENABLE_REMOTE_DEBUGGING=1 NODE_ENV=development npm start --remote-debugging-port=9222` |
 | Port already in use | Another instance may be running - check with `ps aux \| grep electron` |
 | Changes not reflected | The app should hot-reload, but you may need to restart |
 
 ## Development Workflow
 
 1. Make changes to configurator code
-2. Run configurator to test changes: `NODE_ENV=development npm start`
+2. Run configurator to test changes: `ENABLE_REMOTE_DEBUGGING=1 NODE_ENV=development npm start --remote-debugging-port=9222 &`
 3. The app should automatically reload when files change
 4. Check browser console (Ctrl+Shift+I / Cmd+Option+I) for errors
 

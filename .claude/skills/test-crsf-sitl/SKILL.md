@@ -163,7 +163,7 @@ file bin/SITL.elf
 ```bash
 # Start Configurator
 cd $HOME/inavflight/inav-configurator
-npm start
+ENABLE_REMOTE_DEBUGGING=1 NODE_ENV=development npm start --remote-debugging-port=9222
 ```
 
 **In Configurator:**
