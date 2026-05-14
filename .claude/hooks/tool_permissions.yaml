@@ -213,6 +213,14 @@ rules:
     decision: allow
     message: "WASM runtime file modification allowed - active development"
 
+  - name: "Allow editing INAV source files (drivers, firmware)"
+    tool_name_pattern: "^(Write|Edit)$"
+    tool_input_patterns:
+      file_path: ".*/inav/src/.*\\.(c|h|cpp|cxx|hpp)$"
+    category: write
+    decision: allow
+    message: "INAV firmware source code modification allowed - active development"
+
   # ===================================================================
   # Ask Rules (File Modifications)
   # ===================================================================
