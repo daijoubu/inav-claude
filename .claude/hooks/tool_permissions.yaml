@@ -205,6 +205,14 @@ rules:
     category: write
     decision: allow
 
+  - name: "Allow editing developer workspace files (session-state, notes, drafts)"
+    tool_name_pattern: "^(Write|Edit)$"
+    tool_input_patterns:
+      file_path: ".*/claude/developer/workspace/[^/]+/(session-state\\.md|.*\\.md|notes\\.md|.*_draft\\.md)$"
+    category: write
+    decision: allow
+    message: "Developer workspace session tracking and working documents"
+
   - name: "Allow edits to wasm_pg_runtime.c"
     tool_name_pattern: "^(Write|Edit)$"
     tool_input_patterns:
