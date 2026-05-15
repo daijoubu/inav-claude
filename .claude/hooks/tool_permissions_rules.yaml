@@ -43,6 +43,11 @@ rules:
     category: read
     decision: allow
 
+  - name: "Allow ScheduleWakeup for loop monitoring"
+    tool_name_pattern: "^ScheduleWakeup$"
+    category: other
+    decision: allow
+
   - name: "Allow Agent tool (explore agent)"
     tool_name_pattern: "^Agent$"
     category: other
@@ -174,6 +179,54 @@ rules:
     category: write
     decision: allow
     message: "WASM runtime file modification allowed - active development"
+
+  - name: "Allow editing INAV firmware source files"
+    tool_name_pattern: "^(Write|Edit)$"
+    tool_input_patterns:
+      file_path: "^.*inav/.*"
+    category: write
+    decision: allow
+    message: "INAV firmware source file modification allowed"
+
+  - name: "Allow editing inav-configurator source files"
+    tool_name_pattern: "^(Write|Edit)$"
+    tool_input_patterns:
+      file_path: "^.*inav-configurator/.*"
+    category: write
+    decision: allow
+    message: "INAV Configurator source file modification allowed"
+
+  - name: "Allow editing mspapi2 source files"
+    tool_name_pattern: "^(Write|Edit)$"
+    tool_input_patterns:
+      file_path: "^.*mspapi2/.*"
+    category: write
+    decision: allow
+    message: "MSP API 2 source file modification allowed"
+
+  - name: "Allow editing pico_tooling_rp2350 source files"
+    tool_name_pattern: "^(Write|Edit)$"
+    tool_input_patterns:
+      file_path: "^.*pico_tooling_rp2350/.*"
+    category: write
+    decision: allow
+    message: "Pico Tooling RP2350 source file modification allowed"
+
+  - name: "Allow editing raytools source files"
+    tool_name_pattern: "^(Write|Edit)$"
+    tool_input_patterns:
+      file_path: "^.*raytools/.*"
+    category: write
+    decision: allow
+    message: "Raytools source file modification allowed"
+
+  - name: "Allow editing .md files in claude/ role directories"
+    tool_name_pattern: "^(Write|Edit)$"
+    tool_input_patterns:
+      file_path: ".*/claude/(projects|manager|developer|security-analyst|release-manager)/.*\\.md$"
+    category: write
+    decision: allow
+    message: "Markdown file modification in claude/ role directories (projects, manager, developer, security-analyst, release-manager)"
 
   # ===================================================================
   # Ask Rules (File Modifications)
