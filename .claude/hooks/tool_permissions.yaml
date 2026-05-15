@@ -530,6 +530,13 @@ bash_rules:
     category: other
     decision: allow
 
+  - name: "Allow python scripts in .claude/skills/ directories"
+    command_pattern: "^python3$"
+    argument_pattern: ".*\\.claude/skills/.*\\.py\\b"
+    category: other
+    decision: allow
+    message: "Python script execution in .claude/skills/ subdirectories (including nested scripts like flash-firmware-dfu/fc-cli.py)"
+
   - name: "Allow python3 for any script"
     command_pattern: "^python3$"
     category: other
