@@ -530,6 +530,12 @@ bash_rules:
     category: other
     decision: allow
 
+  - name: "Allow direct execution of .py scripts in .claude/skills/"
+    command_pattern: ".*\\.claude/skills/.*\\.py$"
+    category: other
+    decision: allow
+    message: "Direct execution of Python scripts in .claude/skills/ subdirectories (including nested scripts like fc-cli.py)"
+
   - name: "Allow python scripts in .claude/skills/ directories"
     command_pattern: "^python3$"
     argument_pattern: ".*\\.claude/skills/.*\\.py\\b"
