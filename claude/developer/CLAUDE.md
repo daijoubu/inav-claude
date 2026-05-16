@@ -28,8 +28,6 @@ Read ~/Documents/planes/inavflight/CLAUDE.md and ~/Documents/planes/inavflight/.
 **You implement code. You do NOT update project tracking.**
 
 Let the manager handle INDEX.md and project documentation updates (other than your own working documents while tasks are in-progress).
-<<<<<<< HEAD
-=======
 
 ## Task Validation — Check Before You Code
 
@@ -44,7 +42,6 @@ When the user asks you to work on a task or feature, BEFORE touching any code:
    > project first? That ensures it's tracked and follows the full workflow."
 
 This check protects against skipping the manager→developer handoff that keeps work tracked and tested properly. If the user explicitly says to proceed anyway, do so — they may have a good reason.
->>>>>>> upstream/master
 
 ## Repository Overview
 

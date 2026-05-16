@@ -90,13 +90,6 @@ def parse_index_file(filepath: Path):
 
 
 def search_keyword(index_name: str, keyword: str):
-<<<<<<< HEAD
-    """Look up an exact keyword in one index. Returns None if not found."""
-    p = index_path(index_name) / f"{keyword}.txt"
-    if not p.is_file():
-        return None
-    return parse_index_file(p)
-=======
     """Look up a keyword in one index (case-insensitive). Returns None if not found."""
     idx_dir = index_path(index_name)
     p = idx_dir / f"{keyword}.txt"
@@ -107,7 +100,6 @@ def search_keyword(index_name: str, keyword: str):
         if candidate.stem.lower() == kw_lower:
             return parse_index_file(candidate)
     return None
->>>>>>> upstream/master
 
 
 def extract_pages(pdf: Path, pages: list, context: int = 0) -> str:
@@ -169,8 +161,6 @@ def extract_pages(pdf: Path, pages: list, context: int = 0) -> str:
     return "\n".join(chunks)
 
 
-<<<<<<< HEAD
-=======
 def rg_fallback(keyword: str, search_dir: Path) -> bool:
     """Fall back to rg -i when keyword not found in any pre-built index."""
     try:
@@ -191,7 +181,6 @@ def rg_fallback(keyword: str, search_dir: Path) -> bool:
         return False
 
 
->>>>>>> upstream/master
 MAX_RESULTS = 20  # Default cap; use --max to override
 
 
@@ -236,16 +225,10 @@ def search_all(keyword: str, indexes: list, extract: bool = True, context: int =
             print(f"\n  (PDF extraction skipped — refine your keyword or use --max)\n")
 
     if not found_any:
-<<<<<<< HEAD
-        print(f"Keyword '{keyword}' not found in any index.", file=sys.stderr)
-        print("Use --match to fuzzy-search keyword names, or --list to browse.", file=sys.stderr)
-        sys.exit(1)
-=======
         if not rg_fallback(keyword, BASE):
             print(f"Keyword '{keyword}' not found in any index or text file.", file=sys.stderr)
             print("Use --match to fuzzy-search keyword names, or --list to browse.", file=sys.stderr)
             sys.exit(1)
->>>>>>> upstream/master
 
 
 def list_keywords(indexes: list):

@@ -35,7 +35,6 @@ fi
 mkdir -p "${BUILD_DIR}"
 cd "${BUILD_DIR}"
 
-<<<<<<< HEAD
 # Function to check if ld supports --no-warn-rwx-segments
 check_ld_rwx_support() {
     local tmpfile=$(mktemp /tmp/claude/test_ld_XXXXXX 2>/dev/null || echo "/tmp/claude/test_ld_$$")
@@ -72,18 +71,13 @@ patch_cmake_if_needed() {
     fi
 }
 
-=======
->>>>>>> upstream/master
 # Check if we need to run cmake
 if [ ! -f "Makefile" ] || [ "$1" = "clean" ]; then
     echo "Configuring SITL build..."
 
-<<<<<<< HEAD
     # Patch cmake if needed for older linkers
     patch_cmake_if_needed
 
-=======
->>>>>>> upstream/master
     cmake -DSITL=ON ..
 fi
 

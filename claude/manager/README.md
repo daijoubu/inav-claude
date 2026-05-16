@@ -55,11 +55,7 @@ Use the `email-manager` agent for all email operations. See also: `claude/manage
 ### Workflow
 
 ```
-<<<<<<< HEAD
-1. User requests feature/fix
-=======
 1. User requests feature/fix  ← capture the PROBLEM here (see below)
->>>>>>> upstream/master
 2. Create project in claude/projects/active/<name>/
 3. Use email-manager agent to send task assignment to developer
 4. Wait for completion report (email-manager agent to check inbox)

@@ -13,6 +13,61 @@ Completed (✅) and cancelled (❌) projects by current author (daijoubu) for IN
 
 ---
 
+
+### ✅ port-to-opencode
+
+**Status:** COMPLETED (2026-05-16)
+**Type:** Migration / Research
+**Priority:** MEDIUM-HIGH
+
+Review the INAV-Claude project structure and create a migration plan to port it from Claude Code to OpenCode. Identify all Claude-specific components (agents, skills, prompts) and map them to their OpenCode equivalents.
+
+---
+
+
+### ✅ investigate-cortex-m7-sd-write-ordering
+
+**Status:** COMPLETED (2026-05-16)
+**Type:** Investigation
+**Priority:** MEDIUM
+
+Systematic audit of the STM32F7 SD card driver for Cortex-M7 write-buffer and memory-ordering hazards — the same class of issues found and fixed during the CAN TX ISR migration (DMB barriers, volatile qualifiers, DMA cache coherency).
+
+---
+
+
+### ✅ fix-stm32f4-hal-redefinition-warnings
+
+**Status:** COMPLETED (2026-05-16)
+**Type:** Bug Fix
+**Priority:** HIGH
+
+Apply the `SYSTEM_INCLUDE_DIRECTORIES` fix to `cmake/stm32f4.cmake` to eliminate `__FPU_PRESENT` and related macro redefinition warnings exposed by the HAL update. This is the same fix already applied to `cmake/stm32f7.cmake` in commit `37e6b23ea`.
+
+---
+
+
+### ✅ fix-cortex-m7-sd-write-ordering
+
+**Status:** COMPLETED (2026-05-16)
+**Type:** Bug Fix
+**Priority:** MEDIUM
+
+Apply a two-line fix to `src/main/drivers/sdcard/sdmmc_sdio_hal.c` addressing two MEDIUM-severity memory-ordering defects found during the Cortex-M7 SD card investigation. Same store-release pattern as the CAN TX ISR work.
+
+---
+
+
+### ✅ verify-stm32h7-hal
+
+**Status:** COMPLETED (2026-05-16)
+**Type:** Verification / Maintenance
+**Priority:** MEDIUM
+
+Verify STM32H7xx HAL version and update if significantly behind latest (V1.11.5). H7 may already be more current than F4/F7 but version needs confirming.
+
+---
+
 ### ✅ feature-stm32f7-can-tx-isr
 
 **Status:** COMPLETED (2026-05-16)
