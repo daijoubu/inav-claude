@@ -1,0 +1,301 @@
+---
+name: finish-task
+description: Close task or complete task/project with commit, PR, and completion report
+triggers:
+  - finish task
+  - close task
+  - complete task
+  - close project
+  - complete project
+  - task done
+---
+
+# Finish Task Skill
+
+Use this skill when completing a task that involved code modifications.
+
+## Completion Checklist
+
+Complete ALL steps in order:
+
+### 1. Verify All Changes Are Ready
+
+```bash
+# Check what's changed
+git status
+git diff --stat
+```
+
+Review that all intended changes are present and no unintended files are modified.
+
+### 2. Run Tests (if applicable)
+
+```bash
+# For configurator
+cd inav-configurator
+npm test
+
+# For firmware - build check
+cd inav
+make SITL
+```
+
+### 3. Stage Changes
+
+Stage files selectively:
+```bash
+git add <specific-files>
+```
+
+Review what's staged:
+```bash
+git diff --cached --stat
+```
+
+### 4. Create Commit Message
+
+Write a clear commit message. **Do NOT mention Claude, AI, or automation.**
+
+**Format:**
+```
+<short summary - what changed>
+
+<detailed explanation if needed>
+- bullet points for multiple changes
+- explain the "why" not just the "what"
+
+Fixes #<issue-number>  (if applicable)
+```
+
+**Open in gedit for review:**
+```bash
+# Write message to temp file and open in gedit
+cat > /tmp/commit_msg.txt << 'EOF'
+<your commit message here>
+EOF
+
+gedit /tmp/commit_msg.txt
+```
+
+After reviewing/editing in gedit, commit:
+```bash
+git commit -F /tmp/commit_msg.txt
+```
+
+### 5. Push to Remote
+
+```bash
+git push origin <branch-name>
+
+# If new branch, set upstream:
+git push -u origin <branch-name>
+```
+
+### 6. Create PR (if appropriate)
+
+**When to create a PR:**
+- Task is complete and ready for upstream review
+- Branch contains a coherent, reviewable set of changes
+
+**When NOT to create a PR:**
+- Work is still in progress
+- Changes are local-only or experimental
+
+**Check if PR already exists:**
+```bash
+gh pr list --head <branch-name>
+```
+
+**Create PR using gh CLI:**
+```bash
+# For configurator
+cd inav-configurator
+gh pr create --title "<descriptive title>" --body "$(cat << 'EOF'
+## Summary
+
+<Brief description of changes>
+
+## Changes
+
+- Change 1
+- Change 2
+
+## Testing
+
+<How this was tested>
+
+## Related Issues
+
+Fixes #<issue-number> (if applicable)
+EOF
+)"
+
+# For firmware
+cd inav
+gh pr create --title "<descriptive title>" --body "$(cat << 'EOF'
+## Summary
+
+<Brief description of changes>
+
+## Changes
+
+- Change 1
+- Change 2
+
+## Testing
+
+<How this was tested>
+
+## Related Issues
+
+Fixes #<issue-number> (if applicable)
+EOF
+)"
+```
+
+### 7. Release the Lock
+
+```bash
+# For firmware
+rm claude/locks/inav.lock
+
+# For configurator
+rm claude/locks/inav-configurator.lock
+```
+
+### 8. Send Completion Report
+
+Create a comprehensive completion report and ask the email-manager to deliver it to the Manager. `. The manager will use this to update `claude/projects/<project-name>/`.
+
+**Filename:** `YYYY-MM-DD-HHMM-completed-<task-name>.md`
+
+```markdown
+# Task Completion: <Task Name>
+
+**Date:** <date>
+**From:** Developer
+**Task:** <task-name>
+**Project:** <project-name in claude/projects/>
+
+## Status: COMPLETE
+
+## Summary
+
+<Brief summary of what was accomplished>
+
+## Implementation Approach
+
+<How you implemented it and key technical decisions>
+
+## Changes Made
+
+- <change 1>
+- <change 2>
+
+## Test Results
+
+<What testing was done, results>
+
+## Known Limitations / Follow-up
+
+<Any limitations or future work needed>
+
+## Commit
+
+- **Branch:** <branch-name>
+- **Commit:** <commit-hash>
+
+## PR (if created)
+
+- **PR:** #<number>
+- **URL:** <url>
+
+## Lock Released
+
+Released <repo>.lock
+
+## have the task email archived.
+Ask the email-manager agent to archive the email for this task.
+
+### 10. Increment the Cycle Counter
+
+Do not do this step if if the username is raymorris.
+After copying the report to the manager inbox, only if claude/onboarding/completed-cycles.txt reads less than 5, increment the counter.
+This counter drives the onboarding guidance shown at the start of each session.
+
+```bash
+COUNTER_FILE="claude/onboarding/completed-cycles.txt"
+CURRENT=$(cat "$COUNTER_FILE" 2>/dev/null | tr -d '[:space:]')
+[[ "$CURRENT" =~ ^[0-9]+$ ]] || CURRENT=0
+echo $((CURRENT + 1)) > "$COUNTER_FILE"
+```
+
+### 11. Close or Compact This Session
+
+**Developer sessions are designed for one task at a time.** Now that this task
+is complete, tell the user:
+
+> "This task is complete. Developer sessions work best with one task per session
+> to keep context focused. I recommend closing this session and opening a fresh
+> one for the next task. If you'd like to continue here, run `/compact` first
+> to compress the context."
+
+Do not automatically start the next task. Wait for the user to decide.
+
+---
+
+### Role Separation
+
+**Developer responsibilities:**
+- Complete the code work
+- Add reports, analysis, or notes to the project directory (`active/<project>/`)
+- Create commit and PR
+- Release the lock
+- Send completion report to manager inbox
+
+**Manager responsibilities (after receiving report):**
+- Verify work is complete
+- Move project directory from `active/` to `completed/`
+- Update `INDEX.md` (remove entry)
+- Update `completed/INDEX.md` (add entry)
+- Archive the completion report
+
+The developer updates project content. The manager handles project lifecycle (moving directories, updating indexes).
+
+## Commit Message Guidelines
+
+**Good:**
+```
+Fix GPS recovery after signal loss
+
+Move lastUpdateTime update outside isFirstGPSUpdate block so timestamp
+is recorded on first reading after recovery, preventing position
+estimate timeout.
+
+Fixes #11049
+```
+
+**Bad:**
+```
+🤖 Generated with Claude Code
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+```
+
+**Never include:**
+- References to Claude, AI, LLM, or automation
+- Emojis (unless project convention)
+- Co-authored-by AI lines
+- "Generated by" attributions
+
+---
+
+Be sure any files you created are organized properly according to claude/developer/INDEX.md
+
+
+## Related Skills
+
+- **start-task** - Begin tasks with proper setup
+- **create-pr** - Create pull request after task completion
+- **check-builds** - Verify builds pass before finishing
+- **git-workflow** - Commit changes and manage branches

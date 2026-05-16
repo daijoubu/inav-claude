@@ -1,0 +1,82 @@
+---
+name: email
+description: Read and manage internal email messages between project roles
+triggers:
+  - read your email
+  - check your email
+  - read your inbox
+  - check your inbox
+  - read your messages
+  - check your messages
+  - check inbox
+  - any new messages
+  - any new email
+---
+
+# Internal Email System
+
+This project uses an internal email system for communication between roles (Manager, Developer, Release Manager, Tester, etc.).
+
+Unless you are the email-manager agent, Use the email-manager agent to read and send emails.  Tell the email-manager agent what your role is and give it the email you want to send, or ask it to give you your emails, or the email about a certain topic.
+
+
+## Email Templates
+
+**Task Assignment:**
+```markdown
+# Task Assignment: <Title>
+
+**Date:** YYYY-MM-DD HH:MM
+**Project:** <project-name>
+**Priority:** High | Medium | Low
+**Estimated Effort:** X-Y hours
+
+## Task
+<Description>
+
+## What to Do
+1. Step 1
+2. Step 2
+
+## Success Criteria
+- [ ] Criterion 1
+- [ ] Criterion 2
+
+---
+**{Role}**
+```
+
+**Completion Report:**
+```markdown
+# Task Completed: <Title>
+
+**Date:** YYYY-MM-DD
+**From:** {Role}
+**Type:** Completion Report
+
+## Status: COMPLETED
+
+## Summary
+<What was done>
+
+## Branch
+**Branch:** `branch-name`
+**Commit:** `hash`
+
+## Changes
+<Files modified>
+
+---
+**{Role}**
+```
+
+## Checking for Undelivered Mail
+
+You can ask the email-manager to check outbox folders for messages waiting to be delivered:
+
+---
+
+## Related Skills
+
+- **communication** - Communication guidelines and message templates
+- **projects** - Query project status (tasks often arrive via email)
