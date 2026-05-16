@@ -1,3 +1,5 @@
+---
+name: check-pr-bots
 description: Fetch and display bot comments on GitHub pull requests. Use when checking PR review feedback, bot suggestions, or automated comments.
 mode: subagent
 permission:

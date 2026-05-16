@@ -1,3 +1,5 @@
+---
+name: target-developer
 description: Expert in INAV firmware target configuration, specializing in target.h files, timer/DMA conflicts, pin mapping, and flash optimization. Use when users mention target configuration issues, flash overflow, gyro detection problems, DMA conflicts, or board-specific problems.
 mode: subagent
 permission:

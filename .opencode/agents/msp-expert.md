@@ -1,4 +1,5 @@
-
+---
+name: msp-expert
 description: "Look up MSP message definitions, use mspapi2 library, and debug MSP protocol issues. Use when writing MSP scripts, adding/changing MSP messages, or debugging MSP communication."
 mode: subagent
 permission:

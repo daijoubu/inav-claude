@@ -1,3 +1,5 @@
+---
+name: settings-lookup
 description: Look up INAV settings from settings.yaml. Use when needing setting names, valid values, defaults, or descriptions.
 mode: subagent
 permission:
