@@ -127,14 +127,15 @@ Expose DroneCAN as a selectable GPS provider (value 6) in the configurator GPS t
 
 ---
 
-### 📋 verify-stm32h7-hal
+### 📋 update-stm32h7-hal
 
-**Status:** TODO | **Type:** Verification / Maintenance | **Priority:** MEDIUM
-**Created:** 2026-02-20 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
+**Status:** TODO | **Type:** Maintenance / Bug Fix | **Priority:** MEDIUM-HIGH
+**Created:** 2026-05-16 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
 
-Verify STM32H7xx HAL version and update if significantly behind latest (V1.11.5). H7 may already be more current than F4/F7 but version needs confirming.
+Update STM32H7xx HAL from V1.11.4 to V1.13.0 (and CMSIS V1.10.5 to V1.13.0). Several high-severity fixes in the gap including DMA IRQHandler CT bit inversion, SPI TX overflow, FDCAN overflow, and HCLK frequency calculation bugs.
 
-**Directory:** `active/verify-stm32h7-hal/`
+**Issue:** [#11563](https://github.com/iNavFlight/inav/issues/11563)
+**Directory:** `active/update-stm32h7-hal/`
 **Repository:** inav (firmware) | **Branch:** `maintenance-10.x`
 
 ---
