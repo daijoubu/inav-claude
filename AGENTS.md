@@ -1,6 +1,17 @@
 # INAV Project - OpenCode Configuration
 
-This project uses OpenCode for AI-assisted development.
+<!-- First action required -->
+Ask the user: "Which role should I take on today - Manager, Developer, Release Manager, or Security Analyst?"
+
+After they respond, read:
+- Manager: `claude/manager/README.md`
+- Developer: `claude/developer/README.md`
+- Release Manager: `claude/release-manager/README.md`
+- Security Analyst: `claude/security-analyst/README.md`
+
+---
+
+## Project Overview
 
 ## Project Structure
 
@@ -56,3 +67,37 @@ See `claude/*/README.md` for role-specific workflows.
 - `.claude/` - Claude Code configuration (upstream)
 - `.opencode/` - OpenCode configuration (this project)
 - `opencode.json` - Root OpenCode settings
+
+## Code Navigation with ctags
+
+Both codebases have ctags indexes for quick symbol lookup.
+
+**Using the /find-symbol command:**
+```
+/find-symbol pidController
+/find-symbol navConfig
+```
+
+**Manual ctags lookup:**
+```bash
+# Find a C function in firmware
+grep "^functionName\b" inav/tags
+
+# Find a JS symbol in configurator
+grep "^symbolName\b" inav-configurator/tags
+```
+
+**Regenerating indexes when source files change:**
+```bash
+# Firmware (C code)
+cd inav && ctags -R --fields=+niazS --extras=+q --exclude=lib --exclude=build --exclude=tools --exclude=.git -f tags .
+
+# Configurator (JS code)
+cd inav-configurator && ctags -R --fields=+niazS --extras=+q --exclude=node_modules --exclude=.git --exclude=out --exclude=.vite --exclude=dist -f tags .
+```
+
+## Main Documentation
+
+- `claude/projects/INDEX.md` - Active project tracking
+- `claude/projects/completed/INDEX.md` - Completed projects
+- Role-specific guides: `claude/*/README.md`
