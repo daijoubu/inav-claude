@@ -1,4 +1,4 @@
----
+
 description: "Manage SITL simulator lifecycle (start, stop, restart, status, configure). Use when SITL needs to be running for tests."
 mode: subagent
 permission:

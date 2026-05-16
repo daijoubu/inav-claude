@@ -1,4 +1,4 @@
----
+
 description: "Build INAV firmware (SITL and hardware targets) and configurator. Use for ALL builds. Handles cmake reconfiguration, clean builds, and edge cases automatically."
 mode: subagent
 permission:

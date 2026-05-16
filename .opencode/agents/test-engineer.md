@@ -1,4 +1,4 @@
----
+
 description: "Run tests, reproduce bugs, and validate changes for INAV firmware and configurator. Does NOT fix code - only writes and runs tests. Use before PRs or when bugs need reproduction."
 mode: subagent
 permission:

@@ -1,4 +1,4 @@
----
+
 description: "Flash INAV firmware to flight controllers via DFU with settings preservation. Use after successful hardware builds or when user needs firmware flashed."
 mode: subagent
 permission:

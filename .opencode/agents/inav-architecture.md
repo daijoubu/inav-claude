@@ -1,4 +1,4 @@
----
+
 description: "Navigate INAV firmware codebase to find and search for functionality. Use PROACTIVELY BEFORE Grep/Explore when you need to find where code lives, search for the right files, or locate specific subsystems. Narrows search scope and returns file paths with architectural context."
 mode: subagent
 permission:
