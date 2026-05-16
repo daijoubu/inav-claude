@@ -8,7 +8,6 @@ permission:
   write: allow
   edit: allow
   bash: allow
-model: anthropic/claude-sonnet-4-5
 color: green
 ---
 

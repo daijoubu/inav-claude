@@ -7,7 +7,6 @@ permission:
   grep: allow
   edit: deny
   bash: deny
-model: anthropic/claude-sonnet-4-5
 ---
 
 You are an MSP (MultiWii Serial Protocol) expert for the INAV flight controller project.

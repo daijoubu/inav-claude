@@ -7,7 +7,6 @@ permission:
   grep: allow
   edit: deny
   bash: allow
-model: anthropic/claude-haiku-4-5
 color: orange
 ---
 
