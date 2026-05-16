@@ -2,7 +2,7 @@
 
 This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKED).
 
-**Last Updated:** 2026-05-13
+**Last Updated:** 2026-05-16
 **Active:** 9 | **Backburner:** 3 | **Blocked:** 0
 
 > **Completed projects:** See [completed/INDEX.md](completed/INDEX.md)
@@ -139,15 +139,15 @@ Verify STM32H7xx HAL version and update if significantly behind latest (V1.11.5)
 
 ---
 
-### 🚧 feature-stm32f7-can-tx-isr
+### 📋 investigate-opencode-startup-prompt
 
-**Status:** IN PROGRESS | **Type:** Feature / Bug Fix | **Priority:** MEDIUM-HIGH
-**Created:** 2026-04-26 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
+**Status:** TODO | **Type:** Investigation | **Priority:** MEDIUM
+**Created:** 2026-05-16 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
 
-Migrate STM32F7 CAN TX from polling/blocking to ISR-driven transmission. Phase 0 (LOG_DEBUG cleanup) and Phase 2 (ISR implementation) committed on `feature/stm32f7-can-tx-isr`. In Phase 3 hardware validation — odd behaviour observed under long-running tests; debug approach TBD (MSP node status messages or serial CAN peripheral diagnostics).
+Investigate why OpenCode prompts for role on startup despite AGENTS.md specifying the workflow. Root cause, potential fix, or documentation update for AGENTS.md.
 
-**Directory:** `active/feature-stm32f7-can-tx-isr/`
-**Branch:** `feature/stm32f7-can-tx-isr` | **Repository:** inav (firmware) | **PR target:** `maintenance-10.x`
+**Directory:** `active/investigate-opencode-startup-prompt/`
+**Repository:** inav-claude
 
 ---
 

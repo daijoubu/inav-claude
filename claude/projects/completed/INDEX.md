@@ -1,9 +1,8 @@
 # Completed Projects Archive
 
-<<<<<<< HEAD
 Completed (✅) and cancelled (❌) projects by current author (daijoubu) for INAV firmware and DroneCAN development.
 
-**Total Completed (Current Author):** 28 | **Total Cancelled:** 7
+**Total Completed (Current Author):** 29 | **Total Cancelled:** 7
 **Archived:** 100 | See [archive/](archive/)
 - Previous Author (sensei-hacker): 59 projects
 - Other Projects: 34 projects
@@ -14,6 +13,19 @@ Completed (✅) and cancelled (❌) projects by current author (daijoubu) for IN
 
 ---
 
+### ✅ feature-stm32f7-can-tx-isr
+
+**Status:** COMPLETED (2026-05-16)
+**Type:** Feature / Bug Fix
+**Priority:** MEDIUM-HIGH
+
+Migrate STM32F7 CAN TX from polling/blocking to ISR-driven transmission. PR submitted, project complete.
+
+**PR:** [#11560](https://github.com/iNavFlight/inav/pull/11560) — OPEN
+**Repository:** inav (firmware) | **Branch:** `maintenance-10.x`
+**Directory:** `completed/feature-stm32f7-can-tx-isr/`
+
+---
 
 ### ✅ test-pr-11390-dshot-dma
 
@@ -238,37 +250,21 @@ Systematic UI polish of the INAV Configurator based on a 97-issue audit across a
 **Priority:** HIGH
 
 Every 5 seconds, GPS position data stops being processed for 500ms due to a bug in the u-blox capability polling logic. This causes ~5 position fixes to go unprocessed each cycle on 10 Hz GPS modules.
-=======
-Completed (✅) and cancelled (❌) projects.
-
-**Total Completed:** 149 | **Total Cancelled:** 7
-
-> **Active projects:** See [../INDEX.md](../INDEX.md)
->>>>>>> upstream/master
 
 ---
 
 
 ### ✅ extract-discord-cache-conversations
 
-<<<<<<< HEAD
 **Status:** COMPLETED (2026-02-18)
 **Type:** Tooling / Script
 **Priority:** MEDIUM
 
 Build a script that extracts conversation data from the Discord client's local cache.
-=======
-**Status:** COMPLETED (2026-02-14)
-**Type:** Tooling / Script
-**Priority:** MEDIUM
-
-Build a script to extract conversation data from the Discord client's local cache into a readable format. Developer has prior research/context on this.
->>>>>>> upstream/master
 
 ---
 
 
-<<<<<<< HEAD
 ### ✅ fix-pr11-dronecan-tests (2026-02-18)
 
 **Status:** COMPLETED
@@ -902,7 +898,7 @@ Multi-stage project tracking debug logging, root cause analysis, and fix impleme
 - **PR:** [#2542](https://github.com/iNavFlight/inav-configurator/pull/2542) (fix/ble-byte-counter branch)
 
 **Note:** Project cancelled during cleanup; fix already in PR #2542 targeting maintenance-9.x
-=======
+
 ### ✅ fix-magnetometer-gui-control-undefined
 
 **Status:** COMPLETED (2026-01-29)
