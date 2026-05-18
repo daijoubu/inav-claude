@@ -48,13 +48,14 @@ This checklist contains critical testing philosophy and requirements, including:
 - ✅ Report back when you've successfully reproduced an issue
 
 **You must NOT:**
-- ❌ Modify source code in `inav/src/` or `inav-configurator/src/`
+- ❌ Modify source code in `inav/src/` or `inav-configurator/src/` (except inav/src/test/, inav-configurator/js/tests/, and inav-configurator/js/transpiler/transpiler/tests/)
 - ❌ Attempt to fix bugs in application code
 - ❌ Change implementation files to make tests pass
 
 You may only modify:
-- Test files (`*.test.js`, `*.spec.js`, `test_*.py`, etc.)
-- Test utilities in `claude/developer/scripts/testing/`
+- In-tree firmware unit tests: `inav/src/test/unit/*.cc` — **preferred for logic bugs**
+- In-tree configurator tests: `inav-configurator/js/tests/` and `inav-configurator/js/transpiler/transpiler/tests/`
+- External test scripts: `claude/developer/scripts/testing/` (Python, shell, JS scripts)
 - Test configuration files
 
 When you find a bug, **report it** - don't fix it. The developer role handles fixes.
@@ -100,10 +101,15 @@ When invoked, you should receive relevant context. What's needed depends on the 
 When asked to reproduce an issue:
 
 1. **Understand the problem** - What behavior is wrong? What should happen?
-2. **Create a minimal test** - Write the simplest test that demonstrates the issue
-3. **Make it realistic** - Use real-world scenarios, not contrived edge cases
-4. **Verify reproduction** - Run the test and confirm it fails as expected
-5. **Report success** - Describe exactly how the test reproduces the issue
+2. **Choose the right test type** — In-tree C unit test, or external SITL/hardware script:
+   - **In-tree C unit test** (`inav/src/test/unit/`): pure logic, math, parsing, protocol decoding — preferred when no live FC needed; runs in CI automatically via `make check`
+   - **External Python SITL script**: requires a running FC, tests arming, sensor fusion, protocol I/O, end-to-end flows
+3. **Create a minimal test** - Write the simplest test that demonstrates the issue
+4. **Make it realistic** - Use real-world scenarios, not contrived edge cases
+5. **Verify reproduction** - Run the test and confirm it fails as expected
+6. **Report success** - Describe exactly how the test reproduces the issue
+
+**Prefer in-tree tests when the bug is in pure logic.** A failing `make check` test is more valuable than an equivalent Python script because it runs on every CI build and cannot be forgotten.
 
 ### Good Reproduction Test Characteristics
 
@@ -250,13 +256,27 @@ with MSPApi(tcp_endpoint="localhost:5760") as api:
     })
 ```
 
-### 6. Firmware Unit Tests
+### 6. Firmware Unit Tests (Preferred for Logic Bugs)
+
+**Prefer in-tree unit tests for pure logic bugs** — they run fast, need no SITL, and exercise the exact production code path.
 
 ```bash
 cd inav/build
 cmake -DTOOLCHAIN= ..
 make check
 ```
+
+To run a single test target (faster feedback loop):
+```bash
+make check_osd         # just OSD tests
+make check_maths       # just maths tests
+```
+
+**When to write a new in-tree test vs an external script:**
+- New `inav/src/test/unit/` test: pure C logic, math, parsing, state machine correctness — anything that doesn't need a live FC or sensor
+- External Python SITL script: protocol behavior, arming sequences, sensor fusion, end-to-end flows that need a running FC
+
+Adding a test in `inav/src/test/unit/` means it automatically runs in CI (`make check`) and prevents regressions without any extra setup.
 
 ### 7. GPS Testing with SITL
 
@@ -321,7 +341,7 @@ python3 gps_test_v6.py
    ```
 
 It is NOT necessary to make a build of Configurator as part of testing if the fix only edited existing files. It can be tested live as a node/yarn appa
-Builds are only neceary when new files are added.
+Builds are only required when new files are added.
 ---
 
 IMPORTANT: Be sure to actually RUN the test and really look at the results. Do not just think about a test, or write about a test, or calculate a result you want. DO the test.
@@ -354,6 +374,7 @@ IMPORTANT: Be sure to actually RUN the test and really look at the results. Do n
    - Send a test command first to verify device responds
    - Check for conflicting processes (configurator, other scripts)
    - Validate test prerequisites (props off, FC armed, etc.)
+   - **If MSP connection fails or times out, check for CLI mode:** A previous test session may have left the FC in CLI mode (serial terminal open). CLI mode blocks all MSP traffic. Fix: send `exit\n` to the serial port, or physically reset the FC. Always exit CLI cleanly at the end of any test that uses it.
 
 4. **Clear Success/Failure Indicators**
    - Use visual indicators: ✓ for success, ✗ for failure
@@ -434,29 +455,193 @@ If the test itself is broken, it must SCREAM about it.
 
 ---
 
+## Finding Existing Tests — Search Strategy
+
+**Before writing a new test, always search for existing ones.**  A relevant existing script saves time and ensures consistency.
+
+### Step 1: Match your topic to a directory
+
+| Topic / Feature | Primary Location | Notes |
+|-----------------|-----------------|-------|
+| **CRSF / telemetry / RC protocol** | `claude/developer/scripts/testing/inav/crsf/` | includes RC sender, frame parser, configure scripts |
+| **GPS / navigation / RTH / altitude** | `claude/developer/scripts/testing/inav/gps/` | subdirs: `testing/`, `injection/`, `monitoring/`, `config/`, `workflows/` |
+| **MSP protocol / settings read-write** | `claude/developer/scripts/testing/inav/msp/` | subdirs: `benchmark/`, `mock/`, `debug/` |
+| **SITL arming / flight modes / sensors via SITL** | `claude/developer/scripts/testing/inav/sitl/` | includes althold, pitot, mag align, RC caching tests |
+| **Blackbox logging / motor analysis** | `claude/developer/scripts/testing/inav/blackbox/` | subdirs: `config/`, `analysis/`, `replay/`, `docs/` |
+| **DShot / ESC / beeper** | `claude/developer/scripts/testing/inav/dshot/` | motor locate, beeper arming-loop fix |
+| **OSD / display / formatting** | `claude/developer/scripts/testing/inav/osd/` | displayport test, format helpers, bench C files |
+| **USB / MSC / serial throughput** | `claude/developer/scripts/testing/inav/usb/` | bisect, config check, throughput test |
+| **Physical hardware / RP2350** | `claude/developer/scripts/testing/inav/hardware/` | hardware-specific test scripts |
+| **Configurator UI / servo / LED / alignment** | `claude/developer/scripts/testing/configurator/` | alignment, servo, LED strip, save-without-reboot |
+| **Configurator port/sensor config UI** | `claude/developer/scripts/testing/configurator/ports/` | sensor port function tests |
+| **Configurator Chrome DevTools (CDP)** | `claude/developer/scripts/testing/configurator/` | `configurator_cdp_test.py`, `tab_sweep_cdp.py` |
+| **Flight log analysis** | `claude/developer/scripts/testing/flight-log-analysis/` | analyze relationships, find stable periods |
+| **Firmware C unit tests (gtest)** | `inav/src/test/unit/` | OSD, GPS conversion, IMU, maths, OLC, barometer, etc. |
+| **Configurator JS unit tests** | `inav-configurator/js/tests/` | output mapping |
+| **Configurator transpiler tests** | `inav-configurator/js/transpiler/transpiler/tests/` | large suite of `.test.cjs` and `.test.mjs` files |
+
+### Step 2: Quick shell search
+
+```bash
+# Find scripts by topic keyword
+grep -rl "pitot\|airspeed" claude/developer/scripts/testing/
+grep -rl "althold\|altitude hold" claude/developer/scripts/testing/
+grep -rl "blackbox\|flash" claude/developer/scripts/testing/inav/blackbox/
+find claude/developer/scripts/testing/ -name "*.py" | xargs grep -l "MSP2_INAV_OUTPUT"
+```
+
+### Step 3: Check each dir's README
+
+Many subdirectories have a `README.md` listing every script and its purpose:
+- `claude/developer/scripts/testing/inav/README.md` — top-level INAV overview
+- `claude/developer/scripts/testing/inav/gps/README.md`
+- `claude/developer/scripts/testing/inav/blackbox/README.md`
+- `claude/developer/scripts/testing/inav/gps/injection/README.md`
+- `claude/developer/scripts/testing/inav/gps/monitoring/README.md`
+- `claude/developer/scripts/testing/inav/gps/config/README.md`
+- `claude/developer/scripts/testing/inav/gps/testing/README.md`
+- `claude/developer/scripts/testing/inav/gps/workflows/README.md`
+- `claude/developer/scripts/testing/inav/dshot/README.md`
+
+---
+
 ## Test Scripts Reference
 
 ### CRSF Testing (`claude/developer/scripts/testing/inav/crsf/`)
 - `crsf_rc_sender.py` - Bidirectional RC/telemetry handler
 - `crsf_stream_parser.py` - Telemetry frame parser
 - `configure_sitl_crsf.py` - CRSF configuration via MSP
-- `test_crsf_telemetry.sh` - Comprehensive test script
+- `check_crsf_rx.py` - Check CRSF RX detection
+- `enable_telemetry_feature.py` - Enable TELEMETRY feature via MSP
+- `test_crsf_telemetry.sh` - Comprehensive CRSF test script
 - `quick_test_crsf.sh` - Quick build-test cycle
+- `test_pr11025_fix.sh` - PR #11025 CRSF fix verification
+- `test_pr11100_telemetry.py` - PR #11100 telemetry test
 
 ### GPS Testing (`claude/developer/scripts/testing/inav/gps/`)
 - `testing/gps_test_v6.py` - Latest GPS test suite
 - `testing/gps_rth_test.py` - Return-to-home testing
-- `injection/inject_gps_altitude.py` - GPS data injection
+- `testing/gps_rth_bug_test.py` - RTH bug reproduction
+- `testing/gps_recovery_test.py` - GPS recovery/failsafe testing
+- `testing/gps_hover_test_30s.py` - 30s hover GPS test
+- `injection/inject_gps_altitude.py` - GPS altitude injection
+- `injection/simulate_altitude_motion.py` - Altitude motion simulator
+- `injection/simulate_gps_fluctuation_issue_11202.py` - GPS fluctuation reproduction
+- `monitoring/monitor_gps_status.py` - Live GPS status monitor
+- `monitoring/check_gps_config.py` - GPS config checker
+- `config/configure_sitl_gps.py` - Configure GPS for SITL
+- `config/query_m10_clock_config.py` - M10 GPS clock config query
+- `workflows/configure_and_run_sitl_test_flight.py` - Full GPS test flight workflow
 
 ### MSP Testing (`claude/developer/scripts/testing/inav/msp/`)
 - `benchmark/msp_benchmark.py` - MSP performance testing
 - `mock/msp_mock_responder.py` - Mock FC for testing
 - `debug/msp_debug.py` - MSP debugging
+- `debug/diagnose_esc_beeping.py` - ESC beeping diagnosis
+- `msp_continuous_sender.py` - Continuous MSP sender utility
+- `msp_reboot.py` - Reboot FC via MSP
+- `test_msp_commands.py` - General MSP command tests
+- `test_msp_connection.py` - Connection verification
+- `test_msp_sdcard_summary.py` - SD card MSP summary
+- `verify_output_assignment_api.py` - Tests MSP2_INAV_OUTPUT_ASSIGNMENT (0x210E/0x210F)
+- `verify_output_assignment_reverted.py` - Verify single-pass algorithm for maintenance-9.x
 
 ### SITL Testing (`claude/developer/scripts/testing/inav/sitl/`)
 - `sitl_arm_test.py` - Arm SITL via MSP
+- `arm_sitl.py` - SITL arming utility
 - `configure_sitl_for_arming.py` - Setup for arming
 - `continuous_msp_rc_sender.py` - Continuous RC sender
+- `test_althold_complete.py` - Full althold test
+- `test_althold_with_hitl.py` - Althold with HITL mode
+- `test_althold_climb_rate_sign.py` - Climb rate sign test
+- `test_althold_descent.py` / `test_althold_descent_phase2.py` - Descent phase tests
+- `sitl_rc_caching_test.py` - RC caching behavior
+- `test_align_mag.py` - Magnetometer alignment via SITL CLI
+- `test_cli_mag.sh` - CLI mag test script
+- `test_pitot_validation.py` - Pitot/airspeed validation via SITL
+- `query_fc_sensors.py` - Query FC sensor state
+- `configure_fc_msp_rx.py` - Configure FC for MSP RX
+
+### Blackbox Testing (`claude/developer/scripts/testing/inav/blackbox/`)
+- `config/configure_sitl_blackbox_file.py` - Configure blackbox to file
+- `config/configure_sitl_blackbox_serial.py` - Configure blackbox serial
+- `config/configure_fc_blackbox.py` - Configure hardware FC blackbox
+- `config/download_blackbox_from_fc.py` - Download blackbox logs
+- `config/test_blackbox_flash.py` / `test_blackbox_flash_v2.py` - Flash storage tests
+- `analysis/analyze_blackbox.py` - Analyze blackbox data
+- `analysis/blackbox_mc_althold_test.py` - MC althold blackbox test
+- `analysis/replay_blackbox_to_fc.py` - Replay blackbox to FC
+- `replay/replay_and_capture_blackbox.sh` - Replay workflow
+
+### DShot / ESC Testing (`claude/developer/scripts/testing/inav/dshot/`)
+- `test_dshot_beeper_arming_loop_fix.py` - Verify beeper fix on arming
+- `test_motor_locate.py` - Motor locate function test
+- `test_motor_locate_simple.py` - Simplified motor locate test
+
+### OSD Testing (`claude/developer/scripts/testing/inav/osd/`)
+- `test_osd_displayport.py` - OSD displayport protocol test
+- `test_osd_format_helpers.py` - OSD format helper tests
+- `bench_osd_format_int_unit.c` - C benchmark for OSD int formatting
+- `bench_osd_patterns.c` - C benchmark for OSD patterns
+
+### USB / MSC Testing (`claude/developer/scripts/testing/inav/usb/`)
+- `bisect-msc-cdc.sh` - Bisect USB MSC/CDC issues
+- `check-usb-msc-config.sh` - Check USB MSC config
+- `gather-usb-info.sh` - Gather USB system info
+- `test-msc-config-auto.sh` - Automated MSC config test
+- `usb_throughput_test.py` - USB serial throughput benchmark
+
+### Hardware Testing (`claude/developer/scripts/testing/inav/hardware/`)
+- `test_rp2350_pico.py` - RP2350 Pico hardware test
+
+### Configurator Testing (`claude/developer/scripts/testing/configurator/`)
+- `alignment_test.py` / `quick_alignment_test.py` - Board alignment tests
+- `test_msp_board_alignment.py` - MSP board alignment validation
+- `test_msp_basic.py` - Basic MSP configurator test
+- `test_save_without_reboot.py` / `_simple.py` / `_v2.py` - Save-without-reboot tests
+- `test_servo_ch10.py` / `test_servo_logic_simple.py` - Servo output tests
+- `test_led_strip_presets.py` - LED strip preset tests
+- `observe_servo_bug.py` - Servo bug reproduction
+- `test_inverse_transform.py` / `_auto.py` / `_multi.py` - Sensor transform tests
+- `configurator_cdp_test.py` - Chrome DevTools Protocol test
+- `tab_sweep_cdp.py` - CDP tab sweep utility
+- `test-configurator-startup.js` - Configurator startup test
+- `ports/test-sensor-port-function.js` - Sensor port function test
+
+### In-Tree Firmware Unit Tests (`inav/src/test/unit/`)
+Run with: `cd inav/build && cmake -DTOOLCHAIN= .. && make check`
+- `osd_unittest.cc` - OSD unit tests
+- `gps_ublox_unittest.cc` - uBlox GPS parsing
+- `maths_unittest.cc` - Math library tests
+- `battery_unittest.cc` - Battery calculation tests
+- `time_unittest.cc` - Timing tests
+- `circular_queue_unittest.cc` - Circular queue tests
+- `bitarray_unittest.cc` - Bit array tests
+- `olc_unittest.cc` - Open Location Code tests
+- `gimbal_serial_unittest.cc` - Gimbal serial tests
+- `telemetry_hott_unittest.cc` - HoTT telemetry tests
+- `rcdevice_unittest.cc` - RC device tests
+- *(`.cc.txt` files are disabled/WIP tests)*
+
+### In-Tree Configurator Tests
+- `inav-configurator/js/tests/outputMapping.test.mjs` - Output mapping unit test
+- `inav-configurator/js/transpiler/transpiler/tests/` - Large suite of transpiler tests
+  - Run with: `cd inav-configurator && npm test`
+
+---
+
+## Reusable Test Scripts Library
+
+### Output Assignment API Testing
+
+**Location:** `claude/developer/scripts/testing/inav/msp/`
+
+These scripts validate the Output Assignment API feature (MSP2_INAV_OUTPUT_ASSIGNMENT 0x210E and MSP2_INAV_QUERY_OUTPUT_ASSIGNMENT 0x210F):
+
+- **`verify_output_assignment_reverted.py`** - Tests that the single-pass (pre-priority) algorithm is in place. Use to verify reverts of PRs #11445/#2596 on maintenance-9.x.
+- **`verify_output_assignment_api.py`** - Tests MSP2_INAV_OUTPUT_ASSIGNMENT (0x210E) and MSP2_INAV_QUERY_OUTPUT_ASSIGNMENT (0x210F). Use after flashing firmware from feature/output-assignment-api.
+
+**Usage:** `python3 claude/developer/scripts/testing/inav/msp/verify_output_assignment_api.py`
 
 ---
 
@@ -605,4 +790,5 @@ Use the Edit tool to append new entries. Format: `- **Brief title**: One-sentenc
 
 ### Lessons
 
+- **CLI mode blocks MSP:** If MSP connection fails unexpectedly on a physical FC, a prior test session may have left the port in CLI mode. Send `exit\n` to the serial port or reset the FC before concluding the connection is broken.
 <!-- Add new lessons above this line -->
