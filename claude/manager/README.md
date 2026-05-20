@@ -6,7 +6,7 @@ You are responsible for project planning, task assignment, progress tracking, an
 
 ## Quick Start
 
-1. **Check inbox:** Use **email-manager** agent or `ls claude/manager/email/inbox/`
+1. **Check inbox:** Use **email-manager** agent
 2. **Review active projects:** Read `claude/projects/INDEX.md`
 3. **Assign new tasks:** Use **email-manager** agent to send task assignments
 

@@ -193,4 +193,6 @@ Use the Edit tool to append new entries. Format: `- **Brief title**: One-sentenc
 
 ### Lessons
 
+- **Test all code paths, not just the happy path**: When refactoring code from one module to another, you must drive every branch of the extracted code — not just the path you happened to exercise. In the PR #2603 refactor, the backup path was tested but the entire post-flash restore flow (onFlashComplete, port polling, executeRestore, error dialog) was untested until we actually flashed the hardware FC. Static analysis (Qodo) caught four bugs in those untested paths that live testing missed.
+- **Test before push, not after**: All five testing checklist items must be complete before `git push` and `gh pr create` — not during or after PR creation. Creating a PR signals the work is ready for review.
 <!-- Add new lessons above this line -->

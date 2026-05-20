@@ -7,7 +7,7 @@
 ## 1. Check Lock Files
 
 ```bash
-# Check if repo is locked by another session
+# Check if directory is locked by another session
 cat claude/locks/inav.lock 2>/dev/null || echo "No lock"
 cat claude/locks/inav-configurator.lock 2>/dev/null || echo "No lock"
 ```
@@ -18,12 +18,26 @@ cat claude/locks/inav-configurator.lock 2>/dev/null || echo "No lock"
 
 Use the `/start-task` skill - it handles lock acquisition and branch creation automatically.
 
-OR manually:
+Or manually:
 ```bash
-# Create lock file with session info
-echo "Locked by: [task-name] at $(date)" > claude/locks/inav.lock
-# (or inav-configurator.lock depending on which repo)
+# For firmware
+cat > claude/locks/inav.lock << EOF
+LOCKED_BY: Developer
+TASK: [task-name-from-assignment]
+LOCKED_AT: $(date '+%Y-%m-%d %H:%M')
+BRANCH: [branch-name]
+EOF
+
+# For configurator
+cat > claude/locks/inav-configurator.lock << EOF
+LOCKED_BY: Developer
+TASK: [task-name-from-assignment]
+LOCKED_AT: $(date '+%Y-%m-%d %H:%M')
+BRANCH: [branch-name]
+EOF
 ```
+
+use inav.lock for the inav/ directory, inav2.lock for the inav2/ directory, or inav3.lock for the inav3 directory
 
 ## 3. Create Git Branch
 The branch MUST be created off of the correct version branch in according with the create-pr Skill.
@@ -136,5 +150,7 @@ When you discover something important about PRE-CODING SETUP that will likely he
 Use the Edit tool to append new entries. Format: `- **Brief title**: One-sentence insight`
 
 ### Lessons
+
+- **Fix blockers, don't route around them**: If goal X is blocked by small problem Y, fix Y first — don't pivot to complex workarounds (e.g. if a build fails due to an unrelated compile error in another file, fix that error rather than trying to analyze LTO bitcode object files to simulate what the linker would have produced). We build correct solutions, not workarounds.
 
 <!-- Add new lessons above this line -->

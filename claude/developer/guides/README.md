@@ -10,6 +10,7 @@ These critical checklists provide **just-in-time information** - read them right
 | **Before `git commit`** | `CRITICAL-BEFORE-COMMIT.md` | Git best practices, commit message rules |
 | **Before creating PR** | `CRITICAL-BEFORE-PR.md` | Testing requirements, PR checklist, bot checks |
 | **Before/during testing** | `CRITICAL-BEFORE-TEST.md` | Test-first approach, testing requirements |
+| **Before resolving merge conflicts** | `CRITICAL-BEFORE-MERGE.md` | Apply diffs not files, verify no dropped features |
 
 ## Integration Points
 

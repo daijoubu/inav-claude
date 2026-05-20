@@ -291,6 +291,46 @@ See `CRITICAL-BEFORE-CODE.md` for the complete pre-coding checklist.
 
 ---
 
+## Resolving Merge Conflicts
+
+### ⚠️ Never blindly accept `--ours` or `--theirs`
+
+`git checkout --ours <file>` and `git checkout --theirs <file>` are tempting shortcuts when a conflict is large (e.g. a whole-file re-indentation), but they silently discard one side entirely. Every use must be followed by a verification step.
+
+**The correct process for any conflict:**
+
+1. **Understand the intent of each side.** Look at `git log` for the conflicting commits on both branches — what problem was each commit solving?
+2. **Identify what each side added relative to the common ancestor.** Use `git diff <merge-base> <branch> -- <file>` for each branch.
+3. **Construct the resolution manually** so that both intents are preserved.
+
+**If you do use `--ours` or `--theirs` for a large structural conflict** (e.g. a whole file was re-wrapped in a container object):
+
+- Diff the discarded side against the accepted side to find what was dropped:
+  ```bash
+  git diff upstream/branch-a upstream/branch-b -- path/to/file
+  ```
+- For **auto-generated files** (e.g. `inav_enums.json` from source headers): check whether the merged source code contains values absent from the accepted version. The JSON must reflect the *actual merged source*, not either branch's snapshot.
+- For **documentation that mirrors source code** (e.g. `msp_messages.json`): cross-check every handler in the implementation file (e.g. `fc_msp.c`) against the documentation entries. A handler with no doc entry is a gap.
+
+### Generated files that must be regenerated after a merge
+
+After resolving conflicts, regenerate these files if their sources changed:
+
+| Source changed | Regenerate with | Output file |
+|---|---|---|
+| `settings.yaml` | `python3 src/utils/update_cli_docs.py` | `docs/Settings.md` |
+| Source enum headers (`src/main/**/*.h`) | `docs/development/msp/gen_docs.sh` (runs `get_all_inav_enums_h.py`) | `docs/development/msp/inav_enums.json` |
+| `docs/development/msp/msp_messages.json` | `docs/development/msp/gen_docs.sh` (runs `gen_msp_md.py`) | `docs/development/msp/README.md` |
+
+CI will fail with a "not up to date" error if these are forgotten — run the regeneration scripts before pushing.
+
+**Note:** `msp_messages.json` itself is hand-authored — there is no script that generates it. It must be kept manually in sync with `fc_msp.c`. When a new MSP handler is added to `fc_msp.c`, a corresponding entry must be written in `msp_messages.json` by hand.
+
+**Lesson from maintenance-9.x → maintenance-10.x (PR #11512):**  
+Accepting `--theirs` for `msp_messages.json` and `inav_enums.json` silently dropped 4 MSP message entries and 7 corrected enum types. The auto-merged C source was fine; the documentation gaps were only caught via follow-up questions. Always cross-check docs against the merged source code.
+
+---
+
 ## References
 
 - **Pre-commit checklist:** `CRITICAL-BEFORE-COMMIT.md`
@@ -311,4 +351,6 @@ Use the Edit tool to append new entries. Format: `- **Brief title**: One-sentenc
 
 ### Lessons
 
+- **Never blindly accept --ours/--theirs**: Always diff the discarded side and verify auto-generated/doc files match the merged source — see "Resolving Merge Conflicts" section above.
+- **Regenerate generated docs after merge**: `settings.yaml` → `update_cli_docs.py`; enum headers → `gen_docs.sh`; `msp_messages.json` → `gen_docs.sh` — CI catches forgotten regeneration.
 <!-- Add new lessons above this line -->
