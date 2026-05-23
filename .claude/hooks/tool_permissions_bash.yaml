@@ -408,6 +408,12 @@ bash_rules:
     decision: allow
     message: "PR triage and parameter analysis scripts (includes PR scoring, fetching, and analysis)"
 
+  - name: "Allow reboot-to-dfu skill script"
+    command_pattern: "^((/home/raymorris/Documents/planes/inavflight)?/?(\\.)?/?claude/skills/flash-firmware-dfu/reboot-to-dfu\\.py)$"
+    category: other
+    decision: allow
+    message: "Firmware flashing skill - reboot device to DFU mode"
+
   - name: "Allow shell script execution (.sh files)"
     command_pattern: "^\\./(.*\\.sh|make-versioned-docs).*"
     category: other
