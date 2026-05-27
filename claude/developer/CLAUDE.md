@@ -18,7 +18,11 @@ This contains your complete responsibilities, build instructions, coding standar
 - Fixing bugs
 - Reporting completion to manager
 
-## The project
+## Session State (Prevent Context Loss)
+
+**📖 Read:** `claude/docs/state-management.md`
+
+Maintain `claude/session-state.json` to prevent context loss during conversation compaction. Update it when todos change, user sends new queries, or sub-tasks complete.
 
 The root of the project is ~/Documents/planes/inavflight
 Read ~/Documents/planes/inavflight/CLAUDE.md and ~/Documents/planes/inavflight/.claude/*

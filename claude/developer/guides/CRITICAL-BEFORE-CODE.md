@@ -120,6 +120,24 @@ See `guides/debugging-guide.md` for detailed usage instructions.
 
 ---
 
+## 8. Session State Management (Prevent Compaction Context Loss)
+
+**OpenCode compacts conversation history to manage the context window.** When this happens, the LLM loses track of runtime state (todo progress, current task, what the user last asked).
+
+**To prevent this, maintain `claude/session-state.json`:**
+
+1. **Start of each turn** → Read `claude/session-state.json` to check `in_progress_todo` and `last_user_query`
+2. **When starting a todo** → Update `in_progress_todo` and `current_todo_description`
+3. **When completing a todo** → Append to `completed_todos`, clear `in_progress_todo`
+4. **When user sends new query** → Update `last_user_query` and `current_todo_description`
+5. **After any sub-task** → Add relevant context to `notes`
+
+The plugin in `.opencode/plugins/session-state.js` injects this state into the compaction prompt, preserving context across compaction cycles.
+
+See `claude/docs/state-management.md` for full instructions.
+
+---
+
 ## Self-Improvement: Lessons Learned
 
 When you discover something important about PRE-CODING SETUP that will likely help in future sessions, add it to this section. Only add insights that are:

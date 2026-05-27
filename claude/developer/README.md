@@ -16,6 +16,8 @@ You implement features, fix bugs, and write code for the INAV flight controller 
 
 **Before/during testing, read:** `guides/CRITICAL-BEFORE-TEST.md`
 
+**Session state (prevent context loss):** `claude/docs/state-management.md`
+
 These checklists contain critical rules that MUST be followed:
 - ⚠️ Lock file checking and acquisition
 - ⚠️ Use agents (never direct commands: cmake, make, npm build)
