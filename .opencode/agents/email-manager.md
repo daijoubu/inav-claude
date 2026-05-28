@@ -59,24 +59,15 @@ Prompt: "Send completion report to manager. Task: Fix GPS bug. Branch: fix-gps-b
 
 ## Email Directory Structure
 
-Each role has an email folder at `.opencode/skills/email/inbox/` (or `claude/{role}/email/`):
+Each role has an email folder at `claude/{role}/email/`:
 
-```
-.opencode/skills/email/
-├── inbox/                   # Incoming messages (unprocessed)
-├── inbox-archive/           # Processed messages (for reference)
-├── sent/                    # Copies of sent messages
-└── outbox/                  # Drafts awaiting delivery
-```
-
-Legacy paths also supported:
 ```
 claude/
 ├── manager/email/
-│   ├── inbox/
-│   ├── inbox-archive/
-│   ├── sent/
-│   └── outbox/
+│   ├── inbox/              # Incoming messages (unprocessed)
+│   ├── inbox-archive/      # Processed messages (for reference)
+│   ├── sent/               # Copies of sent messages
+│   └── outbox/             # Drafts awaiting delivery
 ├── developer/email/
 │   ├── inbox/
 │   ├── inbox-archive/
@@ -102,8 +93,6 @@ claude/
 
 **Command:**
 ```bash
-ls -lt .opencode/skills/email/inbox/
-# or legacy:
 ls -lt claude/{role}/email/inbox/
 ```
 
@@ -126,8 +115,6 @@ Then read each message file and summarize in a table:
 2. Write message using appropriate template (see below)
 3. Copy to recipient's inbox:
    ```bash
-   cp .opencode/skills/email/sent/{filename}.md .opencode/skills/email/inbox/
-   # or legacy:
    cp claude/{sender-role}/email/sent/{filename}.md claude/{recipient-role}/email/inbox/
    ```
 
@@ -140,8 +127,6 @@ Then read each message file and summarize in a table:
 
 **Command:**
 ```bash
-mv .opencode/skills/email/inbox/{filename}.md .opencode/skills/email/inbox-archive/
-# or legacy:
 mv claude/{role}/email/inbox/{filename}.md claude/{role}/email/inbox-archive/
 ```
 
@@ -156,8 +141,6 @@ mv claude/{role}/email/inbox/{filename}.md claude/{role}/email/inbox-archive/
 
 **Command:**
 ```bash
-find .opencode/skills/email/outbox/ -type f -name "*.md" 2>/dev/null
-# or legacy:
 find claude/*/email/outbox/ -type f -name "*.md" 2>/dev/null
 ```
 
@@ -430,8 +413,8 @@ If messages exist in outbox folders, they need to be moved to recipients' inbox 
 **Subject:** Task Completed: Fix GPS Bug
 
 **Files created:**
-- `.opencode/skills/email/sent/2026-01-15-1430-completed-fix-gps-bug.md`
-- Copied to: `.opencode/skills/email/inbox/2026-01-15-1430-completed-fix-gps-bug.md`
+- `claude/developer/email/sent/2026-01-15-1430-completed-fix-gps-bug.md`
+- Copied to: `claude/manager/email/inbox/2026-01-15-1430-completed-fix-gps-bug.md`
 
 **Status:** DELIVERED
 ```
@@ -450,8 +433,8 @@ Would you like me to archive the task assignment email for this project from you
 ## Message Archived
 
 **File:** 2026-01-15-1030-task-fix-gps-bug.md
-**Moved from:** `.opencode/skills/email/inbox/`
-**Moved to:** `.opencode/skills/email/inbox-archive/`
+**Moved from:** `claude/developer/email/inbox/`
+**Moved to:** `claude/developer/email/inbox-archive/`
 
 **Status:** ARCHIVED
 ```
@@ -469,7 +452,7 @@ Would you like me to archive the task assignment email for this project from you
 |------|------|------|-----------|--------|
 | Developer | 2026-01-14-question-test-setup.md | 2026-01-14 | Manager | Needs delivery |
 
-**Recommended action:** Move the message from `.opencode/skills/email/outbox/` to `.opencode/skills/email/inbox/`
+**Recommended action:** Move the message from `developer/email/outbox/` to `manager/email/inbox/`
 ```
 
 ---
@@ -501,8 +484,8 @@ Internal documentation relevant to email management:
 
 ### Task Assignment Flow
 ```
-1. Manager creates task email, you put it in in .opencode/skills/email/sent/
-2. You copy to .opencode/skills/email/inbox/
+1. Manager creates task email, you put it in in manager/email/sent/
+2. You copy to developer/email/inbox/
 3. Developer reads inbox (you help with this)
 4. Developer implements and creates completion report
 5. Developer asks you to send report to manager
@@ -511,10 +494,10 @@ Internal documentation relevant to email management:
 
 ### Question/Response Flow
 ```
-1. Developer has question, asks you to send it. You create in .opencode/skills/email/sent/
-2. You copy to manager's inbox
-3. Manager reads with your help and creates response which you put in manager/sent/
-4. You copy response to developer's inbox
+1. Developer has question, asks you to send it. You create in developer/email/sent/
+2. You copy to manager/email/inbox/
+3. Manager reads with your help and creates response which you put in manager/email/sent/
+4. You copy response to developer/email/inbox/
 5. Developer asks you for the response and asks you to archive both messages
 ```
 
