@@ -343,6 +343,13 @@ bash_rules:
     decision: deny
     message: "STOP! IMPORTANT: Do NOT push to a version branch (maintenance-9.x, maintenance-10.x) or to master/main in sub-repos. Use your create-pr skill with a feature branch."
 
+  - name: "Allow git push with --force-with-lease (safe force push)"
+    command_pattern: "^git$"
+    argument_pattern: "^(-C\\s+\\S+\\s+)?push.*--force-with-lease.*"
+    category: write
+    decision: allow
+    message: "git push with --force-with-lease allowed - safer than --force as it prevents overwriting remote work"
+
   - name: "Block git force push"
     command_pattern: "^git$"
     argument_pattern: "^(-C\\s+\\S+\\s+)?push.*force.*"
