@@ -541,12 +541,19 @@ bash_rules:
     decision: deny
     message: "pull requests should never target master in firmware repos. Read CRITICAL-BEFORE-PR.md. (Allowed only for iNavFlight.github.io documentation site)"
 
-  - name: "Allow gh api for repository queries"
+  - name: "Allow gh api for read-only queries (GET, no --method POST/PATCH/DELETE)"
     command_pattern: "^gh$"
-    argument_pattern: "^api\\s+.*"
+    argument_pattern: "^api\\s+repos/.*"
     category: read
-    decision: allow
-    message: "GitHub API queries"
+    precondition_script: |
+      # Allow gh api commands that are read-only (no --method POST/PATCH/DELETE)
+      ARGS="{ARGS}"
+      if echo "$ARGS" | grep -qE "(--method\\s+(POST|PATCH|DELETE))"; then
+        echo "ask"
+      else
+        echo "allow"
+      fi
+    message: "GitHub API read-only queries (GET requests)"
 
   - name: "Allow GitHub CLI read operations"
     command_pattern: "^gh$"
