@@ -9,6 +9,37 @@ in diffs and burn enormous debugging time to trace.
 
 ---
 
+## MERGE, Not Rebase
+
+> **Always resolve conflicts with `git merge`, never `git rebase`.**
+
+**Why this matters:**
+- Rebase rewrites the PR author's commit history (new SHAs) and requires `--force-with-lease` to push — which is blocked by project rules.
+- A merge commit adds a *new* commit on top of the PR branch, preserving the author's commits exactly and pushing normally without force.
+
+**The workflow:**
+```bash
+# Start from the PR branch (not from base)
+git checkout -b resolve-conflict-pr-XXXX shota3527/their-branch
+
+# Merge the base branch INTO the PR branch (creates a new merge commit)
+git merge upstream/maintenance-9.x --no-ff -m "Merge upstream/maintenance-9.x to resolve conflicts with PR #XXXX"
+# Resolve conflicts, then:
+git add <files>
+git commit --no-edit
+
+# Push normally — no force needed
+git push shota3527 HEAD:their-branch
+```
+
+**Never do this:**
+```bash
+# ❌ This rewrites history and requires force push
+git rebase upstream/maintenance-9.x
+```
+
+---
+
 ## The Core Rule: Apply Changes, Not Files
 
 > **Always apply a branch's DIFF to the other branch's files.
@@ -80,9 +111,10 @@ sed -i 's/TABS\.foo\./fooTab\./g' tabs/foo.js
 
 ### For conflict markers (<<<< ==== >>>>)
 
-- HEAD = base branch (keep its content as default)
-- Incoming = PR branch
-- Resolution = base content + only the PR's new lines added
+When merging base INTO the PR branch (the correct approach):
+- `HEAD` = PR branch (the author's code)
+- `Incoming` = base branch (maintenance-9.x)
+- Resolution = base content + the PR's additions applied on top
 
 ---
 
@@ -122,6 +154,7 @@ done
 
 | Mistake | Symptom |
 |---------|---------|
+| Used `git rebase` instead of `git merge` | Force push required — blocked by project rules; author's commits rewritten |
 | Replaced entire file with PR version | Runtime errors for functions added by base branch after divergence |
 | Replaced entire function | Same — missing logic added to that function by base branch |
 | Resolved conflict by taking PR side only | Missing base-branch features in that code block |
