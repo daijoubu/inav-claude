@@ -26,12 +26,24 @@ echo "Locked by: [task-name] at $(date)" > claude/locks/inav.lock
 ```
 
 ## 3. Create Git Branch
-The branch MUST be created off of the correct version branch in according with the create-pr Skill.
+The branch MUST be created off of the correct version branch in accordance with the create-pr Skill.
 Important: Do NOT branch off master.
 
+**First, check that origin is in sync with upstream, then update local:**
 ```bash
 cd inav  # or inav-configurator
-git checkout maintenance-9.x && git pull
+git fetch upstream
+git fetch origin
+git log origin/maintenance-10.x..upstream/maintenance-10.x --oneline  # or maintenance-9.x
+```
+
+If upstream has commits that origin does not: **STOP. Do not pull from upstream directly.**
+Prompt the user: *"origin/maintenance-10.x is behind upstream by N commits. Please sync your fork on GitHub (Sync fork button) before we branch."*
+
+Once origin is in sync (or was already up to date):
+```bash
+git checkout maintenance-10.x
+git pull
 git checkout -b fix/issue-XXXX-description
 ```
 

@@ -95,6 +95,26 @@ Prompt: "Review changes in [files] - [brief description]"
 
 ---
 
+## 🔍 Check for Upstream Changes Since Work Started
+
+**Before creating the PR, check whether the upstream base branch has moved:**
+
+```bash
+git fetch upstream
+git log HEAD..upstream/maintenance-10.x --oneline   # or maintenance-9.x
+```
+
+**If there are new upstream commits: STOP. Do not rebase automatically.**
+
+Show the commits to the user and ask for advice:
+- The upstream may have already merged a fix for the same issue — duplicating it would be wrong.
+- The upstream may have introduced a conflict that needs human judgment to resolve correctly.
+- The upstream may be unrelated and a rebase is safe — but that decision belongs to the user.
+
+Present the new commits and ask: *"Upstream has N new commits since we branched. Would you like to rebase, check if any overlap with our changes, or proceed as-is?"*
+
+---
+
 ## Creating the Pull Request
 
 ### 1. Review Changes
