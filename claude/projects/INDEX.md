@@ -2,8 +2,8 @@
 
 This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKED).
 
-**Last Updated:** 2026-05-06
-**Active:** 31 | **Backburner:** 9 | **Blocked:** 2
+**Last Updated:** 2026-05-30
+**Active:** 26 | **Backburner:** 10 | **Blocked:** 2
 
 > **Completed projects:** See [completed/INDEX.md](completed/INDEX.md)
 > **Blocked projects:** See `blocked/` directory
@@ -39,16 +39,75 @@ This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKE
 
 ## Active Projects
 
-### 📋 fix-configurator-cli-flow-control
+### 📋 track-pr2636-osd-layout
 
-**Status:** TODO | **Type:** Bug Fix | **Priority:** HIGH
-**Created:** 2026-05-06 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
+**Status:** TODO | **Type:** Bug Fix | **Priority:** MEDIUM
+**Created:** 2026-05-30 | **Assignee:** Developer ✉️
 
-Loading a large CLI diff can silently drop or corrupt settings because `cli.js` sends commands with only a 50ms fixed delay, giving the firmware no reliable opportunity to signal readiness. Fix requires proper flow control — no arbitrary delays.
+Track PR #2636 (OSD Custom Element UI layout fix — overflow on small screens, missing LC driver selector in HD mode) through review and merge.
 
-**Directory:** `active/fix-configurator-cli-flow-control/`
-**Repository:** inav-configurator | **Branch:** From `maintenance-9.x`
-**Assignment:** `manager/email/sent/2026-05-06-task-fix-configurator-cli-flow-control.md`
+**Directory:** `active/track-pr2636-osd-layout/`
+**PR:** [#2636](https://github.com/iNavFlight/inav-configurator/pull/2636) | **Repo:** inav-configurator | **Branch:** maintenance-9.x
+
+---
+
+### 📋 track-pr11573-flash-reduction
+
+**Status:** TODO | **Type:** Refactoring / Optimization | **Priority:** MEDIUM
+**Created:** 2026-05-30 | **Assignee:** Developer ✉️
+
+Track PR #11573 (flash reduction via shared static helpers in osd.c and fc_msp.c — ~9.5 KB savings, 131/131 unit tests + 27/27 SITL smoke tests passing) through review and merge.
+
+**Directory:** `active/track-pr11573-flash-reduction/`
+**PR:** [#11573](https://github.com/iNavFlight/inav/pull/11573) | **Repo:** inav | **Branch:** maintenance-10.x
+
+---
+
+### 📋 feature-toilet-bowl-arc-integrator
+
+**Status:** TODO | **Type:** Feature / Safety Enhancement | **Priority:** MEDIUM
+**Created:** 2026-05-27 | **Assignee:** Developer | **Assignment:** 📝 Planned
+
+Implement arc-confirmed leaky integrator for toilet bowl detection/correction in multirotor POSHOLD. Replaces flawed PR #10854. Requires 90° orbital arc confirmation + growing distance before triggering. Self-stopping via leaky integrator; no explicit stop condition needed.
+
+**Directory:** `active/feature-toilet-bowl-arc-integrator/`
+**Parent investigation:** `completed/analyze-pr10854-toilet-bowl/`
+**Upstream PR (flawed):** https://github.com/iNavFlight/inav/pull/10854 | **Branch:** `maintenance-9.x`
+
+---
+
+### 📋 fix-esc-sensor-garbage-rpm-crsf
+
+**Status:** TODO | **Type:** Bug Fix | **Priority:** MEDIUM-HIGH
+**Created:** 2026-05-23 | **Assignee:** Developer | **Assignment:** 📝 Planned
+
+ESC telemetry occasionally flashes impossible RPM values (209183, 157867) over CRSF. Suspected corrupted frame decode in `esc_sensor.c` CRC failure path — distinct from the stale-data issue addressed by PR #11536. Also: check CRSF spec for a proper invalid-RPM sentinel to replace the ambiguous `0`.
+
+**Directory:** `active/fix-esc-sensor-garbage-rpm-crsf/`
+**Related PR:** https://github.com/iNavFlight/inav/pull/11536 | **Branch:** `maintenance-9.x`
+
+---
+
+### 📋 pitot-robustness-improvements
+
+**Status:** TODO | **Type:** Feature / Robustness | **Priority:** MEDIUM
+**Created:** 2026-05-18 | **Assignee:** Developer | **Assignment:** 📝 Planned
+
+General pitot zeroing robustness: add re-zero while disarmed, fix `fabsf()` masking drift as false airspeed, expose raw pressure diagnostics. Affects all pitot sensors via `pitotmeter.c`. Related: issues #5742, #9216.
+
+**Directory:** `active/pitot-robustness-improvements/`
+**Branch:** `maintenance-10.x`
+
+---
+
+### ⏸️ fix-blackbox-tab-sd-hang
+**Status:** BACKBURNER| **Type:** Bug Fix | **Priority:** MEDIUM
+**Created:** 2026-05-17 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
+
+Blackbox tab hangs permanently (spinner never resolves) when FC has no SD card — MSP requests time out and `content_ready()` is never called, leaving `tab_switch_in_progress = true`. Fix: 5-second timeout fallback in `onboard_logging.js`.
+
+**Directory:** `backburner/fix-blackbox-tab-sd-hang/`
+**File:** `tabs/onboard_logging.js` | **Branch:** `maintenance-9.x`
 
 ---
 
@@ -156,18 +215,6 @@ Generalizes motor wizard from hardcoded 4-motor (quad only) to support tri/quad/
 
 ---
 
-### 🚧 feature-unified-pinio-pwm-output
-
-**Status:** IN PROGRESS (code believed complete, testing needed) | **Type:** Feature Enhancement | **Priority:** MEDIUM
-**Created:** 2026-02-24 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
-
-Unify PINIO (GPIO on/off), LED pin PWM, and timer-capable pads into one system via Proposal B. Includes SDMODELH7V2 cam pin as hardware test.
-
-**Directory:** `active/feature-unified-pinio-pwm-output/`
-**Assignment:** `manager/email/sent/2026-02-24-0900-task-unified-pinio-pwm-output.md`
-
----
-
 ### 🚧 analyze-pitot-blockage-apa-issue
 
 **Status:** IN PROGRESS (Analysis complete, implementation pending) | **Type:** Bug Analysis / Safety | **Priority:** MEDIUM-HIGH
@@ -215,18 +262,6 @@ Fix `project_ops.py` robustness: stop silently deleting active copies on duplica
 
 **Directory:** `active/fix-project-ops-script/`
 **Assignment:** `manager/email/sent/2026-03-07-task-fix-project-ops-script.md`
-
----
-
-### 📋 investigate-h7-spi-af-assumption
-
-**Status:** TODO | **Type:** Investigation | **Priority:** MEDIUM
-**Created:** 2026-03-01 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
-
-Investigate why H7 SPI driver hardcodes one AF for all pins per bus. Audit H7 targets for silently-broken SPI pin assignments. Use `target-developer` agent.
-
-**Directory:** `active/investigate-h7-spi-af-assumption/`
-**Assignment:** `manager/email/sent/2026-03-01-task-investigate-h7-spi-af-assumption.md`
 
 ---
 
@@ -303,19 +338,6 @@ Update INAV Lua Telemetry Widget to support 800x480 screen on RadioMaster TX16S 
 
 ---
 
-### 📋 investigate-mission-file-suffix
-
-**Status:** TODO | **Type:** Investigation / Bug Fix | **Priority:** MEDIUM
-**Created:** 2026-03-23 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
-
-Check whether saving a mission file on Linux reliably appends `.mission` suffix (Electron GTK dialog may not enforce it). Verify suffix is needed for loading. Fix if needed.
-
-**Directory:** `active/investigate-mission-file-suffix/`
-**Repository:** inav-configurator | **Branch:** From `maintenance-9.x`
-**Assignment:** `manager/email/sent/2026-03-23-task-investigate-mission-file-suffix.md`
-
----
-
 ### 📋 markdown2mdx-complete-pipeline
 
 **Status:** TODO | **Type:** Feature Enhancement / Tooling | **Priority:** MEDIUM-HIGH
@@ -342,34 +364,6 @@ Enable motor testing for reversible motors (3D mode) on Configurator Outputs tab
 
 ---
 
-### 📋 fix-esc-telemetry-random-values
-
-**Status:** TODO | **Type:** Bug Fix / Investigation | **Priority:** MEDIUM-HIGH
-**Created:** 2026-04-12 | **Updated:** 2026-05-02 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
-
-ESC RPM/temperature shows random values via CRSF when disarmed; gets worse with more ESCs (hex/octo). Developer + test-engineer to reproduce corner cases via SITL, trace stale-data path in `crsf.c`, add disarm guard and data-age validation.
-
-**Directory:** `active/fix-esc-telemetry-random-values/`
-**Repository:** inav | **Branch:** From `maintenance-9.x`
-**Issue:** [#11517](https://github.com/iNavFlight/inav/issues/11517) (OPEN)
-**PR:** [#11189](https://github.com/iNavFlight/inav/pull/11189) (related)
-**Assignment:** `manager/email/sent/2026-05-02-task-esc-telemetry-corner-cases.md`
-
----
-
-### 📋 fix-common-h-platform-guards
-
-**Status:** TODO | **Type:** Bug Fix | **Priority:** MEDIUM
-**Created:** 2026-03-18 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
-
-Fix preprocessor guards in `inav/src/main/target/common.h` that check only for STM32F7 when they should also consider H7, AT32F43x, and RP2350. Affects `MAX_MIXER_PROFILE_COUNT` (line 217) and `USE_TELEMETRY_SBUS2` (line 198).
-
-**Directory:** `active/fix-common-h-platform-guards/`
-**Repository:** inav | **Branch:** From `maintenance-9.x`
-**Assignment:** `manager/email/sent/2026-03-18-task-fix-common-h-platform-guards.md`
-
----
-
 ### 🚧 fix-nand-flash-w25n-opcode
 
 **Status:** IN PROGRESS | **Type:** Bug Fix / Driver Correctness | **Priority:** MEDIUM
@@ -381,62 +375,6 @@ W25N NAND flash driver uses opcode 0x01 (legacy NOR alias) instead of 0x1F (Set 
 **Repository:** inav | **Branch:** From `maintenance-9.x`
 **PR:** [#11505](https://github.com/iNavFlight/inav/pull/11505) (related — MX35 support, needs this fix)
 **Assignment:** `manager/email/sent/2026-05-02-task-fix-nand-flash-w25n-opcode.md`
-
----
-
-### 📋 analyze-pr10854-toilet-bowl
-
-**Status:** TODO | **Type:** Investigation / PR Review | **Priority:** MEDIUM
-**Created:** 2026-05-02 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
-
-Deep technical analysis of PR #10854 (toilet bowl detection/correction for multirotors). Resolve active debate: detect-and-correct vs. detect-only. Investigate possible INAV 8.0 regression. Produce clear merge recommendation.
-
-**Directory:** `active/analyze-pr10854-toilet-bowl/`
-**Repository:** inav
-**PR:** [#10854](https://github.com/iNavFlight/inav/pull/10854) (OPEN)
-**Assignment:** `manager/email/sent/2026-05-02-task-analyze-pr10854-toilet-bowl.md`
-
----
-
-### 📋 fix-configurator-pr2603-issues
-
-**Status:** TODO | **Type:** Bug Fix / Code Quality | **Priority:** HIGH
-**Created:** 2026-05-02 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
-
-Fix 4 critical bugs in PR #2603 (Auto-Backup/Restore for firmware flashing): wrong migration chain logic, stale backup state across failed flash attempts, dangling callback race, and ~1600-line file needing extraction. Flight-safety risk: incorrect settings silently restored to FC.
-
-**Directory:** `active/fix-configurator-pr2603-issues/`
-**Repository:** inav-configurator | **Branch:** From `maintenance-9.x`
-**PR:** [#2603](https://github.com/iNavFlight/inav-configurator/pull/2603) (OPEN — needs changes)
-**Assignment:** `manager/email/sent/2026-05-02-task-fix-configurator-pr2603-issues.md`
-
----
-
-### 📋 test-configurator-package-bumps
-
-**Status:** TODO | **Type:** Investigation / Testing | **Priority:** MEDIUM
-**Created:** 2026-05-02 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
-
-Investigate and re-test configurator package bump PRs #2336 and #2349 on maintenance-10.x. Both stalled by serialport/bindings-cpp Windows build failure. Upstream fix may have landed; rebase #2349, run CI, determine if #2336 can be closed.
-
-**Directory:** `active/test-configurator-package-bumps/`
-**Repository:** inav-configurator | **Branch:** `maintenance-10.x`
-**PRs:** [#2336](https://github.com/iNavFlight/inav-configurator/pull/2336), [#2349](https://github.com/iNavFlight/inav-configurator/pull/2349)
-**Assignment:** `manager/email/sent/2026-05-02-task-test-configurator-package-bumps.md`
-
----
-
-### 📋 analyze-configurator-tab-loading-refactor
-
-**Status:** TODO | **Type:** Investigation / PR Review | **Priority:** MEDIUM
-**Created:** 2026-05-02 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
-
-Analyze PR #2458 (tab loading/reboot refactor, 49 files, stalled 80+ days, no description). Identify merge conflicts, determine what's already merged, assess whether remaining scope is still needed.
-
-**Directory:** `active/analyze-configurator-tab-loading-refactor/`
-**Repository:** inav-configurator | **Branch:** `maintenance-9.x`
-**PR:** [#2458](https://github.com/iNavFlight/inav-configurator/pull/2458) (OPEN — stalled)
-**Assignment:** `manager/email/sent/2026-05-02-task-analyze-configurator-tab-loading-refactor.md`
 
 ---
 
@@ -471,7 +409,7 @@ Implement selected fixes from PR #9904 (BLADE_F4 + BLADE_PRO_H7) review. Blocked
 
 Implement bidirectional DShot telemetry on H7 targets (8-step plan). Blocker resolved: DMAR and bidir DShot are mutually exclusive. Ready when prioritized.
 
-**Directory:** `active/feature-bidirectional-dshot-h7/`
+**Directory:** `backburner/feature-bidirectional-dshot-h7/`
 **Plan:** `completed/investigate-bidirectional-dshot/implementation-plan-h7.md`
 
 ---

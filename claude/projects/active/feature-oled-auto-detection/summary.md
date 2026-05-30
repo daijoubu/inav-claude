@@ -52,6 +52,11 @@ Auto-detect OLED controller type (SSD1306, SH1106, SH1107, SSD1309) to eliminate
 - **DASHBOARD feature**: Only initialized when `feature DASHBOARD` is enabled. Full erase resets this.
 - **SH1106 address mode**: Does not support horizontal addressing mode (0x20/0x00). Must use page-by-page clearing.
 
+## Related PRs
+
+- **[#10975](https://github.com/iNavFlight/inav/pull/10975)** — tonuonu's fix for garbage on last line of OLED (different approach, not chip-specific). Not yet tested across different OLED controllers (SSD1306, SH1106, SH1107). May be usable as-is or as reference — review before duplicating work.
+- **[#10760](https://github.com/iNavFlight/inav/pull/10760)** — earlier workaround (send extra bytes to flush SSH1106 RAM); superseded by #10975 per tonuonu.
+
 ## Related Files
 
 - `inav/src/main/drivers/display_ug2864hsweg01.c` — main driver

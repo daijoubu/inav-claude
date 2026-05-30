@@ -2,9 +2,300 @@
 
 Completed (✅) and cancelled (❌) projects.
 
-**Total Completed:** 187 | **Total Cancelled:** 5
+**Total Completed:** 212 | **Total Cancelled:** 6
 
 > **Active projects:** See [../INDEX.md](../INDEX.md)
+
+---
+
+
+### ✅ review-pr2593-grid-survey
+
+**Status:** COMPLETED (2026-05-30)
+**Type:** Review
+**Priority:** MEDIUM
+
+Code review of Grid Survey Pattern Generator for inav-configurator — assess line spacing default for fixed-wing, approve or request changes.
+
+---
+
+
+### ✅ review-pr2585-bg-translation
+
+**Status:** COMPLETED (2026-05-30)
+**Type:** Review
+**Priority:** LOW
+
+Review Bulgarian translation PR for inav-configurator — evaluate Qodo bot findings, leave human comment, approve or request changes.
+
+---
+
+
+### ✅ fix-common-h-platform-guards
+
+**Status:** COMPLETED (2026-05-27)
+**Type:** Bug Fix
+**Priority:** MEDIUM
+**PR:** [#11592](https://github.com/iNavFlight/inav/pull/11592) (Draft) — inav firmware, maintenance-10.x
+
+Added `|| defined(RP2350)` to `USE_TELEMETRY_SBUS2` guard in `common.h`; removed tautological `&& !defined(STM32F7)` dead code from `serial_uart.c`. AT32F43x excluded (no hardware UART inversion). `MAX_MIXER_PROFILE_COUNT` left unchanged per user direction.
+
+---
+
+
+### ✅ investigate-h7-spi-af-assumption
+
+**Status:** COMPLETED (2026-05-24)
+**Type:** Investigation
+**Priority:** MEDIUM
+**PR:** None (investigation only — fix already landed in [#11389](https://github.com/iNavFlight/inav/pull/11389) / commit `c8b2edcf76`)
+
+Per-pin AF lookup already implemented. All 18 H7 targets correctly configured. 3 targets (AOCODARCH7DUAL, JHEMCUH743HD, MAMBAH743) have harmless redundant SPI3 AF overrides — see findings.md. Optional cleanup tracked in `fix-h7-spi-redundant-af-overrides` if created.
+
+---
+
+
+### ✅ new-target-spedixh743
+
+**Status:** COMPLETED (2026-05-18 merged / report 2026-05-24)
+**Type:** Feature (New Target)
+**Priority:** MEDIUM
+**PR:** [#11567](https://github.com/iNavFlight/inav/pull/11567) — MERGED — inav firmware, maintenance-9.x
+
+Created INAV target for SPEDIXH743 (STM32H743, dual ICM42688P via DEVHW_ICM42605, MAX7456 OSD, M25P16 flash). Hardware-verified. Used ORBITH743 as reference.
+
+---
+
+
+### ✅ fix-dma-disable-ordering-stdperiph
+
+**Status:** COMPLETED (2026-05-26)
+**Type:** Bug Fix
+**Priority:** MEDIUM
+**PR:** [#11589](https://github.com/iNavFlight/inav/pull/11589) — inav firmware, maintenance-9.x
+
+Fix reversed DMA disable order in `impl_timerPWMStopDMA` and IRQ handlers in stdperiph/AT32 timer implementations. STM32 RM requires timer DMA request disabled before stream disable. HAL already correct.
+
+---
+
+
+### ✅ feature-inav-target-aedroxh7
+
+**Status:** COMPLETED (2026-05-26)
+**Type:** Feature
+**Priority:** MEDIUM
+**PR:** [#11586](https://github.com/iNavFlight/inav/pull/11586) — inav firmware, maintenance-9.x
+
+Create INAV firmware target for the Airbot Systems AEDROX H7 (STM32H743) — translated from the official Betaflight config.h.
+
+---
+
+
+### ✅ feature-configurator-pr-build-comment
+
+**Status:** COMPLETED (2026-05-26)
+**Type:** Feature
+**Priority:** MEDIUM
+**PR:** [#2638](https://github.com/iNavFlight/inav-configurator/pull/2638) — inav-configurator, maintenance-9.x
+
+Add a GitHub Actions workflow to `inav-configurator` that posts a PR comment with a link to the build artifacts (Windows/macOS/Linux) whenever CI succeeds. Mirrors firmware PR builds; links to Actions run page (GitHub login required to download).
+
+---
+
+
+### ✅ analyze-configurator-tab-loading-refactor
+
+**Status:** COMPLETED (2026-05-26)
+**Type:** Investigation / PR Review
+**Priority:** MEDIUM
+**PR:** [#2458](https://github.com/iNavFlight/inav-configurator/pull/2458) — MERGED
+
+Analyze PR #2458 (tab loading/reboot refactor, 49 files, stalled 80+ days, no description). Identify merge conflicts, determine what's already merged, assess whether remaining scope is still needed.
+
+---
+
+
+### ✅ fix-phantom-servo-0
+
+**Status:** COMPLETED (2026-05-26)
+**Type:** Bug Fix
+**Priority:** MEDIUM-HIGH
+**PR:** [#2637](https://github.com/iNavFlight/inav-configurator/pull/2637) — inav-configurator, maintenance-9.x
+
+Phantom "Servo 0" appears in the mixer tab servo rules table when only one servo (e.g., Servo 1) is defined. Root cause: `getUsedServoIndexes()` iterated both active and inactive profile data and used range-fill instead of exact targets.
+
+---
+
+
+### ✅ fix-search-dynamic-import-debug-trace
+
+**Status:** COMPLETED (2026-05-26)
+**Type:** Bug Fix
+**Priority:** LOW
+**PR:** [#2640](https://github.com/iNavFlight/inav-configurator/pull/2640) — inav-configurator, maintenance-9.x
+
+`search.js` logs two console errors every time the Search tab opens because `debug_trace` and `options` tabs can't be dynamically imported. Fix: add them to an exclusion list in `js/search.js`.
+
+---
+
+
+### ❌ trim-cmsis-dsp-fft-twiddle-tables (2026-05-26)
+
+**Cancelled:** Cancelled
+
+---
+
+
+### ✅ msp-output-assignment-api-10x
+
+**Status:** COMPLETED (2026-05-24)
+**Type:** Feature
+**Priority:** MEDIUM-HIGH
+
+New `MSP2_INAV_OUTPUT_ASSIGNMENT` READ + QUERY messages so Configurator asks firmware "what did you assign?" instead of duplicating the algorithm in JS. PRs #11564 (firmware) and #2621 (configurator) already open on `feature/output-assignment-api-v2`.
+
+---
+
+
+### ✅ fix-osd-custom-element-layout
+
+**Status:** COMPLETED (2026-05-24)
+**Type:** Bug Fix
+**Priority:** HIGH
+
+Post-merge regressions from PR #2560 (OSD custom element UI redesign): boxes overflow columns at 1366×768 with HD OSD; LC condition driver selector dropdown missing in HD mode (shows correctly in PAL). Fix by removing constraining CSS rather than adding new rules.
+
+---
+
+
+### ✅ terrain-agl-auto-enable-include-order
+
+**Status:** COMPLETED (2026-05-24)
+**Type:** Feature / Code Organization
+**Priority:** MEDIUM
+
+Solve the include-order problem blocking auto-enable of `USE_TERRAIN` in a common header. sensei-hacker suggested `#if defined(USE_SDCARD) && MCU_FLASH_SIZE > 512` but `USE_SDCARD` isn't visible until after `target.h` — developer needs to find the right location (likely CMake flags).
+
+---
+
+
+### ✅ revert-pwm-fix-maintenance-9x
+
+**Status:** COMPLETED (2026-05-24)
+**Type:** Bug Fix / Revert
+**Priority:** HIGH
+
+Revert firmware commit `f6281a600c` (PR #11445) and configurator commits `241789ffaa`, `04937a2810` (PR #2596) from `maintenance-9.x`. Old Configurator 9.0.1 silently shows wrong pin assignments when used with 9.1+ firmware.
+
+---
+
+
+### ✅ fix-advanced-tuning-tab-mixed-craft-type
+
+**Status:** COMPLETED (2026-05-24)
+**Type:** Bug Fix
+**Priority:** HIGH
+
+Advanced Tuning tab shows fixed-wing settings in top half and multirotor in bottom half simultaneously — regression introduced by PR #2625. Fix craft-type conditional show/hide logic.
+
+---
+
+
+### ✅ configurator-crsf-sensor-input
+
+**Status:** COMPLETED (2026-05-22)
+**Type:** Feature
+**Priority:** MEDIUM
+
+Add Configurator UI support for the new `FUNCTION_CRSF_SENSOR` serial function (bit 24) from firmware PR #11379. Ports tab selection, baud rate lock to 420000, and CRSF options in GPS/baro/battery dropdowns.
+
+---
+
+
+### ✅ flash-reduction-osd-msp-switch-cases
+
+**Status:** COMPLETED (2026-05-22)
+**Type:** Refactor / Optimization
+**Priority:** MEDIUM
+
+Reduce flash usage in `osdDrawSingleElement` (16,256 bytes), `mspFcProcessOutCommand`, and `mspFcProcessInCommand` by extracting repeated code patterns from switch cases into shared `static` helpers.
+
+---
+
+
+### ✅ fix-esc-telemetry-random-values
+
+**Status:** COMPLETED (2026-05-17)
+**Type:** Bug Fix / Investigation
+**Priority:** MEDIUM-HIGH
+
+ESC RPM/temperature shows random values via CRSF when disarmed; gets worse with more ESCs (hex/octo). Developer + test-engineer to reproduce corner cases via SITL, trace stale-data path in `crsf.c`, add disarm guard and data-age validation.
+
+---
+
+
+### ✅ feature-unified-pinio-pwm-output
+
+**Status:** COMPLETED (2026-05-17)
+**Type:** Feature Enhancement
+**Priority:** MEDIUM
+
+Unify PINIO (GPIO on/off), LED pin PWM, and timer-capable pads into one system via Proposal B. Includes SDMODELH7V2 cam pin as hardware test.
+
+---
+
+
+### ✅ analyze-pr10854-toilet-bowl
+
+**Status:** COMPLETED (2026-05-17)
+**Type:** Investigation / PR Review
+**Priority:** MEDIUM
+
+Deep technical analysis of PR #10854 (toilet bowl detection/correction for multirotors). Resolve active debate: detect-and-correct vs. detect-only. Investigate possible INAV 8.0 regression. Produce clear merge recommendation.
+
+---
+
+
+### ✅ investigate-mission-file-suffix
+
+**Status:** COMPLETED (2026-05-17)
+**Type:** Investigation / Bug Fix
+**Priority:** MEDIUM
+
+Check whether saving a mission file on Linux reliably appends `.mission` suffix (Electron GTK dialog may not enforce it). Verify suffix is needed for loading. Fix if needed.
+
+---
+
+
+### ✅ test-configurator-package-bumps
+
+**Status:** COMPLETED (2026-05-17)
+**Type:** Investigation / Testing
+**Priority:** MEDIUM
+
+Investigate and re-test configurator package bump PRs #2336 and #2349 on maintenance-10.x. Both stalled by serialport/bindings-cpp Windows build failure. Upstream fix may have landed; rebase #2349, run CI, determine if #2336 can be closed.
+
+---
+
+
+### ✅ fix-configurator-pr2603-issues
+
+**Status:** COMPLETED (2026-05-17)
+**Type:** Bug Fix / Code Quality
+**Priority:** HIGH
+
+Fix 4 critical bugs in PR #2603 (Auto-Backup/Restore for firmware flashing): wrong migration chain logic, stale backup state across failed flash attempts, dangling callback race, and ~1600-line file needing extraction. Flight-safety risk: incorrect settings silently restored to FC.
+
+---
+
+
+### ✅ fix-configurator-cli-flow-control
+
+**Status:** COMPLETED (2026-05-17)
+**Type:** Bug Fix
+**Priority:** HIGH
+
+Loading a large CLI diff can silently drop or corrupt settings because `cli.js` sends commands with only a 50ms fixed delay, giving the firmware no reliable opportunity to signal readiness. Fix requires proper flow control — no arbitrary delays.
 
 ---
 
