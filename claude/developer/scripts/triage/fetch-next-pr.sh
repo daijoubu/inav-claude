@@ -14,19 +14,27 @@
 
 set -euo pipefail
 
-REPO="${1:?Usage: fetch-next-pr.sh <owner/repo> <YYYY-MM-DD> [skip-file] [--offset N] [--output file]}"
-AFTER_DATE="${2:?Usage: fetch-next-pr.sh <owner/repo> <YYYY-MM-DD> [skip-file] [--offset N] [--output file]}"
-SKIP_FILE="${3:-}"
+REPO="${1:?Usage: fetch-next-pr.sh <owner/repo> [<YYYY-MM-DD> [skip-file]] [--offset N] [--output file] [--pr NUMBER]}"
+AFTER_DATE=""
+SKIP_FILE=""
 OFFSET=0
 OUTPUT_FILE=""
+SPECIFIC_PR=""
 
-# Parse optional flags (after positional args)
-shift 2
-[[ -n "${1:-}" && "$1" != "--"* ]] && shift  # skip skip-file if present
+# Parse: second arg is AFTER_DATE only if it looks like a date (not a flag)
+shift
+if [[ -n "${1:-}" && "$1" != "--"* ]]; then
+    AFTER_DATE="$1"; shift
+    # Third arg is skip-file only if it looks like a path (not a flag)
+    if [[ -n "${1:-}" && "$1" != "--"* ]]; then
+        SKIP_FILE="$1"; shift
+    fi
+fi
 while [[ $# -gt 0 ]]; do
     case "$1" in
         --offset) OFFSET="$2"; shift 2 ;;
         --output) OUTPUT_FILE="$2"; shift 2 ;;
+        --pr)     SPECIFIC_PR="$2"; shift 2 ;;
         *) shift ;;
     esac
 done
@@ -34,6 +42,74 @@ done
 # Redirect output to file if requested
 if [[ -n "$OUTPUT_FILE" ]]; then
     exec > "$OUTPUT_FILE" 2>&1
+fi
+
+# --pr mode: fetch a specific PR by number, skip all list/cache logic
+if [[ -n "$SPECIFIC_PR" ]]; then
+    PR_META=$(gh api "repos/${REPO}/pulls/${SPECIFIC_PR}" \
+        --jq '{number: .number, title: .title, url: .html_url, author: .user.login,
+               createdAt: .created_at, baseBranch: .base.ref, draft: .draft,
+               labels: [.labels[].name], milestone: (.milestone.title // "none"),
+               body: (.body // "No description")}')
+    NUMBER=$(echo "$PR_META" | jq -r '.number')
+    TITLE=$(echo "$PR_META"  | jq -r '.title')
+    URL=$(echo "$PR_META"    | jq -r '.url')
+    AUTHOR=$(echo "$PR_META" | jq -r '.author')
+    CREATED=$(echo "$PR_META"| jq -r '.createdAt[:10]')
+    BASE_BRANCH=$(echo "$PR_META" | jq -r '.baseBranch')
+    LABELS_RAW=$(echo "$PR_META"  | jq -r '[.labels[]] | join(", ")')
+    LABELS="${LABELS_RAW:-none}"
+    BODY=$(echo "$PR_META"   | jq -r '.body')
+    NEEDS_TESTING="No"
+    echo "$PR_META" | jq -e '[.labels[]] | any(test("needs testing|testing required"; "i"))' \
+        >/dev/null 2>&1 && NEEDS_TESTING="YES"
+
+    REVIEWS=$(gh api "repos/${REPO}/pulls/${NUMBER}/reviews" \
+        --jq '[.[] | {author: .user.login, state: .state}] | unique_by(.author)' \
+        2>/dev/null || echo "[]")
+    COMMENTS=$(gh api "repos/${REPO}/issues/${NUMBER}/comments?per_page=10&direction=desc" \
+        --jq '[.[:10] | reverse | .[] | {
+            author: .user.login, created: .created_at[:10],
+            body: (if (.body | length) > 400 then (.body[:400] + "...") else .body end)
+        }]' 2>/dev/null || echo "[]")
+    MILESTONES=$(gh api "repos/${REPO}/milestones?state=open" \
+        --jq '[.[] | "\(.number):\(.title)"] | join(", ")' 2>/dev/null || echo "unknown")
+
+    echo "============================================================"
+    echo "REPO: $REPO"
+    echo "PR #$NUMBER: $TITLE"
+    echo "============================================================"
+    echo "URL:            $URL"
+    echo "Author:         $AUTHOR"
+    echo "Created:        $CREATED"
+    echo "Base Branch:    $BASE_BRANCH"
+    echo "Labels:         $LABELS"
+    echo "Needs Testing:  $NEEDS_TESTING"
+    echo "Milestones:     $MILESTONES"
+    echo ""
+    echo "--- Reviews ---"
+    REVIEW_COUNT=$(echo "$REVIEWS" | jq 'length' 2>/dev/null || echo "0")
+    if [[ "$REVIEW_COUNT" == "0" ]]; then echo "  No reviews"
+    else echo "$REVIEWS" | jq -r '.[] | "  \(.author): \(.state)"' 2>/dev/null; fi
+    echo ""
+    echo "--- Description ---"
+    echo "$BODY"
+    echo ""
+    echo "--- Recent Comments (last 10) ---"
+    COMMENT_COUNT=$(echo "$COMMENTS" | jq 'length' 2>/dev/null || echo "0")
+    if [[ "$COMMENT_COUNT" == "0" ]]; then echo "  No comments"
+    else echo "$COMMENTS" | jq -r '.[] | "[\(.created)] \(.author):\n\(.body)\n"' 2>/dev/null; fi
+    echo "============================================================"
+    echo "PR_NUMBER=$NUMBER"
+    echo "BASE_BRANCH=$BASE_BRANCH"
+    exit 0
+fi
+
+# AFTER_DATE is required for the normal list flow
+if [[ -z "$AFTER_DATE" ]]; then
+    echo "Error: AFTER_DATE required in normal mode. Usage: fetch-next-pr.sh <repo> <YYYY-MM-DD> [skip-file]" >&2
+    echo "       For a specific PR use: fetch-next-pr.sh <repo> --pr NUMBER" >&2
+    exit 1
 fi
 
 # Build skip list for jq

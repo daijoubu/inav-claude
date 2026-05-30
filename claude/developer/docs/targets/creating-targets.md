@@ -80,8 +80,9 @@ Start with this template:
 8. OSD (MAX7456)
 9. UARTs
 10. ADC (voltage, current, RSSI)
-11. Default features
-12. PWM outputs
+11. CAN bus (if present)
+12. Default features
+13. PWM outputs
 
 See `common-issues.md` for common mistakes to avoid.
 
@@ -210,6 +211,7 @@ See `troubleshooting-guide.md` for systematic debugging.
 - [ ] Flash/SD card configured
 - [ ] UARTs defined
 - [ ] ADC channels set
+- [ ] CANbus defined, if present
 - [ ] target.c created (if needed)
 - [ ] DMA conflicts checked with tool
 - [ ] config.c created (if needed)

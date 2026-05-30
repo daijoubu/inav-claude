@@ -1,8 +1,8 @@
 #!/bin/bash
 # Stop hook — fires after each Claude response.
 # 1. Ingests new session content into ChromaDB memory (background, delta-only).
-# 2. Passively injects highly relevant memories as a systemMessage.
-# 3. Every TIP_INTERVAL turns, appends a random framework tip.
+# 2. Every TIP_INTERVAL turns, emits a random framework tip.
+# Memory injection is handled by pre-prompt-inject.sh (UserPromptSubmit hook).
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
@@ -21,14 +21,8 @@ if [ -n "$TRANSCRIPT_PATH" ] && [ -f "$INGEST_SCRIPT" ]; then
     disown
 fi
 
-# ── 2. Passive memory injection ───────────────────────────────────────────────
-MEMORY_MSG=""
-if [ -n "$TRANSCRIPT_PATH" ] && [ -n "$SESSION_ID" ]; then
-    MEMORY_MSG=$(python3 "$SCRIPT_DIR/passive_inject.py" \
-        "$TRANSCRIPT_PATH" "$SESSION_ID" 2>/dev/null)
-fi
-
-# ── 3. Framework tip (every TIP_INTERVAL turns) ───────────────────────────────
+# ── 2. Framework tip (every TIP_INTERVAL turns) ───────────────────────────────
+# (Memory injection moved to UserPromptSubmit hook: pre-prompt-inject.sh)
 TIPS_FILE="$SCRIPT_DIR/framework-tips.txt"
 COUNTER_FILE="$SCRIPT_DIR/session-turn-count.txt"
 TIP_INTERVAL=7
@@ -50,18 +44,12 @@ if (( COUNT % TIP_INTERVAL == 0 )); then
     fi
 fi
 
-# ── 4. Emit combined systemMessage if anything to say ─────────────────────────
-if [ -z "$MEMORY_MSG" ] && [ -z "$TIP_MSG" ]; then
+# ── 3. Emit tip as systemMessage if due ──────────────────────────────────────
+if [ -z "$TIP_MSG" ]; then
     exit 0
 fi
 
-python3 - "$MEMORY_MSG" "$TIP_MSG" <<'PYEOF'
+python3 -c "
 import sys, json
-
-memory_msg = sys.argv[1]
-tip_msg    = sys.argv[2]
-
-parts = [p for p in [memory_msg, tip_msg] if p]
-combined = "\n\n".join(parts)
-print(json.dumps({"systemMessage": combined}))
-PYEOF
+print(json.dumps({'systemMessage': sys.argv[1]}))
+" "$TIP_MSG"

@@ -1,10 +1,12 @@
 # Project: Improved Motor Wizard with DShot Beep Identification
 
-**Status:** 📋 TODO
+**Status:** ✅ COMPLETED
 **Priority:** Medium
 **Type:** Feature
 **Created:** 2026-01-06
-**Repositories:** inav-configurator, inav (firmware)
+**Completed:** 2026-05-27
+**PR:** [#2580](https://github.com/iNavFlight/inav-configurator/pull/2580) — MERGED
+**Repositories:** inav-configurator only (no firmware changes needed)
 
 ## Overview
 

@@ -48,7 +48,34 @@ cat claude/locks/inav-configurator.lock 2>/dev/null && echo "LOCKED - STOP" || e
 
 **If locked:** STOP. Report to manager that the repo is locked. Do not proceed.
 
-### 3. Verify Clean Working Directory
+You may be able to use inav2/ as your working directory after checking and potentially creating the lock file claude/locks/inav2.lock
+
+
+### 3. Acquire the Lock
+
+```bash
+# For firmware
+cat > claude/locks/inav.lock << EOF
+LOCKED_BY: Developer
+TASK: [task-name-from-assignment]
+LOCKED_AT: $(date '+%Y-%m-%d %H:%M')
+BRANCH: [branch-name]
+EOF
+
+use inav.lock for the inav/ directory, inav2.lock for the inav2/ directory, or inav3.lock for the inav3/ directory
+
+# For configurator
+cat > claude/locks/inav-configurator.lock << EOF
+LOCKED_BY: Developer
+TASK: [task-name-from-assignment]
+LOCKED_AT: $(date '+%Y-%m-%d %H:%M')
+BRANCH: [branch-name]
+EOF
+```
+
+
+
+### 4. Verify Clean Working Directory
 
 ```bash
 # For firmware
@@ -63,7 +90,7 @@ cd inav-configurator && git status --porcelain
 - Stash them: `git stash`
 - Or report to manager for guidance
 
-### 4. Check Out the Correct Branch
+### 5. Check Out the Correct Branch
 
 Check if a branch is specified in the task assignment.
 
@@ -97,26 +124,6 @@ git checkout -b <new-branch-name> upstream/maintenance-10.x
 **Branch naming conventions:**
 - **PrivacyLRS:** No slashes (e.g., `fix-counter-sync`, `encryption-tests`)
 - **INAV:** Kebab-case (e.g., `fix-telemetry-bug`, `feature-battery-limit`)
-
-### 5. Acquire the Lock
-
-```bash
-# For firmware
-cat > claude/locks/inav.lock << EOF
-LOCKED_BY: Developer
-TASK: <task-name-from-assignment>
-LOCKED_AT: $(date '+%Y-%m-%d %H:%M')
-BRANCH: <branch-name>
-EOF
-
-# For configurator
-cat > claude/locks/inav-configurator.lock << EOF
-LOCKED_BY: Developer
-TASK: <task-name-from-assignment>
-LOCKED_AT: $(date '+%Y-%m-%d %H:%M')
-BRANCH: <branch-name>
-EOF
-```
 
 ### 6. Create Workspace Directory
 

@@ -305,14 +305,18 @@ def move_project_dir(project_name, from_dir, to_dir):
 
 
 def update_directory_reference(index_path, project_name, new_location):
-    """Update the Directory: reference in an INDEX entry."""
+    """Update the Directory: reference in the specific project's INDEX entry only."""
     content = read_file(index_path)
-    # Match Directory or Project Directory or Location references
-    content = re.sub(
+    start, end = find_entry_bounds(content, project_name)
+    if start is None:
+        return
+    entry = content[start:end]
+    entry = re.sub(
         r'(\*\*(?:Directory|Project Directory|Location):\*\* `)([^`]+)(`)',
         lambda m: m.group(1) + new_location + m.group(3),
-        content
+        entry
     )
+    content = content[:start] + entry + content[end:]
     write_file(index_path, content)
 
 

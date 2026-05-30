@@ -140,3 +140,4 @@ Remove `taskSendSbus2Telemetry`, `calculateThrottleStatus`, and `applySensorAlig
 
 **Directory:** `backburner/cleanup-itcm-non-dronecan/`
 **Repository:** inav (firmware) | **Branch:** `maintenance-10.x`
+
