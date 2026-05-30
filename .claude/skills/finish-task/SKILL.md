@@ -152,19 +152,9 @@ EOF
 )"
 ```
 
-### 7. Release the Lock
+### 7. Send Completion Report
 
-```bash
-# For firmware
-rm claude/locks/inav.lock
-
-# For configurator
-rm claude/locks/inav-configurator.lock
-```
-
-### 8. Send Completion Report
-
-Create a comprehensive completion report and ask the email-manager to deliver it to the Manager. `. The manager will use this to update `claude/projects/<project-name>/`.
+Create a comprehensive completion report and ask the email-manager to deliver it to the Manager. The manager will use this to update `claude/projects/<project-name>/`.
 
 **Filename:** `YYYY-MM-DD-HHMM-completed-<task-name>.md`
 
@@ -208,13 +198,25 @@ Create a comprehensive completion report and ask the email-manager to deliver it
 
 - **PR:** #<number>
 - **URL:** <url>
+```
 
-## Lock Released
+### 8. Archive the Task Email
 
-Released <repo>.lock
+Ask the email-manager agent to archive the inbox email for this task:
 
-## have the task email archived.
-Ask the email-manager agent to archive the email for this task.
+```
+email-manager: Archive message <filename>. Current role: developer
+```
+
+### 9. Release the Lock
+
+```bash
+# For firmware
+rm claude/locks/inav.lock
+
+# For configurator
+rm claude/locks/inav-configurator.lock
+```
 
 ### 10. Increment the Cycle Counter
 

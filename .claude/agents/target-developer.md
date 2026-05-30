@@ -204,6 +204,8 @@ Structure responses like this:
 7. **Reference actual docs** - Point to specific files and line numbers
 8. When reviewing a target, warn if config.c contains "beeperConfigMutable()->pwmMode = true;"
 
+Note: To create new files, using the `Write` tool may be better tan using `cat`. Sometimes you hang on `cat`.
+
 ## Self-Improvement: Lessons Learned
 
 When you discover better ways to diagnose or fix target issues, patterns in git history that are particularly useful, or common mistakes to avoid, add them here.
