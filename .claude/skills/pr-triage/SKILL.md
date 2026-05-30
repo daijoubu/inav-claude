@@ -1,5 +1,5 @@
 ---
-description: Triage open PRs by assigning milestones (9.0.1, 9.1, 10.0)
+description: Triage open PRs for merge readiness; assign milestones as part of that process
 triggers:
   - triage prs
   - pr triage
@@ -8,9 +8,106 @@ triggers:
   - pr milestones
 ---
 
-# PR Milestone Triage Skill
+# PR Triage Skill
 
-Systematically triage open PRs by assigning milestones, working through them in date order (oldest first).
+Two modes: **initial triage** (milestone assignment, uses `fetch-next-pr.sh`) and **activity review** (ongoing follow-up, uses `fetch-activity-prs.sh`). Choose the right mode for the session.
+
+---
+
+## Mode 1: Activity Review — "What needs attention today?"
+
+Use this at the START of a review session to avoid re-reading PRs that haven't changed.
+
+The script defaults to **5 PRs per batch** (sorted by most-recently-updated). Process one batch,
+then prefetch the next in the background while you review the current one — keeping context
+window usage small and results appearing quickly.
+
+### Streaming Workflow
+
+**Step 1: Fetch first batch + prefetch next**
+
+```bash
+# Fetch current batch (foreground)
+bash claude/developer/scripts/triage/fetch-activity-prs.sh iNavFlight/inav --months 6
+
+# Prefetch next batch in background while you review
+bash claude/developer/scripts/triage/fetch-activity-prs.sh iNavFlight/inav --months 6 --offset 5 \
+    --output /tmp/claude/prefetch-activity-inav.txt
+```
+
+Use the Bash tool with `run_in_background: true` for the prefetch call.
+
+**Step 2: After reviewing and acting on the current batch**
+
+Read the prefetched output:
+```bash
+cat /tmp/claude/prefetch-activity-inav.txt
+```
+
+Check if more PRs remain (a `MORE_PRS:` line at the end means there are more):
+```bash
+grep "^MORE_PRS:" /tmp/claude/prefetch-activity-inav.txt
+# Example output: MORE_PRS: next_offset=10 total=78
+```
+
+If more PRs exist, immediately start prefetching the next batch using `next_offset` from above.
+
+### Activity Classifications
+
+| Class | Meaning | Action |
+|-------|---------|--------|
+| **NEEDS-REVIEW** | New commits or comments since our last comment | Re-read and respond |
+| **NO-COMMENT** | We've never commented or reviewed | First look needed |
+| **WAITING ON OTHERS** | Our comment/review was the last activity | **Skip** — ball is in their court |
+| **STALE** | No activity in 30+ days, never commented | Consider closing or pinging |
+
+**Key insight:** A PR in WAITING is one where we already made a request or comment and the
+author hasn't responded. No need to re-read it. Focus time on NEEDS-REVIEW and NO-COMMENT.
+
+### Options
+
+```bash
+# Larger batch for a longer session
+bash claude/developer/scripts/triage/fetch-activity-prs.sh iNavFlight/inav --months 6 --batch-size 10
+
+# Show PRs stale after only 14 days instead of default 30
+bash claude/developer/scripts/triage/fetch-activity-prs.sh iNavFlight/inav --stale-days 14
+
+# Use a different GitHub user
+bash claude/developer/scripts/triage/fetch-activity-prs.sh iNavFlight/inav --our-user myusername
+
+# Force-refresh cache
+bash claude/developer/scripts/triage/fetch-activity-prs.sh iNavFlight/inav --no-cache
+```
+
+### How It Works
+
+- **"Last activity"** = PR's `updated_at` (GitHub updates this on every push, comment, review,
+  label change). Compared against our last comment/review date.
+- **"Our last activity"** = most recent of: issue comment by us OR pull request review submitted by us.
+- **"New commits after our comment"** = `updated_at > our_last_comment` even when no new comments.
+  This catches the case where an author pushed a fix without commenting.
+- **`--months N`** = only process PRs updated within the last N months; the script breaks early
+  once the sorted list reaches older PRs, so it's fast even with many open PRs.
+- **Limitation:** If our last comment was beyond the 100 most recent comments on a very active PR,
+  we may be classified as NO-COMMENT. Check the PR directly in that case.
+
+---
+
+## Mode 2: Initial Milestone Triage — "Which unmilestoned PRs need a milestone?"
+
+Systematically triage open PRs for merge readiness, working through them in date order (oldest first).
+
+**Primary goal: decide if each PR is ready to merge.** Milestone assignment is a required step before merging, but the main triage question is merge readiness — code quality, testing, open issues, review status.
+
+For each PR, lead with a **merge readiness verdict**:
+- **Ready to merge** — code is good, tested, reviewed, no open blockers
+- **Needs review** — no human review yet
+- **Needs testing** — author-tested only, or labeled "needs testing"
+- **Needs work** — open bot findings, review feedback, or known issues to resolve
+- **Not ready** — major concerns; flag specifically what must be resolved
+
+Milestone is part of the output but secondary to the readiness verdict.
 
 ## Usage
 
@@ -85,11 +182,21 @@ gh api repos/iNavFlight/inav-configurator/milestones --jq '.[] | "\(.number) \(.
 
 ### Step 1: Initialize
 
-Calculate the after-date (12 months ago or user-specified) and set up skip files:
+Skip files persist across sessions at:
+```
+claude/developer/scripts/triage/skip-inav.txt
+claude/developer/scripts/triage/skip-configurator.txt
+```
+
+Ensure they exist:
+```bash
+touch claude/developer/scripts/triage/skip-inav.txt
+touch claude/developer/scripts/triage/skip-configurator.txt
+```
+
+Also create a temp dir for prefetch output and PR list cache:
 ```bash
 mkdir -p /tmp/claude
-touch /tmp/claude/skip-inav.txt
-touch /tmp/claude/skip-configurator.txt
 ```
 
 ### Step 2: Fetch First PR + Prefetch Next
@@ -98,10 +205,10 @@ On the very first iteration, fetch the current PR and **immediately start prefet
 
 ```bash
 # Fetch current PR (foreground)
-bash claude/developer/scripts/triage/fetch-next-pr.sh iNavFlight/inav YYYY-MM-DD /tmp/claude/skip-inav.txt
+bash claude/developer/scripts/triage/fetch-next-pr.sh iNavFlight/inav YYYY-MM-DD claude/developer/scripts/triage/skip-inav.txt
 
 # Prefetch next PR in background (uses cached PR list, only fetches reviews/comments)
-bash claude/developer/scripts/triage/fetch-next-pr.sh iNavFlight/inav YYYY-MM-DD /tmp/claude/skip-inav.txt --offset 1 --output /tmp/claude/prefetch-inav.txt
+bash claude/developer/scripts/triage/fetch-next-pr.sh iNavFlight/inav YYYY-MM-DD claude/developer/scripts/triage/skip-inav.txt --offset 1 --output /tmp/claude/prefetch-inav.txt
 ```
 
 The script caches the PR list for 2 minutes, so the prefetch reuses it and only makes API calls for the next PR's reviews and comments.
@@ -124,7 +231,7 @@ After reading the script output, analyze:
    - The PR description's testing section is NOT sufficient alone - external testing matters
 6. **Review status** - Has it been reviewed? Approved?
 
-Present your analysis concisely and suggest a milestone. Flag testing concerns and branch mismatches.
+Present your analysis with a **merge readiness verdict first**, then the suggested milestone. Flag testing concerns, open bot findings, and branch mismatches prominently.
 
 **Always include the PR URL** (e.g., `https://github.com/iNavFlight/inav/pull/NNNN`) so the user can quickly open it.
 
@@ -163,16 +270,16 @@ cat /tmp/claude/prefetch-inav.txt  # or prefetch-configurator.txt
 
 While the user reads the prefetched PR, **start prefetching the one after that** in the background:
 ```bash
-bash claude/developer/scripts/triage/fetch-next-pr.sh iNavFlight/inav YYYY-MM-DD /tmp/claude/skip-inav.txt --offset 1 --output /tmp/claude/prefetch-inav.txt
+bash claude/developer/scripts/triage/fetch-next-pr.sh iNavFlight/inav YYYY-MM-DD claude/developer/scripts/triage/skip-inav.txt --offset 1 --output /tmp/claude/prefetch-inav.txt
 ```
 
 ### Step 7: Handle Skip
 
 If the user says "skip", add the PR number to the skip file:
 ```bash
-echo "PR_NUMBER" >> /tmp/claude/skip-inav.txt
+echo "PR_NUMBER" >> claude/developer/scripts/triage/skip-inav.txt
 # or
-echo "PR_NUMBER" >> /tmp/claude/skip-configurator.txt
+echo "PR_NUMBER" >> claude/developer/scripts/triage/skip-configurator.txt
 ```
 
 Then invalidate cache and show prefetched PR as in Step 6.
@@ -224,11 +331,21 @@ Setting milestone 9.1 (50) on PR #11190... Done.
 Fetching next PR...
 ```
 
+## Labeling Inactive PRs
+
+When a PR author has gone quiet (no response to our question, or no activity for months), apply the **Inactive** label — not "no response" or other improvised labels.
+
+```bash
+gh pr edit PR_NUMBER --repo iNavFlight/inav --add-label "Inactive"
+```
+
+This is the standard label the project uses for abandoned/unresponsive PRs.
+
 ## Notes
 
 - PRs that already have a milestone are automatically excluded
 - Draft PRs are automatically excluded
 - PRs labeled "don't merge" (case-insensitive) are automatically excluded
 - Once a milestone is set, the PR won't appear in subsequent fetches
-- The skip file persists only for the current session (/tmp/claude/)
+- The skip file persists across sessions at `claude/developer/scripts/triage/skip-inav.txt`
 - Always verify milestone numbers are current before starting a session
