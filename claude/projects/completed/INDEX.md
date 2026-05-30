@@ -2,9 +2,111 @@
 
 Completed (✅) and cancelled (❌) projects by current author (daijoubu) for INAV firmware and DroneCAN development.
 
-**Total Completed:** 116 | **Total Cancelled:** 5
+**Total Completed:** 124 | **Total Cancelled:** 6
 
 > **Active projects:** See [../INDEX.md](../INDEX.md)
+
+---
+
+
+### ✅ submodule-ardupilot-index
+
+**Status:** COMPLETED (2026-05-30)
+**Type:** Infrastructure / Tooling
+**Priority:** MEDIUM
+
+Add the user's ArduPilot fork (`daijoubu/ardupilot`) as a git submodule of `inav-claude`, then build a ctags symbol index for fast cross-referencing against INAV's DroneCAN/CAN code.
+
+---
+
+
+### ✅ address-copilot-feedback-pr11560
+
+**Status:** COMPLETED (2026-05-30)
+**Type:** Bug Fix / Code Quality
+**Priority:** MEDIUM-HIGH
+
+Address 6 Copilot review comments on PR #11560 (DroneCAN: ISR-driven TX for STM32F7 bxCAN) — 2 high-severity buffer overflow risks on H7, plus 4 medium/low correctness issues.
+
+---
+
+
+### ❌ test-pr11595-autospeed (2026-05-30)
+
+**Cancelled:** Cancelled
+
+---
+
+
+### ✅ fix-pll2-vco-frequency
+
+**Status:** COMPLETED (2026-05-30)
+**Type:** Bug Fix
+**Priority:** HIGH
+
+PLL2 VCO frequency was subtly changed when PLL2M was made dynamic in PR #11596. Original targets used M=5, N=500; PR changed to M=4 (dynamic), N=400. VCO nominally remains 800 MHz but actual clock speed changed. Audit and correct `system_stm32h7xx.c` PLL2 block; update PR #11596.
+
+---
+
+
+### ✅ feature-dronecan-msp-messages
+
+**Status:** COMPLETED (2026-05-29)
+**Type:** Feature
+**Priority:** MEDIUM-HIGH
+
+Add MSP2 commands to expose DroneCAN node status and identity data. Node table, `MSP2_INAV_DRONECAN_NODES` (0x2042) and `MSP2_INAV_DRONECAN_NODE_INFO` (0x2043) implemented. PR open, awaiting review/merge.
+
+---
+
+
+### ✅ investigate-can-restart-no-comms
+
+**Status:** COMPLETED (2026-05-29)
+**Type:** Bug Investigation
+**Priority:** MEDIUM-HIGH
+
+CAN peripherals stop communicating after INAV restart without power-cycling the network. Root causes identified and fixed in `fix/h7-dronecan-driver`: AutoRetransmission disabled (was flooding TX FIFO), TXBCR flush before CCCR.INIT clear on H7 bus-off recovery, recovery delay 1ms→20ms, FDCAN clock source corrected (APB1→PLL2), GPS provider leakthrough fixed.
+
+**Branch:** `fix/h7-dronecan-driver` (pushed, PR pending testing)
+**Repository:** inav (firmware)
+
+---
+
+
+### ✅ investigate-dronecan-reboot-gps
+
+**Status:** COMPLETED (2026-05-29)
+**Type:** Bug Fix / Testing
+**Priority:** MEDIUM-HIGH
+
+DroneCAN GPS stops updating after soft FC reboot (software reset without power cycle). Full power cycle restores operation. Likely same root cause as investigate-can-restart-no-comms.
+
+---
+
+
+### ✅ update-stm32h7-hal
+
+**Status:** COMPLETED (2026-05-23)
+**Type:** Maintenance / Bug Fix
+**Priority:** MEDIUM-HIGH
+
+Updated STM32H7xx HAL to v1.11.6 and CMSIS Device to v1.10.7. Fixes DMA IRQHandler CT bit inversion, SPI TX overflow, FDCAN overflow prevention, and HCLK frequency calculation bugs across all 20+ H7 targets.
+
+**PR:** [#11578](https://github.com/iNavFlight/inav/pull/11578) — MERGED (2026-05-23)
+**Repository:** inav (firmware) | **Branch:** `maintenance-10.x`
+**Issue:** [#11563](https://github.com/iNavFlight/inav/issues/11563)
+
+---
+
+
+### ✅ investigate-opencode-compaction-context-loss
+
+**Status:** COMPLETED (2026-05-29)
+**Type:** Investigation / Bug Fix
+**Priority:** MEDIUM-HIGH
+
+Investigate and fix OpenCode losing task context during conversation compaction — agent reverts to first incomplete todo item after context window compression.
 
 ---
 

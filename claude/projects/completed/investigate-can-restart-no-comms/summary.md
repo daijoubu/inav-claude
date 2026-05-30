@@ -1,6 +1,9 @@
 # Project: Investigate CAN Network No-Comms After INAV Restart
 
-**Status:** 📋 TODO
+**Status:** ✅ COMPLETED
+**Completed:** 2026-05-29
+**Branch:** `fix/h7-dronecan-driver` (pushed, PR pending testing)
+**Resolution:** AutoRetransmission disabled, TXBCR flush before CCCR.INIT clear on bus-off recovery, recovery delay 1ms→20ms, PLL2/clock source fixes on H7. GPS provider leakthrough fixed in gps_dronecan.c.
 **Priority:** HIGH
 **Type:** Bug Investigation
 **Created:** 2026-04-20

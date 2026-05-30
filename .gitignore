@@ -6,6 +6,8 @@
 **/.git
 **/.git/*
 
+ArduPilot/*
+!ArduPilot/**/CLAUDE.md
 betaflight-blackbox-log-viewer/*
 !betaflight-blackbox-log-viewer/**/CLAUDE.md
 inav/*
@@ -97,6 +99,10 @@ claude/telemetry-id
 
 # Local-only files
 claude.local.md
+nohup.out
+
+# Session reports and planning artifacts (ephemeral)
+.planning/
 
 # Sandbox/container placeholder files (root level only)
 /HEAD

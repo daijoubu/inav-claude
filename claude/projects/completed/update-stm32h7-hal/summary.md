@@ -1,6 +1,9 @@
 # Project: Update STM32H7xx HAL from V1.11.4 to V1.13.0
 
-**Status:** 📋 TODO
+**Status:** ✅ COMPLETED
+**Completed:** 2026-05-23
+**PR:** [#11578](https://github.com/iNavFlight/inav/pull/11578) — MERGED (2026-05-23)
+**Note:** Updated to v1.11.6/v1.10.7 (intermediate release from STM32CubeH7)
 **Priority:** MEDIUM-HIGH
 **Type:** Maintenance / Bug Fix
 **Created:** 2026-05-16

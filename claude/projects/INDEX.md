@@ -2,8 +2,8 @@
 
 This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKED).
 
-**Last Updated:** 2026-05-16 (reprioritized)
-**Active:** 9 | **Backburner:** 3 | **Blocked:** 0
+**Last Updated:** 2026-05-30
+**Active:** 6 | **Backburner:** 3 | **Blocked:** 0
 
 > **Completed projects:** See [completed/INDEX.md](completed/INDEX.md)
 > **Blocked projects:** See `blocked/` directory
@@ -39,57 +39,16 @@ This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKE
 
 ## Active Projects
 
-### 📋 update-stm32h7-hal
+### 📋 investigate-f7-busoff-lock
 
-**Status:** TODO (NEXT) | **Type:** Maintenance / Bug Fix | **Priority:** MEDIUM-HIGH
-**Created:** 2026-05-16 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
-**Queue:** #1 — top priority
+**Status:** TODO | **Type:** Bug Investigation / Fix | **Priority:** MEDIUM-HIGH
+**Created:** 2026-05-29 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
 
-Update STM32H7xx HAL from V1.11.4 to V1.13.0 (and CMSIS V1.10.5 to V1.13.0). Several high-severity fixes in the gap including DMA IRQHandler CT bit inversion, SPI TX overflow, FDCAN overflow, and HCLK frequency calculation bugs.
+Research task: confirm whether F7 bxCAN ABOM handles Bus-Off recovery fully in hardware or whether `canardSTM32RecoverFromBusOff()` (currently a no-op) needs implementation. Verify against STM32F7 RM before any code changes.
 
-**Issue:** [#11563](https://github.com/iNavFlight/inav/issues/11563)
-**Directory:** `active/update-stm32h7-hal/`
+**Directory:** `active/investigate-f7-busoff-lock/`
 **Repository:** inav (firmware) | **Branch:** `maintenance-10.x`
-
----
-
-### 📋 investigate-can-restart-no-comms
-
-**Status:** TODO (NEXT) | **Type:** Bug Investigation | **Priority:** MEDIUM-HIGH
-**Created:** 2026-04-20 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
-**Queue:** #2 — after HAL update (needs H7 board hardware)
-
-Investigate why CAN peripherals stop communicating after INAV is restarted without power-cycling the whole network. When FC reboots without power-cycling DroneCAN devices, comms don't resume. Likely same root cause as `investigate-dronecan-reboot-gps` — investigate both concurrently on the H7 board.
-
-**Directory:** `active/investigate-can-restart-no-comms/`
-**Assignment:** `manager/email/sent/2026-04-20-2100-task-investigate-can-restart-no-comms.md`
-**Branch:** New branch off `maintenance-10.x` → PR targets `maintenance-10.x`
-
----
-
-### 📋 investigate-dronecan-reboot-gps
-
-**Status:** TODO (NEXT) | **Type:** Bug Fix / Testing | **Priority:** MEDIUM-HIGH
-**Created:** 2026-04-14 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
-**Queue:** #2 — investigate concurrently with can-restart-no-comms
-
-DroneCAN GPS stops updating after soft FC reboot (software reset without power cycle). Full power cycle restores operation. Likely same root cause as investigate-can-restart-no-comms.
-
-**Directory:** `active/investigate-dronecan-reboot-gps/`
-**Repository:** inav (firmware) | **Branch:** `maintenance-10.x`
-
----
-
-### 🚧 feature-dronecan-msp-messages
-
-**Status:** IN PROGRESS | **Type:** Feature | **Priority:** MEDIUM-HIGH
-**Created:** 2026-04-25 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
-
-Add MSP2 commands to expose DroneCAN node status and identity data. Node table, `MSP2_INAV_DRONECAN_NODES` (0x2042) and `MSP2_INAV_DRONECAN_NODE_INFO` (0x2043) implemented. PR open, awaiting review/merge.
-
-**Directory:** `active/feature-dronecan-msp-messages/`
-**PR:** [#11527](https://github.com/inavflight/inav/pull/11527) — OPEN
-**Repository:** inav (firmware) | **Branch:** `maintenance-10.x`
+**Flagged by:** Developer (completion report for `fix/h7-dronecan-driver`, 2026-05-29)
 
 ---
 
@@ -132,8 +91,7 @@ Poll DroneCAN nodes for transport statistics (tx/rx transfer counts, error rates
 ### 📋 feature-dronecan-configurator-tab
 
 **Status:** TODO | **Type:** Feature | **Priority:** MEDIUM-HIGH
-**Created:** 2026-04-25 | **Assignee:** Developer | **Assignment:** 📝 Planned
-**Blocked until:** `feature-dronecan-msp-messages` complete
+**Created:** 2026-04-25 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
 
 Add a DroneCAN tab to inav-configurator showing detected nodes, health status, mode, uptime, and sensor data. Colour-coded health indicators, 2-second auto-refresh.
 
@@ -147,11 +105,6 @@ Add a DroneCAN tab to inav-configurator showing detected nodes, health status, m
 **Status:** TODO | **Type:** Feature / UI Enhancement | **Priority:** MEDIUM
 **Created:** 2026-02-16 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
 **Blocked until:** `feature-dronecan-configurator-tab` complete
-
-Expose DroneCAN as a selectable GPS provider (value 6) in the configurator GPS tab dropdown. Firmware already supports it; this makes it user-accessible without manual CLI editing.
-
-**Directory:** `active/feature-dronecan-gps-provider-ui/`
-**Repository:** inav-configurator | **Branch:** `maintenance-10.x`
 
 ---
 
