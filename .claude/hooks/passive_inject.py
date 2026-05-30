@@ -173,7 +173,7 @@ def format_message(hits):
         if len(text) > MAX_CHUNK_DISPLAY:
             text = text[:MAX_CHUNK_DISPLAY] + "…"
         lines.append(text)
-    lines.append("\n(Use /memory <query> for a full search)")
+    lines.append("\n(Use /memory <query> for a full search | To remove stale memories: .claude/hooks/forget_memory.py \"<query>\")")
     return "\n".join(lines)
 
 
@@ -191,6 +191,10 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("transcript", nargs="?", default="")
     parser.add_argument("session_id", nargs="?", default="")
+    parser.add_argument("--query-text", default="",
+                        help="Use this string as the query instead of parsing the transcript "
+                             "(useful for UserPromptSubmit hooks where the new message may not "
+                             "be in the transcript yet)")
     parser.add_argument("--dry-run", action="store_true",
                         help="Show what would be injected without marking as seen")
     parser.add_argument("--test-all", action="store_true",
@@ -260,7 +264,17 @@ if __name__ == "__main__":
         sys.exit(0)
 
     # ── Normal / dry-run mode ─────────────────────────────────────────────────
-    query = build_query(transcript_path)
+    if args.query_text:
+        # Called from UserPromptSubmit: use the current user message as the primary
+        # signal, then append recent tool context from the transcript if available.
+        query = args.query_text[:600]
+        transcript_query = build_query(transcript_path)
+        if transcript_query and " | Tools used:" in transcript_query:
+            tool_suffix = transcript_query.split(" | Tools used:", 1)[1]
+            query += " | Tools used:" + tool_suffix
+    else:
+        query = build_query(transcript_path)
+
     if not query:
         log(f"session={session_id[:8]} no query built")
         sys.exit(0)
