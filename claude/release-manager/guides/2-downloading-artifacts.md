@@ -72,17 +72,17 @@ Look for the nightly build created after your target commit date. Nightly tags f
 
 ```bash
 # Download all hex files from the nightly release
-gh release download v9.0.0-20251207.178 --repo iNavFlight/inav-nightly --pattern "*.hex" -D downloads/firmware-9.0.0-RC3/
+gh release download v9.0.0-20251207.178 --repo iNavFlight/inav-nightly --pattern "*.hex" -D downloads/firmware-9.0.0-rc3/
 ```
 
 ### Step 4: Download SITL Binaries
 
 ```bash
 # Download SITL resources from the same nightly
-gh release download v9.0.0-20251207.178 --repo iNavFlight/inav-nightly --pattern "sitl-resources.zip" -D downloads/sitl-9.0.0-RC3/
+gh release download v9.0.0-20251207.178 --repo iNavFlight/inav-nightly --pattern "sitl-resources.zip" -D downloads/sitl-9.0.0-rc3/
 
 # Extract SITL binaries
-cd downloads/sitl-9.0.0-RC3/
+cd downloads/sitl-9.0.0-rc3/
 unzip sitl-resources.zip
 ```
 
@@ -93,8 +93,8 @@ The SITL binaries will be needed for the configurator (Phase 4: Building Locally
 Use the rename script to remove CI build suffixes and add RC numbers:
 
 ```bash
-# For RC releases
-./claude/release-manager/rename-firmware-for-release.sh 9.0.0-RC3 downloads/firmware-9.0.0-RC3/
+# For RC releases (use lowercase rc — required by Configurator firmware flasher)
+./claude/release-manager/rename-firmware-for-release.sh 9.0.0-rc3 downloads/firmware-9.0.0-rc3/
 
 # For final releases
 ./claude/release-manager/rename-firmware-for-release.sh 9.0.0 downloads/firmware-9.0.0/
@@ -102,7 +102,7 @@ Use the rename script to remove CI build suffixes and add RC numbers:
 
 **Example transformation:**
 - Before: `inav_9.0.0_MATEKF405_ci-20251129-abc123.hex`
-- After: `inav_9.0.0_RC3_MATEKF405.hex`
+- After: `inav_9.0.0-rc3_MATEKF405.hex`
 
 ---
 
@@ -135,7 +135,7 @@ Note the `databaseId` - this is your `<run-id>`.
 
 ```bash
 # Create platform-specific directories
-mkdir -p downloads/configurator-9.0.0-RC3/{linux,macos,windows}
+mkdir -p downloads/configurator-9.0.0-rc3/{linux,macos,windows}
 
 # Download all artifacts from the CI run
 gh run download <run-id> --repo iNavFlight/inav-configurator
@@ -152,13 +152,13 @@ Move files to platform-specific directories:
 
 ```bash
 # Move Linux builds
-mv INAV-Configurator_linux_x64/* downloads/configurator-9.0.0-RC3/linux/
+mv INAV-Configurator_linux_x64/* downloads/configurator-9.0.0-rc3/linux/
 
 # Move macOS builds
-mv INAV-Configurator_macOS/* downloads/configurator-9.0.0-RC3/macos/
+mv INAV-Configurator_macOS/* downloads/configurator-9.0.0-rc3/macos/
 
 # Move Windows builds
-mv INAV-Configurator_win_x64/* downloads/configurator-9.0.0-RC3/windows/
+mv INAV-Configurator_win_x64/* downloads/configurator-9.0.0-rc3/windows/
 
 # Remove empty artifact directories
 rmdir INAV-Configurator_*
@@ -172,16 +172,16 @@ Your downloads should look like:
 
 ```
 downloads/
-├── firmware-9.0.0-RC3/
-│   ├── inav_9.0.0_RC3_MATEKF405.hex
-│   ├── inav_9.0.0_RC3_MATEKF411.hex
+├── firmware-9.0.0-rc3/
+│   ├── inav_9.0.0-rc3_MATEKF405.hex
+│   ├── inav_9.0.0-rc3_MATEKF411.hex
 │   └── ... (all renamed hex files)
-├── sitl-9.0.0-RC3/
+├── sitl-9.0.0-rc3/
 │   └── resources/sitl/
 │       ├── linux/
 │       ├── macos/
 │       └── windows/
-└── configurator-9.0.0-RC3/
+└── configurator-9.0.0-rc3/
     ├── linux/
     │   ├── INAV-Configurator_linux_x64_9.0.0.AppImage
     │   ├── INAV-Configurator_linux_x64_9.0.0.deb
@@ -194,6 +194,16 @@ downloads/
         ├── INAV-Configurator_win_x64_9.0.0.msi
         └── INAV-Configurator_win_x64_9.0.0.zip
 ```
+
+---
+
+## Known CI Issues
+
+### macOS x64 build runs out of memory
+
+The `macos-15-intel` GitHub Actions runner can hit a 2 GB V8 heap limit during webpack's JSON parse step. Symptoms: the macOS x64 artifact (DMG + ZIP) is missing while all other platform artifacts succeeded, and the CI run shows the `build-mac` job as failed.
+
+The fix is `NODE_OPTIONS: --max-old-space-size=4096` on the `Build MacOS x64` step in `.github/workflows/ci.yml`. If you encounter this, raise a PR with that fix to the configurator repo, wait for CI to pass on that PR, and download the x64 artifacts from that separate CI run.
 
 ---
 

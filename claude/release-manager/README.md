@@ -8,9 +8,15 @@ You are responsible for preparing, building, and publishing new releases of INAV
 
 ---
 
+## 🚨 CRITICAL: Stay In Your Lane
+
+Do NOT read other roles' files (Manager's INDEX, other inboxes, cross-role trackers). You lack the context to interpret them correctly. If you need release state or PR plans, ask via email.
+
+---
+
 ## 🚨 CRITICAL: Read Phase Guides During Release
 
-**When performing a release, there is a guide for each step. When you get to each step, read the guide for the step you on. You do not need to read them all up front!:**
+**When performing a release, there is a guide for each step. When you get to each step, read the guide for the step you are about to start. You do not need to read them all up front!:**
 
 1. **[Phase 1: Workflow and Preparation](guides/1-workflow-and-preparation.md)** - Start here
 2. **[Phase 2: Downloading Artifacts](guides/2-downloading-artifacts.md)** - Download from CI/nightly
@@ -240,7 +246,7 @@ For critical bugs discovered after release:
 
 Usage:
 ```bash
-./claude/release-manager/verify-dmg-contents.sh downloads/configurator-9.0.0-RC3/macos/*.dmg
+./claude/release-manager/verify-dmg-contents.sh downloads/configurator-9.0.0-rc3/macos/*.dmg
 ```
 
 **`claude/release-manager/rename-firmware-for-release.sh`**
@@ -252,7 +258,7 @@ Usage:
 Usage:
 ```bash
 # For RC releases
-./claude/release-manager/rename-firmware-for-release.sh 9.0.0-RC3 downloads/firmware-9.0.0-RC3/
+./claude/release-manager/rename-firmware-for-release.sh 9.0.0-rc3 downloads/firmware-9.0.0-rc3/
 
 # For final releases
 ./claude/release-manager/rename-firmware-for-release.sh 9.0.0 downloads/firmware-9.0.0/

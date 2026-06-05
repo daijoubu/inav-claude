@@ -8,14 +8,27 @@ if [ $# -eq 0 ]; then
     echo "Usage: $0 <version> [directory]"
     echo ""
     echo "Examples:"
-    echo "  $0 9.0.0-RC3              # Rename files in current directory"
-    echo "  $0 9.0.0-RC3 /path/to/hex # Rename files in specified directory"
+    echo "  $0 9.0.0-rc3              # RC release (lowercase rc required)"
+    echo "  $0 9.0.0-rc3 /path/to/hex # RC release in specified directory"
     echo "  $0 9.0.0                  # For final releases (no RC suffix)"
     echo "  $0 9.0.1                  # For patch releases"
     exit 1
 fi
 
 VERSION="$1"
+
+# Validate canonical version format: X.Y.Z or X.Y.Z-rcN (lowercase rc, hyphen-separated)
+# The Configurator firmware flasher only parses this exact pattern.
+if ! echo "$VERSION" | grep -qE '^[0-9]+\.[0-9]+\.[0-9]+(-rc[0-9]+)?$'; then
+    echo "❌ Version '$VERSION' is not in canonical format."
+    echo "   Required: X.Y.Z  or  X.Y.Z-rcN  (lowercase rc, hyphen, no spaces)"
+    echo "   Examples: 9.1.0   9.1.0-rc1   9.0.0-rc3"
+    if [[ "$VERSION" =~ -[Rr][Cc][0-9]+$ ]]; then
+        echo "   Suggested fix: $(echo "$VERSION" | sed -E 's/-[Rr][Cc]([0-9]+)$/-rc\1/')"
+    fi
+    exit 1
+fi
+
 DIRECTORY="${2:-.}"
 
 # Change to target directory

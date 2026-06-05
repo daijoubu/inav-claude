@@ -11,6 +11,30 @@
 
 ---
 
+## ⚠️ Step 0: Establish the Canonical Version String
+
+**Do this BEFORE anything else, even before reading the rest of this guide.**
+
+When the user announces a release, normalize to the canonical form and confirm it before proceeding:
+
+```
+X.Y.Z-rcN    (lowercase rc, hyphen-separated, no spaces)
+```
+
+| User says | Canonical form |
+|-----------|---------------|
+| `9.1.0 RC2` | `9.1.0-rc2` |
+| `9.1.0-RC2` | `9.1.0-rc2` |
+| `INAV 9.1 RC1` | `9.1.0-rc1` |
+| `9.0.0 final` | `9.0.0` |
+| `9.0.1` | `9.0.1` |
+
+Respond: *"I'll use `9.1.0-rc2` as the version string for all filenames, tags, and directories — confirm?"*
+
+Use this string **everywhere**: directory names, rename script argument, release tag, GitHub release title.
+
+---
+
 ## Overview
 
 This guide covers the complete release workflow and preparation steps you need to complete before starting artifact downloads and builds.

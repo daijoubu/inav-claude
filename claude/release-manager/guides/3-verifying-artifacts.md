@@ -261,7 +261,9 @@ Use this checklist before proceeding to Phase 6 (Creating Releases):
 
 ### Post-Firmware-Publish Verification
 - [ ] After publishing firmware release, open Configurator Firmware Flasher tab
+- [ ] Enable "Show unstable releases"
 - [ ] Verify the new firmware version appears in the release list
+- [ ] Select a target whose name contains underscores (e.g., `MAMBAH743 2022B GYRO2`) and confirm it displays with spaces, not underscores — this validates that multi-word target names parse correctly
 - [ ] Only then publish the configurator release
 
 ---
