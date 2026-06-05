@@ -413,6 +413,8 @@ As Release Manager:
 - **Facebook:** No markdown, supports emojis and images (1200x630 PNG recommended)
 - Focus on top 5 features users care about most
 - Include download link and upgrade warnings
+- **Combined announcements:** Firmware and Configurator are always announced together in one post — users think of it as a single "INAV X.Y.Z" release. Exception: hotfixes that touch only one repo get a targeted announcement, not a combined one.
+- **Reference examples:** `9.0.0-announcement-discord.md`, `9.0.0-announcement-facebook.txt`, `9.1.0-RC1-announcement-discord.md`, `9.1.0-RC1-announcement-facebook.txt`
 
 ---
 
