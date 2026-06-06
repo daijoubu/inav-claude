@@ -270,6 +270,20 @@ If SPEEDYBEEF745AIO is removed or needs replacement:
 
 ---
 
+## ⚠️ After the Release: Merging Changes Upward
+
+Once the release is published, the next step is often opening a PR to carry the `release/9.x` changes forward into `maintenance-10.x`. **Before doing that, warn the user:**
+
+> You're about to create a PR from `release/9.1` → `maintenance-10.x`. If GitHub shows a **"Resolve conflicts"** button on that PR, **do not click it**.
+>
+> GitHub's own documentation states: *"When you resolve a merge conflict on GitHub, the entire base branch of your pull request is merged into the head branch."*
+>
+> For this PR the base branch is `maintenance-10.x`. Clicking that button merges ALL of `maintenance-10.x` into `release/9.1` — the wrong direction — silently contaminating the older release branch with months of newer development. The commit will be named "Merge branch 'maintenance-10.x' into release/9.1" and look routine, but is destructive.
+>
+> **Instead:** Follow the procedure in `claude/developer/guides/merge-release-into-next-version.md` — branch off `maintenance-10.x`, merge `release/9.1` into that branch, resolve any conflicts there, and open a PR from that branch into `maintenance-10.x`. This leaves `release/9.1` completely unchanged.
+
+---
+
 **Last updated:** 2026-01-23
 **Reference target:** SPEEDYBEEF745AIO (F745, well-featured)
 **Database:** cmake/pg_struct_sizes.reference.db

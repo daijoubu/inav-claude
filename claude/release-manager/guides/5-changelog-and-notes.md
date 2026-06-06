@@ -34,6 +34,20 @@ LAST_TAG=$(git describe --tags --abbrev=0)
 gh pr list --state merged --search "merged:>=$(git log -1 --format=%ai $LAST_TAG | cut -d' ' -f1)" --limit 100
 ```
 
+#### ⚠️ Verify Each PR Is on the Correct Branch
+
+Before including a PR in release notes, confirm it is actually merged into the release branch (e.g., `maintenance-9.x`), not only into a future branch (`maintenance-10.x`). PRs sometimes target the wrong branch or get cherry-picked, and a PR description alone is not reliable.
+
+```bash
+# Confirm a PR's merge commit exists on the release branch
+git log upstream/maintenance-9.x --oneline | grep <short-sha>
+
+# Or check all recent merge commits on the branch
+git log upstream/maintenance-9.x --oneline --merges | head -30
+```
+
+If a PR is not in that output, it is not part of this release — exclude it from the release notes regardless of what the PR description says.
+
 #### Alternative: Using git log
 
 If `gh pr list` is slow or not working, use `git log` to find merge commits:

@@ -49,21 +49,33 @@ git tag --sort=-v:refname | head -10
 - Can specify exact commit by SHA
 - Creates draft releases for review before publishing
 
+### Choosing the Target Commit When the Branch Has Advanced
+
+If new commits landed on the release branch after the CI artifacts were built, check whether those commits affect compiled firmware:
+
+```bash
+git log --oneline <ci-commit>..upstream/<release-branch>
+git show --stat <each-new-commit>
+```
+
+- If every new commit only touches **non-compiled files** (docs, reference databases, CI scripts) → tag the current branch HEAD. Rebuilding from HEAD produces identical binaries, and tagging HEAD is conventional.
+- If any new commit changes **firmware source code** (`.c`, `.h`, `CMakeLists.txt`, `settings.yaml`) → re-run CI on the new HEAD and download fresh artifacts before tagging.
+
 ### For Firmware
 
 ```bash
 # Create release + tag at specific commit on GitHub (no local repo access needed)
-gh release create 9.0.0-RC3 \
+gh release create 9.0.0-rc3 \
   --repo iNavFlight/inav \
   --target 34e3e4b3d8525931f825e766c28749a4c6342963 \
-  --title "INAV 9.0.0-RC3 release candidate for testing" \
-  --notes-file claude/release-manager/9.0.0-RC3-firmware-release-notes.md \
+  --title "INAV 9.0.0-rc3 release candidate for testing" \
+  --notes-file claude/release-manager/9.0.0-rc3-firmware-release-notes.md \
   --prerelease \
   --draft
 ```
 
 **Parameters explained:**
-- `9.0.0-RC3` - The tag name
+- `9.0.0-rc3` - The tag name
 - `--target` - Specific commit SHA to tag
 - `--title` - Release title shown on GitHub
 - `--notes-file` - Path to release notes markdown file
@@ -74,11 +86,11 @@ gh release create 9.0.0-RC3 \
 
 ```bash
 # Create release + tag at specific commit
-gh release create 9.0.0-RC3 \
+gh release create 9.0.0-rc3 \
   --repo iNavFlight/inav-configurator \
   --target 9dbd346dcf941b31f97ccb8418ede367044eb93c \
-  --title "INAV Configurator 9.0.0-RC3 release candidate for testing" \
-  --notes-file claude/release-manager/9.0.0-RC3-configurator-release-notes.md \
+  --title "INAV Configurator 9.0.0-rc3 release candidate for testing" \
+  --notes-file claude/release-manager/9.0.0-rc3-configurator-release-notes.md \
   --prerelease \
   --draft
 ```
@@ -108,19 +120,19 @@ Upload by platform to maintain organization:
 
 ```bash
 # Upload configurator builds by platform
-cd claude/release-manager/downloads/configurator-9.0.0-RC3
+cd claude/release-manager/downloads/configurator-9.0.0-rc3
 
-gh release upload 9.0.0-RC3 linux/* --repo iNavFlight/inav-configurator
-gh release upload 9.0.0-RC3 macos/* --repo iNavFlight/inav-configurator
-gh release upload 9.0.0-RC3 windows/* --repo iNavFlight/inav-configurator
+gh release upload 9.0.0-rc3 linux/* --repo iNavFlight/inav-configurator
+gh release upload 9.0.0-rc3 macos/* --repo iNavFlight/inav-configurator
+gh release upload 9.0.0-rc3 windows/* --repo iNavFlight/inav-configurator
 ```
 
 ### Upload Firmware Hex Files
 
 ```bash
 # Upload firmware hex files
-cd ../firmware-9.0.0-RC3
-gh release upload 9.0.0-RC3 *.hex --repo iNavFlight/inav
+cd ../firmware-9.0.0-rc3
+gh release upload 9.0.0-rc3 *.hex --repo iNavFlight/inav
 ```
 
 **Note:** Files should already be renamed (CI suffix removed, RC number added) as per Phase 2.
@@ -206,23 +218,27 @@ gh release list --repo iNavFlight/inav-configurator --limit 10
 
 ```bash
 # View release details
-gh release view 9.0.0-RC3 --repo iNavFlight/inav
-gh release view 9.0.0-RC3 --repo iNavFlight/inav-configurator
+gh release view 9.0.0-rc3 --repo iNavFlight/inav
+gh release view 9.0.0-rc3 --repo iNavFlight/inav-configurator
 ```
 
 ### Edit Release Notes
 
 ```bash
 # Edit release notes after creating draft
-gh release edit 9.0.0-RC3 --repo iNavFlight/inav \
-  --notes-file claude/release-manager/9.0.0-RC3-firmware-release-notes.md
+gh release edit 9.0.0-rc3 --repo iNavFlight/inav \
+  --notes-file claude/release-manager/9.0.0-rc3-firmware-release-notes.md
 ```
 
 ---
 
 ## Publishing Releases
 
-**IMPORTANT:** Only publish after:
+> **🚨 AGENT RULE: Do NOT publish releases without explicit human instruction.**
+>
+> Publishing a release is irreversible and immediately public to all INAV users worldwide. The agent must never run `--draft=false` or any publish command on its own initiative. Wait until the human user explicitly says to publish (e.g., "publish the firmware release now"). "Maintainer approval obtained" is not sufficient — the human user in this session must give the direct instruction.
+
+**Only publish after:**
 - All assets uploaded and verified
 - Release notes reviewed and approved
 - Maintainer approval obtained
@@ -233,8 +249,8 @@ gh release edit 9.0.0-RC3 --repo iNavFlight/inav \
 **Publish firmware first, then verify before publishing configurator.**
 
 ```bash
-# Step 1: Publish firmware release
-gh release edit 9.0.0-RC3 --repo iNavFlight/inav --draft=false
+# Step 1: Publish firmware release  (only run when user explicitly instructs)
+gh release edit 9.0.0-rc3 --repo iNavFlight/inav --draft=false
 ```
 
 #### Step 2: Verify Configurator Sees the Firmware Release
@@ -245,7 +261,7 @@ After publishing firmware, open INAV Configurator and go to the Firmware Flasher
 
 ```bash
 # Step 3: Publish configurator release (only after firmware is verified in flasher)
-gh release edit 9.0.0-RC3 --repo iNavFlight/inav-configurator --draft=false
+gh release edit 9.0.0-rc3 --repo iNavFlight/inav-configurator --draft=false
 ```
 
 **Note:** The human user must perform the final configurator publish step.
@@ -298,13 +314,13 @@ If you can't use `gh release create` for some reason, you can create tags locall
 ```bash
 # Create tag locally
 cd inav
-git tag -a 9.0.0-RC3 -m "INAV 9.0.0-RC3"
+git tag -a 9.0.0-rc3 -m "INAV 9.0.0-rc3"
 
 # Push tag to GitHub
-git push origin 9.0.0-RC3
+git push origin 9.0.0-rc3
 
 # Then create release
-gh release create 9.0.0-RC3 --draft --title "INAV 9.0.0-RC3" --notes-file release-notes.md
+gh release create 9.0.0-rc3 --draft --title "INAV 9.0.0-rc3" --notes-file release-notes.md
 ```
 
 However, using `gh release create` with `--target` is preferred as it works even when repos are locked.
@@ -317,7 +333,7 @@ However, using `gh release create` with `--target` is preferred as it works even
 
 **Error: "Reference already exists"**
 - Tag already exists on GitHub
-- Check: `git ls-remote --tags origin | grep 9.0.0-RC3`
+- Check: `git ls-remote --tags origin | grep 9.0.0-rc3`
 - Solution: Delete tag if incorrect, or use existing tag
 
 **Error: "Not found"**

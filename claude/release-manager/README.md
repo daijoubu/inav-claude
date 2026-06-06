@@ -8,9 +8,15 @@ You are responsible for preparing, building, and publishing new releases of INAV
 
 ---
 
+## 🚨 CRITICAL: Stay In Your Lane
+
+Do NOT read other roles' files (Manager's INDEX, other inboxes, cross-role trackers). You lack the context to interpret them correctly. If you need release state or PR plans, ask via email.
+
+---
+
 ## 🚨 CRITICAL: Read Phase Guides During Release
 
-**When performing a release, there is a guide for each step. When you get to each step, read the guide for the step you on. You do not need to read them all up front!:**
+**When performing a release, there is a guide for each step. When you get to each step, read the guide for the step you are about to start. You do not need to read them all up front!:**
 
 1. **[Phase 1: Workflow and Preparation](guides/1-workflow-and-preparation.md)** - Start here
 2. **[Phase 2: Downloading Artifacts](guides/2-downloading-artifacts.md)** - Download from CI/nightly
@@ -174,14 +180,23 @@ Create maintenance branches when:
 - **Breaking changes** → PR to maintenance-10.x (incompatible changes for 10.0)
 - **Master** → NOT a PR target (receives merges only)
 
-**Merge flow:** Lower version branches are periodically merged into higher version branches:
+**Merge flow:** Lower version branches are periodically merged into higher version branches (changes flow upward only):
 ```
-maintenance-9.x → master → maintenance-10.x
+release/9.x → maintenance-10.x
 ```
 
-This ensures:
-- Master stays synchronized with the current version (maintenance-9.x)
-- Changes flow forward to the next version (maintenance-10.x)
+This ensures changes flow forward to the next version. **Never merge in the reverse direction** (never pull maintenance-10.x into release/9.x).
+
+### ⚠️ WARNING: GitHub's web conflict resolver is dangerous for these merges
+
+When creating a PR from `release/9.x` → `maintenance-10.x` and there are conflicts, you may be tempted to click GitHub's "Resolve conflicts" button. **Do not do this.**
+
+GitHub's own documentation states:
+> "When you resolve a merge conflict on GitHub, the **entire base branch** of your pull request is merged into the head branch."
+
+For this PR the base branch is `maintenance-10.x`. Clicking "Resolve conflicts" merges ALL of `maintenance-10.x` into `release/9.x` — the wrong direction — contaminating the older release branch with months of newer development. The resulting commit will be innocuously named "Merge branch 'maintenance-10.x' into release/9.1" and will look routine in the history.
+
+**Instead:** Use the procedure in `claude/developer/guides/merge-release-into-next-version.md` — branch off `maintenance-10.x`, merge `release/9.x` into that branch, resolve conflicts there, then open a PR from that branch into `maintenance-10.x`.
 
 ### Update PR Branch Suggestion Workflow
 
@@ -240,7 +255,7 @@ For critical bugs discovered after release:
 
 Usage:
 ```bash
-./claude/release-manager/verify-dmg-contents.sh downloads/configurator-9.0.0-RC3/macos/*.dmg
+./claude/release-manager/verify-dmg-contents.sh downloads/configurator-9.0.0-rc3/macos/*.dmg
 ```
 
 **`claude/release-manager/rename-firmware-for-release.sh`**
@@ -252,7 +267,7 @@ Usage:
 Usage:
 ```bash
 # For RC releases
-./claude/release-manager/rename-firmware-for-release.sh 9.0.0-RC3 downloads/firmware-9.0.0-RC3/
+./claude/release-manager/rename-firmware-for-release.sh 9.0.0-rc3 downloads/firmware-9.0.0-rc3/
 
 # For final releases
 ./claude/release-manager/rename-firmware-for-release.sh 9.0.0 downloads/firmware-9.0.0/
@@ -407,6 +422,8 @@ As Release Manager:
 - **Facebook:** No markdown, supports emojis and images (1200x630 PNG recommended)
 - Focus on top 5 features users care about most
 - Include download link and upgrade warnings
+- **Combined announcements:** Firmware and Configurator are always announced together in one post — users think of it as a single "INAV X.Y.Z" release. Exception: hotfixes that touch only one repo get a targeted announcement, not a combined one.
+- **Reference examples:** `9.0.0-announcement-discord.md`, `9.0.0-announcement-facebook.txt`, `9.1.0-RC1-announcement-discord.md`, `9.1.0-RC1-announcement-facebook.txt`
 
 ---
 

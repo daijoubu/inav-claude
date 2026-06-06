@@ -95,18 +95,32 @@ git status  # Look for "Your branch is ahead of 'origin/...'"
 
 ## Branches
 
-### Never Merge to Master Locally
+### INAV branching model
 
-**Never** merge another branch to master, except by pulling from a remote repo.
+INAV does **not** use `master` as an active development branch — it was retired because it was misused too often (wrong things merged in). All active work happens on numbered version branches:
+
+- `release/9.x` — older release (e.g. the 9.1 release)
+- `maintenance-10.x` — newer release (e.g. the December release)
+
+Do not branch from or merge to `master`.
+
+### ⛔ Never merge a higher version into a lower one
+
+Changes flow in one direction only: **lower → higher** (backporting fixes upward). The reverse pulls months of newer development into an old release branch, contaminating it with features and changes that were never intended for that release. This has caused serious damage more than once.
 
 ```bash
-# ❌ NEVER do this:
-git checkout master
-git merge feature-branch
+# ❌ NEVER — drags 10.x features into the 9.x release:
+git checkout release/9.x
+git merge maintenance-10.x
 
-# ✅ Instead:
-# Create PR and let maintainers merge on GitHub
+# ✅ Backporting a 9.x fix up to 10.x is fine:
+git checkout maintenance-10.x
+git cherry-pick <commit-from-9.x>
 ```
+
+If a compile error or CI failure makes merging a higher version branch look like the fix — it isn't. Fix the specific conflicting lines surgically with the Edit tool instead.
+
+When a legitimate upward merge IS needed, see `guides/merge-release-into-next-version.md` for the correct procedure (branch off the target, merge the older branch in, PR back to the target — leaving the older branch untouched).
 
 ### Branch Naming
 

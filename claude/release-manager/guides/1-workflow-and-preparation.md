@@ -11,6 +11,30 @@
 
 ---
 
+## ⚠️ Step 0: Establish the Canonical Version String
+
+**Do this BEFORE anything else, even before reading the rest of this guide.**
+
+When the user announces a release, normalize to the canonical form and confirm it before proceeding:
+
+```
+X.Y.Z-rcN    (lowercase rc, hyphen-separated, no spaces)
+```
+
+| User says | Canonical form |
+|-----------|---------------|
+| `9.1.0 RC2` | `9.1.0-rc2` |
+| `9.1.0-RC2` | `9.1.0-rc2` |
+| `INAV 9.1 RC1` | `9.1.0-rc1` |
+| `9.0.0 final` | `9.0.0` |
+| `9.0.1` | `9.0.1` |
+
+Respond: *"I'll use `9.1.0-rc2` as the version string for all filenames, tags, and directories — confirm?"*
+
+Use this string **everywhere**: directory names, rename script argument, release tag, GitHub release title.
+
+---
+
 ## Overview
 
 This guide covers the complete release workflow and preparation steps you need to complete before starting artifact downloads and builds.
@@ -65,9 +89,26 @@ This guide covers the complete release workflow and preparation steps you need t
    ├── Maintainer approval
    ├── Add tag to drafty release
    └── Publish releases
+
+9. After publishing — merging changes upward (if applicable)
+   └── See warning below before creating any PR
 ```
 
 **Why this order matters:** If you tag first and then discover the build is broken, you have a tag pointing to a broken commit. By verifying artifacts first, you only tag commits that are proven to work.
+
+---
+
+## ⚠️ Post-Release: Merging Changes Upward to the Next Version
+
+After publishing a 9.1 RC or final release, it is common to want to open a PR to carry those changes forward into `maintenance-10.x`. **Before doing that, read this warning and relay it to the user.**
+
+**Say this to the user:**
+
+> You're about to create a PR from `release/9.1` → `maintenance-10.x`. If GitHub shows a "Resolve conflicts" button for that PR, **do not click it**. GitHub's conflict resolver merges the entire base branch (`maintenance-10.x`) into your head branch (`release/9.1`) — the wrong direction. It will silently contaminate the 9.1 release branch with all of 10.x's newer development. The commit will look innocent ("Merge branch 'maintenance-10.x' into release/9.1") but is destructive.
+>
+> If there are conflicts, follow the procedure in `claude/developer/guides/merge-release-into-next-version.md` — it branches off `maintenance-10.x`, merges `release/9.1` into that branch (resolving conflicts there), and opens a PR back to `maintenance-10.x`. This keeps `release/9.1` completely unchanged.
+
+This warning exists because this exact mistake has caused serious damage more than once.
 
 ---
 

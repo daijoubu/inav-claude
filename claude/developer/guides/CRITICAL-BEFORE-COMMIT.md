@@ -84,9 +84,34 @@ shellcheck script.sh
 
 Fix any issues before committing.
 
-### 8. Branches
+### 8. Branches and Merges
 
 **NEVER** merge another branch to master except by pulling from remote repo.
+
+#### ⛔ ABSOLUTE PROHIBITION: Never merge a higher version into a lower one
+
+This has caused serious damage twice. Version branches represent specific release points in time:
+- `release/9.x` = the 9.x release (older)
+- `maintenance-10.x` = the December release (newer)
+
+**NEVER pull a higher version into a lower one:**
+
+- ❌ `git merge maintenance-10.x` while on `release/9.x` — drags future features into old release
+
+**The direction that IS legitimate (lower → higher):**
+- ✅ Backporting: cherry-picking or merging a 9.x fix INTO 10.x or master is fine
+- ✅ Merging a PR author's feature/fix branch into its intended base branch
+- ✅ Merging the base branch INTO a PR branch to resolve conflicts (see CRITICAL-BEFORE-MERGE.md)
+
+If a CI failure looks like it could be fixed by merging another version branch in, **STOP**. That is always the wrong diagnosis. The real fix is surgical — find the specific conflicting lines and fix them with the Edit tool, exactly as you would fix any other compile error.
+
+When a legitimate upward merge IS needed (carrying 9.x changes into 10.x), use the procedure in `guides/merge-release-into-next-version.md`.
+
+### 9. Pushing
+
+**NEVER push to `upstream` directly.** Always push to `origin` (your fork) and open a PR.
+
+Pushing directly to `upstream` bypasses code review and branch protection. The only exception is if the user types an explicit instruction like "push this to upstream" — even then, confirm exactly which branch and why before executing.
 
 ---
 

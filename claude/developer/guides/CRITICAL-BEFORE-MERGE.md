@@ -1,5 +1,27 @@
 # ⚠️ CRITICAL CHECKLIST - Read Before Resolving Merge Conflicts
 
+## ⛔ FIRST: Check merge direction — and never use GitHub's web conflict resolver
+
+**NEVER merge a higher version branch into a lower one.** Version branches are release snapshots in time:
+- `release/9.x` = older release
+- `maintenance-10.x` = newer release
+
+Merging `maintenance-10.x` into `release/9.x` drags months of newer development into an old release branch. This has caused serious damage. If you think merging a higher version in will fix a compile error or conflict — it won't. Fix the specific lines surgically instead.
+
+The legitimate direction is lower → higher (backporting a fix from 9.x up into 10.x).
+
+### ⛔ Never use GitHub's web "Resolve conflicts" button on these PRs
+
+GitHub's own documentation warns:
+
+> "When you resolve a merge conflict on GitHub, the **entire base branch** of your pull request is merged into the head branch."
+
+For a PR from `release/9.x` → `maintenance-10.x`, the base is `maintenance-10.x`. Clicking "Resolve conflicts" in the browser merges ALL of `maintenance-10.x` into `release/9.x` — exactly the contamination this rule exists to prevent. The resulting commit will be named "Merge branch 'maintenance-10.x' into release/9.1", which looks routine but is destructive.
+
+**Always resolve conflicts locally** using the procedure in `guides/merge-release-into-next-version.md` — branch off the *target* (newer) branch, merge the older branch into it, resolve there, then open a PR from that branch into the target.
+
+---
+
 **STOP! Read this entire guide before touching any merge conflict.**
 
 The most expensive mistake in merge work is taking a whole file or whole function
