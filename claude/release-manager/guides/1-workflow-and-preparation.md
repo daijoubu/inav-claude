@@ -89,9 +89,26 @@ This guide covers the complete release workflow and preparation steps you need t
    ├── Maintainer approval
    ├── Add tag to drafty release
    └── Publish releases
+
+9. After publishing — merging changes upward (if applicable)
+   └── See warning below before creating any PR
 ```
 
 **Why this order matters:** If you tag first and then discover the build is broken, you have a tag pointing to a broken commit. By verifying artifacts first, you only tag commits that are proven to work.
+
+---
+
+## ⚠️ Post-Release: Merging Changes Upward to the Next Version
+
+After publishing a 9.1 RC or final release, it is common to want to open a PR to carry those changes forward into `maintenance-10.x`. **Before doing that, read this warning and relay it to the user.**
+
+**Say this to the user:**
+
+> You're about to create a PR from `release/9.1` → `maintenance-10.x`. If GitHub shows a "Resolve conflicts" button for that PR, **do not click it**. GitHub's conflict resolver merges the entire base branch (`maintenance-10.x`) into your head branch (`release/9.1`) — the wrong direction. It will silently contaminate the 9.1 release branch with all of 10.x's newer development. The commit will look innocent ("Merge branch 'maintenance-10.x' into release/9.1") but is destructive.
+>
+> If there are conflicts, resolve them locally: check out `release/9.1`, edit the conflicting files directly, commit, and push. Then the PR can be merged normally.
+
+This warning exists because this exact mistake has caused serious damage more than once.
 
 ---
 

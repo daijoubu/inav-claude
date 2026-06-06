@@ -180,14 +180,23 @@ Create maintenance branches when:
 - **Breaking changes** → PR to maintenance-10.x (incompatible changes for 10.0)
 - **Master** → NOT a PR target (receives merges only)
 
-**Merge flow:** Lower version branches are periodically merged into higher version branches:
+**Merge flow:** Lower version branches are periodically merged into higher version branches (changes flow upward only):
 ```
-maintenance-9.x → master → maintenance-10.x
+release/9.x → maintenance-10.x
 ```
 
-This ensures:
-- Master stays synchronized with the current version (maintenance-9.x)
-- Changes flow forward to the next version (maintenance-10.x)
+This ensures changes flow forward to the next version. **Never merge in the reverse direction** (never pull maintenance-10.x into release/9.x).
+
+### ⚠️ WARNING: GitHub's web conflict resolver is dangerous for these merges
+
+When creating a PR from `release/9.x` → `maintenance-10.x` and there are conflicts, you may be tempted to click GitHub's "Resolve conflicts" button. **Do not do this.**
+
+GitHub's own documentation states:
+> "When you resolve a merge conflict on GitHub, the **entire base branch** of your pull request is merged into the head branch."
+
+For this PR the base branch is `maintenance-10.x`. Clicking "Resolve conflicts" merges ALL of `maintenance-10.x` into `release/9.x` — the wrong direction — contaminating the older release branch with months of newer development. The resulting commit will be innocuously named "Merge branch 'maintenance-10.x' into release/9.1" and will look routine in the history.
+
+**Instead:** Resolve conflicts locally by editing the specific conflicting lines, commit, and push to the PR branch.
 
 ### Update PR Branch Suggestion Workflow
 
