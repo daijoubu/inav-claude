@@ -152,5 +152,6 @@ Use the Edit tool to append new entries. Format: `- **Brief title**: One-sentenc
 ### Lessons
 
 - **Fix blockers, don't route around them**: If goal X is blocked by small problem Y, fix Y first — don't pivot to complex workarounds (e.g. if a build fails due to an unrelated compile error in another file, fix that error rather than trying to analyze LTO bitcode object files to simulate what the linker would have produced). We build correct solutions, not workarounds.
+- **Always use fc-flasher agent for hardware flashing**: Never invoke `dfu-util` directly. STM32H7 boards silently fail DFU exit with raw dfu-util ("can't detach"), leaving the FC stuck. The fc-flasher agent uses the known-good script that handles all STM32 variants correctly.
 
 <!-- Add new lessons above this line -->
