@@ -2,8 +2,8 @@
 
 This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKED).
 
-**Last Updated:** 2026-05-30
-**Active:** 6 | **Backburner:** 3 | **Blocked:** 0
+**Last Updated:** 2026-06-04
+**Active:** 3 | **Backburner:** 5 | **Blocked:** 2
 
 > **Completed projects:** See [completed/INDEX.md](completed/INDEX.md)
 > **Blocked projects:** See `blocked/` directory
@@ -39,19 +39,6 @@ This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKE
 
 ## Active Projects
 
-### 📋 investigate-f7-busoff-lock
-
-**Status:** TODO | **Type:** Bug Investigation / Fix | **Priority:** MEDIUM-HIGH
-**Created:** 2026-05-29 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
-
-Research task: confirm whether F7 bxCAN ABOM handles Bus-Off recovery fully in hardware or whether `canardSTM32RecoverFromBusOff()` (currently a no-op) needs implementation. Verify against STM32F7 RM before any code changes.
-
-**Directory:** `active/investigate-f7-busoff-lock/`
-**Repository:** inav (firmware) | **Branch:** `maintenance-10.x`
-**Flagged by:** Developer (completion report for `fix/h7-dronecan-driver`, 2026-05-29)
-
----
-
 ### 📋 investigate-opencode-startup-prompt
 
 **Status:** TODO | **Type:** Investigation | **Priority:** MEDIUM
@@ -64,15 +51,18 @@ Investigate why OpenCode prompts for role on startup despite AGENTS.md specifyin
 
 ---
 
-### 📋 feature-canbus-errors-blackbox
+### 🚫 feature-canbus-errors-blackbox
 
-**Status:** TODO | **Type:** Feature | **Priority:** MEDIUM
+**Status:** BLOCKED | **Type:** Feature | **Priority:** MEDIUM
 **Created:** 2026-02-14 | **Assignee:** Developer | **Assignment:** 📝 Planned
 
-Add CAN bus Tx/Rx error counts and controller state transitions (ERROR_ACTIVE, ERROR_PASSIVE, BUS_OFF) to Blackbox logs. Makes intermittent CAN bus problems diagnosable from flight logs.
+Add CAN bus error statistics (TEC, REC, LEC, bus-off count, TX dropped) to Blackbox slow frame. Makes intermittent CAN bus problems diagnosable from flight logs.
+
+**Blocked on:** PR #11560 (`feature/stm32f7-can-tx-isr`) — provides the extended `canardProtocolStatus_t` with tec/rec/lec/tx_dropped fields and populates H7 driver. Once merged, branch off updated `maintenance-10.x` and implement.
 
 **Directory:** `active/feature-canbus-errors-blackbox/`
-**Repository:** inav (firmware) | **Branch:** `maintenance-10.x`
+**Repository:** inav (firmware) | **Branch:** create off `maintenance-10.x` after #11560 merges
+**Plan:** `active/feature-canbus-errors-blackbox/PLAN.md`
 
 ---
 
@@ -88,23 +78,57 @@ Poll DroneCAN nodes for transport statistics (tx/rx transfer counts, error rates
 
 ---
 
-### 📋 feature-dronecan-configurator-tab
+### 📋 feature-dronecan-dna-server
 
-**Status:** TODO | **Type:** Feature | **Priority:** MEDIUM-HIGH
+**Status:** TODO | **Type:** Feature | **Priority:** MEDIUM
+**Created:** 2026-06-03 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
+
+Implement a DroneCAN DNA allocation server so peripherals with node_id=0 are automatically assigned a node ID at runtime, enabling plug-and-play DroneCAN setup.
+
+**Directory:** `active/feature-dronecan-dna-server/`
+**Repository:** inav (firmware) | **Branch:** `maintenance-10.x`
+**Reference:** daijoubu/inav #4
+
+---
+
+### ⏸️ feature-dronecan-configurator-tab
+
+**Status:** BACKBURNER | **Type:** Feature | **Priority:** MEDIUM-HIGH
 **Created:** 2026-04-25 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
 
 Add a DroneCAN tab to inav-configurator showing detected nodes, health status, mode, uptime, and sensor data. Colour-coded health indicators, 2-second auto-refresh.
 
-**Directory:** `active/feature-dronecan-configurator-tab/`
-**Repository:** inav-configurator | **Branch:** `maintenance-10.x`
+Implementation complete. Waiting for PR 2645 (`fix/accordion-duplicate-handlers`) to merge to `maintenance-10.x`, then rebase and open PR. Phase 3 (node software/hardware version) blocked on `feature-dronecan-getnodeinfo` firmware task.
+
+**Directory:** `backburner/feature-dronecan-configurator-tab/`
+**Repository:** inav-configurator | **Branch:** `feature/dronecan-configurator-tab`
 
 ---
 
-### 📋 feature-dronecan-gps-provider-ui
+### 🚫 feature-dronecan-getnodeinfo
 
-**Status:** TODO | **Type:** Feature / UI Enhancement | **Priority:** MEDIUM
-**Created:** 2026-02-16 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
-**Blocked until:** `feature-dronecan-configurator-tab` complete
+**Status:** BLOCKED | **Type:** Feature | **Priority:** MEDIUM-HIGH
+**Created:** 2026-05-31 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
+
+Code complete. Node struct extended with version fields, GetNodeInfo request/response implemented, MSP2_INAV_DRONECAN_NODE_INFO extended to 119-byte wire format. Full build matrix (F4/F7/H7/AT32/SITL) and 13/13 unit tests passing.
+
+**Blocked on:** PR #11560 (F7 ISR TX) → rebase PR #11607 → once #11607 merges, rebase this branch and open draft PR to `maintenance-10.x`. See Merge Watch below.
+
+**Directory:** `active/feature-dronecan-getnodeinfo/`
+**Repository:** inav (firmware) | **Branch:** `feature/dronecan-getnodeinfo`
+
+---
+
+### ⏸️ feature-dronecan-param-getset
+**Status:** BACKBURNER| **Type:** Feature | **Priority:** MEDIUM-HIGH
+**Created:** 2026-06-02 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
+
+Code complete. Firmware: 9 commits on top of `feature/dronecan-getnodeinfo` (min/max range, MSP serialization, async GetSet slot). Configurator: UI with range validation, i18n, and visual feedback on `feature/dronecan-configurator-tab`. Zero CRITICAL/HIGH findings from review.
+
+Waiting for `feature-dronecan-getnodeinfo` PR to merge, then rebase and open draft PR to `maintenance-10.x` (may be combined with getnodeinfo). Configurator PR waits on PR 2645.
+
+**Directory:** `backburner/feature-dronecan-param-getset/`
+**Repository:** inav (firmware) + inav-configurator | **Branch:** `feature/dronecan-param-getset` + `feature/dronecan-configurator-tab`
 
 ---
 
@@ -141,3 +165,16 @@ Remove `taskSendSbus2Telemetry`, `calculateThrottleStatus`, and `applySensorAlig
 **Directory:** `backburner/cleanup-itcm-non-dronecan/`
 **Repository:** inav (firmware) | **Branch:** `maintenance-10.x`
 
+---
+
+## Merge Watch
+
+Tracks the PR dependency chain for projects that are code-complete but can't open their PR yet.
+When a PR merges, action the corresponding row and remove it from this table.
+
+| UPSTREAM PR MERGES                                          | ACTION                                                                                              |
+|-------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| #11560 — DroneCAN ISR-driven TX for F7 (OPEN)              | Developer rebases `fix/h7-dronecan-driver`, opens PR #11607 as **draft**; branch `feature/canbus-errors-blackbox` off updated `maintenance-10.x` and start blackbox implementation |
+| #11607 — Fix H7 FDCAN and F7 bxCAN driver config (DRAFT)   | Developer rebases `feature-dronecan-getnodeinfo`, opens as **draft PR** to `maintenance-10.x` (+ param-getset if combined) |
+| PR 2645 — fix/accordion-duplicate-handlers (configurator)  | Developer rebases `feature/dronecan-configurator-tab`, opens as **draft PR** to `maintenance-10.x` |
+| feature-dronecan-getnodeinfo PR merges                      | Developer rebases `feature-dronecan-param-getset` (if separate PR), opens as **draft PR**          |

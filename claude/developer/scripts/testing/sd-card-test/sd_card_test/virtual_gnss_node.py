@@ -26,7 +26,15 @@ except ImportError:
 import dronecan
 from dronecan.transport import TransferError
 
-Fix2 = dronecan.uavcan.equipment.gnss.Fix2
+Fix2   = dronecan.uavcan.equipment.gnss.Fix2
+GetSet = dronecan.uavcan.protocol.param.GetSet
+
+HEALTH_OK       = 0
+HEALTH_WARNING  = 1
+HEALTH_ERROR    = 2
+HEALTH_CRITICAL = 3
+HEALTH_NAMES    = {0: 'OK', 1: 'WARNING', 2: 'ERROR', 3: 'CRITICAL'}
+HEALTH_CYCLE    = [HEALTH_OK, HEALTH_WARNING, HEALTH_ERROR, HEALTH_CRITICAL]
 
 # ENOBUFS from socketcan - FC went offline / TX queue full
 _ENOBUFS_RETRY_DELAY = 1.0
@@ -85,6 +93,13 @@ def main():
     parser.add_argument("--can", default="can0", help="CAN interface (default: can0)")
     parser.add_argument("--hz", type=float, default=25.0, help="Publish rate in Hz (default: 25)")
     parser.add_argument("--bitrate", type=int, default=500000, help="CAN bitrate (default: 500000)")
+    parser.add_argument("--health", type=int, default=0, choices=[0, 1, 2, 3],
+                        help="Node health: 0=OK 1=WARNING 2=ERROR 3=CRITICAL (default: 0)")
+    parser.add_argument("--no-cycle-health", action="store_false", dest="cycle_health",
+                        help="Disable health state cycling (cycling is on by default)")
+    parser.add_argument("--cycle-interval", type=float, default=5.0,
+                        help="Seconds per health state when cycling (default: 5)")
+    parser.set_defaults(cycle_health=True)
     args = parser.parse_args()
 
     if not (1 <= args.node_id <= 125):
@@ -93,6 +108,34 @@ def main():
 
     node = make_node(args.can, args.node_id, args.bitrate)
 
+    _params = [
+        {'name': 'publish_rate_hz', 'value': int(args.hz), 'default': 25, 'min': 1, 'max': 50},
+    ]
+
+    def handle_param_getset(event):
+        req = event.request
+        idx = req.index
+        if idx >= len(_params):
+            return GetSet.Response()
+        p = _params[idx]
+        if req.value._union_field is not None:  # non-EMPTY = write
+            if req.value._union_field == 'integer_value':
+                p['value'] = max(p['min'], min(p['max'], int(req.value.integer_value)))
+        resp = GetSet.Response()
+        resp.name = p['name']
+        resp.value.integer_value = p['value']
+        resp.default_value.integer_value = p['default']
+        resp.max_value.integer_value = p['max']
+        resp.min_value.integer_value = p['min']
+        return resp
+
+    node.add_handler(GetSet, handle_param_getset)
+
+    health_idx = 0
+    last_health_change = time.time()
+    node.health = HEALTH_CYCLE[health_idx] if args.cycle_health else args.health
+    print(f"  Health: {HEALTH_NAMES[node.health]}" + (" (cycling)" if args.cycle_health else ""))
+
     msg = make_fix2(
         lat_deg=-33.856784,
         lon_deg=151.215297,
@@ -100,12 +143,11 @@ def main():
         alt_ellipsoid_m=80.0,
     )
 
-    interval_s = 1.0 / args.hz
     seq = 0
     last_print = time.time()
     consecutive_failures = 0
 
-    print(f"Publishing Fix2 at {args.hz}Hz (interval={interval_s*1000:.1f}ms)")
+    print(f"Publishing Fix2 at {args.hz}Hz (publish_rate_hz param adjustable 1-50)")
     print(f"  Position: lat={-33.856784:.4f}, lon={151.215297:.4f}")
     print(f"  Fix: 3D, sats=12, pdop=1.5, stationary")
     print(f"Press Ctrl+C to stop.")
@@ -113,6 +155,15 @@ def main():
 
     try:
         while True:
+            interval_s = 1.0 / _params[0]['value']
+            if args.cycle_health:
+                now_h = time.time()
+                if now_h - last_health_change >= args.cycle_interval:
+                    health_idx = (health_idx + 1) % len(HEALTH_CYCLE)
+                    node.health = HEALTH_CYCLE[health_idx]
+                    print(f"  [{now_h:.1f}] Health -> {HEALTH_NAMES[node.health]}")
+                    last_health_change = now_h
+
             try:
                 msg.timestamp.usec = int(time.time() * 1e6)
                 msg.gnss_timestamp.usec = msg.timestamp.usec

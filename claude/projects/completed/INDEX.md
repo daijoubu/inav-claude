@@ -2,9 +2,45 @@
 
 Completed (✅) and cancelled (❌) projects by current author (daijoubu) for INAV firmware and DroneCAN development.
 
-**Total Completed:** 124 | **Total Cancelled:** 6
+**Total Completed:** 127 | **Total Cancelled:** 6
 
 > **Active projects:** See [../INDEX.md](../INDEX.md)
+
+---
+
+
+### ✅ fix-fw-launch-climb-angle-preset
+
+**Status:** COMPLETED (2026-06-04)
+**Type:** Bug Fix
+**Priority:** LOW
+
+Remove `nav_fw_launch_climb_angle: 25` from both fixed-wing airframe presets in the configurator. Value was silently introduced with no rationale; firmware default (18°) should apply.
+
+---
+
+
+### ✅ feature-dronecan-gps-provider-ui
+
+**Status:** COMPLETED (2026-06-01)
+**Type:** Feature / UI Enhancement
+**Priority:** MEDIUM
+
+Added CRSF and DroneCAN to the GPS protocol dropdown, fixing a pre-existing bug where CRSF was missing (firmware index 2) and FAKE was at the wrong index. When DroneCAN is selected, serial port and baud controls are hidden and an info note directs the user to the DroneCAN tab. Protocol dropdown moved above port/baud for stable layout.
+
+**Branch:** `feature/dronecan-configurator-tab`
+**Repository:** inav-configurator
+
+---
+
+
+### ✅ investigate-f7-busoff-lock
+
+**Status:** COMPLETED (2026-05-30)
+**Type:** Bug Investigation
+**Priority:** MEDIUM-HIGH
+
+Confirmed via RM0410 that `canardSTM32RecoverFromBusOff()` no-op is correct — bxCAN ABOM handles full bus-off recovery in hardware. Updated comment with RM0410 citations. Shipped in PR #11607.
 
 ---
 
