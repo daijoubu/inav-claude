@@ -105,6 +105,8 @@ This has caused serious damage twice. Version branches represent specific releas
 
 If a CI failure looks like it could be fixed by merging another version branch in, **STOP**. That is always the wrong diagnosis. The real fix is surgical — find the specific conflicting lines and fix them with the Edit tool, exactly as you would fix any other compile error.
 
+When a legitimate upward merge IS needed (carrying 9.x changes into 10.x), use the procedure in `guides/merge-release-into-next-version.md`.
+
 ### 9. Pushing
 
 **NEVER push to `upstream` directly.** Always push to `origin` (your fork) and open a PR.

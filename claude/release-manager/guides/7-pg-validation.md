@@ -280,7 +280,7 @@ Once the release is published, the next step is often opening a PR to carry the 
 >
 > For this PR the base branch is `maintenance-10.x`. Clicking that button merges ALL of `maintenance-10.x` into `release/9.1` — the wrong direction — silently contaminating the older release branch with months of newer development. The commit will be named "Merge branch 'maintenance-10.x' into release/9.1" and look routine, but is destructive.
 >
-> **Instead:** Check out `release/9.1` locally, edit the specific conflicting lines, commit, and push. Then the PR can be merged on GitHub normally.
+> **Instead:** Follow the procedure in `claude/developer/guides/merge-release-into-next-version.md` — branch off `maintenance-10.x`, merge `release/9.1` into that branch, resolve any conflicts there, and open a PR from that branch into `maintenance-10.x`. This leaves `release/9.1` completely unchanged.
 
 ---
 

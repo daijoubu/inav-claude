@@ -120,6 +120,8 @@ git cherry-pick <commit-from-9.x>
 
 If a compile error or CI failure makes merging a higher version branch look like the fix — it isn't. Fix the specific conflicting lines surgically with the Edit tool instead.
 
+When a legitimate upward merge IS needed, see `guides/merge-release-into-next-version.md` for the correct procedure (branch off the target, merge the older branch in, PR back to the target — leaving the older branch untouched).
+
 ### Branch Naming
 
 Use descriptive branch names:

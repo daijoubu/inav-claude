@@ -106,7 +106,7 @@ After publishing a 9.1 RC or final release, it is common to want to open a PR to
 
 > You're about to create a PR from `release/9.1` → `maintenance-10.x`. If GitHub shows a "Resolve conflicts" button for that PR, **do not click it**. GitHub's conflict resolver merges the entire base branch (`maintenance-10.x`) into your head branch (`release/9.1`) — the wrong direction. It will silently contaminate the 9.1 release branch with all of 10.x's newer development. The commit will look innocent ("Merge branch 'maintenance-10.x' into release/9.1") but is destructive.
 >
-> If there are conflicts, resolve them locally: check out `release/9.1`, edit the conflicting files directly, commit, and push. Then the PR can be merged normally.
+> If there are conflicts, follow the procedure in `claude/developer/guides/merge-release-into-next-version.md` — it branches off `maintenance-10.x`, merges `release/9.1` into that branch (resolving conflicts there), and opens a PR back to `maintenance-10.x`. This keeps `release/9.1` completely unchanged.
 
 This warning exists because this exact mistake has caused serious damage more than once.
 

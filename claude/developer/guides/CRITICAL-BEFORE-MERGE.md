@@ -18,7 +18,7 @@ GitHub's own documentation warns:
 
 For a PR from `release/9.x` → `maintenance-10.x`, the base is `maintenance-10.x`. Clicking "Resolve conflicts" in the browser merges ALL of `maintenance-10.x` into `release/9.x` — exactly the contamination this rule exists to prevent. The resulting commit will be named "Merge branch 'maintenance-10.x' into release/9.1", which looks routine but is destructive.
 
-**Always resolve conflicts locally** by fixing the specific conflicting lines with the Edit tool, then committing and pushing normally.
+**Always resolve conflicts locally** using the procedure in `guides/merge-release-into-next-version.md` — branch off the *target* (newer) branch, merge the older branch into it, resolve there, then open a PR from that branch into the target.
 
 ---
 

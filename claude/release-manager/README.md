@@ -196,7 +196,7 @@ GitHub's own documentation states:
 
 For this PR the base branch is `maintenance-10.x`. Clicking "Resolve conflicts" merges ALL of `maintenance-10.x` into `release/9.x` — the wrong direction — contaminating the older release branch with months of newer development. The resulting commit will be innocuously named "Merge branch 'maintenance-10.x' into release/9.1" and will look routine in the history.
 
-**Instead:** Resolve conflicts locally by editing the specific conflicting lines, commit, and push to the PR branch.
+**Instead:** Use the procedure in `claude/developer/guides/merge-release-into-next-version.md` — branch off `maintenance-10.x`, merge `release/9.x` into that branch, resolve conflicts there, then open a PR from that branch into `maintenance-10.x`.
 
 ### Update PR Branch Suggestion Workflow
 
