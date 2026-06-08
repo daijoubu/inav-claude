@@ -1,0 +1,70 @@
+Keyword: rotor
+Occurrences: 66
+================================================================================
+
+Page    1: Advanced Rotorcraft Technology, Inc.
+Page    1: Advanced Rotorcraft Technology (ART) and the NASA Ames Aeromechanics branch have jointly developed
+Page    1: users and the rotorcraft community. The ongoing research effort and enhancement of these AAM simulation models to
+Page    1: CT           Rotor thrust coefficient                                   w
+Page    1: ~ intf      Rotor induced interference velocity (off-rotor)
+Page    1: N            Number of rotor blades                                     θ           Vehicle pitch attitude
+Page    1: P            Vehicle roll rate                                          ψ           Rotor azimuth
+Page    2: representative rotorcraft configurations that can            as viable control schemes. Results discussed in this
+Page    2: simulation environment allows NASA to further                the logic for low speed rotor-borne flight, higher
+Page    2: development in FLIGHTLAB, being the lift+cruise,             threshold for transition, rotors are stopped, clocked to
+Page    2: 1. The characteristics of these designs are outlined in      CFD for the stopped rotor. Further information on the
+Page    2: seek to accomplish.                                             The tiltwing vehicle model consists of eight rotors,
+Page    2: developed to assess the viability of these designs           and two are supported by a T-tail. The rotors and
+Page    2: introduced in Ref. [6], which focused on describing          Each rotor has five blades modeled with blade element
+Page    2: the designs and modeling techniques used. This paper         formulation. For the tiltwing, rotors are rigid without
+Page    2: the previous publication that expands the modeling           included. Rotor RPM is set for a tip speed of 550 feet
+Page    2: from NDARC, Refs. [7], and [8] and OpenVSP, Ref.             system was developed in CSGE, and contains rotor
+Page    2: details regarding design decisions and specifications are    main rotors supported by structural arms with fairings.
+Page    2: configurations, and in Ref. [3] for the tiltwing.            Rotors are modeled as articulated with blade element
+Page    2: 2, contains a main wing supporting eight lifting rotors,     20 aerodynamic segments. The tail is modeled as an
+Page    2: mass of 5791 lbs. Rotors are modeled with blade              pitch-based control of the main rotors and deflection of
+Page    2: The blade element rotor model consists 12 aerodynamic        interference models developed as part of the research
+Page    2: dynamic pressure, plus unsteady effects. The rotor           while maintaining real-time capabilities.            The
+Page    2: induced inflow is resolved using a three state Peters-He     lift+cruise and tiltwing models feature rotor-on-rotor
+Page    3: side-by-side model contains both rotor-on-rotor and         with equation 1, the transformation to the modal space
+Page    3: rotor-on-empennage interference. Figure 5 shows an          is achieved and is presented in equation 3.
+Page    3: FLIGHTLAB rotorcraft analysis capabilities, the
+Page    3: generating components such as a rotor or sensors are
+Page    3: properties correlate to the entire airframe excluding the   the total to the load generating components (rotors).
+Page    3: rotors.                                                     Load generating components use the total motion to
+Page    3: F is the force vector. The force vector F consists          in nine groups of eight nodes, that encircle the rotor
+Page    3: of aerodynamic, gravitational, and other external           boom near the respective rotor attachment point. Figure
+Page    3: forces. The eigenvalue and eigenvector or modes and         7 shows a set of selected nodes at one of the rotor
+Page    3: modeshapes of the finite element model are computed         booms. Only one node for each rotor is utilized, so for
+Page    3: by performing eigenanalysis on only the M and K             the forward, low mounted rotors, the lowest node data
+Page    3: matrices. The C matrix is excluded and therefore the        was used for connecting the rotors. For the aft, high
+Page    3: resulting modes are real. Assuming Φ is the eigenvector     mounted rotors, the highest node data was used. To
+Page    3: matrix and η is the modal state vector, the physical        account for the distance between each rotor hub center
+Page    4: contains information for nodes in groups of four around     for one rotor connection node for mode 7 and the
+Page    4: the nacelle near each rotor attachment (Fig. 9). Only       corresponding deformations of the elastic joints from
+Page    4: one node is needed for each rotor connection. As such,      the simulation. Mode 7 is the first elastic mode of the
+Page    4: fuselage option was enabled and the modal data table         Rotor 1 Node [ 1.8201e-03, -3.8159e-03, 1.4480e-02 ]
+Page    4: models for these configurations. To ensure that the          Rotor 1 Node [ -2.5143e-03, -1.0674e-03, 2.1691e-04 ]
+Page    4: into the current model, several verification checks          Rotor 1 Node [ 1.8201e-03, -3.8159e-03, 1.4480e-02 ]
+Page    4: the comparison of the modal frequencies and the              Rotor 1 Node [ -2.5143e-03, -1.0674e-03, 2.1691e-04 ]
+Page    4: modeshapes at the rotor connection nodes (elastic
+Page    4: joints). With rotor blade mass and chord at very low           Vehicle trim characteristics were evaluated to check
+Page    4: ratio assigned to the mode. The check was repeated          rotor-borne mode, pitch attitude was fixed and pusher
+Page    5: airframe enhancement show very little difference. It         degrees of freedom corresponding to the rotor speed of
+Page    5: was concluded that the inclusion of the current set of       each lifting rotor. The simplicity of the reduced order
+Page    5: such as vibration and modal analysis.                        (9 body states, 8 lifting rotor speed states). First, a time
+Page    6: rotor-borne transition airspeed provides a response          environment. This process will establish and test the
+Page    6: the rotor-on-rotor interference model. Thus, from the        integration of FLIGHTLAB flight models, integration
+Page    7: linearization method in resolving rotor interference
+Page    7: hover, and transition through rotor-stop were among the     of these AAM reference vehicle models and
+Page    8: Malpica (Aeromechanics Office, NASA Ames) as the         [11] Chengjian He and J. Zhao. “Modeling Rotor
+Page    8: References                                  the Aerodynamic Interaction of Multiple Rotor
+Page    8: [1] Wayne Johnson, Christopher Silva, and Eduardo            Vehicles and Compound Rotorcraft with Viscous
+Page    8: ADS-33 Specifications for Heavy Lift Rotorcraft,”
+Page    8: [4] M.D. Patterson, K.R. Antcliff, and L.W. Kohlman.         of Multirotor RPM-Controlled Electric-Vertical
+Page    8: Silva. “Baseline Assumptions and Future Research         Urban Air Mobility (UAM) eVTOL Quadrotors
+Page    8: Analysis of Rotorcraft,” NASA/TP-2015-218751,            Tischler. “Guidelines for System Identification
+Page    8: NASA, Moffett Field, CA, 2015.                           of Multirotor Vehicles with Highly Correlated
+Page    8: Analysis of Rotorcraft - Theory,” NASA, Moffett          Virginia Beach, VA, Oct 2020.
+Page   10: Rotor 3
+Page   10: Figure 7: Lift+Cruise Node Locations for Rotor 1

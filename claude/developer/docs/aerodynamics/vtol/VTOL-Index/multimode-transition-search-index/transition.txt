@@ -1,0 +1,143 @@
+Keyword: transition
+Occurrences: 139
+================================================================================
+
+Page    1: Development of Multimode Flight Transition Strategy for
+Page    1: Abstract: The purpose of this paper is to establish a transition strategy for tilt-rotor vertical takeoff
+Page    1: The flyable transition corridor was calculated based on both the UAV’s dynamic equations and its
+Page    1: transition process were recorded, as were the constraints of the transition process. The transition
+Page    1: performance indicators were designed based on the transition quality requirements for transition
+Page    1: terms with different dimensions and effects. Finally, the rationality of the transition strategy designed
+Page    1: Keywords: tilt-rotor VTOL UAV; transition corridor; transition strategy; gauss pseudospectral
+Page    1: Transition Strategy for Tilt-Rotor        1. Introduction
+Page    2: wing mode, and transition mode [21]. In the transition flight phase, UAVs are characterized
+Page    2: during the process. Consequently, the transition flight mode is somewhat complicated for
+Page    2: VTOL UAVs [23–25]. The transition flight corridor of the UAV must be determined to allow
+Page    2: the aircraft to fly securely and ensure the safety of the transition flight. Choi et al. [26]
+Page    2: estimated the transition corridor of a tilt-rotor VTOL UAV using leaf element theory and
+Page    2: the flight speed envelope. After multiple flight tests, the UAVs were able to transition
+Page    2: Cao et al. [27] proposed a tilt angle-speed envelope for the transition process. In order
+Page    2: method to calculate the transition corridor using a small coaxial fixed-wing helicopter as
+Page    2: The works mentioned above focus primarily on the calculation of transition corridors
+Page    2: for tilt-rotor VTOL UAVs, while there is little research on transition strategies. In order to
+Page    2: ensure the safety and smoothness of aircraft transition during the transition process, the
+Page    2: transition strategy should be established according to the transition corridor. In recent years,
+Page    2: Zhang et al. [29] proposed a method to deal with the transition problem by using different
+Page    2: transition strategies. In order to reduce the interference caused by the wings, their UAVs
+Page    2: original position. The transition structure of a twin rotor tail-sitter UAV was discovered by
+Page    2: Forshaw et al. [30], who also presented the results of a simulation using a linear transition
+Page    2: control to produce the best transition trajectory for the trail-sitter UAV. In order to ensure
+Page    2: the transition phase. In order to optimize the reverse transition, Verling et al. [32] used a
+Page    2: of reverse transition with minimal variations in height. However, the improved transition
+Page    2: 1.   By using the transition strategy proposed in this paper, the connection between transi-
+Page    2: linear transition method used by Forshaw et al. [30] and Jung et al. [33]. The approach
+Page    2: discussed in this study may produce a tilting trajectory with improved transition
+Page    2: contained by the transition corridor’s secure boundary;
+Page    2: teristics of the transition process and the actual physical constraints in this study, and
+Page    3: transition strategy that obtains the optimal solution by solving the nonlinear program-
+Page    3: minimal control input, and shortest transition time can be obtained by designing the
+Page    3: 3.   Performance indexes are established according to the requirements of transition
+Page    3: quality with respect to transition time, attitude stability, and control continuity. After
+Page    3: the parameter variations during the transition process are discussed in detail.
+Page    3: UAV and maneuvering logic in various modalities. The transition corridor is calculated in
+Page    3: Section 3, and an appropriate transition strategy is created. Section 4 presents and discusses
+Page    3: attitude control during the transition process [39]. The control mode of the tilt-rotor VTOL
+Page    5: (3)   Transitional mode
+Page    5: Transition mode, which is typically used to switch between the other two modes, has
+Page    5: a shorter duration than the other modes. When taking the transition from helicopter
+Page    5: switches from the rotor to the wing during the transition phase. Moreover, there is a
+Page    5: surface maneuvering. Consequently, the control method of the transition mode, as
+Page    6: Helicopter Mode          Transitional Mode       Fixed-Wing Mode
+Page    6: The longitudinal profile of the transition process is shown in Figure 3. In this study,
+Page    6: transition mode is separated into three control segments: fixed-wing mode control segment,
+Page    6: direction of most research lies in finding a safe and reliable tilt-transition control strategy.
+Page    6: maneuvering during the transition phase make the transition mode the riskiest and most
+Page    6: Figure 3. Schematic of longitudinal trajectory profile in transition mode.
+Page    6: 3. Research on Multi-Mode Flight Transition Strategies
+Page    6: The trajectory design, which the transition mode control law design is based on, repre-
+Page    6: sents the first step in the study of the transition mode control strategy. With the continuous
+Page    6: change in the tilting angle during the transition phase, the speed and aerodynamic char-
+Page    6: overcome gravity and drag during flight so that the transition process continues smoothly.
+Page    6: within a specific speed range, which forms a unique transition corridor for tilt-rotor VTOL
+Page    6: UAVs. Therefore, the transition corridor is a prerequisite for designing the trajectory, and
+Page    6: the transition strategy is the key to achieving modal conversion during the transition
+Page    6: process of tilt-rotor VTOL UAVs. How to design an appropriate transition strategy so that
+Page    6: VTOL UAV in the transition phase.
+Page    7: 3.1. Calculation of the Transition Corridor
+Page    7: the propellers, and this leads to the low-speed lift characteristic boundary of the transition
+Page    7: corridor. With the decrease in the tilting angle, the gravity of the UAV gradually transitions
+Page    7: UAV is outside the left and lower boundaries of the transition corridor, a fact that cannot
+Page    7: constitutes the upper boundary of the transition corridor. The maximum forward flying
+Page    7: speed of the tilt-rotor VTOL UAV during the transition process is constrained by the rotor’s
+Page    7: available power, and the right boundary of the transition corridor can be identified based
+Page    7: In this study, the transition corridor problem is transformed into a conventional
+Page    7: The next step involves selecting the state variables. With regard to the transition
+Page    7: variables that generally affect the transition flight are flight speed, angle of attack (simplified
+Page    7: teristics of the UAV are mostly affected during the tilting transition process, the dynamic
+Page    8: 3.2. Optimal Design of Transition Strategies
+Page    8: A tilting transition corridor is essentially the set of all feasible paths, and a feasible
+Page    8: rapidity and smoothness of the transition process, it is necessary to choose an appropriate
+Page    8: transition trajectory within the transition corridor. Based on a specific evaluation criterion,
+Page    9: initial state of the transition process is hovering, i.e., when switching from helicopter mode
+Page    9: At the end of the transition process, the flight state is considered to be level flight, and
+Page    9: tilting transition corridor.
+Page    9: The transition strategy proposed in this paper is based on a tilt-rotor aircraft config-
+Page    9: uration that can cruise at high speeds, which will be used in the control of its transition
+Page    9: The transition strategy employed in this paper is fundamentally a trajectory design
+Page    9: of the transition process are summarized, the state and control variable constraints of the
+Page    9: transition process are summarized, and the performance metrics are given.
+Page    9: The transition strategy design problem of the tilt-rotor VTOL UAV studied in this
+Page   10: represents the process indicator. The optimization problem of the transition strategy is
+Page   11: a performance indicator function to assess the quality of this transition process and the
+Page   11: for the whole transition process. Since the problem studied in this paper is a typical multi-
+Page   11: As for the transition trajectory optimization of the tilt-rotor VTOL UAV discussed in
+Page   11: this paper, the most important variables are the time of the whole transition process, the
+Page   12: design would be useful for directly improving the characteristics of the transition process.
+Page   12: The transition process of the tilt-rotor VTOL UAV combines vertical takeoff and
+Page   12: During the transition process, the front tilting mechanism is constantly shifted, and, as a
+Page   12: result, the aerodynamic forces and configurations change. Therefore, transition flight is
+Page   12: tilt-rotor VTOL UAV, the easier it is to achieve the transition process. Figure 4 shows the
+Page   12: transition corridor of the tilt-rotor VTOL UAV.
+Page   12: The left and lower boundaries of the low-speed section of the transition corridor are
+Page   12: obtained based on the stall angle of the attack limit. The upper boundary of the transition
+Page   12: UAV is used to determine the right boundary of the transition corridor in the high-speed
+Page   12: segment. The transition flight can be completed by the tilt-rotor VTOL UAV within the
+Page   12: transition corridor set under the above-mentioned conditions.
+Page   12: Figure 4. Tilting transition corridor of the tilt-rotor VTOL UAV.
+Page   12: important parameters in the optimization results include transition time, tilting angle
+Page   12: problem studied in this paper, when taking the example of forward tilting (i.e., transition
+Page   12: the stability and safety of the transition process. The physical parameters of the tilt-rotor
+Page   12: Transition time
+Page   13: deflection angle and thus changes the attitude of the aircraft, and c is the transition time
+Page   13: weight coefficient, which will affect the stability of the aircraft during the transition process.
+Page   13: Due to the inherent modal changes and control architecture transitions, the stability of
+Page   13: the tilt-rotor VTOL UAV in the transition phase is significantly poorer than in the vertical
+Page   13: the transition time is a reasonable indicator that should be considered in the transition
+Page   13: in the transition time weight, the time of the whole transition process decreases from
+Page   13: weight coefficient is always comparatively stable. When the weight of the transition time
+Page   13: complete the transition process. The above analysis reveals that the weight of the transition
+Page   13: time will significantly affect the transition time. In Figure 6b, the terminal pitch angle
+Page   13: the transition time weight in scenario 1 is 1–10.
+Page   16: that the tilting angle acceleration weight has a significant impact on the transition strategy
+Page   16: but an opposite effect on the transition time weight. As Figure 12d shows, the variation
+Page   16: at the end of the transition, the thrust coefficient of the front propeller is 0, which is very
+Page   17: A transition strategy design based on optimization methods was performed to address
+Page   17: the lack of safety and reliability of the tilt-rotor VTOL UAV in transition mode. Based on the
+Page   17: dynamic equation and aerodynamic characteristics of the UAV, a flyable transition corridor
+Page   17: constraints, are determined according to the flight characteristics of the transition process
+Page   17: criteria of minimum attitude change, minimum control, and shortest transition time can be
+Page   17: based on the requirements of transition quality for transition time, attitude stability, and
+Page   18: indicators designed in this paper. The optimization results show that the transition strategy
+Page   18: designed in this paper can effectively balance the relationship between transition time,
+Page   18: range of the transition corridor.
+Page   18: 7.    Jeaong, H.; Park, O.; Kim, S.; Suk, J. Adaptive Transition Control of a Tiltrotor UAV Using Dynamic Inversion with Neural
+Page   18: 13.   Wang, Y.; Yu, J.; Li, Q.; Ren, Z. Control Strategy for the Transition Flight of a Tail-Sitter UAV. In Proceedings of the Proceedings of
+Page   18: under transition flight subject to actuator faults and model uncertainties. IEEE Trans. Aerosp. Electron. Syst. 2023, 59, 4559–4574.
+Page   19: 19.   Wang, C.; Zhou, Z.; Wang, R. Research on Dynamic Modeling and Transition Flight Strategy of VTOL UAV. Appl. Sci. 2019,
+Page   19: 29.   Zhang, W.; Quan, Q.; Zhang, R.; Ca, K.Y. New Transition Method of a Ducted-Fan Unmanned Aerial Vehicle. J. Aircr. 2013,
+Page   19: 30.   Forshaw, J.L.; Lappas, V.J.; Briggs, P. Transitional Control Architecture and Methodology for a Twin Rotor Tailsitter. J. Guid.
+Page   19: 31.   Banazadeh, A.; Taymourtash, N. Optimal Control of an Aerial Tail Sitter in Transition Flight Phases. J. Aircr. 2016, 53, 914–921.
+Page   19: 33.   Jung, Y.; Shim, D.H. Development and Application of Controller for Transition Flight of Tail-Sitter UAV. J. Intell. Robot. Syst.
+Page   19: 35.   Oosedo, A.; Abiko, S.; Konno, A.; Uchiyama, M. Optimal transition from hovering to level-flight of a quadrotor tail-sitter UAV.
+Page   19: 36.   Kita, K.; Konno, A.; Uchiyama, M. Transition between Level Flight and Hovering of a Tail-Sitter Vertical Takeoff and Landing
+Page   19: 37.   Naldi, R.; Marconi, L. Optimal transition maneuvers for a class of V/STOL aircraft. Automatica 2011, 47, 870–879. [CrossRef]

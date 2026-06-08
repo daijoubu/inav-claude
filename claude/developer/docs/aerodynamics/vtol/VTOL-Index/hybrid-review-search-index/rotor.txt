@@ -1,0 +1,235 @@
+Keyword: rotor
+Occurrences: 231
+================================================================================
+
+Page    3: (VTOL) or rotary-wing (RW), such as helicopters and multirotor platforms, and b) fixed-wing (FW) aircraft.
+Page    3: maneuverability, increased payload capability, larger range of operation. This is done by tilting the rotors,
+Page    7: tiltrotor-, and tiltwing-VTOL aircraft. A general comparison of the three regarding mechanical complexity,
+Page    7: As the name suggests, tailsitters take off and land vertically on their tail. Since the rotors are usually
+Page    7: transition is done using aerodynamic-control surfaces or differential-rotor thrust only [77, 79]. Hereby, the
+Page    7: complex to control compared to pure differential-rotor thrust. In any case, tailsitters are usually mechanically
+Page    7: 2.2.2. Tiltrotor Aircraft
+Page    7: Tiltrotor vehicles belong to the group of convertiplanes. Unlike tailsitters, the longitudinal body axis
+Page    8: Type       # Rotors   Remarks                                                                     Sources
+Page    8: Tiltrotor       2       rotors mounted on wings                                                     [96, 97, 98, 99, 100, 101, 102,
+Page    8: 3       two rotors mounted on wings, one fixed tail ro-                             [113, 114, 115, 116, 117, 118,
+Page    8: 3       two rotors mounted on wings, one tiltable tail                              [126, 127, 128, 129, 130]
+Page    8: rotor
+Page    8: 4       rotors mounted symmetrically around center of                               [131, 132, 133, 134, 135, 136,
+Page    8: Tiltwing        3       two rotors mounted on wings, one tail propeller                             [151, 152, 153, 154, 155, 156]
+Page    8: 5       four rotors mounted on wings, one tail propeller                            [172, 173, 174, 175]
+Page    9: rotors for flight-mode transition. This way, the thrust direction can be rotated up for VTOL mode and be
+Page    9: rotated forward for horizontal acceleration [176]. A two- and four-rotor design are shown in Fig. 3. A major
+Page    9: mechanical complexity, four rotor variants balance some of these disadvantages, although cruise flight is still
+Page    9: inefficient due to the increased number of propellers. At low-speeds however, tiltrotor aircraft benefit from
+Page    9: (a) Two-rotor design [105]                                           (b) Four-rotor design [75]
+Page    9: Figure 3: Examples of tiltrotor UAVs
+Page    9: In tiltwing aircraft, the rotors are rigidly attached to the wings and the entire wing rotates, while the
+Page    9: fuselage mostly remains horizontal during flight. Similar to tiltrotor UAVs, the wing-tilting capabilities are
+Page    9: examples of designs with three and four rotors, respectively.
+Page    9: (a) Three-rotor design [152, 123]                                      (b) Four-rotor design [159]
+Page   10: Tailsitter                   Tiltrotor                         Tiltwing
+Page   10: • an actuation necessary for the vertical take-off and landing maneuvers, inspired by (multi-rotor) heli-
+Page   10: rotor helicopters [181, 182], as well as modeling of FW aircraft [183, 184, 185, 186, 187, 188], to name
+Page   11: As mentioned in Section 2, propeller-wing interaction is also an important phenomenon in tiltrotor aircraft
+Page   11: [177]. Wing download and similar aerodynamic effects related to propeller-induced airstream for tiltrotor
+Page   11: drag coefficients over the whole range of AoA for tiltrotor platforms are derived in [134]. Apart from the
+Page   11: Section 3.2 for tailsitter, tiltrotor and tiltwing UAV respectively to highlight fundamental differences and sim-
+Page   11: propellers/rotors/thrusters systems is denoted as FBr and ΓBr , respectively. Similarly, FBa and ΓBa describe the
+Page   12: with thrust coefficient cT and rotor spinning rates ωi . This means that the direction of FBr is purely imposed
+Page   13: with torque coefficient cQ and where l is the z- and y-axis distance from G to the rotors’ center. Aerodynamic
+Page   13: peller down-wash, the effectiveness strongly depends on the corresponding rotor spinning rate. Although this
+Page   13: 3.2.2. Tiltrotor Aircraft
+Page   13: Figure 6: Left: tiltrotor in helicopter mode, propellers tilted by χ = 0 [rad]. Right: fixed-wing mode, propellers tilted by χ = π2 [rad].
+Page   13: In the case of a tiltrotor aircraft, such as the one shown in Fig. 6, the total propelling force vector FBr is not
+Page   14: Depending on the specific construction of the tiltrotor vehicle, different types of aerodynamic surfaces are
+Page   14: function of the wing-tilt angle χ, similar to tiltrotor aircraft (10):
+Page   14: tiltrotors (11) but additionally change based on the current wing-tilt angle:
+Page   14: The current wing-tilt angle also affects differential thrust torque generation, same as for tiltrotor vehicles (12):
+Page   14: neuverability at low velocities. This means that the effectiveness is primarily dependent on the rotor speed,
+Page   15: airplane and the four propellers of a multirotor system have much less endurance than that of a FW concept
+Page   15: lift contributions from rotors and wings are combined during the transition maneuvers. Potential limitations
+Page   17: 4.2. Tiltrotor Aircraft
+Page   17: It is a common method to directly determine the possible operating range and flight envelope of tiltrotor
+Page   17: UAVs based on the trim-point analysis [207]. For tiltrotor UAVs, stable flight conditions can be evaluated
+Page   17: at trim-points scheduled in the velocity − rotor-tilt angle domain [217, 119] such as shown in Fig. 10. The
+Page   17: analysis. For example, the transition trajectory can be generated based on rotor-tilt angle patterns apriori
+Page   17: specified by the user. This method uses either a number of rotor-tilt-angle step inputs as in [130, 220, 122] or
+Page   17: a linear reference for the rotor-tilt angle as in [104, 218] to schedule the trim-points. Depending on the desired
+Page   17: rotor-tilt angle, the corresponding steady-state values are loaded and used as references in the controller. To
+Page   17: state values for any rotor-tilt angle. Another trajectory generation method relies on velocity inputs being
+Page   17: can then be obtained from trim-points, similar to the rotor-tilt-angle based methods.
+Page   18: Figure 10: Tiltrotor UAV flight envelope. Rotor-tilt angle as a function of airspeed. [58, 144, 147]
+Page   18: Alternatively, the paper by [142] presents a completely trim-point-free approach, where the rotor-tilt angle and
+Page   18: Figure 11: Tiltrotor transitioning from hover to cruise mode. The airspeed is Va , the wing-lift force is F L , the drag force is F D , the
+Page   19: Similarly to tiltrotor aircraft, the feasible flight states of tiltwing vehicles are often determined from a trim-
+Page   19: similar to tiltrotor vehicles.
+Page   19: values with a thrust-vector-alignment command. As for tiltrotor vehicles, the inherent overactuation allows
+Page   19: 146] for a tiltrotor vehicle, to obtain optimal thrust, attitude and wing-tilt angle commands.
+Page   20: (only for tiltrotor and tiltwing vehicles) to compute the actuator commands for the hybrid UAV.
+Page   21: tiltrotor and tiltwing hybrid UAVs is not modified by the controller itself but rather loaded from the trim-point
+Page   22: 5.1.3. Tiltrotor
+Page   22: It has been shown in Section 4.2 that the trajectory generation of tiltrotor UAVs is strongly based on trim
+Page   22: methodologies. Using rotor-tilt angles or airspeed as scheduling variables, this approach has for example
+Page   22: As for tailsitters, the P/PD/PID control law shown in equation (19) is a well established choice for tiltrotor
+Page   22: are also widely used. Here, the Bryson’s rule is presented for a tiltrotor UAV as an example of a tuning method
+Page   23: Just like with tiltrotor vehicles, tiltwing controllers rely on a set of trim points (see Section 4.3) in the
+Page   24: total thrust command T cmd , as well as tilt angle χcmd (only for tiltrotor and tiltwing vehicles) and attitude values RB
+Page   24: map only for tiltrotor and tiltwing hybrid UAVs limits the capabilities of these vehicles.
+Page   24: combines the tilt angle and attitude reference computation for thrust vector alignment in tiltrotor and tiltwing
+Page   26: 5.2.2. Tiltrotor
+Page   26: An initial approach for tiltrotor UAV control was using conservatively tuned Robust Control. As a ref-
+Page   27: Nonlinear Model Predictive Control (NMPC) for full envelope tiltrotor UAV control [143, 146, 147]. NMPC is
+Page   27: Similar to tiltrotor vehicles, a recent work investigates the use of NMPC for autonomous tiltwing control
+Page   28: Table 6: Tiltrotor control methods
+Page   29: Tiltrotor          Equivalent Disturbance                                  Neural Networks                          [236, 102, 135, 89, 112, 124]
+Page   29: T cmd,RW , T cmd,FW and reference attitudes RI cmd,RW , RI cmd,FW     for thrust vector   total thrust T cmd , rotor-tilt angle χcmd and attitude RI cmd commands which yields
+Page   29: alignment each. As usual for scheduled control approaches, the rotor-tilt angle           the desired trade-off between tracking performance and efficiency. A simplified
+Page   29: alignment. Instead, the scheduling policy continuously adapts the rotor-tilt angle        real-time online deployment. Since the tilt angle and attitude are computed online
+Page   29: the tiltrotor vehicle shown in Fig. 6 has been developed, based on the detailed vehicle model derived in [134].
+Page   29: Due to the inherent linearization and statically-determined rotor-tilt angle commands of scheduled control
+Page   30: dependent mapping of the rotor-tilt angle in the FPID control approach has the main drawback that, as long as
+Page   30: the airspeed remains high, the rotors are not commanded to tilt back to the RW configuration. This results in
+Page   31: Tailsitter        Synchronous Rotor Thrust                       vertical         -                       horizontal         -
+Page   31: Differential Rotor Thrust                     lateral        yaw                         lateral        yaw
+Page   31: Tiltrotor         Synchronous Rotor Thrust                       vertical         -                       horizontal         -
+Page   31: Differential Rotor Thrust                     lateral         roll                       lateral        yaw
+Page   31: Tiltwing          Synchronous Rotor Thrust                       vertical         -                       horizontal         -
+Page   31: Differential Rotor Thrust                     lateral         roll                       lateral        yaw
+Page   31: the available actuators of the flying vehicle. The redundancies between rotors, tilt angles and aerodynamic
+Page   31: 6.1.1. Control Allocation for Tailsitter with Rotors, no Elevon
+Page   31: Similar to conventional multicopters, the individual rotor speeds can be statically mapped to virtual body
+Page   31: forces and moments, as has been done in [76, 77, 91, 80, 95, 82, 83, 92, 94, 93]. If the rotors are mounted
+Page   31: with thrust and drag coefficients cF , c M and moment arm l. Further, the individual rotor speeds are denoted
+Page   32: Figure 23: Tailsitter with four rotors, no elevon [78]
+Page   32: 6.1.2. Control Allocation for Tailsitter with Rotors and Elevons
+Page   32: rotors and the elevons. This way, one can account for the changing control authority and ensure efficient
+Page   32: VTOL operation on the other hand, the vehicle can reconfigure itself into a compact multi-rotor-like airframe.
+Page   32: A nonlinear mixer module is used to distribute the control actions between rotor speeds, control surface
+Page   33: Figure 24: Tailsitter simultaneous rotor and elevon allocation example [57]
+Page   33: 6.2. Control Allocation for Tiltrotor Aircraft
+Page   33: Numerous works have shown how effects of the rotor-tilt angles, rotor speeds and control-surface actuators
+Page   33: moments generated by the flight controllers to actual actuator control signals. In the case of tiltrotor aircraft,
+Page   33: the actuation is provided by rotor speeds, control surfaces and rotor tilting.
+Page   33: Control allocation for tiltrotor VTOL UAVs can be divided into the two main approaches found in the
+Page   33: literature. In the first approach, if there are enough DoF, the rotor-tilt angles can be ignored in the allocation
+Page   33: procedure, meaning that only rotor thrust and control-surface deflections are used for stabilization. The second
+Page   33: approach exploits explicitly the rotor-tilt angle as part of the control allocation algorithm. Both approaches
+Page   33: 6.2.1. Approach 1: Allocation Excluding Rotor-tilt Angle
+Page   33: This approach can only be pursued if the rotors provide sufficient thrust to control the vehicle in the VTOL
+Page   33: mode. This is the case for a four-rotor vehicle as shown in Fig. 6 or a tri-copter with laterally tiltable-tail
+Page   33: The work in [117] allocates rotor speeds and elevon deflections using a model-inversion approach to track the
+Page   33: distributes the torque control actions between differential rotor thrust and control-surface deflection, based on
+Page   34: differential rotor-tilt angle is used to generate a motion around the thrust axis, resulting in an efficient way
+Page   34: 6.2.2. Approach 2: Allocation Including Rotor-tilt Angle
+Page   34: If the vehicle can not be stabilized in VTOL mode by exclusively changing the rotor speeds, the tilt angles
+Page   34: Three-rotor Tilting UAVs with rigidly-mounted tail rotor as shown in Fig. 27 often use the tilt angles to
+Page   34: achieve longitudinal force generation by tilting the rotors, rather than pitching the vehicle.
+Page   34: Two-rotor Tilting Aircraft suffer from the same lack of controllability and also require propeller tilt angle
+Page   34: In cruise mode, the rotor-tilt angles can be neglected in the allocation, since the combination of rotor speed
+Page   34: During transition maneuvers however, tilt angle, rotor speed and surface deflection are often all mixed together,
+Page   34: 6.2.3. Direct Control Allocation for Tiltrotor UAVs
+Page   35: Figure 27: Yaw motion for three-rotor UAV with rigidly mounted tail rotor[116]
+Page   35: angle, the rotors’ speed and the control-surface angles are directly provided by the controller, and no further
+Page   35: Similarly to tiltrotor vehicles, tiltwing-UAV actuator commands are a combination of feedback stabi-
+Page   35: Thus, feedback stabilization can be achieved in all flight conditions using rotor-speed commands only and
+Page   35: is provided by the four strategically-placed rotor-wing assemblies (similar to the prototype shown in Fig. 4b)
+Page   35: . A state-dependent matrix inversion is used to determine the individual rotor speeds from given desired body
+Page   35: The approach presented in [158, 163] distributes the control action between the rotors and aerodynamic-
+Page   35: lines, [166] uses a model-inversion-based method to obtain rotor speed and flaps commands. Finally, [154]
+Page   35: Similar to the case with tiltrotor vehicles, automatic allocation is commonly used when a linearized model
+Page   35: tilting-rotors, and 3) tiltwing vehicles. Each class displays inherent advantages and drawbacks over the others,
+Page   36: surface exposed to side winds. On the other hand, the tiltrotor and tiltwing configurations require complex
+Page   36: tilting actuation to achieve transition between flight modes. While tiltrotor hybrid UAV are generally less
+Page   37: [14] Aviation Week Network, Sikorsky’s Rotor Blown Wing – Look Familiar? (2013).
+Page   37: URL https://aviationweek.com/sikorskys-rotor-blown-wing-look-familiar
+Page   37: [15] Darren Quick, Israel Aerospace Industries unveils tilt-rotor Panther UAV platform (2010).
+Page   37: URL https://newatlas.com/tilt-rotor-panther-uav/16619/
+Page   39: [51] S. Zhang, Q. Fei, J. Liang, Q. Geng, Modeling and control for longitudinal attitude of a twin-rotor tail-sitter unmanned
+Page   39: [58] J. Zhong, B. Song, Y. Li, J. Xuan, L1 adaptive control of a dual-rotor tail-sitter unmanned aerial vehicle with input constraints
+Page   39: [63] J. Escareño, S. Salazar-Cruz, R. Lozano, Attitude stabilization of a convertible mini birotor, in: 2006 IEEE Conference
+Page   40: [72] X. Lyu, H. Gu, J. Zhou, Z. Li, S. Shen, F. Zhang, A hierarchical control approach for a quadrotor tail-sitter VTOL UAV and
+Page   40: [73] X. Lyu, H. Gu, Y. Wang, Z. Li, S. Shen, F. Zhang, Design and implementation of a quadrotor tail-sitter VTOL UAV, in: 2017
+Page   40: [74] X. Lyu, J. Zhou, H. Gu, Z. Li, S. Shen, F. Zhang, Disturbance observer based hovering control of quadrotor tail-sitter VTOL
+Page   40: [76] A. Oosedo, S. Abiko, A. Konno, T. Koizumi, T. Furui, M. Uchiyama, Development of a quad rotor tail-sitter VTOL UAV
+Page   40: [80] J. Zhou, X. Lyu, Z. Li, S. Shen, F. Zhang, A unified control method for quadrotor tail-sitter UAVs in all flight modes: hover,
+Page   41: [84] W. Xu, H. Gu, Y. Qing, J. Lin, F. Zhang, Full attitude control of an efficient quadrotor tail-sitter VTOL UAV with flexible
+Page   41: [88] Y. Wang, X. Lyu, H. Gu, S. Shen, Z. Li, F. Zhang, Design, implementation and verification of a quadrotor tail-sitter VTOL
+Page   41: Biplane-Quadrotor Tailsitter UAS, in: 2020 IEEE International Conference on Robotics and Automation (ICRA), 2020, pp.
+Page   41: [96] R. T. Rysdyk, A. J. Calise, Adaptive model inversion flight control for tilt-rotor aircraft, Journal of Guidance, Control, and
+Page   41: [97] R. T. Rysdyk, A. J. Calise, Adaptive nonlinear control for tiltrotor aircraft, in: Proceedings of the 1998 IEEE International
+Page   41: [98] R. K. Mehra, R. K. Prasanth, S. Gopalaswamy, XV-15 tiltrotor flight control system design using model predictive control,
+Page   41: [99] Jang-Ho Lee, Byoung-Mun Min, Eung-Tai Kim, Autopilot design of tilt-rotor UAV using particle swarm optimization
+Page   41: [100] S. Yanguo, W. Huanjin, Design of flight control system for a small unmanned tilt rotor aircraft, Chinese Journal of Aeronau-
+Page   41: of tilt-rotor aircraft, in: 2010 IEEE Conference on Robotics, Automation and Mechatronics, 2010, pp. 118–123. doi:
+Page   41: [102] B.-M. Kim, B. Kim, N. Kim, Trajectory tracking controller design using neural networks for a tiltrotor unmanned aerial
+Page   42: [103] J. T. VanderMey, A tilt rotor UAV for long endurance operations in remote environments, Master’s thesis, Massachusetts
+Page   42: [104] X. Fang, Q. Lin, Y. Wang, L. Zheng, Control strategy design for the transitional mode of tiltrotor UAV, in: IEEE 10th
+Page   42: [105] S. Park, J. Bae, Y. Kim, S. Kim, Fault tolerant flight control system for the tilt-rotor UAV, Journal of the Franklin Institute
+Page   42: [106] R. G. Hernández-Garcı́a, H. Rodrı́guez-Cortés, Transition flight control of a cyclic tiltrotor UAV based on the gain-scheduling
+Page   42: [107] S. Song, W. Wang, K. Lu, L. Sun, Nonlinear attitude control using extended state observer for tilt-rotor aircraft, in: The 27th
+Page   42: [108] K. Lu, C. Liu, Z. Wang, W. Wang, Modeling and control of tilt-rotor aircraft, in: 2016 Chinese Control and Decision
+Page   42: [109] H. Lin, R. Fu, J. Zeng, Extended state observer based sliding mode control for a tilt rotor UAV, in: 2017 36th Chinese Control
+Page   42: [110] Z. Pan, C. Chi, J. Zhang, Nonlinear attitude control of tiltrotor aircraft in helicopter mode based on ADRSM theory, in: 2018
+Page   42: [111] D. N. Cardoso, S. Esteban, G. V. Raffo, A nonlinear W∞ controller of a tilt-rotor UAV for trajectory tracking, in: 2019 18th
+Page   42: [112] Y. Kang, N. Kim, B. Kim, M.-J. Tahk, Autopilot design for tilt-rotor unmanned aerial vehicle with nacelle mounted wing
+Page   42: [113] D. A. Ta, I. Fantoni, R. Lozano, Modeling and control of a tilt tri-rotor airplane, in: 2012 American Control Conference
+Page   42: [115] C. Chao, S. Lincheng, Z. Daibing, Z. Jiyang, Mathematical modeling and control of a tiltrotor UAV, in: 2016 IEEE Interna-
+Page   42: [116] L. Yu, D. Zhang, J. Zhang, C. Pan, Modeling and attitude control of a tilt tri-rotor UAV, in: 2017 36th Chinese Control
+Page   42: [117] L. Yu, D. Zhang, J. Zhang, Transition flight modeling and control of a novel tilt tri-rotor UAV, in: 2017 IEEE International
+Page   42: [118] J. A. Bautista, A. Osorio, R. Lozano, Modeling and analysis of a tricopter/flying-wing convertible UAV with tilt-rotors, in:
+Page   42: [119] M. Umer, S. M. A. Kazmi, S. M. H. Askari, D. I. A. Rana, Design and modeling of VTOL tri tilt-rotor aircraft, in: 2018
+Page   42: [121] L. Yu, G. He, S. Zhao, X. Wang, Dynamic inversion-based sliding mode control of a tilt tri-rotor UAV, in: 2019 12th Asian
+Page   42: tilting rotor aerial vehicle, in: 2019 3rd International conference on Electronics, Communication and Aerospace Technology
+Page   43: [124] J. Tavoosi, Hybrid intelligent adaptive controller for tiltrotor uav, International Journal of Intelligent Unamnned Systems
+Page   43: Tilt Tri-Rotor UAV, IFAC-PapersOnLine 48 (2015) 162–167. doi:10.1016/j.ifacol.2015.08.077.
+Page   43: [126] C. Papachristos, K. Alexis, A. Tzes, Towards a high-end unmanned tri-tiltrotor: design, modeling and hover control, in: 2012
+Page   43: [127] C. Papachristos, A. Tzes, Modeling and control simulation of an unmanned tilt tri-rotor aerial vehicle, in: 2012 IEEE Inter-
+Page   43: [128] C. Papachristos, K. Alexis, A. Tzes, Linear quadratic optimal position control for an unmanned tri-tiltrotor, in: 2013 Interna-
+Page   43: [129] C. Papachristos, K. Alexis, A. Tzes, Model predictive hovering-translation control of an unmanned tri-tiltrotor, in: 2013
+Page   43: [131] G. R. Flores Colunga, J. A. Escareño, R. Lozano, S. Salazar, Four tilting rotor convertible MAV: Modeling and
+Page   43: [132] G. Flores, J. Escareno, R. Lozano, S. Salazar, Quad-tilting rotor convertible MAV: modeling and real-time hover flight
+Page   43: [133] G. Flores, R. Lozano, Transition flight control of the quad-tilting rotor convertible MAV, in: 2013 International Conference
+Page   43: rotor UAV, in: Proceedings of the 33rd Chinese Control Conference, 2014, pp. 2052–2057. doi:10.1109/ChiCC.2014.
+Page   43: [136] G. Flores, I. Lugo, R. Lozano, 6-DOF hovering controller design of the quad tiltrotor aircraft: Simulations and experiments,
+Page   43: [137] G. R. Flores-Colunga, R. Lozano-Leal, A nonlinear control law for hover to level flight for the quad tilt-rotor UAV,
+Page   43: [138] E. Cetinsoy, Design and control of a gas-electric hybrid quad tilt-rotor UAV with morphing wing, in: 2015 International
+Page   43: [139] C. Chen, L. Shen, D. Zhang, J. Zhang, Identification and control of a hovering tiltrotor UAV, in: 2016 12th World Congress
+Page   43: [140] Z. Liu, D. Theilliol, L. Yang, Y. He, J. Han, Transition control of tilt rotor unmanned aerial vehicle based on multi-model
+Page   43: varying parameters under sensor faults for quad-tilt rotor unmanned aerial vehicle, Aerospace Science and Technology 92
+Page   44: [143] M. Allenspach, G. J. J. Ducard, Model predictive control of a convertible tiltrotor unmanned aerial vehicle, in: 2020
+Page   44: [144] L. Bauersfeld, G. Ducard, Fused-pid control for tilt-rotor vtol aircraft, in: 2020 28th Mediterranean Conference on Control
+Page   44: [147] L. Bauersfeld, L. Spannagl, G. Ducard, C. Onder, MPC Flight Control for a Tilt-rotor VTOL Aircraft, IEEE Transactions on
+Page   44: [149] D. Shen, Q. Lu, M. Hu, Z. Kong, Mathematical modeling and control of the quad tilt-rotor UAV, in: 2018 IEEE 8th Annual
+Page   44: [150] Y. Yin, H. Niu, X. Liu, Adaptive neural network sliding mode control for quad tilt rotor aircraft, Complexity 2017 (2017)
+Page   44: [157] K. T. Oner, E. Cetinsoy, M. Unel, M. F. Aksit, I. Kandemir, K. Gulez, Dynamic model and control of a new quadrotor
+Page   44: of quad rotors QTW-UAV with tilt wing mechanism, Journal of System Design and Dynamics 4 (3) (2010) 416–428. doi:
+Page   44: [161] C. Hancer, K. T. Oner, E. Sirimoglu, E. Cetinsoy, M. Unel, Robust position control of a tilt-wing quadrotor, in: 49th IEEE
+Page   45: conversion for a tilt-wing rotorcraft, in: Proceedings of the 44th IEEE Conference on Decision and Control, 2005, pp.
+Page   45: for a tilt-wing rotorcraft, in: Proceedings of the 45th IEEE Conference on Decision and Control, 2006, pp. 5882–5887.
+Page   45: tilt-wing rotorcraft in the presence of CG variations, in: Proceedings of the 46th IEEE Conference on Decision and Control,
+Page   45: [177] H. Yeo, W. Johnson, Performance and design investigation of heavy lift tilt-rotor with aerodynamic interference effects,
+Page   45: [178] L. Kingston, J. DeTore, Tilt rotor v/stol aircraft technology, in: Second European Rotorcraft and Powered Lift Aircraft Forum,
+Page   45: [182] S. Bouabdallah, Design and Control of Quadrotors with Application to Autonomous Flying, Ph.D. thesis, EPF Lausanne
+Page   46: tilt-rotor quadplane configurations, Aerospace Science and Technology 94 (2019) 105421. doi:10.1016/j.ast.2019.
+Page   46: [194] S. Darvishpoor, J. Roshanian, M. Tayefi, A novel concept of vtol bi-rotor uav based on moving mass control, Aerospace
+Page   46: considering wind disturbance rejection capability in the quadrotor mode, Aerospace Science and Technology 110 (2021)
+Page   46: [200] B. Theys, G. Dimitriadis, P. Hendrick, Influence of propeller configuration on propulsion system efficiency of multi-rotor
+Page   47: [207] Z. Liu, Y. He, L. Yang, J. Han, Control techniques of tilt rotor unmanned aerial vehicle systems: A review, Chinese Journal
+Page   47: [210] S. Omari, M.-D. Hua, G. Ducard, T. Hamel, Hardware and Software Architecture for Nonlinear Control of Multirotor Heli-
+Page   47: [217] P. Huangzhong, Z. Ziyang, G. Chen, Tiltrotor aircraft attitude control in conversion mode based on optimal preview control,
+Page   47: [218] J. Sun, J. Yang, X. Zhu, Robust flight control law development for tiltrotor conversion, in: 2009 International Conference on
+Page   47: [219] W. Zhao, C. Underwood, Robust transition control of a martian coaxial tiltrotor aerobot, Acta Astronautica 99 (2014) 111–
+Page   47: [220] Z. Sun, R. Wang, W. Zhou, Finite-time stabilization control for the flight mode transition of tiltrotors based on switching
+Page   47: [222] Dai Chao, Bai Huihui, Zeng Jianping, Nonlinear stabilization control of tilt rotor UAV during transition flight based on
+Page   47: small scaled tilt rotor aircraft, in: 2008 International Conference on Control, Automation and Systems, 2008, pp. 47–51.
+Page   48: [227] Cakici, Modeling, stability analysis and control system design of a small-sized tiltrotor UAV, Master’s thesis, Middle East
+Page   48: [228] X. P. Zhu, Y. H. Fan, J. Yang, Design of tiltrotor flight control system using fuzzy sliding mode control, in: 2010 International
+Page   48: [236] Changjie Yu, Jihong Zhu, Zengqi Sun, Nonlinear adaptive internal model control using neural networks for tilt rotor aircraft
+Page   48: [238] X. Yang, L. Dong, W. Liaoni, S. Yangyang, Design and implementation of twin-rotor tail-sitter UAV, in: 2015 IEEE
+Page   48: [240] Y. Nakamura, A. Arakawa, K. Watanabe, I. Nagai, Transitional flight simulations for a tilted quadrotor with a fixed-wing,
+Page   48: [241] F. Cakici, K. Leblebicioglu, Modeling and simulation of a small-sized tiltrotor UAV, The Journal of Defense Modeling and
+Page   48: tilt-rotor vertical takeoff and landing aircraft, in: 2019 International Conference on Robotics and Automation (ICRA), 2019,
+Page   48: [244] G. Francesco, E. D´Amato, M. Mattei, INDI Control with Direct Lift for a Tilt Rotor UAV, IFAC-PapersOnLine 48 (2015)
+Page   48: [247] J. Apkarian, Attitude control of pitch-decoupled VTOL fixed wing tiltrotor, in: 2018 International Conference on Unmanned
+Page   49: [248] R. Takeuchi, K. Watanabe, I. Nagai, Development and control of tilt-wings for a tilt-type quadrotor, in: 2017 IEEE Interna-

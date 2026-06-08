@@ -1,0 +1,24 @@
+Key ArduPilot VTOL Source Files
+================================
+
+Core QuadPlane / VTOL implementation:
+  ardupilot/ArduPlane/quadplane.cpp          -- Main QuadPlane logic, transition control, motor mixing
+  ardupilot/ArduPlane/quadplane.h            -- QuadPlane class definition and configuration
+  ardupilot/ArduPlane/transition.h           -- Transition state machine interface
+
+VTOL Assist (emergency VTOL recovery):
+  ardupilot/ArduPlane/VTOL_Assist.h
+  ardupilot/ArduPlane/VTOL_Assist.cpp
+
+Scripting / automation:
+  ardupilot/libraries/AP_Scripting/examples/fw_vtol_failsafe.lua
+  ardupilot/libraries/AP_Scripting/applets/VTOL-quicktune.lua
+  ardupilot/libraries/AP_Scripting/applets/VTOL-quicktune.md
+
+Frame parameters (real-world tuning references):
+  ardupilot/Tools/Frame_params/QuadPlanes/MFD_Crosswind_VTOL.param
+
+Automated test missions:
+  ardupilot/Tools/autotest/ArduPlane_Tests/VTOLLandSpiral
+  ardupilot/Tools/autotest/Generic_Missions/KSFO-VTOL.txt
+  ardupilot/Tools/autotest/Generic_Missions/CMAC-VTOL-ccw.txt

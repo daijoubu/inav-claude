@@ -1,0 +1,132 @@
+Keyword: controller
+Occurrences: 128
+================================================================================
+
+[multimode-trans] Page   18: 10.   Pakro, F.; Nikkhah, A.A. A vision-aided fuzzy adaptive sliding mode controller for autonomous landing of a nonlinear model
+[multimode-trans] Page   19: 23.   Kim, B.M.; Kim, B.S.; Kim, N.W. Trajectory tracking controller design using neural networks for a tiltrotor unmanned aerial
+[multimode-trans] Page   19: 33.   Jung, Y.; Shim, D.H. Development and Application of Controller for Transition Flight of Tail-Sitter UAV. J. Intell. Robot. Syst.
+[hybrid-review  ] Page    2: current trends in the field are highlighted. These are namely: 1) augmenting or replacing classical controllers
+[hybrid-review  ] Page    2: with data-driven methods such as neural networks and machine-learning-based controllers; 2) incorporating
+[hybrid-review  ] Page    2: as much knowledge of the vehicle as possible into the flight controller, for example through model predictive
+[hybrid-review  ] Page    2: control or model-based nonlinear controllers; 3) a trend towards finding a unified-control approach valid in
+[hybrid-review  ] Page    2: all flight modes without the need to switch among flight controllers or to perform predefined-gain scheduling,
+[hybrid-review  ] Page    3: ➔ Switched flight controllers                whole vehicle is really needed.
+[hybrid-review  ] Page   15: learning approaches or neural-network-based controllers can be developed, as shown in detail in Section 5.
+[hybrid-review  ] Page   15: design actuator and sensor fault diagnosis systems and fault-tolerant flight controllers (FTC). Fault detec-
+[hybrid-review  ] Page   15: [187, 203, 204, 205, 206]. An example of a fault-tolerant flight controller for a hybrid tailsitter UAV can be
+[hybrid-review  ] Page   15: cruise flight. In order to fully exploit the advantages of the aircraft, the flight controllers must be able to
+[hybrid-review  ] Page   15: Thus, the controller development should be proceeded by assessing the steady-state flight envelope, i.e. the
+[hybrid-review  ] Page   16: controller design (see Section 5.1.2). Examples of how to directly obtain discrete trim points from the model
+[hybrid-review  ] Page   16: altitude-hold controllers for the translational dynamics as shown in Fig. 9. However, the resulting reference
+[hybrid-review  ] Page   16: In most controllers (see Section 5.1), attitude reference values from the trim analysis will be treated as feed-
+[hybrid-review  ] Page   17: controller, in order to compute a singularity-free and well-posed attitude error [66, 216].
+[hybrid-review  ] Page   17: rotor-tilt angle, the corresponding steady-state values are loaded and used as references in the controller. To
+[hybrid-review  ] Page   18: controllers (more details are in Section 5.1.3). Similar to tailsitter vehicles, state references from the trim
+[hybrid-review  ] Page   19: controller to be able to handle potentially large changes in AoA (in particular for tailsitter aircraft), in velocity,
+[hybrid-review  ] Page   20: sions. From a control design perspective, these methods are only useful to finely tune a controller around a
+[hybrid-review  ] Page   20: The idea of having different controllers designed for specific operating conditions is a common approach
+[hybrid-review  ] Page   20: in hybrid UAVs but requires the design of controller switching or scheduling policies as discussed in Sec-
+[hybrid-review  ] Page   20: Controller                                                                                    δ 
+[hybrid-review  ] Page   20: RBI cmd                   Controller          Allocation
+[hybrid-review  ] Page   20: rotational controller of the corresponding linearization point. The associated trim values for the thrust T trim and attitude RB
+[hybrid-review  ] Page   20: then combined with the controller commands, namely the thrust δT and the thrust vector alignment attitude δRB cmd
+[hybrid-review  ] Page   20: Mcmd from the rotational controller are fed into the control allocation, together with the total thrust T cmd and the trim tilt angle χtrim
+[hybrid-review  ] Page   20: (see Section 4) in the flight envelope and design a specifically tuned controller for each of them. In other
+[hybrid-review  ] Page   21: controller is developed for each one. As the current flight configuration changes, the appropriate control law
+[hybrid-review  ] Page   21: needs to be loaded, which is done through so-called controller-scheduling policies. The general structure of
+[hybrid-review  ] Page   21: tiltrotor and tiltwing hybrid UAVs is not modified by the controller itself but rather loaded from the trim-point
+[hybrid-review  ] Page   21: simplifies the controller synthesis and allows for the use of standard RW and FW control laws and thrust vector
+[hybrid-review  ] Page   21: 5.1.1. Controller-scheduling Policies
+[hybrid-review  ] Page   21: one controller is running at a time.
+[hybrid-review  ] Page   21: scheduled controller, based on a scheduling-variable dependent weight.
+[hybrid-review  ] Page   21: Tuning the individual controllers’ dwell time to be smaller than the parameter-variation time constant generally
+[hybrid-review  ] Page   21: controller for each flight phase, namely hover, transition and cruise phases, respectively [67]. Sometimes, the
+[hybrid-review  ] Page   21: transition controller is even omitted and one of the other two is used instead [32, 226]. On the other hand, [55]
+[hybrid-review  ] Page   21: refines the controller grid, by using a larger number of trim points along the transition trajectory. In all cases,
+[hybrid-review  ] Page   21: the correct controller is chosen depending on airspeed and pitch angle scheduling. Two scheduled controllers
+[hybrid-review  ] Page   22: very well and it is a great starting point for designing more advanced controllers. The general Proportional
+[hybrid-review  ] Page   22: guarantee Lyapunov and input-to-state stability respectively. Controller augmentation through the use of trim
+[hybrid-review  ] Page   22: controller design for the linearized system of the form ẋ = Ax + Bu. The control input u is chosen as
+[hybrid-review  ] Page   22: where Q and R are the error and input weighting matrix, respectively. While the LQR controller generally
+[hybrid-review  ] Page   22: been investigated in [106, 220]. The work in [138] reduces the number of controller switches, by using only
+[hybrid-review  ] Page   22: one controller per flight stage or even just two controllers for hover and cruise modes. Alternatively, Control
+[hybrid-review  ] Page   22: Authority Weighting has been successfully applied in multiple different occasions. In [140], the controllers
+[hybrid-review  ] Page   22: controllers [130]. In [144], the airspeed is used to modify the relative weight between two velocity controllers
+[hybrid-review  ] Page   23: Just like with tiltrotor vehicles, tiltwing controllers rely on a set of trim points (see Section 4.3) in the
+[hybrid-review  ] Page   23: and Conquer technique are shown in [154, 175]. Rather than using a large number of different controllers, the
+[hybrid-review  ] Page   23: transition flight. In [156], a standard RW and FW controller are linearly mixed depending on the reference
+[hybrid-review  ] Page   23: in [154] mentions how pitch-error dependent controller gains can be used to account for non-symmetric pitch
+[hybrid-review  ] Page   23: possible disturbance w on the performance variable z through a feedback controller of the form u = K(s)y. In
+[hybrid-review  ] Page   23: disturbance w to the error signal z. While [171] uses a so-called µ-synthesis method to obtain the controller
+[hybrid-review  ] Page   23: Controller K
+[hybrid-review  ] Page   24: Controller                                       Control
+[hybrid-review  ] Page   24: Controller             Allocation
+[hybrid-review  ] Page   24: Figure 16: Unified C control approach: Given a desired velocity reference vIre f , the translational controller directly computes the
+[hybrid-review  ] Page   24: vector alignment. Control torques Mcmd from the rotational controller are fed into the control allocation, together with the previously
+[hybrid-review  ] Page   24: required controller switching might affect the stability, in case the scheduling parameter varies quickly with
+[hybrid-review  ] Page   24: respect to the controller convergence. Finally, the restriction to use offline computed tilt angles from the trim
+[hybrid-review  ] Page   24: Thus, a trend towards unified control approaches can be observed, whereby a single controller is deployed over
+[hybrid-review  ] Page   24: the controller robust against them [207]. That being said, these works often require additional modifications in
+[hybrid-review  ] Page   24: [34, 78], it is explicitly mentioned that fixed gains in the controller are not optimal. This issue is addressed in
+[hybrid-review  ] Page   24: [36] which demonstrates the use of Direct Gain Scheduling, whereby the controller gains are scaled with an
+[hybrid-review  ] Page   25: adapts the controller according to the difference between the real and reference model [230]. A standard
+[hybrid-review  ] Page   25: line estimation allows the controller to adapt to system changes, high estimation gains might negatively affect
+[hybrid-review  ] Page   25: NN controller. In this methodology, an agent (hybrid VTOL UAV) takes an action based on its state relative
+[hybrid-review  ] Page   25: orientation. Training is conducted exclusively in simulation, and no manual tuning of the flight controller was
+[hybrid-review  ] Page   26: erence, [99] demonstrates a particle swarm optimization approach to tune the controller gains. Since this
+[hybrid-review  ] Page   26: methods [141]. Further H∞ -like controller designs are found in [111, 218].
+[hybrid-review  ] Page   26: Here, a single neuron NN continuously adapts the gains of a PID controller as shown in Fig. 19. Based on
+[hybrid-review  ] Page   26: and simplify controller tuning. While some implementations are purely model based [133, 121, 235], newer
+[hybrid-review  ] Page   26: pitch angle error eθ (k) = θd (k) − θ(k) and passed through a PID controller whose gains are adapted on line, as being the weights of
+[hybrid-review  ] Page   27: demic works which successfully cover the full flight envelope with a single controller, follow the same patterns
+[hybrid-review  ] Page   27: as introduced above. For example, [166] very well shows the controller synthesis process for a model-based
+[hybrid-review  ] Page   27: Dynamic Inversion approach with a baseline LQR controller. Adaptive parameter formulations and corre-
+[hybrid-review  ] Page   28: sentative state-of-the-art controller from each section. As a comparison platform, a high-fidelity simulator of
+[hybrid-review  ] Page   29: RW Controller                                                                                                                       T cmd
+[hybrid-review  ] Page   29: Controller Mcmd
+[hybrid-review  ] Page   29: FW Controller                                                                                                             Rotational
+[hybrid-review  ] Page   29: RBI cmd Controller Mcmd
+[hybrid-review  ] Page   29: vIre f , two independent RW and FW controllers compute total thrust commands              the underlying optimization problem continuously solves for the combination of
+[hybrid-review  ] Page   29: is considered constant in each controller and not used for improved thrust vector         version of the vehicle dynamics is used inside the NMPC formulation to allow
+[hybrid-review  ] Page   30: approaches, the FPID controller initially accelerates the vehicle by pitching down, as if it were a regular multi-
+[hybrid-review  ] Page   30: NMPC controller accelerates the vehicle only through increasing tilt angles. In addition, the fixed airspeed-
+[hybrid-review  ] Page   30: scheduled and unified controllers. While the former use static mappings (hand-crafted or trim-point based), the
+[hybrid-review  ] Page   31: The goal of control allocation is to map the virtual commands generated by the flight controller to all
+[hybrid-review  ] Page   32: commands ωc can be easily computed from the controller output uc as:
+[hybrid-review  ] Page   33: yaw commands to the rudder. This combination of controller and allocation has been used in ducted-fan or
+[hybrid-review  ] Page   33: moments generated by the flight controllers to actual actuator control signals. In the case of tiltrotor aircraft,
+[hybrid-review  ] Page   34: Besides the mentioned mappings between virtual controller outputs and actual actuator commands, there
+[hybrid-review  ] Page   34: exist structures which directly combine controller and allocation. These approaches are often encountered
+[hybrid-review  ] Page   34: when a linearized system model is used for the controller, such as with Divide and Conquer (see Section 5.1.1)
+[hybrid-review  ] Page   35: angle, the rotors’ speed and the control-surface angles are directly provided by the controller, and no further
+[hybrid-review  ] Page   35: controller, which has been demonstrated by [157, 162, 164, 168, 152, 169, 170, 248]. The main difference is
+[hybrid-review  ] Page   35: is derived for the controller synthesis. The respective controller outputs can directly be fed to the actuators,
+[hybrid-review  ] Page   36: system, 2) reference-trajectory generation during flight mode transition, 3) flight controller and 4) actuator-
+[hybrid-review  ] Page   36: trol approaches, namely 1) controller-scheduling policies, and 2) unified-control policies. In the first family of
+[hybrid-review  ] Page   36: control architectures, separate flight controllers are activated successively or blended depending on the flight
+[hybrid-review  ] Page   36: operating conditions. These controllers are based on a linearized system model at different operating points or
+[hybrid-review  ] Page   36: linear controllers throughout the flight modes. Recent investigations to augment or replace these controllers
+[hybrid-review  ] Page   36: among flight controllers. It consists in a continuous single control approach a) valid in all flight modes (VTOL,
+[hybrid-review  ] Page   36: into the flight controller, for example through highly-nonlinear control laws, model predictive control, neural
+[hybrid-review  ] Page   36: controllers, but rather they are able to capture and exploit the nonlinearities of the system and compute control
+[hybrid-review  ] Page   38: [37] S. Kohno, K. Uchiyama, Design of robust controller of fixed-wing UAV for transition flight, in: 2014 International Confer-
+[hybrid-review  ] Page   39: [44] Y. Jung, D. Shim, Development and application of controller for transition flight of tail-sitter UAV, Journal of Intelligent &
+[hybrid-review  ] Page   39: [53] R. Ritz, R. D’Andrea, A global controller for flying wing tailsitter vehicles, in: 2017 IEEE International Conference on
+[hybrid-review  ] Page   40: [75] A. Flores, A. M. de Oca, G. Flores, A simple controller for the transition maneuver of a tail-sitter drone, CoRR
+[hybrid-review  ] Page   41: [83] Z. Li, W. Zhou, H. Liu, Robust controller design for a tail-sitter UAV in flight mode transitions, in: 2018 IEEE 14th Interna-
+[hybrid-review  ] Page   41: [90] J. Xu, T. Du, M. Foshey, B. Li, B. Zhu, A. Schulz, W. Matusik, Learning to fly: computational controller design for hybrid
+[hybrid-review  ] Page   41: [92] D. Liu, H. Liu, C. Liu, B. Zhu, Z. Li, Robust optimal attitude controller design for tail-sitters, in: 2018 Annual American
+[hybrid-review  ] Page   41: [102] B.-M. Kim, B. Kim, N. Kim, Trajectory tracking controller design using neural networks for a tiltrotor unmanned aerial
+[hybrid-review  ] Page   42: [111] D. N. Cardoso, S. Esteban, G. V. Raffo, A nonlinear W∞ controller of a tilt-rotor UAV for trajectory tracking, in: 2019 18th
+[hybrid-review  ] Page   42: [114] A. S. Onen, L. Cevher, M. Senipek, T. Mutlu, O. Gungor, I. O. Uzunlar, D. F. Kurtulus, O. Tekinalp, Modeling and controller
+[hybrid-review  ] Page   43: [124] J. Tavoosi, Hybrid intelligent adaptive controller for tiltrotor uav, International Journal of Intelligent Unamnned Systems
+[hybrid-review  ] Page   43: [136] G. Flores, I. Lugo, R. Lozano, 6-DOF hovering controller design of the quad tiltrotor aircraft: Simulations and experiments,
+[hybrid-review  ] Page   44: [148] B. Li, W. Zhou, J. Sun, C.-Y. Wen, C.-K. Chen, Development of model predictive controller for a tail-sitter vtol uav in hover
+[hybrid-review  ] Page   44: [156] J. Autenrieb, H.-S. Shin, M. Bacic, Development of a neural network-based adaptive nonlinear dynamic inversion controller
+[hybrid-review  ] Page   45: [169] K. Benkhoud, S. Bouallègue, Modeling and LQG controller design for a quad tilt-wing UAV, in: 3rd International Conference
+[hybrid-review  ] Page   47: [225] G. Naus, Gain scheduling robust design and automated tuning of automotive controllers, Tech. rep., University of Technology
+[hybrid-review  ] Page   48: [226] M. Kuang, J. Zhu, W. Wang, Y. Tang, Flight controller design and demonstration of a thrust-vectored tailsitter, in: 2017 IEEE
+[hybrid-review  ] Page   48: [232] C. Cao, N. Hovakimyan, Design and analysis of a novel L1 adaptive controller, part i: control signal and asymptotic stability,
+[nasa-vstol     ] Page   30: controller       were identified.           Reference           12 is the historical        source    for this research,         and it provides
+[nasa-vstol     ] Page  195: 46. Borchers,       R F.: A Comparison             between         Classical     and Optimal         Longitudinal         Controllers      for
+[tiltrotor-sim  ] Page   15: [11] Cuav v5+ flight controller — drone autopilot px4 apm https://store.cuav.net/shop/v5-autopilot/
