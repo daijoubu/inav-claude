@@ -78,7 +78,7 @@ if [ ! -f "Makefile" ] || [ "$1" = "clean" ]; then
     # Patch cmake if needed for older linkers
     patch_cmake_if_needed
 
-    cmake -DSITL=ON ..
+    cmake -DSITL=ON -DWARNINGS_AS_ERRORS=ON ..
 fi
 
 echo "Building SITL..."
