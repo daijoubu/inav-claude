@@ -350,9 +350,9 @@ bash_rules:
     decision: allow
     message: "git push with --force-with-lease allowed - safer than --force as it prevents overwriting remote work"
 
-  - name: "Block git force push"
+  - name: "Block git force push (but allow --force-with-lease)"
     command_pattern: "^git$"
-    argument_pattern: "^(-C\\s+\\S+\\s+)?push.*force.*"
+    argument_pattern: "^(-C\\s+\\S+\\s+)?push.*--force(?!-with-lease).*"
     category: write
     decision: deny
     message: "STOP! IMPORTANT: Do NOT force push! That will break public history!"
