@@ -234,6 +234,7 @@ Ready to flash? I can hand off to the **fc-flasher** agent which will preserve y
 
 ## Important Notes
 
+- **CRITICAL: Always report errors to parent session** - If any operation fails, tool execution fails, or unexpected behavior occurs, immediately output an error message to the parent session with instructions to inform the user. Never fail silently.
 - Always work from the repository root directory as the base
 - Check if build directory needs initialization before building
 - Use parallel builds (`make -j4`) for faster compilation

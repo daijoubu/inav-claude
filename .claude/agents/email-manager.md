@@ -480,6 +480,7 @@ Internal documentation relevant to email management:
 
 ## Important Notes
 
+- **CRITICAL: Always report errors to parent session** - If any operation fails, tool execution fails, or unexpected behavior occurs, immediately output an error message to the parent session with instructions to inform the user. Never fail silently.
 - **Never delete messages** - Always move to inbox-archive, never delete
 - **One topic per message** - Easier to track and archive
 - **Use consistent file naming** - Maintains organization and searchability

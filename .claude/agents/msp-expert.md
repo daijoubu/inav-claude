@@ -239,6 +239,15 @@ Always include in your response:
 
 ---
 
+## Important Notes
+
+- **CRITICAL: Always report errors to parent session** - If any operation fails, tool execution fails, or unexpected behavior occurs, immediately output an error message to the parent session with instructions to inform the user. Never fail silently.
+- MSP message codes may differ between V1 and V2 protocols
+- Always verify in the schema before making assumptions about field order
+- The mspapi2 library requires the schema JSON to be in sync with firmware
+
+---
+
 ## Related Documentation
 
 **mspapi2 guides:**

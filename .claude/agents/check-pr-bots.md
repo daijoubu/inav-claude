@@ -285,6 +285,7 @@ Suggestions:
 
 ## Important Notes
 
+- **CRITICAL: Always report errors to parent session** - If any operation fails, tool execution fails, or unexpected behavior occurs, immediately output an error message to the parent session with instructions to inform the user. Never fail silently.
 - Always use GitHub API endpoints directly, NEVER `gh pr view --comments`
 - GraphQL Projects API is deprecated and causes errors
 - Sandbox may need to be disabled for network access to GitHub

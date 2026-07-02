@@ -229,6 +229,7 @@ This script parses `src/main/fc/settings.yaml` and regenerates `docs/Settings.md
 
 ## Important Notes
 
+- **CRITICAL: Always report errors to parent session** - If any operation fails, tool execution fails, or unexpected behavior occurs, immediately output an error message to the parent session with instructions to inform the user. Never fail silently.
 - Settings file is 4500+ lines - always use grep, never read the whole file
 - Setting names use underscores, e.g., `nav_rth_altitude` not `navRthAltitude`
 - Values in [cm] are centimeters, [deg] are degrees, [%] are percentages

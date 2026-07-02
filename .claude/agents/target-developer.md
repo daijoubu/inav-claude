@@ -195,6 +195,7 @@ Structure responses like this:
 
 ## Important Notes
 
+- **CRITICAL: Always report errors to parent session** - If any operation fails, tool execution fails, or unexpected behavior occurs, immediately output an error message to the parent session with instructions to inform the user. Never fail silently.
 1. **Never build directly** - Always delegate to inav-builder agent
 2. **Always search git history** - Real fixes are better than guessing
 3. **Provide commit hashes** - Users can examine full context
@@ -223,6 +224,8 @@ When you discover better ways to diagnose or fix target issues, patterns in git 
 - **AT32 UART driver requires TX pin defined even for RX-only ports**: Define `UART7_TX_PIN NONE` (not just omitting it) when a UART is used receive-only. `DEFIO_TAG__NONE` is 0 in io_def.h and is valid. Omitting the define causes a compile error: `'DEFIO_TAG__UART7_TX_PIN' undeclared`.
 - **Legacy USE_IMU_xxx driver path does NOT use GYRO_1_EXTI_PIN**: Only targets using `BUSDEV_REGISTER_SPI_TAG` in target.c pass an EXTI pin. For targets using `USE_IMU_BMI270` / `BMI270_SPI_BUS` / `BMI270_CS_PIN` style defines, the gyro interrupt pin is unused by firmware — gyro is polled. Do not add `USE_GYRO_EXTI` or `GYRO_1_EXTI_PIN` to these targets.
 - **DMA resolver library is usable directly via Node.js scripts**: `raytools/dma_resolver/` is an ES module library. To run analysis scripts: add `{"type":"module"}` as `package.json` in that directory, then `node analyze_target.mjs`. Use `dmaMapAT32F435` directly from `dma_maps.js` rather than `findSolution()` for simple per-target analysis. AT32F435 with DMAMUX: every timer channel lists all 14 channels as valid — conflict analysis reduces to counting total DMA users vs 14 available.
+- **Schematic-driven target creation workflow documented**: See `claude/developer/docs/targets/reading-schematics.md` for the full checklist (pin-map extraction from KiCad s-expressions, cross-sheet net matching by label name, distinguishing populated chips from bare test pads, H7 DMAMUX vs F4/F7 fixed-DMA analysis, and verifying preliminary/manager scans against raw schematic text rather than trusting them).
+- **H7 dma_maps.js (resolver tool) can be wrong about individual channel DMA availability**: For ground truth on STM32H7, check `inav/src/main/drivers/timer_def_stm32h7xx.h` directly. Example: TIM4_CH4 has no DMAMUX request line on real silicon (`DMA_REQUEST_TIM4_CH4` doesn't exist) even though dma_maps.js lists DMA1 stream options for it. INAV works around this via `USE_DSHOT_DMAR` (repoints CH4 at the TIM4_UP burst request) — but this is a global, board-wide switch that moves *every* DSHOT motor from per-channel DMA to per-timer burst DMA, not a per-channel opt-in; enabling it to fix one channel requires re-testing all motor outputs. Some channels (e.g. TIM15_CH2) have no DMAR workaround at all and are permanently PWM-only — check the `#ifdef USE_DSHOT_DMAR` branches in timer_def_stm32h7xx.h to tell the two cases apart.
 <!-- Add new lessons above this line -->
 - **Initial creation**: Agent focuses on configuration analysis, delegates builds to inav-builder
 - **Git history is gold**: Most target issues have been solved before, search thoroughly

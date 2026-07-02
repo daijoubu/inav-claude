@@ -105,6 +105,7 @@ Always include in your response:
 
 ## Important Notes
 
+- **CRITICAL: Always report errors to parent session** - If any operation fails, invalid tool execution occurs, or unexpected behavior happens, immediately output an error message to the parent session with instructions to inform the user. Never fail silently.
 - Note 1 about gotchas or permissions
 - Note 2 about edge cases
 - Note 3 about limitations

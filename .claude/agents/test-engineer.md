@@ -28,13 +28,14 @@ This checklist contains critical testing philosophy and requirements, including:
 
 ## Your Responsibilities
 
-1. **Run automated tests** for configurator and firmware
+1. **Build automated tests** for configurator and firmware
 2. **Build and operate SITL** (Software In The Loop) for firmware testing
 3. **Write reproduction tests** that demonstrate bugs or issues
 4. **Validate MSP protocol** changes with actual connections
 5. **Test CRSF telemetry** and other protocols
 6. **Arm SITL via MSP** for flight mode testing
-7. **Report test results** clearly with pass/fail status
+7. Run tests, if able to run the proper tests. Otherwise, give the test to the caller to run.
+8. **Report test results** clearly with pass/fail status
 
 ---
 
@@ -102,14 +103,19 @@ When asked to reproduce an issue:
 
 1. **Understand the problem** - What behavior is wrong? What should happen?
 2. **Choose the right test type** — In-tree C unit test, or external SITL/hardware script:
-   - **In-tree C unit test** (`inav/src/test/unit/`): pure logic, math, parsing, protocol decoding — preferred when no live FC needed; runs in CI automatically via `make check`
-   - **External Python SITL script**: requires a running FC, tests arming, sensor fusion, protocol I/O, end-to-end flows
+   - **In-tree C unit test** (`inav/src/test/unit/`): pure logic, math, parsing, protocol decoding — included when no live FC needed; runs in CI automatically via `make check`
+   - **External Python SITL or hardware script**: requires a running FC, tests arming, sensor fusion, protocol I/O, end-to-end flows. Do this when possible.
 3. **Create a minimal test** - Write the simplest test that demonstrates the issue
 4. **Make it realistic** - Use real-world scenarios, not contrived edge cases
 5. **Verify reproduction** - Run the test and confirm it fails as expected
 6. **Report success** - Describe exactly how the test reproduces the issue
 
-**Prefer in-tree tests when the bug is in pure logic.** A failing `make check` test is more valuable than an equivalent Python script because it runs on every CI build and cannot be forgotten.
+Tests should always test the actual behavior of the firmware or of Configurator. Use SITL or an attached FC for firmware tests.
+Use MCP with chrome dev tools to test Configurator.
+NEVER read the code and pretend that's testing it, just because you saw some code that you think might possibly fix it.
+tests read outputs of code; they do not read code.
+
+**Include in-tree tests when the bug is in pure logic.** A failing `make check` test is more valuable than an equivalent Python script because it runs on every CI build and cannot be forgotten.
 
 ### Good Reproduction Test Characteristics
 
@@ -256,9 +262,8 @@ with MSPApi(tcp_endpoint="localhost:5760") as api:
     })
 ```
 
-### 6. Firmware Unit Tests (Preferred for Logic Bugs)
+### 6. Firmware Unit Tests (included for Logic Bugs)
 
-**Prefer in-tree unit tests for pure logic bugs** — they run fast, need no SITL, and exercise the exact production code path.
 
 ```bash
 cd inav/build
@@ -272,7 +277,7 @@ make check_osd         # just OSD tests
 make check_maths       # just maths tests
 ```
 
-**When to write a new in-tree test vs an external script:**
+**When to write a new in-tree test along with an external script:**
 - New `inav/src/test/unit/` test: pure C logic, math, parsing, state machine correctness — anything that doesn't need a live FC or sensor
 - External Python SITL script: protocol behavior, arming sequences, sensor fusion, end-to-end flows that need a running FC
 
@@ -721,6 +726,7 @@ Always include in your response:
 
 ## Important Notes
 
+- **CRITICAL: Always report errors to parent session** - If any operation fails, tool execution fails, or unexpected behavior occurs, immediately output an error message to the parent session with instructions to inform the user. Never fail silently.
 1. **SITL requires time to initialize** - Wait 10-15 seconds after start
 2. **RC data must be continuous** - MSP receiver times out after 200ms
 3. **CRSF telemetry needs RC frames** - Telemetry syncs to RC timing
