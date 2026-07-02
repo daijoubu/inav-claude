@@ -1,20 +1,29 @@
 #!/usr/bin/env python3
 """
-Validation script for tool_permissions.yaml
+Validation script for tool permissions configuration.
 
-Checks for common mistakes and potential issues in the configuration file.
+Checks for common mistakes and potential issues in the configuration files.
+Supports both split configuration files (defaults, rules, bash_rules) and
+monolithic tool_permissions.yaml for backwards compatibility.
 
 Usage:
-    python3 validate_config.py [config_file]
+    python3 validate_config.py                    # Auto-detect split files
+    python3 validate_config.py path/to/config.yaml  # Validate specific file
 
-If no config file is specified, looks for tool_permissions.yaml in the same directory.
+If no config file is specified, looks for split files in the same directory:
+  - tool_permissions_defaults.yaml
+  - tool_permissions_rules.yaml
+  - tool_permissions_bash.yaml
+
+If split files found, they are loaded and merged. Otherwise falls back to
+looking for tool_permissions.yaml.
 """
 
 import sys
 import os
 import re
 from pathlib import Path
-from typing import List, Dict, Any, Tuple
+from typing import List, Dict, Any, Tuple, Optional
 import yaml
 
 
@@ -54,14 +63,70 @@ class ConfigValidator:
         return len(self.errors) == 0
 
     def _load_config(self) -> bool:
-        """Load and parse YAML config file."""
+        """Load and parse YAML config file(s).
+
+        Handles both split files and monolithic configuration.
+        """
+        # If explicit path provided, load that file
+        if self.config_path and self.config_path != 'auto':
+            return self._load_single_file(self.config_path)
+
+        # Otherwise, try to load split files
+        script_dir = Path(__file__).parent
+        split_files = [
+            ('tool_permissions_defaults.yaml', 'defaults'),
+            ('tool_permissions_rules.yaml', 'rules'),
+            ('tool_permissions_bash.yaml', 'bash_rules'),
+        ]
+
+        split_found = []
+        for filename, _ in split_files:
+            filepath = script_dir / filename
+            if filepath.exists():
+                split_found.append(filepath)
+
+        if len(split_found) == 3:
+            # Load and merge split files
+            self.config = {
+                'defaults': {},
+                'rules': [],
+                'bash_rules': [],
+                'logging': {}
+            }
+
+            try:
+                for filename, section_name in split_files:
+                    filepath = script_dir / filename
+                    with open(filepath, 'r') as f:
+                        file_data = yaml.safe_load(f) or {}
+
+                    if section_name == 'defaults':
+                        self.config['logging'] = file_data.get('logging', {})
+                        self.config['defaults'] = file_data.get('defaults', {})
+                    elif section_name == 'rules':
+                        self.config['rules'] = file_data.get('rules', [])
+                    elif section_name == 'bash_rules':
+                        self.config['bash_rules'] = file_data.get('bash_rules', [])
+
+                self.info.append(f"✓ Loaded and merged 3 split config files from {script_dir}")
+                return True
+            except yaml.YAMLError as e:
+                self.errors.append(f"✗ YAML syntax error in split files: {e}")
+                return False
+
+        # Fall back to monolithic file
+        monolithic_path = script_dir / 'tool_permissions.yaml'
+        return self._load_single_file(str(monolithic_path))
+
+    def _load_single_file(self, config_path: str) -> bool:
+        """Load a single YAML configuration file."""
         try:
-            with open(self.config_path, 'r') as f:
+            with open(config_path, 'r') as f:
                 self.config = yaml.safe_load(f)
-            self.info.append(f"✓ Loaded config from {self.config_path}")
+            self.info.append(f"✓ Loaded config from {config_path}")
             return True
         except FileNotFoundError:
-            self.errors.append(f"✗ Config file not found: {self.config_path}")
+            self.errors.append(f"✗ Config file not found: {config_path}")
             return False
         except yaml.YAMLError as e:
             self.errors.append(f"✗ YAML syntax error: {e}")
@@ -338,12 +403,11 @@ def main():
     if len(sys.argv) > 1:
         config_path = sys.argv[1]
     else:
-        # Default to tool_permissions.yaml in same directory as script
-        script_dir = Path(__file__).parent
-        config_path = script_dir / 'tool_permissions.yaml'
+        # Auto-detect: use 'auto' to signal split file detection
+        config_path = 'auto'
 
     # Validate
-    validator = ConfigValidator(str(config_path))
+    validator = ConfigValidator(config_path)
     success = validator.validate()
 
     # Exit with appropriate code

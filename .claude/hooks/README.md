@@ -2,9 +2,21 @@
 
 This directory contains hooks that control Claude Code's behavior.
 
-## Files
+## Configuration Files
 
-- **tool_permissions.yaml** - Main configuration file controlling tool permissions
+The tool permissions configuration is split into three files (automatically merged by `hook_common.py`):
+
+- **tool_permissions_defaults.yaml** - Logging configuration and default behaviors by category
+- **tool_permissions_rules.yaml** - Rules for non-Bash tools (Read, Write, Edit, etc.)
+- **tool_permissions_bash.yaml** - Rules for Bash commands
+
+⚠️ **Important:** Edit the appropriate split file based on rule type:
+- Adding rules for **Bash commands**? → Edit `tool_permissions_bash.yaml`
+- Adding rules for **other tools** (Write, Edit, etc.)? → Edit `tool_permissions_rules.yaml`
+- Changing **defaults or logging**? → Edit `tool_permissions_defaults.yaml`
+
+## Hook Files
+
 - **pre_tool_use_hook.py** - PreToolUse hook (runs before each tool call)
 - **permission_request_hook.py** - PermissionRequest hook (handles permission requests)
 - **hook_common.py** - Shared utilities for hooks
@@ -18,8 +30,11 @@ This directory contains hooks that control Claude Code's behavior.
 Before making changes, validate your configuration:
 
 ```bash
+cd ~/.claude/hooks
 python3 validate_config.py
 ```
+
+The validator automatically detects and loads all three split configuration files (`tool_permissions_defaults.yaml`, `tool_permissions_rules.yaml`, `tool_permissions_bash.yaml`).
 
 This checks for:
 - ✅ Required sections
@@ -31,7 +46,7 @@ This checks for:
 
 ### Common Operations
 
-**Allow a new command:**
+**Allow a new bash command:** Edit `tool_permissions_bash.yaml`
 ```yaml
 bash_rules:
   - name: "Allow my-command"
@@ -40,7 +55,7 @@ bash_rules:
     decision: allow
 ```
 
-**Block a dangerous pattern:**
+**Block a dangerous bash pattern:** Edit `tool_permissions_bash.yaml`
 ```yaml
 bash_rules:
   - name: "Block dangerous operation"
@@ -51,7 +66,16 @@ bash_rules:
     message: "Recursive delete of root paths is not allowed"
 ```
 
-**Allow command with specific arguments:**
+**Allow a tool (Write, Edit, Read, etc.):** Edit `tool_permissions_rules.yaml`
+```yaml
+rules:
+  - name: "Allow my tool"
+    tool_name_pattern: "^MyTool$"
+    category: read
+    decision: allow
+```
+
+**Allow bash command with specific arguments:** Edit `tool_permissions_bash.yaml`
 ```yaml
 bash_rules:
   # IMPORTANT: Specific rule FIRST
@@ -91,17 +115,17 @@ bash_rules:
 ## Architecture
 
 ```
-tool_permissions.yaml
+┌─ tool_permissions_defaults.yaml  ─┐
+├─ tool_permissions_rules.yaml      ├─→ hook_common.py (HookConfig - merges files)
+└─ tool_permissions_bash.yaml       ─┘
     ↓
-hook_common.py (HookConfig)
+bash_parser.py (parse bash commands)
     ↓
-bash_parser.py (parse commands)
+hook_common.py (RuleMatcher - evaluates rules)
     ↓
-hook_common.py (RuleMatcher)
+pre_tool_use_hook.py (makes final decision)
     ↓
-pre_tool_use_hook.py (make decision)
-    ↓
-Claude Code (execute or ask)
+Claude Code (executes or asks user)
 ```
 
 ## Debugging
@@ -203,11 +227,16 @@ argument_pattern: ".*--force.*"
 
 ## Common Patterns Reference
 
-See the top of `tool_permissions.yaml` for documented common patterns:
-- Allow command except with dangerous arguments
-- Different treatment based on arguments
-- Runtime condition checking
-- Path-based permissions
+See the header comments in the appropriate split file:
+- **Bash patterns:** Top of `tool_permissions_bash.yaml`
+  - Allow command except with dangerous arguments
+  - Different treatment based on arguments
+  - Runtime condition checking
+  - Path-based permissions
+
+- **Tool patterns:** Top of `tool_permissions_rules.yaml`
+  - Tool name matching
+  - Input field pattern matching
 
 ## Support
 
