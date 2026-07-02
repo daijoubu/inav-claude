@@ -48,6 +48,11 @@ rules:
     category: other
     decision: allow
 
+  - name: "Allow ScheduleWakeup for agent timing and scheduling"
+    tool_name_pattern: "^ScheduleWakeup$"
+    category: other
+    decision: allow
+
   - name: "Allow Write/Edit to /tmp for agents and temporary claude-* files"
     tool_name_pattern: "^(Write|Edit)$"
     tool_input_patterns:
