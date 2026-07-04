@@ -64,6 +64,10 @@ git rebase upstream/maintenance-9.x
 
 ## The Core Rule: Apply Changes, Not Files
 
+> **The goal is the best possible resulting code — combine the fixes, features, and
+> improvements from BOTH branches. Making the conflict marker disappear is not the goal;
+> it's a side effect of doing this correctly.**
+
 > **Always apply a branch's DIFF to the other branch's files.
 > Never replace a file (or a function) wholesale with a version from another branch.**
 
