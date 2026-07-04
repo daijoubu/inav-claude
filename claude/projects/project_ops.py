@@ -923,7 +923,9 @@ def cmd_audit(fix=False, dry_run=False, force=False):
     if issues:
         total = sum(count for _, count in issues)
         print(f"TOTAL ISSUES: {total}")
-        if fix:
+        if dry_run:
+            print(f"DRY RUN — no changes were made. Re-run without --dry-run to apply.")
+        elif fix:
             print(f"Applied automatic fixes where possible.")
         else:
             print(f"Run with --fix to auto-fix simple issues.")
