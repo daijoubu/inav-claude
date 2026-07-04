@@ -236,6 +236,7 @@ See `examples/minimal-f722-target/` for a complete minimal target example.
 ## Related Documentation
 
 - **overview.md** - Target system architecture
+- **reading-schematics.md** - How to analyze manufacturer KiCad/Altium schematics and build a verified pin map before writing target.h
 - **common-issues.md** - Avoid these mistakes
 - **timer-dma-conflicts.md** - Resolve DMA conflicts
 - **troubleshooting-guide.md** - Debug issues systematically
