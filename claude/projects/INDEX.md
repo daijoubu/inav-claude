@@ -2,8 +2,8 @@
 
 This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKED).
 
-**Last Updated:** 2026-05-30
-**Active:** 26 | **Backburner:** 10 | **Blocked:** 2
+**Last Updated:** 2026-07-03
+**Active:** 35 | **Backburner:** 10 | **Blocked:** 4
 
 > **Completed projects:** See [completed/INDEX.md](completed/INDEX.md)
 > **Blocked projects:** See `blocked/` directory
@@ -39,12 +39,122 @@ This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKE
 
 ## Active Projects
 
-### 📋 track-pr2636-osd-layout
+### 📋 fix-icm42688-aaf-freq-overflow
 
-**Status:** TODO | **Type:** Bug Fix | **Priority:** MEDIUM
+**Status:** TODO | **Type:** Bug Fix / Correctness | **Priority:** MEDIUM-HIGH
+**Created:** 2026-07-02 | **Assignee:** Developer ✉️
+
+`getGyroAafConfig()` in `accgyro_icm42605.c` stores the running best AAF-frequency candidate in `int8_t`, which overflows for 7 of 11 entries in `aafLUT42688[]` (258, 303, 536, 997, 1962 all truncate) — silently selecting the wrong anti-alias filter on ICM-42688P/42686P gyros. Confirmed present on every active branch (master, maintenance-9.x, maintenance-10.x, release/9.1); not a new regression. Found via Qodo bot review on PR #11681, independently verified against actual file content.
+
+**Directory:** `active/fix-icm42688-aaf-freq-overflow/`
+**Found on:** [PR #11681](https://github.com/iNavFlight/inav/pull/11681) (bot comment) | **Repo:** inav | **Branch:** PR against `release/9.1` (flows up to maintenance-10.x via normal merge)
+
+---
+
+### 🚧 fix-sitl-mac-log-c-vla-error
+
+**Status:** IN PROGRESS (release/9.1 fix merged; maintenance-10.x fix on hold — see note) | **Type:** Bug Fix / CI Infrastructure | **Priority:** HIGH
+**Created:** 2026-07-02 | **Assignee:** Developer ✉️
+
+Root cause: two latent non-ICE array-size expressions (`log.c` const locals, `osd.c` STATIC_ASSERT with float literal) that AppleClang now rejects under `-Wgnu-folding-constant`. `release/9.1` fix MERGED via PR #11680. `maintenance-10.x` fix open as PR #11679 (all checks green) but **holding off merging it** — PR #11681 ("Merge release/9.1 into maintenance-10.x") also touches `log.c`/`osd.c` and will likely carry #11680's fix into maintenance-10.x directly, which would make #11679 redundant/conflicting. Wait for #11681 to land, then check whether #11679 is still needed or can be closed.
+
+**Directory:** `active/fix-sitl-mac-log-c-vla-error/`
+**PR:** [#11679](https://github.com/iNavFlight/inav/pull/11679) (maintenance-10.x, OPEN, holding) | [#11680](https://github.com/iNavFlight/inav/pull/11680) (release/9.1, MERGED) | [#11681](https://github.com/iNavFlight/inav/pull/11681) (release/9.1→maintenance-10.x sync, OPEN) | **Repo:** inav
+
+---
+
+### 🚫 develop-brotherhobby-summer-fc-target
+**Status:** BLOCKED | **Type:** Feature / Target Dev + Design Review | **Priority:** MEDIUM
+**Created:** 2026-06-30 | **Assignee:** Developer ✉️
+**Blocked Since:** 2026-07-02
+
+Dev complete: target builds clean (35.67% flash), design-feedback.md ready for manufacturer, UART7/DJI wiring bug caught and fixed pre-PR. PR intentionally withheld — waiting on BrotherHobby to provide the FC's proper production name/branding before opening it upstream (target is currently named `BROTHERHOBBY_SUMMER`, a working name).
+
+**Directory:** `blocked/develop-brotherhobby-summer-fc-target/`
+**Blocking Issue:** Awaiting official product name/branding from manufacturer
+**Schematics:** `flight-controllers/brother_hobby_summer/` | **Repo:** inav | **Branch:** `feature/brotherhobby-summer-target`
+
+---
+
+### 🚧 fix-sdio-retry-blocking-delay
+
+**Status:** IN PROGRESS (fix complete, PR labeled Testing Required) | **Type:** Bug Fix / Real-Time Correctness | **Priority:** MEDIUM-HIGH
+**Created:** 2026-06-23 | **Assignee:** Developer ✉️
+
+Removed blocking `delay(1)` from SDIO retry paths (read + write) and fixed a write-path state-management bug. CI green except pre-existing `build-SITL-Mac` toolchain issue. Not yet verified on real H7 hardware with active blackbox logging — labeled "Testing Required" pending that verification before merge.
+
+**Directory:** `active/fix-sdio-retry-blocking-delay/`
+**PR:** [#11674](https://github.com/iNavFlight/inav/pull/11674) | **Repo:** inav | **Branch:** `release/9.1`
+
+---
+
+### 🚧 cleanup-pr-test-builds-releases
+
+**Status:** IN PROGRESS (fix complete, blocked on CI) | **Type:** CI/CD Enhancement | **Priority:** MEDIUM
+**Created:** 2026-06-18 | **Assignee:** Developer ✉️
+
+Auto-delete releases in `pr-test-builds` when corresponding PRs merge (only `inav` needed a workflow; configurator's PR builds already expire via GitHub artifact retention). PR #11678 has branch protection BLOCKED status — `build-SITL-Mac` is a required check on `maintenance-10.x` and this branch predates the fix in PR #11679. Will clear once #11679 merges and this branch picks it up.
+
+**Directory:** `active/cleanup-pr-test-builds-releases/`
+**PR:** [#11678](https://github.com/iNavFlight/inav/pull/11678) | **Repos:** iNavFlight/inav, iNavFlight/inav-configurator, iNavFlight/pr-test-builds
+
+---
+
+### 🚧 fix-outputs-tab-servo-numbering-display
+
+**Status:** IN PROGRESS | **Type:** Bug Fix | **Priority:** LOW
+**Created:** 2026-06-12 | **Assignee:** Developer ✉️
+
+Fixed servo numbering display (off-by-one label + bar-chart title row). PR #2660 submitted; awaiting CI and maintainer review.
+
+**Directory:** `active/fix-outputs-tab-servo-numbering-display/`
+**PR:** [#2660](https://github.com/iNavFlight/inav-configurator/pull/2660) | **Branch:** `maintenance-9.x`
+
+---
+
+### 🚧 feature-servo-mixer-target-validation
+
+**Status:** IN PROGRESS | **Type:** Feature / UX Improvement | **Priority:** MEDIUM
+**Created:** 2026-06-11 | **Assignee:** Developer ✉️
+
+Added warning dialog for invalid servo mixer targets. Testing refined the validation rule: warn if `enteredTarget > ruleCount` (not the original spec). PR #2659 submitted; awaiting review. ⚠️ Manager note: acceptance criteria changed from original task spec.
+
+**Directory:** `active/feature-servo-mixer-target-validation/`
+**PR:** [#2659](https://github.com/iNavFlight/inav-configurator/pull/2659) | **Branch:** maintenance-9.x
+
+---
+
+### 🚫 add-bmi270-corewingf405wingv2
+**Status:** BLOCKED| **Type:** Feature / Target Configuration | **Priority:** MEDIUM
+**Created:** 2026-06-08 | **Assignee:** Developer ✉️
+**Blocked Since:** 2026-06-18
+
+Dev complete: BMI270 defines added to target.h (verified against DAKEFPVF722 pattern). Target builds cleanly at 610 KB/896 KB. PR #11638 marked "Testing Required" — blocked on community hardware verification.
+
+**Directory:** `blocked/add-bmi270-corewingf405wingv2/`
+**PR:** [#11638](https://github.com/iNavFlight/inav/pull/11638) | **Repo:** inav | **Branch:** release/9.1
+
+**Blocking Issue:** Community hardware verification pending for PR #11638
+---
+
+### 🚧 track-91-post-rc1-merges
+
+**Status:** IN PROGRESS | **Type:** Coordination / Release Management | **Priority:** HIGH
+**Created:** 2026-05-30 | **Assignee:** Manager
+
+Living list of PRs skipped at RC1 that should be resolved before 9.1 full release. Organized by blocker type: A=needs our hardware test, B=needs community test, C=needs minor fix/conflict resolution.
+
+**Directory:** `active/track-91-post-rc1-merges/`
+**Currently tracked:** PR #11196 (OMNIBUSF4 refactor), PR #11390 (DShot DMA), PR #11177 (DAKEFPVH743_SLIM)
+
+---
+
+### 🚧 track-pr2636-osd-layout
+
+**Status:** IN PROGRESS | **Type:** Bug Fix | **Priority:** MEDIUM
 **Created:** 2026-05-30 | **Assignee:** Developer ✉️
 
-Track PR #2636 (OSD Custom Element UI layout fix — overflow on small screens, missing LC driver selector in HD mode) through review and merge.
+Track PR #2636 (OSD Custom Element UI layout fix — overflow on small screens, missing LC driver selector in HD mode) through review and merge. Developer actively working additional fixes from PR review comments.
 
 **Directory:** `active/track-pr2636-osd-layout/`
 **PR:** [#2636](https://github.com/iNavFlight/inav-configurator/pull/2636) | **Repo:** inav-configurator | **Branch:** maintenance-9.x
@@ -73,6 +183,43 @@ Implement arc-confirmed leaky integrator for toilet bowl detection/correction in
 **Directory:** `active/feature-toilet-bowl-arc-integrator/`
 **Parent investigation:** `completed/analyze-pr10854-toilet-bowl/`
 **Upstream PR (flawed):** https://github.com/iNavFlight/inav/pull/10854 | **Branch:** `maintenance-9.x`
+
+---
+
+### 📋 feature-m10-gps-clock-detection
+
+**Status:** TODO | **Type:** Feature / GPS | **Priority:** MEDIUM
+**Created:** 2026-06-07 | **Assignee:** Developer 📝 Planned
+
+Detect M10 GPS OTP clock variant at runtime (UBX-CFG-VALGET layer 4) and auto-cap navigation update rate to what the hardware can sustain. Phase 1 (empirical test on default-clock M10) is a blocker for firmware work.
+
+**Directory:** `active/feature-m10-gps-clock-detection/`
+**Research:** `claude/developer/workspace/enable-galileo-optimize-gps-rate/m10-clock-detection-research.md`
+**Repo:** inav | **Branch:** maintenance-9.x
+
+---
+
+### 📋 fix-autotrim-iterm-threshold-orphan
+
+**Status:** TODO | **Type:** Cleanup / Firmware | **Priority:** LOW
+**Created:** 2026-06-07 | **Assignee:** Developer 📝 Planned
+
+Remove orphaned `servo_autotrim_iterm_threshold` field from `servoConfig_t` — no settings entry, no usages, no reset initializer. Discovered during PR #11617 code review. ~30 min task.
+
+**Directory:** `active/fix-autotrim-iterm-threshold-orphan/`
+**File:** `inav/src/main/flight/servos.h` | **Repo:** inav | **Branch:** maintenance-9.x
+
+---
+
+### 📋 feature-auto-alignment-tool
+
+**Status:** TODO | **Type:** Feature / Configurator | **Priority:** MEDIUM
+**Created:** 2026-06-07 | **Assignee:** Developer ✉️
+
+Research how ArduPilot's `calculate_orientation()` auto-detects compass mounting orientation; write plain-language explanation; examine four `auto_alignment_tool` branches in inav-configurator; assess and implement if applicable.
+
+**Directory:** `active/feature-auto-alignment-tool/`
+**ArduPilot ref:** `ardupilot/libraries/AP_Compass/CompassCalibrator.cpp` | **Repo:** inav-configurator
 
 ---
 
@@ -123,31 +270,15 @@ Flash PR #11390 to an F7 or H7 board and verify DShot works without lockups over
 
 ---
 
-### 📋 fix-pwm-beeper-mode-regression
+### 🚧 feature-buzzer-unified-output
 
-**Status:** TODO | **Type:** Bug Fix / Investigation | **Priority:** MEDIUM-HIGH
-**Created:** 2026-04-12 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
+**Status:** IN PROGRESS | **Type:** Feature Enhancement | **Priority:** MEDIUM
+**Created:** 2026-04-25 | **Assignee:** Developer ✉️
 
-`beeper_pwm_mode` stopped working in 9.x maintenance builds (worked in 9.0). Suspect: commit `f377f816f1` ("Handle missing timer information for beeper/led") or PR #11306. Also add `USE_BEEPER_PWM` to BLUEBERRYF435WING if PC15 is timer-capable (no F405WING exists).
-
-**Directory:** `active/fix-pwm-beeper-mode-regression/`
-**Repository:** inav | **Branch:** From `maintenance-9.x`
-**Issue:** [#11492](https://github.com/iNavFlight/inav/issues/11492) (OPEN)
-**Assignment:** `manager/email/sent/2026-04-12-task-fix-pwm-beeper-mode-regression.md`
-
----
-
-### 📋 feature-buzzer-unified-output
-
-**Status:** TODO | **Type:** Feature Enhancement | **Priority:** MEDIUM
-**Created:** 2026-04-25 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
-
-Add BUZZER as a runtime-assignable output function in the configurator output UI, alongside motor/servo/LED/PINIO. Any timer-capable pad can be configured as PWM beeper. Extends `feature-unified-pinio-pwm-output`; backward-compatible with existing compile-time `BEEPER` targets.
+Configurator side (PR #2654) and firmware side (PR #11675) both implemented; firmware PR reports LED/BEEPER/PINIO assignment via reworked MSP type-byte encoding that #2654 depends on. Two Qodo findings on #11675 resolved: multi-channel timer pad selection confirmed a non-issue (UI is already timer-granular, matches firmware storage granularity); PWM init failure now fails loudly (LOG_ERROR) instead of silently falling back to the compile-time pin, since that pin may have been reassigned. Currently blocked on `build-SITL-Mac` — will clear once PR #11679 (see fix-sitl-mac-log-c-vla-error) merges into maintenance-10.x.
 
 **Directory:** `active/feature-buzzer-unified-output/`
-**Repository:** inav + inav-configurator | **Branch:** TBD (9.x or 10.x — developer to assess)
-**Key files:** `sound_beeper.c`, `pwm_output.c:708`, `timer.h:119` (`TIM_USE_BEEPER` bit 25)
-**Assignment:** `manager/email/sent/2026-04-25-task-feature-buzzer-unified-output.md`
+**PR:** [#2654](https://github.com/iNavFlight/inav-configurator/pull/2654) (configurator) | [#11675](https://github.com/iNavFlight/inav/pull/11675) (firmware) | **Branch:** `maintenance-10.x`
 
 ---
 
@@ -255,10 +386,10 @@ Auto-trim active during maneuvers. Theory: missing I-term stability check in `se
 
 ### 📋 fix-project-ops-script
 
-**Status:** TODO | **Type:** Tooling / Bug Fix | **Priority:** MEDIUM-HIGH
+**Status:** TODO | **Type:** Tooling / Bug Fix | **Priority:** HIGH
 **Created:** 2026-03-07 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
 
-Fix `project_ops.py` robustness: stop silently deleting active copies on duplicate, add `--dry-run` flag, handle master projects with `milestones/` subdirs, fix unreliable count verification.
+Fix `project_ops.py` robustness: stop silently deleting active copies on duplicate, add `--dry-run` flag, handle master projects with `milestones/` subdirs, fix unreliable count verification. Bumped to HIGH 2026-07-02 after two new instances of the same silent-corruption pattern: `complete` failed to match an INDEX.md heading with trailing text and left a stale entry with no error, and generated a truncated/misleading completed/INDEX.md description.
 
 **Directory:** `active/fix-project-ops-script/`
 **Assignment:** `manager/email/sent/2026-03-07-task-fix-project-ops-script.md`

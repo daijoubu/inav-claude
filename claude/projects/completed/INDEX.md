@@ -2,9 +2,99 @@
 
 Completed (✅) and cancelled (❌) projects.
 
-**Total Completed:** 212 | **Total Cancelled:** 6
+**Total Completed:** 220 | **Total Cancelled:** 6
 
 > **Active projects:** See [../INDEX.md](../INDEX.md)
+
+---
+
+
+### ✅ investigate-gps-nano-clamp-pr11642
+
+**Status:** COMPLETED (2026-07-03)
+**Type:** Investigation
+**Priority:** HIGH
+
+PR #11642 claims the uBlox `nano` field (UBX-NAV-TIMEUTC/NAV-PVT) legitimately goes negative near second boundaries, corrupting the RTC by ~64s on first lock unless clamped. Need the developer to confirm this against the official u-blox interface description docs (already in repo under `claude/developer/docs/gps/`) before merging into 9.1 — release ships this weekend.
+
+---
+
+
+### ✅ fix-fw-autotune-documentation
+
+**Status:** COMPLETED (2026-07-02)
+**Type:** Documentation / Bug Investigation
+**Priority:** MEDIUM
+
+A user reported on Discord that fixed-wing autotune changed their roll_rate and pitch_rate (120→370, 100→180) when they expected it only to tune FF/P/I gains. Investigation confirmed AUTOTUNE tunes FF on all three axes and never touches P/I, but by default it does actively rewrite roll/pitch/yaw rates live — both `inavwiki/Modes.md` and `inav/docs/Autotune - fixedwing.md` had this backwards or incomplete. Both docs corrected; `inavwiki/Modes.md` pushed live to wiki master, `inav/docs/Autotune - fixedwing.md` via PR #11677 (merged, targeted `release/9.1` after original PR #11676 was superseded when maintenance-9.x was damaged by an unrelated issue).
+
+**PR:** [#11677](https://github.com/iNavFlight/inav/pull/11677) (MERGED)
+
+---
+
+
+### ✅ release-91-checklist
+
+**Status:** COMPLETED (2026-06-07)
+**Type:** Documentation / Release Preparation
+**Priority:** HIGH
+
+Produce and execute a concrete step-by-step checklist for the INAV 9.1.0-RC1 release. Checklist produced; execution pending Manager confirmation of readiness.
+
+---
+
+
+### ✅ fix-test-files-in-configurator-root
+
+**Status:** COMPLETED (2026-06-07)
+**Type:** Tooling / Infrastructure
+**Priority:** LOW
+
+Create a proper `tests/` directory in the inav-configurator repo with a test runner wired into `package.json`, and move the five ad-hoc `test_*.mjs` files currently cluttering the repo root into it.
+
+---
+
+
+### ✅ fix-cli-autocomplete-undefined
+
+**Status:** COMPLETED (2026-06-07)
+**Type:** Bug Fix
+**Priority:** MEDIUM
+
+The CLI tab throws repeated `TypeError: Cannot read properties of undefined (reading '0')` errors in the dev console, originating from `CliAutoComplete.js:292`. The error fires on every autocomplete dropdown activation — once per keypress when suggestions are shown.
+
+---
+
+
+### ✅ fix-autotrim-iterm-setting
+
+**Status:** COMPLETED (2026-06-07)
+**Type:** Bug Fix / Firmware
+**Priority:** MEDIUM-HIGH
+
+Remove temporary `servo_autotrim_iterm_rate_limit` CLI setting (introduced in PR #11215) — analyze blackbox log to find stable-flight I-term rate, replace setting with a hardcoded `#define` constant.
+
+---
+
+
+### ✅ fix-vtol-control-profile-sync
+
+**Status:** COMPLETED (2026-06-07)
+**Type:** Bug Fix / Regression
+**Priority:** MEDIUM
+
+VTOL regression: Mixer profile button press (MC↔FW) no longer automatically switches the Control profile. Used to work. Reported in PR #2625 comments.
+
+---
+
+
+### ✅ fix-pwm-beeper-mode-regression
+
+**Status:** COMPLETED (2026-06-07)
+**Type:** Bug Fix / Investigation
+**Priority:** MEDIUM-HIGH
+
+`beeper_pwm_mode` stopped working in 9.x maintenance builds (worked in 9.0). Suspect: commit `f377f816f1` ("Handle missing timer information for beeper/led") or PR #11306. Also add `USE_BEEPER_PWM` to BLUEBERRYF435WING if PC15 is timer-capable (no F405WING exists).
 
 ---
 
