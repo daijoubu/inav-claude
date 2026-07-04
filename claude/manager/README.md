@@ -217,6 +217,19 @@ python3 claude/projects/project_ops.py audit --fix
 
 **Location:** `claude/projects/INDEX.md`
 
+**⚠️ Never annotate the heading line itself.** The heading must stay exactly
+`### <emoji> <project-name>` with nothing else appended — no "— READY TO
+COMPLETE", "(needs review)", or similar notes-to-self tacked onto the same
+line. `project_ops.py` parses that line to find/remove/update entries;
+mixing in prose caused two real incidents (March and July 2026) where a
+trailing annotation broke the match and `project_ops.py` silently left a
+stale, out-of-sync entry in INDEX.md while reporting success. `project_ops.py`
+was hardened in July 2026 to tolerate a trailing annotation *and* to error
+loudly instead of guessing if a heading still can't be matched — but treat
+that as a safety net, not permission to keep doing this. If you want to leave
+yourself a note, put it in the entry body (e.g. a line like `**Note:** ready
+to complete pending PR merge`), never on the `###` line.
+
 **When to update:**
 - Project created (add entry, update counts)
 - Project completed (remove entry, add to completed/INDEX.md)
