@@ -81,6 +81,8 @@ throttleValue = rawThrottle + 48;
 - What the next line of code does (it's already in the code)
 - Obvious operations like "increment counter" or "hide element"
 - Section headers that just label code blocks
+- Why something was **changed from** a previous version — that belongs in the commit message and PR description. Code comments are read without access to git history; they are not changelogs.
+  - **Exception:** "use X instead of Y because Z" IS an appropriate comment when Y is what a reader of the *current* code would naturally reach for — the comment saves them from wondering "why not Y?" For example, when comparing distances a reader would naturally expect `sqrt(a*a + b*b) > other_distance` — so `// skip sqrt, comparing squares is equivalent and cheaper` is a useful comment. But "changed from sqrt to squared comparison in this PR" is a changelog entry that belongs in the commit message.
 
 ---
 

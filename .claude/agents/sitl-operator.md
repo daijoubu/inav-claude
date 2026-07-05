@@ -208,6 +208,7 @@ Always include in your response:
 
 ## Important Notes
 
+- **CRITICAL: Always report errors to parent session** - If any operation fails, tool execution fails, or unexpected behavior occurs, immediately output an error message to the parent session with instructions to inform the user. Never fail silently.
 - SITL needs 10-15 seconds to fully initialize after start
 - Always check if SITL is already running before starting
 - Use port 5761 (UART2) for test scripts to avoid conflicts with configurator on 5760

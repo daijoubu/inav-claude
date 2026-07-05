@@ -52,12 +52,29 @@ When presenting tables (task lists, status reports, etc.), use this format:
 
 **Session state (prevent context loss):** `claude/docs/state-management.md`
 
+**When debugging/fixing bugs, read:** `guides/root-cause-analysis.md`
+
 These checklists contain critical rules that MUST be followed:
 - ⚠️ Lock file checking and acquisition
 - ⚠️ Use agents (never direct commands: cmake, make, npm build)
 - ⚠️ Testing is MANDATORY before PRs
 - ⚠️ Git best practices and commit message rules
 - ⚠️ Use inav-architecture agent BEFORE searching firmware code
+- ⚠️ When you find a bug, ask "Why wasn't it detected?" - that reveals systemic issues
+
+---
+
+## ⚠️ TEMPORARY: inav/ branch base override (remove Feb 2027)
+
+**`maintenance-9.x` in the `inav` repo is currently damaged.** Do NOT branch off it, despite what `guides/CRITICAL-BEFORE-CODE.md` and the git-workflow skill say.
+
+Until this is fixed upstream, base new `inav/` branches on:
+- **Bug fix** → `release-9.1`
+- **New feature** → `maintenance-10.x`
+
+This does not apply to `inav-configurator/`, which still uses its normal base branches.
+
+**Remove this section in February 2027** — by then work should have moved to the 10.x line and this override should no longer be needed. If you're reading this after that date, verify whether `maintenance-9.x` has been repaired before deleting.
 
 ---
 

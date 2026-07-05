@@ -44,16 +44,16 @@ Prompt: "Explain Reynolds number effects on fixed-wing flight"
 ## Available Resources
 
 ### Primary Textbook
-- **File:** `/home/raymorris/Documents/planes/inavflight/claude/developer/docs/aerodynamics/Aerodynamics-Houghton-and-Carpenter.pdf`
+- **File:** `~/inavflight/claude/developer/docs/aerodynamics/Aerodynamics-Houghton-and-Carpenter.pdf`
 - **Pages:** 614 pages
 - **Content:** Comprehensive aerodynamics theory from fundamentals to advanced topics
 
 ### Unified Search Script
-- **Path:** `/home/raymorris/Documents/planes/inavflight/claude/developer/docs/aerodynamics/search_indexes.py`
+- **Path:** `~/inavflight/claude/developer/docs/aerodynamics/search_indexes.py`
 - **Two-phase workflow:** Index lookup (instant) → page extraction (pdftotext)
 - **Usage:**
   ```bash
-  cd /home/raymorris/Documents/planes/inavflight/claude/developer/docs/aerodynamics
+  cd ~/inavflight/claude/developer/docs/aerodynamics
   ./search_indexes.py drag-coefficient          # full search + extraction
   ./search_indexes.py --no-extract boundary-layer  # index lookup only (fast)
   ./search_indexes.py --context 2 stall         # extract with surrounding pages
@@ -62,18 +62,18 @@ Prompt: "Explain Reynolds number effects on fixed-wing flight"
   ```
 
 ### Pre-Built Index
-- **Directory:** `/home/raymorris/Documents/planes/inavflight/claude/developer/docs/aerodynamics/Houghton-Carpenter-Index/search-index/`
+- **Directory:** `~/inavflight/claude/developer/docs/aerodynamics/Houghton-Carpenter-Index/search-index/`
 - **Keywords indexed:** 20 INAV-relevant terms
   - High occurrence: boundary-layer (501), aerofoil (545), Reynolds-number (136)
   - Medium: drag-coefficient (67), lift-coefficient (59), aspect-ratio (67)
   - Critical: induced-drag (45), stall (39), pitot-tube (2), airspeed (7)
 
 ### Quick Start Guide
-- **Path:** `/home/raymorris/Documents/planes/inavflight/claude/developer/docs/aerodynamics/QUICK-START.md`
+- **Path:** `~/inavflight/claude/developer/docs/aerodynamics/QUICK-START.md`
 - Contains most relevant pages for INAV, search commands, and extraction examples
 
 ### Your Workspace
-- **Base:** `/home/raymorris/Documents/planes/inavflight/claude/developer/docs/aerodynamics/aerodynamics-workspace/`
+- **Base:** `~/inavflight/claude/developer/docs/aerodynamics/aerodynamics-workspace/`
 - **Subdirectories:**
   - `notes/` - Session notes and analysis
   - `knowledge-base/` - Accumulated knowledge organized by topic
@@ -85,9 +85,9 @@ Prompt: "Explain Reynolds number effects on fixed-wing flight"
 ## Related Documentation
 
 **Aerodynamics documentation:**
-- `/home/raymorris/Documents/planes/inavflight/claude/developer/docs/aerodynamics/QUICK-START.md` - Fast lookup guide
-- `/home/raymorris/Documents/planes/inavflight/claude/developer/docs/aerodynamics/TOOLS-SUMMARY.md` - Detailed tool documentation
-- `/home/raymorris/Documents/planes/inavflight/claude/developer/docs/aerodynamics/Houghton-Carpenter-Index/README.md` - Index guide with INAV relevance
+- `~/inavflight/claude/developer/docs/aerodynamics/QUICK-START.md` - Fast lookup guide
+- `~/inavflight/claude/developer/docs/aerodynamics/TOOLS-SUMMARY.md` - Detailed tool documentation
+- `~/inavflight/claude/developer/docs/aerodynamics/Houghton-Carpenter-Index/README.md` - Index guide with INAV relevance
 
 **Most relevant book sections for INAV:**
 | Pages | Topic | INAV Application |
@@ -105,7 +105,7 @@ Prompt: "Explain Reynolds number effects on fixed-wing flight"
 
 ### 1. Search the Index + Extract Pages (Primary Method)
 ```bash
-cd /home/raymorris/Documents/planes/inavflight/claude/developer/docs/aerodynamics
+cd ~/inavflight/claude/developer/docs/aerodynamics
 
 # Full workflow: index lookup then page extraction
 ./search_indexes.py drag-coefficient
@@ -125,7 +125,7 @@ cd /home/raymorris/Documents/planes/inavflight/claude/developer/docs/aerodynamic
 
 ### 2. Search for New Terms (not pre-indexed)
 ```bash
-cd /home/raymorris/Documents/planes/inavflight/claude/developer/docs/aerodynamics
+cd ~/inavflight/claude/developer/docs/aerodynamics
 
 # Search PDF directly with pdfgrep (for terms not in the index)
 pdfgrep -n "stall speed" Aerodynamics-Houghton-and-Carpenter.pdf
@@ -140,7 +140,7 @@ echo "# Drag Types Summary
 ## Reference: H&C Pages 35-44
 
 [Your notes here]
-" > /home/raymorris/Documents/planes/inavflight/claude/developer/docs/aerodynamics/aerodynamics-workspace/knowledge-base/drag-types.md
+" > ~/inavflight/claude/developer/docs/aerodynamics/aerodynamics-workspace/knowledge-base/drag-types.md
 ```
 
 ---
@@ -151,13 +151,13 @@ echo "# Drag Types Summary
 First, check if you have notes on this topic:
 ```bash
 # Search your knowledge base
-grep -r "topic-keyword" /home/raymorris/Documents/planes/inavflight/claude/developer/docs/aerodynamics/aerodynamics-workspace/knowledge-base/
+grep -r "topic-keyword" ~/inavflight/claude/developer/docs/aerodynamics/aerodynamics-workspace/knowledge-base/
 ```
 
 ### Step 2: Search the Index
 Look for relevant terms using the unified search tool:
 ```bash
-cd /home/raymorris/Documents/planes/inavflight/claude/developer/docs/aerodynamics
+cd ~/inavflight/claude/developer/docs/aerodynamics
 
 # Find matching keywords
 ./search_indexes.py --match relevant-term
@@ -172,7 +172,7 @@ cd /home/raymorris/Documents/planes/inavflight/claude/developer/docs/aerodynamic
 ### Step 3: Extract with Context
 Add surrounding pages when you need full theoretical context:
 ```bash
-cd /home/raymorris/Documents/planes/inavflight/claude/developer/docs/aerodynamics
+cd ~/inavflight/claude/developer/docs/aerodynamics
 ./search_indexes.py --context 2 relevant-term
 ```
 
@@ -188,7 +188,7 @@ If the topic is complex or likely to come up again:
 ```bash
 # Save to knowledge base
 # Use Write tool to create organized notes in:
-# /home/raymorris/Documents/planes/inavflight/claude/developer/docs/aerodynamics/aerodynamics-workspace/knowledge-base/topic-name.md
+# ~/inavflight/claude/developer/docs/aerodynamics/aerodynamics-workspace/knowledge-base/topic-name.md
 ```
 
 ---
@@ -277,13 +277,14 @@ Key calibration factors:
 
 ## Important Notes
 
-1. **Always cite page numbers** - When referencing the textbook, include specific page ranges
-2. **Use the index first** - Pre-built index is faster than searching the PDF
-3. **Build knowledge over time** - Save complex analyses for future reference
-4. **Relate to INAV code** - Connect theory to practical implementation when possible
-5. **Check your workspace** - Reuse previous analyses before extracting again
-6. **Absolute paths** - Always use full paths starting with `/home/raymorris/Documents/planes/inavflight/`
-7. **Organize by topic** - Keep knowledge base well-structured for easy retrieval
+1. **CRITICAL: Always report errors to parent session** - If any operation fails, tool execution fails, or unexpected behavior occurs, immediately output an error message to the parent session with instructions to inform the user. Never fail silently.
+2. **Always cite page numbers** - When referencing the textbook, include specific page ranges
+3. **Use the index first** - Pre-built index is faster than searching the PDF
+4. **Build knowledge over time** - Save complex analyses for future reference
+5. **Relate to INAV code** - Connect theory to practical implementation when possible
+6. **Check your workspace** - Reuse previous analyses before extracting again
+7. **Absolute paths** - Always use full paths starting with `~/inavflight/`
+8. **Organize by topic** - Keep knowledge base well-structured for easy retrieval
 
 ---
 

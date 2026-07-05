@@ -182,6 +182,7 @@ Before finalizing, verify:
 - [ ] **Self-improvement section** - For recording lessons
 - [ ] **Paths are correct** - Relative to workspace root
 - [ ] **Developer README updated** - Agent entry added, verbose docs reduced
+- [ ] **Error handling documented** - Important Notes section includes: "CRITICAL: Always report errors to parent session with instruction to inform the user. Never fail silently."
 
 ---
 
@@ -245,5 +246,7 @@ When you discover something important about CREATING AGENTS that will likely hel
 Use the Edit tool to append new entries. Format: `- **Brief title**: One-sentence insight`
 
 ### Lessons
+
+- **Silent failures are catastrophic** (2026-07-01): When agents fail without reporting errors, users have no way to know if their request was handled. Permissions agent failed silently from March-July 2026. Every new agent MUST include explicit error handling that reports failures to the parent session with instructions to inform the user.
 
 <!-- Add new lessons above this line -->

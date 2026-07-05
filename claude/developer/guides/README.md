@@ -11,6 +11,8 @@ These critical checklists provide **just-in-time information** - read them right
 | **Before creating PR** | `CRITICAL-BEFORE-PR.md` | Testing requirements, PR checklist, bot checks |
 | **Before/during testing** | `CRITICAL-BEFORE-TEST.md` | Test-first approach, testing requirements |
 | **Before resolving merge conflicts** | `CRITICAL-BEFORE-MERGE.md` | Apply diffs not files, verify no dropped features |
+| **When debugging/fixing bugs** | `root-cause-analysis.md` | Four-level framework: symptom → cause → systemic cause → scope |
+| **Finding tools and techniques** | `debugging-guide.md` | Serial printf, GDB, Chrome DevTools, when to use each |
 
 ## Integration Points
 

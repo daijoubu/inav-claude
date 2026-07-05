@@ -30,6 +30,7 @@ The Claude Code hook system provides fine-grained control over tool permissions 
                     │   - HookConfig         │
                     │   - RuleMatcher        │
                     │   - HookLogger         │
+                    │   (loads & merges)     │
                     └───────────┬────────────┘
                                 │
                     ┌───────────▼────────────┐
@@ -39,11 +40,18 @@ The Claude Code hook system provides fine-grained control over tool permissions 
                     │  - Handle redirections │
                     └───────────┬────────────┘
                                 │
-                    ┌───────────▼────────────┐
-                    │ tool_permissions.yaml  │
-                    │ - Rules (ordered list) │
-                    │ - Defaults by category │
-                    └────────────────────────┘
+            ┌───────────────────▼──────────────────┐
+            │   Configuration Files (merged):      │
+            ├──────────────────────────────────────┤
+            │ ✓ tool_permissions_defaults.yaml     │
+            │   (logging & category defaults)      │
+            │                                      │
+            │ ✓ tool_permissions_rules.yaml        │
+            │   (non-Bash tool rules)              │
+            │                                      │
+            │ ✓ tool_permissions_bash.yaml         │
+            │   (Bash command rules)               │
+            └──────────────────────────────────────┘
 ```
 
 ## Data Flow
@@ -153,8 +161,9 @@ return defaults[category]
 
 ### Config Loading
 - **When:** Once per hook invocation (each tool call)
-- **Cost:** ~5-10ms (YAML parse + regex compilation)
+- **Cost:** ~5-10ms (load + merge three files + regex compilation)
 - **Optimization:** Could cache in memory if needed
+- **Process:** HookConfig loads and merges three split files automatically
 
 ### Command Parsing
 - **When:** Every Bash tool call
@@ -173,20 +182,35 @@ return defaults[category]
 
 ## Configuration File Structure
 
-### Logical Organization
+### Split Files Organization
 
+The configuration is split into **three separate YAML files** (automatically merged by `HookConfig`):
+
+⚠️ **IMPORTANT: Edit the correct file based on your rule type!**
+
+| File | Edit For | Contains |
+|------|----------|----------|
+| **tool_permissions_defaults.yaml** | Logging settings or category defaults | `logging:` and `defaults:` sections |
+| **tool_permissions_rules.yaml** | Rules for non-Bash tools (Read, Write, Edit, TaskCreate, etc.) | `rules:` section with tool_name_pattern |
+| **tool_permissions_bash.yaml** | Rules for Bash commands (git, rm, find, etc.) | `bash_rules:` section with command_pattern |
+
+**1. tool_permissions_defaults.yaml**
 ```yaml
-# 1. Metadata
-logging: {...}
-defaults: {...}
+logging: {...}      # Log file location and settings
+defaults: {...}     # Default behaviors by category (read/write/other)
+```
 
-# 2. General Tool Rules (Read, Write, Edit, etc.)
+**2. tool_permissions_rules.yaml**
+```yaml
 rules:
-  - Always-allow tools (TodoWrite, Skill, Read)
-  - Deny rules
-  - Ask rules
+  - Always-allow tools (TodoWrite, Skill, Read, etc.)
+  - Deny rules (block dangerous patterns)
+  - Allow rules (specific safe operations)
+  - Ask rules (fallback for unknown tools)
+```
 
-# 3. Bash-Specific Rules
+**3. tool_permissions_bash.yaml**
+```yaml
 bash_rules:
   - Path safety (project-specific)
   - Git safety (deny dangerous, allow safe)
@@ -200,6 +224,12 @@ bash_rules:
   - GitHub CLI
   - Runtime conditionals (precondition_script)
 ```
+
+### Why Split?
+
+- **Defaults:** Rarely changes, good to isolate
+- **Tool Rules:** Different semantics from Bash rules
+- **Bash Rules:** Large section, specific to command parsing
 
 ### Rule Ordering Strategy
 

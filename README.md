@@ -94,13 +94,13 @@ See `COMMUNICATION.md` for detailed message formats and workflows.
 This workflow is designed to work with three separate repositories:
 
 ### inav/
-- **Your fork:** https://github.com/sensei-hacker/inav_unofficial_targets
+- **Your fork:** https://github.com/YOUR-FORK/inav
 - **Official upstream:** https://github.com/iNavFlight/inav
 - **Description:** INAV flight controller firmware (C/C99, embedded systems)
 - **License:** GPL
 
 ### inav-configurator/
-- **Your fork:** https://github.com/sensei-hacker/inav-configurator
+- **Your fork:** https://github.com/YOUR-FORK/inav-configurator
 - **Official upstream:** https://github.com/iNavFlight/inav-configurator
 - **Description:** Desktop configuration GUI (JavaScript/Electron)
 - **License:** GPL

@@ -167,6 +167,14 @@ One-sentence summary of what this project accomplishes.
 ---
 ```
 
+**⚠️ Never put anything else on the `### <emoji> project-name` heading
+line** — no trailing notes like "— READY TO COMPLETE" or "(needs review)".
+`project_ops.py` parses that exact line to find/remove/update entries; a
+trailing annotation caused real INDEX.md corruption (March and July 2026 —
+see the `fix-project-ops-script` project) by breaking the match while the
+tool reported success. Put notes in the entry body instead (e.g. a
+`**Note:**` line).
+
 ### summary.md Template
 
 ```markdown

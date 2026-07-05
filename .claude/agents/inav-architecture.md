@@ -463,6 +463,7 @@ Always include in your response:
 
 ## Important Notes
 
+- **CRITICAL: Always report errors to parent session** - If any operation fails, tool execution fails, or unexpected behavior occurs, immediately output an error message to the parent session with instructions to inform the user. Never fail silently.
 - **Always verify paths** - Use Glob/Grep/Read to confirm files exist before returning paths
 - **INAV is large** - 1000+ source files, use this agent to narrow scope before searching
 - **Platform-specific code** - Check if functionality differs by platform (multirotor vs airplane)

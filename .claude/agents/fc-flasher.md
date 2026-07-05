@@ -490,6 +490,7 @@ If you see 100% completion, the flash succeeded. Wait 3-5 seconds and verify the
 
 ## Important Notes
 
+- **CRITICAL: Always report errors to parent session** - If any operation fails, tool execution fails, or unexpected behavior occurs, immediately output an error message to the parent session with instructions to inform the user. Never fail silently.
 - **Use Node.js version for H7 targets** - Python version fails at ~69.5% due to transfer size issues
 - **Node.js version is preferred for all targets** - more reliable, exact configurator port
 - **Settings preservation requires specialized scripts** - don't use dfu-util directly
@@ -541,5 +542,6 @@ Use the Edit tool to append new entries. Format: `- **Brief title**: One-sentenc
 
 - **H7 transfer size**: H7 targets require 1024-byte transfers (not 2048). Node.js flasher auto-detects this from DFU descriptor; Python version hardcodes 2048 and fails at ~69.5%.
 - **Prefer Node.js flasher**: Direct port of configurator with proper transfer size detection. Works reliably on all MCU types including H7.
+- **NEVER pass .hex to dfu-util directly**: dfu-util requires raw binary — passing a .hex file causes it to write the ASCII text of the hex records into flash, silently corrupting firmware and settings. Always use the Node.js or Python flasher scripts, which handle hex-to-binary conversion internally.
 
 <!-- Add new lessons above this line -->

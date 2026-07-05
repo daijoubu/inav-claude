@@ -148,10 +148,21 @@ If you have "network problems", that's the sandbox. use dangerouslyDisableSandbo
 
 ### 4. Create PR
 
-Use `/create-pr` skill or:
+**⚠️ First, unset `GITHUB_TOKEN`/`GH_TOKEN` for this step only.** If either is set in the
+environment, `gh` always prefers it over the credential from `gh auth login` — and the
+`GITHUB_TOKEN` commonly present in this environment is a fine-grained PAT scoped to
+specific repos/permissions, which typically lacks `Pull requests: write` on
+`iNavFlight/inav` (you're a contributor there, not a maintainer). This produces
+`GraphQL: Resource not accessible by personal access token (createPullRequest)`.
+The default logged-in `gh auth login` credential (classic PAT, broader `repo`/`workflow`
+scope) can create the PR. Unset just for this command, then restore for everything else
+(releases, other API calls may rely on the fine-grained PAT's specific grants):
+
 ```bash
-gh pr create --title "Title" --body "Description"
+env -u GITHUB_TOKEN -u GH_TOKEN gh pr create --title "Title" --body "Description"
 ```
+
+Use `/create-pr` skill or the command above.
 IMPORTANT **Never open a pull request to the master branch**
 
 **PR Description Requirements:**
@@ -216,4 +227,5 @@ Use the Edit tool to append new entries. Format: `- **Brief title**: One-sentenc
 - **Test all code paths, not just the happy path**: When refactoring code from one module to another, you must drive every branch of the extracted code — not just the path you happened to exercise. In the PR #2603 refactor, the backup path was tested but the entire post-flash restore flow (onFlashComplete, port polling, executeRestore, error dialog) was untested until we actually flashed the hardware FC. Static analysis (Qodo) caught four bugs in those untested paths that live testing missed.
 - **Test before push, not after**: All five testing checklist items must be complete before `git push` and `gh pr create` — not during or after PR creation. Creating a PR signals the work is ready for review.
 - **Fix conflicts in the existing PR's branch, don't create a duplicate PR**: When asked to fix merge conflicts in an existing PR, resolve them by pushing to that PR's head branch — not by creating a new branch and a new PR. A link to `/pull/NNNN/conflicts` means fix *that* PR.
+- **`gh pr create` needs the default credential, not `GITHUB_TOKEN`**: if `GITHUB_TOKEN`/`GH_TOKEN` is set to a fine-grained PAT, unset it for just the `gh pr create` command (`env -u GITHUB_TOKEN -u GH_TOKEN gh pr create ...`) — see the note above this section for why.
 <!-- Add new lessons above this line -->

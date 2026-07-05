@@ -353,6 +353,7 @@ Use this checklist for each file:
 
 ## Important Notes
 
+- **CRITICAL: Always report errors to parent session** - If any operation fails, tool execution fails, or unexpected behavior occurs, immediately output an error message to the parent session with instructions to inform the user. Never fail silently.
 - **Focus on changed code** - Don't review entire files, just changes
 - **Be specific** - Always include file names and line numbers
 - **Explain WHY** - Don't just say "bad", explain the impact

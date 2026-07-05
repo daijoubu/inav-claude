@@ -12,7 +12,10 @@ Commands:
     resume <project>      Move project back to active (from blocked/backburner)
     cancel <project>      Move project to completed as cancelled
     audit                 Check for inconsistencies between dirs and indexes
-    audit --fix           Fix simple inconsistencies automatically
+    audit --fix            Fix simple inconsistencies automatically
+    audit --fix --dry-run  Preview what --fix would do without changing anything
+    audit --fix --force    Also delete a stale copy when a duplicate exists in
+                            completed/ (without --force this is reported, not fixed)
 """
 
 import re
@@ -61,11 +64,17 @@ def find_entry_bounds(content, project_name):
 
     Returns (start, end) character positions, or (None, None) if not found.
     The range includes the entry header through the trailing '---' separator.
+
+    Matches the project name immediately after the status emoji, followed by
+    either end-of-line or whitespace + trailing annotation text (e.g. a
+    manager-appended "— READY TO COMPLETE" note). Requires the character right
+    after the name to be whitespace/EOL (not e.g. '-') so a name that is a
+    hyphenated prefix of another project's name (e.g. "fix-gps-hwversion" vs.
+    "fix-gps-hwversion-detection") can never match the wrong heading.
     """
-    # Match the project header line with any status emoji
     pattern = re.compile(
         r'^### (?:' + '|'.join(re.escape(e) for e in STATUS_EMOJI.values()) + r') '
-        + re.escape(project_name) + r'\s*$',
+        + re.escape(project_name) + r'(?:\s.*)?$',
         re.MULTILINE
     )
     match = pattern.search(content)
@@ -123,23 +132,36 @@ def remove_entry_from_index(index_path, project_name):
     return removed
 
 
+def count_active_index_entries(content):
+    """Count active-INDEX entries by status, straight from raw '### <emoji>'
+    occurrences. This is the single source of truth for counting — both
+    update_index_counts() (which writes the header) and cmd_audit() (which
+    verifies it) call this, so the two can never independently drift the way
+    they used to (one counted raw heading occurrences, the other counted
+    unique dict keys built from parsed heading text — which silently
+    under-counted whenever two headings shared exactly the same text, or
+    over/under-counted on any other parsing difference between the two).
+    """
+    active = 0
+    backburner = 0
+    blocked = 0
+    for emoji, status in EMOJI_STATUS.items():
+        count = len(re.findall(r'^### ' + re.escape(emoji) + r' ', content, re.MULTILINE))
+        if status in ('TODO', 'IN_PROGRESS'):
+            active += count
+        elif status == 'BACKBURNER':
+            backburner += count
+        elif status == 'BLOCKED':
+            blocked += count
+    return active, backburner, blocked
+
+
 def update_index_counts(index_path):
     """Recount projects by status and update the header counts."""
     content = read_file(index_path)
 
     if index_path == INDEX_PATH:
-        # Count by status emoji in active INDEX
-        active = 0
-        backburner = 0
-        blocked = 0
-        for emoji, status in EMOJI_STATUS.items():
-            count = len(re.findall(r'^### ' + re.escape(emoji) + r' ', content, re.MULTILINE))
-            if status in ('TODO', 'IN_PROGRESS'):
-                active += count
-            elif status == 'BACKBURNER':
-                backburner += count
-            elif status == 'BLOCKED':
-                blocked += count
+        active, backburner, blocked = count_active_index_entries(content)
 
         # Update the counts line
         content = re.sub(
@@ -240,6 +262,22 @@ def extract_metadata_from_entry(entry_text):
     return project_type, priority, summary
 
 
+def _extract_section_paragraph(content, heading_pattern):
+    """Grab a full paragraph following a '## Heading' line, collapsed to one
+    line. Stops at the next blank line or '##' heading, whichever comes
+    first. Using re.DOTALL + a non-greedy stop condition (instead of the old
+    `(.+)` with no DOTALL) is what prevents multi-line paragraphs from being
+    silently cut off after their first line.
+    """
+    match = re.search(
+        heading_pattern + r'\s*\n+(.+?)(?:\n\s*\n|\n##|\Z)',
+        content, re.DOTALL
+    )
+    if not match:
+        return None
+    return ' '.join(match.group(1).split())
+
+
 def extract_summary_from_dir(project_dir):
     """Try to extract a one-line summary from a project's summary.md."""
     summary_path = project_dir / "summary.md"
@@ -259,11 +297,16 @@ def extract_summary_from_dir(project_dir):
     if prio_match:
         priority = prio_match.group(1).strip()
 
-    # Look for Overview section
-    overview_match = re.search(r'## Overview\s*\n+(.+)', content)
-    if overview_match:
-        summary = overview_match.group(1).strip()
-    else:
+    # Prefer an explicit Resolution/Outcome section — it describes what
+    # actually happened. Falling back to Overview (which only describes the
+    # original problem/intent) is why merged work used to read as abandoned.
+    summary = _extract_section_paragraph(content, r'## (?:Resolution|Outcome)')
+    if summary is None:
+        overview = _extract_section_paragraph(content, r'## Overview')
+        if overview is not None:
+            summary = f"{overview} (see summary.md for resolution/PR details)"
+
+    if summary is None:
         # Fall back to first non-header, non-metadata line
         for line in content.split('\n'):
             line = line.strip()
@@ -275,6 +318,28 @@ def extract_summary_from_dir(project_dir):
     return project_type, priority, summary
 
 
+def find_raw_heading_line(content, project_name):
+    """Loosely check whether project_name appears in some '###' heading line,
+    even if the strict pattern in find_entry_bounds() didn't match it.
+
+    Used to tell "genuinely not present" apart from "present but our regex
+    missed it" so callers can fail loudly instead of guessing — this is what
+    let the March/July incidents corrupt INDEX.md silently.
+
+    Requires project_name to appear as a whole token (not preceded/followed
+    by a word or hyphen character), so a name that is a hyphenated prefix or
+    suffix of another project's name (e.g. "fix-gps-hwversion" vs.
+    "fix-gps-hwversion-detection") can't produce a false match — otherwise
+    completing the shorter project would misreport the longer project's
+    unrelated heading as a malformed match for itself.
+    """
+    token_pattern = re.compile(r'(?<![\w-])' + re.escape(project_name) + r'(?![\w-])')
+    for line in content.split('\n'):
+        if line.startswith('### ') and token_pattern.search(line):
+            return line
+    return None
+
+
 def find_project_dir(project_name):
     """Find which directory a project lives in. Returns (path, location_type) or (None, None)."""
     for dirname, loc_type in [(ACTIVE_DIR, 'active'), (BLOCKED_DIR, 'blocked'),
@@ -283,6 +348,47 @@ def find_project_dir(project_name):
         if candidate.is_dir():
             return candidate, loc_type
     return None, None
+
+
+def is_master_project(project_dir):
+    """A master project contains a milestones/ subdir (e.g. port-inav-rp2350)."""
+    return (project_dir / "milestones").is_dir()
+
+
+def check_not_milestone(project_name):
+    """Print an error and return False if project_name is actually a milestone
+    subdir of some master project; return True (nothing printed) otherwise.
+
+    Shared by all lifecycle commands so the guard message can't drift out of
+    sync between them the way the 5 copy-pasted inline versions could.
+    """
+    milestone_owner = find_milestone_owner(project_name)
+    if milestone_owner:
+        print(f"  ERROR: '{project_name}' is a milestone of master project "
+              f"'{milestone_owner}', not a standalone project.")
+        print(f"  Milestones are tracked within the master project's own files, "
+              f"not via project_ops.py lifecycle commands.")
+        return False
+    return True
+
+
+def find_milestone_owner(project_name):
+    """If project_name is actually a milestone subdir of some master project,
+    return that master project's name. Otherwise return None.
+
+    Guards lifecycle commands against being pointed at a milestone name
+    (e.g. "M3") and fabricating a bogus top-level INDEX/completed entry for
+    it, since find_project_dir() only looks one level deep and would
+    otherwise report "no directory found" while still proceeding.
+    """
+    for dirname in (ACTIVE_DIR, BLOCKED_DIR, BACKBURNER_DIR, COMPLETED_DIR):
+        if not dirname.is_dir():
+            continue
+        for candidate in dirname.iterdir():
+            if candidate.is_dir() and is_master_project(candidate):
+                if (candidate / "milestones" / project_name).is_dir():
+                    return candidate.name
+    return None
 
 
 def move_project_dir(project_name, from_dir, to_dir):
@@ -305,11 +411,17 @@ def move_project_dir(project_name, from_dir, to_dir):
 
 
 def update_directory_reference(index_path, project_name, new_location):
-    """Update the Directory: reference in the specific project's INDEX entry only."""
+    """Update the Directory: reference in the specific project's INDEX entry only.
+
+    Returns True if a matching entry was found and updated, False otherwise —
+    callers must check this rather than assume success, since a silent no-op
+    here is the same failure class as issues #5/#6 (directory moves, INDEX.md
+    quietly doesn't).
+    """
     content = read_file(index_path)
     start, end = find_entry_bounds(content, project_name)
     if start is None:
-        return
+        return False
     entry = content[start:end]
     entry = re.sub(
         r'(\*\*(?:Directory|Project Directory|Location):\*\* `)([^`]+)(`)',
@@ -318,19 +430,29 @@ def update_directory_reference(index_path, project_name, new_location):
     )
     content = content[:start] + entry + content[end:]
     write_file(index_path, content)
+    return True
 
 
 def update_entry_status(index_path, project_name, new_emoji, new_status_text):
-    """Update the status emoji and text in an INDEX entry header."""
+    """Update the status emoji and text in an INDEX entry header.
+
+    Returns True if a matching entry's heading was found and updated, False
+    otherwise. Callers must check this — writing the file back unconditionally
+    regardless of whether the substitution actually matched anything is what
+    let 'block'/'backburner'/'resume' silently leave INDEX.md unchanged after
+    moving a project's directory (same failure class as issues #5/#6).
+    """
     content = read_file(index_path)
 
-    # Update the header line emoji
+    # Update the header line emoji (same trailing-annotation tolerance as find_entry_bounds)
     old_pattern = re.compile(
         r'^(### )(?:' + '|'.join(re.escape(e) for e in STATUS_EMOJI.values()) + r')( '
-        + re.escape(project_name) + r')\s*$',
+        + re.escape(project_name) + r')(?=\s|$)',
         re.MULTILINE
     )
-    content = old_pattern.sub(f'\\g<1>{new_emoji}\\g<2>', content)
+    content, n = old_pattern.subn(f'\\g<1>{new_emoji}\\g<2>', content)
+    if n == 0:
+        return False
 
     # Update Status field
     start, end = find_entry_bounds(content, project_name)
@@ -344,6 +466,25 @@ def update_entry_status(index_path, project_name, new_emoji, new_status_text):
         content = content[:start] + entry + content[end:]
 
     write_file(index_path, content)
+    return True
+
+
+def report_missing_index_entry(content, project_name, action="updated"):
+    """Print a diagnostic for a failed INDEX.md entry match, distinguishing a
+    genuinely absent entry from one present but unmatched by our patterns —
+    the ambiguity that let stale/inconsistent entries silently survive past
+    lifecycle operations (issues #5/#6). Always returns False so callers can
+    write `return report_missing_index_entry(...)`.
+    """
+    stray_line = find_raw_heading_line(content, project_name)
+    if stray_line:
+        print(f"  ERROR: '{project_name}' appears in an INDEX.md heading but it did not "
+              f"match the expected format — refusing to guess whether it was {action}.")
+        print(f"  Heading found: {stray_line.strip()!r}")
+        print(f"  Fix the heading manually and re-run.")
+    else:
+        print(f"  ERROR: '{project_name}' has no matching heading in INDEX.md — nothing was {action}.")
+    return False
 
 
 # ============================================================
@@ -353,6 +494,10 @@ def update_entry_status(index_path, project_name, new_emoji, new_status_text):
 def cmd_complete(project_name):
     """Complete a project: move dir, remove from INDEX, add to completed/INDEX."""
     print(f"\nCompleting project: {project_name}")
+    success = True
+
+    if not check_not_milestone(project_name):
+        return False
 
     # 1. Find the project directory
     proj_dir, loc_type = find_project_dir(project_name)
@@ -385,8 +530,12 @@ def cmd_complete(project_name):
     removed = remove_entry_from_index(INDEX_PATH, project_name)
     if removed:
         print(f"  Removed from INDEX.md")
+    elif find_raw_heading_line(content, project_name):
+        # Present but our pattern didn't match it — refuse to guess, unlike a
+        # genuinely absent entry (which is a legitimate idempotent re-run).
+        success = report_missing_index_entry(content, project_name, action="removed")
     else:
-        print(f"  Not found in INDEX.md (already removed?)")
+        print(f"  Not found in INDEX.md (nothing to remove)")
 
     # 4. Check if already in completed INDEX
     completed_content = read_file(COMPLETED_INDEX_PATH)
@@ -402,13 +551,20 @@ def cmd_complete(project_name):
     update_index_counts(COMPLETED_INDEX_PATH)
     print(f"  Updated counts in both indexes")
 
-    print(f"  DONE")
-    return True
+    if success:
+        print(f"  DONE")
+    else:
+        print(f"  DONE WITH ERRORS — see above")
+    return success
 
 
 def cmd_cancel(project_name, reason=None):
     """Cancel a project: move dir to completed, update indexes."""
     print(f"\nCancelling project: {project_name}")
+    success = True
+
+    if not check_not_milestone(project_name):
+        return False
 
     reason = reason or "Cancelled"
 
@@ -421,9 +577,14 @@ def cmd_cancel(project_name, reason=None):
             return False
 
     # 2. Remove from active INDEX
+    content = read_file(INDEX_PATH)
     removed = remove_entry_from_index(INDEX_PATH, project_name)
     if removed:
         print(f"  Removed from INDEX.md")
+    elif find_raw_heading_line(content, project_name):
+        success = report_missing_index_entry(content, project_name, action="removed")
+    else:
+        print(f"  Not found in INDEX.md (nothing to remove)")
 
     # 3. Add to completed INDEX as cancelled
     completed_content = read_file(COMPLETED_INDEX_PATH)
@@ -436,13 +597,19 @@ def cmd_cancel(project_name, reason=None):
     # 4. Update counts
     update_index_counts(INDEX_PATH)
     update_index_counts(COMPLETED_INDEX_PATH)
-    print(f"  DONE")
-    return True
+    if success:
+        print(f"  DONE")
+    else:
+        print(f"  DONE WITH ERRORS — see above")
+    return success
 
 
 def cmd_block(project_name, reason=None):
     """Block a project: move dir to blocked/, update INDEX status."""
     print(f"\nBlocking project: {project_name}")
+
+    if not check_not_milestone(project_name):
+        return False
 
     proj_dir, loc_type = find_project_dir(project_name)
     if proj_dir is None:
@@ -459,7 +626,8 @@ def cmd_block(project_name, reason=None):
         return False
 
     # Update INDEX entry
-    update_entry_status(INDEX_PATH, project_name, STATUS_EMOJI['BLOCKED'], 'BLOCKED')
+    if not update_entry_status(INDEX_PATH, project_name, STATUS_EMOJI['BLOCKED'], 'BLOCKED'):
+        return report_missing_index_entry(read_file(INDEX_PATH), project_name, action="updated")
     update_directory_reference(INDEX_PATH, project_name, f'blocked/{project_name}/')
 
     if reason:
@@ -490,6 +658,9 @@ def cmd_backburner(project_name):
     """Move a project to backburner."""
     print(f"\nMoving to backburner: {project_name}")
 
+    if not check_not_milestone(project_name):
+        return False
+
     proj_dir, loc_type = find_project_dir(project_name)
     if proj_dir is None:
         print(f"  ERROR: No directory found for '{project_name}'")
@@ -504,7 +675,8 @@ def cmd_backburner(project_name):
         print(f"  ERROR: Cannot backburner from {loc_type}/")
         return False
 
-    update_entry_status(INDEX_PATH, project_name, STATUS_EMOJI['BACKBURNER'], 'BACKBURNER')
+    if not update_entry_status(INDEX_PATH, project_name, STATUS_EMOJI['BACKBURNER'], 'BACKBURNER'):
+        return report_missing_index_entry(read_file(INDEX_PATH), project_name, action="updated")
     update_directory_reference(INDEX_PATH, project_name, f'backburner/{project_name}/')
     update_index_counts(INDEX_PATH)
     print(f"  DONE")
@@ -514,6 +686,9 @@ def cmd_backburner(project_name):
 def cmd_resume(project_name):
     """Resume a project from blocked or backburner back to active."""
     print(f"\nResuming project: {project_name}")
+
+    if not check_not_milestone(project_name):
+        return False
 
     proj_dir, loc_type = find_project_dir(project_name)
     if proj_dir is None:
@@ -529,16 +704,28 @@ def cmd_resume(project_name):
         print(f"  ERROR: Cannot resume from {loc_type}/")
         return False
 
-    update_entry_status(INDEX_PATH, project_name, STATUS_EMOJI['IN_PROGRESS'], 'IN PROGRESS')
+    if not update_entry_status(INDEX_PATH, project_name, STATUS_EMOJI['IN_PROGRESS'], 'IN PROGRESS'):
+        return report_missing_index_entry(read_file(INDEX_PATH), project_name, action="updated")
     update_directory_reference(INDEX_PATH, project_name, f'active/{project_name}/')
     update_index_counts(INDEX_PATH)
     print(f"  DONE")
     return True
 
 
-def cmd_audit(fix=False):
-    """Check for inconsistencies between directories and indexes."""
+def cmd_audit(fix=False, dry_run=False, force=False):
+    """Check for inconsistencies between directories and indexes.
+
+    fix:      apply automatic fixes where safe
+    dry_run:  print what --fix would do without changing anything (implies fix)
+    force:    also allow the one auto-fix that is destructive (deleting a
+              stale active/blocked/backburner copy when a completed/ copy
+              already exists) — without --force that case is only reported
+    """
+    if dry_run:
+        fix = True
     print("\n=== Project Audit ===\n")
+    if dry_run:
+        print("(DRY RUN — no changes will be made)\n")
     issues = []
 
     # Parse active INDEX
@@ -579,8 +766,16 @@ def cmd_audit(fix=False):
                     loc_dir = {'active': ACTIVE_DIR, 'blocked': BLOCKED_DIR,
                                'backburner': BACKBURNER_DIR}[loc]
                     stale_dir = loc_dir / name
-                    print(f"    FIX: Removing stale {loc}/{name}/ (completed copy exists)")
-                    shutil.rmtree(str(stale_dir))
+                    if not force:
+                        print(f"    WARNING: '{name}' exists in both {loc}/ and completed/ — "
+                              f"NOT auto-deleting the {loc}/ copy (it may be live work, as "
+                              f"'feature-frskyf405-target' was). Resolve manually, or re-run "
+                              f"audit --fix --force to delete the {loc}/ copy.")
+                    elif dry_run:
+                        print(f"    [DRY RUN] Would remove stale {loc}/{name}/ (completed copy exists) [--force]")
+                    else:
+                        print(f"    FIX: Removing stale {loc}/{name}/ (completed copy exists) [--force]")
+                        shutil.rmtree(str(stale_dir))
         issues.append(('DUPLICATES', len(duplicates)))
     else:
         print("DUPLICATES: None found")
@@ -598,9 +793,12 @@ def cmd_audit(fix=False):
         for name in sorted(completed_in_index):
             print(f"  {name}")
             if fix:
-                removed = remove_entry_from_index(INDEX_PATH, name)
-                if removed:
-                    print(f"    FIX: Removed from INDEX.md")
+                if dry_run:
+                    print(f"    [DRY RUN] Would remove from INDEX.md")
+                else:
+                    removed = remove_entry_from_index(INDEX_PATH, name)
+                    if removed:
+                        print(f"    FIX: Removed from INDEX.md")
         issues.append(('COMPLETED_IN_INDEX', len(completed_in_index)))
     else:
         print("\nCOMPLETED IN ACTIVE INDEX: None found")
@@ -621,8 +819,11 @@ def cmd_audit(fix=False):
                     expected_dir = BLOCKED_DIR / name
                 elif status == 'BACKBURNER':
                     expected_dir = BACKBURNER_DIR / name
-                expected_dir.mkdir(parents=True, exist_ok=True)
-                print(f"    FIX: Created {expected_dir.relative_to(PROJECTS_DIR)}/")
+                if dry_run:
+                    print(f"    [DRY RUN] Would create {expected_dir.relative_to(PROJECTS_DIR)}/")
+                else:
+                    expected_dir.mkdir(parents=True, exist_ok=True)
+                    print(f"    FIX: Created {expected_dir.relative_to(PROJECTS_DIR)}/")
         issues.append(('ORPHAN_ENTRIES', len(orphan_entries)))
     else:
         print("\nORPHAN INDEX ENTRIES: None found")
@@ -650,7 +851,9 @@ def cmd_audit(fix=False):
                             'backburner': BACKBURNER_DIR}[actual]
                 to_dir = {'active': ACTIVE_DIR, 'blocked': BLOCKED_DIR,
                           'backburner': BACKBURNER_DIR}[expected]
-                if move_project_dir(name, from_dir, to_dir):
+                if dry_run:
+                    print(f"    [DRY RUN] Would move {actual}/{name}/ -> {expected}/{name}/")
+                elif move_project_dir(name, from_dir, to_dir):
                     update_directory_reference(INDEX_PATH, name, f'{expected}/{name}/')
                     print(f"    FIX: Moved {actual}/{name}/ -> {expected}/{name}/")
         issues.append(('MISMATCHES', len(mismatches)))
@@ -667,20 +870,27 @@ def cmd_audit(fix=False):
         for name in missing_completed:
             print(f"  {name}")
             if fix:
-                proj_dir = COMPLETED_DIR / name
-                project_type, priority, summary = extract_summary_from_dir(proj_dir)
-                summary = summary or f"Completed project: {name}"
-                add_entry_to_completed_index(name, summary, project_type, priority)
-                print(f"    FIX: Added to completed/INDEX.md")
+                if dry_run:
+                    print(f"    [DRY RUN] Would add to completed/INDEX.md")
+                else:
+                    proj_dir = COMPLETED_DIR / name
+                    project_type, priority, summary = extract_summary_from_dir(proj_dir)
+                    summary = summary or f"Completed project: {name}"
+                    add_entry_to_completed_index(name, summary, project_type, priority)
+                    print(f"    FIX: Added to completed/INDEX.md")
         issues.append(('MISSING_COMPLETED', len(missing_completed)))
     else:
         print("\nMISSING FROM COMPLETED INDEX: None found")
 
     # Check 6: Verify INDEX.md counts match reality
+    # Uses count_active_index_entries() — the same function update_index_counts()
+    # uses to WRITE the header — so verification can never diverge from the
+    # writer's own counting logic (the old code re-derived counts from a
+    # dict keyed by parsed heading text, a second code path that could
+    # silently disagree with the writer, e.g. by collapsing two identical
+    # heading strings into one dict entry).
     print(f"\nCOUNT VERIFICATION:")
-    active_count = sum(1 for s in index_projects.values() if s in ('TODO', 'IN_PROGRESS'))
-    backburner_count = sum(1 for s in index_projects.values() if s == 'BACKBURNER')
-    blocked_count = sum(1 for s in index_projects.values() if s == 'BLOCKED')
+    active_count, backburner_count, blocked_count = count_active_index_entries(index_content)
 
     count_match = re.search(
         r'\*\*Active:\*\* (\d+) \| \*\*Backburner:\*\* (\d+) \| \*\*Blocked:\*\* (\d+)',
@@ -698,18 +908,24 @@ def cmd_audit(fix=False):
             print(f"    Stated:  Active={stated_active}, Backburner={stated_backburner}, Blocked={stated_blocked}")
             print(f"    Actual:  Active={active_count}, Backburner={backburner_count}, Blocked={blocked_count}")
             if fix:
-                update_index_counts(INDEX_PATH)
-                print(f"    FIX: Updated counts")
+                if dry_run:
+                    print(f"    [DRY RUN] Would update counts")
+                else:
+                    update_index_counts(INDEX_PATH)
+                    print(f"    FIX: Updated counts")
             issues.append(('WRONG_COUNTS', 1))
     else:
-        print(f"  Could not find counts in INDEX.md header")
+        print(f"  Could not find counts in INDEX.md header (unparseable/missing — cannot verify)")
+        issues.append(('UNPARSEABLE_COUNTS', 1))
 
     # Summary
     print(f"\n{'='*50}")
     if issues:
         total = sum(count for _, count in issues)
         print(f"TOTAL ISSUES: {total}")
-        if fix:
+        if dry_run:
+            print(f"DRY RUN — no changes were made. Re-run without --dry-run to apply.")
+        elif fix:
             print(f"Applied automatic fixes where possible.")
         else:
             print(f"Run with --fix to auto-fix simple issues.")
@@ -730,37 +946,45 @@ def main():
         if len(sys.argv) < 3:
             print("Usage: project_ops.py complete <project-name>")
             sys.exit(1)
-        cmd_complete(sys.argv[2])
+        if not cmd_complete(sys.argv[2]):
+            sys.exit(1)
 
     elif command == 'cancel':
         if len(sys.argv) < 3:
             print("Usage: project_ops.py cancel <project-name> [reason]")
             sys.exit(1)
         reason = ' '.join(sys.argv[3:]) if len(sys.argv) > 3 else None
-        cmd_cancel(sys.argv[2], reason)
+        if not cmd_cancel(sys.argv[2], reason):
+            sys.exit(1)
 
     elif command == 'block':
         if len(sys.argv) < 3:
             print("Usage: project_ops.py block <project-name> [reason]")
             sys.exit(1)
         reason = ' '.join(sys.argv[3:]) if len(sys.argv) > 3 else None
-        cmd_block(sys.argv[2], reason)
+        if not cmd_block(sys.argv[2], reason):
+            sys.exit(1)
 
     elif command == 'backburner':
         if len(sys.argv) < 3:
             print("Usage: project_ops.py backburner <project-name>")
             sys.exit(1)
-        cmd_backburner(sys.argv[2])
+        if not cmd_backburner(sys.argv[2]):
+            sys.exit(1)
 
     elif command == 'resume':
         if len(sys.argv) < 3:
             print("Usage: project_ops.py resume <project-name>")
             sys.exit(1)
-        cmd_resume(sys.argv[2])
+        if not cmd_resume(sys.argv[2]):
+            sys.exit(1)
 
     elif command == 'audit':
         fix = '--fix' in sys.argv
-        cmd_audit(fix=fix)
+        dry_run = '--dry-run' in sys.argv
+        force = '--force' in sys.argv
+        if not cmd_audit(fix=fix, dry_run=dry_run, force=force):
+            sys.exit(1)
 
     else:
         print(f"Unknown command: {command}")

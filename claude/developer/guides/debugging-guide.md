@@ -116,6 +116,20 @@ gdb inav/build_sitl/bin/SITL.elf
 
 ---
 
+## Root Cause Analysis
+
+**⚠️ Important:** When you find a bug, don't just fix the symptom. Use the root cause analysis framework to understand:
+- **What failed?** (symptom)
+- **Why?** (immediate cause)  
+- **Why wasn't it detected?** (systemic cause - often the real issue)
+- **What else might fail?** (systemic scope)
+
+A bug that fails silently can hide for months. Asking "Why wasn't this detected?" often reveals the real problem.
+
+**Read:** `root-cause-analysis.md` for the complete framework with real-world examples.
+
+---
+
 ## References
 
 - **CLI access:** `/mwptools` skill
