@@ -372,7 +372,7 @@ The sandbox filesystem permissions (in `.claude/settings.json` under `sandbox.fi
 }
 ```
 
-**Workaround:** Use `dangerouslyDisableSandbox: true` in the Bash tool call, or use the Read tool instead of grep (Read tool is not subject to sandbox filesystem restrictions).
+**Workaround:** Use the Read tool instead of grep (the Read tool is not subject to sandbox filesystem restrictions). `.claude/hooks/*.log` is also in the sandbox read allowlist, so sandboxed grep on those files works. If something is still blocked, ask the user whether to extend the allowlist — do not disable the sandbox.
 
 ---
 

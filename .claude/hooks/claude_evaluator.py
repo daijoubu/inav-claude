@@ -41,12 +41,17 @@ class ClaudeEvaluator:
         self._initialize_client()
 
     def _get_api_key(self) -> Optional[str]:
-        """Get API key from settings.local.json or environment."""
-        # Try settings.local.json first (in ~/.claude/ or current directory)
+        """Get API key from ~/.claude/settings.local.json or environment.
+
+        Only the HOME settings file is consulted, never a repo-relative one:
+        a key stored inside the repository leaked into session transcripts and
+        sat one .gitignore mistake away from being committed. Note we do not
+        ask the user to export ANTHROPIC_API_KEY globally either — that would
+        switch Claude Code itself from subscription to API billing; the env
+        var remains only as a fallback for callers that set it explicitly.
+        """
         settings_paths = [
             Path.home() / '.claude' / 'settings.local.json',
-            Path('.claude/settings.local.json'),
-            Path('settings.local.json'),
         ]
 
         for settings_path in settings_paths:

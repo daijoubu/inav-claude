@@ -124,7 +124,12 @@ If uncommitted changes exist, commit them first (see `CRITICAL-BEFORE-COMMIT.md`
 git push -u origin branch-name
 ```
 
-If you have "network problems", that's the sandbox. use dangerouslyDisableSandbox: true
+Plain `git push` to origin is safe and approved — never force-push. If the push fails
+with "Network is unreachable" or "Connection refused", that's the sandbox blocking the
+operation — NOT a network outage. Retry once (`github.com` and `ssh.github.com` are
+allowlisted). If the sandbox still blocks this specific push, it is an approved
+exception: retry with `dangerouslyDisableSandbox: true`. Do not generalize this to
+other operations (see "Sandbox Restrictions" in the git-workflow skill).
 
 ### 4. Create PR
 
@@ -178,7 +183,10 @@ Reviewed with inav-code-review agent - no critical issues found.
 Fixes #1234
 ```
 
-If you have "network problems", that's the sandbox. use dangerouslyDisableSandbox: tru
+If `gh pr create` fails with network errors, that's the sandbox blocking an unapproved
+network operation — NOT a network outage. Do not disable the sandbox. Ask the user to
+approve the operation or run it manually (see "Sandbox Restrictions" in the git-workflow
+skill).
 
 ---
 

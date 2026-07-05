@@ -191,13 +191,18 @@ Prompt: "Check PR #11220 for bot comments"
 When using the `gh` command or the GitHub API, or SSH with GitHub:
 
 - You're running in a sandbox environment
-- May need to use `dangerouslyDisableSandbox: true` for network access
-- This is safe for GitHub API operations
+- `github.com`, `api.github.com`, `ssh.github.com`, and `uploads.github.com` are in
+  the sandbox network allowlist, so these operations normally work sandboxed
+- If a GitHub operation fails with network errors, that's the sandbox blocking it —
+  not a network outage. Don't disable the sandbox: ask the user to approve the
+  operation or run it manually (see "Sandbox Restrictions" in the git-workflow skill;
+  the only approved exception is plain `git push` to origin)
 
 **Example:**
 ```bash
 gh pr view 11220 --repo inavflight/inav
-# If this fails with network errors, retry with dangerouslyDisableSandbox
+# If this fails with network errors, that's a sandbox restriction — surface it
+# to the user rather than disabling the sandbox
 ```
 
 ---

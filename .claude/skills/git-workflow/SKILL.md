@@ -107,6 +107,12 @@ git push -f upstream master
 3. Ask the user if they want to approve the operation or handle it manually
 4. The user can run git commands directly (unsandboxed) if needed
 
+**One approved exception:** plain `git push` to origin (NEVER force-push). `github.com`
+and `ssh.github.com` are in the sandbox allowlist, so pushes normally work sandboxed;
+if the sandbox still blocks a push, retrying that one command with
+`dangerouslyDisableSandbox: true` is approved. Do not generalize this to any other
+operation — everything else follows the recognize-and-ask steps above.
+
 ## Repository Structure
 
 The INAV project consists of **three standalone repositories**:

@@ -113,7 +113,7 @@ cd inav-configurator
 git push -u origin your-branch-name
 ```
 
-*(If sandbox blocks SSH, or you see "network" problems: retry with `dangerouslyDisableSandbox: true`)*
+*(Plain `git push` to origin is safe and approved — never force-push. "Network" errors here mean the sandbox is blocking the push, not an outage. Retry once — `github.com` and `ssh.github.com` are allowlisted. If the sandbox still blocks this specific push, it is an approved exception: retry with `dangerouslyDisableSandbox: true`. Do not generalize this to other operations.)*
 
 ---
 
@@ -152,7 +152,7 @@ gh pr create --repo inavflight/inav \
 
 **For inav-configurator:** Use `inavflight/inav-configurator` repo, same base branches
 
-*(If sandbox blocks network access: retry with `dangerouslyDisableSandbox: true`)*
+*(If this fails with network errors, that's the sandbox — `api.github.com` is allowlisted, so retry once; if it still fails, tell the user so they can run it or fix the allowlist — don't disable the sandbox.)*
 
 ---
 

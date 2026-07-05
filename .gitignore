@@ -154,3 +154,6 @@ bloaty/
 
 # Lock files (transient state — not shared)
 claude/locks/*.lock
+
+# Local settings may hold machine-specific config; never rely on global gitignore for this
+.claude/settings.local.json

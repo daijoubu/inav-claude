@@ -7,11 +7,13 @@
     "_excludedCommands_disabled": ["git"],
     "filesystem": {
       "read": {
+        "_note": "known_hosts/config (non-secret) are needed for sandboxed git-over-SSH; private keys are deliberately NOT readable — auth goes through ssh-agent (unix sockets are allowed above via allowAllUnixSockets and the keyring/ssh write allowance)",
         "allow": [
           "/dev/ttyACM*",
           "/dev/ttyUSB*",
           ".claude/hooks/*.log",
-          "~/.ssh/*"
+          "~/.ssh/known_hosts",
+          "~/.ssh/config"
         ]
       },
       "write": {
@@ -30,6 +32,8 @@
       "allowAllUnixSockets": true,
       "allowedHosts": [
         "github.com",
+        "ssh.github.com",
+        "uploads.github.com",
         "www.betaflight.com",
         "datatracker.ietf.org",
         "eprint.iacr.org",
@@ -81,6 +85,8 @@
       "Bash(git status)",
       "Bash(git diff:*)",
       "Bash(git stash:*)",
+      "Bash(git push origin:*)",
+      "Bash(git push -u origin:*)",
       "Bash(git cherry-pick:*)",
       "Bash(git submodule add:*)",
       "Bash(gh pr checkout:*)",

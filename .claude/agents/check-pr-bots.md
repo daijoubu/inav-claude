@@ -120,19 +120,19 @@ Bot comments can come from various automated reviewers (qodo-code-review, github
 
 ## Sandbox Handling
 
-**Important**: GitHub API calls may fail in sandbox due to network restrictions.
+**Important**: `api.github.com` is in the sandbox network allowlist, so GitHub API
+calls normally work sandboxed.
 
 ### If API Calls Fail
 
 1. First attempt: Run commands normally
-2. If you see network/permission errors: Retry with `dangerouslyDisableSandbox: true` this is IMPORTANT!
-
-**This is safe for GitHub API operations.**
+2. If you see network errors: that's the sandbox blocking the operation, not a network
+   outage. Retry once; if it still fails, report the exact error back to the caller
+   rather than disabling the sandbox — the sandbox allowlist may need a deliberate
+   update, which is the user's call.
 
 ```bash
-# Example with sandbox disabled
 gh api repos/inavflight/inav/pulls/11220/comments
-# (Tool will automatically use dangerouslyDisableSandbox if needed)
 ```
 
 ---

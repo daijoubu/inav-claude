@@ -353,7 +353,11 @@ Once in DFU mode, run `dfu-util -l` to verify, then retry flash.
 
 ## CRITICAL: Sandbox Permissions
 
-**You are running in a sandbox by default.** Accessing USB devices (DFU mode) and serial ports requires disabling the sandbox.
+**You are running in a sandbox by default.** DFU flashing needs raw USB access
+(`/dev/bus/usb/*` via libusb), which the sandbox cannot mediate — only serial tty
+devices can be allowlisted. This is a **justified exception**: disabling the sandbox
+here is deliberate, documented, and limited to hardware-access commands. Never use
+it for network operations or anything else.
 
 ### When to Disable Sandbox
 
