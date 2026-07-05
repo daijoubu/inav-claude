@@ -395,6 +395,8 @@ When you discover something important about PERMISSIONS MANAGEMENT that will hel
    
    From March to July 2026, the agent was trying to edit a non-existent `tool_permissions.yaml`, causing silent failures for months. Documentation has been corrected to clearly indicate which file to edit.
 
+5. **Hook API keys: HOME settings file only, never the env var** (2026-07-05): API keys for hooks (e.g. claude_evaluator.py) belong in `~/.claude/settings.local.json` — the HOME one, outside any repo. Never in the repo's `.claude/settings.local.json` (a key there leaked into session transcripts and is one gitignore mistake from being committed; the evaluator now deliberately ignores repo-relative settings files). And never as a globally exported `ANTHROPIC_API_KEY` — that switches Claude Code itself from subscription auth to API billing.
+
 5. **Fail loudly, not silently** (2026-07-01): Silent failures are catastrophic for agent accountability. If validation fails, edit fails, or commit fails, IMMEDIATELY output a clear error message to the parent session. The user must NEVER wonder if their permission request was handled. Check for errors at every step and report them explicitly.
 
 <!-- Add new lessons above this line -->
