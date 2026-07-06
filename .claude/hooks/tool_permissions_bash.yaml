@@ -278,6 +278,13 @@ bash_rules:
     category: write
     decision: allow
 
+  - name: "Allow cat >> to test files (.c, .cc, .h)"
+    command_pattern: "^cat$"
+    argument_pattern: "^>>\\s+.*(test|tests)/.*\\.(c|cc|h|cpp|cxx)$"
+    category: write
+    decision: allow
+    message: "Appending test code to unit test files allowed"
+
   - name: "Ask for cat > to other locations"
     command_pattern: "^cat$"
     argument_pattern: "(^|\\s)>>?"
@@ -329,7 +336,7 @@ bash_rules:
   # ===================================================================
 
   - name: "Allow build tools and compilers"
-    command_pattern: "^(cd|cmake|make|dfu-util|npm|pip|pio|gcc|g\\+\\+|clang|arm-none-eabi-.*|ninja)$"
+    command_pattern: "^(cd|cmake|make|dfu-util|npm|pip|pio|gcc|g\\+\\+|clang|arm-none-eabi-.*|ninja|time)$"
     category: other
     decision: allow
 
@@ -439,6 +446,12 @@ bash_rules:
     category: write
     decision: allow
     message: "Copy WASM SITL artifacts to configurator resources directory"
+
+  - name: "Allow unit test executables (build_test/src/test/unit/*)"
+    command_pattern: "^(\\./)?(gps_dronecan_unittest|dronecan_application_unittest|dronecan_messages_unittest)$"
+    category: other
+    decision: allow
+    message: "Unit test executable allowed for development testing"
 
   - name: "Allow SITL and special executables"
     command_pattern: "^(pkill|kill|.*SITL\\.elf$|.*pdf_indexer\\.py$)"
@@ -589,6 +602,13 @@ bash_rules:
   # ===================================================================
   # Runtime Conditional Rules (Using precondition_script)
   # ===================================================================
+
+  - name: "Allow mkdir for standard build directories"
+    command_pattern: "^mkdir$"
+    argument_pattern: "^(-p\\s+)?(build_sitl|build_test|build)$"
+    category: write
+    decision: allow
+    message: "Creating standard CMake build directories (build_sitl, build_test, build)"
 
   - name: "Allow mkdir if directory exists"
     command_pattern: "^mkdir$"

@@ -185,6 +185,14 @@ rules:
     decision: allow
     message: "WASM runtime file modification allowed - active development"
 
+  - name: "Allow editing worktree source files (all projects)"
+    tool_name_pattern: "^(Write|Edit)$"
+    tool_input_patterns:
+      file_path: ".*/worktree-[a-z-]+/.*"
+    category: write
+    decision: allow
+    message: "Git worktree source file modification allowed (feature branch development)"
+
   - name: "Allow editing INAV firmware source files"
     tool_name_pattern: "^(Write|Edit)$"
     tool_input_patterns:
