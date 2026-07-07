@@ -84,6 +84,18 @@ Promote from backlog — include in this PR.
 - [x] Validate node ID input: warn (don't hard-block) if value is 126 or 127
 - Note: getSetting calls must be chained (not concurrent) — two simultaneous MSPV2_SETTING requests cause response race condition
 
+## Phase 6: SonarQube Cleanup (pre-existing findings)
+
+Surfaced 2026-07-07 via PR iNavFlight/inav-configurator#2673's SonarCloud diff (that PR's base is `maintenance-10.x`, which pulls in this branch's whole unpublished diff). 7 findings, all dating to June 2026 commits on this branch (Phase 5 bus-config section + async GetNodeInfo/param-GetSet MSP decode work). Orthogonal to PR #2673 and its firmware counterpart `iNavFlight/inav#11698` — no need to block either on this.
+
+- [ ] Web:S6853 (MAJOR) — `tabs/dronecan.html:11` — `dronecan-bitrate` label: i18n span has no static accessible text
+- [ ] Web:S6853 (MAJOR) — `tabs/dronecan.html:20` — `dronecan-node-id` label: same issue
+- [ ] Web:S6827 (MAJOR) — `tabs/dronecan.html:75` — `dronecan-save` anchor content not screen-reader accessible
+- [ ] javascript:S3800 (MAJOR) — `js/msp/MSPHelper.js:1660` — `decodeNumeric()` inconsistent return type
+- [ ] javascript:S2486 (MINOR) — `js/msp/MSPHelper.js:1683` — empty catch swallows exception
+- [ ] javascript:S7758 (MINOR) — `js/msp/MSPHelper.js:1613` — prefer `String.fromCodePoint()` over `String.fromCharCode()`
+- [ ] javascript:S7758 (MINOR) — `js/msp/MSPHelper.js:1650` — same as above
+
 ## Completion
 
 - [ ] All success criteria met
