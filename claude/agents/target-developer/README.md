@@ -9,6 +9,21 @@
 **Usage:** `./scripts/check_macro_typos.py <inav_checkout_root> --target TARGETNAME`
 **Created:** 2026-07-05 -- after DAKEFPVH743_SLIM's beeper was silently dead for exactly this reason; see the target-developer lessons-learned entry for the full incident and known false-positive patterns.
 
+### check_dma_conflicts.py
+**Purpose:** Flags STM32H7 DMA stream (`dmaopt`) collisions in a target's `timerHardware[]` table -- both timer-vs-timer (e.g. LED strip and a motor sharing a stream) and timer-vs-ADC (ADC1/2/3's DMA stream is hardcoded outside target.h, so nothing else catches this). Reports two severities: CERTAIN (a quad's first 4 motor/servo positions, or an always-active LED/ADC -- affects every build) vs NOTICE (position 4+ only, e.g. extra servo outputs -- not required for a quad but still worth fixing).
+**Usage:** `./scripts/check_dma_conflicts.py <inav_checkout_root> [--target TARGETNAME]` (omit `--target` to scan every STM32H7 target at once)
+**Created:** 2026-07-07 -- after a UART8/ADC/beeper investigation on AXISFLYINGH743PRO led to discovering this same bug class already confirmed on AEDROXH7 and DAKEFPVH743PRO. A full-tree run immediately found the AEDROXH7 fix (PR #11629/#11630) had itself introduced a *new* instance of the bug -- see the README's "Cross-target pin matches confirm AF-validity, not board wiring" pattern entry for how that was traced. Also found 4 more previously-unknown CERTAIN cases (KAKUTEH7WING, SEQUREH7, TBS_LUCID_H7_WING, TBS_LUCID_H7_WING_MINI) on the first full-tree run -- reported to the manager for tracking rather than fixed inline.
+
+### check_pin_conflicts.py
+**Purpose:** Flags a single physical MCU pin assigned to more than one peripheral macro in the same target's target.h (e.g. `UART8_RX_PIN` and `SPI4_MISO_PIN` both `PE0`) -- a compiler can't catch this since each macro is an independent #define. Common benign case: two alternate chip variants (e.g. `MPU6000_CS_PIN`/`ICM42605_CS_PIN`) sharing one CS pin by design.
+**Usage:** `./scripts/check_pin_conflicts.py <inav_checkout_root> [--target TARGETNAME]`
+**Created:** 2026-07-07, alongside check_dma_conflicts.py.
+
+### run_target_checks.py
+**Purpose:** Driver that runs check_macro_typos.py, check_dma_conflicts.py, and check_pin_conflicts.py in one pass with consistent section headers. Run this before opening a PR for a new/modified target, or to verify a fix for any of these bug classes actually resolved it.
+**Usage:** `./scripts/run_target_checks.py <inav_checkout_root> [--target TARGETNAME]`
+**Created:** 2026-07-07. Add new standard checks by appending to its `CHECKS` list -- any script following the same `<inav_root> [--target NAME]` calling convention slots in directly.
+
 ## Data
 
 ### known_good_macros.txt
@@ -18,6 +33,17 @@
 
 ## Patterns
 
+### New-target PRs: post the hardware bring-up checklist
+
+For any PR that adds a **brand new** target (not an update to an existing
+one), post a PR comment with the hardware bring-up checklist from
+`raytools/fc_hardware_test_tools/checklist.txt`, trimmed to only the
+buses/features that board actually has (e.g. drop `UARTn` entries for UARTs
+the target doesn't define, drop `PINIO2` if the board only has one PINIO
+pin). This gets used later during physical hardware testing -- see
+`gh pr comment <PR> --repo iNavFlight/inav --body "..."` in the AXISFLYINGECOF4
+PR (#11692, added 2026-07-06) for the pattern.
+
 ### Porting/updating a target from a Betaflight config.h
 **See:** `claude/developer/docs/patterns/betaflight-config-to-inav-target.md` -- recurring
 translation rules (PINIO -> config.c permanentId, CAMERA_CONTROL_PIN has no consuming driver
@@ -25,3 +51,26 @@ prior to 10.0 -- it becomes a PWM-capable PINIO pin from 10.0 forward, new-chip-
 pattern, MCU->CMakeLists mapping, reference-target selection) plus known gaps in the existing
 `src/utils/bf2inav.py` generator. Created 2026-07-06 after three concurrent tasks (DAKEFPVF405
 update, AxisFlying H743 PRO, AxisFlying ECO F4) turned out to share this exact pattern.
+
+### Cross-target pin matches confirm AF-validity, not board wiring
+When many unrelated vendors' targets use the same pin for the same peripheral (e.g. nearly every
+STM32H7 target puts ADC1's channels on PC0/PC1), that widespread match rules out an AF-invalid
+pin choice -- it couldn't compile/work on any of those boards otherwise -- but says nothing about
+whether *this specific* physical board's traces/solder actually connect that MCU pin through to
+the connector for that peripheral.
+
+Matching one specific sibling target, even a field-verified working one, is *not* stronger
+evidence, and it's tempting to think it is -- don't. New targets are routinely created by copying
+an existing target's file and editing it for the new board (see the bf2inav.py / reference-target
+pattern above); a pin left over from that copy, never actually updated for the new schematic,
+matches the source target exactly. That's indistinguishable in target.h from a pin that's correct
+because the boards genuinely share a schematic -- and "copied a working target, then didn't update
+every pin for the new hardware" is itself one of the most common ways a target ships broken. So a
+match against any other target, no matter how it's chosen, only ever establishes AF-validity; it
+cannot establish that this physical board is wired the way its target.h claims. Only a
+datasheet/schematic/continuity check against the specific board settles that. Created 2026-07-07
+while investigating AXISFLYINGH743PRO's non-working UART8: firmware-level checks (pin/AF/RCC/IRQ
+wiring matched several other H7 targets exactly) came back clean, which ruled out an AF-invalid
+mapping but could not rule out this target's UART8 pins being an un-updated leftover from
+whatever target it was based on -- exactly the failure mode a continuity or schematic check
+against the real board is needed for.
