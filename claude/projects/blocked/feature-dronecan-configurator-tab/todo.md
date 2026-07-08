@@ -88,18 +88,19 @@ Promote from backlog — include in this PR.
 
 Surfaced 2026-07-07 via PR iNavFlight/inav-configurator#2673's SonarCloud diff (that PR's base is `maintenance-10.x`, which pulls in this branch's whole unpublished diff). 7 findings, all dating to June 2026 commits on this branch (Phase 5 bus-config section + async GetNodeInfo/param-GetSet MSP decode work). Orthogonal to PR #2673 and its firmware counterpart `iNavFlight/inav#11698` — no need to block either on this.
 
-- [ ] Web:S6853 (MAJOR) — `tabs/dronecan.html:11` — `dronecan-bitrate` label: i18n span has no static accessible text
-- [ ] Web:S6853 (MAJOR) — `tabs/dronecan.html:20` — `dronecan-node-id` label: same issue
-- [ ] Web:S6827 (MAJOR) — `tabs/dronecan.html:75` — `dronecan-save` anchor content not screen-reader accessible
-- [ ] javascript:S3800 (MAJOR) — `js/msp/MSPHelper.js:1660` — `decodeNumeric()` inconsistent return type
-- [ ] javascript:S2486 (MINOR) — `js/msp/MSPHelper.js:1683` — empty catch swallows exception
-- [ ] javascript:S7758 (MINOR) — `js/msp/MSPHelper.js:1613` — prefer `String.fromCodePoint()` over `String.fromCharCode()`
-- [ ] javascript:S7758 (MINOR) — `js/msp/MSPHelper.js:1650` — same as above
+- [x] Web:S6853 (MAJOR) — `tabs/dronecan.html:11` — `dronecan-bitrate` label: i18n span has no static accessible text
+- [x] Web:S6853 (MAJOR) — `tabs/dronecan.html:20` — `dronecan-node-id` label: same issue
+- [x] Web:S6827 (MAJOR) — `tabs/dronecan.html:75` — `dronecan-save` anchor content not screen-reader accessible
+- [x] javascript:S3800 (MAJOR) — `js/msp/MSPHelper.js:1660` — `decodeNumeric()` inconsistent return type
+- [x] javascript:S2486 (MINOR) — `js/msp/MSPHelper.js:1683` — empty catch swallows exception
+- [x] javascript:S7758 (MINOR) — `js/msp/MSPHelper.js:1613` — prefer `String.fromCodePoint()` over `String.fromCharCode()`
+- [x] javascript:S7758 (MINOR) — `js/msp/MSPHelper.js:1650` — same as above
+
+Fixed 2026-07-07 on commit `e3f1c44e`, pushed to origin. 68/68 tests pass, no behavior change. Orthogonal to PR #2673/#11698 — did not block either.
 
 ## Completion
 
-- [ ] All success criteria met
-- [ ] Wait for PR 2645 (`fix/accordion-duplicate-handlers`) to merge to `maintenance-10.x`
-- [ ] Rebase this branch onto updated `maintenance-10.x` — accordion removal commit becomes no-op; drop it with `git rebase -i` before pushing so the DroneCAN PR stays clean
-- [ ] PR opened against `maintenance-10.x`
-- [ ] Send completion report to manager
+- [x] All success criteria met
+- [x] ~~Wait for PR 2645 (`fix/accordion-duplicate-handlers`) to merge to `maintenance-10.x`~~ — PR #2645 itself was closed without merging 2026-06-03, but the fix it targeted landed via a different PR on `maintenance-9.x` (merged by sensei-hacker) and will reach `maintenance-10.x` through the normal `maintenance-9.x` → `master` → `maintenance-10.x` merge flow. No action needed on this branch. Resolved 2026-07-07.
+- [x] PR opened against `maintenance-10.x` — **iNavFlight/inav-configurator#2671**, opened 2026-07-04
+- [x] Send completion report to manager — Phase 6 report 2026-07-07 15:30

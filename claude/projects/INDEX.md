@@ -3,7 +3,7 @@
 This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKED).
 
 **Last Updated:** 2026-07-07
-**Active:** 6 | **Backburner:** 10 | **Blocked:** 2
+**Active:** 2 | **Backburner:** 11 | **Blocked:** 6
 
 > **Completed projects:** See [completed/INDEX.md](completed/INDEX.md)
 > **Blocked projects:** See `blocked/` directory
@@ -39,22 +39,6 @@ This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKE
 
 ## Active Projects
 
-### 🚧 fix-dronecan-driver-rework
-
-**Status:** IN PROGRESS | **Type:** Bug Fix | **Priority:** HIGH
-**Created:** 2026-06-11 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
-
-Fix two confirmed bugs in the H743 FDCAN driver (FIFO vs Queue mode; queue depth 32→3) and a design defect in the F765 bxCAN SW TX queue (insertion-ordered FIFO → priority inversion under load). Introduces ISR-driven shallow-buffer architecture with NVIC masking at libcanard call sites. Phase 3 rebases all pending DroneCAN branches onto the clean base.
-
-Phase 1+2 combined into a single PR, #11607 — CI green, real-airframe flight on MATEKF765SE and overnight stability on H7+F7 all passed, marked ready for review 2026-06-25. **Still open, not yet merged.**
-
-Phase 3 rebase (onto `fix/h7-dronecan-driver`, i.e. PR #11607's branch — done ahead of merge): `feature/dronecan-getnodeinfo` → `feature/dronecan-param-getset` → {`fix/dronecan-gps-health-guard`, `feature/dronecan-dna-server`} all rebased, force-pushed, and verified clean on full build matrix (F4/F7/H7/AT32/SITL) with no unmasked libcanard call sites, 2026-07-04. `feature/dronecan-dna-configurator` needed no rebase (still based on maintenance-10.x). Remaining Phase 3 items (`feature/dronecan-magnetometer`, `feature/canbus-errors-blackbox`) blocked — their branches don't exist yet.
-
-**Directory:** `active/fix-dronecan-driver-rework/`
-**Repository:** inav (firmware) | **Branch:** `fix/h7-dronecan-driver` → PR #11607 (open, replaces #11560 which is now closed)
-
----
-
 ### 🚧 feature-formationflight-diagnostic-logging
 
 **Status:** IN PROGRESS | **Type:** Feature | **Priority:** MEDIUM
@@ -64,9 +48,129 @@ Give FormationFlight (external ESP-NOW drone swarm/formation telemetry project) 
 
 **Directory:** `active/feature-formationflight-diagnostic-logging/`
 **Repository:** FormationFlight (external, https://github.com/FormationFlight/FormationFlight, branch `master`) + inav (firmware, `maintenance-10.x`)
-**Coordination:** must sequence `blackbox.c` slow-frame edits with `feature-canbus-errors-blackbox` — both touch the same struct/array/function triplet
+**Coordination:** touches the same `blackbox.c` slow-frame struct/array/function triplet as `feature-canbus-errors-blackbox`, but per 2026-07-07 clarification this branch's blackbox changes are a local troubleshooting tool only and won't be merged upstream, so no real merge conflict to manage
 
 ---
+
+### 🚧 feature-canbus-errors-blackbox
+
+**Status:** IN PROGRESS | **Type:** Feature | **Priority:** MEDIUM
+**Created:** 2026-02-14 | **Started:** 2026-07-07 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
+
+Log CAN bus error statistics (TEC, REC, LEC, bus-off count, RX drop count) to the Blackbox slow frame. Makes intermittent CAN bus problems diagnosable from flight logs.
+
+**Unblocked 2026-07-07:** previously waiting on `fix-dronecan-driver-rework` PR #11607 to merge. Now branching directly off `fix/h7-dronecan-driver` (#11607's branch) instead, same pattern as the other 4 stacked DroneCAN branches — will rebase onto `maintenance-10.x` once #11607 merges. `PLAN.md` was found stale (written before the driver rework landed) and rewritten same day: the bus-off counter already exists (no `dronecan.c`/`.h` changes needed after all), the originally-assumed `tx_dropped`/`tx_queue_hwm`/`rx_buffer_hwm` struct fields don't exist, and a real RX-drop-count getter + pool allocator stats getter exist but weren't in the original plan. Revised scope: 6 fields, `blackbox.c` only.
+
+**Directory:** `active/feature-canbus-errors-blackbox/`
+**Repository:** inav (firmware) | **Branch:** `feature/canbus-errors-blackbox` (off `fix/h7-dronecan-driver`) → target `maintenance-10.x`
+**Plan:** `active/feature-canbus-errors-blackbox/PLAN.md`
+
+---
+
+## Blocked Projects
+
+**Reclassified 2026-07-07:** The 5 DroneCAN projects below were previously marked IN PROGRESS because a draft PR existed, but none had active dev work pending — all were purely waiting on a merge or a review, matching this file's own BLOCKED definition ("waiting on external dependency") rather than IN PROGRESS ("actively being worked on"). Moved here for consistency with `feature-dronecan-getnodeinfo`, which was already correctly BLOCKED for the same underlying reason. (`feature-canbus-errors-blackbox` was blocked for the same reason too, but was unblocked and moved to Active the same day — see above.)
+
+### 🚫 fix-dronecan-driver-rework
+
+**Status:** BLOCKED | **Type:** Bug Fix | **Priority:** HIGH
+**Created:** 2026-06-11 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
+
+Fix two confirmed bugs in the H743 FDCAN driver (FIFO vs Queue mode; queue depth 32→3) and a design defect in the F765 bxCAN SW TX queue (insertion-ordered FIFO → priority inversion under load). Introduces ISR-driven shallow-buffer architecture with NVIC masking at libcanard call sites. Phase 3 rebases all pending DroneCAN branches onto the clean base.
+
+Phase 1+2 combined into a single PR, #11607 — CI green, real-airframe flight on MATEKF765SE and overnight stability on H7+F7 all passed, marked ready for review 2026-06-25. **Still open, not yet merged.**
+
+Phase 3 rebase (onto `fix/h7-dronecan-driver`, i.e. PR #11607's branch — done ahead of merge): `feature/dronecan-getnodeinfo` → `feature/dronecan-param-getset` → {`fix/dronecan-gps-health-guard`, `feature/dronecan-dna-server`} all rebased, force-pushed, and verified clean on full build matrix (F4/F7/H7/AT32/SITL) with no unmasked libcanard call sites, 2026-07-04. `feature/dronecan-dna-configurator` needed no rebase (still based on maintenance-10.x). Remaining Phase 3 item `feature/dronecan-magnetometer` still blocked — branch doesn't exist yet. `feature/canbus-errors-blackbox` branch created 2026-07-07 (see Active Projects above), also stacked on this PR pending merge.
+
+**Blocked on:** awaiting review/merge of PR #11607 — code, tests, and flight verification all complete; no further dev work pending. This is the root of the whole DroneCAN PR stack.
+
+**Directory:** `blocked/fix-dronecan-driver-rework/`
+**Repository:** inav (firmware) | **Branch:** `fix/h7-dronecan-driver` → PR #11607 (open, replaces #11560 which is now closed)
+
+---
+
+### 🚫 feature-dronecan-getnodeinfo
+
+**Status:** BLOCKED | **Type:** Feature | **Priority:** MEDIUM-HIGH
+**Created:** 2026-05-31 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
+
+Code complete. Node struct extended with version fields, GetNodeInfo request/response implemented, MSP2_INAV_DRONECAN_NODE_INFO extended to 119-byte wire format. Full build matrix (F4/F7/H7/AT32/SITL) and 13/13 unit tests passing. Rebased onto `fix/h7-dronecan-driver` 2026-07-04, no unmasked call sites found — merged into the `feature/dronecan-param-getset` PR (#11683) rather than opened standalone, per the "may be combined with getnodeinfo" plan.
+
+**Blocked on:** `fix-dronecan-driver-rework` PR #11607 merging to `maintenance-10.x` — PR #11683 is currently stacked on the unmerged #11607 branch and can't come out of draft until that lands.
+
+**Directory:** `blocked/feature-dronecan-getnodeinfo/`
+**Repository:** inav (firmware) | **Branch:** `feature/dronecan-getnodeinfo`
+
+---
+
+### 🚫 feature-dronecan-param-getset
+
+**Status:** BLOCKED | **Type:** Feature | **Priority:** MEDIUM-HIGH
+**Created:** 2026-06-02 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
+
+On-demand GetNodeInfo, GetSet, ExecuteOpcode, RestartNode via an async MSP slot (grew from the original min/max-range param scope). Configurator: UI with range validation, i18n, and visual feedback on `feature/dronecan-configurator-tab`. Zero CRITICAL/HIGH findings from review.
+
+Rebased onto `feature/dronecan-getnodeinfo` (itself rebased onto `fix/h7-dronecan-driver`) 2026-07-04. Opened as draft PR **iNavFlight/inav#11683** against `maintenance-10.x` — CI green, 24 files, +3173/-861, no reviews yet, user reviewing before taking out of draft. Configurator companion PR opened as **iNavFlight/inav-configurator#2671** (see `feature-dronecan-configurator-tab` below).
+
+**Blocked on:** stacked on unmerged `fix-dronecan-driver-rework` PR #11607, so can't be merged until that lands; secondarily awaiting user review before dropping draft.
+
+**Directory:** `blocked/feature-dronecan-param-getset/`
+**Repository:** inav (firmware) + inav-configurator | **Branch:** `feature/dronecan-param-getset` → PR #11683 | `feature/dronecan-configurator-tab` → PR #2671
+
+---
+
+### 🚫 feature-dronecan-dna-server
+
+**Status:** BLOCKED | **Type:** Feature | **Priority:** MEDIUM
+**Created:** 2026-06-03 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
+
+Code complete (firmware + configurator). Full UAVCAN v0 3-stage UID handshake, top-down node ID assignment, conflict detection, persistent allocation table, configurator UI. Full build matrix (F4/F7/H7/AT32/SITL) clean; 16/16 firmware DNA-server tests and 29/29 application tests passing. Hardware-verified end-to-end on KAKUTEH7WING. Three independent firmware review passes (two caught rebase-conflict regressions — a lost 16-bit field mask and a lost `static` qualifier — both fixed and re-verified) plus one configurator pass, all findings resolved.
+
+Rebased onto current `feature/dronecan-param-getset`/`feature/dronecan-configurator-tab` tips and opened as draft PRs 2026-07-04: firmware **iNavFlight/inav#11688** (stacked on #11607 + #11683), configurator **iNavFlight/inav-configurator#2672** (stacked on #2671). DNA server work itself is complete and ready for review; commented on reference issue daijoubu/inav#4 2026-07-07 cross-linking #11688.
+
+**Blocked on:** stacked on unmerged #11607 and #11683 — no further dev work planned unless prerequisite PR review cycles cascade changes here.
+
+**Directory:** `blocked/feature-dronecan-dna-server/`
+**Repository:** inav (firmware) + inav-configurator | **Branch:** `feature/dronecan-dna-server` → PR #11688 | `feature/dronecan-dna-configurator` → PR #2672
+**Reference:** daijoubu/inav #4
+
+---
+
+### 🚫 review-dronecan-gps-node-health
+
+**Status:** BLOCKED | **Type:** Review / Bug Fix | **Priority:** MEDIUM-HIGH
+**Created:** 2026-06-06 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
+
+Code complete on branch `fix/dronecan-gps-health-guard`. Health guards on all three GPS handlers, node ID filtering, covariance fix, GPS time formula aligned to spec, stale timeout aligned to UAVCAN spec (3500ms), configurator UI updated. Full build matrix clean. Rebased onto `feature/dronecan-param-getset` and re-verified 2026-07-04. Opened 2026-07-07: firmware **iNavFlight/inav#11698**, configurator **iNavFlight/inav-configurator#2673** (both draft, both against `maintenance-10.x`).
+
+**Blocked on:** PRs #11698/#2673 are stacked (via `feature/dronecan-param-getset`) on unmerged #11607 and #11683 — can't come out of draft until those land.
+
+**Directory:** `blocked/review-dronecan-gps-node-health/`
+**Repository:** inav (firmware) + inav-configurator | **Branch:** `fix/dronecan-gps-health-guard` → PR #11698 (firmware) | PR #2673 (configurator)
+
+---
+
+### 🚫 feature-dronecan-configurator-tab
+
+**Status:** BLOCKED | **Type:** Feature | **Priority:** MEDIUM-HIGH
+**Created:** 2026-04-25 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
+
+DroneCAN tab in inav-configurator showing detected nodes, health status, mode, uptime, sensor data, and (via param-getset) parameter get/set with range validation. Colour-coded health indicators, 2-second auto-refresh. 35 commits.
+
+Opened as draft PR **iNavFlight/inav-configurator#2671** against `maintenance-10.x` 2026-07-04 per user request, cross-linked with #11683. Phase 3 (node software/hardware version) still blocked on `feature-dronecan-getnodeinfo`, currently unmerged inside PR #11683. Phase 6 SonarQube cleanup (7 pre-existing findings) completed 2026-07-07, commit `e3f1c44e`.
+
+**Resolved 2026-07-07:** PR **2645** (`fix/accordion-duplicate-handlers`) — the prerequisite this project was originally waiting on — was closed without merging (closed by sensei-hacker 2026-06-03, not daijoubu) and will never merge. The duplicate accordion-handler / `disable_3d_acceleration` double-init bug it targeted was fixed via a different PR merged to `maintenance-9.x` by sensei-hacker, and will reach `maintenance-10.x` through the normal `maintenance-9.x` → `master` → `maintenance-10.x` merge flow. No action needed on this branch.
+
+**Blocked on:** no technical blocker of its own (different repo, not stacked) — held to stay in sync with the firmware PR chain, plus awaiting user review before dropping draft.
+
+**Directory:** `blocked/feature-dronecan-configurator-tab/`
+**Repository:** inav-configurator | **Branch:** `feature/dronecan-configurator-tab` → PR #2671
+
+---
+
+---
+
+## Backburner Projects
 
 ### ⏸️ feature-auto-compass-orientation
 **Status:** BACKBURNER | **Type:** Feature | **Priority:** MEDIUM
@@ -110,32 +214,6 @@ Add DroneCAN magnetometer/compass driver. Receive MagneticFieldStrength (1001), 
 
 ---
 
-### 🚧 review-dronecan-gps-node-health
-**Status:** IN PROGRESS (draft PRs open) | **Type:** Review / Bug Fix | **Priority:** MEDIUM-HIGH
-**Created:** 2026-06-06 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
-
-Code complete on branch `fix/dronecan-gps-health-guard`. Health guards on all three GPS handlers, node ID filtering, covariance fix, GPS time formula aligned to spec, stale timeout aligned to UAVCAN spec (3500ms), configurator UI updated. Full build matrix clean. Rebased onto `feature/dronecan-param-getset` and re-verified 2026-07-04. Its holding condition (open alongside `dronecan-dna-server`) is now satisfied — dna-server's draft PRs (#11688/#2672) opened 2026-07-04 — so the manager asked the developer to open this as a draft PR too, 2026-07-05. Opened 2026-07-07: firmware **iNavFlight/inav#11698**, configurator **iNavFlight/inav-configurator#2673** (both draft, both against `maintenance-10.x`).
-
-**Directory:** `active/review-dronecan-gps-node-health/`
-**Repository:** inav (firmware) + inav-configurator | **Branch:** `fix/dronecan-gps-health-guard` → PR #11698 (firmware) | PR #2673 (configurator)
-
----
-
-### 🚫 feature-canbus-errors-blackbox
-
-**Status:** BLOCKED | **Type:** Feature | **Priority:** MEDIUM
-**Created:** 2026-02-14 | **Assignee:** Developer | **Assignment:** 📝 Planned
-
-Add CAN bus error statistics (TEC, REC, LEC, bus-off count, TX dropped) to Blackbox slow frame. Makes intermittent CAN bus problems diagnosable from flight logs.
-
-**Blocked on:** `fix-dronecan-driver-rework` Phase 2 — Phase 2 reworks the F7 driver and extends `canardProtocolStatus_t` with tec/rec/lec/tx_dropped fields. Once Phase 2 PR merges, branch off updated `maintenance-10.x` and implement. (PR #11560 is being converted to draft and replaced by Phase 2.)
-
-**Directory:** `blocked/feature-canbus-errors-blackbox/`
-**Repository:** inav (firmware) | **Branch:** create off `maintenance-10.x` after Phase 2 merges
-**Plan:** `blocked/feature-canbus-errors-blackbox/PLAN.md`
-
----
-
 ### ⏸️ feature-dronecan-node-stats
 
 **Status:** BACKBURNER| **Type:** Feature | **Priority:** MEDIUM
@@ -146,64 +224,6 @@ Poll DroneCAN nodes for transport statistics (tx/rx transfer counts, error rates
 **Backburner condition:** Developer has too many in-flight task assignments; `feature-canbus-errors-blackbox` is higher priority. Deprioritized 2026-07-05.
 **Directory:** `backburner/feature-dronecan-node-stats/`
 **Repository:** inav (firmware) | **Branch:** `maintenance-10.x`
-
----
-
-### 🚧 feature-dronecan-dna-server
-
-**Status:** IN PROGRESS (draft PRs open) | **Type:** Feature | **Priority:** MEDIUM
-**Created:** 2026-06-03 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
-
-Code complete (firmware + configurator). Full UAVCAN v0 3-stage UID handshake, top-down node ID assignment, conflict detection, persistent allocation table, configurator UI. Full build matrix (F4/F7/H7/AT32/SITL) clean; 16/16 firmware DNA-server tests and 29/29 application tests passing. Hardware-verified end-to-end on KAKUTEH7WING. Three independent firmware review passes (two caught rebase-conflict regressions — a lost 16-bit field mask and a lost `static` qualifier — both fixed and re-verified) plus one configurator pass, all findings resolved.
-
-Rebased onto current `feature/dronecan-param-getset`/`feature/dronecan-configurator-tab` tips and opened as draft PRs 2026-07-04: firmware **iNavFlight/inav#11688** (stacked on #11607 + #11683), configurator **iNavFlight/inav-configurator#2672** (stacked on #2671). Draft status is solely because they're stacked on unmerged prerequisites — DNA server work itself is complete and ready for review. No further dev work planned unless prerequisite PR review cycles cascade changes here.
-
-**Directory:** `active/feature-dronecan-dna-server/`
-**Repository:** inav (firmware) + inav-configurator | **Branch:** `feature/dronecan-dna-server` → PR #11688 | `feature/dronecan-dna-configurator` → PR #2672
-**Reference:** daijoubu/inav #4
-
----
-
-### 🚧 feature-dronecan-configurator-tab
-
-**Status:** IN PROGRESS (draft PR open) | **Type:** Feature | **Priority:** MEDIUM-HIGH
-**Created:** 2026-04-25 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
-
-DroneCAN tab in inav-configurator showing detected nodes, health status, mode, uptime, sensor data, and (via param-getset) parameter get/set with range validation. Colour-coded health indicators, 2-second auto-refresh. 35 commits.
-
-Opened as draft PR **iNavFlight/inav-configurator#2671** against `maintenance-10.x` 2026-07-04 per user request, cross-linked with #11683. Phase 3 (node software/hardware version) still blocked on `feature-dronecan-getnodeinfo`, currently unmerged inside PR #11683.
-
-**Flag:** PR **2645** (`fix/accordion-duplicate-handlers`) — the prerequisite this project was originally waiting on — was **closed without merging** (closed by sensei-hacker 2026-06-03, not daijoubu). The duplicate accordion-handler / `disable_3d_acceleration` double-init bug it targeted is confirmed still present in `maintenance-10.x` and is **not** touched by #2671's 35 commits, so #2671 inherits (but does not introduce) that pre-existing bug. Not a regression from this project, but worth deciding whether to reopen/resurrect the accordion fix independently.
-
-**Directory:** `backburner/feature-dronecan-configurator-tab/`
-**Repository:** inav-configurator | **Branch:** `feature/dronecan-configurator-tab` → PR #2671
-
----
-
-### 🚫 feature-dronecan-getnodeinfo
-
-**Status:** BLOCKED | **Type:** Feature | **Priority:** MEDIUM-HIGH
-**Created:** 2026-05-31 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
-
-Code complete. Node struct extended with version fields, GetNodeInfo request/response implemented, MSP2_INAV_DRONECAN_NODE_INFO extended to 119-byte wire format. Full build matrix (F4/F7/H7/AT32/SITL) and 13/13 unit tests passing. Rebased onto `fix/h7-dronecan-driver` 2026-07-04, no unmasked call sites found — merged into the `feature/dronecan-param-getset` PR (#11683) rather than opened standalone, per the "may be combined with getnodeinfo" plan.
-
-**Blocked on:** `fix-dronecan-driver-rework` PR #11607 merging to `maintenance-10.x` — PR #11683 is currently stacked on the unmerged #11607 branch and can't come out of draft until that lands.
-
-**Directory:** `blocked/feature-dronecan-getnodeinfo/`
-**Repository:** inav (firmware) | **Branch:** `feature/dronecan-getnodeinfo`
-
----
-
-### 🚧 feature-dronecan-param-getset
-**Status:** IN PROGRESS (draft PR open) | **Type:** Feature | **Priority:** MEDIUM-HIGH
-**Created:** 2026-06-02 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
-
-On-demand GetNodeInfo, GetSet, ExecuteOpcode, RestartNode via an async MSP slot (grew from the original min/max-range param scope). Configurator: UI with range validation, i18n, and visual feedback on `feature/dronecan-configurator-tab`. Zero CRITICAL/HIGH findings from review.
-
-Rebased onto `feature/dronecan-getnodeinfo` (itself rebased onto `fix/h7-dronecan-driver`) 2026-07-04. Opened as draft PR **iNavFlight/inav#11683** against `maintenance-10.x` — CI green, 24 files, +3173/-861, no reviews yet, user reviewing before taking out of draft. Note: stacked on unmerged `fix-dronecan-driver-rework` PR #11607, so can't be merged until that lands. Configurator companion PR opened as **iNavFlight/inav-configurator#2671** (see `feature-dronecan-configurator-tab` below).
-
-**Directory:** `backburner/feature-dronecan-param-getset/`
-**Repository:** inav (firmware) + inav-configurator | **Branch:** `feature/dronecan-param-getset` → PR #11683 | `feature/dronecan-configurator-tab` → PR #2671
 
 ---
 
@@ -243,6 +263,20 @@ Track negative (charging) current from DroneCAN BMS nodes and bidirectional ADC 
 
 **Directory:** `backburner/feature-battery-charging-current/`
 **Repository:** inav (firmware) | **Branch:** `maintenance-10.x`
+
+---
+
+### ⏸️ feature-dronecan-battery-soc
+
+**Status:** BACKBURNER | **Type:** Feature | **Priority:** MEDIUM
+**Created:** 2026-07-07 | **Assignment:** 📝 Planned
+**Depends on:** none blocking; sequence after `feature-battery-charging-current` (same file)
+
+Extract SOC-related fields (`remaining_capacity_wh`, `full_charge_capacity_wh`, `state_of_charge_pct`, etc.) from DroneCAN `BatteryInfo`, currently ignored. New `battery_capacity_source` (ADC/CAN) setting with hybrid Wh→pct→integration fallback. Identified as an uncovered gap during a 2026-07-07 cross-check of `daijoubu/inav` issues against completed work — explicitly scoped out of both `review-dronecan-battery-monitor` and `feature-battery-charging-current` as "a separate future project."
+
+**Directory:** `backburner/feature-dronecan-battery-soc/`
+**Repository:** inav (firmware) | **Branch:** `maintenance-10.x`
+**Reference:** [daijoubu/inav#3](https://github.com/daijoubu/inav/issues/3)
 
 ---
 

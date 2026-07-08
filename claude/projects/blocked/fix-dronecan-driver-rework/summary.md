@@ -1,6 +1,6 @@
 # Project: DroneCAN CAN Driver Rework — TX Priority and ISR Architecture
 
-**Status:** 📋 TODO
+**Status:** 🚫 BLOCKED — was stale at 📋 TODO; code/tests/flight complete, PR #11607 open awaiting review/merge, no further dev work pending. Reclassified from IN PROGRESS 2026-07-07 (no active work happening, matches BLOCKED definition better than IN PROGRESS).
 **Priority:** HIGH
 **Type:** Bug Fix
 **Created:** 2026-06-11

@@ -64,7 +64,7 @@ Review DroneCAN battery monitor for correct node health monitoring and device as
 
 **Build Verification:** H7 (KAKUTEH7WING), F7 (MATEKF765SE), F4 (SPEEDYBEEF405WING), AT32 (IFLIGHT_BLITZ_AT435), SITL — all clean.
 
-**Ready for Submission:** Both firmware and configurator changes ready. Can be submitted together with GPS PR or as combined PR.
+**Submitted:** Folded into the GPS health-guard PR rather than submitted standalone — **iNavFlight/inav#11698** ("GPS node-ID/battery-ID filtering and node health guard"), currently OPEN/draft.
 
 ---
 
@@ -85,7 +85,7 @@ uBlox PVT `nano` field is `int32_t`; negative values near second boundaries wrap
 **Status:** COMPLETED (2026-06-08)
 **Type:** Bug Fix
 **Priority:** HIGH
-**PR:** [#11634](https://github.com/iNavFlight/inav/pull/11634) (against `release/9.1`) — OPEN
+**PR:** [#11634](https://github.com/iNavFlight/inav/pull/11634) (against `release/9.1`) — MERGED (2026-07-03)
 
 Fix hard fault in release/9.1 when switching GPS provider via CLI without reboot. Driver-based providers (MSP, FAKE) leave `gpsPort` NULL; a runtime provider change causes `serialRxBytesWaiting(NULL)` hard fault. Fix: null guards in `gpsUpdate()` and `gpsEnablePassthrough()`. Unit test added (4 cases). Full build matrix clean, hardware verified on KAKUTEH7WING.
 
@@ -207,7 +207,9 @@ PLL2 VCO frequency was subtly changed when PLL2M was made dynamic in PR #11596. 
 **Type:** Feature
 **Priority:** MEDIUM-HIGH
 
-Add MSP2 commands to expose DroneCAN node status and identity data. Node table, `MSP2_INAV_DRONECAN_NODES` (0x2042) and `MSP2_INAV_DRONECAN_NODE_INFO` (0x2043) implemented. PR open, awaiting review/merge.
+Add MSP2 commands to expose DroneCAN node status and identity data. Node table, `MSP2_INAV_DRONECAN_NODES` (0x2042) and `MSP2_INAV_DRONECAN_NODE_INFO` (0x2043) implemented.
+
+**PR:** [#11527](https://github.com/iNavFlight/inav/pull/11527) — MERGED (2026-05-28)
 
 ---
 
@@ -220,7 +222,7 @@ Add MSP2 commands to expose DroneCAN node status and identity data. Node table, 
 
 CAN peripherals stop communicating after INAV restart without power-cycling the network. Root causes identified and fixed in `fix/h7-dronecan-driver`: AutoRetransmission disabled (was flooding TX FIFO), TXBCR flush before CCCR.INIT clear on H7 bus-off recovery, recovery delay 1ms→20ms, FDCAN clock source corrected (APB1→PLL2), GPS provider leakthrough fixed.
 
-**Branch:** `fix/h7-dronecan-driver` (pushed, PR pending testing)
+**Branch:** `fix/h7-dronecan-driver` — **iNavFlight/inav#11607**, OPEN, CI green, flight-tested (see active `fix-dronecan-driver-rework`)
 **Repository:** inav (firmware)
 
 ---
@@ -325,7 +327,7 @@ Verify STM32H7xx HAL version and update if significantly behind latest (V1.11.5)
 
 Migrate STM32F7 CAN TX from polling/blocking to ISR-driven transmission. PR submitted, project complete.
 
-**PR:** [#11560](https://github.com/iNavFlight/inav/pull/11560) — OPEN
+**PR:** [#11560](https://github.com/iNavFlight/inav/pull/11560) — CLOSED without merging (2026-06-12), superseded by `fix-dronecan-driver-rework`'s PR #11607
 **Repository:** inav (firmware) | **Branch:** `maintenance-10.x`
 **Directory:** `completed/feature-stm32f7-can-tx-isr/`
 
@@ -389,6 +391,8 @@ HITL SD card fault injection test suite (Tests 7-11): transient failures, bit er
 **Priority:** HIGH
 
 Hardware validation of the HAL v1.2.2 → v1.3.3 upgrade on MATEKF765SE. All code complete; test DroneCAN battery monitor, CAN error recovery, and SD card baseline before opening PR.
+
+**PR:** [#11514](https://github.com/iNavFlight/inav/pull/11514) — MERGED (2026-05-23)
 
 ---
 

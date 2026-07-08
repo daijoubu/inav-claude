@@ -1,6 +1,6 @@
 # Project: feature-dronecan-dna-server
 
-**Status:** 📋 TODO
+**Status:** 🚫 BLOCKED — was stale at 📋 TODO; code/tests/hardware complete, PRs #11688 (fw) + #2672 (configurator) open in draft, stacked on unmerged #11607/#11683, no dev work pending until those merge. Reclassified from IN PROGRESS 2026-07-07.
 **Priority:** Medium
 **Type:** Feature
 **Created:** 2026-06-03

@@ -1,6 +1,6 @@
 # Project: DroneCAN Node Parameter Get/Set
 
-**Status:** 📋 TODO
+**Status:** 🚫 BLOCKED — was stale at 📋 TODO; code complete, zero CRITICAL/HIGH findings, PR #11683 open in draft, stacked on unmerged #11607, no dev work pending until it merges (user reviewing before dropping draft). Reclassified from IN PROGRESS 2026-07-07.
 **Priority:** MEDIUM-HIGH
 **Type:** Feature
 **Created:** 2026-06-02

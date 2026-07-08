@@ -1,6 +1,6 @@
 # Project: DroneCAN GPS — Health Guard, Node-ID Filter & FW Flight Detection
 
-**Status:** 🚧 IN PROGRESS
+**Status:** 🚫 BLOCKED — code complete, PRs #11698 (fw) + #2673 (configurator) open in draft, stacked on unmerged #11607/#11683, no dev work pending until those merge. Reclassified from IN PROGRESS 2026-07-07.
 **Priority:** MEDIUM-HIGH
 **Type:** Feature / Bug Fix
 **Created:** 2026-06-06

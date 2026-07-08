@@ -1,10 +1,24 @@
 # Project: Add DroneCAN Tab to INAV Configurator
 
-**Status:** 📋 TODO
+**Status:** 🚫 BLOCKED — code complete (Phase 6 done), PR #2671 open in draft with no remaining technical blocker of its own; kept in draft/BLOCKED pending user review + to stay in sync with the firmware-side PR chain. Reclassified from IN PROGRESS 2026-07-07 (no dev work pending).
 **Priority:** MEDIUM-HIGH
 **Type:** Feature
 **Created:** 2026-04-25
 **Estimated Effort:** 4-6 hours
+
+## Manager Note (2026-07-07)
+
+Code complete: Phases 1-6 all done (Phase 3 software/hardware version display still
+blocked on `feature-dronecan-getnodeinfo`, tracked as a known gap, not this project's
+scope). Opened as draft PR **iNavFlight/inav-configurator#2671** 2026-07-04. Phase 6
+SonarQube cleanup (7 pre-existing findings) completed 2026-07-07, commit `e3f1c44e`.
+
+Completion checklist previously named PR #2645 (`fix/accordion-duplicate-handlers`)
+merging as the last blocker. That PR was closed without merging 2026-06-03 and will
+never merge — but the duplicate-accordion bug it targeted was fixed via a different
+PR merged to `maintenance-9.x` by sensei-hacker, and will reach `maintenance-10.x`
+through the normal `maintenance-9.x` → `master` → `maintenance-10.x` merge flow. No
+action needed on this branch; blocker resolved 2026-07-07.
 
 ## Overview
 
