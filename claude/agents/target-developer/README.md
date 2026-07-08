@@ -24,8 +24,23 @@
 **Usage:** `./scripts/check_default_features.py <inav_checkout_root> [--target TARGETNAME]`
 **Created:** 2026-07-07 -- after AXISFLYINGH743PRO's ADC and OSD both looked hardware-broken (pins/wiring were correct, verified against the vendor's own Betaflight source) but were actually just never turned on, because target.h had no `DEFAULT_FEATURES` line at all. `check_macro_typos.py` can't catch this class of bug -- there's no wrong name to flag, the line is just missing.
 
+### check_board_identifier.py
+**Purpose:** Flags a `TARGET_BOARD_IDENTIFIER` that isn't exactly 4 characters, or that's shared with another target (both cause silent board mis-identification at runtime -- see the [[target-developer]] lesson on this).
+**Usage:** `./scripts/check_board_identifier.py <inav_checkout_root> [--target TARGETNAME]`
+**Created:** 2026-07-07 -- a full-tree run found 36 targets with a non-4-char identifier and 15 groups of targets sharing one, none reported as causing an actual problem yet but worth fixing on sight, especially for new targets where a fresh collision is easy to avoid.
+
+### check_serial_port_count.py
+**Purpose:** Two checks: (1) `SERIAL_PORT_COUNT` doesn't match VCP + `USE_UARTn` + `USE_SOFTSERIALn` actually defined -- skips any target.h with more than one `SERIAL_PORT_COUNT` `#define` (multi-variant boards like CLRACINGF4AIR need real preprocessing to check correctly, so it's left alone rather than guessed at). (2) `DEFAULT_FEATURES` includes `FEATURE_SOFTSERIAL` but no `USE_SOFTSERIALn` is defined at all -- confirmed harmless (every consumer gates on `#if defined(USE_SOFTSERIALn)`), but a reliable sign of copy-paste cruft, reported as NOTICE.
+**Usage:** `./scripts/check_serial_port_count.py <inav_checkout_root> [--target TARGETNAME]`
+**Created:** 2026-07-07 -- full-tree run: 0 CERTAIN (count mismatches) after excluding 9 multi-variant files, 10 NOTICE (dead `FEATURE_SOFTSERIAL` bit).
+
+### check_target_invariants.py
+**Purpose:** Three small single-rule regression guards bundled in one script (each is a handful of lines, none has ever fired on the current tree): `BEEPER_PWM_FREQUENCY` requires a `DEF_TIM(...TIM_USE_BEEPER...)` entry in target.c; `GYRO_n_EXTI_PIN`/`USE_GYRO_EXTI` requires a `BUSDEV_REGISTER_SPI_TAG` entry (the legacy `USE_IMU_xxx` gyro path is polled and never reads an EXTI pin); AT32 targets (detected via `target_at32f43x*(...)` in CMakeLists.txt) need every UART's TX pin explicitly defined, even as `NONE`, for RX-only ports -- the AT32 driver dereferences it unconditionally.
+**Usage:** `./scripts/check_target_invariants.py <inav_checkout_root> [--target TARGETNAME]`
+**Created:** 2026-07-07. All three checks: 0 findings across 233 targets -- pure regression guards, not backlog.
+
 ### run_target_checks.py
-**Purpose:** Driver that runs check_macro_typos.py, check_dma_conflicts.py, check_pin_conflicts.py, and check_default_features.py in one pass with consistent section headers. Run this before opening a PR for a new/modified target, or to verify a fix for any of these bug classes actually resolved it.
+**Purpose:** Driver that runs all of the above checks in one pass with consistent section headers. Run this before opening a PR for a new/modified target, or to verify a fix for any of these bug classes actually resolved it.
 **Usage:** `./scripts/run_target_checks.py <inav_checkout_root> [--target TARGETNAME]`
 **Created:** 2026-07-07. Add new standard checks by appending to its `CHECKS` list -- any script following the same `<inav_root> [--target NAME]` calling convention slots in directly.
 

@@ -31,10 +31,9 @@ Callers must provide one or more of:
 ## Core Capabilities
 
 ### 1. Target Analysis
-- Read and compare target configurations
+- Run `claude/agents/target-developer/scripts/run_target_checks.py <inav_root> --target NAME` first -- it covers macro typos, DMA/pin conflicts, DEFAULT_FEATURES, board identifier, serial port count, and a handful of other invariants statically. See its output for what's already automated before doing the equivalent by hand.
+- Read and compare target configurations for anything the checks don't cover (flash tradeoffs, schematic-driven pin choices, novel bug classes)
 - Identify flash overflow root causes
-- Detect pin conflicts and resource sharing issues
-- Analyze timer/DMA assignments
 - Parse build errors and suggest fixes
 
 ### 2. Problem Diagnosis
@@ -95,23 +94,21 @@ Callers must provide one or more of:
 - `claude/agents/target-developer/scripts/check_dma_conflicts.py` - Flags STM32H7 DMA stream (dmaopt) collisions in a target's timerHardware[] table, both timer-vs-timer and timer-vs-ADC's hardwired stream. Reports CERTAIN (affects every build, e.g. a quad's first 4 motor/servo positions, or LED/ADC) vs NOTICE (position 4+ only) severity. Run with no `--target` to scan every H7 target at once. See its module docstring for the severity model and why raw dmaopt matches aren't all equally real.
 - `claude/agents/target-developer/scripts/check_pin_conflicts.py` - Flags a single physical pin assigned to more than one peripheral macro in target.h. Common benign case: two alternate chip variants sharing one CS pin.
 - `claude/agents/target-developer/scripts/check_default_features.py` - Flags a target.h with no `DEFAULT_FEATURES` macro at all (falls back to 0, every feature silently off) or one that looks suspiciously thin (< 80 chars). Run when a feature (VBAT, OSD, telemetry) doesn't work despite pins/wiring being correct.
-- `claude/agents/target-developer/scripts/run_target_checks.py` - Driver that runs all four checks above in one pass. Run before opening a PR for a new/modified target, or to verify a fix actually resolved it.
-- `claude/agents/target-developer/scripts/run_target_checks.py` - Driver that runs all three of the above checks in one pass. Run this before opening a PR for a new/modified target, or to verify a DMA/pin/macro-typo fix actually resolved the issue.
+- `claude/agents/target-developer/scripts/check_board_identifier.py` - Flags a `TARGET_BOARD_IDENTIFIER` that isn't exactly 4 chars, or that collides with another target's.
+- `claude/agents/target-developer/scripts/check_serial_port_count.py` - Flags a `SERIAL_PORT_COUNT` that doesn't match the VCP/UART/softserial macros defined, and a dead `FEATURE_SOFTSERIAL` bit with no backing `USE_SOFTSERIALn`.
+- `claude/agents/target-developer/scripts/check_target_invariants.py` - Three small regression guards: `BEEPER_PWM_FREQUENCY` needs a `DEF_TIM` entry, `GYRO_n_EXTI_PIN` needs `BUSDEV_REGISTER_SPI_TAG`, AT32 UARTs need an explicit `TX_PIN`.
+- `claude/agents/target-developer/scripts/run_target_checks.py` - Driver that runs all seven checks above in one pass. Run before opening a PR for a new/modified target, or to verify a fix actually resolved it. See `claude/agents/target-developer/README.md` for what each check catches and why, in more detail than fits here.
 
 ## Workflow
 
 When helping with a target problem, follow this systematic approach:
 
 ### Step 1: Understand the Issue
-Ask clarifying questions if needed:
-- What's the exact error or symptom?
-- Which target/MCU?
-- What build configuration?
-- What's already been tried?
+Confirm you have what's listed under Required Context above; ask for whichever the caller didn't provide.
 
-### Step 2: Check Documentation First
-- Read relevant sections from docs/development/
-- Look for matching patterns in existing targets
+### Step 2: Run the Automated Checks
+- `run_target_checks.py <inav_root> --target NAME` (see Core Capabilities #1) -- replaces the manual grep/comparison work in Steps 3-4 below for the bug classes it covers
+- Read relevant sections from docs/development/ for anything it doesn't cover
 - Reference conversion guide for new targets
 
 ### Step 3: Search Git History
@@ -202,14 +199,11 @@ Structure responses like this:
 ## Important Notes
 
 - **CRITICAL: Always report errors to parent session** - If any operation fails, tool execution fails, or unexpected behavior occurs, immediately output an error message to the parent session with instructions to inform the user. Never fail silently.
-1. **Never build directly** - Always delegate to inav-builder agent
-2. **Always search git history** - Real fixes are better than guessing
-3. **Provide commit hashes** - Users can examine full context
-4. **Explain the "why"** - Don't just provide fixes, teach concepts
-5. **DMA resolver is key** - Direct users to the tool for timer conflicts
-6. **Flash optimization is iterative** - May need multiple rounds
-7. **Reference actual docs** - Point to specific files and line numbers
-8. When reviewing a target, warn if config.c contains "beeperConfigMutable()->pwmMode = true;"
+1. **Provide commit hashes** - Users can examine full context
+2. **Explain the "why"** - Don't just provide fixes, teach concepts
+3. **Flash optimization is iterative** - May need multiple rounds
+4. **Reference actual docs** - Point to specific files and line numbers
+5. When reviewing a target, warn if config.c contains "beeperConfigMutable()->pwmMode = true;"
 
 Note: To create new files, using the `Write` tool may be better than using `cat`. Sometimes you hang on `cat`.
 
@@ -220,25 +214,11 @@ When you discover better ways to diagnose or fix target issues, patterns in git 
 ### Lessons
 
 - **PINIO debugging - high-Z multimeter misleads**: A high-impedance multimeter on an output pin causes voltage to fall very slowly, making a toggling pin appear stuck HIGH. Use a low-impedance load or oscilloscope for reliable readings, or account for slow discharge when interpreting multimeter results.
-- **TARGET_BOARD_IDENTIFIER must be exactly 4 characters and unique**: Check all targets with `grep -r TARGET_BOARD_IDENTIFIER src/main/target` - collisions cause silent mis-identification of boards at runtime. "H743" was shared between MATEKH743 and BLUEBERRYH743 for example.
-- **BUSDEV_REGISTER_SPI_TAG variable name must match DEVHW type**: If the device hardware is DEVHW_ICM42605, do not name the variable busdev_icm42688; variable names are for developer clarity and a mismatch creates confusion. In INAV, DEVHW_ICM42605 is the correct identifier for both ICM42605 and ICM42688P chips because the driver detects the WHO_AM_I register and handles both.
-- **BUSDEV_REGISTER_SPI_TAG IMU naming consistency**: The variable name, DEVHW type, and ALIGN macro must be internally consistent. Using MPU6000_SPI_BUS/MPU6000_CS_PIN macros pointing to SPI1 is acceptable if those macros actually resolve to the correct bus/pin, but using IMU_MPU6000_ALIGN (which is board-defined as a specific orientation) for an ICM42688 entry on the same SPI bus as the MPU6000 is correct only if the chips share identical physical orientation.
-- **SERIAL_PORT_COUNT must match declared ports exactly**: Count VCP (1) + each USE_UARTx (1 each) + USE_SOFTSERIALx (1 each). Do not include UARTs that exist on the MCU but are not declared with USE_UARTx in target.h.
-- **BEEPER_PWM_FREQUENCY requires a DEF_TIM entry**: If there is no DEF_TIM with TIM_USE_BEEPER for the beeper pin, remove BEEPER_PWM_FREQUENCY from target.h rather than adding a spurious timer entry.
-- **SoftSerial is unnecessary on targets with 6+ hardware UARTs**: H7 and F7 MCUs have enough hardware UARTs; SoftSerial on an already-used UART TX pin (like TX6) provides no value and wastes flash. F405 targets might have a softserial for inverted smartport telemetry
-- **INAV has no bidirectional DSHOT — USE_RPM_FILTER works via ESC_SENSOR over UART**: When reviewing a target with USE_RPM_FILTER, check for a UART configured as ESC_SENSOR telemetry, not for motor timer topology. Motor timer grouping (2+2 split vs all-on-one) has zero impact on RPM filter capability. Reference: `src/main/flight/rpm_filter.c` line 191, `src/main/sensors/esc_sensor.c`.
-- **AT32 UART driver requires TX pin defined even for RX-only ports**: Define `UART7_TX_PIN NONE` (not just omitting it) when a UART is used receive-only. `DEFIO_TAG__NONE` is 0 in io_def.h and is valid. Omitting the define causes a compile error: `'DEFIO_TAG__UART7_TX_PIN' undeclared`.
-- **Legacy USE_IMU_xxx driver path does NOT use GYRO_1_EXTI_PIN**: Only targets using `BUSDEV_REGISTER_SPI_TAG` in target.c pass an EXTI pin. For targets using `USE_IMU_BMI270` / `BMI270_SPI_BUS` / `BMI270_CS_PIN` style defines, the gyro interrupt pin is unused by firmware — gyro is polled. Do not add `USE_GYRO_EXTI` or `GYRO_1_EXTI_PIN` to these targets.
-- **DMA resolver library is usable directly via Node.js scripts**: `raytools/dma_resolver/` is an ES module library. To run analysis scripts: add `{"type":"module"}` as `package.json` in that directory, then `node analyze_target.mjs`. Use `dmaMapAT32F435` directly from `dma_maps.js` rather than `findSolution()` for simple per-target analysis. AT32F435 with DMAMUX: every timer channel lists all 14 channels as valid — conflict analysis reduces to counting total DMA users vs 14 available.
-- **Schematic-driven target creation workflow documented**: See `claude/developer/docs/targets/reading-schematics.md` for the full checklist (pin-map extraction from KiCad s-expressions, cross-sheet net matching by label name, distinguishing populated chips from bare test pads, H7 DMAMUX vs F4/F7 fixed-DMA analysis, and verifying preliminary/manager scans against raw schematic text rather than trusting them).
-- **H7 dma_maps.js (resolver tool) can be wrong about individual channel DMA availability**: For ground truth on STM32H7, check `inav/src/main/drivers/timer_def_stm32h7xx.h` directly. Example: TIM4_CH4 has no DMAMUX request line on real silicon (`DMA_REQUEST_TIM4_CH4` doesn't exist) even though dma_maps.js lists DMA1 stream options for it. INAV works around this via `USE_DSHOT_DMAR` (repoints CH4 at the TIM4_UP burst request) — but this is a global, board-wide switch that moves *every* DSHOT motor from per-channel DMA to per-timer burst DMA, not a per-channel opt-in; enabling it to fix one channel requires re-testing all motor outputs. Some channels (e.g. TIM15_CH2) have no DMAR workaround at all and are permanently PWM-only — check the `#ifdef USE_DSHOT_DMAR` branches in timer_def_stm32h7xx.h to tell the two cases apart.
-- **A misnamed target.h #define compiles cleanly and fails silently**: DAKEFPVH743_SLIM defined `BEEPER_PIN` instead of `BEEPER`. The preprocessor has no opinion about which name "should" exist, so `#if defined(BEEPER)` in sound_beeper.c just compiled out and left the pin floating — an oscilloscope trace of the floating pin looked like a real (but wrong-frequency) signal and cost a long diagnostic session before the name mismatch was spotted by inspection. The exact same typo was already sitting unnoticed in two other targets (IFLIGHT_H743_AIO_V2, JHEH7AIO) — copy-paste propagates a wrong macro name just as easily as a right one, so "several targets define this" is not evidence a name is correct. Use `claude/agents/target-developer/scripts/check_macro_typos.py` to check a target.h for this class of bug: it flags rare/unreferenced defines that closely resemble a name actually consumed elsewhere in core firmware.
-  - **Two different finding categories, don't treat them the same**: (1) macros a firmware driver tests for by exact name via `#ifdef`/`#if defined()` (like `BEEPER`) — a wrong name here silently disables real functionality, this is the dangerous case. (2) per-board pin/bus/align macros (`_CS_PIN`, `_SPI_BUS`, `_ALIGN`) that a board's own target.c defines and consumes locally as literal substitution, never gated by `#ifdef` — a "wrong-looking" name here (e.g. `ICM42688_CS_PIN` on ORBITF435, which actually uses `DEVHW_ICM42605` as the driver constant since that driver auto-detects both chips via WHO_AM_I) is at most a misleading label, not a functional bug, since the value/pin is what matters and the board consumes its own name consistently. Verify which category a finding falls into (grep whether the name appears inside an `#ifdef`/`defined()` in core drivers, or only as a directly-substituted argument in the board's own target.c) before deciding it's real.
-  - **"Multiple similar unreferenced names, one real name nearby" can mean dead cruft, not a distinct chip**: AIKONF7/BETAFPVF435/BROTHERHOBBYF405V3/PRINCIPIOTF7 all define `USE_FLASH_W25M`, `USE_FLASH_W25M512`, and `USE_FLASH_W25M02G` on the same CS pin as a working `USE_FLASH_W25N01G` — none of the three W25M-family macros are referenced by any driver in `src/main/drivers/` (the whole family was never implemented), they're just harmless because the real `USE_FLASH_W25N01G` on the same pin still detects the chip. Don't assume "looks like a different real chip name" makes a finding a false positive — check `grep -rl NAME src/main/drivers` for actual driver support before dismissing it.
-- **Not every same-`dmaopt` match on H7 is an equally real bug — motor DMA is runtime-conditional**: `pwm_output.c` only ever calls `timerPWMConfigChannelDMA`/`timerPWMConfigDMABurst` from the DSHOT motor path (gated on `getMotorCount()`/`isMotorProtocolDshot()`); the plain-PWM servo path never claims DMA at all. So two `TIM_USE_OUTPUT_AUTO` entries sharing a `dmaopt` across different timers only collide in practice if the user's configured motor count/mixer mapping puts a live DSHOT motor on both positions at once — that's why boards like MATEKH743 can carry this pattern for years unnoticed (the colliding positions are past typical quad/hex motor counts). LED strip and ADC are different: both are unconditionally active whenever their feature is enabled, so a collision touching either is certain regardless of build. Every quad still needs its first 4 motor/servo positions (array order: position 0 = M1, etc) collision-free — that's a hard requirement, not conditional. `claude/agents/target-developer/scripts/check_dma_conflicts.py` encodes this as a CERTAIN/NOTICE severity split; don't flag a same-dmaopt match as a certain bug without checking which of these categories it falls into.
-- **AEDROXH7's LED/DMA fix (PR #11629/#11630, 2026-06-07) introduced a *different* DMA collision while fixing the first one**: the fix moved LED strip to `dmaopt=8`, with a commit message claiming to match MATEKH743/MAMBAH743/FOXEERH743/BROTHERHOBBYH743's convention — but all four actually use `dmaopt=9`. Since AEDROXH7's `ADC_INSTANCE` is `ADC1` (hardwired to DMA2 Stream0 = `dmaopt 8`), this reintroduced the same bug class against a new peer (ADC1 instead of the original motor M1), undetected until `check_dma_conflicts.py`'s first full-tree run. Lesson: when a commit message claims "matches board X's pattern," verify the actual value in board X's current source rather than trusting the message — the same session that wrote this fix also fixed DAKEFPVH743PRO's identical LED/ADC1 collision by moving it to the *correct* `dmaopt=9`, so the correct convention was known and used elsewhere the same day.
-- **A missing macro can be as broken as a wrong one, and no typo-checker will ever catch it**: AXISFLYINGH743PRO's ADC and OSD both looked hardware-broken — pins/wiring verified correct against the vendor's own Betaflight source — but `target.h` simply never defined `DEFAULT_FEATURES`. `fc/config.c` falls back to `#define DEFAULT_FEATURES 0` when it's absent, so every feature (VBAT, CURRENT_METER, OSD, TELEMETRY) was silently off by default; the board still compiled and flashed cleanly. `check_macro_typos.py` can't flag this — there's no wrong name to match, the line is just gone. Use `claude/agents/target-developer/scripts/check_default_features.py` for this class of bug: absent-entirely or suspiciously short (< 80 chars) `DEFAULT_FEATURES` values.
+- **BUSDEV_REGISTER_SPI_TAG variable name, DEVHW type, and ALIGN macro must be internally consistent**: e.g. don't name a variable `busdev_icm42688` for `DEVHW_ICM42605` (that constant is correct for both chips, WHO_AM_I auto-detects), and don't reuse another chip's `_ALIGN` macro unless the two chips share identical physical orientation.
+- **SoftSerial is unnecessary on targets with 6+ hardware UARTs**: H7/F7 boards have enough hardware UARTs that softserial on an already-used UART TX pin adds no value and wastes flash; it's more defensible on F405 boards for inverted SmartPort telemetry. `check_serial_port_count.py` flags a *dead* `FEATURE_SOFTSERIAL` bit, not this case, since a defined-but-unused softserial pin isn't statically distinguishable from a deliberate design choice.
+- **INAV has no bidirectional DSHOT — USE_RPM_FILTER works via ESC_SENSOR over UART, not motor timer topology**: this is a runtime CLI/config choice (which UART is assigned ESC_SENSOR), not visible in target.h, so it isn't checkable statically. Reference: `src/main/flight/rpm_filter.c` line 191, `src/main/sensors/esc_sensor.c`.
+- **DMA resolver library (`raytools/dma_resolver/`) is usable directly via Node.js**: add `{"type":"module"}` as its `package.json`, then `node analyze_target.mjs`; use `dmaMapAT32F435` from `dma_maps.js` directly for simple per-target analysis rather than `findSolution()`. AT32F435 with DMAMUX lists all 14 channels as valid for every timer channel — conflict analysis there is just counting total DMA users vs 14 available.
+- **Schematic-driven target creation workflow documented**: See `claude/developer/docs/targets/reading-schematics.md` for the full checklist (pin-map extraction from KiCad s-expressions, cross-sheet net matching, H7 DMAMUX vs F4/F7 fixed-DMA analysis, verifying scans against raw schematic text).
+- **H7 `dma_maps.js` (resolver tool) can be wrong about individual channel DMA availability**: for ground truth on STM32H7, check `inav/src/main/drivers/timer_def_stm32h7xx.h` directly -- e.g. TIM4_CH4 has no DMAMUX request line on real silicon even though `dma_maps.js` lists options for it (INAV's `USE_DSHOT_DMAR` workaround is a global switch, not a per-channel opt-in; some channels like TIM15_CH2 have no DMAR workaround at all).
+- **A commit's "matches board X's convention" claim can be wrong -- verify against X's actual current source, not the message**: AEDROXH7's LED/DMA fix (PR #11629/#11630) claimed to match MATEKH743/MAMBAH743/FOXEERH743/BROTHERHOBBYH743's `dmaopt` convention but used the wrong value, reintroducing a new collision against ADC1 -- see `check_dma_conflicts.py`'s docstring for the full incident.
 <!-- Add new lessons above this line -->
-- **Initial creation**: Agent focuses on configuration analysis, delegates builds to inav-builder
-- **Git history is gold**: Most target issues have been solved before, search thoroughly
-- **DMA resolver tool is critical**: Don't try to manually resolve complex DMA conflicts

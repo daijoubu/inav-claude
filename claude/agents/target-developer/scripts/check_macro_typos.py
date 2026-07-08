@@ -25,11 +25,42 @@ AND actually referenced elsewhere in core source. Later runs reuse that
 cache; only names it's never seen get a single targeted grep each, so
 repeat runs are fast.
 
-Findings are a checklist to verify by hand, not a pass/fail gate -- rare but
-legitimate board-specific macros (a second IMU's own CS pin, a distinct chip
-variant, etc) will sometimes be flagged. See the target-developer agent's
-lessons-learned for the incident that motivated this and known false-positive
-patterns.
+Findings are a checklist to verify by hand, not a pass/fail gate. Written
+after DAKEFPVH743_SLIM defined `BEEPER_PIN` instead of `BEEPER` -- the
+preprocessor has no opinion about which name "should" exist, so
+`#if defined(BEEPER)` in sound_beeper.c just compiled out and left the pin
+floating (a scope trace of the floating pin looked like a real, wrong-
+frequency signal and cost a long diagnostic session before the typo was
+spotted by inspection). The exact same typo was already sitting unnoticed in
+two other targets (IFLIGHT_H743_AIO_V2, JHEH7AIO) -- copy-paste propagates a
+wrong name just as easily as a right one, so "several targets define this" is
+not evidence a name is correct.
+
+Two finding categories, don't treat them the same:
+1. Macros a firmware driver tests for by exact name via `#ifdef`/
+   `#if defined()` (like `BEEPER`) -- a wrong name here silently disables
+   real functionality. This is the dangerous case.
+2. Per-board pin/bus/align macros (`_CS_PIN`, `_SPI_BUS`, `_ALIGN`) that a
+   board's own target.c defines and consumes locally as literal
+   substitution, never gated by `#ifdef` -- a "wrong-looking" name here
+   (e.g. `ICM42688_CS_PIN` on ORBITF435, which actually uses `DEVHW_ICM42605`
+   since that driver auto-detects both chips via WHO_AM_I) is at most a
+   misleading label, not a functional bug: the value is what matters, and
+   the board consumes its own name consistently.
+Before treating a finding as real, grep whether the name appears inside an
+`#ifdef`/`defined()` in core drivers (category 1) or only as a directly-
+substituted argument in the board's own target.c (category 2).
+
+"Multiple similar unreferenced names, one real name nearby" can mean dead
+cruft, not a distinct chip: AIKONF7/BETAFPVF435/BROTHERHOBBYF405V3/
+PRINCIPIOTF7 all define `USE_FLASH_W25M`, `USE_FLASH_W25M512`, and
+`USE_FLASH_W25M02G` on the same CS pin as a working `USE_FLASH_W25N01G` --
+none of the three W25M-family macros are referenced by any driver in
+`src/main/drivers/` (that family was never implemented); they're harmless
+only because the real `USE_FLASH_W25N01G` on the same pin still detects the
+chip. Check `grep -rl NAME src/main/drivers` for actual driver support before
+dismissing a finding as a false positive on the strength of "looks like a
+real chip name."
 """
 import argparse
 import re

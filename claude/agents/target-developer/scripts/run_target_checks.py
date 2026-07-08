@@ -15,6 +15,17 @@ Runs, in order:
   4. check_default_features.py -- flags a target.h with no DEFAULT_FEATURES
                                  macro at all (every feature silently off) or
                                  one that looks suspiciously thin
+  5. check_board_identifier.py -- flags a TARGET_BOARD_IDENTIFIER that isn't
+                                 exactly 4 chars, or collides with another
+                                 target's
+  6. check_serial_port_count.py -- flags a SERIAL_PORT_COUNT that doesn't
+                                 match the VCP/UART/softserial macros actually
+                                 defined, and a dead FEATURE_SOFTSERIAL bit
+                                 with no backing USE_SOFTSERIALn
+  7. check_target_invariants.py -- three small single-rule regression guards:
+                                 BEEPER_PWM_FREQUENCY needs a DEF_TIM entry,
+                                 GYRO_n_EXTI_PIN needs BUSDEV_REGISTER_SPI_TAG,
+                                 AT32 UARTs need an explicit TX_PIN
 
 None of these are pass/fail gates -- each prints a checklist for a human to
 verify; false positives are expected and explained in each script's own
@@ -32,7 +43,7 @@ Options:
 
 Add new standard checks by appending to the CHECKS list below -- each entry
 is (title, script filename), and every listed script must accept the same
-`<inav_root> [--target NAME]` calling convention as the three above.
+`<inav_root> [--target NAME]` calling convention as the checks above.
 """
 import argparse
 import subprocess
@@ -46,6 +57,9 @@ CHECKS = [
     ("DMA/dmaopt collisions (STM32H7)", "check_dma_conflicts.py"),
     ("Pin reuse across peripherals", "check_pin_conflicts.py"),
     ("DEFAULT_FEATURES missing/thin", "check_default_features.py"),
+    ("TARGET_BOARD_IDENTIFIER length/uniqueness", "check_board_identifier.py"),
+    ("SERIAL_PORT_COUNT / softserial feature bit", "check_serial_port_count.py"),
+    ("Misc target invariants", "check_target_invariants.py"),
 ]
 
 
