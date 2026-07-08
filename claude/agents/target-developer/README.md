@@ -19,8 +19,13 @@
 **Usage:** `./scripts/check_pin_conflicts.py <inav_checkout_root> [--target TARGETNAME]`
 **Created:** 2026-07-07, alongside check_dma_conflicts.py.
 
+### check_default_features.py
+**Purpose:** Flags a target.h with no `DEFAULT_FEATURES` macro at all (falls back to `0` -- every feature silently off, per `fc/config.c`'s `#ifndef` default) or one whose value looks suspiciously thin (< 80 chars, usually a sign of a dropped feature set rather than a deliberately minimal board).
+**Usage:** `./scripts/check_default_features.py <inav_checkout_root> [--target TARGETNAME]`
+**Created:** 2026-07-07 -- after AXISFLYINGH743PRO's ADC and OSD both looked hardware-broken (pins/wiring were correct, verified against the vendor's own Betaflight source) but were actually just never turned on, because target.h had no `DEFAULT_FEATURES` line at all. `check_macro_typos.py` can't catch this class of bug -- there's no wrong name to flag, the line is just missing.
+
 ### run_target_checks.py
-**Purpose:** Driver that runs check_macro_typos.py, check_dma_conflicts.py, and check_pin_conflicts.py in one pass with consistent section headers. Run this before opening a PR for a new/modified target, or to verify a fix for any of these bug classes actually resolved it.
+**Purpose:** Driver that runs check_macro_typos.py, check_dma_conflicts.py, check_pin_conflicts.py, and check_default_features.py in one pass with consistent section headers. Run this before opening a PR for a new/modified target, or to verify a fix for any of these bug classes actually resolved it.
 **Usage:** `./scripts/run_target_checks.py <inav_checkout_root> [--target TARGETNAME]`
 **Created:** 2026-07-07. Add new standard checks by appending to its `CHECKS` list -- any script following the same `<inav_root> [--target NAME]` calling convention slots in directly.
 

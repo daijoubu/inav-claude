@@ -12,6 +12,9 @@ Runs, in order:
                                  hardwired stream, with CERTAIN/NOTICE severity
   3. check_pin_conflicts.py  -- flags a single physical pin assigned to more
                                  than one peripheral macro
+  4. check_default_features.py -- flags a target.h with no DEFAULT_FEATURES
+                                 macro at all (every feature silently off) or
+                                 one that looks suspiciously thin
 
 None of these are pass/fail gates -- each prints a checklist for a human to
 verify; false positives are expected and explained in each script's own
@@ -42,6 +45,7 @@ CHECKS = [
     ("Macro typos", "check_macro_typos.py"),
     ("DMA/dmaopt collisions (STM32H7)", "check_dma_conflicts.py"),
     ("Pin reuse across peripherals", "check_pin_conflicts.py"),
+    ("DEFAULT_FEATURES missing/thin", "check_default_features.py"),
 ]
 
 
