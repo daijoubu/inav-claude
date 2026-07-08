@@ -24,8 +24,8 @@ This contains your complete responsibilities, build instructions, coding standar
 
 Maintain `claude/session-state.json` to prevent context loss during conversation compaction. Update it when todos change, user sends new queries, or sub-tasks complete.
 
-The root of the project is ~/Documents/planes/inavflight
-Read ~/Documents/planes/inavflight/CLAUDE.md and ~/Documents/planes/inavflight/.claude/*
+The root of the project is ~/Projects/inav-claude
+Read ~/Projects/inav-claude/CLAUDE.md and ~/Projects/inav-claude/.claude/*
 
 ## Key Rule
 
