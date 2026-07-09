@@ -1,7 +1,9 @@
 # macOS Build Issues Analysis - 9.0.0 Release
 
-**Date:** 2025-12-06
-**Release Manager Investigation**
+**Date:** 2025-12-06 (handed off to Manager 2026-07-09 — see email)
+**Investigated by:** Release Manager
+
+**Handoff note:** The immediate 9.0.0 DMG-contamination incident this investigation covers is resolved and documented in `claude/release-manager/guides/3-verifying-artifacts.md`. What's left unresolved is the "Recommendations" section below (Universal binary vs. two separate builds vs. ARM64-only) — an open build-architecture decision for the Configurator, not a release-manager procedural matter. Handing off for a project decision; see the accompanying email for context.
 
 ## Issues Reported
 
