@@ -63,9 +63,22 @@ When invoked, you should receive:
 
 ## Available Scripts and Tools
 
+**IMPORTANT - Script Location:**
+The flashing scripts are in the inavflight directory at `~/inavflight/claude/developer/scripts/build/`.
+
+When working in a subdirectory project (e.g., `inav2/`), use these portable path formats:
+
+```bash
+# Absolute path (works from anywhere):
+node ~/inavflight/claude/developer/scripts/build/flash-dfu-node.js <firmware.hex>
+
+# Relative path (if in inav2 subdirectory):
+node ../claude/developer/scripts/build/flash-dfu-node.js <firmware.hex>
+```
+
 ### Primary Flashing Script (Node.js - PREFERRED)
 ```bash
-claude/developer/scripts/build/flash-dfu-node.js <firmware.hex>
+node ~/inavflight/claude/developer/scripts/build/flash-dfu-node.js <firmware.hex>
 ```
 - **Direct port of working inav-configurator DFU protocol**
 - **Auto-detects DFU transfer size** from USB descriptor (critical!)
@@ -79,20 +92,21 @@ claude/developer/scripts/build/flash-dfu-node.js <firmware.hex>
 **Usage:**
 ```bash
 # Works for ALL MCU types - H7, F4, F7, AT32, etc.
-claude/developer/scripts/build/flash-dfu-node.js inav_9.0.0_MATEKF405.hex
-claude/developer/scripts/build/flash-dfu-node.js inav_9.0.0_MATEKH743.hex
-claude/developer/scripts/build/flash-dfu-node.js inav_9.0.0_AT32F435.hex
+node ~/inavflight/claude/developer/scripts/build/flash-dfu-node.js ~/inavflight/inav2/build/inav_9.1.0_MATEKF405.hex
+
+# Or from inav2 subdirectory:
+node ../claude/developer/scripts/build/flash-dfu-node.js ./build/inav_9.1.0_MATEKF405.hex
 ```
 
 **Dependencies:**
 ```bash
-cd claude/developer/scripts/build
+cd ~/inavflight/claude/developer/scripts/build
 npm install  # Installs node-usb
 ```
 
 ### Fallback Flashing Script (Python)
 ```bash
-python3 claude/developer/scripts/build/flash-dfu-preserve-settings.py <firmware.hex> [mcu_type]
+python3 ~/inavflight/claude/developer/scripts/build/flash-dfu-preserve-settings.py <firmware.hex> [mcu_type]
 ```
 - Direct translation from inav-configurator DFU code
 - **Note:** Fails at ~69.5% on H7 targets - use Node.js version for H7
@@ -110,7 +124,8 @@ pip3 install pyusb
 
 **Option A: MSP Reboot (Recommended):**
 ```bash
-.claude/skills/flash-firmware-dfu/reboot-to-dfu.py /dev/ttyACM0
+# 2. Put FC in DFU mode (if FC is connected)
+python3 ~/inavflight/.claude/skills/flash-firmware-dfu/reboot-to-dfu.py /dev/ttyACM0
 ```
 - Sends MSP_REBOOT with DFU parameter
 - Most reliable programmatic method
@@ -118,7 +133,8 @@ pip3 install pyusb
 
 **Option B: CLI Command:**
 ```bash
-.claude/skills/flash-firmware-dfu/fc-cli.py dfu /dev/ttyACM0
+# 2. Put FC in DFU mode (if FC is connected)
+python3 ~/inavflight/.claude/skills/flash-firmware-dfu/reboot-to-dfu.py /dev/ttyACM0
 ```
 - Enters CLI and sends `dfu` command
 - Alternative to MSP method
@@ -164,7 +180,8 @@ If no hex file exists, use the **inav-builder** agent to build firmware first.
 **Method A: MSP Reboot (if FC is running):**
 Temporarily bypass the sandbox.
 ```bash
-.claude/skills/flash-firmware-dfu/reboot-to-dfu.py /dev/ttyACM0
+# 2. Put FC in DFU mode (if FC is connected)
+python3 ~/inavflight/.claude/skills/flash-firmware-dfu/reboot-to-dfu.py /dev/ttyACM0
 ```
 
 **Method B: Hardware Button:**
@@ -172,7 +189,8 @@ Instruct user: "Hold BOOT button while plugging in USB"
 
 **Method C: CLI Command:**
 ```bash
-.claude/skills/flash-firmware-dfu/fc-cli.py dfu /dev/ttyACM0
+# 2. Put FC in DFU mode (if FC is connected)
+python3 ~/inavflight/.claude/skills/flash-firmware-dfu/reboot-to-dfu.py /dev/ttyACM0
 ```
 
 ### 3. Verify DFU Mode
@@ -235,21 +253,24 @@ I'll use the settings-preserving method so your configuration won't be erased.
 
 ```bash
 # 1. Verify firmware file
-ls -lh inav/build/inav_9.0.0_MATEKF405.hex
+ls -lh ~/inavflight/inav2/build/inav_9.1.0_MATEKF405.hex
 
 # 2. Put FC in DFU mode (if FC is connected)
-.claude/skills/flash-firmware-dfu/reboot-to-dfu.py /dev/ttyACM0
+python3 ~/inavflight/.claude/skills/flash-firmware-dfu/reboot-to-dfu.py /dev/ttyACM0
 
 # 3. Verify DFU mode
 dfu-util -l
 
 # 4. Flash firmware (preserves settings) - PREFERRED METHOD
-claude/developer/scripts/build/flash-dfu-node.js \
-  inav/build/inav_9.0.0_MATEKF405.hex
+node ~/inavflight/claude/developer/scripts/build/flash-dfu-node.js \
+  ~/inavflight/inav2/build/inav_9.1.0_MATEKF405.hex
+
+# Or from inav2 subdirectory:
+# node ../claude/developer/scripts/build/flash-dfu-node.js ./build/inav_9.1.0_MATEKF405.hex
 
 # Alternative: Python version (if Node.js unavailable, but NOT for H7)
-# python3 claude/developer/scripts/build/flash-dfu-preserve-settings.py \
-#   inav/build/inav_9.0.0_MATEKF405.hex
+# python3 ~/inavflight/claude/developer/scripts/build/flash-dfu-preserve-settings.py \
+#   ~/inavflight/inav2/build/inav_9.1.0_MATEKF405.hex
 
 # 5. Wait for reboot
 sleep 3
