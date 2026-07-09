@@ -47,6 +47,7 @@ If adding features would add >40 new lines to a main transpiler file (parser.js,
 
 ## Comments
 
+The purpose of comments is to explain code that would otherwise be confusing. Do not add a comment that is redundant to perfectly clear code.
 Comments should explain WHY, not WHAT. Never write comments that simply restate what the code does.
 
 ### Bad - Redundant Comments
