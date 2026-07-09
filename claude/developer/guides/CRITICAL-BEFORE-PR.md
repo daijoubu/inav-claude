@@ -150,6 +150,8 @@ env -u GITHUB_TOKEN -u GH_TOKEN gh pr create --title "Title" --body "Description
 Use `/create-pr` skill or the command above.
 IMPORTANT **Never open a pull request to the master branch**
 
+**Set the milestone (and any applicable category label, e.g. "New target") when creating the PR** — see "Choosing Labels and Milestone" in `.claude/skills/create-pr/INAV-PR.md` for the current mapping.
+
 **PR Description Requirements:**
 
 **Include:**

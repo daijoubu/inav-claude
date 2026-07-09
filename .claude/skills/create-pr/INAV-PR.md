@@ -119,11 +119,14 @@ git push -u origin your-branch-name
 
 ### Step 5: Create Pull Request
 
+**First, determine the milestone and any applicable labels — see "Choosing Labels and Milestone" below.**
+
 **Backwards compatible changes (most common):**
 ```bash
 gh pr create --repo inavflight/inav \
   --base maintenance-9.x \
   --title "Your PR Title" \
+  --label "Enhancement" --milestone "10.0" \
   --body "$(cat <<'EOF'
 ## Summary
 Brief overview of changes
@@ -147,12 +150,69 @@ EOF
 gh pr create --repo inavflight/inav \
   --base maintenance-10.x \
   --title "Your PR Title" \
+  --label "Enhancement" --milestone "10.0" \
   --body "Description"
 ```
 
 **For inav-configurator:** Use `inavflight/inav-configurator` repo, same base branches
 
 *(If this fails with network errors, that's the sandbox — `api.github.com` is allowlisted, so retry once; if it still fails, tell the user so they can run it or fix the allowlist — don't disable the sandbox.)*
+
+**If a label or milestone name doesn't exist yet**, `gh pr create` fails the whole
+command rather than partially applying. Verify names first with
+`gh label list --repo inavflight/inav` and `gh api repos/inavflight/inav/milestones --jq '.[].title'`,
+or add labels/milestone after creation with `gh pr edit <number> --add-label "..." --milestone "..."`.
+
+---
+
+## Choosing Labels and Milestone
+
+**Set the milestone when creating a PR** — maintainers triage by this, and an
+unmilestoned PR is easy to miss. Add category labels when one clearly applies;
+not every PR fits a label, and that's fine — don't force one.
+
+### Milestone — matches the base branch
+
+| Base branch | Milestone |
+|-------------|-----------|
+| `release/9.x` (e.g. `release/9.1`) | matching version, e.g. `"9.1"` |
+| `maintenance-9.x` | next 9.x patch version (check open milestones for the right one) |
+| `maintenance-10.x` | `"10.0"` |
+| No specific target release / exploratory | `"Future"` |
+
+Check current open milestones before picking one — they change over time:
+```bash
+gh api repos/inavflight/inav/milestones --jq '.[] | select(.state=="open") | .title'
+```
+
+### Category labels — pick what applies (can combine)
+
+| Situation | Label(s) |
+|-----------|----------|
+| New hardware target | `"New target"` (+ `"Testing Required"` if not flight-tested by you, + `"hardware needed"` if you have no hardware to test with) |
+| Bug fix | `"Bugfix"` |
+| New feature / behavior change | `"Enhancement"` or `"New Feature"` |
+| Refactor, no behavior change | `"Cleanup/refactor"` |
+| Adds/changes an MSP message (non-breaking) | `"msp non-breaking change"` |
+| Adds/changes an MSP message (breaking) | `"MSP Breaking Change"` (rare — pair with `maintenance-10.x` base) |
+| Requires a matching configurator change to be usable | `"Requires Configurator"` |
+| Adds/changes CLI commands | `"CLI"` |
+| Adds/updates end-user docs | `"Documentation"` |
+| Docs still needed but not included | `"Documentation needed"` |
+| Should be called out in release notes | `"Release Notes"` |
+| Untested / needs someone else to verify | `"Testing Required"` |
+
+Get the exact current label names/colors before using one that isn't in this
+table (label sets evolve):
+```bash
+gh label list --repo inavflight/inav --limit 50
+```
+
+**New-target PRs specifically:** cross-check a few recent examples for the
+current convention, since maintainers may adjust it over time:
+```bash
+gh pr list --repo inavflight/inav --label "New target" --limit 5 --json number,title,milestone,labels
+```
 
 ---
 
