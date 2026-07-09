@@ -35,6 +35,29 @@ Use this string **everywhere**: directory names, rename script argument, release
 
 ---
 
+## ⚠️ Step 0.5: Lock the Repo Before Any Local Build/Validation
+
+`inav/` and `inav-configurator/` are shared working directories — other roles (Developer) check out and commit to them concurrently. A build or PG-validation run in an unlocked checkout can have its `HEAD` moved out from under it mid-run, silently invalidating the result.
+
+Before checking out a release branch locally (yourself or via the inav-builder agent) for anything that needs a pinned commit:
+
+```bash
+cat claude/locks/inav.lock 2>/dev/null && echo "LOCKED - STOP" || echo "Available"
+# if available:
+cat > claude/locks/inav.lock << EOF
+LOCKED_BY: Release Manager
+TASK: <what you're building/verifying>
+LOCKED_AT: $(date '+%Y-%m-%d %H:%M')
+BRANCH: <branch-name>
+EOF
+```
+
+Same pattern for `claude/locks/inav-configurator.lock`. Full rules: `claude/locks/README.md`. **Release the lock (`rm claude/locks/inav.lock`) as soon as your build/verification is done** — don't hold it for the whole release process, only for the parts that actually touch the shared checkout.
+
+If a build must run unattended or for a while, prefer an isolated `git clone` to a scratch path over the shared checkout regardless — the lock protects against concurrent writers, but an isolated clone also avoids `HEAD` being reused for something else between your checkout and your verification.
+
+---
+
 ## Overview
 
 This guide covers the complete release workflow and preparation steps you need to complete before starting artifact downloads and builds.
@@ -199,6 +222,8 @@ Both firmware and configurator GitHub releases follow the same cumulative patter
 ---
 
 ## Pre-Release Checklist
+
+⚠️ **Re-check this list at the actual freeze point, not from an earlier snapshot.** A list of "still-open" candidate PRs or "no blocker issues" compiled earlier in a long release session can go stale — PRs merge, issues get filed, mid-session. Re-run the actual `gh pr list`/`gh issue list` queries right before you rely on the results for milestone bookkeeping or freeze sign-off, don't reuse an earlier answer from the same session.
 
 ### Code Readiness
 

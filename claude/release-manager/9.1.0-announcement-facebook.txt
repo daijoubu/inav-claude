@@ -1,0 +1,37 @@
+INAV 9.1.0 — Available Now
+
+INAV 9.1 is a maintenance release focused on reliability, safety, and GPS accuracy. No breaking changes from 9.0.x — your saved configuration loads cleanly without any edits needed, and no chip erase is required.
+
+Since 9.0.1: 78 fixes and 115 new features/enhancements across firmware and configurator, including 19 new hardware targets.
+
+HIGHLIGHTS
+
+Auto-Backup & Settings Migration
+The configurator now automatically backs up your configuration before every firmware flash and can migrate renamed settings when upgrading. A safety net built right in.
+
+Magless Heading for Multirotors and VTOLs
+Point your multicopter or VTOL toward North before takeoff and navigation modes (Position Hold, RTH, Waypoints) will activate immediately — no need to fly first to acquire a GPS heading.
+
+GPS Accuracy Improvements
+Smarter GNSS constellation management for M8, M9, and M10 GPS modules. Better balance between update rate and the number of tracked satellites for improved position accuracy.
+
+MSP Connection Stability
+Configurator load stalls fixed, with more reliable connect and reconnect recovery.
+
+Safety Fixes
+• RTH Trackback flight controller lockup fixed
+• Random motor spin-up after disarming fixed (4-in-1 ESCs with BLHeli_32 32.9 and earlier)
+• Reversed throttle servo outputting wrong position when disarmed fixed
+• SDIO blocking delays on problematic SD cards fixed
+
+New Hardware
+ICM-45686 IMU, MS5525DSO airspeed sensor, 19 new flight controller targets including AIKONF4V2, AXISFLYINGH743PRO, BLUEBERRYH743, Brahma H7, HAKRCH743, and TBS_LUCID_H7_V3.
+
+GPS DEFAULTS CHANGED
+The GPS update rate now defaults to 8 Hz (was 10 Hz), and Galileo and BeiDou constellations are now enabled by default. If you had these settings explicitly saved in your configuration, no change is needed.
+
+Thanks to everyone who tested the Release Candidate and reported issues — you made this release better! Download links in the first comment.
+
+Happy Flying!
+
+#INAV #FlightController #FPV #UAV #Drone #FixedWing #Multirotor #OpenSource

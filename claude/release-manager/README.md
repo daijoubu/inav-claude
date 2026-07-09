@@ -297,6 +297,16 @@ Usage:
 - Critical for major version releases (e.g., 8.x → 9.x)
 - See [Phase 5: Changelog and Notes](guides/5-changelog-and-notes.md) for usage
 
+**`claude/release-manager/count-fixes-and-features.sh`**
+- Counts merged PRs since the last stable tag, split into fixes vs. features/enhancements, for release-note and social-media summary blurbs ("N fixes and M new features")
+- Title-keyword heuristic, not a precise audit — review the excluded-PR list it prints
+- See [Phase 5: Changelog and Notes](guides/5-changelog-and-notes.md) for usage
+
+Usage:
+```bash
+./claude/release-manager/count-fixes-and-features.sh ../../inav 9.0.1 upstream/release/9.1 iNavFlight/inav
+```
+
 ---
 
 ## Important Reminders
@@ -418,12 +428,14 @@ As Release Manager:
 **Remember:** Releases affect all INAV users. Double-check everything before publishing.
 
 ### Announcement Tips
+- **No emojis in either Discord or Facebook posts** — plain text/markdown headers only
 - **Discord:** 2000-character limit - keep concise, use markdown
-- **Facebook:** No markdown, supports emojis and images (1200x630 PNG recommended)
+- **Facebook:** No markdown, supports images (1200x630 PNG recommended)
 - Focus on top 5 features users care about most
 - Include download link and upgrade warnings
 - **Combined announcements:** Firmware and Configurator are always announced together in one post — users think of it as a single "INAV X.Y.Z" release. Exception: hotfixes that touch only one repo get a targeted announcement, not a combined one.
-- **Reference examples:** `9.0.0-announcement-discord.md`, `9.0.0-announcement-facebook.txt`, `9.1.0-RC1-announcement-discord.md`, `9.1.0-RC1-announcement-facebook.txt`
+- **Reference examples (emoji-free, current style):** `9.1.0-announcement-discord.md`, `9.1.0-announcement-facebook.txt`
+- **Older examples contain emojis — don't copy that part of their style:** `9.0.0-announcement-discord.md`, `9.0.0-announcement-facebook.txt`, `9.1.0-RC1-announcement-discord.md`, `9.1.0-RC1-announcement-facebook.txt`
 
 ---
 

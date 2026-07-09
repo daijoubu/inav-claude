@@ -19,6 +19,8 @@ This guide covers creating tags, draft releases, uploading assets, and publishin
 
 ---
 
+⚠️ **If `gh release create`/`upload`/`edit` returns 403 "Resource not accessible by personal access token":** same restricted-`GITHUB_TOKEN` issue as guide 2's branch-push section. The restriction is intentional. **Ask the human user before dropping it, every time** — see guide 2's warning; it applies here too, and a prior authorization elsewhere in the session doesn't carry over to release creation.
+
 ## Check Latest Tags
 
 Before creating new tags, check what tags already exist:
@@ -48,6 +50,8 @@ git tag --sort=-v:refname | head -10
 - Works even when repository directory is locked
 - Can specify exact commit by SHA
 - Creates draft releases for review before publishing
+
+⚠️ **"Atomically" only applies once published.** For a `--draft` release, GitHub does **not** push an actual Git tag ref into the repository yet — the draft just stores the target commitish and the intended tag name internally. `git ls-remote --tags` (or any clone) won't see the tag until the release is published. Don't be surprised that the tag "doesn't exist" while a draft is pending review — that's expected, not a bug.
 
 ### Choosing the Target Commit When the Branch Has Advanced
 

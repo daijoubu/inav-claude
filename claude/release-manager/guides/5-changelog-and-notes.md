@@ -90,6 +90,21 @@ The merge commit messages include PR numbers (e.g., "Merge pull request #11144")
 **Configurator:** https://github.com/iNavFlight/inav-configurator/compare/<prev-tag>...<new-tag>
 ```
 
+### Fix/Feature Counts for Summary Notes and Social Posts
+
+The short release-body notes and Discord/Facebook announcements should state the total number of fixes and the total number of new features/enhancements **since the last stable release** (not since the last RC). Use:
+
+```bash
+./claude/release-manager/count-fixes-and-features.sh ../../inav 9.0.1 upstream/release/9.1 iNavFlight/inav
+./claude/release-manager/count-fixes-and-features.sh ../../inav-configurator 9.0.1 upstream/maintenance-9.x iNavFlight/inav-configurator
+```
+
+It's a title-keyword heuristic, not a precise audit — check the "Excluded" list it prints and adjust the old-tag/new-ref args to match this release's actual last-stable tag and branch.
+
+### What Not to List as a Configurator Highlight
+
+"SITL binary updated to match firmware" is **not** a highlight — every release updates the bundled SITL, it's routine and not user-facing news. If the Phase 2 SITL PR is the only configurator change worth mentioning in a given cycle, look for an actual feature/UI improvement to headline instead (e.g., "LED tab improvements") rather than manufacturing a highlight out of housekeeping.
+
 ### Reviewing Recent Releases for Style
 
 Before writing release notes, review recent releases to match the format and level of detail:
@@ -358,7 +373,18 @@ claude/release-manager/
 └── 9.0.0-RC3-configurator-release-notes.md
 ```
 
-These files will be used when creating releases in Phase 6.
+These files will be used when creating releases in Phase 6. These are **short** GitHub-release-body notes — they don't need the full detail the wiki page carries; link to the wiki for that.
+
+### Wiki Release Notes (separate, fuller detail)
+
+Each major/minor release also gets a fuller wiki page, maintained independently of the short release-body notes above:
+
+- **Firmware:** `inavwiki/<version>-Release-Notes.md`, wiki page at `https://github.com/iNavFlight/inav/wiki/<version>-Release-Notes` (local checkout: `inavwiki/`, remote `upstream` = `iNavFlight/inav.wiki.git`)
+- **Configurator:** `INAV-Configurator-<major>.<minor>-Release-Notes.md` on the *configurator's own* wiki, `https://github.com/iNavFlight/inav-configurator/wiki/INAV-Configurator-<major>.<minor>-Release-Notes` — there is no local checkout by default; clone `https://github.com/iNavFlight/inav-configurator.wiki.git` to a scratch path if you need it
+
+A draft of these pages is often started early (e.g., at RC1) and won't include PRs merged afterward — always check `git log` for what's actually landed since the page was last touched before treating it as current. Update both pages with what's new since the last edit as part of this phase, not just the short release-body notes.
+
+⚠️ `inavwiki/` is a shared checkout — `git pull` can trigger a rebase against unrelated in-progress content and leave it conflicted. If that happens, `git rebase --abort` immediately rather than resolving conflicts in files you don't own.
 
 ---
 

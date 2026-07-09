@@ -272,6 +272,8 @@ If SPEEDYBEEF745AIO is removed or needs replacement:
 
 ## ⚠️ After the Release: Merging Changes Upward
 
+**This already happened once — it is not a theoretical risk.** After 9.1.0-RC1, firmware's `maintenance-9.x` was corrupted when someone used GitHub's web "Resolve conflicts" tool on a PR based on it, merging all of `maintenance-10.x` into `maintenance-9.x`. The branch was retired as a result, and `release/9.1` was cut as its replacement. Never merge anything out of the retired `maintenance-9.x` — treat it as contaminated.
+
 Once the release is published, the next step is often opening a PR to carry the `release/9.x` changes forward into `maintenance-10.x`. **Before doing that, warn the user:**
 
 > You're about to create a PR from `release/9.1` → `maintenance-10.x`. If GitHub shows a **"Resolve conflicts"** button on that PR, **do not click it**.
