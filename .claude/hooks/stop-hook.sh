@@ -1,4 +1,10 @@
 #!/bin/bash
+
+
+# The tensor dependencies are broken for now.
+exit
+
+
 # Stop hook — fires after each Claude response.
 # 1. Ingests new session content into ChromaDB memory (background, delta-only).
 # 2. Every TIP_INTERVAL turns, emits a random framework tip.

@@ -23,6 +23,9 @@ import argparse
 import os
 import sys
 
+# os.environ["ORT_TENSORRT_UNAVAILABLE"] = "1"
+# os.environ["ORT_CUDA_UNAVAILABLE"] = "1"
+
 DB_PATH    = os.path.join(os.path.dirname(__file__),
              "../../claude/log-memories/chromadb")
 COLLECTION = "session_memories"
@@ -34,6 +37,7 @@ def get_collection():
     try:
         import chromadb
         from chromadb.utils.embedding_functions import DefaultEmbeddingFunction
+        # from chromadb.utils.embedding_functions import ONNXMiniLM_L6_V2
     except ImportError:
         print("ERROR: chromadb is not installed. Run: pip install chromadb", file=sys.stderr)
         sys.exit(1)
@@ -43,10 +47,15 @@ def get_collection():
         print(f"ERROR: ChromaDB not found at {db_path}", file=sys.stderr)
         sys.exit(1)
 
+    # custom_embedding_fn = ONNXMiniLM_L6_V2(
+    #     preferred_providers=['CUDAExecutionProvider', 'CPUExecutionProvider']
+    # )
     ef     = DefaultEmbeddingFunction()
     client = chromadb.PersistentClient(path=db_path)
     try:
         return client.get_collection(name=COLLECTION, embedding_function=ef)
+        # return client.get_collection(name=COLLECTION, embedding_function=custom_embedding_fn)
+
     except Exception as e:
         print(f"ERROR: Could not open collection '{COLLECTION}': {e}", file=sys.stderr)
         sys.exit(1)
@@ -70,10 +79,13 @@ def cmd_search(query, threshold, dry_run, yes):
         print("Database is empty — nothing to remove.")
         return
 
+    # return
     results = col.query(
         query_texts=[query],
         n_results=min(MAX_RESULTS, total),
     )
+
+    return
     docs  = results.get("documents", [[]])[0]
     metas = results.get("metadatas", [[]])[0]
     dists = results.get("distances", [[]])[0]
