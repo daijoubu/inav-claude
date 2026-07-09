@@ -1,5 +1,14 @@
 # Pattern: Porting/Updating an INAV Target from a Betaflight `config.h`
 
+## Wording: Don't Name Betaflight in Code/Commits/PRs
+
+Betaflight is not upstream for INAV — don't call it that, and don't name
+Betaflight at all in `target.h`/`target.c`/`config.c` comments, commit
+messages, or PR descriptions, even when a target was ported from its
+config. Say "the manufacturer's public unified-target config" instead.
+Fine to mention Betaflight in internal docs/conversation — just not in
+that persistent, user-facing text.
+
 ## When This Applies
 
 Recurring task shape: the manager hands you a URL to
@@ -148,6 +157,28 @@ design+review, not just target.h wiring. (Datasheets for
 `LSM6DSK320X`, `LSM6DSV16XTR`, and a related `LQTP001HTA` board are in
 `claude/developer/docs/targets/` as of 2026-07-06 if that project gets
 scoped.)
+
+### 3b. `USE_UARTn_PIN_SWAP` is a per-board hardware fact, not a convention
+
+`USE_UART7_PIN_SWAP` (and the equivalent for other UARTs) tells the STM32
+UART peripheral to swap which of two AF-identical pins it treats as TX vs
+RX (`UART_ADVFEATURE_SWAP` in `serial_uart_stm32h7xx.c`) — this exists
+because some UART pin pairs share one AF value for both roles, so the
+silicon needs a separate register to say which one is actually TX. In
+practice it exists to **match the board's silkscreen labeling** — the
+schematic brings both pins out to pads/pins, and the manufacturer picks
+which physical pin gets printed "TX" vs "RX" on the board; the swap flag
+makes the firmware's TX/RX assignment match what's printed, not the other
+way around.
+**Whether a given board needs it depends on that board's own PCB
+routing, not on what other targets do.** Found 2026-07-06: of ~40 H7/F7
+targets using `UART7_TX_PIN PE8`/`UART7_RX_PIN PE7`, only
+`DAKEFPVH743_SLIM` sets `USE_UART7_PIN_SWAP` — initially assumed to be a
+copy-paste bug by majority-vote reasoning, but it's genuinely correct for
+that board's wiring. Don't infer swap correctness from cross-target
+consistency; instead trust (in order): (a) the source manufacturer config
+for *this specific* board, if it says anything about a swap, (b) a
+sibling target from the **same manufacturer/board family** if one exists.
 
 ### 4. MCU macro → `CMakeLists.txt`
 
