@@ -123,10 +123,10 @@ Use the rename script to remove CI build suffixes and add RC numbers:
 
 ```bash
 # For RC releases (use lowercase rc — required by Configurator firmware flasher)
-./claude/release-manager/rename-firmware-for-release.sh 9.0.0-rc3 downloads/firmware-9.0.0-rc3/
+./claude/release-manager/scripts/rename-firmware-for-release.sh 9.0.0-rc3 downloads/firmware-9.0.0-rc3/
 
 # For final releases
-./claude/release-manager/rename-firmware-for-release.sh 9.0.0 downloads/firmware-9.0.0/
+./claude/release-manager/scripts/rename-firmware-for-release.sh 9.0.0 downloads/firmware-9.0.0/
 ```
 
 **Example transformation:**

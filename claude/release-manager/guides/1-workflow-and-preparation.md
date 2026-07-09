@@ -114,7 +114,7 @@ This guide covers the complete release workflow and preparation steps you need t
 6. Generate changelog
    ├── List PRs since last tag
    ├── Categorize changes
-   ├── **Identify incompatible settings** (./find-incompatible-settings.sh)
+   ├── **Identify incompatible settings** (./scripts/find-incompatible-settings.sh)
    └── Format release notes
 
 7. Create tags and draft releases (ONLY after artifacts verified)
@@ -253,7 +253,7 @@ Both firmware and configurator GitHub releases follow the same cumulative patter
 ### Documentation
 
 - [ ] Release notes drafted
-- [ ] **Incompatible settings changes identified and added to release notes** (use find-incompatible-settings.sh)
+- [ ] **Incompatible settings changes identified and added to release notes** (use scripts/find-incompatible-settings.sh)
 - [ ] Breaking changes documented
 - [ ] New features documented
 
@@ -262,7 +262,7 @@ Both firmware and configurator GitHub releases follow the same cumulative patter
 - [ ] Firmware hex files downloaded and renamed
 - [ ] Configurator artifacts organized by platform (linux/, macos/, windows/)
 - [ ] macOS DMG contents verified (no .exe files, correct architecture)
-- [ ] **Windows SITL cygwin1.dll verified** (use verify-windows-sitl.sh)
+- [ ] **Windows SITL cygwin1.dll verified** (use scripts/verify-windows-sitl.sh)
 - [ ] **Configurator SITL tested** (launch SITL, verify version matches firmware)
 
 ---

@@ -231,7 +231,8 @@ For critical bugs discovered after release:
 ### Your Workspace
 - `claude/release-manager/` - Your working directory
 - `claude/release-manager/guides/` - Phase-specific release guides
-- `claude/release-manager/downloads/` - Downloaded artifacts (organized by platform)
+- `claude/release-manager/releases/<version>/` - Per-release-cycle files (release notes, announcements, plans, checklists). One folder per tag — an RC and its final release get separate folders, e.g. `releases/9.1.0-RC1/` and `releases/9.1.0/`.
+- `claude/release-manager/downloads/` - Downloaded artifacts (organized by platform, gitignored — not committed)
 
 ### Don't Modify Directly
 - Source code (coordinate with developers)
@@ -250,7 +251,7 @@ For critical bugs discovered after release:
 
 ### Custom Scripts
 
-**`claude/release-manager/verify-dmg-contents.sh`**
+**`claude/release-manager/scripts/verify-dmg-contents.sh`**
 - Verifies macOS DMG files for cross-platform contamination
 - Checks for Windows files (.exe, .dll, .msi)
 - Validates Mach-O format and architecture
@@ -259,10 +260,10 @@ For critical bugs discovered after release:
 
 Usage:
 ```bash
-./claude/release-manager/verify-dmg-contents.sh downloads/configurator-9.0.0-rc3/macos/*.dmg
+./claude/release-manager/scripts/verify-dmg-contents.sh downloads/configurator-9.0.0-rc3/macos/*.dmg
 ```
 
-**`claude/release-manager/rename-firmware-for-release.sh`**
+**`claude/release-manager/scripts/rename-firmware-for-release.sh`**
 - Generic script for renaming firmware hex files
 - Removes CI build suffix (`_ci-YYYYMMDD-hash`)
 - Adds release version (supports RC and final releases)
@@ -271,16 +272,16 @@ Usage:
 Usage:
 ```bash
 # For RC releases
-./claude/release-manager/rename-firmware-for-release.sh 9.0.0-rc3 downloads/firmware-9.0.0-rc3/
+./claude/release-manager/scripts/rename-firmware-for-release.sh 9.0.0-rc3 downloads/firmware-9.0.0-rc3/
 
 # For final releases
-./claude/release-manager/rename-firmware-for-release.sh 9.0.0 downloads/firmware-9.0.0/
+./claude/release-manager/scripts/rename-firmware-for-release.sh 9.0.0 downloads/firmware-9.0.0/
 
 # For patch releases
-./claude/release-manager/rename-firmware-for-release.sh 9.0.1 downloads/firmware-9.0.1/
+./claude/release-manager/scripts/rename-firmware-for-release.sh 9.0.1 downloads/firmware-9.0.1/
 ```
 
-**`claude/release-manager/verify-windows-sitl.sh`**
+**`claude/release-manager/scripts/verify-windows-sitl.sh`**
 - Verifies Windows configurator packages contain required SITL files
 - Checks for `cygwin1.dll` (required runtime for Windows SITL)
 - Checks for `inav_SITL.exe`
@@ -290,25 +291,25 @@ Usage:
 Usage:
 ```bash
 # Verify zip file
-./claude/release-manager/verify-windows-sitl.sh downloads/configurator-9.0.0-RC4/windows/INAV-Configurator_win_x64_9.0.0.zip
+./claude/release-manager/scripts/verify-windows-sitl.sh downloads/configurator-9.0.0-RC4/windows/INAV-Configurator_win_x64_9.0.0.zip
 
 # Verify extracted directory
-./claude/release-manager/verify-windows-sitl.sh downloads/configurator-9.0.0-RC4/windows/INAV-Configurator_win_x64_9.0.0/
+./claude/release-manager/scripts/verify-windows-sitl.sh downloads/configurator-9.0.0-RC4/windows/INAV-Configurator_win_x64_9.0.0/
 ```
 
-**`claude/release-manager/find-incompatible-settings.sh`**
+**`claude/release-manager/scripts/find-incompatible-settings.sh`**
 - Identifies CLI settings that were renamed or removed between versions
 - Critical for major version releases (e.g., 8.x → 9.x)
 - See [Phase 5: Changelog and Notes](guides/5-changelog-and-notes.md) for usage
 
-**`claude/release-manager/count-fixes-and-features.sh`**
+**`claude/release-manager/scripts/count-fixes-and-features.sh`**
 - Counts merged PRs since the last stable tag, split into fixes vs. features/enhancements, for release-note and social-media summary blurbs ("N fixes and M new features")
 - Title-keyword heuristic, not a precise audit — review the excluded-PR list it prints
 - See [Phase 5: Changelog and Notes](guides/5-changelog-and-notes.md) for usage
 
 Usage:
 ```bash
-./claude/release-manager/count-fixes-and-features.sh ../../inav 9.0.1 upstream/release/9.1 iNavFlight/inav
+./claude/release-manager/scripts/count-fixes-and-features.sh ../../inav 9.0.1 upstream/release/9.1 iNavFlight/inav
 ```
 
 ---

@@ -70,17 +70,17 @@ git show --stat <each-new-commit>
 
 ```bash
 # Create release + tag at specific commit on GitHub (no local repo access needed)
-gh release create 9.0.0-rc3 \
+gh release create 9.1.1-rc1 \
   --repo iNavFlight/inav \
   --target 34e3e4b3d8525931f825e766c28749a4c6342963 \
-  --title "INAV 9.0.0-rc3 release candidate for testing" \
-  --notes-file claude/release-manager/9.0.0-rc3-firmware-release-notes.md \
+  --title "INAV 9.1.1-rc1 release candidate for testing" \
+  --notes-file claude/release-manager/releases/9.1.1-rc1/9.1.1-rc1-firmware-release-notes.md \
   --prerelease \
   --draft
 ```
 
 **Parameters explained:**
-- `9.0.0-rc3` - The tag name
+- `9.1.1-rc1` - The tag name
 - `--target` - Specific commit SHA to tag
 - `--title` - Release title shown on GitHub
 - `--notes-file` - Path to release notes markdown file
@@ -91,11 +91,11 @@ gh release create 9.0.0-rc3 \
 
 ```bash
 # Create release + tag at specific commit
-gh release create 9.0.0-rc3 \
+gh release create 9.1.1-rc1 \
   --repo iNavFlight/inav-configurator \
   --target 9dbd346dcf941b31f97ccb8418ede367044eb93c \
-  --title "INAV Configurator 9.0.0-rc3 release candidate for testing" \
-  --notes-file claude/release-manager/9.0.0-rc3-configurator-release-notes.md \
+  --title "INAV Configurator 9.1.1-rc1 release candidate for testing" \
+  --notes-file claude/release-manager/releases/9.1.1-rc1/9.1.1-rc1-configurator-release-notes.md \
   --prerelease \
   --draft
 ```
@@ -105,11 +105,11 @@ gh release create 9.0.0-rc3 \
 For final releases, omit the `--prerelease` flag:
 
 ```bash
-gh release create 9.0.0 \
+gh release create 9.1.1 \
   --repo iNavFlight/inav \
   --target <commit-sha> \
-  --title "INAV 9.0.0" \
-  --notes-file claude/release-manager/9.0.0-firmware-release-notes.md \
+  --title "INAV 9.1.1" \
+  --notes-file claude/release-manager/releases/9.1.1/9.1.1-firmware-release-notes.md \
   --draft
 ```
 
@@ -125,19 +125,19 @@ Upload by platform to maintain organization:
 
 ```bash
 # Upload configurator builds by platform
-cd claude/release-manager/downloads/configurator-9.0.0-rc3
+cd claude/release-manager/downloads/configurator-9.1.1-rc1
 
-gh release upload 9.0.0-rc3 linux/* --repo iNavFlight/inav-configurator
-gh release upload 9.0.0-rc3 macos/* --repo iNavFlight/inav-configurator
-gh release upload 9.0.0-rc3 windows/* --repo iNavFlight/inav-configurator
+gh release upload 9.1.1-rc1 linux/* --repo iNavFlight/inav-configurator
+gh release upload 9.1.1-rc1 macos/* --repo iNavFlight/inav-configurator
+gh release upload 9.1.1-rc1 windows/* --repo iNavFlight/inav-configurator
 ```
 
 ### Upload Firmware Hex Files
 
 ```bash
 # Upload firmware hex files
-cd ../firmware-9.0.0-rc3
-gh release upload 9.0.0-rc3 *.hex --repo iNavFlight/inav
+cd ../firmware-9.1.1-rc1
+gh release upload 9.1.1-rc1 *.hex --repo iNavFlight/inav
 ```
 
 **Note:** Files should already be renamed (CI suffix removed, RC number added) as per Phase 2.
@@ -150,19 +150,19 @@ Ensure assets follow these naming patterns:
 
 ### Firmware (RC releases)
 - Pattern: `inav_<version>_RC<n>_<TARGET>.hex`
-- Example: `inav_9.0.0_RC2_MATEKF405.hex`
+- Example: `inav_9.1.1_RC2_MATEKF405.hex`
 
 ### Firmware (final releases)
 - Pattern: `inav_<version>_<TARGET>.hex`
-- Example: `inav_9.0.0_MATEKF405.hex`
+- Example: `inav_9.1.1_MATEKF405.hex`
 
 ### Configurator (RC releases)
 - Pattern: `INAV-Configurator_<platform>_<version>_RC<n>.<ext>`
-- Example: `INAV-Configurator_linux_x64_9.0.0_RC2.deb`
+- Example: `INAV-Configurator_linux_x64_9.1.1_RC2.deb`
 
 ### Configurator (final releases)
 - Pattern: `INAV-Configurator_<platform>_<version>.<ext>`
-- Example: `INAV-Configurator_linux_x64_9.0.0.deb`
+- Example: `INAV-Configurator_linux_x64_9.1.1.deb`
 
 ---
 
@@ -193,7 +193,7 @@ gh api repos/iNavFlight/inav/releases/RELEASE_ID/assets --paginate --jq '.[] | "
 
 cat /tmp/assets.txt | while read -r id name; do
   target=$(echo "$name" | sed -E 's/inav_[0-9]+\.[0-9]+\.[0-9]+_(.*)_ci-.*/\1/')
-  newname="inav_9.0.0_RC2_${target}.hex"
+  newname="inav_9.1.1_RC2_${target}.hex"
   gh api -X PATCH "repos/iNavFlight/inav/releases/assets/$id" -f name="$newname" --silent
 done
 ```
@@ -223,16 +223,16 @@ gh release list --repo iNavFlight/inav-configurator --limit 10
 
 ```bash
 # View release details
-gh release view 9.0.0-rc3 --repo iNavFlight/inav
-gh release view 9.0.0-rc3 --repo iNavFlight/inav-configurator
+gh release view 9.1.1-rc1 --repo iNavFlight/inav
+gh release view 9.1.1-rc1 --repo iNavFlight/inav-configurator
 ```
 
 ### Edit Release Notes
 
 ```bash
 # Edit release notes after creating draft
-gh release edit 9.0.0-rc3 --repo iNavFlight/inav \
-  --notes-file claude/release-manager/9.0.0-rc3-firmware-release-notes.md
+gh release edit 9.1.1-rc1 --repo iNavFlight/inav \
+  --notes-file claude/release-manager/releases/9.1.1-rc1/9.1.1-rc1-firmware-release-notes.md
 ```
 
 ---
@@ -244,13 +244,13 @@ If you can't use `gh release create` for some reason, you can create tags locall
 ```bash
 # Create tag locally
 cd inav
-git tag -a 9.0.0-rc3 -m "INAV 9.0.0-rc3"
+git tag -a 9.1.1-rc1 -m "INAV 9.1.1-rc1"
 
 # Push tag to GitHub
-git push origin 9.0.0-rc3
+git push origin 9.1.1-rc1
 
 # Then create release
-gh release create 9.0.0-rc3 --draft --title "INAV 9.0.0-rc3" --notes-file release-notes.md
+gh release create 9.1.1-rc1 --draft --title "INAV 9.1.1-rc1" --notes-file release-notes.md
 ```
 
 However, using `gh release create` with `--target` is preferred as it works even when repos are locked.
@@ -263,7 +263,7 @@ However, using `gh release create` with `--target` is preferred as it works even
 
 **Error: "Reference already exists"**
 - Tag already exists on GitHub
-- Check: `git ls-remote --tags origin | grep 9.0.0-rc3`
+- Check: `git ls-remote --tags origin | grep 9.1.1-rc1`
 - Solution: Delete tag if incorrect, or use existing tag
 
 **Error: "Not found"**

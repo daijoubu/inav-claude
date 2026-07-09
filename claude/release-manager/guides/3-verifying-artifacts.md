@@ -24,11 +24,11 @@ This guide covers verification steps to ensure artifact quality before uploading
 
 ### Using the Verification Script (Linux)
 
-A verification script is available at: `claude/release-manager/verify-dmg-contents.sh`
+A verification script is available at: `claude/release-manager/scripts/verify-dmg-contents.sh`
 
 ```bash
 # Verify all DMGs in a directory
-./claude/release-manager/verify-dmg-contents.sh downloads/configurator-9.0.0-RC3/macos/*.dmg
+./claude/release-manager/scripts/verify-dmg-contents.sh downloads/configurator-9.0.0-RC3/macos/*.dmg
 ```
 
 **What it checks:**
@@ -77,11 +77,11 @@ The Windows SITL binary (`inav_SITL.exe`) is built using Cygwin and requires the
 
 ### Using the Verification Script
 
-A verification script is available at: `claude/release-manager/verify-windows-sitl.sh`
+A verification script is available at: `claude/release-manager/scripts/verify-windows-sitl.sh`
 
 ```bash
 # Verify Windows configurator zip or extracted directory
-./claude/release-manager/verify-windows-sitl.sh downloads/configurator-9.0.0-RC4/windows/INAV-Configurator_win_x64_9.0.0.zip
+./claude/release-manager/scripts/verify-windows-sitl.sh downloads/configurator-9.0.0-RC4/windows/INAV-Configurator_win_x64_9.0.0.zip
 ```
 
 ### Manual Verification

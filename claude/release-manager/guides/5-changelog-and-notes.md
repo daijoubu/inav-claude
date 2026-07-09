@@ -95,8 +95,8 @@ The merge commit messages include PR numbers (e.g., "Merge pull request #11144")
 The short release-body notes and Discord/Facebook announcements should state the total number of fixes and the total number of new features/enhancements **since the last stable release** (not since the last RC). Use:
 
 ```bash
-./claude/release-manager/count-fixes-and-features.sh ../../inav 9.0.1 upstream/release/9.1 iNavFlight/inav
-./claude/release-manager/count-fixes-and-features.sh ../../inav-configurator 9.0.1 upstream/maintenance-9.x iNavFlight/inav-configurator
+./claude/release-manager/scripts/count-fixes-and-features.sh ../../inav 9.0.1 upstream/release/9.1 iNavFlight/inav
+./claude/release-manager/scripts/count-fixes-and-features.sh ../../inav-configurator 9.0.1 upstream/maintenance-9.x iNavFlight/inav-configurator
 ```
 
 It's a title-keyword heuristic, not a precise audit — check the "Excluded" list it prints and adjust the old-tag/new-ref args to match this release's actual last-stable tag and branch.
@@ -150,7 +150,7 @@ git diff 8.0.1..9.0.0-RC3 -- src/main/fc/settings.yaml | grep -E "^[\+\-].*name:
 
 ### Using the Automation Script
 
-Save as `claude/release-manager/find-incompatible-settings.sh`:
+Save as `claude/release-manager/scripts/find-incompatible-settings.sh`:
 
 ```bash
 #!/bin/bash
@@ -182,7 +182,7 @@ Run it:
 
 ```bash
 # From release-manager directory
-./find-incompatible-settings.sh 8.0.1 9.0.0-RC3
+./scripts/find-incompatible-settings.sh 8.0.1 9.0.0-RC3
 
 # Review output and create the renamed/removed lists
 # Use git diff to determine renames vs removals
@@ -198,7 +198,7 @@ Create a document listing:
 2. **Removed settings** - Explain why they were removed
 3. **Migration instructions** - How users should update their diff
 
-**Example:** `claude/release-manager/9.0.0-INCOMPATIBLE-SETTINGS.md`
+**Example:** `claude/release-manager/releases/9.1.0/9.1.0-INCOMPATIBLE-SETTINGS.md`
 
 ### Where to Document
 
@@ -359,18 +359,18 @@ These sections were useful during the RC testing phase, but for the final releas
 
 **Configurator compatibility note:** The configurator release notes should say "intended to be used with INAV 9 firmware" (major version only), not "INAV 9.0.1 firmware". Firmware and configurator are compatible within a major version.
 
-**Example:** See `claude/release-manager/9.0.1-firmware-release-notes.md`
+**Example:** See `claude/release-manager/releases/9.1.1/9.1.1-firmware-release-notes.md`
 
 ---
 
 ## Where to Save Release Notes
 
-Create separate files for firmware and configurator:
+Create separate files for firmware and configurator, inside a per-release-cycle folder under `releases/` (one folder per tag — RC and final each get their own):
 
 ```
-claude/release-manager/
-├── 9.0.0-RC3-firmware-release-notes.md
-└── 9.0.0-RC3-configurator-release-notes.md
+claude/release-manager/releases/9.1.0-RC3/
+├── 9.1.0-RC3-firmware-release-notes.md
+└── 9.1.0-RC3-configurator-release-notes.md
 ```
 
 These files will be used when creating releases in Phase 6. These are **short** GitHub-release-body notes — they don't need the full detail the wiki page carries; link to the wiki for that.

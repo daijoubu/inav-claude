@@ -107,8 +107,8 @@ After publishing releases:
 - **Link to the `/latest` release URL, not the specific version tag** — in case a fix release is needed in the first hours or days:
   - **Firmware:** https://github.com/iNavFlight/inav/releases/latest
   - **Configurator:** https://github.com/iNavFlight/inav-configurator/releases/latest
-- **Reference examples (emoji-free, current style):** `9.1.0-announcement-discord.md`, `9.1.0-announcement-facebook.txt`
-- **Older examples contain emojis — don't copy that part of their style:** `9.0.0-announcement-discord.md`, `9.0.0-announcement-facebook.txt`, `9.1.0-RC1-announcement-discord.md`, `9.1.0-RC1-announcement-facebook.txt`
+- **Reference examples (emoji-free, current style):** `releases/9.1.0/9.1.0-announcement-discord.md`, `releases/9.1.0/9.1.0-announcement-facebook.txt`
+- **Older examples contain emojis — don't copy that part of their style:** `releases/9.0.0/9.0.0-announcement-discord.md`, `releases/9.0.0/9.0.0-announcement-facebook.txt`, `releases/9.1.0-RC1/9.1.0-RC1-announcement-discord.md`, `releases/9.1.0-RC1/9.1.0-RC1-announcement-facebook.txt`
 
 ---
 
