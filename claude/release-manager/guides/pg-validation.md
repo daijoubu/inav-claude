@@ -1,5 +1,7 @@
 # Parameter Group (PG) Validation for Releases
 
+**Read this guide when:** Right after the freeze commit is locked in — this is not phase-numbered because it doesn't sit in the linear 1→7 sequence, but it must run early: right after [Phase 1](1-workflow-and-preparation.md#️-step-06-run-pg-validation-now-before-downloading-anything)'s freeze, before Phase 2's artifact downloads. A failure here means a new freeze point is needed, so running it late wastes any download/verify/changelog work done in between.
+
 ## Overview
 
 The Parameter Group validation system helps catch a critical class of EEPROM corruption bugs by verifying that struct size changes are accompanied by version increments.

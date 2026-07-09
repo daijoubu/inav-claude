@@ -1,4 +1,4 @@
-# Phase 6: Creating and Publishing Releases
+# Phase 6: Creating and Uploading Releases
 
 **Read this guide when:** Artifacts are verified and release notes are ready
 
@@ -10,12 +10,13 @@
 - [Phase 1: Workflow and Preparation](1-workflow-and-preparation.md)
 - [Phase 3: Verifying Artifacts](3-verifying-artifacts.md)
 - [Phase 5: Changelog and Notes](5-changelog-and-notes.md)
+- [Phase 7: Publishing Releases](7-publishing-releases.md)
 
 ---
 
 ## Overview
 
-This guide covers creating tags, draft releases, uploading assets, and publishing releases on GitHub.
+This guide covers creating tags, draft releases, and uploading assets on GitHub. Once assets are uploaded and verified, proceed to [Phase 7](7-publishing-releases.md) to publish and announce.
 
 ---
 
@@ -236,81 +237,6 @@ gh release edit 9.0.0-rc3 --repo iNavFlight/inav \
 
 ---
 
-## Publishing Releases
-
-> **🚨 AGENT RULE: Do NOT publish releases without explicit human instruction.**
->
-> Publishing a release is irreversible and immediately public to all INAV users worldwide. The agent must never run `--draft=false` or any publish command on its own initiative. Wait until the human user explicitly says to publish (e.g., "publish the firmware release now"). "Maintainer approval obtained" is not sufficient — the human user in this session must give the direct instruction.
-
-**Only publish after:**
-- All assets uploaded and verified
-- Release notes reviewed and approved
-- Maintainer approval obtained
-- Final SITL testing completed
-
-### Publish Draft Release
-
-**Publish firmware first, then verify before publishing configurator.**
-
-```bash
-# Step 1: Publish firmware release  (only run when user explicitly instructs)
-gh release edit 9.0.0-rc3 --repo iNavFlight/inav --draft=false
-```
-
-#### Step 2: Verify Configurator Sees the Firmware Release
-
-After publishing firmware, open INAV Configurator and go to the Firmware Flasher tab. Verify that the new firmware version appears in the release list. This confirms the GitHub release is properly formatted and discoverable by the configurator's firmware download logic.
-
-**This step must be done by a human** - it requires running the configurator and visually confirming the release appears.
-
-```bash
-# Step 3: Publish configurator release (only after firmware is verified in flasher)
-gh release edit 9.0.0-rc3 --repo iNavFlight/inav-configurator --draft=false
-```
-
-**Note:** The human user must perform the final configurator publish step.
-
-### Verify Published Releases
-
-After publishing, verify on GitHub:
-
-**Firmware:** https://github.com/iNavFlight/inav/releases
-**Configurator:** https://github.com/iNavFlight/inav-configurator/releases
-
-Check:
-- Tag was created correctly
-- All assets are present
-- Release notes are correct
-- Downloads work
-- Configurator firmware flasher lists the new release
-
----
-
-## Post-Publication Tasks
-
-After publishing releases:
-
-1. **Announce release**
-   - Discord
-   - Forums
-   - Social media
-
-2. **Monitor for issues**
-   - Watch GitHub issues
-   - Check Discord for user reports
-   - Monitor RC feedback
-
-3. **Update documentation**
-   - Mark release as complete in project tracking
-   - Update any pinned issues
-   - Document any lessons learned
-
-4. **Prepare for next RC or final release**
-   - If RC, monitor feedback for next iteration
-   - If final, prepare for potential hotfixes
-
----
-
 ## Alternative: Traditional Git Tagging (Less Common)
 
 If you can't use `gh release create` for some reason, you can create tags locally:
@@ -366,9 +292,6 @@ gh release create <version> --repo <owner/repo> --target <commit> --draft --prer
 # Upload assets
 gh release upload <version> <files> --repo <owner/repo>
 
-# Publish release
-gh release edit <version> --repo <owner/repo> --draft=false
-
 # View release
 gh release view <version> --repo <owner/repo>
 
@@ -391,16 +314,15 @@ gh api repos/<owner/repo>/releases/<id>/assets --paginate
 - [ ] Configurator Windows builds uploaded
 - [ ] Asset naming verified
 - [ ] Release notes reviewed
-- [ ] Maintainer approval obtained
-- [ ] Firmware release published
-- [ ] Configurator release published
-- [ ] Releases verified on GitHub
-- [ ] Announcement prepared
+
+---
+
+⚠️ **Reminder for the human user before Phase 7:** Publish firmware first, then verify the release loads correctly in the Configurator's Firmware Flasher tab, **before** publishing the Configurator release itself. Do not manually publish Configurator ahead of that check — see [Phase 7](7-publishing-releases.md) for the full sequence.
 
 ---
 
 ## Next Steps
 
-After publishing:
+Once drafts are created and assets are uploaded:
 
-**→ Return to [Phase 1: Workflow and Preparation](1-workflow-and-preparation.md#post-release-tasks)** for post-release checklist
+**→ Proceed to [Phase 7: Publishing Releases](7-publishing-releases.md)**

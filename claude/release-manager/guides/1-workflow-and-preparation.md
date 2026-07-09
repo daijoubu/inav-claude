@@ -8,6 +8,9 @@
 - Phase 4: [Building Locally](4-building-locally.md)
 - Phase 5: [Changelog and Notes](5-changelog-and-notes.md)
 - Phase 6: [Creating Releases](6-creating-releases.md)
+- Phase 7: [Publishing Releases](7-publishing-releases.md)
+- Phase 8: [Post-Release](8-post-release.md)
+- [PG Validation](pg-validation.md) — not phase-numbered; run right after freeze, before Phase 2 (see Step 0.6 below)
 
 ---
 
@@ -55,6 +58,19 @@ EOF
 Same pattern for `claude/locks/inav-configurator.lock`. Full rules: `claude/locks/README.md`. **Release the lock (`rm claude/locks/inav.lock`) as soon as your build/verification is done** — don't hold it for the whole release process, only for the parts that actually touch the shared checkout.
 
 If a build must run unattended or for a while, prefer an isolated `git clone` to a scratch path over the shared checkout regardless — the lock protects against concurrent writers, but an isolated clone also avoids `HEAD` being reused for something else between your checkout and your verification.
+
+---
+
+## ⚠️ Step 0.6: Run PG Validation Now, Before Downloading Anything
+
+Run [PG Validation](pg-validation.md) against the freeze commit **now** — before Phase 2's artifact downloads, not after. If it fails, you need a hotfix PR and a new freeze point, and there's no reason to spend time downloading/verifying artifacts or writing changelog notes for a commit that's about to be superseded.
+
+```bash
+cd inav
+./cmake/validate-pg-for-release.sh
+```
+
+If it fails, see [PG Validation](pg-validation.md) for the fix procedure, then re-freeze and re-run this step before proceeding.
 
 ---
 
@@ -232,6 +248,7 @@ Both firmware and configurator GitHub releases follow the same cumulative patter
 - [ ] No critical open issues blocking release
 - [ ] Version numbers updated in both repositories
 - [ ] SITL binaries updated in configurator
+- [ ] **PG validation passed** (see [Step 0.6](#️-step-06-run-pg-validation-now-before-downloading-anything) above — run this before Phase 2, not after)
 
 ### Documentation
 
@@ -250,18 +267,10 @@ Both firmware and configurator GitHub releases follow the same cumulative patter
 
 ---
 
-## Post-Release Tasks
-
-- [ ] Announce release (Discord, forums, etc.)
-- [ ] Update any pinned issues
-- [ ] Monitor for critical bug reports
-- [ ] Prepare hotfix if needed
-- [ ] Update this document with any lessons learned
-
----
-
 ## Next Steps
 
 Once you've verified release readiness:
 
 **→ Proceed to [Phase 2: Downloading Artifacts](2-downloading-artifacts.md)**
+
+(Post-release tasks — announcing, monitoring, lessons learned — live in [Phase 8: Post-Release](8-post-release.md), the last step in the loop.)

@@ -23,7 +23,9 @@ Do NOT read other roles' files (Manager's INDEX, other inboxes, cross-role track
 3. **[Phase 3: Verifying Artifacts](guides/3-verifying-artifacts.md)** - Verify DMG, SITL, test
 4. **[Phase 4: Building Locally](guides/4-building-locally.md)** - Only if inav-builder agent fails
 5. **[Phase 5: Changelog and Notes](guides/5-changelog-and-notes.md)** - Generate release notes
-6. **[Phase 6: Creating Releases](guides/6-creating-releases.md)** - Create tags and publish
+6. **[Phase 6: Creating Releases](guides/6-creating-releases.md)** - Create tags, draft releases, upload assets
+7. **[Phase 7: Publishing Releases](guides/7-publishing-releases.md)** - Publish and announce
+8. **[Phase 8: Post-Release](guides/8-post-release.md)** - Monitor, hotfix, capture lessons learned
 
 **Important:** Use the **inav-builder** agent for all builds. Only read Phase 4 if the agent encounters issues.
 
@@ -37,7 +39,9 @@ For a typical release:
 2. **Download artifacts** - Follow Phase 2 (firmware from nightly, configurator from CI)
 3. **Verify artifacts** - Follow Phase 3 (DMG, SITL, testing)
 4. **Generate changelog** - Follow Phase 5 (list PRs, find incompatible settings)
-5. **Create releases** - Follow Phase 6 (create tags, upload, publish)
+5. **Create releases** - Follow Phase 6 (create tags, upload assets)
+6. **Publish releases** - Follow Phase 7 (publish, announce)
+7. **Post-release** - Follow Phase 8 (monitor, hotfix, lessons learned)
 
 ---
 
@@ -342,7 +346,7 @@ gh release edit X.Y.Z --draft=false --repo <owner/repo>
 gh release view X.Y.Z --repo <owner/repo>
 ```
 
-For detailed command examples, see [Phase 6: Creating Releases](guides/6-creating-releases.md).
+For detailed command examples, see [Phase 6: Creating Releases](guides/6-creating-releases.md) (tag/draft/upload) and [Phase 7: Publishing Releases](guides/7-publishing-releases.md) (publish/announce).
 
 ---
 
@@ -428,14 +432,7 @@ As Release Manager:
 **Remember:** Releases affect all INAV users. Double-check everything before publishing.
 
 ### Announcement Tips
-- **No emojis in either Discord or Facebook posts** — plain text/markdown headers only
-- **Discord:** 2000-character limit - keep concise, use markdown
-- **Facebook:** No markdown, supports images (1200x630 PNG recommended)
-- Focus on top 5 features users care about most
-- Include download link and upgrade warnings
-- **Combined announcements:** Firmware and Configurator are always announced together in one post — users think of it as a single "INAV X.Y.Z" release. Exception: hotfixes that touch only one repo get a targeted announcement, not a combined one.
-- **Reference examples (emoji-free, current style):** `9.1.0-announcement-discord.md`, `9.1.0-announcement-facebook.txt`
-- **Older examples contain emojis — don't copy that part of their style:** `9.0.0-announcement-discord.md`, `9.0.0-announcement-facebook.txt`, `9.1.0-RC1-announcement-discord.md`, `9.1.0-RC1-announcement-facebook.txt`
+See [Phase 7: Publishing Releases § Announcement Tips](guides/7-publishing-releases.md#announcement-tips) for the full checklist (character limits, emoji policy, combined-announcement rule, reference examples).
 
 ---
 
@@ -453,3 +450,5 @@ As Release Manager:
 - Verifying builds → [Phase 3](guides/3-verifying-artifacts.md)
 - Writing release notes → [Phase 5](guides/5-changelog-and-notes.md)
 - Creating GitHub releases → [Phase 6](guides/6-creating-releases.md)
+- Publishing and announcing → [Phase 7](guides/7-publishing-releases.md)
+- Post-release monitoring and lessons learned → [Phase 8](guides/8-post-release.md)
