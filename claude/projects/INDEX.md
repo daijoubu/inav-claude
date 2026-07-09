@@ -2,8 +2,8 @@
 
 This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKED).
 
-**Last Updated:** 2026-07-03
-**Active:** 35 | **Backburner:** 10 | **Blocked:** 4
+**Last Updated:** 2026-07-08
+**Active:** 42 | **Backburner:** 11 | **Blocked:** 4
 
 > **Completed projects:** See [completed/INDEX.md](completed/INDEX.md)
 > **Blocked projects:** See `blocked/` directory
@@ -39,15 +39,128 @@ This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKE
 
 ## Active Projects
 
-### 📋 fix-icm42688-aaf-freq-overflow
+### 📋 index-icm40609d-datasheet
 
-**Status:** TODO | **Type:** Bug Fix / Correctness | **Priority:** MEDIUM-HIGH
-**Created:** 2026-07-02 | **Assignee:** Developer ✉️
+**Status:** TODO | **Type:** Documentation / Tooling | **Priority:** MEDIUM
+**Created:** 2026-07-08 | **Assignee:** Developer ✉️
 
-`getGyroAafConfig()` in `accgyro_icm42605.c` stores the running best AAF-frequency candidate in `int8_t`, which overflows for 7 of 11 entries in `aafLUT42688[]` (258, 303, 536, 997, 1962 all truncate) — silently selecting the wrong anti-alias filter on ICM-42688P/42686P gyros. Confirmed present on every active branch (master, maintenance-9.x, maintenance-10.x, release/9.1); not a new regression. Found via Qodo bot review on PR #11681, independently verified against actual file content.
+Build a searchable page index for the ICM40609D IMU datasheet, following the existing per-chip index pattern used for STM32 target datasheets (see `stm32f405/`). Groundwork for `add-icm40609d-imu-driver`, which depends on this.
 
-**Directory:** `active/fix-icm42688-aaf-freq-overflow/`
-**Found on:** [PR #11681](https://github.com/iNavFlight/inav/pull/11681) (bot comment) | **Repo:** inav | **Branch:** PR against `release/9.1` (flows up to maintenance-10.x via normal merge)
+**Directory:** `active/index-icm40609d-datasheet/`
+**Repository:** claude/ (docs/tooling, no PR needed) | **Assignment:** `manager/email/sent/2026-07-09-task-index-icm40609d-datasheet.md`
+
+---
+
+### 📋 add-icm40609d-imu-driver
+
+**Status:** TODO | **Type:** Feature (new hardware sensor driver) | **Priority:** MEDIUM
+**Created:** 2026-07-08 | **Assignee:** Developer ✉️
+
+Add an INAV accgyro driver for the TDK InvenSense ICM40609D, modeled on `accgyro_icm42605.c` and cross-checked against the datasheet index. Betaflight has an untested draft driver (PR #14348) usable as a structural reference only. **Depends on `index-icm40609d-datasheet`** — if that index doesn't exist yet, do it first.
+
+**Directory:** `active/add-icm40609d-imu-driver/`
+**Repository:** inav | **Branch:** From `maintenance-9.x` | **Assignment:** `manager/email/sent/2026-07-09-task-add-icm40609d-imu-driver.md`
+
+---
+
+### 📋 fix-windows-configurator-devtools-open
+
+**Status:** TODO | **Type:** Bug Fix (Configurator, packaging/build) | **Priority:** MEDIUM
+**Created:** 2026-07-08 | **Assignee:** Developer ✉️
+
+Packaged Configurator opens with DevTools open by default on Windows only (not Linux). The one known `openDevTools()` call is gated on `NODE_ENV === 'development'`, which doesn't explain a Windows-only difference on its own — needs actual reproduction on a Windows build to find the real cause.
+
+**Directory:** `active/fix-windows-configurator-devtools-open/`
+**Repository:** inav-configurator | **Branch:** From `maintenance-9.x`
+
+---
+
+### 📋 fix-h7-dma-stream-conflicts
+
+**Status:** TODO | **Type:** Bug Fix (5 already-shipped targets) | **Priority:** HIGH
+**Created:** 2026-07-08 | **Assignee:** Developer ✉️
+
+Static-analysis tool (`check_dma_conflicts.py`) found 5 STM32H7 targets with CERTAIN DMA stream collisions: AEDROXH7 (a *regression* in an already-merged fix), KAKUTEH7WING, SEQUREH7 (both collide on a guaranteed quad-build output position), TBS_LUCID_H7_WING, TBS_LUCID_H7_WING_MINI. Same bug class as the just-fixed DAKEFPVH743PRO conflict.
+
+**Directory:** `active/fix-h7-dma-stream-conflicts/`
+**Repository:** inav | **Branch:** From `release/9.1` | **Source:** `fix-dakefpvh743pro-led-adc-dma-conflict` follow-on finding
+
+---
+
+### 📋 fix-missing-default-features
+
+**Status:** TODO | **Type:** Bug Fix (8 already-shipped targets) | **Priority:** MEDIUM-HIGH
+**Created:** 2026-07-08 | **Assignee:** Developer ✉️
+
+New checker (`check_default_features.py`) found 8 targets (ANYFC, ANYFCM7, FF_FORTINIF4, FLYCOLORF4, FLYWOOF7DUAL, FOXEERF405, FOXEERF722DUAL, FOXEERF722V4) with no `DEFAULT_FEATURES` macro at all — every feature silently off by default. Same bug class just found and fixed on AXISFLYINGH743PRO. 59 additional "thin" findings reviewed and excluded as likely false positives (deliberately minimal configs).
+
+**Directory:** `active/fix-missing-default-features/`
+**Repository:** inav | **Branch:** From `release/9.1` | **Source:** `axisflyingh743pro-uart8-investigation` follow-on finding
+
+---
+
+### 🚧 improve-claude-harness
+
+**Status:** IN PROGRESS | **Type:** Harness Tooling (Master Project — 18 Milestones) | **Priority:** HIGH
+**Created:** 2026-07-05 | **Assignee:** Manager (spawns milestones to Developer)
+
+Master project organizing the full harness-improvement program from the 2026-07-04 audit (R1–R17 + A1–A15 + context-flow redesign) into 18 milestone-sized units across 4 waves. M1–M4 already spawned as standalone projects (the four entries below); M5–M18 have reference briefs awaiting a detailing pass before each is spawned. Milestone briefs in `milestones/M<n>/reference.md`.
+
+**Directory:** `active/improve-claude-harness/`
+**Research base:** `active/investigate-harness-efficiency-improvements/` (audit deliverables)
+**Note:** M12 decision resolved 2026-07-05 — security-analyst role absence is temporary/intentional; milestone scope is graceful-absence + pointer fixes, not removal.
+
+---
+
+### 📋 single-source-branch-bases
+
+**Status:** TODO | **Type:** Refactor (harness tooling) | **Priority:** HIGH
+**Created:** 2026-07-04 | **Assignee:** Developer ✉️
+
+Replace 8 drifted prose copies of base-branch guidance with one new-branch.sh decision-table script plus one authoritative doc (7 copies still say maintenance-9.x despite the active override); remove the self-contradicting tutorial sections in git-workflow/finish-task; sweep TodoWrite → current task tools. Phase 1 of the harness roadmap.
+
+**Directory:** `active/single-source-branch-bases/`
+**Master:** improve-claude-harness (M2)
+**Source:** Findings A/I/L/Q, recs R4/R6/R13
+
+---
+
+### 📋 retire-chromadb-memory-stack
+
+**Status:** TODO | **Type:** Refactor (harness tooling) | **Priority:** HIGH
+**Created:** 2026-07-04 | **Assignee:** Developer ✉️
+
+Remove the broken ChromaDB memory pipeline (per-prompt injection silently failing; ingestion/deletion disabled by uncommitted hacks) and ratify lessons-in-docs as the single memory system. Preserves framework-tips.txt content for the context-injection project. Phase 2 of the harness roadmap; decision per R3(a)/A8.
+
+**Directory:** `active/retire-chromadb-memory-stack/`
+**Master:** improve-claude-harness (M3)
+**Source:** Finding F, recs R3/A8
+
+---
+
+### 📋 point-of-action-context-injection
+
+**Status:** TODO | **Type:** Feature (harness tooling) | **Priority:** MEDIUM-HIGH
+**Created:** 2026-07-04 | **Assignee:** Developer ✉️
+
+Extend the PreToolUse engine with a separate tool_context_injections.yaml (additive, advisory, throttled — deliberately not in the permission YAMLs) injecting distilled stage rules on git commit / gh pr create / version-branch merges / raw build & flash commands / lockless firmware edits. Phase 2.5 (A6); run after single-source-branch-bases.
+
+**Directory:** `active/point-of-action-context-injection/`
+**Master:** improve-claude-harness (M4)
+**Source:** A6 in `architecture-recommendations.md`, plan in `context-flow-redesign.md`
+
+---
+
+### 📋 investigate-harness-efficiency-improvements
+
+**Status:** TODO | **Type:** Investigation | **Priority:** MEDIUM-HIGH
+**Created:** 2026-07-04 | **Assignee:** Developer ✉️
+
+Analyze the manager/developer/release-manager role system, agents, hooks, skills, permissions, and developer docs for opportunities to make the harness more efficient and effective (redundancy, ad-hoc judgment vs. deterministic scripts, permission friction, unclear handoffs, etc.). Model delegation to Haiku is one input to consider; hard constraint is not shifting toward Opus/Fable as primary model — but that's a bounded finding, not the project's frame. Pure planning deliverable — no hooks/agents/configs/docs modified.
+
+**Directory:** `active/investigate-harness-efficiency-improvements/`
+**Deliverables:** `design-analysis.md`, `harness-recommendations.md`, `implementation-roadmap.md`, plus architecture supplement: `architecture-review.md`, `architecture-recommendations.md`, `context-flow-redesign.md` (all in the project directory)
+**Note:** Analysis complete 2026-07-04; first four follow-up projects spawned (see entries above)
 
 ---
 
@@ -97,18 +210,6 @@ Auto-delete releases in `pr-test-builds` when corresponding PRs merge (only `ina
 
 **Directory:** `active/cleanup-pr-test-builds-releases/`
 **PR:** [#11678](https://github.com/iNavFlight/inav/pull/11678) | **Repos:** iNavFlight/inav, iNavFlight/inav-configurator, iNavFlight/pr-test-builds
-
----
-
-### 🚧 fix-outputs-tab-servo-numbering-display
-
-**Status:** IN PROGRESS | **Type:** Bug Fix | **Priority:** LOW
-**Created:** 2026-06-12 | **Assignee:** Developer ✉️
-
-Fixed servo numbering display (off-by-one label + bar-chart title row). PR #2660 submitted; awaiting CI and maintainer review.
-
-**Directory:** `active/fix-outputs-tab-servo-numbering-display/`
-**PR:** [#2660](https://github.com/iNavFlight/inav-configurator/pull/2660) | **Branch:** `maintenance-9.x`
 
 ---
 
@@ -211,15 +312,15 @@ Remove orphaned `servo_autotrim_iterm_threshold` field from `servoConfig_t` — 
 
 ---
 
-### 📋 feature-auto-alignment-tool
+### 🚧 investigate-ardupilot-orientation-technique
 
-**Status:** TODO | **Type:** Feature / Configurator | **Priority:** MEDIUM
+**Status:** IN PROGRESS (Phases 1-3 done, Phase 4 implementation pending) | **Type:** Investigation / Feature | **Priority:** MEDIUM
 **Created:** 2026-06-07 | **Assignee:** Developer ✉️
 
-Research how ArduPilot's `calculate_orientation()` auto-detects compass mounting orientation; write plain-language explanation; examine four `auto_alignment_tool` branches in inav-configurator; assess and implement if applicable.
+Renamed from `feature-auto-alignment-tool` (2026-07-03) to resolve a name collision with the unrelated backburner project of the same name. Research complete: ArduPilot's `calculate_orientation()` technique can be adapted, but as a **firmware feature during mag-cal spin**, not inside the configurator wizard — a different path than backburner PR #2158. Manager to decide whether #2158 is still worth pursuing given this finding.
 
-**Directory:** `active/feature-auto-alignment-tool/`
-**ArduPilot ref:** `ardupilot/libraries/AP_Compass/CompassCalibrator.cpp` | **Repo:** inav-configurator
+**Directory:** `active/investigate-ardupilot-orientation-technique/`
+**ArduPilot ref:** `ardupilot/libraries/AP_Compass/CompassCalibrator.cpp` | **Repo:** inav-configurator (research) / inav (likely implementation target)
 
 ---
 
@@ -275,10 +376,10 @@ Flash PR #11390 to an F7 or H7 board and verify DShot works without lockups over
 **Status:** IN PROGRESS | **Type:** Feature Enhancement | **Priority:** MEDIUM
 **Created:** 2026-04-25 | **Assignee:** Developer ✉️
 
-Configurator side (PR #2654) and firmware side (PR #11675) both implemented; firmware PR reports LED/BEEPER/PINIO assignment via reworked MSP type-byte encoding that #2654 depends on. Two Qodo findings on #11675 resolved: multi-channel timer pad selection confirmed a non-issue (UI is already timer-granular, matches firmware storage granularity); PWM init failure now fails loudly (LOG_ERROR) instead of silently falling back to the compile-time pin, since that pin may have been reassigned. Currently blocked on `build-SITL-Mac` — will clear once PR #11679 (see fix-sitl-mac-log-c-vla-error) merges into maintenance-10.x.
+Original firmware PR #11675 (BUZZER as runtime-assignable timer output mode) has MERGED. Hardware verification of the follow-on work found two more bugs: (1) firmware+configurator — BEEPER timer sibling pads were mislabeled in the Mixer tab; (2) configurator regression — `getOutputCount()` broke with gaps in the output array, silently losing motor/servo outputs. Both fixed, with a PINIO fallback added for sibling pads. New firmware PR #11686 opened for the sibling-pad/PINIO fix; configurator PR #2654 updated with the `getOutputCount()` fix. 5 new regression tests added, 36/36 passing. Both PRs passed code review; awaiting merge.
 
 **Directory:** `active/feature-buzzer-unified-output/`
-**PR:** [#2654](https://github.com/iNavFlight/inav-configurator/pull/2654) (configurator) | [#11675](https://github.com/iNavFlight/inav/pull/11675) (firmware) | **Branch:** `maintenance-10.x`
+**PR:** [#2654](https://github.com/iNavFlight/inav-configurator/pull/2654) (configurator, OPEN) | [#11686](https://github.com/iNavFlight/inav/pull/11686) (firmware, OPEN, follow-on to merged #11675) | **Branch:** `maintenance-10.x`
 
 ---
 
@@ -381,18 +482,6 @@ Auto-trim active during maneuvers. Theory: missing I-term stability check in `se
 
 **Directory:** `active/reproduce-issue-9912/`
 **Analysis:** `claude/developer/reports/issue-9912-autotrim-analysis.md`
-
----
-
-### 📋 fix-project-ops-script
-
-**Status:** TODO | **Type:** Tooling / Bug Fix | **Priority:** HIGH
-**Created:** 2026-03-07 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
-
-Fix `project_ops.py` robustness: stop silently deleting active copies on duplicate, add `--dry-run` flag, handle master projects with `milestones/` subdirs, fix unreliable count verification. Bumped to HIGH 2026-07-02 after two new instances of the same silent-corruption pattern: `complete` failed to match an INDEX.md heading with trailing text and left a stale entry with no error, and generated a truncated/misleading completed/INDEX.md description.
-
-**Directory:** `active/fix-project-ops-script/`
-**Assignment:** `manager/email/sent/2026-03-07-task-fix-project-ops-script.md`
 
 ---
 
@@ -636,5 +725,17 @@ New crash detection mode that triggers even at high throttle (full-throttle nose
 
 **Directory:** `backburner/feature-high-throttle-crash-detection/`
 **Repository:** inav | **Branch:** From `maintenance-9.x`
+
+---
+
+### ⏸️ migrate-camera-pin-pinio-10x
+
+**Status:** BACKBURNER | **Type:** Refactor / Target Maintenance | **Priority:** LOW
+**Created:** 2026-07-06 | **Scheduled For:** ~2026-10 (once 10.0 flexible PWM-capable PINIO feature lands)
+
+Migrate the 8 targets using `CAMERA_CONTROL_PIN` (currently inert — no driver consumes it) plus other timer-controlled PINIO pins to the planned 10.0 flexible PWM-capable PINIO feature. Raised during `update-dakefpvf405-target`. Do not start before the 10.0 feature merges.
+
+**Directory:** `backburner/migrate-camera-pin-pinio-10x/`
+**Repository:** inav | **Branch:** TBD (base once resumed)
 
 ---

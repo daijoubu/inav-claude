@@ -2,9 +2,130 @@
 
 Completed (✅) and cancelled (❌) projects.
 
-**Total Completed:** 220 | **Total Cancelled:** 6
+**Total Completed:** 231 | **Total Cancelled:** 6
 
 > **Active projects:** See [../INDEX.md](../INDEX.md)
+
+---
+
+
+### ✅ fix-dakefpvh743pro-led-adc-dma-conflict
+
+**Status:** COMPLETED (2026-07-08)
+**Type:** Bug Fix (possible latent hardware conflict in already-shipped target)
+**Priority:** MEDIUM
+
+Investigate whether DAKEFPVH743PRO's LED strip (DMA option 8) collides with ADC1 (VBAT/current sensing) on the same DMA stream — flagged while assigning DMA options on the new AxisFlying H743 PRO target. Unconfirmed. Requires a **human hardware test** with LED strip and ADC both active simultaneously — cannot be verified by build test alone.
+
+---
+
+
+### ✅ feature-lsm6dsv16x-lsm6dsk320x-driver
+
+**Status:** COMPLETED (2026-07-08)
+**Type:** Feature (new sensor driver — register-level firmware)
+**Priority:** MEDIUM-HIGH
+
+Add INAV driver support for LSM6DSV16X and LSM6DSK320X gyro/accel chips — no driver exists today. Follow-on from `update-dakefpvf405-target`; DAKEFPVF405 hardware will serve as the test platform. Developer-flagged as more safety-relevant than typical target work (new register-level sensor driver).
+
+---
+
+
+### ✅ feature-axisflyingh743pro-target
+
+**Status:** COMPLETED (2026-07-06)
+**Type:** Feature (new hardware target)
+**Priority:** MEDIUM
+
+Create a new INAV target for the AxisFlying H743 PRO (STM32H743, dual ICM42688P gyro with CLKIN sync), ported from the Betaflight unified-target config. Use the `target-developer` agent for pin/timer/DMA translation.
+
+---
+
+
+### ✅ fix-stm32h7-uart-pinswap
+
+**Status:** COMPLETED (2026-07-06)
+**Type:** Investigation / Cleanup (likely already superseded upstream)
+**Priority:** MEDIUM
+
+Verify whether `inav3/`'s unprotected uncommitted changes (DAKEFPVH743_SLIM target.c/target.h + STM32H7 UART pin-swap driver files) are already superseded by merged PRs #11177 and #11687. Manager's triage strongly suggests yes, but needs independent developer confirmation per `CRITICAL-BEFORE-MERGE.md` before discarding. One open question (a legacy `USE_UART4_SWAP` block) flagged for investigation.
+
+---
+
+
+### ✅ feature-axisflyingecof4-target
+
+**Status:** COMPLETED (2026-07-06)
+**Type:** Feature (new hardware target)
+**Priority:** MEDIUM
+
+Create a new INAV target for the AxisFlying ECO F4 (STM32F405, single ICM42688P gyro), ported from the Betaflight unified-target config. Use the `target-developer` agent for pin/timer/DMA translation.
+
+---
+
+
+### ✅ update-dakefpvf405-target
+
+**Status:** COMPLETED (2026-07-06)
+**Type:** Feature Enhancement (existing hardware target)
+**Priority:** MEDIUM
+
+User requested a "new" DakeFPV F405 target, but `DAKEFPVF405` already exists in our tree — it's just missing PINIO2, camera control pin, and 3 newer IMU options (ICM42688P, LSM6DSV16X, LSM6DSK320X) that the current Betaflight config has. Scoped as an update, not a new target, per user decision. Use the `target-developer` agent.
+
+---
+
+
+### ✅ fix-harness-security-hygiene
+
+**Status:** COMPLETED (2026-07-06)
+**Type:** Bug Fix (harness tooling)
+**Priority:** HIGH
+
+Remove the standing dangerouslyDisableSandbox instructions from CRITICAL-BEFORE-PR.md and pr-scorecard, remove/justify the sandbox ~/.ssh read allowance, and move the Anthropic API key from settings.local.json to an env var (plus repo .gitignore entry and rotation-as-insurance). Phase 0 of the harness roadmap.
+
+---
+
+
+### ✅ feature-sologoodf722-target-9-1
+
+**Status:** COMPLETED (2026-07-06)
+**Type:** Feature (new hardware target)
+**Priority:** MEDIUM
+
+Port upstream community PR #11394 (adds SOLOGOODF722 target) onto our own branch based on `release/9.1`, adding the `config.c` file the maintainer requested in review (PINIO permanentId setup) that the original author never supplied. Test-build the target and open our own PR.
+
+---
+
+
+### ✅ fix-outputs-tab-servo-numbering-display
+
+**Status:** COMPLETED (2026-07-04)
+**Type:** Bug Fix
+**Priority:** LOW
+
+Fixed servo numbering display (off-by-one label + bar-chart title row). PR #2660 submitted; awaiting CI and maintainer review.
+
+---
+
+
+### ✅ fix-icm42688-aaf-freq-overflow
+
+**Status:** COMPLETED (2026-07-03)
+**Type:** Bug Fix / Correctness
+**Priority:** MEDIUM-HIGH
+
+`getGyroAafConfig()` in `accgyro_icm42605.c` stores the running best AAF-frequency candidate in `int8_t`, which overflows for 7 of 11 entries in `aafLUT42688[]` (258, 303, 536, 997, 1962 all truncate) — silently selecting the wrong anti-alias filter on ICM-42688P/42686P gyros. Confirmed present on every active branch (master, maintenance-9.x, maintenance-10.x, release/9.1); not a new regression. Found via Qodo bot review on PR #11681, independently verified against actual file content.
+
+---
+
+
+### ✅ fix-project-ops-script
+
+**Status:** COMPLETED (2026-07-03)
+**Type:** Tooling / Bug Fix
+**Priority:** HIGH
+
+Fix `project_ops.py` robustness: stop silently deleting active copies on duplicate, add `--dry-run` flag, handle master projects with `milestones/` subdirs, fix unreliable count verification. Bumped to HIGH 2026-07-02 after two new instances of the same silent-corruption pattern: `complete` failed to match an INDEX.md heading with trailing text and left a stale entry with no error, and generated a truncated/misleading completed/INDEX.md description.
 
 ---
 
