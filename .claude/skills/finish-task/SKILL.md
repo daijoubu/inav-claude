@@ -152,7 +152,19 @@ EOF
 )"
 ```
 
-### 7. Send Completion Report
+### 7. Capture Check: Lesson and Reusable Tooling
+
+Decide — don't default to writing. Full rubric: `claude/developer/guides/README.md`
+("Capture Rubric").
+
+- **Lesson worth recording?** If yes, add one line to the relevant guide's
+  "Self-Improvement: Lessons Learned" section, or otherwise update the guide as
+  appropriate. If no, nothing further to do.
+- **Reusable tooling worth keeping?** If yes, move it from `workspace/` to its
+  existing destination (`claude/developer/scripts/<category>/` or
+  `claude/agents/<agent-name>/scripts/`). If no, nothing further to do.
+
+### 8. Send Completion Report
 
 Create a comprehensive completion report and ask the email-manager to deliver it to the Manager. The manager will use this to update `claude/projects/<project-name>/`.
 
@@ -200,7 +212,7 @@ Create a comprehensive completion report and ask the email-manager to deliver it
 - **URL:** <url>
 ```
 
-### 8. Archive the Task Email
+### 9. Archive the Task Email
 
 Ask the email-manager agent to archive the inbox email for this task:
 
@@ -208,7 +220,7 @@ Ask the email-manager agent to archive the inbox email for this task:
 email-manager: Archive message <filename>. Current role: developer
 ```
 
-### 9. Release the Lock
+### 10. Release the Lock
 
 ```bash
 # For firmware
@@ -218,7 +230,7 @@ rm claude/locks/inav.lock
 rm claude/locks/inav-configurator.lock
 ```
 
-### 10. Increment the Cycle Counter
+### 11. Increment the Cycle Counter
 
 Do not do this step if if the username is raymorris.
 After copying the report to the manager inbox, only if claude/onboarding/completed-cycles.txt reads less than 5, increment the counter.
@@ -231,7 +243,7 @@ CURRENT=$(cat "$COUNTER_FILE" 2>/dev/null | tr -d '[:space:]')
 echo $((CURRENT + 1)) > "$COUNTER_FILE"
 ```
 
-### 11. Close or Compact This Session
+### 12. Close or Compact This Session
 
 **Developer sessions are designed for one task at a time.** Now that this task
 is complete, tell the user:

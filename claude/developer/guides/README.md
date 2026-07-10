@@ -47,6 +47,30 @@ creating a new catch-all file. The Claude Code auto-memory feature (`MEMORY.md` 
 `~/.claude/projects/.../memory/`) is intentionally stubbed out — see its own note — in
 favor of this policy.
 
+## Capture Rubric
+
+At task completion (17-step workflow steps 13-14, and `/finish-task`), **decide —
+don't default to writing.** The gate is "did you consider it," never "did you
+produce something."
+
+**Lesson worth recording?** Yes if it's non-obvious and would generalize: a hidden
+constraint, a workaround for a specific broken tool/environment, a mapping or trap
+that will recur on similar future work (e.g. "DMA option N maps to stream X, shared
+with peripheral Y"), a wrong assumption that cost real time to unwind. No if it's
+routine, already documented, or specific to this exact task with no generalization.
+If yes, add one line to the topic's existing "Self-Improvement" section, or
+otherwise update the guide as appropriate (see Placement rules above). If no, do
+nothing further.
+
+**Tooling worth keeping?** Yes if a plausible *future* task — not just this one —
+would reuse the script/test harness/checklist as-is or with minor changes. No if
+it's task-specific glue that only works for this exact bug/target, or duplicates an
+existing agent/skill/script. If yes, move it out of the gitignored `workspace/` to
+its existing destination: shared scripts to `claude/developer/scripts/<category>/`,
+agent-specific tools to `claude/agents/<agent-name>/scripts/` (see this README's
+"Continuous Improvement" section) — with a one-line note on what it's for. If no,
+do nothing further.
+
 ## Design Philosophy
 
 **Problem:** 840-line README is overwhelming; critical rules get forgotten.

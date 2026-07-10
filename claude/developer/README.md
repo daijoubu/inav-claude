@@ -93,7 +93,7 @@ Use the `email-manager` agent for all email operations.
 
 ---
 
-## 15-Step Workflow
+## 17-Step Workflow
 
 **Use the TodoWrite tool to track these steps for each task:**
 
@@ -111,9 +111,11 @@ Use the `email-manager` agent for all email operations.
 | 10 | Commit your changes | Follow git best practices | `guides/CRITICAL-BEFORE-COMMIT.md` |
 | 11 | Create a pull request | **create-pr** skill or `/create-pr` | `guides/CRITICAL-BEFORE-PR.md` |
 | 12 | Check PR status and bot suggestions | **check-pr-bots** agent or **check-builds** skill | - |
-| 13 | Create completion report | **email-manager** agent | - |
-| 14 | Notify manager | **email-manager** agent | - |
-| 15 | Archive assignment | **email-manager** agent and skill /finish-task | - |
+| 13 | Decide: is there a lesson worth recording from this session? | Consider only, against the rubric — if yes, add one line to the relevant guide's "Self-Improvement" section, or otherwise update the guide as appropriate; if no, nothing to do | `guides/README.md` (Capture Rubric) |
+| 14 | Decide: did this session produce reusable tooling worth keeping? | Consider only, against the rubric — if yes, move it out of `workspace/` to the existing destination convention; if no, nothing to do | `guides/README.md` (Capture Rubric) |
+| 15 | Create completion report | **email-manager** agent | - |
+| 16 | Notify manager | **email-manager** agent | - |
+| 17 | Archive assignment | **email-manager** agent and skill /finish-task | - |
 
 **Key principle:** Before fixing a bug, have the `test-engineer` agent write a test that reproduces it. This ensures you understand the problem and can verify when it's fixed.
 
