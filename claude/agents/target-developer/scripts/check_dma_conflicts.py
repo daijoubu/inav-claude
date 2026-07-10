@@ -98,12 +98,21 @@ DMA_USAGE_TOKENS = ("TIM_USE_MOTOR", "TIM_USE_SERVO", "TIM_USE_LED", "TIM_USE_OU
 # burst request table and becomes real (see target.h's own USE_DSHOT_DMAR
 # comment on AXISFLYINGH743PRO for why: TIM4_CH4 has no per-channel DMAMUX
 # request of its own, so DMAR is the only way to give it a DMA path at all).
+#
+# NOTE: TIM16_CH1N is deliberately NOT in this set even though
+# timer_def_stm32h7xx.h defines DEF_TIM_DMA__BTCH_TIM16_CH1N as NONE --
+# that definition is dead code. timer_def.h's non-AT32F43x branch aliases
+# BTCH_TIM16_CH1N to BTCH_TIM16_CH1 *before* the DEF_TIM_DMA__ prefix is
+# concatenated on (DEF_TIM_TCH2BTCH's CONCAT expands the alias on rescan),
+# so TIM16_CH1N actually resolves to TIM16_CH1's full DMA-capable table.
+# Confirmed via gcc -E: DEF_TIM_DMAMAP(0, TIM16_CH1N) expands to a real
+# DMA_REQUEST_TIM16_CH1 tag, not DMA_NONE. TIM17_CH1N has no such alias
+# and genuinely expands to DMA_NONE -- it stays in this set.
 NO_DMA_CHANNELS = {
     ("TIM12", "CH1"), ("TIM12", "CH2"),
     ("TIM13", "CH1"),
     ("TIM14", "CH1"),
     ("TIM15", "CH2"),
-    ("TIM16", "CH1N"),
     ("TIM17", "CH1N"),
 }
 
