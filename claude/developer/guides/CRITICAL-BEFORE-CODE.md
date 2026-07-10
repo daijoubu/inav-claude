@@ -153,5 +153,6 @@ Use the Edit tool to append new entries. Format: `- **Brief title**: One-sentenc
 
 - **Fix blockers, don't route around them**: If goal X is blocked by small problem Y, fix Y first — don't pivot to complex workarounds (e.g. if a build fails due to an unrelated compile error in another file, fix that error rather than trying to analyze LTO bitcode object files to simulate what the linker would have produced). We build correct solutions, not workarounds.
 - **Always use fc-flasher agent for hardware flashing**: Never invoke `dfu-util` directly. STM32H7 boards silently fail DFU exit with raw dfu-util ("can't detach"), leaving the FC stuck. The fc-flasher agent uses the known-good script that handles all STM32 variants correctly.
+- **Harness-only tasks (`.claude/`, `claude/`) skip branch creation**: A guardrail hook blocks `git checkout -b` in the root `inavflight/` repo — branches belong in the project repos (`inav/`, `inav-configurator/`, etc.). For tasks that only touch harness config/docs, commit straight to `master`, matching existing harness commit history.
 
 <!-- Add new lessons above this line -->
