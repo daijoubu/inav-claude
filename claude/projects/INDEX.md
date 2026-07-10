@@ -2,8 +2,8 @@
 
 This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKED).
 
-**Last Updated:** 2026-07-08
-**Active:** 42 | **Backburner:** 11 | **Blocked:** 4
+**Last Updated:** 2026-07-10
+**Active:** 43 | **Backburner:** 11 | **Blocked:** 4
 
 > **Completed projects:** See [completed/INDEX.md](completed/INDEX.md)
 > **Blocked projects:** See `blocked/` directory
@@ -135,6 +135,19 @@ Remove the broken ChromaDB memory pipeline (per-prompt injection silently failin
 **Directory:** `active/retire-chromadb-memory-stack/`
 **Master:** improve-claude-harness (M3)
 **Source:** Finding F, recs R3/A8
+
+---
+
+### 📋 feature-lessons-and-tooling-capture-step
+
+**Status:** TODO | **Type:** Feature (harness tooling / process) | **Priority:** HIGH
+**Created:** 2026-07-10 | **Assignee:** Developer ✉️
+
+Add a non-skippable but non-mandatory-output "consider and decide" checkpoint to `/finish-task` and the 15-step workflow for (1) lessons-learned and (2) reusable scripts/tests/checklists — audit found neither is currently part of the enforced workflow or completion gate, only unenforced prose in 8 guide files. Wording must gate the *decision*, not the *output* ("no lesson this session" is a valid outcome), to avoid forcing noise when nothing is worth saving.
+
+**Directory:** `active/feature-lessons-and-tooling-capture-step/`
+**Master:** improve-claude-harness (M19) | **Companion/prerequisite for:** `retire-chromadb-memory-stack` (M3) | **Adjacent to:** M13 (lesson ratchet)
+**Assignment:** `manager/email/sent/2026-07-10-1430-task-lessons-and-tooling-capture-step.md`
 
 ---
 
