@@ -1,0 +1,35 @@
+Keyword: notch filter
+Occurrences: 31
+================================================================================
+
+Page    2: 5.1       Notch Filter ............................................................................................................................................. 24
+Page    3: 12.4          Notch Filter and Anti-Alias Filter Operation ....................................................................................... 48
+Page   24: ADC            Filter     Notch Filter      0                             0                        UI Filter Block     Sensor
+Page   24: 5.1     NOTCH FILTER
+Page   24: The Notch Filter is supported only for the gyroscope signal path. The following steps can be used to program the notch filter. Note
+Page   24: that the notch filter is specific to each axis in the gyroscope, so the X, Y and Z axis can be programmed independently.
+Page   24: Frequency of Notch Filter (each axis)
+Page   24: To operate the Notch filter, two parameters NF_COSWZ, and NF_COSWZ_SEL must be programmed for each gyroscope axis.
+Page   24: fdesired is the desired frequency of the Notch Filter in kHz. The lower bound for fdesired is 1kHz, and the upper bound is 3kHz.
+Page   24: Operating the notch filter outside this range is not supported.
+Page   25: Bandwidth of Notch Filter (common to all axes)
+Page   25: The notch filter allows the user to control the width of the notch from eight possible values using a 3-bit parameter
+Page   25: GYRO_NF_BW_SEL         Notch Filter Bandwidth (Hz)
+Page   25: The notch filter can be selected or bypassed by using the parameter GYRO_NF_DIS in register bank 1, register 0x0Bh, bit 0 as shown
+Page   25: 0                Enable notch filter
+Page   25: 1                Disable notch filter
+Page   48: 12.4 NOTCH FILTER AND ANTI-ALIAS FILTER OPERATION
+Page   48: Use of Notch Filter and Anti-Alias Filter is supported only for Low Noise (LN) mode operation. The host is responsible for keeping the
+Page   48: UI path in LN mode while Notch Filter and Anti-Alias Filter are turned on.
+Page   72: 0: Enable Notch Filter
+Page   72: 1: Disable Notch Filter (default)
+Page   73: Used for gyroscope X-axis notch filter frequency selection
+Page   73: Used for gyroscope Y-axis notch filter frequency selection
+Page   74: Used for gyroscope Z-axis notch filter frequency selection
+Page   74: Used for gyroscope Z-axis notch filter frequency selection
+Page   74: Used for gyroscope Y-axis notch filter frequency selection
+Page   74: Used for gyroscope X-axis notch filter frequency selection
+Page   74: Used for gyroscope Z-axis notch filter frequency selection
+Page   74: Used for gyroscope Y-axis notch filter frequency selection
+Page   74: Used for gyroscope X-axis notch filter frequency selection
+Page   74: Selects bandwidth for gyroscope notch filter

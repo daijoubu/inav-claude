@@ -1,0 +1,316 @@
+Keyword: gyro
+Occurrences: 312
+================================================================================
+
+Page    2: 2.1       Gyroscope Features .................................................................................................................................. 9
+Page    2: 3.1       Gyroscope Specifications ........................................................................................................................ 10
+Page    2: 4.6       Three-Axis MEMS Gyroscope with 16-bit ADCs and Signal Conditioning ............................................... 21
+Page    4: 14.13      GYRO_DATA_X1 .................................................................................................................................. 55
+Page    4: 14.14      GYRO_DATA_X0 .................................................................................................................................. 55
+Page    4: 14.15      GYRO_DATA_Y1 .................................................................................................................................. 56
+Page    4: 14.16      GYRO_DATA_Y0 .................................................................................................................................. 56
+Page    4: 14.17      GYRO_DATA_Z1 .................................................................................................................................. 56
+Page    4: 14.18      GYRO_DATA_Z0 .................................................................................................................................. 56
+Page    4: 14.28      GYRO_CONFIG0 .................................................................................................................................. 61
+Page    4: 14.30      GYRO_CONFIG1 .................................................................................................................................. 63
+Page    4: 14.31      GYRO_ACCEL_CONFIG0 ...................................................................................................................... 64
+Page    5: 15.2        GYRO_CONFIG_STATIC2 ..................................................................................................................... 72
+Page    5: 15.3        GYRO_CONFIG_STATIC3 ..................................................................................................................... 72
+Page    5: 15.4        GYRO_CONFIG_STATIC4 ..................................................................................................................... 73
+Page    5: 15.5        GYRO_CONFIG_STATIC5 ..................................................................................................................... 73
+Page    5: 15.6        GYRO_CONFIG_STATIC6 ..................................................................................................................... 73
+Page    5: 15.7        GYRO_CONFIG_STATIC7 ..................................................................................................................... 73
+Page    5: 15.8        GYRO_CONFIG_STATIC8 ..................................................................................................................... 74
+Page    5: 15.9        GYRO_CONFIG_STATIC9 ..................................................................................................................... 74
+Page    5: 15.10       GYRO_CONFIG_STATIC10 ................................................................................................................... 74
+Page    7: Table 1. Gyroscope Specifications ....................................................................................................................................... 10
+Page    8: The ICM-40609-D is a 6-axis MotionTracking device that combines a 3-axis gyroscope, and a 3-axis accelerometer in a small 3x3x0.91
+Page    8: The gyroscope supports eight programmable full-scale range settings from ±15.625dps to ±2000dps, and the accelerometer supports
+Page    9: 2.1 GYROSCOPE FEATURES
+Page    9: The triple-axis MEMS gyroscope in the ICM-40609-D includes a wide range of features:
+Page    9:  Digital-output X-, Y-, and Z-axis angular rate sensors (gyroscopes) with programmable full-scale range of ±15.625, ±31.25,
+Page    9:  User-programmable digital filters for gyroscope, accelerometer, and temperature sensor
+Page   10: 3.1 GYROSCOPE SPECIFICATIONS
+Page   10: GYROSCOPE SENSITIVITY
+Page   10: GYRO_FS_SEL=0                                                 ±2000                º/s         2
+Page   10: GYRO_FS_SEL =1                                                ±1000                º/s         2
+Page   10: GYRO_FS_SEL =2                                                 ±500                º/s         2
+Page   10: GYRO_FS_SEL =3                                                 ±250                º/s         2
+Page   10: GYRO_FS_SEL =4                                                 ±125                º/s         2
+Page   10: GYRO_FS_SEL =5                                                 ±62.5               º/s         2
+Page   10: GYRO_FS_SEL =6                                                ±31.25               º/s         2
+Page   10: GYRO_FS_SEL =7                                                ±15.625              º/s         2
+Page   10: Gyroscope ADC Word Length                                                                                            16                 bits        2
+Page   10: GYRO_FS_SEL=0                                                  16.4              LSB/(º/s)     2
+Page   10: GYRO_FS_SEL =1                                                 32.8              LSB/(º/s)     2
+Page   10: GYRO_FS_SEL =2                                                 65.5              LSB/(º/s)     2
+Page   10: GYRO_FS_SEL =3                                                 131               LSB/(º/s)     2
+Page   10: GYRO_FS_SEL =4                                                 262               LSB/(º/s)     2
+Page   10: GYRO_FS_SEL =5                                                 524.3             LSB/(º/s)     2
+Page   10: GYRO_FS_SEL =6                                                1048.6             LSB/(º/s)     2
+Page   10: GYRO_FS_SEL =7                                                2097.2             LSB/(º/s)     2
+Page   10: Gyroscope Mechanical Frequencies                                                                            25       27        29       KHz         1
+Page   10: Gyroscope Start-Up Time                              Time from gyro enable to gyro drive ready                       30                  ms         3
+Page   10: Table 1. Gyroscope Specifications
+Page   12: 6-Axis Gyroscope + Accelerometer                          0.77           mA       2
+Page   12: 3-Axis Gyroscope                                          0.61           mA       2
+Page   12: (Gyroscope disabled)
+Page   13: CLKSEL=`2b00 or gyro inactive; 25°C                    -3                             +3          %          1
+Page   13: CLK_SEL=`2b01 and gyro active; 25°C                            -1                     +1          %          1
+Page   13: CLK_SEL=`2b00 or gyro inactive; -40°C to +85°C                                        ±2          %          1
+Page   13: CLK_SEL=`2b01 and gyro active; -40oC to +85oC                                         ±2          %          1
+Page   21:  Three-axis MEMS rate gyroscope sensor with 16-bit ADCs and signal conditioning
+Page   21: 4.6    THREE-AXIS MEMS GYROSCOPE WITH 16-BIT ADCS AND SIGNAL CONDITIONING
+Page   21: The ICM-40609-D includes a vibratory MEMS rate gyroscope, which detects rotation about the X-, Y-, and Z- Axes. When the
+Page   21: gyroscope is rotated about any of the sense axes, the Coriolis Effect causes a vibration that is detected by a capacitive pickoff. The
+Page   21: digitized using on-chip Analog-to-Digital Converters (ADCs) to sample each axis. The full-scale range of the gyro sensors may be
+Page   21: be activated by means of the gyroscope and accelerometer self-test registers.
+Page   22: b) Auto-select between internal relaxation oscillator and gyroscope MEMS oscillator to use the best available source
+Page   22: The sensor data registers contain the latest gyroscope, accelerometer, and temperature measurement data. They are read-only
+Page   23: Mode   Name                                      Gyro             Accel
+Page   23: 5     Gyroscope Low-Noise Mode                    On              Off
+Page   24: Gyro Only
+Page   24: GYRO_NF_DIS                    AAF_DIS
+Page   24: The signal path starts with independent 16-bit ADCs for each axis of gyroscope and accelerometer. The ADC output goes through a
+Page   24: The Notch Filter is supported only for the gyroscope signal path. The following steps can be used to program the notch filter. Note
+Page   24: that the notch filter is specific to each axis in the gyroscope, so the X, Y and Z axis can be programmed independently.
+Page   24: To operate the Notch filter, two parameters NF_COSWZ, and NF_COSWZ_SEL must be programmed for each gyroscope axis.
+Page   24: Parameters NF_COSWZ are defined for each axis of the gyroscope as GYRO_X_NF_COSWZ (register bank 1, register 0x0Fh & register
+Page   24: 0x12h), GYRO_Y_NF_COSWZ (register bank 1, register 0x10h & register 0x12h), GYRO_Z_NF_COSWZ (register bank 1, register 0x11h
+Page   24: Parameters NF_COSWZ_SEL are defined for each axis of the gyroscope as GYRO_X_NF_COSWZ_SEL (register bank 1, register 0x12h,
+Page   24: bit 3), GYRO_Y_NF_COSWZ_SEL (register bank 1, register 0x12h, bit 4), GYRO_Z_NF_COSWZ_SEL (register bank 1, register 0x12h, bit
+Page   25: GYRO_NF_BW_SEL in register bank 1, register 0x13h, bits 6:4. This parameter is common to all three axes.
+Page   25: GYRO_NF_BW_SEL         Notch Filter Bandwidth (Hz)
+Page   25: The notch filter can be selected or bypassed by using the parameter GYRO_NF_DIS in register bank 1, register 0x0Bh, bit 0 as shown
+Page   25: GYRO_NF_DIS                    Function
+Page   25: Anti-alias filters for gyroscope and accelerometer can be independently programmed to have bandwidths ranging from 10 Hz to 995
+Page   25: d.    Register bank 1, register 0x0Ch, bits 5:0, GYRO_AAF_DELT: Code from 1 to 63 that allows programming the
+Page   25: bandwidth for gyroscope anti-alias filter
+Page   25: e.    Register bank 1, register 0x0Dh, bits 7:0 and Bank 1, register 0x0Eh, bits 3:0, GYRO_AAF_DELTSQR: Square of the
+Page   25: delt value for gyroscope
+Page   25: f.    Register bank 1, register 0x0Eh, bits 7:4, GYRO_AAF_BITSHIFT: Bitshift value for gyroscope used in hardware
+Page   25: GYRO_AAF_DELT GYRO_AAF_DELTSQR GYRO_AAF_BITSHIFT
+Page   27: The anti-alias filter can be selected or bypassed for the gyroscope by using the parameter GYRO_AAF_DIS in register bank 1, register
+Page   27: GYRO_AAF_DIS                              Function
+Page   27: 0              Enable gyroscope anti-aliasing filter
+Page   27: 1              Disable gyroscope anti-aliasing filter
+Page   27: Gyroscope and accelerometer offsets can be programmed by the user by using registers OFFSET_USER0, through OFFSET_USER8, in
+Page   27: Lower bits of X-gyro offset programmed by user.
+Page   27: Upper bits of X-gyro offset programmed by user.
+Page   27: Upper bits of Y-gyro offset programmed by user.
+Page   27: Lower bits of Y-gyro offset programmed by user.
+Page   28: Lower bits of Z-gyro offset programmed by user.
+Page   28: Upper bits of Z-gyro offset programmed by user.
+Page   28: The UI filter block can be programmed to select filter order and bandwidth independently for gyroscope and accelerometer.
+Page   28: Gyroscope filter order can be selected by programming the parameter GYRO_UI_FILT_ORD in register bank 0, register 0x51h, bits
+Page   28: GYRO_UI_FILT_ORD                      Filter Order
+Page   28: Gyroscope and accelerometer filter 3dB bandwidth can be selected by programming the parameter GYRO_UI_FILT_BW in register
+Page   28: 3dB Bandwidth (Hz) for GYRO/ACCEL_UI_FILT_ORD=0 (1st order filter)
+Page   28: GYRO/ACCEL_UI_FILT_BW
+Page   28: GYRO/ACCEL_ODR       ODR(Hz)        0         1       2              3         4          5      6      7       14        15
+Page   29: NBW Bandwidth (Hz) for GYRO/ACCEL_UI_FILT_ORD=0 (1st order filter)
+Page   29: GYRO/ACCEL_UI_FILT_BW
+Page   29: GYRO/ACCEL_ODR       ODR(Hz)      0           1            2           3           4      5       6        7          14          15
+Page   29: Group Delay @DC (ms) for GYRO/ACCEL_UI_FILT_ORD=0 (1st order filter)
+Page   29: GYRO/ACCEL_UI_FILT_BW
+Page   29: GYRO/ACCEL_ODR        ODR(Hz)           0           1         2           3      4       5           6          7         14      15
+Page   30: 3dB Bandwidth (Hz) for GYRO/ACCEL_UI_FILT_ORD=1 (2nd order filter)
+Page   30: GYRO/ACCEL_UI_FILT_BW
+Page   30: GYRO/ACCEL_ODR       ODR(Hz)       0         1         2           3          4          5    6        7        14          15
+Page   30: NBW Bandwidth (Hz) for GYRO/ACCEL_UI_FILT_ORD=1 (2nd order filter)
+Page   30: GYRO/ACCEL_UI_FILT_BW
+Page   30: GYRO/ACCEL_ODR       ODR(Hz)       0         1         2           3          4          5    6        7        14          15
+Page   30: Group Delay @DC (ms) for GYRO/ACCEL_UI_FILT_ORD=1 (2nd order filter)
+Page   30: GYRO/ACCEL_UI_FILT_BW
+Page   30: GYRO/ACCEL_ODR        ODR(Hz)           0        1        2           3      4      5            6        7         14      15
+Page   31: 3dB Bandwidth (Hz) for GYRO/ACCEL_UI_FILT_ORD=2 (3rd order filter)
+Page   31: GYRO/ACCEL_UI_FILT_BW
+Page   31: GYRO/ACCEL_ODR       ODR(Hz)        0           1            2           3     4      5     6               7           14          15
+Page   31: NBW Bandwidth (Hz) for GYRO/ACCEL_UI_FILT_ORD=0 (1st order filter)
+Page   31: GYRO/ACCEL_UI_FILT_BW
+Page   31: GYRO/ACCEL_ODR       ODR(Hz)        0          1            2           3          4          5    6        7           14          15
+Page   31: Group Delay @DC (ms) for GYRO/ACCEL_UI_FILT_ORD=2 (3rd order filter)
+Page   31: GYRO/ACCEL_UI_FILT_BW
+Page   31: GYRO/ACCEL_ODR        ODR(Hz)            0         1            2       3         4          5        6           7         14      15
+Page   32: Gyroscope ODR can be selected by programming the parameter GYRO_ODR in register bank 0, register 0x4Fh, bits 3:0 as shown
+Page   32: GYRO_ODR                Gyroscope ODR Value
+Page   32: Gyroscope FSR can be selected by programming the parameter GYRO_FS_SEL in register bank 0, register 0x4Fh, bits 7:5 as shown
+Page   32: GYRO_FS_SEL             Gyroscope FSR Value
+Page   34: determines which data is written into the FIFO. Possible choices include gyroscope data, accelerometer data, and temperature
+Page   34: Accelerometer Data              Gyroscope Data                 Accelerometer Data
+Page   34: Gyroscope Data
+Page   35: 0x01                              Gyro X [15:8]
+Page   35: 0x02                              Gyro X [7:0]
+Page   35: 0x03                              Gyro Y [15:8]
+Page   35: 0x04                              Gyro Y [7:0]
+Page   35: 0x05                              Gyro Z [15:8]
+Page   35: 0x06                              Gyro Z [7:0]
+Page   35: 0x07                              Gyro X [15:8]
+Page   35: 0x08                               Gyro X [7:0]
+Page   35: 0x09                               Gyro Y [15:8]
+Page   35: 0x0A                               Gyro Y [7:0]
+Page   35: 0x0B                               Gyro Z [15:8]
+Page   35: 0x0C                               Gyro Z [7:0]
+Page   35: 1: Packet is sized so that gyro data have location in the packet, FIFO_GYRO_EN must
+Page   35: 5                HEADER_GYRO           be 1
+Page   35: 0: Packet does not contain gyro sample
+Page   36: 1: The ODR for gyro is different for this gyro data packet compared to the previous
+Page   36: 0            HEADER_ODR_GYRO           accel packet
+Page   36: 0: The ODR for gyro is the same as the previous packet with accel
+Page   36: Note at least HEADER_ACCEL or HEADER_GYRO must be set for a sensor data packet to be set.
+Page   36: 0: Default setting; Gyroscope data not placed into FIFO
+Page   36: 1     FIFO_GYRO_EN
+Page   36: 1: Enables gyroscope data packets of 6-bytes to be placed in FIFO
+Page   37: FIFO_ACCEL_EN   FIFO_GYRO_EN      FIFO_TMST_EN              Header        Packet size
+Page   43: This section provides general guidelines for assembling InvenSense Micro Electro-Mechanical Systems (MEMS) gyros packaged in
+Page   49: 25           37          GYRO_DATA_X1      SYNCR                                                              GYRO _DATA_X[15:8]
+Page   49: 26           38         GYRO _DATA_X0      SYNCR                                                              GYRO _DATA_X[7:0]
+Page   49: 27           39         GYRO _DATA_Y1      SYNCR                                                              GYRO _DATA_Y[15:8]
+Page   49: 28           40         GYRO _DATA_Y0      SYNCR                                                              GYRO _DATA_Y[7:0]
+Page   49: 29           41         GYRO _DATA_Z1      SYNCR                                                              GYRO_DATA_Z[15:8]
+Page   49: 2A           42         GYRO _DATA_Z0      SYNCR                                                               GYRO_DATA_Z[7:0]
+Page   49: 4E           78          PWR_MGMT0         R/W                    -                       TEMP_DIS           IDLE                       GYRO_MODE                             ACCEL_MODE
+Page   49: 4F           79          GYRO_CONFIG0      R/W                        GYRO_FS_SEL                              -                                           GYRO_ODR
+Page   49: 51           81          GYRO_CONFIG1      R/W                        TEMP_FILT_BW                             -                   GYRO_UI_FILT_ORD                    GYRO_DEC2_M2_ORD
+Page   49: 52           82       GYRO_ACCEL_CONFIG0   R/W                             ACCEL_UI_FILT_BW                                                          GYRO_UI_FILT_BW
+Page   49: FIFO_WM_G                                              FIFO_TEMP_       FIFO_GYRO_          FIFO_ACCEL_
+Page   50: GYRO_AAF_D    GYRO_NF_DI
+Page   50: 0B           11       GYRO_CONFIG_STATIC2    R/W                                                  -
+Page   50: 0C           12       GYRO_CONFIG_STATIC3    R/W             -                                                                 GYRO_AAF_DELT
+Page   50: 0D           13       GYRO_CONFIG_STATIC4    R/W                                                        GYRO_AAF_DELTSQR[7:0]
+Page   50: 0E           14       GYRO_CONFIG_STATIC5    R/W                    GYRO_AAF_BITSHIFT                                                    GYRO_AAF_DELTSQR[11:8]
+Page   50: 0F           15       GYRO_CONFIG_STATIC6    R/W                                                        GYRO_X_NF_COSWZ[7:0]
+Page   50: 10           16       GYRO_CONFIG_STATIC7    R/W                                                        GYRO_Y_NF_COSWZ[7:0]
+Page   50: 11           17       GYRO_CONFIG_STATIC8    R/W                                                        GYRO_Z_NF_COSWZ[7:0]
+Page   50: GYRO_Z_NF_          GYRO_Y_NF_       GYRO_X_NF_
+Page   50: GYRO_Z_NF_      GYRO_Y_NF_    GYRO_X_NF_
+Page   50: 12           18       GYRO_CONFIG_STATIC9    R/W             -                    COSWZ_SEL[          COSWZ_SEL[       COSWZ_SEL[
+Page   50: GYRO_HPF_O
+Page   50: 13           19       GYRO_CONFIG_STATIC10   R/W       -                      GYRO_NF_BW_SEL                                         GYRO_HPF_BW_IND
+Page   51: 77           119         OFFSET_USER0    R/W                                            GYRO_X_OFFUSER[7:0]
+Page   51: 78           120         OFFSET_USER1    R/W                GYRO_Y_OFFUSER[11:8]                                 GYRO_X_OFFUSER[11:8]
+Page   51: 79           121         OFFSET_USER2    R/W                                            GYRO_Y_OFFUSER[7:0]
+Page   51: 7A           122         OFFSET_USER3    R/W                                            GYRO_Z_OFFUSER[7:0]
+Page   51: 7B           123         OFFSET_USER4    R/W                ACCEL_X_OFFUSER[11:8]                                GYRO_Z_OFFUSER[11:8]
+Page   55: 14.13    GYRO_DATA_X1
+Page   55: Name: GYRO_DATA_X1
+Page   55: 7:0 GYRO_DATA_X[15:8]      Upper byte of Gyro X-axis data
+Page   55: 14.14    GYRO_DATA_X0
+Page   55: Name: GYRO_DATA_X0
+Page   55: 7:0 GYRO_DATA_X[7:0]       Lower byte of Gyro X-axis data
+Page   56: 14.15    GYRO_DATA_Y1
+Page   56: Name: GYRO_DATA_Y1
+Page   56: 7:0 GYRO_DATA_Y[15:8]      Upper byte of Gyro Y-axis data
+Page   56: 14.16    GYRO_DATA_Y0
+Page   56: Name: GYRO_DATA_Y0
+Page   56: 7:0 GYRO_DATA_Y[7:0]       Lower byte of Gyro Y-axis data
+Page   56: 14.17    GYRO_DATA_Z1
+Page   56: Name: GYRO_DATA_Z1
+Page   56: 7:0 GYRO_DATA_Z[15:8]      Upper byte of Gyro Z-axis data
+Page   56: 14.18    GYRO_DATA_Z0
+Page   56: Name: GYRO_DATA_Z0
+Page   56: 7:0 GYRO_DATA_Z[7:0]       Lower byte of Gyro Z-axis data
+Page   59: 0: If Accel and Gyro ODRs are different, decimal value -32768 will be
+Page   59: is available. If Accel or Gyro ODR is > 8kHz, Temp sensor ODR will be
+Page   59: 1: If Accel, and Gyro ODRs are different, last valid data is rewritten to
+Page   59: available. If Accel or Gyro ODR is > 8kHz, Temp sensor data will be
+Page   59: 1: FIFO count is reported in records (1 record = 16 bytes for header + gyro +
+Page   59: accel + temp sensor data + time stamp, or 8 bytes for header + gyro/accel +
+Page   60: If this bit is set to 1, the RC oscillator is powered on even if Accel and Gyro
+Page   60: Nominally this bit is set to 0, so when Accel and Gyro are powered off,
+Page   60: 00: Turns gyroscope off (default)
+Page   60: 01: Places gyroscope in Standby Mode
+Page   60: 11: Places gyroscope in Low Noise (LN) Mode
+Page   60: 3:2     GYRO_MODE
+Page   60: Gyroscope needs to be kept ON for a minimum of 45ms. When transitioning
+Page   61: 14.28    GYRO_CONFIG0
+Page   61: Name: GYRO_CONFIG0
+Page   61: Full scale select for gyroscope UI interface output
+Page   61: 7:5     GYRO_FS_SEL        011: ±250dps
+Page   61: Gyroscope ODR selection for UI interface output
+Page   61: 3:0     GYRO_ODR           0111: 200Hz
+Page   63: 14.30    GYRO_CONFIG1
+Page   63: Name: GYRO_CONFIG1
+Page   63: Selects order of GYRO UI FIR filter
+Page   63: 3:2     GYRO_UI_FILT_ORD   01: 2nd Order
+Page   63: Selects order of GYRO DEC2_M2 Filter
+Page   63: 1:0     GYRO_DEC2_M2_ORD   01: 2nd Order
+Page   64: 14.31    GYRO_ACCEL_CONFIG0
+Page   64: Name: GYRO_ACCEL_CONFIG0
+Page   64: Bandwidth for Gyro LPF
+Page   64: 3:0     GYRO_UI_FILT_BW     5 BW=max(400Hz, ODR)/16
+Page   66: 1      FIFO_GYRO_EN               Enable gyroscope packets to go to FIFO
+Page   70: 2      EN_GZ_ST              Enable Z-gyro self-test
+Page   70: 1      EN_GY_ST              Enable Y-gyro self-test
+Page   70: 0      EN_GX_ST              Enable X-gyro self-test
+Page   72: 0: Z gyroscope is on
+Page   72: 1: Z gyroscope is disabled
+Page   72: 0: Y gyroscope is on
+Page   72: 1: Y gyroscope is disabled
+Page   72: 0: X gyroscope is on
+Page   72: 1: X gyroscope is disabled
+Page   72: 15.2     GYRO_CONFIG_STATIC2
+Page   72: Name: GYRO_CONFIG_STATIC2
+Page   72: 1      GYRO_AAF_DIS
+Page   72: 0      GYRO_NF_DIS
+Page   72: 15.3     GYRO_CONFIG_STATIC3
+Page   72: Name: GYRO_CONFIG_STATIC3
+Page   72: Controls bandwidth of the gyroscope anti-alias filter
+Page   72: 5:0     GYRO_AAF_DELT
+Page   73: 15.4     GYRO_CONFIG_STATIC4
+Page   73: Name: GYRO_CONFIG_STATIC4
+Page   73: Controls bandwidth of the gyroscope anti-alias filter
+Page   73: 7:0     GYRO_AAF_DELTSQR[7:0]
+Page   73: 15.5     GYRO_CONFIG_STATIC5
+Page   73: Name: GYRO_CONFIG_STATIC5
+Page   73: Controls bandwidth of the gyroscope anti-alias filter
+Page   73: 7:4     GYRO_AAF_BITSHIFT
+Page   73: Controls bandwidth of the gyroscope anti-alias filter
+Page   73: 3:0     GYRO_AAF_DELTSQR[11:8]
+Page   73: 15.6     GYRO_CONFIG_STATIC6
+Page   73: Name: GYRO_CONFIG_STATIC6
+Page   73: Used for gyroscope X-axis notch filter frequency selection
+Page   73: 7:0     GYRO_X_NF_COSWZ[7:0]
+Page   73: 15.7     GYRO_CONFIG_STATIC7
+Page   73: Name: GYRO_CONFIG_STATIC7
+Page   73: Used for gyroscope Y-axis notch filter frequency selection
+Page   73: 7:0     GYRO_Y_NF_COSWZ[7:0]
+Page   74: 15.8     GYRO_CONFIG_STATIC8
+Page   74: Name: GYRO_CONFIG_STATIC8
+Page   74: Used for gyroscope Z-axis notch filter frequency selection
+Page   74: 7:0     GYRO_Z_NF_COSWZ[7:0]
+Page   74: 15.9     GYRO_CONFIG_STATIC9
+Page   74: Name: GYRO_CONFIG_STATIC9
+Page   74: Used for gyroscope Z-axis notch filter frequency selection
+Page   74: 5      GYRO_Z_NF_COSWZ_SEL[0]
+Page   74: Used for gyroscope Y-axis notch filter frequency selection
+Page   74: 4      GYRO_Y_NF_COSWZ_SEL[0]
+Page   74: Used for gyroscope X-axis notch filter frequency selection
+Page   74: 3      GYRO_X_NF_COSWZ_SEL[0]
+Page   74: Used for gyroscope Z-axis notch filter frequency selection
+Page   74: 2      GYRO_Z_NF_COSWZ[8]
+Page   74: Used for gyroscope Y-axis notch filter frequency selection
+Page   74: 1      GYRO_Y_NF_COSWZ[8]
+Page   74: Used for gyroscope X-axis notch filter frequency selection
+Page   74: 0      GYRO_X_NF_COSWZ[8]
+Page   74: 15.10    GYRO_CONFIG_STATIC10
+Page   74: Name: GYRO_CONFIG_STATIC10
+Page   74: Selects bandwidth for gyroscope notch filter
+Page   74: 6:4     GYRO_NF_BW_SEL
+Page   74: 3:1     GYRO_HPF_BW_IND
+Page   74: 0      GYRO_HPF_ORD_IND          0: 1st order HPF
+Page   75: 7:0 XG_ST_DATA                        X-gyro self-test data
+Page   75: 7:0 YG_ST_DATA                        Y-gyro self-test data
+Page   75: 7:0 ZG_ST_DATA                        Z-gyro self-test data
+Page   80: Lower bits of X-gyro offset programmed by user. Max value is ±64 dps,
+Page   80: 7:0     GYRO_X_OFFUSER[7:0]
+Page   81: Upper bits of Y-gyro offset programmed by user. Max value is ±64 dps,
+Page   81: 7:4     GYRO_Y_OFFUSER[11:8]
+Page   81: Upper bits of X-gyro offset programmed by user. Max value is ±64 dps,
+Page   81: 3:0     GYRO_X_OFFUSER[11:8]
+Page   81: Lower bits of Y-gyro offset programmed by user. Max value is ±64 dps,
+Page   81: 7:0     GYRO_Y_OFFUSER[7:0]
+Page   81: Lower bits of Z-gyro offset programmed by user. Max value is ±64 dps,
+Page   81: 7:0     GYRO_Z_OFFUSER[7:0]
+Page   81: Upper bits of Z-gyro offset programmed by user. Max value is ±64 dps,
+Page   81: 3:0     GYRO_Z_OFFUSER[11:8]

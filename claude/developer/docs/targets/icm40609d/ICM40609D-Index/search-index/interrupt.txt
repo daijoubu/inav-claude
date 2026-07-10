@@ -1,0 +1,88 @@
+Keyword: interrupt
+Occurrences: 84
+================================================================================
+
+Page    2: 4.12          Interrupts ............................................................................................................................................ 22
+Page    3: 7       Programmable Interrupts .................................................................................................................................. 38
+Page    3: 7.1       Wake-On Motion Interrupt ..................................................................................................................... 38
+Page    8: programmable interrupts. The device features I2C and SPI serial interfaces, a VDD operating range of 1.71 V to 3.6 V, and a separate
+Page    9:  User-programmable interrupts
+Page    9:  Wake-on-motion interrupt for low power operation of applications processor
+Page   18: INT1: Interrupt 1
+Page   18: INT: Interrupt if all interrupts mapped to pin 12
+Page   18: INT2: Interrupt 2
+Page   18: RESV: Do not connect if all interrupts mapped to pin 12
+Page   21:  Interrupts
+Page   22: 4.12     INTERRUPTS
+Page   22: Interrupt functionality is configured via the Interrupt Configuration register. Items that are configurable include the interrupt pins
+Page   22: configuration, the interrupt latching and clearing method, and triggers for the interrupt. Items that can trigger an interrupt are (1)
+Page   22: the FIFO and Data registers); (3) accelerometer event interrupts; (4) FIFO watermark; (5) FIFO overflow. The interrupt status can be
+Page   22: read from the Interrupt Status register.
+Page   38: 7 PROGRAMMABLE INTERRUPTS
+Page   38: The ICM-40609-D has a programmable interrupt system that can generate an interrupt signal on the INT pins. Status flags indicate
+Page   38: the source of an interrupt. Interrupt sources may be enabled and disabled individually. There are two interrupt outputs. Any
+Page   38: interrupt may be mapped to either interrupt pin as explained in the register section. The following configuration options are
+Page   38: available for the interrupts
+Page   38: 7.1    WAKE-ON MOTION INTERRUPT
+Page   38: Motion Interrupt.
+Page   38: 1. Read interrupt register (Register 0x37h in Bank 0) for WOM_X_INT
+Page   38: 2. Read interrupt register (Register 0x37h in Bank 0) for WOM_Y_INT
+Page   38: 3. Read interrupt register (Register 0x37h in Bank 0) for WOM_Z_INT
+Page   53: INT2 interrupt mode
+Page   53: INT2 interrupt polarity
+Page   53: INT1 interrupt mode
+Page   53: INT1 interrupt polarity
+Page   57: This bit automatically sets to 1 when a PLL Ready interrupt is generated. The
+Page   57: This bit automatically sets to 1 when a Data Ready interrupt is generated.
+Page   57: This bit automatically sets to 1 when an AGC Ready interrupt is generated.
+Page   58: 2     WOM_Z_INT           Wake on Motion Interrupt on Z-axis, clears on read
+Page   58: 1     WOM_Y_INT           Wake on Motion Interrupt on Y-axis, clears on read
+Page   58: 0     WOM_X_INT           Wake on Motion Interrupt on X-axis, clears on read
+Page   66: 0: Set WoM interrupt on the OR of all enabled accelerometer thresholds
+Page   66: 1: Set WoM interrupt on the AND of all enabled accelerometer threshold
+Page   66: 01: Set to 1 for WOM interrupt configuration
+Page   66: Trigger FIFO watermark interrupt on every ODR (DMA write) if
+Page   66: Lower bits of FIFO watermark. Generate interrupt when the FIFO reaches
+Page   66: register. Interrupt only fires once. This register should be set to non-zero
+Page   66: value, before choosing this interrupt source.
+Page   67: Upper bits of FIFO watermark. Generate interrupt when the FIFO reaches
+Page   67: register. Interrupt only fires once. This register should be set to non-zero
+Page   67: value, before choosing this interrupt source.
+Page   67: Data Ready Interrupt Clear Option (latched mode)
+Page   67: FIFO Threshold Interrupt Clear Option (latched mode)
+Page   67: FIFO Full Interrupt Clear Option (latched mode)
+Page   68: 0: PLL ready interrupt not routed to INT1
+Page   68: 1: PLL ready interrupt routed to INT1
+Page   68: 0: UI data ready interrupt not routed to INT1
+Page   68: 1: UI data ready interrupt routed to INT1
+Page   68: 0: FIFO threshold interrupt not routed to INT1
+Page   68: 1: FIFO threshold interrupt routed to INT1
+Page   68: 0: FIFO full interrupt not routed to INT1
+Page   68: 1: FIFO full interrupt routed to INT1
+Page   68: 0: UI AGC ready interrupt not routed to INT1
+Page   68: 1: UI AGC ready interrupt routed to INT1
+Page   68: 0: Z-axis WOM interrupt not routed to INT1
+Page   68: 1: Z-axis WOM interrupt routed to INT1
+Page   68: 0: Y-axis WOM interrupt not routed to INT1
+Page   68: 1: Y-axis WOM interrupt routed to INT1
+Page   68: 0: X-axis WOM interrupt not routed to INT1
+Page   68: 1: X-axis WOM interrupt routed to INT1
+Page   69: 0: PLL ready interrupt not routed to INT2
+Page   69: 1: PLL ready interrupt routed to INT2
+Page   69: 0: UI data ready interrupt not routed to INT2
+Page   69: 1: UI data ready interrupt routed to INT2
+Page   69: 0: FIFO threshold interrupt not routed to INT2
+Page   69: 1: FIFO threshold interrupt routed to INT2
+Page   69: 0: FIFO full interrupt not routed to INT2
+Page   69: 1: FIFO full interrupt routed to INT2
+Page   69: 0: UI AGC ready interrupt not routed to INT2
+Page   69: 1: UI AGC ready interrupt routed to INT2
+Page   69: 0: Z-axis WOM interrupt not routed to INT2
+Page   69: 1: Z-axis WOM interrupt routed to INT2
+Page   69: 0: Y-axis WOM interrupt not routed to INT2
+Page   69: 1: Y-axis WOM interrupt routed to INT2
+Page   69: 0: X-axis WOM interrupt not routed to INT2
+Page   69: 1: X-axis WOM interrupt routed to INT2
+Page   80: Threshold value for the Wake on Motion Interrupt for X-axis accelerometer
+Page   80: Threshold value for the Wake on Motion Interrupt for Y-axis accelerometer
+Page   80: Threshold value for the Wake on Motion Interrupt for Z-axis accelerometer

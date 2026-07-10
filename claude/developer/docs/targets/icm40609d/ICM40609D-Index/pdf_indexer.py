@@ -1,0 +1,310 @@
+#!/usr/bin/env python3
+"""
+PDF Indexer for ICM40609D IMU Datasheet
+
+This script provides tools to:
+1. Extract specific page ranges
+2. Search for keywords across the datasheet
+3. Build a searchable index
+4. Extract sections relevant to IMU driver development
+
+Usage:
+    # Search for a term
+    ./pdf_indexer.py search "WHO_AM_I"
+
+    # Extract pages to text
+    ./pdf_indexer.py extract 10 15 --output extracted/registers.txt
+
+    # Build keyword index for IMU-relevant terms
+    ./pdf_indexer.py build-index
+
+    # Find all occurrences of a term with context
+    ./pdf_indexer.py find "FIFO" --context 2
+"""
+
+import argparse
+import subprocess
+import sys
+from pathlib import Path
+from typing import List, Tuple
+
+# PDF file location (relative to this script)
+PDF_FILE = Path(__file__).parent.parent.parent / "ICM40609D-datasheet.pdf"
+
+# IMU driver-relevant keywords to index
+IMU_KEYWORDS = [
+    # Identification
+    "WHO_AM_I",
+    "device ID",
+    "part number",
+
+    # Interfaces
+    "SPI",
+    "I2C",
+    "I3C",
+    "serial interface",
+    "bus interface",
+
+    # Register map
+    "register map",
+    "register address",
+    "bank",
+    "reset value",
+
+    # FIFO
+    "FIFO",
+    "FIFO packet",
+    "FIFO watermark",
+    "FIFO overflow",
+
+    # Gyroscope
+    "gyroscope",
+    "gyro",
+    "angular rate",
+    "GYRO_CONFIG",
+
+    # Accelerometer
+    "accelerometer",
+    "accel",
+    "ACCEL_CONFIG",
+
+    # Scale / sensitivity
+    "full-scale",
+    "full scale range",
+    "sensitivity",
+    "LSB",
+
+    # Output data rate
+    "output data rate",
+    "ODR",
+    "sample rate",
+
+    # Self-test
+    "self-test",
+
+    # Interrupts
+    "interrupt",
+    "INT1",
+    "INT2",
+    "INT_CONFIG",
+    "interrupt status",
+
+    # Power management
+    "power management",
+    "PWR_MGMT",
+    "low power mode",
+    "low noise mode",
+    "sleep mode",
+    "standby",
+
+    # Reset / init
+    "reset",
+    "soft reset",
+    "power-on reset",
+    "device reset",
+    "signal path reset",
+
+    # Temperature
+    "temperature sensor",
+    "TEMP_DATA",
+
+    # Filters
+    "low pass filter",
+    "digital filter",
+    "notch filter",
+
+    # Electrical / packaging
+    "electrical characteristics",
+    "absolute maximum ratings",
+    "pinout",
+    "package",
+    "pin description",
+
+    # Timing
+    "timing",
+    "SPI timing",
+    "clock",
+]
+
+
+def extract_pages(start: int, end: int, output_file: str = None, layout: bool = True) -> str:
+    """Extract text from specific page range using pdftotext."""
+    if not PDF_FILE.exists():
+        print(f"Error: PDF not found at {PDF_FILE}", file=sys.stderr)
+        sys.exit(1)
+
+    cmd = ["pdftotext"]
+    if layout:
+        cmd.append("-layout")
+    cmd.extend(["-f", str(start), "-l", str(end), str(PDF_FILE)])
+
+    if output_file:
+        cmd.append(output_file)
+        subprocess.run(cmd, check=True)
+        print(f"Extracted pages {start}-{end} to {output_file}")
+        return None
+    else:
+        # Use temp file for stdout (sandbox-compatible)
+        import tempfile
+        with tempfile.NamedTemporaryFile(mode='w+', delete=False, suffix='.txt') as tmp:
+            tmp_path = tmp.name
+
+        try:
+            cmd.append(tmp_path)
+            subprocess.run(cmd, check=True)
+
+            with open(tmp_path, 'r') as f:
+                return f.read()
+        finally:
+            Path(tmp_path).unlink(missing_ok=True)
+
+
+def search_term(term: str, case_sensitive: bool = False) -> List[Tuple[int, str]]:
+    """Search for a term in the PDF and return (page_num, line) tuples."""
+    if not PDF_FILE.exists():
+        print(f"Error: PDF not found at {PDF_FILE}", file=sys.stderr)
+        sys.exit(1)
+
+    cmd = ["pdfgrep", "-n"]
+    if not case_sensitive:
+        cmd.append("-i")
+    cmd.extend([term, str(PDF_FILE)])
+
+    # Use temp file for output (sandbox-compatible)
+    import tempfile
+    with tempfile.NamedTemporaryFile(mode='w+', delete=False, suffix='.txt') as tmp:
+        tmp_path = tmp.name
+
+    try:
+        with open(tmp_path, 'w') as f:
+            result = subprocess.run(cmd, stdout=f)
+
+        matches = []
+        if result.returncode == 0:
+            with open(tmp_path, 'r') as f:
+                for line in f:
+                    line = line.strip()
+                    if ":" in line:
+                        page_str, content = line.split(":", 1)
+                        try:
+                            page_num = int(page_str)
+                            matches.append((page_num, content.strip()))
+                        except ValueError:
+                            continue
+
+        return matches
+    finally:
+        Path(tmp_path).unlink(missing_ok=True)
+
+
+def build_keyword_index(output_dir: str = "search-index"):
+    """Build search index for all IMU-relevant keywords."""
+    output_path = Path(__file__).parent / output_dir
+    output_path.mkdir(exist_ok=True)
+
+    print(f"Building keyword index for {len(IMU_KEYWORDS)} terms...")
+
+    for keyword in IMU_KEYWORDS:
+        safe_name = keyword.replace(" ", "-").replace("/", "-")
+        output_file = output_path / f"{safe_name}.txt"
+
+        matches = search_term(keyword, case_sensitive=False)
+
+        with open(output_file, "w") as f:
+            f.write(f"Keyword: {keyword}\n")
+            f.write(f"Occurrences: {len(matches)}\n")
+            f.write("=" * 80 + "\n\n")
+
+            for page, line in matches:
+                f.write(f"Page {page:4d}: {line}\n")
+
+        print(f"  {keyword:30s} - {len(matches):3d} occurrences -> {output_file.name}")
+
+    print(f"\nIndex built in {output_path}/")
+
+
+def find_with_context(term: str, context_lines: int = 2):
+    """Find term and show surrounding context by extracting relevant pages."""
+    matches = search_term(term, case_sensitive=False)
+
+    if not matches:
+        print(f"No matches found for '{term}'")
+        return
+
+    print(f"Found {len(matches)} occurrences of '{term}':\n")
+
+    # Group matches by page to avoid redundant extractions
+    pages_with_matches = set(page for page, _ in matches)
+
+    for page in sorted(pages_with_matches)[:5]:  # Limit to first 5 pages
+        print(f"\n{'=' * 80}")
+        print(f"PAGE {page}")
+        print('=' * 80)
+
+        # Extract single page with context
+        start_page = max(1, page - context_lines)
+        end_page = min(86, page + context_lines)  # 86-page datasheet
+
+        text = extract_pages(start_page, end_page, output_file=None, layout=True)
+        print(text)
+
+        if len(pages_with_matches) > 5:
+            print(f"\n... (showing first 5 of {len(pages_with_matches)} pages)")
+            break
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Index and search the ICM40609D datasheet",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=__doc__
+    )
+
+    subparsers = parser.add_subparsers(dest="command", help="Command to run")
+
+    # Extract command
+    extract_parser = subparsers.add_parser("extract", help="Extract page range to text")
+    extract_parser.add_argument("start_page", type=int, help="First page to extract")
+    extract_parser.add_argument("end_page", type=int, help="Last page to extract")
+    extract_parser.add_argument("--output", "-o", help="Output file (default: stdout)")
+    extract_parser.add_argument("--no-layout", action="store_true", help="Don't preserve layout")
+
+    # Search command
+    search_parser = subparsers.add_parser("search", help="Search for a term")
+    search_parser.add_argument("term", help="Term to search for")
+    search_parser.add_argument("--case-sensitive", "-c", action="store_true")
+
+    # Find with context
+    find_parser = subparsers.add_parser("find", help="Find term with surrounding context")
+    find_parser.add_argument("term", help="Term to find")
+    find_parser.add_argument("--context", "-C", type=int, default=0,
+                            help="Number of pages of context (default: 0)")
+
+    # Build index
+    subparsers.add_parser("build-index", help="Build keyword index for IMU terms")
+
+    args = parser.parse_args()
+
+    if args.command == "extract":
+        result = extract_pages(args.start_page, args.end_page, args.output, layout=not args.no_layout)
+        if result:
+            print(result, end='')
+
+    elif args.command == "search":
+        matches = search_term(args.term, args.case_sensitive)
+        print(f"Found {len(matches)} occurrences:\n")
+        for page, line in matches:
+            print(f"Page {page:4d}: {line}")
+
+    elif args.command == "find":
+        find_with_context(args.term, args.context)
+
+    elif args.command == "build-index":
+        build_keyword_index()
+
+    else:
+        parser.print_help()
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,78 @@
+Keyword: ODR
+Occurrences: 74
+================================================================================
+
+Page    3: 5.5       ODR And FSR Selection ........................................................................................................................... 32
+Page   10: ODR < 1kHz                                             5                  500       Hz         2
+Page   10: ODR ≥ 1kHz                                             5                  995       Hz         2
+Page   11: ODR < 1kHz                                              5                500      Hz       2
+Page   11: ODR ≥ 1kHz                                              5                995     Hz        2
+Page   12: 200Hz ODR, 1x averaging                                   0.06           mA       2
+Page   13: ODR                                           With Filter                                                   25                     8000         Hz         2
+Page   24: (32kHz)                                                                 Offset     (order, BW, ODR)     Registers
+Page   28: GYRO/ACCEL_ODR       ODR(Hz)        0         1       2              3         4          5      6      7       14        15
+Page   29: GYRO/ACCEL_ODR       ODR(Hz)      0           1            2           3           4      5       6        7          14          15
+Page   29: GYRO/ACCEL_ODR        ODR(Hz)           0           1         2           3      4       5           6          7         14      15
+Page   30: GYRO/ACCEL_ODR       ODR(Hz)       0         1         2           3          4          5    6        7        14          15
+Page   30: GYRO/ACCEL_ODR       ODR(Hz)       0         1         2           3          4          5    6        7        14          15
+Page   30: GYRO/ACCEL_ODR        ODR(Hz)           0        1        2           3      4      5            6        7         14      15
+Page   31: GYRO/ACCEL_ODR       ODR(Hz)        0           1            2           3     4      5     6               7           14          15
+Page   31: GYRO/ACCEL_ODR       ODR(Hz)        0          1            2           3          4          5    6        7           14          15
+Page   31: GYRO/ACCEL_ODR        ODR(Hz)            0         1            2       3         4          5        6           7         14      15
+Page   32: 5.5    ODR AND FSR SELECTION
+Page   32: Gyroscope ODR can be selected by programming the parameter GYRO_ODR in register bank 0, register 0x4Fh, bits 3:0 as shown
+Page   32: GYRO_ODR                Gyroscope ODR Value
+Page   33: Accelerometer ODR can be selected by programming the parameter ACCEL_ODR in register bank 0, register 0x50h, bits 3:0 as shown
+Page   33: ACCEL_ODR            Accelerometer ODR Value
+Page   35: 10: Packet contains ODR Timestamp
+Page   36: 1: The ODR for accel is different for this accel data packet compared to the previous
+Page   36: 1           HEADER_ODR_ACCEL           accel packet
+Page   36: 0: The ODR for accel is the same as the previous packet with accel
+Page   36: 1: The ODR for gyro is different for this gyro data packet compared to the previous
+Page   36: 0            HEADER_ODR_GYRO           accel packet
+Page   36: 0: The ODR for gyro is the same as the previous packet with accel
+Page   36: 0: FIFO will only contain ODR timestamp information
+Page   38: 1. Set accelerometer ODR (Register 0x50h in Bank 0)
+Page   38: ACCEL_ODR = 9 for 50 Hz
+Page   48: When transitioning from accelerometer Low Power (LP) mode to accelerometer Low Noise (LN) mode, if ODR is 6.25Hz or lower,
+Page   48: software should change ODR to a value of 12.5Hz or higher, because accelerometer LN mode does not support ODR values below
+Page   48: When transitioning from accelerometer LN mode to accelerometer LP mode, if ODR is greater than 500Hz, software should change
+Page   48: ODR to a value of 500Hz or lower, because accelerometer LP mode does not support ODR values above 500Hz.
+Page   49: 4F           79          GYRO_CONFIG0      R/W                        GYRO_FS_SEL                              -                                           GYRO_ODR
+Page   49: 50           80         ACCEL_CONFIG0      R/W                        ACCEL_FS_SEL                             -                                           ACCEL_ODR
+Page   59: 0: If Accel and Gyro ODRs are different, decimal value -32768 will be
+Page   59: written to FIFO for the sensor with lower ODR until new sensor data
+Page   59: is available. If Accel or Gyro ODR is > 8kHz, Temp sensor ODR will be
+Page   59: 1: If Accel, and Gyro ODRs are different, last valid data is rewritten to
+Page   59: FIFO for the sensor with lower ODR until new sensor data is
+Page   59: available. If Accel or Gyro ODR is > 8kHz, Temp sensor data will be
+Page   61: Gyroscope ODR selection for UI interface output
+Page   61: 3:0     GYRO_ODR           0111: 200Hz
+Page   62: Accelerometer ODR selection for UI interface output
+Page   62: 3:0     ACCEL_ODR          0111: 200Hz (LP or LN mode)
+Page   64: 0 BW=ODR/2
+Page   64: 1 BW=max(400Hz, ODR)/4 (default)
+Page   64: 2 BW=max(400Hz, ODR)/5
+Page   64: 3 BW=max(400Hz, ODR)/8
+Page   64: 4 BW=max(400Hz, ODR)/10
+Page   64: 5 BW=max(400Hz, ODR)/16
+Page   64: 6 BW=max(400Hz, ODR)/20
+Page   64: 7 BW=max(400Hz, ODR)/40
+Page   64: 14 Low Latency option: Trivial decimation @ ODR of Dec2 filter output. Dec2
+Page   64: runs at max(400Hz, ODR)
+Page   64: 15 Low Latency option: Trivial decimation @ ODR of Dec2 filter output. Dec2
+Page   64: runs at max(200Hz, 8*ODR)
+Page   64: 0 BW=ODR/2
+Page   64: 1 BW=max(400Hz, ODR)/4 (default)
+Page   64: 2 BW=max(400Hz, ODR)/5
+Page   64: 3 BW=max(400Hz, ODR)/8
+Page   64: 4 BW=max(400Hz, ODR)/10
+Page   64: 3:0     GYRO_UI_FILT_BW     5 BW=max(400Hz, ODR)/16
+Page   64: 6 BW=max(400Hz, ODR)/20
+Page   64: 7 BW=max(400Hz, ODR)/40
+Page   64: 14 Low Latency option: Trivial decimation @ ODR of Dec2 filter output. Dec2
+Page   64: runs at max(400Hz, ODR)
+Page   64: 15 Low Latency option: Trivial decimation @ ODR of Dec2 filter output. Dec2
+Page   64: runs at max(200Hz, 8*ODR)
+Page   65: measurement of time since the last occurrence of ODR.
+Page   66: Trigger FIFO watermark interrupt on every ODR (DMA write) if

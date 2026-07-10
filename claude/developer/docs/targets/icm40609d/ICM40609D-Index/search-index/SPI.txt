@@ -1,0 +1,69 @@
+Keyword: SPI
+Occurrences: 65
+================================================================================
+
+Page    2: 3.5       SPI Timing Characterization – 4-Wire SPI Mode ..................................................................................... 15
+Page    2: 3.6       SPI Timing Characterization – 3-Wire SPI Mode ..................................................................................... 16
+Page    2: 4.8       I2C and SPI Host Interface ....................................................................................................................... 21
+Page    3: 8.1       I2C and SPI Serial Interfaces .................................................................................................................... 39
+Page    3: 8.5       SPI Interface ............................................................................................................................................ 42
+Page    3: 12.3          Settings for I2C, and SPI Operation ..................................................................................................... 48
+Page    7: Figure 2. 4-Wire SPI Mode-3 Bus Timing Diagram............................................................................................................... 15
+Page    7: Figure 3. 4-Wire SPI Mode-0 Bus Timing Diagram............................................................................................................... 15
+Page    7: Figure 4. 3-Wire Mode-3 SPI Bus Timing Diagram............................................................................................................... 16
+Page    7: Figure 5. 3-Wire Mode-0 SPI Bus Timing Diagram............................................................................................................... 16
+Page    7: Figure 8. ICM-40609-D Application Schematic (SPI Interface to Host) ................................................................................ 19
+Page    7: Figure 16. Typical SPI Master/Slave Configuration .............................................................................................................. 42
+Page    7: Table 6. 4-Wire SPI Timing Characteristics (24-MHz Operation) ......................................................................................... 15
+Page    7: Table 7. 3-Wire SPI Timing Characteristics (24-MHz Operation) ......................................................................................... 16
+Page    8: programmable interrupts. The device features I2C and SPI serial interfaces, a VDD operating range of 1.71 V to 3.6 V, and a separate
+Page    8: The host interface can be configured to support I2C slave or SPI slave modes. The I2C interface supports speeds up to 1 MHz, and the
+Page    8: SPI interface supports speeds up to 24 MHz.
+Page    9:  1 MHz I2C / 24 MHz SPI slave host interface
+Page   15: 3.5        SPI TIMING CHARACTERIZATION – 4-WIRE SPI MODE
+Page   15: SPI TIMING
+Page   15: Table 6. 4-Wire SPI Timing Characteristics (24-MHz Operation)
+Page   15: Figure 2. 4-Wire SPI Mode-3 Bus Timing Diagram
+Page   15: Figure 3. 4-Wire SPI Mode-0 Bus Timing Diagram
+Page   16: 3.6        SPI TIMING CHARACTERIZATION – 3-WIRE SPI MODE
+Page   16: SPI TIMING
+Page   16: Table 7. 3-Wire SPI Timing Characteristics (24-MHz Operation)
+Page   16: Figure 4. 3-Wire Mode-3 SPI Bus Timing Diagram
+Page   16: Figure 5. 3-Wire Mode-0 SPI Bus Timing Diagram
+Page   18: SDO: SPI serial data output (4-wire mode)
+Page   18: 22                      nCS                             Chip select (SPI mode only)
+Page   18: SCLK: SPI serial clock
+Page   18: 24                SDA / SDI / SDIO                      SDI: SPI serial data input (4-wire mode)
+Page   18: SDIO: SPI serial data I/O (3-wire mode)
+Page   19: Figure 8. ICM-40609-D Application Schematic (SPI Interface to Host)
+Page   21:  I2C and SPI serial communications interfaces to Host
+Page   21: 4.8    I2C AND SPI HOST INTERFACE
+Page   21: The ICM-40609-D communicates to the application processor using an I2C, or SPI serial interface. The ICM-40609-D always acts as a
+Page   39: 8.1    I2C AND SPI SERIAL INTERFACES
+Page   39: The internal registers and memory of the ICM-40609-D can be accessed using I2C at 1 MHz or SPI at 24 MHz. SPI operates in 3-wire
+Page   42: 8.5    SPI INTERFACE
+Page   42: The ICM-40609-D supports 3-wire or 4-wire SPI for the host interface. The ICM-40609-D always operates as a Slave device during
+Page   42: standard Master-Slave SPI operation.
+Page   42: Data IO (SDIO) are shared among the Slave devices. Each SPI slave device requires its own Chip Select (CS) line from the master.
+Page   42: SPI Operational Features
+Page   42: 5. SPI read and write operations are completed in 16 or more clock cycles (two or more bytes). The first byte contains the
+Page   42: SPI Address, and the following byte(s) contain(s) the SPI data. The first bit of the first byte contains the Read/Write bit
+Page   42: SPI Address format
+Page   42: SPI Data format
+Page   42: SPI Master                                SPI Slave 1
+Page   42: SPI Slave 2
+Page   42: Figure 16. Typical SPI Master/Slave Configuration
+Page   48: 12.3 SETTINGS FOR I2C, AND SPI OPERATION
+Page   48: Upon bootup the device comes up in SPI mode. The following settings should be used for I 2C, and SPI operation.
+Page   48: Register Field                                I2C Driver Setting   SPI Driver Setting
+Page   48: SPI_SLEW_RATE (bits 2:0, register DRIVE_CONFIG, address 0x13, bank 0)            1                    5
+Page   49: 11           17          DEVICE_CONFIG     R/W                             -                                                            SPI_MODE
+Page   49: 13           19          DRIVE_CONFIG      R/W                    -                                      I2C_SLEW_RATE                                          SPI_SLEW_RATE
+Page   50: SPI_AP_4WIR
+Page   52: 4:1 SPI_MODE                        SPI mode selection
+Page   52: Controls slew rate for output pin 14 in SPI mode, and for all other output
+Page   52: 2:0     SPI_SLEW_RATE
+Page   59: 1:0     UI_SIFS_CFG             10: Disable SPI
+Page   77: 0: AP interface uses 3-wire SPI mode
+Page   77: 1      SPI_AP_4WIRE
+Page   77: 1: AP interface uses 4-wire SPI mode (default)

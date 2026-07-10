@@ -6,6 +6,7 @@ stm32f722/ (F722)
 stm32f745/ (F745)
 stm32f765/ (F765/F767/F768/F769)
 stm32h7/ (H7)
+icm40609d/ (ICM40609D IMU)
 
 There is a search script for each chip within those directories. Use the search script when you need to know about pin assignments, alternate functions (AF), or any other information about the processors.
 

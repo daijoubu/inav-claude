@@ -1,0 +1,88 @@
+Keyword: accelerometer
+Occurrences: 84
+================================================================================
+
+Page    2: 2.2       Accelerometer Features ............................................................................................................................ 9
+Page    2: 3.2       Accelerometer Specifications.................................................................................................................. 11
+Page    2: 4.7       Three-Axis MEMS Accelerometer with 16-bit ADCs and Signal Conditioning......................................... 21
+Page    3: 12.1          Accelerometer Mode Transitions ....................................................................................................... 48
+Page    3: 12.2          Accelerometer Low Power (LP) Mode Averaging Filter Setting .......................................................... 48
+Page    7: Table 2. Accelerometer Specifications ................................................................................................................................. 11
+Page    8: The ICM-40609-D is a 6-axis MotionTracking device that combines a 3-axis gyroscope, and a 3-axis accelerometer in a small 3x3x0.91
+Page    8: The gyroscope supports eight programmable full-scale range settings from ±15.625dps to ±2000dps, and the accelerometer supports
+Page    9: 2.2 ACCELEROMETER FEATURES
+Page    9: The triple-axis MEMS accelerometer in ICM-40609-D includes a wide range of features:
+Page    9:  Digital-output X-, Y-, and Z-axis accelerometer with programmable full-scale range of ±4g, ±8g, ±16g and ±32g
+Page    9:  User-programmable digital filters for gyroscope, accelerometer, and temperature sensor
+Page    9:  Wake on Motion: Detects motion when accelerometer data exceeds a programmable threshold
+Page   11: 3.2 ACCELEROMETER SPECIFICATIONS
+Page   11: ACCELEROMETER SENSITIVITY
+Page   11: Accelerometer Startup Time                   From sleep mode to valid data                                   10               ms        3
+Page   11: Table 2. Accelerometer Specifications
+Page   12: 6-Axis Gyroscope + Accelerometer                          0.77           mA       2
+Page   12: Low-Noise Mode                             3-Axis Accelerometer                                      0.27           mA       2
+Page   12: Accelerometer Low -Power Mode
+Page   21:  Three-axis MEMS accelerometer sensor with 16-bit ADCs and signal conditioning
+Page   21: 4.7    THREE-AXIS MEMS ACCELEROMETER WITH 16-BIT ADCS AND SIGNAL CONDITIONING
+Page   21: The ICM-40609-D includes a 3-Axis MEMS accelerometer. Acceleration along a particular axis induces displacement of a proof mass
+Page   21: in the MEMS structure, and capacitive sensors detect the displacement. The ICM-40609-D architecture reduces the accelerometers’
+Page   21: the X- and Y-axes and +1g on the Z-axis. The accelerometers’ scale factor is calibrated at the factory and is nominally independent of
+Page   21: be activated by means of the gyroscope and accelerometer self-test registers.
+Page   22: The sensor data registers contain the latest gyroscope, accelerometer, and temperature measurement data. They are read-only
+Page   22: the FIFO and Data registers); (3) accelerometer event interrupts; (4) FIFO watermark; (5) FIFO overflow. The interrupt status can be
+Page   23: 3     Accelerometer Low-Power Mode                Off         Duty-Cycled
+Page   23: 4     Accelerometer Low-Noise Mode                Off             On
+Page   24: The signal path starts with independent 16-bit ADCs for each axis of gyroscope and accelerometer. The ADC output goes through a
+Page   25: Anti-alias filters for gyroscope and accelerometer can be independently programmed to have bandwidths ranging from 10 Hz to 995
+Page   25: bandwidth for accelerometer anti-alias filter
+Page   25: delt value for accelerometer
+Page   25: c.    Register bank 2, register 0x05h, bits 7:4, ACCEL_AAF_BITSHIFT: Bitshift value for accelerometer used in hardware
+Page   27: The anti-alias filter can be selected or bypassed for the accelerometer by using the parameter ACCEL_AAF_DIS in register bank 2,
+Page   27: 0            Enable accelerometer anti-aliasing filter
+Page   27: 1            Disable accelerometer anti-aliasing filter
+Page   27: Gyroscope and accelerometer offsets can be programmed by the user by using registers OFFSET_USER0, through OFFSET_USER8, in
+Page   28: The UI filter block can be programmed to select filter order and bandwidth independently for gyroscope and accelerometer.
+Page   28: Accelerometer filter order can be selected by programming the parameter ACCEL_UI_FILT_ORD in register bank 0, register 0x53h,
+Page   28: Gyroscope and accelerometer filter 3dB bandwidth can be selected by programming the parameter GYRO_UI_FILT_BW in register
+Page   33: Accelerometer ODR can be selected by programming the parameter ACCEL_ODR in register bank 0, register 0x50h, bits 3:0 as shown
+Page   33: ACCEL_ODR            Accelerometer ODR Value
+Page   33: Accelerometer FSR can be selected by programming the parameter ACCEL_FS_SEL in register bank 0, register 0x50h, bits 7:5 as
+Page   33: ACCEL_FS_SEL         Accelerometer FSR Value
+Page   34: determines which data is written into the FIFO. Possible choices include gyroscope data, accelerometer data, and temperature
+Page   34: Accelerometer Data              Gyroscope Data                 Accelerometer Data
+Page   36: 0: Default setting; Accelerometer data not placed into FIFO
+Page   36: 1: Enables accelerometer data packets of 6-bytes to be placed in FIFO
+Page   38: 1. Set accelerometer ODR (Register 0x50h in Bank 0)
+Page   48: 12.1 ACCELEROMETER MODE TRANSITIONS
+Page   48: When transitioning from accelerometer Low Power (LP) mode to accelerometer Low Noise (LN) mode, if ODR is 6.25Hz or lower,
+Page   48: software should change ODR to a value of 12.5Hz or higher, because accelerometer LN mode does not support ODR values below
+Page   48: When transitioning from accelerometer LN mode to accelerometer LP mode, if ODR is greater than 500Hz, software should change
+Page   48: ODR to a value of 500Hz or lower, because accelerometer LP mode does not support ODR values above 500Hz.
+Page   48: 12.2 ACCELEROMETER LOW POWER (LP) MODE AVERAGING FILTER SETTING
+Page   48: noise requirements in LP mode, and to minimize accelerometer offset variation when transitioning from LP to Low Noise (LN) mode.
+Page   59: 0: Accelerometer LP mode uses Wake Up oscillator clock (default)
+Page   60: 00: Turns accelerometer off (default)
+Page   60: 01: Turns accelerometer off
+Page   60: 10: Places accelerometer in Low Power (LP) Mode
+Page   60: 1:0     ACCEL_MODE         11: Places accelerometer in Low Noise (LN) Mode
+Page   62: Full scale select for accelerometer UI interface output
+Page   62: Accelerometer ODR selection for UI interface output
+Page   65: Order of Accelerometer DEC2_M2 filter
+Page   66: 0: Set WoM interrupt on the OR of all enabled accelerometer thresholds
+Page   66: 1: Set WoM interrupt on the AND of all enabled accelerometer threshold
+Page   66: 0      FIFO_ACCEL_EN              Enable accelerometer packets to go to FIFO
+Page   72: 0: Z accelerometer is on
+Page   72: 1: Z accelerometer is disabled
+Page   72: 0: Y accelerometer is on
+Page   72: 1: Y accelerometer is disabled
+Page   72: 0: X accelerometer is on
+Page   72: 1: X accelerometer is disabled
+Page   78: Controls bandwidth of the accelerometer anti-alias filter
+Page   78: 0: Enable accelerometer anti-aliasing filter
+Page   78: 1: Disable accelerometer anti-aliasing filter (default)
+Page   78: Controls bandwidth of the accelerometer anti-alias filter
+Page   78: Controls bandwidth of the accelerometer anti-alias filter
+Page   78: Controls bandwidth of the accelerometer anti-alias filter
+Page   80: Threshold value for the Wake on Motion Interrupt for X-axis accelerometer
+Page   80: Threshold value for the Wake on Motion Interrupt for Y-axis accelerometer
+Page   80: Threshold value for the Wake on Motion Interrupt for Z-axis accelerometer
