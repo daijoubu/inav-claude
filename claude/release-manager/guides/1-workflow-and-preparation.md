@@ -273,4 +273,3 @@ Once you've verified release readiness:
 
 **→ Proceed to [Phase 2: Downloading Artifacts](2-downloading-artifacts.md)**
 
-(Post-release tasks — announcing, monitoring, lessons learned — live in [Phase 8: Post-Release](8-post-release.md), the last step in the loop.)
