@@ -66,9 +66,6 @@ claude/developer/workspace/
 claude/agent/
 claude/.claude/
 
-# Vector memory database (local data — not shared)
-claude/log-memories/
-
 # Installation marker (local, per-user)
 claude/.installed
 
@@ -89,7 +86,6 @@ refs
 
 
 # Claude runs "git status" at the beginning and fills the session with everything that has changed or is untracked
-.claude/hooks/session-turn-count.txt
 .claude/hooks/tool_permissions.log.1
 .claude/projects/
 claude/projects/

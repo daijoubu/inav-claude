@@ -1,5 +1,9 @@
 # Framework tips — one per line. Blank lines and lines starting with # are ignored.
-# Shown to the user every ~7 turns via the Stop hook.
+#
+# NOTE: The Stop hook that used to surface these (stop-hook.sh) was removed as part
+# of retiring the ChromaDB memory stack (2026-07-10). This content is earmarked for
+# reuse by the point-of-action-context-injection project — see
+# claude/projects/active/point-of-action-context-injection/.
 
 Tip: This framework includes specialized agents — email-manager, inav-builder, test-engineer, inav-architecture, target-developer, msp-expert, sitl-operator, fc-flasher, inav-code-review, aerodynamics-expert, and more. Each keeps a task's context focused.
 Tip: Never run cmake, make, or npm build directly. Use the inav-builder agent instead — it handles cmake reconfiguration, clean builds, and edge cases automatically.

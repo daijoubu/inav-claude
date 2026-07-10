@@ -24,6 +24,29 @@ These guides should be read by:
 - **`/create-pr` skill** - Reads and enforces `CRITICAL-BEFORE-PR.md`
 - **`test-engineer` agent** - Has `CRITICAL-BEFORE-TEST.md` in its instructions
 
+## Memory Policy
+
+**Lessons-in-docs is the harness's memory system.** There is no semantic/vector memory
+store — the ChromaDB pipeline (per-prompt injection, session ingestion, forget tooling)
+was retired 2026-07-10 (see `claude/projects/active/retire-chromadb-memory-stack/`,
+or `completed/` once the manager archives it): it ran on every prompt, its disable
+switches were uncommitted, and it structurally couldn't share memory across sessions,
+roles, and the human the way a doc committed to git does.
+
+**Placement rules** — when you learn something worth keeping, put it where the next
+reader who needs it will already be looking:
+
+| Kind of lesson | Where it goes |
+|-----------------|----------------|
+| Workflow lesson (how to do a step correctly) | The owning `CRITICAL-*.md` guide above |
+| Domain/reference fact (protocol quirk, target detail, library behavior) | The owning agent's instructions or its `docs/` reference |
+| SITL behavior/quirk | `test-engineer` agent references |
+
+If none of those own the topic, use judgment on the nearest fitting guide rather than
+creating a new catch-all file. The Claude Code auto-memory feature (`MEMORY.md` under
+`~/.claude/projects/.../memory/`) is intentionally stubbed out — see its own note — in
+favor of this policy.
+
 ## Design Philosophy
 
 **Problem:** 840-line README is overwhelming; critical rules get forgotten.
