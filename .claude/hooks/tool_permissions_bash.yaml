@@ -333,6 +333,18 @@ bash_rules:
     category: other
     decision: allow
 
+  - name: "Allow tee for build output logging"
+    command_pattern: "^tee$"
+    category: write
+    decision: allow
+    message: "tee command for capturing and logging build output (used by inav-builder for build logs)"
+
+  - name: "Allow nproc for determining CPU count"
+    command_pattern: "^nproc$"
+    category: read
+    decision: allow
+    message: "nproc command for determining available CPU cores for parallel builds"
+
   - name: "Allow python3 for any script"
     command_pattern: "^python3$"
     category: other
