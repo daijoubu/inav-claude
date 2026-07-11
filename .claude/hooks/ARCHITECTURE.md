@@ -408,7 +408,17 @@ the one above: echo `"fire"` to inject, anything else to skip - never
 **Potential Issues:**
 - Regex catastrophic backtracking (mitigated: simple patterns)
 - Precondition script injection (mitigated: user controls config)
-- Parser bugs splitting commands (mitigated: comprehensive tests)
+- Parser bugs splitting commands - **NOT fully mitigated.** Two confirmed gaps
+  (2026-07-11, reported to Manager): (1) `handle_bash_tool()`'s heredoc branch
+  checks only the heredoc's first line and returns `allow` for the entire
+  command, never evaluating anything on a line after the heredoc terminator -
+  a command like `cat > allowed/path << 'EOF' ... EOF` followed by `git add -A`
+  on the next line bypasses that rule's hard deny entirely; (2)
+  `BashCommandParser._parse_simple_command()` treats `VAR=value cmd args` as
+  `command='VAR=value'`, so any env-var-prefixed invocation (`GIT_EDITOR=x git
+  commit ...`) never matches a `command_pattern` rule at all. Both affect
+  `tool_permissions_bash.yaml` deny rules, not just `tool_context_injections.yaml`.
+  Fix tracked separately, not yet applied as of this writing.
 
 ### Best Practices
 
