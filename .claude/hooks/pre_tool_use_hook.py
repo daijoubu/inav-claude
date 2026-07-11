@@ -277,8 +277,17 @@ def inject_context(
     if not texts:
         return
 
-    existing = output.get('additionalContext', '')
-    output['additionalContext'] = existing + ('\n\n' if existing else '') + '\n\n'.join(texts)
+    # additionalContext must live INSIDE hookSpecificOutput for PreToolUse, per
+    # https://code.claude.com/docs/en/hooks.md - a top-level sibling key (what
+    # HookOutputGenerator.generate_pretooluse_output() writes elsewhere in this
+    # codebase, including the pre-existing ask-path) is silently discarded by
+    # Claude Code. Confirmed via direct transcript inspection: the hook's stdout
+    # contains the right JSON, logged faithfully as a "hook_success" attachment
+    # record, but the tool_result actually delivered to the model has no trace
+    # of it when the key is top-level.
+    hook_output = output.setdefault('hookSpecificOutput', {})
+    existing = hook_output.get('additionalContext', '')
+    hook_output['additionalContext'] = existing + ('\n\n' if existing else '') + '\n\n'.join(texts)
     throttle.save()
 
 

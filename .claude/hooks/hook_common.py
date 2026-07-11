@@ -804,7 +804,15 @@ class HookOutputGenerator:
             output["hookSpecificOutput"]["updatedInput"] = updated_input
 
         if additional_context:
-            output["additionalContext"] = additional_context
+            # Must live INSIDE hookSpecificOutput for PreToolUse, per
+            # https://code.claude.com/docs/en/hooks.md - a top-level sibling key
+            # is silently discarded by Claude Code. Confirmed via direct
+            # transcript inspection (2026-07-11): the hook's own stdout contained
+            # the correct additionalContext with the old top-level placement,
+            # faithfully logged as a "hook_success" attachment record, but the
+            # actual tool_result delivered to the model never included it -
+            # true even for a genuinely human-approved interactive ask prompt.
+            output["hookSpecificOutput"]["additionalContext"] = additional_context
 
         if system_message:
             output["systemMessage"] = system_message
