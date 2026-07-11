@@ -26,4 +26,4 @@ Tip: Skills available with /: start-task, finish-task, git-workflow, create-pr, 
 Tip: /build-inav-target builds firmware for a specific flight controller (e.g. MATEKF405). /build-sitl builds the software simulator for testing without hardware.
 Tip: /mwptools gives you CLI terminal access to a connected flight controller — useful for reading/writing settings and downloading blackbox logs.
 Tip: /wiki-search searches the INAV wiki for implementation guidance before you write code — saves time reverse-engineering behavior that's already documented.
-Tip: /git-workflow handles branch management safely — always creates branches from the right base (upstream/maintenance-9.x) to avoid picking up unrelated commits.
+Tip: /git-workflow handles branch management safely — always creates branches from the correct base per the current decision table (see its "Creating Branches" section), avoiding unrelated commits.

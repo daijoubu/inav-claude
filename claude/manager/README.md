@@ -464,47 +464,17 @@ grep -r "<keyword>" claude/projects/completed/
 
 **CRITICAL:** Always specify the correct base branch when assigning tasks involving code changes or PRs.
 
-### PrivacyLRS
-- **Repository:** `sensei-hacker/PrivacyLRS` (origin)
-- **Base Branch:** `secure_01` (NOT master)
-- **PR Target:** origin (sensei-hacker/PrivacyLRS)
-- **Note:** This is a separate fork/derivative project
+**Single authority:** `.claude/skills/git-workflow/SKILL.md` ("Creating Branches" section)
+has the current {repo, change-type} → base-branch table, including the active temporary
+`inav/` override (maintenance-9.x damaged, REVIEW-BY 2027-02). Check there rather than
+hardcoding a base branch in an assignment — it changes.
 
-### INAV Firmware
-- **Repository:** `inavflight/inav` (upstream)
-- **Base Branch:** `maintenance-9.x` (active development for current version)
-- **Alternative:** `maintenance-10.x` (breaking changes for next major version)
-- **Master Branch:** Mirror of current version (receives merges, NOT a PR target)
-- **PR Target:** upstream (inavflight/inav)
-
-### INAV Configurator
-- **Repository:** `inavflight/inav-configurator` (upstream)
-- **Base Branch:** `maintenance-9.x` (active development for current version)
-- **Alternative:** `maintenance-10.x` (breaking changes for next major version)
-- **Master Branch:** Mirror of current version (receives merges, NOT a PR target)
-- **PR Target:** upstream (inavflight/inav-configurator)
-
-**CRITICAL RULES:**
+**CRITICAL RULES (stable, don't change with the table above):**
 - **NEVER target PRs to master** - it receives merges only
-- **Use maintenance-9.x** for current version work (all features and fixes)
-- **Use maintenance-10.x** for breaking changes (incompatible with current version)
-- **Always specify:** "Branch: From `maintenance-9.x`" (or `maintenance-10.x` if breaking change)
-- **For PrivacyLRS:** "Branch: From `secure_01`"
-
-**Compatibility Guidelines:**
-- `maintenance-9.x`: INAV 9.x firmware ↔ INAV 9.x configurator (backwards compatible)
-- `maintenance-10.x`: INAV 10.x firmware ↔ INAV 10.x configurator (breaking changes)
-- Breaking changes include: MSP protocol changes, settings changes, UI/UX requiring protocol updates
-
-**Quick Reference:**
-```
-PrivacyLRS:               base = secure_01
-inav (firmware):          base = maintenance-9.x (or maintenance-10.x if breaking)
-inav-configurator:        base = maintenance-9.x (or maintenance-10.x if breaking)
-master branch:            Mirror of current version - NOT a PR target
-
-Merge flow:               maintenance-9.x → master → maintenance-10.x
-```
+- **For PrivacyLRS:** base is always `secure_01`, PR target is `origin` (sensei-hacker/PrivacyLRS)
+- **For inav/inav-configurator:** PR target is `upstream` (inavflight org)
+- **Always specify the base branch** in the assignment: "Branch: From `<base>`" using the
+  current table
 
 See `.claude/skills/create-pr/SKILL.md` for complete PR creation workflows.
 

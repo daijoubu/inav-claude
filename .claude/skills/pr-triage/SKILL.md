@@ -144,8 +144,8 @@ Do NOT call `gh api` or `gh issue edit` directly — the script handles API quir
 
 | Milestone | Expected Base Branch |
 |-----------|---------------------|
-| **9.0.1** | `maintenance-9.x` |
-| **9.1** | `maintenance-9.x` |
+| **9.0.1** | `maintenance-9.x` — unless a temporary override is active; check `.claude/skills/git-workflow/SKILL.md` ("Creating Branches") for the current inav base |
+| **9.1** | `maintenance-9.x` — same override caveat as above |
 | **10.0** | `maintenance-10.x` |
 | **Future** | any (no change needed) |
 

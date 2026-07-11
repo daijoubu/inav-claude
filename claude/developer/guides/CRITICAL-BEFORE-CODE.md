@@ -2,7 +2,7 @@
 
 **STOP! Complete this checklist before making ANY code changes:**
 
-**Use the TodoWrite tool to track each step as you complete it.**
+**Use a task list tool to track each step as you complete it.**
 
 ## 1. Check Lock Files
 
@@ -40,14 +40,15 @@ EOF
 use inav.lock for the inav/ directory, inav2.lock for the inav2/ directory, or inav3.lock for the inav3 directory
 
 ## 3. Create Git Branch
-The branch MUST be created off of the correct version branch in according with the create-pr Skill.
-Important: Do NOT branch off master.
+The branch MUST be created off of the correct version branch — never off master.
 
 ```bash
-cd inav  # or inav-configurator
-git checkout maintenance-9.x && git pull
-git checkout -b fix/issue-XXXX-description
+claude/developer/scripts/git/new-branch.sh <repo> <bugfix|feature|breaking> <branch-name>
 ```
+
+See `.claude/skills/git-workflow/SKILL.md` ("Creating Branches") for the current
+base-branch decision table (including any active temporary override) and the manual
+fallback if the script can't be used.
 
 ## 4. Plan End-User Documentation (If Needed)
 

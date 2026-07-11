@@ -29,15 +29,8 @@ Review that all intended changes are present and no unintended files are modifie
 
 ### 2. Run Tests (if applicable)
 
-```bash
-# For configurator
-cd inav-configurator
-npm test
-
-# For firmware - build check
-cd inav
-make SITL
-```
+Use the **inav-builder** agent for the build check (never `cmake`/`make`/`npm` directly)
+and the **test-engineer** agent to run tests. See `guides/CRITICAL-BEFORE-TEST.md`.
 
 ### 3. Stage Changes
 

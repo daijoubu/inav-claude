@@ -3,11 +3,6 @@ rules:
   # Always-Allow Tools (Task Management, Skills, Read Operations)
   # ===================================================================
 
-  - name: "Allow TodoWrite for task tracking"
-    tool_name_pattern: "^TodoWrite$"
-    category: other
-    decision: allow
-
   - name: "Allow TaskOutput for retrieving task results"
     tool_name_pattern: "^TaskOutput$"
     category: read

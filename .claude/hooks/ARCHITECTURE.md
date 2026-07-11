@@ -203,7 +203,7 @@ defaults: {...}     # Default behaviors by category (read/write/other)
 **2. tool_permissions_rules.yaml**
 ```yaml
 rules:
-  - Always-allow tools (TodoWrite, Skill, Read, etc.)
+  - Always-allow tools (TaskCreate, TaskUpdate, TaskList, TaskOutput, Skill, Read, etc.)
   - Deny rules (block dangerous patterns)
   - Allow rules (specific safe operations)
   - Ask rules (fallback for unknown tools)

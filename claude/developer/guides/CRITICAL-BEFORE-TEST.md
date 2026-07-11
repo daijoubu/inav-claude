@@ -7,7 +7,7 @@
 ### Bug Fixes: Test-First Approach
 
 **For bug fixes, ALWAYS:**
-**Use the TodoWrite tool to track these steps.**
+**Use a task list tool to track these steps.**
 1. **First:** Write a test that REPRODUCES the bug (test should FAIL)
 2. **Then:** Implement the fix
 3. **Finally:** Run the test again (test should PASS)
@@ -24,7 +24,7 @@ Save test to: claude/developer/workspace/[task-name]/"
 
 ### New Features: Test After Implementation
 
-**Use the TodoWrite tool to track these steps.**
+**Use a task list tool to track these steps.**
 1. Implement the feature
 2. Write tests that verify it works
 3. Test edge cases and error conditions

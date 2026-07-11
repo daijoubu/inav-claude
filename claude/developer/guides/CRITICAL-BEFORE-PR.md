@@ -2,7 +2,7 @@
 
 **STOP! Complete this checklist before running `gh pr create` or `/create-pr`:**
 
-**Use the TodoWrite tool to track each step as you complete it.**
+**Use a task list tool to track each step as you complete it.**
 
 ---
 
@@ -99,17 +99,15 @@ Prompt: "Review changes in [files] - [brief description]"
 
 ### 1. Review Changes
 
-Determine your base branch:
-- **INAV backward-compatible:** `maintenance-9.x`
-- **INAV breaking changes:** `maintenance-10.x`
-- **PrivacyLRS:** `secure_01`
-- **Never PR to master**
+Determine your base branch from `.claude/skills/git-workflow/SKILL.md` ("Creating
+Branches") — it's the single authority and includes any active temporary override.
+**Never PR to master.**
 
-Then review:
+Then review (substitute the base branch you actually branched from):
 ```bash
 git status
-git diff maintenance-9.x...HEAD  # or maintenance-10.x or secure_01
-git log maintenance-9.x..HEAD    # or maintenance-10.x or secure_01
+git diff <base-branch>...HEAD
+git log <base-branch>..HEAD
 ```
 
 ### 2. Verify All Changes Committed

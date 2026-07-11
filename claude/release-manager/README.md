@@ -146,7 +146,7 @@ When releasing a new major version, create maintenance branches for both reposit
 - `master` - Synchronized copy of maintenance-9.x (safety net only)
 - `maintenance-10.x` - Breaking changes planned for INAV 10.0
 
-**Why master tracks the current version:** If a contributor accidentally branches from master instead of maintenance-9.x, they get current version code without pulling in breaking changes from maintenance-10.x. Contributors should still branch from maintenance-9.x, not master.
+**Why master tracks the current version:** If a contributor accidentally branches from master instead of the current maintenance branch, they get current version code without pulling in breaking changes from the next major version's branch. Contributors should still branch from the current maintenance branch, not master — see `.claude/skills/git-workflow/SKILL.md` ("Creating Branches") for which branch is currently correct (a temporary override may be active).
 
 ### Creating Maintenance Branches
 
@@ -180,9 +180,9 @@ Create maintenance branches when:
 
 ### Usage
 
-- **Current version work** → PR to maintenance-9.x (all features and fixes for 9.0)
-- **Breaking changes** → PR to maintenance-10.x (incompatible changes for 10.0)
-- **Master** → NOT a PR target (receives merges only)
+Current base-branch assignment (may include a temporary override) is in
+`.claude/skills/git-workflow/SKILL.md` ("Creating Branches"). **Master is never a PR
+target** — it receives merges only.
 
 **Merge flow:** Lower version branches are periodically merged into higher version branches (changes flow upward only):
 ```
