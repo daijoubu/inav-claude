@@ -490,3 +490,26 @@ echo "Command should now auto-allow"
 - Natural language processing (regex is sufficient)
 - Learning/AI (explicit rules are better)
 - Runtime modification (reload on change is fine)
+
+## Self-Improvement: Lessons Learned
+
+When you discover something important about HOOK DEVELOPMENT that will likely help
+in future sessions, add it to this section. Only add insights that are:
+- **Reusable** - will apply to future hook changes, not one-off situations
+- **About the hook system itself** - output schema, delivery mechanics, testing approach
+- **Concise** - one line per lesson
+
+Use the Edit tool to append new entries. Format: `- **Brief title**: One-sentence insight`
+
+### Lessons
+
+- **A hook's logged/returned JSON is not proof content reached the model**: the hook
+  process's own stdout and the harness's transcript logging of that stdout (a
+  `"hook_success"` attachment record) can be completely correct while the actual
+  `tool_result` delivered to the model contains none of it - confirmed for
+  `additionalContext` placed at the wrong JSON nesting level. Before trusting that a
+  hook output field works, read the raw session transcript
+  (`~/.claude/projects/.../<session-id>.jsonl`) for the actual `tool_result` message,
+  or better, trigger a real tool call and check what you yourself receive.
+
+<!-- Add new lessons above this line -->
