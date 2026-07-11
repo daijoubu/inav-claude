@@ -579,6 +579,13 @@ bash_rules:
     category: read
     decision: allow
 
+  - name: "Allow gh label list (read-only)"
+    command_pattern: "^gh$"
+    argument_pattern: "^label\\s+list.*"
+    category: read
+    decision: allow
+    message: "GitHub CLI read-only label list operation for verifying PR labels"
+
   - name: "Allow gh pr create for version bumps and feature PRs"
     command_pattern: "^gh$"
     argument_pattern: "^pr\\s+create.*"
