@@ -13,6 +13,7 @@ The Parameter Group (PG) system is INAV's mechanism for managing persistent conf
 
 | Topic | File |
 |-------|------|
+| Whether a new setting is warranted at all | [when-to-add-a-setting.md](when-to-add-a-setting.md) |
 | When to increment versions | [versioning-rules.md](versioning-rules.md) |
 | How to register parameter groups | [registration-guide.md](registration-guide.md) |
 | Real-world example (PR #11236) | [case-study-pr11236.md](case-study-pr11236.md) |
