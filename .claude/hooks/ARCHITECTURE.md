@@ -2,11 +2,13 @@
 
 ## Overview
 
-The Claude Code hook system provides fine-grained control over tool permissions through:
+The Claude Code hook system provides fine-grained control over tool permissions, plus
+point-of-action context delivery to the model, through:
 - YAML configuration with regex-based rule matching
 - Bash command parsing with quote and redirection handling
 - Logging and validation capabilities
 - Runtime conditional evaluation
+- Additive context injection on top of (never influencing) the permission decision
 
 ## Components
 
@@ -22,26 +24,34 @@ The Claude Code hook system provides fine-grained control over tool permissions 
         ┌───────────────────────▼───────────────────────┐
         │   pre_tool_use_hook.py (PreToolUse Hook)      │
         │   - Intercepts all tool calls                 │
-        │   - Returns: allow / deny / ask               │
+        │   - Step 1: permission decision                │
+        │     (allow / deny / ask)                       │
+        │   - Step 2: IF allow, evaluate injections      │
+        │     and append to additionalContext            │
         └───────────────────────┬───────────────────────┘
                                 │
-                    ┌───────────▼────────────┐
-                    │   hook_common.py       │
-                    │   - HookConfig         │
-                    │   - RuleMatcher        │
-                    │   - HookLogger         │
-                    │   (loads & merges)     │
-                    └───────────┬────────────┘
+              ┌─────────────────┴─────────────────┐
+              │                                    │
+   ┌──────────▼───────────┐          ┌─────────────▼──────────────┐
+   │   hook_common.py     │          │      hook_common.py         │
+   │   - HookConfig       │          │  - InjectionConfig          │
+   │   - RuleMatcher      │          │  - InjectionMatcher         │
+   │   - HookLogger       │          │  - InjectionThrottle        │
+   │   (permission path)  │          │  (injection path)           │
+   └──────────┬───────────┘          └─────────────┬──────────────┘
+              │                                    │
+              └─────────────────┬─────────────────┘
                                 │
                     ┌───────────▼────────────┐
                     │  bash_parser.py        │
                     │  - Parse compound cmds │
                     │  - Handle quotes       │
                     │  - Handle redirections │
+                    │  (shared by both paths)│
                     └───────────┬────────────┘
                                 │
             ┌───────────────────▼──────────────────┐
-            │   Configuration Files (merged):      │
+            │   Configuration Files:               │
             ├──────────────────────────────────────┤
             │ ✓ tool_permissions_defaults.yaml     │
             │   (logging & category defaults)      │
@@ -51,6 +61,12 @@ The Claude Code hook system provides fine-grained control over tool permissions 
             │                                      │
             │ ✓ tool_permissions_bash.yaml         │
             │   (Bash command rules)               │
+            │   -- the three above are merged --   │
+            │                                      │
+            │ ✓ tool_context_injections.yaml       │
+            │   (context injection rules - kept    │
+            │    separate; loaded independently,   │
+            │    never merged with the above)      │
             └──────────────────────────────────────┘
 ```
 
@@ -102,7 +118,20 @@ for parsed_cmd in parsed_commands:
 return defaults[category]
 ```
 
-### 4. Decision Return
+### 4. Context Injection (allow outcomes only)
+
+```python
+# Only reached if permissionDecision == 'allow'. Matches tool_context_injections.yaml
+# rules against the same parsed command (or tool_name/tool_input for general tools).
+# Every matching rule fires - not first-match-wins - subject to per-rule throttling.
+for rule in injection_rules:
+    if matches(rule, parsed_cmd) and precondition_fires(rule) and throttle.should_fire(rule):
+        texts.append(rule.context)
+
+# Appended to additionalContext, never able to change the decision above.
+```
+
+### 5. Decision Return
 
 ```python
 # Hook returns decision to Claude
@@ -110,7 +139,7 @@ return defaults[category]
   "hookSpecificOutput": {
     "permissionDecision": "allow"  # or "deny" or "ask"
   },
-  "additionalContext": "..."  # Optional context for Claude
+  "additionalContext": "..."  # Permission-path message and/or injected reminders
 }
 ```
 
@@ -157,6 +186,27 @@ return defaults[category]
 
 **Implementation:** Execute bash script, capture stdout
 
+### 6. Context Injection as a Separate Config File and Code Path
+
+**Why:** Injections have different properties than permission rules - additive
+(every match fires) rather than first-match-wins, advisory rather than
+security-critical, and stateful (per-session throttling) rather than stateless.
+Mixing them into the permission files risked an injection rule accidentally
+shadowing a more specific deny rule, and would force advisory-content edits through
+the same file as security-critical deny rules.
+
+**Implementation:** `tool_context_injections.yaml`, loaded and matched independently
+by `InjectionConfig`/`InjectionMatcher`/`InjectionThrottle` in `hook_common.py`.
+Reuses `RuleMatcher`'s matching predicates (`_matches_rule`, `_matches_bash_rule` -
+`@staticmethod` for exactly this reuse) so pattern semantics stay identical between
+the two systems, but never touches the permission decision itself. Only evaluated
+when that decision is already `allow`.
+
+**Precondition contract difference:** permission `precondition_script`s return
+`allow`/`deny`/`ask` (or a `WARNING:`-prefixed message). Injection
+`precondition_script`s echo `"fire"` or nothing - they select whether a match
+actually injects, never a permission outcome.
+
 ## Performance Characteristics
 
 ### Config Loading
@@ -184,7 +234,10 @@ return defaults[category]
 
 ### Split Files Organization
 
-The configuration is split into **three separate YAML files** (automatically merged by `HookConfig`):
+Permission decisions are configured by **three separate YAML files** (automatically
+merged by `HookConfig`). Context injection is configured by a **fourth**, kept
+separate on purpose (loaded independently by `InjectionConfig`, never merged with
+the three below) - see "Context Injection" in README.md for why.
 
 ⚠️ **IMPORTANT: Edit the correct file based on your rule type!**
 
@@ -193,6 +246,7 @@ The configuration is split into **three separate YAML files** (automatically mer
 | **tool_permissions_defaults.yaml** | Logging settings or category defaults | `logging:` and `defaults:` sections |
 | **tool_permissions_rules.yaml** | Rules for non-Bash tools (Read, Write, Edit, TaskCreate, etc.) | `rules:` section with tool_name_pattern |
 | **tool_permissions_bash.yaml** | Rules for Bash commands (git, rm, find, etc.) | `bash_rules:` section with command_pattern |
+| **tool_context_injections.yaml** | Point-of-action reminders for the model (not a permission decision) | `injections:` section - see its own header comment for the schema |
 
 **1. tool_permissions_defaults.yaml**
 ```yaml
@@ -225,11 +279,22 @@ bash_rules:
   - Runtime conditionals (precondition_script)
 ```
 
+**4. tool_context_injections.yaml**
+```yaml
+injections:
+  - Leading-indicator rules (fire on a command that predicts a later one)
+  - Terminal-action safety nets (fire on the action itself)
+  - Domain-specific reminders (e.g. INAV settings.yaml design philosophy)
+```
+
 ### Why Split?
 
 - **Defaults:** Rarely changes, good to isolate
 - **Tool Rules:** Different semantics from Bash rules
 - **Bash Rules:** Large section, specific to command parsing
+- **Context Injections:** Additive and advisory rather than first-match-wins and
+  security-critical - mixing it with the permission files risked an injection rule
+  shadowing a more specific deny (see Key Design Decision 6 above)
 
 ### Rule Ordering Strategy
 
@@ -287,6 +352,16 @@ bash_rules:
       echo "ask"
     fi
 ```
+
+### Adding New Injection Rules
+
+Edit `tool_context_injections.yaml`, not the files above - see its header comment
+for the schema and the two design questions to ask before adding a rule (is the
+target already rejected elsewhere with a reason? if accepted and it runs
+immediately, is there an earlier predictor command to attach the guidance to
+instead?). Precondition scripts on injection rules use a different contract than
+the one above: echo `"fire"` to inject, anything else to skip - never
+`allow`/`deny`/`ask`.
 
 ## Validation
 

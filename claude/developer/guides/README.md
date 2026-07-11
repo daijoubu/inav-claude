@@ -58,9 +58,16 @@ constraint, a workaround for a specific broken tool/environment, a mapping or tr
 that will recur on similar future work (e.g. "DMA option N maps to stream X, shared
 with peripheral Y"), a wrong assumption that cost real time to unwind. No if it's
 routine, already documented, or specific to this exact task with no generalization.
-If yes, add one line to the topic's existing "Self-Improvement" section, or
-otherwise update the guide as appropriate (see Placement rules above). If no, do
-nothing further.
+
+If yes, first check whether the lesson has a clear, specific triggering tool or
+command (e.g. "whenever `X` is run, remember Y") — if so, prefer adding a short
+(1-3 line) rule to `.claude/hooks/tool_context_injections.yaml` instead of, or in
+addition to, the guide entry. It reaches the model deterministically at the moment
+of action rather than depending on the guide being read; see that file's header for
+the schema and the "keep it short, point at docs for detail" convention. Otherwise
+— or for anything broader than a single command trigger — add one line to the
+topic's existing "Self-Improvement" section, or update the guide as appropriate
+(see Placement rules above). If no, do nothing further.
 
 **Tooling worth keeping?** Yes if a plausible *future* task — not just this one —
 would reuse the script/test harness/checklist as-is or with minor changes. No if

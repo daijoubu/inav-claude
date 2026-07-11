@@ -56,6 +56,8 @@ class ConfigValidator:
         self._check_regex_validity()
         self._check_precondition_scripts()
         self._check_unreachable_rules()
+        if 'injections' in self.config:
+            self._check_injections()
 
         # Print results
         self._print_results()
@@ -109,6 +111,19 @@ class ConfigValidator:
                         self.config['bash_rules'] = file_data.get('bash_rules', [])
 
                 self.info.append(f"✓ Loaded and merged 3 split config files from {script_dir}")
+
+                # Optional 4th file - point-of-action context injections. Separate
+                # from the 3 permission files on purpose (see its own header), so
+                # it's absent from "required sections" and only validated if present.
+                injections_path = script_dir / 'tool_context_injections.yaml'
+                if injections_path.exists():
+                    with open(injections_path, 'r') as f:
+                        injections_data = yaml.safe_load(f) or {}
+                    self.config['injections'] = injections_data.get('injections', [])
+                    self.info.append(
+                        f"✓ Loaded {len(self.config['injections'])} injection rules from {injections_path.name}"
+                    )
+
                 return True
             except yaml.YAMLError as e:
                 self.errors.append(f"✗ YAML syntax error in split files: {e}")
@@ -323,6 +338,85 @@ class ConfigValidator:
                 self.info.append(
                     f"ℹ bash_rules[{i}] ('{rule.get('name')}'): precondition_script doesn't use available variables"
                 )
+
+    def _check_injections(self):
+        """Check tool_context_injections.yaml rules.
+
+        Distinct rules from _validate_rule() above: injections have no 'decision'
+        field (they can't influence allow/deny/ask), and their matcher may be
+        EITHER the bash shape (command_pattern) OR the general-tool shape
+        (tool_name_pattern) - exactly one, not necessarily either alone required
+        the way tool_permissions_rules.yaml treats tool_name_pattern as optional.
+        """
+        injections = self.config.get('injections', [])
+        seen_names = set()
+
+        for i, rule in enumerate(injections):
+            path = f"injections[{i}]"
+            name = rule.get('name')
+
+            if not name:
+                self.errors.append(f"✗ {path}: Missing 'name' field")
+            elif name in seen_names:
+                self.errors.append(f"✗ {path} ('{name}'): Duplicate name - throttling is keyed by name")
+            else:
+                seen_names.add(name)
+
+            context = str(rule.get('context', '')).strip()
+            if not context:
+                self.errors.append(f"✗ {path} ('{name}'): Missing 'context' field")
+
+            has_bash_matcher = bool(rule.get('command_pattern'))
+            has_tool_matcher = bool(rule.get('tool_name_pattern'))
+            if has_bash_matcher and has_tool_matcher:
+                self.errors.append(
+                    f"✗ {path} ('{name}'): Has both command_pattern and tool_name_pattern - "
+                    f"pick one matcher shape, not both"
+                )
+            elif not has_bash_matcher and not has_tool_matcher:
+                self.errors.append(
+                    f"✗ {path} ('{name}'): Must have 'command_pattern' (Bash) or "
+                    f"'tool_name_pattern' (general tool)"
+                )
+
+            for pattern_field in ('command_pattern', 'argument_pattern', 'tool_name_pattern'):
+                pattern = rule.get(pattern_field)
+                if pattern:
+                    try:
+                        re.compile(pattern)
+                    except re.error as e:
+                        self.errors.append(f"✗ {path} ('{name}'): Invalid {pattern_field} regex: {e}")
+
+            for pattern in (rule.get('tool_input_patterns') or {}).values():
+                try:
+                    re.compile(pattern)
+                except re.error as e:
+                    self.errors.append(f"✗ {path} ('{name}'): Invalid tool_input_patterns regex: {e}")
+
+            throttle = rule.get('throttle', 'once_per_session')
+            if throttle not in ('once_per_session', 'always'):
+                self.errors.append(
+                    f"✗ {path} ('{name}'): Invalid throttle '{throttle}' "
+                    f"(must be once_per_session/always)"
+                )
+
+            script = rule.get('precondition_script')
+            if script and 'echo "fire"' not in script and "echo 'fire'" not in script:
+                self.warnings.append(
+                    f"⚠ {path} ('{name}'): precondition_script should echo \"fire\" to inject "
+                    f"(this contract is different from permission rules' allow/deny/ask)"
+                )
+
+            if context.startswith('WARNING:'):
+                self.errors.append(
+                    f"✗ {path} ('{name}'): context starts with 'WARNING:' - pre_tool_use_hook.py "
+                    f"routes that prefix to systemMessage (human-only), so this would silently "
+                    f"never reach the model"
+                )
+
+            line_count = len([l for l in context.splitlines() if l.strip()])
+            if line_count > 5:
+                self.warnings.append(f"⚠ {path} ('{name}'): context is {line_count} lines (target 1-3, max 5)")
 
     def _check_unreachable_rules(self):
         """Check for rules that may never be reached due to earlier broad rules."""

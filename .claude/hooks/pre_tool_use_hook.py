@@ -18,6 +18,9 @@ from hook_common import (
     HookLogger,
     RuleMatcher,
     HookOutputGenerator,
+    InjectionConfig,
+    InjectionMatcher,
+    InjectionThrottle,
     read_hook_input,
     write_hook_output
 )
@@ -134,21 +137,6 @@ def handle_bash_tool(command: str, matcher: RuleMatcher, logger: HookLogger, cwd
             logger.log_output('allow', f"Claude evaluation: All commands approved - {', '.join(claude_approved)}")
             return HookOutputGenerator.generate_pretooluse_output(decision='allow')
 
-    # Special handling for git commit (add reminder about not mentioning Claude)
-    git_commit_results = [r for r in results if r['parsed_command'] == 'git' and 'commit' in r['subcommand']]
-    if git_commit_results:
-        logger.log_output('allow', 'Git commit - adding reminder about not mentioning Claude')
-
-        return HookOutputGenerator.generate_pretooluse_output(
-            decision='allow',
-            additional_context=(
-                "IMPORTANT: Do not mention Claude, AI, or that this commit was AI-generated "
-                "in the commit message. Write the commit message as if a human developer wrote it. "
-                "Also, be sure to use your git-workflow and create-pr skills when doing the first "
-                "commit on a new task, or when creating a pull request."
-            )
-        )
-
     # All commands are allowed
     logger.log_output('allow', 'All commands approved')
     return HookOutputGenerator.generate_pretooluse_output(decision='allow')
@@ -247,6 +235,53 @@ def handle_general_tool(tool_name: str, tool_input: Dict[str, Any], matcher: Rul
         return output
 
 
+def inject_context(
+    output: Dict[str, Any],
+    tool_name: str,
+    tool_input: Dict[str, Any],
+    command: Optional[str],
+    cwd: Optional[str],
+    session_id: Optional[str],
+    logger: HookLogger
+) -> None:
+    """Append point-of-action context injections to an already-allowed tool call.
+
+    Only called when `output` already carries an 'allow' decision - see the
+    design note in tool_context_injections.yaml for why injections must never
+    influence allow/deny/ask. Mutates `output` in place.
+    """
+    matcher = InjectionMatcher(InjectionConfig(), logger)
+    throttle = InjectionThrottle(session_id)
+
+    if tool_name == 'Bash' and command:
+        matched_rules = matcher.match_bash(command, cwd)
+    else:
+        matched_rules = matcher.match_tool(tool_name, tool_input)
+
+    texts = []
+    for rule in matched_rules:
+        name = rule.get('name', 'unnamed')
+        throttle_mode = rule.get('throttle', 'once_per_session')
+
+        if not throttle.should_fire(name, throttle_mode):
+            continue
+
+        context_text = (rule.get('context') or '').strip()
+        if not context_text:
+            continue
+
+        texts.append(context_text)
+        throttle.mark_fired(name)
+        logger.log(f"  Injected context (rule: {name})")
+
+    if not texts:
+        return
+
+    existing = output.get('additionalContext', '')
+    output['additionalContext'] = existing + ('\n\n' if existing else '') + '\n\n'.join(texts)
+    throttle.save()
+
+
 def main():
     """Main entry point for PreToolUse hook."""
     # Read input from stdin
@@ -269,13 +304,20 @@ def main():
     tool_name = input_data.get('tool_name', '')
     tool_input = input_data.get('tool_input', {})
     cwd = input_data.get('cwd')
+    session_id = input_data.get('session_id')
 
     # Handle based on tool type
+    command = None
     if tool_name == 'Bash':
         command = tool_input.get('command', '')
         output = handle_bash_tool(command, RuleMatcher(config, logger), logger, cwd)
     else:
         output = handle_general_tool(tool_name, tool_input, RuleMatcher(config, logger), logger)
+
+    # Point-of-action context injection - only on an allow outcome, and never
+    # able to change that outcome. See tool_context_injections.yaml.
+    if output.get('hookSpecificOutput', {}).get('permissionDecision') == 'allow':
+        inject_context(output, tool_name, tool_input, command, cwd, session_id, logger)
 
     # Write output
     write_hook_output(output)

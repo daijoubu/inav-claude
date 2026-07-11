@@ -1,0 +1,170 @@
+# Point-of-action context injections.
+#
+# Implements A6 / context-flow-redesign.md §3,§5 (project: point-of-action-context-
+# injection). Fires ONLY after pre_tool_use_hook.py's permission engine has already
+# decided 'allow' for a tool call - see hook_common.py InjectionMatcher and
+# pre_tool_use_hook.py's inject_context(). Injections are:
+#
+#   - SEPARATE from tool_permissions_*.yaml on purpose. Permission rules are
+#     first-match-wins and security-ordered; these rules are additive, advisory,
+#     high-churn, and stateful (throttling). Mixing them risked an injection rule
+#     shadowing a more specific deny.
+#   - Additive, not first-match-wins: every matching rule fires (subject to throttle).
+#   - NEVER able to influence the allow/deny/ask decision. If you want to change
+#     what's permitted, edit tool_permissions_bash.yaml or tool_permissions_rules.yaml
+#     instead - not this file.
+#   - Delivered via additionalContext (reaches the model). Do NOT start any context
+#     text with the literal string "WARNING:" - pre_tool_use_hook.py routes messages
+#     with that prefix to systemMessage instead, which is human-UI-only and invisible
+#     to the model (see tool_permissions_rules.yaml's "Warn on large Read operations"
+#     rule for the mechanism this deliberately avoids).
+#
+# Two design questions to ask before adding a rule:
+#   1. Is the matched command already REJECTED (deny/ask) by the permission engine?
+#      If so, the deny reason already reaches the model - don't duplicate it here.
+#      (e.g. `git add -A` and Claude-mention commits are already denied with a
+#      message in tool_permissions_bash.yaml; no injection rule exists for them.)
+#   2. Is the matched command ACCEPTED and does it run immediately? If so, by the
+#      time this hook sees it, tool_input is already fully composed - a reminder
+#      attached to the terminal action (e.g. `git commit`, `gh pr create`) can't
+#      change THIS call, only train habits for the rest of the session. Where a
+#      reliable earlier predictor exists in normal workflow (`git add` before
+#      `commit`, `git push` before `gh pr create`), prefer attaching the substantive
+#      guidance to the predictor instead, with a lighter safety-net reminder on the
+#      terminal action for sessions that skip the predictor. This doesn't need to be
+#      100% reliable - it's advisory context, not an enforcement mechanism.
+#
+# Schema per rule:
+#   name: unique descriptive name (also the throttle-tracking key)
+#   Matcher - Bash rules (evaluated against parsed subcommands, same semantics as
+#     tool_permissions_bash.yaml):
+#       command_pattern: regex, matched against the subcommand (re.match)
+#       argument_pattern: optional regex, matched against the arguments (re.search)
+#   Matcher - general tool rules (same semantics as tool_permissions_rules.yaml):
+#       tool_name_pattern: regex, matched against the tool name (re.match)
+#       tool_input_patterns: {field: regex} matched against tool_input fields (re.search)
+#   precondition_script: optional bash script. Contract is DIFFERENT from permission
+#     precondition_scripts: echo "fire" to inject, anything else (including nothing)
+#     means skip. Never returns allow/deny/ask - injections can't make those decisions.
+#     Variables: {HARNESS_ROOT} (repo root, always available), {COMMAND}/{ARGS}/
+#     {FULL_COMMAND} for bash rules, tool_input fields (e.g. {file_path}) for general
+#     tool rules.
+#   context: text appended to additionalContext. Every injection competes for the
+#     same limited context window as everything else in the session - keep it to a
+#     pointer at relevant documentation plus the one fact that can't be inferred
+#     from that pointer alone (e.g. "already auto-blocked, don't worry about X" or
+#     the single highest-stakes rule). Don't restate what a doc already covers.
+#     Target 1-3 lines; validate_config.py warns above 5.
+#   throttle: once_per_session (default) | always. Use 'always' only for genuinely
+#     high-stakes, rare triggers (currently just the version-branch merge/rebase rule)
+#     - anything more frequent becomes noise the model learns to skip past.
+
+injections:
+  # --- Leading indicators: fire on a command that reliably precedes a terminal
+  # --- action, while there's still time for the guidance to matter. ---
+
+  - name: "git add (predicts upcoming commit)"
+    command_pattern: "^git$"
+    argument_pattern: "^(-C\\s+\\S+\\s+)?add\\b"
+    throttle: once_per_session
+    context: |
+      Staging for a commit soon? `git add -A` is auto-blocked - stage specific
+      files. See guides/CRITICAL-BEFORE-COMMIT.md before you commit.
+
+  - name: "git push (predicts upcoming PR)"
+    command_pattern: "^git$"
+    argument_pattern: "^(-C\\s+\\S+\\s+)?push\\b"
+    throttle: once_per_session
+    context: |
+      A PR is likely coming soon. Tests + inav-code-review done? Never target
+      `master`. See guides/CRITICAL-BEFORE-PR.md before `gh pr create`.
+
+  # --- Terminal-action safety nets: the assignment's original six trigger classes.
+  # --- Fire on the action itself - either because no earlier predictor exists, or
+  # --- as a backstop for sessions that skip the leading indicator above. ---
+
+  - name: "git commit"
+    command_pattern: "^git$"
+    argument_pattern: "^(-C\\s+\\S+\\s+)?commit\\b"
+    throttle: once_per_session
+    context: |
+      Claude/AI mentions and `git add -A` are auto-blocked - no need to self-check
+      those. For message quality and amend conditions, see
+      guides/CRITICAL-BEFORE-COMMIT.md.
+
+  - name: "gh pr create"
+    command_pattern: "^gh$"
+    argument_pattern: "^pr\\s+create\\b"
+    throttle: once_per_session
+    context: |
+      See guides/CRITICAL-BEFORE-PR.md before this runs (testing, base branch,
+      GITHUB_TOKEN unset for this command).
+
+  - name: "git merge/rebase on version branch"
+    command_pattern: "^git$"
+    argument_pattern: "^(-C\\s+\\S+\\s+)?(merge|rebase)\\b.*(release/|maintenance-)"
+    throttle: always
+    context: |
+      Direction check: NEVER merge/rebase a higher version into a lower one (e.g.
+      maintenance-10.x into release/9.x). If wrong: `git merge --abort`. See
+      guides/CRITICAL-BEFORE-MERGE.md before resolving any conflicts.
+
+  - name: "Direct cmake/make instead of inav-builder"
+    command_pattern: "^(cmake|make)$"
+    throttle: once_per_session
+    context: |
+      Use the inav-builder agent for builds instead of cmake/make directly.
+
+  - name: "npm run build instead of inav-builder"
+    command_pattern: "^npm$"
+    argument_pattern: "^(run(-script)?\\s+build|build)\\b"
+    throttle: once_per_session
+    context: |
+      Use the inav-builder agent for builds instead of npm directly.
+
+  - name: "Direct dfu-util/picotool instead of fc-flasher"
+    command_pattern: "^(dfu-util|picotool)$"
+    throttle: once_per_session
+    context: |
+      Use the fc-flasher agent instead of dfu-util/picotool directly - raw
+      dfu-util can leave STM32H7 boards stuck mid-flash.
+
+  - name: "First edit under inav*/ or inav-configurator/ without a lock"
+    tool_name_pattern: "^(Write|Edit)$"
+    tool_input_patterns:
+      file_path: "(^|/)(inav[0-9]*|inav-configurator)/"
+    throttle: once_per_session
+    precondition_script: |
+      FILE_PATH="{file_path}"
+      ROOT="{HARNESS_ROOT}"
+      if echo "$FILE_PATH" | grep -qE '(^|/)inav-configurator/'; then
+        LOCK="inav-configurator.lock"
+      elif echo "$FILE_PATH" | grep -qE '(^|/)inav2/'; then
+        LOCK="inav2.lock"
+      elif echo "$FILE_PATH" | grep -qE '(^|/)inav3/'; then
+        LOCK="inav3.lock"
+      elif echo "$FILE_PATH" | grep -qE '(^|/)inav/'; then
+        LOCK="inav.lock"
+      else
+        echo "skip"
+        exit 0
+      fi
+      if [ -f "$ROOT/claude/locks/$LOCK" ]; then
+        echo "skip"
+      else
+        echo "fire"
+      fi
+    context: |
+      No lock file in claude/locks/ for this repo. Run /start-task to acquire
+      one, or confirm this is intentional.
+
+  # --- Domain-specific (INAV firmware design), not harness workflow ---
+
+  - name: "Editing settings.yaml"
+    tool_name_pattern: "^(Write|Edit)$"
+    tool_input_patterns:
+      file_path: "(^|/)inav[0-9]*/src/main/fc/settings\\.yaml$"
+    throttle: once_per_session
+    context: |
+      Before adding/changing a setting, read
+      claude/developer/docs/parameter_groups/when-to-add-a-setting.md.

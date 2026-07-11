@@ -150,7 +150,10 @@ EOF
 Decide — don't default to writing. Full rubric: `claude/developer/guides/README.md`
 ("Capture Rubric").
 
-- **Lesson worth recording?** If yes, add one line to the relevant guide's
+- **Lesson worth recording?** If yes and it has a clear, specific triggering tool
+  or command, consider a short rule in `.claude/hooks/tool_context_injections.yaml`
+  instead of (or alongside) the guide entry — see the Capture Rubric for when to
+  prefer that route. Otherwise add one line to the relevant guide's
   "Self-Improvement: Lessons Learned" section, or otherwise update the guide as
   appropriate. If no, nothing further to do.
 - **Reusable tooling worth keeping?** If yes, move it from `workspace/` to its
