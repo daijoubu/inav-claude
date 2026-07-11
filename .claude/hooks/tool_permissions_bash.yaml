@@ -438,6 +438,12 @@ bash_rules:
     decision: allow
     message: "WASM SITL build script execution for development"
 
+  - name: "Allow build_sitl.sh script (native SITL builds)"
+    command_pattern: ".*(build_sitl\\.sh)$"
+    category: other
+    decision: allow
+    message: "SITL build script execution for native/Linux builds (cmake/make-based)"
+
   - name: "Allow node copy-wasm-to-configurator.js"
     command_pattern: "^node$"
     argument_pattern: ".*copy-wasm-to-configurator\\.js.*"
