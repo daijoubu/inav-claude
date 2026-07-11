@@ -387,6 +387,24 @@ claude/developer/scripts/git/new-branch.sh inav-configurator <bugfix|feature|bre
 cd inavwiki && git checkout -b my-feature && git push -u origin my-feature
 ```
 
+### Updating the Harness Repo Itself
+
+The root `inavflight/` repo (`claude/` and `.claude/`) is its own git repo. A
+`SessionStart` hook (`.claude/hooks/check-framework-update.sh`) asks — roughly once a
+month — whether to pull it. If you say yes, just run the pull the hook's own message
+names: `origin` for this repo's own setup, or `upstream` if this checkout is a fork with
+an `upstream` remote configured (that's where real framework updates land in that case;
+`origin` would just be your own fork).
+
+```bash
+git pull --ff-only <remote> master
+```
+
+`--ff-only` refuses to create a merge commit if local and remote have diverged — if it
+fails, stop and check `git status`/`git log` before doing anything else, rather than
+force-merging over local changes. This is a single human-confirmed action each time the
+hook asks; no automated enforcement is needed beyond that.
+
 ## Common Workflows
 
 ### Starting New Work
