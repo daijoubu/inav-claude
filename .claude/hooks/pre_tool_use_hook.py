@@ -35,10 +35,10 @@ def _strip_heredoc_bodies(command: str) -> str:
 
     The generic bash parser splits on every newline, so feeding it a raw
     heredoc body (e.g. a Python script) makes it misinterpret each body line
-    as its own bash subcommand. Stripping the body - rather than truncating
-    the whole command at the first heredoc, as the old code did - is what
-    lets a trailing command after the terminator (e.g. `git add -A` on the
-    next line) get evaluated normally instead of being silently skipped.
+    as its own bash subcommand. Keeping everything outside the body - the
+    invocation line(s) and anything after the terminator - means a trailing
+    command (e.g. `git add -A` on the next line) still reaches the normal
+    evaluation path instead of being dropped.
     """
     heredoc_start_re = re.compile(r'<<(-?)\s*([\'"]?)(\w+)\2')
     lines = command.split('\n')
@@ -82,11 +82,8 @@ def handle_bash_tool(command: str, matcher: RuleMatcher, logger: HookLogger, cwd
     # parser: strip out heredoc body content so it isn't split line-by-line
     # into bogus subcommands, then evaluate what's left (invocation line(s)
     # plus any trailing commands after the terminator) through the SAME
-    # match_bash() path as any other command. Previously this branch checked
-    # only `first_line` and short-circuited to 'allow' for the entire
-    # command if that line was clean - silently skipping every deny/ask rule
-    # for anything after the heredoc terminator (e.g. `git add -A` on the
-    # next line). See fix-heredoc-permission-bypass project.
+    # match_bash() path as any other command, so deny/ask rules apply to
+    # everything in the command, not just the heredoc's own invocation line.
     if re.search(r'<<-?\s*[\'"]?\w+[\'"]?', command):
         stripped_command = _strip_heredoc_bodies(command)
         logger.log_output('info', f'Heredoc detected, evaluating stripped command: {stripped_command!r}')
