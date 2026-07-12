@@ -471,6 +471,7 @@ If the test itself is broken, it must SCREAM about it.
 | **GPS / navigation / RTH / altitude** | `claude/developer/scripts/testing/inav/gps/` | subdirs: `testing/`, `injection/`, `monitoring/`, `config/`, `workflows/` |
 | **MSP protocol / settings read-write** | `claude/developer/scripts/testing/inav/msp/` | subdirs: `benchmark/`, `mock/`, `debug/` |
 | **SITL arming / flight modes / sensors via SITL** | `claude/developer/scripts/testing/inav/sitl/` | includes althold, pitot, mag align, RC caching tests |
+| **Full aerodynamics / airspeed / stall / JSBSim** | `~/inavflight/inav-sitl-bench` | External repo, see `jsbsim-sitl-testing` skill; requires SITL built from `swissembedded/inav`'s `feature/quaternion-attitude-hold` branch |
 | **Blackbox logging / motor analysis** | `claude/developer/scripts/testing/inav/blackbox/` | subdirs: `config/`, `analysis/`, `replay/`, `docs/` |
 | **DShot / ESC / beeper** | `claude/developer/scripts/testing/inav/dshot/` | motor locate, beeper arming-loop fix |
 | **OSD / display / formatting** | `claude/developer/scripts/testing/inav/osd/` | displayport test, format helpers, bench C files |
@@ -762,6 +763,8 @@ Internal documentation relevant to testing:
 - `.claude/skills/sitl-arm/SKILL.md` - Arm SITL via MSP
 - `.claude/skills/test-crsf-sitl/SKILL.md` - CRSF telemetry testing
 - `.claude/skills/test-configurator/SKILL.md` - Configurator testing
+- `.claude/skills/install-jsbsim/SKILL.md` - Install/verify the JSBSim flight-dynamics library
+- `.claude/skills/jsbsim-sitl-testing/SKILL.md` - Full-aerodynamics SITL testing via `inav-sitl-bench` (JSBSim as the physics plant)
 
 **Related agents (ask parent session to invoke):**
 
