@@ -28,6 +28,44 @@ from claude_evaluator import get_evaluator
 from deterministic_checks import lock_file_precheck
 
 
+def _strip_heredoc_bodies(command: str) -> str:
+    """
+    Remove heredoc body content (and terminator lines) from a bash command,
+    leaving invocation lines and anything that follows the terminator intact.
+
+    The generic bash parser splits on every newline, so feeding it a raw
+    heredoc body (e.g. a Python script) makes it misinterpret each body line
+    as its own bash subcommand. Stripping the body - rather than truncating
+    the whole command at the first heredoc, as the old code did - is what
+    lets a trailing command after the terminator (e.g. `git add -A` on the
+    next line) get evaluated normally instead of being silently skipped.
+    """
+    heredoc_start_re = re.compile(r'<<(-?)\s*([\'"]?)(\w+)\2')
+    lines = command.split('\n')
+    result_lines = []
+    i = 0
+    n = len(lines)
+    while i < n:
+        line = lines[i]
+        result_lines.append(line)
+        match = heredoc_start_re.search(line)
+        if match:
+            dash, delimiter = match.group(1) == '-', match.group(3)
+            j = i + 1
+            while j < n:
+                candidate = lines[j].lstrip('\t') if dash else lines[j]
+                if candidate == delimiter:
+                    break
+                j += 1
+            # Drop the body (i+1..j) and the terminator line itself (j) - an
+            # unadorned delimiter line would otherwise be mis-parsed as a
+            # bogus bash subcommand of its own.
+            i = j + 1
+            continue
+        i += 1
+    return '\n'.join(result_lines)
+
+
 def handle_bash_tool(command: str, matcher: RuleMatcher, logger: HookLogger, cwd: Optional[str] = None, session_id: Optional[str] = None) -> Dict[str, Any]:
     """
     Handle Bash tool with special compound command parsing.
@@ -40,33 +78,19 @@ def handle_bash_tool(command: str, matcher: RuleMatcher, logger: HookLogger, cwd
     Returns:
         Hook output dict
     """
-    # Handle heredocs specially - extract just the first command before heredoc content
-    # Pattern matches: << EOF, << 'EOF', << "EOF", <<EOF, <<'EOF', <<"EOF", <<-EOF, etc.
-    # `[^\n]*` before the newline (not just whitespace): a heredoc's invocation
-    # line commonly has more after the delimiter before the body starts - a
-    # redirect (`<<'EOF' > file`) or a pipe (`<<EOF | other`). Without this,
-    # such lines don't match here, so the heredoc BODY (e.g. a Python script)
-    # falls through to the generic bash parser, which tokenizes it as if it
-    # were shell subcommands - one bogus "ask" per line of embedded script.
-    heredoc_match = re.search(r'<<-?\s*[\'"]?(\w+)[\'"]?[^\n]*\n', command)
-    if heredoc_match:
-        # Extract just the first line (the actual command) before the heredoc content
-        first_line = command.split('\n')[0]
-        logger.log_output('info', f'Heredoc detected, checking first line: {first_line}')
-
-        # Check if the first line (the actual command) is allowed
-        results = matcher.match_bash(first_line, cwd)
-
-        # If the command part is allowed, allow the whole heredoc
-        denied_results = [r for r in results if r['decision'] == 'deny']
-        ask_results = [r for r in results if r['decision'] == 'ask']
-
-        if not denied_results and not ask_results:
-            logger.log_output('allow', f'Heredoc command allowed: {first_line}')
-            return HookOutputGenerator.generate_pretooluse_output(decision='allow')
-
-        # If denied or ask, continue with normal handling but use first_line results
-        # Fall through to normal processing with these results
+    # Heredocs need special handling before the command reaches the generic
+    # parser: strip out heredoc body content so it isn't split line-by-line
+    # into bogus subcommands, then evaluate what's left (invocation line(s)
+    # plus any trailing commands after the terminator) through the SAME
+    # match_bash() path as any other command. Previously this branch checked
+    # only `first_line` and short-circuited to 'allow' for the entire
+    # command if that line was clean - silently skipping every deny/ask rule
+    # for anything after the heredoc terminator (e.g. `git add -A` on the
+    # next line). See fix-heredoc-permission-bypass project.
+    if re.search(r'<<-?\s*[\'"]?\w+[\'"]?', command):
+        stripped_command = _strip_heredoc_bodies(command)
+        logger.log_output('info', f'Heredoc detected, evaluating stripped command: {stripped_command!r}')
+        results = matcher.match_bash(stripped_command, cwd)
     else:
         results = matcher.match_bash(command, cwd)
 

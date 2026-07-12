@@ -274,6 +274,21 @@ class BashCommandParser:
                 operator_before=operator
             )
 
+        # `raw` keeps the full text (env prefix included) for any rule that
+        # matches against the whole command string (e.g. {FULL_COMMAND} in a
+        # precondition script) - only tokenizing below strips the prefix.
+        raw_cmd_str = cmd_str
+
+        # Strip a leading environment-variable-assignment prefix
+        # (`VAR=value cmd ...`, possibly repeated) before tokenizing. Without
+        # this, `tokens[0]` becomes the assignment itself (e.g. `VAR=value`),
+        # so `VAR=x git add -A` is never recognized as `git` - it falls
+        # through to the unrecognized-command 'other' category (default
+        # `ask`) instead of matching the real git-specific deny/allow rules.
+        env_prefix_match = re.match(r'^(?:\w+=\S*\s+)+', cmd_str)
+        if env_prefix_match:
+            cmd_str = cmd_str[env_prefix_match.end():]
+
         try:
             # Use shlex to split respecting quotes
             tokens = shlex.split(cmd_str)
@@ -285,7 +300,7 @@ class BashCommandParser:
             return ParsedCommand(
                 command='',
                 arguments='',
-                raw=cmd_str,
+                raw=raw_cmd_str,
                 operator_before=operator
             )
 
@@ -297,7 +312,7 @@ class BashCommandParser:
         return ParsedCommand(
             command=command,
             arguments=arguments,
-            raw=cmd_str,
+            raw=raw_cmd_str,
             operator_before=operator
         )
 
