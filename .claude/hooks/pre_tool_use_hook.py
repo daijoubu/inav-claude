@@ -264,14 +264,19 @@ def handle_general_tool(tool_name: str, tool_input: Dict[str, Any], matcher: Rul
                 additional_context=additional_context
             )
     else:  # allow
-        output = HookOutputGenerator.generate_pretooluse_output(decision='allow')
-        if message:
-            # For allow with a WARNING message, add it as system_message to show to user
-            if message.startswith('WARNING:'):
-                output['systemMessage'] = message
-            else:
-                # For other messages, add as additional context
-                output['additionalContext'] = message
+        # WARNING messages go to systemMessage (correctly top-level - shown to
+        # the user). Other messages go through additional_context=, which
+        # generate_pretooluse_output() nests inside hookSpecificOutput as
+        # PreToolUse requires - a top-level additionalContext key is silently
+        # discarded by Claude Code.
+        if message and message.startswith('WARNING:'):
+            output = HookOutputGenerator.generate_pretooluse_output(decision='allow')
+            output['systemMessage'] = message
+        else:
+            output = HookOutputGenerator.generate_pretooluse_output(
+                decision='allow',
+                additional_context=message or None
+            )
         return output
 
 
