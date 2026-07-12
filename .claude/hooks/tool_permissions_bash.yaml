@@ -445,6 +445,13 @@ bash_rules:
     decision: allow
     message: "SITL build script execution for native/Linux builds (cmake/make-based)"
 
+  - name: "Allow mkdir -p build_sitl for SITL builds"
+    command_pattern: "^mkdir$"
+    argument_pattern: ".*-p.*build_sitl.*"
+    category: write
+    decision: allow
+    message: "Create build_sitl directory for SITL build output (routine, non-destructive)"
+
   - name: "Allow node copy-wasm-to-configurator.js"
     command_pattern: "^node$"
     argument_pattern: ".*copy-wasm-to-configurator\\.js.*"
