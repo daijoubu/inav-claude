@@ -26,6 +26,7 @@ LOCKED_BY: Developer
 TASK: [task-name-from-assignment]
 LOCKED_AT: $(date '+%Y-%m-%d %H:%M')
 BRANCH: [branch-name]
+SESSION_ID: $CLAUDE_CODE_SESSION_ID
 EOF
 
 # For configurator
@@ -34,6 +35,7 @@ LOCKED_BY: Developer
 TASK: [task-name-from-assignment]
 LOCKED_AT: $(date '+%Y-%m-%d %H:%M')
 BRANCH: [branch-name]
+SESSION_ID: $CLAUDE_CODE_SESSION_ID
 EOF
 ```
 
@@ -155,5 +157,6 @@ Use the Edit tool to append new entries. Format: `- **Brief title**: One-sentenc
 - **Fix blockers, don't route around them**: If goal X is blocked by small problem Y, fix Y first — don't pivot to complex workarounds (e.g. if a build fails due to an unrelated compile error in another file, fix that error rather than trying to analyze LTO bitcode object files to simulate what the linker would have produced). We build correct solutions, not workarounds.
 - **Always use fc-flasher agent for hardware flashing**: Never invoke `dfu-util` directly. STM32H7 boards silently fail DFU exit with raw dfu-util ("can't detach"), leaving the FC stuck. The fc-flasher agent uses the known-good script that handles all STM32 variants correctly.
 - **Harness-only tasks (`.claude/`, `claude/`) skip branch creation**: A guardrail hook blocks `git checkout -b` in the root `inavflight/` repo — branches belong in the project repos (`inav/`, `inav-configurator/`, etc.). For tasks that only touch harness config/docs, commit straight to `master`, matching existing harness commit history.
+-- **Floats must end in `f` to avoid promotion to double**: We don't want to load the double-precision math library by accidentally using 2.0 instead of 2.0f
 
 <!-- Add new lessons above this line -->

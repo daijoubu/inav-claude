@@ -164,4 +164,6 @@ Use the Edit tool to append new entries. Format: `- **Brief title**: One-sentenc
 
 ### Lessons
 
+- **Docs and comments describe the current state, not its history**: Write what IS true and what a reader needs to do now — never "this was previously missed," "used to be X," or similar discovery-narrative prose. That belongs in the commit message/PR description, which readers can consult if they want history; the doc or comment itself is not a changelog. This applies to all documentation (guides, READMEs, yaml comments), not just code comments.
+
 <!-- Add new lessons above this line -->

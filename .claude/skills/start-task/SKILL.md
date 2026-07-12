@@ -60,6 +60,7 @@ LOCKED_BY: Developer
 TASK: [task-name-from-assignment]
 LOCKED_AT: $(date '+%Y-%m-%d %H:%M')
 BRANCH: [branch-name]
+SESSION_ID: $CLAUDE_CODE_SESSION_ID
 EOF
 
 use inav.lock for the inav/ directory, inav2.lock for the inav2/ directory, or inav3.lock for the inav3/ directory
@@ -70,6 +71,7 @@ LOCKED_BY: Developer
 TASK: [task-name-from-assignment]
 LOCKED_AT: $(date '+%Y-%m-%d %H:%M')
 BRANCH: [branch-name]
+SESSION_ID: $CLAUDE_CODE_SESSION_ID
 EOF
 ```
 

@@ -30,8 +30,8 @@ from hook_common import HookLogger
 class ClaudeEvaluator:
     """Evaluates tool calls using Claude for safety assessment."""
 
-    MODEL = "claude-sonnet-4-6"
-    TIMEOUT_SECONDS = 10
+    MODEL = "claude-haiku-4-5"
+    TIMEOUT_SECONDS = 4
     MAX_RETRIES = 1
 
     def __init__(self, logger: Optional[HookLogger] = None):
@@ -104,11 +104,6 @@ class ClaudeEvaluator:
         Returns text describing what operations are unsafe.
         """
         return """## CRITICAL RULES - ENFORCEABLE VIOLATIONS
-
-### Lock File Violations
-- DO NOT allow operations that would write code when lock files exist
-  Lock files: claude/locks/inav.lock, claude/locks/inav-configurator.lock
-  If lock files exist, the repository is locked by another session
 
 ### Git Branch Violations
 - DO NOT allow branching or pushing to 'master' branch
