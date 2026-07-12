@@ -471,7 +471,7 @@ If the test itself is broken, it must SCREAM about it.
 | **GPS / navigation / RTH / altitude** | `claude/developer/scripts/testing/inav/gps/` | subdirs: `testing/`, `injection/`, `monitoring/`, `config/`, `workflows/` |
 | **MSP protocol / settings read-write** | `claude/developer/scripts/testing/inav/msp/` | subdirs: `benchmark/`, `mock/`, `debug/` |
 | **SITL arming / flight modes / sensors via SITL** | `claude/developer/scripts/testing/inav/sitl/` | includes althold, pitot, mag align, RC caching tests |
-| **Full aerodynamics / airspeed / stall / JSBSim** | `~/inavflight/inav-sitl-bench` | External repo, see `jsbsim-sitl-testing` skill; requires SITL built from `swissembedded/inav`'s `feature/quaternion-attitude-hold` branch |
+| **Full aerodynamics / airspeed / stall / JSBSim** | `~/inavflight/inav-sitl-bench` | See `jsbsim-sitl-testing` skill — drives a normal mainline SITL build with JSBSim as the physics plant; the `swissembedded/inav` `feature/quaternion-attitude-hold` fork branch is only needed for the bundled reference example, not for testing your own changes |
 | **Blackbox logging / motor analysis** | `claude/developer/scripts/testing/inav/blackbox/` | subdirs: `config/`, `analysis/`, `replay/`, `docs/` |
 | **DShot / ESC / beeper** | `claude/developer/scripts/testing/inav/dshot/` | motor locate, beeper arming-loop fix |
 | **OSD / display / formatting** | `claude/developer/scripts/testing/inav/osd/` | displayport test, format helpers, bench C files |
