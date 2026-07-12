@@ -110,7 +110,7 @@ Use the `email-manager` agent for all email operations.
 | 14 | Decide: did this session produce reusable tooling worth keeping? | Consider only, against the rubric — if yes, move it out of `workspace/` to the existing destination convention; if no, nothing to do | `guides/README.md` (Capture Rubric) |
 | 15 | Create completion report | **email-manager** agent | - |
 | 16 | Notify manager | **email-manager** agent | - |
-| 17 | Archive assignment | **email-manager** agent and skill /finish-task | - |
+| 17 | Archive assignment | **email-manager** agent and use skill /finish-task | - |
 
 **Key principle:** Before fixing a bug, have the `test-engineer` agent write a test that reproduces it. This ensures you understand the problem and can verify when it's fixed.
 
@@ -172,6 +172,7 @@ See `.claude/agents/` for complete agent documentation.
 - `/finish-task` - Complete tasks and release locks
 - `/check-builds` - Check CI build status
 - `/email` - Read task assignments (or use **email-manager** agent)
+- `/finish-task` - Close out a project at the end
 
 See `.claude/skills/*/SKILL.md` for complete skill documentation.
 
