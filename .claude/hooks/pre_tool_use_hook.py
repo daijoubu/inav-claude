@@ -42,7 +42,13 @@ def handle_bash_tool(command: str, matcher: RuleMatcher, logger: HookLogger, cwd
     """
     # Handle heredocs specially - extract just the first command before heredoc content
     # Pattern matches: << EOF, << 'EOF', << "EOF", <<EOF, <<'EOF', <<"EOF", <<-EOF, etc.
-    heredoc_match = re.search(r'<<-?\s*[\'"]?(\w+)[\'"]?\s*\n', command)
+    # `[^\n]*` before the newline (not just whitespace): a heredoc's invocation
+    # line commonly has more after the delimiter before the body starts - a
+    # redirect (`<<'EOF' > file`) or a pipe (`<<EOF | other`). Without this,
+    # such lines don't match here, so the heredoc BODY (e.g. a Python script)
+    # falls through to the generic bash parser, which tokenizes it as if it
+    # were shell subcommands - one bogus "ask" per line of embedded script.
+    heredoc_match = re.search(r'<<-?\s*[\'"]?(\w+)[\'"]?[^\n]*\n', command)
     if heredoc_match:
         # Extract just the first line (the actual command) before the heredoc content
         first_line = command.split('\n')[0]
