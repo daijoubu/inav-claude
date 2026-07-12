@@ -4,6 +4,15 @@
 
 **Use a task list tool to track each step as you complete it.**
 
+## 0. Read Coding Standards
+
+**Read `claude/developer/guides/coding-standards.md` before writing any code.**
+General instinct ("explain why, not what") isn't enough on its own — this repo
+has specific rules beyond that default, including: never write
+discovery-narrative comments or docs ("used to be X", "this used to fail
+because Y") — describe only the current state and current rationale; history
+belongs in the commit message, not the code or guide text.
+
 ## 1. Check Lock Files
 
 ```bash
