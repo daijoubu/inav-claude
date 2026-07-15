@@ -18,13 +18,55 @@ from hook_common import (
     HookLogger,
     RuleMatcher,
     HookOutputGenerator,
+    InjectionConfig,
+    InjectionMatcher,
+    InjectionThrottle,
     read_hook_input,
     write_hook_output
 )
 from claude_evaluator import get_evaluator
+from deterministic_checks import lock_file_precheck
 
 
-def handle_bash_tool(command: str, matcher: RuleMatcher, logger: HookLogger, cwd: Optional[str] = None) -> Dict[str, Any]:
+def _strip_heredoc_bodies(command: str) -> str:
+    """
+    Remove heredoc body content (and terminator lines) from a bash command,
+    leaving invocation lines and anything that follows the terminator intact.
+
+    The generic bash parser splits on every newline, so feeding it a raw
+    heredoc body (e.g. a Python script) makes it misinterpret each body line
+    as its own bash subcommand. Keeping everything outside the body - the
+    invocation line(s) and anything after the terminator - means a trailing
+    command (e.g. `git add -A` on the next line) still reaches the normal
+    evaluation path instead of being dropped.
+    """
+    heredoc_start_re = re.compile(r'<<(-?)\s*([\'"]?)(\w+)\2')
+    lines = command.split('\n')
+    result_lines = []
+    i = 0
+    n = len(lines)
+    while i < n:
+        line = lines[i]
+        result_lines.append(line)
+        match = heredoc_start_re.search(line)
+        if match:
+            dash, delimiter = match.group(1) == '-', match.group(3)
+            j = i + 1
+            while j < n:
+                candidate = lines[j].lstrip('\t') if dash else lines[j]
+                if candidate == delimiter:
+                    break
+                j += 1
+            # Drop the body (i+1..j) and the terminator line itself (j) - an
+            # unadorned delimiter line would otherwise be mis-parsed as a
+            # bogus bash subcommand of its own.
+            i = j + 1
+            continue
+        i += 1
+    return '\n'.join(result_lines)
+
+
+def handle_bash_tool(command: str, matcher: RuleMatcher, logger: HookLogger, cwd: Optional[str] = None, session_id: Optional[str] = None) -> Dict[str, Any]:
     """
     Handle Bash tool with special compound command parsing.
 
@@ -36,27 +78,16 @@ def handle_bash_tool(command: str, matcher: RuleMatcher, logger: HookLogger, cwd
     Returns:
         Hook output dict
     """
-    # Handle heredocs specially - extract just the first command before heredoc content
-    # Pattern matches: << EOF, << 'EOF', << "EOF", <<EOF, <<'EOF', <<"EOF", <<-EOF, etc.
-    heredoc_match = re.search(r'<<-?\s*[\'"]?(\w+)[\'"]?\s*\n', command)
-    if heredoc_match:
-        # Extract just the first line (the actual command) before the heredoc content
-        first_line = command.split('\n')[0]
-        logger.log_output('info', f'Heredoc detected, checking first line: {first_line}')
-
-        # Check if the first line (the actual command) is allowed
-        results = matcher.match_bash(first_line, cwd)
-
-        # If the command part is allowed, allow the whole heredoc
-        denied_results = [r for r in results if r['decision'] == 'deny']
-        ask_results = [r for r in results if r['decision'] == 'ask']
-
-        if not denied_results and not ask_results:
-            logger.log_output('allow', f'Heredoc command allowed: {first_line}')
-            return HookOutputGenerator.generate_pretooluse_output(decision='allow')
-
-        # If denied or ask, continue with normal handling but use first_line results
-        # Fall through to normal processing with these results
+    # Heredocs need special handling before the command reaches the generic
+    # parser: strip out heredoc body content so it isn't split line-by-line
+    # into bogus subcommands, then evaluate what's left (invocation line(s)
+    # plus any trailing commands after the terminator) through the SAME
+    # match_bash() path as any other command, so deny/ask rules apply to
+    # everything in the command, not just the heredoc's own invocation line.
+    if re.search(r'<<-?\s*[\'"]?\w+[\'"]?', command):
+        stripped_command = _strip_heredoc_bodies(command)
+        logger.log_output('info', f'Heredoc detected, evaluating stripped command: {stripped_command!r}')
+        results = matcher.match_bash(stripped_command, cwd)
     else:
         results = matcher.match_bash(command, cwd)
 
@@ -77,47 +108,72 @@ def handle_bash_tool(command: str, matcher: RuleMatcher, logger: HookLogger, cwd
     # Check if any subcommand requires asking
     ask_results = [r for r in results if r['decision'] == 'ask']
     if ask_results:
-        # Use Claude to evaluate if these are clearly safe
         evaluator = get_evaluator(logger=logger)
 
-        # Evaluate each ask_result with Claude
-        claude_decisions = []
+        # Resolve each ask_result: a deterministic pre-check first (no API
+        # call), falling back to Claude only for genuinely gray-zone cases.
+        decisions_by_subcommand = {}
         for ask_result in ask_results:
             subcommand = ask_result['subcommand']
+            category = ask_result.get('category', 'other')
+            rule_name = ask_result.get('rule_name')
             rule_message = ask_result.get('message', 'Operation requires approval')
 
-            # Call Claude to evaluate safety
+            precheck = lock_file_precheck(cwd, category, rule_name, session_id)
+            if precheck is not None:
+                precheck_decision, precheck_message = precheck
+                logger.log_output(
+                    'allow' if precheck_decision == 'allow' else 'ask',
+                    f"PRECHECK absorbed (no API call) - {precheck_message}",
+                    rule_name
+                )
+                decisions_by_subcommand[subcommand] = {
+                    'decision': precheck_decision,
+                    'rule_message': precheck_message
+                }
+                continue
+
+            logger.log(f"PRECHECK escalated to evaluator: {subcommand}")
             decision = evaluator.evaluate_with_claude(
                 tool_name='Bash',
                 command=subcommand,
-                category=ask_result.get('category', 'other'),
+                category=category,
                 rule_reason=rule_message,
                 cwd=cwd
             )
-
-            claude_decisions.append({
-                'subcommand': subcommand,
+            decisions_by_subcommand[subcommand] = {
                 'decision': decision,
                 'rule_message': rule_message
-            })
+            }
 
-        # If Claude says anything is unsafe/uncertain, ask the user
-        user_approval_needed = any(d['decision'] == 'ask_user' for d in claude_decisions)
+        user_approval_needed = any(d['decision'] == 'ask_user' for d in decisions_by_subcommand.values())
 
         if user_approval_needed:
-            # Some commands were evaluated as uncertain by Claude - ask user
-            commands_to_ask = [d['subcommand'] for d in claude_decisions if d['decision'] == 'ask_user']
-            logger.log_output('ask', f"Claude evaluation: User approval needed for: {', '.join(commands_to_ask)}")
+            commands_to_ask = [s for s, d in decisions_by_subcommand.items() if d['decision'] == 'ask_user']
+            logger.log_output('ask', f"User approval needed for: {', '.join(commands_to_ask)}")
 
-            # Build command details for user
+            # Show every subcommand's disposition, not just the ones needing
+            # approval - a compound command can include already-allowed steps
+            # (e.g. a build command) that are easy to mistake for the actual
+            # trigger if only the flagged part is shown.
             command_details = []
-            for decision in claude_decisions:
-                status = "✓ Safe" if decision['decision'] == 'allow' else "⚠ Needs approval"
-                command_details.append(f"  - {decision['subcommand']} [{status}]")
+            for r in results:
+                sub = r['subcommand']
+                resolved = decisions_by_subcommand.get(sub)
+                if resolved is None:
+                    command_details.append(f"  - {sub} [✓ auto-allowed]")
+                elif resolved['decision'] == 'allow':
+                    command_details.append(f"  - {sub} [✓ safe]")
+                else:
+                    line = f"  - {sub} [⚠ needs approval]"
+                    if resolved.get('rule_message'):
+                        line += f"\n      Reason: {resolved['rule_message']}"
+                    command_details.append(line)
 
             additional_context = (
-                "Claude evaluated the following operations:\n" + "\n".join(command_details) + "\n\n"
-                "Operations marked '⚠ Needs approval' require your explicit approval.\n"
+                "This command has multiple parts. Only the parts marked "
+                "'⚠ needs approval' below require your decision - the rest "
+                "were already resolved automatically:\n" + "\n".join(command_details) + "\n\n"
                 "Approve or deny the highlighted operations.\n\n"
                 "If approved, you can update .claude/hooks/tool_permissions.yaml to automatically "
                 "allow similar patterns in the future."
@@ -125,36 +181,20 @@ def handle_bash_tool(command: str, matcher: RuleMatcher, logger: HookLogger, cwd
 
             return HookOutputGenerator.generate_pretooluse_output(
                 decision='ask',
-                reason=f"Claude evaluation: User approval needed for: {', '.join(commands_to_ask)}",
+                reason=f"User approval needed for: {', '.join(commands_to_ask)}",
                 additional_context=additional_context
             )
         else:
-            # All commands passed Claude evaluation - execute them
-            claude_approved = [d['subcommand'] for d in claude_decisions if d['decision'] == 'allow']
-            logger.log_output('allow', f"Claude evaluation: All commands approved - {', '.join(claude_approved)}")
+            approved = [s for s, d in decisions_by_subcommand.items() if d['decision'] == 'allow']
+            logger.log_output('allow', f"All commands approved - {', '.join(approved)}")
             return HookOutputGenerator.generate_pretooluse_output(decision='allow')
-
-    # Special handling for git commit (add reminder about not mentioning Claude)
-    git_commit_results = [r for r in results if r['parsed_command'] == 'git' and 'commit' in r['subcommand']]
-    if git_commit_results:
-        logger.log_output('allow', 'Git commit - adding reminder about not mentioning Claude')
-
-        return HookOutputGenerator.generate_pretooluse_output(
-            decision='allow',
-            additional_context=(
-                "IMPORTANT: Do not mention Claude, AI, or that this commit was AI-generated "
-                "in the commit message. Write the commit message as if a human developer wrote it. "
-                "Also, be sure to use your git-workflow and create-pr skills when doing the first "
-                "commit on a new task, or when creating a pull request."
-            )
-        )
 
     # All commands are allowed
     logger.log_output('allow', 'All commands approved')
     return HookOutputGenerator.generate_pretooluse_output(decision='allow')
 
 
-def handle_general_tool(tool_name: str, tool_input: Dict[str, Any], matcher: RuleMatcher, logger: HookLogger) -> Dict[str, Any]:
+def handle_general_tool(tool_name: str, tool_input: Dict[str, Any], matcher: RuleMatcher, logger: HookLogger, session_id: Optional[str] = None) -> Dict[str, Any]:
     """
     Handle general (non-Bash) tools.
 
@@ -192,9 +232,6 @@ def handle_general_tool(tool_name: str, tool_input: Dict[str, Any], matcher: Rul
             system_message=f"DENIAL: {denial_message}"
         )
     elif decision == 'ask':
-        # Use Claude to evaluate if this tool use is clearly safe
-        evaluator = get_evaluator(logger=logger)
-
         # Categorize tool if not already known
         if tool_name in ['Read', 'Glob', 'Grep', 'WebSearch', 'WebFetch']:
             category = 'read'
@@ -203,27 +240,39 @@ def handle_general_tool(tool_name: str, tool_input: Dict[str, Any], matcher: Rul
         else:
             category = 'other'
 
-        # Format tool input for Claude context
         input_summary = json.dumps(tool_input, indent=2) if tool_input else "N/A"
 
-        # Call Claude to evaluate safety
-        claude_decision = evaluator.evaluate_with_claude(
-            tool_name=tool_name,
-            command=f"Tool: {tool_name}\nInput: {input_summary}",
-            category=category,
-            rule_reason=message or f"Tool '{tool_name}' requires approval"
-        )
+        file_path = tool_input.get('file_path') if tool_input else None
+        precheck = lock_file_precheck(file_path, category, rule_name, session_id)
+        if precheck is not None:
+            claude_decision, precheck_message = precheck
+            logger.log_output(
+                'allow' if claude_decision == 'allow' else 'ask',
+                f"PRECHECK absorbed (no API call) - {precheck_message}",
+                rule_name
+            )
+            reason_text = precheck_message
+        else:
+            logger.log(f"PRECHECK escalated to evaluator: {tool_name}")
+            evaluator = get_evaluator(logger=logger)
+            claude_decision = evaluator.evaluate_with_claude(
+                tool_name=tool_name,
+                command=f"Tool: {tool_name}\nInput: {input_summary}",
+                category=category,
+                rule_reason=message or f"Tool '{tool_name}' requires approval"
+            )
+            reason_text = message or f"Tool {tool_name} requires approval"
 
         if claude_decision == 'allow':
-            # Claude approved it as safe
-            logger.log_output('allow', f"Claude evaluation: {tool_name} approved as safe")
+            logger.log_output('allow', f"{tool_name} approved as safe")
             return HookOutputGenerator.generate_pretooluse_output(decision='allow')
         else:
-            # Claude is uncertain - ask the user
-            logger.log_output('ask', f"Claude evaluation: User approval needed for {tool_name}")
+            # Uncertain (or pre-check couldn't confirm safety) - ask the user
+            logger.log_output('ask', f"User approval needed for {tool_name}")
 
             additional_context = (
-                f"Tool '{tool_name}' requires approval (Claude uncertain).\n"
+                f"Tool '{tool_name}' requires approval.\n"
+                f"Reason: {reason_text}\n"
                 f"Tool input:\n{input_summary}\n\n"
                 "Please approve or deny this operation.\n"
                 "If approved, you can update .claude/hooks/tool_permissions.yaml to automatically "
@@ -232,19 +281,80 @@ def handle_general_tool(tool_name: str, tool_input: Dict[str, Any], matcher: Rul
 
             return HookOutputGenerator.generate_pretooluse_output(
                 decision='ask',
-                reason=f"Claude evaluation: {message or f'Tool {tool_name} requires approval'}",
+                reason=reason_text,
                 additional_context=additional_context
             )
     else:  # allow
-        output = HookOutputGenerator.generate_pretooluse_output(decision='allow')
-        if message:
-            # For allow with a WARNING message, add it as system_message to show to user
-            if message.startswith('WARNING:'):
-                output['systemMessage'] = message
-            else:
-                # For other messages, add as additional context
-                output['additionalContext'] = message
+        # WARNING messages go to systemMessage (correctly top-level - shown to
+        # the user). Other messages go through additional_context=, which
+        # generate_pretooluse_output() nests inside hookSpecificOutput as
+        # PreToolUse requires - a top-level additionalContext key is silently
+        # discarded by Claude Code.
+        if message and message.startswith('WARNING:'):
+            output = HookOutputGenerator.generate_pretooluse_output(decision='allow')
+            output['systemMessage'] = message
+        else:
+            output = HookOutputGenerator.generate_pretooluse_output(
+                decision='allow',
+                additional_context=message or None
+            )
         return output
+
+
+def inject_context(
+    output: Dict[str, Any],
+    tool_name: str,
+    tool_input: Dict[str, Any],
+    command: Optional[str],
+    cwd: Optional[str],
+    session_id: Optional[str],
+    logger: HookLogger
+) -> None:
+    """Append point-of-action context injections to an already-allowed tool call.
+
+    Only called when `output` already carries an 'allow' decision - see the
+    design note in tool_context_injections.yaml for why injections must never
+    influence allow/deny/ask. Mutates `output` in place.
+    """
+    matcher = InjectionMatcher(InjectionConfig(), logger)
+    throttle = InjectionThrottle(session_id)
+
+    if tool_name == 'Bash' and command:
+        matched_rules = matcher.match_bash(command, cwd)
+    else:
+        matched_rules = matcher.match_tool(tool_name, tool_input)
+
+    texts = []
+    for rule in matched_rules:
+        name = rule.get('name', 'unnamed')
+        throttle_mode = rule.get('throttle', 'once_per_session')
+
+        if not throttle.should_fire(name, throttle_mode):
+            continue
+
+        context_text = (rule.get('context') or '').strip()
+        if not context_text:
+            continue
+
+        texts.append(context_text)
+        throttle.mark_fired(name)
+        logger.log(f"  Injected context (rule: {name})")
+
+    if not texts:
+        return
+
+    # additionalContext must live INSIDE hookSpecificOutput for PreToolUse, per
+    # https://code.claude.com/docs/en/hooks.md - a top-level sibling key (what
+    # HookOutputGenerator.generate_pretooluse_output() writes elsewhere in this
+    # codebase, including the pre-existing ask-path) is silently discarded by
+    # Claude Code. Confirmed via direct transcript inspection: the hook's stdout
+    # contains the right JSON, logged faithfully as a "hook_success" attachment
+    # record, but the tool_result actually delivered to the model has no trace
+    # of it when the key is top-level.
+    hook_output = output.setdefault('hookSpecificOutput', {})
+    existing = hook_output.get('additionalContext', '')
+    hook_output['additionalContext'] = existing + ('\n\n' if existing else '') + '\n\n'.join(texts)
+    throttle.save()
 
 
 def main():
@@ -269,13 +379,20 @@ def main():
     tool_name = input_data.get('tool_name', '')
     tool_input = input_data.get('tool_input', {})
     cwd = input_data.get('cwd')
+    session_id = input_data.get('session_id')
 
     # Handle based on tool type
+    command = None
     if tool_name == 'Bash':
         command = tool_input.get('command', '')
-        output = handle_bash_tool(command, RuleMatcher(config, logger), logger, cwd)
+        output = handle_bash_tool(command, RuleMatcher(config, logger), logger, cwd, session_id)
     else:
-        output = handle_general_tool(tool_name, tool_input, RuleMatcher(config, logger), logger)
+        output = handle_general_tool(tool_name, tool_input, RuleMatcher(config, logger), logger, session_id)
+
+    # Point-of-action context injection - only on an allow outcome, and never
+    # able to change that outcome. See tool_context_injections.yaml.
+    if output.get('hookSpecificOutput', {}).get('permissionDecision') == 'allow':
+        inject_context(output, tool_name, tool_input, command, cwd, session_id, logger)
 
     # Write output
     write_hook_output(output)

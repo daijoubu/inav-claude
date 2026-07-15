@@ -366,8 +366,7 @@ IMPORTANT: Be sure to actually RUN the test and really look at the results. Do n
    - Verify target device is responding before running tests
    - Clear error messages if connection fails
    - **IMPORTANT:** Remind caller that connection errors may be sandbox-related:
-     - "Note: If running in sandbox, retry with dangerouslyDisableSandbox: true"
-     - Serial ports and network sockets are blocked by default in sandbox
+     - "Note: If running in sandbox, this may be a sandbox restriction — /dev/ttyACM*, /dev/ttyUSB*, and localhost are allowlisted; if access is still blocked, ask the user rather than disabling the sandbox"
      - Permission denied / file not found may indicate sandbox restriction
 
 2. **Command Execution Verification**
@@ -410,7 +409,7 @@ def test_settings_save():
     except serial.SerialException as e:
         print(f"✗ FAILED to connect: {e}")
         print("  Check: Is FC plugged in? Is configurator closed?")
-        print("  If running in sandbox: retry with dangerouslyDisableSandbox: true")
+        print("  If running in sandbox: serial ports are allowlisted; if still blocked, ask the user")
         return 1
 
     # Verify FC is responding
@@ -472,6 +471,7 @@ If the test itself is broken, it must SCREAM about it.
 | **GPS / navigation / RTH / altitude** | `claude/developer/scripts/testing/inav/gps/` | subdirs: `testing/`, `injection/`, `monitoring/`, `config/`, `workflows/` |
 | **MSP protocol / settings read-write** | `claude/developer/scripts/testing/inav/msp/` | subdirs: `benchmark/`, `mock/`, `debug/` |
 | **SITL arming / flight modes / sensors via SITL** | `claude/developer/scripts/testing/inav/sitl/` | includes althold, pitot, mag align, RC caching tests |
+| **Full aerodynamics / airspeed / stall / JSBSim** | `~/inavflight/inav-sitl-bench` | See `jsbsim-sitl-testing` skill — drives a normal mainline SITL build with JSBSim as the physics plant; the `swissembedded/inav` `feature/quaternion-attitude-hold` fork branch is only needed for the bundled reference example, not for testing your own changes |
 | **Blackbox logging / motor analysis** | `claude/developer/scripts/testing/inav/blackbox/` | subdirs: `config/`, `analysis/`, `replay/`, `docs/` |
 | **DShot / ESC / beeper** | `claude/developer/scripts/testing/inav/dshot/` | motor locate, beeper arming-loop fix |
 | **OSD / display / formatting** | `claude/developer/scripts/testing/inav/osd/` | displayport test, format helpers, bench C files |
@@ -763,6 +763,8 @@ Internal documentation relevant to testing:
 - `.claude/skills/sitl-arm/SKILL.md` - Arm SITL via MSP
 - `.claude/skills/test-crsf-sitl/SKILL.md` - CRSF telemetry testing
 - `.claude/skills/test-configurator/SKILL.md` - Configurator testing
+- `.claude/skills/install-jsbsim/SKILL.md` - Install/verify the JSBSim flight-dynamics library
+- `.claude/skills/jsbsim-sitl-testing/SKILL.md` - Full-aerodynamics SITL testing via `inav-sitl-bench` (JSBSim as the physics plant)
 
 **Related agents (ask parent session to invoke):**
 

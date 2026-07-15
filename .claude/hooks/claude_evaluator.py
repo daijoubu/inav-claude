@@ -30,8 +30,8 @@ from hook_common import HookLogger
 class ClaudeEvaluator:
     """Evaluates tool calls using Claude for safety assessment."""
 
-    MODEL = "claude-sonnet-4-6"
-    TIMEOUT_SECONDS = 10
+    MODEL = "claude-haiku-4-5"
+    TIMEOUT_SECONDS = 4
     MAX_RETRIES = 1
 
     def __init__(self, logger: Optional[HookLogger] = None):
@@ -41,12 +41,17 @@ class ClaudeEvaluator:
         self._initialize_client()
 
     def _get_api_key(self) -> Optional[str]:
-        """Get API key from settings.local.json or environment."""
-        # Try settings.local.json first (in ~/.claude/ or current directory)
+        """Get API key from ~/.claude/settings.local.json or environment.
+
+        Only the HOME settings file is consulted, never a repo-relative one:
+        a key stored inside the repository leaked into session transcripts and
+        sat one .gitignore mistake away from being committed. Note we do not
+        ask the user to export ANTHROPIC_API_KEY globally either — that would
+        switch Claude Code itself from subscription to API billing; the env
+        var remains only as a fallback for callers that set it explicitly.
+        """
         settings_paths = [
             Path.home() / '.claude' / 'settings.local.json',
-            Path('.claude/settings.local.json'),
-            Path('settings.local.json'),
         ]
 
         for settings_path in settings_paths:
@@ -99,11 +104,6 @@ class ClaudeEvaluator:
         Returns text describing what operations are unsafe.
         """
         return """## CRITICAL RULES - ENFORCEABLE VIOLATIONS
-
-### Lock File Violations
-- DO NOT allow operations that would write code when lock files exist
-  Lock files: claude/locks/inav.lock, claude/locks/inav-configurator.lock
-  If lock files exist, the repository is locked by another session
 
 ### Git Branch Violations
 - DO NOT allow branching or pushing to 'master' branch

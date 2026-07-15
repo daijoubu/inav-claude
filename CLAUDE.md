@@ -8,9 +8,16 @@ You must know which role you have. If you don't already know your role:
 **👉 Ask the user RIGHT NOW:**
 **"Which role should I take on today - Manager, Developer, Release Manager, or Security Analyst?"**
 
-**Then:**
+**Exception — you were invoked via the Task/Agent tool as a sub-agent (not
+talking to a human user):** you are the **Agent** role, not one of the four
+below. Do NOT ask the role question. Go straight to `claude/agent/README.md`
+and follow it — it tells you how to read "Current role: ..." from your
+invocation prompt and find your specific agent definition. This applies
+regardless of whether your prompt explicitly says "Current role: ...".
+
+**Otherwise (you're talking directly to a human user), then:**
 1. Wait for their response
-2. Switch to `claude/manager/`, `claude/developer/`, `claude/release-manager/`, `claude/security-analyst/`, or `claude/agent/`
+2. Switch to `claude/manager/`, `claude/developer/`, `claude/release-manager/`, or `claude/security-analyst/`
 3. Read the role-specific README.md file in that directory
 4. ONLY AFTER reading the README, proceed with other tasks
 

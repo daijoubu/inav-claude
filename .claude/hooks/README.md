@@ -14,6 +14,8 @@ The tool permissions configuration is split into three files (automatically merg
 - Adding rules for **Bash commands**? → Edit `tool_permissions_bash.yaml`
 - Adding rules for **other tools** (Write, Edit, etc.)? → Edit `tool_permissions_rules.yaml`
 - Changing **defaults or logging**? → Edit `tool_permissions_defaults.yaml`
+- Adding a **point-of-action reminder** for the model (not a permission decision)? →
+  Edit `tool_context_injections.yaml` instead - see "Context Injection" below.
 
 ## Hook Files
 
@@ -22,6 +24,51 @@ The tool permissions configuration is split into three files (automatically merg
 - **hook_common.py** - Shared utilities for hooks
 - **bash_parser.py** - Bash command parser
 - **validate_config.py** - Configuration validation script
+
+## Context Injection
+
+`tool_context_injections.yaml` is a **fourth**, deliberately separate config file:
+short (1-3 line) reminders appended to the model's context at the moment a matching
+tool call is about to run - e.g. a reminder about commit message rules right as
+`git add` runs, predicting a `git commit` is coming soon.
+
+**Why separate from the three permission files above:** permission rules are
+first-match-wins and security-ordered; injection rules are additive (every match
+fires, not just the first) and never influence the allow/deny/ask decision. Mixing
+them risked an injection rule accidentally shadowing a more specific deny.
+
+**Flow:** `pre_tool_use_hook.py` first computes the permission decision (allow/deny/
+ask) from the three files above. Only if that decision is `allow` does it separately
+evaluate `tool_context_injections.yaml` (via `InjectionMatcher`, reusing the same
+`command_pattern`/`argument_pattern`/`tool_name_pattern`/`tool_input_patterns`
+matching semantics as the permission files) and append any matching rules' text to
+`additionalContext`. A denied or ask-gated call never gets an injection.
+
+**⚠️ `additionalContext` vs `systemMessage`:** `additionalContext` is what actually
+reaches the model. `systemMessage` is human-UI-only. `pre_tool_use_hook.py` has an
+existing special case (used by the "Warn on large Read operations" rule above) that
+reroutes any message starting with the literal string `WARNING:` from
+`additionalContext` to `systemMessage` - so an injection whose text happens to start
+with `WARNING:` would silently never reach the model. Don't start injection `context`
+text with that prefix.
+
+**Throttling:** each rule has `throttle: once_per_session` (default) or `always`.
+State is a small JSON marker file per session under
+`~/.claude/hooks/injected_context/`, outside the repo. These files are pruned
+automatically after 30 days on load (`InjectionThrottle._prune_stale_markers`) since
+nothing ever explicitly closes a session to trigger cleanup otherwise.
+
+**Precondition scripts** on injection rules use a different contract than permission
+precondition scripts: echo `"fire"` to inject, anything else means skip. They never
+return `allow`/`deny`/`ask` - an injection rule can't make that decision. A
+`{HARNESS_ROOT}` variable (the repo root) is always available in addition to the
+usual `{COMMAND}`/`{ARGS}`/`{FULL_COMMAND}`/tool-input-field substitutions.
+
+See the header comment in `tool_context_injections.yaml` for the full schema and
+worked examples, including the two design questions to ask before adding a rule
+(is the target command already rejected with a reason elsewhere? if accepted and
+it runs immediately, is there an earlier, reliable predictor command to attach the
+substantive guidance to instead?).
 
 ## Quick Start
 

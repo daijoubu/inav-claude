@@ -1,0 +1,279 @@
+Keyword: accel
+Occurrences: 275
+================================================================================
+
+Page    2: 2.2       Accelerometer Features ............................................................................................................................ 9
+Page    2: 3.2       Accelerometer Specifications.................................................................................................................. 11
+Page    2: 4.7       Three-Axis MEMS Accelerometer with 16-bit ADCs and Signal Conditioning......................................... 21
+Page    3: 12.1          Accelerometer Mode Transitions ....................................................................................................... 48
+Page    3: 12.2          Accelerometer Low Power (LP) Mode Averaging Filter Setting .......................................................... 48
+Page    3: 14.7          ACCEL_DATA_X1 ................................................................................................................................. 54
+Page    4: 14.8       ACCEL_DATA_X0 ................................................................................................................................. 54
+Page    4: 14.9       ACCEL_DATA_Y1 ................................................................................................................................. 54
+Page    4: 14.10      ACCEL_DATA_Y0 ................................................................................................................................. 55
+Page    4: 14.11      ACCEL_DATA_Z1 ................................................................................................................................. 55
+Page    4: 14.12      ACCEL_DATA_Z0 ................................................................................................................................. 55
+Page    4: 14.29      ACCEL_CONFIG0 ................................................................................................................................. 62
+Page    4: 14.31      GYRO_ACCEL_CONFIG0 ...................................................................................................................... 64
+Page    4: 14.32      ACCEL_CONFIG1 ................................................................................................................................. 65
+Page    5: 16.1        ACCEL_CONFIG_STATIC2 .................................................................................................................... 78
+Page    5: 16.2        ACCEL_CONFIG_STATIC3 .................................................................................................................... 78
+Page    5: 16.3        ACCEL_CONFIG_STATIC4 .................................................................................................................... 78
+Page    5: 17.1        ACCEL_WOM_X_THR .......................................................................................................................... 80
+Page    5: 17.2        ACCEL_WOM_Y_THR .......................................................................................................................... 80
+Page    5: 17.3        ACCEL_WOM_Z_THR .......................................................................................................................... 80
+Page    7: Table 2. Accelerometer Specifications ................................................................................................................................. 11
+Page    8: The ICM-40609-D is a 6-axis MotionTracking device that combines a 3-axis gyroscope, and a 3-axis accelerometer in a small 3x3x0.91
+Page    8: The gyroscope supports eight programmable full-scale range settings from ±15.625dps to ±2000dps, and the accelerometer supports
+Page    9: 2.2 ACCELEROMETER FEATURES
+Page    9: The triple-axis MEMS accelerometer in ICM-40609-D includes a wide range of features:
+Page    9:  Digital-output X-, Y-, and Z-axis accelerometer with programmable full-scale range of ±4g, ±8g, ±16g and ±32g
+Page    9:  User-programmable digital filters for gyroscope, accelerometer, and temperature sensor
+Page    9:  Wake on Motion: Detects motion when accelerometer data exceeds a programmable threshold
+Page   11: 3.2 ACCELEROMETER SPECIFICATIONS
+Page   11: ACCELEROMETER SENSITIVITY
+Page   11: ACCEL_FS_SEL =0                                                 ±32               g        2
+Page   11: ACCEL_FS_SEL =1                                                 ±16               g        2
+Page   11: ACCEL_FS_SEL =2                                                 ±8                g        2
+Page   11: ACCEL_FS_SEL =3                                                 ±4                g        2
+Page   11: ACCEL_FS_SEL =0                                                1,024            LSB/g      2
+Page   11: ACCEL_FS_SEL =1                                                2,048            LSB/g      2
+Page   11: ACCEL_FS_SEL =2                                                4,096            LSB/g      2
+Page   11: ACCEL_FS_SEL =3                                                8,192            LSB/g      2
+Page   11: Accelerometer Startup Time                   From sleep mode to valid data                                   10               ms        3
+Page   11: Table 2. Accelerometer Specifications
+Page   12: 6-Axis Gyroscope + Accelerometer                          0.77           mA       2
+Page   12: Low-Noise Mode                             3-Axis Accelerometer                                      0.27           mA       2
+Page   12: Accelerometer Low -Power Mode
+Page   17: Acceleration (Any Axis, unpowered)                                      20,000g for 0.2 ms
+Page   21:  Three-axis MEMS accelerometer sensor with 16-bit ADCs and signal conditioning
+Page   21: 4.7    THREE-AXIS MEMS ACCELEROMETER WITH 16-BIT ADCS AND SIGNAL CONDITIONING
+Page   21: The ICM-40609-D includes a 3-Axis MEMS accelerometer. Acceleration along a particular axis induces displacement of a proof mass
+Page   21: in the MEMS structure, and capacitive sensors detect the displacement. The ICM-40609-D architecture reduces the accelerometers’
+Page   21: the X- and Y-axes and +1g on the Z-axis. The accelerometers’ scale factor is calibrated at the factory and is nominally independent of
+Page   21: be activated by means of the gyroscope and accelerometer self-test registers.
+Page   22: The sensor data registers contain the latest gyroscope, accelerometer, and temperature measurement data. They are read-only
+Page   22: the FIFO and Data registers); (3) accelerometer event interrupts; (4) FIFO watermark; (5) FIFO overflow. The interrupt status can be
+Page   23: Mode   Name                                      Gyro             Accel
+Page   23: 3     Accelerometer Low-Power Mode                Off         Duty-Cycled
+Page   23: 4     Accelerometer Low-Noise Mode                Off             On
+Page   24: The signal path starts with independent 16-bit ADCs for each axis of gyroscope and accelerometer. The ADC output goes through a
+Page   25: Anti-alias filters for gyroscope and accelerometer can be independently programmed to have bandwidths ranging from 10 Hz to 995
+Page   25: a.    Register bank 2, register 0x03h, bits 6:1, ACCEL_AAF_DELT: Code from 1 to 63 that allows programming the
+Page   25: bandwidth for accelerometer anti-alias filter
+Page   25: b.    Register bank 2, register 0x04h, bits 7:0 and Bank 2, register 0x05h, bits 3:0, ACCEL_AAF_DELTSQR: Square of the
+Page   25: delt value for accelerometer
+Page   25: c.    Register bank 2, register 0x05h, bits 7:4, ACCEL_AAF_BITSHIFT: Bitshift value for accelerometer used in hardware
+Page   25: ACCEL_AAF_DELT; ACCEL_AAF_DELTSQR; ACCEL_AAF_BITSHIFT;
+Page   27: The anti-alias filter can be selected or bypassed for the accelerometer by using the parameter ACCEL_AAF_DIS in register bank 2,
+Page   27: ACCEL_AAF_DIS                             Function
+Page   27: 0            Enable accelerometer anti-aliasing filter
+Page   27: 1            Disable accelerometer anti-aliasing filter
+Page   27: Gyroscope and accelerometer offsets can be programmed by the user by using registers OFFSET_USER0, through OFFSET_USER8, in
+Page   28: Upper bits of X-accel offset programmed by user.
+Page   28: Lower bits of X-accel offset programmed by user.
+Page   28: Lower bits of Y-accel offset programmed by user.
+Page   28: Upper bits of Y-accel offset programmed by user.
+Page   28: Upper bits of Z-accel offset programmed by user.
+Page   28: Lower bits of Z-accel offset programmed by user.
+Page   28: The UI filter block can be programmed to select filter order and bandwidth independently for gyroscope and accelerometer.
+Page   28: Accelerometer filter order can be selected by programming the parameter ACCEL_UI_FILT_ORD in register bank 0, register 0x53h,
+Page   28: ACCEL_UI_FILT_ORD                     Filter Order
+Page   28: Gyroscope and accelerometer filter 3dB bandwidth can be selected by programming the parameter GYRO_UI_FILT_BW in register
+Page   28: bank 0, register 0x52h, bits 3:0, and the parameter ACCEL_UI_FILT_BW in register bank 0, register 0x52h, bits 7:4, as shown below.
+Page   28: 3dB Bandwidth (Hz) for GYRO/ACCEL_UI_FILT_ORD=0 (1st order filter)
+Page   28: GYRO/ACCEL_UI_FILT_BW
+Page   28: GYRO/ACCEL_ODR       ODR(Hz)        0         1       2              3         4          5      6      7       14        15
+Page   29: NBW Bandwidth (Hz) for GYRO/ACCEL_UI_FILT_ORD=0 (1st order filter)
+Page   29: GYRO/ACCEL_UI_FILT_BW
+Page   29: GYRO/ACCEL_ODR       ODR(Hz)      0           1            2           3           4      5       6        7          14          15
+Page   29: Group Delay @DC (ms) for GYRO/ACCEL_UI_FILT_ORD=0 (1st order filter)
+Page   29: GYRO/ACCEL_UI_FILT_BW
+Page   29: GYRO/ACCEL_ODR        ODR(Hz)           0           1         2           3      4       5           6          7         14      15
+Page   30: 3dB Bandwidth (Hz) for GYRO/ACCEL_UI_FILT_ORD=1 (2nd order filter)
+Page   30: GYRO/ACCEL_UI_FILT_BW
+Page   30: GYRO/ACCEL_ODR       ODR(Hz)       0         1         2           3          4          5    6        7        14          15
+Page   30: NBW Bandwidth (Hz) for GYRO/ACCEL_UI_FILT_ORD=1 (2nd order filter)
+Page   30: GYRO/ACCEL_UI_FILT_BW
+Page   30: GYRO/ACCEL_ODR       ODR(Hz)       0         1         2           3          4          5    6        7        14          15
+Page   30: Group Delay @DC (ms) for GYRO/ACCEL_UI_FILT_ORD=1 (2nd order filter)
+Page   30: GYRO/ACCEL_UI_FILT_BW
+Page   30: GYRO/ACCEL_ODR        ODR(Hz)           0        1        2           3      4      5            6        7         14      15
+Page   31: 3dB Bandwidth (Hz) for GYRO/ACCEL_UI_FILT_ORD=2 (3rd order filter)
+Page   31: GYRO/ACCEL_UI_FILT_BW
+Page   31: GYRO/ACCEL_ODR       ODR(Hz)        0           1            2           3     4      5     6               7           14          15
+Page   31: NBW Bandwidth (Hz) for GYRO/ACCEL_UI_FILT_ORD=0 (1st order filter)
+Page   31: GYRO/ACCEL_UI_FILT_BW
+Page   31: GYRO/ACCEL_ODR       ODR(Hz)        0          1            2           3          4          5    6        7           14          15
+Page   31: Group Delay @DC (ms) for GYRO/ACCEL_UI_FILT_ORD=2 (3rd order filter)
+Page   31: GYRO/ACCEL_UI_FILT_BW
+Page   31: GYRO/ACCEL_ODR        ODR(Hz)            0         1            2       3         4          5        6           7         14      15
+Page   33: Accelerometer ODR can be selected by programming the parameter ACCEL_ODR in register bank 0, register 0x50h, bits 3:0 as shown
+Page   33: ACCEL_ODR            Accelerometer ODR Value
+Page   33: Accelerometer FSR can be selected by programming the parameter ACCEL_FS_SEL in register bank 0, register 0x50h, bits 7:5 as
+Page   33: ACCEL_FS_SEL         Accelerometer FSR Value
+Page   34: determines which data is written into the FIFO. Possible choices include gyroscope data, accelerometer data, and temperature
+Page   34: Accelerometer Data              Gyroscope Data                 Accelerometer Data
+Page   34: 0x01                              Accel X [15:8]
+Page   34: 0x02                              Accel X [7:0]
+Page   34: 0x03                              Accel Y [15:8]
+Page   34: 0x04                              Accel Y [7:0]
+Page   34: 0x05                              Accel Z [15:8]
+Page   34: 0x06                              Accel Z [7:0]
+Page   35: 0x01                              Accel X [15:8]
+Page   35: 0x02                               Accel X [7:0]
+Page   35: 0x03                              Accel Y [15:8]
+Page   35: 0x04                               Accel Y [7:0]
+Page   35: 0x05                              Accel Z [15:8]
+Page   35: 0x06                               Accel Z [7:0]
+Page   35: 1: Packet is sized so that accel data have location in the packet, FIFO_ACCEL_EN
+Page   35: 6                HEADER_ACCEL          must be 1
+Page   35: 0: Packet does not contain accel sample
+Page   36: 1: The ODR for accel is different for this accel data packet compared to the previous
+Page   36: 1           HEADER_ODR_ACCEL           accel packet
+Page   36: 0: The ODR for accel is the same as the previous packet with accel
+Page   36: 0            HEADER_ODR_GYRO           accel packet
+Page   36: 0: The ODR for gyro is the same as the previous packet with accel
+Page   36: Note at least HEADER_ACCEL or HEADER_GYRO must be set for a sensor data packet to be set.
+Page   36: 0: Default setting; Accelerometer data not placed into FIFO
+Page   36: 0     FIFO_ACCEL_EN
+Page   36: 1: Enables accelerometer data packets of 6-bytes to be placed in FIFO
+Page   37: FIFO_ACCEL_EN   FIFO_GYRO_EN      FIFO_TMST_EN              Header        Packet size
+Page   38: 1. Set accelerometer ODR (Register 0x50h in Bank 0)
+Page   38: ACCEL_ODR = 9 for 50 Hz
+Page   38: 2. Set Accel to Low Power mode (Register 0x4Eh in Bank 0)
+Page   38: ACCEL_MODE = 2 and (Register 0x4Dh in Bank 0), ACCEL_LP_CLK_SEL = 0, for low power mode
+Page   48: 12.1 ACCELEROMETER MODE TRANSITIONS
+Page   48: When transitioning from accelerometer Low Power (LP) mode to accelerometer Low Noise (LN) mode, if ODR is 6.25Hz or lower,
+Page   48: software should change ODR to a value of 12.5Hz or higher, because accelerometer LN mode does not support ODR values below
+Page   48: When transitioning from accelerometer LN mode to accelerometer LP mode, if ODR is greater than 500Hz, software should change
+Page   48: ODR to a value of 500Hz or lower, because accelerometer LP mode does not support ODR values above 500Hz.
+Page   48: 12.2 ACCELEROMETER LOW POWER (LP) MODE AVERAGING FILTER SETTING
+Page   48: noise requirements in LP mode, and to minimize accelerometer offset variation when transitioning from LP to Low Noise (LN) mode.
+Page   49: 1F           31         ACCEL_DATA_X1      SYNCR                                                              ACCEL_DATA_X[15:8]
+Page   49: 20           32         ACCEL_DATA_X0      SYNCR                                                              ACCEL_DATA_X[7:0]
+Page   49: 21           33         ACCEL_DATA_Y1      SYNCR                                                              ACCEL_DATA_Y[15:8]
+Page   49: 22           34         ACCEL_DATA_Y0      SYNCR                                                              ACCEL_DATA_Y[7:0]
+Page   49: 23           35         ACCEL_DATA_Z1      SYNCR                                                              ACCEL_DATA_Z[15:8]
+Page   49: 24           36         ACCEL_DATA_Z0      SYNCR                                                              ACCEL_DATA_Z[7:0]
+Page   49: ACCEL_LP_CL
+Page   49: 4E           78          PWR_MGMT0         R/W                    -                       TEMP_DIS           IDLE                       GYRO_MODE                             ACCEL_MODE
+Page   49: 50           80         ACCEL_CONFIG0      R/W                        ACCEL_FS_SEL                             -                                           ACCEL_ODR
+Page   49: 52           82       GYRO_ACCEL_CONFIG0   R/W                             ACCEL_UI_FILT_BW                                                          GYRO_UI_FILT_BW
+Page   49: 53           83         ACCEL_CONFIG1      R/W                             -                                  ACCEL_UI_FILT_ORD                     ACCEL_DEC2_M2_ORD                        -
+Page   49: FIFO_WM_G                                              FIFO_TEMP_       FIFO_GYRO_          FIFO_ACCEL_
+Page   50: ACCEL_ST_P
+Page   50: ACCEL_AAF_
+Page   50: 03           03       ACCEL_CONFIG_STATIC2   R/W       -                                                   ACCEL_AAF_DELT
+Page   50: 04           04       ACCEL_CONFIG_STATIC3   R/W                                                        ACCEL_AAF_DELTSQR[7:0]
+Page   50: 05           05       ACCEL_CONFIG_STATIC4   R/W                    ACCEL_AAF_BITSHIFT                                                   ACCEL_AAF_DELTSQR[11:8]
+Page   51: 4A           74        ACCEL_WOM_X_THR   R/W                                                   WOM_X_TH
+Page   51: 4B           75        ACCEL_WOM_Y_THR   R/W                                                   WOM_Y_TH
+Page   51: 4C           76        ACCEL_WOM_Z_THR   R/W                                                   WOM_Z_TH
+Page   51: 7B           123         OFFSET_USER4    R/W                ACCEL_X_OFFUSER[11:8]                                GYRO_Z_OFFUSER[11:8]
+Page   51: 7C           124         OFFSET_USER5    R/W                                            ACCEL_X_OFFUSER[7:0]
+Page   51: 7D           125         OFFSET_USER6    R/W                                            ACCEL_Y_OFFUSER[7:0]
+Page   51: 7E           126         OFFSET_USER7    R/W                ACCEL_Z_OFFUSER[11:8]                                ACCEL_Y_OFFUSER[11:8]
+Page   51: 7F           127         OFFSET_USER8    R/W                                            ACCEL_Z_OFFUSER[7:0]
+Page   54: 14.7     ACCEL_DATA_X1
+Page   54: Name: ACCEL_DATA_X1
+Page   54: 7:0 ACCEL_DATA_X[15:8]             Upper byte of Accel X-axis data
+Page   54: 14.8     ACCEL_DATA_X0
+Page   54: Name: ACCEL_DATA_X0
+Page   54: 7:0 ACCEL_DATA_X[7:0]              Lower byte of Accel X-axis data
+Page   54: 14.9     ACCEL_DATA_Y1
+Page   54: Name: ACCEL_DATA_Y1
+Page   54: 7:0 ACCEL_DATA_Y[15:8]             Upper byte of Accel Y-axis data
+Page   55: 14.10    ACCEL_DATA_Y0
+Page   55: Name: ACCEL_DATA_Y0
+Page   55: 7:0 ACCEL_DATA_Y[7:0]      Lower byte of Accel Y-axis data
+Page   55: 14.11    ACCEL_DATA_Z1
+Page   55: Name: ACCEL_DATA_Z1
+Page   55: 7:0 ACCEL_DATA_Z[15:8]     Upper byte of Accel Z-axis data
+Page   55: 14.12    ACCEL_DATA_Z0
+Page   55: Name: ACCEL_DATA_Z0
+Page   55: 7:0 ACCEL_DATA_Z[7:0]      Lower byte of Accel Z-axis data
+Page   59: 0: If Accel and Gyro ODRs are different, decimal value -32768 will be
+Page   59: is available. If Accel or Gyro ODR is > 8kHz, Temp sensor ODR will be
+Page   59: 1: If Accel, and Gyro ODRs are different, last valid data is rewritten to
+Page   59: available. If Accel or Gyro ODR is > 8kHz, Temp sensor data will be
+Page   59: accel + temp sensor data + time stamp, or 8 bytes for header + gyro/accel +
+Page   59: 0: Accelerometer LP mode uses Wake Up oscillator clock (default)
+Page   59: 3      ACCEL_LP_CLK_SEL
+Page   60: If this bit is set to 1, the RC oscillator is powered on even if Accel and Gyro
+Page   60: Nominally this bit is set to 0, so when Accel and Gyro are powered off,
+Page   60: 00: Turns accelerometer off (default)
+Page   60: 01: Turns accelerometer off
+Page   60: 10: Places accelerometer in Low Power (LP) Mode
+Page   60: 1:0     ACCEL_MODE         11: Places accelerometer in Low Noise (LN) Mode
+Page   62: 14.29    ACCEL_CONFIG0
+Page   62: Name: ACCEL_CONFIG0
+Page   62: Full scale select for accelerometer UI interface output
+Page   62: 7:5     ACCEL_FS_SEL       011: ±4g
+Page   62: Accelerometer ODR selection for UI interface output
+Page   62: 3:0     ACCEL_ODR          0111: 200Hz (LP or LN mode)
+Page   64: 14.31    GYRO_ACCEL_CONFIG0
+Page   64: Name: GYRO_ACCEL_CONFIG0
+Page   64: Bandwidth for Accel LPF
+Page   64: 7:4     ACCEL_UI_FILT_BW
+Page   65: 14.32    ACCEL_CONFIG1
+Page   65: Name: ACCEL_CONFIG1
+Page   65: Selects order of ACCEL UI FIR filter
+Page   65: 4:3      ACCEL_UI_FILT_ORD   01: 2nd Order
+Page   65: Order of Accelerometer DEC2_M2 filter
+Page   65: 2:1     ACCEL_DEC2_M2_ORD   01: 2nd order
+Page   66: 0: Set WoM interrupt on the OR of all enabled accelerometer thresholds
+Page   66: 1: Set WoM interrupt on the AND of all enabled accelerometer threshold
+Page   66: 0      FIFO_ACCEL_EN              Enable accelerometer packets to go to FIFO
+Page   70: Set to 1 for accel self-test
+Page   70: 6      ACCEL_ST_POWER
+Page   70: 5      EN_AZ_ST              Enable Z-accel self-test
+Page   70: 4      EN_AY_ST              Enable Y-accel self-test
+Page   70: 3      EN_AX_ST              Enable X-accel self-test
+Page   72: 0: Z accelerometer is on
+Page   72: 1: Z accelerometer is disabled
+Page   72: 0: Y accelerometer is on
+Page   72: 1: Y accelerometer is disabled
+Page   72: 0: X accelerometer is on
+Page   72: 1: X accelerometer is disabled
+Page   78: 16.1     ACCEL_CONFIG_STATIC2
+Page   78: Name: ACCEL_CONFIG_STATIC2
+Page   78: Controls bandwidth of the accelerometer anti-alias filter
+Page   78: 6:1     ACCEL_AAF_DELT
+Page   78: 0: Enable accelerometer anti-aliasing filter
+Page   78: 0      ACCEL_AAF_DIS
+Page   78: 1: Disable accelerometer anti-aliasing filter (default)
+Page   78: 16.2     ACCEL_CONFIG_STATIC3
+Page   78: Name: ACCEL_CONFIG_STATIC3
+Page   78: Controls bandwidth of the accelerometer anti-alias filter
+Page   78: 7:0     ACCEL_AAF_DELTSQR[7:0]
+Page   78: 16.3     ACCEL_CONFIG_STATIC4
+Page   78: Name: ACCEL_CONFIG_STATIC4
+Page   78: Controls bandwidth of the accelerometer anti-alias filter
+Page   78: 7:4     ACCEL_AAF_BITSHIFT
+Page   78: Controls bandwidth of the accelerometer anti-alias filter
+Page   78: 3:0     ACCEL_AAF_DELTSQR[11:8]
+Page   78: 7:0 XA_ST_DATA                        X-accel self-test data
+Page   79: 7:0 YA_ST_DATA                        Y-accel self-test data
+Page   79: 7:0 ZA_ST_DATA                        Z-accel self-test data
+Page   80: 17.1     ACCEL_WOM_X_THR
+Page   80: Name: ACCEL_WOM_X_THR
+Page   80: Threshold value for the Wake on Motion Interrupt for X-axis accelerometer
+Page   80: 17.2     ACCEL_WOM_Y_THR
+Page   80: Name: ACCEL_WOM_Y_THR
+Page   80: Threshold value for the Wake on Motion Interrupt for Y-axis accelerometer
+Page   80: 17.3     ACCEL_WOM_Z_THR
+Page   80: Name: ACCEL_WOM_Z_THR
+Page   80: Threshold value for the Wake on Motion Interrupt for Z-axis accelerometer
+Page   81: Upper bits of X-accel offset programmed by user. Max value is ±64 dps,
+Page   81: 7:4     ACCEL_X_OFFUSER[11:8]
+Page   82: Lower bits of X-accel offset programmed by user. Max value is ±64 dps,
+Page   82: 7:0     ACCEL_X_OFFUSER[7:0]
+Page   82: Lower bits of Y-accel offset programmed by user. Max value is ±64 dps,
+Page   82: 7:0     ACCEL_Y_OFFUSER[7:0]
+Page   82: Upper bits of Z-accel offset programmed by user. Max value is ±64 dps,
+Page   82: 7:4     ACCEL_Z_OFFUSER[11:8]
+Page   82: Upper bits of Y-accel offset programmed by user. Max value is ±64 dps,
+Page   82: 3:0     ACCEL_Y_OFFUSER[11:8]
+Page   82: Lower bits of Z-accel offset programmed by user. Max value is ±64 dps,
+Page   82: 7:0     ACCEL_Z_OFFUSER[7:0]

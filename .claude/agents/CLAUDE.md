@@ -50,6 +50,8 @@ Read that file for your specialized behavior.
 
 **Core Principle:** When you encounter a problem that takes multiple steps to solve, create a reusable tool so you won't have to think about it next time.
 
+Encourage agents to do this proactively and unprompted, including updating other agents' own `.md` docs, even when it's outside the immediate task's scope.
+
 ## Tool Storage Locations
 
 **IMPORTANT:** `claude/developer/workspace/` is for TEMPORARY working files only. Permanent tools go in these locations:

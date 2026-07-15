@@ -47,6 +47,35 @@ This guide covers downloading firmware hex files from inav-nightly and configura
 
 ---
 
+## Before You Download: Confirm a Build Actually Exists
+
+Both repos' pre-release build workflows (`nightly-build.yml`) only trigger on `push` to a **hardcoded branch list** (typically `master` + one or two `maintenance-X.x` names). When a new `release/X.Y` or `maintenance-X.x` branch is cut, that list is not always updated — so commits merged there can silently produce zero build artifacts, even though every individual PR passed CI pre-merge.
+
+**Before assuming artifacts exist, verify against the actual freeze commit:**
+```bash
+gh api repos/<owner>/<repo>/commits/<freeze-sha>/check-runs --jq '.check_runs | length'
+```
+If that's `0`, nothing has built this commit. Fix: open a PR merging the active branch into `master` (or whichever branch the workflow watches) — this triggers a real build. Follow the existing naming precedent in that repo's PR history (search closed PRs titled e.g. "Maintenance 9.x to master" or "Release/9.1 to master") rather than inventing a new pattern.
+
+**If both branches already exist on `upstream`**, open the PR directly — don't create a synthetic local branch or push anything:
+```bash
+gh pr create --repo <owner>/<repo> --base master --head <active-branch> --title "..." --body "..."
+```
+(A local branch name containing "master" as a substring may also trip an unrelated local pre-push hook — another reason to skip local branch creation when it isn't needed.)
+
+**If `git push` is denied (403) even to your own fork:** the `GITHUB_TOKEN` env var is pinning `gh`/git to a restricted fine-grained PAT. That restriction is deliberate — it exists to limit what an agent can do unchecked, not an accident to work around. Do **not** unset it and retry on your own initiative.
+
+**Stop and ask the human user first, every time**, even if you've done it earlier in the same session. If they authorize it:
+```bash
+env -u GITHUB_TOKEN GH_TOKEN="" git push origin <branch>:<branch>
+env -u GITHUB_TOKEN GH_TOKEN="" gh pr create ...
+```
+A prior "go ahead and push this branch" is not blanket approval to drop the PAT for everything afterward (wiki pushes, release creation, asset uploads, etc.) — each escalation is its own ask.
+
+Report the missing-trigger gap to Developer so the workflow's branch list gets fixed permanently — this shouldn't need rediscovering every release.
+
+---
+
 ## Downloading Firmware Artifacts
 
 Firmware uses nightly builds instead of CI artifacts:
@@ -94,10 +123,10 @@ Use the rename script to remove CI build suffixes and add RC numbers:
 
 ```bash
 # For RC releases (use lowercase rc — required by Configurator firmware flasher)
-./claude/release-manager/rename-firmware-for-release.sh 9.0.0-rc3 downloads/firmware-9.0.0-rc3/
+./claude/release-manager/scripts/rename-firmware-for-release.sh 9.0.0-rc3 downloads/firmware-9.0.0-rc3/
 
 # For final releases
-./claude/release-manager/rename-firmware-for-release.sh 9.0.0 downloads/firmware-9.0.0/
+./claude/release-manager/scripts/rename-firmware-for-release.sh 9.0.0 downloads/firmware-9.0.0/
 ```
 
 **Example transformation:**
@@ -132,6 +161,12 @@ Note the `databaseId` - this is your `<run-id>`.
 ### Step 3: Download Artifacts
 
 **CRITICAL:** Download to separate directories by platform to prevent contamination.
+
+⚠️ **The full artifact set is large (~2 GB across all platform installers) and can exceed a default 2-minute command timeout partway through.** If it times out, don't just re-run `gh run download <run-id>` bare — it will error with "file exists" on artifacts already extracted. Instead, check what's missing and download only those, by name, one at a time:
+```bash
+gh run download <run-id> --repo iNavFlight/inav-configurator -n "<exact-artifact-name>"
+```
+Get exact names from `gh api repos/<owner>/<repo>/actions/runs/<run-id>/artifacts --jq '.artifacts[].name'`.
 
 ```bash
 # Create platform-specific directories

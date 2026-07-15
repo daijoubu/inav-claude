@@ -124,27 +124,17 @@ When a legitimate upward merge IS needed, see `guides/merge-release-into-next-ve
 
 ### Branch Naming
 
-Use descriptive branch names:
-- `fix/issue-1234-blackbox-corruption`
-- `feature/improved-motor-wizard`
-- `refactor/pid-controller-cleanup`
+**INAV:** kebab-case, no slashes — e.g. `fix-blackbox-corruption`, `feature-improved-motor-wizard`.
+**PrivacyLRS:** flat naming, no slashes — e.g. `fix-counter-sync`, `encryption-test-suite`.
 
 ### Creating Branches
 
-Always create from the correct base branch:
+Base-branch selection is not decided here — see `.claude/skills/git-workflow/SKILL.md`
+("Creating Branches") for the single authoritative decision table, or run:
 
 ```bash
-# For INAV (backward-compatible changes)
-git checkout -b fix/issue-1234 upstream/maintenance-9.x
-
-# For INAV (breaking changes)
-git checkout -b feature/new-msp upstream/maintenance-10.x
-
-# For PrivacyLRS
-git checkout -b fix/issue-42 secure_01
+claude/developer/scripts/git/new-branch.sh <repo> <bugfix|feature|breaking> <branch-name>
 ```
-
-See `.claude/skills/git-workflow/SKILL.md` and `.claude/skills/start-task/SKILL.md` for complete branching instructions.
 
 ---
 
@@ -191,13 +181,18 @@ Prompt: "Check PR #11220 for bot comments"
 When using the `gh` command or the GitHub API, or SSH with GitHub:
 
 - You're running in a sandbox environment
-- May need to use `dangerouslyDisableSandbox: true` for network access
-- This is safe for GitHub API operations
+- `github.com`, `api.github.com`, `ssh.github.com`, and `uploads.github.com` are in
+  the sandbox network allowlist, so these operations normally work sandboxed
+- If a GitHub operation fails with network errors, that's the sandbox blocking it —
+  not a network outage. Don't disable the sandbox: ask the user to approve the
+  operation or run it manually (see "Sandbox Restrictions" in the git-workflow skill;
+  the only approved exception is plain `git push` to origin)
 
 **Example:**
 ```bash
 gh pr view 11220 --repo inavflight/inav
-# If this fails with network errors, retry with dangerouslyDisableSandbox
+# If this fails with network errors, that's a sandbox restriction — surface it
+# to the user rather than disabling the sandbox
 ```
 
 ---

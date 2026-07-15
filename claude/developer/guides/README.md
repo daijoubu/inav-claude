@@ -24,6 +24,60 @@ These guides should be read by:
 - **`/create-pr` skill** - Reads and enforces `CRITICAL-BEFORE-PR.md`
 - **`test-engineer` agent** - Has `CRITICAL-BEFORE-TEST.md` in its instructions
 
+## Memory Policy
+
+**Lessons-in-docs is the harness's memory system.** There is no semantic/vector memory
+store — the ChromaDB pipeline (per-prompt injection, session ingestion, forget tooling)
+was retired 2026-07-10 (see `claude/projects/active/retire-chromadb-memory-stack/`,
+or `completed/` once the manager archives it): it ran on every prompt, its disable
+switches were uncommitted, and it structurally couldn't share memory across sessions,
+roles, and the human the way a doc committed to git does.
+
+**Placement rules** — when you learn something worth keeping, put it where the next
+reader who needs it will already be looking:
+
+| Kind of lesson | Where it goes |
+|-----------------|----------------|
+| Workflow lesson (how to do a step correctly) | The owning `CRITICAL-*.md` guide above |
+| Domain/reference fact (protocol quirk, target detail, library behavior) | The owning agent's instructions or its `docs/` reference |
+| SITL behavior/quirk | `test-engineer` agent references |
+
+If none of those own the topic, use judgment on the nearest fitting guide rather than
+creating a new catch-all file. The Claude Code auto-memory feature (`MEMORY.md` under
+`~/.claude/projects/.../memory/`) is intentionally stubbed out — see its own note — in
+favor of this policy.
+
+## Capture Rubric
+
+At task completion (17-step workflow steps 13-14, and `/finish-task`), **decide —
+don't default to writing.** The gate is "did you consider it," never "did you
+produce something."
+
+**Lesson worth recording?** Yes if it's non-obvious and would generalize: a hidden
+constraint, a workaround for a specific broken tool/environment, a mapping or trap
+that will recur on similar future work (e.g. "DMA option N maps to stream X, shared
+with peripheral Y"), a wrong assumption that cost real time to unwind. No if it's
+routine, already documented, or specific to this exact task with no generalization.
+
+If yes, first check whether the lesson has a clear, specific triggering tool or
+command (e.g. "whenever `X` is run, remember Y") — if so, prefer adding a short
+(1-3 line) rule to `.claude/hooks/tool_context_injections.yaml` instead of, or in
+addition to, the guide entry. It reaches the model deterministically at the moment
+of action rather than depending on the guide being read; see that file's header for
+the schema and the "keep it short, point at docs for detail" convention. Otherwise
+— or for anything broader than a single command trigger — add one line to the
+topic's existing "Self-Improvement" section, or update the guide as appropriate
+(see Placement rules above). If no, do nothing further.
+
+**Tooling worth keeping?** Yes if a plausible *future* task — not just this one —
+would reuse the script/test harness/checklist as-is or with minor changes. No if
+it's task-specific glue that only works for this exact bug/target, or duplicates an
+existing agent/skill/script. If yes, move it out of the gitignored `workspace/` to
+its existing destination: shared scripts to `claude/developer/scripts/<category>/`,
+agent-specific tools to `claude/agents/<agent-name>/scripts/` (see this README's
+"Continuous Improvement" section) — with a one-line note on what it's for. If no,
+do nothing further.
+
 ## Design Philosophy
 
 **Problem:** 840-line README is overwhelming; critical rules get forgotten.

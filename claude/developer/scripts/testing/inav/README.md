@@ -69,6 +69,58 @@ claude/test_tools/inav/
 
 ## MSP Tools (msp/)
 
+### Timer Output Mode / Buzzer Output Mapping (msp/)
+
+Tools for verifying runtime timer-output-mode assignment (PR #11675,
+"BUZZER as a runtime-assignable timer output mode") and related
+output-mapping hardware behavior, entirely via MSP -- no CLI required.
+
+- **msp_helpers.py** - Shared helpers used by the scripts below:
+  `open_and_check()` (connect + sanity-check MSP_API_VERSION, with clear
+  diagnostics on failure/CLI-mode), `wait_for_port()` (poll for the serial
+  device node to reappear after a reboot, requiring it to stay stable for a
+  bit to dodge a double-enumeration race seen on some H7 boards), and
+  `save_and_reboot()` (MSP_EEPROM_WRITE + MSP_REBOOT + reconnect). Import
+  this in any new script that needs to persist a config change and verify
+  it survived a reboot.
+
+- **query_output_state.py** - Read-only dump of `MSP2_INAV_TIMER_OUTPUT_MODE`
+  (0x200E, all timer override slots) and `MSP2_INAV_OUTPUT_MAPPING_EXT2`
+  (0x210D, per-pad usageFlags/TIM_USE_BEEPER). Use this first, before and
+  after any change, to see the current state without side effects.
+  **Usage:** `python3 query_output_state.py` (hardcoded to /dev/ttyACM0;
+  edit the `port=` kwarg for a different device).
+
+- **apply_timer_override.py** - Set a single timer's runtime output mode via
+  `MSP2_INAV_SET_TIMER_OUTPUT_MODE` (0x200F), then EEPROM_WRITE + REBOOT +
+  reconnect + read back to confirm it persisted. Works for any
+  `outputMode_e` value (0=AUTO 1=MOTORS 2=SERVOS 3=LED 4=PINIO 5=BEEPER).
+  **Usage:** `python3 apply_timer_override.py <port> <timer_index> <output_mode>`
+
+- **setup_msp_rx_beeper_switch.py** / **beep_via_msp_rc.py** /
+  **revert_msp_rx_beeper_switch.py** - A 3-step toolkit to trigger
+  BOXBEEPERON (or any other BOX mode -- see docstring) purely via MSP, with
+  no physical receiver required: temporarily switches `receiverType` to
+  `RX_TYPE_MSP` and maps a spare AUX channel to the target BOX mode via
+  `MSP_SET_MODE_RANGE`, then drives it with a continuous `MSP_SET_RAW_RC`
+  stream. **Only use on a bench FC with no real receiver connected** --
+  switching `receiverType` away from a configured serial receiver (e.g.
+  CRSF) would drop a real control link. Backs up the original
+  `MSP_RX_CONFIG` / mode-range slot to `.hex` files in the working directory
+  (or a `backup_dir` you pass in) before changing anything, so the revert
+  script can restore byte-for-byte. This is the safe alternative to using
+  CLI's `play_sound` or MSP_ACC_CALIBRATION (the latter can silently wipe
+  accelerometer calibration -- see the warning in the deprecated
+  `trigger_beep_test.py`, kept only as a historical cautionary example, not
+  copied here).
+  **Usage:**
+  ```
+  python3 setup_msp_rx_beeper_switch.py <port> [backup_dir]
+  python3 beep_via_msp_rc.py <port> [duration_seconds]
+  # ... revert when done:
+  python3 revert_msp_rx_beeper_switch.py <port> [backup_dir] [mode_range_slot]
+  ```
+
 ### Benchmark (msp/benchmark/)
 
 Performance testing tools for MSP protocol:

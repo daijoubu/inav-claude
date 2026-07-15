@@ -2,7 +2,7 @@
 
 **STOP! Complete this checklist before running `gh pr create` or `/create-pr`:**
 
-**Use the TodoWrite tool to track each step as you complete it.**
+**Use a task list tool to track each step as you complete it.**
 
 ---
 
@@ -119,17 +119,15 @@ Present the new commits and ask: *"Upstream has N new commits since we branched.
 
 ### 1. Review Changes
 
-Determine your base branch:
-- **INAV backward-compatible:** `maintenance-9.x`
-- **INAV breaking changes:** `maintenance-10.x`
-- **PrivacyLRS:** `secure_01`
-- **Never PR to master**
+Determine your base branch from `.claude/skills/git-workflow/SKILL.md` ("Creating
+Branches") — it's the single authority and includes any active temporary override.
+**Never PR to master.**
 
-Then review:
+Then review (substitute the base branch you actually branched from):
 ```bash
 git status
-git diff maintenance-9.x...HEAD  # or maintenance-10.x or secure_01
-git log maintenance-9.x..HEAD    # or maintenance-10.x or secure_01
+git diff <base-branch>...HEAD
+git log <base-branch>..HEAD
 ```
 
 ### 2. Verify All Changes Committed
@@ -144,7 +142,12 @@ If uncommitted changes exist, commit them first (see `CRITICAL-BEFORE-COMMIT.md`
 git push -u origin branch-name
 ```
 
-If you have "network problems", that's the sandbox. use dangerouslyDisableSandbox: true
+Plain `git push` to origin is safe and approved — never force-push. If the push fails
+with "Network is unreachable" or "Connection refused", that's the sandbox blocking the
+operation — NOT a network outage. Retry once (`github.com` and `ssh.github.com` are
+allowlisted). If the sandbox still blocks this specific push, it is an approved
+exception: retry with `dangerouslyDisableSandbox: true`. Do not generalize this to
+other operations (see "Sandbox Restrictions" in the git-workflow skill).
 
 ### 4. Create PR
 
@@ -164,6 +167,8 @@ env -u GITHUB_TOKEN -u GH_TOKEN gh pr create --title "Title" --body "Description
 
 Use `/create-pr` skill or the command above.
 IMPORTANT **Never open a pull request to the master branch**
+
+**Set the milestone (and any applicable category label, e.g. "New target") when creating the PR** — see "Choosing Labels and Milestone" in `.claude/skills/create-pr/INAV-PR.md` for the current mapping.
 
 **PR Description Requirements:**
 
@@ -198,7 +203,10 @@ Reviewed with inav-code-review agent - no critical issues found.
 Fixes #1234
 ```
 
-If you have "network problems", that's the sandbox. use dangerouslyDisableSandbox: tru
+If `gh pr create` fails with network errors, that's the sandbox blocking an unapproved
+network operation — NOT a network outage. Do not disable the sandbox. Ask the user to
+approve the operation or run it manually (see "Sandbox Restrictions" in the git-workflow
+skill).
 
 ---
 

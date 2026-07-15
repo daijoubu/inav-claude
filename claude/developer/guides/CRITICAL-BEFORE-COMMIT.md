@@ -2,7 +2,7 @@
 
 **Complete this checklist before running `git commit`:**
 
-**Use the TodoWrite tool to track each step as you complete it.**
+**Use a task list tool to track each step as you complete it.**
 
 ## Git Best Practices
 

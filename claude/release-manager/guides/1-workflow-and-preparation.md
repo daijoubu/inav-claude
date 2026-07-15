@@ -8,6 +8,9 @@
 - Phase 4: [Building Locally](4-building-locally.md)
 - Phase 5: [Changelog and Notes](5-changelog-and-notes.md)
 - Phase 6: [Creating Releases](6-creating-releases.md)
+- Phase 7: [Publishing Releases](7-publishing-releases.md)
+- Phase 8: [Post-Release](8-post-release.md)
+- [PG Validation](pg-validation.md) — not phase-numbered; run right after freeze, before Phase 2 (see Step 0.6 below)
 
 ---
 
@@ -32,6 +35,42 @@ X.Y.Z-rcN    (lowercase rc, hyphen-separated, no spaces)
 Respond: *"I'll use `9.1.0-rc2` as the version string for all filenames, tags, and directories — confirm?"*
 
 Use this string **everywhere**: directory names, rename script argument, release tag, GitHub release title.
+
+---
+
+## ⚠️ Step 0.5: Lock the Repo Before Any Local Build/Validation
+
+`inav/` and `inav-configurator/` are shared working directories — other roles (Developer) check out and commit to them concurrently. A build or PG-validation run in an unlocked checkout can have its `HEAD` moved out from under it mid-run, silently invalidating the result.
+
+Before checking out a release branch locally (yourself or via the inav-builder agent) for anything that needs a pinned commit:
+
+```bash
+cat claude/locks/inav.lock 2>/dev/null && echo "LOCKED - STOP" || echo "Available"
+# if available:
+cat > claude/locks/inav.lock << EOF
+LOCKED_BY: Release Manager
+TASK: <what you're building/verifying>
+LOCKED_AT: $(date '+%Y-%m-%d %H:%M')
+BRANCH: <branch-name>
+EOF
+```
+
+Same pattern for `claude/locks/inav-configurator.lock`. Full rules: `claude/locks/README.md`. **Release the lock (`rm claude/locks/inav.lock`) as soon as your build/verification is done** — don't hold it for the whole release process, only for the parts that actually touch the shared checkout.
+
+If a build must run unattended or for a while, prefer an isolated `git clone` to a scratch path over the shared checkout regardless — the lock protects against concurrent writers, but an isolated clone also avoids `HEAD` being reused for something else between your checkout and your verification.
+
+---
+
+## ⚠️ Step 0.6: Run PG Validation Now, Before Downloading Anything
+
+Run [PG Validation](pg-validation.md) against the freeze commit **now** — before Phase 2's artifact downloads, not after. If it fails, you need a hotfix PR and a new freeze point, and there's no reason to spend time downloading/verifying artifacts or writing changelog notes for a commit that's about to be superseded.
+
+```bash
+cd inav
+./cmake/validate-pg-for-release.sh
+```
+
+If it fails, see [PG Validation](pg-validation.md) for the fix procedure, then re-freeze and re-run this step before proceeding.
 
 ---
 
@@ -75,7 +114,7 @@ This guide covers the complete release workflow and preparation steps you need t
 6. Generate changelog
    ├── List PRs since last tag
    ├── Categorize changes
-   ├── **Identify incompatible settings** (./find-incompatible-settings.sh)
+   ├── **Identify incompatible settings** (./scripts/find-incompatible-settings.sh)
    └── Format release notes
 
 7. Create tags and draft releases (ONLY after artifacts verified)
@@ -200,6 +239,8 @@ Both firmware and configurator GitHub releases follow the same cumulative patter
 
 ## Pre-Release Checklist
 
+⚠️ **Re-check this list at the actual freeze point, not from an earlier snapshot.** A list of "still-open" candidate PRs or "no blocker issues" compiled earlier in a long release session can go stale — PRs merge, issues get filed, mid-session. Re-run the actual `gh pr list`/`gh issue list` queries right before you rely on the results for milestone bookkeeping or freeze sign-off, don't reuse an earlier answer from the same session.
+
 ### Code Readiness
 
 - [ ] All planned PRs merged
@@ -207,11 +248,12 @@ Both firmware and configurator GitHub releases follow the same cumulative patter
 - [ ] No critical open issues blocking release
 - [ ] Version numbers updated in both repositories
 - [ ] SITL binaries updated in configurator
+- [ ] **PG validation passed** (see [Step 0.6](#️-step-06-run-pg-validation-now-before-downloading-anything) above — run this before Phase 2, not after)
 
 ### Documentation
 
 - [ ] Release notes drafted
-- [ ] **Incompatible settings changes identified and added to release notes** (use find-incompatible-settings.sh)
+- [ ] **Incompatible settings changes identified and added to release notes** (use scripts/find-incompatible-settings.sh)
 - [ ] Breaking changes documented
 - [ ] New features documented
 
@@ -220,18 +262,8 @@ Both firmware and configurator GitHub releases follow the same cumulative patter
 - [ ] Firmware hex files downloaded and renamed
 - [ ] Configurator artifacts organized by platform (linux/, macos/, windows/)
 - [ ] macOS DMG contents verified (no .exe files, correct architecture)
-- [ ] **Windows SITL cygwin1.dll verified** (use verify-windows-sitl.sh)
+- [ ] **Windows SITL cygwin1.dll verified** (use scripts/verify-windows-sitl.sh)
 - [ ] **Configurator SITL tested** (launch SITL, verify version matches firmware)
-
----
-
-## Post-Release Tasks
-
-- [ ] Announce release (Discord, forums, etc.)
-- [ ] Update any pinned issues
-- [ ] Monitor for critical bug reports
-- [ ] Prepare hotfix if needed
-- [ ] Update this document with any lessons learned
 
 ---
 
@@ -240,3 +272,4 @@ Both firmware and configurator GitHub releases follow the same cumulative patter
 Once you've verified release readiness:
 
 **→ Proceed to [Phase 2: Downloading Artifacts](2-downloading-artifacts.md)**
+

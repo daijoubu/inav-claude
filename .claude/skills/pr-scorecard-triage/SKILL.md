@@ -376,7 +376,7 @@ Moving to next PR...
 
 ## Notes
 
-- GitHub API calls may need `dangerouslyDisableSandbox: true`
+- If GitHub API calls fail with network errors, that's the sandbox — ask the user to approve the operation rather than disabling the sandbox (`api.github.com` is allowlisted, so failures usually mean something else is wrong)
 - `CACHE_STATUS=fresh` means use cached score — no re-fetch, no re-record
 - `CACHE_STATUS=unscored` or `expired` means fetch fresh and record
 - The prefetch model keeps you from waiting between PRs

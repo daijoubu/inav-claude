@@ -1,0 +1,90 @@
+Keyword: bank
+Occurrences: 86
+================================================================================
+
+Page    3: 13.1          User Bank 0 Register Map................................................................................................................... 49
+Page    3: 13.2          User Bank 1 Register Map................................................................................................................... 50
+Page    3: 13.3          User Bank 2 Register Map................................................................................................................... 50
+Page    3: 13.4          User Bank 4 Register Map................................................................................................................... 51
+Page    3: 14      User Bank 0 Register Map – Descriptions .......................................................................................................... 52
+Page    5: 14.48       REG_BANK_SEL ................................................................................................................................... 71
+Page    5: 15      User Bank 1 Register Map – Descriptions .......................................................................................................... 72
+Page    5: 15.17       OTP_MEM_BANK_SEL ........................................................................................................................ 76
+Page    5: 16      User Bank 2 Register Map – Descriptions .......................................................................................................... 78
+Page    5: 17      User Bank 4 Register Map – Descriptions .......................................................................................................... 80
+Page   24: Parameters NF_COSWZ are defined for each axis of the gyroscope as GYRO_X_NF_COSWZ (register bank 1, register 0x0Fh & register
+Page   24: 0x12h), GYRO_Y_NF_COSWZ (register bank 1, register 0x10h & register 0x12h), GYRO_Z_NF_COSWZ (register bank 1, register 0x11h
+Page   24: Parameters NF_COSWZ_SEL are defined for each axis of the gyroscope as GYRO_X_NF_COSWZ_SEL (register bank 1, register 0x12h,
+Page   24: bit 3), GYRO_Y_NF_COSWZ_SEL (register bank 1, register 0x12h, bit 4), GYRO_Z_NF_COSWZ_SEL (register bank 1, register 0x12h, bit
+Page   25: GYRO_NF_BW_SEL in register bank 1, register 0x13h, bits 6:4. This parameter is common to all three axes.
+Page   25: The notch filter can be selected or bypassed by using the parameter GYRO_NF_DIS in register bank 1, register 0x0Bh, bit 0 as shown
+Page   25: a.    Register bank 2, register 0x03h, bits 6:1, ACCEL_AAF_DELT: Code from 1 to 63 that allows programming the
+Page   25: b.    Register bank 2, register 0x04h, bits 7:0 and Bank 2, register 0x05h, bits 3:0, ACCEL_AAF_DELTSQR: Square of the
+Page   25: c.    Register bank 2, register 0x05h, bits 7:4, ACCEL_AAF_BITSHIFT: Bitshift value for accelerometer used in hardware
+Page   25: d.    Register bank 1, register 0x0Ch, bits 5:0, GYRO_AAF_DELT: Code from 1 to 63 that allows programming the
+Page   25: e.    Register bank 1, register 0x0Dh, bits 7:0 and Bank 1, register 0x0Eh, bits 3:0, GYRO_AAF_DELTSQR: Square of the
+Page   25: f.    Register bank 1, register 0x0Eh, bits 7:4, GYRO_AAF_BITSHIFT: Bitshift value for gyroscope used in hardware
+Page   27: The anti-alias filter can be selected or bypassed for the gyroscope by using the parameter GYRO_AAF_DIS in register bank 1, register
+Page   27: The anti-alias filter can be selected or bypassed for the accelerometer by using the parameter ACCEL_AAF_DIS in register bank 2,
+Page   27: bank 0, registers 0x77h through 0x7Fh (bank 4) as shown below.
+Page   28: Gyroscope filter order can be selected by programming the parameter GYRO_UI_FILT_ORD in register bank 0, register 0x51h, bits
+Page   28: Accelerometer filter order can be selected by programming the parameter ACCEL_UI_FILT_ORD in register bank 0, register 0x53h,
+Page   28: bank 0, register 0x52h, bits 3:0, and the parameter ACCEL_UI_FILT_BW in register bank 0, register 0x52h, bits 7:4, as shown below.
+Page   32: Gyroscope ODR can be selected by programming the parameter GYRO_ODR in register bank 0, register 0x4Fh, bits 3:0 as shown
+Page   32: Gyroscope FSR can be selected by programming the parameter GYRO_FS_SEL in register bank 0, register 0x4Fh, bits 7:5 as shown
+Page   33: Accelerometer ODR can be selected by programming the parameter ACCEL_ODR in register bank 0, register 0x50h, bits 3:0 as shown
+Page   33: Accelerometer FSR can be selected by programming the parameter ACCEL_FS_SEL in register bank 0, register 0x50h, bits 7:5 as
+Page   36: The following control bits in bank 0, register 0x5Fh determine what data is placed into the FIFO. The values of these bits may change
+Page   38: 1. WOM_X_TH (Register 0x4Ah in Bank 4)
+Page   38: 2. WOM_Y_TH (Register 0x4Bh in Bank 4)
+Page   38: 3. WOM_Z_TH (Register 0x4Ch in Bank 4)
+Page   38: 4. WOM_INT_MODE (Register 0x57h in Bank 0)
+Page   38: 5. WOM_MODE (Register 0x57h in Bank 0)
+Page   38: 6. WOM_MODE1 (Register 0x57h in Bank 0)
+Page   38: 1. Set accelerometer ODR (Register 0x50h in Bank 0)
+Page   38: 2. Set Accel to Low Power mode (Register 0x4Eh in Bank 0)
+Page   38: ACCEL_MODE = 2 and (Register 0x4Dh in Bank 0), ACCEL_LP_CLK_SEL = 0, for low power mode
+Page   38: 1. Set WOM_X_TH to 98 (Register 0x4Ah in Bank 4)
+Page   38: 2. Set WOM_Y_TH to 98 (Register 0x4Bh in Bank 4)
+Page   38: 3. Set WOM_Z_TH to 98 (Register 0x4Ch in Bank 4)
+Page   38: 5. Set WOM_INT_MODE to 0 (Register 0x57h in Bank 0)
+Page   38: 6. Set WOM_MODE to 1 (Register 0x57h in Bank 0)
+Page   38: 7. Set WOM_MODE1 to 1 (Register 0x57h in Bank 0)
+Page   38: 9. Enable all 3 axes as WOM sources for INT1 by setting bits 2:0 in register INT_SOURCE1 (Register 0x66h in Bank
+Page   38: INT_SOURCE4 (Register 0x69h in Bank 0) to 1.
+Page   38: 1. Read interrupt register (Register 0x37h in Bank 0) for WOM_X_INT
+Page   38: 2. Read interrupt register (Register 0x37h in Bank 0) for WOM_Y_INT
+Page   38: 3. Read interrupt register (Register 0x37h in Bank 0) for WOM_Z_INT
+Page   46: The chip ID information is stored in an OTP bank at the time of manufacturing. It consists of 15-bit DieID, 5-bit WaferID, and 36-bit
+Page   46: 1.   Write 0x00 to register 0x76 which is accessible from all register banks, to select register bank 0
+Page   46: 4.   Write 0x01 to register 0x76, to select register bank 1
+Page   46: 6.   Write 0x13 to register 0x72, for OTP bank address selection
+Page   48: I2C_SLEW_RATE (bits 5:3, register DRIVE_CONFIG, address 0x13, bank 0)            1                    0
+Page   48: SPI_SLEW_RATE (bits 2:0, register DRIVE_CONFIG, address 0x13, bank 0)            1                    5
+Page   49: This section lists the register map for the ICM-42605, for user banks 0, 1, 2, 4.
+Page   49: 13.1          USER BANK 0 REGISTER MAP
+Page   50: 76           118         REG_BANK_SEL        R/W                                       -                                                                BANK_SEL
+Page   50: 13.2          USER BANK 1 REGISTER MAP
+Page   50: 72           114       OTP_MEM_BANK_SEL      R/W                                                               OTP_BANK_SEL
+Page   50: 13.3          USER BANK 2 REGISTER MAP
+Page   51: 13.4          USER BANK 4 REGISTER MAP
+Page   52: 14 USER BANK 0 REGISTER MAP – DESCRIPTIONS
+Page   52: This section describes the function and contents of each register within USR Bank 0.
+Page   71: 14.48    REG_BANK_SEL
+Page   71: Note: This register is accessible from all register banks
+Page   71: Name: REG_BANK_SEL
+Page   71: Register bank selection
+Page   71: 000: Bank 0 (default)
+Page   71: 001: Bank 1
+Page   71: 010: Bank 2
+Page   71: 2:0     BANK_SEL                      011: Bank 3
+Page   71: 100: Bank 4
+Page   72: 15 USER BANK 1 REGISTER MAP – DESCRIPTIONS
+Page   72: This section describes the function and contents of each register within USR Bank 1.
+Page   76: 15.17    OTP_MEM_BANK_SEL
+Page   76: Name: OTP_MEM_BANK_SEL
+Page   76: 7:0 OTP_BANK_SEL           Write values to this register as described in Section 11, for accessing chip ID
+Page   78: 16 USER BANK 2 REGISTER MAP – DESCRIPTIONS
+Page   78: This section describes the function and contents of each register within USR Bank 2.
+Page   80: 17 USER BANK 4 REGISTER MAP – DESCRIPTIONS
+Page   80: This section describes the function and contents of each register within USR Bank 4.

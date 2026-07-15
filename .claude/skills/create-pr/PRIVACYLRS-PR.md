@@ -112,7 +112,7 @@ Focus on security/privacy implications if relevant.
 git push -u origin your-branch-name
 ```
 
-*(If sandbox blocks SSH, or you see "network" problems: retry with `dangerouslyDisableSandbox: true`)*
+*(Plain `git push` to origin is safe and approved — never force-push. "Network" errors here mean the sandbox is blocking the push, not an outage. Retry once — `github.com` and `ssh.github.com` are allowlisted. If the sandbox still blocks this specific push, it is an approved exception: retry with `dangerouslyDisableSandbox: true`. Do not generalize this to other operations.)*
 
 ---
 
@@ -145,7 +145,7 @@ EOF
 )"
 ```
 
-*(If sandbox blocks network access: retry with `dangerouslyDisableSandbox: true`)*
+*(If this fails with network errors, that's the sandbox — ask the user to approve the operation or run it manually rather than disabling the sandbox.)*
 
 ---
 

@@ -70,7 +70,10 @@ bash claude/developer/scripts/triage/pr-scorecard.sh iNavFlight/inav <PR_NUMBER>
 If the output contains `CACHE_HIT=true`, display the cached scorecard and **stop
 here** — do not re-score, do not call the record script again.
 
-If GitHub API calls fail on a fresh fetch, retry with `dangerouslyDisableSandbox: true`.
+If GitHub API calls fail on a fresh fetch with network errors, that's the sandbox
+blocking the operation — not a network outage (`api.github.com` is in the sandbox
+allowlist, so this should be rare). Do not disable the sandbox; ask the user to
+approve the operation or run it manually.
 
 When fetching fresh data, also run the `check-pr-bots` agent in parallel to
 capture automated review issues that the script cannot detect:
@@ -333,7 +336,7 @@ One paragraph: what would move this from its current score to the next tier.
 - Use `/pr-review` or the `inav-code-review` agent for code-quality review
 - Use `/pr-triage` for milestone assignment
 - The `check-pr-bots` agent finds specific bot-flagged issues not captured by this script
-- GitHub API calls may need `dangerouslyDisableSandbox: true` due to network sandbox restrictions
+- If GitHub API calls hit network sandbox restrictions, ask the user to approve the operation — do not disable the sandbox (`api.github.com` is allowlisted, so failures usually mean something else is wrong)
 
 ---
 

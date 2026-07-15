@@ -1,4 +1,4 @@
-# Phase 6: Creating and Publishing Releases
+# Phase 6: Creating and Uploading Releases
 
 **Read this guide when:** Artifacts are verified and release notes are ready
 
@@ -10,14 +10,17 @@
 - [Phase 1: Workflow and Preparation](1-workflow-and-preparation.md)
 - [Phase 3: Verifying Artifacts](3-verifying-artifacts.md)
 - [Phase 5: Changelog and Notes](5-changelog-and-notes.md)
+- [Phase 7: Publishing Releases](7-publishing-releases.md)
 
 ---
 
 ## Overview
 
-This guide covers creating tags, draft releases, uploading assets, and publishing releases on GitHub.
+This guide covers creating tags, draft releases, and uploading assets on GitHub. Once assets are uploaded and verified, proceed to [Phase 7](7-publishing-releases.md) to publish and announce.
 
 ---
+
+⚠️ **If `gh release create`/`upload`/`edit` returns 403 "Resource not accessible by personal access token":** same restricted-`GITHUB_TOKEN` issue as guide 2's branch-push section. The restriction is intentional. **Ask the human user before dropping it, every time** — see guide 2's warning; it applies here too, and a prior authorization elsewhere in the session doesn't carry over to release creation.
 
 ## Check Latest Tags
 
@@ -49,6 +52,8 @@ git tag --sort=-v:refname | head -10
 - Can specify exact commit by SHA
 - Creates draft releases for review before publishing
 
+⚠️ **"Atomically" only applies once published.** For a `--draft` release, GitHub does **not** push an actual Git tag ref into the repository yet — the draft just stores the target commitish and the intended tag name internally. `git ls-remote --tags` (or any clone) won't see the tag until the release is published. Don't be surprised that the tag "doesn't exist" while a draft is pending review — that's expected, not a bug.
+
 ### Choosing the Target Commit When the Branch Has Advanced
 
 If new commits landed on the release branch after the CI artifacts were built, check whether those commits affect compiled firmware:
@@ -65,17 +70,17 @@ git show --stat <each-new-commit>
 
 ```bash
 # Create release + tag at specific commit on GitHub (no local repo access needed)
-gh release create 9.0.0-rc3 \
+gh release create 9.1.1-rc1 \
   --repo iNavFlight/inav \
   --target 34e3e4b3d8525931f825e766c28749a4c6342963 \
-  --title "INAV 9.0.0-rc3 release candidate for testing" \
-  --notes-file claude/release-manager/9.0.0-rc3-firmware-release-notes.md \
+  --title "INAV 9.1.1-rc1 release candidate for testing" \
+  --notes-file claude/release-manager/releases/9.1.1-rc1/9.1.1-rc1-firmware-release-notes.md \
   --prerelease \
   --draft
 ```
 
 **Parameters explained:**
-- `9.0.0-rc3` - The tag name
+- `9.1.1-rc1` - The tag name
 - `--target` - Specific commit SHA to tag
 - `--title` - Release title shown on GitHub
 - `--notes-file` - Path to release notes markdown file
@@ -86,11 +91,11 @@ gh release create 9.0.0-rc3 \
 
 ```bash
 # Create release + tag at specific commit
-gh release create 9.0.0-rc3 \
+gh release create 9.1.1-rc1 \
   --repo iNavFlight/inav-configurator \
   --target 9dbd346dcf941b31f97ccb8418ede367044eb93c \
-  --title "INAV Configurator 9.0.0-rc3 release candidate for testing" \
-  --notes-file claude/release-manager/9.0.0-rc3-configurator-release-notes.md \
+  --title "INAV Configurator 9.1.1-rc1 release candidate for testing" \
+  --notes-file claude/release-manager/releases/9.1.1-rc1/9.1.1-rc1-configurator-release-notes.md \
   --prerelease \
   --draft
 ```
@@ -100,11 +105,11 @@ gh release create 9.0.0-rc3 \
 For final releases, omit the `--prerelease` flag:
 
 ```bash
-gh release create 9.0.0 \
+gh release create 9.1.1 \
   --repo iNavFlight/inav \
   --target <commit-sha> \
-  --title "INAV 9.0.0" \
-  --notes-file claude/release-manager/9.0.0-firmware-release-notes.md \
+  --title "INAV 9.1.1" \
+  --notes-file claude/release-manager/releases/9.1.1/9.1.1-firmware-release-notes.md \
   --draft
 ```
 
@@ -120,19 +125,19 @@ Upload by platform to maintain organization:
 
 ```bash
 # Upload configurator builds by platform
-cd claude/release-manager/downloads/configurator-9.0.0-rc3
+cd claude/release-manager/downloads/configurator-9.1.1-rc1
 
-gh release upload 9.0.0-rc3 linux/* --repo iNavFlight/inav-configurator
-gh release upload 9.0.0-rc3 macos/* --repo iNavFlight/inav-configurator
-gh release upload 9.0.0-rc3 windows/* --repo iNavFlight/inav-configurator
+gh release upload 9.1.1-rc1 linux/* --repo iNavFlight/inav-configurator
+gh release upload 9.1.1-rc1 macos/* --repo iNavFlight/inav-configurator
+gh release upload 9.1.1-rc1 windows/* --repo iNavFlight/inav-configurator
 ```
 
 ### Upload Firmware Hex Files
 
 ```bash
 # Upload firmware hex files
-cd ../firmware-9.0.0-rc3
-gh release upload 9.0.0-rc3 *.hex --repo iNavFlight/inav
+cd ../firmware-9.1.1-rc1
+gh release upload 9.1.1-rc1 *.hex --repo iNavFlight/inav
 ```
 
 **Note:** Files should already be renamed (CI suffix removed, RC number added) as per Phase 2.
@@ -145,19 +150,19 @@ Ensure assets follow these naming patterns:
 
 ### Firmware (RC releases)
 - Pattern: `inav_<version>_RC<n>_<TARGET>.hex`
-- Example: `inav_9.0.0_RC2_MATEKF405.hex`
+- Example: `inav_9.1.1_RC2_MATEKF405.hex`
 
 ### Firmware (final releases)
 - Pattern: `inav_<version>_<TARGET>.hex`
-- Example: `inav_9.0.0_MATEKF405.hex`
+- Example: `inav_9.1.1_MATEKF405.hex`
 
 ### Configurator (RC releases)
 - Pattern: `INAV-Configurator_<platform>_<version>_RC<n>.<ext>`
-- Example: `INAV-Configurator_linux_x64_9.0.0_RC2.deb`
+- Example: `INAV-Configurator_linux_x64_9.1.1_RC2.deb`
 
 ### Configurator (final releases)
 - Pattern: `INAV-Configurator_<platform>_<version>.<ext>`
-- Example: `INAV-Configurator_linux_x64_9.0.0.deb`
+- Example: `INAV-Configurator_linux_x64_9.1.1.deb`
 
 ---
 
@@ -188,7 +193,7 @@ gh api repos/iNavFlight/inav/releases/RELEASE_ID/assets --paginate --jq '.[] | "
 
 cat /tmp/assets.txt | while read -r id name; do
   target=$(echo "$name" | sed -E 's/inav_[0-9]+\.[0-9]+\.[0-9]+_(.*)_ci-.*/\1/')
-  newname="inav_9.0.0_RC2_${target}.hex"
+  newname="inav_9.1.1_RC2_${target}.hex"
   gh api -X PATCH "repos/iNavFlight/inav/releases/assets/$id" -f name="$newname" --silent
 done
 ```
@@ -218,92 +223,17 @@ gh release list --repo iNavFlight/inav-configurator --limit 10
 
 ```bash
 # View release details
-gh release view 9.0.0-rc3 --repo iNavFlight/inav
-gh release view 9.0.0-rc3 --repo iNavFlight/inav-configurator
+gh release view 9.1.1-rc1 --repo iNavFlight/inav
+gh release view 9.1.1-rc1 --repo iNavFlight/inav-configurator
 ```
 
 ### Edit Release Notes
 
 ```bash
 # Edit release notes after creating draft
-gh release edit 9.0.0-rc3 --repo iNavFlight/inav \
-  --notes-file claude/release-manager/9.0.0-rc3-firmware-release-notes.md
+gh release edit 9.1.1-rc1 --repo iNavFlight/inav \
+  --notes-file claude/release-manager/releases/9.1.1-rc1/9.1.1-rc1-firmware-release-notes.md
 ```
-
----
-
-## Publishing Releases
-
-> **🚨 AGENT RULE: Do NOT publish releases without explicit human instruction.**
->
-> Publishing a release is irreversible and immediately public to all INAV users worldwide. The agent must never run `--draft=false` or any publish command on its own initiative. Wait until the human user explicitly says to publish (e.g., "publish the firmware release now"). "Maintainer approval obtained" is not sufficient — the human user in this session must give the direct instruction.
-
-**Only publish after:**
-- All assets uploaded and verified
-- Release notes reviewed and approved
-- Maintainer approval obtained
-- Final SITL testing completed
-
-### Publish Draft Release
-
-**Publish firmware first, then verify before publishing configurator.**
-
-```bash
-# Step 1: Publish firmware release  (only run when user explicitly instructs)
-gh release edit 9.0.0-rc3 --repo iNavFlight/inav --draft=false
-```
-
-#### Step 2: Verify Configurator Sees the Firmware Release
-
-After publishing firmware, open INAV Configurator and go to the Firmware Flasher tab. Verify that the new firmware version appears in the release list. This confirms the GitHub release is properly formatted and discoverable by the configurator's firmware download logic.
-
-**This step must be done by a human** - it requires running the configurator and visually confirming the release appears.
-
-```bash
-# Step 3: Publish configurator release (only after firmware is verified in flasher)
-gh release edit 9.0.0-rc3 --repo iNavFlight/inav-configurator --draft=false
-```
-
-**Note:** The human user must perform the final configurator publish step.
-
-### Verify Published Releases
-
-After publishing, verify on GitHub:
-
-**Firmware:** https://github.com/iNavFlight/inav/releases
-**Configurator:** https://github.com/iNavFlight/inav-configurator/releases
-
-Check:
-- Tag was created correctly
-- All assets are present
-- Release notes are correct
-- Downloads work
-- Configurator firmware flasher lists the new release
-
----
-
-## Post-Publication Tasks
-
-After publishing releases:
-
-1. **Announce release**
-   - Discord
-   - Forums
-   - Social media
-
-2. **Monitor for issues**
-   - Watch GitHub issues
-   - Check Discord for user reports
-   - Monitor RC feedback
-
-3. **Update documentation**
-   - Mark release as complete in project tracking
-   - Update any pinned issues
-   - Document any lessons learned
-
-4. **Prepare for next RC or final release**
-   - If RC, monitor feedback for next iteration
-   - If final, prepare for potential hotfixes
 
 ---
 
@@ -314,13 +244,13 @@ If you can't use `gh release create` for some reason, you can create tags locall
 ```bash
 # Create tag locally
 cd inav
-git tag -a 9.0.0-rc3 -m "INAV 9.0.0-rc3"
+git tag -a 9.1.1-rc1 -m "INAV 9.1.1-rc1"
 
 # Push tag to GitHub
-git push origin 9.0.0-rc3
+git push origin 9.1.1-rc1
 
 # Then create release
-gh release create 9.0.0-rc3 --draft --title "INAV 9.0.0-rc3" --notes-file release-notes.md
+gh release create 9.1.1-rc1 --draft --title "INAV 9.1.1-rc1" --notes-file release-notes.md
 ```
 
 However, using `gh release create` with `--target` is preferred as it works even when repos are locked.
@@ -333,7 +263,7 @@ However, using `gh release create` with `--target` is preferred as it works even
 
 **Error: "Reference already exists"**
 - Tag already exists on GitHub
-- Check: `git ls-remote --tags origin | grep 9.0.0-rc3`
+- Check: `git ls-remote --tags origin | grep 9.1.1-rc1`
 - Solution: Delete tag if incorrect, or use existing tag
 
 **Error: "Not found"**
@@ -362,9 +292,6 @@ gh release create <version> --repo <owner/repo> --target <commit> --draft --prer
 # Upload assets
 gh release upload <version> <files> --repo <owner/repo>
 
-# Publish release
-gh release edit <version> --repo <owner/repo> --draft=false
-
 # View release
 gh release view <version> --repo <owner/repo>
 
@@ -387,16 +314,15 @@ gh api repos/<owner/repo>/releases/<id>/assets --paginate
 - [ ] Configurator Windows builds uploaded
 - [ ] Asset naming verified
 - [ ] Release notes reviewed
-- [ ] Maintainer approval obtained
-- [ ] Firmware release published
-- [ ] Configurator release published
-- [ ] Releases verified on GitHub
-- [ ] Announcement prepared
+
+---
+
+⚠️ **Reminder for the human user before Phase 7:** Publish firmware first, then verify the release loads correctly in the Configurator's Firmware Flasher tab, **before** publishing the Configurator release itself. Do not manually publish Configurator ahead of that check — see [Phase 7](7-publishing-releases.md) for the full sequence.
 
 ---
 
 ## Next Steps
 
-After publishing:
+Once drafts are created and assets are uploaded:
 
-**→ Return to [Phase 1: Workflow and Preparation](1-workflow-and-preparation.md#post-release-tasks)** for post-release checklist
+**→ Proceed to [Phase 7: Publishing Releases](7-publishing-releases.md)**

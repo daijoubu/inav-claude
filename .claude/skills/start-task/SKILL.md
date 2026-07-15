@@ -60,6 +60,7 @@ LOCKED_BY: Developer
 TASK: [task-name-from-assignment]
 LOCKED_AT: $(date '+%Y-%m-%d %H:%M')
 BRANCH: [branch-name]
+SESSION_ID: $CLAUDE_CODE_SESSION_ID
 EOF
 
 use inav.lock for the inav/ directory, inav2.lock for the inav2/ directory, or inav3.lock for the inav3/ directory
@@ -70,6 +71,7 @@ LOCKED_BY: Developer
 TASK: [task-name-from-assignment]
 LOCKED_AT: $(date '+%Y-%m-%d %H:%M')
 BRANCH: [branch-name]
+SESSION_ID: $CLAUDE_CODE_SESSION_ID
 EOF
 ```
 
@@ -104,20 +106,14 @@ git pull origin <branch-name> 2>/dev/null || true  # Pull if remote exists
 
 ⚠️ **CRITICAL:** You MUST specify the base branch when creating a new branch.
 
-**See `.claude/skills/git-workflow/SKILL.md` for complete branching instructions.**
-
-**Quick reference:**
+**Use the script — it's the single authority for base-branch selection:**
 
 ```bash
-# For INAV/inav-configurator (most common - maintains backward compatibility)
-git checkout -b <new-branch-name> upstream/maintenance-9.x
-
-# For PrivacyLRS
-git checkout -b <new-branch-name> secure_01
-
-# For INAV breaking changes (MSP protocol, settings structure, etc.)
-git checkout -b <new-branch-name> upstream/maintenance-10.x
+claude/developer/scripts/git/new-branch.sh <repo> <bugfix|feature|breaking> <new-branch-name>
 ```
+
+See `.claude/skills/git-workflow/SKILL.md` ("Creating Branches") for the full decision
+table (including the current temporary `inav/` override) and the manual fallback.
 
 **❌ NEVER use `git checkout -b <branch-name>` without specifying base branch** - this creates the branch from your current HEAD, which may include unrelated changes.
 

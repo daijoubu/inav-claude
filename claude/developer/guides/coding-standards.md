@@ -47,6 +47,7 @@ If adding features would add >40 new lines to a main transpiler file (parser.js,
 
 ## Comments
 
+The purpose of comments is to explain code that would otherwise be confusing. Do not add a comment that is redundant to perfectly clear code.
 Comments should explain WHY, not WHAT. Never write comments that simply restate what the code does.
 
 ### Bad - Redundant Comments
@@ -131,7 +132,7 @@ INAV supports F4, F7, H7, and AT32 microcontrollers. When working with target-sp
 ### Configuration Changes
 
 When modifying settings:
-**Use the TodoWrite tool to track these steps.**
+**Use a task list tool to track these steps.**
 1. Update `fc/settings.yaml` (not direct C code)
 2. Rebuild to regenerate C code from YAML
 3. Settings are automatically persisted to EEPROM via PG system
@@ -162,5 +163,7 @@ When you discover something important about CODING STANDARDS that will likely he
 Use the Edit tool to append new entries. Format: `- **Brief title**: One-sentence insight`
 
 ### Lessons
+
+- **Docs and comments describe the current state, not its history**: Write what IS true and what a reader needs to do now — never "this was previously missed," "used to be X," or similar discovery-narrative prose. That belongs in the commit message/PR description, which readers can consult if they want history; the doc or comment itself is not a changelog. This applies to all documentation (guides, READMEs, yaml comments), not just code comments.
 
 <!-- Add new lessons above this line -->

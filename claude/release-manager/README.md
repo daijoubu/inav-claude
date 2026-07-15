@@ -23,7 +23,9 @@ Do NOT read other roles' files (Manager's INDEX, other inboxes, cross-role track
 3. **[Phase 3: Verifying Artifacts](guides/3-verifying-artifacts.md)** - Verify DMG, SITL, test
 4. **[Phase 4: Building Locally](guides/4-building-locally.md)** - Only if inav-builder agent fails
 5. **[Phase 5: Changelog and Notes](guides/5-changelog-and-notes.md)** - Generate release notes
-6. **[Phase 6: Creating Releases](guides/6-creating-releases.md)** - Create tags and publish
+6. **[Phase 6: Creating Releases](guides/6-creating-releases.md)** - Create tags, draft releases, upload assets
+7. **[Phase 7: Publishing Releases](guides/7-publishing-releases.md)** - Publish and announce
+8. **[Phase 8: Post-Release](guides/8-post-release.md)** - Monitor, hotfix, capture lessons learned
 
 **Important:** Use the **inav-builder** agent for all builds. Only read Phase 4 if the agent encounters issues.
 
@@ -37,7 +39,9 @@ For a typical release:
 2. **Download artifacts** - Follow Phase 2 (firmware from nightly, configurator from CI)
 3. **Verify artifacts** - Follow Phase 3 (DMG, SITL, testing)
 4. **Generate changelog** - Follow Phase 5 (list PRs, find incompatible settings)
-5. **Create releases** - Follow Phase 6 (create tags, upload, publish)
+5. **Create releases** - Follow Phase 6 (create tags, upload assets)
+6. **Publish releases** - Follow Phase 7 (publish, announce)
+7. **Post-release** - Follow Phase 8 (monitor, hotfix, lessons learned)
 
 ---
 
@@ -142,7 +146,7 @@ When releasing a new major version, create maintenance branches for both reposit
 - `master` - Synchronized copy of maintenance-9.x (safety net only)
 - `maintenance-10.x` - Breaking changes planned for INAV 10.0
 
-**Why master tracks the current version:** If a contributor accidentally branches from master instead of maintenance-9.x, they get current version code without pulling in breaking changes from maintenance-10.x. Contributors should still branch from maintenance-9.x, not master.
+**Why master tracks the current version:** If a contributor accidentally branches from master instead of the current maintenance branch, they get current version code without pulling in breaking changes from the next major version's branch. Contributors should still branch from the current maintenance branch, not master — see `.claude/skills/git-workflow/SKILL.md` ("Creating Branches") for which branch is currently correct (a temporary override may be active).
 
 ### Creating Maintenance Branches
 
@@ -176,9 +180,9 @@ Create maintenance branches when:
 
 ### Usage
 
-- **Current version work** → PR to maintenance-9.x (all features and fixes for 9.0)
-- **Breaking changes** → PR to maintenance-10.x (incompatible changes for 10.0)
-- **Master** → NOT a PR target (receives merges only)
+Current base-branch assignment (may include a temporary override) is in
+`.claude/skills/git-workflow/SKILL.md` ("Creating Branches"). **Master is never a PR
+target** — it receives merges only.
 
 **Merge flow:** Lower version branches are periodically merged into higher version branches (changes flow upward only):
 ```
@@ -227,7 +231,8 @@ For critical bugs discovered after release:
 ### Your Workspace
 - `claude/release-manager/` - Your working directory
 - `claude/release-manager/guides/` - Phase-specific release guides
-- `claude/release-manager/downloads/` - Downloaded artifacts (organized by platform)
+- `claude/release-manager/releases/<version>/` - Per-release-cycle files (release notes, announcements, plans, checklists). One folder per tag — an RC and its final release get separate folders, e.g. `releases/9.1.0-RC1/` and `releases/9.1.0/`.
+- `claude/release-manager/downloads/` - Downloaded artifacts (organized by platform, gitignored — not committed)
 
 ### Don't Modify Directly
 - Source code (coordinate with developers)
@@ -246,7 +251,7 @@ For critical bugs discovered after release:
 
 ### Custom Scripts
 
-**`claude/release-manager/verify-dmg-contents.sh`**
+**`claude/release-manager/scripts/verify-dmg-contents.sh`**
 - Verifies macOS DMG files for cross-platform contamination
 - Checks for Windows files (.exe, .dll, .msi)
 - Validates Mach-O format and architecture
@@ -255,10 +260,10 @@ For critical bugs discovered after release:
 
 Usage:
 ```bash
-./claude/release-manager/verify-dmg-contents.sh downloads/configurator-9.0.0-rc3/macos/*.dmg
+./claude/release-manager/scripts/verify-dmg-contents.sh downloads/configurator-9.0.0-rc3/macos/*.dmg
 ```
 
-**`claude/release-manager/rename-firmware-for-release.sh`**
+**`claude/release-manager/scripts/rename-firmware-for-release.sh`**
 - Generic script for renaming firmware hex files
 - Removes CI build suffix (`_ci-YYYYMMDD-hash`)
 - Adds release version (supports RC and final releases)
@@ -267,16 +272,16 @@ Usage:
 Usage:
 ```bash
 # For RC releases
-./claude/release-manager/rename-firmware-for-release.sh 9.0.0-rc3 downloads/firmware-9.0.0-rc3/
+./claude/release-manager/scripts/rename-firmware-for-release.sh 9.0.0-rc3 downloads/firmware-9.0.0-rc3/
 
 # For final releases
-./claude/release-manager/rename-firmware-for-release.sh 9.0.0 downloads/firmware-9.0.0/
+./claude/release-manager/scripts/rename-firmware-for-release.sh 9.0.0 downloads/firmware-9.0.0/
 
 # For patch releases
-./claude/release-manager/rename-firmware-for-release.sh 9.0.1 downloads/firmware-9.0.1/
+./claude/release-manager/scripts/rename-firmware-for-release.sh 9.0.1 downloads/firmware-9.0.1/
 ```
 
-**`claude/release-manager/verify-windows-sitl.sh`**
+**`claude/release-manager/scripts/verify-windows-sitl.sh`**
 - Verifies Windows configurator packages contain required SITL files
 - Checks for `cygwin1.dll` (required runtime for Windows SITL)
 - Checks for `inav_SITL.exe`
@@ -286,16 +291,26 @@ Usage:
 Usage:
 ```bash
 # Verify zip file
-./claude/release-manager/verify-windows-sitl.sh downloads/configurator-9.0.0-RC4/windows/INAV-Configurator_win_x64_9.0.0.zip
+./claude/release-manager/scripts/verify-windows-sitl.sh downloads/configurator-9.0.0-RC4/windows/INAV-Configurator_win_x64_9.0.0.zip
 
 # Verify extracted directory
-./claude/release-manager/verify-windows-sitl.sh downloads/configurator-9.0.0-RC4/windows/INAV-Configurator_win_x64_9.0.0/
+./claude/release-manager/scripts/verify-windows-sitl.sh downloads/configurator-9.0.0-RC4/windows/INAV-Configurator_win_x64_9.0.0/
 ```
 
-**`claude/release-manager/find-incompatible-settings.sh`**
+**`claude/release-manager/scripts/find-incompatible-settings.sh`**
 - Identifies CLI settings that were renamed or removed between versions
 - Critical for major version releases (e.g., 8.x → 9.x)
 - See [Phase 5: Changelog and Notes](guides/5-changelog-and-notes.md) for usage
+
+**`claude/release-manager/scripts/count-fixes-and-features.sh`**
+- Counts merged PRs since the last stable tag, split into fixes vs. features/enhancements, for release-note and social-media summary blurbs ("N fixes and M new features")
+- Title-keyword heuristic, not a precise audit — review the excluded-PR list it prints
+- See [Phase 5: Changelog and Notes](guides/5-changelog-and-notes.md) for usage
+
+Usage:
+```bash
+./claude/release-manager/scripts/count-fixes-and-features.sh ../../inav 9.0.1 upstream/release/9.1 iNavFlight/inav
+```
 
 ---
 
@@ -332,7 +347,7 @@ gh release edit X.Y.Z --draft=false --repo <owner/repo>
 gh release view X.Y.Z --repo <owner/repo>
 ```
 
-For detailed command examples, see [Phase 6: Creating Releases](guides/6-creating-releases.md).
+For detailed command examples, see [Phase 6: Creating Releases](guides/6-creating-releases.md) (tag/draft/upload) and [Phase 7: Publishing Releases](guides/7-publishing-releases.md) (publish/announce).
 
 ---
 
@@ -418,12 +433,7 @@ As Release Manager:
 **Remember:** Releases affect all INAV users. Double-check everything before publishing.
 
 ### Announcement Tips
-- **Discord:** 2000-character limit - keep concise, use markdown
-- **Facebook:** No markdown, supports emojis and images (1200x630 PNG recommended)
-- Focus on top 5 features users care about most
-- Include download link and upgrade warnings
-- **Combined announcements:** Firmware and Configurator are always announced together in one post — users think of it as a single "INAV X.Y.Z" release. Exception: hotfixes that touch only one repo get a targeted announcement, not a combined one.
-- **Reference examples:** `9.0.0-announcement-discord.md`, `9.0.0-announcement-facebook.txt`, `9.1.0-RC1-announcement-discord.md`, `9.1.0-RC1-announcement-facebook.txt`
+See [Phase 7: Publishing Releases § Announcement Tips](guides/7-publishing-releases.md#announcement-tips) for the full checklist (character limits, emoji policy, combined-announcement rule, reference examples).
 
 ---
 
@@ -441,3 +451,5 @@ As Release Manager:
 - Verifying builds → [Phase 3](guides/3-verifying-artifacts.md)
 - Writing release notes → [Phase 5](guides/5-changelog-and-notes.md)
 - Creating GitHub releases → [Phase 6](guides/6-creating-releases.md)
+- Publishing and announcing → [Phase 7](guides/7-publishing-releases.md)
+- Post-release monitoring and lessons learned → [Phase 8](guides/8-post-release.md)

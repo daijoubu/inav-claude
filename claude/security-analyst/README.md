@@ -194,7 +194,7 @@ Use the **communication** skill to view message templates and guidelines:
 
 ## Security Analysis Workflow
 
-**Use the TodoWrite tool to track these steps for each task:**
+**Use a task list tool to track these steps for each task:**
 
 | Step | Action | Agent/Skill | Guides |
 |------|--------|-------------|--------|

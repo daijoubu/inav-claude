@@ -64,17 +64,12 @@ These checklists contain critical rules that MUST be followed:
 
 ---
 
-## ⚠️ TEMPORARY: inav/ branch base override (remove Feb 2027)
+## Branch Base Selection
 
-**`maintenance-9.x` in the `inav` repo is currently damaged.** Do NOT branch off it, despite what `guides/CRITICAL-BEFORE-CODE.md` and the git-workflow skill say.
-
-Until this is fixed upstream, base new `inav/` branches on:
-- **Bug fix** → `release-9.1`
-- **New feature** → `maintenance-10.x`
-
-This does not apply to `inav-configurator/`, which still uses its normal base branches.
-
-**Remove this section in February 2027** — by then work should have moved to the 10.x line and this override should no longer be needed. If you're reading this after that date, verify whether `maintenance-9.x` has been repaired before deleting.
+**Single authority:** `.claude/skills/git-workflow/SKILL.md` ("Creating Branches" section),
+or run `claude/developer/scripts/git/new-branch.sh` directly. Includes the current
+temporary `inav/` override (maintenance-9.x damaged, REVIEW-BY 2027-02) — don't
+duplicate that table here.
 
 ---
 
@@ -116,9 +111,9 @@ Use the `email-manager` agent for all email operations.
 
 ---
 
-## 15-Step Workflow
+## 17-Step Workflow
 
-**Use the TodoWrite tool to track these steps for each task:**
+**Use a task list tool to track these steps for each task:**
 
 | Step | Action | Agent/Skill | Guides |
 |------|--------|-------------|--------|
@@ -134,10 +129,11 @@ Use the `email-manager` agent for all email operations.
 | 10 | Commit your changes | Follow git best practices | `guides/CRITICAL-BEFORE-COMMIT.md` |
 | 11 | Create a pull request | **create-pr** skill or `/create-pr` | `guides/CRITICAL-BEFORE-PR.md` |
 | 12 | Check PR status and bot suggestions | **check-pr-bots** agent or **check-builds** skill | - |
-| 13 | Create completion report | **email-manager** agent | - |
-| 14 | Notify manager | **email-manager** agent | - |
-| 15 | Archive assignment | **email-manager** agent | ⚠️ **CRITICAL** |
-| 16 | Task complete | Verify lock released & assignment archived | - |
+| 13 | Decide: is there a lesson worth recording from this session? | Consider only, against the rubric — if yes, add one line to the relevant guide's "Self-Improvement" section, or otherwise update the guide as appropriate; if no, nothing to do | `guides/README.md` (Capture Rubric) |
+| 14 | Decide: did this session produce reusable tooling worth keeping? | Consider only, against the rubric — if yes, move it out of `workspace/` to the existing destination convention; if no, nothing to do | `guides/README.md` (Capture Rubric) |
+| 15 | Create completion report | **email-manager** agent | - |
+| 16 | Notify manager | **email-manager** agent | - |
+| 17 | Archive assignment | **email-manager** agent and use skill /finish-task | - |
 
 **Key principle:** Before fixing a bug, have the `test-engineer` agent write a test that reproduces it. This ensures you understand the problem and can verify when it's fixed.
 
@@ -236,6 +232,7 @@ See `.claude/agents/` for complete agent documentation.
 - `/finish-task` - Complete tasks and release locks
 - `/check-builds` - Check CI build status
 - `/email` - Read task assignments (or use **email-manager** agent)
+- `/finish-task` - Close out a project at the end
 
 See `.claude/skills/*/SKILL.md` for complete skill documentation.
 
@@ -482,7 +479,7 @@ Compose your completion report using this template, then pass to the **email-man
 ## Summary
 
 As Developer:
-**Use the TodoWrite tool to track each of these steps.**
+**Use a task list tool to track each of these steps.**
 1. ✅ use **email-manager** agent to check inbox for assignments
 2. ✅ Read critical checklists before each operation
 3. ✅ use the test engineer agent to write tests that reproduce the issue (for bugs) or lacking feature (for new features)

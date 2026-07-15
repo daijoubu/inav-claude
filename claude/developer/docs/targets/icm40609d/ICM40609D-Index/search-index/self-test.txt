@@ -1,0 +1,37 @@
+Keyword: self-test
+Occurrences: 33
+================================================================================
+
+Page    2: 4.9       Self-Test................................................................................................................................................... 21
+Page    9:  Self-test
+Page    9:  Self-test
+Page   21:  Self-Test
+Page   21: 4.9    SELF-TEST
+Page   21: Self-test allows for the testing of the mechanical and electrical portions of the sensors. The self-test for each measurement axis can
+Page   21: be activated by means of the gyroscope and accelerometer self-test registers.
+Page   21: When the self-test is activated, the electronics cause the sensors to be actuated and produce an output signal. The output signal is
+Page   21: used to observe the self-test response.
+Page   22: The self-test response is defined as follows:
+Page   22: Self-test response = Sensor output with self-test enabled – Sensor output with self-test disabled
+Page   22: When the value of the self-test response is within the specified min/max limits of the product specification, the part has passed self-
+Page   22: test. When the self-test response exceeds the min/max values, the part is deemed to have failed self-test.
+Page   70: Set to 1 for accel self-test
+Page   70: Otherwise set to 0; Set to 0 after self-test is completed
+Page   70: 5      EN_AZ_ST              Enable Z-accel self-test
+Page   70: 4      EN_AY_ST              Enable Y-accel self-test
+Page   70: 3      EN_AX_ST              Enable X-accel self-test
+Page   70: 2      EN_GZ_ST              Enable Z-gyro self-test
+Page   70: 1      EN_GY_ST              Enable Y-gyro self-test
+Page   70: 0      EN_GX_ST              Enable X-gyro self-test
+Page   75: Reset value: 0xXX (The value in this register indicates the self-test output generated during manufacturing tests)
+Page   75: 7:0 XG_ST_DATA                        X-gyro self-test data
+Page   75: Reset value: 0xXX (The value in this register indicates the self-test output generated during manufacturing tests)
+Page   75: 7:0 YG_ST_DATA                        Y-gyro self-test data
+Page   75: Reset value: 0xXX (The value in this register indicates the self-test output generated during manufacturing tests)
+Page   75: 7:0 ZG_ST_DATA                        Z-gyro self-test data
+Page   78: Reset value: 0xXX (The value in this register indicates the self-test output generated during manufacturing tests)
+Page   78: 7:0 XA_ST_DATA                        X-accel self-test data
+Page   79: Reset value: 0xXX (The value in this register indicates the self-test output generated during manufacturing tests)
+Page   79: 7:0 YA_ST_DATA                        Y-accel self-test data
+Page   79: Reset value: 0xXX (The value in this register indicates the self-test output generated during manufacturing tests)
+Page   79: 7:0 ZA_ST_DATA                        Z-accel self-test data

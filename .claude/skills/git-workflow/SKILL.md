@@ -107,6 +107,12 @@ git push -f upstream master
 3. Ask the user if they want to approve the operation or handle it manually
 4. The user can run git commands directly (unsandboxed) if needed
 
+**One approved exception:** plain `git push` to origin (NEVER force-push). `github.com`
+and `ssh.github.com` are in the sandbox allowlist, so pushes normally work sandboxed;
+if the sandbox still blocks a push, retrying that one command with
+`dangerouslyDisableSandbox: true` is approved. Do not generalize this to any other
+operation — everything else follows the recognize-and-ask steps above.
+
 ## Repository Structure
 
 The INAV project consists of **three standalone repositories**:
@@ -118,64 +124,50 @@ Each repository has its own git history and must be managed independently.
 
 ## Creating Branches
 
-### 🚨 CRITICAL: Always Specify Base Branch When Creating Branches
+### 🚨 CRITICAL: Always Specify Base Branch When Creating Branches — This Is the Single Authority
 
-**NEVER create a branch without specifying the base branch:**
+**This section is the single authoritative source for the {repo, change-type} → base-branch
+decision.** Every other guide, skill, and README that mentions a base branch should point
+here (or at the script below) instead of repeating the table. If you find a stale copy
+elsewhere, that's a bug — fix it to be a pointer.
+
+**NEVER create a branch without specifying the base branch** — branching from current HEAD
+may include unrelated commits, WIP changes, or simply the wrong base, contaminating the PR.
+
+### Use the script (preferred)
 
 ```bash
-# ❌ WRONG - branches from current HEAD (may include unrelated changes)
-git checkout -b my-new-branch
-
-# ✅ CORRECT - explicitly specify base branch
-git checkout -b my-new-branch upstream/maintenance-9.x
+claude/developer/scripts/git/new-branch.sh <repo> <bugfix|feature|breaking> <branch-name> [--dry-run]
+# repo: inav | inav-configurator | PrivacyLRS
 ```
 
-**Why this matters:** Creating a branch without specifying the base will branch from whatever you currently have checked out, which may include:
-- Unrelated commits from another feature branch
-- Work-in-progress changes
-- The wrong base branch entirely
-- This leads to PRs contaminated with unrelated changes
+It looks up the base branch below, refuses to run on a dirty tree, fetches the correct
+remote, prints its reasoning, and creates the branch. Use `--dry-run` to preview first.
 
-### Create a New Branch - Correct Commands
+### Base-branch decision table
 
-**First, verify you're not on a production branch:**
-```bash
-git branch --show-current
-# Output should NOT be: secure_01, master, main, maintenance-9.x, maintenance-10.x
-```
-
-**For PrivacyLRS (secure_01 base):**
-```bash
-# Branch from secure_01 (the base branch for PrivacyLRS)
-git checkout -b your-branch-name secure_01
-
-# Push branch to remote
-git push -u origin your-branch-name
-
-# Branch naming: NO slashes (use: encryption-test-suite, fix-counter-sync)
-```
-
-**For INAV/inav-configurator (maintains backward compatibility):**
-```bash
-# Branch from maintenance-9.x (most common case)
-git checkout -b your-branch-name upstream/maintenance-9.x
-
-# Push branch to remote
-git push -u origin your-branch-name
-
-# Branch naming: kebab-case (use: fix-telemetry-bug, feature-battery-limit)
-```
-
-**For INAV/inav-configurator (breaking changes):**
-```bash
-# Branch from maintenance-10.x (MSP protocol changes, settings structure changes, etc.)
-git checkout -b your-branch-name upstream/maintenance-10.x
-
-# Push branch to remote
-git push -u origin your-branch-name
-```
+| Repo | Remote | Change type | Base branch | Notes |
+|------|--------|-------------|-------------|-------|
+| PrivacyLRS | `origin` | any | `secure_01` | Separate fork/derivative project |
+| inav | `upstream` | bugfix | `release/9.1` | **TEMPORARY OVERRIDE** — `maintenance-9.x` is damaged. REVIEW-BY 2027-02: verify repair before reverting to `maintenance-9.x` |
+| inav | `upstream` | feature | `maintenance-10.x` | Same temporary override as above |
+| inav | `upstream` | breaking | `maintenance-10.x` | Matches the normal (non-override) rule |
+| inav-configurator | `upstream` | bugfix | `maintenance-9.x` | **NOT** affected by the inav override — configurator's `maintenance-9.x` is fine |
+| inav-configurator | `upstream` | feature | `maintenance-9.x` | Not affected by the inav override |
+| inav-configurator | `upstream` | breaking | `maintenance-10.x` | MSP protocol / settings structure changes |
 
 **NEVER target PRs to master** - it receives merges only (maintenance-9.x → master → maintenance-10.x).
+
+### Manual fallback (only if the script can't be used)
+
+```bash
+git fetch <remote>
+git checkout -b <branch-name> <remote>/<base-branch>
+```
+Substitute `<remote>` and `<base-branch>` from the table above. Then:
+```bash
+git push -u origin <branch-name>
+```
 
 ### Create Branch from Specific Commit
 
@@ -385,57 +377,51 @@ done
 
 ### Create Matching Branches
 
-If working on a feature that spans multiple repos:
+If working on a feature that spans multiple repos, create each from its own correct
+base — see the decision table above (inavwiki has no base-branch table; branch it from
+its default branch):
 
 ```bash
-# Firmware
-cd inav
-git checkout -b my-feature
-git push -u origin my-feature
-
-# Configurator
-cd ../inav-configurator
-git checkout -b my-feature
-git push -u origin my-feature
-
-# Documentation
-cd ../inavwiki
-git checkout -b my-feature
-git push -u origin my-feature
+claude/developer/scripts/git/new-branch.sh inav <bugfix|feature|breaking> my-feature
+claude/developer/scripts/git/new-branch.sh inav-configurator <bugfix|feature|breaking> my-feature
+cd inavwiki && git checkout -b my-feature && git push -u origin my-feature
 ```
+
+### Updating the Harness Repo Itself
+
+The root `inavflight/` repo (`claude/` and `.claude/`) is its own git repo. A
+`SessionStart` hook (`.claude/hooks/check-framework-update.sh`) asks — roughly once a
+month — whether to pull it. If you say yes, just run the pull the hook's own message
+names: `origin` for this repo's own setup, or `upstream` if this checkout is a fork with
+an `upstream` remote configured (that's where real framework updates land in that case;
+`origin` would just be your own fork).
+
+```bash
+git pull --ff-only <remote> master
+```
+
+`--ff-only` refuses to create a merge commit if local and remote have diverged — if it
+fails, stop and check `git status`/`git log` before doing anything else, rather than
+force-merging over local changes. This is a single human-confirmed action each time the
+hook asks; no automated enforcement is needed beyond that.
 
 ## Common Workflows
 
-### Starting New Feature
+### Starting New Work
+
+See "Creating Branches" above — use `new-branch.sh` or the manual fallback with the
+correct base branch from the decision table. **Do not branch from `master`**; it's a
+merge-only mirror, not a base.
+
+### Updating a Branch with Its Base
+
+Rebase or merge against the **same base branch you created from** (from the decision
+table above) — not `master`:
 
 ```bash
-# 1. Ensure you're on master and up to date
-git checkout master
-git pull origin master
-
-# 2. Create feature branch
-git checkout -b my-feature
-
-# 3. Make changes and commit
-git add <files>
-git commit -m "Add: initial implementation"
-
-# 4. Push to remote
-git push -u origin my-feature
-```
-
-### Updating Feature Branch with Latest Master
-
-```bash
-# Option 1: Rebase (cleaner history)
 git checkout my-feature
-git fetch origin
-git rebase origin/master
-
-# Option 2: Merge (preserves history)
-git checkout my-feature
-git fetch origin
-git merge origin/master
+git fetch <remote>                   # upstream for inav/inav-configurator, origin for PrivacyLRS
+git rebase <remote>/<base-branch>    # or: git merge <remote>/<base-branch>
 ```
 
 ### Switching Between Tasks

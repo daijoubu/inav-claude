@@ -1,0 +1,168 @@
+Keyword: FIFO
+Occurrences: 164
+================================================================================
+
+Page    3: 6       FIFO .................................................................................................................................................................... 34
+Page    3: 6.2       FIFO Header ............................................................................................................................................ 35
+Page    3: 6.3       Maximum FIFO Storage ........................................................................................................................... 36
+Page    3: 6.4       FIFO Configuration Registers................................................................................................................... 36
+Page    3: 14.4          FIFO_CONFIG ...................................................................................................................................... 53
+Page    4: 14.20      FIFO_COUNTH..................................................................................................................................... 57
+Page    4: 14.21      FIFO_COUNTL ..................................................................................................................................... 57
+Page    4: 14.22      FIFO_DATA .......................................................................................................................................... 58
+Page    4: 14.35      FIFO_CONFIG1 .................................................................................................................................... 66
+Page    4: 14.36      FIFO_CONFIG2 .................................................................................................................................... 66
+Page    4: 14.37      FIFO_CONFIG3 .................................................................................................................................... 67
+Page    4: 14.43      FIFO_LOST_PKT0 ................................................................................................................................. 69
+Page    4: 14.44      FIFO_LOST_PKT1 ................................................................................................................................. 70
+Page    7: Figure 11. FIFO Packet Structure ......................................................................................................................................... 34
+Page    7: Figure 12. Maximum FIFO Storage ...................................................................................................................................... 36
+Page    8: mm (24-pin LGA) package. It also features a 2K-byte FIFO that can lower the traffic on the serial bus interface, and reduce power
+Page    9:  2K byte FIFO buffer enables the applications processor to read the data in bursts
+Page   13: Sensitivity for FIFO data                                                                                              2.07                   LSB/°C       1
+Page   21:  FIFO
+Page   22: the FIFO and Data registers); (3) accelerometer event interrupts; (4) FIFO watermark; (5) FIFO overflow. The interrupt status can be
+Page   22: read from the FIFO or the Sensor Data registers.
+Page   22: Temperature data stored in FIFO is an 8-bit quantity, FIFO_TEMP_DATA. It can be converted to degrees centigrade by using the
+Page   22: Temperature in Degrees Centigrade = (FIFO_TEMP_DATA / 2.07) + 25
+Page   34: 6 FIFO
+Page   34: The ICM-40609-D contains a 2K byte FIFO register that is accessible via the serial interface. The FIFO configuration register
+Page   34: determines which data is written into the FIFO. Possible choices include gyroscope data, accelerometer data, and temperature
+Page   34: readings. A FIFO counter keeps track of how many bytes of valid data are contained in the FIFO.
+Page   34: The following figure shows the FIFO packet structures supported in ICM-40609-D.
+Page   34: Figure 11. FIFO Packet Structure
+Page   34: The rest of this sub-section describes how individual data is packaged in the different FIFO packet structures.
+Page   34: 0x00                              FIFO Header
+Page   35: 0x00                              FIFO Header
+Page   35: 0x00                               FIFO Header
+Page   35: 6.2       FIFO HEADER
+Page   35: The following table shows the structure of the 1 byte FIFO header.
+Page   35: 1: FIFO is empty
+Page   35: 1: Packet is sized so that accel data have location in the packet, FIFO_ACCEL_EN
+Page   35: 1: Packet is sized so that gyro data have location in the packet, FIFO_GYRO_EN must
+Page   36: 6.3        MAXIMUM FIFO STORAGE
+Page   36: The maximum number of packets that can be stored in FIFO is a variable quantity depending on the use case. As shown in the figure
+Page   36: below, the physical FIFO size is 2048 bytes. A number of bytes equal to the packet size selected (see section 6.1) is reserved to
+Page   36: FIFO 2048 Bytes                                        2 Packet Size
+Page   36: Figure 12. Maximum FIFO Storage
+Page   36: 6.4        FIFO CONFIGURATION REGISTERS
+Page   36: The following control bits in bank 0, register 0x5Fh determine what data is placed into the FIFO. The values of these bits may change
+Page   36: while the FIFO is being filled without corruption of the FIFO.
+Page   36: 0: FIFO will only contain ODR timestamp information
+Page   36: 3     FIFO_TMST_EN
+Page   36: 0: Default setting; Gyroscope data not placed into FIFO
+Page   36: 1     FIFO_GYRO_EN
+Page   36: 1: Enables gyroscope data packets of 6-bytes to be placed in FIFO
+Page   36: 0: Default setting; Accelerometer data not placed into FIFO
+Page   36: 0     FIFO_ACCEL_EN
+Page   36: 1: Enables accelerometer data packets of 6-bytes to be placed in FIFO
+Page   37: Configuration register settings above impact FIFO header and FIFO packet size as follows:
+Page   37: FIFO_ACCEL_EN   FIFO_GYRO_EN      FIFO_TMST_EN              Header        Packet size
+Page   37: 0               0                 X               No FIFO writes   No FIFO writes
+Page   49: 16           22           FIFO_CONFIG      R/W                FIFO_MODE                                                                     -
+Page   49: DATA_RDY_I         FIFO_THS_IN       FIFO_FULL_I        AGC_RDY_IN
+Page   49: 2E           46          FIFO_COUNTH         R                                                                 FIFO_COUNT[15:8]
+Page   49: 2F           47          FIFO_COUNTL         R                                                                 FIFO_COUNT[7:0]
+Page   49: 30           48           FIFO_DATA          R                                                                       FIFO_DATA
+Page   49: 4B           75        SIGNAL_PATH_RESET   W/C                                                -                                                                   FIFO_FLUSH                 -
+Page   49: FIFO_HOLD_L
+Page   49: FIFO_COUNT        FIFO_COUNT       SENSOR_DAT
+Page   49: FIFO_RESUM
+Page   49: FIFO_WM_G                                              FIFO_TEMP_       FIFO_GYRO_          FIFO_ACCEL_
+Page   49: 5F           95          FIFO_CONFIG1      R/W           -            E_PARTIAL_R                                        -
+Page   49: 60           96          FIFO_CONFIG2      R/W                                                                      FIFO_WM[7:0]
+Page   49: 61           97          FIFO_CONFIG3      R/W                                       -                                                                   FIFO_WM[11:8]
+Page   49: 63           99           INT_CONFIG0      R/W                    -                          UI_DRDY_INT_CLEAR                     FIFO_THS_INT_CLEAR                  FIFO_FULL_INT_CLEAR
+Page   49: PLL_RDY_INT                         UI_DRDY_INT        FIFO_THS_IN       FIFO_FULL_I        UI_AGC_RDY
+Page   50: PLL_RDY_INT                          UI_DRDY_INT     FIFO_THS_IN     FIFO_FULL_I   UI_AGC_RDY
+Page   50: 6C           108         FIFO_LOST_PKT0        R                                                       FIFO_LOST_PKT_CNT[15:8]
+Page   50: 6D           109         FIFO_LOST_PKT1        R                                                        FIFO_LOST_PKT_CNT[7:0]
+Page   53: 14.4     FIFO_CONFIG
+Page   53: Name: FIFO_CONFIG
+Page   53: 7:6 FIFO_MODE                00: Bypass Mode (default)
+Page   53: 01: Stream-to-FIFO Mode
+Page   54: Temperature data stored in FIFO is an 8-bit quantity, FIFO_TEMP_DATA. It can be converted to degrees centigrade by using the
+Page   54: Temperature in Degrees Centigrade = (FIFO_TEMP_DATA / 2.07) + 25
+Page   57: This bit automatically sets to 1 when the FIFO buffer reaches the threshold
+Page   57: 2      FIFO_THS_INT
+Page   57: This bit automatically sets to 1 when the FIFO buffer is full. The bit clears to
+Page   57: 1      FIFO_FULL_INT
+Page   57: 14.20    FIFO_COUNTH
+Page   57: Name: FIFO_COUNTH
+Page   57: High Bits, count indicates the number of records or bytes available in FIFO
+Page   57: according to FIFO_COUNT_REC setting.
+Page   57: 7:0     FIFO_COUNT[15:8]
+Page   57: Note: Must read FIFO_COUNTL to latch new data for both FIFO_COUNTH
+Page   57: and FIFO_COUNTL.
+Page   57: 14.21    FIFO_COUNTL
+Page   57: Name: FIFO_COUNTL
+Page   57: Low Bits, count indicates the number of records or bytes available in FIFO
+Page   57: according to FIFO_COUNT_REC setting.
+Page   57: 7:0     FIFO_COUNT[7:0]
+Page   57: Reading this byte latches the data for both FIFO_COUNTH, and
+Page   57: FIFO_COUNTL.
+Page   58: 14.22    FIFO_DATA
+Page   58: Name: FIFO_DATA
+Page   58: 7:0 FIFO_DATA              FIFO data port
+Page   58: 1      FIFO_FLUSH         When set to 1, FIFO will get flushed.
+Page   59: written to FIFO for the sensor with lower ODR until new sensor data
+Page   59: limited to 8kHz and decimal value -128 will be written to FIFO until
+Page   59: FIFO_HOLD_LAST_DATA_E   new sensor data is available.
+Page   59: FIFO for the sensor with lower ODR until new sensor data is
+Page   59: to FIFO until new sensor data is available.
+Page   59: 0: FIFO count is reported in bytes
+Page   59: 1: FIFO count is reported in records (1 record = 16 bytes for header + gyro +
+Page   59: 6      FIFO_COUNT_REC
+Page   59: 0: FIFO count is reported in Little Endian format
+Page   59: 5      FIFO_COUNT_ENDIAN
+Page   59: 1: FIFO count is reported in Big Endian format (default)
+Page   66: 14.35    FIFO_CONFIG1
+Page   66: Name: FIFO_CONFIG1
+Page   66: 0: Partial FIFO read disabled, requires re-reading of the entire FIFO
+Page   66: 6      FIFO_RESUME_PARTIAL_RD
+Page   66: 1: FIFO read can be partial, and resume from last read point
+Page   66: Trigger FIFO watermark interrupt on every ODR (DMA write) if
+Page   66: 5      FIFO_WM_GT_TH
+Page   66: FIFO_COUNT ≥ FIFO_WM_TH
+Page   66: 2      FIFO_TEMP_EN               Enable temperature sensor packets to go to FIFO
+Page   66: 1      FIFO_GYRO_EN               Enable gyroscope packets to go to FIFO
+Page   66: 0      FIFO_ACCEL_EN              Enable accelerometer packets to go to FIFO
+Page   66: 14.36    FIFO_CONFIG2
+Page   66: Name: FIFO_CONFIG2
+Page   66: Lower bits of FIFO watermark. Generate interrupt when the FIFO reaches
+Page   66: or exceeds FIFO_WM size in bytes or records according to
+Page   66: 7:0     FIFO_WM[7:0]               FIFO_COUNT_REC setting. FIFO_WM_EN must be zero before writing this
+Page   67: 14.37    FIFO_CONFIG3
+Page   67: Name: FIFO_CONFIG3
+Page   67: Upper bits of FIFO watermark. Generate interrupt when the FIFO reaches
+Page   67: or exceeds FIFO_WM size in bytes or records according to
+Page   67: 3:0     FIFO_WM[11:8]                  FIFO_COUNT_REC setting. FIFO_WM_EN must be zero before writing this
+Page   67: Note: Do not set FIFO_WM to value 0.
+Page   67: 10: Clear on FIFO data 1Byte Read
+Page   67: 11: Clear on Status Bit Read AND on FIFO data 1 byte read
+Page   67: FIFO Threshold Interrupt Clear Option (latched mode)
+Page   67: 3:2     FIFO_THS_INT_CLEAR           01: Clear on Status Bit Read
+Page   67: 10: Clear on FIFO data 1Byte Read
+Page   67: 11: Clear on Status Bit Read AND on FIFO data 1 byte read
+Page   67: FIFO Full Interrupt Clear Option (latched mode)
+Page   67: 1:0     FIFO_FULL_INT_CLEAR          01: Clear on Status Bit Read
+Page   67: 10: Clear on FIFO data 1Byte Read
+Page   67: 11: Clear on Status Bit Read AND on FIFO data 1 byte read
+Page   68: 0: FIFO threshold interrupt not routed to INT1
+Page   68: 2      FIFO_THS_INT1_EN
+Page   68: 1: FIFO threshold interrupt routed to INT1
+Page   68: 0: FIFO full interrupt not routed to INT1
+Page   68: 1      FIFO_FULL_INT1_EN
+Page   68: 1: FIFO full interrupt routed to INT1
+Page   69: 0: FIFO threshold interrupt not routed to INT2
+Page   69: 2      FIFO_THS_INT2_EN
+Page   69: 1: FIFO threshold interrupt routed to INT2
+Page   69: 0: FIFO full interrupt not routed to INT2
+Page   69: 1      FIFO_FULL_INT2_EN
+Page   69: 1: FIFO full interrupt routed to INT2
+Page   69: 14.43    FIFO_LOST_PKT0
+Page   69: Name: FIFO_LOST_PKT0
+Page   69: 7:0 FIFO_LOST_PKT_CNT[7:0]   Low byte, number of packets lost in the FIFO
+Page   70: 14.44    FIFO_LOST_PKT1
+Page   70: Name: FIFO_LOST_PKT1
+Page   70: 7:0 FIFO_LOST_PKT_CNT[15:8]   High byte, number of packets lost in the FIFO

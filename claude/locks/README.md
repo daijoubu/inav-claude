@@ -32,7 +32,11 @@ LOCKED_BY: Developer
 TASK: <project-name or task description>
 LOCKED_AT: YYYY-MM-DD HH:MM
 BRANCH: <branch-name>
+SESSION_ID: <$CLAUDE_CODE_SESSION_ID>
 ```
+
+`SESSION_ID` is the acquiring session's `$CLAUDE_CODE_SESSION_ID` environment
+variable.
 
 ## How to Use
 

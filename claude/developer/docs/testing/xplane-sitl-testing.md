@@ -12,6 +12,16 @@ X-Plane 12 provides physically accurate flight simulation, making it ideal for r
 - Accurate flight dynamics during turns/maneuvers
 - Visual feedback of aircraft behavior
 
+## Alternative: JSBSim (No License, No GUI, Scriptable)
+
+If you don't have an X-Plane 12 license, or want a headless/scriptable full-aerodynamics
+model (e.g. for repeatable regression checks rather than interactive bug reproduction),
+see the **jsbsim-sitl-testing** skill (`.claude/skills/jsbsim-sitl-testing/SKILL.md`).
+JSBSim installs as a plain Python package — no license, no 3D client — and it can drive
+a mainline SITL build of your own changes directly; it isn't limited to the bundled
+`inav-sitl-bench` example. Use X-Plane when you want visual feedback or are reproducing
+a bug that depends on manual stick input; use JSBSim for scripted maneuvers and repeatable runs.
+
 ## Prerequisites
 
 **Note:** X-Plane 12 can take 2-3 minutes to fully start up and load scenery.

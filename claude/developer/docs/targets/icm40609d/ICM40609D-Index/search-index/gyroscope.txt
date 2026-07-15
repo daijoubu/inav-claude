@@ -1,0 +1,84 @@
+Keyword: gyroscope
+Occurrences: 80
+================================================================================
+
+Page    2: 2.1       Gyroscope Features .................................................................................................................................. 9
+Page    2: 3.1       Gyroscope Specifications ........................................................................................................................ 10
+Page    2: 4.6       Three-Axis MEMS Gyroscope with 16-bit ADCs and Signal Conditioning ............................................... 21
+Page    7: Table 1. Gyroscope Specifications ....................................................................................................................................... 10
+Page    8: The ICM-40609-D is a 6-axis MotionTracking device that combines a 3-axis gyroscope, and a 3-axis accelerometer in a small 3x3x0.91
+Page    8: The gyroscope supports eight programmable full-scale range settings from ±15.625dps to ±2000dps, and the accelerometer supports
+Page    9: 2.1 GYROSCOPE FEATURES
+Page    9: The triple-axis MEMS gyroscope in the ICM-40609-D includes a wide range of features:
+Page    9:  Digital-output X-, Y-, and Z-axis angular rate sensors (gyroscopes) with programmable full-scale range of ±15.625, ±31.25,
+Page    9:  User-programmable digital filters for gyroscope, accelerometer, and temperature sensor
+Page   10: 3.1 GYROSCOPE SPECIFICATIONS
+Page   10: GYROSCOPE SENSITIVITY
+Page   10: Gyroscope ADC Word Length                                                                                            16                 bits        2
+Page   10: Gyroscope Mechanical Frequencies                                                                            25       27        29       KHz         1
+Page   10: Gyroscope Start-Up Time                              Time from gyro enable to gyro drive ready                       30                  ms         3
+Page   10: Table 1. Gyroscope Specifications
+Page   12: 6-Axis Gyroscope + Accelerometer                          0.77           mA       2
+Page   12: 3-Axis Gyroscope                                          0.61           mA       2
+Page   12: (Gyroscope disabled)
+Page   21:  Three-axis MEMS rate gyroscope sensor with 16-bit ADCs and signal conditioning
+Page   21: 4.6    THREE-AXIS MEMS GYROSCOPE WITH 16-BIT ADCS AND SIGNAL CONDITIONING
+Page   21: The ICM-40609-D includes a vibratory MEMS rate gyroscope, which detects rotation about the X-, Y-, and Z- Axes. When the
+Page   21: gyroscope is rotated about any of the sense axes, the Coriolis Effect causes a vibration that is detected by a capacitive pickoff. The
+Page   21: be activated by means of the gyroscope and accelerometer self-test registers.
+Page   22: b) Auto-select between internal relaxation oscillator and gyroscope MEMS oscillator to use the best available source
+Page   22: The sensor data registers contain the latest gyroscope, accelerometer, and temperature measurement data. They are read-only
+Page   23: 5     Gyroscope Low-Noise Mode                    On              Off
+Page   24: The signal path starts with independent 16-bit ADCs for each axis of gyroscope and accelerometer. The ADC output goes through a
+Page   24: The Notch Filter is supported only for the gyroscope signal path. The following steps can be used to program the notch filter. Note
+Page   24: that the notch filter is specific to each axis in the gyroscope, so the X, Y and Z axis can be programmed independently.
+Page   24: To operate the Notch filter, two parameters NF_COSWZ, and NF_COSWZ_SEL must be programmed for each gyroscope axis.
+Page   24: Parameters NF_COSWZ are defined for each axis of the gyroscope as GYRO_X_NF_COSWZ (register bank 1, register 0x0Fh & register
+Page   24: Parameters NF_COSWZ_SEL are defined for each axis of the gyroscope as GYRO_X_NF_COSWZ_SEL (register bank 1, register 0x12h,
+Page   25: Anti-alias filters for gyroscope and accelerometer can be independently programmed to have bandwidths ranging from 10 Hz to 995
+Page   25: bandwidth for gyroscope anti-alias filter
+Page   25: delt value for gyroscope
+Page   25: f.    Register bank 1, register 0x0Eh, bits 7:4, GYRO_AAF_BITSHIFT: Bitshift value for gyroscope used in hardware
+Page   27: The anti-alias filter can be selected or bypassed for the gyroscope by using the parameter GYRO_AAF_DIS in register bank 1, register
+Page   27: 0              Enable gyroscope anti-aliasing filter
+Page   27: 1              Disable gyroscope anti-aliasing filter
+Page   27: Gyroscope and accelerometer offsets can be programmed by the user by using registers OFFSET_USER0, through OFFSET_USER8, in
+Page   28: The UI filter block can be programmed to select filter order and bandwidth independently for gyroscope and accelerometer.
+Page   28: Gyroscope filter order can be selected by programming the parameter GYRO_UI_FILT_ORD in register bank 0, register 0x51h, bits
+Page   28: Gyroscope and accelerometer filter 3dB bandwidth can be selected by programming the parameter GYRO_UI_FILT_BW in register
+Page   32: Gyroscope ODR can be selected by programming the parameter GYRO_ODR in register bank 0, register 0x4Fh, bits 3:0 as shown
+Page   32: GYRO_ODR                Gyroscope ODR Value
+Page   32: Gyroscope FSR can be selected by programming the parameter GYRO_FS_SEL in register bank 0, register 0x4Fh, bits 7:5 as shown
+Page   32: GYRO_FS_SEL             Gyroscope FSR Value
+Page   34: determines which data is written into the FIFO. Possible choices include gyroscope data, accelerometer data, and temperature
+Page   34: Accelerometer Data              Gyroscope Data                 Accelerometer Data
+Page   34: Gyroscope Data
+Page   36: 0: Default setting; Gyroscope data not placed into FIFO
+Page   36: 1: Enables gyroscope data packets of 6-bytes to be placed in FIFO
+Page   60: 00: Turns gyroscope off (default)
+Page   60: 01: Places gyroscope in Standby Mode
+Page   60: 11: Places gyroscope in Low Noise (LN) Mode
+Page   60: Gyroscope needs to be kept ON for a minimum of 45ms. When transitioning
+Page   61: Full scale select for gyroscope UI interface output
+Page   61: Gyroscope ODR selection for UI interface output
+Page   66: 1      FIFO_GYRO_EN               Enable gyroscope packets to go to FIFO
+Page   72: 0: Z gyroscope is on
+Page   72: 1: Z gyroscope is disabled
+Page   72: 0: Y gyroscope is on
+Page   72: 1: Y gyroscope is disabled
+Page   72: 0: X gyroscope is on
+Page   72: 1: X gyroscope is disabled
+Page   72: Controls bandwidth of the gyroscope anti-alias filter
+Page   73: Controls bandwidth of the gyroscope anti-alias filter
+Page   73: Controls bandwidth of the gyroscope anti-alias filter
+Page   73: Controls bandwidth of the gyroscope anti-alias filter
+Page   73: Used for gyroscope X-axis notch filter frequency selection
+Page   73: Used for gyroscope Y-axis notch filter frequency selection
+Page   74: Used for gyroscope Z-axis notch filter frequency selection
+Page   74: Used for gyroscope Z-axis notch filter frequency selection
+Page   74: Used for gyroscope Y-axis notch filter frequency selection
+Page   74: Used for gyroscope X-axis notch filter frequency selection
+Page   74: Used for gyroscope Z-axis notch filter frequency selection
+Page   74: Used for gyroscope Y-axis notch filter frequency selection
+Page   74: Used for gyroscope X-axis notch filter frequency selection
+Page   74: Selects bandwidth for gyroscope notch filter

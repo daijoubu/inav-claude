@@ -97,19 +97,20 @@ bash_rules:
       fi
     message: "Push to master/main allowed for root inavflight/ repo only. Use feature branches for inav/, inav-configurator/, and other sub-repos."
 
-  - name: "Allow git push to origin with -u flag (feature branches)"
-    command_pattern: "^git$"
-    argument_pattern: "^(-C\\s+\\S+\\s+)?push\\s+origin\\s+[^-].*-u"
-    category: write
-    decision: allow
-    message: "Push to feature/release branch on origin with -u flag allowed for tracking"
-
   - name: "Block git push to maintenance/master in sub-repos"
     command_pattern: "^git$"
     argument_pattern: "^(-C\\s+\\S+\\s+)?push.*(maintenance|master|main).*"
     category: write
     decision: deny
     message: "STOP! IMPORTANT: Do NOT push to a version branch (maintenance-9.x, maintenance-10.x) or to master/main in sub-repos. Use your create-pr skill with a feature branch."
+
+  - name: "Allow git push to origin with -u flag (feature branches)"
+    command_pattern: "^git$"
+    # Matches -u in either order (`push -u origin branch` or `push origin branch -u`); excludes master/main/maintenance-* regardless of rule order.
+    argument_pattern: "^(-C\\s+\\S+\\s+)?push\\s+(-u\\s+origin\\s+(?!master\\b|main\\b|maintenance-)\\S+|origin\\s+(?!master\\b|main\\b|maintenance-)\\S+.*-u\\b)"
+    category: write
+    decision: allow
+    message: "Push to feature/release branch on origin with -u flag allowed for tracking"
 
   - name: "Block git force push"
     command_pattern: "^git$"
@@ -340,6 +341,18 @@ bash_rules:
     category: other
     decision: allow
 
+  - name: "Allow tee for build output logging"
+    command_pattern: "^tee$"
+    category: write
+    decision: allow
+    message: "tee command for capturing and logging build output (used by inav-builder for build logs)"
+
+  - name: "Allow nproc for determining CPU count"
+    command_pattern: "^nproc$"
+    category: read
+    decision: allow
+    message: "nproc command for determining available CPU cores for parallel builds"
+
   - name: "Allow python3 for any script"
     command_pattern: "^python3$"
     category: other
@@ -433,6 +446,19 @@ bash_rules:
     decision: allow
     message: "WASM SITL build script execution for development"
 
+  - name: "Allow build_sitl.sh script (native SITL builds)"
+    command_pattern: ".*(build_sitl\\.sh)$"
+    category: other
+    decision: allow
+    message: "SITL build script execution for native/Linux builds (cmake/make-based)"
+
+  - name: "Allow mkdir -p build_sitl for SITL builds"
+    command_pattern: "^mkdir$"
+    argument_pattern: ".*-p.*build_sitl.*"
+    category: write
+    decision: allow
+    message: "Create build_sitl directory for SITL build output (routine, non-destructive)"
+
   - name: "Allow node copy-wasm-to-configurator.js"
     command_pattern: "^node$"
     argument_pattern: ".*copy-wasm-to-configurator\\.js.*"
@@ -483,7 +509,7 @@ bash_rules:
     message: "nc (netcat) - network utility for port testing and connections"
 
   - name: "Allow common read commands"
-    command_pattern: "^(grep|egrep|find|cat|ls|head|tail|less|more|wc|sort|uniq|diff|stat|file|du|df|awk|sed|cut|xargs|printf|pwd|whoami|md5sum|lsusb|sleep|ss|date|touch|ld|rg|fd|pdfgrep|jq|readelf|objdump|nm|size|objcopy|mktemp)$"
+    command_pattern: "^(grep|egrep|find|cat|ls|head|tail|less|more|wc|sort|uniq|diff|stat|file|du|df|awk|sed|cut|xargs|printf|pwd|whoami|md5sum|lsusb|sleep|ss|date|touch|ld|rg|fd|pdfgrep|pdftotext|jq|readelf|objdump|nm|size|objcopy|mktemp)$"
     category: read
     decision: allow
 
@@ -519,6 +545,16 @@ bash_rules:
     category: read
     decision: allow
     message: "Shell variable assignment before safe read/utility commands"
+
+  # A standalone assignment (its own subcommand, e.g. split off by && from the
+  # command that uses it) has no attached command for the rule above to match
+  # against. Restricted to a literal-value charset (no $, backticks, or
+  # spaces) so this can't allow a command substitution embedded in the value.
+  - name: "Allow standalone shell variable assignment with a literal value"
+    command_pattern: "^[A-Z_][A-Z0-9_]*=[A-Za-z0-9_./:~-]*$"
+    category: read
+    decision: allow
+    message: "Standalone shell variable assignment with a literal value (no command substitution)"
 
   # ===================================================================
   # GitHub CLI Commands
@@ -573,6 +609,13 @@ bash_rules:
     argument_pattern: "^(pr|issue|run|release|workflow|repo).*(list|view|diff|checks|download).*"
     category: read
     decision: allow
+
+  - name: "Allow gh label list (read-only)"
+    command_pattern: "^gh$"
+    argument_pattern: "^label\\s+list.*"
+    category: read
+    decision: allow
+    message: "GitHub CLI read-only label list operation for verifying PR labels"
 
   - name: "Allow gh pr create for version bumps and feature PRs"
     command_pattern: "^gh$"

@@ -2,7 +2,16 @@
 
 **STOP! Complete this checklist before making ANY code changes:**
 
-**Use the TodoWrite tool to track each step as you complete it.**
+**Use a task list tool to track each step as you complete it.**
+
+## 0. Read Coding Standards
+
+**Read `claude/developer/guides/coding-standards.md` before writing any code.**
+General instinct ("explain why, not what") isn't enough on its own — this repo
+has specific rules beyond that default, including: never write
+discovery-narrative comments or docs ("used to be X", "this used to fail
+because Y") — describe only the current state and current rationale; history
+belongs in the commit message, not the code or guide text.
 
 ## 1. Check Lock Files
 
@@ -26,6 +35,7 @@ LOCKED_BY: Developer
 TASK: [task-name-from-assignment]
 LOCKED_AT: $(date '+%Y-%m-%d %H:%M')
 BRANCH: [branch-name]
+SESSION_ID: $CLAUDE_CODE_SESSION_ID
 EOF
 
 # For configurator
@@ -34,32 +44,23 @@ LOCKED_BY: Developer
 TASK: [task-name-from-assignment]
 LOCKED_AT: $(date '+%Y-%m-%d %H:%M')
 BRANCH: [branch-name]
+SESSION_ID: $CLAUDE_CODE_SESSION_ID
 EOF
 ```
 
 use inav.lock for the inav/ directory, inav2.lock for the inav2/ directory, or inav3.lock for the inav3 directory
 
 ## 3. Create Git Branch
-The branch MUST be created off of the correct version branch in accordance with the create-pr Skill.
-Important: Do NOT branch off master.
+The branch MUST be created off of the correct version branch — never off master.
 
 **First, check that origin is in sync with upstream, then update local:**
 ```bash
-cd inav  # or inav-configurator
-git fetch upstream
-git fetch origin
-git log origin/maintenance-10.x..upstream/maintenance-10.x --oneline  # or maintenance-9.x
+claude/developer/scripts/git/new-branch.sh <repo> <bugfix|feature|breaking> <branch-name>
 ```
 
-If upstream has commits that origin does not: **STOP. Do not pull from upstream directly.**
-Prompt the user: *"origin/maintenance-10.x is behind upstream by N commits. Please sync your fork on GitHub (Sync fork button) before we branch."*
-
-Once origin is in sync (or was already up to date):
-```bash
-git checkout maintenance-10.x
-git pull
-git checkout -b fix/issue-XXXX-description
-```
+See `.claude/skills/git-workflow/SKILL.md` ("Creating Branches") for the current
+base-branch decision table (including any active temporary override) and the manual
+fallback if the script can't be used.
 
 ## 4. Plan End-User Documentation (If Needed)
 
@@ -185,5 +186,7 @@ Use the Edit tool to append new entries. Format: `- **Brief title**: One-sentenc
 
 - **Fix blockers, don't route around them**: If goal X is blocked by small problem Y, fix Y first — don't pivot to complex workarounds (e.g. if a build fails due to an unrelated compile error in another file, fix that error rather than trying to analyze LTO bitcode object files to simulate what the linker would have produced). We build correct solutions, not workarounds.
 - **Always use fc-flasher agent for hardware flashing**: Never invoke `dfu-util` directly. STM32H7 boards silently fail DFU exit with raw dfu-util ("can't detach"), leaving the FC stuck. The fc-flasher agent uses the known-good script that handles all STM32 variants correctly.
+- **Harness-only tasks (`.claude/`, `claude/`) skip branch creation**: A guardrail hook blocks `git checkout -b` in the root `inavflight/` repo — branches belong in the project repos (`inav/`, `inav-configurator/`, etc.). For tasks that only touch harness config/docs, commit straight to `master`, matching existing harness commit history.
+-- **Floats must end in `f` to avoid promotion to double**: We don't want to load the double-precision math library by accidentally using 2.0 instead of 2.0f
 
 <!-- Add new lessons above this line -->

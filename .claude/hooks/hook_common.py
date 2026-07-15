@@ -418,8 +418,14 @@ class RuleMatcher:
 
         return results
 
-    def _matches_rule(self, tool_name: str, tool_input: Dict[str, Any], rule: Dict[str, Any]) -> bool:
-        """Check if a tool call matches a rule."""
+    @staticmethod
+    def _matches_rule(tool_name: str, tool_input: Dict[str, Any], rule: Dict[str, Any]) -> bool:
+        """Check if a tool call matches a rule.
+
+        Static (no instance state needed) so InjectionMatcher can reuse this exact
+        matching predicate for tool_context_injections.yaml rules without
+        instantiating a permission RuleMatcher.
+        """
         # Check tool name pattern
         tool_name_pattern = rule.get('tool_name_pattern')
         if tool_name_pattern and not re.match(tool_name_pattern, tool_name):
@@ -434,8 +440,12 @@ class RuleMatcher:
 
         return True
 
-    def _matches_bash_rule(self, parsed_cmd: ParsedCommand, rule: Dict[str, Any]) -> bool:
-        """Check if a parsed bash command matches a rule."""
+    @staticmethod
+    def _matches_bash_rule(parsed_cmd: ParsedCommand, rule: Dict[str, Any]) -> bool:
+        """Check if a parsed bash command matches a rule.
+
+        Static for the same reason as _matches_rule above.
+        """
         # Check command pattern
         command_pattern = rule.get('command_pattern')
         if command_pattern and not re.match(command_pattern, parsed_cmd.command):
@@ -548,6 +558,210 @@ class RuleMatcher:
             return None
 
 
+class InjectionConfig:
+    """Loads point-of-action context injection rules from tool_context_injections.yaml.
+
+    Deliberately a separate config/class from HookConfig: injection rules are
+    additive/advisory/high-churn, unlike the security-ordered, first-match-wins
+    permission rules. See tool_context_injections.yaml header for the full rationale.
+    """
+
+    def __init__(self, config_path: Optional[str] = None):
+        self.injections = self._load_injections(config_path)
+
+    def _load_injections(self, config_path: Optional[str]) -> List[Dict[str, Any]]:
+        hook_dir = os.path.dirname(os.path.abspath(__file__))
+        path = config_path or os.path.join(hook_dir, "tool_context_injections.yaml")
+
+        if not os.path.exists(path):
+            return []
+
+        with open(path, 'r') as f:
+            data = yaml.safe_load(f) or {}
+
+        return data.get('injections', [])
+
+
+class InjectionThrottle:
+    """Tracks which once_per_session injection rules have already fired this session.
+
+    Marker file lives outside the repo (~/.claude/hooks/injected_context/), keyed by
+    session_id, mirroring the precedent set by the retired passive_inject.py.
+
+    Nothing ever closes a Claude Code session explicitly (no SessionEnd hook is
+    wired, and one wouldn't be reliable across crashes/kills anyway), so this
+    directory otherwise grows one file per session forever - exactly what
+    happened to passive_inject.py's ~/.claude/hooks/injected/, which still has
+    files dating back to its first day of use. Prune on every load instead of
+    depending on session-exit cleanup.
+    """
+
+    MARKER_DIR = os.path.expanduser("~/.claude/hooks/injected_context")
+    RETENTION_DAYS = 30
+
+    def __init__(self, session_id: Optional[str]):
+        self.session_id = session_id
+        self._prune_stale_markers()
+        self._fired = self._load()
+
+    def _prune_stale_markers(self):
+        """Delete marker files untouched for RETENTION_DAYS.
+
+        A stale file just means a long-finished session re-fires its
+        once_per_session injections if somehow resumed - harmless, since these
+        are advisory reminders, not security-relevant state.
+        """
+        if not os.path.isdir(self.MARKER_DIR):
+            return
+        cutoff = datetime.now().timestamp() - (self.RETENTION_DAYS * 86400)
+        try:
+            for fname in os.listdir(self.MARKER_DIR):
+                path = os.path.join(self.MARKER_DIR, fname)
+                try:
+                    if os.path.getmtime(path) < cutoff:
+                        os.remove(path)
+                except OSError:
+                    pass
+        except OSError:
+            pass
+
+    def _marker_path(self) -> str:
+        return os.path.join(self.MARKER_DIR, f"{self.session_id}.json")
+
+    def _load(self) -> set:
+        if not self.session_id:
+            return set()
+        path = self._marker_path()
+        if os.path.exists(path):
+            try:
+                with open(path, 'r') as f:
+                    return set(json.load(f))
+            except Exception:
+                return set()
+        return set()
+
+    def should_fire(self, rule_name: str, throttle: str) -> bool:
+        """throttle: 'always' fires every match; 'once_per_session' fires once."""
+        if throttle == 'always':
+            return True
+        return rule_name not in self._fired
+
+    def mark_fired(self, rule_name: str):
+        self._fired.add(rule_name)
+
+    def save(self):
+        if not self.session_id:
+            # No session id available (shouldn't happen in practice) - fail open by
+            # not persisting, so throttled rules just fire every time instead of
+            # crashing.
+            return
+        os.makedirs(self.MARKER_DIR, exist_ok=True)
+        with open(self._marker_path(), 'w') as f:
+            json.dump(sorted(self._fired), f)
+
+
+class InjectionMatcher:
+    """Matches tool calls against point-of-action context injection rules.
+
+    Reuses RuleMatcher's static matching predicates so injection matchers behave
+    identically to permission rule matchers (same command_pattern/argument_pattern
+    and tool_name_pattern/tool_input_patterns semantics). Unlike RuleMatcher,
+    matching here is additive (every matching rule is returned, not just the
+    first) since injections never compete for a single decision.
+    """
+
+    def __init__(self, injection_config: InjectionConfig, logger: HookLogger):
+        self.injections = injection_config.injections
+        self.logger = logger
+        self.bash_parser = BashCommandParser()
+
+    def match_bash(self, command: str, cwd: Optional[str] = None) -> List[Dict[str, Any]]:
+        """Return injection rules whose matcher matches any subcommand of `command`."""
+        parsed_cmds = self.bash_parser.parse(command)
+        matched = []
+
+        for rule in self.injections:
+            if 'command_pattern' not in rule:
+                continue  # general-tool injection rule, not a bash one
+
+            for parsed_cmd in parsed_cmds:
+                if RuleMatcher._matches_bash_rule(parsed_cmd, rule):
+                    if self._precondition_fires(rule, cwd=cwd, bash_cmd=parsed_cmd, full_command=command):
+                        matched.append(rule)
+                    break  # one firing per rule per tool call
+
+        return matched
+
+    def match_tool(self, tool_name: str, tool_input: Dict[str, Any]) -> List[Dict[str, Any]]:
+        """Return injection rules whose matcher matches this general tool call."""
+        matched = []
+
+        for rule in self.injections:
+            if 'tool_name_pattern' not in rule:
+                continue  # bash injection rule, not a general-tool one
+
+            if RuleMatcher._matches_rule(tool_name, tool_input, rule):
+                if self._precondition_fires(rule, tool_input=tool_input):
+                    matched.append(rule)
+
+        return matched
+
+    def _precondition_fires(
+        self,
+        rule: Dict[str, Any],
+        cwd: Optional[str] = None,
+        bash_cmd: Optional[ParsedCommand] = None,
+        full_command: Optional[str] = None,
+        tool_input: Optional[Dict[str, Any]] = None,
+    ) -> bool:
+        """Run rule['precondition_script'] if present; otherwise the matcher alone is enough.
+
+        Contract (deliberately distinct from permission preconditions, which return
+        allow/deny/ask): the script must `echo "fire"` to inject, anything else means
+        skip. This keeps injection preconditions unambiguous about never being able
+        to influence the permission decision.
+
+        Available variables: {HARNESS_ROOT} always; {COMMAND}/{ARGS}/{FULL_COMMAND}
+        for bash rules; tool_input fields (e.g. {file_path}) for general-tool rules.
+        """
+        script = rule.get('precondition_script')
+        if not script:
+            return True
+
+        import subprocess
+
+        hook_dir = os.path.dirname(os.path.abspath(__file__))
+        harness_root = os.path.dirname(os.path.dirname(hook_dir))
+        script = script.replace('{HARNESS_ROOT}', harness_root)
+
+        if bash_cmd is not None:
+            script = script.replace('{COMMAND}', bash_cmd.command)
+            script = script.replace('{ARGS}', bash_cmd.arguments)
+            script = script.replace('{FULL_COMMAND}', bash_cmd.raw)
+            if full_command:
+                script = script.replace('{ORIGINAL_COMMAND}', full_command)
+
+        if tool_input:
+            for key, value in tool_input.items():
+                script = script.replace("{" + key + "}", str(value))
+
+        try:
+            result = subprocess.run(
+                ['bash', '-c', script],
+                capture_output=True,
+                text=True,
+                timeout=2,
+                cwd=cwd,
+            )
+            return result.stdout.strip().lower() == 'fire'
+        except subprocess.TimeoutExpired:
+            self.logger.log(f"Injection precondition timed out for rule: {rule.get('name')}", 'warning')
+            return False
+        except Exception as e:
+            self.logger.log(f"Injection precondition error for rule {rule.get('name')}: {e}", 'error')
+            return False
+
+
 class HookOutputGenerator:
     """Generates hook output JSON."""
 
@@ -590,7 +804,15 @@ class HookOutputGenerator:
             output["hookSpecificOutput"]["updatedInput"] = updated_input
 
         if additional_context:
-            output["additionalContext"] = additional_context
+            # Must live INSIDE hookSpecificOutput for PreToolUse, per
+            # https://code.claude.com/docs/en/hooks.md - a top-level sibling key
+            # is silently discarded by Claude Code. Confirmed via direct
+            # transcript inspection (2026-07-11): the hook's own stdout contained
+            # the correct additionalContext with the old top-level placement,
+            # faithfully logged as a "hook_success" attachment record, but the
+            # actual tool_result delivered to the model never included it -
+            # true even for a genuinely human-approved interactive ask prompt.
+            output["hookSpecificOutput"]["additionalContext"] = additional_context
 
         if system_message:
             output["systemMessage"] = system_message
