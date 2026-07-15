@@ -2,9 +2,37 @@
 
 Completed (✅) and cancelled (❌) projects by current author (daijoubu) for INAV firmware and DroneCAN development.
 
-**Total Completed:** 48 | **Total Cancelled:** 2
+**Total Completed:** 50 | **Total Cancelled:** 2
 
 > **Active projects:** See [../INDEX.md](../INDEX.md)
+
+---
+
+
+### ✅ fix-configurator-outputs-servo-index-offset
+
+**Status:** COMPLETED (2026-07-09)
+**Type:** Bug Fix
+**Priority:** HIGH
+
+Servos 1-4 configured in the mixer starting at output S3 show correctly as Servo 1-4 on the Mixer page, but show as Servo 2-5 on the Outputs page — a one-index offset between the two pages for the same servo/output mapping. Reported by user while updating firmware on their Swordfish.
+
+---
+
+
+### ✅ fix-configurator-flash-progress-html-escaping
+
+**Status:** COMPLETED (2026-07-09)
+**Type:** Bug Fix
+**Priority:** HIGH
+
+When a firmware update fails, the flashing progress bar displays the literal markup `<span style="color:red">Failed</span>` as text instead of rendering styled red "Failed" text. Reported by user while updating firmware on their Swordfish.
+
+Root cause: `js/protocols/stm32.js` DFU timeout handler used jQuery `.text()` instead of `.html()` for an i18n string that intentionally contains markup. One-line fix.
+
+**Repository:** inav-configurator | **Branch:** `fix-flash-progress-html-escaping` (from `maintenance-9.x`)
+**PR:** [iNavFlight/inav-configurator#2678](https://github.com/iNavFlight/inav-configurator/pull/2678) — OPEN, CI green (all builds + SonarCloud passing), not yet merged
+**Note:** Hardware testing (real DFU timeout) not performed — low risk, one-line change matching an existing proven pattern used elsewhere for the same element.
 
 ---
 

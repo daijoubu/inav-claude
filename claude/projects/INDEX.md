@@ -2,8 +2,8 @@
 
 This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKED).
 
-**Last Updated:** 2026-07-07
-**Active:** 2 | **Backburner:** 11 | **Blocked:** 6
+**Last Updated:** 2026-07-09
+**Active:** 3 | **Backburner:** 11 | **Blocked:** 6
 
 > **Completed projects:** See [completed/INDEX.md](completed/INDEX.md)
 > **Blocked projects:** See `blocked/` directory
@@ -38,6 +38,18 @@ This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKE
 ---
 
 ## Active Projects
+
+### 📋 fix-msp-servo-mixer-targetchannel-oob
+
+**Status:** TODO | **Type:** Bug Fix | **Priority:** MEDIUM
+**Created:** 2026-07-09 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
+
+MSP servo-mixer write handlers (`MSP_SET_SERVO_MIX_RULE`, `MSP2_INAV_SET_SERVO_MIXER`) don't bounds-check `targetChannel` before storing it, unlike the CLI `smix` equivalent — an out-of-range value flows unchecked into the mixing loop's fixed-size array indexing, an OOB read/write on every mixer cycle. Flagged by developer during unrelated investigation, no code touched. Kept at MEDIUM priority per user (2026-07-09): long-standing gap, and in practice only the Configurator sends these MSP writes today.
+
+**Directory:** `active/fix-msp-servo-mixer-targetchannel-oob/`
+**Repository:** inav (firmware) | **Branch:** TBD (from `maintenance-9.x`)
+
+---
 
 ### 🚧 feature-formationflight-diagnostic-logging
 
