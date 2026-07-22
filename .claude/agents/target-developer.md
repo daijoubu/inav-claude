@@ -76,10 +76,10 @@ Callers must provide one or more of:
 
 ### Target Documentation (if exists)
 - `claude/developer/docs/targets/overview.md` - Target system architecture
-- `claude/developer/docs/targets/common-issues.md` - Known problem catalog
+- `inav/docs/development/targets/common-issues.md` - Known problem catalog
 - `claude/developer/docs/targets/creating-targets.md` - Step-by-step guide
 - `claude/developer/docs/targets/troubleshooting-guide.md` - Systematic debugging
-- `claude/developer/docs/targets/examples.md` - Real fixes from git history
+- `inav/docs/development/targets/examples.md` - Real fixes from git history
 - `claude/developer/docs/targets/timer-dma-conflicts.md` - DMA resolution
 - `claude/developer/docs/targets/stm32h7/` - STM32H7 datasheet index + search tool. Read CLAUDE.md for usage.
 - `claude/developer/docs/targets/stm32f405/` - STM32F405 datasheet index + AF table. Read CLAUDE.md for usage.

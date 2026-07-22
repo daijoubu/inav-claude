@@ -250,7 +250,7 @@ Internal documentation relevant to building:
 
 - `inav/docs/development/build-system.md` - **Complete build system guide** (CMAKE_BUILD_TYPE, compiler flags, output files, debug symbols)
 - `claude/developer/scripts/testing/inav/docs/BUILDING_SITL.md` - SITL build details
-- `inav/docs/development/gcc-preprocessing-techniques.md` - Debug build issues
+- `claude/developer/docs/debugging/gcc-preprocessing-techniques.md` - Debug build issues
 - `claude/developer/README.md` - Section "Building the Firmware" for overview
 - `inav/docs/development/Building in Docker.md` - Docker build alternative
 - `inav/docs/development/Building in Linux.md` - Linux build requirements

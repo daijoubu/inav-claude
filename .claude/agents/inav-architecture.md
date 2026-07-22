@@ -480,7 +480,7 @@ Internal documentation relevant to architecture:
 
 **Developer guides:**
 - `claude/developer/README.md` - Section "Firmware Architecture" (lines 250-345)
-- `inav/docs/development/gcc-preprocessing-techniques.md` - Debugging compile-time issues
+- `claude/developer/docs/debugging/gcc-preprocessing-techniques.md` - Debugging compile-time issues
 - `inav/docs/development/pid-to-servo-computation.md` - Flight control data flow
 
 **INAV documentation:**

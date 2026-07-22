@@ -225,7 +225,7 @@ STM32H7 uses DMAMUX which eliminates most DMA conflicts:
 ## Related Documentation
 
 - **overview.md** - Target system basics
-- **common-issues.md** - See "Timer Configuration" section for real examples
+- **inav/docs/development/targets/common-issues.md** - See "Timer Configuration" section for real examples
 - **creating-targets.md** - Timer setup during target creation
 - **STM32 Reference Manual** - Complete DMA tables
 
