@@ -377,7 +377,7 @@ Internal documentation relevant to code review:
 
 **Architecture guides:**
 - `.claude/agents/inav-architecture.md` - Firmware architecture reference
-- `claude/developer/docs/pid-to-servo-computation.md` - Flight control data flow
+- `inav/docs/development/pid-to-servo-computation.md` - Flight control data flow
 - `inav/docs/INAV PID Controller.md` - PID controller details
 
 **Testing guides:**

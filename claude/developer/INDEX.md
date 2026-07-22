@@ -75,10 +75,10 @@ General-purpose documentation that applies across projects:
 | `mspapi2/` | MSP API library documentation |
 
 **Key debugging docs:**
-- `debugging/usb-msc-debugging.md` - USB mass storage issues
+- `inav/docs/development/usb-msc-debugging.md` - USB mass storage issues
 - `debugging/performance-debugging.md` - PID loop performance
 - `debugging/target-split-verification.md` - Target directory splitting
-- `debugging/gcc-preprocessing-techniques.md` - GCC preprocessing
+- `inav/docs/development/gcc-preprocessing-techniques.md` - GCC preprocessing
 
 ### `scripts/` - Reusable Scripts (Tracked)
 
