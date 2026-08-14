@@ -474,7 +474,7 @@ bash_rules:
     message: "Copy WASM SITL artifacts to configurator resources directory"
 
   - name: "Allow unit test executables (build_test/src/test/unit/*)"
-    command_pattern: "^(\\./)?(gps_dronecan_unittest|dronecan_application_unittest|dronecan_messages_unittest)$"
+    command_pattern: "^(\\./)?(.*_unittest)$"
     category: other
     decision: allow
     message: "Unit test executable allowed for development testing"
