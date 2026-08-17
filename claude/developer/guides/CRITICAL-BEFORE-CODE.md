@@ -15,31 +15,52 @@ belongs in the commit message, not the code or guide text.
 
 ## 1. Check Lock Files
 
+**There are up to three parallel firmware checkouts — `inav/`, `inav2/`,
+`inav3/` — each with its own lock file, plus `inav-configurator/`. This is
+NOT one repo with three names for the same thing: they are separate working
+trees, and holding a lock on one does not block work in another. Use
+whichever checkout is unlocked.**
+
+**This applies before ANY `git checkout`/`switch` or build in any of the
+firmware checkouts or `inav-configurator/` — including read-only
+investigation or build-comparison tasks that never intend to commit.**
+Checking out a branch mutates the shared working tree regardless of whether
+you plan to write code; a lock check gated only on "am I about to commit"
+arrives too late.
+
 ```bash
-# Check if directory is locked by another session
-cat claude/locks/inav.lock 2>/dev/null || echo "No lock"
+# Check firmware checkouts in order until you find one unlocked
+cat claude/locks/inav.lock 2>/dev/null || echo "inav/ - No lock"
+cat claude/locks/inav2.lock 2>/dev/null || echo "inav2/ - No lock"
+cat claude/locks/inav3.lock 2>/dev/null || echo "inav3/ - No lock"
+
+# Configurator (single checkout)
 cat claude/locks/inav-configurator.lock 2>/dev/null || echo "No lock"
 ```
 
-**If locked:** STOP. Report to manager that repo is locked. Do NOT proceed.
+**If `inav.lock` is held, check `inav2.lock`; if that's also held, check
+`inav3.lock`.** Only STOP and report to manager if all three firmware
+checkouts are locked (or if the one relevant checkout for `inav-configurator/`
+is locked — there's only one of those). Do NOT proceed into a locked
+directory.
+
+Before using any unlocked checkout, sanity-check it's actually clean/idle —
+an absent lock file doesn't guarantee an idle tree (a prior session may have
+forgotten to release it). Run `git status --short` and `git diff --stat`; if
+you find uncommitted tracked-file changes or an unfamiliar branch checked
+out, check `claude/developer/email/sent/` for a completion report matching
+that branch/task name before assuming it's abandoned — don't just build on
+top of or discard what's there.
 
 ## 2. Acquire Lock (if unlocked)
 
 Use the `/start-task` skill - it handles lock acquisition and branch creation automatically.
 
-Or manually:
+Or manually, writing to the lock file matching the checkout you're using
+(`inav.lock` for `inav/`, `inav2.lock` for `inav2/`, `inav3.lock` for
+`inav3/`, `inav-configurator.lock` for `inav-configurator/`):
 ```bash
-# For firmware
-cat > claude/locks/inav.lock << EOF
-LOCKED_BY: Developer
-TASK: [task-name-from-assignment]
-LOCKED_AT: $(date '+%Y-%m-%d %H:%M')
-BRANCH: [branch-name]
-SESSION_ID: $CLAUDE_CODE_SESSION_ID
-EOF
-
-# For configurator
-cat > claude/locks/inav-configurator.lock << EOF
+cat > claude/locks/inav2.lock << EOF
 LOCKED_BY: Developer
 TASK: [task-name-from-assignment]
 LOCKED_AT: $(date '+%Y-%m-%d %H:%M')
@@ -47,8 +68,6 @@ BRANCH: [branch-name]
 SESSION_ID: $CLAUDE_CODE_SESSION_ID
 EOF
 ```
-
-use inav.lock for the inav/ directory, inav2.lock for the inav2/ directory, or inav3.lock for the inav3 directory
 
 ## 3. Create Git Branch
 The branch MUST be created off of the correct version branch — never off master.
@@ -167,5 +186,13 @@ Use the Edit tool to append new entries. Format: `- **Brief title**: One-sentenc
 - **Always use fc-flasher agent for hardware flashing**: Never invoke `dfu-util` directly. STM32H7 boards silently fail DFU exit with raw dfu-util ("can't detach"), leaving the FC stuck. The fc-flasher agent uses the known-good script that handles all STM32 variants correctly.
 - **Harness-only tasks (`.claude/`, `claude/`) skip branch creation**: A guardrail hook blocks `git checkout -b` in the root `inavflight/` repo — branches belong in the project repos (`inav/`, `inav-configurator/`, etc.). For tasks that only touch harness config/docs, commit straight to `master`, matching existing harness commit history.
 -- **Floats must end in `f` to avoid promotion to double**: We don't want to load the double-precision math library by accidentally using 2.0 instead of 2.0f
+- **Check for an existing upstream fix before implementing from a project plan**: Even when a manager-written summary already sketches an implementation, search open upstream PRs touching the same file/symptom (`gh pr list`/`gh api ...pulls` search, or a quick web check of the issue tracker) before writing new code. A pre-written plan can be superseded by someone else's already-tested fix with a cleaner design; cherry-picking that commit (crediting the original author) beats re-deriving a divergent implementation.
+- **Use the real `$CLAUDE_CODE_SESSION_ID` in lock files, not a placeholder string**: writing something like `SESSION_ID: developer-session` instead of the actual env var causes the "is this repo locked by a different session" hook check to false-positive on every subsequent command touching that repo, generating a spurious approval prompt each time. Fix immediately with `Edit` if caught after the fact — don't leave it, since the friction compounds across the whole session.
+- **Comments should label the one non-obvious thing, not explain the code**: e.g. for a regex, a few-word charset/format label (`# accept only base64 encoded input`) beats a multi-line comment justifying why the check exists or cross-referencing the caller. Presume the reader can read code; skip the comment entirely if nothing is opaque.
+- **In security-critical code, prefer fewer configuration knobs and shorter functions over flexibility**: during a setuid TOTP validator rewrite, the user repeatedly cut things back — rejected an env-var override for a path (env vars are attacker-influenced in some contexts and add a second code path to audit), rejected getpwnam()-based path defaults when the real deployment didn't use home directories, and rejected threading an extra out-parameter through a helper when the caller could just check for the condition directly. Stated principle: "complexity is the enemy of security." When writing auth/validation code, default to the fewest inputs, the fewest branches, and functions short enough to read top-to-bottom in one pass — don't add a knob or parameter unless something concrete needs it.
 
+- **"It's live in production" is not authorization to import a change as-is**: when syncing a repo against a diff pulled from a real server, evaluate every hunk on its own merits rather than reproducing it verbatim. Skip commented-out dead code and one-off debugging hacks (a hardcoded email redirect for one account, a send-suppression rule for one address) — they add confusion, not capability. Separately, flag anything that introduces or preserves a live credential, a disabled/no-op auth check, or an endpoint that unconditionally reports success, for explicit user confirmation before merging — regardless of whether it's commented out or actively running. Being real and being safe are different questions.
+
+- **Subagents don't inherit your lock discipline — tell them the safe path explicitly**: an `inav-code-review` run, asked only to review a diff file, went looking for surrounding source context on its own and created a `git worktree`/added a remote directly inside `inav/` while it was locked by a different session's task. No harm resulted (worktree adds are additive; the other session's checked-out branch was untouched), but it was luck, not design. When delegating any agent that might read repo state beyond a supplied diff/file path while a repo lock is held by another session, explicitly tell it which repo/path is safe to touch (e.g. a second clone like `inav2/`) — don't assume it will infer the lock exists or avoid the locked one.
+- **Check `git status`/`git log` on a task's named tool/script file before "extending" it**: a project's assignment email said a script "does not yet model X, needs extending" based on a report written days earlier. The extension already existed, fully implemented with its own self-tests — a prior session had written it but never committed it (the file was still untracked in `git status`). Re-implementing from the stale report would have duplicated real work and likely diverged from it. Five seconds of `git status`/`git log -- <path>` before writing new code in an assigned-but-possibly-already-done tool file would have caught this immediately either way.
 <!-- Add new lessons above this line -->
