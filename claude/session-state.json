@@ -1,14 +1,15 @@
 {
-  "current_task": "fix-pll2-kakuteh7wing-and-dronecan-h7-driver",
-  "current_todo_description": "Corrected issue 11594 with accurate PLL2 VCO range (192-960 MHz per DS12110)",
-  "last_user_query": "Where do you see PLL2 VCO range is limited to 800 MHz",
-  "in_progress_todo": "",
+  "current_task": "feature-dronecan-actuator-control",
+  "current_todo_description": "Phase 2 implementation of DroneCAN actuator control (uavcan.equipment.actuator.ArrayCommand broadcast) - Phase 1 (doc + failing test) is complete",
+  "last_user_query": "ok, save your spot here, I need to reboot.",
+  "in_progress_todo": "Add DroneCAN actuator output path: broadcast actuator.ArrayCommand from real mixer servo output values (currently hardcoded 2000us test stub in dronecanUpdate(), not wired to servo[] yet)",
   "completed_todos": [
-    "Corrected PLL2 VCO range: 192-960 MHz per DS12110 Rev 11 §6.3.10, not 400-800 MHz",
-    "Updated issue 11594 body with accurate VCO range (192-960 MHz wide mode)",
-    "Added comment noting the VCO range correction",
-    "SDMMC kernel clock correction: 200 MHz is a design convention, not a max spec"
+    "Phase 1: user-facing documentation (docs.md)",
+    "Phase 1: failing test (src/test/unit/dronecan_actuator_output_unittest.cc)",
+    "Phase 1: confirmed test fails for right reason",
+    "Phase 2: command_type decision (PWM)",
+    "Phase 2: SafetyState broadcast for AP_Periph compatibility, hardware-confirmed working"
   ],
-  "notes": "PLL2 VCO range (DS12110): 192-960 MHz wide mode. 1600 MHz on KAKUTEH7WING is 1.67× over max — fix in PR #11596 is correct.",
-  "updated_at": "2026-05-28T00:00:00Z"
+  "notes": "Branch feature/dronecan-actuator-control, lock held since 2026-08-12 10:30. User reboot in progress to fix an unrelated NVIDIA driver/kernel-module version mismatch (userspace 580.178 vs loaded kernel module 580.173.02) causing an EGL_BAD_ALLOC crash in an unrelated AppImage - not related to this project, just happened mid-session.\n\nUncommitted WIP in inav/ (git status): cmake/dsdlc_generated.cmake, lib/main/Dronecan/dsdlc_generated/include/{dronecan.sensors.rc.RCInput.h,dronecan_msgs.h,uavcan.equipment.power.BatteryInfo.h} modified; new files lib/main/Dronecan/dsdlc_generated/{include,src}/ardupilot.indication.SafetyState.{h,c}; src/main/drivers/dronecan/dronecan.c modified (WIP sendActuatorCommandArray() + periodic SafetyState broadcast); src/test/unit/CMakeLists.txt modified (added ardupilot.indication.SafetyState.c to dronecan_actuator_output_unittest extra_sources); new src/test/unit/dronecan_actuator_output_unittest.cc.\n\nDSDL messages regenerated this session via ~/Projects/dronecan (dronecan_dsdlc + DSDL submodules) per user request: ardupilot.indication.SafetyState (new), dronecan.sensors.rc.RCInput (added QUALITY_TYPE_* defines), uavcan.equipment.power.BatteryInfo (added STATE_OF_CHARGE_UNKNOWN define) - RCInput.c/BatteryInfo.c needed no changes (encode/decode logic untouched, constants-only DSDL updates).\n\nLatest test run (dronecan_actuator_output_unittest): 2/3 PASS. HarnessSanity_NodeStatusLoopbackWorks PASS, UnchangedServoStillBroadcastsAtFloorRate PASS, ServoValueChangeTriggersArrayCommandBroadcast FAIL - expected/known per user: current dronecan.c unconditionally broadcasts a hardcoded actuatorCommands[0].value=2000.0f test stub every cycle, not gated by change-detection and not wired to real servo[] yet, so the test's pre-change sanity assertion (expects 0 broadcasts before value changes) correctly fails. Will resolve naturally once real per-actuator due-tracking + servo[] wiring lands.\n\nDroneCAN convention on this branch: user writes implementation code; Claude does reference/testing/code-review only, except when explicitly asked to make a specific fix (typo, indentation, cmake wiring, DSDL regen) - those exceptions have happened several times this session and are fine to repeat if asked again.\n\nKey design decisions locked in docs.md: command_type=PWM; per-actuator due-tracking broadcast (floor 25Hz, ceiling servo_pwm_rate); fail-safe mirrors existing mixer/failsafe servo[] output, no CAN-specific fail-safe logic; bus-off relies on existing detection/recovery; node-absence safety delegated to receiving node's own command-timeout watchdog; arm/disarm is a no-op for actuator output; servo index to actuator_id mapping via new Outputs-tab per-servo checkbox+textbox (not the separate DroneCAN configurator tab, which is node-level settings only); AP_Periph SafetyState broadcast at 2Hz always SAFETY_OFF unconditional, CANARD_TRANSFER_PRIORITY_LOW (documented as deliberate for non-urgent unlock signal, would need HIGH/HIGHEST if ever a real safety-critical switch).\n\nNext steps when resuming: pick up Phase 2's remaining items - wire real servo[] values into the actuator broadcast with per-actuator due-tracking (replacing the 2000us stub), servo index to actuator_id mapping/config, fail-safe implementation, CLI setting + Configurator support.",
+  "updated_at": "2026-08-14T19:00:00Z"
 }

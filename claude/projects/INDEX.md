@@ -2,8 +2,8 @@
 
 This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKED).
 
-**Last Updated:** 2026-07-09
-**Active:** 3 | **Backburner:** 11 | **Blocked:** 6
+**Last Updated:** 2026-08-12
+**Active:** 8 | **Backburner:** 15 | **Blocked:** 6
 
 > **Completed projects:** See [completed/INDEX.md](completed/INDEX.md)
 > **Blocked projects:** See `blocked/` directory
@@ -39,6 +39,79 @@ This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKE
 
 ## Active Projects
 
+### 📋 feature-dronecan-esc-control
+
+**Status:** TODO | **Type:** Feature | **Priority:** HIGH
+**Created:** 2026-08-09 | **Assignee:** Developer | **Assignment:** 📝 Planned
+
+Add DroneCAN motor output by broadcasting `uavcan.equipment.esc.RawCommand`
+from mixer motor values. DSDL codec already generated, unused in `src/main`
+— INAV currently broadcasts only one DroneCAN message at all (NodeStatus
+heartbeat) and has never driven an actuator over CAN. Real-time control
+output with safety-critical fail-safe requirements (CAN bus-off/node-loss
+behavior on a live motor).
+
+**Directory:** `active/feature-dronecan-esc-control/`
+**Repository:** inav (firmware) | **Branch:** TBD (check `.claude/skills/git-workflow/SKILL.md` for current base)
+
+---
+
+### 📋 feature-dronecan-actuator-control
+
+**Status:** TODO | **Type:** Feature | **Priority:** HIGH
+**Created:** 2026-08-09 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
+
+Add DroneCAN servo output by broadcasting
+`uavcan.equipment.actuator.ArrayCommand` from mixer servo values. Same new
+territory as `feature-dronecan-esc-control` above (different DSDL message
+family, no code dependency) — first CAN-based actuator output in INAV.
+Fail-safe behavior on CAN loss is safety-critical (control surface stuck at
+an unsafe position).
+
+**2026-08-12: Promoted to current priority** — manager pulled developer off
+`feature-dronecan-led-indicator` (backburnered, no work started) onto this
+project instead, based on hardware availability.
+
+**Directory:** `active/feature-dronecan-actuator-control/`
+**Repository:** inav (firmware) | **Branch:** TBD (check `.claude/skills/git-workflow/SKILL.md` for current base)
+
+---
+
+### 📋 feature-dronecan-rcinput
+
+**Status:** TODO | **Type:** Feature | **Priority:** HIGH
+**Created:** 2026-08-09 | **Assignee:** Developer | **Assignment:** 📝 Planned
+
+Add support for receiving RC channel data over DroneCAN via the
+`sensors.rc.RCInput` message so CAN-based receivers (no UART) can drive
+INAV's RX pipeline. DSDL codec already exists
+(`dronecan.sensors.rc.RCInput.h`); no `src/main` wiring exists yet — new
+receiver type needed alongside `RX_TYPE_SERIAL`/`MSP`/`SIM`. Motivated by
+the Matek R900-30C mLRS receiver (see `feature-dronecan-msp-tunnel-matek-r900`
+below), which delivers RC via DroneCAN instead of serial.
+
+**Directory:** `active/feature-dronecan-rcinput/`
+**Repository:** inav (firmware) | **Branch:** TBD (check `.claude/skills/git-workflow/SKILL.md` for current base)
+
+---
+
+### 📋 feature-dronecan-msp-tunnel-matek-r900
+
+**Status:** TODO | **Type:** Feature | **Priority:** MEDIUM-HIGH
+**Created:** 2026-08-09 | **Assignee:** Developer | **Assignment:** 📝 Planned
+
+Implement MSP tunneling over DroneCAN (`uavcan.tunnel.Broadcast`/`Targetted`/
+`Protocol`, DSDL codec already generated, unused in `src/main`) so
+MSP/MSPv2 traffic can reach CAN-attached devices — specifically the Matek
+R900-30C mLRS receiver, which exposes MSP over its DroneCAN link since it
+isn't wired to a UART. Independent of `feature-dronecan-rcinput` above (no
+code dependency), same target hardware.
+
+**Directory:** `active/feature-dronecan-msp-tunnel-matek-r900/`
+**Repository:** inav (firmware) | **Branch:** TBD (check `.claude/skills/git-workflow/SKILL.md` for current base)
+
+---
+
 ### 📋 fix-msp-servo-mixer-targetchannel-oob
 
 **Status:** TODO | **Type:** Bug Fix | **Priority:** MEDIUM
@@ -48,6 +121,18 @@ MSP servo-mixer write handlers (`MSP_SET_SERVO_MIX_RULE`, `MSP2_INAV_SET_SERVO_M
 
 **Directory:** `active/fix-msp-servo-mixer-targetchannel-oob/`
 **Repository:** inav (firmware) | **Branch:** TBD (from `maintenance-9.x`)
+
+---
+
+### 📋 fix-adsb-stale-vehicle-slot-reuse
+
+**Status:** TODO | **Type:** Bug Fix | **Priority:** MEDIUM
+**Created:** 2026-08-10 | **Assignee:** Developer | **Assignment:** 📝 Planned
+
+When a new ADS-B vehicle claims a slot freed by an expired vehicle, `adsbNewVehicle()` calls `recalculateVehicle()` before setting the slot's `ttl`, so the recalculation no-ops (guarded by `ttl == 0` inside `recalculateVehicle()`). The slot goes active with the new vehicle's `icao`/GPS data but the previous occupant's stale `calculatedVehicleValues` (dist/dir), still flagged `valid == true`, until the next `taskAdsb()` tick. Fix is a one-line reorder in `src/main/io/adsb.c`. GitHub issue: https://github.com/iNavFlight/inav/issues/11773. Flagged by developer during unrelated investigation, no code touched.
+
+**Directory:** `active/fix-adsb-stale-vehicle-slot-reuse/`
+**Repository:** inav (firmware) | **Branch:** TBD
 
 ---
 
@@ -73,8 +158,10 @@ Log CAN bus error statistics (TEC, REC, LEC, bus-off count, RX drop count) to th
 
 **Unblocked 2026-07-07:** previously waiting on `fix-dronecan-driver-rework` PR #11607 to merge. Now branching directly off `fix/h7-dronecan-driver` (#11607's branch) instead, same pattern as the other 4 stacked DroneCAN branches — will rebase onto `maintenance-10.x` once #11607 merges. `PLAN.md` was found stale (written before the driver rework landed) and rewritten same day: the bus-off counter already exists (no `dronecan.c`/`.h` changes needed after all), the originally-assumed `tx_dropped`/`tx_queue_hwm`/`rx_buffer_hwm` struct fields don't exist, and a real RX-drop-count getter + pool allocator stats getter exist but weren't in the original plan. Revised scope: 6 fields, `blackbox.c` only.
 
+**2026-07-19 status update:** Implementation complete and verified (hardware-verified on KAKUTEH7WING, full pre-PR build matrix clean, inav-code-review APPROVE). Opened as draft PR **iNavFlight/inav#11729**, stacked on #11607 — PR description says not to merge before #11607. No further dev work pending until #11607 merges, then rebase and re-target for a clean diff.
+
 **Directory:** `active/feature-canbus-errors-blackbox/`
-**Repository:** inav (firmware) | **Branch:** `feature/canbus-errors-blackbox` (off `fix/h7-dronecan-driver`) → target `maintenance-10.x`
+**Repository:** inav (firmware) | **Branch:** `feature/canbus-errors-blackbox` (off `fix/h7-dronecan-driver`) → target `maintenance-10.x` → PR #11729
 **Plan:** `active/feature-canbus-errors-blackbox/PLAN.md`
 
 ---
@@ -95,6 +182,8 @@ Phase 1+2 combined into a single PR, #11607 — CI green, real-airframe flight o
 Phase 3 rebase (onto `fix/h7-dronecan-driver`, i.e. PR #11607's branch — done ahead of merge): `feature/dronecan-getnodeinfo` → `feature/dronecan-param-getset` → {`fix/dronecan-gps-health-guard`, `feature/dronecan-dna-server`} all rebased, force-pushed, and verified clean on full build matrix (F4/F7/H7/AT32/SITL) with no unmasked libcanard call sites, 2026-07-04. `feature/dronecan-dna-configurator` needed no rebase (still based on maintenance-10.x). Remaining Phase 3 item `feature/dronecan-magnetometer` still blocked — branch doesn't exist yet. `feature/canbus-errors-blackbox` branch created 2026-07-07 (see Active Projects above), also stacked on this PR pending merge.
 
 **Blocked on:** awaiting review/merge of PR #11607 — code, tests, and flight verification all complete; no further dev work pending. This is the root of the whole DroneCAN PR stack.
+
+**2026-08-03: New maintainer review from sensei-hacker (member) requires developer response.** Two questions before merging: (1) possible unguarded race on the shared canard memory pool — `canardHandleRxFrame()` in `dronecanUpdate()` isn't wrapped in `dronecanMaskTxISR()`/`dronecanUnmaskTxISR()` the way the TX-queue calls are, so a TX-complete ISR firing mid-multi-frame-reassembly (e.g. GNSSFix2/BatteryInfo) could race the allocator's free list; suggests a nesting-safe (depth-counted) mask/unmask pair, since `handle_GetNodeInfo()` can be reached synchronously from inside `canardHandleRxFrame()` and already does its own mask/unmask, which would prematurely re-enable the IRQ under the current non-reentrant NVIC calls. (2) `src/test/unit/bxcan_timing_unittest.cc` hardcodes `max_quanta_per_bit = 18` but the driver actually uses `17` for ≥1Mbps — test may not be catching a regression in the value this PR changed. **This blocks the whole stack, so should be prioritized above the flash-latency investigation and the msp-servo-mixer fix once picked up.**
 
 **Directory:** `blocked/fix-dronecan-driver-rework/`
 **Repository:** inav (firmware) | **Branch:** `fix/h7-dronecan-driver` → PR #11607 (open, replaces #11560 which is now closed)
@@ -183,6 +272,46 @@ Opened as draft PR **iNavFlight/inav-configurator#2671** against `maintenance-10
 ---
 
 ## Backburner Projects
+
+### ⏸️ feature-dronecan-led-indicator
+
+**Status:** BACKBURNER | **Type:** Feature | **Priority:** MEDIUM
+**Created:** 2026-08-09 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
+
+Broadcast `uavcan.equipment.indication.LightsCommand` to drive DroneCAN
+light/LED nodes, reflecting INAV's existing `ledstrip.c` indicator state
+(arm/warning/GPS/etc.) mapped to `light_id` values. DSDL codec already
+generated, unused in `src/main`. **Deliberately picked as the first
+DroneCAN broadcast-command project** — lowest-stakes case (no flight-safety
+consequence if a light is late/wrong/briefly absent) — to prove out the
+periodic-broadcast pattern before `feature-dronecan-esc-control` and
+`feature-dronecan-actuator-control` (both HIGH, real fail-safe stakes)
+reuse it. **Scope confirmed 2026-08-09:** onboard WS2812 strip and
+DroneCAN lights must both work, independently and simultaneously — this
+is additive, not a replacement — and the Configurator must be updated to
+expose enable/disable + `light_id` mapping.
+
+**Backburner condition:** Manager reprioritized developer onto
+`feature-dronecan-actuator-control` 2026-08-12, based on hardware
+availability. No work had started (still TODO). Resume once
+actuator-control is done or LED test hardware becomes the priority again.
+**Directory:** `backburner/feature-dronecan-led-indicator/`
+**Repository:** inav (firmware) + inav-configurator | **Branch:** TBD (check `.claude/skills/git-workflow/SKILL.md` for current base)
+
+---
+
+### ⏸️ investigate-h7-flash-latency-hardcoded
+
+**Status:** BACKBURNER | **Type:** Bug Fix | **Priority:** HIGH
+**Created:** 2026-08-03 | **Assignee:** Developer | **Assignment:** 📝 Planned
+
+`FLASH_LATENCY_2` is hardcoded in `SystemClockHSE_Config()` (`system_stm32h7xx.c:359`) regardless of silicon revision, but the code's own comment says RevV silicon at VOS0/240MHz needs 4WS, not 2WS. Insufficient flash wait states relative to HCLK risks corrupted flash reads — intermittent hard faults or instruction/data corruption. Flagged by developer 2026-08-02 during an unrelated PR review (#11756).
+
+**Backburner condition:** Queued behind higher-priority in-progress work; no emergency out-of-band fix needed since no field incident has been attributed to this yet.
+**Directory:** `backburner/investigate-h7-flash-latency-hardcoded/`
+**Repository:** inav (firmware) | **Branch:** TBD (check `.claude/skills/git-workflow/SKILL.md` for current base)
+
+---
 
 ### ⏸️ feature-auto-compass-orientation
 **Status:** BACKBURNER | **Type:** Feature | **Priority:** MEDIUM
@@ -324,6 +453,32 @@ Remove `taskSendSbus2Telemetry`, `calculateThrottleStatus`, and `applySensorAlig
 
 **Directory:** `backburner/cleanup-itcm-non-dronecan/`
 **Repository:** inav (firmware) | **Branch:** `maintenance-10.x`
+
+---
+
+### ⏸️ investigate-dsdl-decoder-truncated-payloads
+**Status:** BACKBURNER| **Type:** Bug Fix | **Priority:** HIGH
+**Created:** 2026-08-12 | **Assignee:** Developer | **Assignment:** 📝 Planned
+
+Every generated DSDL decoder under `lib/main/Dronecan/dsdlc_generated/` discards the return value of `canardDecodeScalar()`, so a truncated/zero-length DroneCAN payload decodes as success with fields left at zero instead of being rejected — verified for GNSSFix2, spot-checked as the same pattern in NodeStatus and BatteryInfo. Found by developer 2026-08-04 during the PR #11607 test-suite audit. Open question to resolve first: known/accepted limitation, or genuine gap needing a generator-level fix.
+
+**Backburner condition:** Awaiting manager triage decision (2026-08-04 question); queued behind higher-priority in-progress work.
+**Directory:** `backburner/investigate-dsdl-decoder-truncated-payloads/`
+**Repository:** inav (firmware) | **Branch:** TBD
+**Related:** Discovered alongside `fix-fragile-unittest-mirrors` (same audit); parent context `fix-dronecan-driver-rework` (PR #11607, doesn't block it)
+
+---
+
+### ⏸️ fix-fragile-unittest-mirrors
+**Status:** BACKBURNER| **Type:** Bug Fix | **Priority:** MEDIUM
+**Created:** 2026-08-12 | **Assignee:** Developer | **Assignment:** 📝 Planned
+
+Two unit test files hand-mirror production logic instead of linking real source, found via the same audit that caught `bxcan_timing_unittest.cc` drifting (PR #11607 review). `pwm_mapping_beeper_unittest.cc`'s mirrored enum is missing `TIM_USE_PINIO`, so it can't catch a regression in the real PINIO-flag-setting code. `pwm_output_assignment_unittest.cc` has one test (`TimerHwMaxGuard.OutRemainsZeroWhenCountExceedsLimit`) that can never fail by construction — its guard duplicates the condition being tested.
+
+**Backburner condition:** Informational finding from developer 2026-08-04, queued behind higher-priority in-progress work.
+**Directory:** `backburner/fix-fragile-unittest-mirrors/`
+**Repository:** inav (firmware) | **Branch:** TBD
+**Related:** Discovered alongside `investigate-dsdl-decoder-truncated-payloads` (same audit)
 
 ---
 
