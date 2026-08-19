@@ -32,7 +32,7 @@ class Project:
 
     @property
     def is_active(self):
-        return self.status in ('TODO', 'IN_PROGRESS', 'BACKBURNER')
+        return self.status in ('TODO', 'IN_PROGRESS', 'BACKBURNER', 'BLOCKED')
 
     @property
     def is_completed(self):
@@ -48,7 +48,7 @@ def parse_index(index_path: Path) -> List[Project]:
 
     for i, line in enumerate(lines, 1):
         # Match project headers
-        match = re.match(r'^### ([📋🚧✅⏸️❌]) (.+)$', line)
+        match = re.match(r'^### (📋|🚧|✅|⏸️|❌|🚫) (.+)$', line)
         if match:
             # Save previous project
             if current_project:
@@ -64,7 +64,8 @@ def parse_index(index_path: Path) -> List[Project]:
                 '🚧': 'IN_PROGRESS',
                 '✅': 'COMPLETE',
                 '⏸️': 'BACKBURNER',
-                '❌': 'CANCELLED'
+                '❌': 'CANCELLED',
+                '🚫': 'BLOCKED'
             }
 
             current_project = Project(
@@ -175,7 +176,7 @@ def main():
         print("  python project_manager.py list [status]")
         print("  python project_manager.py show <name>")
         print("  python project_manager.py stats")
-        print("\nStatus options: TODO, IN_PROGRESS, COMPLETE, BACKBURNER, CANCELLED")
+        print("\nStatus options: TODO, IN_PROGRESS, COMPLETE, BACKBURNER, BLOCKED, CANCELLED")
         sys.exit(1)
 
     command = sys.argv[1]

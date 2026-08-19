@@ -19,7 +19,7 @@ def main():
 
     for line in lines:
         # Check if this is a project header
-        if re.match(r'^### [📋🚧⏸️❌✅]', line):
+        if re.match(r'^### (📋|🚧|⏸️|❌|✅|🚫)', line):
             # Save previous section
             if current_section:
                 if is_completed:
