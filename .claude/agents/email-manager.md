@@ -55,6 +55,7 @@ Prompt: "Send completion report to manager. Task: Fix GPS bug. Branch: fix-gps-b
 ## Email Directory Structure
 
 Each role has an email folder at `claude/{role}/email/`:
+Note this is NOT inav/claude/ or inav2/claude/ or inav3/claude/ !  If you don't see the email boxes already existing, check down one directory lower from wherever you are. In other words, check ../claude/
 
 ```
 claude/
@@ -112,6 +113,14 @@ Then read each message file and summarize in a table:
    ```bash
    cp claude/{sender-role}/email/sent/{filename}.md claude/{recipient-role}/email/inbox/
    ```
+4. **If the draft existed in `claude/{sender-role}/email/outbox/`, remove it now that delivery succeeded:**
+   ```bash
+   rm claude/{sender-role}/email/outbox/{filename}.md
+   ```
+   `outbox/` must only ever contain drafts genuinely awaiting delivery — never
+   a leftover copy of a message already delivered. Skip this step if the
+   message was composed and sent directly without ever being staged in
+   `outbox/` (there's nothing to remove).
 
 **File naming examples:**
 - `2026-01-15-1030-task-fix-gps-bug.md`
@@ -136,10 +145,30 @@ mv claude/{role}/email/inbox/{filename}.md claude/{role}/email/inbox-archive/
 
 **Command:**
 ```bash
-find claude/*/email/outbox/ -type f -name "*.md" 2>/dev/null
+python3 claude/agents/email-manager/scripts/check_outbox.py
 ```
 
-If messages exist in outbox folders, they need to be moved to recipients' inbox folders.
+This checks every role's `outbox/` and separates files into two categories:
+- **Stale (already delivered):** the outbox file is byte-identical to a copy
+  already sitting elsewhere in the email tree (`sent/`, `inbox/`,
+  `inbox-archive/`, `archive/`). This means it was delivered by an older,
+  buggy version of the Send Email step (see step 4 above) that didn't clean
+  up `outbox/` after copying. Safe to remove — do NOT re-deliver it. Run with
+  `--clean` to delete these automatically:
+  ```bash
+  python3 claude/agents/email-manager/scripts/check_outbox.py --clean
+  ```
+- **UNDELIVERED:** no identical copy exists anywhere else — this is a
+  genuinely stuck draft. Deliver it (copy to the recipient's `inbox/`, copy to
+  the sender's `sent/`, then remove from `outbox/` per the Send Email steps
+  above).
+
+Do NOT use a plain `find claude/*/email/outbox/ -type f` check on its own —
+without the identical-copy comparison it cannot tell a stuck draft from a
+stale leftover of mail that was already delivered, read, and archived. That
+gap caused a false-positive incident on 2026-08-02 where already-resolved
+items (PR #2644, #11365, #2652, and an answered question) were nearly
+re-delivered into the manager's inbox.
 
 ---
 

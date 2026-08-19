@@ -459,6 +459,7 @@ Compose your completion report using this template, then pass to the **email-man
 - `CRITICAL-BEFORE-COMMIT.md` - Git and commit best practices
 - `CRITICAL-BEFORE-PR.md` - PR creation checklist (testing, code review, bot checks)
 - `coding-standards.md` - Code organization, quality, comments
+- `documentation-scope.md` - Where a doc belongs: `inav`/`inav-configurator` vs. `inav-claude`
 
 **Skill documentation:** `.claude/skills/*/SKILL.md`
 

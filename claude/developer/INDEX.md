@@ -75,10 +75,17 @@ General-purpose documentation that applies across projects:
 | `mspapi2/` | MSP API library documentation |
 
 **Key debugging docs:**
-- `debugging/usb-msc-debugging.md` - USB mass storage issues
+- `inav/docs/development/usb-msc-debugging.md` - USB mass storage issues
 - `debugging/performance-debugging.md` - PID loop performance
 - `debugging/target-split-verification.md` - Target directory splitting
 - `debugging/gcc-preprocessing-techniques.md` - GCC preprocessing
+- `inav/docs/development/bootlog-debugging.md` - Firmware boot log analysis
+- `inav/docs/development/at32-flash-recovery.md` - AT32F43x flash protection/lock recovery
+
+**Key patterns docs:**
+- `patterns/betaflight-config-to-inav-target.md` - Betaflight target porting
+- `patterns/timer-channel-multiplexing-servo-motor.md` - Timer/DMA sharing
+- `inav-configurator/docs/development/patterns/msp-async-data-access.md` - Async MSP data-load race pattern
 
 ### `scripts/` - Reusable Scripts (Tracked)
 

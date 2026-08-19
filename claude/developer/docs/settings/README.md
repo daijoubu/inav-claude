@@ -13,10 +13,10 @@ The Parameter Group (PG) system is INAV's mechanism for managing persistent conf
 
 | Topic | File |
 |-------|------|
-| Whether a new setting is warranted at all | [when-to-add-a-setting.md](when-to-add-a-setting.md) |
-| When to increment versions | [versioning-rules.md](versioning-rules.md) |
-| How to register parameter groups | [registration-guide.md](registration-guide.md) |
-| Real-world example (PR #11236) | [case-study-pr11236.md](case-study-pr11236.md) |
+| Whether a new setting is warranted at all | [when-to-add-a-setting.md](https://github.com/iNavFlight/inav/blob/maintenance-10.x/docs/development/settings/when-to-add-a-setting.md) |
+| When to increment versions | [versioning-rules.md](https://github.com/iNavFlight/inav/blob/maintenance-10.x/docs/development/settings/versioning-rules.md) |
+| How to register parameter groups | [registration-guide.md](https://github.com/iNavFlight/inav/blob/maintenance-10.x/docs/development/settings/registration-guide.md) |
+| Real-world example (PR #11236) | [case-study-pr11236.md](https://github.com/iNavFlight/inav/blob/maintenance-10.x/docs/development/settings/case-study-pr11236.md) |
 
 ## Key Concepts
 
@@ -168,7 +168,7 @@ PG_RESET_TEMPLATE(myFeatureConfig_t, myFeatureConfig,
 
 ### Change a Parameter Group Structure
 
-**When you modify the struct, you MUST increment the version** (see [versioning-rules.md](versioning-rules.md)):
+**When you modify the struct, you MUST increment the version** (see [versioning-rules.md](https://github.com/iNavFlight/inav/blob/maintenance-10.x/docs/development/settings/versioning-rules.md)):
 
 ```c
 // Before (version 2)
@@ -213,6 +213,6 @@ When a setting is changed via CLI or configurator:
 
 ## See Also
 
-- [versioning-rules.md](versioning-rules.md) - Detailed rules for when to increment versions
-- [registration-guide.md](registration-guide.md) - Step-by-step guide for registering PGs
-- [case-study-pr11236.md](case-study-pr11236.md) - Real-world example of version increment requirement
+- [versioning-rules.md](https://github.com/iNavFlight/inav/blob/maintenance-10.x/docs/development/settings/versioning-rules.md) - Detailed rules for when to increment versions
+- [registration-guide.md](https://github.com/iNavFlight/inav/blob/maintenance-10.x/docs/development/settings/registration-guide.md) - Step-by-step guide for registering PGs
+- [case-study-pr11236.md](https://github.com/iNavFlight/inav/blob/maintenance-10.x/docs/development/settings/case-study-pr11236.md) - Real-world example of version increment requirement
