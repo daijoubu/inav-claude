@@ -40,53 +40,80 @@ boot:
    sitting in the resolved-but-uninitialized tail of the motor/servo list)
    and whose only available DMA option resolves to the same
    (DMA controller, stream) pair will silently fight over that stream --
-   whichever initializes last wins, the other's DSHOT/LED output just never
-   works. Only entries that ACTUALLY claim DMA count for this check: pure
-   SERVO-resolved channels never touch DMA at all (pwm_output.c only calls
+   only the first claimant to actually initialize keeps it, every other
+   claimant's DSHOT/LED output just never works. Only entries that
+   ACTUALLY claim DMA count for this check: pure SERVO-resolved channels
+   never touch DMA at all (pwm_output.c only calls
    timerPWMConfigChannelDMA/DMABurst from the DSHOT motor path), and a
    MOTOR-resolved channel whose bucket position is >= the configured motor
    count is never initialized either, so it can't collide with anything.
-   Under USE_DSHOT_DMAR this per-channel model is WRONG for motor-vs-motor
-   groups sharing one physical timer -- see BURST_STREAM_COLLISION below,
-   which supersedes it for that specific case; DMA_STREAM_COLLISION is
-   still correct and still reported for a DMAR target's LED-vs-motor
-   groups (LED strip never goes through the burst path) and for any group
-   spanning >=2 distinct physical timers.
+   Under USE_DSHOT_DMAR, grouping MOTOR claimers by their raw per-channel
+   dmavar/dmaopt value is WRONG -- see BURST_STREAM_COLLISION below, whose
+   resolve_dmar_cascade() walk supersedes it for MOTOR claimers (this
+   script groups by each MOTOR row's cascade-resolved effective_stream
+   instead, see the dshot_dmar branch in simulate()); DMA_STREAM_COLLISION
+   itself is still the right check and still uses each row's raw resolved
+   stream for LED strip (LED strip never goes through the burst path) and
+   for the final MOTOR-vs-LED / MOTOR-vs-MOTOR grouping once MOTOR rows
+   have been substituted with their cascade-resolved stream.
 
-3. BURST_STREAM_COLLISION (USE_DSHOT_DMAR targets only) -- burst mode
-   (impl_timerPWMConfigDMABurst(), timer_impl_stdperiph.c) claims one DMA
-   stream per PHYSICAL TIMER, not per channel: `tch->timCtx->dmaBurstRef`
-   lives on the timer-shared context (timCtx is one struct shared by all 4
-   channels of a timer -- timer.c timerGetTCH()), so only the first
-   channel of a timer to run (in pwmInitMotors()'s strict position order)
-   ever calls dmaGetByTag()/does a real DMA_Init using ITS OWN
-   dmavar-resolved stream; every later channel of the SAME timer sees
-   dmaBurstRef already set and rides along for free, never touching its
-   own dmavar at all. Consequences that invalidate a naive per-channel
-   DMA_STREAM_COLLISION scan under DMAR:
-     - Multiple channels of ONE physical timer resolving (by their own,
-       individually-considered dmavar) to the same shared "combined
-       request line" stream -- the classic F4/F7 TIM1/TIM8 CH1/CH2/CH3
-       pattern SHARED_TIMER_DMA_REQUEST already flags for the non-burst
-       case -- is NOT a bug under DMAR: that sharing is the whole point of
-       burst mode. This script drops these from DMA_STREAM_COLLISION
-       (see the dshot_dmar branch there) and does not flag them at all.
-     - A cross-timer collision is real, but its blast radius and even
-       which channel actually fails can differ from the naive model: if
-       timer A's first channel locks in a stream before timer B's first
-       channel is reached, and B's first channel's OWN dmavar resolves to
-       that same stream, B's first channel fails (not necessarily whatever
-       channel the naive grouping happened to flag) -- and per-timer
-       retry means a LATER channel of B might still succeed with a
-       different dmavar, so "the whole timer is dead" is not guaranteed
-       either. This script walks the real per-timer/per-channel ownership
-       cascade (see the BURST_STREAM_COLLISION block in simulate()) rather
-       than grouping by final resolved stream, to get the winner/loser and
-       blast radius right.
+3. BURST_STREAM_COLLISION / SILENT_DEAD_MOTOR under USE_DSHOT_DMAR --
+   burst mode (impl_timerPWMConfigDMABurst()) claims one DMA stream per
+   PHYSICAL TIMER, not per channel: `tch->timCtx->dmaBurstRef` lives on
+   the timer-shared context (timCtx is one struct shared by all 4 channels
+   of a timer -- timer.c timerGetTCH()). Both hazard classes -- a
+   NONE-resolving channel's SILENT_DEAD_MOTOR status, and cross-claim
+   collisions -- depend on the SAME real per-timer/per-channel ownership
+   cascade, replayed once by resolve_dmar_cascade() and reused by both
+   checks (see that function's docstring for the full derivation). The
+   two backend implementations of impl_timerPWMConfigDMABurst() genuinely
+   differ in a way that changes the answer, confirmed by direct comparison
+   of timer_impl_stdperiph.c (F4) against timer_impl_hal.c (F7/H7, a
+   shared backend file):
+     - F4: the dmaGetByTag()/ownership check sits INSIDE
+       `if (!tch->timCtx->dmaBurstRef) { ... }`. Once an earlier channel of
+       a physical timer has succeeded, every LATER channel of that SAME
+       timer skips the check entirely and unconditionally rides the
+       winning channel's stream for free -- a NONE-resolving free rider is
+       genuinely safe (no SILENT_DEAD_MOTOR), and it can't independently
+       collide with anything either, since it never makes its own claim
+       attempt.
+     - F7/H7 (timer_impl_hal.c): the ownership check happens
+       UNCONDITIONALLY, BEFORE that guard -- every channel, including a
+       later channel of an already-locked timer, must independently pass
+       its own dmaGetByTag()/dmaGetOwner() check using ITS OWN resolved
+       stream. There is NO free ride on this family: a NONE-resolving
+       channel is a genuine SILENT_DEAD_MOTOR regardless of position (this
+       is why H7's real TIM4_CH4 needed the explicit DMA_REQUEST_TIM4_UP
+       workaround, commit 657651bedf7c7bea2632c72f2a0c59bdcc37b26e -- F7's
+       timer_def_stm32f7xx.h has no equivalent workaround, so an F7 target
+       hitting a NONE-resolving channel under DMAR is still flagged), and
+       an already-claimed stream fails this channel's own attempt too --
+       whether the earlier claimant is a DIFFERENT timer (a genuine
+       cross-timer BURST_STREAM_COLLISION) or, a degenerate edge case, the
+       SAME timer reusing an identical dmavar-resolved stream
+       (dmaGetOwner() only tracks "is this DMA object free", not "which
+       timer already owns it").
+   CORRECTION TO AN EARLIER CONCLUSION: a first pass at this model was
+   built and verified only against F4's timer_impl_stdperiph.c semantics,
+   then applied uniformly to F4 AND F7/H7 DMAR targets alike. That
+   under-modeled F7/H7's lack of a free ride and produced false "cleared,
+   false positive" verdicts for real F7 hazards -- confirmed empirically:
+   NEXUSX and VANTAC_RF007 (both F7) have a genuine CERTAIN
+   BURST_STREAM_COLLISION (TIM2_CH1 at position 3, inside the S1-S4
+   range) that a family-aware resolve_dmar_cascade() correctly restores;
+   AOCODARCF7MINI, TMOTORVELOXF7V2, and FLYDRAGONPRO (all F7) have real
+   NOTICE-level BURST_STREAM_COLLISIONs the F4-only model had wrongly
+   cleared. The F4 DMAR targets in the original six
+   (FOXEERF405V2, RADIOLINKF405, SKYSTARSF405V2, TUNERCF405) remain
+   correctly clean -- the free-ride reasoning was right for them, just
+   wrongly generalized to F7/H7. See
+   claude/projects/active/investigate-shared-tim-dma-request-lines/
+   phase1-findings.md for the full corrected target list.
    Severity (CERTAIN/NOTICE) uses the same "loser position < 4" rule as
    DMA_STREAM_COLLISION (classify_collisions.py), since by construction
-   the walk processes strictly ascending position and only reports a
-   channel that actually, individually failed its own attempt.
+   the cascade walk processes strictly ascending position and only
+   reports a channel that actually, individually failed its own attempt.
 
 WHAT THIS SCRIPT DOES NOT MODEL (documented limitations, not bugs)
 ====================================================================
