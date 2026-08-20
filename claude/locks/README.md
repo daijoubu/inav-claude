@@ -92,6 +92,18 @@ discard what's there. Check `claude/developer/email/sent/` for a completion
 report matching that branch/task name to determine whether it's genuinely
 abandoned or still in progress.
 
+**Exception — the `claude/`/`.claude/` tripwire dirs:** every firmware
+checkout has a root-owned `claude/` directory (containing a `CLAUDE.md` that
+says "wrong directory, go up one level") to catch an agent that mistakes the
+firmware checkout for the harness root. Some checkouts also carry the
+Claude Code session config `.claude/`. Neither belongs to any task's WIP —
+if one shows up as the *only* thing making a candidate dirty, check whether
+it's simply missing from that checkout's `.git/info/exclude` (compare
+against a checkout where it's already excluded, e.g. `inav3`) rather than
+digging for a completion report. `claude/` is often root-owned and can't be
+moved/deleted by the session user — excluding it locally is the fix, not
+removal.
+
 The opposite failure — a lock file left in place well after its task
 actually finished — also happens regularly (see
 `claude/developer/workspace/stale-locks-investigation/findings.md` for a
