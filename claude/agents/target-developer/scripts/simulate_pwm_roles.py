@@ -742,6 +742,145 @@ class SimResult:
         self.hazards = []    # list of strings
 
 
+
+def resolve_dmar_cascade(rows, family):
+    """Faithfully replays impl_timerPWMConfigDMABurst()'s real per-timer/
+    per-channel DMA ownership cascade for a USE_DSHOT_DMAR target, walking
+    live DMA-claiming MOTOR rows in POSITION order (== pwmInitMotors()'s
+    real idx=0..motorCount-1 init order, since `rows` preserves declaration
+    order and position was assigned by that same walk). This is the single
+    authoritative source of "what DMA resource does this channel actually,
+    really end up sharing" -- used for BOTH the SILENT_DEAD_MOTOR and
+    DMA_STREAM_COLLISION/BURST_STREAM_COLLISION hazards below, replacing two
+    previously-divergent code paths (a naive per-channel dma_claims dict and
+    a separately-hand-rolled walk) that happened to agree on the one
+    real-world case (FLYDRAGONPRO) they were checked against but were not
+    guaranteed to agree in general.
+
+    Confirmed via direct comparison of timer_impl_stdperiph.c (F4) against
+    timer_impl_hal.c (F7/H7, a shared backend file -- see the
+    target-developer README's lessons for why a fix/bug found on one of
+    F7/H7 is strong evidence for the other but not F4/AT32):
+
+    - F4 (timer_impl_stdperiph.c): the dmaGetByTag()/dmaGetOwner() ownership
+      check sits INSIDE `if (!tch->timCtx->dmaBurstRef) { ... }`. Once ANY
+      earlier channel of a physical timer has SUCCEEDED (dmaBurstRef set),
+      every LATER channel of that SAME timer skips the whole block --
+      including the check -- and unconditionally returns true, riding the
+      winning channel's stream for free. Its own dmaTag/dmavar is never
+      consulted at all: a NONE-resolving free-rider is genuinely safe (no
+      SILENT_DEAD_MOTOR), and it can't independently collide with anything
+      either (it never makes its own claim attempt). If the timer's FIRST
+      channel's own attempt instead FAILS (no DMA line, or the stream is
+      already owned by some earlier, different timer's winner), dmaBurstRef
+      stays unset, so the NEXT channel of that SAME timer gets its own,
+      fully independent attempt -- this is why "free rider" must be
+      computed from a live per-timer "has this timer succeeded YET"
+      cascade, not simply "is this the lowest-position channel of its
+      timer".
+    - F7/H7 (timer_impl_hal.c, shared backend): the ownership check happens
+      UNCONDITIONALLY, BEFORE that guard -- every channel, including a later
+      channel of an already-locked timer, must independently pass its own
+      dmaGetByTag()/dmaGetOwner() check using ITS OWN resolved stream. There
+      is no free ride on this family: a NONE-resolving channel fails
+      regardless of position (this is why H7's real TIM4_CH4 needed the
+      explicit DMA_REQUEST_TIM4_UP workaround, commit
+      657651bedf7c7bea2632c72f2a0c59bdcc37b26e -- without it, TIM4_CH4 would
+      fail this gate even riding a timer some earlier channel already
+      locked). An already-claimed stream fails this channel's own attempt
+      too, whether the earlier claimant is a DIFFERENT timer (a genuine
+      cross-timer hazard) or even -- a degenerate edge case -- the SAME
+      timer reusing an identical dmavar-resolved stream (dmaGetOwner() only
+      tracks "is this DMA object free", not "which timer already owns it").
+      Confirmed empirically: real H7/F7 USE_DSHOT_DMAR targets (e.g.
+      AXISFLYINGH743PRO's TIM4 CH1-4) assign each channel of a burst timer
+      a genuinely DISTINCT dmaopt/stream, not a shared one -- so this
+      "always checks its own value" model matches how these targets are
+      actually built, not just how the C code technically allows.
+
+    Returns {entry.index: {
+        "free_rider": bool,             # F4 only; always False on F7/H7
+        "no_dma_at_all": bool,          # this row's own dmaGetByTag() would
+                                         # find nothing -- SILENT_DEAD_MOTOR
+                                         # candidate (see caller for the
+                                         # family-aware suppression rule)
+        "attempted_stream": (dma,stream) or None,
+                                         # the raw per-channel stream this
+                                         # row's own attempt used, if it made
+                                         # one at all (None for a free rider,
+                                         # which never touches its own value,
+                                         # or a no_dma_at_all row)
+        "effective_stream": (dma,stream) or None,
+                                         # the DMA resource this row ACTUALLY
+                                         # ends up sharing with other live
+                                         # claimers (its own stream on
+                                         # success, the timer's winner's
+                                         # stream if riding for free, None if
+                                         # its own attempt failed or was
+                                         # never made) -- this is what
+                                         # DMA_STREAM_COLLISION should group
+                                         # claimers by, NOT attempted_stream
+        "collision_winner": Entry or None,
+                                         # set iff this row made its own real
+                                         # attempt and it collided with an
+                                         # earlier winner (BURST_STREAM_
+                                         # COLLISION candidate)
+    }}. Only rows that are actually live DMA-claiming (or DMA-attempting)
+    MOTOR outputs this build are included -- LED never goes through this
+    cascade at all (light_ws2811strip.c's own DMA config is a completely
+    separate call path, never impl_timerPWMConfigDMABurst)."""
+    cascade = {}
+    stream_owner = {}   # (dma,stream) -> winning Entry, across ALL timers
+    timer_locked = {}   # tim token -> (dma,stream), set only on real success
+    for row in rows:
+        if row["bucket"] != "MOTOR" or not row["driven"]:
+            continue
+        if not (row["claims_dma"] or row["no_dma_at_all"]):
+            continue
+        e = row["entry"]
+        tim = e.tim
+
+        if family == "F4" and tim in timer_locked:
+            cascade[e.index] = {
+                "free_rider": True, "no_dma_at_all": False,
+                "attempted_stream": None,
+                "effective_stream": timer_locked[tim],
+                "collision_winner": None,
+            }
+            continue
+
+        if row["no_dma_at_all"]:
+            cascade[e.index] = {
+                "free_rider": False, "no_dma_at_all": True,
+                "attempted_stream": None, "effective_stream": None,
+                "collision_winner": None,
+            }
+            continue
+
+        own_stream = row["stream"]
+        if own_stream in stream_owner:
+            cascade[e.index] = {
+                "free_rider": False, "no_dma_at_all": False,
+                "attempted_stream": own_stream, "effective_stream": None,
+                "collision_winner": stream_owner[own_stream],
+            }
+            continue
+
+        # Real success: this channel claims the stream, locking its whole
+        # physical timer onto it (F4's free-ride shortcut) / at minimum
+        # establishing "this timer has a winner" bookkeeping (F7/H7, where
+        # that bookkeeping is informational only -- never consulted to skip
+        # a later channel's own check).
+        stream_owner[own_stream] = e
+        timer_locked.setdefault(tim, own_stream)
+        cascade[e.index] = {
+            "free_rider": False, "no_dma_at_all": False,
+            "attempted_stream": own_stream, "effective_stream": own_stream,
+            "collision_winner": None,
+        }
+    return cascade
+
+
 def simulate(entries_orig, motor_count, servo_count, adc_pins, led_strip_active,
              dma_resolver, dshot, timer_output_modes=None):
     entries = clone_entries(entries_orig)
@@ -813,7 +952,12 @@ def simulate(entries_orig, motor_count, servo_count, adc_pins, led_strip_active,
         }
         result.rows.append(row)
 
-        if no_dma_at_all and b == "MOTOR" and driven and dshot:
+        if no_dma_at_all and b == "MOTOR" and driven and dshot and not dma_resolver.dshot_dmar:
+            # Under USE_DSHOT_DMAR this is handled below instead, via the
+            # resolve_dmar_cascade() walk -- whether a NONE-resolving
+            # channel is actually a hazard is family- and cascade-position-
+            # dependent there (see that function's docstring), not a flat
+            # rule this per-row loop can decide in isolation.
             result.hazards.append(
                 f"SILENT_DEAD_MOTOR: {e.tim}_{e.ch} ({e.label}) resolves to MOTOR "
                 f"and IS initialized at motorCount={motor_count} (bucket position "
@@ -840,107 +984,158 @@ def simulate(entries_orig, motor_count, servo_count, adc_pins, led_strip_active,
                 f"dmavar for this channel."
             )
 
-    # DMA_STREAM_COLLISION (naive per-channel model): every entry's OWN
-    # dmavar-resolved (dma,stream) is treated as an independent claim, and
-    # any group of >=2 claimers on the same physical stream is a hazard.
-    # This is CORRECT for the non-burst path (impl_timerPWMConfigChannelDMA
-    # claims a stream per CHANNEL, timer_impl_stdperiph.c ~line 300) but
-    # WRONG under USE_DSHOT_DMAR: impl_timerPWMConfigDMABurst() claims a
-    # stream once per PHYSICAL TIMER (tch->timCtx->dmaBurstRef, where
-    # timCtx is shared by all 4 channels of one timer -- see timer.c
-    # timerGetTCH(), `timerCtx[timerIndex]->ch[0..3].timCtx = timerCtx[...]`).
-    # Every claimer here reflects ITS OWN dmavar in isolation, but under
-    # burst mode a channel only ever gets to make that real claim attempt
-    # if it's the first channel of its physical timer still needing one
-    # (dmaBurstRef unset) -- any later channel of a timer that already
-    # locked in a stream rides along for free and never touches its own
-    # dmavar at all, so grouping by "final resolved stream" over-counts:
-    # a same-timer group is (almost always) the intended combined-request
-    # sharing, not a bug, and even a cross-timer group can be a false
-    # positive if the earlier-processed timer's OWN winning channel isn't
-    # the one this naive grouping happened to pick. So under dshot_dmar we
-    # suppress ALL-motor groups entirely here and let the BURST_STREAM_
-    # COLLISION walk below (which faithfully replays the per-timer/
-    # per-channel ownership cascade) be authoritative instead. We keep
-    # flagging DMA_STREAM_COLLISION for any group that still includes a
-    # non-motor claimer (LED strip, which never goes through the burst
-    # path -- light_ws2811strip.c does its own DMA config, so LED-vs-motor
-    # collisions are unaffected by DMAR and still modeled correctly here).
-    for stream, claimers in dma_claims.items():
+    # ---- USE_DSHOT_DMAR: single authoritative cascade resolution ---------
+    # resolve_dmar_cascade() (see its docstring) replays the real per-timer/
+    # per-channel DMA ownership cascade ONCE and is reused for BOTH hazard
+    # classes below -- a channel's DMA-VISIBLE resource for collision
+    # purposes is its cascade-resolved effective_stream, not its raw
+    # per-channel dmavar/dmaopt value, and whether a NONE-resolving channel
+    # is a real SILENT_DEAD_MOTOR hazard depends on family + cascade
+    # position, not a flat per-row rule.
+    cascade = {}
+    if dma_resolver.dshot_dmar:
+        cascade = resolve_dmar_cascade(result.rows, dma_resolver.family)
+
+        for row in result.rows:
+            if row["bucket"] != "MOTOR":
+                continue
+            e = row["entry"]
+            c = cascade.get(e.index)
+            if c is None:
+                continue
+
+            if c["no_dma_at_all"]:
+                if dma_resolver.family in ("F7", "H7"):
+                    gate_note = (
+                        f"{dma_resolver.family}'s impl_timerPWMConfigDMABurst() "
+                        f"(timer_impl_hal.c) checks every channel's own "
+                        f"dmaGetByTag() UNCONDITIONALLY, before the "
+                        f"already-locked-timer guard -- there is no free ride "
+                        f"on this family, regardless of position"
+                    )
+                else:
+                    gate_note = (
+                        f"on {dma_resolver.family} this channel is the first "
+                        f"live channel of its physical timer still needing a "
+                        f"claim, so timer_impl_stdperiph.c's already-locked-"
+                        f"timer free ride does not apply yet -- its own "
+                        f"dmaGetByTag() is reached and finds nothing"
+                    )
+                result.hazards.append(
+                    f"SILENT_DEAD_MOTOR: {e.tim}_{e.ch} ({e.label}) resolves to "
+                    f"MOTOR and IS initialized at motorCount={motor_count} "
+                    f"(bucket position {row['position']}), but this "
+                    f"(timer,channel) has NO DMA request line at all on this "
+                    f"MCU. Under USE_DSHOT_DMAR, {gate_note} -- "
+                    f"motorConfigDshot() will silently fail to arm DMA for "
+                    f"this channel while pwmMotorConfig() still reports "
+                    f"success. This output will not spin under DSHOT despite "
+                    f"no boot-time error."
+                )
+            elif c["collision_winner"] is not None:
+                winner = c["collision_winner"]
+                dma, s = c["attempted_stream"]
+                label = dma_resolver.stream_label(dma, s)
+                backend_file = ("timer_impl_hal.c" if dma_resolver.family in ("F7", "H7")
+                                 else "timer_impl_stdperiph.c")
+                if winner.tim == e.tim:
+                    relation = (
+                        f"is on the SAME physical timer ({e.tim}), reusing an "
+                        f"identical dmavar-resolved stream as an earlier "
+                        f"channel of that same timer (dmaGetOwner() only "
+                        f"tracks whether the DMA object is free, not which "
+                        f"timer already owns it, so this collides too)"
+                    )
+                else:
+                    relation = f"is on a DIFFERENT physical timer ({e.tim})"
+                if dma_resolver.family == "F4":
+                    retry_note = (
+                        f"Any LATER channel of {e.tim} not yet reached would "
+                        f"get its own independent retry (dmaBurstRef stays "
+                        f"unset on failure); this is the specific channel "
+                        f"actually affected, not necessarily every channel of "
+                        f"{e.tim}."
+                    )
+                else:
+                    retry_note = (
+                        f"On {dma_resolver.family} every channel (including "
+                        f"this one) always makes its own independent attempt "
+                        f"regardless of whether its timer already has a "
+                        f"winner, so this channel specifically is the one "
+                        f"affected -- not necessarily every channel of "
+                        f"{e.tim}."
+                    )
+                result.hazards.append(
+                    f"BURST_STREAM_COLLISION: {label} locked in first by "
+                    f"{winner.tim} (via {winner.tim}_{winner.ch}({winner.label})); "
+                    f"{e.tim}_{e.ch}({e.label}) at position {row['position']} "
+                    f"{relation} and its own DMAR burst claim attempt to the "
+                    f"same stream fails at motorCount={motor_count} -- under "
+                    f"USE_DSHOT_DMAR a stream is claimed once per PHYSICAL "
+                    f"TIMER (impl_timerPWMConfigDMABurst, {backend_file}), not "
+                    f"per channel: this channel's own dmaGetByTag()/ownership "
+                    f"check fails, and this output stays silent even though "
+                    f"pwmMotorConfig() reports success. {retry_note}"
+                )
+
+    # DMA_STREAM_COLLISION -- two channels that both actually claim a DMA
+    # stream and whose only available DMA option resolves to the same
+    # (DMA controller, stream) pair. Without DMAR this is the plain
+    # per-channel model (impl_timerPWMConfigChannelDMA claims a stream per
+    # CHANNEL, timer_impl_stdperiph.c ~line 300) and dma_claims (built
+    # per-row above from each entry's OWN resolved stream) is already
+    # authoritative. Under DMAR, grouping must instead use each MOTOR row's
+    # cascade-resolved effective_stream (resolve_dmar_cascade() above) --
+    # NOT its raw per-channel value -- since a free rider's raw value was
+    # never actually consulted by the real firmware at all. LED strip never
+    # goes through the burst path (light_ws2811strip.c does its own DMA
+    # config directly against the entry's raw resolved stream), so LED
+    # claims are read from dma_claims/row["stream"] the same way regardless
+    # of DMAR.
+    if dma_resolver.dshot_dmar:
+        collision_claims = {}
+        for row in result.rows:
+            e = row["entry"]
+            if row["bucket"] == "MOTOR":
+                c = cascade.get(e.index)
+                if c and c["effective_stream"] is not None:
+                    collision_claims.setdefault(c["effective_stream"], []).append(e)
+            elif row["claims_dma"]:  # LED (or any future non-MOTOR DMA claimer)
+                collision_claims.setdefault(row["stream"], []).append(e)
+    else:
+        collision_claims = dma_claims
+
+    for stream, claimers in collision_claims.items():
         if len(claimers) < 2:
             continue
         if dma_resolver.dshot_dmar:
             all_motor = all(bucket.get(c.index) == "MOTOR" for c in claimers)
-            if all_motor:
-                continue  # handled by the BURST_STREAM_COLLISION walk instead
+            same_timer = len({c.tim for c in claimers}) == 1
+            if all_motor and same_timer:
+                # By construction (resolve_dmar_cascade only ever assigns
+                # ONE winning stream per physical timer, and a losing
+                # attempt's effective_stream is None so it never enters this
+                # dict), an all-motor group sharing one effective_stream is
+                # always exactly one timer's winner + its free riders -- the
+                # intended combined-request sharing burst mode exists for,
+                # not a bug. A genuine cross-timer hazard is reported as
+                # BURST_STREAM_COLLISION above instead, with the correct
+                # winner/loser and blast radius.
+                continue
         dma, s = stream
         label = dma_resolver.stream_label(dma, s)
         names = ", ".join(f"{c.tim}_{c.ch}({c.label})" for c in claimers)
         result.hazards.append(
             f"DMA_STREAM_COLLISION: {label} claimed by {len(claimers)} live DMA "
-            f"users at motorCount={motor_count}: {names} -- whichever initializes "
-            f"last silently wins; the other's output never works."
+            f"users at motorCount={motor_count}: {names} -- only the first "
+            f"claimant to actually initialize keeps the stream; every other "
+            f"output in this group silently never works despite no boot-time "
+            f"error. Among MOTOR outputs the LOWEST array position wins "
+            f"(pwmInitMotors() claims DMA in strict position order, "
+            f"pwm_mapping.c); a MOTOR output always wins over LED strip "
+            f"specifically, since pwmMotorAndServoInit() runs before "
+            f"ledStripInit() in fc_init.c."
         )
-
-    # BURST_STREAM_COLLISION (USE_DSHOT_DMAR-aware model): faithfully walks
-    # impl_timerPWMConfigDMABurst()'s actual per-timer/per-channel ownership
-    # cascade instead of the naive per-channel grouping above. Processes
-    # live DMA-claiming MOTOR rows in position order (== pwmInitMotors()'s
-    # strict idx=0..motorCount-1 init order, since tim_motors/`result.rows`
-    # preserve declaration order and position was assigned by that same
-    # walk). For each physical timer: the FIRST channel of that timer to be
-    # reached (dmaBurstRef still unset) makes the one real claim attempt,
-    # using ITS OWN dmavar-resolved stream -- if it succeeds, the timer
-    # locks onto that stream and EVERY LATER channel of the SAME timer
-    # rides along for free without ever touching its own dmavar (mirrors
-    # `if (!tch->timCtx->dmaBurstRef) { ... } ... return true;`). If the
-    # first channel's attempt instead hits a stream some OTHER (earlier,
-    # lower-position) timer already locked, dmaBurstRef stays unset and the
-    # NEXT channel of the SAME timer gets its own independent attempt
-    # (mirrors the ownership check's early `return false` leaving
-    # dmaBurstRef untouched) -- so a multi-channel timer isn't necessarily
-    # ALL dead just because its first channel loses; only the channel(s)
-    # whose own attempt is actually reached and fails go dark, up until
-    # some channel of that timer eventually succeeds (or none do).
-    if dma_resolver.dshot_dmar:
-        stream_owner = {}   # (dma,stream) -> winning entry
-        timer_locked = {}   # tim token -> (dma,stream) once locked in
-        for row in result.rows:
-            if not (row["claims_dma"] and row["bucket"] == "MOTOR"):
-                continue
-            e = row["entry"]
-            tim = e.tim
-            if tim in timer_locked:
-                continue  # rides along on this timer's already-locked stream
-            resolved = row["stream"]
-            if resolved is None or resolved[0] == "?":
-                continue  # SILENT_DEAD_MOTOR / PARSER_GAP, handled elsewhere
-            if resolved not in stream_owner:
-                stream_owner[resolved] = e
-                timer_locked[tim] = resolved
-            else:
-                winner = stream_owner[resolved]
-                dma, s = resolved
-                label = dma_resolver.stream_label(dma, s)
-                loser_pos = row["position"]
-                result.hazards.append(
-                    f"BURST_STREAM_COLLISION: {label} locked in first by "
-                    f"{winner.tim} (via {winner.tim}_{winner.ch}({winner.label})); "
-                    f"{e.tim}_{e.ch}({e.label}) at position {loser_pos} is on a "
-                    f"DIFFERENT physical timer ({e.tim}) and its own DMAR burst "
-                    f"claim attempt to the same stream fails at motorCount="
-                    f"{motor_count} -- under USE_DSHOT_DMAR a stream is claimed "
-                    f"once per PHYSICAL TIMER (impl_timerPWMConfigDMABurst, "
-                    f"timer_impl_stdperiph.c), not per channel: this channel's "
-                    f"own dmaGetByTag()/ownership check fails, and this output "
-                    f"stays silent even though pwmMotorConfig() reports success. "
-                    f"Any LATER channel of {e.tim} not yet reached would get its "
-                    f"own independent retry (dmaBurstRef stays unset on "
-                    f"failure); this is the specific channel actually affected, "
-                    f"not necessarily every channel of {e.tim}."
-                )
-                # timer_locked[tim] intentionally left unset -- the next
-                # channel of this SAME timer (if any) gets its own attempt.
 
     for row in result.rows:
         if row["stream"] == ("?", row["entry"].dmavar) or (
