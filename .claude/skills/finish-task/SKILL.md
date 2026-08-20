@@ -27,6 +27,9 @@ git diff --stat
 
 Review that all intended changes are present and no unintended files are modified.
 
+**Clean up untracked scratch directories** (`build_*`, `build-*`, and
+similar ad-hoc build/test output) before releasing the lock — see step 10.
+
 ### 2. Run Tests (if applicable)
 
 Use the **inav-builder** agent for the build check (never `cmake`/`make`/`npm` directly)
@@ -219,12 +222,13 @@ email-manager: Archive message <filename>. Current role: developer
 ### 10. Release the Lock
 
 ```bash
-# For firmware
-rm claude/locks/inav.lock
-
-# For configurator
-rm claude/locks/inav-configurator.lock
+python3 claude/locks/lock_manager.py release <inav|inav2|inav3|inav-configurator>
 ```
+
+It reports any uncommitted or untracked files left in the checkout after
+releasing — if it warns, clean those up (e.g. remove leftover `build_*`
+directories) so the checkout is actually idle for whoever picks it up next.
+See `claude/locks/README.md` for details.
 
 ### 11. Increment the Cycle Counter
 

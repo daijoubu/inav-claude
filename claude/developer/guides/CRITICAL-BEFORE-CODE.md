@@ -13,13 +13,7 @@ discovery-narrative comments or docs ("used to be X", "this used to fail
 because Y") — describe only the current state and current rationale; history
 belongs in the commit message, not the code or guide text.
 
-## 1. Check Lock Files
-
-**There are up to three parallel firmware checkouts — `inav/`, `inav2/`,
-`inav3/` — each with its own lock file, plus `inav-configurator/`. This is
-NOT one repo with three names for the same thing: they are separate working
-trees, and holding a lock on one does not block work in another. Use
-whichever checkout is unlocked.**
+## 1. Acquire a Lock
 
 **This applies before ANY `git checkout`/`switch` or build in any of the
 firmware checkouts or `inav-configurator/` — including read-only
@@ -28,46 +22,26 @@ Checking out a branch mutates the shared working tree regardless of whether
 you plan to write code; a lock check gated only on "am I about to commit"
 arrives too late.
 
-```bash
-# Check firmware checkouts in order until you find one unlocked
-cat claude/locks/inav.lock 2>/dev/null || echo "inav/ - No lock"
-cat claude/locks/inav2.lock 2>/dev/null || echo "inav2/ - No lock"
-cat claude/locks/inav3.lock 2>/dev/null || echo "inav3/ - No lock"
+**Use `claude/locks/lock_manager.py` to check and acquire — do not read or
+write lock files by hand:**
 
-# Configurator (single checkout)
-cat claude/locks/inav-configurator.lock 2>/dev/null || echo "No lock"
+```bash
+REPO=$(python3 claude/locks/lock_manager.py acquire --task <task-name> --branch <branch-name> --type firmware)
 ```
 
-**If `inav.lock` is held, check `inav2.lock`; if that's also held, check
-`inav3.lock`.** Only STOP and report to manager if all three firmware
-checkouts are locked (or if the one relevant checkout for `inav-configurator/`
-is locked — there's only one of those). Do NOT proceed into a locked
-directory.
+Pass `--type configurator` for `inav-configurator/` work. On success it
+prints the checkout to use (e.g. `inav2`) — that's up to three parallel
+firmware checkouts (`inav/`, `inav2/`, `inav3/`), separate working trees
+where a lock on one does not block another. On failure it exits non-zero
+and explains why every candidate was skipped (locked by another session, or
+unexpectedly dirty). **STOP and report to the manager rather than forcing an
+acquisition** — do not hand-write a lock file or proceed into a locked or
+dirty directory.
 
-Before using any unlocked checkout, sanity-check it's actually clean/idle —
-an absent lock file doesn't guarantee an idle tree (a prior session may have
-forgotten to release it). Run `git status --short` and `git diff --stat`; if
-you find uncommitted tracked-file changes or an unfamiliar branch checked
-out, check `claude/developer/email/sent/` for a completion report matching
-that branch/task name before assuming it's abandoned — don't just build on
-top of or discard what's there.
-
-## 2. Acquire Lock (if unlocked)
-
-Use the `/start-task` skill - it handles lock acquisition and branch creation automatically.
-
-Or manually, writing to the lock file matching the checkout you're using
-(`inav.lock` for `inav/`, `inav2.lock` for `inav2/`, `inav3.lock` for
-`inav3/`, `inav-configurator.lock` for `inav-configurator/`):
-```bash
-cat > claude/locks/inav2.lock << EOF
-LOCKED_BY: Developer
-TASK: [task-name-from-assignment]
-LOCKED_AT: $(date '+%Y-%m-%d %H:%M')
-BRANCH: [branch-name]
-SESSION_ID: $CLAUDE_CODE_SESSION_ID
-EOF
-```
+See `claude/locks/README.md` for the full design: lock file format, the
+dirty-checkout sanity check the script runs automatically before handing out
+an unlocked checkout, and what to do if a candidate turns out to be dirty or
+a lock looks stale.
 
 ## 3. Create Git Branch
 The branch MUST be created off of the correct version branch — never off master.
