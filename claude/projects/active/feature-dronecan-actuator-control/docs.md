@@ -12,28 +12,53 @@ local PWM wiring isn't practical.
 
 ## Enabling DroneCAN output for a servo
 
-On the **Outputs** tab, the per-servo configuration table gains two new
-columns alongside the existing `middle`/`min`/`max`/`rate`/`reverse`:
+**Implemented (2026-08-19):** a single CLI setting, `dronecan_servo_bm`
+(`PG_DRONECAN_CONFIG`, `uint32_t`, default `0`) — a bitmask where bit 0
+enables DroneCAN broadcast for servo 1, bit 1 for servo 2, etc., up to bit
+17 (servo 18, `MAX_SUPPORTED_SERVOS`). Follows ArduPilot's
+`CAN_D1_UC_SRV_BM` precedent rather than a per-servo field on
+`servoParam_t`: keeps the servo-command CLI/MSP wire format untouched, and
+on non-DroneCAN targets the setting doesn't exist at all (whole PG is
+`condition: USE_DRONECAN`-gated), rather than needing to degrade
+gracefully per board. Broadcasting is in addition to (not instead of) any
+local PWM output already configured for that servo — enabling a channel's
+bit doesn't disable its local PWM pin. A servo's `middle`/`min`/`max`/
+`rate` settings are shared between local PWM and DroneCAN output — there's
+only one configured range per servo, regardless of which output method(s)
+are enabled for it.
 
-| Column | Meaning |
-|---|---|
-| **DroneCAN** (checkbox) | Enables DroneCAN broadcast for this servo, in addition to (not instead of) any local PWM output already configured |
-| **Actuator ID** (number) | The `actuator_id` value (1–255) sent on the wire for this servo. Must match the ID the receiving actuator node expects for that channel. |
+Gated at both the write path (`dronecanWriteServo`, so a disabled channel's
+command state is never updated) and the send path
+(`sendActuatorCommandBatch`'s value guard, so a channel disabled *after*
+being enabled can't have its last stored value keep leaking out via the
+25Hz keepalive floor — write-only gating was tried first and found
+insufficient, see `dronecan_actuator_output_unittest.cc`'s
+`MixedBitmaskOnlyBroadcastsEnabledChannels`).
 
-A servo's `middle`/`min`/`max`/`rate` settings are shared between local PWM
-and DroneCAN output — there's only one configured range per servo,
-regardless of which output method(s) are enabled for it.
+**Configurator support not yet implemented** — no checkbox on the Outputs
+tab yet; `dronecan_servo_bm` is CLI-only for now. When added, it should
+bind to individual bits of this one setting rather than 18 independent
+per-servo values (see the per-channel-vs-global design discussion below
+for why a bitmask, not per-servo storage).
 
-This is a per-servo, per-output setting — separate from the DroneCAN tab
-(node-level settings: DNA server, GPS provider, battery ID filter, etc.).
+**Scoped for 10.0 RC1:** the enable bit gates whether a servo broadcasts at
+all, but doesn't yet let you choose *which* `actuator_id` it broadcasts as.
+`actuator_id` remains hardcoded to `servo_index + 1` (1-based: servo 1 →
+actuator_id 1, servo 2 → actuator_id 2, ...), matching the common case for
+most DroneCAN actuator nodes. Freely-editable per-servo `actuator_id` (for
+hardware that numbers channels differently, or to skip/reorder IDs) is
+deferred — no Configurator column or CLI setting for it exists yet.
+Per-channel enable was chosen over a single global on/off switch because
+DroneCAN is a shared bus where `actuator_id` is a namespace visible to
+every node on it — broadcasting every servo unconditionally risks an
+unrelated CAN device reacting to an ID it wasn't meant to receive, unlike a
+point-to-point medium (e.g. SBUS output) where a global switch is safe.
 
 ### Actuator ID numbering
 
-`actuator_id` is 1-based on the wire (actuator 1, 2, 3...) and most
-DroneCAN actuator nodes number their channels the same way, so a 1:1
-mapping (servo 1 → actuator_id 1, servo 2 → actuator_id 2, ...) is the
-common case — but the field is freely editable per servo in case your
-hardware numbers differently, or you want to skip/reorder IDs.
+`actuator_id` is 1-based on the wire (actuator 1, 2, 3...) and is currently
+always `servo_index + 1` (see scoping note above) — most DroneCAN actuator
+nodes number their channels the same way, so this covers the common case.
 
 **Note for AP_Periph-based actuator nodes:** AP_Periph maps `actuator_id`
 onto its internal `SERVOn_FUNCTION` values starting at 51 (`k_rcin1 = 51`).
@@ -126,9 +151,48 @@ normal operation, with roughly 5x margin against the 200 ms default.
   configured comfortably above INAV's 40 ms floor period — a value below
   ~100 ms is not recommended.
 
-**On arm/disarm:** no behavior change. Unlike ESC/motor output (where
-disarm means stop), a servo/control-surface actuator continues to reflect
-mixer output while disarmed, matching existing local PWM servo behavior.
+**On arm/disarm:** no behavior change for the general case. Unlike ESC/motor
+output (where disarm means stop), a servo/control-surface actuator
+continues to reflect mixer output while disarmed, matching existing local
+PWM servo behavior.
+
+**Exception — tricopter tail servo with `tri_unarmed_servo` OFF:**
+`writeServos()` zeroes this one servo while disarmed
+(`servos.c:302-317`), calling both `pwmWriteServo(servoIndex, 0)` and
+`dronecanWriteServo(servoIndex, 0)` at the same call site. The two paths
+reach the same real-world end state, but by different mechanisms and on
+different timescales — not truly "the same behavior," so this is called
+out explicitly rather than folded into the general no-behavior-change
+claim above:
+
+- **Local PWM:** `0` is written straight into the timer compare register
+  in the same main-loop iteration — the pulse train stops within one
+  `servo_pwm_rate` period (≤20 ms at the 50 Hz default). Immediate and
+  local.
+- **DroneCAN:** `0` is INAV's "nothing to send" sentinel (see the ACT-4
+  test), so the channel is simply excluded from the next `ArrayCommand` —
+  indistinguishable, from the actuator's point of view, from a lost CAN
+  connection. It falls under "actuator node absence or silence" above:
+  the actuator keeps holding its last commanded position until *its own*
+  command-timeout watchdog fires (AP_Periph: `SRV_CMD_TIME_OUT`, default
+  200 ms — confirmed in ArduPilot source, `Tools/AP_Periph/rc_out.cpp:172-186`,
+  outputs literal PWM 0 on timeout, same "no signal" semantic as the local
+  case) and only then stops driving its own output pin.
+
+  The physical servo losing PWM drive is what actually produces a
+  "failsafe/neutral" outcome, and that's a property of the servo/linkage,
+  not something either INAV or the actuator node commands in software.
+  Tricopter tail linkages are conventionally rigged with a centering
+  spring for exactly this reason, so signal loss springs the tail back to
+  neutral thrust vector. An actuator without a return mechanism (e.g. most
+  gimbal or retract servos) would just go limp and hold/drift instead —
+  this "same end state" outcome is specific to how tricopter tails are
+  normally built, not a general guarantee.
+
+  Net effect for a conventionally-rigged tricopter tail: same real-world
+  neutral end state as local PWM, reached up to ~200 ms later (vs. ≤20 ms)
+  and contingent on the actuator node actually implementing a
+  command-timeout watchdog — see the setup requirement above.
 
 ## AP_Periph safety-switch compatibility
 
