@@ -2,8 +2,8 @@
 
 This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKED).
 
-**Last Updated:** 2026-08-12
-**Active:** 8 | **Backburner:** 15 | **Blocked:** 6
+**Last Updated:** 2026-08-19
+**Active:** 7 | **Backburner:** 16 | **Blocked:** 7
 
 > **Completed projects:** See [completed/INDEX.md](completed/INDEX.md)
 > **Blocked projects:** See `blocked/` directory
@@ -145,30 +145,13 @@ Give FormationFlight (external ESP-NOW drone swarm/formation telemetry project) 
 
 **Directory:** `active/feature-formationflight-diagnostic-logging/`
 **Repository:** FormationFlight (external, https://github.com/FormationFlight/FormationFlight, branch `master`) + inav (firmware, `maintenance-10.x`)
-**Coordination:** touches the same `blackbox.c` slow-frame struct/array/function triplet as `feature-canbus-errors-blackbox`, but per 2026-07-07 clarification this branch's blackbox changes are a local troubleshooting tool only and won't be merged upstream, so no real merge conflict to manage
-
----
-
-### 🚧 feature-canbus-errors-blackbox
-
-**Status:** IN PROGRESS | **Type:** Feature | **Priority:** MEDIUM
-**Created:** 2026-02-14 | **Started:** 2026-07-07 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
-
-Log CAN bus error statistics (TEC, REC, LEC, bus-off count, RX drop count) to the Blackbox slow frame. Makes intermittent CAN bus problems diagnosable from flight logs.
-
-**Unblocked 2026-07-07:** previously waiting on `fix-dronecan-driver-rework` PR #11607 to merge. Now branching directly off `fix/h7-dronecan-driver` (#11607's branch) instead, same pattern as the other 4 stacked DroneCAN branches — will rebase onto `maintenance-10.x` once #11607 merges. `PLAN.md` was found stale (written before the driver rework landed) and rewritten same day: the bus-off counter already exists (no `dronecan.c`/`.h` changes needed after all), the originally-assumed `tx_dropped`/`tx_queue_hwm`/`rx_buffer_hwm` struct fields don't exist, and a real RX-drop-count getter + pool allocator stats getter exist but weren't in the original plan. Revised scope: 6 fields, `blackbox.c` only.
-
-**2026-07-19 status update:** Implementation complete and verified (hardware-verified on KAKUTEH7WING, full pre-PR build matrix clean, inav-code-review APPROVE). Opened as draft PR **iNavFlight/inav#11729**, stacked on #11607 — PR description says not to merge before #11607. No further dev work pending until #11607 merges, then rebase and re-target for a clean diff.
-
-**Directory:** `active/feature-canbus-errors-blackbox/`
-**Repository:** inav (firmware) | **Branch:** `feature/canbus-errors-blackbox` (off `fix/h7-dronecan-driver`) → target `maintenance-10.x` → PR #11729
-**Plan:** `active/feature-canbus-errors-blackbox/PLAN.md`
+**Coordination:** touches the same `blackbox.c` slow-frame struct/array/function triplet as `feature-canbus-errors-blackbox`. Per 2026-07-07 clarification, this branch's blackbox changes are a local troubleshooting tool only and won't be merged upstream, so no *upstream* merge conflict — but the working-tree insertion point still matters: `feature/canbus-errors-blackbox` landed its field first (`droneCANBusOffCount`, commit `5fa94cb4e`, draft PR #11729), so Phase 1 implementation here should add its new fields after it in all three places (struct, field-defs array, write call) to avoid a local conflict. Flagged by developer 2026-08-18.
 
 ---
 
 ## Blocked Projects
 
-**Reclassified 2026-07-07:** The 5 DroneCAN projects below were previously marked IN PROGRESS because a draft PR existed, but none had active dev work pending — all were purely waiting on a merge or a review, matching this file's own BLOCKED definition ("waiting on external dependency") rather than IN PROGRESS ("actively being worked on"). Moved here for consistency with `feature-dronecan-getnodeinfo`, which was already correctly BLOCKED for the same underlying reason. (`feature-canbus-errors-blackbox` was blocked for the same reason too, but was unblocked and moved to Active the same day — see above.)
+**Reclassified 2026-07-07:** The 5 DroneCAN projects below were previously marked IN PROGRESS because a draft PR existed, but none had active dev work pending — all were purely waiting on a merge or a review, matching this file's own BLOCKED definition ("waiting on external dependency") rather than IN PROGRESS ("actively being worked on"). Moved here for consistency with `feature-dronecan-getnodeinfo`, which was already correctly BLOCKED for the same underlying reason. (`feature-canbus-errors-blackbox` was blocked for the same reason too, but was unblocked and moved to Active the same day — see its entry below for the 2026-08-19 re-block.)
 
 ### 🚫 fix-dronecan-driver-rework
 
@@ -183,7 +166,9 @@ Phase 3 rebase (onto `fix/h7-dronecan-driver`, i.e. PR #11607's branch — done 
 
 **Blocked on:** awaiting review/merge of PR #11607 — code, tests, and flight verification all complete; no further dev work pending. This is the root of the whole DroneCAN PR stack.
 
-**2026-08-03: New maintainer review from sensei-hacker (member) requires developer response.** Two questions before merging: (1) possible unguarded race on the shared canard memory pool — `canardHandleRxFrame()` in `dronecanUpdate()` isn't wrapped in `dronecanMaskTxISR()`/`dronecanUnmaskTxISR()` the way the TX-queue calls are, so a TX-complete ISR firing mid-multi-frame-reassembly (e.g. GNSSFix2/BatteryInfo) could race the allocator's free list; suggests a nesting-safe (depth-counted) mask/unmask pair, since `handle_GetNodeInfo()` can be reached synchronously from inside `canardHandleRxFrame()` and already does its own mask/unmask, which would prematurely re-enable the IRQ under the current non-reentrant NVIC calls. (2) `src/test/unit/bxcan_timing_unittest.cc` hardcodes `max_quanta_per_bit = 18` but the driver actually uses `17` for ≥1Mbps — test may not be catching a regression in the value this PR changed. **This blocks the whole stack, so should be prioritized above the flash-latency investigation and the msp-servo-mixer fix once picked up.**
+**2026-08-03: New maintainer review from sensei-hacker (member) — addressed 2026-08-05.** Two questions were raised before merging: (1) possible unguarded race on the shared canard memory pool — `canardHandleRxFrame()` in `dronecanUpdate()` wasn't wrapped in `dronecanMaskTxISR()`/`dronecanUnmaskTxISR()` the way the TX-queue calls were, so a TX-complete ISR firing mid-multi-frame-reassembly (e.g. GNSSFix2/BatteryInfo) could race the allocator's free list. (2) `src/test/unit/bxcan_timing_unittest.cc` hardcoded `max_quanta_per_bit = 18` but the driver actually uses `17` for ≥1Mbps. **Both confirmed real and fixed 2026-08-05:** race fixed via `ATOMIC_BLOCK(NVIC_PRIO_CAN)` wrapping `canardHandleRxFrame()` and all other TX-queue-mutating call sites; stale test fixed by extracting the shared timing-solver logic into `canard_stm32_timing.c` and rewriting the test to call the real function directly instead of hand-mirroring it. Commits `1139492e3`, `0ba011484`, `3bfbebb7a` pushed to `fix/h7-dronecan-driver`; full build matrix and unit tests verified clean.
+
+**2026-08-18: Response posted to sensei-hacker on PR #11607.** Now awaiting re-review.
 
 **Directory:** `blocked/fix-dronecan-driver-rework/`
 **Repository:** inav (firmware) | **Branch:** `fix/h7-dronecan-driver` → PR #11607 (open, replaces #11560 which is now closed)
@@ -266,6 +251,28 @@ Opened as draft PR **iNavFlight/inav-configurator#2671** against `maintenance-10
 
 **Directory:** `blocked/feature-dronecan-configurator-tab/`
 **Repository:** inav-configurator | **Branch:** `feature/dronecan-configurator-tab` → PR #2671
+
+---
+
+### 🚫 feature-canbus-errors-blackbox
+
+**Status:** BLOCKED | **Type:** Feature | **Priority:** MEDIUM
+**Created:** 2026-02-14 | **Started:** 2026-07-07 | **Blocked Since:** 2026-08-19 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
+
+Log CAN bus error statistics (TEC, REC, LEC, bus-off count, RX drop count) to the Blackbox slow frame. Makes intermittent CAN bus problems diagnosable from flight logs.
+
+**Unblocked 2026-07-07:** previously waiting on `fix-dronecan-driver-rework` PR #11607 to merge. Branched directly off `fix/h7-dronecan-driver` (#11607's branch) instead, same pattern as the other stacked DroneCAN branches. `PLAN.md` was found stale (written before the driver rework landed) and rewritten same day: the bus-off counter already exists (no `dronecan.c`/`.h` changes needed after all), the originally-assumed `tx_dropped`/`tx_queue_hwm`/`rx_buffer_hwm` struct fields don't exist, and a real RX-drop-count getter + pool allocator stats getter exist but weren't in the original plan. Revised scope: 6 fields, `blackbox.c` only.
+
+**2026-07-19 status update:** Implementation complete and verified (hardware-verified on KAKUTEH7WING, full pre-PR build matrix clean, inav-code-review APPROVE). Opened as draft PR **iNavFlight/inav#11729**, stacked on #11607 — PR description says not to merge before #11607.
+
+**Re-blocked 2026-08-19:** entry had drifted stale, still showing 🚧 IN PROGRESS after implementation was already complete — flagged by developer 2026-08-18. Recategorized to match its 6 sibling DroneCAN projects, all in the same "code-complete, waiting on PR #11607" state. No dev work pending; will rebase and re-target for a clean diff once #11607 merges.
+
+**Blocking Issue:** Waiting on `fix-dronecan-driver-rework` PR #11607 to merge.
+
+**Directory:** `blocked/feature-canbus-errors-blackbox/`
+**Repository:** inav (firmware) | **Branch:** `feature/canbus-errors-blackbox` (off `fix/h7-dronecan-driver`) → target `maintenance-10.x` → PR #11729
+**Plan:** `blocked/feature-canbus-errors-blackbox/PLAN.md`
+**Coordination:** touches the same `blackbox.c` slow-frame struct/array/function triplet as `feature-formationflight-diagnostic-logging` — this project's field (`droneCANBusOffCount`, commit `5fa94cb4e`) landed first; formationflight's Phase 1 work should insert its own fields after it in all three places (struct, field-defs array, write call) to avoid a merge conflict.
 
 ---
 
@@ -479,6 +486,18 @@ Two unit test files hand-mirror production logic instead of linking real source,
 **Directory:** `backburner/fix-fragile-unittest-mirrors/`
 **Repository:** inav (firmware) | **Branch:** TBD
 **Related:** Discovered alongside `investigate-dsdl-decoder-truncated-payloads` (same audit)
+
+---
+
+### ⏸️ fix-getflaperondirection-index-assumption
+**Status:** BACKBURNER | **Type:** Bug Fix | **Priority:** LOW
+**Created:** 2026-08-19 | **Assignee:** Developer | **Assignment:** 📝 Planned
+
+`getFlaperonDirection()` (`src/main/flight/servos.c:133-140`) decides flaperon-2 throw direction by checking whether `servoPin == SERVO_FLAPPERON_2` (a bare literal `4`) instead of checking what the mixer actually has configured on that channel. If a user configures something other than flaperon-2 on channel 4, its throw direction gets silently reversed by index-number coincidence, not by mixer function.
+
+**Backburner condition:** Informational finding from developer 2026-08-15 during `feature-dronecan-actuator-control` review, unrelated to and not blocking that work. Narrow edge case, no field reports.
+**Directory:** `backburner/fix-getflaperondirection-index-assumption/`
+**Repository:** inav (firmware) | **Branch:** TBD
 
 ---
 
