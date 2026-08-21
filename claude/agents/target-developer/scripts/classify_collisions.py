@@ -25,6 +25,32 @@ script treats both hazard types identically for severity purposes (same
 since simulate_pwm_roles.py's BURST_STREAM_COLLISION text embeds the same
 "TIM_CH" substrings this script matches positions against.
 
+KNOWN BLIND SPOT, FIXED 2026-08-21: a MOTOR-vs-LED_STRIP collision can
+NEVER be surfaced by the CERTAIN/NOTICE machinery above, structurally --
+LED-strip rows never get a `position` (simulate_pwm_roles.py's per-row
+loop only assigns `pos` for the MOTOR and SERVO buckets; the LED branch
+leaves it None), and this function's `involved` list filters out any
+tim_ch whose looked-up position is None before the `len(involved) < 2`
+check even runs. So a real motor-vs-LED collision always collapses to a
+1-element `involved` list and is silently dropped -- not misclassified,
+just invisible, from every prior run of this tool. Found by hand while
+using this script's output as a work list for Phase 2 step 3 of
+investigate-shared-tim-dma-request-lines (AIKONF7's TIM3_CH2 vs TIM2_CH1
+collision, where TIM2_CH1 is TIM_USE_LED, never appeared in any NOTICE
+list despite firing at every motorCount from 4 up). A full re-sweep this
+same pass found FURYF4OSD has the same previously-invisible pattern too
+(TIM3_CH4 vs TIM5_CH1/LED_STRIP) -- both now correctly reported below by
+`led_collisions()`, a structurally separate detection pass (LED-vs-motor
+severity is always deterministic -- motors init before ledStripInit() in
+fc_init.c, so a MOTOR side always wins and the LED silently just doesn't
+light; never flight-critical, so there's no CERTAIN/NOTICE split to make
+here, just a single LED_COLLISION bucket). The known parser-gap targets
+(conditional-compilation flattening, see simulate_pwm_roles.py's
+docstring) can also surface a same-(tim,ch)-twice false LED hit here the
+same way they do for the motor/motor checks -- cross-check any new hit
+against that 8-target list (or grep the target's target.c for #if/#ifdef
+inside timerHardware[]) before trusting it.
+
 Usage: python3 classify_collisions.py <inav-checkout-root> <targets-file>
 <targets-file> lists one target name per line, F4/F7/AT32 only. Build it
 with simulate_pwm_roles.detect_family() in ("F4","F7","AT32") to exclude
@@ -36,10 +62,14 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import simulate_pwm_roles as sim  # noqa: E402
 
-ROOT = Path(sys.argv[1])
-TARGETS_FILE = Path(sys.argv[2])
+ROOT = Path(sys.argv[1]) if len(sys.argv) > 1 else None
+TARGETS_FILE = Path(sys.argv[2]) if len(sys.argv) > 2 else None
 
-def classify(target_name):
+
+def _load(target_name):
+    """Shared parse/setup for one target. Returns None if not applicable,
+    else (family, entries, adc_pins, led_strip, dshot_dmar, dma_resolver,
+    max_mc)."""
     target_dir = ROOT / "src" / "main" / "target" / target_name
     target_c = target_dir / "target.c"
     target_h = target_dir / "target.h"
@@ -58,8 +88,16 @@ def classify(target_name):
     dma_resolver = sim.DmaResolver(family, target_dir,
                                     target_h.read_text(errors="ignore") if target_h.is_file() else "",
                                     dshot_dmar)
-
     max_mc = max(12, len(entries))
+    return family, entries, adc_pins, led_strip, dshot_dmar, dma_resolver, max_mc
+
+
+def classify(target_name):
+    loaded = _load(target_name)
+    if loaded is None:
+        return None
+    _family, entries, adc_pins, led_strip, dshot_dmar, dma_resolver, max_mc = loaded
+
     worst = None  # None, "NOTICE", or "CERTAIN"
     detail = []
     for mc in range(4, max_mc + 1):
@@ -85,8 +123,50 @@ def classify(target_name):
             detail.append((mc, sev, involved, dshot_dmar))
     return worst, detail, dshot_dmar
 
+
+def led_collisions(target_name):
+    """Detect MOTOR-vs-LED_STRIP DMA collisions -- structurally invisible to
+    classify()'s CERTAIN/NOTICE machinery, see module docstring. Returns
+    (first_mc, motor_tim_ch, led_tim_ch) for the first motorCount at which a
+    real (non-parser-gap-duplicate) hit occurs, or None."""
+    loaded = _load(target_name)
+    if loaded is None:
+        return None
+    _family, entries, adc_pins, led_strip, dshot_dmar, dma_resolver, max_mc = loaded
+    if not led_strip:
+        return None  # target has no LED strip at all, can't collide with one
+
+    for mc in range(4, max_mc + 1):
+        result = sim.simulate(entries, mc, None, adc_pins, led_strip, dma_resolver, True, {})
+        led_tim_ch = {row["entry"].tim + "_" + row["entry"].ch
+                      for row in result.rows if "LED" in row["bucket"]}
+        if not led_tim_ch:
+            continue
+        for h in result.hazards:
+            if not (h.startswith("DMA_STREAM_COLLISION") or h.startswith("BURST_STREAM_COLLISION")):
+                continue
+            hit_led = [tc for tc in led_tim_ch if tc in h]
+            if not hit_led:
+                continue
+            # Identify the non-LED (motor) participant for the report line.
+            # Same-(tim,ch)-twice parser-gap duplicates show up as the LED
+            # tim_ch appearing twice with different labels in the hazard
+            # text; that's not a real motor partner, so guard against it.
+            motor_tim_ch = None
+            for row in result.rows:
+                e = row["entry"]
+                tc = f"{e.tim}_{e.ch}"
+                if tc in hit_led:
+                    continue
+                if tc in h and row.get("claims_dma"):
+                    motor_tim_ch = tc
+                    break
+            return (mc, motor_tim_ch, hit_led[0])
+    return None
+
+
 def main():
-    certain, notice = [], []
+    certain, notice, led = [], [], []
     for line in TARGETS_FILE.read_text().splitlines():
         t = line.strip()
         if not t:
@@ -96,15 +176,21 @@ def main():
         except Exception as ex:
             print(f"ERROR {t}: {ex}", file=sys.stderr)
             continue
-        if res is None:
-            continue
-        worst, detail, dshot_dmar = res
-        if worst == "CERTAIN":
-            first = next(d for d in detail if d[1] == "CERTAIN")
-            certain.append((t, first[0], first[2], dshot_dmar))
-        elif worst == "NOTICE":
-            first = detail[0]
-            notice.append((t, first[0], first[2], dshot_dmar))
+        if res is not None:
+            worst, detail, dshot_dmar = res
+            if worst == "CERTAIN":
+                first = next(d for d in detail if d[1] == "CERTAIN")
+                certain.append((t, first[0], first[2], dshot_dmar))
+            elif worst == "NOTICE":
+                first = detail[0]
+                notice.append((t, first[0], first[2], dshot_dmar))
+        try:
+            led_hit = led_collisions(t)
+        except Exception as ex:
+            print(f"ERROR (LED check) {t}: {ex}", file=sys.stderr)
+            led_hit = None
+        if led_hit is not None:
+            led.append((t,) + led_hit)
 
     def fmt(pairs):
         return ",".join(f"{tc}@pos{p}" for p, tc in pairs)
@@ -115,6 +201,10 @@ def main():
     print(f"\n=== NOTICE (all losers at position >= 4; any S1-S4 member wins and stays alive): {len(notice)} targets ===")
     for t, mc, pairs, dmar in notice:
         print(f"  {t}  (first at motorCount={mc})  {fmt(pairs)}{'  [USE_DSHOT_DMAR]' if dmar else ''}")
+    print(f"\n=== LED_COLLISION (MOTOR always wins over LED strip specifically; LED silently doesn't light, never flight-critical): {len(led)} targets ===")
+    for t, mc, motor_tc, led_tc in led:
+        print(f"  {t}  (first at motorCount={mc})  motor={motor_tc} led={led_tc}")
+
 
 if __name__ == "__main__":
     main()
