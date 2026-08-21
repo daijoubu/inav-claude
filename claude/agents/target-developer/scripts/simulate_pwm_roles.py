@@ -656,24 +656,41 @@ class DmaResolver:
             return stream_label_h7(dma, stream)
         return stream_label_f4(dma, stream)
 
-    def is_shared_multichannel_request(self, entry):
+    def is_shared_multichannel_request(self, entry, active_siblings):
         """True if this entry's chosen dmavar resolves to a (dma,stream,chan)
         tuple that is ALSO listed as an option for a DIFFERENT channel of the
-        same physical timer. That exact-tuple-reuse is the generic fingerprint
+        same physical timer, AND at least one of those other channels is
+        genuinely driven this build (its own `ch` token is in
+        `active_siblings`, the set of channel tokens on this entry's timer
+        that simulate() determined are actually initialized at this
+        motorCount/servoCount -- see its precompute block above `simulate()`'s
+        main per-row loop). That exact-tuple-reuse is the generic fingerprint
         of an F4-family "combined" DMA request line -- e.g. DMA2 Stream6
         channel 0 is listed as an option for TIM1_CH1, TIM1_CH2, AND TIM1_CH3
         alike (DEF_TIM_DMA__BTCH_TIM1_CH1/CH2/CH3 in timer_def_stm32f4xx.h all
         include D(2,6,0)). Firing that request only tells the DMA controller
-        "one of this timer's channels compare-matched", not which one, so it
-        is not a valid substitute for a real per-channel CCx DMA request
-        unless the timer is driven in USE_DSHOT_DMAR burst mode (which reads
-        all channels' CCRs together off the timer's *update* event instead,
-        a completely different mechanism). Confirmed via upstream commit
-        ab07785fa9 ("Fix channel selection for DMA2 Stream6"), which changed
-        exactly this -- TIM1_CH3 dmavar 0 -> 1 -- on 4 real boards
-        (DALRCF405, FLYWOOF411, HAKRCF405V2, HAKRCF722V2) after the dmavar=0
-        option produced no signal. Only meaningful for F4/F7/AT32 (self.table
-        is None on H7, which has no such shared-request-line quirk)."""
+        "one of this timer's channels compare-matched", not which one -- but
+        if NO sibling channel of that combined group is actually configured
+        as a live output this build (the SOLO pattern), the shared line only
+        ever sees THIS channel's own compare events and behaves exactly like
+        a dedicated one, so it is not a defect. It only becomes one (the
+        SPURIOUS TRIGGERS pattern) once a sibling is genuinely active too,
+        injecting its own compare events onto the same line and corrupting
+        this channel's DSHOT bitstream -- unless the timer is driven in
+        USE_DSHOT_DMAR burst mode (which reads all channels' CCRs together
+        off the timer's *update* event instead, a completely different
+        mechanism this check doesn't apply to, see the `not
+        dma_resolver.dshot_dmar` guard at the call site). See
+        investigate-shared-tim-dma-request-lines/summary.md's SOLO (73,
+        harmless) vs. SPURIOUS TRIGGERS (10, genuine) full-tree
+        classification for the original derivation of this distinction.
+        Confirmed via upstream commit ab07785fa9 ("Fix channel selection for
+        DMA2 Stream6"), which changed exactly this -- TIM1_CH3 dmavar 0 -> 1
+        -- on 4 real boards (DALRCF405, FLYWOOF411, HAKRCF405V2,
+        HAKRCF722V2) after the dmavar=0 option produced no signal (all 4 are
+        genuine SPURIOUS TRIGGERS cases, confirmed hardware-tested). Only
+        meaningful for F4/F7/AT32 (self.table is None on H7, which has no
+        such shared-request-line quirk)."""
         if self.table is None:
             return False
         if self.family == "AT32":
@@ -705,12 +722,18 @@ class DmaResolver:
         # defect class, so don't flag chan!=0 here to avoid false positives.
         if chosen[2] != 0:
             return False
+        group_siblings = set()
         for (tim_tok, ch_tok), other_opts in self.table.items():
             if tim_tok != entry.tim or ch_tok == entry.ch:
                 continue
             if chosen in other_opts:
-                return True
-        return False
+                group_siblings.add(ch_tok)
+        if not group_siblings:
+            return False
+        # SOLO vs. SPURIOUS TRIGGERS: only a defect if a sibling that could
+        # actually share this line is genuinely driven this build, not just
+        # theoretically able to per the header table.
+        return bool(group_siblings & active_siblings)
 
 
 # ---------------------------------------------------------------------------
@@ -987,6 +1010,33 @@ def simulate(entries_orig, motor_count, servo_count, adc_pins, led_strip_active,
     # here from the entry's ORIGINAL declared flags, not the resolved bucket.
     led_entry_indices = {e.index for e in entries_orig if e.orig_flags & TIM_USE_LED}
 
+    # Precomputed once, up front (bucket/motor_pos/servo_pos/led_entry_indices
+    # are all already fully known) so is_shared_multichannel_request() below
+    # can tell a SOLO combined-DMA-request-line usage (no sibling channel of
+    # the timer is genuinely driven this build -> the request line only ever
+    # sees this channel's own compare events -> not a defect) from a real
+    # SPURIOUS-TRIGGERS one (a sibling IS driven -> its compare events also
+    # land on the shared line, corrupting this channel's DSHOT transfer).
+    def _driven_for(idx):
+        if idx in led_entry_indices and led_strip_active:
+            return True
+        b_ = bucket.get(idx)
+        if b_ == "MOTOR":
+            return motor_pos[idx] < motor_count
+        if b_ == "SERVO":
+            return True if servo_count is None else servo_pos[idx] < servo_count
+        return False
+
+    active_ch_by_tim = {}
+    for oe in entries:
+        if _driven_for(oe.index):
+            # De-N the channel token (CH2N -> CH2) to match the header
+            # table's keys -- see DmaResolver._lookup()'s docstring: an
+            # N-channel shares its base channel's compare-match event, so it
+            # must count as that same base channel being active.
+            ch_norm = oe.ch[:-1] if oe.ch.endswith("N") else oe.ch
+            active_ch_by_tim.setdefault(oe.tim, set()).add(ch_norm)
+
     result = SimResult()
     dma_claims = {}  # (dma,stream) -> list of entry describing string
 
@@ -1053,7 +1103,8 @@ def simulate(entries_orig, motor_count, servo_count, adc_pins, led_strip_active,
 
         if (claims_dma and b == "MOTOR" and driven and dshot
                 and not dma_resolver.dshot_dmar
-                and dma_resolver.is_shared_multichannel_request(e)):
+                and dma_resolver.is_shared_multichannel_request(
+                    e, active_ch_by_tim.get(e.tim, set()))):
             result.hazards.append(
                 f"SHARED_TIMER_DMA_REQUEST: {e.tim}_{e.ch} ({e.label}) dmavar="
                 f"{e.dmavar} resolves to a DMA request line ALSO shared with "
@@ -1377,6 +1428,35 @@ timerHardware_t timerHardware[] = {
 };
 '''
 
+# The dakefpvf405wing-hardware-bringup fix (2026-08-15), verbatim from
+# `git show ecca02aff6:src/main/target/DAKEFPVF405WING/target.c` in the inav2
+# checkout -- embedded rather than read from disk because DAKEFPVF405WING no
+# longer exists as a target directory (superseded upstream by a differently
+# laid-out DAKEFPVF405), which used to make this whole self-test crash with
+# FileNotFoundError before it ever reached the SHARED_TIMER_DMA_REQUEST
+# regression check below.
+DAKEFPVF405WING_EDITED_TARGET_C = '''
+timerHardware_t timerHardware[] = {
+    DEF_TIM(TIM2,   CH2, PA1,  TIM_USE_OUTPUT_AUTO,   1, 0), // S1
+
+    DEF_TIM(TIM3,   CH3, PB0,  TIM_USE_OUTPUT_AUTO,   1, 0), // S2
+    DEF_TIM(TIM3,   CH4, PB1,  TIM_USE_OUTPUT_AUTO,   1, 0), // S3
+
+    DEF_TIM(TIM12,  CH1,PB14, TIM_USE_SERVO,   1, 0), // S4 - TIM12 has no DMA on F405, servo-only
+    DEF_TIM(TIM12,  CH2,PB15, TIM_USE_SERVO,   1, 0), // S5 - TIM12 has no DMA on F405, servo-only
+
+    DEF_TIM(TIM8,   CH3, PC8,  TIM_USE_OUTPUT_AUTO,   1, 1), // S6
+    DEF_TIM(TIM8,   CH4, PC9,  TIM_USE_OUTPUT_AUTO,   1, 0), // S7
+
+    DEF_TIM(TIM1,   CH1, PA8,  TIM_USE_OUTPUT_AUTO,   0, 1), // S8 - DMA2 Stream1)
+    DEF_TIM(TIM1,   CH2, PA9,  TIM_USE_OUTPUT_AUTO,   0, 1), // S9 - DMA2 Stream2
+    DEF_TIM(TIM1,   CH3, PA10, TIM_USE_OUTPUT_AUTO,   0, 1), // S10 - Stream6
+
+    DEF_TIM(TIM5,   CH1, PA0,  TIM_USE_LED,   1, 0), // 2812LED
+    DEF_TIM(TIM5,   CH3, PA2,  TIM_USE_ANY,   0, 0), // TX2  softserial1_Tx
+};
+'''
+
 
 def _selftest(inav_root):
     ok = True
@@ -1417,8 +1497,7 @@ def _selftest(inav_root):
               by_label[s]["bucket"] == "SERVO")
 
     # --- Reference point 2: current (edited) target.c, S3 cascade ---
-    target_c_path = inav_root / "src/main/target/DAKEFPVF405WING/target.c"
-    entries2 = parse_target_c(target_c_path.read_text())
+    entries2 = parse_target_c(DAKEFPVF405WING_EDITED_TARGET_C)
     for mc in (2, 3, 5):
         r = simulate(entries2, motor_count=mc, servo_count=None, adc_pins=set(),
                      led_strip_active=False, dma_resolver=dma_resolver, dshot=True)
@@ -1580,6 +1659,49 @@ timerHardware_t timerHardware[] = {
           and rows3d["S8"]["bucket"] == "SERVO"
           and rows3d["S9"]["bucket"] == "SERVO"
           and rows3d["S10"]["bucket"] == "SERVO")
+
+    # --- Reference point 6: SHARED_TIMER_DMA_REQUEST SOLO vs. SPURIOUS
+    # TRIGGERS (Phase 2 step 5, investigate-shared-tim-dma-request-lines).
+    # Isolated minimal targets, not the DAKEFPVF405WING fixture above, so
+    # each scenario exercises exactly one thing: whether a combined-line
+    # user (dmavar=0 on TIM1_CH1, a real F4 advanced-timer channel) is
+    # flagged depends ONLY on whether a sibling channel of that same
+    # combined group is also genuinely declared+driven, not merely on
+    # whether the header table says the tuple COULD be shared.
+    SOLO_SHARED_LINE_TARGET_C = '''
+timerHardware_t timerHardware[] = {
+    DEF_TIM(TIM1,  CH1, PA8,  TIM_USE_OUTPUT_AUTO,  0, 0), // S1
+};
+'''
+    solo_entries = parse_target_c(SOLO_SHARED_LINE_TARGET_C)
+    r_solo = simulate(solo_entries, motor_count=1, servo_count=None, adc_pins=set(),
+                       led_strip_active=False, dma_resolver=dma_resolver, dshot=True)
+    check("SOLO: lone TIM1_CH1 dmavar=0 (combined line), no sibling TIM1 "
+          "channel declared at all -- NOT flagged (nothing else can ever "
+          "trigger this line)",
+          not any("SHARED_TIMER_DMA_REQUEST" in h for h in r_solo.hazards))
+
+    SPURIOUS_SHARED_LINE_TARGET_C = '''
+timerHardware_t timerHardware[] = {
+    DEF_TIM(TIM1,  CH1, PA8,  TIM_USE_OUTPUT_AUTO,  0, 0), // S1
+    DEF_TIM(TIM1,  CH2, PA9,  TIM_USE_OUTPUT_AUTO,  0, 1), // S2
+};
+'''
+    spurious_entries = parse_target_c(SPURIOUS_SHARED_LINE_TARGET_C)
+    r_spurious = simulate(spurious_entries, motor_count=2, servo_count=None,
+                           adc_pins=set(), led_strip_active=False,
+                           dma_resolver=dma_resolver, dshot=True)
+    check("SPURIOUS TRIGGERS: TIM1_CH1 dmavar=0 (combined line) with sibling "
+          "TIM1_CH2 declared AND driven on its own dedicated line (dmavar=1, "
+          "a different DMA stream -- so no DMA_STREAM_COLLISION masks this) "
+          "-- IS flagged (S2's compare events also land on S1's shared line)",
+          any("SHARED_TIMER_DMA_REQUEST" in h and "TIM1_CH1" in h
+              for h in r_spurious.hazards))
+    check("SPURIOUS TRIGGERS scenario: confirms S1/S2 resolve to genuinely "
+          "different DMA streams (S2 on its dedicated line, not colliding "
+          "with S1 -- so the flag above is SHARED_TIMER_DMA_REQUEST doing "
+          "its job, not DMA_STREAM_COLLISION firing instead)",
+          not any("DMA_STREAM_COLLISION" in h for h in r_spurious.hazards))
 
     print()
     print("SELFTEST " + ("PASSED" if ok else "FAILED"))
