@@ -104,3 +104,19 @@ Fixed 2026-07-07 on commit `e3f1c44e`, pushed to origin. 68/68 tests pass, no be
 - [x] ~~Wait for PR 2645 (`fix/accordion-duplicate-handlers`) to merge to `maintenance-10.x`~~ — PR #2645 itself was closed without merging 2026-06-03, but the fix it targeted landed via a different PR on `maintenance-9.x` (merged by sensei-hacker) and will reach `maintenance-10.x` through the normal `maintenance-9.x` → `master` → `maintenance-10.x` merge flow. No action needed on this branch. Resolved 2026-07-07.
 - [x] PR opened against `maintenance-10.x` — **iNavFlight/inav-configurator#2671**, opened 2026-07-04
 - [x] Send completion report to manager — Phase 6 report 2026-07-07 15:30
+
+## Resumed (2026-08-21 — firmware PR #11607 merged)
+
+`feature/dronecan-configurator-tab` (configurator repo) is NOT git-stacked
+on any of the other configurator DroneCAN branches (confirmed via
+`git merge-base` 2026-08-21 — each configurator branch is independently
+based on `maintenance-9.x`/`maintenance-10.x`) and doesn't need a rebase
+of its own. It was held in draft/BLOCKED specifically to stay in sync with
+the firmware-side PR chain, which is now moving — no code action needed
+here, just review-readiness tracking.
+
+- [ ] Confirm branch is still current against configurator's own
+      `maintenance-10.x` (routine hygiene, unrelated to #11607)
+- [ ] Coordinate timing: ready to come out of draft once the corresponding
+      firmware PR (#11683, param-getset) is out of draft / under review
+- [ ] Notify manager if any drift found

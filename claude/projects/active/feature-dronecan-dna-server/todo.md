@@ -37,3 +37,25 @@
 Checklist reconciled against actual branch/PR state 2026-07-07 — was stale (all unchecked despite
 implementation, tests, hardware validation, and PR being complete). See PR #11688 body for full
 test-plan detail and the three code-review passes performed.
+
+## Rebase (unblocked 2026-08-21 — PR #11607 merged)
+
+`feature/dronecan-dna-server` is stacked on `feature/dronecan-param-getset`
+(confirmed via `git merge-base` 2026-08-21) — wait for that branch's rebase
+to land first, then rebase this one on top of it.
+
+- [ ] Wait for `feature-dronecan-param-getset`'s rebase onto
+      `maintenance-10.x` to complete
+- [ ] Rebase `feature/dronecan-dna-server` onto the rebased
+      `feature/dronecan-param-getset`
+- [ ] Force-push, confirm PR #11688 diff is now clean
+- [ ] **Also apply the `PG_DRONECAN_CONFIG` version reconciliation** flagged
+      2026-08-19 (see `feature-dronecan-dna-server`'s summary.md) —
+      `dronecanUseDNAServer` (this PR) and `servoOutputBitmask`
+      (`feature-dronecan-actuator-control`) both touched the same struct;
+      needs one correct version bump accounting for both fields, not two
+      independent ones. Also check `EEPROM_CONF_VERSION`
+      (`config_eeprom.h:24`, currently 126).
+- [ ] Full build matrix (F4/F7/H7/AT32/SITL) clean post-rebase
+- [ ] Notify manager once done — `review-dronecan-gps-node-health` is
+      waiting on this rebase landing before it can rebase in turn

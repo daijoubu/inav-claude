@@ -112,6 +112,21 @@ Payload in: none (or optionally node_id for validation)
 - [ ] Confirm REQUEST while PENDING returns busy (not silent corruption)
 - [ ] Confirm 2-second timeout resets slot to ERROR correctly
 
+## Rebase (unblocked 2026-08-21 — PR #11607 merged)
+
+`feature/dronecan-param-getset` is the base of the remaining DroneCAN stack
+(`feature/dronecan-dna-server` and `fix/dronecan-gps-health-guard` both
+build on top of it — confirmed via `git merge-base` 2026-08-21). Rebase
+this one first so the others have a clean branch to rebase onto in turn.
+
+- [ ] Rebase `feature/dronecan-param-getset` onto `upstream/maintenance-10.x`
+- [ ] Force-push, confirm PR #11683 diff is now clean (only this branch's
+      own commits vs. `maintenance-10.x`)
+- [ ] Full build matrix (F4/F7/H7/AT32/SITL) clean post-rebase
+- [ ] Notify manager once done — `feature-dronecan-dna-server` and
+      `review-dronecan-gps-node-health` are both waiting on this rebase
+      landing before they can rebase in turn
+
 ## Completion
 
 - [ ] All success criteria met

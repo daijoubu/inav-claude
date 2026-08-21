@@ -2,9 +2,35 @@
 
 Completed (✅) and cancelled (❌) projects by current author (daijoubu) for INAV firmware and DroneCAN development.
 
-**Total Completed:** 50 | **Total Cancelled:** 2
+**Total Completed:** 52 | **Total Cancelled:** 2
 
 > **Active projects:** See [../INDEX.md](../INDEX.md)
+
+---
+
+
+### ✅ feature-dronecan-getnodeinfo
+
+**Status:** COMPLETED (2026-08-21)
+**Type:** Feature
+**Priority:** MEDIUM-HIGH
+
+Code complete. Node struct extended with version fields, GetNodeInfo request/response implemented, MSP2_INAV_DRONECAN_NODE_INFO extended to 119-byte wire format. Full build matrix (F4/F7/H7/AT32/SITL) and 13/13 unit tests passing. Rebased onto `fix/h7-dronecan-driver` 2026-07-04, no unmasked call sites found — merged into the `feature/dronecan-param-getset` PR (#11683) rather than opened standalone, per the "may be combined with getnodeinfo" plan.
+
+---
+
+
+### ✅ fix-dronecan-driver-rework
+
+**Status:** COMPLETED (2026-08-21)
+**Type:** Bug Fix
+**Priority:** HIGH
+
+Fix two confirmed bugs in the H743 FDCAN driver (FIFO vs Queue mode; queue depth 32→3) and a design defect in the F765 bxCAN SW TX queue (insertion-ordered FIFO → priority inversion under load). Introduces ISR-driven shallow-buffer architecture with NVIC masking at libcanard call sites. Phase 3 rebases all pending DroneCAN branches onto the clean base.
+
+**Repository:** inav (firmware) | **Branch:** `fix/h7-dronecan-driver`
+**PR:** [iNavFlight/inav#11607](https://github.com/iNavFlight/inav/pull/11607) — MERGED 2026-08-21, replaces closed #11560
+**Note:** Root of the whole DroneCAN PR stack. Merging unblocks the 5 branches stacked on it, now rebasing onto `maintenance-10.x`: `feature-dronecan-param-getset` (#11683), `feature-dronecan-dna-server` (#11688), `review-dronecan-gps-node-health` (#11698), `feature-canbus-errors-blackbox` (#11729), and configurator `feature-dronecan-configurator-tab` (#2671).
 
 ---
 

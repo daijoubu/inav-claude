@@ -43,3 +43,18 @@
 - [ ] Open draft configurator PR against `maintenance-10.x`
 - [ ] Completion report sent to manager
 - [ ] Original assignment archived from inbox
+
+## Rebase (unblocked 2026-08-21 — PR #11607 merged)
+
+`fix/dronecan-gps-health-guard` is the deepest branch in the stack —
+confirmed via `git merge-base` 2026-08-21 that it contains both
+`feature/dronecan-param-getset` and `feature/dronecan-dna-server` as
+ancestors. Rebase last, after both of those have landed their rebases.
+
+- [ ] Wait for `feature-dronecan-param-getset` AND `feature-dronecan-dna-server`
+      rebases onto `maintenance-10.x` to both complete
+- [ ] Rebase `fix/dronecan-gps-health-guard` onto the rebased
+      `feature/dronecan-dna-server`
+- [ ] Force-push, confirm PR #11698 diff is now clean
+- [ ] Full build matrix (F4/F7/H7/AT32/SITL) clean post-rebase
+- [ ] Notify manager once done
