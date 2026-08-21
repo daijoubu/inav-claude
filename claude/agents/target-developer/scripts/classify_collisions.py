@@ -44,12 +44,18 @@ same pass found FURYF4OSD has the same previously-invisible pattern too
 severity is always deterministic -- motors init before ledStripInit() in
 fc_init.c, so a MOTOR side always wins and the LED silently just doesn't
 light; never flight-critical, so there's no CERTAIN/NOTICE split to make
-here, just a single LED_COLLISION bucket). The known parser-gap targets
-(conditional-compilation flattening, see simulate_pwm_roles.py's
-docstring) can also surface a same-(tim,ch)-twice false LED hit here the
-same way they do for the motor/motor checks -- cross-check any new hit
-against that 8-target list (or grep the target's target.c for #if/#ifdef
-inside timerHardware[]) before trusting it.
+here, just a single LED_COLLISION bucket).
+
+CONDITIONAL-COMPILATION BLIND SPOT, FIXED 2026-08-21: parser-gap targets
+(conditional-compilation flattening -- see simulate_pwm_roles.py's
+parse_target_c() docstring) used to silently surface same-(tim,ch)-twice
+false hits here (or, worse on MAMBAF405US, silently mask a real hazard
+behind a clean #ifdef branch) with no way to tell from this script's
+output alone. parse_target_c() is now preprocessor-aware (entry.conditional
+/ entry.conditional_expr); main() checks sim.has_conditional_tim() per
+target before calling classify()/led_collisions() and reports those
+targets in a separate N/A bucket instead of feeding them through the
+CERTAIN/NOTICE/LED_COLLISION machinery.
 
 Usage: python3 classify_collisions.py <inav-checkout-root> <targets-file>
 <targets-file> lists one target name per line, F4/F7/AT32 only. Build it
@@ -166,10 +172,20 @@ def led_collisions(target_name):
 
 
 def main():
-    certain, notice, led = [], [], []
+    certain, notice, led, conditional = [], [], [], []
     for line in TARGETS_FILE.read_text().splitlines():
         t = line.strip()
         if not t:
+            continue
+        loaded = _load(t)
+        if loaded is not None and sim.has_conditional_tim(loaded[1]):
+            # DEF_TIM lines guarded by #if/#ifdef/#ifndef: parse_target_c()
+            # flattens every build variant into one array, so any verdict
+            # derived from it here could be a self-collision false positive
+            # or a hazard masked by another variant's clean line. Report
+            # N/A instead of silently including or excluding this target --
+            # see simulate_pwm_roles.py's parse_target_c() docstring.
+            conditional.append(t)
             continue
         try:
             res = classify(t)
@@ -204,6 +220,9 @@ def main():
     print(f"\n=== LED_COLLISION (MOTOR always wins over LED strip specifically; LED silently doesn't light, never flight-critical): {len(led)} targets ===")
     for t, mc, motor_tc, led_tc in led:
         print(f"  {t}  (first at motorCount={mc})  motor={motor_tc} led={led_tc}")
+    print(f"\n=== N/A (timerHardware[] has #if/#ifdef/#ifndef-guarded DEF_TIM lines -- needs manual per-build-variant review): {len(conditional)} targets ===")
+    for t in conditional:
+        print(f"  {t}")
 
 
 if __name__ == "__main__":

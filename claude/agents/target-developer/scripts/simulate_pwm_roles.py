@@ -345,13 +345,17 @@ DEF_TIM_RE = re.compile(
     r'\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*(\d+)\s*\)'
 )
 COMMENT_RE = re.compile(r'//\s*(.+?)\s*$')
+IF_DIRECTIVE_RE = re.compile(r'^\s*#\s*(if|ifdef|ifndef)\b\s*(.*)$')
+ELSE_DIRECTIVE_RE = re.compile(r'^\s*#\s*(else|elif)\b\s*(.*)$')
+ENDIF_DIRECTIVE_RE = re.compile(r'^\s*#\s*endif\b')
 
 
 class Entry:
     __slots__ = ("index", "tim", "ch", "pin", "flags", "orig_flags", "dmavar",
-                 "label", "line")
+                 "label", "line", "conditional_expr")
 
-    def __init__(self, index, tim, ch, pin, flags, dmavar, label, line):
+    def __init__(self, index, tim, ch, pin, flags, dmavar, label, line,
+                 conditional_expr=None):
         self.index = index
         self.tim = tim
         self.ch = ch
@@ -361,6 +365,13 @@ class Entry:
         self.dmavar = dmavar
         self.label = label
         self.line = line
+        # Non-None when this DEF_TIM line was found nested inside a
+        # #if/#ifdef/#ifndef block in timerHardware[] -- see parse_target_c().
+        self.conditional_expr = conditional_expr
+
+    @property
+    def conditional(self):
+        return self.conditional_expr is not None
 
     def usage_str(self):
         parts = []
@@ -383,9 +394,45 @@ class Entry:
 
 
 def parse_target_c(text):
+    """Parse DEF_TIM(...) lines into Entry objects.
+
+    Preprocessor-aware: a #if/#ifdef/#ifndef/#elif/#else/#endif stack is
+    tracked while scanning, and any DEF_TIM line found while that stack is
+    non-empty gets entry.conditional_expr set to a best-effort description
+    of the guarding condition(s) (joined with " && " when nested). This
+    function still flattens every branch into one flat list -- a single
+    build only compiles one branch, so a target with conditional DEF_TIM
+    lines can have entries here that never coexist on real hardware (e.g.
+    two branches both declaring TIM4_CH2 look like a self-collision, or a
+    hazard hidden in one branch is masked by a clean line in the other).
+    Callers MUST check entry.conditional before trusting collision/hazard
+    verdicts derived from these entries -- see has_conditional_tim() and
+    run_target()/classify_collisions.py's N/A handling.
+    """
     entries = []
+    cond_stack = []
     for i, line in enumerate(text.splitlines()):
         stripped = line.strip()
+
+        m_if = IF_DIRECTIVE_RE.match(stripped)
+        if m_if:
+            kind, rest = m_if.groups()
+            rest = rest.strip()
+            cond_stack.append(f"!{rest}" if kind == "ifndef" else rest)
+            continue
+        m_else = ELSE_DIRECTIVE_RE.match(stripped)
+        if m_else and cond_stack:
+            kind, rest = m_else.groups()
+            if kind == "else":
+                cond_stack[-1] = f"!({cond_stack[-1]})"
+            else:  # elif
+                cond_stack[-1] = rest.strip() or cond_stack[-1]
+            continue
+        if ENDIF_DIRECTIVE_RE.match(stripped):
+            if cond_stack:
+                cond_stack.pop()
+            continue
+
         if stripped.startswith("//"):
             continue
         m = DEF_TIM_RE.search(line)
@@ -401,9 +448,18 @@ def parse_target_c(text):
         else:
             label = f"{tim}_{ch}"
         flags = parse_usage(usage_text, warn_prefix=f"line {i+1}: ")
+        conditional_expr = " && ".join(cond_stack) if cond_stack else None
         entries.append(Entry(len(entries), tim, ch, pin, flags, int(dmavar),
-                              label, stripped))
+                              label, stripped, conditional_expr))
     return entries
+
+
+def has_conditional_tim(entries):
+    """True if any entry (from parse_target_c) came from inside a
+    #if/#ifdef/#ifndef block -- see parse_target_c()'s docstring for why
+    that makes the flattened entry list unsafe to draw hazard verdicts
+    from without manual per-build-variant review."""
+    return any(e.conditional for e in entries)
 
 
 def apply_dmavar_overrides(entries, overrides):
@@ -431,7 +487,8 @@ def apply_dmavar_overrides(entries, overrides):
 def clone_entries(entries):
     out = []
     for e in entries:
-        ne = Entry(e.index, e.tim, e.ch, e.pin, e.orig_flags, e.dmavar, e.label, e.line)
+        ne = Entry(e.index, e.tim, e.ch, e.pin, e.orig_flags, e.dmavar, e.label, e.line,
+                   e.conditional_expr)
         out.append(ne)
     return out
 
@@ -1221,6 +1278,20 @@ def run_target(inav_root, target_name, motor_count, servo_count, sweep_range,
     entries = parse_target_c(target_c.read_text(errors="ignore"))
     if not entries:
         raise SystemExit(f"No DEF_TIM(...) entries parsed from {target_c}")
+
+    if has_conditional_tim(entries):
+        print(f"\n*** N/A: {target_name}'s timerHardware[] has DEF_TIM line(s) "
+              "guarded by #if/#ifdef/#ifndef. parse_target_c() flattens every "
+              "build variant into one array, so the collision/hazard verdicts "
+              "below can be a false positive (two variants' lines colliding "
+              "with each other, never coexisting on real hardware) or a false "
+              "negative (a hazard hidden in one variant, masked by a clean "
+              "line from another). Treat this target as N/A until reviewed "
+              "by hand, one build variant at a time. Guarded lines:")
+        for e in entries:
+            if e.conditional:
+                print(f"      [{e.conditional_expr}] {e.tim}_{e.ch} ({e.label})")
+        print()
 
     if dmavar_overrides:
         applied = apply_dmavar_overrides(entries, dmavar_overrides)
