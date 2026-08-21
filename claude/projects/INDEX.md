@@ -42,7 +42,7 @@ This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKE
 ### 📋 docs-dronecan-inavdocs-site
 
 **Status:** TODO | **Type:** Documentation | **Priority:** MEDIUM
-**Created:** 2026-08-21 | **Assignee:** Developer | **Assignment:** 📝 Planned
+**Created:** 2026-08-21 | **Assignee:** Developer | **Assignment:** ✉️ Assigned
 
 Contribute DroneCAN documentation to `iNavFlight/iNavFlight.github.io` (new
 Docusaurus docs site, replacing the old wiki). Found the current docs
