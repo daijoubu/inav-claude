@@ -115,12 +115,28 @@ See `claude/INSTALL.md` for detailed setup instructions and `claude/examples/` f
 
 ## Repository Overview
 
-This repository contains four main components:
+This repository contains five main components:
 
 1. **inav/** - Flight controller firmware (C/C99, embedded systems)
 2. **inav-configurator/** - Desktop configuration GUI (JavaScript/Electron)
-3. **inavwiki/** - Documentation wiki (Markdown)
-4. **PrivacyLRS/** - Privacy-focused Long Range System (security analysis focus)
+3. **inavwiki/** - Old GitHub wiki (Markdown) — being superseded by inavdocs
+4. **inavdocs/** - New user-facing documentation site (Docusaurus/MDX,
+   `https://inavflight.github.io/`). Fork of `iNavFlight/iNavFlight.github.io`
+   maintained by robotgoat (aka TrailerParkPilot), cloned locally from
+   `robotgoat/inavdocs` (whose default branch is `main`, but that's just
+   robotgoat's own fork naming — **upstream's default branch is `master`**,
+   confirmed 2026-08-21 via `gh repo view`/PR #13's `baseRefName`). Single
+   branch — versioning is directory-based, not branch-based: unversioned
+   `docs/` = unreleased "Next" content (where in-progress work like the
+   DroneCAN feature stack belongs until its release ships),
+   `versioned_docs/version-X.X.X/` = frozen snapshots of past releases,
+   created via `npm run docusaurus docs:version x.y.z` at release time. To
+   contribute: fork `iNavFlight/iNavFlight.github.io` under your own account
+   (robotgoat's fork is their working copy, not writable by others), branch
+   off `master`, edit `docs/`, PR against upstream `master`. Style rules
+   are in the repo's own README (mdx, one sentence per line, absolute image
+   paths under `/img/`, relative page links).
+5. **PrivacyLRS/** - Privacy-focused Long Range System (security analysis focus)
 
 INAV is an open-source flight controller firmware with advanced GPS navigation capabilities for multirotors, fixed-wing aircraft, rovers, and boats.
 

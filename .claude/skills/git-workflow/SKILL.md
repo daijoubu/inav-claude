@@ -155,8 +155,9 @@ remote, prints its reasoning, and creates the branch. Use `--dry-run` to preview
 | inav-configurator | `upstream` | bugfix | `maintenance-9.x` | **NOT** affected by the inav override — configurator's `maintenance-9.x` is fine |
 | inav-configurator | `upstream` | feature | `maintenance-9.x` | Not affected by the inav override |
 | inav-configurator | `upstream` | breaking | `maintenance-10.x` | MSP protocol / settings structure changes |
+| inavdocs | `upstream` | any | `master` | Only one branch — no maintenance branches. Versioning is directory-based, not branch-based: unreleased/"Next" content (e.g. docs for a feature still on `maintenance-10.x`, not yet released) goes in the unversioned `docs/` directory; `versioned_docs/version-X.X.X/` are frozen snapshots, don't edit those for new/unreleased functionality. `upstream` = `iNavFlight/iNavFlight.github.io`, default branch `master` (confirmed via `gh repo view` and PR #13's `baseRefName` 2026-08-21) — fork it under your own account first; the local clone tracks `robotgoat/inavdocs`, which is robotgoat's own working fork (default branch `main` there, just their own naming) and not writable by others |
 
-**NEVER target PRs to master** - it receives merges only (maintenance-9.x → master → maintenance-10.x).
+**NEVER target PRs to master** - it receives merges only (maintenance-9.x → master → maintenance-10.x). This rule is about the *inav firmware* repo specifically — inavdocs's `master` is an ordinary single working branch, PR straight to it there.
 
 ### Manual fallback (only if the script can't be used)
 

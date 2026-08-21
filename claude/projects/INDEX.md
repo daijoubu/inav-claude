@@ -3,7 +3,7 @@
 This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKED).
 
 **Last Updated:** 2026-08-21
-**Active:** 13 | **Backburner:** 16 | **Blocked:** 0
+**Active:** 14 | **Backburner:** 16 | **Blocked:** 0
 
 > **Completed projects:** See [completed/INDEX.md](completed/INDEX.md)
 > **Blocked projects:** See `blocked/` directory
@@ -38,6 +38,32 @@ This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER, BLOCKE
 ---
 
 ## Active Projects
+
+### 📋 docs-dronecan-inavdocs-site
+
+**Status:** TODO | **Type:** Documentation | **Priority:** MEDIUM
+**Created:** 2026-08-21 | **Assignee:** Developer | **Assignment:** 📝 Planned
+
+Contribute DroneCAN documentation to `iNavFlight/iNavFlight.github.io` (new
+Docusaurus docs site, replacing the old wiki). Found the current docs
+already stale independent of our new work — `hardware-overview.mdx` claims
+"INAV does not support any DroneCAN based sensors yet," which is false
+today (battery/GPS DroneCAN support shipped earlier). No branch-based
+versioning on this repo (single `master` branch upstream — confirmed
+2026-08-21; robotgoat's fork just happens to call its own default branch
+`main`), versioning is directory-based via Docusaurus `versioned_docs/` —
+new/unreleased content belongs in unversioned `docs/`. Plan: small
+correctness-fix PR first, then per-feature doc additions timed with each
+DroneCAN firmware PR landing. Checked ahead/behind 2026-08-21: robotgoat's
+fork is fully merged into upstream (0 ahead), only 1 commit behind (a
+same-week direct edit by another maintainer, unrelated to our work).
+
+**Directory:** `active/docs-dronecan-inavdocs-site/`
+**Repository:** inavdocs (local clone tracks `robotgoat/inavdocs` for
+reference; contributing requires forking `iNavFlight/iNavFlight.github.io`
+under our own account) | **Branch:** `master` (see `.claude/skills/git-workflow/SKILL.md`)
+
+---
 
 ### 📋 fix-dronecan-cell-voltage-calculation
 
