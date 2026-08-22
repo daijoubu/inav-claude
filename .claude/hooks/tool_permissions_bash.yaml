@@ -88,7 +88,9 @@ bash_rules:
       # Check if we're in the root inavflight repo (no sub-repo in path)
       # Root repo path should NOT be /path/to/inav, /path/to/inav-configurator, etc.
       # We check if the path contains /(dirname)/ or ends with /(dirname)
-      if echo "$ABS_CWD" | grep -qE "/(inav|inav-configurator|PrivacyLRS|mspapi2|inavwiki)(/|$)"; then
+      # inav[0-9]*/inav-configurator[0-9]* also catches numbered worktrees (inav2, inav3,
+      # inav-configurator2, ...) used for parallel tasks — see claude/locks/README.md.
+      if echo "$ABS_CWD" | grep -qE "/(inav[0-9]*|inav-configurator[0-9]*|PrivacyLRS|mspapi2|inavwiki)(/|$)"; then
         # We're in a sub-repo, deny this push
         echo "deny"
       else
@@ -112,12 +114,54 @@ bash_rules:
     decision: allow
     message: "Push to feature/release branch on origin with -u flag allowed for tracking"
 
+  - name: "Allow git force-with-lease on feature branches (safe force push)"
+    command_pattern: "^git$"
+    argument_pattern: "^(-C\\s+\\S+\\s+)?push.*--force-with-lease.*"
+    category: write
+    decision: allow
+    precondition_script: |
+      # Allow git push --force-with-lease ONLY for non-protected branches
+      # Blocks pushes to: master, main, maintenance-*
+      # Allows pushes to: feature/*, bugfix/*, personal branches, etc.
+      #
+      # Safety: extracts the target branch name from git push arguments
+      # and verifies it's NOT a protected branch before allowing the force-with-lease.
+      # Bare --force (without -with-lease) is still blocked by the "Block git force push" rule below.
+      # Note: the earlier "Block git push to maintenance/master in sub-repos" rule (substring match,
+      # evaluated first) already catches protected-branch pushes regardless of this script's output.
+
+      ARGS="{ARGS}"
+
+      if ! echo "$ARGS" | grep -q -- '--force-with-lease'; then
+        echo "deny"
+        exit 0
+      fi
+
+      cleaned="$ARGS"
+      cleaned=$(echo "$cleaned" | sed 's/^-C[[:space:]]\+[^[:space:]]\+[[:space:]]\+//')
+      cleaned=$(echo "$cleaned" | sed 's/^[[:space:]]*push[[:space:]]\+//')
+      cleaned=$(echo "$cleaned" | sed 's/--[a-zA-Z0-9_-]*\(=[^[:space:]]*\)\?//g')
+
+      tokens=$(echo "$cleaned" | xargs)
+      remote=$(echo "$tokens" | awk '{print $1}')
+      refspec=$(echo "$tokens" | awk '{print $2}')
+
+      target_branch="${refspec:-$remote}"
+      target_branch=$(echo "$target_branch" | cut -d':' -f1)
+
+      if echo "$target_branch" | grep -q '^master$\|^main$\|^maintenance-'; then
+        echo "deny"
+      else
+        echo "allow"
+      fi
+    message: "Force-with-lease allowed for feature branches (NOT master/main/maintenance-*). Use this instead of bare --force for safe rebases."
+
   - name: "Block git force push"
     command_pattern: "^git$"
-    argument_pattern: "^(-C\\s+\\S+\\s+)?push.*force.*"
+    argument_pattern: "^(-C\\s+\\S+\\s+)?push.*(--force(?!-with-lease)|force\\s).*"
     category: write
     decision: deny
-    message: "STOP! IMPORTANT: Do NOT force push! That will break public history!"
+    message: "STOP! IMPORTANT: Do NOT force push with bare --force! That will break public history! Use --force-with-lease for rebased personal branches instead."
 
   - name: "Block branch creation in root inavflight/ repo"
     command_pattern: "^git$"
