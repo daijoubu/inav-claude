@@ -78,7 +78,6 @@ claude/
 │   └── email/           - Email communication
 │       ├── inbox/       - Reports from developer
 │       ├── inbox-archive/ - Archived reports
-│       ├── outbox/      - Draft messages
 │       └── sent/        - Tasks sent to developer
 │
 ├── developer/            - Developer files
@@ -87,7 +86,6 @@ claude/
 │   └── email/           - Email communication
 │       ├── inbox/       - Tasks from manager
 │       ├── inbox-archive/ - Archived assignments
-│       ├── outbox/      - Draft messages
 │       └── sent/        - Reports to manager
 │
 ├── release-manager/      - Release manager files
@@ -96,7 +94,6 @@ claude/
 │   └── email/           - Email communication
 │       ├── inbox/       - Incoming messages
 │       ├── inbox-archive/ - Archived messages
-│       ├── outbox/      - Draft messages
 │       └── sent/        - Outgoing messages
 │
 ├── projects/             - Active project tracking (manager-owned)

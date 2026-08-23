@@ -51,15 +51,19 @@ This document defines how roles communicate with each other in the INAV project.
 claude/{role}/email/
 ├── inbox/           # Incoming messages
 ├── inbox-archive/   # Processed messages
-├── sent/            # Copies of sent messages
-└── outbox/          # Drafts awaiting delivery
+└── sent/            # Copies of sent messages
 ```
 
 ### Sending a Message
 
-1. Create message file in `{your-role}/email/sent/` (or `outbox/` for drafts)
-2. Copy file to `{recipient-role}/email/inbox/`
-3. Recipient processes and archives to `email/inbox-archive/`
+1. Create message file in `{your-role}/email/sent/`
+2. Deliver it atomically and verified:
+   ```bash
+   python3 claude/projects/email_ops.py send {your-role} {recipient-role} {filename}.md
+   ```
+   Never a raw `cp` — see `.claude/agents/email-manager.md`.
+3. Recipient processes and archives via
+   `python3 claude/projects/email_ops.py archive {recipient-role} {filename}.md`
 
 ### File Naming Convention
 
@@ -122,10 +126,9 @@ Types:
 
 ```
 1. Developer hits blocker
-2. Developer creates message in developer/email/outbox/ (draft)
-3. Developer refines message
-4. Developer moves to developer/email/sent/, copies to manager/email/inbox/
-5. Manager reviews and responds
+2. Developer drafts and refines the message directly in developer/email/sent/
+3. Developer delivers via email_ops.py send developer manager <filename>.md
+4. Manager reviews and responds
 ```
 
 ## Best Practices
@@ -135,4 +138,4 @@ Types:
 3. **Include context** - Reference related projects/tasks
 4. **Use templates** - Consistent formatting helps parsing
 5. **Archive promptly** - Keep inboxes clean
-6. **Check outbox** - Don't forget draft messages
+6. **Let the weekly delivery audit run** - `email_ops.py audit-if-due` catches silent delivery failures within a week

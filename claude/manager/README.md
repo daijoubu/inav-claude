@@ -32,7 +32,6 @@ Prompt: "Read my inbox. Current role: manager"
 - `manager/email/inbox/` - Incoming messages
 - `manager/email/inbox-archive/` - Processed messages
 - `manager/email/sent/` - Copies of sent messages
-- `manager/email/outbox/` - Draft messages awaiting delivery
 
 Use the `email-manager` agent for all email operations. See also: `claude/manager/email/README.md`
 
@@ -372,7 +371,7 @@ Use the **email-manager** agent for all email operations:
 - Reading inbox
 - Sending messages
 - Archiving processed items
-- Checking for undelivered outbox messages
+- Running the periodic delivery audit (weekly, self-triggered — see `.claude/agents/email-manager.md`)
 
 ### Statistics Tracking
 
@@ -483,7 +482,7 @@ See `.claude/skills/create-pr/SKILL.md` for complete PR creation workflows.
 # Useful Skills & Agents
 
 ## Email Management
-- **email-manager** agent - Read inbox, send messages, archive items, check outbox
+- **email-manager** agent - Read inbox, send messages, archive items, run the periodic delivery audit
 
 ## Project & Task Management
 - **project_ops.py** - ⚠️ **USE THIS** for all lifecycle operations (complete, cancel, block, backburner, resume, audit)

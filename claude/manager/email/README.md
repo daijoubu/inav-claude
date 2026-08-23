@@ -8,8 +8,7 @@ This directory handles communication between roles (Manager, Developer, Release 
 email/
 ├── inbox/           # Incoming messages (unprocessed)
 ├── inbox-archive/   # Processed messages (for reference)
-├── sent/            # Copies of messages you sent
-└── outbox/          # Drafts awaiting delivery
+└── sent/            # Copies of messages you sent
 ```
 
 ## Handling Incoming Email
@@ -39,7 +38,7 @@ ls -lt claude/manager/email/inbox/ | head
    ```
 4. Archive the email:
    ```bash
-   mv claude/manager/email/inbox/<report>.md claude/manager/email/inbox-archive/
+   python3 claude/projects/email_ops.py archive manager <report>.md
    ```
 
 #### Partial Completion Report
@@ -93,16 +92,21 @@ When processing completion reports, always update:
 ### To Developer
 
 ```bash
-# 1. Create in sent/
-# 2. Copy to developer inbox
-cp claude/manager/email/sent/<message>.md claude/developer/email/inbox/
+# 1. Write message to claude/manager/email/sent/<message>.md
+# 2. Deliver atomically and verified:
+python3 claude/projects/email_ops.py send manager developer <message>.md
 ```
 
 ### To Release Manager
 
 ```bash
-cp claude/manager/email/sent/<message>.md claude/release-manager/email/inbox/
+python3 claude/projects/email_ops.py send manager release-manager <message>.md
 ```
+
+Never use a raw `cp` for this — see `.claude/agents/email-manager.md` for
+why (a hand-chained, unverified copy is what caused completion reports,
+including one with a CRITICAL flight-safety finding, to silently never
+reach an inbox).
 
 ## Message Templates
 

@@ -111,7 +111,7 @@ claude/developer/
 ├── work-in-progress/     # Legacy flat working directory (gitignored)
 ├── reports/              # Analysis reports (gitignored)
 ├── archive/              # Completed/old work (gitignored)
-└── inbox/outbox/sent/    # Email directories (gitignored)
+└── email/                # inbox/ | inbox-archive/ | sent/ (gitignored)
 ```
 
 **Key debugging docs:** `docs/debugging/`
