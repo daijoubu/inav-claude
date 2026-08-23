@@ -1,5 +1,5 @@
 ---
-description: Triage and analyze GitHub issues from iNavFlight/inav repository
+description: Triage and analyze GitHub issues from iNavFlight/inav and iNavFlight/inav-configurator
 triggers:
   - triage issues
   - analyze issues
@@ -12,7 +12,10 @@ triggers:
 
 # GitHub Issue Triage Skill
 
-Systematically analyze and categorize GitHub issues from the iNavFlight/inav repository.
+Systematically analyze and categorize GitHub issues from the iNavFlight/inav and
+iNavFlight/inav-configurator repositories. Category files are shared across both
+repos — issue numbers alone don't disambiguate, so each entry in INDEX.md and the
+category files should note the repo (e.g. `inav #11710` vs `inav-configurator #2701`).
 
 ## File Structure
 
@@ -32,11 +35,22 @@ claude/manager/issue-triage/
 
 ## Quick Commands
 
-### Refresh Issue Cache
+### Fetch Recent Issues Across Both Repos (preferred for periodic triage)
+
+Uses GitHub's Search API to filter by creation date server-side — much cheaper
+than paging through the entire open-issue backlog when you only care about a
+recent window (e.g. "what's new in the last 90 days").
 
 ```bash
 cd claude/manager/issue-triage
+python3 fetch_issues.py --repo inav,inav-configurator --days 90 --refresh
+```
+
+### Refresh Issue Cache (single repo, all open issues)
+
+```bash
 python3 fetch_issues.py --refresh
+python3 fetch_issues.py --repo inav-configurator --refresh
 ```
 
 ### Fetch More Issues
@@ -49,6 +63,7 @@ python3 fetch_issues.py --pages 5 --refresh
 
 ```bash
 python3 fetch_issues.py --issue 11156
+python3 fetch_issues.py --issue 2701 --repo inav-configurator
 ```
 
 ### Search Issues
@@ -63,6 +78,10 @@ python3 fetch_issues.py --search "overflow"
 ```bash
 python3 fetch_issues.py
 ```
+
+`--repo` accepts a comma-separated list; each entry is either shorthand
+(`inav`, `inav-configurator`, expanded to `iNavFlight/<name>`) or a full
+`owner/name`. Default is `inav`.
 
 ## Categories
 
