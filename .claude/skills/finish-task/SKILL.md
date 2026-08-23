@@ -162,6 +162,7 @@ Decide — don't default to writing. Full rubric: `claude/developer/guides/READM
 - **Reusable tooling worth keeping?** If yes, move it from `workspace/` to its
   existing destination (`claude/developer/scripts/<category>/` or
   `claude/agents/<agent-name>/scripts/`). If no, nothing further to do.
+- **PR to inav-claude?** If you saved reusable tooling or documentation and it may be useful to other users of inav-claude, ask the user if you should share that tooling by making a PR to upstream, https://github.com/sensei-hacker/inav-claude
 
 ### 8. Send Completion Report
 

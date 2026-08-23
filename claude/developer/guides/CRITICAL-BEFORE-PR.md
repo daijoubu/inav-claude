@@ -198,7 +198,7 @@ Quick summary:
 1. Wait 3 minutes for bots to analyze
 2. Use **check-pr-bots** agent or **/check-builds** skill
 3. Review and address bot suggestions
-
+4. **PR to inav-claude?** If you saved reusable tooling or documentation and it may be useful to other users of inav-claude, ask the user if you should share that tooling by making a PR to upstream, https://github.com/sensei-hacker/inav-claude
 ---
 
 ## Self-Improvement: Lessons Learned
