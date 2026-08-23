@@ -193,3 +193,15 @@ injections:
     context: |
       Before adding/changing a setting, read
       inav/docs/development/settings/when-to-add-a-setting.md.
+
+  - name: "Editing .github/workflows"
+    tool_name_pattern: "^(Write|Edit)$"
+    tool_input_patterns:
+      file_path: "(^|/)\\.github/workflows/.*\\.ya?ml$"
+    throttle: once_per_session
+    context: |
+      Read claude/developer/guides/github-actions-workflows.md first -
+      several trigger-type gotchas there (workflow_run vs. push branch
+      resolution, dead "!"-only branches: filters, workflow_call's
+      event_name, aggregate workflow_run.conclusion) cost real debugging
+      time last time and aren't obvious from the YAML alone.
