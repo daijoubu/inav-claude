@@ -122,6 +122,17 @@ injections:
       Use `git fetch` + `git merge` instead. See guides/CRITICAL-BEFORE-MERGE.md
       ("MERGE, Not Rebase").
 
+  - name: "gh pr checkout (predicts diffing against local base branch)"
+    command_pattern: "^gh$"
+    argument_pattern: "^pr\\s+checkout\\b"
+    throttle: once_per_session
+    context: |
+      Before diffing this PR against a local base branch (e.g. `git diff
+      base...HEAD`), fetch the real upstream base first (`git fetch upstream
+      <base-branch>`, diff against `upstream/<base-branch>`) - a local mirror
+      branch can be hundreds of commits stale, producing a diff bloated with
+      unrelated files instead of just the PR's actual changes.
+
   - name: "Direct cmake/make instead of inav-builder"
     command_pattern: "^(cmake|make)$"
     throttle: once_per_session

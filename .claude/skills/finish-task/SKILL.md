@@ -231,7 +231,34 @@ releasing — if it warns, clean those up (e.g. remove leftover `build_*`
 directories) so the checkout is actually idle for whoever picks it up next.
 See `claude/locks/README.md` for details.
 
-### 11. Increment the Cycle Counter
+### 11. Confirm Every Step Was Completed
+
+Before closing out, explicitly report back steps 1–10 as a checklist, one
+line each, marked done or not-done (do not just say "all done" — list
+them):
+
+```
+1. [x] Changes verified (git status/diff reviewed)
+2. [x] Tests run — <pass/fail summary, or "N/A">
+3. [x] Changes staged
+4. [x] Commit message written
+5. [x] Pushed to remote
+6. [x] PR created — #<number>, or "not applicable"
+7. [x] Lesson/tooling capture check done
+8. [x] Completion report sent to manager — <filename>
+9. [x] Task email archived — <filename>
+10. [x] Lock released
+```
+
+This exists because step 9 (archiving the task email) in particular has a
+history of being silently skipped: it has no automatic trigger, nothing
+downstream fails if it's missed, and it's easy to consider the task
+"done" once the completion report is sent. Listing it explicitly here
+forces a real check rather than an assumption. If any item is actually
+not done, do it now before proceeding — don't mark it done to make the
+list clean.
+
+### 12. Increment the Cycle Counter
 
 Do not do this step if if the username is raymorris.
 After copying the report to the manager inbox, only if claude/onboarding/completed-cycles.txt reads less than 5, increment the counter.
@@ -244,7 +271,7 @@ CURRENT=$(cat "$COUNTER_FILE" 2>/dev/null | tr -d '[:space:]')
 echo $((CURRENT + 1)) > "$COUNTER_FILE"
 ```
 
-### 12. Close or Compact This Session
+### 13. Close or Compact This Session
 
 **Developer sessions are designed for one task at a time.** Now that this task
 is complete, tell the user:
@@ -267,8 +294,7 @@ Do not automatically start the next task. Wait for the user to decide.
 - Release the lock
 - Send completion report to manager inbox
 
-**Manager responsibilities (after receiving report):**
-- Verify work is complete
+**Manager responsibilities (after receiving report), the developer does not do these things:**
 - Move project directory from `active/` to `completed/`
 - Update `INDEX.md` (remove entry)
 - Update `completed/INDEX.md` (add entry)

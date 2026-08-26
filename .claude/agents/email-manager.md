@@ -140,6 +140,21 @@ byte-identical, and only then removes the `inbox/` original — never use a
 raw `mv` for this step (same rationale as Send Email above: an unverified
 move can silently lose or duplicate a message with no error surfaced).
 
+**"Archive" always means a specific file in `{role}/email/inbox/`** — the
+original message being processed (e.g. a task assignment), not something
+you just sent. If the caller asks you to archive something without naming
+an exact filename (e.g. "archive the task email for this" or "send this
+and archive it"), don't guess blindly, but you don't need to ask every
+time either: the completion report's `**Task:**`/`**Project:**` field (or
+its title) is a legitimate hint — use it to search
+`claude/{role}/email/inbox/` for a matching task-assignment file. If
+exactly one file plausibly matches, archive it. If none match, or more
+than one plausibly matches, don't pick one — list the candidates (or say
+none were found) and ask the caller which filename to archive. Reporting
+an archive as done without having actually resolved and run it against a
+real filename is exactly the "silent partial success" failure class this
+script exists to prevent.
+
 **When to archive:**
 - Task assignments: After work begins
 - Completion reports: After manager reviews and updates INDEX.md
