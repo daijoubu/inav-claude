@@ -69,6 +69,15 @@ claude/.claude/
 # Installation marker (local, per-user)
 claude/.installed
 
+# Local user data — NEVER track these; contents are per-user project data.
+# Per-directory .gitignore files inside each dir also enforce this.
+claude/*/email/
+# Git worktrees (local)
+tmp-worktrees/
+# Recovery/scratch
+claude_bak/
+rebase-diff.txt
+
 # IDE and editor configs
 .idea/
 .vscode/
