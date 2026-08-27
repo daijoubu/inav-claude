@@ -4,7 +4,7 @@
 
 ## Scripts
 
-### `claude/projects/email_ops.py` (the only script — lives there, not here)
+### `claude/agents/email-manager/email_ops.py` (the only script — lives there, not here)
 **Purpose:** Atomic, verified `send` / `archive` / `audit` / `audit-if-due`
 operations for the agent's "Send Email", "Archive Processed Message", and
 "Periodic Delivery Audit" steps. Every write is re-read and hashed against
@@ -12,10 +12,10 @@ its source before the operation can report success.
 
 **Usage:**
 ```bash
-python3 claude/projects/email_ops.py send <sender-role> <recipient-role> <filename>.md
-python3 claude/projects/email_ops.py archive <role> <filename>.md
-python3 claude/projects/email_ops.py audit [--fix]
-python3 claude/projects/email_ops.py audit-if-due [--fix]
+python3 claude/agents/email-manager/email_ops.py send <sender-role> <recipient-role> <filename>.md
+python3 claude/agents/email-manager/email_ops.py archive <role> <filename>.md
+python3 claude/agents/email-manager/email_ops.py audit [--fix]
+python3 claude/agents/email-manager/email_ops.py audit-if-due [--fix]
 ```
 
 Lives in `claude/projects/` (not here) so it can mirror `project_ops.py`'s

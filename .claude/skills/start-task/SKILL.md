@@ -180,8 +180,8 @@ mkdir -p claude/projects/active/<project-name>
 
 ### 2. Create Project Files
 
-- `summary.md` - Project overview, objectives, approach (use template from `claude/projects/README.md`)
-- `todo.md` - Task breakdown (use template from `claude/projects/README.md`)
+- `summary.md` - Project overview, objectives, approach (use template from `claude/manager/projects/README.md`)
+- `todo.md` - Task breakdown (use template from `claude/manager/projects/README.md`)
 
 ### 3. Add to INDEX.md
 

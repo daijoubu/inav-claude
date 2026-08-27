@@ -43,7 +43,7 @@ Use the `email-manager` agent for all email operations. See also: `claude/manage
 3. Use email-manager agent to send task assignment to developer
 4. Wait for completion report (email-manager agent to check inbox)
 5. Use email-manager agent to archive completion report
-6. Run: python3 claude/projects/project_ops.py complete <project-name>
+6. Run: python3 claude/manager/scripts/project_ops.py complete <project-name>
    (atomically moves dir, updates INDEX.md and completed/INDEX.md)
 ```
 
@@ -77,7 +77,7 @@ cp -r claude/projects/active/_template claude/projects/active/<project-name>
 mkdir -p claude/projects/active/<project-name>
 ```
 
-Edit the summary.md and todo.md files. See `claude/projects/README.md` for templates.
+Edit the summary.md and todo.md files. See `claude/manager/projects/README.md` for templates.
 
 **summary.md template:**
 ```markdown
@@ -177,7 +177,7 @@ Prompt: "Read my inbox. Current role: manager"
 
 **After reading a completion report:**
 1. Verify work is complete (check PR status, tests, etc.)
-2. Run: `python3 claude/projects/project_ops.py complete <project-name>`
+2. Run: `python3 claude/manager/scripts/project_ops.py complete <project-name>`
 3. Use email-manager agent to archive report
 
 ### 4. Project Lifecycle Operations — USE project_ops.py
@@ -186,25 +186,25 @@ Prompt: "Read my inbox. Current role: manager"
 
 ```bash
 # Complete a project
-python3 claude/projects/project_ops.py complete <project-name>
+python3 claude/manager/scripts/project_ops.py complete <project-name>
 
 # Cancel a project
-python3 claude/projects/project_ops.py cancel <project-name>
+python3 claude/manager/scripts/project_ops.py cancel <project-name>
 
 # Block a project (active → blocked)
-python3 claude/projects/project_ops.py block <project-name>
+python3 claude/manager/scripts/project_ops.py block <project-name>
 
 # Backburner a project (active → backburner)
-python3 claude/projects/project_ops.py backburner <project-name>
+python3 claude/manager/scripts/project_ops.py backburner <project-name>
 
 # Resume a blocked/backburner project (→ active)
-python3 claude/projects/project_ops.py resume <project-name>
+python3 claude/manager/scripts/project_ops.py resume <project-name>
 
 # Audit for inconsistencies between directories and indexes
-python3 claude/projects/project_ops.py audit
+python3 claude/manager/scripts/project_ops.py audit
 
 # Auto-fix simple audit issues
-python3 claude/projects/project_ops.py audit --fix
+python3 claude/manager/scripts/project_ops.py audit --fix
 ```
 
 **When to block vs backburner vs cancel:**
@@ -411,7 +411,7 @@ mv claude/manager/email/inbox/<report>.md claude/manager/email/inbox-archive/
 
 ### Complete a project
 ```bash
-python3 claude/projects/project_ops.py complete <project-name>
+python3 claude/manager/scripts/project_ops.py complete <project-name>
 ```
 
 ### Search projects

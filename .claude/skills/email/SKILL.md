@@ -73,7 +73,7 @@ Unless you are the email-manager agent, Use the email-manager agent to read and 
 
 You can ask the email-manager to run the delivery audit, which checks
 every role's `sent/` against its recipient's inbox to catch messages that
-never arrived (`python3 claude/projects/email_ops.py audit`):
+never arrived (`python3 claude/agents/email-manager/email_ops.py audit`):
 
 ---
 

@@ -198,7 +198,7 @@ Task tool with subagent_type="email-manager"
 Prompt: "Send completion report to manager. Task: <task name>. Current role: developer"
 
 # Manual (verified, atomic — never use raw cp/mv, see email-manager.md):
-python3 claude/projects/email_ops.py send developer manager <report>.md
+python3 claude/agents/email-manager/email_ops.py send developer manager <report>.md
 ```
 
 **Archive processed assignment:**
@@ -208,7 +208,7 @@ Task tool with subagent_type="email-manager"
 Prompt: "Archive message <filename>. Current role: developer"
 
 # Manual (verified, atomic — never use raw mv, see email-manager.md):
-python3 claude/projects/email_ops.py archive developer <assignment>.md
+python3 claude/agents/email-manager/email_ops.py archive developer <assignment>.md
 ```
 
 ---

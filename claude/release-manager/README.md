@@ -87,8 +87,8 @@ For a typical release:
 - `release-manager/email/sent/` - Copies of sent messages
 
 **Message Flow:**
-- **To Manager:** `python3 claude/projects/email_ops.py send release-manager manager <filename>.md`
-- **To Developer:** `python3 claude/projects/email_ops.py send release-manager developer <filename>.md`
+- **To Manager:** `python3 claude/agents/email-manager/email_ops.py send release-manager manager <filename>.md`
+- **To Developer:** `python3 claude/agents/email-manager/email_ops.py send release-manager developer <filename>.md`
 - **From Manager:** Arrives in `release-manager/email/inbox/` (copied from `manager/email/sent/`)
 - **From Developer:** Arrives in `release-manager/email/inbox/` (copied from `developer/email/sent/`)
 

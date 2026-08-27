@@ -108,7 +108,7 @@ Then read each message file and summarize in a table:
    `claude/{sender-role}/email/sent/{filename}.md` (use the Write tool)
 3. Deliver it atomically and verified:
    ```bash
-   python3 claude/projects/email_ops.py send {sender-role} {recipient-role} {filename}.md
+   python3 claude/agents/email-manager/email_ops.py send {sender-role} {recipient-role} {filename}.md
    ```
    This copies the message into the recipient's `inbox/` and re-reads and
    hashes the copy to confirm it is byte-identical before proceeding. It
@@ -132,7 +132,7 @@ Then read each message file and summarize in a table:
 
 **Command:**
 ```bash
-python3 claude/projects/email_ops.py archive {role} {filename}.md
+python3 claude/agents/email-manager/email_ops.py archive {role} {filename}.md
 ```
 
 This copies the message to `inbox-archive/`, verifies the copy is
@@ -167,7 +167,7 @@ script exists to prevent.
 At the start of **any** invocation (regardless of what the caller asked
 for), run:
 ```bash
-python3 claude/projects/email_ops.py audit-if-due
+python3 claude/agents/email-manager/email_ops.py audit-if-due
 ```
 This is a cheap no-op on 6 days out of 7 — it only does real work if the
 audit flag file (`claude/local-data/email-manager/last-audit-timestamp.txt`)
@@ -186,10 +186,10 @@ everything found:**
 - If the issues are recent (e.g. from the current or last few days): these
   are live, current problems — deliver them now:
   ```bash
-  python3 claude/projects/email_ops.py send {sender-role} {recipient-role} {filename}.md
+  python3 claude/agents/email-manager/email_ops.py send {sender-role} {recipient-role} {filename}.md
   ```
   or re-run the audit itself with `--fix` to do this for every current
-  finding at once: `python3 claude/projects/email_ops.py audit --fix`.
+  finding at once: `python3 claude/agents/email-manager/email_ops.py audit --fix`.
 - If the issues are old (predating the current workflow, or a large
   backlog surfaced by a first-ever/long-overdue audit run): **do not**
   mass-`--fix` these. Blindly redelivering old, possibly already-resolved
