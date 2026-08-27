@@ -72,11 +72,17 @@ Commands:
         records the run time in the audit flag file (see audit-if-due).
         For every message in every role's sent/, parses its "**To:**"
         header and confirms a byte-identical copy exists in that
-        recipient's inbox/ or inbox-archive/. Reports any sent message
-        with no matching delivery anywhere. With --fix, attempts to
-        redeliver each one via the same verified `send` path (safe:
-        send() is idempotent) and reports what got fixed vs. what still
-        needs manual attention (e.g. an unparseable/unknown recipient).
+        recipient's inbox/ or inbox-archive/. A message whose only match
+        is a NEAR copy (simhash hamming distance <= NEAR_MATCH_MAX_HAMMING
+        — i.e. the recipient's copy was slightly modified after send, e.g.
+        archive stamp, header edit, revision update) is presumed delivered
+        and reported separately, not flagged as an issue. Only messages
+        with no copy at all (exact or near) are reported as undelivered.
+        With --fix, attempts to redeliver each truly-missing message via
+        the same verified `send` path (safe: send() is idempotent) and
+        reports what got fixed vs. what still needs manual attention (e.g.
+        an unparseable/unknown recipient). Near-matches are never
+        re-delivered — they are presumed already received.
 
     audit-if-due [--fix]
         Runs `audit` only if the audit flag file
@@ -92,7 +98,16 @@ import sys
 from datetime import datetime, timedelta
 from pathlib import Path
 
+from simhash import hamming, simhash
+
 ROLES = ["manager", "developer", "release-manager", "security-analyst"]
+
+# Near-match tolerance for the delivery audit. A sent message is treated as
+# delivered (not flagged) if a copy in the recipient's email tree differs
+# only by at most NEAR_MATCH_MAX_HAMMING bits in its 64-bit simhash — i.e.
+# the recipient's copy was slightly modified after send (archive stamp,
+# header edit, revision update, whitespace). Exact hash matches always win.
+NEAR_MATCH_MAX_HAMMING = 6
 
 # How role names appear in a message's "**To:**"/"**From:**" header text,
 # mapped to the lowercase-hyphenated directory slug used in file paths.
@@ -302,25 +317,35 @@ def _write_last_audit(when: datetime) -> None:
     AUDIT_FLAG_PATH.write_text(when.isoformat() + "\n")
 
 
-def _delivered_to(recipient: str, msg_hash: str) -> bool:
-    """Whether a byte-identical copy of the message already exists
-    anywhere in the recipient's email/ tree. Searched recursively (not
-    just inbox/inbox-archive) because some roles still carry mail in
-    legacy folder names (archive/, outbox-archive/) predating the current
-    inbox/inbox-archive convention — a fixed folder list previously missed
-    those and produced false "undelivered" positives on old mail.
+def _build_recipient_index() -> dict[str, list]:
+    """One pass over every role's email tree; returns role ->
+    list of (path, sha256, simhash) for each .md file found (inbox/,
+    inbox-archive/, and legacy archive/ + outbox-archive/ folders — a fixed
+    folder list previously missed those and produced false "undelivered"
+    positives on old mail). Built once per audit run so both the exact-hash
+    and near-match checks are cheap lookups.
     """
-    recipient_email_dir = CLAUDE_DIR / recipient / "email"
-    if not recipient_email_dir.is_dir():
-        return False
-    return any(_sha256(p) == msg_hash for p in recipient_email_dir.rglob("*.md"))
+    index: dict[str, list] = {}
+    for role in ROLES:
+        entries = []
+        email_dir = CLAUDE_DIR / role / "email"
+        if email_dir.is_dir():
+            for p in email_dir.rglob("*.md"):
+                data = p.read_bytes()
+                entries.append((p, hashlib.sha256(data).hexdigest(),
+                                simhash(data.decode(errors="replace"))))
+        index[role] = entries
+    return index
 
 
 def cmd_audit(fix: bool) -> int:
     issues: list[str] = []
     fixed: list[str] = []
+    near_matches: list[str] = []
     skipped_no_recipient = 0
     checked = 0
+
+    recipient_index = _build_recipient_index()
 
     for sender in ROLES:
         sent_dir = _email_dir(sender, "sent")
@@ -334,12 +359,32 @@ def cmd_audit(fix: bool) -> int:
                 continue
 
             msg_hash = _sha256(msg)
+            msg_simhash = simhash(text)
             for recipient in recipients:
                 if recipient == sender:
                     continue  # self-addressed (e.g. a note-to-self) — no cross-delivery expected
 
                 checked += 1
-                if _delivered_to(recipient, msg_hash):
+                entries = recipient_index.get(recipient, [])
+
+                # 1) Exact match: a byte-identical copy exists somewhere in
+                #    the recipient's tree → delivered.
+                if any(h == msg_hash for _, h, _ in entries):
+                    continue
+
+                # 2) Near match: a copy exists that differs only slightly
+                #    (≤ NEAR_MATCH_MAX_HAMMING simhash bits) — recipient's
+                #    copy was modified after send (archive stamp, header
+                #    edit, revision update, whitespace). Presume delivered;
+                #    report but don't flag, don't re-deliver.
+                near = [p for p, _, s in entries
+                        if hamming(msg_simhash, s) <= NEAR_MATCH_MAX_HAMMING]
+                if near:
+                    near_matches.append(
+                        f"{msg.relative_to(REPO_ROOT)}: sent by {sender}, addressed to {recipient}, "
+                        f"near-match (hamming ≤ {NEAR_MATCH_MAX_HAMMING}) in {recipient}'s tree: "
+                        + ", ".join(str(p.relative_to(REPO_ROOT)) for p in near[:3])
+                    )
                     continue
 
                 description = (
@@ -357,6 +402,10 @@ def cmd_audit(fix: bool) -> int:
 
     print(f"## Delivery audit: {checked} addressed messages checked "
           f"({skipped_no_recipient} skipped, no recipient header)")
+    if near_matches:
+        print(f"\n## Near-matches (presumed delivered, hamming ≤ {NEAR_MATCH_MAX_HAMMING}): {len(near_matches)}")
+        for item in near_matches:
+            print(f"  {item}")
     if fixed:
         print(f"\n## Fixed: {len(fixed)}")
         for item in fixed:

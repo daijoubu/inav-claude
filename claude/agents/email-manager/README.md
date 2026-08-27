@@ -4,11 +4,78 @@
 
 ## Scripts
 
-### `claude/agents/email-manager/email_ops.py` (the only script — lives there, not here)
+### `claude/agents/email-manager/simhash.py` — shared near-match implementation
+**Purpose:** Single source of truth for the 64-bit simhash + hamming-distance
+helpers used by both `email_ops.py audit` (routine delivery audit) and
+`scripts/near_match_audit.py` (investigation tool), so the two always agree
+on what counts as a near-match. Stdlib only.
+
+**Created:** 2026-08-26, with the near-match audit enhancement
+(`undelivered-email-audit-2026-08-26` project).
+
+### `claude/agents/email-manager/scripts/sync_sent_from_received.py` — resolve verified near-match pairs
+**Purpose:** Copies the recipient's received copy over the sender's stale
+`sent/` copy for a list of near-match pairs, making them byte-identical so
+the routine audit stops flagging them. Direction is received → sent because
+these pairs arise when the sender edited the message after send — the
+recipient's copy is what was actually seen/acted on. Pre-overwrite `sent/`
+copies are backed up (email dirs are gitignored, so this preserves them).
+
+**Usage:**
+```bash
+python3 claude/agents/email-manager/scripts/sync_sent_from_received.py <pairs-file>
+# pairs-file lines: "<sent-path>|<received-path>"
+```
+
+**Created:** 2026-08-26, used to resolve the 8 verified near-match pairs of
+the undelivered-email audit (backups in
+`claude/projects/active/undelivered-email-audit-2026-08-26/sent-backup-2026-08-26/`).
+
+### `claude/agents/email-manager/scripts/near_match_audit.py` — near-match & reverse-direction audit
+**Purpose:** Companion to `email_ops.py audit` for the Phase-0 sanity-check
+of undelivered-mail findings (`undelivered-email-audit-2026-08-26` project).
+`email_ops.py audit` matches by **exact SHA-256** — if a delivered copy was
+slightly modified (archive stamp, header edit, revision update, whitespace/
+line-ending change), it's flagged "undelivered" even though it WAS received.
+This tool finds those hash-mismatch pairs and also answers the reverse
+question: which received emails have no matching sent copy anywhere.
+
+**What it reports:**
+- **A. Sent w/o received, WITH near-match copy** — likely delivered-then-modified pairs (false positives of the exact audit)
+- **B. Sent w/o received, NO near-match** — stronger candidates for genuinely never-received
+- **C. REVERSE: received files with no matching sent copy anywhere** (incl. legacy `archive/`, `outbox-archive/`)
+
+**Method:** dependency-free 64-bit **simhash** (SHA-256 token hashing) +
+hamming distance (default ≤ 6) over whitespace-normalized lowercase text;
+byte-hash lookups cached so it runs in seconds on the full tree.
+
+**Usage:**
+```bash
+python3 claude/agents/email-manager/scripts/near_match_audit.py [--min-sim 6] [--limit N] [--no-reverse]
+```
+
+**Sample result (2026-08-26 run):** 8 of the 53 flagged emails had near-match
+copies in the recipient's tree (e.g. `2026-02-14-0230-completed-discord-qa-kb-stage2.md`
+byte-identical but for whitespace → pure false positive; `2026-08-26-1545-task-review-pr11785-terrain-agl-ram.md`
+delivered as an older revision, since revised in `sent/`). Full output saved
+to `claude/projects/active/undelivered-email-audit-2026-08-26/near-match-audit-output.txt`.
+
+**Created:** 2026-08-26, for Phase 0 of the undelivered-email audit.
+
+### `claude/agents/email-manager/email_ops.py` (lives there, not here)
 **Purpose:** Atomic, verified `send` / `archive` / `audit` / `audit-if-due`
 operations for the agent's "Send Email", "Archive Processed Message", and
 "Periodic Delivery Audit" steps. Every write is re-read and hashed against
 its source before the operation can report success.
+
+**Near-match tolerance (2026-08-26):** `audit` now treats a message as
+delivered — reporting it under `## Near-matches (presumed delivered,
+hamming ≤ 6)` instead of flagging it — when no byte-identical copy exists
+but a copy in the recipient's tree is within `NEAR_MATCH_MAX_HAMMING` (6)
+simhash bits. This covers delivered-then-modified copies (archive stamp,
+header edit, revision update, whitespace) without re-delivering them.
+Imports simhash from `simhash.py` in the same directory (runs correctly
+when invoked by path, e.g. `python3 claude/agents/email-manager/email_ops.py`).
 
 **Usage:**
 ```bash
