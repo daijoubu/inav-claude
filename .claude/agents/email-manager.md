@@ -170,7 +170,7 @@ for), run:
 python3 claude/projects/email_ops.py audit-if-due
 ```
 This is a cheap no-op on 6 days out of 7 — it only does real work if the
-audit flag file (`claude/agents/email-manager/data/last-audit-timestamp.txt`)
+audit flag file (`claude/local-data/email-manager/last-audit-timestamp.txt`)
 is missing or more than 7 days old. When it's not due, it just prints when
 the audit last ran; nothing further to do.
 

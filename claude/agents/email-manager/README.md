@@ -56,7 +56,7 @@ and depends on nothing having been staged anywhere first.
 ## Weekly audit flag
 
 `audit-if-due` only runs the actual audit if
-`claude/agents/email-manager/data/last-audit-timestamp.txt` is missing or
+`claude/local-data/email-manager/last-audit-timestamp.txt` is missing or
 its recorded timestamp is more than 7 days old (`AUDIT_INTERVAL_DAYS` in
 `email_ops.py`); otherwise it's a no-op that reports when the audit last
 ran. The timestamp lives in the file's *content* (not its filesystem

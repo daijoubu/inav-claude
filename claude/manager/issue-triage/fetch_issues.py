@@ -29,8 +29,10 @@ from pathlib import Path
 
 DEFAULT_REPO = "iNavFlight/inav"
 SCRIPT_DIR = Path(__file__).parent
-ISSUES_CACHE = SCRIPT_DIR / "issues.json"
-TRIAGE_FILE = SCRIPT_DIR / "triage.md"
+# Local data lives outside the repo tree (gitignored); cache files go there.
+LOCAL_DATA_DIR = SCRIPT_DIR.parents[2] / "claude" / "local-data" / "issue-triage"
+ISSUES_CACHE = LOCAL_DATA_DIR / "issues.json"
+TRIAGE_FILE = LOCAL_DATA_DIR / "triage.md"
 
 def expand_repo(name):
     """Expand shorthand repo names to owner/name form."""
@@ -151,6 +153,7 @@ def view_issue(issue_number, repo=DEFAULT_REPO):
 
 def save_issues(issues):
     """Save issues to cache file."""
+    LOCAL_DATA_DIR.mkdir(parents=True, exist_ok=True)
     cache_data = {
         'fetched_at': datetime.now().isoformat(),
         'count': len(issues),

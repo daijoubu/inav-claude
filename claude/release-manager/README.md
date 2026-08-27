@@ -160,7 +160,7 @@ its own, flag it explicitly as a candidate for that track rather than
 silently folding it into 10.0 planning — that's a separate (faster,
 narrower) release decision.
 
-See `claude/manager/10.0-rc1-priorities.md` for the 10.0 RC1 priority list
+See `claude/local-data/manager/10.0-rc1-priorities.md` for the 10.0 RC1 priority list
 this policy affects.
 
 ### Creating Maintenance Branches
