@@ -144,25 +144,19 @@ WHAT THIS SCRIPT DOES NOT MODEL (documented limitations, not bugs)
   bucket entirely (and therefore off DMA) even though the mixer's live
   motor count would otherwise have pulled the first channel in. Without
   --timer-output-mode, default is OUTPUT_MODE_AUTO for every timer (no
-  override), matching a freshly flashed board. IMPORTANT history: prior to
-  the fix-pwm-motor-double-counting fix (2026-08-17, release/9.1), pass 1 of
-  pwmEnsureEnoughtMotors() had NO guard (unlike pass 2's explicit
-  `!TIM_IS_MOTOR_ONLY(...)` check) against re-visiting a sibling on the same
-  physical timer that an earlier pwmClaimTimer() broadcast had already
-  promoted -- timerHardwareOverride() runs INSIDE pass 1, per-entry, lazily
-  as the loop reaches each index, so the first channel of a timer forced to
-  OUTPUT_MODE_MOTORS (or a target.c-declared motor-only group of 2+ channels)
-  would count itself AND its siblings via the claim's return value, and then
-  each sibling would independently re-satisfy TIM_IS_MOTOR_ONLY on its own
-  turn later in the same pass and get counted again -- an n-channel group
-  inflated motorOnlyOutputs by 2n-1 instead of n, which could silently demote
-  a LATER (in declaration order) unrelated AUTO output from MOTOR to SERVO.
-  The fix adds a per-physical-timer `timerCounted[]` dedup guard to pass 1
-  (mirrored here as `counted_timers`, see pwm_ensure_enough_motors()) so each
-  physical timer's motor-only group is only ever counted once, regardless of
-  how many of its channels are compile-time-declared vs. override-forced.
-  This script now models the FIXED algorithm unconditionally -- there is no
-  flag to reproduce the old buggy counting; see git history if you need it.
+  override), matching a freshly flashed board. Pass 1 of
+  pwmEnsureEnoughtMotors() counts each physical timer's motor-only group
+  exactly once: a per-physical-timer `timerCounted[]` dedup guard
+  (mirrored here as `counted_timers`, see pwm_ensure_enough_motors())
+  keeps a sibling that an earlier pwmClaimTimer() broadcast already
+  promoted from being re-counted when the loop later reaches its own
+  index, and after the claim sync the whole group shares one role, so the
+  group contributes its TRUE size -- every non-conflicted motor-only pad
+  on the timer -- not "1 + pads changed by the claim" (which would
+  undercount an already-motor-only group to 1) and not one per sibling
+  turn (which would overcount to 2n-1). This script models this algorithm
+  unconditionally -- there is no flag to reproduce older behavior; see
+  git history if you need it.
 - DSHOT vs plain PWM/Oneshot/Multishot motor protocol is a runtime
   motor_pwm_protocol CLI setting, not a target.c/target.h fact. This script
   defaults to assuming DSHOT (by far the common case, and the case the
@@ -239,10 +233,9 @@ Options:
                      `tim` token used in this target's DEF_TIM(...) entries
                      (e.g. TIM3, TIM8) -- every entry on that physical timer
                      is affected identically, matching pwmClaimTimer()'s
-                     force-sync behavior. See the "not modeled" section
-                     above for the pass-1 double-counting caveat this
-                     interacts with when MODE=MOTORS on a multi-channel
-                     timer.
+                     force-sync behavior, and the timer's whole motor-only
+                     group is counted once at its true size (see pass-1
+                     description above).
   --verbose          show the full per-output table even in --sweep mode
 """
 import argparse
@@ -778,8 +771,18 @@ def pwm_ensure_enough_motors(entries, motor_count, adc_pins, led_strip_active,
             continue
         if is_motor_only(e.flags) and e.tim not in counted_timers:
             counted_timers.add(e.tim)
-            motor_only_outputs += 1
-            motor_only_outputs += pwm_claim_timer(entries, e.tim, e.flags)
+            pwm_claim_timer(entries, e.tim, e.flags)
+            # Count every non-conflicted pad on this physical timer after the
+            # claim sync: each one now carries the same motor-only flags, so the
+            # group contributes its TRUE size n. Counting "1 + claim changes"
+            # would undercount an all-motor-only group (the claim changes
+            # nothing there) to 1 instead of n, which then over-promotes AUTO
+            # outputs in pass 2 and silently removes servo-capable outputs.
+            for s in entries:
+                if (s.tim == e.tim
+                        and not check_pwm_timer_conflicts(s, entries, adc_pins, led_strip_active)
+                        and is_motor_only(s.flags)):
+                    motor_only_outputs += 1
 
     for e in entries:
         if check_pwm_timer_conflicts(e, entries, adc_pins, led_strip_active):
@@ -1582,6 +1585,76 @@ timerHardware_t timerHardware[] = {
     check("dedup fix control (no override): motorCount=3 gives B1 as "
           "MOTOR+driven, same as the MOTORS-override case above",
           rows3n["B1"]["bucket"] == "MOTOR" and rows3n["B1"]["driven"])
+
+    # --- Reference point 4b: undercount regression (all-motor-only group).
+    # The timerCounted[] dedup guard must NOT turn an n-pad group that is
+    # ALREADY motor-only at pass-1 entry into a count of 1: pwmClaimTimer()
+    # returns 0 when nothing changed, so "1 + claim changes" undercounts the
+    # group to 1, pass 2 then promotes the AUTO output at a motorCount the
+    # user never asked for, claiming the whole timer as motor-only and
+    # silently removing servo capability. The corrected pass 1 counts every
+    # non-conflicted motor-only pad on the timer after the claim sync.
+    SYNTHETIC_ALL_MOTOR_ONLY_TARGET_C = """
+timerHardware_t timerHardware[] = {
+    DEF_TIM(TIM_A,  CH1, PA1,  TIM_USE_MOTOR,            1, 0), // A1
+    DEF_TIM(TIM_A,  CH2, PA2,  TIM_USE_MOTOR,            1, 0), // A2
+    DEF_TIM(TIM_B,  CH1, PA3,  TIM_USE_OUTPUT_AUTO,      1, 0), // B1
+};
+"""
+    synth_all_motor = parse_target_c(SYNTHETIC_ALL_MOTOR_ONLY_TARGET_C)
+
+    r_am2 = simulate(synth_all_motor, motor_count=2, servo_count=None,
+                     adc_pins=set(), led_strip_active=False,
+                     dma_resolver=synth_resolver, dshot=False)
+    rows_am2 = {row["entry"].label: row for row in r_am2.rows}
+    check("undercount fix, all-motor-only group, motorCount=2: A1 and A2 "
+          "both resolve to driven MOTOR (the n=2 group counts as 2, not 1)",
+          rows_am2["A1"]["bucket"] == "MOTOR" and rows_am2["A1"]["driven"] and
+          rows_am2["A2"]["bucket"] == "MOTOR" and rows_am2["A2"]["driven"])
+    check("undercount fix, all-motor-only group, motorCount=2: B1 stays a "
+          "driven SERVO (NOT stolen into a dead MOTOR by the undercount -- "
+          "this is the regression the fix removes)",
+          rows_am2["B1"]["bucket"] == "SERVO" and rows_am2["B1"]["driven"])
+
+    r_am3 = simulate(synth_all_motor, motor_count=3, servo_count=None,
+                     adc_pins=set(), led_strip_active=False,
+                     dma_resolver=synth_resolver, dshot=False)
+    rows_am3 = {row["entry"].label: row for row in r_am3.rows}
+    check("undercount fix, all-motor-only group, motorCount=3: B1 IS "
+          "promoted to driven MOTOR only when the user actually asks for 3",
+          rows_am3["B1"]["bucket"] == "MOTOR" and rows_am3["B1"]["driven"])
+
+    # --- Reference point 4c: mixed group (1 pad declared motor-only + 1 AUTO
+    # sibling on the same timer) still counts exactly n -- guards against both
+    # the original 2n-1 overcount and any overcount re-introduced by the
+    # corrected pass 1.
+    SYNTHETIC_MIXED_TARGET_C = """
+timerHardware_t timerHardware[] = {
+    DEF_TIM(TIM_A,  CH1, PA1,  TIM_USE_MOTOR,            1, 0), // A1
+    DEF_TIM(TIM_A,  CH2, PA2,  TIM_USE_OUTPUT_AUTO,      1, 0), // A2
+    DEF_TIM(TIM_B,  CH1, PA3,  TIM_USE_OUTPUT_AUTO,      1, 0), // B1
+};
+"""
+    synth_mixed = parse_target_c(SYNTHETIC_MIXED_TARGET_C)
+
+    r_mx2 = simulate(synth_mixed, motor_count=2, servo_count=None,
+                     adc_pins=set(), led_strip_active=False,
+                     dma_resolver=synth_resolver, dshot=False)
+    rows_mx2 = {row["entry"].label: row for row in r_mx2.rows}
+    check("mixed group, motorCount=2: A1 and A2 are driven MOTOR (group "
+          "counts as 2, not 2n-1=3), B1 stays SERVO",
+          rows_mx2["A1"]["bucket"] == "MOTOR" and rows_mx2["A1"]["driven"] and
+          rows_mx2["A2"]["bucket"] == "MOTOR" and rows_mx2["A2"]["driven"] and
+          rows_mx2["B1"]["bucket"] == "SERVO")
+
+    r_mx3 = simulate(synth_mixed, motor_count=3, servo_count=None,
+                     adc_pins=set(), led_strip_active=False,
+                     dma_resolver=synth_resolver, dshot=False)
+    rows_mx3 = {row["entry"].label: row for row in r_mx3.rows}
+    check("mixed group, motorCount=3: B1 promoted to driven MOTOR (group "
+          "counted exactly 2, so pass 2 promotes at mc=3 -- the 2n-1 "
+          "overcount would have left B1 SERVO here)",
+          rows_mx3["B1"]["bucket"] == "MOTOR" and rows_mx3["B1"]["driven"])
 
     # --- Reference point 5: DAKEFPVF405WING LED-preserving multi-motor
     # config -- TIM3 forced to OUTPUT_MODE_SERVOS protects BOTH S2 and S3
