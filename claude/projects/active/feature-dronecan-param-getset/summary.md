@@ -1,6 +1,6 @@
 # Project: DroneCAN Node Parameter Get/Set
 
-**Status:** 🚫 BLOCKED — was stale at 📋 TODO; code complete, zero CRITICAL/HIGH findings, PR #11683 open in draft, stacked on unmerged #11607, no dev work pending until it merges (user reviewing before dropping draft). Reclassified from IN PROGRESS 2026-07-07.
+**Status:** 🚧 IN PROGRESS — firmware merged (PR #11683, iNavFlight/inav, merged 2026-08-28 into `maintenance-10.x`; #11607 base merged 2026-08-21). Configurator UI PR #2671 (iNavFlight/inav-configurator, "DroneCAN node configurator tab — GetNodeInfo, GetSet, ExecuteOpcode, RestartNode") is open, not draft, mergeable, all 8 CI checks green, no review decision yet as of 2026-08-28 — project stays open until #2671 merges. Reclassified from IN PROGRESS 2026-07-07, unblocked and firmware-complete 2026-08-28.
 **Priority:** MEDIUM-HIGH
 **Type:** Feature
 **Created:** 2026-06-02

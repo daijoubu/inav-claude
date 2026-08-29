@@ -119,13 +119,27 @@ Payload in: none (or optionally node_id for validation)
 build on top of it — confirmed via `git merge-base` 2026-08-21). Rebase
 this one first so the others have a clean branch to rebase onto in turn.
 
-- [ ] Rebase `feature/dronecan-param-getset` onto `upstream/maintenance-10.x`
-- [ ] Force-push, confirm PR #11683 diff is now clean (only this branch's
+- [x] Rebase `feature/dronecan-param-getset` onto `upstream/maintenance-10.x`
+- [x] Force-push, confirm PR #11683 diff is now clean (only this branch's
       own commits vs. `maintenance-10.x`)
-- [ ] Full build matrix (F4/F7/H7/AT32/SITL) clean post-rebase
-- [ ] Notify manager once done — `feature-dronecan-dna-server` and
+- [x] Full build matrix (F4/F7/H7/AT32/SITL) clean post-rebase
+- [x] Notify manager once done — `feature-dronecan-dna-server` and
       `review-dronecan-gps-node-health` are both waiting on this rebase
       landing before they can rebase in turn
+
+## Firmware PR #11683 — MERGED 2026-08-28
+
+Merged into `maintenance-10.x` (24 files, +3173/-861). Covers Phases 1-5
+(pending slot, request sender, accept filter, response handler, MSP
+commands) plus GetNodeInfo/ExecuteOpcode/RestartNode via the async slot.
+
+## Configurator PR #2671 — OPEN, awaiting review/merge
+
+`iNavFlight/inav-configurator#2671`, base `maintenance-10.x`, not draft,
+mergeable, all 8 CI checks green, no review decision yet as of 2026-08-28.
+Covers Phases 6-7 (MSPHelper.js encode/decode, dronecan.js parameter
+list/edit UI). Project stays open until this merges — do not mark
+Phase 8 build/test criteria complete until then.
 
 ## Completion
 

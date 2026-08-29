@@ -430,8 +430,62 @@ def run_tests(port: str, baud: int = 115200) -> bool:
 
     print()
 
-    # --- Test 6: CLI Battery Source and CAN Config ---
-    print("--- Test 6: CLI Interrogation - Battery Source and CAN Config ---")
+    # --- Test 6: Continuous Battery Voltage Stability ---
+    print("--- Test 6: Continuous Battery Voltage Sampling (5 samples) ---")
+
+    try:
+        voltages = []
+        for i in range(5):
+            req = build_msp1(MSP_ANALOG)
+            resp = send_and_receive(ser, req)
+            payload = parse_msp1_response(resp, MSP_ANALOG)
+            if payload and len(payload) >= 1:
+                vbat_v = payload[0] / 10.0
+                voltages.append(vbat_v)
+                print(f"    Sample {i+1}: {vbat_v:.1f}V")
+            time.sleep(0.5)
+
+        if len(voltages) >= 3:
+            v_min = min(voltages)
+            v_max = max(voltages)
+            v_avg = sum(voltages) / len(voltages)
+            v_range = v_max - v_min
+
+            print_result("Samples collected", PASS, f"{len(voltages)}/5")
+            print_result("Voltage average", PASS if v_avg > 0 else WARN, f"{v_avg:.2f}V")
+            print_result("Voltage range", PASS if v_range < 1.0 else WARN,
+                        f"{v_range:.2f}V (min={v_min:.1f} max={v_max:.1f})")
+
+            if v_avg > 0 and v_range < 1.0:
+                print_result("Voltage stability", PASS, "Stable readings - consistent data source")
+                results['stability'] = PASS
+            elif v_avg == 0:
+                print_result("Voltage stability", WARN, "All readings 0V - no battery data received")
+                results['stability'] = WARN
+            else:
+                print_result("Voltage stability", WARN, f"Readings vary by {v_range:.2f}V")
+                results['stability'] = WARN
+        else:
+            print_result("Voltage sampling", FAIL, "Insufficient samples")
+            results['stability'] = FAIL
+
+    except Exception as e:
+        print_result("Continuous sampling", FAIL, str(e))
+        results['stability'] = FAIL
+
+    # Done with MSP polling on this handle -- close before the CLI test opens
+    # its own handle on the same port, so the two never fight over it.
+    ser.close()
+
+    print()
+
+    # --- Test 7: CLI Battery Source and CAN Config ---
+    # Runs LAST and reads via its own serial handle: entering CLI mode takes
+    # the port out of MSP-framing mode, and per project rule we never send
+    # 'exit' to leave CLI (it reboots the FC) -- we just close the port
+    # instead. That means the FC may still be sitting in CLI mode when this
+    # script exits, so nothing after this point may assume MSP still works.
+    print("--- Test 7: CLI Interrogation - Battery Source and CAN Config ---")
 
     cli_results = {}
     try:
@@ -490,60 +544,12 @@ def run_tests(port: str, baud: int = 115200) -> bool:
             print_result("CAN feature check", WARN,
                         "No explicit CAN feature found in output (may not be needed for DroneCAN battery)")
 
-        # Exit CLI
-        cli_ser.write(b'\rexit\r\n')
-        time.sleep(0.5)
+        # Leave CLI mode WITHOUT sending 'exit' -- that command reboots the FC.
+        # Just close the port; this is the last test in the script.
         cli_ser.close()
 
     except Exception as e:
         print_result("CLI interrogation", WARN, f"CLI query failed: {e}")
-
-    print()
-
-    # --- Test 7: Continuous Battery Voltage Stability ---
-    print("--- Test 7: Continuous Battery Voltage Sampling (5 samples) ---")
-
-    try:
-        voltages = []
-        for i in range(5):
-            req = build_msp1(MSP_ANALOG)
-            resp = send_and_receive(ser, req)
-            payload = parse_msp1_response(resp, MSP_ANALOG)
-            if payload and len(payload) >= 1:
-                vbat_v = payload[0] / 10.0
-                voltages.append(vbat_v)
-                print(f"    Sample {i+1}: {vbat_v:.1f}V")
-            time.sleep(0.5)
-
-        if len(voltages) >= 3:
-            v_min = min(voltages)
-            v_max = max(voltages)
-            v_avg = sum(voltages) / len(voltages)
-            v_range = v_max - v_min
-
-            print_result("Samples collected", PASS, f"{len(voltages)}/5")
-            print_result("Voltage average", PASS if v_avg > 0 else WARN, f"{v_avg:.2f}V")
-            print_result("Voltage range", PASS if v_range < 1.0 else WARN,
-                        f"{v_range:.2f}V (min={v_min:.1f} max={v_max:.1f})")
-
-            if v_avg > 0 and v_range < 1.0:
-                print_result("Voltage stability", PASS, "Stable readings - consistent data source")
-                results['stability'] = PASS
-            elif v_avg == 0:
-                print_result("Voltage stability", WARN, "All readings 0V - no battery data received")
-                results['stability'] = WARN
-            else:
-                print_result("Voltage stability", WARN, f"Readings vary by {v_range:.2f}V")
-                results['stability'] = WARN
-        else:
-            print_result("Voltage sampling", FAIL, "Insufficient samples")
-            results['stability'] = FAIL
-
-    except Exception as e:
-        print_result("Continuous sampling", FAIL, str(e))
-        results['stability'] = FAIL
-
-    ser.close()
 
     # --- Summary ---
     print()
@@ -557,7 +563,7 @@ def run_tests(port: str, baud: int = 115200) -> bool:
         'battery_data':  'Test 3: Battery Data (MSP_ANALOG)',
         'full_battery':  'Test 4: Full Battery Data (MSP2_INAV_ANALOG)',
         'errors':        'Test 5: CAN/Hardware Error Counters',
-        'stability':     'Test 7: Voltage Stability',
+        'stability':     'Test 6: Voltage Stability',
     }
 
     overall_pass = True
