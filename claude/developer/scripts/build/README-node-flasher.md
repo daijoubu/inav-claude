@@ -22,7 +22,7 @@ nvm install node
 ### 2. Install Dependencies
 
 ```bash
-cd /home/raymorris/Documents/planes/inavflight/claude/developer/scripts/build
+cd $INAV_CLAUDE_ROOT/claude/developer/scripts/build
 npm install
 ```
 

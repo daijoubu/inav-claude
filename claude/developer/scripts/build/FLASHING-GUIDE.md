@@ -4,7 +4,7 @@
 
 **Primary scripts are located at:**
 ```
-/home/raymorris/Documents/planes/inavflight/claude/developer/scripts/build/
+./claude/developer/scripts/build/
 ```
 
 ### Recommended: flash-dfu-node.js (ALWAYS use for production flashing)
@@ -13,7 +13,7 @@
 
 **Usage:**
 ```bash
-node /home/raymorris/Documents/planes/inavflight/claude/developer/scripts/build/flash-dfu-node.js <firmware.hex>
+node ./claude/developer/scripts/build/flash-dfu-node.js <firmware.hex>
 ```
 
 **Features:**
@@ -41,7 +41,7 @@ node /home/raymorris/Documents/planes/inavflight/claude/developer/scripts/build/
 
 **Usage:**
 ```bash
-python3 /home/raymorris/Documents/planes/inavflight/claude/developer/scripts/build/flash-dfu-preserve-settings.py <firmware.hex>
+python3 ./claude/developer/scripts/build/flash-dfu-preserve-settings.py <firmware.hex>
 ```
 
 **Features:**
@@ -84,7 +84,7 @@ Found DFU: [0483:df11] ... @Internal Flash ...
 ### 3. Flash firmware
 
 ```bash
-node /home/raymorris/Documents/planes/inavflight/claude/developer/scripts/build/flash-dfu-node.js \
+node ./claude/developer/scripts/build/flash-dfu-node.js \
   /path/to/inav_9.1.0_DAKEFPVF405.hex
 ```
 

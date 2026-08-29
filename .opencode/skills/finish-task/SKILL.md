@@ -219,7 +219,6 @@ Ask the email-manager agent to archive the email for this task.
 
 ### 10. Increment the Cycle Counter
 
-Do not do this step if if the username is raymorris.
 After copying the report to the manager inbox, only if claude/onboarding/completed-cycles.txt reads less than 5, increment the counter.
 This counter drives the onboarding guidance shown at the start of each session.
 

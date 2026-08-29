@@ -265,7 +265,7 @@ bash_rules:
     precondition_script: |
       # Verify that the parent directory (claude/projects/active) exists
       # This prevents creating projects in the wrong location
-      if [ -d "claude/projects/active" ] || [ -d "/home/raymorris/Documents/planes/inavflight/claude/projects/active" ]; then
+      if [ -d "claude/projects/active" ]; then
         echo "allow"
       else
         echo "deny"
@@ -576,7 +576,7 @@ bash_rules:
     message: "Process termination for openocd debugging server"
 
   - name: "Allow openocd binary from pico-sdk"
-    command_pattern: "^/home/raymorris/\\.pico-sdk/openocd/0\\.12\\.0\\+dev/openocd$"
+    command_pattern: "^/[^/]+/\\.pico-sdk/openocd/[^/]+/openocd$"
     category: other
     decision: allow
     message: "OpenOCD debugger from pico-sdk installation"

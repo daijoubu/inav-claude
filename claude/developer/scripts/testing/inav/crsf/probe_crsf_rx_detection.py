@@ -30,7 +30,7 @@ try:
     from mspapi2.lib import InavMSP, InavEnums
 except ImportError as e:
     print(f"FAILED to import mspapi2: {e}")
-    print("  Run: pip install -e /home/raymorris/Documents/planes/inavflight/mspapi2")
+    print("  Run: pip install -e /path/to/mspapi2   (e.g. ../mspapi2 sibling of inav-claude)")
     sys.exit(1)
 
 print(f"Connecting to FC on {DEVICE} at {BAUD} baud ...")

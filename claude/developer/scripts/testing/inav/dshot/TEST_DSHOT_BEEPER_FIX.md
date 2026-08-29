@@ -68,7 +68,7 @@ This breaks the feedback loop while preserving beeps for real arming issues.
 ## Test Script
 
 ### Location
-`/home/raymorris/Documents/planes/inavflight/claude/developer/scripts/testing/inav/dshot/test_dshot_beeper_arming_loop_fix.py`
+`$INAV_CLAUDE_ROOT/claude/developer/scripts/testing/inav/dshot/test_dshot_beeper_arming_loop_fix.py`
 
 ### Test Coverage
 
@@ -377,17 +377,17 @@ The test script includes comprehensive error handling:
 ## Related Files
 
 ### Test Implementation
-- Test script: `/home/raymorris/Documents/planes/inavflight/claude/developer/scripts/testing/inav/dshot/test_dshot_beeper_arming_loop_fix.py`
+- Test script: `$INAV_CLAUDE_ROOT/claude/developer/scripts/testing/inav/dshot/test_dshot_beeper_arming_loop_fix.py`
 - Documentation: This file
 
 ### Firmware Code
-- Fix location: `/home/raymorris/Documents/planes/inavflight/inav/src/main/fc/fc_core.c:599`
-- Arming flags: `/home/raymorris/Documents/planes/inavflight/inav/src/main/fc/runtime_config.h:49`
-- Beeper logic: `/home/raymorris/Documents/planes/inavflight/inav/src/main/io/beeper.c`
-- Guard delay: `/home/raymorris/Documents/planes/inavflight/inav/src/main/io/beeper.c:433`
+- Fix location: `$INAV_ROOT/inav/src/main/fc/fc_core.c:599`
+- Arming flags: `$INAV_ROOT/inav/src/main/fc/runtime_config.h:49`
+- Beeper logic: `$INAV_ROOT/inav/src/main/io/beeper.c`
+- Guard delay: `$INAV_ROOT/inav/src/main/io/beeper.c:433`
 
 ### Project Tracking
-- Project summary: `/home/raymorris/Documents/planes/inavflight/claude/projects/active/investigate-dshot-beeper-arming-loop/summary.md`
+- Project summary: `$INAV_CLAUDE_ROOT/claude/projects/active/investigate-dshot-beeper-arming-loop/summary.md`
 
 ## Conclusion
 

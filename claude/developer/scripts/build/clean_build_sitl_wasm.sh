@@ -4,7 +4,22 @@
 
 set -e
 
-INAV_ROOT="/home/raymorris/Documents/planes/inavflight/inav"
+# Resolve the inav source root. Lookup order:
+#   1. $INAV_ROOT env var (canonical override)
+#   2. Sibling checkout: <inav-claude-parent>/inav
+#   3. Legacy: ~/Documents/planes/inavflight/inav
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+if [ -n "${INAV_ROOT:-}" ] && [ -d "$INAV_ROOT" ]; then
+    :
+elif [ -d "$SCRIPT_DIR/../../../../inav" ]; then
+    INAV_ROOT="$(cd "$SCRIPT_DIR/../../../../inav" && pwd)"
+elif [ -d "$HOME/Documents/planes/inavflight/inav" ]; then
+    INAV_ROOT="$HOME/Documents/planes/inavflight/inav"
+else
+    echo "ERROR: cannot locate inav source root. Set \$INAV_ROOT or place inav/ as a sibling of inav-claude/." >&2
+    exit 1
+fi
+
 BUILD_DIR="$INAV_ROOT/build_sitl_wasm"
 
 echo "=== Clean WASM SITL Build ==="

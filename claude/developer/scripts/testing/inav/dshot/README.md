@@ -86,11 +86,11 @@ python3 test_motor_locate_simple.py /dev/ttyACM0 255
 ## Motor Locate Implementation
 
 The firmware implementation is in:
-- `/home/raymorris/Documents/planes/inavflight/inav/src/main/fc/motor_locate.c`
-- `/home/raymorris/Documents/planes/inavflight/inav/src/main/fc/motor_locate.h`
+- `$INAV_ROOT/inav/src/main/fc/motor_locate.c`
+- `$INAV_ROOT/inav/src/main/fc/motor_locate.h`
 
 **MSP handler** (incomplete, needs finishing):
-- `/home/raymorris/Documents/planes/inavflight/inav/src/main/fc/fc_msp.c:3659`
+- `$INAV_ROOT/inav/src/main/fc/fc_msp.c:3659`
 
 ## Testing Workflow
 
@@ -282,7 +282,7 @@ Overall: 4/4 tests passed
 ```
 
 **Related Files:**
-- Fix: `/home/raymorris/Documents/planes/inavflight/inav/src/main/fc/fc_core.c:599`
-- Arming flags: `/home/raymorris/Documents/planes/inavflight/inav/src/main/fc/runtime_config.h`
-- Beeper logic: `/home/raymorris/Documents/planes/inavflight/inav/src/main/io/beeper.c`
+- Fix: `$INAV_ROOT/inav/src/main/fc/fc_core.c:599`
+- Arming flags: `$INAV_ROOT/inav/src/main/fc/runtime_config.h`
+- Beeper logic: `$INAV_ROOT/inav/src/main/io/beeper.c`
 

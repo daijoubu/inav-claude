@@ -12,13 +12,34 @@ Usage:
 """
 
 import sys, time, os, struct, threading, socket, subprocess, glob
+from pathlib import Path
 
 SITL_HOST = 'localhost'
 RC_PORT   = 5761
 MSP_PORT  = 5760
 
-SITL_DIR  = "/home/raymorris/Documents/planes/inavflight/inav2/build_sitl_pr11359"
-DECODER   = "/home/raymorris/Documents/planes/inavflight/blackbox-tools/obj/blackbox_decode"
+# Resolve the inav source root. Lookup order:
+#   1. $INAV_ROOT env var (canonical override)
+#   2. Sibling checkout: <inav-claude-parent>/inav2
+#   3. Legacy: ~/Documents/planes/inavflight/inav2
+def _resolve_inav_root():
+    env_root = os.environ.get("INAV_ROOT")
+    if env_root and os.path.isdir(env_root):
+        return env_root
+    claude_root = Path(__file__).resolve().parents[6]  # inav-claude repo root
+    for h in (claude_root / "inav2", claude_root / "inav"):
+        if h.is_dir():
+            return str(h)
+    legacy = os.path.expanduser("~/Documents/planes/inavflight/inav2")
+    if os.path.isdir(legacy):
+        return legacy
+    return ""
+
+INAV_ROOT = _resolve_inav_root()
+SITL_DIR  = os.environ.get("BLACKBOX_SITL_DIR") or (
+    os.path.join(INAV_ROOT, "build_sitl_pr11359") if INAV_ROOT else ""
+)
+DECODER   = os.environ.get("BLACKBOX_DECODER", os.path.expanduser("~/blackbox-tools/obj/blackbox_decode"))
 
 MAX_CLIMB         = 700
 ALT_HOLD_DEADBAND = 40

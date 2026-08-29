@@ -24,9 +24,19 @@ REJECTION_MARKER = "The user doesn't want to proceed with this tool use"
 
 # Map source project dir names → canonical output dir names.
 # Entries with the same target value get merged into one output directory.
+# Keys are the absolute-path slugs that Claude Code generates under
+# ~/.claude/projects/ (each "/" in the path becomes a "-"), e.g.
+# "/home/<user>/Projects/inav-claude" → "-home-<user>-Projects-inav-claude".
 PROJECT_ALIASES = {
-    "-home-raymorris-Documents-planes-inavflight-inav":  "inav-firmware",
-    "-home-raymorris-Documents-planes-inavflight-inav2": "inav-firmware",
+    "-home-robs-Projects-inav-claude":                     "inav-claude",
+    "-home-robs-Projects-inav-claude-inav":                "inav-firmware",
+    "-home-robs-Projects-inav-claude-inav2":               "inav-firmware",
+    # Legacy entries (raymorris's prior workspace). Kept so old
+    # session logs still group correctly under their original
+    # canonical names when this script is run on a backup or copy
+    # of ~/.claude/projects/ from that era.
+    "-home-raymorris-Documents-planes-inavflight-inav":    "inav-firmware",
+    "-home-raymorris-Documents-planes-inavflight-inav2":   "inav-firmware",
     "-home-raymorris-Documents-planes-inavflight-inav-build-sitl": "inav-firmware",
 }
 

@@ -24,7 +24,29 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-BRANCH_SITL="${1:-/home/raymorris/Documents/planes/inavflight/inav2/build_sitl/bin/SITL.elf}"
+
+# Resolve the inav source root. Lookup order:
+#   1. $INAV_ROOT env var (canonical override)
+#   2. Sibling checkout: <inav-claude-parent>/inav
+#   3. Sibling numbered worktree: <inav-claude-parent>/inav2
+#   4. Legacy: ~/Documents/planes/inavflight/inav{,2}
+_resolve_inav_root() {
+    if [ -n "${INAV_ROOT:-}" ] && [ -d "$INAV_ROOT" ]; then
+        echo "$INAV_ROOT"; return
+    fi
+    local claude_root h
+    claude_root="$(cd "$SCRIPT_DIR/../../../../../.." && pwd)"
+    for h in "$claude_root/inav" "$claude_root/inav2"; do
+        if [ -d "$h" ]; then echo "$h"; return; fi
+    done
+    for h in "$HOME/Documents/planes/inavflight/inav" "$HOME/Documents/planes/inavflight/inav2"; do
+        if [ -d "$h" ]; then echo "$h"; return; fi
+    done
+    echo ""
+}
+INAV_ROOT="$(_resolve_inav_root)"
+
+BRANCH_SITL="${1:-${INAV_ROOT:-}/build_sitl/bin/SITL.elf}"
 BASELINE_SITL="${2:-/tmp/inav2_master_sitl_build/bin/SITL.elf}"
 DURATION=12
 
