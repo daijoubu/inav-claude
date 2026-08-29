@@ -4,7 +4,22 @@ Simple test for issue #11069 - just configure and send RC, observe in configurat
 Uses mspapi2 for cleaner MSP handling.
 """
 import sys
-sys.path.insert(0, '/home/raymorris/Documents/planes/inavflight/mspapi2')
+from pathlib import Path
+
+# Locate the mspapi2 library. Lookup order:
+#   1. $MSPAPI2_PATH env var (canonical override)
+#   2. <inav-claude-parent>/mspapi2 (sibling checkout convention)
+#   3. ~/Documents/planes/inavflight/mspapi2 (legacy location)
+_MSPAPI2_CANDIDATES = [
+    os.environ.get("MSPAPI2_PATH"),
+    str(Path(__file__).resolve().parents[5] / "mspapi2"),
+    os.path.expanduser("~/Documents/planes/inavflight/mspapi2"),
+]
+for _candidate in _MSPAPI2_CANDIDATES:
+    if _candidate and os.path.isdir(os.path.join(_candidate, "mspapi2")):
+        if _candidate not in sys.path:
+            sys.path.insert(0, _candidate)
+        break
 
 from mspapi2 import MSPApi, InavMSP
 import time

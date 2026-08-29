@@ -74,7 +74,10 @@ import tempfile
 import time
 from pathlib import Path
 
-REPO_ROOT = Path("/home/raymorris/Documents/planes/inavflight")
+REPO_ROOT = next(
+    parent for parent in Path(__file__).resolve().parents
+    if (parent / ".claude" / "hooks").is_dir()
+)
 REAL_HOOKS_DIR = REPO_ROOT / ".claude" / "hooks"
 REAL_SCRIPT = REAL_HOOKS_DIR / "check-framework-update.sh"
 
