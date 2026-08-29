@@ -18,7 +18,7 @@ Query and manage INAV project tracking using the project_manager.py tool.
 
 ## Project Manager Tool
 
-Located at: `claude/projects/project_manager.py`
+Located at: `claude/manager/scripts/project_manager.py`
 
 This Python script provides powerful project querying capabilities across INDEX.md and COMPLETED_PROJECTS.md.
 
@@ -27,7 +27,7 @@ This Python script provides powerful project querying capabilities across INDEX.
 ### List Active Projects (TODO)
 
 ```bash
-python3 claude/projects/project_manager.py list TODO
+python3 claude/manager/scripts/project_manager.py list TODO
 ```
 
 Shows all active TODO projects with priority, assignee, and creation date.
@@ -35,7 +35,7 @@ Shows all active TODO projects with priority, assignee, and creation date.
 ### List All Projects
 
 ```bash
-python3 claude/projects/project_manager.py list
+python3 claude/manager/scripts/project_manager.py list
 ```
 
 Shows all projects regardless of status.
@@ -44,28 +44,28 @@ Shows all projects regardless of status.
 
 ```bash
 # Completed projects
-python3 claude/projects/project_manager.py list COMPLETE
+python3 claude/manager/scripts/project_manager.py list COMPLETE
 
 # Backburner projects
-python3 claude/projects/project_manager.py list BACKBURNER
+python3 claude/manager/scripts/project_manager.py list BACKBURNER
 
 # In progress
-python3 claude/projects/project_manager.py list IN_PROGRESS
+python3 claude/manager/scripts/project_manager.py list IN_PROGRESS
 
 # Cancelled
-python3 claude/projects/project_manager.py list CANCELLED
+python3 claude/manager/scripts/project_manager.py list CANCELLED
 ```
 
 ### Show Project Details
 
 ```bash
-python3 claude/projects/project_manager.py show <name>
+python3 claude/manager/scripts/project_manager.py show <name>
 ```
 
 Example:
 ```bash
-python3 claude/projects/project_manager.py show finding5
-python3 claude/projects/project_manager.py show transpiler
+python3 claude/manager/scripts/project_manager.py show finding5
+python3 claude/manager/scripts/project_manager.py show transpiler
 ```
 
 Shows full details for a specific project including:
@@ -77,7 +77,7 @@ Shows full details for a specific project including:
 ### View Statistics
 
 ```bash
-python3 claude/projects/project_manager.py stats
+python3 claude/manager/scripts/project_manager.py stats
 ```
 
 Shows:
@@ -92,7 +92,7 @@ Shows:
 - **Completed projects archive:** `claude/projects/COMPLETED_PROJECTS.md` (36KB - full archive)
 - **Active project directories:** `claude/projects/{name}/`
 - **Archived project directories:** `claude/archived_projects/{name}/`
-- **Project manager tool:** `claude/projects/project_manager.py`
+- **Project manager tool:** `claude/manager/scripts/project_manager.py`
 
 ## Status Definitions
 
@@ -119,7 +119,7 @@ When you need to find a project but don't know the exact name:
 
 ```bash
 # Search by partial name
-python3 claude/projects/project_manager.py show chacha
+python3 claude/manager/scripts/project_manager.py show chacha
 
 # Will show: privacylrs-fix-finding5-chacha-benchmark
 ```
@@ -128,7 +128,7 @@ python3 claude/projects/project_manager.py show chacha
 
 ```bash
 # Quick view of what needs to be done
-python3 claude/projects/project_manager.py list TODO
+python3 claude/manager/scripts/project_manager.py list TODO
 ```
 
 Output:
@@ -144,13 +144,13 @@ Status          Priority   Project                                            Cr
 
 ```bash
 # View all completed projects
-python3 claude/projects/project_manager.py list COMPLETE
+python3 claude/manager/scripts/project_manager.py list COMPLETE
 ```
 
 ### Project Statistics
 
 ```bash
-python3 claude/projects/project_manager.py stats
+python3 claude/manager/scripts/project_manager.py stats
 ```
 
 Output:
@@ -173,16 +173,15 @@ Completed: 38
 
 After completing a project:
 
-1. **Move to COMPLETED_PROJECTS.md:**
+1. **Compact INDEX.md (keeps only active projects):**
    ```bash
-   cd claude/projects
-   python3 compact_index.py
+   python3 claude/manager/scripts/compact_index.py
    ```
    This automatically separates active and completed projects.
 
 2. **Verify with project manager:**
    ```bash
-   python3 project_manager.py stats
+   python3 claude/manager/scripts/project_manager.py stats
    python3 project_manager.py list TODO
    ```
 
@@ -216,10 +215,10 @@ grep -c "^### ⏸️" claude/projects/INDEX.md  # BACKBURNER
 
 ```bash
 # Verify tool exists
-ls -lh claude/projects/project_manager.py
+ls -lh claude/manager/scripts/project_manager.py
 
 # Make executable if needed
-chmod +x claude/projects/project_manager.py
+chmod +x claude/manager/scripts/project_manager.py
 ```
 
 ### Syntax Errors
@@ -234,7 +233,7 @@ python3 --version  # Should be 3.7 or higher
 If searching for a project returns no results:
 ```bash
 # List all projects to see exact names
-python3 claude/projects/project_manager.py list
+python3 claude/manager/scripts/project_manager.py list
 ```
 
 ---
