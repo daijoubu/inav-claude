@@ -22,7 +22,7 @@ The configurator must be running with remote debugging enabled. This happens aut
 
 ```bash
 cd inav-configurator
-ENABLE_REMOTE_DEBUGGING=1 NODE_ENV=development npm start --remote-debugging-port=9222 &
+NODE_ENV=development npm start &
 ```
 
 Remote debugging is **automatically enabled** in development mode (port 9222).
@@ -172,7 +172,7 @@ You can ask Claude:
 **Activation:**
 - MCP is activated when Chrome DevTools MCP server is configured in Claude settings
 - If MCP tools aren't available, start a new Claude session with configurator running
-- Configurator must be running (`ENABLE_REMOTE_DEBUGGING=1 NODE_ENV=development npm start --remote-debugging-port=9222 &`) for tools to work
+- Configurator must be running (`NODE_ENV=development npm start &`) for tools to work
 
 ## Common Testing Tasks
 
@@ -217,7 +217,7 @@ ps aux | grep electron
 ss -tln | grep 9222
 
 # Restart configurator
-cd inav-configurator && ENABLE_REMOTE_DEBUGGING=1 NODE_ENV=development npm start --remote-debugging-port=9222 &
+cd inav-configurator && NODE_ENV=development npm start &
 ```
 
 ### Connection Refused
@@ -227,7 +227,7 @@ cd inav-configurator && ENABLE_REMOTE_DEBUGGING=1 NODE_ENV=development npm start
 curl http://localhost:9222/json/version
 
 # If it fails, check:
-# 1. Configurator is running (ENABLE_REMOTE_DEBUGGING=1 NODE_ENV=development npm start --remote-debugging-port=9222 &)
+# 1. Configurator is running (NODE_ENV=development npm start &)
 # 2. Remote debugging code is in js/main/main.js (lines 39-47)
 # 3. Not running production build (npm run package enables different mode)
 ```
@@ -248,7 +248,7 @@ MCP requires a new Claude session to load:
 1. Stop configurator
 2. Exit Claude (Ctrl+D)
 3. Start new Claude session in `inav-configurator` directory
-4. Start configurator: `ENABLE_REMOTE_DEBUGGING=1 NODE_ENV=development npm start --remote-debugging-port=9222 &`
+4. Start configurator: `NODE_ENV=development npm start &`
 5. MCP tools should now be available
 
 ## Code Location
@@ -278,7 +278,7 @@ Automatically enabled when `!app.isPackaged` (development mode).
 
 ```bash
 cd inav-configurator
-ENABLE_REMOTE_DEBUGGING=1 NODE_ENV=development npm start --remote-debugging-port=9222 &
+NODE_ENV=development npm start &
 
 # In another terminal:
 # 1. Open chrome://inspect
@@ -291,7 +291,7 @@ ENABLE_REMOTE_DEBUGGING=1 NODE_ENV=development npm start --remote-debugging-port
 
 ```bash
 cd inav-configurator
-ENABLE_REMOTE_DEBUGGING=1 NODE_ENV=development npm start --remote-debugging-port=9222 &
+NODE_ENV=development npm start &
 # Create test file
 cat > tests/my-feature.spec.js << 'EOF'
 const { chromium } = require('playwright');
@@ -317,7 +317,7 @@ node tests/my-feature.spec.js
 
 ```bash
 cd inav-configurator
-ENABLE_REMOTE_DEBUGGING=1 NODE_ENV=development npm start --remote-debugging-port=9222 &
+NODE_ENV=development npm start &
 
 # Open chrome://inspect
 # Reproduce bug while monitoring:

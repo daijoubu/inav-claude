@@ -145,8 +145,8 @@ Do NOT call `gh api` or `gh issue edit` directly — the script handles API quir
 
 | Milestone | Expected Base Branch |
 |-----------|---------------------|
-| **9.0.1** | `maintenance-9.x` |
-| **9.1** | `maintenance-9.x` |
+| **9.0.1** | `maintenance-9.x` — unless a temporary override is active; check `.opencode/skills/git-workflow/SKILL.md` ("Creating Branches") for the current inav base |
+| **9.1** | `maintenance-9.x` — same override caveat as above |
 | **10.0** | `maintenance-10.x` |
 | **Future** | any (no change needed) |
 
@@ -185,14 +185,14 @@ gh api repos/iNavFlight/inav-configurator/milestones --jq '.[] | "\(.number) \(.
 
 Skip files persist across sessions at:
 ```
-claude/developer/scripts/triage/skip-inav.txt
-claude/developer/scripts/triage/skip-configurator.txt
+claude/local-data/triage/skip-inav.txt
+claude/local-data/triage/skip-configurator.txt
 ```
 
 Ensure they exist:
 ```bash
-touch claude/developer/scripts/triage/skip-inav.txt
-touch claude/developer/scripts/triage/skip-configurator.txt
+touch claude/local-data/triage/skip-inav.txt
+touch claude/local-data/triage/skip-configurator.txt
 ```
 
 Also create a temp dir for prefetch output and PR list cache:
@@ -206,10 +206,10 @@ On the very first iteration, fetch the current PR and **immediately start prefet
 
 ```bash
 # Fetch current PR (foreground)
-bash claude/developer/scripts/triage/fetch-next-pr.sh iNavFlight/inav YYYY-MM-DD claude/developer/scripts/triage/skip-inav.txt
+bash claude/developer/scripts/triage/fetch-next-pr.sh iNavFlight/inav YYYY-MM-DD claude/local-data/triage/skip-inav.txt
 
 # Prefetch next PR in background (uses cached PR list, only fetches reviews/comments)
-bash claude/developer/scripts/triage/fetch-next-pr.sh iNavFlight/inav YYYY-MM-DD claude/developer/scripts/triage/skip-inav.txt --offset 1 --output /tmp/claude/prefetch-inav.txt
+bash claude/developer/scripts/triage/fetch-next-pr.sh iNavFlight/inav YYYY-MM-DD claude/local-data/triage/skip-inav.txt --offset 1 --output /tmp/claude/prefetch-inav.txt
 ```
 
 The script caches the PR list for 2 minutes, so the prefetch reuses it and only makes API calls for the next PR's reviews and comments.
@@ -271,16 +271,16 @@ cat /tmp/claude/prefetch-inav.txt  # or prefetch-configurator.txt
 
 While the user reads the prefetched PR, **start prefetching the one after that** in the background:
 ```bash
-bash claude/developer/scripts/triage/fetch-next-pr.sh iNavFlight/inav YYYY-MM-DD claude/developer/scripts/triage/skip-inav.txt --offset 1 --output /tmp/claude/prefetch-inav.txt
+bash claude/developer/scripts/triage/fetch-next-pr.sh iNavFlight/inav YYYY-MM-DD claude/local-data/triage/skip-inav.txt --offset 1 --output /tmp/claude/prefetch-inav.txt
 ```
 
 ### Step 7: Handle Skip
 
 If the user says "skip", add the PR number to the skip file:
 ```bash
-echo "PR_NUMBER" >> claude/developer/scripts/triage/skip-inav.txt
+echo "PR_NUMBER" >> claude/local-data/triage/skip-inav.txt
 # or
-echo "PR_NUMBER" >> claude/developer/scripts/triage/skip-configurator.txt
+echo "PR_NUMBER" >> claude/local-data/triage/skip-configurator.txt
 ```
 
 Then invalidate cache and show prefetched PR as in Step 6.
@@ -348,5 +348,5 @@ This is the standard label the project uses for abandoned/unresponsive PRs.
 - Draft PRs are automatically excluded
 - PRs labeled "don't merge" (case-insensitive) are automatically excluded
 - Once a milestone is set, the PR won't appear in subsequent fetches
-- The skip file persists across sessions at `claude/developer/scripts/triage/skip-inav.txt`
+- The skip file persists across sessions at `claude/local-data/triage/skip-inav.txt`
 - Always verify milestone numbers are current before starting a session

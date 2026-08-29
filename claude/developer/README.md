@@ -105,7 +105,6 @@ Prompt: "Read my inbox. Current role: developer"
 - `developer/email/inbox/` - Incoming task assignments and messages
 - `developer/email/inbox-archive/` - Processed assignments
 - `developer/email/sent/` - Copies of sent messages
-- `developer/email/outbox/` - Draft messages awaiting delivery
 
 Use the `email-manager` agent for all email operations.
 
@@ -137,42 +136,7 @@ Use the `email-manager` agent for all email operations.
 
 **Key principle:** Before fixing a bug, have the `test-engineer` agent write a test that reproduces it. This ensures you understand the problem and can verify when it's fixed.
 
-### ⚠️ Critical Step 15: Archive Original Assignment
-
-**This step is MANDATORY and must be completed before the task is considered done.**
-
-The original task assignment must be archived from your inbox to:
-- ✅ Keep inbox clean and organized
-- ✅ Prevent confusion about active vs. completed tasks
-- ✅ Complete the task lifecycle properly
-- ✅ Help the manager track project status
-
-**How to archive:**
-
-```bash
-# Find the original assignment
-ls -ltr claude/developer/email/inbox/ | grep -i "<task-name>"
-
-# Archive it using email-manager agent
-Task tool with subagent_type="email-manager"
-Prompt: "Archive message 2026-02-17-1545-task-finalize-libcanard-dronecan.md to inbox-archive. Current role: developer"
-```
-
-**Or manually:**
-```bash
-mv claude/developer/email/inbox/<assignment>.md \
-   claude/developer/email/inbox-archive/
-```
----
-
-
-**Complete task checklist:**
-- [ ] Code implemented and tested
-- [ ] Commit created and pushed
-- [ ] PR created (if applicable)
-- [ ] Lock file released
-- [ ] Completion report sent to manager
-- [ ] ✅ **Original assignment archived** ← DO NOT SKIP THIS
+**Key principle — the inbox is the queue, not the project tracker:** Step 1 (check inbox) is how you find out what's pending — not `claude/projects/active/<project>/summary.md` or `INDEX.md`. Those status fields are the Manager's bookkeeping, updated only after they process your completion report from their own inbox, so they can lag behind what you've actually done. If an inbox item looks like it might already be finished, check `claude/developer/email/sent/` for a prior completed/status-update email matching that project name before assuming it's still open — don't consult the project tracker to make that call.
 
 ---
 
@@ -256,8 +220,8 @@ ls -lt claude/developer/email/inbox/
 Task tool with subagent_type="email-manager"
 Prompt: "Send completion report to manager. Task: <task name>. Current role: developer"
 
-# Manual:
-cp claude/developer/email/sent/<report>.md claude/manager/email/inbox/
+# Manual (verified, atomic — never use raw cp/mv, see email-manager.md):
+python3 claude/agents/email-manager/email_ops.py send developer manager <report>.md
 ```
 
 **Archive processed assignment:**
@@ -266,8 +230,8 @@ cp claude/developer/email/sent/<report>.md claude/manager/email/inbox/
 Task tool with subagent_type="email-manager"
 Prompt: "Archive message <filename>. Current role: developer"
 
-# Manual:
-mv claude/developer/email/inbox/<assignment>.md claude/developer/email/inbox-archive/
+# Manual (verified, atomic — never use raw mv, see email-manager.md):
+python3 claude/agents/email-manager/email_ops.py archive developer <assignment>.md
 ```
 
 ---

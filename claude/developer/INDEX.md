@@ -54,7 +54,6 @@ claude/developer/
 └── email/                    # Email directories (GITIGNORED)
     ├── inbox/
     ├── inbox-archive/
-    ├── outbox/
     └── sent/
 ```
 
@@ -217,7 +216,7 @@ The following are excluded from version control (`.gitignore`):
 - `reports/` - Analysis reports
 - `archive/` - Completed work
 - `builds/` - Binary artifacts
-- `email/` - Email directories (inbox, outbox, sent, inbox-archive)
+- `email/` - Email directories (inbox, sent, inbox-archive)
 
 **Why?** These contain session-specific and task-specific data. Reusable content (documentation, scripts) is extracted to tracked directories (`docs/`, `scripts/`), key findings are summarized to `claude/projects/`, then local files are archived.
 

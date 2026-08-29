@@ -163,6 +163,16 @@ git log --oneline base-branch..incoming-branch  # What the PR adds
 git log --oneline incoming-branch..base-branch  # What base added since divergence
 ```
 
+**For a GitHub PR specifically, don't assume the base is `master`** — check it:
+```bash
+gh pr view <number> --repo <owner>/<repo> --json baseRefName --jq .baseRefName
+```
+A PR can be stacked on `maintenance-10.x`, another unmerged feature branch, etc.
+Computing `git merge-base` against the wrong branch silently returns some other
+unrelated common ancestor, pulling hundreds of unrelated files into every diff
+and size/behavior comparison from then on — it doesn't error, it just gives you
+the wrong "before" state.
+
 ### 2. Find the common ancestor
 
 ```bash
@@ -259,6 +269,11 @@ done
 | Forgot to check `js/` files (not just `tabs/`) | `is not a function` errors for helper functions defined in main JS files |
 
 ---
+
+## Self-Improvement: Lessons Learned
+
+- **A forked agent's completion report can be truncated mid-merge, not a full summary**: for a large multi-file merge (e.g. 34 conflicted files) handed off to a fork, the task-notification's `result` text is whatever the fork happened to be saying when its turn budget ran out — it can look like a normal in-progress remark ("Same pattern seen before...") with no indication the job stopped short. On PR #2448's conflict resolution, a fork resolved 28 of 34 files and never committed, but the notification gave no sign anything was incomplete. Always verify directly after any "completed" fork on a merge: `git status` for remaining `UU` files, `grep -rn '^<<<<<<<\|^=======\|^>>>>>>>'` across the tree, and `git log` for the expected commit — don't treat the notification text as proof the merge commit exists.
+- **A code review of the conflict-resolution diff catches leftover half-converted call sites the resolution itself misses**: mechanical renames/API-swaps (e.g. `store.get/set` → `bridge.storeGet/storeSet`) are easy to apply file-by-file but easy to miss a call site in a large file — a full build only catches a *missing import*, not an *undefined global* left behind when the import was correctly removed but a few call sites weren't updated. Run `inav-code-review` against the resolution diff specifically (not just a build+syntax check) before treating a large conflict resolution as done; expect at least one more round of "still-leftover" fixes after the first review.
 
 ## Checklist
 
